@@ -171,3 +171,5 @@ footer {
     margin-top: 10px;
   }
 }
+.site-logo { height: 40px; width: auto; border-radius: 4px; }
+.header-left { display: flex; align-items: center; gap: 10px; }
