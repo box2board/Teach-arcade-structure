@@ -1,49 +1,141 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Teach Arcade</title>
+:root {
+  --blue: #2C6DD5;
+  --orange: #F29C38;
+  --slate: #1E293B;
+  --bg: #F3F4F6;
+  --white: #fff;
+}
 
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="/assets/styles.css">
+/* Reset & base */
+* {
+  box-sizing: border-box;
+}
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+body {
+  margin: 0;
+  font-family: 'Nunito', system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  background: var(--white);
+  color: var(--slate);
+  line-height: 1.6;
+}
 
-  <!-- Favicon (optional) -->
-  <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png">
-</head>
+/* Header */
+header {
+  background: var(--blue);
+  color: var(--white);
+  padding: 12px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
 
-<body>
-  <header>
-    <div style="display:flex;align-items:center;gap:10px;">
-      <img src="/assets/images/teach-arcade-logo.png" alt="Teach Arcade Logo" style="height:40px;width:auto;">
-      <div class="brand">Teach Arcade</div>
-    </div>
-    <nav>
-      <a href="/">Home</a>
-      <a href="/subjects/index.html">Subjects</a>
-      <a href="/submit.html">Submit</a>
-      <a href="/about.html">About</a>
-    </nav>
-  </header>
+header img {
+  height: 42px;
+  width: auto;
+  border-radius: 4px;
+}
 
-  <main class="container">
-:root{--blue:#2C6DD5;--orange:#F29C38;--slate:#1E293B;--bg:#F3F4F6;--white:#fff}
-*{box-sizing:border-box}
-body{margin:0;font-family:Nunito,system-ui,-apple-system,Segoe UI,Roboto,Arial;background:var(--white);color:var(--slate)}
-header{padding:20px;border-bottom:1px solid #eee;display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap}
-.logo{background:linear-gradient(135deg,var(--blue),#3f83f8);color:#fff;border-radius:8px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-weight:700}
-.brand{font-family:Poppins,sans-serif;font-weight:700}
-nav a{margin:0 8px;text-decoration:none;color:var(--slate)}
-main{max-width:1100px;margin:28px auto;padding:0 20px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-.card{background:var(--bg);padding:18px;border-radius:12px}
-a.cta{display:inline-block;background:var(--orange);color:#fff;text-decoration:none;padding:10px 16px;border-radius:8px;font-weight:700}
-footer{margin-top:40px;padding:20px;border-top:1px solid #eee;text-align:center;font-size:14px;color:#555}
-.breadcrumbs{font-size:14px;margin:8px 0 18px}
-.breadcrumbs a{text-decoration:none}
-.container{max-width:1100px;margin:28px auto;padding:0 20px}
-.hero{text-align:center;padding:56px 20px}
-h1,h2,h3{font-family:Poppins,sans-serif}
+.brand {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--white);
+}
+
+nav a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: var(--white);
+  font-weight: 600;
+  transition: color 0.2s ease, background 0.2s ease;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+nav a:hover {
+  background: var(--orange);
+  color: var(--white);
+}
+
+/* Main Layout */
+main {
+  max-width: 1100px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.hero {
+  text-align: center;
+  padding: 56px 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+  margin-top: 30px;
+}
+
+.card {
+  background: var(--bg);
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.card h3 {
+  margin-top: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+a.cta {
+  display: inline-block;
+  background: var(--orange);
+  color: var(--white);
+  text-decoration: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 700;
+  transition: background 0.3s ease;
+}
+
+a.cta:hover {
+  background: #e08825;
+}
+
+/* Footer */
+footer {
+  margin-top: 40px;
+  padding: 20px;
+  border-top: 1px solid #eee;
+  text-align: center;
+  font-size: 14px;
+  color: #555;
+}
+
+footer a {
+  color: var(--blue);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Breadcrumbs */
+.breadcrumbs {
+  font-size: 14px;
+  margin: 10px 0 20px;
+}
+
+.breadcrumbs a {
+  color: var(--blue);
+  text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+  text-decoration: underline;
+}
