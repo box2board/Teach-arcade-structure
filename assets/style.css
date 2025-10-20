@@ -139,3 +139,56 @@ footer a:hover {
 .breadcrumbs a:hover {
   text-decoration: underline;
 }
+/* Layout tweaks */
+main { padding-bottom: 30px; }
+
+/* Hero styling */
+.hero-home {
+  background: linear-gradient(135deg, rgba(44,109,213,.12), rgba(242,156,56,.12));
+  border-bottom: 1px solid #eef1f6;
+}
+.hero-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 56px 20px 40px;
+  text-align: center;
+}
+.hero-inner h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.2rem;
+  margin: 0 0 10px;
+}
+.hero-inner p { margin: 0 auto 18px; max-width: 760px; }
+.hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+a.cta.ghost {
+  background: transparent;
+  color: var(--blue);
+  border: 2px solid var(--blue);
+}
+
+/* Section titles */
+.section-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.4rem;
+  margin: 24px 0 6px;
+}
+
+/* Features strip */
+.features {
+  background: #f7f9fc;
+  border-top: 1px solid #eef1f6;
+  margin-top: 28px;
+}
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  padding: 20px 0 30px;
+}
+.feature h4 { margin: 0 0 6px; font-family: 'Poppins', sans-serif; }
+.feature p { margin: 0; }
+
+/* Header helpers (if not already in your CSS) */
+.header-left { display: flex; align-items: center; gap: 10px; }
+.site-logo { height: 42px; width: auto; border-radius: 4px; }
+.logo-link { display: inline-flex; align-items: center; }
