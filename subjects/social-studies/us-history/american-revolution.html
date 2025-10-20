@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>American Revolution | U.S. History | Teach Arcade</title>
+
+  <link rel="stylesheet" href="/assets/styles.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet"/>
+
+  <meta name="description" content="Free American Revolution resources: lesson plans, worksheets, primary sources, and activities for high school U.S. History.">
+</head>
+<body>
+  <!-- Shared header -->
+  <header>
+    <div class="header-left">
+      <a class="logo-link" href="/"><img class="site-logo" src="/assets/images/teach-arcade-logo.png" alt="Teach Arcade Logo"></a>
+      <span class="brand">Teach Arcade</span>
+    </div>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/subjects/index.html">Subjects</a>
+      <a href="/submit.html">Submit</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <nav class="breadcrumbs">
+      <a href="/">Home</a> ›
+      <a href="/subjects/index.html">Subjects</a> ›
+      <a href="/subjects/social-studies/index.html">Social Studies</a> ›
+      <a href="/subjects/social-studies/us-history/index.html">U.S. History</a> ›
+      American Revolution
+    </nav>
+
+    <h1>American Revolution</h1>
+    <p>Curated lessons, worksheets, primary sources, videos, and activities.</p>
+
+    <!-- Optional quick filters (client-side) -->
+    <div style="display:flex;gap:10px;align-items:center;margin:14px 0 18px;">
+      <input id="searchInput" type="search" placeholder="Search titles…" aria-label="Search"
+             style="flex:1;min-width:220px;padding:8px 10px;border:1px solid #cbd5e1;border-radius:8px;">
+      <select id="typeFilter" style="padding:8px 10px;border:1px solid #cbd5e1;border-radius:8px;">
+        <option value="">All Types</option>
+        <option value="PDF">PDF</option>
+        <option value="Link">Link</option>
+        <option value="Video">Video</option>
+      </select>
+      <select id="catFilter" style="padding:8px 10px;border:1px solid #cbd5e1;border-radius:8px;">
+        <option value="">All Categories</option>
+        <option>Lesson</option>
+        <option>Worksheet</option>
+        <option>Primary Sources</option>
+        <option>Game / Interactive</option>
+        <option>Assessment</option>
+        <option>Presentation</option>
+        <option>Project</option>
+        <!-- add more as you use them -->
+      </select>
+    </div>
+
+    <!-- Resources render here -->
+    <section id="resource-list" class="grid" aria-live="polite"></section>
+  </main>
+
+  <footer>
+    © <script>document.write(new Date().getFullYear())</script> Teach Arcade •
+    <a href="/privacy.html">Privacy</a> •
+    <a href="/terms.html">Terms</a>
+  </footer>
+
+  <script>
+    // ⬇️ EDIT THESE TWO ONLY ⬇️
+    const SHEET_ID   = "YOUR_PUBLIC_COPY_SHEET_ID"; // from the public copy URL
+    const SHEET_NAME = "American Revolution";        // exact tab name in that public copy
+    // ⬆️ EDIT THESE TWO ONLY ⬆️
+
+    const SHEET_URL =
+      `https://docs.google.com/spreadsheets/d/${encodeURIComponent(SHEET_ID)}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(SHEET_NAME)}`;
+
+    const listEl = document.getElementById("resource-list");
+    const searchEl = document.getElementById("searchInput");
+    const typeEl = document.getElementById("typeFilter");
+    const catEl  = document.getElementById("catFilter");
+
+    let rows = []; // [{title,type,category,url,date}]
+    const toUrl = (u) => {
+      if (!u) return "";
+      let s = String(u).trim();
+      if (!/^https?:\/\//i.test(s)) s = "https://" + s;
+      return s;
+    };
+
+    function cardHTML({title,type,category,url,date}) {
+      const meta = [category, type].filter(Boolean).join(" • ");
+      return `
+        <div class="card">
+          <h3 style="margin:0 0 6px;">${title}</h3>
+          <p style="margin:0 0 12px;color:#475569;">${meta}${date ? " • " + date : ""}</p>
+          ${url ? `<a class="cta" href="${url}" target="_blank" rel="noopener">Open</a>` : ""}
+        </div>
+      `;
+    }
+
+    function render() {
+      const q = (searchEl.value || "").toLowerCase().trim();
+      const t = (typeEl.value || "").toLowerCase().trim();
+      const c = (catEl.value  || "").toLowerCase().trim();
+
+      const filtered = rows.filter(r => {
+        if (t && r.type.toLowerCase() !== t) return false;
+        if (c && r.category.toLowerCase() !== c) return false;
+        if (!q) return true;
+        return r.title.toLowerCase().includes(q) || r.category.toLowerCase().includes(q);
+      });
+
+      listEl.innerHTML = filtered.length
+        ? filtered.map(cardHTML).join("")
+        : `<div class="card" style="grid-column:1/-1;">No matching resources yet.</div>`;
+    }
+
+    async function loadResources() {
+      listEl.innerHTML = `<div class="card" style="grid-column:1/-1;">Loading resources…</div>`;
+      try {
+        const res = await fetch(SHEET_URL, { cache: "no-store" });
+        const text = await res.text();
+        const json = JSON.parse(text.replace(/^[^({]+/, "")); // strip gviz header
+
+        rows = (json.table.rows || [])
+          .filter(r => r.c && r.c.length)
+          .map(r => {
+            const c = r.c;
+            return {
+              title:    c[0]?.v || "",   // A
+              type:     c[1]?.v || "",   // B
+              category: c[2]?.v || "",   // C
+              url:      toUrl(c[3]?.v || ""), // D
+              date:     c[4]?.v || ""    // E
+            };
+          })
+          // must have title+url
+          .filter(r => r.title && r.url);
+
+        render();
+      } catch (err) {
+        console.error(err);
+        listEl.innerHTML = `<div class="card" style="grid-column:1/-1;color:#b91c1c;">
+          Couldn't load resources. Check the public sheet ID, tab name, or sharing.
+        </div>`;
+      }
+    }
+
+    searchEl.addEventListener("input", render);
+    typeEl.addEventListener("change", render);
+    catEl.addEventListener("change", render);
+
+    loadResources();
+  </script>
+</body>
+</html>
