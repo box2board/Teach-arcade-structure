@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://teacharcade.com/sitemap.xml
