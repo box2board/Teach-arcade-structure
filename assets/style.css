@@ -1,4 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Teach Arcade</title>
 
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/assets/styles.css">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Favicon (optional) -->
+  <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png">
+</head>
+
+<body>
+  <header>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <img src="/assets/images/teach-arcade-logo.png" alt="Teach Arcade Logo" style="height:40px;width:auto;">
+      <div class="brand">Teach Arcade</div>
+    </div>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/subjects/index.html">Subjects</a>
+      <a href="/submit.html">Submit</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </header>
+
+  <main class="container">
 :root{--blue:#2C6DD5;--orange:#F29C38;--slate:#1E293B;--bg:#F3F4F6;--white:#fff}
 *{box-sizing:border-box}
 body{margin:0;font-family:Nunito,system-ui,-apple-system,Segoe UI,Roboto,Arial;background:var(--white);color:var(--slate)}
