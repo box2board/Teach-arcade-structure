@@ -7,8 +7,9 @@
 
   <link rel="stylesheet" href="/assets/styles.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png"/>
 
-  <meta name="description" content="Free American Revolution resources: lesson plans, worksheets, primary sources, and activities for high school U.S. History.">
+  <meta name="description" content="Free American Revolution resources: lesson plans, worksheets, primary sources, videos, and activities for high school U.S. History."/>
 </head>
 <body>
   <!-- Shared header -->
@@ -56,7 +57,6 @@
         <option>Assessment</option>
         <option>Presentation</option>
         <option>Project</option>
-        <!-- add more as you use them -->
       </select>
     </div>
 
@@ -72,41 +72,45 @@
 
   <script>
     // ⬇️ EDIT THESE TWO ONLY ⬇️
-    const SHEET_ID   = "1dPJAi0dKjP6hWpgpNlA2M-2INar75-LxJ-fKEJjWslc"; // from the public copy URL
-    const SHEET_NAME = "American Revolution";        // exact tab name in that public copy
+    const SHEET_ID   = "1dPJAi0dKjP6hWpgpNlA2M-2INar75-LxJ-fKEJjWslc";  // your PUBLIC copy ID
+    const SHEET_NAME = "American Revolution";                             // exact tab name
     // ⬆️ EDIT THESE TWO ONLY ⬆️
 
     const SHEET_URL =
       `https://docs.google.com/spreadsheets/d/${encodeURIComponent(SHEET_ID)}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(SHEET_NAME)}`;
 
-    const listEl = document.getElementById("resource-list");
+    const listEl   = document.getElementById("resource-list");
     const searchEl = document.getElementById("searchInput");
-    const typeEl = document.getElementById("typeFilter");
-    const catEl  = document.getElementById("catFilter");
+    const typeEl   = document.getElementById("typeFilter");
+    const catEl    = document.getElementById("catFilter");
 
-    let rows = []; // [{title,type,category,url,date}]
-    const toUrl = (u) => {
-      if (!u) return "";
-      let s = String(u).trim();
-      if (!/^https?:\/\//i.test(s)) s = "https://" + s;
-      return s;
-    };
+    let rows = []; // normalized rows for rendering
 
-    function cardHTML({title,type,category,url,date}) {
+    function safeStr(v){ return (v == null ? "" : String(v)); }
+
+    function toUrl(u) {
+      const s = safeStr(u).trim();
+      if (!s) return "";
+      return /^https?:\/\//i.test(s) ? s : "https://" + s;
+    }
+
+    function cardHTML(item) {
+      const { title, type, category, url, date } = item;
       const meta = [category, type].filter(Boolean).join(" • ");
+      const dateStr = date ? ` • ${date}` : "";
       return `
         <div class="card">
           <h3 style="margin:0 0 6px;">${title}</h3>
-          <p style="margin:0 0 12px;color:#475569;">${meta}${date ? " • " + date : ""}</p>
-          ${url ? `<a class="cta" href="${url}" target="_blank" rel="noopener">Open</a>` : ""}
+          <p style="margin:0 0 12px;color:#475569;">${meta}${dateStr}</p>
+          ${url ? `<a class="cta" href="${url}" target="_blank" rel="noopener noreferrer">Open</a>` : ""}
         </div>
       `;
     }
 
     function render() {
-      const q = (searchEl.value || "").toLowerCase().trim();
-      const t = (typeEl.value || "").toLowerCase().trim();
-      const c = (catEl.value  || "").toLowerCase().trim();
+      const q = safeStr(searchEl.value).toLowerCase().trim();
+      const t = safeStr(typeEl.value).toLowerCase().trim();
+      const c = safeStr(catEl.value).toLowerCase().trim();
 
       const filtered = rows.filter(r => {
         if (t && r.type.toLowerCase() !== t) return false;
@@ -125,22 +129,24 @@
       try {
         const res = await fetch(SHEET_URL, { cache: "no-store" });
         const text = await res.text();
-        const json = JSON.parse(text.replace(/^[^({]+/, "")); // strip gviz header
 
-        rows = (json.table.rows || [])
-          .filter(r => r.c && r.c.length)
-          .map(r => {
-            const c = r.c;
-            return {
-              title:    c[0]?.v || "",   // A
-              type:     c[1]?.v || "",   // B
-              category: c[2]?.v || "",   // C
-              url:      toUrl(c[3]?.v || ""), // D
-              date:     c[4]?.v || ""    // E
-            };
-          })
-          // must have title+url
-          .filter(r => r.title && r.url);
+        // gviz returns something like: )]}'
+        // /*O_o*/ google.visualization.Query.setResponse({...});
+        const json = JSON.parse(text.replace(/^[^({]+/, "")); // drop preamble before the first { or (
+
+        const table = json?.table || {};
+        const rawRows = Array.isArray(table.rows) ? table.rows : [];
+
+        rows = rawRows
+          .map(r => r?.c || [])
+          .map(cells => ({
+            title:    safeStr(cells[0]?.v),
+            type:     safeStr(cells[1]?.v),
+            category: safeStr(cells[2]?.v),
+            url:      toUrl(cells[3]?.v),
+            date:     safeStr(cells[4]?.v)
+          }))
+          .filter(r => r.title && r.url); // require title+url
 
         render();
       } catch (err) {
@@ -151,10 +157,12 @@
       }
     }
 
+    // events
     searchEl.addEventListener("input", render);
     typeEl.addEventListener("change", render);
     catEl.addEventListener("change", render);
 
+    // kick off
     loadResources();
   </script>
 </body>
