@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet"/>
   <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png"/>
 
-  <meta name="description" content="Free American Revolution resources: lesson plans, worksheets, primary sources, videos, and activities for high school U.S. History."/>
+  <meta name="description" content="Free American Revolution resources: lesson plans, worksheets, primary sources, videos, and activities for high school U.S. History.">
 </head>
 <body>
   <!-- Shared header -->
@@ -38,7 +38,7 @@
     <h1>American Revolution</h1>
     <p>Curated lessons, worksheets, primary sources, videos, and activities.</p>
 
-    <!-- Optional quick filters (client-side) -->
+    <!-- Quick filters -->
     <div style="display:flex;gap:10px;align-items:center;margin:14px 0 18px;">
       <input id="searchInput" type="search" placeholder="Search titles…" aria-label="Search"
              style="flex:1;min-width:220px;padding:8px 10px;border:1px solid #cbd5e1;border-radius:8px;">
@@ -72,8 +72,8 @@
 
   <script>
     // ⬇️ EDIT THESE TWO ONLY ⬇️
-    const SHEET_ID   = "1dPJAi0dKjP6hWpgpNlA2M-2INar75-LxJ-fKEJjWslc";  // your PUBLIC copy ID
-    const SHEET_NAME = "American Revolution";                             // exact tab name
+    const SHEET_ID   = "1dPJAi0dKjP6hWpgpNlA2M-2INar75-LxJ-fKEJjWslc"; // Public copy ID
+    const SHEET_NAME = "American Revolution";                             // Exact tab name
     // ⬆️ EDIT THESE TWO ONLY ⬆️
 
     const SHEET_URL =
@@ -84,7 +84,7 @@
     const typeEl   = document.getElementById("typeFilter");
     const catEl    = document.getElementById("catFilter");
 
-    let rows = []; // normalized rows for rendering
+    let rows = [];
 
     function safeStr(v){ return (v == null ? "" : String(v)); }
 
@@ -130,11 +130,13 @@
         const res = await fetch(SHEET_URL, { cache: "no-store" });
         const text = await res.text();
 
-        // gviz returns something like: )]}'
-        // /*O_o*/ google.visualization.Query.setResponse({...});
-        const json = JSON.parse(text.replace(/^[^({]+/, "")); // drop preamble before the first { or (
+        // Robustly extract the JSON object from the GViz wrapper
+        const start = text.indexOf('{');
+        const end   = text.lastIndexOf('}');
+        if (start === -1 || end === -1) throw new Error("Unexpected GViz format");
+        const json = JSON.parse(text.slice(start, end + 1));
 
-        const table = json?.table || {};
+        const table   = json?.table || {};
         const rawRows = Array.isArray(table.rows) ? table.rows : [];
 
         rows = rawRows
@@ -146,23 +148,25 @@
             url:      toUrl(cells[3]?.v),
             date:     safeStr(cells[4]?.v)
           }))
-          .filter(r => r.title && r.url); // require title+url
+          // Skip header row if it slipped through; require title + url
+          .filter(r => r.title && r.title.toLowerCase() !== "title")
+          .filter(r => r.title && r.url);
 
         render();
       } catch (err) {
-        console.error(err);
+        console.error("Sheet load error:", err);
         listEl.innerHTML = `<div class="card" style="grid-column:1/-1;color:#b91c1c;">
           Couldn't load resources. Check the public sheet ID, tab name, or sharing.
         </div>`;
       }
     }
 
-    // events
+    // Events
     searchEl.addEventListener("input", render);
     typeEl.addEventListener("change", render);
     catEl.addEventListener("change", render);
 
-    // kick off
+    // Go
     loadResources();
   </script>
 </body>
