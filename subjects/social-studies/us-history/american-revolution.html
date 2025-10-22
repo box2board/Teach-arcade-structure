@@ -5,12 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>American Revolution | U.S. History | Teach Arcade</title>
 
+  <!-- Global styles -->
   <link rel="stylesheet" href="/assets/styles.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet"/>
   <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png"/>
 
   <meta name="description" content="Free American Revolution resources: lesson plans, worksheets, primary sources, videos, and activities for high school U.S. History."/>
+
   <style>
+    /* Ensure content sits below sticky header (fallback if stylesheet misses it) */
+    :root { --header-h: 64px; }
+    @media (min-width: 821px){ :root { --header-h: 72px; } }
+    body { padding-top: var(--header-h); }
+
     /* Lightweight styles just for Topic Explorer */
     .tabs {
       display:flex; gap:10px; flex-wrap:wrap; align-items:center;
@@ -34,18 +41,18 @@
     .filters-row input[type="search"]{
       flex:1; min-width:220px; padding:10px 12px; border:1px solid #cbd5e1; border-radius:10px;
     }
-    /* keep cards tidy even with many */
     #resource-list.card-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; }
     .card h3 { margin:0 0 8px; }
     .meta { margin:0 0 12px; color:#475569; font:600 13px/1.4 Nunito, sans-serif; }
   </style>
 </head>
 <body>
-  <!-- Dynamic header mounts here -->
+  <!-- Reusable header mounts here on every page -->
   <div id="site-header"></div>
+  <script src="/assets/scripts/nav.js" defer></script>
 
   <main class="container">
-    <nav class="breadcrumbs">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
       <a href="/">Home</a> ›
       <a href="/subjects/index.html">Subjects</a> ›
       <a href="/subjects/social-studies/index.html">Social Studies</a> ›
@@ -74,7 +81,7 @@
     <a href="/terms.html">Terms</a>
   </footer>
 
-  <!-- Your page logic -->
+  <!-- Page logic: load & render resources -->
   <script>
     // ⬇️ EDIT THESE TWO ONLY ⬇️
     const SHEET_ID   = "1dPJAi0dKjP6hWpgpNlA2M-2INar75-LxJ-fKEJjWslc"; // Public copy ID
@@ -103,8 +110,11 @@
     let allRows = [];
     let activeTab = "all";
 
-    function safeStr(v){ return (v == null ? "" : String(v)); }
-    function toUrl(u){ const s=safeStr(u).trim(); return s ? (/^https?:\/\//i.test(s)?s:"https://"+s) : ""; }
+    const safeStr = v => (v == null ? "" : String(v));
+    const toUrl = u => {
+      const s = safeStr(u).trim();
+      return s ? (/^https?:\/\//i.test(s) ? s : "https://" + s) : "";
+    };
 
     function bucketFor(category){
       const cat = safeStr(category).toLowerCase();
@@ -184,7 +194,10 @@
         const json = JSON.parse(text.slice(start,end+1));
         const rawRows = Array.isArray(json?.table?.rows) ? json.table.rows : [];
         allRows = rawRows.map(r => r?.c || []).map(c => ({
-          title: safeStr(c[0]?.v), type: safeStr(c[1]?.v), category: safeStr(c[2]?.v), url: toUrl(c[3]?.v)
+          title: safeStr(c[0]?.v),
+          type: safeStr(c[1]?.v),
+          category: safeStr(c[2]?.v),
+          url: toUrl(c[3]?.v)
         })).filter(r => r.title && r.title.toLowerCase()!=="title" && r.url);
         buildTabs(allRows); render();
       }catch(err){
@@ -198,8 +211,5 @@
     searchEl.addEventListener("input", render);
     loadResources();
   </script>
-
-  <!-- Inject the global nav/header on every page -->
-  <script src="/assets/scripts/nav.js"></script>
 </body>
 </html>
