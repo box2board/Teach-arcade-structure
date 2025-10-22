@@ -27,9 +27,9 @@
   <!-- Structured Data: Breadcrumbs -->
   <script type="application/ld+json">
   {
-    "@context":"https://schema.org",
-    "@type":"BreadcrumbList",
-    "itemListElement":[
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
       {"@type":"ListItem","position":1,"name":"Home","item":"https://teacharcade.com/"},
       {"@type":"ListItem","position":2,"name":"Subjects","item":"https://teacharcade.com/subjects/"},
       {"@type":"ListItem","position":3,"name":"Social Studies","item":"https://teacharcade.com/subjects/social-studies/"},
@@ -75,15 +75,11 @@
 </head>
 
 <body>
-  <!-- Dynamic global header -->
+  <!-- Global Header -->
   <div id="site-header"></div>
   <script src="/assets/scripts/nav.js" defer></script>
 
-  <!-- Topic Section -->
-  <main class="container topic-page"
-        data-sheet-id="1dPJAi0dKjP6hWpgpNlA2M-2INar75-LxJ-fKEJjWslc"
-        data-tab="American Revolution">
-
+  <main class="container topic-page">
     <nav class="breadcrumbs">
       <a href="/">Home</a> ›
       <a href="/subjects/index.html">Subjects</a> ›
@@ -95,12 +91,10 @@
     <h1>American Revolution</h1>
     <p>Curated lessons, worksheets, primary sources, videos, and activities.</p>
 
-    <!-- Search -->
     <div class="filters-row">
       <input id="searchInput" type="search" placeholder="Search titles…" aria-label="Search resources" />
     </div>
 
-    <!-- Tabs + Results -->
     <div id="tabs" class="tabs" role="tablist" aria-label="Resource categories"></div>
     <section id="resource-list" class="card-grid" aria-live="polite"></section>
   </main>
@@ -111,7 +105,121 @@
     <a href="/terms.html">Terms</a>
   </footer>
 
-  <!-- Shared topic loader -->
-  <script src="/assets/scripts/topic.js" defer></script>
+  <!-- Topic Script -->
+  <script>
+    const SHEET_ID = "1dPJAi0dKjP6hWpgpNlA2M-2INar75-LxJ-fKEJjWslc";
+    const SHEET_NAME = "American Revolution";
+    const API_URL = `/api/resources?sheet=${encodeURIComponent(SHEET_ID)}&tab=${encodeURIComponent(SHEET_NAME)}`;
+
+    const listEl = document.getElementById("resource-list");
+    const tabsEl = document.getElementById("tabs");
+    const searchEl = document.getElementById("searchInput");
+
+    const CATEGORY_BUCKETS = [
+      { key: "worksheets", label: "Worksheets", includes: ["worksheet", "handout", "practice"] },
+      { key: "lessons", label: "Lessons", includes: ["lesson", "teacher guide", "unit", "plan"] },
+      { key: "primary-sources", label: "Primary Sources", includes: ["primary", "document", "source"] },
+      { key: "games", label: "Games", includes: ["game", "interactive", "simulation"] },
+      { key: "videos", label: "Videos", includes: ["video", "film"] },
+      { key: "assessments", label: "Assessments", includes: ["quiz", "assessment", "test"] },
+      { key: "presentations", label: "Presentations", includes: ["presentation", "slides"] },
+      { key: "projects", label: "Projects", includes: ["project", "performance", "inquiry"] },
+      { key: "other", label: "Other", includes: [] }
+    ];
+
+    let allRows = [];
+    let activeTab = "all";
+
+    const safeStr = v => (v == null ? "" : String(v));
+    const toUrl = u => {
+      const s = safeStr(u).trim();
+      return s ? (/^https?:\/\//i.test(s) ? s : "https://" + s) : "";
+    };
+    const bucketFor = category => {
+      const cat = safeStr(category).toLowerCase();
+      for (const b of CATEGORY_BUCKETS) if (b.includes.some(t => cat.includes(t))) return b.key;
+      return "other";
+    };
+    const iconFor = item => {
+      const t = item.type.toLowerCase(), c = item.category.toLowerCase();
+      if (t.includes("pdf")) return "📄";
+      if (c.includes("game") || c.includes("interactive")) return "🎮";
+      if (t.includes("video") || c.includes("video")) return "🎥";
+      if (c.includes("primary")) return "📜";
+      if (c.includes("lesson") || c.includes("guide")) return "📘";
+      return "🔗";
+    };
+    const badgeClass = b => {
+      switch (b) {
+        case "games": return "pill green";
+        case "videos": return "pill blue";
+        case "lessons": return "pill orange";
+        case "worksheets": return "pill gray";
+        case "primary-sources": return "pill";
+        default: return "pill gray";
+      }
+    };
+
+    function cardHTML(item) {
+      const bucket = bucketFor(item.category), icon = iconFor(item);
+      const meta = [
+        `<span class="${badgeClass(bucket)}">${CATEGORY_BUCKETS.find(b=>b.key===bucket)?.label||"Other"}</span>`,
+        item.type ? `<span class="pill gray">${safeStr(item.type)}</span>` : ""
+      ].filter(Boolean).join(" ");
+      return `
+        <div class="card">
+          <div style="font-size:24px;margin-bottom:4px;">${icon}</div>
+          <h3 style="margin:0 0 8px;">${safeStr(item.title)}</h3>
+          <p class="meta">${meta}</p>
+          ${item.url ? `<a class="cta" href="${item.url}" target="_blank" rel="noopener noreferrer">View Resource</a>` : ""}
+        </div>`;
+    }
+
+    function buildTabs(rows) {
+      const set = new Set(rows.map(r => bucketFor(r.category)));
+      const available = CATEGORY_BUCKETS.filter(b => set.has(b.key));
+      const parts = [`<button class="tab" role="tab" data-tab="all" aria-selected="${activeTab==="all"}">All</button>`];
+      for (const b of available) parts.push(`<button class="tab" role="tab" data-tab="${b.key}" aria-selected="${activeTab===b.key}">${b.label}</button>`);
+      tabsEl.innerHTML = parts.join("");
+      tabsEl.querySelectorAll(".tab").forEach(btn => {
+        btn.addEventListener("click", () => {
+          tabsEl.querySelectorAll(".tab").forEach(x => x.setAttribute("aria-selected","false"));
+          btn.setAttribute("aria-selected","true");
+          activeTab = btn.dataset.tab;
+          render();
+        });
+      });
+    }
+
+    function render() {
+      const q = safeStr(searchEl.value).toLowerCase().trim();
+      const filtered = allRows.filter(r => {
+        if (activeTab!=="all" && bucketFor(r.category)!==activeTab) return false;
+        return !q || r.title.toLowerCase().includes(q) || r.category.toLowerCase().includes(q);
+      });
+      listEl.innerHTML = filtered.length ? filtered.map(cardHTML).join("")
+        : `<div class="card" style="grid-column:1/-1;">No matching resources yet.</div>`;
+    }
+
+    async function loadResources() {
+      listEl.innerHTML = `<div class="card" style="grid-column:1/-1;">Loading resources…</div>`;
+      try {
+        const res = await fetch(API_URL, { cache: "no-store" });
+        const json = await res.json();
+        if (!json.ok) throw new Error(json.error || "API error");
+        allRows = json.data;
+        buildTabs(allRows);
+        render();
+      } catch (err) {
+        console.error("API load error:", err);
+        listEl.innerHTML = `<div class="card" style="grid-column:1/-1;color:#b91c1c;">
+          Couldn't load resources. Please try again later.
+        </div>`;
+      }
+    }
+
+    searchEl.addEventListener("input", render);
+    loadResources();
+  </script>
 </body>
 </html>
