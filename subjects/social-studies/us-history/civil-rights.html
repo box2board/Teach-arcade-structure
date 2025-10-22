@@ -1,48 +1,68 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Civil Rights | U.S. History | Teach Arcade</title>
 
-  <link rel="stylesheet" href="/assets/styles.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet"/>
-  <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png"/>
+  <!-- Styles & Fonts -->
+  <link rel="stylesheet" href="/assets/styles.css?v=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
 
-  <meta name="description" content="Free Civil Rights Movement resources: lessons, primary sources, videos, worksheets, and activities covering key figures, court cases, and tactics for equality."/>
-  <link rel="canonical" href="https://teacharcade.com/subjects/social-studies/us-history/civil-rights.html"/>
+  <!-- SEO & Social -->
+  <meta name="description" content="Free Civil Rights resources: lesson plans, worksheets, primary sources, videos, and activities for high school U.S. History." />
+  <link rel="canonical" href="https://teacharcade.com/subjects/social-studies/us-history/american-revolution.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Teach Arcade" />
+  <meta property="og:title" content="Civil Rightsy — Free Teaching Resources" />
+  <meta property="og:description" content="Curated lessons, worksheets, primary sources, videos, and activities for U.S. History." />
+  <meta property="og:url" content="https://teacharcade.com/subjects/social-studies/us-history/american-revolution.html" />
+  <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Civil Rights — Free Teaching Resources" />
+  <meta name="twitter:description" content="Curated lessons, worksheets, primary sources, videos, and activities for U.S. History." />
+  <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
 
+  <!-- Structured Data: Breadcrumbs -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://teacharcade.com/"},
+      {"@type":"ListItem","position":2,"name":"Subjects","item":"https://teacharcade.com/subjects/"},
+      {"@type":"ListItem","position":3,"name":"Social Studies","item":"https://teacharcade.com/subjects/social-studies/"},
+      {"@type":"ListItem","position":4,"name":"U.S. History","item":"https://teacharcade.com/subjects/social-studies/us-history/"},
+      {"@type":"ListItem","position":5,"name":"Civil Rights","item":"https://teacharcade.com/subjects/social-studies/us-history/civil-rights.html"}
+    ]
+  }
+  </script>
+
+  <!-- Topic Explorer micro styles (kept lightweight here) -->
   <style>
-    .tabs{display:flex;gap:10px;flex-wrap:wrap;align-items:center;background:#f1f5f9;border:1px solid #e5e7eb;border-radius:12px;padding:10px;margin:18px 0 16px;}
-    .tab{appearance:none;border:1px solid #cbd5e1;background:#fff;color:#1f2937;padding:8px 12px;border-radius:999px;cursor:pointer;font:600 14px/1 Poppins,sans-serif;}
-    .tab[aria-selected="true"]{background:#2563eb;color:#fff;border-color:#2563eb;}
-    .pill{display:inline-block;padding:4px 8px;border-radius:999px;font:600 12px/1 Nunito,sans-serif;background:#eef2ff;color:#3730a3;margin-right:6px;}
-    .pill.gray{background:#f1f5f9;color:#334155;}
-    .pill.green{background:#ecfdf5;color:#065f46;}
-    .pill.orange{background:#fff7ed;color:#9a3412;}
-    .pill.blue{background:#eff6ff;color:#1d4ed8;}
-    .filters-row{display:flex;gap:10px;align-items:center;margin:12px 0 8px;}
-    .filters-row input[type="search"]{flex:1;min-width:220px;padding:10px 12px;border:1px solid #cbd5e1;border-radius:10px;}
-    #resource-list.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;}
-    .card h3{margin:0 0 8px;}
-    .meta{margin:0 0 12px;color:#475569;font:600 13px/1.4 Nunito,sans-serif;}
+    .tabs{display:flex;gap:10px;flex-wrap:wrap;align-items:center;background:#f1f5f9;border:1px solid #e5e7eb;border-radius:12px;padding:10px;margin:18px 0 16px}
+    .tab{appearance:none;border:1px solid #cbd5e1;background:#fff;color:#1f2937;padding:8px 12px;border-radius:999px;cursor:pointer;font:600 14px/1 Poppins,sans-serif}
+    .tab[aria-selected="true"]{background:#2563eb;color:#fff;border-color:#2563eb}
+    .pill{display:inline-block;padding:4px 8px;border-radius:999px;font:600 12px/1 Nunito,sans-serif;background:#eef2ff;color:#3730a3;margin-right:6px}
+    .pill.gray{background:#f1f5f9;color:#334155}.pill.green{background:#ecfdf5;color:#065f46}.pill.orange{background:#fff7ed;color:#9a3412}.pill.blue{background:#eff6ff;color:#1d4ed8}
+    .filters-row{display:flex;gap:10px;align-items:center;margin:12px 0 8px}
+    .filters-row input[type="search"]{flex:1;min-width:220px;padding:10px 12px;border:1px solid #cbd5e1;border-radius:10px}
+    #resource-list.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+    .card h3{margin:0 0 8px}.meta{margin:0 0 12px;color:#475569;font:600 13px/1.4 Nunito,sans-serif}
   </style>
 </head>
-<body>
-  <header>
-    <div class="header-left">
-      <a class="logo-link" href="/"><img class="site-logo" src="/assets/images/teach-arcade-logo.png" alt="Teach Arcade Logo"></a>
-      <span class="brand">Teach Arcade</span>
-    </div>
-    <nav>
-      <a href="/">Home</a>
-      <a href="/subjects/index.html">Subjects</a>
-      <a href="/submit.html">Submit</a>
-      <a href="/about.html">About</a>
-    </nav>
-  </header>
 
-  <main class="container">
+<body>
+  <!-- Global Header (nav.js injects the header HTML) -->
+  <div id="site-header"></div>
+  <script src="/assets/scripts/nav.js" defer></script>
+
+  <!-- Topic content -->
+  <main class="container topic-page"
+        data-sheet-id="1dPJAi0dKjP6hWpgpNlA2M-2INar75-LxJ-fKEJjWslc"
+        data-tab="Civil Rights">
+
     <nav class="breadcrumbs">
       <a href="/">Home</a> ›
       <a href="/subjects/index.html">Subjects</a> ›
@@ -52,14 +72,13 @@
     </nav>
 
     <h1>Civil Rights</h1>
-    <p>Resources on the Civil Rights Movement: key events, landmark cases, leaders, tactics of protest, and expanding civil liberties.</p>
+    <p>Curated lessons, worksheets, primary sources, videos, and activities.</p>
 
     <div class="filters-row">
-      <input id="searchInput" type="search" placeholder="Search titles…" aria-label="Search resources">
+      <input id="searchInput" type="search" placeholder="Search titles…" aria-label="Search resources" />
     </div>
 
     <div id="tabs" class="tabs" role="tablist" aria-label="Resource categories"></div>
-
     <section id="resource-list" class="card-grid" aria-live="polite"></section>
   </main>
 
@@ -69,133 +88,7 @@
     <a href="/terms.html">Terms</a>
   </footer>
 
-  <script>
-    // Google Sheet hook
-    const SHEET_ID   = "1dPJAi0dKjP6hWpgpNlA2M-2INar75-LxJ-fKEJjWslc";
-    const SHEET_NAME = "Civil Rights";
-
-    const SHEET_URL =
-      `https://docs.google.com/spreadsheets/d/${encodeURIComponent(SHEET_ID)}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(SHEET_NAME)}`;
-
-    const listEl   = document.getElementById("resource-list");
-    const tabsEl   = document.getElementById("tabs");
-    const searchEl = document.getElementById("searchInput");
-
-    const CATEGORY_BUCKETS = [
-      { key: "worksheets",      label: "Worksheets",      includes: ["worksheet","handout","practice"] },
-      { key: "lessons",         label: "Lessons",         includes: ["lesson","teacher guide","unit","plan"] },
-      { key: "primary-sources", label: "Primary Sources", includes: ["primary","document","source","dbq"] },
-      { key: "games",           label: "Games",           includes: ["game","interactive","simulation"] },
-      { key: "videos",          label: "Videos",          includes: ["video","film"] },
-      { key: "assessments",     label: "Assessments",     includes: ["quiz","assessment","test"] },
-      { key: "presentations",   label: "Presentations",   includes: ["presentation","slides"] },
-      { key: "projects",        label: "Projects",        includes: ["project","performance","inquiry"] },
-      { key: "other",           label: "Other",           includes: [] }
-    ];
-
-    let allRows = [];
-    let activeTab = "all";
-
-    function safeStr(v){ return v==null ? "" : String(v); }
-    function toUrl(u){ const s = safeStr(u).trim(); return s ? (/^https?:\/\//i.test(s) ? s : "https://"+s) : ""; }
-
-    function bucketFor(category){
-      const cat = safeStr(category).toLowerCase();
-      for (const b of CATEGORY_BUCKETS){ if (b.includes.some(t => cat.includes(t))) return b.key; }
-      return "other";
-    }
-
-    function iconFor(item){
-      const t=item.type.toLowerCase(), c=item.category.toLowerCase();
-      if (t.includes("pdf")) return "📄";
-      if (c.includes("game")||c.includes("interactive")) return "🎮";
-      if (t.includes("video")||c.includes("video")) return "🎥";
-      if (c.includes("primary")) return "📜";
-      if (c.includes("lesson")||c.includes("guide")) return "📘";
-      return "🔗";
-    }
-
-    function badgeClass(bucket){
-      switch(bucket){
-        case "games": return "pill green";
-        case "videos": return "pill blue";
-        case "lessons": return "pill orange";
-        case "worksheets": return "pill gray";
-        case "primary-sources": return "pill";
-        default: return "pill gray";
-      }
-    }
-
-    function cardHTML(item){
-      const bucket = bucketFor(item.category), icon = iconFor(item);
-      const meta = [
-        `<span class="${badgeClass(bucket)}">${CATEGORY_BUCKETS.find(b=>b.key===bucket)?.label || "Other"}</span>`,
-        item.type ? `<span class="pill gray">${safeStr(item.type)}</span>` : ""
-      ].filter(Boolean).join(" ");
-      return `
-        <div class="card">
-          <div style="font-size:24px;margin-bottom:4px;">${icon}</div>
-          <h3 style="margin:0 0 8px;">${safeStr(item.title)}</h3>
-          <p class="meta">${meta}</p>
-          ${item.url ? `<a class="cta" href="${item.url}" target="_blank" rel="noopener noreferrer">View Resource</a>` : ""}
-        </div>
-      `;
-    }
-
-    function buildTabs(rows){
-      const present = new Set(rows.map(r => bucketFor(r.category)));
-      const available = CATEGORY_BUCKETS.filter(b => present.has(b.key));
-      const parts = [`<button class="tab" role="tab" data-tab="all" aria-selected="${activeTab==="all"}">All</button>`];
-      for (const b of available){ parts.push(`<button class="tab" role="tab" data-tab="${b.key}" aria-selected="${activeTab===b.key}">${b.label}</button>`); }
-      tabsEl.innerHTML = parts.join("");
-      tabsEl.querySelectorAll(".tab").forEach(btn=>{
-        btn.addEventListener("click",()=>{
-          tabsEl.querySelectorAll(".tab").forEach(x=>x.setAttribute("aria-selected","false"));
-          btn.setAttribute("aria-selected","true");
-          activeTab = btn.dataset.tab;
-          render();
-        });
-      });
-    }
-
-    function render(){
-      const q = safeStr(searchEl.value).toLowerCase().trim();
-      const filtered = allRows.filter(r=>{
-        if (activeTab!=="all" && bucketFor(r.category)!==activeTab) return false;
-        if (!q) return true;
-        return r.title.toLowerCase().includes(q) || r.category.toLowerCase().includes(q);
-      });
-      listEl.innerHTML = filtered.length
-        ? filtered.map(cardHTML).join("")
-        : `<div class="card" style="grid-column:1/-1;">No matching resources yet.</div>`;
-    }
-
-    async function loadResources(){
-      listEl.innerHTML = `<div class="card" style="grid-column:1/-1;">Loading resources…</div>`;
-      try{
-        const res = await fetch(SHEET_URL, { cache: "no-store" });
-        const text = await res.text();
-        const start = text.indexOf('{'), end = text.lastIndexOf('}');
-        if (start===-1 || end===-1) throw new Error("Unexpected GViz format");
-        const json = JSON.parse(text.slice(start, end+1));
-        const raw  = Array.isArray(json?.table?.rows) ? json.table.rows : [];
-        allRows = raw
-          .map(r => r?.c || [])
-          .map(c => ({ title:safeStr(c[0]?.v), type:safeStr(c[1]?.v), category:safeStr(c[2]?.v), url:toUrl(c[3]?.v) }))
-          .filter(r => r.title && r.url && r.title.toLowerCase()!=="title");
-
-        buildTabs(allRows);
-        render();
-      }catch(e){
-        console.error("Sheet load error:", e);
-        listEl.innerHTML = `<div class="card" style="grid-column:1/-1;color:#b91c1c;">
-          Couldn't load resources. Check the public sheet ID, tab name, or sharing.
-        </div>`;
-      }
-    }
-
-    searchEl.addEventListener("input", render);
-    loadResources();
-  </script>
+  <!-- Shared Topic Loader (new) -->
+  <script src="/assets/scripts/topic.v1.js?v=1" defer></script>
 </body>
 </html>
