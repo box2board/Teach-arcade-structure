@@ -5,24 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>American Revolution | U.S. History | Teach Arcade</title>
 
+  <!-- Styles & Fonts -->
   <link rel="stylesheet" href="/assets/styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
 
-  <meta name="description" content="Free American Revolution resources: lesson plans, worksheets, primary sources, videos, and activities for high school U.S. History." />
-
   <!-- SEO & Social -->
-  <link rel="canonical" href="https://techarcade.com/subjects/social-studies/us-history/american-revolution.html" />
+  <meta name="description" content="Free American Revolution resources: lesson plans, worksheets, primary sources, videos, and activities for high school U.S. History." />
+  <link rel="canonical" href="https://teacharcade.com/subjects/social-studies/us-history/american-revolution.html" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Teach Arcade" />
   <meta property="og:title" content="American Revolution — Free Teaching Resources" />
   <meta property="og:description" content="Curated lessons, worksheets, primary sources, videos, and activities for U.S. History." />
-  <meta property="og:url" content="https://techarcade.com/subjects/social-studies/us-history/american-revolution.html" />
-  <meta property="og:image" content="https://techarcade.com/assets/images/social/ta-social-card.png" />
+  <meta property="og:url" content="https://teacharcade.com/subjects/social-studies/us-history/american-revolution.html" />
+  <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="American Revolution — Free Teaching Resources" />
   <meta name="twitter:description" content="Curated lessons, worksheets, primary sources, videos, and activities for U.S. History." />
-  <meta name="twitter:image" content="https://techarcade.com/assets/images/social/ta-social-card.png" />
+  <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
 
   <!-- Structured Data: Breadcrumbs -->
   <script type="application/ld+json">
@@ -30,47 +30,47 @@
     "@context":"https://schema.org",
     "@type":"BreadcrumbList",
     "itemListElement":[
-      {"@type":"ListItem","position":1,"name":"Home","item":"https://techarcade.com/"},
-      {"@type":"ListItem","position":2,"name":"Subjects","item":"https://techarcade.com/subjects/"},
-      {"@type":"ListItem","position":3,"name":"Social Studies","item":"https://techarcade.com/subjects/social-studies/"},
-      {"@type":"ListItem","position":4,"name":"U.S. History","item":"https://techarcade.com/subjects/social-studies/us-history/"},
-      {"@type":"ListItem","position":5,"name":"American Revolution","item":"https://techarcade.com/subjects/social-studies/us-history/american-revolution.html"}
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://teacharcade.com/"},
+      {"@type":"ListItem","position":2,"name":"Subjects","item":"https://teacharcade.com/subjects/"},
+      {"@type":"ListItem","position":3,"name":"Social Studies","item":"https://teacharcade.com/subjects/social-studies/"},
+      {"@type":"ListItem","position":4,"name":"U.S. History","item":"https://teacharcade.com/subjects/social-studies/us-history/"},
+      {"@type":"ListItem","position":5,"name":"American Revolution","item":"https://teacharcade.com/subjects/social-studies/us-history/american-revolution.html"}
     ]
   }
   </script>
 
+  <!-- Topic Explorer Styles -->
   <style>
-    /* Lightweight styles for Topic Explorer */
     .tabs {
-      display: flex; gap: 10px; flex-wrap: wrap; align-items: center;
-      background: #f1f5f9; border: 1px solid #e5e7eb; border-radius: 12px;
-      padding: 10px; margin: 18px 0 16px;
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+      background:#f1f5f9; border:1px solid #e5e7eb; border-radius:12px;
+      padding:10px; margin:18px 0 16px;
     }
     .tab {
-      appearance: none; border: 1px solid #cbd5e1; background: #fff; color: #1f2937;
-      padding: 8px 12px; border-radius: 999px; cursor: pointer;
-      font: 600 14px/1 Poppins, sans-serif;
+      appearance:none; border:1px solid #cbd5e1; background:#fff; color:#1f2937;
+      padding:8px 12px; border-radius:999px; cursor:pointer;
+      font:600 14px/1 Poppins, sans-serif;
     }
-    .tab[aria-selected="true"] { background: #2563eb; color: #fff; border-color: #2563eb; }
+    .tab[aria-selected="true"] { background:#2563eb; color:#fff; border-color:#2563eb; }
     .pill {
-      display: inline-block; padding: 4px 8px; border-radius: 999px;
-      font: 600 12px/1 Nunito, sans-serif;
-      background: #eef2ff; color: #3730a3; margin-right: 6px;
+      display:inline-block; padding:4px 8px; border-radius:999px;
+      font:600 12px/1 Nunito, sans-serif;
+      background:#eef2ff; color:#3730a3; margin-right:6px;
     }
-    .pill.gray { background: #f1f5f9; color: #334155; }
-    .pill.green { background: #ecfdf5; color: #065f46; }
-    .pill.orange { background: #fff7ed; color: #9a3412; }
-    .pill.blue { background: #eff6ff; color: #1d4ed8; }
-    .filters-row { display: flex; gap: 10px; align-items: center; margin: 12px 0 8px; }
+    .pill.gray { background:#f1f5f9; color:#334155; }
+    .pill.green{ background:#ecfdf5; color:#065f46; }
+    .pill.orange{ background:#fff7ed; color:#9a3412; }
+    .pill.blue{ background:#eff6ff; color:#1d4ed8; }
+    .filters-row { display:flex; gap:10px; align-items:center; margin:12px 0 8px; }
     .filters-row input[type="search"] {
-      flex: 1; min-width: 220px; padding: 10px 12px;
-      border: 1px solid #cbd5e1; border-radius: 10px;
+      flex:1; min-width:220px; padding:10px 12px;
+      border:1px solid #cbd5e1; border-radius:10px;
     }
     #resource-list.card-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px;
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px;
     }
-    .card h3 { margin: 0 0 8px; }
-    .meta { margin: 0 0 12px; color: #475569; font: 600 13px/1.4 Nunito, sans-serif; }
+    .card h3 { margin:0 0 8px; }
+    .meta { margin:0 0 12px; color:#475569; font:600 13px/1.4 Nunito,sans-serif; }
   </style>
 </head>
 
@@ -79,6 +79,7 @@
   <div id="site-header"></div>
   <script src="/assets/scripts/nav.js" defer></script>
 
+  <!-- Topic Section -->
   <main class="container topic-page"
         data-sheet-id="1dPJAi0dKjP6hWpgpNlA2M-2INar75-LxJ-fKEJjWslc"
         data-tab="American Revolution">
@@ -94,10 +95,12 @@
     <h1>American Revolution</h1>
     <p>Curated lessons, worksheets, primary sources, videos, and activities.</p>
 
+    <!-- Search -->
     <div class="filters-row">
       <input id="searchInput" type="search" placeholder="Search titles…" aria-label="Search resources" />
     </div>
 
+    <!-- Tabs + Results -->
     <div id="tabs" class="tabs" role="tablist" aria-label="Resource categories"></div>
     <section id="resource-list" class="card-grid" aria-live="polite"></section>
   </main>
@@ -108,7 +111,7 @@
     <a href="/terms.html">Terms</a>
   </footer>
 
-  <!-- Shared topic script -->
-  <script src="/assets/scripts/topic.js"></script>
+  <!-- Shared topic loader -->
+  <script src="/assets/scripts/topic.js" defer></script>
 </body>
 </html>
