@@ -188,3 +188,20 @@ footer {
 }
 .hero-inner h1 { letter-spacing: 0.2px; }
 .hero-actions .cta { box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+/* === Global Breadcrumb Styling === */
+.breadcrumbs {
+  margin: 12px 0 16px;
+  font: 600 14px/1.4 Nunito, sans-serif;
+  color: #475569; /* dark gray for separators and non-link text */
+}
+
+.breadcrumbs a {
+  color: #1e293b; /* darker slate gray for links */
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.breadcrumbs a:hover {
+  color: #2563eb; /* your blue accent on hover */
+  text-decoration: underline;
+}
