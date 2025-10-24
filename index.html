@@ -3,141 +3,167 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Teach Arcade — Free Teaching Resources</title>
+  <title>Teach Arcade — Free Teacher Resources</title>
 
   <!-- Styles & Fonts -->
-  <link rel="stylesheet" href="/assets/styles.css" />
+  <link rel="stylesheet" href="/assets/styles.css?v=1" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet" />
-
-  <!-- Meta -->
-  <meta name="description" content="Teach Arcade: a free, curated hub of lessons, worksheets, primary sources, and games — organized by subject and topic for K–12 teachers." />
   <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
-  <!-- SEO & Social Preview -->
-<link rel="canonical" href="https://teacharcade.com/" />
 
-<!-- Open Graph / Facebook -->
-<meta property="og:title" content="Teach Arcade — Free Teaching Resources" />
-<meta property="og:description" content="Free, teacher-curated lessons, worksheets, and games — organized by subject, topic, and grade level." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://teacharcade.com/" />
-<meta property="og:image" content="https://teacharcade.com/assets/images/teach-arcade-logo.png" />
+  <!-- SEO & Social -->
+  <meta name="description" content="Teach Arcade curates free, classroom-ready resources for teachers — lessons, worksheets, primary sources, games, presentations, and more." />
+  <link rel="canonical" href="https://teacharcade.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Teach Arcade" />
+  <meta property="og:title" content="Teach Arcade — Free Teacher Resources" />
+  <meta property="og:description" content="Curated, classroom-ready teaching resources across subjects. 100% free links and downloads." />
+  <meta property="og:url" content="https://teacharcade.com/" />
+  <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Teach Arcade — Free Teacher Resources" />
+  <meta name="twitter:description" content="Curated, classroom-ready teaching resources across subjects. 100% free links and downloads." />
+  <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
 
-<!-- Twitter / X -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Teach Arcade — Free Teaching Resources" />
-<meta name="twitter:description" content="Free, teacher-curated lessons, worksheets, and games — organized by subject, topic, and grade level." />
-<meta name="twitter:image" content="https://teacharcade.com/assets/images/teach-arcade-logo.png" />
+  <!-- (Optional) JSON-LD: WebSite -->
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebSite","name":"Teach Arcade","url":"https://teacharcade.com/","potentialAction":{"@type":"SearchAction","target":"https://teacharcade.com/subjects/index.html?q={search_term_string}","query-input":"required name=search_term_string"}}
+  </script>
+
+  <!-- Page-only micro styles to ensure tiles look great even if CSS missing -->
+  <style>
+    .hero {
+      padding: 36px 0 8px;
+      text-align: center;
+    }
+    .hero h1 {
+      font: 700 34px/1.15 Poppins, sans-serif;
+      margin: 0 0 10px;
+      letter-spacing: -0.02em;
+    }
+    .hero p {
+      font: 400 18px/1.5 Nunito, system-ui, sans-serif;
+      color: #475569;
+      margin: 0 auto 18px;
+      max-width: 800px;
+    }
+    .hero .cta-row {
+      display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+      margin-top: 8px;
+    }
+    .btn {
+      display: inline-block; padding: 10px 14px; border-radius: 10px; text-decoration: none;
+      font: 700 14px/1 Poppins, sans-serif;
+      border: 1px solid #2563eb; color: #fff; background: #2563eb;
+    }
+    .btn.secondary {
+      background: #fff; color: #1f2937; border-color: #cbd5e1;
+    }
+
+    /* Grid of subject tiles (including Teacher Tools) */
+    .subjects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      margin: 28px 0 40px;
+    }
+    .subject-tile {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; background: #fff;
+      border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px;
+      text-decoration: none; color: #1e293b;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+      min-height: 160px;
+    }
+    .subject-tile:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+      border-color: #cbd5e1;
+    }
+    .subject-emoji { font-size: 40px; margin-bottom: 10px; }
+    .subject-title { font: 700 18px/1.2 Poppins, sans-serif; margin: 0 0 6px; }
+    .subject-desc { font: 400 14px/1.5 Nunito, sans-serif; color: #475569; margin: 0; }
+    @media (max-width: 480px){
+      .hero h1{font-size: 28px;}
+    }
+  </style>
 </head>
 
 <body>
-  <!-- Header -->
-  <header>
-    <div class="header-left">
-      <a class="logo-link" href="/">
-        <img class="site-logo" src="/assets/images/teach-arcade-logo.png" alt="Teach Arcade Logo" />
-      </a>
-      <span class="brand">Teach Arcade</span>
-    </div>
-    <nav>
-      <a href="/">Home</a>
-      <a href="/subjects/index.html">Subjects</a>
-      <a href="/submit.html">Submit</a>
-      <a href="/about.html">About</a>
-    </nav>
-  </header>
+  <!-- Global Header -->
+  <div id="site-header"></div>
+  <script src="/assets/scripts/nav.js" defer></script>
 
-  <main>
-    <!-- HERO -->
-    <section class="hero hero-home">
-      <div class="hero-inner">
-        <h1>Where Teachers Come to Play</h1>
-        <p>Free, teacher-curated lessons, worksheets, primary sources, and games — organized by subject, topic, and grade level.</p>
-        <div class="hero-actions">
-          <a class="cta" href="/subjects/index.html">Browse Subjects</a>
-          <a class="cta ghost" href="/submit.html">Submit a Resource</a>
-        </div>
+  <main class="container">
+    <!-- Hero -->
+    <section class="hero">
+      <h1>Find Free, Classroom-Ready Teaching Resources</h1>
+      <p>
+        Teach Arcade curates the best <strong>free lessons, worksheets, primary sources, activities, and presentations</strong> from trusted sites — organized by subject, unit, and topic.
+      </p>
+      <div class="cta-row">
+        <a class="btn" href="/subjects/index.html">Browse Subjects</a>
+        <a class="btn secondary" href="/submit.html">Submit a Resource</a>
       </div>
     </section>
 
-    <!-- QUICK SUBJECTS -->
-    <section class="container">
-      <h2 class="section-title">Start Exploring</h2>
-      <div class="grid">
-  <div class="card">
-    <div style="font-size:28px; margin-bottom:6px;">🗺️</div>
-    <h3>Social Studies</h3>
-    <p>U.S. History, World History, Civics, Geography, Economics.</p>
-    <a class="cta" href="/subjects/social-studies/index.html">Open</a>
-  </div>
+    <!-- Subject tiles (add/remove as you grow) -->
+    <section aria-labelledby="subjects-title" style="margin-top: 24px;">
+      <h2 id="subjects-title" class="sr-only">Subjects</h2>
+      <div class="subjects-grid">
 
-  <div class="card">
-    <div style="font-size:28px; margin-bottom:6px;">📚</div>
-    <h3>English / Language Arts</h3>
-    <p>Reading, writing, literature, grammar.</p>
-    <a class="cta ghost" href="/subjects/index.html">Coming soon</a>
-  </div>
+        <!-- Social Studies -->
+        <a href="/subjects/social-studies/index.html" class="subject-tile" aria-label="Social Studies">
+          <div class="subject-emoji">🌎</div>
+          <h3 class="subject-title">Social Studies</h3>
+          <p class="subject-desc">U.S. History, World History, Government, Geography, Economics</p>
+        </a>
 
-  <div class="card">
-    <div style="font-size:28px; margin-bottom:6px;">🧮</div>
-    <h3>Math</h3>
-    <p>Algebra, Geometry, Statistics.</p>
-    <a class="cta ghost" href="/subjects/index.html">Coming soon</a>
-  </div>
+        <!-- Math -->
+        <a href="/subjects/math/index.html" class="subject-tile" aria-label="Math">
+          <div class="subject-emoji">➗</div>
+          <h3 class="subject-title">Math</h3>
+          <p class="subject-desc">Algebra, Geometry, Statistics, Calculus & more</p>
+        </a>
 
-  <div class="card">
-    <div style="font-size:28px; margin-bottom:6px;">🔬</div>
-    <h3>Science</h3>
-    <p>Biology, Chemistry, Physics.</p>
-    <a class="cta ghost" href="/subjects/index.html">Coming soon</a>
-  </div>
-        <section class="container" aria-labelledby="latest">
-  <h2 id="latest" class="section-title">Latest Additions</h2>
-  <ul style="list-style: none; padding-left: 0; margin: 0;">
-    <li style="padding:12px 0; border-bottom:1px solid #e2e8f0;">
-      <strong>WWI Primary Source Packet</strong> — 12 documents with guiding questions.
-      <a href="/subjects/social-studies/us-history/world-war-i.html" style="margin-left:8px;">View</a>
-    </li>
-    <li style="padding:12px 0; border-bottom:1px solid #e2e8f0;">
-      <strong>Cold War Simulation</strong> — role-play activity & debrief.
-      <a href="/subjects/social-studies/us-history/cold-war.html" style="margin-left:8px;">View</a>
-    </li>
-    <li style="padding:12px 0;">
-      <strong>Great Depression Graphing</strong> — data set + worksheet.
-      <a href="/subjects/social-studies/us-history/great-depression.html" style="margin-left:8px;">View</a>
-    </li>
-  </ul>
-</section>
+        <!-- Science -->
+        <a href="/subjects/science/index.html" class="subject-tile" aria-label="Science">
+          <div class="subject-emoji">🔬</div>
+          <h3 class="subject-title">Science</h3>
+          <p class="subject-desc">Biology, Chemistry, Physics, Earth & Space</p>
+        </a>
+
+        <!-- English / Language Arts -->
+        <a href="/subjects/english-language-arts/index.html" class="subject-tile" aria-label="English Language Arts">
+          <div class="subject-emoji">📚</div>
+          <h3 class="subject-title">English / Language Arts</h3>
+          <p class="subject-desc">Reading, Writing, Grammar, Research, Poetry</p>
+        </a>
+
+        <!-- Fine Arts -->
+        <a href="/subjects/fine-arts/index.html" class="subject-tile" aria-label="Fine Arts">
+          <div class="subject-emoji">🎨</div>
+          <h3 class="subject-title">Fine Arts</h3>
+          <p class="subject-desc">Art, Music, Drama, Media Arts</p>
+        </a>
+
+        <!-- NEW: Teacher Tools -->
+        <a href="/teacher-tools.html" class="subject-tile" aria-label="Teacher Tools">
+          <div class="subject-emoji">🛠️</div>
+          <h3 class="subject-title">Teacher Tools</h3>
+          <p class="subject-desc">Generators, organizers, and interactive classroom helpers</p>
+        </a>
       </div>
     </section>
 
-    <!-- FEATURES STRIP -->
-    <section class="features">
-      <div class="container features-grid">
-        <div class="feature">
-          <h4>Free & Curated</h4>
-          <p>Only high-quality, no-paywall resources that save you time.</p>
-        </div>
-        <div class="feature">
-          <h4>Organized by Topic</h4>
-          <p>Find what you need fast — by unit, topic, and grade band.</p>
-        </div>
-        <div class="feature">
-          <h4>Teacher-Friendly</h4>
-          <p>Printables, docs, slides, and games ready for classroom use.</p>
-        </div>
-      </div>
+    <!-- Optional: highlight recent additions (leave empty until you’re ready)
+    <section aria-labelledby="latest-title" style="margin-top: 8px;">
+      <h2 id="latest-title" class="sr-only">Latest Resources</h2>
+      <div id="latest-resources"></div>
     </section>
+    -->
   </main>
-<section class="container" aria-labelledby="updates" style="margin-top:28px;">
-  <h2 id="updates" class="section-title">Get Updates</h2>
-  <form action="https://formspree.io/f/yourFormId" method="POST" style="display:flex; gap:10px; flex-wrap:wrap;">
-    <input type="email" name="email" placeholder="you@example.com" required
-           style="flex:1; min-width:240px; padding:10px 12px; border:1px solid #cbd5e1; border-radius:8px;">
-    <button type="submit" class="cta">Subscribe</button>
-  </form>
-  <p style="font-size:.9rem; color:#64748b; margin-top:8px;">Monthly roundup. No spam.</p>
-</section>
-  <!-- Footer -->
+
   <footer>
     © <script>document.write(new Date().getFullYear())</script> Teach Arcade •
     <a href="/privacy.html">Privacy</a> •
