@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Progressive Era &amp; Imperialism | U.S. History | Teach Arcade</title>
+  <title>Progressive Era & Imperialism | U.S. History | Teach Arcade</title>
 
   <!-- Styles & Fonts -->
   <link rel="stylesheet" href="/assets/styles.css?v=1" />
@@ -11,25 +11,25 @@
   <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
 
   <!-- SEO & Social -->
-  <meta name="description" content="Free Progressive Era & Imperialism resources: lessons, worksheets, primary sources, videos, and activities for high school U.S. History." />
+  <meta name="description" content="Free Progressive Era & Imperialism resources: lessons, worksheets, primary sources, videos, and activities for U.S. History." />
   <link rel="canonical" href="https://teacharcade.com/subjects/social-studies/us-history/progressive-era-imperialism.html" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Teach Arcade" />
-  <meta property="og:title" content="Progressive Era &amp; Imperialism — Free Teaching Resources" />
+  <meta property="og:title" content="Progressive Era & Imperialism — Free Teaching Resources" />
   <meta property="og:description" content="Curated lessons, worksheets, primary sources, videos, and activities for U.S. History." />
   <meta property="og:url" content="https://teacharcade.com/subjects/social-studies/us-history/progressive-era-imperialism.html" />
   <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Progressive Era &amp; Imperialism — Free Teaching Resources" />
+  <meta name="twitter:title" content="Progressive Era & Imperialism — Free Teaching Resources" />
   <meta name="twitter:description" content="Curated lessons, worksheets, primary sources, videos, and activities for U.S. History." />
   <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
 
   <!-- Structured Data: Breadcrumbs -->
   <script type="application/ld+json">
   {
-    "@context":"https://schema.org",
-    "@type":"BreadcrumbList",
-    "itemListElement":[
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
       {"@type":"ListItem","position":1,"name":"Home","item":"https://teacharcade.com/"},
       {"@type":"ListItem","position":2,"name":"Subjects","item":"https://teacharcade.com/subjects/"},
       {"@type":"ListItem","position":3,"name":"Social Studies","item":"https://teacharcade.com/subjects/social-studies/"},
@@ -52,17 +52,14 @@
     .card h3{margin:0 0 8px}.meta{margin:0 0 12px;color:#475569;font:600 13px/1.4 Nunito,sans-serif}
   </style>
 </head>
-
 <body>
-  <!-- Global Header -->
+  <!-- Global Header (nav.js injects the header HTML) -->
   <div id="site-header"></div>
   <script src="/assets/scripts/nav.js" defer></script>
 
-  <!-- Topic content -->
   <main class="container topic-page"
         data-sheet-id="1dPJAi0dKjP6hWpgpNlA2M-2INar75-LxJ-fKEJjWslc"
-        data-tab="Progressive Era & Imperialism"><!-- if your sheet tab is 'Progressive Era and Imperialism', change this EXACTLY to that -->
-
+        data-tab="Progressive Era & Imperialism">
     <nav class="breadcrumbs">
       <a href="/">Home</a> ›
       <a href="/subjects/index.html">Subjects</a> ›
@@ -72,7 +69,7 @@
     </nav>
 
     <h1>Progressive Era &amp; Imperialism</h1>
-    <p>Reform movements, women's suffrage, and America’s expanding global role.</p>
+    <p>Curated lessons, worksheets, primary sources, videos, and activities.</p>
 
     <div class="filters-row">
       <input id="searchInput" type="search" placeholder="Search titles…" aria-label="Search resources" />
@@ -88,7 +85,6 @@
     <a href="/terms.html">Terms</a>
   </footer>
 
-  <!-- Topic Loader -->
   <script src="/assets/scripts/topic.v1.js?v=1" defer></script>
 </body>
 </html>
