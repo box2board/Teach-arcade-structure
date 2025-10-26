@@ -35,7 +35,8 @@
       position:absolute !important; width:1px; height:1px; padding:0; margin:-1px;
       overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
     }
-    .hero { padding: 64px 0 8px; text-align: center; } /* give space below sticky header */
+    /* Add a little top space for sticky header overlap */
+    .hero { padding: 64px 0 8px; text-align: center; }
     .hero h1 { font: 700 34px/1.15 Poppins, sans-serif; margin: 0 0 10px; letter-spacing: -0.02em; }
     .hero p { font: 400 18px/1.5 Nunito, system-ui, sans-serif; color: #475569; margin: 0 auto 18px; max-width: 800px; }
     .hero .cta-row { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:8px; }
@@ -59,9 +60,35 @@
 </head>
 
 <body>
-  <!-- Global Header (injected by /assets/scripts/nav.js) -->
+  <!-- Global Header mount -->
   <div id="site-header"></div>
-  <script src="/assets/scripts/nav.js" defer></script>
+  <!-- Cache-busted nav loader -->
+  <script src="/assets/scripts/nav.js?v=2" defer></script>
+
+  <!-- Fallback: if nav.js doesn’t mount a header, inject a minimal one -->
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      const host = document.getElementById('site-header');
+      setTimeout(function () {
+        if (!host || host.innerHTML.trim()) return; // header already mounted
+        host.innerHTML = `
+          <header class="main-header" style="display:flex;justify-content:space-between;align-items:center;padding:12px 20px;background:#0f172a;border-bottom:1px solid #0b1220;position:sticky;top:0;z-index:1000;">
+            <a href="/" style="display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;">
+              <img src="/assets/images/teach-arcade-logo.png" alt="Teach Arcade Logo" style="height:40px;width:auto;">
+              <strong style="font:700 18px Poppins, sans-serif;">Teach Arcade</strong>
+            </a>
+            <nav aria-label="Primary">
+              <a href="/" style="color:#fff;margin-right:16px;text-decoration:none;">Home</a>
+              <a href="/subjects/index.html" style="color:#fff;margin-right:16px;text-decoration:none;">Subjects</a>
+              <a href="/submit.html" style="color:#fff;margin-right:16px;text-decoration:none;">Submit</a>
+              <a href="/about.html" style="color:#fff;text-decoration:none;">About</a>
+            </nav>
+          </header>
+        `;
+        console.warn('Fallback header injected because /assets/scripts/nav.js did not mount.');
+      }, 100);
+    });
+  </script>
 
   <!-- No-JS fallback header so logo/title/nav still appear if JS is disabled -->
   <noscript>
