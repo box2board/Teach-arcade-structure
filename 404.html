@@ -1,19 +1,41 @@
-<!doctype html><html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Page Not Found • Teach Arcade</title>
-<link rel="stylesheet" href="/assets/style.css">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet"></head>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Page Not Found — Teach Arcade</title>
+  <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
+  <link rel="stylesheet" href="/assets/styles.css?v=1" />
+  <style>
+    body { display:flex; min-height:100vh; flex-direction:column; }
+    main { flex:1; display:flex; align-items:center; justify-content:center; padding:24px; }
+    .box { text-align:center; max-width:560px; padding:28px; border:1px solid #e2e8f0; border-radius:12px; background:#fff; }
+    .box h1 { font:700 28px/1.2 Poppins, sans-serif; margin:0 0 10px; }
+    .box p { font:400 16px/1.6 Nunito, sans-serif; color:#475569; margin:0 0 18px; }
+    .btn { display:inline-block; padding:10px 14px; border-radius:10px; text-decoration:none; font:700 14px/1 Poppins, sans-serif; border:1px solid #2563eb; color:#fff; background:#2563eb; }
+  </style>
+</head>
 <body>
-<header>
-  <div style="display:flex;gap:10px;align-items:center"><div class="logo">TA</div><div class="brand">Teach Arcade</div></div>
-  <nav><a href="/">Home</a><a href="/subjects/index.html">Subjects</a><a href="/submit.html">Submit</a><a href="/about.html">About</a></nav>
-</header>
-<main class="container">
+  <!-- Header mount -->
+  <div id="site-header"></div>
+  <script src="/assets/scripts/nav.js?v=3" defer></script>
 
+  <main>
+    <div class="box">
+      <img src="/assets/images/teach-arcade-logo.png" alt="Teach Arcade" style="height:60px;width:auto;margin-bottom:10px;">
+      <h1>We couldn’t find that page</h1>
+      <p>The link may be broken, or the page might have moved. Try going back to the homepage or browsing Subjects.</p>
+      <p>
+        <a class="btn" href="/">Go to Homepage</a>
+        <a class="btn" style="background:#fff;color:#1f2937;border-color:#cbd5e1;margin-left:8px" href="/subjects/index.html">Browse Subjects</a>
+      </p>
+    </div>
+  </main>
 
-<h1>Page Not Found</h1>
-<p><a class="cta" href="/">Go Home</a> or <a class="cta" href="/subjects/index.html">Browse Subjects</a></p>
-
-</main>
-<footer>© <script>document.write(new Date().getFullYear())</script> Teach Arcade</footer>
-</body></html>
+  <footer>
+    © <script>document.write(new Date().getFullYear())</script> Teach Arcade •
+    <a href="/privacy.html">Privacy</a> •
+    <a href="/terms.html">Terms</a>
+  </footer>
+</body>
+</html>
