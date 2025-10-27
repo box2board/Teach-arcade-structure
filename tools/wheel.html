@@ -12,13 +12,43 @@
   <style>
     .hero { text-align:center; padding:40px 0 10px; }
     .hero h1 { font:700 30px/1.2 Poppins, sans-serif; margin:0 0 10px; }
+
     textarea { width:100%; height:180px; border:1px solid #cbd5e1; border-radius:8px; padding:10px; font:400 15px Nunito,sans-serif; }
-    .controls { margin-top:10px; display:flex; flex-wrap:wrap; gap:10px; }
-    button { font:600 14px Poppins,sans-serif; padding:8px 14px; border:none; border-radius:8px; cursor:pointer; }
-    button.primary { background:#2563eb; color:#fff; }
-    button.danger { background:#ef4444; color:#fff; }
-    /* Force a real on-screen size so it’s not collapsed by any global styles */
-    #wheelCanvas { display:block; margin:20px auto; width:400px; height:400px; }
+    .controls { margin-top:10px; display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+    .btn { font:600 14px Poppins,sans-serif; padding:8px 14px; border:none; border-radius:8px; cursor:pointer; }
+    .btn.primary { background:#2563eb; color:#fff; }
+    .btn.danger { background:#ef4444; color:#fff; }
+    .btn.secondary { background:#e2e8f0; color:#0f172a; }
+
+    .opts { margin-top:8px; display:flex; gap:16px; align-items:center; font:600 14px Nunito,sans-serif; color:#334155; }
+
+    .canvas-wrap {
+      margin:20px auto;
+      width:420px; max-width:100%;
+      min-height:420px;
+      border:2px dashed #cbd5e1;
+      background:#f8fafc;
+      display:flex; align-items:center; justify-content:center;
+      border-radius:12px;
+      position:relative;
+      overflow:visible;
+    }
+    /* confetti container overlays the wheel area */
+    .confetti { position:absolute; inset:0; pointer-events:none; overflow:visible; }
+
+    #wheelCanvas { width:400px; height:400px; }
+    #status { text-align:center; font:600 12px/1 Nunito,sans-serif; color:#64748b; margin-top:8px; }
+    #result { text-align:center; font:700 20px Poppins,sans-serif; color:#2563eb; margin:10px 0; }
+
+    /* Tiny confetti animation */
+    @keyframes fall {
+      0% { transform:translateY(-20px) rotate(0deg); opacity:1; }
+      100% { transform:translateY(420px) rotate(600deg); opacity:0; }
+    }
+    .confetti > span {
+      position:absolute; width:8px; height:12px; border-radius:2px;
+      animation: fall 1200ms ease-out forwards;
+    }
   </style>
 </head>
 <body>
@@ -38,15 +68,28 @@
     <section>
       <label for="items"><strong>Your List</strong></label>
       <textarea id="items" placeholder="Type one item per line (names, choices, etc.)"></textarea>
+
       <div class="controls">
-        <button id="spin" class="primary">Spin</button>
-        <button id="clear" class="danger">Clear</button>
-        <button id="shuffle">Shuffle</button>
+        <button id="spin" class="btn primary">Spin</button>
+        <button id="clear" class="btn danger">Clear</button>
+        <button id="shuffle" class="btn secondary">Shuffle</button>
+        <button id="save" class="btn secondary">Save</button>
+        <button id="restore" class="btn secondary">Restore</button>
+        <button id="share" class="btn secondary">Copy Share Link</button>
+      </div>
+
+      <div class="opts">
+        <label><input type="checkbox" id="removeAfter" /> Remove winner after spin</label>
+        <label><input type="checkbox" id="confetti" checked /> Celebrate with confetti</label>
       </div>
     </section>
 
-    <canvas id="wheelCanvas" width="400" height="400" aria-label="Random choice wheel"></canvas>
-    <p id="result" style="text-align:center;font:700 20px Poppins,sans-serif;color:#2563eb;"></p>
+    <div class="canvas-wrap">
+      <canvas id="wheelCanvas" width="400" height="400" aria-label="Random choice wheel"></canvas>
+      <div class="confetti" id="confettiLayer"></div>
+    </div>
+    <p id="status">Status: Loading…</p>
+    <p id="result"></p>
   </main>
 
   <footer>
@@ -54,7 +97,6 @@
     <a href="/privacy.html">Privacy</a> • <a href="/terms.html">Terms</a>
   </footer>
 
-  <!-- IMPORTANT: external script (CSP-friendly) -->
-  <script src="/assets/scripts/wheel.js?v=1" defer></script>
+  <script src="/assets/scripts/wheel.js?v=3" defer></script>
 </body>
 </html>
