@@ -1,197 +1,263 @@
 (() => {
-  // ----- Grab elements (adjust IDs here if your HTML differs) -----
-  const $ = sel => document.querySelector(sel);
-  const namesEl       = $('#names');
-  const modeEl        = $('#mode');        // values: 'size' or 'count'
-  const groupSizeEl   = $('#groupSize');   // number when mode = size
-  const groupCountEl  = $('#groupCount');  // number when mode = count
-  const balancingEl   = $('#balancing');   // values: 'even' (default) | 'by_order'
-  const shuffleFirstEl= $('#shuffleFirst');
-  const avoidPriorEl  = $('#avoidPrior');
-  const makeBtn       = $('#makeBtn');
-  const clearBtn      = $('#clearBtn');
-  const outEl         = $('#output');
-  const statusEl      = $('#status');
+  // ----- DOM -----
+  const namesEl = document.getElementById('names');
+  const modeEl = document.getElementById('mode');
+  const sizeField = document.getElementById('sizeField');
+  const countField = document.getElementById('countField');
+  const groupSizeEl = document.getElementById('groupSize');
+  const groupCountEl = document.getElementById('groupCount');
+  const balanceEl = document.getElementById('balance');
+  const shuffleFirstEl = document.getElementById('shuffleFirst');
+  const avoidRepeatsEl = document.getElementById('avoidRepeats');
+  const makeBtn = document.getElementById('make');
+  const clearBtn = document.getElementById('clear');
+  const saveBtn = document.getElementById('save');
+  const restoreBtn = document.getElementById('restore');
+  const shareBtn = document.getElementById('share');
+  const printBtn = document.getElementById('print');
+  const recordPairsBtn = document.getElementById('recordPairs');
+  const resetHistoryBtn = document.getElementById('resetHistory');
+  const groupsEl = document.getElementById('groups');
+  const summaryEl = document.getElementById('summary');
+  const statusEl = document.getElementById('status');
 
-  if (!makeBtn) {
-    // If IDs don’t match, bail quietly so the page still loads.
-    console.warn('[Group Maker] Button not found. Check element IDs.');
-    return;
-  }
+  const STORAGE_KEY = 'ta-group-maker-v1';
+  const HISTORY_KEY = 'ta-group-pairs-history';
 
-  // ----- Simple local storage for “avoid prior pairings” -----
-  const STORAGE_KEY = 'ta-groupmaker-priorPairs-v1';
-  function loadPrior() {
-    try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); }
-    catch { return []; }
-  }
-  function savePrior(pairs) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(pairs));
-  }
+  const setStatus = m => statusEl.textContent = 'Status: ' + m;
 
-  // Utility: canonical pair key (A,B) => 'A|B' (sorted)
-  function pairKey(a,b) {
-    const [x,y] = [String(a).trim(), String(b).trim()].sort();
-    return `${x}|${y}`;
-  }
+  // ----- Utils -----
+  const cleanList = (txt) =>
+    txt.split('\n').map(s => s.trim()).filter(Boolean);
 
-  // ----- Helpers -----
-  function setStatus(msg) { if (statusEl) statusEl.textContent = `Status: ${msg}`; }
-
-  function parseNames() {
-    return (namesEl.value || '')
-      .split('\n')
-      .map(s => s.trim())
-      .filter(Boolean);
-  }
-
-  function shuffle(arr) {
+  const shuffle = (arr) => {
     for (let i = arr.length - 1; i > 0; i--) {
-      const j = (Math.random() * (i + 1)) | 0;
+      const j = Math.floor(Math.random() * (i + 1));
       [arr[i], arr[j]] = [arr[j], arr[i]];
     }
     return arr;
-  }
+  };
 
-  // Try to spread “prior pairs” apart by reshuffling a few times
-  function deconflict(names, priorPairsSet) {
-    if (!priorPairsSet.size) return names;
-    let best = names.slice();
-    let bestScore = score(best);
-    for (let i = 0; i < 100; i++) {
-      const cand = shuffle(names.slice());
-      const s = score(cand);
-      if (s < bestScore) { best = cand; bestScore = s; }
-      if (bestScore === 0) break;
+  // Pair key (order independent)
+  const pairKey = (a,b) => {
+    const [x,y] = [a,b].sort((m,n)=>m.localeCompare(n));
+    return x + '||' + y;
+  };
+
+  const getHistory = () => {
+    try { return new Set(JSON.parse(localStorage.getItem(HISTORY_KEY) || '[]')); }
+    catch { return new Set(); }
+  };
+  const addPairsToHistory = (groups) => {
+    const hist = getHistory();
+    groups.forEach(g => {
+      for (let i=0;i<g.length;i++) for (let j=i+1;j<g.length;j++) {
+        hist.add(pairKey(g[i], g[j]));
+      }
+    });
+    localStorage.setItem(HISTORY_KEY, JSON.stringify([...hist]));
+  };
+
+  // Cost function: count of repeated pairs
+  const groupingCost = (groups, histSet) => {
+    let cost = 0;
+    groups.forEach(g => {
+      for (let i=0;i<g.length;i++) for (let j=i+1;j<g.length;j++) {
+        if (histSet.has(pairKey(g[i], g[j]))) cost++;
+      }
+    });
+    return cost;
+  };
+
+  // Greedy-ish improve: try random swaps to lower cost
+  const reduceRepeats = (groups, histSet, tries = 800) => {
+    if (!histSet.size) return groups;
+    const flat = groups.flat();
+    // Map name -> [groupIndex, indexInGroup]
+    const loc = new Map();
+    groups.forEach((g, gi) => g.forEach((n, gj) => loc.set(n, [gi, gj])));
+
+    let best = groups.map(g => g.slice());
+    let bestCost = groupingCost(best, histSet);
+
+    for (let t=0; t<tries; t++){
+      const a = flat[Math.floor(Math.random()*flat.length)];
+      const b = flat[Math.floor(Math.random()*flat.length)];
+      if (a === b) continue;
+
+      const [ga, ia] = loc.get(a);
+      const [gb, ib] = loc.get(b);
+      if (ga === gb) continue;
+
+      // swap
+      [best[ga][ia], best[gb][ib]] = [best[gb][ib], best[ga][ia]];
+      const c = groupingCost(best, histSet);
+
+      if (c <= bestCost) {
+        // keep
+        bestCost = c;
+        loc.set(a, [gb, ib]);
+        loc.set(b, [ga, ia]);
+      } else {
+        // undo
+        [best[ga][ia], best[gb][ib]] = [best[gb][ib], best[ga][ia]];
+      }
     }
     return best;
+  };
 
-    function score(list) {
-      // Score counts adjacent prior pairs (rough heuristic before grouping)
-      let bad = 0;
-      for (let i = 0; i < list.length - 1; i++) {
-        if (priorPairsSet.has(pairKey(list[i], list[i+1]))) bad++;
+  function buildGroups(list){
+    let names = list.slice();
+    if (shuffleFirstEl.checked) shuffle(names);
+
+    let groups = [];
+    if (modeEl.value === 'size') {
+      const size = Math.max(2, parseInt(groupSizeEl.value || '2', 10));
+      const count = Math.ceil(names.length / size);
+      if (balanceEl.value === 'roundrobin') {
+        groups = Array.from({length: count}, () => []);
+        let i = 0;
+        names.forEach(n => { groups[i % count].push(n); i++; });
+      } else if (balanceEl.value === 'pure') {
+        groups = [];
+        while (names.length) groups.push(names.splice(0, size));
+      } else { // chunk
+        groups = [];
+        for (let i=0; i<names.length; i+=size) groups.push(names.slice(i, i+size));
       }
-      return bad;
+    } else {
+      const count = Math.max(2, parseInt(groupCountEl.value || '2', 10));
+      groups = Array.from({length: count}, () => []);
+      if (balanceEl.value === 'roundrobin') {
+        let i = 0;
+        names.forEach(n => { groups[i % count].push(n); i++; });
+      } else if (balanceEl.value === 'pure') {
+        names.forEach(n => groups[Math.floor(Math.random()*count)].push(n));
+      } else { // chunk
+        const size = Math.ceil(names.length / count);
+        for (let i=0;i<names.length;i+=size) groups[i/size]?.push(...names.slice(i, i+size));
+      }
     }
+
+    if (avoidRepeatsEl.checked) {
+      groups = reduceRepeats(groups, getHistory());
+    }
+    return groups;
   }
 
-  function renderGroups(groups) {
-    const frag = document.createDocumentFragment();
-
-    groups.forEach((g, idx) => {
+  function renderGroups(groups){
+    groupsEl.innerHTML = '';
+    groups.forEach((g, i) => {
       const card = document.createElement('div');
-      card.className = 'card';
-      const h = document.createElement('h3');
-      h.textContent = `Group ${idx + 1}`;
-      const ul = document.createElement('ul');
-      ul.style.margin = '8px 0 0 18px';
-      g.forEach(n => {
-        const li = document.createElement('li');
-        li.textContent = n;
-        ul.appendChild(li);
-      });
-      card.appendChild(h);
-      card.appendChild(ul);
-      frag.appendChild(card);
+      card.className = 'group';
+      card.innerHTML = `<h3>Group ${i+1}<span class="pill">${g.length}</span></h3>` +
+                       `<ol class="small" style="margin:0 0 4px 18px;">${g.map(n=>`<li>${n}</li>`).join('')}</ol>`;
+      groupsEl.appendChild(card);
     });
-
-    outEl.innerHTML = '';
-    outEl.appendChild(frag);
+    const total = groups.reduce((a,g)=>a+g.length,0);
+    summaryEl.textContent = `${groups.length} group(s), ${total} student(s)`;
   }
 
-  function makeGroups() {
-    let names = parseNames();
-    if (!names.length) { alert('Add at least one name.'); return; }
+  // ----- Events -----
+  modeEl.addEventListener('change', () => {
+    const bySize = modeEl.value === 'size';
+    sizeField.style.display = bySize ? '' : 'none';
+    countField.style.display = bySize ? 'none' : '';
+  });
 
-    // Shuffle first if requested
-    if (shuffleFirstEl?.checked) shuffle(names);
-
-    // If we’re avoiding prior pairings, try to move likely pairs apart a bit
-    const priorPairs = new Set(loadPrior());
-    if (avoidPriorEl?.checked) {
-      names = deconflict(names, priorPairs);
-    }
-
-    // Determine target group size or count
-    const mode = (modeEl?.value || 'size').toLowerCase();
-    let groupSize, groupCount;
-
-    if (mode === 'count') {
-      groupCount = Math.max(1, parseInt(groupCountEl?.value || '2', 10));
-      groupSize  = Math.ceil(names.length / groupCount);
-    } else {
-      groupSize  = Math.max(1, parseInt(groupSizeEl?.value || '2', 10));
-      groupCount = Math.ceil(names.length / groupSize);
-    }
-
-    // Balance mode (you can expand later; we keep “even” as default)
-    const balancing = (balancingEl?.value || 'even').toLowerCase();
-
-    const groups = Array.from({ length: groupCount }, () => []);
-    if (balancing === 'by_order') {
-      // Fill groups top-to-bottom before moving to next group
-      let gi = 0;
-      names.forEach(n => {
-        groups[gi].push(n);
-        gi = (gi + 1) % groupCount;
-      });
-    } else {
-      // Even (round-robin) — spreads stronger randomness
-      let gi = 0, direction = 1;
-      names.forEach(n => {
-        groups[gi].push(n);
-        gi += direction;
-        if (gi === groupCount - 1 || gi === 0) direction *= -1; // zig-zag to distribute
-      });
-    }
-
-    // Trim to requested group size if we’re in size-mode (keep overflow fairly)
-    if ((mode !== 'count') && groupSize > 0) {
-      let i = 0;
-      while (true) {
-        const totalOver = groups.reduce((acc, g) => acc + Math.max(0, g.length - groupSize), 0);
-        if (!totalOver) break;
-        const g = groups[i % groups.length];
-        if (g.length > groupSize) {
-          // find the shortest group to move into
-          const shortestIdx = groups.reduce((minI, g2, j) => g2.length < groups[minI].length ? j : minI, 0);
-          const moved = g.pop();
-          groups[shortestIdx].push(moved);
-        }
-        i++;
-        if (i > 5000) break; // safety
-      }
-    }
-
+  makeBtn.addEventListener('click', () => {
+    const list = cleanList(namesEl.value);
+    if (list.length < 2) { setStatus('Need at least 2 names'); return; }
+    const groups = buildGroups(list);
     renderGroups(groups);
-    setStatus('Done');
+    setStatus('Groups created');
+  });
 
-    // Record today’s pairings for “avoid prior pairings”
-    if (avoidPriorEl?.checked) {
-      const newPairs = new Set(priorPairs);
-      groups.forEach(g => {
-        for (let i = 0; i < g.length; i++) {
-          for (let j = i + 1; j < g.length; j++) {
-            newPairs.add(pairKey(g[i], g[j]));
-          }
-        }
-      });
-      savePrior(Array.from(newPairs));
-    }
-  }
-
-  function clearAll() {
+  clearBtn.addEventListener('click', () => {
     namesEl.value = '';
-    outEl.innerHTML = '';
+    groupsEl.innerHTML = '';
+    summaryEl.textContent = '';
     setStatus('Cleared');
-    setTimeout(() => setStatus('Ready'), 800);
-  }
+  });
 
-  // ----- Wire up events -----
-  makeBtn.type = 'button'; // ensure it doesn't submit a form
-  makeBtn.addEventListener('click', makeGroups);
-  clearBtn?.addEventListener('click', clearAll);
+  saveBtn.addEventListener('click', () => {
+    const data = {
+      names: namesEl.value,
+      mode: modeEl.value,
+      size: groupSizeEl.value,
+      count: groupCountEl.value,
+      balance: balanceEl.value,
+      shuffle: !!shuffleFirstEl.checked,
+      avoid: !!avoidRepeatsEl.checked
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    setStatus('Saved');
+  });
 
-  setStatus('Ready');
+  restoreBtn.addEventListener('click', () => {
+    try{
+      const d = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+      if (!d || !d.names) return setStatus('Nothing saved');
+      namesEl.value = d.names || '';
+      modeEl.value = d.mode || 'size';
+      groupSizeEl.value = d.size || 3;
+      groupCountEl.value = d.count || 4;
+      balanceEl.value = d.balance || 'roundrobin';
+      shuffleFirstEl.checked = !!d.shuffle;
+      avoidRepeatsEl.checked = !!d.avoid;
+      modeEl.dispatchEvent(new Event('change'));
+      setStatus('Restored');
+    } catch { setStatus('Restore failed'); }
+  });
+
+  shareBtn.addEventListener('click', async () => {
+    const p = new URLSearchParams();
+    if (namesEl.value.trim()) p.set('names', namesEl.value.split('\n').map(encodeURIComponent).join('|'));
+    p.set('mode', modeEl.value);
+    p.set('size', groupSizeEl.value);
+    p.set('count', groupCountEl.value);
+    p.set('balance', balanceEl.value);
+    if (shuffleFirstEl.checked) p.set('shuffle','1');
+    if (avoidRepeatsEl.checked) p.set('avoid','1');
+    const url = `${location.origin}${location.pathname}?${p.toString()}`;
+    try { await navigator.clipboard.writeText(url); setStatus('Share link copied'); }
+    catch { prompt('Copy this link:', url); }
+  });
+
+  printBtn.addEventListener('click', () => window.print());
+
+  recordPairsBtn.addEventListener('click', () => {
+    // Read current DOM groups to record
+    const cards = [...groupsEl.querySelectorAll('.group ol')];
+    if (!cards.length) return setStatus('No groups to record');
+    const groups = cards.map(ol => [...ol.querySelectorAll('li')].map(li => li.textContent.trim()));
+    addPairsToHistory(groups);
+    setStatus('Pairings recorded');
+  });
+
+  resetHistoryBtn.addEventListener('click', () => {
+    if (confirm('Clear the stored pairing history on this device?')) {
+      localStorage.removeItem(HISTORY_KEY);
+      setStatus('Pairing history cleared');
+    }
+  });
+
+  // ----- Init from query or defaults -----
+  (function init(){
+    const q = new URLSearchParams(location.search);
+    const qNames = q.get('names');
+    if (qNames) {
+      namesEl.value = qNames.split('|').map(decodeURIComponent).join('\n');
+      modeEl.value = q.get('mode') || 'size';
+      groupSizeEl.value = q.get('size') || 3;
+      groupCountEl.value = q.get('count') || 4;
+      balanceEl.value = q.get('balance') || 'roundrobin';
+      shuffleFirstEl.checked = q.get('shuffle') === '1';
+      avoidRepeatsEl.checked = q.get('avoid') === '1';
+    } else if (!namesEl.value.trim()) {
+      namesEl.value = ['Ash','Jaime','Teddy','Ami','Dave','Charlie','Gary','Naomi'].join('\n');
+    }
+    modeEl.dispatchEvent(new Event('change'));
+    setStatus('Ready');
+  })();
 })();
