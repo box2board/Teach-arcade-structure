@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Teacher Tools | Teach Arcade</title>
+
+  <!-- Fonts & Styles -->
+  <link rel="stylesheet" href="/assets/styles.css?v=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
+
+  <!-- SEO -->
+  <meta name="description" content="Interactive teacher tools: random name picker, spinner wheel, group generator, quiz maker, and more — all free at Teach Arcade." />
+  <link rel="canonical" href="https://teacharcade.com/teacher-tools.html" />
+
+  <meta property="og:title" content="Teacher Tools | Teach Arcade" />
+  <meta property="og:description" content="Free interactive classroom tools — random pickers, generators, and organizers for teachers." />
+  <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+
+  <style>
+    .hero { text-align:center; padding:60px 0 10px; }
+    .hero h1 { font:700 34px/1.15 Poppins, sans-serif; margin:0 0 10px; }
+    .hero p { font:400 18px/1.5 Nunito, sans-serif; color:#475569; margin:0 auto; max-width:720px; }
+
+    .tools-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:24px;
+      margin:30px 0 40px;
+    }
+    .tool-tile {
+      display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+      background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:20px;min-height:160px;
+      text-decoration:none;color:#1e293b;box-shadow:0 2px 4px rgba(0,0,0,0.05);
+      transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease;
+    }
+    .tool-tile:hover{transform:translateY(-3px);box-shadow:0 6px 14px rgba(0,0,0,0.08);border-color:#cbd5e1;}
+    .tool-emoji{font-size:40px;margin-bottom:10px;}
+    .tool-title{font:700 18px/1.2 Poppins, sans-serif;margin:0 0 6px;}
+    .tool-desc{font:400 14px/1.5 Nunito,sans-serif;color:#475569;margin:0;}
+  </style>
+</head>
+
+<body>
+  <!-- Global Header -->
+  <div id="site-header"></div>
+  <script src="/assets/scripts/nav.js" defer></script>
+
+  <main class="container">
+    <nav class="breadcrumbs">
+      <a href="/">Home</a> › Teacher Tools
+    </nav>
+
+    <section class="hero">
+      <h1>🛠️ Teacher Tools</h1>
+      <p>Free, classroom-friendly utilities to make teaching easier — from random pickers to interactive generators. No logins, no ads, 100% free.</p>
+    </section>
+
+    <section>
+      <div class="tools-grid">
+        <!-- 1. Spin the Wheel -->
+        <a href="/tools/wheel.html" class="tool-tile" aria-label="Spin the Wheel">
+          <div class="tool-emoji">🎯</div>
+          <h3 class="tool-title">Spin the Wheel</h3>
+          <p class="tool-desc">Enter names or items, spin, and pick one at random.</p>
+        </a>
+
+        <!-- 2. Random Group Generator (coming soon) -->
+        <a href="#" class="tool-tile" aria-label="Random Group Generator">
+          <div class="tool-emoji">👥</div>
+          <h3 class="tool-title">Random Group Generator</h3>
+          <p class="tool-desc">Split your class into random groups in one click.</p>
+        </a>
+
+        <!-- 3. Coin Flip (coming soon) -->
+        <a href="#" class="tool-tile" aria-label="Coin Flip">
+          <div class="tool-emoji">🪙</div>
+          <h3 class="tool-title">Coin Flip</h3>
+          <p class="tool-desc">Simple yes/no or heads/tails randomizer.</p>
+        </a>
+
+        <!-- 4. Timer (coming soon) -->
+        <a href="#" class="tool-tile" aria-label="Countdown Timer">
+          <div class="tool-emoji">⏰</div>
+          <h3 class="tool-title">Countdown Timer</h3>
+          <p class="tool-desc">Set a timer for activities or transitions.</p>
+        </a>
+
+        <!-- 5. Dice Roller (coming soon) -->
+        <a href="#" class="tool-tile" aria-label="Dice Roller">
+          <div class="tool-emoji">🎲</div>
+          <h3 class="tool-title">Dice Roller</h3>
+          <p class="tool-desc">Roll one or more dice instantly on screen.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <script>document.write(new Date().getFullYear())</script> Teach Arcade •
+    <a href="/privacy.html">Privacy</a> • <a href="/terms.html">Terms</a>
+  </footer>
+</body>
+</html>
