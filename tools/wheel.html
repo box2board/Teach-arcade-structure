@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Spin the Wheel | Teacher Tools | Teach Arcade</title>
+
+  <!-- Fonts & styles already used on your site -->
+  <link rel="stylesheet" href="/assets/styles.css?v=1"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png"/>
+
+  <meta name="description" content="A customizable random picker wheel for classrooms. Type names or choices, spin, and get a fair random result."/>
+  <link rel="canonical" href="https://teacharcade.com/tools/wheel.html"/>
+
+  <style>
+    /* Page-local styling (kept small) */
+    .tool-wrap { display:grid; gap:16px; grid-template-columns: 360px 1fr; align-items:start; }
+    @media (max-width: 960px){ .tool-wrap{ grid-template-columns: 1fr; } }
+
+    .pane {
+      background:#fff; border:1px solid #e2e8f0; border-radius:12px; padding:16px;
+      box-shadow:0 2px 4px rgba(0,0,0,.05);
+    }
+    .pane h2 { margin:0 0 10px; font:700 18px/1.2 Poppins, sans-serif; }
+    .pane label { font:600 14px/1.2 Nunito, sans-serif; color:#334155; }
+    .pane textarea {
+      width:100%; min-height:220px; border:1px solid #cbd5e1; border-radius:10px; padding:10px;
+      font:400 14px/1.5 Nunito, sans-serif; resize:vertical;
+    }
+    .row { display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+    .btn {
+      display:inline-block; padding:10px 12px; border-radius:10px; border:1px solid #cbd5e1;
+      background:#fff; color:#0f172a; font:700 14px/1 Poppins, sans-serif; cursor:pointer;
+    }
+    .btn.primary { border-color:#2563eb; background:#2563eb; color:#fff; }
+    .btn.warn { border-color:#ef4444; color:#ef4444; background:#fff; }
+    .btn:disabled { opacity:.5; cursor:not-allowed; }
+
+    .opts { display:grid; gap:8px; margin-top:8px; }
+    .opts .row { gap:8px; }
+
+    .canvas-wrap {
+      position:relative; display:grid; place-items:center;
+      background:#fff; border:1px solid #e2e8f0; border-radius:12px; padding:16px;
+      box-shadow:0 2px 4px rgba(0,0,0,.05);
+    }
+    canvas { max-width:100%; height:auto; display:block; }
+    .pointer {
+      position:absolute; top:8px; inset-inline:0; margin:auto;
+      width:0; height:0; border-left:14px solid transparent; border-right:14px solid transparent;
+      border-bottom:24px solid #ef4444; filter: drop-shadow(0 2px 2px rgba(0,0,0,.15));
+    }
+    .winner-bar {
+      text-align:center; margin-top:10px; font:700 18px/1.2 Poppins, sans-serif; color:#065f46;
+    }
+    .subtle { color:#64748b; font:600 13px/1.4 Nunito, sans-serif; }
+  </style>
+</head>
+<body>
+  <!-- Global Header -->
+  <div id="site-header"></div>
+  <script src="/assets/scripts/nav.js" defer></script>
+
+  <main class="container">
+    <nav class="breadcrumbs">
+      <a href="/">Home</a> › <a href="/teacher-tools.html">Teacher Tools</a> › Spin the Wheel
+    </nav>
+
+    <h1>🛠️ Spin the Wheel (Random Picker)</h1>
+    <p class="subtle">Type one item per line (names, numbers, choices). Click <strong>Spin</strong> to pick one fairly at random. Optionally remove winners so the same item doesn’t appear twice.</p>
+
+    <div class="tool-wrap" role="region" aria-label="Spin the Wheel Tool">
+      <!-- Left: Inputs & options -->
+      <section class="pane" aria-labelledby="list-title">
+        <h2 id="list-title">Your List</h2>
+        <label for="listInput" class="sr-only">Items (one per line)</label>
+        <textarea id="listInput" placeholder="Type or paste items here — one per line"></textarea>
+
+        <div class="row" style="margin-top:10px;">
+          <button id="btnShuffle" class="btn" type="button" title="Randomize the order">Shuffle</button>
+          <button id="btnClear" class="btn warn" type="button" title="Clear all items">Clear</button>
+          <button id="btnExample" class="btn" type="button" title="Load an example list">Load Example</button>
+        </div>
+
+        <div class="opts">
+          <label class="row">
+            <input type="checkbox" id="optRemove" />
+            <span>Remove winner after spin</span>
+          </label>
+          <label class="row">
+            <input type="checkbox" id="optConfetti" />
+            <span>Celebrate with confetti</span>
+          </label>
+        </div>
+
+        <div class="row" style="margin-top:10px;">
+          <button id="btnSave" class="btn" type="button" title="Save list to this browser">Save</button>
+          <button id="btnRestore" class="btn" type="button" title="Restore saved list">Restore</button>
+          <button id="btnCopyURL" class="btn" type="button" title="Shareable link with your current list">Copy Share Link</button>
+        </div>
+        <p class="subtle" style="margin:8px 0 0;">Your list & options are stored locally in this browser (no server needed).</p>
+      </section>
+
+      <!-- Right: Wheel & controls -->
+      <section class="canvas-wrap" aria-live="polite">
+        <div class="pointer" aria-hidden="true"></div>
+        <canvas id="wheel" width="600" height="600" aria-label="Random picker wheel"></canvas>
+
+        <div class="row" style="margin-top:12px;">
+          <button id="btnSpin" class="btn primary" type="button">🎯 Spin</button>
+          <button id="btnSpinFast" class="btn" type="button" title="Shorter spin">Quick Spin</button>
+          <button id="btnReset" class="btn" type="button" title="Reset rotation">Reset</button>
+        </div>
+
+        <div id="winnerBar" class="winner-bar" role="status" aria-live="assertive"></div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    © <script>document.write(new Date().getFullYear())</script> Teach Arcade •
+    <a href="/privacy.html">Privacy</a> • <a href="/terms.html">Terms</a>
+  </footer>
+
+  <script>
+  (function(){
+    // ---------- Local state ----------
+    const el = {
+      ta: document.getElementById('listInput'),
+      optRemove: document.getElementById('optRemove'),
+      optConfetti: document.getElementById('optConfetti'),
+      btnShuffle: document.getElementById('btnShuffle'),
+      btnClear: document.getElementById('btnClear'),
+      btnExample: document.getElementById('btnExample'),
+      btnSave: document.getElementById('btnSave'),
+      btnRestore: document.getElementById('btnRestore'),
+      btnCopyURL: document.getElementById('btnCopyURL'),
+      btnSpin: document.getElementById('btnSpin'),
+      btnSpinFast: document.getElementById('btnSpinFast'),
+      btnReset: document.getElementById('btnReset'),
+      wheel: document.getElementById('wheel'),
+      winnerBar: document.getElementById('winnerBar')
+    };
+
+    const ctx = el.wheel.getContext('2d');
+    let items = [];
+    let rotation = 0;           // radians
+    let spinning = false;
+    const STORAGE_KEY = 'ta_wheel_items_v1';
+    const STORAGE_OPTS = 'ta_wheel_opts_v1';
+
+    // ---------- Helpers ----------
+    function parseItems(text){
+      return text
+        .split(/\r?\n/)
+        .map(s => s.trim())
+        .filter(s => s.length > 0);
+    }
+    function writeItems(list){
+      el.ta.value = list.join('\n');
+    }
+    function rand(min, max){ return Math.random() * (max - min) + min; }
+    function shuffle(list){
+      const a = list.slice();
+      for (let i = a.length - 1; i > 0; i--){
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    }
+    function save(){
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+      localStorage.setItem(STORAGE_OPTS, JSON.stringify({
+        remove: !!el.optRemove.checked,
+        confetti: !!el.optConfetti.checked
+      }));
+    }
+    function restore(){
+      try{
+        const raw = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+        const opts = JSON.parse(localStorage.getItem(STORAGE_OPTS) || '{}');
+        if (Array.isArray(raw) && raw.length){
+          items = raw;
+          writeItems(items);
+        }
+        if (opts && typeof opts === 'object'){
+          el.optRemove.checked = !!opts.remove;
+          el.optConfetti.checked = !!opts.confetti;
+        }
+      }catch(e){}
+      draw();
+    }
+    function applyFromTextarea(){
+      items = parseItems(el.ta.value);
+      draw();
+    }
+    function encodeShareURL(){
+      const data = encodeURIComponent(JSON.stringify({
+        i: items, r: !!el.optRemove.checked, c: !!el.optConfetti.checked
+      }));
+      return location.origin + location.pathname + '#data=' + data;
+    }
+    function tryLoadFromHash(){
+      const m = location.hash.match(/#data=([^&]+)/);
+      if (!m) return false;
+      try{
+        const obj = JSON.parse(decodeURIComponent(m[1]));
+        if (Array.isArray(obj.i)){
+          items = obj.i.filter(s => typeof s === 'string' && s.trim().length);
+          el.optRemove.checked = !!obj.r;
+          el.optConfetti.checked = !!obj.c;
+          writeItems(items);
+          draw();
+          return true;
+        }
+      }catch(e){}
+      return false;
+    }
+
+    // ---------- Drawing ----------
+    function sliceColor(i, n){
+      // Nice rotating palette
+      const hue = (360 * i / Math.max(1, n)) | 0;
+      return `hsl(${hue}, 75%, 60%)`;
+    }
+    function draw(){
+      const w = el.wheel.width, h = el.wheel.height;
+      const cx = w / 2, cy = h / 2, r = Math.min(cx, cy) - 10;
+      ctx.clearRect(0,0,w,h);
+
+      if (!items.length){
+        // Empty state
+        ctx.fillStyle = '#e2e8f0';
+        ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#475569';
+        ctx.font = '600 16px Nunito, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('Add items to spin', cx, cy);
+        return;
+      }
+
+      const n = items.length;
+      const angle = 2 * Math.PI / n;
+
+      // Draw slices
+      for (let i = 0; i < n; i++){
+        const start = rotation + i * angle;
+        const end = start + angle;
+
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.arc(cx, cy, r, start, end);
+        ctx.closePath();
+        ctx.fillStyle = sliceColor(i, n);
+        ctx.fill();
+        ctx.strokeStyle = '#ffffff';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        // Text
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.rotate(start + angle / 2);
+        ctx.textAlign = 'right';
+        ctx.fillStyle = '#0f172a';
+        ctx.font = '600 14px Nunito, sans-serif';
+        const label = items[i];
+        wrapWheelText(ctx, label, r - 16, 140);
+        ctx.restore();
+      }
+
+      // Center circle
+      ctx.beginPath();
+      ctx.arc(cx, cy, 42, 0, Math.PI * 2);
+      ctx.fillStyle = '#0ea5e9';
+      ctx.fill();
+      ctx.fillStyle = '#ffffff';
+      ctx.font = '700 14px Poppins, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('SPIN', cx, cy + 5);
+    }
+
+    function wrapWheelText(ctx, text, maxWidth, maxPx){
+      // Truncate long labels
+      let t = text;
+      if (ctx.measureText(t).width > maxPx){
+        while (t.length && ctx.measureText(t + '…').width > maxPx) t = t.slice(0, -1);
+        t += '…';
+      }
+      ctx.fillText(t, maxWidth, 6);
+    }
+
+    // Get winning index based on pointer at top (rotation 0 points up)
+    function winnerIndex(){
+      if (!items.length) return -1;
+      const n = items.length;
+      const angle = 2 * Math.PI / n;
+      let a = (2 * Math.PI - (rotation % (2 * Math.PI))) % (2 * Math.PI); // effective pointer angle
+      // pointer at 12 o’clock: index is floor(a / angle)
+      let idx = Math.floor(a / angle);
+      if (idx >= n) idx = n - 1;
+      return idx;
+    }
+
+    function animateSpin({minTurns = 3, maxTurns = 6, duration = 3500} = {}){
+      if (spinning || items.length < 2) return;
+      spinning = true;
+      el.winnerBar.textContent = '';
+
+      const extraTurns = rand(minTurns, maxTurns);
+      const target = rotation + extraTurns * 2 * Math.PI + rand(0, 2 * Math.PI);
+
+      const start = performance.now();
+      const startRot = rotation;
+
+      function easeOutCubic(t){ return 1 - Math.pow(1 - t, 3); }
+
+      function frame(now){
+        const t = Math.min(1, (now - start) / duration);
+        const eased = easeOutCubic(t);
+        rotation = startRot + (target - startRot) * eased;
+        draw();
+        if (t < 1) requestAnimationFrame(frame);
+        else {
+          spinning = false;
+          const idx = winnerIndex();
+          const win = items[idx] ?? '';
+          el.winnerBar.textContent = win ? `Winner: ${win}` : '';
+          if (win && el.optConfetti.checked) burstConfetti();
+          if (win && el.optRemove.checked){
+            items.splice(idx, 1);
+            writeItems(items);
+            save();
+            // slight delay so user sees result before wheel redraws with fewer slices
+            setTimeout(draw, 300);
+          }
+        }
+      }
+      requestAnimationFrame(frame);
+    }
+
+    function burstConfetti(){
+      // tiny one-off confetti using CSS + DOM (no libraries)
+      const N = 80;
+      const box = document.createElement('div');
+      box.style.position = 'fixed';
+      box.style.inset = '0';
+      box.style.pointerEvents = 'none';
+      document.body.appendChild(box);
+      for (let i=0;i<N;i++){
+        const p = document.createElement('div');
+        p.style.position = 'absolute';
+        p.style.width = '8px'; p.style.height = '12px';
+        p.style.background = `hsl(${(i*11)%360}, 80%, 55%)`;
+        p.style.left = Math.random()*100 + '%';
+        p.style.top = '-20px';
+        p.style.transform = `rotate(${Math.random()*360}deg)`;
+        p.style.opacity = '0.9';
+        const dur = 1200 + Math.random()*800;
+        const dx = (Math.random()*2 - 1) * 120; // sway
+        p.animate([
+          { transform: p.style.transform, top: '-20px' },
+          { transform: `translateX(${dx}px) rotate(${Math.random()*720}deg)`, top: '110vh' }
+        ], { duration: dur, easing: 'ease-out', fill: 'forwards' });
+        box.appendChild(p);
+      }
+      setTimeout(()=> box.remove(), 2200);
+    }
+
+    // ---------- Events ----------
+    el.ta.addEventListener('input', applyFromTextarea);
+    el.btnShuffle.addEventListener('click', () => { items = shuffle(items); writeItems(items); draw(); });
+    el.btnClear.addEventListener('click', () => { items = []; writeItems(items); draw(); save(); });
+    el.btnExample.addEventListener('click', () => {
+      items = ['Alice','Ben','Carla','Darius','Evelyn','Fatima','Gabe','Himari'];
+      writeItems(items); draw();
+    });
+    el.btnSave.addEventListener('click', save);
+    el.btnRestore.addEventListener('click', restore);
+    el.btnCopyURL.addEventListener('click', async () => {
+      const url = encodeShareURL();
+      try { await navigator.clipboard.writeText(url); alert('Share link copied!'); }
+      catch { prompt('Copy this link:', url); }
+    });
+
+    el.btnSpin.addEventListener('click', () => animateSpin({minTurns:3, maxTurns:6, duration:3500}));
+    el.btnSpinFast.addEventListener('click', () => animateSpin({minTurns:2, maxTurns:3.5, duration:2000}));
+    el.btnReset.addEventListener('click', () => { rotation = 0; draw(); });
+
+    // Click center to spin
+    el.wheel.addEventListener('click', (e) => {
+      const rect = el.wheel.getBoundingClientRect();
+      const x = e.clientX - rect.left - el.wheel.width/2;
+      const y = e.clientY - rect.top - el.wheel.height/2;
+      const d = Math.hypot(x,y);
+      if (d < 60) el.btnSpin.click();
+    });
+
+    // ---------- Init ----------
+    if (!tryLoadFromHash()) restore();
+    if (!items.length){
+      // starter list so blank pages still feel functional
+      items = ['Alpha','Bravo','Charlie','Delta','Echo'];
+      writeItems(items);
+    }
+    draw();
+  })();
+  </script>
+</body>
+</html>
