@@ -84,6 +84,70 @@
     });
   }
 
+  // ---------- LABEL AUTO-FIT HELPERS ----------
+  // Compute straight-line width available in a slice at a given radius
+  function sliceUsableWidth(arcRadians, radius, padding = 14) {
+    const chord = 2 * radius * Math.tan(arcRadians / 2);
+    return Math.max(0, chord - padding * 2);
+  }
+
+  // Determine font size and optional 2-line wrap that fits maxWidth
+  function layoutSliceText(ctx, text, maxWidth, maxFont = 18, minFont = 10) {
+    text = String(text).trim();
+    let size = maxFont;
+
+    while (size >= minFont) {
+      ctx.font = `bold ${size}px Nunito, sans-serif`;
+      // one line fit?
+      if (ctx.measureText(text).width <= maxWidth) {
+        return { size, lines: [text] };
+      }
+      // try two-line wrap
+      const words = text.split(/\s+/);
+      if (words.length > 1) {
+        for (let split = Math.floor(words.length / 2); split >= 1; split--) {
+          const l1 = words.slice(0, split).join(' ');
+          const l2 = words.slice(split).join(' ');
+          if (ctx.measureText(l1).width <= maxWidth && ctx.measureText(l2).width <= maxWidth) {
+            return { size, lines: [l1, l2] };
+          }
+        }
+      }
+      size -= 1;
+    }
+
+    // fallback: truncate with ellipsis
+    size = minFont;
+    ctx.font = `bold ${size}px Nunito, sans-serif`;
+    let s = text;
+    while (ctx.measureText(s + '…').width > maxWidth && s.length) s = s.slice(0, -1);
+    return { size, lines: [s + '…'] };
+  }
+
+  // Draw the label centered along the radius, with auto-fit
+  function drawSliceLabel(ctx, angle, arc, text, labelRadius) {
+    const maxWidth = sliceUsableWidth(arc, labelRadius);
+    const { size, lines } = layoutSliceText(ctx, text, maxWidth);
+    ctx.fillStyle = '#fff';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+
+    ctx.save();
+    ctx.translate(200, 200);
+    ctx.rotate(angle + arc / 2);
+
+    const lineGap = Math.max(2, size * 0.22);
+    const totalH = lines.length * size + (lines.length - 1) * lineGap;
+    let y = -totalH / 2 + size / 2;
+
+    for (const line of lines) {
+      ctx.font = `bold ${size}px Nunito, sans-serif`;
+      ctx.fillText(line, labelRadius, y);
+      y += size + lineGap;
+    }
+    ctx.restore();
+  }
+
   // ---------- DRAWING ----------
   function drawPointer(){
     // pointer at top, pointing DOWN into wheel
@@ -112,6 +176,8 @@
 
     for (let i=0;i<items.length;i++){
       const angle = startAngle + i*arc;
+
+      // slice
       ctx.beginPath();
       ctx.moveTo(200,200);
       ctx.arc(200,200,200,angle,angle+arc);
@@ -120,15 +186,8 @@
       ctx.fillStyle = palette(i);
       ctx.fill();
 
-      // label
-      ctx.save();
-      ctx.translate(200,200);
-      ctx.rotate(angle + arc/2);
-      ctx.fillStyle = '#fff';
-      ctx.font = 'bold 16px Nunito, sans-serif';
-      ctx.textAlign = 'left';
-      ctx.fillText(String(items[i]).slice(0,18), 90, 6);
-      ctx.restore();
+      // auto-fit label inside slice (at ~60% radius)
+      drawSliceLabel(ctx, angle, arc, items[i], 120);
     }
 
     drawPointer();
