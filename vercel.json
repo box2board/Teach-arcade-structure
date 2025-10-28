@@ -31,5 +31,10 @@
         { "key": "Cache-Control", "value": "public, max-age=3600" }
       ]
     }
+  ],
+
+  "redirects": [
+    { "source": "/teacher-tools", "destination": "/tools/", "permanent": true },
+    { "source": "/teacher-tools.html", "destination": "/tools/", "permanent": true }
   ]
 }
