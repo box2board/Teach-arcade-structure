@@ -35,6 +35,7 @@
 
   "redirects": [
     { "source": "/teacher-tools", "destination": "/tools/", "permanent": true },
-    { "source": "/teacher-tools.html", "destination": "/tools/", "permanent": true }
+    { "source": "/teacher-tools.html", "destination": "/tools/", "permanent": true },
+    { "source": "/teacher-tools/(.*)", "destination": "/tools/$1", "permanent": true }
   ]
 }
