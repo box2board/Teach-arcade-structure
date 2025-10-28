@@ -1,0 +1,8 @@
+{
+  "name": "teach-arcade",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/generate-sitemap.mjs"
+  }
+}
