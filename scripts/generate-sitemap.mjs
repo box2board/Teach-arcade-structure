@@ -1,87 +1,69 @@
-// scripts/generate-sitemap.mjs
-import { promises as fs } from "fs";
+// /scripts/generate-sitemap.mjs
+import fs from "fs";
 import path from "path";
-import { fileURLToPath } from "url";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const rootDir = process.cwd();
+const baseUrl = "https://teacharcade.com";
 
-const SITE_URL = "https://teacharcade.com";
-const IGNORE_DIRS = ["node_modules", ".git", ".vercel", "assets", "scripts"];
-const IGNORE_FILES = ["robots.txt", "sitemap.xml"];
-
-function normalizePath(p) {
-  let rel = p.replace(/\\/g, "/");
-  if (!rel.startsWith("/")) rel = "/" + rel;
-  rel = rel.replace(/\/index\.html$/i, "/");
-  rel = rel.replace(/\/{2,}/g, "/");
-  return rel;
-}
-
-function metaFor(p) {
-  if (p === "/") return { changefreq: "weekly", priority: 1.0 };
-  if (p.startsWith("/subjects")) return { changefreq: "weekly", priority: 0.9 };
-  if (p.startsWith("/tools")) return { changefreq: "monthly", priority: 0.8 };
-  return { changefreq: "monthly", priority: 0.7 };
-}
-
-async function getFiles(dir, root) {
-  const dirents = await fs.readdir(dir, { withFileTypes: true });
-  const files = [];
-  for (const d of dirents) {
-    const abs = path.join(dir, d.name);
-    if (d.isDirectory()) {
-      if (IGNORE_DIRS.includes(d.name)) continue;
-      files.push(...await getFiles(abs, root));
-    } else if (d.name.endsWith(".html") && !IGNORE_FILES.includes(d.name)) {
-      files.push(abs);
+// Recursively scan all .html files in the repo
+function getHtmlFiles(dir) {
+  let results = [];
+  const list = fs.readdirSync(dir);
+  for (const file of list) {
+    const filePath = path.join(dir, file);
+    const stat = fs.statSync(filePath);
+    if (stat.isDirectory()) {
+      results = results.concat(getHtmlFiles(filePath));
+    } else if (
+      file.endsWith(".html") &&
+      !file.includes("404") &&
+      !file.includes("template")
+    ) {
+      results.push(filePath);
     }
   }
-  return files;
+  return results;
 }
 
-(async () => {
-  const root = path.resolve(__dirname, "..");
-  const allFiles = await getFiles(root, root);
+// Build the sitemap XML
+function generateSitemap(urls) {
+  const date = new Date().toISOString().split("T")[0];
 
-  const seen = new Set();
-  const entries = [];
+  const xml =
+    `<?xml version="1.0" encoding="UTF-8"?>\n` +
+    `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
+    urls
+      .map(
+        (u) => `  <url>
+    <loc>${baseUrl}${u}</loc>
+    <lastmod>${date}</lastmod>
+    <changefreq>${u.includes("/tools/") ? "monthly" : "weekly"}</changefreq>
+    <priority>${u === "/" ? "1.0" : u.includes("/tools/") ? "0.8" : "0.9"}</priority>
+  </url>`
+      )
+      .join("\n") +
+    `\n</urlset>`;
 
-  for (const file of allFiles) {
-    const relPath = normalizePath(path.relative(root, file));
-    const loc = SITE_URL + relPath;
-    if (seen.has(loc)) continue;
-    seen.add(loc);
+  return xml;
+}
 
-    const stat = await fs.stat(file);
-    const { changefreq, priority } = metaFor(relPath);
+// Get relative URL paths for all pages
+const htmlFiles = getHtmlFiles(rootDir);
+const urls = htmlFiles
+  .map((filePath) => {
+    const relative = filePath.replace(rootDir, "").replace(/\\/g, "/");
+    return relative === "/index.html" ? "/" : relative;
+  })
+  // Deduplicate
+  .filter((v, i, a) => a.indexOf(v) === i)
+  // Sort cleanly
+  .sort();
 
-    entries.push({
-      loc,
-      lastmod: new Date(stat.mtime).toISOString().split("T")[0],
-      changefreq,
-      priority
-    });
-  }
+// Generate XML
+const sitemapXml = generateSitemap(urls);
 
-  const xml = [
-    '<?xml version="1.0" encoding="UTF-8"?>',
-    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
-  ];
+// Write to root
+const outPath = path.join(rootDir, "sitemap.xml");
+fs.writeFileSync(outPath, sitemapXml, "utf8");
 
-  for (const u of entries) {
-    xml.push(
-      "  <url>",
-      `    <loc>${u.loc}</loc>`,
-      `    <lastmod>${u.lastmod}</lastmod>`,
-      `    <changefreq>${u.changefreq}</changefreq>`,
-      `    <priority>${u.priority}</priority>`,
-      "  </url>"
-    );
-  }
-
-  xml.push("</urlset>");
-
-  await fs.writeFile(path.join(root, "sitemap.xml"), xml.join("\n"));
-  console.log(`✅ Generated sitemap.xml with ${entries.length} unique URLs`);
-})();
+console.log(`✅ Generated sitemap.xml with ${urls.length} URLs`);
