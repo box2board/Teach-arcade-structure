@@ -35,7 +35,7 @@
             <li><a href="/subjects/fine-arts/index.html">Fine Arts</a></li>
           </ul>
         </li>
-        <li><a href="/teacher-tools.html">Teacher Tools</a></li>
+        <li><a href="/tools/">Teacher Tools</a></li>
         <li><a href="/submit.html">Submit</a></li>
         <li><a href="/about.html">About</a></li>
       </ul>
