@@ -2,68 +2,62 @@
 import fs from "fs";
 import path from "path";
 
-const rootDir = process.cwd();
-const baseUrl = "https://teacharcade.com";
+const BASE_URL = "https://teacharcade.com";
+const ROOT_DIR = process.cwd();
 
-// Recursively scan all .html files in the repo
+// Recursively find .html files
 function getHtmlFiles(dir) {
   let results = [];
   const list = fs.readdirSync(dir);
   for (const file of list) {
-    const filePath = path.join(dir, file);
-    const stat = fs.statSync(filePath);
+    const fullPath = path.join(dir, file);
+    const stat = fs.statSync(fullPath);
     if (stat.isDirectory()) {
-      results = results.concat(getHtmlFiles(filePath));
-    } else if (
-      file.endsWith(".html") &&
-      !file.includes("404") &&
-      !file.includes("template")
-    ) {
-      results.push(filePath);
+      results = results.concat(getHtmlFiles(fullPath));
+    } else if (file.endsWith(".html")) {
+      results.push(fullPath);
     }
   }
   return results;
 }
 
-// Build the sitemap XML
-function generateSitemap(urls) {
-  const date = new Date().toISOString().split("T")[0];
+function cleanUrl(filePath) {
+  const rel = filePath.replace(ROOT_DIR, "").replace(/\\/g, "/");
+  if (rel.endsWith("/index.html")) return rel.replace("/index.html", "/");
+  return rel;
+}
 
+function generateXml(urls) {
+  const today = new Date().toISOString().split("T")[0];
   const xml =
     `<?xml version="1.0" encoding="UTF-8"?>\n` +
     `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
     urls
       .map(
         (u) => `  <url>
-    <loc>${baseUrl}${u}</loc>
-    <lastmod>${date}</lastmod>
+    <loc>${BASE_URL}${u}</loc>
+    <lastmod>${today}</lastmod>
     <changefreq>${u.includes("/tools/") ? "monthly" : "weekly"}</changefreq>
     <priority>${u === "/" ? "1.0" : u.includes("/tools/") ? "0.8" : "0.9"}</priority>
   </url>`
       )
       .join("\n") +
-    `\n</urlset>`;
-
+    `\n</urlset>\n`;
   return xml;
 }
 
-// Get relative URL paths for all pages
-const htmlFiles = getHtmlFiles(rootDir);
-const urls = htmlFiles
-  .map((filePath) => {
-    const relative = filePath.replace(rootDir, "").replace(/\\/g, "/");
-    return relative === "/index.html" ? "/" : relative;
-  })
-  // Deduplicate
-  .filter((v, i, a) => a.indexOf(v) === i)
-  // Sort cleanly
-  .sort();
+const files = getHtmlFiles(ROOT_DIR);
+const urls = [
+  ...new Set(
+    files
+      .map(cleanUrl)
+      .filter((u) => !u.includes("404") && !u.includes("template"))
+  ),
+].sort();
 
-// Generate XML
-const sitemapXml = generateSitemap(urls);
+const xml = generateXml(urls);
 
-// Write to root
-const outPath = path.join(rootDir, "sitemap.xml");
-fs.writeFileSync(outPath, sitemapXml, "utf8");
+// 🔒 Always ensure file starts with XML declaration (no stray spaces)
+fs.writeFileSync(path.join(ROOT_DIR, "sitemap.xml"), xml.trimStart(), "utf8");
 
-console.log(`✅ Generated sitemap.xml with ${urls.length} URLs`);
+console.log(`✅ Sitemap generated successfully with ${urls.length} URLs.`);
