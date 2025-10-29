@@ -6,116 +6,82 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// --- CONFIG ---
 const SITE_URL = "https://teacharcade.com";
-
-// Directories we should NOT crawl
-const IGNORE_DIRS = new Set([
-  "node_modules", ".git", ".vercel", ".github", ".next",
-  "assets", "scripts" // static assets & build scripts
-]);
-
-// Files we should NOT include
-const IGNORE_FILES = new Set([
-  "sitemap.xml", "robots.txt"
-]);
-
-// --- HELPERS ---
-const toISODate = (d) => new Date(d).toISOString().slice(0, 10);
+const IGNORE_DIRS = ["node_modules", ".git", ".vercel", "assets", "scripts"];
+const IGNORE_FILES = ["robots.txt", "sitemap.xml"];
 
 function normalizePath(p) {
-  // make it a web path with a leading slash
   let rel = p.replace(/\\/g, "/");
   if (!rel.startsWith("/")) rel = "/" + rel;
-  // fold index.html to directory root
   rel = rel.replace(/\/index\.html$/i, "/");
-  // collapse double slashes
   rel = rel.replace(/\/{2,}/g, "/");
   return rel;
 }
 
-function metaFor(webPath) {
-  // Set sensible priorities/frequencies by section
-  if (webPath === "/")               return { changefreq: "weekly",  priority: 1.0 };
-  if (webPath.startsWith("/subjects")) return { changefreq: "weekly",  priority: 0.9 };
-  if (webPath.startsWith("/tools"))    return { changefreq: "monthly", priority: 0.8 };
-  if (webPath === "/about.html" || webPath === "/privacy.html" || webPath === "/terms.html")
-                                      return { changefreq: "yearly",  priority: 0.6 };
+function metaFor(p) {
+  if (p === "/") return { changefreq: "weekly", priority: 1.0 };
+  if (p.startsWith("/subjects")) return { changefreq: "weekly", priority: 0.9 };
+  if (p.startsWith("/tools")) return { changefreq: "monthly", priority: 0.8 };
   return { changefreq: "monthly", priority: 0.7 };
 }
 
-async function walk(dirAbs, rootAbs, out = []) {
-  const dirents = await fs.readdir(dirAbs, { withFileTypes: true });
+async function getFiles(dir, root) {
+  const dirents = await fs.readdir(dir, { withFileTypes: true });
+  const files = [];
   for (const d of dirents) {
+    const abs = path.join(dir, d.name);
     if (d.isDirectory()) {
-      if (IGNORE_DIRS.has(d.name)) continue;
-      await walk(path.join(dirAbs, d.name), rootAbs, out);
-    } else {
-      const name = d.name;
-      if (IGNORE_FILES.has(name)) continue;
-      if (!name.endsWith(".html")) continue;
-
-      const abs = path.join(dirAbs, name);
-      const rel = path.relative(rootAbs, abs);
-      out.push(abs);
+      if (IGNORE_DIRS.includes(d.name)) continue;
+      files.push(...await getFiles(abs, root));
+    } else if (d.name.endsWith(".html") && !IGNORE_FILES.includes(d.name)) {
+      files.push(abs);
     }
   }
-  return out;
+  return files;
 }
 
-async function main() {
-  const root = path.resolve(__dirname, ".."); // repo root
-  const htmlFiles = await walk(root, root);
+(async () => {
+  const root = path.resolve(__dirname, "..");
+  const allFiles = await getFiles(root, root);
 
-  // Build entries and dedupe
   const seen = new Set();
   const entries = [];
 
-  for (const abs of htmlFiles) {
-    const stat = await fs.stat(abs);
-    const webPath = normalizePath(path.relative(root, abs));
-    const loc = SITE_URL + webPath;
-
+  for (const file of allFiles) {
+    const relPath = normalizePath(path.relative(root, file));
+    const loc = SITE_URL + relPath;
     if (seen.has(loc)) continue;
     seen.add(loc);
 
-    const { changefreq, priority } = metaFor(webPath);
+    const stat = await fs.stat(file);
+    const { changefreq, priority } = metaFor(relPath);
 
     entries.push({
       loc,
-      lastmod: toISODate(stat.mtimeMs || stat.mtime),
+      lastmod: new Date(stat.mtime).toISOString().split("T")[0],
       changefreq,
       priority
     });
   }
 
-  // Sort: homepage first, then alphabetical
-  entries.sort((a, b) => {
-    if (a.loc === SITE_URL + "/") return -1;
-    if (b.loc === SITE_URL + "/") return 1;
-    return a.loc.localeCompare(b.loc);
-  });
-
-  // XML output
   const xml = [
-    `<?xml version="1.0" encoding="UTF-8"?>`,
-    `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`,
-    ...entries.map(u => [
-      `  <url>`,
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
+  ];
+
+  for (const u of entries) {
+    xml.push(
+      "  <url>",
       `    <loc>${u.loc}</loc>`,
       `    <lastmod>${u.lastmod}</lastmod>`,
       `    <changefreq>${u.changefreq}</changefreq>`,
-      `    <priority>${u.priority.toFixed(1)}</priority>`,
-      `  </url>`
-    ].join("\n")),
-    `</urlset>\n`
-  ].join("\n");
+      `    <priority>${u.priority}</priority>`,
+      "  </url>"
+    );
+  }
 
-  await fs.writeFile(path.join(root, "sitemap.xml"), xml, "utf8");
-  console.log(`Generated sitemap.xml with ${entries.length} unique URLs`);
-}
+  xml.push("</urlset>");
 
-main().catch(err => {
-  console.error("Sitemap generation failed:", err);
-  process.exit(1);
-});
+  await fs.writeFile(path.join(root, "sitemap.xml"), xml.join("\n"));
+  console.log(`✅ Generated sitemap.xml with ${entries.length} unique URLs`);
+})();
