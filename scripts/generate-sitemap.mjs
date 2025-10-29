@@ -1,105 +1,121 @@
 // scripts/generate-sitemap.mjs
-import { readdirSync, statSync, writeFileSync } from 'fs';
-import { join, resolve } from 'path';
+import { promises as fs } from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
 
-const BASE_URL = 'https://teacharcade.com';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-// folders to scan for .html files
-const ROOT = resolve('.');                  // repo root
-const INCLUDE_DIRS = [
-  '.',                 // root
-  'subjects',
-  'subjects/social-studies',
-  'subjects/social-studies/us-history',
-  'tools'
-];
+// --- CONFIG ---
+const SITE_URL = "https://teacharcade.com";
 
-// skip these names/folders
-const EXCLUDE = new Set([
-  'node_modules','assets','.vercel','.git','.github',
-  '404.html','404','_private','drafts'
+// Directories we should NOT crawl
+const IGNORE_DIRS = new Set([
+  "node_modules", ".git", ".vercel", ".github", ".next",
+  "assets", "scripts" // static assets & build scripts
 ]);
 
-function walk(dir) {
-  const out = [];
-  for (const name of readdirSync(dir)) {
-    if (EXCLUDE.has(name)) continue;
-    const full = join(dir, name);
-    const st = statSync(full);
+// Files we should NOT include
+const IGNORE_FILES = new Set([
+  "sitemap.xml", "robots.txt"
+]);
 
-    if (st.isDirectory()) {
-      out.push(...walk(full));
-    } else if (st.isFile() && name.endsWith('.html')) {
-      out.push(full);
+// --- HELPERS ---
+const toISODate = (d) => new Date(d).toISOString().slice(0, 10);
+
+function normalizePath(p) {
+  // make it a web path with a leading slash
+  let rel = p.replace(/\\/g, "/");
+  if (!rel.startsWith("/")) rel = "/" + rel;
+  // fold index.html to directory root
+  rel = rel.replace(/\/index\.html$/i, "/");
+  // collapse double slashes
+  rel = rel.replace(/\/{2,}/g, "/");
+  return rel;
+}
+
+function metaFor(webPath) {
+  // Set sensible priorities/frequencies by section
+  if (webPath === "/")               return { changefreq: "weekly",  priority: 1.0 };
+  if (webPath.startsWith("/subjects")) return { changefreq: "weekly",  priority: 0.9 };
+  if (webPath.startsWith("/tools"))    return { changefreq: "monthly", priority: 0.8 };
+  if (webPath === "/about.html" || webPath === "/privacy.html" || webPath === "/terms.html")
+                                      return { changefreq: "yearly",  priority: 0.6 };
+  return { changefreq: "monthly", priority: 0.7 };
+}
+
+async function walk(dirAbs, rootAbs, out = []) {
+  const dirents = await fs.readdir(dirAbs, { withFileTypes: true });
+  for (const d of dirents) {
+    if (d.isDirectory()) {
+      if (IGNORE_DIRS.has(d.name)) continue;
+      await walk(path.join(dirAbs, d.name), rootAbs, out);
+    } else {
+      const name = d.name;
+      if (IGNORE_FILES.has(name)) continue;
+      if (!name.endsWith(".html")) continue;
+
+      const abs = path.join(dirAbs, name);
+      const rel = path.relative(rootAbs, abs);
+      out.push(abs);
     }
   }
   return out;
 }
 
-function asUrlPath(fileAbs) {
-  // normalize to repo-relative path
-  let p = fileAbs.replace(ROOT, '').replace(/\\/g,'/'); // windows safe
-  if (p.startsWith('/')) p = p.slice(1);
+async function main() {
+  const root = path.resolve(__dirname, ".."); // repo root
+  const htmlFiles = await walk(root, root);
 
-  // index.html => directory URL
-  if (p.endsWith('/index.html')) {
-    p = p.slice(0, -'/index.html'.length) + '/';
+  // Build entries and dedupe
+  const seen = new Set();
+  const entries = [];
+
+  for (const abs of htmlFiles) {
+    const stat = await fs.stat(abs);
+    const webPath = normalizePath(path.relative(root, abs));
+    const loc = SITE_URL + webPath;
+
+    if (seen.has(loc)) continue;
+    seen.add(loc);
+
+    const { changefreq, priority } = metaFor(webPath);
+
+    entries.push({
+      loc,
+      lastmod: toISODate(stat.mtimeMs || stat.mtime),
+      changefreq,
+      priority
+    });
   }
-  return p;
+
+  // Sort: homepage first, then alphabetical
+  entries.sort((a, b) => {
+    if (a.loc === SITE_URL + "/") return -1;
+    if (b.loc === SITE_URL + "/") return 1;
+    return a.loc.localeCompare(b.loc);
+  });
+
+  // XML output
+  const xml = [
+    `<?xml version="1.0" encoding="UTF-8"?>`,
+    `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`,
+    ...entries.map(u => [
+      `  <url>`,
+      `    <loc>${u.loc}</loc>`,
+      `    <lastmod>${u.lastmod}</lastmod>`,
+      `    <changefreq>${u.changefreq}</changefreq>`,
+      `    <priority>${u.priority.toFixed(1)}</priority>`,
+      `  </url>`
+    ].join("\n")),
+    `</urlset>\n`
+  ].join("\n");
+
+  await fs.writeFile(path.join(root, "sitemap.xml"), xml, "utf8");
+  console.log(`Generated sitemap.xml with ${entries.length} unique URLs`);
 }
 
-function priorityFor(path) {
-  if (path === '') return 1.0;                      // homepage
-  if (path === 'subjects/' || path === 'tools/') return 0.9;
-  if (path.startsWith('subjects/social-studies/')) return 0.8;
-  return 0.7;
-}
-
-function changefreqFor(path) {
-  if (path === '' || path.endsWith('/')) return 'weekly';
-  return 'monthly';
-}
-
-function lastmodFor(fileAbs) {
-  const t = statSync(fileAbs).mtime;
-  return t.toISOString().slice(0,10); // YYYY-MM-DD
-}
-
-// collect files
-const files = [];
-for (const d of INCLUDE_DIRS) {
-  const dir = resolve(d);
-  files.push(...walk(dir));
-}
-
-// Always include homepage even if no index in root (but you do)
-if (!files.find(f => f.endsWith('/index.html'))) {
-  files.push(resolve('index.html'));
-}
-
-// Build URL entries
-const urls = files.map(abs => {
-  const p = asUrlPath(abs);             // e.g. 'tools/' or 'about.html'
-  const loc = p === '' ? BASE_URL + '/' : `${BASE_URL}/${p}`;
-  return {
-    loc,
-    lastmod: lastmodFor(abs),
-    changefreq: changefreqFor(p),
-    priority: priorityFor(p)
-  };
+main().catch(err => {
+  console.error("Sitemap generation failed:", err);
+  process.exit(1);
 });
-
-// XML
-const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.map(u => `  <url>
-    <loc>${u.loc}</loc>
-    <lastmod>${u.lastmod}</lastmod>
-    <changefreq>${u.changefreq}</changefreq>
-    <priority>${u.priority.toFixed(1)}</priority>
-  </url>`).join('\n')}
-</urlset>
-`;
-
-writeFileSync('sitemap.xml', xml, 'utf8');
-console.log(`Generated sitemap.xml with ${urls.length} URLs`);
