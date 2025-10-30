@@ -1,5 +1,0 @@
-# Don't deploy internal scripts or docs
-scripts/
-README.md
-package.json
-package-lock.json
