@@ -1,34 +1,34 @@
-// /api/resources.js  (Node runtime on Vercel)
-import fs from 'fs/promises';
-import path from 'path';
-
+// /api/resources.js  (Vercel Serverless Function)
 export default async function handler(req, res) {
   try {
-    // Adjust this to your actual data file location/name:
-    const dataFile = path.join(process.cwd(), 'public', 'assets', 'data', 'resources.json');
+    // Build an absolute URL to the public JSON (works in Vercel)
+    const proto = req.headers['x-forwarded-proto'] || 'https';
+    const host  = req.headers.host;
+    const dataUrl = `${proto}://${host}/assets/data/resources.json`;
 
-    const raw = await fs.readFile(dataFile, 'utf8');
-    const all = JSON.parse(raw);
+    const r = await fetch(dataUrl, { headers: { accept: 'application/json' } });
+    if (!r.ok) throw new Error(`Failed to fetch resources.json: ${r.status} ${r.statusText}`);
+    const all = await r.json();
 
-    // Optional filtering via query params used by your topic pages
-    const { subject, topic, grade, tag, q } = req.query;
+    // Query filters
+    const { subject, topic, grade, tag, q } = req.query || {};
+    let out = Array.isArray(all) ? all.slice() : [];
 
-    let out = all;
-
-    if (subject) out = out.filter(r => (r.subject || '').toLowerCase() === subject.toLowerCase());
-    if (topic)   out = out.filter(r => (r.topic || '').toLowerCase() === topic.toLowerCase());
+    if (subject) out = out.filter(r => (r.subject || '').toLowerCase() === String(subject).toLowerCase());
+    if (topic)   out = out.filter(r => (r.topic   || '').toLowerCase() === String(topic).toLowerCase());
     if (grade)   out = out.filter(r => String(r.grade || '').toLowerCase().includes(String(grade).toLowerCase()));
-    if (tag)     out = out.filter(r => Array.isArray(r.tags) && r.tags.map(t=>t.toLowerCase()).includes(tag.toLowerCase()));
+    if (tag)     out = out.filter(r => Array.isArray(r.tags) && r.tags.map(t => String(t).toLowerCase()).includes(String(tag).toLowerCase()));
     if (q) {
-      const needle = q.toLowerCase();
+      const needle = String(q).toLowerCase();
       out = out.filter(r =>
-        (r.title||'').toLowerCase().includes(needle) ||
-        (r.desc||'').toLowerCase().includes(needle) ||
-        (r.url||'').toLowerCase().includes(needle)
+        String(r.title || '').toLowerCase().includes(needle) ||
+        String(r.desc  || '').toLowerCase().includes(needle) ||
+        String(r.url   || '').toLowerCase().includes(needle)
       );
     }
 
     res.setHeader('Content-Type', 'application/json; charset=utf-8');
+    // Cache for 5 minutes at the edge; serve stale for a day while revalidating
     res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=86400');
     res.status(200).json({ ok: true, count: out.length, items: out });
   } catch (err) {
