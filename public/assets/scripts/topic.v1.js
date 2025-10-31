@@ -1,106 +1,137 @@
-// /assets/scripts/topic.v2.js
-// Works with /api/resources that returns { ok, items: [...] }.
-// Topic page must have: <main class="container topic-page" data-subject="Social Studies" data-topic="American Revolution">
-// and elements: #searchInput, #tabs, #resource-list
+// /assets/scripts/topic.v1.js
+// Robust loader for Topic pages.
+// Expected HTML on each topic page:
+//   <main class="container topic-page"
+//         data-sheet-id="..."
+//         data-tab="..."             (your old way)
+//         data-topic="Colonial America"> (preferred; human-readable topic name)
+//   </main>
+// And:
+//   <input id="searchInput">, <div id="tabs">, <section id="resource-list">
 
 (function () {
-  const page = document.querySelector('.topic-page');
+  const page = document.querySelector(".topic-page");
   if (!page) return;
 
-  // 1) Read subject/topic as human text (NOT sheet/tab)
-  const SUBJECT = page.dataset.subject || '';
-  const TOPIC   = page.dataset.topic   || '';
+  // --- Config from page ---
+  const SHEET_ID   = page.dataset.sheetId || "";     // optional
+  const SHEET_TAB  = page.dataset.tab || "";         // optional
+  const PAGE_TOPIC = (page.dataset.topic || page.dataset.tab || "").trim(); // preferred topic match
 
-  // 2) DOM
-  const listEl   = document.getElementById('resource-list');
-  const tabsEl   = document.getElementById('tabs');
-  const searchEl = document.getElementById('searchInput');
-
-  if (!SUBJECT || !TOPIC || !listEl || !tabsEl) {
-    console.warn('[topic] Missing data/DOM', { SUBJECT, TOPIC, listEl, tabsEl });
+  // --- DOM ---
+  const listEl   = document.getElementById("resource-list");
+  const tabsEl   = document.getElementById("tabs");
+  const searchEl = document.getElementById("searchInput");
+  if (!listEl || !tabsEl) {
+    console.warn("[topic] Missing list/tabs container.");
     return;
   }
 
-  // 3) Buckets / helpers
+  // --- Buckets ---
   const BUCKETS = [
-    { key: 'worksheets',      label: 'Worksheets',      match: ['worksheet','handout','practice','activity','guided notes'] },
-    { key: 'lessons',         label: 'Lessons',         match: ['lesson','teacher guide','unit','plan','plans','lesson plan'] },
-    { key: 'primary-sources', label: 'Primary Sources', match: ['primary','document','source','dbq'] },
-    { key: 'games',           label: 'Games',           match: ['game','interactive','simulation'] },
-    { key: 'videos',          label: 'Videos',          match: ['video','film'] },
-    { key: 'assessments',     label: 'Assessments',     match: ['quiz','assessment','test','exam'] },
-    { key: 'presentations',   label: 'Presentations',   match: ['presentation','slides','google slides','ppt'] },
-    { key: 'projects',        label: 'Projects',        match: ['project','inquiry','performance task'] },
-    { key: 'other',           label: 'Other',           match: [] }
+    { key: "worksheets",      label: "Worksheets",      match: ["worksheet","handout","practice","printable"] },
+    { key: "lessons",         label: "Lessons",         match: ["lesson","teacher guide","unit","unit plan","plan","lesson plan","guide","curriculum"] },
+    { key: "primary-sources", label: "Primary Sources", match: ["primary","document","source","primary source"] },
+    { key: "games",           label: "Games",           match: ["game","interactive","simulation","activity","activities"] },
+    { key: "videos",          label: "Videos",          match: ["video","film","youtube","animated map"] },
+    { key: "assessments",     label: "Assessments",     match: ["quiz","assessment","test","worksheet packet","packet"] },
+    { key: "presentations",   label: "Presentations",   match: ["presentation","slides","ppt","powerpoint"] },
+    { key: "projects",        label: "Projects",        match: ["project","performance","inquiry"] },
+    { key: "other",           label: "Other",           match: [] }
   ];
 
-  const safe = v => (v == null ? '' : String(v));
-  const toHttps = u => {
-    const s = safe(u).trim();
-    return s ? (/^https?:\/\//i.test(s) ? s : 'https://' + s) : '';
+  let rows = [];
+  let active = "all";
+
+  // --- Helpers ---
+  const safe = v => (v == null ? "" : String(v));
+  const lower = v => safe(v).toLowerCase();
+
+  // get the first defined/non-empty value among possible column names
+  const pick = (obj, keys) => {
+    for (const k of keys) {
+      const v = obj?.[k];
+      if (v != null && String(v).trim() !== "") return v;
+    }
+    return "";
   };
 
-  // Decide bucket from category/type/tags
-  function bucketFor(r) {
-    const cat  = safe(r.category).toLowerCase();
-    const type = safe(r.type).toLowerCase();
-    const tags = Array.isArray(r.tags) ? r.tags.map(t => String(t).toLowerCase()) : [];
+  const normalizeRow = (r) => {
+    // Your sheet/JSON can have mixed cases: Title vs title, URL vs url, Category vs category, etc.
+    const title    = pick(r, ["title","Title","name","Name"]);
+    const url      = pick(r, ["url","URL","link","Link"]);
+    const category = pick(r, ["category","Category","type","Type","Group","group"]);
+    const type     = pick(r, ["type","Type","filetype","Filetype"]);
+    const topic    = pick(r, ["topic","Topic","unit","Unit","section","Section"]);
 
-    const hay = [cat, type, ...tags].join(' ');
+    return {
+      title: safe(title).trim(),
+      url:   safe(url).trim(),
+      // keep both raw and lower for matching
+      category,
+      type,
+      topic
+    };
+  };
+
+  const toHttps = (u) => {
+    const s = safe(u).trim();
+    if (!s) return "";
+    return /^https?:\/\//i.test(s) ? s : "https://" + s;
+  };
+
+  const bucketFor = (cat, type) => {
+    const c = lower(cat);
+    const t = lower(type);
     for (const b of BUCKETS) {
-      if (b.match.some(m => hay.includes(m))) return b.key;
+      if (b.match.some(m => c.includes(m) || t.includes(m))) return b.key;
     }
-    return 'other';
-  }
+    return "other";
+  };
 
-  const badgeClass = k =>
-    ({ games:'pill green', videos:'pill blue', lessons:'pill orange', worksheets:'pill gray', 'primary-sources':'pill' }[k] || 'pill gray');
+  const badgeClass = (k) =>
+    ({ games:"pill green", videos:"pill blue", lessons:"pill orange", worksheets:"pill gray", "primary-sources":"pill" }[k] || "pill gray");
 
-  const iconFor = (r) => {
-    const t = safe(r.type).toLowerCase();
-    const c = safe(r.category).toLowerCase();
-    if (t.includes('pdf')) return '📄';
-    if (c.includes('game') || c.includes('interactive')) return '🎮';
-    if (t.includes('video') || c.includes('video')) return '🎥';
-    if (c.includes('primary')) return '📜';
-    if (c.includes('lesson') || c.includes('guide') || c.includes('unit')) return '📘';
-    return '🔗';
+  const iconFor = (type, cat) => {
+    const t = lower(type);
+    const c = lower(cat);
+    if (t.includes("pdf")) return "📄";
+    if (c.includes("game") || c.includes("interactive")) return "🎮";
+    if (t.includes("video") || c.includes("video")) return "🎥";
+    if (c.includes("primary")) return "📜";
+    if (c.includes("lesson") || c.includes("guide") || c.includes("unit")) return "📘";
+    return "🔗";
   };
 
   const cardHTML = (r) => {
-    const key = bucketFor(r);
-    const label = (BUCKETS.find(b => b.key === key) || {}).label || 'Other';
-    const meta = [
+    const key   = bucketFor(r.category, r.type);
+    const label = (BUCKETS.find(b => b.key === key) || {}).label || "Other";
+    const meta  = [
       `<span class="${badgeClass(key)}">${label}</span>`,
-      r.type ? `<span class="pill gray">${safe(r.type)}</span>` : '',
-    ].filter(Boolean).join(' ');
-    const url = toHttps(r.url);
+      r.type ? `<span class="pill gray">${safe(r.type)}</span>` : ""
+    ].filter(Boolean).join(" ");
     return `
       <div class="card">
-        <div style="font-size:24px;margin-bottom:4px;">${iconFor(r)}</div>
+        <div style="font-size:24px;margin-bottom:4px;">${iconFor(r.type, r.category)}</div>
         <h3 style="margin:0 0 8px;">${safe(r.title)}</h3>
-        ${r.desc ? `<p class="small" style="margin:0 0 8px;color:#475569;">${safe(r.desc)}</p>` : ''}
         <p class="meta">${meta}</p>
-        ${url ? `<a class="cta" href="${url}" target="_blank" rel="noopener noreferrer">View Resource</a>` : ''}
+        ${r.url ? `<a class="cta" href="${toHttps(r.url)}" target="_blank" rel="noopener noreferrer">View Resource</a>` : ""}
       </div>
     `;
   };
 
-  let rows = [];
-  let active = 'all';
-
   function buildTabs() {
-    const present = new Set(rows.map(r => bucketFor(r)));
+    const present = new Set(rows.map(r => bucketFor(r.category, r.type)));
     const avail = BUCKETS.filter(b => present.has(b.key));
     const parts = [
-      `<button class="tab" role="tab" data-tab="all" aria-selected="${active==='all'}">All</button>`,
+      `<button class="tab" role="tab" data-tab="all" aria-selected="${active==="all"}">All</button>`,
       ...avail.map(b => `<button class="tab" role="tab" data-tab="${b.key}" aria-selected="${active===b.key}">${b.label}</button>`)
     ];
-    tabsEl.innerHTML = parts.join('');
-    tabsEl.querySelectorAll('.tab').forEach(btn => {
-      btn.addEventListener('click', () => {
-        tabsEl.querySelectorAll('.tab').forEach(x => x.setAttribute('aria-selected','false'));
-        btn.setAttribute('aria-selected','true');
+    tabsEl.innerHTML = parts.join("");
+    tabsEl.querySelectorAll(".tab").forEach(btn => {
+      btn.addEventListener("click", () => {
+        tabsEl.querySelectorAll(".tab").forEach(x => x.setAttribute("aria-selected","false"));
+        btn.setAttribute("aria-selected","true");
         active = btn.dataset.tab;
         render();
       });
@@ -108,40 +139,88 @@
   }
 
   function render() {
-    const q = safe(searchEl?.value).toLowerCase().trim();
+    const q = lower(searchEl?.value).trim();
     const filtered = rows.filter(r => {
-      const inTab = (active === 'all') || (bucketFor(r) === active);
-      const hay = [safe(r.title), safe(r.category), safe(r.type), safe(r.desc)]
-        .join(' ')
-        .toLowerCase();
-      const inSearch = !q || hay.includes(q);
-      return inTab && inSearch;
+      const inBucket = (active === "all") || (bucketFor(r.category, r.type) === active);
+      const textHit  = !q || lower(r.title).includes(q) || lower(r.category).includes(q) || lower(r.type).includes(q);
+      return inBucket && textHit;
     });
 
     listEl.innerHTML = filtered.length
-      ? filtered.map(cardHTML).join('')
+      ? filtered.map(cardHTML).join("")
       : `<div class="card" style="grid-column:1/-1;">No matching resources yet.</div>`;
   }
 
   async function load() {
-    const url = `/api/resources?subject=${encodeURIComponent(SUBJECT)}&topic=${encodeURIComponent(TOPIC)}`;
+    // Prefer API (if present), but be tolerant of shapes.
+    // Falls back to raw JSON if needed.
+    const apiUrl = `/api/resources${SHEET_ID || SHEET_TAB ? `?sheet=${encodeURIComponent(SHEET_ID)}&tab=${encodeURIComponent(SHEET_TAB)}` : ""}`;
+
     listEl.innerHTML = `<div class="card" style="grid-column:1/-1;">Loading resources…</div>`;
+
     try {
-      const r = await fetch(url, { cache: 'no-store' });
-      const data = await r.json();
-      if (!data.ok) throw new Error(data.error || 'API error');
-      // NOTE: your API returns { ok, count, items }
-      rows = (data.items || []).filter(x => x.title && x.url);
+      const r = await fetch(apiUrl, { cache: "no-store" });
+      let data = await r.json();
+
+      // Accept { ok:true, data:[...] } or { ok:true, items:[...] } or raw array
+      let rawRows = Array.isArray(data) ? data
+                 : Array.isArray(data?.data) ? data.data
+                 : Array.isArray(data?.items) ? data.items
+                 : [];
+
+      // Normalize rows
+      let normalized = rawRows.map(normalizeRow)
+                              .filter(x => x.title && x.url);
+
+      // Filter by PAGE_TOPIC when provided
+      if (PAGE_TOPIC) {
+        const pt = lower(PAGE_TOPIC);
+        normalized = normalized.filter(x => {
+          // Try topic column first; also allow title to contain the topic name as a fallback
+          const t = lower(x.topic);
+          const title = lower(x.title);
+          return (t && (t.includes(pt) || pt.includes(t))) || title.includes(pt);
+        });
+      }
+
+      rows = normalized;
+
       buildTabs();
       render();
     } catch (err) {
-      console.error('[topic] Load error:', err);
-      listEl.innerHTML = `<div class="card" style="grid-column:1/-1;color:#b91c1c;">
-        Couldn't load resources. Please try again later.
-      </div>`;
+      console.error("[topic] Load error:", err);
+      // Fallback: try static JSON if API fails
+      try {
+        const r2 = await fetch("/assets/data/resources.json", { cache: "no-store" });
+        const j2 = await r2.json();
+        let normalized = (Array.isArray(j2) ? j2 : (Array.isArray(j2?.data) ? j2.data : (Array.isArray(j2?.items) ? j2.items : [])))
+          .map(normalizeRow)
+          .filter(x => x.title && x.url);
+
+        if (PAGE_TOPIC) {
+          const pt = lower(PAGE_TOPIC);
+          normalized = normalized.filter(x => {
+            const t = lower(x.topic);
+            const title = lower(x.title);
+            return (t && (t.includes(pt) || pt.includes(t))) || title.includes(pt);
+          });
+        }
+
+        rows = normalized;
+        buildTabs();
+        render();
+      } catch (err2) {
+        console.error("[topic] Fallback load error:", err2);
+        listEl.innerHTML = `<div class="card" style="grid-column:1/-1;color:#b91c1c;">
+          Couldn't load resources. Please try again later.
+        </div>`;
+      }
     }
   }
 
-  searchEl?.addEventListener('input', render);
+  // Wire search
+  searchEl?.addEventListener("input", render);
+
+  // Kick off
   load();
 })();
