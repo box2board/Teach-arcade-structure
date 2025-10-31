@@ -44,5 +44,12 @@
     { "source": "/teacher-tools.html", "destination": "/tools/", "permanent": true },
     { "source": "/teacher-tools/(.*)", "destination": "/tools/$1", "permanent": true }
   ],
+
+  "functions": {
+    "api/resources.js": {
+      "includeFiles": "public/assets/data/resources.json"
+    }
+  },
+
   "outputDirectory": "public"
 }
