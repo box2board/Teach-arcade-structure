@@ -1,21 +1,8 @@
 {
   "name": "teach-arcade",
-  "version": "1.0.0",
-  "description": "Teach Arcade — Free teacher tools and classroom resources.",
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "node scripts/generate-sitemap.mjs",
-    "start": "serve public",
-    "install": "echo 'No dependencies to install'"
-  },
-  "keywords": [
-    "education",
-    "teacher-tools",
-    "classroom",
-    "free-resources",
-    "teach-arcade"
-  ],
-  "author": "Teach Arcade",
-  "license": "MIT"
+    "build": "echo 'static site'"
+  }
 }
