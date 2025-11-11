@@ -3,6 +3,6 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "echo 'static site'"
+    "build": "node scripts/generate-sitemap.mjs && node scripts/generate-robots.mjs && echo 'static site'"
   }
 }
