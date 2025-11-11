@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Science | Teach Arcade</title>
-  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
 </head>
 <body>
+  <!-- Site Header -->
   <header>
     <div class="header-left">
-      <img class="site-logo" src="/assets/images/teach-arcade-logo.png" alt="Teach Arcade Logo">
+      <img class="site-logo" src="/assets/images/teach-arcade-logo.png" alt="Teach Arcade Logo" />
       <span class="brand">Teach Arcade</span>
     </div>
     <nav>
@@ -21,30 +23,31 @@
   </header>
 
   <main class="container">
-    <nav class="breadcrumbs">
-      <a href="/">Home</a> › <a href="/subjects/">Subjects</a> › Science
-    </nav>
-
     <h1>Science</h1>
     <p>Select a topic below to explore free lessons and activities.</p>
 
-    <div class="card">
-  <h3>Biology</h3>
-  <p>Life science, ecosystems, genetics, and the human body.</p>
-  <a href="/subjects/science/biology/index.html" class="cta">Open</a>
-</div>
+    <!-- SAME CARD GRID STYLE AS SOCIAL STUDIES -->
+    <div class="grid">
+      <div class="card">
+        <h3>Biology</h3>
+        <p>Life science, ecosystems, genetics, and the human body.</p>
+        <a href="/subjects/science/biology/index.html" class="cta">Open</a>
+      </div>
+
       <div class="card">
         <h3>Chemistry</h3>
         <p>Elements, reactions, and the periodic table.</p>
-        <a href="#" class="cta">Open</a>
+        <a href="/subjects/science/chemistry/index.html" class="cta">Open</a>
       </div>
+
       <div class="card">
         <h3>Physics</h3>
         <p>Motion, forces, energy, and waves.</p>
-        <a href="#" class="cta">Open</a>
+        <a href="/subjects/science/physics/index.html" class="cta">Open</a>
       </div>
+
       <div class="card">
-        <h3>Earth & Space Science</h3>
+        <h3>Earth &amp; Space Science</h3>
         <p>Geology, astronomy, and environmental systems.</p>
         <a href="#" class="cta ghost">Coming Soon</a>
       </div>
@@ -52,7 +55,7 @@
   </main>
 
   <footer>
-    <p>© 2025 Teach Arcade</p>
+    <p>© <script>document.write(new Date().getFullYear())</script> Teach Arcade</p>
   </footer>
 </body>
 </html>
