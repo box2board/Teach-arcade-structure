@@ -1,4 +1,4 @@
-// /assets/scripts/topic.v1.js  — robust, cache-busted fetch + visible errors
+// /assets/scripts/topic.v1.js — category+format only (no duplicates)
 (function () {
   const page = document.querySelector(".topic-page");
   if (!page) return;
@@ -7,7 +7,6 @@
   const listEl = document.getElementById("resource-list");
   const tabsEl = document.getElementById("tabs");
   const searchEl = document.getElementById("searchInput");
-
   if (!TAB || !listEl) return;
 
   // ---------- helpers ----------
@@ -17,83 +16,107 @@
     return s ? (/^https?:\/\//i.test(s) ? s : "https://" + s) : "";
   };
 
-  const emojiFor = (type, cat) => {
+  // Normalize a single category from messy spreadsheet text
+  function normalizeCategory(raw) {
+    const s = safe(raw).toLowerCase();
+    // Split on common separators and look for the first thing we recognize
+    const tokens = s.split(/[/,|;•>-]/g).map(t => t.trim()).filter(Boolean);
+
+    const is = (tok, ...needles) => needles.some(n => tok.includes(n));
+
+    for (const t of tokens) {
+      if (is(t,"worksheet","handout","printable")) return "Worksheet";
+      if (is(t,"lesson","teacher guide","guide","unit plan","plan")) return "Lesson Plan";
+      if (is(t,"primary","document","source")) return "Primary Source";
+      if (is(t,"interactive","game","simulation","activity")) return "Interactive/Game";
+      if (is(t,"video","film")) return "Video";
+      if (is(t,"quiz","assessment","test","exam")) return "Assessment";
+      if (is(t,"slides","presentation","ppt","google slides")) return "Slides/Presentation";
+      if (is(t,"project","performance","inquiry")) return "Project";
+    }
+    // If nothing matched, try the whole string once
+    if (is(s,"worksheet")) return "Worksheet";
+    if (is(s,"lesson","plan","guide")) return "Lesson Plan";
+    if (is(s,"primary")) return "Primary Source";
+    if (is(s,"interactive","game")) return "Interactive/Game";
+    if (is(s,"video")) return "Video";
+    if (is(s,"quiz","assessment","test")) return "Assessment";
+    if (is(s,"slides","presentation")) return "Slides/Presentation";
+    if (is(s,"project")) return "Project";
+    return "Other";
+  }
+
+  // Format: PDF or Link only
+  function formatLabel(url, type) {
+    const u = safe(url).toLowerCase();
     const t = safe(type).toLowerCase();
+    if (u.endsWith(".pdf") || t.includes("pdf") || t.includes("direct pdf")) return "PDF";
+    return "Link";
+  }
+
+  const emojiFor = (cat) => {
     const c = safe(cat).toLowerCase();
-    if (c.includes("video") || t.includes("video")) return "🎥";
-    if (c.includes("game") || c.includes("interactive")) return "🎮";
-    if (c.includes("worksheet") || t.includes("pdf")) return "📄";
-    if (c.includes("lesson") || c.includes("guide") || c.includes("plan")) return "📘";
-    if (c.includes("primary")) return "📜";
-    if (c.includes("slides") || c.includes("presentation")) return "🖥️";
-    if (c.includes("quiz") || c.includes("assessment") || c.includes("test")) return "📝";
-    if (c.includes("project") || c.includes("activity")) return "🧩";
+    if (c === "video") return "🎥";
+    if (c === "interactive/game") return "🎮";
+    if (c === "worksheet") return "📄";
+    if (c === "lesson plan") return "📘";
+    if (c === "primary source") return "📜";
+    if (c === "slides/presentation") return "🖥️";
+    if (c === "assessment") return "📝";
+    if (c === "project") return "🧩";
     return "🔗";
   };
 
-  const fileLabel = (url, cat) => {
-    const u = safe(url).toLowerCase();
-    const c = safe(cat).toLowerCase();
-    if (u.endsWith(".pdf")) return "PDF";
-    if (c.includes("video") || u.includes("youtube") || u.includes("vimeo")) return "Video";
-    if (c.includes("game") || c.includes("interactive")) return "Interactive";
-    if (c.includes("primary")) return "Primary Source";
-    if (c.includes("lesson") || c.includes("guide") || c.includes("plan")) return "Lesson Plan";
-    if (c.includes("project") || c.includes("activity")) return "Project";
-    if (c.includes("quiz") || c.includes("assessment") || c.includes("test")) return "Assessment";
-    if (c.includes("slides") || c.includes("presentation")) return "Slides";
-    if (u.startsWith("http")) return "Link";
-    return "Resource";
-  };
-
-  const pillClassFor = (label) => {
+  const pillClass = (label) => {
     const l = String(label || "").toLowerCase();
+    // a little color variety; both pills remain compact
     if (l === "pdf") return "pill gray";
+    if (l === "link") return "pill gray";
     if (l === "video") return "pill blue";
-    if (l === "interactive") return "pill green";
+    if (l === "interactive/game") return "pill green";
     if (l === "lesson plan") return "pill orange";
+    if (l === "worksheet") return "pill gray";
     if (l === "primary source") return "pill";
-    if (l === "slides") return "pill blue";
+    if (l === "slides/presentation") return "pill blue";
     if (l === "assessment") return "pill gray";
+    if (l === "project") return "pill";
     return "pill gray";
   };
 
   const cardHTML = r => {
     const url = toHttps(r.url);
-    const cat = r.category || "Resource";
-    const typ = r.type ? `<span class="pill gray">${safe(r.type)}</span>` : "";
-    const emoji = emojiFor(r.type, r.category);
-    const kind = fileLabel(url, cat);
-    const kindPill = `<span class="${pillClassFor(kind)}">${kind}</span>`;
+    const category = normalizeCategory(r.category || r.type || "");
+    const format = formatLabel(url, r.type);
+    const emoji = emojiFor(category);
 
     return `
       <div class="card">
         <div style="font-size:24px;margin-bottom:4px;">${emoji}</div>
         <h3 style="margin:0 0 8px;">${safe(r.title)}</h3>
         <p class="meta">
-          <span class="pill">${safe(cat)}</span>
-          ${typ}
-          ${kindPill}
+          <span class="${pillClass(category)}">${category}</span>
+          <span class="${pillClass(format)}">${format}</span>
         </p>
         ${url ? `<a class="cta" href="${url}" target="_blank" rel="noopener noreferrer">View Resource</a>` : ""}
       </div>
     `;
   };
 
-  const bucket = (cat) => {
-    const c = safe(cat).toLowerCase();
-    if (c.includes("worksheet")) return "worksheets";
-    if (c.includes("lesson") || c.includes("guide") || c.includes("plan")) return "lessons";
-    if (c.includes("primary")) return "primary-sources";
-    if (c.includes("game") || c.includes("interactive")) return "games";
-    if (c.includes("video")) return "videos";
-    if (c.includes("quiz") || c.includes("assessment") || c.includes("test")) return "assessments";
-    if (c.includes("slides") || c.includes("presentation")) return "presentations";
-    if (c.includes("project") || c.includes("activity")) return "projects";
-    return "other";
+  const bucketKey = (cat) => {
+    switch ((cat || "").toLowerCase()) {
+      case "worksheet": return "worksheets";
+      case "lesson plan": return "lessons";
+      case "primary source": return "primary-sources";
+      case "interactive/game": return "games";
+      case "video": return "videos";
+      case "assessment": return "assessments";
+      case "slides/presentation": return "presentations";
+      case "project": return "projects";
+      default: return "other";
+    }
   };
 
-  function buildTabsFrom(rows) {
+  function buildTabs(rows) {
     if (!tabsEl) return;
     const LABEL = {
       "all":"All",
@@ -107,25 +130,25 @@
       "projects":"Projects",
       "other":"Other"
     };
-    const present = new Set(rows.map(r => bucket(r.category)));
-    const ordered = ["all","worksheets","lessons","primary-sources","games","videos","assessments","presentations","projects","other"]
+    const present = new Set(rows.map(r => bucketKey(r._cat)));
+    const order = ["all","worksheets","lessons","primary-sources","games","videos","assessments","presentations","projects","other"]
       .filter(k => k === "all" || present.has(k));
-    tabsEl.innerHTML = ordered
-      .map(k => `<button class="tab" role="tab" data-tab="${k}" aria-selected="${k==="all"}">${LABEL[k]}</button>`)
-      .join("");
+    tabsEl.innerHTML = order.map(k =>
+      `<button class="tab" role="tab" data-tab="${k}" aria-selected="${k==="all"}">${LABEL[k]}</button>`
+    ).join("");
     tabsEl.querySelectorAll(".tab").forEach(btn => {
       btn.addEventListener("click", () => {
         tabsEl.querySelectorAll(".tab").forEach(x => x.setAttribute("aria-selected","false"));
         btn.setAttribute("aria-selected","true");
-        renderList(currentRows, btn.dataset.tab);
+        render(currentRows, btn.dataset.tab);
       });
     });
   }
 
-  function renderList(rows, activeTab = "all") {
+  function render(rows, active = "all") {
     const q = safe(searchEl?.value).toLowerCase().trim();
     const filtered = rows.filter(r => {
-      const matchesTab = (activeTab === "all") || (bucket(r.category) === activeTab);
+      const matchesTab = active === "all" || bucketKey(r._cat) === active;
       const matchesQ = !q ||
         safe(r.title).toLowerCase().includes(q) ||
         safe(r.category).toLowerCase().includes(q) ||
@@ -138,7 +161,6 @@
   }
 
   async function fetchAPI(tab) {
-    // cache buster avoids stale CDN/browser caches
     const url = `/api/resources?tab=${encodeURIComponent(tab)}&t=${Date.now()}`;
     const r = await fetch(url, { cache: "no-store" });
     if (!r.ok) throw new Error(`API ${r.status}`);
@@ -147,45 +169,34 @@
     throw new Error(data?.error || "API error");
   }
 
-  async function fetchStaticFallback(tab) {
-    const r = await fetch("/assets/data/resources.json?v=" + Date.now(), { cache: "no-store" });
-    if (!r.ok) throw new Error(`static ${r.status}`);
-    const all = await r.json();
-    const t = tab.toLowerCase();
-    return (all || []).filter(it => {
-      const tt = safe(it.topic).toLowerCase();
-      return tt === t || tt.includes(t);
-    });
-  }
-
   // ---------- load ----------
   let currentRows = [];
   listEl.innerHTML = `<div class="card" style="grid-column:1/-1;">Loading resources…</div>`;
 
   (async () => {
     try {
-      currentRows = await fetchAPI(TAB);
-      if (!currentRows.length) {
-        console.warn("[topic] API returned 0, trying static fallback");
-        currentRows = await fetchStaticFallback(TAB);
-      }
+      const raw = await fetchAPI(TAB);
+
+      // enrich with normalized category for tabs & rendering
+      currentRows = raw.map(r => ({
+        ...r,
+        _cat: normalizeCategory(r.category || r.type || "")
+      }));
+
       if (!currentRows.length) {
         listEl.innerHTML = `<div class="card" style="grid-column:1/-1;">No matching resources yet.</div>`;
         return;
       }
-      buildTabsFrom(currentRows);
-      renderList(currentRows, "all");
+      buildTabs(currentRows);
+      render(currentRows);
+
       if (searchEl) searchEl.addEventListener("input", () => {
         const active = tabsEl?.querySelector('[aria-selected="true"]')?.dataset.tab || "all";
-        renderList(currentRows, active);
+        render(currentRows, active);
       });
     } catch (err) {
       console.error("[topic] load error:", err);
-      listEl.innerHTML = `
-        <div class="card" style="grid-column:1/-1;color:#b91c1c;">
-          Error loading resources: ${safe(err.message)}<br>
-          <small>Tab: ${TAB}</small>
-        </div>`;
+      listEl.innerHTML = `<div class="card" style="grid-column:1/-1;color:#b91c1c;">Error loading resources.</div>`;
     }
   })();
 })();
