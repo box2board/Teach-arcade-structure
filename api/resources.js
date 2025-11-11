@@ -1,21 +1,22 @@
-// /api/resources.js  (Vercel Serverless Function, Node 18+, ESM)
+// /api/resources.js — Vercel Serverless (Node 18+, ESM)
 export const config = { runtime: 'nodejs18.x' };
 
-/** Your public Google Sheet ID (from your existing pages) */
+/** Your Sheet ID (same one you put in the page data-* before) */
 const SHEET_ID = '1dPJAi0dKjP6hWpgpNlA2M-2INar75-LxJ-fKEJjWslc';
 
-/** Fetch a sheet tab by name as CSV using the gviz endpoint */
+/** Fetch a specific TAB as CSV using the public gviz endpoint */
 async function fetchTabCSV(sheetId, tabName) {
   const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(tabName)}`;
   const r = await fetch(url, { cache: 'no-store' });
-  if (!r.ok) throw new Error(`Google Sheets fetch failed: ${r.status}`);
+  if (!r.ok) throw new Error(`Fetch failed ${r.status}`);
   return await r.text();
 }
 
-/** Minimal CSV parser that respects quotes */
+/** Minimal CSV parser (handles quotes, commas, newlines) -> [{...}] */
 function parseCSV(text) {
   const rows = [];
   let i = 0, cell = '', row = [], inQ = false;
+
   const pushCell = () => { row.push(cell); cell = ''; };
   const pushRow  = () => { rows.push(row); row = []; };
 
@@ -23,75 +24,89 @@ function parseCSV(text) {
     const ch = text[i];
     if (inQ) {
       if (ch === '"') {
-        if (text[i+1] === '"') { cell += '"'; i++; } else { inQ = false; }
-      } else { cell += ch; }
+        if (text[i+1] === '"') { cell += '"'; i++; }
+        else inQ = false;
+      } else cell += ch;
     } else {
       if (ch === '"') inQ = true;
       else if (ch === ',') pushCell();
-      else if (ch === '\r') { /* ignore */ }
       else if (ch === '\n') { pushCell(); pushRow(); }
-      else cell += ch;
+      else if (ch !== '\r') cell += ch;
     }
     i++;
   }
   if (cell.length || row.length) { pushCell(); pushRow(); }
-
   if (!rows.length) return [];
 
-  const headers = rows[0].map(h => String(h || '').trim().toLowerCase());
-  const out = [];
-  for (let r = 1; r < rows.length; r++) {
-    const obj = {};
-    rows[r].forEach((val, idx) => {
-      obj[headers[idx] || `col_${idx}`] = String(val || '').trim();
-    });
-    out.push(obj);
-  }
-  return out;
+  const headers = rows[0].map(h => String(h ?? '').trim().toLowerCase());
+  return rows.slice(1).map(r => {
+    const o = {};
+    r.forEach((v, idx) => { o[headers[idx] || `col_${idx}`] = String(v ?? '').trim(); });
+    return o;
+  });
 }
 
-/** Normalize one row to our API shape */
-function normalize(row, topicName) {
+/** Normalize a row into a consistent shape without filtering anything out */
+function normalize(row, tabName) {
+  const https = (u) => {
+    const s = String(u || '').trim();
+    return s ? (/^https?:\/\//i.test(s) ? s : `https://${s}`) : '';
+  };
+
+  // Be flexible with headers: Title/Name, URL/Link, Type, Category, Grade, Tags, Description
   const title = row['title'] || row['name'] || '';
-  const url   = row['url']   || row['link'] || '';
-  const type  = row['type']  || '';
+  const url   = row['url'] || row['link'] || '';
+  const type  = row['type'] || '';
   const cat   = row['category'] || row['categories'] || '';
-  const https = url ? (/^https?:\/\//i.test(url) ? url : `https://${url}`) : '';
+  const grade = row['grade'] || '';
+  const tags  = (row['tags'] || '').split(',').map(t => t.trim()).filter(Boolean);
+  const desc  = row['description'] || row['desc'] || '';
 
   return {
-    subject: 'social-studies',
-    topic  : topicName,
-    title  : title,
-    url    : https,
-    type   : type,
-    category: cat
+    topic   : tabName,
+    title   : title,
+    url     : https(url),
+    type    : type,
+    category: cat,
+    grade   : grade,
+    tags    : tags,
+    desc    : desc
   };
 }
 
 export default async function handler(req, res) {
   try {
-    // Required: ?tab= (sheet tab name, e.g., "Civil Rights")
-    const tab = (req.query.tab || req.query.topic || '').toString().trim();
-    if (!tab) return res.status(400).json({ ok:false, error:'Missing ?tab=' });
+    // REQUIRED: ?tab=Exact Tab Name (e.g., Civil Rights)
+    const tab = String(req.query.tab || '').trim();
+    if (!tab) {
+      res.status(400).json({ ok:false, error:'Missing ?tab=' });
+      return;
+    }
 
+    // 1) Fetch that sheet tab
     const csv  = await fetchTabCSV(SHEET_ID, tab);
-    const rows = parseCSV(csv).map(r => normalize(r, tab)).filter(r => r.title && r.url);
 
-    // Optional text filter ?q=
-    const q = (req.query.q || '').toString().trim().toLowerCase();
-    const items = q
-      ? rows.filter(r =>
-          (r.title||'').toLowerCase().includes(q) ||
-          (r.category||'').toLowerCase().includes(q) ||
-          (r.type||'').toLowerCase().includes(q)
-        )
-      : rows;
+    // 2) Parse + normalize; keep rows that have at least title + url
+    let items = parseCSV(csv).map(r => normalize(r, tab)).filter(r => r.title && r.url);
+
+    // 3) Optional filters (q/category) if you ever need them
+    const q   = String(req.query.q || '').trim().toLowerCase();
+    const cat = String(req.query.category || '').trim().toLowerCase();
+    if (q) {
+      items = items.filter(r =>
+        r.title.toLowerCase().includes(q) ||
+        (r.category||'').toLowerCase().includes(q) ||
+        (r.type||'').toLowerCase().includes(q) ||
+        (r.desc||'').toLowerCase().includes(q)
+      );
+    }
+    if (cat) items = items.filter(r => (r.category||'').toLowerCase().includes(cat));
 
     res.setHeader('Content-Type', 'application/json; charset=utf-8');
     res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=86400');
     res.status(200).json({ ok:true, count:items.length, items });
   } catch (err) {
     console.error('resources API error:', err);
-    res.status(500).json({ ok:false, error:'Failed to load sheet/tab' });
+    res.status(500).json({ ok:false, error:'Failed to load sheet tab' });
   }
 }
