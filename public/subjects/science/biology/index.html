@@ -13,11 +13,50 @@
   <link rel="canonical" href="https://teacharcade.com/subjects/science/biology/index.html" />
 
   <style>
-    /* Ensure links look like the U.S. History page */
-    .topic-card h3 a{color:#1d4ed8;text-decoration:underline}
-    .topic-card{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:20px}
-    .topic-grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-    .topic-card p{margin:.5rem 0 0;color:#475569}
+    /* Match U.S. History layout & card styling */
+    .container { max-width: 1100px; }
+
+    .topic-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 20px;
+      transition: box-shadow 0.15s ease, transform 0.15s ease;
+    }
+    .topic-card:hover {
+      box-shadow: 0 6px 18px rgba(2, 6, 23, 0.06);
+      transform: translateY(-1px);
+    }
+
+    .topic-grid {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(2, minmax(260px, 1fr));
+    }
+    @media (min-width: 1024px) {
+      .topic-grid {
+        grid-template-columns: repeat(3, minmax(260px, 1fr));
+      }
+    }
+
+    .topic-card h3 {
+      margin: 0 0 0.35rem 0;
+      font: 700 1.25rem/1.25 Poppins, system-ui, sans-serif;
+    }
+    .topic-card h3 a {
+      color: #1d4ed8;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .topic-card h3 a:hover {
+      color: #1e40af;
+    }
+
+    .topic-card p {
+      margin: 0.25rem 0 0;
+      color: #475569;
+      font: 600 0.95rem/1.35 Nunito, system-ui, sans-serif;
+    }
   </style>
 </head>
 
