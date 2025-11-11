@@ -1,6 +1,5 @@
-<!-- /assets/scripts/topic.v1.js -->
-<script>
-(async function () {
+// /assets/scripts/topic.v1.js  — robust, cache-busted fetch + visible errors
+(function () {
   const page = document.querySelector(".topic-page");
   if (!page) return;
 
@@ -11,7 +10,7 @@
 
   if (!TAB || !listEl) return;
 
-  // Helpers
+  // ---------- helpers ----------
   const safe = v => (v == null ? "" : String(v));
   const toHttps = u => {
     const s = safe(u).trim();
@@ -48,7 +47,7 @@
   };
 
   const pillClassFor = (label) => {
-    const l = label.toLowerCase();
+    const l = String(label || "").toLowerCase();
     if (l === "pdf") return "pill gray";
     if (l === "video") return "pill blue";
     if (l === "interactive") return "pill green";
@@ -59,43 +58,45 @@
     return "pill gray";
   };
 
-  function cardHTML(r) {
+  const cardHTML = r => {
     const url = toHttps(r.url);
     const cat = r.category || "Resource";
-    const type = r.type ? `<span class="pill gray">${safe(r.type)}</span>` : "";
+    const typ = r.type ? `<span class="pill gray">${safe(r.type)}</span>` : "";
     const emoji = emojiFor(r.type, r.category);
     const kind = fileLabel(url, cat);
     const kindPill = `<span class="${pillClassFor(kind)}">${kind}</span>`;
+
     return `
       <div class="card">
         <div style="font-size:24px;margin-bottom:4px;">${emoji}</div>
         <h3 style="margin:0 0 8px;">${safe(r.title)}</h3>
         <p class="meta">
           <span class="pill">${safe(cat)}</span>
-          ${type}
+          ${typ}
           ${kindPill}
         </p>
         ${url ? `<a class="cta" href="${url}" target="_blank" rel="noopener noreferrer">View Resource</a>` : ""}
       </div>
     `;
-  }
+  };
+
+  const bucket = (cat) => {
+    const c = safe(cat).toLowerCase();
+    if (c.includes("worksheet")) return "worksheets";
+    if (c.includes("lesson") || c.includes("guide") || c.includes("plan")) return "lessons";
+    if (c.includes("primary")) return "primary-sources";
+    if (c.includes("game") || c.includes("interactive")) return "games";
+    if (c.includes("video")) return "videos";
+    if (c.includes("quiz") || c.includes("assessment") || c.includes("test")) return "assessments";
+    if (c.includes("slides") || c.includes("presentation")) return "presentations";
+    if (c.includes("project") || c.includes("activity")) return "projects";
+    return "other";
+  };
 
   function buildTabsFrom(rows) {
     if (!tabsEl) return;
-    const getBucket = (cat) => {
-      const c = safe(cat).toLowerCase();
-      if (c.includes("worksheet")) return "worksheets";
-      if (c.includes("lesson") || c.includes("guide") || c.includes("plan")) return "lessons";
-      if (c.includes("primary")) return "primary-sources";
-      if (c.includes("game") || c.includes("interactive")) return "games";
-      if (c.includes("video")) return "videos";
-      if (c.includes("quiz") || c.includes("assessment") || c.includes("test")) return "assessments";
-      if (c.includes("slides") || c.includes("presentation")) return "presentations";
-      if (c.includes("project") || c.includes("activity")) return "projects";
-      return "other";
-    };
-
     const LABEL = {
+      "all":"All",
       "worksheets":"Worksheets",
       "lessons":"Lessons",
       "primary-sources":"Primary Sources",
@@ -106,41 +107,23 @@
       "projects":"Projects",
       "other":"Other"
     };
-
-    const present = new Set(rows.map(r => getBucket(r.category)));
+    const present = new Set(rows.map(r => bucket(r.category)));
     const ordered = ["all","worksheets","lessons","primary-sources","games","videos","assessments","presentations","projects","other"]
       .filter(k => k === "all" || present.has(k));
-
     tabsEl.innerHTML = ordered
-      .map(k => `<button class="tab" role="tab" data-tab="${k}" aria-selected="${k==="all"}">${LABEL[k] || "All"}</button>`)
+      .map(k => `<button class="tab" role="tab" data-tab="${k}" aria-selected="${k==="all"}">${LABEL[k]}</button>`)
       .join("");
-
     tabsEl.querySelectorAll(".tab").forEach(btn => {
       btn.addEventListener("click", () => {
         tabsEl.querySelectorAll(".tab").forEach(x => x.setAttribute("aria-selected","false"));
         btn.setAttribute("aria-selected","true");
-        const k = btn.dataset.tab;
-        renderList(rows, k);
+        renderList(currentRows, btn.dataset.tab);
       });
     });
   }
 
   function renderList(rows, activeTab = "all") {
     const q = safe(searchEl?.value).toLowerCase().trim();
-
-    const bucket = (cat) => {
-      const c = safe(cat).toLowerCase();
-      if (c.includes("worksheet")) return "worksheets";
-      if (c.includes("lesson") || c.includes("guide") || c.includes("plan")) return "lessons";
-      if (c.includes("primary")) return "primary-sources";
-      if (c.includes("game") || c.includes("interactive")) return "games";
-      if (c.includes("video")) return "videos";
-      if (c.includes("quiz") || c.includes("assessment") || c.includes("test")) return "assessments";
-      if (c.includes("slides") || c.includes("presentation")) return "presentations";
-      if (c.includes("project") || c.includes("activity")) return "projects";
-      return "other";
-    };
-
     const filtered = rows.filter(r => {
       const matchesTab = (activeTab === "all") || (bucket(r.category) === activeTab);
       const matchesQ = !q ||
@@ -149,61 +132,60 @@
         safe(r.type).toLowerCase().includes(q);
       return matchesTab && matchesQ;
     });
-
     listEl.innerHTML = filtered.length
       ? filtered.map(cardHTML).join("")
       : `<div class="card" style="grid-column:1/-1;">No matching resources yet.</div>`;
   }
 
   async function fetchAPI(tab) {
+    // cache buster avoids stale CDN/browser caches
     const url = `/api/resources?tab=${encodeURIComponent(tab)}&t=${Date.now()}`;
     const r = await fetch(url, { cache: "no-store" });
     if (!r.ok) throw new Error(`API ${r.status}`);
     const data = await r.json();
-    if (!data || data.ok === false) throw new Error(data?.error || "API error");
-    return data.items || data.data || [];
+    if (data && data.ok !== false) return data.items || data.data || [];
+    throw new Error(data?.error || "API error");
   }
 
-  async function fetchStaticAndFilter(tab) {
-    const r = await fetch("/assets/data/resources.json", { cache: "no-store" });
+  async function fetchStaticFallback(tab) {
+    const r = await fetch("/assets/data/resources.json?v=" + Date.now(), { cache: "no-store" });
     if (!r.ok) throw new Error(`static ${r.status}`);
     const all = await r.json();
-    // Accept exact match OR contains (to be tolerant of naming)
     const t = tab.toLowerCase();
-    return (all || []).filter(
-      it => safe(it.topic).toLowerCase() === t || safe(it.topic).toLowerCase().includes(t)
-    );
+    return (all || []).filter(it => {
+      const tt = safe(it.topic).toLowerCase();
+      return tt === t || tt.includes(t);
+    });
   }
 
-  // ---- Load flow
+  // ---------- load ----------
+  let currentRows = [];
   listEl.innerHTML = `<div class="card" style="grid-column:1/-1;">Loading resources…</div>`;
 
-  try {
-    let items = await fetchAPI(TAB);
-
-    // If API returns nothing, be tolerant and try the static fallback
-    if (!items || !items.length) {
-      console.warn("[topic] Empty from API, trying static JSON fallback");
-      items = await fetchStaticAndFilter(TAB);
+  (async () => {
+    try {
+      currentRows = await fetchAPI(TAB);
+      if (!currentRows.length) {
+        console.warn("[topic] API returned 0, trying static fallback");
+        currentRows = await fetchStaticFallback(TAB);
+      }
+      if (!currentRows.length) {
+        listEl.innerHTML = `<div class="card" style="grid-column:1/-1;">No matching resources yet.</div>`;
+        return;
+      }
+      buildTabsFrom(currentRows);
+      renderList(currentRows, "all");
+      if (searchEl) searchEl.addEventListener("input", () => {
+        const active = tabsEl?.querySelector('[aria-selected="true"]')?.dataset.tab || "all";
+        renderList(currentRows, active);
+      });
+    } catch (err) {
+      console.error("[topic] load error:", err);
+      listEl.innerHTML = `
+        <div class="card" style="grid-column:1/-1;color:#b91c1c;">
+          Error loading resources: ${safe(err.message)}<br>
+          <small>Tab: ${TAB}</small>
+        </div>`;
     }
-
-    if (!items.length) {
-      listEl.innerHTML = `<div class="card" style="grid-column:1/-1;">No matching resources yet.</div>`;
-      return;
-    }
-
-    // Build tabs + initial render
-    buildTabsFrom(items);
-    renderList(items, "all");
-
-    // Wire search live filter
-    if (searchEl) searchEl.addEventListener("input", () => renderList(items, (tabsEl?.querySelector('[aria-selected="true"]')?.dataset.tab) || "all"));
-
-  } catch (err) {
-    console.error("[topic] load error:", err);
-    listEl.innerHTML = `<div class="card" style="grid-column:1/-1;color:#b91c1c;">
-      Couldn't load resources. Please try again later.
-    </div>`;
-  }
+  })();
 })();
-</script>
