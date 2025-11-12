@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Teach Arcade Escape</title>
+  <meta name="description" content="Interactive classroom escape rooms." />
+  <link rel="stylesheet" href="/escape/css/base.css" />
+</head>
+<body>
+  <!-- HUD -->
+  <header class="hud">
+    <div class="hud-left">
+      <div class="progress"><span id="progressBar"></span></div>
+      <div id="progressText" class="muted">Loading…</div>
+    </div>
+    <div class="hud-right">
+      <button id="hintBtn" class="btn ghost" aria-describedby="hintNote">💡 Hint (–30s)</button>
+      <span id="hintNote" class="sr-only">Using a hint subtracts thirty seconds.</span>
+      <div class="timer" id="timer" aria-live="polite">--:--</div>
+      <button id="audioToggle" class="btn alt" aria-pressed="false" aria-label="Toggle audio">🔇</button>
+    </div>
+  </header>
+
+  <!-- Stage -->
+  <main class="stage">
+    <section id="sceneRoot" class="scene" role="region" aria-label="Scene content"></section>
+    <aside class="sidebar">
+      <section class="panel" aria-labelledby="invTitle">
+        <h3 id="invTitle">Inventory</h3>
+        <ul id="invList" class="inventory"></ul>
+      </section>
+      <section class="panel" aria-labelledby="journalTitle">
+        <h3 id="journalTitle">Field Journal</h3>
+        <div id="journalFeed" class="journal"></div>
+      </section>
+      <button id="continueBtn" class="btn primary" disabled>Continue Mission →</button>
+    </aside>
+  </main>
+
+  <!-- Ambient (optional; we leave src empty until you add audio) -->
+  <audio id="ambience" preload="auto" loop></audio>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+  <!-- Engine -->
+  <script src="/escape/js/scenes.js"></script>
+  <script src="/escape/js/app.js"></script>
+
+  <!-- Room loader -->
+  <script>
+    (function loadRoom(){
+      const qs = new URLSearchParams(location.search);
+      const roomId = (qs.get('room') || 'wwi').toLowerCase();
+
+      // Room helper for asset paths
+      window.ROOM = {
+        id: roomId,
+        basePath: `/escape/rooms/${roomId}`,
+        asset: (p)=> `/escape/rooms/${roomId}/assets/${p}`
+      };
+
+      const s = document.createElement('script');
+      s.src = `${ROOM.basePath}/data.js`;
+      s.onload = ()=> window.__escape_boot && window.__escape_boot();
+      s.onerror = ()=> {
+        document.getElementById('sceneRoot').innerHTML =
+          '<div class="card">Room failed to load. Check the <span class="kbd">room</span> URL parameter.</div>';
+      };
+      document.body.appendChild(s);
+    })();
+  </script>
+</body>
+</html>
