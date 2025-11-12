@@ -50,6 +50,12 @@
     .filters-row input[type="search"]{flex:1;min-width:220px;padding:10px 12px;border:1px solid #cbd5e1;border-radius:10px}
     #resource-list.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
     .card h3{margin:0 0 8px}.meta{margin:0 0 12px;color:#475569;font:600 13px/1.4 Nunito,sans-serif}
+
+    /* Escape Room CTA (added) */
+    .esc-cta{margin:18px 0 24px 0;padding:12px;border:1px solid #e5e7eb;border-radius:10px;background:#f7f9ff}
+    .esc-cta-btn{display:inline-block;background:#111827;color:#ffffff;text-decoration:none;padding:10px 14px;border-radius:8px;font-weight:700}
+    .esc-cta-btn:hover{opacity:.9}
+    .esc-cta-note{margin:8px 0 0 0;color:#374151;font-size:.95rem}
   </style>
 </head>
 <body>
@@ -70,6 +76,12 @@
 
     <h1>World War I</h1>
     <p>Curated lessons, worksheets, primary sources, videos, and activities.</p>
+
+    <!-- Escape Room CTA -->
+    <div class="esc-cta">
+      <a class="esc-cta-btn" href="/escape/?room=wwi" rel="noopener">🎮 Play the WWI Escape Room</a>
+      <p class="esc-cta-note">Student-led mission • 20–40 minutes • Works on Chromebooks & iPads</p>
+    </div>
 
     <div class="filters-row">
       <input id="searchInput" type="search" placeholder="Search titles…" aria-label="Search resources" />
