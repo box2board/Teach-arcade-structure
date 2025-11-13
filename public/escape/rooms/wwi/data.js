@@ -27,8 +27,54 @@ window.ROOM_DATA = {
       hint: 'Think build-up → treaties → empires → pride.'
     },
 
-    { id: 's3', title: 'Web of Alliances', type: 'sort' },         // placeholder
-    { id: 's4', title: 'War on All Fronts', type: 'map' },         // placeholder
+    { id: 's3',
+      title: 'Frontline Intel',
+      type: 'sort',
+      prompt: 'Assign each event to the Western or Eastern Front.',
+      items: [
+        {
+          id: 'trench-france',
+          label: 'Deep trench lines across France and Belgium',
+          front: 'west'
+        },
+        {
+          id: 'somme',
+          label: 'Battle of the Somme with huge casualties and little gain',
+          front: 'west'
+        },
+        {
+          id: 'verdun',
+          label: 'Long, grinding battle at Verdun',
+          front: 'west'
+        },
+        {
+          id: 'tannenberg',
+          label: 'Germany crushes a Russian army at Tannenberg',
+          front: 'east'
+        },
+        {
+          id: 'retreat',
+          label: 'Russian army retreats because of shortages and poor supplies',
+          front: 'east'
+        },
+        {
+          id: 'revolution',
+          label: 'Russia leaves the war after the 1917 Revolution',
+          front: 'east'
+        }
+      ]
+    },
+
+    { id: 's4',
+      title: 'War on All Fronts',
+      type: 'map',
+      hotspots: [
+        { id: 'west-front', x: 35, y: 40 },
+        { id: 'east-front', x: 65, y: 35 },
+        { id: 'south-front', x: 50, y: 70 }
+      ],
+      correct: 'west-front'
+    },
 
     { id: 's5',
       title: 'Intercepted Messages',
@@ -43,7 +89,20 @@ window.ROOM_DATA = {
       hint: 'One sank in the Atlantic; the other promised Texas, New Mexico, Arizona.'
     },
 
-    { id: 's6', title: 'Weapons of War', type: 'multiselect' },    // placeholder
+    { id: 's6',
+      title: 'Weapons of War',
+      type: 'multiselect',
+      options: [
+        { id:'tanks',        label:'Tanks' },
+        { id:'poison-gas',   label:'Poison gas' },
+        { id:'u-boats',      label:'U-boats (submarines)' },
+        { id:'airplanes',    label:'Airplanes used in combat' },
+        { id:'machine-guns', label:'Rapid-fire machine guns' },
+        { id:'nuclear',      label:'Nuclear bombs' },
+        { id:'radar',        label:'Radar tracking' }
+      ],
+      correct: ['tanks','poison-gas','u-boats','airplanes','machine-guns']
+    },
 
     { id: 's7',
       title: 'Hold the Line',
@@ -52,6 +111,11 @@ window.ROOM_DATA = {
       journalOnSolve: 'Unit survived the night. Radio access possible.'
     },
 
-    { id: 's8', title: 'Armistice Transmission', type: 'final' }   // placeholder
+    { id: 's8',
+      title: 'Armistice Transmission',
+      type: 'final',
+      scrambled: 'Eulqj wkh zdu wr dq hqg',
+      accepts: ['bring the war to an end']
+    }
   ]
 };
