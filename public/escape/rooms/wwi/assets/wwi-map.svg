@@ -1,154 +1,134 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
-  <!-- Dark blueprint background -->
-  <rect x="0" y="0" width="1200" height="800" fill="#020617"/>
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 800 450"
+  role="img"
+  aria-labelledby="title desc">
+  <title id="title">WWI Europe – Operation Map</title>
+  <desc id="desc">
+    Stylized blueprint map of Europe with faint internal borders for major
+    powers during World War I.
+  </desc>
 
-  <!-- Outer frame -->
-  <rect x="40" y="40" width="1120" height="720"
-        fill="none" stroke="#1f2937" stroke-width="2"/>
+  <defs>
+    <!-- Blueprint grid pattern -->
+    <pattern id="grid" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#0b1220" stroke-width="1"/>
+    </pattern>
 
-  <!-- Subtle grid -->
-  <g stroke="#0f172a" stroke-width="1">
-    <!-- vertical lines -->
-    <g>
-      <line x1="80" y1="40" x2="80" y2="760"/>
-      <line x1="160" y1="40" x2="160" y2="760"/>
-      <line x1="240" y1="40" x2="240" y2="760"/>
-      <line x1="320" y1="40" x2="320" y2="760"/>
-      <line x1="400" y1="40" x2="400" y2="760"/>
-      <line x1="480" y1="40" x2="480" y2="760"/>
-      <line x1="560" y1="40" x2="560" y2="760"/>
-      <line x1="640" y1="40" x2="640" y2="760"/>
-      <line x1="720" y1="40" x2="720" y2="760"/>
-      <line x1="800" y1="40" x2="800" y2="760"/>
-      <line x1="880" y1="40" x2="880" y2="760"/>
-      <line x1="960" y1="40" x2="960" y2="760"/>
-      <line x1="1040" y1="40" x2="1040" y2="760"/>
-      <line x1="1120" y1="40" x2="1120" y2="760"/>
-    </g>
-    <!-- horizontal lines -->
-    <g>
-      <line x1="40" y1="80" x2="1160" y2="80"/>
-      <line x1="40" y1="140" x2="1160" y2="140"/>
-      <line x1="40" y1="200" x2="1160" y2="200"/>
-      <line x1="40" y1="260" x2="1160" y2="260"/>
-      <line x1="40" y1="320" x2="1160" y2="320"/>
-      <line x1="40" y1="380" x2="1160" y2="380"/>
-      <line x1="40" y1="440" x2="1160" y2="440"/>
-      <line x1="40" y1="500" x2="1160" y2="500"/>
-      <line x1="40" y1="560" x2="1160" y2="560"/>
-      <line x1="40" y1="620" x2="1160" y2="620"/>
-      <line x1="40" y1="680" x2="1160" y2="680"/>
-      <line x1="40" y1="740" x2="1160" y2="740"/>
-    </g>
-  </g>
+    <!-- Stroke styles -->
+    <style>
+      .outline   { fill:none; stroke:#38bdf8; stroke-width:2; }
+      .boundary  { fill:none; stroke:#1d4ed8; stroke-width:1.2; stroke-dasharray:4 4; opacity:.75; }
+      .coast     { fill:rgba(15,23,42,0.9); stroke:#38bdf8; stroke-width:2; }
+      .label     { fill:#38bdf8; font-family:system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+                   font-size:10px; letter-spacing:0.08em; text-transform:uppercase; opacity:.8; }
+    </style>
+  </defs>
 
-  <!-- Title -->
-  <text x="64" y="88" fill="#38bdf8"
-        font-family="system-ui,-apple-system,BlinkMacSystemFont,'SF Mono',monospace"
-        font-size="24">
-    WWI EUROPE – OPERATION MAP
-  </text>
+  <!-- Background + grid -->
+  <rect x="0" y="0" width="800" height="450" fill="#020617" />
+  <rect x="40" y="40" width="720" height="370" fill="url(#grid)" stroke="#020617" stroke-width="2"/>
 
-  <!-- Stylized Europe outline (very simplified, but recognizable) -->
-  <path d="
-      M 220 210
-      L 260 190 L 320 170 L 380 175 L 430 190
-      L 470 210 L 510 220 L 540 250 L 580 260
-      L 640 260 L 690 270 L 730 290 L 760 320
-      L 780 360 L 800 400 L 810 440 L 800 470
-      L 770 500 L 730 520 L 690 540 L 650 550
-      L 610 560 L 560 570 L 520 570 L 480 560
-      L 440 540 L 410 520 L 380 500 L 350 490
-      L 310 470 L 280 450 L 250 430 L 230 410
-      L 220 380 L 210 340 L 210 300 Z"
-        fill="none"
-        stroke="#38bdf8"
-        stroke-width="2"/>
+  <!-- MAIN CONTINENT MASS (simplified but recognizable Europe) -->
+  <!-- Mainland Europe silhouette (Spain, France, Germany, Balkans, western Russia) -->
+  <path class="coast" d="
+    M 140 290
+    L 120 260 125 235 140 220 170 210 200 205
+    L 225 200 250 190 270 180 295 170
+    L 320 165 340 160 360 158 385 158
+    L 410 160 435 165 460 172 485 180
+    L 515 190 540 205 565 220 585 240
+    L 600 260 610 280 615 300 610 320
+    L 595 335 575 345 550 352 520 357
+    L 490 360 460 362 430 362
+    L 400 360 375 354 350 345
+    L 330 337 310 330 290 322
+    L 270 315 250 308 230 302
+    L 210 298 190 295 170 293
+    Z" />
 
-  <!-- U.K. island -->
-  <path d="
-      M 180 220
-      L 200 210 L 220 220 L 225 240
-      L 215 260 L 195 265 L 180 250 Z"
-        fill="none"
-        stroke="#38bdf8"
-        stroke-width="2"/>
+  <!-- Iberian peninsula bump -->
+  <path class="coast" d="
+    M 140 290
+    L 115 305 110 325 125 345 150 355 185 358
+    L 205 355 210 340 200 325 175 310 160 300
+    Z" />
 
-  <!-- Italy peninsula -->
-  <path d="
-      M 430 520
-      L 445 540 L 455 560 L 450 580
-      L 440 595 L 430 585 L 420 560 Z"
-        fill="none"
-        stroke="#38bdf8"
-        stroke-width="2"/>
+  <!-- Italian peninsula (boot) -->
+  <path class="coast" d="
+    M 290 322
+    L 300 340 305 365 295 380 305 392 325 392
+    L 340 388 345 378 338 365 335 345 320 335
+    Z" />
 
-  <!-- Ottoman / Balkans chunk -->
-  <path d="
-      M 560 560
-      L 610 570 L 660 580 L 690 600
-      L 700 630 L 680 650 L 640 655
-      L 600 650 L 570 630 L 555 600 Z"
-        fill="none"
-        stroke="#38bdf8"
-        stroke-width="2"/>
+  <!-- Balkans / Greece extension -->
+  <path class="coast" d="
+    M 410 362
+    L 430 378 440 392 455 400 470 397 478 385 472 370 460 352
+    Z" />
 
-  <!-- Labels for key countries (light, blueprint-style) -->
-  <text x="300" y="260" fill="#94a3b8"
-        font-family="system-ui,-apple-system,BlinkMacSystemFont,'SF Mono',monospace"
-        font-size="16">FRANCE</text>
+  <!-- British Isles -->
+  <path class="coast" d="
+    M 210 150
+    L 200 138 198 120 205 105 220 100 235 105 240 120 235 135 230 145 Z" />
+  <path class="coast" d="
+    M 225 160
+    L 215 170 218 185 230 192 242 188 245 176 238 166 Z" />
 
-  <text x="370" y="235" fill="#94a3b8"
-        font-family="system-ui,-apple-system,BlinkMacSystemFont,'SF Mono',monospace"
-        font-size="16">BELGIUM</text>
+  <!-- Scandinavia (stylized southern portion) -->
+  <path class="coast" d="
+    M 410 160
+    L 420 135 435 120 455 110 475 115 485 130 487 150 480 165 460 172 Z" />
 
-  <text x="430" y="250" fill="#94a3b8"
-        font-family="system-ui,-apple-system,BlinkMacSystemFont,'SF Mono',monospace"
-        font-size="16">GERMANY</text>
+  <!-- ====== INTERNAL BOUNDARIES (dashed, faint) ====== -->
 
-  <text x="540" y="260" fill="#94a3b8"
-        font-family="system-ui,-apple-system,BlinkMacSystemFont,'SF Mono',monospace"
-        font-size="16">AUSTRIA-HUNGARY</text>
+  <!-- France / Spain border -->
+  <path class="boundary" d="
+    M 185 358
+    L 190 335 185 320 170 310 150 300" />
 
-  <text x="640" y="300" fill="#94a3b8"
-        font-family="system-ui,-apple-system,BlinkMacSystemFont,'SF Mono',monospace"
-        font-size="16">RUSSIA</text>
+  <!-- France / Germany -->
+  <path class="boundary" d="
+    M 250 308
+    L 252 285 260 265 275 245 295 230 310 220" />
 
-  <text x="175" y="205" fill="#94a3b8"
-        font-family="system-ui,-apple-system,BlinkMacSystemFont,'SF Mono',monospace"
-        font-size="16">U.K.</text>
+  <!-- Germany / Eastern Europe (toward Poland/Russia) -->
+  <path class="boundary" d="
+    M 310 220
+    L 335 210 360 205 388 205 415 210 440 220" />
 
-  <text x="445" y="610" fill="#94a3b8"
-        font-family="system-ui,-apple-system,BlinkMacSystemFont,'SF Mono',monospace"
-        font-size="16">ITALY</text>
+  <!-- Eastern Europe / Russia bulk -->
+  <path class="boundary" d="
+    M 440 220
+    L 468 230 495 242 520 258 545 278 565 300" />
 
-  <text x="585" y="645" fill="#94a3b8"
-        font-family="system-ui,-apple-system,BlinkMacSystemFont,'SF Mono',monospace"
-        font-size="16">OTTOMAN EMPIRE</text>
+  <!-- Alps / Italy boundary -->
+  <path class="boundary" d="
+    M 295 230
+    L 305 245 310 260 305 280 295 300" />
 
-  <!-- Front zones (used conceptually; hotspots sit on top) -->
-  <!-- Western Front area -->
-  <rect x="290" y="260" width="180" height="120"
-        fill="rgba(56,189,248,0.04)"
-        stroke="#38bdf8" stroke-width="2" stroke-dasharray="6 6"/>
-  <text x="300" y="290" fill="#38bdf8"
-        font-family="system-ui,-apple-system,BlinkMacSystemFont,'SF Mono',monospace"
-        font-size="14">WESTERN FRONT</text>
+  <!-- Balkans separation -->
+  <path class="boundary" d="
+    M 360 345
+    L 380 340 400 338 420 340 440 352" />
 
-  <!-- Eastern Front area -->
-  <rect x="560" y="270" width="220" height="130"
-        fill="rgba(56,189,248,0.04)"
-        stroke="#38bdf8" stroke-width="2" stroke-dasharray="6 6"/>
-  <text x="570" y="300" fill="#38bdf8"
-        font-family="system-ui,-apple-system,BlinkMacSystemFont,'SF Mono',monospace"
-        font-size="14">EASTERN FRONT</text>
+  <!-- Southern Europe / Ottoman area (very stylized) -->
+  <path class="boundary" d="
+    M 440 352
+    L 455 360 470 370 485 380" />
 
-  <!-- Southern / Balkan Front area -->
-  <rect x="470" y="500" width="220" height="120"
-        fill="rgba(56,189,248,0.04)"
-        stroke="#38bdf8" stroke-width="2" stroke-dasharray="6 6"/>
-  <text x="480" y="530" fill="#38bdf8"
-        font-family="system-ui,-apple-system,BlinkMacSystemFont,'SF Mono',monospace"
-        font-size="14">SOUTHERN FRONT</text>
+  <!-- ====== REGION TITLE (small, non-intrusive) ====== -->
+  <text class="label" x="80" y="70">WWI EUROPE – OPERATION MAP</text>
+
+  <!-- Faint region hints (optional, very subtle rectangles where your hotspots roughly are) -->
+  <rect x="255" y="215" width="130" height="110"
+        fill="none" stroke="#38bdf8" stroke-width="1"
+        stroke-dasharray="6 6" opacity="0.2"/>
+  <rect x="410" y="205" width="150" height="120"
+        fill="none" stroke="#38bdf8" stroke-width="1"
+        stroke-dasharray="6 6" opacity="0.18"/>
+  <rect x="320" y="285" width="160" height="90"
+        fill="none" stroke="#38bdf8" stroke-width="1"
+        stroke-dasharray="6 6" opacity="0.14"/>
 </svg>
