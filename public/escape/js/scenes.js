@@ -152,7 +152,150 @@
       dispose(){ unsub.forEach(fn=>fn()); }
     };
   }
+/* ---------- Scene 3: Western vs Eastern Front Sorting ---------- */
+function S3() {
+  let solved = false;
+  let unsub = [];
 
+  return {
+    render(root, api) {
+      const conf = ROOM_DATA.scenes.find(s => s.id === 's3');
+
+      root.innerHTML = `
+        <h2>Frontline Intel</h2>
+        <p class="muted">Drag each event to the correct front: Western or Eastern.</p>
+
+        <div class="grid" style="grid-template-columns:1fr 1fr;gap:20px;margin:16px 0">
+          <div class="card" id="westZone">
+            <strong>🛡 Western Front</strong>
+            <ul class="dropzone" data-zone="west"></ul>
+          </div>
+          <div class="card" id="eastZone">
+            <strong>🗺 Eastern Front</strong>
+            <ul class="dropzone" data-zone="east"></ul>
+          </div>
+        </div>
+
+        <div class="card">
+          <strong>Available Intel</strong>
+          <ul id="s3Pool" class="drag-pool"></ul>
+        </div>
+
+        <button id="s3Check" class="btn primary" style="margin-top:12px">Check Answers</button>
+        <span id="s3Status" class="muted" style="margin-left:10px"></span>
+      `;
+
+      const pool = root.querySelector('#s3Pool');
+      const west = root.querySelector('#westZone .dropzone');
+      const east = root.querySelector('#eastZone .dropzone');
+      const status = root.querySelector('#s3Status');
+      const btnCheck = root.querySelector('#s3Check');
+
+      pool.innerHTML = conf.items.map(it => `
+        <li class="s3-item" draggable="true" data-id="${it.id}">
+          ${it.label}
+        </li>
+      `).join('');
+
+      enableDragAndDrop();
+
+      function enableDragAndDrop() {
+        const items = root.querySelectorAll('.s3-item');
+        const zones = root.querySelectorAll('.dropzone');
+
+        items.forEach(li => {
+          li.addEventListener('dragstart', e => {
+            e.dataTransfer.setData('text/plain', li.dataset.id);
+            li.classList.add('dragging');
+          });
+          li.addEventListener('dragend', () => li.classList.remove('dragging'));
+        });
+
+        zones.forEach(z => {
+          z.addEventListener('dragover', e => e.preventDefault());
+          z.addEventListener('drop', e => {
+            e.preventDefault();
+            const id = e.dataTransfer.getData('text/plain');
+            const dragged = root.querySelector(`[data-id="${id}"]`);
+            z.appendChild(dragged);
+          });
+        });
+      }
+
+      btnCheck.addEventListener('click', () => {
+        const westIDs = [...west.querySelectorAll('.s3-item')].map(el => el.dataset.id);
+        const eastIDs = [...east.querySelectorAll('.s3-item')].map(el => el.dataset.id);
+
+        const wOK = arraysEqual(westIDs.sort(), conf.correct.west.sort());
+        const eOK = arraysEqual(eastIDs.sort(), conf.correct.east.sort());
+
+        if (wOK && eOK) {
+          solved = true;
+          status.innerHTML = `<span style="color:var(--ok)">✔ Correct fronts identified.</span>`;
+          api.journal("Correctly identified Western & Eastern Front events.");
+          api.addItem({ id: "map-frag-2", label: "Map Fragment #2" });
+          api.enableContinue(true);
+        } else {
+          status.innerHTML = `<span style="color:var(--bad)">✖ Not quite. Try again.</span>`;
+        }
+      });
+
+      unsub.push(() => btnCheck.removeEventListener('click', () => {}));
+    },
+
+    validate() { return solved; },
+    showHint() { apiToast("Think trenches vs mobility: France/Belgium vs Russia."); },
+    dispose() { unsub.forEach(fn => fn()); }
+  };
+}
+
+function arraysEqual(a, b) {
+  return JSON.stringify(a) === JSON.stringify(b);
+}
+  /* ---------- Scene 4: Map Click Challenge ---------- */
+function S4() {
+  let solved = false;
+
+  return {
+    render(root, api) {
+      const conf = ROOM_DATA.scenes.find(s => s.id === 's4');
+
+      root.innerHTML = `
+        <h2>Map Recon</h2>
+        <p class="muted">Tap the correct region of Europe to locate the Western Front.</p>
+
+        <div class="map-wrapper">
+          <img src="/escape/assets/wwi-map.png" class="map-img">
+          ${conf.hotspots.map(h => `
+            <div class="hotspot" data-id="${h.id}"
+              style="left:${h.x}%;top:${h.y}%"></div>
+          `).join('')}
+        </div>
+
+        <div id="s4Status" class="muted" style="margin-top:10px"></div>
+      `;
+
+      const status = root.querySelector('#s4Status');
+      root.querySelectorAll('.hotspot').forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (btn.dataset.id === conf.correct) {
+            solved = true;
+            status.innerHTML = `<span style="color:var(--ok)">✔ Correct region selected.</span>`;
+            api.journal("Western Front located on map.");
+            api.addItem({ id: "map-frag-3", label: "Map Fragment #3" });
+            api.enableContinue(true);
+          } else {
+            status.innerHTML = `<span style="color:var(--bad)">✖ Incorrect region.</span>`;
+          }
+        });
+      });
+    },
+
+    validate() { return solved; },
+    showHint() { apiToast("Think: France & Belgium, not the Eastern side near Russia."); },
+    dispose() {}
+  };
+}
   /* ---------- Scene 5: Dual input (Lusitania + Zimmerman) ---------- */
   function S5(){
     let ok1=false, ok2=false;
@@ -217,7 +360,57 @@
       dispose(){ unsub.forEach(fn=>fn()); }
     };
   }
+/* ---------- Scene 6: Multiselect (WWI Technologies) ---------- */
+function S6() {
+  let solved = false;
 
+  return {
+    render(root, api) {
+      const conf = ROOM_DATA.scenes.find(s => s.id === 's6');
+
+      root.innerHTML = `
+        <h2>Arsenal Review</h2>
+        <p class="muted">Select ALL technologies first used or widely used in WWI.</p>
+
+        <div class="grid" id="s6Grid" style="margin-top:12px">
+          ${conf.options.map(o => `
+            <div class="card s6opt" data-id="${o.id}">
+              <input type="checkbox"> ${o.label}
+            </div>
+          `).join('')}
+        </div>
+
+        <button id="s6Check" class="btn primary" style="margin-top:12px">Check</button>
+        <span id="s6Status" class="muted" style="margin-left:10px"></span>
+      `;
+
+      const status = root.querySelector('#s6Status');
+      const btnCheck = root.querySelector('#s6Check');
+
+      btnCheck.addEventListener('click', () => {
+        const selected = [...root.querySelectorAll('.s6opt input:checked')]
+          .map(i => i.parentElement.dataset.id);
+
+        const isCorrect =
+          arraysEqual(selected.sort(), conf.correct.sort());
+
+        if (isCorrect) {
+          solved = true;
+          status.innerHTML = `<span style="color:var(--ok)">✔ Correct technologies identified.</span>`;
+          api.journal("Verified WWI technological advancements.");
+          api.addItem({ id: "tech-kit", label: "Tech Kit" });
+          api.enableContinue(true);
+        } else {
+          status.innerHTML = `<span style="color:var(--bad)">✖ Incorrect set. Think again.</span>`;
+        }
+      });
+    },
+
+    validate() { return solved; },
+    showHint() { apiToast("Hint: poison gas, tanks, machine guns, U-boats, airplanes."); },
+    dispose() {}
+  };
+}
   /* ---------- Scene 7: Decision Tree (gauges) ---------- */
   function S7(){
     let meters = {h:5, m:5, s:5};
@@ -323,13 +516,62 @@
       dispose(){ /* no-op */ }
     };
   }
+/* ---------- Scene 8: Final Cipher ---------- */
+function S8() {
+  let solved = false;
 
+  return {
+    render(root, api) {
+      const conf = ROOM_DATA.scenes.find(s => s.id === 's8');
+
+      root.innerHTML = `
+        <h2>Final Transmission</h2>
+        <p class="muted">Decode the scrambled message to complete the mission.</p>
+
+        <div class="card" style="margin-top:12px">
+          <strong>Scrambled:</strong>
+          <div class="muted" style="margin-top:6px;font-size:1.1rem">${conf.scrambled}</div>
+
+          <input id="s8Input" placeholder="Decoded message…" 
+            style="margin-top:10px;width:100%;padding:10px;border-radius:8px;background:#0a0c19;color:var(--ink);border:1px solid var(--line)">
+          <div id="s8Status" class="muted" style="margin-top:10px">Press Enter to check.</div>
+        </div>
+      `;
+
+      const input = root.querySelector('#s8Input');
+      const status = root.querySelector('#s8Status');
+
+      input.addEventListener('keydown', e => {
+        if (e.key !== 'Enter') return;
+
+        const val = input.value.trim().toLowerCase();
+        const accepted = conf.accepts.map(a => a.toLowerCase());
+
+        if (accepted.includes(val)) {
+          solved = true;
+          status.innerHTML = `<span style="color:var(--ok)">✔ Transmission decoded. Mission accomplished.</span>`;
+          api.journal("Final cipher solved; HQ contacted.");
+          api.enableContinue(true);
+        } else {
+          status.innerHTML = `<span style="color:var(--bad)">✖ Incorrect code.</span>`;
+        }
+      });
+    },
+
+    validate() { return solved; },
+    showHint() { apiToast("Try a simple letter-shift: think substitution cipher."); },
+    dispose() {}
+  };
+}
   /* ---------- Registry ---------- */
   window.SceneRegistry = {
     'match': S1,
     'order': S2,
+    'sort': S3,
+    'map': S4,
     'dual-input': S5,
-    'decision': S7
-    // sort, map, multiselect, final → to be implemented next
-  };
+    'multiselect': S6,
+    'decision': S7,
+    'final': S8
+};
 })();
