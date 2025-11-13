@@ -291,49 +291,66 @@
   }
 
   /* ---------- Scene 4: Map Click Challenge ---------- */
-  function S4() {
-    let solved = false;
+function S4() {
+  let solved = false;
 
-    return {
-      render(root, api) {
-        const conf = ROOM_DATA.scenes.find(s => s.id === 's4');
+  return {
+    render(root, api) {
+      const conf = ROOM_DATA.scenes.find(s => s.id === 's4');
 
-        root.innerHTML = `
-          <h2>Map Recon</h2>
-          <p class="muted">Tap the correct region of Europe to locate the Western Front.</p>
+      root.innerHTML = `
+        <h2>Map Recon</h2>
+        <p class="muted">Tap the correct region of Europe to locate the Western Front.</p>
 
-          <div class="map-wrapper">
-            <img src="/escape/assets/wwi-map.png" class="map-img">
-            ${conf.hotspots.map(h => `
-              <div class="hotspot" data-id="${h.id}"
-                style="left:${h.x}%;top:${h.y}%"></div>
-            `).join('')}
-          </div>
+        <div class="map-wrapper"
+             style="position:relative;max-width:720px;margin:16px auto;
+                    border-radius:12px;overflow:hidden;background:#020617;">
+          <img src="/escape/rooms/wwi/assets/wwi-map.svg"
+               alt="Map of Europe in World War I"
+               class="map-img"
+               style="display:block;width:100%;height:auto;">
 
-          <div id="s4Status" class="muted" style="margin-top:10px"></div>
-        `;
+          ${conf.hotspots.map(h => `
+            <button class="hotspot" data-id="${h.id}"
+              style="position:absolute;left:${h.x}%;top:${h.y}%;
+                     width:10%;height:10%;
+                     background:rgba(37,99,235,0.22);
+                     border:2px solid rgba(96,165,250,0.9);
+                     border-radius:999px;
+                     cursor:pointer;">
+            </button>
+          `).join('')}
+        </div>
 
-        const status = root.querySelector('#s4Status');
-        root.querySelectorAll('.hotspot').forEach(btn => {
-          btn.addEventListener('click', () => {
-            if (btn.dataset.id === conf.correct) {
-              solved = true;
-              status.innerHTML = `<span style="color:var(--ok)">✔ Correct region selected.</span>`;
-              api.journal("Western Front located on map.");
-              api.addItem({ id: "map-frag-3", label: "Map Fragment #3" });
-              api.enableContinue(true);
-            } else {
-              status.innerHTML = `<span style="color:var(--bad)">✖ Incorrect region.</span>`;
-            }
-          });
+        <div id="s4Status" class="muted" style="margin-top:10px"></div>
+      `;
+
+      const status = root.querySelector('#s4Status');
+
+      root.querySelectorAll('.hotspot').forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (btn.dataset.id === conf.correct) {
+            solved = true;
+            status.innerHTML =
+              `<span style="color:var(--ok)">✔ Correct region selected.</span>`;
+            api.journal("Western Front located on map.");
+            api.addItem({ id: "map-frag-3", label: "Map Fragment #3" });
+            api.enableContinue(true);
+          } else {
+            status.innerHTML =
+              `<span style="color:var(--bad)">✖ Incorrect region.</span>`;
+          }
         });
-      },
+      });
+    },
 
-      validate() { return solved; },
-      showHint() { apiToast("Think: France & Belgium, not the Eastern side near Russia."); },
-      dispose() {}
-    };
-  }
+    validate() { return solved; },
+    showHint() {
+      apiToast("Think: France & Belgium, not the Eastern side near Russia.");
+    },
+    dispose() {}
+  };
+}
 
   /* ---------- Scene 5: Dual input (Lusitania + Zimmerman) ---------- */
   function S5(){
