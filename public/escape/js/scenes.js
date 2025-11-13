@@ -152,33 +152,41 @@
       dispose(){ unsub.forEach(fn=>fn()); }
     };
   }
-/* ---------- Scene 3: Western vs Eastern Front Sorting ---------- */
+/* ---------- Scene 3: Western vs Eastern Front (touch friendly) ---------- */
 function S3() {
   let solved = false;
-  let unsub = [];
 
   return {
     render(root, api) {
+      // config for this scene (id: 's3' in ROOM_DATA.scenes)
       const conf = ROOM_DATA.scenes.find(s => s.id === 's3');
+
+      // derive correct answers from data: items with front: "west" or "east"
+      const correctWest = conf.items
+        .filter(it => it.front === 'west')
+        .map(it => it.id);
+      const correctEast = conf.items
+        .filter(it => it.front === 'east')
+        .map(it => it.id);
 
       root.innerHTML = `
         <h2>Frontline Intel</h2>
-        <p class="muted">Drag each event to the correct front: Western or Eastern.</p>
+        <p class="muted">Assign each event to the correct front: Western or Eastern.</p>
 
         <div class="grid" style="grid-template-columns:1fr 1fr;gap:20px;margin:16px 0">
           <div class="card" id="westZone">
             <strong>🛡 Western Front</strong>
-            <ul class="dropzone" data-zone="west"></ul>
+            <ul class="s3-zone" data-zone="west" style="margin-top:8px;list-style:none;padding:0;display:grid;gap:6px"></ul>
           </div>
           <div class="card" id="eastZone">
             <strong>🗺 Eastern Front</strong>
-            <ul class="dropzone" data-zone="east"></ul>
+            <ul class="s3-zone" data-zone="east" style="margin-top:8px;list-style:none;padding:0;display:grid;gap:6px"></ul>
           </div>
         </div>
 
         <div class="card">
           <strong>Available Intel</strong>
-          <ul id="s3Pool" class="drag-pool"></ul>
+          <ul id="s3Pool" style="margin-top:8px;list-style:none;padding:0;display:grid;gap:8px"></ul>
         </div>
 
         <button id="s3Check" class="btn primary" style="margin-top:12px">Check Answers</button>
@@ -186,71 +194,98 @@ function S3() {
       `;
 
       const pool = root.querySelector('#s3Pool');
-      const west = root.querySelector('#westZone .dropzone');
-      const east = root.querySelector('#eastZone .dropzone');
+      const west = root.querySelector('#westZone .s3-zone');
+      const east = root.querySelector('#eastZone .s3-zone');
       const status = root.querySelector('#s3Status');
       const btnCheck = root.querySelector('#s3Check');
 
-      pool.innerHTML = conf.items.map(it => `
-        <li class="s3-item" draggable="true" data-id="${it.id}">
-          ${it.label}
-        </li>
-      `).join('');
+      // render all items into the pool initially
+      pool.innerHTML = conf.items.map(it => renderPoolItem(it)).join('');
 
-      enableDragAndDrop();
+      // attach handlers for pool buttons (delegate)
+      pool.addEventListener('click', e => {
+        const btn = e.target.closest('button[data-move]');
+        if (!btn) return;
+        const id = btn.closest('[data-id]').dataset.id;
+        const dir = btn.dataset.move; // "west" or "east"
+        moveToZone(id, dir);
+      });
 
-      function enableDragAndDrop() {
-        const items = root.querySelectorAll('.s3-item');
-        const zones = root.querySelectorAll('.dropzone');
+      // function to move item into a front zone
+      function moveToZone(id, zone) {
+        const item = conf.items.find(i => i.id === id);
+        if (!item) return;
 
-        items.forEach(li => {
-          li.addEventListener('dragstart', e => {
-            e.dataTransfer.setData('text/plain', li.dataset.id);
-            li.classList.add('dragging');
-          });
-          li.addEventListener('dragend', () => li.classList.remove('dragging'));
-        });
+        // remove from pool
+        const nodeInPool = pool.querySelector(`[data-id="${id}"]`);
+        nodeInPool && nodeInPool.remove();
 
-        zones.forEach(z => {
-          z.addEventListener('dragover', e => e.preventDefault());
-          z.addEventListener('drop', e => {
-            e.preventDefault();
-            const id = e.dataTransfer.getData('text/plain');
-            const dragged = root.querySelector(`[data-id="${id}"]`);
-            z.appendChild(dragged);
-          });
-        });
+        const zoneEl = zone === 'west' ? west : east;
+        const li = document.createElement('li');
+        li.dataset.id = id;
+        li.className = 's3-assigned';
+        li.innerHTML = `
+          ${item.label}
+          <button type="button" data-reset class="btn tiny" style="margin-left:8px">↺</button>
+        `;
+        zoneEl.appendChild(li);
       }
 
-      btnCheck.addEventListener('click', () => {
-        const westIDs = [...west.querySelectorAll('.s3-item')].map(el => el.dataset.id);
-        const eastIDs = [...east.querySelectorAll('.s3-item')].map(el => el.dataset.id);
+      // allow sending back to pool
+      [west, east].forEach(zoneEl => {
+        zoneEl.addEventListener('click', e => {
+          const btn = e.target.closest('button[data-reset]');
+          if (!btn) return;
+          const li = btn.closest('[data-id]');
+          const id = li.dataset.id;
+          li.remove();
+          const item = conf.items.find(i => i.id === id);
+          if (!item) return;
+          pool.insertAdjacentHTML('beforeend', renderPoolItem(item));
+        });
+      });
 
-        const wOK = arraysEqual(westIDs.sort(), conf.correct.west.sort());
-        const eOK = arraysEqual(eastIDs.sort(), conf.correct.east.sort());
+      // "Check Answers" button
+      btnCheck.addEventListener('click', () => {
+        const westIDs = [...west.querySelectorAll('[data-id]')].map(el => el.dataset.id);
+        const eastIDs = [...east.querySelectorAll('[data-id]')].map(el => el.dataset.id);
+
+        const wOK = arraysEqual(westIDs.sort(), correctWest.slice().sort());
+        const eOK = arraysEqual(eastIDs.sort(), correctEast.slice().sort());
 
         if (wOK && eOK) {
           solved = true;
           status.innerHTML = `<span style="color:var(--ok)">✔ Correct fronts identified.</span>`;
-          api.journal("Correctly identified Western & Eastern Front events.");
-          api.addItem({ id: "map-frag-2", label: "Map Fragment #2" });
+          api.journal('Correctly assigned Western and Eastern Front events.');
+          api.addItem({ id: 'map-frag-2', label: 'Map Fragment #2' });
           api.enableContinue(true);
         } else {
-          status.innerHTML = `<span style="color:var(--bad)">✖ Not quite. Try again.</span>`;
+          status.innerHTML = `<span style="color:var(--bad)">✖ Not quite. Check each event again.</span>`;
+          api.enableContinue(false);
         }
       });
 
-      unsub.push(() => btnCheck.removeEventListener('click', () => {}));
+      // helper: render an item in the pool with move buttons
+      function renderPoolItem(it) {
+        return `
+          <li class="s3-item" data-id="${it.id}">
+            <div>${it.label}</div>
+            <div class="muted" style="margin-top:4px;font-size:.85rem">Send to:</div>
+            <div style="margin-top:4px;display:flex;gap:6px;flex-wrap:wrap">
+              <button type="button" class="btn tiny" data-move="west">Western Front</button>
+              <button type="button" class="btn tiny" data-move="east">Eastern Front</button>
+            </div>
+          </li>
+        `;
+      }
     },
 
     validate() { return solved; },
-    showHint() { apiToast("Think trenches vs mobility: France/Belgium vs Russia."); },
-    dispose() { unsub.forEach(fn => fn()); }
+    showHint() {
+      apiToast('Hint: Think trenches in France/Belgium vs fighting in Russia & Eastern Europe.');
+    },
+    dispose() { /* nothing to clean up for now */ }
   };
-}
-
-function arraysEqual(a, b) {
-  return JSON.stringify(a) === JSON.stringify(b);
 }
   /* ---------- Scene 4: Map Click Challenge ---------- */
 function S4() {
