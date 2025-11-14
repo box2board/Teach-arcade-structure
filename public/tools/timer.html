@@ -8,29 +8,172 @@
   <link rel="stylesheet" href="/assets/styles.css" />
 
   <style>
-    /* Page-specific polish (kept tiny) */
-    .tool-wrap{max-width:980px;margin:0 auto}
-    .mode-tabs{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}
-    .mode-btn{border:1px solid #cbd5e1;border-radius:999px;padding:8px 14px;background:#fff;font-weight:700;cursor:pointer}
-    .mode-btn[aria-selected="true"]{background:#2563eb;color:#fff;border-color:#2563eb}
-    .display{font:700 clamp(48px,8vw,96px)/1.1 "Poppins",system-ui;margin:16px 0}
-    .controls{display:flex;flex-wrap:wrap;gap:10px}
-    .controls .cta{min-width:110px}
-    .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-    .ghost{opacity:.9}
-    .small{font-size:.9rem;color:#475569}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
-    .panel{border:1px solid #e5e7eb;border-radius:14px;padding:14px;background:#fff}
-    .preset{border:1px solid #cbd5e1;background:#fff;border-radius:8px;padding:6px 10px;cursor:pointer}
-    .theme-swatch{width:28px;height:28px;border-radius:6px;border:1px solid #cbd5e1;cursor:pointer}
-    .laps{max-height:260px;overflow:auto;margin-top:6px}
-    .laps li{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dashed #e5e7eb;font-variant-tabular-nums:tabular-nums}
-    .flash{animation:flash 0.6s linear 6}
-    @keyframes flash{50%{background:#fee2e2}}
-    .ring{animation:ring 0.65s ease-in-out 6}
-    @keyframes ring{
-      0%{transform:rotate(0)} 25%{transform:rotate(12deg)}
-      50%{transform:rotate(-10deg)} 75%{transform:rotate(8deg)} 100%{transform:rotate(0)}
+    /* Layout + page polish */
+    body {
+      background: #f8fafc;
+    }
+    .tool-wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding-bottom: 32px;
+    }
+    .mode-tabs {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 16px 0;
+    }
+    .mode-btn {
+      border: 1px solid #cbd5e1;
+      border-radius: 999px;
+      padding: 8px 14px;
+      background: #fff;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    .mode-btn[aria-selected="true"] {
+      background: #2563eb;
+      color: #fff;
+      border-color: #2563eb;
+    }
+    .mode-btn.ghost {
+      opacity: 0.9;
+    }
+
+    .display {
+      font: 700 clamp(52px, 8vw, 96px)/1.1 "Poppins", system-ui;
+      margin: 18px 0;
+      text-align: center;
+      letter-spacing: 0.04em;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 8px;
+    }
+    .controls .cta {
+      min-width: 120px;
+    }
+
+    .row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .small {
+      font-size: 0.9rem;
+      color: #475569;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .panel {
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      padding: 14px;
+      background: #fff;
+    }
+
+    .preset {
+      border: 1px solid #cbd5e1;
+      background: #fff;
+      border-radius: 8px;
+      padding: 6px 10px;
+      cursor: pointer;
+      font-size: 0.85rem;
+    }
+
+    .theme-swatch {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      border: 1px solid #cbd5e1;
+      cursor: pointer;
+    }
+
+    .laps {
+      max-height: 260px;
+      overflow: auto;
+      margin-top: 6px;
+      padding-left: 1.1rem;
+    }
+    .laps li {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 0;
+      border-bottom: 1px dashed #e5e7eb;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .flash {
+      animation: flash 0.6s linear 6;
+    }
+    @keyframes flash {
+      50% { background: #fee2e2; }
+    }
+
+    .ring {
+      animation: ring 0.65s ease-in-out 6;
+    }
+    @keyframes ring {
+      0% { transform: rotate(0); }
+      25% { transform: rotate(12deg); }
+      50% { transform: rotate(-10deg); }
+      75% { transform: rotate(8deg); }
+      100% { transform: rotate(0); }
+    }
+
+    /* ---------- FULLSCREEN ENHANCEMENTS ---------- */
+
+    /* Make the whole tool center + expand in fullscreen */
+    :fullscreen .tool-wrap,
+    :-webkit-full-screen .tool-wrap {
+      max-width: none;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding-inline: 16px;
+    }
+
+    /* Big, dramatic timer in fullscreen */
+    :fullscreen #display,
+    :-webkit-full-screen #display {
+      font-size: clamp(96px, 18vw, 220px);
+      margin: 12px 0 4px;
+    }
+
+    /* Enlarge controls in fullscreen */
+    :fullscreen .controls,
+    :-webkit-full-screen .controls {
+      transform: scale(1.25);
+      transform-origin: center;
+      margin-bottom: 16px;
+    }
+
+    /* Slightly tighter panels in fullscreen so they don’t dominate */
+    :fullscreen .grid,
+    :-webkit-full-screen .grid {
+      max-width: 1040px;
+      width: 100%;
+    }
+
+    /* Hide breadcrumbs + footer in fullscreen to keep it clean */
+    :fullscreen .breadcrumbs,
+    :fullscreen footer,
+    :-webkit-full-screen .breadcrumbs,
+    :-webkit-full-screen footer {
+      display: none;
     }
   </style>
 </head>
@@ -40,9 +183,14 @@
   <script src="/assets/scripts/nav.js" defer></script>
 
   <main class="container tool-wrap">
-    <nav class="breadcrumbs"><a href="/">Home</a> › <a href="/tools/">Teacher Tools</a> › Timer & Stopwatch</nav>
+    <nav class="breadcrumbs">
+      <a href="/">Home</a> › <a href="/tools/">Teacher Tools</a> › Timer & Stopwatch
+    </nav>
+
     <h1>⏱️ Timer & Stopwatch</h1>
-    <p class="small">Fullscreen, keyboard controls, sound alerts, themes, and lap times.</p>
+    <p class="small">
+      Fullscreen, keyboard controls, sound alerts, themes, and lap times.
+    </p>
 
     <!-- Modes -->
     <div class="mode-tabs" role="tablist" aria-label="Mode">
@@ -55,7 +203,7 @@
     <div id="display" class="display" aria-live="polite">00:00.00</div>
 
     <!-- Controls -->
-    <div class="controls row">
+    <div class="controls">
       <button id="btn-start" class="cta">Start (Space)</button>
       <button id="btn-lap" class="cta ghost">Lap (L)</button>
       <button id="btn-reset" class="cta ghost">Reset (R)</button>
@@ -67,8 +215,14 @@
       <section class="panel" id="count-options" hidden>
         <h3 style="margin:0 0 8px">Countdown</h3>
         <div class="row">
-          <label>Minutes <input id="min" type="number" min="0" step="1" value="5" style="width:80px"></label>
-          <label>Seconds <input id="sec" type="number" min="0" max="59" step="1" value="00" style="width:80px"></label>
+          <label>
+            Minutes
+            <input id="min" type="number" min="0" step="1" value="5" style="width:80px" />
+          </label>
+          <label>
+            Seconds
+            <input id="sec" type="number" min="0" max="59" step="1" value="00" style="width:80px" />
+          </label>
           <span class="small">Presets:</span>
           <button class="preset" data-min="1">1:00</button>
           <button class="preset" data-min="2">2:00</button>
@@ -76,8 +230,8 @@
           <button class="preset" data-min="10">10:00</button>
         </div>
         <div class="row small">
-          <label><input id="beep-last3" type="checkbox" checked> Beep at 3, 2, 1</label>
-          <label><input id="auto-repeat" type="checkbox"> Auto repeat</label>
+          <label><input id="beep-last3" type="checkbox" checked /> Beep at 3, 2, 1</label>
+          <label><input id="auto-repeat" type="checkbox" /> Auto repeat</label>
         </div>
       </section>
 
@@ -93,7 +247,10 @@
           <button class="theme-swatch" data-theme="slate" title="Slate" style="background:#f1f5f9"></button>
         </div>
         <div class="row small">
-          <label>Volume <input id="vol" type="range" min="0" max="1" step="0.05" value="0.7"></label>
+          <label>
+            Volume
+            <input id="vol" type="range" min="0" max="1" step="0.05" value="0.7" />
+          </label>
         </div>
       </section>
 
@@ -105,12 +262,14 @@
     </div>
 
     <p class="small" style="margin-top:10px">
-      Keyboard: <b>Space</b> start/pause • <b>L</b> lap • <b>R</b> reset • <b>F</b> fullscreen.  
+      Keyboard: <b>Space</b> start/pause • <b>L</b> lap • <b>R</b> reset • <b>F</b> fullscreen.<br />
       Stopwatch shows mm:ss.cc • Countdown shows mm:ss (rings at 0).
     </p>
   </main>
 
-  <footer>© <script>document.write(new Date().getFullYear())</script> Teach Arcade</footer>
+  <footer>
+    © <script>document.write(new Date().getFullYear())</script> Teach Arcade
+  </footer>
 
   <script src="/assets/scripts/timer.js" defer></script>
 </body>
