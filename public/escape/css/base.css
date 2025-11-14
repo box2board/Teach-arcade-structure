@@ -47,3 +47,76 @@ body{margin:0;background:radial-gradient(1200px 800px at 10% -10%, #1a1e3f 0%, #
 /* Scene 2 helpers */
 .s2-item{background:#10132a;border:1px solid var(--line);border-radius:10px;padding:10px;cursor:grab}
 .s2-item.dragging{opacity:.7;outline:2px dashed var(--accent)}
+/* ================================
+   INTRO SCENE (Scene 0) STYLES
+   ================================ */
+
+/* Container */
+.intro-wrapper {
+  text-align: center;
+  padding: 20px 10px 30px;
+  animation: introFadeIn 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes introFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Hero Image */
+.intro-image {
+  max-width: 420px;
+  width: 90%;
+  margin: 0 auto 18px;
+  display: block;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  box-shadow: 0 6px 20px rgba(0,0,0,.35);
+}
+
+/* Typewriter Effect */
+.typewriter {
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: var(--muted);
+  display: inline-block;
+  border-right: 2px solid var(--accent);
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  animation:
+    typing 3s steps(40, end) forwards,
+    blinkCursor 0.8s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+
+@keyframes blinkCursor {
+  0%, 100% { border-color: transparent; }
+  50%      { border-color: var(--accent); }
+}
+
+/* Start Mission Button */
+.start-mission-btn {
+  margin-top: 24px;
+  padding: 14px 20px;
+  font-size: 1.1rem;
+  background: var(--accent);
+  border: none;
+  color: #001018;
+  border-radius: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 255, 255, .25);
+  animation: pulseBtn 1.8s ease-in-out infinite;
+}
+
+@keyframes pulseBtn {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
