@@ -3,6 +3,13 @@ window.ROOM_DATA = {
   minutes: 40,
   title: 'Escape from the Trenches (WWI)',
   scenes: [
+    {
+      id: 'intro',
+      title: 'Mission Briefing',
+      type: 'intro'
+      // no journalOnStart or itemOnSolve for intro
+    },
+
     { id: 's1',
       title: 'The Sarajevo Mystery',
       type: 'match',
