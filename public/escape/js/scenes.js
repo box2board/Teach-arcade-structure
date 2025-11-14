@@ -57,7 +57,7 @@
               When the briefing finishes scrolling, hit <strong>Continue</strong> to begin your first mission.
             </p>
           </div>
-        ";
+        `;
 
         const bodyEl = root.querySelector('#introBody');
         const text = (
@@ -93,7 +93,6 @@
       },
 
       dispose() {
-        // stop typewriter if user somehow leaves early
         if (timerId) clearInterval(timerId);
       }
     };
