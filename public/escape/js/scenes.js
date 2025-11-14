@@ -29,7 +29,7 @@
 
           <div class="card" style="margin-bottom:12px; text-align:center;">
             <img 
-              src="/escape/rooms/wwi/assets/wwi-briefing.jpg" 
+              src="/escape/rooms/wwi/assets/wwi-intro-hero.png" 
               alt="Soldiers in a World War I trench preparing for orders"
               style="max-width:100%;height:auto;border-radius:10px;display:block;margin:0 auto;">
           </div>
@@ -57,7 +57,7 @@
               When the briefing finishes scrolling, hit <strong>Continue</strong> to begin your first mission.
             </p>
           </div>
-        `;
+        ";
 
         const bodyEl = root.querySelector('#introBody');
         const text = (
