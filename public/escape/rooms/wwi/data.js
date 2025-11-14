@@ -7,7 +7,6 @@ window.ROOM_DATA = {
       id: 'intro',
       title: 'Mission Briefing',
       type: 'intro'
-      // no journalOnStart or itemOnSolve for intro
     },
 
     { id: 's1',
