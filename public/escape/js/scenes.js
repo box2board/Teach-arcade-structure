@@ -14,6 +14,91 @@
     return true;
   }
 
+  /* ---------- Intro Scene: Mission Briefing ---------- */
+  function IntroScene() {
+    let solved = false;
+    let timerId = null;
+
+    return {
+      render(root, api) {
+        const conf = window.ROOM_DATA?.scenes.find(s => s.id === 'intro');
+        const title = conf?.title || 'Mission Briefing';
+
+        root.innerHTML = `
+          <h2>${title}</h2>
+
+          <div class="card" style="margin-bottom:12px; text-align:center;">
+            <img 
+              src="/escape/rooms/wwi/assets/wwi-briefing.jpg" 
+              alt="Soldiers in a World War I trench preparing for orders"
+              style="max-width:100%;height:auto;border-radius:10px;display:block;margin:0 auto;">
+          </div>
+
+          <div class="card">
+            <strong>Incoming transmission from HQ…</strong>
+            <p class="muted" id="introBody" style="margin-top:8px;min-height:72px;"></p>
+
+            <hr style="border:none;border-top:1px solid var(--line);margin:10px 0;">
+
+            <strong>Your objective</strong>
+            <ul class="muted" style="margin-top:6px;padding-left:18px;">
+              <li>Investigate the spark that set Europe on fire in 1914.</li>
+              <li>Decode clues about the <em>long-term causes</em> of the war.</li>
+              <li>Track how fighting spread across different fronts.</li>
+              <li>Uncover why the United States finally joined the conflict.</li>
+            </ul>
+
+            <p class="muted" style="margin-top:8px;">
+              Each mission scene drops a key word or idea you’ll need for the final transmission.
+              Pay attention: together, those clues form the code you’ll use to escape.
+            </p>
+
+            <p class="muted" style="margin-top:8px;">
+              When the briefing finishes scrolling, hit <strong>Continue</strong> to begin your first mission.
+            </p>
+          </div>
+        `;
+
+        const bodyEl = root.querySelector('#introBody');
+        const text = (
+          "You are a signal officer in a muddy trench on the Western Front. " +
+          "Enemy gas shells have been spotted on the horizon. " +
+          "HQ needs one clear message explaining how this war exploded and how it might finally end — " +
+          "before the gas reaches your position."
+        );
+
+        let idx = 0;
+        api.enableContinue(false);
+
+        function tick() {
+          if (idx >= text.length) {
+            clearInterval(timerId);
+            timerId = null;
+            solved = true;
+            api.enableContinue(true);
+            return;
+          }
+          bodyEl.textContent = text.slice(0, idx + 1);
+          idx++;
+        }
+
+        // typewriter effect
+        timerId = setInterval(tick, 35);
+      },
+
+      validate() { return solved; },
+
+      showHint() {
+        apiToast('Read the briefing carefully — every later puzzle connects back to this mission.');
+      },
+
+      dispose() {
+        // stop typewriter if user somehow leaves early
+        if (timerId) clearInterval(timerId);
+      }
+    };
+  }
+
   /* ---------- Scene 1: Evidence Matching (simplified skeleton) ---------- */
   function S1() {
     let solved = false;
@@ -35,7 +120,7 @@
 
           <div class="card" style="margin-top:12px">
             <label>In one word, what do these clues describe?
-              <input id="s1Summary" type="text" placeholder="e.g., Assassination" style="margin-top:6px;width:100%;padding:10px;border-radius:8px;border:1px solid var(--line);background:#0b0e1d;color:var(--ink)">
+              <input id="s1Summary" type="text" placeholder="Type your answer…" style="margin-top:6px;width:100%;padding:10px;border-radius:8px;border:1px solid var(--line);background:#0b0e1d;color:var(--ink)">
             </label>
             <div id="s1Status" class="muted" style="margin-top:6px">Press Enter to check.</div>
           </div>
@@ -291,66 +376,66 @@
   }
 
   /* ---------- Scene 4: Map Click Challenge ---------- */
-function S4() {
-  let solved = false;
+  function S4() {
+    let solved = false;
 
-  return {
-    render(root, api) {
-      const conf = ROOM_DATA.scenes.find(s => s.id === 's4');
+    return {
+      render(root, api) {
+        const conf = ROOM_DATA.scenes.find(s => s.id === 's4');
 
-      root.innerHTML = `
-        <h2>Map Recon</h2>
-        <p class="muted">Tap the correct region of Europe to locate the Western Front.</p>
+        root.innerHTML = `
+          <h2>Map Recon</h2>
+          <p class="muted">Tap the correct region of Europe to locate the Western Front.</p>
 
-        <div class="map-wrapper"
-             style="position:relative;max-width:720px;margin:16px auto;
-                    border-radius:12px;overflow:hidden;background:#020617;">
-          <img src="/escape/rooms/wwi/assets/wwi-map.svg"
-               alt="Map of Europe in World War I"
-               class="map-img"
-               style="display:block;width:100%;height:auto;">
+          <div class="map-wrapper"
+               style="position:relative;max-width:720px;margin:16px auto;
+                      border-radius:12px;overflow:hidden;background:#020617;">
+            <img src="/escape/rooms/wwi/assets/wwi-map.svg"
+                 alt="Map of Europe in World War I"
+                 class="map-img"
+                 style="display:block;width:100%;height:auto;">
 
-          ${conf.hotspots.map(h => `
-            <button class="hotspot" data-id="${h.id}"
-              style="position:absolute;left:${h.x}%;top:${h.y}%;
-                     width:10%;height:10%;
-                     background:rgba(37,99,235,0.22);
-                     border:2px solid rgba(96,165,250,0.9);
-                     border-radius:999px;
-                     cursor:pointer;">
-            </button>
-          `).join('')}
-        </div>
+            ${conf.hotspots.map(h => `
+              <button class="hotspot" data-id="${h.id}"
+                style="position:absolute;left:${h.x}%;top:${h.y}%;
+                       width:10%;height:10%;
+                       background:rgba(37,99,235,0.22);
+                       border:2px solid rgba(96,165,250,0.9);
+                       border-radius:999px;
+                       cursor:pointer;">
+              </button>
+            `).join('')}
+          </div>
 
-        <div id="s4Status" class="muted" style="margin-top:10px"></div>
-      `;
+          <div id="s4Status" class="muted" style="margin-top:10px"></div>
+        `;
 
-      const status = root.querySelector('#s4Status');
+        const status = root.querySelector('#s4Status');
 
-      root.querySelectorAll('.hotspot').forEach(btn => {
-        btn.addEventListener('click', () => {
-          if (btn.dataset.id === conf.correct) {
-            solved = true;
-            status.innerHTML =
-              `<span style="color:var(--ok)">✔ Correct region selected.</span>`;
-            api.journal("Western Front located on map.");
-            api.addItem({ id: "map-frag-3", label: "Map Fragment #3" });
-            api.enableContinue(true);
-          } else {
-            status.innerHTML =
-              `<span style="color:var(--bad)">✖ Incorrect region.</span>`;
-          }
+        root.querySelectorAll('.hotspot').forEach(btn => {
+          btn.addEventListener('click', () => {
+            if (btn.dataset.id === conf.correct) {
+              solved = true;
+              status.innerHTML =
+                `<span style="color:var(--ok)">✔ Correct region selected.</span>`;
+              api.journal("Western Front located on map.");
+              api.addItem({ id: "map-frag-3", label: "Map Fragment #3" });
+              api.enableContinue(true);
+            } else {
+              status.innerHTML =
+                `<span style="color:var(--bad)">✖ Incorrect region.</span>`;
+            }
+          });
         });
-      });
-    },
+      },
 
-    validate() { return solved; },
-    showHint() {
-      apiToast("Think: France & Belgium, not the Eastern side near Russia.");
-    },
-    dispose() {}
-  };
-}
+      validate() { return solved; },
+      showHint() {
+        apiToast("Think: France & Belgium, not the Eastern side near Russia.");
+      },
+      dispose() {}
+    };
+  }
 
   /* ---------- Scene 5: Dual input (Lusitania + Zimmerman) ---------- */
   function S5(){
@@ -625,6 +710,7 @@ function S4() {
 
   /* ---------- Registry ---------- */
   window.SceneRegistry = {
+    'intro': IntroScene,
     'match': S1,
     'order': S2,
     'sort': S3,
