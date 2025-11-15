@@ -1,189 +1,207 @@
 // /assets/scripts/flashcards.js
 (function () {
-  const textarea      = document.getElementById('cards-input');
-  const btnBuild      = document.getElementById('btn-build-deck');
-  const btnShuffle    = document.getElementById('btn-shuffle');
-  const btnClear      = document.getElementById('btn-clear-cards');
+  // Elements
+  const rawTextarea   = document.getElementById('cards-raw');
+  const frontInput    = document.getElementById('front-input');
+  const backInput     = document.getElementById('back-input');
+  const btnAddCard    = document.getElementById('btn-add-card');
+  const btnClearAll   = document.getElementById('btn-clear-all');
+  const btnUseCards   = document.getElementById('btn-use-cards');
 
   const flashcardEl   = document.getElementById('flashcard');
-  const sideLabelEl   = document.getElementById('side-label');
-  const positionEl    = document.getElementById('card-position');
-  const knownCountEl  = document.getElementById('known-count');
-  const countsEl      = document.getElementById('deck-counts');
+  const metaEl        = document.getElementById('card-meta');
+  const knownListEl   = document.getElementById('known-list');
 
   const btnPrev       = document.getElementById('btn-prev');
   const btnNext       = document.getElementById('btn-next');
   const btnFlip       = document.getElementById('btn-flip');
   const btnMarkKnown  = document.getElementById('btn-mark-known');
   const btnResetProg  = document.getElementById('btn-reset-progress');
+  const btnProjector  = document.getElementById('btn-projector');
 
-  if (!textarea || !flashcardEl) return; // safety
+  if (!rawTextarea || !flashcardEl) return; // safety
 
+  // Deck state
   let deck = [];          // [{front, back, known}]
   let index = 0;          // current card index
-  let showFront = true;   // true = showing front, false = back
+  let showingFront = true;
 
-  // ---------- helpers ----------
-  function parseCards(text) {
-    return text
+  // ---------- Helpers ----------
+  function parseDeck(text) {
+    const lines = (text || '')
       .split(/\r?\n/)
-      .map(line => line.trim())
-      .filter(Boolean)
-      .map(line => {
-        const parts = line.split('::');
-        if (parts.length >= 2) {
-          return {
-            front: parts[0].trim(),
-            back: parts.slice(1).join('::').trim(),
-            known: false
-          };
-        }
-        // If no "::", treat whole line as front with blank back
-        return { front: line, back: '', known: false };
-      });
-  }
+      .map(l => l.trim())
+      .filter(Boolean);
 
-  function renderCounts() {
-    if (!deck.length) {
-      countsEl.textContent = 'No cards loaded yet.';
-      positionEl.textContent = 'Card 0 of 0';
-      knownCountEl.textContent = 'Known: 0';
-      return;
+    const cards = [];
+    for (const line of lines) {
+      const parts = line.split('|');
+      const front = (parts[0] || '').trim();
+      const back  = (parts[1] || '').trim();
+      if (!front && !back) continue;
+      cards.push({ front, back, known: false });
     }
-    const known = deck.filter(c => c.known).length;
-    countsEl.textContent = `${deck.length} cards loaded • ${known} marked known`;
-    positionEl.textContent = `Card ${index + 1} of ${deck.length}`;
-    knownCountEl.textContent = `Known: ${known}`;
+    return cards;
   }
 
   function renderCard() {
     if (!deck.length) {
-      flashcardEl.textContent = 'Click “Use This List” to load your cards.';
-      sideLabelEl.textContent = 'Front';
-      flashcardEl.classList.remove('flashcard-back');
+      flashcardEl.textContent = 'No cards loaded yet.';
+      metaEl.textContent = '0 / 0 cards • 0 known';
+      knownListEl.innerHTML = '';
       return;
     }
-
     const card = deck[index];
-    const text = showFront ? card.front : (card.back || '—');
-    flashcardEl.textContent = text || '—';
-    sideLabelEl.textContent = showFront ? 'Front' : 'Back';
+    flashcardEl.textContent = showingFront ? (card.front || '—') : (card.back || '—');
 
-    if (showFront) {
-      flashcardEl.classList.remove('flashcard-back');
-    } else {
-      flashcardEl.classList.add('flashcard-back');
-    }
-
-    renderCounts();
+    const knownCount = deck.filter(c => c.known).length;
+    metaEl.textContent = `${index + 1} / ${deck.length} cards • ${knownCount} known`;
+    renderKnownList();
   }
 
-  function ensureIndexInRange() {
+  function renderKnownList() {
     if (!deck.length) {
+      knownListEl.innerHTML = '';
+      return;
+    }
+    const known = deck
+      .map((c, i) => ({ ...c, idx: i }))
+      .filter(c => c.known);
+
+    if (!known.length) {
+      knownListEl.innerHTML = '<li><span>None marked known yet.</span></li>';
+      return;
+    }
+
+    knownListEl.innerHTML = known
+      .map(c => `<li><span>#${c.idx + 1}</span><span>${c.front || '(no front)'}</span></li>`)
+      .join('');
+  }
+
+  function ensureDeckOrWarn() {
+    if (!deck.length) {
+      alert('No cards loaded yet. Add some cards and click "Use These Cards" first.');
+      return false;
+    }
+    return true;
+  }
+
+  // ---------- Quick Add Card ----------
+  if (btnAddCard) {
+    btnAddCard.addEventListener('click', () => {
+      const front = (frontInput.value || '').trim();
+      const back  = (backInput.value || '').trim();
+
+      if (!front && !back) {
+        alert('Please enter at least something on the front or back.');
+        return;
+      }
+
+      const line = `${front} | ${back}`;
+      const existing = rawTextarea.value.trim();
+      rawTextarea.value = existing ? `${existing}\n${line}` : line;
+
+      // Clear quick-add fields
+      frontInput.value = '';
+      backInput.value  = '';
+      frontInput.focus();
+    });
+  }
+
+  if (btnClearAll) {
+    btnClearAll.addEventListener('click', () => {
+      if (!rawTextarea.value.trim()) return;
+      if (!confirm('Clear all cards from the editor? This will not affect anything you copied elsewhere.')) return;
+      rawTextarea.value = '';
+    });
+  }
+
+  // ---------- Build deck from textarea ----------
+  if (btnUseCards) {
+    btnUseCards.addEventListener('click', () => {
+      const text = rawTextarea.value || '';
+      const cards = parseDeck(text);
+      if (!cards.length) {
+        alert('No valid cards found. Use "Front | Back" format or the Quick Add Card section.');
+        return;
+      }
+      deck = cards;
       index = 0;
-      return;
-    }
-    if (index < 0) index = 0;
-    if (index >= deck.length) index = deck.length - 1;
+      showingFront = true;
+      renderCard();
+    });
   }
 
-  function goNext() {
-    if (!deck.length) return;
-    if (index < deck.length - 1) {
-      index++;
-    } else {
-      index = 0; // loop around
-    }
-    showFront = true;
-    renderCard();
+  // ---------- Viewer controls ----------
+  if (btnPrev) {
+    btnPrev.addEventListener('click', () => {
+      if (!ensureDeckOrWarn()) return;
+      index = (index - 1 + deck.length) % deck.length;
+      showingFront = true;
+      renderCard();
+    });
   }
 
-  function goPrev() {
-    if (!deck.length) return;
-    if (index > 0) {
-      index--;
-    } else {
-      index = deck.length - 1; // loop around
-    }
-    showFront = true;
-    renderCard();
+  if (btnNext) {
+    btnNext.addEventListener('click', () => {
+      if (!ensureDeckOrWarn()) return;
+      index = (index + 1) % deck.length;
+      showingFront = true;
+      renderCard();
+    });
   }
 
-  function flipCard() {
-    if (!deck.length) return;
-    showFront = !showFront;
-    renderCard();
+  if (btnFlip) {
+    btnFlip.addEventListener('click', () => {
+      if (!ensureDeckOrWarn()) return;
+      showingFront = !showingFront;
+      renderCard();
+    });
   }
 
-  // ---------- event handlers ----------
-  btnBuild.addEventListener('click', () => {
-    const text = textarea.value || '';
-    const cards = parseCards(text);
-    if (!cards.length) {
-      alert('Please enter at least one card. Use "Front :: Back" format, one per line.');
-      return;
-    }
-    deck = cards;
-    index = 0;
-    showFront = true;
-    renderCard();
-  });
+  if (btnMarkKnown) {
+    btnMarkKnown.addEventListener('click', () => {
+      if (!ensureDeckOrWarn()) return;
+      deck[index].known = !deck[index].known;
+      renderCard();
+    });
+  }
 
-  btnShuffle.addEventListener('click', () => {
-    if (!deck.length) {
-      alert('No cards loaded to shuffle. Click "Use This List" first.');
-      return;
-    }
-    // Fisher-Yates
-    for (let i = deck.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [deck[i], deck[j]] = [deck[j], deck[i]];
-    }
-    index = 0;
-    showFront = true;
-    renderCard();
-  });
+  if (btnResetProg) {
+    btnResetProg.addEventListener('click', () => {
+      if (!ensureDeckOrWarn()) return;
+      if (!confirm('Reset known/unknown status for all cards this session?')) return;
+      deck.forEach(c => { c.known = false; });
+      renderCard();
+    });
+  }
 
-  btnClear.addEventListener('click', () => {
-    textarea.value = '';
-    deck = [];
-    index = 0;
-    showFront = true;
-    renderCard();
-  });
+  // ---------- Projector View ----------
+  if (btnProjector) {
+    btnProjector.addEventListener('click', () => {
+      const isOn = document.body.classList.toggle('fc-projector');
+      btnProjector.textContent = isOn ? 'Exit Projector View' : 'Projector View';
+    });
+  }
 
-  btnPrev.addEventListener('click', goPrev);
-  btnNext.addEventListener('click', goNext);
-  btnFlip.addEventListener('click', flipCard);
-
-  btnMarkKnown.addEventListener('click', () => {
-    if (!deck.length) return;
-    deck[index].known = !deck[index].known;
-    renderCounts();
-  });
-
-  btnResetProg.addEventListener('click', () => {
-    if (!deck.length) return;
-    deck.forEach(c => { c.known = false; });
-    renderCounts();
-  });
-
-  flashcardEl.addEventListener('click', flipCard);
-
-  // Keyboard: space = flip, arrows = prev/next
+  // ---------- Keyboard shortcuts ----------
   document.addEventListener('keydown', (e) => {
-    if (e.target && (e.target.tagName === 'TEXTAREA' || e.target.tagName === 'INPUT')) return;
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
 
-    if (e.key === ' ' || e.key === 'Spacebar') {
-      e.preventDefault();
-      flipCard();
-    } else if (e.key === 'ArrowRight') {
-      goNext();
+    if (e.key === 'ArrowRight') {
+      btnNext?.click();
     } else if (e.key === 'ArrowLeft') {
-      goPrev();
+      btnPrev?.click();
+    } else if (e.key === ' ' || e.key === 'Spacebar') {
+      e.preventDefault();
+      btnFlip?.click();
+    } else if (e.key.toLowerCase() === 'k') {
+      btnMarkKnown?.click();
+    } else if (e.key.toLowerCase() === 'p') {
+      btnProjector?.click();
     }
   });
 
-  // initial paint
+  // Initial render
   renderCard();
 })();
