@@ -227,7 +227,7 @@
     return Promise.resolve();
   }
 
-  // ---------- Fullscreen toggle ----------
+  // ---------- Fullscreen toggle + projector mode ----------
   if (btnFull) {
     btnFull.addEventListener('click', async () => {
       if (!supportsFullscreen()) {
@@ -236,7 +236,6 @@
       }
       try {
         if (!getFullscreenElement()) {
-          // Go fullscreen with the whole page
           await openFullscreen(document.documentElement);
         } else {
           await exitFullscreen();
@@ -248,18 +247,31 @@
     });
 
     document.addEventListener('fullscreenchange', () => {
-      if (getFullscreenElement()) {
-        btnFull.textContent = 'Exit Full Screen';
-      } else {
-        btnFull.textContent = 'Full Screen';
-      }
+      const isFs = !!getFullscreenElement();
+      btnFull.textContent = isFs ? 'Exit Full Screen' : 'Full Screen';
+      // ⬇️ This is the key line: toggle projector mode styles
+      document.body.classList.toggle('np-fullscreen', isFs);
     });
 
-    // Optional: keyboard shortcut "F" for fullscreen
+    // Optional: keyboard shortcut "F" for fullscreen,
+    // but NOT while typing in inputs/textarea/contentEditable.
     document.addEventListener('keydown', (e) => {
-      if (e.key.toLowerCase() === 'f') {
-        btnFull.click();
+      if (e.key.toLowerCase() !== 'f') return;
+
+      const target = e.target;
+      const tag = target.tagName;
+
+      const isTyping =
+        tag === 'INPUT' ||
+        tag === 'TEXTAREA' ||
+        target.isContentEditable;
+
+      if (isTyping) {
+        // If the user is typing in a field, don't trigger fullscreen
+        return;
       }
+
+      btnFull.click();
     });
   }
 
