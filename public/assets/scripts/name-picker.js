@@ -192,26 +192,73 @@
     updateCounts();
   });
 
+  // ---------- Fullscreen helpers (cross-browser) ----------
+  function supportsFullscreen() {
+    const el = document.documentElement;
+    return !!(
+      el.requestFullscreen ||
+      el.webkitRequestFullscreen ||
+      el.mozRequestFullScreen ||
+      el.msRequestFullscreen
+    );
+  }
+
+  function getFullscreenElement() {
+    return document.fullscreenElement ||
+           document.webkitFullscreenElement ||
+           document.mozFullScreenElement ||
+           document.msFullscreenElement;
+  }
+
+  function openFullscreen(el) {
+    const anyEl = el;
+    if (anyEl.requestFullscreen) return anyEl.requestFullscreen();
+    if (anyEl.webkitRequestFullscreen) return anyEl.webkitRequestFullscreen();
+    if (anyEl.mozRequestFullScreen) return anyEl.mozRequestFullScreen();
+    if (anyEl.msRequestFullscreen) return anyEl.msRequestFullscreen();
+    return Promise.reject(new Error('Fullscreen not supported'));
+  }
+
+  function exitFullscreen() {
+    if (document.exitFullscreen) return document.exitFullscreen();
+    if (document.webkitExitFullscreen) return document.webkitExitFullscreen();
+    if (document.mozCancelFullScreen) return document.mozCancelFullScreen();
+    if (document.msExitFullscreen) return document.msExitFullscreen();
+    return Promise.resolve();
+  }
+
   // ---------- Fullscreen toggle ----------
   if (btnFull) {
     btnFull.addEventListener('click', async () => {
+      if (!supportsFullscreen()) {
+        alert('Fullscreen is not supported on this browser/device. It will work on most desktop browsers.');
+        return;
+      }
       try {
-        if (!document.fullscreenElement) {
-          // Go full screen (whole page)
-          await document.documentElement.requestFullscreen();
+        if (!getFullscreenElement()) {
+          // Go fullscreen with the whole page
+          await openFullscreen(document.documentElement);
         } else {
-          await document.exitFullscreen();
+          await exitFullscreen();
         }
       } catch (e) {
         console.error('Fullscreen error:', e);
+        alert('Unable to enter fullscreen. Your browser/device may restrict this feature.');
       }
     });
 
     document.addEventListener('fullscreenchange', () => {
-      if (document.fullscreenElement) {
+      if (getFullscreenElement()) {
         btnFull.textContent = 'Exit Full Screen';
       } else {
         btnFull.textContent = 'Full Screen';
+      }
+    });
+
+    // Optional: keyboard shortcut "F" for fullscreen
+    document.addEventListener('keydown', (e) => {
+      if (e.key.toLowerCase() === 'f') {
+        btnFull.click();
       }
     });
   }
