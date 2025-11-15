@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flashcard Studio | Teach Arcade</title>
+
+  <!-- Styles & Fonts -->
+  <link rel="stylesheet" href="/assets/styles.css?v=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
+
+  <!-- SEO -->
+  <meta name="description" content="Flashcard Studio for classrooms: create, shuffle, and practice flashcards with a clean projector-friendly display." />
+  <link rel="canonical" href="https://teacharcade.com/tools/flashcards.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Teach Arcade" />
+  <meta property="og:title" content="Flashcard Studio — Free Classroom Tool" />
+  <meta property="og:description" content="Create flashcards, shuffle the deck, and flip between front and back with a big-screen friendly display." />
+  <meta property="og:url" content="https://teacharcade.com/tools/flashcards.html" />
+  <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Flashcard Studio — Free Classroom Tool" />
+  <meta name="twitter:description" content="Build and practice flashcards in seconds — perfect for review and warm-ups." />
+  <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+
+  <style>
+    .tool-wrap{max-width:980px;margin:0 auto}
+    .layout{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,0.9fr);gap:18px;margin-top:14px}
+    @media (max-width:800px){.layout{grid-template-columns:1fr}}
+    .panel{border:1px solid #e5e7eb;border-radius:14px;padding:14px 16px;background:#fff}
+    .panel h2{margin:0 0 8px;font:700 18px/1.3 "Poppins",system-ui}
+    .small{font-size:.9rem;color:#475569}
+    textarea{width:100%;min-height:220px;padding:10px;border-radius:10px;border:1px solid #cbd5e1;font-family:system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif}
+    .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:8px}
+    .card-shell{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:260px}
+    .flashcard{
+      width:100%;
+      max-width:480px;
+      min-height:180px;
+      border-radius:18px;
+      border:1px solid #cbd5e1;
+      background:#0f172a;
+      color:#f9fafb;
+      padding:24px 24px 28px;
+      box-shadow:0 10px 22px rgba(15,23,42,0.35);
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      transition:transform .2s, box-shadow .2s, background .2s;
+      font:600 clamp(18px,3vw,26px)/1.4 "Poppins",system-ui;
+    }
+    .flashcard:hover{
+      transform:translateY(-2px);
+      box-shadow:0 14px 28px rgba(15,23,42,0.45);
+    }
+    .flashcard-back{
+      background:#020617;
+    }
+    .card-label{
+      font-size:.85rem;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      color:#9ca3af;
+      margin-bottom:6px;
+    }
+    .card-meta{
+      margin-top:12px;
+      font-size:.85rem;
+      color:#e5e7eb;
+      display:flex;
+      justify-content:space-between;
+      width:100%;
+      max-width:480px;
+    }
+    .muted{color:#6b7280;font-size:.9rem}
+    .counts{font-size:.9rem;color:#475569;margin-top:4px}
+    .cta-small{font-size:.85rem;padding:6px 10px}
+  </style>
+</head>
+
+<body>
+  <!-- Global Header -->
+  <div id="site-header"></div>
+  <script src="/assets/scripts/nav.js?v=3" defer></script>
+
+  <main class="container tool-wrap">
+    <nav class="breadcrumbs">
+      <a href="/">Home</a> › <a href="/tools/">Teacher Tools</a> › Flashcard Studio
+    </nav>
+
+    <h1>🗂️ Flashcard Studio</h1>
+    <p class="small">Create a quick deck, shuffle, flip, and mark known cards. Perfect for projected review.</p>
+
+    <div class="layout">
+      <!-- LEFT: Deck Builder -->
+      <section class="panel">
+        <h2>Flashcard List</h2>
+        <p class="small">
+          One card per line. Use <b>Front :: Back</b> format, for example:<br>
+          <code>Photosynthesis :: Process plants use to make food</code>
+        </p>
+
+        <textarea id="cards-input" placeholder="Example:
+Photosynthesis :: Process plants use to make food
+Mitosis :: Cell division producing two identical cells
+Ecosystem :: Community of organisms and their environment
+..."></textarea>
+
+        <div class="row" style="margin-top:10px">
+          <button id="btn-build-deck" class="cta" type="button">Use This List</button>
+          <button id="btn-shuffle" class="cta ghost" type="button">Shuffle Deck</button>
+          <button id="btn-clear-cards" class="cta ghost cta-small" type="button">Clear Text</button>
+        </div>
+
+        <p class="counts" id="deck-counts">No cards loaded yet.</p>
+      </section>
+
+      <!-- RIGHT: Flashcard Viewer -->
+      <section class="panel">
+        <h2>Viewer</h2>
+
+        <div class="card-shell">
+          <div class="card-label" id="side-label">Front</div>
+          <div id="flashcard" class="flashcard" role="button" aria-label="Flashcard — click to flip">
+            Click “Use This List” to load your cards.
+          </div>
+          <div class="card-meta">
+            <span id="card-position">Card 0 of 0</span>
+            <span id="known-count">Known: 0</span>
+          </div>
+        </div>
+
+        <div class="row" style="margin-top:14px">
+          <button id="btn-prev" class="cta ghost" type="button">Previous</button>
+          <button id="btn-flip" class="cta" type="button">Flip</button>
+          <button id="btn-next" class="cta ghost" type="button">Next</button>
+        </div>
+
+        <div class="row" style="margin-top:6px">
+          <button id="btn-mark-known" class="cta cta-small" type="button">Mark as Known</button>
+          <button id="btn-reset-progress" class="cta ghost cta-small" type="button">Reset Progress</button>
+        </div>
+
+        <p class="muted" style="margin-top:10px">
+          Tip: Click the card itself or press <b>Space</b> to flip. Use <b>← / →</b> to move between cards.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    © <script>document.write(new Date().getFullYear())</script> Teach Arcade •
+    <a href="/privacy.html">Privacy</a> • <a href="/terms.html">Terms</a>
+  </footer>
+
+  <script src="/assets/scripts/flashcards.js?v=1" defer></script>
+</body>
+</html>
