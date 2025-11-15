@@ -41,6 +41,22 @@
     .card{border:1px solid #e5e7eb;border-radius:14px;padding:14px 16px;background:#fff;margin-top:10px}
     .name-counts{font-size:.9rem;color:#475569;margin-top:4px}
     .cta-small{font-size:.85rem;padding:6px 10px}
+
+    /* 🔍 Projector mode for fullscreen (driven by body.np-fullscreen in JS) */
+    .np-fullscreen .tool-wrap{
+      max-width:none;
+      margin:0;
+      padding:24px 40px;
+    }
+    .np-fullscreen .display-name{
+      font-size:clamp(64px, 12vw, 160px);
+      text-align:center;
+      margin:40px 0 20px;
+    }
+    .np-fullscreen .name-counts{
+      text-align:center;
+      font-size:1rem;
+    }
   </style>
 </head>
 
@@ -122,6 +138,6 @@ Dana
     <a href="/privacy.html">Privacy</a> • <a href="/terms.html">Terms</a>
   </footer>
 
- <script src="/assets/scripts/name-picker.js?v=3" defer></script>
+  <script src="/assets/scripts/name-picker.js?v=3" defer></script>
 </body>
 </html>
