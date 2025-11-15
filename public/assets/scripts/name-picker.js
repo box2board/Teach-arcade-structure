@@ -1,22 +1,23 @@
 // /assets/scripts/name-picker.js
 (function () {
-  const textarea     = document.getElementById('names-input');
-  const listNameInput= document.getElementById('list-name');
-  const savedSelect  = document.getElementById('saved-lists');
+  const textarea       = document.getElementById('names-input');
+  const listNameInput  = document.getElementById('list-name');
+  const savedSelect    = document.getElementById('saved-lists');
 
-  const btnSaveList  = document.getElementById('btn-save-list');
-  const btnLoadList  = document.getElementById('btn-load-list');
-  const btnDeleteList= document.getElementById('btn-delete-list');
+  const btnSaveList    = document.getElementById('btn-save-list');
+  const btnLoadList    = document.getElementById('btn-load-list');
+  const btnDeleteList  = document.getElementById('btn-delete-list');
 
-  const btnUseList   = document.getElementById('btn-use-list');
-  const btnClearInput= document.getElementById('btn-clear-input');
+  const btnUseList     = document.getElementById('btn-use-list');
+  const btnClearInput  = document.getElementById('btn-clear-input');
 
-  const btnPick      = document.getElementById('btn-pick');
-  const btnReset     = document.getElementById('btn-reset-round');
+  const btnPick        = document.getElementById('btn-pick');
+  const btnReset       = document.getElementById('btn-reset-round');
+  const btnFull        = document.getElementById('btn-fullscreen');
 
-  const currentNameEl= document.getElementById('current-name');
-  const historyEl    = document.getElementById('history');
-  const countsEl     = document.getElementById('name-counts');
+  const currentNameEl  = document.getElementById('current-name');
+  const historyEl      = document.getElementById('history');
+  const countsEl       = document.getElementById('name-counts');
 
   if (!textarea || !btnPick) return; // safety
 
@@ -190,6 +191,30 @@
     renderHistory();
     updateCounts();
   });
+
+  // ---------- Fullscreen toggle ----------
+  if (btnFull) {
+    btnFull.addEventListener('click', async () => {
+      try {
+        if (!document.fullscreenElement) {
+          // Go full screen (whole page)
+          await document.documentElement.requestFullscreen();
+        } else {
+          await document.exitFullscreen();
+        }
+      } catch (e) {
+        console.error('Fullscreen error:', e);
+      }
+    });
+
+    document.addEventListener('fullscreenchange', () => {
+      if (document.fullscreenElement) {
+        btnFull.textContent = 'Exit Full Screen';
+      } else {
+        btnFull.textContent = 'Full Screen';
+      }
+    });
+  }
 
   // ---------- init ----------
   refreshSavedSelect();
