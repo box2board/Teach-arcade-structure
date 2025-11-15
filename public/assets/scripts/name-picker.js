@@ -227,7 +227,7 @@
     return Promise.resolve();
   }
 
-  // ---------- Fullscreen toggle + projector mode ----------
+  // ---------- Fullscreen toggle ----------
   if (btnFull) {
     btnFull.addEventListener('click', async () => {
       if (!supportsFullscreen()) {
@@ -236,6 +236,7 @@
       }
       try {
         if (!getFullscreenElement()) {
+          // Go fullscreen with the whole page
           await openFullscreen(document.documentElement);
         } else {
           await exitFullscreen();
@@ -247,10 +248,11 @@
     });
 
     document.addEventListener('fullscreenchange', () => {
-      const isFs = !!getFullscreenElement();
-      btnFull.textContent = isFs ? 'Exit Full Screen' : 'Full Screen';
-      // ⬇️ This is the key line: toggle projector mode styles
-      document.body.classList.toggle('np-fullscreen', isFs);
+      if (getFullscreenElement()) {
+        btnFull.textContent = 'Exit Full Screen';
+      } else {
+        btnFull.textContent = 'Full Screen';
+      }
     });
 
     // Optional: keyboard shortcut "F" for fullscreen
