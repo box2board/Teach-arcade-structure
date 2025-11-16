@@ -232,8 +232,8 @@
     }
 
     .ctrl-btn {
-      width: 40px;  /* smaller */
-      height: 40px; /* smaller */
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       border: 2px solid rgba(255,255,255,0.35);
       background: #181b2e;
@@ -276,14 +276,13 @@
 <body>
   <h1>Teach Arcade · WWI Trench Run</h1>
   <p class="subtitle">
-    Explore the trenches, find all 20 question markers, and test your World War I knowledge.
-    Use the arrow keys or on-screen buttons to move and jump, then touch a ? block to answer.
+    Explore the trenches, dodge pits and rats, reach all 20 question markers, and test your World War I knowledge.
+    Use ◀ ▶ / ▲ or on-screen buttons to move and jump. Touch ? blocks to answer.
   </p>
 
   <div id="modeBar">
     <span>Question Mode:</span>
     <button id="modePreloaded" class="pill-btn active">Preloaded WWI Bank</button>
-    <!-- For now, custom mode is code-edited only; button included for future expansion -->
     <button id="modeCustom" class="pill-btn">Custom (if configured)</button>
   </div>
 
@@ -328,17 +327,9 @@
 
   <script>
     // ======================================================
-    // CONFIG: CUSTOM QUESTIONS (advanced – edit in code)
+    // CONFIG: CUSTOM QUESTIONS (back burner but wired)
     // ======================================================
-    const CUSTOM_QUESTIONS = [
-      // Example:
-      // {
-      //   id: 1,
-      //   text: "Your custom question here?",
-      //   choices: ["A", "B", "C", "D"],
-      //   correctIndex: 0
-      // }
-    ];
+    const CUSTOM_QUESTIONS = [];
 
     let useCustomQuestions = false;
 
@@ -587,7 +578,6 @@
     const TILE_SIZE = 48;
     const WORLD_TILES = 80;
     const WORLD_WIDTH = WORLD_TILES * TILE_SIZE;
-    const WORLD_HEIGHT = canvas.height;
 
     const player = {
       x: 80,
@@ -599,9 +589,10 @@
       onGround: false
     };
 
-    const GRAVITY = 1300;       // tweaked
-    const PLAYER_SPEED = 320;   // faster
-    const JUMP_STRENGTH = 660;  // higher
+    const GRAVITY = 1300;
+    const PLAYER_SPEED = 320;
+    const JUMP_STRENGTH = 660;
+    const GROUND_Y = 280;
 
     let cameraX = 0;
     let lastTime = 0;
@@ -617,16 +608,44 @@
     let questionBlocks = [];
     let activeQuestionBlock = null;
 
+    // Pits = gaps in the trench floor
     const pits = [
-      { x: 900, width: 180 },
-      { x: 1700, width: 160 },
-      { x: 2500, width: 160 },
-      { x: 3400, width: 200 }
+      { x: 600,  width: 120 },
+      { x: 1200, width: 160 },
+      { x: 1900, width: 160 },
+      { x: 2600, width: 200 },
+      { x: 3400, width: 160 }
     ];
 
+    // Simple ledges / platforms above ground
+    const platforms = [
+      { x: 500,  y: 220, width: 120, height: 12 },
+      { x: 900,  y: 190, width: 150, height: 12 },
+      { x: 1450, y: 200, width: 140, height: 12 },
+      { x: 2100, y: 170, width: 160, height: 12 },
+      { x: 2800, y: 200, width: 180, height: 12 },
+      { x: 3300, y: 185, width: 140, height: 12 }
+    ];
+
+    // Patrolling "rat" enemies on the trench floor
+    const enemies = [
+      { x: 750,  y: GROUND_Y - 16, w: 26, h: 16, dir: 1, speed: 80, minX: 720,  maxX: 860 },
+      { x: 1350, y: GROUND_Y - 16, w: 26, h: 16, dir: -1, speed: 90, minX: 1300, maxX: 1450 },
+      { x: 2250, y: GROUND_Y - 16, w: 26, h: 16, dir: 1, speed: 70, minX: 2200, maxX: 2360 },
+      { x: 3050, y: GROUND_Y - 16, w: 26, h: 16, dir: -1, speed: 85, minX: 2980, maxX: 3120 }
+    ];
+
+    // Keep track of last safe ground position for respawn
+    let lastSafeX = player.x;
+    let lastSafeY = player.y;
+
+    // End flag
     const endFlagX = WORLD_WIDTH - 160;
 
     const keys = { left: false, right: false, jump: false };
+
+    // Player damage cooldown (seconds)
+    let hitCooldown = 0;
 
     // ======================================================
     // UI ELEMENTS
@@ -685,6 +704,7 @@
     bindControl(rightBtn, () => { keys.right = true; }, () => { keys.right = false; });
     bindControl(jumpBtn, () => { keys.jump = true; },  () => { keys.jump = false; });
 
+    // Mode buttons
     modePreloadedBtn.addEventListener('click', () => {
       useCustomQuestions = false;
       modePreloadedBtn.classList.add('active');
@@ -703,10 +723,12 @@
     // QUESTION LOGIC
     // ======================================================
     function startNewRun() {
+      // Reset player & stats
       player.x = 80;
       player.y = 180;
       player.vx = 0;
       player.vy = 0;
+      player.onGround = false;
       cameraX = 0;
       score = 0;
       questionsAnsweredCount = 0;
@@ -714,26 +736,32 @@
       levelComplete = false;
       gamePaused = false;
       inQuestion = false;
+      hitCooldown = 0;
+      lastSafeX = player.x;
+      lastSafeY = player.y;
+
       qOverlay.classList.add('hidden');
       endOverlay.classList.add('hidden');
       hudStatus.textContent = "Status: Running";
 
+      // Select questions
       if (useCustomQuestions && CUSTOM_QUESTIONS.length > 0) {
         currentQuestions = CUSTOM_QUESTIONS.slice(0, 20);
       } else {
         currentQuestions = pickRandomQuestions(WWI_QUESTION_BANK, 20);
       }
 
-      // Place 20 question blocks with more variety
+      // Place 20 question blocks with varied height, some over platforms
       questionBlocks = [];
-      const spacing = (WORLD_WIDTH - 600) / 20;
-      const heights = [220, 170, 120, 200, 140, 90];
+      const spacing = (WORLD_WIDTH - 800) / 20;
+      const baseX = 260;
+      const heights = [GROUND_Y - 60, GROUND_Y - 90, 190, 160, 130, 210];
 
       for (let i = 0; i < 20; i++) {
         const qb = {
           id: i + 1,
           qIndex: i,
-          x: 260 + spacing * i,
+          x: baseX + spacing * i,
           y: heights[i % heights.length],
           completed: false,
           firstTry: true
@@ -838,6 +866,7 @@
     });
 
     topicBtn.addEventListener('click', () => {
+      // Point this at your Teach Arcade topic hub when ready
       window.location.href = "/";
     });
 
@@ -852,10 +881,17 @@
     function update(dt) {
       if (gamePaused) return;
 
+      if (hitCooldown > 0) {
+        hitCooldown -= dt;
+        if (hitCooldown < 0) hitCooldown = 0;
+      }
+
+      // Horizontal control
       if (keys.left)      player.vx = -PLAYER_SPEED;
       else if (keys.right) player.vx = PLAYER_SPEED;
       else                player.vx = 0;
 
+      // Jump
       if (keys.jump && player.onGround) {
         player.vy = -JUMP_STRENGTH;
         player.onGround = false;
@@ -863,31 +899,84 @@
 
       player.vy += GRAVITY * dt;
 
+      const prevY = player.y;
+
+      // Move horizontally
       player.x += player.vx * dt;
       if (player.x < 0) player.x = 0;
       if (player.x + player.w > WORLD_WIDTH) player.x = WORLD_WIDTH - player.w;
 
+      // Move vertically
       player.y += player.vy * dt;
-      const groundY = 280;
-      if (player.y + player.h >= groundY) {
-        player.y = groundY - player.h;
-        player.vy = 0;
-        player.onGround = true;
-      } else {
-        player.onGround = false;
+      player.onGround = false;
+
+      // Platform collisions (top only)
+      for (const p of platforms) {
+        const withinX = player.x + player.w > p.x && player.x < p.x + p.width;
+        const wasAbove = prevY + player.h <= p.y;
+        const nowBelowTop = player.y + player.h >= p.y;
+        if (withinX && wasAbove && nowBelowTop && player.vy >= 0) {
+          player.y = p.y - player.h;
+          player.vy = 0;
+          player.onGround = true;
+          lastSafeX = player.x;
+          lastSafeY = player.y;
+        }
       }
 
-      pits.forEach(pit => {
-        const overPit = player.x + player.w > pit.x && player.x < pit.x + pit.width;
-        if (overPit && player.y + player.h >= groundY + 2) {
-          player.x = pit.x + pit.width + 10;
-          player.y = groundY - player.h;
-          player.vy = 0;
-          score -= 20;
-          updateHud();
-        }
-      });
+      // Ground (but not over pits)
+      const overPit = pits.some(p => player.x + player.w > p.x && player.x < p.x + p.width);
+      if (!overPit && player.y + player.h >= GROUND_Y) {
+        player.y = GROUND_Y - player.h;
+        player.vy = 0;
+        player.onGround = true;
+        lastSafeX = player.x;
+        lastSafeY = player.y;
+      }
 
+      // Fell into a pit / void
+      if (player.y > canvas.height + 40) {
+        player.x = lastSafeX;
+        player.y = lastSafeY;
+        player.vx = 0;
+        player.vy = 0;
+        score -= 20;
+        hudStatus.textContent = "Status: Fell in a shell hole (-20)";
+        updateHud();
+      } else if (!overPit) {
+        // Only show running when not clearly respawning
+        if (!inQuestion && !levelComplete) {
+          hudStatus.textContent = "Status: Running";
+        }
+      }
+
+      // Enemy movement
+      for (const e of enemies) {
+        e.x += e.dir * e.speed * dt;
+        if (e.x < e.minX) {
+          e.x = e.minX;
+          e.dir = 1;
+        } else if (e.x + e.w > e.maxX) {
+          e.x = e.maxX - e.w;
+          e.dir = -1;
+        }
+      }
+
+      // Enemy collisions
+      for (const e of enemies) {
+        if (rectIntersect(player, e)) {
+          if (hitCooldown === 0) {
+            score -= 15;
+            hitCooldown = 1.0; // 1 second invincibility frames
+            hudStatus.textContent = "Status: Bitten by trench rats (-15)";
+            // Knockback
+            player.x += (e.dir > 0 ? -20 : 20);
+            updateHud();
+          }
+        }
+      }
+
+      // Question block collisions
       for (const block of questionBlocks) {
         if (block.completed) continue;
         const box = { x: block.x, y: block.y, w: 32, h: 32 };
@@ -897,10 +986,12 @@
         }
       }
 
+      // Check if at end
       if (!levelComplete && player.x + player.w > endFlagX) {
         checkLevelComplete();
       }
 
+      // Camera follows player
       const halfCanvas = canvas.width / 2;
       cameraX = player.x + player.w / 2 - halfCanvas;
       cameraX = Math.max(0, Math.min(cameraX, WORLD_WIDTH - canvas.width));
@@ -915,13 +1006,19 @@
       );
     }
 
+    // ======================================================
+    // DRAWING
+    // ======================================================
     function drawBackground() {
+      // Sky
       ctx.fillStyle = "#3b4c8b";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+      // Horizon strip
       ctx.fillStyle = "#1e2438";
       ctx.fillRect(0, canvas.height * 0.45, canvas.width, canvas.height * 0.3);
 
+      // Distant artillery silhouettes
       ctx.fillStyle = "#111320";
       for (let x = -200; x < WORLD_WIDTH + 200; x += 260) {
         const sx = x - cameraX;
@@ -930,6 +1027,7 @@
         ctx.fillRect(sx + 20, canvas.height * 0.54, 80, 10);
       }
 
+      // Barbed wire line
       ctx.strokeStyle = "#9da2b1";
       ctx.lineWidth = 2;
       ctx.beginPath();
@@ -941,10 +1039,9 @@
     }
 
     function drawTrenchesAndPits() {
-      const groundY = 280;
-
+      // Base ground strip (we'll carve pits with darker color)
       ctx.fillStyle = "#463428";
-      ctx.fillRect(0, groundY, canvas.width, canvas.height - groundY);
+      ctx.fillRect(0, GROUND_Y, canvas.width, canvas.height - GROUND_Y);
 
       const startWorldX = cameraX;
       const endWorldX = cameraX + canvas.width;
@@ -957,17 +1054,30 @@
 
         const inPit = pits.some(p => tileX + TILE_SIZE > p.x && tileX < p.x + p.width);
         if (!inPit) {
+          // Dirt body
           ctx.fillStyle = "#463428";
-          ctx.fillRect(screenX, groundY, TILE_SIZE, canvas.height - groundY);
-
+          ctx.fillRect(screenX, GROUND_Y, TILE_SIZE, canvas.height - GROUND_Y);
+          // Wood planks
           ctx.fillStyle = "#7b5a38";
-          ctx.fillRect(screenX, groundY - 12, TILE_SIZE, 12);
-          ctx.fillRect(screenX, groundY + 10, TILE_SIZE, 6);
+          ctx.fillRect(screenX, GROUND_Y - 12, TILE_SIZE, 12);
+          ctx.fillRect(screenX, GROUND_Y + 10, TILE_SIZE, 6);
         } else {
+          // Pit darkness
           ctx.fillStyle = "#17131b";
-          ctx.fillRect(screenX, groundY, TILE_SIZE, canvas.height - groundY);
+          ctx.fillRect(screenX, GROUND_Y, TILE_SIZE, canvas.height - GROUND_Y);
         }
       }
+    }
+
+    function drawPlatforms() {
+      ctx.fillStyle = "#7b5a38";
+      platforms.forEach(p => {
+        const sx = p.x - cameraX;
+        ctx.fillRect(sx, p.y, p.width, p.height);
+        ctx.fillStyle = "#5c4128";
+        ctx.fillRect(sx, p.y + p.height - 4, p.width, 4);
+        ctx.fillStyle = "#7b5a38";
+      });
     }
 
     function drawQuestionBlocks() {
@@ -992,10 +1102,26 @@
       });
     }
 
+    function drawEnemies() {
+      enemies.forEach(e => {
+        const sx = e.x - cameraX;
+        const sy = e.y;
+
+        // Little rat silhouette
+        ctx.fillStyle = "#1b1b23";
+        ctx.fillRect(sx, sy + 4, e.w, e.h - 4);          // body
+        ctx.fillRect(sx + 4, sy, e.w - 8, 6);            // back
+        ctx.fillRect(sx + (e.dir > 0 ? e.w - 4 : 0), sy + 6, 4, 4); // head bump
+        // Eye
+        ctx.fillStyle = "#c62828";
+        ctx.fillRect(sx + (e.dir > 0 ? e.w - 6 : 2), sy + 7, 2, 2);
+      });
+    }
+
     function drawEndFlag() {
       const sx = endFlagX - cameraX;
-      const baseY = 280;
-
+      const baseY = GROUND_Y;
+      // Pole
       ctx.strokeStyle = "#f5f5f5";
       ctx.lineWidth = 3;
       ctx.beginPath();
@@ -1003,6 +1129,7 @@
       ctx.lineTo(sx, baseY - 80);
       ctx.stroke();
 
+      // Flag
       ctx.fillStyle = "#f5f5f5";
       ctx.fillRect(sx, baseY - 80, 30, 16);
       ctx.fillStyle = "#ff3657";
@@ -1013,15 +1140,16 @@
       const sx = player.x - cameraX;
       const sy = player.y;
 
+      // Body
       ctx.fillStyle = "#f4c542";
       ctx.fillRect(sx, sy, player.w, player.h);
-
+      // Helmet
       ctx.fillStyle = "#ffb300";
       ctx.fillRect(sx, sy - 6, player.w, 8);
-
+      // Boots
       ctx.fillStyle = "#2a2016";
       ctx.fillRect(sx + 4, sy + player.h - 6, player.w - 8, 6);
-
+      // Eyes
       ctx.fillStyle = "#1b1b1b";
       ctx.fillRect(sx + 6, sy + 12, 3, 3);
       ctx.fillRect(sx + 16, sy + 12, 3, 3);
@@ -1031,7 +1159,9 @@
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       drawBackground();
       drawTrenchesAndPits();
+      drawPlatforms();
       drawQuestionBlocks();
+      drawEnemies();
       drawEndFlag();
       drawPlayer();
     }
@@ -1046,6 +1176,7 @@
       requestAnimationFrame(loop);
     }
 
+    // Start
     startNewRun();
     requestAnimationFrame(loop);
   </script>
