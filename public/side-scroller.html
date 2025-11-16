@@ -2,29 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Teach Arcade Side Scroller</title>
+  <title>Teach Arcade · WWI Review Run</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Pixel-style font for headings -->
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      /* 8-bit inspired palette */
-      --sky: #5c94fc;
-      --mountain: #3b4c8b;
-      --mountain-dark: #2a355c;
-      --ground-top: #00b543;
-      --ground-side: #6b3f1f;
-      --platform: #8b8fae;
-      --platform-shadow: #4b4f6b;
+      --sky: #3b4c8b;
+      --horizon: #1e2438;
+      --trench-dirt: #463428;
+      --trench-wood: #7b5a38;
+      --barbed: #9da2b1;
       --player: #f4c542;
       --player-accent: #ffb300;
-      --gate: #3ddc84;
-      --gate-dark: #1b5e20;
-      --flag: #ff3657;
-      --text: #f9f9ff;
+      --ui-bg: rgba(0, 0, 0, 0.55);
       --accent: #ffb300;
-      --ui-bg: rgba(0, 0, 0, 0.45);
+      --text: #f9f9ff;
+      --pit-shadow: #17131b;
     }
 
     * {
@@ -35,39 +29,65 @@
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #111428 0%, #020308 65%);
+      background: radial-gradient(circle at top, #0b0f1e 0%, #020308 65%);
       color: var(--text);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
       min-height: 100vh;
-      padding: 16px;
+      padding: 12px;
       gap: 10px;
     }
 
     h1 {
       font-family: "Press Start 2P", system-ui, sans-serif;
-      font-size: 1.1rem;
+      font-size: 1rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      text-align: center;
       text-shadow: 0 2px 0 #000;
+      text-align: center;
     }
 
     .subtitle {
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       opacity: 0.9;
       text-align: center;
       max-width: 900px;
+    }
+
+    #modeBar {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      font-size: 0.75rem;
+    }
+
+    .pill-btn {
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 4px 10px;
+      background: rgba(0,0,0,0.55);
+      color: var(--text);
+      cursor: pointer;
+      font-size: 0.7rem;
+      font-family: "Press Start 2P", system-ui, sans-serif;
+      text-transform: uppercase;
+    }
+
+    .pill-btn.active {
+      background: var(--accent);
+      color: #111;
     }
 
     #gameContainer {
       position: relative;
       border-radius: 14px;
       overflow: hidden;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.75);
-      border: 2px solid rgba(255,255,255,0.15);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.8);
+      border: 2px solid rgba(255,255,255,0.18);
       background: #000;
     }
 
@@ -79,32 +99,35 @@
 
     #hud {
       position: absolute;
-      top: 8px;
-      left: 8px;
+      top: 6px;
+      left: 6px;
+      right: 6px;
       display: flex;
-      gap: 10px;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
       font-size: 0.65rem;
       background: var(--ui-bg);
       padding: 4px 10px;
       border-radius: 999px;
       backdrop-filter: blur(6px);
-      border: 1px solid rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.15);
       font-family: "Press Start 2P", system-ui, sans-serif;
       z-index: 5;
     }
 
     #hud span {
-      opacity: 0.95;
+      white-space: nowrap;
     }
 
     #questionOverlay,
-    #winOverlay {
+    #endOverlay {
       position: absolute;
       inset: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: radial-gradient(circle at top, rgba(0,0,0,0.92), rgba(0,0,0,0.98));
+      background: radial-gradient(circle at top, rgba(0,0,0,0.94), rgba(0,0,0,0.98));
       z-index: 10;
     }
 
@@ -113,54 +136,49 @@
     }
 
     .panel {
-      background: #151827;
+      background: #171b29;
       border-radius: 14px;
-      padding: 18px 20px;
+      padding: 18px 18px 14px;
       max-width: 480px;
-      width: 90%;
-      border: 2px solid rgba(255,255,255,0.2);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.85);
+      width: 92%;
+      border: 2px solid rgba(255,255,255,0.25);
+      box-shadow: 0 12px 36px rgba(0,0,0,0.9);
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
+      font-size: 0.85rem;
     }
 
     .panel h2 {
       font-family: "Press Start 2P", system-ui, sans-serif;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-    }
-
-    .panel p {
-      font-size: 0.85rem;
-      line-height: 1.4;
     }
 
     .choices {
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      margin-top: 4px;
+      gap: 6px;
     }
 
     .choice-btn {
       border: 0;
       border-radius: 999px;
-      padding: 8px 12px;
-      font-size: 0.85rem;
+      padding: 7px 10px;
+      font-size: 0.8rem;
       text-align: left;
       cursor: pointer;
       background: #232842;
       color: var(--text);
-      transition: background 0.12s, transform 0.08s, box-shadow 0.12s;
+      transition: background 0.08s, transform 0.08s, box-shadow 0.1s;
       font-family: system-ui, -apple-system, sans-serif;
     }
 
     .choice-btn:hover {
       background: #2f3557;
       transform: translateY(-1px);
-      box-shadow: 0 3px 8px rgba(0,0,0,0.5);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.6);
     }
 
     .choice-btn.correct {
@@ -175,21 +193,22 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.75rem;
-      opacity: 0.85;
+      font-size: 0.7rem;
+      opacity: 0.9;
+      margin-top: 4px;
     }
 
     .primary-btn {
       border-radius: 999px;
       border: none;
-      padding: 8px 16px;
+      padding: 6px 12px;
       background: var(--accent);
       color: #111;
       font-weight: 600;
       cursor: pointer;
-      font-size: 0.8rem;
-      transition: transform 0.08s, box-shadow 0.08s;
+      font-size: 0.75rem;
       font-family: "Press Start 2P", system-ui, sans-serif;
+      text-transform: uppercase;
     }
 
     .primary-btn:hover {
@@ -197,20 +216,14 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.5);
     }
 
-    #message {
-      font-size: 0.8rem;
-      min-height: 1.2em;
-    }
-
-    /* On-screen touch controls */
     #touchControls {
       position: absolute;
-      bottom: 8px;
+      bottom: 6px;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
-      gap: 14px;
-      padding: 6px 10px;
+      gap: 12px;
+      padding: 4px 10px;
       background: var(--ui-bg);
       border-radius: 999px;
       border: 1px solid rgba(255,255,255,0.25);
@@ -219,13 +232,13 @@
     }
 
     .ctrl-btn {
-      width: 52px;
-      height: 52px;
+      width: 46px;
+      height: 46px;
       border-radius: 50%;
       border: 2px solid rgba(255,255,255,0.35);
       background: #181b2e;
       color: var(--text);
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -240,7 +253,6 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.6) inset;
     }
 
-    /* Hide touch controls on wider desktop screens if you want keyboard only there */
     @media (min-width: 900px) {
       #touchControls {
         display: none;
@@ -253,167 +265,450 @@
         height: auto;
       }
       h1 {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
       }
       .subtitle {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
       }
     }
   </style>
 </head>
 <body>
-  <h1>Teach Arcade · Side Scroller</h1>
+  <h1>Teach Arcade · WWI Trench Run</h1>
   <p class="subtitle">
-    Run, jump, and unlock the gate by answering a question. Edit the question set in the script to match your lesson.
+    Explore the trenches, find all 20 question markers, and test your World War I knowledge.
   </p>
+
+  <div id="modeBar">
+    <span>Question Mode:</span>
+    <button id="modePreloaded" class="pill-btn active">Preloaded WWI Bank</button>
+    <!-- For now, custom mode is code-edited only; button included for future expansion -->
+    <button id="modeCustom" class="pill-btn">Custom (if configured)</button>
+  </div>
 
   <div id="gameContainer">
     <canvas id="gameCanvas" width="960" height="360"></canvas>
 
     <div id="hud">
-      <span id="hud-level">Level 1 · Pencil Plains</span>
-      <span id="hud-status">Status: Running</span>
+      <span id="hudScore">Score: 0</span>
+      <span id="hudQuestions">Questions: 0 / 20</span>
+      <span id="hudStatus">Status: Running</span>
     </div>
 
-    <!-- On-screen touch controls -->
     <div id="touchControls">
       <button id="btnLeft" class="ctrl-btn" aria-label="Move left">◀</button>
       <button id="btnJump" class="ctrl-btn" aria-label="Jump">▲</button>
       <button id="btnRight" class="ctrl-btn" aria-label="Move right">▶</button>
     </div>
 
-    <!-- Question Gate Overlay -->
     <div id="questionOverlay" class="hidden">
       <div class="panel">
-        <h2>Knowledge Gate</h2>
-        <p id="questionText"></p>
+        <h2 id="qTitle">Question</h2>
+        <p id="qText"></p>
         <div class="choices" id="choicesContainer"></div>
-        <div id="message"></div>
         <div class="panel-footer">
-          <span>Answer correctly to open the gate.</span>
-          <button id="quitBtn" class="primary-btn">Quit</button>
+          <span id="qFeedback"></span>
+          <button id="qCloseBtn" class="primary-btn">Resume</button>
         </div>
       </div>
     </div>
 
-    <!-- Win Overlay -->
-    <div id="winOverlay" class="hidden">
+    <div id="endOverlay" class="hidden">
       <div class="panel">
         <h2>Level Complete!</h2>
-        <p>Nice work! You cleared the level and passed the final flag.</p>
+        <p id="endSummary"></p>
         <div class="panel-footer">
-          <span>Reload to play again.</span>
-          <button id="restartBtn" class="primary-btn">Restart</button>
+          <button id="replayBtn" class="primary-btn">Replay WWI</button>
+          <button id="topicBtn" class="primary-btn">Choose Another Topic</button>
         </div>
       </div>
     </div>
   </div>
 
   <script>
-    // ===============================
-    // TEACHER CONFIGURATION SECTION
-    // ===============================
-    const QUESTION_BANK = [
-      {
-        prompt: "Which war began in 1914?",
-        choices: [
-          "World War I",
-          "World War II",
-          "The American Civil War",
-          "The Cold War"
-        ],
-        correctIndex: 0
-      },
-      {
-        prompt: "What is the basic unit of life in biology?",
-        choices: [
-          "Atom",
-          "Molecule",
-          "Cell",
-          "Organ"
-        ],
-        correctIndex: 2
-      }
+    // ======================================================
+    // CONFIG: CUSTOM QUESTIONS (advanced – edit in code)
+    // ======================================================
+    // If you want to hard-code your own question set for this level,
+    // fill this array with up to 20 questions in the same format as WWI_QUESTION_BANK.
+    // Then toggle "useCustomQuestions" below or click the Custom button.
+    const CUSTOM_QUESTIONS = [
+      // Example:
+      // {
+      //   id: 1,
+      //   text: "Your custom question here?",
+      //   choices: ["A", "B", "C", "D"],
+      //   correctIndex: 0
+      // }
     ];
 
-    const GATE_QUESTION_INDEX = 0;
+    let useCustomQuestions = false;
 
-    const PLAYER_SPEED = 200;
-    const JUMP_STRENGTH = 420;
-    const GRAVITY = 1200;
+    // ======================================================
+    // PRELOADED WWI QUESTION BANK (50 QUESTIONS)
+    // ======================================================
+    const WWI_QUESTION_BANK = [
+      { id: 1, text: "Which event sparked the beginning of World War I?", choices: [
+        "Sinking of the Lusitania",
+        "Assassination of Archduke Franz Ferdinand",
+        "Invasion of Poland",
+        "Bombing of Pearl Harbor"
+      ], correctIndex: 1 },
 
-    // ===============================
-    // CORE GAME IMPLEMENTATION
-    // ===============================
+      { id: 2, text: "What does the 'M' in MAIN causes of WWI stand for?", choices: [
+        "Militarism", "Monarchies", "Marxism", "Materialism"
+      ], correctIndex: 0 },
+
+      { id: 3, text: "Which two major alliance groups fought each other in WWI?", choices: [
+        "NATO and Warsaw Pact",
+        "Axis and Allies",
+        "Triple Entente and Central Powers",
+        "League of Nations and United Nations"
+      ], correctIndex: 2 },
+
+      { id: 4, text: "Which countries were part of the Triple Entente at the start of WWI?", choices: [
+        "Germany, Austria-Hungary, Italy",
+        "Britain, France, Russia",
+        "United States, Italy, Russia",
+        "France, Germany, Ottoman Empire"
+      ], correctIndex: 1 },
+
+      { id: 5, text: "Which countries were part of the Central Powers?", choices: [
+        "Britain, France, Russia",
+        "Germany, Austria-Hungary, Ottoman Empire",
+        "United States, Russia, Italy",
+        "Spain, Portugal, Netherlands"
+      ], correctIndex: 1 },
+
+      { id: 6, text: "Nationalism is best described as:", choices: [
+        "A desire for world peace",
+        "Strong pride and loyalty to one’s nation or ethnic group",
+        "A system of colonies",
+        "A type of government"
+      ], correctIndex: 1 },
+
+      { id: 7, text: "Imperialism contributed to WWI because European countries:", choices: [
+        "Shared colonies peacefully",
+        "Allowed colonies to become independent",
+        "Competeted fiercely for colonies and resources",
+        "Gave up their colonies"
+      ], correctIndex: 2 },
+
+      { id: 8, text: "Militarism means:", choices: [
+        "Reducing a nation’s army",
+        "Glorifying military power and keeping large standing armies ready for war",
+        "Banning all weapons",
+        "Only using armies for defense"
+      ], correctIndex: 1 },
+
+      { id: 9, text: "The region of Europe known as the 'powder keg' because of tension was:", choices: [
+        "Western Europe", "Eastern Europe", "The Balkans", "Scandinavia"
+      ], correctIndex: 2 },
+
+      { id: 10, text: "What was the Schlieffen Plan?", choices: [
+        "Germany’s plan to avoid building a navy",
+        "A Russian plan to invade Germany",
+        "Germany’s plan to quickly defeat France, then fight Russia",
+        "Britain’s plan to defend Belgium"
+      ], correctIndex: 2 },
+
+      { id: 11, text: "Which country did Germany invade that caused Britain to enter the war?", choices: [
+        "Italy", "Belgium", "Switzerland", "Spain"
+      ], correctIndex: 1 },
+
+      { id: 12, text: "What best describes trench warfare?", choices: [
+        "Fast-moving battles with tanks",
+        "Naval warfare on the oceans",
+        "Fighting from long, narrow ditches facing each other",
+        "Air battles between pilots"
+      ], correctIndex: 2 },
+
+      { id: 13, text: "The area between opposing trenches was called:", choices: [
+        "The Front Line", "No Man’s Land", "The Home Front", "The Buffer Zone"
+      ], correctIndex: 1 },
+
+      { id: 14, text: "A major problem with trench warfare was:", choices: [
+        "Soldiers had too much food",
+        "Battles always ended quickly",
+        "High casualties and little ground gained",
+        "It protected civilians from war"
+      ], correctIndex: 2 },
+
+      { id: 15, text: "Which of these was a new weapon used in WWI?", choices: [
+        "Nuclear bombs", "Crossbows", "Poison gas", "Iron swords"
+      ], correctIndex: 2 },
+
+      { id: 16, text: "Which weapon made crossing No Man’s Land especially deadly?", choices: [
+        "Bayonets", "Machine guns", "Zeppelins", "Shields"
+      ], correctIndex: 1 },
+
+      { id: 17, text: "Why is WWI often called the first 'modern war'?", choices: [
+        "It was the first war with uniforms",
+        "It used industrial technology and new weapons on a massive scale",
+        "It was the shortest war in history",
+        "It was fought only in cities"
+      ], correctIndex: 1 },
+
+      { id: 18, text: "Which country left WWI early because of a revolution at home?", choices: [
+        "Germany", "Italy", "Russia", "France"
+      ], correctIndex: 2 },
+
+      { id: 19, text: "What was the name of the treaty that ended Russia’s involvement in WWI?", choices: [
+        "Treaty of Versailles", "Treaty of Brest-Litovsk", "Treaty of Paris", "Treaty of London"
+      ], correctIndex: 1 },
+
+      { id: 20, text: "What was unrestricted submarine warfare?", choices: [
+        "Submarines that only attacked warships",
+        "Submarines that had no weapons",
+        "Submarines that attacked any ship without warning",
+        "Submarines that stayed in ports"
+      ], correctIndex: 2 },
+
+      { id: 21, text: "Which British passenger ship was sunk by a German U-boat in 1915?", choices: [
+        "Titanic", "Britannic", "Lusitania", "Queen Mary"
+      ], correctIndex: 2 },
+
+      { id: 22, text: "Which country did the Zimmermann Telegram try to involve in war against the U.S.?", choices: [
+        "Canada", "Mexico", "Brazil", "Cuba"
+      ], correctIndex: 1 },
+
+      { id: 23, text: "Who was the U.S. president during World War I?", choices: [
+        "Theodore Roosevelt", "Woodrow Wilson", "Franklin D. Roosevelt", "Harry Truman"
+      ], correctIndex: 1 },
+
+      { id: 24, text: "Before entering the war, the United States’ official position was:", choices: [
+        "Immediate war with Germany",
+        "Neutrality",
+        "Alliance with the Central Powers",
+        "Fighting only in Asia"
+      ], correctIndex: 1 },
+
+      { id: 25, text: "The American troops sent to fight in Europe were called:", choices: [
+        "Green Berets",
+        "Continental Army",
+        "American Expeditionary Force (AEF)",
+        "Marines Corps Force"
+      ], correctIndex: 2 },
+
+      { id: 26, text: "Who led the American Expeditionary Force?", choices: [
+        "General Eisenhower", "General Patton", "General Pershing", "General MacArthur"
+      ], correctIndex: 2 },
+
+      { id: 27, text: "Which side did the United States join in WWI?", choices: [
+        "Central Powers", "Allies / Triple Entente", "Neutral Nations", "Triple Alliance"
+      ], correctIndex: 1 },
+
+      { id: 28, text: "What was the effect of American entry into WWI?", choices: [
+        "It had no real impact",
+        "It strengthened the Central Powers",
+        "It boosted Allied morale and helped turn the tide",
+        "It ended the war immediately"
+      ], correctIndex: 2 },
+
+      { id: 29, text: "What was the term for a cease-fire that ended the fighting in WWI?", choices: [
+        "Treaty", "Armistice", "Pact", "Alliance"
+      ], correctIndex: 1 },
+
+      { id: 30, text: "On what date did the WWI armistice take effect?", choices: [
+        "July 4, 1917", "November 11, 1918", "December 25, 1919", "January 1, 1918"
+      ], correctIndex: 1 },
+
+      { id: 31, text: "Which meeting created the main peace terms after WWI?", choices: [
+        "Yalta Conference", "Paris Peace Conference", "Potsdam Conference", "Congress of Vienna"
+      ], correctIndex: 1 },
+
+      { id: 32, text: "Which three major Allied leaders were part of the 'Big Four'?", choices: [
+        "Wilson, Lloyd George, Clemenceau (and Orlando)",
+        "Hitler, Mussolini, Tojo",
+        "Lenin, Stalin, Trotsky",
+        "Kaiser Wilhelm, Franz Joseph, Nicholas II"
+      ], correctIndex: 0 },
+
+      { id: 33, text: "Which treaty officially ended the war between Germany and the Allies?", choices: [
+        "Treaty of Ghent", "Treaty of Versailles", "Treaty of Paris (1783)", "Munich Agreement"
+      ], correctIndex: 1 },
+
+      { id: 34, text: "Which country was forced to accept 'war guilt' in the Treaty of Versailles?", choices: [
+        "Britain", "France", "Russia", "Germany"
+      ], correctIndex: 3 },
+
+      { id: 35, text: "What did Germany have to pay after WWI, according to the Treaty of Versailles?", choices: [
+        "Reconstruction bonds", "Reparations", "Voting rights", "Gold tariffs"
+      ], correctIndex: 1 },
+
+      { id: 36, text: "Which organization was created after WWI to help prevent future wars?", choices: [
+        "United Nations", "NATO", "League of Nations", "European Union"
+      ], correctIndex: 2 },
+
+      { id: 37, text: "Why did many Germans resent the Treaty of Versailles?", choices: [
+        "It rewarded them too much",
+        "It forced them to fight again",
+        "They felt it was unfair and humiliating",
+        "It gave them more colonies"
+      ], correctIndex: 2 },
+
+      { id: 38, text: "Which empire collapsed as a result of WWI?", choices: [
+        "Japanese Empire", "Ottoman Empire", "British Empire", "United States"
+      ], correctIndex: 1 },
+
+      { id: 39, text: "Which of the following was a new nation created after WWI?", choices: [
+        "Spain", "Portugal", "Poland", "Sweden"
+      ], correctIndex: 2 },
+
+      { id: 40, text: "What is one major human cost of WWI?", choices: [
+        "Very few soldiers died",
+        "Millions of soldiers and civilians were killed or wounded",
+        "Only generals were affected",
+        "Only naval battles caused casualties"
+      ], correctIndex: 1 },
+
+      { id: 41, text: "What is meant by the 'Lost Generation'?", choices: [
+        "Children who were evacuated",
+        "Young people disillusioned by the war’s destruction",
+        "Soldiers who never trained",
+        "Leaders who lost elections"
+      ], correctIndex: 1 },
+
+      { id: 42, text: "How did WWI affect women in many countries?", choices: [
+        "They lost all rights",
+        "They stayed completely out of the war effort",
+        "Many entered the workforce and took on new roles",
+        "They were banned from factories"
+      ], correctIndex: 2 },
+
+      { id: 43, text: "What is 'total war'?", choices: [
+        "A war fought by only soldiers",
+        "A war limited to one region",
+        "A war where nations devote all resources, including civilians and industry, to the war effort",
+        "A war fought only at sea"
+      ], correctIndex: 2 },
+
+      { id: 44, text: "Which of the following best describes propaganda?", choices: [
+        "Neutral information",
+        "Biased information used to influence public opinion",
+        "Scientific research",
+        "Secret military codes"
+      ], correctIndex: 1 },
+
+      { id: 45, text: "Which front in WWI was known mainly for trench warfare and stalemate?", choices: [
+        "Eastern Front", "Western Front", "Pacific Front", "Desert Front"
+      ], correctIndex: 1 },
+
+      { id: 46, text: "Which front was generally more mobile and less trench-based?", choices: [
+        "Western Front", "Eastern Front", "Atlantic Front", "Arctic Front"
+      ], correctIndex: 1 },
+
+      { id: 47, text: "Which group of countries made up the main Central Powers?", choices: [
+        "Germany, Austria-Hungary, Ottoman Empire, Bulgaria",
+        "Britain, France, Russia, U.S.",
+        "Spain, Portugal, Italy",
+        "U.S., Italy, Japan"
+      ], correctIndex: 0 },
+
+      { id: 48, text: "WWI helped set the stage for WWII mainly because:", choices: [
+        "The war made everyone peaceful",
+        "The Treaty of Versailles left Germany bitter and unstable",
+        "No countries had any debt after the war",
+        "The League of Nations was extremely powerful"
+      ], correctIndex: 1 },
+
+      { id: 49, text: "What was one economic effect of WWI on Europe?", choices: [
+        "All countries became wealthy",
+        "Many nations faced huge debts and rebuilding costs",
+        "Colonies gained independence immediately",
+        "Trade completely stopped forever"
+      ], correctIndex: 1 },
+
+      { id: 50, text: "Which country emerged as a stronger world power after WWI?", choices: [
+        "United States", "Austria-Hungary", "Ottoman Empire", "Belgium"
+      ], correctIndex: 0 }
+    ];
+
+    function pickRandomQuestions(bank, count = 20) {
+      const shuffled = [...bank].sort(() => Math.random() - 0.5);
+      return shuffled.slice(0, count);
+    }
+
+    // ======================================================
+    // CORE GAME STATE
+    // ======================================================
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
 
     const TILE_SIZE = 48;
-
-    // Level legend:
-    // X = solid ground/platform
-    // G = gate
-    // F = goal flag
-    // . = empty
-    const levelMap = [
-      "................................................................",
-      "................................................................",
-      "................................................................",
-      "....................XXX.........................................",
-      "...............................................G................",
-      "............XXX................................XXX..............",
-      "................................................................",
-      "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-    ];
-
-    const WORLD_WIDTH = levelMap[0].length * TILE_SIZE;
-    const WORLD_HEIGHT = levelMap.length * TILE_SIZE;
+    const WORLD_TILES = 80; // width in tiles
+    const WORLD_WIDTH = WORLD_TILES * TILE_SIZE;
+    const WORLD_HEIGHT = canvas.height;
 
     const player = {
-      x: TILE_SIZE * 2,
-      y: TILE_SIZE * 2,
-      w: 32,
-      h: 44,
+      x: 80,
+      y: 180,
+      w: 28,
+      h: 40,
       vx: 0,
       vy: 0,
       onGround: false
     };
 
+    const GRAVITY = 1200;
+    const PLAYER_SPEED = 240;
+    const JUMP_STRENGTH = 540;
+
     let cameraX = 0;
+    let lastTime = 0;
+    let gamePaused = false;
+    let inQuestion = false;
+    let levelComplete = false;
 
-    const gates = [];
-    const flags = [];
+    let score = 0;
+    let firstTryCorrectCount = 0;
+    let questionsAnsweredCount = 0;
 
-    for (let row = 0; row < levelMap.length; row++) {
-      for (let col = 0; col < levelMap[row].length; col++) {
-        const ch = levelMap[row][col];
-        if (ch === 'G') {
-          gates.push({
-            col,
-            row,
-            x: col * TILE_SIZE,
-            y: row * TILE_SIZE,
-            w: TILE_SIZE,
-            h: TILE_SIZE * 1.5,
-            solved: false
-          });
-        }
-        if (ch === 'F') {
-          flags.push({
-            col,
-            row,
-            x: col * TILE_SIZE,
-            y: row * TILE_SIZE,
-            w: TILE_SIZE,
-            h: TILE_SIZE * 2
-          });
-        }
-      }
-    }
+    let currentQuestions = []; // 20 for this run
+    let questionBlocks = [];   // positions + status
+    let activeQuestionBlock = null;
+
+    const pits = [
+      { x: 900, width: 180 },
+      { x: 1700, width: 160 },
+      { x: 2500, width: 160 },
+      { x: 3400, width: 200 }
+    ];
+
+    const endFlagX = WORLD_WIDTH - 160;
 
     const keys = { left: false, right: false, jump: false };
 
-    // Keyboard controls
+    // ======================================================
+    // UI ELEMENTS
+    // ======================================================
+    const hudScore = document.getElementById('hudScore');
+    const hudQuestions = document.getElementById('hudQuestions');
+    const hudStatus = document.getElementById('hudStatus');
+
+    const qOverlay = document.getElementById('questionOverlay');
+    const qTitle = document.getElementById('qTitle');
+    const qText = document.getElementById('qText');
+    const qChoices = document.getElementById('choicesContainer');
+    const qFeedback = document.getElementById('qFeedback');
+    const qCloseBtn = document.getElementById('qCloseBtn');
+
+    const endOverlay = document.getElementById('endOverlay');
+    const endSummary = document.getElementById('endSummary');
+    const replayBtn = document.getElementById('replayBtn');
+    const topicBtn = document.getElementById('topicBtn');
+
+    const modePreloadedBtn = document.getElementById('modePreloaded');
+    const modeCustomBtn = document.getElementById('modeCustom');
+
+    // Touch controls
+    const leftBtn  = document.getElementById('btnLeft');
+    const rightBtn = document.getElementById('btnRight');
+    const jumpBtn  = document.getElementById('btnJump');
+
+    // ======================================================
+    // INPUT HANDLING
+    // ======================================================
     document.addEventListener('keydown', (e) => {
       if (e.code === 'ArrowLeft' || e.code === 'KeyA') keys.left = true;
       if (e.code === 'ArrowRight' || e.code === 'KeyD') keys.right = true;
@@ -426,23 +721,10 @@
       if (e.code === 'ArrowUp' || e.code === 'Space' || e.code === 'KeyW') keys.jump = false;
     });
 
-    // On-screen touch controls
-    const leftBtn  = document.getElementById('btnLeft');
-    const rightBtn = document.getElementById('btnRight');
-    const jumpBtn  = document.getElementById('btnJump');
-
     function bindControl(btn, onDown, onUp) {
       if (!btn) return;
-
-      const start = (e) => {
-        e.preventDefault();
-        onDown();
-      };
-      const end = (e) => {
-        e.preventDefault();
-        onUp();
-      };
-
+      const start = (e) => { e.preventDefault(); onDown(); };
+      const end = (e) => { e.preventDefault(); onUp(); };
       btn.addEventListener('touchstart', start, { passive: false });
       btn.addEventListener('touchend', end, { passive: false });
       btn.addEventListener('touchcancel', end, { passive: false });
@@ -451,51 +733,243 @@
       btn.addEventListener('mouseleave', end);
     }
 
-    bindControl(leftBtn,
-      () => { keys.left = true; },
-      () => { keys.left = false; }
-    );
+    bindControl(leftBtn, () => { keys.left = true; },  () => { keys.left = false; });
+    bindControl(rightBtn, () => { keys.right = true; }, () => { keys.right = false; });
+    bindControl(jumpBtn, () => { keys.jump = true; },  () => { keys.jump = false; });
 
-    bindControl(rightBtn,
-      () => { keys.right = true; },
-      () => { keys.right = false; }
-    );
+    // Mode buttons
+    modePreloadedBtn.addEventListener('click', () => {
+      useCustomQuestions = false;
+      modePreloadedBtn.classList.add('active');
+      modeCustomBtn.classList.remove('active');
+      startNewRun();
+    });
 
-    bindControl(jumpBtn,
-      () => { keys.jump = true; },
-      () => { keys.jump = false; }
-    );
+    modeCustomBtn.addEventListener('click', () => {
+      useCustomQuestions = CUSTOM_QUESTIONS && CUSTOM_QUESTIONS.length > 0;
+      modeCustomBtn.classList.add('active');
+      modePreloadedBtn.classList.remove('active');
+      startNewRun();
+    });
 
-    let lastTime = 0;
-    let gamePaused = false;
-    let levelCompleted = false;
+    // ======================================================
+    // QUESTION LOGIC
+    // ======================================================
+    function startNewRun() {
+      // Reset player & stats
+      player.x = 80;
+      player.y = 180;
+      player.vx = 0;
+      player.vy = 0;
+      cameraX = 0;
+      score = 0;
+      questionsAnsweredCount = 0;
+      firstTryCorrectCount = 0;
+      levelComplete = false;
+      gamePaused = false;
+      inQuestion = false;
+      qOverlay.classList.add('hidden');
+      endOverlay.classList.add('hidden');
+      hudStatus.textContent = "Status: Running";
 
-    const hudStatus = document.getElementById('hud-status');
-
-    const questionOverlay = document.getElementById('questionOverlay');
-    const winOverlay = document.getElementById('winOverlay');
-    const questionText = document.getElementById('questionText');
-    const choicesContainer = document.getElementById('choicesContainer');
-    const messageEl = document.getElementById('message');
-    const quitBtn = document.getElementById('quitBtn');
-    const restartBtn = document.getElementById('restartBtn');
-
-    let activeGate = null;
-
-    quitBtn.addEventListener('click', () => window.location.reload());
-    restartBtn.addEventListener('click', () => window.location.reload());
-
-    function tileAtPixel(px, py) {
-      const col = Math.floor(px / TILE_SIZE);
-      const row = Math.floor(py / TILE_SIZE);
-      if (row < 0 || row >= levelMap.length || col < 0 || col >= levelMap[0].length) {
-        return null;
+      // Select questions
+      if (useCustomQuestions && CUSTOM_QUESTIONS.length > 0) {
+        currentQuestions = CUSTOM_QUESTIONS.slice(0, 20);
+      } else {
+        currentQuestions = pickRandomQuestions(WWI_QUESTION_BANK, 20);
       }
-      return levelMap[row][col];
+
+      // Place 20 question blocks along level
+      questionBlocks = [];
+      const spacing = (WORLD_WIDTH - 400) / 20;
+      for (let i = 0; i < 20; i++) {
+        const qb = {
+          id: i + 1,
+          qIndex: i, // index into currentQuestions
+          x: 200 + spacing * i,
+          y: (i % 3 === 0) ? 160 : (i % 3 === 1 ? 220 : 120),
+          completed: false,
+          firstTry: true
+        };
+        questionBlocks.push(qb);
+      }
+
+      updateHud();
     }
 
-    function isSolid(ch) {
-      return ch === 'X';
+    function openQuestion(block) {
+      if (inQuestion || levelComplete) return;
+      inQuestion = true;
+      gamePaused = true;
+      activeQuestionBlock = block;
+
+      const q = currentQuestions[block.qIndex];
+      qTitle.textContent = "Question " + block.id;
+      qText.textContent = q.text;
+      qFeedback.textContent = "";
+      qChoices.innerHTML = "";
+
+      q.choices.forEach((choice, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'choice-btn';
+        btn.textContent = String.fromCharCode(65 + idx) + ") " + choice;
+        btn.addEventListener('click', () => handleAnswer(block, q, idx, btn));
+        qChoices.appendChild(btn);
+      });
+
+      qOverlay.classList.remove('hidden');
+      hudStatus.textContent = "Status: Answering";
+    }
+
+    function handleAnswer(block, question, selectedIndex, btnEl) {
+      const isCorrect = selectedIndex === question.correctIndex;
+      if (isCorrect) {
+        btnEl.classList.add('correct');
+        qFeedback.textContent = "Correct!";
+        // scoring
+        if (block.firstTry) {
+          score += 25;
+          firstTryCorrectCount++;
+        } else {
+          score += 10;
+        }
+        block.completed = true;
+        questionsAnsweredCount = questionBlocks.filter(b => b.completed).length;
+        updateHud();
+
+        setTimeout(() => {
+          closeQuestion();
+          checkLevelComplete();
+        }, 500);
+      } else {
+        btnEl.classList.add('wrong');
+        qFeedback.textContent = "Incorrect. Try again.";
+        score -= 10;
+        block.firstTry = false;
+        updateHud();
+      }
+    }
+
+    function closeQuestion() {
+      qOverlay.classList.add('hidden');
+      inQuestion = false;
+      gamePaused = false;
+      activeQuestionBlock = null;
+      hudStatus.textContent = "Status: Running";
+    }
+
+    qCloseBtn.addEventListener('click', () => {
+      // Only allow closing if question is completed
+      if (activeQuestionBlock && activeQuestionBlock.completed) {
+        closeQuestion();
+      } else {
+        qFeedback.textContent = "Answer correctly to continue.";
+      }
+    });
+
+    function checkLevelComplete() {
+      if (!levelComplete &&
+          questionsAnsweredCount === 20 &&
+          player.x + player.w > endFlagX) {
+        triggerEndScreen();
+      }
+    }
+
+    function triggerEndScreen() {
+      levelComplete = true;
+      gamePaused = true;
+      inQuestion = false;
+      hudStatus.textContent = "Status: Complete";
+
+      const accuracy = (firstTryCorrectCount / 20) * 100;
+      endSummary.textContent =
+        `Score: ${score} points | Accuracy: ${firstTryCorrectCount}/20 (${accuracy.toFixed(0)}%)`;
+
+      endOverlay.classList.remove('hidden');
+    }
+
+    replayBtn.addEventListener('click', () => {
+      startNewRun();
+    });
+
+    topicBtn.addEventListener('click', () => {
+      // For now, just reload. You can change this to window.location = '/games' etc.
+      window.location.href = "/"; // or a Teach Arcade hub page
+    });
+
+    function updateHud() {
+      hudScore.textContent = "Score: " + score;
+      hudQuestions.textContent = "Questions: " + questionsAnsweredCount + " / 20";
+    }
+
+    // ======================================================
+    // GAME LOOP & PHYSICS
+    // ======================================================
+    function update(dt) {
+      if (gamePaused) return;
+
+      // Horizontal control
+      if (keys.left)      player.vx = -PLAYER_SPEED;
+      else if (keys.right) player.vx = PLAYER_SPEED;
+      else                player.vx = 0;
+
+      // Jump
+      if (keys.jump && player.onGround) {
+        player.vy = -JUMP_STRENGTH;
+        player.onGround = false;
+      }
+
+      player.vy += GRAVITY * dt;
+
+      // Move horizontally
+      player.x += player.vx * dt;
+      // Simple bounds
+      if (player.x < 0) player.x = 0;
+      if (player.x + player.w > WORLD_WIDTH) player.x = WORLD_WIDTH - player.w;
+
+      // "Ground" at fixed y with trenches/pits behavior
+      player.y += player.vy * dt;
+      const groundY = 280;
+      if (player.y + player.h >= groundY) {
+        player.y = groundY - player.h;
+        player.vy = 0;
+        player.onGround = true;
+      } else {
+        player.onGround = false;
+      }
+
+      // Pit logic: if player over pit and below ground, respawn + penalty
+      pits.forEach(pit => {
+        const overPit = player.x + player.w > pit.x && player.x < pit.x + pit.width;
+        if (overPit && player.y + player.h >= groundY + 2) {
+          // Respawn just after pit
+          player.x = pit.x + pit.width + 10;
+          player.y = groundY - player.h;
+          player.vy = 0;
+          score -= 20;
+          updateHud();
+        }
+      });
+
+      // Check collision with question blocks
+      for (const block of questionBlocks) {
+        if (block.completed) continue;
+        const box = { x: block.x, y: block.y, w: 32, h: 32 };
+        if (rectIntersect(player, box)) {
+          openQuestion(block);
+          break;
+        }
+      }
+
+      // Check if at end (but may need all questions)
+      if (!levelComplete && player.x + player.w > endFlagX) {
+        checkLevelComplete();
+      }
+
+      // Camera follows player
+      const halfCanvas = canvas.width / 2;
+      cameraX = player.x + player.w / 2 - halfCanvas;
+      cameraX = Math.max(0, Math.min(cameraX, WORLD_WIDTH - canvas.width));
     }
 
     function rectIntersect(a, b) {
@@ -507,302 +981,155 @@
       );
     }
 
-    function update(dt) {
-      if (keys.left)      player.vx = -PLAYER_SPEED;
-      else if (keys.right) player.vx = PLAYER_SPEED;
-      else                player.vx = 0;
-
-      if (keys.jump && player.onGround) {
-        player.vy = -JUMP_STRENGTH;
-        player.onGround = false;
-      }
-
-      player.vy += GRAVITY * dt;
-
-      player.x += player.vx * dt;
-      handleCollisions('x');
-
-      player.y += player.vy * dt;
-      handleCollisions('y');
-
-      player.x = Math.max(0, Math.min(player.x, WORLD_WIDTH - player.w));
-      player.y = Math.min(player.y, WORLD_HEIGHT - player.h);
-
-      const halfCanvas = canvas.width / 2;
-      cameraX = player.x + player.w / 2 - halfCanvas;
-      cameraX = Math.max(0, Math.min(cameraX, WORLD_WIDTH - canvas.width));
-
-      for (const gate of gates) {
-        if (!gate.solved && rectIntersect(player, gate)) {
-          openGateQuestion(gate);
-          break;
-        }
-      }
-
-      for (const flag of flags) {
-        if (rectIntersect(player, flag)) {
-          triggerWin();
-          break;
-        }
-      }
-    }
-
-    function handleCollisions(axis) {
-      const corners = [
-        { x: player.x,             y: player.y },
-        { x: player.x + player.w,  y: player.y },
-        { x: player.x,             y: player.y + player.h },
-        { x: player.x + player.w,  y: player.y + player.h }
-      ];
-
-      player.onGround = false;
-
-      for (const c of corners) {
-        const col = Math.floor(c.x / TILE_SIZE);
-        const row = Math.floor(c.y / TILE_SIZE);
-
-        if (row < 0 || row >= levelMap.length || col < 0 || col >= levelMap[0].length) continue;
-
-        const ch = levelMap[row][col];
-        if (isSolid(ch)) {
-          const tileX = col * TILE_SIZE;
-          const tileY = row * TILE_SIZE;
-
-          if (axis === 'x') {
-            if (player.vx > 0)      player.x = tileX - player.w - 0.01;
-            else if (player.vx < 0) player.x = tileX + TILE_SIZE + 0.01;
-            player.vx = 0;
-          } else if (axis === 'y') {
-            if (player.vy > 0) {
-              player.y = tileY - player.h - 0.01;
-              player.vy = 0;
-              player.onGround = true;
-            } else if (player.vy < 0) {
-              player.y = tileY + TILE_SIZE + 0.01;
-              player.vy = 0;
-            }
-          }
-        }
-      }
-    }
-
-    // --- 8-bit style drawing helpers ---
-    function drawMountains() {
+    function drawBackground() {
+      // Sky
       ctx.fillStyle = "#3b4c8b";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Horizon strip
+      ctx.fillStyle = "#1e2438";
+      ctx.fillRect(0, canvas.height * 0.45, canvas.width, canvas.height * 0.3);
+
+      // Distant artillery silhouettes
+      ctx.fillStyle = "#111320";
       for (let x = -200; x < WORLD_WIDTH + 200; x += 260) {
-        ctx.beginPath();
-        ctx.moveTo(x, canvas.height * 0.75);
-        ctx.lineTo(x + 130, canvas.height * 0.35);
-        ctx.lineTo(x + 260, canvas.height * 0.75);
-        ctx.closePath();
-        ctx.fill();
+        const sx = x - cameraX;
+        if (sx > canvas.width || sx < -200) continue;
+        ctx.fillRect(sx + 40, canvas.height * 0.5, 40, 40);
+        ctx.fillRect(sx + 20, canvas.height * 0.54, 80, 10);
       }
 
-      ctx.fillStyle = "#2a355c";
-      for (let x = -260; x < WORLD_WIDTH + 260; x += 240) {
-        ctx.beginPath();
-        ctx.moveTo(x, canvas.height * 0.8);
-        ctx.lineTo(x + 120, canvas.height * 0.45);
-        ctx.lineTo(x + 240, canvas.height * 0.8);
-        ctx.closePath();
-        ctx.fill();
+      // Barbed wire line
+      ctx.strokeStyle = "#9da2b1";
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      for (let x = -100; x < canvas.width + 100; x += 20) {
+        const wiggle = Math.sin((x + cameraX) * 0.02) * 4;
+        ctx.lineTo(x, 230 + wiggle);
+      }
+      ctx.stroke();
+    }
+
+    function drawTrenchesAndPits() {
+      const groundY = 280;
+
+      // Base ground
+      ctx.fillStyle = "#463428";
+      ctx.fillRect(0, groundY, canvas.width, canvas.height - groundY);
+
+      // Simple repeating trench wood pattern
+      const startWorldX = cameraX;
+      const endWorldX = cameraX + canvas.width;
+      const tileStart = Math.floor(startWorldX / TILE_SIZE);
+      const tileEnd = Math.ceil(endWorldX / TILE_SIZE);
+
+      for (let t = tileStart; t < tileEnd; t++) {
+        const tileX = t * TILE_SIZE;
+        const screenX = tileX - cameraX;
+
+        // Skip if inside a pit
+        const inPit = pits.some(p => tileX + TILE_SIZE > p.x && tileX < p.x + p.width);
+        if (!inPit) {
+          // Dirt body
+          ctx.fillStyle = "#463428";
+          ctx.fillRect(screenX, groundY, TILE_SIZE, canvas.height - groundY);
+          // Wood planks
+          ctx.fillStyle = "#7b5a38";
+          ctx.fillRect(screenX, groundY - 12, TILE_SIZE, 12);
+          ctx.fillRect(screenX, groundY + 10, TILE_SIZE, 6);
+        } else {
+          // Pit darkness
+          ctx.fillStyle = "#17131b";
+          ctx.fillRect(screenX, groundY, TILE_SIZE, canvas.height - groundY);
+        }
       }
     }
 
-    function drawCloud(x, y) {
-      ctx.fillStyle = "#f5f7ff";
-      ctx.fillRect(x, y, 40, 16);
-      ctx.fillRect(x + 10, y - 10, 32, 18);
-      ctx.fillRect(x + 20, y, 36, 16);
+    function drawQuestionBlocks() {
+      ctx.font = "10px 'Press Start 2P', system-ui, sans-serif";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "top";
+
+      questionBlocks.forEach(block => {
+        const sx = block.x - cameraX;
+        const sy = block.y;
+
+        // Box
+        ctx.fillStyle = block.completed ? "#3b5a2a" : "#b8943b";
+        ctx.fillRect(sx, sy, 32, 32);
+        ctx.strokeStyle = "rgba(0,0,0,0.6)";
+        ctx.strokeRect(sx + 0.5, sy + 0.5, 31, 31);
+
+        // Question mark
+        ctx.fillStyle = "#2b210f";
+        ctx.fillText("?", sx + 16, sy + 10);
+
+        // Number label above
+        ctx.fillStyle = "#f9f9ff";
+        ctx.fillText(block.id, sx + 16, sy - 10);
+      });
     }
 
-    function drawBush(x, y) {
-      ctx.fillStyle = "#008c3a";
-      ctx.fillRect(x, y - 16, 32, 16);
-      ctx.fillRect(x + 20, y - 20, 28, 20);
-      ctx.fillRect(x + 40, y - 16, 24, 16);
-      ctx.fillStyle = "#00d15b";
-      ctx.fillRect(x + 4, y - 14, 6, 4);
-      ctx.fillRect(x + 26, y - 18, 6, 4);
-      ctx.fillRect(x + 44, y - 14, 6, 4);
+    function drawEndFlag() {
+      const sx = endFlagX - cameraX;
+      const baseY = 280;
+      // Pole
+      ctx.strokeStyle = "#f5f5f5";
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(sx, baseY);
+      ctx.lineTo(sx, baseY - 80);
+      ctx.stroke();
+
+      // Flag
+      ctx.fillStyle = "#f5f5f5";
+      ctx.fillRect(sx, baseY - 80, 30, 16);
+      ctx.fillStyle = "#ff3657";
+      ctx.fillRect(sx + 15, baseY - 80, 15, 16);
+    }
+
+    function drawPlayer() {
+      const sx = player.x - cameraX;
+      const sy = player.y;
+
+      // Body
+      ctx.fillStyle = "#f4c542";
+      ctx.fillRect(sx, sy, player.w, player.h);
+      // Helmet
+      ctx.fillStyle = "#ffb300";
+      ctx.fillRect(sx, sy - 6, player.w, 8);
+      // Boots
+      ctx.fillStyle = "#2a2016";
+      ctx.fillRect(sx + 4, sy + player.h - 6, player.w - 8, 6);
+      // Eyes
+      ctx.fillStyle = "#1b1b1b";
+      ctx.fillRect(sx + 6, sy + 12, 3, 3);
+      ctx.fillRect(sx + 16, sy + 12, 3, 3);
     }
 
     function draw() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      ctx.save();
-      ctx.translate(-cameraX, 0);
-
-      // Sky
-      ctx.fillStyle = "#5c94fc";
-      ctx.fillRect(cameraX, 0, canvas.width, canvas.height);
-
-      // Distant mountains
-      drawMountains();
-
-      // Clouds
-      const cloudY = 40;
-      drawCloud(80, cloudY);
-      drawCloud(260, cloudY + 16);
-      drawCloud(520, cloudY + 4);
-      drawCloud(780, cloudY + 12);
-      drawCloud(1040, cloudY);
-
-      // Tiles
-      for (let row = 0; row < levelMap.length; row++) {
-        for (let col = 0; col < levelMap[row].length; col++) {
-          const ch = levelMap[row][col];
-          const x = col * TILE_SIZE;
-          const y = row * TILE_SIZE;
-
-          if (ch === 'X') {
-            const isGroundRow = row === levelMap.length - 1;
-
-            if (isGroundRow) {
-              // Ground block
-              ctx.fillStyle = "#6b3f1f";
-              ctx.fillRect(x, y, TILE_SIZE, TILE_SIZE);
-
-              ctx.fillStyle = "#00b543";
-              ctx.fillRect(x, y, TILE_SIZE, TILE_SIZE / 3);
-
-              ctx.fillStyle = "#84492a";
-              ctx.fillRect(x + 6, y + 24, 4, 4);
-              ctx.fillRect(x + 22, y + 30, 4, 4);
-              ctx.fillRect(x + 34, y + 20, 4, 4);
-            } else {
-              // Floating platform block
-              ctx.fillStyle = "#8b8fae";
-              ctx.fillRect(x, y, TILE_SIZE, TILE_SIZE);
-              ctx.fillStyle = "#4b4f6b";
-              ctx.fillRect(x, y + TILE_SIZE - 10, TILE_SIZE, 10);
-            }
-
-            ctx.strokeStyle = "rgba(0,0,0,0.55)";
-            ctx.lineWidth = 2;
-            ctx.strokeRect(x + 0.5, y + 0.5, TILE_SIZE - 1, TILE_SIZE - 1);
-          }
-        }
-      }
-
-      // Bushes
-      drawBush(TILE_SIZE * 8,  WORLD_HEIGHT - TILE_SIZE);
-      drawBush(TILE_SIZE * 22, WORLD_HEIGHT - TILE_SIZE);
-      drawBush(TILE_SIZE * 40, WORLD_HEIGHT - TILE_SIZE);
-
-      // Gates
-      for (const gate of gates) {
-        const gx = gate.x + 8;
-        const gy = gate.y - TILE_SIZE * 0.5;
-        const gw = gate.w - 16;
-        const gh = gate.h;
-
-        ctx.fillStyle = gate.solved ? "#1b5e20" : "#3ddc84";
-        ctx.fillRect(gx, gy, gw, gh);
-
-        ctx.fillStyle = "rgba(255,255,255,0.32)";
-        ctx.fillRect(gx + 6, gy + 6, gw - 12, gh * 0.45);
-
-        ctx.fillStyle = "#12341f";
-        ctx.fillRect(gx + gw - 14, gy + gh / 2, 6, 8);
-      }
-
-      // Flags (if any added later)
-      for (const flag of flags) {
-        const poleTop = flag.y - flag.h * 0.5;
-        ctx.strokeStyle = "#f5f5f5";
-        ctx.lineWidth = 4;
-        ctx.beginPath();
-        ctx.moveTo(flag.x + flag.w * 0.5, flag.y + flag.h * 0.5);
-        ctx.lineTo(flag.x + flag.w * 0.5, poleTop);
-        ctx.stroke();
-
-        ctx.fillStyle = "#ff3657";
-        ctx.beginPath();
-        ctx.moveTo(flag.x + flag.w * 0.5, poleTop);
-        ctx.lineTo(flag.x + flag.w * 0.5 + 26, poleTop + 12);
-        ctx.lineTo(flag.x + flag.w * 0.5, poleTop + 24);
-        ctx.closePath();
-        ctx.fill();
-      }
-
-      // Player
-      ctx.fillStyle = "#f4c542";
-      ctx.fillRect(player.x, player.y, player.w, player.h);
-      ctx.fillStyle = "#ffb300";
-      ctx.fillRect(player.x, player.y - 6, player.w, 8);
-
-      ctx.fillStyle = "#1b1b1b";
-      ctx.fillRect(player.x + 6,  player.y + 10, 4, 4);
-      ctx.fillRect(player.x + 18, player.y + 10, 4, 4);
-
-      ctx.restore();
+      // Background layers
+      drawBackground();
+      drawTrenchesAndPits();
+      drawQuestionBlocks();
+      drawEndFlag();
+      drawPlayer();
     }
 
     function loop(timestamp) {
       const dt = (timestamp - lastTime) / 1000;
       lastTime = timestamp;
 
-      if (!gamePaused && !levelCompleted) {
-        update(dt);
-        hudStatus.textContent = "Status: Running";
-      } else if (gamePaused && !levelCompleted) {
-        hudStatus.textContent = "Status: Answer the Question";
-      } else if (levelCompleted) {
-        hudStatus.textContent = "Status: Level Complete";
-      }
-
+      update(dt);
       draw();
+
       requestAnimationFrame(loop);
     }
 
-    function openGateQuestion(gate) {
-      if (gamePaused) return;
-
-      gamePaused = true;
-      activeGate = gate;
-      questionOverlay.classList.remove('hidden');
-      messageEl.textContent = "";
-
-      const q = QUESTION_BANK[GATE_QUESTION_INDEX] || QUESTION_BANK[0];
-
-      questionText.textContent = q.prompt;
-      choicesContainer.innerHTML = "";
-
-      q.choices.forEach((choice, index) => {
-        const btn = document.createElement('button');
-        btn.className = 'choice-btn';
-        btn.textContent = choice;
-        btn.addEventListener('click', () => handleAnswer(q, index, btn));
-        choicesContainer.appendChild(btn);
-      });
-    }
-
-    function handleAnswer(question, selectedIndex, btnElement) {
-      const isCorrect = selectedIndex === question.correctIndex;
-
-      if (isCorrect) {
-        btnElement.classList.add('correct');
-        messageEl.textContent = "Correct! Gate unlocked.";
-        if (activeGate) activeGate.solved = true;
-        setTimeout(() => {
-          questionOverlay.classList.add('hidden');
-          gamePaused = false;
-          activeGate = null;
-        }, 600);
-      } else {
-        btnElement.classList.add('wrong');
-        messageEl.textContent = "Not quite. Try again!";
-      }
-    }
-
-    function triggerWin() {
-      if (levelCompleted) return;
-      levelCompleted = true;
-      gamePaused = true;
-      winOverlay.classList.remove('hidden');
-    }
-
+    // Start
+    startNewRun();
     requestAnimationFrame(loop);
   </script>
 </body>
