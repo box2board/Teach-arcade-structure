@@ -330,7 +330,6 @@
     // CONFIG: CUSTOM QUESTIONS (back burner but wired)
     // ======================================================
     const CUSTOM_QUESTIONS = [];
-
     let useCustomQuestions = false;
 
     // ======================================================
@@ -642,7 +641,8 @@
     // End flag
     const endFlagX = WORLD_WIDTH - 160;
 
-    const keys = { left: false, right: false, jump: false };
+    // Movement keys (jump handled separately as a one-shot)
+    const keys = { left: false, right: false };
 
     // Player damage cooldown (seconds)
     let hitCooldown = 0;
@@ -674,18 +674,38 @@
     const jumpBtn  = document.getElementById('btnJump');
 
     // ======================================================
+    // JUMP HELPER
+    // ======================================================
+    function tryJump() {
+      if (player.onGround && !gamePaused && !inQuestion && !levelComplete) {
+        player.vy = -JUMP_STRENGTH;
+        player.onGround = false;
+      }
+    }
+
+    // ======================================================
     // INPUT HANDLING
     // ======================================================
     document.addEventListener('keydown', (e) => {
-      if (e.code === 'ArrowLeft' || e.code === 'KeyA') keys.left = true;
-      if (e.code === 'ArrowRight' || e.code === 'KeyD') keys.right = true;
-      if (e.code === 'ArrowUp' || e.code === 'Space' || e.code === 'KeyW') keys.jump = true;
+      if (e.code === 'ArrowLeft' || e.code === 'KeyA') {
+        keys.left = true;
+      }
+      if (e.code === 'ArrowRight' || e.code === 'KeyD') {
+        keys.right = true;
+      }
+      if (e.code === 'ArrowUp' || e.code === 'Space' || e.code === 'KeyW') {
+        e.preventDefault();
+        tryJump();
+      }
     });
 
     document.addEventListener('keyup', (e) => {
-      if (e.code === 'ArrowLeft' || e.code === 'KeyA') keys.left = false;
-      if (e.code === 'ArrowRight' || e.code === 'KeyD') keys.right = false;
-      if (e.code === 'ArrowUp' || e.code === 'Space' || e.code === 'KeyW') keys.jump = false;
+      if (e.code === 'ArrowLeft' || e.code === 'KeyA') {
+        keys.left = false;
+      }
+      if (e.code === 'ArrowRight' || e.code === 'KeyD') {
+        keys.right = false;
+      }
     });
 
     function bindControl(btn, onDown, onUp) {
@@ -702,7 +722,16 @@
 
     bindControl(leftBtn, () => { keys.left = true; },  () => { keys.left = false; });
     bindControl(rightBtn, () => { keys.right = true; }, () => { keys.right = false; });
-    bindControl(jumpBtn, () => { keys.jump = true; },  () => { keys.jump = false; });
+
+    // Jump button is one-shot, not a held state
+    if (jumpBtn) {
+      const pressJump = (e) => {
+        e.preventDefault();
+        tryJump();
+      };
+      jumpBtn.addEventListener('touchstart', pressJump, { passive: false });
+      jumpBtn.addEventListener('mousedown', pressJump);
+    }
 
     // Mode buttons
     modePreloadedBtn.addEventListener('click', () => {
@@ -891,12 +920,7 @@
       else if (keys.right) player.vx = PLAYER_SPEED;
       else                player.vx = 0;
 
-      // Jump
-      if (keys.jump && player.onGround) {
-        player.vy = -JUMP_STRENGTH;
-        player.onGround = false;
-      }
-
+      // Gravity
       player.vy += GRAVITY * dt;
 
       const prevY = player.y;
