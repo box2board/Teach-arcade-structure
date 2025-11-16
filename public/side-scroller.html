@@ -1,0 +1,658 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Teach Arcade Side Scroller</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    :root {
+      --bg: #0b1020;
+      --platform: #444c6b;
+      --player: #f4c542;
+      --gate: #4caf50;
+      --flag: #e53935;
+      --text: #f9f9ff;
+      --accent: #ffb300;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #182446 0%, #050713 60%);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding: 16px;
+      gap: 12px;
+    }
+
+    h1 {
+      font-size: 1.4rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .subtitle {
+      font-size: 0.9rem;
+      opacity: 0.85;
+      text-align: center;
+      max-width: 800px;
+    }
+
+    #gameContainer {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      border: 2px solid rgba(255,255,255,0.1);
+    }
+
+    canvas {
+      display: block;
+      background: linear-gradient(#182b4d 0%, #101426 40%, #252b3d 40%, #252b3d 100%);
+    }
+
+    #hud {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      display: flex;
+      gap: 10px;
+      font-size: 0.8rem;
+      background: rgba(0,0,0,0.4);
+      padding: 4px 8px;
+      border-radius: 999px;
+      backdrop-filter: blur(6px);
+    }
+
+    #hud span {
+      opacity: 0.9;
+    }
+
+    #questionOverlay,
+    #winOverlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at top, rgba(0,0,0,0.9), rgba(0,0,0,0.98));
+      z-index: 10;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .panel {
+      background: #151827;
+      border-radius: 16px;
+      padding: 18px 20px;
+      max-width: 480px;
+      width: 90%;
+      border: 1px solid rgba(255,255,255,0.15);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .panel h2 {
+      font-size: 1.1rem;
+    }
+
+    .panel p {
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    .choices {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .choice-btn {
+      border: none;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 0.9rem;
+      text-align: left;
+      cursor: pointer;
+      background: #232842;
+      color: var(--text);
+      transition: background 0.15s, transform 0.1s;
+    }
+
+    .choice-btn:hover {
+      background: #2f3557;
+      transform: translateY(-1px);
+    }
+
+    .choice-btn.correct {
+      background: #2e7d32 !important;
+    }
+
+    .choice-btn.wrong {
+      background: #c62828 !important;
+    }
+
+    .panel-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      opacity: 0.8;
+    }
+
+    .primary-btn {
+      border-radius: 999px;
+      border: none;
+      padding: 8px 16px;
+      background: var(--accent);
+      color: #111;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: transform 0.1s, box-shadow 0.1s;
+    }
+
+    .primary-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    }
+
+    #message {
+      font-size: 0.8rem;
+      min-height: 1.2em;
+    }
+
+    @media (max-width: 800px) {
+      canvas {
+        width: 100vw;
+        height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Teach Arcade · Side Scroller</h1>
+  <p class="subtitle">
+    Run, jump, and unlock the gate by answering a question.  
+    Edit the question set in the script to match your lesson.
+  </p>
+
+  <div id="gameContainer">
+    <canvas id="gameCanvas" width="960" height="360"></canvas>
+
+    <div id="hud">
+      <span id="hud-level">Level 1 · Pencil Plains</span>
+      <span id="hud-status">Status: Running</span>
+    </div>
+
+    <!-- Question Gate Overlay -->
+    <div id="questionOverlay" class="hidden">
+      <div class="panel">
+        <h2>Knowledge Gate</h2>
+        <p id="questionText"></p>
+        <div class="choices" id="choicesContainer"></div>
+        <div id="message"></div>
+        <div class="panel-footer">
+          <span>Answer correctly to open the gate.</span>
+          <button id="quitBtn" class="primary-btn">Quit Level</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Win Overlay -->
+    <div id="winOverlay" class="hidden">
+      <div class="panel">
+        <h2>Level Complete!</h2>
+        <p>Nice work! You cleared the level and passed the final flag.</p>
+        <div class="panel-footer">
+          <span>Reload the page to play again.</span>
+          <button id="restartBtn" class="primary-btn">Restart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ===============================
+    // TEACHER CONFIGURATION SECTION
+    // ===============================
+    // Edit this part to change questions, answers, and gate behavior.
+
+    const QUESTION_BANK = [
+      {
+        prompt: "Which war began in 1914?",
+        choices: [
+          "World War I",
+          "World War II",
+          "The American Civil War",
+          "The Cold War"
+        ],
+        correctIndex: 0
+      },
+      {
+        prompt: "What is the basic unit of life in biology?",
+        choices: [
+          "Atom",
+          "Molecule",
+          "Cell",
+          "Organ"
+        ],
+        correctIndex: 2
+      }
+    ];
+
+    // You can map multiple gates to specific questions if you add more gates/levels.
+    // For this simple demo, our single gate uses question index 0:
+    const GATE_QUESTION_INDEX = 0;
+
+    // Movement sensitivity: adjust for younger/older students if needed.
+    const PLAYER_SPEED = 200;     // horizontal pixels per second
+    const JUMP_STRENGTH = 420;    // jump impulse
+    const GRAVITY = 1200;         // downward acceleration
+
+    // ===============================
+    // CORE GAME IMPLEMENTATION
+    // ===============================
+
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+
+    const TILE_SIZE = 48;
+
+    // Level legend:
+    // X = solid ground/platform
+    // G = gate
+    // F = goal flag
+    // . = empty
+    const levelMap = [
+      "................................................................",
+      "................................................................",
+      "................................................................",
+      "....................XXX.........................................",
+      "...............................................G................",
+      "............XXX................................XXX..............",
+      "................................................................",
+      "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+    ];
+
+    const WORLD_WIDTH = levelMap[0].length * TILE_SIZE;
+    const WORLD_HEIGHT = levelMap.length * TILE_SIZE;
+
+    const player = {
+      x: TILE_SIZE * 2,
+      y: TILE_SIZE * 2,
+      w: 32,
+      h: 44,
+      vx: 0,
+      vy: 0,
+      onGround: false
+    };
+
+    // Camera
+    let cameraX = 0;
+
+    // Gate and flag metadata
+    const gates = [];
+    const flags = [];
+
+    // Parse level for gates and flags
+    for (let row = 0; row < levelMap.length; row++) {
+      for (let col = 0; col < levelMap[row].length; col++) {
+        const ch = levelMap[row][col];
+        if (ch === 'G') {
+          gates.push({
+            col,
+            row,
+            x: col * TILE_SIZE,
+            y: row * TILE_SIZE,
+            w: TILE_SIZE,
+            h: TILE_SIZE * 1.5,
+            solved: false
+          });
+        }
+        if (ch === 'F') {
+          flags.push({
+            col,
+            row,
+            x: col * TILE_SIZE,
+            y: row * TILE_SIZE,
+            w: TILE_SIZE,
+            h: TILE_SIZE * 2
+          });
+        }
+      }
+    }
+
+    // Simple controls
+    const keys = {
+      left: false,
+      right: false,
+      jump: false
+    };
+
+    document.addEventListener('keydown', (e) => {
+      if (e.code === 'ArrowLeft' || e.code === 'KeyA') {
+        keys.left = true;
+      }
+      if (e.code === 'ArrowRight' || e.code === 'KeyD') {
+        keys.right = true;
+      }
+      if (e.code === 'ArrowUp' || e.code === 'Space' || e.code === 'KeyW') {
+        keys.jump = true;
+      }
+    });
+
+    document.addEventListener('keyup', (e) => {
+      if (e.code === 'ArrowLeft' || e.code === 'KeyA') {
+        keys.left = false;
+      }
+      if (e.code === 'ArrowRight' || e.code === 'KeyD') {
+        keys.right = false;
+      }
+      if (e.code === 'ArrowUp' || e.code === 'Space' || e.code === 'KeyW') {
+        keys.jump = false;
+      }
+    });
+
+    // Game state
+    let lastTime = 0;
+    let gamePaused = false;
+    let levelCompleted = false;
+
+    const hudStatus = document.getElementById('hud-status');
+
+    // Overlay elements
+    const questionOverlay = document.getElementById('questionOverlay');
+    const winOverlay = document.getElementById('winOverlay');
+    const questionText = document.getElementById('questionText');
+    const choicesContainer = document.getElementById('choicesContainer');
+    const messageEl = document.getElementById('message');
+    const quitBtn = document.getElementById('quitBtn');
+    const restartBtn = document.getElementById('restartBtn');
+
+    let activeGate = null;
+
+    quitBtn.addEventListener('click', () => {
+      // Simple quit: reload page
+      window.location.reload();
+    });
+
+    restartBtn.addEventListener('click', () => {
+      window.location.reload();
+    });
+
+    function tileAtPixel(px, py) {
+      const col = Math.floor(px / TILE_SIZE);
+      const row = Math.floor(py / TILE_SIZE);
+      if (row < 0 || row >= levelMap.length || col < 0 || col >= levelMap[0].length) {
+        return null;
+      }
+      return levelMap[row][col];
+    }
+
+    function isSolid(ch) {
+      return ch === 'X';
+    }
+
+    function rectIntersect(a, b) {
+      return !(
+        a.x + a.w <= b.x ||
+        a.x >= b.x + b.w ||
+        a.y + a.h <= b.y ||
+        a.y >= b.y + b.h
+      );
+    }
+
+    function update(dt) {
+      // Horizontal movement
+      if (keys.left) {
+        player.vx = -PLAYER_SPEED;
+      } else if (keys.right) {
+        player.vx = PLAYER_SPEED;
+      } else {
+        player.vx = 0;
+      }
+
+      // Jump
+      if (keys.jump && player.onGround) {
+        player.vy = -JUMP_STRENGTH;
+        player.onGround = false;
+      }
+
+      // Gravity
+      player.vy += GRAVITY * dt;
+
+      // Horizontal collision
+      player.x += player.vx * dt;
+      handleCollisions('x');
+
+      // Vertical collision
+      player.y += player.vy * dt;
+      handleCollisions('y');
+
+      // Clamp to world
+      player.x = Math.max(0, Math.min(player.x, WORLD_WIDTH - player.w));
+      player.y = Math.min(player.y, WORLD_HEIGHT - player.h);
+
+      // Camera follow
+      const halfCanvas = canvas.width / 2;
+      cameraX = player.x + player.w / 2 - halfCanvas;
+      cameraX = Math.max(0, Math.min(cameraX, WORLD_WIDTH - canvas.width));
+
+      // Check gate collisions
+      for (const gate of gates) {
+        if (!gate.solved && rectIntersect(player, gate)) {
+          openGateQuestion(gate);
+          break;
+        }
+      }
+
+      // Check goal flag (if any)
+      for (const flag of flags) {
+        if (rectIntersect(player, flag)) {
+          triggerWin();
+          break;
+        }
+      }
+    }
+
+    function handleCollisions(axis) {
+      // Check four corners for solid tiles and adjust
+      const corners = [
+        { x: player.x, y: player.y },
+        { x: player.x + player.w, y: player.y },
+        { x: player.x, y: player.y + player.h },
+        { x: player.x + player.w, y: player.y + player.h }
+      ];
+
+      player.onGround = false;
+
+      for (const c of corners) {
+        const col = Math.floor(c.x / TILE_SIZE);
+        const row = Math.floor(c.y / TILE_SIZE);
+
+        if (row < 0 || row >= levelMap.length || col < 0 || col >= levelMap[0].length) {
+          continue;
+        }
+
+        const ch = levelMap[row][col];
+        if (isSolid(ch)) {
+          const tileX = col * TILE_SIZE;
+          const tileY = row * TILE_SIZE;
+
+          if (axis === 'x') {
+            if (player.vx > 0) {
+              player.x = tileX - player.w - 0.01;
+            } else if (player.vx < 0) {
+              player.x = tileX + TILE_SIZE + 0.01;
+            }
+            player.vx = 0;
+          } else if (axis === 'y') {
+            if (player.vy > 0) {
+              player.y = tileY - player.h - 0.01;
+              player.vy = 0;
+              player.onGround = true;
+            } else if (player.vy < 0) {
+              player.y = tileY + TILE_SIZE + 0.01;
+              player.vy = 0;
+            }
+          }
+        }
+      }
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      ctx.save();
+      ctx.translate(-cameraX, 0);
+
+      // Background stripes
+      ctx.fillStyle = "#151a2e";
+      for (let i = 0; i < WORLD_WIDTH; i += 120) {
+        ctx.fillRect(i, 0, 60, canvas.height * 0.8);
+      }
+
+      // Draw tiles
+      for (let row = 0; row < levelMap.length; row++) {
+        for (let col = 0; col < levelMap[row].length; col++) {
+          const ch = levelMap[row][col];
+          const x = col * TILE_SIZE;
+          const y = row * TILE_SIZE;
+
+          if (ch === 'X') {
+            ctx.fillStyle = "#3b435f";
+            ctx.fillRect(x, y, TILE_SIZE, TILE_SIZE);
+            ctx.strokeStyle = "rgba(0,0,0,0.4)";
+            ctx.strokeRect(x, y, TILE_SIZE, TILE_SIZE);
+          }
+        }
+      }
+
+      // Draw gate(s)
+      for (const gate of gates) {
+        ctx.fillStyle = gate.solved ? "#1b5e20" : "#4caf50";
+        ctx.fillRect(gate.x + 8, gate.y - TILE_SIZE * 0.5, gate.w - 16, gate.h);
+        ctx.fillStyle = "rgba(255,255,255,0.2)";
+        ctx.fillRect(gate.x + 16, gate.y - TILE_SIZE * 0.4, gate.w - 32, gate.h * 0.4);
+      }
+
+      // Draw flags (if any)
+      for (const flag of flags) {
+        const poleTop = flag.y - flag.h * 0.5;
+        ctx.strokeStyle = "#f5f5f5";
+        ctx.lineWidth = 4;
+        ctx.beginPath();
+        ctx.moveTo(flag.x + flag.w * 0.5, flag.y + flag.h * 0.5);
+        ctx.lineTo(flag.x + flag.w * 0.5, poleTop);
+        ctx.stroke();
+
+        ctx.fillStyle = "#e53935";
+        ctx.beginPath();
+        ctx.moveTo(flag.x + flag.w * 0.5, poleTop);
+        ctx.lineTo(flag.x + flag.w * 0.5 + 26, poleTop + 12);
+        ctx.lineTo(flag.x + flag.w * 0.5, poleTop + 24);
+        ctx.closePath();
+        ctx.fill();
+      }
+
+      // Draw player
+      ctx.fillStyle = "#f4c542";
+      ctx.fillRect(player.x, player.y, player.w, player.h);
+      // little "hat"
+      ctx.fillStyle = "#ffb300";
+      ctx.fillRect(player.x, player.y - 6, player.w, 8);
+
+      ctx.restore();
+    }
+
+    function loop(timestamp) {
+      const dt = (timestamp - lastTime) / 1000;
+      lastTime = timestamp;
+
+      if (!gamePaused && !levelCompleted) {
+        update(dt);
+        hudStatus.textContent = "Status: Running";
+      } else if (gamePaused && !levelCompleted) {
+        hudStatus.textContent = "Status: Answer the Question";
+      } else if (levelCompleted) {
+        hudStatus.textContent = "Status: Level Complete";
+      }
+
+      draw();
+      requestAnimationFrame(loop);
+    }
+
+    function openGateQuestion(gate) {
+      if (gamePaused) return;
+
+      gamePaused = true;
+      activeGate = gate;
+      questionOverlay.classList.remove('hidden');
+      messageEl.textContent = "";
+
+      const q = QUESTION_BANK[GATE_QUESTION_INDEX] || QUESTION_BANK[0];
+
+      questionText.textContent = q.prompt;
+      choicesContainer.innerHTML = "";
+
+      q.choices.forEach((choice, index) => {
+        const btn = document.createElement('button');
+        btn.className = 'choice-btn';
+        btn.textContent = choice;
+        btn.addEventListener('click', () => {
+          handleAnswer(q, index, btn);
+        });
+        choicesContainer.appendChild(btn);
+      });
+    }
+
+    function handleAnswer(question, selectedIndex, btnElement) {
+      const isCorrect = selectedIndex === question.correctIndex;
+
+      if (isCorrect) {
+        btnElement.classList.add('correct');
+        messageEl.textContent = "Correct! Gate unlocked.";
+        if (activeGate) {
+          activeGate.solved = true;
+        }
+        setTimeout(() => {
+          questionOverlay.classList.add('hidden');
+          gamePaused = false;
+          activeGate = null;
+        }, 600);
+      } else {
+        btnElement.classList.add('wrong');
+        messageEl.textContent = "Not quite. Try again!";
+        // Optionally, you could also apply a small in-game penalty here.
+      }
+    }
+
+    function triggerWin() {
+      if (levelCompleted) return;
+      levelCompleted = true;
+      gamePaused = true;
+      winOverlay.classList.remove('hidden');
+    }
+
+    // Start loop
+    requestAnimationFrame(loop);
+  </script>
+</body>
+</html>
