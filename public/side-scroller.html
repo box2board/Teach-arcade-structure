@@ -4,16 +4,27 @@
   <meta charset="utf-8">
   <title>Teach Arcade Side Scroller</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Pixel-style font for headings -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #0b1020;
-      --platform: #444c6b;
+      /* 8-bit inspired palette */
+      --sky: #5c94fc;
+      --mountain: #3b4c8b;
+      --mountain-dark: #2a355c;
+      --ground-top: #00b543;
+      --ground-side: #6b3f1f;
+      --platform: #8b8fae;
+      --platform-shadow: #4b4f6b;
       --player: #f4c542;
-      --gate: #4caf50;
-      --flag: #e53935;
+      --player-accent: #ffb300;
+      --gate: #3ddc84;
+      --gate-dark: #1b5e20;
+      --flag: #ff3657;
       --text: #f9f9ff;
       --accent: #ffb300;
+      --ui-bg: rgba(0, 0, 0, 0.45);
     }
 
     * {
@@ -24,7 +35,7 @@
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #182446 0%, #050713 60%);
+      background: radial-gradient(circle at top, #111428 0%, #020308 65%);
       color: var(--text);
       display: flex;
       flex-direction: column;
@@ -32,34 +43,39 @@
       justify-content: flex-start;
       min-height: 100vh;
       padding: 16px;
-      gap: 12px;
+      gap: 10px;
     }
 
     h1 {
-      font-size: 1.4rem;
-      letter-spacing: 0.08em;
+      font-family: "Press Start 2P", system-ui, sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       text-align: center;
+      text-shadow: 0 2px 0 #000;
     }
 
     .subtitle {
-      font-size: 0.9rem;
-      opacity: 0.85;
+      font-size: 0.8rem;
+      opacity: 0.9;
       text-align: center;
-      max-width: 800px;
+      max-width: 900px;
     }
 
     #gameContainer {
       position: relative;
-      border-radius: 12px;
+      border-radius: 14px;
       overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-      border: 2px solid rgba(255,255,255,0.1);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.75);
+      border: 2px solid rgba(255,255,255,0.15);
+      background: #000;
     }
 
     canvas {
       display: block;
-      background: linear-gradient(#182b4d 0%, #101426 40%, #252b3d 40%, #252b3d 100%);
+      /* pure 8-bit sky, everything else is drawn in JS */
+      background: var(--sky);
+      image-rendering: pixelated;
     }
 
     #hud {
@@ -68,15 +84,17 @@
       left: 8px;
       display: flex;
       gap: 10px;
-      font-size: 0.8rem;
-      background: rgba(0,0,0,0.4);
-      padding: 4px 8px;
+      font-size: 0.65rem;
+      background: var(--ui-bg);
+      padding: 4px 10px;
       border-radius: 999px;
       backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.12);
+      font-family: "Press Start 2P", system-ui, sans-serif;
     }
 
     #hud span {
-      opacity: 0.9;
+      opacity: 0.95;
     }
 
     #questionOverlay,
@@ -86,7 +104,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: radial-gradient(circle at top, rgba(0,0,0,0.9), rgba(0,0,0,0.98));
+      background: radial-gradient(circle at top, rgba(0,0,0,0.92), rgba(0,0,0,0.98));
       z-index: 10;
     }
 
@@ -96,23 +114,26 @@
 
     .panel {
       background: #151827;
-      border-radius: 16px;
+      border-radius: 14px;
       padding: 18px 20px;
       max-width: 480px;
       width: 90%;
-      border: 1px solid rgba(255,255,255,0.15);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+      border: 2px solid rgba(255,255,255,0.2);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.85);
       display: flex;
       flex-direction: column;
       gap: 12px;
     }
 
     .panel h2 {
-      font-size: 1.1rem;
+      font-family: "Press Start 2P", system-ui, sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     .panel p {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       line-height: 1.4;
     }
 
@@ -124,20 +145,22 @@
     }
 
     .choice-btn {
-      border: none;
+      border: 0;
       border-radius: 999px;
       padding: 8px 12px;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       text-align: left;
       cursor: pointer;
       background: #232842;
       color: var(--text);
-      transition: background 0.15s, transform 0.1s;
+      transition: background 0.12s, transform 0.08s, box-shadow 0.12s;
+      font-family: system-ui, -apple-system, sans-serif;
     }
 
     .choice-btn:hover {
       background: #2f3557;
       transform: translateY(-1px);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.5);
     }
 
     .choice-btn.correct {
@@ -152,8 +175,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.8rem;
-      opacity: 0.8;
+      font-size: 0.75rem;
+      opacity: 0.85;
     }
 
     .primary-btn {
@@ -164,13 +187,14 @@
       color: #111;
       font-weight: 600;
       cursor: pointer;
-      font-size: 0.9rem;
-      transition: transform 0.1s, box-shadow 0.1s;
+      font-size: 0.8rem;
+      transition: transform 0.08s, box-shadow 0.08s;
+      font-family: "Press Start 2P", system-ui, sans-serif;
     }
 
     .primary-btn:hover {
       transform: translateY(-1px);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
     }
 
     #message {
@@ -178,10 +202,16 @@
       min-height: 1.2em;
     }
 
-    @media (max-width: 800px) {
+    @media (max-width: 900px) {
       canvas {
         width: 100vw;
         height: auto;
+      }
+      h1 {
+        font-size: 0.9rem;
+      }
+      .subtitle {
+        font-size: 0.75rem;
       }
     }
   </style>
@@ -189,8 +219,7 @@
 <body>
   <h1>Teach Arcade · Side Scroller</h1>
   <p class="subtitle">
-    Run, jump, and unlock the gate by answering a question.  
-    Edit the question set in the script to match your lesson.
+    Run, jump, and unlock the gate by answering a question. Edit the question set in the script to match your lesson.
   </p>
 
   <div id="gameContainer">
@@ -210,7 +239,7 @@
         <div id="message"></div>
         <div class="panel-footer">
           <span>Answer correctly to open the gate.</span>
-          <button id="quitBtn" class="primary-btn">Quit Level</button>
+          <button id="quitBtn" class="primary-btn">Quit</button>
         </div>
       </div>
     </div>
@@ -221,7 +250,7 @@
         <h2>Level Complete!</h2>
         <p>Nice work! You cleared the level and passed the final flag.</p>
         <div class="panel-footer">
-          <span>Reload the page to play again.</span>
+          <span>Reload to play again.</span>
           <button id="restartBtn" class="primary-btn">Restart</button>
         </div>
       </div>
@@ -232,8 +261,6 @@
     // ===============================
     // TEACHER CONFIGURATION SECTION
     // ===============================
-    // Edit this part to change questions, answers, and gate behavior.
-
     const QUESTION_BANK = [
       {
         prompt: "Which war began in 1914?",
@@ -257,19 +284,15 @@
       }
     ];
 
-    // You can map multiple gates to specific questions if you add more gates/levels.
-    // For this simple demo, our single gate uses question index 0:
     const GATE_QUESTION_INDEX = 0;
 
-    // Movement sensitivity: adjust for younger/older students if needed.
-    const PLAYER_SPEED = 200;     // horizontal pixels per second
-    const JUMP_STRENGTH = 420;    // jump impulse
-    const GRAVITY = 1200;         // downward acceleration
+    const PLAYER_SPEED = 200;
+    const JUMP_STRENGTH = 420;
+    const GRAVITY = 1200;
 
     // ===============================
     // CORE GAME IMPLEMENTATION
     // ===============================
-
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
 
@@ -304,14 +327,11 @@
       onGround: false
     };
 
-    // Camera
     let cameraX = 0;
 
-    // Gate and flag metadata
     const gates = [];
     const flags = [];
 
-    // Parse level for gates and flags
     for (let row = 0; row < levelMap.length; row++) {
       for (let col = 0; col < levelMap[row].length; col++) {
         const ch = levelMap[row][col];
@@ -339,45 +359,26 @@
       }
     }
 
-    // Simple controls
-    const keys = {
-      left: false,
-      right: false,
-      jump: false
-    };
+    const keys = { left: false, right: false, jump: false };
 
     document.addEventListener('keydown', (e) => {
-      if (e.code === 'ArrowLeft' || e.code === 'KeyA') {
-        keys.left = true;
-      }
-      if (e.code === 'ArrowRight' || e.code === 'KeyD') {
-        keys.right = true;
-      }
-      if (e.code === 'ArrowUp' || e.code === 'Space' || e.code === 'KeyW') {
-        keys.jump = true;
-      }
+      if (e.code === 'ArrowLeft' || e.code === 'KeyA') keys.left = true;
+      if (e.code === 'ArrowRight' || e.code === 'KeyD') keys.right = true;
+      if (e.code === 'ArrowUp' || e.code === 'Space' || e.code === 'KeyW') keys.jump = true;
     });
 
     document.addEventListener('keyup', (e) => {
-      if (e.code === 'ArrowLeft' || e.code === 'KeyA') {
-        keys.left = false;
-      }
-      if (e.code === 'ArrowRight' || e.code === 'KeyD') {
-        keys.right = false;
-      }
-      if (e.code === 'ArrowUp' || e.code === 'Space' || e.code === 'KeyW') {
-        keys.jump = false;
-      }
+      if (e.code === 'ArrowLeft' || e.code === 'KeyA') keys.left = false;
+      if (e.code === 'ArrowRight' || e.code === 'KeyD') keys.right = false;
+      if (e.code === 'ArrowUp' || e.code === 'Space' || e.code === 'KeyW') keys.jump = false;
     });
 
-    // Game state
     let lastTime = 0;
     let gamePaused = false;
     let levelCompleted = false;
 
     const hudStatus = document.getElementById('hud-status');
 
-    // Overlay elements
     const questionOverlay = document.getElementById('questionOverlay');
     const winOverlay = document.getElementById('winOverlay');
     const questionText = document.getElementById('questionText');
@@ -388,14 +389,8 @@
 
     let activeGate = null;
 
-    quitBtn.addEventListener('click', () => {
-      // Simple quit: reload page
-      window.location.reload();
-    });
-
-    restartBtn.addEventListener('click', () => {
-      window.location.reload();
-    });
+    quitBtn.addEventListener('click', () => window.location.reload());
+    restartBtn.addEventListener('click', () => window.location.reload());
 
     function tileAtPixel(px, py) {
       const col = Math.floor(px / TILE_SIZE);
@@ -420,42 +415,30 @@
     }
 
     function update(dt) {
-      // Horizontal movement
-      if (keys.left) {
-        player.vx = -PLAYER_SPEED;
-      } else if (keys.right) {
-        player.vx = PLAYER_SPEED;
-      } else {
-        player.vx = 0;
-      }
+      if (keys.left)      player.vx = -PLAYER_SPEED;
+      else if (keys.right) player.vx = PLAYER_SPEED;
+      else                player.vx = 0;
 
-      // Jump
       if (keys.jump && player.onGround) {
         player.vy = -JUMP_STRENGTH;
         player.onGround = false;
       }
 
-      // Gravity
       player.vy += GRAVITY * dt;
 
-      // Horizontal collision
       player.x += player.vx * dt;
       handleCollisions('x');
 
-      // Vertical collision
       player.y += player.vy * dt;
       handleCollisions('y');
 
-      // Clamp to world
       player.x = Math.max(0, Math.min(player.x, WORLD_WIDTH - player.w));
       player.y = Math.min(player.y, WORLD_HEIGHT - player.h);
 
-      // Camera follow
       const halfCanvas = canvas.width / 2;
       cameraX = player.x + player.w / 2 - halfCanvas;
       cameraX = Math.max(0, Math.min(cameraX, WORLD_WIDTH - canvas.width));
 
-      // Check gate collisions
       for (const gate of gates) {
         if (!gate.solved && rectIntersect(player, gate)) {
           openGateQuestion(gate);
@@ -463,7 +446,6 @@
         }
       }
 
-      // Check goal flag (if any)
       for (const flag of flags) {
         if (rectIntersect(player, flag)) {
           triggerWin();
@@ -473,12 +455,11 @@
     }
 
     function handleCollisions(axis) {
-      // Check four corners for solid tiles and adjust
       const corners = [
-        { x: player.x, y: player.y },
-        { x: player.x + player.w, y: player.y },
-        { x: player.x, y: player.y + player.h },
-        { x: player.x + player.w, y: player.y + player.h }
+        { x: player.x,             y: player.y },
+        { x: player.x + player.w,  y: player.y },
+        { x: player.x,             y: player.y + player.h },
+        { x: player.x + player.w,  y: player.y + player.h }
       ];
 
       player.onGround = false;
@@ -487,9 +468,7 @@
         const col = Math.floor(c.x / TILE_SIZE);
         const row = Math.floor(c.y / TILE_SIZE);
 
-        if (row < 0 || row >= levelMap.length || col < 0 || col >= levelMap[0].length) {
-          continue;
-        }
+        if (row < 0 || row >= levelMap.length || col < 0 || col >= levelMap[0].length) continue;
 
         const ch = levelMap[row][col];
         if (isSolid(ch)) {
@@ -497,11 +476,8 @@
           const tileY = row * TILE_SIZE;
 
           if (axis === 'x') {
-            if (player.vx > 0) {
-              player.x = tileX - player.w - 0.01;
-            } else if (player.vx < 0) {
-              player.x = tileX + TILE_SIZE + 0.01;
-            }
+            if (player.vx > 0)      player.x = tileX - player.w - 0.01;
+            else if (player.vx < 0) player.x = tileX + TILE_SIZE + 0.01;
             player.vx = 0;
           } else if (axis === 'y') {
             if (player.vy > 0) {
@@ -517,19 +493,69 @@
       }
     }
 
+    // --- 8-bit style drawing helpers ---
+    function drawMountains() {
+      ctx.fillStyle = "#3b4c8b";
+      for (let x = -200; x < WORLD_WIDTH + 200; x += 260) {
+        ctx.beginPath();
+        ctx.moveTo(x, canvas.height * 0.75);
+        ctx.lineTo(x + 130, canvas.height * 0.35);
+        ctx.lineTo(x + 260, canvas.height * 0.75);
+        ctx.closePath();
+        ctx.fill();
+      }
+
+      ctx.fillStyle = "#2a355c";
+      for (let x = -260; x < WORLD_WIDTH + 260; x += 240) {
+        ctx.beginPath();
+        ctx.moveTo(x, canvas.height * 0.8);
+        ctx.lineTo(x + 120, canvas.height * 0.45);
+        ctx.lineTo(x + 240, canvas.height * 0.8);
+        ctx.closePath();
+        ctx.fill();
+      }
+    }
+
+    function drawCloud(x, y) {
+      ctx.fillStyle = "#f5f7ff";
+      ctx.fillRect(x, y, 40, 16);
+      ctx.fillRect(x + 10, y - 10, 32, 18);
+      ctx.fillRect(x + 20, y, 36, 16);
+    }
+
+    function drawBush(x, y) {
+      ctx.fillStyle = "#008c3a";
+      ctx.fillRect(x, y - 16, 32, 16);
+      ctx.fillRect(x + 20, y - 20, 28, 20);
+      ctx.fillRect(x + 40, y - 16, 24, 16);
+      ctx.fillStyle = "#00d15b";
+      ctx.fillRect(x + 4, y - 14, 6, 4);
+      ctx.fillRect(x + 26, y - 18, 6, 4);
+      ctx.fillRect(x + 44, y - 14, 6, 4);
+    }
+
     function draw() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       ctx.save();
       ctx.translate(-cameraX, 0);
 
-      // Background stripes
-      ctx.fillStyle = "#151a2e";
-      for (let i = 0; i < WORLD_WIDTH; i += 120) {
-        ctx.fillRect(i, 0, 60, canvas.height * 0.8);
-      }
+      // Sky (already blue via CSS, but reinforce)
+      ctx.fillStyle = "#5c94fc";
+      ctx.fillRect(cameraX, 0, canvas.width, canvas.height);
 
-      // Draw tiles
+      // Distant mountains
+      drawMountains();
+
+      // Clouds
+      const cloudY = 40;
+      drawCloud(80, cloudY);
+      drawCloud(260, cloudY + 16);
+      drawCloud(520, cloudY + 4);
+      drawCloud(780, cloudY + 12);
+      drawCloud(1040, cloudY);
+
+      // Tiles
       for (let row = 0; row < levelMap.length; row++) {
         for (let col = 0; col < levelMap[row].length; col++) {
           const ch = levelMap[row][col];
@@ -537,23 +563,59 @@
           const y = row * TILE_SIZE;
 
           if (ch === 'X') {
-            ctx.fillStyle = "#3b435f";
-            ctx.fillRect(x, y, TILE_SIZE, TILE_SIZE);
-            ctx.strokeStyle = "rgba(0,0,0,0.4)";
-            ctx.strokeRect(x, y, TILE_SIZE, TILE_SIZE);
+            const isGroundRow = row === levelMap.length - 1;
+
+            if (isGroundRow) {
+              // Ground block (grass top, dirt body)
+              ctx.fillStyle = "#6b3f1f";
+              ctx.fillRect(x, y, TILE_SIZE, TILE_SIZE);
+
+              ctx.fillStyle = "#00b543";
+              ctx.fillRect(x, y, TILE_SIZE, TILE_SIZE / 3);
+
+              // simple pixel specks in dirt
+              ctx.fillStyle = "#84492a";
+              ctx.fillRect(x + 6, y + 24, 4, 4);
+              ctx.fillRect(x + 22, y + 30, 4, 4);
+              ctx.fillRect(x + 34, y + 20, 4, 4);
+            } else {
+              // Floating platform block
+              ctx.fillStyle = "#8b8fae";
+              ctx.fillRect(x, y, TILE_SIZE, TILE_SIZE);
+              ctx.fillStyle = "#4b4f6b";
+              ctx.fillRect(x, y + TILE_SIZE - 10, TILE_SIZE, 10);
+            }
+
+            ctx.strokeStyle = "rgba(0,0,0,0.55)";
+            ctx.lineWidth = 2;
+            ctx.strokeRect(x + 0.5, y + 0.5, TILE_SIZE - 1, TILE_SIZE - 1);
           }
         }
       }
 
-      // Draw gate(s)
+      // A couple of bushes on the ground for variety
+      drawBush(TILE_SIZE * 8, WORLD_HEIGHT - TILE_SIZE);
+      drawBush(TILE_SIZE * 22, WORLD_HEIGHT - TILE_SIZE);
+      drawBush(TILE_SIZE * 40, WORLD_HEIGHT - TILE_SIZE);
+
+      // Gates
       for (const gate of gates) {
-        ctx.fillStyle = gate.solved ? "#1b5e20" : "#4caf50";
-        ctx.fillRect(gate.x + 8, gate.y - TILE_SIZE * 0.5, gate.w - 16, gate.h);
-        ctx.fillStyle = "rgba(255,255,255,0.2)";
-        ctx.fillRect(gate.x + 16, gate.y - TILE_SIZE * 0.4, gate.w - 32, gate.h * 0.4);
+        const gx = gate.x + 8;
+        const gy = gate.y - TILE_SIZE * 0.5;
+        const gw = gate.w - 16;
+        const gh = gate.h;
+
+        ctx.fillStyle = gate.solved ? "#1b5e20" : "#3ddc84";
+        ctx.fillRect(gx, gy, gw, gh);
+
+        ctx.fillStyle = "rgba(255,255,255,0.32)";
+        ctx.fillRect(gx + 6, gy + 6, gw - 12, gh * 0.45);
+
+        ctx.fillStyle = "#12341f";
+        ctx.fillRect(gx + gw - 14, gy + gh / 2, 6, 8); // tiny "handle"
       }
 
-      // Draw flags (if any)
+      // Flags (if any get added later)
       for (const flag of flags) {
         const poleTop = flag.y - flag.h * 0.5;
         ctx.strokeStyle = "#f5f5f5";
@@ -563,7 +625,7 @@
         ctx.lineTo(flag.x + flag.w * 0.5, poleTop);
         ctx.stroke();
 
-        ctx.fillStyle = "#e53935";
+        ctx.fillStyle = "#ff3657";
         ctx.beginPath();
         ctx.moveTo(flag.x + flag.w * 0.5, poleTop);
         ctx.lineTo(flag.x + flag.w * 0.5 + 26, poleTop + 12);
@@ -572,12 +634,16 @@
         ctx.fill();
       }
 
-      // Draw player
+      // Player
       ctx.fillStyle = "#f4c542";
       ctx.fillRect(player.x, player.y, player.w, player.h);
-      // little "hat"
       ctx.fillStyle = "#ffb300";
-      ctx.fillRect(player.x, player.y - 6, player.w, 8);
+      ctx.fillRect(player.x, player.y - 6, player.w, 8); // hat
+
+      // Tiny "eyes"
+      ctx.fillStyle = "#1b1b1b";
+      ctx.fillRect(player.x + 6, player.y + 10, 4, 4);
+      ctx.fillRect(player.x + 18, player.y + 10, 4, 4);
 
       ctx.restore();
     }
@@ -616,9 +682,7 @@
         const btn = document.createElement('button');
         btn.className = 'choice-btn';
         btn.textContent = choice;
-        btn.addEventListener('click', () => {
-          handleAnswer(q, index, btn);
-        });
+        btn.addEventListener('click', () => handleAnswer(q, index, btn));
         choicesContainer.appendChild(btn);
       });
     }
@@ -629,9 +693,7 @@
       if (isCorrect) {
         btnElement.classList.add('correct');
         messageEl.textContent = "Correct! Gate unlocked.";
-        if (activeGate) {
-          activeGate.solved = true;
-        }
+        if (activeGate) activeGate.solved = true;
         setTimeout(() => {
           questionOverlay.classList.add('hidden');
           gamePaused = false;
@@ -640,7 +702,6 @@
       } else {
         btnElement.classList.add('wrong');
         messageEl.textContent = "Not quite. Try again!";
-        // Optionally, you could also apply a small in-game penalty here.
       }
     }
 
@@ -651,7 +712,6 @@
       winOverlay.classList.remove('hidden');
     }
 
-    // Start loop
     requestAnimationFrame(loop);
   </script>
 </body>
