@@ -588,24 +588,11 @@
       onGround: false
     };
 
-    // Tuned movement: less floaty jump
-    const GRAVITY = 1400;
-    const PLAYER_SPEED = 320;
+    // Tuned feel
+    const GRAVITY = 1200;
+    const PLAYER_SPEED = 260;
     const JUMP_STRENGTH = 520;
     const GROUND_Y = 280;
-
-    // Coyote time & jump buffer
-    const COYOTE_TIME = 0.10;
-    const JUMP_BUFFER_TIME = 0.12;
-    let coyoteTimer = 0;
-    let jumpBufferTimer = 0;
-
-    // Landing squash animation
-    const LAND_SQUASH_TIME = 0.12;
-    let landSquashTimer = 0;
-
-    // Question block bump animation
-    const QUESTION_BUMP_DURATION = 0.18;
 
     let cameraX = 0;
     let lastTime = 0;
@@ -621,32 +608,37 @@
     let questionBlocks = [];
     let activeQuestionBlock = null;
 
-    // Pits = gaps in the trench floor
+    // Pits = gaps in the trench floor (all jumpable now)
     const pits = [
-      { x: 600,  width: 120 },
-      { x: 1200, width: 160 },
-      { x: 1900, width: 160 },
-      { x: 2600, width: 200 },
-      { x: 3400, width: 160 }
+      { x: 900,  width: 90 },
+      { x: 1400, width: 110 },
+      { x: 1950, width: 110 },
+      { x: 2550, width: 130 },
+      { x: 3200, width: 110 }
     ];
 
-    // Simple ledges / platforms above ground
+    // Platforms with actual vertical flow
     const platforms = [
-      { x: 500,  y: 220, width: 120, height: 12 },
-      { x: 900,  y: 190, width: 150, height: 12 },
-      { x: 1450, y: 200, width: 140, height: 12 },
-      { x: 2100, y: 170, width: 160, height: 12 },
-      { x: 2800, y: 200, width: 180, height: 12 },
-      { x: 3300, y: 185, width: 140, height: 12 }
+      { x: 600,  y: 230, width: 130, height: 12 },
+      { x: 1000, y: 205, width: 140, height: 12 },
+      { x: 1350, y: 190, width: 120, height: 12 },
+      { x: 1750, y: 210, width: 130, height: 12 },
+      { x: 2100, y: 180, width: 140, height: 12 },
+      { x: 2300, y: 150, width: 130, height: 12 }, // higher step
+      { x: 2700, y: 190, width: 160, height: 12 },
+      { x: 3100, y: 175, width: 140, height: 12 }
     ];
 
     // Patrolling "rat" enemies on the trench floor
     const enemies = [
-      { x: 750,  y: GROUND_Y - 16, w: 26, h: 16, dir: 1, speed: 80, minX: 720,  maxX: 860 },
-      { x: 1350, y: GROUND_Y - 16, w: 26, h: 16, dir: -1, speed: 90, minX: 1300, maxX: 1450 },
-      { x: 2250, y: GROUND_Y - 16, w: 26, h: 16, dir: 1, speed: 70, minX: 2200, maxX: 2360 },
-      { x: 3050, y: GROUND_Y - 16, w: 26, h: 16, dir: -1, speed: 85, minX: 2980, maxX: 3120 }
+      { x: 820,  y: GROUND_Y - 16, w: 26, h: 16, dir: 1,  speed: 70, minX: 820,  maxX: 950 },
+      { x: 1500, y: GROUND_Y - 16, w: 26, h: 16, dir: -1, speed: 80, minX: 1450, maxX: 1600 },
+      { x: 2150, y: GROUND_Y - 16, w: 26, h: 16, dir: 1,  speed: 75, minX: 2100, maxX: 2250 },
+      { x: 2900, y: GROUND_Y - 16, w: 26, h: 16, dir: -1, speed: 85, minX: 2850, maxX: 3000 }
     ];
+
+    // Simple stomp puff effects
+    const effects = [];
 
     // Keep track of last safe ground position for respawn
     let lastSafeX = player.x;
@@ -655,11 +647,17 @@
     // End flag
     const endFlagX = WORLD_WIDTH - 160;
 
-    // Movement keys (jump handled via buffer)
+    // Movement keys (jump handled separately as a one-shot)
     const keys = { left: false, right: false };
 
     // Player damage cooldown (seconds)
     let hitCooldown = 0;
+
+    // Simple toasts + banners
+    let toastText = "";
+    let toastTimer = 0;
+    let bannerText = "";
+    let bannerTimer = 0;
 
     // ======================================================
     // UI ELEMENTS
@@ -688,15 +686,25 @@
     const jumpBtn  = document.getElementById('btnJump');
 
     // ======================================================
+    // FEEDBACK HELPERS
+    // ======================================================
+    function showToast(text, duration = 1.1) {
+      toastText = text;
+      toastTimer = duration;
+    }
+
+    function showBanner(text, duration = 1.2) {
+      bannerText = text;
+      bannerTimer = duration;
+    }
+
+    // ======================================================
     // JUMP HELPER
     // ======================================================
-    function performJump() {
-      if ((player.onGround || coyoteTimer > 0) && !gamePaused && !inQuestion && !levelComplete) {
+    function tryJump() {
+      if (player.onGround && !gamePaused && !inQuestion && !levelComplete) {
         player.vy = -JUMP_STRENGTH;
         player.onGround = false;
-        coyoteTimer = 0;
-        landSquashTimer = 0;
-        jumpBufferTimer = 0;
       }
     }
 
@@ -712,7 +720,7 @@
       }
       if (e.code === 'ArrowUp' || e.code === 'Space' || e.code === 'KeyW') {
         e.preventDefault();
-        jumpBufferTimer = JUMP_BUFFER_TIME;
+        tryJump();
       }
     });
 
@@ -740,11 +748,11 @@
     bindControl(leftBtn, () => { keys.left = true; },  () => { keys.left = false; });
     bindControl(rightBtn, () => { keys.right = true; }, () => { keys.right = false; });
 
-    // Jump button uses buffer too
+    // Jump button is one-shot, not a held state
     if (jumpBtn) {
       const pressJump = (e) => {
         e.preventDefault();
-        jumpBufferTimer = JUMP_BUFFER_TIME;
+        tryJump();
       };
       jumpBtn.addEventListener('touchstart', pressJump, { passive: false });
       jumpBtn.addEventListener('mousedown', pressJump);
@@ -783,11 +791,12 @@
       gamePaused = false;
       inQuestion = false;
       hitCooldown = 0;
-      coyoteTimer = 0;
-      jumpBufferTimer = 0;
-      landSquashTimer = 0;
       lastSafeX = player.x;
       lastSafeY = player.y;
+      toastText = "";
+      toastTimer = 0;
+      bannerText = "";
+      bannerTimer = 0;
 
       qOverlay.classList.add('hidden');
       endOverlay.classList.add('hidden');
@@ -800,21 +809,35 @@
         currentQuestions = pickRandomQuestions(WWI_QUESTION_BANK, 20);
       }
 
-      // Place 20 question blocks with varied height, some over platforms
+      // Place 20 question blocks with vertical variety
       questionBlocks = [];
       const spacing = (WORLD_WIDTH - 800) / 20;
       const baseX = 260;
-      const heights = [GROUND_Y - 60, GROUND_Y - 90, 190, 160, 130, 210];
 
       for (let i = 0; i < 20; i++) {
+        const worldX = baseX + spacing * i;
+        let y;
+
+        // Some blocks anchored to nearby platforms (climbing)
+        const plat = platforms.find(p => worldX >= p.x - 40 && worldX <= p.x + p.width + 40);
+
+        if (plat && i % 4 === 0) {
+          y = plat.y - 40; // floating above platform
+        } else {
+          // Above-head / midair patterns so you can't just walk into them
+          const pattern = i % 3;
+          if (pattern === 0)      y = GROUND_Y - 90;
+          else if (pattern === 1) y = 210;
+          else                    y = 170;
+        }
+
         const qb = {
           id: i + 1,
           qIndex: i,
-          x: baseX + spacing * i,
-          y: heights[i % heights.length],
+          x: worldX,
+          y,
           completed: false,
-          firstTry: true,
-          bumpTime: 0
+          firstTry: true
         };
         questionBlocks.push(qb);
       }
@@ -827,9 +850,6 @@
       inQuestion = true;
       gamePaused = true;
       activeQuestionBlock = block;
-
-      // Trigger bump animation
-      block.bumpTime = QUESTION_BUMP_DURATION;
 
       const q = currentQuestions[block.qIndex];
       qTitle.textContent = "Question " + block.id;
@@ -857,12 +877,15 @@
         if (block.firstTry) {
           score += 25;
           firstTryCorrectCount++;
+          showToast("+25 | First try!");
         } else {
           score += 10;
+          showToast("+10 | Got it!");
         }
         block.completed = true;
         questionsAnsweredCount = questionBlocks.filter(b => b.completed).length;
         updateHud();
+        showBanner(`Question ${questionsAnsweredCount} / 20 complete`);
 
         setTimeout(() => {
           closeQuestion();
@@ -872,6 +895,7 @@
         btnEl.classList.add('wrong');
         qFeedback.textContent = "Incorrect. Try again.";
         score -= 10;
+        showToast("-10 | Recheck your notes");
         block.firstTry = false;
         updateHud();
       }
@@ -910,7 +934,6 @@
       const accuracy = (firstTryCorrectCount / 20) * 100;
       endSummary.textContent =
         `Score: ${score} points | Accuracy: ${firstTryCorrectCount}/20 (${accuracy.toFixed(0)}%)`;
-
       endOverlay.classList.remove('hidden');
     }
 
@@ -928,43 +951,30 @@
       hudQuestions.textContent = "Questions: " + questionsAnsweredCount + " / 20";
     }
 
+    function enemyFutureOverPit(nextX, enemy) {
+      const future = { x: nextX, y: enemy.y, w: enemy.w, h: enemy.h };
+      return pits.some(p => future.x + future.w > p.x && future.x < p.x + p.width);
+    }
+
     // ======================================================
     // GAME LOOP & PHYSICS
     // ======================================================
     function update(dt) {
-      if (gamePaused) {
-        // Still tick question bump animations so they finish smoothly
-        for (const b of questionBlocks) {
-          if (b.bumpTime > 0) {
-            b.bumpTime -= dt;
-            if (b.bumpTime < 0) b.bumpTime = 0;
-          }
-        }
-        return;
-      }
+      if (gamePaused) return;
 
       if (hitCooldown > 0) {
         hitCooldown -= dt;
         if (hitCooldown < 0) hitCooldown = 0;
       }
 
-      if (coyoteTimer > 0) {
-        coyoteTimer -= dt;
-        if (coyoteTimer < 0) coyoteTimer = 0;
+      if (toastTimer > 0) {
+        toastTimer -= dt;
+        if (toastTimer < 0) toastTimer = 0;
       }
-
-      if (jumpBufferTimer > 0) {
-        jumpBufferTimer -= dt;
-        if (jumpBufferTimer < 0) jumpBufferTimer = 0;
+      if (bannerTimer > 0) {
+        bannerTimer -= dt;
+        if (bannerTimer < 0) bannerTimer = 0;
       }
-
-      if (landSquashTimer > 0) {
-        landSquashTimer -= dt;
-        if (landSquashTimer < 0) landSquashTimer = 0;
-      }
-
-      const wasOnGround = player.onGround;
-      const prevVy = player.vy;
 
       // Horizontal control
       if (keys.left)      player.vx = -PLAYER_SPEED;
@@ -1009,16 +1019,6 @@
         lastSafeY = player.y;
       }
 
-      // Landing squash (only when we just transitioned from air to ground with some speed)
-      if (!wasOnGround && player.onGround && prevVy > 350) {
-        landSquashTimer = LAND_SQUASH_TIME;
-      }
-
-      // Coyote timer refresh while grounded
-      if (player.onGround) {
-        coyoteTimer = COYOTE_TIME;
-      }
-
       // Fell into a pit / void
       if (player.y > canvas.height + 40) {
         player.x = lastSafeX;
@@ -1027,6 +1027,7 @@
         player.vy = 0;
         score -= 20;
         hudStatus.textContent = "Status: Fell in a shell hole (-20)";
+        showToast("-20 | Fell in a shell hole");
         updateHud();
       } else if (!overPit) {
         // Only show running when not clearly respawning
@@ -1035,9 +1036,15 @@
         }
       }
 
-      // Enemy movement
+      // Enemy movement (respect pits)
       for (const e of enemies) {
-        e.x += e.dir * e.speed * dt;
+        const nextX = e.x + e.dir * e.speed * dt;
+        if (enemyFutureOverPit(nextX, e)) {
+          e.dir *= -1;
+        } else {
+          e.x = nextX;
+        }
+
         if (e.x < e.minX) {
           e.x = e.minX;
           e.dir = 1;
@@ -1047,36 +1054,44 @@
         }
       }
 
-      // Enemy collisions with stomp logic
+      // Enemy collisions (stomp vs side hit)
       for (let i = enemies.length - 1; i >= 0; i--) {
         const e = enemies[i];
         if (rectIntersect(player, e)) {
-          const stompFromAbove = (prevY + player.h <= e.y) && prevVy >= 0;
-          if (stompFromAbove) {
-            // Stomp the rat: remove enemy, bounce, reward
+          const stomping = prevY + player.h <= e.y && player.vy >= 0;
+          if (stomping) {
+            // Stomp: kill rat, bounce, reward
             enemies.splice(i, 1);
-            player.vy = -JUMP_STRENGTH * 0.6;
+            player.vy = -JUMP_STRENGTH * 0.5;
             player.onGround = false;
-            score += 15;
-            hudStatus.textContent = "Status: Stomped a trench rat (+15)";
+            score += 10;
+            showToast("+10 | Stomped a trench rat");
             updateHud();
+            // Puff effect
+            effects.push({
+              x: e.x + e.w / 2,
+              y: e.y + e.h / 2,
+              radius: 4,
+              maxRadius: 18,
+              life: 0.25
+            });
           } else if (hitCooldown === 0) {
-            // Regular damage
             score -= 15;
             hitCooldown = 1.0; // 1 second invincibility frames
             hudStatus.textContent = "Status: Bitten by trench rats (-15)";
-            // Knockback
             player.x += (e.dir > 0 ? -20 : 20);
+            showToast("-15 | Bitten by trench rats");
             updateHud();
           }
         }
       }
 
-      // Question block bump timers
-      for (const block of questionBlocks) {
-        if (block.bumpTime > 0) {
-          block.bumpTime -= dt;
-          if (block.bumpTime < 0) block.bumpTime = 0;
+      // Effects update
+      for (let i = effects.length - 1; i >= 0; i--) {
+        const fx = effects[i];
+        fx.life -= dt;
+        if (fx.life <= 0) {
+          effects.splice(i, 1);
         }
       }
 
@@ -1090,20 +1105,18 @@
         }
       }
 
-      // Buffered jump: check AFTER physics & collisions so it can trigger on landing
-      if (jumpBufferTimer > 0) {
-        performJump();
-      }
-
       // Check if at end
       if (!levelComplete && player.x + player.w > endFlagX) {
         checkLevelComplete();
       }
 
-      // Camera follows player
+      // Camera follows player smoothly
       const halfCanvas = canvas.width / 2;
-      cameraX = player.x + player.w / 2 - halfCanvas;
-      cameraX = Math.max(0, Math.min(cameraX, WORLD_WIDTH - canvas.width));
+      const targetCameraX = player.x + player.w / 2 - halfCanvas;
+      const maxCam = WORLD_WIDTH - canvas.width;
+      const clampedTarget = Math.max(0, Math.min(targetCameraX, maxCam));
+      const SMOOTH = 0.12;
+      cameraX += (clampedTarget - cameraX) * SMOOTH;
     }
 
     function rectIntersect(a, b) {
@@ -1119,8 +1132,12 @@
     // DRAWING
     // ======================================================
     function drawBackground() {
-      // Sky
-      ctx.fillStyle = "#3b4c8b";
+      // Sky with slight dark vignette at top
+      const grad = ctx.createLinearGradient(0, 0, 0, canvas.height);
+      grad.addColorStop(0, "#16192e");
+      grad.addColorStop(0.4, "#3b4c8b");
+      grad.addColorStop(1, "#1b1520");
+      ctx.fillStyle = grad;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       // Horizon strip
@@ -1148,8 +1165,8 @@
     }
 
     function drawTrenchesAndPits() {
-      // Base ground strip (we'll carve pits with darker color)
-      ctx.fillStyle = "#463428";
+      // Slightly lighter trench floor for clarity
+      ctx.fillStyle = "#5a4334";
       ctx.fillRect(0, GROUND_Y, canvas.width, canvas.height - GROUND_Y);
 
       const startWorldX = cameraX;
@@ -1164,7 +1181,7 @@
         const inPit = pits.some(p => tileX + TILE_SIZE > p.x && tileX < p.x + p.width);
         if (!inPit) {
           // Dirt body
-          ctx.fillStyle = "#463428";
+          ctx.fillStyle = "#5a4334";
           ctx.fillRect(screenX, GROUND_Y, TILE_SIZE, canvas.height - GROUND_Y);
           // Wood planks
           ctx.fillStyle = "#7b5a38";
@@ -1179,13 +1196,12 @@
     }
 
     function drawPlatforms() {
-      ctx.fillStyle = "#7b5a38";
       platforms.forEach(p => {
         const sx = p.x - cameraX;
+        ctx.fillStyle = "#7b5a38";
         ctx.fillRect(sx, p.y, p.width, p.height);
         ctx.fillStyle = "#5c4128";
         ctx.fillRect(sx, p.y + p.height - 4, p.width, 4);
-        ctx.fillStyle = "#7b5a38";
       });
     }
 
@@ -1195,16 +1211,14 @@
       ctx.textBaseline = "top";
 
       questionBlocks.forEach(block => {
-        const bumpT = block.bumpTime > 0 ? block.bumpTime : 0;
-        const tNorm = bumpT > 0 ? 1 - (bumpT / QUESTION_BUMP_DURATION) : 0;
-        const bumpOffset = bumpT > 0 ? Math.sin(tNorm * Math.PI) * 4 : 0;
-
         const sx = block.x - cameraX;
-        const sy = block.y - bumpOffset;
+        const sy = block.y;
 
-        ctx.fillStyle = block.completed
-          ? "#3b5a2a"
-          : (bumpT > 0 ? "#d8ac3f" : "#b8943b");
+        if (block.completed) {
+          ctx.fillStyle = "#3a4b32";
+        } else {
+          ctx.fillStyle = "#c59c3e";
+        }
         ctx.fillRect(sx, sy, 32, 32);
         ctx.strokeStyle = "rgba(0,0,0,0.6)";
         ctx.strokeRect(sx + 0.5, sy + 0.5, 31, 31);
@@ -1214,6 +1228,11 @@
 
         ctx.fillStyle = "#f9f9ff";
         ctx.fillText(block.id, sx + 16, sy - 10);
+
+        if (block.completed) {
+          ctx.fillStyle = "#9be07b";
+          ctx.fillText("✓", sx + 26, sy - 10);
+        }
       });
     }
 
@@ -1222,14 +1241,29 @@
         const sx = e.x - cameraX;
         const sy = e.y;
 
-        // Little rat silhouette
-        ctx.fillStyle = "#1b1b23";
+        // Little rat silhouette with slight outline
+        ctx.fillStyle = "#262635";
         ctx.fillRect(sx, sy + 4, e.w, e.h - 4);          // body
         ctx.fillRect(sx + 4, sy, e.w - 8, 6);            // back
         ctx.fillRect(sx + (e.dir > 0 ? e.w - 4 : 0), sy + 6, 4, 4); // head bump
+        // Tail
+        ctx.fillRect(sx + (e.dir > 0 ? -3 : e.w + 1), sy + 10, 3, 2);
         // Eye
-        ctx.fillStyle = "#c62828";
+        ctx.fillStyle = "#ff4b4b";
         ctx.fillRect(sx + (e.dir > 0 ? e.w - 6 : 2), sy + 7, 2, 2);
+      });
+    }
+
+    function drawEffects() {
+      effects.forEach(fx => {
+        const progress = fx.life / 0.25;
+        const radius = fx.maxRadius * (1 - progress);
+        const sx = fx.x - cameraX;
+        const sy = fx.y;
+        ctx.fillStyle = `rgba(220,220,220,${progress})`;
+        ctx.beginPath();
+        ctx.arc(sx, sy, radius, 0, Math.PI * 2);
+        ctx.fill();
       });
     }
 
@@ -1249,41 +1283,74 @@
       ctx.fillRect(sx, baseY - 80, 30, 16);
       ctx.fillStyle = "#ff3657";
       ctx.fillRect(sx + 15, baseY - 80, 15, 16);
+
+      // "HQ" label
+      ctx.font = "8px 'Press Start 2P', system-ui, sans-serif";
+      ctx.fillStyle = "#f9f9ff";
+      ctx.textAlign = "center";
+      ctx.fillText("HQ", sx + 20, baseY - 60);
     }
 
     function drawPlayer() {
       const sx = player.x - cameraX;
       const sy = player.y;
 
-      // Landing squash factor
-      let scaleY = 1;
-      let offsetY = 0;
-      if (landSquashTimer > 0) {
-        const t = 1 - (landSquashTimer / LAND_SQUASH_TIME); // 0 → 1
-        const squash = 0.12 * Math.sin(t * Math.PI);        // up then down
-        scaleY = 1 + squash;
-        offsetY = player.h * (1 - scaleY);
-      }
+      // Legs
+      ctx.fillStyle = "#2a2016";
+      ctx.fillRect(sx + 4, sy + player.h - 10, 8, 10);
+      ctx.fillRect(sx + player.w - 12, sy + player.h - 10, 8, 10);
 
-      ctx.save();
-      ctx.translate(sx, sy + offsetY);
-      ctx.scale(1, scaleY);
-
-      // Body
+      // Body / torso
       ctx.fillStyle = "#f4c542";
-      ctx.fillRect(0, 0, player.w, player.h);
+      ctx.fillRect(sx + 4, sy + 10, player.w - 8, 22);
+
+      // Backpack / gear
+      ctx.fillStyle = "#c9963b";
+      ctx.fillRect(sx + player.w - 6, sy + 12, 4, 16);
+
       // Helmet
       ctx.fillStyle = "#ffb300";
-      ctx.fillRect(0, -6, player.w, 8);
-      // Boots
-      ctx.fillStyle = "#2a2016";
-      ctx.fillRect(4, player.h - 6, player.w - 8, 6);
+      ctx.fillRect(sx + 2, sy, player.w - 4, 10);
+      ctx.fillStyle = "#d08e18";
+      ctx.fillRect(sx + 2, sy + 8, player.w - 4, 2);
+
+      // Arms (small side rectangles)
+      ctx.fillStyle = "#e9bb3a";
+      ctx.fillRect(sx, sy + 14, 4, 10);
+      ctx.fillRect(sx + player.w - 4, sy + 14, 4, 10);
+
       // Eyes
       ctx.fillStyle = "#1b1b1b";
-      ctx.fillRect(6, 12, 3, 3);
-      ctx.fillRect(16, 12, 3, 3);
+      ctx.fillRect(sx + 7, sy + 6, 2, 2);
+      ctx.fillRect(sx + 17, sy + 6, 2, 2);
+    }
 
-      ctx.restore();
+    function drawOverlays() {
+      if (bannerTimer > 0 && bannerText) {
+        ctx.font = "10px 'Press Start 2P', system-ui, sans-serif";
+        ctx.textAlign = "center";
+        const w = 280;
+        const h = 24;
+        const x = canvas.width / 2 - w / 2;
+        const y = 34;
+        ctx.fillStyle = "rgba(0,0,0,0.7)";
+        ctx.fillRect(x, y, w, h);
+        ctx.fillStyle = "#ffb300";
+        ctx.fillText(bannerText, canvas.width / 2, y + 8);
+      }
+
+      if (toastTimer > 0 && toastText) {
+        ctx.font = "10px 'Press Start 2P', system-ui, sans-serif";
+        ctx.textAlign = "center";
+        const w = 260;
+        const h = 24;
+        const x = canvas.width / 2 - w / 2;
+        const y = canvas.height - 34;
+        ctx.fillStyle = "rgba(0,0,0,0.7)";
+        ctx.fillRect(x, y, w, h);
+        ctx.fillStyle = "#ffb300";
+        ctx.fillText(toastText, canvas.width / 2, y + 8);
+      }
     }
 
     function draw() {
@@ -1293,8 +1360,10 @@
       drawPlatforms();
       drawQuestionBlocks();
       drawEnemies();
+      drawEffects();
       drawEndFlag();
       drawPlayer();
+      drawOverlays();
     }
 
     function loop(timestamp) {
