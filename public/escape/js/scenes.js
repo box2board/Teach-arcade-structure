@@ -152,101 +152,149 @@
     };
   }
 
-  /* ---------- Scene 2: Drag-order (M.A.I.N.) ---------- */
-  function S2(){
-    let solved = false;
-    let unsub = [];
-    let listEl;
+ /* ---------- Scene 2: Click-order (M.A.I.N.) ---------- */
+function S2(){
+  let solved = false;
+  let unsub = [];
+  let listEl;
+  let selected = null;
 
-    function renderItem(it){
-      return `
-        <li class="s2-item" draggable="true" data-id="${it.id}">
-          <strong>${it.label}</strong>
-          <div class="muted" style="font-size:.9rem">${it.note}</div>
-        </li>
-      `;
-    }
-
-    function currentOrderIds(){
-      return [...listEl.querySelectorAll('.s2-item')].map(li=>li.dataset.id);
-    }
-
-    function enableDnD(){
-      let dragSrc = null;
-      listEl.addEventListener('dragstart', e=>{
-        const li = e.target.closest('.s2-item');
-        if (!li) return;
-        dragSrc = li;
-        e.dataTransfer.effectAllowed = 'move';
-        e.dataTransfer.setData('text/plain', li.dataset.id);
-        li.classList.add('dragging');
-      });
-      listEl.addEventListener('dragover', e=>{
-        e.preventDefault();
-        const target = e.target.closest('.s2-item');
-        if (!target || target === dragSrc) return;
-        const rect = target.getBoundingClientRect();
-        const before = (e.clientY - rect.top) < rect.height/2;
-        listEl.insertBefore(dragSrc, before ? target : target.nextSibling);
-      });
-      listEl.addEventListener('dragend', e=>{
-        const li = e.target.closest('.s2-item');
-        li && li.classList.remove('dragging');
-      });
-    }
-
-    return {
-      render(root, api){
-        const conf = ROOM_DATA.scenes.find(s=>s.id==='s2');
-        root.innerHTML = `
-          <h2>M.A.I.N. Files</h2>
-          <p class="muted">Drag to arrange the long-term causes into the best escalation order.</p>
-
-          <ol id="s2List" class="card" style="list-style:none;padding:12px;display:grid;gap:8px"></ol>
-
-          <div class="card" style="margin-top:10px">
-            <button id="s2Check" class="btn primary">Check Order</button>
-            <button id="s2Reset" class="btn alt" style="margin-left:6px">Reset</button>
-            <span id="s2Status" class="muted" style="margin-left:10px"></span>
-          </div>
-        `;
-
-        listEl = root.querySelector('#s2List');
-        listEl.innerHTML = conf.order.map(renderItem).join('');
-        enableDnD();
-
-        const status = root.querySelector('#s2Status');
-        const btnCheck = root.querySelector('#s2Check');
-        const btnReset = root.querySelector('#s2Reset');
-
-        const onCheck = ()=>{
-          const ids = currentOrderIds();
-          const ok = ids.join(',') === conf.correctIdOrder.join(',');
-          if (ok){
-            solved = true;
-            status.innerHTML = '<span style="color:var(--ok)">✔ Correct order.</span>';
-            api.journal('M.A.I.N. confirmed: Militarism → Alliances → Imperialism → Nationalism.');
-            api.addItem({id:'map-frag-1', label:'Map Fragment #1'});
-            api.enableContinue(true);
-          } else {
-            status.innerHTML = '<span style="color:var(--bad)">✖ Not quite. Re-read the notes.</span>';
-          }
-        };
-        const onReset = ()=>{
-          listEl.innerHTML = conf.order.map(renderItem).join('');
-        };
-
-        btnCheck.addEventListener('click', onCheck);
-        btnReset.addEventListener('click', onReset);
-        unsub.push(()=>btnCheck.removeEventListener('click', onCheck));
-        unsub.push(()=>btnReset.removeEventListener('click', onReset));
-      },
-      validate(){ return solved; },
-      showHint(){ apiToast('Hint: build-up → treaties → empires → pride.'); },
-      dispose(){ unsub.forEach(fn=>fn()); }
-    };
+  function renderItem(it){
+    return `
+      <li class="s2-item" data-id="${it.id}">
+        <strong>${it.label}</strong>
+        <div class="muted" style="font-size:.9rem">${it.note}</div>
+      </li>
+    `;
   }
 
+  // Simple shuffle helper
+  function shuffle(arr){
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--){
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  function currentOrderIds(){
+    return [...listEl.querySelectorAll('.s2-item')].map(li => li.dataset.id);
+  }
+
+  return {
+    render(root, api){
+      const conf = ROOM_DATA.scenes.find(s=>s.id==='s2');
+
+      root.innerHTML = `
+        <h2>M.A.I.N. Files</h2>
+        <p class="muted">
+          Tap two tiles to swap their positions. Arrange the long-term causes into the best escalation order.
+        </p>
+
+        <ol id="s2List" class="card" style="list-style:none;padding:12px;display:grid;gap:8px"></ol>
+
+        <div class="card" style="margin-top:10px">
+          <button id="s2Check" class="btn primary">Check Order</button>
+          <button id="s2Reset" class="btn alt" style="margin-left:6px">Reset</button>
+          <span id="s2Status" class="muted" style="margin-left:10px"></span>
+        </div>
+      `;
+
+      listEl = root.querySelector('#s2List');
+      const status = root.querySelector('#s2Status');
+      const btnCheck = root.querySelector('#s2Check');
+      const btnReset = root.querySelector('#s2Reset');
+
+      // Initial randomized render
+      function renderShuffled(){
+        // clear any selection outline
+        if (selected){
+          selected.style.outline = '';
+          selected.style.outlineOffset = '';
+          selected = null;
+        }
+        const shuffled = shuffle(conf.order);
+        listEl.innerHTML = shuffled.map(renderItem).join('');
+      }
+
+      renderShuffled();
+
+      // Click-to-swap logic via event delegation
+      const onListClick = (e)=>{
+        const li = e.target.closest('.s2-item');
+        if (!li || !listEl.contains(li)) return;
+
+        // if nothing selected yet
+        if (!selected){
+          selected = li;
+          selected.style.outline = '2px solid var(--accent)';
+          selected.style.outlineOffset = '2px';
+          return;
+        }
+
+        // clicking same tile again = deselect
+        if (selected === li){
+          selected.style.outline = '';
+          selected.style.outlineOffset = '';
+          selected = null;
+          return;
+        }
+
+        // swap positions of selected and clicked li
+        const parent = listEl;
+        const a = selected;
+        const b = li;
+
+        const aNext = a.nextSibling === b ? b.nextSibling : a.nextSibling;
+        parent.insertBefore(a, b);
+        parent.insertBefore(b, aNext);
+
+        // clear selection
+        selected.style.outline = '';
+        selected.style.outlineOffset = '';
+        selected = null;
+      };
+
+      listEl.addEventListener('click', onListClick);
+
+      const onCheck = ()=>{
+        const ids = currentOrderIds();
+        const ok = ids.join(',') === conf.correctIdOrder.join(',');
+        if (ok){
+          solved = true;
+          status.innerHTML = '<span style="color:var(--ok)">✔ Correct order.</span>';
+          api.journal('M.A.I.N. confirmed: Militarism → Alliances → Imperialism → Nationalism.');
+          api.addItem({id:'map-frag-1', label:'Map Fragment #1'});
+          api.enableContinue(true);
+        } else {
+          status.innerHTML = '<span style="color:var(--bad)">✖ Not quite. Re-read the notes.</span>';
+        }
+      };
+
+      const onReset = ()=>{
+        renderShuffled();
+        status.textContent = '';
+        api.enableContinue(false);
+        solved = false;
+      };
+
+      btnCheck.addEventListener('click', onCheck);
+      btnReset.addEventListener('click', onReset);
+
+      unsub.push(()=>btnCheck.removeEventListener('click', onCheck));
+      unsub.push(()=>btnReset.removeEventListener('click', onReset));
+      unsub.push(()=>listEl.removeEventListener('click', onListClick));
+
+      // start with continue disabled
+      api.enableContinue(false);
+    },
+
+    validate(){ return solved; },
+    showHint(){ apiToast('Hint: build-up → treaties → empires → pride.'); },
+    dispose(){ unsub.forEach(fn=>fn()); }
+  };
+}
   /* ---------- Scene 3: Western vs Eastern Front (touch friendly) ---------- */
   function S3() {
     let solved = false;
