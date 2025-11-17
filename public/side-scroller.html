@@ -588,9 +588,10 @@
       onGround: false
     };
 
-    const GRAVITY = 1300;
-    const PLAYER_SPEED = 320;
-    const JUMP_STRENGTH = 660;
+    // Tuned physics: slightly slower and less "rocket jump"
+    const GRAVITY = 1450;
+    const PLAYER_SPEED = 270;
+    const JUMP_STRENGTH = 540;
     const GROUND_Y = 280;
 
     let cameraX = 0;
@@ -628,10 +629,22 @@
 
     // Patrolling "rat" enemies on the trench floor
     const enemies = [
-      { x: 750,  y: GROUND_Y - 16, w: 26, h: 16, dir: 1, speed: 80, minX: 720,  maxX: 860 },
+      { x: 750,  y: GROUND_Y - 16, w: 26, h: 16, dir: 1,  speed: 80, minX: 720,  maxX: 860 },
       { x: 1350, y: GROUND_Y - 16, w: 26, h: 16, dir: -1, speed: 90, minX: 1300, maxX: 1450 },
-      { x: 2250, y: GROUND_Y - 16, w: 26, h: 16, dir: 1, speed: 70, minX: 2200, maxX: 2360 },
+      { x: 2250, y: GROUND_Y - 16, w: 26, h: 16, dir: 1,  speed: 70, minX: 2200, maxX: 2360 },
       { x: 3050, y: GROUND_Y - 16, w: 26, h: 16, dir: -1, speed: 85, minX: 2980, maxX: 3120 }
+    ];
+
+    // Foreground trench props for extra detail
+    const trenchProps = [
+      { x: 420,  y: GROUND_Y - 18, type: "crate" },
+      { x: 820,  y: GROUND_Y - 20, type: "sandbags" },
+      { x: 1180, y: GROUND_Y - 16, type: "board" },
+      { x: 1620, y: GROUND_Y - 20, type: "helmet" },
+      { x: 2050, y: GROUND_Y - 18, type: "sign" },
+      { x: 2480, y: GROUND_Y - 16, type: "crate" },
+      { x: 2920, y: GROUND_Y - 20, type: "sandbags" },
+      { x: 3320, y: GROUND_Y - 16, type: "board" }
     ];
 
     // Keep track of last safe ground position for respawn
@@ -924,6 +937,7 @@
       player.vy += GRAVITY * dt;
 
       const prevY = player.y;
+      const prevBottom = prevY + player.h;
 
       // Move horizontally
       player.x += player.vx * dt;
@@ -986,17 +1000,36 @@
         }
       }
 
-      // Enemy collisions
-      for (const e of enemies) {
-        if (rectIntersect(player, e)) {
-          if (hitCooldown === 0) {
-            score -= 15;
-            hitCooldown = 1.0; // 1 second invincibility frames
-            hudStatus.textContent = "Status: Bitten by trench rats (-15)";
-            // Knockback
-            player.x += (e.dir > 0 ? -20 : 20);
-            updateHud();
-          }
+      // Enemy collisions (with stomp logic)
+      for (let i = enemies.length - 1; i >= 0; i--) {
+        const e = enemies[i];
+        if (!rectIntersect(player, e)) continue;
+
+        const enemyTop = e.y;
+        const playerBottomNow = player.y + player.h;
+
+        const stompingFromAbove =
+          prevBottom <= enemyTop && playerBottomNow >= enemyTop && player.vy >= 0;
+
+        if (stompingFromAbove) {
+          // Stomp kill: no damage, remove rat, give points and bounce
+          enemies.splice(i, 1);
+          score += 15;
+          hudStatus.textContent = "Status: Stomped a trench rat (+15)";
+          player.vy = -JUMP_STRENGTH * 0.55; // small bounce
+          player.onGround = false;
+          updateHud();
+          continue;
+        }
+
+        // Side / body hit = damage
+        if (hitCooldown === 0) {
+          score -= 15;
+          hitCooldown = 1.0; // 1 second invincibility frames
+          hudStatus.textContent = "Status: Bitten by trench rats (-15)";
+          // Knockback
+          player.x += (player.x < e.x ? -20 : 20);
+          updateHud();
         }
       }
 
@@ -1034,8 +1067,12 @@
     // DRAWING
     // ======================================================
     function drawBackground() {
-      // Sky
-      ctx.fillStyle = "#3b4c8b";
+      // Sky gradient-ish
+      const skyGradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+      skyGradient.addColorStop(0, "#242b55");
+      skyGradient.addColorStop(0.5, "#3b4c8b");
+      skyGradient.addColorStop(1, "#14172b");
+      ctx.fillStyle = skyGradient;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       // Horizon strip
@@ -1051,6 +1088,16 @@
         ctx.fillRect(sx + 20, canvas.height * 0.54, 80, 10);
       }
 
+      // Occasional smoke plumes in the distance
+      ctx.fillStyle = "rgba(10,10,20,0.6)";
+      for (let x = -300; x < WORLD_WIDTH + 300; x += 420) {
+        const sx = x - cameraX;
+        if (sx > canvas.width + 80 || sx < -80) continue;
+        ctx.beginPath();
+        ctx.ellipse(sx, 150, 18, 40, 0, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
       // Barbed wire line
       ctx.strokeStyle = "#9da2b1";
       ctx.lineWidth = 2;
@@ -1060,10 +1107,21 @@
         ctx.lineTo(x, 230 + wiggle);
       }
       ctx.stroke();
+
+      // Barbed wire posts
+      ctx.strokeStyle = "#6d7285";
+      ctx.lineWidth = 3;
+      for (let x = -120; x < canvas.width + 120; x += 80) {
+        const sx = x;
+        ctx.beginPath();
+        ctx.moveTo(sx, 232);
+        ctx.lineTo(sx, 252);
+        ctx.stroke();
+      }
     }
 
     function drawTrenchesAndPits() {
-      // Base ground strip (we'll carve pits with darker color)
+      // Base ground strip
       ctx.fillStyle = "#463428";
       ctx.fillRect(0, GROUND_Y, canvas.width, canvas.height - GROUND_Y);
 
@@ -1081,26 +1139,98 @@
           // Dirt body
           ctx.fillStyle = "#463428";
           ctx.fillRect(screenX, GROUND_Y, TILE_SIZE, canvas.height - GROUND_Y);
+
+          // Slight darker bottom edge for depth
+          ctx.fillStyle = "#35271d";
+          ctx.fillRect(screenX, GROUND_Y + 24, TILE_SIZE, 8);
+
           // Wood planks
           ctx.fillStyle = "#7b5a38";
           ctx.fillRect(screenX, GROUND_Y - 12, TILE_SIZE, 12);
           ctx.fillRect(screenX, GROUND_Y + 10, TILE_SIZE, 6);
+
+          // Vertical support beams every few tiles
+          if (t % 5 === 0) {
+            ctx.fillStyle = "#5b4026";
+            ctx.fillRect(screenX + 6, GROUND_Y - 32, 8, 32);
+            ctx.fillRect(screenX + TILE_SIZE - 14, GROUND_Y - 28, 8, 28);
+          }
         } else {
           // Pit darkness
           ctx.fillStyle = "#17131b";
           ctx.fillRect(screenX, GROUND_Y, TILE_SIZE, canvas.height - GROUND_Y);
+
+          // Pit rim highlight
+          ctx.fillStyle = "#2b2019";
+          ctx.fillRect(screenX, GROUND_Y - 4, TILE_SIZE, 4);
         }
       }
     }
 
+    function drawTrenchProps() {
+      trenchProps.forEach(prop => {
+        const sx = prop.x - cameraX;
+        const sy = prop.y;
+        if (sx < -40 || sx > canvas.width + 40) return;
+
+        switch (prop.type) {
+          case "crate":
+            ctx.fillStyle = "#6b4a2a";
+            ctx.fillRect(sx, sy - 14, 26, 14);
+            ctx.strokeStyle = "#3a2616";
+            ctx.strokeRect(sx + 0.5, sy - 14.5, 25, 13);
+            ctx.beginPath();
+            ctx.moveTo(sx + 4, sy - 12);
+            ctx.lineTo(sx + 22, sy - 4);
+            ctx.moveTo(sx + 22, sy - 12);
+            ctx.lineTo(sx + 4, sy - 4);
+            ctx.stroke();
+            break;
+          case "sandbags":
+            ctx.fillStyle = "#8b7a52";
+            ctx.fillRect(sx, sy - 10, 32, 10);
+            ctx.fillRect(sx + 4, sy - 16, 24, 8);
+            break;
+          case "board":
+            ctx.fillStyle = "#7b5a38";
+            ctx.fillRect(sx, sy - 3, 38, 3);
+            ctx.fillStyle = "#5c4128";
+            ctx.fillRect(sx + 6, sy - 5, 4, 7);
+            ctx.fillRect(sx + 24, sy - 5, 4, 7);
+            break;
+          case "helmet":
+            ctx.fillStyle = "#4b4f5f";
+            ctx.beginPath();
+            ctx.arc(sx + 10, sy - 6, 8, Math.PI, 0);
+            ctx.fill();
+            ctx.fillRect(sx + 2, sy - 6, 16, 3);
+            break;
+          case "sign":
+            ctx.fillStyle = "#5b4026";
+            ctx.fillRect(sx + 9, sy - 16, 4, 16);
+            ctx.fillStyle = "#8d6b3b";
+            ctx.fillRect(sx, sy - 22, 22, 8);
+            ctx.fillStyle = "#2b210f";
+            ctx.fillRect(sx + 4, sy - 19, 12, 2);
+            break;
+        }
+      });
+    }
+
     function drawPlatforms() {
-      ctx.fillStyle = "#7b5a38";
       platforms.forEach(p => {
         const sx = p.x - cameraX;
+        ctx.fillStyle = "#7b5a38";
         ctx.fillRect(sx, p.y, p.width, p.height);
         ctx.fillStyle = "#5c4128";
         ctx.fillRect(sx, p.y + p.height - 4, p.width, 4);
-        ctx.fillStyle = "#7b5a38";
+        // Simple rope/beam under platform
+        ctx.strokeStyle = "#3e2c1a";
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(sx, p.y + p.height + 4);
+        ctx.lineTo(sx + p.width, p.y + p.height + 6);
+        ctx.stroke();
       });
     }
 
@@ -1131,14 +1261,36 @@
         const sx = e.x - cameraX;
         const sy = e.y;
 
-        // Little rat silhouette
+        // Little rat body
         ctx.fillStyle = "#1b1b23";
         ctx.fillRect(sx, sy + 4, e.w, e.h - 4);          // body
         ctx.fillRect(sx + 4, sy, e.w - 8, 6);            // back
-        ctx.fillRect(sx + (e.dir > 0 ? e.w - 4 : 0), sy + 6, 4, 4); // head bump
+
+        // Head bump
+        const headOffset = e.dir > 0 ? e.w - 4 : 0;
+        ctx.fillRect(sx + headOffset, sy + 4, 4, 6);
+
+        // Ear
+        ctx.fillRect(sx + headOffset, sy + 2, 3, 3);
+
+        // Tail
+        ctx.strokeStyle = "#2a2a34";
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        const tailStartX = e.dir > 0 ? sx : sx + e.w;
+        ctx.moveTo(tailStartX, sy + e.h + 2);
+        ctx.quadraticCurveTo(
+          tailStartX + (e.dir > 0 ? -6 : 6),
+          sy + e.h + 6,
+          tailStartX + (e.dir > 0 ? -10 : 10),
+          sy + e.h + 2
+        );
+        ctx.stroke();
+
         // Eye
         ctx.fillStyle = "#c62828";
-        ctx.fillRect(sx + (e.dir > 0 ? e.w - 6 : 2), sy + 7, 2, 2);
+        const eyeX = e.dir > 0 ? sx + e.w - 6 : sx + 2;
+        ctx.fillRect(eyeX, sy + 6, 2, 2);
       });
     }
 
@@ -1167,12 +1319,23 @@
       // Body
       ctx.fillStyle = "#f4c542";
       ctx.fillRect(sx, sy, player.w, player.h);
+
       // Helmet
       ctx.fillStyle = "#ffb300";
       ctx.fillRect(sx, sy - 6, player.w, 8);
+
+      // Simple backpack
+      ctx.fillStyle = "#d1a43a";
+      ctx.fillRect(sx - 4, sy + 8, 8, 18);
+
+      // Belt line
+      ctx.fillStyle = "#b28930";
+      ctx.fillRect(sx + 2, sy + 22, player.w - 4, 3);
+
       // Boots
       ctx.fillStyle = "#2a2016";
       ctx.fillRect(sx + 4, sy + player.h - 6, player.w - 8, 6);
+
       // Eyes
       ctx.fillStyle = "#1b1b1b";
       ctx.fillRect(sx + 6, sy + 12, 3, 3);
@@ -1183,6 +1346,7 @@
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       drawBackground();
       drawTrenchesAndPits();
+      drawTrenchProps();
       drawPlatforms();
       drawQuestionBlocks();
       drawEnemies();
