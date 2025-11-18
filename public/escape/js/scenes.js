@@ -152,18 +152,25 @@
     };
   }
 
- /* ---------- Scene 2: Click-order (M.A.I.N.) ---------- */
+ /* ---------- Scene 2: Click-order (M.A.I.N. with Up/Down controls) ---------- */
 function S2(){
   let solved = false;
   let unsub = [];
   let listEl;
-  let selected = null;
 
   function renderItem(it){
     return `
       <li class="s2-item" data-id="${it.id}">
-        <strong>${it.label}</strong>
-        <div class="muted" style="font-size:.9rem">${it.note}</div>
+        <div style="display:flex;align-items:flex-start;gap:8px;justify-content:space-between;">
+          <div style="flex:1 1 auto;">
+            <strong>${it.label}</strong>
+            <div class="muted" style="font-size:.9rem">${it.note}</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:4px;flex-shrink:0;">
+            <button type="button" class="btn tiny" data-action="up">▲</button>
+            <button type="button" class="btn tiny" data-action="down">▼</button>
+          </div>
+        </div>
       </li>
     `;
   }
@@ -189,7 +196,7 @@ function S2(){
       root.innerHTML = `
         <h2>M.A.I.N. Files</h2>
         <p class="muted">
-          Tap two tiles to swap their positions. Arrange the long-term causes into the best escalation order.
+          Use the arrows to move tiles up or down. Arrange the long-term causes into the best escalation order.
         </p>
 
         <ol id="s2List" class="card" style="list-style:none;padding:12px;display:grid;gap:8px"></ol>
@@ -206,54 +213,33 @@ function S2(){
       const btnCheck = root.querySelector('#s2Check');
       const btnReset = root.querySelector('#s2Reset');
 
-      // Initial randomized render
       function renderShuffled(){
-        // clear any selection outline
-        if (selected){
-          selected.style.outline = '';
-          selected.style.outlineOffset = '';
-          selected = null;
-        }
         const shuffled = shuffle(conf.order);
         listEl.innerHTML = shuffled.map(renderItem).join('');
       }
 
       renderShuffled();
 
-      // Click-to-swap logic via event delegation
+      // Up / Down re-ordering via event delegation
       const onListClick = (e)=>{
-        const li = e.target.closest('.s2-item');
-        if (!li || !listEl.contains(li)) return;
+        const btn = e.target.closest('[data-action]');
+        if (!btn || !listEl.contains(btn)) return;
 
-        // if nothing selected yet
-        if (!selected){
-          selected = li;
-          selected.style.outline = '2px solid var(--accent)';
-          selected.style.outlineOffset = '2px';
-          return;
+        const li = btn.closest('.s2-item');
+        if (!li) return;
+
+        const action = btn.dataset.action;
+        if (action === 'up') {
+          const prev = li.previousElementSibling;
+          if (prev) {
+            listEl.insertBefore(li, prev);
+          }
+        } else if (action === 'down') {
+          const next = li.nextElementSibling;
+          if (next) {
+            listEl.insertBefore(next, li);
+          }
         }
-
-        // clicking same tile again = deselect
-        if (selected === li){
-          selected.style.outline = '';
-          selected.style.outlineOffset = '';
-          selected = null;
-          return;
-        }
-
-        // swap positions of selected and clicked li
-        const parent = listEl;
-        const a = selected;
-        const b = li;
-
-        const aNext = a.nextSibling === b ? b.nextSibling : a.nextSibling;
-        parent.insertBefore(a, b);
-        parent.insertBefore(b, aNext);
-
-        // clear selection
-        selected.style.outline = '';
-        selected.style.outlineOffset = '';
-        selected = null;
       };
 
       listEl.addEventListener('click', onListClick);
@@ -286,7 +272,6 @@ function S2(){
       unsub.push(()=>btnReset.removeEventListener('click', onReset));
       unsub.push(()=>listEl.removeEventListener('click', onListClick));
 
-      // start with continue disabled
       api.enableContinue(false);
     },
 
