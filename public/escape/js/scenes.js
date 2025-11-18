@@ -152,273 +152,274 @@
     };
   }
 
- /* ---------- Scene 2: Click-order (M.A.I.N. with Up/Down controls) ---------- */
-function S2(){
-  let solved = false;
-  let unsub = [];
-  let listEl;
+  /* ---------- Scene 2: Click-order (M.A.I.N. with Up/Down controls) ---------- */
+  function S2(){
+    let solved = false;
+    let unsub = [];
+    let listEl;
 
-  function renderItem(it){
-    return `
-      <li class="s2-item" data-id="${it.id}">
-        <div style="display:flex;align-items:flex-start;gap:8px;justify-content:space-between;">
-          <div style="flex:1 1 auto;">
-            <strong>${it.label}</strong>
-            <div class="muted" style="font-size:.9rem">${it.note}</div>
+    function renderItem(it){
+      return `
+        <li class="s2-item" data-id="${it.id}">
+          <div style="display:flex;align-items:flex-start;gap:8px;justify-content:space-between;">
+            <div style="flex:1 1 auto;">
+              <strong>${it.label}</strong>
+              <div class="muted" style="font-size:.9rem">${it.note}</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px;flex-shrink:0;">
+              <button type="button" class="btn tiny" data-action="up">▲</button>
+              <button type="button" class="btn tiny" data-action="down">▼</button>
+            </div>
           </div>
-          <div style="display:flex;flex-direction:column;gap:4px;flex-shrink:0;">
-            <button type="button" class="btn tiny" data-action="up">▲</button>
-            <button type="button" class="btn tiny" data-action="down">▼</button>
-          </div>
-        </div>
-      </li>
-    `;
-  }
-
-  // Simple shuffle helper
-  function shuffle(arr){
-    const a = arr.slice();
-    for (let i = a.length - 1; i > 0; i--){
-      const j = Math.floor(Math.random() * (i + 1));
-      [a[i], a[j]] = [a[j], a[i]];
-    }
-    return a;
-  }
-
-  function currentOrderIds(){
-    return [...listEl.querySelectorAll('.s2-item')].map(li => li.dataset.id);
-  }
-
-  return {
-    render(root, api){
-      const conf = ROOM_DATA.scenes.find(s=>s.id==='s2');
-
-      root.innerHTML = `
-        <h2>M.A.I.N. Files</h2>
-        <p class="muted">
-          Use the arrows to move tiles up or down. Arrange the long-term causes into the best escalation order.
-        </p>
-
-        <ol id="s2List" class="card" style="list-style:none;padding:12px;display:grid;gap:8px"></ol>
-
-        <div class="card" style="margin-top:10px">
-          <button id="s2Check" class="btn primary">Check Order</button>
-          <button id="s2Reset" class="btn alt" style="margin-left:6px">Reset</button>
-          <span id="s2Status" class="muted" style="margin-left:10px"></span>
-        </div>
+        </li>
       `;
+    }
 
-      listEl = root.querySelector('#s2List');
-      const status = root.querySelector('#s2Status');
-      const btnCheck = root.querySelector('#s2Check');
-      const btnReset = root.querySelector('#s2Reset');
-
-      function renderShuffled(){
-        const shuffled = shuffle(conf.order);
-        listEl.innerHTML = shuffled.map(renderItem).join('');
+    // Simple shuffle helper
+    function shuffle(arr){
+      const a = arr.slice();
+      for (let i = a.length - 1; i > 0; i--){
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
       }
-
-      renderShuffled();
-
-      // Up / Down re-ordering via event delegation
-      const onListClick = (e)=>{
-        const btn = e.target.closest('[data-action]');
-        if (!btn || !listEl.contains(btn)) return;
-
-        const li = btn.closest('.s2-item');
-        if (!li) return;
-
-        const action = btn.dataset.action;
-        if (action === 'up') {
-          const prev = li.previousElementSibling;
-          if (prev) {
-            listEl.insertBefore(li, prev);
-          }
-        } else if (action === 'down') {
-          const next = li.nextElementSibling;
-          if (next) {
-            listEl.insertBefore(next, li);
-          }
-        }
-      };
-
-      listEl.addEventListener('click', onListClick);
-
-      const onCheck = ()=>{
-        const ids = currentOrderIds();
-        const ok = ids.join(',') === conf.correctIdOrder.join(',');
-        if (ok){
-          solved = true;
-          status.innerHTML = '<span style="color:var(--ok)">✔ Correct order.</span>';
-          api.journal('M.A.I.N. confirmed: Militarism → Alliances → Imperialism → Nationalism.');
-          api.addItem({id:'map-frag-1', label:'Map Fragment #1'});
-          api.enableContinue(true);
-        } else {
-          status.innerHTML = '<span style="color:var(--bad)">✖ Not quite. Re-read the notes.</span>';
-        }
-      };
-
-      const onReset = ()=>{
-        renderShuffled();
-        status.textContent = '';
-        api.enableContinue(false);
-        solved = false;
-      };
-
-      btnCheck.addEventListener('click', onCheck);
-      btnReset.addEventListener('click', onReset);
-
-      unsub.push(()=>btnCheck.removeEventListener('click', onCheck));
-      unsub.push(()=>btnReset.removeEventListener('click', onReset));
-      unsub.push(()=>listEl.removeEventListener('click', onListClick));
-
-      api.enableContinue(false);
-    },
-
-    validate(){ return solved; },
-    showHint(){ apiToast('Hint: build-up → treaties → empires → pride.'); },
-    dispose(){ unsub.forEach(fn=>fn()); }
-  };
-}
- /* ---------- Scene 3: Western vs Eastern Front (touch friendly) ---------- */
-function S3() {
-  let solved = false;
-
-  // simple local shuffle helper
-  function shuffle(arr) {
-    const a = arr.slice();
-    for (let i = a.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [a[i], a[j]] = [a[j], a[i]];
+      return a;
     }
-    return a;
-  }
 
-  return {
-    render(root, api) {
-      const conf = ROOM_DATA.scenes.find(s => s.id === 's3');
+    function currentOrderIds(){
+      return [...listEl.querySelectorAll('.s2-item')].map(li => li.dataset.id);
+    }
 
-      // correct answers still based on the original data
-      const correctWest = conf.items
-        .filter(it => it.front === 'west')
-        .map(it => it.id);
-      const correctEast = conf.items
-        .filter(it => it.front === 'east')
-        .map(it => it.id);
+    return {
+      render(root, api){
+        const conf = ROOM_DATA.scenes.find(s=>s.id==='s2');
 
-      root.innerHTML = `
-        <h2>Frontline Intel</h2>
-        <p class="muted">Assign each event to the correct front: Western or Eastern.</p>
+        root.innerHTML = `
+          <h2>M.A.I.N. Files</h2>
+          <p class="muted">
+            Use the arrows to move tiles up or down. Arrange the long-term causes into the best escalation order.
+          </p>
 
-        <div class="grid" style="grid-template-columns:1fr 1fr;gap:20px;margin:16px 0">
-          <div class="card" id="westZone">
-            <strong>🛡 Western Front</strong>
-            <ul class="s3-zone" data-zone="west" style="margin-top:8px;list-style:none;padding:0;display:grid;gap:6px"></ul>
+          <ol id="s2List" class="card" style="list-style:none;padding:12px;display:grid;gap:8px"></ol>
+
+          <div class="card" style="margin-top:10px">
+            <button id="s2Check" class="btn primary">Check Order</button>
+            <button id="s2Reset" class="btn alt" style="margin-left:6px">Reset</button>
+            <span id="s2Status" class="muted" style="margin-left:10px"></span>
           </div>
-          <div class="card" id="eastZone">
-            <strong>🗺 Eastern Front</strong>
-            <ul class="s3-zone" data-zone="east" style="margin-top:8px;list-style:none;padding:0;display:grid;gap:6px"></ul>
-          </div>
-        </div>
-
-        <div class="card">
-          <strong>Available Intel</strong>
-          <ul id="s3Pool" style="margin-top:8px;list-style:none;padding:0;display:grid;gap:8px"></ul>
-        </div>
-
-        <button id="s3Check" class="btn primary" style="margin-top:12px">Check Answers</button>
-        <span id="s3Status" class="muted" style="margin-left:10px"></span>
-      `;
-
-      const pool = root.querySelector('#s3Pool');
-      const west = root.querySelector('#westZone .s3-zone');
-      const east = root.querySelector('#eastZone .s3-zone');
-      const status = root.querySelector('#s3Status');
-      const btnCheck = root.querySelector('#s3Check');
-
-      // render items in a randomized order each load
-      const shuffledItems = shuffle(conf.items);
-      pool.innerHTML = shuffledItems.map(it => renderPoolItem(it)).join('');
-
-      pool.addEventListener('click', e => {
-        const btn = e.target.closest('button[data-move]');
-        if (!btn) return;
-        const id = btn.closest('[data-id]').dataset.id;
-        const dir = btn.dataset.move;
-        moveToZone(id, dir);
-      });
-
-      function moveToZone(id, zone) {
-        const item = conf.items.find(i => i.id === id);
-        if (!item) return;
-
-        const nodeInPool = pool.querySelector(`[data-id="${id}"]`);
-        nodeInPool && nodeInPool.remove();
-
-        const zoneEl = zone === 'west' ? west : east;
-        const li = document.createElement('li');
-        li.dataset.id = id;
-        li.className = 's3-assigned';
-        li.innerHTML = `
-          ${item.label}
-          <button type="button" data-reset class="btn tiny" style="margin-left:8px">↺</button>
         `;
-        zoneEl.appendChild(li);
-      }
 
-      [west, east].forEach(zoneEl => {
-        zoneEl.addEventListener('click', e => {
-          const btn = e.target.closest('button[data-reset]');
+        listEl = root.querySelector('#s2List');
+        const status = root.querySelector('#s2Status');
+        const btnCheck = root.querySelector('#s2Check');
+        const btnReset = root.querySelector('#s2Reset');
+
+        function renderShuffled(){
+          const shuffled = shuffle(conf.order);
+          listEl.innerHTML = shuffled.map(renderItem).join('');
+        }
+
+        renderShuffled();
+
+        // Up / Down re-ordering via event delegation
+        const onListClick = (e)=>{
+          const btn = e.target.closest('[data-action]');
+          if (!btn || !listEl.contains(btn)) return;
+
+          const li = btn.closest('.s2-item');
+          if (!li) return;
+
+          const action = btn.dataset.action;
+          if (action === 'up') {
+            const prev = li.previousElementSibling;
+            if (prev) {
+              listEl.insertBefore(li, prev);
+            }
+          } else if (action === 'down') {
+            const next = li.nextElementSibling;
+            if (next) {
+              listEl.insertBefore(next, li);
+            }
+          }
+        };
+
+        listEl.addEventListener('click', onListClick);
+
+        const onCheck = ()=>{
+          const ids = currentOrderIds();
+          const ok = ids.join(',') === conf.correctIdOrder.join(',');
+          if (ok){
+            solved = true;
+            status.innerHTML = '<span style="color:var(--ok)">✔ Correct order.</span>';
+            api.journal('M.A.I.N. confirmed: Militarism → Alliances → Imperialism → Nationalism.');
+            api.addItem({id:'map-frag-1', label:'Map Fragment #1'});
+            api.enableContinue(true);
+          } else {
+            status.innerHTML = '<span style="color:var(--bad)">✖ Not quite. Re-read the notes.</span>';
+          }
+        };
+
+        const onReset = ()=>{
+          renderShuffled();
+          status.textContent = '';
+          api.enableContinue(false);
+          solved = false;
+        };
+
+        btnCheck.addEventListener('click', onCheck);
+        btnReset.addEventListener('click', onReset);
+
+        unsub.push(()=>btnCheck.removeEventListener('click', onCheck));
+        unsub.push(()=>btnReset.removeEventListener('click', onReset));
+        unsub.push(()=>listEl.removeEventListener('click', onListClick));
+
+        api.enableContinue(false);
+      },
+
+      validate(){ return solved; },
+      showHint(){ apiToast('Hint: build-up → treaties → empires → pride.'); },
+      dispose(){ unsub.forEach(fn=>fn()); }
+    };
+  }
+
+  /* ---------- Scene 3: Western vs Eastern Front (touch friendly) ---------- */
+  function S3() {
+    let solved = false;
+
+    // simple local shuffle helper
+    function shuffle(arr) {
+      const a = arr.slice();
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    }
+
+    return {
+      render(root, api) {
+        const conf = ROOM_DATA.scenes.find(s => s.id === 's3');
+
+        // correct answers still based on the original data
+        const correctWest = conf.items
+          .filter(it => it.front === 'west')
+          .map(it => it.id);
+        const correctEast = conf.items
+          .filter(it => it.front === 'east')
+          .map(it => it.id);
+
+        root.innerHTML = `
+          <h2>Frontline Intel</h2>
+          <p class="muted">Assign each event to the correct front: Western or Eastern.</p>
+
+          <div class="grid" style="grid-template-columns:1fr 1fr;gap:20px;margin:16px 0">
+            <div class="card" id="westZone">
+              <strong>🛡 Western Front</strong>
+              <ul class="s3-zone" data-zone="west" style="margin-top:8px;list-style:none;padding:0;display:grid;gap:6px"></ul>
+            </div>
+            <div class="card" id="eastZone">
+              <strong>🗺 Eastern Front</strong>
+              <ul class="s3-zone" data-zone="east" style="margin-top:8px;list-style:none;padding:0;display:grid;gap:6px"></ul>
+            </div>
+          </div>
+
+          <div class="card">
+            <strong>Available Intel</strong>
+            <ul id="s3Pool" style="margin-top:8px;list-style:none;padding:0;display:grid;gap:8px"></ul>
+          </div>
+
+          <button id="s3Check" class="btn primary" style="margin-top:12px">Check Answers</button>
+          <span id="s3Status" class="muted" style="margin-left:10px"></span>
+        `;
+
+        const pool = root.querySelector('#s3Pool');
+        const west = root.querySelector('#westZone .s3-zone');
+        const east = root.querySelector('#eastZone .s3-zone');
+        const status = root.querySelector('#s3Status');
+        const btnCheck = root.querySelector('#s3Check');
+
+        // render items in a randomized order each load
+        const shuffledItems = shuffle(conf.items);
+        pool.innerHTML = shuffledItems.map(it => renderPoolItem(it)).join('');
+
+        pool.addEventListener('click', e => {
+          const btn = e.target.closest('button[data-move]');
           if (!btn) return;
-          const li = btn.closest('[data-id]');
-          const id = li.dataset.id;
-          li.remove();
+          const id = btn.closest('[data-id]').dataset.id;
+          const dir = btn.dataset.move;
+          moveToZone(id, dir);
+        });
+
+        function moveToZone(id, zone) {
           const item = conf.items.find(i => i.id === id);
           if (!item) return;
-          pool.insertAdjacentHTML('beforeend', renderPoolItem(item));
-        });
-      });
 
-      btnCheck.addEventListener('click', () => {
-        const westIDs = [...west.querySelectorAll('[data-id]')].map(el => el.dataset.id);
-        const eastIDs = [...east.querySelectorAll('[data-id]')].map(el => el.dataset.id);
+          const nodeInPool = pool.querySelector(`[data-id="${id}"]`);
+          nodeInPool && nodeInPool.remove();
 
-        const wOK = arraysEqual(westIDs.sort(), correctWest.slice().sort());
-        const eOK = arraysEqual(eastIDs.sort(), correctEast.slice().sort());
-
-        if (wOK && eOK) {
-          solved = true;
-          status.innerHTML = `<span style="color:var(--ok)">✔ Correct fronts identified.</span>`;
-          api.journal('Correctly assigned Western and Eastern Front events.');
-          api.addItem({ id: 'map-frag-2', label: 'Map Fragment #2' });
-          api.enableContinue(true);
-        } else {
-          status.innerHTML = `<span style="color:var(--bad)">✖ Not quite. Check each event again.</span>`;
-          api.enableContinue(false);
+          const zoneEl = zone === 'west' ? west : east;
+          const li = document.createElement('li');
+          li.dataset.id = id;
+          li.className = 's3-assigned';
+          li.innerHTML = `
+            ${item.label}
+            <button type="button" data-reset class="btn tiny" style="margin-left:8px">↺</button>
+          `;
+          zoneEl.appendChild(li);
         }
-      });
 
-      function renderPoolItem(it) {
-        return `
-          <li class="s3-item" data-id="${it.id}">
-            <div>${it.label}</div>
-            <div class="muted" style="margin-top:4px;font-size:.85rem">Send to:</div>
-            <div style="margin-top:4px;display:flex;gap:6px;flex-wrap:wrap">
-              <button type="button" class="btn tiny" data-move="west">Western Front</button>
-              <button type="button" class="btn tiny" data-move="east">Eastern Front</button>
-            </div>
-          </li>
-        `;
-      }
-    },
+        [west, east].forEach(zoneEl => {
+          zoneEl.addEventListener('click', e => {
+            const btn = e.target.closest('button[data-reset]');
+            if (!btn) return;
+            const li = btn.closest('[data-id]');
+            const id = li.dataset.id;
+            li.remove();
+            const item = conf.items.find(i => i.id === id);
+            if (!item) return;
+            pool.insertAdjacentHTML('beforeend', renderPoolItem(item));
+          });
+        });
 
-    validate() { return solved; },
-    showHint() {
-      apiToast('Hint: Think trenches in France/Belgium vs fighting in Russia & Eastern Europe.');
-    },
-    dispose() {}
-  };
-} }
+        btnCheck.addEventListener('click', () => {
+          const westIDs = [...west.querySelectorAll('[data-id]')].map(el => el.dataset.id);
+          const eastIDs = [...east.querySelectorAll('[data-id]')].map(el => el.dataset.id);
+
+          const wOK = arraysEqual(westIDs.sort(), correctWest.slice().sort());
+          const eOK = arraysEqual(eastIDs.sort(), correctEast.slice().sort());
+
+          if (wOK && eOK) {
+            solved = true;
+            status.innerHTML = `<span style="color:var(--ok)">✔ Correct fronts identified.</span>`;
+            api.journal('Correctly assigned Western and Eastern Front events.');
+            api.addItem({ id: 'map-frag-2', label: 'Map Fragment #2' });
+            api.enableContinue(true);
+          } else {
+            status.innerHTML = `<span style="color:var(--bad)">✖ Not quite. Check each event again.</span>`;
+            api.enableContinue(false);
+          }
+        });
+
+        function renderPoolItem(it) {
+          return `
+            <li class="s3-item" data-id="${it.id}">
+              <div>${it.label}</div>
+              <div class="muted" style="margin-top:4px;font-size:.85rem">Send to:</div>
+              <div style="margin-top:4px;display:flex;gap:6px;flex-wrap:wrap">
+                <button type="button" class="btn tiny" data-move="west">Western Front</button>
+                <button type="button" class="btn tiny" data-move="east">Eastern Front</button>
+              </div>
+            </li>
+          `;
+        }
+      },
+
+      validate() { return solved; },
+      showHint() {
+        apiToast('Hint: Think trenches in France/Belgium vs fighting in Russia & Eastern Europe.');
+      },
+      dispose() {}
+    };
+  }
 
   /* ---------- Scene 4: Map Click Challenge ---------- */
   function S4() {
