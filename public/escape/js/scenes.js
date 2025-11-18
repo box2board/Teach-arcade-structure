@@ -152,134 +152,168 @@
     };
   }
 
-  /* ---------- Scene 2: Click-order (M.A.I.N. with Up/Down controls) ---------- */
-  function S2(){
-    let solved = false;
-    let unsub = [];
-    let listEl;
+ /* ---------- Scene 2: MAIN Match (letters on left, defs randomized) ---------- */
+function S2(){
+  let solved = false;
+  let unsub = [];
 
-    function renderItem(it){
-      return `
-        <li class="s2-item" data-id="${it.id}">
-          <div style="display:flex;align-items:flex-start;gap:8px;justify-content:space-between;">
-            <div style="flex:1 1 auto;">
-              <strong>${it.label}</strong>
-              <div class="muted" style="font-size:.9rem">${it.note}</div>
-            </div>
-            <div style="display:flex;flex-direction:column;gap:4px;flex-shrink:0;">
-              <button type="button" class="btn tiny" data-action="up">▲</button>
-              <button type="button" class="btn tiny" data-action="down">▼</button>
-            </div>
+  // local shuffle helper
+  function shuffle(arr){
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--){
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  return {
+    render(root, api){
+      const conf = ROOM_DATA.scenes.find(s => s.id === 's2');
+
+      // Ensure we use the intended MAIN order down the left side
+      const mainOrder = conf.correctIdOrder.map(id =>
+        conf.order.find(o => o.id === id)
+      );
+
+      root.innerHTML = `
+        <h2>M.A.I.N. Files</h2>
+        <p class="muted">
+          On the left are the four long-term causes of World War I (M.A.I.N.). 
+          On the right is a bank of definitions. For each cause, choose the 
+          <em>best matching definition</em> from the dropdown.
+        </p>
+
+        <div class="grid" style="grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap:16px; margin-top:12px;">
+          <div class="card">
+            <strong>Match the causes</strong>
+            <ul id="s2MatchList" style="list-style:none;padding:0;margin-top:8px;display:grid;gap:10px;">
+              ${mainOrder.map(it => `
+                <li class="s2-row" data-id="${it.id}">
+                  <div style="margin-bottom:6px;">
+                    <strong>${it.label}</strong>
+                  </div>
+                  <select class="s2-select" style="width:100%;padding:8px;border-radius:8px;border:1px solid var(--line);background:#0b0e1d;color:var(--ink)">
+                    <option value="">— Select the best definition —</option>
+                    <!-- options will be injected in JS -->
+                  </select>
+                </li>
+              `).join('')}
+            </ul>
           </div>
-        </li>
+
+          <div class="card">
+            <strong>Definition Bank</strong>
+            <ol style="margin-top:8px;padding-left:20px;">
+              ${conf.order.map(o => `
+                <li style="margin-bottom:6px;font-size:.95rem;">
+                  ${o.note}
+                </li>
+              `).join('')}
+            </ol>
+            <p class="muted" style="margin-top:6px;font-size:.85rem;">
+              Tip: Read all definitions first, then match them to the cause that fits best.
+            </p>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:10px">
+          <button id="s2Check" class="btn primary">Check Matches</button>
+          <button id="s2Reset" class="btn alt" style="margin-left:6px">Reset</button>
+          <span id="s2Status" class="muted" style="margin-left:10px"></span>
+        </div>
       `;
-    }
 
-    // Simple shuffle helper
-    function shuffle(arr){
-      const a = arr.slice();
-      for (let i = a.length - 1; i > 0; i--){
-        const j = Math.floor(Math.random() * (i + 1));
-        [a[i], a[j]] = [a[j], a[i]];
+      const rows   = [...root.querySelectorAll('.s2-row')];
+      const status = root.querySelector('#s2Status');
+      const btnCheck = root.querySelector('#s2Check');
+      const btnReset = root.querySelector('#s2Reset');
+
+      // Fill dropdowns with randomized definition options
+      function populateOptions() {
+        const shuffledDefs = shuffle(conf.order);
+        rows.forEach(row => {
+          const sel = row.querySelector('.s2-select');
+          sel.innerHTML = `
+            <option value="">— Select the best definition —</option>
+            ${shuffledDefs.map(o => `
+              <option value="${o.id}">${o.note}</option>
+            `).join('')}
+          `;
+          sel.value = '';
+          // clear any previous inline error styling
+          sel.style.borderColor = 'var(--line)';
+        });
       }
-      return a;
-    }
 
-    function currentOrderIds(){
-      return [...listEl.querySelectorAll('.s2-item')].map(li => li.dataset.id);
-    }
+      populateOptions();
+      api.enableContinue(false);
+      solved = false;
 
-    return {
-      render(root, api){
-        const conf = ROOM_DATA.scenes.find(s=>s.id==='s2');
+      const onCheck = () => {
+        // get chosen ids in MAIN order (M -> A -> I -> N)
+        const chosenIds = rows.map(row => {
+          const sel = row.querySelector('.s2-select');
+          return sel.value;
+        });
 
-        root.innerHTML = `
-          <h2>M.A.I.N. Files</h2>
-          <p class="muted">
-            Use the arrows to move tiles up or down. Arrange the long-term causes into the best escalation order.
-          </p>
-
-          <ol id="s2List" class="card" style="list-style:none;padding:12px;display:grid;gap:8px"></ol>
-
-          <div class="card" style="margin-top:10px">
-            <button id="s2Check" class="btn primary">Check Order</button>
-            <button id="s2Reset" class="btn alt" style="margin-left:6px">Reset</button>
-            <span id="s2Status" class="muted" style="margin-left:10px"></span>
-          </div>
-        `;
-
-        listEl = root.querySelector('#s2List');
-        const status = root.querySelector('#s2Status');
-        const btnCheck = root.querySelector('#s2Check');
-        const btnReset = root.querySelector('#s2Reset');
-
-        function renderShuffled(){
-          const shuffled = shuffle(conf.order);
-          listEl.innerHTML = shuffled.map(renderItem).join('');
+        // require all filled
+        if (chosenIds.some(v => !v)) {
+          status.innerHTML = `<span style="color:var(--bad)">⚠ Match all four causes before checking.</span>`;
+          return;
         }
 
-        renderShuffled();
+        const correctOrder = conf.correctIdOrder;
+        const isCorrect = chosenIds.join(',') === correctOrder.join(',');
 
-        // Up / Down re-ordering via event delegation
-        const onListClick = (e)=>{
-          const btn = e.target.closest('[data-action]');
-          if (!btn || !listEl.contains(btn)) return;
+        // reset borders
+        rows.forEach(row => {
+          const sel = row.querySelector('.s2-select');
+          sel.style.borderColor = 'var(--line)';
+        });
 
-          const li = btn.closest('.s2-item');
-          if (!li) return;
+        if (isCorrect) {
+          solved = true;
+          status.innerHTML = '<span style="color:var(--ok)">✔ Correct! You matched all four M.A.I.N. causes.</span>';
+          api.journal('M.A.I.N. matched: Militarism → Alliances → Imperialism → Nationalism.');
+          api.addItem({id:'map-frag-1', label:'Map Fragment #1'});
+          api.enableContinue(true);
+        } else {
+          status.innerHTML = '<span style="color:var(--bad)">✖ Some matches are off. Re-check the descriptions.</span>';
 
-          const action = btn.dataset.action;
-          if (action === 'up') {
-            const prev = li.previousElementSibling;
-            if (prev) {
-              listEl.insertBefore(li, prev);
+          // optional: lightly highlight incorrect ones
+          rows.forEach((row, idx) => {
+            const sel = row.querySelector('.s2-select');
+            if (chosenIds[idx] !== correctOrder[idx]) {
+              sel.style.borderColor = 'var(--bad)';
+            } else {
+              sel.style.borderColor = 'var(--line)';
             }
-          } else if (action === 'down') {
-            const next = li.nextElementSibling;
-            if (next) {
-              listEl.insertBefore(next, li);
-            }
-          }
-        };
+          });
 
-        listEl.addEventListener('click', onListClick);
-
-        const onCheck = ()=>{
-          const ids = currentOrderIds();
-          const ok = ids.join(',') === conf.correctIdOrder.join(',');
-          if (ok){
-            solved = true;
-            status.innerHTML = '<span style="color:var(--ok)">✔ Correct order.</span>';
-            api.journal('M.A.I.N. confirmed: Militarism → Alliances → Imperialism → Nationalism.');
-            api.addItem({id:'map-frag-1', label:'Map Fragment #1'});
-            api.enableContinue(true);
-          } else {
-            status.innerHTML = '<span style="color:var(--bad)">✖ Not quite. Re-read the notes.</span>';
-          }
-        };
-
-        const onReset = ()=>{
-          renderShuffled();
-          status.textContent = '';
           api.enableContinue(false);
-          solved = false;
-        };
+        }
+      };
 
-        btnCheck.addEventListener('click', onCheck);
-        btnReset.addEventListener('click', onReset);
-
-        unsub.push(()=>btnCheck.removeEventListener('click', onCheck));
-        unsub.push(()=>btnReset.removeEventListener('click', onReset));
-        unsub.push(()=>listEl.removeEventListener('click', onListClick));
-
+      const onReset = () => {
+        populateOptions();
+        status.textContent = '';
+        solved = false;
         api.enableContinue(false);
-      },
+      };
 
-      validate(){ return solved; },
-      showHint(){ apiToast('Hint: build-up → treaties → empires → pride.'); },
-      dispose(){ unsub.forEach(fn=>fn()); }
-    };
-  }
+      btnCheck.addEventListener('click', onCheck);
+      btnReset.addEventListener('click', onReset);
+
+      unsub.push(() => btnCheck.removeEventListener('click', onCheck));
+      unsub.push(() => btnReset.removeEventListener('click', onReset));
+    },
+
+    validate(){ return solved; },
+    showHint(){ apiToast('Think: build-up → treaties → empires → pride.'); },
+    dispose(){ unsub.forEach(fn => fn()); }
+  };
+}
 
   /* ---------- Scene 3: Western vs Eastern Front (touch friendly) ---------- */
   function S3() {
