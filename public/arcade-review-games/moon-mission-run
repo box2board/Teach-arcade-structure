@@ -1,0 +1,1287 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Teach Arcade · Moon Mission Run</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --sky: #030516;
+      --horizon: #090b24;
+      --moon-surface: #dadde6;
+      --moon-shadow: #aeb3c6;
+      --rock: #4a4f5e;
+      --player: #5af4ff;
+      --player-accent: #23c7ff;
+      --ui-bg: rgba(3, 6, 32, 0.75);
+      --accent: #ffb300;
+      --text: #f9f9ff;
+      --pit-shadow: #060716;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #151a3a 0%, #02030a 70%);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding: 12px;
+      gap: 10px;
+    }
+
+    h1 {
+      font-family: "Press Start 2P", system-ui, sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-shadow: 0 2px 0 #000;
+      text-align: center;
+    }
+
+    .subtitle {
+      font-size: 0.75rem;
+      opacity: 0.9;
+      text-align: center;
+      max-width: 900px;
+    }
+
+    #modeBar {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      font-size: 0.75rem;
+    }
+
+    .pill-btn {
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 4px 10px;
+      background: rgba(0,0,0,0.55);
+      color: var(--text);
+      cursor: pointer;
+      font-size: 0.7rem;
+      font-family: "Press Start 2P", system-ui, sans-serif;
+      text-transform: uppercase;
+    }
+
+    .pill-btn.active {
+      background: var(--accent);
+      color: #111;
+    }
+
+    #gameContainer {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.8);
+      border: 2px solid rgba(255,255,255,0.18);
+      background: #000;
+    }
+
+    canvas {
+      display: block;
+      background: var(--sky);
+      image-rendering: pixelated;
+    }
+
+    #hud {
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      right: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.65rem;
+      background: var(--ui-bg);
+      padding: 4px 10px;
+      border-radius: 999px;
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.15);
+      font-family: "Press Start 2P", system-ui, sans-serif;
+      z-index: 5;
+    }
+
+    #hud span {
+      white-space: nowrap;
+    }
+
+    #questionOverlay,
+    #endOverlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at top, rgba(0,0,0,0.94), rgba(0,0,0,0.98));
+      z-index: 10;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .panel {
+      background: #0b1022;
+      border-radius: 14px;
+      padding: 18px 18px 14px;
+      max-width: 480px;
+      width: 92%;
+      border: 2px solid rgba(255,255,255,0.25);
+      box-shadow: 0 12px 36px rgba(0,0,0,0.9);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 0.85rem;
+    }
+
+    .panel h2 {
+      font-family: "Press Start 2P", system-ui, sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .choices {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .choice-btn {
+      border: 0;
+      border-radius: 999px;
+      padding: 7px 10px;
+      font-size: 0.8rem;
+      text-align: left;
+      cursor: pointer;
+      background: #181d3a;
+      color: var(--text);
+      transition: background 0.08s, transform 0.08s, box-shadow 0.1s;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    .choice-btn:hover {
+      background: #22284c;
+      transform: translateY(-1px);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.6);
+    }
+
+    .choice-btn.correct {
+      background: #2e7d32 !important;
+    }
+
+    .choice-btn.wrong {
+      background: #c62828 !important;
+    }
+
+    .panel-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.7rem;
+      opacity: 0.9;
+      margin-top: 4px;
+    }
+
+    .primary-btn {
+      border-radius: 999px;
+      border: none;
+      padding: 6px 12px;
+      background: var(--accent);
+      color: #111;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.75rem;
+      font-family: "Press Start 2P", system-ui, sans-serif;
+      text-transform: uppercase;
+    }
+
+    .primary-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+
+    #touchControls {
+      position: absolute;
+      bottom: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 12px;
+      padding: 4px 10px;
+      background: var(--ui-bg);
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.25);
+      backdrop-filter: blur(8px);
+      z-index: 6;
+    }
+
+    .ctrl-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.35);
+      background: #080c24;
+      color: var(--text);
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-family: "Press Start 2P", system-ui, sans-serif;
+      transition: transform 0.08s, box-shadow 0.08s, background 0.08s;
+    }
+
+    .ctrl-btn:active {
+      transform: translateY(1px);
+      background: #151a38;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.6) inset;
+    }
+
+    @media (min-width: 900px) {
+      #touchControls {
+        display: none;
+      }
+    }
+
+    @media (max-width: 900px) {
+      canvas {
+        width: 100vw;
+        height: auto;
+      }
+      h1 {
+        font-size: 0.8rem;
+      }
+      .subtitle {
+        font-size: 0.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Teach Arcade · Moon Mission Run</h1>
+  <p class="subtitle">
+    Bound across lunar craters, avoid rogue exploration bots, and reach all 20 question markers
+    while reviewing key Earth &amp; Space science ideas. Use ◀ ▶ / ▲ or on-screen buttons to move
+    and jump. Touch ? beacons to answer.
+  </p>
+
+  <div id="modeBar">
+    <span>Question Mode:</span>
+    <button id="modePreloaded" class="pill-btn active">Preloaded Earth &amp; Space Bank</button>
+    <button id="modeCustom" class="pill-btn">Custom (if configured)</button>
+  </div>
+
+  <div id="gameContainer">
+    <canvas id="gameCanvas" width="960" height="360"></canvas>
+
+    <div id="hud">
+      <span id="hudScore">Score: 0</span>
+      <span id="hudQuestions">Questions: 0 / 20</span>
+      <span id="hudStatus">Status: Running</span>
+    </div>
+
+    <div id="touchControls">
+      <button id="btnLeft" class="ctrl-btn" aria-label="Move left">◀</button>
+      <button id="btnJump" class="ctrl-btn" aria-label="Jump">▲</button>
+      <button id="btnRight" class="ctrl-btn" aria-label="Move right">▶</button>
+    </div>
+
+    <div id="questionOverlay" class="hidden">
+      <div class="panel">
+        <h2 id="qTitle">Question</h2>
+        <p id="qText"></p>
+        <div class="choices" id="choicesContainer"></div>
+        <div class="panel-footer">
+          <span id="qFeedback"></span>
+          <button id="qCloseBtn" class="primary-btn">Resume</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="endOverlay" class="hidden">
+      <div class="panel">
+        <h2>Mission Complete!</h2>
+        <p id="endSummary"></p>
+        <div class="panel-footer">
+          <button id="replayBtn" class="primary-btn">Replay</button>
+          <button id="topicBtn" class="primary-btn">More Games</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ======================================================
+    // CONFIG: CUSTOM QUESTIONS (optional)
+    // ======================================================
+    const CUSTOM_QUESTIONS = [];
+    let useCustomQuestions = false;
+
+    // ======================================================
+    // PRELOADED EARTH & SPACE QUESTION BANK (50)
+    // ======================================================
+    const ES_QUESTION_BANK = [
+      { id: 1, text: "What force keeps the Moon in orbit around Earth?", choices: [
+        "Magnetism", "Friction", "Gravity", "Electricity"
+      ], correctIndex: 2 },
+      { id: 2, text: "Which phrase best describes gravity on the Moon compared to Earth?", choices: [
+        "Stronger than Earth", "About the same", "Weaker than Earth", "There is no gravity"
+      ], correctIndex: 2 },
+      { id: 3, text: "Which motion causes day and night on Earth?", choices: [
+        "Revolution around the Sun", "Rotation on its axis", "Moon orbiting Earth", "Sun spinning"
+      ], correctIndex: 1 },
+      { id: 4, text: "About how long does it take Earth to orbit the Sun once?", choices: [
+        "1 day", "1 week", "1 month", "1 year"
+      ], correctIndex: 3 },
+      { id: 5, text: "About how long does it take the Moon to orbit Earth once?", choices: [
+        "24 hours", "About 1 week", "About 1 month", "1 year"
+      ], correctIndex: 2 },
+      { id: 6, text: "The path one object takes around another in space is called a:", choices: [
+        "Rotation", "Orbit", "Axis", "Shadow"
+      ], correctIndex: 1 },
+      { id: 7, text: "What causes the phases of the Moon?", choices: [
+        "Earth’s shadow covering the Moon", "Changes in Moon’s shape", "Different amounts of lit side we can see", "Clouds blocking the Moon"
+      ], correctIndex: 2 },
+      { id: 8, text: "When we see more and more of the lit side of the Moon, it is:", choices: [
+        "Waning", "Waxing", "Eclipsing", "Rotating"
+      ], correctIndex: 1 },
+      { id: 9, text: "Which phase is when the Moon is completely dark from Earth’s view?", choices: [
+        "Full Moon", "New Moon", "First Quarter", "Third Quarter"
+      ], correctIndex: 1 },
+      { id: 10, text: "Which phase is when the entire lit side of the Moon faces Earth?", choices: [
+        "Full Moon", "New Moon", "Crescent", "Gibbous"
+      ], correctIndex: 0 },
+      { id: 11, text: "Earth’s axis is:", choices: [
+        "Perfectly straight", "Slightly tilted", "Flat", "Changing every day"
+      ], correctIndex: 1 },
+      { id: 12, text: "What causes Earth’s seasons?", choices: [
+        "Distance from the Sun only", "Earth’s tilt and revolution", "The Moon’s gravity", "Cloud cover"
+      ], correctIndex: 1 },
+      { id: 13, text: "Which season happens when your hemisphere is tilted toward the Sun?", choices: [
+        "Winter", "Summer", "Autumn", "Monsoon"
+      ], correctIndex: 1 },
+      { id: 14, text: "What causes tides on Earth?", choices: [
+        "Winds in the atmosphere", "Earth’s rotation only", "The Moon’s and Sun’s gravity", "Ocean creatures"
+      ], correctIndex: 2 },
+      { id: 15, text: "On the Moon, an astronaut’s mass:", choices: [
+        "Is less than on Earth", "Is more than on Earth", "Stays the same", "Disappears"
+      ], correctIndex: 2 },
+      { id: 16, text: "On the Moon, an astronaut’s weight compared to Earth is:", choices: [
+        "Greater", "The same", "Less", "Zero"
+      ], correctIndex: 2 },
+      { id: 17, text: "Which of these is a dwarf planet?", choices: [
+        "Earth", "Mars", "Pluto", "Venus"
+      ], correctIndex: 2 },
+      { id: 18, text: "Our Sun is best described as a:", choices: [
+        "Planet", "Star", "Moon", "Galaxy"
+      ], correctIndex: 1 },
+      { id: 19, text: "Which of these is NOT an inner (terrestrial) planet?", choices: [
+        "Mercury", "Venus", "Earth", "Jupiter"
+      ], correctIndex: 3 },
+      { id: 20, text: "Which planet is known for its rings?", choices: [
+        "Mars", "Jupiter", "Saturn", "Mercury"
+      ], correctIndex: 2 },
+      { id: 21, text: "The Milky Way is:", choices: [
+        "A star", "A galaxy", "A comet", "An asteroid"
+      ], correctIndex: 1 },
+      { id: 22, text: "Which object orbits Earth?", choices: [
+        "The Sun", "The Moon", "Mars", "Venus"
+      ], correctIndex: 1 },
+      { id: 23, text: "A rock that enters Earth’s atmosphere and burns up is called a:", choices: [
+        "Meteor", "Asteroid", "Comet", "Planet"
+      ], correctIndex: 0 },
+      { id: 24, text: "The imaginary line Earth spins around is called its:", choices: [
+        "Orbit", "Axis", "Equator", "Tide"
+      ], correctIndex: 1 },
+      { id: 25, text: "Which statement about the Moon is true?", choices: [
+        "It makes its own light", "It reflects sunlight", "It is hotter than the Sun", "It is a star"
+      ], correctIndex: 1 },
+      { id: 26, text: "During a solar eclipse:", choices: [
+        "Earth moves between Sun and Moon", "Moon moves between Sun and Earth", "Sun moves behind Earth", "Sun turns off"
+      ], correctIndex: 1 },
+      { id: 27, text: "During a lunar eclipse:", choices: [
+        "Earth’s shadow falls on the Moon", "Moon’s shadow falls on Earth", "Sun is covered by clouds", "Moon disappears forever"
+      ], correctIndex: 0 },
+      { id: 28, text: "Which tool allows us to see distant stars and galaxies more clearly?", choices: [
+        "Microscope", "Binoculars", "Telescope", "Periscope"
+      ], correctIndex: 2 },
+      { id: 29, text: "Astronauts on the Moon must wear spacesuits mainly to:", choices: [
+        "See better", "Protect from air and temperature extremes", "Run faster", "Be heavier"
+      ], correctIndex: 1 },
+      { id: 30, text: "Why does the Moon have more visible craters than Earth?", choices: [
+        "It gets hit more often", "It spins faster", "It has no atmosphere to erode craters", "It is much older than Earth"
+      ], correctIndex: 2 },
+      { id: 31, text: "Which statement about Earth’s atmosphere is true?", choices: [
+        "It is solid", "It is a mixture of gases", "It is mostly carbon dioxide", "It exists only at night"
+      ], correctIndex: 1 },
+      { id: 32, text: "Which layer of Earth do we live on?", choices: [
+        "Inner core", "Outer core", "Mantle", "Crust"
+      ], correctIndex: 3 },
+      { id: 33, text: "Earth’s plates move slowly on the semi-molten layer called the:", choices: [
+        "Inner core", "Asthenosphere", "Crust", "Atmosphere"
+      ], correctIndex: 1 },
+      { id: 34, text: "Which event is caused by the sudden release of energy along a fault?", choices: [
+        "Hurricane", "Earthquake", "Tornado", "Thunderstorm"
+      ], correctIndex: 1 },
+      { id: 35, text: "Most volcanoes and earthquakes occur:", choices: [
+        "In the middle of plates", "At plate boundaries", "Only under oceans", "Only on the Moon"
+      ], correctIndex: 1 },
+      { id: 36, text: "Which type of boundary is where plates move away from each other?", choices: [
+        "Convergent", "Divergent", "Transform", "Stationary"
+      ], correctIndex: 1 },
+      { id: 37, text: "Which type of boundary is where plates slide past each other?", choices: [
+        "Convergent", "Divergent", "Transform", "Subducting"
+      ], correctIndex: 2 },
+      { id: 38, text: "The Moon’s surface is mostly made of:", choices: [
+        "Ice and gas", "Molten lava", "Rock and dust", "Liquid water"
+      ], correctIndex: 2 },
+      { id: 39, text: "Why do astronauts on the Moon leave footprints that last a long time?", choices: [
+        "It snows often", "Strong winds erase them", "There is almost no wind or water", "They are very heavy"
+      ], correctIndex: 2 },
+      { id: 40, text: "Which planet is known as the Red Planet?", choices: [
+        "Venus", "Mars", "Jupiter", "Neptune"
+      ], correctIndex: 1 },
+      { id: 41, text: "Comets are mostly made of:", choices: [
+        "Metal and rock only", "Ice, dust, and rock", "Pure metal", "Hot plasma"
+      ], correctIndex: 1 },
+      { id: 42, text: "Which phrase best describes a galaxy?", choices: [
+        "A collection of stars, gas, and dust", "One single star", "Only planets and moons", "Only black holes"
+      ], correctIndex: 0 },
+      { id: 43, text: "The time it takes Earth to rotate once on its axis is about:", choices: [
+        "24 hours", "7 days", "30 days", "365 days"
+      ], correctIndex: 0 },
+      { id: 44, text: "The main source of energy for Earth’s climate and weather is:", choices: [
+        "The Moon", "Earth’s core", "The Sun", "The oceans"
+      ], correctIndex: 2 },
+      { id: 45, text: "Which of these is a man-made object that orbits Earth?", choices: [
+        "Satellite", "Asteroid", "Comet", "Planet"
+      ], correctIndex: 0 },
+      { id: 46, text: "Which best explains why we always see the same side of the Moon?", choices: [
+        "The Moon does not rotate", "The Moon rotates once each time it orbits Earth", "Earth blocks the other side", "The back side is invisible"
+      ], correctIndex: 1 },
+      { id: 47, text: "The Moon’s gravity affects:", choices: [
+        "Seasons", "Tides", "Day length only", "Earth’s size"
+      ], correctIndex: 1 },
+      { id: 48, text: "Which object is largest?", choices: [
+        "Earth", "The Moon", "The Sun", "Jupiter"
+      ], correctIndex: 2 },
+      { id: 49, text: "Which object is part of our solar system?", choices: [
+        "Another galaxy", "The Andromeda Galaxy", "The Sun", "The Big Dipper"
+      ], correctIndex: 2 },
+      { id: 50, text: "What is true about the speed of light?", choices: [
+        "It is slower than sound", "It is the fastest known speed in space", "It changes every day", "It does not travel in space"
+      ], correctIndex: 1 }
+    ];
+
+    function pickRandomQuestions(bank, count = 20) {
+      const shuffled = [...bank].sort(() => Math.random() - 0.5);
+      return shuffled.slice(0, count);
+    }
+
+    // ======================================================
+    // CORE GAME STATE
+    // ======================================================
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+
+    const TILE_SIZE = 48;
+    const WORLD_TILES = 80;
+    const WORLD_WIDTH = WORLD_TILES * TILE_SIZE;
+
+    const player = {
+      x: 80,
+      y: 180,
+      w: 28,
+      h: 40,
+      vx: 0,
+      vy: 0,
+      onGround: false
+    };
+
+    // Low gravity / floaty Moon feel
+    const GRAVITY = 600;       // lower than WWI
+    const PLAYER_SPEED = 240;  // slightly slower run
+    const JUMP_STRENGTH = 520; // nice floaty arc
+    const GROUND_Y = 280;
+
+    let cameraX = 0;
+    let lastTime = 0;
+    let gamePaused = false;
+    let inQuestion = false;
+    let levelComplete = false;
+
+    let score = 0;
+    let firstTryCorrectCount = 0;
+    let questionsAnsweredCount = 0;
+
+    let currentQuestions = [];
+    let questionBlocks = [];
+    let activeQuestionBlock = null;
+
+    // Lunar craters (pits) – all jumpable
+    const pits = [
+      { x: 900,  width: 90 },
+      { x: 1400, width: 110 },
+      { x: 1950, width: 110 },
+      { x: 2550, width: 130 },
+      { x: 3200, width: 110 }
+    ];
+
+    // Platforms = moon rock ledges / research modules
+    const platforms = [
+      { x: 600,  y: 230, width: 130, height: 12 },
+      { x: 1000, y: 205, width: 140, height: 12 },
+      { x: 1350, y: 190, width: 120, height: 12 },
+      { x: 1750, y: 210, width: 130, height: 12 },
+      { x: 2100, y: 180, width: 140, height: 12 },
+      { x: 2300, y: 150, width: 130, height: 12 },
+      { x: 2700, y: 190, width: 160, height: 12 },
+      { x: 3100, y: 175, width: 140, height: 12 }
+    ];
+
+    // Patrolling "bot" enemies on the moon surface
+    const enemies = [
+      { x: 820,  y: GROUND_Y - 16, w: 26, h: 16, dir: 1,  speed: 60, minX: 820,  maxX: 950 },
+      { x: 1500, y: GROUND_Y - 16, w: 26, h: 16, dir: -1, speed: 70, minX: 1450, maxX: 1600 },
+      { x: 2150, y: GROUND_Y - 16, w: 26, h: 16, dir: 1,  speed: 65, minX: 2100, maxX: 2250 },
+      { x: 2900, y: GROUND_Y - 16, w: 26, h: 16, dir: -1, speed: 75, minX: 2850, maxX: 3000 }
+    ];
+
+    const effects = [];
+
+    let lastSafeX = player.x;
+    let lastSafeY = player.y;
+
+    const endFlagX = WORLD_WIDTH - 160;
+
+    const keys = { left: false, right: false };
+
+    let hitCooldown = 0;
+
+    let toastText = "";
+    let toastTimer = 0;
+    let bannerText = "";
+    let bannerTimer = 0;
+
+    // ======================================================
+    // UI ELEMENTS
+    // ======================================================
+    const hudScore = document.getElementById('hudScore');
+    const hudQuestions = document.getElementById('hudQuestions');
+    const hudStatus = document.getElementById('hudStatus');
+
+    const qOverlay = document.getElementById('questionOverlay');
+    const qTitle = document.getElementById('qTitle');
+    const qText = document.getElementById('qText');
+    const qChoices = document.getElementById('choicesContainer');
+    const qFeedback = document.getElementById('qFeedback');
+    const qCloseBtn = document.getElementById('qCloseBtn');
+
+    const endOverlay = document.getElementById('endOverlay');
+    const endSummary = document.getElementById('endSummary');
+    const replayBtn = document.getElementById('replayBtn');
+    const topicBtn = document.getElementById('topicBtn');
+
+    const modePreloadedBtn = document.getElementById('modePreloaded');
+    const modeCustomBtn = document.getElementById('modeCustom');
+
+    const leftBtn  = document.getElementById('btnLeft');
+    const rightBtn = document.getElementById('btnRight');
+    const jumpBtn  = document.getElementById('btnJump');
+
+    // ======================================================
+    // FEEDBACK HELPERS
+    // ======================================================
+    function showToast(text, duration = 1.1) {
+      toastText = text;
+      toastTimer = duration;
+    }
+
+    function showBanner(text, duration = 1.2) {
+      bannerText = text;
+      bannerTimer = duration;
+    }
+
+    // ======================================================
+    // JUMP HELPER
+    // ======================================================
+    function tryJump() {
+      if (player.onGround && !gamePaused && !inQuestion && !levelComplete) {
+        player.vy = -JUMP_STRENGTH;
+        player.onGround = false;
+      }
+    }
+
+    // ======================================================
+    // INPUT
+    // ======================================================
+    document.addEventListener('keydown', (e) => {
+      if (e.code === 'ArrowLeft' || e.code === 'KeyA') {
+        keys.left = true;
+      }
+      if (e.code === 'ArrowRight' || e.code === 'KeyD') {
+        keys.right = true;
+      }
+      if (e.code === 'ArrowUp' || e.code === 'Space' || e.code === 'KeyW') {
+        e.preventDefault();
+        tryJump();
+      }
+    });
+
+    document.addEventListener('keyup', (e) => {
+      if (e.code === 'ArrowLeft' || e.code === 'KeyA') {
+        keys.left = false;
+      }
+      if (e.code === 'ArrowRight' || e.code === 'KeyD') {
+        keys.right = false;
+      }
+    });
+
+    function bindControl(btn, onDown, onUp) {
+      if (!btn) return;
+      const start = (e) => { e.preventDefault(); onDown(); };
+      const end = (e) => { e.preventDefault(); onUp(); };
+      btn.addEventListener('touchstart', start, { passive: false });
+      btn.addEventListener('touchend', end, { passive: false });
+      btn.addEventListener('touchcancel', end, { passive: false });
+      btn.addEventListener('mousedown', start);
+      btn.addEventListener('mouseup', end);
+      btn.addEventListener('mouseleave', end);
+    }
+
+    bindControl(leftBtn, () => { keys.left = true; },  () => { keys.left = false; });
+    bindControl(rightBtn, () => { keys.right = true; }, () => { keys.right = false; });
+
+    if (jumpBtn) {
+      const pressJump = (e) => {
+        e.preventDefault();
+        tryJump();
+      };
+      jumpBtn.addEventListener('touchstart', pressJump, { passive: false });
+      jumpBtn.addEventListener('mousedown', pressJump);
+    }
+
+    // Mode buttons
+    modePreloadedBtn.addEventListener('click', () => {
+      useCustomQuestions = false;
+      modePreloadedBtn.classList.add('active');
+      modeCustomBtn.classList.remove('active');
+      startNewRun();
+    });
+
+    modeCustomBtn.addEventListener('click', () => {
+      useCustomQuestions = CUSTOM_QUESTIONS && CUSTOM_QUESTIONS.length > 0;
+      modeCustomBtn.classList.add('active');
+      modePreloadedBtn.classList.remove('active');
+      startNewRun();
+    });
+
+    // ======================================================
+    // QUESTIONS
+    // ======================================================
+    function startNewRun() {
+      player.x = 80;
+      player.y = 180;
+      player.vx = 0;
+      player.vy = 0;
+      player.onGround = false;
+      cameraX = 0;
+      score = 0;
+      questionsAnsweredCount = 0;
+      firstTryCorrectCount = 0;
+      levelComplete = false;
+      gamePaused = false;
+      inQuestion = false;
+      hitCooldown = 0;
+      lastSafeX = player.x;
+      lastSafeY = player.y;
+      toastText = "";
+      toastTimer = 0;
+      bannerText = "";
+      bannerTimer = 0;
+
+      qOverlay.classList.add('hidden');
+      endOverlay.classList.add('hidden');
+      hudStatus.textContent = "Status: Running";
+
+      if (useCustomQuestions && CUSTOM_QUESTIONS.length > 0) {
+        currentQuestions = CUSTOM_QUESTIONS.slice(0, 20);
+      } else {
+        currentQuestions = pickRandomQuestions(ES_QUESTION_BANK, 20);
+      }
+
+      // Place 20 question beacons with vertical variety
+      questionBlocks = [];
+      const spacing = (WORLD_WIDTH - 800) / 20;
+      const baseX = 260;
+
+      for (let i = 0; i < 20; i++) {
+        const worldX = baseX + spacing * i;
+        let y;
+
+        const plat = platforms.find(p => worldX >= p.x - 40 && worldX <= p.x + p.width + 40);
+
+        if (plat && i % 4 === 0) {
+          y = plat.y - 40;
+        } else {
+          const pattern = i % 3;
+          if (pattern === 0)      y = GROUND_Y - 90;
+          else if (pattern === 1) y = 210;
+          else                    y = 170;
+        }
+
+        const qb = {
+          id: i + 1,
+          qIndex: i,
+          x: worldX,
+          y,
+          completed: false,
+          firstTry: true
+        };
+        questionBlocks.push(qb);
+      }
+
+      updateHud();
+    }
+
+    function openQuestion(block) {
+      if (inQuestion || levelComplete) return;
+      inQuestion = true;
+      gamePaused = true;
+      activeQuestionBlock = block;
+
+      const q = currentQuestions[block.qIndex];
+      qTitle.textContent = "Question " + block.id;
+      qText.textContent = q.text;
+      qFeedback.textContent = "";
+      qChoices.innerHTML = "";
+
+      q.choices.forEach((choice, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'choice-btn';
+        btn.textContent = String.fromCharCode(65 + idx) + ") " + choice;
+        btn.addEventListener('click', () => handleAnswer(block, q, idx, btn));
+        qChoices.appendChild(btn);
+      });
+
+      qOverlay.classList.remove('hidden');
+      hudStatus.textContent = "Status: Answering";
+    }
+
+    function handleAnswer(block, question, selectedIndex, btnEl) {
+      const isCorrect = selectedIndex === question.correctIndex;
+      if (isCorrect) {
+        btnEl.classList.add('correct');
+        qFeedback.textContent = "Correct!";
+        if (block.firstTry) {
+          score += 25;
+          firstTryCorrectCount++;
+          showToast("+25 | First try!");
+        } else {
+          score += 10;
+          showToast("+10 | Got it!");
+        }
+        block.completed = true;
+        questionsAnsweredCount = questionBlocks.filter(b => b.completed).length;
+        updateHud();
+        showBanner(`Question ${questionsAnsweredCount} / 20 complete`);
+
+        setTimeout(() => {
+          closeQuestion();
+          checkLevelComplete();
+        }, 500);
+      } else {
+        btnEl.classList.add('wrong');
+        qFeedback.textContent = "Incorrect. Try again.";
+        score -= 10;
+        showToast("-10 | Recheck the concept");
+        block.firstTry = false;
+        updateHud();
+      }
+    }
+
+    function closeQuestion() {
+      qOverlay.classList.add('hidden');
+      inQuestion = false;
+      gamePaused = false;
+      activeQuestionBlock = null;
+      hudStatus.textContent = "Status: Running";
+    }
+
+    qCloseBtn.addEventListener('click', () => {
+      if (activeQuestionBlock && activeQuestionBlock.completed) {
+        closeQuestion();
+      } else {
+        qFeedback.textContent = "Answer correctly to continue.";
+      }
+    });
+
+    function checkLevelComplete() {
+      if (!levelComplete &&
+          questionsAnsweredCount === 20 &&
+          player.x + player.w > endFlagX) {
+        triggerEndScreen();
+      }
+    }
+
+    function triggerEndScreen() {
+      levelComplete = true;
+      gamePaused = true;
+      inQuestion = false;
+      hudStatus.textContent = "Status: Complete";
+
+      const accuracy = (firstTryCorrectCount / 20) * 100;
+      endSummary.textContent =
+        `Score: ${score} points | Accuracy: ${firstTryCorrectCount}/20 (${accuracy.toFixed(0)}%)`;
+      endOverlay.classList.remove('hidden');
+    }
+
+    replayBtn.addEventListener('click', () => {
+      startNewRun();
+    });
+
+    topicBtn.addEventListener('click', () => {
+      window.location.href = "/arcade-review-games/";
+    });
+
+    function updateHud() {
+      hudScore.textContent = "Score: " + score;
+      hudQuestions.textContent = "Questions: " + questionsAnsweredCount + " / 20";
+    }
+
+    // ======================================================
+    // ENEMY + PIT HELPERS
+    // ======================================================
+    function enemyFutureOverPit(nextX, enemy) {
+      const future = { x: nextX, y: enemy.y, w: enemy.w, h: enemy.h };
+      return pits.some(p => future.x + future.w > p.x && future.x < p.x + p.width);
+    }
+
+    // ======================================================
+    // GAME LOOP & PHYSICS
+    // ======================================================
+    function update(dt) {
+      if (gamePaused) return;
+
+      if (hitCooldown > 0) {
+        hitCooldown -= dt;
+        if (hitCooldown < 0) hitCooldown = 0;
+      }
+
+      if (toastTimer > 0) {
+        toastTimer -= dt;
+        if (toastTimer < 0) toastTimer = 0;
+      }
+      if (bannerTimer > 0) {
+        bannerTimer -= dt;
+        if (bannerTimer < 0) bannerTimer = 0;
+      }
+
+      if (keys.left)      player.vx = -PLAYER_SPEED;
+      else if (keys.right) player.vx = PLAYER_SPEED;
+      else                player.vx = 0;
+
+      // Low gravity
+      player.vy += GRAVITY * dt;
+
+      const prevY = player.y;
+
+      player.x += player.vx * dt;
+      if (player.x < 0) player.x = 0;
+      if (player.x + player.w > WORLD_WIDTH) player.x = WORLD_WIDTH - player.w;
+
+      player.y += player.vy * dt;
+      player.onGround = false;
+
+      // Platforms
+      for (const p of platforms) {
+        const withinX = player.x + player.w > p.x && player.x < p.x + p.width;
+        const wasAbove = prevY + player.h <= p.y;
+        const nowBelowTop = player.y + player.h >= p.y;
+        if (withinX && wasAbove && nowBelowTop && player.vy >= 0) {
+          player.y = p.y - player.h;
+          player.vy = 0;
+          player.onGround = true;
+          lastSafeX = player.x;
+          lastSafeY = player.y;
+        }
+      }
+
+      const overPit = pits.some(p => player.x + player.w > p.x && player.x < p.x + p.width);
+      if (!overPit && player.y + player.h >= GROUND_Y) {
+        player.y = GROUND_Y - player.h;
+        player.vy = 0;
+        player.onGround = true;
+        lastSafeX = player.x;
+        lastSafeY = player.y;
+      }
+
+      // Fell into crater
+      if (player.y > canvas.height + 40) {
+        player.x = lastSafeX;
+        player.y = lastSafeY;
+        player.vx = 0;
+        player.vy = 0;
+        score -= 20;
+        hudStatus.textContent = "Status: Fell into a crater (-20)";
+        showToast("-20 | Fell into a crater");
+        updateHud();
+      } else if (!overPit) {
+        if (!inQuestion && !levelComplete) {
+          hudStatus.textContent = "Status: Running";
+        }
+      }
+
+      // Enemy movement respecting pits
+      for (const e of enemies) {
+        const nextX = e.x + e.dir * e.speed * dt;
+        if (enemyFutureOverPit(nextX, e)) {
+          e.dir *= -1;
+        } else {
+          e.x = nextX;
+        }
+
+        if (e.x < e.minX) {
+          e.x = e.minX;
+          e.dir = 1;
+        } else if (e.x + e.w > e.maxX) {
+          e.x = e.maxX - e.w;
+          e.dir = -1;
+        }
+      }
+
+      // Enemy collisions (stomp vs side)
+      for (let i = enemies.length - 1; i >= 0; i--) {
+        const e = enemies[i];
+        if (rectIntersect(player, e)) {
+          const stomping = prevY + player.h <= e.y && player.vy >= 0;
+          if (stomping) {
+            enemies.splice(i, 1);
+            player.vy = -JUMP_STRENGTH * 0.5;
+            player.onGround = false;
+            score += 10;
+            showToast("+10 | Deactivated a rover");
+            updateHud();
+            effects.push({
+              x: e.x + e.w / 2,
+              y: e.y + e.h / 2,
+              radius: 4,
+              maxRadius: 18,
+              life: 0.25
+            });
+          } else if (hitCooldown === 0) {
+            score -= 15;
+            hitCooldown = 1.0;
+            hudStatus.textContent = "Status: Hit by rover (-15)";
+            player.x += (e.dir > 0 ? -20 : 20);
+            showToast("-15 | Hit by rover");
+            updateHud();
+          }
+        }
+      }
+
+      // Effects
+      for (let i = effects.length - 1; i >= 0; i--) {
+        const fx = effects[i];
+        fx.life -= dt;
+        if (fx.life <= 0) {
+          effects.splice(i, 1);
+        }
+      }
+
+      // Question beacons
+      for (const block of questionBlocks) {
+        if (block.completed) continue;
+        const box = { x: block.x, y: block.y, w: 32, h: 32 };
+        if (rectIntersect(player, box)) {
+          openQuestion(block);
+          break;
+        }
+      }
+
+      if (!levelComplete && player.x + player.w > endFlagX) {
+        checkLevelComplete();
+      }
+
+      // Smooth camera
+      const halfCanvas = canvas.width / 2;
+      const targetCameraX = player.x + player.w / 2 - halfCanvas;
+      const maxCam = WORLD_WIDTH - canvas.width;
+      const clampedTarget = Math.max(0, Math.min(targetCameraX, maxCam));
+      const SMOOTH = 0.12;
+      cameraX += (clampedTarget - cameraX) * SMOOTH;
+    }
+
+    function rectIntersect(a, b) {
+      return !(
+        a.x + a.w <= b.x ||
+        a.x >= b.x + b.w ||
+        a.y + a.h <= b.y ||
+        a.y >= b.y + b.h
+      );
+    }
+
+    // ======================================================
+    // DRAWING
+    // ======================================================
+    function drawBackground() {
+      // Starry gradient sky
+      const grad = ctx.createLinearGradient(0, 0, 0, canvas.height);
+      grad.addColorStop(0, "#050616");
+      grad.addColorStop(0.4, "#141a3a");
+      grad.addColorStop(1, "#05040c");
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Simple stars
+      ctx.fillStyle = "#ffffff";
+      for (let x = -200; x < WORLD_WIDTH + 200; x += 70) {
+        const sx = x - cameraX;
+        if (sx < -20 || sx > canvas.width + 20) continue;
+        const y = 20 + (x % 80);
+        ctx.fillRect(sx, y, 2, 2);
+        ctx.fillRect(sx + 20, y + 10, 1, 1);
+      }
+
+      // Earth in the sky
+      const earthX = 120 - cameraX * 0.1;
+      const earthY = 70;
+      ctx.fillStyle = "#2b7cff";
+      ctx.beginPath();
+      ctx.arc(earthX, earthY, 18, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = "#45c46b";
+      ctx.beginPath();
+      ctx.arc(earthX + 5, earthY + 2, 7, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    function drawSurfaceAndCraters() {
+      ctx.fillStyle = "var(--moon-surface)";
+      ctx.fillStyle = "#dadde6";
+      ctx.fillRect(0, GROUND_Y, canvas.width, canvas.height - GROUND_Y);
+
+      const startWorldX = cameraX;
+      const endWorldX = cameraX + canvas.width;
+      const tileStart = Math.floor(startWorldX / TILE_SIZE);
+      const tileEnd = Math.ceil(endWorldX / TILE_SIZE);
+
+      for (let t = tileStart; t < tileEnd; t++) {
+        const tileX = t * TILE_SIZE;
+        const screenX = tileX - cameraX;
+
+        const inPit = pits.some(p => tileX + TILE_SIZE > p.x && tileX < p.x + p.width);
+        if (!inPit) {
+          ctx.fillStyle = "#dadde6";
+          ctx.fillRect(screenX, GROUND_Y, TILE_SIZE, canvas.height - GROUND_Y);
+          ctx.fillStyle = "#c8ccd8";
+          ctx.fillRect(screenX, GROUND_Y - 6, TILE_SIZE, 6);
+        } else {
+          ctx.fillStyle = "#060716";
+          ctx.fillRect(screenX, GROUND_Y, TILE_SIZE, canvas.height - GROUND_Y);
+          ctx.fillStyle = "#121427";
+          ctx.beginPath();
+          ctx.ellipse(screenX + TILE_SIZE / 2, GROUND_Y + 6, TILE_SIZE / 2, 6, 0, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+    }
+
+    function drawPlatforms() {
+      platforms.forEach(p => {
+        const sx = p.x - cameraX;
+        ctx.fillStyle = "#bfc5d6";
+        ctx.fillRect(sx, p.y, p.width, p.height);
+        ctx.fillStyle = "#9da3b7";
+        ctx.fillRect(sx, p.y + p.height - 4, p.width, 4);
+      });
+    }
+
+    function drawQuestionBlocks() {
+      ctx.font = "10px 'Press Start 2P', system-ui, sans-serif";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "top";
+
+      questionBlocks.forEach(block => {
+        const sx = block.x - cameraX;
+        const sy = block.y;
+
+        if (block.completed) {
+          ctx.fillStyle = "#235b88";
+        } else {
+          ctx.fillStyle = "#29bfff";
+        }
+        ctx.fillRect(sx, sy, 32, 32);
+        ctx.strokeStyle = "rgba(0,0,0,0.6)";
+        ctx.strokeRect(sx + 0.5, sy + 0.5, 31, 31);
+
+        ctx.fillStyle = "#041018";
+        ctx.fillText("?", sx + 16, sy + 10);
+
+        ctx.fillStyle = "#f9f9ff";
+        ctx.fillText(block.id, sx + 16, sy - 10);
+
+        if (block.completed) {
+          ctx.fillStyle = "#9be07b";
+          ctx.fillText("✓", sx + 26, sy - 10);
+        }
+      });
+    }
+
+    function drawEnemies() {
+      enemies.forEach(e => {
+        const sx = e.x - cameraX;
+        const sy = e.y;
+
+        // Little rover bot
+        ctx.fillStyle = "#3b3f52";
+        ctx.fillRect(sx, sy + 6, e.w, e.h - 6);          // body
+        ctx.fillRect(sx + 4, sy, e.w - 8, 8);            // top
+
+        // Wheels
+        ctx.fillStyle = "#1a1c25";
+        ctx.fillRect(sx + 2, sy + e.h - 4, 6, 4);
+        ctx.fillRect(sx + e.w - 8, sy + e.h - 4, 6, 4);
+
+        // Sensor / eye
+        ctx.fillStyle = "#23c7ff";
+        ctx.fillRect(sx + (e.dir > 0 ? e.w - 6 : 2), sy + 4, 3, 3);
+      });
+    }
+
+    function drawEffects() {
+      effects.forEach(fx => {
+        const progress = fx.life / 0.25;
+        const radius = fx.maxRadius * (1 - progress);
+        const sx = fx.x - cameraX;
+        const sy = fx.y;
+        ctx.fillStyle = `rgba(200,240,255,${progress})`;
+        ctx.beginPath();
+        ctx.arc(sx, sy, radius, 0, Math.PI * 2);
+        ctx.fill();
+      });
+    }
+
+    function drawEndFlag() {
+      const sx = endFlagX - cameraX;
+      const baseY = GROUND_Y;
+      ctx.strokeStyle = "#f5f5f5";
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(sx, baseY);
+      ctx.lineTo(sx, baseY - 80);
+      ctx.stroke();
+
+      ctx.fillStyle = "#23c7ff";
+      ctx.fillRect(sx, baseY - 80, 30, 16);
+      ctx.fillStyle = "#5af4ff";
+      ctx.fillRect(sx + 15, baseY - 80, 15, 16);
+
+      ctx.font = "8px 'Press Start 2P', system-ui, sans-serif";
+      ctx.fillStyle = "#f9f9ff";
+      ctx.textAlign = "center";
+      ctx.fillText("BASE", sx + 20, baseY - 60);
+    }
+
+    function drawPlayer() {
+      const sx = player.x - cameraX;
+      const sy = player.y;
+
+      // Boots
+      ctx.fillStyle = "#1a1f28";
+      ctx.fillRect(sx + 4, sy + player.h - 10, 8, 10);
+      ctx.fillRect(sx + player.w - 12, sy + player.h - 10, 8, 10);
+
+      // Suit body
+      ctx.fillStyle = "#5af4ff";
+      ctx.fillRect(sx + 4, sy + 10, player.w - 8, 22);
+
+      // Oxygen pack
+      ctx.fillStyle = "#23a8ff";
+      ctx.fillRect(sx + player.w - 6, sy + 12, 4, 16);
+
+      // Helmet dome
+      ctx.fillStyle = "#23c7ff";
+      ctx.fillRect(sx + 2, sy, player.w - 4, 10);
+      ctx.fillStyle = "#0b2030";
+      ctx.fillRect(sx + 4, sy + 2, player.w - 8, 7);
+
+      // Arms
+      ctx.fillStyle = "#52d7f0";
+      ctx.fillRect(sx, sy + 14, 4, 10);
+      ctx.fillRect(sx + player.w - 4, sy + 14, 4, 10);
+    }
+
+    function drawOverlays() {
+      if (bannerTimer > 0 && bannerText) {
+        ctx.font = "10px 'Press Start 2P', system-ui, sans-serif";
+        ctx.textAlign = "center";
+        const w = 280;
+        const h = 24;
+        const x = canvas.width / 2 - w / 2;
+        const y = 34;
+        ctx.fillStyle = "rgba(0,0,0,0.7)";
+        ctx.fillRect(x, y, w, h);
+        ctx.fillStyle = "#ffb300";
+        ctx.fillText(bannerText, canvas.width / 2, y + 8);
+      }
+
+      if (toastTimer > 0 && toastText) {
+        ctx.font = "10px 'Press Start 2P', system-ui, sans-serif";
+        ctx.textAlign = "center";
+        const w = 260;
+        const h = 24;
+        const x = canvas.width / 2 - w / 2;
+        const y = canvas.height - 34;
+        ctx.fillStyle = "rgba(0,0,0,0.7)";
+        ctx.fillRect(x, y, w, h);
+        ctx.fillStyle = "#ffb300";
+        ctx.fillText(toastText, canvas.width / 2, y + 8);
+      }
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawBackground();
+      drawSurfaceAndCraters();
+      drawPlatforms();
+      drawQuestionBlocks();
+      drawEnemies();
+      drawEffects();
+      drawEndFlag();
+      drawPlayer();
+      drawOverlays();
+    }
+
+    function loop(timestamp) {
+      const dt = (timestamp - lastTime) / 1000;
+      lastTime = timestamp;
+
+      update(dt);
+      draw();
+
+      requestAnimationFrame(loop);
+    }
+
+    // Start
+    startNewRun();
+    requestAnimationFrame(loop);
+  </script>
+</body>
+</html>
