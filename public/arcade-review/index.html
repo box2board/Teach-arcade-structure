@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Arcade Review Games · Teach Arcade</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Basic SEO -->
+  <meta name="description" content="Free arcade-style review games for the classroom. Play WWI Trench Run and other standards-aligned games to review key concepts in a fun, interactive way.">
+
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #050714;
+      --panel: #101321;
+      --accent: #ffb300;
+      --accent-soft: rgba(255,179,0,0.12);
+      --text: #f9f9ff;
+      --muted: #a4a7c4;
+      --border: rgba(255,255,255,0.12);
+      --tile-bg: #15192b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #141a33 0%, #050714 70%);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 20px 12px 40px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 1040px;
+    }
+
+    header {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .crumbs {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .crumbs a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .crumbs a:hover {
+      text-decoration: underline;
+    }
+
+    h1 {
+      font-family: "Press Start 2P", system-ui, sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-shadow: 0 2px 0 #000;
+    }
+
+    .subtitle {
+      font-size: 0.88rem;
+      color: var(--muted);
+      max-width: 640px;
+      line-height: 1.5;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 6px;
+      font-size: 0.7rem;
+    }
+
+    .pill {
+      border-radius: 999px;
+      padding: 3px 10px;
+      border: 1px solid var(--border);
+      background: rgba(0,0,0,0.4);
+      color: var(--muted);
+    }
+
+    .pill.highlight {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    .game-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    .game-card {
+      background: var(--tile-bg);
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      padding: 14px 14px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.65);
+    }
+
+    .game-badge-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    .badge {
+      border-radius: 999px;
+      padding: 2px 8px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(0,0,0,0.35);
+    }
+
+    .badge.subject {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .game-title {
+      font-weight: 650;
+      font-size: 0.95rem;
+    }
+
+    .game-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 0.74rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .meta-row span {
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 8px;
+      font-size: 0.74rem;
+      color: var(--muted);
+    }
+
+    .play-btn {
+      border-radius: 999px;
+      border: none;
+      padding: 7px 14px;
+      background: var(--accent);
+      color: #111;
+      font-weight: 650;
+      cursor: pointer;
+      font-size: 0.78rem;
+      font-family: "Press Start 2P", system-ui, sans-serif;
+      text-transform: uppercase;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .play-btn span {
+      font-size: 0.9rem;
+    }
+
+    .play-btn:hover {
+      filter: brightness(1.06);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.7);
+    }
+
+    .notes {
+      margin-top: 18px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: #101322;
+      border: 1px dashed rgba(255,255,255,0.2);
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    @media (max-width: 640px) {
+      h1 {
+        font-size: 0.9rem;
+      }
+      .subtitle {
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="crumbs">
+        <a href="/">Teach Arcade</a> · Arcade Review Games
+      </div>
+      <h1>Arcade Review Games</h1>
+      <p class="subtitle">
+        Side-scrolling, arcade-style review games designed for real classrooms.
+        Use them as a warm-up, review station, or test prep activity while students
+        answer standards-aligned questions to advance through each level.
+      </p>
+      <div class="pill-row">
+        <div class="pill highlight">Interactive review games</div>
+        <div class="pill">No logins · No accounts</div>
+        <div class="pill">Designed for teacher use</div>
+      </div>
+    </header>
+
+    <main>
+      <section class="game-grid">
+        <!-- WWI TRENCH RUN CARD -->
+        <article class="game-card">
+          <div class="game-badge-row">
+            <span class="badge subject">Social Studies · WWI</span>
+            <span class="badge">Grades 7–10</span>
+          </div>
+          <div class="game-title">WWI Trench Run</div>
+          <p class="game-desc">
+            Dash through the trenches, leap over shell holes, and dodge trench rats while
+            answering 20 multiple-choice questions about World War I causes, trench warfare,
+            U.S. involvement, and the Treaty of Versailles.
+          </p>
+          <div class="meta-row">
+            <span>20-question review</span>
+            <span>Independent or whole-class</span>
+            <span>Keyboard &amp; touch controls</span>
+          </div>
+          <div class="card-footer">
+            <a href="/arcade-review-games/wwi-trench-run.html" class="play-btn">
+              <span>▶</span> Play Game
+            </a>
+            <span>Est. 10–15 minutes</span>
+          </div>
+        </article>
+
+        <!-- Future games can go here -->
+        <!--
+        <article class="game-card">...</article>
+        -->
+      </section>
+
+      <section class="notes">
+        Tip for teachers: project the game on your screen and have students
+        answer on whiteboards or in notebooks, or let students play in pairs
+        and keep track of their score and accuracy.
+      </section>
+    </main>
+  </div>
+</body>
+</html>
