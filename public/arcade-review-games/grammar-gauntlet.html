@@ -1,0 +1,1367 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Teach Arcade · Grammar Gauntlet</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --sky: #f5f6fb;
+      --horizon: #e2e4f1;
+      --floor: #f0f1f8;
+      --floor-shadow: #c8ccdd;
+      --platform: #ffffff;
+      --platform-edge: #d3d7eb;
+      --enemy: #ff4b6b;
+      --enemy-dark: #b4203a;
+      --player: #3b82f6;
+      --player-accent: #2563eb;
+      --ui-bg: rgba(15, 23, 42, 0.78);
+      --accent: #f97316;
+      --text: #111827;
+      --pit-shadow: #cbd0e5;
+      --line-blue: #c4d4ff;
+      --margin-red: #ffb4b4;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #e0e5ff 0%, #c7d2fe 35%, #eef2ff 75%);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding: 12px;
+      gap: 10px;
+    }
+
+    h1 {
+      font-family: "Press Start 2P", system-ui, sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-shadow: 0 2px 0 #e5e7eb;
+      text-align: center;
+      color: #111827;
+    }
+
+    .subtitle {
+      font-size: 0.75rem;
+      opacity: 0.9;
+      text-align: center;
+      max-width: 900px;
+      color: #374151;
+    }
+
+    #modeBar {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      font-size: 0.75rem;
+      color: #374151;
+    }
+
+    .pill-btn {
+      border-radius: 999px;
+      border: 1px solid rgba(15,23,42,0.2);
+      padding: 4px 10px;
+      background: rgba(255,255,255,0.9);
+      color: #111827;
+      cursor: pointer;
+      font-size: 0.7rem;
+      font-family: "Press Start 2P", system-ui, sans-serif;
+      text-transform: uppercase;
+    }
+
+    .pill-btn.active {
+      background: var(--accent);
+      color: #111;
+      border-color: #ea580c;
+    }
+
+    #gameContainer {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(15,23,42,0.4);
+      border: 2px solid rgba(15,23,42,0.12);
+      background: #ffffff;
+    }
+
+    canvas {
+      display: block;
+      background: var(--sky);
+      image-rendering: pixelated;
+    }
+
+    #hud {
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      right: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.65rem;
+      background: var(--ui-bg);
+      color: #e5e7eb;
+      padding: 4px 10px;
+      border-radius: 999px;
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(15,23,42,0.6);
+      font-family: "Press Start 2P", system-ui, sans-serif;
+      z-index: 5;
+    }
+
+    #hud span {
+      white-space: nowrap;
+    }
+
+    #questionOverlay,
+    #endOverlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at top, rgba(15,23,42,0.92), rgba(15,23,42,0.97));
+      z-index: 10;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .panel {
+      background: #f9fafb;
+      border-radius: 14px;
+      padding: 18px 18px 14px;
+      max-width: 520px;
+      width: 92%;
+      border: 2px solid rgba(15,23,42,0.18);
+      box-shadow: 0 12px 36px rgba(0,0,0,0.35);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 0.85rem;
+      color: #111827;
+    }
+
+    .panel h2 {
+      font-family: "Press Start 2P", system-ui, sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #111827;
+    }
+
+    .choices {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .choice-btn {
+      border: 0;
+      border-radius: 999px;
+      padding: 7px 10px;
+      font-size: 0.8rem;
+      text-align: left;
+      cursor: pointer;
+      background: #e5e7eb;
+      color: #111827;
+      transition: background 0.08s, transform 0.08s, box-shadow 0.1s;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    .choice-btn:hover {
+      background: #d1d5db;
+      transform: translateY(-1px);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+
+    .choice-btn.correct {
+      background: #16a34a !important;
+      color: #ecfdf5;
+    }
+
+    .choice-btn.wrong {
+      background: #dc2626 !important;
+      color: #fef2f2;
+    }
+
+    .panel-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.7rem;
+      opacity: 0.9;
+      margin-top: 4px;
+      color: #374151;
+    }
+
+    .primary-btn {
+      border-radius: 999px;
+      border: none;
+      padding: 6px 12px;
+      background: var(--accent);
+      color: #111827;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.75rem;
+      font-family: "Press Start 2P", system-ui, sans-serif;
+      text-transform: uppercase;
+    }
+
+    .primary-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    }
+
+    #touchControls {
+      position: absolute;
+      bottom: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 12px;
+      padding: 4px 10px;
+      background: var(--ui-bg);
+      border-radius: 999px;
+      border: 1px solid rgba(15,23,42,0.6);
+      backdrop-filter: blur(8px);
+      z-index: 6;
+    }
+
+    .ctrl-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid rgba(226,232,240,0.8);
+      background: #111827;
+      color: #e5e7eb;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-family: "Press Start 2P", system-ui, sans-serif;
+      transition: transform 0.08s, box-shadow 0.08s, background 0.08s;
+    }
+
+    .ctrl-btn:active {
+      transform: translateY(1px);
+      background: #020617;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.6) inset;
+    }
+
+    @media (min-width: 900px) {
+      #touchControls {
+        display: none;
+      }
+    }
+
+    @media (max-width: 900px) {
+      canvas {
+        width: 100vw;
+        height: auto;
+      }
+      h1 {
+        font-size: 0.8rem;
+      }
+      .subtitle {
+        font-size: 0.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Teach Arcade · Grammar Gauntlet</h1>
+  <p class="subtitle">
+    Sprint through the notebook, dodge runaway red pens, and hit all 20 question markers
+    to review grammar, punctuation, and sentence skills. Use ◀ ▶ / ▲ or on-screen buttons
+    to move and jump. Touch ? icons to answer.
+  </p>
+
+  <div id="modeBar">
+    <span>Question Mode:</span>
+    <button id="modePreloaded" class="pill-btn active">Preloaded Grammar Bank</button>
+    <button id="modeCustom" class="pill-btn">Custom (if configured)</button>
+  </div>
+
+  <div id="gameContainer">
+    <canvas id="gameCanvas" width="960" height="360"></canvas>
+
+    <div id="hud">
+      <span id="hudScore">Score: 0</span>
+      <span id="hudQuestions">Questions: 0 / 20</span>
+      <span id="hudStatus">Status: Running</span>
+    </div>
+
+    <div id="touchControls">
+      <button id="btnLeft" class="ctrl-btn" aria-label="Move left">◀</button>
+      <button id="btnJump" class="ctrl-btn" aria-label="Jump">▲</button>
+      <button id="btnRight" class="ctrl-btn" aria-label="Move right">▶</button>
+    </div>
+
+    <div id="questionOverlay" class="hidden">
+      <div class="panel">
+        <h2 id="qTitle">Question</h2>
+        <p id="qText"></p>
+        <div class="choices" id="choicesContainer"></div>
+        <div class="panel-footer">
+          <span id="qFeedback"></span>
+          <button id="qCloseBtn" class="primary-btn">Resume</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="endOverlay" class="hidden">
+      <div class="panel">
+        <h2>Gauntlet Complete!</h2>
+        <p id="endSummary"></p>
+        <div class="panel-footer">
+          <button id="replayBtn" class="primary-btn">Replay</button>
+          <button id="topicBtn" class="primary-btn">More Games</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ======================================================
+    // CONFIG: CUSTOM QUESTIONS (optional)
+    // ======================================================
+    const CUSTOM_QUESTIONS = [];
+    let useCustomQuestions = false;
+
+    // ======================================================
+    // PRELOADED GRAMMAR QUESTION BANK (50)
+    // ======================================================
+    const GRAMMAR_BANK = [
+      { id: 1, text: "Which word is a noun in this sentence: 'The dog barked loudly.'", choices: [
+        "dog", "barked", "loudly", "the"
+      ], correctIndex: 0 },
+      { id: 2, text: "Which word is a verb in this sentence: 'The students read quietly.'", choices: [
+        "students", "read", "quietly", "the"
+      ], correctIndex: 1 },
+      { id: 3, text: "Which word is an adjective in this sentence: 'She wore a red jacket.'", choices: [
+        "She", "wore", "red", "jacket"
+      ], correctIndex: 2 },
+      { id: 4, text: "Which word is an adverb in this sentence: 'He ran quickly.'", choices: [
+        "He", "ran", "quickly", "none"
+      ], correctIndex: 2 },
+      { id: 5, text: "Which word is a pronoun in this sentence: 'They finished the project.'", choices: [
+        "finished", "project", "They", "the"
+      ], correctIndex: 2 },
+      { id: 6, text: "Which word is a preposition in this sentence: 'The cat sat under the table.'", choices: [
+        "cat", "sat", "under", "table"
+      ], correctIndex: 2 },
+      { id: 7, text: "Which word is a conjunction in this sentence: 'I wanted to go, but it rained.'", choices: [
+        "wanted", "go", "but", "rained"
+      ], correctIndex: 2 },
+      { id: 8, text: "Which word is an interjection: 'Wow! That test was easy.'", choices: [
+        "test", "easy", "Wow", "that"
+      ], correctIndex: 2 },
+      { id: 9, text: "What type of sentence is this: 'Please close the door.'", choices: [
+        "Declarative", "Interrogative", "Imperative", "Exclamatory"
+      ], correctIndex: 2 },
+      { id: 10, text: "What type of sentence is this: 'Did you finish your homework?'", choices: [
+        "Declarative", "Interrogative", "Imperative", "Exclamatory"
+      ], correctIndex: 1 },
+      { id: 11, text: "Which sentence is punctuated correctly?", choices: [
+        "I like pizza, but not pasta.", 
+        "I like pizza but, not pasta.", 
+        "I like pizza but not, pasta.", 
+        "I like pizza, but, not pasta."
+      ], correctIndex: 0 },
+      { id: 12, text: "Choose the correct form: 'There _____ going to the movies.'", choices: [
+        "there", "theyre", "their", "they're"
+      ], correctIndex: 3 },
+      { id: 13, text: "Choose the correctly spelled word:", choices: [
+        "definately", "definitely", "defanitely", "definetly"
+      ], correctIndex: 1 },
+      { id: 14, text: "Which sentence uses 'its' correctly?", choices: [
+        "Its a sunny day.", 
+        "The dog wagged it's tail.", 
+        "The tree lost its leaves.", 
+        "Its' cold outside."
+      ], correctIndex: 2 },
+      { id: 15, text: "Which sentence is a fragment?", choices: [
+        "Because I was tired.", 
+        "I was tired after practice.", 
+        "We walked home.", 
+        "They ate dinner."
+      ], correctIndex: 0 },
+      { id: 16, text: "Which sentence is a run-on?", choices: [
+        "We left early. It was raining.", 
+        "We left early because it was raining.", 
+        "We left early it was raining hard.", 
+        "Because it was raining, we left."
+      ], correctIndex: 2 },
+      { id: 17, text: "Choose the sentence with correct subject-verb agreement.", choices: [
+        "The group of students are loud.", 
+        "The group of students is loud.", 
+        "The students in the group is loud.", 
+        "The students in the group was loud."
+      ], correctIndex: 1 },
+      { id: 18, text: "Which word is the subject? 'My younger brother plays guitar.'", choices: [
+        "younger", "brother", "plays", "guitar"
+      ], correctIndex: 1 },
+      { id: 19, text: "Which word is the direct object? 'She threw the ball.'", choices: [
+        "She", "threw", "ball", "the"
+      ], correctIndex: 2 },
+      { id: 20, text: "Which sentence is written in past tense?", choices: [
+        "I walk to school.", 
+        "I will walk to school.", 
+        "I walked to school.", 
+        "I am walking to school."
+      ], correctIndex: 2 },
+      { id: 21, text: "Which sentence is in present progressive tense?", choices: [
+        "He studies every day.", 
+        "He studied yesterday.", 
+        "He is studying now.", 
+        "He will study later."
+      ], correctIndex: 2 },
+      { id: 22, text: "Which word should be capitalized? 'we visited chicago last summer.'", choices: [
+        "we", "visited", "chicago", "summer"
+      ], correctIndex: 0 },
+      { id: 23, text: "Which word is a proper noun?", choices: [
+        "city", "teacher", "Columbus", "river"
+      ], correctIndex: 2 },
+      { id: 24, text: "Which sentence uses commas correctly?", choices: [
+        "We bought apples, oranges and, grapes.", 
+        "We bought apples, oranges, and grapes.", 
+        "We bought, apples, oranges and grapes.", 
+        "We bought apples oranges, and grapes."
+      ], correctIndex: 1 },
+      { id: 25, text: "Choose the best transition word: '_____, we packed our bags and left.'", choices: [
+        "However", "Meanwhile", "First", "Because"
+      ], correctIndex: 2 },
+      { id: 26, text: "Which word is an adjective? 'The tall student answered quickly.'", choices: [
+        "tall", "student", "answered", "quickly"
+      ], correctIndex: 0 },
+      { id: 27, text: "Which word is an adverb? 'The tall student answered quickly.'", choices: [
+        "student", "tall", "answered", "quickly"
+      ], correctIndex: 3 },
+      { id: 28, text: "Choose the correct pronoun: 'Each of the players brought _____ own water bottle.'", choices: [
+        "their", "his or her", "they're", "its"
+      ], correctIndex: 1 },
+      { id: 29, text: "Which word is a linking verb? 'The soup smells delicious.'", choices: [
+        "soup", "smells", "delicious", "none"
+      ], correctIndex: 1 },
+      { id: 30, text: "Choose the correct word: 'I have _____ pencils than you.'", choices: [
+        "less", "few", "fewer", "little"
+      ], correctIndex: 2 },
+      { id: 31, text: "Which sentence uses a semicolon correctly?", choices: [
+        "I like tea; and I like coffee.", 
+        "I like tea; I also like coffee.", 
+        "I like tea; but coffee is better.", 
+        "I like tea; because it is warm."
+      ], correctIndex: 1 },
+      { id: 32, text: "Which sentence needs an apostrophe?", choices: [
+        "The cats tail is fluffy.", 
+        "The cat chased the mouse.", 
+        "The tail is fluffy.", 
+        "The cats are sleeping."
+      ], correctIndex: 0 },
+      { id: 33, text: "Which word is a preposition? 'The book is on the desk.'", choices: [
+        "book", "is", "on", "desk"
+      ], correctIndex: 2 },
+      { id: 34, text: "Which sentence is in passive voice?", choices: [
+        "The class wrote the essay.", 
+        "The essay was written by the class.", 
+        "The class will write the essay.", 
+        "The class is writing the essay."
+      ], correctIndex: 1 },
+      { id: 35, text: "Which sentence avoids a double negative?", choices: [
+        "I don't need no help.", 
+        "I can't find nothing.", 
+        "I don't need any help.", 
+        "I haven't never been there."
+      ], correctIndex: 2 },
+      { id: 36, text: "Which word is a conjunction? 'You can have pizza or pasta.'", choices: [
+        "You", "pizza", "or", "pasta"
+      ], correctIndex: 2 },
+      { id: 37, text: "Choose the correct homophone: 'Please be _____ when you carry the glass.'", choices: [
+        "careful", "carefull", "care less", "carfull"
+      ], correctIndex: 0 },
+      { id: 38, text: "Which sentence contains a compound subject?", choices: [
+        "The dog barked loudly.", 
+        "My brother and sister play soccer.", 
+        "The team scored a goal.", 
+        "The teacher smiled."
+      ], correctIndex: 1 },
+      { id: 39, text: "Which sentence contains a compound predicate?", choices: [
+        "The dog barked and ran.", 
+        "The dog and cat ran.", 
+        "The dog barked.", 
+        "The dog."
+      ], correctIndex: 0 },
+      { id: 40, text: "Which word is the object of the preposition? 'The ball rolled under the couch.'", choices: [
+        "ball", "rolled", "under", "couch"
+      ], correctIndex: 3 },
+      { id: 41, text: "Which sentence is written formally?", choices: [
+        "We were like super late.", 
+        "We arrived very late to the event.", 
+        "We were kinda late.", 
+        "We were totally late."
+      ], correctIndex: 1 },
+      { id: 42, text: "Which sentence correctly uses quotation marks?", choices: [
+        "I said, 'Let's go'.", 
+        "I said 'Let's go'.", 
+        "I said, 'Let's go.'", 
+        "I said 'Let's go.'"
+      ], correctIndex: 2 },
+      { id: 43, text: "Which word is a pronoun? 'She gave him the notebook.'", choices: [
+        "She", "gave", "notebook", "the"
+      ], correctIndex: 0 },
+      { id: 44, text: "Which verb agrees? 'Neither of the answers _____ correct.'", choices: [
+        "are", "were", "is", "be"
+      ], correctIndex: 2 },
+      { id: 45, text: "Which sentence uses parallel structure?", choices: [
+        "He likes hiking, to swim, and biking.", 
+        "He likes to hike, swim, and bike.", 
+        "He likes hiking, swimming, and to bike.", 
+        "He likes hike, swim, and biking."
+      ], correctIndex: 1 },
+      { id: 46, text: "Which word is a gerund? 'Swimming is my favorite exercise.'", choices: [
+        "Swimming", "favorite", "exercise", "my"
+      ], correctIndex: 0 },
+      { id: 47, text: "Which sentence correctly uses a colon?", choices: [
+        "I need to buy: pencils, paper, and pens.", 
+        "I need to buy three things: pencils, paper, and pens.", 
+        "I need: to buy pencils, paper, and pens.", 
+        "I: need to buy pencils, paper, and pens."
+      ], correctIndex: 1 },
+      { id: 48, text: "Which word is the predicate adjective? 'The test was difficult.'", choices: [
+        "test", "was", "difficult", "none"
+      ], correctIndex: 2 },
+      { id: 49, text: "Which sentence correctly uses 'who' or 'whom'?", choices: [
+        "Who did you invite to the party?", 
+        "Whom is coming over?", 
+        "Who did you give the book to?", 
+        "Whom is your teacher?"
+      ], correctIndex: 0 },
+      { id: 50, text: "Which sentence is written in first person?", choices: [
+        "You should study more.", 
+        "They will study later.", 
+        "I need to study for the test.", 
+        "She needs to study."
+      ], correctIndex: 2 }
+    ];
+
+    function pickRandomQuestions(bank, count = 20) {
+      const shuffled = [...bank].sort(() => Math.random() - 0.5);
+      return shuffled.slice(0, count);
+    }
+
+    // ======================================================
+    // CORE GAME STATE
+    // ======================================================
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+
+    const TILE_SIZE = 48;
+    const WORLD_TILES = 80;
+    const WORLD_WIDTH = WORLD_TILES * TILE_SIZE;
+
+    const player = {
+      x: 80,
+      y: 180,
+      w: 28,
+      h: 40,
+      vx: 0,
+      vy: 0,
+      onGround: false
+    };
+
+    // Normal classroom gravity
+    const GRAVITY = 1200;
+    const PLAYER_SPEED = 260;
+    const JUMP_STRENGTH = 520;
+    const GROUND_Y = 280;
+
+    let cameraX = 0;
+    let lastTime = 0;
+    let gamePaused = false;
+    let inQuestion = false;
+    let levelComplete = false;
+
+    let score = 0;
+    let firstTryCorrectCount = 0;
+    let questionsAnsweredCount = 0;
+
+    let currentQuestions = [];
+    let questionBlocks = [];
+    let activeQuestionBlock = null;
+
+    // Notebook margin gaps as "pits"
+    const pits = [
+      { x: 900,  width: 90 },
+      { x: 1400, width: 110 },
+      { x: 1950, width: 110 },
+      { x: 2550, width: 130 },
+      { x: 3200, width: 110 }
+    ];
+
+    // Platforms = stacked books / shelves
+    const platforms = [
+      { x: 600,  y: 230, width: 130, height: 12 },
+      { x: 1000, y: 205, width: 140, height: 12 },
+      { x: 1350, y: 190, width: 120, height: 12 },
+      { x: 1750, y: 210, width: 130, height: 12 },
+      { x: 2100, y: 180, width: 140, height: 12 },
+      { x: 2300, y: 150, width: 130, height: 12 },
+      { x: 2700, y: 190, width: 160, height: 12 },
+      { x: 3100, y: 175, width: 140, height: 12 }
+    ];
+
+    // Enemies = runaway red pens
+    const enemies = [
+      { x: 820,  y: GROUND_Y - 16, w: 26, h: 16, dir: 1,  speed: 70, minX: 820,  maxX: 950 },
+      { x: 1500, y: GROUND_Y - 16, w: 26, h: 16, dir: -1, speed: 80, minX: 1450, maxX: 1600 },
+      { x: 2150, y: GROUND_Y - 16, w: 26, h: 16, dir: 1,  speed: 75, minX: 2100, maxX: 2250 },
+      { x: 2900, y: GROUND_Y - 16, w: 26, h: 16, dir: -1, speed: 85, minX: 2850, maxX: 3000 }
+    ];
+
+    const effects = [];
+
+    let lastSafeX = player.x;
+    let lastSafeY = player.y;
+
+    const endFlagX = WORLD_WIDTH - 160;
+
+    const keys = { left: false, right: false };
+
+    let hitCooldown = 0;
+
+    let toastText = "";
+    let toastTimer = 0;
+    let bannerText = "";
+    let bannerTimer = 0;
+
+    // ======================================================
+    // UI ELEMENTS
+    // ======================================================
+    const hudScore = document.getElementById('hudScore');
+    const hudQuestions = document.getElementById('hudQuestions');
+    const hudStatus = document.getElementById('hudStatus');
+
+    const qOverlay = document.getElementById('questionOverlay');
+    const qTitle = document.getElementById('qTitle');
+    const qText = document.getElementById('qText');
+    const qChoices = document.getElementById('choicesContainer');
+    const qFeedback = document.getElementById('qFeedback');
+    const qCloseBtn = document.getElementById('qCloseBtn');
+
+    const endOverlay = document.getElementById('endOverlay');
+    const endSummary = document.getElementById('endSummary');
+    const replayBtn = document.getElementById('replayBtn');
+    const topicBtn = document.getElementById('topicBtn');
+
+    const modePreloadedBtn = document.getElementById('modePreloaded');
+    const modeCustomBtn = document.getElementById('modeCustom');
+
+    const leftBtn  = document.getElementById('btnLeft');
+    const rightBtn = document.getElementById('btnRight');
+    const jumpBtn  = document.getElementById('btnJump');
+
+    // ======================================================
+    // FEEDBACK HELPERS
+    // ======================================================
+    function showToast(text, duration = 1.1) {
+      toastText = text;
+      toastTimer = duration;
+    }
+
+    function showBanner(text, duration = 1.2) {
+      bannerText = text;
+      bannerTimer = duration;
+    }
+
+    // ======================================================
+    // JUMP HELPER
+    // ======================================================
+    function tryJump() {
+      if (player.onGround && !gamePaused && !inQuestion && !levelComplete) {
+        player.vy = -JUMP_STRENGTH;
+        player.onGround = false;
+      }
+    }
+
+    // ======================================================
+    // INPUT
+    // ======================================================
+    document.addEventListener('keydown', (e) => {
+      if (e.code === 'ArrowLeft' || e.code === 'KeyA') {
+        keys.left = true;
+      }
+      if (e.code === 'ArrowRight' || e.code === 'KeyD') {
+        keys.right = true;
+      }
+      if (e.code === 'ArrowUp' || e.code === 'Space' || e.code === 'KeyW') {
+        e.preventDefault();
+        tryJump();
+      }
+    });
+
+    document.addEventListener('keyup', (e) => {
+      if (e.code === 'ArrowLeft' || e.code === 'KeyA') {
+        keys.left = false;
+      }
+      if (e.code === 'ArrowRight' || e.code === 'KeyD') {
+        keys.right = false;
+      }
+    });
+
+    function bindControl(btn, onDown, onUp) {
+      if (!btn) return;
+      const start = (e) => { e.preventDefault(); onDown(); };
+      const end = (e) => { e.preventDefault(); onUp(); };
+      btn.addEventListener('touchstart', start, { passive: false });
+      btn.addEventListener('touchend', end, { passive: false });
+      btn.addEventListener('touchcancel', end, { passive: false });
+      btn.addEventListener('mousedown', start);
+      btn.addEventListener('mouseup', end);
+      btn.addEventListener('mouseleave', end);
+    }
+
+    bindControl(leftBtn, () => { keys.left = true; },  () => { keys.left = false; });
+    bindControl(rightBtn, () => { keys.right = true; }, () => { keys.right = false; });
+
+    if (jumpBtn) {
+      const pressJump = (e) => {
+        e.preventDefault();
+        tryJump();
+      };
+      jumpBtn.addEventListener('touchstart', pressJump, { passive: false });
+      jumpBtn.addEventListener('mousedown', pressJump);
+    }
+
+    // Mode buttons
+    modePreloadedBtn.addEventListener('click', () => {
+      useCustomQuestions = false;
+      modePreloadedBtn.classList.add('active');
+      modeCustomBtn.classList.remove('active');
+      startNewRun();
+    });
+
+    modeCustomBtn.addEventListener('click', () => {
+      useCustomQuestions = CUSTOM_QUESTIONS && CUSTOM_QUESTIONS.length > 0;
+      modeCustomBtn.classList.add('active');
+      modePreloadedBtn.classList.remove('active');
+      startNewRun();
+    });
+
+    // ======================================================
+    // QUESTIONS
+    // ======================================================
+    function startNewRun() {
+      player.x = 80;
+      player.y = 180;
+      player.vx = 0;
+      player.vy = 0;
+      player.onGround = false;
+      cameraX = 0;
+      score = 0;
+      questionsAnsweredCount = 0;
+      firstTryCorrectCount = 0;
+      levelComplete = false;
+      gamePaused = false;
+      inQuestion = false;
+      hitCooldown = 0;
+      lastSafeX = player.x;
+      lastSafeY = player.y;
+      toastText = "";
+      toastTimer = 0;
+      bannerText = "";
+      bannerTimer = 0;
+
+      qOverlay.classList.add('hidden');
+      endOverlay.classList.add('hidden');
+      hudStatus.textContent = "Status: Running";
+
+      if (useCustomQuestions && CUSTOM_QUESTIONS.length > 0) {
+        currentQuestions = CUSTOM_QUESTIONS.slice(0, 20);
+      } else {
+        currentQuestions = pickRandomQuestions(GRAMMAR_BANK, 20);
+      }
+
+      // Place 20 question icons with vertical variety
+      questionBlocks = [];
+      const spacing = (WORLD_WIDTH - 800) / 20;
+      const baseX = 260;
+
+      for (let i = 0; i < 20; i++) {
+        const worldX = baseX + spacing * i;
+        let y;
+
+        const plat = platforms.find(p => worldX >= p.x - 40 && worldX <= p.x + p.width + 40);
+
+        if (plat && i % 4 === 0) {
+          y = plat.y - 40;
+        } else {
+          const pattern = i % 3;
+          if (pattern === 0)      y = GROUND_Y - 90;
+          else if (pattern === 1) y = 210;
+          else                    y = 170;
+        }
+
+        const qb = {
+          id: i + 1,
+          qIndex: i,
+          x: worldX,
+          y,
+          completed: false,
+          firstTry: true
+        };
+        questionBlocks.push(qb);
+      }
+
+      updateHud();
+    }
+
+    function openQuestion(block) {
+      if (inQuestion || levelComplete) return;
+      inQuestion = true;
+      gamePaused = true;
+      activeQuestionBlock = block;
+
+      const q = currentQuestions[block.qIndex];
+      qTitle.textContent = "Question " + block.id;
+      qText.textContent = q.text;
+      qFeedback.textContent = "";
+      qChoices.innerHTML = "";
+
+      q.choices.forEach((choice, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'choice-btn';
+        btn.textContent = String.fromCharCode(65 + idx) + ") " + choice;
+        btn.addEventListener('click', () => handleAnswer(block, q, idx, btn));
+        qChoices.appendChild(btn);
+      });
+
+      qOverlay.classList.remove('hidden');
+      hudStatus.textContent = "Status: Answering";
+    }
+
+    function handleAnswer(block, question, selectedIndex, btnEl) {
+      const isCorrect = selectedIndex === question.correctIndex;
+      if (isCorrect) {
+        btnEl.classList.add('correct');
+        qFeedback.textContent = "Correct!";
+        if (block.firstTry) {
+          score += 25;
+          firstTryCorrectCount++;
+          showToast("+25 | First try!");
+        } else {
+          score += 10;
+          showToast("+10 | Got it!");
+        }
+        block.completed = true;
+        questionsAnsweredCount = questionBlocks.filter(b => b.completed).length;
+        updateHud();
+        showBanner(`Question ${questionsAnsweredCount} / 20 complete`);
+
+        setTimeout(() => {
+          closeQuestion();
+          checkLevelComplete();
+        }, 500);
+      } else {
+        btnEl.classList.add('wrong');
+        qFeedback.textContent = "Incorrect. Try again.";
+        score -= 10;
+        showToast("-10 | Fix the grammar");
+        block.firstTry = false;
+        updateHud();
+      }
+    }
+
+    function closeQuestion() {
+      qOverlay.classList.add('hidden');
+      inQuestion = false;
+      gamePaused = false;
+      activeQuestionBlock = null;
+      hudStatus.textContent = "Status: Running";
+    }
+
+    qCloseBtn.addEventListener('click', () => {
+      if (activeQuestionBlock && activeQuestionBlock.completed) {
+        closeQuestion();
+      } else {
+        qFeedback.textContent = "Answer correctly to continue.";
+      }
+    });
+
+    function checkLevelComplete() {
+      if (!levelComplete &&
+          questionsAnsweredCount === 20 &&
+          player.x + player.w > endFlagX) {
+        triggerEndScreen();
+      }
+    }
+
+    function triggerEndScreen() {
+      levelComplete = true;
+      gamePaused = true;
+      inQuestion = false;
+      hudStatus.textContent = "Status: Complete";
+
+      const accuracy = (firstTryCorrectCount / 20) * 100;
+      endSummary.textContent =
+        `Score: ${score} points | Accuracy: ${firstTryCorrectCount}/20 (${accuracy.toFixed(0)}%)`;
+      endOverlay.classList.remove('hidden');
+    }
+
+    replayBtn.addEventListener('click', () => {
+      startNewRun();
+    });
+
+    topicBtn.addEventListener('click', () => {
+      window.location.href = "/arcade-review-games/";
+    });
+
+    function updateHud() {
+      hudScore.textContent = "Score: " + score;
+      hudQuestions.textContent = "Questions: " + questionsAnsweredCount + " / 20";
+    }
+
+    // ======================================================
+    // ENEMY + PIT HELPERS
+    // ======================================================
+    function enemyFutureOverPit(nextX, enemy) {
+      const future = { x: nextX, y: enemy.y, w: enemy.w, h: enemy.h };
+      return pits.some(p => future.x + future.w > p.x && future.x < p.x + p.width);
+    }
+
+    // ======================================================
+    // GAME LOOP & PHYSICS
+    // ======================================================
+    function update(dt) {
+      if (gamePaused) return;
+
+      if (hitCooldown > 0) {
+        hitCooldown -= dt;
+        if (hitCooldown < 0) hitCooldown = 0;
+      }
+
+      if (toastTimer > 0) {
+        toastTimer -= dt;
+        if (toastTimer < 0) toastTimer = 0;
+      }
+      if (bannerTimer > 0) {
+        bannerTimer -= dt;
+        if (bannerTimer < 0) bannerTimer = 0;
+      }
+
+      if (keys.left)      player.vx = -PLAYER_SPEED;
+      else if (keys.right) player.vx = PLAYER_SPEED;
+      else                player.vx = 0;
+
+      player.vy += GRAVITY * dt;
+
+      const prevY = player.y;
+
+      player.x += player.vx * dt;
+      if (player.x < 0) player.x = 0;
+      if (player.x + player.w > WORLD_WIDTH) player.x = WORLD_WIDTH - player.w;
+
+      player.y += player.vy * dt;
+      player.onGround = false;
+
+      // Platforms
+      for (const p of platforms) {
+        const withinX = player.x + player.w > p.x && player.x < p.x + p.width;
+        const wasAbove = prevY + player.h <= p.y;
+        const nowBelowTop = player.y + player.h >= p.y;
+        if (withinX && wasAbove && nowBelowTop && player.vy >= 0) {
+          player.y = p.y - player.h;
+          player.vy = 0;
+          player.onGround = true;
+          lastSafeX = player.x;
+          lastSafeY = player.y;
+        }
+      }
+
+      const overPit = pits.some(p => player.x + player.w > p.x && player.x < p.x + p.width);
+      if (!overPit && player.y + player.h >= GROUND_Y) {
+        player.y = GROUND_Y - player.h;
+        player.vy = 0;
+        player.onGround = true;
+        lastSafeX = player.x;
+        lastSafeY = player.y;
+      }
+
+      // Fell into margin gap
+      if (player.y > canvas.height + 40) {
+        player.x = lastSafeX;
+        player.y = lastSafeY;
+        player.vx = 0;
+        player.vy = 0;
+        score -= 20;
+        hudStatus.textContent = "Status: Fell off the page (-20)";
+        showToast("-20 | Fell off the page");
+        updateHud();
+      } else if (!overPit) {
+        if (!inQuestion && !levelComplete) {
+          hudStatus.textContent = "Status: Running";
+        }
+      }
+
+      // Enemy movement
+      for (const e of enemies) {
+        const nextX = e.x + e.dir * e.speed * dt;
+        if (enemyFutureOverPit(nextX, e)) {
+          e.dir *= -1;
+        } else {
+          e.x = nextX;
+        }
+
+        if (e.x < e.minX) {
+          e.x = e.minX;
+          e.dir = 1;
+        } else if (e.x + e.w > e.maxX) {
+          e.x = e.maxX - e.w;
+          e.dir = -1;
+        }
+      }
+
+      // Enemy collisions (stomp vs side)
+      for (let i = enemies.length - 1; i >= 0; i--) {
+        const e = enemies[i];
+        if (rectIntersect(player, e)) {
+          const stomping = prevY + player.h <= e.y && player.vy >= 0;
+          if (stomping) {
+            enemies.splice(i, 1);
+            player.vy = -JUMP_STRENGTH * 0.5;
+            player.onGround = false;
+            score += 10;
+            showToast("+10 | Defeated a red pen");
+            updateHud();
+            effects.push({
+              x: e.x + e.w / 2,
+              y: e.y + e.h / 2,
+              radius: 4,
+              maxRadius: 18,
+              life: 0.25
+            });
+          } else if (hitCooldown === 0) {
+            score -= 15;
+            hitCooldown = 1.0;
+            hudStatus.textContent = "Status: Marked up (-15)";
+            player.x += (e.dir > 0 ? -20 : 20);
+            showToast("-15 | Marked with red ink");
+            updateHud();
+          }
+        }
+      }
+
+      // Effects
+      for (let i = effects.length - 1; i >= 0; i--) {
+        const fx = effects[i];
+        fx.life -= dt;
+        if (fx.life <= 0) {
+          effects.splice(i, 1);
+        }
+      }
+
+      // Question icons
+      for (const block of questionBlocks) {
+        if (block.completed) continue;
+        const box = { x: block.x, y: block.y, w: 32, h: 32 };
+        if (rectIntersect(player, box)) {
+          openQuestion(block);
+          break;
+        }
+      }
+
+      if (!levelComplete && player.x + player.w > endFlagX) {
+        checkLevelComplete();
+      }
+
+      // Smooth camera
+      const halfCanvas = canvas.width / 2;
+      const targetCameraX = player.x + player.w / 2 - halfCanvas;
+      const maxCam = WORLD_WIDTH - canvas.width;
+      const clampedTarget = Math.max(0, Math.min(targetCameraX, maxCam));
+      const SMOOTH = 0.12;
+      cameraX += (clampedTarget - cameraX) * SMOOTH;
+    }
+
+    function rectIntersect(a, b) {
+      return !(
+        a.x + a.w <= b.x ||
+        a.x >= b.x + b.w ||
+        a.y + a.h <= b.y ||
+        a.y >= b.y + b.h
+      );
+    }
+
+    // ======================================================
+    // DRAWING
+    // ======================================================
+    function drawBackground() {
+      // Notebook paper effect: light blue lines + red margin
+      ctx.fillStyle = "#f5f6fb";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Horizontal ruled lines
+      ctx.strokeStyle = "#c4d4ff";
+      ctx.lineWidth = 1;
+      for (let y = 40; y < canvas.height; y += 18) {
+        ctx.beginPath();
+        ctx.moveTo(0, y + 0.5);
+        ctx.lineTo(canvas.width, y + 0.5);
+        ctx.stroke();
+      }
+
+      // Red margin line at x = 120 (world space)
+      const marginXWorld = 120;
+      const marginScreenX = marginXWorld - cameraX * 0.3;
+      ctx.strokeStyle = "#ffb4b4";
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(marginScreenX, 0);
+      ctx.lineTo(marginScreenX, canvas.height);
+      ctx.stroke();
+
+      // Title text shadow suggestion at top
+      ctx.font = "10px 'Press Start 2P', system-ui, sans-serif";
+      ctx.fillStyle = "#9ca3af";
+      ctx.textAlign = "left";
+      ctx.fillText("GRAMMAR NOTES", 16, 20);
+    }
+
+    function drawFloorAndPits() {
+      ctx.fillStyle = "#f0f1f8";
+      ctx.fillRect(0, GROUND_Y, canvas.width, canvas.height - GROUND_Y);
+
+      const startWorldX = cameraX;
+      const endWorldX = cameraX + canvas.width;
+      const tileStart = Math.floor(startWorldX / TILE_SIZE);
+      const tileEnd = Math.ceil(endWorldX / TILE_SIZE);
+
+      for (let t = tileStart; t < tileEnd; t++) {
+        const tileX = t * TILE_SIZE;
+        const screenX = tileX - cameraX;
+
+        const inPit = pits.some(p => tileX + TILE_SIZE > p.x && tileX < p.x + p.width);
+        if (!inPit) {
+          ctx.fillStyle = "#f0f1f8";
+          ctx.fillRect(screenX, GROUND_Y, TILE_SIZE, canvas.height - GROUND_Y);
+          ctx.fillStyle = "#d3d7eb";
+          ctx.fillRect(screenX, GROUND_Y - 4, TILE_SIZE, 4);
+        } else {
+          ctx.fillStyle = "#cbd0e5";
+          ctx.fillRect(screenX, GROUND_Y, TILE_SIZE, canvas.height - GROUND_Y);
+        }
+      }
+    }
+
+    function drawPlatforms() {
+      platforms.forEach(p => {
+        const sx = p.x - cameraX;
+        ctx.fillStyle = "#ffffff";
+        ctx.fillRect(sx, p.y, p.width, p.height);
+        ctx.fillStyle = "#d3d7eb";
+        ctx.fillRect(sx, p.y + p.height - 4, p.width, 4);
+      });
+    }
+
+    function drawQuestionBlocks() {
+      ctx.font = "10px 'Press Start 2P', system-ui, sans-serif";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "top";
+
+      questionBlocks.forEach(block => {
+        const sx = block.x - cameraX;
+        const sy = block.y;
+
+        if (block.completed) {
+          ctx.fillStyle = "#16a34a";
+        } else {
+          ctx.fillStyle = "#facc15";
+        }
+        ctx.fillRect(sx, sy, 32, 32);
+        ctx.strokeStyle = "rgba(15,23,42,0.4)";
+        ctx.strokeRect(sx + 0.5, sy + 0.5, 31, 31);
+
+        ctx.fillStyle = "#111827";
+        ctx.fillText("?", sx + 16, sy + 10);
+
+        ctx.fillStyle = "#111827";
+        ctx.fillText(block.id, sx + 16, sy - 10);
+
+        if (block.completed) {
+          ctx.fillStyle = "#f97316";
+          ctx.fillText("✓", sx + 26, sy - 10);
+        }
+      });
+    }
+
+    function drawEnemies() {
+      enemies.forEach(e => {
+        const sx = e.x - cameraX;
+        const sy = e.y;
+
+        // Red pen body
+        ctx.fillStyle = "#dc2626";
+        ctx.fillRect(sx + 6, sy, 14, e.h);
+
+        // Pen tip
+        ctx.fillStyle = "#111827";
+        ctx.beginPath();
+        ctx.moveTo(sx + 6, sy + e.h);
+        ctx.lineTo(sx + 20, sy + e.h);
+        ctx.lineTo(sx + 13, sy + e.h + 8);
+        ctx.closePath();
+        ctx.fill();
+
+        // Cap
+        ctx.fillStyle = "#fee2e2";
+        ctx.fillRect(sx + 6, sy - 4, 14, 4);
+      });
+    }
+
+    function drawEffects() {
+      effects.forEach(fx => {
+        const progress = fx.life / 0.25;
+        const radius = fx.maxRadius * (1 - progress);
+        const sx = fx.x - cameraX;
+        const sy = fx.y;
+        ctx.fillStyle = `rgba(248,250,252,${progress})`;
+        ctx.beginPath();
+        ctx.arc(sx, sy, radius, 0, Math.PI * 2);
+        ctx.fill();
+      });
+    }
+
+    function drawEndFlag() {
+      const sx = endFlagX - cameraX;
+      const baseY = GROUND_Y;
+
+      // Stand
+      ctx.strokeStyle = "#111827";
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(sx, baseY);
+      ctx.lineTo(sx, baseY - 80);
+      ctx.stroke();
+
+      // Banner = 'TURN IN'
+      ctx.fillStyle = "#3b82f6";
+      ctx.fillRect(sx, baseY - 80, 60, 20);
+      ctx.fillStyle = "#eff6ff";
+      ctx.font = "8px 'Press Start 2P', system-ui, sans-serif";
+      ctx.textAlign = "center";
+      ctx.fillText("TURN", sx + 30, baseY - 77);
+      ctx.fillText("IN", sx + 30, baseY - 68);
+    }
+
+    function drawPlayer() {
+      const sx = player.x - cameraX;
+      const sy = player.y;
+
+      // Shoes
+      ctx.fillStyle = "#111827";
+      ctx.fillRect(sx + 4, sy + player.h - 10, 8, 10);
+      ctx.fillRect(sx + player.w - 12, sy + player.h - 10, 8, 10);
+
+      // Hoodie / body
+      ctx.fillStyle = "#3b82f6";
+      ctx.fillRect(sx + 4, sy + 10, player.w - 8, 22);
+
+      // Backpack
+      ctx.fillStyle = "#1d4ed8";
+      ctx.fillRect(sx + player.w - 6, sy + 12, 4, 16);
+
+      // Head
+      ctx.fillStyle = "#fde68a";
+      ctx.fillRect(sx + 4, sy, player.w - 8, 10);
+
+      // Hair band
+      ctx.fillStyle = "#f59e0b";
+      ctx.fillRect(sx + 4, sy + 2, player.w - 8, 2);
+
+      // Arms
+      ctx.fillStyle = "#3b82f6";
+      ctx.fillRect(sx, sy + 14, 4, 10);
+      ctx.fillRect(sx + player.w - 4, sy + 14, 4, 10);
+
+      // Eyes
+      ctx.fillStyle = "#111827";
+      ctx.fillRect(sx + 7, sy + 4, 2, 2);
+      ctx.fillRect(sx + 17, sy + 4, 2, 2);
+    }
+
+    function drawOverlays() {
+      if (bannerTimer > 0 && bannerText) {
+        ctx.font = "10px 'Press Start 2P', system-ui, sans-serif";
+        ctx.textAlign = "center";
+        const w = 280;
+        const h = 24;
+        const x = canvas.width / 2 - w / 2;
+        const y = 34;
+        ctx.fillStyle = "rgba(15,23,42,0.8)";
+        ctx.fillRect(x, y, w, h);
+        ctx.fillStyle = "#f97316";
+        ctx.fillText(bannerText, canvas.width / 2, y + 8);
+      }
+
+      if (toastTimer > 0 && toastText) {
+        ctx.font = "10px 'Press Start 2P', system-ui, sans-serif";
+        ctx.textAlign = "center";
+        const w = 260;
+        const h = 24;
+        const x = canvas.width / 2 - w / 2;
+        const y = canvas.height - 34;
+        ctx.fillStyle = "rgba(15,23,42,0.8)";
+        ctx.fillRect(x, y, w, h);
+        ctx.fillStyle = "#f97316";
+        ctx.fillText(toastText, canvas.width / 2, y + 8);
+      }
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawBackground();
+      drawFloorAndPits();
+      drawPlatforms();
+      drawQuestionBlocks();
+      drawEnemies();
+      drawEffects();
+      drawEndFlag();
+      drawPlayer();
+      drawOverlays();
+    }
+
+    function loop(timestamp) {
+      const dt = (timestamp - lastTime) / 1000;
+      lastTime = timestamp;
+
+      update(dt);
+      draw();
+
+      requestAnimationFrame(loop);
+    }
+
+    // Start
+    startNewRun();
+    requestAnimationFrame(loop);
+  </script>
+</body>
+</html>
