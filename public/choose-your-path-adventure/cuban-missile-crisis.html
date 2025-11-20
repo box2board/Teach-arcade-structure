@@ -1,0 +1,1313 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>13 Days: Cuban Missile Crisis Survival Game | Teach Arcade</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="Interactive Cuban Missile Crisis survival game. Play as a high school student in 1962 and make choices that affect your outcome. Free classroom history game from Teach Arcade.">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #0b1020;
+      color: #f9fafb;
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .game-shell {
+      max-width: 900px;
+      width: 100%;
+      background: radial-gradient(circle at top, #1f2937 0, #020617 60%);
+      border-radius: 16px;
+      border: 1px solid #1f2937;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.7);
+      padding: 20px 20px 24px;
+    }
+
+    @media (min-width: 768px) {
+      .game-shell {
+        padding: 28px 32px 32px;
+      }
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .game-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .badge {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid #4b5563;
+      color: #e5e7eb;
+      background: rgba(15,23,42,0.8);
+      white-space: nowrap;
+    }
+
+    .subtitle {
+      font-size: 0.9rem;
+      color: #9ca3af;
+      margin-bottom: 18px;
+    }
+
+    .top-row {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    @media (min-width: 768px) {
+      .top-row {
+        flex-direction: row;
+      }
+    }
+
+    .scene-card {
+      flex: 2;
+      background: rgba(15,23,42,0.95);
+      border-radius: 14px;
+      padding: 14px 16px 18px;
+      border: 1px solid #1f2937;
+    }
+
+    .scene-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .scene-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    .scene-meta {
+      font-size: 0.75rem;
+      color: #9ca3af;
+      white-space: nowrap;
+    }
+
+    .scene-text {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #e5e7eb;
+      margin-top: 6px;
+      margin-bottom: 10px;
+    }
+
+    .result-text {
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: #d1d5db;
+      margin: 10px 0 4px;
+      border-left: 3px solid #4b5563;
+      padding-left: 10px;
+    }
+
+    .choices {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    button.choice-btn {
+      width: 100%;
+      text-align: left;
+      border-radius: 10px;
+      border: 1px solid #374151;
+      background: linear-gradient(to right, #111827, #020617);
+      padding: 9px 11px;
+      font-size: 0.9rem;
+      color: #e5e7eb;
+      cursor: pointer;
+      transition: background 0.15s ease, border-color 0.15s ease, transform 0.05s ease;
+    }
+
+    button.choice-btn span.index {
+      font-weight: 600;
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-right: 6px;
+    }
+
+    button.choice-btn:hover {
+      background: linear-gradient(to right, #1f2937, #020617);
+      border-color: #6366f1;
+      transform: translateY(-1px);
+    }
+
+    button.choice-btn:active {
+      transform: translateY(0);
+    }
+
+    .stats-card {
+      flex: 1.2;
+      background: rgba(15,23,42,0.95);
+      border-radius: 14px;
+      padding: 12px 14px 14px;
+      border: 1px solid #1f2937;
+      font-size: 0.8rem;
+      color: #e5e7eb;
+    }
+
+    .stats-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 6px;
+    }
+
+    @media (min-width: 480px) {
+      .stats-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .stat-label {
+      font-size: 0.78rem;
+      color: #9ca3af;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .stat-value {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    .stat-bar-bg {
+      height: 6px;
+      border-radius: 999px;
+      background: #020617;
+      overflow: hidden;
+    }
+
+    .stat-bar {
+      height: 100%;
+      border-radius: 999px;
+      width: 50%;
+      transition: width 0.2s ease;
+    }
+
+    .stat-bar.preparedness { background: #22c55e; }
+    .stat-bar.morale        { background: #38bdf8; }
+    .stat-bar.accuracy      { background: #eab308; }
+    .stat-bar.risk          { background: #f97316; }
+    .stat-bar.social        { background: #a855f7; }
+
+    .footer-row {
+      margin-top: 10px;
+      font-size: 0.75rem;
+      color: #6b7280;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .footer-row a {
+      color: #9ca3af;
+      text-decoration: none;
+      border-bottom: 1px dotted #4b5563;
+    }
+
+    .footer-row a:hover {
+      color: #e5e7eb;
+      border-bottom-style: solid;
+    }
+
+    .ending-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .ending-desc {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #e5e7eb;
+      margin-bottom: 10px;
+    }
+
+    .ending-stats {
+      margin-top: 10px;
+      font-size: 0.85rem;
+      color: #d1d5db;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.7rem;
+      padding: 2px 7px;
+      border-radius: 999px;
+      border: 1px solid #374151;
+      margin-right: 4px;
+      margin-top: 2px;
+      background: rgba(15,23,42,0.8);
+    }
+
+    .pill span {
+      font-weight: 600;
+    }
+
+    .btn-row {
+      margin-top: 12px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+      border-radius: 999px;
+      border: 1px solid transparent;
+      padding: 7px 14px;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+
+    .primary-btn {
+      background: linear-gradient(to right, #4f46e5, #7c3aed);
+      color: white;
+      border-color: #6366f1;
+    }
+
+    .primary-btn:hover {
+      filter: brightness(1.05);
+    }
+
+    .secondary-btn {
+      background: transparent;
+      color: #e5e7eb;
+      border-color: #4b5563;
+    }
+
+    .secondary-btn:hover {
+      border-color: #9ca3af;
+    }
+
+    .title-big {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .title-tagline {
+      font-size: 0.95rem;
+      color: #cbd5f5;
+      margin-bottom: 12px;
+    }
+
+    .title-bullets {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      margin-bottom: 12px;
+    }
+
+    .title-bullets li {
+      margin-bottom: 3px;
+    }
+
+    .title-note {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="game-shell">
+    <header>
+      <div>
+        <div class="game-title">13 Days: Cuban Missile Crisis Survival</div>
+        <div class="subtitle">Play as a high school student in 1962. Your choices shape how you experience the Cuban Missile Crisis.</div>
+      </div>
+      <div class="badge">Teach Arcade · History Game</div>
+    </header>
+
+    <div class="top-row">
+      <div class="scene-card">
+        <div class="scene-header">
+          <div class="scene-title" id="scene-title">Loading…</div>
+          <div class="scene-meta" id="scene-meta"></div>
+        </div>
+        <div class="scene-text" id="scene-text"></div>
+        <div class="result-text" id="result-text" style="display:none;"></div>
+        <div class="choices" id="choices"></div>
+      </div>
+
+      <aside class="stats-card">
+        <div class="stats-title-row">
+          <div style="font-weight:600;font-size:0.8rem;">Timeline &amp; Status</div>
+          <div id="day-indicator" style="font-size:0.75rem;color:#9ca3af;"></div>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-label">
+              <span>Preparedness</span>
+              <span class="stat-value" id="stat-preparedness-val">0</span>
+            </div>
+            <div class="stat-bar-bg">
+              <div class="stat-bar preparedness" id="stat-preparedness-bar"></div>
+            </div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">
+              <span>Morale</span>
+              <span class="stat-value" id="stat-morale-val">0</span>
+            </div>
+            <div class="stat-bar-bg">
+              <div class="stat-bar morale" id="stat-morale-bar"></div>
+            </div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">
+              <span>Info Accuracy</span>
+              <span class="stat-value" id="stat-accuracy-val">0</span>
+            </div>
+            <div class="stat-bar-bg">
+              <div class="stat-bar accuracy" id="stat-accuracy-bar"></div>
+            </div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">
+              <span>Risk Exposure</span>
+              <span class="stat-value" id="stat-risk-val">0</span>
+            </div>
+            <div class="stat-bar-bg">
+              <div class="stat-bar risk" id="stat-risk-bar"></div>
+            </div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">
+              <span>Social Impact</span>
+              <span class="stat-value" id="stat-social-val">0</span>
+            </div>
+            <div class="stat-bar-bg">
+              <div class="stat-bar social" id="stat-social-bar"></div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="footer-row">
+      <div id="scene-progress">Scene 0 of 0</div>
+      <div>Use this as a class discussion tool: pause after key choices and ask students what they’d do.</div>
+    </div>
+  </div>
+
+  <script>
+    // === Game data ===
+    const gameData = {
+      title: "13 Days: A High Schooler’s Survival of the Cuban Missile Crisis",
+      stats: {
+        preparedness: 0,
+        morale: 0,
+        accuracy: 0,
+        risk: 0,
+        social: 0
+      },
+      intro: {
+        id: "intro",
+        type: "intro",
+        date: "1962-10-16",
+        text: "You’re a 16-year-old high school student living outside Washington, D.C. You wake up expecting an ordinary Tuesday. You have no idea the world is about to change.",
+        nextSceneId: "scene1"
+      },
+      scenes: [
+        {
+          id: "scene1",
+          type: "scene",
+          title: "Homeroom Whispering",
+          date: "1962-10-16",
+          text: "You walk into homeroom. Your teacher, Mr. Lawson, is whispering urgently with another teacher. Their faces are tense. Maria, your best friend, leans over and whispers that something is definitely wrong.",
+          choices: [
+            {
+              id: "scene1_choice1",
+              label: "Ask Mr. Lawson directly what’s going on.",
+              resultText: "Mr. Lawson freezes, then forces a smile. \"Everything’s fine. Focus on attendance,\" he says, but he’s clearly hiding something.",
+              effects: { accuracy: 1, morale: -1 },
+              nextSceneId: "scene2"
+            },
+            {
+              id: "scene1_choice2",
+              label: "Whisper with Maria and trade rumors.",
+              resultText: "Maria tells you her mom saw military planes landing late last night. You both lean into the mystery, but you’re not sure what’s true.",
+              effects: { morale: 1, accuracy: -1 },
+              nextSceneId: "scene2"
+            },
+            {
+              id: "scene1_choice3",
+              label: "Ignore it and study for your next algebra quiz.",
+              resultText: "You bury your nose in your algebra notes, pretending everything is normal. The tension in the room still seeps in.",
+              effects: { morale: 1, accuracy: -1 },
+              nextSceneId: "scene2"
+            },
+            {
+              id: "scene1_choice4",
+              label: "Secretly pass a note to Kevin asking what he’s heard.",
+              resultText: "Kevin scribbles back: \"My uncle says DEFCON.\" Dramatic as always—but it doesn’t calm your nerves.",
+              effects: { accuracy: -1 },
+              nextSceneId: "scene2"
+            }
+          ]
+        },
+        {
+          id: "scene2",
+          type: "scene",
+          title: "Strange Assembly",
+          date: "1962-10-16",
+          text: "The loudspeaker crackles to life. Principal Hayes orders all students to the gym for a sudden assembly about emergency drills. Onstage, he grips the podium a little too tightly.",
+          choices: [
+            {
+              id: "scene2_choice1",
+              label: "Raise your hand and ask, \"Why today? Did something happen?\"",
+              resultText: "Principal Hayes stammers. \"Nothing has happened. These are just updated state requirements,\" he insists, but his tone doesn’t match his words.",
+              effects: { accuracy: 1, morale: -1 },
+              nextSceneId: "scene3"
+            },
+            {
+              id: "scene2_choice2",
+              label: "Tune out and doodle in your notebook.",
+              resultText: "You sketch rockets and mushroom clouds without thinking about it. You feel oddly calmer by not listening closely.",
+              effects: { morale: 1, accuracy: -1 },
+              nextSceneId: "scene3"
+            },
+            {
+              id: "scene2_choice3",
+              label: "Quietly compare notes with Maria during the speech.",
+              resultText: "Maria whispers, \"My brother at college says the news feels…off.\" You both leave the assembly with more questions than answers.",
+              effects: { morale: 1, accuracy: 1 },
+              nextSceneId: "scene3"
+            },
+            {
+              id: "scene2_choice4",
+              label: "Whisper a joke about an invasion to the row behind you.",
+              resultText: "A few kids laugh, but a teacher shoots you a hard look. For some classmates, it’s not funny at all.",
+              effects: { risk: 1, social: -1 },
+              nextSceneId: "scene3"
+            }
+          ]
+        },
+        {
+          id: "scene3",
+          type: "scene",
+          title: "On the Way Home",
+          date: "1962-10-16",
+          text: "School finally ends. As you head outside, two large olive-drab military trucks roar past on the nearby highway, moving faster than usual. Students stop to stare.",
+          choices: [
+            {
+              id: "scene3_choice1",
+              label: "Follow the trucks for a few blocks to see where they go.",
+              resultText: "You trail the trucks from a distance. They turn toward a restricted-access road leading to a nearby military installation. That’s not normal weekday traffic.",
+              effects: { risk: 1, accuracy: 1 },
+              nextSceneId: "scene3a_military"
+            },
+            {
+              id: "scene3_choice2",
+              label: "Head straight home and try to forget about it.",
+              resultText: "You walk home quickly, trying to convince yourself it’s just routine troop movement. The knot in your stomach disagrees.",
+              effects: { morale: 1, preparedness: -1 },
+              nextSceneId: "scene4"
+            },
+            {
+              id: "scene3_choice3",
+              label: "Stop by the grocery store on the way home.",
+              resultText: "You notice a few shoppers loading extra canned goods and water into their carts. The cashier looks exhausted already.",
+              effects: { accuracy: 1, morale: -1 },
+              nextSceneId: "scene4"
+            },
+            {
+              id: "scene3_choice4",
+              label: "Visit your neighbor Mrs. Henderson, who \"always knows things.\"",
+              resultText: "Mrs. Henderson closes the door behind you and lowers her voice. \"My nephew in the Navy says something’s brewing. Might just be talk—but I don’t like it,\" she says.",
+              effects: { accuracy: 2 },
+              nextSceneId: "scene4"
+            }
+          ]
+        },
+        {
+          id: "scene3a_military",
+          type: "scene",
+          title: "Restricted Road",
+          date: "1962-10-16",
+          text: "You keep a safe distance as the trucks turn toward a gated road marked with military warnings. A guard at the gate watches them pass, then scans the highway nervously.",
+          choices: [
+            {
+              id: "scene3a_choice1",
+              label: "Back off and head home before anyone notices you watching.",
+              resultText: "You retreat, heart thumping. Whatever is happening involves the nearby base. That’s enough to make you uneasy.",
+              effects: { risk: 1, accuracy: 1 },
+              nextSceneId: "scene4"
+            }
+          ]
+        },
+        {
+          id: "scene4",
+          type: "scene",
+          title: "Library Clues",
+          date: "1962-10-18",
+          text: "A few days later, the tension hasn’t gone away. In the school library, newspapers sit neatly in their racks, but the headlines don’t agree about what’s happening with the Soviets and Cuba.",
+          choices: [
+            {
+              id: "scene4_choice1",
+              label: "Read the more conservative newspaper’s editorial.",
+              resultText: "The editorial warns that the Soviets are getting bolder and that America must be ready to respond firmly. It makes the threat feel very real.",
+              effects: { accuracy: 1, morale: -1 },
+              nextSceneId: "scene5"
+            },
+            {
+              id: "scene4_choice2",
+              label: "Read the more liberal newspaper’s editorial.",
+              resultText: "The editorial argues that U.S. politicians may be exaggerating threats and warns against overreaction. It leaves you unsure who to believe.",
+              effects: { accuracy: 1 },
+              nextSceneId: "scene5"
+            },
+            {
+              id: "scene4_choice3",
+              label: "Ask the librarian what she thinks.",
+              resultText: "Ms. Taylor adjusts her glasses. \"Things are tense,\" she says. \"But rumors grow faster than truth. Keep your head and check more than one source.\"",
+              effects: { accuracy: 2, morale: 1 },
+              nextSceneId: "scene5"
+            },
+            {
+              id: "scene4_choice4",
+              label: "Ask Maria’s older brother Alex, who’s home from college.",
+              resultText: "Alex shrugs. \"My professors say Cuba’s a powder keg. But they also say leaders know what’s at stake. They can’t be careless,\" he says — which is not entirely reassuring.",
+              effects: { accuracy: 1, risk: 1 },
+              nextSceneId: "scene5"
+            }
+          ]
+        },
+        {
+          id: "scene5",
+          type: "scene",
+          title: "Kevin’s Bomb Shelter",
+          date: "1962-10-19",
+          text: "At lunch, Kevin practically bounces in his seat. \"My dad’s turning our basement into a fallout shelter,\" he brags. \"C’mon after school. You gotta see this.\"",
+          choices: [
+            {
+              id: "scene5_choice1",
+              label: "Visit Kevin’s house to see the family’s fallout shelter.",
+              resultText: "In Kevin’s basement, shelves of canned food line the walls. His dad talks about concrete, air filters, and blast waves. It’s intense—but organized.",
+              effects: { preparedness: 2, risk: 1 },
+              nextSceneId: "scene5a_shelter"
+            },
+            {
+              id: "scene5_choice2",
+              label: "Laugh it off and say, \"You’re overreacting.\"",
+              resultText: "Kevin looks offended. \"Fine. When the missiles fly, don’t ask to share our beans,\" he mutters. You walk away still half convinced it’s all a scare.",
+              effects: { morale: 1, accuracy: -1 },
+              nextSceneId: "scene6"
+            },
+            {
+              id: "scene5_choice3",
+              label: "Leave lunch feeling anxious that your family hasn’t done anything.",
+              resultText: "You try to focus in your next class, but your mind keeps replaying images of an underground bunker you don’t have.",
+              effects: { morale: -1, preparedness: 1 },
+              nextSceneId: "scene6"
+            },
+            {
+              id: "scene5_choice4",
+              label: "Ask Kevin where his dad is getting information.",
+              resultText: "\"He listens to the radio every night,\" Kevin says. \"Talks about missiles in Cuba and ‘first strike’ this and that.\" It’s a scary mix of fact and opinion.",
+              effects: { accuracy: 1 },
+              nextSceneId: "scene6"
+            }
+          ]
+        },
+        {
+          id: "scene5a_shelter",
+          type: "scene",
+          title: "Inside the Shelter",
+          date: "1962-10-19",
+          text: "Kevin’s dad walks you through stacks of supplies and a hand-drawn chart of blast zones around Washington, D.C. It’s the first time you’ve seen someone treat nuclear war like a real possibility.",
+          choices: [
+            {
+              id: "scene5a_choice1",
+              label: "Thank them and hurry home, thinking about your own basement.",
+              resultText: "On the walk back, you imagine your family sleeping under the stairs with canned beans and candles. It feels scary—but also like something you can control a little.",
+              effects: { preparedness: 1, morale: -1 },
+              nextSceneId: "scene6"
+            }
+          ]
+        },
+        {
+          id: "scene6",
+          type: "scene",
+          title: "The Letter from School",
+          date: "1962-10-20",
+          text: "That evening, your parents open a letter from the school district about \"civil defense readiness\" and \"emergency procedures.\" Your mom’s eyes linger on the word \"nuclear.\" Your dad exhales slowly.",
+          choices: [
+            {
+              id: "scene6_choice1",
+              label: "Ask your parents if you can start setting aside supplies.",
+              resultText: "Your mom nods. \"It won’t hurt to be ready,\" she says. Together, you make a small list of essentials to gather.",
+              effects: { preparedness: 2 },
+              nextSceneId: "scene7"
+            },
+            {
+              id: "scene6_choice2",
+              label: "Hide how scared you are and crack a small joke.",
+              resultText: "\"Guess we’ll just duck and cover extra hard,\" you say. Your dad smiles weakly, but the fear stays under the surface.",
+              effects: { morale: -1, social: 1 },
+              nextSceneId: "scene7"
+            },
+            {
+              id: "scene6_choice3",
+              label: "Suggest making a serious family plan for emergencies.",
+              resultText: "You talk through where to meet, what to grab, and how to check on relatives. It’s sobering, but it makes everyone feel a little more in control.",
+              effects: { preparedness: 2, social: 1 },
+              nextSceneId: "scene7"
+            },
+            {
+              id: "scene6_choice4",
+              label: "Change the subject and pretend nothing is happening.",
+              resultText: "You steer the conversation back to normal topics. The letter stays on the table, unread between the salt and pepper shakers.",
+              effects: { morale: 1, preparedness: -1 },
+              nextSceneId: "scene7"
+            }
+          ]
+        },
+        {
+          id: "scene7",
+          type: "scene",
+          title: "Siren Malfunction",
+          date: "1962-10-21",
+          text: "During third period, an air-raid siren suddenly blares outside. Half the class screams. The other half dives under desks. Your heart races as the sound echoes in your chest.",
+          choices: [
+            {
+              id: "scene7_choice1",
+              label: "Help calm your classmates and remind them it could be a test.",
+              resultText: "You take a breath and tell the nearest students, \"Remember the drills—it might just be a test.\" A few kids latch onto your calm.",
+              effects: { morale: 1, social: 2 },
+              nextSceneId: "scene8"
+            },
+            {
+              id: "scene7_choice2",
+              label: "Panic and run into the hallway shelter area.",
+              resultText: "You sprint into the hallway with other students. A teacher yells for everyone to stay low and away from windows. Your hands shake.",
+              effects: { risk: 1, preparedness: 1, morale: -1 },
+              nextSceneId: "scene8"
+            },
+            {
+              id: "scene7_choice3",
+              label: "Ask your teacher point-blank if this is real.",
+              resultText: "Your teacher’s face is pale. \"I don’t know,\" she admits quietly. \"But until we do, follow the procedure.\"",
+              effects: { accuracy: 1 },
+              nextSceneId: "scene8"
+            },
+            {
+              id: "scene7_choice4",
+              label: "Freeze at your desk, unable to move.",
+              resultText: "You stay rooted in place, ears ringing. The siren eventually cuts off, but the silence afterward feels even louder.",
+              effects: { morale: -1 },
+              nextSceneId: "scene8"
+            }
+          ]
+        },
+        {
+          id: "scene8",
+          type: "scene",
+          title: "Cafeteria Rumors",
+          date: "1962-10-21",
+          text: "At lunch, the cafeteria is buzzing louder than ever. Someone claims Cuba already fired missiles. Another says Washington is evacuating. A third insists it’s all just practice.",
+          choices: [
+            {
+              id: "scene8_choice1",
+              label: "Try to debunk the wildest rumors with what you actually know.",
+              resultText: "You remind people that no official announcement has said anything about missiles already being launched. Some students calm down—others just whisper more quietly.",
+              effects: { accuracy: 2, social: 1 },
+              nextSceneId: "scene9"
+            },
+            {
+              id: "scene8_choice2",
+              label: "Start your own exaggerated rumor to see who believes it.",
+              resultText: "You casually suggest there are secret bunkers under the school. The rumor spreads in minutes. You’re not sure if you should be proud or horrified.",
+              effects: { accuracy: -2, social: -2 },
+              nextSceneId: "scene9"
+            },
+            {
+              id: "scene8_choice3",
+              label: "Walk table to table asking what people have heard, like a reporter.",
+              resultText: "You collect fragments of stories—half radio quotes, half wild speculation. You end up with more questions than answers, but a clearer sense of the confusion.",
+              effects: { accuracy: 1, morale: -1 },
+              nextSceneId: "scene9"
+            },
+            {
+              id: "scene8_choice4",
+              label: "Sit alone in a corner and try to block out the noise.",
+              resultText: "You eat in silence, watching the chaos from a distance. It keeps you out of trouble, but not out of your own thoughts.",
+              effects: { morale: -1, risk: -1 },
+              nextSceneId: "scene9"
+            }
+          ]
+        },
+        {
+          id: "scene9",
+          type: "scene",
+          title: "JFK’s Speech",
+          date: "1962-10-22",
+          text: "That night, your family gathers around the television. President Kennedy addresses the nation, revealing that Soviet nuclear missiles have been discovered in Cuba, pointed at cities like yours.",
+          choices: [
+            {
+              id: "scene9_choice1",
+              label: "Ask your parents, \"Are we going to war?\"",
+              resultText: "Your mom swallows hard. Your dad says, \"We pray we don’t. But we have to be ready for anything.\" The words don’t make it easier to breathe.",
+              effects: { accuracy: 1, morale: -2 },
+              nextSceneId: "scene10"
+            },
+            {
+              id: "scene9_choice2",
+              label: "Suggest going out tomorrow to buy extra food and supplies.",
+              resultText: "\"That’s sensible,\" your mom agrees. Your dad nods and starts a list: canned goods, water, batteries, radio, first aid.",
+              effects: { preparedness: 2 },
+              nextSceneId: "scene10"
+            },
+            {
+              id: "scene9_choice3",
+              label: "Go next door after the speech and check on the neighbors.",
+              resultText: "Mrs. Henderson is glued to her radio. \"If they’re telling us this much, imagine what they’re not saying,\" she mutters. You help her carry some things to her pantry.",
+              effects: { social: 2, risk: 1 },
+              nextSceneId: "scene10"
+            },
+            {
+              id: "scene9_choice4",
+              label: "Call Maria to see what her family is doing.",
+              resultText: "Maria whispers, \"My parents are arguing about whether to leave town. I’m trying not to freak out.\" You talk until the phone line crackles.",
+              effects: { morale: 1, accuracy: 1 },
+              nextSceneId: "scene10"
+            },
+            {
+              id: "scene9_choice5",
+              label: "Do nothing. Sit and stare at the blank TV after the speech ends.",
+              resultText: "The room is quiet except for the hum of the television. Your thoughts run in circles with nowhere to go.",
+              effects: { morale: -1 },
+              nextSceneId: "scene10"
+            }
+          ]
+        },
+        {
+          id: "scene10",
+          type: "scene",
+          title: "Store Panic",
+          date: "1962-10-24",
+          text: "A couple of days later, you go with your parents to the grocery store. The parking lot is packed. Inside, shelves are half empty and people argue over the last cans of food.",
+          choices: [
+            {
+              id: "scene10_choice1",
+              label: "Help an elderly person reach items on a high shelf.",
+              resultText: "You gently grab the cans they’re stretching for. \"Thank you, dear,\" they say. It slows you down, but it feels right.",
+              effects: { social: 2, preparedness: -1 },
+              nextSceneId: "scene11"
+            },
+            {
+              id: "scene10_choice2",
+              label: "Grab as many supplies as you can, even if others need them too.",
+              resultText: "You load your basket with food and water. A parent nearby glares at you, but no one stops you.",
+              effects: { preparedness: 2, social: -2 },
+              nextSceneId: "scene11"
+            },
+            {
+              id: "scene10_choice3",
+              label: "Ask the Civil Defense volunteer what’s actually recommended.",
+              resultText: "The volunteer hands you a pamphlet about basic supplies and fallout shelters. \"Panic doesn’t help,\" they say. \"Planning does.\"",
+              effects: { accuracy: 2 },
+              nextSceneId: "scene11"
+            },
+            {
+              id: "scene10_choice4",
+              label: "Leave the store early and tell your parents you can’t stand the chaos.",
+              resultText: "You wait outside, taking deep breaths in the chilly air. You come home with fewer supplies, but your heart rate finally slows.",
+              effects: { preparedness: -1, morale: 1 },
+              nextSceneId: "scene11"
+            }
+          ]
+        },
+        {
+          id: "scene11",
+          type: "scene",
+          title: "School Debate",
+          date: "1962-10-25",
+          text: "In social studies, your teacher announces an open debate: Should the United States invade Cuba, or is the naval blockade enough? Emotions in the room run high.",
+          choices: [
+            {
+              id: "scene11_choice1",
+              label: "Argue strongly for an invasion of Cuba.",
+              resultText: "You insist that the missiles must be removed by force if necessary. Some classmates cheer you on, others look horrified.",
+              effects: { risk: 1, social: 1 },
+              nextSceneId: "scene12"
+            },
+            {
+              id: "scene11_choice2",
+              label: "Argue against military action and stress the danger of nuclear war.",
+              resultText: "You point out that a misstep could wipe out millions. A few students nod slowly, imagining the unthinkable.",
+              effects: { morale: 1, accuracy: 1 },
+              nextSceneId: "scene12"
+            },
+            {
+              id: "scene11_choice3",
+              label: "Try to mediate between classmates on both sides.",
+              resultText: "You remind everyone that none of you are in the War Room and that shouting won’t change policy. The room cools down a notch.",
+              effects: { social: 2 },
+              nextSceneId: "scene12"
+            },
+            {
+              id: "scene11_choice4",
+              label: "Stay silent and read from your textbook instead.",
+              resultText: "You keep your thoughts to yourself, feeling a strange distance from the argument swirling around you.",
+              effects: { morale: 1, social: -1 },
+              nextSceneId: "scene12"
+            }
+          ]
+        },
+        {
+          id: "scene12",
+          type: "scene",
+          title: "Panic on Main Street",
+          date: "1962-10-26",
+          text: "Walking through town after school, you suddenly hear a loud bang in the distance. Someone screams, \"They bombed Miami!\" People begin running in all directions.",
+          choices: [
+            {
+              id: "scene12_choice1",
+              label: "Run with the crowd, convinced it might be real.",
+              resultText: "You sprint with the others, your mind flashing images of mushroom clouds. Only later do you learn it was a truck backfiring.",
+              effects: { risk: 2, morale: -2 },
+              nextSceneId: "scene13"
+            },
+            {
+              id: "scene12_choice2",
+              label: "Dive behind a parked car and wait.",
+              resultText: "You duck down, heart pounding, until the shouting fades. The world is still there when you peek out.",
+              effects: { risk: -1, morale: -1 },
+              nextSceneId: "scene13"
+            },
+            {
+              id: "scene12_choice3",
+              label: "Try to calm the nearest people and tell them to wait for real news.",
+              resultText: "You raise your voice: \"We don’t know what that was yet!\" Some people ignore you, but a few stop running and listen.",
+              effects: { social: 2, risk: 1 },
+              nextSceneId: "scene13"
+            },
+            {
+              id: "scene12_choice4",
+              label: "Head toward the sound to see what actually happened.",
+              resultText: "You move carefully toward the noise and find a stalled truck and a shaken driver. \"Backfire,\" he says. The rumor was wrong.",
+              effects: { accuracy: 2, risk: 1 },
+              nextSceneId: "scene13"
+            }
+          ]
+        },
+        {
+          id: "scene13",
+          type: "scene",
+          title: "The Deal is Struck",
+          date: "1962-10-28",
+          text: "A few days later, your father rushes into the room. \"They reached a deal,\" he says, almost breathless. \"The Soviets are removing the missiles.\" Around town, church bells ring and people hug in the streets.",
+          choices: [
+            {
+              id: "scene13_choice1",
+              label: "Reflect quietly on everything you’ve felt and learned.",
+              resultText: "You sit by your window, thinking about sirens, rumors, speeches, and how close the world came to disaster.",
+              effects: {},
+              nextSceneId: "ending"
+            },
+            {
+              id: "scene13_choice2",
+              label: "Go outside and join neighbors in cautious celebration.",
+              resultText: "You step into a street full of relieved faces. No one knows what the future holds, but for tonight, the world is still here.",
+              effects: { social: 1, morale: 2 },
+              nextSceneId: "ending"
+            },
+            {
+              id: "scene13_choice3",
+              label: "Check in on Maria and Kevin.",
+              resultText: "Maria’s family is packing away boxes they never used. Kevin’s dad relaxes in his half-finished shelter. You realize everyone coped in their own way.",
+              effects: { social: 2 },
+              nextSceneId: "ending"
+            },
+            {
+              id: "scene13_choice4",
+              label: "Ask your parents what they think will happen next.",
+              resultText: "Your dad says, \"This won’t be the last crisis. But maybe everyone’s a little more aware of what’s at stake now.\"",
+              effects: { accuracy: 1 },
+              nextSceneId: "ending"
+            }
+          ]
+        }
+      ],
+      endings: [
+        {
+          id: "ending_calm_prepared",
+          title: "Calm and Prepared",
+          description: "You stayed mostly calm, sought accurate information, and helped your family prepare without fueling panic."
+        },
+        {
+          id: "ending_anxious_safe",
+          title: "Anxious but Safe",
+          description: "You were often afraid and sometimes overwhelmed, but you still took practical steps to stay safe."
+        },
+        {
+          id: "ending_unprepared_lucky",
+          title: "Unprepared but Lucky",
+          description: "You didn’t do much to prepare and often tried to ignore the danger. History’s peaceful outcome, not your planning, kept you safe."
+        },
+        {
+          id: "ending_rumor_spreader",
+          title: "Rumor-Spreader",
+          description: "You passed along or invented misinformation that increased fear and confusion for others, even if you didn’t mean to."
+        },
+        {
+          id: "ending_risk_taker",
+          title: "Risk-Taker",
+          description: "You repeatedly threw yourself into dangerous or chaotic situations. You made it through, but not because you played it safe."
+        },
+        {
+          id: "ending_panic_collapse",
+          title: "Overwhelmed by Panic",
+          description: "Fear, rumors, and chaotic choices overwhelmed your ability to think clearly. You survived the crisis, but it took a heavy toll on your trust and sense of safety."
+        }
+      ]
+    };
+
+    // === Engine state ===
+    let currentSceneId = "title"; // start on title screen
+    let stats = { ...gameData.stats };
+    let sceneMap = {};
+
+    function initSceneMap() {
+      sceneMap["intro"] = gameData.intro;
+      gameData.scenes.forEach(scene => {
+        sceneMap[scene.id] = scene;
+      });
+    }
+
+    function formatDate(dateStr) {
+      if (!dateStr) return "";
+      const d = new Date(dateStr);
+      if (isNaN(d.getTime())) return "";
+      const options = { year: "numeric", month: "short", day: "numeric" };
+      return d.toLocaleDateString(undefined, options);
+    }
+
+    function getDayLabel(sceneId) {
+      const order = [
+        "scene1","scene2","scene3","scene3a_military","scene4",
+        "scene5","scene5a_shelter","scene6","scene7","scene8",
+        "scene9","scene10","scene11","scene12","scene13"
+      ];
+      const idx = order.indexOf(sceneId);
+      if (idx === -1) return "";
+      const dayNumber = Math.min(13, Math.max(1, idx + 1));
+      return `Approx. Day ${dayNumber} of 13`;
+    }
+
+    function applyEffects(effects = {}) {
+      for (const key in effects) {
+        if (!Object.prototype.hasOwnProperty.call(stats, key)) continue;
+        stats[key] += effects[key];
+      }
+      updateStatsUI();
+    }
+
+    function updateStatsUI() {
+      const clamp = (val, min, max) => Math.max(min, Math.min(max, val));
+
+      function setStat(name) {
+        const val = stats[name] || 0;
+        document.getElementById(`stat-${name}-val`).textContent = val;
+        const bar = document.getElementById(`stat-${name}-bar`);
+        const percent = clamp(50 + val * 10, 0, 100); // 0 baseline at 50%
+        bar.style.width = percent + "%";
+      }
+
+      setStat("preparedness");
+      setStat("morale");
+      setStat("accuracy");
+      setStat("risk");
+      setStat("social");
+    }
+
+    function renderScene() {
+      const sceneTitleEl = document.getElementById("scene-title");
+      const sceneMetaEl = document.getElementById("scene-meta");
+      const sceneTextEl = document.getElementById("scene-text");
+      const resultTextEl = document.getElementById("result-text");
+      const choicesEl = document.getElementById("choices");
+      const dayIndicator = document.getElementById("day-indicator");
+      const sceneProgress = document.getElementById("scene-progress");
+
+      resultTextEl.style.display = "none";
+      resultTextEl.textContent = "";
+      choicesEl.innerHTML = "";
+
+      // TITLE SCREEN
+      if (currentSceneId === "title") {
+        sceneTitleEl.textContent = "13 Days: Cuban Missile Crisis Survival";
+        sceneMetaEl.textContent = "Interactive History Simulator · Teach Arcade";
+        dayIndicator.textContent = "Welcome Screen";
+        sceneProgress.textContent = "Historical Survival Mode";
+
+        sceneTextEl.innerHTML = `
+          <div class="title-big">Step into October 1962.</div>
+          <div class="title-tagline">
+            You are a 16-year-old outside Washington, D.C. For 13 tense days, the world stands on the brink of nuclear war.
+          </div>
+          <ul class="title-bullets">
+            <li>Make choices as a regular high school student.</li>
+            <li>Balance preparedness, morale, accurate information, risk, and social impact.</li>
+            <li>Reach one of several endings based on how you respond to the crisis.</li>
+          </ul>
+          <div class="title-note">
+            Ideal for a 10–15 minute class activity. Teachers can pause after key scenes for discussion.
+          </div>
+        `;
+
+        const btnRow = document.createElement("div");
+        btnRow.className = "btn-row";
+
+        const startBtn = document.createElement("button");
+        startBtn.className = "primary-btn";
+        startBtn.textContent = "Start Simulation";
+        startBtn.onclick = () => {
+          currentSceneId = "intro";
+          renderScene();
+        };
+
+        const teacherBtn = document.createElement("button");
+        teacherBtn.className = "secondary-btn";
+        teacherBtn.textContent = "Teacher Tips";
+        teacherBtn.onclick = () => {
+          alert(
+`Teacher Tips:
+• Project this on the board or have students play in pairs.
+• Pause after major scenes (sirens, JFK speech, panic moment) and ask:
+  – What would you choose and why?
+  – What information do you wish you had?
+  – How did rumors vs. facts change your response?
+• At the end, compare different endings and what drove them.`
+          );
+        };
+
+        btnRow.appendChild(startBtn);
+        btnRow.appendChild(teacherBtn);
+        choicesEl.appendChild(btnRow);
+        return;
+      }
+
+      // INTRO
+      if (currentSceneId === "intro") {
+        sceneTitleEl.textContent = "October 16, 1962";
+        sceneMetaEl.textContent = "Suburban Maryland · School Morning";
+        sceneTextEl.textContent = gameData.intro.text;
+        dayIndicator.textContent = "Approx. Day 1 of 13";
+        sceneProgress.textContent = "Scene 0 of " + gameData.scenes.length;
+
+        const startBtn = document.createElement("button");
+        startBtn.className = "primary-btn";
+        startBtn.textContent = "Begin the Crisis";
+        startBtn.onclick = () => {
+          currentSceneId = gameData.intro.nextSceneId;
+          renderScene();
+        };
+
+        const backBtn = document.createElement("button");
+        backBtn.className = "secondary-btn";
+        backBtn.textContent = "Back to Title";
+        backBtn.onclick = () => {
+          currentSceneId = "title";
+          renderScene();
+        };
+
+        const btnRow = document.createElement("div");
+        btnRow.className = "btn-row";
+        btnRow.appendChild(startBtn);
+        btnRow.appendChild(backBtn);
+        choicesEl.appendChild(btnRow);
+        return;
+      }
+
+      // ENDING
+      if (currentSceneId === "ending") {
+        renderEnding();
+        return;
+      }
+
+      // NORMAL SCENE
+      const scene = sceneMap[currentSceneId];
+
+      sceneTitleEl.textContent = scene.title;
+      sceneMetaEl.textContent = formatDate(scene.date) || "";
+      sceneTextEl.textContent = scene.text;
+      dayIndicator.textContent = getDayLabel(scene.id);
+
+      const index = gameData.scenes.findIndex(s => s.id === scene.id);
+      sceneProgress.textContent = `Scene ${index + 1} of ${gameData.scenes.length}`;
+
+      scene.choices.forEach((choice, idx) => {
+        const btn = document.createElement("button");
+        btn.className = "choice-btn";
+        btn.innerHTML = `<span class="index">${idx + 1}.</span> ${choice.label}`;
+        btn.onclick = () => {
+          resultTextEl.style.display = "block";
+          resultTextEl.textContent = choice.resultText;
+
+          applyEffects(choice.effects);
+
+          setTimeout(() => {
+            currentSceneId = choice.nextSceneId;
+            renderScene();
+          }, 550);
+        };
+        choicesEl.appendChild(btn);
+      });
+    }
+
+    function chooseEnding() {
+      const { preparedness, morale, accuracy, risk, social } = stats;
+
+      // Rumor-Spreader
+      if (accuracy <= -2 && social <= -1) {
+        return gameData.endings.find(e => e.id === "ending_rumor_spreader");
+      }
+
+      // Overwhelmed by Panic
+      if (morale <= -3 && accuracy <= 0 && risk >= 2) {
+        return gameData.endings.find(e => e.id === "ending_panic_collapse");
+      }
+
+      // Risk-Taker
+      if (risk >= 4) {
+        return gameData.endings.find(e => e.id === "ending_risk_taker");
+      }
+
+      // Calm & Prepared
+      if (preparedness >= 3 && accuracy >= 2 && morale >= -1 && social >= 0 && risk <= 2) {
+        return gameData.endings.find(e => e.id === "ending_calm_prepared");
+      }
+
+      // Anxious but Safe
+      if (preparedness >= 3 && morale < 0) {
+        return gameData.endings.find(e => e.id === "ending_anxious_safe");
+      }
+
+      // Unprepared but Lucky
+      if (preparedness <= 1 && accuracy >= 1 && risk <= 2) {
+        return gameData.endings.find(e => e.id === "ending_unprepared_lucky");
+      }
+
+      // Default
+      return gameData.endings.find(e => e.id === "ending_anxious_safe");
+    }
+
+    function renderEnding() {
+      const ending = chooseEnding();
+
+      const sceneTitleEl = document.getElementById("scene-title");
+      const sceneMetaEl = document.getElementById("scene-meta");
+      const sceneTextEl = document.getElementById("scene-text");
+      const resultTextEl = document.getElementById("result-text");
+      const choicesEl = document.getElementById("choices");
+      const dayIndicator = document.getElementById("day-indicator");
+      const sceneProgress = document.getElementById("scene-progress");
+
+      sceneTitleEl.textContent = ending.title;
+      sceneMetaEl.textContent = "Crisis Resolved · October 28, 1962";
+      dayIndicator.textContent = "The 13 days have passed.";
+      sceneProgress.textContent = "Simulation complete";
+
+      resultTextEl.style.display = "none";
+      sceneTextEl.innerHTML = `
+        <div class="ending-title">${ending.title}</div>
+        <div class="ending-desc">${ending.description}</div>
+        <div class="ending-stats">
+          <div style="margin-bottom:4px;">Your final status:</div>
+          <div class="pill"><span>P</span> Preparedness: ${stats.preparedness}</div>
+          <div class="pill"><span>M</span> Morale: ${stats.morale}</div>
+          <div class="pill"><span>A</span> Accuracy: ${stats.accuracy}</div>
+          <div class="pill"><span>R</span> Risk: ${stats.risk}</div>
+          <div class="pill"><span>S</span> Social: ${stats.social}</div>
+          <div style="margin-top:8px;">How might different choices have changed your ending?</div>
+        </div>
+      `;
+
+      choicesEl.innerHTML = "";
+      const btnRow = document.createElement("div");
+      btnRow.className = "btn-row";
+
+      const replayBtn = document.createElement("button");
+      replayBtn.className = "primary-btn";
+      replayBtn.textContent = "Play Again with Different Choices";
+      replayBtn.onclick = () => {
+        stats = { ...gameData.stats };
+        currentSceneId = "title";
+        updateStatsUI();
+        renderScene();
+      };
+
+      const discussBtn = document.createElement("button");
+      discussBtn.className = "secondary-btn";
+      discussBtn.textContent = "Class Discussion Prompts";
+      discussBtn.onclick = () => {
+        alert(
+`Discussion ideas:
+• Which moment felt most tense to you, and why?
+• Where did rumors vs. accurate information matter most?
+• Which choices increased risk? Which reduced it?
+• How did regular citizens experience this compared to leaders?`
+        );
+      };
+
+      btnRow.appendChild(replayBtn);
+      btnRow.appendChild(discussBtn);
+      choicesEl.appendChild(btnRow);
+    }
+
+    initSceneMap();
+    updateStatsUI();
+    renderScene();
+  </script>
+</body>
+</html>
