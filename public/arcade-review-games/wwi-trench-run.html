@@ -63,6 +63,28 @@
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
   <style>
+    /* (UNMODIFIED — all your original CSS goes here exactly as-is) */
+  </style>
+</head>
+
+<body>
+
+<!-- ===========================
+     SEMANTIC + ACCESSIBILITY
+=========================== -->
+<header>
+  <h1>Teach Arcade · WWI Trench Run</h1>
+  <p class="subtitle">
+    Explore the trenches, dodge pits and rats, reach 20 question markers, and review major WWI concepts.
+    Use ◀ ▶ / ▲ to move and jump. Touch ? blocks to answer.
+  </p>
+</header>
+
+<main>
+  <!-- (THE REST OF YOUR EXACT HTML CODE FOLLOWS HERE — 
+       gameContainer, HUD, overlays, canvas, scripts, etc.) -->
+
+  <style>
     :root {
       --sky: #3b4c8b;
       --horizon: #1e2438;
@@ -332,7 +354,7 @@
 <body>
   <h1>Teach Arcade · WWI Trench Run</h1>
   <p class="subtitle">
-    Explore the trenches, dodge pits and rats, reach 20 question markers, and test your World War I knowledge.
+    Explore the trenches, dodge pits and rats, reach all 20 question markers, and test your World War I knowledge.
     Use ◀ ▶ / ▲ or on-screen buttons to move and jump. Touch ? blocks to answer.
   </p>
 
@@ -391,9 +413,233 @@
     // ======================================================
     // PRELOADED WWI QUESTION BANK (50 QUESTIONS)
     // ======================================================
-    const WWI_QUESTION_BANK = [/* … your 50 questions exactly as before … */];
-    // (Keep the full question array you pasted above – I omitted it here
-    //  only for brevity. In your file, leave the full list.)
+    const WWI_QUESTION_BANK = [
+      { id: 1, text: "Which event sparked the beginning of World War I?", choices: [
+        "Sinking of the Lusitania",
+        "Assassination of Archduke Franz Ferdinand",
+        "Invasion of Poland",
+        "Bombing of Pearl Harbor"
+      ], correctIndex: 1 },
+      { id: 2, text: "What does the 'M' in MAIN causes of WWI stand for?", choices: [
+        "Militarism", "Monarchies", "Marxism", "Materialism"
+      ], correctIndex: 0 },
+      { id: 3, text: "Which two major alliance groups fought each other in WWI?", choices: [
+        "NATO and Warsaw Pact",
+        "Axis and Allies",
+        "Triple Entente and Central Powers",
+        "League of Nations and United Nations"
+      ], correctIndex: 2 },
+      { id: 4, text: "Which countries were part of the Triple Entente at the start of WWI?", choices: [
+        "Germany, Austria-Hungary, Italy",
+        "Britain, France, Russia",
+        "United States, Italy, Russia",
+        "France, Germany, Ottoman Empire"
+      ], correctIndex: 1 },
+      { id: 5, text: "Which countries were part of the Central Powers?", choices: [
+        "Britain, France, Russia",
+        "Germany, Austria-Hungary, Ottoman Empire",
+        "United States, Russia, Italy",
+        "Spain, Portugal, Netherlands"
+      ], correctIndex: 1 },
+      { id: 6, text: "Nationalism is best described as:", choices: [
+        "A desire for world peace",
+        "Strong pride and loyalty to one’s nation or ethnic group",
+        "A system of colonies",
+        "A type of government"
+      ], correctIndex: 1 },
+      { id: 7, text: "Imperialism contributed to WWI because European countries:", choices: [
+        "Shared colonies peacefully",
+        "Allowed colonies to become independent",
+        "Competeted fiercely for colonies and resources",
+        "Gave up their colonies"
+      ], correctIndex: 2 },
+      { id: 8, text: "Militarism means:", choices: [
+        "Reducing a nation’s army",
+        "Glorifying military power and keeping large standing armies ready for war",
+        "Banning all weapons",
+        "Only using armies for defense"
+      ], correctIndex: 1 },
+      { id: 9, text: "The region of Europe known as the 'powder keg' because of tension was:", choices: [
+        "Western Europe", "Eastern Europe", "The Balkans", "Scandinavia"
+      ], correctIndex: 2 },
+      { id: 10, text: "What was the Schlieffen Plan?", choices: [
+        "Germany’s plan to avoid building a navy",
+        "A Russian plan to invade Germany",
+        "Germany’s plan to quickly defeat France, then fight Russia",
+        "Britain’s plan to defend Belgium"
+      ], correctIndex: 2 },
+      { id: 11, text: "Which country did Germany invade that caused Britain to enter the war?", choices: [
+        "Italy", "Belgium", "Switzerland", "Spain"
+      ], correctIndex: 1 },
+      { id: 12, text: "What best describes trench warfare?", choices: [
+        "Fast-moving battles with tanks",
+        "Naval warfare on the oceans",
+        "Fighting from long, narrow ditches facing each other",
+        "Air battles between pilots"
+      ], correctIndex: 2 },
+      { id: 13, text: "The area between opposing trenches was called:", choices: [
+        "The Front Line", "No Man’s Land", "The Home Front", "The Buffer Zone"
+      ], correctIndex: 1 },
+      { id: 14, text: "A major problem with trench warfare was:", choices: [
+        "Soldiers had too much food",
+        "Battles always ended quickly",
+        "High casualties and little ground gained",
+        "It protected civilians from war"
+      ], correctIndex: 2 },
+      { id: 15, text: "Which of these was a new weapon used in WWI?", choices: [
+        "Nuclear bombs", "Crossbows", "Poison gas", "Iron swords"
+      ], correctIndex: 2 },
+      { id: 16, text: "Which weapon made crossing No Man’s Land especially deadly?", choices: [
+        "Bayonets", "Machine guns", "Zeppelins", "Shields"
+      ], correctIndex: 1 },
+      { id: 17, text: "Why is WWI often called the first 'modern war'?", choices: [
+        "It was the first war with uniforms",
+        "It used industrial technology and new weapons on a massive scale",
+        "It was the shortest war in history",
+        "It was fought only in cities"
+      ], correctIndex: 1 },
+      { id: 18, text: "Which country left WWI early because of a revolution at home?", choices: [
+        "Germany", "Italy", "Russia", "France"
+      ], correctIndex: 2 },
+      { id: 19, text: "What was the name of the treaty that ended Russia’s involvement in WWI?", choices: [
+        "Treaty of Versailles", "Treaty of Brest-Litovsk", "Treaty of Paris", "Treaty of London"
+      ], correctIndex: 1 },
+      { id: 20, text: "What was unrestricted submarine warfare?", choices: [
+        "Submarines that only attacked warships",
+        "Submarines that had no weapons",
+        "Submarines that attacked any ship without warning",
+        "Submarines that stayed in ports"
+      ], correctIndex: 2 },
+      { id: 21, text: "Which British passenger ship was sunk by a German U-boat in 1915?", choices: [
+        "Titanic", "Britannic", "Lusitania", "Queen Mary"
+      ], correctIndex: 2 },
+      { id: 22, text: "Which country did the Zimmermann Telegram try to involve in war against the U.S.?", choices: [
+        "Canada", "Mexico", "Brazil", "Cuba"
+      ], correctIndex: 1 },
+      { id: 23, text: "Who was the U.S. president during World War I?", choices: [
+        "Theodore Roosevelt", "Woodrow Wilson", "Franklin D. Roosevelt", "Harry Truman"
+      ], correctIndex: 1 },
+      { id: 24, text: "Before entering the war, the United States’ official position was:", choices: [
+        "Immediate war with Germany",
+        "Neutrality",
+        "Alliance with the Central Powers",
+        "Fighting only in Asia"
+      ], correctIndex: 1 },
+      { id: 25, text: "The American troops sent to fight in Europe were called:", choices: [
+        "Green Berets",
+        "Continental Army",
+        "American Expeditionary Force (AEF)",
+        "Marines Corps Force"
+      ], correctIndex: 2 },
+      { id: 26, text: "Who led the American Expeditionary Force?", choices: [
+        "General Eisenhower", "General Patton", "General Pershing", "General MacArthur"
+      ], correctIndex: 2 },
+      { id: 27, text: "Which side did the United States join in WWI?", choices: [
+        "Central Powers", "Allies / Triple Entente", "Neutral Nations", "Triple Alliance"
+      ], correctIndex: 1 },
+      { id: 28, text: "What was the effect of American entry into WWI?", choices: [
+        "It had no real impact",
+        "It strengthened the Central Powers",
+        "It boosted Allied morale and helped turn the tide",
+        "It ended the war immediately"
+      ], correctIndex: 2 },
+      { id: 29, text: "What was the term for a cease-fire that ended the fighting in WWI?", choices: [
+        "Treaty", "Armistice", "Pact", "Alliance"
+      ], correctIndex: 1 },
+      { id: 30, text: "On what date did the WWI armistice take effect?", choices: [
+        "July 4, 1917", "November 11, 1918", "December 25, 1919", "January 1, 1918"
+      ], correctIndex: 1 },
+      { id: 31, text: "Which meeting created the main peace terms after WWI?", choices: [
+        "Yalta Conference", "Paris Peace Conference", "Potsdam Conference", "Congress of Vienna"
+      ], correctIndex: 1 },
+      { id: 32, text: "Which three major Allied leaders were part of the 'Big Four'?", choices: [
+        "Wilson, Lloyd George, Clemenceau (and Orlando)",
+        "Hitler, Mussolini, Tojo",
+        "Lenin, Stalin, Trotsky",
+        "Kaiser Wilhelm, Franz Joseph, Nicholas II"
+      ], correctIndex: 0 },
+      { id: 33, text: "Which treaty officially ended the war between Germany and the Allies?", choices: [
+        "Treaty of Ghent", "Treaty of Versailles", "Treaty of Paris (1783)", "Munich Agreement"
+      ], correctIndex: 1 },
+      { id: 34, text: "Which country was forced to accept 'war guilt' in the Treaty of Versailles?", choices: [
+        "Britain", "France", "Russia", "Germany"
+      ], correctIndex: 3 },
+      { id: 35, text: "What did Germany have to pay after WWI, according to the Treaty of Versailles?", choices: [
+        "Reconstruction bonds", "Reparations", "Voting rights", "Gold tariffs"
+      ], correctIndex: 1 },
+      { id: 36, text: "Which organization was created after WWI to help prevent future wars?", choices: [
+        "United Nations", "NATO", "League of Nations", "European Union"
+      ], correctIndex: 2 },
+      { id: 37, text: "Why did many Germans resent the Treaty of Versailles?", choices: [
+        "It rewarded them too much",
+        "It forced them to fight again",
+        "They felt it was unfair and humiliating",
+        "It gave them more colonies"
+      ], correctIndex: 2 },
+      { id: 38, text: "Which empire collapsed as a result of WWI?", choices: [
+        "Japanese Empire", "Ottoman Empire", "British Empire", "United States"
+      ], correctIndex: 1 },
+      { id: 39, text: "Which of the following was a new nation created after WWI?", choices: [
+        "Spain", "Portugal", "Poland", "Sweden"
+      ], correctIndex: 2 },
+      { id: 40, text: "What is one major human cost of WWI?", choices: [
+        "Very few soldiers died",
+        "Millions of soldiers and civilians were killed or wounded",
+        "Only generals were affected",
+        "Only naval battles caused casualties"
+      ], correctIndex: 1 },
+      { id: 41, text: "What is meant by the 'Lost Generation'?", choices: [
+        "Children who were evacuated",
+        "Young people disillusioned by the war’s destruction",
+        "Soldiers who never trained",
+        "Leaders who lost elections"
+      ], correctIndex: 1 },
+      { id: 42, text: "How did WWI affect women in many countries?", choices: [
+        "They lost all rights",
+        "They stayed completely out of the war effort",
+        "Many entered the workforce and took on new roles",
+        "They were banned from factories"
+      ], correctIndex: 2 },
+      { id: 43, text: "What is 'total war'?", choices: [
+        "A war fought by only soldiers",
+        "A war limited to one region",
+        "A war where nations devote all resources, including civilians and industry, to the war effort",
+        "A war fought only at sea"
+      ], correctIndex: 2 },
+      { id: 44, text: "Which of the following best describes propaganda?", choices: [
+        "Neutral information",
+        "Biased information used to influence public opinion",
+        "Scientific research",
+        "Secret military codes"
+      ], correctIndex: 1 },
+      { id: 45, text: "Which front in WWI was known mainly for trench warfare and stalemate?", choices: [
+        "Eastern Front", "Western Front", "Pacific Front", "Desert Front"
+      ], correctIndex: 1 },
+      { id: 46, text: "Which front was generally more mobile and less trench-based?", choices: [
+        "Western Front", "Eastern Front", "Atlantic Front", "Arctic Front"
+      ], correctIndex: 1 },
+      { id: 47, text: "Which group of countries made up the main Central Powers?", choices: [
+        "Germany, Austria-Hungary, Ottoman Empire, Bulgaria",
+        "Britain, France, Russia, U.S.",
+        "Spain, Portugal, Italy",
+        "U.S., Italy, Japan"
+      ], correctIndex: 0 },
+      { id: 48, text: "WWI helped set the stage for WWII mainly because:", choices: [
+        "The war made everyone peaceful",
+        "The Treaty of Versailles left Germany bitter and unstable",
+        "No countries had any debt after the war",
+        "The League of Nations was extremely powerful"
+      ], correctIndex: 1 },
+      { id: 49, text: "What was one economic effect of WWI on Europe?", choices: [
+        "All countries became wealthy",
+        "Many nations faced huge debts and rebuilding costs",
+        "Colonies gained independence immediately",
+        "Trade completely stopped forever"
+      ], correctIndex: 1 },
+      { id: 50, text: "Which country emerged as a stronger world power after WWI?", choices: [
+        "United States", "Austria-Hungary", "Ottoman Empire", "Belgium"
+      ], correctIndex: 0 }
+    ];
 
     function pickRandomQuestions(bank, count = 20) {
       const shuffled = [...bank].sort(() => Math.random() - 0.5);
@@ -420,6 +666,7 @@
       onGround: false
     };
 
+    // Tuned feel
     const GRAVITY = 1200;
     const PLAYER_SPEED = 260;
     const JUMP_STRENGTH = 520;
@@ -439,6 +686,7 @@
     let questionBlocks = [];
     let activeQuestionBlock = null;
 
+    // Pits = gaps in the trench floor (all jumpable now)
     const pits = [
       { x: 900,  width: 90 },
       { x: 1400, width: 110 },
@@ -447,17 +695,19 @@
       { x: 3200, width: 110 }
     ];
 
+    // Platforms with actual vertical flow
     const platforms = [
       { x: 600,  y: 230, width: 130, height: 12 },
       { x: 1000, y: 205, width: 140, height: 12 },
       { x: 1350, y: 190, width: 120, height: 12 },
       { x: 1750, y: 210, width: 130, height: 12 },
       { x: 2100, y: 180, width: 140, height: 12 },
-      { x: 2300, y: 150, width: 130, height: 12 },
+      { x: 2300, y: 150, width: 130, height: 12 }, // higher step
       { x: 2700, y: 190, width: 160, height: 12 },
       { x: 3100, y: 175, width: 140, height: 12 }
     ];
 
+    // Patrolling "rat" enemies on the trench floor
     const enemies = [
       { x: 820,  y: GROUND_Y - 16, w: 26, h: 16, dir: 1,  speed: 70, minX: 820,  maxX: 950 },
       { x: 1500, y: GROUND_Y - 16, w: 26, h: 16, dir: -1, speed: 80, minX: 1450, maxX: 1600 },
@@ -465,17 +715,31 @@
       { x: 2900, y: GROUND_Y - 16, w: 26, h: 16, dir: -1, speed: 85, minX: 2850, maxX: 3000 }
     ];
 
+    // Simple stomp puff effects
     const effects = [];
+
+    // Keep track of last safe ground position for respawn
     let lastSafeX = player.x;
     let lastSafeY = player.y;
+
+    // End flag
     const endFlagX = WORLD_WIDTH - 160;
+
+    // Movement keys (jump handled separately as a one-shot)
     const keys = { left: false, right: false };
+
+    // Player damage cooldown (seconds)
     let hitCooldown = 0;
+
+    // Simple toasts + banners
     let toastText = "";
     let toastTimer = 0;
     let bannerText = "";
     let bannerTimer = 0;
 
+    // ======================================================
+    // UI ELEMENTS
+    // ======================================================
     const hudScore = document.getElementById('hudScore');
     const hudQuestions = document.getElementById('hudQuestions');
     const hudStatus = document.getElementById('hudStatus');
@@ -499,6 +763,9 @@
     const rightBtn = document.getElementById('btnRight');
     const jumpBtn  = document.getElementById('btnJump');
 
+    // ======================================================
+    // FEEDBACK HELPERS
+    // ======================================================
     function showToast(text, duration = 1.1) {
       toastText = text;
       toastTimer = duration;
@@ -509,6 +776,9 @@
       bannerTimer = duration;
     }
 
+    // ======================================================
+    // JUMP HELPER
+    // ======================================================
     function tryJump() {
       if (player.onGround && !gamePaused && !inQuestion && !levelComplete) {
         player.vy = -JUMP_STRENGTH;
@@ -516,9 +786,16 @@
       }
     }
 
+    // ======================================================
+    // INPUT HANDLING
+    // ======================================================
     document.addEventListener('keydown', (e) => {
-      if (e.code === 'ArrowLeft' || e.code === 'KeyA') keys.left = true;
-      if (e.code === 'ArrowRight' || e.code === 'KeyD') keys.right = true;
+      if (e.code === 'ArrowLeft' || e.code === 'KeyA') {
+        keys.left = true;
+      }
+      if (e.code === 'ArrowRight' || e.code === 'KeyD') {
+        keys.right = true;
+      }
       if (e.code === 'ArrowUp' || e.code === 'Space' || e.code === 'KeyW') {
         e.preventDefault();
         tryJump();
@@ -526,8 +803,12 @@
     });
 
     document.addEventListener('keyup', (e) => {
-      if (e.code === 'ArrowLeft' || e.code === 'KeyA') keys.left = false;
-      if (e.code === 'ArrowRight' || e.code === 'KeyD') keys.right = false;
+      if (e.code === 'ArrowLeft' || e.code === 'KeyA') {
+        keys.left = false;
+      }
+      if (e.code === 'ArrowRight' || e.code === 'KeyD') {
+        keys.right = false;
+      }
     });
 
     function bindControl(btn, onDown, onUp) {
@@ -545,12 +826,17 @@
     bindControl(leftBtn, () => { keys.left = true; },  () => { keys.left = false; });
     bindControl(rightBtn, () => { keys.right = true; }, () => { keys.right = false; });
 
+    // Jump button is one-shot, not a held state
     if (jumpBtn) {
-      const pressJump = (e) => { e.preventDefault(); tryJump(); };
+      const pressJump = (e) => {
+        e.preventDefault();
+        tryJump();
+      };
       jumpBtn.addEventListener('touchstart', pressJump, { passive: false });
       jumpBtn.addEventListener('mousedown', pressJump);
     }
 
+    // Mode buttons
     modePreloadedBtn.addEventListener('click', () => {
       useCustomQuestions = false;
       modePreloadedBtn.classList.add('active');
@@ -565,7 +851,11 @@
       startNewRun();
     });
 
+    // ======================================================
+    // QUESTION LOGIC
+    // ======================================================
     function startNewRun() {
+      // Reset player & stats
       player.x = 80;
       player.y = 180;
       player.vx = 0;
@@ -590,12 +880,14 @@
       endOverlay.classList.add('hidden');
       hudStatus.textContent = "Status: Running";
 
+      // Select questions
       if (useCustomQuestions && CUSTOM_QUESTIONS.length > 0) {
         currentQuestions = CUSTOM_QUESTIONS.slice(0, 20);
       } else {
         currentQuestions = pickRandomQuestions(WWI_QUESTION_BANK, 20);
       }
 
+      // Place 20 question blocks with vertical variety
       questionBlocks = [];
       const spacing = (WORLD_WIDTH - 800) / 20;
       const baseX = 260;
@@ -603,25 +895,29 @@
       for (let i = 0; i < 20; i++) {
         const worldX = baseX + spacing * i;
         let y;
+
+        // Some blocks anchored to nearby platforms (climbing)
         const plat = platforms.find(p => worldX >= p.x - 40 && worldX <= p.x + p.width + 40);
 
         if (plat && i % 4 === 0) {
-          y = plat.y - 40;
+          y = plat.y - 40; // floating above platform
         } else {
+          // Above-head / midair patterns so you can't just walk into them
           const pattern = i % 3;
           if (pattern === 0)      y = GROUND_Y - 90;
           else if (pattern === 1) y = 210;
           else                    y = 170;
         }
 
-        questionBlocks.push({
+        const qb = {
           id: i + 1,
           qIndex: i,
           x: worldX,
           y,
           completed: false,
           firstTry: true
-        });
+        };
+        questionBlocks.push(qb);
       }
 
       updateHud();
@@ -719,9 +1015,12 @@
       endOverlay.classList.remove('hidden');
     }
 
-    replayBtn.addEventListener('click', startNewRun);
+    replayBtn.addEventListener('click', () => {
+      startNewRun();
+    });
 
     topicBtn.addEventListener('click', () => {
+      // Point this at your Teach Arcade topic hub when ready
       window.location.href = "/";
     });
 
@@ -735,6 +1034,9 @@
       return pits.some(p => future.x + future.w > p.x && future.x < p.x + p.width);
     }
 
+    // ======================================================
+    // GAME LOOP & PHYSICS
+    // ======================================================
     function update(dt) {
       if (gamePaused) return;
 
@@ -752,21 +1054,26 @@
         if (bannerTimer < 0) bannerTimer = 0;
       }
 
+      // Horizontal control
       if (keys.left)      player.vx = -PLAYER_SPEED;
       else if (keys.right) player.vx = PLAYER_SPEED;
       else                player.vx = 0;
 
+      // Gravity
       player.vy += GRAVITY * dt;
 
       const prevY = player.y;
 
+      // Move horizontally
       player.x += player.vx * dt;
       if (player.x < 0) player.x = 0;
       if (player.x + player.w > WORLD_WIDTH) player.x = WORLD_WIDTH - player.w;
 
+      // Move vertically
       player.y += player.vy * dt;
       player.onGround = false;
 
+      // Platform collisions (top only)
       for (const p of platforms) {
         const withinX = player.x + player.w > p.x && player.x < p.x + p.width;
         const wasAbove = prevY + player.h <= p.y;
@@ -780,6 +1087,7 @@
         }
       }
 
+      // Ground (but not over pits)
       const overPit = pits.some(p => player.x + player.w > p.x && player.x < p.x + p.width);
       if (!overPit && player.y + player.h >= GROUND_Y) {
         player.y = GROUND_Y - player.h;
@@ -789,6 +1097,7 @@
         lastSafeY = player.y;
       }
 
+      // Fell into a pit / void
       if (player.y > canvas.height + 40) {
         player.x = lastSafeX;
         player.y = lastSafeY;
@@ -799,11 +1108,13 @@
         showToast("-20 | Fell in a shell hole");
         updateHud();
       } else if (!overPit) {
+        // Only show running when not clearly respawning
         if (!inQuestion && !levelComplete) {
           hudStatus.textContent = "Status: Running";
         }
       }
 
+      // Enemy movement (respect pits)
       for (const e of enemies) {
         const nextX = e.x + e.dir * e.speed * dt;
         if (enemyFutureOverPit(nextX, e)) {
@@ -821,17 +1132,20 @@
         }
       }
 
+      // Enemy collisions (stomp vs side hit)
       for (let i = enemies.length - 1; i >= 0; i--) {
         const e = enemies[i];
         if (rectIntersect(player, e)) {
           const stomping = prevY + player.h <= e.y && player.vy >= 0;
           if (stomping) {
+            // Stomp: kill rat, bounce, reward
             enemies.splice(i, 1);
             player.vy = -JUMP_STRENGTH * 0.5;
             player.onGround = false;
             score += 10;
             showToast("+10 | Stomped a trench rat");
             updateHud();
+            // Puff effect
             effects.push({
               x: e.x + e.w / 2,
               y: e.y + e.h / 2,
@@ -841,7 +1155,7 @@
             });
           } else if (hitCooldown === 0) {
             score -= 15;
-            hitCooldown = 1.0;
+            hitCooldown = 1.0; // 1 second invincibility frames
             hudStatus.textContent = "Status: Bitten by trench rats (-15)";
             player.x += (e.dir > 0 ? -20 : 20);
             showToast("-15 | Bitten by trench rats");
@@ -850,12 +1164,16 @@
         }
       }
 
+      // Effects update
       for (let i = effects.length - 1; i >= 0; i--) {
         const fx = effects[i];
         fx.life -= dt;
-        if (fx.life <= 0) effects.splice(i, 1);
+        if (fx.life <= 0) {
+          effects.splice(i, 1);
+        }
       }
 
+      // Question block collisions
       for (const block of questionBlocks) {
         if (block.completed) continue;
         const box = { x: block.x, y: block.y, w: 32, h: 32 };
@@ -865,10 +1183,12 @@
         }
       }
 
+      // Check if at end
       if (!levelComplete && player.x + player.w > endFlagX) {
         checkLevelComplete();
       }
 
+      // Camera follows player smoothly
       const halfCanvas = canvas.width / 2;
       const targetCameraX = player.x + player.w / 2 - halfCanvas;
       const maxCam = WORLD_WIDTH - canvas.width;
@@ -886,7 +1206,11 @@
       );
     }
 
+    // ======================================================
+    // DRAWING
+    // ======================================================
     function drawBackground() {
+      // Sky with slight dark vignette at top
       const grad = ctx.createLinearGradient(0, 0, 0, canvas.height);
       grad.addColorStop(0, "#16192e");
       grad.addColorStop(0.4, "#3b4c8b");
@@ -894,9 +1218,11 @@
       ctx.fillStyle = grad;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+      // Horizon strip
       ctx.fillStyle = "#1e2438";
       ctx.fillRect(0, canvas.height * 0.45, canvas.width, canvas.height * 0.3);
 
+      // Distant artillery silhouettes
       ctx.fillStyle = "#111320";
       for (let x = -200; x < WORLD_WIDTH + 200; x += 260) {
         const sx = x - cameraX;
@@ -905,6 +1231,7 @@
         ctx.fillRect(sx + 20, canvas.height * 0.54, 80, 10);
       }
 
+      // Barbed wire line
       ctx.strokeStyle = "#9da2b1";
       ctx.lineWidth = 2;
       ctx.beginPath();
@@ -916,6 +1243,7 @@
     }
 
     function drawTrenchesAndPits() {
+      // Slightly lighter trench floor for clarity
       ctx.fillStyle = "#5a4334";
       ctx.fillRect(0, GROUND_Y, canvas.width, canvas.height - GROUND_Y);
 
@@ -930,12 +1258,15 @@
 
         const inPit = pits.some(p => tileX + TILE_SIZE > p.x && tileX < p.x + p.width);
         if (!inPit) {
+          // Dirt body
           ctx.fillStyle = "#5a4334";
           ctx.fillRect(screenX, GROUND_Y, TILE_SIZE, canvas.height - GROUND_Y);
+          // Wood planks
           ctx.fillStyle = "#7b5a38";
           ctx.fillRect(screenX, GROUND_Y - 12, TILE_SIZE, 12);
           ctx.fillRect(screenX, GROUND_Y + 10, TILE_SIZE, 6);
         } else {
+          // Pit darkness
           ctx.fillStyle = "#17131b";
           ctx.fillRect(screenX, GROUND_Y, TILE_SIZE, canvas.height - GROUND_Y);
         }
@@ -961,7 +1292,11 @@
         const sx = block.x - cameraX;
         const sy = block.y;
 
-        ctx.fillStyle = block.completed ? "#3a4b32" : "#c59c3e";
+        if (block.completed) {
+          ctx.fillStyle = "#3a4b32";
+        } else {
+          ctx.fillStyle = "#c59c3e";
+        }
         ctx.fillRect(sx, sy, 32, 32);
         ctx.strokeStyle = "rgba(0,0,0,0.6)";
         ctx.strokeRect(sx + 0.5, sy + 0.5, 31, 31);
@@ -984,11 +1319,14 @@
         const sx = e.x - cameraX;
         const sy = e.y;
 
+        // Little rat silhouette with slight outline
         ctx.fillStyle = "#262635";
-        ctx.fillRect(sx, sy + 4, e.w, e.h - 4);
-        ctx.fillRect(sx + 4, sy, e.w - 8, 6);
-        ctx.fillRect(sx + (e.dir > 0 ? e.w - 4 : 0), sy + 6, 4, 4);
+        ctx.fillRect(sx, sy + 4, e.w, e.h - 4);          // body
+        ctx.fillRect(sx + 4, sy, e.w - 8, 6);            // back
+        ctx.fillRect(sx + (e.dir > 0 ? e.w - 4 : 0), sy + 6, 4, 4); // head bump
+        // Tail
         ctx.fillRect(sx + (e.dir > 0 ? -3 : e.w + 1), sy + 10, 3, 2);
+        // Eye
         ctx.fillStyle = "#ff4b4b";
         ctx.fillRect(sx + (e.dir > 0 ? e.w - 6 : 2), sy + 7, 2, 2);
       });
@@ -1010,6 +1348,7 @@
     function drawEndFlag() {
       const sx = endFlagX - cameraX;
       const baseY = GROUND_Y;
+      // Pole
       ctx.strokeStyle = "#f5f5f5";
       ctx.lineWidth = 3;
       ctx.beginPath();
@@ -1017,11 +1356,13 @@
       ctx.lineTo(sx, baseY - 80);
       ctx.stroke();
 
+      // Flag
       ctx.fillStyle = "#f5f5f5";
       ctx.fillRect(sx, baseY - 80, 30, 16);
       ctx.fillStyle = "#ff3657";
       ctx.fillRect(sx + 15, baseY - 80, 15, 16);
 
+      // "HQ" label
       ctx.font = "8px 'Press Start 2P', system-ui, sans-serif";
       ctx.fillStyle = "#f9f9ff";
       ctx.textAlign = "center";
@@ -1032,25 +1373,31 @@
       const sx = player.x - cameraX;
       const sy = player.y;
 
+      // Legs
       ctx.fillStyle = "#2a2016";
       ctx.fillRect(sx + 4, sy + player.h - 10, 8, 10);
       ctx.fillRect(sx + player.w - 12, sy + player.h - 10, 8, 10);
 
+      // Body / torso
       ctx.fillStyle = "#f4c542";
       ctx.fillRect(sx + 4, sy + 10, player.w - 8, 22);
 
+      // Backpack / gear
       ctx.fillStyle = "#c9963b";
       ctx.fillRect(sx + player.w - 6, sy + 12, 4, 16);
 
+      // Helmet
       ctx.fillStyle = "#ffb300";
       ctx.fillRect(sx + 2, sy, player.w - 4, 10);
       ctx.fillStyle = "#d08e18";
       ctx.fillRect(sx + 2, sy + 8, player.w - 4, 2);
 
+      // Arms (small side rectangles)
       ctx.fillStyle = "#e9bb3a";
       ctx.fillRect(sx, sy + 14, 4, 10);
       ctx.fillRect(sx + player.w - 4, sy + 14, 4, 10);
 
+      // Eyes
       ctx.fillStyle = "#1b1b1b";
       ctx.fillRect(sx + 7, sy + 6, 2, 2);
       ctx.fillRect(sx + 17, sy + 6, 2, 2);
@@ -1100,11 +1447,14 @@
     function loop(timestamp) {
       const dt = (timestamp - lastTime) / 1000;
       lastTime = timestamp;
+
       update(dt);
       draw();
+
       requestAnimationFrame(loop);
     }
 
+    // Start
     startNewRun();
     requestAnimationFrame(loop);
   </script>
