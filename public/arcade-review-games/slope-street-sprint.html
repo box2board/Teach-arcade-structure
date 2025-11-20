@@ -9,7 +9,7 @@
   <title>Slope Street Sprint · Free Slope & Linear Functions Game | Teach Arcade</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="description" content="Slope Street Sprint is a free arcade-style math review game from Teach Arcade. Dash through a neon city while answering 20 questions on slope, y-intercept, and linear functions. Perfect for pre-algebra and Algebra 1 practice.">
+  <meta name="description" content="Slope Street Sprint is a free arcade-style math review game from Teach Arcade. Race along hills and ramps while answering 10 questions on slope, y-intercept, and linear functions. Perfect for pre-algebra and Algebra 1 practice.">
 
   <meta name="keywords" content="slope game, linear functions game, slope intercept form, algebra review, math arcade game, classroom math game, pre algebra, Algebra 1, Teach Arcade">
 
@@ -17,9 +17,9 @@
        Open Graph (Social Sharing)
   ============================ -->
   <meta property="og:title" content="Slope Street Sprint · Free Slope & Linear Functions Game | Teach Arcade">
-  <meta property="og:description" content="Dash through a neon city while answering 20 questions on slope, y-intercept, and linear functions in this classroom-friendly arcade game.">
+  <meta property="og:description" content="Race up and down digital slopes and pass through neon question gates to review slope, y-intercept, and linear functions.">
   <meta property="og:type" content="website">
-  <!-- Adjust image/URL as needed -->
+  <!-- Replace with your actual image path -->
   <meta property="og:image" content="https://teacharcade.com/assets/teach-arcade-slope-street-sprint.png">
   <meta property="og:url" content="https://teacharcade.com/arcade-review-games/slope-street-sprint.html">
 
@@ -37,7 +37,7 @@
       "educationalLevel": "Middle School, High School"
     },
     "learningResourceType": "Review Game",
-    "description": "Slope Street Sprint is a free arcade-style algebra review game where students dash through a neon city and answer 20 randomized questions on slope, y-intercept, rate of change, and linear functions.",
+    "description": "Slope Street Sprint is a free arcade-style algebra review game where students race along hills and ramps and pass through question gates to answer 10 randomized questions on slope, y-intercept, rate of change, and linear functions.",
     "educationalAlignment": {
       "@type": "AlignmentObject",
       "alignmentType": "teaches",
@@ -55,7 +55,7 @@
 
   <style>
     :root {
-      /* Slightly different palette from Algebra City Run */
+      /* Neon night palette */
       --sky: #040617;
       --horizon: #111827;
       --building-dark: #020617;
@@ -325,8 +325,8 @@
 <body>
   <h1>Teach Arcade · Slope Street Sprint</h1>
   <p class="subtitle">
-    Dash through a neon city, jump over gaps, and shut down drones while you answer
-    20 questions on slope, y-intercept, and linear functions. Use ◀ ▶ / ▲ or on-screen
+    Race up and down digital slopes, jump over obstacles, and pass through neon question gates
+    to answer 10 questions on slope, y-intercept, and linear functions. Use ◀ ▶ / ▲ or on-screen
     buttons to move and jump.
   </p>
 
@@ -341,7 +341,7 @@
 
     <div id="hud">
       <span id="hudScore">Score: 0</span>
-      <span id="hudQuestions">Questions: 0 / 20</span>
+      <span id="hudQuestions">Gates: 0 / 10</span>
       <span id="hudStatus">Status: Running</span>
     </div>
 
@@ -353,7 +353,7 @@
 
     <div id="questionOverlay" class="hidden">
       <div class="panel">
-        <h2 id="qTitle">Question</h2>
+        <h2 id="qTitle">Gate Question</h2>
         <p id="qText"></p>
         <div class="choices" id="choicesContainer"></div>
         <div class="panel-footer">
@@ -365,10 +365,10 @@
 
     <div id="endOverlay" class="hidden">
       <div class="panel">
-        <h2>Level Complete!</h2>
+        <h2>Course Complete!</h2>
         <p id="endSummary"></p>
         <div class="panel-footer">
-          <button id="replayBtn" class="primary-btn">Replay Slope</button>
+          <button id="replayBtn" class="primary-btn">Replay Course</button>
           <button id="topicBtn" class="primary-btn">Back to Arcade Hub</button>
         </div>
       </div>
@@ -377,8 +377,9 @@
 
   <script>
     // ======================================================
-    // CONFIG: CUSTOM QUESTIONS (back burner but wired)
+    // CONFIG
     // ======================================================
+    const TOTAL_GATES = 10;
     const CUSTOM_QUESTIONS = [];
     let useCustomQuestions = false;
 
@@ -481,32 +482,22 @@
       ], correctIndex: 0 },
       { id: 32, text: "Slope formula is:", choices: [
         "(y2 - y1) / (x2 - x1)", "(x2 - x1) / (y2 - y1)", "(x1 + x2) / (y1 + y2)", "y = mx + b"
-      ], correctIndex: 0 },
-      { id: 33, text: "A line with slope 1 passes through (2, 3). Which point is also on it?", choices: [
-        "(3, 3)", "(3, 4)", "(4, 3)", "(1, 5)"
-      ], correctIndex: 1 },
-      { id: 34, text: "The graph of y = -3x crosses the origin. What is its y-intercept?", choices: [
-        "0", "-3", "3", "Undefined"
-      ], correctIndex: 0 },
-      { id: 35, text: "If two lines have the same slope but different y-intercepts, they are:", choices: [
-        "Parallel", "Perpendicular", "Intersect at origin", "Vertical"
       ], correctIndex: 0 }
     ];
 
-    function pickRandomQuestions(bank, count = 20) {
+    function pickRandomQuestions(bank, count) {
       const shuffled = [...bank].sort(() => Math.random() - 0.5);
       return shuffled.slice(0, count);
     }
 
     // ======================================================
-    // CORE GAME STATE (same mechanics as Algebra City Run)
+    // CORE GAME STATE
     // ======================================================
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
 
-    const TILE_SIZE = 48;
-    const WORLD_TILES = 80;
-    const WORLD_WIDTH = WORLD_TILES * TILE_SIZE;
+    const WORLD_WIDTH = 4800; // shorter than the algebra course
+    const GROUND_BASE_Y = 280; // just a baseline reference
 
     const player = {
       x: 80,
@@ -521,7 +512,6 @@
     const GRAVITY = 1200;
     const PLAYER_SPEED = 260;
     const JUMP_STRENGTH = 520;
-    const GROUND_Y = 280;
 
     let cameraX = 0;
     let lastTime = 0;
@@ -531,46 +521,27 @@
 
     let score = 0;
     let firstTryCorrectCount = 0;
-    let questionsAnsweredCount = 0;
+    let gatesClearedCount = 0;
 
     let currentQuestions = [];
-    let questionBlocks = [];
-    let activeQuestionBlock = null;
+    let gates = [];
+    let activeGate = null;
 
-    // “Gaps” between rooftops
-    const pits = [
-      { x: 900,  width: 90 },
-      { x: 1400, width: 110 },
-      { x: 1950, width: 110 },
-      { x: 2550, width: 130 },
-      { x: 3200, width: 110 }
-    ];
-
-    // Platforms = rooftop ledges / billboards
-    const platforms = [
-      { x: 600,  y: 230, width: 130, height: 12 },
-      { x: 1000, y: 205, width: 140, height: 12 },
-      { x: 1350, y: 190, width: 120, height: 12 },
-      { x: 1750, y: 210, width: 130, height: 12 },
-      { x: 2100, y: 180, width: 140, height: 12 },
-      { x: 2300, y: 150, width: 130, height: 12 },
-      { x: 2700, y: 190, width: 160, height: 12 },
-      { x: 3100, y: 175, width: 140, height: 12 }
-    ];
-
-    // Patrolling “drone” enemies
-    const enemies = [
-      { x: 820,  y: GROUND_Y - 24, w: 28, h: 18, dir: 1,  speed: 70, minX: 820,  maxX: 950 },
-      { x: 1500, y: GROUND_Y - 24, w: 28, h: 18, dir: -1, speed: 80, minX: 1450, maxX: 1600 },
-      { x: 2150, y: GROUND_Y - 24, w: 28, h: 18, dir: 1,  speed: 75, minX: 2100, maxX: 2250 },
-      { x: 2900, y: GROUND_Y - 24, w: 28, h: 18, dir: -1, speed: 85, minX: 2850, maxX: 3000 }
+    const obstacles = [
+      // small box obstacles sitting on the slope
+      { x: 700,  w: 36, h: 24 },
+      { x: 1300, w: 40, h: 28 },
+      { x: 1900, w: 36, h: 24 },
+      { x: 2500, w: 40, h: 30 },
+      { x: 3100, w: 36, h: 24 },
+      { x: 3600, w: 42, h: 26 }
     ];
 
     const effects = [];
     let lastSafeX = player.x;
     let lastSafeY = player.y;
 
-    const endFlagX = WORLD_WIDTH - 160;
+    const endFlagX = WORLD_WIDTH - 120;
     const keys = { left: false, right: false };
     let hitCooldown = 0;
 
@@ -578,6 +549,23 @@
     let toastTimer = 0;
     let bannerText = "";
     let bannerTimer = 0;
+
+    // Terrain segments: piecewise-linear “hills”
+    const terrainSegments = [
+      { x1:    0, y1: GROUND_BASE_Y, x2:  800, y2: GROUND_BASE_Y },   // flat
+      { x1:  800, y1: GROUND_BASE_Y, x2: 1500, y2: 230 },             // uphill
+      { x1: 1500, y1: 230,            x2: 2200, y2: 310 },            // downhill
+      { x1: 2200, y1: 310,            x2: 3000, y2: 260 },            // uphill slightly
+      { x1: 3000, y1: 260,            x2: 3800, y2: 240 },            // gentle uphill
+      { x1: 3800, y1: 240,            x2: 4800, y2: 280 }             // downhill to finish
+    ];
+
+    // Optional pits: gaps in terrain where there’s no ground support
+    const pits = [
+      { x: 1050, width: 80 },
+      { x: 2050, width: 90 },
+      { x: 3350, width: 100 }
+    ];
 
     // ======================================================
     // UI ELEMENTS
@@ -606,7 +594,7 @@
     const jumpBtn  = document.getElementById('btnJump');
 
     // ======================================================
-    // FEEDBACK HELPERS
+    // HELPERS
     // ======================================================
     function showToast(text, duration = 1.1) {
       toastText = text;
@@ -618,8 +606,37 @@
       bannerTimer = duration;
     }
 
+    function getGroundY(x) {
+      // Check if over a pit
+      const inPit = pits.some(p => x > p.x && x < p.x + p.width);
+      if (inPit) {
+        return null; // no ground here
+      }
+
+      for (const seg of terrainSegments) {
+        if (x >= seg.x1 && x <= seg.x2) {
+          const t = (x - seg.x1) / (seg.x2 - seg.x1);
+          return seg.y1 + t * (seg.y2 - seg.y1);
+        }
+      }
+      // Before first or after last segment: clamp
+      if (x < terrainSegments[0].x1) return terrainSegments[0].y1;
+      const last = terrainSegments[terrainSegments.length - 1];
+      if (x > last.x2) return last.y2;
+      return GROUND_BASE_Y;
+    }
+
+    function rectIntersect(a, b) {
+      return !(
+        a.x + a.w <= b.x ||
+        a.x >= b.x + b.w ||
+        a.y + a.h <= b.y ||
+        a.y >= b.y + b.h
+      );
+    }
+
     // ======================================================
-    // JUMP HELPER
+    // INPUT
     // ======================================================
     function tryJump() {
       if (player.onGround && !gamePaused && !inQuestion && !levelComplete) {
@@ -628,9 +645,6 @@
       }
     }
 
-    // ======================================================
-    // INPUT HANDLING
-    // ======================================================
     document.addEventListener('keydown', (e) => {
       if (e.code === 'ArrowLeft' || e.code === 'KeyA') {
         keys.left = true;
@@ -693,79 +707,35 @@
     });
 
     // ======================================================
-    // QUESTION LOGIC
+    // QUESTIONS / GATES
     // ======================================================
-    function startNewRun() {
-      player.x = 80;
-      player.y = 180;
-      player.vx = 0;
-      player.vy = 0;
-      player.onGround = false;
-      cameraX = 0;
-      score = 0;
-      questionsAnsweredCount = 0;
-      firstTryCorrectCount = 0;
-      levelComplete = false;
-      gamePaused = false;
-      inQuestion = false;
-      hitCooldown = 0;
-      lastSafeX = player.x;
-      lastSafeY = player.y;
-      toastText = "";
-      toastTimer = 0;
-      bannerText = "";
-      bannerTimer = 0;
+    function setupGates() {
+      gates = [];
+      const spacing = (WORLD_WIDTH - 800) / TOTAL_GATES;
+      const baseX = 500;
 
-      qOverlay.classList.add('hidden');
-      endOverlay.classList.add('hidden');
-      hudStatus.textContent = "Status: Running";
-
-      if (useCustomQuestions && CUSTOM_QUESTIONS.length > 0) {
-        currentQuestions = CUSTOM_QUESTIONS.slice(0, 20);
-      } else {
-        currentQuestions = pickRandomQuestions(SLOPE_QUESTION_BANK, 20);
-      }
-
-      questionBlocks = [];
-      const spacing = (WORLD_WIDTH - 800) / 20;
-      const baseX = 260;
-
-      for (let i = 0; i < 20; i++) {
-        const worldX = baseX + spacing * i;
-        let y;
-
-        const plat = platforms.find(p => worldX >= p.x - 40 && worldX <= p.x + p.width + 40);
-
-        if (plat && i % 4 === 0) {
-          y = plat.y - 40;
-        } else {
-          const pattern = i % 3;
-          if (pattern === 0)      y = GROUND_Y - 90;
-          else if (pattern === 1) y = 210;
-          else                    y = 170;
-        }
-
-        questionBlocks.push({
+      for (let i = 0; i < TOTAL_GATES; i++) {
+        const gx = baseX + spacing * i;
+        const gy = getGroundY(gx) || GROUND_BASE_Y; // fallback
+        gates.push({
           id: i + 1,
           qIndex: i,
-          x: worldX,
-          y,
+          x: gx,
+          y: gy,
           completed: false,
           firstTry: true
         });
       }
-
-      updateHud();
     }
 
-    function openQuestion(block) {
+    function openGateQuestion(gate) {
       if (inQuestion || levelComplete) return;
       inQuestion = true;
       gamePaused = true;
-      activeQuestionBlock = block;
+      activeGate = gate;
 
-      const q = currentQuestions[block.qIndex];
-      qTitle.textContent = "Question " + block.id;
+      const q = currentQuestions[gate.qIndex];
+      qTitle.textContent = "Gate " + gate.id;
       qText.textContent = q.text;
       qFeedback.textContent = "";
       qChoices.innerHTML = "";
@@ -774,20 +744,20 @@
         const btn = document.createElement('button');
         btn.className = 'choice-btn';
         btn.textContent = String.fromCharCode(65 + idx) + ") " + choice;
-        btn.addEventListener('click', () => handleAnswer(block, q, idx, btn));
+        btn.addEventListener('click', () => handleAnswer(gate, q, idx, btn));
         qChoices.appendChild(btn);
       });
 
       qOverlay.classList.remove('hidden');
-      hudStatus.textContent = "Status: Answering";
+      hudStatus.textContent = "Status: Gate Question";
     }
 
-    function handleAnswer(block, question, selectedIndex, btnEl) {
+    function handleAnswer(gate, question, selectedIndex, btnEl) {
       const isCorrect = selectedIndex === question.correctIndex;
       if (isCorrect) {
         btnEl.classList.add('correct');
         qFeedback.textContent = "Correct!";
-        if (block.firstTry) {
+        if (gate.firstTry) {
           score += 25;
           firstTryCorrectCount++;
           showToast("+25 | First try!");
@@ -795,10 +765,10 @@
           score += 10;
           showToast("+10 | Got it!");
         }
-        block.completed = true;
-        questionsAnsweredCount = questionBlocks.filter(b => b.completed).length;
+        gate.completed = true;
+        gatesClearedCount = gates.filter(g => g.completed).length;
         updateHud();
-        showBanner(`Question ${questionsAnsweredCount} / 20 complete`);
+        showBanner(`Gate ${gatesClearedCount} / ${TOTAL_GATES} cleared`);
 
         setTimeout(() => {
           closeQuestion();
@@ -809,7 +779,7 @@
         qFeedback.textContent = "Incorrect. Try again.";
         score -= 10;
         showToast("-10 | Recheck your work");
-        block.firstTry = false;
+        gate.firstTry = false;
         updateHud();
       }
     }
@@ -818,12 +788,12 @@
       qOverlay.classList.add('hidden');
       inQuestion = false;
       gamePaused = false;
-      activeQuestionBlock = null;
+      activeGate = null;
       hudStatus.textContent = "Status: Running";
     }
 
     qCloseBtn.addEventListener('click', () => {
-      if (activeQuestionBlock && activeQuestionBlock.completed) {
+      if (activeGate && activeGate.completed) {
         closeQuestion();
       } else {
         qFeedback.textContent = "Answer correctly to continue.";
@@ -832,7 +802,7 @@
 
     function checkLevelComplete() {
       if (!levelComplete &&
-          questionsAnsweredCount === 20 &&
+          gatesClearedCount === TOTAL_GATES &&
           player.x + player.w > endFlagX) {
         triggerEndScreen();
       }
@@ -844,9 +814,9 @@
       inQuestion = false;
       hudStatus.textContent = "Status: Complete";
 
-      const accuracy = (firstTryCorrectCount / 20) * 100;
+      const accuracy = (firstTryCorrectCount / TOTAL_GATES) * 100;
       endSummary.textContent =
-        `Score: ${score} points | Accuracy: ${firstTryCorrectCount}/20 (${accuracy.toFixed(0)}%)`;
+        `Score: ${score} points | Accuracy: ${firstTryCorrectCount}/${TOTAL_GATES} (${accuracy.toFixed(0)}%)`;
       endOverlay.classList.remove('hidden');
     }
 
@@ -860,17 +830,48 @@
 
     function updateHud() {
       hudScore.textContent = "Score: " + score;
-      hudQuestions.textContent = "Questions: " + questionsAnsweredCount + " / 20";
-    }
-
-    function enemyFutureOverPit(nextX, enemy) {
-      const future = { x: nextX, y: enemy.y, w: enemy.w, h: enemy.h };
-      return pits.some(p => future.x + future.w > p.x && future.x < p.x + p.width);
+      hudQuestions.textContent = "Gates: " + gatesClearedCount + " / " + TOTAL_GATES;
     }
 
     // ======================================================
     // GAME LOOP & PHYSICS
     // ======================================================
+    function startNewRun() {
+      player.x = 80;
+      player.y = 180;
+      player.vx = 0;
+      player.vy = 0;
+      player.onGround = false;
+      cameraX = 0;
+      score = 0;
+      gatesClearedCount = 0;
+      firstTryCorrectCount = 0;
+      levelComplete = false;
+      gamePaused = false;
+      inQuestion = false;
+      hitCooldown = 0;
+      lastSafeX = player.x;
+      lastSafeY = player.y;
+      toastText = "";
+      toastTimer = 0;
+      bannerText = "";
+      bannerTimer = 0;
+      effects.length = 0;
+
+      qOverlay.classList.add('hidden');
+      endOverlay.classList.add('hidden');
+      hudStatus.textContent = "Status: Running";
+
+      if (useCustomQuestions && CUSTOM_QUESTIONS.length >= TOTAL_GATES) {
+        currentQuestions = CUSTOM_QUESTIONS.slice(0, TOTAL_GATES);
+      } else {
+        currentQuestions = pickRandomQuestions(SLOPE_QUESTION_BANK, TOTAL_GATES);
+      }
+
+      setupGates();
+      updateHud();
+    }
+
     function update(dt) {
       if (gamePaused) return;
 
@@ -895,7 +896,6 @@
       player.vy += GRAVITY * dt;
 
       const prevY = player.y;
-
       player.x += player.vx * dt;
       if (player.x < 0) player.x = 0;
       if (player.x + player.w > WORLD_WIDTH) player.x = WORLD_WIDTH - player.w;
@@ -903,13 +903,13 @@
       player.y += player.vy * dt;
       player.onGround = false;
 
-      // Platforms (billboard ledges)
-      for (const p of platforms) {
-        const withinX = player.x + player.w > p.x && player.x < p.x + p.width;
-        const wasAbove = prevY + player.h <= p.y;
-        const nowBelowTop = player.y + player.h >= p.y;
-        if (withinX && wasAbove && nowBelowTop && player.vy >= 0) {
-          player.y = p.y - player.h;
+      // Ground collision with slope terrain
+      const centerX = player.x + player.w / 2;
+      const groundY = getGroundY(centerX);
+      if (groundY !== null && player.y + player.h >= groundY) {
+        // Only snap if falling
+        if (player.vy >= 0) {
+          player.y = groundY - player.h;
           player.vy = 0;
           player.onGround = true;
           lastSafeX = player.x;
@@ -917,102 +917,70 @@
         }
       }
 
-      const overPit = pits.some(p => player.x + player.w > p.x && player.x < p.x + p.width);
-      if (!overPit && player.y + player.h >= GROUND_Y) {
-        player.y = GROUND_Y - player.h;
-        player.vy = 0;
-        player.onGround = true;
-        lastSafeX = player.x;
-        lastSafeY = player.y;
-      }
-
-      // Fell between rooftops
-      if (player.y > canvas.height + 40) {
+      // Pit fall
+      const inPit = pits.some(p => centerX > p.x && centerX < p.x + p.width);
+      if (inPit && player.y > canvas.height + 40) {
         player.x = lastSafeX;
         player.y = lastSafeY;
         player.vx = 0;
         player.vy = 0;
         score -= 20;
-        hudStatus.textContent = "Status: Fell between rooftops (-20)";
+        hudStatus.textContent = "Status: Fell in a gap (-20)";
         showToast("-20 | Mind the gap!");
         updateHud();
-      } else if (!overPit) {
-        if (!inQuestion && !levelComplete) {
-          hudStatus.textContent = "Status: Running";
-        }
+      } else if (!inQuestion && !levelComplete) {
+        hudStatus.textContent = "Status: Running";
       }
 
-      // Drone movement
-      for (const e of enemies) {
-        const nextX = e.x + e.dir * e.speed * dt;
-        if (enemyFutureOverPit(nextX, e)) {
-          e.dir *= -1;
-        } else {
-          e.x = nextX;
-        }
-
-        if (e.x < e.minX) {
-          e.x = e.minX;
-          e.dir = 1;
-        } else if (e.x + e.w > e.maxX) {
-          e.x = e.maxX - e.w;
-          e.dir = -1;
-        }
-      }
-
-      // Drone collisions
-      for (let i = enemies.length - 1; i >= 0; i--) {
-        const e = enemies[i];
-        if (rectIntersect(player, e)) {
-          const stomping = prevY + player.h <= e.y && player.vy >= 0;
-          if (stomping) {
-            enemies.splice(i, 1);
-            player.vy = -JUMP_STRENGTH * 0.5;
-            player.onGround = false;
-            score += 10;
-            showToast("+10 | Drone shutdown!");
-            updateHud();
-            effects.push({
-              x: e.x + e.w / 2,
-              y: e.y + e.h / 2,
-              radius: 4,
-              maxRadius: 18,
-              life: 0.25
-            });
-          } else if (hitCooldown === 0) {
-            score -= 15;
+      // Obstacles on slopes
+      for (const obs of obstacles) {
+        const obsGroundY = getGroundY(obs.x + obs.w / 2) || GROUND_BASE_Y;
+        const obsRect = {
+          x: obs.x,
+          y: obsGroundY - obs.h,
+          w: obs.w,
+          h: obs.h
+        };
+        if (rectIntersect(player, obsRect)) {
+          if (hitCooldown === 0) {
             hitCooldown = 1.0;
-            hudStatus.textContent = "Status: Hit by drone (-15)";
-            player.x += (e.dir > 0 ? -20 : 20);
-            showToast("-15 | Watch those drones");
+            score -= 15;
+            hudStatus.textContent = "Status: Hit obstacle (-15)";
+            showToast("-15 | Time your jumps");
             updateHud();
+            // Knockback slightly
+            player.x -= 30;
+            player.vx = 0;
           }
         }
       }
 
-      // Effects
+      // Update effects
       for (let i = effects.length - 1; i >= 0; i--) {
         const fx = effects[i];
         fx.life -= dt;
-        if (fx.life <= 0) {
-          effects.splice(i, 1);
-        }
+        if (fx.life <= 0) effects.splice(i, 1);
       }
 
-      // Question blocks
-      for (const block of questionBlocks) {
-        if (block.completed) continue;
-        const box = { x: block.x, y: block.y, w: 32, h: 32 };
-        if (rectIntersect(player, box)) {
-          openQuestion(block);
+      // Gate triggers (question gates act like barriers)
+      for (const gate of gates) {
+        if (gate.completed) continue;
+        const gateTriggerX = gate.x - 20;
+        if (player.x + player.w >= gateTriggerX) {
+          // Stop player just before gate
+          player.x = gateTriggerX - player.w;
+          player.vx = 0;
+          openGateQuestion(gate);
           break;
         }
       }
 
+      // End flag check
       if (!levelComplete && player.x + player.w > endFlagX) {
         checkLevelComplete();
       }
 
+      // Camera follow
       const halfCanvas = canvas.width / 2;
       const targetCameraX = player.x + player.w / 2 - halfCanvas;
       const maxCam = WORLD_WIDTH - canvas.width;
@@ -1021,17 +989,8 @@
       cameraX += (clampedTarget - cameraX) * SMOOTH;
     }
 
-    function rectIntersect(a, b) {
-      return !(
-        a.x + a.w <= b.x ||
-        a.x >= b.x + b.w ||
-        a.y + a.h <= b.y ||
-        a.y >= b.y + b.h
-      );
-    }
-
     // ======================================================
-    // DRAWING (neon urban skin)
+    // DRAW
     // ======================================================
     function drawBackground() {
       const grad = ctx.createLinearGradient(0, 0, 0, canvas.height);
@@ -1046,9 +1005,9 @@
       ctx.fillRect(0, canvas.height * 0.45, canvas.width, canvas.height * 0.55);
 
       ctx.fillStyle = "#0b1120";
-      for (let x = -200; x < WORLD_WIDTH + 200; x += 200) {
+      for (let x = -200; x < WORLD_WIDTH + 200; x += 220) {
         const sx = x - cameraX;
-        if (sx > canvas.width || sx < -200) continue;
+        if (sx > canvas.width || sx < -220) continue;
         const bHeight = 60 + ((x / 40) % 6) * 8;
         ctx.fillRect(sx + 40, canvas.height * 0.45 - bHeight, 60, bHeight);
 
@@ -1062,114 +1021,119 @@
       }
     }
 
-    function drawRooftopsAndGaps() {
-      // Base “street” below
+    function drawTerrain() {
+      // Fill under terrain
       ctx.fillStyle = "#020617";
-      ctx.fillRect(0, GROUND_Y, canvas.width, canvas.height - GROUND_Y);
+      ctx.fillRect(0, GROUND_BASE_Y, canvas.width, canvas.height - GROUND_BASE_Y);
 
-      const startWorldX = cameraX;
-      const endWorldX = cameraX + canvas.width;
-      const tileStart = Math.floor(startWorldX / TILE_SIZE);
-      const tileEnd = Math.ceil(endWorldX / TILE_SIZE);
+      ctx.beginPath();
+      // Start from left edge at first segment
+      const startX = Math.max(0, cameraX - 100);
+      const endX = Math.min(WORLD_WIDTH, cameraX + canvas.width + 100);
 
-      for (let t = tileStart; t < tileEnd; t++) {
-        const tileX = t * TILE_SIZE;
-        const screenX = tileX - cameraX;
+      let x = startX;
+      let first = true;
+      const step = 16;
 
-        const inPit = pits.some(p => tileX + TILE_SIZE > p.x && tileX < p.x + p.width);
-        if (!inPit) {
-          // Rooftop
-          ctx.fillStyle = "#111827";
-          ctx.fillRect(screenX, GROUND_Y, TILE_SIZE, canvas.height - GROUND_Y);
-          ctx.fillStyle = "#312e81";
-          ctx.fillRect(screenX, GROUND_Y - 12, TILE_SIZE, 12);
-          ctx.fillStyle = "#1e1b4b";
-          ctx.fillRect(screenX, GROUND_Y - 14, TILE_SIZE, 2);
+      while (x <= endX) {
+        const ground = getGroundY(x);
+        const screenX = x - cameraX;
+        const screenY = ground !== null ? ground : canvas.height;
+
+        if (first) {
+          ctx.moveTo(screenX, screenY);
+          first = false;
         } else {
-          // Gap shadow
-          ctx.fillStyle = "#020617";
-          ctx.fillRect(screenX, GROUND_Y, TILE_SIZE, canvas.height - GROUND_Y);
+          ctx.lineTo(screenX, screenY);
         }
+        x += step;
+      }
+
+      // Close polygon downwards
+      ctx.lineTo(endX - cameraX, canvas.height);
+      ctx.lineTo(startX - cameraX, canvas.height);
+      ctx.closePath();
+
+      ctx.fillStyle = "#111827";
+      ctx.fill();
+
+      // Highlight line on top of terrain
+      ctx.strokeStyle = "#312e81";
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      x = startX;
+      first = true;
+      while (x <= endX) {
+        const ground = getGroundY(x);
+        const screenX = x - cameraX;
+        const screenY = ground !== null ? ground : canvas.height;
+        if (first) {
+          ctx.moveTo(screenX, screenY);
+          first = false;
+        } else {
+          ctx.lineTo(screenX, screenY);
+        }
+        x += step;
+      }
+      ctx.stroke();
+
+      // Draw pits darker
+      ctx.fillStyle = "#020617";
+      for (const p of pits) {
+        const sx = p.x - cameraX;
+        ctx.fillRect(sx, GROUND_BASE_Y, p.width, canvas.height - GROUND_BASE_Y);
       }
     }
 
-    function drawPlatforms() {
-      platforms.forEach(p => {
-        const sx = p.x - cameraX;
+    function drawObstacles() {
+      for (const obs of obstacles) {
+        const gx = getGroundY(obs.x + obs.w / 2) || GROUND_BASE_Y;
+        const sx = obs.x - cameraX;
+        const sy = gx - obs.h;
+
         ctx.fillStyle = "#1f2937";
-        ctx.fillRect(sx, p.y, p.width, p.height);
+        ctx.fillRect(sx, sy, obs.w, obs.h);
         ctx.fillStyle = "#a855f7";
-        ctx.fillRect(sx, p.y + p.height - 3, p.width, 3); // neon strip
-      });
+        ctx.fillRect(sx, sy + obs.h - 4, obs.w, 4);
+      }
     }
 
-    function drawQuestionBlocks() {
+    function drawGates() {
       ctx.font = "10px 'Press Start 2P', system-ui, sans-serif";
       ctx.textAlign = "center";
-      ctx.textBaseline = "top";
+      ctx.textBaseline = "bottom";
 
-      questionBlocks.forEach(block => {
-        const sx = block.x - cameraX;
-        const sy = block.y;
+      gates.forEach(gate => {
+        const sx = gate.x - cameraX;
+        const gy = gate.y;
 
-        if (block.completed) {
-          ctx.fillStyle = "#4c1d95";
-        } else {
-          ctx.fillStyle = "#a855f7";
-        }
-        ctx.fillRect(sx, sy, 32, 32);
-        ctx.strokeStyle = "rgba(15,23,42,0.9)";
-        ctx.strokeRect(sx + 0.5, sy + 0.5, 31, 31);
+        const gateHeight = 70;
+        const gateWidth = 40;
 
-        ctx.fillStyle = "#020617";
-        ctx.fillText("?", sx + 16, sy + 10);
+        // Pillars
+        ctx.fillStyle = gate.completed ? "#4c1d95" : "#a855f7";
+        ctx.fillRect(sx - gateWidth/2, gy - gateHeight, 6, gateHeight);
+        ctx.fillRect(sx + gateWidth/2 - 6, gy - gateHeight, 6, gateHeight);
 
-        ctx.fillStyle = "#e5e7eb";
-        ctx.fillText(block.id, sx + 16, sy - 10);
-
-        if (block.completed) {
-          ctx.fillStyle = "#c4b5fd";
-          ctx.fillText("✓", sx + 26, sy - 10);
-        }
-      });
-    }
-
-    function drawEnemies() {
-      enemies.forEach(e => {
-        const sx = e.x - cameraX;
-        const sy = e.y;
-
-        // Drone body
-        ctx.fillStyle = "#111827";
-        ctx.fillRect(sx, sy, e.w, e.h);
-
-        // Glow ring
-        ctx.strokeStyle = "#a855f7";
-        ctx.lineWidth = 1.5;
-        ctx.strokeRect(sx + 2, sy + 2, e.w - 4, e.h - 4);
-
-        // Light
-        ctx.fillStyle = "#a855f7";
-        ctx.fillRect(sx + e.w/2 - 2, sy + 2, 4, 4);
-      });
-    }
-
-    function drawEffects() {
-      effects.forEach(fx => {
-        const progress = fx.life / 0.25;
-        const radius = fx.maxRadius * (1 - progress);
-        const sx = fx.x - cameraX;
-        const sy = fx.y;
-        ctx.fillStyle = `rgba(168,85,247,${progress})`;
+        // Arch top
         ctx.beginPath();
-        ctx.arc(sx, sy, radius, 0, Math.PI * 2);
+        ctx.arc(sx, gy - gateHeight, gateWidth / 2, Math.PI, 0);
         ctx.fill();
+
+        // Gate label
+        ctx.fillStyle = "#e9d5ff";
+        ctx.fillText(gate.id, sx, gy - gateHeight - 4);
+
+        if (gate.completed) {
+          ctx.fillText("✓", sx + 14, gy - gateHeight - 4);
+        }
       });
     }
 
     function drawEndFlag() {
       const sx = endFlagX - cameraX;
-      const baseY = GROUND_Y;
+      const ground = getGroundY(endFlagX) || GROUND_BASE_Y;
+      const baseY = ground;
 
       // Pole
       ctx.strokeStyle = "#e5e7eb";
@@ -1189,8 +1153,8 @@
       ctx.font = "8px 'Press Start 2P', system-ui, sans-serif";
       ctx.fillStyle = "#e9d5ff";
       ctx.textAlign = "center";
-      ctx.fillText("SLOPE", sx + 42, baseY - 76);
-      ctx.fillText("LAB", sx + 42, baseY - 66);
+      ctx.fillText("FINISH", sx + 42, baseY - 74);
+      ctx.fillText("LINE", sx + 42, baseY - 66);
     }
 
     function drawPlayer() {
@@ -1227,6 +1191,19 @@
       ctx.fillRect(sx + 17, sy + 6, 2, 2);
     }
 
+    function drawEffects() {
+      effects.forEach(fx => {
+        const progress = fx.life / 0.25;
+        const radius = fx.maxRadius * (1 - progress);
+        const sx = fx.x - cameraX;
+        const sy = fx.y;
+        ctx.fillStyle = `rgba(168,85,247,${progress})`;
+        ctx.beginPath();
+        ctx.arc(sx, sy, radius, 0, Math.PI * 2);
+        ctx.fill();
+      });
+    }
+
     function drawOverlays() {
       if (bannerTimer > 0 && bannerText) {
         ctx.font = "10px 'Press Start 2P', system-ui, sans-serif";
@@ -1258,13 +1235,12 @@
     function draw() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       drawBackground();
-      drawRooftopsAndGaps();
-      drawPlatforms();
-      drawQuestionBlocks();
-      drawEnemies();
-      drawEffects();
+      drawTerrain();
+      drawObstacles();
+      drawGates();
       drawEndFlag();
       drawPlayer();
+      drawEffects();
       drawOverlays();
     }
 
