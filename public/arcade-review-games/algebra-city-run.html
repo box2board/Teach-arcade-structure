@@ -2,8 +2,56 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Teach Arcade · Algebra City Run</title>
+
+  <!-- ===========================
+       SEO-Optimized Title & Meta
+  ============================ -->
+  <title>Algebra City Run · Free Algebra Review Game | Teach Arcade</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="Algebra City Run is a free arcade-style algebra review game from Teach Arcade. Sprint across neon rooftops while answering 20 questions on algebraic expressions, equations, and inequalities. Perfect for pre-algebra and Algebra 1 warm-ups or review.">
+
+  <meta name="keywords" content="algebra review game, algebra city run, math arcade game, pre algebra review, Algebra 1 practice, classroom math game, expressions and equations game, Teach Arcade">
+
+  <!-- ===========================
+       Open Graph (Social Sharing)
+  ============================ -->
+  <meta property="og:title" content="Algebra City Run · Free Algebra Review Game | Teach Arcade">
+  <meta property="og:description" content="Sprint across neon rooftops while answering 20 algebra questions on expressions, equations, and inequalities. A free, classroom-ready math game from Teach Arcade.">
+  <meta property="og:type" content="website">
+  <!-- Adjust image/URL as needed -->
+  <meta property="og:image" content="https://teacharcade.com/assets/teach-arcade-algebra-city-run.png">
+  <meta property="og:url" content="https://teacharcade.com/arcade-review-games/algebra-city-run.html">
+
+  <!-- ===========================
+       Schema.org Structured Data
+  ============================ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalGame",
+    "name": "Algebra City Run",
+    "genre": "Math, Algebra, Classroom Review Game",
+    "audience": {
+      "@type": "EducationalAudience",
+      "educationalLevel": "Middle School, High School"
+    },
+    "learningResourceType": "Review Game",
+    "description": "Algebra City Run is a free arcade-style algebra review game where students sprint across neon rooftops and answer 20 randomized questions on expressions, equations, inequalities, slope, and linear relationships.",
+    "educationalAlignment": {
+      "@type": "AlignmentObject",
+      "alignmentType": "teaches",
+      "educationalFramework": "Mathematics",
+      "targetName": "Algebraic expressions, equations, inequalities, slope, linear expressions"
+    },
+    "creator": {
+      "@type": "Organization",
+      "name": "Teach Arcade"
+    }
+  }
+  </script>
+
+  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
   <style>
@@ -279,7 +327,8 @@
   <h1>Teach Arcade · Algebra City Run</h1>
   <p class="subtitle">
     Sprint across neon rooftops, dodge gaps and drones, and hit all 20 question blocks
-    to review algebraic expressions and equations. Use ◀ ▶ / ▲ or on-screen buttons to move and jump.
+    to review algebraic expressions, equations, and inequalities. Use ◀ ▶ / ▲ or on-screen
+    buttons to move and jump.
   </p>
 
   <div id="modeBar">
@@ -557,8 +606,7 @@
     const qTitle = document.getElementById('qTitle');
     const qText = document.getElementById('qText');
     const qChoices = document.getElementById('choicesContainer');
-    the_qFeedback = document.getElementById('qFeedback');
-    const qFeedback = the_qFeedback;
+    const qFeedback = document.getElementById('qFeedback');
     const qCloseBtn = document.getElementById('qCloseBtn');
 
     const endOverlay = document.getElementById('endOverlay');
