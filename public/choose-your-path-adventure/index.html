@@ -1,1 +1,340 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Choose Your Path Adventures | Teach Arcade</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <meta name="description" content="Branching, choice-based learning adventures from Teach Arcade. Put students into historical moments and let their decisions shape the outcome.">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #020617;
+      color: #f9fafb;
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .page-shell {
+      max-width: 1000px;
+      width: 100%;
+      background: radial-gradient(circle at top, #1f2937 0, #020617 60%);
+      border-radius: 18px;
+      border: 1px solid #111827;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.7);
+      padding: 22px 20px 26px;
+    }
+
+    @media (min-width: 768px) {
+      .page-shell {
+        padding: 28px 32px 32px;
+      }
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .title-block h1 {
+      font-size: 1.6rem;
+      margin: 0 0 4px;
+    }
+
+    .title-block p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #9ca3af;
+      max-width: 640px;
+    }
+
+    .badge {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid #4b5563;
+      color: #e5e7eb;
+      background: rgba(15,23,42,0.9);
+      white-space: nowrap;
+    }
+
+    nav {
+      margin: 10px 0 18px;
+      font-size: 0.8rem;
+      color: #9ca3af;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      border-bottom: 1px solid #111827;
+      padding-bottom: 10px;
+    }
+
+    nav a {
+      color: #9ca3af;
+      text-decoration: none;
+      border-bottom: 1px dotted #4b5563;
+    }
+
+    nav a:hover {
+      color: #e5e7eb;
+      border-bottom-style: solid;
+    }
+
+    .intro-box {
+      background: rgba(15,23,42,0.95);
+      border-radius: 14px;
+      border: 1px solid #1f2937;
+      padding: 14px 16px 16px;
+      margin-bottom: 18px;
+      font-size: 0.9rem;
+      color: #e5e7eb;
+    }
+
+    .intro-box h2 {
+      margin: 0 0 6px;
+      font-size: 1rem;
+    }
+
+    .intro-box ul {
+      margin: 6px 0 0 18px;
+      padding: 0;
+    }
+
+    .intro-box li {
+      margin-bottom: 3px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    @media (min-width: 640px) {
+      .grid {
+        grid-template-columns: repeat(2, minmax(0,1fr));
+      }
+    }
+
+    .adventure-card {
+      position: relative;
+      background: linear-gradient(135deg, #030712, #111827);
+      border-radius: 14px;
+      border: 1px solid #1f2937;
+      padding: 14px 14px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .adventure-card h3 {
+      margin: 0;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .adventure-tag {
+      font-size: 0.7rem;
+      padding: 2px 7px;
+      border-radius: 999px;
+      border: 1px solid #374151;
+      color: #c7d2fe;
+      background: rgba(37,99,235,0.12);
+    }
+
+    .adventure-meta {
+      font-size: 0.75rem;
+      color: #9ca3af;
+    }
+
+    .adventure-desc {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      margin-top: 2px;
+    }
+
+    .pill-row {
+      margin-top: 6px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .pill {
+      font-size: 0.7rem;
+      padding: 2px 7px;
+      border-radius: 999px;
+      border: 1px solid #374151;
+      color: #d1d5db;
+      background: rgba(15,23,42,0.8);
+    }
+
+    .card-footer {
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+    }
+
+    .play-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 0.8rem;
+      border: 1px solid #4f46e5;
+      background: linear-gradient(to right, #4f46e5, #7c3aed);
+      color: #f9fafb;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .play-link span.icon {
+      font-size: 0.9rem;
+    }
+
+    .status-pill {
+      font-size: 0.7rem;
+      padding: 2px 7px;
+      border-radius: 999px;
+      border: 1px solid #4b5563;
+      color: #9ca3af;
+      background: rgba(15,23,42,0.9);
+      white-space: nowrap;
+    }
+
+    .status-pill.live {
+      border-color: #22c55e;
+      color: #bbf7d0;
+      background: rgba(22,163,74,0.18);
+    }
+
+    .footer-note {
+      margin-top: 16px;
+      font-size: 0.75rem;
+      color: #6b7280;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <header>
+      <div class="title-block">
+        <h1>Choose Your Path Adventures</h1>
+        <p>
+          Time-jump into key moments in history. Students make choices as ordinary people
+          living through extraordinary events—and see how their decisions shape the outcome.
+        </p>
+      </div>
+      <div class="badge">Teach Arcade · Interactive Stories</div>
+    </header>
+
+    <nav>
+      <div>
+        <!-- Adjust this link if your main homepage path is different -->
+        <a href="../index.html">&larr; Back to Teach Arcade Home</a>
+      </div>
+      <div>Best used as 10–15 minute station, bell-ringer, or mini-lesson.</div>
+    </nav>
+
+    <section class="intro-box">
+      <h2>How to Use These Adventures</h2>
+      <p>Each adventure is:</p>
+      <ul>
+        <li>Designed for ~10–15 minutes of play time.</li>
+        <li>Perfect for pairs or small groups at a single device.</li>
+        <li>Built around branching decisions with multiple possible outcomes.</li>
+        <li>Easy to debrief with whole-class discussion after the ending.</li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="grid">
+
+        <!-- ADVENTURE 1: Cuban Missile Crisis -->
+        <article class="adventure-card">
+          <h3>
+            13 Days: Cuban Missile Crisis Survival
+            <span class="adventure-tag">Cold War</span>
+          </h3>
+          <div class="adventure-meta">
+            Role: High school student near Washington, D.C. · October 1962
+          </div>
+          <p class="adventure-desc">
+            Rumors, sirens, speeches, and store panics—experience the Cuban Missile Crisis
+            from the perspective of a teenager trying to balance fear, facts, and preparation.
+          </p>
+
+          <div class="pill-row">
+            <span class="pill">Focus: Cold War &amp; nuclear tension</span>
+            <span class="pill">Skills: Media literacy &amp; decision-making</span>
+            <span class="pill">Multiple endings based on choices</span>
+          </div>
+
+          <div class="card-footer">
+            <a class="play-link" href="cuban-missile-crisis.html">
+              <span class="icon">▶</span>
+              <span>Play Adventure</span>
+            </a>
+            <span class="status-pill live">Live &amp; classroom ready</span>
+          </div>
+        </article>
+
+        <!-- ADVENTURE 2: Placeholder for future games -->
+        <article class="adventure-card">
+          <h3>
+            Coming Soon: Other Historical Survival Modes
+            <span class="adventure-tag">In Development</span>
+          </h3>
+          <div class="adventure-meta">
+            Planned topics: Revolutions, pandemics, migrations, and more.
+          </div>
+          <p class="adventure-desc">
+            This space will hold new adventures using the same choice-based engine—
+            from life in the trenches of WWI to surviving the Dust Bowl as a farm family.
+          </p>
+
+          <div class="pill-row">
+            <span class="pill">Template: same engine as 13 Days</span>
+            <span class="pill">Easy to clone &amp; re-skin</span>
+          </div>
+
+          <div class="card-footer">
+            <span class="status-pill">Coming soon to Teach Arcade</span>
+            <span style="font-size:0.75rem;color:#9ca3af;">
+              You can add new adventures as separate HTML files in this folder.
+            </span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <div class="footer-note">
+      Tip: Put this page in your LMS or class website so students can access adventures directly.
+    </div>
+  </div>
+</body>
+</html>
