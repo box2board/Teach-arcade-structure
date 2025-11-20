@@ -62,28 +62,9 @@
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
-  <style>
-    /* (UNMODIFIED — all your original CSS goes here exactly as-is) */
-  </style>
-</head>
-
-<body>
-
-<!-- ===========================
-     SEMANTIC + ACCESSIBILITY
-=========================== -->
-<header>
-  <h1>Teach Arcade · WWI Trench Run</h1>
-  <p class="subtitle">
-    Explore the trenches, dodge pits and rats, reach 20 question markers, and review major WWI concepts.
-    Use ◀ ▶ / ▲ to move and jump. Touch ? blocks to answer.
-  </p>
-</header>
-
-<main>
-  <!-- (THE REST OF YOUR EXACT HTML CODE FOLLOWS HERE — 
-       gameContainer, HUD, overlays, canvas, scripts, etc.) -->
-
+  <!-- ===========================
+       MAIN GAME STYLES
+  ============================ -->
   <style>
     :root {
       --sky: #3b4c8b;
@@ -351,57 +332,62 @@
     }
   </style>
 </head>
+
 <body>
-  <h1>Teach Arcade · WWI Trench Run</h1>
-  <p class="subtitle">
-    Explore the trenches, dodge pits and rats, reach all 20 question markers, and test your World War I knowledge.
-    Use ◀ ▶ / ▲ or on-screen buttons to move and jump. Touch ? blocks to answer.
-  </p>
+  <header>
+    <h1>Teach Arcade · WWI Trench Run</h1>
+    <p class="subtitle">
+      Explore the trenches, dodge pits and rats, reach all 20 question markers, and test your World War I knowledge.
+      Use ◀ ▶ / ▲ or on-screen buttons to move and jump. Touch ? blocks to answer.
+    </p>
+  </header>
 
-  <div id="modeBar">
-    <span>Question Mode:</span>
-    <button id="modePreloaded" class="pill-btn active">Preloaded WWI Bank</button>
-    <button id="modeCustom" class="pill-btn">Custom (if configured)</button>
-  </div>
-
-  <div id="gameContainer">
-    <canvas id="gameCanvas" width="960" height="360"></canvas>
-
-    <div id="hud">
-      <span id="hudScore">Score: 0</span>
-      <span id="hudQuestions">Questions: 0 / 20</span>
-      <span id="hudStatus">Status: Running</span>
+  <main>
+    <div id="modeBar">
+      <span>Question Mode:</span>
+      <button id="modePreloaded" class="pill-btn active">Preloaded WWI Bank</button>
+      <button id="modeCustom" class="pill-btn">Custom (if configured)</button>
     </div>
 
-    <div id="touchControls">
-      <button id="btnLeft" class="ctrl-btn" aria-label="Move left">◀</button>
-      <button id="btnJump" class="ctrl-btn" aria-label="Jump">▲</button>
-      <button id="btnRight" class="ctrl-btn" aria-label="Move right">▶</button>
-    </div>
+    <div id="gameContainer">
+      <canvas id="gameCanvas" width="960" height="360"></canvas>
 
-    <div id="questionOverlay" class="hidden">
-      <div class="panel">
-        <h2 id="qTitle">Question</h2>
-        <p id="qText"></p>
-        <div class="choices" id="choicesContainer"></div>
-        <div class="panel-footer">
-          <span id="qFeedback"></span>
-          <button id="qCloseBtn" class="primary-btn">Resume</button>
+      <div id="hud">
+        <span id="hudScore">Score: 0</span>
+        <span id="hudQuestions">Questions: 0 / 20</span>
+        <span id="hudStatus">Status: Running</span>
+      </div>
+
+      <div id="touchControls">
+        <button id="btnLeft" class="ctrl-btn" aria-label="Move left">◀</button>
+        <button id="btnJump" class="ctrl-btn" aria-label="Jump">▲</button>
+        <button id="btnRight" class="ctrl-btn" aria-label="Move right">▶</button>
+      </div>
+
+      <div id="questionOverlay" class="hidden">
+        <div class="panel">
+          <h2 id="qTitle">Question</h2>
+          <p id="qText"></p>
+          <div class="choices" id="choicesContainer"></div>
+          <div class="panel-footer">
+            <span id="qFeedback"></span>
+            <button id="qCloseBtn" class="primary-btn">Resume</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="endOverlay" class="hidden">
+        <div class="panel">
+          <h2>Level Complete!</h2>
+          <p id="endSummary"></p>
+          <div class="panel-footer">
+            <button id="replayBtn" class="primary-btn">Replay WWI</button>
+            <button id="topicBtn" class="primary-btn">Choose Another Topic</button>
+          </div>
         </div>
       </div>
     </div>
-
-    <div id="endOverlay" class="hidden">
-      <div class="panel">
-        <h2>Level Complete!</h2>
-        <p id="endSummary"></p>
-        <div class="panel-footer">
-          <button id="replayBtn" class="primary-btn">Replay WWI</button>
-          <button id="topicBtn" class="primary-btn">Choose Another Topic</button>
-        </div>
-      </div>
-    </div>
-  </div>
+  </main>
 
   <script>
     // ======================================================
@@ -754,7 +740,7 @@
     const endOverlay = document.getElementById('endOverlay');
     const endSummary = document.getElementById('endSummary');
     const replayBtn = document.getElementById('replayBtn');
-    const topicBtn = document.getElementById('topicBtn');
+    the topicBtn = document.getElementById('topicBtn');
 
     const modePreloadedBtn = document.getElementById('modePreloaded');
     const modeCustomBtn = document.getElementById('modeCustom');
