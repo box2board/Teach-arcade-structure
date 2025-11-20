@@ -2,8 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Teach Arcade · Moon Mission Run</title>
+  <title>Moon Mission Run · Earth &amp; Space Science Review Game | Teach Arcade</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO -->
+  <meta name="description" content="Moon Mission Run is a free Earth and Space science review game for middle school. Students review gravity, moon phases, tides, seasons, orbits, and basic astronomy while playing a side-scrolling arcade game.">
+  <meta name="keywords" content="Earth and space science game, moon phases review game, gravity tides seasons orbits, middle school science test prep, Teach Arcade review games">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://teacharcade.com/arcade-review-games/moon-mission-run.html">
+
+  <meta property="og:title" content="Moon Mission Run · Earth &amp; Space Science Review Game">
+  <meta property="og:description" content="Bounce across the lunar surface and answer 20 Earth &amp; Space science questions on gravity, moon phases, tides, seasons, and orbits. Free classroom review game from Teach Arcade.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Teach Arcade">
+  <meta property="og:url" content="https://teacharcade.com/arcade-review-games/moon-mission-run.html">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Moon Mission Run · Earth &amp; Space Science Review Game">
+  <meta name="twitter:description" content="Side-scrolling Earth &amp; Space science review game on gravity, moon phases, tides, seasons, and orbits. Free classroom game from Teach Arcade.">
+
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
   <style>
@@ -271,6 +288,16 @@
         font-size: 0.7rem;
       }
     }
+
+    /* Small SEO-friendly info block under game */
+    .about-game {
+      max-width: 900px;
+      margin-top: 14px;
+      font-size: 0.78rem;
+      line-height: 1.45;
+      opacity: 0.9;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -325,6 +352,13 @@
       </div>
     </div>
   </div>
+
+  <p class="about-game">
+    Moon Mission Run is an Earth &amp; Space science review game for grades 6–9. As students jump across
+    the Moon’s surface, they answer 20 multiple-choice questions about gravity, the Moon’s orbit, moon
+    phases, eclipses, tides, seasons, plate tectonics, and basic astronomy—perfect for warm-ups, test prep,
+    or science centers.
+  </p>
 
   <script>
     // ======================================================
@@ -514,10 +548,11 @@
       onGround: false
     };
 
-    // Low gravity / floaty Moon feel
-    const GRAVITY = 600;       // lower than WWI
-    const PLAYER_SPEED = 240;  // slightly slower run
-    const JUMP_STRENGTH = 520; // nice floaty arc
+    // Low gravity / floaty Moon feel (adjusted)
+    const GRAVITY = 360;          // lower gravity = slower descent
+    const PLAYER_SPEED = 240;     // keep run speed similar
+    const JUMP_STRENGTH = 360;    // reduced jump so height is lower
+    const MAX_FALL_SPEED = 420;   // cap downward speed for floaty landings
     const GROUND_Y = 280;
 
     let cameraX = 0;
@@ -897,8 +932,11 @@
       else if (keys.right) player.vx = PLAYER_SPEED;
       else                player.vx = 0;
 
-      // Low gravity
+      // Low gravity with capped fall speed
       player.vy += GRAVITY * dt;
+      if (player.vy > MAX_FALL_SPEED) {
+        player.vy = MAX_FALL_SPEED;
+      }
 
       const prevY = player.y;
 
@@ -1073,7 +1111,6 @@
     }
 
     function drawSurfaceAndCraters() {
-      ctx.fillStyle = "var(--moon-surface)";
       ctx.fillStyle = "#dadde6";
       ctx.fillRect(0, GROUND_Y, canvas.width, canvas.height - GROUND_Y);
 
