@@ -2,362 +2,407 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>13 Days Style Mockups</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Arcade Review Games · Teach Arcade</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- Basic SEO -->
+  <meta name="description" content="Free arcade-style review games for the classroom. Play WWI Trench Run, Moon Mission Run, Grammar Gauntlet, Algebra City Run, Slope Street Sprint, and Pyramid Escape Run to review key concepts in a fun, interactive way.">
+  <meta name="keywords" content="arcade review games, classroom review games, WWI game, Moon Mission Run, Grammar Gauntlet, Algebra City Run, Slope Street Sprint, Pyramid Escape Run, Ancient Egypt game, math review game, ELA review game, social studies review game, Teach Arcade">
+  <meta property="og:title" content="Arcade Review Games · Teach Arcade">
+  <meta property="og:description" content="Side-scrolling, arcade-style review games for real classrooms. Review WWI, Ancient Egypt, grammar, algebra, slope, and earth & space science with interactive games.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://teacharcade.com/arcade-review-games/">
+  <meta property="og:image" content="https://teacharcade.com/assets/teach-arcade-arcade-review-games.png">
+
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <style>
-    * { box-sizing:border-box; }
+    :root {
+      --bg: #050714;
+      --panel: #101321;
+      --accent: #ffb300;
+      --accent-soft: rgba(255,179,0,0.12);
+      --text: #f9f9ff;
+      --muted: #a4a7c4;
+      --border: rgba(255,255,255,0.12);
+      --tile-bg: #15192b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
-      margin:0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:#020617;
-      color:#e5e7eb;
-      padding:16px;
+      background: radial-gradient(circle at top, #141a33 0%, #050714 70%);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 20px 12px 40px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 1040px;
+    }
+
+    header {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .crumbs {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .crumbs a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .crumbs a:hover {
+      text-decoration: underline;
     }
 
     h1 {
-      font-size:1.4rem;
-      margin:0 0 12px;
+      font-family: "Press Start 2P", system-ui, sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-shadow: 0 2px 0 #000;
     }
 
-    .wrapper {
-      display:grid;
-      grid-template-columns:1fr;
-      gap:16px;
+    .subtitle {
+      font-size: 0.88rem;
+      color: var(--muted);
+      max-width: 640px;
+      line-height: 1.5;
     }
 
-    @media (min-width:900px){
-      .wrapper { grid-template-columns:1fr 1fr; }
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 6px;
+      font-size: 0.7rem;
     }
 
-    .panel {
-      background:radial-gradient(circle at top, #111827 0, #020617 60%);
-      border-radius:16px;
-      border:1px solid #1f2937;
-      box-shadow:0 18px 40px rgba(0,0,0,0.6);
-      padding:14px 16px 16px;
+    .pill {
+      border-radius: 999px;
+      padding: 3px 10px;
+      border: 1px solid var(--border);
+      background: rgba(0,0,0,0.4);
+      color: var(--muted);
     }
 
-    .panel-title {
-      font-size:0.95rem;
-      font-weight:600;
-      margin-bottom:4px;
+    .pill.highlight {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: var(--accent);
     }
 
-    .panel-sub {
-      font-size:0.8rem;
-      color:#9ca3af;
-      margin-bottom:10px;
+    .game-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 10px;
     }
 
-    /* Shared HUD bar */
-    .crisis-bar {
-      margin-bottom:10px;
-    }
-    .crisis-label {
-      font-size:0.7rem;
-      text-transform:uppercase;
-      letter-spacing:0.08em;
-      color:#a5b4fc;
-      margin-bottom:4px;
-    }
-    .crisis-track {
-      height:8px;
-      border-radius:999px;
-      background:linear-gradient(to right,#0f172a,#111827);
-      border:1px solid #1e293b;
-      overflow:hidden;
-    }
-    .crisis-fill {
-      height:100%;
-      width:55%;
-      border-radius:999px;
-      background:linear-gradient(to right,#22c55e,#eab308,#ef4444);
-      box-shadow:0 0 10px rgba(249,250,251,0.6);
+    .game-card {
+      background: var(--tile-bg);
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      padding: 14px 14px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.65);
     }
 
-    /* === OPTION A: Minimal Vector === */
-
-    .scene-a {
-      border-radius:14px;
-      border:1px solid #1e293b;
-      overflow:hidden;
-      background:#020617;
+    .game-badge-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.7rem;
+      color: var(--muted);
     }
 
-    .scene-a-top {
-      padding:10px 14px 0;
+    .badge {
+      border-radius: 999px;
+      padding: 2px 8px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(0,0,0,0.35);
     }
 
-    .scene-a-title {
-      font-size:0.9rem;
-      font-weight:600;
+    .badge.subject {
+      border-color: var(--accent);
+      color: var(--accent);
     }
 
-    .scene-a-meta {
-      font-size:0.75rem;
-      color:#9ca3af;
-      margin-bottom:6px;
+    .game-title {
+      font-weight: 650;
+      font-size: 0.95rem;
     }
 
-    .scene-a-world {
-      position:relative;
-      height:150px;
-      background:
-        radial-gradient(circle at 0% 0%, rgba(248,250,252,0.1), transparent 60%),
-        radial-gradient(circle at 80% 20%, rgba(129,140,248,0.25), transparent 60%),
-        linear-gradient(to bottom,#020617,#020617 55%,#020617 56%,#020617);
+    .game-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.4;
     }
 
-    .scene-a-floor {
-      position:absolute;
-      left:0;right:0;
-      bottom:0;
-      height:32%;
-      background:
-        linear-gradient(to top,#020617,#020617 20%,rgba(15,23,42,0.9)),
-        repeating-linear-gradient(to right,
-          rgba(148,163,184,0.38) 0, rgba(148,163,184,0.38) 2px,
-          transparent 2px, transparent 26px);
-      border-top:1px solid rgba(148,163,184,0.5);
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 0.74rem;
+      color: var(--muted);
+      margin-top: 4px;
     }
 
-    .a-player,
-    .a-npc {
-      position:absolute;
-      bottom:26px;
-      width:56px;
-      height:88px;
-      border-radius:18px;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:flex-start;
-      transform:translateX(-50%);
-      box-shadow:0 10px 22px rgba(15,23,42,0.95);
+    .meta-row span {
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.08);
     }
 
-    .a-player {
-      left:26%;
-      background:
-        radial-gradient(circle at 20% 0%,rgba(248,250,252,0.4),transparent 60%),
-        linear-gradient(to bottom,#22c55e,#16a34a);
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 8px;
+      font-size: 0.74rem;
+      color: var(--muted);
     }
 
-    .a-npc {
-      left:74%;
-      background:
-        radial-gradient(circle at 20% 0%,rgba(248,250,252,0.6),transparent 60%),
-        linear-gradient(to bottom,#38bdf8,#1d4ed8);
-      box-shadow:0 0 20px rgba(96,165,250,0.7);
+    .play-btn {
+      border-radius: 999px;
+      border: none;
+      padding: 7px 14px;
+      background: var(--accent);
+      color: #111;
+      font-weight: 650;
+      cursor: pointer;
+      font-size: 0.78rem;
+      font-family: "Press Start 2P", system-ui, sans-serif;
+      text-transform: uppercase;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
 
-    .a-player::before,
-    .a-npc::before {
-      content: attr(data-emoji);
-      margin-top:-16px;
-      width:26px;
-      height:26px;
-      border-radius:999px;
-      background:#020617;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:18px;
-      box-shadow:0 0 8px rgba(15,23,42,0.8);
+    .play-btn span {
+      font-size: 0.9rem;
     }
 
-    .a-label {
-      position:absolute;
-      bottom:90px;
-      left:50%;
-      transform:translateX(-50%);
-      padding:2px 10px;
-      border-radius:999px;
-      font-size:0.7rem;
-      background:rgba(15,23,42,0.92);
-      border:1px solid rgba(148,163,184,0.8);
-      white-space:nowrap;
+    .play-btn:hover {
+      filter: brightness(1.06);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.7);
     }
 
-    .scene-a-bottom {
-      padding:10px 14px 12px;
-      font-size:0.85rem;
-      color:#e5e7eb;
+    .notes {
+      margin-top: 18px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: #101322;
+      border: 1px dashed rgba(255,255,255,0.2);
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.4;
     }
 
-    /* === OPTION B: Retro Pixel Style === */
-
-    .scene-b {
-      border-radius:14px;
-      border:1px solid #1e293b;
-      overflow:hidden;
-      background:#020617;
-    }
-
-    .scene-b-top { padding:10px 14px 0; }
-
-    .scene-b-title {
-      font-size:0.9rem;
-      font-weight:600;
-    }
-
-    .scene-b-meta {
-      font-size:0.75rem;
-      color:#9ca3af;
-      margin-bottom:6px;
-    }
-
-    .scene-b-world {
-      position:relative;
-      height:150px;
-      image-rendering:pixelated;
-      background:
-        linear-gradient(to bottom,#020617 0,#020617 60%,#020617 60%,#020617 100%);
-    }
-
-    /* “Pixel” background: chalkboard & lockers */
-    .scene-b-bg {
-      position:absolute;
-      inset:0;
-      background:
-        repeating-linear-gradient(to right,
-          #020b3a 0,#020b3a 3px,
-          #0f172a 3px,#0f172a 14px),
-        linear-gradient(to bottom,#020b3a 0,#020b3a 48%,#020617 48%,#020617 100%);
-    }
-
-    .scene-b-floor {
-      position:absolute;
-      left:0;right:0;bottom:0;
-      height:40%;
-      background:
-        repeating-linear-gradient(to right,
-          #0f172a 0,#0f172a 4px,
-          #020617 4px,#020617 8px);
-      border-top:2px solid #111827;
-    }
-
-    /* Pixel player & NPC (8-bit rectangles) */
-    .b-player,
-    .b-npc {
-      position:absolute;
-      bottom:30px;
-      width:32px;
-      height:48px;
-      background:#22c55e;
-      box-shadow:0 0 0 3px #020617;
-      transform:translateX(-50%);
-    }
-
-    .b-player::before,
-    .b-npc::before {
-      content:"";
-      position:absolute;
-      left:4px;right:4px;top:-12px;
-      height:12px;
-      background:#e5e7eb;
-      box-shadow:0 0 0 3px #020617;
-    }
-
-    .b-player { left:26%; }
-    .b-npc {
-      left:74%;
-      background:#38bdf8;
-      box-shadow:0 0 0 3px #020617,0 0 10px rgba(96,165,250,0.85);
-    }
-
-    .b-label {
-      position:absolute;
-      bottom:86px;
-      left:74%;
-      transform:translateX(-50%);
-      background:#020617;
-      color:#e5e7eb;
-      padding:2px 6px;
-      font-size:9px;
-      border:2px solid #e5e7eb;
-      text-transform:uppercase;
-    }
-
-    .scene-b-bottom {
-      padding:10px 14px 12px;
-      font-size:0.8rem;
-      color:#e5e7eb;
+    @media (max-width: 640px) {
+      h1 {
+        font-size: 0.9rem;
+      }
+      .subtitle {
+        font-size: 0.8rem;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>13 Days — Visual Style Mockups</h1>
-  <p style="font-size:0.9rem;color:#9ca3af;margin-bottom:16px;">
-    Left: <strong>Option A – Minimal Vector</strong>. Right: <strong>Option B – Retro Pixel.</strong> 
-    This is just visual; no gameplay yet.
-  </p>
-
-  <div class="wrapper">
-
-    <!-- OPTION A PANEL -->
-    <section class="panel">
-      <div class="panel-title">Option A · Minimal Vector Style</div>
-      <div class="panel-sub">Clean, modern, smooth gradients — matches Teach Arcade UI.</div>
-
-      <div class="crisis-bar">
-        <div class="crisis-label">Crisis Tension</div>
-        <div class="crisis-track"><div class="crisis-fill"></div></div>
+  <div class="page">
+    <header>
+      <div class="crumbs">
+        <a href="/">Teach Arcade</a> · Arcade Review Games
       </div>
+      <h1>Arcade Review Games</h1>
+      <p class="subtitle">
+        Side-scrolling, arcade-style review games designed for real classrooms.
+        Use them as a warm-up, review station, or test prep activity while students
+        answer standards-aligned questions to advance through each level.
+      </p>
+      <div class="pill-row">
+        <div class="pill highlight">Interactive review games</div>
+        <div class="pill">No logins · No accounts</div>
+        <div class="pill">Designed for teacher use</div>
+      </div>
+    </header>
 
-      <div class="scene-a">
-        <div class="scene-a-top">
-          <div class="scene-a-title">Strange Assembly</div>
-          <div class="scene-a-meta">Oct 16, 1962 · School Gym</div>
-        </div>
-
-        <div class="scene-a-world">
-          <div class="scene-a-floor"></div>
-          <div class="a-player" data-emoji="🙂"></div>
-          <div class="a-npc" data-emoji="🧑‍🏫">
-            <div class="a-label">Principal Hayes</div>
+    <main>
+      <section class="game-grid">
+        <!-- WWI TRENCH RUN CARD -->
+        <article class="game-card">
+          <div class="game-badge-row">
+            <span class="badge subject">Social Studies · WWI</span>
+            <span class="badge">Grades 7–10</span>
           </div>
-        </div>
+          <div class="game-title">WWI Trench Run</div>
+          <p class="game-desc">
+            Dash through the trenches, leap over shell holes, and dodge trench rats while
+            answering 20 multiple-choice questions about World War I causes, trench warfare,
+            U.S. involvement, and the Treaty of Versailles.
+          </p>
+          <div class="meta-row">
+            <span>20-question review</span>
+            <span>Independent or whole-class</span>
+            <span>Keyboard &amp; touch controls</span>
+          </div>
+          <div class="card-footer">
+            <a href="/arcade-review-games/wwi-trench-run.html" class="play-btn">
+              <span>▶</span> Play Game
+            </a>
+            <span>Est. 10–15 minutes</span>
+          </div>
+        </article>
 
-        <div class="scene-a-bottom">
-          You’ve walked into the emergency assembly. Principal Hayes looks nervous.
-          In the real game, you’d walk up to him, then choose how to respond.
-        </div>
-      </div>
-    </section>
+        <!-- MOON MISSION RUN (EARTH & SPACE SCIENCE) -->
+        <article class="game-card">
+          <div class="game-badge-row">
+            <span class="badge subject">Science · Earth &amp; Space</span>
+            <span class="badge">Grades 6–9</span>
+          </div>
+          <div class="game-title">Moon Mission Run</div>
+          <p class="game-desc">
+            Bounce across the lunar surface, avoid rogue exploration bots, and reach 20 question
+            beacons that review gravity, moon phases, seasons, tides, orbits, and basic space science.
+          </p>
+          <div class="meta-row">
+            <span>20-question review</span>
+            <span>Floaty low-gravity physics</span>
+            <span>Keyboard &amp; touch controls</span>
+          </div>
+          <div class="card-footer">
+            <a href="/arcade-review-games/moon-mission-run.html" class="play-btn">
+              <span>▶</span> Play Game
+            </a>
+            <span>Est. 10–15 minutes</span>
+          </div>
+        </article>
 
-    <!-- OPTION B PANEL -->
-    <section class="panel">
-      <div class="panel-title">Option B · Retro Pixel Style</div>
-      <div class="panel-sub">Chunky “8-bit” blocks, pixel floor pattern, arcade feel.</div>
+        <!-- GRAMMAR GAUNTLET (ELA) -->
+        <article class="game-card">
+          <div class="game-badge-row">
+            <span class="badge subject">ELA · Grammar &amp; Writing</span>
+            <span class="badge">Grades 6–10</span>
+          </div>
+          <div class="game-title">Grammar Gauntlet</div>
+          <p class="game-desc">
+            Race across the notebook page while tackling 20 grammar and mechanics questions:
+            parts of speech, sentence types, punctuation, capitalization, and common usage errors.
+          </p>
+          <div class="meta-row">
+            <span>20-question review</span>
+            <span>Fragments, run-ons, agreement</span>
+            <span>Keyboard &amp; touch controls</span>
+          </div>
+          <div class="card-footer">
+            <a href="/arcade-review-games/grammar-gauntlet.html" class="play-btn">
+              <span>▶</span> Play Game
+            </a>
+            <span>Est. 10–15 minutes</span>
+          </div>
+        </article>
 
-      <div class="crisis-bar">
-        <div class="crisis-label">Crisis Tension</div>
-        <div class="crisis-track"><div class="crisis-fill"></div></div>
-      </div>
+        <!-- ALGEBRA CITY RUN CARD -->
+        <article class="game-card">
+          <div class="game-badge-row">
+            <span class="badge subject">Math · Algebra</span>
+            <span class="badge">Grades 7–10</span>
+          </div>
+          <div class="game-title">Algebra City Run</div>
+          <p class="game-desc">
+            Race across neon rooftops while reviewing algebra essentials:
+            evaluating expressions, multi-step equations, one-step inequalities,
+            combining like terms, and identifying variables &amp; coefficients.
+          </p>
+          <div class="meta-row">
+            <span>20-question review</span>
+            <span>Expressions · Equations · Inequalities</span>
+            <span>Keyboard &amp; touch controls</span>
+          </div>
+          <div class="card-footer">
+            <a href="/arcade-review-games/algebra-city-run.html" class="play-btn">
+              <span>▶</span> Play Game
+            </a>
+            <span>Est. 10–15 minutes</span>
+          </div>
+        </article>
 
-      <div class="scene-b">
-        <div class="scene-b-top">
-          <div class="scene-b-title">Strange Assembly</div>
-          <div class="scene-b-meta">Oct 16, 1962 · School Gym</div>
-        </div>
+        <!-- SLOPE STREET SPRINT (MATH · SLOPE & LINEAR FUNCTIONS) -->
+        <article class="game-card">
+          <div class="game-badge-row">
+            <span class="badge subject">Math · Algebra</span>
+            <span class="badge">Grades 7–10</span>
+          </div>
+          <div class="game-title">Slope Street Sprint — Slope &amp; Linear Functions</div>
+          <p class="game-desc">
+            Race up and down digital hills, time your jumps over obstacles, and pass through neon
+            question gates to review slope, y-intercept, rate of change, and linear functions in
+            slope-intercept form.
+          </p>
+          <div class="meta-row">
+            <span>10-question review</span>
+            <span>Slope · y-intercept · Rate of change</span>
+            <span>Keyboard &amp; touch controls</span>
+          </div>
+          <div class="card-footer">
+            <a href="/arcade-review-games/slope-street-sprint.html" class="play-btn">
+              <span>▶</span> Play Game
+            </a>
+            <span>Est. 8–12 minutes</span>
+          </div>
+        </article>
 
-        <div class="scene-b-world">
-          <div class="scene-b-bg"></div>
-          <div class="scene-b-floor"></div>
-          <div class="b-player"></div>
-          <div class="b-npc"></div>
-          <div class="b-label">PRINCIPAL</div>
-        </div>
+        <!-- PYRAMID ESCAPE RUN (SOCIAL STUDIES · ANCIENT EGYPT) -->
+        <article class="game-card">
+          <div class="game-badge-row">
+            <span class="badge subject">Social Studies · Ancient Egypt</span>
+            <span class="badge">Grades 6–9</span>
+          </div>
+          <div class="game-title">Pyramid Escape Run — Ancient Egypt</div>
+          <p class="game-desc">
+            Dash through dim pyramid tunnels, leap over spike traps and rolling boulders,
+            and pass through glowing hieroglyph gates to review the Nile River, pharaohs,
+            pyramids, religion, mummification, and daily life in Ancient Egypt.
+          </p>
+          <div class="meta-row">
+            <span>10-question review</span>
+            <span>Nile · Pharaohs · Pyramids</span>
+            <span>Keyboard &amp; touch controls</span>
+          </div>
+          <div class="card-footer">
+            <a href="/arcade-review-games/pyramid-escape-run.html" class="play-btn">
+              <span>▶</span> Play Game
+            </a>
+            <span>Est. 8–12 minutes</span>
+          </div>
+        </article>
+      </section>
 
-        <div class="scene-b-bottom">
-          Same scene as Option A, but rendered like an old-school NES hallway.
-          In the real game, the player sprite would move on this grid and interact.
-        </div>
-      </div>
-    </section>
-
+      <section class="notes">
+        Tip for teachers: project a game on your screen and have students answer on whiteboards
+        or in notebooks, or let students play in pairs and keep track of their score and accuracy.
+      </section>
+    </main>
   </div>
 </body>
 </html>
