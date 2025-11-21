@@ -6,26 +6,20 @@
   <!-- ===========================
        SEO-Optimized Title & Meta
   ============================ -->
-  <title>Pyramid Escape Run · Ancient Egypt Review Game | Teach Arcade</title>
+  <title>Pyramid Escape Run · Ancient Egypt Game | Teach Arcade</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="description" content="Pyramid Escape Run is a free arcade-style Ancient Egypt review game from Teach Arcade. Dash through pyramid tunnels, avoid traps, and pass through question gates covering pharaohs, the Nile, pyramids, religion, and daily life. Perfect for middle school social studies.">
+  <meta name="description" content="Pyramid Escape Run is a free arcade-style Ancient Egypt review game from Teach Arcade. Dash through pyramid tunnels, dodge traps, and answer 20 questions about the Nile, pharaohs, pyramids, religion, and daily life.">
+  <meta name="keywords" content="Ancient Egypt game, Nile River, pharaohs, pyramids, mummification, social structure, classroom review game, middle school social studies, 6th grade history game, Teach Arcade">
 
-  <meta name="keywords" content="Ancient Egypt game, social studies review game, pyramid game, Nile River, pharaohs, mummification, Ancient Egypt review, classroom history game, Teach Arcade">
-
-  <!-- ===========================
-       Open Graph (Social Sharing)
-  ============================ -->
-  <meta property="og:title" content="Pyramid Escape Run · Ancient Egypt Review Game | Teach Arcade">
-  <meta property="og:description" content="Race through pyramid tunnels, jump over traps, and pass through glowing hieroglyph gates to answer questions about Ancient Egypt.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Pyramid Escape Run · Ancient Egypt Game | Teach Arcade">
+  <meta property="og:description" content="Run through a booby-trapped pyramid and pass glowing hieroglyph gates to review Ancient Egypt: Nile River, pharaohs, pyramids, religion, and daily life.">
   <meta property="og:type" content="website">
-  <!-- Replace with your actual image path -->
   <meta property="og:image" content="https://teacharcade.com/assets/teach-arcade-pyramid-escape-run.png">
   <meta property="og:url" content="https://teacharcade.com/arcade-review-games/pyramid-escape-run.html">
 
-  <!-- ===========================
-       Schema.org Structured Data
-  ============================ -->
+  <!-- Schema.org Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -37,12 +31,12 @@
       "educationalLevel": "Middle School, High School"
     },
     "learningResourceType": "Review Game",
-    "description": "Pyramid Escape Run is a free arcade-style Ancient Egypt review game where students race through pyramid tunnels, avoid traps, and pass through question gates that cover the Nile River, pharaohs, pyramids, religion, mummification, and daily life.",
+    "description": "Pyramid Escape Run is a free arcade-style Ancient Egypt review game where students run through pyramid tunnels, dodge traps, and answer 20 questions about the Nile River, pharaohs, pyramids, religion, and daily life.",
     "educationalAlignment": {
       "@type": "AlignmentObject",
       "alignmentType": "teaches",
-      "educationalFramework": "World History",
-      "targetName": "Ancient Egypt, Nile River, pharaohs, pyramids, religion, social structure, achievements"
+      "educationalFramework": "Social Studies - Ancient Civilizations",
+      "targetName": "Ancient Egypt: Nile River, pharaohs, pyramids, religion, social structure, daily life"
     },
     "creator": {
       "@type": "Organization",
@@ -55,21 +49,16 @@
 
   <style>
     :root {
-      /* Pyramid interior palette */
-      --sky: #1a130a;           /* dark stone background */
-      --wall-dark: #141012;
-      --wall-mid: #3b2a1b;
-      --floor: #4b3621;
-      --floor-highlight: #d4a15d;
-      --trap-spike: #f97316;
-      --trap-spike-dark: #7c2d12;
-      --gate-accent: #facc15;
-      --gate-complete: #16a34a;
-      --player: #facc15;
-      --player-accent: #fde68a;
-      --ui-bg: rgba(0, 0, 0, 0.7);
-      --accent: #facc15;
-      --text: #fefce8;
+      --sky: #050308;
+      --stone-dark: #1f1720;
+      --stone-mid: #33242a;
+      --stone-light: #5f4634;
+      --sand: #ac864c;
+      --accent: #fbbf24;   /* gold */
+      --accent-alt: #22c55e;
+      --player: #f97316;
+      --text: #f9fafb;
+      --ui-bg: rgba(0,0,0,0.7);
     }
 
     * {
@@ -80,20 +69,19 @@
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #1f2937 0%, #020617 70%);
+      background: radial-gradient(circle at top, #111827 0%, #020617 65%, #000 100%);
       color: var(--text);
+      min-height: 100vh;
+      padding: 12px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
-      min-height: 100vh;
-      padding: 12px;
       gap: 10px;
     }
 
     h1 {
       font-family: "Press Start 2P", system-ui, sans-serif;
-      font-size: 1rem;
+      font-size: 0.95rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       text-shadow: 0 2px 0 #000;
@@ -101,36 +89,11 @@
     }
 
     .subtitle {
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       opacity: 0.9;
       text-align: center;
       max-width: 900px;
-    }
-
-    #modeBar {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      font-size: 0.75rem;
-    }
-
-    .pill-btn {
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.3);
-      padding: 4px 10px;
-      background: rgba(0,0,0,0.55);
-      color: var(--text);
-      cursor: pointer;
-      font-size: 0.7rem;
-      font-family: "Press Start 2P", system-ui, sans-serif;
-      text-transform: uppercase;
-    }
-
-    .pill-btn.active {
-      background: var(--accent);
-      color: #1a130a;
+      line-height: 1.4;
     }
 
     #gameContainer {
@@ -138,13 +101,13 @@
       border-radius: 14px;
       overflow: hidden;
       box-shadow: 0 12px 40px rgba(0,0,0,0.8);
-      border: 2px solid rgba(148,163,184,0.4);
+      border: 2px solid rgba(248, 250, 252, 0.2);
       background: #000;
     }
 
     canvas {
       display: block;
-      background: var(--sky);
+      background: #000;
       image-rendering: pixelated;
     }
 
@@ -162,7 +125,7 @@
       padding: 4px 10px;
       border-radius: 999px;
       backdrop-filter: blur(6px);
-      border: 1px solid rgba(148,163,184,0.45);
+      border: 1px solid rgba(248,250,252,0.15);
       font-family: "Press Start 2P", system-ui, sans-serif;
       z-index: 5;
     }
@@ -254,7 +217,7 @@
       border: none;
       padding: 6px 12px;
       background: var(--accent);
-      color: #1a130a;
+      color: #1f2937;
       font-weight: 600;
       cursor: pointer;
       font-size: 0.75rem;
@@ -277,7 +240,7 @@
       padding: 4px 10px;
       background: var(--ui-bg);
       border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.7);
+      border: 1px solid rgba(248,250,252,0.4);
       backdrop-filter: blur(8px);
       z-index: 6;
     }
@@ -286,7 +249,7 @@
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      border: 2px solid rgba(148,163,184,0.8);
+      border: 2px solid rgba(248,250,252,0.8);
       background: #020617;
       color: var(--text);
       font-size: 1.1rem;
@@ -327,24 +290,17 @@
 <body>
   <h1>Teach Arcade · Pyramid Escape Run</h1>
   <p class="subtitle">
-    Dash through dim pyramid tunnels, jump over spike traps and rolling boulders,
-    and pass through glowing hieroglyph gates to answer 10 questions on Ancient Egypt:
-    the Nile, pharaohs, pyramids, religion, and daily life. Use ◀ ▶ / ▲ or on-screen
-    buttons to move and jump.
+    Sprint through dim pyramid corridors, leap over traps, and pass through glowing hieroglyph
+    gates to answer 20 questions about Ancient Egypt: the Nile River, pharaohs, pyramids,
+    mummification, and daily life. Use ◀ ▶ / ▲ or on-screen buttons to move and jump.
   </p>
-
-  <div id="modeBar">
-    <span>Question Mode:</span>
-    <button id="modePreloaded" class="pill-btn active">Preloaded Egypt Bank</button>
-    <button id="modeCustom" class="pill-btn">Custom (if configured)</button>
-  </div>
 
   <div id="gameContainer">
     <canvas id="gameCanvas" width="960" height="360"></canvas>
 
     <div id="hud">
       <span id="hudScore">Score: 0</span>
-      <span id="hudQuestions">Gates: 0 / 10</span>
+      <span id="hudQuestions">Gates: 0 / 20</span>
       <span id="hudStatus">Status: Running</span>
     </div>
 
@@ -371,7 +327,7 @@
         <h2>Escape Complete!</h2>
         <p id="endSummary"></p>
         <div class="panel-footer">
-          <button id="replayBtn" class="primary-btn">Replay Course</button>
+          <button id="replayBtn" class="primary-btn">Replay Run</button>
           <button id="topicBtn" class="primary-btn">Back to Arcade Hub</button>
         </div>
       </div>
@@ -382,110 +338,232 @@
     // ======================================================
     // CONFIG
     // ======================================================
-    const TOTAL_GATES = 10;
-    const CUSTOM_QUESTIONS = [];
-    let useCustomQuestions = false;
+    const TOTAL_GATES = 20;
 
     // ======================================================
-    // PRELOADED ANCIENT EGYPT QUESTION BANK
+    // PRELOADED ANCIENT EGYPT QUESTION BANK (20 QUESTIONS)
     // ======================================================
     const EGYPT_QUESTION_BANK = [
-      { id: 1, text: "Why was the Nile River so important to Ancient Egypt?", choices: [
-        "It flooded randomly and destroyed crops",
-        "It provided water, fertile soil, and transportation",
-        "It separated Egypt from Greece",
-        "It was used only for fishing"
-      ], correctIndex: 1 },
-      { id: 2, text: "What is a pharaoh?", choices: [
-        "A soldier in the Egyptian army",
-        "A merchant who traded on the Nile",
-        "The king and religious leader of Egypt",
-        "A slave who worked on pyramids"
-      ], correctIndex: 2 },
-      { id: 3, text: "What is the name for a preserved Egyptian body wrapped in cloth?", choices: [
-        "Sarcophagus",
-        "Mummy",
-        "Hieroglyph",
-        "Obelisk"
-      ], correctIndex: 1 },
-      { id: 4, text: "What are hieroglyphics?", choices: [
-        "Stone temples",
-        "Egyptian farming tools",
-        "A system of picture writing",
-        "Desert winds"
-      ], correctIndex: 2 },
-      { id: 5, text: "Most pyramids served mainly as:", choices: [
-        "Markets",
-        "Royal tombs",
-        "Schools",
-        "Government offices"
-      ], correctIndex: 1 },
-      { id: 6, text: "Which social group made up most of Egypt’s population?", choices: [
-        "Pharaohs and nobles",
-        "Priests and scribes",
-        "Farmers and laborers",
-        "Foreign merchants"
-      ], correctIndex: 2 },
-      { id: 7, text: "Why did Egyptians mummify bodies?", choices: [
-        "To prepare for the afterlife",
-        "To scare enemies",
-        "To sell them to other countries",
-        "To protect them from the Nile"
-      ], correctIndex: 0 },
-      { id: 8, text: "What was papyrus used for?", choices: [
-        "Building pyramids",
-        "Making paper for writing",
-        "Making jewelry",
-        "Cooking food"
-      ], correctIndex: 1 },
-      { id: 9, text: "The ancient Egyptians believed many gods controlled nature and life. This is called:", choices: [
-        "Monotheism",
-        "Polytheism",
-        "Democracy",
-        "Feudalism"
-      ], correctIndex: 1 },
-      { id: 10, text: "Which structure is most closely linked to the Old Kingdom?", choices: [
-        "Massive pyramids built as tombs",
-        "Huge malls along the Nile",
-        "Steel skyscrapers",
-        "Stone theaters for plays"
-      ], correctIndex: 0 },
-      { id: 11, text: "What was the Book of the Dead?", choices: [
-        "A list of Egyptian laws",
-        "A book of poems",
-        "A collection of spells and prayers for the afterlife",
-        "A storybook for children"
-      ], correctIndex: 2 },
-      { id: 12, text: "Which direction does the Nile River flow?", choices: [
-        "South to north",
-        "North to south",
-        "East to west",
-        "It flows in a circle"
-      ], correctIndex: 0 },
-      { id: 13, text: "What natural feature protected Egypt from invasion to the west and east?", choices: [
-        "Grasslands",
-        "Thick forests",
-        "Deserts",
-        "Oceans"
-      ], correctIndex: 2 },
-      { id: 14, text: "What is a scribe?", choices: [
-        "A person who writes and keeps records",
-        "A soldier on horseback",
-        "A pyramid builder",
-        "A religious statue"
-      ], correctIndex: 0 },
-      { id: 15, text: "What was one main job of Egyptian priests?", choices: [
-        "Teaching math at schools",
-        "Training horses",
-        "Running temples and rituals for the gods",
-        "Building roads"
-      ], correctIndex: 2 },
-      { id: 16, text: "Which statement about Egyptian religion is most accurate?", choices: [
-        "They believed in one god only",
-        "They ignored the afterlife",
-        "They believed in many gods and a detailed afterlife",
-        "They did not build temples"
-      ], correctIndex: 2 }
+      {
+        id: 1,
+        text: "Why was the Nile River so important to Ancient Egypt?",
+        choices: [
+          "It separated Egypt from Mesopotamia",
+          "It provided water, fertile soil, and transportation",
+          "It was used only for religious ceremonies",
+          "It marked the border with Greece"
+        ],
+        correctIndex: 1
+      },
+      {
+        id: 2,
+        text: "What is the rich, dark soil left behind after the Nile flooded called?",
+        choices: [
+          "Silt",
+          "Papyrus",
+          "Linen",
+          "Clay"
+        ],
+        correctIndex: 0
+      },
+      {
+        id: 3,
+        text: "A pharaoh in Ancient Egypt was best described as:",
+        choices: [
+          "A slave who built pyramids",
+          "A priest who wrote hieroglyphs",
+          "A king who was also seen as a god",
+          "A foreign invader from Mesopotamia"
+        ],
+        correctIndex: 2
+      },
+      {
+        id: 4,
+        text: "What is the name of the writing system used by the Egyptians?",
+        choices: [
+          "Cuneiform",
+          "Alphabet",
+          "Hieroglyphics",
+          "Calligraphy"
+        ],
+        correctIndex: 2
+      },
+      {
+        id: 5,
+        text: "The huge stone tombs built for pharaohs are called:",
+        choices: [
+          "Ziggurats",
+          "Pyramids",
+          "Temples",
+          "Obelisks"
+        ],
+        correctIndex: 1
+      },
+      {
+        id: 6,
+        text: "What was the purpose of mummification?",
+        choices: [
+          "To decorate the pyramids",
+          "To preserve the body for the afterlife",
+          "To punish criminals",
+          "To make trade items"
+        ],
+        correctIndex: 1
+      },
+      {
+        id: 7,
+        text: "In Egyptian belief, the preserved body would be reunited with which part of the person in the afterlife?",
+        choices: [
+          "The ka (spirit)",
+          "The tomb",
+          "The pyramid",
+          "The Rosetta"
+        ],
+        correctIndex: 0
+      },
+      {
+        id: 8,
+        text: "What was papyrus mainly used for?",
+        choices: [
+          "Building houses",
+          "Making writing material and scrolls",
+          "Carving statues",
+          "Making stone tools"
+        ],
+        correctIndex: 1
+      },
+      {
+        id: 9,
+        text: "Which pharaoh is famous for a nearly untouched tomb discovered in 1922?",
+        choices: [
+          "Ramses II",
+          "King Tutankhamun",
+          "Hatshepsut",
+          "Akhenaten"
+        ],
+        correctIndex: 1
+      },
+      {
+        id: 10,
+        text: "The Rosetta Stone was important because it:",
+        choices: [
+          "Showed how pyramids were built",
+          "Recorded the first laws of Egypt",
+          "Was used to translate hieroglyphics",
+          "Named all the Egyptian pharaohs"
+        ],
+        correctIndex: 2
+      },
+      {
+        id: 11,
+        text: "Which direction does the Nile River flow?",
+        choices: [
+          "South to north, into the Mediterranean Sea",
+          "North to south, into the Red Sea",
+          "East to west, into the Atlantic Ocean",
+          "In a circle around the desert"
+        ],
+        correctIndex: 0
+      },
+      {
+        id: 12,
+        text: "What is a dynasty?",
+        choices: [
+          "A group of cities that trade",
+          "A family of rulers passing power from parent to child",
+          "A law code written on stone",
+          "A kind of Egyptian god"
+        ],
+        correctIndex: 1
+      },
+      {
+        id: 13,
+        text: "The social structure of Egypt is often shown as:",
+        choices: [
+          "A river",
+          "A pyramid",
+          "A circle",
+          "A map"
+        ],
+        correctIndex: 1
+      },
+      {
+        id: 14,
+        text: "Which group made up the largest part of Egyptian society?",
+        choices: [
+          "Pharaohs and nobles",
+          "Priests and scribes",
+          "Farmers, laborers, and slaves",
+          "Soldiers"
+        ],
+        correctIndex: 2
+      },
+      {
+        id: 15,
+        text: "Which female pharaoh expanded trade and built great temples?",
+        choices: [
+          "Cleopatra",
+          "Hatshepsut",
+          "Nefertiti",
+          "Merneith"
+        ],
+        correctIndex: 1
+      },
+      {
+        id: 16,
+        text: "A sarcophagus is:",
+        choices: [
+          "A type of temple",
+          "A stone coffin that held the mummy",
+          "A farming tool",
+          "A riverboat on the Nile"
+        ],
+        correctIndex: 1
+      },
+      {
+        id: 17,
+        text: "What were canopic jars used for?",
+        choices: [
+          "Storing grain and food",
+          "Holding the organs removed during mummification",
+          "Collecting Nile water",
+          "Keeping jewelry safe"
+        ],
+        correctIndex: 1
+      },
+      {
+        id: 18,
+        text: "Which Egyptian god was often shown with a jackal head and watched over mummification?",
+        choices: [
+          "Ra",
+          "Osiris",
+          "Anubis",
+          "Isis"
+        ],
+        correctIndex: 2
+      },
+      {
+        id: 19,
+        text: "Most pyramids were built during which period of Egyptian history?",
+        choices: [
+          "Old Kingdom",
+          "Middle Kingdom",
+          "New Kingdom",
+          "Roman Period"
+        ],
+        correctIndex: 0
+      },
+      {
+        id: 20,
+        text: "Why were temples and pyramids covered with carvings and paintings?",
+        choices: [
+          "For decoration only",
+          "To tell stories, honor gods, and show the pharaoh's power",
+          "To hide secret messages from enemies",
+          "Because Egyptians had no writing"
+        ],
+        correctIndex: 1
+      }
     ];
 
     function pickRandomQuestions(bank, count) {
@@ -494,19 +572,19 @@
     }
 
     // ======================================================
-    // CORE GAME STATE
+    // CORE GAME STATE (same engine, just theme)
     // ======================================================
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
 
-    const WORLD_WIDTH = 4800;
-    const GROUND_BASE_Y = 280;
+    const WORLD_WIDTH = 5200;
+    const FLOOR_Y = 280;
 
     const player = {
       x: 80,
       y: 180,
-      w: 28,
-      h: 40,
+      w: 26,
+      h: 38,
       vx: 0,
       vy: 0,
       onGround: false
@@ -530,34 +608,25 @@
     let gates = [];
     let activeGate = null;
 
-    // Pits (floor gaps)
-    const pits = [
-      { x: 900,  width: 80 },
-      { x: 1900, width: 90 },
-      { x: 3300, width: 100 }
-    ];
-
-    // Floor spike obstacles, clearly separate from gates
-    const spikeTraps = [
-      { x: 650,  w: 60 },
-      { x: 1450, w: 70 },
-      { x: 2350, w: 70 },
-      { x: 3050, w: 80 },
-      { x: 3850, w: 80 }
-    ];
-
-    // Rolling boulders as moving obstacles
-    const boulders = [
-      { x: 1200, yOffset: -24, radius: 14, dir: 1,  speed: 70, minX: 1180, maxX: 1320 },
-      { x: 2600, yOffset: -24, radius: 14, dir: -1, speed: 80, minX: 2520, maxX: 2660 },
-      { x: 4100, yOffset: -24, radius: 14, dir: 1,  speed: 85, minX: 4060, maxX: 4220 }
+    // Traps / obstacles (simple rectangles on floor)
+    const traps = [
+      { x: 700,  w: 40, h: 18, type: "spikes" },
+      { x: 1100, w: 50, h: 18, type: "spikes" },
+      { x: 1550, w: 40, h: 18, type: "pit" },
+      { x: 2000, w: 50, h: 18, type: "spikes" },
+      { x: 2450, w: 40, h: 18, type: "pit" },
+      { x: 2900, w: 50, h: 18, type: "spikes" },
+      { x: 3350, w: 40, h: 18, type: "spikes" },
+      { x: 3800, w: 50, h: 18, type: "pit" },
+      { x: 4250, w: 40, h: 18, type: "spikes" },
+      { x: 4700, w: 50, h: 18, type: "spikes" }
     ];
 
     const effects = [];
     let lastSafeX = player.x;
     let lastSafeY = player.y;
 
-    const endDoorX = WORLD_WIDTH - 140;
+    const endFlagX = WORLD_WIDTH - 120;
     const keys = { left: false, right: false };
     let hitCooldown = 0;
 
@@ -566,18 +635,15 @@
     let bannerText = "";
     let bannerTimer = 0;
 
-    // Terrain segments: slightly sloped tunnels
-    const terrainSegments = [
-      { x1:    0, y1: GROUND_BASE_Y, x2:  900, y2: GROUND_BASE_Y }, // flat entry
-      { x1:  900, y1: GROUND_BASE_Y, x2: 1600, y2: 250 },          // ramp down
-      { x1: 1600, y1: 250,            x2: 2300, y2: 290 },          // ramp up
-      { x1: 2300, y1: 290,            x2: 3100, y2: 260 },          // gentle down
-      { x1: 3100, y1: 260,            x2: 3900, y2: 240 },          // gentle up
-      { x1: 3900, y1: 240,            x2: 4800, y2: 280 }           // return to baseline
+    // Simple uneven floor segments inside pyramid
+    const segments = [
+      { x1:    0, y1: FLOOR_Y, x2: 1000, y2: FLOOR_Y },
+      { x1: 1000, y1: FLOOR_Y, x2: 1900, y2: 250 },
+      { x1: 1900, y1: 250,     x2: 2600, y2: 270 },
+      { x1: 2600, y1: 270,     x2: 3400, y2: 240 },
+      { x1: 3400, y1: 240,     x2: 4200, y2: 260 },
+      { x1: 4200, y1: 260,     x2: 5200, y2: FLOOR_Y }
     ];
-
-    // Manual gate positions chosen so they are NOT right on pits or traps
-    const gatePositions = [500, 1050, 1550, 2050, 2550, 3050, 3550, 3950, 4350, 4650];
 
     // ======================================================
     // UI ELEMENTS
@@ -598,9 +664,6 @@
     const replayBtn = document.getElementById('replayBtn');
     const topicBtn = document.getElementById('topicBtn');
 
-    const modePreloadedBtn = document.getElementById('modePreloaded');
-    const modeCustomBtn = document.getElementById('modeCustom');
-
     const leftBtn  = document.getElementById('btnLeft');
     const rightBtn = document.getElementById('btnRight');
     const jumpBtn  = document.getElementById('btnJump');
@@ -618,21 +681,17 @@
       bannerTimer = duration;
     }
 
-    function getGroundY(x) {
-      // Check pits
-      const inPit = pits.some(p => x > p.x && x < p.x + p.width);
-      if (inPit) return null;
-
-      for (const seg of terrainSegments) {
+    function getFloorY(x) {
+      for (const seg of segments) {
         if (x >= seg.x1 && x <= seg.x2) {
           const t = (x - seg.x1) / (seg.x2 - seg.x1);
           return seg.y1 + t * (seg.y2 - seg.y1);
         }
       }
-      if (x < terrainSegments[0].x1) return terrainSegments[0].y1;
-      const last = terrainSegments[terrainSegments.length - 1];
+      if (x < segments[0].x1) return segments[0].y1;
+      const last = segments[segments.length - 1];
       if (x > last.x2) return last.y2;
-      return GROUND_BASE_Y;
+      return FLOOR_Y;
     }
 
     function rectIntersect(a, b) {
@@ -700,29 +759,17 @@
       jumpBtn.addEventListener('mousedown', pressJump);
     }
 
-    // Mode buttons
-    modePreloadedBtn.addEventListener('click', () => {
-      useCustomQuestions = false;
-      modePreloadedBtn.classList.add('active');
-      modeCustomBtn.classList.remove('active');
-      startNewRun();
-    });
-
-    modeCustomBtn.addEventListener('click', () => {
-      useCustomQuestions = CUSTOM_QUESTIONS && CUSTOM_QUESTIONS.length >= TOTAL_GATES;
-      modeCustomBtn.classList.add('active');
-      modePreloadedBtn.classList.remove('active');
-      startNewRun();
-    });
-
     // ======================================================
     // QUESTIONS / GATES
     // ======================================================
     function setupGates() {
       gates = [];
+      const spacing = (WORLD_WIDTH - 900) / TOTAL_GATES;
+      const baseX = 500;
+
       for (let i = 0; i < TOTAL_GATES; i++) {
-        const gx = gatePositions[i];
-        const gy = getGroundY(gx) || GROUND_BASE_Y;
+        const gx = baseX + spacing * i;
+        const gy = getFloorY(gx);
         gates.push({
           id: i + 1,
           qIndex: i,
@@ -784,7 +831,7 @@
         btnEl.classList.add('wrong');
         qFeedback.textContent = "Incorrect. Try again.";
         score -= 10;
-        showToast("-10 | Recheck your thinking");
+        showToast("-10 | Recheck your notes");
         gate.firstTry = false;
         updateHud();
       }
@@ -809,7 +856,7 @@
     function checkLevelComplete() {
       if (!levelComplete &&
           gatesClearedCount === TOTAL_GATES &&
-          player.x + player.w > endDoorX) {
+          player.x + player.w > endFlagX) {
         triggerEndScreen();
       }
     }
@@ -868,12 +915,7 @@
       endOverlay.classList.add('hidden');
       hudStatus.textContent = "Status: Running";
 
-      if (useCustomQuestions && CUSTOM_QUESTIONS.length >= TOTAL_GATES) {
-        currentQuestions = CUSTOM_QUESTIONS.slice(0, TOTAL_GATES);
-      } else {
-        currentQuestions = pickRandomQuestions(EGYPT_QUESTION_BANK, TOTAL_GATES);
-      }
-
+      currentQuestions = pickRandomQuestions(EGYPT_QUESTION_BANK, TOTAL_GATES);
       setupGates();
       updateHud();
     }
@@ -901,7 +943,6 @@
 
       player.vy += GRAVITY * dt;
 
-      const prevY = player.y;
       player.x += player.vx * dt;
       if (player.x < 0) player.x = 0;
       if (player.x + player.w > WORLD_WIDTH) player.x = WORLD_WIDTH - player.w;
@@ -910,106 +951,55 @@
       player.onGround = false;
 
       const centerX = player.x + player.w / 2;
-      const groundY = getGroundY(centerX);
-      const inPit = pits.some(p => centerX > p.x && centerX < p.x + p.width);
+      const floorY = getFloorY(centerX);
 
-      if (groundY !== null && player.y + player.h >= groundY && player.vy >= 0) {
-        player.y = groundY - player.h;
+      if (player.y + player.h >= floorY && player.vy >= 0) {
+        player.y = floorY - player.h;
         player.vy = 0;
         player.onGround = true;
         lastSafeX = player.x;
         lastSafeY = player.y;
       }
 
-      // Pit fall reset
-      if (inPit && player.y > canvas.height + 40) {
-        player.x = lastSafeX;
-        player.y = lastSafeY;
-        player.vx = 0;
-        player.vy = 0;
-        score -= 20;
-        hudStatus.textContent = "Status: Fell in a pit (-20)";
-        showToast("-20 | Watch your step");
-        updateHud();
-      } else if (!inQuestion && !levelComplete) {
-        hudStatus.textContent = "Status: Running";
-      }
-
-      // Floor spike collisions (clear visual orange spikes)
-      for (const spike of spikeTraps) {
-        const gx = getGroundY(spike.x + spike.w / 2) || GROUND_BASE_Y;
-        const spikeRect = {
-          x: spike.x,
-          y: gx - 12,
-          w: spike.w,
-          h: 12
+      // Trap collisions
+      for (const trap of traps) {
+        const baseY = getFloorY(trap.x + trap.w / 2);
+        const trapRect = {
+          x: trap.x,
+          y: baseY - trap.h,
+          w: trap.w,
+          h: trap.h
         };
-        if (rectIntersect(player, spikeRect)) {
-          if (hitCooldown === 0) {
+        if (rectIntersect(player, trapRect)) {
+          if (hitCooldown === 0 && !inQuestion && !levelComplete) {
             hitCooldown = 1.0;
-            score -= 15;
-            hudStatus.textContent = "Status: Hit spike trap (-15)";
-            showToast("-15 | Time your jumps");
+            score -= 20;
+            hudStatus.textContent = "Status: Hit trap (-20)";
+            showToast("-20 | Watch the traps!");
             updateHud();
-            player.x -= 30;
+            // Reset to last safe spot
+            player.x = lastSafeX;
+            player.y = lastSafeY;
             player.vx = 0;
+            player.vy = 0;
           }
         }
       }
 
-      // Boulders movement & collisions
-      for (const b of boulders) {
-        const ground = getGroundY(b.x) || GROUND_BASE_Y;
-        b.x += b.dir * b.speed * dt;
-        if (b.x < b.minX) {
-          b.x = b.minX;
-          b.dir = 1;
-        } else if (b.x > b.maxX) {
-          b.x = b.maxX;
-          b.dir = -1;
-        }
-
-        const bRect = {
-          x: b.x - b.radius,
-          y: ground + b.yOffset - b.radius,
-          w: b.radius * 2,
-          h: b.radius * 2
-        };
-
-        if (rectIntersect(player, bRect)) {
-          if (hitCooldown === 0) {
-            hitCooldown = 1.0;
-            score -= 15;
-            hudStatus.textContent = "Status: Hit by boulder (-15)";
-            showToast("-15 | Avoid rolling stones");
-            updateHud();
-            player.x += (b.dir > 0 ? -30 : 30);
-            player.vx = 0;
-          }
-        }
-      }
-
-      // Update effects
-      for (let i = effects.length - 1; i >= 0; i--) {
-        const fx = effects[i];
-        fx.life -= dt;
-        if (fx.life <= 0) effects.splice(i, 1);
-      }
-
-      // Gate triggers: stop player just before gate
+      // Gate triggers
       for (const gate of gates) {
         if (gate.completed) continue;
-        const triggerX = gate.x - 30;
-        if (player.x + player.w >= triggerX) {
-          player.x = triggerX - player.w;
+        const gateTriggerX = gate.x - 20;
+        if (player.x + player.w >= gateTriggerX) {
+          player.x = gateTriggerX - player.w;
           player.vx = 0;
           openGateQuestion(gate);
           break;
         }
       }
 
-      // End door check
-      if (!levelComplete && player.x + player.w > endDoorX) {
+      // End flag check
+      if (!levelComplete && player.x + player.w > endFlagX) {
         checkLevelComplete();
       }
 
@@ -1027,61 +1017,51 @@
     // ======================================================
     function drawBackground() {
       const grad = ctx.createLinearGradient(0, 0, 0, canvas.height);
-      grad.addColorStop(0, "#111827");
-      grad.addColorStop(0.4, "#1a130a");
-      grad.addColorStop(1, "#020617");
+      grad.addColorStop(0, "#020617");
+      grad.addColorStop(0.5, "#111827");
+      grad.addColorStop(1, "#000000");
       ctx.fillStyle = grad;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Pyramid walls with hieroglyph stripes & torches
+      // Wall texture bands
       ctx.fillStyle = "#1f2933";
-      ctx.fillRect(0, canvas.height * 0.2, canvas.width, canvas.height * 0.8);
+      ctx.fillRect(0, canvas.height * 0.15, canvas.width, 4);
+      ctx.fillRect(0, canvas.height * 0.35, canvas.width, 4);
+      ctx.fillRect(0, canvas.height * 0.55, canvas.width, 4);
 
-      // Columns and torches
+      // Torches on back wall
       for (let x = -200; x < WORLD_WIDTH + 200; x += 260) {
         const sx = x - cameraX;
-        if (sx > canvas.width || sx < -260) continue;
-
-        // Column
-        ctx.fillStyle = "#2f1f15";
-        ctx.fillRect(sx + 40, canvas.height * 0.2, 32, canvas.height * 0.8);
-
-        // Torch
-        ctx.fillStyle = "#3f2a1a";
-        ctx.fillRect(sx + 46, canvas.height * 0.28, 20, 10);
-        // Flame
+        if (sx < -60 || sx > canvas.width + 60) continue;
+        const baseY = canvas.height * 0.3;
+        ctx.fillStyle = "#0f172a";
+        ctx.fillRect(sx, baseY, 10, 24);
+        ctx.fillStyle = "#b45309";
+        ctx.fillRect(sx - 2, baseY - 10, 14, 10);
         ctx.fillStyle = "#f97316";
         ctx.beginPath();
-        ctx.arc(sx + 56, canvas.height * 0.26, 6, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.fillStyle = "#fde68a";
-        ctx.beginPath();
-        ctx.arc(sx + 56, canvas.height * 0.255, 3, 0, Math.PI * 2);
+        ctx.arc(sx + 5, baseY - 12, 6, 0, Math.PI * 2);
         ctx.fill();
       }
     }
 
-    function drawTerrain() {
-      ctx.fillStyle = "#020617";
-      ctx.fillRect(0, GROUND_BASE_Y, canvas.width, canvas.height - GROUND_BASE_Y);
-
+    function drawFloor() {
       ctx.beginPath();
       const startX = Math.max(0, cameraX - 100);
       const endX = Math.min(WORLD_WIDTH, cameraX + canvas.width + 100);
+      const step = 16;
       let x = startX;
       let first = true;
-      const step = 16;
 
       while (x <= endX) {
-        const ground = getGroundY(x);
-        const screenX = x - cameraX;
-        const screenY = ground !== null ? ground : canvas.height;
-
+        const y = getFloorY(x);
+        const sx = x - cameraX;
+        const sy = y;
         if (first) {
-          ctx.moveTo(screenX, screenY);
+          ctx.moveTo(sx, sy);
           first = false;
         } else {
-          ctx.lineTo(screenX, screenY);
+          ctx.lineTo(sx, sy);
         }
         x += step;
       }
@@ -1090,84 +1070,55 @@
       ctx.lineTo(startX - cameraX, canvas.height);
       ctx.closePath();
 
-      ctx.fillStyle = "#4b3621";
+      ctx.fillStyle = "#1f2933";
       ctx.fill();
 
-      // Highlight line for walkway top
-      ctx.strokeStyle = "#d4a15d";
-      ctx.lineWidth = 3;
+      ctx.strokeStyle = "#fbbf24";
+      ctx.lineWidth = 2;
       ctx.beginPath();
       x = startX;
       first = true;
       while (x <= endX) {
-        const ground = getGroundY(x);
-        const screenX = x - cameraX;
-        const screenY = ground !== null ? ground : canvas.height;
+        const y = getFloorY(x);
+        const sx = x - cameraX;
+        const sy = y;
         if (first) {
-          ctx.moveTo(screenX, screenY);
+          ctx.moveTo(sx, sy);
           first = false;
         } else {
-          ctx.lineTo(screenX, screenY);
+          ctx.lineTo(sx, sy);
         }
         x += step;
       }
       ctx.stroke();
-
-      // Darken pit areas
-      ctx.fillStyle = "#020617";
-      for (const p of pits) {
-        const sx = p.x - cameraX;
-        ctx.fillRect(sx, GROUND_BASE_Y, p.width, canvas.height - GROUND_BASE_Y);
-      }
     }
 
-    function drawSpikes() {
-      spikeTraps.forEach(spike => {
-        const gx = getGroundY(spike.x + spike.w / 2) || GROUND_BASE_Y;
-        const sx = spike.x - cameraX;
-        const baseY = gx;
+    function drawTraps() {
+      traps.forEach(trap => {
+        const baseY = getFloorY(trap.x + trap.w / 2);
+        const sx = trap.x - cameraX;
+        const sy = baseY - trap.h;
 
-        const numSpikes = Math.max(3, Math.floor(spike.w / 10));
-        const spikeWidth = spike.w / numSpikes;
-
-        for (let i = 0; i < numSpikes; i++) {
-          const left = sx + i * spikeWidth;
-          const mid = left + spikeWidth / 2;
-          const top = baseY - 14;
-          ctx.fillStyle = "#f97316";
-          ctx.beginPath();
-          ctx.moveTo(left, baseY);
-          ctx.lineTo(mid, top);
-          ctx.lineTo(left + spikeWidth, baseY);
-          ctx.closePath();
-          ctx.fill();
-
-          ctx.strokeStyle = "#7c2d12";
-          ctx.stroke();
+        if (trap.type === "spikes") {
+          ctx.fillStyle = "#dc2626";
+          const spikeCount = Math.max(2, Math.floor(trap.w / 8));
+          const spikeWidth = trap.w / spikeCount;
+          for (let i = 0; i < spikeCount; i++) {
+            const x1 = sx + i * spikeWidth;
+            const x2 = x1 + spikeWidth / 2;
+            const x3 = x1 + spikeWidth;
+            ctx.beginPath();
+            ctx.moveTo(x1, baseY);
+            ctx.lineTo(x2, sy);
+            ctx.lineTo(x3, baseY);
+            ctx.closePath();
+            ctx.fill();
+          }
+        } else {
+          // pit marker (dark rectangle)
+          ctx.fillStyle = "#020617";
+          ctx.fillRect(sx, sy, trap.w, trap.h);
         }
-      });
-    }
-
-    function drawBoulders() {
-      boulders.forEach(b => {
-        const ground = getGroundY(b.x) || GROUND_BASE_Y;
-        const sx = b.x - cameraX;
-        const sy = ground + b.yOffset;
-
-        ctx.fillStyle = "#78350f";
-        ctx.beginPath();
-        ctx.arc(sx, sy, b.radius, 0, Math.PI * 2);
-        ctx.fill();
-
-        ctx.strokeStyle = "#451a03";
-        ctx.lineWidth = 2;
-        ctx.stroke();
-
-        // Highlight
-        ctx.fillStyle = "#fbbf24";
-        ctx.beginPath();
-        ctx.arc(sx - b.radius / 3, sy - b.radius / 3, 3, 0, Math.PI * 2);
-        ctx.fill();
       });
     }
 
@@ -1178,55 +1129,48 @@
 
       gates.forEach(gate => {
         const sx = gate.x - cameraX;
-        const gy = gate.y;
+        const baseY = gate.y;
 
         const gateHeight = 70;
         const gateWidth = 46;
 
-        // Pillars
-        ctx.fillStyle = gate.completed ? "#166534" : "#9a3412";
-        ctx.fillRect(sx - gateWidth/2, gy - gateHeight, 8, gateHeight);
-        ctx.fillRect(sx + gateWidth/2 - 8, gy - gateHeight, 8, gateHeight);
+        // Pillars with hieroglyph-like bands
+        ctx.fillStyle = gate.completed ? "#22c55e" : "#fbbf24";
+        ctx.fillRect(sx - gateWidth / 2, baseY - gateHeight, 6, gateHeight);
+        ctx.fillRect(sx + gateWidth / 2 - 6, baseY - gateHeight, 6, gateHeight);
 
-        // Arch top
+        ctx.fillRect(sx - gateWidth / 2, baseY - gateHeight + 10, 6, 4);
+        ctx.fillRect(sx + gateWidth / 2 - 6, baseY - gateHeight + 24, 6, 4);
+
+        // Arch
         ctx.beginPath();
-        ctx.arc(sx, gy - gateHeight, gateWidth / 2, Math.PI, 0);
+        ctx.arc(sx, baseY - gateHeight, gateWidth / 2, Math.PI, 0);
         ctx.fill();
 
-        // Hieroglyph-style bar
-        ctx.fillStyle = gate.completed ? "#bbf7d0" : "#facc15";
-        ctx.fillRect(sx - gateWidth/2 + 4, gy - gateHeight + 4, gateWidth - 8, 4);
-
-        // Label
-        ctx.fillStyle = "#fef9c3";
-        ctx.fillText(gate.id, sx, gy - gateHeight - 4);
-
+        ctx.fillStyle = "#fef3c7";
+        ctx.fillText(gate.id, sx, baseY - gateHeight - 4);
         if (gate.completed) {
-          ctx.fillText("✓", sx + 16, gy - gateHeight - 4);
+          ctx.fillText("✓", sx + 14, baseY - gateHeight - 4);
         }
       });
     }
 
     function drawEndDoor() {
-      const sx = endDoorX - cameraX;
-      const ground = getGroundY(endDoorX) || GROUND_BASE_Y;
-      const baseY = ground;
+      const sx = endFlagX - cameraX;
+      const baseY = getFloorY(endFlagX);
 
-      // Frame
-      ctx.fillStyle = "#3f2a1c";
+      // Door frame
+      ctx.fillStyle = "#78350f";
       ctx.fillRect(sx, baseY - 90, 60, 90);
-
-      // Inner doorway
-      ctx.fillStyle = "#020617";
+      ctx.fillStyle = "#111827";
       ctx.fillRect(sx + 6, baseY - 84, 48, 84);
 
-      // Glyph panel
+      // Glowing ankh symbol
       ctx.fillStyle = "#facc15";
-      ctx.fillRect(sx + 10, baseY - 80, 40, 14);
-      ctx.fillStyle = "#1a130a";
-      ctx.font = "8px 'Press Start 2P', system-ui, sans-serif";
-      ctx.textAlign = "center";
-      ctx.fillText("EXIT", sx + 30, baseY - 72);
+      ctx.fillRect(sx + 28, baseY - 70, 4, 34);
+      ctx.beginPath();
+      ctx.arc(sx + 30, baseY - 74, 8, 0, Math.PI * 2);
+      ctx.fill();
     }
 
     function drawPlayer() {
@@ -1234,38 +1178,53 @@
       const sy = player.y;
 
       // Legs
-      ctx.fillStyle = "#1f2937";
-      ctx.fillRect(sx + 4, sy + player.h - 10, 8, 10);
-      ctx.fillRect(sx + player.w - 12, sy + player.h - 10, 8, 10);
+      ctx.fillStyle = "#111827";
+      ctx.fillRect(sx + 4, sy + player.h - 10, 7, 10);
+      ctx.fillRect(sx + player.w - 11, sy + player.h - 10, 7, 10);
 
-      // Body
+      // Tunic
+      ctx.fillStyle = "#e5e7eb";
+      ctx.fillRect(sx + 4, sy + 10, player.w - 8, 20);
+
+      // Belt
       ctx.fillStyle = "#facc15";
-      ctx.fillRect(sx + 4, sy + 10, player.w - 8, 22);
+      ctx.fillRect(sx + 4, sy + 22, player.w - 8, 3);
 
-      // Shoulder wrap / sash
-      ctx.fillStyle = "#e5b35a";
-      ctx.fillRect(sx + 4, sy + 14, player.w - 8, 4);
-
-      // Headband
-      ctx.fillStyle = "#fde68a";
-      ctx.fillRect(sx + 4, sy, player.w - 8, 8);
+      // Head / headdress
+      ctx.fillStyle = "#fbbf24";
+      ctx.fillRect(sx + 4, sy, player.w - 8, 10);
+      ctx.fillStyle = "#0f172a";
+      ctx.fillRect(sx + 6, sy + 8, player.w - 12, 2);
 
       // Arms
-      ctx.fillStyle = "#fef9c3";
+      ctx.fillStyle = "#eab308";
       ctx.fillRect(sx, sy + 14, 4, 10);
       ctx.fillRect(sx + player.w - 4, sy + 14, 4, 10);
 
       // Eyes
       ctx.fillStyle = "#020617";
-      ctx.fillRect(sx + 7, sy + 4, 2, 2);
-      ctx.fillRect(sx + 17, sy + 4, 2, 2);
+      ctx.fillRect(sx + 8, sy + 4, 2, 2);
+      ctx.fillRect(sx + 16, sy + 4, 2, 2);
+    }
+
+    function drawEffects() {
+      effects.forEach(fx => {
+        const progress = fx.life / 0.25;
+        const radius = fx.maxRadius * (1 - progress);
+        const sx = fx.x - cameraX;
+        const sy = fx.y;
+        ctx.fillStyle = `rgba(250,204,21,${progress})`;
+        ctx.beginPath();
+        ctx.arc(sx, sy, radius, 0, Math.PI * 2);
+        ctx.fill();
+      });
     }
 
     function drawOverlays() {
       if (bannerTimer > 0 && bannerText) {
         ctx.font = "10px 'Press Start 2P', system-ui, sans-serif";
         ctx.textAlign = "center";
-        const w = 320;
+        const w = 340;
         const h = 24;
         const x = canvas.width / 2 - w / 2;
         const y = 34;
@@ -1278,7 +1237,7 @@
       if (toastTimer > 0 && toastText) {
         ctx.font = "10px 'Press Start 2P', system-ui, sans-serif";
         ctx.textAlign = "center";
-        const w = 320;
+        const w = 340;
         const h = 24;
         const x = canvas.width / 2 - w / 2;
         const y = canvas.height - 34;
@@ -1292,12 +1251,12 @@
     function draw() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       drawBackground();
-      drawTerrain();
-      drawSpikes();
-      drawBoulders();
+      drawFloor();
+      drawTraps();
       drawGates();
       drawEndDoor();
       drawPlayer();
+      drawEffects();
       drawOverlays();
     }
 
