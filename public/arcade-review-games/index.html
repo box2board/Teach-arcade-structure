@@ -8,19 +8,21 @@
   <!-- Canonical URL -->
   <link rel="canonical" href="https://teacharcade.com/arcade-review-games/">
 
-  <!-- Preload Google Font for speed -->
+  <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
-  <!-- Primary Description -->
+  <!-- Meta description / keywords -->
   <meta name="description"
-    content="Play free arcade-style review games for the classroom: WWI Trench Run, Algebra City Run, Moon Mission Run, Grammar Gauntlet, Slope Street Sprint, and Pyramid Escape Run. Perfect for warm-ups, stations, and test prep.">
+        content="Play free arcade-style review games for the classroom: WWI Trench Run, Algebra City Run, Moon Mission Run, Grammar Gauntlet, Slope Street Sprint, and Pyramid Escape Run. Perfect for warm-ups, stations, and test prep.">
+  <meta name="keywords"
+        content="arcade review games, classroom review games, WWI game, Moon Mission Run, Grammar Gauntlet, Algebra City Run, Slope Street Sprint, Pyramid Escape Run, Ancient Egypt game, math review game, ELA review game, social studies review game, Teach Arcade">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Arcade Review Games · Teach Arcade">
   <meta property="og:description"
-    content="Side-scrolling, arcade-style review games for Social Studies, Math, Science, and ELA. Free for classroom use.">
+        content="Side-scrolling, arcade-style review games for Social Studies, Math, Science, and ELA. Free for classroom use.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://teacharcade.com/arcade-review-games/">
   <meta property="og:image" content="https://teacharcade.com/assets/teach-arcade-arcade-review-games.png">
@@ -30,14 +32,10 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Arcade Review Games · Teach Arcade">
   <meta name="twitter:description"
-    content="Free arcade-style review games for Social Studies, Math, ELA, and Science. No logins. Classroom-ready.">
+        content="Free arcade-style review games for Social Studies, Math, ELA, and Science. No logins. Classroom-ready.">
   <meta name="twitter:image" content="https://teacharcade.com/assets/teach-arcade-arcade-review-games.png">
 
-  <!-- Keywords (not used by Google but harmless) -->
-  <meta name="keywords"
-    content="arcade review games, classroom review games, WWI game, Moon Mission Run, Grammar Gauntlet, Algebra City Run, Slope Street Sprint, Pyramid Escape Run, Ancient Egypt game, math review game, ELA review game, social studies review game, Teach Arcade">
-
-  <!-- JSON-LD Schema Markup (inserted below) -->
+  <!-- JSON-LD: WebPage -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -53,6 +51,7 @@
   }
   </script>
 
+  <!-- JSON-LD: BreadcrumbList -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -74,7 +73,7 @@
   }
   </script>
 
-  <!-- ITEM LIST SCHEMA FOR ALL GAMES -->
+  <!-- JSON-LD: ItemList of games -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -121,7 +120,247 @@
   }
   </script>
 
-  <!-- Your existing CSS stays exactly as-is below -->
+  <!-- PAGE STYLES -->
+  <style>
+    :root {
+      --bg: #050714;
+      --panel: #101321;
+      --accent: #ffb300;
+      --accent-soft: rgba(255,179,0,0.12);
+      --text: #f9f9ff;
+      --muted: #a4a7c4;
+      --border: rgba(255,255,255,0.12);
+      --tile-bg: #15192b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #141a33 0%, #050714 70%);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 20px 12px 40px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 1040px;
+    }
+
+    header {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .crumbs {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .crumbs a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .crumbs a:hover {
+      text-decoration: underline;
+    }
+
+    h1 {
+      font-family: "Press Start 2P", system-ui, sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-shadow: 0 2px 0 #000;
+    }
+
+    .subtitle {
+      font-size: 0.88rem;
+      color: var(--muted);
+      max-width: 640px;
+      line-height: 1.5;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 6px;
+      font-size: 0.7rem;
+    }
+
+    .pill {
+      border-radius: 999px;
+      padding: 3px 10px;
+      border: 1px solid var(--border);
+      background: rgba(0,0,0,0.4);
+      color: var(--muted);
+    }
+
+    .pill.highlight {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    .jump-links {
+      margin: 14px 0 4px;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .jump-links a {
+      color: var(--accent);
+      text-decoration: none;
+      margin-right: 10px;
+    }
+
+    .jump-links a:hover {
+      text-decoration: underline;
+    }
+
+    main h2 {
+      margin-top: 22px;
+      margin-bottom: 6px;
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    main h2:first-of-type {
+      margin-top: 16px;
+    }
+
+    .game-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    .game-card {
+      background: var(--tile-bg);
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      padding: 14px 14px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.65);
+    }
+
+    .game-badge-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    .badge {
+      border-radius: 999px;
+      padding: 2px 8px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(0,0,0,0.35);
+    }
+
+    .badge.subject {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .game-title {
+      font-weight: 650;
+      font-size: 0.95rem;
+    }
+
+    .game-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 0.74rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .meta-row span {
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 8px;
+      font-size: 0.74rem;
+      color: var(--muted);
+    }
+
+    .play-btn {
+      border-radius: 999px;
+      border: none;
+      padding: 7px 14px;
+      background: var(--accent);
+      color: #111;
+      font-weight: 650;
+      cursor: pointer;
+      font-size: 0.78rem;
+      font-family: "Press Start 2P", system-ui, sans-serif;
+      text-transform: uppercase;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .play-btn span {
+      font-size: 0.9rem;
+    }
+
+    .play-btn:hover {
+      filter: brightness(1.06);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.7);
+    }
+
+    .notes {
+      margin-top: 18px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: #101322;
+      border: 1px dashed rgba(255,255,255,0.2);
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    @media (max-width: 640px) {
+      h1 {
+        font-size: 0.9rem;
+      }
+      .subtitle {
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
 <body>
   <div class="page">
     <header>
@@ -142,7 +381,6 @@
     </header>
 
     <main>
-      <!-- Simple jump links to subject sections -->
       <p class="jump-links">
         Jump to:
         <a href="#subject-social-studies">Social Studies</a>
@@ -151,10 +389,9 @@
         <a href="#subject-ela">English / Language Arts</a>
       </p>
 
-      <!-- SOCIAL STUDIES SECTION -->
+      <!-- SOCIAL STUDIES -->
       <h2 id="subject-social-studies">Social Studies</h2>
       <section class="game-grid">
-        <!-- WWI TRENCH RUN CARD -->
         <article class="game-card">
           <div class="game-badge-row">
             <span class="badge subject">Social Studies · WWI</span>
@@ -179,7 +416,6 @@
           </div>
         </article>
 
-        <!-- PYRAMID ESCAPE RUN (SOCIAL STUDIES · ANCIENT EGYPT) -->
         <article class="game-card">
           <div class="game-badge-row">
             <span class="badge subject">Social Studies · Ancient Egypt</span>
@@ -205,10 +441,9 @@
         </article>
       </section>
 
-      <!-- SCIENCE SECTION -->
+      <!-- SCIENCE -->
       <h2 id="subject-science">Science</h2>
       <section class="game-grid">
-        <!-- MOON MISSION RUN (EARTH & SPACE SCIENCE) -->
         <article class="game-card">
           <div class="game-badge-row">
             <span class="badge subject">Science · Earth &amp; Space</span>
@@ -233,10 +468,9 @@
         </article>
       </section>
 
-      <!-- MATH SECTION -->
+      <!-- MATH -->
       <h2 id="subject-math">Math</h2>
       <section class="game-grid">
-        <!-- ALGEBRA CITY RUN CARD -->
         <article class="game-card">
           <div class="game-badge-row">
             <span class="badge subject">Math · Algebra</span>
@@ -261,7 +495,6 @@
           </div>
         </article>
 
-        <!-- SLOPE STREET SPRINT (MATH · SLOPE & LINEAR FUNCTIONS) -->
         <article class="game-card">
           <div class="game-badge-row">
             <span class="badge subject">Math · Algebra</span>
@@ -287,10 +520,9 @@
         </article>
       </section>
 
-      <!-- ELA SECTION -->
+      <!-- ELA -->
       <h2 id="subject-ela">English / Language Arts</h2>
       <section class="game-grid">
-        <!-- GRAMMAR GAUNTLET (ELA) -->
         <article class="game-card">
           <div class="game-badge-row">
             <span class="badge subject">ELA · Grammar &amp; Writing</span>
