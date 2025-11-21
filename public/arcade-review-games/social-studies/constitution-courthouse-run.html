@@ -334,7 +334,7 @@
     let lasersActive = true;
 
     let lastTime = 0;
-    let timeRemaining = LEVEL_TIME;
+    let elapsedTime = 0;
     let score = 0;
     let questionsCleared = 0;
     let firstTryCorrectCount = 0;
@@ -406,7 +406,7 @@
     ];
 
     // Secret bookshelf door
-    const secretDoor = { x: 350, y: 260, w: 20, h: 60, targetX: 780, targetY: 180 };
+   const secretDoor = { x: 350, y: 260, w: 20, h: 60, targetX: 600, targetY: 340 };
 
     // Lasers
     const lasers = [
