@@ -1,0 +1,1319 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <!-- ===========================
+       SEO-Optimized Title & Meta
+  ============================ -->
+  <title>Pyramid Escape Run · Ancient Egypt Review Game | Teach Arcade</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="Pyramid Escape Run is a free arcade-style Ancient Egypt review game from Teach Arcade. Dash through pyramid tunnels, avoid traps, and pass through question gates covering pharaohs, the Nile, pyramids, religion, and daily life. Perfect for middle school social studies.">
+
+  <meta name="keywords" content="Ancient Egypt game, social studies review game, pyramid game, Nile River, pharaohs, mummification, Ancient Egypt review, classroom history game, Teach Arcade">
+
+  <!-- ===========================
+       Open Graph (Social Sharing)
+  ============================ -->
+  <meta property="og:title" content="Pyramid Escape Run · Ancient Egypt Review Game | Teach Arcade">
+  <meta property="og:description" content="Race through pyramid tunnels, jump over traps, and pass through glowing hieroglyph gates to answer questions about Ancient Egypt.">
+  <meta property="og:type" content="website">
+  <!-- Replace with your actual image path -->
+  <meta property="og:image" content="https://teacharcade.com/assets/teach-arcade-pyramid-escape-run.png">
+  <meta property="og:url" content="https://teacharcade.com/arcade-review-games/pyramid-escape-run.html">
+
+  <!-- ===========================
+       Schema.org Structured Data
+  ============================ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalGame",
+    "name": "Pyramid Escape Run",
+    "genre": "Social Studies, Ancient Civilizations, Classroom Review Game",
+    "audience": {
+      "@type": "EducationalAudience",
+      "educationalLevel": "Middle School, High School"
+    },
+    "learningResourceType": "Review Game",
+    "description": "Pyramid Escape Run is a free arcade-style Ancient Egypt review game where students race through pyramid tunnels, avoid traps, and pass through question gates that cover the Nile River, pharaohs, pyramids, religion, mummification, and daily life.",
+    "educationalAlignment": {
+      "@type": "AlignmentObject",
+      "alignmentType": "teaches",
+      "educationalFramework": "World History",
+      "targetName": "Ancient Egypt, Nile River, pharaohs, pyramids, religion, social structure, achievements"
+    },
+    "creator": {
+      "@type": "Organization",
+      "name": "Teach Arcade"
+    }
+  }
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* Pyramid interior palette */
+      --sky: #1a130a;           /* dark stone background */
+      --wall-dark: #141012;
+      --wall-mid: #3b2a1b;
+      --floor: #4b3621;
+      --floor-highlight: #d4a15d;
+      --trap-spike: #f97316;
+      --trap-spike-dark: #7c2d12;
+      --gate-accent: #facc15;
+      --gate-complete: #16a34a;
+      --player: #facc15;
+      --player-accent: #fde68a;
+      --ui-bg: rgba(0, 0, 0, 0.7);
+      --accent: #facc15;
+      --text: #fefce8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1f2937 0%, #020617 70%);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding: 12px;
+      gap: 10px;
+    }
+
+    h1 {
+      font-family: "Press Start 2P", system-ui, sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-shadow: 0 2px 0 #000;
+      text-align: center;
+    }
+
+    .subtitle {
+      font-size: 0.75rem;
+      opacity: 0.9;
+      text-align: center;
+      max-width: 900px;
+    }
+
+    #modeBar {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      font-size: 0.75rem;
+    }
+
+    .pill-btn {
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 4px 10px;
+      background: rgba(0,0,0,0.55);
+      color: var(--text);
+      cursor: pointer;
+      font-size: 0.7rem;
+      font-family: "Press Start 2P", system-ui, sans-serif;
+      text-transform: uppercase;
+    }
+
+    .pill-btn.active {
+      background: var(--accent);
+      color: #1a130a;
+    }
+
+    #gameContainer {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.8);
+      border: 2px solid rgba(148,163,184,0.4);
+      background: #000;
+    }
+
+    canvas {
+      display: block;
+      background: var(--sky);
+      image-rendering: pixelated;
+    }
+
+    #hud {
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      right: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.65rem;
+      background: var(--ui-bg);
+      padding: 4px 10px;
+      border-radius: 999px;
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(148,163,184,0.45);
+      font-family: "Press Start 2P", system-ui, sans-serif;
+      z-index: 5;
+    }
+
+    #hud span {
+      white-space: nowrap;
+    }
+
+    #questionOverlay,
+    #endOverlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at top, rgba(0,0,0,0.94), rgba(0,0,0,0.98));
+      z-index: 10;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .panel {
+      background: #020617;
+      border-radius: 14px;
+      padding: 18px 18px 14px;
+      max-width: 480px;
+      width: 92%;
+      border: 2px solid rgba(250, 204, 21, 0.6);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.95);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 0.85rem;
+    }
+
+    .panel h2 {
+      font-family: "Press Start 2P", system-ui, sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .choices {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .choice-btn {
+      border: 0;
+      border-radius: 999px;
+      padding: 7px 10px;
+      font-size: 0.8rem;
+      text-align: left;
+      cursor: pointer;
+      background: #111827;
+      color: var(--text);
+      transition: background 0.08s, transform 0.08s, box-shadow 0.1s;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    .choice-btn:hover {
+      background: #1f2937;
+      transform: translateY(-1px);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.6);
+    }
+
+    .choice-btn.correct {
+      background: #16a34a !important;
+    }
+
+    .choice-btn.wrong {
+      background: #b91c1c !important;
+    }
+
+    .panel-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.7rem;
+      opacity: 0.9;
+      margin-top: 4px;
+    }
+
+    .primary-btn {
+      border-radius: 999px;
+      border: none;
+      padding: 6px 12px;
+      background: var(--accent);
+      color: #1a130a;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.75rem;
+      font-family: "Press Start 2P", system-ui, sans-serif;
+      text-transform: uppercase;
+    }
+
+    .primary-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+
+    #touchControls {
+      position: absolute;
+      bottom: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 12px;
+      padding: 4px 10px;
+      background: var(--ui-bg);
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.7);
+      backdrop-filter: blur(8px);
+      z-index: 6;
+    }
+
+    .ctrl-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid rgba(148,163,184,0.8);
+      background: #020617;
+      color: var(--text);
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-family: "Press Start 2P", system-ui, sans-serif;
+      transition: transform 0.08s, box-shadow 0.08s, background 0.08s;
+    }
+
+    .ctrl-btn:active {
+      transform: translateY(1px);
+      background: #0b1120;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.6) inset;
+    }
+
+    @media (min-width: 900px) {
+      #touchControls {
+        display: none;
+      }
+    }
+
+    @media (max-width: 900px) {
+      canvas {
+        width: 100vw;
+        height: auto;
+      }
+      h1 {
+        font-size: 0.8rem;
+      }
+      .subtitle {
+        font-size: 0.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Teach Arcade · Pyramid Escape Run</h1>
+  <p class="subtitle">
+    Dash through dim pyramid tunnels, jump over spike traps and rolling boulders,
+    and pass through glowing hieroglyph gates to answer 10 questions on Ancient Egypt:
+    the Nile, pharaohs, pyramids, religion, and daily life. Use ◀ ▶ / ▲ or on-screen
+    buttons to move and jump.
+  </p>
+
+  <div id="modeBar">
+    <span>Question Mode:</span>
+    <button id="modePreloaded" class="pill-btn active">Preloaded Egypt Bank</button>
+    <button id="modeCustom" class="pill-btn">Custom (if configured)</button>
+  </div>
+
+  <div id="gameContainer">
+    <canvas id="gameCanvas" width="960" height="360"></canvas>
+
+    <div id="hud">
+      <span id="hudScore">Score: 0</span>
+      <span id="hudQuestions">Gates: 0 / 10</span>
+      <span id="hudStatus">Status: Running</span>
+    </div>
+
+    <div id="touchControls">
+      <button id="btnLeft" class="ctrl-btn" aria-label="Move left">◀</button>
+      <button id="btnJump" class="ctrl-btn" aria-label="Jump">▲</button>
+      <button id="btnRight" class="ctrl-btn" aria-label="Move right">▶</button>
+    </div>
+
+    <div id="questionOverlay" class="hidden">
+      <div class="panel">
+        <h2 id="qTitle">Gate Question</h2>
+        <p id="qText"></p>
+        <div class="choices" id="choicesContainer"></div>
+        <div class="panel-footer">
+          <span id="qFeedback"></span>
+          <button id="qCloseBtn" class="primary-btn">Resume</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="endOverlay" class="hidden">
+      <div class="panel">
+        <h2>Escape Complete!</h2>
+        <p id="endSummary"></p>
+        <div class="panel-footer">
+          <button id="replayBtn" class="primary-btn">Replay Course</button>
+          <button id="topicBtn" class="primary-btn">Back to Arcade Hub</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ======================================================
+    // CONFIG
+    // ======================================================
+    const TOTAL_GATES = 10;
+    const CUSTOM_QUESTIONS = [];
+    let useCustomQuestions = false;
+
+    // ======================================================
+    // PRELOADED ANCIENT EGYPT QUESTION BANK
+    // ======================================================
+    const EGYPT_QUESTION_BANK = [
+      { id: 1, text: "Why was the Nile River so important to Ancient Egypt?", choices: [
+        "It flooded randomly and destroyed crops",
+        "It provided water, fertile soil, and transportation",
+        "It separated Egypt from Greece",
+        "It was used only for fishing"
+      ], correctIndex: 1 },
+      { id: 2, text: "What is a pharaoh?", choices: [
+        "A soldier in the Egyptian army",
+        "A merchant who traded on the Nile",
+        "The king and religious leader of Egypt",
+        "A slave who worked on pyramids"
+      ], correctIndex: 2 },
+      { id: 3, text: "What is the name for a preserved Egyptian body wrapped in cloth?", choices: [
+        "Sarcophagus",
+        "Mummy",
+        "Hieroglyph",
+        "Obelisk"
+      ], correctIndex: 1 },
+      { id: 4, text: "What are hieroglyphics?", choices: [
+        "Stone temples",
+        "Egyptian farming tools",
+        "A system of picture writing",
+        "Desert winds"
+      ], correctIndex: 2 },
+      { id: 5, text: "Most pyramids served mainly as:", choices: [
+        "Markets",
+        "Royal tombs",
+        "Schools",
+        "Government offices"
+      ], correctIndex: 1 },
+      { id: 6, text: "Which social group made up most of Egypt’s population?", choices: [
+        "Pharaohs and nobles",
+        "Priests and scribes",
+        "Farmers and laborers",
+        "Foreign merchants"
+      ], correctIndex: 2 },
+      { id: 7, text: "Why did Egyptians mummify bodies?", choices: [
+        "To prepare for the afterlife",
+        "To scare enemies",
+        "To sell them to other countries",
+        "To protect them from the Nile"
+      ], correctIndex: 0 },
+      { id: 8, text: "What was papyrus used for?", choices: [
+        "Building pyramids",
+        "Making paper for writing",
+        "Making jewelry",
+        "Cooking food"
+      ], correctIndex: 1 },
+      { id: 9, text: "The ancient Egyptians believed many gods controlled nature and life. This is called:", choices: [
+        "Monotheism",
+        "Polytheism",
+        "Democracy",
+        "Feudalism"
+      ], correctIndex: 1 },
+      { id: 10, text: "Which structure is most closely linked to the Old Kingdom?", choices: [
+        "Massive pyramids built as tombs",
+        "Huge malls along the Nile",
+        "Steel skyscrapers",
+        "Stone theaters for plays"
+      ], correctIndex: 0 },
+      { id: 11, text: "What was the Book of the Dead?", choices: [
+        "A list of Egyptian laws",
+        "A book of poems",
+        "A collection of spells and prayers for the afterlife",
+        "A storybook for children"
+      ], correctIndex: 2 },
+      { id: 12, text: "Which direction does the Nile River flow?", choices: [
+        "South to north",
+        "North to south",
+        "East to west",
+        "It flows in a circle"
+      ], correctIndex: 0 },
+      { id: 13, text: "What natural feature protected Egypt from invasion to the west and east?", choices: [
+        "Grasslands",
+        "Thick forests",
+        "Deserts",
+        "Oceans"
+      ], correctIndex: 2 },
+      { id: 14, text: "What is a scribe?", choices: [
+        "A person who writes and keeps records",
+        "A soldier on horseback",
+        "A pyramid builder",
+        "A religious statue"
+      ], correctIndex: 0 },
+      { id: 15, text: "What was one main job of Egyptian priests?", choices: [
+        "Teaching math at schools",
+        "Training horses",
+        "Running temples and rituals for the gods",
+        "Building roads"
+      ], correctIndex: 2 },
+      { id: 16, text: "Which statement about Egyptian religion is most accurate?", choices: [
+        "They believed in one god only",
+        "They ignored the afterlife",
+        "They believed in many gods and a detailed afterlife",
+        "They did not build temples"
+      ], correctIndex: 2 }
+    ];
+
+    function pickRandomQuestions(bank, count) {
+      const shuffled = [...bank].sort(() => Math.random() - 0.5);
+      return shuffled.slice(0, count);
+    }
+
+    // ======================================================
+    // CORE GAME STATE
+    // ======================================================
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+
+    const WORLD_WIDTH = 4800;
+    const GROUND_BASE_Y = 280;
+
+    const player = {
+      x: 80,
+      y: 180,
+      w: 28,
+      h: 40,
+      vx: 0,
+      vy: 0,
+      onGround: false
+    };
+
+    const GRAVITY = 1200;
+    const PLAYER_SPEED = 260;
+    const JUMP_STRENGTH = 520;
+
+    let cameraX = 0;
+    let lastTime = 0;
+    let gamePaused = false;
+    let inQuestion = false;
+    let levelComplete = false;
+
+    let score = 0;
+    let firstTryCorrectCount = 0;
+    let gatesClearedCount = 0;
+
+    let currentQuestions = [];
+    let gates = [];
+    let activeGate = null;
+
+    // Pits (floor gaps)
+    const pits = [
+      { x: 900,  width: 80 },
+      { x: 1900, width: 90 },
+      { x: 3300, width: 100 }
+    ];
+
+    // Floor spike obstacles, clearly separate from gates
+    const spikeTraps = [
+      { x: 650,  w: 60 },
+      { x: 1450, w: 70 },
+      { x: 2350, w: 70 },
+      { x: 3050, w: 80 },
+      { x: 3850, w: 80 }
+    ];
+
+    // Rolling boulders as moving obstacles
+    const boulders = [
+      { x: 1200, yOffset: -24, radius: 14, dir: 1,  speed: 70, minX: 1180, maxX: 1320 },
+      { x: 2600, yOffset: -24, radius: 14, dir: -1, speed: 80, minX: 2520, maxX: 2660 },
+      { x: 4100, yOffset: -24, radius: 14, dir: 1,  speed: 85, minX: 4060, maxX: 4220 }
+    ];
+
+    const effects = [];
+    let lastSafeX = player.x;
+    let lastSafeY = player.y;
+
+    const endDoorX = WORLD_WIDTH - 140;
+    const keys = { left: false, right: false };
+    let hitCooldown = 0;
+
+    let toastText = "";
+    let toastTimer = 0;
+    let bannerText = "";
+    let bannerTimer = 0;
+
+    // Terrain segments: slightly sloped tunnels
+    const terrainSegments = [
+      { x1:    0, y1: GROUND_BASE_Y, x2:  900, y2: GROUND_BASE_Y }, // flat entry
+      { x1:  900, y1: GROUND_BASE_Y, x2: 1600, y2: 250 },          // ramp down
+      { x1: 1600, y1: 250,            x2: 2300, y2: 290 },          // ramp up
+      { x1: 2300, y1: 290,            x2: 3100, y2: 260 },          // gentle down
+      { x1: 3100, y1: 260,            x2: 3900, y2: 240 },          // gentle up
+      { x1: 3900, y1: 240,            x2: 4800, y2: 280 }           // return to baseline
+    ];
+
+    // Manual gate positions chosen so they are NOT right on pits or traps
+    const gatePositions = [500, 1050, 1550, 2050, 2550, 3050, 3550, 3950, 4350, 4650];
+
+    // ======================================================
+    // UI ELEMENTS
+    // ======================================================
+    const hudScore = document.getElementById('hudScore');
+    const hudQuestions = document.getElementById('hudQuestions');
+    const hudStatus = document.getElementById('hudStatus');
+
+    const qOverlay = document.getElementById('questionOverlay');
+    const qTitle = document.getElementById('qTitle');
+    const qText = document.getElementById('qText');
+    const qChoices = document.getElementById('choicesContainer');
+    const qFeedback = document.getElementById('qFeedback');
+    const qCloseBtn = document.getElementById('qCloseBtn');
+
+    const endOverlay = document.getElementById('endOverlay');
+    const endSummary = document.getElementById('endSummary');
+    const replayBtn = document.getElementById('replayBtn');
+    const topicBtn = document.getElementById('topicBtn');
+
+    const modePreloadedBtn = document.getElementById('modePreloaded');
+    const modeCustomBtn = document.getElementById('modeCustom');
+
+    const leftBtn  = document.getElementById('btnLeft');
+    const rightBtn = document.getElementById('btnRight');
+    const jumpBtn  = document.getElementById('btnJump');
+
+    // ======================================================
+    // HELPERS
+    // ======================================================
+    function showToast(text, duration = 1.1) {
+      toastText = text;
+      toastTimer = duration;
+    }
+
+    function showBanner(text, duration = 1.2) {
+      bannerText = text;
+      bannerTimer = duration;
+    }
+
+    function getGroundY(x) {
+      // Check pits
+      const inPit = pits.some(p => x > p.x && x < p.x + p.width);
+      if (inPit) return null;
+
+      for (const seg of terrainSegments) {
+        if (x >= seg.x1 && x <= seg.x2) {
+          const t = (x - seg.x1) / (seg.x2 - seg.x1);
+          return seg.y1 + t * (seg.y2 - seg.y1);
+        }
+      }
+      if (x < terrainSegments[0].x1) return terrainSegments[0].y1;
+      const last = terrainSegments[terrainSegments.length - 1];
+      if (x > last.x2) return last.y2;
+      return GROUND_BASE_Y;
+    }
+
+    function rectIntersect(a, b) {
+      return !(
+        a.x + a.w <= b.x ||
+        a.x >= b.x + b.w ||
+        a.y + a.h <= b.y ||
+        a.y >= b.y + b.h
+      );
+    }
+
+    // ======================================================
+    // INPUT
+    // ======================================================
+    function tryJump() {
+      if (player.onGround && !gamePaused && !inQuestion && !levelComplete) {
+        player.vy = -JUMP_STRENGTH;
+        player.onGround = false;
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.code === 'ArrowLeft' || e.code === 'KeyA') {
+        keys.left = true;
+      }
+      if (e.code === 'ArrowRight' || e.code === 'KeyD') {
+        keys.right = true;
+      }
+      if (e.code === 'ArrowUp' || e.code === 'Space' || e.code === 'KeyW') {
+        e.preventDefault();
+        tryJump();
+      }
+    });
+
+    document.addEventListener('keyup', (e) => {
+      if (e.code === 'ArrowLeft' || e.code === 'KeyA') {
+        keys.left = false;
+      }
+      if (e.code === 'ArrowRight' || e.code === 'KeyD') {
+        keys.right = false;
+      }
+    });
+
+    function bindControl(btn, onDown, onUp) {
+      if (!btn) return;
+      const start = (e) => { e.preventDefault(); onDown(); };
+      const end = (e) => { e.preventDefault(); onUp(); };
+      btn.addEventListener('touchstart', start, { passive: false });
+      btn.addEventListener('touchend', end, { passive: false });
+      btn.addEventListener('touchcancel', end, { passive: false });
+      btn.addEventListener('mousedown', start);
+      btn.addEventListener('mouseup', end);
+      btn.addEventListener('mouseleave', end);
+    }
+
+    bindControl(leftBtn, () => { keys.left = true; },  () => { keys.left = false; });
+    bindControl(rightBtn, () => { keys.right = true; }, () => { keys.right = false; });
+
+    if (jumpBtn) {
+      const pressJump = (e) => {
+        e.preventDefault();
+        tryJump();
+      };
+      jumpBtn.addEventListener('touchstart', pressJump, { passive: false });
+      jumpBtn.addEventListener('mousedown', pressJump);
+    }
+
+    // Mode buttons
+    modePreloadedBtn.addEventListener('click', () => {
+      useCustomQuestions = false;
+      modePreloadedBtn.classList.add('active');
+      modeCustomBtn.classList.remove('active');
+      startNewRun();
+    });
+
+    modeCustomBtn.addEventListener('click', () => {
+      useCustomQuestions = CUSTOM_QUESTIONS && CUSTOM_QUESTIONS.length >= TOTAL_GATES;
+      modeCustomBtn.classList.add('active');
+      modePreloadedBtn.classList.remove('active');
+      startNewRun();
+    });
+
+    // ======================================================
+    // QUESTIONS / GATES
+    // ======================================================
+    function setupGates() {
+      gates = [];
+      for (let i = 0; i < TOTAL_GATES; i++) {
+        const gx = gatePositions[i];
+        const gy = getGroundY(gx) || GROUND_BASE_Y;
+        gates.push({
+          id: i + 1,
+          qIndex: i,
+          x: gx,
+          y: gy,
+          completed: false,
+          firstTry: true
+        });
+      }
+    }
+
+    function openGateQuestion(gate) {
+      if (inQuestion || levelComplete) return;
+      inQuestion = true;
+      gamePaused = true;
+      activeGate = gate;
+
+      const q = currentQuestions[gate.qIndex];
+      qTitle.textContent = "Gate " + gate.id;
+      qText.textContent = q.text;
+      qFeedback.textContent = "";
+      qChoices.innerHTML = "";
+
+      q.choices.forEach((choice, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'choice-btn';
+        btn.textContent = String.fromCharCode(65 + idx) + ") " + choice;
+        btn.addEventListener('click', () => handleAnswer(gate, q, idx, btn));
+        qChoices.appendChild(btn);
+      });
+
+      qOverlay.classList.remove('hidden');
+      hudStatus.textContent = "Status: Gate Question";
+    }
+
+    function handleAnswer(gate, question, selectedIndex, btnEl) {
+      const isCorrect = selectedIndex === question.correctIndex;
+      if (isCorrect) {
+        btnEl.classList.add('correct');
+        qFeedback.textContent = "Correct!";
+        if (gate.firstTry) {
+          score += 25;
+          firstTryCorrectCount++;
+          showToast("+25 | First try!");
+        } else {
+          score += 10;
+          showToast("+10 | Got it!");
+        }
+        gate.completed = true;
+        gatesClearedCount = gates.filter(g => g.completed).length;
+        updateHud();
+        showBanner(`Gate ${gatesClearedCount} / ${TOTAL_GATES} cleared`);
+
+        setTimeout(() => {
+          closeQuestion();
+          checkLevelComplete();
+        }, 500);
+      } else {
+        btnEl.classList.add('wrong');
+        qFeedback.textContent = "Incorrect. Try again.";
+        score -= 10;
+        showToast("-10 | Recheck your thinking");
+        gate.firstTry = false;
+        updateHud();
+      }
+    }
+
+    function closeQuestion() {
+      qOverlay.classList.add('hidden');
+      inQuestion = false;
+      gamePaused = false;
+      activeGate = null;
+      hudStatus.textContent = "Status: Running";
+    }
+
+    qCloseBtn.addEventListener('click', () => {
+      if (activeGate && activeGate.completed) {
+        closeQuestion();
+      } else {
+        qFeedback.textContent = "Answer correctly to continue.";
+      }
+    });
+
+    function checkLevelComplete() {
+      if (!levelComplete &&
+          gatesClearedCount === TOTAL_GATES &&
+          player.x + player.w > endDoorX) {
+        triggerEndScreen();
+      }
+    }
+
+    function triggerEndScreen() {
+      levelComplete = true;
+      gamePaused = true;
+      inQuestion = false;
+      hudStatus.textContent = "Status: Complete";
+
+      const accuracy = (firstTryCorrectCount / TOTAL_GATES) * 100;
+      endSummary.textContent =
+        `Score: ${score} points | Accuracy: ${firstTryCorrectCount}/${TOTAL_GATES} (${accuracy.toFixed(0)}%)`;
+      endOverlay.classList.remove('hidden');
+    }
+
+    replayBtn.addEventListener('click', () => {
+      startNewRun();
+    });
+
+    topicBtn.addEventListener('click', () => {
+      window.location.href = "/arcade-review-games/";
+    });
+
+    function updateHud() {
+      hudScore.textContent = "Score: " + score;
+      hudQuestions.textContent = "Gates: " + gatesClearedCount + " / " + TOTAL_GATES;
+    }
+
+    // ======================================================
+    // GAME LOOP & PHYSICS
+    // ======================================================
+    function startNewRun() {
+      player.x = 80;
+      player.y = 180;
+      player.vx = 0;
+      player.vy = 0;
+      player.onGround = false;
+      cameraX = 0;
+      score = 0;
+      gatesClearedCount = 0;
+      firstTryCorrectCount = 0;
+      levelComplete = false;
+      gamePaused = false;
+      inQuestion = false;
+      hitCooldown = 0;
+      lastSafeX = player.x;
+      lastSafeY = player.y;
+      toastText = "";
+      toastTimer = 0;
+      bannerText = "";
+      bannerTimer = 0;
+      effects.length = 0;
+
+      qOverlay.classList.add('hidden');
+      endOverlay.classList.add('hidden');
+      hudStatus.textContent = "Status: Running";
+
+      if (useCustomQuestions && CUSTOM_QUESTIONS.length >= TOTAL_GATES) {
+        currentQuestions = CUSTOM_QUESTIONS.slice(0, TOTAL_GATES);
+      } else {
+        currentQuestions = pickRandomQuestions(EGYPT_QUESTION_BANK, TOTAL_GATES);
+      }
+
+      setupGates();
+      updateHud();
+    }
+
+    function update(dt) {
+      if (gamePaused) return;
+
+      if (hitCooldown > 0) {
+        hitCooldown -= dt;
+        if (hitCooldown < 0) hitCooldown = 0;
+      }
+
+      if (toastTimer > 0) {
+        toastTimer -= dt;
+        if (toastTimer < 0) toastTimer = 0;
+      }
+      if (bannerTimer > 0) {
+        bannerTimer -= dt;
+        if (bannerTimer < 0) bannerTimer = 0;
+      }
+
+      if (keys.left)      player.vx = -PLAYER_SPEED;
+      else if (keys.right) player.vx = PLAYER_SPEED;
+      else                player.vx = 0;
+
+      player.vy += GRAVITY * dt;
+
+      const prevY = player.y;
+      player.x += player.vx * dt;
+      if (player.x < 0) player.x = 0;
+      if (player.x + player.w > WORLD_WIDTH) player.x = WORLD_WIDTH - player.w;
+
+      player.y += player.vy * dt;
+      player.onGround = false;
+
+      const centerX = player.x + player.w / 2;
+      const groundY = getGroundY(centerX);
+      const inPit = pits.some(p => centerX > p.x && centerX < p.x + p.width);
+
+      if (groundY !== null && player.y + player.h >= groundY && player.vy >= 0) {
+        player.y = groundY - player.h;
+        player.vy = 0;
+        player.onGround = true;
+        lastSafeX = player.x;
+        lastSafeY = player.y;
+      }
+
+      // Pit fall reset
+      if (inPit && player.y > canvas.height + 40) {
+        player.x = lastSafeX;
+        player.y = lastSafeY;
+        player.vx = 0;
+        player.vy = 0;
+        score -= 20;
+        hudStatus.textContent = "Status: Fell in a pit (-20)";
+        showToast("-20 | Watch your step");
+        updateHud();
+      } else if (!inQuestion && !levelComplete) {
+        hudStatus.textContent = "Status: Running";
+      }
+
+      // Floor spike collisions (clear visual orange spikes)
+      for (const spike of spikeTraps) {
+        const gx = getGroundY(spike.x + spike.w / 2) || GROUND_BASE_Y;
+        const spikeRect = {
+          x: spike.x,
+          y: gx - 12,
+          w: spike.w,
+          h: 12
+        };
+        if (rectIntersect(player, spikeRect)) {
+          if (hitCooldown === 0) {
+            hitCooldown = 1.0;
+            score -= 15;
+            hudStatus.textContent = "Status: Hit spike trap (-15)";
+            showToast("-15 | Time your jumps");
+            updateHud();
+            player.x -= 30;
+            player.vx = 0;
+          }
+        }
+      }
+
+      // Boulders movement & collisions
+      for (const b of boulders) {
+        const ground = getGroundY(b.x) || GROUND_BASE_Y;
+        b.x += b.dir * b.speed * dt;
+        if (b.x < b.minX) {
+          b.x = b.minX;
+          b.dir = 1;
+        } else if (b.x > b.maxX) {
+          b.x = b.maxX;
+          b.dir = -1;
+        }
+
+        const bRect = {
+          x: b.x - b.radius,
+          y: ground + b.yOffset - b.radius,
+          w: b.radius * 2,
+          h: b.radius * 2
+        };
+
+        if (rectIntersect(player, bRect)) {
+          if (hitCooldown === 0) {
+            hitCooldown = 1.0;
+            score -= 15;
+            hudStatus.textContent = "Status: Hit by boulder (-15)";
+            showToast("-15 | Avoid rolling stones");
+            updateHud();
+            player.x += (b.dir > 0 ? -30 : 30);
+            player.vx = 0;
+          }
+        }
+      }
+
+      // Update effects
+      for (let i = effects.length - 1; i >= 0; i--) {
+        const fx = effects[i];
+        fx.life -= dt;
+        if (fx.life <= 0) effects.splice(i, 1);
+      }
+
+      // Gate triggers: stop player just before gate
+      for (const gate of gates) {
+        if (gate.completed) continue;
+        const triggerX = gate.x - 30;
+        if (player.x + player.w >= triggerX) {
+          player.x = triggerX - player.w;
+          player.vx = 0;
+          openGateQuestion(gate);
+          break;
+        }
+      }
+
+      // End door check
+      if (!levelComplete && player.x + player.w > endDoorX) {
+        checkLevelComplete();
+      }
+
+      // Camera follow
+      const halfCanvas = canvas.width / 2;
+      const targetCameraX = player.x + player.w / 2 - halfCanvas;
+      const maxCam = WORLD_WIDTH - canvas.width;
+      const clampedTarget = Math.max(0, Math.min(targetCameraX, maxCam));
+      const SMOOTH = 0.12;
+      cameraX += (clampedTarget - cameraX) * SMOOTH;
+    }
+
+    // ======================================================
+    // DRAW
+    // ======================================================
+    function drawBackground() {
+      const grad = ctx.createLinearGradient(0, 0, 0, canvas.height);
+      grad.addColorStop(0, "#111827");
+      grad.addColorStop(0.4, "#1a130a");
+      grad.addColorStop(1, "#020617");
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Pyramid walls with hieroglyph stripes & torches
+      ctx.fillStyle = "#1f2933";
+      ctx.fillRect(0, canvas.height * 0.2, canvas.width, canvas.height * 0.8);
+
+      // Columns and torches
+      for (let x = -200; x < WORLD_WIDTH + 200; x += 260) {
+        const sx = x - cameraX;
+        if (sx > canvas.width || sx < -260) continue;
+
+        // Column
+        ctx.fillStyle = "#2f1f15";
+        ctx.fillRect(sx + 40, canvas.height * 0.2, 32, canvas.height * 0.8);
+
+        // Torch
+        ctx.fillStyle = "#3f2a1a";
+        ctx.fillRect(sx + 46, canvas.height * 0.28, 20, 10);
+        // Flame
+        ctx.fillStyle = "#f97316";
+        ctx.beginPath();
+        ctx.arc(sx + 56, canvas.height * 0.26, 6, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = "#fde68a";
+        ctx.beginPath();
+        ctx.arc(sx + 56, canvas.height * 0.255, 3, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    function drawTerrain() {
+      ctx.fillStyle = "#020617";
+      ctx.fillRect(0, GROUND_BASE_Y, canvas.width, canvas.height - GROUND_BASE_Y);
+
+      ctx.beginPath();
+      const startX = Math.max(0, cameraX - 100);
+      const endX = Math.min(WORLD_WIDTH, cameraX + canvas.width + 100);
+      let x = startX;
+      let first = true;
+      const step = 16;
+
+      while (x <= endX) {
+        const ground = getGroundY(x);
+        const screenX = x - cameraX;
+        const screenY = ground !== null ? ground : canvas.height;
+
+        if (first) {
+          ctx.moveTo(screenX, screenY);
+          first = false;
+        } else {
+          ctx.lineTo(screenX, screenY);
+        }
+        x += step;
+      }
+
+      ctx.lineTo(endX - cameraX, canvas.height);
+      ctx.lineTo(startX - cameraX, canvas.height);
+      ctx.closePath();
+
+      ctx.fillStyle = "#4b3621";
+      ctx.fill();
+
+      // Highlight line for walkway top
+      ctx.strokeStyle = "#d4a15d";
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      x = startX;
+      first = true;
+      while (x <= endX) {
+        const ground = getGroundY(x);
+        const screenX = x - cameraX;
+        const screenY = ground !== null ? ground : canvas.height;
+        if (first) {
+          ctx.moveTo(screenX, screenY);
+          first = false;
+        } else {
+          ctx.lineTo(screenX, screenY);
+        }
+        x += step;
+      }
+      ctx.stroke();
+
+      // Darken pit areas
+      ctx.fillStyle = "#020617";
+      for (const p of pits) {
+        const sx = p.x - cameraX;
+        ctx.fillRect(sx, GROUND_BASE_Y, p.width, canvas.height - GROUND_BASE_Y);
+      }
+    }
+
+    function drawSpikes() {
+      spikeTraps.forEach(spike => {
+        const gx = getGroundY(spike.x + spike.w / 2) || GROUND_BASE_Y;
+        const sx = spike.x - cameraX;
+        const baseY = gx;
+
+        const numSpikes = Math.max(3, Math.floor(spike.w / 10));
+        const spikeWidth = spike.w / numSpikes;
+
+        for (let i = 0; i < numSpikes; i++) {
+          const left = sx + i * spikeWidth;
+          const mid = left + spikeWidth / 2;
+          const top = baseY - 14;
+          ctx.fillStyle = "#f97316";
+          ctx.beginPath();
+          ctx.moveTo(left, baseY);
+          ctx.lineTo(mid, top);
+          ctx.lineTo(left + spikeWidth, baseY);
+          ctx.closePath();
+          ctx.fill();
+
+          ctx.strokeStyle = "#7c2d12";
+          ctx.stroke();
+        }
+      });
+    }
+
+    function drawBoulders() {
+      boulders.forEach(b => {
+        const ground = getGroundY(b.x) || GROUND_BASE_Y;
+        const sx = b.x - cameraX;
+        const sy = ground + b.yOffset;
+
+        ctx.fillStyle = "#78350f";
+        ctx.beginPath();
+        ctx.arc(sx, sy, b.radius, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.strokeStyle = "#451a03";
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        // Highlight
+        ctx.fillStyle = "#fbbf24";
+        ctx.beginPath();
+        ctx.arc(sx - b.radius / 3, sy - b.radius / 3, 3, 0, Math.PI * 2);
+        ctx.fill();
+      });
+    }
+
+    function drawGates() {
+      ctx.font = "10px 'Press Start 2P', system-ui, sans-serif";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "bottom";
+
+      gates.forEach(gate => {
+        const sx = gate.x - cameraX;
+        const gy = gate.y;
+
+        const gateHeight = 70;
+        const gateWidth = 46;
+
+        // Pillars
+        ctx.fillStyle = gate.completed ? "#166534" : "#9a3412";
+        ctx.fillRect(sx - gateWidth/2, gy - gateHeight, 8, gateHeight);
+        ctx.fillRect(sx + gateWidth/2 - 8, gy - gateHeight, 8, gateHeight);
+
+        // Arch top
+        ctx.beginPath();
+        ctx.arc(sx, gy - gateHeight, gateWidth / 2, Math.PI, 0);
+        ctx.fill();
+
+        // Hieroglyph-style bar
+        ctx.fillStyle = gate.completed ? "#bbf7d0" : "#facc15";
+        ctx.fillRect(sx - gateWidth/2 + 4, gy - gateHeight + 4, gateWidth - 8, 4);
+
+        // Label
+        ctx.fillStyle = "#fef9c3";
+        ctx.fillText(gate.id, sx, gy - gateHeight - 4);
+
+        if (gate.completed) {
+          ctx.fillText("✓", sx + 16, gy - gateHeight - 4);
+        }
+      });
+    }
+
+    function drawEndDoor() {
+      const sx = endDoorX - cameraX;
+      const ground = getGroundY(endDoorX) || GROUND_BASE_Y;
+      const baseY = ground;
+
+      // Frame
+      ctx.fillStyle = "#3f2a1c";
+      ctx.fillRect(sx, baseY - 90, 60, 90);
+
+      // Inner doorway
+      ctx.fillStyle = "#020617";
+      ctx.fillRect(sx + 6, baseY - 84, 48, 84);
+
+      // Glyph panel
+      ctx.fillStyle = "#facc15";
+      ctx.fillRect(sx + 10, baseY - 80, 40, 14);
+      ctx.fillStyle = "#1a130a";
+      ctx.font = "8px 'Press Start 2P', system-ui, sans-serif";
+      ctx.textAlign = "center";
+      ctx.fillText("EXIT", sx + 30, baseY - 72);
+    }
+
+    function drawPlayer() {
+      const sx = player.x - cameraX;
+      const sy = player.y;
+
+      // Legs
+      ctx.fillStyle = "#1f2937";
+      ctx.fillRect(sx + 4, sy + player.h - 10, 8, 10);
+      ctx.fillRect(sx + player.w - 12, sy + player.h - 10, 8, 10);
+
+      // Body
+      ctx.fillStyle = "#facc15";
+      ctx.fillRect(sx + 4, sy + 10, player.w - 8, 22);
+
+      // Shoulder wrap / sash
+      ctx.fillStyle = "#e5b35a";
+      ctx.fillRect(sx + 4, sy + 14, player.w - 8, 4);
+
+      // Headband
+      ctx.fillStyle = "#fde68a";
+      ctx.fillRect(sx + 4, sy, player.w - 8, 8);
+
+      // Arms
+      ctx.fillStyle = "#fef9c3";
+      ctx.fillRect(sx, sy + 14, 4, 10);
+      ctx.fillRect(sx + player.w - 4, sy + 14, 4, 10);
+
+      // Eyes
+      ctx.fillStyle = "#020617";
+      ctx.fillRect(sx + 7, sy + 4, 2, 2);
+      ctx.fillRect(sx + 17, sy + 4, 2, 2);
+    }
+
+    function drawOverlays() {
+      if (bannerTimer > 0 && bannerText) {
+        ctx.font = "10px 'Press Start 2P', system-ui, sans-serif";
+        ctx.textAlign = "center";
+        const w = 320;
+        const h = 24;
+        const x = canvas.width / 2 - w / 2;
+        const y = 34;
+        ctx.fillStyle = "rgba(0,0,0,0.8)";
+        ctx.fillRect(x, y, w, h);
+        ctx.fillStyle = "#facc15";
+        ctx.fillText(bannerText, canvas.width / 2, y + 8);
+      }
+
+      if (toastTimer > 0 && toastText) {
+        ctx.font = "10px 'Press Start 2P', system-ui, sans-serif";
+        ctx.textAlign = "center";
+        const w = 320;
+        const h = 24;
+        const x = canvas.width / 2 - w / 2;
+        const y = canvas.height - 34;
+        ctx.fillStyle = "rgba(0,0,0,0.8)";
+        ctx.fillRect(x, y, w, h);
+        ctx.fillStyle = "#facc15";
+        ctx.fillText(toastText, canvas.width / 2, y + 8);
+      }
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawBackground();
+      drawTerrain();
+      drawSpikes();
+      drawBoulders();
+      drawGates();
+      drawEndDoor();
+      drawPlayer();
+      drawOverlays();
+    }
+
+    function loop(timestamp) {
+      const dt = (timestamp - lastTime) / 1000;
+      lastTime = timestamp;
+
+      update(dt);
+      draw();
+
+      requestAnimationFrame(loop);
+    }
+
+    // Start game
+    startNewRun();
+    requestAnimationFrame(loop);
+  </script>
+</body>
+</html>
