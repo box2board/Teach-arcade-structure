@@ -27,10 +27,10 @@
 
   const keys = { left:false, right:false, up:false, down:false };
 
-  const hudScore = document.getElementById("hudScore");
-  const hudQuestions = document.getElementById("hudQuestions");
-  const hudTimer = document.getElementById("hudTimer");
-  const hudStatus = document.getElementById("hudStatus");
+  const hudScore    = document.getElementById("hudScore");
+  const hudQuestions= document.getElementById("hudQuestions");
+  const hudTimer    = document.getElementById("hudTimer");   // may be null, handled safely
+  const hudStatus   = document.getElementById("hudStatus");
 
   const qOverlay = document.getElementById("questionOverlay");
   const qTitle   = document.getElementById("qTitle");
@@ -42,7 +42,7 @@
   const endOverlay = document.getElementById("endOverlay");
   const endSummary = document.getElementById("endSummary");
   const replayBtn  = document.getElementById("replayBtn");
-  const hubBtn     = document.getElementById("hubBtn");
+  const hubBtn     = document.getElementById("hubBtn");      // may be null
 
   const btnLeft  = document.getElementById("btnLeft");
   const btnRight = document.getElementById("btnRight");
@@ -103,7 +103,7 @@
 
   // Teleport pads (floor runes)
   const teleports = [
-    { x: 120, y: 440, targetX: 830, targetY: 80, label: "Records Room" },
+    { x: 120, y: 440, targetX: 830, targetY: 80,  label: "Records Room" },
     { x: 830, y: 260, targetX: 110, targetY: 100, label: "Lobby" }
   ];
 
@@ -133,9 +133,9 @@
 
   // Roaming librarians (enemies)
   const librarians = [
-    { x: 140, y: 150, w: 26, h: 26, dir: 1, axis: "x", min: 90, max: 180 },
-    { x: 600, y: 210, w: 26, h: 26, dir: -1, axis: "x", min: 540, max: 660 },
-    { x: 800, y: 380, w: 26, h: 26, dir: -1, axis: "x", min: 720, max: 880 },
+    { x: 140, y: 150, w: 26, h: 26, dir: 1, axis: "x", min: 90,  max: 180 },
+    { x: 600, y: 210, w: 26, h: 26, dir: -1,axis: "x", min: 540, max: 660 },
+    { x: 800, y: 380, w: 26, h: 26, dir: -1,axis: "x", min: 720, max: 880 },
     { x: 300, y: 330, w: 26, h: 26, dir: 1, axis: "y", min: 320, max: 440 }
   ];
 
@@ -224,19 +224,17 @@
   // INPUT HANDLING
   // =============================
   document.addEventListener("keydown", (e) => {
-    if (e.code === "ArrowLeft" || e.code === "KeyA") keys.left = true;
+    if (e.code === "ArrowLeft"  || e.code === "KeyA") keys.left  = true;
     if (e.code === "ArrowRight" || e.code === "KeyD") keys.right = true;
-    if (e.code === "ArrowUp" || e.code === "KeyW") keys.up = true;
-    if (e.code === "ArrowDown" || e.code === "KeyS") keys.down = false ? false : true;
-    // ↑ little trick avoided; explicitly:
-    if (e.code === "ArrowDown" || e.code === "KeyS") keys.down = true;
+    if (e.code === "ArrowUp"    || e.code === "KeyW") keys.up    = true;
+    if (e.code === "ArrowDown"  || e.code === "KeyS") keys.down  = true;
   });
 
   document.addEventListener("keyup", (e) => {
-    if (e.code === "ArrowLeft" || e.code === "KeyA") keys.left = false;
+    if (e.code === "ArrowLeft"  || e.code === "KeyA") keys.left  = false;
     if (e.code === "ArrowRight" || e.code === "KeyD") keys.right = false;
-    if (e.code === "ArrowUp" || e.code === "KeyW") keys.up = false;
-    if (e.code === "ArrowDown" || e.code === "KeyS") keys.down = false;
+    if (e.code === "ArrowUp"    || e.code === "KeyW") keys.up    = false;
+    if (e.code === "ArrowDown"  || e.code === "KeyS") keys.down  = false;
   });
 
   function bindTouch(btn, onDown, onUp) {
@@ -369,17 +367,24 @@
     resetGame();
   });
 
-  hubBtn.addEventListener("click", () => {
-    window.location.href = "/arcade-review-games/";
-  });
+  if (hubBtn) {
+    hubBtn.addEventListener("click", () => {
+      window.location.href = "/arcade-review-games/";
+    });
+  }
 
   function updateHud() {
-    hudScore.textContent = "Score: " + score;
-    hudQuestions.textContent = "Courtrooms: " + questionsCleared + " / 20";
-
-    const mins = Math.max(0, Math.floor(timeRemaining / 60));
-    const secs = Math.max(0, Math.floor(timeRemaining % 60));
-    hudTimer.textContent = `Time: ${String(mins).padStart(2,"0")}:${String(secs).padStart(2,"0")}`;
+    if (hudScore) {
+      hudScore.textContent = "Score: " + score;
+    }
+    if (hudQuestions) {
+      hudQuestions.textContent = "Courtrooms: " + questionsCleared + " / 20";
+    }
+    if (hudTimer) {
+      const mins = Math.max(0, Math.floor(timeRemaining / 60));
+      const secs = Math.max(0, Math.floor(timeRemaining % 60));
+      hudTimer.textContent = `Time: ${String(mins).padStart(2,"0")}:${String(secs).padStart(2,"0")}`;
+    }
   }
 
   function triggerEndScreen(reason="complete") {
@@ -506,9 +511,9 @@
     // Move with wall collisions (axis-separated)
     // X axis
     player.x += player.vx * dt;
-    const playerRectX = { x: player.x, y: player.y, w: player.w, h: player.h };
+    let playerRect = { x: player.x, y: player.y, w: player.w, h: player.h };
     for (const w of walls) {
-      if (rectsIntersect(playerRectX, w)) {
+      if (rectsIntersect(playerRect, w)) {
         if (player.vx > 0) {
           player.x = w.x - player.w;
         } else if (player.vx < 0) {
@@ -519,9 +524,9 @@
 
     // Y axis
     player.y += player.vy * dt;
-    const playerRectY = { x: player.x, y: player.y, w: player.w, h: player.h };
+    playerRect = { x: player.x, y: player.y, w: player.w, h: player.h };
     for (const w of walls) {
-      if (rectsIntersect(playerRectY, w)) {
+      if (rectsIntersect(playerRect, w)) {
         if (player.vy > 0) {
           player.y = w.y - player.h;
         } else if (player.vy < 0) {
@@ -541,7 +546,7 @@
     let inLaserNow = false;
     if (lasersActive) {
       for (const ls of lasers) {
-        if (Math.abs(distancePointToSegment(playerCenterX, playerCenterY, ls.x1, ls.y1, ls.x2, ls.y2)) < 12) {
+        if (distancePointToSegment(playerCenterX, playerCenterY, ls.x1, ls.y1, ls.x2, ls.y2) < 12) {
           inLaserNow = true;
           break;
         }
