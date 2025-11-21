@@ -1,363 +1,420 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>13 Days Style Mockups</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
+  <meta charset="utf-8" />
+  <title>13 Days — Visual Style Mockups</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    * { box-sizing:border-box; }
-    body {
-      margin:0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
       background:#020617;
       color:#e5e7eb;
-      padding:16px;
+      padding:24px 16px 40px;
     }
-
-    h1 {
-      font-size:1.4rem;
-      margin:0 0 12px;
+    .page{
+      max-width:1100px;
+      margin:0 auto;
     }
-
-    .wrapper {
-      display:grid;
-      grid-template-columns:1fr;
-      gap:16px;
+    h1{
+      font-size:1.7rem;
+      font-weight:700;
+      margin-bottom:4px;
     }
-
-    @media (min-width:900px){
-      .wrapper { grid-template-columns:1fr 1fr; }
+    .lead{
+      font-size:.9rem;
+      color:#9ca3af;
+      margin-bottom:20px;
     }
-
-    .panel {
-      background:radial-gradient(circle at top, #111827 0, #020617 60%);
-      border-radius:16px;
-      border:1px solid #1f2937;
-      box-shadow:0 18px 40px rgba(0,0,0,0.6);
-      padding:14px 16px 16px;
+    .note{
+      font-size:.8rem;
+      color:#9ca3af;
+      margin-bottom:18px;
     }
-
-    .panel-title {
-      font-size:0.95rem;
+    .row{
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+    }
+    @media (min-width: 900px){
+      .row{flex-direction:row;}
+      .col{flex:1;}
+    }
+    .panel{
+      background:radial-gradient(circle at top,#020617 0,#020617 40%,#020617 100%);
+      border-radius:18px;
+      border:1px solid #0b1220;
+      padding:14px 16px 18px;
+      box-shadow:0 18px 40px rgba(0,0,0,.5);
+    }
+    .panel-title{
+      font-size:.95rem;
       font-weight:600;
       margin-bottom:4px;
     }
-
-    .panel-sub {
-      font-size:0.8rem;
+    .panel-sub{
+      font-size:.8rem;
       color:#9ca3af;
       margin-bottom:10px;
     }
-
-    /* Shared HUD bar */
-    .crisis-bar {
-      margin-bottom:10px;
-    }
-    .crisis-label {
-      font-size:0.7rem;
+    .label{
+      font-size:.7rem;
       text-transform:uppercase;
-      letter-spacing:0.08em;
+      letter-spacing:.14em;
       color:#a5b4fc;
       margin-bottom:4px;
     }
-    .crisis-track {
+    .tension-bar{
       height:8px;
       border-radius:999px;
-      background:linear-gradient(to right,#0f172a,#111827);
-      border:1px solid #1e293b;
-      overflow:hidden;
-    }
-    .crisis-fill {
-      height:100%;
-      width:55%;
-      border-radius:999px;
       background:linear-gradient(to right,#22c55e,#eab308,#ef4444);
-      box-shadow:0 0 10px rgba(249,250,251,0.6);
-    }
-
-    /* === OPTION A: Minimal Vector === */
-
-    .scene-a {
-      border-radius:14px;
-      border:1px solid #1e293b;
-      overflow:hidden;
-      background:#020617;
-    }
-
-    .scene-a-top {
-      padding:10px 14px 0;
-    }
-
-    .scene-a-title {
-      font-size:0.9rem;
-      font-weight:600;
-    }
-
-    .scene-a-meta {
-      font-size:0.75rem;
-      color:#9ca3af;
-      margin-bottom:6px;
-    }
-
-    .scene-a-world {
+      margin-bottom:10px;
       position:relative;
-      height:150px;
-      background:
-        radial-gradient(circle at 0% 0%, rgba(248,250,252,0.1), transparent 60%),
-        radial-gradient(circle at 80% 20%, rgba(129,140,248,0.25), transparent 60%),
-        linear-gradient(to bottom,#020617,#020617 55%,#020617 56%,#020617);
+      overflow:hidden;
+    }
+    .tension-bar::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(90deg,
+        rgba(15,23,42,0),
+        rgba(248,250,252,.4),
+        rgba(15,23,42,0));
+      opacity:.35;
+      transform:translateX(-100%);
+      animation:tensionSweep 2.8s linear infinite;
+    }
+    @keyframes tensionSweep{
+      to{transform:translateX(100%);}
     }
 
-    .scene-a-floor {
+    /* ====== SHARED SCENE FRAME ====== */
+    .scene-frame{
+      background:radial-gradient(circle at top,#0f172a 0,#020617 55%);
+      border-radius:16px;
+      border:1px solid #1f2937;
+      padding:14px 16px 16px;
+      margin-bottom:10px;
+    }
+    .scene-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:baseline;
+      margin-bottom:8px;
+      font-size:.85rem;
+    }
+    .scene-title{font-weight:600;}
+    .scene-meta{font-size:.75rem;color:#9ca3af;}
+
+    /* ====== OPTION A: MINIMAL VECTOR, “NOT JUST RECTANGLES” ====== */
+    .scene-visual-a{
+      position:relative;
+      height:180px;
+      border-radius:14px;
+      overflow:hidden;
+      background:
+        linear-gradient(to top,#020617 0,#020617 35%,#02061700 36%),
+        radial-gradient(circle at 18% 20%,rgba(251,191,36,.18),transparent 60%),
+        radial-gradient(circle at 80% 22%,rgba(248,250,252,.14),transparent 58%),
+        linear-gradient(to right,#020617,#020617);
+    }
+    /* floor line */
+    .scene-visual-a::after{
+      content:"";
       position:absolute;
       left:0;right:0;
-      bottom:0;
-      height:32%;
+      bottom:32%;
+      height:2px;
+      background:linear-gradient(to right,rgba(148,163,184,.3),rgba(148,163,184,.05));
+    }
+    /* subtle wall stripes */
+    .grid-lines{
+      position:absolute;
+      inset:16% 6% 32%;
       background:
-        linear-gradient(to top,#020617,#020617 20%,rgba(15,23,42,0.9)),
-        repeating-linear-gradient(to right,
-          rgba(148,163,184,0.38) 0, rgba(148,163,184,0.38) 2px,
-          transparent 2px, transparent 26px);
-      border-top:1px solid rgba(148,163,184,0.5);
+        repeating-linear-gradient(
+          to right,
+          rgba(31,41,55,.45) 0,
+          rgba(31,41,55,.45) 1px,
+          transparent 1px,
+          transparent 24px
+        );
+      opacity:.7;
+      pointer-events:none;
     }
 
-    .a-player,
-    .a-npc {
+    .character{
       position:absolute;
-      bottom:26px;
-      width:56px;
-      height:88px;
-      border-radius:18px;
       display:flex;
       flex-direction:column;
       align-items:center;
-      justify-content:flex-start;
-      transform:translateX(-50%);
-      box-shadow:0 10px 22px rgba(15,23,42,0.95);
+      transform:translate(-50%,0);
+      animation:charFloat 2.4s ease-in-out infinite;
     }
-
-    .a-player {
-      left:26%;
-      background:
-        radial-gradient(circle at 20% 0%,rgba(248,250,252,0.4),transparent 60%),
-        linear-gradient(to bottom,#22c55e,#16a34a);
+    .character.principal{
+      animation-delay:.4s;
     }
-
-    .a-npc {
-      left:74%;
-      background:
-        radial-gradient(circle at 20% 0%,rgba(248,250,252,0.6),transparent 60%),
-        linear-gradient(to bottom,#38bdf8,#1d4ed8);
-      box-shadow:0 0 20px rgba(96,165,250,0.7);
+    @keyframes charFloat{
+      0%,100%{transform:translate(-50%,0);}
+      50%{transform:translate(-50%,-6px);}
     }
-
-    .a-player::before,
-    .a-npc::before {
-      content: attr(data-emoji);
-      margin-top:-16px;
-      width:26px;
-      height:26px;
+    .char-shadow{
+      width:80px;
+      height:18px;
       border-radius:999px;
-      background:#020617;
+      background:radial-gradient(circle at 50% 50%,rgba(15,23,42,.4),transparent 70%);
+      filter:blur(2px);
+      margin-bottom:2px;
+    }
+    .char-body{
+      position:relative;
+      width:82px;
+      height:120px;
+      border-radius:26px;
+      background:linear-gradient(to bottom,#22c55e,#16a34a);
+      box-shadow:
+        0 10px 22px rgba(22,163,74,.45),
+        0 0 0 1px rgba(15,23,42,.7);
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      padding-top:18px;
+    }
+    .principal .char-body{
+      background:linear-gradient(to bottom,#60a5fa,#2563eb);
+      box-shadow:
+        0 10px 22px rgba(37,99,235,.45),
+        0 0 0 1px rgba(15,23,42,.7);
+    }
+    .char-head{
+      position:absolute;
+      top:-28px;
+      width:40px;
+      height:40px;
+      border-radius:999px;
+      background:radial-gradient(circle at 30% 20%,#fefce8,#fbbf24);
+      box-shadow:0 6px 12px rgba(0,0,0,.45);
       display:flex;
       align-items:center;
       justify-content:center;
-      font-size:18px;
-      box-shadow:0 0 8px rgba(15,23,42,0.8);
+      font-size:1.4rem;
     }
-
-    .a-label {
+    .principal .char-head{
+      background:radial-gradient(circle at 30% 20%,#fee2e2,#f97316);
+    }
+    .char-badge{
       position:absolute;
-      bottom:90px;
+      top:8px;
+      right:10px;
+      width:16px;
+      height:16px;
+      border-radius:999px;
+      background:rgba(15,23,42,.9);
+      border:1px solid rgba(148,163,184,.7);
+      font-size:.55rem;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#e5e7eb;
+    }
+    .principal-label{
+      position:absolute;
+      top:-42px;
       left:50%;
       transform:translateX(-50%);
-      padding:2px 10px;
+      padding:4px 10px;
       border-radius:999px;
-      font-size:0.7rem;
-      background:rgba(15,23,42,0.92);
-      border:1px solid rgba(148,163,184,0.8);
+      background:rgba(15,23,42,.96);
+      border:1px solid rgba(148,163,184,.85);
+      font-size:.7rem;
       white-space:nowrap;
     }
 
-    .scene-a-bottom {
-      padding:10px 14px 12px;
-      font-size:0.85rem;
-      color:#e5e7eb;
+    /* positions within scene */
+    .character.player{
+      left:24%;
+      bottom:24%;
+    }
+    .character.principal{
+      right:14%;
+      bottom:24%;
     }
 
-    /* === OPTION B: Retro Pixel Style === */
-
-    .scene-b {
-      border-radius:14px;
-      border:1px solid #1e293b;
-      overflow:hidden;
-      background:#020617;
+    .scene-caption{
+      font-size:.8rem;
+      color:#cbd5f5;
+      margin-top:10px;
     }
 
-    .scene-b-top { padding:10px 14px 0; }
-
-    .scene-b-title {
-      font-size:0.9rem;
-      font-weight:600;
-    }
-
-    .scene-b-meta {
-      font-size:0.75rem;
-      color:#9ca3af;
-      margin-bottom:6px;
-    }
-
-    .scene-b-world {
+    /* ===== OPTION B (unchanged / simpler) ===== */
+    .scene-visual-b{
       position:relative;
-      height:150px;
-      image-rendering:pixelated;
+      height:160px;
+      border-radius:14px;
+      overflow:hidden;
       background:
-        linear-gradient(to bottom,#020617 0,#020617 60%,#020617 60%,#020617 100%);
+        linear-gradient(to bottom,#020617 0,#020617 28%,#020617 30%,#020617 100%),
+        repeating-linear-gradient(
+          to right,
+          rgba(30,64,175,.65) 0,
+          rgba(30,64,175,.65) 2px,
+          rgba(15,23,42,1) 2px,
+          rgba(15,23,42,1) 20px
+        );
     }
-
-    /* “Pixel” background: chalkboard & lockers */
-    .scene-b-bg {
+    .pixel-floor{
       position:absolute;
-      inset:0;
-      background:
-        repeating-linear-gradient(to right,
-          #020b3a 0,#020b3a 3px,
-          #0f172a 3px,#0f172a 14px),
-        linear-gradient(to bottom,#020b3a 0,#020b3a 48%,#020617 48%,#020617 100%);
-    }
-
-    .scene-b-floor {
-      position:absolute;
-      left:0;right:0;bottom:0;
+      left:0;right:0;
+      bottom:0;
       height:40%;
       background:
-        repeating-linear-gradient(to right,
-          #0f172a 0,#0f172a 4px,
-          #020617 4px,#020617 8px);
-      border-top:2px solid #111827;
+        repeating-linear-gradient(
+          to right,
+          #0f172a 0,
+          #0f172a 4px,
+          #020617 4px,
+          #020617 20px
+        );
+      border-top:2px solid #1f2937;
     }
-
-    /* Pixel player & NPC (8-bit rectangles) */
-    .b-player,
-    .b-npc {
+    .pixel-player,
+    .pixel-principal{
       position:absolute;
-      bottom:30px;
       width:32px;
-      height:48px;
+      height:56px;
       background:#22c55e;
-      box-shadow:0 0 0 3px #020617;
-      transform:translateX(-50%);
+      border-radius:4px;
+      border:2px solid #16a34a;
     }
-
-    .b-player::before,
-    .b-npc::before {
-      content:"";
+    .pixel-principal{
+      background:#60a5fa;
+      border-color:#2563eb;
+    }
+    .pixel-player{left:18%;bottom:16%;}
+    .pixel-principal{right:18%;bottom:16%;}
+    .pixel-head{
       position:absolute;
-      left:4px;right:4px;top:-12px;
-      height:12px;
-      background:#e5e7eb;
-      box-shadow:0 0 0 3px #020617;
-    }
-
-    .b-player { left:26%; }
-    .b-npc {
-      left:74%;
-      background:#38bdf8;
-      box-shadow:0 0 0 3px #020617,0 0 10px rgba(96,165,250,0.85);
-    }
-
-    .b-label {
-      position:absolute;
-      bottom:86px;
-      left:74%;
+      top:-16px;
+      left:50%;
       transform:translateX(-50%);
+      width:18px;
+      height:18px;
+      background:#facc15;
+      border:2px solid #92400e;
+      border-radius:4px;
+    }
+    .pixel-tag{
+      position:absolute;
+      top:-28px;
+      left:50%;
+      transform:translateX(-50%);
+      font-size:.55rem;
       background:#020617;
-      color:#e5e7eb;
-      padding:2px 6px;
-      font-size:9px;
-      border:2px solid #e5e7eb;
-      text-transform:uppercase;
+      border-radius:3px;
+      padding:2px 4px;
+      border:1px solid #f9fafb;
     }
 
-    .scene-b-bottom {
-      padding:10px 14px 12px;
-      font-size:0.8rem;
-      color:#e5e7eb;
+    .footer-note{
+      font-size:.75rem;
+      color:#6b7280;
+      margin-top:18px;
     }
   </style>
 </head>
 <body>
-  <h1>13 Days — Visual Style Mockups</h1>
-  <p style="font-size:0.9rem;color:#9ca3af;margin-bottom:16px;">
-    Left: <strong>Option A – Minimal Vector</strong>. Right: <strong>Option B – Retro Pixel.</strong> 
-    This is just visual; no gameplay yet.
-  </p>
+  <div class="page">
+    <h1>13 Days — Visual Style Mockups</h1>
+    <p class="lead">Left: Option A · Minimal Vector. Right: Option B · Retro Pixel. This page is just visual style — no gameplay yet.</p>
+    <p class="note">We’ll reuse whichever look you like inside the real Cuban Missile Crisis game file.</p>
 
-  <div class="wrapper">
+    <div class="row">
+      <!-- OPTION A -->
+      <div class="col">
+        <div class="panel">
+          <div class="panel-title">Option A · Minimal Vector Style</div>
+          <div class="panel-sub">Clean, modern, with actual “characters” instead of plain rectangles.</div>
 
-    <!-- OPTION A PANEL -->
-    <section class="panel">
-      <div class="panel-title">Option A · Minimal Vector Style</div>
-      <div class="panel-sub">Clean, modern, smooth gradients — matches Teach Arcade UI.</div>
+          <div class="label">Crisis Tension</div>
+          <div class="tension-bar"></div>
 
-      <div class="crisis-bar">
-        <div class="crisis-label">Crisis Tension</div>
-        <div class="crisis-track"><div class="crisis-fill"></div></div>
-      </div>
+          <div class="scene-frame">
+            <div class="scene-header">
+              <div class="scene-title">Strange Assembly</div>
+              <div class="scene-meta">Oct 16, 1962 · School Gym</div>
+            </div>
 
-      <div class="scene-a">
-        <div class="scene-a-top">
-          <div class="scene-a-title">Strange Assembly</div>
-          <div class="scene-a-meta">Oct 16, 1962 · School Gym</div>
-        </div>
+            <div class="scene-visual-a">
+              <div class="grid-lines"></div>
 
-        <div class="scene-a-world">
-          <div class="scene-a-floor"></div>
-          <div class="a-player" data-emoji="🙂"></div>
-          <div class="a-npc" data-emoji="🧑‍🏫">
-            <div class="a-label">Principal Hayes</div>
+              <!-- Player -->
+              <div class="character player">
+                <div class="char-shadow"></div>
+                <div class="char-body">
+                  <div class="char-head">🙂</div>
+                  <div class="char-badge">S</div>
+                </div>
+              </div>
+
+              <!-- Principal -->
+              <div class="character principal">
+                <div class="char-shadow"></div>
+                <div class="char-body">
+                  <div class="char-head">🧑‍🏫</div>
+                  <div class="principal-label">Principal Hayes</div>
+                </div>
+              </div>
+            </div>
+
+            <p class="scene-caption">
+              You’ve walked into the emergency assembly. In the real game, you’ll use arrow keys/tap buttons
+              to walk over to Principal Hayes, then choose how you respond.
+            </p>
           </div>
         </div>
-
-        <div class="scene-a-bottom">
-          You’ve walked into the emergency assembly. Principal Hayes looks nervous.
-          In the real game, you’d walk up to him, then choose how to respond.
-        </div>
-      </div>
-    </section>
-
-    <!-- OPTION B PANEL -->
-    <section class="panel">
-      <div class="panel-title">Option B · Retro Pixel Style</div>
-      <div class="panel-sub">Chunky “8-bit” blocks, pixel floor pattern, arcade feel.</div>
-
-      <div class="crisis-bar">
-        <div class="crisis-label">Crisis Tension</div>
-        <div class="crisis-track"><div class="crisis-fill"></div></div>
       </div>
 
-      <div class="scene-b">
-        <div class="scene-b-top">
-          <div class="scene-b-title">Strange Assembly</div>
-          <div class="scene-b-meta">Oct 16, 1962 · School Gym</div>
-        </div>
+      <!-- OPTION B -->
+      <div class="col">
+        <div class="panel">
+          <div class="panel-title">Option B · Retro Pixel Style</div>
+          <div class="panel-sub">Chunky “8-bit” look. Simpler, NES-style hallway.</div>
 
-        <div class="scene-b-world">
-          <div class="scene-b-bg"></div>
-          <div class="scene-b-floor"></div>
-          <div class="b-player"></div>
-          <div class="b-npc"></div>
-          <div class="b-label">PRINCIPAL</div>
-        </div>
+          <div class="label">Crisis Tension</div>
+          <div class="tension-bar"></div>
 
-        <div class="scene-b-bottom">
-          Same scene as Option A, but rendered like an old-school NES hallway.
-          In the real game, the player sprite would move on this grid and interact.
+          <div class="scene-frame">
+            <div class="scene-header">
+              <div class="scene-title">Strange Assembly</div>
+              <div class="scene-meta">Oct 16, 1962 · School Gym</div>
+            </div>
+
+            <div class="scene-visual-b">
+              <div class="pixel-floor"></div>
+
+              <div class="pixel-player">
+                <div class="pixel-head"></div>
+              </div>
+
+              <div class="pixel-principal">
+                <div class="pixel-head"></div>
+                <div class="pixel-tag">PRINCIPAL</div>
+              </div>
+            </div>
+
+            <p class="scene-caption">
+              Same scene as Option A, but rendered like an old-school NES hallway. In the final game, the
+              player sprite would move along this grid.
+            </p>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
 
+    <p class="footer-note">
+      Next step after you approve the look: wire this scene frame into the *actual* 13-Days game file and hook
+      movement + choices to the story engine you already have.
+    </p>
   </div>
 </body>
 </html>
