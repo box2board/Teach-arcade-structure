@@ -2,1316 +2,362 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>13 Days: Cuban Missile Crisis Survival Game | Teach Arcade</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <meta name="description" content="Interactive Cuban Missile Crisis survival game. Play as a high school student in 1962 and make choices that affect your outcome. Free classroom history game from Teach Arcade.">
+  <title>13 Days Style Mockups</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <style>
-    * { box-sizing: border-box; }
-
+    * { box-sizing:border-box; }
     body {
-      margin: 0;
+      margin:0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #020617 0, #020617 40%, #020617 100%);
-      color: #f9fafb;
-      display: flex;
-      justify-content: center;
-      padding: 20px;
+      background:#020617;
+      color:#e5e7eb;
+      padding:16px;
     }
 
-    .game-shell {
-      max-width: 980px;
-      width: 100%;
-      background: radial-gradient(circle at top, #111827 0, #020617 60%);
-      border-radius: 16px;
-      border: 1px solid #1f2937;
-      box-shadow: 0 18px 40px rgba(0,0,0,0.7);
-      padding: 20px 20px 12px;
-      position: relative;
-      overflow: hidden;
+    h1 {
+      font-size:1.4rem;
+      margin:0 0 12px;
     }
 
-    @media (min-width: 768px) {
-      .game-shell { padding: 28px 32px 18px; }
+    .wrapper {
+      display:grid;
+      grid-template-columns:1fr;
+      gap:16px;
     }
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 10px;
+    @media (min-width:900px){
+      .wrapper { grid-template-columns:1fr 1fr; }
     }
 
-    .game-title {
-      font-size: 1.3rem;
-      font-weight: 700;
-      line-height: 1.2;
+    .panel {
+      background:radial-gradient(circle at top, #111827 0, #020617 60%);
+      border-radius:16px;
+      border:1px solid #1f2937;
+      box-shadow:0 18px 40px rgba(0,0,0,0.6);
+      padding:14px 16px 16px;
     }
 
-    .badge {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid #4b5563;
-      color: #e5e7eb;
-      background: rgba(15,23,42,0.9);
-      white-space: nowrap;
+    .panel-title {
+      font-size:0.95rem;
+      font-weight:600;
+      margin-bottom:4px;
     }
 
-    .subtitle {
-      font-size: 0.9rem;
-      color: #9ca3af;
-      margin-bottom: 10px;
+    .panel-sub {
+      font-size:0.8rem;
+      color:#9ca3af;
+      margin-bottom:10px;
     }
 
-    /* Crisis strip (visual progression) */
-    .crisis-strip {
-      display: grid;
-      grid-template-columns: 1.2fr 3fr 1.6fr;
-      gap: 10px;
-      align-items: center;
-      margin-bottom: 10px;
-      font-size: 0.78rem;
-      color: #cbd5f5;
+    /* Shared HUD bar */
+    .crisis-bar {
+      margin-bottom:10px;
     }
-
     .crisis-label {
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-weight: 600;
-      color: #a5b4fc;
-      display: flex;
-      align-items: center;
-      gap: 6px;
+      font-size:0.7rem;
+      text-transform:uppercase;
+      letter-spacing:0.08em;
+      color:#a5b4fc;
+      margin-bottom:4px;
     }
-
-    .crisis-label span.icon {
-      font-size: 1rem;
-    }
-
     .crisis-track {
-      position: relative;
-      height: 10px;
-      border-radius: 999px;
-      background: linear-gradient(to right, #0f172a, #111827);
-      overflow: hidden;
-      border: 1px solid #1e293b;
+      height:8px;
+      border-radius:999px;
+      background:linear-gradient(to right,#0f172a,#111827);
+      border:1px solid #1e293b;
+      overflow:hidden;
+    }
+    .crisis-fill {
+      height:100%;
+      width:55%;
+      border-radius:999px;
+      background:linear-gradient(to right,#22c55e,#eab308,#ef4444);
+      box-shadow:0 0 10px rgba(249,250,251,0.6);
     }
 
-    .crisis-track::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image: linear-gradient(90deg,
-        rgba(248,250,252,0.05) 0,
-        rgba(248,250,252,0.15) 50%,
-        rgba(248,250,252,0.05) 100%);
-      opacity: 0.8;
+    /* === OPTION A: Minimal Vector === */
+
+    .scene-a {
+      border-radius:14px;
+      border:1px solid #1e293b;
+      overflow:hidden;
+      background:#020617;
     }
 
-    .crisis-indicator {
-      position: relative;
-      height: 100%;
-      width: 0%;
-      border-radius: 999px;
-      background: linear-gradient(to right, #22c55e, #eab308, #ef4444);
-      box-shadow: 0 0 10px rgba(248,250,252,0.5);
-      transition: width 0.35s ease;
+    .scene-a-top {
+      padding:10px 14px 0;
     }
 
-    .crisis-date {
-      text-align: right;
-      color: #cbd5f5;
-      font-weight: 500;
-      white-space: nowrap;
+    .scene-a-title {
+      font-size:0.9rem;
+      font-weight:600;
     }
 
-    .top-row {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      margin-bottom: 10px;
+    .scene-a-meta {
+      font-size:0.75rem;
+      color:#9ca3af;
+      margin-bottom:6px;
     }
 
-    @media (min-width: 768px) {
-      .top-row { flex-direction: row; }
-    }
-
-    .scene-card, .stats-card {
-      background: rgba(15,23,42,0.95);
-      border-radius: 14px;
-      padding: 14px 16px 16px;
-      border: 1px solid #1f2937;
-      position: relative;
-    }
-
-    .scene-card { flex: 2; }
-    .stats-card { flex: 1.2; }
-
-    /* Simple fade-in animation */
-    .fade-in {
-      animation: fadeInUp 0.35s ease-out;
-    }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(6px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ==== NEW: Scene visual / movement panel ==== */
-
-    .scene-visual {
-      margin: -4px -8px 10px;
-      padding: 8px 10px 10px;
-      border-radius: 12px;
-      background: radial-gradient(circle at top, #020617 0, #020617 55%, #020617 100%);
-      border: 1px solid #111827;
-    }
-
-    .scene-visual.hidden {
-      display: none;
-    }
-
-    .scene-world {
-      position: relative;
-      height: 150px;
-      border-radius: 10px;
-      overflow: hidden;
-      background: #020617;
-      margin-bottom: 8px;
-    }
-
-    .scene-background {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at left, rgba(250,250,255,0.06), transparent 55%),
-                  radial-gradient(circle at right, rgba(250,250,255,0.06), transparent 55%),
-                  linear-gradient(to bottom, #020617, #020617 45%, #020617 46%, #020617);
-    }
-
-    /* Location variants */
-    .scene-background[data-location="classroom"] {
+    .scene-a-world {
+      position:relative;
+      height:150px;
       background:
+        radial-gradient(circle at 0% 0%, rgba(248,250,252,0.1), transparent 60%),
+        radial-gradient(circle at 80% 20%, rgba(129,140,248,0.25), transparent 60%),
+        linear-gradient(to bottom,#020617,#020617 55%,#020617 56%,#020617);
+    }
+
+    .scene-a-floor {
+      position:absolute;
+      left:0;right:0;
+      bottom:0;
+      height:32%;
+      background:
+        linear-gradient(to top,#020617,#020617 20%,rgba(15,23,42,0.9)),
         repeating-linear-gradient(to right,
-          rgba(148,163,184,0.35) 0, rgba(148,163,184,0.35) 2px,
-          transparent 2px, transparent 40px),
-        linear-gradient(to bottom, #020617, #020617 55%, #020617 56%, #020617);
-    }
-
-    .scene-background[data-location="gym"] {
-      background:
-        radial-gradient(circle at 10% 10%, rgba(251,191,36,0.22), transparent 55%),
-        radial-gradient(circle at 80% 15%, rgba(248,250,252,0.08), transparent 55%),
-        linear-gradient(to bottom, #020617, #020617 55%, #020617 56%, #020617);
-    }
-
-    .scene-background[data-location="street"] {
-      background:
-        radial-gradient(circle at 15% 15%, rgba(56,189,248,0.18), transparent 55%),
-        linear-gradient(to bottom, #020617, #020617 55%, #020617 56%, #020617);
-    }
-
-    .scene-floor {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 34%;
-      background:
-        linear-gradient(to top, #020617, #020617 25%, rgba(15,23,42,0.8)),
-        repeating-linear-gradient(to right,
-          rgba(30,64,175,0.45) 0, rgba(30,64,175,0.45) 2px,
+          rgba(148,163,184,0.38) 0, rgba(148,163,184,0.38) 2px,
           transparent 2px, transparent 26px);
-      border-top: 1px solid rgba(148,163,184,0.4);
+      border-top:1px solid rgba(148,163,184,0.5);
     }
 
-    .scene-character {
-      position: absolute;
-      bottom: 24px;
-      width: 60px;
-      height: 90px;
-      border-radius: 16px;
-      background: radial-gradient(circle at 20% 0%, rgba(248,250,252,0.4), transparent 60%),
-                  linear-gradient(to bottom, #22c55e, #16a34a);
-      box-shadow: 0 10px 20px rgba(15,23,42,0.9);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      transform: translateX(-50%);
-      transition: left 0.22s ease, transform 0.22s ease;
+    .a-player,
+    .a-npc {
+      position:absolute;
+      bottom:26px;
+      width:56px;
+      height:88px;
+      border-radius:18px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:flex-start;
+      transform:translateX(-50%);
+      box-shadow:0 10px 22px rgba(15,23,42,0.95);
     }
 
-    .scene-character--npc {
-      background: radial-gradient(circle at 20% 0%, rgba(248,250,252,0.5), transparent 60%),
-                  linear-gradient(to bottom, #38bdf8, #1d4ed8);
-      box-shadow: 0 0 18px rgba(96,165,250,0.75);
+    .a-player {
+      left:26%;
+      background:
+        radial-gradient(circle at 20% 0%,rgba(248,250,252,0.4),transparent 60%),
+        linear-gradient(to bottom,#22c55e,#16a34a);
     }
 
-    .scene-character::before {
+    .a-npc {
+      left:74%;
+      background:
+        radial-gradient(circle at 20% 0%,rgba(248,250,252,0.6),transparent 60%),
+        linear-gradient(to bottom,#38bdf8,#1d4ed8);
+      box-shadow:0 0 20px rgba(96,165,250,0.7);
+    }
+
+    .a-player::before,
+    .a-npc::before {
       content: attr(data-emoji);
-      margin-top: -16px;
-      width: 28px;
-      height: 28px;
-      border-radius: 999px;
-      background: #0b1120;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      box-shadow: 0 0 10px rgba(15,23,42,0.7);
+      margin-top:-16px;
+      width:26px;
+      height:26px;
+      border-radius:999px;
+      background:#020617;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:18px;
+      box-shadow:0 0 8px rgba(15,23,42,0.8);
     }
 
-    .scene-character__label {
-      position: absolute;
-      bottom: 92px;
-      left: 50%;
-      transform: translateX(-50%);
-      padding: 2px 10px;
-      border-radius: 999px;
-      font-size: 0.7rem;
-      background: rgba(15,23,42,0.9);
-      border: 1px solid rgba(148,163,184,0.7);
-      white-space: nowrap;
+    .a-label {
+      position:absolute;
+      bottom:90px;
+      left:50%;
+      transform:translateX(-50%);
+      padding:2px 10px;
+      border-radius:999px;
+      font-size:0.7rem;
+      background:rgba(15,23,42,0.92);
+      border:1px solid rgba(148,163,184,0.8);
+      white-space:nowrap;
     }
 
-    .scene-character--npc::after {
-      content: "";
-      position: absolute;
-      inset: auto 10px -8px;
-      height: 10px;
-      border-radius: 999px;
-      background: radial-gradient(circle, rgba(96,165,250,0.7), transparent 65%);
-      opacity: 0.9;
-      pointer-events: none;
+    .scene-a-bottom {
+      padding:10px 14px 12px;
+      font-size:0.85rem;
+      color:#e5e7eb;
     }
 
-    /* little walk "bounce" */
-    .scene-character.walking {
-      animation: walkBounce 0.22s ease-out;
+    /* === OPTION B: Retro Pixel Style === */
+
+    .scene-b {
+      border-radius:14px;
+      border:1px solid #1e293b;
+      overflow:hidden;
+      background:#020617;
     }
 
-    @keyframes walkBounce {
-      0%   { transform: translate(-50%, 0); }
-      40%  { transform: translate(-50%, -4px); }
-      100% { transform: translate(-50%, 0); }
+    .scene-b-top { padding:10px 14px 0; }
+
+    .scene-b-title {
+      font-size:0.9rem;
+      font-weight:600;
     }
 
-    .movement-controls {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-      font-size: 0.76rem;
-      color: #9ca3af;
+    .scene-b-meta {
+      font-size:0.75rem;
+      color:#9ca3af;
+      margin-bottom:6px;
     }
 
-    .movement-buttons button {
-      font-size: 0.78rem;
-      border-radius: 999px;
-      border: 1px solid #4b5563;
-      background: #020617;
-      color: #e5e7eb;
-      padding: 4px 10px;
-      cursor: pointer;
+    .scene-b-world {
+      position:relative;
+      height:150px;
+      image-rendering:pixelated;
+      background:
+        linear-gradient(to bottom,#020617 0,#020617 60%,#020617 60%,#020617 100%);
     }
 
-    .movement-buttons button:hover {
-      border-color: #a5b4fc;
-      background: #020617;
+    /* “Pixel” background: chalkboard & lockers */
+    .scene-b-bg {
+      position:absolute;
+      inset:0;
+      background:
+        repeating-linear-gradient(to right,
+          #020b3a 0,#020b3a 3px,
+          #0f172a 3px,#0f172a 14px),
+        linear-gradient(to bottom,#020b3a 0,#020b3a 48%,#020617 48%,#020617 100%);
     }
 
-    .movement-instructions.reached {
-      color: #bbf7d0;
+    .scene-b-floor {
+      position:absolute;
+      left:0;right:0;bottom:0;
+      height:40%;
+      background:
+        repeating-linear-gradient(to right,
+          #0f172a 0,#0f172a 4px,
+          #020617 4px,#020617 8px);
+      border-top:2px solid #111827;
     }
 
-    .scene-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 8px;
-      margin-bottom: 6px;
-      margin-top: 4px;
+    /* Pixel player & NPC (8-bit rectangles) */
+    .b-player,
+    .b-npc {
+      position:absolute;
+      bottom:30px;
+      width:32px;
+      height:48px;
+      background:#22c55e;
+      box-shadow:0 0 0 3px #020617;
+      transform:translateX(-50%);
     }
 
-    .scene-title {
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: #e5e7eb;
+    .b-player::before,
+    .b-npc::before {
+      content:"";
+      position:absolute;
+      left:4px;right:4px;top:-12px;
+      height:12px;
+      background:#e5e7eb;
+      box-shadow:0 0 0 3px #020617;
     }
 
-    .scene-meta {
-      font-size: 0.75rem;
-      color: #9ca3af;
-      white-space: nowrap;
+    .b-player { left:26%; }
+    .b-npc {
+      left:74%;
+      background:#38bdf8;
+      box-shadow:0 0 0 3px #020617,0 0 10px rgba(96,165,250,0.85);
     }
 
-    .scene-text {
-      font-size: 0.95rem;
-      line-height: 1.6;
-      color: #e5e7eb;
-      margin-top: 6px;
-      margin-bottom: 8px;
+    .b-label {
+      position:absolute;
+      bottom:86px;
+      left:74%;
+      transform:translateX(-50%);
+      background:#020617;
+      color:#e5e7eb;
+      padding:2px 6px;
+      font-size:9px;
+      border:2px solid #e5e7eb;
+      text-transform:uppercase;
     }
 
-    .result-text {
-      font-size: 0.9rem;
-      line-height: 1.5;
-      color: #d1d5db;
-      margin: 8px 0 4px;
-      border-left: 3px solid #4b5563;
-      padding-left: 10px;
-    }
-
-    .effects-row {
-      margin-top: 6px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 4px;
-    }
-
-    .effect-pill {
-      font-size: 0.7rem;
-      padding: 2px 7px;
-      border-radius: 999px;
-      border: 1px solid #374151;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .effect-pill.positive {
-      background: rgba(34,197,94,0.15);
-      color: #bbf7d0;
-      border-color: rgba(34,197,94,0.5);
-    }
-
-    .effect-pill.negative {
-      background: rgba(239,68,68,0.18);
-      color: #fecaca;
-      border-color: rgba(239,68,68,0.5);
-    }
-
-    .choices {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-top: 8px;
-    }
-
-    button.choice-btn {
-      width: 100%;
-      text-align: left;
-      border-radius: 10px;
-      border: 1px solid #374151;
-      background: linear-gradient(to right, #020617, #020617);
-      padding: 9px 11px;
-      font-size: 0.9rem;
-      color: #e5e7eb;
-      cursor: pointer;
-      transition: background 0.16s ease, border-color 0.16s ease, transform 0.05s ease, opacity 0.16s ease;
-    }
-
-    button.choice-btn span.index {
-      font-weight: 600;
-      font-size: 0.8rem;
-      color: #9ca3af;
-      margin-right: 6px;
-    }
-
-    button.choice-btn:hover:not(.choice-disabled) {
-      background: linear-gradient(to right, #1f2937, #020617);
-      border-color: #6366f1;
-      transform: translateY(-1px);
-    }
-
-    button.choice-btn:active { transform: translateY(0); }
-
-    .choice-disabled {
-      opacity: 0.55;
-      cursor: default;
-    }
-
-    .stats-title-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 8px;
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 6px;
-    }
-
-    @media (max-width: 480px) {
-      .stats-grid { grid-template-columns: 1fr 1fr; }
-    }
-
-    .stat-item {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .stat-label {
-      font-size: 0.78rem;
-      color: #9ca3af;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .stat-value {
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: #e5e7eb;
-    }
-
-    .stat-bar-bg {
-      height: 6px;
-      border-radius: 999px;
-      background: #020617;
-      overflow: hidden;
-    }
-
-    .stat-bar {
-      height: 100%;
-      border-radius: 999px;
-      width: 50%;
-      transition: width 0.2s ease;
-    }
-
-    .stat-bar.preparedness { background: #22c55e; }
-    .stat-bar.morale        { background: #38bdf8; }
-    .stat-bar.accuracy      { background: #eab308; }
-    .stat-bar.risk          { background: #f97316; }
-    .stat-bar.social        { background: #a855f7; }
-
-    .footer-row {
-      margin-top: 6px;
-      font-size: 0.75rem;
-      color: #6b7280;
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .footer-row a {
-      color: #9ca3af;
-      text-decoration: none;
-      border-bottom: 1px dotted #4b5563;
-    }
-
-    .footer-row a:hover {
-      color: #e5e7eb;
-      border-bottom-style: solid;
-    }
-
-    .ending-title {
-      font-size: 1.15rem;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-
-    .ending-desc {
-      font-size: 0.95rem;
-      line-height: 1.6;
-      color: #e5e7eb;
-      margin-bottom: 10px;
-    }
-
-    .ending-stats {
-      margin-top: 10px;
-      font-size: 0.85rem;
-      color: #d1d5db;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 0.7rem;
-      padding: 2px 7px;
-      border-radius: 999px;
-      border: 1px solid #374151;
-      margin-right: 4px;
-      margin-top: 2px;
-      background: rgba(15,23,42,0.8);
-    }
-
-    .pill span { font-weight: 600; }
-
-    .btn-row {
-      margin-top: 12px;
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .primary-btn,
-    .secondary-btn {
-      border-radius: 999px;
-      border: 1px solid transparent;
-      padding: 7px 14px;
-      font-size: 0.85rem;
-      cursor: pointer;
-    }
-
-    .primary-btn {
-      background: linear-gradient(to right, #4f46e5, #7c3aed);
-      color: white;
-      border-color: #6366f1;
-    }
-
-    .primary-btn:hover { filter: brightness(1.05); }
-
-    .secondary-btn {
-      background: transparent;
-      color: #e5e7eb;
-      border-color: #4b5563;
-    }
-
-    .secondary-btn:hover { border-color: #9ca3af; }
-
-    .title-big {
-      font-size: 1.5rem;
-      font-weight: 800;
-      margin-bottom: 6px;
-    }
-
-    .title-tagline {
-      font-size: 0.95rem;
-      color: #cbd5f5;
-      margin-bottom: 12px;
-    }
-
-    .title-bullets {
-      font-size: 0.85rem;
-      color: #e5e7eb;
-      margin-bottom: 12px;
-    }
-
-    .title-bullets li { margin-bottom: 3px; }
-
-    .title-note {
-      font-size: 0.8rem;
-      color: #9ca3af;
-      margin-top: 10px;
-    }
-
-    /* News ticker */
-    .ticker-bar {
-      margin-top: 4px;
-      padding: 6px 10px 4px;
-      border-radius: 999px;
-      background: radial-gradient(circle at left, #1e293b 0, #020617 70%);
-      border: 1px solid #0f172a;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.76rem;
-      color: #e5e7eb;
-    }
-
-    .ticker-label {
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-weight: 600;
-      color: #a5b4fc;
-      white-space: nowrap;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .ticker-label span.icon { font-size: 0.9rem; }
-
-    .ticker-text {
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      flex: 1;
-      color: #e5e7eb;
-    }
-
-    @media (max-width: 640px) {
-      .crisis-strip {
-        grid-template-columns: 1fr;
-        row-gap: 4px;
-        text-align: left;
-      }
-      .crisis-date { text-align: left; }
-      .ticker-bar { flex-direction: column; align-items: flex-start; border-radius: 12px; }
+    .scene-b-bottom {
+      padding:10px 14px 12px;
+      font-size:0.8rem;
+      color:#e5e7eb;
     }
   </style>
 </head>
 <body>
-  <div class="game-shell">
-    <header>
-      <div>
-        <div class="game-title">13 Days: Cuban Missile Crisis Survival</div>
-        <div class="subtitle">Play as a high school student in 1962. Walk, talk, and choose your path through the crisis.</div>
-      </div>
-      <div class="badge">Teach Arcade · History Game</div>
-    </header>
+  <h1>13 Days — Visual Style Mockups</h1>
+  <p style="font-size:0.9rem;color:#9ca3af;margin-bottom:16px;">
+    Left: <strong>Option A – Minimal Vector</strong>. Right: <strong>Option B – Retro Pixel.</strong> 
+    This is just visual; no gameplay yet.
+  </p>
 
-    <div class="crisis-strip">
-      <div class="crisis-label">
-        <span class="icon">☢️</span>
-        <span>Crisis Tension</span>
-      </div>
-      <div class="crisis-track">
-        <div class="crisis-indicator" id="crisis-indicator"></div>
-      </div>
-      <div class="crisis-date" id="crisis-date-label">October 1962</div>
-    </div>
+  <div class="wrapper">
 
-    <div class="top-row">
-      <div class="scene-card fade-in" id="scene-card">
+    <!-- OPTION A PANEL -->
+    <section class="panel">
+      <div class="panel-title">Option A · Minimal Vector Style</div>
+      <div class="panel-sub">Clean, modern, smooth gradients — matches Teach Arcade UI.</div>
 
-        <!-- NEW: visual movement panel -->
-        <div class="scene-visual" id="scene-visual">
-          <div class="scene-world">
-            <div class="scene-background" id="scene-bg" data-location="classroom">
-              <div class="scene-floor"></div>
-            </div>
-            <div class="scene-character scene-character--player" id="player-sprite" data-emoji="🙂"></div>
-            <div class="scene-character scene-character--npc" id="npc-sprite" data-emoji="🧑‍🏫">
-              <div class="scene-character__label" id="npc-label">Principal Hayes</div>
-            </div>
-          </div>
-          <div class="movement-controls">
-            <div class="movement-instructions" id="move-instructions">
-              Use ◀ / ▶ or the Move buttons to walk to the glowing character.
-            </div>
-            <div class="movement-buttons">
-              <button type="button" id="move-left">◀ Move</button>
-              <button type="button" id="move-right">Move ▶</button>
-            </div>
+      <div class="crisis-bar">
+        <div class="crisis-label">Crisis Tension</div>
+        <div class="crisis-track"><div class="crisis-fill"></div></div>
+      </div>
+
+      <div class="scene-a">
+        <div class="scene-a-top">
+          <div class="scene-a-title">Strange Assembly</div>
+          <div class="scene-a-meta">Oct 16, 1962 · School Gym</div>
+        </div>
+
+        <div class="scene-a-world">
+          <div class="scene-a-floor"></div>
+          <div class="a-player" data-emoji="🙂"></div>
+          <div class="a-npc" data-emoji="🧑‍🏫">
+            <div class="a-label">Principal Hayes</div>
           </div>
         </div>
 
-        <div class="scene-header">
-          <div class="scene-title" id="scene-title">Loading…</div>
-          <div class="scene-meta" id="scene-meta"></div>
+        <div class="scene-a-bottom">
+          You’ve walked into the emergency assembly. Principal Hayes looks nervous.
+          In the real game, you’d walk up to him, then choose how to respond.
         </div>
-        <div class="scene-text" id="scene-text"></div>
-        <div class="result-text" id="result-text" style="display:none;"></div>
-        <div class="choices" id="choices"></div>
+      </div>
+    </section>
+
+    <!-- OPTION B PANEL -->
+    <section class="panel">
+      <div class="panel-title">Option B · Retro Pixel Style</div>
+      <div class="panel-sub">Chunky “8-bit” blocks, pixel floor pattern, arcade feel.</div>
+
+      <div class="crisis-bar">
+        <div class="crisis-label">Crisis Tension</div>
+        <div class="crisis-track"><div class="crisis-fill"></div></div>
       </div>
 
-      <aside class="stats-card fade-in" id="stats-card">
-        <div class="stats-title-row">
-          <div style="font-weight:600;font-size:0.8rem;">Timeline &amp; Status</div>
-          <div id="day-indicator" style="font-size:0.75rem;color:#9ca3af;"></div>
+      <div class="scene-b">
+        <div class="scene-b-top">
+          <div class="scene-b-title">Strange Assembly</div>
+          <div class="scene-b-meta">Oct 16, 1962 · School Gym</div>
         </div>
-        <div class="stats-grid">
-          <div class="stat-item">
-            <div class="stat-label">
-              <span>Preparedness</span>
-              <span class="stat-value" id="stat-preparedness-val">0</span>
-            </div>
-            <div class="stat-bar-bg">
-              <div class="stat-bar preparedness" id="stat-preparedness-bar"></div>
-            </div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-label">
-              <span>Morale</span>
-              <span class="stat-value" id="stat-morale-val">0</span>
-            </div>
-            <div class="stat-bar-bg">
-              <div class="stat-bar morale" id="stat-morale-bar"></div>
-            </div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-label">
-              <span>Info Accuracy</span>
-              <span class="stat-value" id="stat-accuracy-val">0</span>
-            </div>
-            <div class="stat-bar-bg">
-              <div class="stat-bar accuracy" id="stat-accuracy-bar"></div>
-            </div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-label">
-              <span>Risk Exposure</span>
-              <span class="stat-value" id="stat-risk-val">0</span>
-            </div>
-            <div class="stat-bar-bg">
-              <div class="stat-bar risk" id="stat-risk-bar"></div>
-            </div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-label">
-              <span>Social Impact</span>
-              <span class="stat-value" id="stat-social-val">0</span>
-            </div>
-            <div class="stat-bar-bg">
-              <div class="stat-bar social" id="stat-social-bar"></div>
-            </div>
-          </div>
+
+        <div class="scene-b-world">
+          <div class="scene-b-bg"></div>
+          <div class="scene-b-floor"></div>
+          <div class="b-player"></div>
+          <div class="b-npc"></div>
+          <div class="b-label">PRINCIPAL</div>
         </div>
-      </aside>
-    </div>
 
-    <div class="ticker-bar">
-      <div class="ticker-label">
-        <span class="icon">📻</span>
-        <span>News Ticker</span>
+        <div class="scene-b-bottom">
+          Same scene as Option A, but rendered like an old-school NES hallway.
+          In the real game, the player sprite would move on this grid and interact.
+        </div>
       </div>
-      <div class="ticker-text" id="ticker-text">
-        October 1962: Tension builds quietly as U.S. leaders review aerial reconnaissance photos.
-      </div>
-    </div>
+    </section>
 
-    <div class="footer-row">
-      <div id="scene-progress">Scene 0 of 0</div>
-      <div>Use this as a class discussion tool: pause after key choices and ask students what they’d do.</div>
-    </div>
   </div>
-
-  <script>
-    // === Game data (unchanged narrative) ===
-    const gameData = {
-      title: "13 Days: A High Schooler’s Survival of the Cuban Missile Crisis",
-      stats: {
-        preparedness: 0,
-        morale: 0,
-        accuracy: 0,
-        risk: 0,
-        social: 0
-      },
-      intro: {
-        id: "intro",
-        type: "intro",
-        date: "1962-10-16",
-        text: "You’re a 16-year-old high school student living outside Washington, D.C. You wake up expecting an ordinary Tuesday. You have no idea the world is about to change.",
-        nextSceneId: "scene1"
-      },
-      scenes: [/* === SAME SCENES AS BEFORE, omitted here for brevity in this comment === */]
-      // NOTE: paste your full scenes array and endings array from the previous version here
-      ,
-      endings: [
-        { id: "ending_calm_prepared",  title: "Calm and Prepared",  description: "You stayed mostly calm, sought accurate information, and helped your family prepare without fueling panic." },
-        { id: "ending_anxious_safe",   title: "Anxious but Safe",   description: "You were often afraid and sometimes overwhelmed, but you still took practical steps to stay safe." },
-        { id: "ending_unprepared_lucky", title: "Unprepared but Lucky", description: "You didn’t do much to prepare and often tried to ignore the danger. History’s peaceful outcome, not your planning, kept you safe." },
-        { id: "ending_rumor_spreader", title: "Rumor-Spreader",    description: "You passed along or invented misinformation that increased fear and confusion for others, even if you didn’t mean to." },
-        { id: "ending_risk_taker",     title: "Risk-Taker",        description: "You repeatedly threw yourself into dangerous or chaotic situations. You made it through, but not because you played it safe." },
-        { id: "ending_panic_collapse", title: "Overwhelmed by Panic", description: "Fear, rumors, and chaotic choices overwhelmed your ability to think clearly. You survived the crisis, but it took a heavy toll on your trust and sense of safety." }
-      ]
-    };
-
-    // --- Paste the full scenes array from your working version right where the comment says. ---
-    // (I kept it identical to the last file you shared, so you can safely reuse that block.)
-
-    // News ticker messages keyed by scene
-    const tickerMessages = {
-      title: "Welcome to 13 Days: you'll experience the crisis as an ordinary student, not a world leader.",
-      intro: "Quiet suburbs, busy schools—most Americans have no idea that high-altitude photos just changed everything.",
-      scene1: "Teachers whisper in hallways across the country as early intelligence reaches local officials.",
-      scene2: "Civil defense updates prompt new assemblies, drills, and letters home to parents.",
-      scene3: "Increased military traffic near major cities raises eyebrows but few concrete answers.",
-      scene3a_military: "Restricted roads and nearby bases buzz with activity as tensions rise behind the scenes.",
-      scene4: "Newspapers argue over how serious the Soviet threat in Cuba really is.",
-      scene5: "Some families begin building fallout shelters and stocking supplies just in case.",
-      scene5a_shelter: "Basements turn into improvised shelters with canned goods, water, and Geiger counters.",
-      scene6: "School districts send civil defense letters, urging calm while outlining worst-case plans.",
-      scene7: "Siren tests, drill schedules, and misfires blend together for nervous students.",
-      scene8: "Rumors spread faster than official statements, especially in crowded cafeterias.",
-      scene9: "President Kennedy reveals the missiles in Cuba, and Americans listen in stunned silence.",
-      scene10: "Stores across the U.S. see runs on canned food, water, and basic supplies.",
-      scene11: "Classrooms become miniature debate halls over war, peace, and containment.",
-      scene12: "False alarms and loud noises can spark panic as people imagine the worst.",
-      scene13: "Radio bulletins announce a deal: the Soviets agree to remove missiles from Cuba.",
-      ending: "Historians later call this the closest the world ever came to all-out nuclear war."
-    };
-
-    // === Engine state ===
-    let currentSceneId = "title"; // start on title screen
-    let stats = { ...gameData.stats };
-    let sceneMap = {};
-
-    function initSceneMap() {
-      sceneMap["intro"] = gameData.intro;
-      gameData.scenes.forEach(scene => { sceneMap[scene.id] = scene; });
-    }
-
-    function formatDate(dateStr) {
-      if (!dateStr) return "";
-      const d = new Date(dateStr);
-      if (isNaN(d.getTime())) return "";
-      const options = { year: "numeric", month: "short", day: "numeric" };
-      return d.toLocaleDateString(undefined, options);
-    }
-
-    function getDayLabel(sceneId) {
-      const order = [
-        "scene1","scene2","scene3","scene3a_military","scene4",
-        "scene5","scene5a_shelter","scene6","scene7","scene8",
-        "scene9","scene10","scene11","scene12","scene13"
-      ];
-      const idx = order.indexOf(sceneId);
-      if (idx === -1) return "";
-      const dayNumber = Math.min(13, Math.max(1, idx + 1));
-      return `Approx. Day ${dayNumber} of 13`;
-    }
-
-    function updateCrisisStrip(sceneId, dateStr) {
-      const indicator = document.getElementById("crisis-indicator");
-      const dateLabel = document.getElementById("crisis-date-label");
-      const total = gameData.scenes.length;
-      let index = gameData.scenes.findIndex(s => s.id === sceneId);
-      if (sceneId === "intro") index = 0;
-      if (sceneId === "title") index = -1;
-
-      let percent;
-      if (index === -1) {
-        percent = 4;
-      } else {
-        percent = ((index + 1) / total) * 100;
-      }
-      indicator.style.width = Math.max(4, Math.min(100, percent)) + "%";
-
-      if (sceneId === "title") {
-        dateLabel.textContent = "October 1962 · Overview";
-      } else if (sceneId === "intro") {
-        dateLabel.textContent = "Oct 16, 1962 · A Normal Morning (For Now)";
-      } else if (sceneId === "ending") {
-        dateLabel.textContent = "Oct 28, 1962 · Crisis Resolved";
-      } else {
-        dateLabel.textContent = (formatDate(dateStr) || "October 1962");
-      }
-    }
-
-    function applyEffects(effects = {}) {
-      for (const key in effects) {
-        if (!Object.prototype.hasOwnProperty.call(stats, key)) continue;
-        stats[key] += effects[key];
-      }
-      updateStatsUI();
-    }
-
-    function updateStatsUI() {
-      const clamp = (val, min, max) => Math.max(min, Math.min(max, val));
-
-      function setStat(name) {
-        const val = stats[name] || 0;
-        document.getElementById(`stat-${name}-val`).textContent = val;
-        const bar = document.getElementById(`stat-${name}-bar`);
-        const percent = clamp(50 + val * 10, 0, 100); // 0 baseline at 50%
-        bar.style.width = percent + "%";
-      }
-
-      setStat("preparedness");
-      setStat("morale");
-      setStat("accuracy");
-      setStat("risk");
-      setStat("social");
-    }
-
-    function summarizeEffects(effects = {}) {
-      const labels = {
-        preparedness: "Preparedness",
-        morale: "Morale",
-        accuracy: "Accuracy",
-        risk: "Risk",
-        social: "Social"
-      };
-
-      const keys = Object.keys(effects);
-      if (!keys.length) return "";
-
-      return keys.map(key => {
-        if (!labels[key]) return "";
-        const delta = effects[key];
-        const sign = delta > 0 ? "+" : "";
-        const cls = delta >= 0 ? "positive" : "negative";
-        return `<span class="effect-pill ${cls}"><span>${sign}${delta}</span>${labels[key]}</span>`;
-      }).join("");
-    }
-
-    function setTicker(sceneId) {
-      const textEl = document.getElementById("ticker-text");
-      const msg = tickerMessages[sceneId] || tickerMessages["title"];
-      textEl.textContent = msg;
-    }
-
-    function bounceCardAnimations() {
-      const sceneCard = document.getElementById("scene-card");
-      const statsCard = document.getElementById("stats-card");
-      [sceneCard, statsCard].forEach(el => {
-        el.classList.remove("fade-in");
-        void el.offsetWidth;
-        el.classList.add("fade-in");
-      });
-    }
-
-    // ===== Visual / movement system =====
-    const slotPositions = [18, 50, 82]; // percentage left positions
-    let playerPos = 0;
-    let npcPos = 2;
-    let choicesLockedForMovement = true;
-
-    const visualConfigs = {
-      scene1:  { location: "classroom", npcLabel: "Maria",          npcEmoji: "🧑‍🎓" },
-      scene2:  { location: "gym",       npcLabel: "Principal Hayes",npcEmoji: "👨‍🏫" },
-      scene3:  { location: "street",    npcLabel: "Military Trucks",npcEmoji: "🚛" },
-      scene3a_military: { location: "street", npcLabel: "Base Gate", npcEmoji: "🪖" },
-      scene4:  { location: "classroom", npcLabel: "Ms. Taylor",     npcEmoji: "👩‍🏫" },
-      scene5:  { location: "classroom", npcLabel: "Kevin",          npcEmoji: "🧑‍🎓" },
-      scene5a_shelter: { location: "classroom", npcLabel: "Kevin’s Dad", npcEmoji: "👨" },
-      scene6:  { location: "classroom", npcLabel: "Your Parents",   npcEmoji: "👨‍👩‍👧" },
-      scene7:  { location: "classroom", npcLabel: "Your Teacher",   npcEmoji: "👩‍🏫" },
-      scene8:  { location: "classroom", npcLabel: "Cafeteria Table",npcEmoji: "🍽️" },
-      scene9:  { location: "classroom", npcLabel: "Family TV",      npcEmoji: "📺" },
-      scene10: { location: "street",    npcLabel: "Grocery Crowd",  npcEmoji: "🛒" },
-      scene11: { location: "classroom", npcLabel: "Debate Circle",  npcEmoji: "💬" },
-      scene12: { location: "street",    npcLabel: "Main Street",    npcEmoji: "🚗" },
-      scene13: { location: "classroom", npcLabel: "Neighbors",      npcEmoji: "🏡" }
-    };
-
-    function toggleSceneVisual(show) {
-      const visual = document.getElementById("scene-visual");
-      if (!visual) return;
-      visual.classList.toggle("hidden", !show);
-    }
-
-    function setupVisualForScene(sceneId) {
-      const bgEl = document.getElementById("scene-bg");
-      const playerEl = document.getElementById("player-sprite");
-      const npcEl = document.getElementById("npc-sprite");
-      const npcLabel = document.getElementById("npc-label");
-      const moveInstructions = document.getElementById("move-instructions");
-
-      if (!bgEl || !playerEl || !npcEl || !npcLabel) return;
-
-      const cfg = visualConfigs[sceneId] || { location: "classroom", npcLabel: "Friend", npcEmoji: "🧑" };
-
-      bgEl.dataset.location = cfg.location || "classroom";
-      npcLabel.textContent = cfg.npcLabel || "";
-      npcEl.setAttribute("data-emoji", cfg.npcEmoji || "🧑");
-      playerEl.setAttribute("data-emoji", "🙂");
-
-      playerPos = 0;
-      npcPos = 2;
-      choicesLockedForMovement = true;
-      moveInstructions.textContent = "Use ◀ / ▶ or the Move buttons to walk to the glowing character.";
-      moveInstructions.classList.remove("reached");
-
-      updateCharacterPositions();
-      lockChoiceButtons(true);
-    }
-
-    function updateCharacterPositions() {
-      const playerEl = document.getElementById("player-sprite");
-      const npcEl = document.getElementById("npc-sprite");
-      if (!playerEl || !npcEl) return;
-      playerEl.style.left = slotPositions[playerPos] + "%";
-      npcEl.style.left = slotPositions[npcPos] + "%";
-    }
-
-    function movePlayer(delta) {
-      const playerEl = document.getElementById("player-sprite");
-      if (!playerEl || !choicesLockedForMovement) return; // only move when movement is required
-      const newPos = Math.max(0, Math.min(2, playerPos + delta));
-      if (newPos === playerPos) return;
-      playerPos = newPos;
-      playerEl.classList.remove("walking");
-      void playerEl.offsetWidth;
-      playerEl.classList.add("walking");
-      updateCharacterPositions();
-      checkPlayerReached();
-    }
-
-    function checkPlayerReached() {
-      if (playerPos === npcPos) {
-        choicesLockedForMovement = false;
-        const moveInstructions = document.getElementById("move-instructions");
-        moveInstructions.textContent = "You’ve reached them. Now choose how you respond below.";
-        moveInstructions.classList.add("reached");
-        lockChoiceButtons(false);
-      }
-    }
-
-    function lockChoiceButtons(lock) {
-      const buttons = document.querySelectorAll(".choice-btn");
-      buttons.forEach(btn => {
-        btn.disabled = lock;
-        btn.classList.toggle("choice-disabled", lock);
-      });
-    }
-
-    function setupMovementControls() {
-      const leftBtn = document.getElementById("move-left");
-      const rightBtn = document.getElementById("move-right");
-      if (leftBtn) leftBtn.addEventListener("click", () => movePlayer(-1));
-      if (rightBtn) rightBtn.addEventListener("click", () => movePlayer(1));
-
-      document.addEventListener("keydown", (ev) => {
-        if (currentSceneId === "title" || currentSceneId === "intro" || currentSceneId === "ending") return;
-        if (ev.key === "ArrowLeft") movePlayer(-1);
-        if (ev.key === "ArrowRight") movePlayer(1);
-      });
-    }
-
-    // ===== Render functions =====
-
-    function renderScene() {
-      const sceneTitleEl = document.getElementById("scene-title");
-      const sceneMetaEl = document.getElementById("scene-meta");
-      const sceneTextEl = document.getElementById("scene-text");
-      const resultTextEl = document.getElementById("result-text");
-      const choicesEl = document.getElementById("choices");
-      const dayIndicator = document.getElementById("day-indicator");
-      const sceneProgress = document.getElementById("scene-progress");
-
-      resultTextEl.style.display = "none";
-      resultTextEl.textContent = "";
-      choicesEl.innerHTML = "";
-
-      setTicker(currentSceneId);
-      bounceCardAnimations();
-
-      // TITLE SCREEN
-      if (currentSceneId === "title") {
-        toggleSceneVisual(false);
-        sceneTitleEl.textContent = "13 Days: Cuban Missile Crisis Survival";
-        sceneMetaEl.textContent = "Interactive History Simulator · Teach Arcade";
-        dayIndicator.textContent = "Welcome Screen";
-        sceneProgress.textContent = "Historical Survival Mode";
-
-        updateCrisisStrip("title", "");
-
-        sceneTextEl.innerHTML = `
-          <div class="title-big">Step into October 1962.</div>
-          <div class="title-tagline">
-            You are a 16-year-old outside Washington, D.C. For 13 tense days, the world stands on the brink of nuclear war.
-          </div>
-          <ul class="title-bullets">
-            <li>Walk to key people and places in your school and neighborhood.</li>
-            <li>Balance preparedness, morale, accurate information, risk, and social impact.</li>
-            <li>Reach one of several endings based on how you respond to the crisis.</li>
-          </ul>
-          <div class="title-note">
-            Ideal for a 10–15 minute class activity. Teachers can pause after key scenes for discussion.
-          </div>
-        `;
-
-        const btnRow = document.createElement("div");
-        btnRow.className = "btn-row";
-
-        const startBtn = document.createElement("button");
-        startBtn.className = "primary-btn";
-        startBtn.textContent = "Start Simulation";
-        startBtn.onclick = () => {
-          currentSceneId = "intro";
-          renderScene();
-        };
-
-        const teacherBtn = document.createElement("button");
-        teacherBtn.className = "secondary-btn";
-        teacherBtn.textContent = "Teacher Tips";
-        teacherBtn.onclick = () => {
-          alert(
-`Teacher Tips:
-• Project this on the board or have students play in pairs.
-• Pause after major scenes (sirens, JFK speech, panic moment) and ask:
-  – What would you choose and why?
-  – What information do you wish you had?
-  – How did rumors vs. facts change your response?
-• At the end, compare different endings and what drove them.`
-          );
-        };
-
-        btnRow.appendChild(startBtn);
-        btnRow.appendChild(teacherBtn);
-        choicesEl.appendChild(btnRow);
-        return;
-      }
-
-      // INTRO
-      if (currentSceneId === "intro") {
-        toggleSceneVisual(false);
-        sceneTitleEl.textContent = "October 16, 1962";
-        sceneMetaEl.textContent = "Suburban Maryland · School Morning";
-        sceneTextEl.textContent = gameData.intro.text;
-        dayIndicator.textContent = "Approx. Day 1 of 13";
-        sceneProgress.textContent = "Scene 0 of " + gameData.scenes.length;
-        updateCrisisStrip("intro", gameData.intro.date);
-
-        const startBtn = document.createElement("button");
-        startBtn.className = "primary-btn";
-        startBtn.textContent = "Begin the Crisis";
-        startBtn.onclick = () => {
-          currentSceneId = gameData.intro.nextSceneId;
-          renderScene();
-        };
-
-        const backBtn = document.createElement("button");
-        backBtn.className = "secondary-btn";
-        backBtn.textContent = "Back to Title";
-        backBtn.onclick = () => {
-          currentSceneId = "title";
-          renderScene();
-        };
-
-        const btnRow = document.createElement("div");
-        btnRow.className = "btn-row";
-        btnRow.appendChild(startBtn);
-        btnRow.appendChild(backBtn);
-        choicesEl.appendChild(btnRow);
-        return;
-      }
-
-      // ENDING
-      if (currentSceneId === "ending") {
-        toggleSceneVisual(false);
-        renderEnding();
-        return;
-      }
-
-      // NORMAL SCENE
-      toggleSceneVisual(true);
-      const scene = sceneMap[currentSceneId];
-
-      setupVisualForScene(scene.id);
-
-      sceneTitleEl.textContent = scene.title;
-      sceneMetaEl.textContent = formatDate(scene.date) || "";
-      sceneTextEl.textContent = scene.text;
-      dayIndicator.textContent = getDayLabel(scene.id);
-      updateCrisisStrip(scene.id, scene.date);
-
-      const index = gameData.scenes.findIndex(s => s.id === scene.id);
-      sceneProgress.textContent = `Scene ${index + 1} of ${gameData.scenes.length}`;
-
-      scene.choices.forEach((choice, idx) => {
-        const btn = document.createElement("button");
-        btn.className = "choice-btn choice-disabled";
-        btn.disabled = true;
-        btn.innerHTML = `<span class="index">${idx + 1}.</span> ${choice.label}`;
-        btn.onclick = () => {
-          if (btn.disabled) return;
-          resultTextEl.style.display = "block";
-          const effectsHtml = summarizeEffects(choice.effects);
-          resultTextEl.innerHTML = `
-            ${choice.resultText}
-            ${effectsHtml ? `<div class="effects-row">${effectsHtml}</div>` : ""}
-          `;
-          applyEffects(choice.effects);
-          setTimeout(() => {
-            currentSceneId = choice.nextSceneId;
-            renderScene();
-          }, 650);
-        };
-        choicesEl.appendChild(btn);
-      });
-    }
-
-    function chooseEnding() {
-      const { preparedness, morale, accuracy, risk, social } = stats;
-
-      if (accuracy <= -2 && social <= -1) {
-        return gameData.endings.find(e => e.id === "ending_rumor_spreader");
-      }
-      if (morale <= -3 && accuracy <= 0 && risk >= 2) {
-        return gameData.endings.find(e => e.id === "ending_panic_collapse");
-      }
-      if (risk >= 4) {
-        return gameData.endings.find(e => e.id === "ending_risk_taker");
-      }
-      if (preparedness >= 3 && accuracy >= 2 && morale >= -1 && social >= 0 && risk <= 2) {
-        return gameData.endings.find(e => e.id === "ending_calm_prepared");
-      }
-      if (preparedness >= 3 && morale < 0) {
-        return gameData.endings.find(e => e.id === "ending_anxious_safe");
-      }
-      if (preparedness <= 1 && accuracy >= 1 && risk <= 2) {
-        return gameData.endings.find(e => e.id === "ending_unprepared_lucky");
-      }
-      return gameData.endings.find(e => e.id === "ending_anxious_safe");
-    }
-
-    function renderEnding() {
-      const ending = chooseEnding();
-
-      const sceneTitleEl = document.getElementById("scene-title");
-      const sceneMetaEl = document.getElementById("scene-meta");
-      const sceneTextEl = document.getElementById("scene-text");
-      const resultTextEl = document.getElementById("result-text");
-      const choicesEl = document.getElementById("choices");
-      const dayIndicator = document.getElementById("day-indicator");
-      const sceneProgress = document.getElementById("scene-progress");
-
-      sceneTitleEl.textContent = ending.title;
-      sceneMetaEl.textContent = "Crisis Resolved · October 28, 1962";
-      dayIndicator.textContent = "The 13 days have passed.";
-      sceneProgress.textContent = "Simulation complete";
-
-      updateCrisisStrip("ending", "1962-10-28");
-      setTicker("ending");
-      bounceCardAnimations();
-
-      resultTextEl.style.display = "none";
-      sceneTextEl.innerHTML = `
-        <div class="ending-title">${ending.title}</div>
-        <div class="ending-desc">${ending.description}</div>
-        <div class="ending-stats">
-          <div style="margin-bottom:4px;">Your final status:</div>
-          <div class="pill"><span>P</span> Preparedness: ${stats.preparedness}</div>
-          <div class="pill"><span>M</span> Morale: ${stats.morale}</div>
-          <div class="pill"><span>A</span> Accuracy: ${stats.accuracy}</div>
-          <div class="pill"><span>R</span> Risk: ${stats.risk}</div>
-          <div class="pill"><span>S</span> Social: ${stats.social}</div>
-          <div style="margin-top:8px;">How might different choices have changed your ending?</div>
-        </div>
-      `;
-
-      choicesEl.innerHTML = "";
-      const btnRow = document.createElement("div");
-      btnRow.className = "btn-row";
-
-      const replayBtn = document.createElement("button");
-      replayBtn.className = "primary-btn";
-      replayBtn.textContent = "Play Again with Different Choices";
-      replayBtn.onclick = () => {
-        stats = { ...gameData.stats };
-        currentSceneId = "title";
-        updateStatsUI();
-        renderScene();
-      };
-
-      const discussBtn = document.createElement("button");
-      discussBtn.className = "secondary-btn";
-      discussBtn.textContent = "Class Discussion Prompts";
-      discussBtn.onclick = () => {
-        alert(
-`Discussion ideas:
-• Which moment felt most tense to you, and why?
-• Where did rumors vs. accurate information matter most?
-• Which choices increased risk? Which reduced it?
-• How did regular citizens experience this compared to leaders?`
-        );
-      };
-
-      btnRow.appendChild(replayBtn);
-      btnRow.appendChild(discussBtn);
-      choicesEl.appendChild(btnRow);
-    }
-
-    // Init
-    initSceneMap();
-    updateStatsUI();
-    setupMovementControls();
-    renderScene();
-  </script>
 </body>
 </html>
