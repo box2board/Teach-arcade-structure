@@ -8,14 +8,12 @@
   <meta name="description" content="Interactive Cuban Missile Crisis survival game. Play as a high school student in 1962 and make choices that affect your outcome. Free classroom history game from Teach Arcade.">
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #0b1020;
+      background: radial-gradient(circle at top, #020617 0, #020617 40%, #020617 100%);
       color: #f9fafb;
       display: flex;
       justify-content: center;
@@ -23,19 +21,19 @@
     }
 
     .game-shell {
-      max-width: 900px;
+      max-width: 980px;
       width: 100%;
-      background: radial-gradient(circle at top, #1f2937 0, #020617 60%);
+      background: radial-gradient(circle at top, #111827 0, #020617 60%);
       border-radius: 16px;
       border: 1px solid #1f2937;
       box-shadow: 0 18px 40px rgba(0,0,0,0.7);
-      padding: 20px 20px 24px;
+      padding: 20px 20px 12px;
+      position: relative;
+      overflow: hidden;
     }
 
     @media (min-width: 768px) {
-      .game-shell {
-        padding: 28px 32px 32px;
-      }
+      .game-shell { padding: 28px 32px 18px; }
     }
 
     header {
@@ -43,7 +41,7 @@
       justify-content: space-between;
       align-items: center;
       gap: 12px;
-      margin-bottom: 16px;
+      margin-bottom: 10px;
     }
 
     .game-title {
@@ -60,35 +58,108 @@
       border-radius: 999px;
       border: 1px solid #4b5563;
       color: #e5e7eb;
-      background: rgba(15,23,42,0.8);
+      background: rgba(15,23,42,0.9);
       white-space: nowrap;
     }
 
     .subtitle {
       font-size: 0.9rem;
       color: #9ca3af;
-      margin-bottom: 18px;
+      margin-bottom: 10px;
+    }
+
+    /* Crisis strip (visual progression) */
+    .crisis-strip {
+      display: grid;
+      grid-template-columns: 1.2fr 3fr 1.6fr;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 0.78rem;
+      color: #cbd5f5;
+    }
+
+    .crisis-label {
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+      color: #a5b4fc;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .crisis-label span.icon {
+      font-size: 1rem;
+    }
+
+    .crisis-track {
+      position: relative;
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(to right, #0f172a, #111827);
+      overflow: hidden;
+      border: 1px solid #1e293b;
+    }
+
+    .crisis-track::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(90deg,
+        rgba(248,250,252,0.05) 0,
+        rgba(248,250,252,0.15) 50%,
+        rgba(248,250,252,0.05) 100%);
+      opacity: 0.8;
+    }
+
+    .crisis-indicator {
+      position: relative;
+      height: 100%;
+      width: 0%;
+      border-radius: 999px;
+      background: linear-gradient(to right, #22c55e, #eab308, #ef4444);
+      box-shadow: 0 0 10px rgba(248,250,252,0.5);
+      transition: width 0.35s ease;
+    }
+
+    .crisis-date {
+      text-align: right;
+      color: #cbd5f5;
+      font-weight: 500;
+      white-space: nowrap;
     }
 
     .top-row {
       display: flex;
       flex-direction: column;
       gap: 18px;
-      margin-bottom: 18px;
+      margin-bottom: 10px;
     }
 
     @media (min-width: 768px) {
-      .top-row {
-        flex-direction: row;
-      }
+      .top-row { flex-direction: row; }
     }
 
-    .scene-card {
-      flex: 2;
+    .scene-card, .stats-card {
       background: rgba(15,23,42,0.95);
       border-radius: 14px;
-      padding: 14px 16px 18px;
+      padding: 14px 16px 16px;
       border: 1px solid #1f2937;
+      position: relative;
+    }
+
+    .scene-card { flex: 2; }
+    .stats-card { flex: 1.2; }
+
+    /* Simple fade-in animation */
+    .fade-in {
+      animation: fadeInUp 0.35s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
     .scene-header {
@@ -96,7 +167,7 @@
       justify-content: space-between;
       align-items: baseline;
       gap: 8px;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
 
     .scene-title {
@@ -111,21 +182,195 @@
       white-space: nowrap;
     }
 
+    /* ==== STAGE / HYBRID GAMEPLAY ==== */
+    .scene-stage {
+      position: relative;
+      height: 220px;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 10px;
+      background: linear-gradient(to top, #020617 0, #020617 40%, #0b1120 100%);
+      border: 1px solid #111827;
+    }
+
+    .stage-layer {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .layer-far {
+      background:
+        linear-gradient(to top, rgba(15,23,42,1) 0, rgba(15,23,42,0.2) 55%, transparent 100%),
+        repeating-linear-gradient(
+          to right,
+          rgba(30,64,175,0.15) 0,
+          rgba(30,64,175,0.15) 40px,
+          transparent 40px,
+          transparent 80px
+        );
+      opacity: 0.6;
+    }
+
+    .layer-mid {
+      background:
+        radial-gradient(circle at 12% 20%, rgba(148,163,184,0.35) 0, transparent 55px),
+        radial-gradient(circle at 70% 25%, rgba(248,250,252,0.4) 0, transparent 65px);
+      opacity: 0.75;
+    }
+
+    .scene-stage.bg-school .layer-mid {
+      background:
+        radial-gradient(circle at 10% 25%, rgba(96,165,250,0.45) 0, transparent 60px),
+        radial-gradient(circle at 70% 40%, rgba(129,140,248,0.6) 0, transparent 80px);
+    }
+
+    .scene-stage.bg-town .layer-mid {
+      background:
+        radial-gradient(circle at 15% 25%, rgba(248,250,252,0.4) 0, transparent 50px),
+        radial-gradient(circle at 80% 30%, rgba(248,250,252,0.15) 0, transparent 80px);
+    }
+
+    .scene-stage.bg-home .layer-mid {
+      background:
+        radial-gradient(circle at 15% 25%, rgba(52,211,153,0.4) 0, transparent 55px),
+        radial-gradient(circle at 80% 35%, rgba(56,189,248,0.4) 0, transparent 75px);
+    }
+
+    .scene-stage.bg-assembly .layer-mid {
+      background:
+        radial-gradient(circle at 18% 22%, rgba(251,191,36,0.5) 0, transparent 55px),
+        radial-gradient(circle at 75% 28%, rgba(252,165,165,0.4) 0, transparent 80px);
+    }
+
+    .stage-floor {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 60px;
+      background:
+        linear-gradient(to top, #020617 0, #020617 25%, transparent 100%),
+        repeating-linear-gradient(
+          to right,
+          #020617 0,
+          #020617 18px,
+          #030712 18px,
+          #030712 36px
+        );
+      border-top: 1px solid #111827;
+    }
+
+    .sprite {
+      position: absolute;
+      bottom: 60px;
+      width: 40px;
+      height: 60px;
+      border-radius: 8px;
+      box-shadow: 0 8px 12px rgba(0,0,0,0.5);
+    }
+
+    .player {
+      background: linear-gradient(to top, #22c55e 0, #4ade80 40%, #e5e7eb 100%);
+      border: 2px solid #22c55e;
+      transform: translateX(-50%);
+      transition: left 0.18s ease-out;
+    }
+
+    .npc {
+      background: linear-gradient(to top, #38bdf8 0, #60a5fa 40%, #e5e7eb 100%);
+      border: 2px solid #38bdf8;
+      transform: translateX(-50%);
+      animation: npcIdle 1.4s ease-in-out infinite;
+    }
+
+    @keyframes npcIdle {
+      0%, 100% { transform: translate(-50%, 0); }
+      50% { transform: translate(-50%, -4px); }
+    }
+
+    .npc-marker {
+      position: absolute;
+      bottom: 120px;
+      transform: translateX(-50%);
+      padding: 2px 6px;
+      font-size: 0.7rem;
+      border-radius: 999px;
+      background: rgba(30,64,175,0.95);
+      border: 1px solid rgba(191,219,254,0.9);
+      white-space: nowrap;
+    }
+
+    .npc.glow {
+      box-shadow:
+        0 0 16px rgba(129,140,248,0.9),
+        0 0 32px rgba(129,140,248,0.7);
+    }
+
+    .interaction-hint {
+      position: absolute;
+      bottom: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid #4b5563;
+      font-size: 0.75rem;
+      color: #e5e7eb;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.15s ease-out;
+    }
+
+    .interaction-hint.visible {
+      opacity: 1;
+    }
+
     .scene-text {
       font-size: 0.95rem;
       line-height: 1.6;
       color: #e5e7eb;
-      margin-top: 6px;
-      margin-bottom: 10px;
+      margin-top: 4px;
+      margin-bottom: 8px;
     }
 
     .result-text {
       font-size: 0.9rem;
       line-height: 1.5;
       color: #d1d5db;
-      margin: 10px 0 4px;
+      margin: 8px 0 4px;
       border-left: 3px solid #4b5563;
       padding-left: 10px;
+    }
+
+    .effects-row {
+      margin-top: 6px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .effect-pill {
+      font-size: 0.7rem;
+      padding: 2px 7px;
+      border-radius: 999px;
+      border: 1px solid #374151;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .effect-pill.positive {
+      background: rgba(34,197,94,0.15);
+      color: #bbf7d0;
+      border-color: rgba(34,197,94,0.5);
+    }
+
+    .effect-pill.negative {
+      background: rgba(239,68,68,0.18);
+      color: #fecaca;
+      border-color: rgba(239,68,68,0.5);
     }
 
     .choices {
@@ -140,12 +385,12 @@
       text-align: left;
       border-radius: 10px;
       border: 1px solid #374151;
-      background: linear-gradient(to right, #111827, #020617);
+      background: linear-gradient(to right, #020617, #020617);
       padding: 9px 11px;
       font-size: 0.9rem;
       color: #e5e7eb;
       cursor: pointer;
-      transition: background 0.15s ease, border-color 0.15s ease, transform 0.05s ease;
+      transition: background 0.16s ease, border-color 0.16s ease, transform 0.05s ease;
     }
 
     button.choice-btn span.index {
@@ -161,19 +406,7 @@
       transform: translateY(-1px);
     }
 
-    button.choice-btn:active {
-      transform: translateY(0);
-    }
-
-    .stats-card {
-      flex: 1.2;
-      background: rgba(15,23,42,0.95);
-      border-radius: 14px;
-      padding: 12px 14px 14px;
-      border: 1px solid #1f2937;
-      font-size: 0.8rem;
-      color: #e5e7eb;
-    }
+    button.choice-btn:active { transform: translateY(0); }
 
     .stats-title-row {
       display: flex;
@@ -189,9 +422,7 @@
     }
 
     @media (min-width: 480px) {
-      .stats-grid {
-        grid-template-columns: 1fr 1fr;
-      }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
     }
 
     .stat-item {
@@ -235,7 +466,7 @@
     .stat-bar.social        { background: #a855f7; }
 
     .footer-row {
-      margin-top: 10px;
+      margin-top: 6px;
       font-size: 0.75rem;
       color: #6b7280;
       display: flex;
@@ -287,9 +518,7 @@
       background: rgba(15,23,42,0.8);
     }
 
-    .pill span {
-      font-weight: 600;
-    }
+    .pill span { font-weight: 600; }
 
     .btn-row {
       margin-top: 12px;
@@ -313,9 +542,7 @@
       border-color: #6366f1;
     }
 
-    .primary-btn:hover {
-      filter: brightness(1.05);
-    }
+    .primary-btn:hover { filter: brightness(1.05); }
 
     .secondary-btn {
       background: transparent;
@@ -323,9 +550,7 @@
       border-color: #4b5563;
     }
 
-    .secondary-btn:hover {
-      border-color: #9ca3af;
-    }
+    .secondary-btn:hover { border-color: #9ca3af; }
 
     .title-big {
       font-size: 1.5rem;
@@ -345,15 +570,93 @@
       margin-bottom: 12px;
     }
 
-    .title-bullets li {
-      margin-bottom: 3px;
-    }
+    .title-bullets li { margin-bottom: 3px; }
 
     .title-note {
       font-size: 0.8rem;
       color: #9ca3af;
       margin-top: 10px;
     }
+
+    /* News ticker */
+    .ticker-bar {
+      margin-top: 4px;
+      padding: 6px 10px 4px;
+      border-radius: 999px;
+      background: radial-gradient(circle at left, #1e293b 0, #020617 70%);
+      border: 1px solid #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.76rem;
+      color: #e5e7eb;
+    }
+
+    .ticker-label {
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+      color: #a5b4fc;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .ticker-label span.icon { font-size: 0.9rem; }
+
+    .ticker-text {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      flex: 1;
+      color: #e5e7eb;
+    }
+
+    @media (max-width: 640px) {
+      .crisis-strip {
+        grid-template-columns: 1fr;
+        row-gap: 4px;
+        text-align: left;
+      }
+      .crisis-date { text-align: left; }
+      .ticker-bar { flex-direction: column; align-items: flex-start; border-radius: 12px; }
+    }
+
+    /* Mobile controls */
+    .mobile-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 6px;
+      gap: 6px;
+    }
+
+    .mobile-controls button {
+      flex: 1;
+      padding: 6px 0;
+      border-radius: 999px;
+      border: 1px solid #374151;
+      background: #020617;
+      color: #e5e7eb;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    .mobile-controls button:hover {
+      border-color: #6366f1;
+    }
+
+    @media (min-width: 768px) {
+      .mobile-controls {
+        justify-content: flex-end;
+      }
+      .mobile-controls button {
+        flex: 0 0 auto;
+        min-width: 70px;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -361,23 +664,52 @@
     <header>
       <div>
         <div class="game-title">13 Days: Cuban Missile Crisis Survival</div>
-        <div class="subtitle">Play as a high school student in 1962. Your choices shape how you experience the Cuban Missile Crisis.</div>
+        <div class="subtitle">Play as a high school student in 1962. Walk, talk, and choose your path through the crisis.</div>
       </div>
       <div class="badge">Teach Arcade · History Game</div>
     </header>
 
+    <div class="crisis-strip">
+      <div class="crisis-label">
+        <span class="icon">☢️</span>
+        <span>Crisis Tension</span>
+      </div>
+      <div class="crisis-track">
+        <div class="crisis-indicator" id="crisis-indicator"></div>
+      </div>
+      <div class="crisis-date" id="crisis-date-label">October 1962</div>
+    </div>
+
     <div class="top-row">
-      <div class="scene-card">
+      <div class="scene-card fade-in" id="scene-card">
         <div class="scene-header">
           <div class="scene-title" id="scene-title">Loading…</div>
           <div class="scene-meta" id="scene-meta"></div>
         </div>
+
+        <!-- HYBRID STAGE -->
+        <div class="scene-stage bg-school" id="scene-stage">
+          <div class="stage-layer layer-far"></div>
+          <div class="stage-layer layer-mid"></div>
+          <div class="stage-floor"></div>
+          <div class="sprite npc" id="npc"></div>
+          <div class="npc-marker" id="npc-label">Talk</div>
+          <div class="sprite player" id="player"></div>
+          <div class="interaction-hint" id="interaction-hint">Move near the glowing figure and press <strong>E</strong> or tap <strong>Interact</strong>.</div>
+        </div>
+
         <div class="scene-text" id="scene-text"></div>
         <div class="result-text" id="result-text" style="display:none;"></div>
         <div class="choices" id="choices"></div>
+
+        <div class="mobile-controls">
+          <button id="btn-left">◀ Move</button>
+          <button id="btn-interact">Interact</button>
+          <button id="btn-right">Move ▶</button>
+        </div>
       </div>
 
-      <aside class="stats-card">
+      <aside class="stats-card fade-in" id="stats-card">
         <div class="stats-title-row">
           <div style="font-weight:600;font-size:0.8rem;">Timeline &amp; Status</div>
           <div id="day-indicator" style="font-size:0.75rem;color:#9ca3af;"></div>
@@ -432,14 +764,24 @@
       </aside>
     </div>
 
+    <div class="ticker-bar">
+      <div class="ticker-label">
+        <span class="icon">📻</span>
+        <span>News Ticker</span>
+      </div>
+      <div class="ticker-text" id="ticker-text">
+        October 1962: Tension builds quietly as U.S. leaders review aerial reconnaissance photos.
+      </div>
+    </div>
+
     <div class="footer-row">
       <div id="scene-progress">Scene 0 of 0</div>
-      <div>Use this as a class discussion tool: pause after key choices and ask students what they’d do.</div>
+      <div>Tip: Have students play in pairs and pause after key scenes to discuss choices.</div>
     </div>
   </div>
 
   <script>
-    // === Game data ===
+    // === Game data (same narrative, now used in hybrid engine) ===
     const gameData = {
       title: "13 Days: A High Schooler’s Survival of the Cuban Missile Crisis",
       stats: {
@@ -1012,10 +1354,61 @@
       ]
     };
 
+    // Basic visual settings per scene
+    const sceneVisuals = {
+      title:      { bgClass: "bg-school", npcLabel: "Start", hotspot: 75 },
+      intro:      { bgClass: "bg-home", npcLabel: "A Normal Morning", hotspot: 70 },
+      scene1:     { bgClass: "bg-school", npcLabel: "Maria & Mr. Lawson", hotspot: 75 },
+      scene2:     { bgClass: "bg-assembly", npcLabel: "Principal Hayes", hotspot: 75 },
+      scene3:     { bgClass: "bg-town", npcLabel: "Military Trucks", hotspot: 78 },
+      scene3a_military: { bgClass: "bg-town", npcLabel: "Base Gate", hotspot: 80 },
+      scene4:     { bgClass: "bg-school", npcLabel: "Newspapers", hotspot: 72 },
+      scene5:     { bgClass: "bg-school", npcLabel: "Lunch Table", hotspot: 70 },
+      scene5a_shelter: { bgClass: "bg-home", npcLabel: "Shelter Tour", hotspot: 76 },
+      scene6:     { bgClass: "bg-home", npcLabel: "Family Talk", hotspot: 72 },
+      scene7:     { bgClass: "bg-school", npcLabel: "Siren Drill", hotspot: 75 },
+      scene8:     { bgClass: "bg-school", npcLabel: "Cafeteria", hotspot: 70 },
+      scene9:     { bgClass: "bg-home", npcLabel: "TV Speech", hotspot: 70 },
+      scene10:    { bgClass: "bg-town", npcLabel: "Grocery Store", hotspot: 78 },
+      scene11:    { bgClass: "bg-school", npcLabel: "Class Debate", hotspot: 72 },
+      scene12:    { bgClass: "bg-town", npcLabel: "Main Street", hotspot: 76 },
+      scene13:    { bgClass: "bg-town", npcLabel: "Neighbors", hotspot: 72 },
+      ending:     { bgClass: "bg-home", npcLabel: "Aftermath", hotspot: 70 }
+    };
+
+    // News ticker messages keyed by scene
+    const tickerMessages = {
+      title: "Welcome to 13 Days: you’ll experience the crisis as an ordinary student, not a world leader.",
+      intro: "Quiet suburbs, busy schools—most Americans have no idea that high-altitude photos just changed everything.",
+      scene1: "Teachers whisper in hallways across the country as early intelligence reaches local officials.",
+      scene2: "Civil defense updates prompt new assemblies, drills, and letters home to parents.",
+      scene3: "Increased military traffic near major cities raises eyebrows but few concrete answers.",
+      scene3a_military: "Restricted roads and nearby bases buzz with activity as tensions rise behind the scenes.",
+      scene4: "Newspapers argue over how serious the Soviet threat in Cuba really is.",
+      scene5: "Some families begin building fallout shelters and stocking supplies just in case.",
+      scene5a_shelter: "Basements turn into improvised shelters with canned goods, water, and Geiger counters.",
+      scene6: "School districts send civil defense letters, urging calm while outlining worst-case plans.",
+      scene7: "Siren tests, drill schedules, and misfires blend together for nervous students.",
+      scene8: "Rumors spread faster than official statements, especially in crowded cafeterias.",
+      scene9: "President Kennedy reveals the missiles in Cuba, and Americans listen in stunned silence.",
+      scene10: "Stores across the U.S. see runs on canned food, water, and basic supplies.",
+      scene11: "Classrooms become miniature debate halls over war, peace, and containment.",
+      scene12: "False alarms and loud noises can spark panic as people imagine the worst.",
+      scene13: "Radio bulletins announce a deal: the Soviets agree to remove missiles from Cuba.",
+      ending: "Historians later call this the closest the world ever came to all-out nuclear war."
+    };
+
     // === Engine state ===
     let currentSceneId = "title"; // start on title screen
     let stats = { ...gameData.stats };
     let sceneMap = {};
+
+    // Hybrid movement state
+    let playerPos = 15; // 0–100 (percentage across stage)
+    let hotspotPos = 75;
+    const INTERACT_RANGE = 10;
+    let canInteract = false;
+    let inDialogue = false;
 
     function initSceneMap() {
       sceneMap["intro"] = gameData.intro;
@@ -1044,6 +1437,34 @@
       return `Approx. Day ${dayNumber} of 13`;
     }
 
+    function updateCrisisStrip(sceneId, dateStr) {
+      const indicator = document.getElementById("crisis-indicator");
+      const dateLabel = document.getElementById("crisis-date-label");
+      const total = gameData.scenes.length;
+      let index = gameData.scenes.findIndex(s => s.id === sceneId);
+      if (sceneId === "intro") index = 0;
+      if (sceneId === "title") index = -1;
+      if (sceneId === "ending") index = total;
+
+      let percent;
+      if (index === -1) {
+        percent = 4;
+      } else {
+        percent = ((index + 1) / total) * 100;
+      }
+      indicator.style.width = Math.max(4, Math.min(100, percent)) + "%";
+
+      if (sceneId === "title") {
+        dateLabel.textContent = "October 1962 · Overview";
+      } else if (sceneId === "intro") {
+        dateLabel.textContent = "Oct 16, 1962 · A Normal Morning (For Now)";
+      } else if (sceneId === "ending") {
+        dateLabel.textContent = "Oct 28, 1962 · Crisis Resolved";
+      } else {
+        dateLabel.textContent = (formatDate(dateStr) || "October 1962");
+      }
+    }
+
     function applyEffects(effects = {}) {
       for (const key in effects) {
         if (!Object.prototype.hasOwnProperty.call(stats, key)) continue;
@@ -1070,6 +1491,124 @@
       setStat("social");
     }
 
+    function summarizeEffects(effects = {}) {
+      const labels = {
+        preparedness: "Preparedness",
+        morale: "Morale",
+        accuracy: "Accuracy",
+        risk: "Risk",
+        social: "Social"
+      };
+
+      const keys = Object.keys(effects);
+      if (!keys.length) return "";
+
+      return keys.map(key => {
+        if (!labels[key]) return "";
+        const delta = effects[key];
+        const sign = delta > 0 ? "+" : "";
+        const cls = delta >= 0 ? "positive" : "negative";
+        return `<span class="effect-pill ${cls}"><span>${sign}${delta}</span>${labels[key]}</span>`;
+      }).join("");
+    }
+
+    function setTicker(sceneId) {
+      const textEl = document.getElementById("ticker-text");
+      const msg = tickerMessages[sceneId] || tickerMessages["title"];
+      textEl.textContent = msg;
+    }
+
+    function bounceCardAnimations() {
+      const sceneCard = document.getElementById("scene-card");
+      const statsCard = document.getElementById("stats-card");
+
+      [sceneCard, statsCard].forEach(el => {
+        el.classList.remove("fade-in");
+        void el.offsetWidth;
+        el.classList.add("fade-in");
+      });
+    }
+
+    // === HYBRID MOVEMENT ===
+    function setStageVisual(sceneId) {
+      const stage = document.getElementById("scene-stage");
+      const npcLabel = document.getElementById("npc-label");
+      const npc = document.getElementById("npc");
+
+      const cfg = sceneVisuals[sceneId] || { bgClass: "bg-school", npcLabel: "Talk", hotspot: 75 };
+
+      stage.className = "scene-stage " + cfg.bgClass;
+      npcLabel.textContent = cfg.npcLabel || "Talk";
+
+      hotspotPos = typeof cfg.hotspot === "number" ? cfg.hotspot : 75;
+      npc.style.left = hotspotPos + "%";
+      document.getElementById("npc-label").style.left = hotspotPos + "%";
+
+      // Reset player for each scene
+      playerPos = 18;
+      updatePlayerPosition(true);
+    }
+
+    function updatePlayerPosition(initial = false) {
+      const player = document.getElementById("player");
+      const far = document.querySelector(".layer-far");
+      const mid = document.querySelector(".layer-mid");
+      const hint = document.getElementById("interaction-hint");
+      const npc = document.getElementById("npc");
+
+      player.style.left = playerPos + "%";
+
+      // Simple parallax: shift background layers opposite to player
+      const offset = (playerPos - 50) / 100;
+      far.style.transform = `translateX(${offset * -8}px)`;
+      mid.style.transform = `translateX(${offset * -16}px)`;
+
+      // Interaction range
+      const distance = Math.abs(playerPos - hotspotPos);
+      canInteract = distance <= INTERACT_RANGE && !inDialogue && currentSceneId !== "title" && currentSceneId !== "intro" && currentSceneId !== "ending";
+
+      if (canInteract) {
+        hint.classList.add("visible");
+        npc.classList.add("glow");
+      } else {
+        if (!initial) {
+          hint.classList.remove("visible");
+        }
+        npc.classList.remove("glow");
+      }
+    }
+
+    function movePlayer(delta) {
+      if (currentSceneId === "title" || currentSceneId === "intro" || currentSceneId === "ending") return;
+      playerPos = Math.max(6, Math.min(94, playerPos + delta));
+      updatePlayerPosition();
+    }
+
+    function handleInteract() {
+      if (currentSceneId === "title") {
+        currentSceneId = "intro";
+        renderScene();
+        return;
+      }
+      if (currentSceneId === "intro") {
+        currentSceneId = gameData.intro.nextSceneId;
+        renderScene();
+        return;
+      }
+      if (currentSceneId === "ending") {
+        // replay shortcut
+        stats = { ...gameData.stats };
+        currentSceneId = "title";
+        updateStatsUI();
+        renderScene();
+        return;
+      }
+
+      if (!canInteract || inDialogue) return;
+      openDialogueForScene();
+    }
+
+    // === RENDERING ===
     function renderScene() {
       const sceneTitleEl = document.getElementById("scene-title");
       const sceneMetaEl = document.getElementById("scene-meta");
@@ -1078,17 +1617,29 @@
       const choicesEl = document.getElementById("choices");
       const dayIndicator = document.getElementById("day-indicator");
       const sceneProgress = document.getElementById("scene-progress");
+      const hint = document.getElementById("interaction-hint");
 
       resultTextEl.style.display = "none";
       resultTextEl.textContent = "";
       choicesEl.innerHTML = "";
+      inDialogue = false;
+      hint.classList.remove("visible");
 
-      // TITLE SCREEN
+      setTicker(currentSceneId);
+      bounceCardAnimations();
+
+      // TITLE SCREEN (uses stage but no NPC glow / dialogue)
       if (currentSceneId === "title") {
+        setStageVisual("title");
+        document.getElementById("npc").style.display = "none";
+        document.getElementById("npc-label").style.display = "none";
+
         sceneTitleEl.textContent = "13 Days: Cuban Missile Crisis Survival";
         sceneMetaEl.textContent = "Interactive History Simulator · Teach Arcade";
         dayIndicator.textContent = "Welcome Screen";
         sceneProgress.textContent = "Historical Survival Mode";
+
+        updateCrisisStrip("title", "");
 
         sceneTextEl.innerHTML = `
           <div class="title-big">Step into October 1962.</div>
@@ -1096,12 +1647,12 @@
             You are a 16-year-old outside Washington, D.C. For 13 tense days, the world stands on the brink of nuclear war.
           </div>
           <ul class="title-bullets">
-            <li>Make choices as a regular high school student.</li>
-            <li>Balance preparedness, morale, accurate information, risk, and social impact.</li>
-            <li>Reach one of several endings based on how you respond to the crisis.</li>
+            <li>Walk left and right using the arrows or ◀ / ▶ keys.</li>
+            <li>Move to the glowing figure and press <strong>E</strong> or tap <strong>Interact</strong> to make decisions.</li>
+            <li>Your stats track preparedness, morale, accurate information, risk, and social impact.</li>
           </ul>
           <div class="title-note">
-            Ideal for a 10–15 minute class activity. Teachers can pause after key scenes for discussion.
+            Ideal for a 10–15 minute class activity. Teachers can pause after major scenes (sirens, JFK’s speech, panic on Main Street) to discuss choices.
           </div>
         `;
 
@@ -1134,20 +1685,29 @@
         btnRow.appendChild(startBtn);
         btnRow.appendChild(teacherBtn);
         choicesEl.appendChild(btnRow);
+
         return;
       }
 
       // INTRO
       if (currentSceneId === "intro") {
+        setStageVisual("intro");
+        document.getElementById("npc").style.display = "none";
+        document.getElementById("npc-label").style.display = "none";
+
         sceneTitleEl.textContent = "October 16, 1962";
         sceneMetaEl.textContent = "Suburban Maryland · School Morning";
         sceneTextEl.textContent = gameData.intro.text;
         dayIndicator.textContent = "Approx. Day 1 of 13";
         sceneProgress.textContent = "Scene 0 of " + gameData.scenes.length;
+        updateCrisisStrip("intro", gameData.intro.date);
+
+        const btnRow = document.createElement("div");
+        btnRow.className = "btn-row";
 
         const startBtn = document.createElement("button");
         startBtn.className = "primary-btn";
-        startBtn.textContent = "Begin the Crisis";
+        startBtn.textContent = "Walk to School";
         startBtn.onclick = () => {
           currentSceneId = gameData.intro.nextSceneId;
           renderScene();
@@ -1161,8 +1721,6 @@
           renderScene();
         };
 
-        const btnRow = document.createElement("div");
-        btnRow.className = "btn-row";
         btnRow.appendChild(startBtn);
         btnRow.appendChild(backBtn);
         choicesEl.appendChild(btnRow);
@@ -1178,28 +1736,65 @@
       // NORMAL SCENE
       const scene = sceneMap[currentSceneId];
 
+      // stage visuals
+      document.getElementById("npc").style.display = "block";
+      document.getElementById("npc-label").style.display = "block";
+      setStageVisual(scene.id);
+
       sceneTitleEl.textContent = scene.title;
       sceneMetaEl.textContent = formatDate(scene.date) || "";
-      sceneTextEl.textContent = scene.text;
+      sceneTextEl.innerHTML = `
+        <em>Use ◀ / ▶ or the Move buttons to reach the glowing character. Then press <strong>E</strong> or tap <strong>Interact</strong> to experience this moment.</em>
+        <br><br>${scene.text}
+      `;
       dayIndicator.textContent = getDayLabel(scene.id);
+      updateCrisisStrip(scene.id, scene.date);
 
       const index = gameData.scenes.findIndex(s => s.id === scene.id);
       sceneProgress.textContent = `Scene ${index + 1} of ${gameData.scenes.length}`;
+    }
+
+    function openDialogueForScene() {
+      const scene = sceneMap[currentSceneId];
+      if (!scene) return;
+
+      const sceneTextEl = document.getElementById("scene-text");
+      const resultTextEl = document.getElementById("result-text");
+      const choicesEl = document.getElementById("choices");
+      const hint = document.getElementById("interaction-hint");
+
+      inDialogue = true;
+      hint.classList.remove("visible");
+      canInteract = false;
+
+      sceneTextEl.textContent = scene.text;
+      resultTextEl.style.display = "none";
+      resultTextEl.textContent = "";
+      choicesEl.innerHTML = "";
 
       scene.choices.forEach((choice, idx) => {
         const btn = document.createElement("button");
         btn.className = "choice-btn";
         btn.innerHTML = `<span class="index">${idx + 1}.</span> ${choice.label}`;
         btn.onclick = () => {
+          // Show result and effect tags
           resultTextEl.style.display = "block";
-          resultTextEl.textContent = choice.resultText;
+          const effectsHtml = summarizeEffects(choice.effects);
+          resultTextEl.innerHTML = `
+            ${choice.resultText}
+            ${effectsHtml ? `<div class="effects-row">${effectsHtml}</div>` : ""}
+          `;
 
           applyEffects(choice.effects);
 
+          // Disable further clicks while transitioning
+          Array.from(choicesEl.querySelectorAll("button")).forEach(b => b.disabled = true);
+
           setTimeout(() => {
+            inDialogue = false;
             currentSceneId = choice.nextSceneId;
             renderScene();
-          }, 550);
+          }, 900);
         };
         choicesEl.appendChild(btn);
       });
@@ -1208,37 +1803,24 @@
     function chooseEnding() {
       const { preparedness, morale, accuracy, risk, social } = stats;
 
-      // Rumor-Spreader
       if (accuracy <= -2 && social <= -1) {
         return gameData.endings.find(e => e.id === "ending_rumor_spreader");
       }
-
-      // Overwhelmed by Panic
       if (morale <= -3 && accuracy <= 0 && risk >= 2) {
         return gameData.endings.find(e => e.id === "ending_panic_collapse");
       }
-
-      // Risk-Taker
       if (risk >= 4) {
         return gameData.endings.find(e => e.id === "ending_risk_taker");
       }
-
-      // Calm & Prepared
       if (preparedness >= 3 && accuracy >= 2 && morale >= -1 && social >= 0 && risk <= 2) {
         return gameData.endings.find(e => e.id === "ending_calm_prepared");
       }
-
-      // Anxious but Safe
       if (preparedness >= 3 && morale < 0) {
         return gameData.endings.find(e => e.id === "ending_anxious_safe");
       }
-
-      // Unprepared but Lucky
       if (preparedness <= 1 && accuracy >= 1 && risk <= 2) {
         return gameData.endings.find(e => e.id === "ending_unprepared_lucky");
       }
-
-      // Default
       return gameData.endings.find(e => e.id === "ending_anxious_safe");
     }
 
@@ -1252,11 +1834,27 @@
       const choicesEl = document.getElementById("choices");
       const dayIndicator = document.getElementById("day-indicator");
       const sceneProgress = document.getElementById("scene-progress");
+      const stage = document.getElementById("scene-stage");
+      const npc = document.getElementById("npc");
+      const npcLabel = document.getElementById("npc-label");
+      const hint = document.getElementById("interaction-hint");
+
+      inDialogue = false;
+      hint.classList.remove("visible");
+      canInteract = false;
+
+      stage.className = "scene-stage bg-home";
+      npc.style.display = "none";
+      npcLabel.style.display = "none";
 
       sceneTitleEl.textContent = ending.title;
       sceneMetaEl.textContent = "Crisis Resolved · October 28, 1962";
       dayIndicator.textContent = "The 13 days have passed.";
       sceneProgress.textContent = "Simulation complete";
+
+      updateCrisisStrip("ending", "1962-10-28");
+      setTicker("ending");
+      bounceCardAnimations();
 
       resultTextEl.style.display = "none";
       sceneTextEl.innerHTML = `
@@ -1305,8 +1903,29 @@
       choicesEl.appendChild(btnRow);
     }
 
+    // === Input wiring ===
+    function setupControls() {
+      document.getElementById("btn-left").addEventListener("click", () => movePlayer(-8));
+      document.getElementById("btn-right").addEventListener("click", () => movePlayer(8));
+      document.getElementById("btn-interact").addEventListener("click", handleInteract);
+
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft" || e.key === "a" || e.key === "A") {
+          e.preventDefault();
+          movePlayer(-8);
+        } else if (e.key === "ArrowRight" || e.key === "d" || e.key === "D") {
+          e.preventDefault();
+          movePlayer(8);
+        } else if (e.key === "e" || e.key === "E" || e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          handleInteract();
+        }
+      });
+    }
+
     initSceneMap();
     updateStatsUI();
+    setupControls();
     renderScene();
   </script>
 </body>
