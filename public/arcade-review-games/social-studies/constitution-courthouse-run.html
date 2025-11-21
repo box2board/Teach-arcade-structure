@@ -3,66 +3,32 @@
 <head>
   <meta charset="utf-8">
 
-  <!-- ===========================
-       SEO-Optimized Title & Meta
-  ============================ -->
-  <title>Constitution Courthouse Run · Free U.S. Constitution Game | Teach Arcade</title>
+  <title>Constitution Courthouse Run · Free U.S. Constitution Review Game | Teach Arcade</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="description" content="Constitution Courthouse Run is a free Legend of Zelda style top-down game from Teach Arcade. Explore a courthouse maze and answer questions on the U.S. Constitution, Bill of Rights, and checks & balances.">
-  <meta name="keywords" content="Constitution game, Bill of Rights game, branches of government, checks and balances, U.S. history review game, social studies review game, Teach Arcade">
-
-  <!-- Open Graph (Social Sharing) -->
-  <meta property="og:title" content="Constitution Courthouse Run · Free U.S. Constitution Game">
-  <meta property="og:description" content="Navigate a top-down courthouse, unlock courtrooms, and answer questions on the Constitution, Bill of Rights, and checks & balances.">
+  <!-- Basic SEO -->
+  <meta name="description" content="Constitution Courthouse Run is a free top-down, Legend of Zelda–style review game. Navigate a courthouse maze, dodge roaming librarians, and enter courtrooms to answer questions about the U.S. Constitution, Bill of Rights, and checks & balances.">
+  <meta name="keywords" content="Constitution game, Bill of Rights game, U.S. government review game, branches of government, checks and balances, middle school civics game, high school government review, Teach Arcade">
+  <meta property="og:title" content="Constitution Courthouse Run · U.S. Constitution Review Game">
+  <meta property="og:description" content="Top-down courthouse maze game where students race the clock, dodge librarians, and answer 20 questions on the U.S. Constitution and Bill of Rights.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://teacharcade.com/arcade-review-games/constitution-courthouse-run.html">
   <meta property="og:image" content="https://teacharcade.com/assets/teach-arcade-constitution-courthouse-run.png">
 
-  <!-- Schema.org Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "EducationalGame",
-    "name": "Constitution Courthouse Run",
-    "genre": "Social Studies, Civics, Classroom Review Game",
-    "audience": {
-      "@type": "EducationalAudience",
-      "educationalLevel": "Middle School, High School"
-    },
-    "learningResourceType": "Review Game",
-    "description": "Constitution Courthouse Run is a free arcade-style civics review game where students explore a courthouse maze from a top-down view and unlock question courtrooms to answer questions about the U.S. Constitution, Bill of Rights, branches of government, and checks & balances.",
-    "educationalAlignment": {
-      "@type": "AlignmentObject",
-      "alignmentType": "teaches",
-      "educationalFramework": "Civics / U.S. Government",
-      "targetName": "U.S. Constitution, Bill of Rights, branches of government, checks and balances, amendment process"
-    },
-    "creator": {
-      "@type": "Organization",
-      "name": "Teach Arcade"
-    }
-  }
-  </script>
-
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-
   <style>
     :root {
-      --bg: #050714;
+      --bg: #050816;
       --floor: #111827;
-      --floor-light: #1f2937;
       --wall: #020617;
-      --wall-edge: #4b5563;
-      --accent: #fbbf24;   /* gold */
-      --accent-dark: #b45309;
-      --player: #38bdf8;
-      --player-outline: #0ea5e9;
-      --text: #f9fafb;
+      --accent: #facc15;
+      --accent-soft: rgba(250,204,21,0.18);
+      --danger: #f97316;
+      --text: #e5e7eb;
       --muted: #9ca3af;
       --ui-bg: rgba(0,0,0,0.7);
-      --danger: #b91c1c;
-      --danger-soft: rgba(185,28,28,0.35);
+      --panel: #020617;
+      --border: rgba(148,163,184,0.55);
     }
 
     * {
@@ -73,29 +39,29 @@
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #141a33 0%, #050714 70%);
+      background: radial-gradient(circle at top, #111827 0%, #020617 65%, #000 100%);
       color: var(--text);
       min-height: 100vh;
-      padding: 12px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 10px;
+      padding: 14px 8px 24px;
+      gap: 8px;
     }
 
     h1 {
       font-family: "Press Start 2P", system-ui, sans-serif;
       font-size: 0.95rem;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       text-shadow: 0 2px 0 #000;
       text-align: center;
     }
 
     .subtitle {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: var(--muted);
-      max-width: 900px;
+      max-width: 920px;
       text-align: center;
       line-height: 1.5;
     }
@@ -104,8 +70,8 @@
       position: relative;
       border-radius: 14px;
       overflow: hidden;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.85);
-      border: 2px solid rgba(148,163,184,0.5);
+      border: 2px solid var(--border);
+      box-shadow: 0 12px 36px rgba(0,0,0,0.9);
       background: #000;
     }
 
@@ -124,20 +90,72 @@
       justify-content: space-between;
       align-items: center;
       gap: 8px;
-      font-size: 0.65rem;
-      background: var(--ui-bg);
       padding: 4px 10px;
       border-radius: 999px;
+      background: var(--ui-bg);
+      border: 1px solid var(--border);
       backdrop-filter: blur(6px);
-      border: 1px solid rgba(148,163,184,0.55);
       font-family: "Press Start 2P", system-ui, sans-serif;
-      z-index: 5;
+      font-size: 0.6rem;
+      z-index: 4;
+      color: var(--text);
     }
 
     #hud span {
       white-space: nowrap;
     }
 
+    #touchControls {
+      position: absolute;
+      bottom: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      padding: 4px 10px;
+      background: var(--ui-bg);
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      backdrop-filter: blur(8px);
+      z-index: 4;
+    }
+
+    .ctrl-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid rgba(148,163,184,0.8);
+      background: #020617;
+      color: var(--text);
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-family: "Press Start 2P", system-ui, sans-serif;
+      transition: transform 0.08s, box-shadow 0.08s, background 0.08s;
+    }
+
+    .ctrl-btn:active {
+      transform: translateY(1px);
+      background: #020617;
+      box-shadow: inset 0 2px 6px rgba(0,0,0,0.7);
+    }
+
+    @media (min-width: 900px) {
+      #touchControls { display: none; }
+    }
+
+    @media (max-width: 900px) {
+      canvas {
+        width: 100vw;
+        height: auto;
+      }
+      h1 { font-size: 0.8rem; }
+      .subtitle { font-size: 0.7rem; }
+    }
+
+    /* Question / end panels */
     #questionOverlay,
     #endOverlay {
       position: absolute;
@@ -146,7 +164,7 @@
       align-items: center;
       justify-content: center;
       background: radial-gradient(circle at top, rgba(0,0,0,0.94), rgba(0,0,0,0.98));
-      z-index: 10;
+      z-index: 5;
     }
 
     .hidden {
@@ -154,13 +172,13 @@
     }
 
     .panel {
-      background: #020617;
+      background: var(--panel);
       border-radius: 14px;
       padding: 18px 18px 14px;
       max-width: 520px;
       width: 92%;
-      border: 2px solid rgba(251,191,36,0.7);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.95);
+      border: 2px solid rgba(250,204,21,0.7);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.95);
       display: flex;
       flex-direction: column;
       gap: 10px;
@@ -181,22 +199,22 @@
     }
 
     .choice-btn {
-      border: 0;
       border-radius: 999px;
-      padding: 7px 10px;
+      border: none;
+      padding: 8px 10px;
       font-size: 0.8rem;
       text-align: left;
       cursor: pointer;
       background: #111827;
       color: var(--text);
-      transition: background 0.08s, transform 0.08s, box-shadow 0.1s;
       font-family: system-ui, -apple-system, sans-serif;
+      transition: background 0.08s, transform 0.08s, box-shadow 0.08s;
     }
 
     .choice-btn:hover {
       background: #1f2937;
       transform: translateY(-1px);
-      box-shadow: 0 3px 8px rgba(0,0,0,0.6);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.6);
     }
 
     .choice-btn.correct {
@@ -212,8 +230,8 @@
       justify-content: space-between;
       align-items: center;
       font-size: 0.7rem;
-      opacity: 0.9;
-      margin-top: 4px;
+      color: var(--muted);
+      margin-top: 2px;
     }
 
     .primary-btn {
@@ -221,7 +239,7 @@
       border: none;
       padding: 6px 12px;
       background: var(--accent);
-      color: #020617;
+      color: #111827;
       font-weight: 600;
       cursor: pointer;
       font-size: 0.75rem;
@@ -231,79 +249,19 @@
 
     .primary-btn:hover {
       transform: translateY(-1px);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.6);
     }
 
-    #touchControls {
-      position: absolute;
-      bottom: 6px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 12px;
-      padding: 4px 10px;
-      background: var(--ui-bg);
-      border-radius: 12px;
-      border: 1px solid rgba(148,163,184,0.7);
-      backdrop-filter: blur(8px);
-      z-index: 6;
-    }
-
-    .dpad {
-      display: grid;
-      grid-template-columns: repeat(3, 34px);
-      grid-template-rows: repeat(3, 34px);
-      gap: 4px;
-    }
-
-    .ctrl-btn {
-      width: 34px;
-      height: 34px;
-      border-radius: 8px;
-      border: 2px solid rgba(148,163,184,0.8);
-      background: #020617;
-      color: var(--text);
-      font-size: 0.8rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-family: "Press Start 2P", system-ui, sans-serif;
-      transition: transform 0.08s, box-shadow 0.08s, background 0.08s;
-    }
-
-    .ctrl-btn:active {
-      transform: translateY(1px);
-      background: #0b1120;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.6) inset;
-    }
-
-    @media (min-width: 900px) {
-      #touchControls {
-        display: none;
-      }
-    }
-
-    @media (max-width: 900px) {
-      canvas {
-        width: 100vw;
-        height: auto;
-      }
-      h1 {
-        font-size: 0.8rem;
-      }
-      .subtitle {
-        font-size: 0.72rem;
-      }
-    }
+    /* Toast / banner text drawn on canvas but style kept for reference */
   </style>
 </head>
 <body>
   <h1>Teach Arcade · Constitution Courthouse Run</h1>
   <p class="subtitle">
-    Explore a top-down courthouse maze, unlock courtrooms, and answer questions about the
-    U.S. Constitution, Bill of Rights, branches of government, and checks &amp; balances.
-    Use ◀ ▶ ▲ ▼ / WASD or the on-screen controls to move.
+    Top-down courthouse maze review game. Race the clock, dodge roaming librarians and laser alarms,
+    discover secret passages, and enter courtrooms to answer 20 questions about the U.S. Constitution,
+    Bill of Rights, branches of government, and checks &amp; balances. Use WASD / arrow keys or the
+    on-screen controls to move.
   </p>
 
   <div id="gameContainer">
@@ -311,31 +269,24 @@
 
     <div id="hud">
       <span id="hudScore">Score: 0</span>
-      <span id="hudCases">Courtrooms: 0 / 12</span>
+      <span id="hudQuestions">Courtrooms: 0 / 20</span>
+      <span id="hudTimer">Time: 05:00</span>
       <span id="hudStatus">Status: Exploring</span>
     </div>
 
-    <!-- Touch / mobile controls -->
     <div id="touchControls">
-      <div class="dpad">
-        <div></div>
-        <button class="ctrl-btn" id="btnUp">▲</button>
-        <div></div>
-        <button class="ctrl-btn" id="btnLeft">◀</button>
-        <div></div>
-        <button class="ctrl-btn" id="btnRight">▶</button>
-        <div></div>
-        <button class="ctrl-btn" id="btnDown">▼</button>
-        <div></div>
-      </div>
+      <button id="btnLeft" class="ctrl-btn" aria-label="Move left">◀</button>
+      <button id="btnUp" class="ctrl-btn" aria-label="Move up">▲</button>
+      <button id="btnDown" class="ctrl-btn" aria-label="Move down">▼</button>
+      <button id="btnRight" class="ctrl-btn" aria-label="Move right">▶</button>
     </div>
 
-    <!-- Question Overlay -->
+    <!-- Question overlay -->
     <div id="questionOverlay" class="hidden">
       <div class="panel">
         <h2 id="qTitle">Courtroom Question</h2>
         <p id="qText"></p>
-        <div class="choices" id="choicesContainer"></div>
+        <div id="choicesContainer" class="choices"></div>
         <div class="panel-footer">
           <span id="qFeedback"></span>
           <button id="qCloseBtn" class="primary-btn">Resume</button>
@@ -343,429 +294,238 @@
       </div>
     </div>
 
-    <!-- End Screen -->
+    <!-- End of run overlay -->
     <div id="endOverlay" class="hidden">
       <div class="panel">
-        <h2>Court Complete!</h2>
+        <h2>Court Session Complete!</h2>
         <p id="endSummary"></p>
         <div class="panel-footer">
           <button id="replayBtn" class="primary-btn">Replay</button>
-          <button id="topicBtn" class="primary-btn">Back to Arcade Hub</button>
+          <button id="hubBtn" class="primary-btn">Back to Arcade</button>
         </div>
       </div>
     </div>
   </div>
 
   <script>
-    // ======================================================
-    // CONFIG
-    // ======================================================
-    const TOTAL_ROOMS = 12;        // how many courtrooms per run
-    const WORLD_WIDTH = 2000;
-    const WORLD_HEIGHT = 1400;
-    const PLAYER_SPEED = 200;
-    const PENALTY_LASER = 10;
-
-    // ======================================================
-    // QUESTION BANK (Constitution, Bill of Rights, etc.)
-    // ======================================================
-    const QUESTION_BANK = [
-      {
-        id: 1,
-        text: "What is the main purpose of the Preamble to the Constitution?",
-        choices: [
-          "To list individual rights",
-          "To state the goals of the new government",
-          "To describe how to amend the Constitution",
-          "To outline state boundaries"
-        ],
-        correctIndex: 1
-      },
-      {
-        id: 2,
-        text: "Which document was replaced by the U.S. Constitution?",
-        choices: [
-          "The Bill of Rights",
-          "The Declaration of Independence",
-          "The Articles of Confederation",
-          "The Mayflower Compact"
-        ],
-        correctIndex: 2
-      },
-      {
-        id: 3,
-        text: "Which branch of government makes the laws?",
-        choices: [
-          "Executive branch",
-          "Judicial branch",
-          "Legislative branch",
-          "Military branch"
-        ],
-        correctIndex: 2
-      },
-      {
-        id: 4,
-        text: "The President is part of which branch of government?",
-        choices: [
-          "Legislative",
-          "Executive",
-          "Judicial",
-          "Local"
-        ],
-        correctIndex: 1
-      },
-      {
-        id: 5,
-        text: "How many branches of government are created by the Constitution?",
-        choices: [
-          "Two",
-          "Three",
-          "Four",
-          "Five"
-        ],
-        correctIndex: 1
-      },
-      {
-        id: 6,
-        text: "What is the name of the first ten amendments to the Constitution?",
-        choices: [
-          "Preamble",
-          "Magna Carta",
-          "Federalist Papers",
-          "Bill of Rights"
-        ],
-        correctIndex: 3
-      },
-      {
-        id: 7,
-        text: "Which freedom is protected by the First Amendment?",
-        choices: [
-          "Freedom of speech",
-          "Right to bear arms",
-          "Protection from quartering soldiers",
-          "Right to a jury trial"
-        ],
-        correctIndex: 0
-      },
-      {
-        id: 8,
-        text: "The Second Amendment deals mainly with:",
-        choices: [
-          "Rights of the accused",
-          "Freedom of religion",
-          "Right to keep and bear arms",
-          "Voting rights"
-        ],
-        correctIndex: 2
-      },
-      {
-        id: 9,
-        text: "Which amendment protects citizens from unreasonable searches and seizures?",
-        choices: [
-          "3rd Amendment",
-          "4th Amendment",
-          "6th Amendment",
-          "10th Amendment"
-        ],
-        correctIndex: 1
-      },
-      {
-        id: 10,
-        text: "Which amendment guarantees a speedy and public trial by jury?",
-        choices: [
-          "1st Amendment",
-          "5th Amendment",
-          "6th Amendment",
-          "8th Amendment"
-        ],
-        correctIndex: 2
-      },
-      {
-        id: 11,
-        text: "What do we call the system where each branch can limit the power of the others?",
-        choices: [
-          "Federalism",
-          "Popular sovereignty",
-          "Judicial review",
-          "Checks and balances"
-        ],
-        correctIndex: 3
-      },
-      {
-        id: 12,
-        text: "Who has the power to declare war?",
-        choices: [
-          "The President alone",
-          "Congress",
-          "The Supreme Court",
-          "State governors"
-        ],
-        correctIndex: 1
-      },
-      {
-        id: 13,
-        text: "Which branch of government interprets the laws and the Constitution?",
-        choices: [
-          "Executive",
-          "Legislative",
-          "Judicial",
-          "Local"
-        ],
-        correctIndex: 2
-      },
-      {
-        id: 14,
-        text: "How many U.S. Senators does each state have?",
-        choices: [
-          "One",
-          "Two",
-          "Four",
-          "Depends on population"
-        ],
-        correctIndex: 1
-      },
-      {
-        id: 15,
-        text: "What is federalism?",
-        choices: [
-          "Sharing power between national and state governments",
-          "Rule by a king",
-          "Separation of church and state",
-          "Rule by the military"
-        ],
-        correctIndex: 0
-      },
-      {
-        id: 16,
-        text: "Which amendment abolished slavery in the United States?",
-        choices: [
-          "10th Amendment",
-          "13th Amendment",
-          "15th Amendment",
-          "19th Amendment"
-        ],
-        correctIndex: 1
-      },
-      {
-        id: 17,
-        text: "Which amendment gave women the right to vote?",
-        choices: [
-          "14th Amendment",
-          "15th Amendment",
-          "18th Amendment",
-          "19th Amendment"
-        ],
-        correctIndex: 3
-      },
-      {
-        id: 18,
-        text: "What is the suprem​e law of the land in the United States?",
-        choices: [
-          "The Declaration of Independence",
-          "The Constitution",
-          "State constitutions",
-          "Acts of Congress"
-        ],
-        correctIndex: 1
-      },
-      {
-        id: 19,
-        text: "How can the Constitution be changed or added to?",
-        choices: [
-          "By executive order only",
-          "By Supreme Court opinion",
-          "Through the amendment process",
-          "By state governors voting"
-        ],
-        correctIndex: 2
-      },
-      {
-        id: 20,
-        text: "Which principle means that government gets its power from the people?",
-        choices: [
-          "Popular sovereignty",
-          "Judicial review",
-          "Limited government",
-          "Bicameralism"
-        ],
-        correctIndex: 0
-      }
-    ];
-
-    function pickRandomQuestions(bank, count) {
-      const shuffled = [...bank].sort(() => Math.random() - 0.5);
-      return shuffled.slice(0, count);
-    }
-
-    // ======================================================
-    // CORE GAME STATE
-    // ======================================================
+    // =============================
+    // CONFIG & CONSTANTS
+    // =============================
     const canvas = document.getElementById("gameCanvas");
     const ctx = canvas.getContext("2d");
 
-    const player = {
-      x: 150,
-      y: 120,
-      w: 26,
-      h: 26,
-      vx: 0,
-      vy: 0,
-      dir: "down"
-    };
+    const LEVEL_TIME = 5 * 60; // 5 minutes
+    const PLAYER_SPEED = 230;  // faster movement than before
+    const LIBRARIAN_SPEED = 80;
+    const PLAYER_SIZE = 26;
 
-    let cameraX = 0;
-    let cameraY = 0;
     let lastTime = 0;
+    let timeRemaining = LEVEL_TIME;
+    let score = 0;
+    let questionsCleared = 0;
+    let firstTryCorrectCount = 0;
     let gamePaused = false;
     let inQuestion = false;
     let levelComplete = false;
 
-    let score = 0;
-    let roomsCleared = 0;
-    let firstTryCorrectCount = 0;
+    const keys = { left:false, right:false, up:false, down:false };
 
-    let currentQuestions = [];
-    const walls = [];
-    const lasers = [];
-    const rooms = [];
-
-    const keys = { left: false, right: false, up: false, down: false };
-    let hitCooldown = 0;
-
-    let toastText = "";
-    let toastTimer = 0;
-
-    // ======================================================
-    // UI ELEMENTS
-    // ======================================================
     const hudScore = document.getElementById("hudScore");
-    const hudCases = document.getElementById("hudCases");
+    const hudQuestions = document.getElementById("hudQuestions");
+    const hudTimer = document.getElementById("hudTimer");
     const hudStatus = document.getElementById("hudStatus");
 
     const qOverlay = document.getElementById("questionOverlay");
-    const qTitle = document.getElementById("qTitle");
-    const qText = document.getElementById("qText");
+    const qTitle   = document.getElementById("qTitle");
+    const qText    = document.getElementById("qText");
     const qChoices = document.getElementById("choicesContainer");
-    const qFeedback = document.getElementById("qFeedback");
-    const qCloseBtn = document.getElementById("qCloseBtn");
+    const qFeedback= document.getElementById("qFeedback");
+    const qCloseBtn= document.getElementById("qCloseBtn");
 
     const endOverlay = document.getElementById("endOverlay");
     const endSummary = document.getElementById("endSummary");
-    const replayBtn = document.getElementById("replayBtn");
-    const topicBtn = document.getElementById("topicBtn");
+    const replayBtn  = document.getElementById("replayBtn");
+    const hubBtn     = document.getElementById("hubBtn");
 
-    const btnUp = document.getElementById("btnUp");
-    const btnDown = document.getElementById("btnDown");
-    const btnLeft = document.getElementById("btnLeft");
+    const btnLeft  = document.getElementById("btnLeft");
     const btnRight = document.getElementById("btnRight");
+    const btnUp    = document.getElementById("btnUp");
+    const btnDown  = document.getElementById("btnDown");
 
-    // ======================================================
-    // HELPERS
-    // ======================================================
+    // Toast / banner text (drawn on canvas)
+    let toastText = "";
+    let toastTimer = 0;
+    let bannerText = "";
+    let bannerTimer = 0;
+
     function showToast(text, duration = 1.2) {
       toastText = text;
       toastTimer = duration;
     }
 
-    function rectIntersect(a, b) {
-      return !(
-        a.x + a.w <= b.x ||
-        a.x >= b.x + b.w ||
-        a.y + a.h <= b.y ||
-        a.y >= b.y + b.h
-      );
+    function showBanner(text, duration = 1.4) {
+      bannerText = text;
+      bannerTimer = duration;
     }
 
-    function clamp(value, min, max) {
-      return Math.max(min, Math.min(max, value));
-    }
-
-    // ======================================================
-    // MAP LAYOUT (simple courthouse grid)
-    // ======================================================
-    function buildWalls() {
-      walls.length = 0;
-
+    // =============================
+    // SIMPLE MAP (RECTANGLE WALLS)
+    // =============================
+    const walls = [
       // Outer boundaries
-      walls.push({ x: 100, y: 80, w: WORLD_WIDTH - 200, h: 20 });
-      walls.push({ x: 100, y: WORLD_HEIGHT - 100, w: WORLD_WIDTH - 200, h: 20 });
-      walls.push({ x: 100, y: 80, w: 20, h: WORLD_HEIGHT - 180 });
-      walls.push({ x: WORLD_WIDTH - 120, y: 80, w: 20, h: WORLD_HEIGHT - 180 });
+      { x: 40,  y: 40,  w: 880, h: 20 },
+      { x: 40,  y: 480, w: 880, h: 20 },
+      { x: 40,  y: 40,  w: 20,  h: 460 },
+      { x: 900, y: 40,  w: 20,  h: 460 },
 
-      // Horizontal corridors
-      walls.push({ x: 220, y: 260, w: WORLD_WIDTH - 440, h: 18 });
-      walls.push({ x: 220, y: 520, w: WORLD_WIDTH - 440, h: 18 });
-      walls.push({ x: 220, y: 780, w: WORLD_WIDTH - 440, h: 18 });
-      walls.push({ x: 220, y: 1040, w: WORLD_WIDTH - 440, h: 18 });
+      // Interior rooms / corridors
+      { x: 200, y: 40,  w: 20,  h: 200 },
+      { x: 200, y: 300, w: 20,  h: 200 },
 
-      // Vertical hallway barriers (leaving door gaps)
-      walls.push({ x: 420, y: 260, w: 18, h: 180 });
-      walls.push({ x: 420, y: 520, w: 18, h: 180 });
-      walls.push({ x: 420, y: 780, w: 18, h: 180 });
+      { x: 350, y: 120, w: 20,  h: 360 },
+      { x: 520, y: 40,  w: 20,  h: 260 },
+      { x: 520, y: 360, w: 20,  h: 140 },
 
-      walls.push({ x: 960, y: 260, w: 18, h: 180 });
-      walls.push({ x: 960, y: 520, w: 18, h: 180 });
-      walls.push({ x: 960, y: 780, w: 18, h: 180 });
+      { x: 680, y: 120, w: 20,  h: 360 },
 
-      walls.push({ x: 1500, y: 260, w: 18, h: 180 });
-      walls.push({ x: 1500, y: 520, w: 18, h: 180 });
-      walls.push({ x: 1500, y: 780, w: 18, h: 180 });
+      // Smaller partitions
+      { x: 200, y: 240, w: 150, h: 20 },
+      { x: 520, y: 300, w: 160, h: 20 },
+      { x: 680, y: 260, w: 220, h: 20 }
+    ];
 
-      // small blocks near corners for visual interest
-      walls.push({ x: 220, y: 260, w: 60, h: 60 });
-      walls.push({ x: 220, y: 1040 - 60, w: 60, h: 60 });
-      walls.push({ x: WORLD_WIDTH - 280, y: 260, w: 60, h: 60 });
-      walls.push({ x: WORLD_WIDTH - 280, y: 1040 - 60, w: 60, h: 60 });
-    }
+    // Secret "bookshelf" door is drawn like a wall but NOT in walls[]
+    const secretDoor = { x: 350, y: 260, w: 20, h: 60, targetX: 780, targetY: 180 };
 
-    function buildLasers() {
-      lasers.length = 0;
-      // thin "security" strips across some hallways
-      lasers.push({ x: 600, y: 260 + 18, w: 120, h: 10 });
-      lasers.push({ x: 1150, y: 520 + 18, w: 120, h: 10 });
-      lasers.push({ x: 800, y: 780 + 18, w: 140, h: 10 });
-    }
+    // Laser beams along some walls (danger zones)
+    const lasers = [
+      { x1: 60,  y1: 220, x2: 180, y2: 220 },
+      { x1: 540, y1: 200, x2: 660, y2: 200 },
+      { x1: 720, y1: 420, x2: 880, y2: 420 }
+    ];
 
-    function setupRooms() {
-      rooms.length = 0;
-      const baseQuestions = pickRandomQuestions(QUESTION_BANK, TOTAL_ROOMS);
+    // Teleport pads (floor runes)
+    const teleports = [
+      { x: 120, y: 440, targetX: 830, targetY: 80, label: "Records Room" },
+      { x: 830, y: 260, targetX: 110, targetY: 100, label: "Lobby" }
+    ];
 
-      const roomPositions = [
-        { x: 260,  y: 180 },
-        { x: 720,  y: 180 },
-        { x: 1380, y: 180 },
+    // Courtroom / question gates
+    const questionGates = [];
+    const QUESTION_GATE_POSITIONS = [
+      [110, 120],[110, 200],[110, 360],[260, 80],[260, 170],
+      [260, 400],[430, 90],[430, 180],[430, 260],[430, 430],
+      [600, 90],[600, 180],[600, 260],[600, 430],[760, 90],
+      [760, 180],[760, 280],[760, 360],[840, 150],[840, 340]
+    ];
 
-        { x: 260,  y: 380 },
-        { x: 720,  y: 380 },
-        { x: 1380, y: 380 },
+    // Starting + finish areas
+    const startPosition  = { x: 80,  y: 440 };
+    const finishZone     = { x: 830, y: 430, w: 80, h: 60 };
 
-        { x: 260,  y: 640 },
-        { x: 720,  y: 640 },
-        { x: 1380, y: 640 },
+    const player = {
+      x: startPosition.x,
+      y: startPosition.y,
+      w: PLAYER_SIZE,
+      h: PLAYER_SIZE,
+      vx: 0,
+      vy: 0,
+      lastSafeX: startPosition.x,
+      lastSafeY: startPosition.y
+    };
 
-        { x: 260,  y: 900 },
-        { x: 720,  y: 900 },
-        { x: 1380, y: 900 }
-      ];
+    // Roaming librarians (enemies)
+    const librarians = [
+      { x: 140, y: 150, w: 26, h: 26, dir: 1, axis: "x", min: 90, max: 180 },
+      { x: 600, y: 210, w: 26, h: 26, dir: -1, axis: "x", min: 540, max: 660 },
+      { x: 800, y: 380, w: 26, h: 26, dir: -1, axis: "x", min: 720, max: 880 },
+      { x: 300, y: 330, w: 26, h: 26, dir: 1, axis: "y", min: 320, max: 440 }
+    ];
 
-      for (let i = 0; i < TOTAL_ROOMS; i++) {
-        const pos = roomPositions[i];
-        rooms.push({
-          id: i + 1,
-          x: pos.x,
-          y: pos.y,
-          w: 40,
-          h: 40,
-          completed: false,
-          firstTry: true,
-          question: baseQuestions[i]
-        });
-      }
-    }
+    let librarianHitCooldown = 0;
 
-    // ======================================================
-    // INPUT
-    // ======================================================
+    // =============================
+    // QUESTION BANK (20 TOTAL)
+    // =============================
+    const QUESTION_BANK = [
+      { text: "What is the main purpose of the U.S. Constitution?", choices: [
+        "To list every citizen's job", "To create a plan for government", "To declare independence from Britain"
+      ], correctIndex: 1 },
+      { text: "The first three words of the Constitution are:", choices: [
+        "We the People", "In Congress Assembled", "Four score"
+      ], correctIndex: 0 },
+      { text: "Which branch makes the laws?", choices: [
+        "Executive", "Legislative", "Judicial"
+      ], correctIndex: 1 },
+      { text: "Which branch carries out / enforces the laws?", choices: [
+        "Executive", "Legislative", "Judicial"
+      ], correctIndex: 0 },
+      { text: "Which branch interprets the laws?", choices: [
+        "Executive", "Legislative", "Judicial"
+      ], correctIndex: 2 },
+      { text: "The first ten amendments are called the:", choices: [
+        "Articles of Confederation", "Bill of Rights", "Federalist Papers"
+      ], correctIndex: 1 },
+      { text: "Which freedom is protected by the 1st Amendment?", choices: [
+        "Right to vote", "Freedom of speech", "Right to bear arms"
+      ], correctIndex: 1 },
+      { text: "The 2nd Amendment protects the right to:", choices: [
+        "Speedy trial", "Free speech", "Keep and bear arms"
+      ], correctIndex: 2 },
+      { text: "The 4th Amendment protects citizens from:", choices: [
+        "Cruel and unusual punishment", "Unreasonable searches and seizures", "Quartering soldiers in homes"
+      ], correctIndex: 1 },
+      { text: "How many U.S. Senators does each state have?", choices: [
+        "Two", "Based on population", "Four"
+      ], correctIndex: 0 },
+      { text: "How many years is one term for a member of the House of Representatives?", choices: [
+        "Two years", "Four years", "Six years"
+      ], correctIndex: 0 },
+      { text: "How many years is one term for a U.S. Senator?", choices: [
+        "Two years", "Four years", "Six years"
+      ], correctIndex: 2 },
+      { text: "How many years is one term for the President?", choices: [
+        "Four years", "Six years", "Eight years"
+      ], correctIndex: 0 },
+      { text: "What is checks and balances?", choices: [
+        "The way Congress pays salaries", "The branches limiting each other's power", "The President writing laws"
+      ], correctIndex: 1 },
+      { text: "Who is Commander in Chief of the military?", choices: [
+        "Chief Justice", "Speaker of the House", "The President"
+      ], correctIndex: 2 },
+      { text: "What document did the Constitution replace?", choices: [
+        "Declaration of Independence", "Articles of Confederation", "Magna Carta"
+      ], correctIndex: 1 },
+      { text: "What can the Supreme Court do if a law violates the Constitution?", choices: [
+        "Rewrite the law", "Ignore it", "Declare it unconstitutional"
+      ], correctIndex: 2 },
+      { text: "An addition or change to the Constitution is called:", choices: [
+        "A veto", "An amendment", "A preamble"
+      ], correctIndex: 1 },
+      { text: "Which principle means that the government's power comes from the people?", choices: [
+        "Popular sovereignty", "Judicial review", "Limited monarchy"
+      ], correctIndex: 0 },
+      { text: "The idea that government power should be divided into three branches is called:", choices: [
+        "Federalism", "Separation of powers", "Due process"
+      ], correctIndex: 1 }
+    ];
+
+    const currentQuestions = QUESTION_BANK.slice(); // already 20
+
+    QUESTION_GATE_POSITIONS.forEach((pos, idx) => {
+      questionGates.push({
+        x: pos[0],
+        y: pos[1],
+        radius: 16,
+        qIndex: idx,
+        completed: false,
+        firstTry: true
+      });
+    });
+
+    // =============================
+    // INPUT HANDLING
+    // =============================
     document.addEventListener("keydown", (e) => {
       if (e.code === "ArrowLeft" || e.code === "KeyA") keys.left = true;
       if (e.code === "ArrowRight" || e.code === "KeyD") keys.right = true;
@@ -780,59 +540,74 @@
       if (e.code === "ArrowDown" || e.code === "KeyS") keys.down = false;
     });
 
-    function bindBtn(btn, onDown, onUp) {
+    function bindTouch(btn, onDown, onUp) {
       if (!btn) return;
-      const start = (e) => { e.preventDefault(); onDown(); };
-      const end = (e) => { e.preventDefault(); onUp(); };
-      btn.addEventListener("touchstart", start, { passive: false });
-      btn.addEventListener("touchend", end, { passive: false });
-      btn.addEventListener("touchcancel", end, { passive: false });
+      const start = (ev) => { ev.preventDefault(); onDown(); };
+      const end   = (ev) => { ev.preventDefault(); onUp(); };
+      btn.addEventListener("touchstart", start, { passive:false });
+      btn.addEventListener("touchend", end, { passive:false });
+      btn.addEventListener("touchcancel", end, { passive:false });
       btn.addEventListener("mousedown", start);
       btn.addEventListener("mouseup", end);
       btn.addEventListener("mouseleave", end);
     }
 
-    bindBtn(btnUp, () => { keys.up = true; }, () => { keys.up = false; });
-    bindBtn(btnDown, () => { keys.down = true; }, () => { keys.down = false; });
-    bindBtn(btnLeft, () => { keys.left = true; }, () => { keys.left = false; });
-    bindBtn(btnRight, () => { keys.right = true; }, () => { keys.right = false; });
+    bindTouch(btnLeft,  () => keys.left  = true, () => keys.left  = false);
+    bindTouch(btnRight, () => keys.right = true, () => keys.right = false);
+    bindTouch(btnUp,    () => keys.up    = true, () => keys.up    = false);
+    bindTouch(btnDown,  () => keys.down  = true, () => keys.down  = false);
 
-    // ======================================================
-    // QUESTIONS / COURTROOMS
-    // ======================================================
-    let activeRoom = null;
+    // =============================
+    // COLLISION HELPERS
+    // =============================
+    function rectsIntersect(a, b) {
+      return !(
+        a.x + a.w <= b.x ||
+        a.x >= b.x + b.w ||
+        a.y + a.h <= b.y ||
+        a.y >= b.y + b.h
+      );
+    }
 
-    function openRoomQuestion(room) {
-      if (inQuestion || levelComplete || room.completed) return;
+    function pointInRect(px, py, r) {
+      return (px >= r.x && px <= r.x + r.w && py >= r.y && py <= r.y + r.h);
+    }
+
+    // =============================
+    // QUESTIONS
+    // =============================
+    let activeGate = null;
+
+    function openQuestion(gate) {
+      if (inQuestion || levelComplete) return;
       inQuestion = true;
       gamePaused = true;
-      activeRoom = room;
+      activeGate = gate;
 
-      const q = room.question;
-      qTitle.textContent = "Courtroom " + room.id;
+      const q = currentQuestions[gate.qIndex];
+      qTitle.textContent = "Courtroom " + (gate.qIndex + 1);
       qText.textContent = q.text;
-      qFeedback.textContent = "";
       qChoices.innerHTML = "";
+      qFeedback.textContent = "";
 
       q.choices.forEach((choice, idx) => {
         const btn = document.createElement("button");
         btn.className = "choice-btn";
         btn.textContent = String.fromCharCode(65 + idx) + ") " + choice;
-        btn.addEventListener("click", () => handleAnswer(room, q, idx, btn));
+        btn.addEventListener("click", () => handleAnswer(gate, q, idx, btn));
         qChoices.appendChild(btn);
       });
 
       qOverlay.classList.remove("hidden");
-      hudStatus.textContent = "Status: Question";
+      hudStatus.textContent = "Status: In court";
     }
 
-    function handleAnswer(room, question, selectedIndex, btnEl) {
-      const isCorrect = selectedIndex === question.correctIndex;
-
+    function handleAnswer(gate, question, selectedIndex, btnEl) {
+      const isCorrect = (selectedIndex === question.correctIndex);
       if (isCorrect) {
         btnEl.classList.add("correct");
         qFeedback.textContent = "Correct!";
-        if (room.firstTry) {
+        if (gate.firstTry) {
           score += 25;
           firstTryCorrectCount++;
           showToast("+25 | First try!");
@@ -840,9 +615,10 @@
           score += 10;
           showToast("+10 | Got it!");
         }
-        room.completed = true;
-        roomsCleared = rooms.filter(r => r.completed).length;
+        gate.completed = true;
+        questionsCleared = questionGates.filter(g => g.completed).length;
         updateHud();
+        showBanner(`Courtrooms cleared: ${questionsCleared}/20`);
 
         setTimeout(() => {
           closeQuestion();
@@ -851,9 +627,9 @@
       } else {
         btnEl.classList.add("wrong");
         qFeedback.textContent = "Incorrect. Try again.";
+        gate.firstTry = false;
         score -= 10;
-        room.firstTry = false;
-        showToast("-10 | Recheck your notes");
+        showToast("-10 | Re-check the clause");
         updateHud();
       }
     }
@@ -862,351 +638,496 @@
       qOverlay.classList.add("hidden");
       inQuestion = false;
       gamePaused = false;
-      activeRoom = null;
-      hudStatus.textContent = "Status: Exploring";
+      activeGate = null;
+      if (!levelComplete) hudStatus.textContent = "Status: Exploring";
     }
 
     qCloseBtn.addEventListener("click", () => {
-      if (activeRoom && activeRoom.completed) {
+      if (activeGate && activeGate.completed) {
         closeQuestion();
       } else {
         qFeedback.textContent = "Answer correctly to continue.";
       }
     });
 
-    function checkLevelComplete() {
-      if (!levelComplete && roomsCleared === TOTAL_ROOMS) {
-        triggerEndScreen();
-      }
-    }
-
-    function triggerEndScreen() {
-      levelComplete = true;
-      gamePaused = true;
-      inQuestion = false;
-      hudStatus.textContent = "Status: Complete";
-
-      const accuracy = (firstTryCorrectCount / TOTAL_ROOMS) * 100;
-      endSummary.textContent =
-        `Score: ${score} points | Accuracy: ${firstTryCorrectCount}/${TOTAL_ROOMS} (${accuracy.toFixed(0)}%)`;
-      endOverlay.classList.remove("hidden");
-    }
-
     replayBtn.addEventListener("click", () => {
-      startNewRun();
+      resetGame();
     });
 
-    topicBtn.addEventListener("click", () => {
+    hubBtn.addEventListener("click", () => {
       window.location.href = "/arcade-review-games/";
     });
 
     function updateHud() {
       hudScore.textContent = "Score: " + score;
-      hudCases.textContent = "Courtrooms: " + roomsCleared + " / " + TOTAL_ROOMS;
+      hudQuestions.textContent = "Courtrooms: " + questionsCleared + " / 20";
+
+      const mins = Math.max(0, Math.floor(timeRemaining / 60));
+      const secs = Math.max(0, Math.floor(timeRemaining % 60));
+      hudTimer.textContent = `Time: ${String(mins).padStart(2,"0")}:${String(secs).padStart(2,"0")}`;
     }
 
-    // ======================================================
-    // GAME LOOP & PHYSICS
-    // ======================================================
-    function startNewRun() {
-      player.x = 150;
-      player.y = 120;
+    function triggerEndScreen(reason="complete") {
+      levelComplete = true;
+      gamePaused = true;
+      inQuestion = false;
+
+      let timeBonus = Math.max(0, Math.floor(timeRemaining) * 2);
+      if (reason !== "complete") timeBonus = 0;
+
+      const accuracy = (firstTryCorrectCount / QUESTION_BANK.length) * 100;
+      score += timeBonus;
+
+      let msg = `Score: ${score} points\n`;
+      msg += `First-try correct: ${firstTryCorrectCount}/${QUESTION_BANK.length} (${accuracy.toFixed(0)}%)\n`;
+      msg += `Time bonus: ${timeBonus} pts`;
+
+      if (reason === "timeout") {
+        hudStatus.textContent = "Status: Time up";
+        endSummary.textContent = "Time expired in the courthouse.\n\n" + msg;
+      } else {
+        hudStatus.textContent = "Status: Case closed";
+        endSummary.textContent = "You reached the final judge's chambers!\n\n" + msg;
+      }
+
+      endOverlay.classList.remove("hidden");
+    }
+
+    function checkLevelComplete() {
+      if (questionsCleared === QUESTION_BANK.length &&
+          rectsIntersect(player, finishZone)) {
+        triggerEndScreen("complete");
+      }
+    }
+
+    // =============================
+    // GAME STATE
+    // =============================
+    function resetGame() {
+      player.x = startPosition.x;
+      player.y = startPosition.y;
       player.vx = 0;
       player.vy = 0;
-      player.dir = "down";
+      player.lastSafeX = startPosition.x;
+      player.lastSafeY = startPosition.y;
 
-      cameraX = 0;
-      cameraY = 0;
+      librarianHitCooldown = 0;
       score = 0;
-      roomsCleared = 0;
+      questionsCleared = 0;
       firstTryCorrectCount = 0;
-      levelComplete = false;
+      timeRemaining = LEVEL_TIME;
       gamePaused = false;
       inQuestion = false;
-      hitCooldown = 0;
+      levelComplete = false;
       toastText = "";
       toastTimer = 0;
+      bannerText = "";
+      bannerTimer = 0;
+
+      questionGates.forEach(g => {
+        g.completed = false;
+        g.firstTry = true;
+      });
 
       qOverlay.classList.add("hidden");
       endOverlay.classList.add("hidden");
       hudStatus.textContent = "Status: Exploring";
-
-      buildWalls();
-      buildLasers();
-      setupRooms();
       updateHud();
     }
 
+    // =============================
+    // UPDATE LOOP
+    // =============================
     function update(dt) {
       if (gamePaused) return;
 
-      if (hitCooldown > 0) {
-        hitCooldown -= dt;
-        if (hitCooldown < 0) hitCooldown = 0;
+      // Timer
+      timeRemaining -= dt;
+      if (timeRemaining <= 0 && !levelComplete) {
+        timeRemaining = 0;
+        updateHud();
+        triggerEndScreen("timeout");
+        return;
       }
 
       if (toastTimer > 0) {
         toastTimer -= dt;
         if (toastTimer < 0) toastTimer = 0;
       }
+      if (bannerTimer > 0) {
+        bannerTimer -= dt;
+        if (bannerTimer < 0) bannerTimer = 0;
+      }
 
-      // movement
-      let moveX = 0;
-      let moveY = 0;
-      if (keys.left) moveX -= 1;
+      if (librarianHitCooldown > 0) {
+        librarianHitCooldown -= dt;
+        if (librarianHitCooldown < 0) librarianHitCooldown = 0;
+      }
+
+      // Movement input
+      let moveX = 0, moveY = 0;
+      if (keys.left)  moveX -= 1;
       if (keys.right) moveX += 1;
-      if (keys.up) moveY -= 1;
-      if (keys.down) moveY += 1;
+      if (keys.up)    moveY -= 1;
+      if (keys.down)  moveY += 1;
 
-      if (moveX !== 0 || moveY !== 0) {
-        const len = Math.hypot(moveX, moveY);
-        moveX /= len;
-        moveY /= len;
+      // Normalize diagonal
+      if (moveX !== 0 && moveY !== 0) {
+        const inv = 1 / Math.sqrt(2);
+        moveX *= inv;
+        moveY *= inv;
       }
 
       player.vx = moveX * PLAYER_SPEED;
       player.vy = moveY * PLAYER_SPEED;
 
-      if (moveX < 0) player.dir = "left";
-      else if (moveX > 0) player.dir = "right";
-      else if (moveY < 0) player.dir = "up";
-      else if (moveY > 0) player.dir = "down";
-
-      // try move X
-      let nextX = player.x + player.vx * dt;
-      let nextRectX = { x: nextX, y: player.y, w: player.w, h: player.h };
-      let blockedX = false;
-      for (const wall of walls) {
-        if (rectIntersect(nextRectX, wall)) {
-          blockedX = true;
-          break;
-        }
-      }
-      if (!blockedX) {
-        player.x = nextX;
-      }
-
-      // try move Y
-      let nextY = player.y + player.vy * dt;
-      let nextRectY = { x: player.x, y: nextY, w: player.w, h: player.h };
-      let blockedY = false;
-      for (const wall of walls) {
-        if (rectIntersect(nextRectY, wall)) {
-          blockedY = true;
-          break;
-        }
-      }
-      if (!blockedY) {
-        player.y = nextY;
-      }
-
-      // clamp to world
-      player.x = clamp(player.x, 80, WORLD_WIDTH - 80 - player.w);
-      player.y = clamp(player.y, 80, WORLD_HEIGHT - 120 - player.h);
-
-      // lasers (security strips)
-      for (const laser of lasers) {
-        const laserRect = { x: laser.x, y: laser.y, w: laser.w, h: laser.h };
-        if (rectIntersect(player, laserRect)) {
-          if (hitCooldown === 0) {
-            hitCooldown = 1.0;
-            score -= PENALTY_LASER;
-            hudStatus.textContent = "Status: Security alert (-" + PENALTY_LASER + ")";
-            showToast("-" + PENALTY_LASER + " | Avoid the red lasers");
-            updateHud();
+      // Move with wall collisions (axis-separated)
+      // X axis
+      player.x += player.vx * dt;
+      const playerRectX = { x: player.x, y: player.y, w: player.w, h: player.h };
+      for (const w of walls) {
+        if (rectsIntersect(playerRectX, w)) {
+          if (player.vx > 0) {
+            player.x = w.x - player.w;
+          } else if (player.vx < 0) {
+            player.x = w.x + w.w;
           }
         }
       }
 
-      // room triggers
-      for (const room of rooms) {
-        const roomRect = {
-          x: room.x - room.w / 2,
-          y: room.y - room.h / 2,
-          w: room.w,
-          h: room.h
-        };
-        if (!room.completed && rectIntersect(player, roomRect)) {
-          openRoomQuestion(room);
+      // Y axis
+      player.y += player.vy * dt;
+      const playerRectY = { x: player.x, y: player.y, w: player.w, h: player.h };
+      for (const w of walls) {
+        if (rectsIntersect(playerRectY, w)) {
+          if (player.vy > 0) {
+            player.y = w.y - player.h;
+          } else if (player.vy < 0) {
+            player.y = w.y + w.h;
+          }
+        }
+      }
+
+      // Clamp inside outer bounds
+      player.x = Math.max(50, Math.min(player.x, 900 - player.w));
+      player.y = Math.max(50, Math.min(player.y, 480 - player.h));
+
+      // Save safe spot (not touching lasers)
+      const playerCenterX = player.x + player.w / 2;
+      const playerCenterY = player.y + player.h / 2;
+      let inLaserNow = false;
+      for (const ls of lasers) {
+        if (Math.abs(distancePointToSegment(playerCenterX, playerCenterY, ls.x1, ls.y1, ls.x2, ls.y2)) < 12) {
+          inLaserNow = true;
+          break;
+        }
+      }
+      if (!inLaserNow) {
+        player.lastSafeX = player.x;
+        player.lastSafeY = player.y;
+      }
+
+      // Lasers damage
+      if (inLaserNow) {
+        score -= 10;
+        showToast("-10 | Tripped the laser!");
+        hudStatus.textContent = "Status: Alarm triggered";
+        player.x = player.lastSafeX;
+        player.y = player.lastSafeY;
+        updateHud();
+      } else if (!inQuestion && !levelComplete) {
+        hudStatus.textContent = "Status: Exploring";
+      }
+
+      // Secret bookshelf door (looks like wall segment but pass-through)
+      if (rectsIntersect(player, secretDoor)) {
+        showToast("Secret passage discovered!");
+        player.x = secretDoor.targetX;
+        player.y = secretDoor.targetY;
+        player.lastSafeX = player.x;
+        player.lastSafeY = player.y;
+      }
+
+      // Teleport pads
+      for (const tp of teleports) {
+        const dx = playerCenterX - tp.x;
+        const dy = playerCenterY - tp.y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < 18) {
+          showToast("Teleported to " + tp.label);
+          player.x = tp.targetX;
+          player.y = tp.targetY;
+          player.lastSafeX = player.x;
+          player.lastSafeY = player.y;
+        }
+      }
+
+      // Librarian movement + collisions
+      for (const lib of librarians) {
+        if (lib.axis === "x") {
+          lib.x += lib.dir * LIBRARIAN_SPEED * dt;
+          if (lib.x < lib.min || lib.x > lib.max) lib.dir *= -1;
+        } else {
+          lib.y += lib.dir * LIBRARIAN_SPEED * dt;
+          if (lib.y < lib.min || lib.y > lib.max) lib.dir *= -1;
+        }
+
+        const libRect = { x: lib.x, y: lib.y, w: lib.w, h: lib.h };
+        if (librarianHitCooldown === 0 && rectsIntersect(player, libRect)) {
+          librarianHitCooldown = 1.0;
+          score -= 15;
+          showToast("-15 | Librarian sent you back!");
+          hudStatus.textContent = "Status: Caught by librarian";
+          player.x = player.lastSafeX;
+          player.y = player.lastSafeY;
+          updateHud();
+        }
+      }
+
+      // Question gates
+      for (const gate of questionGates) {
+        if (gate.completed) continue;
+        const dx = playerCenterX - gate.x;
+        const dy = playerCenterY - gate.y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < gate.radius + 10) {
+          // Stop player on top and open question
+          openQuestion(gate);
           break;
         }
       }
 
-      // camera follow
-      const halfW = canvas.width / 2;
-      const halfH = canvas.height / 2;
-      const targetCamX = player.x + player.w / 2 - halfW;
-      const targetCamY = player.y + player.h / 2 - halfH;
-
-      const maxCamX = WORLD_WIDTH - canvas.width;
-      const maxCamY = WORLD_HEIGHT - canvas.height;
-
-      cameraX += (clamp(targetCamX, 0, maxCamX) - cameraX) * 0.15;
-      cameraY += (clamp(targetCamY, 0, maxCamY) - cameraY) * 0.15;
-    }
-
-    // ======================================================
-    // DRAW
-    // ======================================================
-    function drawFloor() {
-      ctx.fillStyle = "#020617";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      // marble-ish tiles
-      const tileSize = 40;
-      for (let x = -tileSize; x < WORLD_WIDTH + tileSize; x += tileSize) {
-        for (let y = -tileSize; y < WORLD_HEIGHT + tileSize; y += tileSize) {
-          const screenX = x - cameraX;
-          const screenY = y - cameraY;
-          if (screenX > canvas.width || screenY > canvas.height || screenX + tileSize < 0 || screenY + tileSize < 0) continue;
-
-          const checker = ((x / tileSize) + (y / tileSize)) % 2 === 0;
-          ctx.fillStyle = checker ? "#111827" : "#1f2937";
-          ctx.fillRect(screenX, screenY, tileSize, tileSize);
-        }
+      // Finish zone check
+      if (!levelComplete && questionsCleared === QUESTION_BANK.length && rectsIntersect(player, finishZone)) {
+        triggerEndScreen("complete");
       }
+
+      updateHud();
     }
 
-    function drawWalls() {
-      for (const wall of walls) {
-        const sx = wall.x - cameraX;
-        const sy = wall.y - cameraY;
-        ctx.fillStyle = "#020617";
-        ctx.fillRect(sx, sy, wall.w, wall.h);
-        ctx.strokeStyle = "#4b5563";
-        ctx.lineWidth = 2;
-        ctx.strokeRect(sx, sy, wall.w, wall.h);
-      }
+    // Distance from point to line segment (for lasers)
+    function distancePointToSegment(px, py, x1, y1, x2, y2) {
+      const vx = x2 - x1;
+      const vy = y2 - y1;
+      const wx = px - x1;
+      const wy = py - y1;
+      const c1 = vx * wx + vy * wy;
+      if (c1 <= 0) return Math.hypot(px - x1, py - y1);
+      const c2 = vx * vx + vy * vy;
+      if (c2 <= c1) return Math.hypot(px - x2, py - y2);
+      const b = c1 / c2;
+      const bx = x1 + b * vx;
+      const by = y1 + b * vy;
+      return Math.hypot(px - bx, py - by);
     }
 
-    function drawLasers() {
-      for (const laser of lasers) {
-        const sx = laser.x - cameraX;
-        const sy = laser.y - cameraY;
-        ctx.fillStyle = "rgba(220,38,38,0.7)";
-        ctx.fillRect(sx, sy, laser.w, laser.h);
-        ctx.strokeStyle = "#fecaca";
-        ctx.lineWidth = 1;
-        ctx.strokeRect(sx, sy, laser.w, laser.h);
-      }
-    }
+    // =============================
+    // DRAWING
+    // =============================
+    function draw() {
+      ctx.clearRect(0,0,canvas.width,canvas.height);
 
-    function drawRooms() {
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-      ctx.font = "8px 'Press Start 2P', system-ui, sans-serif";
+      // Floor
+      const grad = ctx.createRadialGradient(
+        canvas.width/2, canvas.height/2, 20,
+        canvas.width/2, canvas.height/2, 520
+      );
+      grad.addColorStop(0, "#111827");
+      grad.addColorStop(1, "#020617");
+      ctx.fillStyle = grad;
+      ctx.fillRect(0,0,canvas.width,canvas.height);
 
-      for (const room of rooms) {
-        const sx = room.x - cameraX;
-        const sy = room.y - cameraY;
-        const half = room.w / 2;
-
-        ctx.fillStyle = room.completed ? "#065f46" : "#78350f";
-        ctx.fillRect(sx - half, sy - half, room.w, room.h);
-        ctx.strokeStyle = "#fbbf24";
-        ctx.lineWidth = 2;
-        ctx.strokeRect(sx - half, sy - half, room.w, room.h);
-
-        // scales of justice icon (simplified)
-        ctx.fillStyle = "#facc15";
-        ctx.fillRect(sx - 1, sy - 8, 2, 14);
+      // Tiles / subtle grid
+      ctx.strokeStyle = "#020b1f";
+      ctx.lineWidth = 1;
+      for (let x = 40; x <= 920; x += 40) {
         ctx.beginPath();
-        ctx.arc(sx, sy - 8, 6, Math.PI, 0);
+        ctx.moveTo(x,40);
+        ctx.lineTo(x,480);
+        ctx.stroke();
+      }
+      for (let y = 40; y <= 480; y += 40) {
+        ctx.beginPath();
+        ctx.moveTo(40,y);
+        ctx.lineTo(920,y);
+        ctx.stroke();
+      }
+
+      // Walls
+      ctx.fillStyle = "#020617";
+      walls.forEach(w => {
+        ctx.fillRect(w.x, w.y, w.w, w.h);
+        ctx.strokeStyle = "#111827";
+        ctx.lineWidth = 2;
+        ctx.strokeRect(w.x, w.y, w.w, w.h);
+      });
+
+      // Secret door: draw like bookshelf section of wall
+      ctx.fillStyle = "#020617";
+      ctx.fillRect(secretDoor.x, secretDoor.y, secretDoor.w, secretDoor.h);
+      ctx.fillStyle = "#1f2937";
+      for (let i = 0; i < 4; i++) {
+        ctx.fillRect(secretDoor.x+3, secretDoor.y+3 + i*12, secretDoor.w-6, 6);
+      }
+
+      // Lasers
+      lasers.forEach(ls => {
+        const grad = ctx.createLinearGradient(ls.x1, ls.y1, ls.x2, ls.y2);
+        grad.addColorStop(0, "rgba(248,113,113,0.1)");
+        grad.addColorStop(0.5, "#f97316");
+        grad.addColorStop(1, "rgba(248,113,113,0.1)");
+        ctx.strokeStyle = grad;
+        ctx.lineWidth = 4;
+        ctx.beginPath();
+        ctx.moveTo(ls.x1, ls.y1);
+        ctx.lineTo(ls.x2, ls.y2);
         ctx.stroke();
 
-        ctx.fillText(room.id, sx, sy + 12);
+        // small blinking nodes
+        ctx.fillStyle = "#fed7aa";
+        ctx.beginPath();
+        ctx.arc(ls.x1, ls.y1, 4, 0, Math.PI*2);
+        ctx.arc(ls.x2, ls.y2, 4, 0, Math.PI*2);
+        ctx.fill();
+      });
+
+      // Teleport pads
+      teleports.forEach(tp => {
+        ctx.beginPath();
+        ctx.arc(tp.x, tp.y, 16, 0, Math.PI*2);
+        ctx.fillStyle = "rgba(56,189,248,0.16)";
+        ctx.fill();
+        ctx.strokeStyle = "#38bdf8";
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(tp.x, tp.y, 8, 0, Math.PI*2);
+        ctx.stroke();
+
+        ctx.fillStyle = "#e5e7eb";
+        ctx.font = "7px 'Press Start 2P', system-ui";
+        ctx.textAlign = "center";
+        ctx.fillText("TP", tp.x, tp.y+3);
+      });
+
+      // Finish zone (judge's chamber)
+      ctx.fillStyle = "rgba(250,204,21,0.18)";
+      ctx.fillRect(finishZone.x, finishZone.y, finishZone.w, finishZone.h);
+      ctx.strokeStyle = "#facc15";
+      ctx.lineWidth = 2;
+      ctx.strokeRect(finishZone.x, finishZone.y, finishZone.w, finishZone.h);
+      ctx.fillStyle = "#facc15";
+      ctx.font = "7px 'Press Start 2P', system-ui";
+      ctx.textAlign = "center";
+      ctx.fillText("FINAL", finishZone.x + finishZone.w/2, finishZone.y + 20);
+      ctx.fillText("JUDGE", finishZone.x + finishZone.w/2, finishZone.y + 32);
+
+      // Question gates
+      questionGates.forEach(g => {
+        const radius = g.radius;
+        const glow = g.completed ? "rgba(34,197,94,0.2)" : "rgba(250,204,21,0.2)";
+        const color = g.completed ? "#22c55e" : "#facc15";
+
+        ctx.beginPath();
+        ctx.arc(g.x, g.y, radius+6, 0, Math.PI*2);
+        ctx.fillStyle = glow;
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(g.x, g.y, radius, 0, Math.PI*2);
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        ctx.fillStyle = color;
+        ctx.font = "7px 'Press Start 2P', system-ui";
+        ctx.textAlign = "center";
+        ctx.fillText(g.completed ? "✓" : "Q", g.x, g.y+3);
+      });
+
+      // Player
+      drawPlayer();
+
+      // Librarians
+      librarians.forEach(lib => {
+        ctx.fillStyle = "#0f172a";
+        ctx.fillRect(lib.x, lib.y, lib.w, lib.h);
+        ctx.fillStyle = "#f97316";
+        ctx.fillRect(lib.x, lib.y, lib.w, 8);
+        ctx.fillStyle = "#e5e7eb";
+        ctx.fillRect(lib.x+6, lib.y+10, lib.w-12, 4); // glasses
+      });
+
+      // Toast / banner overlays
+      if (bannerTimer > 0 && bannerText) {
+        ctx.font = "9px 'Press Start 2P', system-ui";
+        ctx.textAlign = "center";
+        const w = 360;
+        const h = 24;
+        const x = canvas.width/2 - w/2;
+        const y = 38;
+        ctx.fillStyle = "rgba(0,0,0,0.78)";
+        ctx.fillRect(x,y,w,h);
+        ctx.fillStyle = "#facc15";
+        ctx.fillText(bannerText, canvas.width/2, y+9);
+      }
+      if (toastTimer > 0 && toastText) {
+        ctx.font = "9px 'Press Start 2P', system-ui";
+        ctx.textAlign = "center";
+        const w = 360;
+        const h = 24;
+        const x = canvas.width/2 - w/2;
+        const y = canvas.height - 34;
+        ctx.fillStyle = "rgba(0,0,0,0.78)";
+        ctx.fillRect(x,y,w,h);
+        ctx.fillStyle = "#facc15";
+        ctx.fillText(toastText, canvas.width/2, y+9);
       }
     }
 
     function drawPlayer() {
-      const sx = player.x - cameraX;
-      const sy = player.y - cameraY;
+      const sx = player.x;
+      const sy = player.y;
 
-      // outline
-      ctx.fillStyle = "#0ea5e9";
-      ctx.fillRect(sx - 1, sy - 1, player.w + 2, player.h + 2);
+      // Robe (body)
+      ctx.fillStyle = "#1d4ed8";
+      ctx.fillRect(sx+4, sy+10, player.w-8, player.h-12);
 
-      // body
-      ctx.fillStyle = "#38bdf8";
-      ctx.fillRect(sx, sy, player.w, player.h);
+      // Collar
+      ctx.fillStyle = "#e5e7eb";
+      ctx.fillRect(sx+8, sy+10, player.w-16, 4);
 
-      // robe stripe
-      ctx.fillStyle = "#020617";
-      ctx.fillRect(sx + 9, sy, 4, player.h);
-
-      // little direction triangle (like a hood/arrow)
+      // Head
       ctx.fillStyle = "#facc15";
-      if (player.dir === "up") {
-        ctx.beginPath();
-        ctx.moveTo(sx + player.w / 2, sy - 6);
-        ctx.lineTo(sx + 6, sy + 4);
-        ctx.lineTo(sx + player.w - 6, sy + 4);
-        ctx.closePath();
-        ctx.fill();
-      } else if (player.dir === "down") {
-        ctx.beginPath();
-        ctx.moveTo(sx + player.w / 2, sy + player.h + 6);
-        ctx.lineTo(sx + 6, sy + player.h - 4);
-        ctx.lineTo(sx + player.w - 6, sy + player.h - 4);
-        ctx.closePath();
-        ctx.fill();
-      } else if (player.dir === "left") {
-        ctx.beginPath();
-        ctx.moveTo(sx - 6, sy + player.h / 2);
-        ctx.lineTo(sx + 4, sy + 6);
-        ctx.lineTo(sx + 4, sy + player.h - 6);
-        ctx.closePath();
-        ctx.fill();
-      } else if (player.dir === "right") {
-        ctx.beginPath();
-        ctx.moveTo(sx + player.w + 6, sy + player.h / 2);
-        ctx.lineTo(sx + player.w - 4, sy + 6);
-        ctx.lineTo(sx + player.w - 4, sy + player.h - 6);
-        ctx.closePath();
-        ctx.fill();
-      }
+      ctx.fillRect(sx+6, sy, player.w-12, 10);
+
+      // Briefcase
+      ctx.fillStyle = "#6b7280";
+      ctx.fillRect(sx-6, sy+18, 8, 10);
+
+      // Badge
+      ctx.fillStyle = "#f97316";
+      ctx.fillRect(sx+player.w-10, sy+16, 4, 6);
     }
 
-    function drawToast() {
-      if (toastTimer <= 0 || !toastText) return;
-      ctx.font = "10px 'Press Start 2P', system-ui, sans-serif";
-      ctx.textAlign = "center";
-      const w = 360;
-      const h = 24;
-      const x = canvas.width / 2 - w / 2;
-      const y = canvas.height - 36;
-      ctx.fillStyle = "rgba(0,0,0,0.8)";
-      ctx.fillRect(x, y, w, h);
-      ctx.fillStyle = "#facc15";
-      ctx.fillText(toastText, canvas.width / 2, y + 8);
-    }
-
-    function draw() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      drawFloor();
-      drawWalls();
-      drawLasers();
-      drawRooms();
-      drawPlayer();
-      drawToast();
-    }
-
+    // =============================
+    // MAIN LOOP
+    // =============================
     function loop(timestamp) {
       const dt = (timestamp - lastTime) / 1000;
       lastTime = timestamp;
 
       update(dt);
       draw();
-
       requestAnimationFrame(loop);
     }
 
-    // Start game
-    startNewRun();
+    // Init
+    resetGame();
     requestAnimationFrame(loop);
   </script>
 
-  <!-- Site-wide nav (if used elsewhere) -->
+  <!-- Optional: site-wide nav if you use it -->
   <script src="/assets/scripts/nav.js"></script>
 </body>
 </html>
