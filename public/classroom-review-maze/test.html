@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Pac-Review | Teach Arcade</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    body {
+        background: #111;
+        color: #fff;
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    h1 {
+        margin-top: 10px;
+        font-size: 24px;
+        color: #00e0ff;
+    }
+
+    #gameContainer {
+        position: relative;
+        width: 560px;
+        height: 560px;
+        background: #000;
+        border: 4px solid #00e0ff;
+        margin-top: 15px;
+    }
+
+    canvas {
+        background: #000;
+        display: block;
+    }
+
+    #score {
+        margin-top: 10px;
+        font-size: 18px;
+    }
+
+    /* Question Box */
+    #questionBox {
+        position: absolute;
+        width: 80%;
+        height: 160px;
+        top: 200px;
+        left: 10%;
+        background: #222;
+        border: 3px solid #00e0ff;
+        padding: 15px;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    #questionBox button {
+        margin: 5px 0;
+        padding: 8px;
+        background: #00e0ff;
+        border: none;
+        color: #000;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    #winMessage {
+        margin-top: 15px;
+        font-size: 22px;
+        color: #7CFC00;
+        display: none;
+    }
+</style>
+</head>
+
+<body>
+<h1>PAC-REVIEW · Teach Arcade</h1>
+<div id="gameContainer">
+    <canvas id="gameCanvas" width="560" height="560"></canvas>
+
+    <div id="questionBox">
+        <div id="questionText"></div>
+        <button onclick="submitAnswer(0)" id="ans0"></button>
+        <button onclick="submitAnswer(1)" id="ans1"></button>
+        <button onclick="submitAnswer(2)" id="ans2"></button>
+    </div>
+</div>
+
+<div id="score">Score: 0</div>
+<div id="winMessage">🎉 You cleared all 10 Power Questions! Great work! 🎉</div>
+
+<script>
+/* =============================
+   INITIAL SETUP
+============================= */
+const canvas = document.getElementById("gameCanvas");
+const ctx = canvas.getContext("2d");
+const scoreDisplay = document.getElementById("score");
+const questionBox = document.getElementById("questionBox");
+const questionText = document.getElementById("questionText");
+const ansBtns = [document.getElementById("ans0"), document.getElementById("ans1"), document.getElementById("ans2")];
+const winMessage = document.getElementById("winMessage");
+
+let score = 0;
+let powerMode = false;
+let powerTimer = 0;
+let currentQuestionIndex = -1;
+
+// Tile size
+const TILE = 40;
+
+/* =============================
+   MAZE DESIGN (14×14 small maze)
+============================= */
+const maze = [
+"##############",
+"#............#",
+"#.##.##.##.##.#",
+"#o....o....o..#",
+"#.##.##.##.##.#",
+"#............#",
+"#.##.##.##.##.#",
+"#o....o....o..#",
+"#.##.##.##.##.#",
+"#............#",
+"#o....o....o..#",
+"#............#",
+"#............#",
+"##############"
+];
+
+// o = power dot, . = small dot, # = wall
+
+/* =============================
+   PLAYER + GHOSTS
+============================= */
+let player = { x: 1, y: 1, dirX: 0, dirY: 0 };
+
+let ghosts = [
+    { x: 12, y: 12, color: "red" },
+    { x: 12, y: 1, color: "pink" },
+    { x: 1, y: 12, color: "orange" }
+];
+
+/* =============================
+   QUESTIONS
+============================= */
+const questions = [
+    {
+        q: "What is the supreme law of the land?",
+        a: ["The President", "The Constitution", "Congress"],
+        correct: 1
+    },
+    {
+        q: "Which branch makes the laws?",
+        a: ["Judicial", "Executive", "Legislative"],
+        correct: 2
+    },
+    {
+        q: "Who was the first President?",
+        a: ["Washington", "Jefferson", "Lincoln"],
+        correct: 0
+    },
+    {
+        q: "How many states are in the U.S.?",
+        a: ["48", "50", "52"],
+        correct: 1
+    },
+    {
+        q: "What ocean is on the East Coast?",
+        a: ["Atlantic", "Pacific", "Arctic"],
+        correct: 0
+    },
+    {
+        q: "Who wrote the Declaration?",
+        a: ["Madison", "Jefferson", "Hamilton"],
+        correct: 1
+    },
+    {
+        q: "What year was the Constitution written?",
+        a: ["1787", "1801", "1776"],
+        correct: 0
+    },
+    {
+        q: "What system divides power?",
+        a: ["Federalism", "Nationalism", "Patriotism"],
+        correct: 0
+    },
+    {
+        q: "How long is a Senator’s term?",
+        a: ["2 years", "4 years", "6 years"],
+        correct: 2
+    },
+    {
+        q: "What does the judicial branch do?",
+        a: ["Enforces laws", "Interprets laws", "Makes laws"],
+        correct: 1
+    }
+];
+
+let powerDotsEaten = 0;
+
+/* =============================
+   GAME LOOP
+============================= */
+document.addEventListener("keydown", e => {
+    if (e.key === "ArrowUp") player.dirX = 0, player.dirY = -1;
+    if (e.key === "ArrowDown") player.dirX = 0, player.dirY = 1;
+    if (e.key === "ArrowLeft") player.dirX = -1, player.dirY = 0;
+    if (e.key === "ArrowRight") player.dirX = 1, player.dirY = 0;
+});
+
+function isWall(x, y) {
+    return maze[y][x] === "#";
+}
+
+function update() {
+    // Move player
+    let nx = player.x + player.dirX;
+    let ny = player.y + player.dirY;
+    if (!isWall(nx, ny)) {
+        player.x = nx;
+        player.y = ny;
+    }
+
+    // Eat dot
+    if (maze[player.y][player.x] === ".") {
+        score += 10;
+        maze[player.y] = replaceChar(maze[player.y], player.x, " ");
+    }
+
+    // Eat power dot
+    if (maze[player.y][player.x] === "o") {
+        maze[player.y] = replaceChar(maze[player.y], player.x, " ");
+        score += 50;
+        showQuestion();
+    }
+
+    // Ghost movement (simple random)
+    ghosts.forEach(g => {
+        let dirs = [
+            { x: 1, y: 0 },
+            { x: -1, y: 0 },
+            { x: 0, y: 1 },
+            { x: 0, y: -1 }
+        ];
+        let d = dirs[Math.floor(Math.random() * 4)];
+        let gx = g.x + d.x, gy = g.y + d.y;
+        if (!isWall(gx, gy)) {
+            g.x = gx; 
+            g.y = gy;
+        }
+
+        // Collision
+        if (g.x === player.x && g.y === player.y) {
+            if (powerMode) {
+                score += 200;
+                g.x = 12; g.y = 12; // Reset
+            } else {
+                score -= 50; // Student keeps playing but loses points
+            }
+        }
+    });
+
+    // Power mode timer
+    if (powerMode) {
+        powerTimer--;
+        if (powerTimer <= 0) powerMode = false;
+    }
+
+    scoreDisplay.textContent = "Score: " + score;
+
+    // WIN CONDITION
+    if (powerDotsEaten >= 10) {
+        winMessage.style.display = "block";
+    }
+
+    draw();
+    requestAnimationFrame(update);
+}
+
+/* =============================
+   DRAWING
+============================= */
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Draw maze
+    for (let y = 0; y < maze.length; y++) {
+        for (let x = 0; x < maze[y].length; x++) {
+            let tile = maze[y][x];
+
+            if (tile === "#") {
+                ctx.fillStyle = "#0033cc";
+                ctx.fillRect(x * TILE, y * TILE, TILE, TILE);
+            }
+
+            if (tile === ".") {
+                ctx.fillStyle = "#fff";
+                ctx.beginPath();
+                ctx.arc(x * TILE + 20, y * TILE + 20, 4, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            if (tile === "o") {
+                ctx.fillStyle = "#00e0ff";
+                ctx.beginPath();
+                ctx.arc(x * TILE + 20, y * TILE + 20, 10, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+    }
+
+    // Draw player
+    ctx.fillStyle = powerMode ? "#7CFC00" : "#FFFF00";
+    ctx.beginPath();
+    ctx.arc(player.x * TILE + 20, player.y * TILE + 20, 18, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Draw ghosts
+    ghosts.forEach(g => {
+        ctx.fillStyle = powerMode ? "#444" : g.color;
+        ctx.beginPath();
+        ctx.arc(g.x * TILE + 20, g.y * TILE + 20, 18, 0, Math.PI * 2);
+        ctx.fill();
+    });
+}
+
+/* =============================
+   QUESTION SYSTEM
+============================= */
+function showQuestion() {
+    questionBox.style.display = "flex";
+    player.dirX = 0;
+    player.dirY = 0;
+
+    currentQuestionIndex = powerDotsEaten;
+    const q = questions[currentQuestionIndex];
+
+    questionText.textContent = q.q;
+    ansBtns.forEach((btn, i) => btn.textContent = q.a[i]);
+}
+
+function submitAnswer(choice) {
+    const q = questions[currentQuestionIndex];
+
+    if (choice === q.correct) {
+        score += 150;
+        powerMode = true;
+        powerTimer = 300;
+    }
+
+    powerDotsEaten++;
+    questionBox.style.display = "none";
+}
+
+/* =============================
+   UTIL
+============================= */
+function replaceChar(str, index, chr) {
+    return str.substring(0, index) + chr + str.substring(index + 1);
+}
+
+/* =============================
+   START GAME
+============================= */
+update();
+</script>
+</body>
+</html>
