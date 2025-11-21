@@ -218,6 +218,34 @@
       line-height: 1.4;
     }
 
+    /* NEW: simple jump links + subject headings */
+    .jump-links {
+      margin: 14px 0 4px;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .jump-links a {
+      color: var(--accent);
+      text-decoration: none;
+      margin-right: 10px;
+    }
+
+    .jump-links a:hover {
+      text-decoration: underline;
+    }
+
+    main h2 {
+      margin-top: 22px;
+      margin-bottom: 6px;
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    main h2:first-of-type {
+      margin-top: 16px;
+    }
+
     @media (max-width: 640px) {
       h1 {
         font-size: 0.9rem;
@@ -248,6 +276,17 @@
     </header>
 
     <main>
+      <!-- Simple jump links to subject sections -->
+      <p class="jump-links">
+        Jump to:
+        <a href="#subject-social-studies">Social Studies</a>
+        <a href="#subject-science">Science</a>
+        <a href="#subject-math">Math</a>
+        <a href="#subject-ela">English / Language Arts</a>
+      </p>
+
+      <!-- SOCIAL STUDIES SECTION -->
+      <h2 id="subject-social-studies">Social Studies</h2>
       <section class="game-grid">
         <!-- WWI TRENCH RUN CARD -->
         <article class="game-card">
@@ -267,13 +306,42 @@
             <span>Keyboard &amp; touch controls</span>
           </div>
           <div class="card-footer">
-            <a href="/arcade-review-games/wwi-trench-run.html" class="play-btn">
+            <a href="/games/arcade/social-studies/wwi-trench-run.html" class="play-btn">
               <span>▶</span> Play Game
             </a>
             <span>Est. 10–15 minutes</span>
           </div>
         </article>
 
+        <!-- PYRAMID ESCAPE RUN (SOCIAL STUDIES · ANCIENT EGYPT) -->
+        <article class="game-card">
+          <div class="game-badge-row">
+            <span class="badge subject">Social Studies · Ancient Egypt</span>
+            <span class="badge">Grades 6–9</span>
+          </div>
+          <div class="game-title">Pyramid Escape Run — Ancient Egypt</div>
+          <p class="game-desc">
+            Dash through dim pyramid tunnels, leap over spike traps and rolling boulders,
+            and pass through glowing hieroglyph gates to review the Nile River, pharaohs,
+            pyramids, religion, mummification, and daily life in Ancient Egypt.
+          </p>
+          <div class="meta-row">
+            <span>20-question review</span>
+            <span>Nile · Pharaohs · Pyramids</span>
+            <span>Keyboard &amp; touch controls</span>
+          </div>
+          <div class="card-footer">
+            <a href="/games/arcade/social-studies/pyramid-escape-run.html" class="play-btn">
+              <span>▶</span> Play Game
+            </a>
+            <span>Est. 8–12 minutes</span>
+          </div>
+        </article>
+      </section>
+
+      <!-- SCIENCE SECTION -->
+      <h2 id="subject-science">Science</h2>
+      <section class="game-grid">
         <!-- MOON MISSION RUN (EARTH & SPACE SCIENCE) -->
         <article class="game-card">
           <div class="game-badge-row">
@@ -291,37 +359,17 @@
             <span>Keyboard &amp; touch controls</span>
           </div>
           <div class="card-footer">
-            <a href="/arcade-review-games/moon-mission-run.html" class="play-btn">
+            <a href="/games/arcade/science/moon-mission-run.html" class="play-btn">
               <span>▶</span> Play Game
             </a>
             <span>Est. 10–15 minutes</span>
           </div>
         </article>
+      </section>
 
-        <!-- GRAMMAR GAUNTLET (ELA) -->
-        <article class="game-card">
-          <div class="game-badge-row">
-            <span class="badge subject">ELA · Grammar &amp; Writing</span>
-            <span class="badge">Grades 6–10</span>
-          </div>
-          <div class="game-title">Grammar Gauntlet</div>
-          <p class="game-desc">
-            Race across the notebook page while tackling 20 grammar and mechanics questions:
-            parts of speech, sentence types, punctuation, capitalization, and common usage errors.
-          </p>
-          <div class="meta-row">
-            <span>20-question review</span>
-            <span>Fragments, run-ons, agreement</span>
-            <span>Keyboard &amp; touch controls</span>
-          </div>
-          <div class="card-footer">
-            <a href="/arcade-review-games/grammar-gauntlet.html" class="play-btn">
-              <span>▶</span> Play Game
-            </a>
-            <span>Est. 10–15 minutes</span>
-          </div>
-        </article>
-
+      <!-- MATH SECTION -->
+      <h2 id="subject-math">Math</h2>
+      <section class="game-grid">
         <!-- ALGEBRA CITY RUN CARD -->
         <article class="game-card">
           <div class="game-badge-row">
@@ -340,7 +388,7 @@
             <span>Keyboard &amp; touch controls</span>
           </div>
           <div class="card-footer">
-            <a href="/arcade-review-games/algebra-city-run.html" class="play-btn">
+            <a href="/games/arcade/math/algebra-city-run.html" class="play-btn">
               <span>▶</span> Play Game
             </a>
             <span>Est. 10–15 minutes</span>
@@ -365,35 +413,38 @@
             <span>Keyboard &amp; touch controls</span>
           </div>
           <div class="card-footer">
-            <a href="/arcade-review-games/slope-street-sprint.html" class="play-btn">
+            <a href="/games/arcade/math/slope-street-sprint.html" class="play-btn">
               <span>▶</span> Play Game
             </a>
             <span>Est. 8–12 minutes</span>
           </div>
         </article>
+      </section>
 
-        <!-- PYRAMID ESCAPE RUN (SOCIAL STUDIES · ANCIENT EGYPT) -->
+      <!-- ELA SECTION -->
+      <h2 id="subject-ela">English / Language Arts</h2>
+      <section class="game-grid">
+        <!-- GRAMMAR GAUNTLET (ELA) -->
         <article class="game-card">
           <div class="game-badge-row">
-            <span class="badge subject">Social Studies · Ancient Egypt</span>
-            <span class="badge">Grades 6–9</span>
+            <span class="badge subject">ELA · Grammar &amp; Writing</span>
+            <span class="badge">Grades 6–10</span>
           </div>
-          <div class="game-title">Pyramid Escape Run — Ancient Egypt</div>
+          <div class="game-title">Grammar Gauntlet</div>
           <p class="game-desc">
-            Dash through dim pyramid tunnels, leap over spike traps and rolling boulders,
-            and pass through glowing hieroglyph gates to review the Nile River, pharaohs,
-            pyramids, religion, mummification, and daily life in Ancient Egypt.
+            Race across the notebook page while tackling 20 grammar and mechanics questions:
+            parts of speech, sentence types, punctuation, capitalization, and common usage errors.
           </p>
           <div class="meta-row">
             <span>20-question review</span>
-            <span>Nile · Pharaohs · Pyramids</span>
+            <span>Fragments, run-ons, agreement</span>
             <span>Keyboard &amp; touch controls</span>
           </div>
           <div class="card-footer">
-            <a href="/arcade-review-games/pyramid-escape-run.html" class="play-btn">
+            <a href="/games/arcade/ela/grammar-gauntlet.html" class="play-btn">
               <span>▶</span> Play Game
             </a>
-            <span>Est. 8–12 minutes</span>
+            <span>Est. 10–15 minutes</span>
           </div>
         </article>
       </section>
