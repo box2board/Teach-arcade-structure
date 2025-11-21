@@ -1,856 +1,1153 @@
-<script>
-  // =============================
-  // CONFIG & CONSTANTS
-  // =============================
-  const canvas = document.getElementById("gameCanvas");
-  const ctx = canvas.getContext("2d");
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Constitution Courthouse Run · U.S. Constitution Review Game | Teach Arcade</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  const LEVEL_TIME = 5 * 60; // 5 minutes
-  const PLAYER_SPEED = 230;  // faster movement
-  const LIBRARIAN_SPEED = 80;
-  const PLAYER_SIZE = 26;
+  <!-- Basic SEO -->
+  <meta name="description" content="Constitution Courthouse Run is a free, top-down maze-style review game. Navigate a courthouse library, dodge librarians and laser alarms, and clear 20 question courts on the U.S. Constitution and Bill of Rights.">
+  <meta name="keywords" content="Constitution review game, Bill of Rights game, U.S. government review, social studies arcade game, Constitution Courthouse Run, Teach Arcade classroom games, top-down maze game">
+  <meta property="og:title" content="Constitution Courthouse Run · U.S. Constitution Review Game">
+  <meta property="og:description" content="Navigate a courthouse library from a top-down view, dodge roaming librarians and laser alarms, and answer 20 Constitution and Bill of Rights questions to reach the final judge's chambers.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://teacharcade.com/arcade-review-games/constitution-courthouse-run.html">
+  <meta property="og:image" content="https://teacharcade.com/assets/teach-arcade-constitution-courthouse-run.png">
 
-  // Laser on/off timing (INTERMITTENT)
-  const LASER_CYCLE_ON = 1.5;   // seconds lasers are active
-  const LASER_CYCLE_OFF = 1.0;  // seconds lasers are off
-  let laserTimer = LASER_CYCLE_ON;
-  let lasersActive = true;
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
-  let lastTime = 0;
-  let timeRemaining = LEVEL_TIME;
-  let score = 0;
-  let questionsCleared = 0;
-  let firstTryCorrectCount = 0;
-  let gamePaused = false;
-  let inQuestion = false;
-  let levelComplete = false;
-
-  const keys = { left:false, right:false, up:false, down:false };
-
-  const hudScore    = document.getElementById("hudScore");
-  const hudQuestions= document.getElementById("hudQuestions");
-  const hudTimer    = document.getElementById("hudTimer");   // may be null, handled safely
-  const hudStatus   = document.getElementById("hudStatus");
-
-  const qOverlay = document.getElementById("questionOverlay");
-  const qTitle   = document.getElementById("qTitle");
-  const qText    = document.getElementById("qText");
-  const qChoices = document.getElementById("choicesContainer");
-  const qFeedback= document.getElementById("qFeedback");
-  const qCloseBtn= document.getElementById("qCloseBtn");
-
-  const endOverlay = document.getElementById("endOverlay");
-  const endSummary = document.getElementById("endSummary");
-  const replayBtn  = document.getElementById("replayBtn");
-  const hubBtn     = document.getElementById("hubBtn");      // may be null
-
-  const btnLeft  = document.getElementById("btnLeft");
-  const btnRight = document.getElementById("btnRight");
-  const btnUp    = document.getElementById("btnUp");
-  const btnDown  = document.getElementById("btnDown");
-
-  // Toast / banner text drawn on canvas
-  let toastText = "";
-  let toastTimer = 0;
-  let bannerText = "";
-  let bannerTimer = 0;
-
-  function showToast(text, duration = 1.2) {
-    toastText = text;
-    toastTimer = duration;
-  }
-
-  function showBanner(text, duration = 1.4) {
-    bannerText = text;
-    bannerTimer = duration;
-  }
-
-  // =============================
-  // SIMPLE MAP (RECTANGLE WALLS)
-  // =============================
-  const walls = [
-    // Outer boundaries
-    { x: 40,  y: 40,  w: 880, h: 20 },
-    { x: 40,  y: 480, w: 880, h: 20 },
-    { x: 40,  y: 40,  w: 20,  h: 460 },
-    { x: 900, y: 40,  w: 20,  h: 460 },
-
-    // Interior rooms / corridors
-    { x: 200, y: 40,  w: 20,  h: 200 },
-    { x: 200, y: 300, w: 20,  h: 200 },
-
-    { x: 350, y: 120, w: 20,  h: 360 },
-    { x: 520, y: 40,  w: 20,  h: 260 },
-    { x: 520, y: 360, w: 20,  h: 140 },
-
-    { x: 680, y: 120, w: 20,  h: 360 },
-
-    // Smaller partitions
-    { x: 200, y: 240, w: 150, h: 20 },
-    { x: 520, y: 300, w: 160, h: 20 },
-    { x: 680, y: 260, w: 220, h: 20 }
-  ];
-
-  // Secret "bookshelf" door is drawn like a wall but NOT in walls[]
-  const secretDoor = { x: 350, y: 260, w: 20, h: 60, targetX: 780, targetY: 180 };
-
-  // Laser beams along some corridors
-  const lasers = [
-    { x1: 60,  y1: 220, x2: 180, y2: 220 },
-    { x1: 540, y1: 200, x2: 660, y2: 200 },
-    { x1: 720, y1: 420, x2: 880, y2: 420 }
-  ];
-
-  // Teleport pads (floor runes)
-  const teleports = [
-    { x: 120, y: 440, targetX: 830, targetY: 80,  label: "Records Room" },
-    { x: 830, y: 260, targetX: 110, targetY: 100, label: "Lobby" }
-  ];
-
-  // Courtroom / question gates
-  const questionGates = [];
-  const QUESTION_GATE_POSITIONS = [
-    [110, 120],[110, 200],[110, 360],[260, 80],[260, 170],
-    [260, 400],[430, 90],[430, 180],[430, 260],[430, 430],
-    [600, 90],[600, 180],[600, 260],[600, 430],[760, 90],
-    [760, 180],[760, 280],[760, 360],[840, 150],[840, 340]
-  ];
-
-  // Starting + finish areas
-  const startPosition  = { x: 80,  y: 440 };
-  const finishZone     = { x: 830, y: 430, w: 80, h: 60 };
-
-  const player = {
-    x: startPosition.x,
-    y: startPosition.y,
-    w: PLAYER_SIZE,
-    h: PLAYER_SIZE,
-    vx: 0,
-    vy: 0,
-    lastSafeX: startPosition.x,
-    lastSafeY: startPosition.y
-  };
-
-  // Roaming librarians (enemies)
-  const librarians = [
-    { x: 140, y: 150, w: 26, h: 26, dir: 1, axis: "x", min: 90,  max: 180 },
-    { x: 600, y: 210, w: 26, h: 26, dir: -1,axis: "x", min: 540, max: 660 },
-    { x: 800, y: 380, w: 26, h: 26, dir: -1,axis: "x", min: 720, max: 880 },
-    { x: 300, y: 330, w: 26, h: 26, dir: 1, axis: "y", min: 320, max: 440 }
-  ];
-
-  let librarianHitCooldown = 0;
-
-  // =============================
-  // QUESTION BANK (20 TOTAL)
-  // =============================
-  const QUESTION_BANK = [
-    { text: "What is the main purpose of the U.S. Constitution?", choices: [
-      "To list every citizen's job", "To create a plan for government", "To declare independence from Britain"
-    ], correctIndex: 1 },
-    { text: "The first three words of the Constitution are:", choices: [
-      "We the People", "In Congress Assembled", "Four score"
-    ], correctIndex: 0 },
-    { text: "Which branch makes the laws?", choices: [
-      "Executive", "Legislative", "Judicial"
-    ], correctIndex: 1 },
-    { text: "Which branch carries out / enforces the laws?", choices: [
-      "Executive", "Legislative", "Judicial"
-    ], correctIndex: 0 },
-    { text: "Which branch interprets the laws?", choices: [
-      "Executive", "Legislative", "Judicial"
-    ], correctIndex: 2 },
-    { text: "The first ten amendments are called the:", choices: [
-      "Articles of Confederation", "Bill of Rights", "Federalist Papers"
-    ], correctIndex: 1 },
-    { text: "Which freedom is protected by the 1st Amendment?", choices: [
-      "Right to vote", "Freedom of speech", "Right to bear arms"
-    ], correctIndex: 1 },
-    { text: "The 2nd Amendment protects the right to:", choices: [
-      "Speedy trial", "Free speech", "Keep and bear arms"
-    ], correctIndex: 2 },
-    { text: "The 4th Amendment protects citizens from:", choices: [
-      "Cruel and unusual punishment", "Unreasonable searches and seizures", "Quartering soldiers in homes"
-    ], correctIndex: 1 },
-    { text: "How many U.S. Senators does each state have?", choices: [
-      "Two", "Based on population", "Four"
-    ], correctIndex: 0 },
-    { text: "How many years is one term for a member of the House of Representatives?", choices: [
-      "Two years", "Four years", "Six years"
-    ], correctIndex: 0 },
-    { text: "How many years is one term for a U.S. Senator?", choices: [
-      "Two years", "Four years", "Six years"
-    ], correctIndex: 2 },
-    { text: "How many years is one term for the President?", choices: [
-      "Four years", "Six years", "Eight years"
-    ], correctIndex: 0 },
-    { text: "What is checks and balances?", choices: [
-      "The way Congress pays salaries", "The branches limiting each other's power", "The President writing laws"
-    ], correctIndex: 1 },
-    { text: "Who is Commander in Chief of the military?", choices: [
-      "Chief Justice", "Speaker of the House", "The President"
-    ], correctIndex: 2 },
-    { text: "What document did the Constitution replace?", choices: [
-      "Declaration of Independence", "Articles of Confederation", "Magna Carta"
-    ], correctIndex: 1 },
-    { text: "What can the Supreme Court do if a law violates the Constitution?", choices: [
-      "Rewrite the law", "Ignore it", "Declare it unconstitutional"
-    ], correctIndex: 2 },
-    { text: "An addition or change to the Constitution is called:", choices: [
-      "A veto", "An amendment", "A preamble"
-    ], correctIndex: 1 },
-    { text: "Which principle means that the government's power comes from the people?", choices: [
-      "Popular sovereignty", "Judicial review", "Limited monarchy"
-    ], correctIndex: 0 },
-    { text: "The idea that government power should be divided into three branches is called:", choices: [
-      "Federalism", "Separation of powers", "Due process"
-    ], correctIndex: 1 }
-  ];
-
-  const currentQuestions = QUESTION_BANK.slice(); // 20
-
-  QUESTION_GATE_POSITIONS.forEach((pos, idx) => {
-    questionGates.push({
-      x: pos[0],
-      y: pos[1],
-      radius: 16,
-      qIndex: idx,
-      completed: false,
-      firstTry: true
-    });
-  });
-
-  // =============================
-  // INPUT HANDLING
-  // =============================
-  document.addEventListener("keydown", (e) => {
-    if (e.code === "ArrowLeft"  || e.code === "KeyA") keys.left  = true;
-    if (e.code === "ArrowRight" || e.code === "KeyD") keys.right = true;
-    if (e.code === "ArrowUp"    || e.code === "KeyW") keys.up    = true;
-    if (e.code === "ArrowDown"  || e.code === "KeyS") keys.down  = true;
-  });
-
-  document.addEventListener("keyup", (e) => {
-    if (e.code === "ArrowLeft"  || e.code === "KeyA") keys.left  = false;
-    if (e.code === "ArrowRight" || e.code === "KeyD") keys.right = false;
-    if (e.code === "ArrowUp"    || e.code === "KeyW") keys.up    = false;
-    if (e.code === "ArrowDown"  || e.code === "KeyS") keys.down  = false;
-  });
-
-  function bindTouch(btn, onDown, onUp) {
-    if (!btn) return;
-    const start = (ev) => { ev.preventDefault(); onDown(); };
-    const end   = (ev) => { ev.preventDefault(); onUp(); };
-    btn.addEventListener("touchstart", start, { passive:false });
-    btn.addEventListener("touchend", end, { passive:false });
-    btn.addEventListener("touchcancel", end, { passive:false });
-    btn.addEventListener("mousedown", start);
-    btn.addEventListener("mouseup", end);
-    btn.addEventListener("mouseleave", end);
-  }
-
-  bindTouch(btnLeft,  () => keys.left  = true, () => keys.left  = false);
-  bindTouch(btnRight, () => keys.right = true, () => keys.right = false);
-  bindTouch(btnUp,    () => keys.up    = true, () => keys.up    = false);
-  bindTouch(btnDown,  () => keys.down  = true, () => keys.down  = false);
-
-  // =============================
-  // COLLISION HELPERS
-  // =============================
-  function rectsIntersect(a, b) {
-    return !(
-      a.x + a.w <= b.x ||
-      a.x >= b.x + b.w ||
-      a.y + a.h <= b.y ||
-      a.y >= b.y + b.h
-    );
-  }
-
-  function pointInRect(px, py, r) {
-    return (px >= r.x && px <= r.x + r.w && py >= r.y && py <= r.y + r.h);
-  }
-
-  // Distance from point to line segment (for lasers)
-  function distancePointToSegment(px, py, x1, y1, x2, y2) {
-    const vx = x2 - x1;
-    const vy = y2 - y1;
-    const wx = px - x1;
-    const wy = py - y1;
-    const c1 = vx * wx + vy * wy;
-    if (c1 <= 0) return Math.hypot(px - x1, py - y1);
-    const c2 = vx * vx + vy * vy;
-    if (c2 <= c1) return Math.hypot(px - x2, py - y2);
-    const b = c1 / c2;
-    const bx = x1 + b * vx;
-    const by = y1 + b * vy;
-    return Math.hypot(px - bx, py - by);
-  }
-
-  // =============================
-  // QUESTIONS
-  // =============================
-  let activeGate = null;
-
-  function openQuestion(gate) {
-    if (inQuestion || levelComplete) return;
-    inQuestion = true;
-    gamePaused = true;
-    activeGate = gate;
-
-    const q = currentQuestions[gate.qIndex];
-    qTitle.textContent = "Courtroom " + (gate.qIndex + 1);
-    qText.textContent = q.text;
-    qChoices.innerHTML = "";
-    qFeedback.textContent = "";
-
-    q.choices.forEach((choice, idx) => {
-      const btn = document.createElement("button");
-      btn.className = "choice-btn";
-      btn.textContent = String.fromCharCode(65 + idx) + ") " + choice;
-      btn.addEventListener("click", () => handleAnswer(gate, q, idx, btn));
-      qChoices.appendChild(btn);
-    });
-
-    qOverlay.classList.remove("hidden");
-    hudStatus.textContent = "Status: In court";
-  }
-
-  function handleAnswer(gate, question, selectedIndex, btnEl) {
-    const isCorrect = (selectedIndex === question.correctIndex);
-    if (isCorrect) {
-      btnEl.classList.add("correct");
-      qFeedback.textContent = "Correct!";
-      if (gate.firstTry) {
-        score += 25;
-        firstTryCorrectCount++;
-        showToast("+25 | First try!");
-      } else {
-        score += 10;
-        showToast("+10 | Got it!");
-      }
-      gate.completed = true;
-      questionsCleared = questionGates.filter(g => g.completed).length;
-      updateHud();
-      showBanner(`Courtrooms cleared: ${questionsCleared}/20`);
-
-      setTimeout(() => {
-        closeQuestion();
-        checkLevelComplete();
-      }, 450);
-    } else {
-      btnEl.classList.add("wrong");
-      qFeedback.textContent = "Incorrect. Try again.";
-      gate.firstTry = false;
-      score -= 10;
-      showToast("-10 | Re-check the clause");
-      updateHud();
-    }
-  }
-
-  function closeQuestion() {
-    qOverlay.classList.add("hidden");
-    inQuestion = false;
-    gamePaused = false;
-    activeGate = null;
-    if (!levelComplete) hudStatus.textContent = "Status: Exploring";
-  }
-
-  qCloseBtn.addEventListener("click", () => {
-    if (activeGate && activeGate.completed) {
-      closeQuestion();
-    } else {
-      qFeedback.textContent = "Answer correctly to continue.";
-    }
-  });
-
-  replayBtn.addEventListener("click", () => {
-    resetGame();
-  });
-
-  if (hubBtn) {
-    hubBtn.addEventListener("click", () => {
-      window.location.href = "/arcade-review-games/";
-    });
-  }
-
-  function updateHud() {
-    if (hudScore) {
-      hudScore.textContent = "Score: " + score;
-    }
-    if (hudQuestions) {
-      hudQuestions.textContent = "Courtrooms: " + questionsCleared + " / 20";
-    }
-    if (hudTimer) {
-      const mins = Math.max(0, Math.floor(timeRemaining / 60));
-      const secs = Math.max(0, Math.floor(timeRemaining % 60));
-      hudTimer.textContent = `Time: ${String(mins).padStart(2,"0")}:${String(secs).padStart(2,"0")}`;
-    }
-  }
-
-  function triggerEndScreen(reason="complete") {
-    levelComplete = true;
-    gamePaused = true;
-    inQuestion = false;
-
-    let timeBonus = Math.max(0, Math.floor(timeRemaining) * 2);
-    if (reason !== "complete") timeBonus = 0;
-
-    const accuracy = (firstTryCorrectCount / QUESTION_BANK.length) * 100;
-    score += timeBonus;
-
-    let msg = `Score: ${score} points\n`;
-    msg += `First-try correct: ${firstTryCorrectCount}/${QUESTION_BANK.length} (${accuracy.toFixed(0)}%)\n`;
-    msg += `Time bonus: ${timeBonus} pts`;
-
-    if (reason === "timeout") {
-      hudStatus.textContent = "Status: Time up";
-      endSummary.textContent = "Time expired in the courthouse.\n\n" + msg;
-    } else {
-      hudStatus.textContent = "Status: Case closed";
-      endSummary.textContent = "You reached the final judge's chambers!\n\n" + msg;
+  <style>
+    :root {
+      --bg: #020617;
+      --panel: #020617;
+      --accent: #facc15;
+      --accent-soft: rgba(250,204,21,0.14);
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --border: rgba(148,163,184,0.55);
+      --danger: #f97316;
+      --good: #22c55e;
     }
 
-    endOverlay.classList.remove("hidden");
-  }
-
-  function checkLevelComplete() {
-    if (questionsCleared === QUESTION_BANK.length &&
-        rectsIntersect(player, finishZone)) {
-      triggerEndScreen("complete");
-    }
-  }
-
-  // =============================
-  // GAME STATE
-  // =============================
-  function resetGame() {
-    player.x = startPosition.x;
-    player.y = startPosition.y;
-    player.vx = 0;
-    player.vy = 0;
-    player.lastSafeX = startPosition.x;
-    player.lastSafeY = startPosition.y;
-
-    librarianHitCooldown = 0;
-    score = 0;
-    questionsCleared = 0;
-    firstTryCorrectCount = 0;
-    timeRemaining = LEVEL_TIME;
-    gamePaused = false;
-    inQuestion = false;
-    levelComplete = false;
-    toastText = "";
-    toastTimer = 0;
-    bannerText = "";
-    bannerTimer = 0;
-
-    questionGates.forEach(g => {
-      g.completed = false;
-      g.firstTry = true;
-    });
-
-    qOverlay.classList.add("hidden");
-    endOverlay.classList.add("hidden");
-    hudStatus.textContent = "Status: Exploring";
-    updateHud();
-  }
-
-  // =============================
-  // UPDATE LOOP
-  // =============================
-  function update(dt) {
-    if (gamePaused) return;
-
-    // Timer
-    timeRemaining -= dt;
-    if (timeRemaining <= 0 && !levelComplete) {
-      timeRemaining = 0;
-      updateHud();
-      triggerEndScreen("timeout");
-      return;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    // Laser on/off cycle
-    laserTimer -= dt;
-    if (laserTimer <= 0) {
-      lasersActive = !lasersActive;
-      laserTimer = lasersActive ? LASER_CYCLE_ON : LASER_CYCLE_OFF;
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #020617 0%, #000 70%);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px 8px 28px;
+      gap: 10px;
     }
 
-    if (toastTimer > 0) {
-      toastTimer -= dt;
-      if (toastTimer < 0) toastTimer = 0;
-    }
-    if (bannerTimer > 0) {
-      bannerTimer -= dt;
-      if (bannerTimer < 0) bannerTimer = 0;
-    }
-
-    if (librarianHitCooldown > 0) {
-      librarianHitCooldown -= dt;
-      if (librarianHitCooldown < 0) librarianHitCooldown = 0;
+    h1 {
+      font-family: "Press Start 2P", system-ui, sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      text-shadow: 0 2px 0 #000;
+      text-align: center;
     }
 
-    // Movement input
-    let moveX = 0, moveY = 0;
-    if (keys.left)  moveX -= 1;
-    if (keys.right) moveX += 1;
-    if (keys.up)    moveY -= 1;
-    if (keys.down)  moveY += 1;
-
-    // Normalize diagonal
-    if (moveX !== 0 && moveY !== 0) {
-      const inv = 1 / Math.sqrt(2);
-      moveX *= inv;
-      moveY *= inv;
+    .subtitle {
+      font-size: 0.8rem;
+      color: var(--muted);
+      max-width: 900px;
+      text-align: center;
+      line-height: 1.5;
     }
 
-    player.vx = moveX * PLAYER_SPEED;
-    player.vy = moveY * PLAYER_SPEED;
+    #gameContainer {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 14px 40px rgba(0,0,0,0.9);
+      border: 2px solid var(--border);
+      background: #000;
+    }
 
-    // Move with wall collisions (axis-separated)
-    // X axis
-    player.x += player.vx * dt;
-    let playerRect = { x: player.x, y: player.y, w: player.w, h: player.h };
-    for (const w of walls) {
-      if (rectsIntersect(playerRect, w)) {
-        if (player.vx > 0) {
-          player.x = w.x - player.w;
-        } else if (player.vx < 0) {
-          player.x = w.x + w.w;
-        }
+    canvas {
+      display: block;
+      background: #020617;
+      image-rendering: pixelated;
+    }
+
+    #hud {
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      right: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.65rem;
+      background: rgba(0,0,0,0.75);
+      padding: 4px 10px;
+      border-radius: 999px;
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(148,163,184,0.55);
+      font-family: "Press Start 2P", system-ui, sans-serif;
+      z-index: 5;
+    }
+
+    #hud span {
+      white-space: nowrap;
+    }
+
+    #touchControls {
+      position: absolute;
+      bottom: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      padding: 4px 10px;
+      background: rgba(0,0,0,0.75);
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.7);
+      backdrop-filter: blur(8px);
+      z-index: 6;
+    }
+
+    .ctrl-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 2px solid rgba(148,163,184,0.9);
+      background: #020617;
+      color: var(--text);
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-family: "Press Start 2P", system-ui, sans-serif;
+      transition: transform 0.08s, box-shadow 0.08s, background 0.08s;
+    }
+
+    .ctrl-btn:active {
+      transform: translateY(1px);
+      background: #020617;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.7) inset;
+    }
+
+    @media (min-width: 900px) {
+      #touchControls {
+        display: none;
       }
     }
 
-    // Y axis
-    player.y += player.vy * dt;
-    playerRect = { x: player.x, y: player.y, w: player.w, h: player.h };
-    for (const w of walls) {
-      if (rectsIntersect(playerRect, w)) {
-        if (player.vy > 0) {
-          player.y = w.y - player.h;
-        } else if (player.vy < 0) {
-          player.y = w.y + w.h;
-        }
+    @media (max-width: 900px) {
+      canvas {
+        width: 100vw;
+        height: auto;
+      }
+      h1 {
+        font-size: 0.8rem;
+      }
+      .subtitle {
+        font-size: 0.74rem;
       }
     }
 
-    // Clamp inside outer bounds
-    player.x = Math.max(50, Math.min(player.x, 900 - player.w));
-    player.y = Math.max(50, Math.min(player.y, 480 - player.h));
-
-    const playerCenterX = player.x + player.w / 2;
-    const playerCenterY = player.y + player.h / 2;
-
-    // Lasers: only dangerous when ACTIVE
-    let inLaserNow = false;
-    if (lasersActive) {
-      for (const ls of lasers) {
-        if (distancePointToSegment(playerCenterX, playerCenterY, ls.x1, ls.y1, ls.x2, ls.y2) < 12) {
-          inLaserNow = true;
-          break;
-        }
-      }
+    #questionOverlay,
+    #endOverlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at top, rgba(0,0,0,0.96), rgba(0,0,0,0.98));
+      z-index: 10;
     }
 
-    // Save safe spot when not in active lasers
-    if (!inLaserNow) {
-      player.lastSafeX = player.x;
-      player.lastSafeY = player.y;
+    .hidden {
+      display: none !important;
     }
 
-    // Laser hit
-    if (inLaserNow) {
-      score -= 10;
-      showToast("-10 | Laser alarm!");
-      hudStatus.textContent = "Status: Alarm triggered";
-      player.x = player.lastSafeX;
-      player.y = player.lastSafeY;
-      updateHud();
-    } else if (!inQuestion && !levelComplete) {
-      hudStatus.textContent = "Status: Exploring";
+    .panel {
+      background: #020617;
+      border-radius: 14px;
+      padding: 18px 18px 14px;
+      max-width: 480px;
+      width: 92%;
+      border: 2px solid rgba(250,204,21,0.6);
+      box-shadow: 0 18px 44px rgba(0,0,0,0.95);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 0.84rem;
+      color: var(--text);
     }
+
+    .panel h2 {
+      font-family: "Press Start 2P", system-ui, sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .choices {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .choice-btn {
+      border-radius: 999px;
+      border: 0;
+      padding: 7px 10px;
+      font-size: 0.8rem;
+      text-align: left;
+      cursor: pointer;
+      background: #020617;
+      color: var(--text);
+      border: 1px solid rgba(148,163,184,0.5);
+      transition: background 0.08s, transform 0.08s, box-shadow 0.1s, border-color 0.1s;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .choice-btn:hover {
+      background: #0b1120;
+      transform: translateY(-1px);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.6);
+      border-color: rgba(250,204,21,0.7);
+    }
+
+    .choice-btn.correct {
+      background: #16a34a !important;
+      border-color: #16a34a !important;
+    }
+
+    .choice-btn.wrong {
+      background: #b91c1c !important;
+      border-color: #b91c1c !important;
+    }
+
+    .panel-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.7rem;
+      opacity: 0.9;
+      margin-top: 4px;
+      gap: 8px;
+    }
+
+    .primary-btn {
+      border-radius: 999px;
+      border: none;
+      padding: 6px 12px;
+      background: var(--accent);
+      color: #111827;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.72rem;
+      font-family: "Press Start 2P", system-ui, sans-serif;
+      text-transform: uppercase;
+    }
+
+    .primary-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.65);
+    }
+  </style>
+</head>
+<body>
+  <h1>Teach Arcade · Constitution Courthouse Run</h1>
+  <p class="subtitle">
+    Top-down courthouse maze: weave through shelves and corridors, dodge roaming librarians
+    and laser alarms, discover secret passages, and clear 20 question courts on the U.S.
+    Constitution and Bill of Rights before time runs out.
+    Use ◀ ▶ ▲ ▼ or on-screen arrows to move.
+  </p>
+
+  <div id="gameContainer">
+    <canvas id="gameCanvas" width="960" height="520"></canvas>
+
+    <div id="hud">
+      <span id="hudScore">Score: 0</span>
+      <span id="hudQuestions">Courtrooms: 0 / 20</span>
+      <span id="hudTimer">Time: 05:00</span>
+      <span id="hudStatus">Status: Exploring</span>
+    </div>
+
+    <!-- Touch Controls -->
+    <div id="touchControls">
+      <button id="btnLeft" class="ctrl-btn" aria-label="Move left">◀</button>
+      <button id="btnUp" class="ctrl-btn" aria-label="Move up">▲</button>
+      <button id="btnDown" class="ctrl-btn" aria-label="Move down">▼</button>
+      <button id="btnRight" class="ctrl-btn" aria-label="Move right">▶</button>
+    </div>
+
+    <!-- Question Overlay -->
+    <div id="questionOverlay" class="hidden">
+      <div class="panel">
+        <h2 id="qTitle">Courtroom</h2>
+        <p id="qText"></p>
+        <div class="choices" id="choicesContainer"></div>
+        <div class="panel-footer">
+          <span id="qFeedback"></span>
+          <button id="qCloseBtn" class="primary-btn">Resume</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- End Overlay -->
+    <div id="endOverlay" class="hidden">
+      <div class="panel">
+        <h2>Case Closed</h2>
+        <p id="endSummary"></p>
+        <div class="panel-footer">
+          <button id="replayBtn" class="primary-btn">Replay</button>
+          <button id="hubBtn" class="primary-btn">Back to Arcade</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // =============================
+    // CONFIG & CONSTANTS
+    // =============================
+    const canvas = document.getElementById("gameCanvas");
+    const ctx = canvas.getContext("2d");
+
+    const LEVEL_TIME = 5 * 60; // 5 minutes
+    const PLAYER_SPEED = 230;
+    const LIBRARIAN_SPEED = 80;
+    const PLAYER_SIZE = 26;
+
+    // Laser on/off timing
+    const LASER_CYCLE_ON = 1.5;
+    const LASER_CYCLE_OFF = 1.0;
+    let laserTimer = LASER_CYCLE_ON;
+    let lasersActive = true;
+
+    let lastTime = 0;
+    let timeRemaining = LEVEL_TIME;
+    let score = 0;
+    let questionsCleared = 0;
+    let firstTryCorrectCount = 0;
+    let gamePaused = false;
+    let inQuestion = false;
+    let levelComplete = false;
+
+    const keys = { left:false, right:false, up:false, down:false };
+
+    const hudScore     = document.getElementById("hudScore");
+    const hudQuestions = document.getElementById("hudQuestions");
+    const hudTimer     = document.getElementById("hudTimer");
+    const hudStatus    = document.getElementById("hudStatus");
+
+    const qOverlay  = document.getElementById("questionOverlay");
+    const qTitle    = document.getElementById("qTitle");
+    const qText     = document.getElementById("qText");
+    const qChoices  = document.getElementById("choicesContainer");
+    const qFeedback = document.getElementById("qFeedback");
+    const qCloseBtn = document.getElementById("qCloseBtn");
+
+    const endOverlay = document.getElementById("endOverlay");
+    const endSummary = document.getElementById("endSummary");
+    const replayBtn  = document.getElementById("replayBtn");
+    const hubBtn     = document.getElementById("hubBtn");
+
+    const btnLeft  = document.getElementById("btnLeft");
+    const btnRight = document.getElementById("btnRight");
+    const btnUp    = document.getElementById("btnUp");
+    const btnDown  = document.getElementById("btnDown");
+
+    let toastText = "";
+    let toastTimer = 0;
+    let bannerText = "";
+    let bannerTimer = 0;
+
+    function showToast(text, duration = 1.2) {
+      toastText = text;
+      toastTimer = duration;
+    }
+
+    function showBanner(text, duration = 1.4) {
+      bannerText = text;
+      bannerTimer = duration;
+    }
+
+    // =============================
+    // MAP / GEOMETRY
+    // =============================
+    const walls = [
+      // Outer boundaries
+      { x: 40,  y: 40,  w: 880, h: 20 },
+      { x: 40,  y: 480, w: 880, h: 20 },
+      { x: 40,  y: 40,  w: 20,  h: 460 },
+      { x: 900, y: 40,  w: 20,  h: 460 },
+
+      // Interior passages (library shelves / walls)
+      { x: 200, y: 40,  w: 20,  h: 200 },
+      { x: 200, y: 300, w: 20,  h: 200 },
+      { x: 350, y: 120, w: 20,  h: 360 },
+      { x: 520, y: 40,  w: 20,  h: 260 },
+      { x: 520, y: 360, w: 20,  h: 140 },
+      { x: 680, y: 120, w: 20,  h: 360 },
+
+      // Smaller partitions
+      { x: 200, y: 240, w: 150, h: 20 },
+      { x: 520, y: 300, w: 160, h: 20 },
+      { x: 680, y: 260, w: 220, h: 20 }
+    ];
 
     // Secret bookshelf door
-    if (rectsIntersect(player, secretDoor)) {
-      showToast("Secret passage discovered!");
-      player.x = secretDoor.targetX;
-      player.y = secretDoor.targetY;
-      player.lastSafeX = player.x;
-      player.lastSafeY = player.y;
-    }
+    const secretDoor = { x: 350, y: 260, w: 20, h: 60, targetX: 780, targetY: 180 };
+
+    // Lasers
+    const lasers = [
+      { x1: 60,  y1: 220, x2: 180, y2: 220 },
+      { x1: 540, y1: 200, x2: 660, y2: 200 },
+      { x1: 720, y1: 420, x2: 880, y2: 420 }
+    ];
 
     // Teleport pads
-    for (const tp of teleports) {
-      const dx = playerCenterX - tp.x;
-      const dy = playerCenterY - tp.y;
-      const dist = Math.sqrt(dx*dx + dy*dy);
-      if (dist < 18) {
-        showToast("Teleported to " + tp.label);
-        player.x = tp.targetX;
-        player.y = tp.targetY;
-        player.lastSafeX = player.x;
-        player.lastSafeY = player.y;
-      }
+    const teleports = [
+      { x: 120, y: 440, targetX: 830, targetY: 80,  label: "Records Room" },
+      { x: 830, y: 260, targetX: 110, targetY: 100, label: "Lobby" }
+    ];
+
+    // 20 question gates
+    const questionGates = [];
+    const QUESTION_GATE_POSITIONS = [
+      [110, 120],[110, 200],[110, 360],[260, 80],[260, 170],
+      [260, 400],[430, 90],[430, 180],[430, 260],[430, 430],
+      [600, 90],[600, 180],[600, 260],[600, 430],[760, 90],
+      [760, 180],[760, 280],[760, 360],[840, 150],[840, 340]
+    ];
+
+    const startPosition = { x: 80, y: 440 };
+    const finishZone = { x: 830, y: 430, w: 80, h: 60 };
+
+    const player = {
+      x: startPosition.x,
+      y: startPosition.y,
+      w: PLAYER_SIZE,
+      h: PLAYER_SIZE,
+      vx: 0,
+      vy: 0,
+      lastSafeX: startPosition.x,
+      lastSafeY: startPosition.y
+    };
+
+    const librarians = [
+      { x: 140, y: 150, w: 26, h: 26, dir: 1, axis: "x", min: 90,  max: 180 },
+      { x: 600, y: 210, w: 26, h: 26, dir: -1,axis: "x", min: 540, max: 660 },
+      { x: 800, y: 380, w: 26, h: 26, dir: -1,axis: "x", min: 720, max: 880 },
+      { x: 300, y: 330, w: 26, h: 26, dir: 1, axis: "y", min: 320, max: 440 }
+    ];
+
+    let librarianHitCooldown = 0;
+
+    // =============================
+    // QUESTION BANK (20)
+    // =============================
+    const QUESTION_BANK = [
+      { text: "What is the main purpose of the U.S. Constitution?", choices: [
+        "To list every citizen's job", "To create a plan for government", "To declare independence from Britain"
+      ], correctIndex: 1 },
+      { text: "The first three words of the Constitution are:", choices: [
+        "We the People", "In Congress Assembled", "Four score"
+      ], correctIndex: 0 },
+      { text: "Which branch makes the laws?", choices: [
+        "Executive", "Legislative", "Judicial"
+      ], correctIndex: 1 },
+      { text: "Which branch carries out (enforces) the laws?", choices: [
+        "Executive", "Legislative", "Judicial"
+      ], correctIndex: 0 },
+      { text: "Which branch interprets the laws?", choices: [
+        "Executive", "Legislative", "Judicial"
+      ], correctIndex: 2 },
+      { text: "The first ten amendments are called the:", choices: [
+        "Articles of Confederation", "Bill of Rights", "Federalist Papers"
+      ], correctIndex: 1 },
+      { text: "Which freedom is protected by the 1st Amendment?", choices: [
+        "Right to vote", "Freedom of speech", "Right to bear arms"
+      ], correctIndex: 1 },
+      { text: "The 2nd Amendment protects the right to:", choices: [
+        "Speedy trial", "Free speech", "Keep and bear arms"
+      ], correctIndex: 2 },
+      { text: "The 4th Amendment protects citizens from:", choices: [
+        "Cruel and unusual punishment", "Unreasonable searches and seizures", "Quartering soldiers in homes"
+      ], correctIndex: 1 },
+      { text: "How many U.S. Senators does each state have?", choices: [
+        "Two", "Based on population", "Four"
+      ], correctIndex: 0 },
+      { text: "How many years is one term for a member of the House of Representatives?", choices: [
+        "Two years", "Four years", "Six years"
+      ], correctIndex: 0 },
+      { text: "How many years is one term for a U.S. Senator?", choices: [
+        "Two years", "Four years", "Six years"
+      ], correctIndex: 2 },
+      { text: "How many years is one term for the President?", choices: [
+        "Four years", "Six years", "Eight years"
+      ], correctIndex: 0 },
+      { text: "What is checks and balances?", choices: [
+        "The way Congress pays salaries", "The branches limiting each other's power", "The President writing laws"
+      ], correctIndex: 1 },
+      { text: "Who is Commander in Chief of the military?", choices: [
+        "Chief Justice", "Speaker of the House", "The President"
+      ], correctIndex: 2 },
+      { text: "What document did the Constitution replace?", choices: [
+        "Declaration of Independence", "Articles of Confederation", "Magna Carta"
+      ], correctIndex: 1 },
+      { text: "What can the Supreme Court do if a law violates the Constitution?", choices: [
+        "Rewrite the law", "Ignore it", "Declare it unconstitutional"
+      ], correctIndex: 2 },
+      { text: "An addition or change to the Constitution is called:", choices: [
+        "A veto", "An amendment", "A preamble"
+      ], correctIndex: 1 },
+      { text: "Which principle means that government power comes from the people?", choices: [
+        "Popular sovereignty", "Judicial review", "Limited monarchy"
+      ], correctIndex: 0 },
+      { text: "The idea that government power is divided into three branches is called:", choices: [
+        "Federalism", "Separation of powers", "Due process"
+      ], correctIndex: 1 }
+    ];
+
+    QUESTION_GATE_POSITIONS.forEach((pos, idx) => {
+      questionGates.push({
+        x: pos[0],
+        y: pos[1],
+        radius: 16,
+        qIndex: idx,
+        completed: false,
+        firstTry: true
+      });
+    });
+
+    // =============================
+    // INPUT
+    // =============================
+    document.addEventListener("keydown", (e) => {
+      if (e.code === "ArrowLeft"  || e.code === "KeyA") keys.left  = true;
+      if (e.code === "ArrowRight" || e.code === "KeyD") keys.right = true;
+      if (e.code === "ArrowUp"    || e.code === "KeyW") keys.up    = true;
+      if (e.code === "ArrowDown"  || e.code === "KeyS") keys.down  = true;
+    });
+
+    document.addEventListener("keyup", (e) => {
+      if (e.code === "ArrowLeft"  || e.code === "KeyA") keys.left  = false;
+      if (e.code === "ArrowRight" || e.code === "KeyD") keys.right = false;
+      if (e.code === "ArrowUp"    || e.code === "KeyW") keys.up    = false;
+      if (e.code === "ArrowDown"  || e.code === "KeyS") keys.down  = false;
+    });
+
+    function bindTouch(btn, onDown, onUp) {
+      if (!btn) return;
+      const start = (ev) => { ev.preventDefault(); onDown(); };
+      const end   = (ev) => { ev.preventDefault(); onUp(); };
+      btn.addEventListener("touchstart", start, { passive:false });
+      btn.addEventListener("touchend", end, { passive:false });
+      btn.addEventListener("touchcancel", end, { passive:false });
+      btn.addEventListener("mousedown", start);
+      btn.addEventListener("mouseup", end);
+      btn.addEventListener("mouseleave", end);
     }
 
-    // Librarians
-    for (const lib of librarians) {
-      if (lib.axis === "x") {
-        lib.x += lib.dir * LIBRARIAN_SPEED * dt;
-        if (lib.x < lib.min || lib.x > lib.max) lib.dir *= -1;
-      } else {
-        lib.y += lib.dir * LIBRARIAN_SPEED * dt;
-        if (lib.y < lib.min || lib.y > lib.max) lib.dir *= -1;
-      }
+    bindTouch(btnLeft,  () => keys.left  = true, () => keys.left  = false);
+    bindTouch(btnRight, () => keys.right = true, () => keys.right = false);
+    bindTouch(btnUp,    () => keys.up    = true, () => keys.up    = false);
+    bindTouch(btnDown,  () => keys.down  = true, () => keys.down  = false);
 
-      const libRect = { x: lib.x, y: lib.y, w: lib.w, h: lib.h };
-      if (librarianHitCooldown === 0 && rectsIntersect(player, libRect)) {
-        librarianHitCooldown = 1.0;
-        score -= 15;
-        showToast("-15 | Librarian caught you!");
-        hudStatus.textContent = "Status: Caught by librarian";
-        player.x = player.lastSafeX;
-        player.y = player.lastSafeY;
+    // =============================
+    // COLLISION HELPERS
+    // =============================
+    function rectsIntersect(a, b) {
+      return !(
+        a.x + a.w <= b.x ||
+        a.x >= b.x + b.w ||
+        a.y + a.h <= b.y ||
+        a.y >= b.y + b.h
+      );
+    }
+
+    function distancePointToSegment(px, py, x1, y1, x2, y2) {
+      const vx = x2 - x1;
+      const vy = y2 - y1;
+      const wx = px - x1;
+      const wy = py - y1;
+      const c1 = vx * wx + vy * wy;
+      if (c1 <= 0) return Math.hypot(px - x1, py - y1);
+      const c2 = vx * vx + vy * vy;
+      if (c2 <= c1) return Math.hypot(px - x2, py - y2);
+      const b = c1 / c2;
+      const bx = x1 + b * vx;
+      const by = y1 + b * vy;
+      return Math.hypot(px - bx, py - by);
+    }
+
+    // =============================
+    // QUESTIONS
+    // =============================
+    let activeGate = null;
+
+    function openQuestion(gate) {
+      if (inQuestion || levelComplete) return;
+      inQuestion = true;
+      gamePaused = true;
+      activeGate = gate;
+
+      const q = QUESTION_BANK[gate.qIndex];
+      qTitle.textContent = "Courtroom " + (gate.qIndex + 1);
+      qText.textContent = q.text;
+      qChoices.innerHTML = "";
+      qFeedback.textContent = "";
+
+      q.choices.forEach((choice, idx) => {
+        const btn = document.createElement("button");
+        btn.className = "choice-btn";
+        btn.textContent = String.fromCharCode(65 + idx) + ") " + choice;
+        btn.addEventListener("click", () => handleAnswer(gate, q, idx, btn));
+        qChoices.appendChild(btn);
+      });
+
+      qOverlay.classList.remove("hidden");
+      hudStatus.textContent = "Status: In court";
+    }
+
+    function handleAnswer(gate, question, selectedIndex, btnEl) {
+      const isCorrect = (selectedIndex === question.correctIndex);
+      if (isCorrect) {
+        btnEl.classList.add("correct");
+        qFeedback.textContent = "Correct!";
+        if (gate.firstTry) {
+          score += 25;
+          firstTryCorrectCount++;
+          showToast("+25 | First try!");
+        } else {
+          score += 10;
+          showToast("+10 | Got it!");
+        }
+        gate.completed = true;
+        questionsCleared = questionGates.filter(g => g.completed).length;
+        updateHud();
+        showBanner(`Courtrooms cleared: ${questionsCleared}/20`);
+
+        setTimeout(() => {
+          closeQuestion();
+          checkLevelComplete();
+        }, 450);
+      } else {
+        btnEl.classList.add("wrong");
+        qFeedback.textContent = "Incorrect. Try again.";
+        gate.firstTry = false;
+        score -= 10;
+        showToast("-10 | Re-check the clause");
         updateHud();
       }
     }
 
-    // Question gates
-    for (const gate of questionGates) {
-      if (gate.completed) continue;
-      const dx = playerCenterX - gate.x;
-      const dy = playerCenterY - gate.y;
-      const dist = Math.sqrt(dx*dx + dy*dy);
-      if (dist < gate.radius + 10) {
-        openQuestion(gate);
-        break;
-      }
+    function closeQuestion() {
+      qOverlay.classList.add("hidden");
+      inQuestion = false;
+      gamePaused = false;
+      activeGate = null;
+      if (!levelComplete) hudStatus.textContent = "Status: Exploring";
     }
 
-    // Finish zone (only after all Qs)
-    if (!levelComplete && questionsCleared === QUESTION_BANK.length && rectsIntersect(player, finishZone)) {
-      triggerEndScreen("complete");
-    }
-
-    updateHud();
-  }
-
-  // =============================
-  // DRAWING – LIBRARY LOOK
-  // =============================
-  function draw() {
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-
-    // Floor: warm, carpeted library feel
-    const grad = ctx.createRadialGradient(
-      canvas.width/2, canvas.height/2, 40,
-      canvas.width/2, canvas.height/2, 520
-    );
-    grad.addColorStop(0, "#1f2937"); // center
-    grad.addColorStop(1, "#020617"); // edges
-    ctx.fillStyle = grad;
-    ctx.fillRect(0,0,canvas.width,canvas.height);
-
-    // Subtle carpet stripes
-    ctx.strokeStyle = "rgba(15,23,42,0.6)";
-    ctx.lineWidth = 1;
-    for (let y = 60; y <= 480; y += 16) {
-      ctx.beginPath();
-      ctx.moveTo(48, y);
-      ctx.lineTo(912, y);
-      ctx.stroke();
-    }
-
-    // Walls as tall bookshelves
-    walls.forEach(w => {
-      // Shelf body
-      ctx.fillStyle = "#111827";
-      ctx.fillRect(w.x, w.y, w.w, w.h);
-      // Wood edges
-      ctx.strokeStyle = "#4b5563";
-      ctx.lineWidth = 2;
-      ctx.strokeRect(w.x, w.y, w.w, w.h);
-
-      // Shelf lines to look like books
-      ctx.fillStyle = "#1f2937";
-      const stripeCount = Math.max(2, Math.floor((w.h / 16)));
-      for (let i = 0; i < stripeCount; i++) {
-        const sy = w.y + 4 + i * 12;
-        if (sy + 6 > w.y + w.h - 4) break;
-        ctx.fillRect(w.x + 3, sy, w.w - 6, 6);
-      }
-    });
-
-    // Secret bookshelf door – looks like shelf but is passable
-    ctx.fillStyle = "#111827";
-    ctx.fillRect(secretDoor.x, secretDoor.y, secretDoor.w, secretDoor.h);
-    ctx.strokeStyle = "#22c55e"; // slight outline hint
-    ctx.lineWidth = 2;
-    ctx.strokeRect(secretDoor.x, secretDoor.y, secretDoor.w, secretDoor.h);
-    ctx.fillStyle = "#1f2937";
-    for (let i = 0; i < 4; i++) {
-      ctx.fillRect(secretDoor.x+3, secretDoor.y+4 + i*12, secretDoor.w-6, 6);
-    }
-
-    // Teleport pads – glowing floor runes
-    teleports.forEach(tp => {
-      ctx.beginPath();
-      ctx.arc(tp.x, tp.y, 16, 0, Math.PI*2);
-      ctx.fillStyle = "rgba(56,189,248,0.18)";
-      ctx.fill();
-      ctx.strokeStyle = "#38bdf8";
-      ctx.lineWidth = 2;
-      ctx.stroke();
-      ctx.beginPath();
-      ctx.arc(tp.x, tp.y, 8, 0, Math.PI*2);
-      ctx.stroke();
-
-      ctx.fillStyle = "#e5e7eb";
-      ctx.font = "7px 'Press Start 2P', system-ui";
-      ctx.textAlign = "center";
-      ctx.fillText("TP", tp.x, tp.y+3);
-    });
-
-    // Finish zone (final judge / reference desk)
-    ctx.fillStyle = "rgba(250,204,21,0.18)";
-    ctx.fillRect(finishZone.x, finishZone.y, finishZone.w, finishZone.h);
-    ctx.strokeStyle = "#facc15";
-    ctx.lineWidth = 2;
-    ctx.strokeRect(finishZone.x, finishZone.y, finishZone.w, finishZone.h);
-    ctx.fillStyle = "#facc15";
-    ctx.font = "7px 'Press Start 2P', system-ui";
-    ctx.textAlign = "center";
-    ctx.fillText("FINAL", finishZone.x + finishZone.w/2, finishZone.y + 20);
-    ctx.fillText("CHAMBER", finishZone.x + finishZone.w/2, finishZone.y + 32);
-
-    // Lasers – bright when active, dim tubes when off
-    lasers.forEach(ls => {
-      if (lasersActive) {
-        const g = ctx.createLinearGradient(ls.x1, ls.y1, ls.x2, ls.y2);
-        g.addColorStop(0, "rgba(248,113,113,0.08)");
-        g.addColorStop(0.5, "#f97316");
-        g.addColorStop(1, "rgba(248,113,113,0.08)");
-        ctx.strokeStyle = g;
-        ctx.lineWidth = 4;
+    qCloseBtn.addEventListener("click", () => {
+      if (activeGate && activeGate.completed) {
+        closeQuestion();
       } else {
-        ctx.strokeStyle = "rgba(55,65,81,0.6)";
-        ctx.lineWidth = 2;
+        qFeedback.textContent = "Answer correctly to continue.";
       }
-      ctx.beginPath();
-      ctx.moveTo(ls.x1, ls.y1);
-      ctx.lineTo(ls.x2, ls.y2);
-      ctx.stroke();
-
-      // Laser nodes
-      ctx.fillStyle = lasersActive ? "#fed7aa" : "#4b5563";
-      ctx.beginPath();
-      ctx.arc(ls.x1, ls.y1, 4, 0, Math.PI*2);
-      ctx.arc(ls.x2, ls.y2, 4, 0, Math.PI*2);
-      ctx.fill();
     });
 
-    // Question gates
-    questionGates.forEach(g => {
-      const radius = g.radius;
-      const glow = g.completed ? "rgba(34,197,94,0.25)" : "rgba(250,204,21,0.25)";
-      const color = g.completed ? "#22c55e" : "#facc15";
+    replayBtn.addEventListener("click", () => {
+      resetGame();
+    });
 
-      ctx.beginPath();
-      ctx.arc(g.x, g.y, radius+6, 0, Math.PI*2);
-      ctx.fillStyle = glow;
-      ctx.fill();
+    hubBtn.addEventListener("click", () => {
+      window.location.href = "/arcade-review-games/";
+    });
 
-      ctx.beginPath();
-      ctx.arc(g.x, g.y, radius, 0, Math.PI*2);
-      ctx.strokeStyle = color;
+    function updateHud() {
+      const mins = Math.max(0, Math.floor(timeRemaining / 60));
+      const secs = Math.max(0, Math.floor(timeRemaining % 60));
+      hudScore.textContent = "Score: " + score;
+      hudQuestions.textContent = "Courtrooms: " + questionsCleared + " / 20";
+      hudTimer.textContent = `Time: ${String(mins).padStart(2,"0")}:${String(secs).padStart(2,"0")}`;
+    }
+
+    function triggerEndScreen(reason="complete") {
+      levelComplete = true;
+      gamePaused = true;
+      inQuestion = false;
+
+      let timeBonus = Math.max(0, Math.floor(timeRemaining) * 2);
+      if (reason !== "complete") timeBonus = 0;
+
+      const accuracy = (firstTryCorrectCount / QUESTION_BANK.length) * 100;
+      score += timeBonus;
+
+      let msg = `Score: ${score} points\n`;
+      msg += `First-try correct: ${firstTryCorrectCount}/${QUESTION_BANK.length} (${accuracy.toFixed(0)}%)\n`;
+      msg += `Time bonus: ${timeBonus} pts`;
+
+      if (reason === "timeout") {
+        hudStatus.textContent = "Status: Time up";
+        endSummary.textContent = "Time expired in the courthouse.\n\n" + msg;
+      } else {
+        hudStatus.textContent = "Status: Case closed";
+        endSummary.textContent = "You reached the final judge's chambers!\n\n" + msg;
+      }
+
+      endOverlay.classList.remove("hidden");
+    }
+
+    function checkLevelComplete() {
+      if (questionsCleared === QUESTION_BANK.length &&
+          rectsIntersect(player, finishZone)) {
+        triggerEndScreen("complete");
+      }
+    }
+
+    // =============================
+    // GAME STATE
+    // =============================
+    function resetGame() {
+      player.x = startPosition.x;
+      player.y = startPosition.y;
+      player.vx = 0;
+      player.vy = 0;
+      player.lastSafeX = startPosition.x;
+      player.lastSafeY = startPosition.y;
+
+      librarianHitCooldown = 0;
+      score = 0;
+      questionsCleared = 0;
+      firstTryCorrectCount = 0;
+      timeRemaining = LEVEL_TIME;
+      gamePaused = false;
+      inQuestion = false;
+      levelComplete = false;
+      toastText = "";
+      toastTimer = 0;
+      bannerText = "";
+      bannerTimer = 0;
+
+      questionGates.forEach(g => {
+        g.completed = false;
+        g.firstTry = true;
+      });
+
+      qOverlay.classList.add("hidden");
+      endOverlay.classList.add("hidden");
+      hudStatus.textContent = "Status: Exploring";
+      updateHud();
+    }
+
+    // =============================
+    // UPDATE LOOP
+    // =============================
+    function update(dt) {
+      if (gamePaused) return;
+
+      // Timer
+      timeRemaining -= dt;
+      if (timeRemaining <= 0 && !levelComplete) {
+        timeRemaining = 0;
+        updateHud();
+        triggerEndScreen("timeout");
+        return;
+      }
+
+      // Laser cycle
+      laserTimer -= dt;
+      if (laserTimer <= 0) {
+        lasersActive = !lasersActive;
+        laserTimer = lasersActive ? LASER_CYCLE_ON : LASER_CYCLE_OFF;
+      }
+
+      if (toastTimer > 0) {
+        toastTimer -= dt;
+        if (toastTimer < 0) toastTimer = 0;
+      }
+      if (bannerTimer > 0) {
+        bannerTimer -= dt;
+        if (bannerTimer < 0) bannerTimer = 0;
+      }
+
+      if (librarianHitCooldown > 0) {
+        librarianHitCooldown -= dt;
+        if (librarianHitCooldown < 0) librarianHitCooldown = 0;
+      }
+
+      // Movement
+      let moveX = 0, moveY = 0;
+      if (keys.left)  moveX -= 1;
+      if (keys.right) moveX += 1;
+      if (keys.up)    moveY -= 1;
+      if (keys.down)  moveY += 1;
+
+      if (moveX !== 0 && moveY !== 0) {
+        const inv = 1 / Math.sqrt(2);
+        moveX *= inv;
+        moveY *= inv;
+      }
+
+      player.vx = moveX * PLAYER_SPEED;
+      player.vy = moveY * PLAYER_SPEED;
+
+      // Axis-separated movement to handle walls
+      // X axis
+      player.x += player.vx * dt;
+      let playerRect = { x: player.x, y: player.y, w: player.w, h: player.h };
+      for (const w of walls) {
+        if (rectsIntersect(playerRect, w)) {
+          if (player.vx > 0) {
+            player.x = w.x - player.w;
+          } else if (player.vx < 0) {
+            player.x = w.x + w.w;
+          }
+          playerRect.x = player.x;
+        }
+      }
+
+      // Y axis
+      player.y += player.vy * dt;
+      playerRect.y = player.y;
+      for (const w of walls) {
+        if (rectsIntersect(playerRect, w)) {
+          if (player.vy > 0) {
+            player.y = w.y - player.h;
+          } else if (player.vy < 0) {
+            player.y = w.y + w.h;
+          }
+          playerRect.y = player.y;
+        }
+      }
+
+      // Clamp into bounds
+      player.x = Math.max(50, Math.min(player.x, 900 - player.w));
+      player.y = Math.max(50, Math.min(player.y, 480 - player.h));
+
+      const centerX = player.x + player.w / 2;
+      const centerY = player.y + player.h / 2;
+
+      // Lasers
+      let inLaserNow = false;
+      if (lasersActive) {
+        for (const ls of lasers) {
+          if (distancePointToSegment(centerX, centerY, ls.x1, ls.y1, ls.x2, ls.y2) < 12) {
+            inLaserNow = true;
+            break;
+          }
+        }
+      }
+
+      if (!inLaserNow) {
+        player.lastSafeX = player.x;
+        player.lastSafeY = player.y;
+      }
+
+      if (inLaserNow) {
+        score -= 10;
+        showToast("-10 | Laser alarm!");
+        hudStatus.textContent = "Status: Alarm triggered";
+        player.x = player.lastSafeX;
+        player.y = player.lastSafeY;
+        updateHud();
+      } else if (!inQuestion && !levelComplete) {
+        hudStatus.textContent = "Status: Exploring";
+      }
+
+      // Secret door
+      if (rectsIntersect(player, secretDoor)) {
+        showToast("Secret passage discovered!");
+        player.x = secretDoor.targetX;
+        player.y = secretDoor.targetY;
+        player.lastSafeX = player.x;
+        player.lastSafeY = player.y;
+      }
+
+      // Teleports
+      for (const tp of teleports) {
+        const dx = centerX - tp.x;
+        const dy = centerY - tp.y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < 18) {
+          showToast("Teleported to " + tp.label);
+          player.x = tp.targetX;
+          player.y = tp.targetY;
+          player.lastSafeX = player.x;
+          player.lastSafeY = player.y;
+        }
+      }
+
+      // Librarians
+      for (const lib of librarians) {
+        if (lib.axis === "x") {
+          lib.x += lib.dir * LIBRARIAN_SPEED * dt;
+          if (lib.x < lib.min || lib.x > lib.max) lib.dir *= -1;
+        } else {
+          lib.y += lib.dir * LIBRARIAN_SPEED * dt;
+          if (lib.y < lib.min || lib.y > lib.max) lib.dir *= -1;
+        }
+
+        const libRect = { x: lib.x, y: lib.y, w: lib.w, h: lib.h };
+        if (librarianHitCooldown === 0 && rectsIntersect(player, libRect)) {
+          librarianHitCooldown = 1.0;
+          score -= 15;
+          showToast("-15 | Librarian caught you!");
+          hudStatus.textContent = "Status: Caught by librarian";
+          player.x = player.lastSafeX;
+          player.y = player.lastSafeY;
+          updateHud();
+        }
+      }
+
+      // Question gates
+      for (const gate of questionGates) {
+        if (gate.completed) continue;
+        const dx = centerX - gate.x;
+        const dy = centerY - gate.y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < gate.radius + 10) {
+          openQuestion(gate);
+          break;
+        }
+      }
+
+      // Finish zone
+      if (!levelComplete && questionsCleared === QUESTION_BANK.length &&
+          rectsIntersect(player, finishZone)) {
+        triggerEndScreen("complete");
+      }
+
+      updateHud();
+    }
+
+    // =============================
+    // DRAWING
+    // =============================
+    function draw() {
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+
+      // Floor
+      const grad = ctx.createRadialGradient(
+        canvas.width/2, canvas.height/2, 40,
+        canvas.width/2, canvas.height/2, 520
+      );
+      grad.addColorStop(0, "#111827");
+      grad.addColorStop(1, "#020617");
+      ctx.fillStyle = grad;
+      ctx.fillRect(0,0,canvas.width,canvas.height);
+
+      // Subtle carpet stripes
+      ctx.strokeStyle = "rgba(15,23,42,0.7)";
+      ctx.lineWidth = 1;
+      for (let y = 60; y <= 480; y += 16) {
+        ctx.beginPath();
+        ctx.moveTo(48, y);
+        ctx.lineTo(912, y);
+        ctx.stroke();
+      }
+
+      // Walls / shelves
+      walls.forEach(w => {
+        ctx.fillStyle = "#0b1120";
+        ctx.fillRect(w.x, w.y, w.w, w.h);
+
+        ctx.strokeStyle = "#4b5563";
+        ctx.lineWidth = 2;
+        ctx.strokeRect(w.x, w.y, w.w, w.h);
+
+        ctx.fillStyle = "#111827";
+        const stripeCount = Math.max(2, Math.floor(w.h / 16));
+        for (let i = 0; i < stripeCount; i++) {
+          const sy = w.y + 4 + i * 12;
+          if (sy + 6 > w.y + w.h - 4) break;
+          ctx.fillRect(w.x + 3, sy, w.w - 6, 6);
+        }
+      });
+
+      // Secret door
+      ctx.fillStyle = "#0b1120";
+      ctx.fillRect(secretDoor.x, secretDoor.y, secretDoor.w, secretDoor.h);
+      ctx.strokeStyle = "#22c55e";
       ctx.lineWidth = 2;
-      ctx.stroke();
+      ctx.strokeRect(secretDoor.x, secretDoor.y, secretDoor.w, secretDoor.h);
+      ctx.fillStyle = "#111827";
+      for (let i = 0; i < 4; i++) {
+        ctx.fillRect(secretDoor.x+3, secretDoor.y+4 + i*12, secretDoor.w-6, 6);
+      }
 
-      ctx.fillStyle = color;
+      // Teleports
+      teleports.forEach(tp => {
+        ctx.beginPath();
+        ctx.arc(tp.x, tp.y, 16, 0, Math.PI*2);
+        ctx.fillStyle = "rgba(56,189,248,0.18)";
+        ctx.fill();
+        ctx.strokeStyle = "#38bdf8";
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(tp.x, tp.y, 8, 0, Math.PI*2);
+        ctx.stroke();
+
+        ctx.fillStyle = "#e5e7eb";
+        ctx.font = "7px 'Press Start 2P', system-ui";
+        ctx.textAlign = "center";
+        ctx.fillText("TP", tp.x, tp.y+3);
+      });
+
+      // Finish zone
+      ctx.fillStyle = "rgba(250,204,21,0.18)";
+      ctx.fillRect(finishZone.x, finishZone.y, finishZone.w, finishZone.h);
+      ctx.strokeStyle = "#facc15";
+      ctx.lineWidth = 2;
+      ctx.strokeRect(finishZone.x, finishZone.y, finishZone.w, finishZone.h);
+      ctx.fillStyle = "#facc15";
       ctx.font = "7px 'Press Start 2P', system-ui";
       ctx.textAlign = "center";
-      ctx.fillText(g.completed ? "✓" : "Q", g.x, g.y+3);
-    });
+      ctx.fillText("FINAL", finishZone.x + finishZone.w/2, finishZone.y + 20);
+      ctx.fillText("CHAMBER", finishZone.x + finishZone.w/2, finishZone.y + 32);
 
-    // Player
-    drawPlayer();
+      // Lasers
+      lasers.forEach(ls => {
+        if (lasersActive) {
+          const g = ctx.createLinearGradient(ls.x1, ls.y1, ls.x2, ls.y2);
+          g.addColorStop(0, "rgba(248,113,113,0.1)");
+          g.addColorStop(0.5, "#f97316");
+          g.addColorStop(1, "rgba(248,113,113,0.1)");
+          ctx.strokeStyle = g;
+          ctx.lineWidth = 4;
+        } else {
+          ctx.strokeStyle = "rgba(55,65,81,0.7)";
+          ctx.lineWidth = 2;
+        }
+        ctx.beginPath();
+        ctx.moveTo(ls.x1, ls.y1);
+        ctx.lineTo(ls.x2, ls.y2);
+        ctx.stroke();
 
-    // Librarians
-    librarians.forEach(lib => {
-      ctx.fillStyle = "#0f172a";
-      ctx.fillRect(lib.x, lib.y, lib.w, lib.h);
-      ctx.fillStyle = "#f97316";
-      ctx.fillRect(lib.x, lib.y, lib.w, 8);
+        ctx.fillStyle = lasersActive ? "#fed7aa" : "#4b5563";
+        ctx.beginPath();
+        ctx.arc(ls.x1, ls.y1, 4, 0, Math.PI*2);
+        ctx.arc(ls.x2, ls.y2, 4, 0, Math.PI*2);
+        ctx.fill();
+      });
+
+      // Question circles
+      questionGates.forEach(g => {
+        const radius = g.radius;
+        const glow = g.completed ? "rgba(34,197,94,0.25)" : "rgba(250,204,21,0.25)";
+        const color = g.completed ? "#22c55e" : "#facc15";
+
+        ctx.beginPath();
+        ctx.arc(g.x, g.y, radius+6, 0, Math.PI*2);
+        ctx.fillStyle = glow;
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(g.x, g.y, radius, 0, Math.PI*2);
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        ctx.fillStyle = color;
+        ctx.font = "7px 'Press Start 2P', system-ui";
+        ctx.textAlign = "center";
+        ctx.fillText(g.completed ? "✓" : "Q", g.x, g.y+3);
+      });
+
+      // Player
+      drawPlayer();
+
+      // Librarians
+      librarians.forEach(lib => {
+        ctx.fillStyle = "#0f172a";
+        ctx.fillRect(lib.x, lib.y, lib.w, lib.h);
+        ctx.fillStyle = "#f97316";
+        ctx.fillRect(lib.x, lib.y, lib.w, 8);
+        ctx.fillStyle = "#e5e7eb";
+        ctx.fillRect(lib.x+6, lib.y+10, lib.w-12, 4); // glasses
+      });
+
+      // HUD overlays
+      if (bannerTimer > 0 && bannerText) {
+        ctx.font = "9px 'Press Start 2P', system-ui";
+        ctx.textAlign = "center";
+        const w = 360;
+        const h = 24;
+        const x = canvas.width/2 - w/2;
+        const y = 38;
+        ctx.fillStyle = "rgba(0,0,0,0.8)";
+        ctx.fillRect(x,y,w,h);
+        ctx.fillStyle = "#facc15";
+        ctx.fillText(bannerText, canvas.width/2, y+9);
+      }
+
+      if (toastTimer > 0 && toastText) {
+        ctx.font = "9px 'Press Start 2P', system-ui";
+        ctx.textAlign = "center";
+        const w = 360;
+        const h = 24;
+        const x = canvas.width/2 - w/2;
+        const y = canvas.height - 34;
+        ctx.fillStyle = "rgba(0,0,0,0.8)";
+        ctx.fillRect(x,y,w,h);
+        ctx.fillStyle = "#facc15";
+        ctx.fillText(toastText, canvas.width/2, y+9);
+      }
+    }
+
+    function drawPlayer() {
+      const sx = player.x;
+      const sy = player.y;
+
+      // Robe / body
+      ctx.fillStyle = "#1d4ed8";
+      ctx.fillRect(sx+4, sy+10, player.w-8, player.h-12);
+
+      // Collar
       ctx.fillStyle = "#e5e7eb";
-      ctx.fillRect(lib.x+6, lib.y+10, lib.w-12, 4); // glasses
-    });
+      ctx.fillRect(sx+8, sy+10, player.w-16, 4);
 
-    // Toast / banner overlays
-    if (bannerTimer > 0 && bannerText) {
-      ctx.font = "9px 'Press Start 2P', system-ui";
-      ctx.textAlign = "center";
-      const w = 360;
-      const h = 24;
-      const x = canvas.width/2 - w/2;
-      const y = 38;
-      ctx.fillStyle = "rgba(0,0,0,0.78)";
-      ctx.fillRect(x,y,w,h);
+      // Head
       ctx.fillStyle = "#facc15";
-      ctx.fillText(bannerText, canvas.width/2, y+9);
+      ctx.fillRect(sx+6, sy, player.w-12, 10);
+
+      // Book / briefcase
+      ctx.fillStyle = "#6b7280";
+      ctx.fillRect(sx-6, sy+18, 8, 10);
+
+      // Badge
+      ctx.fillStyle = "#f97316";
+      ctx.fillRect(sx+player.w-10, sy+16, 4, 6);
     }
-    if (toastTimer > 0 && toastText) {
-      ctx.font = "9px 'Press Start 2P', system-ui";
-      ctx.textAlign = "center";
-      const w = 360;
-      const h = 24;
-      const x = canvas.width/2 - w/2;
-      const y = canvas.height - 34;
-      ctx.fillStyle = "rgba(0,0,0,0.78)";
-      ctx.fillRect(x,y,w,h);
-      ctx.fillStyle = "#facc15";
-      ctx.fillText(toastText, canvas.width/2, y+9);
+
+    // =============================
+    // MAIN LOOP
+    // =============================
+    function loop(timestamp) {
+      const dt = (timestamp - lastTime) / 1000;
+      lastTime = timestamp;
+
+      update(dt);
+      draw();
+      requestAnimationFrame(loop);
     }
-  }
 
-  function drawPlayer() {
-    const sx = player.x;
-    const sy = player.y;
-
-    // Robe (body)
-    ctx.fillStyle = "#1d4ed8";
-    ctx.fillRect(sx+4, sy+10, player.w-8, player.h-12);
-
-    // Collar
-    ctx.fillStyle = "#e5e7eb";
-    ctx.fillRect(sx+8, sy+10, player.w-16, 4);
-
-    // Head
-    ctx.fillStyle = "#facc15";
-    ctx.fillRect(sx+6, sy, player.w-12, 10);
-
-    // Book/briefcase
-    ctx.fillStyle = "#6b7280";
-    ctx.fillRect(sx-6, sy+18, 8, 10);
-
-    // Badge
-    ctx.fillStyle = "#f97316";
-    ctx.fillRect(sx+player.w-10, sy+16, 4, 6);
-  }
-
-  // =============================
-  // MAIN LOOP
-  // =============================
-  function loop(timestamp) {
-    const dt = (timestamp - lastTime) / 1000;
-    lastTime = timestamp;
-
-    update(dt);
-    draw();
+    resetGame();
     requestAnimationFrame(loop);
-  }
-
-  // Init
-  resetGame();
-  requestAnimationFrame(loop);
-</script>
+  </script>
+</body>
+</html>
