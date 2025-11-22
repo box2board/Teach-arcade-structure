@@ -153,14 +153,14 @@
 <body>
 <h1>
   Classroom Review Maze
-  <span>Social Studies · Teach Arcade</span>
+  <span>Science · Teach Arcade</span>
 </h1>
 
 <div id="gameContainer">
   <canvas id="gameCanvas" width="560" height="560"></canvas>
 
   <div id="questionBox">
-    <div id="questionTitle">Quiz Orb · Social Studies</div>
+    <div id="questionTitle">Quiz Orb · Science</div>
     <div id="questionText"></div>
     <button onclick="submitAnswer(0)" id="ans0"></button>
     <button onclick="submitAnswer(1)" id="ans1"></button>
@@ -170,8 +170,8 @@
 </div>
 
 <div id="score">Score: <span id="scoreValue">0</span></div>
-<div id="hint">Use arrow keys to move. Collect history dots, hit glowing Quiz Orbs, and chase “time bandit” ghosts in Power Mode.</div>
-<div id="winMessage">🎉 You cleared all 10 Quiz Orbs! Awesome review work! 🎉</div>
+<div id="hint">Use arrow keys to move. Collect science dots, hit glowing Quiz Orbs, and chase pixel squirrels in Power Mode.</div>
+<div id="winMessage">🎉 You cleared all 10 Quiz Orbs! Awesome science review! 🎉</div>
 
 <script>
 /* =============================
@@ -197,7 +197,7 @@ let currentQuestionIndex = -1;
 const TILE = 40;
 
 /* =============================
-   SOCIAL STUDIES MAZE (14×14)
+   MAZE (14×14)
    # = wall, . = dot, o = Quiz Orb
 ============================= */
 const maze = [
@@ -217,14 +217,14 @@ const maze = [
   "##############"
 ];
 
-// Player = "History Hero" student
+// Player = pixel student
 let player = { x: 1, y: 1, dirX: 0, dirY: 0 };
 
-// Ghosts = "Time Bandits"
+// Ghosts = pixel squirrels
 let ghosts = [
-  { x: 12, y: 12, color: "#f97316" }, // orange = ancient history
-  { x: 12, y: 1,  color: "#ef4444" }, // red = wars & revolutions
-  { x: 1,  y: 12, color: "#22c55e" }  // green = geography
+  { x: 12, y: 12, color: "#f97316" }, // orange squirrel
+  { x: 12, y: 1,  color: "#a855f7" }, // purple squirrel
+  { x: 1,  y: 12, color: "#22c55e" }  // green squirrel
 ];
 
 // Slower ghost movement
@@ -232,57 +232,58 @@ let ghostStepCounter = 0;
 const GHOST_STEP_DELAY = 12; // higher = slower
 
 /* =============================
-   SOCIAL STUDIES QUESTIONS
+   SCIENCE QUESTIONS
+   (Teacher: swap these for any specific unit if you want)
 ============================= */
 const questions = [
   {
-    q: "What is the supreme law of the land in the United States?",
-    a: ["The President", "The Constitution", "The Supreme Court"],
+    q: "What is the first step of the scientific method?",
+    a: ["Analyze data", "Ask a question", "Form a conclusion"],
     correct: 1
   },
   {
-    q: "Which branch of government makes federal laws?",
-    a: ["Judicial", "Executive", "Legislative"],
-    correct: 2
-  },
-  {
-    q: "In what year was the U.S. Constitution written?",
-    a: ["1776", "1787", "1812"],
+    q: "A testable explanation for an observation is called a:",
+    a: ["Law", "Hypothesis", "Theory"],
     correct: 1
   },
   {
-    q: "Which document announced independence from Great Britain?",
-    a: ["Bill of Rights", "Declaration of Independence", "Articles of Confederation"],
-    correct: 1
-  },
-  {
-    q: "How many U.S. Senators are there?",
-    a: ["50", "100", "435"],
-    correct: 1
-  },
-  {
-    q: "Who is known as the 'Father of the Constitution'?",
-    a: ["George Washington", "James Madison", "Alexander Hamilton"],
-    correct: 1
-  },
-  {
-    q: "What do we call the first ten amendments to the Constitution?",
-    a: ["Federalist Papers", "Bill of Rights", "Preamble"],
-    correct: 1
-  },
-  {
-    q: "Which branch interprets the laws?",
-    a: ["Judicial", "Executive", "Legislative"],
+    q: "Which tool is used to measure volume of a liquid?",
+    a: ["Graduated cylinder", "Thermometer", "Triple-beam balance"],
     correct: 0
   },
   {
-    q: "What ocean is on the East Coast of the United States?",
-    a: ["Pacific Ocean", "Indian Ocean", "Atlantic Ocean"],
+    q: "What is the basic unit of life?",
+    a: ["Atom", "Cell", "Molecule"],
+    correct: 1
+  },
+  {
+    q: "Which state of matter has a definite shape and volume?",
+    a: ["Solid", "Liquid", "Gas"],
+    correct: 0
+  },
+  {
+    q: "What gas do plants take in during photosynthesis?",
+    a: ["Oxygen", "Carbon dioxide", "Nitrogen"],
+    correct: 1
+  },
+  {
+    q: "The variable you deliberately change in an experiment is the:",
+    a: ["Independent variable", "Dependent variable", "Controlled variable"],
+    correct: 0
+  },
+  {
+    q: "How many planets are in our solar system?",
+    a: ["7", "8", "9"],
+    correct: 1
+  },
+  {
+    q: "What force pulls objects toward Earth?",
+    a: ["Magnetism", "Friction", "Gravity"],
     correct: 2
   },
   {
-    q: "Which war was fought between the North and South in the U.S.?",
-    a: ["World War I", "The Civil War", "The Revolutionary War"],
+    q: "Which part of the cell contains the genetic material (DNA)?",
+    a: ["Cell membrane", "Nucleus", "Cytoplasm"],
     correct: 1
   }
 ];
@@ -321,7 +322,7 @@ function update() {
     player.y = ny;
   }
 
-  // Eat small history dots
+  // Eat small dots
   if (maze[player.y][player.x] === ".") {
     score += 10;
     maze[player.y] = replaceChar(maze[player.y], player.x, " ");
@@ -334,7 +335,7 @@ function update() {
     showQuestion();
   }
 
-  // Ghost movement (slow random wander)
+  // Ghost (squirrel) movement
   ghostStepCounter++;
   const moveGhostsThisFrame = (ghostStepCounter % GHOST_STEP_DELAY === 0);
 
@@ -358,7 +359,7 @@ function update() {
     // Collision with player
     if (g.x === player.x && g.y === player.y) {
       if (powerMode) {
-        // Time bandit tagged!
+        // Squirrel tagged!
         score += 150;
         g.x = 12;
         g.y = 12;
@@ -387,7 +388,7 @@ function update() {
 }
 
 /* =============================
-   DRAWING (Teach Arcade style)
+   DRAWING (maze + pixel sprites)
 ============================= */
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -413,7 +414,7 @@ function draw() {
       }
 
       if (tile === "o") {
-        // Quiz Orb – glowing civic question
+        // Quiz Orb – glowing science question
         const pulse = 8 + 2 * Math.sin(performance.now() / 150);
         ctx.fillStyle = "#f97316";
         ctx.beginPath();
@@ -429,44 +430,86 @@ function draw() {
     }
   }
 
-  // Player – History Hero
-  ctx.fillStyle = powerMode ? "#22c55e" : "#facc15";
-  ctx.beginPath();
-  ctx.arc(player.x * TILE + 20, player.y * TILE + 20, 18, 0, Math.PI * 2);
-  ctx.fill();
+  // -------- Pixel Student (main character) --------
+  const centerX = player.x * TILE + 20;
+  const centerY = player.y * TILE + 20;
+  const spriteW = 24;
+  const spriteH = 28;
+  const sx = centerX - spriteW / 2;
+  const sy = centerY - spriteH / 2;
 
-  // Simple “cap” to hint at a student/grad vibe
-  ctx.fillStyle = "#020617";
-  ctx.fillRect(player.x * TILE + 10, player.y * TILE + 7, 20, 6);
-  ctx.fillRect(player.x * TILE + 17, player.y * TILE + 13, 6, 6);
+  // legs
+  ctx.fillStyle = "#1f2937"; // dark pants
+  ctx.fillRect(sx + 4,  sy + 20, 6, 8);
+  ctx.fillRect(sx + 14, sy + 20, 6, 8);
 
-  // Ghosts – Time Bandits
+  // torso
+  ctx.fillStyle = "#3b82f6"; // blue shirt
+  ctx.fillRect(sx + 4, sy + 12, 16, 10);
+
+  // backpack
+  ctx.fillStyle = "#10b981";
+  ctx.fillRect(sx + 2, sy + 12, 4, 12);
+
+  // head
+  ctx.fillStyle = "#facc15"; // neutral skin tone
+  ctx.fillRect(sx + 6, sy + 4, 12, 10);
+
+  // hair
+  ctx.fillStyle = "#111827";
+  ctx.fillRect(sx + 6, sy + 2, 12, 4);
+
+  // eyes
+  ctx.fillStyle = "#111827";
+  ctx.fillRect(sx + 8, sy + 7, 2, 2);
+  ctx.fillRect(sx + 14, sy + 7, 2, 2);
+
+  // -------- Pixel Squirrels (ghosts) --------
   ghosts.forEach(g => {
-    ctx.fillStyle = powerMode ? "#6b7280" : g.color;
-    ctx.beginPath();
-    ctx.arc(g.x * TILE + 20, g.y * TILE + 16, 16, Math.PI, 0);
-    ctx.lineTo(g.x * TILE + 36, g.y * TILE + 32);
-    ctx.lineTo(g.x * TILE + 30, g.y * TILE + 28);
-    ctx.lineTo(g.x * TILE + 24, g.y * TILE + 32);
-    ctx.lineTo(g.x * TILE + 18, g.y * TILE + 28);
-    ctx.lineTo(g.x * TILE + 12, g.y * TILE + 32);
-    ctx.lineTo(g.x * TILE + 4,  g.y * TILE + 28);
-    ctx.lineTo(g.x * TILE + 4,  g.y * TILE + 16);
-    ctx.closePath();
-    ctx.fill();
+    const gx = g.x * TILE + 20;
+    const gy = g.y * TILE + 20;
+    const gw = 24;
+    const gh = 24;
+    const gsx = gx - gw / 2;
+    const gsy = gy - gh / 2;
 
-    // Eyes
+    const bodyColor = powerMode ? "#6b7280" : g.color;
+    const tailColor = powerMode ? "#9ca3af" : g.color;
+
+    // tail (blocky, to the right)
+    ctx.fillStyle = tailColor;
+    ctx.fillRect(gsx + 18, gsy + 6, 6, 10);
+    ctx.fillRect(gsx + 16, gsy + 4, 6, 6);
+
+    // body
+    ctx.fillStyle = bodyColor;
+    ctx.fillRect(gsx + 4, gsy + 10, 12, 10);
+
+    // head
+    ctx.fillRect(gsx + 4, gsy + 4, 10, 8);
+
+    // ears
+    ctx.fillRect(gsx + 4, gsy + 2, 3, 3);
+    ctx.fillRect(gsx + 11, gsy + 2, 3, 3);
+
+    // paws
+    ctx.fillRect(gsx + 4, gsy + 18, 3, 4);
+    ctx.fillRect(gsx + 11, gsy + 18, 3, 4);
+
+    // face (eyes)
     ctx.fillStyle = "#f9fafb";
-    ctx.beginPath();
-    ctx.arc(g.x * TILE + 14, g.y * TILE + 14, 4, 0, Math.PI * 2);
-    ctx.arc(g.x * TILE + 26, g.y * TILE + 14, 4, 0, Math.PI * 2);
-    ctx.fill();
+    ctx.fillRect(gsx + 6, gsy + 6, 2, 2);
+    ctx.fillRect(gsx + 10, gsy + 6, 2, 2);
+
+    ctx.fillStyle = "#111827";
+    ctx.fillRect(gsx + 6, gsy + 6, 1, 2);
+    ctx.fillRect(gsx + 11, gsy + 6, 1, 2);
   });
 
   // Small footer text
   ctx.fillStyle = "rgba(148,163,184,0.9)";
   ctx.font = "10px system-ui";
-  ctx.fillText("Teach Arcade · Social Studies Maze", 8, canvas.height - 8);
+  ctx.fillText("Teach Arcade · Science Maze", 8, canvas.height - 8);
 }
 
 /* =============================
@@ -493,7 +536,7 @@ function submitAnswer(choice) {
     // Reward: power mode and bonus
     score += 150;
     powerMode = true;
-    powerTimer = 320; // how long ghosts stay vulnerable
+    powerTimer = 320; // how long squirrels stay vulnerable
   }
   powerDotsEaten++;
   questionBox.style.display = "none";
