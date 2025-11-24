@@ -18,6 +18,7 @@
   --accent-cyan: #38bdf8;
   --accent-green: #10b981;
   --accent-orange: #f97316;
+  --accent-red: #f97373;
 }
 
 body {
@@ -84,17 +85,31 @@ canvas {
   font-weight: 600;
 }
 
+#hint {
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+#feedback {
+  margin-top: 4px;
+  font-size: 13px;
+  min-height: 1.4em;
+}
+
+#feedback.correct {
+  color: var(--accent-green);
+}
+
+#feedback.incorrect {
+  color: var(--accent-orange);
+}
+
 #winMessage {
   margin-top: 10px;
   font-size: 18px;
   color: #a7f3d0;
   display: none;
-}
-
-#hint {
-  margin-top: 6px;
-  font-size: 12px;
-  color: var(--text-dim);
 }
 
 /* --------------------------------------------------
@@ -225,12 +240,13 @@ canvas {
     <button id="ans0"></button>
     <button id="ans1"></button>
     <button id="ans2"></button>
-    <div id="questionNote">Correct = Power Mode + bonus points. Wrong = keep exploring.</div>
+    <div id="questionNote">Tap the best answer. Correct = Power Mode + bonus points.</div>
   </div>
 </div>
 
 <div id="score">Score: <span id="scoreValue">0</span></div>
-<div id="hint">Use arrow keys or tap the controls to move. Collect dots, hit Quiz Orbs, and tag squirrels in Power Mode.</div>
+<div id="hint">Use arrow keys or tap the controls. Collect dots, hit Quiz Orbs, and tag squirrels in Power Mode.</div>
+<div id="feedback"></div>
 <div id="winMessage">🎉 You cleared all 10 Quiz Orbs! 🎉</div>
 
 <!-- TOUCH / IPAD CONTROLS -->
@@ -258,13 +274,16 @@ const questionBox = document.getElementById("questionBox");
 const questionText = document.getElementById("questionText");
 const ansBtns = [...Array(3)].map((_, i) => document.getElementById("ans" + i));
 const winMessage = document.getElementById("winMessage");
+const feedbackEl = document.getElementById("feedback");
 
 const controls = document.getElementById("controls");
 const controlButtons = controls.querySelectorAll(".control-btn");
 
 const TILE = 40;
-// Slower squirrels for better playability
-const GHOST_STEP_DELAY = 24;
+
+// Movement timing
+const GHOST_STEP_DELAY = 16;   // squirrels
+const PLAYER_STEP_DELAY = 6;   // student
 
 /* --------------------------------------------------
    STATE
@@ -277,6 +296,7 @@ let quizAnswered = 0;
 
 /* Player */
 const player = { x: 1, y: 1, dx: 0, dy: 0 };
+let playerStepCounter = 0;
 
 /* Squirrels */
 const ghosts = [
@@ -355,8 +375,10 @@ controlButtons.forEach(btn => {
 });
 
 /* --------------------------------------------------
-   LOGIC
+   LOGIC HELPERS
 -------------------------------------------------- */
+// IMPORTANT: only walls (#) block movement.
+// Dots (.) and Quiz Orbs (o) are passable for squirrels and player.
 function isWall(x, y) {
   if (y < 0 || y >= maze.length) return true;
   const row = maze[y];
@@ -366,6 +388,11 @@ function isWall(x, y) {
 
 function replaceChar(str, i, chr) {
   return str.slice(0,i) + chr + str.slice(i+1);
+}
+
+function clearFeedback() {
+  feedbackEl.textContent = "";
+  feedbackEl.classList.remove("correct", "incorrect");
 }
 
 function showQuestion() {
@@ -381,15 +408,29 @@ function showQuestion() {
   player.dx = player.dy = 0; // freeze
 }
 
+// When student answers, show clear feedback, then resume game.
 function answer(choice) {
   const q = questions[quizIndex];
-  if (choice === q.correct) {
+  const correct = (choice === q.correct);
+
+  if (correct) {
     score += 150;
     powerMode = true;
     powerTimer = 320;
+    feedbackEl.textContent = "✅ Correct! Power Mode activated.";
+    feedbackEl.classList.remove("incorrect");
+    feedbackEl.classList.add("correct");
+  } else {
+    feedbackEl.textContent = "➜ Not quite. Keep exploring and try the next one!";
+    feedbackEl.classList.remove("correct");
+    feedbackEl.classList.add("incorrect");
   }
+
   quizAnswered++;
-  questionBox.style.display = "none";
+  // Hide the question box after a short delay so they can see feedback.
+  setTimeout(() => {
+    questionBox.style.display = "none";
+  }, 450);
 }
 
 ansBtns.forEach((btn,i)=>btn.onclick=()=>answer(i));
@@ -399,18 +440,23 @@ ansBtns.forEach((btn,i)=>btn.onclick=()=>answer(i));
 -------------------------------------------------- */
 function update() {
 
-  /* Pause when question box open */
+  /* Pause movement while question is open */
   if (questionBox.style.display === "flex") {
     requestAnimationFrame(update);
     return;
   }
 
-  /* Move player */
-  const nx = player.x + player.dx;
-  const ny = player.y + player.dy;
-  if (!isWall(nx, ny)) {
-    player.x = nx;
-    player.y = ny;
+  /* Player movement (slowed with step delay) */
+  playerStepCounter++;
+  const movePlayer = playerStepCounter % PLAYER_STEP_DELAY === 0;
+
+  if (movePlayer) {
+    const nx = player.x + player.dx;
+    const ny = player.y + player.dy;
+    if (!isWall(nx, ny)) {
+      player.x = nx;
+      player.y = ny;
+    }
   }
 
   const tile = maze[player.y][player.x];
@@ -425,19 +471,27 @@ function update() {
   if (tile === "o") {
     score += 25;
     maze[player.y] = replaceChar(maze[player.y], player.x, " ");
+    clearFeedback();
     showQuestion();
   }
 
-  /* Ghost movement */
+  /* Ghost (squirrel) movement */
   ghostCounter++;
   const moveGhosts = ghostCounter % GHOST_STEP_DELAY === 0;
 
   for (const g of ghosts) {
     if (moveGhosts) {
-      const dirs = [{x:1,y:0},{x:-1,y:0},{x:0,y:1},{x:0,y:-1}];
+      const dirs = [
+        {x:1,y:0},
+        {x:-1,y:0},
+        {x:0,y:1},
+        {x:0,y:-1}
+      ];
       const d = dirs[Math.floor(Math.random()*dirs.length)];
       const gx = g.x + d.x;
       const gy = g.y + d.y;
+
+      // Squirrels can move over '.', 'o', and ' ' — only walls block them.
       if (!isWall(gx, gy)) {
         g.x = gx;
         g.y = gy;
