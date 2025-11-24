@@ -1,152 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8" />
 <title>Classroom Review Maze | Teach Arcade</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-  body {
-    background: radial-gradient(circle at top, #111827 0, #020617 55%);
-    color: #e5e7eb;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0;
-    padding: 16px 8px;
-  }
+/* --------------------------------------------------
+   GLOBAL LAYOUT & THEME
+-------------------------------------------------- */
+:root {
+  --bg-dark: #020617;
+  --bg-mid: #111827;
+  --text-light: #e5e7eb;
+  --text-dim: #9ca3af;
+  --accent-blue: #22d3ee;
+  --accent-cyan: #38bdf8;
+  --accent-green: #10b981;
+  --accent-orange: #f97316;
+}
 
-  h1 {
-    margin-top: 6px;
-    font-size: 24px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #38bdf8;
-    text-align: center;
-  }
+body {
+  background: radial-gradient(circle at top, #111827 0, var(--bg-dark) 55%);
+  color: var(--text-light);
+  font-family: system-ui, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding: 16px 8px 24px;
+  text-align: center;
+}
 
-  h1 span {
-    display: block;
-    font-size: 13px;
-    letter-spacing: 0.15em;
-    color: #9ca3af;
-  }
+h1 {
+  margin-top: 6px;
+  font-size: 24px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+}
 
-  #gameContainer {
-    position: relative;
-    width: 560px;
-    max-width: 100vw;
-    height: 560px;
-    background: #020617;
-    border-radius: 16px;
-    border: 3px solid #22d3ee;
-    margin-top: 14px;
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.8);
-    overflow: hidden;
-  }
+h1 span {
+  display: block;
+  margin-top: 2px;
+  font-size: 13px;
+  letter-spacing: .15em;
+  color: var(--text-dim);
+}
 
-  canvas {
-    background: #020617;
-    display: block;
-    width: 100%;
-    height: 100%;
-  }
+/* --------------------------------------------------
+   GAME CONTAINER
+-------------------------------------------------- */
+#gameContainer {
+  position: relative;
+  width: 560px;
+  max-width: 100vw;
+  height: 560px;
+  background: var(--bg-dark);
+  border-radius: 16px;
+  border: 3px solid var(--accent-blue);
+  margin-top: 14px;
+  box-shadow: 0 18px 40px rgba(0,0,0,.8);
+  overflow: hidden;
+}
 
-  #score {
-    margin-top: 10px;
-    font-size: 16px;
-    color: #e5e7eb;
-  }
+canvas {
+  background: var(--bg-dark);
+  width: 100%;
+  height: 100%;
+  display: block;
+}
 
-  #score span {
-    color: #22d3ee;
-    font-weight: 600;
-  }
+/* --------------------------------------------------
+   HUD
+-------------------------------------------------- */
+#score {
+  margin-top: 10px;
+  font-size: 16px;
+}
 
-  #winMessage {
-    margin-top: 10px;
-    font-size: 18px;
-    color: #a7f3d0;
-    display: none;
-    text-align: center;
-  }
+#score span {
+  color: var(--accent-blue);
+  font-weight: 600;
+}
 
-  #hint {
-    margin-top: 6px;
-    font-size: 12px;
-    color: #9ca3af;
-    text-align: center;
-  }
+#winMessage {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #a7f3d0;
+  display: none;
+}
 
-  /* Question Box (Quiz Orb popup) */
-  #questionBox {
-    position: absolute;
-    width: 82%;
-    max-width: 420px;
-    min-height: 170px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #020617;
-    border-radius: 12px;
-    border: 1px solid #4b5563;
-    padding: 12px 14px;
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.85);
-  }
+#hint {
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--text-dim);
+}
 
-  #questionTitle {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
-    color: #22d3ee;
-    margin-bottom: 4px;
-  }
+/* --------------------------------------------------
+   QUIZ POPUP
+-------------------------------------------------- */
+#questionBox {
+  position: absolute;
+  width: 82%;
+  max-width: 420px;
+  min-height: 170px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--bg-dark);
+  border-radius: 12px;
+  border: 1px solid #4b5563;
+  padding: 14px;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 16px 32px rgba(0,0,0,.85);
+}
 
-  #questionText {
-    font-size: 14px;
-    margin-bottom: 8px;
-  }
+#questionTitle {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .18em;
+  color: var(--accent-blue);
+}
 
-  #questionBox button {
-    margin: 3px 0;
-    padding: 7px 8px;
-    background: #0f172a;
-    border-radius: 999px;
-    border: 1px solid #4b5563;
-    color: #e5e7eb;
-    font-size: 13px;
-    font-weight: 500;
-    cursor: pointer;
-    text-align: left;
-    transition: background 0.08s ease, border-color 0.08s ease, transform 0.06s ease;
-  }
+#questionText {
+  margin: 6px 0 10px 0;
+  font-size: 14px;
+}
 
-  #questionBox button:hover {
-    background: #1e293b;
-    border-color: #22d3ee;
-    transform: translateY(-1px);
-  }
+/* Answer buttons */
+#questionBox button {
+  margin: 3px 0;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: #0f172a;
+  border: 1px solid #4b5563;
+  color: var(--text-light);
+  font-size: 13px;
+  cursor: pointer;
+  text-align: left;
+  transition: background .08s, border-color .08s, transform .08s;
+}
 
-  #questionBox button:active {
-    transform: translateY(0);
-  }
+#questionBox button:hover {
+  background: #1e293b;
+  border-color: var(--accent-blue);
+  transform: translateY(-1px);
+}
 
-  #questionNote {
-    margin-top: 6px;
-    font-size: 11px;
-    color: #9ca3af;
-  }
+#questionNote {
+  margin-top: 6px;
+  font-size: 11px;
+  color: var(--text-dim);
+}
 
-  @media (max-width: 640px) {
-    #gameContainer {
-      height: auto;
-      aspect-ratio: 1 / 1;
-    }
-  }
+/* --------------------------------------------------
+   TOUCH CONTROLS (iPad / mobile)
+-------------------------------------------------- */
+#controls {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  touch-action: manipulation;
+}
+
+.control-row {
+  display: flex;
+  gap: 8px;
+}
+
+.control-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  border: 1px solid #4b5563;
+  background: #020617;
+  color: var(--text-light);
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 6px 14px rgba(0,0,0,.6);
+  transition: background .1s, border-color .1s, transform .06s, box-shadow .06s;
+}
+
+.control-btn:active {
+  background: #1e293b;
+  border-color: var(--accent-blue);
+  transform: translateY(1px);
+  box-shadow: 0 2px 6px rgba(0,0,0,.6);
+}
+
+#controls-label {
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+/* Mobile square container */
+@media (max-width: 640px) {
+  #gameContainer { aspect-ratio: 1; height: auto; }
+}
 </style>
 </head>
 
@@ -156,51 +214,83 @@
   <span>Science · Teach Arcade</span>
 </h1>
 
+<!-- GAME WRAPPER -->
 <div id="gameContainer">
   <canvas id="gameCanvas" width="560" height="560"></canvas>
 
+  <!-- QUIZ ORB POPUP -->
   <div id="questionBox">
     <div id="questionTitle">Quiz Orb · Science</div>
     <div id="questionText"></div>
-    <button onclick="submitAnswer(0)" id="ans0"></button>
-    <button onclick="submitAnswer(1)" id="ans1"></button>
-    <button onclick="submitAnswer(2)" id="ans2"></button>
-    <div id="questionNote">Correct = Power Mode &amp; bonus points. Wrong = no bonus, keep exploring.</div>
+    <button id="ans0"></button>
+    <button id="ans1"></button>
+    <button id="ans2"></button>
+    <div id="questionNote">Correct = Power Mode + bonus points. Wrong = keep exploring.</div>
   </div>
 </div>
 
 <div id="score">Score: <span id="scoreValue">0</span></div>
-<div id="hint">Use arrow keys to move. Collect science dots, hit glowing Quiz Orbs, and chase pixel squirrels in Power Mode.</div>
-<div id="winMessage">🎉 You cleared all 10 Quiz Orbs! Awesome science review! 🎉</div>
+<div id="hint">Use arrow keys or tap the controls to move. Collect dots, hit Quiz Orbs, and tag squirrels in Power Mode.</div>
+<div id="winMessage">🎉 You cleared all 10 Quiz Orbs! 🎉</div>
+
+<!-- TOUCH / IPAD CONTROLS -->
+<div id="controls">
+  <div class="control-row">
+    <button class="control-btn" data-dir="up">▲</button>
+  </div>
+  <div class="control-row">
+    <button class="control-btn" data-dir="left">◀</button>
+    <button class="control-btn" data-dir="down">▼</button>
+    <button class="control-btn" data-dir="right">▶</button>
+  </div>
+  <div id="controls-label">Tap to move (iPad / touch friendly)</div>
+</div>
 
 <script>
-/* =============================
-   BASIC SETUP
-============================= */
+/* --------------------------------------------------
+   CONSTANTS & DOM CACHING
+-------------------------------------------------- */
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
-const scoreDisplay = document.getElementById("scoreValue");
+
+const scoreEl = document.getElementById("scoreValue");
 const questionBox = document.getElementById("questionBox");
 const questionText = document.getElementById("questionText");
-const ansBtns = [
-  document.getElementById("ans0"),
-  document.getElementById("ans1"),
-  document.getElementById("ans2")
-];
+const ansBtns = [...Array(3)].map((_, i) => document.getElementById("ans" + i));
 const winMessage = document.getElementById("winMessage");
 
+const controls = document.getElementById("controls");
+const controlButtons = controls.querySelectorAll(".control-btn");
+
+const TILE = 40;
+// Slower squirrels for better playability
+const GHOST_STEP_DELAY = 24;
+
+/* --------------------------------------------------
+   STATE
+-------------------------------------------------- */
 let score = 0;
 let powerMode = false;
 let powerTimer = 0;
-let currentQuestionIndex = -1;
+let quizIndex = -1;
+let quizAnswered = 0;
 
-const TILE = 40;
+/* Player */
+const player = { x: 1, y: 1, dx: 0, dy: 0 };
 
-/* =============================
-   MAZE (14×14)
-   # = wall, . = dot, o = Quiz Orb
-============================= */
-const maze = [
+/* Squirrels */
+const ghosts = [
+  { x: 12, y: 12, color: "#f97316" },
+  { x: 12, y:  1, color: "#a855f7" },
+  { x:  1, y: 12, color: "#22c55e" }
+];
+
+let ghostCounter = 0;
+
+/* --------------------------------------------------
+   MAZE LAYOUT
+-------------------------------------------------- */
+let maze = [
   "##############",
   "#o..........o#",
   "#.####..####.#",
@@ -217,341 +307,286 @@ const maze = [
   "##############"
 ];
 
-// Player = pixel student
-let player = { x: 1, y: 1, dirX: 0, dirY: 0 };
-
-// Ghosts = pixel squirrels
-let ghosts = [
-  { x: 12, y: 12, color: "#f97316" }, // orange squirrel
-  { x: 12, y: 1,  color: "#a855f7" }, // purple squirrel
-  { x: 1,  y: 12, color: "#22c55e" }  // green squirrel
-];
-
-// Slower ghost movement
-let ghostStepCounter = 0;
-const GHOST_STEP_DELAY = 12; // higher = slower
-
-/* =============================
-   SCIENCE QUESTIONS
-   (Teacher: swap these for any specific unit if you want)
-============================= */
+/* --------------------------------------------------
+   QUESTIONS
+-------------------------------------------------- */
 const questions = [
-  {
-    q: "What is the first step of the scientific method?",
-    a: ["Analyze data", "Ask a question", "Form a conclusion"],
-    correct: 1
-  },
-  {
-    q: "A testable explanation for an observation is called a:",
-    a: ["Law", "Hypothesis", "Theory"],
-    correct: 1
-  },
-  {
-    q: "Which tool is used to measure volume of a liquid?",
-    a: ["Graduated cylinder", "Thermometer", "Triple-beam balance"],
-    correct: 0
-  },
-  {
-    q: "What is the basic unit of life?",
-    a: ["Atom", "Cell", "Molecule"],
-    correct: 1
-  },
-  {
-    q: "Which state of matter has a definite shape and volume?",
-    a: ["Solid", "Liquid", "Gas"],
-    correct: 0
-  },
-  {
-    q: "What gas do plants take in during photosynthesis?",
-    a: ["Oxygen", "Carbon dioxide", "Nitrogen"],
-    correct: 1
-  },
-  {
-    q: "The variable you deliberately change in an experiment is the:",
-    a: ["Independent variable", "Dependent variable", "Controlled variable"],
-    correct: 0
-  },
-  {
-    q: "How many planets are in our solar system?",
-    a: ["7", "8", "9"],
-    correct: 1
-  },
-  {
-    q: "What force pulls objects toward Earth?",
-    a: ["Magnetism", "Friction", "Gravity"],
-    correct: 2
-  },
-  {
-    q: "Which part of the cell contains the genetic material (DNA)?",
-    a: ["Cell membrane", "Nucleus", "Cytoplasm"],
-    correct: 1
-  }
+  { q:"What is the first step of the scientific method?", a:["Analyze data","Ask a question","Form a conclusion"], correct:1 },
+  { q:"A testable explanation for an observation is called a:", a:["Law","Hypothesis","Theory"], correct:1 },
+  { q:"Which tool measures liquid volume?", a:["Graduated cylinder","Thermometer","Triple-beam balance"], correct:0 },
+  { q:"What is the basic unit of life?", a:["Atom","Cell","Molecule"], correct:1 },
+  { q:"Which state of matter has definite shape + volume?", a:["Solid","Liquid","Gas"], correct:0 },
+  { q:"What gas do plants take in during photosynthesis?", a:["Oxygen","Carbon dioxide","Nitrogen"], correct:1 },
+  { q:"The variable you change on purpose is the:", a:["Independent","Dependent","Controlled"], correct:0 },
+  { q:"How many planets are in our solar system?", a:["7","8","9"], correct:1 },
+  { q:"What force pulls objects toward Earth?", a:["Magnetism","Friction","Gravity"], correct:2 },
+  { q:"Which part of a cell contains DNA?", a:["Membrane","Nucleus","Cytoplasm"], correct:1 }
 ];
 
-let powerDotsEaten = 0;
-
-/* =============================
-   INPUT
-============================= */
-document.addEventListener("keydown", e => {
-  if (e.key === "ArrowUp")    { player.dirX = 0;  player.dirY = -1; }
-  if (e.key === "ArrowDown")  { player.dirX = 0;  player.dirY = 1;  }
-  if (e.key === "ArrowLeft")  { player.dirX = -1; player.dirY = 0;  }
-  if (e.key === "ArrowRight") { player.dirX = 1;  player.dirY = 0;  }
-});
-
-function isWall(x, y) {
-  return maze[y][x] === "#";
+/* --------------------------------------------------
+   INPUT (KEYBOARD + TOUCH)
+-------------------------------------------------- */
+function setDirection(dir) {
+  if (questionBox.style.display === "flex") return;
+  switch (dir) {
+    case "up":    player.dx = 0;  player.dy = -1; break;
+    case "down":  player.dx = 0;  player.dy = 1;  break;
+    case "left":  player.dx = -1; player.dy = 0;  break;
+    case "right": player.dx = 1;  player.dy = 0;  break;
+  }
 }
 
-/* =============================
-   MAIN UPDATE LOOP
-============================= */
+document.addEventListener("keydown", e => {
+  if (questionBox.style.display === "flex") return;
+  if (e.key === "ArrowUp")    setDirection("up");
+  if (e.key === "ArrowDown")  setDirection("down");
+  if (e.key === "ArrowLeft")  setDirection("left");
+  if (e.key === "ArrowRight") setDirection("right");
+});
+
+// Touch / click controls
+controlButtons.forEach(btn => {
+  const dir = btn.getAttribute("data-dir");
+  btn.addEventListener("click", () => setDirection(dir));
+  btn.addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    setDirection(dir);
+  }, { passive: false });
+});
+
+/* --------------------------------------------------
+   LOGIC
+-------------------------------------------------- */
+function isWall(x, y) {
+  if (y < 0 || y >= maze.length) return true;
+  const row = maze[y];
+  if (x < 0 || x >= row.length) return true;
+  return row[x] === "#";
+}
+
+function replaceChar(str, i, chr) {
+  return str.slice(0,i) + chr + str.slice(i+1);
+}
+
+function showQuestion() {
+  quizIndex = quizAnswered;
+  const q = questions[quizIndex];
+
+  questionText.textContent = q.q;
+  ansBtns.forEach((btn, i) =>
+    btn.textContent = `${String.fromCharCode(65+i)}. ${q.a[i]}`
+  );
+
+  questionBox.style.display = "flex";
+  player.dx = player.dy = 0; // freeze
+}
+
+function answer(choice) {
+  const q = questions[quizIndex];
+  if (choice === q.correct) {
+    score += 150;
+    powerMode = true;
+    powerTimer = 320;
+  }
+  quizAnswered++;
+  questionBox.style.display = "none";
+}
+
+ansBtns.forEach((btn,i)=>btn.onclick=()=>answer(i));
+
+/* --------------------------------------------------
+   GAME LOOP
+-------------------------------------------------- */
 function update() {
-  // If a question is up, pause movement
+
+  /* Pause when question box open */
   if (questionBox.style.display === "flex") {
     requestAnimationFrame(update);
     return;
   }
 
-  // Move player one tile if possible
-  let nx = player.x + player.dirX;
-  let ny = player.y + player.dirY;
+  /* Move player */
+  const nx = player.x + player.dx;
+  const ny = player.y + player.dy;
   if (!isWall(nx, ny)) {
     player.x = nx;
     player.y = ny;
   }
 
-  // Eat small dots
-  if (maze[player.y][player.x] === ".") {
+  const tile = maze[player.y][player.x];
+
+  /* Eat dots */
+  if (tile === ".") {
     score += 10;
     maze[player.y] = replaceChar(maze[player.y], player.x, " ");
   }
 
-  // Hit a Quiz Orb
-  if (maze[player.y][player.x] === "o") {
-    maze[player.y] = replaceChar(maze[player.y], player.x, " ");
+  /* Quiz Orb */
+  if (tile === "o") {
     score += 25;
+    maze[player.y] = replaceChar(maze[player.y], player.x, " ");
     showQuestion();
   }
 
-  // Ghost (squirrel) movement
-  ghostStepCounter++;
-  const moveGhostsThisFrame = (ghostStepCounter % GHOST_STEP_DELAY === 0);
+  /* Ghost movement */
+  ghostCounter++;
+  const moveGhosts = ghostCounter % GHOST_STEP_DELAY === 0;
 
-  ghosts.forEach(g => {
-    if (moveGhostsThisFrame) {
-      let dirs = [
-        { x: 1, y: 0 },
-        { x: -1, y: 0 },
-        { x: 0, y: 1 },
-        { x: 0, y: -1 }
-      ];
-      let d = dirs[Math.floor(Math.random() * dirs.length)];
-      let gx = g.x + d.x;
-      let gy = g.y + d.y;
+  for (const g of ghosts) {
+    if (moveGhosts) {
+      const dirs = [{x:1,y:0},{x:-1,y:0},{x:0,y:1},{x:0,y:-1}];
+      const d = dirs[Math.floor(Math.random()*dirs.length)];
+      const gx = g.x + d.x;
+      const gy = g.y + d.y;
       if (!isWall(gx, gy)) {
         g.x = gx;
         g.y = gy;
       }
     }
 
-    // Collision with player
+    /* Player collision */
     if (g.x === player.x && g.y === player.y) {
       if (powerMode) {
-        // Squirrel tagged!
         score += 150;
-        g.x = 12;
-        g.y = 12;
+        g.x = 12; g.y = 12;
       } else {
-        // Lose points but never "die"
         score = Math.max(0, score - 25);
       }
     }
-  });
-
-  // Power mode timer
-  if (powerMode) {
-    powerTimer--;
-    if (powerTimer <= 0) powerMode = false;
   }
 
-  scoreDisplay.textContent = score;
+  /* Power mode timer */
+  if (powerMode && --powerTimer <= 0) powerMode = false;
 
-  // Win when all 10 Quiz Orbs answered
-  if (powerDotsEaten >= 10) {
-    winMessage.style.display = "block";
-  }
+  /* Win condition */
+  if (quizAnswered >= 10) winMessage.style.display = "block";
+
+  scoreEl.textContent = score;
 
   draw();
   requestAnimationFrame(update);
 }
 
-/* =============================
-   DRAWING (maze + pixel sprites)
-============================= */
+/* --------------------------------------------------
+   RENDERING
+-------------------------------------------------- */
 function draw() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.clearRect(0,0,canvas.width,canvas.height);
 
-  // Maze
-  for (let y = 0; y < maze.length; y++) {
-    for (let x = 0; x < maze[y].length; x++) {
-      let tile = maze[y][x];
+  /* Maze tiles */
+  for (let y=0; y<maze.length; y++) {
+    for (let x=0; x<maze[y].length; x++) {
+      const tile = maze[y][x];
+      const px = x*TILE, py = y*TILE;
 
       if (tile === "#") {
         ctx.fillStyle = "#111827";
-        ctx.fillRect(x * TILE, y * TILE, TILE, TILE);
-        ctx.strokeStyle = "rgba(34,211,238,0.45)";
+        ctx.fillRect(px,py,TILE,TILE);
+        ctx.strokeStyle = "rgba(34,211,238,.45)";
         ctx.lineWidth = 2;
-        ctx.strokeRect(x * TILE + 3, y * TILE + 3, TILE - 6, TILE - 6);
+        ctx.strokeRect(px+3, py+3, TILE-6, TILE-6);
       }
 
       if (tile === ".") {
         ctx.fillStyle = "#f9fafb";
         ctx.beginPath();
-        ctx.arc(x * TILE + 20, y * TILE + 20, 3, 0, Math.PI * 2);
+        ctx.arc(px+20, py+20, 3, 0, Math.PI*2);
         ctx.fill();
       }
 
       if (tile === "o") {
-        // Quiz Orb – glowing science question
-        const pulse = 8 + 2 * Math.sin(performance.now() / 150);
+        const pulse = 8 + 2*Math.sin(performance.now()/150);
         ctx.fillStyle = "#f97316";
         ctx.beginPath();
-        ctx.arc(x * TILE + 20, y * TILE + 20, pulse, 0, Math.PI * 2);
+        ctx.arc(px+20, py+20, pulse, 0, Math.PI*2);
         ctx.fill();
 
-        ctx.strokeStyle = "rgba(34,211,238,0.6)";
+        ctx.strokeStyle = "rgba(34,211,238,.6)";
         ctx.lineWidth = 2;
         ctx.beginPath();
-        ctx.arc(x * TILE + 20, y * TILE + 20, pulse + 4, 0, Math.PI * 2);
+        ctx.arc(px+20, py+20, pulse+4, 0, Math.PI*2);
         ctx.stroke();
       }
     }
   }
 
-  // -------- Pixel Student (main character) --------
-  const centerX = player.x * TILE + 20;
-  const centerY = player.y * TILE + 20;
-  const spriteW = 24;
-  const spriteH = 28;
-  const sx = centerX - spriteW / 2;
-  const sy = centerY - spriteH / 2;
+  /* Player sprite – centered pixel student */
+  const cx = player.x*TILE + 20;
+  const cy = player.y*TILE + 20;
 
   // legs
   ctx.fillStyle = "#1f2937"; // dark pants
-  ctx.fillRect(sx + 4,  sy + 20, 6, 8);
-  ctx.fillRect(sx + 14, sy + 20, 6, 8);
+  ctx.fillRect(cx-6, cy+6, 5, 8);
+  ctx.fillRect(cx+1, cy+6, 5, 8);
 
   // torso
   ctx.fillStyle = "#3b82f6"; // blue shirt
-  ctx.fillRect(sx + 4, sy + 12, 16, 10);
+  ctx.fillRect(cx-8, cy-2, 16, 10);
 
   // backpack
   ctx.fillStyle = "#10b981";
-  ctx.fillRect(sx + 2, sy + 12, 4, 12);
+  ctx.fillRect(cx-11, cy-2, 4, 12);
 
   // head
-  ctx.fillStyle = "#facc15"; // neutral skin tone
-  ctx.fillRect(sx + 6, sy + 4, 12, 10);
+  ctx.fillStyle = "#facc15"; // neutral skin
+  ctx.fillRect(cx-6, cy-12, 12, 8);
 
   // hair
   ctx.fillStyle = "#111827";
-  ctx.fillRect(sx + 6, sy + 2, 12, 4);
+  ctx.fillRect(cx-6, cy-14, 12, 4);
 
   // eyes
   ctx.fillStyle = "#111827";
-  ctx.fillRect(sx + 8, sy + 7, 2, 2);
-  ctx.fillRect(sx + 14, sy + 7, 2, 2);
+  ctx.fillRect(cx-3, cy-10, 2, 2);
+  ctx.fillRect(cx+1, cy-10, 2, 2);
 
-  // -------- Pixel Squirrels (ghosts) --------
-  ghosts.forEach(g => {
-    const gx = g.x * TILE + 20;
-    const gy = g.y * TILE + 20;
-    const gw = 24;
-    const gh = 24;
-    const gsx = gx - gw / 2;
-    const gsy = gy - gh / 2;
+  /* Ghosts – pixel squirrels with tiny bob animation */
+  const bob = Math.sin(performance.now() / 250) * 1.5;
 
-    const bodyColor = powerMode ? "#6b7280" : g.color;
-    const tailColor = powerMode ? "#9ca3af" : g.color;
+  for (const g of ghosts) {
+    const gx = g.x*TILE + 20;
+    const gy = g.y*TILE + 20 + bob; // bobbing
 
-    // tail (blocky, to the right)
-    ctx.fillStyle = tailColor;
-    ctx.fillRect(gsx + 18, gsy + 6, 6, 10);
-    ctx.fillRect(gsx + 16, gsy + 4, 6, 6);
+    const body = powerMode ? "#6b7280" : g.color;
+    const tail = powerMode ? "#9ca3af" : g.color;
+
+    // tail (to the right)
+    ctx.fillStyle = tail;
+    ctx.fillRect(gx+4, gy-4, 6, 10);
+    ctx.fillRect(gx+2, gy-6, 6, 6);
 
     // body
-    ctx.fillStyle = bodyColor;
-    ctx.fillRect(gsx + 4, gsy + 10, 12, 10);
-
-    // head
-    ctx.fillRect(gsx + 4, gsy + 4, 10, 8);
+    ctx.fillStyle = body;
+    ctx.fillRect(gx-8, gy-4, 12, 10);
+    ctx.fillRect(gx-8, gy-10, 10, 8);
 
     // ears
-    ctx.fillRect(gsx + 4, gsy + 2, 3, 3);
-    ctx.fillRect(gsx + 11, gsy + 2, 3, 3);
+    ctx.fillRect(gx-8, gy-12, 3, 3);
+    ctx.fillRect(gx-1, gy-12, 3, 3);
 
     // paws
-    ctx.fillRect(gsx + 4, gsy + 18, 3, 4);
-    ctx.fillRect(gsx + 11, gsy + 18, 3, 4);
+    ctx.fillRect(gx-8, gy-2, 3, 4);
+    ctx.fillRect(gx-1, gy-2, 3, 4);
 
-    // face (eyes)
+    // eyes
     ctx.fillStyle = "#f9fafb";
-    ctx.fillRect(gsx + 6, gsy + 6, 2, 2);
-    ctx.fillRect(gsx + 10, gsy + 6, 2, 2);
+    ctx.fillRect(gx-6, gy-8, 2, 2);
+    ctx.fillRect(gx-2, gy-8, 2, 2);
 
     ctx.fillStyle = "#111827";
-    ctx.fillRect(gsx + 6, gsy + 6, 1, 2);
-    ctx.fillRect(gsx + 11, gsy + 6, 1, 2);
-  });
+    ctx.fillRect(gx-6, gy-8, 1, 2);
+    ctx.fillRect(gx-1, gy-8, 1, 2);
+  }
 
-  // Small footer text
-  ctx.fillStyle = "rgba(148,163,184,0.9)";
+  /* Footer */
+  ctx.fillStyle = "rgba(148,163,184,.9)";
   ctx.font = "10px system-ui";
   ctx.fillText("Teach Arcade · Science Maze", 8, canvas.height - 8);
 }
 
-/* =============================
-   QUESTION SYSTEM
-============================= */
-function showQuestion() {
-  questionBox.style.display = "flex";
-  // Freeze player movement while the question is up
-  player.dirX = 0;
-  player.dirY = 0;
-
-  currentQuestionIndex = powerDotsEaten;
-  const q = questions[currentQuestionIndex];
-
-  questionText.textContent = q.q;
-  ansBtns.forEach((btn, i) => {
-    btn.textContent = String.fromCharCode(65 + i) + ". " + q.a[i];
-  });
-}
-
-function submitAnswer(choice) {
-  const q = questions[currentQuestionIndex];
-  if (choice === q.correct) {
-    // Reward: power mode and bonus
-    score += 150;
-    powerMode = true;
-    powerTimer = 320; // how long squirrels stay vulnerable
-  }
-  powerDotsEaten++;
-  questionBox.style.display = "none";
-}
-
-/* =============================
-   UTIL
-============================= */
-function replaceChar(str, index, chr) {
-  return str.substring(0, index) + chr + str.substring(index + 1);
-}
-
-/* =============================
-   START GAME
-============================= */
+/* --------------------------------------------------
+   START
+-------------------------------------------------- */
 update();
 </script>
 </body>
