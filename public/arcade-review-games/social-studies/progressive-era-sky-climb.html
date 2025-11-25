@@ -1,0 +1,1028 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Progressive Era Sky Climb — U.S. History Vertical Platformer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="Progressive Era Sky Climb is a vertical platformer review game on the Progressive Era in U.S. History. Jump between rooftops, land on question platforms, and answer 15 questions to reach the top of the city.">
+  <meta name="keywords" content="Progressive Era game, U.S. History game, muckrakers, The Jungle, settlement houses, Progressive Era Sky Climb, Teach Arcade, classroom review game">
+
+  <style>
+    :root {
+      --bg: #020617;
+      --sky: #020617;
+      --city-dark: #020617;
+      --city-mid: #0f172a;
+      --city-light: #1f2937;
+      --platform: #111827;
+      --platform-edge: #4b5563;
+      --question-platform: #1d4ed8;
+      --question-glow: rgba(59,130,246,0.35);
+      --player: #f97316;
+      --player-outline: #facc15;
+      --hud-bg: rgba(0,0,0,0.7);
+      --hud-text: #e5e7eb;
+      --accent: #facc15;
+      --danger: #ef4444;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #020617 0%, #000 70%);
+      color: #e5e7eb;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px 8px 32px;
+      min-height: 100vh;
+    }
+
+    h1 {
+      font-family: system-ui, sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.9rem;
+      text-align: center;
+      margin-bottom: 4px;
+    }
+
+    .subtitle {
+      font-size: 0.8rem;
+      max-width: 720px;
+      text-align: center;
+      color: #9ca3af;
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+
+    #gameContainer {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 2px solid rgba(148,163,184,0.6);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.9);
+      background: #000;
+    }
+
+    canvas {
+      display: block;
+      background: #020617;
+      image-rendering: pixelated;
+    }
+
+    #hud {
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      right: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--hud-bg);
+      border: 1px solid rgba(148,163,184,0.6);
+      font-size: 0.7rem;
+      z-index: 5;
+    }
+
+    #hud span {
+      white-space: nowrap;
+    }
+
+    #touchControls {
+      position: absolute;
+      bottom: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--hud-bg);
+      border: 1px solid rgba(148,163,184,0.6);
+      z-index: 5;
+    }
+
+    .ctrl-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      border: 2px solid rgba(148,163,184,0.8);
+      background: #020617;
+      color: #e5e7eb;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .ctrl-btn:active {
+      transform: translateY(1px);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.7) inset;
+    }
+
+    @media (min-width: 900px) {
+      #touchControls {
+        display: none;
+      }
+    }
+
+    @media (max-width: 900px) {
+      canvas {
+        width: 100vw;
+        height: auto;
+      }
+    }
+
+    /* Question modal */
+    #questionOverlay,
+    #endOverlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at top, rgba(0,0,0,0.96), rgba(0,0,0,0.98));
+      z-index: 10;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .panel {
+      background: #020617;
+      border-radius: 14px;
+      padding: 18px 18px 14px;
+      max-width: 460px;
+      width: 92%;
+      border: 2px solid rgba(250,204,21,0.7);
+      box-shadow: 0 18px 44px rgba(0,0,0,0.95);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 0.86rem;
+      color: #e5e7eb;
+    }
+
+    .panel h2 {
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-size: 0.8rem;
+    }
+
+    .choices {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .choice-btn {
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.6);
+      padding: 7px 10px;
+      font-size: 0.82rem;
+      text-align: left;
+      cursor: pointer;
+      background: #020617;
+      color: #e5e7eb;
+      transition: background 0.1s, border-color 0.1s, transform 0.08s;
+    }
+
+    .choice-btn:hover {
+      background: #0b1120;
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .choice-btn.correct {
+      background: #16a34a !important;
+      border-color: #16a34a !important;
+    }
+
+    .choice-btn.wrong {
+      background: #b91c1c !important;
+      border-color: #b91c1c !important;
+    }
+
+    .panel-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.74rem;
+      margin-top: 2px;
+      color: #9ca3af;
+      gap: 8px;
+    }
+
+    .primary-btn {
+      border-radius: 999px;
+      border: none;
+      padding: 6px 12px;
+      background: var(--accent);
+      color: #111827;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      cursor: pointer;
+    }
+
+    .primary-btn:hover {
+      filter: brightness(1.05);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.7);
+    }
+
+    .toast, .banner {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      white-space: nowrap;
+      background: rgba(0,0,0,0.85);
+      border: 1px solid rgba(250,204,21,0.7);
+      z-index: 6;
+    }
+
+    .toast {
+      bottom: 40px;
+    }
+
+    .banner {
+      top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Progressive Era Sky Climb</h1>
+  <p class="subtitle">
+    Jump between city rooftops and scaffolding, land on glowing question platforms,
+    and answer 15 Progressive Era questions to reach the top of the skyline.
+  </p>
+
+  <div id="gameContainer">
+    <canvas id="gameCanvas" width="480" height="720"></canvas>
+
+    <div id="hud">
+      <span id="hudScore">Score: 0</span>
+      <span id="hudQuestions">Questions: 0 / 15</span>
+      <span id="hudTimer">Time: 0s</span>
+      <span id="hudStatus">Status: Climbing</span>
+    </div>
+
+    <!-- Touch controls -->
+    <div id="touchControls">
+      <button class="ctrl-btn" id="btnLeft" aria-label="Move left">◀</button>
+      <button class="ctrl-btn" id="btnJump" aria-label="Jump">⤒</button>
+      <button class="ctrl-btn" id="btnRight" aria-label="Move right">▶</button>
+    </div>
+
+    <!-- Question overlay -->
+    <div id="questionOverlay" class="hidden">
+      <div class="panel">
+        <h2 id="qTitle">Question</h2>
+        <p id="qText"></p>
+        <div class="choices" id="choicesContainer"></div>
+        <div class="panel-footer">
+          <span id="qFeedback"></span>
+          <button id="qCloseBtn" class="primary-btn">Resume</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- End overlay -->
+    <div id="endOverlay" class="hidden">
+      <div class="panel">
+        <h2>Top of the City</h2>
+        <p id="endSummary"></p>
+        <div class="panel-footer">
+          <button id="replayBtn" class="primary-btn">Replay</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // -----------------------------
+    // BASIC SETUP
+    // -----------------------------
+    const canvas = document.getElementById("gameCanvas");
+    const ctx = canvas.getContext("2d");
+
+    const hudScore = document.getElementById("hudScore");
+    const hudQuestions = document.getElementById("hudQuestions");
+    const hudTimer = document.getElementById("hudTimer");
+    const hudStatus = document.getElementById("hudStatus");
+
+    const qOverlay = document.getElementById("questionOverlay");
+    const qTitle = document.getElementById("qTitle");
+    const qText = document.getElementById("qText");
+    const qChoices = document.getElementById("choicesContainer");
+    const qFeedback = document.getElementById("qFeedback");
+    const qCloseBtn = document.getElementById("qCloseBtn");
+
+    const endOverlay = document.getElementById("endOverlay");
+    const endSummary = document.getElementById("endSummary");
+    const replayBtn = document.getElementById("replayBtn");
+
+    const btnLeft = document.getElementById("btnLeft");
+    const btnRight = document.getElementById("btnRight");
+    const btnJump = document.getElementById("btnJump");
+
+    const GRAVITY = 0.5;
+    const JUMP_STRENGTH = 11;
+    const MOVE_SPEED = 4.2;
+
+    const LEVEL_HEIGHT = 2200; // virtual world height
+    const VIEW_HEIGHT = canvas.height;
+
+    let lastTime = 0;
+    let elapsedTime = 0;
+    let timeSeconds = 0;
+
+    let score = 0;
+    let correctCount = 0;
+    let wrongCount = 0;
+
+    let gamePaused = false;
+    let inQuestion = false;
+    let gameOver = false;
+
+    let toastText = "";
+    let toastTimer = 0;
+    let bannerText = "";
+    let bannerTimer = 0;
+
+    const keys = {
+      left: false,
+      right: false,
+      jump: false
+    };
+
+    const player = {
+      x: canvas.width / 2 - 16,
+      y: LEVEL_HEIGHT - 80, // bottom of virtual world
+      width: 32,
+      height: 40,
+      vx: 0,
+      vy: 0,
+      grounded: false,
+      lastSafeY: LEVEL_HEIGHT - 80
+    };
+
+    let cameraY = LEVEL_HEIGHT - VIEW_HEIGHT; // start at bottom
+
+    // -----------------------------
+    // QUESTIONS
+    // -----------------------------
+    const QUESTIONS = [
+      {
+        text: "Who were muckrakers in the Progressive Era?",
+        choices: [
+          "A) Journalists who exposed problems in society",
+          "B) Politicians who supported big business",
+          "C) Factory owners who hired child workers"
+        ],
+        correctIndex: 0
+      },
+      {
+        text: "Upton Sinclair’s novel 'The Jungle' exposed problems in:",
+        choices: [
+          "A) Coal mining",
+          "B) Meatpacking industry",
+          "C) Railroad construction"
+        ],
+        correctIndex: 1
+      },
+      {
+        text: "What was a major goal of settlement houses like Hull House?",
+        choices: [
+          "A) Provide services for immigrants and the urban poor",
+          "B) Train soldiers for war",
+          "C) Support big business monopolies"
+        ],
+        correctIndex: 0
+      },
+      {
+        text: "Jane Addams is best known for her work with:",
+        choices: [
+          "A) Trust-busting",
+          "B) Settlement houses",
+          "C) Temperance clubs"
+        ],
+        correctIndex: 1
+      },
+      {
+        text: "The Temperance Movement mainly wanted to:",
+        choices: [
+          "A) Ban child labor",
+          "B) End unfair railroad rates",
+          "C) Limit or ban alcohol",
+        ],
+        correctIndex: 2
+      },
+      {
+        text: "The 19th Amendment did what?",
+        choices: [
+          "A) Gave women the right to vote",
+          "B) Banned poll taxes",
+          "C) Ended slavery",
+        ],
+        correctIndex: 0
+      },
+      {
+        text: "What is trust-busting?",
+        choices: [
+          "A) Breaking up business monopolies",
+          "B) Encouraging child labor",
+          "C) Creating new political parties",
+        ],
+        correctIndex: 0
+      },
+      {
+        text: "The Sherman Antitrust Act was designed to:",
+        choices: [
+          "A) Protect national parks",
+          "B) Break up harmful monopolies",
+          "C) Fund settlement houses",
+        ],
+        correctIndex: 1
+      },
+      {
+        text: "The Meat Inspection Act was passed after the public read:",
+        choices: [
+          "A) How the Other Half Lives",
+          "B) The Jungle",
+          "C) The Shame of the Cities",
+        ],
+        correctIndex: 1
+      },
+      {
+        text: "The Pure Food and Drug Act aimed to:",
+        choices: [
+          "A) Ban all advertising",
+          "B) Stop the sale of unsafe food and medicines",
+          "C) End labor unions",
+        ],
+        correctIndex: 1
+      },
+      {
+        text: "Which reforms gave voters more direct control over laws and officials?",
+        choices: [
+          "A) Recall, referendum, initiative",
+          "B) Laissez-faire, monopoly, tariff",
+          "C) Isolationism, imperialism, neutrality",
+        ],
+        correctIndex: 0
+      },
+      {
+        text: "The 17th Amendment changed the way U.S. Senators were:",
+        choices: [
+          "A) Appointed by state legislatures",
+          "B) Elected directly by the people",
+          "C) Chosen by the President",
+        ],
+        correctIndex: 1
+      },
+      {
+        text: "Theodore Roosevelt was considered a Progressive president mainly because he:",
+        choices: [
+          "A) Fought for monopolies",
+          "B) Supported reforms and conservation",
+          "C) Opposed all government regulation",
+        ],
+        correctIndex: 1
+      },
+      {
+        text: "Woodrow Wilson’s New Freedom reforms focused on:",
+        choices: [
+          "A) Lowering tariffs and regulating banks",
+          "B) Expanding overseas colonies",
+          "C) Ending women’s suffrage",
+        ],
+        correctIndex: 0
+      },
+      {
+        text: "Progressive labor reforms tried to improve working conditions by:",
+        choices: [
+          "A) Encouraging longer hours",
+          "B) Protecting child workers and supporting unions",
+          "C) Ending all safety rules",
+        ],
+        correctIndex: 1
+      }
+    ];
+
+    // -----------------------------
+    // PLATFORMS
+    // -----------------------------
+    // Each platform: { x, y, width, height, questionIndex (or null), moving, baseX, amplitude, speed, answered }
+    const platforms = [];
+
+    function addPlatform(x, y, width, questionIndex = null, moving = false, amplitude = 0, speed = 0) {
+      platforms.push({
+        x,
+        y,
+        width,
+        height: 16,
+        questionIndex,
+        moving,
+        baseX: x,
+        amplitude,
+        speed,
+        answered: false
+      });
+    }
+
+    // Build a simple vertical level from bottom (LEVEL_HEIGHT-80) to top (~200)
+    function buildLevel() {
+      platforms.length = 0;
+
+      // Ground platform
+      addPlatform(80, LEVEL_HEIGHT - 40, 320, null, false);
+
+      // Ledges going upward
+      addPlatform(40, LEVEL_HEIGHT - 160, 140, 0, false);
+      addPlatform(260, LEVEL_HEIGHT - 230, 140, 1, true, 40, 1.0);
+      addPlatform(80, LEVEL_HEIGHT - 320, 140, 2, false);
+      addPlatform(260, LEVEL_HEIGHT - 410, 140, 3, false);
+      addPlatform(60, LEVEL_HEIGHT - 500, 140, 4, true, 50, 1.2);
+      addPlatform(260, LEVEL_HEIGHT - 590, 140, 5, false);
+      addPlatform(60, LEVEL_HEIGHT - 680, 140, 6, false);
+      addPlatform(260, LEVEL_HEIGHT - 770, 140, 7, true, 60, 0.8);
+      addPlatform(60, LEVEL_HEIGHT - 860, 140, 8, false);
+      addPlatform(260, LEVEL_HEIGHT - 950, 140, 9, false);
+      addPlatform(80, LEVEL_HEIGHT - 1040, 140, 10, true, 45, 1.3);
+      addPlatform(260, LEVEL_HEIGHT - 1130, 140, 11, false);
+      addPlatform(60, LEVEL_HEIGHT - 1220, 140, 12, false);
+      addPlatform(260, LEVEL_HEIGHT - 1310, 140, 13, true, 55, 1.1);
+
+      // Final platform at top with last question and goal
+      addPlatform(100, LEVEL_HEIGHT - 1450, 280, 14, false);
+    }
+
+    // -----------------------------
+    // INPUT HANDLING
+    // -----------------------------
+    document.addEventListener("keydown", (e) => {
+      if (inQuestion || gameOver) return;
+      if (e.code === "ArrowLeft" || e.code === "KeyA") keys.left = true;
+      if (e.code === "ArrowRight" || e.code === "KeyD") keys.right = true;
+      if (e.code === "ArrowUp" || e.code === "KeyW" || e.code === "Space") keys.jump = true;
+    });
+
+    document.addEventListener("keyup", (e) => {
+      if (e.code === "ArrowLeft" || e.code === "KeyA") keys.left = false;
+      if (e.code === "ArrowRight" || e.code === "KeyD") keys.right = false;
+      if (e.code === "ArrowUp" || e.code === "KeyW" || e.code === "Space") keys.jump = false;
+    });
+
+    function bindTouch(btn, onDown, onUp) {
+      if (!btn) return;
+      const start = (ev) => { ev.preventDefault(); onDown(); };
+      const end   = (ev) => { ev.preventDefault(); onUp(); };
+      btn.addEventListener("touchstart", start, { passive:false });
+      btn.addEventListener("touchend", end, { passive:false });
+      btn.addEventListener("touchcancel", end, { passive:false });
+      btn.addEventListener("mousedown", start);
+      btn.addEventListener("mouseup", end);
+      btn.addEventListener("mouseleave", end);
+    }
+
+    bindTouch(btnLeft, () => { if (!inQuestion && !gameOver) keys.left = true; }, () => keys.left = false);
+    bindTouch(btnRight, () => { if (!inQuestion && !gameOver) keys.right = true; }, () => keys.right = false);
+    bindTouch(btnJump, () => {
+      if (!inQuestion && !gameOver) keys.jump = true;
+    }, () => {
+      keys.jump = false;
+    });
+
+    // -----------------------------
+    // UTILS
+    // -----------------------------
+    function showToast(text, duration = 1.2) {
+      toastText = text;
+      toastTimer = duration;
+    }
+
+    function showBanner(text, duration = 1.5) {
+      bannerText = text;
+      bannerTimer = duration;
+    }
+
+    function rectsIntersect(ax, ay, aw, ah, bx, by, bw, bh) {
+      return !(
+        ax + aw <= bx ||
+        ax >= bx + bw ||
+        ay + ah <= by ||
+        ay >= by + bh
+      );
+    }
+
+    // -----------------------------
+    // QUESTION LOGIC
+    // -----------------------------
+    let activePlatform = null;
+    let activeQuestion = null;
+
+    function maybeOpenQuestion(platform) {
+      if (platform.questionIndex == null) return;
+      if (platform.answered) return;
+      if (inQuestion) return;
+
+      const q = QUESTIONS[platform.questionIndex];
+      activePlatform = platform;
+      activeQuestion = q;
+      inQuestion = true;
+      gamePaused = true;
+
+      qTitle.textContent = "Progressive Era Question " + (platform.questionIndex + 1);
+      qText.textContent = q.text;
+      qChoices.innerHTML = "";
+      qFeedback.textContent = "";
+
+      q.choices.forEach((choice, idx) => {
+        const btn = document.createElement("button");
+        btn.className = "choice-btn";
+        btn.textContent = choice;
+        btn.addEventListener("click", () => handleAnswer(btn, idx));
+        qChoices.appendChild(btn);
+      });
+
+      qOverlay.classList.remove("hidden");
+      hudStatus.textContent = "Status: Answering question";
+    }
+
+    function handleAnswer(btnEl, selectedIndex) {
+      if (!activeQuestion || !activePlatform) return;
+      const isCorrect = (selectedIndex === activeQuestion.correctIndex);
+      if (isCorrect) {
+        btnEl.classList.add("correct");
+        qFeedback.textContent = "Correct! Climb higher.";
+        activePlatform.answered = true;
+        score += 10;
+        correctCount++;
+        hudScore.textContent = "Score: " + score;
+        hudQuestions.textContent = "Questions: " + correctCount + " / 15";
+        showToast("+10 | Correct");
+        setTimeout(() => closeQuestion(), 500);
+      } else {
+        btnEl.classList.add("wrong");
+        qFeedback.textContent = "Incorrect. You slip down a level.";
+        wrongCount++;
+        score = Math.max(0, score - 5);
+        hudScore.textContent = "Score: " + score;
+        showToast("-5 | Wrong answer");
+        // Drop player down to last safe platform
+        player.y = player.lastSafeY + 5;
+        player.vy = 0;
+      }
+    }
+
+    function closeQuestion() {
+      qOverlay.classList.add("hidden");
+      inQuestion = false;
+      gamePaused = false;
+      activePlatform = null;
+      activeQuestion = null;
+      if (!gameOver) hudStatus.textContent = "Status: Climbing";
+    }
+
+    qCloseBtn.addEventListener("click", () => {
+      // Only allow closing if question was answered correctly
+      if (!activePlatform || !activePlatform.answered) {
+        qFeedback.textContent = "Answer correctly to continue.";
+        return;
+      }
+      closeQuestion();
+    });
+
+    replayBtn.addEventListener("click", () => {
+      resetGame();
+    });
+
+    // -----------------------------
+    // END GAME
+    // -----------------------------
+    function triggerWin() {
+      gameOver = true;
+      gamePaused = true;
+      inQuestion = false;
+      hudStatus.textContent = "Status: Top of the city";
+      showBanner("You reached the top!");
+
+      const accuracy = (correctCount / QUESTIONS.length) * 100;
+      const msg =
+        `You reached the top of the Progressive Era skyline!\n\n` +
+        `Score: ${score}\n` +
+        `Correct: ${correctCount} / ${QUESTIONS.length} (${accuracy.toFixed(0)}%)\n` +
+        `Time: ${timeSeconds}s\n` +
+        `Wrong answers: ${wrongCount}`;
+      endSummary.textContent = msg;
+      endOverlay.classList.remove("hidden");
+    }
+
+    function triggerFallOut() {
+      gameOver = true;
+      gamePaused = true;
+      inQuestion = false;
+      hudStatus.textContent = "Status: Fell off the skyline";
+
+      const accuracy = (correctCount / QUESTIONS.length) * 100;
+      const msg =
+        `You fell off the Progressive Era skyline.\n\n` +
+        `Score: ${score}\n` +
+        `Correct: ${correctCount} / ${QUESTIONS.length} (${accuracy.toFixed(0)}%)\n` +
+        `Time: ${timeSeconds}s\n` +
+        `Wrong answers: ${wrongCount}`;
+      endSummary.textContent = msg;
+      endOverlay.classList.remove("hidden");
+    }
+
+    // -----------------------------
+    // GAME LOOP
+    // -----------------------------
+    function resetGame() {
+      score = 0;
+      correctCount = 0;
+      wrongCount = 0;
+      elapsedTime = 0;
+      timeSeconds = 0;
+      toastText = "";
+      toastTimer = 0;
+      bannerText = "";
+      bannerTimer = 0;
+      gamePaused = false;
+      gameOver = false;
+      inQuestion = false;
+
+      buildLevel();
+
+      player.x = canvas.width / 2 - 16;
+      player.y = LEVEL_HEIGHT - 80;
+      player.vx = 0;
+      player.vy = 0;
+      player.grounded = false;
+      player.lastSafeY = LEVEL_HEIGHT - 80;
+
+      cameraY = LEVEL_HEIGHT - VIEW_HEIGHT;
+
+      hudScore.textContent = "Score: 0";
+      hudQuestions.textContent = "Questions: 0 / 15";
+      hudTimer.textContent = "Time: 0s";
+      hudStatus.textContent = "Status: Climbing";
+
+      qOverlay.classList.add("hidden");
+      endOverlay.classList.add("hidden");
+    }
+
+    function update(dt) {
+      if (gamePaused) return;
+
+      elapsedTime += dt;
+      const newSeconds = Math.floor(elapsedTime);
+      if (newSeconds !== timeSeconds) {
+        timeSeconds = newSeconds;
+        hudTimer.textContent = "Time: " + timeSeconds + "s";
+      }
+
+      if (toastTimer > 0) {
+        toastTimer -= dt;
+        if (toastTimer < 0) toastTimer = 0;
+      }
+
+      if (bannerTimer > 0) {
+        bannerTimer -= dt;
+        if (bannerTimer < 0) bannerTimer = 0;
+      }
+
+      // Move moving platforms
+      platforms.forEach(p => {
+        if (p.moving) {
+          const t = elapsedTime * p.speed;
+          p.x = p.baseX + Math.sin(t) * p.amplitude;
+        }
+      });
+
+      // Player horizontal input
+      player.vx = 0;
+      if (keys.left) player.vx -= MOVE_SPEED;
+      if (keys.right) player.vx += MOVE_SPEED;
+
+      // Jump
+      if (keys.jump && player.grounded) {
+        player.vy = -JUMP_STRENGTH;
+        player.grounded = false;
+      }
+
+      // Apply gravity
+      player.vy += GRAVITY;
+      if (player.vy > 18) player.vy = 18;
+
+      // Move player
+      player.x += player.vx;
+      player.y += player.vy;
+
+      // Horizontal bounds
+      if (player.x < 0) player.x = 0;
+      if (player.x + player.width > canvas.width) player.x = canvas.width - player.width;
+
+      // Platform collision (landing only)
+      let onPlatform = false;
+      let landedOn = null;
+      platforms.forEach(p => {
+        if (player.vy >= 0) {
+          const prevBottom = player.y - player.vy + player.height;
+          const currBottom = player.y + player.height;
+          if (
+            prevBottom <= p.y && // was above platform top
+            currBottom >= p.y && // now at or below platform top
+            player.x + player.width > p.x &&
+            player.x < p.x + p.width
+          ) {
+            player.y = p.y - player.height;
+            player.vy = 0;
+            onPlatform = true;
+            landedOn = p;
+          }
+        }
+      });
+
+      if (onPlatform) {
+        if (!player.grounded) {
+          player.lastSafeY = player.y;
+        }
+        player.grounded = true;
+      } else {
+        player.grounded = false;
+      }
+
+      // If landed on a question platform, open question
+      if (landedOn && landedOn.questionIndex != null && !landedOn.answered) {
+        maybeOpenQuestion(landedOn);
+      }
+
+      // Win condition: reached top platform and all questions answered
+      const topPlatform = platforms[platforms.length - 1];
+      if (
+        correctCount === QUESTIONS.length &&
+        rectsIntersect(
+          player.x, player.y, player.width, player.height,
+          topPlatform.x, topPlatform.y, topPlatform.width, topPlatform.height
+        ) &&
+        !gameOver
+      ) {
+        triggerWin();
+      }
+
+      // Fall out of world
+      if (player.y > LEVEL_HEIGHT + 50 && !gameOver) {
+        triggerFallOut();
+      }
+
+      // Camera follows player upward (never goes below bottom)
+      const targetCamY = Math.min(
+        LEVEL_HEIGHT - VIEW_HEIGHT,
+        Math.max(0, player.y - VIEW_HEIGHT * 0.6)
+      );
+      const lerpFactor = 0.15;
+      cameraY += (targetCamY - cameraY) * lerpFactor;
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Sky gradient
+      const skyGrad = ctx.createLinearGradient(0, 0, 0, canvas.height);
+      skyGrad.addColorStop(0, "#0f172a");
+      skyGrad.addColorStop(1, "#020617");
+      ctx.fillStyle = skyGrad;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Parallax city silhouettes
+      const camOffset = cameraY / LEVEL_HEIGHT;
+      ctx.fillStyle = "#020617";
+      ctx.fillRect(0, 480 * (1 - camOffset), canvas.width, canvas.height);
+
+      ctx.save();
+      ctx.translate(0, -(cameraY - Math.floor(cameraY)));
+
+      // Simple building silhouettes
+      for (let i = 0; i < 6; i++) {
+        const bw = 80 + (i % 3) * 20;
+        const bx = i * 80 - (cameraY * 0.1 % 80);
+        const by = 580;
+        ctx.fillStyle = "#020617";
+        ctx.fillRect(bx, by, bw, 200);
+        ctx.fillStyle = "#111827";
+        ctx.fillRect(bx + 6, by + 10, bw - 12, 6);
+        ctx.fillRect(bx + 6, by + 26, bw - 12, 6);
+      }
+
+      // Platforms
+      platforms.forEach(p => {
+        const screenY = p.y - cameraY;
+        if (screenY < -40 || screenY > canvas.height + 40) return;
+
+        if (p.questionIndex != null) {
+          // Glow
+          ctx.fillStyle = "rgba(37,99,235,0.2)";
+          ctx.fillRect(p.x - 3, screenY - 8, p.width + 6, p.height + 16);
+
+          ctx.fillStyle = p.answered ? "#22c55e" : "#1d4ed8";
+          ctx.fillRect(p.x, screenY, p.width, p.height);
+
+          ctx.strokeStyle = p.answered ? "#22c55e" : "#60a5fa";
+          ctx.lineWidth = 2;
+          ctx.strokeRect(p.x, screenY, p.width, p.height);
+
+          ctx.fillStyle = "#e5e7eb";
+          ctx.font = "9px system-ui";
+          ctx.textAlign = "center";
+          ctx.fillText(p.answered ? "✓" : "Q", p.x + p.width / 2, screenY - 4);
+        } else {
+          ctx.fillStyle = "#111827";
+          ctx.fillRect(p.x, screenY, p.width, p.height);
+          ctx.strokeStyle = "#4b5563";
+          ctx.lineWidth = 2;
+          ctx.strokeRect(p.x, screenY, p.width, p.height);
+        }
+      });
+
+      // Player
+      const px = player.x;
+      const py = player.y - cameraY;
+      ctx.fillStyle = "#111827";
+      ctx.fillRect(px - 2, py - 2, player.width + 4, player.height + 4);
+      ctx.fillStyle = "#f97316";
+      ctx.fillRect(px, py + 8, player.width, player.height - 8);
+      ctx.fillStyle = "#facc15";
+      ctx.fillRect(px + 6, py, player.width - 12, 10);
+
+      ctx.restore();
+
+      // Toast & banner
+      if (toastTimer > 0 && toastText) {
+        ctx.save();
+        ctx.font = "10px system-ui";
+        ctx.textAlign = "center";
+        const w = ctx.measureText(toastText).width + 24;
+        const x = canvas.width / 2 - w / 2;
+        const y = canvas.height - 42;
+        ctx.fillStyle = "rgba(0,0,0,0.85)";
+        ctx.fillRect(x, y, w, 22);
+        ctx.strokeStyle = "rgba(250,204,21,0.7)";
+        ctx.strokeRect(x, y, w, 22);
+        ctx.fillStyle = "#facc15";
+        ctx.fillText(toastText, canvas.width / 2, y + 14);
+        ctx.restore();
+      }
+
+      if (bannerTimer > 0 && bannerText) {
+        ctx.save();
+        ctx.font = "10px system-ui";
+        ctx.textAlign = "center";
+        const w = ctx.measureText(bannerText).width + 24;
+        const x = canvas.width / 2 - w / 2;
+        const y = 38;
+        ctx.fillStyle = "rgba(0,0,0,0.85)";
+        ctx.fillRect(x, y, w, 22);
+        ctx.strokeStyle = "rgba(250,204,21,0.7)";
+        ctx.strokeRect(x, y, w, 22);
+        ctx.fillStyle = "#facc15";
+        ctx.fillText(bannerText, canvas.width / 2, y + 14);
+        ctx.restore();
+      }
+    }
+
+    function loop(timestamp) {
+      const dt = (timestamp - lastTime) / 1000;
+      lastTime = timestamp;
+
+      update(dt);
+      draw();
+
+      requestAnimationFrame(loop);
+    }
+
+    // Start
+    resetGame();
+    requestAnimationFrame(loop);
+  </script>
+</body>
+</html>
