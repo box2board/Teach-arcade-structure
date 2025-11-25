@@ -293,7 +293,7 @@ let powerTimer = 0;
 let quizIndex = -1;
 let quizAnswered = 0;
 
-/* Player — note: no dx/dy used for continuous movement now */
+/* Player — one-tile steps only */
 const player = { x: 1, y: 1 };
 
 let ghostCounter = 0;
@@ -429,6 +429,7 @@ function handlePlayerTile() {
   }
 }
 
+// ANSWERING QUESTIONS / POWER MODE
 function answer(choice) {
   const q = questions[quizIndex];
   const correct = (choice === q.correct);
@@ -436,7 +437,8 @@ function answer(choice) {
   if (correct) {
     score += 150;
     powerMode = true;
-    powerTimer = 320;
+    // ≈10 seconds at ~60 FPS
+    powerTimer = 600;
     feedbackEl.textContent = "✅ Correct! Power Mode activated.";
     feedbackEl.classList.remove("incorrect");
     feedbackEl.classList.add("correct");
@@ -502,10 +504,10 @@ function moveGhosts() {
    GAME LOOP
 -------------------------------------------------- */
 function update() {
-  // No automatic player movement here — movement only happens on input.
-
-  // Power mode timer
-  if (powerMode && --powerTimer <= 0) powerMode = false;
+  // Power mode timer (~10s)
+  if (powerMode && --powerTimer <= 0) {
+    powerMode = false;
+  }
 
   // Ghost movement
   if (questionBox.style.display !== "flex") {
@@ -568,21 +570,23 @@ function draw() {
   const cx = player.x*TILE + 20;
   const cy = player.y*TILE + 20;
 
+  const inPower = powerMode;
+
   // legs
   ctx.fillStyle = "#1f2937"; // dark pants
   ctx.fillRect(cx-6, cy+6, 5, 8);
   ctx.fillRect(cx+1, cy+6, 5, 8);
 
-  // torso
-  ctx.fillStyle = "#3b82f6"; // blue shirt
+  // torso (changes color in power mode)
+  ctx.fillStyle = inPower ? "#22d3ee" : "#3b82f6"; // teal shirt in power
   ctx.fillRect(cx-8, cy-2, 16, 10);
 
   // backpack
-  ctx.fillStyle = "#10b981";
+  ctx.fillStyle = inPower ? "#fde047" : "#10b981"; // bright yellow in power
   ctx.fillRect(cx-11, cy-2, 4, 12);
 
-  // head
-  ctx.fillStyle = "#facc15"; // neutral skin
+  // head (slightly brighter in power mode)
+  ctx.fillStyle = inPower ? "#fef3c7" : "#facc15";
   ctx.fillRect(cx-6, cy-12, 12, 8);
 
   // hair
@@ -601,8 +605,9 @@ function draw() {
     const gx = g.x*TILE + 20;
     const gy = g.y*TILE + 20 + bob; // bobbing
 
-    const body = powerMode ? "#6b7280" : g.color;
-    const tail = powerMode ? "#9ca3af" : g.color;
+    // In power mode, squirrels turn white
+    const body = powerMode ? "#f9fafb" : g.color;
+    const tail = powerMode ? "#f9fafb" : g.color;
 
     // tail (to the right)
     ctx.fillStyle = tail;
@@ -623,13 +628,9 @@ function draw() {
     ctx.fillRect(gx-1, gy-2, 3, 4);
 
     // eyes
-    ctx.fillStyle = "#f9fafb";
+    ctx.fillStyle = "#111827";
     ctx.fillRect(gx-6, gy-8, 2, 2);
     ctx.fillRect(gx-2, gy-8, 2, 2);
-
-    ctx.fillStyle = "#111827";
-    ctx.fillRect(gx-6, gy-8, 1, 2);
-    ctx.fillRect(gx-1, gy-8, 1, 2);
   }
 
   /* Footer */
