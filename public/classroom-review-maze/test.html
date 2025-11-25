@@ -245,7 +245,7 @@ canvas {
 </div>
 
 <div id="score">Score: <span id="scoreValue">0</span></div>
-<div id="hint">Use arrow keys or tap the controls. Collect dots, hit Quiz Orbs, and tag squirrels in Power Mode.</div>
+<div id="hint">Use arrow keys or tap the controls. Each press moves one step. Collect dots, hit Quiz Orbs, and tag squirrels in Power Mode.</div>
 <div id="feedback"></div>
 <div id="winMessage">🎉 You cleared all 10 Quiz Orbs! 🎉</div>
 
@@ -281,9 +281,8 @@ const controlButtons = controls.querySelectorAll(".control-btn");
 
 const TILE = 40;
 
-// Movement timing
-const GHOST_STEP_DELAY = 16;   // squirrels
-const PLAYER_STEP_DELAY = 6;   // student
+// Ghost movement timing
+const GHOST_STEP_DELAY = 16;
 
 /* --------------------------------------------------
    STATE
@@ -294,21 +293,14 @@ let powerTimer = 0;
 let quizIndex = -1;
 let quizAnswered = 0;
 
-/* Player */
-const player = { x: 1, y: 1, dx: 0, dy: 0 };
-let playerStepCounter = 0;
-
-/* Squirrels */
-const ghosts = [
-  { x: 12, y: 12, color: "#f97316" },
-  { x: 12, y:  1, color: "#a855f7" },
-  { x:  1, y: 12, color: "#22c55e" }
-];
+/* Player — note: no dx/dy used for continuous movement now */
+const player = { x: 1, y: 1 };
 
 let ghostCounter = 0;
 
 /* --------------------------------------------------
    MAZE LAYOUT
+   # = wall, . = dot, o = Quiz Orb, space = empty
 -------------------------------------------------- */
 let maze = [
   "##############",
@@ -345,14 +337,27 @@ const questions = [
 
 /* --------------------------------------------------
    INPUT (KEYBOARD + TOUCH)
+   One press/tap = one move attempt.
 -------------------------------------------------- */
+function tryMove(dx, dy) {
+  if (questionBox.style.display === "flex") return; // no movement during question
+
+  const nx = player.x + dx;
+  const ny = player.y + dy;
+
+  if (!isWall(nx, ny)) {
+    player.x = nx;
+    player.y = ny;
+    handlePlayerTile(); // eat dots / orbs etc after moving
+  }
+}
+
 function setDirection(dir) {
-  if (questionBox.style.display === "flex") return;
   switch (dir) {
-    case "up":    player.dx = 0;  player.dy = -1; break;
-    case "down":  player.dx = 0;  player.dy = 1;  break;
-    case "left":  player.dx = -1; player.dy = 0;  break;
-    case "right": player.dx = 1;  player.dy = 0;  break;
+    case "up":    tryMove(0, -1); break;
+    case "down":  tryMove(0,  1); break;
+    case "left":  tryMove(-1, 0); break;
+    case "right": tryMove(1,  0); break;
   }
 }
 
@@ -377,8 +382,8 @@ controlButtons.forEach(btn => {
 /* --------------------------------------------------
    LOGIC HELPERS
 -------------------------------------------------- */
-// IMPORTANT: only walls (#) block movement.
-// Dots (.) and Quiz Orbs (o) are passable for squirrels and player.
+// Only walls (#) block movement for both player and squirrels.
+// Dots (.), Quiz Orbs (o), and spaces are all passable.
 function isWall(x, y) {
   if (y < 0 || y >= maze.length) return true;
   const row = maze[y];
@@ -405,10 +410,25 @@ function showQuestion() {
   );
 
   questionBox.style.display = "flex";
-  player.dx = player.dy = 0; // freeze
 }
 
-// When student answers, show clear feedback, then resume game.
+// Handle what happens when player lands on a tile
+function handlePlayerTile() {
+  const tile = maze[player.y][player.x];
+
+  if (tile === ".") {
+    score += 10;
+    maze[player.y] = replaceChar(maze[player.y], player.x, " ");
+  }
+
+  if (tile === "o") {
+    score += 25;
+    maze[player.y] = replaceChar(maze[player.y], player.x, " ");
+    clearFeedback();
+    showQuestion();
+  }
+}
+
 function answer(choice) {
   const q = questions[quizIndex];
   const correct = (choice === q.correct);
@@ -427,7 +447,6 @@ function answer(choice) {
   }
 
   quizAnswered++;
-  // Hide the question box after a short delay so they can see feedback.
   setTimeout(() => {
     questionBox.style.display = "none";
   }, 450);
@@ -436,69 +455,38 @@ function answer(choice) {
 ansBtns.forEach((btn,i)=>btn.onclick=()=>answer(i));
 
 /* --------------------------------------------------
-   GAME LOOP
+   GHOST (SQUIRREL) LOGIC
+   Ghosts can move over '.', 'o', ' ' — only '#' stops them.
 -------------------------------------------------- */
-function update() {
+const ghosts = [
+  { x: 12, y: 12, color: "#f97316" },
+  { x: 12, y:  1, color: "#a855f7" },
+  { x:  1, y: 12, color: "#22c55e" }
+];
 
-  /* Pause movement while question is open */
-  if (questionBox.style.display === "flex") {
-    requestAnimationFrame(update);
-    return;
-  }
-
-  /* Player movement (slowed with step delay) */
-  playerStepCounter++;
-  const movePlayer = playerStepCounter % PLAYER_STEP_DELAY === 0;
-
-  if (movePlayer) {
-    const nx = player.x + player.dx;
-    const ny = player.y + player.dy;
-    if (!isWall(nx, ny)) {
-      player.x = nx;
-      player.y = ny;
-    }
-  }
-
-  const tile = maze[player.y][player.x];
-
-  /* Eat dots */
-  if (tile === ".") {
-    score += 10;
-    maze[player.y] = replaceChar(maze[player.y], player.x, " ");
-  }
-
-  /* Quiz Orb */
-  if (tile === "o") {
-    score += 25;
-    maze[player.y] = replaceChar(maze[player.y], player.x, " ");
-    clearFeedback();
-    showQuestion();
-  }
-
-  /* Ghost (squirrel) movement */
+function moveGhosts() {
   ghostCounter++;
-  const moveGhosts = ghostCounter % GHOST_STEP_DELAY === 0;
+  const shouldMove = ghostCounter % GHOST_STEP_DELAY === 0;
+  if (!shouldMove) return;
 
   for (const g of ghosts) {
-    if (moveGhosts) {
-      const dirs = [
-        {x:1,y:0},
-        {x:-1,y:0},
-        {x:0,y:1},
-        {x:0,y:-1}
-      ];
-      const d = dirs[Math.floor(Math.random()*dirs.length)];
-      const gx = g.x + d.x;
-      const gy = g.y + d.y;
+    const dirs = [
+      {x:1,y:0},
+      {x:-1,y:0},
+      {x:0,y:1},
+      {x:0,y:-1}
+    ];
+    const d = dirs[Math.floor(Math.random()*dirs.length)];
+    const gx = g.x + d.x;
+    const gy = g.y + d.y;
 
-      // Squirrels can move over '.', 'o', and ' ' — only walls block them.
-      if (!isWall(gx, gy)) {
-        g.x = gx;
-        g.y = gy;
-      }
+    // Only walls block them; Quiz Orbs (o) do NOT.
+    if (!isWall(gx, gy)) {
+      g.x = gx;
+      g.y = gy;
     }
 
-    /* Player collision */
+    // Collision check after movement
     if (g.x === player.x && g.y === player.y) {
       if (powerMode) {
         score += 150;
@@ -508,11 +496,23 @@ function update() {
       }
     }
   }
+}
 
-  /* Power mode timer */
+/* --------------------------------------------------
+   GAME LOOP
+-------------------------------------------------- */
+function update() {
+  // No automatic player movement here — movement only happens on input.
+
+  // Power mode timer
   if (powerMode && --powerTimer <= 0) powerMode = false;
 
-  /* Win condition */
+  // Ghost movement
+  if (questionBox.style.display !== "flex") {
+    moveGhosts();
+  }
+
+  // Win condition
   if (quizAnswered >= 10) winMessage.style.display = "block";
 
   scoreEl.textContent = score;
