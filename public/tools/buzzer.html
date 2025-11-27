@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <title>Quiz Buzzer | Teacher Tools | Teach Arcade</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0f172a" />
 
   <!-- Basic SEO -->
   <meta name="description"
@@ -19,19 +20,23 @@
         content="Run fast-paced review games in seconds with this free classroom quiz buzzer. Multiple teams, lockout, scoreboard, and keyboard shortcuts." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://teacharcade.com/teacher-tools/quiz-buzzer.html" />
-  <!-- Replace with your actual image if you have one -->
-  <meta property="og:image" content="https://teacharcade.com/assets/img/teach-arcade-social.png" />
+  <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Quiz Buzzer | Teacher Tools | Teach Arcade" />
   <meta name="twitter:description"
         content="Simple, free quiz buzzer for classroom games. Multiple teams, lockout, scoreboard, and keyboard shortcuts." />
-  <meta name="twitter:image" content="https://teacharcade.com/assets/img/teach-arcade-social.png" />
+  <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
 
-  <!-- Favicon (adjust paths to match your site) -->
-  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+  <!-- Fonts & global styles (match rest of site) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css?v=1" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -78,50 +83,8 @@
       min-height: 100vh;
     }
 
-    header {
-      background: var(--ta-bg);
-      color: #fff;
-      padding: 14px 18px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-    }
-
-    header .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 600;
-      font-size: 1.1rem;
-    }
-
-    header .brand span.logo {
-      width: 34px;
-      height: 34px;
-      border-radius: 8px;
-      background: linear-gradient(135deg, #ffb703, #fb5607);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      color: #0b1726;
-      font-weight: 800;
-      font-size: 1.1rem;
-    }
-
-    header nav a {
-      color: #e5e7eb;
-      text-decoration: none;
-      font-size: 0.9rem;
-      margin-left: 12px;
-    }
-
-    header nav a:hover {
-      color: #fff;
-    }
-
     main {
-      padding: 18px;
+      padding: 90px 18px 20px; /* top padding so content sits below sticky header */
       max-width: 1200px;
       width: 100%;
       margin: 0 auto 20px auto;
@@ -468,442 +431,471 @@
     footer a:hover {
       text-decoration: underline;
     }
-
-    @media (max-width: 600px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
   </style>
 </head>
 
 <body>
-<header>
-  <div class="brand">
-    <span class="logo">TA</span>
-    <span>Teach Arcade · Teacher Tools</span>
-  </div>
-  <nav aria-label="Main navigation">
-    <a href="/">Home</a>
-    <a href="/teacher-tools">Teacher Tools</a>
-    <a href="/arcade-review-games">Arcade Games</a>
-  </nav>
-</header>
+  <!-- Global Header mount -->
+  <div id="site-header"></div>
+  <!-- Cache-busted nav loader -->
+  <script src="/assets/scripts/nav.js?v=3" defer></script>
 
-<main>
-  <div class="breadcrumbs">
-    <a href="/">Home</a> › <a href="/teacher-tools">Teacher Tools</a> › Quiz Buzzer
-  </div>
+  <!-- Fallback header (if nav.js fails) -->
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      const host = document.getElementById('site-header');
+      setTimeout(function () {
+        if (!host || host.innerHTML.trim()) return; // header already mounted
+        host.innerHTML = `
+          <header class="main-header" style="display:flex;justify-content:space-between;align-items:center;padding:12px 20px;background:#0f172a;border-bottom:1px solid #0b1220;position:sticky;top:0;z-index:1000;">
+            <a href="/" style="display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;">
+              <img src="/assets/images/teach-arcade-logo.png" alt="Teach Arcade Logo" style="height:40px;width:auto;">
+              <strong style="font:700 18px Poppins, sans-serif;">Teach Arcade</strong>
+            </a>
+            <nav aria-label="Primary">
+              <a href="/" style="color:#fff;margin-right:16px;text-decoration:none;">Home</a>
+              <a href="/subjects/index.html" style="color:#fff;margin-right:16px;text-decoration:none;">Subjects</a>
+              <a href="/escape/?room=wwi" style="color:#fff;margin-right:16px;text-decoration:none;">Escape Rooms</a>
+              <a href="/submit.html" style="color:#fff;margin-right:16px;text-decoration:none;">Submit</a>
+              <a href="/about.html" style="color:#fff;text-decoration:none;">About</a>
+            </nav>
+          </header>
+        `;
+        console.warn('Fallback header injected because /assets/scripts/nav.js did not mount.');
+      }, 300);
+    });
+  </script>
 
-  <h1><span class="emoji">🔔</span> Quiz Buzzer</h1>
-  <p class="subtitle">
-    Run fast-paced review games with multiple teams. First team to buzz locks out the others.
-    Use the scoreboard to track points, and keyboard shortcuts for instant responses.
-  </p>
+  <!-- No-JS fallback -->
+  <noscript>
+    <header class="main-header" style="display:flex;justify-content:space-between;align-items:center;padding:10px 20px;background:#0f172a;color:#fff;">
+      <a href="/" style="display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;">
+        <img src="/assets/images/teach-arcade-logo.png" alt="Teach Arcade Logo" style="height:40px;width:auto;">
+        <strong style="font:700 18px Poppins, sans-serif;">Teach Arcade</strong>
+      </a>
+      <nav>
+        <a href="/" style="color:#fff;margin-right:16px;">Home</a>
+        <a href="/subjects/index.html" style="color:#fff;margin-right:16px;">Subjects</a>
+        <a href="/escape/?room=wwi" style="color:#fff;margin-right:16px;">Escape Rooms</a>
+        <a href="/submit.html" style="color:#fff;margin-right:16px;">Submit</a>
+        <a href="/about.html" style="color:#fff;">About</a>
+      </nav>
+    </header>
+  </noscript>
 
-  <section class="top-toolbar" aria-label="Quiz controls">
-    <div class="toolbar-buttons">
-      <button class="btn btn-primary" id="new-round-btn" type="button">➕ New Round (N)</button>
-      <button class="btn" id="reset-buzzers-btn" type="button">🔁 Reset Buzzers (R)</button>
-      <button class="btn" id="clear-scores-btn" type="button">🧹 Clear Scores</button>
-      <button class="btn" id="fullscreen-btn" type="button">⛶ Full Screen</button>
+  <main>
+    <div class="breadcrumbs">
+      <a href="/">Home</a> › <a href="/tools/">Teacher Tools</a> › Quiz Buzzer
     </div>
-    <div class="toggle-group">
-      <label for="sound-toggle">Sound</label>
-      <input type="checkbox" id="sound-toggle" checked />
-      <span id="round-label">Round 1</span>
-    </div>
-  </section>
 
-  <section id="scoreboard" aria-label="Scoreboard"></section>
+    <h1><span class="emoji">🔔</span> Quiz Buzzer</h1>
+    <p class="subtitle">
+      Run fast-paced review games with multiple teams. First team to buzz locks out the others.
+      Use the scoreboard to track points, and keyboard shortcuts for instant responses.
+    </p>
 
-  <div id="winner-banner" aria-live="polite"></div>
-
-  <section id="buzzer-container" aria-label="Buzzers"></section>
-
-  <section id="settings" aria-label="Team settings">
-    <div id="settings-toggle">
-      <h2>⚙️ Team Manager</h2>
-      <span id="settings-chevron">▼</span>
-    </div>
-    <div id="settings-panel">
-      <p style="margin-top:6px; margin-bottom:10px;">
-        Edit team names and colors. Add or remove teams as needed (up to 8).
-      </p>
-      <div id="settings-rows" class="settings-grid"></div>
-      <div class="settings-actions">
-        <div>
-          <button class="btn" id="add-team-btn" type="button">➕ Add Team</button>
-          <button class="btn" id="remove-team-btn" type="button">➖ Remove Last Team</button>
-        </div>
-        <button class="btn btn-primary" id="apply-settings-btn" type="button">💾 Apply Changes</button>
+    <section class="top-toolbar" aria-label="Quiz controls">
+      <div class="toolbar-buttons">
+        <button class="btn btn-primary" id="new-round-btn" type="button">➕ New Round (N)</button>
+        <button class="btn" id="reset-buzzers-btn" type="button">🔁 Reset Buzzers (R)</button>
+        <button class="btn" id="clear-scores-btn" type="button">🧹 Clear Scores</button>
+        <button class="btn" id="fullscreen-btn" type="button">⛶ Full Screen</button>
       </div>
-    </div>
-  </section>
-</main>
+      <div class="toggle-group">
+        <label for="sound-toggle">Sound</label>
+        <input type="checkbox" id="sound-toggle" checked />
+        <span id="round-label">Round 1</span>
+      </div>
+    </section>
 
-<footer>
-  Part of the <a href="/teacher-tools">Teach Arcade Teacher Tools</a> collection. Free to use in any classroom.
-</footer>
+    <section id="scoreboard" aria-label="Scoreboard"></section>
 
-<!-- Simple beep sound -->
-<audio id="buzz-sound">
-  <source src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg" type="audio/ogg">
-</audio>
+    <div id="winner-banner" aria-live="polite"></div>
 
-<script>
-  // -----------------------------
-  // State
-  // -----------------------------
+    <section id="buzzer-container" aria-label="Buzzers"></section>
 
-  let teams = [
-    { id: 0, name: "Team 1", color: "#ff595e", score: 0, key: "1" },
-    { id: 1, name: "Team 2", color: "#2a9d8f", score: 0, key: "2" },
-    { id: 2, name: "Team 3", color: "#577590", score: 0, key: "3" },
-    { id: 3, name: "Team 4", color: "#f4a261", score: 0, key: "4" }
-  ];
+    <section id="settings" aria-label="Team settings">
+      <div id="settings-toggle">
+        <h2>⚙️ Team Manager</h2>
+        <span id="settings-chevron">▼</span>
+      </div>
+      <div id="settings-panel">
+        <p style="margin-top:6px; margin-bottom:10px;">
+          Edit team names and colors. Add or remove teams as needed (up to 8).
+        </p>
+        <div id="settings-rows" class="settings-grid"></div>
+        <div class="settings-actions">
+          <div>
+            <button class="btn" id="add-team-btn" type="button">➕ Add Team</button>
+            <button class="btn" id="remove-team-btn" type="button">➖ Remove Last Team</button>
+          </div>
+          <button class="btn btn-primary" id="apply-settings-btn" type="button">💾 Apply Changes</button>
+        </div>
+      </div>
+    </section>
+  </main>
 
-  const maxTeams = 8;
-  let roundNumber = 1;
-  let locked = false;
-  let soundEnabled = true;
+  <footer>
+    Part of the <a href="/tools/">Teach Arcade Teacher Tools</a> collection. Free to use in any classroom.
+  </footer>
 
-  const scoreboardEl = document.getElementById("scoreboard");
-  const buzzerContainerEl = document.getElementById("buzzer-container");
-  const winnerBannerEl = document.getElementById("winner-banner");
-  const soundEl = document.getElementById("buzz-sound");
-  const soundToggleEl = document.getElementById("sound-toggle");
-  const roundLabelEl = document.getElementById("round-label");
+  <!-- Simple beep sound -->
+  <audio id="buzz-sound">
+    <source src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg" type="audio/ogg">
+  </audio>
 
-  const newRoundBtn = document.getElementById("new-round-btn");
-  const resetBuzzersBtn = document.getElementById("reset-buzzers-btn");
-  const clearScoresBtn = document.getElementById("clear-scores-btn");
-  const fullscreenBtn = document.getElementById("fullscreen-btn");
+  <script>
+    // -----------------------------
+    // State
+    // -----------------------------
 
-  const settingsToggle = document.getElementById("settings-toggle");
-  const settingsPanel = document.getElementById("settings-panel");
-  const settingsChevron = document.getElementById("settings-chevron");
-  const settingsRowsEl = document.getElementById("settings-rows");
-  const addTeamBtn = document.getElementById("add-team-btn");
-  const removeTeamBtn = document.getElementById("remove-team-btn");
-  const applySettingsBtn = document.getElementById("apply-settings-btn");
+    let teams = [
+      { id: 0, name: "Team 1", color: "#ff595e", score: 0, key: "1" },
+      { id: 1, name: "Team 2", color: "#2a9d8f", score: 0, key: "2" },
+      { id: 2, name: "Team 3", color: "#577590", score: 0, key: "3" },
+      { id: 3, name: "Team 4", color: "#f4a261", score: 0, key: "4" }
+    ];
 
-  // -----------------------------
-  // Rendering
-  // -----------------------------
+    const maxTeams = 8;
+    let roundNumber = 1;
+    let locked = false;
+    let soundEnabled = true;
 
-  function renderScoreboard() {
-    scoreboardEl.innerHTML = "";
-    teams.forEach((team, index) => {
-      const card = document.createElement("div");
-      card.className = "score-card";
+    const scoreboardEl = document.getElementById("scoreboard");
+    const buzzerContainerEl = document.getElementById("buzzer-container");
+    const winnerBannerEl = document.getElementById("winner-banner");
+    const soundEl = document.getElementById("buzz-sound");
+    const soundToggleEl = document.getElementById("sound-toggle");
+    const roundLabelEl = document.getElementById("round-label");
 
-      const info = document.createElement("div");
-      info.className = "score-info";
+    const newRoundBtn = document.getElementById("new-round-btn");
+    const resetBuzzersBtn = document.getElementById("reset-buzzers-btn");
+    const clearScoresBtn = document.getElementById("clear-scores-btn");
+    const fullscreenBtn = document.getElementById("fullscreen-btn");
 
-      const nameRow = document.createElement("div");
-      nameRow.className = "team-name";
+    const settingsToggle = document.getElementById("settings-toggle");
+    const settingsPanel = document.getElementById("settings-panel");
+    const settingsChevron = document.getElementById("settings-chevron");
+    const settingsRowsEl = document.getElementById("settings-rows");
+    const addTeamBtn = document.getElementById("add-team-btn");
+    const removeTeamBtn = document.getElementById("remove-team-btn");
+    const applySettingsBtn = document.getElementById("apply-settings-btn");
 
-      const dot = document.createElement("span");
-      dot.className = "color-dot";
-      dot.style.backgroundColor = team.color;
+    // -----------------------------
+    // Rendering
+    // -----------------------------
 
-      const nameText = document.createElement("span");
-      nameText.textContent = team.name;
+    function renderScoreboard() {
+      scoreboardEl.innerHTML = "";
+      teams.forEach((team, index) => {
+        const card = document.createElement("div");
+        card.className = "score-card";
 
-      nameRow.appendChild(dot);
-      nameRow.appendChild(nameText);
+        const info = document.createElement("div");
+        info.className = "score-info";
 
-      const keyHint = document.createElement("span");
-      keyHint.style.fontSize = "0.75rem";
-      keyHint.style.color = "#6b7280";
-      keyHint.textContent = "Key: " + team.key;
+        const nameRow = document.createElement("div");
+        nameRow.className = "team-name";
 
-      info.appendChild(nameRow);
-      info.appendChild(keyHint);
+        const dot = document.createElement("span");
+        dot.className = "color-dot";
+        dot.style.backgroundColor = team.color;
 
-      const scoreSection = document.createElement("div");
-      scoreSection.style.display = "flex";
-      scoreSection.style.alignItems = "center";
-      scoreSection.style.gap = "8px";
+        const nameText = document.createElement("span");
+        nameText.textContent = team.name;
 
-      const scoreEl = document.createElement("div");
-      scoreEl.className = "team-score";
-      scoreEl.textContent = team.score;
+        nameRow.appendChild(dot);
+        nameRow.appendChild(nameText);
 
-      const controls = document.createElement("div");
-      controls.className = "score-controls";
+        const keyHint = document.createElement("span");
+        keyHint.style.fontSize = "0.75rem";
+        keyHint.style.color = "#6b7280";
+        keyHint.textContent = "Key: " + team.key;
 
-      const minusBtn = document.createElement("button");
-      minusBtn.className = "score-btn";
-      minusBtn.type = "button";
-      minusBtn.textContent = "−";
-      minusBtn.addEventListener("click", () => updateScore(index, -1));
+        info.appendChild(nameRow);
+        info.appendChild(keyHint);
 
-      const plusBtn = document.createElement("button");
-      plusBtn.className = "score-btn";
-      plusBtn.type = "button";
-      plusBtn.textContent = "+";
-      plusBtn.addEventListener("click", () => updateScore(index, 1));
+        const scoreSection = document.createElement("div");
+        scoreSection.style.display = "flex";
+        scoreSection.style.alignItems = "center";
+        scoreSection.style.gap = "8px";
 
-      controls.appendChild(minusBtn);
-      controls.appendChild(plusBtn);
+        const scoreEl = document.createElement("div");
+        scoreEl.className = "team-score";
+        scoreEl.textContent = team.score;
 
-      scoreSection.appendChild(scoreEl);
-      scoreSection.appendChild(controls);
+        const controls = document.createElement("div");
+        controls.className = "score-controls";
 
-      card.appendChild(info);
-      card.appendChild(scoreSection);
-      scoreboardEl.appendChild(card);
-    });
-  }
+        const minusBtn = document.createElement("button");
+        minusBtn.className = "score-btn";
+        minusBtn.type = "button";
+        minusBtn.textContent = "−";
+        minusBtn.addEventListener("click", () => updateScore(index, -1));
 
-  function renderBuzzers() {
-    buzzerContainerEl.innerHTML = "";
-    teams.forEach((team, index) => {
-      const card = document.createElement("div");
-      card.className = "buzzer-card";
-      card.id = "buzzer-card-" + index;
+        const plusBtn = document.createElement("button");
+        plusBtn.className = "score-btn";
+        plusBtn.type = "button";
+        plusBtn.textContent = "+";
+        plusBtn.addEventListener("click", () => updateScore(index, 1));
 
-      const topRow = document.createElement("div");
-      topRow.className = "team-label";
+        controls.appendChild(minusBtn);
+        controls.appendChild(plusBtn);
 
-      const labelSpan = document.createElement("span");
-      labelSpan.textContent = team.name;
+        scoreSection.appendChild(scoreEl);
+        scoreSection.appendChild(controls);
 
-      const keySpan = document.createElement("span");
-      keySpan.className = "key-hint";
-      keySpan.textContent = "Press " + team.key;
-
-      topRow.appendChild(labelSpan);
-      topRow.appendChild(keySpan);
-
-      const button = document.createElement("button");
-      button.className = "buzzer-btn";
-      button.type = "button";
-      button.style.background = team.color;
-      button.textContent = "BUZZ!";
-      button.addEventListener("click", () => buzz(index));
-
-      card.appendChild(topRow);
-      card.appendChild(button);
-      buzzerContainerEl.appendChild(card);
-    });
-  }
-
-  function renderSettings() {
-    settingsRowsEl.innerHTML = "";
-    teams.forEach((team, index) => {
-      const row = document.createElement("div");
-      row.className = "settings-row";
-
-      const label = document.createElement("label");
-      label.textContent = "Team " + (index + 1);
-
-      const nameInput = document.createElement("input");
-      nameInput.type = "text";
-      nameInput.value = team.name;
-      nameInput.dataset.index = index;
-      nameInput.className = "team-name-input";
-
-      const colorInput = document.createElement("input");
-      colorInput.type = "color";
-      colorInput.value = team.color;
-      colorInput.dataset.index = index;
-      colorInput.className = "team-color-input";
-
-      row.appendChild(label);
-      row.appendChild(nameInput);
-      row.appendChild(colorInput);
-
-      settingsRowsEl.appendChild(row);
-    });
-
-    updateSettingsButtons();
-  }
-
-  function updateSettingsButtons() {
-    addTeamBtn.disabled = teams.length >= maxTeams;
-    removeTeamBtn.disabled = teams.length <= 2;
-  }
-
-  function renderAll() {
-    renderScoreboard();
-    renderBuzzers();
-    renderSettings();
-    roundLabelEl.textContent = "Round " + roundNumber;
-  }
-
-  // -----------------------------
-  // Game logic
-  // -----------------------------
-
-  function buzz(teamIndex) {
-    if (locked) return;
-    locked = true;
-
-    const team = teams[teamIndex];
-    winnerBannerEl.innerHTML = "<span>" + team.name + " buzzed first!</span>";
-
-    if (soundEnabled) {
-      try { soundEl.currentTime = 0; soundEl.play(); } catch (e) {}
-    }
-
-    if (window.confetti) {
-      window.confetti({
-        particleCount: 160,
-        spread: 70,
-        origin: { y: 0.6 }
+        card.appendChild(info);
+        card.appendChild(scoreSection);
+        scoreboardEl.appendChild(card);
       });
     }
 
-    // Lock other teams visually
-    teams.forEach((_, i) => {
-      if (i !== teamIndex) {
-        const card = document.getElementById("buzzer-card-" + i);
-        if (card) card.classList.add("locked");
-      }
-    });
-  }
+    function renderBuzzers() {
+      buzzerContainerEl.innerHTML = "";
+      teams.forEach((team, index) => {
+        const card = document.createElement("div");
+        card.className = "buzzer-card";
+        card.id = "buzzer-card-" + index;
 
-  function resetBuzzers() {
-    locked = false;
-    winnerBannerEl.innerHTML = "";
-    document.querySelectorAll(".buzzer-card").forEach(card => {
-      card.classList.remove("locked");
-    });
-  }
+        const topRow = document.createElement("div");
+        topRow.className = "team-label";
 
-  function startNewRound() {
-    roundNumber += 1;
-    resetBuzzers();
-    roundLabelEl.textContent = "Round " + roundNumber;
-  }
+        const labelSpan = document.createElement("span");
+        labelSpan.textContent = team.name;
 
-  function updateScore(teamIndex, delta) {
-    teams[teamIndex].score += delta;
-    renderScoreboard();
-  }
+        const keySpan = document.createElement("span");
+        keySpan.className = "key-hint";
+        keySpan.textContent = "Press " + team.key;
 
-  function clearScores() {
-    teams.forEach(t => t.score = 0);
-    renderScoreboard();
-  }
+        topRow.appendChild(labelSpan);
+        topRow.appendChild(keySpan);
 
-  // -----------------------------
-  // Settings logic
-  // -----------------------------
+        const button = document.createElement("button");
+        button.className = "buzzer-btn";
+        button.type = "button";
+        button.style.background = team.color;
+        button.textContent = "BUZZ!";
+        button.addEventListener("click", () => buzz(index));
 
-  function applySettings() {
-    const nameInputs = document.querySelectorAll(".team-name-input");
-    const colorInputs = document.querySelectorAll(".team-color-input");
-
-    nameInputs.forEach(input => {
-      const index = parseInt(input.dataset.index, 10);
-      teams[index].name = input.value.trim() || ("Team " + (index + 1));
-    });
-
-    colorInputs.forEach(input => {
-      const index = parseInt(input.dataset.index, 10);
-      teams[index].color = input.value || teams[index].color;
-    });
-
-    renderAll();
-  }
-
-  function addTeam() {
-    if (teams.length >= maxTeams) return;
-    const nextIndex = teams.length;
-    const defaultColors = ["#ff595e", "#2a9d8f", "#577590", "#f4a261", "#d946ef", "#3b82f6", "#22c55e", "#f97316"];
-    const color = defaultColors[nextIndex % defaultColors.length];
-    const key = String(nextIndex + 1); // "5", "6", etc.
-
-    teams.push({
-      id: nextIndex,
-      name: "Team " + (nextIndex + 1),
-      color: color,
-      score: 0,
-      key: key
-    });
-
-    renderAll();
-  }
-
-  function removeTeam() {
-    if (teams.length <= 2) return;
-    teams.pop();
-    renderAll();
-  }
-
-  // -----------------------------
-  // Utilities
-  // -----------------------------
-
-  function toggleSettingsPanel() {
-    const isOpen = settingsPanel.classList.toggle("open");
-    settingsChevron.textContent = isOpen ? "▲" : "▼";
-  }
-
-  function toggleFullscreen() {
-    const doc = document;
-    const docEl = doc.documentElement;
-
-    if (!doc.fullscreenElement && !doc.webkitFullscreenElement) {
-      if (docEl.requestFullscreen) docEl.requestFullscreen();
-      else if (docEl.webkitRequestFullscreen) docEl.webkitRequestFullscreen();
-    } else {
-      if (doc.exitFullscreen) doc.exitFullscreen();
-      else if (doc.webkitExitFullscreen) doc.webkitExitFullscreen();
+        card.appendChild(topRow);
+        card.appendChild(button);
+        buzzerContainerEl.appendChild(card);
+      });
     }
-  }
 
-  // -----------------------------
-  // Event listeners
-  // -----------------------------
+    function renderSettings() {
+      settingsRowsEl.innerHTML = "";
+      teams.forEach((team, index) => {
+        const row = document.createElement("div");
+        row.className = "settings-row";
 
-  newRoundBtn.addEventListener("click", startNewRound);
-  resetBuzzersBtn.addEventListener("click", resetBuzzers);
-  clearScoresBtn.addEventListener("click", clearScores);
-  fullscreenBtn.addEventListener("click", toggleFullscreen);
+        const label = document.createElement("label");
+        label.textContent = "Team " + (index + 1);
 
-  soundToggleEl.addEventListener("change", () => {
-    soundEnabled = soundToggleEl.checked;
-  });
+        const nameInput = document.createElement("input");
+        nameInput.type = "text";
+        nameInput.value = team.name;
+        nameInput.dataset.index = index;
+        nameInput.className = "team-name-input";
 
-  settingsToggle.addEventListener("click", toggleSettingsPanel);
-  addTeamBtn.addEventListener("click", addTeam);
-  removeTeamBtn.addEventListener("click", removeTeam);
-  applySettingsBtn.addEventListener("click", applySettings);
+        const colorInput = document.createElement("input");
+        colorInput.type = "color";
+        colorInput.value = team.color;
+        colorInput.dataset.index = index;
+        colorInput.className = "team-color-input";
 
-  // Keyboard shortcuts
-  document.addEventListener("keydown", (e) => {
-    // avoid stealing focus while typing in inputs
-    const tag = e.target && e.target.tagName;
-    if (tag === "INPUT" || tag === "TEXTAREA") return;
-    if (e.repeat) return;
+        row.appendChild(label);
+        row.appendChild(nameInput);
+        row.appendChild(colorInput);
 
-    const key = e.key.toLowerCase();
+        settingsRowsEl.appendChild(row);
+      });
 
-    // Buzz keys 1–8
-    teams.forEach((team, index) => {
-      if (key === team.key) {
-        buzz(index);
+      updateSettingsButtons();
+    }
+
+    function updateSettingsButtons() {
+      addTeamBtn.disabled = teams.length >= maxTeams;
+      removeTeamBtn.disabled = teams.length <= 2;
+    }
+
+    function renderAll() {
+      renderScoreboard();
+      renderBuzzers();
+      renderSettings();
+      roundLabelEl.textContent = "Round " + roundNumber;
+    }
+
+    // -----------------------------
+    // Game logic
+    // -----------------------------
+
+    function buzz(teamIndex) {
+      if (locked) return;
+      locked = true;
+
+      const team = teams[teamIndex];
+      winnerBannerEl.innerHTML = "<span>" + team.name + " buzzed first!</span>";
+
+      if (soundEnabled) {
+        try { soundEl.currentTime = 0; soundEl.play(); } catch (e) {}
       }
-    });
 
-    if (key === "r") {
+      if (window.confetti) {
+        window.confetti({
+          particleCount: 160,
+          spread: 70,
+          origin: { y: 0.6 }
+        });
+      }
+
+      // Lock other teams visually
+      teams.forEach((_, i) => {
+        if (i !== teamIndex) {
+          const card = document.getElementById("buzzer-card-" + i);
+          if (card) card.classList.add("locked");
+        }
+      });
+    }
+
+    function resetBuzzers() {
+      locked = false;
+      winnerBannerEl.innerHTML = "";
+      document.querySelectorAll(".buzzer-card").forEach(card => {
+        card.classList.remove("locked");
+      });
+    }
+
+    function startNewRound() {
+      roundNumber += 1;
       resetBuzzers();
-    } else if (key === "n") {
-      startNewRound();
+      roundLabelEl.textContent = "Round " + roundNumber;
     }
-  });
 
-  // -----------------------------
-  // Init
-  // -----------------------------
+    function updateScore(teamIndex, delta) {
+      teams[teamIndex].score += delta;
+      renderScoreboard();
+    }
 
-  renderAll();
-</script>
+    function clearScores() {
+      teams.forEach(t => t.score = 0);
+      renderScoreboard();
+    }
+
+    // -----------------------------
+    // Settings logic
+    // -----------------------------
+
+    function applySettings() {
+      const nameInputs = document.querySelectorAll(".team-name-input");
+      const colorInputs = document.querySelectorAll(".team-color-input");
+
+      nameInputs.forEach(input => {
+        const index = parseInt(input.dataset.index, 10);
+        teams[index].name = input.value.trim() || ("Team " + (index + 1));
+      });
+
+      colorInputs.forEach(input => {
+        const index = parseInt(input.dataset.index, 10);
+        teams[index].color = input.value || teams[index].color;
+      });
+
+      renderAll();
+    }
+
+    function addTeam() {
+      if (teams.length >= maxTeams) return;
+      const nextIndex = teams.length;
+      const defaultColors = ["#ff595e", "#2a9d8f", "#577590", "#f4a261", "#d946ef", "#3b82f6", "#22c55e", "#f97316"];
+      const color = defaultColors[nextIndex % defaultColors.length];
+      const key = String(nextIndex + 1); // "5", "6", etc.
+
+      teams.push({
+        id: nextIndex,
+        name: "Team " + (nextIndex + 1),
+        color: color,
+        score: 0,
+        key: key
+      });
+
+      renderAll();
+    }
+
+    function removeTeam() {
+      if (teams.length <= 2) return;
+      teams.pop();
+      renderAll();
+    }
+
+    // -----------------------------
+    // Utilities
+    // -----------------------------
+
+    function toggleSettingsPanel() {
+      const isOpen = settingsPanel.classList.toggle("open");
+      settingsChevron.textContent = isOpen ? "▲" : "▼";
+    }
+
+    function toggleFullscreen() {
+      const doc = document;
+      const docEl = doc.documentElement;
+
+      if (!doc.fullscreenElement && !doc.webkitFullscreenElement) {
+        if (docEl.requestFullscreen) docEl.requestFullscreen();
+        else if (docEl.webkitRequestFullscreen) docEl.webkitRequestFullscreen();
+      } else {
+        if (doc.exitFullscreen) doc.exitFullscreen();
+        else if (doc.webkitExitFullscreen) doc.webkitExitFullscreen();
+      }
+    }
+
+    // -----------------------------
+    // Event listeners
+    // -----------------------------
+
+    newRoundBtn.addEventListener("click", startNewRound);
+    resetBuzzersBtn.addEventListener("click", resetBuzzers);
+    clearScoresBtn.addEventListener("click", clearScores);
+    fullscreenBtn.addEventListener("click", toggleFullscreen);
+
+    soundToggleEl.addEventListener("change", () => {
+      soundEnabled = soundToggleEl.checked;
+    });
+
+    settingsToggle.addEventListener("click", toggleSettingsPanel);
+    addTeamBtn.addEventListener("click", addTeam);
+    removeTeamBtn.addEventListener("click", removeTeam);
+    applySettingsBtn.addEventListener("click", applySettings);
+
+    // Keyboard shortcuts
+    document.addEventListener("keydown", (e) => {
+      // avoid stealing focus while typing in inputs
+      const tag = e.target && e.target.tagName;
+      if (tag === "INPUT" || tag === "TEXTAREA") return;
+      if (e.repeat) return;
+
+      const key = e.key.toLowerCase();
+
+      // Buzz keys 1–8
+      teams.forEach((team, index) => {
+        if (key === team.key) {
+          buzz(index);
+        }
+      });
+
+      if (key === "r") {
+        resetBuzzers();
+      } else if (key === "n") {
+        startNewRound();
+      }
+    });
+
+    // -----------------------------
+    // Init
+    // -----------------------------
+
+    renderAll();
+  </script>
 </body>
 </html>
