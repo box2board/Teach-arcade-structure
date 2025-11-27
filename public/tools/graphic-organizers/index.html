@@ -5,38 +5,36 @@
   <title>Free Printable Graphic Organizers for the Classroom | Teach Arcade</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- Site styles & fonts (match Teacher Tools page) -->
+  <link rel="stylesheet" href="/assets/styles.css?v=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
+
   <!-- Canonical URL -->
-  <link rel="canonical" href="https://teacharcade.com/graphic-organizers/">
+  <link rel="canonical" href="https://teacharcade.com/tools/graphic-organizers/" />
 
   <!-- Meta Description -->
   <meta name="description"
         content="Create and print free graphic organizers for your classroom. Editable KWL charts, Venn diagrams, Frayer models, T-charts, timelines, and more from Teach Arcade.">
 
-  <!-- Keywords (not critical for Google, but harmless) -->
+  <!-- Keywords -->
   <meta name="keywords"
         content="graphic organizers, free graphic organizers, printable graphic organizers, KWL chart, Venn diagram, T-chart, Frayer model, timeline template, classroom templates">
 
   <!-- Open Graph / Social -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Free Printable Graphic Organizers for the Classroom">
+  <meta property="og:title" content="Free Printable Graphic Organizers for the Classroom | Teach Arcade">
   <meta property="og:description"
-        content="Instant, no-login graphic organizer templates: KWL, Venn, Frayer, T-Chart, timelines, and more. Print and use in seconds.">
-  <meta property="og:url" content="https://teacharcade.com/graphic-organizers/">
-  <!-- Replace this with your actual OG image when you have one -->
-  <meta property="og:image" content="https://teacharcade.com/assets/og/graphic-organizers-og.jpg">
+        content="Launch ready-to-use graphic organizer templates in seconds. Editable KWL charts, Venn diagrams, T-charts, Frayer models, timelines, and more.">
+  <meta property="og:url" content="https://teacharcade.com/tools/graphic-organizers/">
+  <meta property="og:image" content="https://teacharcade.com/assets/images/teach-arcade-logo.png">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Free Printable Graphic Organizers for the Classroom">
+  <meta name="twitter:title" content="Free Printable Graphic Organizers for the Classroom | Teach Arcade">
   <meta name="twitter:description"
-        content="Editable, print-ready graphic organizers for every subject. Free from Teach Arcade.">
-  <meta name="twitter:image" content="https://teacharcade.com/assets/og/graphic-organizers-og.jpg">
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
+        content="Editable, print-ready KWL charts, Venn diagrams, T-charts, Frayer models, and more. No logins, no paywalls.">
+  <meta name="twitter:image" content="https://teacharcade.com/assets/images/teach-arcade-logo.png">
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -44,8 +42,8 @@
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     "name": "Free Printable Graphic Organizers for the Classroom",
-    "description": "Interactive and printable graphic organizer templates for K-12 classrooms, including KWL charts, Venn diagrams, Frayer models, T-charts, and timelines.",
-    "url": "https://teacharcade.com/graphic-organizers/",
+    "description": "Interactive and printable graphic organizer templates for K-12 classrooms, including KWL charts, Venn diagrams, Frayer models, T-charts, timelines, and more.",
+    "url": "https://teacharcade.com/tools/graphic-organizers/",
     "provider": {
       "@type": "Organization",
       "name": "Teach Arcade",
@@ -77,331 +75,198 @@
   </script>
 
   <style>
-    :root {
-      --bg: #f5f6fb;
-      --card-bg: #ffffff;
-      --border: #dde1f0;
-      --text-main: #1f2933;
-      --text-muted: #6b7280;
-      --accent: #2563eb;
-      --accent-soft: #e0ebff;
-      --shadow-soft: 0 10px 25px rgba(15, 23, 42, 0.06);
-      --radius-lg: 18px;
-      --radius-md: 12px;
+    /* Page-specific styles; global typography from /assets/styles.css */
+
+    .hero-go {
+      margin: 16px 0 20px;
+      text-align: left;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #eef3ff 0, #f5f6fb 40%, #f5f6fb 100%);
-      color: var(--text-main);
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    header {
-      padding: 18px 24px 0;
-    }
-
-    .logo-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
-      font-size: 0.75rem;
-      color: var(--text-muted);
-    }
-
-    .logo-mark {
-      width: 26px;
-      height: 26px;
-      border-radius: 10px;
-      background: linear-gradient(135deg, #2563eb, #a855f7);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-size: 0.8rem;
-      box-shadow: 0 8px 18px rgba(37, 99, 235, 0.4);
-    }
-
-    .hero {
-      max-width: 960px;
-      margin: 18px auto 16px;
-      padding: 12px 24px 0;
-      text-align: center;
-    }
-
-    .hero-kicker {
+    .hero-go-kicker {
       display: inline-flex;
       align-items: center;
       gap: 6px;
       padding: 4px 10px;
       border-radius: 999px;
-      background: rgba(37, 99, 235, 0.06);
-      color: var(--accent);
-      font-size: 0.75rem;
-      font-weight: 600;
+      background: #e0ecff;
+      color: #2563eb;
+      font-size: 11px;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
-    .hero h1 {
-      font-size: clamp(1.9rem, 3vw, 2.35rem);
-      margin: 0 0 10px;
+    .hero-go h1 {
+      margin: 0 0 8px;
+      font: 700 28px/1.1 "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       letter-spacing: -0.03em;
+      color: #0f172a;
     }
 
-    .hero p {
-      margin: 0 auto;
-      max-width: 640px;
-      font-size: 0.98rem;
-      color: var(--text-muted);
+    .hero-go p {
+      margin: 0;
+      font: 400 14px/1.5 "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #475569;
+      max-width: 720px;
     }
 
-    .hero-subline {
-      margin-top: 8px;
-      font-size: 0.85rem;
-      color: var(--text-muted);
+    .hero-go-sub {
+      margin-top: 6px;
+      font-size: 13px;
+      color: #64748b;
     }
 
-    .content {
-      flex: 1;
-      max-width: 1080px;
-      margin: 10px auto 32px;
-      padding: 0 24px 24px;
-    }
-
-    .grid {
+    .go-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 18px;
+      margin: 10px 0 40px;
     }
 
-    @media (max-width: 1024px) {
-      .grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 768px) {
-      .grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 520px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
-
-      .content {
-        padding-inline: 18px;
-      }
-    }
-
-    .card-link {
+    .go-card-link {
       display: block;
+      text-decoration: none;
+      color: inherit;
     }
 
-    .card {
-      background: var(--card-bg);
-      border-radius: var(--radius-lg);
+    .go-card {
+      border-radius: 18px;
+      border: 1px solid #dde4f0;
+      background: #ffffff;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
       padding: 16px 16px 14px;
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow-soft);
       display: flex;
       flex-direction: column;
       gap: 10px;
-      transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
+      transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
       height: 100%;
-      position: relative;
-      overflow: hidden;
     }
 
-    .card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.06), transparent 55%);
-      opacity: 0;
-      transition: opacity 0.15s ease;
-      pointer-events: none;
-    }
-
-    .card:hover {
+    .go-card:hover {
       transform: translateY(-3px);
       box-shadow: 0 14px 30px rgba(15, 23, 42, 0.12);
       border-color: #c7d2fe;
     }
 
-    .card:hover::before {
-      opacity: 1;
-    }
-
-    .card-header {
+    .go-card-header {
       display: flex;
       align-items: center;
       gap: 10px;
     }
 
-    .icon-badge {
+    .go-icon-badge {
       width: 32px;
       height: 32px;
-      border-radius: 12px;
-      background: var(--accent-soft);
+      border-radius: 999px;
+      background: #e0ecff;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.1rem;
+      font-size: 16px;
+      font-weight: 700;
+      color: #1d4ed8;
       flex-shrink: 0;
     }
 
-    .card-title {
-      font-size: 0.98rem;
-      font-weight: 600;
+    .go-card-title {
+      font: 700 15px/1.2 "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       letter-spacing: -0.02em;
+      color: #0f172a;
     }
 
-    .card-body {
-      font-size: 0.86rem;
-      color: var(--text-muted);
-      line-height: 1.4;
-      margin-bottom: 6px;
+    .go-card-body {
+      font: 400 13px/1.5 "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #64748b;
+      margin-bottom: 4px;
     }
 
-    .tag-row {
+    .go-tag-row {
       display: flex;
       flex-wrap: wrap;
       gap: 4px;
       margin-bottom: 6px;
     }
 
-    .tag {
-      font-size: 0.7rem;
+    .go-tag {
+      font-size: 10px;
       padding: 2px 7px;
       border-radius: 999px;
       background: #eef2ff;
       color: #4f46e5;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      font-weight: 600;
+      font-weight: 700;
     }
 
-    .card-footer {
+    .go-card-footer {
       margin-top: auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 6px;
     }
 
-    .btn-ghost {
-      font-size: 0.8rem;
+    .go-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       padding: 6px 10px;
       border-radius: 999px;
       border: 1px solid #d1d5db;
       background: #f9fafb;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-weight: 500;
+      font: 600 12px/1.2 "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: #374151;
     }
 
-    .btn-ghost span.chevron {
-      font-size: 0.9rem;
+    .go-btn span.chevron {
+      font-size: 14px;
     }
 
-    footer {
-      border-top: 1px solid #e5e7eb;
-      padding: 14px 24px 18px;
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(10px);
-    }
-
-    footer .footer-inner {
-      max-width: 1080px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    footer a {
-      color: var(--accent);
-      font-weight: 500;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 10px;
+    @media (max-width: 640px) {
+      .hero-go h1 {
+        font-size: 24px;
+      }
     }
   </style>
 </head>
+
 <body>
-<div class="page">
+  <!-- Global Header (matches Teacher Tools page) -->
+  <div id="site-header"></div>
+  <script src="/assets/scripts/nav.js?v=3" defer></script>
 
-  <header>
-    <div class="logo-row">
-      <div class="logo-mark">TA</div>
-      <span>Teach Arcade • Graphic Organizers</span>
-    </div>
-  </header>
+  <main class="container">
+    <nav class="breadcrumbs">
+      <a href="/">Home</a> › <a href="/tools/">Teacher Tools</a> › Graphic Organizers
+    </nav>
 
-  <main>
-    <section class="hero" aria-labelledby="page-title">
-      <div class="hero-kicker">
-        <span>Teacher Tools</span>
-      </div>
+    <section class="hero-go" aria-labelledby="page-title">
+      <div class="hero-go-kicker">Teacher Tools</div>
       <h1 id="page-title">Free Printable Graphic Organizers for the Classroom</h1>
       <p>
         Launch ready-to-use graphic organizers in seconds. No logins, no paywalls—just editable, printable templates
         for KWL charts, Venn diagrams, T-charts, Frayer models, timelines, and more.
       </p>
-      <p class="hero-subline">
+      <p class="hero-go-sub">
         Click a template below to customize labels, print clean copies, or project for whole-class use.
       </p>
     </section>
 
-    <section class="content" aria-label="Graphic Organizer Templates">
-      <div class="grid">
+    <section aria-label="Graphic Organizer Templates">
+      <div class="go-grid">
 
         <!-- 1. KWL Chart -->
-        <a class="card-link" href="/graphic-organizers/kwl-chart/">
-          <article class="card">
-            <div class="card-header">
-              <div class="icon-badge" aria-hidden="true">K</div>
-              <div class="card-title">KWL Chart (Know–Want–Learn)</div>
+        <a class="go-card-link" href="/tools/graphic-organizers/kwl-chart/">
+          <article class="go-card">
+            <div class="go-card-header">
+              <div class="go-icon-badge" aria-hidden="true">K</div>
+              <div class="go-card-title">KWL Chart (Know–Want–Learn)</div>
             </div>
-            <p class="card-body">
+            <p class="go-card-body">
               Classic 3-column organizer to activate prior knowledge, set questions, and track learning throughout a unit.
             </p>
-            <div class="tag-row">
-              <span class="tag">All Subjects</span>
+            <div class="go-tag-row">
+              <span class="go-tag">All Subjects</span>
             </div>
-            <div class="card-footer">
-              <button class="btn-ghost" type="button">
+            <div class="go-card-footer">
+              <button class="go-btn" type="button">
                 <span>Open Template</span>
                 <span class="chevron">›</span>
               </button>
@@ -410,20 +275,20 @@
         </a>
 
         <!-- 2. Venn Diagram -->
-        <a class="card-link" href="/graphic-organizers/venn-diagram/">
-          <article class="card">
-            <div class="card-header">
-              <div class="icon-badge" aria-hidden="true">◎</div>
-              <div class="card-title">Venn Diagram (2-Circle)</div>
+        <a class="go-card-link" href="/tools/graphic-organizers/venn-diagram/">
+          <article class="go-card">
+            <div class="go-card-header">
+              <div class="go-icon-badge" aria-hidden="true">◎</div>
+              <div class="go-card-title">Venn Diagram (2-Circle)</div>
             </div>
-            <p class="card-body">
+            <p class="go-card-body">
               Compare and contrast two topics, characters, events, or concepts with overlapping similarities and differences.
             </p>
-            <div class="tag-row">
-              <span class="tag">Compare &amp; Contrast</span>
+            <div class="go-tag-row">
+              <span class="go-tag">Compare &amp; Contrast</span>
             </div>
-            <div class="card-footer">
-              <button class="btn-ghost" type="button">
+            <div class="go-card-footer">
+              <button class="go-btn" type="button">
                 <span>Open Template</span>
                 <span class="chevron">›</span>
               </button>
@@ -432,20 +297,20 @@
         </a>
 
         <!-- 3. Frayer Model -->
-        <a class="card-link" href="/graphic-organizers/frayer-model/">
-          <article class="card">
-            <div class="card-header">
-              <div class="icon-badge" aria-hidden="true">F</div>
-              <div class="card-title">Frayer Model (Vocabulary)</div>
+        <a class="go-card-link" href="/tools/graphic-organizers/frayer-model/">
+          <article class="go-card">
+            <div class="go-card-header">
+              <div class="go-icon-badge" aria-hidden="true">F</div>
+              <div class="go-card-title">Frayer Model (Vocabulary)</div>
             </div>
-            <p class="card-body">
+            <p class="go-card-body">
               Four-square vocabulary organizer for definitions, examples, non-examples, and characteristics of key terms.
             </p>
-            <div class="tag-row">
-              <span class="tag">Vocabulary</span>
+            <div class="go-tag-row">
+              <span class="go-tag">Vocabulary</span>
             </div>
-            <div class="card-footer">
-              <button class="btn-ghost" type="button">
+            <div class="go-card-footer">
+              <button class="go-btn" type="button">
                 <span>Open Template</span>
                 <span class="chevron">›</span>
               </button>
@@ -454,20 +319,20 @@
         </a>
 
         <!-- 4. T-Chart -->
-        <a class="card-link" href="/graphic-organizers/t-chart/">
-          <article class="card">
-            <div class="card-header">
-              <div class="icon-badge" aria-hidden="true">T</div>
-              <div class="card-title">T-Chart (Compare &amp; Contrast)</div>
+        <a class="go-card-link" href="/tools/graphic-organizers/t-chart/">
+          <article class="go-card">
+            <div class="go-card-header">
+              <div class="go-icon-badge" aria-hidden="true">T</div>
+              <div class="go-card-title">T-Chart (Compare &amp; Contrast)</div>
             </div>
-            <p class="card-body">
+            <p class="go-card-body">
               Two-column chart for organizing pros/cons, facts/opinions, causes/effects, or any side-by-side comparison.
             </p>
-            <div class="tag-row">
-              <span class="tag">Organizer</span>
+            <div class="go-tag-row">
+              <span class="go-tag">Organizer</span>
             </div>
-            <div class="card-footer">
-              <button class="btn-ghost" type="button">
+            <div class="go-card-footer">
+              <button class="go-btn" type="button">
                 <span>Open Template</span>
                 <span class="chevron">›</span>
               </button>
@@ -476,20 +341,20 @@
         </a>
 
         <!-- 5. Cause & Effect -->
-        <a class="card-link" href="/graphic-organizers/cause-effect/">
-          <article class="card">
-            <div class="card-header">
-              <div class="icon-badge" aria-hidden="true">⇢</div>
-              <div class="card-title">Cause &amp; Effect Map</div>
+        <a class="go-card-link" href="/tools/graphic-organizers/cause-effect/">
+          <article class="go-card">
+            <div class="go-card-header">
+              <div class="go-icon-badge" aria-hidden="true">⋯</div>
+              <div class="go-card-title">Cause &amp; Effect Map</div>
             </div>
-            <p class="card-body">
+            <p class="go-card-body">
               Map out events and consequences in science experiments, historical events, or reading passages.
             </p>
-            <div class="tag-row">
-              <span class="tag">Reading &amp; Social Studies</span>
+            <div class="go-tag-row">
+              <span class="go-tag">Reading &amp; Social Studies</span>
             </div>
-            <div class="card-footer">
-              <button class="btn-ghost" type="button">
+            <div class="go-card-footer">
+              <button class="go-btn" type="button">
                 <span>Open Template</span>
                 <span class="chevron">›</span>
               </button>
@@ -498,20 +363,20 @@
         </a>
 
         <!-- 6. Main Idea & Details -->
-        <a class="card-link" href="/graphic-organizers/main-idea-details/">
-          <article class="card">
-            <div class="card-header">
-              <div class="icon-badge" aria-hidden="true">☷</div>
-              <div class="card-title">Main Idea &amp; Supporting Details</div>
+        <a class="go-card-link" href="/tools/graphic-organizers/main-idea-details/">
+          <article class="go-card">
+            <div class="go-card-header">
+              <div class="go-icon-badge" aria-hidden="true">▦</div>
+              <div class="go-card-title">Main Idea &amp; Supporting Details</div>
             </div>
-            <p class="card-body">
+            <p class="go-card-body">
               Center bubble for the main idea with surrounding boxes for key details, evidence, or examples.
             </p>
-            <div class="tag-row">
-              <span class="tag">Reading</span>
+            <div class="go-tag-row">
+              <span class="go-tag">Reading</span>
             </div>
-            <div class="card-footer">
-              <button class="btn-ghost" type="button">
+            <div class="go-card-footer">
+              <button class="go-btn" type="button">
                 <span>Open Template</span>
                 <span class="chevron">›</span>
               </button>
@@ -520,20 +385,20 @@
         </a>
 
         <!-- 7. Sequence Chart -->
-        <a class="card-link" href="/graphic-organizers/sequence-chart/">
-          <article class="card">
-            <div class="card-header">
-              <div class="icon-badge" aria-hidden="true">➜</div>
-              <div class="card-title">Sequence Chart (First–Next–Then–Finally)</div>
+        <a class="go-card-link" href="/tools/graphic-organizers/sequence-chart/">
+          <article class="go-card">
+            <div class="go-card-header">
+              <div class="go-icon-badge" aria-hidden="true">➜</div>
+              <div class="go-card-title">Sequence Chart (First–Next–Then–Finally)</div>
             </div>
-            <p class="card-body">
+            <p class="go-card-body">
               Linear boxes for ordering events, steps in a process, story plots, or procedures in science labs.
             </p>
-            <div class="tag-row">
-              <span class="tag">Sequence</span>
+            <div class="go-tag-row">
+              <span class="go-tag">Sequence</span>
             </div>
-            <div class="card-footer">
-              <button class="btn-ghost" type="button">
+            <div class="go-card-footer">
+              <button class="go-btn" type="button">
                 <span>Open Template</span>
                 <span class="chevron">›</span>
               </button>
@@ -542,20 +407,20 @@
         </a>
 
         <!-- 8. Character Map -->
-        <a class="card-link" href="/graphic-organizers/character-map/">
-          <article class="card">
-            <div class="card-header">
-              <div class="icon-badge" aria-hidden="true">🙂</div>
-              <div class="card-title">Character Map</div>
+        <a class="go-card-link" href="/tools/graphic-organizers/character-map/">
+          <article class="go-card">
+            <div class="go-card-header">
+              <div class="go-icon-badge" aria-hidden="true">😊</div>
+              <div class="go-card-title">Character Map</div>
             </div>
-            <p class="card-body">
+            <p class="go-card-body">
               Analyze traits, motivations, relationships, and changes of a character in novels, plays, or films.
             </p>
-            <div class="tag-row">
-              <span class="tag">ELA</span>
+            <div class="go-tag-row">
+              <span class="go-tag">ELA</span>
             </div>
-            <div class="card-footer">
-              <button class="btn-ghost" type="button">
+            <div class="go-card-footer">
+              <button class="go-btn" type="button">
                 <span>Open Template</span>
                 <span class="chevron">›</span>
               </button>
@@ -564,20 +429,20 @@
         </a>
 
         <!-- 9. Story Plot Diagram -->
-        <a class="card-link" href="/graphic-organizers/story-plot-diagram/">
-          <article class="card">
-            <div class="card-header">
-              <div class="icon-badge" aria-hidden="true">△</div>
-              <div class="card-title">Story Plot Diagram (Freytag)</div>
+        <a class="go-card-link" href="/tools/graphic-organizers/story-plot-diagram/">
+          <article class="go-card">
+            <div class="go-card-header">
+              <div class="go-icon-badge" aria-hidden="true">△</div>
+              <div class="go-card-title">Story Plot Diagram (Freytag)</div>
             </div>
-            <p class="card-body">
+            <p class="go-card-body">
               Visualize exposition, rising action, climax, falling action, and resolution for any narrative text.
             </p>
-            <div class="tag-row">
-              <span class="tag">ELA</span>
+            <div class="go-tag-row">
+              <span class="go-tag">ELA</span>
             </div>
-            <div class="card-footer">
-              <button class="btn-ghost" type="button">
+            <div class="go-card-footer">
+              <button class="go-btn" type="button">
                 <span>Open Template</span>
                 <span class="chevron">›</span>
               </button>
@@ -586,20 +451,20 @@
         </a>
 
         <!-- 10. Pros & Cons -->
-        <a class="card-link" href="/graphic-organizers/pros-cons/">
-          <article class="card">
-            <div class="card-header">
-              <div class="icon-badge" aria-hidden="true">±</div>
-              <div class="card-title">Pros &amp; Cons Chart</div>
+        <a class="go-card-link" href="/tools/graphic-organizers/pros-cons/">
+          <article class="go-card">
+            <div class="go-card-header">
+              <div class="go-icon-badge" aria-hidden="true">±</div>
+              <div class="go-card-title">Pros &amp; Cons Chart</div>
             </div>
-            <p class="card-body">
+            <p class="go-card-body">
               Simple decision-making chart to evaluate choices, arguments, policies, or historical decisions.
             </p>
-            <div class="tag-row">
-              <span class="tag">Decision Making</span>
+            <div class="go-tag-row">
+              <span class="go-tag">Decision Making</span>
             </div>
-            <div class="card-footer">
-              <button class="btn-ghost" type="button">
+            <div class="go-card-footer">
+              <button class="go-btn" type="button">
                 <span>Open Template</span>
                 <span class="chevron">›</span>
               </button>
@@ -608,20 +473,20 @@
         </a>
 
         <!-- 11. Vocabulary Organizer -->
-        <a class="card-link" href="/graphic-organizers/vocabulary-organizer/">
-          <article class="card">
-            <div class="card-header">
-              <div class="icon-badge" aria-hidden="true">Aa</div>
-              <div class="card-title">Vocabulary Organizer</div>
+        <a class="go-card-link" href="/tools/graphic-organizers/vocabulary-organizer/">
+          <article class="go-card">
+            <div class="go-card-header">
+              <div class="go-icon-badge" aria-hidden="true">Aa</div>
+              <div class="go-card-title">Vocabulary Organizer</div>
             </div>
-            <p class="card-body">
+            <p class="go-card-body">
               One-word-per-page template featuring definition, sentence, example, non-example, and optional sketch box.
             </p>
-            <div class="tag-row">
-              <span class="tag">Vocabulary</span>
+            <div class="go-tag-row">
+              <span class="go-tag">Vocabulary</span>
             </div>
-            <div class="card-footer">
-              <button class="btn-ghost" type="button">
+            <div class="go-card-footer">
+              <button class="go-btn" type="button">
                 <span>Open Template</span>
                 <span class="chevron">›</span>
               </button>
@@ -630,20 +495,20 @@
         </a>
 
         <!-- 12. Timeline Template -->
-        <a class="card-link" href="/graphic-organizers/timeline-template/">
-          <article class="card">
-            <div class="card-header">
-              <div class="icon-badge" aria-hidden="true">🕒</div>
-              <div class="card-title">Timeline Template</div>
+        <a class="go-card-link" href="/tools/graphic-organizers/timeline-template/">
+          <article class="go-card">
+            <div class="go-card-header">
+              <div class="go-icon-badge" aria-hidden="true">🕒</div>
+              <div class="go-card-title">Timeline Template</div>
             </div>
-            <p class="card-body">
+            <p class="go-card-body">
               Horizontal timeline for dates and events in history, biographies, unit overviews, or project planning.
             </p>
-            <div class="tag-row">
-              <span class="tag">Social Studies</span>
+            <div class="go-tag-row">
+              <span class="go-tag">Social Studies</span>
             </div>
-            <div class="card-footer">
-              <button class="btn-ghost" type="button">
+            <div class="go-card-footer">
+              <button class="go-btn" type="button">
                 <span>Open Template</span>
                 <span class="chevron">›</span>
               </button>
@@ -656,17 +521,8 @@
   </main>
 
   <footer>
-    <div class="footer-inner">
-      <span>© 2025 Teach Arcade</span>
-      <div class="footer-links">
-        <a href="/privacy/">Privacy</a>
-        <span>•</span>
-        <a href="/terms/">Terms</a>
-        <span>•</span>
-        <a href="/teacher-tools/">Back to Teacher Tools</a>
-      </div>
-    </div>
+    © <script>document.write(new Date().getFullYear())</script> Teach Arcade •
+    <a href="/privacy.html">Privacy</a> • <a href="/terms.html">Terms</a>
   </footer>
-</div>
 </body>
 </html>
