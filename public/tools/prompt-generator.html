@@ -1,1 +1,729 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Prompt Generator | Teacher Tools | Teach Arcade</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0f172a" />
 
+  <!-- Basic SEO -->
+  <meta name="description"
+        content="Free classroom prompt generator from Teach Arcade. Instantly create creative writing prompts, discussion questions, bell ringers, and exit tickets by subject, grade level, and tone." />
+  <meta name="keywords"
+        content="prompt generator, writing prompts, discussion prompts, bell ringer, exit ticket, teacher tools, Teach Arcade" />
+  <link rel="canonical" href="https://teacharcade.com/tools/prompt-generator.html" />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Prompt Generator | Teacher Tools | Teach Arcade" />
+  <meta property="og:description"
+        content="Instant writing and discussion prompts for any subject or grade level. Perfect for bell ringers, exit tickets, and quick checks for understanding." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://teacharcade.com/tools/prompt-generator.html" />
+  <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Prompt Generator | Teacher Tools | Teach Arcade" />
+  <meta name="twitter:description"
+        content="Free prompt generator for the classroom. Filter by subject, grade, and tone, then copy and paste your prompt into slides or LMS." />
+  <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+
+  <!-- Fonts & global styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css?v=1" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
+
+  <!-- JSON-LD: SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"SoftwareApplication",
+    "name":"Prompt Generator",
+    "url":"https://teacharcade.com/tools/prompt-generator.html",
+    "applicationCategory":"EducationalApplication",
+    "operatingSystem":"Any",
+    "description":"A free classroom prompt generator for teachers. Instantly creates creative writing prompts, discussion questions, bell ringer tasks, and exit tickets by subject and grade.",
+    "creator":{"@type":"Organization","name":"Teach Arcade"}
+  }
+  </script>
+
+  <style>
+    :root {
+      --ta-bg: #0b1726;
+      --ta-accent: #2563eb;
+      --ta-accent-soft: #dbeafe;
+      --ta-surface: #ffffff;
+      --ta-muted: #e5e7eb;
+      --ta-text-dark: #0f172a;
+      --ta-text-soft: #6b7280;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Nunito", sans-serif;
+      background: #f3f4f9;
+      color: var(--ta-text-dark);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main {
+      padding: 90px 18px 24px;
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto;
+      flex: 1;
+    }
+
+    .breadcrumbs {
+      font-size: 0.85rem;
+      color: var(--ta-text-soft);
+      margin-bottom: 10px;
+    }
+
+    .breadcrumbs a {
+      color: var(--ta-text-soft);
+      text-decoration: none;
+    }
+
+    .breadcrumbs a:hover {
+      text-decoration: underline;
+    }
+
+    h1 {
+      font: 700 1.8rem/1.2 "Poppins", system-ui, sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 4px 0 8px;
+    }
+
+    h1 .emoji {
+      font-size: 1.7rem;
+    }
+
+    .subtitle {
+      font-size: 0.95rem;
+      color: var(--ta-text-soft);
+      max-width: 700px;
+    }
+
+    .layout {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.3fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 900px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .panel {
+      background: var(--ta-surface);
+      border-radius: 14px;
+      padding: 14px 16px;
+      box-shadow: 0 4px 10px rgba(15,23,42,0.08);
+    }
+
+    .panel h2 {
+      font: 700 1rem/1.2 "Poppins", sans-serif;
+      margin: 0 0 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 12px;
+      font-size: 0.9rem;
+    }
+
+    label {
+      font-weight: 600;
+      color: var(--ta-text-soft);
+    }
+
+    select,
+    textarea,
+    input[type="text"] {
+      border-radius: 8px;
+      border: 1px solid #d1d5db;
+      padding: 7px 9px;
+      font-size: 0.9rem;
+      font-family: inherit;
+      background: #f9fafb;
+    }
+
+    textarea {
+      min-height: 52px;
+      resize: vertical;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .pill {
+      border-radius: 999px;
+      padding: 4px 9px;
+      border: 1px solid #cbd5e1;
+      font-size: 0.8rem;
+      cursor: pointer;
+      background: #f8fafc;
+    }
+
+    .pill.active {
+      border-color: var(--ta-accent);
+      background: var(--ta-accent-soft);
+      color: #1d4ed8;
+      font-weight: 600;
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .btn {
+      border-radius: 999px;
+      border: none;
+      padding: 9px 14px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #e5e7eb;
+      color: #111827;
+      transition: transform 0.08s ease, box-shadow 0.08s ease, background 0.15s ease;
+    }
+
+    .btn-primary {
+      background: var(--ta-accent);
+      color: #fff;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid #cbd5e1;
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+      box-shadow: none;
+    }
+
+    .btn:hover {
+      box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+    }
+
+    /* Prompt display */
+
+    .prompt-card {
+      background: radial-gradient(circle at top left, #e0f2fe, #ffffff 40%, #f9fafb);
+      border-radius: 16px;
+      padding: 16px 16px 18px;
+      min-height: 180px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .prompt-type {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #1d4ed8;
+    }
+
+    .prompt-meta {
+      font-size: 0.8rem;
+      color: var(--ta-text-soft);
+    }
+
+    .prompt-text {
+      font-size: 1rem;
+      line-height: 1.5;
+      margin-top: 6px;
+    }
+
+    .prompt-footer {
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: var(--ta-text-soft);
+    }
+
+    .tag-chip {
+      border-radius: 999px;
+      background: rgba(15,118,110,0.1);
+      color: #0f766e;
+      padding: 3px 8px;
+      font-size: 0.75rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .toast {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      background: #0f172a;
+      color: #f9fafb;
+      font-size: 0.85rem;
+      padding: 8px 12px;
+      border-radius: 999px;
+      box-shadow: 0 6px 16px rgba(15,23,42,0.45);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: opacity .15s ease, transform .15s ease;
+      z-index: 999;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    footer {
+      border-top: 1px solid #e5e7eb;
+      padding: 14px 18px;
+      font-size: 0.8rem;
+      color: var(--ta-text-soft);
+      text-align: center;
+    }
+
+    footer a {
+      color: var(--ta-text-soft);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Global Header mount -->
+  <div id="site-header"></div>
+  <!-- Cache-busted nav loader -->
+  <script src="/assets/scripts/nav.js?v=3" defer></script>
+
+  <!-- Fallback header (if nav.js fails) -->
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      const host = document.getElementById('site-header');
+      setTimeout(function () {
+        if (!host || host.innerHTML.trim()) return;
+        host.innerHTML = `
+          <header class="main-header" style="display:flex;justify-content:space-between;align-items:center;padding:12px 20px;background:#0f172a;border-bottom:1px solid #0b1220;position:sticky;top:0;z-index:1000;">
+            <a href="/" style="display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;">
+              <img src="/assets/images/teach-arcade-logo.png" alt="Teach Arcade Logo" style="height:40px;width:auto;">
+              <strong style="font:700 18px Poppins, sans-serif;">Teach Arcade</strong>
+            </a>
+            <nav aria-label="Primary">
+              <a href="/" style="color:#fff;margin-right:16px;text-decoration:none;">Home</a>
+              <a href="/subjects/index.html" style="color:#fff;margin-right:16px;text-decoration:none;">Subjects</a>
+              <a href="/escape/?room=wwi" style="color:#fff;margin-right:16px;text-decoration:none;">Escape Rooms</a>
+              <a href="/submit.html" style="color:#fff;margin-right:16px;text-decoration:none;">Submit</a>
+              <a href="/about.html" style="color:#fff;text-decoration:none;">About</a>
+            </nav>
+          </header>
+        `;
+        console.warn('Fallback header injected because /assets/scripts/nav.js did not mount.');
+      }, 300);
+    });
+  </script>
+
+  <!-- No-JS fallback -->
+  <noscript>
+    <header class="main-header" style="display:flex;justify-content:space-between;align-items:center;padding:10px 20px;background:#0f172a;color:#fff;">
+      <a href="/" style="display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;">
+        <img src="/assets/images/teach-arcade-logo.png" alt="Teach Arcade Logo" style="height:40px;width:auto;">
+        <strong style="font:700 18px Poppins, sans-serif;">Teach Arcade</strong>
+      </a>
+      <nav>
+        <a href="/" style="color:#fff;margin-right:16px;">Home</a>
+        <a href="/subjects/index.html" style="color:#fff;margin-right:16px;">Subjects</a>
+        <a href="/escape/?room=wwi" style="color:#fff;margin-right:16px;">Escape Rooms</a>
+        <a href="/submit.html" style="color:#fff;margin-right:16px;">Submit</a>
+        <a href="/about.html" style="color:#fff;">About</a>
+      </nav>
+    </header>
+  </noscript>
+
+  <main>
+    <div class="breadcrumbs">
+      <a href="/">Home</a> › <a href="/tools/">Teacher Tools</a> › Prompt Generator
+    </div>
+
+    <h1><span class="emoji">🎯</span> Prompt Generator</h1>
+    <p class="subtitle">
+      Create instant writing prompts, discussion questions, bell ringers, and exit tickets.
+      Choose a subject, grade band, and tone — then spin up a fresh prompt for slides, LMS, or print.
+    </p>
+
+    <section class="layout" aria-label="Prompt generator layout">
+      <!-- Controls -->
+      <div class="panel" aria-label="Prompt options">
+        <h2>⚙️ Options</h2>
+
+        <div class="field-group">
+          <label for="subject">Subject</label>
+          <select id="subject">
+            <option value="any">Any subject</option>
+            <option value="social studies">Social Studies</option>
+            <option value="english language arts">English / Language Arts</option>
+            <option value="science">Science</option>
+            <option value="math">Math</option>
+            <option value="fine arts">Fine Arts</option>
+          </select>
+        </div>
+
+        <div class="field-group">
+          <label>Grade Band</label>
+          <div class="pill-row" id="grade-band-pills">
+            <button type="button" class="pill active" data-value="any">Any</button>
+            <button type="button" class="pill" data-value="elementary">3–5</button>
+            <button type="button" class="pill" data-value="middle">6–8</button>
+            <button type="button" class="pill" data-value="high">9–12</button>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label>Prompt Type</label>
+          <div class="pill-row" id="type-pills">
+            <button type="button" class="pill active" data-value="writing prompt">Writing Prompt</button>
+            <button type="button" class="pill" data-value="discussion question">Discussion Question</button>
+            <button type="button" class="pill" data-value="bell ringer">Bell Ringer</button>
+            <button type="button" class="pill" data-value="exit ticket">Exit Ticket</button>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label>Tone</label>
+          <div class="pill-row" id="tone-pills">
+            <button type="button" class="pill active" data-value="neutral">Neutral</button>
+            <button type="button" class="pill" data-value="creative">Creative</button>
+            <button type="button" class="pill" data-value="serious">Serious</button>
+            <button type="button" class="pill" data-value="funny">Light / Fun</button>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label for="keywords">Optional keywords or topic</label>
+          <textarea id="keywords" placeholder="Example: Industrial Revolution, character development, ecosystems, slope intercept..."></textarea>
+        </div>
+
+        <div class="btn-row">
+          <button type="button" class="btn btn-primary" id="generate-btn">🎲 Generate Prompt</button>
+          <button type="button" class="btn btn-outline" id="spin-btn">🔄 Spin Again</button>
+          <button type="button" class="btn" id="copy-btn">📋 Copy Prompt</button>
+        </div>
+
+        <p style="font-size:0.75rem;color:var(--ta-text-soft);margin-top:10px;">
+          Tip: Use <strong>Generate</strong> to change settings, then <strong>Spin Again</strong> to shuffle new versions with the same filters.
+        </p>
+      </div>
+
+      <!-- Prompt Display -->
+      <div class="panel" aria-label="Generated prompt">
+        <h2>✨ Your Prompt</h2>
+
+        <div class="prompt-card">
+          <div class="prompt-type" id="prompt-type-label">Writing Prompt</div>
+          <div class="prompt-meta" id="prompt-meta-label">Any subject · Any grade band · Neutral tone</div>
+
+          <div class="prompt-text" id="prompt-text">
+            Click “Generate Prompt” to create your first prompt.
+          </div>
+
+          <div class="prompt-footer">
+            <span class="tag-chip" id="tag-chip">
+              <span>AI-assisted templates</span>
+            </span>
+            <span>Ready to paste into slides, LMS, or handouts.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast">Prompt copied to clipboard!</div>
+
+  <footer>
+    Part of the <a href="/tools/">Teach Arcade Teacher Tools</a> collection. Free to use in any classroom.
+  </footer>
+
+  <script>
+    // Utility helpers
+    function $(id) { return document.getElementById(id); }
+    function choice(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+    const gradeBandPills = document.querySelectorAll("#grade-band-pills .pill");
+    const typePills = document.querySelectorAll("#type-pills .pill");
+    const tonePills = document.querySelectorAll("#tone-pills .pill");
+
+    function makePillGroupExclusive(nodeList) {
+      nodeList.forEach(btn => {
+        btn.addEventListener("click", () => {
+          nodeList.forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+        });
+      });
+    }
+    makePillGroupExclusive(gradeBandPills);
+    makePillGroupExclusive(typePills);
+    makePillGroupExclusive(tonePills);
+
+    function getActiveValue(nodeList) {
+      const active = Array.from(nodeList).find(b => b.classList.contains("active"));
+      return active ? active.dataset.value : "any";
+    }
+
+    const sentenceStarters = {
+      "writing prompt": [
+        "Write a short response in which you",
+        "Compose a paragraph that",
+        "Write a creative piece that",
+        "In 6–8 sentences, explain how you"
+      ],
+      "discussion question": [
+        "Discuss with a partner:",
+        "As a class, consider this question:",
+        "In small groups, talk about this:",
+        "Turn and talk: "
+      ],
+      "bell ringer": [
+        "For today's warm-up,",
+        "As you enter class,",
+        "To get started,",
+        "In your notebook,"
+      ],
+      "exit ticket": [
+        "Before you leave, briefly explain:",
+        "On an index card or in your LMS, respond to this:",
+        "For your exit ticket,",
+        "Summarize your learning by answering:"
+      ]
+    };
+
+    const verbsByTone = {
+      neutral: ["explain", "describe", "compare", "analyze", "summarize"],
+      creative: ["imagine", "create", "invent", "re-write", "reimagine"],
+      serious: ["evaluate", "justify", "argue", "defend", "analyze"],
+      funny: ["imagine in a silly way", "describe with humor", "create a comic-style explanation of", "explain as if you were a stand-up comedian talking about"]
+    };
+
+    const genericTopics = [
+      "a problem that needs to be solved",
+      "a moment of change for a character or historical figure",
+      "how cause and effect are connected in this unit",
+      "the most important idea from yesterday's lesson",
+      "why perspective matters when studying this topic",
+      "how technology has changed this subject area",
+      "a real-life situation where this concept shows up"
+    ];
+
+    const subjectQualifiers = {
+      "social studies": [
+        "a historical event from this unit",
+        "a decision made by a leader or group",
+        "how ordinary people were affected by this event",
+        "a conflict between two different perspectives",
+        "how this event still matters today"
+      ],
+      "english language arts": [
+        "a character's choice in a story you have read",
+        "the theme of a novel, poem, or short story",
+        "how an author uses figurative language or imagery",
+        "a conflict between two characters or ideas",
+        "how point of view changes the story"
+      ],
+      "science": [
+        "a process from this unit (like a cycle or system)",
+        "how a specific scientific law or principle works",
+        "a cause-and-effect relationship in nature",
+        "an experiment or investigation you could run",
+        "how science connects to a real-world issue"
+      ],
+      "math": [
+        "how to solve a type of problem from this unit",
+        "a step-by-step explanation of your strategy",
+        "a mistake someone might make and how to fix it",
+        "a real-world situation that could use this math",
+        "why one method might be better than another"
+      ],
+      "fine arts": [
+        "how an artist or musician uses specific elements",
+        "how a piece of art or music makes you feel and why",
+        "a creative choice you would make in your own work",
+        "how art reflects the time and place it was created",
+        "how you would redesign or remix an existing work"
+      ],
+      "any": genericTopics
+    };
+
+    const gradeBandPhrasing = {
+      any: "",
+      elementary: "using language that an upper elementary student would understand",
+      middle: "using clear examples that would make sense to a middle school student",
+      high: "using academic vocabulary appropriate for high school"
+    };
+
+    function buildPromptText(options) {
+      const { subject, gradeBand, type, tone, keywords } = options;
+      const typeKey = type;
+      const starter = choice(sentenceStarters[typeKey] || sentenceStarters["writing prompt"]);
+
+      const toneKey = tone in verbsByTone ? tone : "neutral";
+      const verb = choice(verbsByTone[toneKey]);
+
+      const subjectKey = subject in subjectQualifiers ? subject : "any";
+      const baseIdea = choice(subjectQualifiers[subjectKey] || genericTopics);
+
+      let topicPart;
+      if (keywords) {
+        topicPart = keywords.trim();
+      } else {
+        topicPart = baseIdea;
+      }
+
+      const gradePhrase = gradeBandPhrasing[gradeBand] || "";
+      let sentence = `${starter} ${verb} ${topicPart}.`;
+
+      if (gradePhrase) {
+        sentence += ` Write your answer ${gradePhrase}.`;
+      }
+
+      if (typeKey === "exit ticket") {
+        sentence += " Your response should be 2–4 sentences.";
+      } else if (typeKey === "writing prompt") {
+        sentence += " Aim for at least one well-developed paragraph.";
+      }
+
+      return sentence;
+    }
+
+    function getOptionsFromUI() {
+      const subject = $("subject").value;
+      const gradeBand = getActiveValue(gradeBandPills);
+      const type = getActiveValue(typePills);
+      const tone = getActiveValue(tonePills);
+      const keywords = $("keywords").value;
+      return { subject, gradeBand, type, tone, keywords };
+    }
+
+    function updateMetaLabels(opts) {
+      $("prompt-type-label").textContent =
+        opts.type.charAt(0).toUpperCase() + opts.type.slice(1);
+      const subjectLabel = opts.subject === "any"
+        ? "Any subject"
+        : opts.subject
+            .split(" ")
+            .map(w => w[0].toUpperCase() + w.slice(1))
+            .join(" ");
+      const gradeLabelMap = { any: "Any grade band", elementary: "3–5", middle: "6–8", high: "9–12" };
+      const toneLabelMap = { neutral: "Neutral tone", creative: "Creative tone", serious: "Serious tone", funny: "Light / fun tone" };
+      $("prompt-meta-label").textContent =
+        `${subjectLabel} · ${gradeLabelMap[opts.gradeBand] || "Any grade band"} · ${toneLabelMap[opts.tone] || "Neutral tone"}`;
+    }
+
+    function generatePrompt() {
+      const opts = getOptionsFromUI();
+      const text = buildPromptText(opts);
+      $("prompt-text").textContent = text;
+      updateMetaLabels(opts);
+      $("tag-chip").innerHTML = `<span>Smart template mix</span>`;
+      return text;
+    }
+
+    function spinAgain() {
+      // keep same options, just reshuffle templates
+      const opts = getOptionsFromUI();
+      const text = buildPromptText(opts);
+      $("prompt-text").textContent = text;
+      updateMetaLabels(opts);
+      $("tag-chip").innerHTML = `<span>Remixed version</span>`;
+      return text;
+    }
+
+    function showToast(msg) {
+      const toast = $("toast");
+      toast.textContent = msg;
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 1500);
+    }
+
+    $("generate-btn").addEventListener("click", () => {
+      generatePrompt();
+    });
+
+    $("spin-btn").addEventListener("click", () => {
+      spinAgain();
+    });
+
+    $("copy-btn").addEventListener("click", async () => {
+      const text = $("prompt-text").textContent || "";
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast("Prompt copied to clipboard!");
+      } catch (e) {
+        showToast("Copy not allowed by browser.");
+      }
+    });
+
+    // Auto-generate one on load
+    window.addEventListener("DOMContentLoaded", () => {
+      generatePrompt();
+    });
+
+    /*
+      🔌 HOW TO PLUG IN REAL AI LATER
+      --------------------------------
+      Instead of buildPromptText(), you could send `opts` to a backend
+      (Cloudflare Worker, Render, etc.) that calls OpenAI and returns
+      a model-generated prompt. Then:
+
+        fetch("/api/prompt", { method:"POST", body: JSON.stringify(opts) })
+          .then(r => r.json())
+          .then(data => { prompt-text = data.prompt })
+
+      For now, this uses curated templates so it works on a static site
+      with no API keys needed.
+    */
+  </script>
+</body>
+</html>
