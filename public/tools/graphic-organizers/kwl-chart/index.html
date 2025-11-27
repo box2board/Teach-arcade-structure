@@ -186,12 +186,12 @@
       border: 1px solid #dde4f0;
       background: #ffffff;
       box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
-      padding: 18px;
+      padding: 18px 22px 22px;
     }
 
     .kwl-canvas-header {
       display: flex;
-      align-items: baseline;
+      align-items: flex-start;
       justify-content: space-between;
       gap: 10px;
       margin-bottom: 10px;
@@ -200,14 +200,18 @@
     }
 
     .kwl-canvas-title {
-      font: 700 15px/1.2 "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font: 700 16px/1.2 "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: #0f172a;
+      margin-bottom: 3px;
     }
 
-    .kwl-canvas-subtitle {
-      font-size: 12px;
-      color: #94a3b8;
-      max-width: 420px;
+    .kwl-canvas-topic {
+      font: 600 12px/1.4 "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #4b5563;
+    }
+
+    .kwl-canvas-topic-label {
+      font-weight: 700;
     }
 
     .kwl-grid {
@@ -315,7 +319,7 @@
         box-shadow: none;
         border-radius: 0;
         border: none;
-        padding: 0;
+        padding: 12px 24px 24px;
       }
       .kwl-grid,
       .kwl-column,
@@ -370,6 +374,9 @@
         <button class="kwl-btn-primary" type="button" id="printBtn">
           🖨 Print Chart
         </button>
+        <button class="kwl-btn-secondary" type="button" id="pdfBtn">
+          ⬇️ Download PDF
+        </button>
         <button class="kwl-btn-secondary" type="button" id="clearBtn">
           🧹 Clear for Students
         </button>
@@ -380,9 +387,15 @@
     </section>
 
     <section class="kwl-canvas-wrap">
-      <div class="kwl-canvas">
+      <div class="kwl-canvas" id="kwlCanvas">
         <div class="kwl-canvas-header">
-          <div class="kwl-canvas-title">KWL Chart</div>
+          <div>
+            <div class="kwl-canvas-title">KWL Chart</div>
+            <div class="kwl-canvas-topic">
+              <span class="kwl-canvas-topic-label">Topic:</span>
+              <span id="canvasTopicText">__________________________</span>
+            </div>
+          </div>
         </div>
 
         <div class="kwl-grid" aria-label="KWL chart">
@@ -438,19 +451,35 @@
     <a href="/privacy.html">Privacy</a> • <a href="/terms.html">Terms</a>
   </footer>
 
+  <!-- HTML to PDF library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+          integrity="sha512-YcsIPu6vZkZQ8ZkUZqXeI1XHlzTH0jzZMfjNV8iPBUFeCFGXFq8iDSHPsuacF2H2mA5l9WZC1KZpS2p2v9f3gA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
   <script>
     (function () {
       const STORAGE_KEY = 'teacharcade_kwl_chart_v1';
 
       const titleInput = document.getElementById('lessonTitle');
       const printBtn = document.getElementById('printBtn');
+      const pdfBtn = document.getElementById('pdfBtn');
       const clearBtn = document.getElementById('clearBtn');
+      const canvas = document.getElementById('kwlCanvas');
+      const topicSpan = document.getElementById('canvasTopicText');
       const editableElements = document.querySelectorAll('[contenteditable="true"]');
+
+      function syncTopicDisplay() {
+        const value = (titleInput && titleInput.value.trim()) || '';
+        topicSpan.textContent = value || '__________________________';
+      }
 
       function loadState() {
         try {
           const raw = localStorage.getItem(STORAGE_KEY);
-          if (!raw) return;
+          if (!raw) {
+            syncTopicDisplay();
+            return;
+          }
           const data = JSON.parse(raw);
 
           if (data.title && titleInput) {
@@ -468,6 +497,7 @@
         } catch (e) {
           console.warn('KWL: could not load saved state', e);
         }
+        syncTopicDisplay();
       }
 
       function saveState() {
@@ -485,6 +515,7 @@
         } catch (e) {
           console.warn('KWL: could not save state', e);
         }
+        syncTopicDisplay();
       }
 
       function clearForStudents() {
@@ -511,6 +542,33 @@
         }
       }
 
+      function slugify(str) {
+        return str.toLowerCase()
+          .replace(/[^a-z0-9]+/g, '-')
+          .replace(/^-+|-+$/g, '') || 'kwl-chart';
+      }
+
+      function downloadPdf() {
+        if (typeof html2pdf === 'undefined' || !canvas) {
+          alert('PDF generator not available in this browser.');
+          return;
+        }
+
+        const title = (titleInput && titleInput.value.trim()) || 'KWL Chart';
+        const filename = slugify(title) + '.pdf';
+
+        const opt = {
+          margin:       0.5,
+          filename:     filename,
+          image:        { type: 'jpeg', quality: 0.98 },
+          html2canvas:  { scale: 2, useCORS: true },
+          jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+        };
+
+        html2pdf().set(opt).from(canvas).save();
+      }
+
+      // Event hookups
       if (titleInput) {
         titleInput.addEventListener('input', saveState);
       }
@@ -526,6 +584,10 @@
 
       if (clearBtn) {
         clearBtn.addEventListener('click', clearForStudents);
+      }
+
+      if (pdfBtn) {
+        pdfBtn.addEventListener('click', downloadPdf);
       }
 
       loadState();
