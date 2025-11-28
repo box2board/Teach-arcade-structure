@@ -451,11 +451,6 @@
     <a href="/privacy.html">Privacy</a> • <a href="/terms.html">Terms</a>
   </footer>
 
-  <!-- HTML to PDF library -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
-          integrity="sha512-YcsIPu6vZkZQ8ZkUZqXeI1XHlzTH0jzZMfjNV8iPBUFeCFGXFq8iDSHPsuacF2H2mA5l9WZC1KZpS2p2v9f3gA=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
   <script>
     (function () {
       const STORAGE_KEY = 'teacharcade_kwl_chart_v1';
@@ -464,7 +459,6 @@
       const printBtn = document.getElementById('printBtn');
       const pdfBtn = document.getElementById('pdfBtn');
       const clearBtn = document.getElementById('clearBtn');
-      const canvas = document.getElementById('kwlCanvas');
       const topicSpan = document.getElementById('canvasTopicText');
       const editableElements = document.querySelectorAll('[contenteditable="true"]');
 
@@ -542,33 +536,11 @@
         }
       }
 
-      function slugify(str) {
-        return str.toLowerCase()
-          .replace(/[^a-z0-9]+/g, '-')
-          .replace(/^-+|-+$/g, '') || 'kwl-chart';
+      function openPrintDialog() {
+        // works for both Print Chart and Download PDF (teachers can choose "Save as PDF")
+        window.print();
       }
 
-      function downloadPdf() {
-        if (typeof html2pdf === 'undefined' || !canvas) {
-          alert('PDF generator not available in this browser.');
-          return;
-        }
-
-        const title = (titleInput && titleInput.value.trim()) || 'KWL Chart';
-        const filename = slugify(title) + '.pdf';
-
-        const opt = {
-          margin:       0.5,
-          filename:     filename,
-          image:        { type: 'jpeg', quality: 0.98 },
-          html2canvas:  { scale: 2, useCORS: true },
-          jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-        };
-
-        html2pdf().set(opt).from(canvas).save();
-      }
-
-      // Event hookups
       if (titleInput) {
         titleInput.addEventListener('input', saveState);
       }
@@ -579,15 +551,15 @@
       });
 
       if (printBtn) {
-        printBtn.addEventListener('click', () => window.print());
+        printBtn.addEventListener('click', openPrintDialog);
+      }
+
+      if (pdfBtn) {
+        pdfBtn.addEventListener('click', openPrintDialog);
       }
 
       if (clearBtn) {
         clearBtn.addEventListener('click', clearForStudents);
-      }
-
-      if (pdfBtn) {
-        pdfBtn.addEventListener('click', downloadPdf);
       }
 
       loadState();
