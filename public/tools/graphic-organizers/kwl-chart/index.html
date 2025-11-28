@@ -287,69 +287,74 @@
       color: #9ca3af;
     }
 
-    @media (max-width: 900px) {
-      .kwl-grid {
-        grid-template-columns: 1fr;
-      }
-      .kwl-column {
-        min-height: 260px;
-      }
-    }
-
     @media print {
-      @page {
-        size: letter portrait;
-        margin: 0.5in;
-      }
+  @page {
+    size: letter portrait;
+    margin: 0.25in;
+  }
 
-      body {
-        background: #ffffff;
-      }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+  }
 
-      #site-header,
-      nav.breadcrumbs,
-      .kwl-hero,
-      .kwl-toolbar,
-      footer {
-        display: none !important;
-      }
+  #site-header,
+  nav.breadcrumbs,
+  .kwl-hero,
+  .kwl-toolbar,
+  footer {
+    display: none !important;
+  }
 
-      main.container {
-        max-width: 100%;
-        padding: 0;
-        margin: 0;
-      }
+  main.container {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+  }
 
-      .kwl-canvas-wrap {
-        margin: 0;
-      }
+  .kwl-canvas-wrap {
+    margin: 0;
+  }
 
-      .kwl-canvas {
-        box-shadow: none;
-        border-radius: 0;
-        border: none;
-        padding: 6px 14px 14px;
-      }
+  .kwl-canvas {
+    box-shadow: none;
+    border-radius: 0;
+    border: none;
+    padding: 4px 10px 10px;
+    /* shrink entire sheet slightly so it fits on one page */
+    transform: scale(0.88);
+    transform-origin: top center;
+  }
 
-      .kwl-grid,
-      .kwl-column,
-      .kwl-notes {
-        border-color: #000000;
-      }
+  .kwl-grid,
+  .kwl-column,
+  .kwl-notes {
+    border-color: #000000;
+  }
 
-      .kwl-column-header {
-        background: #ffffff;
-      }
+  .kwl-column-header {
+    background: #ffffff;
+  }
 
-      /* tighten the chart so it fits on one page */
-      .kwl-column {
-        min-height: 260px !important;
-      }
+  /* shorter boxes for print so everything fits */
+  .kwl-column {
+    min-height: 220px !important;
+  }
 
-      .kwl-notes {
-        font-size: 12px;
-        padding: 6px 6px 8px;
-      }
+  .kwl-notes {
+    font-size: 11px;
+    padding: 4px 4px 6px;
+  }
+
+  .kwl-canvas-title {
+    font-size: 14px;
+  }
+
+  .kwl-canvas-topic {
+    font-size: 11px;
+  }
+}
     }
   </style>
 </head>
