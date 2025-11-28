@@ -297,9 +297,15 @@
     }
 
     @media print {
+      @page {
+        size: letter portrait;
+        margin: 0.5in;
+      }
+
       body {
         background: #ffffff;
       }
+
       #site-header,
       nav.breadcrumbs,
       .kwl-hero,
@@ -307,27 +313,42 @@
       footer {
         display: none !important;
       }
+
       main.container {
         max-width: 100%;
         padding: 0;
         margin: 0;
       }
+
       .kwl-canvas-wrap {
         margin: 0;
       }
+
       .kwl-canvas {
         box-shadow: none;
         border-radius: 0;
         border: none;
-        padding: 12px 24px 24px;
+        padding: 6px 14px 14px;
       }
+
       .kwl-grid,
       .kwl-column,
       .kwl-notes {
         border-color: #000000;
       }
+
       .kwl-column-header {
         background: #ffffff;
+      }
+
+      /* tighten the chart so it fits on one page */
+      .kwl-column {
+        min-height: 260px !important;
+      }
+
+      .kwl-notes {
+        font-size: 12px;
+        padding: 6px 6px 8px;
       }
     }
   </style>
@@ -537,7 +558,7 @@
       }
 
       function openPrintDialog() {
-        // works for both Print Chart and Download PDF (teachers can choose "Save as PDF")
+        syncTopicDisplay(); // make sure topic is up to date
         window.print();
       }
 
@@ -561,6 +582,14 @@
       if (clearBtn) {
         clearBtn.addEventListener('click', clearForStudents);
       }
+
+      // also sync right before the browser prints (desktop browsers)
+      if (window.matchMedia) {
+        window.matchMedia('print').addEventListener('change', m => {
+          if (m.matches) syncTopicDisplay();
+        });
+      }
+      window.addEventListener('beforeprint', syncTopicDisplay);
 
       loadState();
     })();
