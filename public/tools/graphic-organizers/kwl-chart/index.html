@@ -287,10 +287,10 @@
       color: #9ca3af;
     }
 
-  @media print {
+@media print {
   @page {
     size: letter portrait;
-    margin: 0.35in;
+    margin: 0.25in;
   }
 
   html, body {
@@ -321,8 +321,9 @@
     box-shadow: none;
     border-radius: 0;
     border: none;
-    padding: 8px 16px 16px;
-    /* IMPORTANT: no scaling so it prints larger */
+    /* very small padding so the chart can grow taller */
+    padding: 4px 10px 8px;
+    /* IMPORTANT: no scale so it prints large */
     transform: none;
   }
 
@@ -336,14 +337,14 @@
     background: #ffffff;
   }
 
-  /* Slightly shorter boxes so we stay on one page */
+  /* Tall boxes for print so they fill the page but (should) stay on one sheet */
   .kwl-column {
-    min-height: 240px !important;
+    min-height: 360px !important;
   }
 
   .kwl-notes {
     font-size: 11px;
-    padding: 5px 6px 7px;
+    padding: 6px 6px 8px;
   }
 
   .kwl-canvas-title {
