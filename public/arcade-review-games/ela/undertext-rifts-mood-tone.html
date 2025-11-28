@@ -1,0 +1,1086 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Undertext Rifts — Mood &amp; Tone ELA Game | Teach Arcade</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://teacharcade.com/games/arcade/ela/undertext-rifts-mood-tone.html">
+
+  <!-- Fonts (same vibe as other Teach Arcade pages) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Meta description / keywords -->
+  <meta name="description"
+        content="Undertext Rifts is a free 8-bit ELA arcade game from Teach Arcade. Explore an Upside-Down style school and practice mood and tone with 15 interactive reading questions.">
+  <meta name="keywords"
+        content="ELA mood and tone game, middle school ELA review game, Undertext Rifts, Teach Arcade, arcade reading game, Stranger Things style classroom game, mood and tone practice, reading skills game">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Undertext Rifts — Mood &amp; Tone ELA Game | Teach Arcade">
+  <meta property="og:description"
+        content="Step into the Undertext and stabilize 15 rifts by identifying mood and tone. Free 8-bit ELA arcade game for middle school classrooms.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://teacharcade.com/games/arcade/ela/undertext-rifts-mood-tone.html">
+  <meta property="og:image" content="https://teacharcade.com/assets/undertext-rifts-mood-tone.png">
+  <meta property="og:site_name" content="Teach Arcade">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Undertext Rifts — Mood &amp; Tone ELA Game | Teach Arcade">
+  <meta name="twitter:description"
+        content="Free arcade-style ELA review game. Practice mood and tone in an Upside-Down inspired school maze with 15 interactive rifts.">
+  <meta name="twitter:image" content="https://teacharcade.com/assets/undertext-rifts-mood-tone.png">
+
+  <!-- JSON-LD: WebPage + Game -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["WebPage", "VideoGame"],
+    "name": "Undertext Rifts — Mood & Tone ELA Game",
+    "url": "https://teacharcade.com/games/arcade/ela/undertext-rifts-mood-tone.html",
+    "description": "Undertext Rifts is a free 8-bit reading game from Teach Arcade where students explore an Upside-Down style school to practice mood and tone using 15 interactive questions.",
+    "genre": ["Educational game", "Arcade game"],
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any",
+    "author": {
+      "@type": "Organization",
+      "name": "Teach Arcade",
+      "url": "https://teacharcade.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Teach Arcade",
+      "url": "https://teacharcade.com"
+    },
+    "inLanguage": "en-US"
+  }
+  </script>
+
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://teacharcade.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Arcade Review Games",
+        "item": "https://teacharcade.com/arcade-review-games/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Undertext Rifts — Mood & Tone ELA Game",
+        "item": "https://teacharcade.com/games/arcade/ela/undertext-rifts-mood-tone.html"
+      }
+    ]
+  }
+  </script>
+
+  <!-- PAGE STYLES -->
+  <style>
+    :root {
+      --bg: #050414;
+      --bg-grad-top: #2b0b4a;
+      --bg-grad-bottom: #050414;
+      --panel: #111328;
+      --accent: #ff3366;
+      --accent-soft: rgba(255,51,102,0.15);
+      --accent-alt: #39ffb6;
+      --text: #f8f5ff;
+      --muted: #a8a4d8;
+      --border: rgba(255,255,255,0.12);
+      --danger: #ff4b81;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(255,51,102,0.25) 0, transparent 45%),
+        radial-gradient(circle at 90% 0%, rgba(57,255,182,0.2) 0, transparent 50%),
+        linear-gradient(to bottom, var(--bg-grad-top), var(--bg-grad-bottom));
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      padding: 20px 12px 40px;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 1040px;
+    }
+
+    header {
+      margin-bottom: 18px;
+    }
+
+    .crumbs {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .crumbs a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .crumbs a:hover {
+      text-decoration: underline;
+    }
+
+    h1 {
+      font-family: "Press Start 2P", system-ui, sans-serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-shadow: 0 2px 0 #000;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      font-size: 0.88rem;
+      color: var(--muted);
+      max-width: 720px;
+      line-height: 1.5;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+      font-size: 0.7rem;
+    }
+
+    .pill {
+      border-radius: 999px;
+      padding: 4px 10px;
+      border: 1px solid var(--border);
+      background: rgba(0,0,0,0.45);
+      color: var(--muted);
+    }
+
+    .pill.highlight {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr);
+      gap: 16px;
+    }
+
+    .game-shell {
+      background: radial-gradient(circle at top, #2b0b4a 0, #0a0716 65%);
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      padding: 16px 16px 14px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.75);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .game-shell::before {
+      content: "";
+      position: absolute;
+      inset: -40px;
+      background-image:
+        repeating-linear-gradient(135deg, rgba(255,255,255,0.04) 0, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 4px);
+      mix-blend-mode: soft-light;
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    .game-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hud-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 0.76rem;
+      color: var(--muted);
+    }
+
+    .hud-left,
+    .hud-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .hud-tag {
+      padding: 3px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(0,0,0,0.5);
+    }
+
+    .hud-tag.accent {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .hud-tag.alt {
+      border-color: var(--accent-alt);
+      color: var(--accent-alt);
+    }
+
+    .hint-bar {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .game-wrapper {
+      display: flex;
+      justify-content: center;
+    }
+
+    #gameCanvas {
+      border-radius: 12px;
+      border: 2px solid rgba(255,255,255,0.2);
+      box-shadow: 0 0 24px rgba(255,255,255,0.2);
+      background: radial-gradient(circle at 10% 0%, #351c6b 0, #050414 55%);
+      image-rendering: pixelated;
+      max-width: 100%;
+    }
+
+    .overlay,
+    .end-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(5,0,20,0.82);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 20;
+    }
+
+    .question-modal,
+    .end-modal {
+      background: #141226;
+      border-radius: 14px;
+      border: 1px solid var(--accent);
+      max-width: 420px;
+      width: 90%;
+      padding: 16px 16px 14px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.9);
+      font-size: 0.85rem;
+    }
+
+    .question-modal h2,
+    .end-modal h2 {
+      font-family: "Press Start 2P", system-ui, sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      color: var(--accent);
+    }
+
+    .question-text {
+      font-size: 0.82rem;
+      line-height: 1.5;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    .passage {
+      font-size: 0.78rem;
+      background: rgba(0,0,0,0.6);
+      border-radius: 8px;
+      padding: 8px 9px;
+      border: 1px solid rgba(255,255,255,0.1);
+      margin-bottom: 10px;
+    }
+
+    .answers {
+      display: grid;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+
+    .answers button {
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.05);
+      padding: 7px 10px;
+      color: var(--text);
+      font-size: 0.8rem;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .answers button:hover {
+      border-color: var(--accent-alt);
+      background: rgba(57,255,182,0.08);
+    }
+
+    .feedback {
+      font-size: 0.76rem;
+      color: var(--danger);
+      min-height: 1em;
+    }
+
+    .end-modal p {
+      font-size: 0.8rem;
+      margin-bottom: 10px;
+      color: var(--muted);
+    }
+
+    .end-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    .btn {
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      padding: 7px 14px;
+      font-size: 0.78rem;
+      cursor: pointer;
+    }
+
+    .btn.primary {
+      border-color: var(--accent-alt);
+      background: var(--accent-alt);
+      color: #050414;
+    }
+
+    .btn.primary:hover {
+      filter: brightness(1.08);
+    }
+
+    .mobile-controls {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      z-index: 1;
+      position: relative;
+    }
+
+    .mobile-controls button {
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(0,0,0,0.6);
+      color: var(--text);
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .mobile-controls button.flip {
+      width: auto;
+      padding: 0 10px;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+    }
+
+    .seo-copy {
+      margin-top: 18px;
+      font-size: 0.86rem;
+      color: var(--muted);
+      line-height: 1.5;
+      background: rgba(5,5,20,0.8);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      padding: 12px 14px;
+    }
+
+    .seo-copy h2 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .seo-copy ul {
+      padding-left: 18px;
+      margin-top: 6px;
+    }
+
+    .seo-copy li {
+      margin-bottom: 3px;
+    }
+
+    @media (max-width: 640px) {
+      h1 {
+        font-size: 0.82rem;
+      }
+      .subtitle {
+        font-size: 0.8rem;
+      }
+      .hud-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="crumbs">
+        <a href="/">Teach Arcade</a> · <a href="/arcade-review-games/">Arcade Review Games</a> · Undertext Rifts
+      </div>
+      <h1>Undertext Rifts — Mood &amp; Tone ELA Game</h1>
+      <p class="subtitle">
+        Step into the Undertext and explore an Upside-Down style middle school, stabilizing rifts by identifying
+        <strong>mood</strong> and <strong>tone</strong> in short reading passages. Perfect for warm-ups, stations,
+        and reading skills practice.
+      </p>
+      <div class="pill-row">
+        <div class="pill highlight">8-bit ELA arcade game</div>
+        <div class="pill">Mood &amp; tone practice</div>
+        <div class="pill">15 interactive rifts</div>
+        <div class="pill">Keyboard &amp; touch controls</div>
+      </div>
+    </header>
+
+    <main>
+      <section class="game-shell">
+        <div class="game-inner">
+          <div class="hud-row">
+            <div class="hud-left">
+              <div class="hud-tag accent" id="hudScore">Score: 0</div>
+              <div class="hud-tag alt" id="hudRifts">Rifts Stabilized: 0 / 15</div>
+              <div class="hud-tag" id="hudWorld">World: Classroom</div>
+            </div>
+            <div class="hud-right">
+              <div class="hud-tag" id="hudTimer">Time: 0s</div>
+            </div>
+          </div>
+          <div class="hint-bar">
+            Controls: Arrow keys or WASD to move · <strong>F</strong> to flip worlds · Stand on a glowing rift and press <strong>Space</strong> or <strong>Enter</strong> to answer.
+          </div>
+          <div class="game-wrapper">
+            <canvas id="gameCanvas" width="640" height="384"></canvas>
+          </div>
+          <div class="mobile-controls">
+            <button id="btnUp">↑</button>
+            <button id="btnLeft">←</button>
+            <button id="btnDown">↓</button>
+            <button id="btnRight">→</button>
+            <button id="btnFlip" class="flip">Flip World</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="seo-copy">
+        <h2>Free Mood &amp; Tone ELA Arcade Game for Middle School</h2>
+        <p>
+          <strong>Undertext Rifts</strong> is a free ELA review game from Teach Arcade that helps middle school
+          students practice <strong>mood</strong> and <strong>tone</strong> in a Stranger Things–inspired setting.
+          Students explore a glitchy, Upside-Down style school, flipping between the normal Classroom World and the
+          eerie Undertext World to reach glowing rifts.
+        </p>
+        <p>
+          Each rift presents a short reading passage and a multiple-choice question asking students to identify either
+          the mood (the feeling created for the reader) or the tone (the author’s or narrator’s attitude). As students
+          select correct answers, they stabilize each rift and build their score.
+        </p>
+        <ul>
+          <li>Practice identifying mood and tone in short, accessible passages.</li>
+          <li>Engaging 8-bit visuals with an Upside-Down, sci-fi horror classroom vibe.</li>
+          <li>Perfect for bell ringers, small-group stations, or individual practice.</li>
+          <li>No logins required — just open the page and play.</li>
+        </ul>
+        <p>
+          Use this game as a quick skills review before reading a longer text, after a mini-lesson on mood and tone, or
+          as a fun Friday station in your ELA classroom.
+        </p>
+      </section>
+    </main>
+  </div>
+
+  <!-- Question Overlay -->
+  <div class="overlay" id="questionOverlay">
+    <div class="question-modal">
+      <h2>Undertext Rift</h2>
+      <div class="question-text" id="questionPrompt"></div>
+      <div class="passage" id="questionPassage"></div>
+      <div class="answers">
+        <button id="answer0"></button>
+        <button id="answer1"></button>
+        <button id="answer2"></button>
+      </div>
+      <div class="feedback" id="feedback"></div>
+    </div>
+  </div>
+
+  <!-- End / Win Overlay -->
+  <div class="end-overlay" id="endOverlay">
+    <div class="end-modal">
+      <h2>All Rifts Stabilized</h2>
+      <p id="endSummary"></p>
+      <div class="end-actions">
+        <button class="btn" onclick="closeEndOverlay()">Close</button>
+        <button class="btn primary" onclick="restartGame()">Play Again</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ====== GAME CONSTANTS ======
+    const TILE_SIZE = 32;
+    const GRID_COLS = 20;
+    const GRID_ROWS = 12;
+
+    const TILE_FLOOR = 0;
+    const TILE_WALL = 1;
+    const TILE_RIFT = 2;
+
+    const TOTAL_RIFTS = 15;
+
+    // Two worlds: classroom and undertext
+    // Simple layout with walls (1), floor (0), and rifts (2)
+    // 20 x 12 grid
+    const classroomMap = [
+      // 0 = floor, 1 = wall, 2 = rift
+      [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+      [1,0,0,0,0,0,0,0,0,0,0,2,0,0,0,1,0,0,0,1],
+      [1,0,1,1,1,0,1,0,1,0,0,0,0,1,0,1,0,2,0,1],
+      [1,0,0,0,1,0,1,0,1,0,2,0,0,1,0,0,0,0,0,1],
+      [1,0,2,0,1,0,0,0,0,0,0,0,1,1,0,1,1,1,0,1],
+      [1,0,0,0,1,1,1,0,1,0,0,0,0,0,0,1,0,2,0,1],
+      [1,0,0,0,0,0,0,0,1,0,2,0,0,1,0,0,0,0,0,1],
+      [1,2,1,0,1,1,0,0,0,0,0,0,0,1,0,1,0,0,0,1],
+      [1,0,0,0,0,0,0,1,0,2,0,1,0,0,0,1,0,0,0,1],
+      [1,0,0,2,0,1,0,1,0,0,0,1,0,1,0,0,0,0,0,1],
+      [1,0,0,0,0,1,0,0,0,0,2,0,0,1,0,0,0,2,0,1],
+      [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+    ];
+
+    const undertextMap = [
+      [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+      [1,0,2,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,1],
+      [1,0,1,1,1,0,1,0,0,0,2,0,0,1,0,1,0,0,0,1],
+      [1,0,0,0,1,0,1,0,1,0,0,0,0,1,0,0,0,2,0,1],
+      [1,0,0,0,1,0,0,0,0,2,0,0,1,1,0,1,1,1,0,1],
+      [1,0,2,0,1,1,1,0,1,0,0,0,0,0,0,1,0,0,0,1],
+      [1,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,2,1],
+      [1,0,1,0,1,1,0,0,0,0,2,0,0,1,0,1,0,0,0,1],
+      [1,0,0,0,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1],
+      [1,2,0,0,0,1,0,1,0,2,0,1,0,1,0,0,0,0,0,1],
+      [1,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,2,0,0,1],
+      [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+    ];
+
+    // ====== QUESTIONS (MOOD & TONE) ======
+    const questions = [
+      {
+        type: "mood",
+        passage: "The hallway lights flickered as Mia walked alone. Every step echoed, and the lockers seemed to lean in, listening.",
+        question: "What is the mood of this passage?",
+        options: ["Cheerful", "Tense", "Excited"],
+        correct: 1
+      },
+      {
+        type: "tone",
+        passage: "Sure, the group project was going great—if you ignored the missing worksheets, the broken laptop, and the fact that nobody was talking.",
+        question: "What is the narrator's tone?",
+        options: ["Sarcastic", "Joyful", "Confused"],
+        correct: 0
+      },
+      {
+        type: "mood",
+        passage: "Sunlight spilled through the classroom windows, warming the desks as students quietly sketched in their notebooks.",
+        question: "What is the mood of this passage?",
+        options: ["Peaceful", "Terrifying", "Lonely"],
+        correct: 0
+      },
+      {
+        type: "tone",
+        passage: "I have reminded you three times now to bring your book to class. I expect it on your desk tomorrow, no excuses.",
+        question: "What is the speaker's tone?",
+        options: ["Playful", "Serious", "Hopeful"],
+        correct: 1
+      },
+      {
+        type: "mood",
+        passage: "Rain scratched at the windows while thunder rolled above, making the library feel smaller and darker with every flash.",
+        question: "What is the mood of this passage?",
+        options: ["Cozy", "Gloomy", "Energetic"],
+        correct: 1
+      },
+      {
+        type: "tone",
+        passage: "Oh great, another pop quiz. Just what everyone was hoping for on a Monday morning.",
+        question: "What is the narrator's tone?",
+        options: ["Excited", "Sarcastic", "Relaxed"],
+        correct: 1
+      },
+      {
+        type: "mood",
+        passage: "The crowd erupted into cheers as the last shot swished through the net. Strangers high-fived and stomped on the bleachers.",
+        question: "What is the mood of this passage?",
+        options: ["Joyful", "Anxious", "Bored"],
+        correct: 0
+      },
+      {
+        type: "tone",
+        passage: "If you actually read the directions, you might notice that the answer was on the first page the whole time.",
+        question: "What is the speaker's tone?",
+        options: ["Encouraging", "Annoyed", "Grateful"],
+        correct: 1
+      },
+      {
+        type: "mood",
+        passage: "The empty cafeteria echoed with the hum of the vending machine. One lone tray sat abandoned on a table in the corner.",
+        question: "What is the mood of this passage?",
+        options: ["Lonely", "Excited", "Triumphant"],
+        correct: 0
+      },
+      {
+        type: "tone",
+        passage: "I cannot tell you how thrilled I am to stay up all night redoing a project that was 'accidentally deleted.'",
+        question: "What is the narrator's tone?",
+        options: ["Sarcastic", "Grateful", "Nervous"],
+        correct: 0
+      },
+      {
+        type: "mood",
+        passage: "Soft music played in the background as the class painted quietly, each brushstroke slow and careful.",
+        question: "What is the mood of this passage?",
+        options: ["Peaceful", "Terrifying", "Chaotic"],
+        correct: 0
+      },
+      {
+        type: "tone",
+        passage: "You did the reading, took notes, and asked questions. I'm impressed with your effort in this unit.",
+        question: "What is the speaker's tone?",
+        options: ["Critical", "Proud", "Angry"],
+        correct: 1
+      },
+      {
+        type: "mood",
+        passage: "The wind howled around the broken windows of the old gym, carrying faint whispers through the dark.",
+        question: "What is the mood of this passage?",
+        options: ["Comforting", "Creepy", "Silly"],
+        correct: 1
+      },
+      {
+        type: "tone",
+        passage: "If winning the 'Most Talkative Award' were a real thing, you would have earned it by the first period.",
+        question: "What is the narrator's tone?",
+        options: ["Sarcastic", "Serious", "Afraid"],
+        correct: 0
+      },
+      {
+        type: "mood",
+        passage: "The bus finally pulled away, leaving the town shrinking in the distance and a new city rising ahead.",
+        question: "What is the mood of this passage?",
+        options: ["Hopeful", "Terrified", "Bored"],
+        correct: 0
+      }
+    ];
+
+    // ====== GAME STATE ======
+    const canvas = document.getElementById("gameCanvas");
+    const ctx = canvas.getContext("2d");
+
+    const hudScore = document.getElementById("hudScore");
+    const hudRifts = document.getElementById("hudRifts");
+    const hudWorld = document.getElementById("hudWorld");
+    const hudTimer = document.getElementById("hudTimer");
+
+    const questionOverlay = document.getElementById("questionOverlay");
+    const questionPrompt = document.getElementById("questionPrompt");
+    const questionPassage = document.getElementById("questionPassage");
+    const feedbackEl = document.getElementById("feedback");
+    const answerButtons = [
+      document.getElementById("answer0"),
+      document.getElementById("answer1"),
+      document.getElementById("answer2")
+    ];
+
+    const endOverlay = document.getElementById("endOverlay");
+    const endSummary = document.getElementById("endSummary");
+
+    let currentWorld = "classroom"; // or "undertext"
+    let player = { col: 1, row: 1 };
+    let score = 0;
+    let stabilizedCount = 0;
+    let timerSeconds = 0;
+    let timerId = null;
+    let isQuestionOpen = false;
+    let isGameOver = false;
+
+    // Track which rifts have been answered; we will map rifts in scanning order
+    let riftStates = []; // array of {world, col, row, questionIndex, answered}
+
+    let activeRiftIndex = null; // index in riftStates
+    let activeQuestion = null;
+
+    // ====== INITIALIZATION ======
+    function initRifts() {
+      riftStates = [];
+      // Collect rifts from both maps, up to TOTAL_RIFTS
+      function scanMap(map, worldName) {
+        for (let r = 0; r < GRID_ROWS; r++) {
+          for (let c = 0; c < GRID_COLS; c++) {
+            if (map[r][c] === TILE_RIFT) {
+              riftStates.push({
+                world: worldName,
+                col: c,
+                row: r,
+                answered: false,
+                questionIndex: null
+              });
+            }
+          }
+        }
+      }
+      scanMap(classroomMap, "classroom");
+      scanMap(undertextMap, "undertext");
+
+      // Assign questions to the first TOTAL_RIFTS rifts
+      for (let i = 0; i < riftStates.length && i < TOTAL_RIFTS; i++) {
+        riftStates[i].questionIndex = i; // 1:1 assignment
+      }
+    }
+
+    function resetGame() {
+      currentWorld = "classroom";
+      player.col = 1;
+      player.row = 1;
+      score = 0;
+      stabilizedCount = 0;
+      timerSeconds = 0;
+      isQuestionOpen = false;
+      isGameOver = false;
+      activeRiftIndex = null;
+      activeQuestion = null;
+      initRifts();
+      updateHud();
+      if (timerId) clearInterval(timerId);
+      timerId = setInterval(() => {
+        if (!isQuestionOpen && !isGameOver) {
+          timerSeconds++;
+          hudTimer.textContent = "Time: " + timerSeconds + "s";
+        }
+      }, 1000);
+    }
+
+    function getCurrentMap() {
+      return currentWorld === "classroom" ? classroomMap : undertextMap;
+    }
+
+    // ====== RENDERING ======
+    function draw() {
+      const map = getCurrentMap();
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Background grid
+      for (let r = 0; r < GRID_ROWS; r++) {
+        for (let c = 0; c < GRID_COLS; c++) {
+          const tile = map[r][c];
+          let x = c * TILE_SIZE;
+          let y = r * TILE_SIZE;
+
+          // Base floor
+          if (tile === TILE_WALL) {
+            ctx.fillStyle = currentWorld === "classroom" ? "#1b1f3a" : "#14071f";
+          } else {
+            ctx.fillStyle = currentWorld === "classroom" ? "#120f26" : "#090312";
+          }
+          ctx.fillRect(x, y, TILE_SIZE, TILE_SIZE);
+
+          // Tile outlines / glitch lines
+          ctx.strokeStyle = currentWorld === "classroom" ? "rgba(255,255,255,0.06)" : "rgba(255,51,102,0.18)";
+          ctx.strokeRect(x, y, TILE_SIZE, TILE_SIZE);
+
+          // Rifts (only if they have a question assigned and not answered)
+          if (tile === TILE_RIFT) {
+            const riftIndex = findRiftIndex(currentWorld, c, r);
+            if (riftIndex !== null && !riftStates[riftIndex].answered) {
+              const gradient = ctx.createRadialGradient(
+                x + TILE_SIZE / 2, y + TILE_SIZE / 2, 4,
+                x + TILE_SIZE / 2, y + TILE_SIZE / 2, TILE_SIZE / 2
+              );
+              if (currentWorld === "classroom") {
+                gradient.addColorStop(0, "rgba(57,255,182,0.9)");
+                gradient.addColorStop(1, "rgba(57,255,182,0.1)");
+              } else {
+                gradient.addColorStop(0, "rgba(255,51,102,0.9)");
+                gradient.addColorStop(1, "rgba(255,51,102,0.1)");
+              }
+              ctx.fillStyle = gradient;
+              ctx.fillRect(x + 4, y + 4, TILE_SIZE - 8, TILE_SIZE - 8);
+              // small core
+              ctx.fillStyle = "#ffffff";
+              ctx.globalAlpha = 0.8;
+              ctx.fillRect(x + 12, y + 12, TILE_SIZE - 24, TILE_SIZE - 24);
+              ctx.globalAlpha = 1;
+            }
+          }
+        }
+      }
+
+      // Player
+      const px = player.col * TILE_SIZE;
+      const py = player.row * TILE_SIZE;
+      // Outer glow
+      const pGrad = ctx.createRadialGradient(
+        px + TILE_SIZE / 2, py + TILE_SIZE / 2, 2,
+        px + TILE_SIZE / 2, py + TILE_SIZE / 2, TILE_SIZE / 1.4
+      );
+      pGrad.addColorStop(0, "rgba(255,255,255,0.9)");
+      pGrad.addColorStop(1, "rgba(57,255,182,0.05)");
+      ctx.fillStyle = pGrad;
+      ctx.fillRect(px + 4, py + 4, TILE_SIZE - 8, TILE_SIZE - 8);
+
+      // Core body
+      ctx.fillStyle = currentWorld === "classroom" ? "#39ffb6" : "#ff3366";
+      ctx.fillRect(px + 9, py + 9, TILE_SIZE - 18, TILE_SIZE - 18);
+
+      requestAnimationFrame(draw);
+    }
+
+    // ====== HUD ======
+    function updateHud() {
+      hudScore.textContent = "Score: " + score;
+      hudRifts.textContent = "Rifts Stabilized: " + stabilizedCount + " / " + TOTAL_RIFTS;
+      hudWorld.textContent = "World: " + (currentWorld === "classroom" ? "Classroom" : "Undertext");
+    }
+
+    // ====== INPUT & MOVEMENT ======
+    function canMoveTo(col, row) {
+      if (col < 0 || col >= GRID_COLS || row < 0 || row >= GRID_ROWS) return false;
+      const map = getCurrentMap();
+      return map[row][col] !== TILE_WALL;
+    }
+
+    function movePlayer(dc, dr) {
+      if (isQuestionOpen || isGameOver) return;
+      const newCol = player.col + dc;
+      const newRow = player.row + dr;
+      if (canMoveTo(newCol, newRow)) {
+        player.col = newCol;
+        player.row = newRow;
+        checkForRiftAutoHint();
+      }
+    }
+
+    function flipWorld() {
+      if (isQuestionOpen || isGameOver) return;
+      currentWorld = currentWorld === "classroom" ? "undertext" : "classroom";
+      const map = getCurrentMap();
+      // If player is inside a wall after flip, try to nudge to nearby floor
+      if (map[player.row][player.col] === TILE_WALL) {
+        const offsets = [
+          {dc:1, dr:0}, {dc:-1, dr:0}, {dc:0, dr:1}, {dc:0, dr:-1},
+          {dc:1, dr:1}, {dc:-1, dr:1}, {dc:1, dr:-1}, {dc:-1, dr:-1}
+        ];
+        for (let off of offsets) {
+          const nc = player.col + off.dc;
+          const nr = player.row + off.dr;
+          if (canMoveTo(nc, nr)) {
+            player.col = nc;
+            player.row = nr;
+            break;
+          }
+        }
+      }
+      updateHud();
+    }
+
+    function openRiftQuestion() {
+      if (isQuestionOpen || isGameOver) return;
+      const map = getCurrentMap();
+      if (map[player.row][player.col] !== TILE_RIFT) return;
+
+      const riftIndex = findRiftIndex(currentWorld, player.col, player.row);
+      if (riftIndex === null) return;
+
+      const rift = riftStates[riftIndex];
+      if (rift.answered || rift.questionIndex === null) return;
+
+      activeRiftIndex = riftIndex;
+      activeQuestion = questions[rift.questionIndex];
+
+      // Populate overlay
+      questionPrompt.textContent = activeQuestion.type === "mood"
+        ? "Identify the mood of this passage:"
+        : "Identify the tone of this passage:";
+      questionPassage.textContent = '"' + activeQuestion.passage + '"';
+      feedbackEl.textContent = "";
+
+      activeQuestion.options.forEach((opt, idx) => {
+        answerButtons[idx].textContent = String.fromCharCode(65 + idx) + ". " + opt;
+      });
+
+      isQuestionOpen = true;
+      questionOverlay.style.display = "flex";
+    }
+
+    function handleAnswer(selectedIndex) {
+      if (!isQuestionOpen || !activeQuestion || activeRiftIndex === null) return;
+      if (selectedIndex === activeQuestion.correct) {
+        // Correct
+        score += 100;
+        stabilizedCount += 1;
+        riftStates[activeRiftIndex].answered = true;
+        updateHud();
+        questionOverlay.style.display = "none";
+        isQuestionOpen = false;
+        activeRiftIndex = null;
+        activeQuestion = null;
+        checkWinCondition();
+      } else {
+        // Incorrect – mild penalty
+        feedbackEl.textContent = "Not quite. Reread the passage and think about the feeling or attitude.";
+        // Nudge player back a bit
+        const map = getCurrentMap();
+        if (canMoveTo(player.col - 1, player.row)) {
+          player.col -= 1;
+        } else if (canMoveTo(player.col, player.row - 1)) {
+          player.row -= 1;
+        }
+      }
+    }
+
+    function findRiftIndex(worldName, col, row) {
+      for (let i = 0; i < riftStates.length; i++) {
+        if (
+          riftStates[i].world === worldName &&
+          riftStates[i].col === col &&
+          riftStates[i].row === row
+        ) {
+          return i;
+        }
+      }
+      return null;
+    }
+
+    function checkForRiftAutoHint() {
+      const map = getCurrentMap();
+      if (map[player.row][player.col] === TILE_RIFT) {
+        // Could add subtle effect; for now, do nothing
+      }
+    }
+
+    function checkWinCondition() {
+      if (stabilizedCount >= TOTAL_RIFTS) {
+        isGameOver = true;
+        if (timerId) {
+          clearInterval(timerId);
+          timerId = null;
+        }
+        const accuracy = Math.round((stabilizedCount / TOTAL_RIFTS) * 100);
+        endSummary.textContent =
+          "You stabilized all 15 rifts in " + timerSeconds +
+          " seconds with a score of " + score +
+          ". Great work identifying mood and tone!";
+        endOverlay.style.display = "flex";
+      }
+    }
+
+    function closeEndOverlay() {
+      endOverlay.style.display = "none";
+    }
+
+    function restartGame() {
+      endOverlay.style.display = "none";
+      resetGame();
+    }
+
+    // ====== EVENT LISTENERS ======
+    document.addEventListener("keydown", (e) => {
+      if (isQuestionOpen) {
+        // Allow quick answer with 1/2/3 keys or A/B/C keys
+        if (e.key === "1" || e.key.toLowerCase() === "a") handleAnswer(0);
+        if (e.key === "2" || e.key.toLowerCase() === "b") handleAnswer(1);
+        if (e.key === "3" || e.key.toLowerCase() === "c") handleAnswer(2);
+        if (e.key === "Escape") {
+          questionOverlay.style.display = "none";
+          isQuestionOpen = false;
+          activeRiftIndex = null;
+          activeQuestion = null;
+        }
+        return;
+      }
+
+      switch (e.key) {
+        case "ArrowUp":
+        case "w":
+        case "W":
+          movePlayer(0, -1);
+          break;
+        case "ArrowDown":
+        case "s":
+        case "S":
+          movePlayer(0, 1);
+          break;
+        case "ArrowLeft":
+        case "a":
+        case "A":
+          movePlayer(-1, 0);
+          break;
+        case "ArrowRight":
+        case "d":
+        case "D":
+          movePlayer(1, 0);
+          break;
+        case "f":
+        case "F":
+          flipWorld();
+          break;
+        case " ":
+        case "Enter":
+          openRiftQuestion();
+          break;
+      }
+    });
+
+    // Answer buttons
+    answerButtons.forEach((btn, idx) => {
+      btn.addEventListener("click", () => handleAnswer(idx));
+    });
+
+    // Mobile controls
+    document.getElementById("btnUp").addEventListener("click", () => movePlayer(0, -1));
+    document.getElementById("btnDown").addEventListener("click", () => movePlayer(0, 1));
+    document.getElementById("btnLeft").addEventListener("click", () => movePlayer(-1, 0));
+    document.getElementById("btnRight").addEventListener("click", () => movePlayer(1, 0));
+    document.getElementById("btnFlip").addEventListener("click", () => flipWorld());
+
+    // ====== START GAME ======
+    resetGame();
+    requestAnimationFrame(draw);
+  </script>
+</body>
+</html>
