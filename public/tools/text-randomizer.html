@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Text Randomizer | Teacher Tools | Teach Arcade</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Basic SEO -->
+  <meta name="description"
+        content="Free Text Randomizer for teachers. Paste any list and instantly shuffle, sort, clean, remove duplicates, or pick a random item for classroom activities." />
+  <meta name="keywords"
+        content="text randomizer, list shuffler, random order, classroom tools, Teach Arcade, teacher tools" />
+  <link rel="canonical" href="https://teacharcade.com/teacher-tools/text-randomizer.html" />
+  <meta name="robots" content="index,follow"/>
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/assets/styles.css?v=1" />
+
+  <!-- Optional: simple tool-specific styles -->
+  <style>
+    .tool-wrapper {
+      max-width: 960px;
+      margin: 2rem auto 3rem;
+      padding: 1.5rem;
+      background: #0b1220;
+      border-radius: 1rem;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.45);
+      color: #e5e7eb;
+    }
+
+    .tool-wrapper h1 {
+      font-size: 1.9rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .tool-wrapper p.subtitle {
+      margin-top: 0;
+      color: #9ca3af;
+      font-size: 0.95rem;
+    }
+
+    .tool-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+
+    @media (min-width: 900px) {
+      .tool-grid {
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      }
+    }
+
+    .tool-label {
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #9ca3af;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 260px;
+      padding: 0.75rem 0.85rem;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      border-radius: 0.6rem;
+      border: 1px solid #1f2937;
+      background: #020617;
+      color: #e5e7eb;
+      resize: vertical;
+      box-sizing: border-box;
+    }
+
+    textarea[readonly] {
+      background: #020617;
+      opacity: 0.9;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 0.5rem 0 1rem;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      border: none;
+      border-radius: 999px;
+      padding: 0.55rem 0.95rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.06s ease, box-shadow 0.06s ease, background 0.12s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #020617;
+      box-shadow: 0 8px 18px rgba(34, 197, 94, 0.5);
+    }
+
+    .btn-secondary {
+      background: #111827;
+      color: #e5e7eb;
+      border: 1px solid #1f2937;
+    }
+
+    .btn-primary:hover,
+    .btn-secondary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 22px rgba(15, 23, 42, 0.45);
+    }
+
+    .btn-primary:active,
+    .btn-secondary:active {
+      transform: translateY(0);
+      box-shadow: none;
+    }
+
+    .random-pick {
+      margin-top: 0.75rem;
+      padding: 0.85rem 0.9rem;
+      border-radius: 0.75rem;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px dashed #374151;
+      font-size: 0.95rem;
+    }
+
+    .random-pick span.label {
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      color: #9ca3af;
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    .random-pick span.value {
+      font-size: 1rem;
+      color: #e5e7eb;
+      word-wrap: break-word;
+    }
+
+    .helper-text {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-top: 0.25rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Site Header -->
+  <header>
+    <div class="header-left">
+      <a href="/" class="logo-link">
+        <img src="/assets/images/teach-arcade-logo.png" alt="Teach Arcade Logo" class="site-logo">
+      </a>
+      <span class="brand">Teach Arcade</span>
+    </div>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/subjects/index.html">Subjects</a>
+      <a href="/teacher-tools/index.html">Teacher Tools</a>
+      <a href="/arcade-review-games/index.html">Arcade Games</a>
+      <a href="/about.html">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="tool-wrapper">
+      <h1>Text Randomizer</h1>
+      <p class="subtitle">
+        Paste any list of names, questions, or vocab terms. Shuffle, sort, clean up, and copy in one click—perfect for random order activities.
+      </p>
+
+      <div class="tool-grid">
+        <!-- INPUT SIDE -->
+        <div>
+          <div class="tool-label">Input list</div>
+          <textarea id="inputList" placeholder="Paste your items here, one per line."></textarea>
+          <p class="helper-text">
+            Tip: Each line should be a separate item. Blank lines are ignored.
+          </p>
+
+          <div class="button-row">
+            <button type="button" class="btn-primary" id="shuffleBtn">Shuffle</button>
+            <button type="button" class="btn-secondary" id="sortAZBtn">Sort A → Z</button>
+            <button type="button" class="btn-secondary" id="sortZABtn">Sort Z → A</button>
+            <button type="button" class="btn-secondary" id="cleanBtn">Clean List</button>
+            <button type="button" class="btn-secondary" id="dedupeBtn">Remove Duplicates</button>
+          </div>
+
+          <div class="button-row">
+            <button type="button" class="btn-secondary" id="randomPickBtn">Pick One at Random</button>
+            <button type="button" class="btn-secondary" id="swapBtn">Send Output → Input</button>
+          </div>
+
+          <div class="random-pick" id="randomPickBox" style="display:none;">
+            <span class="label">Randomly selected:</span>
+            <span class="value" id="randomPickValue"></span>
+          </div>
+        </div>
+
+        <!-- OUTPUT SIDE -->
+        <div>
+          <div class="tool-label">Output</div>
+          <textarea id="outputList" readonly placeholder="Your results will appear here."></textarea>
+          <div class="button-row">
+            <button type="button" class="btn-primary" id="copyBtn">Copy Output</button>
+            <button type="button" class="btn-secondary" id="clearBtn">Clear</button>
+          </div>
+          <p class="helper-text">
+            Use the output for presentation orders, review games, groups, or any randomization activity.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Helper: get trimmed, non-empty lines from input
+    function getLines() {
+      const raw = document.getElementById('inputList').value || '';
+      return raw
+        .split('\n')
+        .map(line => line.trim())
+        .filter(line => line.length > 0);
+    }
+
+    // Helper: write lines to output textarea
+    function setOutput(lines) {
+      document.getElementById('outputList').value = lines.join('\n');
+    }
+
+    function showRandomPick(text) {
+      const box = document.getElementById('randomPickBox');
+      const valueEl = document.getElementById('randomPickValue');
+
+      if (!text) {
+        box.style.display = 'none';
+        valueEl.textContent = '';
+        return;
+      }
+
+      valueEl.textContent = text;
+      box.style.display = 'block';
+    }
+
+    // Shuffle using Fisher–Yates
+    function shuffleArray(arr) {
+      const a = arr.slice();
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    }
+
+    // Button handlers
+    document.getElementById('shuffleBtn').addEventListener('click', () => {
+      const lines = getLines();
+      if (!lines.length) return;
+      setOutput(shuffleArray(lines));
+      showRandomPick('');
+    });
+
+    document.getElementById('sortAZBtn').addEventListener('click', () => {
+      const lines = getLines();
+      if (!lines.length) return;
+      lines.sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }));
+      setOutput(lines);
+      showRandomPick('');
+    });
+
+    document.getElementById('sortZABtn').addEventListener('click', () => {
+      const lines = getLines();
+      if (!lines.length) return;
+      lines.sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' })).reverse();
+      setOutput(lines);
+      showRandomPick('');
+    });
+
+    document.getElementById('cleanBtn').addEventListener('click', () => {
+      const lines = getLines();
+      if (!lines.length) return;
+      setOutput(lines);
+      showRandomPick('');
+    });
+
+    document.getElementById('dedupeBtn').addEventListener('click', () => {
+      const lines = getLines();
+      if (!lines.length) return;
+      const seen = new Set();
+      const unique = [];
+      for (const line of lines) {
+        const key = line.toLowerCase();
+        if (!seen.has(key)) {
+          seen.add(key);
+          unique.push(line);
+        }
+      }
+      setOutput(unique);
+      showRandomPick('');
+    });
+
+    document.getElementById('randomPickBtn').addEventListener('click', () => {
+      const lines = getLines();
+      if (!lines.length) return;
+      const pick = lines[Math.floor(Math.random() * lines.length)];
+      showRandomPick(pick);
+    });
+
+    document.getElementById('swapBtn').addEventListener('click', () => {
+      const out = document.getElementById('outputList').value;
+      if (!out.trim()) return;
+      document.getElementById('inputList').value = out;
+      showRandomPick('');
+    });
+
+    document.getElementById('copyBtn').addEventListener('click', async () => {
+      const text = document.getElementById('outputList').value;
+      if (!text.trim()) return;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        try {
+          await navigator.clipboard.writeText(text);
+          alert('Output copied to clipboard!');
+        } catch (err) {
+          alert('Unable to copy automatically. You can copy the text manually.');
+        }
+      } else {
+        alert('Your browser does not support automatic copying. Please copy the text manually.');
+      }
+    });
+
+    document.getElementById('clearBtn').addEventListener('click', () => {
+      document.getElementById('inputList').value = '';
+      document.getElementById('outputList').value = '';
+      showRandomPick('');
+    });
+  </script>
+</body>
+</html>
