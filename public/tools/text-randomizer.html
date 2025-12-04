@@ -5,18 +5,62 @@
   <title>Text Randomizer | Teacher Tools | Teach Arcade</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Basic SEO -->
+  <!-- Primary SEO -->
   <meta name="description"
-        content="Free Text Randomizer for teachers. Paste any list and instantly shuffle, sort, clean, remove duplicates, or pick a random item for classroom activities." />
+        content="Free Text Randomizer Tool for teachers. Instantly shuffle, sort, clean, and randomize lists — perfect for classroom activities, groups, presentations, and review games." />
   <meta name="keywords"
-        content="text randomizer, list shuffler, random order, classroom tools, Teach Arcade, teacher tools" />
+        content="text randomizer, list shuffler, shuffle list tool, random order generator, classroom randomizer, teacher tools, random picker, shuffle names, random selection tool, Teach Arcade" />
   <link rel="canonical" href="https://teacharcade.com/teacher-tools/text-randomizer.html" />
-  <meta name="robots" content="index,follow"/>
+  <meta name="robots" content="index,follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Text Randomizer | Free Classroom Tool" />
+  <meta property="og:description"
+        content="Paste your list and instantly shuffle, sort, clean, and randomize. Ideal for student groups, vocab, questions, and presentation order." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://teacharcade.com/teacher-tools/text-randomizer.html" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Text Randomizer | Free Classroom Tool" />
+  <meta name="twitter:description"
+        content="Fast, simple text randomizer for teachers to shuffle or sort lists instantly." />
+
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Text Randomizer",
+    "url": "https://teacharcade.com/teacher-tools/text-randomizer.html",
+    "description": "Paste any list and instantly shuffle, sort, clean, or randomize. Perfect for groups, questions, vocabulary, and classroom activities.",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any",
+    "author": {
+      "@type": "Organization",
+      "name": "Teach Arcade"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Teach Arcade"
+    },
+    "featureList": [
+      "Shuffle list",
+      "Sort A-Z",
+      "Sort Z-A",
+      "Remove duplicates",
+      "Clean formatting",
+      "Random item picker",
+      "Copy output",
+      "Swap input and output"
+    ]
+  }
+  </script>
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/assets/styles.css?v=1" />
 
-  <!-- Optional: simple tool-specific styles -->
+  <!-- Tool-specific styles -->
   <style>
     .tool-wrapper {
       max-width: 960px;
@@ -155,6 +199,7 @@
     }
   </style>
 </head>
+
 <body>
   <!-- Site Header -->
   <header>
@@ -234,7 +279,6 @@
         .filter(line => line.length > 0);
     }
 
-    // Helper: write lines to output textarea
     function setOutput(lines) {
       document.getElementById('outputList').value = lines.join('\n');
     }
@@ -253,7 +297,6 @@
       box.style.display = 'block';
     }
 
-    // Shuffle using Fisher–Yates
     function shuffleArray(arr) {
       const a = arr.slice();
       for (let i = a.length - 1; i > 0; i--) {
@@ -263,7 +306,6 @@
       return a;
     }
 
-    // Button handlers
     document.getElementById('shuffleBtn').addEventListener('click', () => {
       const lines = getLines();
       if (!lines.length) return;
@@ -297,8 +339,10 @@
     document.getElementById('dedupeBtn').addEventListener('click', () => {
       const lines = getLines();
       if (!lines.length) return;
+
       const seen = new Set();
       const unique = [];
+
       for (const line of lines) {
         const key = line.toLowerCase();
         if (!seen.has(key)) {
@@ -306,6 +350,7 @@
           unique.push(line);
         }
       }
+
       setOutput(unique);
       showRandomPick('');
     });
@@ -313,6 +358,7 @@
     document.getElementById('randomPickBtn').addEventListener('click', () => {
       const lines = getLines();
       if (!lines.length) return;
+
       const pick = lines[Math.floor(Math.random() * lines.length)];
       showRandomPick(pick);
     });
@@ -320,6 +366,7 @@
     document.getElementById('swapBtn').addEventListener('click', () => {
       const out = document.getElementById('outputList').value;
       if (!out.trim()) return;
+
       document.getElementById('inputList').value = out;
       showRandomPick('');
     });
@@ -333,10 +380,10 @@
           await navigator.clipboard.writeText(text);
           alert('Output copied to clipboard!');
         } catch (err) {
-          alert('Unable to copy automatically. You can copy the text manually.');
+          alert('Unable to copy automatically. Please copy the text manually.');
         }
       } else {
-        alert('Your browser does not support automatic copying. Please copy the text manually.');
+        alert('Your browser does not support automatic copying. Please copy manually.');
       }
     });
 
