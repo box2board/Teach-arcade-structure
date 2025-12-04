@@ -22,22 +22,32 @@
   <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
 
   <!-- SEO & Social -->
-  <meta name="description" content="Teach Arcade curates free, classroom-ready resources for teachers — lessons, worksheets, primary sources, games, presentations, and more." />
+  <meta name="description" content="Teach Arcade curates free, classroom-ready resources for teachers — lessons, worksheets, primary sources, games, presentations, and interactive tools. Made by a teacher, for teachers." />
   <link rel="canonical" href="https://teacharcade.com/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Teach Arcade" />
   <meta property="og:title" content="Teach Arcade — Free Teacher Resources" />
-  <meta property="og:description" content="Curated, classroom-ready teaching resources across subjects. 100% free links and downloads." />
+  <meta property="og:description" content="Classroom-ready resources, original games, teacher tools, and interactives — all 100% free. Made by a teacher for teachers." />
   <meta property="og:url" content="https://teacharcade.com/" />
   <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Teach Arcade — Free Teacher Resources" />
-  <meta name="twitter:description" content="Curated, classroom-ready teaching resources across subjects. 100% free links and downloads." />
+  <meta name="twitter:description" content="Interactive games, teacher tools, and curated free resources — always free, always classroom-ready." />
   <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
 
   <!-- JSON-LD: WebSite -->
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebSite","name":"Teach Arcade","url":"https://teacharcade.com/","potentialAction":{"@type":"SearchAction","target":"https://teacharcade.com/subjects/index.html?q={search_term_string}","query-input":"required name=search_term_string"}}
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Teach Arcade",
+    "url": "https://teacharcade.com/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://teacharcade.com/subjects/index.html?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
   </script>
 
   <!-- Page micro styles -->
@@ -60,6 +70,8 @@
       background:#fff; border:1px solid #e2e8f0; border-radius:12px; padding:20px; min-height:160px;
       text-decoration:none; color:#1e293b; box-shadow:0 2px 4px rgba(0,0,0,0.05);
       transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+      position: relative;
+      overflow: hidden;
     }
     .subject-tile:hover { transform:translateY(-3px); box-shadow:0 6px 14px rgba(0,0,0,0.08); border-color:#cbd5e1; }
     .subject-emoji { font-size:40px; margin-bottom:10px; }
@@ -81,15 +93,14 @@
 <body>
   <!-- Global Header mount -->
   <div id="site-header"></div>
-  <!-- Cache-busted nav loader -->
   <script src="/assets/scripts/nav.js?v=3" defer></script>
 
-  <!-- Fallback header (safety net if JS fails) -->
+  <!-- Fallback header -->
   <script>
     window.addEventListener('DOMContentLoaded', function () {
       const host = document.getElementById('site-header');
       setTimeout(function () {
-        if (!host || host.innerHTML.trim()) return; // header already mounted
+        if (!host || host.innerHTML.trim()) return;
         host.innerHTML = `
           <header class="main-header" style="display:flex;justify-content:space-between;align-items:center;padding:12px 20px;background:#0f172a;border-bottom:1px solid #0b1220;position:sticky;top:0;z-index:1000;">
             <a href="/" style="display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;">
@@ -105,7 +116,6 @@
             </nav>
           </header>
         `;
-        console.warn('Fallback header injected because /assets/scripts/nav.js did not mount.');
       }, 300);
     });
   </script>
@@ -135,7 +145,7 @@
     <section class="hero">
       <h1>Find Free, Classroom-Ready Teaching Resources</h1>
       <p>
-        Teach Arcade curates the best <strong>free lessons, worksheets, primary sources, activities, and presentations</strong> from trusted sites — organized by subject, unit, and topic.
+        Teach Arcade curates original interactive games, teacher tools, and curated free resources — all made by a teacher, for teachers, and always free to use.
       </p>
       <div class="cta-row">
         <a class="btn" href="/subjects/index.html">Browse Subjects</a>
@@ -143,7 +153,7 @@
       </div>
     </section>
 
-    <!-- Mid-page Ad Placeholder -->
+    <!-- Mid Ad -->
     <div class="ad-slot ad-mid" aria-label="Advertisement"></div>
 
     <!-- Subject Tiles -->
@@ -181,41 +191,62 @@
           <p class="subject-desc">Art, Music, Drama, Media Arts</p>
         </a>
 
-        <!-- ✅ Updated Teacher Tools link -->
         <a href="/tools/" class="subject-tile" aria-label="Teacher Tools">
           <div class="subject-emoji">🛠️</div>
           <h3 class="subject-title">Teacher Tools</h3>
           <p class="subject-desc">Generators, organizers, and interactive classroom helpers</p>
         </a>
 
-        <!-- ✅ Escape Rooms card -->
         <a href="/escape/?room=wwi" class="subject-tile" aria-label="Escape Rooms">
           <div class="subject-emoji">🎮</div>
           <h3 class="subject-title">Escape Rooms</h3>
-          <p class="subject-desc">Interactive, student-led puzzle missions (WWI available now)</p>
+          <p class="subject-desc">Interactive, student-led puzzle missions</p>
         </a>
 
-        <!-- ✅ New: Arcade Review Games card -->
         <a href="/arcade-review-games/index.html" class="subject-tile" aria-label="Arcade Review Games">
           <div class="subject-emoji">🕹️</div>
           <h3 class="subject-title">Arcade Review Games</h3>
-          <p class="subject-desc">Side-scrolling review games that reinforce content with built-in questions.</p>
+          <p class="subject-desc">Side-scrolling content review games with built-in questions</p>
         </a>
 
-        <!-- ✅ Fixed: Choose Your Path Adventure tile uses subject-tile styles -->
         <a href="/choose-your-path-adventure/index.html" class="subject-tile" aria-label="Choose Your Path Adventures">
           <div class="subject-emoji">🧭</div>
           <h3 class="subject-title">Choose Your Path Adventures</h3>
-          <p class="subject-desc">
-            Interactive, choice-driven historical scenarios. Students take on roles, make decisions, and explore multiple endings. New!
-          </p>
+          <p class="subject-desc">Choice-driven historical scenarios with multiple endings</p>
         </a>
-        
+
+        <!-- ⭐ NEW: PROFESSIONAL DEVELOPMENT TILE WITH COMING SOON OVERLAY -->
+        <a href="/professional-development/index.html" class="subject-tile" aria-label="Professional Development">
+          <div style="
+            position:absolute;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            background:rgba(0,0,0,0.55);
+            color:#fff;
+            font:700 18px Poppins, sans-serif;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            text-transform:uppercase;
+            letter-spacing:1px;
+            z-index:5;
+          ">
+            Coming Soon
+          </div>
+
+          <div class="subject-emoji">📘</div>
+          <h3 class="subject-title">Professional Development</h3>
+          <p class="subject-desc">Workshops, training guides, and instructional support</p>
+        </a>
+
       </div>
     </section>
 
-    <!-- Bottom Ad Placeholder -->
+    <!-- Bottom Ad -->
     <div class="ad-slot ad-bottom" aria-label="Advertisement"></div>
+
   </main>
 
   <footer>
