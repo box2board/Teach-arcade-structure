@@ -1,0 +1,1080 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Math Rush Genesis — Addition | Teach Arcade</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      --bg: #050816;
+      --accent: #00f5ff;
+      --accent2: #ffde59;
+      --danger: #ff4664;
+      --platform: #1f2937;
+      --ui-bg: rgba(15,23,42,0.85);
+      --text: #f9fafb;
+      --muted: #9ca3af;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #0f172a 0, #020617 40%, #020617 100%);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding: 8px;
+    }
+
+    h1 {
+      font-size: 1.1rem;
+      margin-bottom: 4px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    #game-container {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+      border: 2px solid #111827;
+      background: #020617;
+      max-width: 960px;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+    }
+
+    #game-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+      background: linear-gradient(#0f172a, #020617 70%, #020617);
+    }
+
+    #hud {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 8px 10px;
+      font-size: 0.85rem;
+    }
+
+    #hud-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      pointer-events: none;
+    }
+
+    .hud-pill {
+      background: var(--ui-bg);
+      border-radius: 999px;
+      padding: 4px 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid #1f2937;
+      white-space: nowrap;
+    }
+
+    .hud-label {
+      text-transform: uppercase;
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 0.09em;
+    }
+
+    .hud-value {
+      font-weight: 700;
+    }
+
+    #hud-bottom {
+      display: flex;
+      justify-content: center;
+      pointer-events: none;
+    }
+
+    #question-banner {
+      min-width: 230px;
+      max-width: 90%;
+      background: linear-gradient(90deg, rgba(34,197,235,0.95), rgba(244,114,182,0.95));
+      color: #020617;
+      padding: 6px 12px;
+      border-radius: 999px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+      border: 1px solid rgba(15,23,42,0.6);
+      display: none;
+    }
+
+    /* Intro + end overlays */
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top, rgba(15,23,42,0.98), rgba(2,6,23,0.98));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+
+    .overlay-card {
+      max-width: 460px;
+      width: 88%;
+      background: rgba(15,23,42,0.95);
+      border-radius: 14px;
+      padding: 18px 18px 16px;
+      border: 1px solid #1f2937;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.7);
+      text-align: left;
+    }
+
+    .overlay-title {
+      font-size: 1.1rem;
+      margin-bottom: 4px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .overlay-sub {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .overlay-section-title {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-top: 8px;
+      margin-bottom: 2px;
+    }
+
+    .overlay p {
+      font-size: 0.85rem;
+      line-height: 1.4;
+      margin-bottom: 6px;
+    }
+
+    .overlay ul {
+      padding-left: 1.2em;
+      font-size: 0.85rem;
+      margin-bottom: 6px;
+    }
+
+    .overlay li {
+      margin-bottom: 3px;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    button.primary-btn,
+    button.secondary-btn {
+      border-radius: 999px;
+      border: none;
+      padding: 8px 14px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    button.primary-btn {
+      background: linear-gradient(90deg, #22d3ee, #a855f7);
+      color: #020617;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+    }
+
+    button.secondary-btn {
+      background: transparent;
+      border: 1px solid #4b5563;
+      color: var(--muted);
+    }
+
+    button.primary-btn:active,
+    button.secondary-btn:active {
+      transform: translateY(1px);
+    }
+
+    /* Mobile controls */
+    #controls {
+      margin-top: 8px;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: nowrap;
+      max-width: 960px;
+      width: 100%;
+    }
+
+    .ctrl-group {
+      display: flex;
+      gap: 6px;
+    }
+
+    .ctrl-btn {
+      flex: 1 1 auto;
+      min-width: 56px;
+      padding: 10px;
+      border-radius: 999px;
+      border: 1px solid #1f2937;
+      background: radial-gradient(circle at top, #1f2937, #020617);
+      color: var(--text);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      touch-action: manipulation;
+      user-select: none;
+    }
+
+    .ctrl-btn:active {
+      transform: translateY(1px);
+      background: radial-gradient(circle at top, #0f172a, #020617);
+    }
+
+    @media (max-width: 640px) {
+      h1 {
+        font-size: 0.9rem;
+      }
+      .hud-pill {
+        padding-inline: 8px;
+        font-size: 0.75rem;
+      }
+      #question-banner {
+        font-size: 0.8rem;
+      }
+      .overlay-card {
+        padding-inline: 14px;
+      }
+      .ctrl-btn {
+        padding: 8px 6px;
+        font-size: 0.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Math Rush Genesis · Addition Zone</h1>
+
+  <div id="game-container">
+    <canvas id="game-canvas" width="960" height="540"></canvas>
+
+    <!-- HUD -->
+    <div id="hud">
+      <div id="hud-top">
+        <div class="hud-pill">
+          <span class="hud-label">Score</span>
+          <span class="hud-value" id="score-text">0</span>
+        </div>
+        <div class="hud-pill">
+          <span class="hud-label">Time</span>
+          <span class="hud-value" id="time-text">5:00</span>
+        </div>
+        <div class="hud-pill">
+          <span class="hud-label">Accuracy</span>
+          <span class="hud-value" id="acc-text">0 / 0</span>
+        </div>
+        <div class="hud-pill">
+          <span class="hud-label">Streak</span>
+          <span class="hud-value" id="streak-text">0</span>
+        </div>
+      </div>
+
+      <div id="hud-bottom">
+        <div id="question-banner"></div>
+      </div>
+    </div>
+
+    <!-- Intro Overlay -->
+    <div class="overlay" id="intro-overlay">
+      <div class="overlay-card">
+        <div class="overlay-title">Math Rush Genesis: Addition</div>
+        <div class="overlay-sub">Race through the digital school arcade and power up with every correct math fact.</div>
+
+        <div class="overlay-section-title">How to Play</div>
+        <p>Run, jump, and speed through the level while solving addition facts.</p>
+        <ul>
+          <li>Hit the <strong>correct answer</strong> platform, box, or door to gain points and speed.</li>
+          <li>Wrong answers only <strong>slow you down</strong> and cost a few points — you can’t fail.</li>
+          <li>You have <strong>5 minutes</strong>. Score as high as you can!</li>
+        </ul>
+
+        <div class="overlay-section-title">Controls</div>
+        <ul>
+          <li><strong>Move:</strong> Left / Right arrows (or on-screen buttons)</li>
+          <li><strong>Jump:</strong> Up arrow / Space (tap twice to double jump)</li>
+        </ul>
+
+        <div class="btn-row">
+          <button class="primary-btn" id="start-btn">Start Run</button>
+          <button class="secondary-btn" id="howto-btn">Quick Tips</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- End Overlay (hidden initially) -->
+    <div class="overlay" id="end-overlay" style="display:none;">
+      <div class="overlay-card">
+        <div class="overlay-title">Run Complete!</div>
+        <p id="summary-main" style="margin-bottom:6px;"></p>
+
+        <div class="overlay-section-title">Stats</div>
+        <ul>
+          <li><strong>Total Score:</strong> <span id="sum-score"></span></li>
+          <li><strong>Math Accuracy:</strong> <span id="sum-acc"></span></li>
+          <li><strong>Best Streak:</strong> <span id="sum-streak"></span></li>
+          <li><strong>Time Used:</strong> <span id="sum-time"></span></li>
+        </ul>
+
+        <div class="btn-row">
+          <button class="primary-btn" id="restart-btn">Play Again</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Touch Controls -->
+  <div id="controls">
+    <div class="ctrl-group">
+      <button class="ctrl-btn" id="btn-left">◀ Left</button>
+      <button class="ctrl-btn" id="btn-right">Right ▶</button>
+    </div>
+    <div class="ctrl-group">
+      <button class="ctrl-btn" id="btn-jump">Jump ⬆</button>
+    </div>
+  </div>
+
+  <script>
+    // -----------------------
+    // Basic Setup
+    // -----------------------
+    const canvas = document.getElementById('game-canvas');
+    const ctx = canvas.getContext('2d');
+
+    const scoreText = document.getElementById('score-text');
+    const timeText = document.getElementById('time-text');
+    const accText = document.getElementById('acc-text');
+    const streakText = document.getElementById('streak-text');
+    const questionBanner = document.getElementById('question-banner');
+
+    const introOverlay = document.getElementById('intro-overlay');
+    const endOverlay = document.getElementById('end-overlay');
+    const startBtn = document.getElementById('start-btn');
+    const howtoBtn = document.getElementById('howto-btn');
+    const restartBtn = document.getElementById('restart-btn');
+
+    const sumScore = document.getElementById('sum-score');
+    const sumAcc = document.getElementById('sum-acc');
+    const sumStreak = document.getElementById('sum-streak');
+    const sumTime = document.getElementById('sum-time');
+    const summaryMain = document.getElementById('summary-main');
+
+    const btnLeft = document.getElementById('btn-left');
+    const btnRight = document.getElementById('btn-right');
+    const btnJump = document.getElementById('btn-jump');
+
+    const WORLD_WIDTH = 5000;
+    const WORLD_HEIGHT = canvas.height;
+    const GROUND_Y = 420;
+    const GRAVITY = 0.5;
+    const MOVE_SPEED = 4.0;
+    const JUMP_VELOCITY = -10;
+    const MAX_FALL_SPEED = 16;
+    const FRICTION = 0.85;
+
+    const RUN_TIME_SECONDS = 300; // 5 minutes
+
+    // Game state
+    let player, platforms, spikes, speedPads, checkpoints, mathZones;
+    let keys = { left: false, right: false, up: false };
+    let touchInput = { left: false, right: false, jump: false };
+    let cameraX = 0;
+    let lastTime = 0;
+    let elapsed = 0;
+    let remainingTime = RUN_TIME_SECONDS;
+    let gameRunning = false;
+    let gameOver = false;
+
+    // Math state
+    let totalCorrect = 0;
+    let totalAttempted = 0;
+    let currentStreak = 0;
+    let bestStreak = 0;
+    let lastQuestionTime = 0;
+    let nextQuestionDistance = 400; // distance between prompts
+    let activeQuestion = null;
+
+    // -----------------------
+    // Level Data
+    // -----------------------
+
+    function createLevel() {
+      platforms = [];
+      spikes = [];
+      speedPads = [];
+      checkpoints = [];
+      mathZones = [];
+
+      // Base ground segments
+      for (let x = 0; x < WORLD_WIDTH; x += 600) {
+        platforms.push({ x, y: GROUND_Y, w: 600, h: 40 });
+      }
+
+      // Elevated platforms (high routes)
+      platforms.push({ x: 600, y: 340, w: 250, h: 20 });
+      platforms.push({ x: 950, y: 280, w: 250, h: 20 });
+
+      platforms.push({ x: 1500, y: 350, w: 220, h: 20 });
+      platforms.push({ x: 1800, y: 300, w: 220, h: 20 });
+
+      platforms.push({ x: 2400, y: 320, w: 260, h: 20 });
+      platforms.push({ x: 2800, y: 280, w: 260, h: 20 });
+
+      platforms.push({ x: 3400, y: 340, w: 260, h: 20 });
+      platforms.push({ x: 3800, y: 300, w: 260, h: 20 });
+
+      // Spikes (simple rectangles)
+      spikes.push({ x: 800, y: GROUND_Y - 20, w: 80, h: 20 });
+      spikes.push({ x: 1700, y: GROUND_Y - 20, w: 80, h: 20 });
+      spikes.push({ x: 2600, y: GROUND_Y - 20, w: 80, h: 20 });
+      spikes.push({ x: 3600, y: GROUND_Y - 20, w: 80, h: 20 });
+
+      // Speed pads
+      speedPads.push({ x: 500, y: GROUND_Y - 12, w: 80, h: 12 });
+      speedPads.push({ x: 1900, y: GROUND_Y - 12, w: 80, h: 12 });
+      speedPads.push({ x: 3100, y: GROUND_Y - 12, w: 80, h: 12 });
+      speedPads.push({ x: 4300, y: GROUND_Y - 12, w: 80, h: 12 });
+
+      // Checkpoints
+      checkpoints.push({ x: 0, y: GROUND_Y - 50 });
+      checkpoints.push({ x: 1800, y: GROUND_Y - 50 });
+      checkpoints.push({ x: 3200, y: GROUND_Y - 50 });
+      checkpoints.push({ x: 4400, y: GROUND_Y - 50 });
+
+      mathZones = []; // We'll spawn per distance as player moves
+    }
+
+    function resetPlayer() {
+      player = {
+        x: 50,
+        y: GROUND_Y - 60,
+        vx: 0,
+        vy: 0,
+        w: 32,
+        h: 48,
+        onGround: false,
+        canDoubleJump: true,
+        speedBoostTimer: 0,
+        score: 0,
+        checkpointIndex: 0
+      };
+    }
+
+    function resetGame() {
+      createLevel();
+      resetPlayer();
+      cameraX = 0;
+      elapsed = 0;
+      remainingTime = RUN_TIME_SECONDS;
+      gameRunning = false;
+      gameOver = false;
+
+      totalCorrect = 0;
+      totalAttempted = 0;
+      currentStreak = 0;
+      bestStreak = 0;
+      lastQuestionTime = 0;
+      nextQuestionDistance = 400;
+      activeQuestion = null;
+
+      updateHUD();
+      hideQuestionBanner();
+    }
+
+    // -----------------------
+    // Input
+    // -----------------------
+    window.addEventListener('keydown', (e) => {
+      if (e.code === 'ArrowLeft' || e.code === 'KeyA') keys.left = true;
+      if (e.code === 'ArrowRight' || e.code === 'KeyD') keys.right = true;
+      if (e.code === 'ArrowUp' || e.code === 'Space') keys.up = true;
+    });
+    window.addEventListener('keyup', (e) => {
+      if (e.code === 'ArrowLeft' || e.code === 'KeyA') keys.left = false;
+      if (e.code === 'ArrowRight' || e.code === 'KeyD') keys.right = false;
+      if (e.code === 'ArrowUp' || e.code === 'Space') keys.up = false;
+    });
+
+    function addTouchControl(btn, key) {
+      btn.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        touchInput[key] = true;
+      }, { passive: false });
+      btn.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        touchInput[key] = false;
+      }, { passive: false });
+      btn.addEventListener('touchcancel', (e) => {
+        e.preventDefault();
+        touchInput[key] = false;
+      }, { passive: false });
+
+      // Also support mouse for testing on desktop
+      btn.addEventListener('mousedown', () => touchInput[key] = true);
+      window.addEventListener('mouseup', () => touchInput[key] = false);
+    }
+
+    addTouchControl(btnLeft, 'left');
+    addTouchControl(btnRight, 'right');
+    addTouchControl(btnJump, 'jump');
+
+    function isLeftPressed() {
+      return keys.left || touchInput.left;
+    }
+    function isRightPressed() {
+      return keys.right || touchInput.right;
+    }
+    function isJumpPressed() {
+      return keys.up || touchInput.jump;
+    }
+
+    // -----------------------
+    // Math Question Generation
+    // -----------------------
+    function randomInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function generateAdditionQuestion(difficultyTier) {
+      // Simple tier system based on player.x progress
+      let a, b;
+      if (difficultyTier === 1) {
+        a = randomInt(0, 10);
+        b = randomInt(0, 10);
+      } else if (difficultyTier === 2) {
+        a = randomInt(5, 15);
+        b = randomInt(5, 15);
+      } else if (difficultyTier === 3) {
+        a = randomInt(10, 20);
+        b = randomInt(10, 20);
+      } else {
+        a = randomInt(10, 25);
+        b = randomInt(10, 25);
+      }
+      const correct = a + b;
+
+      // Generate 2 wrong but plausible answers
+      const answers = [correct];
+      while (answers.length < 3) {
+        let offset = randomInt(-3, 3);
+        if (offset === 0) continue;
+        let wrong = correct + offset;
+        if (wrong < 0) wrong = correct + Math.abs(offset);
+        if (!answers.includes(wrong)) answers.push(wrong);
+      }
+
+      // Shuffle
+      for (let i = answers.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [answers[i], answers[j]] = [answers[j], answers[i]];
+      }
+      const correctIndex = answers.indexOf(correct);
+
+      return {
+        text: `${a} + ${b} = ?`,
+        answers,
+        correctIndex
+      };
+    }
+
+    function spawnMathZone(x) {
+      // Basic tier from x position
+      let tier = 1;
+      if (x > 1200 && x <= 2400) tier = 2;
+      else if (x > 2400 && x <= 3600) tier = 3;
+      else if (x > 3600) tier = 4;
+
+      const q = generateAdditionQuestion(tier);
+
+      const yBase = 360; // baseline for answer platforms
+      const spacing = 90;
+
+      const platformsForQuestion = [];
+      for (let i = 0; i < q.answers.length; i++) {
+        platformsForQuestion.push({
+          x: x + i * spacing - 80,
+          y: yBase,
+          w: 70,
+          h: 18,
+          answerIndex: i
+        });
+      }
+
+      activeQuestion = {
+        x,
+        y: yBase,
+        question: q.text,
+        answers: q.answers,
+        correctIndex: q.correctIndex,
+        platforms: platformsForQuestion,
+        answered: false,
+        visible: true
+      };
+      showQuestionBanner(q.text);
+    }
+
+    function clearActiveQuestion() {
+      if (activeQuestion) {
+        activeQuestion.visible = false;
+      }
+      activeQuestion = null;
+      hideQuestionBanner();
+    }
+
+    // -----------------------
+    // HUD / UI
+    // -----------------------
+    function updateHUD() {
+      scoreText.textContent = Math.floor(player.score);
+      const mins = Math.max(0, Math.floor(remainingTime / 60));
+      const secs = Math.max(0, Math.floor(remainingTime % 60));
+      timeText.textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
+
+      accText.textContent = `${totalCorrect} / ${totalAttempted}`;
+      streakText.textContent = currentStreak;
+    }
+
+    function showQuestionBanner(text) {
+      questionBanner.textContent = text;
+      questionBanner.style.display = 'inline-block';
+    }
+
+    function hideQuestionBanner() {
+      questionBanner.style.display = 'none';
+    }
+
+    // -----------------------
+    // Physics & Collisions
+    // -----------------------
+    function rectsOverlap(a, b) {
+      return a.x < b.x + b.w &&
+             a.x + a.w > b.x &&
+             a.y < b.y + b.h &&
+             a.y + a.h > b.y;
+    }
+
+    function handlePlatformCollisions() {
+      player.onGround = false;
+      for (const p of platforms) {
+        if (player.vy >= 0) {
+          // Check if coming down onto platform
+          const futureY = player.y + player.vy;
+          if (player.x + player.w > p.x &&
+              player.x < p.x + p.w &&
+              player.y + player.h <= p.y &&
+              futureY + player.h >= p.y) {
+            player.y = p.y - player.h;
+            player.vy = 0;
+            player.onGround = true;
+            player.canDoubleJump = true;
+          }
+        }
+      }
+    }
+
+    function findNearestCheckpoint(x) {
+      let idx = 0;
+      for (let i = 0; i < checkpoints.length; i++) {
+        if (x >= checkpoints[i].x) {
+          idx = i;
+        }
+      }
+      return idx;
+    }
+
+    function handleHazards() {
+      // Spike knockback & score penalty
+      for (const s of spikes) {
+        if (rectsOverlap(player, s)) {
+          player.x -= 40;
+          player.vx = -2;
+          player.score = Math.max(0, player.score - 25);
+        }
+      }
+
+      // Speed pads
+      for (const pad of speedPads) {
+        if (rectsOverlap(player, pad)) {
+          player.vx = Math.max(player.vx, 8);
+          player.score += 20;
+        }
+      }
+
+      // Fall off world
+      if (player.y > WORLD_HEIGHT + 200) {
+        const idx = findNearestCheckpoint(player.x);
+        const cp = checkpoints[idx];
+        player.x = cp.x + 20;
+        player.y = cp.y;
+        player.vx = 0;
+        player.vy = 0;
+      }
+    }
+
+    function handleMathCollisions() {
+      if (!activeQuestion || activeQuestion.answered) return;
+
+      for (const ap of activeQuestion.platforms) {
+        if (rectsOverlap(player, ap)) {
+          activeQuestion.answered = true;
+          totalAttempted++;
+
+          const isCorrect = ap.answerIndex === activeQuestion.correctIndex;
+          if (isCorrect) {
+            totalCorrect++;
+            currentStreak++;
+            if (currentStreak > bestStreak) bestStreak = currentStreak;
+
+            player.score += 200;
+            // Streak bonuses
+            if (currentStreak === 3) player.score += 100;
+            else if (currentStreak === 5) player.score += 300;
+            else if (currentStreak === 10) player.score += 750;
+
+            // Speed boost
+            player.vx += 3;
+            summaryFlash('correct');
+          } else {
+            currentStreak = 0;
+            player.score = Math.max(0, player.score - 30);
+            player.vx = Math.max(1, player.vx * 0.5);
+            summaryFlash('wrong');
+          }
+
+          clearActiveQuestion();
+          updateHUD();
+          break;
+        }
+      }
+    }
+
+    function summaryFlash(type) {
+      // Simple visual hint: tint the banner briefly
+      if (!questionBanner) return;
+      if (type === 'correct') {
+        questionBanner.style.background = 'linear-gradient(90deg, #4ade80, #22c55e)';
+      } else {
+        questionBanner.style.background = 'linear-gradient(90deg, #f97373, #fb7185)';
+      }
+      setTimeout(() => {
+        if (!activeQuestion) {
+          hideQuestionBanner();
+        } else {
+          questionBanner.style.background =
+            'linear-gradient(90deg, rgba(34,197,235,0.95), rgba(244,114,182,0.95))';
+        }
+      }, 300);
+    }
+
+    // -----------------------
+    // Update Loop
+    // -----------------------
+    function update(dt) {
+      if (!gameRunning || gameOver) return;
+
+      elapsed += dt;
+      remainingTime = RUN_TIME_SECONDS - elapsed;
+      if (remainingTime <= 0) {
+        remainingTime = 0;
+        endRun();
+        return;
+      }
+
+      // Movement input
+      let moveDir = 0;
+      if (isLeftPressed()) moveDir -= 1;
+      if (isRightPressed()) moveDir += 1;
+
+      player.vx = moveDir * MOVE_SPEED + (player.vx * (moveDir === 0 ? FRICTION : 0));
+
+      // Jump logic
+      if (isJumpPressed()) {
+        if (player.onGround) {
+          player.vy = JUMP_VELOCITY;
+          player.onGround = false;
+          player.canDoubleJump = true;
+        } else if (player.canDoubleJump) {
+          player.vy = JUMP_VELOCITY * 0.9;
+          player.canDoubleJump = false;
+        }
+      }
+
+      // Gravity
+      player.vy += GRAVITY;
+      if (player.vy > MAX_FALL_SPEED) player.vy = MAX_FALL_SPEED;
+
+      // Apply velocities
+      player.x += player.vx;
+      player.y += player.vy;
+
+      // Bounds
+      if (player.x < 0) player.x = 0;
+      if (player.x > WORLD_WIDTH - player.w) player.x = WORLD_WIDTH - player.w;
+
+      // Collisions
+      handlePlatformCollisions();
+      handleHazards();
+      handleMathCollisions();
+
+      // Auto-scroll camera
+      cameraX = player.x - canvas.width / 2;
+      if (cameraX < 0) cameraX = 0;
+      if (cameraX > WORLD_WIDTH - canvas.width) {
+        cameraX = WORLD_WIDTH - canvas.width;
+      }
+
+      // Spawn math zones based on distance
+      if (!activeQuestion && player.x > nextQuestionDistance && player.x < WORLD_WIDTH - 600) {
+        spawnMathZone(player.x + 150);
+        nextQuestionDistance += randomInt(450, 650);
+      }
+
+      // Score trickle for forward progress
+      player.score += 0.02 * Math.max(0, player.vx);
+      updateHUD();
+    }
+
+    // -----------------------
+    // Drawing
+    // -----------------------
+    function drawBackground() {
+      // Sky
+      const skyGradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+      skyGradient.addColorStop(0, '#0b1120');
+      skyGradient.addColorStop(1, '#020617');
+      ctx.fillStyle = skyGradient;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Simple parallax "buildings"
+      ctx.save();
+      ctx.translate(-cameraX * 0.4, 0);
+      ctx.fillStyle = '#0f172a';
+      for (let i = 0; i < WORLD_WIDTH; i += 300) {
+        const h = 120 + (i % 250);
+        ctx.fillRect(i, canvas.height - h - 80, 80, h);
+      }
+      ctx.restore();
+    }
+
+    function drawPlatforms() {
+      ctx.save();
+      ctx.translate(-cameraX, 0);
+      ctx.fillStyle = '#1f2937';
+      platforms.forEach(p => {
+        ctx.fillRect(p.x, p.y, p.w, p.h);
+      });
+      ctx.restore();
+    }
+
+    function drawSpikes() {
+      ctx.save();
+      ctx.translate(-cameraX, 0);
+      spikes.forEach(s => {
+        const spikeCount = 4;
+        const spikeWidth = s.w / spikeCount;
+        ctx.fillStyle = 'transparent';
+        ctx.strokeStyle = '#f97316';
+        ctx.lineWidth = 2;
+        for (let i = 0; i < spikeCount; i++) {
+          const x1 = s.x + i * spikeWidth;
+          const x2 = x1 + spikeWidth;
+          const y1 = s.y + s.h;
+          const yPeak = s.y;
+          ctx.beginPath();
+          ctx.moveTo(x1, y1);
+          ctx.lineTo((x1 + x2) / 2, yPeak);
+          ctx.lineTo(x2, y1);
+          ctx.closePath();
+          ctx.stroke();
+        }
+      });
+      ctx.restore();
+    }
+
+    function drawSpeedPads() {
+      ctx.save();
+      ctx.translate(-cameraX, 0);
+      speedPads.forEach(pad => {
+        const grad = ctx.createLinearGradient(pad.x, pad.y, pad.x + pad.w, pad.y);
+        grad.addColorStop(0, '#22c55e');
+        grad.addColorStop(1, '#67e8f9');
+        ctx.fillStyle = grad;
+        ctx.fillRect(pad.x, pad.y, pad.w, pad.h);
+      });
+      ctx.restore();
+    }
+
+    function drawCheckpoints() {
+      ctx.save();
+      ctx.translate(-cameraX, 0);
+      checkpoints.forEach((cp, i) => {
+        ctx.fillStyle = i <= player.checkpointIndex ? '#22c55e' : '#4b5563';
+        ctx.fillRect(cp.x - 4, cp.y - 40, 8, 40);
+      });
+      ctx.restore();
+    }
+
+    function drawPlayer() {
+      ctx.save();
+      ctx.translate(-cameraX, 0);
+
+      // Body
+      ctx.fillStyle = '#38bdf8';
+      ctx.fillRect(player.x, player.y, player.w, player.h);
+
+      // "Headband"
+      ctx.fillStyle = '#f97316';
+      ctx.fillRect(player.x, player.y + 8, player.w, 6);
+
+      // Face
+      ctx.fillStyle = '#0f172a';
+      ctx.fillRect(player.x + player.w - 10, player.y + 14, 6, 6);
+
+      ctx.restore();
+    }
+
+    function drawMathZone() {
+      if (!activeQuestion || !activeQuestion.visible) return;
+
+      ctx.save();
+      ctx.translate(-cameraX, 0);
+
+      // Answer platforms
+      activeQuestion.platforms.forEach((ap, idx) => {
+        const isCorrect = idx === activeQuestion.correctIndex;
+        const grad = ctx.createLinearGradient(ap.x, ap.y, ap.x, ap.y + ap.h);
+        grad.addColorStop(0, isCorrect ? '#22c55e' : '#facc15');
+        grad.addColorStop(1, '#0f172a');
+        ctx.fillStyle = grad;
+        ctx.fillRect(ap.x, ap.y, ap.w, ap.h);
+
+        ctx.fillStyle = '#020617';
+        ctx.font = '12px system-ui';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'bottom';
+        ctx.fillText(String(activeQuestion.answers[idx]), ap.x + ap.w / 2, ap.y - 4);
+      });
+
+      ctx.restore();
+    }
+
+    function render() {
+      drawBackground();
+      drawPlatforms();
+      drawSpikes();
+      drawSpeedPads();
+      drawCheckpoints();
+      drawMathZone();
+      drawPlayer();
+    }
+
+    // -----------------------
+    // Game End
+    // -----------------------
+    function endRun() {
+      gameRunning = false;
+      gameOver = true;
+
+      // Fill summary
+      sumScore.textContent = Math.floor(player.score);
+      const accPct = totalAttempted > 0 ? Math.round((totalCorrect / totalAttempted) * 100) : 0;
+      sumAcc.textContent = `${totalCorrect} / ${totalAttempted} (${accPct}%)`;
+      sumStreak.textContent = bestStreak;
+      const used = RUN_TIME_SECONDS - remainingTime;
+      const mins = Math.floor(used / 60);
+      const secs = Math.floor(used % 60);
+      sumTime.textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
+
+      let flavor = "Nice effort! Try another run to boost your accuracy.";
+      if (accPct >= 90) flavor = "Math Master! Your facts are on fire.";
+      else if (accPct >= 70) flavor = "Great run! You’re building serious math speed.";
+
+      summaryMain.textContent = flavor;
+
+      endOverlay.style.display = 'flex';
+    }
+
+    // -----------------------
+    // Main Loop
+    // -----------------------
+    function gameLoop(timestamp) {
+      if (!lastTime) lastTime = timestamp;
+      const dt = (timestamp - lastTime) / 1000;
+      lastTime = timestamp;
+
+      update(dt);
+      render();
+
+      requestAnimationFrame(gameLoop);
+    }
+
+    // -----------------------
+    // UI Events
+    // -----------------------
+    startBtn.addEventListener('click', () => {
+      introOverlay.style.display = 'none';
+      gameRunning = true;
+      lastTime = performance.now();
+    });
+
+    howtoBtn.addEventListener('click', () => {
+      alert(
+        "Quick Tips:\n\n" +
+        "• Move with Left/Right arrows or buttons.\n" +
+        "• Jump with Up/Space or the Jump button.\n" +
+        "• Hit the platform with the correct sum.\n" +
+        "• Wrong answers just slow you down.\n" +
+        "• You have 5 minutes — go for your best score!"
+      );
+    });
+
+    restartBtn.addEventListener('click', () => {
+      endOverlay.style.display = 'none';
+      resetGame();
+      introOverlay.style.display = 'flex';
+    });
+
+    // -----------------------
+    // Init
+    // -----------------------
+    resetGame();
+    requestAnimationFrame(gameLoop);
+  </script>
+</body>
+</html>
