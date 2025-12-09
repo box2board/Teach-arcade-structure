@@ -378,23 +378,23 @@
       <div class="overlay-card">
         <div class="overlay-title">Math Rush Genesis: Addition</div>
         <div class="overlay-sub">
-          Sprint through the level while answering 10 addition facts as fast as you can.
+          Sprint through the level and clear 10 addition gates as fast as you can.
         </div>
 
         <div class="overlay-section-title">How to Play</div>
-        <p>Run, jump, and dodge hazards while solving quick addition problems.</p>
+        <p>Run, jump, and dodge hazards to reach glowing math gates.</p>
         <ul>
-          <li>Use the <strong>number pad</strong> or keyboard to enter each answer.</li>
-          <li>Correct answers give you <strong>points and speed boosts</strong>.</li>
-          <li>Wrong answers <strong>slow you down</strong> and cost a few points.</li>
-          <li>The clock counts <strong>up</strong>. Your goal: finish 10 questions in the best time.</li>
+          <li>Cross a <strong>math gate</strong> to trigger a question.</li>
+          <li>Movement pauses until you <strong>answer on the number pad</strong>.</li>
+          <li>Correct = <strong>speed boost + points</strong>. Wrong = slowdown & point penalty.</li>
+          <li>The clock counts <strong>up</strong>. Beat your best time for 10 questions.</li>
         </ul>
 
         <div class="overlay-section-title">Controls</div>
         <ul>
           <li><strong>Move:</strong> Left / Right arrows (or on-screen buttons)</li>
           <li><strong>Jump:</strong> Up arrow / Space (or Jump button)</li>
-          <li><strong>Answer:</strong> Tap number pad (auto-submit) or use keyboard numbers</li>
+          <li><strong>Answer:</strong> Tap number pad or use number keys (auto-submit)</li>
         </ul>
 
         <div class="btn-row">
@@ -495,14 +495,27 @@
     const keypadButtons = document.querySelectorAll('.key-btn');
 
     // --- Sprite setup ---
-    const HERO_FRAME_W = 48;
-    const HERO_FRAME_H = 48;
+    let HERO_FRAME_W = 48;
+    let HERO_FRAME_H = 48;
     const HERO_COLS = 4;
+    const HERO_ROWS = 3;
 
     const heroImage = new Image();
     heroImage.src = '/assets/math-rush/hero-spritesheet.png';
     let heroLoaded = false;
-    heroImage.onload = () => { heroLoaded = true; };
+    heroImage.onload = () => {
+      heroLoaded = true;
+      HERO_FRAME_W = heroImage.width / HERO_COLS;
+      HERO_FRAME_H = heroImage.height / HERO_ROWS;
+
+      // Adjust player hitbox once we know frame size
+      if (player) {
+        const feetY = player.y + player.h;
+        player.w = HERO_FRAME_W * 0.7;   // slightly smaller hitbox
+        player.h = HERO_FRAME_H * 0.8;
+        player.y = feetY - player.h;
+      }
+    };
 
     let animState = 'idle'; // 'idle' | 'run' | 'jump' | 'fall' | 'hurt'
     let animFrameIndex = 0;
@@ -527,12 +540,12 @@
     const FRICTION = 0.85;
 
     // Game state
-    let player, platforms, spikes, speedPads, checkpoints;
+    let player, platforms, spikes, speedPads, checkpoints, questionGates;
     let keys = { left: false, right: false, up: false };
     let touchInput = { left: false, right: false, jump: false };
     let cameraX = 0;
     let lastTime = 0;
-    let elapsed = 0;        // stopwatch (seconds)
+    let elapsed = 0;        // stopwatch seconds
     let gameRunning = false;
     let gameOver = false;
 
@@ -546,6 +559,7 @@
     let questionsAnswered = 0;
     let currentQuestion = null;
     let answerBuffer = '';
+    let inQuestion = false;
 
     // -----------------------
     // Level Data
@@ -591,11 +605,25 @@
       checkpoints.push({ x: 1800, y: GROUND_Y - 50 });
       checkpoints.push({ x: 3200, y: GROUND_Y - 50 });
       checkpoints.push({ x: 4400, y: GROUND_Y - 50 });
+
+      // Question gates spaced across the world
+      questionGates = [];
+      const firstGateX = 400;
+      const gateSpacing = 420;
+      for (let i = 0; i < QUESTIONS_PER_RUN; i++) {
+        questionGates.push({
+          x: firstGateX + i * gateSpacing,
+          triggered: false
+        });
+      }
     }
 
     function resetPlayer() {
       const startX = 50;
-      const startY = GROUND_Y - HERO_FRAME_H;
+      const hitboxH = HERO_FRAME_H * 0.8;
+      const hitboxW = HERO_FRAME_W * 0.7;
+
+      const startY = GROUND_Y - hitboxH;
       player = {
         x: startX,
         y: startY,
@@ -603,8 +631,8 @@
         prevY: startY,
         vx: 0,
         vy: 0,
-        w: HERO_FRAME_W,
-        h: HERO_FRAME_H,
+        w: hitboxW,
+        h: hitboxH,
         onGround: true,
         canDoubleJump: true,
         score: 0,
@@ -627,6 +655,7 @@
       questionsAnswered = 0;
       currentQuestion = null;
       answerBuffer = '';
+      inQuestion = false;
       setAnswerDisplay();
 
       updateHUD();
@@ -641,7 +670,6 @@
       if (e.code === 'ArrowRight' || e.code === 'KeyD') keys.right = true;
       if (e.code === 'ArrowUp' || e.code === 'Space') keys.up = true;
 
-      // Optional: keyboard entry for answers (0–9)
       if (e.key >= '0' && e.key <= '9') {
         handleKeypadInput(e.key);
       }
@@ -683,13 +711,13 @@
     addTouchControl(btnJump, 'jump');
 
     function isLeftPressed() {
-      return keys.left || touchInput.left;
+      return !inQuestion && (keys.left || touchInput.left);
     }
     function isRightPressed() {
-      return keys.right || touchInput.right;
+      return !inQuestion && (keys.right || touchInput.right);
     }
     function isJumpPressed() {
-      return keys.up || touchInput.jump;
+      return !inQuestion && (keys.up || touchInput.jump);
     }
 
     // -----------------------
@@ -700,7 +728,6 @@
     }
 
     function spawnQuestion() {
-      // 0–10 + 0–10
       const a = randomInt(0, 10);
       const b = randomInt(0, 10);
       const correct = a + b;
@@ -859,17 +886,16 @@
       answerBuffer = '';
       setAnswerDisplay();
       hideQuestionBanner();
+      inQuestion = false;
       updateHUD();
 
       if (questionsAnswered >= QUESTIONS_PER_RUN) {
         endRun();
-      } else {
-        spawnQuestion();
       }
     }
 
     function handleKeypadInput(key) {
-      if (!currentQuestion || !gameRunning || gameOver) return;
+      if (!inQuestion || !gameRunning || gameOver) return;
 
       if (key === 'C') {
         answerBuffer = '';
@@ -882,8 +908,8 @@
       answerBuffer += key;
       setAnswerDisplay();
 
-      // Auto-submit when expected number of digits is reached
-      if (answerBuffer.length === currentQuestion.digitsNeeded) {
+      // Auto-submit when expected digits reached
+      if (currentQuestion && answerBuffer.length === currentQuestion.digitsNeeded) {
         gradeAnswer();
       }
     }
@@ -920,46 +946,68 @@
     function update(dt) {
       if (!gameRunning || gameOver) return;
 
+      // Time always runs (speed-of-recall)
       elapsed += dt;
 
       // Store previous position for collision resolution
       player.prevX = player.x;
       player.prevY = player.y;
 
-      // Movement input
-      let moveDir = 0;
-      if (isLeftPressed()) moveDir -= 1;
-      if (isRightPressed()) moveDir += 1;
+      if (!inQuestion) {
+        // Movement input only when not answering
+        let moveDir = 0;
+        if (isLeftPressed()) moveDir -= 1;
+        if (isRightPressed()) moveDir += 1;
 
-      player.vx = moveDir * MOVE_SPEED + (moveDir === 0 ? player.vx * FRICTION : 0);
+        player.vx = moveDir * MOVE_SPEED + (moveDir === 0 ? player.vx * FRICTION : 0);
 
-      // Jump logic
-      if (isJumpPressed()) {
-        if (player.onGround) {
-          player.vy = JUMP_VELOCITY;
-          player.onGround = false;
-          player.canDoubleJump = true;
-        } else if (player.canDoubleJump) {
-          player.vy = JUMP_VELOCITY * 0.9;
-          player.canDoubleJump = false;
+        // Jump logic
+        if (isJumpPressed()) {
+          if (player.onGround) {
+            player.vy = JUMP_VELOCITY;
+            player.onGround = false;
+            player.canDoubleJump = true;
+          } else if (player.canDoubleJump) {
+            player.vy = JUMP_VELOCITY * 0.9;
+            player.canDoubleJump = false;
+          }
         }
+
+        // Gravity
+        player.vy += GRAVITY;
+        if (player.vy > MAX_FALL_SPEED) player.vy = MAX_FALL_SPEED;
+
+        // Apply velocities
+        player.x += player.vx;
+        player.y += player.vy;
+
+        // Horizontal bounds
+        if (player.x < 0) player.x = 0;
+        if (player.x > WORLD_WIDTH - player.w) player.x = WORLD_WIDTH - player.w;
+
+        // Collisions & hazards
+        handlePlatformCollisions();
+        handleHazards();
+
+        // Question gate triggers
+        for (const gate of questionGates) {
+          if (!gate.triggered && player.x + player.w >= gate.x) {
+            gate.triggered = true;
+            inQuestion = true;
+            player.vx = 0;
+            player.vy = 0;
+            spawnQuestion();
+            break;
+          }
+        }
+
+        // Score trickle for movement
+        player.score += 0.02 * Math.max(0, Math.abs(player.vx));
+      } else {
+        // While in question, keep player planted
+        player.vx = 0;
+        player.vy = 0;
       }
-
-      // Gravity
-      player.vy += GRAVITY;
-      if (player.vy > MAX_FALL_SPEED) player.vy = MAX_FALL_SPEED;
-
-      // Apply velocities
-      player.x += player.vx;
-      player.y += player.vy;
-
-      // Horizontal bounds
-      if (player.x < 0) player.x = 0;
-      if (player.x > WORLD_WIDTH - player.w) player.x = WORLD_WIDTH - player.w;
-
-      // Collisions & hazards
-      handlePlatformCollisions();
-      handleHazards();
 
       // Camera
       cameraX = player.x - canvas.width / 2;
@@ -968,14 +1016,11 @@
         cameraX = WORLD_WIDTH - canvas.width;
       }
 
-      // Score trickle for movement
-      player.score += 0.02 * Math.max(0, Math.abs(player.vx));
-
       // Animation state
-      if (!player.onGround) {
+      if (!player.onGround && !inQuestion) {
         animState = player.vy < 0 ? 'jump' : 'fall';
       } else {
-        if (Math.abs(player.vx) > 0.5) {
+        if (Math.abs(player.vx) > 0.5 && !inQuestion) {
           animState = 'run';
         } else if (animState !== 'hurt') {
           animState = 'idle';
@@ -1070,6 +1115,16 @@
       ctx.restore();
     }
 
+    function drawQuestionGates() {
+      ctx.save();
+      ctx.translate(-cameraX, 0);
+      questionGates.forEach(g => {
+        ctx.fillStyle = g.triggered ? '#22c55e' : '#38bdf8';
+        ctx.fillRect(g.x - 4, GROUND_Y - 60, 8, 60);
+      });
+      ctx.restore();
+    }
+
     function drawPlayer() {
       ctx.save();
       ctx.translate(-cameraX, 0);
@@ -1087,12 +1142,13 @@
 
       const dw = HERO_FRAME_W;
       const dh = HERO_FRAME_H;
-      const dx = player.x;
-      const dy = player.y - 2; // slight lift
+      // Align sprite so feet are at bottom of hitbox
+      const dx = player.x - (dw - player.w) / 2;
+      const dy = player.y + player.h - dh;
 
       if (!heroLoaded) {
         ctx.fillStyle = '#38bdf8';
-        ctx.fillRect(dx, dy, player.w, player.h);
+        ctx.fillRect(player.x, player.y, player.w, player.h);
       } else {
         ctx.save();
         if (movingLeft && !movingRight) {
@@ -1115,6 +1171,7 @@
       drawSpikes();
       drawSpeedPads();
       drawCheckpoints();
+      drawQuestionGates();
       drawPlayer();
     }
 
@@ -1166,18 +1223,16 @@
       resetGame();
       gameRunning = true;
       lastTime = performance.now();
-      spawnQuestion();
     });
 
     howtoBtn.addEventListener('click', () => {
       alert(
         "Quick Tips:\n\n" +
-        "• Move with Left/Right arrows or buttons.\n" +
-        "• Jump with Up/Space or the Jump button.\n" +
-        "• Watch the question banner.\n" +
-        "• Use the number pad to enter your answer.\n" +
+        "• Run and jump to reach glowing gates.\n" +
+        "• Crossing a gate pops up a question and locks movement.\n" +
+        "• Use the keypad or number keys to answer.\n" +
         "• Answers auto-submit when all digits are entered.\n" +
-        "• Finish 10 questions as fast as you can!"
+        "• Clear all 10 gates as fast as possible!"
       );
     });
 
