@@ -399,6 +399,34 @@
     const btnRight = document.getElementById('btn-right');
     const btnJump = document.getElementById('btn-jump');
 
+    // --- Sprite setup ---
+    const HERO_FRAME_W = 48;
+    const HERO_FRAME_H = 48;
+    const HERO_COLS = 4; // 4 columns x 3 rows = 12 frames
+
+    const heroImage = new Image();
+    heroImage.src = '/assets/math-rush/hero-spritesheet.png';
+    let heroLoaded = false;
+    heroImage.onload = () => {
+      heroLoaded = true;
+    };
+
+    // Animation state
+    let animState = 'idle';      // 'idle' | 'run' | 'jump' | 'fall' | 'land' | 'hurt'
+    let animFrameIndex = 0;
+    let animTimer = 0;
+    const ANIM_FRAME_TIME = 0.08; // seconds per frame
+
+    // Which frames belong to which animation (indices into sprite sheet)
+    const animationFrames = {
+      idle: [0, 1],
+      run: [2, 3, 4, 5, 6, 7],
+      jump: [8],
+      fall: [9],
+      land: [10],
+      hurt: [11]
+    };
+
     const WORLD_WIDTH = 5000;
     const WORLD_HEIGHT = canvas.height;
     const GROUND_Y = 420;
@@ -486,7 +514,7 @@
         y: GROUND_Y - 60,
         vx: 0,
         vy: 0,
-        w: 32,
+        w: 48,   // match sprite width
         h: 48,
         onGround: false,
         canDoubleJump: true,
@@ -725,6 +753,9 @@
           player.x -= 40;
           player.vx = -2;
           player.score = Math.max(0, player.score - 25);
+          animState = 'hurt';
+          animFrameIndex = 0;
+          animTimer = 0;
         }
       }
 
@@ -867,6 +898,42 @@
 
       // Score trickle for forward progress
       player.score += 0.02 * Math.max(0, player.vx);
+
+      // --- Animation state update ---
+      if (!player.onGround) {
+        // Airborne
+        if (player.vy < 0) {
+          animState = 'jump';
+        } else {
+          animState = 'fall';
+        }
+      } else {
+        // On the ground
+        if (Math.abs(player.vx) > 0.5) {
+          animState = 'run';
+        } else {
+          // If we were hurt, let that frame show briefly, then idle
+          if (animState === 'hurt') {
+            // keep for a few frames; simple version: fall back to idle next tick
+            animState = 'idle';
+          } else {
+            animState = 'idle';
+          }
+        }
+      }
+
+      // Advance animation timer
+      animTimer += dt;
+      const frames = animationFrames[animState];
+      if (frames && frames.length > 0) {
+        if (animTimer >= ANIM_FRAME_TIME) {
+          animTimer -= ANIM_FRAME_TIME;
+          animFrameIndex = (animFrameIndex + 1) % frames.length;
+        }
+      } else {
+        animFrameIndex = 0;
+      }
+
       updateHUD();
     }
 
@@ -954,17 +1021,51 @@
       ctx.save();
       ctx.translate(-cameraX, 0);
 
-      // Body
-      ctx.fillStyle = '#38bdf8';
-      ctx.fillRect(player.x, player.y, player.w, player.h);
+      const movingLeft = player.vx < -0.1;
+      const movingRight = player.vx > 0.1;
 
-      // "Headband"
-      ctx.fillStyle = '#f97316';
-      ctx.fillRect(player.x, player.y + 8, player.w, 6);
+      const frames = animationFrames[animState] || [0];
+      const frameId = frames[animFrameIndex] || frames[0];
 
-      // Face
-      ctx.fillStyle = '#0f172a';
-      ctx.fillRect(player.x + player.w - 10, player.y + 14, 6, 6);
+      // Convert frameId (0–11) → sheet coordinates
+      const col = frameId % HERO_COLS;
+      const row = Math.floor(frameId / HERO_COLS);
+      const sx = col * HERO_FRAME_W;
+      const sy = row * HERO_FRAME_H;
+
+      const dx = player.x;
+      const dy = player.y;
+      const dw = HERO_FRAME_W;
+      const dh = HERO_FRAME_H;
+
+      if (!heroLoaded) {
+        // Fallback while image loads
+        ctx.fillStyle = '#38bdf8';
+        ctx.fillRect(dx, dy, player.w, player.h);
+      } else {
+        ctx.save();
+
+        if (movingLeft && !movingRight) {
+          // Flip horizontally when running left
+          ctx.translate(dx + dw / 2, dy + dh / 2);
+          ctx.scale(-1, 1);
+          ctx.translate(-dw / 2, -dh / 2);
+          ctx.drawImage(
+            heroImage,
+            sx, sy, HERO_FRAME_W, HERO_FRAME_H,
+            0, 0, dw, dh
+          );
+        } else {
+          // Default: face right
+          ctx.drawImage(
+            heroImage,
+            sx, sy, HERO_FRAME_W, HERO_FRAME_H,
+            dx, dy, dw, dh
+          );
+        }
+
+        ctx.restore();
+      }
 
       ctx.restore();
     }
