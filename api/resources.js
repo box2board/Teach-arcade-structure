@@ -3,8 +3,8 @@
 // IMPORTANT: Vercel accepts 'edge' or 'nodejs' (NOT 'nodejs18.x')
 export const config = { runtime: 'nodejs' };
 
-/** <<< SET THIS TO YOUR PUBLIC SHEET ID >>> */
-const SHEET_ID = '1dPJAi0dKjP6hWpgpNlA2M-2INar75-LxJ-fKEJjWslc';
+/** Default sheet ID (e.g., your original Social Studies master) */
+const DEFAULT_SHEET_ID = '1dPJAi0dKjP6hWpgpNlA2M-2INar75-LxJ-fKEJjWslc';
 
 /** Fetch a tab (sheet) as CSV via the gviz endpoint */
 async function fetchTabCSV(sheetId, tabName) {
@@ -94,7 +94,7 @@ function parseCSV(text) {
 }
 
 /** Normalize one CSV row to API shape */
-function normalize(row, topicName) {
+function normalize(row, topicName, subjectName) {
   // These keys should align with your sheet columns (case-insensitive):
   // Title | URL | Type | Category | Date Added (others are ignored if present)
   const title = row['title'] || row['name'] || '';
@@ -111,7 +111,7 @@ function normalize(row, topicName) {
     : '';
 
   return {
-    subject: 'social-studies',
+    subject: subjectName || 'general',
     topic: topicName, // API returns the tab name as the topic
     title,
     url: safeUrl,
@@ -134,12 +134,21 @@ export default async function handler(req, res) {
       return;
     }
 
+    // OPTIONAL: ?sheetId= overrides the default (lets us use different subject sheets)
+    const sheetIdParam = (req.query.sheetId || '').toString().trim();
+    const sheetId = sheetIdParam || DEFAULT_SHEET_ID;
+
+    // OPTIONAL: ?subject= lets you tag the subject in responses (social-studies, biology, etc.)
+    const subject =
+      (req.query.subject || '').toString().trim().toLowerCase() ||
+      '';
+
     // 1) Fetch the tab CSV from Google Sheets
-    const csv = await fetchTabCSV(SHEET_ID, tab);
+    const csv = await fetchTabCSV(sheetId, tab);
 
     // 2) Parse and normalize to consistent objects
     let items = parseCSV(csv)
-      .map((r) => normalize(r, tab))
+      .map((r) => normalize(r, tab, subject))
       .filter((r) => r.title && r.url); // basic sanity
 
     // 3) Optional filters
