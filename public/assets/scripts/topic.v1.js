@@ -4,6 +4,8 @@
   if (!page) return;
 
   const TAB = (page.dataset.tab || page.dataset.topic || "").trim();
+  const SHEET_ID = (page.dataset.sheetId || "").trim(); // ✅ NEW: read sheet ID from HTML
+
   const listEl = document.getElementById("resource-list");
   const tabsEl = document.getElementById("tabs");
   const searchEl = document.getElementById("searchInput");
@@ -160,8 +162,14 @@
       : `<div class="card" style="grid-column:1/-1;">No matching resources yet.</div>`;
   }
 
+  // ✅ UPDATED: include sheetId in the API call
   async function fetchAPI(tab) {
-    const url = `/api/resources?tab=${encodeURIComponent(tab)}&t=${Date.now()}`;
+    const params = new URLSearchParams();
+    if (SHEET_ID) params.set("sheetId", SHEET_ID);
+    if (tab) params.set("tab", tab);
+    params.set("t", Date.now().toString());
+
+    const url = `/api/resources?${params.toString()}`;
     const r = await fetch(url, { cache: "no-store" });
     if (!r.ok) throw new Error(`API ${r.status}`);
     const data = await r.json();
