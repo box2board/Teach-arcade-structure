@@ -22,7 +22,7 @@
   <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
 
   <!-- SEO & Social -->
-  <meta name="description" content="Teach Arcade curates free, classroom-ready resources for teachers — lessons, worksheets, primary sources, games, presentations, and interactive tools. Made by a teacher, for teachers." />
+  <meta name="description" content="Teach Arcade offers free, classroom-ready teaching resources including worksheets, lessons, primary sources, custom learning games, and interactive teacher tools. Made by a teacher, for teachers." />
   <link rel="canonical" href="https://teacharcade.com/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Teach Arcade" />
@@ -81,11 +81,24 @@
     @media (max-width: 480px){ .hero h1{font-size:28px;} }
 
     /* Ad placeholders (neutral by default) */
-    .ad-slot {
-      width: 100%;
-      margin: 16px 0;
-      height: 0;
-      overflow: hidden;
+    .ad-slot { width: 100%; margin: 16px 0; height: 0; overflow: hidden; }
+
+    /* NEW: Homepage Intro Section */
+    .home-intro {
+      max-width: 900px;
+      margin: 0 auto 32px;
+      padding-top: 4px;
+      text-align: left;
+    }
+    .home-intro h2 {
+      font: 700 24px/1.25 Poppins, sans-serif;
+      margin: 0 0 12px;
+      color: #0f172a;
+    }
+    .home-intro p {
+      font: 400 16px/1.6 Nunito, system-ui, sans-serif;
+      color: #475569;
+      margin: 0 0 12px;
     }
   </style>
 
@@ -105,32 +118,7 @@
   <div id="site-header"></div>
   <script src="/assets/scripts/nav.js?v=3" defer></script>
 
-  <!-- Fallback header -->
-  <script>
-    window.addEventListener('DOMContentLoaded', function () {
-      const host = document.getElementById('site-header');
-      setTimeout(function () {
-        if (!host || host.innerHTML.trim()) return;
-        host.innerHTML = `
-          <header class="main-header" style="display:flex;justify-content:space-between;align-items:center;padding:12px 20px;background:#0f172a;border-bottom:1px solid #0b1220;position:sticky;top:0;z-index:1000;">
-            <a href="/" style="display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;">
-              <img src="/assets/images/teach-arcade-logo.png" alt="Teach Arcade Logo" style="height:40px;width:auto;">
-              <strong style="font:700 18px Poppins, sans-serif;">Teach Arcade</strong>
-            </a>
-            <nav aria-label="Primary">
-              <a href="/" style="color:#fff;margin-right:16px;text-decoration:none;">Home</a>
-              <a href="/subjects/index.html" style="color:#fff;margin-right:16px;text-decoration:none;">Subjects</a>
-              <a href="/escape/?room=wwi" style="color:#fff;margin-right:16px;text-decoration:none;">Escape Rooms</a>
-              <a href="/submit.html" style="color:#fff;margin-right:16px;text-decoration:none;">Submit</a>
-              <a href="/about.html" style="color:#fff;text-decoration:none;">About</a>
-            </nav>
-          </header>
-        `;
-      }, 300);
-    });
-  </script>
-
-  <!-- No-JS fallback -->
+  <!-- No-JS fallback header (unchanged) -->
   <noscript>
     <header class="main-header" style="display:flex;justify-content:space-between;align-items:center;padding:10px 20px;background:#0f172a;color:#fff;">
       <a href="/" style="display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;">
@@ -148,6 +136,7 @@
   </noscript>
 
   <main class="container">
+
     <!-- Top Ad Placeholder -->
     <div class="ad-slot ad-top" aria-label="Advertisement"></div>
 
@@ -157,6 +146,7 @@
       <p>
         Step into the classroom arcade. Teach Arcade brings you custom-built learning games, interactive tools, and creative simulations designed to make content unforgettable. Alongside these originals, you’ll also find a curated library of worksheets, lessons, and primary sources — everything teachers need, all in one place, for FREE!
       </p>
+
       <div class="cta-row">
         <a class="btn" href="/subjects/index.html">Browse Subjects</a>
         <a class="btn secondary" href="/submit.html">Submit a Resource</a>
@@ -166,9 +156,24 @@
     <!-- Mid Ad -->
     <div class="ad-slot ad-mid" aria-label="Advertisement"></div>
 
+    <!-- NEW SEO-RICH INTRO SECTION -->
+    <section class="home-intro" aria-labelledby="home-intro-heading">
+      <h2 id="home-intro-heading">What Is Teach Arcade?</h2>
+      <p>
+        Teach Arcade is a free, all-in-one teaching resource hub built to support educators across grade levels and content areas. The site combines curated materials from trusted sources with original content, including interactive review games, digital organizers, escape-room style missions, and classroom-ready teaching tools.
+      </p>
+      <p>
+        Teachers can explore organized collections for Social Studies, Science, Math, and ELA, each packed with worksheets, primary sources, lesson ideas, project guides, and enrichment activities. Every page is structured to reduce planning time by putting high-quality, classroom-tested resources in one easy-to-navigate place.
+      </p>
+      <p>
+        In addition to traditional instructional materials, Teach Arcade features custom-created learning games and teacher tools designed to make content review more engaging and efficient. All resources on Teach Arcade are completely free and updated regularly, making it a reliable, growing library for educators seeking meaningful, ready-to-use materials.
+      </p>
+    </section>
+
     <!-- Subject Tiles -->
     <section aria-labelledby="subjects-title" style="margin-top:24px;">
       <h2 id="subjects-title" class="sr-only">Subjects</h2>
+
       <div class="subjects-grid">
 
         <a href="/subjects/social-studies/index.html" class="subject-tile" aria-label="Social Studies">
