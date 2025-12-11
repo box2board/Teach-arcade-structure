@@ -1,125 +1,241 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>U.S. History | Teach Arcade</title>
+  <link rel="stylesheet" href="/assets/styles.css"/>
+  <meta name="description" content="Free U.S. History resources organized by unit: Colonial America through the present. Lessons, worksheets, primary sources, and activities."/>
 
-  <!-- SEO Title -->
-  <title>Social Studies Lessons &amp; Resources | Teach Arcade</title>
+  <!-- Topic icon styles for U.S. History tiles -->
+  <style>
+    .topic-card-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      text-decoration: none;
+      color: inherit;
+      height: 100%;
+      text-align: center;
+    }
 
-  <!-- Canonical URL -->
-  <link rel="canonical" href="https://teacharcade.com/subjects/social-studies/">
+    .topic-card-link h2 {
+      margin-top: 12px;   /* space below icon */
+      margin-bottom: 6px;
+    }
 
-  <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="/assets/styles.css">
+    .topic-card-link p {
+      margin: 0;
+    }
 
-  <!-- Meta Description -->
-  <meta name="description"
-        content="Browse free social studies resources from Teach Arcade, including U.S. History, World History, Geography, Economics, and Government &amp; Political Science. Classroom-ready lessons, activities, games, and worksheets." />
+    .topic-icon {
+      width: 110px;
+      height: 110px;
+      margin: 8px auto 0;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
 
-  <!-- (Optional) Keywords - not used by Google but harmless -->
-  <meta name="keywords"
-        content="social studies lessons, social studies resources, U.S. history, world history, geography, economics, government, civics, teacher materials, classroom activities" />
+    /* Per-topic icon hooks — add matching image files to see them appear */
 
-  <!-- Open Graph for social sharing -->
-  <meta property="og:title" content="Social Studies Lessons &amp; Resources | Teach Arcade" />
-  <meta property="og:description"
-        content="Explore free Social Studies resources for U.S. History, World History, Geography, Economics, and Government &amp; Political Science. Interactive games, lessons, and classroom activities." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://teacharcade.com/subjects/social-studies/" />
-  <meta property="og:site_name" content="Teach Arcade" />
-  <meta property="og:image" content="https://teacharcade.com/assets/images/teach-arcade-logo.png" />
+    .topic-card--colonial-america .topic-icon {
+      background-image: url("/assets/images/us-history/icons/colonial-america.png");
+    }
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Social Studies Lessons &amp; Resources | Teach Arcade" />
-  <meta name="twitter:description"
-        content="Free social studies lessons and classroom activities for U.S. History, World History, Geography, Economics, and Government &amp; Political Science." />
-  <meta name="twitter:image" content="https://teacharcade.com/assets/images/teach-arcade-logo.png" />
+    .topic-card--american-revolution .topic-icon {
+      background-image: url("/assets/images/us-history/icons/american-revolution.png");
+    }
 
-  <!-- Breadcrumb Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://teacharcade.com/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Subjects",
-        "item": "https://teacharcade.com/subjects/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Social Studies",
-        "item": "https://teacharcade.com/subjects/social-studies/"
-      }
-    ]
-  }
-  </script>
+    .topic-card--constitution-early-republic .topic-icon {
+      background-image: url("/assets/images/us-history/icons/constitution-early-republic.png");
+    }
+
+    .topic-card--expansion-reform-jacksonian-era .topic-icon {
+      background-image: url("/assets/images/us-history/icons/expansion-reform-jacksonian-era.png");
+    }
+
+    .topic-card--civil-war-reconstruction .topic-icon {
+      background-image: url("/assets/images/us-history/icons/civil-war-reconstruction.png");
+    }
+
+    .topic-card--industrialization-gilded-age .topic-icon {
+      background-image: url("/assets/images/us-history/icons/industrialization-gilded-age.png");
+    }
+
+    .topic-card--progressive-era-imperialism .topic-icon {
+      background-image: url("/assets/images/us-history/icons/progressive-era-imperialism.png");
+    }
+
+    .topic-card--world-war-i .topic-icon {
+      background-image: url("/assets/images/us-history/icons/world-war-i.png");
+    }
+
+    .topic-card--great-depression-new-deal .topic-icon {
+      background-image: url("/assets/images/us-history/icons/great-depression-new-deal.png");
+    }
+
+    .topic-card--world-war-ii .topic-icon {
+      background-image: url("/assets/images/us-history/icons/world-war-ii.png");
+    }
+
+    .topic-card--cold-war .topic-icon {
+      background-image: url("/assets/images/us-history/icons/cold-war.png");
+    }
+
+    .topic-card--civil-rights .topic-icon {
+      background-image: url("/assets/images/us-history/icons/civil-rights.png");
+    }
+
+    .topic-card--contemporary-us-1970s-present .topic-icon {
+      background-image: url("/assets/images/us-history/icons/contemporary-us-1970s-present.png");
+    }
+  </style>
 </head>
 <body>
+  <!-- Site Header -->
   <header>
     <div class="header-left">
-      <img class="site-logo" src="/assets/images/teach-arcade-logo.png" alt="Teach Arcade logo - free classroom games and resources">
+      <a href="/" class="logo-link">
+        <img src="/assets/images/teach-arcade-logo.png" alt="Teach Arcade Logo" class="site-logo">
+      </a>
       <span class="brand">Teach Arcade</span>
     </div>
     <nav>
       <a href="/">Home</a>
-      <a href="/subjects/">Subjects</a>
+      <a href="/subjects/index.html">Subjects</a>
       <a href="/submit.html">Submit</a>
       <a href="/about.html">About</a>
     </nav>
   </header>
 
   <main class="container">
-    <h1>Social Studies Lessons &amp; Classroom Resources</h1>
-    <p>Choose a Social Studies subject area to find free lessons, activities, worksheets, and review games for your classroom.</p>
+    <h1>U.S. History</h1>
+    <p>Explore comprehensive lessons, activities, and resources covering the major eras of American history.</p>
 
-    <div class="grid">
-
-      <div class="card">
-        <h3>U.S. History</h3>
-        <p>Colonial America to Contemporary Times</p>
-        <a href="/subjects/social-studies/us-history/index.html" class="cta">Open</a>
+    <section class="grid" style="margin-top:18px">
+      <!-- 1 -->
+      <div class="card topic-card topic-card--colonial-america">
+        <a href="/subjects/social-studies/us-history/colonial-america.html" class="topic-card-link">
+          <div class="topic-icon" aria-hidden="true"></div>
+          <h2>Colonial America</h2>
+          <p>Life in the colonies, regional differences, and early self-government.</p>
+        </a>
       </div>
 
-      <div class="card">
-        <h3>World History</h3>
-        <p>Ancient Civilizations through Modern Eras</p>
-        <a href="/subjects/social-studies/world-history/index.html" class="cta">Open</a>
+      <!-- 2 -->
+      <div class="card topic-card topic-card--american-revolution">
+        <a href="/subjects/social-studies/us-history/american-revolution.html" class="topic-card-link">
+          <div class="topic-icon" aria-hidden="true"></div>
+          <h2>American Revolution</h2>
+          <p>Causes, turning points, founding documents, and independence.</p>
+        </a>
       </div>
 
-      <div class="card">
-        <h3>Geography</h3>
-        <p>Maps, regions, and human-environment interaction</p>
-        <a href="/subjects/social-studies/geography/index.html" class="cta">Open</a>
+      <!-- 3 -->
+      <div class="card topic-card topic-card--constitution-early-republic">
+        <a href="/subjects/social-studies/us-history/constitution-early-republic.html" class="topic-card-link">
+          <div class="topic-icon" aria-hidden="true"></div>
+          <h2>Constitution &amp; Early Republic</h2>
+          <p>Drafting the Constitution, federalism, and the nation’s first administrations.</p>
+        </a>
       </div>
 
-      <div class="card">
-        <h3>Economics</h3>
-        <p>Trade, production, and financial literacy</p>
-        <a href="/subjects/social-studies/economics/index.html" class="cta">Open</a>
+      <!-- 4 -->
+      <div class="card topic-card topic-card--expansion-reform-jacksonian-era">
+        <a href="/subjects/social-studies/us-history/expansion-reform-jacksonian-era.html" class="topic-card-link">
+          <div class="topic-icon" aria-hidden="true"></div>
+          <h2>Expansion &amp; Reform (Jacksonian Era)</h2>
+          <p>Manifest Destiny, democratization, reform movements, and Native displacement.</p>
+        </a>
       </div>
 
-      <div class="card">
-        <h3>Government &amp; Political Science</h3>
-        <p>Civics, institutions, and political participation</p>
-        <a href="/subjects/social-studies/government-political-science/index.html" class="cta">Open</a>
+      <!-- 5 -->
+      <div class="card topic-card topic-card--civil-war-reconstruction">
+        <a href="/subjects/social-studies/us-history/civil-war-reconstruction.html" class="topic-card-link">
+          <div class="topic-icon" aria-hidden="true"></div>
+          <h2>Civil War &amp; Reconstruction</h2>
+          <p>Sectional crisis, war, emancipation, and rebuilding the Union.</p>
+        </a>
       </div>
 
-    </div>
+      <!-- 6 -->
+      <div class="card topic-card topic-card--industrialization-gilded-age">
+        <a href="/subjects/social-studies/us-history/industrialization-gilded-age.html" class="topic-card-link">
+          <div class="topic-icon" aria-hidden="true"></div>
+          <h2>Industrialization &amp; Gilded Age</h2>
+          <p>Big business, labor, immigration, and urbanization.</p>
+        </a>
+      </div>
+
+      <!-- 7 -->
+      <div class="card topic-card topic-card--progressive-era-imperialism">
+        <a href="/subjects/social-studies/us-history/progressive-era-imperialism.html" class="topic-card-link">
+          <div class="topic-icon" aria-hidden="true"></div>
+          <h2>Progressive Era &amp; Imperialism</h2>
+          <p>Reform movements, women's suffrage, and expanding global power.</p>
+        </a>
+      </div>
+
+      <!-- 8 -->
+      <div class="card topic-card topic-card--world-war-i">
+        <a href="/subjects/social-studies/us-history/world-war-i.html" class="topic-card-link">
+          <div class="topic-icon" aria-hidden="true"></div>
+          <h2>World War I</h2>
+          <p>U.S. entry, the home front, and postwar settlements.</p>
+        </a>
+      </div>
+
+      <!-- 9 -->
+      <div class="card topic-card topic-card--great-depression-new-deal">
+        <a href="/subjects/social-studies/us-history/great-depression-new-deal.html" class="topic-card-link">
+          <div class="topic-icon" aria-hidden="true"></div>
+          <h2>Great Depression &amp; New Deal</h2>
+          <p>Economic collapse, relief programs, and long-term reforms.</p>
+        </a>
+      </div>
+
+      <!-- 10 -->
+      <div class="card topic-card topic-card--world-war-ii">
+        <a href="/subjects/social-studies/us-history/world-war-ii.html" class="topic-card-link">
+          <div class="topic-icon" aria-hidden="true"></div>
+          <h2>World War II</h2>
+          <p>Mobilization, the European and Pacific theaters, and the aftermath.</p>
+        </a>
+      </div>
+
+      <!-- 11 -->
+      <div class="card topic-card topic-card--cold-war">
+        <a href="/subjects/social-studies/us-history/cold-war.html" class="topic-card-link">
+          <div class="topic-icon" aria-hidden="true"></div>
+          <h2>Cold War</h2>
+          <p>Containment, crises, proxy wars, and domestic tensions.</p>
+        </a>
+      </div>
+
+      <!-- 12 -->
+      <div class="card topic-card topic-card--civil-rights">
+        <a href="/subjects/social-studies/us-history/civil-rights.html" class="topic-card-link">
+          <div class="topic-icon" aria-hidden="true"></div>
+          <h2>Civil Rights</h2>
+          <p>Movements for racial equality and expanding civil liberties.</p>
+        </a>
+      </div>
+
+      <!-- 13 -->
+      <div class="card topic-card topic-card--contemporary-us-1970s-present">
+        <a href="/subjects/social-studies/us-history/contemporary-us-1970s-present.html" class="topic-card-link">
+          <div class="topic-icon" aria-hidden="true"></div>
+          <h2>Contemporary America (1970s–Present)</h2>
+          <p>Politics, culture, globalization, and modern U.S. developments.</p>
+        </a>
+      </div>
+    </section>
   </main>
 
   <footer>
-    <p>© 2025 Teach Arcade</p>
+    <p>© <script>document.write(new Date().getFullYear())</script> Teach Arcade. All rights reserved.</p>
   </footer>
 </body>
 </html>
