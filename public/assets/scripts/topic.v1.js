@@ -4,7 +4,7 @@
   if (!page) return;
 
   const TAB = (page.dataset.tab || page.dataset.topic || "").trim();
-  const SHEET_ID = (page.dataset.sheetId || "").trim(); // ✅ NEW: read sheet ID from HTML
+  const SHEET_ID = (page.dataset.sheetId || "").trim(); // read sheet ID from HTML
 
   const listEl = document.getElementById("resource-list");
   const tabsEl = document.getElementById("tabs");
@@ -85,11 +85,54 @@
     return "pill gray";
   };
 
+  // ---- Grade level helpers ----
+  function parseGradeLevels(raw) {
+    const s = safe(raw).toLowerCase();
+    if (!s) return [];
+
+    // split on common separators: / , | ; & and "and"
+    const tokens = s
+      .replace(/\band\b/g, "/")
+      .replace(/&/g, "/")
+      .split(/[\/,|;]+/g)
+      .map(t => t.trim())
+      .filter(Boolean);
+
+    const levels = new Set();
+
+    for (const tok of tokens) {
+      if (tok.includes("elementary")) {
+        levels.add("Elementary");
+      } else if (tok.includes("middle")) {
+        levels.add("Middle School");
+      } else if (tok.includes("high")) {
+        levels.add("High School");
+      }
+    }
+
+    return Array.from(levels);
+  }
+
+  function gradePillClass(level) {
+    const l = safe(level).toLowerCase();
+    if (l === "elementary") return "pill grade-elementary";
+    if (l === "middle school") return "pill grade-middle-school";
+    if (l === "high school") return "pill grade-high-school";
+    return "pill gray";
+  }
+
   const cardHTML = r => {
     const url = toHttps(r.url);
     const category = normalizeCategory(r.category || r.type || "");
     const format = formatLabel(url, r.type);
     const emoji = emojiFor(category);
+
+    // gradeLevel comes from the API (/api/resources) via the sheet "Grade Level" column
+    const gradeLevels = parseGradeLevels(r.gradeLevel || r.grade || "");
+
+    const gradePills = gradeLevels
+      .map(gl => `<span class="${gradePillClass(gl)}">${gl}</span>`)
+      .join("");
 
     return `
       <div class="card">
@@ -98,6 +141,7 @@
         <p class="meta">
           <span class="${pillClass(category)}">${category}</span>
           <span class="${pillClass(format)}">${format}</span>
+          ${gradePills}
         </p>
         ${url ? `<a class="cta" href="${url}" target="_blank" rel="noopener noreferrer">View Resource</a>` : ""}
       </div>
@@ -154,7 +198,8 @@
       const matchesQ = !q ||
         safe(r.title).toLowerCase().includes(q) ||
         safe(r.category).toLowerCase().includes(q) ||
-        safe(r.type).toLowerCase().includes(q);
+        safe(r.type).toLowerCase().includes(q) ||
+        safe(r.gradeLevel).toLowerCase().includes(q); // include grade level in search
       return matchesTab && matchesQ;
     });
     listEl.innerHTML = filtered.length
@@ -162,7 +207,7 @@
       : `<div class="card" style="grid-column:1/-1;">No matching resources yet.</div>`;
   }
 
-  // ✅ UPDATED: include sheetId in the API call
+  // include sheetId in the API call
   async function fetchAPI(tab) {
     const params = new URLSearchParams();
     if (SHEET_ID) params.set("sheetId", SHEET_ID);
