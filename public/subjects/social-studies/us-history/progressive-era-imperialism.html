@@ -5,6 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Progressive Era & Imperialism | U.S. History | Teach Arcade</title>
 
+  <!-- Google AdSense (same client as homepage) -->
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7899890641544647"
+    crossorigin="anonymous"></script>
+
+  <!-- Google Analytics (same GA4 ID as homepage) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NBQHSPW9GH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NBQHSPW9GH');
+  </script>
+
   <!-- Styles & Fonts -->
   <link rel="stylesheet" href="/assets/styles.css?v=1" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet" />
@@ -68,6 +82,14 @@
       background:#fee2e2;
       color:#b91c1c;
     }
+
+    /* Simple ad placeholders (match homepage pattern) */
+    .ad-slot {
+      width: 100%;
+      margin: 16px 0;
+      height: 0;       /* stays collapsed until real ads are added */
+      overflow: hidden;
+    }
   </style>
 </head>
 <body>
@@ -89,12 +111,18 @@
     <h1>Progressive Era &amp; Imperialism</h1>
     <p>Curated lessons, worksheets, primary sources, videos, and activities.</p>
 
+    <!-- Top ad placeholder -->
+    <div class="ad-slot ad-top" aria-label="Advertisement"></div>
+
     <div class="filters-row">
       <input id="searchInput" type="search" placeholder="Search titles…" aria-label="Search resources" />
     </div>
 
     <div id="tabs" class="tabs" role="tablist" aria-label="Resource categories"></div>
     <section id="resource-list" class="card-grid" aria-live="polite"></section>
+
+    <!-- Bottom ad placeholder -->
+    <div class="ad-slot ad-bottom" aria-label="Advertisement"></div>
   </main>
 
   <footer>
