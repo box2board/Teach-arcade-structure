@@ -96,11 +96,12 @@ function parseCSV(text) {
 /** Normalize one CSV row to API shape */
 function normalize(row, topicName, subjectName) {
   // These keys should align with your sheet columns (case-insensitive):
-  // Title | URL | Type | Category | Date Added (others are ignored if present)
+  // Title | URL | Type | Category | Grade Level | Date Added (others are ignored if present)
   const title = row['title'] || row['name'] || '';
   const url = row['url'] || row['link'] || '';
   const type = row['type'] || '';
   const category = row['category'] || row['categories'] || '';
+  const gradeLevel = row['grade level'] || row['grade'] || ''; // <-- NEW
   const added = row['date added'] || row['date'] || '';
 
   // Ensure URLs are absolute https://
@@ -117,6 +118,7 @@ function normalize(row, topicName, subjectName) {
     url: safeUrl,
     type,
     category,
+    gradeLevel, // <-- NEW field in API response
     added,
   };
 }
