@@ -45,11 +45,29 @@
     .tab{appearance:none;border:1px solid #cbd5e1;background:#fff;color:#1f2937;padding:8px 12px;border-radius:999px;cursor:pointer;font:600 14px/1 Poppins,sans-serif}
     .tab[aria-selected="true"]{background:#2563eb;color:#fff;border-color:#2563eb}
     .pill{display:inline-block;padding:4px 8px;border-radius:999px;font:600 12px/1 Nunito,sans-serif;background:#eef2ff;color:#3730a3;margin-right:6px}
-    .pill.gray{background:#f1f5f9;color:#334155}.pill.green{background:#ecfdf5;color:#065f46}.pill.orange{background:#fff7ed;color:#9a3412}.pill.blue{background:#eff6ff;color:#1d4ed8}
+    .pill.gray{background:#f1f5f9;color:#334155}
+    .pill.green{background:#ecfdf5;color:#065f46}
+    .pill.orange{background:#fff7ed;color:#9a3412}
+    .pill.blue{background:#eff6ff;color:#1d4ed8}
     .filters-row{display:flex;gap:10px;align-items:center;margin:12px 0 8px}
     .filters-row input[type="search"]{flex:1;min-width:220px;padding:10px 12px;border:1px solid #cbd5e1;border-radius:10px}
     #resource-list.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-    .card h3{margin:0 0 8px}.meta{margin:0 0 12px;color:#475569;font:600 13px/1.4 Nunito,sans-serif}
+    .card h3{margin:0 0 8px}
+    .meta{margin:0 0 12px;color:#475569;font:600 13px/1.4 Nunito,sans-serif}
+
+    /* Grade level tag variants (will be applied by topic.v1.js) */
+    .pill.grade-elementary{
+      background:#e0f2fe;
+      color:#075985;
+    }
+    .pill.grade-middle-school{
+      background:#fef3c7;
+      color:#92400e;
+    }
+    .pill.grade-high-school{
+      background:#fee2e2;
+      color:#b91c1c;
+    }
   </style>
 </head>
 <body>
