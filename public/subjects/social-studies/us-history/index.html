@@ -6,6 +6,89 @@
   <title>U.S. History | Teach Arcade</title>
   <link rel="stylesheet" href="/assets/styles.css"/>
   <meta name="description" content="Free U.S. History resources organized by unit: Colonial America through the present. Lessons, worksheets, primary sources, and activities."/>
+
+  <!-- Topic icon styles for U.S. History tiles -->
+  <style>
+    .topic-card-link {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .topic-card-link h2 {
+      margin-top: 0;
+      margin-bottom: 6px;
+    }
+
+    .topic-card-link p {
+      margin: 0;
+    }
+
+    .topic-icon {
+      width: 72px;
+      height: 72px;
+      margin-bottom: 12px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    /* Per-topic icon hooks — add matching image files to see them appear */
+
+    .topic-card--colonial-america .topic-icon {
+      background-image: url("/assets/images/us-history/icons/colonial-america.png");
+    }
+
+    .topic-card--american-revolution .topic-icon {
+      background-image: url("/assets/images/us-history/icons/american-revolution.png");
+    }
+
+    .topic-card--constitution-early-republic .topic-icon {
+      background-image: url("/assets/images/us-history/icons/constitution-early-republic.png");
+    }
+
+    .topic-card--expansion-reform-jacksonian-era .topic-icon {
+      background-image: url("/assets/images/us-history/icons/expansion-reform-jacksonian-era.png");
+    }
+
+    .topic-card--civil-war-reconstruction .topic-icon {
+      background-image: url("/assets/images/us-history/icons/civil-war-reconstruction.png");
+    }
+
+    .topic-card--industrialization-gilded-age .topic-icon {
+      background-image: url("/assets/images/us-history/icons/industrialization-gilded-age.png");
+    }
+
+    .topic-card--progressive-era-imperialism .topic-icon {
+      background-image: url("/assets/images/us-history/icons/progressive-era-imperialism.png");
+    }
+
+    .topic-card--world-war-i .topic-icon {
+      background-image: url("/assets/images/us-history/icons/world-war-i.png");
+    }
+
+    .topic-card--great-depression-new-deal .topic-icon {
+      background-image: url("/assets/images/us-history/icons/great-depression-new-deal.png");
+    }
+
+    .topic-card--world-war-ii .topic-icon {
+      background-image: url("/assets/images/us-history/icons/world-war-ii.png");
+    }
+
+    .topic-card--cold-war .topic-icon {
+      background-image: url("/assets/images/us-history/icons/cold-war.png");
+    }
+
+    .topic-card--civil-rights .topic-icon {
+      background-image: url("/assets/images/us-history/icons/civil-rights.png");
+    }
+
+    .topic-card--contemporary-us-1970s-present .topic-icon {
+      background-image: url("/assets/images/us-history/icons/contemporary-us-1970s-present.png");
+    }
+  </style>
 </head>
 <body>
   <!-- Site Header -->
@@ -30,81 +113,120 @@
 
     <section class="grid" style="margin-top:18px">
       <!-- 1 -->
-      <div class="card">
-        <h2><a href="/subjects/social-studies/us-history/colonial-america.html">Colonial America</a></h2>
-        <p>Life in the colonies, regional differences, and early self-government.</p>
+      <div class="card topic-card topic-card--colonial-america">
+        <a href="/subjects/social-studies/us-history/colonial-america.html" class="topic-card-link">
+          <div class="topic-icon" aria-hidden="true"></div>
+          <h2>Colonial America</h2>
+          <p>Life in the colonies, regional differences, and early self-government.</p>
+        </a>
       </div>
 
       <!-- 2 -->
-      <div class="card">
-        <h2><a href="/subjects/social-studies/us-history/american-revolution.html">American Revolution</a></h2>
-        <p>Causes, turning points, founding documents, and independence.</p>
+      <div class="card topic-card topic-card--american-revolution">
+        <a href="/subjects/social-studies/us-history/american-revolution.html" class="topic-card-link">
+          <div class="topic-icon" aria-hidden="true"></div>
+          <h2>American Revolution</h2>
+          <p>Causes, turning points, founding documents, and independence.</p>
+        </a>
       </div>
 
       <!-- 3 -->
-      <div class="card">
-        <h2><a href="/subjects/social-studies/us-history/constitution-early-republic.html">Constitution &amp; Early Republic</a></h2>
-        <p>Drafting the Constitution, federalism, and the nation’s first administrations.</p>
+      <div class="card topic-card topic-card--constitution-early-republic">
+        <a href="/subjects/social-studies/us-history/constitution-early-republic.html" class="topic-card-link">
+          <div class="topic-icon" aria-hidden="true"></div>
+          <h2>Constitution &amp; Early Republic</h2>
+          <p>Drafting the Constitution, federalism, and the nation’s first administrations.</p>
+        </a>
       </div>
 
       <!-- 4 -->
-      <div class="card">
-        <h2><a href="/subjects/social-studies/us-history/expansion-reform-jacksonian-era.html">Expansion &amp; Reform (Jacksonian Era)</a></h2>
-        <p>Manifest Destiny, democratization, reform movements, and Native displacement.</p>
+      <div class="card topic-card topic-card--expansion-reform-jacksonian-era">
+        <a href="/subjects/social-studies/us-history/expansion-reform-jacksonian-era.html" class="topic-card-link">
+          <div class="topic-icon" aria-hidden="true"></div>
+          <h2>Expansion &amp; Reform (Jacksonian Era)</h2>
+          <p>Manifest Destiny, democratization, reform movements, and Native displacement.</p>
+        </a>
       </div>
 
       <!-- 5 -->
-      <div class="card">
-        <h2><a href="/subjects/social-studies/us-history/civil-war-reconstruction.html">Civil War &amp; Reconstruction</a></h2>
-        <p>Sectional crisis, war, emancipation, and rebuilding the Union.</p>
+      <div class="card topic-card topic-card--civil-war-reconstruction">
+        <a href="/subjects/social-studies/us-history/civil-war-reconstruction.html" class="topic-card-link">
+          <div class="topic-icon" aria-hidden="true"></div>
+          <h2>Civil War &amp; Reconstruction</h2>
+          <p>Sectional crisis, war, emancipation, and rebuilding the Union.</p>
+        </a>
       </div>
 
       <!-- 6 -->
-      <div class="card">
-        <h2><a href="/subjects/social-studies/us-history/industrialization-gilded-age.html">Industrialization &amp; Gilded Age</a></h2>
-        <p>Big business, labor, immigration, and urbanization.</p>
+      <div class="card topic-card topic-card--industrialization-gilded-age">
+        <a href="/subjects/social-studies/us-history/industrialization-gilded-age.html" class="topic-card-link">
+          <div class="topic-icon" aria-hidden="true"></div>
+          <h2>Industrialization &amp; Gilded Age</h2>
+          <p>Big business, labor, immigration, and urbanization.</p>
+        </a>
       </div>
 
       <!-- 7 -->
-      <div class="card">
-        <h2><a href="/subjects/social-studies/us-history/progressive-era-imperialism.html">Progressive Era &amp; Imperialism</a></h2>
-        <p>Reform movements, women's suffrage, and expanding global power.</p>
+      <div class="card topic-card topic-card--progressive-era-imperialism">
+        <a href="/subjects/social-studies/us-history/progressive-era-imperialism.html" class="topic-card-link">
+          <div class="topic-icon" aria-hidden="true"></div>
+          <h2>Progressive Era &amp; Imperialism</h2>
+          <p>Reform movements, women's suffrage, and expanding global power.</p>
+        </a>
       </div>
 
       <!-- 8 -->
-      <div class="card">
-        <h2><a href="/subjects/social-studies/us-history/world-war-i.html">World War I</a></h2>
-        <p>U.S. entry, the home front, and postwar settlements.</p>
+      <div class="card topic-card topic-card--world-war-i">
+        <a href="/subjects/social-studies/us-history/world-war-i.html" class="topic-card-link">
+          <div class="topic-icon" aria-hidden="true"></div>
+          <h2>World War I</h2>
+          <p>U.S. entry, the home front, and postwar settlements.</p>
+        </a>
       </div>
 
       <!-- 9 -->
-      <div class="card">
-        <h2><a href="/subjects/social-studies/us-history/great-depression-new-deal.html">Great Depression &amp; New Deal</a></h2>
-        <p>Economic collapse, relief programs, and long-term reforms.</p>
+      <div class="card topic-card topic-card--great-depression-new-deal">
+        <a href="/subjects/social-studies/us-history/great-depression-new-deal.html" class="topic-card-link">
+          <div class="topic-icon" aria-hidden="true"></div>
+          <h2>Great Depression &amp; New Deal</h2>
+          <p>Economic collapse, relief programs, and long-term reforms.</p>
+        </a>
       </div>
 
       <!-- 10 -->
-      <div class="card">
-        <h2><a href="/subjects/social-studies/us-history/world-war-ii.html">World War II</a></h2>
-        <p>Mobilization, the European and Pacific theaters, and the aftermath.</p>
+      <div class="card topic-card topic-card--world-war-ii">
+        <a href="/subjects/social-studies/us-history/world-war-ii.html" class="topic-card-link">
+          <div class="topic-icon" aria-hidden="true"></div>
+          <h2>World War II</h2>
+          <p>Mobilization, the European and Pacific theaters, and the aftermath.</p>
+        </a>
       </div>
 
       <!-- 11 -->
-      <div class="card">
-        <h2><a href="/subjects/social-studies/us-history/cold-war.html">Cold War</a></h2>
-        <p>Containment, crises, proxy wars, and domestic tensions.</p>
+      <div class="card topic-card topic-card--cold-war">
+        <a href="/subjects/social-studies/us-history/cold-war.html" class="topic-card-link">
+          <div class="topic-icon" aria-hidden="true"></div>
+          <h2>Cold War</h2>
+          <p>Containment, crises, proxy wars, and domestic tensions.</p>
+        </a>
       </div>
 
       <!-- 12 -->
-      <div class="card">
-        <h2><a href="/subjects/social-studies/us-history/civil-rights.html">Civil Rights</a></h2>
-        <p>Movements for racial equality and expanding civil liberties.</p>
+      <div class="card topic-card topic-card--civil-rights">
+        <a href="/subjects/social-studies/us-history/civil-rights.html" class="topic-card-link">
+          <div class="topic-icon" aria-hidden="true"></div>
+          <h2>Civil Rights</h2>
+          <p>Movements for racial equality and expanding civil liberties.</p>
+        </a>
       </div>
 
       <!-- 13 -->
-      <div class="card">
-        <h2><a href="/subjects/social-studies/us-history/contemporary-us-1970s-present.html">Contemporary America (1970s–Present)</a></h2>
-        <p>Politics, culture, globalization, and modern U.S. developments.</p>
+      <div class="card topic-card topic-card--contemporary-us-1970s-present">
+        <a href="/subjects/social-studies/us-history/contemporary-us-1970s-present.html" class="topic-card-link">
+          <div class="topic-icon" aria-hidden="true"></div>
+          <h2>Contemporary America (1970s–Present)</h2>
+          <p>Politics, culture, globalization, and modern U.S. developments.</p>
+        </a>
       </div>
     </section>
   </main>
