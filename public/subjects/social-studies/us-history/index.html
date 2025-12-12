@@ -3,9 +3,81 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>U.S. History | Teach Arcade</title>
-  <link rel="stylesheet" href="/assets/styles.css"/>
-  <meta name="description" content="Free U.S. History resources organized by unit: Colonial America through the present. Lessons, worksheets, primary sources, and activities."/>
+  <title>U.S. History | Social Studies | Teach Arcade</title>
+
+  <!-- Google AdSense (same client as homepage) -->
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7899890641544647"
+    crossorigin="anonymous"></script>
+
+  <!-- Google Analytics (same GA4 ID as homepage) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NBQHSPW9GH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NBQHSPW9GH');
+  </script>
+
+  <!-- Styles & Fonts -->
+  <link rel="stylesheet" href="/assets/styles.css?v=1"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png"/>
+
+  <!-- SEO & Social -->
+  <meta name="description" content="Free U.S. History resources organized by unit: Colonial America through the present. Lessons, worksheets, primary sources, and classroom activities—100% free on Teach Arcade."/>
+  <link rel="canonical" href="https://teacharcade.com/subjects/social-studies/us-history/index.html"/>
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Teach Arcade" />
+  <meta property="og:title" content="U.S. History — Free Teaching Resources | Teach Arcade" />
+  <meta property="og:description" content="Browse free U.S. History resources by unit—Colonial America to Contemporary America. Lessons, worksheets, primary sources, and activities." />
+  <meta property="og:url" content="https://teacharcade.com/subjects/social-studies/us-history/index.html" />
+  <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="U.S. History — Free Teaching Resources | Teach Arcade" />
+  <meta name="twitter:description" content="Free U.S. History resources organized by unit: lessons, worksheets, primary sources, and activities." />
+  <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+
+  <!-- Structured Data: Breadcrumbs -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://teacharcade.com/"},
+      {"@type":"ListItem","position":2,"name":"Subjects","item":"https://teacharcade.com/subjects/index.html"},
+      {"@type":"ListItem","position":3,"name":"Social Studies","item":"https://teacharcade.com/subjects/social-studies/index.html"},
+      {"@type":"ListItem","position":4,"name":"U.S. History","item":"https://teacharcade.com/subjects/social-studies/us-history/index.html"}
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: CollectionPage -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"CollectionPage",
+    "name":"U.S. History",
+    "url":"https://teacharcade.com/subjects/social-studies/us-history/index.html",
+    "isPartOf":{
+      "@type":"WebSite",
+      "name":"Teach Arcade",
+      "url":"https://teacharcade.com/"
+    },
+    "about":[
+      {"@type":"Thing","name":"U.S. History"},
+      {"@type":"Thing","name":"Social Studies"},
+      {"@type":"Thing","name":"American History Curriculum"},
+      {"@type":"Thing","name":"Primary Source Analysis"},
+      {"@type":"Thing","name":"DBQ"},
+      {"@type":"Thing","name":"Lesson Plans"},
+      {"@type":"Thing","name":"Worksheets"},
+      {"@type":"Thing","name":"Classroom Activities"}
+    ]
+  }
+  </script>
 
   <!-- Topic icon styles for U.S. History tiles -->
   <style>
@@ -19,16 +91,11 @@
       height: 100%;
       text-align: center;
     }
-
     .topic-card-link h2 {
-      margin-top: 12px;   /* space below icon */
+      margin-top: 12px;
       margin-bottom: 6px;
     }
-
-    .topic-card-link p {
-      margin: 0;
-    }
-
+    .topic-card-link p { margin: 0; }
     .topic-icon {
       width: 110px;
       height: 110px;
@@ -38,81 +105,70 @@
       background-position: center;
     }
 
-    /* Per-topic icon hooks — add matching image files to see them appear */
+    /* Per-topic icon hooks */
+    .topic-card--colonial-america .topic-icon { background-image: url("/assets/images/us-history/icons/colonial-america.png"); }
+    .topic-card--american-revolution .topic-icon { background-image: url("/assets/images/us-history/icons/american-revolution.png"); }
+    .topic-card--constitution-early-republic .topic-icon { background-image: url("/assets/images/us-history/icons/constitution-early-republic.png"); }
+    .topic-card--expansion-reform-jacksonian-era .topic-icon { background-image: url("/assets/images/us-history/icons/expansion-reform-jacksonian-era.png"); }
+    .topic-card--civil-war-reconstruction .topic-icon { background-image: url("/assets/images/us-history/icons/civil-war-reconstruction.png"); }
+    .topic-card--industrialization-gilded-age .topic-icon { background-image: url("/assets/images/us-history/icons/industrialization-gilded-age.png"); }
+    .topic-card--progressive-era-imperialism .topic-icon { background-image: url("/assets/images/us-history/icons/progressive-era-imperialism.png"); }
+    .topic-card--world-war-i .topic-icon { background-image: url("/assets/images/us-history/icons/world-war-i.png"); }
+    .topic-card--great-depression-new-deal .topic-icon { background-image: url("/assets/images/us-history/icons/great-depression-new-deal.png"); }
+    .topic-card--world-war-ii .topic-icon { background-image: url("/assets/images/us-history/icons/world-war-ii.png"); }
+    .topic-card--cold-war .topic-icon { background-image: url("/assets/images/us-history/icons/cold-war.png"); }
+    .topic-card--civil-rights .topic-icon { background-image: url("/assets/images/us-history/icons/civil-rights.png"); }
+    .topic-card--contemporary-us-1970s-present .topic-icon { background-image: url("/assets/images/us-history/icons/contemporary-us-1970s-present.png"); }
 
-    .topic-card--colonial-america .topic-icon {
-      background-image: url("/assets/images/us-history/icons/colonial-america.png");
-    }
+    /* Simple ad placeholders */
+    .ad-slot { width: 100%; margin: 16px 0; height: 0; overflow: hidden; }
 
-    .topic-card--american-revolution .topic-icon {
-      background-image: url("/assets/images/us-history/icons/american-revolution.png");
-    }
-
-    .topic-card--constitution-early-republic .topic-icon {
-      background-image: url("/assets/images/us-history/icons/constitution-early-republic.png");
-    }
-
-    .topic-card--expansion-reform-jacksonian-era .topic-icon {
-      background-image: url("/assets/images/us-history/icons/expansion-reform-jacksonian-era.png");
-    }
-
-    .topic-card--civil-war-reconstruction .topic-icon {
-      background-image: url("/assets/images/us-history/icons/civil-war-reconstruction.png");
-    }
-
-    .topic-card--industrialization-gilded-age .topic-icon {
-      background-image: url("/assets/images/us-history/icons/industrialization-gilded-age.png");
-    }
-
-    .topic-card--progressive-era-imperialism .topic-icon {
-      background-image: url("/assets/images/us-history/icons/progressive-era-imperialism.png");
-    }
-
-    .topic-card--world-war-i .topic-icon {
-      background-image: url("/assets/images/us-history/icons/world-war-i.png");
-    }
-
-    .topic-card--great-depression-new-deal .topic-icon {
-      background-image: url("/assets/images/us-history/icons/great-depression-new-deal.png");
-    }
-
-    .topic-card--world-war-ii .topic-icon {
-      background-image: url("/assets/images/us-history/icons/world-war-ii.png");
-    }
-
-    .topic-card--cold-war .topic-icon {
-      background-image: url("/assets/images/us-history/icons/cold-war.png");
-    }
-
-    .topic-card--civil-rights .topic-icon {
-      background-image: url("/assets/images/us-history/icons/civil-rights.png");
-    }
-
-    .topic-card--contemporary-us-1970s-present .topic-icon {
-      background-image: url("/assets/images/us-history/icons/contemporary-us-1970s-present.png");
+    /* SEO intro text */
+    .topic-intro p{
+      font: 400 16px/1.6 Nunito, system-ui, sans-serif;
+      color:#475569;
+      margin:0 0 12px;
+      max-width: 980px;
     }
   </style>
 </head>
+
 <body>
-  <!-- Site Header -->
-  <header>
-    <div class="header-left">
-      <a href="/" class="logo-link">
-        <img src="/assets/images/teach-arcade-logo.png" alt="Teach Arcade Logo" class="site-logo">
-      </a>
-      <span class="brand">Teach Arcade</span>
-    </div>
-    <nav>
-      <a href="/">Home</a>
-      <a href="/subjects/index.html">Subjects</a>
-      <a href="/submit.html">Submit</a>
-      <a href="/about.html">About</a>
-    </nav>
-  </header>
+  <!-- Global Header (nav.js injects the header HTML) -->
+  <div id="site-header"></div>
+  <script src="/assets/scripts/nav.js" defer></script>
 
   <main class="container">
+    <nav class="breadcrumbs">
+      <a href="/">Home</a> ›
+      <a href="/subjects/index.html">Subjects</a> ›
+      <a href="/subjects/social-studies/index.html">Social Studies</a> ›
+      U.S. History
+    </nav>
+
     <h1>U.S. History</h1>
     <p>Explore comprehensive lessons, activities, and resources covering the major eras of American history.</p>
+
+    <!-- SEO INTRO SECTION -->
+    <section class="topic-intro">
+      <p>
+        Teach Arcade’s U.S. History hub organizes free classroom resources by unit so you can plan faster and teach deeper. Each topic page includes
+        ready-to-use materials—worksheets, lesson plans, primary sources, videos, projects, and interactive activities—designed for middle and high school
+        social studies classrooms.
+      </p>
+      <p>
+        Use these units to build background knowledge, practice historical thinking, and support DBQ-style writing. Many resources work well for stations,
+        inquiry lessons, document analysis, and review days. Whether you’re introducing a new era or preparing students for a unit test, you can quickly
+        locate strong materials without paywalls.
+      </p>
+      <p>
+        Browse by era below—from Colonial America and the American Revolution through the Civil War, industrial growth, world wars, the Cold War, civil rights,
+        and contemporary issues. New resources are added regularly as Teach Arcade expands its free library for teachers.
+      </p>
+    </section>
+
+    <!-- Top ad placeholder -->
+    <div class="ad-slot ad-top" aria-label="Advertisement"></div>
 
     <section class="grid" style="margin-top:18px">
       <!-- 1 -->
@@ -232,10 +288,15 @@
         </a>
       </div>
     </section>
+
+    <!-- Bottom ad placeholder -->
+    <div class="ad-slot ad-bottom" aria-label="Advertisement"></div>
   </main>
 
   <footer>
-    <p>© <script>document.write(new Date().getFullYear())</script> Teach Arcade. All rights reserved.</p>
+    © <script>document.write(new Date().getFullYear())</script> Teach Arcade •
+    <a href="/privacy.html">Privacy</a> •
+    <a href="/terms.html">Terms</a>
   </footer>
 </body>
 </html>
