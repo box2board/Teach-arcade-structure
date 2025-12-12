@@ -176,7 +176,7 @@
 
     /* Hamburger */
     .hamburger {
-      display:none;
+      display:none; /* ✅ stays hidden on desktop */
       background:transparent;
       border:0;
       width:44px;
@@ -185,12 +185,13 @@
       margin:0;
       cursor:pointer;
 
-      /* ✅ FORCE proper layout even if other CSS hits buttons */
+      /* ✅ safe layout even if other CSS hits buttons */
       appearance:none;
       -webkit-appearance:none;
       align-self:center;
       flex:0 0 auto;
-      display:flex;
+
+      /* ✅ flex properties WITHOUT forcing display on desktop */
       flex-direction:column;
       justify-content:center;
       align-items:center;
@@ -201,7 +202,7 @@
       display:block;
       width:26px;
       height:2px;
-      margin:0;                 /* ✅ kill outside margin rules */
+      margin:0;
       padding:0;
       background:#e5e7eb;
       border-radius:2px;
@@ -214,7 +215,7 @@
 
     /* Mobile menu layout + tap-to-open dropdowns */
     @media (max-width: 880px) {
-      .hamburger { display:flex; }  /* ✅ was display:block, now flex for perfect bars */
+      .hamburger { display:flex; } /* ✅ ONLY show on mobile */
 
       .main-nav {
         position:absolute; left:0; right:0; top:60px;
