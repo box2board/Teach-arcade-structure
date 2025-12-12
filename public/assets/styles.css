@@ -179,6 +179,7 @@ footer {
   }
 }
 
+/* (kept from your file) */
 .site-logo { height: 40px; width: auto; border-radius: 4px; }
 .header-left { display: flex; align-items: center; gap: 10px; }
 
@@ -214,4 +215,71 @@ footer {
 .breadcrumbs a:hover {
   color: #2563eb;
   text-decoration: underline;
+}
+
+/* =========================================================
+   NAV.JS HEADER OVERRIDES (keeps header uniform site-wide)
+   (This block MUST stay at the VERY BOTTOM of styles.css)
+   ========================================================= */
+
+/* Override the global header{} rules specifically for the injected nav.js header */
+header.main-header {
+  background: #0f172a !important;
+  color: #fff !important;
+  display: block !important;
+  padding: 0 !important;
+  border-bottom: 1px solid #0b1226 !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1000 !important;
+}
+
+/* nav.js uses .header-row inside .main-header */
+header.main-header .header-row {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 10px 20px !important;
+}
+
+/* Ensure logo/brand match your site fonts */
+header.main-header .brand {
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 18px !important;
+}
+
+/* Stop the global nav a{} from taking over dropdown/nav styling */
+header.main-header .main-nav a {
+  color: #e5e7eb !important;
+  text-decoration: none !important;
+  margin: 0 !important; /* your global nav a has margin: 0 12px; */
+  font-weight: 600 !important;
+  font-family: 'Nunito', sans-serif !important;
+}
+header.main-header .main-nav a:hover {
+  color: #93c5fd !important;
+}
+
+/* Make the Subjects/Games triggers look like links too */
+header.main-header .dd-trigger,
+header.main-header .dd-sub-trigger {
+  color: #e5e7eb !important;
+  font-weight: 600 !important;
+  font-family: 'Nunito', sans-serif !important;
+}
+header.main-header .dd-trigger:hover,
+header.main-header .dd-sub-trigger:hover {
+  color: #93c5fd !important;
+}
+
+/* Prevent your global mobile rule from breaking nav.js header layout */
+@media (max-width: 640px) {
+  header.main-header {
+    display: block !important;
+  }
+  header.main-header .header-row {
+    flex-direction: row !important;
+    align-items: center !important;
+  }
 }
