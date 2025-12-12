@@ -5,10 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Civil Rights | U.S. History | Teach Arcade</title>
 
-  <link rel="stylesheet" href="/assets/styles.css" />
+  <!-- Google AdSense (same client as homepage) -->
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7899890641544647"
+    crossorigin="anonymous"></script>
+
+  <!-- Google Analytics (same GA4 ID as homepage) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NBQHSPW9GH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NBQHSPW9GH');
+  </script>
+
+  <!-- Styles & Fonts -->
+  <link rel="stylesheet" href="/assets/styles.css?v=1" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
 
+  <!-- SEO & Social -->
   <meta name="description" content="Free Civil Rights resources: lessons, worksheets, primary sources, and classroom activities for U.S. History." />
   <link rel="canonical" href="https://teacharcade.com/subjects/social-studies/us-history/civil-rights.html" />
   <meta property="og:type" content="website" />
@@ -22,16 +38,79 @@
   <meta name="twitter:description" content="Curated lessons, worksheets, primary sources, videos, and activities for U.S. History." />
   <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
 
+  <!-- Structured Data: Breadcrumbs -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://teacharcade.com/"},
+      {"@type":"ListItem","position":2,"name":"Subjects","item":"https://teacharcade.com/subjects/"},
+      {"@type":"ListItem","position":3,"name":"Social Studies","item":"https://teacharcade.com/subjects/social-studies/"},
+      {"@type":"ListItem","position":4,"name":"U.S. History","item":"https://teacharcade.com/subjects/social-studies/us-history/"},
+      {"@type":"ListItem","position":5,"name":"Civil Rights","item":"https://teacharcade.com/subjects/social-studies/us-history/civil-rights.html"}
+    ]
+  }
+  </script>
+
+  <!-- Topic Explorer micro styles -->
   <style>
-    .tabs{display:flex;gap:10px;flex-wrap:wrap;align-items:center;background:#f1f5f9;border:1px solid #e5e7eb;border-radius:12px;padding:10px;margin:18px 0 16px}
-    .tab{appearance:none;border:1px solid #cbd5e1;background:#fff;color:#1f2937;padding:8px 12px;border-radius:999px;cursor:pointer;font:600 14px/1 Poppins,sans-serif}
+    .tabs{
+      display:flex;gap:10px;flex-wrap:wrap;align-items:center;
+      background:#f1f5f9;border:1px solid #e5e7eb;border-radius:12px;
+      padding:10px;margin:18px 0 16px
+    }
+    .tab{
+      appearance:none;border:1px solid #cbd5e1;background:#fff;color:#1f2937;
+      padding:8px 12px;border-radius:999px;cursor:pointer;
+      font:600 14px/1 Poppins,sans-serif
+    }
     .tab[aria-selected="true"]{background:#2563eb;color:#fff;border-color:#2563eb}
-    .pill{display:inline-block;padding:4px 8px;border-radius:999px;font:600 12px/1 Nunito,sans-serif;background:#eef2ff;color:#3730a3;margin-right:6px}
-    .pill.gray{background:#f1f5f9;color:#334155}.pill.green{background:#ecfdf5;color:#065f46}.pill.orange{background:#fff7ed;color:#9a3412}.pill.blue{background:#eff6ff;color:#1d4ed8}
-    .filters-row{display:flex;gap:10px;align-items:center;margin:12px 0 8px}
-    .filters-row input[type="search"]{flex:1;min-width:220px;padding:10px 12px;border:1px solid #cbd5e1;border-radius:10px}
-    #resource-list.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-    .card h3{margin:0 0 8px}.meta{margin:0 0 12px;color:#475569;font:600 13px/1.4 Nunito,sans-serif}
+    .pill{
+      display:inline-block;padding:4px 8px;border-radius:999px;
+      font:600 12px/1 Nunito,sans-serif;background:#eef2ff;color:#3730a3;
+      margin-right:6px
+    }
+    .pill.gray{background:#f1f5f9;color:#334155}
+    .pill.green{background:#ecfdf5;color:#065f46}
+    .pill.orange{background:#fff7ed;color:#9a3412}
+    .pill.blue{background:#eff6ff;color:#1d4ed8}
+
+    /* Grade level tag variants */
+    .pill.grade-elementary{background:#e0f2fe;color:#075985}
+    .pill.grade-middle-school{background:#fef3c7;color:#92400e}
+    .pill.grade-high-school{background:#fee2e2;color:#b91c1c}
+
+    .filters-row{
+      display:flex;gap:10px;align-items:center;
+      margin:12px 0 8px
+    }
+    .filters-row input[type="search"]{
+      flex:1;min-width:220px;padding:10px 12px;
+      border:1px solid #cbd5e1;border-radius:10px
+    }
+    #resource-list.card-grid{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:16px
+    }
+    .card h3{margin:0 0 8px}
+    .meta{margin:0 0 12px;color:#475569;font:600 13px/1.4 Nunito,sans-serif}
+
+    /* Simple ad placeholders */
+    .ad-slot {
+      width: 100%;
+      margin: 16px 0;
+      height: 0;
+      overflow: hidden;
+    }
+
+    /* Topic intro text */
+    .topic-intro p {
+      font: 400 16px/1.6 Nunito, system-ui, sans-serif;
+      color: #475569;
+      margin: 0 0 12px;
+      max-width: 900px;
+    }
   </style>
 </head>
 
@@ -54,12 +133,31 @@
     <h1>Civil Rights</h1>
     <p>Curated lessons, worksheets, primary sources, videos, and activities.</p>
 
+    <!-- SEO INTRO SECTION -->
+    <section class="topic-intro">
+      <p>
+        The Civil Rights Movement represents a critical chapter in U.S. history, as Americans organized to challenge segregation, discrimination, and unequal treatment under the law. This era focuses on the struggle for racial equality in the mid-20th century, particularly the efforts of African Americans to secure voting rights, equal access to public spaces, fair employment opportunities, and legal protections guaranteed by the Constitution.
+      </p>
+      <p>
+        Students studying civil rights examine key events such as Brown v. Board of Education, the Montgomery Bus Boycott, the Birmingham Campaign, the March on Washington, and the passage of the Civil Rights Act of 1964 and Voting Rights Act of 1965. The movement highlights the leadership of figures like Martin Luther King Jr., Rosa Parks, Malcolm X, and many grassroots organizers, while also addressing resistance to desegregation and the role of federal government intervention.
+      </p>
+      <p>
+        The resources on this page support instruction on nonviolent protest, court cases, legislation, social movements, and the long-term impact of civil rights activism. Teachers can use these materials for primary source analysis, DBQs, discussion activities, simulations, projects, and assessments aligned with middle and high school U.S. History standards.
+      </p>
+    </section>
+
+    <!-- Top ad placeholder -->
+    <div class="ad-slot ad-top" aria-label="Advertisement"></div>
+
     <div class="filters-row">
       <input id="searchInput" type="search" placeholder="Search titles…" aria-label="Search resources" />
     </div>
 
     <div id="tabs" class="tabs" role="tablist" aria-label="Resource categories"></div>
     <section id="resource-list" class="card-grid" aria-live="polite"></section>
+
+    <!-- Bottom ad placeholder -->
+    <div class="ad-slot ad-bottom" aria-label="Advertisement"></div>
   </main>
 
   <footer>
