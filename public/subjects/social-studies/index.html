@@ -66,9 +66,37 @@
     "itemListElement":[
       {"@type":"ListItem","position":1,"name":"U.S. History","url":"https://teacharcade.com/subjects/social-studies/us-history/index.html"},
       {"@type":"ListItem","position":2,"name":"World History","url":"https://teacharcade.com/subjects/social-studies/world-history/index.html"},
-      {"@type":"ListItem","position":3,"name":"Government & Civics","url":"https://teacharcade.com/subjects/social-studies/government-civics/index.html"},
+      {"@type":"ListItem","position":3,"name":"Government & Civics","url":"https://teacharcade.com/subjects/social-studies/government-political-science/index.html"},
       {"@type":"ListItem","position":4,"name":"Geography","url":"https://teacharcade.com/subjects/social-studies/geography/index.html"},
       {"@type":"ListItem","position":5,"name":"Economics","url":"https://teacharcade.com/subjects/social-studies/economics/index.html"}
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: CollectionPage (content-quality signal) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"CollectionPage",
+    "name":"Social Studies",
+    "url":"https://teacharcade.com/subjects/social-studies/index.html",
+    "isPartOf":{
+      "@type":"WebSite",
+      "name":"Teach Arcade",
+      "url":"https://teacharcade.com/"
+    },
+    "about":[
+      {"@type":"Thing","name":"Social Studies"},
+      {"@type":"Thing","name":"U.S. History"},
+      {"@type":"Thing","name":"World History"},
+      {"@type":"Thing","name":"Government & Civics"},
+      {"@type":"Thing","name":"Geography"},
+      {"@type":"Thing","name":"Economics"},
+      {"@type":"Thing","name":"Primary Sources"},
+      {"@type":"Thing","name":"DBQ"},
+      {"@type":"Thing","name":"Lesson Plans"},
+      {"@type":"Thing","name":"Worksheets"},
+      {"@type":"Thing","name":"Classroom Activities"}
     ]
   }
   </script>
@@ -76,6 +104,14 @@
   <style>
     /* Collapsed ad placeholders (ready for ads later) */
     .ad-slot { width: 100%; margin: 16px 0; height: 0; overflow: hidden; }
+
+    /* SEO intro text */
+    .topic-intro p{
+      font: 400 16px/1.6 Nunito, system-ui, sans-serif;
+      color:#475569;
+      margin:0 0 12px;
+      max-width: 980px;
+    }
 
     /* Coming Soon overlay system:
        Add class "coming-soon" to a card to enable it. */
@@ -110,8 +146,31 @@
   <script src="/assets/scripts/nav.js?v=3" defer></script>
 
   <main class="container">
+    <nav class="breadcrumbs">
+      <a href="/">Home</a> ›
+      <a href="/subjects/index.html">Subjects</a> ›
+      Social Studies
+    </nav>
+
     <h1>Social Studies Lessons &amp; Classroom Resources</h1>
     <p>Select a Social Studies course to find free lessons, worksheets, primary sources, activities, and review resources for your classroom.</p>
+
+    <!-- SEO INTRO SECTION (major AdSense/content quality boost) -->
+    <section class="topic-intro">
+      <p>
+        Teach Arcade’s Social Studies hub helps teachers find classroom-ready resources fast—organized by course and built for real instruction.
+        Each section includes free materials such as lesson plans, worksheets, primary sources, guided notes, projects, and review activities that support
+        historical thinking, civic reasoning, map skills, and economic decision-making.
+      </p>
+      <p>
+        These collections work well for stations, inquiry lessons, DBQ-style writing, document analysis, test prep, and sub days. If you’re planning a new unit
+        or building a standards-based curriculum, you can browse by course below and quickly pull resources without paywalls.
+      </p>
+      <p>
+        Start with U.S. History and World History for chronological units and major eras, use Government &amp; Civics for constitutional principles and civic participation,
+        explore Geography for regions and human-environment interactions, and use Economics for markets, tradeoffs, and real-world financial literacy connections.
+      </p>
+    </section>
 
     <!-- Top Ad Placeholder -->
     <div class="ad-slot ad-top" aria-label="Advertisement"></div>
@@ -130,7 +189,7 @@
       </div>
 
       <div class="card">
-        <h3>Government &amp; Political Science</h3>
+        <h3>Government &amp; Civics</h3>
         <p>Constitution, rights, institutions, and civic participation.</p>
         <a href="/subjects/social-studies/government-political-science/index.html" class="cta js-tile" data-tile-name="Government & Civics">Open</a>
       </div>
