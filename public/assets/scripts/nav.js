@@ -134,81 +134,38 @@
   const style = `
   <style>
     header.main-header {
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      flex-wrap:nowrap;              /* ✅ prevents hamburger dropping below */
-      gap:12px;                      /* ✅ keeps spacing stable */
-      height:60px;                   /* ✅ same thickness as before */
-      padding:0 20px;                /* ✅ keep thickness consistent */
-      background:#0f172a;
-      border-bottom:1px solid #0b1226;
-      position:sticky;
-      top:0;
-      z-index:1000;
-      color:#fff;
+      display:flex; justify-content:space-between; align-items:center;
+      padding:10px 20px; background:#0f172a; border-bottom:1px solid #0b1226;
+      position:sticky; top:0; z-index:1000; color:#fff;
     }
 
-    .header-left {
-      display:flex;
-      align-items:center;
-      gap:10px;
-      min-width:0;                   /* ✅ allow shrink instead of wrap */
-      flex:1 1 auto;                 /* ✅ left side can shrink */
-    }
-
-    .logo-link {
-      display:flex;
-      align-items:center;
-      gap:10px;
-      text-decoration:none;
-      color:#fff;
-      white-space:nowrap;            /* ✅ keep logo+brand on one line */
-    }
-
-    .site-logo { height:40px; width:auto; border-radius:4px; flex:0 0 auto; }
+    .header-left { display:flex; align-items:center; gap:10px; }
+    .logo-link { display:flex; align-items:center; gap:10px; text-decoration:none; color:#fff; }
+    .site-logo { height:40px; width:auto; border-radius:4px; }
     .brand { font-family:'Poppins',sans-serif; font-weight:700; font-size:18px; letter-spacing:.2px; }
 
     .utility-bar { margin-left:auto; margin-right:12px; }
     .utility-bar.is-hidden { display:none !important; }
 
     .main-nav .nav-menu {
-      list-style:none;
-      display:flex;
-      gap:20px;
-      align-items:center;
-      margin:0;
-      padding:0;
+      list-style:none; display:flex; gap:20px; align-items:center; margin:0; padding:0;
     }
-
     .main-nav a {
-      text-decoration:none;
-      color:#e5e7eb;
-      font-weight:600;
-      font-family:'Nunito',sans-serif;
-      display:inline-flex;
-      align-items:center;
-      gap:6px;
+      text-decoration:none; color:#e5e7eb; font-weight:600; font-family:'Nunito',sans-serif;
+      display:inline-flex; align-items:center; gap:6px;
     }
-
     .main-nav a:hover { color:#93c5fd; }
     .caret { opacity:.9; font-weight:700; }
 
     .dropdown, .dropdown-sub { position:relative; }
 
     .dropdown-content, .dropdown-submenu {
-      display:none;
-      position:absolute;
-      background:#0f172a;
-      border:1px solid #1f2937;
-      border-radius:10px;
-      list-style:none;
-      padding:10px 0;
-      margin:0;
-      min-width:240px;
+      display:none; position:absolute; background:#0f172a; border:1px solid #1f2937;
+      border-radius:10px; list-style:none; padding:10px 0; margin:0; min-width:240px;
       box-shadow:0 12px 28px rgba(0,0,0,.35);
     }
 
+    /* Desktop hover open */
     @media (min-width: 881px) {
       .dropdown:hover > .dropdown-content { display:block; top:100%; left:0; }
       .dropdown-sub:hover > .dropdown-submenu { display:block; top:0; left:100%; }
@@ -222,19 +179,32 @@
       display:none;
       background:transparent;
       border:0;
-      width:40px;
-      height:40px;
-      padding:6px;
-      margin-left:auto;              /* ✅ keep it pinned right on small widths */
+      width:44px;
+      height:44px;
+      padding:0;
+      margin:0;
       cursor:pointer;
-      flex:0 0 auto;                 /* ✅ never shrink/drop */
+
+      /* ✅ FORCE proper layout even if other CSS hits buttons */
+      appearance:none;
+      -webkit-appearance:none;
+      align-self:center;
+      flex:0 0 auto;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      gap:6px;
     }
 
     .hamburger span {
       display:block;
+      width:26px;
       height:2px;
-      margin:6px 0;
+      margin:0;                 /* ✅ kill outside margin rules */
+      padding:0;
       background:#e5e7eb;
+      border-radius:2px;
       transition:transform .2s, opacity .2s;
     }
 
@@ -242,35 +212,23 @@
     .hamburger.is-open span:nth-child(2){ opacity:0; }
     .hamburger.is-open span:nth-child(3){ transform:translateY(-8px) rotate(-45deg); }
 
-    /* Mobile menu */
+    /* Mobile menu layout + tap-to-open dropdowns */
     @media (max-width: 880px) {
-      .hamburger { display:block; }
+      .hamburger { display:flex; }  /* ✅ was display:block, now flex for perfect bars */
 
       .main-nav {
-        position:absolute;
-        left:0;
-        right:0;
-        top:60px;
-        background:#0b1226;
-        border-top:1px solid #1f2937;
-        display:none;
+        position:absolute; left:0; right:0; top:60px;
+        background:#0b1226; border-top:1px solid #1f2937; display:none;
       }
-
       .main-nav.open { display:block; animation:slideDown .18s ease-out; }
 
       .main-nav .nav-menu {
-        flex-direction:column;
-        align-items:stretch;
-        padding:12px;
-        gap:10px;
+        flex-direction:column; align-items:stretch; padding:12px; gap:10px;
       }
 
       .dropdown-content, .dropdown-submenu {
-        position:static;
-        border:1px solid #111827;
-        box-shadow:none;
-        margin-top:8px;
-        border-radius:12px;
+        position:static; border:1px solid #111827; box-shadow:none;
+        margin-top:8px; border-radius:12px;
       }
 
       .dropdown.open > .dropdown-content { display:block; }
@@ -280,8 +238,8 @@
     }
 
     @keyframes slideDown {
-      from { opacity:0; transform:translateY(-6px); }
-      to   { opacity:1; transform:translateY(0); }
+      from { opacity:0; transform:translateY(-6px);}
+      to { opacity:1; transform:translateY(0); }
     }
   </style>
   `;
@@ -298,6 +256,7 @@
     const burger = mount.querySelector('.hamburger');
     const nav = mount.querySelector('.main-nav');
 
+    // Mobile toggle (main menu)
     if (burger && nav) {
       burger.addEventListener('click', () => {
         const open = nav.classList.toggle('open');
@@ -306,6 +265,7 @@
       });
     }
 
+    // Mobile toggle (dropdowns)
     const isMobile = () => window.matchMedia('(max-width: 880px)').matches;
 
     mount.querySelectorAll('.dropdown > a.dropdown-toggle').forEach(a => {
@@ -328,6 +288,7 @@
       });
     });
 
+    // Highlight active link (basic)
     const here = location.pathname.replace(/\/index\.html?$/,'/') || '/';
     mount.querySelectorAll('.main-nav a[href]').forEach(a => {
       const href = (a.getAttribute('href') || '').replace(/\/index\.html?$/,'/');
