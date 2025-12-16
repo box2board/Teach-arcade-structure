@@ -3,150 +3,376 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>World History | Teach Arcade</title>
-  <link rel="stylesheet" href="/assets/styles.css"/>
-  <meta name="description" content="Free World History resources organized by unit: from early civilizations to the modern era. Lessons, worksheets, primary sources, and activities."/>
+  <meta name="theme-color" content="#0f172a" />
+
+  <title>World History Lessons &amp; Activities | Teach Arcade</title>
+
+  <!-- Styles & Favicon -->
+  <link rel="stylesheet" href="/assets/styles.css?v=1" />
+  <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- SEO -->
+  <meta name="description" content="Browse free World History resources from Teach Arcade, organized by unit from early civilizations to the modern era. Lessons, worksheets, primary sources, DBQ activities, and classroom-ready projects—100% free." />
+  <link rel="canonical" href="https://teacharcade.com/subjects/social-studies/world-history/index.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="World History Lessons &amp; Activities | Teach Arcade" />
+  <meta property="og:description" content="Explore free World History lessons, worksheets, primary sources, DBQ activities, and projects—organized by era and theme." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://teacharcade.com/subjects/social-studies/world-history/index.html" />
+  <meta property="og:site_name" content="Teach Arcade" />
+  <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="World History Lessons &amp; Activities | Teach Arcade" />
+  <meta name="twitter:description" content="Free World History resources for early civilizations through the contemporary world—lessons, worksheets, primary sources, and activities." />
+  <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+
+  <!-- Google AdSense (same site-wide snippet) -->
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7899890641544647"
+    crossorigin="anonymous"></script>
+
+  <!-- Google Analytics (same site-wide snippet) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NBQHSPW9GH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NBQHSPW9GH');
+  </script>
+
+  <!-- JSON-LD: Breadcrumbs -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://teacharcade.com/"},
+      {"@type":"ListItem","position":2,"name":"Subjects","item":"https://teacharcade.com/subjects/index.html"},
+      {"@type":"ListItem","position":3,"name":"Social Studies","item":"https://teacharcade.com/subjects/social-studies/index.html"},
+      {"@type":"ListItem","position":4,"name":"World History","item":"https://teacharcade.com/subjects/social-studies/world-history/index.html"}
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: ItemList (units) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"ItemList",
+    "name":"World History Units",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Early Humans & River Valley Civilizations","url":"https://teacharcade.com/subjects/social-studies/world-history/early-humans-river-valleys.html"},
+      {"@type":"ListItem","position":2,"name":"Ancient Greece","url":"https://teacharcade.com/subjects/social-studies/world-history/ancient-greece.html"},
+      {"@type":"ListItem","position":3,"name":"Ancient Rome","url":"https://teacharcade.com/subjects/social-studies/world-history/ancient-rome.html"},
+      {"@type":"ListItem","position":4,"name":"Classical India & Early East Asia","url":"https://teacharcade.com/subjects/social-studies/world-history/classical-india-east-asia.html"},
+      {"@type":"ListItem","position":5,"name":"Mesoamerican & Andean Civilizations","url":"https://teacharcade.com/subjects/social-studies/world-history/mesoamerican-andean-civilizations.html"},
+      {"@type":"ListItem","position":6,"name":"Medieval Europe","url":"https://teacharcade.com/subjects/social-studies/world-history/medieval-europe.html"},
+      {"@type":"ListItem","position":7,"name":"Byzantine Empire & Islamic World","url":"https://teacharcade.com/subjects/social-studies/world-history/byzantine-islamic-world.html"},
+      {"@type":"ListItem","position":8,"name":"African Civilizations","url":"https://teacharcade.com/subjects/social-studies/world-history/african-civilizations.html"},
+      {"@type":"ListItem","position":9,"name":"East Asia: China & Japan","url":"https://teacharcade.com/subjects/social-studies/world-history/east-asia-china-japan.html"},
+      {"@type":"ListItem","position":10,"name":"Renaissance & Reformation","url":"https://teacharcade.com/subjects/social-studies/world-history/renaissance-reformation.html"},
+      {"@type":"ListItem","position":11,"name":"Age of Exploration & Colonialism","url":"https://teacharcade.com/subjects/social-studies/world-history/age-of-exploration-colonialism.html"},
+      {"@type":"ListItem","position":12,"name":"Enlightenment & Scientific Revolution","url":"https://teacharcade.com/subjects/social-studies/world-history/enlightenment-scientific-revolution.html"},
+      {"@type":"ListItem","position":13,"name":"Revolutions Era (Europe & Latin America)","url":"https://teacharcade.com/subjects/social-studies/world-history/revolutions-era.html"},
+      {"@type":"ListItem","position":14,"name":"Industrial Revolution","url":"https://teacharcade.com/subjects/social-studies/world-history/industrial-revolution.html"},
+      {"@type":"ListItem","position":15,"name":"Imperialism & Global Change","url":"https://teacharcade.com/subjects/social-studies/world-history/imperialism-global-change.html"},
+      {"@type":"ListItem","position":16,"name":"World War I","url":"https://teacharcade.com/subjects/social-studies/world-history/world-war-i.html"},
+      {"@type":"ListItem","position":17,"name":"World War II","url":"https://teacharcade.com/subjects/social-studies/world-history/world-war-ii.html"},
+      {"@type":"ListItem","position":18,"name":"Cold War & Decolonization","url":"https://teacharcade.com/subjects/social-studies/world-history/cold-war-decolonization.html"},
+      {"@type":"ListItem","position":19,"name":"Globalization & Contemporary World","url":"https://teacharcade.com/subjects/social-studies/world-history/globalization-contemporary-world.html"}
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: CollectionPage (content-quality signal) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"CollectionPage",
+    "name":"World History",
+    "url":"https://teacharcade.com/subjects/social-studies/world-history/index.html",
+    "isPartOf":{
+      "@type":"WebSite",
+      "name":"Teach Arcade",
+      "url":"https://teacharcade.com/"
+    },
+    "about":[
+      {"@type":"Thing","name":"World History"},
+      {"@type":"Thing","name":"Ancient Civilizations"},
+      {"@type":"Thing","name":"Medieval World"},
+      {"@type":"Thing","name":"Renaissance"},
+      {"@type":"Thing","name":"Reformation"},
+      {"@type":"Thing","name":"Age of Exploration"},
+      {"@type":"Thing","name":"Enlightenment"},
+      {"@type":"Thing","name":"Industrial Revolution"},
+      {"@type":"Thing","name":"Imperialism"},
+      {"@type":"Thing","name":"World War I"},
+      {"@type":"Thing","name":"World War II"},
+      {"@type":"Thing","name":"Cold War"},
+      {"@type":"Thing","name":"Decolonization"},
+      {"@type":"Thing","name":"Globalization"},
+      {"@type":"Thing","name":"Primary Sources"},
+      {"@type":"Thing","name":"Document Analysis"},
+      {"@type":"Thing","name":"DBQ"},
+      {"@type":"Thing","name":"Lesson Plans"},
+      {"@type":"Thing","name":"Worksheets"},
+      {"@type":"Thing","name":"Classroom Activities"}
+    ]
+  }
+  </script>
+
+  <style>
+    /* Collapsed ad placeholders (ready for ads later) */
+    .ad-slot { width: 100%; margin: 16px 0; height: 0; overflow: hidden; }
+
+    /* Make each card fully clickable without changing visual style */
+    .unit-card-link{
+      display:block;
+      color: inherit;
+      text-decoration:none;
+      height:100%;
+    }
+    .unit-card-link h2{
+      margin-top:0;
+      margin-bottom:8px;
+    }
+
+    /* SEO intro text */
+    .topic-intro p{
+      font: 400 16px/1.6 Nunito, system-ui, sans-serif;
+      color:#475569;
+      margin:0 0 12px;
+      max-width: 980px;
+    }
+  </style>
 </head>
+
 <body>
-  <!-- Site Header -->
-  <header>
-    <div class="header-left">
-      <a href="/" class="logo-link">
-        <img src="/assets/images/teach-arcade-logo.png" alt="Teach Arcade Logo" class="site-logo">
-      </a>
-      <span class="brand">Teach Arcade</span>
-    </div>
-    <nav>
-      <a href="/">Home</a>
-      <a href="/subjects/index.html">Subjects</a>
-      <a href="/submit.html">Submit</a>
-      <a href="/about.html">About</a>
-    </nav>
-  </header>
+  <!-- Global Header mount -->
+  <div id="site-header"></div>
+  <script src="/assets/scripts/nav.js?v=3" defer></script>
 
   <main class="container">
+    <nav class="breadcrumbs">
+      <a href="/">Home</a> ›
+      <a href="/subjects/index.html">Subjects</a> ›
+      <a href="/subjects/social-studies/index.html">Social Studies</a> ›
+      World History
+    </nav>
+
     <h1>World History</h1>
     <p>Explore comprehensive lessons, activities, and resources covering major eras and civilizations in global history.</p>
+
+    <!-- SEO intro (content-quality boost) -->
+    <section class="topic-intro">
+      <p>
+        Teach Arcade’s World History collection is organized by unit so you can plan instruction from early civilizations through the contemporary world.
+        Each unit page curates free classroom resources—lesson plans, worksheets, primary sources, guided notes, review games, projects, and DBQ-style
+        document analysis activities—designed to support historical thinking and strong writing.
+      </p>
+      <p>
+        Use these units for stations, inquiry lessons, unit reviews, sub days, or skill practice (sourcing, contextualization, corroboration, and argumentation).
+        Whether you teach a standards-based world history course or a themed global studies class, the goal here is simple: organized, teacher-friendly resources
+        without paywalls.
+      </p>
+      <p>
+        Choose a unit below to jump into a curated set of materials for that era—then use the topic pages to search by title and filter by resource type.
+      </p>
+    </section>
+
+    <!-- Top Ad Placeholder -->
+    <div class="ad-slot ad-top" aria-label="Advertisement"></div>
 
     <section class="grid" style="margin-top:18px">
       <!-- 1 -->
       <div class="card">
-        <h2><a href="/subjects/social-studies/world-history/early-humans-river-valleys.html">Early Humans &amp; River Valley Civilizations</a></h2>
-        <p>Prehistory, human migration, and the first civilizations in Mesopotamia, Egypt, Indus Valley, and ancient China.</p>
+        <a class="unit-card-link js-tile" data-tile-name="Early Humans & River Valley Civilizations" href="/subjects/social-studies/world-history/early-humans-river-valleys.html">
+          <h2>Early Humans &amp; River Valley Civilizations</h2>
+          <p>Prehistory, human migration, and the first civilizations in Mesopotamia, Egypt, Indus Valley, and ancient China.</p>
+        </a>
       </div>
 
       <!-- 2 -->
       <div class="card">
-        <h2><a href="/subjects/social-studies/world-history/ancient-greece.html">Ancient Greece</a></h2>
-        <p>City-states, democracy, philosophy, art, and warfare in the Greek world.</p>
+        <a class="unit-card-link js-tile" data-tile-name="Ancient Greece" href="/subjects/social-studies/world-history/ancient-greece.html">
+          <h2>Ancient Greece</h2>
+          <p>City-states, democracy, philosophy, art, and warfare in the Greek world.</p>
+        </a>
       </div>
 
       <!-- 3 -->
       <div class="card">
-        <h2><a href="/subjects/social-studies/world-history/ancient-rome.html">Ancient Rome</a></h2>
-        <p>The Roman Republic and Empire, law, engineering, culture, and the fall of Rome.</p>
+        <a class="unit-card-link js-tile" data-tile-name="Ancient Rome" href="/subjects/social-studies/world-history/ancient-rome.html">
+          <h2>Ancient Rome</h2>
+          <p>The Roman Republic and Empire, law, engineering, culture, and the fall of Rome.</p>
+        </a>
       </div>
 
       <!-- 4 -->
       <div class="card">
-        <h2><a href="/subjects/social-studies/world-history/classical-india-east-asia.html">Classical India &amp; Early East Asia</a></h2>
-        <p>The Maurya and Gupta Empires, early Chinese dynasties, Hinduism, Buddhism, and Confucianism.</p>
+        <a class="unit-card-link js-tile" data-tile-name="Classical India & Early East Asia" href="/subjects/social-studies/world-history/classical-india-east-asia.html">
+          <h2>Classical India &amp; Early East Asia</h2>
+          <p>The Maurya and Gupta Empires, early Chinese dynasties, Hinduism, Buddhism, and Confucianism.</p>
+        </a>
       </div>
 
       <!-- 5 -->
       <div class="card">
-        <h2><a href="/subjects/social-studies/world-history/mesoamerican-andean-civilizations.html">Mesoamerican &amp; Andean Civilizations</a></h2>
-        <p>Pre-Columbian civilizations in Central and South America, including the Maya, Aztec, and Inca.</p>
+        <a class="unit-card-link js-tile" data-tile-name="Mesoamerican & Andean Civilizations" href="/subjects/social-studies/world-history/mesoamerican-andean-civilizations.html">
+          <h2>Mesoamerican &amp; Andean Civilizations</h2>
+          <p>Pre-Columbian civilizations in Central and South America, including the Maya, Aztec, and Inca.</p>
+        </a>
       </div>
 
       <!-- 6 -->
       <div class="card">
-        <h2><a href="/subjects/social-studies/world-history/medieval-europe.html">Medieval Europe</a></h2>
-        <p>Feudalism, the power of the Church, the Crusades, and the Black Death.</p>
+        <a class="unit-card-link js-tile" data-tile-name="Medieval Europe" href="/subjects/social-studies/world-history/medieval-europe.html">
+          <h2>Medieval Europe</h2>
+          <p>Feudalism, the power of the Church, the Crusades, and the Black Death.</p>
+        </a>
       </div>
 
       <!-- 7 -->
       <div class="card">
-        <h2><a href="/subjects/social-studies/world-history/byzantine-islamic-world.html">Byzantine Empire &amp; Islamic World</a></h2>
-        <p>Constantinople, Eastern Roman legacy, and the rise and spread of Islam and major caliphates.</p>
+        <a class="unit-card-link js-tile" data-tile-name="Byzantine Empire & Islamic World" href="/subjects/social-studies/world-history/byzantine-islamic-world.html">
+          <h2>Byzantine Empire &amp; Islamic World</h2>
+          <p>Constantinople, Eastern Roman legacy, and the rise and spread of Islam and major caliphates.</p>
+        </a>
       </div>
 
       <!-- 8 -->
       <div class="card">
-        <h2><a href="/subjects/social-studies/world-history/african-civilizations.html">African Civilizations</a></h2>
-        <p>Kingdoms and empires across Africa, trade networks, and cultural achievements.</p>
+        <a class="unit-card-link js-tile" data-tile-name="African Civilizations" href="/subjects/social-studies/world-history/african-civilizations.html">
+          <h2>African Civilizations</h2>
+          <p>Kingdoms and empires across Africa, trade networks, and cultural achievements.</p>
+        </a>
       </div>
 
       <!-- 9 -->
       <div class="card">
-        <h2><a href="/subjects/social-studies/world-history/east-asia-china-japan.html">East Asia: China &amp; Japan</a></h2>
-        <p>Later Chinese dynasties, Mongol rule, and feudal Japan with samurai and shoguns.</p>
+        <a class="unit-card-link js-tile" data-tile-name="East Asia: China & Japan" href="/subjects/social-studies/world-history/east-asia-china-japan.html">
+          <h2>East Asia: China &amp; Japan</h2>
+          <p>Later Chinese dynasties, Mongol rule, and feudal Japan with samurai and shoguns.</p>
+        </a>
       </div>
 
       <!-- 10 -->
       <div class="card">
-        <h2><a href="/subjects/social-studies/world-history/renaissance-reformation.html">Renaissance &amp; Reformation</a></h2>
-        <p>Humanism, art and literature, the printing revolution, and religious change in Europe.</p>
+        <a class="unit-card-link js-tile" data-tile-name="Renaissance & Reformation" href="/subjects/social-studies/world-history/renaissance-reformation.html">
+          <h2>Renaissance &amp; Reformation</h2>
+          <p>Humanism, art and literature, the printing revolution, and religious change in Europe.</p>
+        </a>
       </div>
 
       <!-- 11 -->
       <div class="card">
-        <h2><a href="/subjects/social-studies/world-history/age-of-exploration-colonialism.html">Age of Exploration &amp; Colonialism</a></h2>
-        <p>European voyages of discovery, colonization of the Americas, and the Columbian Exchange.</p>
+        <a class="unit-card-link js-tile" data-tile-name="Age of Exploration & Colonialism" href="/subjects/social-studies/world-history/age-of-exploration-colonialism.html">
+          <h2>Age of Exploration &amp; Colonialism</h2>
+          <p>European voyages of discovery, colonization of the Americas, and the Columbian Exchange.</p>
+        </a>
       </div>
 
       <!-- 12 -->
       <div class="card">
-        <h2><a href="/subjects/social-studies/world-history/enlightenment-scientific-revolution.html">Enlightenment &amp; Scientific Revolution</a></h2>
-        <p>New ideas about government, rights, and science that reshaped societies around the world.</p>
+        <a class="unit-card-link js-tile" data-tile-name="Enlightenment & Scientific Revolution" href="/subjects/social-studies/world-history/enlightenment-scientific-revolution.html">
+          <h2>Enlightenment &amp; Scientific Revolution</h2>
+          <p>New ideas about government, rights, and science that reshaped societies around the world.</p>
+        </a>
       </div>
 
       <!-- 13 -->
       <div class="card">
-        <h2><a href="/subjects/social-studies/world-history/revolutions-era.html">Revolutions Era (Europe &amp; Latin America)</a></h2>
-        <p>The French and Haitian Revolutions, and independence movements across Latin America.</p>
+        <a class="unit-card-link js-tile" data-tile-name="Revolutions Era" href="/subjects/social-studies/world-history/revolutions-era.html">
+          <h2>Revolutions Era (Europe &amp; Latin America)</h2>
+          <p>The French and Haitian Revolutions, and independence movements across Latin America.</p>
+        </a>
       </div>
 
       <!-- 14 -->
       <div class="card">
-        <h2><a href="/subjects/social-studies/world-history/industrial-revolution.html">Industrial Revolution</a></h2>
-        <p>Industrialization, urbanization, labor conditions, and new economic systems.</p>
+        <a class="unit-card-link js-tile" data-tile-name="Industrial Revolution" href="/subjects/social-studies/world-history/industrial-revolution.html">
+          <h2>Industrial Revolution</h2>
+          <p>Industrialization, urbanization, labor conditions, and new economic systems.</p>
+        </a>
       </div>
 
       <!-- 15 -->
       <div class="card">
-        <h2><a href="/subjects/social-studies/world-history/imperialism-global-change.html">Imperialism &amp; Global Change</a></h2>
-        <p>European imperialism in Africa and Asia, resistance, and changing global power structures.</p>
+        <a class="unit-card-link js-tile" data-tile-name="Imperialism & Global Change" href="/subjects/social-studies/world-history/imperialism-global-change.html">
+          <h2>Imperialism &amp; Global Change</h2>
+          <p>European imperialism in Africa and Asia, resistance, and changing global power structures.</p>
+        </a>
       </div>
 
       <!-- 16 -->
       <div class="card">
-        <h2><a href="/subjects/social-studies/world-history/world-war-i.html">World War I</a></h2>
-        <p>Causes of the war, trench warfare, total war, and the Treaty of Versailles.</p>
+        <a class="unit-card-link js-tile" data-tile-name="World War I" href="/subjects/social-studies/world-history/world-war-i.html">
+          <h2>World War I</h2>
+          <p>Causes of the war, trench warfare, total war, and the Treaty of Versailles.</p>
+        </a>
       </div>
 
       <!-- 17 -->
       <div class="card">
-        <h2><a href="/subjects/social-studies/world-history/world-war-ii.html">World War II</a></h2>
-        <p>Global conflict between the Axis and Allies, the Holocaust, and the war’s aftermath.</p>
+        <a class="unit-card-link js-tile" data-tile-name="World War II" href="/subjects/social-studies/world-history/world-war-ii.html">
+          <h2>World War II</h2>
+          <p>Global conflict between the Axis and Allies, the Holocaust, and the war’s aftermath.</p>
+        </a>
       </div>
 
       <!-- 18 -->
       <div class="card">
-        <h2><a href="/subjects/social-studies/world-history/cold-war-decolonization.html">Cold War &amp; Decolonization</a></h2>
-        <p>U.S.–Soviet rivalry, proxy wars, nuclear tension, and independence movements worldwide.</p>
+        <a class="unit-card-link js-tile" data-tile-name="Cold War & Decolonization" href="/subjects/social-studies/world-history/cold-war-decolonization.html">
+          <h2>Cold War &amp; Decolonization</h2>
+          <p>U.S.–Soviet rivalry, proxy wars, nuclear tension, and independence movements worldwide.</p>
+        </a>
       </div>
 
       <!-- 19 -->
       <div class="card">
-        <h2><a href="/subjects/social-studies/world-history/globalization-contemporary-world.html">Globalization &amp; Contemporary World</a></h2>
-        <p>Modern conflicts, global organizations, technology, the environment, and an interconnected world.</p>
+        <a class="unit-card-link js-tile" data-tile-name="Globalization & Contemporary World" href="/subjects/social-studies/world-history/globalization-contemporary-world.html">
+          <h2>Globalization &amp; Contemporary World</h2>
+          <p>Modern conflicts, global organizations, technology, the environment, and an interconnected world.</p>
+        </a>
       </div>
     </section>
+
+    <!-- Bottom Ad Placeholder -->
+    <div class="ad-slot ad-bottom" aria-label="Advertisement"></div>
   </main>
 
   <footer>
-    <p>© <script>document.write(new Date().getFullYear())</script> Teach Arcade. All rights reserved.</p>
+    © <script>document.write(new Date().getFullYear())</script> Teach Arcade •
+    <a href="/privacy.html">Privacy</a> •
+    <a href="/terms.html">Terms</a>
   </footer>
+
+  <!-- GA4 click tracking -->
+  <script>
+    (function () {
+      function track(e) {
+        var a = e.currentTarget;
+        var name = a.getAttribute('data-tile-name') || 'Unknown';
+        var href = a.getAttribute('href') || '';
+        if (typeof gtag === 'function') {
+          gtag('event', 'tile_click', {
+            tile_group: 'world-history',
+            tile_name: name,
+            tile_href: href
+          });
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.js-tile').forEach(function (a) {
+          a.addEventListener('click', track);
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
