@@ -44,7 +44,7 @@
     "url": "https://teacharcade.com/",
     "potentialAction": {
       "@type": "SearchAction",
-      "target": "https://teacharcade.com/subjects/index.html?q={search_term_string}",
+      "target": "https://teacharcade.com/search.html?q={search_term_string}",
       "query-input": "required name=search_term_string"
     }
   }
@@ -289,7 +289,7 @@
         e.preventDefault();
         const q = document.getElementById('q').value.trim();
         if (!q) return;
-        window.location.href = '/subjects/index.html?q=' + encodeURIComponent(q);
+        window.location.href = '/search.html?q=' + encodeURIComponent(q);
       });
     })();
   </script>
