@@ -124,6 +124,7 @@
         </li>
 
         <li><a href="/tools/">Teacher Tools</a></li>
+        <li><a href="/store/">Store</a></li>
         <li><a href="/submit.html">Submit</a></li>
         <li><a href="/about.html">About</a></li>
       </ul>
