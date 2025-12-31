@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0f172a" />
+
+  <title>Search | Teach Arcade</title>
+
+  <link rel="stylesheet" href="/assets/styles.css?v=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
+
+  <meta name="description" content="Search Teach Arcade for free classroom resources, games, and tools." />
+  <link rel="canonical" href="https://teacharcade.com/search.html" />
+
+  <style>
+    .sr-only {
+      position:absolute !important; width:1px; height:1px; padding:0; margin:-1px;
+      overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+    }
+    .hero { padding: 64px 0 10px; }
+    .hero h1 { font:700 30px/1.2 Poppins,sans-serif; margin:0 0 10px; color:#0f172a; }
+    .hero p { font:400 15px/1.6 Nunito,system-ui,sans-serif; margin:0; color:#475569; max-width:900px; }
+
+    .searchbar {
+      margin: 16px 0 10px;
+      display:flex; gap:10px; flex-wrap:wrap;
+      max-width:900px;
+    }
+    .searchbar input {
+      flex:1; min-width:240px;
+      padding:12px 12px;
+      border:1px solid #cbd5e1;
+      border-radius:10px;
+      font:600 14px/1 Nunito, system-ui, sans-serif;
+    }
+    .btn { display:inline-block; padding:10px 14px; border-radius:10px; text-decoration:none;
+      font:700 14px/1 Poppins, sans-serif; border:1px solid #2563eb; color:#fff; background:#2563eb; cursor:pointer;
+    }
+    .btn.secondary { background:#fff; color:#1f2937; border-color:#cbd5e1; }
+
+    .meta { font:400 13px/1.6 Nunito, system-ui, sans-serif; color:#64748b; margin: 6px 0 0; }
+    .results { margin: 18px 0 40px; display:grid; gap:12px; }
+    .result {
+      background:#fff; border:1px solid #e2e8f0; border-radius:12px;
+      padding:14px; text-decoration:none; color:#0f172a;
+      box-shadow:0 2px 4px rgba(0,0,0,0.05);
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+    }
+    .result:hover { transform:translateY(-2px); box-shadow:0 6px 14px rgba(0,0,0,0.08); border-color:#cbd5e1; }
+    .result h2 { font:700 16px/1.2 Poppins,sans-serif; margin:0 0 6px; }
+    .result p { font:400 13px/1.5 Nunito,system-ui,sans-serif; margin:0; color:#475569; }
+    .result .url { margin-top:8px; font:600 12px/1.2 Nunito,system-ui,sans-serif; color:#64748b; }
+
+    .note {
+      background:#fff7ed;
+      border:1px solid #fed7aa;
+      border-radius:12px;
+      padding:12px 14px;
+      color:#7c2d12;
+      font:400 13px/1.6 Nunito,system-ui,sans-serif;
+      margin: 12px 0 0;
+      max-width:900px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="site-header"></div>
+  <script src="/assets/scripts/nav.js?v=3" defer></script>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Search Teach Arcade</h1>
+      <p>Search across subjects, games, and tools. Results are generated from Teach Arcade hub pages (fast + safe).</p>
+
+      <form id="search-form" class="searchbar" role="search">
+        <label class="sr-only" for="q">Search</label>
+        <input id="q" name="q" type="search" autocomplete="off" placeholder="Try: Cold War, genetics, fractions, escape room..." />
+        <button class="btn" type="submit">Search</button>
+        <a class="btn secondary" href="/">Home</a>
+      </form>
+
+      <p id="status" class="meta">Type a keyword and press Search.</p>
+      <div class="note">
+        Tip: Use specific terms like <strong>DBQ</strong>, <strong>primary source</strong>, <strong>review game</strong>, or a unit name.
+      </div>
+    </section>
+
+    <section aria-label="Search results">
+      <div id="results" class="results"></div>
+    </section>
+  </main>
+
+  <footer>
+    © <script>document.write(new Date().getFullYear())</script> Teach Arcade •
+    <a href="/privacy.html">Privacy</a> •
+    <a href="/terms.html">Terms</a>
+  </footer>
+
+  <script>
+    // Hub pages to crawl for links (edit these if your structure changes)
+    const HUB_PAGES = [
+      "/subjects/social-studies/index.html",
+      "/subjects/science/index.html",
+      "/subjects/math/index.html",
+      "/subjects/ela/index.html",
+      "/subjects/fine-arts/index.html",
+      "/tools/",
+      "/games/arcade-games/index.html",
+      "/games/escape-rooms/index.html",
+      "/games/choose-your-path/index.html",
+      "/arcade-review-games/index.html",
+      "/choose-your-path-adventure/index.html"
+    ];
+
+    function getQueryParam(name){
+      const u = new URL(window.location.href);
+      return (u.searchParams.get(name) || "").trim();
+    }
+
+    function setQueryParam(name, value){
+      const u = new URL(window.location.href);
+      if (!value) u.searchParams.delete(name);
+      else u.searchParams.set(name, value);
+      history.replaceState(null, "", u.toString());
+    }
+
+    function extractLinks(html, basePath){
+      // Finds <a href="...">Text</a>
+      const out = [];
+      const re = /<a\s+[^>]*href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi;
+      let m;
+      while ((m = re.exec(html)) !== null){
+        let href = (m[1] || "").trim();
+        let text = (m[2] || "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+
+        if (!href || href.startsWith("#")) continue;
+        if (href.startsWith("mailto:") || href.startsWith("tel:")) continue;
+        if (href.startsWith("javascript:")) continue;
+
+        // normalize relative links
+        if (!href.startsWith("http") && !href.startsWith("/")){
+          // resolve relative to hub page directory
+          const dir = basePath.replace(/[^/]+$/, "");
+          href = (dir + href).replace(/\/\.\//g, "/");
+        }
+
+        // keep only internal links
+        if (href.startsWith("http")) {
+          try {
+            const url = new URL(href);
+            if (url.hostname !== location.hostname) continue;
+            href = url.pathname + (url.search || "");
+          } catch {
+            continue;
+          }
+        }
+
+        // prefer meaningful anchor text
+        if (!text || text.length < 2) text = href;
+
+        out.push({ href, text });
+      }
+      return out;
+    }
+
+    function scoreMatch(text, q){
+      const t = text.toLowerCase();
+      const s = q.toLowerCase();
+
+      if (t === s) return 100;
+      if (t.includes(s)) return 60;
+
+      // basic token overlap
+      const tokens = s.split(/\s+/).filter(Boolean);
+      let hits = 0;
+      for (const tok of tokens){
+        if (tok.length < 2) continue;
+        if (t.includes(tok)) hits++;
+      }
+      return hits ? (20 + hits * 10) : 0;
+    }
+
+    async function buildIndex(){
+      const index = [];
+      for (const hub of HUB_PAGES){
+        try{
+          const r = await fetch(hub, { cache: "no-store" });
+          if (!r.ok) continue;
+          const html = await r.text();
+          const links = extractLinks(html, hub);
+          for (const l of links){
+            // remove super-common nav links noise
+            const noise = ["home","about","privacy","terms","submit","store","teacher tools","subjects","games"];
+            const label = l.text.toLowerCase();
+            if (noise.includes(label)) continue;
+
+            index.push(l);
+          }
+        } catch(e){
+          // ignore hub errors
+        }
+      }
+
+      // de-dupe by href, keep best text
+      const map = new Map();
+      for (const item of index){
+        const key = item.href;
+        if (!map.has(key)) map.set(key, item.text);
+        else {
+          const existing = map.get(key);
+          if (item.text.length > existing.length) map.set(key, item.text);
+        }
+      }
+
+      return Array.from(map.entries()).map(([href, text]) => ({ href, text }));
+    }
+
+    function renderResults(items, q){
+      const resultsEl = document.getElementById("results");
+      const statusEl = document.getElementById("status");
+
+      if (!q){
+        resultsEl.innerHTML = "";
+        statusEl.textContent = "Type a keyword and press Search.";
+        return;
+      }
+
+      if (!items.length){
+        resultsEl.innerHTML = "";
+        statusEl.textContent = `No results for “${q}”. Try a different keyword.`;
+        return;
+      }
+
+      statusEl.textContent = `Showing ${items.length} result${items.length === 1 ? "" : "s"} for “${q}”.`;
+
+      resultsEl.innerHTML = items.map(it => `
+        <a class="result" href="${it.href}">
+          <h2>${it.text}</h2>
+          <p>Click to open</p>
+          <div class="url">${it.href}</div>
+        </a>
+      `).join("");
+    }
+
+    (async function(){
+      const input = document.getElementById("q");
+      const form = document.getElementById("search-form");
+
+      const q0 = getQueryParam("q");
+      if (q0) input.value = q0;
+
+      const statusEl = document.getElementById("status");
+      statusEl.textContent = "Building search index…";
+
+      const index = await buildIndex();
+
+      function runSearch(q){
+        const scored = index
+          .map(it => ({ ...it, score: scoreMatch(it.text + " " + it.href, q) }))
+          .filter(it => it.score > 0)
+          .sort((a,b) => b.score - a.score)
+          .slice(0, 30);
+
+        renderResults(scored, q);
+      }
+
+      if (q0) runSearch(q0);
+      else statusEl.textContent = "Type a keyword and press Search.";
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const q = input.value.trim();
+        setQueryParam("q", q);
+        runSearch(q);
+      });
+    })();
+  </script>
+</body>
+</html>
