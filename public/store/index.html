@@ -5,35 +5,115 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#0f172a" />
 
+  <!-- Google AdSense -->
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7899890641544647"
+    crossorigin="anonymous"></script>
+
+  <link rel="preload" as="image" href="/assets/images/teach-arcade-logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <title>Store | Teach Arcade</title>
 
+  <!-- Styles & Fonts -->
   <link rel="stylesheet" href="/assets/styles.css?v=1" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
 
-  <!-- SEO -->
-  <meta name="description" content="Teach Arcade merch store — retro teacher + arcade designs. Coming soon." />
+  <!-- SEO & Social -->
+  <meta name="description" content="Teach Arcade merch — teacher-friendly designs inspired by classroom culture and learning games. Checkout happens on our storefront partner site." />
   <link rel="canonical" href="https://teacharcade.com/store/" />
+
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Teach Arcade" />
   <meta property="og:title" content="Teach Arcade Store" />
-  <meta property="og:description" content="Retro teacher + arcade merch. Coming soon." />
+  <meta property="og:description" content="Teacher-friendly merch inspired by classroom culture and learning games. Checkout happens on our storefront partner site." />
   <meta property="og:url" content="https://teacharcade.com/store/" />
+  <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
 
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Teach Arcade Store" />
+  <meta name="twitter:description" content="Teacher-friendly merch inspired by classroom culture and learning games. Checkout happens on our storefront partner site." />
+  <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+
+  <!-- JSON-LD: WebPage -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebPage",
+    "name":"Teach Arcade Store",
+    "url":"https://teacharcade.com/store/",
+    "isPartOf":{
+      "@type":"WebSite",
+      "name":"Teach Arcade",
+      "url":"https://teacharcade.com/"
+    },
+    "description":"Teach Arcade merch — teacher-friendly designs inspired by classroom culture and learning games. Checkout happens on our storefront partner site."
+  }
+  </script>
+
+  <!-- JSON-LD: Breadcrumbs -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      { "@type":"ListItem", "position":1, "name":"Home", "item":"https://teacharcade.com/" },
+      { "@type":"ListItem", "position":2, "name":"Store", "item":"https://teacharcade.com/store/" }
+    ]
+  }
+  </script>
+
+  <!-- Page styles -->
   <style>
     .hero { padding: 64px 0 10px; }
     .hero h1 { font: 700 34px/1.15 Poppins, sans-serif; margin: 0 0 10px; letter-spacing: -0.02em; }
     .hero p  { font: 400 16px/1.6 Nunito, system-ui, sans-serif; color: #475569; margin: 0; max-width: 900px; }
+
+    /* Ad placeholders (neutral by default) */
+    .ad-slot { width: 100%; margin: 16px 0; height: 0; overflow: hidden; }
 
     .panel {
       background:#fff;
       border:1px solid #e2e8f0;
       border-radius:12px;
       padding:16px;
-      margin:18px 0 22px;
+      margin:18px 0 18px;
       box-shadow:0 2px 4px rgba(0,0,0,0.05);
     }
 
+    /* Tabs */
+    .tabs {
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin: 14px 0 10px;
+    }
+    .tab {
+      border:1px solid #e2e8f0;
+      background:#fff;
+      color:#0f172a;
+      border-radius:999px;
+      padding:10px 14px;
+      font:700 13px/1 Poppins,sans-serif;
+      cursor:pointer;
+      transition: transform .12s ease, border-color .12s ease, box-shadow .12s ease;
+    }
+    .tab:hover { transform: translateY(-1px); border-color:#cbd5e1; box-shadow:0 2px 6px rgba(0,0,0,0.06); }
+    .tab.active {
+      background:#2563eb;
+      border-color:#2563eb;
+      color:#fff;
+    }
+
+    .status {
+      font:400 13px/1.6 Nunito, system-ui, sans-serif;
+      color:#64748b;
+      margin: 0 0 14px;
+    }
+
+    /* Product grid + cards */
     .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:18px; margin: 0 0 26px; }
     .card {
       background:#fff;
@@ -41,42 +121,73 @@
       border-radius:12px;
       overflow:hidden;
       box-shadow:0 2px 4px rgba(0,0,0,0.05);
+      display:flex;
+      flex-direction:column;
     }
-    .preview {
+    .imglink { display:block; }
+    .card img {
       width:100%;
       height:240px;
+      object-fit:cover;
+      display:block;
       background:#f1f5f9;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:#64748b;
-      font:700 14px Poppins, sans-serif;
     }
-    .pad { padding:14px; }
-    .card h3 { font:700 16px/1.2 Poppins,sans-serif; margin:0 0 8px; color:#0f172a; }
-    .card p  { font:400 14px/1.5 Nunito,sans-serif; margin:0 0 12px; color:#475569; }
+    .pad { padding:14px; display:flex; flex-direction:column; gap:10px; flex:1; }
+    .topline { display:flex; align-items:flex-start; justify-content:space-between; gap:10px; }
+    .card h3 { font:700 16px/1.2 Poppins,sans-serif; margin:0; color:#0f172a; }
+    .card p  { font:400 14px/1.5 Nunito,sans-serif; margin:0; color:#475569; }
 
-    .btn {
+    .badge {
       display:inline-block;
-      padding:10px 14px;
+      padding:6px 10px;
+      border-radius:999px;
+      font:700 11px/1 Poppins,sans-serif;
+      background:#0f172a;
+      color:#fff;
+      white-space:nowrap;
+    }
+
+    .tags { display:flex; flex-wrap:wrap; gap:6px; }
+    .tags span {
+      display:inline-block;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid #e2e8f0;
+      background:#f8fafc;
+      font:700 11px/1 Poppins,sans-serif;
+      color:#334155;
+    }
+
+    .shopbtn {
+      margin-top:auto;
+      display:inline-block;
+      padding:12px 14px;
       border-radius:10px;
       text-decoration:none;
       font:700 14px/1 Poppins, sans-serif;
-      border:1px solid #cbd5e1;
-      background:#fff;
-      color:#1f2937;
-      opacity:.8;
-      cursor:not-allowed;
-      user-select:none;
+      border:1px solid #2563eb;
+      background:#2563eb;
+      color:#fff;
+      text-align:center;
     }
+    .shopbtn:hover { background:#1d4ed8; border-color:#1d4ed8; }
 
     .fine { font:400 13px/1.6 Nunito, system-ui, sans-serif; color:#64748b; margin: 0; }
 
     @media (max-width:480px){
       .hero h1{font-size:28px;}
-      .preview{height:200px;}
+      .card img{height:200px;}
     }
   </style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NBQHSPW9GH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NBQHSPW9GH');
+  </script>
 </head>
 
 <body>
@@ -85,58 +196,43 @@
   <script src="/assets/scripts/nav.js?v=3" defer></script>
 
   <main class="container">
+
+    <!-- Top Ad Placeholder -->
+    <div class="ad-slot ad-top" aria-label="Advertisement"></div>
+
     <section class="hero">
       <h1>Teach Arcade Store</h1>
       <p>
-        Teacher + arcade swag is coming soon. This page is ready—once your storefront is live, we’ll switch these buttons to “Shop Now”
-        and add real previews.
+        Teacher-friendly merch inspired by Teach Arcade games, classroom culture, and learning.
+        Checkout happens securely on our storefront partner site.
       </p>
     </section>
 
     <div class="panel">
       <p style="margin:0; font:400 14px/1.6 Nunito, system-ui, sans-serif; color:#475569;">
-        <strong>What will be here:</strong> shirts, hoodies, stickers, and classroom humor designs inspired by Teach Arcade games and tools.
-        <br><br>
-        <strong>Security note:</strong> Teach Arcade will not process payments directly on this site. Checkout will happen on the storefront partner site.
+        <strong>Security note:</strong> Teach Arcade does not process payments directly on this site.
+        Purchases happen on the partner product page.
       </p>
     </div>
 
-    <section aria-label="Merch previews">
-      <div class="grid">
+    <!-- Mid Ad Placeholder -->
+    <div class="ad-slot ad-mid" aria-label="Advertisement"></div>
 
-        <article class="card">
-          <div class="preview">Design Preview</div>
-          <div class="pad">
-            <h3>Teach Mode: ON</h3>
-            <p>Retro startup-screen teacher energy.</p>
-            <span class="btn" aria-disabled="true">Store Link Coming Soon</span>
-          </div>
-        </article>
+    <!-- Tabs + status -->
+    <div id="store-tabs" class="tabs" aria-label="Product categories"></div>
+    <p id="store-status" class="status"></p>
 
-        <article class="card">
-          <div class="preview">Design Preview</div>
-          <div class="pad">
-            <h3>Ctrl + Grade</h3>
-            <p>For the keyboard warriors of grading season.</p>
-            <span class="btn" aria-disabled="true">Store Link Coming Soon</span>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="preview">Design Preview</div>
-          <div class="pad">
-            <h3>Arcade Teacher</h3>
-            <p>Teacher + gamer vibe, classroom approved.</p>
-            <span class="btn" aria-disabled="true">Store Link Coming Soon</span>
-          </div>
-        </article>
-
-      </div>
-
+    <!-- Products render here -->
+    <section aria-label="Merch products">
+      <div id="store-grid" class="grid"></div>
       <p class="fine">
-        Want early access? Keep an eye on the homepage—once the store is live, we’ll feature new drops there.
+        New products will appear here automatically when they’re added.
       </p>
     </section>
+
+    <!-- Bottom Ad Placeholder -->
+    <div class="ad-slot ad-bottom" aria-label="Advertisement"></div>
+
   </main>
 
   <footer>
@@ -144,5 +240,9 @@
     <a href="/privacy.html">Privacy</a> •
     <a href="/terms.html">Terms</a>
   </footer>
+
+  <!-- Product data + renderer -->
+  <script src="/store/products.js?v=1"></script>
+  <script src="/assets/scripts/store.js?v=1"></script>
 </body>
 </html>
