@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Print &amp; Play Games | Teach Arcade</title>
+
+  <!-- Google AdSense (same client as homepage) -->
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7899890641544647"
+    crossorigin="anonymous"></script>
+
+  <!-- Google Analytics (same GA4 ID as homepage) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NBQHSPW9GH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NBQHSPW9GH');
+  </script>
+
+  <!-- Styles & Fonts -->
+  <link rel="stylesheet" href="/assets/styles.css?v=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
+
+  <!-- SEO & Social -->
+  <meta name="description" content="Free Print &amp; Play classroom games from Teach Arcade: printable escape-style puzzles, card games, board games, and decision scenarios—ready to use with students, no tech required." />
+  <link rel="canonical" href="https://teacharcade.com/print-play-games/index.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Teach Arcade" />
+  <meta property="og:title" content="Print &amp; Play Games — Free Classroom Games" />
+  <meta property="og:description" content="Printable escape-style puzzles, card games, board games, and decision scenarios—ready to run in class, no tech required." />
+  <meta property="og:url" content="https://teacharcade.com/print-play-games/index.html" />
+  <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Print &amp; Play Games — Free Classroom Games" />
+  <meta name="twitter:description" content="Printable escape-style puzzles, card games, board games, and decision scenarios—ready to run in class, no tech required." />
+  <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+
+  <!-- Structured Data: Breadcrumbs -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://teacharcade.com/"},
+      {"@type":"ListItem","position":2,"name":"Print & Play Games","item":"https://teacharcade.com/print-play-games/index.html"}
+    ]
+  }
+  </script>
+
+  <!-- Hub micro styles (patterned after polished topic pages) -->
+  <style>
+    /* Simple ad placeholders */
+    .ad-slot {
+      width: 100%;
+      margin: 16px 0;
+      height: 0;
+      overflow: hidden;
+    }
+
+    /* Hub intro text */
+    .hub-intro p {
+      font: 400 16px/1.6 Nunito, system-ui, sans-serif;
+      color: #475569;
+      margin: 0 0 12px;
+      max-width: 900px;
+    }
+
+    /* Hero */
+    .hub-hero {
+      padding: 8px 0 8px;
+    }
+    .hub-hero h1{
+      font: 700 34px/1.15 Poppins, sans-serif;
+      margin: 0 0 10px;
+      letter-spacing: -0.02em;
+      color: #0f172a;
+    }
+    .hub-hero p{
+      font: 400 18px/1.5 Nunito, system-ui, sans-serif;
+      color: #475569;
+      margin: 0 0 14px;
+      max-width: 900px;
+    }
+    .cta-row{
+      display:flex; gap:12px; justify-content:flex-start; flex-wrap:wrap;
+      margin: 10px 0 6px;
+    }
+    .btn{
+      display:inline-block;
+      padding:10px 14px;
+      border-radius:10px;
+      text-decoration:none;
+      font:700 14px/1 Poppins, sans-serif;
+      border:1px solid #2563eb;
+      color:#fff;
+      background:#2563eb;
+    }
+    .btn.secondary{
+      background:#fff;
+      color:#1f2937;
+      border-color:#cbd5e1;
+    }
+
+    /* Badge strip */
+    .badges{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      align-items:center;
+      margin: 12px 0 0;
+    }
+    .pill{
+      display:inline-block;
+      padding:4px 8px;
+      border-radius:999px;
+      font:600 12px/1 Nunito,sans-serif;
+      background:#f1f5f9;
+      color:#334155;
+    }
+
+    /* Section headings */
+    .section-title{
+      font: 700 22px/1.2 Poppins, sans-serif;
+      margin: 26px 0 12px;
+      color:#0f172a;
+    }
+    .section-sub{
+      font: 400 15px/1.6 Nunito, system-ui, sans-serif;
+      color:#475569;
+      margin: 0 0 14px;
+      max-width: 900px;
+    }
+
+    /* Tiles grid (match homepage tile feel) */
+    .hub-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+      gap:16px;
+      margin: 10px 0 24px;
+    }
+    .hub-tile{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      justify-content:center;
+      text-align:left;
+      background:#fff;
+      border:1px solid #e2e8f0;
+      border-radius:12px;
+      padding:18px;
+      min-height:140px;
+      text-decoration:none;
+      color:#1e293b;
+      box-shadow:0 2px 4px rgba(0,0,0,0.05);
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .hub-tile:hover{
+      transform:translateY(-3px);
+      box-shadow:0 6px 14px rgba(0,0,0,0.08);
+      border-color:#cbd5e1;
+    }
+    .hub-emoji{
+      font-size:34px;
+      margin-bottom:8px;
+    }
+    .hub-tile h3{
+      font:700 18px/1.2 Poppins,sans-serif;
+      margin:0 0 6px;
+      color:#0f172a;
+    }
+    .hub-tile p{
+      font:400 14px/1.5 Nunito,sans-serif;
+      color:#475569;
+      margin:0;
+    }
+
+    /* Featured cards (simple, consistent with site cards) */
+    .featured-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
+      gap:16px;
+      margin: 10px 0 24px;
+    }
+    .card{
+      background:#fff;
+      border:1px solid #e2e8f0;
+      border-radius:12px;
+      padding:16px;
+      box-shadow:0 2px 4px rgba(0,0,0,0.05);
+    }
+    .card h3{
+      margin:0 0 8px;
+      font:700 16px/1.25 Poppins,sans-serif;
+      color:#0f172a;
+    }
+    .meta{
+      margin:0 0 10px;
+      color:#475569;
+      font:600 13px/1.4 Nunito,sans-serif;
+    }
+    .card p{
+      margin:0 0 12px;
+      color:#475569;
+      font:400 14px/1.55 Nunito,system-ui,sans-serif;
+    }
+    .card .btn{
+      padding:9px 12px;
+      border-radius:10px;
+      font:700 13px/1 Poppins,sans-serif;
+    }
+
+    /* Helpful anchor offset for sticky header */
+    .anchor {
+      scroll-margin-top: 90px;
+    }
+
+    @media (max-width: 480px){
+      .hub-hero h1{font-size:28px;}
+      .hub-hero p{font-size:16px;}
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Global Header (nav.js injects the header HTML) -->
+  <div id="site-header"></div>
+  <script src="/assets/scripts/nav.js" defer></script>
+
+  <main class="container">
+
+    <nav class="breadcrumbs">
+      <a href="/">Home</a> ›
+      Print &amp; Play Games
+    </nav>
+
+    <!-- Hero -->
+    <section class="hub-hero">
+      <h1>Print &amp; Play Games</h1>
+      <p>
+        Classroom-ready printable games—escape-style puzzles, card games, board games, and decision scenarios you can run in minutes. No devices required.
+      </p>
+
+      <div class="cta-row">
+        <a class="btn" href="#browse-types">Browse Game Types</a>
+        <a class="btn secondary" href="#browse-subjects">Browse by Subject</a>
+      </div>
+
+      <div class="badges" aria-label="Print & Play quick details">
+        <span class="pill">⏱ 10–30 minutes</span>
+        <span class="pill">🧑‍🤝‍🧑 Pairs / Groups</span>
+        <span class="pill">🖨️ Print-friendly</span>
+        <span class="pill">✅ Directions + keys (as added)</span>
+      </div>
+    </section>
+
+    <!-- Intro (SEO-rich, patterned after topic pages) -->
+    <section class="hub-intro">
+      <p>
+        Print &amp; Play Games are Teach Arcade’s offline classroom games—designed for stations, review days, sub plans, and anytime you want students learning without screens. Each game is built to be easy to prep, clear to run, and flexible across grade levels.
+      </p>
+      <p>
+        Teachers can choose from escape-style puzzle missions, fast-paced card games, printable board games, and decision-based scenarios that reinforce key content skills like evidence-based reasoning, vocabulary mastery, cause-and-effect, and historical or scientific thinking.
+      </p>
+      <p>
+        This hub is organized by game type first (so you can quickly choose the format you need), followed by subject browsing to match your curriculum. All Print &amp; Play games on Teach Arcade are free and will expand regularly.
+      </p>
+    </section>
+
+    <!-- Top ad placeholder -->
+    <div class="ad-slot ad-top" aria-label="Advertisement"></div>
+
+    <!-- Section 1: Browse by Game Type -->
+    <section id="browse-types" class="anchor" aria-labelledby="types-title">
+      <h2 id="types-title" class="section-title">Browse by Game Type</h2>
+      <p class="section-sub">
+        Choose a game format that fits your classroom—then download and run it with students.
+      </p>
+
+      <div class="hub-grid">
+        <a class="hub-tile" href="/print-play-games/escape-style/index.html" aria-label="Escape-Style Games">
+          <div class="hub-emoji">🧩</div>
+          <h3>Escape-Style Games</h3>
+          <p>Puzzle missions with clues, codes, and a final unlock.</p>
+        </a>
+
+        <a class="hub-tile" href="/print-play-games/card-games/index.html" aria-label="Card Games">
+          <div class="hub-emoji">🃏</div>
+          <h3>Card Games</h3>
+          <p>Fast review decks—match, battle, rank, or debate.</p>
+        </a>
+
+        <a class="hub-tile" href="/print-play-games/board-games/index.html" aria-label="Board Games">
+          <div class="hub-emoji">🎲</div>
+          <h3>Board Games</h3>
+          <p>Printable boards for stations, review days, and sub plans.</p>
+        </a>
+
+        <a class="hub-tile" href="/print-play-games/decision-scenarios/index.html" aria-label="Decision and Scenario Games">
+          <div class="hub-emoji">🧭</div>
+          <h3>Decision &amp; Scenario Games</h3>
+          <p>Choice-driven scenarios with consequences and reflection.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Section 2: Featured / New -->
+    <section aria-labelledby="featured-title">
+      <h2 id="featured-title" class="section-title">Featured Print &amp; Play Games</h2>
+      <p class="section-sub">
+        New and highlighted games will appear here as the library grows.
+      </p>
+
+      <div class="featured-grid" aria-label="Featured Print and Play games">
+        <div class="card">
+          <h3>Coming Soon: First Print &amp; Play Drop</h3>
+          <p class="meta">Subject: Social Studies • Grades: 6–12 • Time: 20–30 min</p>
+          <p>
+            This section will showcase newly released printables with quick teacher details and one-click downloads.
+          </p>
+          <a class="btn secondary" href="/submit.html">Submit a Resource</a>
+        </div>
+
+        <div class="card">
+          <h3>Build the Library with Teachers</h3>
+          <p class="meta">Want to contribute? • Always free</p>
+          <p>
+            Teach Arcade is built by educators. If you have a great free printable game, submit it and help the library grow.
+          </p>
+          <a class="btn secondary" href="/submit.html">Submit a Resource</a>
+        </div>
+
+        <div class="card">
+          <h3>Fast Classroom Wins</h3>
+          <p class="meta">Stations • Review days • Sub plans</p>
+          <p>
+            Print &amp; Play games are designed to reduce prep time while keeping students engaged with meaningful practice.
+          </p>
+          <a class="btn secondary" href="#browse-types">Browse Game Types</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Browse by Subject -->
+    <section id="browse-subjects" class="anchor" aria-labelledby="subjects-title">
+      <h2 id="subjects-title" class="section-title">Browse by Subject</h2>
+      <p class="section-sub">
+        Prefer to start with your course? Browse Print &amp; Play games by subject area.
+      </p>
+
+      <div class="hub-grid">
+        <a class="hub-tile" href="/subjects/social-studies/index.html" aria-label="Print and Play for Social Studies">
+          <div class="hub-emoji">🌎</div>
+          <h3>Social Studies</h3>
+          <p>Printable games for U.S. History, World History, and more.</p>
+        </a>
+
+        <a class="hub-tile" href="/subjects/science/index.html" aria-label="Print and Play for Science">
+          <div class="hub-emoji">🔬</div>
+          <h3>Science</h3>
+          <p>Hands-on printables for Biology, Chemistry, and beyond.</p>
+        </a>
+
+        <a class="hub-tile" href="/subjects/math/index.html" aria-label="Print and Play for Math">
+          <div class="hub-emoji">➗</div>
+          <h3>Math</h3>
+          <p>Printable practice games for skills, review, and stations.</p>
+        </a>
+
+        <a class="hub-tile" href="/subjects/ela/index.html" aria-label="Print and Play for ELA">
+          <div class="hub-emoji">📚</div>
+          <h3>ELA</h3>
+          <p>Games for reading skills, vocabulary, writing, and analysis.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Bottom ad placeholder -->
+    <div class="ad-slot ad-bottom" aria-label="Advertisement"></div>
+  </main>
+
+  <footer>
+    © <script>document.write(new Date().getFullYear())</script> Teach Arcade •
+    <a href="/privacy.html">Privacy</a> •
+    <a href="/terms.html">Terms</a>
+  </footer>
+</body>
+</html>
