@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WWI Trench Run | Arcade Review Game | Teach Arcade</title>
+
+  <!-- Google AdSense (same client as homepage) -->
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7899890641544647"
+    crossorigin="anonymous"></script>
+
+  <!-- Google Analytics (same GA4 ID as homepage) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NBQHSPW9GH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NBQHSPW9GH');
+  </script>
+
+  <!-- Global site styles -->
+  <link rel="stylesheet" href="/assets/styles.css?v=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
+
+  <!-- SEO & Social -->
+  <meta name="description" content="WWI Trench Run is a free World War I arcade review game. Run the trenches, dodge hazards, and answer 20 randomized WWI questions—perfect for classroom review and stations." />
+  <link rel="canonical" href="https://teacharcade.com/arcade-review-games/wwi-trench-run/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Teach Arcade" />
+  <meta property="og:title" content="WWI Trench Run — Arcade Review Game" />
+  <meta property="og:description" content="Run the trenches, dodge hazards, and answer 20 randomized WWI questions. Free classroom game." />
+  <meta property="og:url" content="https://teacharcade.com/arcade-review-games/wwi-trench-run/" />
+  <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="WWI Trench Run — Arcade Review Game" />
+  <meta name="twitter:description" content="Run the trenches and answer 20 randomized WWI questions. Free classroom game." />
+  <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+
+  <!-- Structured Data: Breadcrumbs -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://teacharcade.com/"},
+      {"@type":"ListItem","position":2,"name":"Arcade Review Games","item":"https://teacharcade.com/arcade-review-games/"},
+      {"@type":"ListItem","position":3,"name":"WWI Trench Run","item":"https://teacharcade.com/arcade-review-games/wwi-trench-run/"}
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: EducationalGame -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"EducationalGame",
+    "name":"WWI Trench Run",
+    "description":"A World War I arcade review game where students run through trenches and answer 20 randomized WWI questions.",
+    "learningResourceType":"Game",
+    "educationalLevel":["Middle School","High School"],
+    "genre":["World History","World War I","Review Game"],
+    "creator":{"@type":"Organization","name":"Teach Arcade"},
+    "url":"https://teacharcade.com/arcade-review-games/wwi-trench-run/"
+  }
+  </script>
+
+  <style>
+    .game-shell { max-width: 1100px; margin: 0 auto; padding: 18px 14px 30px; }
+    .game-title { font-family: "Press Start 2P", system-ui, sans-serif; font-size: 1.05rem; margin: 10px 0 8px; }
+    .game-subtitle { color: #475569; font: 600 14px/1.6 system-ui, -apple-system, Segoe UI, sans-serif; max-width: 900px; }
+
+    .ad-slot { width: 100%; margin: 16px 0; height: 0; overflow: hidden; }
+
+    #gameWrap {
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.15);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+      background: #0b1020;
+      position: relative;
+    }
+
+    #hud {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      display: flex;
+      gap: 10px;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.55);
+      color: #f8fafc;
+      font: 600 12px/1 "Press Start 2P", system-ui, sans-serif;
+      z-index: 10;
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+    #hud span { white-space: nowrap; }
+
+    #touchControls {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 12px;
+      padding: 8px 12px;
+      background: rgba(0,0,0,0.55);
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.18);
+      z-index: 10;
+      backdrop-filter: blur(6px);
+    }
+    .ctrl-btn {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.25);
+      background: #111833;
+      color: #f8fafc;
+      font: 700 16px/1 "Press Start 2P", system-ui, sans-serif;
+      cursor: pointer;
+    }
+    .ctrl-btn:active { transform: translateY(1px); }
+    @media (min-width: 900px) { #touchControls { display: none; } }
+
+    #questionOverlay, #endOverlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at top, rgba(0,0,0,0.92), rgba(0,0,0,0.96));
+      z-index: 20;
+    }
+    .hidden { display: none !important; }
+
+    .panel {
+      width: min(520px, 92%);
+      background: #111a33;
+      color: #f8fafc;
+      border-radius: 14px;
+      border: 2px solid rgba(255,255,255,0.18);
+      box-shadow: 0 16px 50px rgba(0,0,0,0.55);
+      padding: 18px 18px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .panel h2 {
+      font-family: "Press Start 2P", system-ui, sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    #qText { font: 600 14px/1.6 system-ui, -apple-system, Segoe UI, sans-serif; color: rgba(248,250,252,0.95); }
+    .choices { display: flex; flex-direction: column; gap: 8px; }
+    .choice-btn {
+      border: 0;
+      border-radius: 999px;
+      padding: 10px 12px;
+      text-align: left;
+      background: #1a2550;
+      color: #f8fafc;
+      cursor: pointer;
+      font: 700 14px/1.35 system-ui, -apple-system, Segoe UI, sans-serif;
+    }
+    .choice-btn:hover { background: #223066; }
+    .choice-btn.correct { background: #166534 !important; }
+    .choice-btn.wrong { background: #b91c1c !important; }
+
+    .panel-footer { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 4px; }
+    #qFeedback { font: 700 13px/1.3 system-ui, -apple-system, Segoe UI, sans-serif; opacity: 0.95; }
+    .primary-btn {
+      border: 0;
+      border-radius: 999px;
+      padding: 10px 14px;
+      background: #f59e0b;
+      color: #111827;
+      cursor: pointer;
+      font: 800 12px/1 "Press Start 2P", system-ui, sans-serif;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .primary-btn:hover { transform: translateY(-1px); }
+
+    #phaserMount canvas { display: block; width: 100%; height: auto; image-rendering: pixelated; }
+  </style>
+</head>
+
+<body>
+  <!-- Global Header -->
+  <div id="site-header"></div>
+  <script src="/assets/scripts/nav.js" defer></script>
+
+  <main class="container game-shell">
+    <nav class="breadcrumbs">
+      <a href="/">Home</a> ›
+      <a href="/arcade-review-games/index.html">Arcade Review Games</a> ›
+      WWI Trench Run
+    </nav>
+
+    <h1 class="game-title">WWI Trench Run</h1>
+    <p class="game-subtitle">
+      Run the trenches, dodge hazards, stomp trench rats, and answer <strong>20 randomized WWI questions</strong>.
+      Keyboard: <strong>A/D</strong> or <strong>◀ ▶</strong> to move, <strong>W/Space/▲</strong> to jump.
+    </p>
+
+    <div class="ad-slot ad-top" aria-label="Advertisement"></div>
+
+    <div id="gameWrap">
+      <div id="hud">
+        <span id="hudScore">Score: 0</span>
+        <span id="hudQuestions">Questions: 0 / 20</span>
+        <span id="hudStatus">Status: Running</span>
+      </div>
+
+      <div id="touchControls">
+        <button id="btnLeft" class="ctrl-btn" aria-label="Move left">◀</button>
+        <button id="btnJump" class="ctrl-btn" aria-label="Jump">▲</button>
+        <button id="btnRight" class="ctrl-btn" aria-label="Move right">▶</button>
+      </div>
+
+      <div id="phaserMount" aria-label="Trench Run game canvas"></div>
+
+      <div id="questionOverlay" class="hidden">
+        <div class="panel">
+          <h2 id="qTitle">Question</h2>
+          <p id="qText"></p>
+          <div class="choices" id="choicesContainer"></div>
+          <div class="panel-footer">
+            <span id="qFeedback"></span>
+            <button id="qCloseBtn" class="primary-btn">Resume</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="endOverlay" class="hidden">
+        <div class="panel">
+          <h2>Level Complete!</h2>
+          <p id="endSummary"></p>
+          <div class="panel-footer">
+            <button id="replayBtn" class="primary-btn">Replay</button>
+            <button id="topicBtn" class="primary-btn">More Games</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ad-slot ad-bottom" aria-label="Advertisement"></div>
+  </main>
+
+  <footer>
+    © <script>document.write(new Date().getFullYear())</script> Teach Arcade •
+    <a href="/privacy.html">Privacy</a> •
+    <a href="/terms.html">Terms</a>
+  </footer>
+
+  <!-- Phaser 3 (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/phaser@3.80.1/dist/phaser.min.js"></script>
+
+  <!-- Game scripts -->
+  <script src="./trench-run.questions.js"></script>
+  <script src="./trench-run.ui.js"></script>
+  <script src="./trench-run.game.js"></script>
+</body>
+</html>
