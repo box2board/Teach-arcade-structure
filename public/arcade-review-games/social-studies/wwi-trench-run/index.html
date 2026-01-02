@@ -74,6 +74,7 @@
 
     .ad-slot { width: 100%; margin: 16px 0; height: 0; overflow: hidden; }
 
+    /* Game wrapper stays clipped for rounded corners */
     #gameWrap {
       border-radius: 14px;
       overflow: hidden;
@@ -129,19 +130,38 @@
     .ctrl-btn:active { transform: translateY(1px); }
     @media (min-width: 900px) { #touchControls { display: none; } }
 
+    /* ✅ Give the game area an explicit, responsive height */
+    #phaserMount{
+      width: 100%;
+      aspect-ratio: 16 / 9;                 /* keeps the "Mario" feel */
+      min-height: 340px;                    /* prevents tiny window */
+      max-height: 620px;
+    }
+    /* Phaser injects a canvas; force it to fill the mount */
+    #phaserMount canvas{
+      width: 100% !important;
+      height: 100% !important;
+      display: block;
+      image-rendering: pixelated;
+    }
+
+    /* ✅ Overlays are FULLSCREEN and NOT clipped by #gameWrap overflow */
     #questionOverlay, #endOverlay {
-      position: absolute;
+      position: fixed;
       inset: 0;
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 16px;
       background: radial-gradient(circle at top, rgba(0,0,0,0.92), rgba(0,0,0,0.96));
-      z-index: 20;
+      z-index: 9999;
     }
     .hidden { display: none !important; }
 
     .panel {
-      width: min(520px, 92%);
+      width: min(560px, 92vw);
+      max-height: calc(100vh - 32px);
+      overflow: auto;
       background: #111a33;
       color: #f8fafc;
       border-radius: 14px;
@@ -188,8 +208,6 @@
       white-space: nowrap;
     }
     .primary-btn:hover { transform: translateY(-1px); }
-
-    #phaserMount canvas { display: block; width: 100%; height: auto; image-rendering: pixelated; }
   </style>
 </head>
 
@@ -227,33 +245,34 @@
       </div>
 
       <div id="phaserMount" aria-label="Trench Run game canvas"></div>
-
-      <div id="questionOverlay" class="hidden">
-        <div class="panel">
-          <h2 id="qTitle">Question</h2>
-          <p id="qText"></p>
-          <div class="choices" id="choicesContainer"></div>
-          <div class="panel-footer">
-            <span id="qFeedback"></span>
-            <button id="qCloseBtn" class="primary-btn">Resume</button>
-          </div>
-        </div>
-      </div>
-
-      <div id="endOverlay" class="hidden">
-        <div class="panel">
-          <h2>Level Complete!</h2>
-          <p id="endSummary"></p>
-          <div class="panel-footer">
-            <button id="replayBtn" class="primary-btn">Replay</button>
-            <button id="topicBtn" class="primary-btn">More Games</button>
-          </div>
-        </div>
-      </div>
     </div>
 
     <div class="ad-slot ad-bottom" aria-label="Advertisement"></div>
   </main>
+
+  <!-- ✅ Overlays moved OUTSIDE #gameWrap so they can never be clipped -->
+  <div id="questionOverlay" class="hidden">
+    <div class="panel">
+      <h2 id="qTitle">Question</h2>
+      <p id="qText"></p>
+      <div class="choices" id="choicesContainer"></div>
+      <div class="panel-footer">
+        <span id="qFeedback"></span>
+        <button id="qCloseBtn" class="primary-btn">Resume</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="endOverlay" class="hidden">
+    <div class="panel">
+      <h2>Level Complete!</h2>
+      <p id="endSummary"></p>
+      <div class="panel-footer">
+        <button id="replayBtn" class="primary-btn">Replay</button>
+        <button id="topicBtn" class="primary-btn">More Games</button>
+      </div>
+    </div>
+  </div>
 
   <footer>
     © <script>document.write(new Date().getFullYear())</script> Teach Arcade •
@@ -264,9 +283,11 @@
   <!-- Phaser 3 (CDN) -->
   <script src="https://cdn.jsdelivr.net/npm/phaser@3.80.1/dist/phaser.min.js"></script>
 
-  <!-- Game scripts -->
-  <script src="./trench-run.questions.js"></script>
-  <script src="./trench-run.ui.js"></script>
-  <script src="./trench-run.game.js"></script>
+  <!-- Game scripts (order: questions -> ui -> game OR questions -> game -> ui depending on your wiring)
+       If your game reads DOM elements, keep ui before game.
+  -->
+  <script src="./trench-run.questions.js?v=1"></script>
+  <script src="./trench-run.ui.js?v=1"></script>
+  <script src="./trench-run.game.js?v=1"></script>
 </body>
 </html>
