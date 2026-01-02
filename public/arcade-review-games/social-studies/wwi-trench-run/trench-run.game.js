@@ -7,7 +7,7 @@
   }
 
   // ---------- Local “Best Score” ----------
-  const BEST_KEY = "ta_trenchrun_best_v1";
+  const BEST_KEY = "ta_trenchrun_best_v2";
   function readBest() {
     const v = Number(localStorage.getItem(BEST_KEY));
     return Number.isFinite(v) ? v : 0;
@@ -16,12 +16,9 @@
     localStorage.setItem(BEST_KEY, String(v));
   }
 
-  // ---------- Minimal WebAudio SFX (no files needed) ----------
+  // ---------- Minimal WebAudio SFX ----------
   class BeepSFX {
-    constructor() {
-      this.ctx = null;
-      this.gain = null;
-    }
+    constructor() { this.ctx = null; this.gain = null; }
     ensure() {
       if (this.ctx) return true;
       try {
@@ -30,15 +27,12 @@
         this.gain.gain.value = 0.12;
         this.gain.connect(this.ctx.destination);
         return true;
-      } catch {
-        return false;
-      }
+      } catch { return false; }
     }
     play(freq = 440, dur = 0.06, type = "square") {
       const enabled = (window.TrenchRunSFX?.enabled ?? true);
       if (!enabled) return;
       if (!this.ensure()) return;
-
       if (this.ctx.state === "suspended") this.ctx.resume().catch(()=>{});
 
       const o = this.ctx.createOscillator();
@@ -67,14 +61,12 @@
     bonus()  { this.play(990, 0.06, "triangle"); }
   }
 
-  // ---- NEW: Taller game (better on iPad + overlays) ----
+  // --- Core dimensions (kept “arcade fixed”, scaled to device with FIT) ---
   const GAME_W = 960;
-  const GAME_H = 540;
+  const GAME_H = 360;
 
   const WORLD_W = 80 * 48;
-
-  // Scale all “vertical” layout up from your old 360-height version
-  const GROUND_Y = 420;
+  const GROUND_Y = 280;
 
   const PITS = [
     { x: 900,  w: 90 },
@@ -85,14 +77,14 @@
   ];
 
   const PLATFORMS = [
-    { x: 600,  y: 345, w: 130, h: 12 },
-    { x: 1000, y: 308, w: 140, h: 12 },
-    { x: 1350, y: 285, w: 120, h: 12 },
-    { x: 1750, y: 315, w: 130, h: 12 },
-    { x: 2100, y: 270, w: 140, h: 12 },
-    { x: 2300, y: 225, w: 130, h: 12 },
-    { x: 2700, y: 285, w: 160, h: 12 },
-    { x: 3100, y: 262, w: 140, h: 12 }
+    { x: 600,  y: 230, w: 130, h: 12 },
+    { x: 1000, y: 205, w: 140, h: 12 },
+    { x: 1350, y: 190, w: 120, h: 12 },
+    { x: 1750, y: 210, w: 130, h: 12 },
+    { x: 2100, y: 180, w: 140, h: 12 },
+    { x: 2300, y: 150, w: 130, h: 12 },
+    { x: 2700, y: 190, w: 160, h: 12 },
+    { x: 3100, y: 175, w: 140, h: 12 }
   ];
 
   const ENEMIES = [
@@ -104,12 +96,12 @@
 
   const END_X = WORLD_W - 160;
 
-  // “Mario feel”
-  const ACCEL = 1800;
-  const DRAG = 1600;
-  const MAX_VX = 300;
-  const GRAVITY = 1200;
-  const JUMP_VY = 520;
+  // “Mario feel” tuned
+  const ACCEL = 2100;
+  const DRAG = 1800;
+  const MAX_VX = 320;
+  const GRAVITY = 1300;
+  const JUMP_VY = 560;
 
   const COYOTE_TIME = 0.10;
   const JUMP_BUFFER = 0.12;
@@ -128,7 +120,7 @@
       this.levelComplete = false;
       this.hitCooldown = 0;
 
-      this.lastSafe = { x: 80, y: 270 };
+      this.lastSafe = { x: 80, y: 180 };
 
       this.questions = [];
       this.qBlocks = [];
@@ -136,11 +128,12 @@
       this.coyoteTimer = 0;
       this.jumpBufferTimer = 0;
 
-      this.puffs = [];
       this.sfx = new BeepSFX();
+    }
 
-      // NEW: prevents instant re-open when still overlapping a block
-      this.blockReopenCooldown = 0;
+    preload() {
+      // No external assets required.
+      // We generate simple pixel textures so sprites are REAL (not null/green boxes).
     }
 
     create() {
@@ -153,69 +146,69 @@
       this.levelComplete = false;
       this.inQuestion = false;
       this.hitCooldown = 0;
-      this.lastSafe = { x: 80, y: 270 };
+      this.lastSafe = { x: 80, y: 180 };
       this.coyoteTimer = 0;
       this.jumpBufferTimer = 0;
-      this.puffs = [];
-      this.blockReopenCooldown = 0;
 
       UI.setHud({ score: 0, best: this.best, answered: 0, total: this.totalQuestions, status: "Running" });
 
+      // Questions
       this.questions = pickRandomQuestions(window.WWI_QUESTION_BANK || [], this.totalQuestions);
 
+      // World bounds + camera
       this.physics.world.setBounds(0, 0, WORLD_W, GAME_H);
       this.cameras.main.setBounds(0, 0, WORLD_W, GAME_H);
       this.cameras.main.setBackgroundColor("#0b1020");
 
+      // Generate textures once
+      this.makeTextures();
+
+      // Background (simple layered rectangles)
       this.bg = this.add.graphics();
       this.drawBackground(0);
 
+      // Ground as static bodies
       this.groundGroup = this.physics.add.staticGroup();
       this.drawGroundSegments();
 
+      // Platforms as static sprites
       this.platformGroup = this.physics.add.staticGroup();
       for (const p of PLATFORMS) {
-        const r = this.add.rectangle(p.x + p.w / 2, p.y + p.h / 2, p.w, p.h, 0x7b5a38).setOrigin(0.5);
-        this.physics.add.existing(r, true);
-        this.platformGroup.add(r);
-        this.add.rectangle(p.x + p.w / 2, p.y + p.h - 2, p.w, 4, 0x5c4128).setOrigin(0.5);
+        const plat = this.platformGroup.create(p.x + p.w/2, p.y + p.h/2, "plat");
+        plat.displayWidth = p.w;
+        plat.displayHeight = p.h;
+        plat.refreshBody();
       }
 
-      this.endPole = this.add.rectangle(END_X, GROUND_Y - 60, 4, 120, 0xf5f5f5).setOrigin(0.5);
-      this.endFlag = this.add.rectangle(END_X + 18, GROUND_Y - 120, 36, 18, 0xff3657).setOrigin(0.5);
+      // End marker
+      this.add.rectangle(END_X, GROUND_Y - 40, 4, 80, 0xf5f5f5).setOrigin(0.5);
+      this.add.rectangle(END_X + 18, GROUND_Y - 72, 36, 18, 0xff3657).setOrigin(0.5);
 
-      // ---- Player physics sprite (HIDDEN) ----
-      this.player = this.physics.add.sprite(80, 270, "__DEFAULT");
-      this.player.setVisible(false);
-      this.player.setSize(28, 40);
-      this.player.body.setOffset(-14, -20);
+      // Player = REAL sprite with texture
+      this.player = this.physics.add.sprite(80, 180, "player");
       this.player.setCollideWorldBounds(true);
       this.player.setGravityY(GRAVITY);
       this.player.setDragX(DRAG);
       this.player.setMaxVelocity(MAX_VX, 760);
+      this.player.body.setSize(22, 34, true);
 
-      this.playerGfx = this.add.graphics().setDepth(6);
-
-      // ---- Enemies physics sprites (HIDDEN) ----
-      this.enemyGroup = this.physics.add.group();
+      // Enemies
+      this.enemyGroup = this.physics.add.group({ allowGravity: true });
       for (const e of ENEMIES) {
-        const s = this.physics.add.sprite(e.x, GROUND_Y - 16, "__DEFAULT");
-        s.setVisible(false);
-        s.setSize(26, 16);
-        s.body.setOffset(-13, -8);
+        const s = this.enemyGroup.create(e.x, GROUND_Y - 16, "rat");
+        s.setBounce(0);
+        s.body.setSize(26, 14, true);
         s.setVelocityX(e.speed);
         s._minX = e.minX;
         s._maxX = e.maxX;
         s._speed = e.speed;
         s._hop = !!e.hop;
         s._hopT = 0;
-        this.enemyGroup.add(s);
       }
-      this.enemyGfx = this.add.graphics().setDepth(5);
 
-      // Question blocks
-      this.blockGroup = this.physics.add.staticGroup();
-      this.blockGfx = this.add.graphics().setDepth(4);
+      // Question blocks:
+      // IMPORTANT FIX: use DYNAMIC immovable bodies (not staticGroup) so moving blocks behave correctly.
+      this.blockGroup = this.physics.add.group({ allowGravity: false, immovable: true });
       this.qBlocks = [];
 
       const spacing = (WORLD_W - 800) / this.totalQuestions;
@@ -224,26 +217,27 @@
       for (let i = 0; i < this.totalQuestions; i++) {
         const wx = baseX + spacing * i;
 
-        let y = (i % 3 === 0) ? (GROUND_Y - 130) : (i % 3 === 1 ? 315 : 255);
+        let y = (i % 3 === 0) ? (GROUND_Y - 90) : (i % 3 === 1 ? 210 : 170);
         const plat = PLATFORMS.find(p => wx >= p.x - 40 && wx <= p.x + p.w + 40);
         if (plat && i % 4 === 0) y = plat.y - 40;
 
         const isBonus = (i % 5 === 4);
         const isMoving = (i % 6 === 5);
 
-        const r = this.add.rectangle(wx + 16, y + 16, 32, 32, isBonus ? 0x60a5fa : 0xc59c3e).setOrigin(0.5);
-        this.physics.add.existing(r, true);
-        this.blockGroup.add(r);
+        const tex = isBonus ? "blockBonus" : "block";
+        const bSpr = this.blockGroup.create(wx + 16, y + 16, tex);
+        bSpr.setCollideWorldBounds(false);
+        bSpr.body.setSize(32, 32, true);
 
         this.qBlocks.push({
           id: i + 1,
           qIndex: i,
-          rect: r,
+          spr: bSpr,
           completed: false,
           firstTry: true,
           bonus: isBonus,
           moving: isMoving,
-          baseX: r.x,
+          baseX: bSpr.x,
           dir: 1,
           speed: 26 + (i % 3) * 10
         });
@@ -255,8 +249,9 @@
       this.physics.add.collider(this.enemyGroup, this.groundGroup);
       this.physics.add.collider(this.enemyGroup, this.platformGroup);
 
+      // Overlaps
       this.physics.add.overlap(this.player, this.enemyGroup, (player, enemy) => this.handleEnemyHit(enemy));
-      this.physics.add.overlap(this.player, this.blockGroup, (player, rect) => this.tryOpenBlock(rect));
+      this.physics.add.overlap(this.player, this.blockGroup, (player, blockSprite) => this.tryOpenBlock(blockSprite));
 
       // Input
       this.cursors = this.input.keyboard.createCursorKeys();
@@ -267,12 +262,11 @@
         SPACE: Phaser.Input.Keyboard.KeyCodes.SPACE
       });
 
+      // Touch input from UI.js
       this.touch = window.TrenchRunInput || { left:false, right:false, jump:false };
 
+      // Camera follow
       this.cameras.main.startFollow(this.player, true, 0.12, 0.12);
-
-      this.redrawBlocks();
-      this.renderProceduralSprites();
 
       if (!this.questions.length) UI.setHud({ status: "Missing question bank (check trench-run.questions.js)" });
     }
@@ -280,17 +274,13 @@
     update(time, delta) {
       const dt = delta / 1000;
 
+      // Keep background stable with camera scroll
       this.drawBackground(this.cameras.main.scrollX);
-      this.updatePuffs(dt);
+
+      // Move “moving blocks”
       this.updateMovingBlocks(dt);
 
-      this.blockReopenCooldown = Math.max(0, this.blockReopenCooldown - dt);
-
-      if (this.inQuestion || this.levelComplete) {
-        this.renderProceduralSprites();
-        this.redrawBlocks();
-        return;
-      }
+      if (this.inQuestion || this.levelComplete) return;
 
       this.hitCooldown = Math.max(0, this.hitCooldown - dt);
 
@@ -340,24 +330,83 @@
         this.coyoteTimer = 0;
         this.player.setVelocityY(-JUMP_VY);
         this.sfx.jump();
-        this.spawnPuff(this.player.x, this.player.y + 18, 10, 0.22);
       }
 
-      if (onGround && !this._wasGround) {
-        this.spawnPuff(this.player.x, this.player.y + 18, 12, 0.18);
-      }
-      this._wasGround = onGround;
-
-      if (this.player.y > GAME_H + 80) {
+      // Pit / fall
+      if (this.player.y > GAME_H + 60) {
         this.respawn("-20 | Fell in a shell hole");
       }
 
+      // End condition
       if (this.answered === this.totalQuestions && this.player.x > END_X) {
         this.triggerEnd();
       }
+    }
 
-      this.renderProceduralSprites();
-      this.redrawBlocks();
+    // ---------- Texture generation (the “clean fix”) ----------
+    makeTextures() {
+      const make = (key, w, h, drawFn) => {
+        if (this.textures.exists(key)) return;
+        const g = this.make.graphics({ x: 0, y: 0, add: false });
+        g.clear();
+        drawFn(g);
+        g.generateTexture(key, w, h);
+        g.destroy();
+      };
+
+      // Player (simple pixel soldier)
+      make("player", 32, 40, (g) => {
+        g.fillStyle(0x2f3b2f, 1); // helmet
+        g.fillRect(6, 2, 20, 10);
+        g.fillStyle(0xd9b382, 1); // face
+        g.fillRect(10, 12, 12, 10);
+        g.fillStyle(0x3b2a1f, 1); // coat
+        g.fillRect(8, 22, 16, 14);
+        g.fillStyle(0x1b1b1b, 1); // boots
+        g.fillRect(8, 36, 7, 4);
+        g.fillRect(17, 36, 7, 4);
+      });
+
+      // Rat
+      make("rat", 32, 16, (g) => {
+        g.fillStyle(0x2a2a35, 1);
+        g.fillRect(2, 6, 26, 8);
+        g.fillRect(6, 2, 16, 6);
+        g.fillStyle(0xff4b4b, 1);
+        g.fillRect(22, 4, 2, 2);
+      });
+
+      // Normal question block
+      make("block", 32, 32, (g) => {
+        g.fillStyle(0xc59c3e, 1);
+        g.fillRect(0, 0, 32, 32);
+        g.lineStyle(2, 0x000000, 0.35);
+        g.strokeRect(1, 1, 30, 30);
+        g.fillStyle(0x2b210f, 1);
+        g.fillRect(14, 10, 4, 12);
+        g.fillRect(10, 8, 12, 4);
+      });
+
+      // Bonus block
+      make("blockBonus", 32, 32, (g) => {
+        g.fillStyle(0x60a5fa, 1);
+        g.fillRect(0, 0, 32, 32);
+        g.lineStyle(2, 0x000000, 0.35);
+        g.strokeRect(1, 1, 30, 30);
+        g.fillStyle(0x0b1b3a, 1);
+        g.fillRect(14, 10, 4, 12);
+        g.fillRect(10, 8, 12, 4);
+        g.fillStyle(0xffffff, 1);
+        g.fillRect(24, 6, 2, 2);
+      });
+
+      // Platform texture (stretches)
+      make("plat", 64, 16, (g) => {
+        g.fillStyle(0x7b5a38, 1);
+        g.fillRect(0, 0, 64, 16);
+        g.fillStyle(0x5c4128, 1);
+        g.fillRect(0, 12, 64, 4);
+      });
     }
 
     // ---------- Blocks ----------
@@ -366,66 +415,23 @@
         if (!b.moving || b.completed) continue;
 
         const maxOffset = 50;
-        b.rect.x += b.dir * b.speed * dt;
+        b.spr.x += b.dir * b.speed * dt;
 
-        if (b.rect.x > b.baseX + maxOffset) { b.rect.x = b.baseX + maxOffset; b.dir = -1; }
-        if (b.rect.x < b.baseX - maxOffset) { b.rect.x = b.baseX - maxOffset; b.dir =  1; }
-
-        b.rect.body.updateFromGameObject();
+        if (b.spr.x > b.baseX + maxOffset) { b.spr.x = b.baseX + maxOffset; b.dir = -1; }
+        if (b.spr.x < b.baseX - maxOffset) { b.spr.x = b.baseX - maxOffset; b.dir =  1; }
       }
     }
 
-    redrawBlocks() {
-      this.blockGfx.clear();
-      const camX = this.cameras.main.scrollX;
-
-      for (const b of this.qBlocks) {
-        const r = b.rect;
-        const sx = r.x - camX;
-        const sy = r.y;
-
-        let fill;
-        if (b.completed) fill = 0x3a4b32;
-        else if (b.bonus) fill = 0x60a5fa;
-        else fill = 0xc59c3e;
-
-        this.blockGfx.fillStyle(fill, 1);
-        this.blockGfx.fillRect(sx - 16, sy - 16, 32, 32);
-
-        this.blockGfx.lineStyle(1, 0x000000, 0.55);
-        this.blockGfx.strokeRect(sx - 16, sy - 16, 32, 32);
-
-        this.blockGfx.fillStyle(0x2b210f, 1);
-        this.blockGfx.fillRect(sx - 2, sy - 4, 4, 10);
-        this.blockGfx.fillRect(sx - 6, sy - 8, 12, 4);
-
-        if (b.bonus && !b.completed) {
-          this.blockGfx.fillStyle(0xffffff, 1);
-          this.blockGfx.fillRect(sx + 10, sy - 10, 2, 2);
-        }
-      }
-    }
-
-    tryOpenBlock(rect) {
+    tryOpenBlock(blockSprite) {
       if (this.levelComplete || this.inQuestion) return;
-      if (this.blockReopenCooldown > 0) return;
-
-      const block = this.qBlocks.find(b => b.rect === rect);
+      const block = this.qBlocks.find(b => b.spr === blockSprite);
       if (!block || block.completed) return;
-
       this.openQuestion(block);
     }
 
     openQuestion(block) {
       this.inQuestion = true;
-
-      UI.setHud({
-        score: this.score,
-        best: this.best,
-        answered: this.answered,
-        total: this.totalQuestions,
-        status: "Answering"
-      });
+      UI.setHud({ score: this.score, best: this.best, answered: this.answered, total: this.totalQuestions, status: "Answering" });
 
       const q = this.questions[block.qIndex];
 
@@ -434,9 +440,7 @@
         question: q,
         lockResume: true,
         onResume: () => {
-          UI.hideQuestionOverlay();
           this.inQuestion = false;
-          this.blockReopenCooldown = 0.6; // NEW: prevents instant reopen
           UI.setHud({ status: "Running" });
         },
         onAnswer: (selectedIndex, btnEl) => {
@@ -454,6 +458,11 @@
             if (block.firstTry) this.firstTryCorrect++;
 
             block.completed = true;
+            block.spr.setTexture("plat"); // visual “used” look without needing a new asset
+            block.spr.setTint(0x2f3b2f);
+            block.spr.displayWidth = 32;
+            block.spr.displayHeight = 14;
+
             this.answered = this.qBlocks.filter(b => b.completed).length;
 
             if (this.score > this.best) { this.best = this.score; writeBest(this.best); }
@@ -466,20 +475,15 @@
               status: `Question ${this.answered}/${this.totalQuestions} (+${add})`
             });
 
-            this.spawnPuff(block.rect.x, block.rect.y, 16, 0.24);
-
             setTimeout(() => {
               UI.hideQuestionOverlay();
               this.inQuestion = false;
-              this.blockReopenCooldown = 0.6;
               UI.setHud({ status: "Running" });
-              this.redrawBlocks();
             }, 420);
           } else {
             UI.markChoice(btnEl, "wrong");
             UI.setFeedback("Incorrect. Try again.");
             this.sfx.wrong();
-
             this.score -= 10;
             block.firstTry = false;
 
@@ -506,8 +510,6 @@
 
       if (stomping) {
         this.sfx.stomp();
-        this.spawnPuff(enemy.x, enemy.y, 14, 0.22);
-
         enemy.destroy();
         this.score += 10;
 
@@ -529,7 +531,7 @@
       }
     }
 
-    // ---------- Safe position + respawn ----------
+    // ---------- Safe + respawn ----------
     updateSafe() {
       const overPit = PITS.some(p => this.player.x > p.x && this.player.x < p.x + p.w);
       if (!overPit) {
@@ -540,18 +542,13 @@
 
     respawn(statusText) {
       this.score -= 20;
-
-      if (this.score > this.best) {
-        this.best = this.score;
-        writeBest(this.best);
-      }
+      if (this.score > this.best) { this.best = this.score; writeBest(this.best); }
 
       this.player.setPosition(this.lastSafe.x, this.lastSafe.y);
       this.player.setVelocity(0, 0);
 
       UI.setHud({ score: this.score, best: this.best, answered: this.answered, total: this.totalQuestions, status: statusText });
       this.cameras.main.shake(180, 0.008);
-      this.spawnPuff(this.player.x, this.player.y + 18, 18, 0.28);
     }
 
     // ---------- End ----------
@@ -571,7 +568,7 @@
       });
     }
 
-    // ---------- Background + world ----------
+    // ---------- World ground ----------
     drawGroundSegments() {
       const segments = [];
       let cursor = 0;
@@ -585,13 +582,7 @@
       if (cursor < WORLD_W) segments.push({ x: cursor, w: WORLD_W - cursor });
 
       for (const s of segments) {
-        const r = this.add.rectangle(
-          s.x + s.w / 2,
-          GROUND_Y + (GAME_H - GROUND_Y) / 2,
-          s.w,
-          (GAME_H - GROUND_Y),
-          0x5a4334
-        ).setOrigin(0.5);
+        const r = this.add.rectangle(s.x + s.w / 2, GROUND_Y + (GAME_H - GROUND_Y) / 2, s.w, (GAME_H - GROUND_Y), 0x5a4334).setOrigin(0.5);
         this.physics.add.existing(r, true);
         this.groundGroup.add(r);
 
@@ -599,40 +590,26 @@
       }
 
       for (const pit of PITS) {
-        this.add.rectangle(
-          pit.x + pit.w / 2,
-          GROUND_Y + (GAME_H - GROUND_Y) / 2,
-          pit.w,
-          (GAME_H - GROUND_Y),
-          0x17131b
-        ).setOrigin(0.5);
+        this.add.rectangle(pit.x + pit.w / 2, GROUND_Y + (GAME_H - GROUND_Y) / 2, pit.w, (GAME_H - GROUND_Y), 0x17131b).setOrigin(0.5);
       }
     }
 
     drawBackground(scrollX) {
       this.bg.clear();
-
       this.bg.fillStyle(0x0f1226, 1);
       this.bg.fillRect(0, 0, GAME_W, GAME_H);
 
       this.bg.fillStyle(0x3b4c8b, 0.85);
-      this.bg.fillRect(0, 90, GAME_W, 200);
+      this.bg.fillRect(0, 60, GAME_W, 140);
 
       this.bg.fillStyle(0x120f18, 0.9);
-      this.bg.fillRect(0, 300, GAME_W, 260);
+      this.bg.fillRect(0, 200, GAME_W, 160);
 
       const ox = -(scrollX * 0.15) % 220;
       this.bg.fillStyle(0x101326, 1);
       for (let x = -240; x < GAME_W + 240; x += 60) {
         const h = 16 + 10 * Math.sin((x + scrollX * 0.02) * 0.02);
-        this.bg.fillRect(x + ox, 290 - h, 70, 220);
-      }
-
-      const mx = -(scrollX * 0.35) % 240;
-      this.bg.fillStyle(0x0c0f1d, 1);
-      for (let x = -260; x < GAME_W + 260; x += 220) {
-        this.bg.fillRect(x + mx + 30, 310, 50, 36);
-        this.bg.fillRect(x + mx + 10, 325, 90, 10);
+        this.bg.fillRect(x + ox, 195 - h, 70, 160);
       }
 
       const wx = -(scrollX * 0.65) % 30;
@@ -640,102 +617,15 @@
       this.bg.beginPath();
       for (let x = -60; x <= GAME_W + 60; x += 18) {
         const wiggle = Math.sin((x + scrollX) * 0.02) * 5;
-        this.bg.lineTo(x + wx, 360 + wiggle);
+        this.bg.lineTo(x + wx, 230 + wiggle);
       }
       this.bg.strokePath();
 
       this.bg.fillStyle(0xffffff, 0.06);
-      this.bg.fillRect(0, 250, GAME_W, 60);
-    }
-
-    // ---------- Procedural sprites ----------
-    renderProceduralSprites() {
-      const camX = this.cameras.main.scrollX;
-
-      this.playerGfx.clear();
-      const px = this.player.x - camX;
-      const py = this.player.y;
-
-      this.playerGfx.fillStyle(0x2a2016, 1);
-      this.playerGfx.fillRect(px - 10, py + 12, 8, 10);
-      this.playerGfx.fillRect(px + 2,  py + 12, 8, 10);
-
-      this.playerGfx.fillStyle(0xf4c542, 1);
-      this.playerGfx.fillRect(px - 12, py - 8, 24, 22);
-
-      this.playerGfx.fillStyle(0xffb300, 1);
-      this.playerGfx.fillRect(px - 13, py - 18, 26, 10);
-      this.playerGfx.fillStyle(0xd08e18, 1);
-      this.playerGfx.fillRect(px - 13, py - 10, 26, 2);
-
-      this.playerGfx.fillStyle(0x111111, 1);
-      this.playerGfx.fillRect(px - 6, py - 14, 2, 2);
-      this.playerGfx.fillRect(px + 4, py - 14, 2, 2);
-
-      this.enemyGfx.clear();
-      this.enemyGroup.getChildren().forEach((e) => {
-        const ex = e.x - camX;
-        const ey = e.y;
-
-        this.enemyGfx.fillStyle(0x262635, 1);
-        this.enemyGfx.fillRect(ex - 13, ey - 4, 26, 12);
-        this.enemyGfx.fillRect(ex - 9,  ey - 10, 18, 6);
-
-        this.enemyGfx.fillStyle(0xff4b4b, 1);
-        this.enemyGfx.fillRect(ex + 7, ey - 8, 2, 2);
-      });
-
-      this.drawPuffs(camX);
-    }
-
-    // ---------- Particles ----------
-    spawnPuff(x, y, maxR, life) {
-      const count = 6 + Math.floor(Math.random() * 4);
-      for (let i = 0; i < count; i++) {
-        this.puffs.push({
-          x: x + (Math.random() * 12 - 6),
-          y: y + (Math.random() * 6 - 3),
-          vx: (Math.random() * 120 - 60),
-          vy: -(40 + Math.random() * 80),
-          r: 2 + Math.random() * 2,
-          maxR,
-          life,
-          t: life
-        });
-      }
-    }
-
-    updatePuffs(dt) {
-      for (let i = this.puffs.length - 1; i >= 0; i--) {
-        const p = this.puffs[i];
-        p.t -= dt;
-        if (p.t <= 0) {
-          this.puffs.splice(i, 1);
-          continue;
-        }
-        p.vy += 260 * dt;
-        p.x += p.vx * dt;
-        p.y += p.vy * dt;
-      }
-    }
-
-    drawPuffs(camX) {
-      if (!this.puffs.length) return;
-
-      for (const p of this.puffs) {
-        const alpha = Math.max(0, p.t / p.life);
-        const r = p.r + (p.maxR * (1 - alpha)) * 0.10;
-
-        this.playerGfx.fillStyle(0xffffff, 0.12 * alpha);
-        this.playerGfx.fillCircle(p.x - camX, p.y, r + 3);
-
-        this.playerGfx.fillStyle(0xe5e7eb, 0.22 * alpha);
-        this.playerGfx.fillCircle(p.x - camX, p.y, r);
-      }
+      this.bg.fillRect(0, 165, GAME_W, 40);
     }
   }
 
-  // ---- IMPORTANT: Proper responsive scaling ----
   const config = {
     type: Phaser.AUTO,
     parent: "phaserMount",
@@ -743,14 +633,23 @@
     height: GAME_H,
     pixelArt: true,
     backgroundColor: "#0b1020",
+
+    // IMPORTANT: THIS fixes tiny play window + weird scaling on iPad/mobile.
     scale: {
       mode: Phaser.Scale.FIT,
-      autoCenter: Phaser.Scale.CENTER_BOTH
+      autoCenter: Phaser.Scale.CENTER_BOTH,
+      width: GAME_W,
+      height: GAME_H
     },
+
     physics: {
       default: "arcade",
-      arcade: { gravity: { y: 0 }, debug: false }
+      arcade: {
+        gravity: { y: 0 },
+        debug: false
+      }
     },
+
     scene: [TrenchRunScene]
   };
 
