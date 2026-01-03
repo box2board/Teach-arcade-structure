@@ -4,124 +4,178 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>WWI Trench Run | Free World War I Review Game | Teach Arcade</title>
+<title>WWI Trench Run | World War I Review Game | Teach Arcade</title>
 
-<meta name="description" content="WWI Trench Run is a free World War I classroom arcade review game. Students run through trenches, dodge hazards, and answer 20 randomized WWI questions covering MAIN causes, trench warfare, U.S. entry, and the Treaty of Versailles. Perfect for middle school and high school history review, stations, bell ringers, and test prep.">
+<meta name="description"
+content="WWI Trench Run is a free World War I review game for middle and high school classrooms. Students navigate trenches, avoid hazards, and answer 20 randomized WWI questions covering MAIN causes, trench warfare, U.S. entry, and the Treaty of Versailles.">
 
-<meta name="keywords" content="WWI review game, World War I classroom game, WWI interactive review, trench warfare game, MAIN causes WWI, Teach Arcade history games">
+<meta name="keywords"
+content="WWI review game, World War I classroom activity, trench warfare game, MAIN causes of WWI, Teach Arcade, social studies games">
 
 <link rel="canonical" href="https://teacharcade.com/arcade-review-games/wwi-trench-run/">
 
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-NBQHSPW9GH"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-NBQHSPW9GH');
-</script>
-
-<!-- Google AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7899890641544647" crossorigin="anonymous"></script>
+<meta property="og:title" content="WWI Trench Run – Interactive World War I Review Game">
+<meta property="og:description" content="Run the trenches, dodge hazards, and answer 20 WWI review questions. A free classroom-ready game from Teach Arcade.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://teacharcade.com/arcade-review-games/wwi-trench-run/">
 
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
 <style>
-body {
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family:system-ui,-apple-system,Segoe UI,sans-serif;
   background:#0b0f1e;
   color:#f9f9ff;
-  font-family:system-ui,-apple-system,Segoe UI,sans-serif;
-  margin:0;
-  padding:12px;
   display:flex;
   flex-direction:column;
   align-items:center;
+  padding:14px;
+  gap:10px;
 }
 
-h1 {
+h1{
   font-family:"Press Start 2P";
   font-size:1rem;
-  margin:6px 0;
+  text-align:center;
 }
 
-p {
-  max-width:960px;
-  font-size:.8rem;
+.subtitle{
+  font-size:.75rem;
+  max-width:900px;
   text-align:center;
   opacity:.9;
 }
 
-#gameContainer {
+.game-description{
+  max-width:900px;
+  font-size:.75rem;
+  line-height:1.5;
+  opacity:.9;
+}
+
+.game-description ul{
+  margin:8px 0 8px 18px;
+}
+
+#gameContainer{
   position:relative;
   border-radius:14px;
   overflow:hidden;
   border:2px solid rgba(255,255,255,.2);
-  box-shadow:0 12px 40px rgba(0,0,0,.7);
+  box-shadow:0 12px 40px rgba(0,0,0,.8);
 }
 
-canvas {
+canvas{
   display:block;
+  width:960px;
+  height:360px;
   image-rendering:pixelated;
+  background:#000;
 }
 
-#hud {
+@media(max-width:1000px){
+  canvas{max-width:100%}
+}
+
+#hud{
   position:absolute;
   top:6px;
   left:6px;
   right:6px;
   display:flex;
   justify-content:space-between;
-  background:rgba(0,0,0,.55);
-  padding:4px 10px;
+  background:rgba(0,0,0,.6);
+  padding:6px 10px;
   border-radius:999px;
   font-family:"Press Start 2P";
   font-size:.6rem;
   z-index:5;
 }
 
-#questionOverlay {
-  position:fixed;
-  inset:0;
+#touchControls{
+  position:absolute;
+  bottom:6px;
+  left:50%;
+  transform:translateX(-50%);
   display:flex;
-  justify-content:center;
-  align-items:center;
-  background:rgba(0,0,0,.95);
-  z-index:9999;
+  gap:10px;
+  background:rgba(0,0,0,.6);
+  padding:6px 10px;
+  border-radius:999px;
 }
 
-.hidden { display:none; }
+.ctrl-btn{
+  width:40px;height:40px;
+  border-radius:50%;
+  background:#1c223f;
+  color:#fff;
+  border:2px solid rgba(255,255,255,.3);
+  font-family:"Press Start 2P";
+}
 
-.panel {
-  background:#171b29;
+@media(min-width:900px){
+  #touchControls{display:none}
+}
+
+#questionOverlay,#endOverlay{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.95);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:20;
+}
+
+.hidden{display:none}
+
+.panel{
+  background:#151b33;
   padding:18px;
   border-radius:14px;
-  width:90%;
+  width:92%;
   max-width:520px;
   border:2px solid rgba(255,255,255,.25);
 }
 
-.choice {
-  margin-top:6px;
-  padding:8px;
-  background:#232842;
+.choice-btn{
+  width:100%;
+  margin:6px 0;
+  padding:8px 10px;
   border-radius:999px;
-  cursor:pointer;
+  border:none;
+  background:#2b315a;
+  color:#fff;
 }
 
-.choice:hover { background:#2f3557; }
-.choice.correct { background:#2e7d32; }
-.choice.wrong { background:#c62828; }
+.choice-btn.correct{background:#2e7d32}
+.choice-btn.wrong{background:#b71c1c}
 </style>
 </head>
 
 <body>
 
 <h1>WWI Trench Run</h1>
-<p>
-Run the trenches, dodge pits and rats, and answer <strong>20 randomized World War I questions</strong>.
-Covers MAIN causes, trench warfare, alliances, U.S. entry, and peace treaties.
-Perfect for classroom review and test prep.
+<p class="subtitle">
+Run the trenches, dodge shell holes, stomp trench rats, and answer 20 randomized World War I questions.
 </p>
+
+<section class="game-description">
+<p>
+<strong>WWI Trench Run</strong> is a free, classroom-ready World War I review game designed for middle and high school social studies courses.
+</p>
+<ul>
+<li>MAIN causes of World War I</li>
+<li>Trench warfare and new weapons</li>
+<li>U.S. entry into WWI</li>
+<li>Treaty of Versailles and consequences</li>
+</ul>
+<p>
+Ideal for bell ringers, stations, test review, or whole-class play on desktop and tablets.
+</p>
+</section>
 
 <div id="gameContainer">
   <canvas id="gameCanvas" width="960" height="360"></canvas>
@@ -131,118 +185,147 @@ Perfect for classroom review and test prep.
     <span id="hudQuestions">Questions: 0 / 20</span>
     <span id="hudStatus">Running</span>
   </div>
-</div>
 
-<div id="questionOverlay" class="hidden">
-  <div class="panel">
-    <h2 id="qText"></h2>
-    <div id="choices"></div>
+  <div id="touchControls">
+    <button class="ctrl-btn" id="btnLeft">◀</button>
+    <button class="ctrl-btn" id="btnJump">▲</button>
+    <button class="ctrl-btn" id="btnRight">▶</button>
+  </div>
+
+  <div id="questionOverlay" class="hidden">
+    <div class="panel">
+      <h2 id="qTitle"></h2>
+      <p id="qText"></p>
+      <div id="choicesContainer"></div>
+    </div>
+  </div>
+
+  <div id="endOverlay" class="hidden">
+    <div class="panel">
+      <h2>Level Complete</h2>
+      <p id="endSummary"></p>
+    </div>
   </div>
 </div>
 
-<!-- QUESTIONS FILE -->
-<script src="./questions.js"></script>
+<!-- QUESTIONS FILE (YOU ALREADY HAVE THIS) -->
+<script src="./trench-run.questions.js"></script>
 
 <script>
 /* ===========================
-   CANVAS + CORE
+   TILE BACKGROUNDS (YOUR FILES)
 =========================== */
-const canvas = document.getElementById("gameCanvas");
-const ctx = canvas.getContext("2d");
-
-const player = { x:80, y:260, w:26, h:36, vx:0, vy:0, onGround:false };
-const GRAVITY = 1200;
-const SPEED = 260;
-const JUMP = 520;
-const GROUND_Y = 300;
-
-let cameraX = 0;
-let last = 0;
-let score = 0;
-let answered = 0;
-let paused = false;
+const trenchTiles=[
+  "/assets/backgrounds/trenchA.png",
+  "/assets/backgrounds/trenchB.png",
+  "/assets/backgrounds/trenchC.png",
+  "/assets/backgrounds/trenchD.png",
+  "/assets/backgrounds/trenchE.png"
+].map(src=>{
+  const i=new Image();
+  i.src=src;
+  return i;
+});
 
 /* ===========================
-   TILE ASSETS
+   BASIC ENGINE
 =========================== */
-const sky = new Image();
-const trenchBack = new Image();
-const trenchGround = new Image();
+const canvas=document.getElementById("gameCanvas");
+const ctx=canvas.getContext("2d");
 
-sky.src = "./tiles/sky-480x360.png";
-trenchBack.src = "./tiles/trench-back-48.png";
-trenchGround.src = "./tiles/trench-ground-48.png";
+const TILE_SIZE=48;
+const GROUND_Y=280;
+const WORLD_WIDTH=80*TILE_SIZE;
 
-/* ===========================
-   QUESTIONS
-=========================== */
-const questions = [...window.WWI_QUESTION_BANK].sort(()=>Math.random()-0.5).slice(0,20);
-let activeQuestion = null;
+const player={x:80,y:180,w:28,h:40,vx:0,vy:0,onGround:false};
+
+const GRAVITY=1200, SPEED=260, JUMP=520;
+let camX=0, last=0, paused=false, score=0;
+
+const keys={l:false,r:false};
 
 /* ===========================
    INPUT
 =========================== */
-const keys = {};
 document.addEventListener("keydown",e=>{
-  keys[e.code]=true;
-  if(e.code==="Space" && player.onGround){
-    player.vy=-JUMP;
-    player.onGround=false;
-  }
+ if(e.key==="ArrowLeft"||e.key==="a")keys.l=true;
+ if(e.key==="ArrowRight"||e.key==="d")keys.r=true;
+ if(e.key==="ArrowUp"||e.key===" "||e.key==="w")jump();
 });
-document.addEventListener("keyup",e=>keys[e.code]=false);
+document.addEventListener("keyup",e=>{
+ if(e.key==="ArrowLeft"||e.key==="a")keys.l=false;
+ if(e.key==="ArrowRight"||e.key==="d")keys.r=false;
+});
+document.getElementById("btnLeft").onclick=()=>keys.l=true;
+document.getElementById("btnRight").onclick=()=>keys.r=true;
+document.getElementById("btnJump").onclick=jump;
+
+function jump(){
+ if(player.onGround){
+  player.vy=-JUMP;
+  player.onGround=false;
+ }
+}
+
+/* ===========================
+   UPDATE
+=========================== */
+function update(dt){
+ if(paused)return;
+
+ player.vx=keys.l?-SPEED:keys.r?SPEED:0;
+ player.vy+=GRAVITY*dt;
+
+ player.x+=player.vx*dt;
+ player.y+=player.vy*dt;
+
+ if(player.y+player.h>=GROUND_Y){
+  player.y=GROUND_Y-player.h;
+  player.vy=0;
+  player.onGround=true;
+ }
+
+ camX=Math.max(0,Math.min(player.x-480,WORLD_WIDTH-960));
+}
+
+/* ===========================
+   DRAW
+=========================== */
+function draw(){
+ ctx.clearRect(0,0,960,360);
+
+ // SKY
+ ctx.fillStyle="#1a2040";
+ ctx.fillRect(0,0,960,360);
+
+ // TRENCH TILES
+ const start=Math.floor(camX/TILE_SIZE);
+ const end=start+Math.ceil(960/TILE_SIZE);
+
+ for(let t=start;t<=end;t++){
+  const img=trenchTiles[Math.abs(t)%trenchTiles.length];
+  if(img.complete){
+   ctx.drawImage(img,t*TILE_SIZE-camX,GROUND_Y-72,TILE_SIZE,72);
+  }
+ }
+
+ // GROUND
+ ctx.fillStyle="#3a2a1e";
+ ctx.fillRect(0,GROUND_Y,960,80);
+
+ // PLAYER
+ ctx.fillStyle="#f4c542";
+ ctx.fillRect(player.x-camX,player.y,player.w,player.h);
+}
 
 /* ===========================
    LOOP
 =========================== */
-function update(dt){
-  if(paused) return;
-
-  player.vx = keys.ArrowRight?SPEED:keys.ArrowLeft?-SPEED:0;
-  player.vy += GRAVITY*dt;
-
-  player.x += player.vx*dt;
-  player.y += player.vy*dt;
-
-  if(player.y+player.h>=GROUND_Y){
-    player.y=GROUND_Y-player.h;
-    player.vy=0;
-    player.onGround=true;
-  }
-
-  cameraX = Math.max(0, player.x-200);
-}
-
-function drawBackground(){
-  for(let x=-480;x<canvas.width+480;x+=480){
-    ctx.drawImage(sky, x-(cameraX%480), 0);
-  }
-}
-
-function drawGround(){
-  for(let x=-48;x<canvas.width+48;x+=48){
-    ctx.drawImage(trenchGround, x-(cameraX%48), GROUND_Y);
-  }
-}
-
-function drawPlayer(){
-  ctx.fillStyle="#f4c542";
-  ctx.fillRect(player.x-cameraX, player.y, player.w, player.h);
-}
-
-function draw(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  drawBackground();
-  drawGround();
-  drawPlayer();
-}
-
-function loop(t){
-  const dt=(t-last)/1000;
-  last=t;
-  update(dt);
-  draw();
-  requestAnimationFrame(loop);
+function loop(ts){
+ const dt=(ts-last)/1000; last=ts;
+ update(dt);
+ draw();
+ requestAnimationFrame(loop);
 }
 
 requestAnimationFrame(loop);
