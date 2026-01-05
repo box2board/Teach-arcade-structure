@@ -1,0 +1,466 @@
+{
+  "id": "american-revolution-breaking-point",
+  "title": "American Revolution: The Breaking Point",
+  "role": "Colonial Political Advisor",
+  "timeSpan": "1763–1776",
+  "constraints": [
+    "The colonies do not agree with each other. Too much pressure too fast can fracture unity.",
+    "Britain can escalate enforcement. Harsh resistance can increase repression.",
+    "Economic pain moves people—but it can also reduce patience and stability.",
+    "Independence requires momentum and coordination, not just anger."
+  ],
+  "stats": [
+    { "key": "unity", "name": "Colonial Unity", "start": 45 },
+    { "key": "support", "name": "Public Support", "start": 50 },
+    { "key": "pressure", "name": "British Pressure", "start": 35 },
+    { "key": "strain", "name": "Economic Strain", "start": 40 },
+    { "key": "rad", "name": "Radicalization", "start": 30 }
+  ],
+  "turns": [
+    {
+      "year": 1763,
+      "title": "After the French & Indian War",
+      "context": "Britain has won a costly war and now faces heavy debt. Officials argue the colonies should help pay and that tighter control will prevent future conflict. Many colonists feel proud of British victory—yet wary of new oversight.",
+      "signals": [
+        "War debt is rising in London",
+        "British officials debate colonial taxation",
+        "Frontier tensions remain unstable"
+      ],
+      "choices": [
+        {
+          "id": "t1_a",
+          "label": "Promote loyalty while quietly organizing inter-colony communication",
+          "description": "Advise leaders to speak respectfully of the Crown, but build networks that can respond quickly if policies tighten.",
+          "tags": ["Unify first", "Low risk"],
+          "effects": { "unity": 8, "support": 4, "pressure": 0, "strain": 0, "rad": 1 },
+          "outcome": "Colonial leaders feel safer coordinating when the public message remains calm. You strengthen communication without triggering immediate crackdown.",
+          "sourceNote": "Colonial committees and networks grew over time, helping coordinate later resistance."
+        },
+        {
+          "id": "t1_b",
+          "label": "Prepare for confrontation and warn the public about coming control",
+          "description": "Push speeches and pamphlets predicting that new taxes and enforcement are on the way.",
+          "tags": ["Mobilize", "Higher risk"],
+          "effects": { "unity": 2, "support": 6, "pressure": 4, "strain": 0, "rad": 6 },
+          "outcome": "Some colonists rally, but British officials notice a sharper tone. Opposition grows faster—so does scrutiny.",
+          "sourceNote": "Early warnings and political writing shaped colonial resistance and identity."
+        },
+        {
+          "id": "t1_c",
+          "label": "Focus on trade and stability; avoid political agitation",
+          "description": "Encourage merchants and assemblies to keep commerce flowing and reduce public controversy.",
+          "tags": ["Stability", "Short-term peace"],
+          "effects": { "unity": 1, "support": -2, "pressure": -1, "strain": -4, "rad": -2 },
+          "outcome": "Economic calm improves, but the public senses leaders are hesitant to defend colonial rights. Coordination remains weak.",
+          "sourceNote": "Many colonists preferred stability and trade over confrontation—until policies escalated."
+        }
+      ]
+    },
+    {
+      "year": 1765,
+      "title": "The Stamp Act Crisis",
+      "context": "Parliament passes the Stamp Act, requiring paid stamps on legal documents, newspapers, and other paper goods. Colonists argue taxation without local representation is illegitimate. Protests spread—some peaceful, some not.",
+      "signals": [
+        "New tax touches daily life",
+        "Merchants worry about boycotts",
+        "Some crowds turn violent"
+      ],
+      "choices": [
+        {
+          "id": "t2_a",
+          "label": "Coordinate a formal petition and congress-style meeting",
+          "description": "Push inter-colony representatives to coordinate a clear, legal argument and unified message.",
+          "tags": ["Legitimacy", "Unity"],
+          "effects": { "unity": 10, "support": 4, "pressure": 2, "strain": 2, "rad": 1 },
+          "outcome": "Colonial leaders look organized and principled. Britain dislikes the challenge—but finds it harder to dismiss a united legal case.",
+          "sourceNote": "The Stamp Act Congress helped coordinate resistance and articulate constitutional arguments."
+        },
+        {
+          "id": "t2_b",
+          "label": "Encourage mass protests and intimidation of stamp distributors",
+          "description": "Use public pressure to make enforcement impossible—even if it risks disorder.",
+          "tags": ["Pressure", "Escalation"],
+          "effects": { "unity": -1, "support": 8, "pressure": 8, "strain": 4, "rad": 8 },
+          "outcome": "Enforcement becomes chaotic, but violence and intimidation alarm moderates and invite British retaliation.",
+          "sourceNote": "Crowd action and groups like the Sons of Liberty helped block enforcement, sometimes violently."
+        },
+        {
+          "id": "t2_c",
+          "label": "Negotiate quietly through merchants and loyal contacts in London",
+          "description": "Push back through commercial pressure and backchannel influence rather than open confrontation.",
+          "tags": ["Pragmatic", "Lower heat"],
+          "effects": { "unity": 4, "support": 1, "pressure": 0, "strain": 0, "rad": -1 },
+          "outcome": "Merchants coordinate pressure without igniting street conflict. The response is slower—but steadier.",
+          "sourceNote": "Colonial merchants used boycotts and networks to influence policy through economic leverage."
+        }
+      ]
+    },
+    {
+      "year": 1766,
+      "title": "Repeal… and a Warning",
+      "context": "Britain repeals the Stamp Act after backlash, but passes the Declaratory Act asserting full authority to legislate for the colonies. Some colonists celebrate victory; others worry Britain simply changed tactics.",
+      "signals": [
+        "Colonists feel empowered",
+        "Britain asserts authority",
+        "Moderates want calm"
+      ],
+      "choices": [
+        {
+          "id": "t3_a",
+          "label": "Frame repeal as a lesson: unity works—stay organized",
+          "description": "Celebrate, but institutionalize coordination so the next crisis doesn’t catch you unprepared.",
+          "tags": ["Build capacity", "Strategic"],
+          "effects": { "unity": 8, "support": 3, "pressure": 1, "strain": 0, "rad": 1 },
+          "outcome": "You avoid complacency. Colonial networks become more durable—ready for future conflict.",
+          "sourceNote": "Resistance organizations and inter-colony communication expanded after early crises."
+        },
+        {
+          "id": "t3_b",
+          "label": "Declare a stronger rights stance publicly",
+          "description": "Use the moment to argue Parliament has no right to tax or legislate internally for colonies.",
+          "tags": ["Principle", "Risk"],
+          "effects": { "unity": 2, "support": 5, "pressure": 5, "strain": 0, "rad": 5 },
+          "outcome": "Your message clarifies the argument—but hardens British attitudes and increases pressure.",
+          "sourceNote": "Constitutional arguments became sharper as colonists questioned parliamentary authority."
+        },
+        {
+          "id": "t3_c",
+          "label": "Encourage a return to normal life and trade",
+          "description": "Reduce political organizing to lower heat and restore stability.",
+          "tags": ["Cooling off", "Short-term calm"],
+          "effects": { "unity": -2, "support": -1, "pressure": -2, "strain": -3, "rad": -3 },
+          "outcome": "Tensions cool, but organizational momentum fades. The next crisis may find you fragmented again.",
+          "sourceNote": "Periods of calm often reduced coordinated resistance until new policies reignited conflict."
+        }
+      ]
+    },
+    {
+      "year": 1767,
+      "title": "Townshend Duties",
+      "context": "New duties target imports like glass, paper, paint, and tea. Officials plan stricter enforcement and use the revenue to pay colonial governors and judges—reducing local leverage. Protests and boycotts are debated again.",
+      "signals": [
+        "Revenue funds British control",
+        "Boycotts gain attention",
+        "Enforcement tightens"
+      ],
+      "choices": [
+        {
+          "id": "t4_a",
+          "label": "Organize broad non-importation agreements",
+          "description": "Coordinate merchants and consumers for sustained boycott pressure while keeping order.",
+          "tags": ["Economic pressure", "Coordinated"],
+          "effects": { "unity": 6, "support": 4, "pressure": 3, "strain": 5, "rad": 2 },
+          "outcome": "Boycotts build leverage, but shortages and lost income raise strain. Still, coordination strengthens unity.",
+          "sourceNote": "Non-importation movements pressured Britain but came with economic costs in the colonies."
+        },
+        {
+          "id": "t4_b",
+          "label": "Push for local self-sufficiency campaigns",
+          "description": "Promote homespun goods and local production to reduce dependence on British imports.",
+          "tags": ["Long-term", "Culture shift"],
+          "effects": { "unity": 4, "support": 3, "pressure": 1, "strain": 2, "rad": 3 },
+          "outcome": "Self-sufficiency becomes part of identity. It’s slower than boycotts—but helps sustain resistance.",
+          "sourceNote": "Homespun and local production became political symbols and practical strategies."
+        },
+        {
+          "id": "t4_c",
+          "label": "Avoid boycotts; focus on legal challenges in assemblies",
+          "description": "Argue the duties and enforcement violate rights, but keep commerce open.",
+          "tags": ["Legal route", "Lower strain"],
+          "effects": { "unity": 3, "support": 1, "pressure": 2, "strain": -2, "rad": 0 },
+          "outcome": "Commerce remains steadier, but Britain finds it easier to ignore objections without financial pain.",
+          "sourceNote": "Assemblies protested, but economic leverage often produced stronger pressure on policy."
+        }
+      ]
+    },
+    {
+      "year": 1770,
+      "title": "The Boston Massacre",
+      "context": "Tensions between civilians and British soldiers boil over in Boston. Shots are fired; colonists are killed. News spreads quickly, and the event becomes a symbol. How you frame it matters.",
+      "signals": [
+        "Anger rises across colonies",
+        "Moderates fear chaos",
+        "Britain fears losing control"
+      ],
+      "choices": [
+        {
+          "id": "t5_a",
+          "label": "Frame it as a warning: demand accountability and de-escalation",
+          "description": "Push for trials and accountability while discouraging riots that invite crackdowns.",
+          "tags": ["Legitimacy", "Balance"],
+          "effects": { "unity": 4, "support": 4, "pressure": 2, "strain": 0, "rad": 2 },
+          "outcome": "You keep moral high ground and reduce immediate chaos. Outrage stays focused and political.",
+          "sourceNote": "Trials and careful messaging helped leaders manage backlash while maintaining legitimacy."
+        },
+        {
+          "id": "t5_b",
+          "label": "Use propaganda aggressively to ignite resistance",
+          "description": "Circulate vivid accounts and art to maximize outrage and mobilization.",
+          "tags": ["Mobilize", "Escalate"],
+          "effects": { "unity": 1, "support": 7, "pressure": 6, "strain": 1, "rad": 7 },
+          "outcome": "Public support surges, but British authorities escalate enforcement and moderates grow uneasy.",
+          "sourceNote": "Political messaging and prints shaped perception of events and fueled radical sentiment."
+        },
+        {
+          "id": "t5_c",
+          "label": "Downplay the event to prevent escalation",
+          "description": "Discourage inflammatory rhetoric and avoid making martyrs.",
+          "tags": ["Cool down", "Risk complacency"],
+          "effects": { "unity": -2, "support": -3, "pressure": -1, "strain": 0, "rad": -3 },
+          "outcome": "Immediate tensions soften, but many colonists feel unheard and mistrust leadership.",
+          "sourceNote": "Some leaders feared escalation and sought calm, but silence could reduce legitimacy."
+        }
+      ]
+    },
+    {
+      "year": 1773,
+      "title": "The Tea Act and a Symbolic Line",
+      "context": "Parliament passes the Tea Act, adjusting how tea is sold. Some see it as cheaper tea; others see a trap: accepting it normalizes Parliament’s right to tax. Resistance leaders debate how far to go.",
+      "signals": [
+        "A symbolic issue emerges",
+        "Merchants compete and argue",
+        "Britain watches for defiance"
+      ],
+      "choices": [
+        {
+          "id": "t6_a",
+          "label": "Organize a coordinated boycott and public messaging campaign",
+          "description": "Keep it disciplined: no violence, but no tea acceptance.",
+          "tags": ["Unity", "Economic protest"],
+          "effects": { "unity": 5, "support": 4, "pressure": 3, "strain": 2, "rad": 3 },
+          "outcome": "The boycott spreads. Britain tightens posture, but your discipline keeps coalition broad.",
+          "sourceNote": "Boycotts and coordinated messaging shaped resistance while keeping some legitimacy."
+        },
+        {
+          "id": "t6_b",
+          "label": "Support direct action to destroy tea shipments",
+          "description": "Make an unmistakable statement—even if it’s illegal and provocative.",
+          "tags": ["Shock", "High risk"],
+          "effects": { "unity": -1, "support": 6, "pressure": 9, "strain": 3, "rad": 8 },
+          "outcome": "The statement is unforgettable. Britain is furious and prepares punishment. Some colonies hesitate.",
+          "sourceNote": "The Boston Tea Party was a dramatic act that triggered severe British retaliation."
+        },
+        {
+          "id": "t6_c",
+          "label": "Allow tea sales but push assemblies to protest the principle",
+          "description": "Avoid confrontation and rely on formal protest.",
+          "tags": ["Moderate", "Lower heat"],
+          "effects": { "unity": 1, "support": -2, "pressure": 1, "strain": -1, "rad": -1 },
+          "outcome": "Tensions stay lower, but the symbolic acceptance weakens resistance momentum and messaging.",
+          "sourceNote": "Accepting taxed goods undercut some resistance arguments about parliamentary authority."
+        }
+      ]
+    },
+    {
+      "year": 1774,
+      "title": "The Intolerable Acts",
+      "context": "Britain responds to defiance with harsh measures: closing Boston’s port, altering local governance, and expanding enforcement. Some colonies see Boston as reckless; others see a dangerous precedent that could spread to them next.",
+      "signals": [
+        "Punishment is collective",
+        "Unity is tested",
+        "Supply shortages grow"
+      ],
+      "choices": [
+        {
+          "id": "t7_a",
+          "label": "Build solidarity: support Boston and push inter-colony coordination",
+          "description": "Send supplies and frame this as a threat to every colony’s rights.",
+          "tags": ["Unity first", "Coalition"],
+          "effects": { "unity": 9, "support": 4, "pressure": 5, "strain": 4, "rad": 3 },
+          "outcome": "Support networks strengthen unity. Britain interprets it as organized defiance and increases pressure.",
+          "sourceNote": "Aid to Boston and shared framing helped build cooperation leading into the Continental Congress."
+        },
+        {
+          "id": "t7_b",
+          "label": "Distance your colony: argue Boston brought this on itself",
+          "description": "Protect your local economy by avoiding involvement in Boston’s crisis.",
+          "tags": ["Self-protection", "Fracture risk"],
+          "effects": { "unity": -9, "support": -1, "pressure": -2, "strain": -2, "rad": -2 },
+          "outcome": "Your colony avoids some immediate pain, but inter-colony trust collapses. Britain feels emboldened by division.",
+          "sourceNote": "Colonial unity was not guaranteed; divisions made coordinated resistance harder."
+        },
+        {
+          "id": "t7_c",
+          "label": "Push for a compromise offer paired with limited protest",
+          "description": "Signal willingness to negotiate while maintaining some collective pressure.",
+          "tags": ["Balance", "Diplomacy"],
+          "effects": { "unity": 3, "support": 2, "pressure": 2, "strain": 1, "rad": 0 },
+          "outcome": "Some moderates rally around compromise. Radicals worry you’re surrendering leverage too early.",
+          "sourceNote": "Many colonists sought negotiation even as resistance hardened."
+        }
+      ]
+    },
+    {
+      "year": 1774,
+      "title": "First Continental Congress",
+      "context": "Delegates gather to debate next steps. Some want firm resistance; others fear rebellion. Your job is to keep the coalition together long enough to matter. Strategy now shapes the next year.",
+      "signals": [
+        "Coalition includes moderates and radicals",
+        "Trade policy becomes a weapon",
+        "Britain may not compromise"
+      ],
+      "choices": [
+        {
+          "id": "t8_a",
+          "label": "Prioritize unity: adopt shared demands and coordinated economic pressure",
+          "description": "Push a plan that most colonies can support: demands + collective boycott.",
+          "tags": ["Unity", "Sustainability"],
+          "effects": { "unity": 8, "support": 3, "pressure": 3, "strain": 3, "rad": 1 },
+          "outcome": "The coalition stays broad. The plan is slower than immediate rebellion but builds durable alignment.",
+          "sourceNote": "Congress coordinated resistance measures and helped unify political strategy."
+        },
+        {
+          "id": "t8_b",
+          "label": "Push immediate preparations for armed resistance",
+          "description": "Argue Britain only understands force; begin militia readiness and stockpiling.",
+          "tags": ["Escalation", "Risk"],
+          "effects": { "unity": -2, "support": 4, "pressure": 7, "strain": 2, "rad": 6 },
+          "outcome": "Some colonies commit, others hesitate. Britain sees the threat and tightens enforcement rapidly.",
+          "sourceNote": "Militia preparation increased as trust in compromise faded."
+        },
+        {
+          "id": "t8_c",
+          "label": "Propose a loyalty declaration paired with limited reforms",
+          "description": "Keep ties to Britain while seeking concessions and reduced enforcement.",
+          "tags": ["Compromise", "Lower heat"],
+          "effects": { "unity": 1, "support": -1, "pressure": -1, "strain": -1, "rad": -3 },
+          "outcome": "Moderates feel relief, but radicals lose faith. If Britain refuses concessions, you may lose momentum.",
+          "sourceNote": "Many still hoped for reconciliation before events pushed conflict beyond negotiation."
+        }
+      ]
+    },
+    {
+      "year": 1775,
+      "title": "Lexington and Concord",
+      "context": "British troops move to seize colonial supplies. Fighting breaks out. The conflict is no longer theoretical. Colonists must decide whether to treat this as a crisis to manage or a turning point toward full break.",
+      "signals": [
+        "Violence increases radicalization",
+        "Unity can rise or splinter",
+        "Britain can escalate militarily"
+      ],
+      "choices": [
+        {
+          "id": "t9_a",
+          "label": "Call for coordinated defense while limiting uncontrolled violence",
+          "description": "Support militia coordination but urge discipline to keep moderates aligned.",
+          "tags": ["Control", "Coalition"],
+          "effects": { "unity": 6, "support": 3, "pressure": 6, "strain": 2, "rad": 4 },
+          "outcome": "The colonies become more organized. Britain intensifies force, but your discipline helps retain broader support.",
+          "sourceNote": "Militia coordination and political leadership shaped early resistance as conflict escalated."
+        },
+        {
+          "id": "t9_b",
+          "label": "Push full mobilization and treat Britain as an enemy",
+          "description": "Argue compromise is over; rally for decisive resistance and rapid break.",
+          "tags": ["All-in", "High risk"],
+          "effects": { "unity": -1, "support": 5, "pressure": 10, "strain": 3, "rad": 8 },
+          "outcome": "Momentum surges among radicals. Britain responds with maximum pressure; moderates may fracture.",
+          "sourceNote": "Escalation accelerated after armed conflict began, pushing many toward independence."
+        },
+        {
+          "id": "t9_c",
+          "label": "Seek immediate reconciliation talks to stop wider war",
+          "description": "Urge negotiations and a pause in escalation—even after fighting.",
+          "tags": ["Diplomacy", "Risk losing momentum"],
+          "effects": { "unity": -2, "support": -2, "pressure": 2, "strain": -1, "rad": -2 },
+          "outcome": "You reduce some panic, but many colonists view reconciliation as unrealistic after bloodshed.",
+          "sourceNote": "Even after conflict began, some sought reconciliation, but events made it increasingly difficult."
+        }
+      ]
+    },
+    {
+      "year": 1776,
+      "title": "The Independence Debate",
+      "context": "The question is no longer whether tensions exist—it’s whether to declare independence. Your earlier choices shaped unity, public support, and the level of British pressure. You must guide leaders through a final turning point.",
+      "signals": [
+        "Independence requires unity and support",
+        "High pressure can force decisions",
+        "A fractured coalition risks collapse"
+      ],
+      "choices": [
+        {
+          "id": "t10_a",
+          "label": "Push independence now and unify the message around shared principles",
+          "description": "Argue a clear break is necessary and frame it in universal language to broaden support.",
+          "tags": ["Declare", "Unify"],
+          "effects": { "unity": 4, "support": 4, "pressure": 6, "strain": 1, "rad": 4 },
+          "outcome": "You drive momentum toward a decisive break. Britain escalates militarily, but clarity strengthens commitment.",
+          "sourceNote": "Independence arguments emphasized principles and helped unify diverse colonial interests."
+        },
+        {
+          "id": "t10_b",
+          "label": "Delay declaration: consolidate unity and resources first",
+          "description": "Argue that premature independence without strong unity risks disaster.",
+          "tags": ["Delay", "Stabilize"],
+          "effects": { "unity": 6, "support": -1, "pressure": 3, "strain": 0, "rad": -1 },
+          "outcome": "Unity improves, but some radicals feel stalled. Britain gains time to tighten pressure.",
+          "sourceNote": "Debates about timing and readiness shaped revolutionary strategy."
+        },
+        {
+          "id": "t10_c",
+          "label": "Propose a last reconciliation attempt with stronger demands",
+          "description": "Make one final effort to negotiate autonomy while avoiding full independence.",
+          "tags": ["Compromise", "Risk"],
+          "effects": { "unity": -1, "support": -2, "pressure": 1, "strain": -1, "rad": -3 },
+          "outcome": "Moderates feel heard, but the coalition weakens. If Britain refuses again, you may lose credibility.",
+          "sourceNote": "Reconciliation attempts persisted, but the political center eroded as conflict deepened."
+        }
+      ]
+    }
+  ],
+  "endings": [
+    {
+      "id": "independence",
+      "headline": "Outcome: Independence Momentum",
+      "condition": { "unityMin": 60, "supportMin": 55, "radMin": 55 },
+      "body": "You built enough unity and support to sustain a clear break from Britain. Your run shows how coordination and persuasion mattered as much as outrage—especially when pressure rose. Independence becomes the coalition’s shared project, not just a slogan.",
+      "reflection": [
+        "Which tradeoff mattered most in your run: unity, support, or radicalization?",
+        "Where did you choose legitimacy over speed (or speed over legitimacy), and why?",
+        "How did British pressure affect your choices—did it strengthen unity or fracture it?"
+      ]
+    },
+    {
+      "id": "delayed_break",
+      "headline": "Outcome: Delayed Break / Unsteady Coalition",
+      "condition": { "unityMin": 50, "supportMin": 45, "radMin": 40 },
+      "body": "You moved the colonies toward separation—but not with full alignment. Independence is possible, yet unstable: some colonies hesitate, and public support is uneven. Your run highlights how fragile coalitions can be during crisis politics.",
+      "reflection": [
+        "What would you change to strengthen unity without triggering higher repression?",
+        "Which moment most damaged trust between colonies?",
+        "What does your run suggest about why independence took time?"
+      ]
+    },
+    {
+      "id": "compromise_path",
+      "headline": "Outcome: Compromise / Rights-within-Empire",
+      "condition": { "pressureMax": 55, "radMax": 45 },
+      "body": "You reduced escalation and kept more space for negotiation. Some reforms and concessions become more plausible, but independence momentum fades. Your run mirrors how many colonists preferred stability—until enforcement and bloodshed narrowed options.",
+      "reflection": [
+        "What do you gain and lose by prioritizing stability over radicalization?",
+        "Is compromise a victory if core political power remains unchanged?",
+        "How might this path have changed later events (economy, identity, governance)?"
+      ]
+    },
+    {
+      "id": "suppressed_resistance",
+      "headline": "Outcome: Suppressed Resistance / Fractured Response",
+      "condition": { "unityMax": 45, "supportMax": 50, "pressureMin": 65 },
+      "body": "Resistance loses coordination as British pressure rises. Without durable unity and broad support, enforcement becomes easier and political momentum collapses. Your run shows how division can be as decisive as battlefield outcomes.",
+      "reflection": [
+        "Where did unity break down—and how could leaders have prevented it?",
+        "Which choice most increased British pressure in your run?",
+        "What does this suggest about the role of organization in revolutions?"
+      ]
+    }
+  ],
+  "defaultEnding": {
+    "headline": "Outcome: Mixed Results",
+    "body": "Your choices created competing pressures: some resistance grew, but coordination and public backing were uneven. This is realistic—revolutions are not clean narratives. Try a second run with a different strategy (unify first vs. radicalize early).",
+    "reflection": [
+      "Which variable did you prioritize most, and why?",
+      "What was your most consequential decision—and what unintended effect followed?",
+      "If you replay, what strategy will you test next?"
+    ]
+  }
+}
