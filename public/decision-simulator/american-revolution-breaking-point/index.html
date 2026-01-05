@@ -2,190 +2,451 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0f172a" />
+
+  <!-- Google AdSense (same as site) -->
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7899890641544647"
+    crossorigin="anonymous"></script>
 
   <title>American Revolution: The Breaking Point | Historical Decision Simulator | Teach Arcade</title>
-  <meta name="description" content="A web-based historical decision simulator that lets students experience the choices and tradeoffs that pushed the American colonies toward revolution (1763–1776). No trivia—real historical thinking." />
-  <meta name="keywords" content="American Revolution game, history decision simulator, Teach Arcade, classroom history game, colonial tensions, 1763-1776, interactive history" />
 
-  <link rel="canonical" href="https://teacharcade.com/games/american-revolution-breaking-point/" />
-  <link rel="stylesheet" href="./styles.css" />
+  <meta name="description" content="A choice-driven American Revolution decision simulator. Students infer consequences from historical context, evidence, and competing interests—then see outcomes, explanations, and primary-source connections after each choice." />
+  <link rel="canonical" href="https://teacharcade.com/decision-simulator/american-revolution-breaking-point/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Teach Arcade" />
+  <meta property="og:title" content="American Revolution: The Breaking Point | Teach Arcade" />
+  <meta property="og:description" content="Not trivia—real historical decision-making. Choose actions, face consequences, and learn cause-and-effect with built-in historian explanations and primary sources." />
+  <meta property="og:url" content="https://teacharcade.com/decision-simulator/american-revolution-breaking-point/" />
+  <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="American Revolution: The Breaking Point | Teach Arcade" />
+  <meta name="twitter:description" content="A decision simulator where students infer outcomes from context, evidence, and constraints—then see consequences and explanations." />
+  <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+
+  <link rel="stylesheet" href="/assets/styles.css?v=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
+
+  <!-- JSON-LD: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"American Revolution: The Breaking Point",
+    "applicationCategory":"EducationalApplication",
+    "operatingSystem":"Web",
+    "url":"https://teacharcade.com/decision-simulator/american-revolution-breaking-point/",
+    "publisher":{"@type":"Organization","name":"Teach Arcade","url":"https://teacharcade.com/"},
+    "description":"Choice-driven American Revolution simulator focused on historical reasoning. Outcomes are revealed only after decisions with historian explanations and primary-source connections."
+  }
+  </script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NBQHSPW9GH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NBQHSPW9GH');
+  </script>
+
+  <style>
+    /* Keep page self-contained & compatible with your global styles */
+    :root{
+      --bg:#0b1220;
+      --panel:rgba(15,23,42,.72);
+      --panel2:rgba(2,6,23,.55);
+      --stroke:rgba(148,163,184,.22);
+      --text:#e5e7eb;
+      --muted:#a3b3c8;
+      --muted2:#7b8aa3;
+      --accent:#60a5fa;
+      --good:#86efac;
+      --bad:#fca5a5;
+      --warn:#fde68a;
+    }
+
+    body{
+      background: radial-gradient(1200px 600px at 50% 0%, rgba(96,165,250,.18), transparent 60%),
+                  radial-gradient(900px 500px at 20% 30%, rgba(34,197,94,.10), transparent 65%),
+                  radial-gradient(900px 500px at 80% 30%, rgba(244,63,94,.08), transparent 65%),
+                  var(--bg);
+      color: var(--text);
+    }
+
+    .sim-wrap{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 84px 16px 24px;
+    }
+
+    .sim-topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      margin-bottom: 14px;
+      flex-wrap:wrap;
+    }
+
+    .back-link{
+      text-decoration:none;
+      color: var(--muted);
+      font: 700 13px/1 Poppins, sans-serif;
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.03);
+      padding:10px 12px;
+      border-radius: 10px;
+    }
+    .back-link:hover{ border-color: rgba(148,163,184,.45); color: #fff; }
+
+    .sim-brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      color:#fff;
+      text-decoration:none;
+    }
+    .sim-brand img{ height:34px; width:auto; border-radius:8px; }
+    .sim-brand span{ font: 800 14px/1 Poppins, sans-serif; letter-spacing:.02em; }
+
+    .card{
+      border:1px solid var(--stroke);
+      background: var(--panel);
+      border-radius: 14px;
+      box-shadow: 0 10px 26px rgba(0,0,0,.35);
+      overflow:hidden;
+    }
+
+    .header{
+      padding: 18px 18px 12px;
+      border-bottom:1px solid rgba(148,163,184,.14);
+      background: linear-gradient(to bottom, rgba(255,255,255,.03), transparent);
+    }
+    .title{
+      margin:0 0 6px;
+      font: 800 22px/1.15 Poppins, sans-serif;
+      letter-spacing: -0.02em;
+    }
+    .subtitle{
+      margin:0;
+      color: var(--muted);
+      font: 600 14px/1.45 Nunito, system-ui, sans-serif;
+    }
+
+    .row{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 14px;
+      padding: 14px;
+    }
+    @media (max-width: 900px){
+      .row{ grid-template-columns: 1fr; }
+    }
+
+    .panel{
+      border:1px solid var(--stroke);
+      background: var(--panel2);
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    .section-h{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .section-h h2{
+      margin:0;
+      font: 800 14px/1 Poppins, sans-serif;
+      letter-spacing:.02em;
+      text-transform: uppercase;
+      color:#dbe7ff;
+    }
+    .tiny{
+      color: var(--muted2);
+      font: 700 12px/1 Nunito, system-ui, sans-serif;
+    }
+
+    .prompt{
+      margin: 0 0 10px;
+      font: 700 18px/1.35 Nunito, system-ui, sans-serif;
+      color:#f1f5f9;
+    }
+    .context{
+      margin: 0 0 10px;
+      color: var(--muted);
+      font: 600 14px/1.6 Nunito, system-ui, sans-serif;
+    }
+
+    .intel{
+      margin: 10px 0 0;
+      padding: 0;
+      list-style: none;
+      display:grid;
+      gap:8px;
+    }
+    .intel li{
+      border:1px solid rgba(148,163,184,.18);
+      background: rgba(255,255,255,.03);
+      border-radius: 12px;
+      padding: 10px 10px;
+      color:#cbd5e1;
+      font: 600 13px/1.5 Nunito, system-ui, sans-serif;
+    }
+    .intel li strong{
+      color:#fff;
+      font-family: Poppins, sans-serif;
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing:.02em;
+      text-transform: uppercase;
+      margin-right: 6px;
+    }
+
+    .choices{
+      display:grid;
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .choice{
+      text-align:left;
+      cursor:pointer;
+      border:1px solid rgba(148,163,184,.22);
+      background: rgba(2,6,23,.35);
+      border-radius: 14px;
+      padding: 14px;
+      transition: transform .12s ease, border-color .12s ease, background .12s ease;
+    }
+    .choice:hover{
+      transform: translateY(-1px);
+      border-color: rgba(148,163,184,.45);
+      background: rgba(255,255,255,.04);
+    }
+    .choice h3{
+      margin: 0 0 6px;
+      font: 800 16px/1.25 Poppins, sans-serif;
+      color: #ffffff;
+    }
+    .choice p{
+      margin:0;
+      color: var(--muted);
+      font: 600 13px/1.55 Nunito, system-ui, sans-serif;
+    }
+
+    /* IMPORTANT: no outcome hints pre-choice */
+    .choice .tags{
+      margin-top: 10px;
+      display:flex;
+      gap: 8px;
+      flex-wrap:wrap;
+    }
+    .tag{
+      border:1px solid rgba(148,163,184,.18);
+      background: rgba(255,255,255,.03);
+      color: #cbd5e1;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font: 800 11px/1 Poppins, sans-serif;
+      letter-spacing:.02em;
+      text-transform: uppercase;
+    }
+
+    /* Metrics panel */
+    .meters{ display:grid; gap: 10px; }
+    .meter{
+      border:1px solid rgba(148,163,184,.18);
+      background: rgba(255,255,255,.03);
+      border-radius: 12px;
+      padding: 10px;
+    }
+    .meter-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      margin-bottom: 8px;
+    }
+    .meter-name{
+      font: 900 12px/1 Poppins, sans-serif;
+      letter-spacing:.02em;
+      text-transform: uppercase;
+      color:#e5e7eb;
+    }
+    .meter-val{
+      font: 900 12px/1 Poppins, sans-serif;
+      color:#e5e7eb;
+      opacity:.9;
+    }
+    .bar{
+      height: 10px;
+      border-radius: 999px;
+      border:1px solid rgba(148,163,184,.22);
+      background: rgba(2,6,23,.4);
+      overflow:hidden;
+    }
+    .fill{ height: 100%; width: 50%; background: rgba(96,165,250,.8); }
+
+    /* Outcome panel (shown after choosing) */
+    .outcome{
+      margin-top: 14px;
+      border:1px solid rgba(148,163,184,.22);
+      background: rgba(2,6,23,.40);
+      border-radius: 14px;
+      padding: 14px;
+    }
+    .outcome h3{
+      margin: 0 0 8px;
+      font: 900 14px/1 Poppins, sans-serif;
+      letter-spacing:.02em;
+      text-transform: uppercase;
+      color:#dbeafe;
+    }
+    .outcome p{
+      margin: 0 0 10px;
+      color:#cbd5e1;
+      font: 600 14px/1.6 Nunito, system-ui, sans-serif;
+    }
+
+    .pill-row{
+      display:flex;
+      gap: 8px;
+      flex-wrap:wrap;
+      margin: 8px 0 10px;
+    }
+    .pill{
+      border:1px solid rgba(148,163,184,.22);
+      background: rgba(255,255,255,.03);
+      color:#e5e7eb;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font: 900 12px/1 Poppins, sans-serif;
+      letter-spacing:.01em;
+    }
+    .pill.pos{ color: var(--good); border-color: rgba(134,239,172,.28); background: rgba(134,239,172,.06); }
+    .pill.neg{ color: var(--bad); border-color: rgba(252,165,165,.28); background: rgba(252,165,165,.06); }
+
+    .quote{
+      margin: 10px 0 0;
+      padding: 10px 12px;
+      border-left: 3px solid rgba(96,165,250,.7);
+      background: rgba(96,165,250,.06);
+      color:#cfe3ff;
+      border-radius: 10px;
+      font: 600 13px/1.6 Nunito, system-ui, sans-serif;
+    }
+    .quote .qsrc{
+      display:block;
+      margin-top: 6px;
+      color: var(--muted2);
+      font: 800 11px/1.2 Poppins, sans-serif;
+      letter-spacing:.02em;
+      text-transform: uppercase;
+    }
+
+    .btnrow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top: 12px;
+    }
+    .btn{
+      display:inline-block;
+      border:1px solid rgba(96,165,250,.55);
+      background: rgba(37,99,235,.9);
+      color:#fff;
+      text-decoration:none;
+      padding: 10px 12px;
+      border-radius: 12px;
+      font: 900 12px/1 Poppins, sans-serif;
+      letter-spacing:.02em;
+      text-transform: uppercase;
+      cursor:pointer;
+    }
+    .btn.secondary{
+      background: rgba(255,255,255,.05);
+      border-color: rgba(148,163,184,.25);
+      color:#e5e7eb;
+    }
+
+    .ad-slot{ width:100%; margin: 14px 0; height:0; overflow:hidden; }
+  </style>
 </head>
 
 <body>
-  <header class="topbar" role="banner">
-    <a class="brand" href="/" aria-label="Teach Arcade Home">
-      <span class="logo-dot" aria-hidden="true"></span>
-      <span class="brand-text">Teach Arcade</span>
-    </a>
-    <div class="topbar-actions">
-      <button id="btnHow" class="btn btn-ghost" type="button">How to Play</button>
-      <button id="btnReset" class="btn btn-ghost" type="button" title="Restart">Restart</button>
+  <!-- Global Header mount -->
+  <div id="site-header"></div>
+  <script src="/assets/scripts/nav.js?v=3" defer></script>
+
+  <main class="sim-wrap">
+    <div class="sim-topbar">
+      <a class="back-link" href="/decision-simulator/">← Decision Simulators</a>
+      <a class="sim-brand" href="/" aria-label="Teach Arcade home">
+        <img src="/assets/images/teach-arcade-logo.png" alt="Teach Arcade Logo">
+        <span>Teach Arcade</span>
+      </a>
     </div>
-  </header>
 
-  <main class="wrap" role="main">
-    <!-- START SCREEN -->
-    <section id="screenStart" class="card screen" aria-labelledby="startTitle">
-      <div class="hero">
-        <h1 id="startTitle">American Revolution: The Breaking Point</h1>
-        <p class="subtitle">
-          You are a <strong>colonial political advisor</strong> (1763–1776). Each turn, choose how colonial leaders respond to British policies and events.
-          There are no perfect answers—only tradeoffs.
-        </p>
+    <!-- optional top ad placeholder -->
+    <div class="ad-slot ad-top" aria-label="Advertisement"></div>
 
-        <div class="pillrow" aria-label="Skills practiced">
-          <span class="pill">Cause &amp; Effect</span>
-          <span class="pill">Constraints</span>
-          <span class="pill">Tradeoffs</span>
-          <span class="pill">Perspective</span>
-        </div>
-
-        <div class="start-grid">
-          <div class="mini-card">
-            <h2 class="mini-title">Goal</h2>
-            <p>Manage pressures to shape your path: compromise, suppression, delayed break, or independence.</p>
-          </div>
-          <div class="mini-card">
-            <h2 class="mini-title">Classroom-friendly</h2>
-            <p>Fast turns, mobile-ready, replayable, and ends with reflection prompts.</p>
-          </div>
-        </div>
-
-        <div class="start-actions">
-          <button id="btnStart" class="btn btn-primary" type="button">Start Scenario</button>
-          <label class="toggle">
-            <input id="chkGuided" type="checkbox" checked />
-            <span>Guided mode (shows likely effects)</span>
-          </label>
-        </div>
-
-        <p class="muted tiny">
-          Tip: Play once quickly, then replay to test a different strategy (unify first vs. radicalize early).
-        </p>
+    <section class="card" aria-label="American Revolution decision simulator">
+      <div class="header">
+        <h1 class="title" id="sim-title">American Revolution: The Breaking Point</h1>
+        <p class="subtitle" id="sim-subtitle">Infer consequences from context. Outcomes are revealed only after you commit.</p>
       </div>
-    </section>
 
-    <!-- GAME SCREEN -->
-    <section id="screenGame" class="screen hidden" aria-live="polite">
-      <div class="grid">
-        <aside class="panel card" aria-label="Status panel">
-          <div class="panel-head">
-            <h2 class="panel-title">Status</h2>
-            <div class="tiny muted">
-              Turn <span id="turnNum">1</span> / <span id="turnTotal">10</span>
-            </div>
+      <div class="row">
+        <!-- LEFT: scenario + choices -->
+        <div class="panel">
+          <div class="section-h">
+            <h2>Situation</h2>
+            <div class="tiny" id="turn-info">Turn 1</div>
           </div>
 
-          <div class="era">
-            <div class="era-year" id="eraYear">1763</div>
-            <div class="era-title" id="eraTitle">After the French &amp; Indian War</div>
-          </div>
+          <p class="prompt" id="prompt">Loading…</p>
+          <p class="context" id="context"></p>
 
-          <div class="stats" id="statsList" aria-label="Stats">
-            <!-- injected -->
-          </div>
+          <ul class="intel" id="intel"></ul>
 
-          <div class="hintbox" id="constraintBox" aria-label="Constraints">
-            <!-- injected -->
-          </div>
+          <div class="choices" id="choices" aria-label="Choices"></div>
 
-          <div class="panel-actions">
-            <button id="btnPause" class="btn btn-ghost" type="button">Pause</button>
-          </div>
+          <div id="outcomeMount"></div>
 
-          <div class="teacher-tools">
-            <h3 class="mini-title">Teacher Tools</h3>
-            <button id="btnCopyReflection" class="btn btn-ghost" type="button">Copy Reflection Prompts</button>
-            <p class="tiny muted">
-              Use “Restart” for a new run. No accounts. No data saved.
-            </p>
+          <div class="btnrow">
+            <button class="btn secondary" id="btn-back" type="button" disabled>Back</button>
+            <button class="btn secondary" id="btn-restart" type="button">Restart</button>
+          </div>
+        </div>
+
+        <!-- RIGHT: meters -->
+        <aside class="panel" aria-label="Status meters">
+          <div class="section-h">
+            <h2>Status</h2>
+            <div class="tiny" id="year">1763</div>
+          </div>
+          <div class="meters" id="meters"></div>
+
+          <!-- optional mid ad placeholder -->
+          <div class="ad-slot ad-mid" aria-label="Advertisement"></div>
+
+          <div class="tiny" style="margin-top:10px; line-height:1.5;">
+            Tip: Have students write a 2–3 sentence prediction before choosing, then compare after the outcome reveals.
           </div>
         </aside>
-
-        <section class="play card" aria-label="Decision area">
-          <div class="context">
-            <h2 class="context-title">Context</h2>
-            <p id="contextText" class="context-text"></p>
-            <div id="signalsRow" class="signals" aria-label="Signals">
-              <!-- injected -->
-            </div>
-          </div>
-
-          <div class="choices">
-            <h2 class="choices-title">Choose a response</h2>
-            <div id="choicesList" class="choices-list" role="list">
-              <!-- injected -->
-            </div>
-          </div>
-        </section>
       </div>
     </section>
 
-    <!-- END SCREEN -->
-    <section id="screenEnd" class="card screen hidden" aria-labelledby="endTitle">
-      <h1 id="endTitle">Run Complete</h1>
-      <p class="subtitle" id="endingHeadline"></p>
-
-      <div class="end-grid">
-        <div class="mini-card">
-          <h2 class="mini-title">Your Outcome</h2>
-          <p id="endingBody"></p>
-        </div>
-        <div class="mini-card">
-          <h2 class="mini-title">What you prioritized</h2>
-          <ul id="priorityList" class="bullets"></ul>
-        </div>
-      </div>
-
-      <div class="mini-card">
-        <h2 class="mini-title">Reflection prompts</h2>
-        <ol id="reflectionList" class="bullets"></ol>
-        <div class="end-actions">
-          <button id="btnReplay" class="btn btn-primary" type="button">Replay Scenario</button>
-          <button id="btnCopyEnd" class="btn btn-ghost" type="button">Copy Reflection</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- MODALS -->
-    <div id="modalBackdrop" class="backdrop hidden" role="presentation"></div>
-
-    <section id="modalHow" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="howTitle">
-      <h2 id="howTitle">How to Play</h2>
-      <ul class="bullets">
-        <li>Read the context and watch the status variables.</li>
-        <li>Choose an option. There’s no “correct” answer—only tradeoffs.</li>
-        <li>Guided mode shows likely effects. Challenge mode hides them.</li>
-        <li>At the end, use the reflection prompts for discussion or writing.</li>
-      </ul>
-      <button class="btn btn-primary" id="btnCloseHow" type="button">Got it</button>
-    </section>
-
-    <section id="modalOutcome" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="outcomeTitle">
-      <h2 id="outcomeTitle">Outcome</h2>
-      <p id="outcomeText"></p>
-      <div class="outcome-deltas" id="outcomeDeltas"></div>
-      <p class="tiny muted" id="sourceNote"></p>
-      <button class="btn btn-primary" id="btnContinue" type="button">Continue</button>
-    </section>
-
-    <section id="modalPause" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="pauseTitle">
-      <h2 id="pauseTitle">Paused</h2>
-      <p class="muted">Take a breath. When you’re ready, resume.</p>
-      <div class="end-actions">
-        <button class="btn btn-primary" id="btnResume" type="button">Resume</button>
-        <button class="btn btn-ghost" id="btnQuit" type="button">Quit to Start</button>
-      </div>
-    </section>
+    <!-- optional bottom ad placeholder -->
+    <div class="ad-slot ad-bottom" aria-label="Advertisement"></div>
   </main>
 
-  <footer class="footer" role="contentinfo">
-    <p class="tiny muted">
-      Teach Arcade · Historical Decision Simulator MVP · Built for classrooms
-    </p>
-  </footer>
-
-  <script type="module" src="./engine.js"></script>
+  <script src="./engine.js?v=1" defer></script>
 </body>
 </html>
