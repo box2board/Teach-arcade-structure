@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <title>American Revolution: The Breaking Point | Historical Decision Simulator | Teach Arcade</title>
+  <meta name="description" content="A web-based historical decision simulator that lets students experience the choices and tradeoffs that pushed the American colonies toward revolution (1763–1776). No trivia—real historical thinking." />
+  <meta name="keywords" content="American Revolution game, history decision simulator, Teach Arcade, classroom history game, colonial tensions, 1763-1776, interactive history" />
+
+  <link rel="canonical" href="https://teacharcade.com/games/american-revolution-breaking-point/" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+  <header class="topbar" role="banner">
+    <a class="brand" href="/" aria-label="Teach Arcade Home">
+      <span class="logo-dot" aria-hidden="true"></span>
+      <span class="brand-text">Teach Arcade</span>
+    </a>
+    <div class="topbar-actions">
+      <button id="btnHow" class="btn btn-ghost" type="button">How to Play</button>
+      <button id="btnReset" class="btn btn-ghost" type="button" title="Restart">Restart</button>
+    </div>
+  </header>
+
+  <main class="wrap" role="main">
+    <!-- START SCREEN -->
+    <section id="screenStart" class="card screen" aria-labelledby="startTitle">
+      <div class="hero">
+        <h1 id="startTitle">American Revolution: The Breaking Point</h1>
+        <p class="subtitle">
+          You are a <strong>colonial political advisor</strong> (1763–1776). Each turn, choose how colonial leaders respond to British policies and events.
+          There are no perfect answers—only tradeoffs.
+        </p>
+
+        <div class="pillrow" aria-label="Skills practiced">
+          <span class="pill">Cause &amp; Effect</span>
+          <span class="pill">Constraints</span>
+          <span class="pill">Tradeoffs</span>
+          <span class="pill">Perspective</span>
+        </div>
+
+        <div class="start-grid">
+          <div class="mini-card">
+            <h2 class="mini-title">Goal</h2>
+            <p>Manage pressures to shape your path: compromise, suppression, delayed break, or independence.</p>
+          </div>
+          <div class="mini-card">
+            <h2 class="mini-title">Classroom-friendly</h2>
+            <p>Fast turns, mobile-ready, replayable, and ends with reflection prompts.</p>
+          </div>
+        </div>
+
+        <div class="start-actions">
+          <button id="btnStart" class="btn btn-primary" type="button">Start Scenario</button>
+          <label class="toggle">
+            <input id="chkGuided" type="checkbox" checked />
+            <span>Guided mode (shows likely effects)</span>
+          </label>
+        </div>
+
+        <p class="muted tiny">
+          Tip: Play once quickly, then replay to test a different strategy (unify first vs. radicalize early).
+        </p>
+      </div>
+    </section>
+
+    <!-- GAME SCREEN -->
+    <section id="screenGame" class="screen hidden" aria-live="polite">
+      <div class="grid">
+        <aside class="panel card" aria-label="Status panel">
+          <div class="panel-head">
+            <h2 class="panel-title">Status</h2>
+            <div class="tiny muted">
+              Turn <span id="turnNum">1</span> / <span id="turnTotal">10</span>
+            </div>
+          </div>
+
+          <div class="era">
+            <div class="era-year" id="eraYear">1763</div>
+            <div class="era-title" id="eraTitle">After the French &amp; Indian War</div>
+          </div>
+
+          <div class="stats" id="statsList" aria-label="Stats">
+            <!-- injected -->
+          </div>
+
+          <div class="hintbox" id="constraintBox" aria-label="Constraints">
+            <!-- injected -->
+          </div>
+
+          <div class="panel-actions">
+            <button id="btnPause" class="btn btn-ghost" type="button">Pause</button>
+          </div>
+
+          <div class="teacher-tools">
+            <h3 class="mini-title">Teacher Tools</h3>
+            <button id="btnCopyReflection" class="btn btn-ghost" type="button">Copy Reflection Prompts</button>
+            <p class="tiny muted">
+              Use “Restart” for a new run. No accounts. No data saved.
+            </p>
+          </div>
+        </aside>
+
+        <section class="play card" aria-label="Decision area">
+          <div class="context">
+            <h2 class="context-title">Context</h2>
+            <p id="contextText" class="context-text"></p>
+            <div id="signalsRow" class="signals" aria-label="Signals">
+              <!-- injected -->
+            </div>
+          </div>
+
+          <div class="choices">
+            <h2 class="choices-title">Choose a response</h2>
+            <div id="choicesList" class="choices-list" role="list">
+              <!-- injected -->
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- END SCREEN -->
+    <section id="screenEnd" class="card screen hidden" aria-labelledby="endTitle">
+      <h1 id="endTitle">Run Complete</h1>
+      <p class="subtitle" id="endingHeadline"></p>
+
+      <div class="end-grid">
+        <div class="mini-card">
+          <h2 class="mini-title">Your Outcome</h2>
+          <p id="endingBody"></p>
+        </div>
+        <div class="mini-card">
+          <h2 class="mini-title">What you prioritized</h2>
+          <ul id="priorityList" class="bullets"></ul>
+        </div>
+      </div>
+
+      <div class="mini-card">
+        <h2 class="mini-title">Reflection prompts</h2>
+        <ol id="reflectionList" class="bullets"></ol>
+        <div class="end-actions">
+          <button id="btnReplay" class="btn btn-primary" type="button">Replay Scenario</button>
+          <button id="btnCopyEnd" class="btn btn-ghost" type="button">Copy Reflection</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODALS -->
+    <div id="modalBackdrop" class="backdrop hidden" role="presentation"></div>
+
+    <section id="modalHow" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="howTitle">
+      <h2 id="howTitle">How to Play</h2>
+      <ul class="bullets">
+        <li>Read the context and watch the status variables.</li>
+        <li>Choose an option. There’s no “correct” answer—only tradeoffs.</li>
+        <li>Guided mode shows likely effects. Challenge mode hides them.</li>
+        <li>At the end, use the reflection prompts for discussion or writing.</li>
+      </ul>
+      <button class="btn btn-primary" id="btnCloseHow" type="button">Got it</button>
+    </section>
+
+    <section id="modalOutcome" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="outcomeTitle">
+      <h2 id="outcomeTitle">Outcome</h2>
+      <p id="outcomeText"></p>
+      <div class="outcome-deltas" id="outcomeDeltas"></div>
+      <p class="tiny muted" id="sourceNote"></p>
+      <button class="btn btn-primary" id="btnContinue" type="button">Continue</button>
+    </section>
+
+    <section id="modalPause" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="pauseTitle">
+      <h2 id="pauseTitle">Paused</h2>
+      <p class="muted">Take a breath. When you’re ready, resume.</p>
+      <div class="end-actions">
+        <button class="btn btn-primary" id="btnResume" type="button">Resume</button>
+        <button class="btn btn-ghost" id="btnQuit" type="button">Quit to Start</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <p class="tiny muted">
+      Teach Arcade · Historical Decision Simulator MVP · Built for classrooms
+    </p>
+  </footer>
+
+  <script type="module" src="./engine.js"></script>
+</body>
+</html>
