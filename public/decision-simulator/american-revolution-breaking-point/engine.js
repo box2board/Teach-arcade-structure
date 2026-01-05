@@ -1,427 +1,347 @@
+// /public/decision-simulator/american-revolution-breaking-point/engine.js
+// Goal: No outcomes shown BEFORE choice. Reveal deltas + explanation AFTER choice.
+
 const SCENARIO_URL = "./scenarios/american-revolution.json";
 
-const $ = (id) => document.getElementById(id);
+let scenario = null;
 
-const ui = {
-  start: $("screenStart"),
-  game: $("screenGame"),
-  end: $("screenEnd"),
-
-  btnStart: $("btnStart"),
-  btnReset: $("btnReset"),
-  btnReplay: $("btnReplay"),
-  btnHow: $("btnHow"),
-  btnCloseHow: $("btnCloseHow"),
-
-  chkGuided: $("chkGuided"),
-
-  turnNum: $("turnNum"),
-  turnTotal: $("turnTotal"),
-  eraYear: $("eraYear"),
-  eraTitle: $("eraTitle"),
-
-  statsList: $("statsList"),
-  constraintBox: $("constraintBox"),
-
-  contextText: $("contextText"),
-  signalsRow: $("signalsRow"),
-  choicesList: $("choicesList"),
-
-  // outcome modal
-  backdrop: $("modalBackdrop"),
-  modalHow: $("modalHow"),
-  modalOutcome: $("modalOutcome"),
-  modalPause: $("modalPause"),
-  outcomeText: $("outcomeText"),
-  outcomeDeltas: $("outcomeDeltas"),
-  sourceNote: $("sourceNote"),
-  btnContinue: $("btnContinue"),
-
-  // pause
-  btnPause: $("btnPause"),
-  btnResume: $("btnResume"),
-  btnQuit: $("btnQuit"),
-
-  // end
-  endingHeadline: $("endingHeadline"),
-  endingBody: $("endingBody"),
-  priorityList: $("priorityList"),
-  reflectionList: $("reflectionList"),
-  btnCopyEnd: $("btnCopyEnd"),
-
-  btnCopyReflection: $("btnCopyReflection")
+let state = {
+  year: 1763,
+  turn: 1,
+  nodeId: null,
+  metrics: {},   // metricKey -> number (0..100)
+  history: []    // stack of previous states for Back button
 };
 
-const clamp = (n, min = 0, max = 100) => Math.max(min, Math.min(max, n));
+const ORDERED_METRICS = [
+  "colonialUnity",
+  "publicSupport",
+  "britishPressure",
+  "economicStrain",
+  "radicalization"
+];
 
-function show(el){ el.classList.remove("hidden"); }
-function hide(el){ el.classList.add("hidden"); }
-function openModal(modal){
-  show(ui.backdrop);
-  show(modal);
-}
-function closeModal(modal){
-  hide(modal);
-  hide(ui.backdrop);
-}
+function clamp(n, min, max){ return Math.max(min, Math.min(max, n)); }
 
-// Game state
-let scenario = null;
-let guided = true;
-let turnIndex = 0;
-let stats = {};
-let history = []; // {turn, year, title, choiceId, choiceLabel, effects}
-let choicesMade = {}; // key: choiceId count
-let paused = false;
+function deepCopy(obj){ return JSON.parse(JSON.stringify(obj)); }
 
-async function loadScenario(){
-  const r = await fetch(SCENARIO_URL, { cache: "no-store" });
-  if(!r.ok) throw new Error("Failed to load scenario JSON");
-  scenario = await r.json();
+function $(id){ return document.getElementById(id); }
+
+function prettyMetricName(key){
+  return scenario.metrics[key]?.label || key;
 }
 
-function initRun(){
-  guided = !!ui.chkGuided.checked;
-  turnIndex = 0;
-  paused = false;
-  history = [];
-  choicesMade = {};
-
-  stats = {};
-  for(const s of scenario.stats){
-    stats[s.key] = s.start;
+function metricColor(key){
+  // For bars; keep consistent and neutral
+  switch(key){
+    case "publicSupport": return "rgba(34,197,94,.75)";
+    case "colonialUnity": return "rgba(96,165,250,.75)";
+    case "britishPressure": return "rgba(248,113,113,.75)";
+    case "economicStrain": return "rgba(253,230,138,.75)";
+    case "radicalization": return "rgba(167,139,250,.75)";
+    default: return "rgba(96,165,250,.75)";
   }
-
-  ui.turnTotal.textContent = String(scenario.turns.length);
 }
 
-function renderConstraints(){
-  const lines = scenario.constraints.map((c) => `• ${c}`).join("<br/>");
-  ui.constraintBox.innerHTML = `<strong>Constraints</strong><br/><br/>${lines}`;
-}
+function renderMeters(){
+  const meters = $("meters");
+  meters.innerHTML = "";
 
-function renderStats(){
-  ui.statsList.innerHTML = "";
-  for(const s of scenario.stats){
-    const val = stats[s.key];
-    const statEl = document.createElement("div");
-    statEl.className = "stat";
-    statEl.innerHTML = `
-      <div class="stat-top">
-        <div class="stat-name">${escapeHtml(s.name)}</div>
-        <div class="stat-val">${val}</div>
+  ORDERED_METRICS.forEach(key => {
+    const def = scenario.metrics[key];
+    const val = state.metrics[key];
+
+    const meter = document.createElement("div");
+    meter.className = "meter";
+    meter.innerHTML = `
+      <div class="meter-top">
+        <div class="meter-name">${def.label}</div>
+        <div class="meter-val">${val}</div>
       </div>
-      <div class="bar" aria-hidden="true">
-        <div class="fill" style="width:${val}%"></div>
+      <div class="bar" aria-label="${def.label} meter">
+        <div class="fill" style="width:${val}%; background:${metricColor(key)};"></div>
       </div>
     `;
-    ui.statsList.appendChild(statEl);
-  }
-}
-
-function renderTurn(){
-  const t = scenario.turns[turnIndex];
-  ui.turnNum.textContent = String(turnIndex + 1);
-  ui.eraYear.textContent = String(t.year);
-  ui.eraTitle.textContent = t.title;
-  ui.contextText.textContent = t.context;
-
-  // signals
-  ui.signalsRow.innerHTML = "";
-  (t.signals || []).forEach((sig) => {
-    const el = document.createElement("span");
-    el.className = "signal";
-    el.textContent = sig;
-    ui.signalsRow.appendChild(el);
+    meters.appendChild(meter);
   });
 
-  // choices
-  ui.choicesList.innerHTML = "";
-  t.choices.forEach((c) => {
-    const choice = document.createElement("div");
-    choice.className = "choice";
-    choice.setAttribute("role", "listitem");
-    choice.tabIndex = 0;
+  $("year").textContent = String(state.year);
+}
 
-    const tagsHtml = (c.tags || []).map(tag => `<span class="tag">${escapeHtml(tag)}</span>`).join("");
-    const effectsHtml = guided ? renderEffectsPills(c.effects) : "";
+function renderIntel(list){
+  const ul = $("intel");
+  ul.innerHTML = "";
+  if (!list || !list.length) return;
 
-    choice.innerHTML = `
-      <div class="choice-top">
-        <h3 class="choice-title">${escapeHtml(c.label)}</h3>
-        <div class="choice-tags">${tagsHtml}</div>
-      </div>
-      <p class="choice-body">${escapeHtml(c.description || "")}</p>
-      ${guided ? `<div class="choice-effects" aria-label="Likely effects">${effectsHtml}</div>` : ""}
+  list.forEach(item => {
+    const li = document.createElement("li");
+    // item can be string or {label,text}
+    if (typeof item === "string"){
+      li.textContent = item;
+    } else {
+      li.innerHTML = `<strong>${item.label}:</strong> ${item.text}`;
+    }
+    ul.appendChild(li);
+  });
+}
+
+function renderChoices(node){
+  const mount = $("choices");
+  mount.innerHTML = "";
+
+  node.choices.forEach((choice, idx) => {
+    const btn = document.createElement("button");
+    btn.className = "choice";
+    btn.type = "button";
+
+    // IMPORTANT: No effects shown here.
+    const tagsHTML = (choice.tags && choice.tags.length)
+      ? `<div class="tags">${choice.tags.map(t => `<span class="tag">${t}</span>`).join("")}</div>`
+      : "";
+
+    btn.innerHTML = `
+      <h3>${choice.title}</h3>
+      <p>${choice.description}</p>
+      ${tagsHTML}
     `;
 
-    const activate = () => selectChoice(c);
-    choice.addEventListener("click", activate);
-    choice.addEventListener("keydown", (e) => {
-      if(e.key === "Enter" || e.key === " "){
-        e.preventDefault();
-        activate();
-      }
-    });
-
-    ui.choicesList.appendChild(choice);
-  });
-
-  renderStats();
-}
-
-function renderEffectsPills(effects){
-  const map = scenario.stats.reduce((acc, s) => (acc[s.key]=s.name, acc), {});
-  const pills = [];
-
-  for(const key of Object.keys(effects || {})){
-    const delta = effects[key];
-    if(delta === 0) continue;
-
-    let cls = "warn";
-    if(delta > 0) cls = "good";
-    if(delta < 0) cls = "bad";
-
-    const sign = delta > 0 ? "+" : "";
-    pills.push(`<span class="effect ${cls}">${escapeHtml(map[key] || key)} ${sign}${delta}</span>`);
-  }
-
-  if(pills.length === 0) return `<span class="effect warn">No immediate change</span>`;
-  return pills.join("");
-}
-
-function selectChoice(choice){
-  if(paused) return;
-
-  const t = scenario.turns[turnIndex];
-
-  // apply effects
-  const deltas = [];
-  for(const key of Object.keys(choice.effects || {})){
-    const before = stats[key];
-    const delta = choice.effects[key];
-    const after = clamp(before + delta);
-    stats[key] = after;
-    deltas.push({ key, delta });
-  }
-
-  // record
-  history.push({
-    turn: turnIndex + 1,
-    year: t.year,
-    title: t.title,
-    choiceId: choice.id,
-    choiceLabel: choice.label,
-    effects: choice.effects || {}
-  });
-  choicesMade[choice.id] = (choicesMade[choice.id] || 0) + 1;
-
-  // outcome modal
-  ui.outcomeText.textContent = choice.outcome || "Your decision changes the situation.";
-  ui.sourceNote.textContent = choice.sourceNote ? `Historical grounding: ${choice.sourceNote}` : "";
-
-  ui.outcomeDeltas.innerHTML = renderEffectsPills(choice.effects || {});
-  openModal(ui.modalOutcome);
-}
-
-function continueAfterOutcome(){
-  closeModal(ui.modalOutcome);
-
-  // next turn or end
-  turnIndex++;
-  if(turnIndex >= scenario.turns.length){
-    endRun();
-  } else {
-    renderTurn();
-  }
-}
-
-function endRun(){
-  hide(ui.game);
-  show(ui.end);
-
-  // pick ending
-  const ending = pickEnding();
-
-  ui.endingHeadline.textContent = ending.headline;
-  ui.endingBody.textContent = ending.body;
-
-  // priorities: infer from net changes vs starting
-  const priorities = derivePriorities();
-  ui.priorityList.innerHTML = "";
-  priorities.forEach((p) => {
-    const li = document.createElement("li");
-    li.textContent = p;
-    ui.priorityList.appendChild(li);
-  });
-
-  // reflection
-  ui.reflectionList.innerHTML = "";
-  (ending.reflection || []).forEach((q) => {
-    const li = document.createElement("li");
-    li.textContent = q;
-    ui.reflectionList.appendChild(li);
+    btn.addEventListener("click", () => onChoose(node, choice));
+    mount.appendChild(btn);
   });
 }
 
-function pickEnding(){
-  // check endings in order provided; first match wins
-  for(const e of scenario.endings || []){
-    if(matchesCondition(e.condition)) return e;
+function renderOutcome(outcome){
+  const mount = $("outcomeMount");
+  if (!outcome){
+    mount.innerHTML = "";
+    return;
   }
-  return scenario.defaultEnding;
+
+  const pills = Object.entries(outcome.effects || {}).map(([k, v]) => {
+    const cls = v > 0 ? "pos" : (v < 0 ? "neg" : "");
+    const sign = v > 0 ? "+" : "";
+    return `<span class="pill ${cls}">${prettyMetricName(k)} ${sign}${v}</span>`;
+  }).join("");
+
+  const quoteHTML = outcome.primarySourceQuote
+    ? `
+      <div class="quote">
+        “${outcome.primarySourceQuote.text}”
+        <span class="qsrc">${outcome.primarySourceQuote.source}</span>
+      </div>
+    ` : "";
+
+  const reflectionHTML = outcome.reflectionPrompt
+    ? `<p style="margin-top:10px;"><strong>Reflect:</strong> ${outcome.reflectionPrompt}</p>`
+    : "";
+
+  mount.innerHTML = `
+    <div class="outcome" role="status" aria-live="polite">
+      <h3>Outcome Revealed</h3>
+      <p>${outcome.outcomeText}</p>
+
+      <div class="pill-row" aria-label="Outcome changes">
+        ${pills}
+      </div>
+
+      <p><strong>Historian’s Note:</strong> ${outcome.historianNote}</p>
+
+      ${quoteHTML}
+      ${reflectionHTML}
+    </div>
+  `;
+  mount.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-function matchesCondition(cond){
-  if(!cond) return false;
+function setTurnInfo(){
+  $("turn-info").textContent = `Turn ${state.turn}`;
+}
 
-  // cond supports: unityMin, unityMax, supportMin, supportMax, pressureMin, pressureMax, strainMin/Max, radMin/Max
-  const keys = ["unity","support","pressure","strain","rad"];
-  for(const k of keys){
-    const minKey = `${k}Min`;
-    const maxKey = `${k}Max`;
-    if(cond[minKey] != null && stats[k] < cond[minKey]) return false;
-    if(cond[maxKey] != null && stats[k] > cond[maxKey]) return false;
+function setPrompt(node){
+  $("prompt").textContent = node.prompt;
+  $("context").textContent = node.context || "";
+}
+
+function enableBack(){
+  const b = $("btn-back");
+  b.disabled = state.history.length === 0;
+}
+
+function findNode(id){
+  return scenario.nodes.find(n => n.id === id);
+}
+
+function checkForEnding(){
+  // Optional: endings can be node.type === "ending" or scenario.endings thresholds
+  const node = findNode(state.nodeId);
+  if (!node) return null;
+
+  if (node.type === "ending"){
+    return {
+      title: node.endingTitle || "Ending",
+      text: node.endingText || "",
+      historian: node.historianNote || "",
+      quote: node.primarySourceQuote || null
+    };
   }
-  return true;
+
+  return null;
 }
 
-function derivePriorities(){
-  const startMap = scenario.stats.reduce((acc,s)=>(acc[s.key]=s.start, acc), {});
-  const diffs = scenario.stats.map((s) => ({
-    key: s.key,
-    name: s.name,
-    diff: stats[s.key] - startMap[s.key]
-  }));
+function renderEnding(ending){
+  const mount = $("choices");
+  mount.innerHTML = "";
 
-  // top 2 positive and 1 negative (if any)
-  const positives = [...diffs].sort((a,b)=> b.diff - a.diff).filter(d=> d.diff > 0);
-  const negatives = [...diffs].sort((a,b)=> a.diff - b.diff).filter(d=> d.diff < 0);
+  const mountOutcome = $("outcomeMount");
+  const quoteHTML = ending.quote
+    ? `
+      <div class="quote">
+        “${ending.quote.text}”
+        <span class="qsrc">${ending.quote.source}</span>
+      </div>
+    ` : "";
 
-  const lines = [];
+  mountOutcome.innerHTML = `
+    <div class="outcome" role="status" aria-live="polite">
+      <h3>${ending.title}</h3>
+      <p>${ending.text}</p>
+      <p><strong>Historian’s Note:</strong> ${ending.historian}</p>
+      ${quoteHTML}
+      <p style="margin-top:10px;"><strong>Teacher idea:</strong> Have students write a short paragraph arguing whether this ending was plausible—and what would have to change in history for it to occur.</p>
+    </div>
+  `;
 
-  if(positives[0]) lines.push(`You increased ${positives[0].name} the most (${formatDiff(positives[0].diff)}).`);
-  if(positives[1]) lines.push(`You also emphasized ${positives[1].name} (${formatDiff(positives[1].diff)}).`);
-  if(negatives[0]) lines.push(`Your biggest cost was ${negatives[0].name} (${formatDiff(negatives[0].diff)}).`);
-
-  if(lines.length === 0){
-    lines.push("Your choices balanced the variables with minimal net change.");
-  }
-  return lines;
+  // Disable Back? Keep Back enabled so they can explore.
+  enableBack();
 }
 
-function formatDiff(n){
-  const sign = n > 0 ? "+" : "";
-  return `${sign}${n}`;
-}
+function onChoose(node, choice){
+  // Save snapshot for Back button
+  state.history.push(deepCopy(state));
+  state.turn += 1;
 
-function escapeHtml(str){
-  return String(str)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
-}
-
-function copyReflectionFromScenario(){
-  const base = [
-    "Reflection Prompts — American Revolution: The Breaking Point",
-    "",
-    "1) What variable did you prioritize most (Unity, Support, British Pressure, Economic Strain, Radicalization)? Why?",
-    "2) Which decision created the biggest unintended consequence?",
-    "3) Where did you choose legitimacy over speed—or speed over legitimacy?",
-    "4) If you replayed, what would you change and what outcome do you predict?"
-  ];
-  navigator.clipboard?.writeText(base.join("\n"));
-}
-
-function copyReflectionFromEnd(){
-  const items = Array.from(ui.reflectionList.querySelectorAll("li")).map(li => li.textContent);
-  const text = ["Reflection Prompts — Your Run", "", ...items.map((q,i)=>`${i+1}) ${q}`)].join("\n");
-  navigator.clipboard?.writeText(text);
-}
-
-function resetToStart(){
-  closeModal(ui.modalOutcome);
-  closeModal(ui.modalHow);
-  closeModal(ui.modalPause);
-
-  hide(ui.end);
-  hide(ui.game);
-  show(ui.start);
-}
-
-function startGame(){
-  initRun();
-  renderConstraints();
-
-  hide(ui.start);
-  hide(ui.end);
-  show(ui.game);
-
-  renderTurn();
-}
-
-// Pause controls
-function pauseGame(){
-  paused = true;
-  openModal(ui.modalPause);
-}
-function resumeGame(){
-  paused = false;
-  closeModal(ui.modalPause);
-}
-function quitToStart(){
-  paused = false;
-  closeModal(ui.modalPause);
-  resetToStart();
-}
-
-function wireUI(){
-  ui.btnHow.addEventListener("click", () => openModal(ui.modalHow));
-  ui.btnCloseHow.addEventListener("click", () => closeModal(ui.modalHow));
-
-  ui.btnStart.addEventListener("click", startGame);
-  ui.btnReset.addEventListener("click", resetToStart);
-  ui.btnReplay?.addEventListener("click", () => { resetToStart(); startGame(); });
-
-  ui.btnContinue.addEventListener("click", continueAfterOutcome);
-
-  ui.btnPause.addEventListener("click", pauseGame);
-  ui.btnResume.addEventListener("click", resumeGame);
-  ui.btnQuit.addEventListener("click", quitToStart);
-
-  ui.btnCopyReflection.addEventListener("click", copyReflectionFromScenario);
-  ui.btnCopyEnd.addEventListener("click", copyReflectionFromEnd);
-
-  // close modal by clicking backdrop
-  ui.backdrop.addEventListener("click", () => {
-    [ui.modalHow, ui.modalOutcome, ui.modalPause].forEach(m => {
-      if(!m.classList.contains("hidden")) closeModal(m);
-    });
-    paused = false; // only matters if pause modal closed
+  // Apply effects
+  const effects = choice.effects || {};
+  Object.keys(effects).forEach(key => {
+    const def = scenario.metrics[key];
+    if (!def) return;
+    const nextVal = clamp(state.metrics[key] + effects[key], def.min, def.max);
+    state.metrics[key] = nextVal;
   });
 
-  // keyboard shortcuts
-  window.addEventListener("keydown", (e) => {
-    if(e.key === "Escape"){
-      // close any modal
-      [ui.modalHow, ui.modalOutcome, ui.modalPause].forEach(m => {
-        if(!m.classList.contains("hidden")) closeModal(m);
-      });
-      paused = false;
-    }
-    if(e.key.toLowerCase() === "p"){
-      if(!ui.game.classList.contains("hidden")){
-        if(paused) resumeGame();
-        else pauseGame();
-      }
-    }
-  });
+  // Advance year if defined
+  if (typeof choice.yearAdvance === "number"){
+    state.year += choice.yearAdvance;
+  } else if (typeof node.yearAdvance === "number"){
+    state.year += node.yearAdvance;
+  }
+
+  // Build outcome payload (revealed AFTER)
+  const outcome = {
+    effects,
+    outcomeText: choice.outcomeText || "Consequences ripple outward.",
+    historianNote: choice.historianNote || "History often shifts through unintended consequences and competing incentives.",
+    primarySourceQuote: choice.primarySourceQuote || null,
+    reflectionPrompt: choice.reflectionPrompt || "Which tradeoff did you accept, and why?"
+  };
+
+  // Move to next node
+  if (choice.next){
+    state.nodeId = choice.next;
+  }
+
+  // Re-render
+  setTurnInfo();
+  renderMeters();
+  const nextNode = findNode(state.nodeId);
+
+  // If next node is ending, show ending with debrief
+  const ending = checkForEnding();
+  if (ending){
+    setPrompt(nextNode);
+    renderIntel(nextNode.intel || []);
+    renderOutcome(outcome); // still show last decision outcome
+    renderEnding(ending);
+    return;
+  }
+
+  setPrompt(nextNode);
+  renderIntel(nextNode.intel || []);
+  renderChoices(nextNode);
+
+  // Reveal the outcome panel (numbers only AFTER click)
+  renderOutcome(outcome);
+
+  enableBack();
 }
 
-(async function boot(){
-  await loadScenario();
-  wireUI();
-})();
+function goBack(){
+  if (!state.history.length) return;
+  state = state.history.pop();
+  const node = findNode(state.nodeId);
+
+  setTurnInfo();
+  renderMeters();
+  setPrompt(node);
+  renderIntel(node.intel || []);
+  renderChoices(node);
+
+  // Clear outcome on back (so they can't just fish for deltas)
+  renderOutcome(null);
+
+  enableBack();
+}
+
+function restart(){
+  initScenario(scenario);
+}
+
+function initScenario(data){
+  scenario = data;
+
+  // Initialize state from scenario
+  state = {
+    year: scenario.start.year,
+    turn: 1,
+    nodeId: scenario.start.nodeId,
+    metrics: {},
+    history: []
+  };
+
+  // Set starting metrics
+  ORDERED_METRICS.forEach(k => {
+    const def = scenario.metrics[k];
+    state.metrics[k] = clamp(scenario.start.metrics[k], def.min, def.max);
+  });
+
+  $("sim-title").textContent = scenario.title;
+  $("sim-subtitle").textContent = scenario.subtitle;
+
+  const node = findNode(state.nodeId);
+
+  setTurnInfo();
+  renderMeters();
+  setPrompt(node);
+  renderIntel(node.intel || []);
+  renderChoices(node);
+  renderOutcome(null);
+  enableBack();
+
+  $("btn-back").onclick = goBack;
+  $("btn-restart").onclick = restart;
+}
+
+async function boot(){
+  try{
+    const r = await fetch(SCENARIO_URL, { cache: "no-store" });
+    if (!r.ok) throw new Error(`Scenario fetch failed: ${r.status}`);
+    const data = await r.json();
+    initScenario(data);
+  }catch(err){
+    console.error(err);
+    $("prompt").textContent = "Could not load the simulator scenario.";
+    $("context").textContent = "Check that the scenario JSON exists at ./scenarios/american-revolution.json";
+  }
+}
+
+boot();
