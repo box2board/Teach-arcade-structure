@@ -6,9 +6,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#0f172a" />
 
+  <!-- SEO -->
+  <meta name="description" content="A choice-driven American Revolution decision simulator. Students infer consequences from historical context, commit to decisions, and compare outcomes—then review a final summary of what their choices led to." />
+  <link rel="canonical" href="https://teacharcade.com/decision-simulator/american-revolution-breaking-point/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Teach Arcade" />
+  <meta property="og:title" content="American Revolution: The Breaking Point" />
+  <meta property="og:description" content="A historical decision simulator where outcomes reveal only after you commit. Built for real learning—not trivia." />
+  <meta property="og:url" content="https://teacharcade.com/decision-simulator/american-revolution-breaking-point/" />
+  <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="American Revolution: The Breaking Point" />
+  <meta name="twitter:description" content="Infer consequences from context. Outcomes reveal only after you commit." />
+  <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebPage",
+    "name":"American Revolution: The Breaking Point",
+    "url":"https://teacharcade.com/decision-simulator/american-revolution-breaking-point/",
+    "isPartOf":{"@type":"WebSite","name":"Teach Arcade","url":"https://teacharcade.com/"}
+  }
+  </script>
+
   <link rel="icon" href="/assets/images/teach-arcade-logo.png" />
   <link rel="stylesheet" href="/assets/styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Optional Analytics (match your site standard) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NBQHSPW9GH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NBQHSPW9GH');
+  </script>
 
   <style>
     body {
@@ -25,8 +59,8 @@
     }
 
     .card {
-      background: rgba(2,6,23,.85);
-      border: 1px solid rgba(148,163,184,.15);
+      background: rgba(2, 6, 23, 0.92); /* stronger for readability */
+      border: 1px solid rgba(148,163,184,.18);
       border-radius: 18px;
       padding: 22px;
       margin-bottom: 18px;
@@ -34,25 +68,81 @@
     }
 
     h1 {
-      font: 700 30px/1.2 Poppins, sans-serif;
+      font: 700 30px/1.15 Poppins, sans-serif;
       margin: 0 0 6px;
+      color: #f8fafc;
+      letter-spacing: -0.01em;
     }
 
     .subtitle {
-      color: #94a3b8;
+      color: #e5e7eb; /* brighter */
       font-size: 15px;
-      margin-bottom: 18px;
+      margin-bottom: 0;
+      opacity: .92;
     }
 
     h2 {
       font: 700 18px/1.2 Poppins, sans-serif;
-      margin-bottom: 8px;
+      margin: 0 0 8px;
+      color: #f8fafc;
     }
 
     p {
-      line-height: 1.6;
-      color: #cbd5f5;
+      line-height: 1.75; /* readability */
+      font-size: 16px;   /* readability */
+      color: #e5e7eb;    /* brighter */
       margin: 0 0 10px;
+    }
+
+    /* VISUAL SLOTS */
+    .hero-media {
+      margin-top: 14px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(148,163,184,.18);
+      background: rgba(255,255,255,.04);
+    }
+    .hero-media img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+    .hero-media .placeholder {
+      height: 220px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding: 18px;
+      color: rgba(226,232,240,.8);
+      font: 700 14px/1.4 Poppins, sans-serif;
+      letter-spacing: .02em;
+    }
+
+    .node-media {
+      margin: 12px 0 14px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(148,163,184,.18);
+      background: rgba(255,255,255,.04);
+    }
+    .node-media img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      display: block;
+    }
+    .node-media .placeholder {
+      height: 190px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding: 18px;
+      color: rgba(226,232,240,.8);
+      font: 700 13px/1.4 Poppins, sans-serif;
+      letter-spacing: .02em;
     }
 
     .choices {
@@ -62,32 +152,72 @@
 
     .choice-btn {
       background: linear-gradient(180deg, #020617, #020617);
-      border: 1px solid rgba(148,163,184,.2);
+      border: 1px solid rgba(148,163,184,.22);
       border-radius: 14px;
       padding: 14px;
       text-align: left;
       color: #e5e7eb;
       cursor: pointer;
-      transition: transform .12s ease, border-color .12s ease;
+      transition: transform .12s ease, border-color .12s ease, background .12s ease;
     }
-
     .choice-btn:hover {
       transform: translateY(-2px);
-      border-color: #60a5fa;
+      border-color: #93c5fd;
+      background: rgba(15,23,42,.55);
+    }
+    .choice-btn:disabled {
+      opacity: .6;
+      cursor: not-allowed;
+      transform: none;
     }
 
     .choice-title {
-      font-weight: 700;
-      margin-bottom: 4px;
+      font-weight: 800;
+      margin-bottom: 6px;
+      color: #f1f5f9;
+      font-size: 16px;
     }
 
     .choice-desc {
       font-size: 14px;
-      color: #cbd5e1;
+      color: #e5e7eb; /* brighter */
+      opacity: .9;
+      margin: 0;
+      line-height: 1.6;
     }
 
     .reveal {
-      border-left: 4px solid #38bdf8;
+      border-left: 4px solid #60a5fa;
+    }
+
+    .reveal-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .outcome-media {
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(148,163,184,.18);
+      background: rgba(255,255,255,.04);
+    }
+    .outcome-media img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      display: block;
+    }
+    .outcome-media .placeholder {
+      height: 190px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding: 18px;
+      color: rgba(226,232,240,.8);
+      font: 700 13px/1.4 Poppins, sans-serif;
+      letter-spacing: .02em;
     }
 
     .delta-row {
@@ -100,75 +230,150 @@
     .delta-pill {
       padding: 6px 10px;
       border-radius: 999px;
-      font-weight: 700;
+      font-weight: 800;
       font-size: 12px;
-      background: rgba(255,255,255,.06);
+      background: rgba(255,255,255,.07);
       border: 1px solid rgba(148,163,184,.25);
     }
-
     .delta-pill.pos { color: #86efac; }
     .delta-pill.neg { color: #fca5a5; }
 
     .footer-controls {
       display: flex;
       gap: 10px;
-      margin-top: 10px;
+      margin-top: 12px;
+      flex-wrap: wrap;
     }
 
-    button.secondary {
+    button.secondary, a.secondary-link {
       background: transparent;
-      border: 1px solid rgba(148,163,184,.3);
-      color: #cbd5e1;
-      padding: 8px 12px;
+      border: 1px solid rgba(148,163,184,.32);
+      color: #e5e7eb;
+      padding: 10px 12px;
       border-radius: 10px;
       cursor: pointer;
+      text-decoration: none;
+      font: 800 13px/1 Poppins, sans-serif;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    button.secondary:hover, a.secondary-link:hover {
+      border-color: #93c5fd;
+    }
+
+    /* FINAL SUMMARY */
+    .summary-list {
+      margin: 8px 0 0;
+      padding-left: 18px;
+      color: #e5e7eb;
+    }
+    .summary-list li { margin: 6px 0; }
+
+    /* Mobile improvements */
+    @media (max-width: 768px) {
+      .hero-media img, .hero-media .placeholder { height: 160px; }
+      .node-media img, .node-media .placeholder { height: 150px; }
+      .outcome-media img, .outcome-media .placeholder { height: 150px; }
+      p { font-size: 16px; }
     }
   </style>
 </head>
 
 <body>
+  <div id="site-header"></div>
+  <script src="/assets/scripts/nav.js" defer></script>
 
-<div id="site-header"></div>
-<script src="/assets/scripts/nav.js" defer></script>
+  <main class="sim-wrap">
 
-<main class="sim-wrap">
+    <!-- Title / Banner -->
+    <div class="card">
+      <h1 id="simTitle">American Revolution: The Breaking Point</h1>
+      <div class="subtitle" id="simSubtitle">
+        Infer consequences from context. Outcomes are revealed only after you commit.
+      </div>
 
-  <div class="card">
-    <h1>American Revolution: The Breaking Point</h1>
-    <div class="subtitle">
-      Infer consequences from context. Outcomes are revealed only after you commit.
+      <!-- Banner Visual Slot (optional) -->
+      <div class="hero-media" id="bannerWrap">
+        <img id="bannerImg" alt="Simulator banner" hidden>
+        <div class="placeholder" id="bannerPlaceholder">
+          BANNER IMAGE SLOT (you will add later)<br>
+          Suggested size: 1600×700 (JPG/PNG)
+        </div>
+      </div>
     </div>
-  </div>
 
-  <!-- DECISION CARD -->
-  <div class="card">
-    <h2 id="nodeTitle">Situation</h2>
-    <p id="nodePrompt">Loading…</p>
-    <div id="nodeContext"></div>
-  </div>
+    <!-- DECISION CARD -->
+    <div class="card">
+      <h2 id="nodeTitle">Situation</h2>
 
-  <!-- CHOICES -->
-  <div class="card">
-    <h2>Choose a response</h2>
-    <div id="choicesList" class="choices"></div>
-  </div>
+      <!-- Node Visual Slot (optional) -->
+      <div class="node-media" id="nodeImgWrap">
+        <img id="nodeImg" alt="Scene visual" hidden>
+        <div class="placeholder" id="nodePlaceholder">
+          SCENE IMAGE SLOT (optional per decision)<br>
+          Suggested size: 1400×700
+        </div>
+      </div>
 
-  <!-- REVEAL (HIDDEN UNTIL CHOICE) -->
-  <div id="revealCard" class="card reveal" hidden>
-    <h2>Outcome</h2>
-    <p id="revealNarrative"></p>
-    <p id="revealWhy"></p>
-    <div id="deltaRow" class="delta-row"></div>
-    <p id="reflectPrompt" style="margin-top:12px;font-style:italic;"></p>
-
-    <div class="footer-controls">
-      <button id="btn-next" class="secondary">Continue</button>
-      <button id="btn-restart" class="secondary">Restart</button>
+      <p id="nodePrompt">Loading…</p>
+      <div id="nodeContext"></div>
     </div>
-  </div>
 
-</main>
+    <!-- CHOICES -->
+    <div class="card" id="choicesCard">
+      <h2>Choose a response</h2>
+      <div id="choicesList" class="choices"></div>
+    </div>
 
-<script src="engine.js" defer></script>
+    <!-- REVEAL (HIDDEN UNTIL CHOICE) -->
+    <div id="revealCard" class="card reveal" hidden>
+      <h2 id="revealTitle">Outcome</h2>
+
+      <div class="reveal-grid">
+        <!-- Outcome Visual Slot (optional) -->
+        <div class="outcome-media" id="outcomeImgWrap">
+          <img id="outcomeImg" alt="Outcome visual" hidden>
+          <div class="placeholder" id="outcomePlaceholder">
+            OUTCOME IMAGE SLOT (optional per choice)<br>
+            Suggested size: 1400×700
+          </div>
+        </div>
+
+        <div>
+          <p id="revealNarrative"></p>
+          <p id="revealWhy"></p>
+          <div id="deltaRow" class="delta-row"></div>
+          <p id="reflectPrompt" style="margin-top:12px;font-style:italic;"></p>
+
+          <div class="footer-controls">
+            <button id="btn-next" class="secondary">Continue</button>
+            <button id="btn-restart" class="secondary">Restart</button>
+            <a class="secondary-link" href="/decision-simulator/">All Simulators</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FINAL SUMMARY (HIDDEN UNTIL END) -->
+    <div id="endCard" class="card reveal" hidden>
+      <h2>Final Results</h2>
+      <p id="endSummary"></p>
+
+      <h2 style="margin-top:14px;">Key Turning Points</h2>
+      <ul class="summary-list" id="turningPoints"></ul>
+
+      <h2 style="margin-top:14px;">Reflection</h2>
+      <p id="endReflect" style="font-style:italic;"></p>
+
+      <div class="footer-controls">
+        <button id="btn-restart-2" class="secondary">Try Another Path</button>
+        <a class="secondary-link" href="/decision-simulator/">All Simulators</a>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="engine.js" defer></script>
 </body>
 </html>
