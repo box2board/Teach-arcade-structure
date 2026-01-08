@@ -11,9 +11,9 @@ const PUBLIC_DIR = path.join(ROOT, "public");
 const DATA_DIR = path.join(ROOT, "data");
 const OUT_FILE = path.join(PUBLIC_DIR, "search-index.json");
 
-// Your Apps Script API base
+// ✅ Your NEW Apps Script Web App URL (no query params here)
 const RESOURCES_API_BASE =
-  "https://script.google.com/macros/s/AKfycbxbKHi17lU_Ht9eikCbWtMOXY_rKlQNA2bvKEawNdbY7tmVoz041eVPA2GwK3xFbr9oSA/exec";
+  "https://script.google.com/macros/s/AKfycbwtXCA5kdNxVzAZejxQMz4cQYzuR6wzd9bJ1SghtQXLrV41W1zXUuSPF97fKwUURAhO/exec";
 
 // ---------------- helpers ----------------
 function slugify(s) {
@@ -84,7 +84,7 @@ function tagsFromPath(p) {
 
   if (!parts.length) return tags;
 
-  // Subjects: /subjects/social-studies/us-history/cold-war.html  (or similar)
+  // Subjects
   if (parts[0] === "subjects") {
     tags.push("type:topic");
     if (parts[1]) tags.push(`subject:${slugify(parts[1])}`);
@@ -112,7 +112,7 @@ function tagsFromPath(p) {
     return tags;
   }
 
-  // Game folders (your current layout)
+  // Game folders
   const gameFolders = new Set([
     "arcade-review-games",
     "choose-your-path-adventure",
@@ -166,15 +166,33 @@ async function readSitemapPaths() {
 }
 
 // ---------------- Apps Script resources ----------------
+function withQuery(base, paramsObj) {
+  const u = new URL(base);
+  for (const [k, v] of Object.entries(paramsObj || {})) {
+    u.searchParams.set(k, v);
+  }
+  return u.toString();
+}
+
 async function fetchResourcesFromAppsScript() {
-  const url = `${RESOURCES_API_BASE}?action=all`;
-  const res = await fetch(url, { cache: "no-store" });
+  const url = withQuery(RESOURCES_API_BASE, { action: "all" });
+
+  const res = await fetch(url, {
+    cache: "no-store",
+    redirect: "follow",
+    headers: {
+      "User-Agent": "TeachArcadeSearchIndexer/1.0"
+    }
+  });
+
   if (!res.ok) throw new Error(`Resources API failed: ${res.status}`);
+
   const data = await res.json();
 
   if (!data || data.ok !== true || !Array.isArray(data.items)) {
     throw new Error("Resources API must return { ok:true, items:[...] }");
   }
+
   return data.items;
 }
 
@@ -204,7 +222,7 @@ function mapResourceToRecord(item) {
   const url = toInternalOrExternal(item.url);
   if (!title || !url) return null;
 
-  const topicName = String(item.topic || "").trim();   // tab name
+  const topicName = String(item.topic || "").trim(); // tab name
   const subject = String(item.subject || "").trim();
   const typeLabel = String(item.type || "").trim();
   const description = String(item.description || "").trim();
@@ -295,7 +313,7 @@ async function main() {
     console.warn("WARNING: resources fetch failed:", String(e?.message || e));
   }
 
-  // 3) Optional manifests for items not in sitemap (store items especially)
+  // 3) Optional manifests for items not in sitemap
   const gamesManifest = await readJsonIfExists(path.join(DATA_DIR, "games.json"), []);
   const toolsManifest = await readJsonIfExists(path.join(DATA_DIR, "tools.json"), []);
   const storeManifest = await readJsonIfExists(path.join(DATA_DIR, "store-items.json"), []);
