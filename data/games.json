@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Arcade Review Games",
+    "url": "/arcade-review-games/",
+    "description": "Side-scrolling arcade-style review games with built-in questions across subjects.",
+    "tags": ["type:game", "format:arcade", "platform:web", "category:arcade-review"]
+  },
+  {
+    "title": "Escape Rooms",
+    "url": "/escape/",
+    "description": "Interactive digital escape rooms and puzzle-based classroom challenges.",
+    "tags": ["type:game", "format:escape-room", "platform:web", "category:puzzle"]
+  },
+  {
+    "title": "Print & Play Games",
+    "url": "/print-play-games/",
+    "description": "Printable classroom review games—no technology required.",
+    "tags": ["type:game", "format:printable", "platform:paper"]
+  },
+  {
+    "title": "Choose Your Path Adventures",
+    "url": "/choose-your-path-adventure/",
+    "description": "Choice-driven historical scenarios with branching outcomes.",
+    "tags": ["type:interactive", "format:decision-based", "platform:web"]
+  },
+  {
+    "title": "Historical Decision Simulator",
+    "url": "/decision-simulator/",
+    "description": "Simulations where students make decisions, track pressure, and experience consequences.",
+    "tags": ["type:interactive", "format:simulation", "platform:web"]
+  }
+]
