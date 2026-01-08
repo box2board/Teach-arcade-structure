@@ -1,0 +1,1641 @@
+[
+  {
+    "title": "Teach Arcade",
+    "url": "/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "About",
+    "url": "/about",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Arcade Review Games",
+    "url": "/arcade-review-games/",
+    "type": "game",
+    "description": "Side-scrolling arcade-style review games with built-in questions across subjects.",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:arcade-review-games",
+      "topic:arcade-review-games",
+      "format:arcade",
+      "category:arcade-review"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Grammar Gauntlet",
+    "url": "/arcade-review-games/ela/grammar-gauntlet",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:arcade-review-games",
+      "topic:grammar-gauntlet"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Undertext Rifts Mood Tone",
+    "url": "/arcade-review-games/ela/undertext-rifts-mood-tone",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:arcade-review-games",
+      "topic:undertext-rifts-mood-tone"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Algebra City Run",
+    "url": "/arcade-review-games/math/algebra-city-run",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:arcade-review-games",
+      "topic:algebra-city-run"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Math Rush Genesis Addition",
+    "url": "/arcade-review-games/math/math-rush-genesis-addition",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:arcade-review-games",
+      "topic:math-rush-genesis-addition"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Slope Street Sprint",
+    "url": "/arcade-review-games/math/slope-street-sprint",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:arcade-review-games",
+      "topic:slope-street-sprint"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Moon Mission Run",
+    "url": "/arcade-review-games/science/moon-mission-run",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:arcade-review-games",
+      "topic:moon-mission-run"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Scientific Method",
+    "url": "/arcade-review-games/science/scientific-method",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:arcade-review-games",
+      "topic:scientific-method"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Constitution Courthouse Run",
+    "url": "/arcade-review-games/social-studies/constitution-courthouse-run",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:arcade-review-games",
+      "topic:constitution-courthouse-run"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Progressive Era Sky Climb",
+    "url": "/arcade-review-games/social-studies/progressive-era-sky-climb",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:arcade-review-games",
+      "topic:progressive-era-sky-climb"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Pyramid Escape Run",
+    "url": "/arcade-review-games/social-studies/pyramid-escape-run",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:arcade-review-games",
+      "topic:pyramid-escape-run"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Wwi Trench Run",
+    "url": "/arcade-review-games/social-studies/wwi-trench-run",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:arcade-review-games",
+      "topic:wwi-trench-run"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Wwi Trench Run",
+    "url": "/arcade-review-games/social-studies/wwi-trench-run/",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:arcade-review-games",
+      "topic:wwi-trench-run"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Debug",
+    "url": "/arcade-review-games/social-studies/wwi-trench-run/debug",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:arcade-review-games",
+      "topic:debug"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Choose Your Path Adventure",
+    "url": "/choose-your-path-adventure/",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:choose-your-path-adventure",
+      "topic:choose-your-path-adventure"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Cuban Missile Crisis",
+    "url": "/choose-your-path-adventure/cuban-missile-crisis",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:choose-your-path-adventure",
+      "topic:cuban-missile-crisis"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Decision Simulator",
+    "url": "/decision-simulator/",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:decision-simulator",
+      "topic:decision-simulator"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "American Revolution Breaking Point",
+    "url": "/decision-simulator/american-revolution-breaking-point/",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:decision-simulator",
+      "topic:american-revolution-breaking-point"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Escape",
+    "url": "/escape/",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:escape",
+      "topic:escape"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Print Play Games",
+    "url": "/print-play-games/",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:print-play-games",
+      "topic:print-play-games"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Search",
+    "url": "/search",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Side Scroller",
+    "url": "/side-scroller",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Store",
+    "url": "/store/",
+    "type": "store",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:store",
+      "format:merch"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Ela",
+    "url": "/subjects/ela/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "topic:ela"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Grammar Language",
+    "url": "/subjects/ela/grammar-language/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:grammar-language",
+      "topic:grammar-language"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Poetry",
+    "url": "/subjects/ela/poetry/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:poetry",
+      "topic:poetry"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Reading Informational Text",
+    "url": "/subjects/ela/reading-informational-text/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:reading-informational-text",
+      "topic:reading-informational-text"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Reading Literature",
+    "url": "/subjects/ela/reading-literature/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:reading-literature",
+      "topic:reading-literature"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Research Media Literacy",
+    "url": "/subjects/ela/research-media-literacy/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:research-media-literacy",
+      "topic:research-media-literacy"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Speaking Listening",
+    "url": "/subjects/ela/speaking-listening/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:speaking-listening",
+      "topic:speaking-listening"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Test Prep",
+    "url": "/subjects/ela/test-prep/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:test-prep",
+      "topic:test-prep"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Vocabulary Word Study",
+    "url": "/subjects/ela/vocabulary-word-study/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:vocabulary-word-study",
+      "topic:vocabulary-word-study"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Writing",
+    "url": "/subjects/ela/writing/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:writing",
+      "topic:writing"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Fine Arts",
+    "url": "/subjects/fine-arts/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "topic:fine-arts"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Art History",
+    "url": "/subjects/fine-arts/art-history/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:art-history",
+      "topic:art-history"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Dance",
+    "url": "/subjects/fine-arts/dance/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:dance",
+      "topic:dance"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Drama Theatre",
+    "url": "/subjects/fine-arts/drama-theatre/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:drama-theatre",
+      "topic:drama-theatre"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Media Arts",
+    "url": "/subjects/fine-arts/media-arts/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:media-arts",
+      "topic:media-arts"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Music",
+    "url": "/subjects/fine-arts/music/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:music",
+      "topic:music"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Visual Arts",
+    "url": "/subjects/fine-arts/visual-arts/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:visual-arts",
+      "topic:visual-arts"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Math",
+    "url": "/subjects/math/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:math",
+      "topic:math"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "High School Math",
+    "url": "/subjects/math/high-school-math/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:math",
+      "subject:high-school-math",
+      "topic:high-school-math"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "K 5 Math",
+    "url": "/subjects/math/k-5-math/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:math",
+      "subject:k-5-math",
+      "topic:k-5-math"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Math Games Puzzles",
+    "url": "/subjects/math/math-games-puzzles/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:math",
+      "subject:math-games-puzzles",
+      "topic:math-games-puzzles"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Middle School Math",
+    "url": "/subjects/math/middle-school-math/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:math",
+      "subject:middle-school-math",
+      "topic:middle-school-math"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Science",
+    "url": "/subjects/science/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "topic:science"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Astronomy",
+    "url": "/subjects/science/astronomy/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:astronomy",
+      "topic:astronomy"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Biology",
+    "url": "/subjects/science/biology/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:biology",
+      "topic:biology"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Biodiversity Conservation",
+    "url": "/subjects/science/biology/biodiversity-conservation",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:biology",
+      "topic:biodiversity-conservation"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Biotechnology Genetic Engineering",
+    "url": "/subjects/science/biology/biotechnology-genetic-engineering",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:biology",
+      "topic:biotechnology-genetic-engineering"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Cell Division Mitosis Meiosis",
+    "url": "/subjects/science/biology/cell-division-mitosis-meiosis",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:biology",
+      "topic:cell-division-mitosis-meiosis"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Cell Energy Photosynthesis Respiration",
+    "url": "/subjects/science/biology/cell-energy-photosynthesis-respiration",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:biology",
+      "topic:cell-energy-photosynthesis-respiration"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Cell Transport Homeostasis",
+    "url": "/subjects/science/biology/cell-transport-homeostasis",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:biology",
+      "topic:cell-transport-homeostasis"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Cells Structure Function",
+    "url": "/subjects/science/biology/cells-structure-function",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:biology",
+      "topic:cells-structure-function"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Classification Taxonomy",
+    "url": "/subjects/science/biology/classification-taxonomy",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:biology",
+      "topic:classification-taxonomy"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Dna Rna Protein Synthesis",
+    "url": "/subjects/science/biology/dna-rna-protein-synthesis",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:biology",
+      "topic:dna-rna-protein-synthesis"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Ecology Ecosystems",
+    "url": "/subjects/science/biology/ecology-ecosystems",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:biology",
+      "topic:ecology-ecosystems"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Evolution Natural Selection",
+    "url": "/subjects/science/biology/evolution-natural-selection",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:biology",
+      "topic:evolution-natural-selection"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Genetics Heredity",
+    "url": "/subjects/science/biology/genetics-heredity",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:biology",
+      "topic:genetics-heredity"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Human Body Systems",
+    "url": "/subjects/science/biology/human-body-systems",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:biology",
+      "topic:human-body-systems"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Microorganisms Viruses",
+    "url": "/subjects/science/biology/microorganisms-viruses",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:biology",
+      "topic:microorganisms-viruses"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Scientific Method Introduction To Biology",
+    "url": "/subjects/science/biology/scientific-method-introduction-to-biology",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:biology",
+      "topic:scientific-method-introduction-to-biology"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Scientific Skills Lab Safety",
+    "url": "/subjects/science/biology/scientific-skills-lab-safety",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:biology",
+      "topic:scientific-skills-lab-safety"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Chemistry",
+    "url": "/subjects/science/chemistry/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:chemistry",
+      "topic:chemistry"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Earth Space Science",
+    "url": "/subjects/science/earth-space-science/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:earth-space-science",
+      "topic:earth-space-science"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Environmental Science",
+    "url": "/subjects/science/environmental-science/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:environmental-science",
+      "topic:environmental-science"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Life Science",
+    "url": "/subjects/science/life-science/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:life-science",
+      "topic:life-science"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Physical Science",
+    "url": "/subjects/science/physical-science/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:physical-science",
+      "topic:physical-science"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Physics",
+    "url": "/subjects/science/physics/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:physics",
+      "topic:physics"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Stem Engineering",
+    "url": "/subjects/science/stem-engineering/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:stem-engineering",
+      "topic:stem-engineering"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Social Studies",
+    "url": "/subjects/social-studies/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "topic:social-studies"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Economics",
+    "url": "/subjects/social-studies/economics/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:economics",
+      "topic:economics"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Geography",
+    "url": "/subjects/social-studies/geography/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:geography",
+      "topic:geography"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Government Political Science",
+    "url": "/subjects/social-studies/government-political-science/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:government-political-science",
+      "topic:government-political-science"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Us History",
+    "url": "/subjects/social-studies/us-history/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:us-history",
+      "topic:us-history"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "American Revolution",
+    "url": "/subjects/social-studies/us-history/american-revolution",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:us-history",
+      "topic:american-revolution"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Civil Rights",
+    "url": "/subjects/social-studies/us-history/civil-rights",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:us-history",
+      "topic:civil-rights"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Civil War Reconstruction",
+    "url": "/subjects/social-studies/us-history/civil-war-reconstruction",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:us-history",
+      "topic:civil-war-reconstruction"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Cold War",
+    "url": "/subjects/social-studies/us-history/cold-war",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:us-history",
+      "topic:cold-war"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Colonial America",
+    "url": "/subjects/social-studies/us-history/colonial-america",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:us-history",
+      "topic:colonial-america"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Constitution Early Republic",
+    "url": "/subjects/social-studies/us-history/constitution-early-republic",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:us-history",
+      "topic:constitution-early-republic"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Contemporary Us 1970s Present",
+    "url": "/subjects/social-studies/us-history/contemporary-us-1970s-present",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:us-history",
+      "topic:contemporary-us-1970s-present"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Expansion Reform Jacksonian Era",
+    "url": "/subjects/social-studies/us-history/expansion-reform-jacksonian-era",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:us-history",
+      "topic:expansion-reform-jacksonian-era"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Great Depression New Deal",
+    "url": "/subjects/social-studies/us-history/great-depression-new-deal",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:us-history",
+      "topic:great-depression-new-deal"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Industrialization Gilded Age",
+    "url": "/subjects/social-studies/us-history/industrialization-gilded-age",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:us-history",
+      "topic:industrialization-gilded-age"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Progressive Era Imperialism",
+    "url": "/subjects/social-studies/us-history/progressive-era-imperialism",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:us-history",
+      "topic:progressive-era-imperialism"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "World War I",
+    "url": "/subjects/social-studies/us-history/world-war-i",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:us-history",
+      "topic:world-war-i"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "World War Ii",
+    "url": "/subjects/social-studies/us-history/world-war-ii",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:us-history",
+      "topic:world-war-ii"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "World History",
+    "url": "/subjects/social-studies/world-history/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:world-history",
+      "topic:world-history"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Ancient Greece",
+    "url": "/subjects/social-studies/world-history/ancient-greece",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:world-history",
+      "topic:ancient-greece"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Ancient Rome",
+    "url": "/subjects/social-studies/world-history/ancient-rome",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:world-history",
+      "topic:ancient-rome"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Byzantine Islamic World",
+    "url": "/subjects/social-studies/world-history/byzantine-islamic-world",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:world-history",
+      "topic:byzantine-islamic-world"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Classical India East Asia",
+    "url": "/subjects/social-studies/world-history/classical-india-east-asia",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:world-history",
+      "topic:classical-india-east-asia"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Early Humans River Valleys",
+    "url": "/subjects/social-studies/world-history/early-humans-river-valleys",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:world-history",
+      "topic:early-humans-river-valleys"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Medieval Europe",
+    "url": "/subjects/social-studies/world-history/medieval-europe",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:world-history",
+      "topic:medieval-europe"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Mesoamerican Andean Civilizations",
+    "url": "/subjects/social-studies/world-history/mesoamerican-andean-civilizations",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:world-history",
+      "topic:mesoamerican-andean-civilizations"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Submit",
+    "url": "/submit",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Tools",
+    "url": "/tools/",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:tools"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Buzzer",
+    "url": "/tools/buzzer",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:buzzer"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Flashcards",
+    "url": "/tools/flashcards",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:flashcards"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Graphic Organizers",
+    "url": "/tools/graphic-organizers/",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:graphic-organizers"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Kwl Chart",
+    "url": "/tools/graphic-organizers/kwl-chart/",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:kwl-chart"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Group Maker",
+    "url": "/tools/group-maker",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:group-maker"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Name Picker",
+    "url": "/tools/name-picker",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:name-picker"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Prompt Generator",
+    "url": "/tools/prompt-generator",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:prompt-generator"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Text Randomizer",
+    "url": "/tools/text-randomizer",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:text-randomizer"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Timer",
+    "url": "/tools/timer",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:timer"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Wheel",
+    "url": "/tools/wheel",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:wheel"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Escape Rooms",
+    "url": "/escape/",
+    "type": "game",
+    "description": "Interactive digital escape rooms and puzzle-based classroom challenges.",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:escape-room",
+      "platform:web",
+      "category:puzzle",
+      "format:game",
+      "category:escape",
+      "topic:escape"
+    ],
+    "source": "manifest:game"
+  },
+  {
+    "title": "Print & Play Games",
+    "url": "/print-play-games/",
+    "type": "game",
+    "description": "Printable classroom review games—no technology required.",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:printable",
+      "platform:paper",
+      "format:game",
+      "platform:web",
+      "category:print-play-games",
+      "topic:print-play-games"
+    ],
+    "source": "manifest:game"
+  },
+  {
+    "title": "Choose Your Path Adventures",
+    "url": "/choose-your-path-adventure/",
+    "type": "game",
+    "description": "Choice-driven historical scenarios with branching outcomes.",
+    "subject": "",
+    "tags": [
+      "type:interactive",
+      "format:decision-based",
+      "platform:web",
+      "type:game",
+      "format:game",
+      "category:choose-your-path-adventure",
+      "topic:choose-your-path-adventure"
+    ],
+    "source": "manifest:game"
+  },
+  {
+    "title": "Historical Decision Simulator",
+    "url": "/decision-simulator/",
+    "type": "game",
+    "description": "Simulations where students make decisions, track pressure, and experience consequences.",
+    "subject": "",
+    "tags": [
+      "type:interactive",
+      "format:simulation",
+      "platform:web",
+      "type:game",
+      "format:game",
+      "category:decision-simulator",
+      "topic:decision-simulator"
+    ],
+    "source": "manifest:game"
+  },
+  {
+    "title": "Teacher Tools",
+    "url": "/tools/",
+    "type": "tool",
+    "description": "Classroom tools like spinners, randomizers, timers, and more.",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:tools"
+    ],
+    "source": "manifest:tool"
+  },
+  {
+    "title": "Teach Arcade Merch",
+    "url": "/store/",
+    "type": "store",
+    "description": "Teach Arcade merch produced by Hands Off Design via TeePublic.",
+    "subject": "",
+    "tags": [
+      "type:store",
+      "format:merch",
+      "brand:hands-off-design",
+      "theme:teacher",
+      "theme:arcade"
+    ],
+    "source": "manifest:store"
+  }
+]
