@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
 
-  <meta name="description" content="Search Teach Arcade for free classroom resources, games, and tools." />
+  <meta name="description" content="Search Teach Arcade for free classroom resources, games, tools, and interactive learning activities." />
   <link rel="canonical" href="https://teacharcade.com/search.html" />
 
   <style>
@@ -49,9 +49,19 @@
       transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
     }
     .result:hover { transform:translateY(-2px); box-shadow:0 6px 14px rgba(0,0,0,0.08); border-color:#cbd5e1; }
-    .result h2 { font:700 16px/1.2 Poppins,sans-serif; margin:0 0 6px; }
+    .result h2 { font:700 16px/1.2 Poppins,sans-serif; margin:0 0 6px; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
     .result p { font:400 13px/1.5 Nunito,system-ui,sans-serif; margin:0; color:#475569; }
-    .result .url { margin-top:8px; font:600 12px/1.2 Nunito,system-ui,sans-serif; color:#64748b; }
+    .result .url { margin-top:8px; font:600 12px/1.2 Nunito,system-ui,sans-serif; color:#64748b; word-break:break-word; }
+
+    .badge {
+      display:inline-block;
+      font:700 11px/1 Poppins,sans-serif;
+      padding:6px 8px;
+      border-radius:999px;
+      border:1px solid #cbd5e1;
+      color:#0f172a;
+      background:#f8fafc;
+    }
 
     .note {
       background:#fff7ed;
@@ -73,7 +83,7 @@
   <main class="container">
     <section class="hero">
       <h1>Search Teach Arcade</h1>
-      <p>Search across subjects, games, and tools. Results are generated from Teach Arcade site URLs (fast + safe).</p>
+      <p>Search across subjects, games, tools, store items, and curated resources. Results are powered by a site-wide search index.</p>
 
       <form id="search-form" class="searchbar" role="search">
         <label class="sr-only" for="q">Search</label>
@@ -100,21 +110,6 @@
   </footer>
 
   <script>
-    // Optional: a few hubs to enrich titles (NOT required for coverage anymore)
-    const HUB_PAGES = [
-      "/subjects/social-studies/",
-      "/subjects/science/",
-      "/subjects/math/",
-      "/subjects/ela/",
-      "/subjects/fine-arts/",
-      "/tools/",
-      "/arcade-review-games/",
-      "/choose-your-path-adventure/",
-      "/games/arcade-games/",
-      "/games/escape-rooms/",
-      "/games/choose-your-path/"
-    ];
-
     const CACHE_KEY = "ta_search_index_v2";
 
     function getQueryParam(name){
@@ -129,171 +124,63 @@
       history.replaceState(null, "", u.toString());
     }
 
-    function normalizePath(p){
-      // Keep internal path + optional query, drop hash
-      try {
-        const u = new URL(p, window.location.origin);
-        return u.pathname + (u.search || "");
-      } catch {
-        return p;
-      }
+    // ✅ KEY FIX: normalize hyphens/underscores/spaces so "cold war" matches "cold-war"
+    function normalizeText(str) {
+      return (str || "")
+        .toLowerCase()
+        .replace(/[-_]/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
     }
 
-    function titleFromPath(path){
-      // Turn /subjects/social-studies/us-history/world-war-ii.html into "World War II"
-      const clean = path.split("?")[0].replace(/\/+$/,"");
-      const last = clean.split("/").filter(Boolean).pop() || "Teach Arcade";
-      const noExt = last.replace(/\.html?$/i,"");
-      const withSpaces = noExt.replace(/[-_]+/g, " ");
-      return withSpaces.replace(/\b\w/g, c => c.toUpperCase()).trim();
-    }
-
-    function scoreMatch(text, q){
-      const t = (text || "").toLowerCase();
-      const s = (q || "").toLowerCase();
+    function scoreMatch(rec, q){
+      const s = normalizeText(q);
       if (!s) return 0;
 
-      if (t === s) return 120;
-      if (t.includes(s)) return 80;
+      const title = normalizeText(rec.title);
+      const desc  = normalizeText(rec.description);
+      const url   = normalizeText(rec.url);
+      const tags  = normalizeText(Array.isArray(rec.tags) ? rec.tags.join(" ") : "");
+      const type  = normalizeText(rec.type);
 
-      const tokens = s.split(/\s+/).filter(Boolean);
+      // Strong boosts
+      if (title === s) return 260;
+      if (title.includes(s)) return 190;
+
+      // Medium boosts
+      if (tags.includes(s)) return 150;
+      if (desc.includes(s)) return 110;
+      if (url.includes(s)) return 90;
+
+      // Token matching (now hyphen-safe)
+      const tokens = s.split(" ").filter(Boolean);
       let hits = 0;
-      for (const tok of tokens){
-        if (tok.length < 2) continue;
-        if (t.includes(tok)) hits++;
-      }
-      return hits ? (20 + hits * 15) : 0;
-    }
-
-    function extractLinks(html, basePath){
-      const out = [];
-      const re = /<a\s+[^>]*href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi;
-      let m;
-      while ((m = re.exec(html)) !== null){
-        let href = (m[1] || "").trim();
-        let text = (m[2] || "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
-
-        if (!href || href.startsWith("#")) continue;
-        if (href.startsWith("mailto:") || href.startsWith("tel:")) continue;
-        if (href.startsWith("javascript:")) continue;
-
-        // Resolve to absolute internal path
-        try {
-          const abs = new URL(href, new URL(basePath, window.location.origin));
-          if (abs.hostname !== location.hostname) continue;
-          href = abs.pathname + (abs.search || "");
-        } catch {
-          continue;
-        }
-
-        if (!text || text.length < 2) text = titleFromPath(href);
-
-        out.push({ href, text });
-      }
-      return out;
-    }
-
-    async function fetchSitemapUrls(){
-      // Supports sitemap index or plain urlset
-      const urls = new Set();
-      try{
-        const r = await fetch("/sitemap.xml", { cache: "no-store" });
-        if (!r.ok) return urls;
-        const xml = await r.text();
-
-        // If it's a sitemapindex, pull child sitemap locs and fetch each
-        const isIndex = /<sitemapindex[\s>]/i.test(xml);
-        const locs = Array.from(xml.matchAll(/<loc>([^<]+)<\/loc>/gi)).map(m => m[1]).filter(Boolean);
-
-        if (isIndex && locs.length){
-          for (const loc of locs){
-            try{
-              const u = new URL(loc);
-              if (u.hostname !== location.hostname) continue;
-              const rr = await fetch(u.pathname + (u.search||""), { cache:"no-store" });
-              if (!rr.ok) continue;
-              const child = await rr.text();
-              Array.from(child.matchAll(/<loc>([^<]+)<\/loc>/gi)).forEach(mm => {
-                try{
-                  const uu = new URL(mm[1]);
-                  if (uu.hostname !== location.hostname) return;
-                  urls.add(uu.pathname + (uu.search||""));
-                } catch {}
-              });
-            } catch {}
-          }
-          return urls;
-        }
-
-        // Otherwise it's a normal urlset
-        locs.forEach(loc => {
-          try{
-            const u = new URL(loc);
-            if (u.hostname !== location.hostname) return;
-            urls.add(u.pathname + (u.search||""));
-          } catch {}
-        });
-
-      } catch(e){}
-      return urls;
-    }
-
-    async function buildIndex(){
-      // 1) Try cache first
-      try{
-        const cached = sessionStorage.getItem(CACHE_KEY);
-        if (cached){
-          const parsed = JSON.parse(cached);
-          if (Array.isArray(parsed) && parsed.length) return parsed;
-        }
-      } catch(e){}
-
-      const map = new Map();
-
-      // 2) Sitemap coverage (best)
-      const sm = await fetchSitemapUrls();
-      sm.forEach(path => {
-        const href = normalizePath(path);
-        if (!href) return;
-
-        // Basic noise filters
-        if (href.includes("/assets/")) return;
-
-        map.set(href, titleFromPath(href));
-      });
-
-      // 3) Enrich titles from hub pages (optional)
-      for (const hub of HUB_PAGES){
-        try{
-          const r = await fetch(hub, { cache:"no-store" });
-          if (!r.ok) continue;
-          const html = await r.text();
-          const links = extractLinks(html, hub);
-
-          for (const l of links){
-            const href = normalizePath(l.href);
-            const text = (l.text || "").trim();
-            if (!href) continue;
-
-            // Filter nav-ish noise
-            const label = text.toLowerCase();
-            const noise = ["home","about","privacy","terms","submit","store","teacher tools","subjects","games"];
-            if (noise.includes(label)) continue;
-
-            // Prefer richer link text over slug-title
-            if (!map.has(href) || (text.length > (map.get(href) || "").length)) {
-              map.set(href, text);
-            }
-          }
-        } catch(e){}
+      for (const t of tokens){
+        if (t.length < 2) continue;
+        if (title.includes(t)) hits += 4;
+        else if (tags.includes(t)) hits += 3;
+        else if (desc.includes(t)) hits += 2;
+        else if (url.includes(t)) hits += 1;
       }
 
-      const index = Array.from(map.entries()).map(([href, text]) => ({ href, text }));
+      let score = hits ? (30 + hits * 14) : 0;
 
-      // Cache for this session
-      try{ sessionStorage.setItem(CACHE_KEY, JSON.stringify(index)); } catch(e){}
+      // slight type prioritization but still mixed
+      if (score > 0){
+        if (type === "resource") score += 10;
+        if (type === "topic") score += 8;
+        if (type === "game") score += 6;
+        if (type === "tool") score += 4;
+        if (type === "store") score += 2;
+      }
 
-      return index;
+      return score;
+    }
+
+    function badge(type){
+      const t = (type || "page").toLowerCase();
+      const label = t.charAt(0).toUpperCase() + t.slice(1);
+      return `<span class="badge">${label}</span>`;
     }
 
     function renderResults(items, q){
@@ -314,42 +201,65 @@
 
       statusEl.textContent = `Showing ${items.length} result${items.length === 1 ? "" : "s"} for “${q}”.`;
 
-      resultsEl.innerHTML = items.map(it => `
-        <a class="result" href="${it.href}">
-          <h2>${it.text}</h2>
-          <p>Click to open</p>
-          <div class="url">${it.href}</div>
-        </a>
-      `).join("");
+      resultsEl.innerHTML = items.map(it => {
+        const desc = it.description ? it.description : "Click to open";
+        return `
+          <a class="result" href="${it.url}">
+            <h2>${it.title} ${badge(it.type)}</h2>
+            <p>${desc}</p>
+            <div class="url">${it.url}</div>
+          </a>
+        `;
+      }).join("");
+    }
+
+    async function loadIndex(){
+      try{
+        const cached = sessionStorage.getItem(CACHE_KEY);
+        if (cached){
+          const parsed = JSON.parse(cached);
+          if (Array.isArray(parsed) && parsed.length) return parsed;
+        }
+      } catch(e){}
+
+      const r = await fetch("/search-index.json", { cache: "no-store" });
+      if (!r.ok) throw new Error("Search index missing. Expected /public/search-index.json to exist.");
+      const data = await r.json();
+
+      try{ sessionStorage.setItem(CACHE_KEY, JSON.stringify(data)); } catch(e){}
+      return data;
     }
 
     (async function(){
       const input = document.getElementById("q");
       const form = document.getElementById("search-form");
+      const statusEl = document.getElementById("status");
 
       const q0 = getQueryParam("q");
       if (q0) input.value = q0;
 
-      const statusEl = document.getElementById("status");
-      statusEl.textContent = "Building search index…";
+      statusEl.textContent = "Loading search index…";
 
-      const index = await buildIndex();
+      let index = [];
+      try{
+        index = await loadIndex();
+        statusEl.textContent = "Type a keyword and press Search.";
+      } catch(e){
+        statusEl.textContent = String(e.message || e);
+        return;
+      }
 
       function runSearch(q){
         const scored = index
-          .map(it => {
-            const blob = (it.text + " " + it.href).replace(/\/+/g,"/");
-            return { ...it, score: scoreMatch(blob, q) };
-          })
+          .map(it => ({ ...it, score: scoreMatch(it, q) }))
           .filter(it => it.score > 0)
           .sort((a,b) => b.score - a.score)
-          .slice(0, 40);
+          .slice(0, 50);
 
         renderResults(scored, q);
       }
 
       if (q0) runSearch(q0);
-      else statusEl.textContent = "Type a keyword and press Search.";
 
       form.addEventListener("submit", (e) => {
         e.preventDefault();
