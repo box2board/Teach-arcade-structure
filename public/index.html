@@ -100,6 +100,32 @@
       color: #475569;
       margin: 0 0 12px;
     }
+
+    /* ===========================
+       Brain Arcade Tile Accent
+       (Matches existing subject-tile system)
+    ============================ */
+    .subject-tile.brain-arcade::before{
+      content:"";
+      position:absolute;
+      top:-40px; right:-40px;
+      width:220px; height:220px;
+      background: radial-gradient(circle at 30% 30%, rgba(168,85,247,.22), rgba(168,85,247,0) 60%);
+      transform: rotate(18deg);
+      pointer-events:none;
+    }
+    .brain-arcade-badge{
+      position:absolute;
+      top:12px; left:12px;
+      font: 700 11px/1 Poppins, sans-serif;
+      letter-spacing:.6px;
+      padding:6px 10px;
+      border-radius: 999px;
+      background: rgba(168,85,247,.12);
+      border: 1px solid rgba(168,85,247,.28);
+      color:#5b21b6;
+      text-transform: uppercase;
+    }
   </style>
 
   <!-- Google tag (gtag.js) -->
@@ -241,6 +267,14 @@
           <p class="subject-desc">Side-scrolling content review games with built-in questions</p>
         </a>
 
+        <!-- NEW TILE: Brain Arcade (Correct place + correct styling) -->
+        <a href="/brain-arcade/" class="subject-tile brain-arcade" aria-label="Brain Arcade">
+          <div class="brain-arcade-badge">New</div>
+          <div class="subject-emoji">🧠</div>
+          <h3 class="subject-title">Brain Arcade</h3>
+          <p class="subject-desc">Logic, reasoning, focus &amp; strategy games — fun, skill-based play.</p>
+        </a>
+
         <a href="/choose-your-path-adventure/index.html" class="subject-tile" aria-label="Choose Your Path Adventures">
           <div class="subject-emoji">🧭</div>
           <h3 class="subject-title">Choose Your Path Adventures</h3>
@@ -253,45 +287,6 @@
           <h3 class="subject-title">Historical Decision Simulator</h3>
           <p class="subject-desc">Play “American Revolution: The Breaking Point” — make tough choices, track pressure, and reach multiple endings.</p>
         </a>
-        <a class="section-tile brain-arcade" href="/brain-arcade/" aria-label="Open Brain Arcade">
-  <div class="section-tile__top">
-    <div class="section-tile__icon" aria-hidden="true">🧠</div>
-    <div class="section-tile__meta">
-      <h3 class="section-tile__title">Brain Arcade</h3>
-      <p class="section-tile__subtitle">Think • Decide • Solve</p>
-    </div>
-  </div>
-
-  <p class="section-tile__desc">
-    Not every game needs a lesson plan. Brain Arcade features games that sharpen reasoning,
-    logic, focus, and decision-making—while still being genuinely fun.
-  </p>
-
-  <div class="section-tile__tags" aria-hidden="true">
-    <span class="pill">Critical Thinking</span>
-    <span class="pill">Single Player</span>
-    <span class="pill">Skill-Based</span>
-  </div>
-
-  <div class="section-tile__cta">
-    <span>Enter Brain Arcade</span>
-    <span aria-hidden="true">→</span>
-  </div>
-</a>
-        /* ===== Brain Arcade Accent ===== */
-.section-tile.brain-arcade::before{
-  content:"";
-  position:absolute;
-  inset:-40px -40px auto auto;
-  width: 240px;
-  height: 240px;
-  background:
-    radial-gradient(circle at 30% 30%,
-      rgba(168,85,247,.28),
-      rgba(168,85,247,0) 60%);
-  transform: rotate(18deg);
-  pointer-events:none;
-}
 
         <a href="/professional-development/index.html" class="subject-tile" aria-label="Professional Development">
           <div style="
