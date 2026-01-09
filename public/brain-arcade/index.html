@@ -23,154 +23,80 @@
   <meta property="og:url" content="https://teacharcade.com/brain-arcade/" />
   <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
 
-  <!-- Page styles (lightweight + matches your homepage tile vibe) -->
   <style>
-    .page-hero{
-      padding: 72px 0 18px;
-      text-align: center;
-    }
+    .page-hero{ padding:72px 0 18px; text-align:center; }
     .page-hero h1{
-      font: 700 34px/1.15 Poppins, sans-serif;
-      margin: 0 0 10px;
-      letter-spacing: -0.02em;
-      color: #0f172a;
+      font:700 34px/1.15 Poppins,sans-serif;
+      margin:0 0 10px; letter-spacing:-0.02em; color:#0f172a;
     }
     .page-hero p{
-      font: 400 18px/1.55 Nunito, system-ui, sans-serif;
-      margin: 0 auto 16px;
-      max-width: 900px;
-      color: #475569;
+      font:400 18px/1.55 Nunito,system-ui,sans-serif;
+      margin:0 auto 16px; max-width:900px; color:#475569;
     }
-    .hero-chips{
-      display:flex;
-      gap:10px;
-      justify-content:center;
-      flex-wrap:wrap;
-      margin-top: 10px;
-    }
+    .hero-chips{ display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:10px; }
     .chip{
-      font: 700 12px/1 Poppins, sans-serif;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: #f1f5f9;
-      border: 1px solid #e2e8f0;
-      color: #334155;
+      font:700 12px/1 Poppins,sans-serif;
+      padding:8px 12px; border-radius:999px;
+      background:#f1f5f9; border:1px solid #e2e8f0; color:#334155;
     }
 
-    .section-wrap{
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 16px 40px;
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 18px;
-      margin-top: 18px;
-    }
+    .section-wrap{ max-width:1100px; margin:0 auto; padding:0 16px 40px; }
+    .grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px; margin-top:18px; }
 
     .game-card{
-      display:flex;
-      flex-direction:column;
-      background: #fff;
-      border: 1px solid #e2e8f0;
-      border-radius: 14px;
-      padding: 18px;
-      text-decoration:none;
-      color: #0f172a;
-      box-shadow: 0 2px 6px rgba(0,0,0,.05);
-      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
-      position:relative;
-      overflow:hidden;
-      min-height: 190px;
+      display:flex; flex-direction:column; background:#fff;
+      border:1px solid #e2e8f0; border-radius:14px; padding:18px;
+      text-decoration:none; color:#0f172a;
+      box-shadow:0 2px 6px rgba(0,0,0,.05);
+      transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+      position:relative; overflow:hidden; min-height:190px;
     }
     .game-card:hover{
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(0,0,0,.08);
-      border-color: #cbd5e1;
+      transform:translateY(-3px);
+      box-shadow:0 10px 20px rgba(0,0,0,.08);
+      border-color:#cbd5e1;
     }
+
     .badge{
-      position:absolute;
-      top:12px;
-      right:12px;
-      font: 700 11px/1 Poppins, sans-serif;
-      letter-spacing: .6px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: rgba(168,85,247,.12);
-      border: 1px solid rgba(168,85,247,.28);
-      color: #5b21b6;
-      text-transform: uppercase;
+      position:absolute; top:12px; right:12px;
+      font:700 11px/1 Poppins,sans-serif;
+      letter-spacing:.6px; padding:6px 10px;
+      border-radius:999px;
+      background:rgba(168,85,247,.12);
+      border:1px solid rgba(168,85,247,.28);
+      color:#5b21b6; text-transform:uppercase;
     }
-    .icon{
-      font-size: 40px;
-      margin-bottom: 10px;
-    }
-    .game-title{
-      margin: 0 0 6px;
-      font: 700 18px/1.2 Poppins, sans-serif;
-      color:#0f172a;
-    }
-    .game-desc{
-      margin: 0 0 12px;
-      font: 400 14px/1.55 Nunito, sans-serif;
-      color:#475569;
-    }
-    .meta{
-      margin-top:auto;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-    }
+
+    .icon{ font-size:40px; margin-bottom:10px; }
+    .game-title{ margin:0 0 6px; font:700 18px/1.2 Poppins,sans-serif; }
+    .game-desc{ margin:0 0 12px; font:400 14px/1.55 Nunito,sans-serif; color:#475569; }
+
+    .meta{ margin-top:auto; display:flex; gap:10px; flex-wrap:wrap; }
     .tag{
-      font: 700 11px/1 Poppins, sans-serif;
-      padding: 7px 10px;
-      border-radius: 999px;
-      background:#f8fafc;
-      border:1px solid #e2e8f0;
-      color:#334155;
+      font:700 11px/1 Poppins,sans-serif;
+      padding:7px 10px; border-radius:999px;
+      background:#f8fafc; border:1px solid #e2e8f0; color:#334155;
     }
 
     .note{
-      max-width: 980px;
-      margin: 18px auto 0;
-      padding: 14px 16px;
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      color:#475569;
-      font: 400 14px/1.55 Nunito, sans-serif;
-      text-align:left;
+      max-width:980px; margin:18px auto 0; padding:14px 16px;
+      background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px;
+      color:#475569; font:400 14px/1.55 Nunito,sans-serif; text-align:left;
     }
-
     .note strong{ color:#0f172a; }
 
     .top-actions{
-      display:flex;
-      justify-content:center;
-      gap: 10px;
-      flex-wrap:wrap;
-      margin-top: 14px;
+      display:flex; justify-content:center; gap:10px;
+      flex-wrap:wrap; margin-top:14px;
     }
     .btn{
-      display:inline-block;
-      padding:10px 14px;
-      border-radius:10px;
-      text-decoration:none;
-      font:700 14px/1 Poppins, sans-serif;
-      border:1px solid #2563eb;
-      color:#fff;
-      background:#2563eb;
+      display:inline-block; padding:10px 14px; border-radius:10px;
+      text-decoration:none; font:700 14px/1 Poppins,sans-serif;
+      border:1px solid #2563eb; color:#fff; background:#2563eb;
     }
-    .btn.secondary{
-      background:#fff;
-      color:#1f2937;
-      border-color:#cbd5e1;
-    }
+    .btn.secondary{ background:#fff; color:#1f2937; border-color:#cbd5e1; }
   </style>
 
-  <!-- JSON-LD: CollectionPage -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -183,7 +109,6 @@
 </head>
 
 <body>
-  <!-- Global Header mount -->
   <div id="site-header"></div>
   <script src="/assets/scripts/nav.js?v=3" defer></script>
 
@@ -203,17 +128,14 @@
       </div>
 
       <div class="top-actions">
-        <a class="btn" href="/games/solitaire.html">Play Solitaire</a>
+        <a class="btn" href="/brain-arcade/solitaire.html">Play Solitaire</a>
         <a class="btn secondary" href="/">Back to Home</a>
       </div>
     </section>
 
     <div class="section-wrap">
-      <h2 class="sr-only">Brain Arcade Games</h2>
-
       <div class="grid">
-        <!-- Solitaire -->
-        <a class="game-card" href="/games/solitaire.html" aria-label="Play Solitaire (Klondike)">
+        <a class="game-card" href="/brain-arcade/solitaire.html" aria-label="Play Solitaire (Klondike)">
           <div class="badge">New</div>
           <div class="icon" aria-hidden="true">🂡</div>
           <h3 class="game-title">Solitaire (Klondike)</h3>
@@ -227,7 +149,6 @@
           </div>
         </a>
 
-        <!-- Placeholder for your next Brain Arcade game -->
         <a class="game-card" href="#" aria-label="Coming soon">
           <div class="icon" aria-hidden="true">✨</div>
           <h3 class="game-title">Next Brain Challenge</h3>
