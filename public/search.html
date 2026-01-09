@@ -11,68 +11,264 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
 
-  <meta name="description" content="Search Teach Arcade for free classroom resources, games, tools, and interactive learning activities." />
+  <meta name="description" content="Search Teach Arcade for free classroom resources, games, tools, and topic pages." />
   <link rel="canonical" href="https://teacharcade.com/search.html" />
 
   <style>
-    .sr-only {
-      position:absolute !important; width:1px; height:1px; padding:0; margin:-1px;
-      overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
-    }
-    .hero { padding: 64px 0 10px; }
-    .hero h1 { font:700 30px/1.2 Poppins,sans-serif; margin:0 0 10px; color:#0f172a; }
-    .hero p { font:400 15px/1.6 Nunito,system-ui,sans-serif; margin:0; color:#475569; max-width:900px; }
+    /* ===== Teach Arcade Smart Search (Premium-lite) ===== */
+    .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
-    .searchbar {
-      margin: 16px 0 10px;
-      display:flex; gap:10px; flex-wrap:wrap;
-      max-width:900px;
+    .hero { padding: 56px 0 18px; max-width: 980px; margin: 0 auto; }
+    .hero h1{ font:700 34px/1.15 Poppins,sans-serif; letter-spacing:-0.02em; margin:0 0 10px; color:#0f172a; }
+    .hero p{ font:400 15px/1.65 Nunito,system-ui,sans-serif; margin:0; color:#475569; max-width: 860px; }
+
+    .searchbar{
+      margin: 18px 0 10px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
     }
-    .searchbar input {
-      flex:1; min-width:240px;
-      padding:12px 12px;
+    .searchbar input{
+      flex:1;
+      min-width: 240px;
+      padding:14px 14px;
+      border:1px solid #cbd5e1;
+      border-radius:14px;
+      font:700 14px/1 Nunito,system-ui,sans-serif;
+      background:#fff;
+      box-shadow:0 2px 10px rgba(2,6,23,.06);
+      outline:none;
+    }
+    .searchbar input:focus{
+      border-color:#2563eb;
+      box-shadow:0 0 0 4px rgba(37,99,235,.15);
+    }
+
+    .btn{
+      display:inline-block;
+      padding:12px 16px;
+      border-radius:14px;
+      text-decoration:none;
+      font:800 14px/1 Poppins,sans-serif;
+      border:1px solid #2563eb;
+      color:#fff;
+      background:#2563eb;
+      cursor:pointer;
+      box-shadow:0 2px 10px rgba(37,99,235,.20);
+    }
+    .btn.secondary{
+      background:#fff;
+      color:#0f172a;
+      border-color:#cbd5e1;
+      box-shadow:0 2px 10px rgba(2,6,23,.06);
+    }
+
+    .meta{
+      font:600 13px/1.6 Nunito,system-ui,sans-serif;
+      color:#64748b;
+      margin: 8px 0 0;
+    }
+
+    /* Premium controls row */
+    .controls{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin: 12px 0 10px;
+      align-items:center;
+    }
+    .control{
+      display:flex;
+      gap:8px;
+      align-items:center;
+      background:#fff;
+      border:1px solid #e2e8f0;
+      border-radius:14px;
+      padding:10px 12px;
+      box-shadow:0 2px 10px rgba(2,6,23,.06);
+    }
+    .control label{
+      font:900 12px/1 Poppins,sans-serif;
+      color:#0f172a;
+    }
+    .control select{
       border:1px solid #cbd5e1;
       border-radius:10px;
-      font:600 14px/1 Nunito, system-ui, sans-serif;
+      padding:8px 10px;
+      font:700 12px/1 Nunito,system-ui,sans-serif;
+      background:#fff;
+      color:#0f172a;
+      outline:none;
     }
-    .btn { display:inline-block; padding:10px 14px; border-radius:10px; text-decoration:none;
-      font:700 14px/1 Poppins, sans-serif; border:1px solid #2563eb; color:#fff; background:#2563eb; cursor:pointer;
+    .control select:focus{
+      border-color:#2563eb;
+      box-shadow:0 0 0 3px rgba(37,99,235,.12);
     }
-    .btn.secondary { background:#fff; color:#1f2937; border-color:#cbd5e1; }
 
-    .meta { font:400 13px/1.6 Nunito, system-ui, sans-serif; color:#64748b; margin: 6px 0 0; }
-    .results { margin: 18px 0 40px; display:grid; gap:12px; }
-    .result {
-      background:#fff; border:1px solid #e2e8f0; border-radius:12px;
-      padding:14px; text-decoration:none; color:#0f172a;
-      box-shadow:0 2px 4px rgba(0,0,0,0.05);
-      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+    /* Type chips */
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin: 12px 0 12px;
     }
-    .result:hover { transform:translateY(-2px); box-shadow:0 6px 14px rgba(0,0,0,0.08); border-color:#cbd5e1; }
-    .result h2 { font:700 16px/1.2 Poppins,sans-serif; margin:0 0 6px; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
-    .result p { font:400 13px/1.5 Nunito,system-ui,sans-serif; margin:0; color:#475569; }
-    .result .url { margin-top:8px; font:600 12px/1.2 Nunito,system-ui,sans-serif; color:#64748b; word-break:break-word; }
-
-    .badge {
-      display:inline-block;
-      font:700 11px/1 Poppins,sans-serif;
+    .chip{
+      border:1px solid #cbd5e1;
+      background:#fff;
+      color:#0f172a;
+      border-radius:999px;
+      padding:8px 12px;
+      font:800 12px/1 Poppins,sans-serif;
+      cursor:pointer;
+      user-select:none;
+      transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+      box-shadow:0 1px 6px rgba(2,6,23,.06);
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
+    .chip:hover{ transform:translateY(-1px); border-color:#94a3b8; }
+    .chip.is-active{
+      background:#0f172a;
+      border-color:#0f172a;
+      color:#fff;
+      box-shadow:0 6px 18px rgba(2,6,23,.20);
+    }
+    .chip .count{
+      font:900 11px/1 Poppins,sans-serif;
       padding:6px 8px;
       border-radius:999px;
-      border:1px solid #cbd5e1;
+      border:1px solid rgba(148,163,184,.55);
+      background: rgba(248,250,252,.9);
       color:#0f172a;
-      background:#f8fafc;
+    }
+    .chip.is-active .count{
+      background: rgba(255,255,255,.16);
+      border-color: rgba(255,255,255,.35);
+      color:#fff;
     }
 
-    .note {
+    /* Sections */
+    .section-title{
+      max-width:980px;
+      margin: 14px 0 10px;
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .section-title h2{
+      margin:0;
+      font:900 14px/1.2 Poppins,sans-serif;
+      color:#0f172a;
+    }
+    .section-title .sub{
+      margin:0;
+      font:700 12px/1.4 Nunito,system-ui,sans-serif;
+      color:#64748b;
+    }
+
+    /* Results */
+    .results{
+      margin: 10px 0 46px;
+      display:grid;
+      gap:12px;
+      max-width: 980px;
+    }
+    .result{
+      background:#fff;
+      border:1px solid #e2e8f0;
+      border-radius:14px;
+      padding:14px 14px;
+      text-decoration:none;
+      color:#0f172a;
+      box-shadow:0 2px 10px rgba(2,6,23,.06);
+      transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+      display:block;
+    }
+    .result:hover{ transform:translateY(-2px); box-shadow:0 10px 24px rgba(2,6,23,.10); border-color:#cbd5e1; }
+
+    .result-top{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      justify-content:space-between;
+    }
+    .result h3{
+      font:900 16px/1.25 Poppins,sans-serif;
+      margin:0 0 6px;
+      color:#0f172a;
+    }
+    .result p{
+      font:600 13px/1.55 Nunito,system-ui,sans-serif;
+      margin:0;
+      color:#475569;
+    }
+    .result .meta2{
+      margin-top:8px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+      font:700 12px/1.3 Nunito,system-ui,sans-serif;
+      color:#64748b;
+    }
+    .url{
+      font:700 12px/1.3 Nunito,system-ui,sans-serif;
+      color:#64748b;
+      word-break:break-word;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      border-radius:999px;
+      padding:7px 10px;
+      font:900 11px/1 Poppins,sans-serif;
+      border:1px solid #cbd5e1;
+      background:#f8fafc;
+      color:#0f172a;
+      white-space:nowrap;
+    }
+    .badge.resource{ border-color:#86efac; background:#f0fdf4; }
+    .badge.topic{ border-color:#93c5fd; background:#eff6ff; }
+    .badge.game{ border-color:#fca5a5; background:#fff1f2; }
+    .badge.tool{ border-color:#fdba74; background:#fff7ed; }
+    .badge.store{ border-color:#c4b5fd; background:#f5f3ff; }
+    .badge.page{ border-color:#e2e8f0; background:#f8fafc; }
+
+    mark.hl{
+      background: rgba(37,99,235,.16);
+      color: inherit;
+      padding: 0 2px;
+      border-radius: 4px;
+    }
+
+    .note{
       background:#fff7ed;
       border:1px solid #fed7aa;
-      border-radius:12px;
+      border-radius:14px;
       padding:12px 14px;
       color:#7c2d12;
-      font:400 13px/1.6 Nunito,system-ui,sans-serif;
+      font:600 13px/1.6 Nunito,system-ui,sans-serif;
       margin: 12px 0 0;
-      max-width:900px;
+      max-width:980px;
     }
+
+    .empty{
+      max-width:980px;
+      background:#f8fafc;
+      border:1px dashed #cbd5e1;
+      border-radius:14px;
+      padding:14px;
+      color:#475569;
+      font:600 13px/1.7 Nunito,system-ui,sans-serif;
+    }
+    .empty strong{ color:#0f172a; }
+
+    footer{ margin-top: 30px; }
   </style>
 </head>
 
@@ -83,23 +279,77 @@
   <main class="container">
     <section class="hero">
       <h1>Search Teach Arcade</h1>
-      <p>Search across subjects, games, tools, store items, and curated resources. Results are powered by a site-wide search index.</p>
+      <p>Find topic pages, classroom games, teacher tools, store items, and curated Google Sheet resources — all in one place.</p>
 
-      <form id="search-form" class="searchbar" role="search">
+      <form id="search-form" class="searchbar" role="search" autocomplete="off">
         <label class="sr-only" for="q">Search</label>
-        <input id="q" name="q" type="search" autocomplete="off" placeholder="Try: Cold War, genetics, fractions, escape room..." />
+        <input id="q" name="q" type="search" placeholder="Try: World War II, holocaust, genetics, fractions, escape room..." />
         <button class="btn" type="submit">Search</button>
         <a class="btn secondary" href="/">Home</a>
       </form>
 
-      <p id="status" class="meta">Type a keyword and press Search.</p>
+      <!-- Controls -->
+      <div class="controls" aria-label="Advanced filters">
+        <div class="control">
+          <label for="subject">Subject</label>
+          <select id="subject">
+            <option value="">All</option>
+          </select>
+        </div>
+        <div class="control">
+          <label for="grade">Grade</label>
+          <select id="grade">
+            <option value="">All</option>
+            <option value="k-2">K–2</option>
+            <option value="3-5">3–5</option>
+            <option value="6-8">6–8</option>
+            <option value="9-12">9–12</option>
+          </select>
+        </div>
+        <div class="control">
+          <label for="sort">Sort</label>
+          <select id="sort">
+            <option value="relevance">Relevance</option>
+            <option value="az">A–Z</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Type chips -->
+      <div class="chips" aria-label="Search type filters">
+        <button type="button" class="chip is-active" data-type="all">All <span class="count" data-count="all">0</span></button>
+        <button type="button" class="chip" data-type="resource">Resources <span class="count" data-count="resource">0</span></button>
+        <button type="button" class="chip" data-type="game">Games <span class="count" data-count="game">0</span></button>
+        <button type="button" class="chip" data-type="tool">Tools <span class="count" data-count="tool">0</span></button>
+        <button type="button" class="chip" data-type="topic">Topics <span class="count" data-count="topic">0</span></button>
+        <button type="button" class="chip" data-type="store">Store <span class="count" data-count="store">0</span></button>
+      </div>
+
+      <p id="status" class="meta">Loading search index…</p>
+
       <div class="note">
-        Tip: Use specific terms like <strong>DBQ</strong>, <strong>primary source</strong>, <strong>review game</strong>, or a unit name.
+        Tips: Try <strong>WWII</strong> / <strong>WW2</strong>, <strong>primary source</strong>, <strong>DBQ</strong>, <strong>review game</strong>, or a unit name.
       </div>
     </section>
 
     <section aria-label="Search results">
-      <div id="results" class="results"></div>
+      <div id="best-wrap" style="display:none; max-width:980px;">
+        <div class="section-title">
+          <h2>Best matches</h2>
+          <p class="sub">Pinned results most likely to match your intent.</p>
+        </div>
+        <div id="best" class="results"></div>
+      </div>
+
+      <div id="all-wrap" style="display:none; max-width:980px;">
+        <div class="section-title">
+          <h2>All results</h2>
+          <p class="sub">Everything that matches your search.</p>
+        </div>
+        <div id="results" class="results"></div>
+      </div>
+
+      <div id="empty" class="empty" style="display:none;"></div>
     </section>
   </main>
 
@@ -110,13 +360,51 @@
   </footer>
 
   <script>
-    const CACHE_KEY = "ta_search_index_v2";
+    /* ============================
+       Teach Arcade Search
+       - Rich cards (auto snippets)
+       - Pins best matches at top
+       Uses: /search-index.json
+    ============================ */
+
+    const INDEX_URL = "/search-index.json";
+
+    // Synonyms / expansions (keep light)
+    const SYNONYMS = {
+      "ww2": ["world war ii","world war 2","wwii"],
+      "wwii": ["world war ii","world war 2","ww2"],
+      "world war 2": ["world war ii","wwii","ww2"],
+      "bio": ["biology"],
+      "ela": ["english language arts","language arts","english"],
+      "genocide": ["holocaust"],
+      "holocaust": ["genocide","world war ii","wwii","ww2"]
+    };
+
+    const TYPE_BOOST = { topic: 90, resource: 80, game: 70, tool: 60, store: 40, page: 20 };
+
+    // ---------- utilities ----------
+    function escapeHtml(s){
+      return String(s || "").replace(/[&<>"']/g, c => ({
+        "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+      }[c]));
+    }
+    function normalizeText(s){
+      return String(s || "")
+        .toLowerCase()
+        .normalize("NFKD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[_/]+/g, " ")
+        .replace(/[’']/g, "")
+        .replace(/[^a-z0-9]+/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+    }
+    function slugify(s){ return normalizeText(s).replace(/\s+/g, "-"); }
 
     function getQueryParam(name){
       const u = new URL(window.location.href);
       return (u.searchParams.get(name) || "").trim();
     }
-
     function setQueryParam(name, value){
       const u = new URL(window.location.href);
       if (!value) u.searchParams.delete(name);
@@ -124,149 +412,537 @@
       history.replaceState(null, "", u.toString());
     }
 
-    // ✅ KEY FIX: normalize hyphens/underscores/spaces so "cold war" matches "cold-war"
-    function normalizeText(str) {
-      return (str || "")
-        .toLowerCase()
-        .replace(/[-_]/g, " ")
-        .replace(/\s+/g, " ")
-        .trim();
+    function badgeClass(type){
+      const t = String(type || "page").toLowerCase();
+      if (["resource","topic","game","tool","store","page"].includes(t)) return t;
+      return "page";
+    }
+    function badgeLabel(type){
+      const t = String(type || "page").toLowerCase();
+      if (t === "resource") return "Resource";
+      if (t === "topic") return "Topic";
+      if (t === "game") return "Game";
+      if (t === "tool") return "Tool";
+      if (t === "store") return "Store";
+      return "Page";
     }
 
-    function scoreMatch(rec, q){
-      const s = normalizeText(q);
-      if (!s) return 0;
+    function highlight(text, queryTokens){
+      const safe = escapeHtml(text || "");
+      const toks = Array.from(queryTokens || []).filter(t => t.length >= 3).slice(0, 14);
+      if (!toks.length) return safe;
+      toks.sort((a,b) => b.length - a.length);
+      const pattern = toks.map(t => t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|");
+      if (!pattern) return safe;
+      const re = new RegExp(`\\b(${pattern})\\b`, "gi");
+      return safe.replace(re, `<mark class="hl">$1</mark>`);
+    }
 
-      const title = normalizeText(rec.title);
-      const desc  = normalizeText(rec.description);
-      const url   = normalizeText(rec.url);
-      const tags  = normalizeText(Array.isArray(rec.tags) ? rec.tags.join(" ") : "");
-      const type  = normalizeText(rec.type);
+    function pickSubject(rec){
+      const s = (rec.subject || "").trim();
+      if (s) return s;
+      const tags = Array.isArray(rec.tags) ? rec.tags : [];
+      const subj = tags.find(t => String(t).toLowerCase().startsWith("subject:"));
+      if (subj) return String(subj).split(":")[1] || "";
+      return "";
+    }
 
-      // Strong boosts
-      if (title === s) return 260;
-      if (title.includes(s)) return 190;
+    function prettySubjectLabel(s){
+      if (!s) return "";
+      const cleaned = String(s).replace(/[_-]+/g, " ").trim();
+      return cleaned.replace(/\b\w/g, c => c.toUpperCase());
+    }
 
-      // Medium boosts
-      if (tags.includes(s)) return 150;
-      if (desc.includes(s)) return 110;
-      if (url.includes(s)) return 90;
+    function getGradeKeyFromTags(tagsArr){
+      const tags = Array.isArray(tagsArr) ? tagsArr : [];
+      const g = tags.map(t => String(t).toLowerCase()).find(t => t.startsWith("grade:"));
+      if (!g) return "";
+      return g.split(":")[1] || "";
+    }
 
-      // Token matching (now hyphen-safe)
-      const tokens = s.split(" ").filter(Boolean);
-      let hits = 0;
-      for (const t of tokens){
-        if (t.length < 2) continue;
-        if (title.includes(t)) hits += 4;
-        else if (tags.includes(t)) hits += 3;
-        else if (desc.includes(t)) hits += 2;
-        else if (url.includes(t)) hits += 1;
+    function getFormatFromTags(tagsArr){
+      // looks for format:* tags (format:dbq, format:worksheet, etc.)
+      const tags = Array.isArray(tagsArr) ? tagsArr : [];
+      const f = tags.map(t => String(t).toLowerCase()).find(t => t.startsWith("format:"));
+      if (!f) return "";
+      return f.split(":")[1] || "";
+    }
+
+    function titleCaseWords(s){
+      const cleaned = String(s || "").replace(/[_-]+/g, " ").trim();
+      if (!cleaned) return "";
+      return cleaned.replace(/\b\w/g, c => c.toUpperCase());
+    }
+
+    function buildAutoSnippet(rec){
+      // If description exists, use it.
+      const d = String(rec.description || "").trim();
+      if (d) return d;
+
+      // Otherwise build from tags/fields:
+      const type = badgeLabel(rec.type || "page");
+      const subject = rec._subjectLabel || "";
+      const gradeKey = rec._gradeKey || "";
+      const formatKey = getFormatFromTags(rec.tags);
+
+      const parts = [];
+      parts.push(type);
+
+      if (subject) parts.push(subject);
+      if (gradeKey) parts.push(`Grades ${gradeKey.toUpperCase().replace("K","K")}`);
+      if (formatKey) parts.push(titleCaseWords(formatKey));
+
+      // If still short, fall back to URL hint
+      if (parts.length <= 1 && rec.url) parts.push("Click to open");
+      return parts.join(" • ");
+    }
+
+    // ---------- query expansion ----------
+    function expandQuery(normQ){
+      const variants = new Set();
+      const tokens = new Set();
+      if (!normQ) return { variants: [], tokens };
+
+      variants.add(normQ);
+      normQ.split(" ").filter(Boolean).forEach(tok => tokens.add(tok));
+
+      // phrase expansions
+      for (const key of Object.keys(SYNONYMS)){
+        const k = normalizeText(key);
+        if (!k) continue;
+        if ((" " + normQ + " ").includes(" " + k + " ")){
+          (SYNONYMS[key] || []).forEach(v => {
+            const nv = normalizeText(v);
+            if (nv) variants.add(nv);
+          });
+        }
       }
 
-      let score = hits ? (30 + hits * 14) : 0;
-
-      // slight type prioritization but still mixed
-      if (score > 0){
-        if (type === "resource") score += 10;
-        if (type === "topic") score += 8;
-        if (type === "game") score += 6;
-        if (type === "tool") score += 4;
-        if (type === "store") score += 2;
+      // token expansions
+      for (const tok of Array.from(tokens)){
+        const syn = SYNONYMS[tok] || SYNONYMS[tok.toLowerCase()];
+        if (syn && syn.length){
+          syn.forEach(v => {
+            const nv = normalizeText(v);
+            if (nv){
+              variants.add(nv);
+              nv.split(" ").forEach(t => { if (t) tokens.add(t); });
+            }
+          });
+        }
       }
 
+      // plural -> singular (light)
+      Array.from(tokens).forEach(t => {
+        if (t.endsWith("s") && t.length > 3) tokens.add(t.slice(0, -1));
+      });
+
+      return { variants: Array.from(variants), tokens };
+    }
+
+    // ---------- scoring ----------
+    function scoreRecord(rec, qInfo){
+      const qNorm = qInfo.norm;
+      if (!qNorm) return 0;
+
+      const type = String(rec.type || "page").toLowerCase();
+      const boost = TYPE_BOOST[type] || 0;
+
+      const title = rec._titleNorm || "";
+      const desc  = rec._descNorm  || "";
+      const url   = rec._urlNorm   || "";
+      const tags  = rec._tagsNorm  || "";
+      const subj  = rec._subjectNorm || "";
+
+      let score = 0;
+
+      // Strong phrase hits
+      if (title === qNorm) score += 1200;
+      if (title.includes(qNorm)) score += 650;
+      if (tags.includes(qNorm)) score += 320;
+      if (subj.includes(qNorm)) score += 240;
+      if (desc.includes(qNorm)) score += 260;
+      if (url.includes(qNorm))  score += 180;
+
+      // Variant phrase hits
+      for (const v of qInfo.variants){
+        if (!v || v === qNorm) continue;
+        if (title.includes(v)) score += 260;
+        if (tags.includes(v))  score += 140;
+        if (desc.includes(v))  score += 120;
+        if (url.includes(v))   score += 90;
+      }
+
+      // Token hits
+      let hitsTitle = 0, hitsDesc = 0, hitsTags = 0, hitsUrl = 0, hitsSubj = 0;
+      for (const tok of qInfo.tokens){
+        if (!tok || tok.length < 2) continue;
+        if (title.includes(tok)) hitsTitle++;
+        if (desc.includes(tok)) hitsDesc++;
+        if (tags.includes(tok)) hitsTags++;
+        if (url.includes(tok)) hitsUrl++;
+        if (subj.includes(tok)) hitsSubj++;
+      }
+      score += hitsTitle * 70;
+      score += hitsTags  * 55;
+      score += hitsSubj  * 45;
+      score += hitsDesc  * 30;
+      score += hitsUrl   * 15;
+
+      // “All tokens present” bonus
+      const tokenCount = Array.from(qInfo.tokens).filter(t => t.length >= 2).length;
+      if (tokenCount >= 2){
+        const allPresent = Array.from(qInfo.tokens).every(t => (title.includes(t) || desc.includes(t) || tags.includes(t)));
+        if (allPresent) score += 180;
+      }
+
+      // Small internal boost
+      const isExternal = /^https?:\/\//i.test(String(rec.url || ""));
+      if (!isExternal) score += 30;
+
+      score += boost;
       return score;
     }
 
-    function badge(type){
-      const t = (type || "page").toLowerCase();
-      const label = t.charAt(0).toUpperCase() + t.slice(1);
-      return `<span class="badge">${label}</span>`;
+    function computeTypeCounts(list){
+      const counts = { all: list.length, resource:0, game:0, tool:0, topic:0, store:0 };
+      for (const r of list){
+        const t = String(r.type || "page").toLowerCase();
+        if (counts[t] !== undefined) counts[t]++;
+      }
+      return counts;
+    }
+    function setChipCounts(counts){
+      const types = ["all","resource","game","tool","topic","store"];
+      for (const t of types){
+        const el = document.querySelector(`[data-count="${t}"]`);
+        if (!el) continue;
+        el.textContent = String(counts[t] || 0);
+      }
+    }
+    function setActiveChip(type){
+      document.querySelectorAll(".chip").forEach(btn => {
+        btn.classList.toggle("is-active", btn.dataset.type === type);
+      });
     }
 
-    function renderResults(items, q){
-      const resultsEl = document.getElementById("results");
-      const statusEl = document.getElementById("status");
+    // ---------- rendering ----------
+    function renderListInto(el, list, qInfo){
+      el.innerHTML = list.map(r => {
+        const type = String(r.type || "page").toLowerCase();
+        const badge = badgeLabel(type);
+        const badgeCls = badgeClass(type);
 
-      if (!q){
-        resultsEl.innerHTML = "";
-        statusEl.textContent = "Type a keyword and press Search.";
-        return;
-      }
+        const subjLabel = r._subjectLabel || "";
+        const snippet = buildAutoSnippet(r);
 
-      if (!items.length){
-        resultsEl.innerHTML = "";
-        statusEl.textContent = `No results for “${q}”. Try a different keyword.`;
-        return;
-      }
+        const titleHtml = highlight(r.title || "", qInfo.tokens);
+        const snippetHtml = highlight(snippet, qInfo.tokens);
 
-      statusEl.textContent = `Showing ${items.length} result${items.length === 1 ? "" : "s"} for “${q}”.`;
+        const metaBits = [];
+        if (subjLabel) metaBits.push(`<span>Subject: ${escapeHtml(subjLabel)}</span>`);
+        if (r._gradeKey) metaBits.push(`<span>Grade: ${escapeHtml(r._gradeKey)}</span>`);
+        if (r.source) metaBits.push(`<span>Source: ${escapeHtml(r.source)}</span>`);
 
-      resultsEl.innerHTML = items.map(it => {
-        const desc = it.description ? it.description : "Click to open";
         return `
-          <a class="result" href="${it.url}">
-            <h2>${it.title} ${badge(it.type)}</h2>
-            <p>${desc}</p>
-            <div class="url">${it.url}</div>
+          <a class="result" href="${escapeHtml(r.url)}">
+            <div class="result-top">
+              <div style="min-width:0;">
+                <h3>${titleHtml}</h3>
+                <p>${snippetHtml}</p>
+                <div class="meta2">
+                  <span class="url">${escapeHtml(r.url)}</span>
+                  ${metaBits.length ? `<span>•</span>` : ``}
+                  ${metaBits.join(`<span>•</span>`)}
+                </div>
+              </div>
+              <div class="badge ${badgeCls}" aria-label="${escapeHtml(badge)}">${escapeHtml(badge)}</div>
+            </div>
           </a>
         `;
       }).join("");
     }
 
-    async function loadIndex(){
-      try{
-        const cached = sessionStorage.getItem(CACHE_KEY);
-        if (cached){
-          const parsed = JSON.parse(cached);
-          if (Array.isArray(parsed) && parsed.length) return parsed;
-        }
-      } catch(e){}
+    function renderEmpty(q){
+      const empty = document.getElementById("empty");
+      const bestWrap = document.getElementById("best-wrap");
+      const allWrap = document.getElementById("all-wrap");
 
-      const r = await fetch("/search-index.json", { cache: "no-store" });
-      if (!r.ok) throw new Error("Search index missing. Expected /public/search-index.json to exist.");
-      const data = await r.json();
+      bestWrap.style.display = "none";
+      allWrap.style.display = "none";
+      empty.style.display = "block";
 
-      try{ sessionStorage.setItem(CACHE_KEY, JSON.stringify(data)); } catch(e){}
-      return data;
+      empty.innerHTML = `
+        <div><strong>No results</strong> for <strong>“${escapeHtml(q)}”</strong>.</div>
+        <div style="margin-top:8px;">Try:</div>
+        <ul style="margin:8px 0 0 18px;">
+          <li>Spelling variants (ex: <strong>WWII</strong>, <strong>WW2</strong>, <strong>World War II</strong>)</li>
+          <li>More specific terms (<strong>DBQ</strong>, <strong>primary source</strong>, <strong>review game</strong>)</li>
+          <li>Changing Subject / Grade filters</li>
+        </ul>
+      `;
     }
 
+    // Pinning logic:
+    // - only pin from currently-filtered results
+    // - prioritize topic + strong score
+    // - then resource + strong score
+    function pickBestMatches(filtered, qInfo){
+      const qNorm = qInfo.norm;
+      if (!qNorm) return [];
+
+      // “Strong match” threshold (tunable)
+      const STRONG = 900;
+
+      const strong = filtered.filter(r => r._score >= STRONG);
+
+      // If none are "strong", still pin the best topic/resource if score is decent
+      const decent = filtered.filter(r => r._score >= 650);
+
+      const pool = strong.length ? strong : decent;
+
+      const isTopicStrong = (r) => String(r.type||"").toLowerCase() === "topic";
+      const isResourceStrong = (r) => String(r.type||"").toLowerCase() === "resource";
+
+      // Sort within pool for pin candidates:
+      // 1) Topic first
+      // 2) Then Resource
+      // 3) Then score desc
+      // 4) Then title
+      const candidates = pool.slice().sort((a,b) => {
+        const at = String(a.type||"page").toLowerCase();
+        const bt = String(b.type||"page").toLowerCase();
+
+        const aPri = at === "topic" ? 3 : at === "resource" ? 2 : 1;
+        const bPri = bt === "topic" ? 3 : bt === "resource" ? 2 : 1;
+
+        if (bPri !== aPri) return bPri - aPri;
+        if (b._score !== a._score) return b._score - a._score;
+        return String(a.title||"").localeCompare(String(b.title||""));
+      });
+
+      // pick up to 3
+      const pinned = candidates.slice(0, 3);
+
+      // only show pin section if it's actually meaningful:
+      // - at least one topic/resource pinned OR a truly strong match exists
+      const meaningful = pinned.some(r => ["topic","resource"].includes(String(r.type||"").toLowerCase())) || strong.length > 0;
+      return meaningful ? pinned : [];
+    }
+
+    // ---------- main ----------
     (async function(){
       const input = document.getElementById("q");
       const form = document.getElementById("search-form");
       const statusEl = document.getElementById("status");
 
-      const q0 = getQueryParam("q");
-      if (q0) input.value = q0;
+      const subjectSel = document.getElementById("subject");
+      const gradeSel = document.getElementById("grade");
+      const sortSel = document.getElementById("sort");
 
-      statusEl.textContent = "Loading search index…";
+      const bestWrap = document.getElementById("best-wrap");
+      const bestEl = document.getElementById("best");
+      const allWrap = document.getElementById("all-wrap");
+      const resultsEl = document.getElementById("results");
+      const emptyEl = document.getElementById("empty");
 
-      let index = [];
+      let activeType = "all";
+      let prepared = [];
+
+      // load index
       try{
-        index = await loadIndex();
-        statusEl.textContent = "Type a keyword and press Search.";
-      } catch(e){
-        statusEl.textContent = String(e.message || e);
+        statusEl.textContent = "Loading search index…";
+        const r = await fetch(INDEX_URL, { cache: "no-store" });
+        if (!r.ok) throw new Error(`Failed to load ${INDEX_URL} (${r.status})`);
+        const all = await r.json();
+        if (!Array.isArray(all)) throw new Error("search-index.json must be an array.");
+
+        prepared = all.map(rec => {
+          const subjectRaw = pickSubject(rec);
+          const subjectLabel = subjectRaw ? prettySubjectLabel(subjectRaw) : "";
+          const gradeKey = getGradeKeyFromTags(rec.tags);
+
+          return {
+            ...rec,
+            _titleNorm: normalizeText(rec.title || ""),
+            _descNorm: normalizeText(rec.description || ""),
+            _urlNorm: normalizeText(rec.url || ""),
+            _tagsNorm: normalizeText((Array.isArray(rec.tags) ? rec.tags.join(" ") : "")),
+            _subjectLabel: subjectLabel,
+            _subjectKey: subjectLabel ? slugify(subjectLabel) : "",
+            _subjectNorm: normalizeText(subjectLabel || subjectRaw || ""),
+            _gradeKey: gradeKey
+          };
+        });
+
+        // Build Subject dropdown from index
+        const subjSet = new Map();
+        for (const rec of prepared){
+          if (!rec._subjectLabel) continue;
+          subjSet.set(rec._subjectLabel, (subjSet.get(rec._subjectLabel) || 0) + 1);
+        }
+        const subjects = Array.from(subjSet.entries())
+          .sort((a,b) => b[1]-a[1])
+          .map(x => x[0]);
+
+        for (const s of subjects){
+          const opt = document.createElement("option");
+          opt.value = slugify(s);
+          opt.textContent = s;
+          subjectSel.appendChild(opt);
+        }
+
+        // initial counts in browse mode
+        setChipCounts(computeTypeCounts(prepared));
+
+        statusEl.textContent = "Ready. Search or use filters.";
+      } catch (e){
+        statusEl.textContent = "Search failed to load.";
+        emptyEl.style.display = "block";
+        emptyEl.textContent = String(e?.message || e);
         return;
       }
 
-      function runSearch(q){
-        const scored = index
-          .map(it => ({ ...it, score: scoreMatch(it, q) }))
-          .filter(it => it.score > 0)
-          .sort((a,b) => b.score - a.score)
-          .slice(0, 50);
+      const q0 = getQueryParam("q");
+      if (q0) input.value = q0;
 
-        renderResults(scored, q);
+      function applyFilters(list){
+        const subjKey = subjectSel.value || "";
+        const gradeKey = gradeSel.value || "";
+
+        let out = list;
+
+        if (subjKey) out = out.filter(r => (r._subjectKey || "") === subjKey);
+        if (gradeKey) out = out.filter(r => (r._gradeKey || "") === gradeKey);
+
+        if (activeType && activeType !== "all"){
+          out = out.filter(r => String(r.type || "page").toLowerCase() === activeType);
+        }
+
+        return out;
       }
 
-      if (q0) runSearch(q0);
+      function runSearch(rawQ){
+        const q = String(rawQ || "").trim();
+        setQueryParam("q", q);
 
+        // browse mode
+        if (!q){
+          emptyEl.style.display = "none";
+          bestWrap.style.display = "none";
+          allWrap.style.display = "none";
+          statusEl.textContent = "Browse mode — use filters or type a keyword to search.";
+
+          // Update chip counts based on subject/grade filters only (not type chip)
+          const base = (function(){
+            const subjKey = subjectSel.value || "";
+            const gradeKey = gradeSel.value || "";
+            let out = prepared;
+            if (subjKey) out = out.filter(r => (r._subjectKey||"") === subjKey);
+            if (gradeKey) out = out.filter(r => (r._gradeKey||"") === gradeKey);
+            return out;
+          })();
+
+          setChipCounts(computeTypeCounts(base));
+          return;
+        }
+
+        const qNorm = normalizeText(q);
+        const expanded = expandQuery(qNorm);
+        const qInfo = { raw:q, norm:qNorm, variants: expanded.variants, tokens: expanded.tokens };
+
+        // score everything
+        const scored = prepared.map(r => ({ ...r, _score: scoreRecord(r, qInfo) }))
+          .filter(r => r._score > 0);
+
+        // counts should ignore type chip but respect subject/grade filters
+        const baseForCounts = (function(){
+          const subjKey = subjectSel.value || "";
+          const gradeKey = gradeSel.value || "";
+          let out = scored;
+          if (subjKey) out = out.filter(r => (r._subjectKey||"") === subjKey);
+          if (gradeKey) out = out.filter(r => (r._gradeKey||"") === gradeKey);
+          return out;
+        })();
+        setChipCounts(computeTypeCounts(baseForCounts));
+
+        // apply all filters (including active type)
+        let filtered = applyFilters(scored);
+
+        // sort
+        const sortMode = sortSel.value || "relevance";
+        if (sortMode === "az"){
+          filtered.sort((a,b) => String(a.title||"").localeCompare(String(b.title||"")));
+        } else {
+          filtered.sort((a,b) => {
+            if (b._score !== a._score) return b._score - a._score;
+            const ta = TYPE_BOOST[String(a.type||"page").toLowerCase()] || 0;
+            const tb = TYPE_BOOST[String(b.type||"page").toLowerCase()] || 0;
+            if (tb !== ta) return tb - ta;
+            return String(a.title||"").localeCompare(String(b.title||""));
+          });
+        }
+
+        const top = filtered.slice(0, 80);
+
+        if (!top.length){
+          statusEl.textContent = `No results for “${q}”.`;
+          renderEmpty(q);
+          return;
+        }
+
+        emptyEl.style.display = "none";
+        statusEl.textContent = `Showing ${top.length} result${top.length===1?"":"s"} for “${q}”.`;
+
+        // Pick pinned best matches from the *already filtered* list
+        const pinned = pickBestMatches(top, qInfo);
+
+        // Render pinned + the rest (excluding pinned duplicates)
+        if (pinned.length){
+          bestWrap.style.display = "block";
+          renderListInto(bestEl, pinned, qInfo);
+        } else {
+          bestWrap.style.display = "none";
+          bestEl.innerHTML = "";
+        }
+
+        const pinnedKeys = new Set(pinned.map(r => String(r.url||"") + "||" + String(r.title||"")));
+        const rest = top.filter(r => !pinnedKeys.has(String(r.url||"") + "||" + String(r.title||"")))
+                        .slice(0, 60);
+
+        allWrap.style.display = "block";
+        renderListInto(resultsEl, rest, qInfo);
+      }
+
+      // chips
+      document.querySelectorAll(".chip").forEach(btn => {
+        btn.addEventListener("click", () => {
+          activeType = btn.dataset.type || "all";
+          setActiveChip(activeType);
+          runSearch(input.value);
+        });
+      });
+
+      // filters
+      subjectSel.addEventListener("change", () => runSearch(input.value));
+      gradeSel.addEventListener("change", () => runSearch(input.value));
+      sortSel.addEventListener("change", () => runSearch(input.value));
+
+      // input debounce
+      let t = null;
+      input.addEventListener("input", () => {
+        clearTimeout(t);
+        t = setTimeout(() => runSearch(input.value), 170);
+      });
+
+      // submit
       form.addEventListener("submit", (e) => {
         e.preventDefault();
-        const q = input.value.trim();
-        setQueryParam("q", q);
-        runSearch(q);
+        runSearch(input.value);
       });
+
+      // initial run
+      runSearch(q0 || "");
     })();
   </script>
 </body>
