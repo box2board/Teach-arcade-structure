@@ -117,6 +117,7 @@
             Games <span class="caret">▾</span>
           </a>
           <ul class="dropdown-content" role="menu">
+            <li><a href="/brain-arcade/">Brain Arcade</a></li>
             <li><a href="/games/arcade-games/index.html">Arcade Games</a></li>
             <li><a href="/games/escape-rooms/index.html">Escape Rooms</a></li>
             <li><a href="/games/choose-your-path/index.html">Choose Your Path</a></li>
@@ -166,7 +167,6 @@
       box-shadow:0 12px 28px rgba(0,0,0,.35);
     }
 
-    /* Desktop hover open */
     @media (min-width: 881px) {
       .dropdown:hover > .dropdown-content { display:block; top:100%; left:0; }
       .dropdown-sub:hover > .dropdown-submenu { display:block; top:0; left:100%; }
@@ -175,9 +175,8 @@
     .dropdown-content li, .dropdown-submenu li { padding:6px 14px; }
     .dropdown-content a, .dropdown-submenu a { width:100%; }
 
-    /* Hamburger */
     .hamburger {
-      display:none; /* ✅ stays hidden on desktop */
+      display:none;
       background:transparent;
       border:0;
       width:44px;
@@ -185,14 +184,10 @@
       padding:0;
       margin:0;
       cursor:pointer;
-
-      /* ✅ safe layout even if other CSS hits buttons */
       appearance:none;
       -webkit-appearance:none;
       align-self:center;
       flex:0 0 auto;
-
-      /* ✅ flex properties WITHOUT forcing display on desktop */
       flex-direction:column;
       justify-content:center;
       align-items:center;
@@ -203,8 +198,6 @@
       display:block;
       width:26px;
       height:2px;
-      margin:0;
-      padding:0;
       background:#e5e7eb;
       border-radius:2px;
       transition:transform .2s, opacity .2s;
@@ -214,9 +207,8 @@
     .hamburger.is-open span:nth-child(2){ opacity:0; }
     .hamburger.is-open span:nth-child(3){ transform:translateY(-8px) rotate(-45deg); }
 
-    /* Mobile menu layout + tap-to-open dropdowns */
     @media (max-width: 880px) {
-      .hamburger { display:flex; } /* ✅ ONLY show on mobile */
+      .hamburger { display:flex; }
 
       .main-nav {
         position:absolute; left:0; right:0; top:60px;
@@ -258,7 +250,6 @@
     const burger = mount.querySelector('.hamburger');
     const nav = mount.querySelector('.main-nav');
 
-    // Mobile toggle (main menu)
     if (burger && nav) {
       burger.addEventListener('click', () => {
         const open = nav.classList.toggle('open');
@@ -267,7 +258,6 @@
       });
     }
 
-    // Mobile toggle (dropdowns)
     const isMobile = () => window.matchMedia('(max-width: 880px)').matches;
 
     mount.querySelectorAll('.dropdown > a.dropdown-toggle').forEach(a => {
@@ -290,7 +280,6 @@
       });
     });
 
-    // Highlight active link (basic)
     const here = location.pathname.replace(/\/index\.html?$/,'/') || '/';
     mount.querySelectorAll('.main-nav a[href]').forEach(a => {
       const href = (a.getAttribute('href') || '').replace(/\/index\.html?$/,'/');
