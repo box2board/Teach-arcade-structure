@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Math Track Racer · Teach Arcade</title>
   <meta name="description" content="A racing-style math review game: steer into the correct answer on the track to score points." />
+  <link rel="icon" href="/assets/images/teach-arcade-logo.png" />
 
   <style>
     :root{
@@ -27,281 +28,142 @@
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Nunito, Arial, sans-serif;
       color:var(--text);
       background: radial-gradient(circle at top, #0f172a 0%, #050914 55%, #020617 100%);
-      overflow-x:hidden;
+      overflow:hidden;
     }
     .wrap{
       max-width:1100px;
       margin:0 auto;
-      padding:16px 14px 40px;
+      padding:14px 14px 40px;
     }
     .topbar{
       display:flex;
       gap:12px;
       flex-wrap:wrap;
-      align-items:stretch;
-      justify-content:space-between;
-      margin-bottom:12px;
-    }
-    .panel{
-      background: rgba(255,255,255,.06);
-      border:1px solid rgba(226,232,240,.12);
-      border-radius:14px;
-      padding:12px 12px;
-      box-shadow: 0 8px 30px rgba(0,0,0,.25);
-      backdrop-filter: blur(6px);
-    }
-    .left{
-      flex:1;
-      min-width:260px;
-      display:flex;
-      flex-direction:column;
-      gap:8px;
-    }
-    .title{
-      display:flex;
-      align-items:baseline;
-      justify-content:space-between;
-      gap:10px;
-    }
-    .title h1{
-      margin:0;
-      font-size:18px;
-      letter-spacing:.2px;
-    }
-    .subtitle{
-      margin:0;
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.4;
-    }
-    .stats{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top:2px;
-    }
-    .pill{
-      background: rgba(2,6,23,.55);
-      border:1px solid rgba(148,163,184,.18);
-      border-radius:999px;
-      padding:8px 10px;
-      font-size:12px;
-      font-weight:700;
-      color:var(--text);
-    }
-    .pill span{color:var(--muted); font-weight:800}
-    .right{
-      width:320px;
-      max-width:100%;
-    }
-    .controls{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
       align-items:center;
       justify-content:space-between;
+      margin-bottom:10px;
     }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:800;
+      letter-spacing:.2px;
+    }
+    .brand img{width:34px;height:34px;border-radius:8px}
+    .hud{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+    }
+    .pill{
+      background: rgba(15,23,42,.75);
+      border:1px solid rgba(148,163,184,.18);
+      padding:8px 10px;
+      border-radius:999px;
+      font-size:13px;
+      color:var(--muted);
+      display:flex; gap:8px; align-items:center;
+    }
+    .pill b{color:var(--text)}
     .btn{
-      appearance:none;
-      border:1px solid rgba(148,163,184,.22);
-      background: rgba(15,23,42,.9);
+      border:1px solid rgba(148,163,184,.25);
+      background: rgba(15,23,42,.75);
       color:var(--text);
       padding:10px 12px;
       border-radius:12px;
       font-weight:800;
       cursor:pointer;
-      transition: transform .12s ease, background .12s ease, border-color .12s ease;
-      user-select:none;
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
     }
-    .btn:hover{transform: translateY(-1px); border-color: rgba(148,163,184,.4)}
     .btn.primary{
-      background: rgba(37,99,235,.92);
-      border-color: rgba(37,99,235,.9);
-      box-shadow: 0 10px 24px rgba(37,99,235,.25);
+      background: var(--accent);
+      border-color: var(--accent);
     }
-    .btn.primary:hover{background: rgba(37,99,235,1)}
-    .row{
-      display:flex;
-      gap:10px;
-      margin-top:10px;
-      flex-wrap:wrap;
-    }
-    label{
-      font-size:12px;
-      font-weight:900;
-      color:var(--muted);
-      display:block;
-      margin-bottom:6px;
-    }
-    select{
-      width:100%;
-      border-radius:12px;
-      padding:10px 12px;
-      border:1px solid rgba(148,163,184,.22);
-      background: rgba(2,6,23,.55);
-      color:var(--text);
-      font-weight:800;
-      outline:none;
-    }
-    select:focus{
-      border-color: rgba(37,99,235,.9);
-      box-shadow: 0 0 0 4px rgba(37,99,235,.15);
-    }
-
-    .gameShell{
-      margin-top:12px;
+    .btn:active{transform: translateY(1px)}
+    .layout{
       display:grid;
       grid-template-columns: 1fr;
       gap:12px;
     }
-
-    .canvasWrap{
+    .stage{
       position:relative;
-      background: rgba(255,255,255,.05);
-      border:1px solid rgba(226,232,240,.14);
+      background: rgba(15,23,42,.55);
+      border:1px solid rgba(148,163,184,.14);
       border-radius:16px;
       overflow:hidden;
-      box-shadow: 0 10px 34px rgba(0,0,0,.30);
+      box-shadow:0 12px 40px rgba(0,0,0,.25);
     }
-
-    canvas{
-      display:block;
+    canvas{display:block;width:100%;height:auto}
+    .overlay{
+      position:absolute; inset:0;
+      display:flex; align-items:center; justify-content:center;
+      background: rgba(2,6,23,.65);
+      backdrop-filter: blur(4px);
+      padding:16px;
+    }
+    .modal{
+      width:min(760px, 96vw);
+      background: rgba(15,23,42,.92);
+      border:1px solid rgba(148,163,184,.18);
+      border-radius:16px;
+      padding:16px;
+      box-shadow:0 18px 60px rgba(0,0,0,.35);
+    }
+    .modal h1{margin:0 0 8px; font-size:22px}
+    .modal p{margin:0 0 14px; color:var(--muted); line-height:1.5}
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+    @media (max-width:720px){
+      .grid{grid-template-columns:1fr}
+    }
+    .card{
+      background: rgba(2,6,23,.55);
+      border:1px solid rgba(148,163,184,.16);
+      border-radius:14px;
+      padding:12px;
+    }
+    .card h2{margin:0 0 8px; font-size:14px; letter-spacing:.2px; color:var(--text)}
+    .row{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+    .label{font-size:12px; color:var(--muted)}
+    select, input[type="range"]{
       width:100%;
-      height:auto;
-      background: linear-gradient(180deg, rgba(2,6,23,.95), rgba(2,6,23,.65));
-    }
-
-    .hudOverlay{
-      position:absolute;
-      left:12px; right:12px; top:12px;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      justify-content:space-between;
-      pointer-events:none;
-    }
-    .hudCard{
-      pointer-events:none;
-      background: rgba(2,6,23,.62);
+      padding:10px;
+      border-radius:12px;
       border:1px solid rgba(148,163,184,.18);
-      border-radius:14px;
-      padding:10px 12px;
-      backdrop-filter: blur(6px);
-      max-width: 820px;
-      flex: 1;
-      min-width: 260px;
-    }
-    .qTitle{
-      margin:0 0 4px;
-      font-size:12px;
-      color:var(--muted);
-      font-weight:900;
-      letter-spacing:.3px;
-      text-transform:uppercase;
-    }
-    .qText{
-      margin:0;
-      font-size:18px;
-      font-weight:1000;
-      letter-spacing:.2px;
-      line-height:1.25;
-    }
-    .feedback{
-      margin-top:6px;
-      font-size:13px;
-      font-weight:900;
-    }
-    .feedback.good{color: var(--good);}
-    .feedback.bad{color: var(--bad);}
-    .feedback.warn{color: var(--warn);}
-
-    .mini{
-      pointer-events:none;
-      width: 250px;
-      max-width: 100%;
-      background: rgba(2,6,23,.62);
-      border:1px solid rgba(148,163,184,.18);
-      border-radius:14px;
-      padding:10px 12px;
-      backdrop-filter: blur(6px);
-    }
-    .mini h3{
-      margin:0 0 6px;
-      font-size:12px;
-      font-weight:1000;
-      color:var(--muted);
-      text-transform:uppercase;
-      letter-spacing:.3px;
-    }
-    .mini p{
-      margin:0;
-      font-size:13px;
+      background: rgba(15,23,42,.85);
       color:var(--text);
-      font-weight:800;
+      font-weight:700;
+      outline:none;
+    }
+    .hint{
+      margin-top:10px;
+      font-size:13px;
+      color:var(--muted);
       line-height:1.5;
     }
-
-    /* Mobile touch controls */
-    .touch{
+    .kbd{font-weight:900; padding:2px 8px; border-radius:10px; border:1px solid rgba(148,163,184,.25); background: rgba(2,6,23,.5); color:var(--text)}
+    .touchbar{
       position:absolute;
-      left:0; right:0; bottom:0;
-      padding:12px;
+      left:10px; right:10px; bottom:10px;
       display:none;
-      gap:12px;
+      gap:10px;
       justify-content:space-between;
-      align-items:flex-end;
+      z-index:5;
       pointer-events:none;
     }
-    .pad{
+    .touchbar .touchbtn{
       pointer-events:auto;
-      display:flex;
-      gap:10px;
-      align-items:flex-end;
-    }
-    .tbtn{
-      width:64px;
-      height:64px;
-      border-radius:16px;
-      border:1px solid rgba(148,163,184,.25);
-      background: rgba(2,6,23,.60);
-      color:var(--text);
-      font-weight:1000;
-      font-size:18px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
+      flex:1;
+      background: rgba(15,23,42,.78);
+      border:1px solid rgba(148,163,184,.18);
+      border-radius:14px;
+      padding:14px 10px;
+      font-weight:900;
+      text-align:center;
       user-select:none;
-      touch-action:none;
-      box-shadow: 0 8px 26px rgba(0,0,0,.25);
     }
-    .tbtn:active{
-      transform: translateY(1px);
-      border-color: rgba(37,99,235,.7);
-    }
-    .tbtn.big{
-      width:84px;
-      height:84px;
-      border-radius:20px;
-      background: rgba(37,99,235,.75);
-      border-color: rgba(37,99,235,.85);
-    }
-
-    .help{
-      margin-top:10px;
-      color:var(--muted);
-      font-size:12px;
-      line-height:1.6;
-    }
-
-    @media (max-width: 820px){
-      .right{width:100%}
-      .touch{display:flex;}
-      .qText{font-size:16px;}
+    .touchbar .touchbtn:active{transform: translateY(1px)}
+    @media (max-width:860px){
+      .touchbar{display:flex;}
     }
   </style>
 </head>
@@ -309,95 +171,85 @@
 <body>
   <div class="wrap">
     <div class="topbar">
-      <div class="panel left">
-        <div class="title">
-          <h1>Math Track Racer</h1>
-          <span class="pill"><span>Teach Arcade</span> · Beta</span>
-        </div>
-        <p class="subtitle">Steer into the correct answer gate on the track to score. Wrong gates cost time.</p>
-        <div class="stats">
-          <div class="pill"><span>Score:</span> <b id="uiScore">0</b></div>
-          <div class="pill"><span>Streak:</span> <b id="uiStreak">0</b></div>
-          <div class="pill"><span>Question:</span> <b id="uiQ">1</b></div>
-          <div class="pill"><span>Time:</span> <b id="uiTime">60</b>s</div>
-        </div>
-        <div class="help">
-          Controls: <b>← →</b> steer · <b>↑</b> boost · <b>Space</b> pause · On mobile use the buttons.
+      <div class="brand">
+        <img src="/assets/images/teach-arcade-logo.png" alt="Teach Arcade" />
+        <div>
+          <div style="font-size:14px;color:var(--muted);font-weight:800;letter-spacing:.3px">Teach Arcade</div>
+          <div style="font-size:18px;line-height:1.1;font-weight:900">Math Track Racer</div>
         </div>
       </div>
 
-      <div class="panel right">
-        <div class="controls">
-          <button class="btn primary" id="btnStart">Start</button>
-          <button class="btn" id="btnRestart">Restart</button>
-          <button class="btn secondary" id="btnHome" onclick="location.href='/'">Home</button>
-        </div>
-
-        <div class="row">
-          <div style="flex:1; min-width:140px;">
-            <label for="mode">Mode</label>
-            <select id="mode">
-              <option value="addsub">Add/Sub</option>
-              <option value="mult">Multiplication</option>
-              <option value="div">Division</option>
-              <option value="mixed" selected>Mixed</option>
-            </select>
-          </div>
-          <div style="flex:1; min-width:140px;">
-            <label for="difficulty">Difficulty</label>
-            <select id="difficulty">
-              <option value="easy">Easy</option>
-              <option value="med" selected>Medium</option>
-              <option value="hard">Hard</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="row">
-          <div style="flex:1; min-width:140px;">
-            <label for="choices">Choices</label>
-            <select id="choices">
-              <option value="3">3</option>
-              <option value="4" selected>4</option>
-              <option value="5">5</option>
-            </select>
-          </div>
-          <div style="flex:1; min-width:140px;">
-            <label for="roundTime">Round Time</label>
-            <select id="roundTime">
-              <option value="45">45s</option>
-              <option value="60" selected>60s</option>
-              <option value="90">90s</option>
-            </select>
-          </div>
-        </div>
+      <div class="hud">
+        <div class="pill"><span>Mode:</span> <b id="hudMode">Mixed</b></div>
+        <div class="pill"><span>Score:</span> <b id="hudScore">0</b></div>
+        <div class="pill"><span>Streak:</span> <b id="hudStreak">0</b></div>
+        <div class="pill"><span>Time:</span> <b id="hudTime">60</b>s</div>
+        <button class="btn" id="btnPause">Pause</button>
+        <button class="btn" id="btnRestart">Restart</button>
       </div>
     </div>
 
-    <div class="gameShell">
-      <div class="canvasWrap">
-        <canvas id="c" width="960" height="540"></canvas>
+    <div class="layout">
+      <div class="stage">
+        <canvas id="game" width="1100" height="620" aria-label="Math Track Racer canvas"></canvas>
 
-        <div class="hudOverlay">
-          <div class="hudCard">
-            <p class="qTitle">Current Question</p>
-            <p class="qText" id="hudQuestion">Press Start</p>
-            <div class="feedback" id="hudFeedback"></div>
-          </div>
-          <div class="mini">
-            <h3>How to score</h3>
-            <p>Crash into the <b>correct</b> answer gate. Correct = points + speed boost.</p>
-          </div>
+        <!-- Touch controls (mobile) -->
+        <div class="touchbar" aria-hidden="true">
+          <div class="touchbtn" id="touchLeft">◀︎</div>
+          <div class="touchbtn" id="touchRight">▶︎</div>
         </div>
 
-        <!-- Mobile Controls -->
-        <div class="touch" aria-label="Touch controls">
-          <div class="pad">
-            <div class="tbtn" id="tLeft">◀</div>
-            <div class="tbtn" id="tRight">▶</div>
-          </div>
-          <div class="pad">
-            <div class="tbtn big" id="tBoost">▲</div>
+        <!-- Start / Pause / End overlay -->
+        <div class="overlay" id="overlay">
+          <div class="modal">
+            <h1 id="overlayTitle">Math Track Racer</h1>
+            <p id="overlayText">
+              Steer into the <b>correct answer</b> on the track to score points.
+              This version includes an <b>operation selector</b> and more <b>thinking time</b>.
+            </p>
+
+            <div class="grid">
+              <div class="card">
+                <h2>Question Set</h2>
+                <div class="label">Choose which type of problems to practice.</div>
+                <div style="height:8px"></div>
+                <select id="modeSelect" aria-label="Choose operation mode">
+                  <option value="mixed" selected>Mixed (Add + Subtract + Multiply + Divide)</option>
+                  <option value="add">Addition (+)</option>
+                  <option value="sub">Subtraction (−)</option>
+                  <option value="mul">Multiplication (×)</option>
+                  <option value="div">Division (÷)</option>
+                </select>
+                <div class="hint" style="margin-top:10px">
+                  Tip: Mixed is best for review. Use single operations for targeted practice.
+                </div>
+              </div>
+
+              <div class="card">
+                <h2>Speed & Thinking Time</h2>
+
+                <div class="label" style="margin-bottom:6px">Car responsiveness</div>
+                <input id="carSpeed" type="range" min="1" max="10" value="8" />
+                <div class="label" style="margin:8px 0 6px">Lead time (answers appear earlier)</div>
+                <input id="leadTime" type="range" min="1" max="10" value="8" />
+
+                <div class="hint">
+                  Higher <b>responsiveness</b> = faster lane changes.<br/>
+                  Higher <b>lead time</b> = answers spawn farther up the road.
+                </div>
+              </div>
+            </div>
+
+            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;">
+              <button class="btn primary" id="btnStart">Start Game</button>
+              <button class="btn" id="btnHow">How to Play</button>
+              <a class="btn" href="/arcade-review-games/">More Games</a>
+            </div>
+
+            <div class="hint" id="howBlock" style="display:none; margin-top:12px">
+              Controls: <span class="kbd">←</span> <span class="kbd">→</span> (or touch buttons on mobile).<br/>
+              Objective: collide with the answer tile that matches the question at the top.
+            </div>
           </div>
         </div>
       </div>
@@ -406,381 +258,494 @@
 
 <script>
 (() => {
-  // ===============================
-  // Math Track Racer (Canvas)
-  // ===============================
-
-  const canvas = document.getElementById("c");
+  // ---------------- Canvas setup ----------------
+  const canvas = document.getElementById("game");
   const ctx = canvas.getContext("2d");
 
-  // UI
-  const uiScore = document.getElementById("uiScore");
-  const uiStreak = document.getElementById("uiStreak");
-  const uiQ = document.getElementById("uiQ");
-  const uiTime = document.getElementById("uiTime");
-
-  const hudQuestion = document.getElementById("hudQuestion");
-  const hudFeedback = document.getElementById("hudFeedback");
-
-  const btnStart = document.getElementById("btnStart");
-  const btnRestart = document.getElementById("btnRestart");
-
-  const selMode = document.getElementById("mode");
-  const selDifficulty = document.getElementById("difficulty");
-  const selChoices = document.getElementById("choices");
-  const selRoundTime = document.getElementById("roundTime");
-
-  // Touch
-  const tLeft = document.getElementById("tLeft");
-  const tRight = document.getElementById("tRight");
-  const tBoost = document.getElementById("tBoost");
-
-  // Game constants
-  const W = canvas.width;
-  const H = canvas.height;
-
-  const TRACK = {
-    x: Math.floor(W * 0.18),
-    w: Math.floor(W * 0.64),
-    lineW: 2
-  };
-
-  const LANES = 5; // internal lanes for motion (answers spawn in chosen lanes)
-  function laneX(i){
-    const padding = 24;
-    const usable = TRACK.w - padding * 2;
-    const step = usable / (LANES - 1);
-    return TRACK.x + padding + step * i;
+  // Scale canvas to container width while keeping internal resolution crisp.
+  function fitCanvas(){
+    const parent = canvas.parentElement.getBoundingClientRect();
+    const dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+    const targetW = Math.floor(parent.width);
+    const targetH = Math.floor(Math.min(680, Math.max(520, parent.width * 0.56)));
+    canvas.style.width = targetW + "px";
+    canvas.style.height = targetH + "px";
+    canvas.width = Math.floor(targetW * dpr);
+    canvas.height = Math.floor(targetH * dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0); // draw in CSS pixels
   }
+  window.addEventListener("resize", fitCanvas);
+  fitCanvas();
 
-  // Player car
-  const player = {
-    x: laneX(Math.floor(LANES/2)),
-    y: H * 0.78,
-    w: 44,
-    h: 70,
-    vx: 0,
-    speed: 340,     // forward scrolling base
-    boost: 0,
-    maxBoost: 240,
-    steer: 720,     // lateral acceleration
-    drag: 10,
-    hpulse: 0
-  };
+  // ---------------- UI elements ----------------
+  const overlay = document.getElementById("overlay");
+  const overlayTitle = document.getElementById("overlayTitle");
+  const overlayText = document.getElementById("overlayText");
+  const btnStart = document.getElementById("btnStart");
+  const btnHow = document.getElementById("btnHow");
+  const howBlock = document.getElementById("howBlock");
+  const btnPause = document.getElementById("btnPause");
+  const btnRestart = document.getElementById("btnRestart");
+  const modeSelect = document.getElementById("modeSelect");
+  const carSpeedSlider = document.getElementById("carSpeed");
+  const leadTimeSlider = document.getElementById("leadTime");
 
-  // World
+  const hudMode = document.getElementById("hudMode");
+  const hudScore = document.getElementById("hudScore");
+  const hudStreak = document.getElementById("hudStreak");
+  const hudTime = document.getElementById("hudTime");
+
+  btnHow.addEventListener("click", () => {
+    howBlock.style.display = howBlock.style.display === "none" ? "block" : "none";
+  });
+
+  // ---------------- Game state ----------------
   let running = false;
   let paused = false;
-  let gameOver = false;
-  let timeLeft = 60;
+
   let score = 0;
   let streak = 0;
-  let qCount = 0;
+  let timeLeft = 60;
 
-  let currentQuestion = null;
-  let gates = []; // answer obstacles
-  let roadScroll = 0;
-  let lastFrame = performance.now();
+  let mode = "mixed";
+
+  // Difficulty knobs (we will compute from sliders)
+  let carLateralSpeed = 720; // px/s (will update)
+  let scrollSpeed = 260;     // px/s
+  let spawnDistance = 880;   // px ahead of player (will update)
+
+  // Track / lanes
+  const LANES = 5;
+  const lanePadding = 20;
+  const roadMargin = 120;
+
+  // Car
+  const car = {
+    x: 0,
+    y: 0,
+    w: 48,
+    h: 74,
+    vx: 0
+  };
 
   // Input
-  const keys = { left:false, right:false, up:false };
-  const touch = { left:false, right:false, up:false };
+  const keys = { left:false, right:false };
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowLeft") keys.left = true;
+    if (e.key === "ArrowRight") keys.right = true;
+    if (e.key.toLowerCase() === "p") togglePause();
+  });
+  window.addEventListener("keyup", (e) => {
+    if (e.key === "ArrowLeft") keys.left = false;
+    if (e.key === "ArrowRight") keys.right = false;
+  });
 
-  // Timing for gate spawns
-  let gateCooldown = 0;     // seconds until next set of answers
-  let gateRowId = 0;        // increments for each question row
+  // Touch controls (mobile)
+  const touchLeft = document.getElementById("touchLeft");
+  const touchRight = document.getElementById("touchRight");
+  const bindTouch = (el, keyName) => {
+    const on = () => keys[keyName] = true;
+    const off = () => keys[keyName] = false;
+    el.addEventListener("touchstart", (e)=>{ e.preventDefault(); on(); }, {passive:false});
+    el.addEventListener("touchend", (e)=>{ e.preventDefault(); off(); }, {passive:false});
+    el.addEventListener("touchcancel", (e)=>{ e.preventDefault(); off(); }, {passive:false});
+    el.addEventListener("mousedown", (e)=>{ e.preventDefault(); on(); });
+    window.addEventListener("mouseup", off);
+  };
+  bindTouch(touchLeft, "left");
+  bindTouch(touchRight, "right");
 
-  // Feedback timer
-  let feedbackTimer = 0;
-  let feedbackType = "good"; // good/bad/warn
+  // Question / answers
+  let currentQ = null; // { text, correct, answers:[...], correctLane }
+  let answerTiles = []; // { lane, x,y,w,h,value,isCorrect }
 
-  // ===============================
-  // Question Generator
-  // ===============================
+  // Timers
+  let lastTs = 0;
+  let accumSecond = 0;
+
+  // ---------------- Utility ----------------
+  function clamp(v,min,max){ return Math.max(min, Math.min(max, v)); }
   function randInt(a,b){ return Math.floor(Math.random()*(b-a+1))+a; }
-  function pick(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
-
-  function makeQuestion(mode, diff){
-    // Choose range by difficulty
-    let aMin=1, aMax=10, bMin=1, bMax=10;
-
-    if (diff === "easy"){
-      aMin=1; aMax=10; bMin=1; bMax=10;
-    } else if (diff === "med"){
-      aMin=2; aMax=20; bMin=2; bMax=20;
-    } else { // hard
-      aMin=5; aMax=50; bMin=5; bMax=50;
-    }
-
-    let op = mode;
-    if (mode === "mixed") op = pick(["addsub","mult","div"]);
-
-    let A,B,text,answer;
-
-    if (op === "addsub"){
-      A = randInt(aMin, aMax);
-      B = randInt(bMin, bMax);
-      if (Math.random() < 0.5){
-        text = `${A} + ${B} = ?`;
-        answer = A + B;
-      } else {
-        // avoid negative for easy/med
-        if (diff !== "hard" && B > A) [A,B] = [B,A];
-        text = `${A} − ${B} = ?`;
-        answer = A - B;
-      }
-    }
-
-    if (op === "mult"){
-      // tighten for hard to keep readable
-      const mulMax = diff === "hard" ? 25 : (diff === "med" ? 15 : 10);
-      A = randInt(2, mulMax);
-      B = randInt(2, mulMax);
-      text = `${A} × ${B} = ?`;
-      answer = A * B;
-    }
-
-    if (op === "div"){
-      // Ensure integer division by building from multiplication
-      const divMax = diff === "hard" ? 20 : (diff === "med" ? 15 : 10);
-      B = randInt(2, divMax);
-      const Q = randInt(2, divMax);
-      A = B * Q;
-      text = `${A} ÷ ${B} = ?`;
-      answer = Q;
-    }
-
-    return { text, answer, mode: op };
-  }
-
-  function buildChoices(correct, n, diff){
-    const out = new Set([correct]);
-
-    // choose plausible wrong answers near the correct one
-    const spread = diff === "easy" ? 6 : (diff === "med" ? 14 : 30);
-
-    while (out.size < n){
-      let delta = randInt(-spread, spread);
-      if (delta === 0) delta = 1;
-      let candidate = correct + delta;
-
-      // keep candidates reasonable
-      if (candidate < 0) candidate = Math.abs(candidate);
-      if (Number.isNaN(candidate)) continue;
-
-      out.add(candidate);
-    }
-    // shuffle
-    const arr = Array.from(out);
-    for (let i=arr.length-1; i>0; i--){
+  function shuffle(arr){
+    for(let i=arr.length-1;i>0;i--){
       const j = Math.floor(Math.random()*(i+1));
-      [arr[i],arr[j]] = [arr[j],arr[i]];
+      [arr[i],arr[j]]=[arr[j],arr[i]];
     }
     return arr;
   }
 
-  // ===============================
-  // Gates (answer obstacles)
-  // ===============================
-  function spawnGateRow(){
-    const mode = selMode.value;
-    const diff = selDifficulty.value;
-    const n = parseInt(selChoices.value, 10) || 4;
+  function setOverlay(show){
+    overlay.style.display = show ? "flex" : "none";
+  }
 
-    currentQuestion = makeQuestion(mode, diff);
-    const choices = buildChoices(currentQuestion.answer, n, diff);
+  function updateHud(){
+    hudMode.textContent = modeLabel(mode);
+    hudScore.textContent = score;
+    hudStreak.textContent = streak;
+    hudTime.textContent = timeLeft;
+  }
 
-    qCount++;
-    uiQ.textContent = qCount;
-    hudQuestion.textContent = currentQuestion.text;
+  function modeLabel(m){
+    if (m==="add") return "Addition";
+    if (m==="sub") return "Subtraction";
+    if (m==="mul") return "Multiplication";
+    if (m==="div") return "Division";
+    return "Mixed";
+  }
 
-    gateRowId++;
-    gates = [];
+  function recalcTuningFromSliders(){
+    // Car responsiveness: 1..10
+    const carN = Number(carSpeedSlider.value || 8);
+    // 1 -> 420 px/s, 10 -> 980 px/s
+    carLateralSpeed = 360 + carN * 70;
 
-    // Choose unique lanes for each choice
-    const laneIndices = [...Array(LANES).keys()];
-    for (let i=laneIndices.length-1; i>0; i--){
-      const j = Math.floor(Math.random()*(i+1));
-      [laneIndices[i], laneIndices[j]] = [laneIndices[j], laneIndices[i]];
+    // Lead time: 1..10
+    const leadN = Number(leadTimeSlider.value || 8);
+    // 1 -> 560px, 10 -> 1150px
+    spawnDistance = 490 + leadN * 66;
+
+    // Keep scroll speed moderate so students have time to think
+    // (we'll nudge slightly with lead time so it still feels fast)
+    // 1 -> 230, 10 -> 290
+    scrollSpeed = 224 + leadN * 7;
+  }
+
+  // ---------------- Track geometry ----------------
+  function roadRect(){
+    const w = canvas.clientWidth;
+    const h = canvas.clientHeight;
+    const roadX = roadMargin;
+    const roadW = w - roadMargin*2;
+    const roadY = 0;
+    const roadH = h;
+    return { x: roadX, y: roadY, w: roadW, h: roadH };
+  }
+
+  function laneX(lane){
+    const r = roadRect();
+    const laneW = (r.w - lanePadding*2) / LANES;
+    return r.x + lanePadding + laneW*lane + laneW/2;
+  }
+
+  function laneBounds(lane){
+    const r = roadRect();
+    const laneW = (r.w - lanePadding*2) / LANES;
+    const left = r.x + lanePadding + laneW*lane;
+    return { left, right: left+laneW, laneW };
+  }
+
+  function resetCar(){
+    const h = canvas.clientHeight;
+    car.y = h - 120;
+    car.x = laneX(Math.floor(LANES/2));
+    car.vx = 0;
+  }
+
+  // ---------------- Question generation ----------------
+  function pickOperation(){
+    if (mode === "mixed"){
+      return ["add","sub","mul","div"][randInt(0,3)];
+    }
+    return mode;
+  }
+
+  function makeQuestion(){
+    const op = pickOperation();
+
+    let a,b,correct,text;
+    if (op === "add"){
+      a = randInt(0, 50);
+      b = randInt(0, 50);
+      correct = a + b;
+      text = `${a} + ${b} = ?`;
+    } else if (op === "sub"){
+      a = randInt(0, 60);
+      b = randInt(0, a); // keep non-negative
+      correct = a - b;
+      text = `${a} − ${b} = ?`;
+    } else if (op === "mul"){
+      a = randInt(0, 12);
+      b = randInt(0, 12);
+      correct = a * b;
+      text = `${a} × ${b} = ?`;
+    } else { // div
+      // Make clean integer division
+      b = randInt(1, 12);
+      correct = randInt(0, 12);
+      a = b * correct;
+      text = `${a} ÷ ${b} = ?`;
     }
 
-    // gates appear above view and move down as road scrolls
-    const baseY = -90;
+    // Build plausible wrong answers
+    const answers = new Set([correct]);
+    while (answers.size < LANES){
+      let candidate;
+      const spread = op==="mul"||op==="div" ? 10 : 15;
+      candidate = correct + randInt(-spread, spread);
+      if (candidate < 0) continue;
+      answers.add(candidate);
+    }
 
-    for (let i=0; i<choices.length; i++){
-      const lane = laneIndices[i % LANES];
-      const x = laneX(lane);
-      const value = choices[i];
-      gates.push({
-        row: gateRowId,
-        x,
-        y: baseY - i*8, // small stagger for readability
-        w: 120,
-        h: 62,
+    const arr = shuffle(Array.from(answers));
+    const correctLane = arr.indexOf(correct);
+
+    return { op, text, correct, answers: arr, correctLane };
+  }
+
+  function spawnAnswers(q){
+    answerTiles = [];
+    const tileW = 140;
+    const tileH = 66;
+
+    // Answers should appear far enough ahead so students can think.
+    // Spawn above the top by spawnDistance, then scroll down.
+    const y0 = -spawnDistance;
+
+    for (let lane=0; lane<LANES; lane++){
+      const b = laneBounds(lane);
+      const x = (b.left + b.right)/2;
+      const value = q.answers[lane];
+      answerTiles.push({
+        lane,
+        x, y: y0,
+        w: tileW, h: tileH,
         value,
-        correct: (value === currentQuestion.answer),
-        hit: false
+        isCorrect: (lane === q.correctLane)
       });
     }
-
-    // set next row spawn delay (shorter = faster pace)
-    gateCooldown = 1.8; // seconds, will also be influenced by speed
-    showFeedback("Choose the correct answer gate!", "warn", 1.0);
   }
 
-  function showFeedback(text, type="good", seconds=1.2){
-    hudFeedback.textContent = text;
-    hudFeedback.className = "feedback " + type;
-    feedbackType = type;
-    feedbackTimer = seconds;
+  function nextRound(){
+    currentQ = makeQuestion();
+    spawnAnswers(currentQ);
   }
 
-  function rectsOverlap(a,b){
-    return (
-      a.x - a.w/2 < b.x + b.w/2 &&
-      a.x + a.w/2 > b.x - b.w/2 &&
-      a.y - a.h/2 < b.y + b.h/2 &&
-      a.y + a.h/2 > b.y - b.h/2
-    );
+  // ---------------- Collision ----------------
+  function rectsOverlap(ax,ay,aw,ah, bx,by,bw,bh){
+    return ax < bx + bw && ax + aw > bx && ay < by + bh && ay + ah > by;
   }
 
-  // ===============================
-  // Rendering
-  // ===============================
-  function drawTrack(){
-    // background
-    ctx.clearRect(0,0,W,H);
+  function checkCollisions(){
+    const carRect = {
+      x: car.x - car.w/2,
+      y: car.y - car.h/2,
+      w: car.w,
+      h: car.h
+    };
 
-    // sky glow
-    const g = ctx.createLinearGradient(0,0,0,H);
-    g.addColorStop(0, "rgba(37,99,235,.10)");
-    g.addColorStop(1, "rgba(2,6,23,.0)");
+    for (const t of answerTiles){
+      const tileRect = { x: t.x - t.w/2, y: t.y - t.h/2, w: t.w, h: t.h };
+      if (rectsOverlap(carRect.x,carRect.y,carRect.w,carRect.h, tileRect.x,tileRect.y,tileRect.w,tileRect.h)){
+        // Hit something!
+        if (t.isCorrect){
+          score += 100 + Math.min(200, streak*15);
+          streak += 1;
+          flashMessage(`Correct! +${100 + Math.min(200, (streak-1)*15)}`, "good");
+        } else {
+          score = Math.max(0, score - 50);
+          streak = 0;
+          flashMessage(`Wrong (${t.value})  -50`, "bad");
+        }
+        updateHud();
+        nextRound();
+        return;
+      }
+    }
+
+    // If answers pass the car without hit, count as miss and advance.
+    const passed = answerTiles.length && answerTiles[0].y > car.y + 120;
+    if (passed){
+      score = Math.max(0, score - 25);
+      streak = 0;
+      flashMessage(`Missed! -25`, "warn");
+      updateHud();
+      nextRound();
+    }
+  }
+
+  // ---------------- Feedback message ----------------
+  let toast = null; // {text, t, kind}
+  function flashMessage(text, kind){
+    toast = { text, t: 0, kind };
+  }
+
+  // ---------------- Drawing ----------------
+  let roadOffset = 0;
+
+  function drawBackground(){
+    const w = canvas.clientWidth;
+    const h = canvas.clientHeight;
+
+    // Sky gradient
+    const g = ctx.createLinearGradient(0,0,0,h);
+    g.addColorStop(0, "rgba(15,23,42,0.95)");
+    g.addColorStop(1, "rgba(2,6,23,0.95)");
     ctx.fillStyle = g;
-    ctx.fillRect(0,0,W,H);
+    ctx.fillRect(0,0,w,h);
 
-    // track base
-    ctx.fillStyle = "#0b1020";
-    ctx.fillRect(TRACK.x, 0, TRACK.w, H);
+    // Subtle stars
+    ctx.globalAlpha = 0.22;
+    for(let i=0;i<40;i++){
+      const x = (i*97 % w);
+      const y = (i*41 % h);
+      ctx.fillStyle = "white";
+      ctx.fillRect(x,y,1,1);
+    }
+    ctx.globalAlpha = 1;
+  }
 
-    // shoulders
-    ctx.fillStyle = "rgba(15,23,42,.8)";
-    ctx.fillRect(0, 0, TRACK.x, H);
-    ctx.fillRect(TRACK.x + TRACK.w, 0, W-(TRACK.x+TRACK.w), H);
+  function drawRoad(dt){
+    const w = canvas.clientWidth;
+    const h = canvas.clientHeight;
+    const r = roadRect();
 
-    // lane lines
-    ctx.strokeStyle = "rgba(148,163,184,.18)";
-    ctx.lineWidth = TRACK.lineW;
+    // Road
+    ctx.fillStyle = "rgba(17,24,39,0.92)";
+    ctx.fillRect(r.x, r.y, r.w, r.h);
 
-    for (let i=1;i<LANES-1;i++){
-      const x = laneX(i);
+    // Edge shoulders
+    ctx.fillStyle = "rgba(2,6,23,0.85)";
+    ctx.fillRect(0,0,r.x,h);
+    ctx.fillRect(r.x+r.w,0,w-(r.x+r.w),h);
+
+    // Lane lines moving
+    roadOffset += scrollSpeed * dt;
+    const laneW = (r.w - lanePadding*2) / LANES;
+
+    // Outer border
+    ctx.strokeStyle = "rgba(148,163,184,0.18)";
+    ctx.lineWidth = 2;
+    ctx.strokeRect(r.x+1, r.y+1, r.w-2, r.h-2);
+
+    // Dashed lane separators
+    ctx.lineWidth = 2;
+    for(let i=1;i<LANES;i++){
+      const x = r.x + lanePadding + laneW*i;
+      ctx.strokeStyle = "rgba(148,163,184,0.18)";
+      ctx.setLineDash([16, 18]);
+      ctx.lineDashOffset = -roadOffset % 34;
       ctx.beginPath();
-      ctx.setLineDash([14, 16]);
-      ctx.lineDashOffset = -roadScroll * 0.6;
-      ctx.moveTo(x, 0);
-      ctx.lineTo(x, H);
+      ctx.moveTo(x,0);
+      ctx.lineTo(x,h);
       ctx.stroke();
     }
     ctx.setLineDash([]);
 
-    // track edges
-    ctx.strokeStyle = "rgba(226,232,240,.18)";
-    ctx.lineWidth = 3;
-    ctx.beginPath();
-    ctx.moveTo(TRACK.x, 0);
-    ctx.lineTo(TRACK.x, H);
-    ctx.moveTo(TRACK.x+TRACK.w, 0);
-    ctx.lineTo(TRACK.x+TRACK.w, H);
-    ctx.stroke();
+    // Center guide dots
+    ctx.globalAlpha = 0.20;
+    for (let i=0;i<LANES;i++){
+      const x = laneX(i);
+      for (let y = -40; y < h+60; y += 70){
+        const yy = y + (roadOffset % 70);
+        ctx.fillStyle = "white";
+        ctx.fillRect(x-1, yy, 2, 6);
+      }
+    }
+    ctx.globalAlpha = 1;
+  }
 
-    // speed lines
-    ctx.strokeStyle = "rgba(255,255,255,.06)";
-    ctx.lineWidth = 2;
-    for (let i=0;i<18;i++){
-      const yy = ((i*90) + (roadScroll*1.2)) % (H+120) - 120;
-      ctx.beginPath();
-      ctx.moveTo(TRACK.x+18, yy);
-      ctx.lineTo(TRACK.x+TRACK.w-18, yy);
-      ctx.stroke();
+  function drawCar(){
+    // Simple stylized car
+    const x = car.x;
+    const y = car.y;
+    const w = car.w;
+    const h = car.h;
+
+    // Body
+    ctx.fillStyle = "rgba(37,99,235,0.95)";
+    roundRect(ctx, x-w/2, y-h/2, w, h, 10, true, false);
+
+    // Windshield
+    ctx.fillStyle = "rgba(226,232,240,0.85)";
+    roundRect(ctx, x-w/2+8, y-h/2+10, w-16, 18, 8, true, false);
+
+    // Lights
+    ctx.fillStyle = "rgba(250,204,21,0.95)";
+    ctx.fillRect(x-w/2+6, y-h/2+2, 10, 6);
+    ctx.fillRect(x+w/2-16, y-h/2+2, 10, 6);
+
+    // Wheels
+    ctx.fillStyle = "rgba(2,6,23,0.9)";
+    ctx.fillRect(x-w/2-6, y-h/2+14, 8, 16);
+    ctx.fillRect(x+w/2-2, y-h/2+14, 8, 16);
+    ctx.fillRect(x-w/2-6, y+h/2-30, 8, 16);
+    ctx.fillRect(x+w/2-2, y+h/2-30, 8, 16);
+  }
+
+  function drawAnswers(){
+    for (const t of answerTiles){
+      // Tile
+      ctx.fillStyle = "rgba(15,23,42,0.92)";
+      ctx.strokeStyle = "rgba(148,163,184,0.24)";
+      ctx.lineWidth = 2;
+      roundRect(ctx, t.x - t.w/2, t.y - t.h/2, t.w, t.h, 14, true, true);
+
+      // Label
+      ctx.fillStyle = "rgba(226,232,240,0.95)";
+      ctx.font = "900 24px system-ui, -apple-system, Segoe UI, Roboto, Arial";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillText(String(t.value), t.x, t.y);
     }
   }
 
-  function drawGate(g){
-    // gate body
-    ctx.save();
-    ctx.translate(g.x, g.y);
+  function drawQuestion(){
+    const w = canvas.clientWidth;
 
-    const fill = g.correct ? "rgba(34,197,94,.18)" : "rgba(239,68,68,.14)";
-    const border = g.correct ? "rgba(34,197,94,.55)" : "rgba(239,68,68,.55)";
-    const shadow = "rgba(0,0,0,.35)";
+    // Panel top
+    ctx.fillStyle = "rgba(15,23,42,0.88)";
+    roundRect(ctx, 14, 14, w-28, 74, 14, true, false);
+    ctx.strokeStyle = "rgba(148,163,184,0.18)";
+    ctx.lineWidth = 1.5;
+    roundRect(ctx, 14, 14, w-28, 74, 14, false, true);
 
-    // shadow
-    ctx.fillStyle = shadow;
-    roundRect(-g.w/2 + 3, -g.h/2 + 6, g.w, g.h, 14, true, false);
+    const q = currentQ ? currentQ.text : "—";
+    ctx.fillStyle = "rgba(226,232,240,0.98)";
+    ctx.font = "900 26px system-ui, -apple-system, Segoe UI, Roboto, Arial";
+    ctx.textAlign = "left";
+    ctx.textBaseline = "middle";
+    ctx.fillText("Question:", 30, 50);
 
-    // card
-    ctx.fillStyle = fill;
-    ctx.strokeStyle = border;
-    ctx.lineWidth = 3;
-    roundRect(-g.w/2, -g.h/2, g.w, g.h, 14, true, true);
+    ctx.fillStyle = "rgba(226,232,240,0.92)";
+    ctx.font = "900 28px system-ui, -apple-system, Segoe UI, Roboto, Arial";
+    ctx.fillText(q, 150, 50);
 
-    // label
-    ctx.fillStyle = "rgba(226,232,240,.95)";
-    ctx.font = "900 22px system-ui, -apple-system, Segoe UI, Roboto, Arial";
+    // Small note
+    ctx.fillStyle = "rgba(148,163,184,0.9)";
+    ctx.font = "700 13px system-ui, -apple-system, Segoe UI, Roboto, Arial";
+    ctx.fillText(`Mode: ${modeLabel(mode)} • Steer into the correct number`, 30, 84);
+  }
+
+  function drawToast(dt){
+    if (!toast) return;
+    toast.t += dt;
+
+    const w = canvas.clientWidth;
+    const x = w/2;
+    const y = 120;
+
+    let color = "rgba(34,197,94,0.92)";
+    if (toast.kind==="bad") color = "rgba(239,68,68,0.92)";
+    if (toast.kind==="warn") color = "rgba(245,158,11,0.92)";
+
+    const alpha = toast.t < 0.2 ? (toast.t/0.2) : (toast.t > 1.2 ? Math.max(0, 1-(toast.t-1.2)/0.4) : 1);
+    ctx.globalAlpha = alpha;
+
+    ctx.fillStyle = "rgba(2,6,23,0.75)";
+    roundRect(ctx, x-180, y-22, 360, 44, 14, true, false);
+
+    ctx.fillStyle = color;
+    ctx.font = "900 18px system-ui, -apple-system, Segoe UI, Roboto, Arial";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
-    ctx.fillText(String(g.value), 0, -2);
+    ctx.fillText(toast.text, x, y);
 
-    // little "gate posts"
-    ctx.fillStyle = "rgba(226,232,240,.20)";
-    roundRect(-g.w/2 - 10, -g.h/2 + 8, 12, g.h-16, 8, true, false);
-    roundRect(g.w/2 - 2, -g.h/2 + 8, 12, g.h-16, 8, true, false);
+    ctx.globalAlpha = 1;
 
-    ctx.restore();
+    if (toast.t > 1.6) toast = null;
   }
 
-  function drawPlayer(){
-    ctx.save();
-    ctx.translate(player.x, player.y);
-
-    // slight tilt based on vx
-    const tilt = Math.max(-0.25, Math.min(0.25, player.vx / 900));
-    ctx.rotate(tilt);
-
-    // glow pulse when correct
-    if (player.hpulse > 0){
-      ctx.globalAlpha = Math.min(1, player.hpulse);
-      ctx.fillStyle = "rgba(34,197,94,.22)";
-      ctx.beginPath();
-      ctx.ellipse(0, 10, 48, 34, 0, 0, Math.PI*2);
-      ctx.fill();
-      ctx.globalAlpha = 1;
-    }
-
-    // car body
-    ctx.fillStyle = "rgba(37,99,235,.95)";
-    ctx.strokeStyle = "rgba(226,232,240,.22)";
-    ctx.lineWidth = 3;
-    roundRect(-player.w/2, -player.h/2, player.w, player.h, 14, true, true);
-
-    // windshield
-    ctx.fillStyle = "rgba(2,6,23,.55)";
-    roundRect(-player.w/2 + 6, -player.h/2 + 10, player.w - 12, 18, 10, true, false);
-
-    // stripe
-    ctx.fillStyle = "rgba(226,232,240,.20)";
-    roundRect(-5, -player.h/2 + 6, 10, player.h - 12, 10, true, false);
-
-    // wheels
-    ctx.fillStyle = "rgba(2,6,23,.85)";
-    roundRect(-player.w/2 - 10, -player.h/2 + 10, 12, 18, 6, true, false);
-    roundRect(player.w/2 - 2, -player.h/2 + 10, 12, 18, 6, true, false);
-    roundRect(-player.w/2 - 10, player.h/2 - 28, 12, 18, 6, true, false);
-    roundRect(player.w/2 - 2, player.h/2 - 28, 12, 18, 6, true, false);
-
-    ctx.restore();
-  }
-
-  function roundRect(x, y, w, h, r, fill, stroke){
+  function roundRect(ctx, x, y, w, h, r, fill, stroke){
     const rr = Math.min(r, w/2, h/2);
     ctx.beginPath();
     ctx.moveTo(x+rr, y);
@@ -793,283 +758,155 @@
     if (stroke) ctx.stroke();
   }
 
-  // ===============================
-  // Game Loop
-  // ===============================
-  function resetGame(){
-    running = false;
-    paused = false;
-    gameOver = false;
+  // ---------------- Loop ----------------
+  function step(ts){
+    if (!running){
+      lastTs = ts;
+      requestAnimationFrame(step);
+      return;
+    }
+    const dt = Math.min(0.033, (ts - lastTs) / 1000);
+    lastTs = ts;
+
+    if (!paused){
+      update(dt);
+      render(dt);
+    } else {
+      render(dt);
+      drawPausedOverlay();
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  function update(dt){
+    // Countdown timer
+    accumSecond += dt;
+    if (accumSecond >= 1){
+      const whole = Math.floor(accumSecond);
+      accumSecond -= whole;
+      timeLeft = Math.max(0, timeLeft - whole);
+      hudTime.textContent = timeLeft;
+
+      if (timeLeft <= 0){
+        endGame();
+        return;
+      }
+    }
+
+    // Car movement: responsive lateral speed
+    let dir = 0;
+    if (keys.left) dir -= 1;
+    if (keys.right) dir += 1;
+
+    // Smooth movement with immediate responsiveness
+    const targetV = dir * carLateralSpeed;
+    // smoothing factor (higher = snappier)
+    const snap = 18;
+    car.vx += (targetV - car.vx) * (1 - Math.exp(-snap * dt));
+    car.x += car.vx * dt;
+
+    // Constrain to road
+    const r = roadRect();
+    const minX = r.x + 20 + car.w/2;
+    const maxX = r.x + r.w - 20 - car.w/2;
+    car.x = clamp(car.x, minX, maxX);
+
+    // Move answer tiles down track
+    for (const t of answerTiles){
+      t.y += scrollSpeed * dt;
+    }
+
+    checkCollisions();
+  }
+
+  function render(dt){
+    const w = canvas.clientWidth;
+    const h = canvas.clientHeight;
+
+    ctx.clearRect(0,0,w,h);
+    drawBackground();
+    drawRoad(dt);
+    drawAnswers();
+    drawCar();
+    drawQuestion();
+    drawToast(dt);
+  }
+
+  function drawPausedOverlay(){
+    const w = canvas.clientWidth;
+    const h = canvas.clientHeight;
+    ctx.fillStyle = "rgba(2,6,23,0.55)";
+    ctx.fillRect(0,0,w,h);
+    ctx.fillStyle = "rgba(226,232,240,0.95)";
+    ctx.font = "900 34px system-ui, -apple-system, Segoe UI, Roboto, Arial";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText("Paused", w/2, h/2 - 16);
+
+    ctx.fillStyle = "rgba(148,163,184,0.95)";
+    ctx.font = "700 14px system-ui, -apple-system, Segoe UI, Roboto, Arial";
+    ctx.fillText("Press P or tap Pause to resume.", w/2, h/2 + 22);
+  }
+
+  // ---------------- Game controls ----------------
+  function startGame(){
+    recalcTuningFromSliders();
+    mode = modeSelect.value || "mixed";
 
     score = 0;
     streak = 0;
-    qCount = 0;
+    timeLeft = 60;
+    accumSecond = 0;
 
-    uiScore.textContent = score;
-    uiStreak.textContent = streak;
-    uiQ.textContent = qCount;
-
-    timeLeft = parseInt(selRoundTime.value, 10) || 60;
-    uiTime.textContent = timeLeft;
-
-    player.x = laneX(Math.floor(LANES/2));
-    player.y = H * 0.78;
-    player.vx = 0;
-    player.boost = 0;
-    player.hpulse = 0;
-
-    roadScroll = 0;
-    gates = [];
-    currentQuestion = null;
-    gateCooldown = 0;
-
-    hudQuestion.textContent = "Press Start";
-    hudFeedback.textContent = "";
-    hudFeedback.className = "feedback";
-
-    draw();
-  }
-
-  function startGame(){
-    if (running) return;
-    if (gameOver) resetGame();
+    updateHud();
+    resetCar();
+    nextRound();
 
     running = true;
     paused = false;
-    lastFrame = performance.now();
-
-    // spawn first question row quickly
-    gateCooldown = 0.2;
-    loop();
+    btnPause.textContent = "Pause";
+    setOverlay(false);
   }
 
   function endGame(){
     running = false;
-    gameOver = true;
-    showFeedback(`Time! Final score: ${score}. Press Restart to play again.`, "warn", 999);
+    paused = false;
+    setOverlay(true);
+    overlayTitle.textContent = "Time!";
+    overlayText.innerHTML = `Final score: <b>${score}</b> • Best streak: <b>${streak}</b><br/>Choose a mode and play again.`;
+    btnStart.textContent = "Play Again";
   }
 
-  function update(dt){
-    if (paused || gameOver) return;
-
-    // timer
-    timeLeft -= dt;
-    if (timeLeft <= 0){
-      timeLeft = 0;
-      uiTime.textContent = "0";
-      endGame();
-      return;
-    }
-    uiTime.textContent = String(Math.ceil(timeLeft));
-
-    // player input -> acceleration
-    const left = keys.left || touch.left;
-    const right = keys.right || touch.right;
-    const up = keys.up || touch.up;
-
-    let ax = 0;
-    if (left) ax -= player.steer;
-    if (right) ax += player.steer;
-
-    player.vx += ax * dt;
-
-    // drag
-    player.vx -= player.vx * Math.min(1, player.drag * dt);
-
-    // position
-    player.x += player.vx * dt;
-
-    // clamp to track
-    const minX = TRACK.x + 18;
-    const maxX = TRACK.x + TRACK.w - 18;
-    if (player.x < minX){ player.x = minX; player.vx = 0; }
-    if (player.x > maxX){ player.x = maxX; player.vx = 0; }
-
-    // boost
-    if (up){
-      player.boost = Math.min(player.maxBoost, player.boost + 520 * dt);
-    } else {
-      player.boost = Math.max(0, player.boost - 360 * dt);
-    }
-
-    // scroll
-    const forward = player.speed + player.boost;
-    roadScroll += forward * dt;
-
-    // feedback decay
-    if (feedbackTimer > 0){
-      feedbackTimer -= dt;
-      if (feedbackTimer <= 0){
-        hudFeedback.textContent = "";
-        hudFeedback.className = "feedback";
-      }
-    }
-
-    // pulse decay
-    if (player.hpulse > 0){
-      player.hpulse = Math.max(0, player.hpulse - dt*1.6);
-    }
-
-    // spawn question row if needed
-    gateCooldown -= dt;
-    if (gateCooldown <= 0){
-      spawnGateRow();
-    }
-
-    // move gates downward relative to scroll
-    // gates start above, move down into view
-    for (const g of gates){
-      g.y += forward * dt; // gates descend as you "drive forward"
-    }
-
-    // collision: if hit any gate in current row, evaluate and then clear row & spawn next soon
-    const pRect = { x: player.x, y: player.y, w: player.w, h: player.h };
-
-    for (const g of gates){
-      if (g.hit) continue;
-      const gRect = { x: g.x, y: g.y, w: g.w, h: g.h };
-
-      if (rectsOverlap(pRect, gRect)){
-        g.hit = true;
-
-        if (g.correct){
-          streak += 1;
-          const base = 100;
-          const streakBonus = Math.min(200, streak * 20);
-          const speedBonus = Math.floor(player.boost / 20);
-          const pts = base + streakBonus + speedBonus;
-
-          score += pts;
-          uiScore.textContent = score;
-          uiStreak.textContent = streak;
-
-          player.hpulse = 1.0;
-          // quick boost reward
-          player.boost = Math.min(player.maxBoost, player.boost + 120);
-
-          showFeedback(`✅ Correct! +${pts} points`, "good", 1.2);
-
-          // clear remaining gates and spawn next sooner
-          gates = [];
-          gateCooldown = 0.55;
-        } else {
-          streak = 0;
-          uiStreak.textContent = streak;
-
-          // time penalty
-          timeLeft = Math.max(0, timeLeft - 3);
-          uiTime.textContent = String(Math.ceil(timeLeft));
-
-          // slight knockback
-          player.vx *= -0.6;
-          player.boost = Math.max(0, player.boost - 120);
-
-          showFeedback(`❌ Wrong! −3 seconds`, "bad", 1.2);
-
-          // remove the gate you hit, keep others (so they can still choose correct)
-          gates = gates.filter(x => !x.hit);
-        }
-        break;
-      }
-    }
-
-    // cleanup gates that went off screen
-    gates = gates.filter(g => g.y < H + 120);
-  }
-
-  function draw(){
-    drawTrack();
-
-    // gates
-    for (const g of gates){
-      drawGate(g);
-    }
-
-    // player
-    drawPlayer();
-
-    // paused overlay
-    if (paused){
-      ctx.save();
-      ctx.fillStyle = "rgba(2,6,23,.55)";
-      ctx.fillRect(0,0,W,H);
-      ctx.fillStyle = "rgba(226,232,240,.95)";
-      ctx.font = "900 34px system-ui, -apple-system, Segoe UI, Roboto, Arial";
-      ctx.textAlign = "center";
-      ctx.fillText("PAUSED", W/2, H/2 - 10);
-      ctx.font = "800 14px system-ui, -apple-system, Segoe UI, Roboto, Arial";
-      ctx.fillStyle = "rgba(148,163,184,.95)";
-      ctx.fillText("Press Space to resume", W/2, H/2 + 22);
-      ctx.restore();
-    }
-  }
-
-  function loop(){
+  function togglePause(){
     if (!running) return;
-
-    const now = performance.now();
-    let dt = (now - lastFrame) / 1000;
-    lastFrame = now;
-
-    // clamp dt
-    dt = Math.min(0.033, Math.max(0.001, dt));
-
-    if (!paused){
-      update(dt);
-    }
-    draw();
-
-    requestAnimationFrame(loop);
+    paused = !paused;
+    btnPause.textContent = paused ? "Resume" : "Pause";
   }
 
-  // ===============================
-  // Input bindings
-  // ===============================
-  window.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowLeft" || e.key.toLowerCase() === "a") keys.left = true;
-    if (e.key === "ArrowRight" || e.key.toLowerCase() === "d") keys.right = true;
-    if (e.key === "ArrowUp" || e.key.toLowerCase() === "w") keys.up = true;
-
-    if (e.code === "Space"){
-      e.preventDefault();
-      if (!running) return;
-      paused = !paused;
-      showFeedback(paused ? "Paused" : "Resume", "warn", 0.8);
-    }
-  }, { passive:false });
-
-  window.addEventListener("keyup", (e) => {
-    if (e.key === "ArrowLeft" || e.key.toLowerCase() === "a") keys.left = false;
-    if (e.key === "ArrowRight" || e.key.toLowerCase() === "d") keys.right = false;
-    if (e.key === "ArrowUp" || e.key.toLowerCase() === "w") keys.up = false;
+  btnStart.addEventListener("click", startGame);
+  btnPause.addEventListener("click", togglePause);
+  btnRestart.addEventListener("click", () => {
+    setOverlay(true);
+    overlayTitle.textContent = "Restart";
+    overlayText.textContent = "Choose your settings and start again.";
+    btnStart.textContent = "Start Game";
   });
 
-  function bindTouch(btn, key){
-    const on = (ev) => { ev.preventDefault(); touch[key] = true; };
-    const off = (ev) => { ev.preventDefault(); touch[key] = false; };
+  // Keep HUD mode updated even before start
+  modeSelect.addEventListener("change", () => {
+    hudMode.textContent = modeLabel(modeSelect.value);
+  });
 
-    btn.addEventListener("pointerdown", on, { passive:false });
-    btn.addEventListener("pointerup", off, { passive:false });
-    btn.addEventListener("pointercancel", off, { passive:false });
-    btn.addEventListener("pointerleave", off, { passive:false });
-  }
-  bindTouch(tLeft, "left");
-  bindTouch(tRight, "right");
-  bindTouch(tBoost, "up");
+  // Initialize view
+  hudMode.textContent = modeLabel(modeSelect.value);
+  updateHud();
+  resetCar();
+  currentQ = makeQuestion();
+  spawnAnswers(currentQ);
 
-  // Buttons
-  btnStart.addEventListener("click", startGame);
-  btnRestart.addEventListener("click", () => { resetGame(); startGame(); });
-
-  // Resize canvas to look crisp on high DPI while keeping internal resolution
-  // (keeps your 960x540 gameplay stable)
-  function fitCanvas(){
-    // CSS already makes it responsive; we keep internal fixed for determinism
-  }
-  window.addEventListener("resize", fitCanvas);
-
-  // Init
-  resetGame();
+  // Start render loop
+  requestAnimationFrame(step);
 })();
 </script>
 </body>
