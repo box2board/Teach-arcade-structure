@@ -24,9 +24,10 @@
       /* Layout gaps */
       --stackGap: 18px;
 
-      /* Tableau fan (READABILITY) */
-      --fanGap: 26px;
-      --fanGapTight: 18px;
+      /* Tableau fan */
+      --fanUp: 26px;       /* face-up spacing */
+      --fanUpTight: 18px;  /* face-up when long */
+      --fanDown: 10px;     /* face-down spacing (compact like the reference) */
 
       --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
 
@@ -42,18 +43,17 @@
       :root{
         --cardW: 74px; --cardH: 104px;
         --stackGap: 12px;
-        --fanGap: 24px; --fanGapTight: 16px;
+        --fanUp: 24px; --fanUpTight: 16px; --fanDown: 9px;
       }
     }
     @media (max-width: 520px){
       :root{
         --cardW: 62px; --cardH: 88px;
         --stackGap: 10px;
-        --fanGap: 22px; --fanGapTight: 14px;
+        --fanUp: 22px; --fanUpTight: 14px; --fanDown: 8px;
       }
     }
 
-    /* iOS viewport + safe area fixes */
     html, body{ height:100%; }
     body{
       margin:0;
@@ -82,18 +82,9 @@
       margin-bottom: 14px;
     }
 
-    .brand{
-      display:flex; flex-direction:column; gap:2px;
-    }
-    .brand h1{
-      margin:0;
-      font-size: 18px;
-      letter-spacing:.3px;
-    }
-    .brand small{
-      color: var(--muted);
-      font-size: 12px;
-    }
+    .brand{ display:flex; flex-direction:column; gap:2px; }
+    .brand h1{ margin:0; font-size:18px; letter-spacing:.3px; }
+    .brand small{ color: var(--muted); font-size:12px; }
 
     .controls{
       display:flex;
@@ -112,21 +103,18 @@
       border-radius: 12px;
       font-weight: 800;
       cursor:pointer;
-      transition: transform .05s ease, background .15s ease, border-color .15s ease;
+      transition: transform .05s ease, background .15s ease, border-color .15s ease, opacity .15s ease;
       letter-spacing: .1px;
     }
     button:active{ transform: scale(.98); }
     button:hover{ background: rgba(255,255,255,.12); }
     button[disabled]{ opacity:.55; cursor:not-allowed; }
 
-    /* Mode pill */
     .modeBtn{
       border-color: var(--accentBorder);
       background: var(--accent);
     }
-    .modeBtn b{
-      font-weight: 900;
-    }
+    .modeBtn b{ font-weight: 900; }
 
     .bar{
       display:flex; align-items:center; justify-content:space-between;
@@ -147,8 +135,6 @@
       /* FIX: stop bottom cutoff */
       overflow: auto;
       -webkit-overflow-scrolling: touch;
-
-      /* ensure there is always room to scroll a little */
       max-height: calc(100svh - 160px);
     }
 
@@ -188,9 +174,9 @@
       background: rgba(255,255,255,.10);
     }
 
-    /* Give tableau enough space for readable stacks */
+    /* Give tableau enough space */
     .tableau{
-      min-height: calc(var(--cardH) + 10 * var(--fanGap));
+      min-height: calc(var(--cardH) + 10 * var(--fanUp));
     }
 
     /* Sharper card design + smoother motion */
@@ -209,20 +195,18 @@
         0 10px 26px rgba(0,0,0,.22),
         0 1px 0 rgba(255,255,255,.55) inset;
 
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      padding: 8px 9px;
       box-sizing:border-box;
       cursor:grab;
 
-      /* smoother settle */
+      /* IMPORTANT: we position with transform for smooth motion */
+      transform: translate3d(0, var(--y, 0px), 0);
       transition:
-        transform 140ms var(--ease),
-        box-shadow 140ms var(--ease),
-        filter 140ms var(--ease);
-      touch-action:none; /* for drag */
+        transform 320ms var(--ease),
+        box-shadow 180ms var(--ease),
+        filter 180ms var(--ease);
+      touch-action:none;
       will-change: transform;
+      overflow:hidden;
     }
     .card:active{ cursor:grabbing; }
 
@@ -238,43 +222,76 @@
         0 1px 0 rgba(255,255,255,.25) inset;
     }
 
-    .card .corner{
+    /* Face-up layout matching the reference: small corner + BIG rank low for stack readability */
+    .cardInner{
+      height:100%;
+      padding: 8px 9px;
       display:flex;
-      align-items:center;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+
+    .corner{
+      display:flex;
+      align-items:flex-start;
       justify-content:space-between;
       font-weight: 950;
-      font-size: 14px;
+      font-size: 13px;
       letter-spacing: .2px;
-      line-height: 1;
+      line-height: 1.0;
       text-rendering: geometricPrecision;
       -webkit-font-smoothing: antialiased;
     }
-    .card .corner .suit{
-      font-size: 16px;
+    .corner .miniSuit{
+      font-size: 14px;
       transform: translateY(-.5px);
-    }
-    .card .pip{
-      font-size: 34px;
-      font-weight: 950;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      height: 100%;
       opacity: .95;
+    }
+
+    .bigBlock{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap: 6px;
+      padding-bottom: 2px;
+    }
+    .bigRank{
+      font-weight: 1000;
+      font-size: 56px;
+      line-height: .9;
+      letter-spacing: -1px;
       text-rendering: geometricPrecision;
       -webkit-font-smoothing: antialiased;
+    }
+    .bigSuit{
+      font-weight: 1000;
+      font-size: 32px;
+      line-height: 1;
+      opacity: .95;
+      transform: translateY(-6px);
+    }
+
+    /* Back side simple corners */
+    .backMark{
+      height:100%;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      padding: 8px 9px;
+      opacity: .95;
+      font-weight: 950;
     }
 
     .red{ color:#b11313; }
     .black{ color:#0b1220; }
     .muted{ color: rgba(255,255,255,.55); }
 
-    /* Drag lift visual */
     .card.is-dragging{
       box-shadow:
         0 20px 50px rgba(0,0,0,.42),
         0 1px 0 rgba(255,255,255,.65) inset;
       filter: saturate(1.05);
+      transition: none; /* drag ghost shouldn't tween */
     }
 
     .floating{
@@ -283,6 +300,16 @@
       z-index: 9999;
       pointer-events:none;
       will-change: transform;
+    }
+
+    /* Deal/flip flair */
+    .card.flipIn{
+      animation: flipIn 240ms var(--ease);
+      transform-origin: center;
+    }
+    @keyframes flipIn{
+      0% { transform: translate3d(0, var(--y, 0px), 0) rotateY(90deg); }
+      100% { transform: translate3d(0, var(--y, 0px), 0) rotateY(0deg); }
     }
 
     .toast{
@@ -308,7 +335,7 @@
       transform: translateX(-50%) translateY(-4px);
     }
 
-    .win{
+    .win, .end{
       position: fixed;
       inset: 0;
       background: rgba(2,6,23,.78);
@@ -318,8 +345,8 @@
       z-index: 100000;
       padding: 18px;
     }
-    .win.show{ display:flex; }
-    .win .panel{
+    .win.show, .end.show{ display:flex; }
+    .win .panel, .end .panel{
       width:min(560px, 100%);
       background: rgba(255,255,255,.10);
       border: 1px solid rgba(255,255,255,.22);
@@ -328,41 +355,15 @@
       box-shadow: var(--shadow);
       backdrop-filter: blur(8px);
     }
-    .win h2{ margin:0 0 6px; }
-    .win p{ margin:0 0 14px; color: rgba(255,255,255,.75); line-height:1.35; }
-    .win .rowbtn{ display:flex; gap: 10px; flex-wrap:wrap; }
-
-    /* End Game modal (same overlay style) */
-    .end{
-      position: fixed;
-      inset: 0;
-      background: rgba(2,6,23,.78);
-      display:none;
-      align-items:center;
-      justify-content:center;
-      z-index: 100001;
-      padding: 18px;
-    }
-    .end.show{ display:flex; }
-    .end .panel{
-      width:min(560px, 100%);
-      background: rgba(255,255,255,.10);
-      border: 1px solid rgba(255,255,255,.22);
-      border-radius: 18px;
-      padding: 16px;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(8px);
-    }
-    .end h2{ margin:0 0 6px; }
-    .end p{ margin:0 0 10px; color: rgba(255,255,255,.78); line-height:1.35; }
-    .end .big{
+    .win h2, .end h2{ margin:0 0 6px; }
+    .win p, .end p{ margin:0 0 10px; color: rgba(255,255,255,.78); line-height:1.35; }
+    .bigLine{
       font-size: 20px;
       font-weight: 950;
       color: #fff;
       margin: 8px 0 12px;
     }
-    .end .rowbtn{ display:flex; gap: 10px; flex-wrap:wrap; }
-
+    .rowbtn{ display:flex; gap: 10px; flex-wrap:wrap; }
   </style>
 </head>
 <body>
@@ -377,11 +378,7 @@
         <button id="undoBtn" disabled>Undo</button>
         <button id="hintBtn">Hint</button>
         <button id="autoBtn">Auto-Move</button>
-
-        <!-- NEW: Control Mode Toggle -->
         <button id="modeBtn" class="modeBtn" title="Toggle controls">Mode: <b id="modeLabel">Drag</b></button>
-
-        <!-- NEW: End Game -->
         <button id="endBtn" title="End game and show score">End Game</button>
       </div>
     </header>
@@ -432,7 +429,7 @@
     <div class="panel">
       <h2>🎉 You Win!</h2>
       <p>You cleared the tableau and built all four foundations to Kings.</p>
-      <p class="big" id="winScoreLine"></p>
+      <p class="bigLine" id="winScoreLine"></p>
       <div class="rowbtn">
         <button id="playAgainBtn">Play Again</button>
         <button id="closeWinBtn">Close</button>
@@ -440,12 +437,11 @@
     </div>
   </div>
 
-  <!-- NEW: End Game modal -->
   <div class="end" id="end">
     <div class="panel">
       <h2>Game Summary</h2>
       <p id="endStats"></p>
-      <p class="big" id="endScoreLine"></p>
+      <p class="bigLine" id="endScoreLine"></p>
       <p class="muted" style="margin-top:10px;">
         Score rewards faster play and fewer moves.
       </p>
@@ -471,14 +467,16 @@
     tableau: [[],[],[],[],[],[],[]],
     moves: 0,
     score: 0,
-    history: [], // snapshots for undo
-    selected: null, // {from:{type, idx}, cards:[...]}
-    drag: null,     // drag data
+    history: [],
+    selected: null,
+    drag: null,
     busy: false,
 
-    // NEW: time + control mode
     startTs: Date.now(),
-    controlMode: "drag" // "drag" | "tap"
+    controlMode: "drag", // "drag" | "tap"
+
+    // FLIP animation cache
+    lastRects: new Map()
   };
 
   const els = {
@@ -514,16 +512,13 @@
   // =========================
   // Utilities
   // =========================
+  const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+
   function makeDeck(){
     const deck = [];
     for (const s of SUITS){
       for (let r = 1; r <= 13; r++){
-        deck.push({
-          id: cryptoRandomId(),
-          suit: s,
-          rank: r,
-          faceUp: false
-        });
+        deck.push({ id: cryptoRandomId(), suit: s, rank: r, faceUp: false });
       }
     }
     return deck;
@@ -548,7 +543,6 @@
   }
 
   function rankLabel(r){ return RANKS[r-1]; }
-
   function top(pile){ return pile[pile.length - 1] || null; }
 
   function cloneState(){
@@ -574,12 +568,11 @@
     state.score = snap.score;
     state.startTs = snap.startTs ?? state.startTs;
     state.controlMode = snap.controlMode ?? state.controlMode;
-
     state.selected = null;
     state.drag = null;
     syncModeUI();
     updateHUD();
-    render();
+    render(true);
   }
 
   function pushHistory(){
@@ -634,16 +627,21 @@
   }
 
   function computeFinalScore(){
-    // Simple, predictable scoring based on time + moves (+ win bonus if cleared).
     const secs = elapsedSeconds();
     const moves = state.moves;
-
     const base = 10000;
     const timePenalty = secs * 8;
     const movePenalty = moves * 25;
     const winBonus = checkWin() ? 1500 : 0;
-
     return Math.max(0, Math.floor(base - timePenalty - movePenalty + winBonus));
+  }
+
+  function setBusy(on){
+    state.busy = on;
+    const dis = !!on;
+    [els.newBtn, els.undoBtn, els.hintBtn, els.autoBtn, els.modeBtn, els.endBtn].forEach(b => b.disabled = dis ? true : b.disabled);
+    // keep undo disabled logic correct when not busy
+    if (!on) els.undoBtn.disabled = state.history.length === 0;
   }
 
   // =========================
@@ -667,6 +665,7 @@
   }
 
   function toggleMode(){
+    if (state.busy) return;
     state.controlMode = (state.controlMode === "drag") ? "tap" : "drag";
     saveMode();
     syncModeUI();
@@ -702,15 +701,12 @@
 
   function findAutoFoundationMove(){
     const candidates = [];
-
     const w = top(state.waste);
     if (w && w.faceUp) candidates.push({from:{type:"waste", idx:null}, card:w});
-
     for (let i = 0; i < 7; i++){
       const c = top(state.tableau[i]);
       if (c && c.faceUp) candidates.push({from:{type:"tableau", idx:i}, card:c});
     }
-
     for (const cand of candidates){
       for (let fi = 0; fi < 4; fi++){
         if (canMoveToFoundation(cand.card, fi)){
@@ -726,9 +722,12 @@
   }
 
   // =========================
-  // Deal / draw
+  // Deal / draw (with start-of-game deal animation)
   // =========================
-  function newGame(){
+  async function newGame(){
+    if (state.busy) return;
+    setBusy(true);
+
     state.history = [];
     state.moves = 0;
     state.score = 0;
@@ -743,25 +742,89 @@
     state.foundations = [[],[],[],[]];
     state.tableau = [[],[],[],[],[],[],[]];
 
+    // Put full deck into stock (face down) for animation consistency
+    while (deck.length) state.stock.push(deck.pop());
+    updateHUD();
+    render(true);
+
+    // Animate dealing 1..7 columns (28 cards), like the reference
+    const dealDelay = 55; // slower, natural
     for (let col = 0; col < 7; col++){
       for (let row = 0; row <= col; row++){
-        const card = deck.pop();
-        state.tableau[col].push(card);
+        await animateDealOne(col);
+        await sleep(dealDelay);
       }
-      const t = top(state.tableau[col]);
-      if (t) t.faceUp = true;
     }
-    while (deck.length) state.stock.push(deck.pop());
 
-    updateHUD();
-    render();
+    // Flip top of each tableau column with a tiny flip flair
+    for (let col = 0; col < 7; col++){
+      const t = top(state.tableau[col]);
+      if (t){
+        t.faceUp = true;
+        bumpScore(5);
+        render(true);
+        const el = document.querySelector(`[data-card-id="${t.id}"]`);
+        if (el) { el.classList.add("flipIn"); setTimeout(() => el.classList.remove("flipIn"), 260); }
+        await sleep(35);
+      }
+    }
+
     els.undoBtn.disabled = true;
     els.win.classList.remove("show");
     els.end.classList.remove("show");
     toast("New game!");
+    setBusy(false);
   }
 
+  async function animateDealOne(col){
+    // Pop from stock, animate from stock slot to tableau slot, then commit to tableau.
+    const card = state.stock.pop();
+    if (!card) return;
+
+    // Create a floating back-card at stock position
+    const stockRect = els.stock.getBoundingClientRect();
+    const targetPileEl = els.tableau[col];
+    const targetRect = targetPileEl.getBoundingClientRect();
+
+    // Determine y position inside tableau based on current pile layout (compact down + readable up)
+    const pile = state.tableau[col];
+    const y = computeTableauY(pile, pile.length, /*tight*/ false);
+
+    const float = document.createElement("div");
+    float.className = "floating";
+    const back = createCardEl({ ...card, faceUp: false });
+    back.style.position = "absolute";
+    back.style.left = "0px";
+    back.style.top = "0px";
+    back.style.setProperty("--y", "0px");
+    float.appendChild(back);
+
+    document.body.appendChild(float);
+
+    // Start at stock
+    float.style.transform = `translate(${stockRect.left}px, ${stockRect.top}px)`;
+    await raf();
+
+    // Animate to target column + y offset
+    float.style.transition = `transform 360ms var(--ease)`;
+    float.style.transform = `translate(${targetRect.left}px, ${targetRect.top + y}px)`;
+
+    await sleep(370);
+    float.remove();
+
+    // Commit to tableau faceDown for now
+    card.faceUp = false;
+    state.tableau[col].push(card);
+
+    // Small move scoring + move count not incremented for dealing
+    render(true);
+  }
+
+  async function raf(){ return new Promise(r => requestAnimationFrame(() => r())); }
+
   function drawFromStock(){
+    if (state.busy) return;
+
     if (state.stock.length === 0){
       if (state.waste.length === 0) return;
       pushHistory();
@@ -829,14 +892,13 @@
   }
 
   function tryMoveSelectedTo(toRef){
+    if (state.busy) return false;
     if (!state.selected) return false;
     const { from, cards } = state.selected;
     if (!cards.length) return false;
-
     if (from.type === toRef.type && from.idx === toRef.idx) return false;
 
     const first = cards[0];
-
     let ok = false;
     if (toRef.type === "foundation"){
       ok = (cards.length === 1) && canMoveToFoundation(first, toRef.idx);
@@ -864,11 +926,15 @@
       if (t && !t.faceUp){
         t.faceUp = true;
         bumpScore(5);
+        // flip flair after render
+        setTimeout(() => {
+          const el = document.querySelector(`[data-card-id="${t.id}"]`);
+          if (el) { el.classList.add("flipIn"); setTimeout(() => el.classList.remove("flipIn"), 260); }
+        }, 0);
       }
     }
 
     bumpMoves(1);
-
     if (toRef.type === "foundation") bumpScore(10);
     if (toRef.type === "tableau" && from.type === "waste") bumpScore(5);
 
@@ -888,14 +954,12 @@
     const card = cardRef.card;
     if (!card || !card.faceUp) return false;
 
-    // foundation first
     for (let fi = 0; fi < 4; fi++){
       if (canMoveToFoundation(card, fi)){
         setSelected(cardRef.from, [card]);
         return tryMoveSelectedTo({type:"foundation", idx:fi});
       }
     }
-    // tableau next
     for (let ti = 0; ti < 7; ti++){
       if (canMoveToTableau(card, ti)){
         setSelected(cardRef.from, [card]);
@@ -908,7 +972,7 @@
   function aceAutoMoveOnly(cardRef){
     const card = cardRef.card;
     if (!card || !card.faceUp) return false;
-    if (card.rank !== 1) return false; // Ace only
+    if (card.rank !== 1) return false;
     for (let fi = 0; fi < 4; fi++){
       if (canMoveToFoundation(card, fi)){
         setSelected(cardRef.from, [card]);
@@ -927,19 +991,56 @@
       bumpMoves(1);
       bumpScore(5);
       render();
+      const el = document.querySelector(`[data-card-id="${t.id}"]`);
+      if (el) { el.classList.add("flipIn"); setTimeout(() => el.classList.remove("flipIn"), 260); }
       return true;
     }
     return false;
   }
 
   // =========================
-  // Rendering
+  // Rendering (FLIP animation + readable tableau like reference)
   // =========================
   function updateHUD(){
     els.moves.textContent = String(state.moves);
     els.score.textContent = String(state.score);
     els.time.textContent = formatTime(elapsedSeconds());
     els.undoBtn.disabled = state.history.length === 0;
+  }
+
+  function snapshotRects(){
+    state.lastRects.clear();
+    document.querySelectorAll(".card").forEach(el => {
+      const id = el.dataset.cardId;
+      if (!id) return;
+      state.lastRects.set(id, el.getBoundingClientRect());
+    });
+  }
+
+  function applyFlip(){
+    // After DOM is updated, animate from previous rects to new rects for same cardId
+    document.querySelectorAll(".card").forEach(el => {
+      const id = el.dataset.cardId;
+      if (!id) return;
+      const prev = state.lastRects.get(id);
+      if (!prev) return;
+
+      const next = el.getBoundingClientRect();
+      const dx = prev.left - next.left;
+      const dy = prev.top - next.top;
+      if (Math.abs(dx) < 0.5 && Math.abs(dy) < 0.5) return;
+
+      // Temporarily disable transitions, apply inverted transform, then animate to normal
+      el.style.transition = "none";
+      const currentY = parseFloat(getComputedStyle(el).getPropertyValue("--y")) || 0;
+      // We already position via translateY(--y). Add delta on top.
+      el.style.transform = `translate3d(${dx}px, ${currentY + dy}px, 0)`;
+
+      requestAnimationFrame(() => {
+        el.style.transition = "";
+        el.style.transform = ""; // revert to CSS-driven transform using --y
+      });
+    });
   }
 
   function clearPileDom(el){
@@ -954,28 +1055,64 @@
     el.dataset.suit = card.suit;
 
     if (!card.faceUp){
-      el.innerHTML = `<div class="corner">◆</div><div class="pip"></div><div class="corner" style="justify-content:flex-end;">◆</div>`;
+      el.innerHTML = `
+        <div class="backMark">
+          <div>◆</div>
+          <div style="text-align:center; opacity:.6;">◆◆◆</div>
+          <div style="text-align:right;">◆</div>
+        </div>
+      `;
       return el;
     }
 
     const col = colorOf(card);
+    const rank = rankLabel(card.rank);
     el.innerHTML = `
-      <div class="corner ${col}">
-        <span>${rankLabel(card.rank)}</span>
-        <span class="suit">${card.suit}</span>
-      </div>
-      <div class="pip ${col}">${card.suit}</div>
-      <div class="corner ${col}" style="transform: rotate(180deg);">
-        <span>${rankLabel(card.rank)}</span>
-        <span class="suit">${card.suit}</span>
+      <div class="cardInner">
+        <div class="corner ${col}">
+          <span>${rank}</span>
+          <span class="miniSuit">${card.suit}</span>
+        </div>
+
+        <div class="bigBlock ${col}">
+          <div class="bigRank">${rank}</div>
+          <div class="bigSuit">${card.suit}</div>
+        </div>
+
+        <div class="corner ${col}" style="transform: rotate(180deg);">
+          <span>${rank}</span>
+          <span class="miniSuit">${card.suit}</span>
+        </div>
       </div>
     `;
     return el;
   }
 
-  function render(){
+  function computeTableauY(pile, idx, tight){
+    const root = getComputedStyle(document.documentElement);
+    const fanUp = parseInt(root.getPropertyValue("--fanUp"));
+    const fanUpTight = parseInt(root.getPropertyValue("--fanUpTight"));
+    const fanDown = parseInt(root.getPropertyValue("--fanDown"));
+
+    // Determine first face-up index (compact face-down like the reference)
+    let firstUp = pile.findIndex(c => c.faceUp);
+    if (firstUp < 0) firstUp = pile.length;
+
+    const upGap = tight ? fanUpTight : fanUp;
+
+    // Sum gaps per-card:
+    let y = 0;
+    for (let i = 0; i < idx; i++){
+      y += (i < firstUp) ? fanDown : upGap;
+    }
+    return y;
+  }
+
+  function render(skipFlip=false){
     updateHUD();
     clearSelected();
+
+    if (!skipFlip) snapshotRects();
 
     // stock
     clearPileDom(els.stock);
@@ -983,7 +1120,7 @@
       const c = state.stock[state.stock.length - 1];
       const fake = {...c, faceUp:false};
       const el = createCardEl(fake);
-      el.style.top = "0px";
+      el.style.setProperty("--y", "0px");
       els.stock.appendChild(el);
     }
 
@@ -992,6 +1129,7 @@
     if (state.waste.length){
       const c = top(state.waste);
       const el = createCardEl(c);
+      el.style.setProperty("--y", "0px");
       els.waste.appendChild(el);
     }
 
@@ -1002,32 +1140,32 @@
       const c = top(state.foundations[i]);
       if (c){
         const el = createCardEl(c);
+        el.style.setProperty("--y", "0px");
+        pileEl.appends = pileEl;
         pileEl.appendChild(el);
       }
     }
 
-    // tableau (fan)
-    const rootStyle = getComputedStyle(document.documentElement);
-    const gapNormal = parseInt(rootStyle.getPropertyValue("--fanGap"));
-    const gapTight  = parseInt(rootStyle.getPropertyValue("--fanGapTight"));
-
+    // tableau with compact face-down + readable face-up like reference
     for (let i = 0; i < 7; i++){
       const pileEl = els.tableau[i];
       clearPileDom(pileEl);
       const pile = state.tableau[i];
 
-      const gap = (pile.length > 10) ? gapTight : gapNormal;
-
+      const tight = pile.length > 14; // long columns tighten face-up slightly
       pile.forEach((c, idx) => {
         const el = createCardEl(c);
-        el.style.top = `${idx * gap}px`;
+        const y = computeTableauY(pile, idx, tight);
+        el.style.setProperty("--y", `${y}px`);
         pileEl.appendChild(el);
       });
     }
+
+    if (!skipFlip) applyFlip();
   }
 
   // =========================
-  // Drag & Drop (with smoother feel)
+  // Drag & Drop (smoother, more natural follow)
   // =========================
   function getCardUnderPointer(x,y){
     return document.elementFromPoint(x,y);
@@ -1039,23 +1177,31 @@
     state.drag = {
       from: fromRef,
       cards: cards.map(c => c.id),
-      pointerOffsetX: 0,
-      pointerOffsetY: 0,
       ghost: null,
+
+      // smoothing
+      targetX: startX,
+      targetY: startY,
+      curX: startX,
+      curY: startY,
+      rafId: 0,
+
+      pointerOffsetX: 0,
+      pointerOffsetY: 0
     };
 
-    // create ghost stack
     const ghost = document.createElement("div");
     ghost.className = "floating";
 
-    const rootStyle = getComputedStyle(document.documentElement);
-    const gap = Math.max(18, parseInt(rootStyle.getPropertyValue("--fanGapTight") || "18"));
+    const root = getComputedStyle(document.documentElement);
+    const gap = Math.max(18, parseInt(root.getPropertyValue("--fanUpTight") || "18"));
 
     cards.forEach((c, idx) => {
       const el = createCardEl(c);
       el.style.position = "absolute";
       el.style.left = "0px";
-      el.style.top = `${idx * gap}px`;
+      el.style.top = "0px";
+      el.style.setProperty("--y", `${idx * gap}px`);
       el.classList.add("is-dragging");
       ghost.appendChild(el);
     });
@@ -1072,19 +1218,30 @@
     clearHighlights();
     highlightDestinations(cards);
 
-    // set pointer offsets based on real click point
     const r = cardEl.getBoundingClientRect();
     state.drag.pointerOffsetX = startX - r.left;
     state.drag.pointerOffsetY = startY - r.top;
 
-    moveDrag(startX, startY);
+    // Smooth follow loop
+    const tick = () => {
+      if (!state.drag) return;
+      const d = state.drag;
+      // lerp toward target
+      d.curX += (d.targetX - d.curX) * 0.35;
+      d.curY += (d.targetY - d.curY) * 0.35;
+
+      const gx = d.curX - d.pointerOffsetX;
+      const gy = d.curY - d.pointerOffsetY;
+      d.ghost.style.transform = `translate(${gx}px, ${gy}px)`;
+      d.rafId = requestAnimationFrame(tick);
+    };
+    state.drag.rafId = requestAnimationFrame(tick);
   }
 
   function moveDrag(x,y){
     if (!state.drag) return;
-    const gx = x - state.drag.pointerOffsetX;
-    const gy = y - state.drag.pointerOffsetY;
-    state.drag.ghost.style.transform = `translate(${gx}px, ${gy}px)`;
+    state.drag.targetX = x;
+    state.drag.targetY = y;
   }
 
   function endDrag(x,y){
@@ -1100,6 +1257,7 @@
       if (orig) orig.style.opacity = "";
     });
 
+    cancelAnimationFrame(state.drag.rafId);
     state.drag.ghost.remove();
     const dragged = state.drag;
     state.drag = null;
@@ -1142,6 +1300,7 @@
   // Input handlers
   // =========================
   function onPileClick(pileEl, ev){
+    if (state.busy) return;
     const ref = pileFromEl(pileEl);
     if (!ref) return;
 
@@ -1157,7 +1316,6 @@
       }
     }
 
-    // in tap mode, tapping a highlighted foundation/tableau should attempt the selected move too
     if (state.controlMode === "tap" && state.selected){
       if (ref.type === "foundation" || ref.type === "tableau"){
         tryMoveSelectedTo(ref);
@@ -1166,6 +1324,8 @@
   }
 
   function onCardPointerDown(ev){
+    if (state.busy) return;
+
     const cardEl = ev.currentTarget;
     const pileEl = cardEl.closest(".pile");
     const fromRef = pileFromEl(pileEl);
@@ -1173,7 +1333,6 @@
 
     const cardId = cardEl.dataset.cardId;
 
-    // find card(s) in state by location
     let cards = [];
     if (fromRef.type === "waste"){
       const c = top(state.waste);
@@ -1206,7 +1365,7 @@
     const startY = ev.clientY;
     let moved = false;
 
-    // TAP MODE: no drag initiation (always “snap” behavior)
+    // TAP MODE: always snap style
     if (state.controlMode === "tap"){
       if (cards.length === 1){
         const did = tapAutoMove({from: fromRef, card: cards[0]});
@@ -1221,13 +1380,11 @@
       return;
     }
 
-    // DRAG MODE: drag-and-drop preferred
-    // BUT: Aces should still be one-click snap-to-foundation
-    // AND we do NOT auto-snap other cards in drag mode.
+    // DRAG MODE
     const onMove = (e) => {
       const dx = Math.abs(e.clientX - startX);
       const dy = Math.abs(e.clientY - startY);
-      if (!moved && (dx + dy) > 8){
+      if (!moved && (dx + dy) > 10){
         moved = true;
         startDrag(cardEl, fromRef, cards, startX, startY);
       }
@@ -1268,6 +1425,7 @@
     els.newBtn.addEventListener("click", newGame);
 
     els.undoBtn.addEventListener("click", () => {
+      if (state.busy) return;
       if (!state.history.length) return;
       const snap = state.history.pop();
       els.undoBtn.disabled = state.history.length === 0;
@@ -1276,15 +1434,14 @@
     });
 
     els.hintBtn.addEventListener("click", () => {
+      if (state.busy) return;
       const move = computeHint();
-      if (!move){
-        toast("No obvious moves");
-        return;
-      }
+      if (!move) return toast("No obvious moves");
       toast(move);
     });
 
     els.autoBtn.addEventListener("click", () => {
+      if (state.busy) return;
       let count = 0;
       let moved;
       do {
@@ -1299,20 +1456,17 @@
       else toast("No foundation moves");
     });
 
-    // NEW: End game
     els.endBtn.addEventListener("click", showEndModal);
     els.endCloseBtn.addEventListener("click", () => els.end.classList.remove("show"));
     els.endNewBtn.addEventListener("click", () => { els.end.classList.remove("show"); newGame(); });
 
-    // NEW: Mode toggle
     els.modeBtn.addEventListener("click", toggleMode);
 
-    // Win modal
     els.playAgainBtn.addEventListener("click", newGame);
     els.closeWinBtn.addEventListener("click", () => els.win.classList.remove("show"));
 
-    // Keyboard
     document.addEventListener("keydown", (e) => {
+      if (state.busy) return;
       if (e.key === "n" || e.key === "N") newGame();
       if (e.key === "u" || e.key === "U") els.undoBtn.click();
       if (e.key === "a" || e.key === "A") els.autoBtn.click();
@@ -1322,7 +1476,6 @@
       if (e.key === "e" || e.key === "E") showEndModal();
     });
 
-    // Close overlays when clicking outside panel
     els.end.addEventListener("click", (e) => { if (e.target === els.end) els.end.classList.remove("show"); });
     els.win.addEventListener("click", (e) => { if (e.target === els.win) els.win.classList.remove("show"); });
   }
@@ -1360,7 +1513,7 @@
     return null;
   }
 
-  // Observe DOM changes to rebind card handlers after render
+  // Rebind card handlers after render
   const observer = new MutationObserver(() => {
     document.querySelectorAll(".card").forEach(el => {
       if (el._bound) return;
@@ -1371,7 +1524,6 @@
 
   // Time ticker
   setInterval(() => {
-    // only update time display, not rerender
     els.time.textContent = formatTime(elapsedSeconds());
   }, 1000);
 
@@ -1379,6 +1531,7 @@
   loadMode();
   syncModeUI();
   bindHandlers();
+  render(true);
   newGame();
   observer.observe(document.getElementById("board"), {childList:true, subtree:true});
 })();
