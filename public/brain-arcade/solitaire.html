@@ -9,7 +9,6 @@
     :root{
       --bg1:#0b3d2e;
       --bg2:#06291f;
-      --felt:#0f5132;
       --card:#ffffff;
       --ink:#0b1220;
       --muted:rgba(255,255,255,.45);
@@ -25,9 +24,9 @@
       --stackGap: 18px;
 
       /* Tableau fan */
-      --fanUp: 26px;       /* face-up spacing */
-      --fanUpTight: 18px;  /* face-up when long */
-      --fanDown: 10px;     /* face-down spacing (compact like the reference) */
+      --fanUp: 26px;
+      --fanUpTight: 18px;
+      --fanDown: 10px;
 
       --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
 
@@ -132,7 +131,6 @@
       padding: 14px;
       box-shadow: var(--shadow);
 
-      /* FIX: stop bottom cutoff */
       overflow: auto;
       -webkit-overflow-scrolling: touch;
       max-height: calc(100svh - 160px);
@@ -174,12 +172,10 @@
       background: rgba(255,255,255,.10);
     }
 
-    /* Give tableau enough space */
     .tableau{
       min-height: calc(var(--cardH) + 10 * var(--fanUp));
     }
 
-    /* Sharper card design + smoother motion */
     .card{
       width: var(--cardW);
       height: var(--cardH);
@@ -198,15 +194,15 @@
       box-sizing:border-box;
       cursor:grab;
 
-      /* IMPORTANT: we position with transform for smooth motion */
+      /* positioned via transform (smooth FLIP) */
       transform: translate3d(0, var(--y, 0px), 0);
       transition:
-        transform 320ms var(--ease),
+        transform 240ms var(--ease),
         box-shadow 180ms var(--ease),
         filter 180ms var(--ease);
       touch-action:none;
       will-change: transform;
-      overflow:hidden;
+      /* NOTE: removed overflow hidden so suits never clip */
     }
     .card:active{ cursor:grabbing; }
 
@@ -222,13 +218,14 @@
         0 1px 0 rgba(255,255,255,.25) inset;
     }
 
-    /* Face-up layout matching the reference: small corner + BIG rank low for stack readability */
+    /* Face-up layout: readable big rank + clear suit */
     .cardInner{
       height:100%;
-      padding: 8px 9px;
+      padding: 8px 10px 10px;
       display:flex;
       flex-direction:column;
       justify-content:space-between;
+      gap: 6px;
     }
 
     .corner{
@@ -239,39 +236,41 @@
       font-size: 13px;
       letter-spacing: .2px;
       line-height: 1.0;
-      text-rendering: geometricPrecision;
       -webkit-font-smoothing: antialiased;
     }
     .corner .miniSuit{
-      font-size: 14px;
-      transform: translateY(-.5px);
-      opacity: .95;
+      font-size: 16px;       /* bigger = easier to see */
+      line-height: 1;
+      opacity: 1;
+      transform: translateY(-1px);
+      text-shadow: 0 1px 0 rgba(255,255,255,.25);
     }
 
     .bigBlock{
       display:flex;
       align-items:flex-end;
       justify-content:space-between;
-      gap: 6px;
+      gap: 8px;
       padding-bottom: 2px;
     }
     .bigRank{
       font-weight: 1000;
-      font-size: 56px;
+      font-size: 54px;       /* slightly reduced to prevent crowding */
       line-height: .9;
       letter-spacing: -1px;
-      text-rendering: geometricPrecision;
       -webkit-font-smoothing: antialiased;
     }
     .bigSuit{
       font-weight: 1000;
-      font-size: 32px;
+      font-size: 34px;       /* bigger suit */
       line-height: 1;
-      opacity: .95;
-      transform: translateY(-6px);
+      opacity: 1;
+      transform: translateY(-4px);
+      text-shadow:
+        0 1px 0 rgba(255,255,255,.35),
+        0 2px 6px rgba(0,0,0,.08);
     }
 
-    /* Back side simple corners */
     .backMark{
       height:100%;
       display:flex;
@@ -291,7 +290,7 @@
         0 20px 50px rgba(0,0,0,.42),
         0 1px 0 rgba(255,255,255,.65) inset;
       filter: saturate(1.05);
-      transition: none; /* drag ghost shouldn't tween */
+      transition: none;
     }
 
     .floating{
@@ -302,9 +301,8 @@
       will-change: transform;
     }
 
-    /* Deal/flip flair */
     .card.flipIn{
-      animation: flipIn 240ms var(--ease);
+      animation: flipIn 220ms var(--ease);
       transform-origin: center;
     }
     @keyframes flipIn{
@@ -371,7 +369,7 @@
     <header>
       <div class="brand">
         <h1>Solitaire (Klondike)</h1>
-        <small id="subtitle">Drag cards • Tap Aces to auto-move • Undo • Draw 1</small>
+        <small id="subtitle">Drag cards • Click to send to foundations • Undo • Draw 1</small>
       </div>
       <div class="controls">
         <button id="newBtn">New Game</button>
@@ -454,9 +452,6 @@
 
 <script>
 (() => {
-  // =========================
-  // Data model
-  // =========================
   const SUITS = ["♠","♥","♦","♣"];
   const RANKS = ["A","2","3","4","5","6","7","8","9","10","J","Q","K"];
 
@@ -470,13 +465,12 @@
     history: [],
     selected: null,
     drag: null,
-    busy: false,
 
     startTs: Date.now(),
-    controlMode: "drag", // "drag" | "tap"
+    controlMode: "drag",
 
-    // FLIP animation cache
-    lastRects: new Map()
+    lastRects: new Map(),
+    busy: false
   };
 
   const els = {
@@ -509,10 +503,32 @@
     endCloseBtn: document.getElementById("endCloseBtn"),
   };
 
-  // =========================
-  // Utilities
-  // =========================
   const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+  const raf = () => new Promise(r => requestAnimationFrame(() => r()));
+
+  // --- busy (FIXED: buttons were getting stuck disabled) ---
+  function setBusy(on){
+    state.busy = on;
+
+    if (on){
+      // snapshot existing disabled states
+      state._btnPrev = state._btnPrev || new Map();
+      const buttons = [els.newBtn, els.undoBtn, els.hintBtn, els.autoBtn, els.modeBtn, els.endBtn];
+      buttons.forEach(b => state._btnPrev.set(b, b.disabled));
+      buttons.forEach(b => b.disabled = true);
+      return;
+    }
+
+    // restore previous disabled states
+    const buttons = [els.newBtn, els.undoBtn, els.hintBtn, els.autoBtn, els.modeBtn, els.endBtn];
+    buttons.forEach(b => {
+      const prev = state._btnPrev?.get(b);
+      b.disabled = !!prev;
+    });
+
+    // keep undo accurate
+    els.undoBtn.disabled = state.history.length === 0;
+  }
 
   function makeDeck(){
     const deck = [];
@@ -636,14 +652,6 @@
     return Math.max(0, Math.floor(base - timePenalty - movePenalty + winBonus));
   }
 
-  function setBusy(on){
-    state.busy = on;
-    const dis = !!on;
-    [els.newBtn, els.undoBtn, els.hintBtn, els.autoBtn, els.modeBtn, els.endBtn].forEach(b => b.disabled = dis ? true : b.disabled);
-    // keep undo disabled logic correct when not busy
-    if (!on) els.undoBtn.disabled = state.history.length === 0;
-  }
-
   // =========================
   // Control mode
   // =========================
@@ -660,8 +668,8 @@
     els.modeLabel.textContent = (state.controlMode === "tap") ? "Tap" : "Drag";
     els.subtitle.textContent =
       (state.controlMode === "tap")
-        ? "Tap to snap • Drag optional • Undo • Draw 1"
-        : "Drag cards • Tap Aces to auto-move • Undo • Draw 1";
+        ? "Tap: foundation-only • Drag for tableau moves • Undo • Draw 1"
+        : "Drag cards • Click to send to foundations • Undo • Draw 1";
   }
 
   function toggleMode(){
@@ -669,7 +677,7 @@
     state.controlMode = (state.controlMode === "drag") ? "tap" : "drag";
     saveMode();
     syncModeUI();
-    toast(`Mode: ${state.controlMode === "tap" ? "Tap-to-snap" : "Drag"}`);
+    toast(`Mode: ${state.controlMode === "tap" ? "Tap (foundation-only)" : "Drag"}`);
   }
 
   // =========================
@@ -699,14 +707,37 @@
     return true;
   }
 
+  function checkWin(){
+    return state.foundations.every(p => p.length === 13);
+  }
+
+  // =========================
+  // NEW: Foundation-only click logic (Ace -> next -> next ...)
+  // =========================
+  function foundationClickMoveOnly(cardRef){
+    const card = cardRef.card;
+    if (!card || !card.faceUp) return false;
+
+    for (let fi = 0; fi < 4; fi++){
+      if (canMoveToFoundation(card, fi)){
+        setSelected(cardRef.from, [card]);
+        return tryMoveSelectedTo({type:"foundation", idx:fi});
+      }
+    }
+    return false;
+  }
+
   function findAutoFoundationMove(){
     const candidates = [];
+
     const w = top(state.waste);
     if (w && w.faceUp) candidates.push({from:{type:"waste", idx:null}, card:w});
+
     for (let i = 0; i < 7; i++){
       const c = top(state.tableau[i]);
       if (c && c.faceUp) candidates.push({from:{type:"tableau", idx:i}, card:c});
     }
+
     for (const cand of candidates){
       for (let fi = 0; fi < 4; fi++){
         if (canMoveToFoundation(cand.card, fi)){
@@ -717,12 +748,8 @@
     return null;
   }
 
-  function checkWin(){
-    return state.foundations.every(p => p.length === 13);
-  }
-
   // =========================
-  // Deal / draw (with start-of-game deal animation)
+  // Deal / draw (FASTER)
   // =========================
   async function newGame(){
     if (state.busy) return;
@@ -742,21 +769,21 @@
     state.foundations = [[],[],[],[]];
     state.tableau = [[],[],[],[],[],[],[]];
 
-    // Put full deck into stock (face down) for animation consistency
     while (deck.length) state.stock.push(deck.pop());
+
     updateHUD();
     render(true);
 
-    // Animate dealing 1..7 columns (28 cards), like the reference
-    const dealDelay = 55; // slower, natural
+    // Faster deal (you said too slow)
+    const dealDelay = 18;
     for (let col = 0; col < 7; col++){
       for (let row = 0; row <= col; row++){
         await animateDealOne(col);
-        await sleep(dealDelay);
+        if (dealDelay) await sleep(dealDelay);
       }
     }
 
-    // Flip top of each tableau column with a tiny flip flair
+    // Flip top of each tableau column
     for (let col = 0; col < 7; col++){
       const t = top(state.tableau[col]);
       if (t){
@@ -764,8 +791,8 @@
         bumpScore(5);
         render(true);
         const el = document.querySelector(`[data-card-id="${t.id}"]`);
-        if (el) { el.classList.add("flipIn"); setTimeout(() => el.classList.remove("flipIn"), 260); }
-        await sleep(35);
+        if (el) { el.classList.add("flipIn"); setTimeout(() => el.classList.remove("flipIn"), 240); }
+        await sleep(10);
       }
     }
 
@@ -777,18 +804,15 @@
   }
 
   async function animateDealOne(col){
-    // Pop from stock, animate from stock slot to tableau slot, then commit to tableau.
     const card = state.stock.pop();
     if (!card) return;
 
-    // Create a floating back-card at stock position
     const stockRect = els.stock.getBoundingClientRect();
     const targetPileEl = els.tableau[col];
     const targetRect = targetPileEl.getBoundingClientRect();
 
-    // Determine y position inside tableau based on current pile layout (compact down + readable up)
     const pile = state.tableau[col];
-    const y = computeTableauY(pile, pile.length, /*tight*/ false);
+    const y = computeTableauY(pile, pile.length, false);
 
     const float = document.createElement("div");
     float.className = "floating";
@@ -798,29 +822,22 @@
     back.style.top = "0px";
     back.style.setProperty("--y", "0px");
     float.appendChild(back);
-
     document.body.appendChild(float);
 
-    // Start at stock
     float.style.transform = `translate(${stockRect.left}px, ${stockRect.top}px)`;
     await raf();
 
-    // Animate to target column + y offset
-    float.style.transition = `transform 360ms var(--ease)`;
+    // Faster travel
+    float.style.transition = `transform 220ms var(--ease)`;
     float.style.transform = `translate(${targetRect.left}px, ${targetRect.top + y}px)`;
 
-    await sleep(370);
+    await sleep(230);
     float.remove();
 
-    // Commit to tableau faceDown for now
     card.faceUp = false;
     state.tableau[col].push(card);
-
-    // Small move scoring + move count not incremented for dealing
     render(true);
   }
-
-  async function raf(){ return new Promise(r => requestAnimationFrame(() => r())); }
 
   function drawFromStock(){
     if (state.busy) return;
@@ -871,13 +888,18 @@
     const first = cards[0];
     if (!first) return;
 
+    // highlight foundations if possible
     if (cards.length === 1){
       for (let fi = 0; fi < 4; fi++){
         if (canMoveToFoundation(first, fi)) els.foundations[fi].classList.add("highlight");
       }
     }
-    for (let ti = 0; ti < 7; ti++){
-      if (canMoveToTableau(first, ti)) els.tableau[ti].classList.add("highlight");
+
+    // only highlight tableau destinations in DRAG mode (because click-to-tableau is disabled by request)
+    if (state.controlMode === "drag"){
+      for (let ti = 0; ti < 7; ti++){
+        if (canMoveToTableau(first, ti)) els.tableau[ti].classList.add("highlight");
+      }
     }
   }
 
@@ -894,19 +916,20 @@
   function tryMoveSelectedTo(toRef){
     if (state.busy) return false;
     if (!state.selected) return false;
+
     const { from, cards } = state.selected;
     if (!cards.length) return false;
     if (from.type === toRef.type && from.idx === toRef.idx) return false;
 
     const first = cards[0];
     let ok = false;
+
     if (toRef.type === "foundation"){
       ok = (cards.length === 1) && canMoveToFoundation(first, toRef.idx);
     } else if (toRef.type === "tableau"){
       ok = canMoveToTableau(first, toRef.idx);
-    } else {
-      ok = false;
     }
+
     if (!ok) return false;
 
     pushHistory();
@@ -926,10 +949,9 @@
       if (t && !t.faceUp){
         t.faceUp = true;
         bumpScore(5);
-        // flip flair after render
         setTimeout(() => {
           const el = document.querySelector(`[data-card-id="${t.id}"]`);
-          if (el) { el.classList.add("flipIn"); setTimeout(() => el.classList.remove("flipIn"), 260); }
+          if (el) { el.classList.add("flipIn"); setTimeout(() => el.classList.remove("flipIn"), 240); }
         }, 0);
       }
     }
@@ -950,38 +972,6 @@
     return true;
   }
 
-  function tapAutoMove(cardRef){
-    const card = cardRef.card;
-    if (!card || !card.faceUp) return false;
-
-    for (let fi = 0; fi < 4; fi++){
-      if (canMoveToFoundation(card, fi)){
-        setSelected(cardRef.from, [card]);
-        return tryMoveSelectedTo({type:"foundation", idx:fi});
-      }
-    }
-    for (let ti = 0; ti < 7; ti++){
-      if (canMoveToTableau(card, ti)){
-        setSelected(cardRef.from, [card]);
-        return tryMoveSelectedTo({type:"tableau", idx:ti});
-      }
-    }
-    return false;
-  }
-
-  function aceAutoMoveOnly(cardRef){
-    const card = cardRef.card;
-    if (!card || !card.faceUp) return false;
-    if (card.rank !== 1) return false;
-    for (let fi = 0; fi < 4; fi++){
-      if (canMoveToFoundation(card, fi)){
-        setSelected(cardRef.from, [card]);
-        return tryMoveSelectedTo({type:"foundation", idx:fi});
-      }
-    }
-    return false;
-  }
-
   function flipIfNeededOnTableau(tIndex){
     const pile = state.tableau[tIndex];
     const t = top(pile);
@@ -992,14 +982,14 @@
       bumpScore(5);
       render();
       const el = document.querySelector(`[data-card-id="${t.id}"]`);
-      if (el) { el.classList.add("flipIn"); setTimeout(() => el.classList.remove("flipIn"), 260); }
+      if (el) { el.classList.add("flipIn"); setTimeout(() => el.classList.remove("flipIn"), 240); }
       return true;
     }
     return false;
   }
 
   // =========================
-  // Rendering (FLIP animation + readable tableau like reference)
+  // Rendering (FLIP)
   // =========================
   function updateHUD(){
     els.moves.textContent = String(state.moves);
@@ -1018,7 +1008,6 @@
   }
 
   function applyFlip(){
-    // After DOM is updated, animate from previous rects to new rects for same cardId
     document.querySelectorAll(".card").forEach(el => {
       const id = el.dataset.cardId;
       if (!id) return;
@@ -1030,15 +1019,13 @@
       const dy = prev.top - next.top;
       if (Math.abs(dx) < 0.5 && Math.abs(dy) < 0.5) return;
 
-      // Temporarily disable transitions, apply inverted transform, then animate to normal
       el.style.transition = "none";
       const currentY = parseFloat(getComputedStyle(el).getPropertyValue("--y")) || 0;
-      // We already position via translateY(--y). Add delta on top.
       el.style.transform = `translate3d(${dx}px, ${currentY + dy}px, 0)`;
 
       requestAnimationFrame(() => {
         el.style.transition = "";
-        el.style.transform = ""; // revert to CSS-driven transform using --y
+        el.style.transform = "";
       });
     });
   }
@@ -1094,13 +1081,11 @@
     const fanUpTight = parseInt(root.getPropertyValue("--fanUpTight"));
     const fanDown = parseInt(root.getPropertyValue("--fanDown"));
 
-    // Determine first face-up index (compact face-down like the reference)
     let firstUp = pile.findIndex(c => c.faceUp);
     if (firstUp < 0) firstUp = pile.length;
 
     const upGap = tight ? fanUpTight : fanUp;
 
-    // Sum gaps per-card:
     let y = 0;
     for (let i = 0; i < idx; i++){
       y += (i < firstUp) ? fanDown : upGap;
@@ -1118,8 +1103,7 @@
     clearPileDom(els.stock);
     if (state.stock.length){
       const c = state.stock[state.stock.length - 1];
-      const fake = {...c, faceUp:false};
-      const el = createCardEl(fake);
+      const el = createCardEl({ ...c, faceUp:false });
       el.style.setProperty("--y", "0px");
       els.stock.appendChild(el);
     }
@@ -1141,18 +1125,17 @@
       if (c){
         const el = createCardEl(c);
         el.style.setProperty("--y", "0px");
-        pileEl.appends = pileEl;
         pileEl.appendChild(el);
       }
     }
 
-    // tableau with compact face-down + readable face-up like reference
+    // tableau
     for (let i = 0; i < 7; i++){
       const pileEl = els.tableau[i];
       clearPileDom(pileEl);
       const pile = state.tableau[i];
+      const tight = pile.length > 14;
 
-      const tight = pile.length > 14; // long columns tighten face-up slightly
       pile.forEach((c, idx) => {
         const el = createCardEl(c);
         const y = computeTableauY(pile, idx, tight);
@@ -1165,7 +1148,7 @@
   }
 
   // =========================
-  // Drag & Drop (smoother, more natural follow)
+  // Drag & Drop
   // =========================
   function getCardUnderPointer(x,y){
     return document.elementFromPoint(x,y);
@@ -1179,7 +1162,6 @@
       cards: cards.map(c => c.id),
       ghost: null,
 
-      // smoothing
       targetX: startX,
       targetY: startY,
       curX: startX,
@@ -1222,11 +1204,9 @@
     state.drag.pointerOffsetX = startX - r.left;
     state.drag.pointerOffsetY = startY - r.top;
 
-    // Smooth follow loop
     const tick = () => {
       if (!state.drag) return;
       const d = state.drag;
-      // lerp toward target
       d.curX += (d.targetX - d.curX) * 0.35;
       d.curY += (d.targetY - d.curY) * 0.35;
 
@@ -1281,8 +1261,7 @@
     if (!d) return [];
     const fromPile = getPile(d.from);
     const ids = new Set(d.cards);
-    const cards = fromPile.filter(c => ids.has(c.id));
-    return cards;
+    return fromPile.filter(c => ids.has(c.id));
   }
 
   // =========================
@@ -1309,17 +1288,10 @@
       return;
     }
 
-    // click empty tableau? try move selected there
-    if (ref.type === "tableau" && ev.target.classList.contains("pile")){
-      if (state.selected){
-        tryMoveSelectedTo(ref);
-      }
-    }
-
-    if (state.controlMode === "tap" && state.selected){
-      if (ref.type === "foundation" || ref.type === "tableau"){
-        tryMoveSelectedTo(ref);
-      }
+    // IMPORTANT: per your request, do NOT allow click-to-move to tableau.
+    // (tableau moves happen via drag)
+    if (state.selected && ref.type === "foundation"){
+      tryMoveSelectedTo(ref);
     }
   }
 
@@ -1339,9 +1311,8 @@
       if (!c || c.id !== cardId || !c.faceUp) return;
       cards = [c];
     } else if (fromRef.type === "foundation"){
-      const c = top(state.foundations[fromRef.idx]);
-      if (!c || c.id !== cardId || !c.faceUp) return;
-      cards = [c];
+      // foundations not draggable/click-movable down
+      return;
     } else if (fromRef.type === "tableau"){
       const pile = state.tableau[fromRef.idx];
       const clicked = pile.find(c => c.id === cardId);
@@ -1365,17 +1336,18 @@
     const startY = ev.clientY;
     let moved = false;
 
-    // TAP MODE: always snap style
+    // TAP MODE: foundation-only click behavior
     if (state.controlMode === "tap"){
       if (cards.length === 1){
-        const did = tapAutoMove({from: fromRef, card: cards[0]});
+        const did = foundationClickMoveOnly({from: fromRef, card: cards[0]});
         if (!did){
           setSelected(fromRef, cards);
-          setTimeout(() => { if (state.selected) clearSelected(); }, 900);
+          setTimeout(() => { if (state.selected) clearSelected(); }, 700);
         }
       } else {
+        // stacks in tap mode just highlight (drag if you want to move them)
         setSelected(fromRef, cards);
-        setTimeout(() => { if (state.selected) clearSelected(); }, 1200);
+        setTimeout(() => { if (state.selected) clearSelected(); }, 900);
       }
       return;
     }
@@ -1400,12 +1372,12 @@
         return;
       }
 
-      // In drag mode: only Aces auto-snap on tap
+      // CLICK (no drag): foundation-only (Ace -> next -> next...) ✅
       if (cards.length === 1){
-        const didAce = aceAutoMoveOnly({from: fromRef, card: cards[0]});
-        if (!didAce){
+        const did = foundationClickMoveOnly({from: fromRef, card: cards[0]});
+        if (!did){
           setSelected(fromRef, cards);
-          setTimeout(() => { if (state.selected) clearSelected(); }, 900);
+          setTimeout(() => { if (state.selected) clearSelected(); }, 800);
         }
       } else {
         setSelected(fromRef, cards);
@@ -1428,7 +1400,6 @@
       if (state.busy) return;
       if (!state.history.length) return;
       const snap = state.history.pop();
-      els.undoBtn.disabled = state.history.length === 0;
       restoreState(snap);
       toast("Undid last move");
     });
@@ -1436,7 +1407,7 @@
     els.hintBtn.addEventListener("click", () => {
       if (state.busy) return;
       const move = computeHint();
-      if (!move) return toast("No obvious moves");
+      if (!move) return toast("No obvious foundation move");
       toast(move);
     });
 
@@ -1452,7 +1423,7 @@
           count++;
         }
       } while (moved && count < 50);
-      if (count) toast(`Auto-moved ${count} card${count===1?"":"s"}`);
+      if (count) toast(`Auto-moved ${count} to foundations`);
       else toast("No foundation moves");
     });
 
@@ -1480,36 +1451,13 @@
     els.win.addEventListener("click", (e) => { if (e.target === els.win) els.win.classList.remove("show"); });
   }
 
+  // Hint now only suggests foundation moves (matches your “click to foundation only” rule)
   function computeHint(){
     const a = findAutoFoundationMove();
     if (a){
       const c = a.cards[0];
-      return `Try moving ${rankLabel(c.rank)}${c.suit} to a foundation`;
+      return `Click ${rankLabel(c.rank)}${c.suit} to send it up`;
     }
-
-    const w = top(state.waste);
-    if (w && w.faceUp){
-      for (let ti=0; ti<7; ti++){
-        if (canMoveToTableau(w, ti)) return `Move ${rankLabel(w.rank)}${w.suit} to a tableau column`;
-      }
-    }
-
-    for (let from=0; from<7; from++){
-      const pile = state.tableau[from];
-      for (let i=0; i<pile.length; i++){
-        const c = pile[i];
-        if (!c.faceUp) continue;
-        const stack = pile.slice(i);
-        if (!isValidSequence(stack)) continue;
-        const first = stack[0];
-        for (let to=0; to<7; to++){
-          if (to === from) continue;
-          if (canMoveToTableau(first, to)) return `Move a stack starting with ${rankLabel(first.rank)}${first.suit} to another column`;
-        }
-      }
-    }
-
-    if (state.stock.length || state.waste.length) return "Draw from stock";
     return null;
   }
 
