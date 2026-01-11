@@ -1,0 +1,1364 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#0f172a" />
+
+  <title>Block Logic · Spatial Reasoning Puzzle | Teach Arcade Brain Arcade</title>
+  <meta name="description" content="Block Logic is a spatial reasoning puzzle from Teach Arcade. Drag and place blocks on a 10×10 grid to clear rows and columns. Designed for focus, planning, and brain breaks." />
+  <link rel="canonical" href="https://teacharcade.com/brain-arcade/block-logic/" />
+
+  <style>
+    :root{
+      --bg1:#0b1220;
+      --bg2:#020617;
+      --panel:#0f172a;
+      --panel2:#0b1326;
+      --line:rgba(255,255,255,.10);
+      --line2:rgba(255,255,255,.16);
+      --text:#e5e7eb;
+      --muted:#9ca3af;
+      --good:#22c55e;
+      --warn:#f59e0b;
+      --bad:#ef4444;
+      --accent:#60a5fa;
+      --shadow: 0 18px 40px rgba(0,0,0,.35);
+      --radius: 18px;
+      --cell: 34px; /* will be overwritten responsively by JS */
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background: radial-gradient(1200px 700px at 20% -10%, #14224a 0%, var(--bg1) 40%, var(--bg2) 100%);
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:16px;
+    }
+
+    .wrap{
+      width:min(1100px, 100%);
+      display:grid;
+      grid-template-columns: 1fr 360px;
+      gap:14px;
+    }
+
+    @media (max-width: 980px){
+      .wrap{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+
+    .topbar{
+      padding:14px 16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      border-bottom:1px solid var(--line);
+      background: rgba(2,6,23,.35);
+    }
+
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      min-width: 0;
+    }
+    .badge{
+      width:34px; height:34px; border-radius:10px;
+      background: linear-gradient(135deg, rgba(96,165,250,.35), rgba(34,197,94,.25));
+      border:1px solid rgba(255,255,255,.12);
+      display:grid; place-items:center;
+      font-weight:800;
+    }
+    .titles{min-width:0}
+    .titles h1{
+      margin:0;
+      font-size: 16px;
+      letter-spacing:.2px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .titles p{
+      margin:2px 0 0;
+      font-size: 12px;
+      color: var(--muted);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .rightstats{
+      display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;
+    }
+    .stat{
+      padding:8px 10px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background: rgba(15,23,42,.55);
+      min-width: 112px;
+    }
+    .stat .k{font-size:11px; color:var(--muted)}
+    .stat .v{font-size:16px; font-weight:800; margin-top:2px}
+
+    .main{
+      padding:14px;
+    }
+
+    /* GRID */
+    .gridWrap{
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    .gridArea{
+      width: min(640px, 100%);
+      background: rgba(2,6,23,.35);
+      border:1px solid var(--line);
+      border-radius: 16px;
+      padding:12px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(10, var(--cell));
+      grid-template-rows: repeat(10, var(--cell));
+      gap:6px;
+      justify-content:center;
+      touch-action:none;
+      user-select:none;
+    }
+
+    .cell{
+      width: var(--cell);
+      height: var(--cell);
+      border-radius: 10px;
+      background: rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.07);
+      position:relative;
+    }
+    .cell.filled{
+      background: linear-gradient(180deg, rgba(96,165,250,.38), rgba(96,165,250,.18));
+      border-color: rgba(96,165,250,.30);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.06);
+    }
+    .cell.preview-ok{
+      outline: 2px solid rgba(34,197,94,.65);
+      outline-offset: 0px;
+      background: rgba(34,197,94,.10);
+    }
+    .cell.preview-bad{
+      outline: 2px solid rgba(239,68,68,.55);
+      outline-offset: 0px;
+      background: rgba(239,68,68,.10);
+    }
+    .cell.hint{
+      outline: 2px solid rgba(245,158,11,.75);
+      background: rgba(245,158,11,.12);
+    }
+
+    .side{
+      padding:14px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+
+    .panelTitle{
+      margin:0;
+      font-size: 14px;
+      letter-spacing:.2px;
+    }
+    .panelSub{
+      margin:4px 0 0;
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.35;
+    }
+
+    .controls{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+    }
+
+    button{
+      appearance:none;
+      border:1px solid var(--line2);
+      background: rgba(15,23,42,.65);
+      color:var(--text);
+      padding:10px 10px;
+      border-radius: 12px;
+      font-weight:700;
+      cursor:pointer;
+      transition: transform .06s ease, background .12s ease, border-color .12s ease;
+    }
+    button:hover{ background: rgba(15,23,42,.85); }
+    button:active{ transform: translateY(1px); }
+    button:disabled{
+      opacity:.55;
+      cursor:not-allowed;
+    }
+    .btnPrimary{
+      border-color: rgba(96,165,250,.45);
+      background: rgba(96,165,250,.18);
+    }
+    .btnDanger{
+      border-color: rgba(239,68,68,.35);
+      background: rgba(239,68,68,.12);
+    }
+
+    .toggles{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      padding:12px;
+      border:1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(2,6,23,.25);
+    }
+    .toggleRow{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .toggleRow label{
+      font-size: 13px;
+      color: var(--text);
+      font-weight: 700;
+    }
+    .toggleRow small{
+      display:block;
+      margin-top:2px;
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .switch{
+      position:relative;
+      width:48px;
+      height:28px;
+      background: rgba(255,255,255,.10);
+      border:1px solid var(--line2);
+      border-radius: 999px;
+      cursor:pointer;
+      flex: 0 0 auto;
+    }
+    .switch::after{
+      content:"";
+      position:absolute;
+      top:50%;
+      left:4px;
+      transform:translateY(-50%);
+      width:20px;
+      height:20px;
+      border-radius:50%;
+      background: rgba(255,255,255,.85);
+      transition: left .14s ease, background .14s ease;
+    }
+    .switch.on{
+      background: rgba(34,197,94,.25);
+      border-color: rgba(34,197,94,.35);
+    }
+    .switch.on::after{
+      left: 22px;
+      background: rgba(255,255,255,.92);
+    }
+
+    .tray{
+      padding:12px;
+      border:1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(2,6,23,.25);
+    }
+    .trayHeader{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:10px;
+    }
+    .trayHeader .meta{
+      font-size:12px;
+      color: var(--muted);
+    }
+
+    .pieces{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:10px;
+    }
+
+    .piece{
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(15,23,42,.45);
+      padding:10px;
+      min-height: 114px;
+      display:grid;
+      place-items:center;
+      position:relative;
+      touch-action:none;
+      user-select:none;
+    }
+    .piece.selected{
+      border-color: rgba(96,165,250,.55);
+      box-shadow: 0 0 0 2px rgba(96,165,250,.18) inset;
+    }
+    .piece.used{
+      opacity:.35;
+      pointer-events:none;
+    }
+    .pieceCanvas{
+      display:grid;
+      gap:6px;
+    }
+    .pCell{
+      width: 18px;
+      height: 18px;
+      border-radius: 6px;
+      background: rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+    }
+    .pCell.on{
+      background: linear-gradient(180deg, rgba(34,197,94,.40), rgba(34,197,94,.18));
+      border-color: rgba(34,197,94,.34);
+    }
+
+    .help{
+      font-size:12px;
+      color: var(--muted);
+      line-height:1.45;
+      padding:12px;
+      border:1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(2,6,23,.20);
+    }
+
+    .toast{
+      position: fixed;
+      left:50%;
+      bottom:16px;
+      transform: translateX(-50%);
+      background: rgba(2,6,23,.90);
+      border:1px solid rgba(255,255,255,.12);
+      padding:10px 12px;
+      border-radius: 12px;
+      font-size: 13px;
+      color: var(--text);
+      box-shadow: var(--shadow);
+      opacity:0;
+      pointer-events:none;
+      transition: opacity .14s ease, transform .14s ease;
+      max-width: min(520px, calc(100% - 22px));
+      text-align:center;
+      z-index: 50;
+    }
+    .toast.show{
+      opacity:1;
+      transform: translateX(-50%) translateY(-2px);
+    }
+
+    .overlay{
+      position:fixed;
+      inset:0;
+      display:none;
+      background: rgba(0,0,0,.55);
+      z-index: 60;
+      align-items:center;
+      justify-content:center;
+      padding:16px;
+    }
+    .overlay.show{ display:flex; }
+    .modal{
+      width: min(520px, 100%);
+      background: rgba(2,6,23,.95);
+      border:1px solid rgba(255,255,255,.14);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 16px;
+    }
+    .modal h2{ margin:0 0 6px; font-size:18px; }
+    .modal p{ margin:0 0 12px; color: var(--muted); line-height:1.45; }
+    .modal .row{
+      display:flex;
+      gap:10px;
+      justify-content:flex-end;
+      flex-wrap:wrap;
+    }
+
+    .sr-only{
+      position:absolute;
+      width:1px;height:1px;
+      padding:0;margin:-1px;
+      overflow:hidden;clip:rect(0,0,0,0);
+      white-space:nowrap;border:0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <!-- LEFT: GAME -->
+    <section class="card" aria-label="Block Logic game">
+      <div class="topbar">
+        <div class="brand">
+          <div class="badge" aria-hidden="true">BL</div>
+          <div class="titles">
+            <h1>Block Logic</h1>
+            <p>A spatial reasoning puzzle that rewards planning and foresight.</p>
+          </div>
+        </div>
+
+        <div class="rightstats" aria-label="Scoreboard">
+          <div class="stat" id="scoreStat">
+            <div class="k">Score</div>
+            <div class="v" id="score">0</div>
+          </div>
+          <div class="stat" id="bestStat">
+            <div class="k">Best</div>
+            <div class="v" id="best">0</div>
+          </div>
+          <div class="stat">
+            <div class="k">Lines Cleared</div>
+            <div class="v" id="lines">0</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="main">
+        <div class="gridWrap">
+          <div class="gridArea">
+            <div class="grid" id="grid" role="application" aria-label="10 by 10 grid"></div>
+            <p class="sr-only" id="a11yStatus" aria-live="polite"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RIGHT: CONTROLS -->
+    <aside class="card side" aria-label="Controls panel">
+      <div>
+        <h3 class="panelTitle">Play</h3>
+        <p class="panelSub">Drag a piece onto the grid. Clear full rows or columns to keep going.</p>
+      </div>
+
+      <div class="controls">
+        <button class="btnPrimary" id="newGameBtn" type="button">New Game</button>
+        <button id="undoBtn" type="button" disabled>Undo</button>
+        <button id="hintBtn" type="button">Hint (3)</button>
+        <button class="btnDanger" id="clearBtn" type="button">Clear Board</button>
+      </div>
+
+      <div class="toggles" aria-label="Settings">
+        <div class="toggleRow">
+          <div>
+            <label for="scoreToggle">Scoring</label>
+            <small>Show points + best score</small>
+          </div>
+          <div class="switch on" id="scoreToggle" role="switch" aria-checked="true" tabindex="0"></div>
+        </div>
+
+        <div class="toggleRow">
+          <div>
+            <label for="safeToggle">Mistake-Free</label>
+            <small>No timer, no penalties (recommended)</small>
+          </div>
+          <div class="switch on" id="safeToggle" role="switch" aria-checked="true" tabindex="0"></div>
+        </div>
+      </div>
+
+      <div class="tray" aria-label="Piece tray">
+        <div class="trayHeader">
+          <strong>Pieces</strong>
+          <span class="meta">Press 1–3 to select</span>
+        </div>
+        <div class="pieces" id="pieces"></div>
+      </div>
+
+      <div class="help">
+        <strong>Quick Tips</strong><br/>
+        • Clear lines to create space.<br/>
+        • Use <strong>Hint</strong> when stuck — it highlights a strong placement.<br/>
+        • <strong>Undo</strong> reverts your last move.<br/>
+        • Mobile: drag pieces with your finger.
+      </div>
+    </aside>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-label="Game over dialog">
+    <div class="modal">
+      <h2>Game Over</h2>
+      <p id="gameOverText">No valid placements remain.</p>
+      <div class="row">
+        <button id="closeModalBtn" type="button">Close</button>
+        <button class="btnPrimary" id="restartBtn" type="button">Play Again</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      // =========================
+      // Block Logic (Teach Arcade)
+      // Single-file v1
+      // =========================
+
+      // --- DOM ---
+      const gridEl = document.getElementById("grid");
+      const piecesEl = document.getElementById("pieces");
+      const scoreEl = document.getElementById("score");
+      const bestEl = document.getElementById("best");
+      const linesEl = document.getElementById("lines");
+      const toastEl = document.getElementById("toast");
+      const a11yStatus = document.getElementById("a11yStatus");
+
+      const newGameBtn = document.getElementById("newGameBtn");
+      const undoBtn = document.getElementById("undoBtn");
+      const hintBtn = document.getElementById("hintBtn");
+      const clearBtn = document.getElementById("clearBtn");
+
+      const scoreToggle = document.getElementById("scoreToggle");
+      const safeToggle  = document.getElementById("safeToggle");
+      const scoreStat = document.getElementById("scoreStat");
+      const bestStat = document.getElementById("bestStat");
+
+      const overlay = document.getElementById("overlay");
+      const closeModalBtn = document.getElementById("closeModalBtn");
+      const restartBtn = document.getElementById("restartBtn");
+      const gameOverText = document.getElementById("gameOverText");
+
+      // --- Settings / Storage ---
+      const LS_BEST = "teacharcade_blocklogic_best";
+      const LS_SCORE_TOGGLE = "teacharcade_blocklogic_scoring_on";
+
+      // --- Game state ---
+      const W = 10, H = 10;
+      let grid = makeEmptyGrid();
+      let pieces = []; // 3 pieces, each {id, cells:[{x,y}], box:{w,h}, used:false}
+      let selectedPieceIndex = -1;
+
+      let score = 0;
+      let best = Number(localStorage.getItem(LS_BEST) || 0);
+      let totalLines = 0;
+
+      let hintsLeft = 3;
+      let scoringOn = (localStorage.getItem(LS_SCORE_TOGGLE) ?? "true") === "true";
+      let mistakeFree = true;
+
+      // Undo snapshot (one-step undo)
+      let undoSnapshot = null;
+
+      // Drag state
+      let dragging = null; // { pieceIndex, offsetX, offsetY, ghostEl }
+      let hintCells = [];
+
+      // --- Piece definitions (polyominoes) ---
+      // Each piece is a list of coordinates. No rotation in v1 (keeps it classroom-simple).
+      // Shapes are normalized on creation to top-left.
+      const SHAPES = [
+        // Singles / lines
+        [[0,0]],
+        [[0,0],[1,0]],
+        [[0,0],[1,0],[2,0]],
+        [[0,0],[1,0],[2,0],[3,0]],
+        [[0,0],[1,0],[2,0],[3,0],[4,0]],
+        [[0,0],[0,1],[0,2]],
+        [[0,0],[0,1],[0,2],[0,3]],
+        [[0,0],[0,1],[0,2],[0,3],[0,4]],
+
+        // Squares / rectangles
+        [[0,0],[1,0],[0,1],[1,1]],                // 2x2
+        [[0,0],[1,0],[2,0],[0,1],[1,1],[2,1]],    // 3x2
+        [[0,0],[1,0],[0,1],[1,1],[0,2],[1,2]],    // 2x3
+
+        // L shapes
+        [[0,0],[0,1],[0,2],[1,2]],
+        [[1,0],[1,1],[1,2],[0,2]],
+        [[0,0],[1,0],[2,0],[0,1]],
+        [[0,0],[1,0],[2,0],[2,1]],
+
+        // T shapes
+        [[0,0],[1,0],[2,0],[1,1]],
+        [[1,0],[0,1],[1,1],[2,1]],
+        [[0,0],[0,1],[0,2],[1,1]],
+
+        // Z / S
+        [[0,0],[1,0],[1,1],[2,1]],
+        [[1,0],[2,0],[0,1],[1,1]],
+
+        // Plus-ish / chunky
+        [[0,1],[1,0],[1,1],[1,2],[2,1]],          // plus (5)
+        [[0,0],[1,0],[2,0],[1,1],[1,2]]           // "arrow" (5)
+      ];
+
+      // =========================
+      // INIT / RENDER
+      // =========================
+      bestEl.textContent = best;
+
+      function init(){
+        applySavedToggles();
+        buildGridDOM();
+        newGame();
+        hookEvents();
+        resizeCells();
+        window.addEventListener("resize", resizeCells, {passive:true});
+      }
+
+      function applySavedToggles(){
+        setSwitch(scoreToggle, scoringOn);
+        setSwitch(safeToggle, true);
+        applyScoringVisibility();
+      }
+
+      function buildGridDOM(){
+        gridEl.innerHTML = "";
+        for(let y=0;y<H;y++){
+          for(let x=0;x<W;x++){
+            const d = document.createElement("div");
+            d.className = "cell";
+            d.dataset.x = String(x);
+            d.dataset.y = String(y);
+            gridEl.appendChild(d);
+          }
+        }
+      }
+
+      function render(){
+        // Grid
+        const cells = gridEl.querySelectorAll(".cell");
+        cells.forEach(c => {
+          const x = Number(c.dataset.x);
+          const y = Number(c.dataset.y);
+          c.classList.toggle("filled", grid[y][x] === 1);
+
+          // Clear preview classes each render (we add during drag/preview)
+          c.classList.remove("preview-ok","preview-bad","hint");
+        });
+
+        // Hint highlight
+        for(const {x,y} of hintCells){
+          const idx = y*W + x;
+          const c = cells[idx];
+          if(c) c.classList.add("hint");
+        }
+
+        // Pieces
+        piecesEl.innerHTML = "";
+        pieces.forEach((p, idx) => {
+          const holder = document.createElement("div");
+          holder.className = "piece";
+          holder.dataset.pieceIndex = String(idx);
+          holder.setAttribute("role","button");
+          holder.setAttribute("tabindex","0");
+          holder.setAttribute("aria-label", `Piece ${idx+1}`);
+          if(p.used) holder.classList.add("used");
+          if(idx === selectedPieceIndex && !p.used) holder.classList.add("selected");
+
+          // mini-canvas sized by piece box
+          const canvas = document.createElement("div");
+          canvas.className = "pieceCanvas";
+          canvas.style.gridTemplateColumns = `repeat(${p.box.w}, 18px)`;
+          canvas.style.gridTemplateRows = `repeat(${p.box.h}, 18px)`;
+
+          const onSet = new Set(p.cells.map(pt => `${pt.x},${pt.y}`));
+          for(let y=0;y<p.box.h;y++){
+            for(let x=0;x<p.box.w;x++){
+              const pc = document.createElement("div");
+              pc.className = "pCell";
+              if(onSet.has(`${x},${y}`)) pc.classList.add("on");
+              canvas.appendChild(pc);
+            }
+          }
+
+          holder.appendChild(canvas);
+          piecesEl.appendChild(holder);
+        });
+
+        // Stats
+        scoreEl.textContent = String(score);
+        bestEl.textContent = String(best);
+        linesEl.textContent = String(totalLines);
+
+        hintBtn.textContent = `Hint (${hintsLeft})`;
+        hintBtn.disabled = hintsLeft <= 0;
+
+        undoBtn.disabled = !undoSnapshot;
+
+        // If all pieces used, deal new
+        if(pieces.length === 3 && pieces.every(p => p.used)){
+          dealPieces();
+          render();
+        }
+
+        // Check game over
+        if(!anyMoveAvailable()){
+          showGameOver();
+        }
+      }
+
+      function resizeCells(){
+        // Make the grid fit nicely on phones/tablets
+        const area = gridEl.parentElement; // gridArea
+        const max = Math.min(area.clientWidth - 24, 640);
+        // 10 cells + 9 gaps(6px) + padding already handled
+        const gap = 6;
+        const cell = Math.floor((max - gap*9) / 10);
+        document.documentElement.style.setProperty("--cell", `${Math.max(22, Math.min(cell, 44))}px`);
+      }
+
+      // =========================
+      // GAME FLOW
+      // =========================
+      function newGame(){
+        grid = makeEmptyGrid();
+        score = 0;
+        totalLines = 0;
+        hintsLeft = 3;
+        selectedPieceIndex = -1;
+        hintCells = [];
+        undoSnapshot = null;
+        dealPieces(true);
+        toast("Block Logic ready. Drag a piece onto the grid.");
+        a11y(`New game started.`);
+        render();
+      }
+
+      function clearBoard(){
+        grid = makeEmptyGrid();
+        score = 0;
+        totalLines = 0;
+        hintsLeft = 3;
+        selectedPieceIndex = -1;
+        hintCells = [];
+        undoSnapshot = null;
+        dealPieces(true);
+        toast("Board cleared.");
+        a11y("Board cleared.");
+        render();
+      }
+
+      function dealPieces(force = false){
+        // Create 3 new pieces. Try to ensure at least one is placeable.
+        const attempts = 40;
+        for(let a=0;a<attempts;a++){
+          const candidate = [makeRandomPiece(), makeRandomPiece(), makeRandomPiece()];
+          // If force or if any piece fits somewhere
+          if(force || candidate.some(p => pieceHasAnyPlacement(p))){
+            pieces = candidate.map((p, i) => ({...p, id:`p${Date.now()}_${i}`, used:false}));
+            selectedPieceIndex = -1;
+            hintCells = [];
+            return;
+          }
+        }
+        // Fallback
+        pieces = [makeRandomPiece(), makeRandomPiece(), makeRandomPiece()].map((p, i) => ({...p, id:`p${Date.now()}_${i}`, used:false}));
+        selectedPieceIndex = -1;
+        hintCells = [];
+      }
+
+      function anyMoveAvailable(){
+        // If any unused piece can be placed, game continues
+        for(const p of pieces){
+          if(!p.used && pieceHasAnyPlacement(p)) return true;
+        }
+        return false;
+      }
+
+      // =========================
+      // PIECES
+      // =========================
+      function makeRandomPiece(){
+        const raw = SHAPES[Math.floor(Math.random()*SHAPES.length)];
+        const cells = raw.map(([x,y]) => ({x,y}));
+        return normalizePiece(cells);
+      }
+
+      function normalizePiece(cells){
+        let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+        for(const c of cells){
+          minX = Math.min(minX, c.x);
+          minY = Math.min(minY, c.y);
+          maxX = Math.max(maxX, c.x);
+          maxY = Math.max(maxY, c.y);
+        }
+        const norm = cells.map(c => ({x:c.x - minX, y:c.y - minY}));
+        const box = {w: (maxX - minX) + 1, h: (maxY - minY) + 1};
+        return { cells:norm, box };
+      }
+
+      function pieceHasAnyPlacement(piece){
+        // For each grid cell as anchor (top-left of piece box), check valid
+        for(let y=0; y<=H - piece.box.h; y++){
+          for(let x=0; x<=W - piece.box.w; x++){
+            if(canPlace(piece, x, y)) return true;
+          }
+        }
+        return false;
+      }
+
+      // =========================
+      // PLACEMENT / CLEARING / SCORING
+      // =========================
+      function canPlace(piece, ax, ay){
+        for(const c of piece.cells){
+          const x = ax + c.x;
+          const y = ay + c.y;
+          if(x<0 || x>=W || y<0 || y>=H) return false;
+          if(grid[y][x] === 1) return false;
+        }
+        return true;
+      }
+
+      function placePiece(pieceIndex, ax, ay){
+        const p = pieces[pieceIndex];
+        if(!p || p.used) return false;
+        if(!canPlace(p, ax, ay)) return false;
+
+        // Snapshot for undo
+        undoSnapshot = snapshot();
+
+        // Place blocks
+        for(const c of p.cells){
+          grid[ay + c.y][ax + c.x] = 1;
+        }
+        p.used = true;
+
+        // Score for placement
+        if(scoringOn){
+          score += p.cells.length * 10;
+        }
+
+        // Clear lines
+        const cleared = clearFullLines();
+        if(cleared.total > 0){
+          totalLines += cleared.total;
+          if(scoringOn){
+            // base points + combo bonus
+            const base = cleared.total * 100;
+            const comboBonus = cleared.total >= 2 ? (cleared.total - 1) * 75 : 0;
+            score += base + comboBonus;
+          }
+          toast(`Cleared ${cleared.total} line${cleared.total===1?"":"s"}!`);
+          a11y(`Cleared ${cleared.total} lines.`);
+        } else {
+          a11y(`Piece placed.`);
+        }
+
+        // Update best
+        if(scoringOn && score > best){
+          best = score;
+          localStorage.setItem(LS_BEST, String(best));
+        }
+
+        // Reset selection + hint
+        selectedPieceIndex = -1;
+        hintCells = [];
+
+        render();
+        return true;
+      }
+
+      function clearFullLines(){
+        const fullRows = [];
+        const fullCols = [];
+
+        // Rows
+        for(let y=0;y<H;y++){
+          let full = true;
+          for(let x=0;x<W;x++){
+            if(grid[y][x] === 0){ full = false; break; }
+          }
+          if(full) fullRows.push(y);
+        }
+
+        // Cols
+        for(let x=0;x<W;x++){
+          let full = true;
+          for(let y=0;y<H;y++){
+            if(grid[y][x] === 0){ full = false; break; }
+          }
+          if(full) fullCols.push(x);
+        }
+
+        // Clear them
+        for(const y of fullRows){
+          for(let x=0;x<W;x++) grid[y][x] = 0;
+        }
+        for(const x of fullCols){
+          for(let y=0;y<H;y++) grid[y][x] = 0;
+        }
+
+        return { rows: fullRows, cols: fullCols, total: fullRows.length + fullCols.length };
+      }
+
+      function snapshot(){
+        return {
+          grid: grid.map(row => row.slice()),
+          pieces: pieces.map(p => ({
+            id:p.id,
+            used:p.used,
+            cells: p.cells.map(c => ({...c})),
+            box: {...p.box}
+          })),
+          score, best, totalLines, hintsLeft, scoringOn, mistakeFree
+        };
+      }
+
+      function undo(){
+        if(!undoSnapshot) return;
+        grid = undoSnapshot.grid.map(r => r.slice());
+        pieces = undoSnapshot.pieces.map(p => ({
+          id:p.id,
+          used:p.used,
+          cells:p.cells.map(c => ({...c})),
+          box:{...p.box}
+        }));
+        score = undoSnapshot.score;
+        best = Number(localStorage.getItem(LS_BEST) || undoSnapshot.best || 0);
+        totalLines = undoSnapshot.totalLines;
+        hintsLeft = undoSnapshot.hintsLeft;
+
+        selectedPieceIndex = -1;
+        hintCells = [];
+        undoSnapshot = null;
+
+        toast("Undid last move.");
+        a11y("Undid last move.");
+        render();
+      }
+
+      // =========================
+      // HINT (find a strong placement for selected piece)
+      // =========================
+      function hint(){
+        if(hintsLeft <= 0){
+          toast("No hints left.");
+          return;
+        }
+        const idx = selectedPieceIndex;
+        if(idx < 0 || !pieces[idx] || pieces[idx].used){
+          toast("Select a piece first (tap one in the tray).");
+          return;
+        }
+
+        const p = pieces[idx];
+        const bestMove = findBestPlacement(p);
+        if(!bestMove){
+          toast("No placements for that piece.");
+          return;
+        }
+
+        hintsLeft -= 1;
+        hintCells = p.cells.map(c => ({x: bestMove.ax + c.x, y: bestMove.ay + c.y}));
+        toast("Hint: highlighted a strong placement.");
+        a11y("Hint shown.");
+        render();
+      }
+
+      function findBestPlacement(piece){
+        // Choose a placement that maximizes lines cleared (rows+cols),
+        // then maximizes number of filled neighbors (more compact),
+        // then earliest (stable).
+        let best = null;
+
+        for(let ay=0; ay<=H - piece.box.h; ay++){
+          for(let ax=0; ax<=W - piece.box.w; ax++){
+            if(!canPlace(piece, ax, ay)) continue;
+
+            // simulate placement on temp grid
+            const temp = grid.map(r => r.slice());
+            for(const c of piece.cells){
+              temp[ay+c.y][ax+c.x] = 1;
+            }
+
+            const lines = countFullLines(temp);
+            const compact = neighborScore(temp, piece, ax, ay);
+
+            const cand = {ax, ay, lines, compact};
+
+            if(!best) best = cand;
+            else if(cand.lines > best.lines) best = cand;
+            else if(cand.lines === best.lines && cand.compact > best.compact) best = cand;
+          }
+        }
+
+        return best;
+      }
+
+      function countFullLines(g){
+        let count = 0;
+        // rows
+        for(let y=0;y<H;y++){
+          let full = true;
+          for(let x=0;x<W;x++) if(g[y][x] === 0){ full=false; break; }
+          if(full) count++;
+        }
+        // cols
+        for(let x=0;x<W;x++){
+          let full = true;
+          for(let y=0;y<H;y++) if(g[y][x] === 0){ full=false; break; }
+          if(full) count++;
+        }
+        return count;
+      }
+
+      function neighborScore(g, piece, ax, ay){
+        // reward placement that touches existing blocks (helps avoid holes)
+        let s = 0;
+        const dirs = [[1,0],[-1,0],[0,1],[0,-1]];
+        for(const c of piece.cells){
+          const x = ax + c.x, y = ay + c.y;
+          for(const [dx,dy] of dirs){
+            const nx = x+dx, ny=y+dy;
+            if(nx<0||nx>=W||ny<0||ny>=H) continue;
+            if(g[ny][nx] === 1) s++;
+          }
+        }
+        return s;
+      }
+
+      // =========================
+      // DRAG & DROP (Pointer Events)
+      // =========================
+      function hookEvents(){
+        // Buttons
+        newGameBtn.addEventListener("click", () => newGame());
+        clearBtn.addEventListener("click", () => {
+          if(confirm("Clear the board and restart Block Logic?")) clearBoard();
+        });
+        undoBtn.addEventListener("click", () => undo());
+        hintBtn.addEventListener("click", () => hint());
+
+        // Toggles
+        hookSwitch(scoreToggle, (on) => {
+          scoringOn = on;
+          localStorage.setItem(LS_SCORE_TOGGLE, String(scoringOn));
+          applyScoringVisibility();
+          toast(scoringOn ? "Scoring on." : "Scoring off.");
+          render();
+        });
+
+        hookSwitch(safeToggle, (on) => {
+          mistakeFree = on;
+          toast(mistakeFree ? "Mistake-Free mode on." : "Mistake-Free mode off.");
+          render();
+        });
+
+        // Piece click/select + drag start
+        piecesEl.addEventListener("pointerdown", (e) => {
+          const pieceEl = e.target.closest(".piece");
+          if(!pieceEl) return;
+          const idx = Number(pieceEl.dataset.pieceIndex);
+          if(Number.isNaN(idx)) return;
+          if(pieces[idx].used) return;
+
+          selectPiece(idx);
+
+          // Start drag
+          startDrag(e, idx, pieceEl);
+        });
+
+        piecesEl.addEventListener("click", (e) => {
+          // allow tap selection without dragging
+          const pieceEl = e.target.closest(".piece");
+          if(!pieceEl) return;
+          const idx = Number(pieceEl.dataset.pieceIndex);
+          if(Number.isNaN(idx)) return;
+          if(pieces[idx].used) return;
+          selectPiece(idx);
+        });
+
+        // Grid click-to-place (simple alternative input)
+        gridEl.addEventListener("click", (e) => {
+          const cell = e.target.closest(".cell");
+          if(!cell) return;
+          if(selectedPieceIndex < 0) return;
+
+          const ax = Number(cell.dataset.x);
+          const ay = Number(cell.dataset.y);
+          const p = pieces[selectedPieceIndex];
+          // anchor at clicked cell = top-left of piece box (simple and predictable)
+          if(placePiece(selectedPieceIndex, ax, ay)) return;
+
+          toast("That piece doesn’t fit there.");
+        });
+
+        // Keyboard select pieces
+        document.addEventListener("keydown", (e) => {
+          if(e.key === "1") selectPiece(0);
+          if(e.key === "2") selectPiece(1);
+          if(e.key === "3") selectPiece(2);
+          if(e.key.toLowerCase() === "h") hint();
+          if((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "z") undo();
+          if(e.key === "Escape"){
+            hintCells = [];
+            selectedPieceIndex = -1;
+            render();
+          }
+        });
+
+        // Modal
+        closeModalBtn.addEventListener("click", () => hideGameOver());
+        restartBtn.addEventListener("click", () => {
+          hideGameOver();
+          newGame();
+        });
+        overlay.addEventListener("click", (e) => {
+          if(e.target === overlay) hideGameOver();
+        });
+      }
+
+      function selectPiece(idx){
+        selectedPieceIndex = idx;
+        hintCells = [];
+        render();
+        toast(`Selected piece ${idx+1}. Drag it onto the grid.`);
+      }
+
+      function startDrag(e, idx, pieceEl){
+        // Create a "ghost" of the piece to drag around
+        e.preventDefault();
+        pieceEl.setPointerCapture(e.pointerId);
+
+        const p = pieces[idx];
+        const ghost = makeGhostElement(p);
+        document.body.appendChild(ghost);
+
+        const rect = pieceEl.getBoundingClientRect();
+        const offsetX = e.clientX - rect.left;
+        const offsetY = e.clientY - rect.top;
+
+        dragging = { pieceIndex: idx, offsetX, offsetY, ghostEl: ghost };
+
+        positionGhost(e.clientX, e.clientY);
+        previewAtPointer(e.clientX, e.clientY);
+
+        const onMove = (ev) => {
+          if(!dragging) return;
+          positionGhost(ev.clientX, ev.clientY);
+          previewAtPointer(ev.clientX, ev.clientY);
+        };
+
+        const onUp = (ev) => {
+          if(!dragging) return;
+          pieceEl.releasePointerCapture(ev.pointerId);
+          finalizeDrop(ev.clientX, ev.clientY);
+          cleanupPreview();
+          teardownGhost();
+          dragging = null;
+
+          window.removeEventListener("pointermove", onMove);
+          window.removeEventListener("pointerup", onUp);
+          window.removeEventListener("pointercancel", onUp);
+        };
+
+        window.addEventListener("pointermove", onMove, {passive:false});
+        window.addEventListener("pointerup", onUp, {passive:false});
+        window.addEventListener("pointercancel", onUp, {passive:false});
+      }
+
+      function makeGhostElement(piece){
+        const ghost = document.createElement("div");
+        ghost.style.position = "fixed";
+        ghost.style.left = "0";
+        ghost.style.top = "0";
+        ghost.style.zIndex = "55";
+        ghost.style.pointerEvents = "none";
+        ghost.style.padding = "10px";
+        ghost.style.borderRadius = "14px";
+        ghost.style.border = "1px solid rgba(255,255,255,.14)";
+        ghost.style.background = "rgba(2,6,23,.80)";
+        ghost.style.boxShadow = "0 18px 40px rgba(0,0,0,.35)";
+
+        const canvas = document.createElement("div");
+        canvas.style.display = "grid";
+        canvas.style.gap = "6px";
+        canvas.style.gridTemplateColumns = `repeat(${piece.box.w}, 18px)`;
+        canvas.style.gridTemplateRows = `repeat(${piece.box.h}, 18px)`;
+
+        const onSet = new Set(piece.cells.map(pt => `${pt.x},${pt.y}`));
+        for(let y=0;y<piece.box.h;y++){
+          for(let x=0;x<piece.box.w;x++){
+            const pc = document.createElement("div");
+            pc.style.width="18px";
+            pc.style.height="18px";
+            pc.style.borderRadius="6px";
+            pc.style.border="1px solid rgba(255,255,255,.10)";
+            pc.style.background="rgba(255,255,255,.05)";
+            if(onSet.has(`${x},${y}`)){
+              pc.style.background="linear-gradient(180deg, rgba(34,197,94,.40), rgba(34,197,94,.18))";
+              pc.style.borderColor="rgba(34,197,94,.34)";
+            }
+            canvas.appendChild(pc);
+          }
+        }
+
+        ghost.appendChild(canvas);
+        return ghost;
+      }
+
+      function positionGhost(x, y){
+        const g = dragging.ghostEl;
+        g.style.transform = `translate(${x - dragging.offsetX}px, ${y - dragging.offsetY}px)`;
+      }
+
+      function previewAtPointer(clientX, clientY){
+        cleanupPreview();
+
+        const idx = dragging.pieceIndex;
+        const piece = pieces[idx];
+
+        const gridRect = gridEl.getBoundingClientRect();
+        if(clientX < gridRect.left || clientX > gridRect.right || clientY < gridRect.top || clientY > gridRect.bottom){
+          return;
+        }
+
+        // compute cell from pointer
+        const cell = getCellFromPoint(clientX, clientY);
+        if(!cell) return;
+
+        const ax = cell.x;
+        const ay = cell.y;
+
+        const ok = canPlace(piece, ax, ay);
+        paintPreview(piece, ax, ay, ok);
+      }
+
+      function getCellFromPoint(clientX, clientY){
+        const gridRect = gridEl.getBoundingClientRect();
+        // Find nearest cell by checking elementFromPoint
+        const el = document.elementFromPoint(clientX, clientY);
+        const cell = el && el.closest ? el.closest(".cell") : null;
+        if(!cell) return null;
+        return { x: Number(cell.dataset.x), y: Number(cell.dataset.y) };
+      }
+
+      function paintPreview(piece, ax, ay, ok){
+        const cells = gridEl.querySelectorAll(".cell");
+        for(const c of piece.cells){
+          const x = ax + c.x;
+          const y = ay + c.y;
+          if(x<0||x>=W||y<0||y>=H) continue;
+          const idx = y*W + x;
+          const el = cells[idx];
+          if(!el) continue;
+          el.classList.add(ok ? "preview-ok" : "preview-bad");
+        }
+      }
+
+      function cleanupPreview(){
+        const cells = gridEl.querySelectorAll(".cell");
+        cells.forEach(c => c.classList.remove("preview-ok","preview-bad"));
+      }
+
+      function finalizeDrop(clientX, clientY){
+        const idx = dragging.pieceIndex;
+        const piece = pieces[idx];
+        const gridRect = gridEl.getBoundingClientRect();
+
+        if(clientX < gridRect.left || clientX > gridRect.right || clientY < gridRect.top || clientY > gridRect.bottom){
+          toast("Drop onto the grid to place.");
+          return;
+        }
+
+        const cell = getCellFromPoint(clientX, clientY);
+        if(!cell) return;
+
+        const placed = placePiece(idx, cell.x, cell.y);
+        if(!placed){
+          toast("That placement doesn’t fit.");
+        }
+      }
+
+      function teardownGhost(){
+        if(dragging && dragging.ghostEl){
+          dragging.ghostEl.remove();
+        }
+      }
+
+      // =========================
+      // TOGGLES / UI
+      // =========================
+      function setSwitch(el, on){
+        el.classList.toggle("on", on);
+        el.setAttribute("aria-checked", String(on));
+      }
+
+      function hookSwitch(el, onChange){
+        el.addEventListener("click", () => {
+          const on = !el.classList.contains("on");
+          setSwitch(el, on);
+          onChange(on);
+        });
+        el.addEventListener("keydown", (e) => {
+          if(e.key === "Enter" || e.key === " "){
+            e.preventDefault();
+            el.click();
+          }
+        });
+      }
+
+      function applyScoringVisibility(){
+        scoreStat.style.display = scoringOn ? "" : "none";
+        bestStat.style.display = scoringOn ? "" : "none";
+      }
+
+      function toast(msg){
+        toastEl.textContent = msg;
+        toastEl.classList.add("show");
+        clearTimeout(toastEl._t);
+        toastEl._t = setTimeout(() => toastEl.classList.remove("show"), 1800);
+      }
+
+      function a11y(msg){
+        a11yStatus.textContent = msg;
+      }
+
+      // =========================
+      // GAME OVER MODAL
+      // =========================
+      function showGameOver(){
+        // prevent repeating
+        if(overlay.classList.contains("show")) return;
+        gameOverText.textContent = "No valid placements remain. Start a new game to try again.";
+        overlay.classList.add("show");
+        toast("Game over.");
+        a11y("Game over.");
+      }
+
+      function hideGameOver(){
+        overlay.classList.remove("show");
+      }
+
+      // =========================
+      // HELPERS
+      // =========================
+      function makeEmptyGrid(){
+        return Array.from({length:H}, () => Array.from({length:W}, () => 0));
+      }
+
+      // Start!
+      init();
+    })();
+  </script>
+</body>
+</html>
