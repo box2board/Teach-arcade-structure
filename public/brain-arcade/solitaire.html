@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Solitaire (Klondike) · Web Game</title>
   <meta name="description" content="Play Klondike Solitaire in your browser. Drag-and-drop, tap-to-move (foundation-only), undo, and auto-move to foundations." />
+
   <style>
     :root{
       --bg1:#0b3d2e;
@@ -29,11 +30,8 @@
       --fanDown: 10px;
 
       --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-
-      /* Motion feel */
       --ease: cubic-bezier(.2,.8,.2,1);
 
-      /* Accent for UI bits */
       --accent: rgba(168,85,247,.16);
       --accentBorder: rgba(168,85,247,.32);
     }
@@ -58,13 +56,7 @@
       margin:0;
       min-height:100svh;
       padding-bottom: env(safe-area-inset-bottom);
-
-      /* Better background (subtle depth) */
-      background:
-        radial-gradient(circle at 20% 30%, rgba(16,185,129,.08), transparent 55%),
-        radial-gradient(circle at 80% 70%, rgba(59,130,246,.06), transparent 55%),
-        linear-gradient(135deg, #0a2e1f 0%, #051810 100%);
-
+      background: radial-gradient(1200px 700px at 30% 10%, var(--bg1), var(--bg2));
       color:#fff;
       font-family:var(--font);
       user-select:none;
@@ -81,7 +73,7 @@
 
     header{
       display:flex;
-      align-items:center;
+      align-items:flex-start;
       justify-content:space-between;
       gap: 12px;
       margin-bottom: 14px;
@@ -89,7 +81,7 @@
 
     .brand{ display:flex; flex-direction:column; gap:2px; }
     .brand h1{ margin:0; font-size:18px; letter-spacing:.3px; }
-    .brand small{ color: var(--muted); font-size:12px; }
+    .brand small{ color: var(--muted); font-size:12px; max-width: 560px; }
 
     .controls{
       display:flex;
@@ -131,48 +123,42 @@
     }
 
     .board{
-      /* Felt table texture */
-      background:
-        repeating-linear-gradient(
-          90deg,
-          #0d5e3a 0px,
-          #094429 1px,
-          #0d5e3a 2px
-        ),
-        linear-gradient(180deg,
-          rgba(255,255,255,.04) 0%,
-          transparent 25%,
-          transparent 80%,
-          rgba(0,0,0,.12) 100%
-        ),
-        #0d5e3a;
-
-      border: 2px solid rgba(0,0,0,.3);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border: 1px solid var(--line);
       border-radius: var(--radius);
       padding: 14px;
-      box-shadow:
-        inset 0 2px 4px rgba(0,0,0,.15),
-        0 8px 32px rgba(0,0,0,.35);
+      box-shadow: var(--shadow);
 
       overflow: auto;
       -webkit-overflow-scrolling: touch;
       max-height: calc(100svh - 160px);
-      touch-action: manipulation;
     }
 
+    /* ✅ KEY FIX: rows now always expand full width (no more hugging left) */
     .row{
+      width: 100%;
       display:grid;
       grid-template-columns: repeat(7, var(--cardW));
       gap: var(--stackGap);
-      justify-content: start;
-      width: max-content; /* prevents "cut off" by allowing scroll if needed */
+      justify-content: space-between;
+      align-items:start;
     }
+
+    /* ✅ KEY FIX: top area no longer uses grid math that can overlap */
     .top{
-      grid-template-columns: repeat(7, var(--cardW));
+      width: 100%;
+      display:flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: var(--stackGap);
       margin-bottom: 16px;
     }
-    .top .left{ grid-column: 1 / span 3; display:flex; gap: var(--stackGap); }
-    .top .right{ grid-column: 5 / span 3; display:flex; justify-content:flex-end; gap: var(--stackGap); }
+    .top .left, .top .right{
+      display:flex;
+      gap: var(--stackGap);
+      align-items:flex-start;
+      flex: 0 0 auto;
+    }
 
     .pile{
       width: var(--cardW);
@@ -180,7 +166,7 @@
       border-radius: 12px;
       position:relative;
       outline: 0;
-      touch-action: manipulation;
+      flex: 0 0 var(--cardW);
     }
     .slot{
       width: var(--cardW);
@@ -220,17 +206,15 @@
       box-sizing:border-box;
       cursor:grab;
 
-      /* CRITICAL: clips suit/rank so nothing spills outside rounded corners */
+      /* ✅ Prevent art from spilling outside rounded corners */
       overflow: hidden;
 
-      /* positioned via transform */
       transform: translate3d(0, var(--y, 0px), 0);
       transition:
         transform 240ms var(--ease),
         box-shadow 180ms var(--ease),
         filter 180ms var(--ease);
-
-      touch-action: none;
+      touch-action:none;
       will-change: transform;
     }
     .card:active{ cursor:grabbing; }
@@ -247,15 +231,14 @@
         0 1px 0 rgba(255,255,255,.25) inset;
     }
 
-    /* Face-up layout */
+    /* ✅ CARD FACE: scaled cleanly with clamp() so it looks right on iPad + mobile */
     .cardInner{
       height:100%;
-      padding: 6px 8px 8px;     /* tightened */
+      padding: 8px 10px 10px;
       display:flex;
       flex-direction:column;
       justify-content:space-between;
-      gap: 4px;                 /* tightened */
-      overflow:hidden;          /* extra safety */
+      gap: 6px;
     }
 
     .corner{
@@ -263,16 +246,16 @@
       align-items:flex-start;
       justify-content:space-between;
       font-weight: 950;
-      font-size: 13px;
+      font-size: clamp(11px, 1.25vw, 13px);
       letter-spacing: .2px;
       line-height: 1.0;
       -webkit-font-smoothing: antialiased;
     }
     .corner .miniSuit{
-      font-size: 13px;       /* reduced from 16px */
+      font-size: clamp(12px, 1.35vw, 16px);
       line-height: 1;
       opacity: 1;
-      transform: translateY(0); /* remove negative shift */
+      transform: translateY(-1px);
       text-shadow: 0 1px 0 rgba(255,255,255,.25);
     }
 
@@ -281,23 +264,24 @@
       align-items:flex-end;
       justify-content:space-between;
       gap: 8px;
-      padding-bottom: 1px;
-      overflow:hidden;
+      padding-bottom: 2px;
     }
     .bigRank{
       font-weight: 1000;
-      font-size: 36px;       /* reduced from 54px */
+      font-size: clamp(34px, 4.8vw, 54px);
       line-height: .9;
       letter-spacing: -1px;
       -webkit-font-smoothing: antialiased;
     }
     .bigSuit{
       font-weight: 1000;
-      font-size: 26px;       /* reduced from 34px */
+      font-size: clamp(22px, 3.2vw, 34px);
       line-height: 1;
-      opacity: .95;
-      transform: translateY(0); /* remove negative shift */
-      text-shadow: none;        /* prevents overflow-y feel */
+      opacity: 1;
+      transform: translateY(-2px);
+      text-shadow:
+        0 1px 0 rgba(255,255,255,.35),
+        0 2px 6px rgba(0,0,0,.08);
     }
 
     .backMark{
@@ -331,7 +315,7 @@
     }
 
     .card.flipIn{
-      animation: flipIn 180ms var(--ease);
+      animation: flipIn 220ms var(--ease);
       transform-origin: center;
     }
     @keyframes flipIn{
@@ -393,6 +377,7 @@
     .rowbtn{ display:flex; gap: 10px; flex-wrap:wrap; }
   </style>
 </head>
+
 <body>
   <div class="wrap">
     <header>
@@ -420,14 +405,10 @@
     </div>
 
     <div class="board" id="board">
-      <div class="row top">
+      <div class="top">
         <div class="left">
-          <div class="pile" id="stock" aria-label="Stock pile" tabindex="0">
-            <div class="slot"></div>
-          </div>
-          <div class="pile" id="waste" aria-label="Waste pile" tabindex="0">
-            <div class="slot"></div>
-          </div>
+          <div class="pile" id="stock" aria-label="Stock pile" tabindex="0"><div class="slot"></div></div>
+          <div class="pile" id="waste" aria-label="Waste pile" tabindex="0"><div class="slot"></div></div>
         </div>
 
         <div class="right">
@@ -470,7 +451,7 @@
       <p id="endStats"></p>
       <p class="bigLine" id="endScoreLine"></p>
       <p class="muted" style="margin-top:10px;">
-        Score is based on your in-game actions (no giant 10,000-point bonus math).
+        Score rewards faster play and fewer moves.
       </p>
       <div class="rowbtn">
         <button id="endNewBtn">New Game</button>
@@ -495,10 +476,7 @@
     selected: null,
     drag: null,
 
-    // Timer starts AFTER deal (and guaranteed on first move)
-    startTs: null,
-    timerStarted: false,
-
+    startTs: Date.now(),
     controlMode: "drag",
 
     lastRects: new Map(),
@@ -538,7 +516,6 @@
   const sleep = (ms) => new Promise(r => setTimeout(r, ms));
   const raf = () => new Promise(r => requestAnimationFrame(() => r()));
 
-  // --- busy (FIXED: buttons were getting stuck disabled) ---
   function setBusy(on){
     state.busy = on;
 
@@ -557,12 +534,6 @@
     });
 
     els.undoBtn.disabled = state.history.length === 0;
-  }
-
-  function startTimer(){
-    if (state.timerStarted) return;
-    state.startTs = Date.now();
-    state.timerStarted = true;
   }
 
   function makeDeck(){
@@ -606,7 +577,6 @@
       moves: state.moves,
       score: state.score,
       startTs: state.startTs,
-      timerStarted: state.timerStarted,
       controlMode: state.controlMode
     };
   }
@@ -618,8 +588,7 @@
     state.tableau = snap.tableau;
     state.moves = snap.moves;
     state.score = snap.score;
-    state.startTs = snap.startTs ?? null;
-    state.timerStarted = snap.timerStarted ?? false;
+    state.startTs = snap.startTs ?? state.startTs;
     state.controlMode = snap.controlMode ?? state.controlMode;
     state.selected = null;
     state.drag = null;
@@ -635,9 +604,6 @@
   }
 
   function bumpMoves(n=1){
-    // start timer on first real move/draw
-    startTimer();
-
     state.moves += n;
     els.moves.textContent = String(state.moves);
     els.undoBtn.disabled = state.history.length === 0;
@@ -679,22 +645,19 @@
   }
 
   function elapsedSeconds(){
-    if (!state.startTs) return 0;
     return Math.max(0, Math.floor((Date.now() - state.startTs)/1000));
   }
 
-  // Final score should NOT be giant 10k math; keep it sane + reflective of gameplay
   function computeFinalScore(){
     const secs = elapsedSeconds();
-    const timePenalty = Math.floor(secs / 10);     // -1 per 10 seconds
-    const movePenalty = Math.floor(state.moves / 2); // -1 per 2 moves
-    const winBonus = checkWin() ? 250 : 0;
-    return Math.max(0, Math.floor(state.score + winBonus - timePenalty - movePenalty));
+    const moves = state.moves;
+    const base = 10000;
+    const timePenalty = secs * 8;
+    const movePenalty = moves * 25;
+    const winBonus = checkWin() ? 1500 : 0;
+    return Math.max(0, Math.floor(base - timePenalty - movePenalty + winBonus));
   }
 
-  // =========================
-  // Control mode
-  // =========================
   function loadMode(){
     const saved = localStorage.getItem("ta_solitaire_mode");
     if (saved === "tap" || saved === "drag") state.controlMode = saved;
@@ -720,9 +683,6 @@
     toast(`Mode: ${state.controlMode === "tap" ? "Tap (foundation-only)" : "Drag"}`);
   }
 
-  // =========================
-  // Rules
-  // =========================
   function canMoveToFoundation(card, fIndex){
     const pile = state.foundations[fIndex];
     const t = top(pile);
@@ -751,9 +711,6 @@
     return state.foundations.every(p => p.length === 13);
   }
 
-  // =========================
-  // Foundation-only click logic (Ace -> next -> next ...)
-  // =========================
   function foundationClickMoveOnly(cardRef){
     const card = cardRef.card;
     if (!card || !card.faceUp) return false;
@@ -788,9 +745,6 @@
     return null;
   }
 
-  // =========================
-  // Deal / draw (FASTER)
-  // =========================
   async function newGame(){
     if (state.busy) return;
     setBusy(true);
@@ -800,10 +754,7 @@
     state.score = 0;
     state.selected = null;
     state.drag = null;
-
-    // timer resets and starts AFTER deal finishes
-    state.startTs = null;
-    state.timerStarted = false;
+    state.startTs = Date.now();
 
     const deck = shuffle(makeDeck());
 
@@ -817,8 +768,7 @@
     updateHUD();
     render(true);
 
-    // Faster deal
-    const dealDelay = 8; // was 18
+    const dealDelay = 18;
     for (let col = 0; col < 7; col++){
       for (let row = 0; row <= col; row++){
         await animateDealOne(col);
@@ -826,7 +776,6 @@
       }
     }
 
-    // Flip top of each tableau column
     for (let col = 0; col < 7; col++){
       const t = top(state.tableau[col]);
       if (t){
@@ -834,13 +783,10 @@
         bumpScore(5);
         render(true);
         const el = document.querySelector(`[data-card-id="${t.id}"]`);
-        if (el) { el.classList.add("flipIn"); setTimeout(() => el.classList.remove("flipIn"), 220); }
-        await sleep(8);
+        if (el) { el.classList.add("flipIn"); setTimeout(() => el.classList.remove("flipIn"), 240); }
+        await sleep(10);
       }
     }
-
-    // Start timer after deal + initial flips
-    startTimer();
 
     els.undoBtn.disabled = true;
     els.win.classList.remove("show");
@@ -873,11 +819,10 @@
     float.style.transform = `translate(${stockRect.left}px, ${stockRect.top}px)`;
     await raf();
 
-    // Faster travel
-    float.style.transition = `transform 140ms var(--ease)`;
+    float.style.transition = `transform 220ms var(--ease)`;
     float.style.transform = `translate(${targetRect.left}px, ${targetRect.top + y}px)`;
 
-    await sleep(150);
+    await sleep(230);
     float.remove();
 
     card.faceUp = false;
@@ -912,9 +857,6 @@
     render();
   }
 
-  // =========================
-  // Selecting & moving
-  // =========================
   function clearHighlights(){
     [...els.tableau, ...els.foundations, els.stock, els.waste].forEach(p => p.classList.remove("highlight"));
   }
@@ -934,14 +876,12 @@
     const first = cards[0];
     if (!first) return;
 
-    // highlight foundations if possible
     if (cards.length === 1){
       for (let fi = 0; fi < 4; fi++){
         if (canMoveToFoundation(first, fi)) els.foundations[fi].classList.add("highlight");
       }
     }
 
-    // only highlight tableau destinations in DRAG mode (click-to-tableau disabled)
     if (state.controlMode === "drag"){
       for (let ti = 0; ti < 7; ti++){
         if (canMoveToTableau(first, ti)) els.tableau[ti].classList.add("highlight");
@@ -997,7 +937,7 @@
         bumpScore(5);
         setTimeout(() => {
           const el = document.querySelector(`[data-card-id="${t.id}"]`);
-          if (el) { el.classList.add("flipIn"); setTimeout(() => el.classList.remove("flipIn"), 220); }
+          if (el) { el.classList.add("flipIn"); setTimeout(() => el.classList.remove("flipIn"), 240); }
         }, 0);
       }
     }
@@ -1028,15 +968,12 @@
       bumpScore(5);
       render();
       const el = document.querySelector(`[data-card-id="${t.id}"]`);
-      if (el) { el.classList.add("flipIn"); setTimeout(() => el.classList.remove("flipIn"), 220); }
+      if (el) { el.classList.add("flipIn"); setTimeout(() => el.classList.remove("flipIn"), 240); }
       return true;
     }
     return false;
   }
 
-  // =========================
-  // Rendering (FLIP)
-  // =========================
   function updateHUD(){
     els.moves.textContent = String(state.moves);
     els.score.textContent = String(state.score);
@@ -1145,7 +1082,6 @@
 
     if (!skipFlip) snapshotRects();
 
-    // stock
     clearPileDom(els.stock);
     if (state.stock.length){
       const c = state.stock[state.stock.length - 1];
@@ -1154,7 +1090,6 @@
       els.stock.appendChild(el);
     }
 
-    // waste
     clearPileDom(els.waste);
     if (state.waste.length){
       const c = top(state.waste);
@@ -1163,7 +1098,6 @@
       els.waste.appendChild(el);
     }
 
-    // foundations
     for (let i = 0; i < 4; i++){
       const pileEl = els.foundations[i];
       clearPileDom(pileEl);
@@ -1175,7 +1109,6 @@
       }
     }
 
-    // tableau
     for (let i = 0; i < 7; i++){
       const pileEl = els.tableau[i];
       clearPileDom(pileEl);
@@ -1193,9 +1126,6 @@
     if (!skipFlip) applyFlip();
   }
 
-  // =========================
-  // Drag & Drop
-  // =========================
   function getCardUnderPointer(x,y){
     return document.elementFromPoint(x,y);
   }
@@ -1207,13 +1137,11 @@
       from: fromRef,
       cards: cards.map(c => c.id),
       ghost: null,
-
       targetX: startX,
       targetY: startY,
       curX: startX,
       curY: startY,
       rafId: 0,
-
       pointerOffsetX: 0,
       pointerOffsetY: 0
     };
@@ -1237,7 +1165,6 @@
     document.body.appendChild(ghost);
     state.drag.ghost = ghost;
 
-    // hide originals
     cards.forEach(c => {
       const orig = document.querySelector(`[data-card-id="${c.id}"]`);
       if (orig) orig.style.opacity = "0";
@@ -1310,9 +1237,6 @@
     return fromPile.filter(c => ids.has(c.id));
   }
 
-  // =========================
-  // End Game modal
-  // =========================
   function showEndModal(){
     const secs = elapsedSeconds();
     const final = computeFinalScore();
@@ -1321,10 +1245,7 @@
     els.end.classList.add("show");
   }
 
-  // =========================
-  // Input handlers
-  // =========================
-  function onPileClick(pileEl, ev){
+  function onPileClick(pileEl){
     if (state.busy) return;
     const ref = pileFromEl(pileEl);
     if (!ref) return;
@@ -1334,7 +1255,6 @@
       return;
     }
 
-    // Do NOT allow click-to-move to tableau. Tableau moves happen via drag only.
     if (state.selected && ref.type === "foundation"){
       tryMoveSelectedTo(ref);
     }
@@ -1342,9 +1262,6 @@
 
   function onCardPointerDown(ev){
     if (state.busy) return;
-
-    // helps iOS tap reliability
-    ev.preventDefault();
 
     const cardEl = ev.currentTarget;
     const pileEl = cardEl.closest(".pile");
@@ -1359,7 +1276,6 @@
       if (!c || c.id !== cardId || !c.faceUp) return;
       cards = [c];
     } else if (fromRef.type === "foundation"){
-      // foundations not draggable/click-movable down
       return;
     } else if (fromRef.type === "tableau"){
       const pile = state.tableau[fromRef.idx];
@@ -1384,7 +1300,6 @@
     const startY = ev.clientY;
     let moved = false;
 
-    // TAP MODE: foundation-only click behavior
     if (state.controlMode === "tap"){
       if (cards.length === 1){
         const did = foundationClickMoveOnly({from: fromRef, card: cards[0]});
@@ -1393,14 +1308,12 @@
           setTimeout(() => { if (state.selected) clearSelected(); }, 700);
         }
       } else {
-        // stacks in tap mode just highlight (drag if you want to move them)
         setSelected(fromRef, cards);
         setTimeout(() => { if (state.selected) clearSelected(); }, 900);
       }
       return;
     }
 
-    // DRAG MODE
     const onMove = (e) => {
       const dx = Math.abs(e.clientX - startX);
       const dy = Math.abs(e.clientY - startY);
@@ -1420,7 +1333,6 @@
         return;
       }
 
-      // CLICK (no drag): foundation-only (Ace -> next -> next...) ✅
       if (cards.length === 1){
         const did = foundationClickMoveOnly({from: fromRef, card: cards[0]});
         if (!did){
@@ -1439,7 +1351,7 @@
 
   function bindHandlers(){
     [els.stock, els.waste, ...els.foundations, ...els.tableau].forEach(p => {
-      p.addEventListener("click", (e) => onPileClick(p, e));
+      p.addEventListener("click", () => onPileClick(p));
     });
 
     els.newBtn.addEventListener("click", newGame);
@@ -1499,7 +1411,6 @@
     els.win.addEventListener("click", (e) => { if (e.target === els.win) els.win.classList.remove("show"); });
   }
 
-  // Hint suggests foundation moves only (matches “click to foundation only” rule)
   function computeHint(){
     const a = findAutoFoundationMove();
     if (a){
@@ -1509,7 +1420,6 @@
     return null;
   }
 
-  // Rebind card handlers after render
   const observer = new MutationObserver(() => {
     document.querySelectorAll(".card").forEach(el => {
       if (el._bound) return;
@@ -1518,12 +1428,10 @@
     });
   });
 
-  // Time ticker
   setInterval(() => {
     els.time.textContent = formatTime(elapsedSeconds());
   }, 1000);
 
-  // Init
   loadMode();
   syncModeUI();
   bindHandlers();
