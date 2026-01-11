@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Solitaire (Klondike) · Web Game</title>
-  <meta name="description" content="Play Klondike Solitaire in your browser. Drag-and-drop, tap-to-move, undo, and auto-move to foundations." />
+  <meta name="description" content="Play Klondike Solitaire in your browser. Drag-and-drop, tap-to-move (foundation-only), undo, and auto-move to foundations." />
   <style>
     :root{
       --bg1:#0b3d2e;
@@ -58,7 +58,13 @@
       margin:0;
       min-height:100svh;
       padding-bottom: env(safe-area-inset-bottom);
-      background: radial-gradient(1200px 700px at 30% 10%, var(--bg1), var(--bg2));
+
+      /* Better background (subtle depth) */
+      background:
+        radial-gradient(circle at 20% 30%, rgba(16,185,129,.08), transparent 55%),
+        radial-gradient(circle at 80% 70%, rgba(59,130,246,.06), transparent 55%),
+        linear-gradient(135deg, #0a2e1f 0%, #051810 100%);
+
       color:#fff;
       font-family:var(--font);
       user-select:none;
@@ -125,22 +131,41 @@
     }
 
     .board{
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border: 1px solid var(--line);
+      /* Felt table texture */
+      background:
+        repeating-linear-gradient(
+          90deg,
+          #0d5e3a 0px,
+          #094429 1px,
+          #0d5e3a 2px
+        ),
+        linear-gradient(180deg,
+          rgba(255,255,255,.04) 0%,
+          transparent 25%,
+          transparent 80%,
+          rgba(0,0,0,.12) 100%
+        ),
+        #0d5e3a;
+
+      border: 2px solid rgba(0,0,0,.3);
       border-radius: var(--radius);
       padding: 14px;
-      box-shadow: var(--shadow);
+      box-shadow:
+        inset 0 2px 4px rgba(0,0,0,.15),
+        0 8px 32px rgba(0,0,0,.35);
 
       overflow: auto;
       -webkit-overflow-scrolling: touch;
       max-height: calc(100svh - 160px);
+      touch-action: manipulation;
     }
 
     .row{
       display:grid;
       grid-template-columns: repeat(7, var(--cardW));
       gap: var(--stackGap);
-      justify-content: space-between;
+      justify-content: start;
+      width: max-content; /* prevents "cut off" by allowing scroll if needed */
     }
     .top{
       grid-template-columns: repeat(7, var(--cardW));
@@ -155,6 +180,7 @@
       border-radius: 12px;
       position:relative;
       outline: 0;
+      touch-action: manipulation;
     }
     .slot{
       width: var(--cardW);
@@ -194,15 +220,18 @@
       box-sizing:border-box;
       cursor:grab;
 
-      /* positioned via transform (smooth FLIP) */
+      /* CRITICAL: clips suit/rank so nothing spills outside rounded corners */
+      overflow: hidden;
+
+      /* positioned via transform */
       transform: translate3d(0, var(--y, 0px), 0);
       transition:
         transform 240ms var(--ease),
         box-shadow 180ms var(--ease),
         filter 180ms var(--ease);
-      touch-action:none;
+
+      touch-action: none;
       will-change: transform;
-      /* NOTE: removed overflow hidden so suits never clip */
     }
     .card:active{ cursor:grabbing; }
 
@@ -218,14 +247,15 @@
         0 1px 0 rgba(255,255,255,.25) inset;
     }
 
-    /* Face-up layout: readable big rank + clear suit */
+    /* Face-up layout */
     .cardInner{
       height:100%;
-      padding: 8px 10px 10px;
+      padding: 6px 8px 8px;     /* tightened */
       display:flex;
       flex-direction:column;
       justify-content:space-between;
-      gap: 6px;
+      gap: 4px;                 /* tightened */
+      overflow:hidden;          /* extra safety */
     }
 
     .corner{
@@ -239,10 +269,10 @@
       -webkit-font-smoothing: antialiased;
     }
     .corner .miniSuit{
-      font-size: 16px;       /* bigger = easier to see */
+      font-size: 13px;       /* reduced from 16px */
       line-height: 1;
       opacity: 1;
-      transform: translateY(-1px);
+      transform: translateY(0); /* remove negative shift */
       text-shadow: 0 1px 0 rgba(255,255,255,.25);
     }
 
@@ -251,24 +281,23 @@
       align-items:flex-end;
       justify-content:space-between;
       gap: 8px;
-      padding-bottom: 2px;
+      padding-bottom: 1px;
+      overflow:hidden;
     }
     .bigRank{
       font-weight: 1000;
-      font-size: 54px;       /* slightly reduced to prevent crowding */
+      font-size: 36px;       /* reduced from 54px */
       line-height: .9;
       letter-spacing: -1px;
       -webkit-font-smoothing: antialiased;
     }
     .bigSuit{
       font-weight: 1000;
-      font-size: 34px;       /* bigger suit */
+      font-size: 26px;       /* reduced from 34px */
       line-height: 1;
-      opacity: 1;
-      transform: translateY(-4px);
-      text-shadow:
-        0 1px 0 rgba(255,255,255,.35),
-        0 2px 6px rgba(0,0,0,.08);
+      opacity: .95;
+      transform: translateY(0); /* remove negative shift */
+      text-shadow: none;        /* prevents overflow-y feel */
     }
 
     .backMark{
@@ -302,7 +331,7 @@
     }
 
     .card.flipIn{
-      animation: flipIn 220ms var(--ease);
+      animation: flipIn 180ms var(--ease);
       transform-origin: center;
     }
     @keyframes flipIn{
@@ -441,7 +470,7 @@
       <p id="endStats"></p>
       <p class="bigLine" id="endScoreLine"></p>
       <p class="muted" style="margin-top:10px;">
-        Score rewards faster play and fewer moves.
+        Score is based on your in-game actions (no giant 10,000-point bonus math).
       </p>
       <div class="rowbtn">
         <button id="endNewBtn">New Game</button>
@@ -466,7 +495,10 @@
     selected: null,
     drag: null,
 
-    startTs: Date.now(),
+    // Timer starts AFTER deal (and guaranteed on first move)
+    startTs: null,
+    timerStarted: false,
+
     controlMode: "drag",
 
     lastRects: new Map(),
@@ -511,7 +543,6 @@
     state.busy = on;
 
     if (on){
-      // snapshot existing disabled states
       state._btnPrev = state._btnPrev || new Map();
       const buttons = [els.newBtn, els.undoBtn, els.hintBtn, els.autoBtn, els.modeBtn, els.endBtn];
       buttons.forEach(b => state._btnPrev.set(b, b.disabled));
@@ -519,15 +550,19 @@
       return;
     }
 
-    // restore previous disabled states
     const buttons = [els.newBtn, els.undoBtn, els.hintBtn, els.autoBtn, els.modeBtn, els.endBtn];
     buttons.forEach(b => {
       const prev = state._btnPrev?.get(b);
       b.disabled = !!prev;
     });
 
-    // keep undo accurate
     els.undoBtn.disabled = state.history.length === 0;
+  }
+
+  function startTimer(){
+    if (state.timerStarted) return;
+    state.startTs = Date.now();
+    state.timerStarted = true;
   }
 
   function makeDeck(){
@@ -571,6 +606,7 @@
       moves: state.moves,
       score: state.score,
       startTs: state.startTs,
+      timerStarted: state.timerStarted,
       controlMode: state.controlMode
     };
   }
@@ -582,7 +618,8 @@
     state.tableau = snap.tableau;
     state.moves = snap.moves;
     state.score = snap.score;
-    state.startTs = snap.startTs ?? state.startTs;
+    state.startTs = snap.startTs ?? null;
+    state.timerStarted = snap.timerStarted ?? false;
     state.controlMode = snap.controlMode ?? state.controlMode;
     state.selected = null;
     state.drag = null;
@@ -598,6 +635,9 @@
   }
 
   function bumpMoves(n=1){
+    // start timer on first real move/draw
+    startTimer();
+
     state.moves += n;
     els.moves.textContent = String(state.moves);
     els.undoBtn.disabled = state.history.length === 0;
@@ -639,17 +679,17 @@
   }
 
   function elapsedSeconds(){
+    if (!state.startTs) return 0;
     return Math.max(0, Math.floor((Date.now() - state.startTs)/1000));
   }
 
+  // Final score should NOT be giant 10k math; keep it sane + reflective of gameplay
   function computeFinalScore(){
     const secs = elapsedSeconds();
-    const moves = state.moves;
-    const base = 10000;
-    const timePenalty = secs * 8;
-    const movePenalty = moves * 25;
-    const winBonus = checkWin() ? 1500 : 0;
-    return Math.max(0, Math.floor(base - timePenalty - movePenalty + winBonus));
+    const timePenalty = Math.floor(secs / 10);     // -1 per 10 seconds
+    const movePenalty = Math.floor(state.moves / 2); // -1 per 2 moves
+    const winBonus = checkWin() ? 250 : 0;
+    return Math.max(0, Math.floor(state.score + winBonus - timePenalty - movePenalty));
   }
 
   // =========================
@@ -712,7 +752,7 @@
   }
 
   // =========================
-  // NEW: Foundation-only click logic (Ace -> next -> next ...)
+  // Foundation-only click logic (Ace -> next -> next ...)
   // =========================
   function foundationClickMoveOnly(cardRef){
     const card = cardRef.card;
@@ -760,7 +800,10 @@
     state.score = 0;
     state.selected = null;
     state.drag = null;
-    state.startTs = Date.now();
+
+    // timer resets and starts AFTER deal finishes
+    state.startTs = null;
+    state.timerStarted = false;
 
     const deck = shuffle(makeDeck());
 
@@ -774,8 +817,8 @@
     updateHUD();
     render(true);
 
-    // Faster deal (you said too slow)
-    const dealDelay = 18;
+    // Faster deal
+    const dealDelay = 8; // was 18
     for (let col = 0; col < 7; col++){
       for (let row = 0; row <= col; row++){
         await animateDealOne(col);
@@ -791,10 +834,13 @@
         bumpScore(5);
         render(true);
         const el = document.querySelector(`[data-card-id="${t.id}"]`);
-        if (el) { el.classList.add("flipIn"); setTimeout(() => el.classList.remove("flipIn"), 240); }
-        await sleep(10);
+        if (el) { el.classList.add("flipIn"); setTimeout(() => el.classList.remove("flipIn"), 220); }
+        await sleep(8);
       }
     }
+
+    // Start timer after deal + initial flips
+    startTimer();
 
     els.undoBtn.disabled = true;
     els.win.classList.remove("show");
@@ -828,10 +874,10 @@
     await raf();
 
     // Faster travel
-    float.style.transition = `transform 220ms var(--ease)`;
+    float.style.transition = `transform 140ms var(--ease)`;
     float.style.transform = `translate(${targetRect.left}px, ${targetRect.top + y}px)`;
 
-    await sleep(230);
+    await sleep(150);
     float.remove();
 
     card.faceUp = false;
@@ -895,7 +941,7 @@
       }
     }
 
-    // only highlight tableau destinations in DRAG mode (because click-to-tableau is disabled by request)
+    // only highlight tableau destinations in DRAG mode (click-to-tableau disabled)
     if (state.controlMode === "drag"){
       for (let ti = 0; ti < 7; ti++){
         if (canMoveToTableau(first, ti)) els.tableau[ti].classList.add("highlight");
@@ -951,7 +997,7 @@
         bumpScore(5);
         setTimeout(() => {
           const el = document.querySelector(`[data-card-id="${t.id}"]`);
-          if (el) { el.classList.add("flipIn"); setTimeout(() => el.classList.remove("flipIn"), 240); }
+          if (el) { el.classList.add("flipIn"); setTimeout(() => el.classList.remove("flipIn"), 220); }
         }, 0);
       }
     }
@@ -982,7 +1028,7 @@
       bumpScore(5);
       render();
       const el = document.querySelector(`[data-card-id="${t.id}"]`);
-      if (el) { el.classList.add("flipIn"); setTimeout(() => el.classList.remove("flipIn"), 240); }
+      if (el) { el.classList.add("flipIn"); setTimeout(() => el.classList.remove("flipIn"), 220); }
       return true;
     }
     return false;
@@ -1288,8 +1334,7 @@
       return;
     }
 
-    // IMPORTANT: per your request, do NOT allow click-to-move to tableau.
-    // (tableau moves happen via drag)
+    // Do NOT allow click-to-move to tableau. Tableau moves happen via drag only.
     if (state.selected && ref.type === "foundation"){
       tryMoveSelectedTo(ref);
     }
@@ -1297,6 +1342,9 @@
 
   function onCardPointerDown(ev){
     if (state.busy) return;
+
+    // helps iOS tap reliability
+    ev.preventDefault();
 
     const cardEl = ev.currentTarget;
     const pileEl = cardEl.closest(".pile");
@@ -1451,7 +1499,7 @@
     els.win.addEventListener("click", (e) => { if (e.target === els.win) els.win.classList.remove("show"); });
   }
 
-  // Hint now only suggests foundation moves (matches your “click to foundation only” rule)
+  // Hint suggests foundation moves only (matches “click to foundation only” rule)
   function computeHint(){
     const a = findAutoFoundationMove();
     if (a){
