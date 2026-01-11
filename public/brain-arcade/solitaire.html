@@ -37,19 +37,28 @@
     }
 
     @media (max-width: 900px){
-      :root{
-        --cardW: 74px; --cardH: 104px;
-        --stackGap: 12px;
-        --fanUp: 24px; --fanUpTight: 16px; --fanDown: 9px;
-      }
-    }
-    @media (max-width: 520px){
-      :root{
-        --cardW: 62px; --cardH: 88px;
-        --stackGap: 10px;
-        --fanUp: 22px; --fanUpTight: 14px; --fanDown: 8px;
-      }
-    }
+  :root{
+    --cardW: 74px; --cardH: 104px;
+    --stackGap: 12px;
+    --fanUp: 24px; --fanUpTight: 16px; --fanDown: 9px;
+  }
+  
+  .bigRank{ font-size: 28px; }
+  .bigSuit{ font-size: 20px; }
+  .corner{ font-size: 10px; }
+}
+
+@media (max-width: 520px){
+  :root{
+    --cardW: 62px; --cardH: 88px;
+    --stackGap: 10px;
+    --fanUp: 22px; --fanUpTight: 14px; --fanDown: 8px;
+  }
+  
+  .bigRank{ font-size: 24px; }
+  .bigSuit{ font-size: 18px; }
+  .corner{ font-size: 9px; }
+}
 
     html, body{ height:100%; }
     body{
@@ -231,58 +240,58 @@
         0 1px 0 rgba(255,255,255,.25) inset;
     }
 
-    /* ✅ CARD FACE: scaled cleanly with clamp() so it looks right on iPad + mobile */
-    .cardInner{
-      height:100%;
-      padding: 8px 10px 10px;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      gap: 6px;
-    }
+    /* Card face layout - FIXED */
+.cardInner{
+  height:100%;
+  width:100%;
+  padding: 5px 6px 6px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  box-sizing:border-box;
+  overflow:hidden; /* CRITICAL */
+}
 
-    .corner{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      font-weight: 950;
-      font-size: clamp(11px, 1.25vw, 13px);
-      letter-spacing: .2px;
-      line-height: 1.0;
-      -webkit-font-smoothing: antialiased;
-    }
-    .corner .miniSuit{
-      font-size: clamp(12px, 1.35vw, 16px);
-      line-height: 1;
-      opacity: 1;
-      transform: translateY(-1px);
-      text-shadow: 0 1px 0 rgba(255,255,255,.25);
-    }
+.corner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  font-weight: 900;
+  font-size: 11px;
+  letter-spacing: 0;
+  line-height: 1;
+  height: 14px; /* Fixed height */
+}
 
-    .bigBlock{
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap: 8px;
-      padding-bottom: 2px;
-    }
-    .bigRank{
-      font-weight: 1000;
-      font-size: clamp(34px, 4.8vw, 54px);
-      line-height: .9;
-      letter-spacing: -1px;
-      -webkit-font-smoothing: antialiased;
-    }
-    .bigSuit{
-      font-weight: 1000;
-      font-size: clamp(22px, 3.2vw, 34px);
-      line-height: 1;
-      opacity: 1;
-      transform: translateY(-2px);
-      text-shadow:
-        0 1px 0 rgba(255,255,255,.35),
-        0 2px 6px rgba(0,0,0,.08);
-    }
+.centerArea{
+  flex: 1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:0;
+  overflow:hidden;
+}
+
+.bigDisplay{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap: 1px;
+}
+
+.bigRank{
+  font-weight: 900;
+  font-size: 32px; /* Smaller to fit */
+  line-height: .85;
+  letter-spacing: -1px;
+}
+
+.bigSuit{
+  font-size: 24px; /* Smaller to fit */
+  line-height: 1;
+  opacity: .9;
+}
 
     .backMark{
       height:100%;
@@ -1038,23 +1047,24 @@
     const col = colorOf(card);
     const rank = rankLabel(card.rank);
     el.innerHTML = `
-      <div class="cardInner">
-        <div class="corner ${col}">
-          <span>${rank}</span>
-          <span class="miniSuit">${card.suit}</span>
-        </div>
+  <div class="cardInner">
+    <div class="corner ${col}">
+      <span>${rank}</span>
+    </div>
 
-        <div class="bigBlock ${col}">
-          <div class="bigRank">${rank}</div>
-          <div class="bigSuit">${card.suit}</div>
-        </div>
-
-        <div class="corner ${col}" style="transform: rotate(180deg);">
-          <span>${rank}</span>
-          <span class="miniSuit">${card.suit}</span>
-        </div>
+    <div class="centerArea">
+      <div class="bigDisplay ${col}">
+        <div class="bigRank">${rank}</div>
+        <div class="bigSuit">${card.suit}</div>
       </div>
-    `;
+    </div>
+
+    <div class="corner ${col}" style="transform: rotate(180deg);">
+      <span>${rank}</span>
+    </div>
+  </div>
+`;
+
     return el;
   }
 
