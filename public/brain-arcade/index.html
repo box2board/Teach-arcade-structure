@@ -5,10 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#0f172a" />
 
-  <title>Brain Arcade | Skill-Based Thinking Games</title>
-  <meta name="description" content="Brain Arcade is a collection of skill-based games that build logic, reasoning, focus, and strategy—fun challenges that make you think, without feeling like school." />
+  <!-- ===========================
+       SEO: Title + Description
+  ============================ -->
+  <title>Brain Arcade | Logic, Puzzle & Thinking Games for Students and Adults</title>
+  <meta name="description" content="Brain Arcade by Teach Arcade is a free collection of skill-based thinking games—Sudoku, Block Logic, Crossword, Word Search, and Solitaire—designed to sharpen logic, focus, memory, and strategy without feeling like school." />
+  <meta name="keywords" content="brain games, logic games, puzzle games, sudoku, crossword, word search, solitaire, classroom brain breaks, critical thinking games, focus games, Teach Arcade" />
   <link rel="canonical" href="https://teacharcade.com/brain-arcade/" />
 
+  <!-- Indexing -->
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+
+  <!-- Styles / Fonts -->
   <link rel="stylesheet" href="/assets/styles.css?v=1" />
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,10 +26,36 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Teach Arcade" />
-  <meta property="og:title" content="Brain Arcade | Skill-Based Thinking Games" />
-  <meta property="og:description" content="Skill-based games that sharpen logic, reasoning, focus, and strategy—fun challenges that make you think." />
+  <meta property="og:title" content="Brain Arcade | Logic, Puzzle & Thinking Games" />
+  <meta property="og:description" content="Play free skill-based thinking games—Sudoku, Block Logic, Crossword, Word Search, and Solitaire—to build logic, focus, memory, and strategy." />
   <meta property="og:url" content="https://teacharcade.com/brain-arcade/" />
   <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Brain Arcade | Logic, Puzzle & Thinking Games" />
+  <meta name="twitter:description" content="Free brain games that sharpen logic, focus, memory, and strategy—without feeling like school." />
+  <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+
+  <!-- ===========================
+       Google Analytics (GA4)
+       NOTE: Replace G-XXXXXXXXXX with your real Measurement ID
+  ============================ -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
+  <!-- ===========================
+       Google AdSense
+       NOTE: Replace ca-pub-XXXXXXXXXXXXXXXX with your real publisher id
+  ============================ -->
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js?client=ca-pub-XXXXXXXXXXXXXXXX"
+    crossorigin="anonymous"></script>
 
   <style>
     .page-hero{ padding:72px 0 18px; text-align:center; }
@@ -31,7 +65,7 @@
     }
     .page-hero p{
       font:400 18px/1.55 Nunito,system-ui,sans-serif;
-      margin:0 auto 16px; max-width:900px; color:#475569;
+      margin:0 auto 16px; max-width:980px; color:#475569;
     }
     .hero-chips{ display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:10px; }
     .chip{
@@ -49,7 +83,7 @@
       text-decoration:none; color:#0f172a;
       box-shadow:0 2px 6px rgba(0,0,0,.05);
       transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
-      position:relative; overflow:hidden; min-height:190px;
+      position:relative; overflow:hidden; min-height:210px;
     }
     .game-card:hover{
       transform:translateY(-3px);
@@ -95,15 +129,138 @@
       border:1px solid #2563eb; color:#fff; background:#2563eb;
     }
     .btn.secondary{ background:#fff; color:#1f2937; border-color:#cbd5e1; }
+
+    /* Long-form SEO section */
+    .seo-block{
+      max-width:980px;
+      margin:22px auto 0;
+      padding:18px 16px;
+      background:#ffffff;
+      border:1px solid #e2e8f0;
+      border-radius:14px;
+      color:#334155;
+      font:400 15px/1.65 Nunito,system-ui,sans-serif;
+    }
+    .seo-block h2{
+      margin:0 0 8px;
+      color:#0f172a;
+      font:800 18px/1.2 Poppins,sans-serif;
+    }
+    .seo-block h3{
+      margin:14px 0 6px;
+      color:#0f172a;
+      font:800 15px/1.2 Poppins,sans-serif;
+    }
+    .seo-block ul{
+      margin:8px 0 0 18px;
+      padding:0;
+    }
+    .seo-block li{ margin:6px 0; }
+
+    /* Ad placeholders (safe even if AdSense not active yet) */
+    .ad-slot{
+      max-width:1100px;
+      margin:18px auto 0;
+      padding:14px;
+      border:1px dashed #cbd5e1;
+      border-radius:14px;
+      background:#f8fafc;
+      color:#64748b;
+      font:700 12px/1 Poppins,sans-serif;
+      text-transform:uppercase;
+      letter-spacing:.6px;
+      text-align:center;
+    }
+
+    /* FAQ */
+    .faq{
+      max-width:980px;
+      margin:18px auto 0;
+      padding:18px 16px;
+      background:#ffffff;
+      border:1px solid #e2e8f0;
+      border-radius:14px;
+    }
+    .faq h2{
+      margin:0 0 10px;
+      color:#0f172a;
+      font:800 18px/1.2 Poppins,sans-serif;
+    }
+    details{
+      border-top:1px solid #e2e8f0;
+      padding:10px 0;
+    }
+    details:first-of-type{ border-top:none; }
+    summary{
+      cursor:pointer;
+      font:800 14px/1.35 Poppins,sans-serif;
+      color:#0f172a;
+      list-style:none;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    details p{
+      margin:8px 0 0;
+      color:#475569;
+      font:400 14px/1.6 Nunito,sans-serif;
+    }
   </style>
 
+  <!-- ===========================
+       Structured Data
+  ============================ -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
     "@type":"CollectionPage",
     "name":"Brain Arcade",
     "url":"https://teacharcade.com/brain-arcade/",
-    "description":"Skill-based games that sharpen logic, reasoning, focus, and strategy—fun challenges that make you think."
+    "description":"A free collection of skill-based thinking games—Sudoku, Block Logic, Crossword, Word Search, and Solitaire—designed to sharpen logic, focus, memory, and strategy.",
+    "isPartOf":{
+      "@type":"WebSite",
+      "name":"Teach Arcade",
+      "url":"https://teacharcade.com/"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"ItemList",
+    "name":"Brain Arcade Games",
+    "itemListOrder":"https://schema.org/ItemListOrderAscending",
+    "itemListElement":[
+      {
+        "@type":"ListItem",
+        "position":1,
+        "name":"Solitaire (Klondike)",
+        "url":"https://teacharcade.com/brain-arcade/solitaire.html"
+      },
+      {
+        "@type":"ListItem",
+        "position":2,
+        "name":"Sudoku",
+        "url":"https://teacharcade.com/brain-arcade/sudoku.html"
+      },
+      {
+        "@type":"ListItem",
+        "position":3,
+        "name":"Block Logic",
+        "url":"https://teacharcade.com/brain-arcade/block-logic.html"
+      },
+      {
+        "@type":"ListItem",
+        "position":4,
+        "name":"Crossword",
+        "url":"https://teacharcade.com/brain-arcade/crossword.html"
+      },
+      {
+        "@type":"ListItem",
+        "position":5,
+        "name":"Word Search",
+        "url":"https://teacharcade.com/brain-arcade/word-search.html"
+      }
+    ]
   }
   </script>
 </head>
@@ -116,8 +273,10 @@
     <section class="page-hero">
       <h1>Brain Arcade</h1>
       <p>
-        Skill-based games that sharpen logic, reasoning, focus, and strategy—fun challenges that make you think,
-        without feeling like school.
+        Welcome to <strong>Brain Arcade</strong>—a growing collection of free, skill-based thinking games built for students,
+        teachers, and anyone who loves a good puzzle. These games are designed as quick brain breaks or longer challenge sessions,
+        strengthening <strong>logic</strong>, <strong>focus</strong>, <strong>pattern recognition</strong>, and <strong>strategic planning</strong>
+        without feeling like a worksheet.
       </p>
 
       <div class="hero-chips" aria-hidden="true">
@@ -125,6 +284,8 @@
         <span class="chip">Logic</span>
         <span class="chip">Focus</span>
         <span class="chip">Strategy</span>
+        <span class="chip">Patterns</span>
+        <span class="chip">Brain Breaks</span>
       </div>
 
       <div class="top-actions">
@@ -133,14 +294,22 @@
       </div>
     </section>
 
+    <!-- Ad slot (top of content) -->
+    <div class="ad-slot" aria-label="Advertisement placeholder">
+      Ad Slot (Top Banner)
+    </div>
+
     <div class="section-wrap">
       <div class="grid">
+
+        <!-- Solitaire -->
         <a class="game-card" href="/brain-arcade/solitaire.html" aria-label="Play Solitaire (Klondike)">
-          <div class="badge">New</div>
+          <div class="badge">Featured</div>
           <div class="icon" aria-hidden="true">🂡</div>
           <h3 class="game-title">Solitaire (Klondike)</h3>
           <p class="game-desc">
-            Classic drag-and-drop solitaire with tap-to-move, undo, and auto-move foundations.
+            The classic card challenge—build foundations by suit, uncover hidden cards, and plan several moves ahead.
+            Great for strategy, patience, and decision-making.
           </p>
           <div class="meta" aria-hidden="true">
             <span class="tag">Single Player</span>
@@ -149,23 +318,158 @@
           </div>
         </a>
 
-        <a class="game-card" href="#" aria-label="Coming soon">
-          <div class="icon" aria-hidden="true">✨</div>
-          <h3 class="game-title">Next Brain Challenge</h3>
+        <!-- Sudoku -->
+        <a class="game-card" href="/brain-arcade/sudoku.html" aria-label="Play Sudoku">
+          <div class="badge">New</div>
+          <div class="icon" aria-hidden="true">🔢</div>
+          <h3 class="game-title">Sudoku</h3>
           <p class="game-desc">
-            Coming soon — more logic, memory, and problem-solving games will live here.
+            Fill the grid using logic alone. Each row, column, and box must contain the numbers 1–9 without repeats.
+            A perfect focus game that rewards careful thinking over speed.
+          </p>
+          <div class="meta" aria-hidden="true">
+            <span class="tag">Logic</span>
+            <span class="tag">Patterns</span>
+            <span class="tag">Focus</span>
+          </div>
+        </a>
+
+        <!-- Block Logic -->
+        <a class="game-card" href="/brain-arcade/block-logic.html" aria-label="Play Block Logic">
+          <div class="badge">New</div>
+          <div class="icon" aria-hidden="true">🧱</div>
+          <h3 class="game-title">Block Logic</h3>
+          <p class="game-desc">
+            Drag and place shapes on a 10×10 grid to clear rows and columns. Think ahead to avoid dead ends and keep
+            your board flexible. A spatial reasoning puzzle that’s easy to learn and hard to put down.
+          </p>
+          <div class="meta" aria-hidden="true">
+            <span class="tag">Spatial</span>
+            <span class="tag">Strategy</span>
+            <span class="tag">Quick Play</span>
+          </div>
+        </a>
+
+        <!-- Crossword -->
+        <a class="game-card" href="/brain-arcade/crossword.html" aria-label="Play Crossword">
+          <div class="badge">New</div>
+          <div class="icon" aria-hidden="true">🧩</div>
+          <h3 class="game-title">Crossword</h3>
+          <p class="game-desc">
+            Solve clue-based word puzzles that build vocabulary, recall, and inference skills. Crosswords are a classic
+            way to practice careful reading and flexible thinking—one clue at a time.
+          </p>
+          <div class="meta" aria-hidden="true">
+            <span class="tag">Word Game</span>
+            <span class="tag">Vocabulary</span>
+            <span class="tag">Inference</span>
+          </div>
+        </a>
+
+        <!-- Word Search -->
+        <a class="game-card" href="/brain-arcade/word-search.html" aria-label="Play Word Search">
+          <div class="badge">New</div>
+          <div class="icon" aria-hidden="true">🔎</div>
+          <h3 class="game-title">Word Search</h3>
+          <p class="game-desc">
+            Scan the grid, spot patterns, and highlight hidden words quickly. Word Search is a fast, satisfying game that
+            strengthens attention, visual tracking, and persistence.
+          </p>
+          <div class="meta" aria-hidden="true">
+            <span class="tag">Focus</span>
+            <span class="tag">Patterns</span>
+            <span class="tag">Quick Play</span>
+          </div>
+        </a>
+
+        <!-- Coming Soon -->
+        <a class="game-card" href="#" aria-label="More brain games coming soon">
+          <div class="icon" aria-hidden="true">✨</div>
+          <h3 class="game-title">More Brain Games</h3>
+          <p class="game-desc">
+            Coming soon—more logic, memory, and problem-solving games are on the way. Brain Arcade will keep growing with
+            new challenges designed to be fun, fast, and classroom-friendly.
           </p>
           <div class="meta" aria-hidden="true">
             <span class="tag">Coming Soon</span>
             <span class="tag">Skill-Based</span>
           </div>
         </a>
+
       </div>
 
       <div class="note">
-        <strong>Note:</strong> Brain Arcade games are designed to strengthen thinking skills (logic, focus, strategy)
+        <strong>Note:</strong> Brain Arcade games are designed to strengthen general thinking skills (logic, focus, strategy)
         and may not be aligned to a specific curriculum or standard.
       </div>
+
+      <!-- Ad slot (mid page) -->
+      <div class="ad-slot" aria-label="Advertisement placeholder">
+        Ad Slot (Mid Page)
+      </div>
+
+      <!-- Long-form SEO content -->
+      <section class="seo-block" aria-label="About Brain Arcade">
+        <h2>What is Brain Arcade?</h2>
+        <p>
+          <strong>Brain Arcade</strong> is Teach Arcade’s hub for classic and modern puzzle games. Whether you’re a student who
+          wants a fun brain break, a teacher looking for a classroom-friendly station activity, or an adult who enjoys
+          logic challenges, these games are built to be easy to start and rewarding to master.
+        </p>
+
+        <h3>Why teachers use Brain Arcade</h3>
+        <ul>
+          <li><strong>Fast startup:</strong> No accounts required—just click and play.</li>
+          <li><strong>Skill-first design:</strong> Games emphasize logic, focus, and strategy rather than trivia or memorization.</li>
+          <li><strong>Classroom-friendly:</strong> Simple rules, minimal distractions, and clear learning value.</li>
+          <li><strong>Great for routines:</strong> Perfect for bell ringers, stations, early finishers, or brain breaks.</li>
+        </ul>
+
+        <h3>Thinking skills these games support</h3>
+        <ul>
+          <li><strong>Logic & deduction:</strong> Sudoku and crosswords reward careful reasoning.</li>
+          <li><strong>Spatial planning:</strong> Block Logic trains visual organization and foresight.</li>
+          <li><strong>Attention & persistence:</strong> Word Search builds scanning, focus, and follow-through.</li>
+          <li><strong>Strategic decision-making:</strong> Solitaire helps players think several moves ahead.</li>
+        </ul>
+
+        <h3>More games are coming</h3>
+        <p>
+          Brain Arcade is a growing library. Over time, you’ll see more classic games, daily puzzle challenges, and original
+          Teach Arcade-style thinking games that feel like an arcade—but strengthen real skills.
+        </p>
+      </section>
+
+      <!-- FAQ (helps SEO + AdSense content depth) -->
+      <section class="faq" aria-label="Frequently asked questions">
+        <h2>Brain Arcade FAQ</h2>
+
+        <details>
+          <summary>Are Brain Arcade games free?</summary>
+          <p>Yes. Brain Arcade games are free to play. Some pages may include ads to help support the site.</p>
+        </details>
+
+        <details>
+          <summary>Do I need an account to play?</summary>
+          <p>No account needed—just pick a game and start playing.</p>
+        </details>
+
+        <details>
+          <summary>Are these games classroom-friendly?</summary>
+          <p>Yes. Brain Arcade is designed to work well on school devices and as a quick station, bell-ringer, or brain-break option.</p>
+        </details>
+
+        <details>
+          <summary>What age levels work best?</summary>
+          <p>Most games work for upper elementary through adults. Teachers often use them as differentiated activities because difficulty can be adjusted through gameplay.</p>
+        </details>
+      </section>
+
+      <!-- Ad slot (bottom) -->
+      <div class="ad-slot" aria-label="Advertisement placeholder">
+        Ad Slot (Bottom)
+      </div>
+
     </div>
   </main>
 
