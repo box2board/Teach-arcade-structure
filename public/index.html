@@ -144,7 +144,7 @@
   <div id="site-header"></div>
   <script src="/assets/scripts/nav.js?v=3" defer></script>
 
-  <!-- No-JS fallback header (unchanged) -->
+  <!-- No-JS fallback header (unchanged except Submit link) -->
   <noscript>
     <header class="main-header" style="display:flex;justify-content:space-between;align-items:center;padding:10px 20px;background:#0f172a;color:#fff;">
       <a href="/" style="display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;">
@@ -155,7 +155,7 @@
         <a href="/" style="color:#fff;margin-right:16px;">Home</a>
         <a href="/subjects/index.html" style="color:#fff;margin-right:16px;">Subjects</a>
         <a href="/escape/?room=wwi" style="color:#fff;margin-right:16px;">Escape Rooms</a>
-        <a href="/submit.html" style="color:#fff;margin-right:16px;">Submit</a>
+        <a href="/submit/" style="color:#fff;margin-right:16px;">Submit</a>
         <a href="/about.html" style="color:#fff;">About</a>
       </nav>
     </header>
@@ -175,7 +175,8 @@
 
       <div class="cta-row">
         <a class="btn" href="/subjects/index.html">Browse Subjects</a>
-        <a class="btn secondary" href="/submit.html">Submit a Resource</a>
+        <!-- FIXED: submit now points to /submit/ -->
+        <a class="btn secondary" href="/submit/">Submit a Resource</a>
       </div>
 
       <form id="home-search" style="margin:16px auto 0; max-width:720px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
@@ -267,7 +268,7 @@
           <p class="subject-desc">Side-scrolling content review games with built-in questions</p>
         </a>
 
-        <!-- NEW TILE: Brain Arcade (Correct place + correct styling) -->
+        <!-- Brain Arcade -->
         <a href="/brain-arcade/" class="subject-tile brain-arcade" aria-label="Brain Arcade">
           <div class="brain-arcade-badge">New</div>
           <div class="subject-emoji">🧠</div>
@@ -281,9 +282,9 @@
           <p class="subject-desc">Choice-driven historical scenarios with multiple endings</p>
         </a>
 
-        <!-- NEW TILE: Decision Simulator -->
+        <!-- Historical Decision Simulator -->
         <a href="/games/american-revolution-breaking-point/" class="subject-tile" aria-label="Historical Decision Simulator: American Revolution">
-          <div class="subject-emoji">🧠</div>
+          <div class="subject-emoji">📉</div>
           <h3 class="subject-title">Historical Decision Simulator</h3>
           <p class="subject-desc">Play “American Revolution: The Breaking Point” — make tough choices, track pressure, and reach multiple endings.</p>
         </a>
