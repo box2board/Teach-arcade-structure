@@ -297,4 +297,20 @@ function allPiecesUsed() {
 /* GAME OVER CHECK */
 function isGameOver() {
   for (let i = 0; i < pieceEls.length; i++) {
-    const el = pieceEls[i
+    const el = pieceEls[i];
+    if (el.classList.contains("disabled")) continue;
+
+    const pieceDef = JSON.parse(el.dataset.piece);
+
+    for (let r = 0; r < GRID_SIZE; r++) {
+      for (let c = 0; c < GRID_SIZE; c++) {
+        if (canPlacePiece(pieceDef, r, c)) return false;
+      }
+    }
+  }
+  return true;
+}
+
+/* START GAME */
+initGrid();
+renderPieces();
