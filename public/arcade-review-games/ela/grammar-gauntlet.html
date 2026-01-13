@@ -269,22 +269,13 @@
     }
 
     @media (min-width: 900px) {
-      #touchControls {
-        display: none;
-      }
+      #touchControls { display: none; }
     }
 
     @media (max-width: 900px) {
-      canvas {
-        width: 100vw;
-        height: auto;
-      }
-      h1 {
-        font-size: 0.8rem;
-      }
-      .subtitle {
-        font-size: 0.7rem;
-      }
+      canvas { width: 100vw; height: auto; }
+      h1 { font-size: 0.8rem; }
+      .subtitle { font-size: 0.7rem; }
     }
   </style>
 </head>
@@ -352,216 +343,59 @@
     // PRELOADED GRAMMAR QUESTION BANK (50)
     // ======================================================
     const GRAMMAR_BANK = [
-      { id: 1, text: "Which word is a noun in this sentence: 'The dog barked loudly.'", choices: [
-        "dog", "barked", "loudly", "the"
-      ], correctIndex: 0 },
-      { id: 2, text: "Which word is a verb in this sentence: 'The students read quietly.'", choices: [
-        "students", "read", "quietly", "the"
-      ], correctIndex: 1 },
-      { id: 3, text: "Which word is an adjective in this sentence: 'She wore a red jacket.'", choices: [
-        "She", "wore", "red", "jacket"
-      ], correctIndex: 2 },
-      { id: 4, text: "Which word is an adverb in this sentence: 'He ran quickly.'", choices: [
-        "He", "ran", "quickly", "none"
-      ], correctIndex: 2 },
-      { id: 5, text: "Which word is a pronoun in this sentence: 'They finished the project.'", choices: [
-        "finished", "project", "They", "the"
-      ], correctIndex: 2 },
-      { id: 6, text: "Which word is a preposition in this sentence: 'The cat sat under the table.'", choices: [
-        "cat", "sat", "under", "table"
-      ], correctIndex: 2 },
-      { id: 7, text: "Which word is a conjunction in this sentence: 'I wanted to go, but it rained.'", choices: [
-        "wanted", "go", "but", "rained"
-      ], correctIndex: 2 },
-      { id: 8, text: "Which word is an interjection: 'Wow! That test was easy.'", choices: [
-        "test", "easy", "Wow", "that"
-      ], correctIndex: 2 },
-      { id: 9, text: "What type of sentence is this: 'Please close the door.'", choices: [
-        "Declarative", "Interrogative", "Imperative", "Exclamatory"
-      ], correctIndex: 2 },
-      { id: 10, text: "What type of sentence is this: 'Did you finish your homework?'", choices: [
-        "Declarative", "Interrogative", "Imperative", "Exclamatory"
-      ], correctIndex: 1 },
-      { id: 11, text: "Which sentence is punctuated correctly?", choices: [
-        "I like pizza, but not pasta.", 
-        "I like pizza but, not pasta.", 
-        "I like pizza but not, pasta.", 
-        "I like pizza, but, not pasta."
-      ], correctIndex: 0 },
-      { id: 12, text: "Choose the correct form: 'There _____ going to the movies.'", choices: [
-        "there", "theyre", "their", "they're"
-      ], correctIndex: 3 },
-      { id: 13, text: "Choose the correctly spelled word:", choices: [
-        "definately", "definitely", "defanitely", "definetly"
-      ], correctIndex: 1 },
-      { id: 14, text: "Which sentence uses 'its' correctly?", choices: [
-        "Its a sunny day.", 
-        "The dog wagged it's tail.", 
-        "The tree lost its leaves.", 
-        "Its' cold outside."
-      ], correctIndex: 2 },
-      { id: 15, text: "Which sentence is a fragment?", choices: [
-        "Because I was tired.", 
-        "I was tired after practice.", 
-        "We walked home.", 
-        "They ate dinner."
-      ], correctIndex: 0 },
-      { id: 16, text: "Which sentence is a run-on?", choices: [
-        "We left early. It was raining.", 
-        "We left early because it was raining.", 
-        "We left early it was raining hard.", 
-        "Because it was raining, we left."
-      ], correctIndex: 2 },
-      { id: 17, text: "Choose the sentence with correct subject-verb agreement.", choices: [
-        "The group of students are loud.", 
-        "The group of students is loud.", 
-        "The students in the group is loud.", 
-        "The students in the group was loud."
-      ], correctIndex: 1 },
-      { id: 18, text: "Which word is the subject? 'My younger brother plays guitar.'", choices: [
-        "younger", "brother", "plays", "guitar"
-      ], correctIndex: 1 },
-      { id: 19, text: "Which word is the direct object? 'She threw the ball.'", choices: [
-        "She", "threw", "ball", "the"
-      ], correctIndex: 2 },
-      { id: 20, text: "Which sentence is written in past tense?", choices: [
-        "I walk to school.", 
-        "I will walk to school.", 
-        "I walked to school.", 
-        "I am walking to school."
-      ], correctIndex: 2 },
-      { id: 21, text: "Which sentence is in present progressive tense?", choices: [
-        "He studies every day.", 
-        "He studied yesterday.", 
-        "He is studying now.", 
-        "He will study later."
-      ], correctIndex: 2 },
-      { id: 22, text: "Which word should be capitalized? 'we visited chicago last summer.'", choices: [
-        "we", "visited", "chicago", "summer"
-      ], correctIndex: 0 },
-      { id: 23, text: "Which word is a proper noun?", choices: [
-        "city", "teacher", "Columbus", "river"
-      ], correctIndex: 2 },
-      { id: 24, text: "Which sentence uses commas correctly?", choices: [
-        "We bought apples, oranges and, grapes.", 
-        "We bought apples, oranges, and grapes.", 
-        "We bought, apples, oranges and grapes.", 
-        "We bought apples oranges, and grapes."
-      ], correctIndex: 1 },
-      { id: 25, text: "Choose the best transition word: '_____, we packed our bags and left.'", choices: [
-        "However", "Meanwhile", "First", "Because"
-      ], correctIndex: 2 },
-      { id: 26, text: "Which word is an adjective? 'The tall student answered quickly.'", choices: [
-        "tall", "student", "answered", "quickly"
-      ], correctIndex: 0 },
-      { id: 27, text: "Which word is an adverb? 'The tall student answered quickly.'", choices: [
-        "student", "tall", "answered", "quickly"
-      ], correctIndex: 3 },
-      { id: 28, text: "Choose the correct pronoun: 'Each of the players brought _____ own water bottle.'", choices: [
-        "their", "his or her", "they're", "its"
-      ], correctIndex: 1 },
-      { id: 29, text: "Which word is a linking verb? 'The soup smells delicious.'", choices: [
-        "soup", "smells", "delicious", "none"
-      ], correctIndex: 1 },
-      { id: 30, text: "Choose the correct word: 'I have _____ pencils than you.'", choices: [
-        "less", "few", "fewer", "little"
-      ], correctIndex: 2 },
-      { id: 31, text: "Which sentence uses a semicolon correctly?", choices: [
-        "I like tea; and I like coffee.", 
-        "I like tea; I also like coffee.", 
-        "I like tea; but coffee is better.", 
-        "I like tea; because it is warm."
-      ], correctIndex: 1 },
-      { id: 32, text: "Which sentence needs an apostrophe?", choices: [
-        "The cats tail is fluffy.", 
-        "The cat chased the mouse.", 
-        "The tail is fluffy.", 
-        "The cats are sleeping."
-      ], correctIndex: 0 },
-      { id: 33, text: "Which word is a preposition? 'The book is on the desk.'", choices: [
-        "book", "is", "on", "desk"
-      ], correctIndex: 2 },
-      { id: 34, text: "Which sentence is in passive voice?", choices: [
-        "The class wrote the essay.", 
-        "The essay was written by the class.", 
-        "The class will write the essay.", 
-        "The class is writing the essay."
-      ], correctIndex: 1 },
-      { id: 35, text: "Which sentence avoids a double negative?", choices: [
-        "I don't need no help.", 
-        "I can't find nothing.", 
-        "I don't need any help.", 
-        "I haven't never been there."
-      ], correctIndex: 2 },
-      { id: 36, text: "Which word is a conjunction? 'You can have pizza or pasta.'", choices: [
-        "You", "pizza", "or", "pasta"
-      ], correctIndex: 2 },
-      { id: 37, text: "Choose the correct homophone: 'Please be _____ when you carry the glass.'", choices: [
-        "careful", "carefull", "care less", "carfull"
-      ], correctIndex: 0 },
-      { id: 38, text: "Which sentence contains a compound subject?", choices: [
-        "The dog barked loudly.", 
-        "My brother and sister play soccer.", 
-        "The team scored a goal.", 
-        "The teacher smiled."
-      ], correctIndex: 1 },
-      { id: 39, text: "Which sentence contains a compound predicate?", choices: [
-        "The dog barked and ran.", 
-        "The dog and cat ran.", 
-        "The dog barked.", 
-        "The dog."
-      ], correctIndex: 0 },
-      { id: 40, text: "Which word is the object of the preposition? 'The ball rolled under the couch.'", choices: [
-        "ball", "rolled", "under", "couch"
-      ], correctIndex: 3 },
-      { id: 41, text: "Which sentence is written formally?", choices: [
-        "We were like super late.", 
-        "We arrived very late to the event.", 
-        "We were kinda late.", 
-        "We were totally late."
-      ], correctIndex: 1 },
-      { id: 42, text: "Which sentence correctly uses quotation marks?", choices: [
-        "I said, 'Let's go'.", 
-        "I said 'Let's go'.", 
-        "I said, 'Let's go.'", 
-        "I said 'Let's go.'"
-      ], correctIndex: 2 },
-      { id: 43, text: "Which word is a pronoun? 'She gave him the notebook.'", choices: [
-        "She", "gave", "notebook", "the"
-      ], correctIndex: 0 },
-      { id: 44, text: "Which verb agrees? 'Neither of the answers _____ correct.'", choices: [
-        "are", "were", "is", "be"
-      ], correctIndex: 2 },
-      { id: 45, text: "Which sentence uses parallel structure?", choices: [
-        "He likes hiking, to swim, and biking.", 
-        "He likes to hike, swim, and bike.", 
-        "He likes hiking, swimming, and to bike.", 
-        "He likes hike, swim, and biking."
-      ], correctIndex: 1 },
-      { id: 46, text: "Which word is a gerund? 'Swimming is my favorite exercise.'", choices: [
-        "Swimming", "favorite", "exercise", "my"
-      ], correctIndex: 0 },
-      { id: 47, text: "Which sentence correctly uses a colon?", choices: [
-        "I need to buy: pencils, paper, and pens.", 
-        "I need to buy three things: pencils, paper, and pens.", 
-        "I need: to buy pencils, paper, and pens.", 
-        "I: need to buy pencils, paper, and pens."
-      ], correctIndex: 1 },
-      { id: 48, text: "Which word is the predicate adjective? 'The test was difficult.'", choices: [
-        "test", "was", "difficult", "none"
-      ], correctIndex: 2 },
-      { id: 49, text: "Which sentence correctly uses 'who' or 'whom'?", choices: [
-        "Who did you invite to the party?", 
-        "Whom is coming over?", 
-        "Who did you give the book to?", 
-        "Whom is your teacher?"
-      ], correctIndex: 0 },
-      { id: 50, text: "Which sentence is written in first person?", choices: [
-        "You should study more.", 
-        "They will study later.", 
-        "I need to study for the test.", 
-        "She needs to study."
-      ], correctIndex: 2 }
+      { id: 1, text: "Which word is a noun in this sentence: 'The dog barked loudly.'", choices: ["dog","barked","loudly","the"], correctIndex: 0 },
+      { id: 2, text: "Which word is a verb in this sentence: 'The students read quietly.'", choices: ["students","read","quietly","the"], correctIndex: 1 },
+      { id: 3, text: "Which word is an adjective in this sentence: 'She wore a red jacket.'", choices: ["She","wore","red","jacket"], correctIndex: 2 },
+      { id: 4, text: "Which word is an adverb in this sentence: 'He ran quickly.'", choices: ["He","ran","quickly","none"], correctIndex: 2 },
+      { id: 5, text: "Which word is a pronoun in this sentence: 'They finished the project.'", choices: ["finished","project","They","the"], correctIndex: 2 },
+      { id: 6, text: "Which word is a preposition in this sentence: 'The cat sat under the table.'", choices: ["cat","sat","under","table"], correctIndex: 2 },
+      { id: 7, text: "Which word is a conjunction in this sentence: 'I wanted to go, but it rained.'", choices: ["wanted","go","but","rained"], correctIndex: 2 },
+      { id: 8, text: "Which word is an interjection: 'Wow! That test was easy.'", choices: ["test","easy","Wow","that"], correctIndex: 2 },
+      { id: 9, text: "What type of sentence is this: 'Please close the door.'", choices: ["Declarative","Interrogative","Imperative","Exclamatory"], correctIndex: 2 },
+      { id: 10, text: "What type of sentence is this: 'Did you finish your homework?'", choices: ["Declarative","Interrogative","Imperative","Exclamatory"], correctIndex: 1 },
+      { id: 11, text: "Which sentence is punctuated correctly?", choices: ["I like pizza, but not pasta.","I like pizza but, not pasta.","I like pizza but not, pasta.","I like pizza, but, not pasta."], correctIndex: 0 },
+      { id: 12, text: "Choose the correct form: 'There _____ going to the movies.'", choices: ["there","theyre","their","they're"], correctIndex: 3 },
+      { id: 13, text: "Choose the correctly spelled word:", choices: ["definately","definitely","defanitely","definetly"], correctIndex: 1 },
+      { id: 14, text: "Which sentence uses 'its' correctly?", choices: ["Its a sunny day.","The dog wagged it's tail.","The tree lost its leaves.","Its' cold outside."], correctIndex: 2 },
+      { id: 15, text: "Which sentence is a fragment?", choices: ["Because I was tired.","I was tired after practice.","We walked home.","They ate dinner."], correctIndex: 0 },
+      { id: 16, text: "Which sentence is a run-on?", choices: ["We left early. It was raining.","We left early because it was raining.","We left early it was raining hard.","Because it was raining, we left."], correctIndex: 2 },
+      { id: 17, text: "Choose the sentence with correct subject-verb agreement.", choices: ["The group of students are loud.","The group of students is loud.","The students in the group is loud.","The students in the group was loud."], correctIndex: 1 },
+      { id: 18, text: "Which word is the subject? 'My younger brother plays guitar.'", choices: ["younger","brother","plays","guitar"], correctIndex: 1 },
+      { id: 19, text: "Which word is the direct object? 'She threw the ball.'", choices: ["She","threw","ball","the"], correctIndex: 2 },
+      { id: 20, text: "Which sentence is written in past tense?", choices: ["I walk to school.","I will walk to school.","I walked to school.","I am walking to school."], correctIndex: 2 },
+      { id: 21, text: "Which sentence is in present progressive tense?", choices: ["He studies every day.","He studied yesterday.","He is studying now.","He will study later."], correctIndex: 2 },
+
+      /* FIXED: single best answer is Chicago (and should be capitalized in the option) */
+      { id: 22, text: "Which word should be capitalized? 'we visited chicago last summer.'", choices: ["we","visited","Chicago","summer"], correctIndex: 2 },
+
+      { id: 23, text: "Which word is a proper noun?", choices: ["city","teacher","Columbus","river"], correctIndex: 2 },
+      { id: 24, text: "Which sentence uses commas correctly?", choices: ["We bought apples, oranges and, grapes.","We bought apples, oranges, and grapes.","We bought, apples, oranges and grapes.","We bought apples oranges, and grapes."], correctIndex: 1 },
+      { id: 25, text: "Choose the best transition word: '_____, we packed our bags and left.'", choices: ["However","Meanwhile","First","Because"], correctIndex: 2 },
+      { id: 26, text: "Which word is an adjective? 'The tall student answered quickly.'", choices: ["tall","student","answered","quickly"], correctIndex: 0 },
+      { id: 27, text: "Which word is an adverb? 'The tall student answered quickly.'", choices: ["student","tall","answered","quickly"], correctIndex: 3 },
+      { id: 28, text: "Choose the correct pronoun: 'Each of the players brought _____ own water bottle.'", choices: ["their","his or her","they're","its"], correctIndex: 1 },
+      { id: 29, text: "Which word is a linking verb? 'The soup smells delicious.'", choices: ["soup","smells","delicious","none"], correctIndex: 1 },
+      { id: 30, text: "Choose the correct word: 'I have _____ pencils than you.'", choices: ["less","few","fewer","little"], correctIndex: 2 },
+      { id: 31, text: "Which sentence uses a semicolon correctly?", choices: ["I like tea; and I like coffee.","I like tea; I also like coffee.","I like tea; but coffee is better.","I like tea; because it is warm."], correctIndex: 1 },
+      { id: 32, text: "Which sentence needs an apostrophe?", choices: ["The cats tail is fluffy.","The cat chased the mouse.","The tail is fluffy.","The cats are sleeping."], correctIndex: 0 },
+      { id: 33, text: "Which word is a preposition? 'The book is on the desk.'", choices: ["book","is","on","desk"], correctIndex: 2 },
+      { id: 34, text: "Which sentence is in passive voice?", choices: ["The class wrote the essay.","The essay was written by the class.","The class will write the essay.","The class is writing the essay."], correctIndex: 1 },
+      { id: 35, text: "Which sentence avoids a double negative?", choices: ["I don't need no help.","I can't find nothing.","I don't need any help.","I haven't never been there."], correctIndex: 2 },
+      { id: 36, text: "Which word is a conjunction? 'You can have pizza or pasta.'", choices: ["You","pizza","or","pasta"], correctIndex: 2 },
+      { id: 37, text: "Choose the correct homophone: 'Please be _____ when you carry the glass.'", choices: ["careful","carefull","care less","carfull"], correctIndex: 0 },
+      { id: 38, text: "Which sentence contains a compound subject?", choices: ["The dog barked loudly.","My brother and sister play soccer.","The team scored a goal.","The teacher smiled."], correctIndex: 1 },
+      { id: 39, text: "Which sentence contains a compound predicate?", choices: ["The dog barked and ran.","The dog and cat ran.","The dog barked.","The dog."], correctIndex: 0 },
+      { id: 40, text: "Which word is the object of the preposition? 'The ball rolled under the couch.'", choices: ["ball","rolled","under","couch"], correctIndex: 3 },
+      { id: 41, text: "Which sentence is written formally?", choices: ["We were like super late.","We arrived very late to the event.","We were kinda late.","We were totally late."], correctIndex: 1 },
+      { id: 42, text: "Which sentence correctly uses quotation marks?", choices: ["I said, 'Let's go'.","I said 'Let's go'.","I said, 'Let's go.'","I said 'Let's go.'"], correctIndex: 2 },
+      { id: 43, text: "Which word is a pronoun? 'She gave him the notebook.'", choices: ["She","gave","notebook","the"], correctIndex: 0 },
+      { id: 44, text: "Which verb agrees? 'Neither of the answers _____ correct.'", choices: ["are","were","is","be"], correctIndex: 2 },
+      { id: 45, text: "Which sentence uses parallel structure?", choices: ["He likes hiking, to swim, and biking.","He likes to hike, swim, and bike.","He likes hiking, swimming, and to bike.","He likes hike, swim, and biking."], correctIndex: 1 },
+      { id: 46, text: "Which word is a gerund? 'Swimming is my favorite exercise.'", choices: ["Swimming","favorite","exercise","my"], correctIndex: 0 },
+      { id: 47, text: "Which sentence correctly uses a colon?", choices: ["I need to buy: pencils, paper, and pens.","I need to buy three things: pencils, paper, and pens.","I need: to buy pencils, paper, and pens.","I: need to buy pencils, paper, and pens."], correctIndex: 1 },
+      { id: 48, text: "Which word is the predicate adjective? 'The test was difficult.'", choices: ["test","was","difficult","none"], correctIndex: 2 },
+      { id: 49, text: "Which sentence correctly uses 'who' or 'whom'?", choices: ["Who did you invite to the party?","Whom is coming over?","Who did you give the book to?","Whom is your teacher?"], correctIndex: 0 },
+      { id: 50, text: "Which sentence is written in first person?", choices: ["You should study more.","They will study later.","I need to study for the test.","She needs to study."], correctIndex: 2 }
     ];
 
     function pickRandomQuestions(bank, count = 20) {
@@ -630,13 +464,14 @@
       { x: 3100, y: 175, width: 140, height: 12 }
     ];
 
-    // Enemies = runaway red pens
-    const enemies = [
+    // FIX: enemies must reset on Replay/mode switch
+    const ENEMIES_TEMPLATE = [
       { x: 820,  y: GROUND_Y - 16, w: 26, h: 16, dir: 1,  speed: 70, minX: 820,  maxX: 950 },
       { x: 1500, y: GROUND_Y - 16, w: 26, h: 16, dir: -1, speed: 80, minX: 1450, maxX: 1600 },
       { x: 2150, y: GROUND_Y - 16, w: 26, h: 16, dir: 1,  speed: 75, minX: 2100, maxX: 2250 },
       { x: 2900, y: GROUND_Y - 16, w: 26, h: 16, dir: -1, speed: 85, minX: 2850, maxX: 3000 }
     ];
+    const enemies = [];
 
     const effects = [];
 
@@ -707,12 +542,8 @@
     // INPUT
     // ======================================================
     document.addEventListener('keydown', (e) => {
-      if (e.code === 'ArrowLeft' || e.code === 'KeyA') {
-        keys.left = true;
-      }
-      if (e.code === 'ArrowRight' || e.code === 'KeyD') {
-        keys.right = true;
-      }
+      if (e.code === 'ArrowLeft' || e.code === 'KeyA') keys.left = true;
+      if (e.code === 'ArrowRight' || e.code === 'KeyD') keys.right = true;
       if (e.code === 'ArrowUp' || e.code === 'Space' || e.code === 'KeyW') {
         e.preventDefault();
         tryJump();
@@ -720,12 +551,8 @@
     });
 
     document.addEventListener('keyup', (e) => {
-      if (e.code === 'ArrowLeft' || e.code === 'KeyA') {
-        keys.left = false;
-      }
-      if (e.code === 'ArrowRight' || e.code === 'KeyD') {
-        keys.right = false;
-      }
+      if (e.code === 'ArrowLeft' || e.code === 'KeyA') keys.left = false;
+      if (e.code === 'ArrowRight' || e.code === 'KeyD') keys.right = false;
     });
 
     function bindControl(btn, onDown, onUp) {
@@ -740,14 +567,11 @@
       btn.addEventListener('mouseleave', end);
     }
 
-    bindControl(leftBtn, () => { keys.left = true; },  () => { keys.left = false; });
+    bindControl(leftBtn,  () => { keys.left = true; },  () => { keys.left = false; });
     bindControl(rightBtn, () => { keys.right = true; }, () => { keys.right = false; });
 
     if (jumpBtn) {
-      const pressJump = (e) => {
-        e.preventDefault();
-        tryJump();
-      };
+      const pressJump = (e) => { e.preventDefault(); tryJump(); };
       jumpBtn.addEventListener('touchstart', pressJump, { passive: false });
       jumpBtn.addEventListener('mousedown', pressJump);
     }
@@ -791,6 +615,11 @@
       bannerText = "";
       bannerTimer = 0;
 
+      // FIX: reset enemies/effects each run
+      enemies.length = 0;
+      ENEMIES_TEMPLATE.forEach(e => enemies.push({ ...e }));
+      effects.length = 0;
+
       qOverlay.classList.add('hidden');
       endOverlay.classList.add('hidden');
       hudStatus.textContent = "Status: Running";
@@ -821,14 +650,7 @@
           else                    y = 170;
         }
 
-        const qb = {
-          id: i + 1,
-          qIndex: i,
-          x: worldX,
-          y,
-          completed: false,
-          firstTry: true
-        };
+        const qb = { id: i + 1, qIndex: i, x: worldX, y, completed: false, firstTry: true };
         questionBlocks.push(qb);
       }
 
@@ -908,9 +730,7 @@
     });
 
     function checkLevelComplete() {
-      if (!levelComplete &&
-          questionsAnsweredCount === 20 &&
-          player.x + player.w > endFlagX) {
+      if (!levelComplete && questionsAnsweredCount === 20 && player.x + player.w > endFlagX) {
         triggerEndScreen();
       }
     }
@@ -922,18 +742,12 @@
       hudStatus.textContent = "Status: Complete";
 
       const accuracy = (firstTryCorrectCount / 20) * 100;
-      endSummary.textContent =
-        `Score: ${score} points | Accuracy: ${firstTryCorrectCount}/20 (${accuracy.toFixed(0)}%)`;
+      endSummary.textContent = `Score: ${score} points | Accuracy: ${firstTryCorrectCount}/20 (${accuracy.toFixed(0)}%)`;
       endOverlay.classList.remove('hidden');
     }
 
-    replayBtn.addEventListener('click', () => {
-      startNewRun();
-    });
-
-    topicBtn.addEventListener('click', () => {
-      window.location.href = "/arcade-review-games/";
-    });
+    replayBtn.addEventListener('click', () => startNewRun());
+    topicBtn.addEventListener('click', () => { window.location.href = "/arcade-review-games/"; });
 
     function updateHud() {
       hudScore.textContent = "Score: " + score;
@@ -968,9 +782,9 @@
         if (bannerTimer < 0) bannerTimer = 0;
       }
 
-      if (keys.left)      player.vx = -PLAYER_SPEED;
+      if (keys.left) player.vx = -PLAYER_SPEED;
       else if (keys.right) player.vx = PLAYER_SPEED;
-      else                player.vx = 0;
+      else player.vx = 0;
 
       player.vy += GRAVITY * dt;
 
@@ -1017,27 +831,17 @@
         showToast("-20 | Fell off the page");
         updateHud();
       } else if (!overPit) {
-        if (!inQuestion && !levelComplete) {
-          hudStatus.textContent = "Status: Running";
-        }
+        if (!inQuestion && !levelComplete) hudStatus.textContent = "Status: Running";
       }
 
       // Enemy movement
       for (const e of enemies) {
         const nextX = e.x + e.dir * e.speed * dt;
-        if (enemyFutureOverPit(nextX, e)) {
-          e.dir *= -1;
-        } else {
-          e.x = nextX;
-        }
+        if (enemyFutureOverPit(nextX, e)) e.dir *= -1;
+        else e.x = nextX;
 
-        if (e.x < e.minX) {
-          e.x = e.minX;
-          e.dir = 1;
-        } else if (e.x + e.w > e.maxX) {
-          e.x = e.maxX - e.w;
-          e.dir = -1;
-        }
+        if (e.x < e.minX) { e.x = e.minX; e.dir = 1; }
+        else if (e.x + e.w > e.maxX) { e.x = e.maxX - e.w; e.dir = -1; }
       }
 
       // Enemy collisions (stomp vs side)
@@ -1052,13 +856,7 @@
             score += 10;
             showToast("+10 | Defeated a red pen");
             updateHud();
-            effects.push({
-              x: e.x + e.w / 2,
-              y: e.y + e.h / 2,
-              radius: 4,
-              maxRadius: 18,
-              life: 0.25
-            });
+            effects.push({ x: e.x + e.w / 2, y: e.y + e.h / 2, radius: 4, maxRadius: 18, life: 0.25 });
           } else if (hitCooldown === 0) {
             score -= 15;
             hitCooldown = 1.0;
@@ -1074,24 +872,17 @@
       for (let i = effects.length - 1; i >= 0; i--) {
         const fx = effects[i];
         fx.life -= dt;
-        if (fx.life <= 0) {
-          effects.splice(i, 1);
-        }
+        if (fx.life <= 0) effects.splice(i, 1);
       }
 
       // Question icons
       for (const block of questionBlocks) {
         if (block.completed) continue;
         const box = { x: block.x, y: block.y, w: 32, h: 32 };
-        if (rectIntersect(player, box)) {
-          openQuestion(block);
-          break;
-        }
+        if (rectIntersect(player, box)) { openQuestion(block); break; }
       }
 
-      if (!levelComplete && player.x + player.w > endFlagX) {
-        checkLevelComplete();
-      }
+      if (!levelComplete && player.x + player.w > endFlagX) checkLevelComplete();
 
       // Smooth camera
       const halfCanvas = canvas.width / 2;
@@ -1103,23 +894,16 @@
     }
 
     function rectIntersect(a, b) {
-      return !(
-        a.x + a.w <= b.x ||
-        a.x >= b.x + b.w ||
-        a.y + a.h <= b.y ||
-        a.y >= b.y + b.h
-      );
+      return !(a.x + a.w <= b.x || a.x >= b.x + b.w || a.y + a.h <= b.y || a.y >= b.y + b.h);
     }
 
     // ======================================================
     // DRAWING
     // ======================================================
     function drawBackground() {
-      // Notebook paper effect: light blue lines + red margin
       ctx.fillStyle = "#f5f6fb";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Horizontal ruled lines
       ctx.strokeStyle = "#c4d4ff";
       ctx.lineWidth = 1;
       for (let y = 40; y < canvas.height; y += 18) {
@@ -1129,7 +913,6 @@
         ctx.stroke();
       }
 
-      // Red margin line at x = 120 (world space)
       const marginXWorld = 120;
       const marginScreenX = marginXWorld - cameraX * 0.3;
       ctx.strokeStyle = "#ffb4b4";
@@ -1139,7 +922,6 @@
       ctx.lineTo(marginScreenX, canvas.height);
       ctx.stroke();
 
-      // Title text shadow suggestion at top
       ctx.font = "10px 'Press Start 2P', system-ui, sans-serif";
       ctx.fillStyle = "#9ca3af";
       ctx.textAlign = "left";
@@ -1191,11 +973,7 @@
         const sx = block.x - cameraX;
         const sy = block.y;
 
-        if (block.completed) {
-          ctx.fillStyle = "#16a34a";
-        } else {
-          ctx.fillStyle = "#facc15";
-        }
+        ctx.fillStyle = block.completed ? "#16a34a" : "#facc15";
         ctx.fillRect(sx, sy, 32, 32);
         ctx.strokeStyle = "rgba(15,23,42,0.4)";
         ctx.strokeRect(sx + 0.5, sy + 0.5, 31, 31);
@@ -1218,11 +996,9 @@
         const sx = e.x - cameraX;
         const sy = e.y;
 
-        // Red pen body
         ctx.fillStyle = "#dc2626";
         ctx.fillRect(sx + 6, sy, 14, e.h);
 
-        // Pen tip
         ctx.fillStyle = "#111827";
         ctx.beginPath();
         ctx.moveTo(sx + 6, sy + e.h);
@@ -1231,7 +1007,6 @@
         ctx.closePath();
         ctx.fill();
 
-        // Cap
         ctx.fillStyle = "#fee2e2";
         ctx.fillRect(sx + 6, sy - 4, 14, 4);
       });
@@ -1254,7 +1029,6 @@
       const sx = endFlagX - cameraX;
       const baseY = GROUND_Y;
 
-      // Stand
       ctx.strokeStyle = "#111827";
       ctx.lineWidth = 3;
       ctx.beginPath();
@@ -1262,7 +1036,6 @@
       ctx.lineTo(sx, baseY - 80);
       ctx.stroke();
 
-      // Banner = 'TURN IN'
       ctx.fillStyle = "#3b82f6";
       ctx.fillRect(sx, baseY - 80, 60, 20);
       ctx.fillStyle = "#eff6ff";
@@ -1276,33 +1049,26 @@
       const sx = player.x - cameraX;
       const sy = player.y;
 
-      // Shoes
       ctx.fillStyle = "#111827";
       ctx.fillRect(sx + 4, sy + player.h - 10, 8, 10);
       ctx.fillRect(sx + player.w - 12, sy + player.h - 10, 8, 10);
 
-      // Hoodie / body
       ctx.fillStyle = "#3b82f6";
       ctx.fillRect(sx + 4, sy + 10, player.w - 8, 22);
 
-      // Backpack
       ctx.fillStyle = "#1d4ed8";
       ctx.fillRect(sx + player.w - 6, sy + 12, 4, 16);
 
-      // Head
       ctx.fillStyle = "#fde68a";
       ctx.fillRect(sx + 4, sy, player.w - 8, 10);
 
-      // Hair band
       ctx.fillStyle = "#f59e0b";
       ctx.fillRect(sx + 4, sy + 2, player.w - 8, 2);
 
-      // Arms
       ctx.fillStyle = "#3b82f6";
       ctx.fillRect(sx, sy + 14, 4, 10);
       ctx.fillRect(sx + player.w - 4, sy + 14, 4, 10);
 
-      // Eyes
       ctx.fillStyle = "#111827";
       ctx.fillRect(sx + 7, sy + 4, 2, 2);
       ctx.fillRect(sx + 17, sy + 4, 2, 2);
@@ -1312,8 +1078,7 @@
       if (bannerTimer > 0 && bannerText) {
         ctx.font = "10px 'Press Start 2P', system-ui, sans-serif";
         ctx.textAlign = "center";
-        const w = 280;
-        const h = 24;
+        const w = 280, h = 24;
         const x = canvas.width / 2 - w / 2;
         const y = 34;
         ctx.fillStyle = "rgba(15,23,42,0.8)";
@@ -1325,8 +1090,7 @@
       if (toastTimer > 0 && toastText) {
         ctx.font = "10px 'Press Start 2P', system-ui, sans-serif";
         ctx.textAlign = "center";
-        const w = 260;
-        const h = 24;
+        const w = 260, h = 24;
         const x = canvas.width / 2 - w / 2;
         const y = canvas.height - 34;
         ctx.fillStyle = "rgba(15,23,42,0.8)";
@@ -1350,8 +1114,11 @@
     }
 
     function loop(timestamp) {
-      const dt = (timestamp - lastTime) / 1000;
+      let dt = (timestamp - lastTime) / 1000;
       lastTime = timestamp;
+
+      // FIX: clamp dt to prevent huge jumps on laggy frames
+      if (!Number.isFinite(dt) || dt > 0.05) dt = 0.05;
 
       update(dt);
       draw();
