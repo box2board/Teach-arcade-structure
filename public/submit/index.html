@@ -4,7 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Submit a Resource or Idea | Teach Arcade</title>
-  <meta name="description" content="Submit a classroom resource, report an issue, share feedback, or suggest a new game idea for Teach Arcade." />
+
+  <meta name="description"
+    content="Submit a classroom resource, report an issue, share feedback, or suggest a new game idea for Teach Arcade." />
+
   <link rel="icon" href="/assets/images/teach-arcade-logo.png" />
   <link rel="stylesheet" href="/assets/styles.css" />
 
@@ -12,228 +15,217 @@
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
   <style>
-    body{ background: radial-gradient(circle at top, #0f172a, #020617); color:#e5e7eb; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin:0; }
+    body{
+      background: radial-gradient(circle at top, #0f172a, #020617);
+      color:#e5e7eb;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      margin:0;
+    }
     .wrap{ max-width: 920px; margin: 0 auto; padding: 28px 16px 64px; }
-    .card{ background: rgba(15,23,42,.85); border: 1px solid rgba(255,255,255,.10); border-radius: 16px; padding: 18px; box-shadow: 0 16px 40px rgba(0,0,0,.35); }
+    .card{
+      background: rgba(15,23,42,.85);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 16px 40px rgba(0,0,0,.35);
+    }
     h1{ margin: 0 0 6px; font-size: 28px; }
     p{ margin: 8px 0; color: rgba(229,231,235,.86); line-height: 1.5; }
     .grid{ display:grid; grid-template-columns: 1fr; gap: 12px; margin-top: 14px; }
     @media (min-width: 760px){ .grid.two{ grid-template-columns: 1fr 1fr; } }
     label{ display:block; font-weight: 700; margin-bottom: 6px; }
     input, select, textarea{
-      width: 100%; padding: 10px 12px; border-radius: 12px;
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 12px;
       border: 1px solid rgba(255,255,255,.14);
-      background: rgba(2,6,23,.55); color:#e5e7eb;
+      background: rgba(2,6,23,.55);
+      color:#e5e7eb;
       outline: none;
     }
     textarea{ min-height: 120px; resize: vertical; }
     .muted{ color: rgba(156,163,175,.9); font-size: 13px; }
-    .btnrow{ display:flex; gap:10px; align-items:center; margin-top: 10px; flex-wrap: wrap; }
+    .btnrow{ display:flex; gap:10px; align-items:center; margin-top: 10px; }
     button{
-      background:#22c55e; color:#04110a; border:0; border-radius: 12px;
-      padding: 10px 14px; font-weight: 800; cursor: pointer;
+      background:#22c55e;
+      color:#04110a;
+      border:0;
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-weight: 800;
+      cursor: pointer;
     }
     button[disabled]{ opacity:.6; cursor:not-allowed; }
     .status{ margin-top: 10px; font-weight: 700; }
     .ok{ color:#34d399; }
     .bad{ color:#fb7185; }
-    .note{ margin-top: 14px; padding: 12px; border-radius: 12px; background: rgba(2,6,23,.45); border:1px solid rgba(255,255,255,.10); }
+    .note{
+      margin-top: 14px;
+      padding: 12px;
+      border-radius: 12px;
+      background: rgba(2,6,23,.45);
+      border:1px solid rgba(255,255,255,.10);
+    }
     .tiny{ font-size: 12px; }
-    code{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 12px; }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
-    <div class="card">
-      <h1>Submit to Teach Arcade</h1>
-      <p>
-        Teach Arcade is a growing classroom game + resource library. This page lets teachers submit resources to be reviewed,
-        leave feedback about existing content, or suggest new game ideas.
-      </p>
-      <p class="muted">
-        Quick note: I’m building this project while learning as I go (my coding experience is limited), so thank you for helping improve the site.
-        Every submission is reviewed before anything is published.
-      </p>
+<div class="wrap">
+  <div class="card">
 
-      <form id="submitForm" class="grid" autocomplete="off">
-        <div class="grid two">
-          <div>
-            <label for="type">What are you submitting?</label>
-            <select id="type" name="type" required>
-              <option value="resource">A resource to add (link or file idea)</option>
-              <option value="feedback">Feedback / report an issue</option>
-              <option value="idea">Game idea / feature request</option>
-            </select>
-          </div>
+    <h1>Submit to Teach Arcade</h1>
 
-          <div>
-            <label for="email">Email (optional)</label>
-            <input id="email" name="email" type="email" placeholder="teacher@example.com" />
-            <div class="muted tiny">Only if you want a reply. Not displayed publicly.</div>
-          </div>
-        </div>
+    <p>
+      Teach Arcade is a growing classroom game + resource library. This page lets teachers submit
+      resources to be reviewed, leave feedback about existing content, or suggest new game ideas.
+    </p>
 
-        <div class="grid two">
-          <div>
-            <label for="title">Title (optional)</label>
-            <input id="title" name="title" type="text" placeholder="e.g., WWI Causes Kahoot / Game idea: Cold War Spy Run" />
-          </div>
+    <p class="muted">
+      Quick note: I’m building this project while learning as I go (my coding experience is limited),
+      so thank you for helping improve the site. Every submission is reviewed before anything is published.
+    </p>
 
-          <div>
-            <label for="url">Link (optional)</label>
-            <input id="url" name="url" type="url" placeholder="https://..." />
-            <div class="muted tiny">If you’re submitting a resource, paste the link here.</div>
-          </div>
-        </div>
+    <form id="submitForm" class="grid" autocomplete="off">
 
-        <div class="grid two">
-          <div>
-            <label for="subject">Subject (optional)</label>
-            <input id="subject" name="subject" type="text" placeholder="U.S. History, World History, Math, ELA..." />
-          </div>
-
-          <div>
-            <label for="grade_band">Grade band (optional)</label>
-            <select id="grade_band" name="grade_band">
-              <option value="">Select…</option>
-              <option value="Elementary">Elementary</option>
-              <option value="Middle">Middle</option>
-              <option value="High">High</option>
-              <option value="College">College</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
+      <div class="grid two">
+        <div>
+          <label for="type">What are you submitting?</label>
+          <select id="type" required>
+            <option value="resource">A resource to add</option>
+            <option value="feedback">Feedback / report an issue</option>
+            <option value="idea">Game idea / feature request</option>
+          </select>
         </div>
 
         <div>
-          <label for="description">Details (required)</label>
-          <textarea id="description" name="description" required
-            placeholder="Describe the resource, the feedback, or the game idea. The more detail, the better."></textarea>
+          <label for="email">Email (optional)</label>
+          <input id="email" type="email" placeholder="teacher@example.com" />
+          <div class="muted tiny">Only if you want a reply. Not displayed publicly.</div>
+        </div>
+      </div>
+
+      <div class="grid two">
+        <div>
+          <label for="title">Title (optional)</label>
+          <input id="title" type="text" placeholder="Cold War Spy Game" />
         </div>
 
-        <!-- Honeypot anti-bot field (must stay hidden) -->
-        <div style="position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;">
-          <label>Website</label>
-          <input name="website" tabindex="-1" autocomplete="off" />
+        <div>
+          <label for="url">Link (optional)</label>
+          <input id="url" type="url" placeholder="https://..." />
+        </div>
+      </div>
+
+      <div class="grid two">
+        <div>
+          <label for="subject">Subject (optional)</label>
+          <input id="subject" type="text" placeholder="History" />
         </div>
 
-        <!-- Turnstile widget -->
-        <div class="cf-turnstile" data-sitekey="0x4AAAAAACMCyL2PpQiIbF8H"></div>
-
-        <div class="btnrow">
-          <button id="submitBtn" type="submit">Send submission</button>
-          <span id="status" class="status"></span>
+        <div>
+          <label for="grade_band">Grade band (optional)</label>
+          <select id="grade_band">
+            <option value="">Select…</option>
+            <option value="Elementary">Elementary</option>
+            <option value="Middle">Middle</option>
+            <option value="High">High</option>
+            <option value="College">College</option>
+            <option value="Other">Other</option>
+          </select>
         </div>
+      </div>
 
-        <div class="note">
-          <div style="font-weight:800; margin-bottom:6px;">What happens next?</div>
-          <div class="muted">
-            Submissions go into a private review inbox. I review each one for quality and safety before it’s added anywhere on the site.
-            Links are checked and anything suspicious is rejected.
-          </div>
-        </div>
+      <div>
+        <label for="description">Details (required)</label>
+        <textarea id="description" required placeholder="Describe the idea or resource..."></textarea>
+      </div>
 
-        <!-- Debug box (shows EXACT error) -->
-        <div class="note" style="display:none;" id="debugBox">
-          <div style="font-weight:800; margin-bottom:6px;">Debug info (temporary)</div>
-          <div class="muted tiny" id="debugText"></div>
+      <!-- Honeypot -->
+      <div style="position:absolute;left:-9999px">
+        <input id="website" />
+      </div>
+
+      <!-- Turnstile -->
+      <div class="cf-turnstile"
+        data-sitekey="0x4AAAAAACMCyL2PpQiIbF8H"></div>
+
+      <div class="btnrow">
+        <button id="submitBtn">Send submission</button>
+        <span id="status" class="status"></span>
+      </div>
+
+      <div class="note">
+        <strong>What happens next?</strong>
+        <div class="muted">
+          Submissions go into a private review inbox. Each is reviewed for quality and safety
+          before anything is added to the site.
         </div>
-      </form>
-    </div>
+      </div>
+
+    </form>
   </div>
+</div>
 
-  <script>
-    // Supabase project + function
-    const PROJECT_ID = "ohrdaqnaoyiyaeebbpby";
-    const ENDPOINT = `https://${PROJECT_ID}.supabase.co/functions/v1/submit`;
+<script>
+  const ENDPOINT =
+    "https://ohrdaqnaoyiyaeebbpby.functions.supabase.co/submit";
 
-    // Your publishable key (safe to use in browser)
-    const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_kMlJquden0a6UntukvRlAA_TX1OGZDv";
+  const form = document.getElementById("submitForm");
+  const statusEl = document.getElementById("status");
+  const btn = document.getElementById("submitBtn");
 
-    const form = document.getElementById("submitForm");
-    const statusEl = document.getElementById("status");
-    const btn = document.getElementById("submitBtn");
+  function setStatus(msg, ok=true){
+    statusEl.textContent = msg;
+    statusEl.className = "status " + (ok ? "ok" : "bad");
+  }
 
-    const debugBox = document.getElementById("debugBox");
-    const debugText = document.getElementById("debugText");
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    btn.disabled = true;
+    setStatus("");
 
-    function setStatus(msg, ok=true){
-      statusEl.textContent = msg;
-      statusEl.className = "status " + (ok ? "ok" : "bad");
-    }
-    function setDebug(html){
-      debugBox.style.display = "block";
-      debugText.innerHTML = html;
-    }
+    try {
+      const payload = {
+        type: document.getElementById("type").value,
+        title: document.getElementById("title").value || null,
+        url: document.getElementById("url").value || null,
+        description: document.getElementById("description").value,
+        subject: document.getElementById("subject").value || null,
+        grade_band: document.getElementById("grade_band").value || null,
+        email: document.getElementById("email").value || null,
+        page_url: location.href,
+        device: navigator.userAgent,
+        website: document.getElementById("website").value || ""
+      };
 
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      setStatus("");
-      debugBox.style.display = "none";
-      btn.disabled = true;
+      const res = await fetch(ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
 
-      try {
-        // Turnstile token lives in hidden input "cf-turnstile-response"
-        const tokenInput = form.querySelector('input[name="cf-turnstile-response"]');
-        const turnstileToken = tokenInput ? tokenInput.value : "";
+      const data = await res.json();
 
-        const payload = {
-          type: form.type.value,
-          title: form.title.value || null,
-          url: form.url.value || null,
-          description: form.description.value,
-          subject: form.subject.value || null,
-          grade_band: form.grade_band.value || null,
-          email: form.email.value || null,
-          page_url: location.href,
-          device: navigator.userAgent,
-          website: form.website.value || "",
-          turnstileToken
-        };
-
-        const res = await fetch(ENDPOINT, {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-            // These two headers are what Supabase expects for Edge Functions calls
-            "apikey": SUPABASE_PUBLISHABLE_KEY,
-            "authorization": `Bearer ${SUPABASE_PUBLISHABLE_KEY}`
-          },
-          body: JSON.stringify(payload)
-        });
-
-        // Read response safely (works even if server returns non-JSON)
-        const raw = await res.text();
-        let data = {};
-        try { data = JSON.parse(raw); } catch (_) {}
-
-        if (!res.ok || !data.ok) {
-          setStatus(data.error || "Something went wrong. Try again.", false);
-          setDebug(
-            `Endpoint: <code>${ENDPOINT}</code><br>` +
-            `HTTP: <code>${res.status} ${res.statusText}</code><br>` +
-            `Response: <code>${(raw || "").slice(0, 400).replace(/</g,"&lt;")}</code>`
-          );
-          return;
-        }
-
-        setStatus("Submitted! Thank you — it’s in the review inbox.", true);
-        form.reset();
-
-        // Reset Turnstile after submission
-        if (window.turnstile) {
-          const widget = form.querySelector(".cf-turnstile");
-          window.turnstile.reset(widget);
-        }
-
-      } catch (err) {
-        setStatus("Network error. Please try again.", false);
-        setDebug(`Error: <code>${String(err).replace(/</g,"&lt;")}</code>`);
-      } finally {
+      if (!res.ok || !data.ok) {
+        setStatus(data.error || "Something went wrong.", false);
         btn.disabled = false;
+        return;
       }
-    });
-  </script>
+
+      setStatus("Submitted! Thank you — it’s in the review inbox.", true);
+      form.reset();
+
+      if (window.turnstile) {
+        turnstile.reset();
+      }
+
+    } catch (err) {
+      setStatus("Network error. Please try again.", false);
+    } finally {
+      btn.disabled = false;
+    }
+  });
+</script>
 </body>
 </html>
