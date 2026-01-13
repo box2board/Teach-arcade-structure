@@ -1,48 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Block Logic</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-<div class="game-container">
-
-  <!-- Top Bar -->
-  <div class="top-bar">
-    <div class="top-left">
-      <div class="crown">★</div>
-      <span id="best-score">0</span>
-    </div>
-
-    <div class="score" id="current-score">0</div>
-
-    <div class="top-right">
-      <div class="gear-wrapper">
-        <div class="gear-icon"></div>
+  <div class="game-container">
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <div class="top-left">
+        <div class="crown">★</div>
+        <span id="best-score">0</span>
+      </div>
+      <div class="score" id="current-score">0</div>
+      <div class="top-right">
+        <div class="gear-wrapper" title="Settings">
+          <div class="gear-icon"></div>
+        </div>
       </div>
     </div>
+
+    <!-- Grid -->
+    <div class="grid-wrapper">
+      <div id="grid" class="grid"></div>
+    </div>
+
+    <!-- Floating bonus text -->
+    <div id="floating-text-container"></div>
+
+    <!-- Pieces -->
+    <div class="pieces-container">
+      <div class="piece" data-piece-index="0"></div>
+      <div class="piece" data-piece-index="1"></div>
+      <div class="piece" data-piece-index="2"></div>
+    </div>
   </div>
 
-  <!-- Grid -->
-  <div class="grid-wrapper">
-    <div id="grid" class="grid"></div>
-  </div>
-
-  <!-- Floating bonus text -->
-  <div id="floating-text-container"></div>
-
-  <!-- Pieces -->
-  <div class="pieces-container">
-    <div class="piece" data-piece-index="0"></div>
-    <div class="piece" data-piece-index="1"></div>
-    <div class="piece" data-piece-index="2"></div>
-  </div>
-
-</div>
-
-<script src="game.js"></script>
+  <!-- Game Script -->
+  <script src="game.js"></script>
 </body>
 </html>
