@@ -28,7 +28,7 @@
     }
     textarea{ min-height: 120px; resize: vertical; }
     .muted{ color: rgba(156,163,175,.9); font-size: 13px; }
-    .btnrow{ display:flex; gap:10px; align-items:center; margin-top: 10px; }
+    .btnrow{ display:flex; gap:10px; align-items:center; margin-top: 10px; flex-wrap: wrap; }
     button{
       background:#22c55e; color:#04110a; border:0; border-radius: 12px;
       padding: 10px 14px; font-weight: 800; cursor: pointer;
@@ -39,6 +39,7 @@
     .bad{ color:#fb7185; }
     .note{ margin-top: 14px; padding: 12px; border-radius: 12px; background: rgba(2,6,23,.45); border:1px solid rgba(255,255,255,.10); }
     .tiny{ font-size: 12px; }
+    code{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 12px; }
   </style>
 </head>
 
@@ -132,32 +133,48 @@
             Links are checked and anything suspicious is rejected.
           </div>
         </div>
+
+        <!-- Debug box (shows EXACT error) -->
+        <div class="note" style="display:none;" id="debugBox">
+          <div style="font-weight:800; margin-bottom:6px;">Debug info (temporary)</div>
+          <div class="muted tiny" id="debugText"></div>
+        </div>
       </form>
     </div>
   </div>
 
   <script>
+    // Supabase project + function
     const PROJECT_ID = "ohrdaqnaoyiyaeebbpby";
-
-    // ✅ FIXED: correct Supabase Edge Function URL
     const ENDPOINT = `https://${PROJECT_ID}.supabase.co/functions/v1/submit`;
+
+    // Your publishable key (safe to use in browser)
+    const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_kMlJquden0a6UntukvRlAA_TX1OGZDv";
 
     const form = document.getElementById("submitForm");
     const statusEl = document.getElementById("status");
     const btn = document.getElementById("submitBtn");
 
+    const debugBox = document.getElementById("debugBox");
+    const debugText = document.getElementById("debugText");
+
     function setStatus(msg, ok=true){
       statusEl.textContent = msg;
       statusEl.className = "status " + (ok ? "ok" : "bad");
+    }
+    function setDebug(html){
+      debugBox.style.display = "block";
+      debugText.innerHTML = html;
     }
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
       setStatus("");
+      debugBox.style.display = "none";
       btn.disabled = true;
 
       try {
-        // Turnstile token lives in a hidden input named "cf-turnstile-response"
+        // Turnstile token lives in hidden input "cf-turnstile-response"
         const tokenInput = form.querySelector('input[name="cf-turnstile-response"]');
         const turnstileToken = tokenInput ? tokenInput.value : "";
 
@@ -177,15 +194,27 @@
 
         const res = await fetch(ENDPOINT, {
           method: "POST",
-          headers: { "content-type": "application/json" },
+          headers: {
+            "content-type": "application/json",
+            // These two headers are what Supabase expects for Edge Functions calls
+            "apikey": SUPABASE_PUBLISHABLE_KEY,
+            "authorization": `Bearer ${SUPABASE_PUBLISHABLE_KEY}`
+          },
           body: JSON.stringify(payload)
         });
 
-        const data = await res.json().catch(() => ({}));
+        // Read response safely (works even if server returns non-JSON)
+        const raw = await res.text();
+        let data = {};
+        try { data = JSON.parse(raw); } catch (_) {}
 
         if (!res.ok || !data.ok) {
           setStatus(data.error || "Something went wrong. Try again.", false);
-          btn.disabled = false;
+          setDebug(
+            `Endpoint: <code>${ENDPOINT}</code><br>` +
+            `HTTP: <code>${res.status} ${res.statusText}</code><br>` +
+            `Response: <code>${(raw || "").slice(0, 400).replace(/</g,"&lt;")}</code>`
+          );
           return;
         }
 
@@ -200,6 +229,7 @@
 
       } catch (err) {
         setStatus("Network error. Please try again.", false);
+        setDebug(`Error: <code>${String(err).replace(/</g,"&lt;")}</code>`);
       } finally {
         btn.disabled = false;
       }
