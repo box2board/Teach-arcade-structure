@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <title>Mood & Tone: Undertext Flip · ELA Arcade Game | Teach Arcade</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#050714" />
 
   <!-- Canonical URL -->
   <link rel="canonical" href="https://teacharcade.com/arcade-review-games/ela/mood-and-tone-undertext-flip.html" />
@@ -22,7 +23,7 @@
   <!-- Open Graph -->
   <meta property="og:title" content="Mood & Tone: Undertext Flip · ELA Arcade Game | Teach Arcade" />
   <meta property="og:description"
-        content="8-bit mood and tone practice game for the classroom. Flip between school and undertext worlds, dodge hazards, and answer reading questions to earn points." />
+        content="8-bit mood and tone practice game for the classroom. Flip between school and undertext worlds, dodge hazards, and collect question orbs for points." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://teacharcade.com/arcade-review-games/ela/mood-and-tone-undertext-flip.html" />
   <meta property="og:image" content="https://teacharcade.com/assets/teach-arcade-arcade-review-games.png" />
@@ -74,11 +75,7 @@
       --undertext-bg: #140a2a;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -89,6 +86,8 @@
       justify-content: center;
       align-items: center;
       overflow: hidden;
+      padding: 10px;
+      padding-bottom: calc(10px + env(safe-area-inset-bottom));
     }
 
     .wrapper {
@@ -96,7 +95,6 @@
       flex-direction: column;
       align-items: center;
       gap: 10px;
-      padding: 10px;
       width: 100%;
       max-width: 960px;
     }
@@ -125,6 +123,7 @@
       padding: 12px;
       border: 1px solid rgba(255,255,255,0.14);
       box-shadow: 0 18px 40px rgba(0,0,0,0.75);
+      width: min(720px, 100%);
     }
 
     canvas {
@@ -132,6 +131,10 @@
       border-radius: 10px;
       border: 1px solid rgba(255,255,255,0.18);
       background: linear-gradient(180deg, #1b2042 0%, #050714 100%);
+      width: 100%;
+      height: auto;
+      image-rendering: pixelated;
+      touch-action: none; /* IMPORTANT: stop iOS scroll/zoom while playing */
     }
 
     .hud {
@@ -144,24 +147,13 @@
       font-size: 0.72rem;
       pointer-events: none;
       text-shadow: 0 1px 0 #000;
+      z-index: 3;
     }
 
-    .hud span {
-      margin-right: 14px;
-    }
-
-    .hud-right {
-      text-align: right;
-    }
-
-    .hud-label {
-      color: var(--muted);
-    }
-
-    .hud-value {
-      color: var(--accent);
-      font-weight: 700;
-    }
+    .hud span { margin-right: 14px; }
+    .hud-right { text-align: right; }
+    .hud-label { color: var(--muted); }
+    .hud-value { color: var(--accent); font-weight: 700; }
 
     .hint {
       margin-top: 6px;
@@ -187,11 +179,7 @@
       color: var(--muted);
       cursor: pointer;
     }
-
-    .btn-nav:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
+    .btn-nav:hover { border-color: var(--accent); color: var(--accent); }
 
     .overlay, .intro-overlay, .end-overlay {
       position: absolute;
@@ -223,10 +211,7 @@
       text-transform: uppercase;
     }
 
-    .card p {
-      margin-bottom: 6px;
-      line-height: 1.5;
-    }
+    .card p { margin-bottom: 6px; line-height: 1.5; }
 
     .card ul {
       margin: 6px 0 10px;
@@ -249,9 +234,7 @@
       letter-spacing: 0.06em;
     }
 
-    .card button:hover {
-      filter: brightness(1.08);
-    }
+    .card button:hover { filter: brightness(1.08); }
 
     .question-modal {
       background: var(--panel);
@@ -264,10 +247,9 @@
       box-shadow: 0 12px 32px rgba(0,0,0,0.8);
     }
 
-    .question-text {
-      margin-bottom: 10px;
-      line-height: 1.4;
-    }
+    .question-text { margin-bottom: 10px; line-height: 1.4; }
+    .question-meta { margin-bottom: 4px; font-size: 0.75rem; color: var(--muted); }
+    .question-feedback { margin-top: 6px; font-size: 0.75rem; color: var(--muted); min-height: 1em; }
 
     .question-choices button {
       display: block;
@@ -282,35 +264,14 @@
       font-size: 0.8rem;
       cursor: pointer;
     }
-
     .question-choices button:hover {
       border-color: var(--accent);
       background: var(--accent-soft);
       color: var(--accent);
     }
 
-    .question-feedback {
-      margin-top: 6px;
-      font-size: 0.75rem;
-      color: var(--muted);
-      min-height: 1em;
-    }
-
-    .question-meta {
-      margin-bottom: 4px;
-      font-size: 0.75rem;
-      color: var(--muted);
-    }
-
-    .end-overlay .card h3 {
-      font-size: 0.9rem;
-      margin-bottom: 8px;
-    }
-
-    .end-score-line {
-      margin: 4px 0;
-    }
-
+    .end-overlay .card h3 { font-size: 0.9rem; margin-bottom: 8px; }
+    .end-score-line { margin: 4px 0; }
     .rank {
       font-family: "Press Start 2P", system-ui, sans-serif;
       font-size: 0.9rem;
@@ -327,6 +288,11 @@
       display: flex;
       gap: 6px;
       z-index: 5;
+      padding: 6px 8px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.35);
+      border: 1px solid rgba(255,255,255,0.18);
+      backdrop-filter: blur(6px);
     }
 
     .mobile-controls button {
@@ -338,23 +304,20 @@
       color: var(--text);
       font-size: 1rem;
       cursor: pointer;
+      touch-action: none;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
     }
 
-    .mobile-controls button:active {
-      background: rgba(255,255,255,0.16);
+    .mobile-controls button:active { background: rgba(255,255,255,0.16); }
+
+    @media (min-width: 901px) {
+      .mobile-controls { display: none; }
     }
 
     @media (max-width: 700px) {
-      canvas {
-        width: 100%;
-        height: auto;
-      }
-      .mobile-controls {
-        bottom: 4px;
-      }
-      .hud {
-        font-size: 0.7rem;
-      }
+      .hud { font-size: 0.7rem; }
+      .mobile-controls { bottom: 6px; }
     }
   </style>
 </head>
@@ -367,7 +330,7 @@
     </p>
 
     <div class="game-shell">
-      <canvas id="gameCanvas" width="600" height="400"></canvas>
+      <canvas id="gameCanvas" width="600" height="400" aria-label="Mood & Tone game canvas"></canvas>
 
       <div class="hud">
         <div class="hud-left">
@@ -429,12 +392,12 @@
       </div>
 
       <!-- Mobile controls -->
-      <div class="mobile-controls" id="mobileControls">
-        <button id="btnLeft">&#8592;</button>
-        <button id="btnUp">&#8593;</button>
-        <button id="btnDown">&#8595;</button>
-        <button id="btnRight">&#8594;</button>
-        <button id="btnFlip">F</button>
+      <div class="mobile-controls" id="mobileControls" aria-label="Mobile controls">
+        <button id="btnLeft" aria-label="Move left">&#8592;</button>
+        <button id="btnUp" aria-label="Move up">&#8593;</button>
+        <button id="btnDown" aria-label="Move down">&#8595;</button>
+        <button id="btnRight" aria-label="Move right">&#8594;</button>
+        <button id="btnFlip" aria-label="Flip worlds">F</button>
       </div>
     </div>
 
@@ -458,7 +421,9 @@
     const GRID_COLS = 15; // 15 * 40 = 600
     const GRID_ROWS = 10; // 10 * 40 = 400
 
-    const MOVE_SPEED = 2.6;  // hybrid movement: smooth but constrained by collisions
+    // Use dt-based movement (stable across devices/FPS)
+    const MOVE_SPEED_PX_PER_SEC = 160;
+    const SHADOW_SPEED_MULT = 60; // converts “tile-ish” speeds to px/sec feel
     const FLIP_COOLDOWN_MS = 400;
 
     // HUD elements
@@ -497,14 +462,6 @@
     // =========================
     // MAP LAYOUT (TWO WORLDS)
     // =========================
-    // Legend:
-    // "." = floor
-    // "#" = wall/locker block
-    // "O" = question orb
-    // "E" = exit door
-    // "V" = void/glitch tile (hazard) in undertext
-    // Space left where both share walls/floors
-
     const classroomMap = [
       "###############",
       "#..O.....#....#",
@@ -531,7 +488,6 @@
       "###############"
     ];
 
-    // convert a row/col char from the active world into tile type
     function getTile(world, col, row) {
       if (col < 0 || col >= GRID_COLS || row < 0 || row >= GRID_ROWS) return "wall";
       const map = world === "classroom" ? classroomMap : undertextMap;
@@ -546,7 +502,7 @@
     // =========================
     // GAME STATE
     // =========================
-    let world = "classroom"; // or "undertext"
+    let world = "classroom";
     let lastFlipTime = 0;
 
     const player = {
@@ -565,7 +521,7 @@
     let score = 0;
     let totalQuestionsAnswered = 0;
     let elapsedSeconds = 0;
-    let timerInterval = null;
+
     let gameRunning = false;
     let showingQuestion = false;
     let gameEnded = false;
@@ -577,11 +533,8 @@
       for (let r = 0; r < GRID_ROWS; r++) {
         for (let c = 0; c < GRID_COLS; c++) {
           if (classroomMap[r][c] === "O" || undertextMap[r][c] === "O") {
-            // avoid duplicates where both have "O" at same location
             const existing = orbPositions.find(o => o.col === c && o.row === r);
-            if (!existing) {
-              orbPositions.push({ col: c, row: r, used: false });
-            }
+            if (!existing) orbPositions.push({ col: c, row: r, used: false });
           }
         }
       }
@@ -726,7 +679,6 @@
       }
     ];
 
-    // shuffle questions just a bit for variety (optional)
     function shuffleQuestions(arr) {
       const copy = arr.slice();
       for (let i = copy.length - 1; i > 0; i--) {
@@ -742,39 +694,39 @@
     // INPUT HANDLING
     // =========================
     function updateWorldDisplay() {
-      worldDisplay.textContent = world === "classroom" ? "Classroom" : "Undertext";
+      worldDisplay.textContent = (world === "classroom") ? "Classroom" : "Undertext";
     }
 
     document.addEventListener('keydown', (e) => {
-      if (!gameRunning || showingQuestion) return;
+      // allow start screen inputs to be ignored safely
+      if (showingQuestion) return;
 
-      if (e.key === "ArrowLeft" || e.key === "a" || e.key === "A") keys.left = true;
-      if (e.key === "ArrowRight" || e.key === "d" || e.key === "D") keys.right = true;
-      if (e.key === "ArrowUp" || e.key === "w" || e.key === "W") keys.up = true;
-      if (e.key === "ArrowDown" || e.key === "s" || e.key === "S") keys.down = true;
+      const k = e.key;
+      if (k === "ArrowLeft" || k === "a" || k === "A") keys.left = true;
+      if (k === "ArrowRight" || k === "d" || k === "D") keys.right = true;
+      if (k === "ArrowUp" || k === "w" || k === "W") keys.up = true;
+      if (k === "ArrowDown" || k === "s" || k === "S") keys.down = true;
 
-      if (e.key === "f" || e.key === "F") {
-        tryFlipWorld();
-      }
+      if (k === "f" || k === "F") tryFlipWorld();
     });
 
     document.addEventListener('keyup', (e) => {
-      if (e.key === "ArrowLeft" || e.key === "a" || e.key === "A") keys.left = false;
-      if (e.key === "ArrowRight" || e.key === "d" || e.key === "D") keys.right = false;
-      if (e.key === "ArrowUp" || e.key === "w" || e.key === "W") keys.up = false;
-      if (e.key === "ArrowDown" || e.key === "s" || e.key === "S") keys.down = false;
+      const k = e.key;
+      if (k === "ArrowLeft" || k === "a" || k === "A") keys.left = false;
+      if (k === "ArrowRight" || k === "d" || k === "D") keys.right = false;
+      if (k === "ArrowUp" || k === "w" || k === "W") keys.up = false;
+      if (k === "ArrowDown" || k === "s" || k === "S") keys.down = false;
     });
 
-    // Mobile controls
+    // Mobile controls (hold)
     function bindHoldButton(button, dirKey) {
-      button.addEventListener('touchstart', (e) => {
-        e.preventDefault();
-        touchState[dirKey] = true;
-      });
-      button.addEventListener('touchend', (e) => {
-        e.preventDefault();
-        touchState[dirKey] = false;
-      });
+      const down = (e) => { e.preventDefault(); touchState[dirKey] = true; };
+      const up = (e) => { e.preventDefault(); touchState[dirKey] = false; };
+
+      button.addEventListener('touchstart', down, { passive: false });
+      button.addEventListener('touchend', up, { passive: false });
+      button.addEventListener('touchcancel', up, { passive: false });
+
       button.addEventListener('mousedown', () => { touchState[dirKey] = true; });
       button.addEventListener('mouseup', () => { touchState[dirKey] = false; });
       button.addEventListener('mouseleave', () => { touchState[dirKey] = false; });
@@ -784,38 +736,32 @@
     bindHoldButton(btnUp, "up");
     bindHoldButton(btnDown, "down");
 
-    btnFlip.addEventListener('click', (e) => {
-      e.preventDefault();
-      tryFlipWorld();
-    });
-    btnFlip.addEventListener('touchstart', (e) => {
-      e.preventDefault();
-      tryFlipWorld();
-    });
+    const flipNow = (e) => { e.preventDefault(); tryFlipWorld(); };
+    btnFlip.addEventListener('click', flipNow);
+    btnFlip.addEventListener('touchstart', flipNow, { passive: false });
 
     // =========================
     // FLIP WORLD
     // =========================
     function tryFlipWorld() {
       const now = performance.now();
-      if (!gameRunning || showingQuestion) return;
+      if (!gameRunning || showingQuestion || gameEnded) return;
       if (now - lastFlipTime < FLIP_COOLDOWN_MS) return;
+
       lastFlipTime = now;
       world = (world === "classroom") ? "undertext" : "classroom";
       updateWorldDisplay();
-      // Small score bonus for flipping occasionally to encourage use
+
+      // Small score bonus (encourages flipping)
       score = Math.max(0, score + 5);
       updateHud();
-      // Ensure player is not in a wall after flip
+
+      // Ensure player isn't inside a wall after flip
       resolvePostFlipPosition();
     }
 
     function resolvePostFlipPosition() {
-      const col = Math.floor(player.x / TILE_SIZE);
-      const row = Math.floor(player.y / TILE_SIZE);
-      const tile = getTile(world, col, row);
-      if (tile === "wall") {
-        // move slightly toward last safe position
+      if (circleCollidesWithWall(world, player.x, player.y)) {
         player.x = player.lastSafeX;
         player.y = player.lastSafeY;
       }
@@ -824,28 +770,39 @@
     // =========================
     // TIMER & HUD
     // =========================
-    function startTimer() {
-      if (timerInterval) clearInterval(timerInterval);
-      elapsedSeconds = 0;
-      timerInterval = setInterval(() => {
-        if (!gameRunning) return;
-        elapsedSeconds++;
-        timeDisplay.textContent = elapsedSeconds + "s";
-      }, 1000);
-    }
-
     function updateHud() {
       scoreDisplay.textContent = score;
       questionsDisplay.textContent = totalQuestionsAnswered + "/15";
+      timeDisplay.textContent = elapsedSeconds + "s";
     }
 
     // =========================
-    // COLLISION HELPERS
+    // COLLISION (Circle vs Tile Walls)
     // =========================
-    function isWallAt(world, x, y) {
-      const col = Math.floor(x / TILE_SIZE);
-      const row = Math.floor(y / TILE_SIZE);
+    function isWallTile(world, col, row) {
       return getTile(world, col, row) === "wall";
+    }
+
+    function circleCollidesWithWall(world, cx, cy) {
+      const r = player.radius;
+
+      // sample points around circle (8-way) + center
+      const pts = [
+        [cx, cy],
+        [cx - r, cy], [cx + r, cy],
+        [cx, cy - r], [cx, cy + r],
+        [cx - r * 0.7, cy - r * 0.7],
+        [cx + r * 0.7, cy - r * 0.7],
+        [cx - r * 0.7, cy + r * 0.7],
+        [cx + r * 0.7, cy + r * 0.7]
+      ];
+
+      for (const [x, y] of pts) {
+        const col = Math.floor(x / TILE_SIZE);
+        const row = Math.floor(y / TILE_SIZE);
+        if (isWallTile(world, col, row)) return true;
+      }
+      return false;
     }
 
     function clampPlayerToWorld() {
@@ -856,37 +813,38 @@
       if (player.y > canvas.height - r) player.y = canvas.height - r;
     }
 
-    function movePlayer() {
-      if (!gameRunning || showingQuestion) return;
+    function movePlayer(dt) {
+      if (!gameRunning || showingQuestion || gameEnded) return;
 
       const inputLeft = keys.left || touchState.left;
       const inputRight = keys.right || touchState.right;
       const inputUp = keys.up || touchState.up;
       const inputDown = keys.down || touchState.down;
 
-      player.vx = 0;
-      player.vy = 0;
-      if (inputLeft) player.vx = -MOVE_SPEED;
-      if (inputRight) player.vx = MOVE_SPEED;
-      if (inputUp) player.vy = -MOVE_SPEED;
-      if (inputDown) player.vy = MOVE_SPEED;
+      let vx = 0, vy = 0;
+      if (inputLeft) vx -= MOVE_SPEED_PX_PER_SEC;
+      if (inputRight) vx += MOVE_SPEED_PX_PER_SEC;
+      if (inputUp) vy -= MOVE_SPEED_PX_PER_SEC;
+      if (inputDown) vy += MOVE_SPEED_PX_PER_SEC;
 
-      // propose new position, then check collisions in small steps
-      const steps = 4;
-      const stepX = player.vx / steps;
-      const stepY = player.vy / steps;
+      // Normalize diagonals
+      if (vx !== 0 && vy !== 0) {
+        vx *= 0.7071;
+        vy *= 0.7071;
+      }
 
-      for (let i = 0; i < steps; i++) {
+      const stepCount = 6;
+      const stepX = (vx * dt) / stepCount;
+      const stepY = (vy * dt) / stepCount;
+
+      for (let i = 0; i < stepCount; i++) {
         // horizontal
-        player.x += stepX;
-        if (isWallAt(world, player.x, player.y)) {
-          player.x -= stepX;
-        }
+        const nx = player.x + stepX;
+        if (!circleCollidesWithWall(world, nx, player.y)) player.x = nx;
+
         // vertical
-        player.y += stepY;
-        if (isWallAt(world, player.x, player.y)) {
-          player.y -= stepY;
-        }
+        const ny = player.y + stepY;
+        if (!circleCollidesWithWall(world, player.x, ny)) player.y = ny;
       }
 
       clampPlayerToWorld();
@@ -898,13 +856,15 @@
     function distance(ax, ay, bx, by) {
       const dx = ax - bx;
       const dy = ay - by;
-      return Math.sqrt(dx*dx + dy*dy);
+      return Math.sqrt(dx * dx + dy * dy);
     }
 
-    function updateShadowOrbs() {
+    function updateShadowOrbs(dt) {
       for (const orb of shadowOrbs) {
-        orb.x += orb.dx || 0;
-        orb.y += orb.dy || 0;
+        // dt-based movement
+        orb.x += (orb.dx || 0) * SHADOW_SPEED_MULT * dt;
+        orb.y += (orb.dy || 0) * SHADOW_SPEED_MULT * dt;
+
         if (typeof orb.minX === "number" && typeof orb.maxX === "number") {
           if (orb.x < orb.minX) { orb.x = orb.minX; orb.dx *= -1; }
           if (orb.x > orb.maxX) { orb.x = orb.maxX; orb.dx *= -1; }
@@ -916,42 +876,41 @@
 
         // collision with player
         const d = distance(player.x, player.y, orb.x, orb.y);
-        if (d < player.radius + orb.radius + 2 && !showingQuestion && gameRunning) {
+        if (d < player.radius + orb.radius + 2 && !showingQuestion && gameRunning && !gameEnded) {
           score = Math.max(0, score - 50);
           updateHud();
-          // small pushback toward last safe position
-          const px = player.lastSafeX;
-          const py = player.lastSafeY;
-          player.x = (player.x + px) / 2;
-          player.y = (player.y + py) / 2;
+          // pushback toward last safe position
+          player.x = (player.x + player.lastSafeX) / 2;
+          player.y = (player.y + player.lastSafeY) / 2;
         }
       }
     }
 
     function handleVoidTiles() {
-      if (world !== "undertext") return;
+      if (world !== "undertext" || showingQuestion || !gameRunning || gameEnded) return;
+
       const col = Math.floor(player.x / TILE_SIZE);
       const row = Math.floor(player.y / TILE_SIZE);
       const tile = getTile(world, col, row);
+
       if (tile === "void") {
         score = Math.max(0, score - 25);
         updateHud();
-        // teleport back to last safe tile
         player.x = player.lastSafeX;
         player.y = player.lastSafeY;
       } else if (tile === "floor" || tile === "orb" || tile === "exit") {
-        // mark as safe
         player.lastSafeX = player.x;
         player.lastSafeY = player.y;
       }
     }
 
     function handleOrbsAndExit() {
+      if (showingQuestion || !gameRunning || gameEnded) return;
+
       const col = Math.floor(player.x / TILE_SIZE);
       const row = Math.floor(player.y / TILE_SIZE);
       const tile = getTile(world, col, row);
 
-      // exit door ends run (no failure)
       if (tile === "exit") {
         endRun();
         return;
@@ -959,7 +918,7 @@
 
       if (tile === "orb") {
         const orb = orbPositions.find(o => o.col === col && o.row === row);
-        if (orb && !orb.used) {
+        if (orb && !orb.used && totalQuestionsAnswered < 15) {
           orb.used = true;
           triggerQuestion();
         }
@@ -970,29 +929,22 @@
     // QUESTION SYSTEM
     // =========================
     function triggerQuestion() {
-      if (showingQuestion || gameEnded) return;
+      if (showingQuestion || gameEnded || !gameRunning) return;
       showingQuestion = true;
-      // pick next question (max 15)
-      if (currentQuestionIndex >= questionPool.length) {
-        // just wrap to ensure we always have something
-        currentQuestionIndex = 0;
-      }
-      const qIndex = currentQuestionIndex;
-      const q = questionPool[qIndex];
+
+      if (currentQuestionIndex >= questionPool.length) currentQuestionIndex = 0;
+      const q = questionPool[currentQuestionIndex];
       currentQuestionIndex++;
 
       questionTextEl.textContent = q.text;
       questionFeedbackEl.textContent = "";
       questionCountLabel.textContent = "Question " + (totalQuestionsAnswered + 1) + " of 15";
 
-      // clear choices
       questionChoicesEl.innerHTML = "";
       q.choices.forEach((choiceText, idx) => {
         const btn = document.createElement('button');
         btn.textContent = choiceText;
-        btn.addEventListener('click', () => {
-          handleAnswer(idx, q);
-        });
+        btn.addEventListener('click', () => handleAnswer(idx, q), { once: true });
         questionChoicesEl.appendChild(btn);
       });
 
@@ -1001,6 +953,7 @@
 
     function handleAnswer(choiceIndex, question) {
       const correct = (choiceIndex === question.correct);
+
       if (correct) {
         score += 100;
         questionFeedbackEl.textContent = "✅ Correct! " + (question.feedback || "");
@@ -1008,11 +961,10 @@
         score = Math.max(0, score - 50);
         questionFeedbackEl.textContent = "⚠️ Not quite. " + (question.feedback || "");
       }
-      updateHud();
+
       totalQuestionsAnswered = Math.min(15, totalQuestionsAnswered + 1);
       updateHud();
 
-      // brief delay then close question
       setTimeout(() => {
         questionOverlay.style.display = "none";
         showingQuestion = false;
@@ -1033,7 +985,6 @@
       if (gameEnded) return;
       gameEnded = true;
       gameRunning = false;
-      if (timerInterval) clearInterval(timerInterval);
 
       finalScoreEl.textContent = score;
       finalQuestionsEl.textContent = totalQuestionsAnswered;
@@ -1043,15 +994,14 @@
       endOverlay.style.display = "flex";
     }
 
-    playAgainButton.addEventListener('click', () => {
-      resetGame();
-    });
+    playAgainButton.addEventListener('click', () => resetGame());
 
     // =========================
     // DRAWING
     // =========================
     function drawMap() {
       const map = (world === "classroom") ? classroomMap : undertextMap;
+
       for (let r = 0; r < GRID_ROWS; r++) {
         for (let c = 0; c < GRID_COLS; c++) {
           const ch = map[r][c];
@@ -1060,10 +1010,10 @@
 
           // background tile
           if (world === "classroom") {
-            ctx.fillStyle = (r === 0 || r === GRID_ROWS-1 || c === 0 || c === GRID_COLS-1)
+            ctx.fillStyle = (r === 0 || r === GRID_ROWS - 1 || c === 0 || c === GRID_COLS - 1)
               ? "#1a1f3a" : "#111528";
           } else {
-            ctx.fillStyle = (r === 0 || r === GRID_ROWS-1 || c === 0 || c === GRID_COLS-1)
+            ctx.fillStyle = (r === 0 || r === GRID_ROWS - 1 || c === 0 || c === GRID_COLS - 1)
               ? "#0b0617" : "#080312";
           }
           ctx.fillRect(x, y, TILE_SIZE, TILE_SIZE);
@@ -1085,38 +1035,46 @@
             ctx.fillStyle = world === "classroom" ? "#29345d" : "#120718";
             ctx.fillRect(x, y, TILE_SIZE, TILE_SIZE);
             ctx.fillStyle = world === "classroom" ? "#3f518a" : "#2c1038";
-            ctx.fillRect(x+4, y+4, TILE_SIZE-8, TILE_SIZE-8);
+            ctx.fillRect(x + 4, y + 4, TILE_SIZE - 8, TILE_SIZE - 8);
           } else if (ch === "E") {
             // exit door
             ctx.fillStyle = "#222";
-            ctx.fillRect(x+10, y+4, TILE_SIZE-20, TILE_SIZE-8);
+            ctx.fillRect(x + 10, y + 4, TILE_SIZE - 20, TILE_SIZE - 8);
             ctx.fillStyle = world === "classroom" ? "#5de0ff" : "#ff4f9a";
-            ctx.fillRect(x+10, y+10, TILE_SIZE-20, TILE_SIZE-14);
+            ctx.fillRect(x + 10, y + 10, TILE_SIZE - 20, TILE_SIZE - 14);
             ctx.fillStyle = "#000";
-            ctx.fillRect(x+12, y+12, TILE_SIZE-24, TILE_SIZE-18);
+            ctx.fillRect(x + 12, y + 12, TILE_SIZE - 24, TILE_SIZE - 18);
             ctx.fillStyle = "#fff";
-            ctx.fillRect(x+TILE_SIZE-18, y+TILE_SIZE-20, 4, 8);
+            ctx.fillRect(x + TILE_SIZE - 18, y + TILE_SIZE - 20, 4, 8);
           } else if (ch === "V" && world === "undertext") {
             // void tile
             ctx.save();
             ctx.fillStyle = "#2a042f";
             ctx.fillRect(x, y, TILE_SIZE, TILE_SIZE);
             ctx.strokeStyle = "#ff33aa";
-            ctx.setLineDash([4,4]);
-            ctx.strokeRect(x+3, y+3, TILE_SIZE-6, TILE_SIZE-6);
+            ctx.setLineDash([4, 4]);
+            ctx.strokeRect(x + 3, y + 3, TILE_SIZE - 6, TILE_SIZE - 6);
             ctx.restore();
           }
-
-          // orbs drawn later so they appear above floor
         }
       }
+    }
+
+    function varBrightOrbColor() {
+      const t = performance.now() / 400;
+      const phase = (Math.sin(t) + 1) / 2; // 0..1
+      const base = 210 + Math.floor(45 * phase); // 210-255
+      return "rgb(" + base + "," + base + ",80)";
     }
 
     function drawOrbs() {
       for (const orb of orbPositions) {
         if (orb.used) continue;
+        if (totalQuestionsAnswered >= 15) continue;
+
         const tileType = getTile(world, orb.col, orb.row);
         if (tileType !== "orb") continue;
+
         const cx = orb.col * TILE_SIZE + TILE_SIZE / 2;
         const cy = orb.row * TILE_SIZE + TILE_SIZE / 2;
 
@@ -1130,13 +1088,6 @@
         ctx.stroke();
         ctx.restore();
       }
-    }
-
-    function varBrightOrbColor() {
-      const t = performance.now() / 400;
-      const phase = (Math.sin(t) + 1) / 2; // 0..1
-      const base = 210 + Math.floor(45 * phase); // 210-255
-      return "rgb(" + base + "," + base + ",80)";
     }
 
     function drawShadowOrbs() {
@@ -1155,11 +1106,9 @@
 
     function drawPlayer() {
       ctx.save();
-      // world-dependent color
       const outline = world === "classroom" ? "#ffb300" : "#ff4fb8";
       const fill = world === "classroom" ? "#1deba6" : "#a96bff";
 
-      // body
       ctx.beginPath();
       ctx.arc(player.x, player.y, player.radius, 0, Math.PI * 2);
       ctx.fillStyle = fill;
@@ -1168,17 +1117,33 @@
       ctx.strokeStyle = outline;
       ctx.stroke();
 
-      // tiny backpack rectangle
       ctx.fillStyle = "#222b3f";
       ctx.fillRect(player.x - 6, player.y - 2, 7, 10);
-
       ctx.restore();
     }
 
     // =========================
-    // GAME LOOP
+    // GAME LOOP (dt-based)
     // =========================
-    function gameLoop() {
+    let lastTs = 0;
+    let timeAcc = 0;
+
+    function gameLoop(ts) {
+      if (!lastTs) lastTs = ts;
+      const dt = Math.min(0.05, (ts - lastTs) / 1000);
+      lastTs = ts;
+
+      // update time (pause during questions / intro / end)
+      if (gameRunning && !showingQuestion && !gameEnded) {
+        timeAcc += dt;
+        if (timeAcc >= 1) {
+          const add = Math.floor(timeAcc);
+          elapsedSeconds += add;
+          timeAcc -= add;
+          updateHud();
+        }
+      }
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       drawMap();
@@ -1187,8 +1152,8 @@
       drawPlayer();
 
       if (gameRunning && !showingQuestion && !gameEnded) {
-        movePlayer();
-        updateShadowOrbs();
+        movePlayer(dt);
+        updateShadowOrbs(dt);
         handleVoidTiles();
         handleOrbsAndExit();
       }
@@ -1203,9 +1168,12 @@
       score = 0;
       totalQuestionsAnswered = 0;
       elapsedSeconds = 0;
+      timeAcc = 0;
+
       gameRunning = true;
       gameEnded = false;
       showingQuestion = false;
+
       world = "classroom";
       updateWorldDisplay();
 
@@ -1219,26 +1187,21 @@
       currentQuestionIndex = 0;
 
       updateHud();
-      timeDisplay.textContent = "0s";
-
-      if (timerInterval) clearInterval(timerInterval);
-      startTimer();
 
       introOverlay.style.display = "none";
       questionOverlay.style.display = "none";
       endOverlay.style.display = "none";
     }
 
-    startButton.addEventListener('click', () => {
-      resetGame();
-    });
+    startButton.addEventListener('click', () => resetGame());
 
-    // On load, show intro
+    // On load, show intro + kick off rendering loop
     window.addEventListener('load', () => {
       introOverlay.style.display = "flex";
       updateWorldDisplay();
       initOrbs();
-      gameLoop(); // kick off rendering loop
+      updateHud();
+      requestAnimationFrame(gameLoop);
     });
   </script>
 </body>
