@@ -1,82 +1,76 @@
-/* GENERAL RESET */
+/* RESET */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 body {
-  background: #181820;
+  background: #14141a;
   color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  padding: 20px;
 }
 
-/* GAME CONTAINER */
+/* RESPONSIVE GAME CONTAINER */
 .game-container {
-  background: #222230;
-  border-radius: 24px;
-  padding: 16px 16px 24px;
-  width: 400px;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+  width: min(95vw, 520px);
+  background: #1c1c25;
+  border-radius: 28px;
+  padding: 20px 18px 28px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.55);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 /* TOP BAR */
 .top-bar {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  margin-bottom: 12px;
+  align-items: center;
 }
 
 .crown {
-  width: 20px;
-  height: 20px;
-  border-radius: 6px;
-  background: linear-gradient(135deg, #ffcc33, #ff9900);
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #ffd54f, #ffb300);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 900;
-  color: #442200;
+  color: #5a3a00;
+  box-shadow: 0 3px 6px rgba(255, 200, 0, 0.4);
 }
 
 .score {
-  font-size: 26px;
-  font-weight: 700;
+  font-size: 32px;
+  font-weight: 800;
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.25);
 }
 
 .gear-wrapper {
-  width: 26px;
-  height: 26px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  background: #2e2e3d;
+  background: #2a2a36;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
 }
 
-.gear-wrapper::after {
-  content: "";
-  position: absolute;
-  top: 3px;
-  right: 3px;
-  width: 7px;
-  height: 7px;
-  background: #ff3b30;
-  border-radius: 50%;
-}
-
 .gear-icon {
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   border-radius: 4px;
-  border: 2px solid #a0a0b8;
+  border: 2px solid #b0b0c8;
   position: relative;
 }
 
@@ -86,9 +80,9 @@ body {
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 120%;
+  width: 130%;
   height: 2px;
-  background: #a0a0b8;
+  background: #b0b0c8;
   transform: translate(-50%, -50%);
 }
 
@@ -98,86 +92,92 @@ body {
 
 /* GRID */
 .grid-wrapper {
-  background: #1b1b26;
-  border-radius: 18px;
-  padding: 10px;
-  margin-bottom: 14px;
-  box-shadow: inset 0 0 0 1px #2a2a38;
+  background: #16161f;
+  border-radius: 20px;
+  padding: 12px;
+  box-shadow: inset 0 0 0 1px #2c2c38;
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
-  gap: 3px;
+  gap: 4px;
 }
 
 .cell {
-  width: 30px;
-  height: 30px;
-  background: #252535;
-  border-radius: 6px;
-  transition: background 0.1s ease, transform 0.05s ease;
+  aspect-ratio: 1 / 1;
+  background: #222230;
+  border-radius: 8px;
+  transition: background 0.12s ease, transform 0.12s ease;
 }
 
 .cell:hover {
-  background: #303045;
-  transform: translateY(-1px);
+  background: #2d2d3d;
+  transform: translateY(-2px);
 }
 
 .cell.filled {
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.55),
+              inset 0 0 6px rgba(255, 255, 255, 0.15);
 }
 
-.color-1 { background: #b250ff; }
-.color-2 { background: #00d0ff; }
-.color-3 { background: #3c8dff; }
+/* BLOCK COLORS (Glow + Gradient) */
+.color-1 {
+  background: linear-gradient(145deg, #c77dff, #9d4edd);
+  box-shadow: 0 0 12px rgba(157, 78, 221, 0.6);
+}
+
+.color-2 {
+  background: linear-gradient(145deg, #00eaff, #00bcd4);
+  box-shadow: 0 0 12px rgba(0, 220, 255, 0.6);
+}
+
+.color-3 {
+  background: linear-gradient(145deg, #4dabff, #1e88e5);
+  box-shadow: 0 0 12px rgba(30, 136, 229, 0.6);
+}
 
 /* PIECES */
 .pieces-container {
   display: flex;
   justify-content: space-between;
-  margin-top: 12px;
+  gap: 10px;
 }
 
 .piece {
-  background: #1b1b26;
-  border-radius: 14px;
-  padding: 8px;
+  background: #16161f;
+  border-radius: 18px;
+  padding: 10px;
   width: 30%;
-  height: 90px;
+  height: 110px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: inset 0 0 0 1px #2a2a38;
-  cursor: pointer;
-  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  box-shadow: inset 0 0 0 1px #2c2c38;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .piece:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.45);
 }
 
 .piece.disabled {
   opacity: 0.25;
-  cursor: default;
   transform: none;
+  box-shadow: none;
 }
 
 .piece-grid {
   display: grid;
-  gap: 3px;
+  gap: 4px;
 }
 
 .piece-cell {
-  width: 14px;
-  height: 14px;
-  border-radius: 4px;
+  width: 18px;
+  height: 18px;
+  border-radius: 6px;
 }
-
-.piece-cell.color-1 { background: #b250ff; }
-.piece-cell.color-2 { background: #00d0ff; }
-.piece-cell.color-3 { background: #3c8dff; }
 
 /* FLOATING TEXT */
 #floating-text-container {
@@ -189,46 +189,48 @@ body {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  font-weight: 700;
+  font-weight: 800;
   opacity: 0;
+  font-size: 20px;
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
   animation: floatUp 1s ease forwards;
 }
 
 @keyframes floatUp {
   0% { opacity: 0; transform: translate(-50%, 10px); }
   20% { opacity: 1; }
-  100% { opacity: 0; transform: translate(-50%, -30px); }
+  100% { opacity: 0; transform: translate(-50%, -40px); }
 }
 
 /* ANIMATIONS */
 @keyframes pop {
   0% { transform: scale(1); }
-  50% { transform: scale(1.08); }
+  50% { transform: scale(1.12); }
   100% { transform: scale(1); }
 }
 
 .pop {
-  animation: pop 0.12s ease;
+  animation: pop 0.15s ease;
 }
 
 @keyframes clearFade {
   0% { opacity: 1; transform: scale(1); }
-  100% { opacity: 0; transform: scale(0.8); }
+  100% { opacity: 0; transform: scale(0.75); }
 }
 
 .clear-anim {
-  animation: clearFade 0.25s ease forwards;
+  animation: clearFade 0.28s ease forwards;
 }
 
 @keyframes flash {
-  0% { background: #ffffff20; }
+  0% { background: rgba(255, 255, 255, 0.15); }
   100% { background: transparent; }
 }
 
 .full-board-flash {
-  animation: flash 0.4s ease;
+  animation: flash 0.45s ease;
 }
 
 .score-bump {
-  animation: pop 0.2s ease;
+  animation: pop 0.25s ease;
 }
