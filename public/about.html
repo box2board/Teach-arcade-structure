@@ -1,19 +1,237 @@
-<!doctype html><html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>About • Teach Arcade</title>
-<link rel="stylesheet" href="/assets/style.css">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet"></head>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <!-- ===========================
+       SEO
+  ============================ -->
+  <title>About Teach Arcade | Free Classroom Games & Teacher Resources</title>
+  <meta name="description" content="Learn what Teach Arcade is: a free, organized hub of teacher-made and open educational resources, classroom-ready games, and student-friendly activities." />
+  <meta name="keywords" content="Teach Arcade, teacher resources, classroom games, review games, free teaching resources, open educational resources, OER, lesson activities" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta name="theme-color" content="#0f172a" />
+
+  <link rel="canonical" href="https://teacharcade.com/about.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="About Teach Arcade | Free Classroom Games & Teacher Resources" />
+  <meta property="og:description" content="Teach Arcade is a free, organized hub of teacher-made and open educational resources, classroom games, and student-ready activities." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://teacharcade.com/about.html" />
+  <meta property="og:site_name" content="Teach Arcade" />
+  <!-- Optional: add a real share image if you have one -->
+  <!-- <meta property="og:image" content="https://teacharcade.com/assets/images/teach-arcade-share.png" /> -->
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="About Teach Arcade" />
+  <meta name="twitter:description" content="A free, organized hub of teacher-made and open educational resources plus classroom-ready games." />
+
+  <!-- Favicons -->
+  <link rel="icon" href="/assets/images/teach-arcade-logo.png" />
+
+  <!-- Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Global styles (keep your existing file path) -->
+  <link rel="stylesheet" href="/assets/style.css" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- ===========================
+       Structured Data
+  ============================ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About Teach Arcade",
+    "url": "https://teacharcade.com/about.html",
+    "description": "Teach Arcade is a free, organized hub of teacher-made and open educational resources, classroom-ready games, and student-friendly activities.",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Teach Arcade",
+      "url": "https://teacharcade.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Teach Arcade",
+      "url": "https://teacharcade.com"
+    }
+  }
+  </script>
+
+  <style>
+    /* Minimal page-specific polish without depending on style.css structure */
+    .about-hero {
+      display: grid;
+      gap: 14px;
+      padding: 18px 0 6px;
+      border-bottom: 1px solid rgba(148,163,184,0.25);
+      margin-bottom: 18px;
+    }
+    .about-hero h1 { margin: 0; }
+    .about-lead {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      opacity: 0.95;
+      max-width: 70ch;
+    }
+    .about-grid {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: 1fr;
+      margin: 16px 0 10px;
+    }
+    .about-card {
+      border: 1px solid rgba(148,163,184,0.25);
+      border-radius: 14px;
+      padding: 14px;
+      background: rgba(15,23,42,0.04);
+    }
+    .about-card h2 {
+      font-family: Poppins, system-ui, sans-serif;
+      font-size: 1.05rem;
+      margin: 0 0 6px;
+    }
+    .about-card p { margin: 0; line-height: 1.65; }
+    .about-card ul { margin: 8px 0 0 18px; line-height: 1.7; }
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 18px 0 6px;
+    }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      border: 1px solid rgba(148,163,184,0.35);
+    }
+    .cta-primary {
+      background: #0f172a;
+      color: #fff;
+      border-color: rgba(15,23,42,0.9);
+    }
+    .cta-secondary {
+      background: transparent;
+      color: inherit;
+    }
+    .fineprint {
+      margin-top: 10px;
+      font-size: 0.92rem;
+      opacity: 0.85;
+      line-height: 1.6;
+      max-width: 80ch;
+    }
+    @media (min-width: 860px) {
+      .about-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+
 <body>
-<header>
-  <div style="display:flex;gap:10px;align-items:center"><div class="logo">TA</div><div class="brand">Teach Arcade</div></div>
-  <nav><a href="/">Home</a><a href="/subjects/index.html">Subjects</a><a href="/submit.html">Submit</a><a href="/about.html">About</a></nav>
-</header>
-<main class="container">
-  <div class="breadcrumbs"><a href="/">Home</a> › About</div>
+  <!-- If you use nav.js globally, swap this header for the injected header.
+       Otherwise keep your static header. -->
+  <header>
+    <div style="display:flex;gap:10px;align-items:center">
+      <div class="logo">TA</div>
+      <div class="brand">Teach Arcade</div>
+    </div>
+    <nav aria-label="Primary navigation">
+      <a href="/">Home</a>
+      <a href="/subjects/index.html">Subjects</a>
+      <a href="/submit.html">Submit</a>
+      <a href="/about.html" aria-current="page">About</a>
+    </nav>
+  </header>
 
-<h1>About Teach Arcade</h1>
-<p>Teach Arcade is a free, organized hub for teacher-made and open educational resources.</p>
+  <main class="container" id="main" role="main">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">›</span> <span>About</span>
+    </nav>
 
-</main>
-<footer>© <script>document.write(new Date().getFullYear())</script> Teach Arcade</footer>
-</body></html>
+    <section class="about-hero">
+      <h1>About Teach Arcade</h1>
+      <p class="about-lead">
+        Teach Arcade is a free, organized hub for teacher-made and open educational resources—built to make
+        classroom planning faster and student practice more engaging.
+      </p>
+      <div class="cta-row">
+        <a class="cta-btn cta-primary" href="/subjects/index.html">Browse Subjects</a>
+        <a class="cta-btn cta-secondary" href="/arcade-review-games/">Play Review Games</a>
+        <a class="cta-btn cta-secondary" href="/submit.html">Submit a Resource</a>
+      </div>
+      <p class="fineprint">
+        Focus: quick classroom wins—review games, practice activities, and curated links that teachers can trust.
+        Everything is organized by subject and designed to be easy to use on phones, Chromebooks, and classroom devices.
+      </p>
+    </section>
+
+    <section class="about-grid" aria-label="What you’ll find on Teach Arcade">
+      <article class="about-card">
+        <h2>What Teach Arcade provides</h2>
+        <ul>
+          <li>Classroom-ready review games and interactive practice</li>
+          <li>Curated teacher resources and open educational materials (OER)</li>
+          <li>Organized subject pages to reduce searching and clicking around</li>
+          <li>Student-friendly experiences designed for stations and bell-ringers</li>
+        </ul>
+      </article>
+
+      <article class="about-card">
+        <h2>How to use it</h2>
+        <ul>
+          <li><strong>Teachers:</strong> browse by subject, pick an activity, and run it instantly</li>
+          <li><strong>Students:</strong> play in class or at home for extra practice</li>
+          <li><strong>Contributors:</strong> submit high-quality resources to help the community</li>
+        </ul>
+      </article>
+
+      <article class="about-card">
+        <h2>Quality and organization</h2>
+        <p>
+          Teach Arcade prioritizes clear labeling and organization so you can quickly find what fits your grade level,
+          topic, and time constraints. When possible, resources are reviewed for basic functionality and classroom fit.
+        </p>
+      </article>
+
+      <article class="about-card">
+        <h2>Transparency</h2>
+        <p>
+          Teach Arcade links to teacher-made and open resources. Some pages may include ads to support hosting and
+          development. Submissions should be classroom-appropriate and credited when required.
+        </p>
+      </article>
+    </section>
+
+    <section class="about-card" style="margin-top:16px">
+      <h2>Contact / feedback</h2>
+      <p>
+        Want a new subject page, a new game type, or to report a broken link?
+        Use the <a href="/submit.html">Submit</a> page to send a note.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="y"></span> Teach Arcade
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+
+  <!-- If you rely on nav.js for your global header, uncomment and remove the static <header> above. -->
+  <!-- <script src="/assets/scripts/nav.js"></script> -->
+</body>
+</html>
