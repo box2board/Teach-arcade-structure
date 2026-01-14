@@ -1,8 +1,9 @@
-/* ============================
-   BLOCK LOGIC — GAME ENGINE
-   ============================ */
+/* ============================================================
+   BLOCK LOGIC — FULL DRAG & DROP ENGINE (Touch + Mouse)
+   ============================================================ */
 
 const GRID_SIZE = 10;
+let CELL_SIZE = 0; // Calculated dynamically
 
 const COLORS = {
   1: "color-1",
@@ -25,6 +26,13 @@ const PIECES = [
 
 let gridState = [];
 let selectedPieceIndex = null;
+let dragging = false;
+let ghostEl = null;
+let dragOffsetX = 0;
+let dragOffsetY = 0;
+let currentGhostRow = null;
+let currentGhostCol = null;
+
 let currentScore = 0;
 let bestScore = parseInt(localStorage.getItem("blocklogic_best")) || 0;
 let streak = 0;
@@ -37,19 +45,23 @@ const floatingTextContainer = document.getElementById("floating-text-container")
 
 bestScoreEl.textContent = bestScore;
 
-/* INITIALIZE GRID */
+/* ============================================================
+   INITIALIZE GRID
+   ============================================================ */
 function initGrid() {
   gridEl.innerHTML = "";
   gridState = [];
+
+  const gridWidth = gridEl.clientWidth;
+  CELL_SIZE = gridWidth / GRID_SIZE;
 
   for (let r = 0; r < GRID_SIZE; r++) {
     const row = [];
     for (let c = 0; c < GRID_SIZE; c++) {
       const cell = document.createElement("div");
       cell.className = "cell";
-      cell.dataset.row = r;
-      cell.dataset.col = c;
-      cell.addEventListener("click", onCellClick);
+      cell.style.width = `${CELL_SIZE}px`;
+      cell.style.height = `${CELL_SIZE}px`;
       gridEl.appendChild(cell);
       row.push(0);
     }
@@ -57,7 +69,9 @@ function initGrid() {
   }
 }
 
-/* RENDER PIECES */
+/* ============================================================
+   RENDER PIECES
+   ============================================================ */
 function renderPieces() {
   pieceEls.forEach((container, i) => {
     container.innerHTML = "";
@@ -79,56 +93,203 @@ function renderPieces() {
         if (def.shape[r][c]) {
           cell.className = `piece-cell ${COLORS[def.color]}`;
         } else {
-          cell.style.width = "14px";
-          cell.style.height = "14px";
+          cell.style.width = "18px";
+          cell.style.height = "18px";
         }
         pieceGrid.appendChild(cell);
       }
     }
 
     container.appendChild(pieceGrid);
-    container.onclick = () => onPieceClick(i);
+
+    // Add drag listeners
+    container.addEventListener("touchstart", e => startDrag(e, i), { passive: false });
+    container.addEventListener("mousedown", e => startDrag(e, i));
   });
 }
 
-/* SELECT PIECE */
-function onPieceClick(index) {
+/* ============================================================
+   DRAG START
+   ============================================================ */
+function startDrag(e, index) {
   const pieceEl = pieceEls[index];
   if (pieceEl.classList.contains("disabled")) return;
 
+  dragging = true;
   selectedPieceIndex = index;
 
-  pieceEls.forEach((el, i) => {
-    el.style.outline = i === index ? "2px solid #ffd166" : "none";
+  const pieceDef = JSON.parse(pieceEl.dataset.piece);
+
+  // Create ghost element
+  ghostEl = createGhostPiece(pieceDef);
+  document.body.appendChild(ghostEl);
+
+  pieceEl.style.opacity = "0.3";
+
+  const pos = getEventPos(e);
+  dragOffsetX = ghostEl.offsetWidth / 2;
+  dragOffsetY = ghostEl.offsetHeight / 2;
+
+  moveGhost(pos.x, pos.y);
+
+  document.addEventListener("touchmove", onDragMove, { passive: false });
+  document.addEventListener("mousemove", onDragMove);
+  document.addEventListener("touchend", onDragEnd);
+  document.addEventListener("mouseup", onDragEnd);
+}
+
+/* ============================================================
+   CREATE GHOST PIECE
+   ============================================================ */
+function createGhostPiece(piece) {
+  const ghost = document.createElement("div");
+  ghost.className = "ghost-piece";
+  ghost.style.position = "absolute";
+  ghost.style.pointerEvents = "none";
+  ghost.style.opacity = "0.8";
+  ghost.style.transform = "scale(1.1)";
+
+  const rows = piece.shape.length;
+  const cols = piece.shape[0].length;
+
+  ghost.style.display = "grid";
+  ghost.style.gridTemplateColumns = `repeat(${cols}, ${CELL_SIZE}px)`;
+  ghost.style.gap = "4px";
+
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      const cell = document.createElement("div");
+      if (piece.shape[r][c]) {
+        cell.className = `piece-cell ${COLORS[piece.color]}`;
+        cell.style.width = `${CELL_SIZE}px`;
+        cell.style.height = `${CELL_SIZE}px`;
+      } else {
+        cell.style.width = `${CELL_SIZE}px`;
+        cell.style.height = `${CELL_SIZE}px`;
+        cell.style.opacity = "0";
+      }
+      ghost.appendChild(cell);
+    }
+  }
+
+  return ghost;
+}
+
+/* ============================================================
+   DRAG MOVE
+   ============================================================ */
+function onDragMove(e) {
+  if (!dragging) return;
+
+  e.preventDefault();
+  const pos = getEventPos(e);
+  moveGhost(pos.x, pos.y);
+
+  const gridRect = gridEl.getBoundingClientRect();
+  const pieceDef = JSON.parse(pieceEls[selectedPieceIndex].dataset.piece);
+
+  const ghostTopLeftX = pos.x - dragOffsetX;
+  const ghostTopLeftY = pos.y - dragOffsetY;
+
+  const col = Math.floor((ghostTopLeftX - gridRect.left) / CELL_SIZE);
+  const row = Math.floor((ghostTopLeftY - gridRect.top) / CELL_SIZE);
+
+  currentGhostRow = row;
+  currentGhostCol = col;
+
+  highlightPlacement(pieceDef, row, col);
+}
+
+/* ============================================================
+   MOVE GHOST
+   ============================================================ */
+function moveGhost(x, y) {
+  ghostEl.style.left = `${x - dragOffsetX}px`;
+  ghostEl.style.top = `${y - dragOffsetY}px`;
+}
+
+/* ============================================================
+   HIGHLIGHT VALID / INVALID PLACEMENT
+   ============================================================ */
+function highlightPlacement(piece, row, col) {
+  clearHighlights();
+
+  const valid = canPlacePiece(piece, row, col);
+
+  const rows = piece.shape.length;
+  const cols = piece.shape[0].length;
+
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      if (!piece.shape[r][c]) continue;
+
+      const rr = row + r;
+      const cc = col + c;
+
+      if (rr < 0 || rr >= GRID_SIZE || cc < 0 || cc >= GRID_SIZE) continue;
+
+      const cell = gridEl.children[rr * GRID_SIZE + cc];
+      cell.style.background = valid ? "#2ecc71" : "#e74c3c";
+    }
+  }
+}
+
+/* ============================================================
+   CLEAR HIGHLIGHTS
+   ============================================================ */
+function clearHighlights() {
+  gridEl.querySelectorAll(".cell").forEach(cell => {
+    cell.style.background = "";
   });
 }
 
-/* PLACE PIECE */
-function onCellClick(e) {
-  if (selectedPieceIndex === null) return;
+/* ============================================================
+   DRAG END
+   ============================================================ */
+function onDragEnd() {
+  if (!dragging) return;
 
-  const cell = e.currentTarget;
-  const row = parseInt(cell.dataset.row);
-  const col = parseInt(cell.dataset.col);
+  dragging = false;
 
   const pieceEl = pieceEls[selectedPieceIndex];
   const pieceDef = JSON.parse(pieceEl.dataset.piece);
 
-  if (canPlacePiece(pieceDef, row, col)) {
-    placePiece(pieceDef, row, col);
+  if (canPlacePiece(pieceDef, currentGhostRow, currentGhostCol)) {
+    placePiece(pieceDef, currentGhostRow, currentGhostCol);
     pieceEl.classList.add("disabled");
-    pieceEl.style.outline = "none";
-    selectedPieceIndex = null;
-
-    const cleared = checkLines();
-    applyScoring(pieceDef, cleared);
-
-    if (allPiecesUsed()) renderPieces();
-    if (isGameOver()) alert("Game Over");
+  } else {
+    pieceEl.style.opacity = "1";
   }
+
+  ghostEl.remove();
+  ghostEl = null;
+
+  clearHighlights();
+
+  selectedPieceIndex = null;
+
+  document.removeEventListener("touchmove", onDragMove);
+  document.removeEventListener("mousemove", onDragMove);
+  document.removeEventListener("touchend", onDragEnd);
+  document.removeEventListener("mouseup", onDragEnd);
+
+  if (allPiecesUsed()) renderPieces();
+  if (isGameOver()) alert("Game Over");
 }
 
-/* CHECK IF PIECE FITS */
+/* ============================================================
+   GET EVENT POSITION
+   ============================================================ */
+function getEventPos(e) {
+  if (e.touches && e.touches.length > 0) {
+    return { x: e.touches[0].clientX, y: e.touches[0].clientY };
+  }
+  return { x: e.clientX, y: e.clientY };
+}
+
+/* ============================================================
+   CHECK IF PIECE FITS
+   ============================================================ */
 function canPlacePiece(piece, startRow, startCol) {
   const rows = piece.shape.length;
   const cols = piece.shape[0].length;
@@ -147,7 +308,9 @@ function canPlacePiece(piece, startRow, startCol) {
   return true;
 }
 
-/* PLACE PIECE ON GRID */
+/* ============================================================
+   PLACE PIECE
+   ============================================================ */
 function placePiece(piece, startRow, startCol) {
   const rows = piece.shape.length;
   const cols = piece.shape[0].length;
@@ -172,18 +335,21 @@ function placePiece(piece, startRow, startCol) {
 
   currentScore += blockCount;
   bumpScore();
+
+  const cleared = checkLines();
+  applyScoring(piece, cleared);
 }
 
-/* CHECK LINES */
+/* ============================================================
+   CHECK LINES
+   ============================================================ */
 function checkLines() {
   let cleared = [];
 
-  // Rows
   for (let r = 0; r < GRID_SIZE; r++) {
     if (gridState[r].every(v => v !== 0)) cleared.push({ type: "row", index: r });
   }
 
-  // Columns
   for (let c = 0; c < GRID_SIZE; c++) {
     let full = true;
     for (let r = 0; r < GRID_SIZE; r++) {
@@ -196,7 +362,9 @@ function checkLines() {
   return cleared;
 }
 
-/* CLEAR LINES */
+/* ============================================================
+   CLEAR LINES
+   ============================================================ */
 function clearLines(lines) {
   lines.forEach(line => {
     if (line.type === "row") {
@@ -218,17 +386,18 @@ function clearLines(lines) {
     gridEl.querySelectorAll(".clear-anim").forEach(cell => {
       cell.className = "cell";
     });
-  }, 250);
+  }, 280);
 }
 
-/* SCORING */
+/* ============================================================
+   SCORING
+   ============================================================ */
 function applyScoring(piece, cleared) {
   let lines = cleared.length;
 
   if (lines > 0) {
     currentScore += lines * 10;
 
-    // Combo
     if (lines >= 2) {
       let bonus = lines === 2 ? 15 :
                   lines === 3 ? 30 :
@@ -237,7 +406,6 @@ function applyScoring(piece, cleared) {
       showFloatingText(`Combo x${lines}! +${bonus}`);
     }
 
-    // Streak
     streak++;
     if (streak >= 2) {
       let bonus = streak === 2 ? 5 :
@@ -249,23 +417,24 @@ function applyScoring(piece, cleared) {
     streak = 0;
   }
 
-  // Full board clear
   if (isBoardEmpty()) {
     currentScore += 500;
     gridEl.classList.add("full-board-flash");
     showFloatingText("+500 Full Clear!");
 
-    setTimeout(() => gridEl.classList.remove("full-board-flash"), 400);
+    setTimeout(() => gridEl.classList.remove("full-board-flash"), 450);
   }
 
   bumpScore();
 }
 
-/* SCORE ANIMATION */
+/* ============================================================
+   SCORE ANIMATION
+   ============================================================ */
 function bumpScore() {
   currentScoreEl.textContent = currentScore;
   currentScoreEl.classList.add("score-bump");
-  setTimeout(() => currentScoreEl.classList.remove("score-bump"), 200);
+  setTimeout(() => currentScoreEl.classList.remove("score-bump"), 250);
 
   if (currentScore > bestScore) {
     bestScore = currentScore;
@@ -274,7 +443,9 @@ function bumpScore() {
   }
 }
 
-/* FLOATING TEXT */
+/* ============================================================
+   FLOATING TEXT
+   ============================================================ */
 function showFloatingText(text) {
   const el = document.createElement("div");
   el.className = "floating-text";
@@ -284,17 +455,23 @@ function showFloatingText(text) {
   setTimeout(() => el.remove(), 1000);
 }
 
-/* CHECK IF BOARD EMPTY */
+/* ============================================================
+   CHECK IF BOARD EMPTY
+   ============================================================ */
 function isBoardEmpty() {
   return gridState.every(row => row.every(v => v === 0));
 }
 
-/* CHECK IF ALL PIECES USED */
+/* ============================================================
+   CHECK IF ALL PIECES USED
+   ============================================================ */
 function allPiecesUsed() {
   return [...pieceEls].every(el => el.classList.contains("disabled"));
 }
 
-/* GAME OVER CHECK */
+/* ============================================================
+   GAME OVER CHECK
+   ============================================================ */
 function isGameOver() {
   for (let i = 0; i < pieceEls.length; i++) {
     const el = pieceEls[i];
@@ -311,6 +488,8 @@ function isGameOver() {
   return true;
 }
 
-/* START GAME */
+/* ============================================================
+   START GAME
+   ============================================================ */
 initGrid();
 renderPieces();
