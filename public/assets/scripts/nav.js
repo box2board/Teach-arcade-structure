@@ -54,6 +54,7 @@
     { label: "Teacher Tools", href: "/tools/" },
     { label: "Escape Rooms", href: "/escape/" },
     { label: "Playbook", href: "/playbook/" },
+    { label: "Merch", href: "/store/index.html" },
     { label: "Submit", href: "/submit/" },
     { label: "About", href: "/about.html" },
   ];
