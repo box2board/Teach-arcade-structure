@@ -80,8 +80,8 @@
         --nav-shadow: 0 20px 60px rgba(0,0,0,.45);
 
         /* Sizing tuned */
-        --nav-h: 64px;
-        --nav-pad: 14px;
+        --nav-h: 56px;
+        --nav-pad: 10px;
         --radius: 14px;
       }
 
@@ -128,8 +128,8 @@
       }
       .ta-brand span{
         display: inline-block;
-        line-height: 1.02;
-        font-size: 16px;
+        line-height: 1;
+        font-size: 14px;
       }
 
       /* Desktop links */
@@ -147,8 +147,8 @@
         color: var(--nav-muted);
         text-decoration: none;
         font-weight: 700;
-        font-size: 13px;
-        padding: 9px 10px;
+        font-size: 12px;
+        padding: 8px 8px;
         border-radius: 10px;
         transition: background .15s ease, color .15s ease;
         white-space: nowrap;
