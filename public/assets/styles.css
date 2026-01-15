@@ -221,3 +221,27 @@ footer {
 /* ✅ NOTE:
    Removed the old "NAV.JS HEADER OVERRIDES" block because it referenced .header-row
    (which your current nav.js does NOT use) and it was forcing layout/thickness issues. */
+
+
+/* =========================
+   PLAYBOOK ARTICLE HERO (FIX)
+   ========================= */
+.playbook-hero{
+  background: linear-gradient(135deg, #0f172a, #020617);
+  color: #e5e7eb;
+  border: none;
+}
+
+.playbook-hero h1{
+  color: #ffffff;
+}
+
+.playbook-hero p{
+  color: rgba(229,231,235,.9);
+}
+
+.playbook-hero .pill{
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.18);
+  color: #ffffff;
+}
