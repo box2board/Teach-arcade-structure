@@ -9,7 +9,7 @@
     location.hostname === "localhost" ||
     location.hostname === "127.0.0.1";
 
-  const GA4_ID = "G-13098279648";
+  const GA4_ID = "G-NBQHSPW9GH";
   const ADSENSE_CLIENT = "ca-pub-7899890641544647";
 
   const loadScriptOnce = (src, attrs = {}) => {
