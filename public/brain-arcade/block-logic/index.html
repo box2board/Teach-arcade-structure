@@ -41,6 +41,18 @@
     <!-- Floating bonus text -->
     <div id="floating-text-container"></div>
 
+    <!-- Game Over -->
+    <div id="game-over" class="game-over hidden" aria-live="polite">
+      <div class="game-over-card">
+        <h2>Game Over</h2>
+        <p>Your score: <span id="final-score">0</span></p>
+        <div class="game-over-actions">
+          <button type="button" id="play-again">Play Again</button>
+          <a href="/brain-arcade/" class="menu-link">Game Menu</a>
+        </div>
+      </div>
+    </div>
+
     <!-- Pieces -->
     <div class="pieces-container">
       <div class="piece" data-piece-index="0"></div>

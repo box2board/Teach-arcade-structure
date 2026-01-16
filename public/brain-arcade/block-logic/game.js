@@ -42,6 +42,9 @@ const bestScoreEl = document.getElementById("best-score");
 const currentScoreEl = document.getElementById("current-score");
 const pieceEls = document.querySelectorAll(".piece");
 const floatingTextContainer = document.getElementById("floating-text-container");
+const gameOverEl = document.getElementById("game-over");
+const finalScoreEl = document.getElementById("final-score");
+const playAgainBtn = document.getElementById("play-again");
 
 bestScoreEl.textContent = bestScore;
 
@@ -280,8 +283,7 @@ function onDragEnd() {
   }
 
   if (!hasAnyMoves()) {
-    showFloatingText("No moves left! Resetting...");
-    setTimeout(resetGame, 800);
+    showGameOver();
   }
 }
 
@@ -439,6 +441,7 @@ function resetGame() {
   streak = 0;
   initGrid();
   renderPieces();
+  hideGameOver();
 }
 
 /* ============================================================
@@ -467,3 +470,17 @@ window.addEventListener("resize", resizeGrid);
 
 initGrid();
 renderPieces();
+hideGameOver();
+
+playAgainBtn.addEventListener("click", () => {
+  resetGame();
+});
+
+function showGameOver() {
+  finalScoreEl.textContent = currentScore;
+  gameOverEl.classList.remove("hidden");
+}
+
+function hideGameOver() {
+  gameOverEl.classList.add("hidden");
+}
