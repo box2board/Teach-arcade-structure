@@ -16,6 +16,7 @@ const notebookTarget = document.querySelector("[data-notebook]");
 const npcTarget = document.querySelector("[data-npc]");
 const classroomTarget = document.querySelector("[data-classroom]");
 const classroomNotice = document.querySelector("[data-classroom-note]");
+const restorationRoot = document.querySelector("[data-restoration]");
 
 if (pillarsTarget) {
   pillarsTarget.innerHTML = renderList(gamePillars, (pillar) => {
@@ -108,3 +109,75 @@ modeInputs.forEach((input) => {
 });
 
 updateClassroomNotice("Standard");
+
+if (restorationRoot) {
+  const toolButtons = restorationRoot.querySelectorAll("[data-tool]");
+  const nodes = restorationRoot.querySelectorAll("[data-system]");
+  const statusText = restorationRoot.querySelector("[data-status]");
+  const meterFill = restorationRoot.querySelector("[data-meter]");
+  const resetButton = restorationRoot.querySelector("[data-reset]");
+  const restored = new Set();
+  let selectedTool = "";
+
+  const updateStatus = (message) => {
+    if (statusText) {
+      statusText.textContent = message;
+    }
+  };
+
+  const updateMeter = () => {
+    if (!meterFill) return;
+    const percent = Math.round((restored.size / nodes.length) * 100);
+    meterFill.style.width = `${percent}%`;
+  };
+
+  toolButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      selectedTool = button.dataset.tool;
+      toolButtons.forEach((tool) => tool.classList.remove("active"));
+      button.classList.add("active");
+      updateStatus(`Tool ready: ${button.textContent}. Choose a system to restore.`);
+    });
+  });
+
+  nodes.forEach((node) => {
+    node.addEventListener("click", () => {
+      const system = node.dataset.system;
+
+      if (!selectedTool) {
+        updateStatus("Select a tool first so you can calibrate the system.");
+        return;
+      }
+
+      if (node.classList.contains("restored")) {
+        updateStatus(`${node.querySelector("span").textContent} is already stable.`);
+        return;
+      }
+
+      if (selectedTool === system) {
+        node.classList.add("restored");
+        restored.add(system);
+        updateMeter();
+        const remaining = nodes.length - restored.size;
+        if (remaining === 0) {
+          updateStatus("All systems stabilized! The Archive of Balance is now humming.");
+        } else {
+          updateStatus(`Restored! ${remaining} system${remaining > 1 ? "s" : ""} left to stabilize.`);
+        }
+      } else {
+        updateStatus("That tool doesn't align with this system. Try another instrument.");
+      }
+    });
+  });
+
+  if (resetButton) {
+    resetButton.addEventListener("click", () => {
+      restored.clear();
+      nodes.forEach((node) => node.classList.remove("restored"));
+      toolButtons.forEach((tool) => tool.classList.remove("active"));
+      selectedTool = "";
+      updateMeter();
+      updateStatus("Select a tool to begin. Restored systems glow and fill the archive meter.");
+    });
+  }
+}
