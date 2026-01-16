@@ -1,4 +1,4 @@
-// /brain-arcade/wwi-trench-run-v2/game.js
+// /arcade-review-games/social-studies/wwi-trench-run-v2/game.js
 (() => {
   const canvas = document.getElementById('game-canvas');
   const ctx = canvas.getContext('2d');

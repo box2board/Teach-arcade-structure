@@ -140,6 +140,21 @@
     "source": "sitemap"
   },
   {
+    "title": "Concept Stack: Cells",
+    "url": "/arcade-review-games/science/concept-stack-cells",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:arcade-review-games",
+      "topic:concept-stack-cells"
+    ],
+    "source": "sitemap"
+  },
+  {
     "title": "Scientific Method",
     "url": "/arcade-review-games/science/scientific-method",
     "type": "game",
@@ -211,6 +226,21 @@
       "platform:web",
       "category:arcade-review-games",
       "topic:wwi-trench-run"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Wwi Trench Run V2",
+    "url": "/arcade-review-games/social-studies/wwi-trench-run-v2",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:arcade-review-games",
+      "topic:wwi-trench-run-v2"
     ],
     "source": "sitemap"
   },
