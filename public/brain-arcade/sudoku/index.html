@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0f172a" />
+
+  <title>Sudoku · Brain Arcade | Teach Arcade</title>
+  <meta name="description" content="Teacher-friendly, brain arcade Sudoku. Play free Sudoku logic puzzles that are perfect for classroom breaks, focus practice, and calm problem-solving." />
+  <link rel="canonical" href="https://teacharcade.com/brain-arcade/sudoku/" />
+
+  <link rel="stylesheet" href="/assets/styles.css?v=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
+  <link rel="stylesheet" href="/brain-arcade/sudoku/style.css" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Teach Arcade" />
+  <meta property="og:title" content="Sudoku · Brain Arcade | Teach Arcade" />
+  <meta property="og:description" content="Teacher-friendly Sudoku from Brain Arcade. Free logic puzzles for classroom breaks, focus, and strategy practice." />
+  <meta property="og:url" content="https://teacharcade.com/brain-arcade/sudoku/" />
+  <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Sudoku · Brain Arcade | Teach Arcade" />
+  <meta name="twitter:description" content="Free Sudoku logic puzzles built for classroom breaks and focus practice." />
+  <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Sudoku · Brain Arcade | Teach Arcade",
+    "url": "https://teacharcade.com/brain-arcade/sudoku/",
+    "description": "Teacher-friendly, brain arcade Sudoku. Play free Sudoku logic puzzles that are perfect for classroom breaks, focus practice, and calm problem-solving.",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Teach Arcade",
+      "url": "https://teacharcade.com/"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://teacharcade.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Brain Arcade",
+        "item": "https://teacharcade.com/brain-arcade/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Sudoku",
+        "item": "https://teacharcade.com/brain-arcade/sudoku/"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <div id="site-header"></div>
+  <script src="/assets/scripts/nav.js?v=5" defer></script>
+
+  <main class="container sudoku-page">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/brain-arcade/">Brain Arcade</a></li>
+        <li aria-current="page">Sudoku</li>
+      </ol>
+    </nav>
+
+    <header class="sudoku-hero">
+      <h1>Sudoku</h1>
+      <p>
+        Brain Arcade Sudoku is a calm, classroom-friendly logic puzzle. Use it as a brain break, focus warm-up,
+        or strategy challenge—each puzzle builds careful reasoning without feeling like a worksheet.
+      </p>
+    </header>
+
+    <div class="ad-slot" aria-label="Advertisement">Ad space</div>
+
+    <section class="sudoku-layout" aria-label="Sudoku game">
+      <div class="sudoku-board-wrap">
+        <div class="sudoku-status" role="status" aria-live="polite" id="status-message"></div>
+        <div class="sudoku-board" id="sudoku-board" role="grid" aria-label="Sudoku board"></div>
+        <div class="sudoku-keypad" role="group" aria-label="Number keypad">
+          <button type="button" class="key" data-value="1" aria-label="Enter 1">1</button>
+          <button type="button" class="key" data-value="2" aria-label="Enter 2">2</button>
+          <button type="button" class="key" data-value="3" aria-label="Enter 3">3</button>
+          <button type="button" class="key" data-value="4" aria-label="Enter 4">4</button>
+          <button type="button" class="key" data-value="5" aria-label="Enter 5">5</button>
+          <button type="button" class="key" data-value="6" aria-label="Enter 6">6</button>
+          <button type="button" class="key" data-value="7" aria-label="Enter 7">7</button>
+          <button type="button" class="key" data-value="8" aria-label="Enter 8">8</button>
+          <button type="button" class="key" data-value="9" aria-label="Enter 9">9</button>
+          <button type="button" class="key erase" data-value="0" aria-label="Erase entry">Erase</button>
+        </div>
+      </div>
+
+      <aside class="sudoku-controls" aria-label="Sudoku controls">
+        <div class="control-group">
+          <label for="difficulty">Difficulty</label>
+          <select id="difficulty" aria-label="Select difficulty">
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+          </select>
+        </div>
+
+        <div class="control-buttons">
+          <button type="button" id="new-game" aria-label="Start a new game">New Game</button>
+          <button type="button" id="reset-game" aria-label="Reset puzzle">Reset Puzzle</button>
+          <button type="button" id="undo" aria-label="Undo last move">Undo</button>
+          <button type="button" id="notes-toggle" aria-pressed="false" aria-label="Toggle notes mode">Notes Mode</button>
+          <button type="button" id="hint" aria-label="Get a hint">Hint (0/3)</button>
+          <button type="button" id="check" aria-label="Check puzzle">Check</button>
+        </div>
+
+        <div class="timer-card">
+          <div class="timer-label">Timer</div>
+          <div class="timer-display" id="timer-display">00:00</div>
+          <button type="button" id="timer-toggle" aria-pressed="true" aria-label="Toggle timer">Pause Timer</button>
+        </div>
+
+        <div class="how-to-play">
+          <h2>How to Play</h2>
+          <ul>
+            <li>Fill every row, column, and 3×3 box with numbers 1–9.</li>
+            <li>Click or tap a cell, then use your keyboard or keypad.</li>
+            <li>Use Notes Mode to track candidates.</li>
+          </ul>
+        </div>
+      </aside>
+    </section>
+
+    <section class="more-from">
+      <h2>More from Teach Arcade</h2>
+      <ul>
+        <li><a href="/brain-arcade/">Brain Arcade hub</a></li>
+        <li><a href="/tools/">Teacher tools</a></li>
+        <li><a href="/submit/">Submit a resource</a></li>
+      </ul>
+    </section>
+
+    <div class="ad-slot" aria-label="Advertisement">Ad space</div>
+  </main>
+
+  <footer>
+    © <script>document.write(new Date().getFullYear())</script> Teach Arcade •
+    <a href="/privacy.html">Privacy</a> •
+    <a href="/terms.html">Terms</a>
+  </footer>
+
+  <script src="/brain-arcade/sudoku/game.js" defer></script>
+</body>
+</html>
