@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0f172a" />
+
+  <link rel="preload" as="image" href="/assets/images/teach-arcade-logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <title>Word Search · Brain Arcade | Teach Arcade</title>
+  <meta name="description" content="Free word search puzzles with a daily puzzle feel, perfect for classroom brain breaks and vocabulary practice." />
+  <link rel="canonical" href="https://teacharcade.com/brain-arcade/word-search/" />
+
+  <link rel="stylesheet" href="/assets/styles.css?v=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
+  <link rel="stylesheet" href="/brain-arcade/word-search/style.css" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Teach Arcade" />
+  <meta property="og:title" content="Word Search · Brain Arcade | Teach Arcade" />
+  <meta property="og:description" content="Play a free word search with daily puzzle vibes for classroom brain breaks and vocabulary practice." />
+  <meta property="og:url" content="https://teacharcade.com/brain-arcade/word-search/" />
+  <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Word Search · Brain Arcade | Teach Arcade" />
+  <meta name="twitter:description" content="Free word search puzzles with a daily puzzle feel for classroom brain breaks and vocabulary." />
+  <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Word Search · Brain Arcade | Teach Arcade",
+    "url": "https://teacharcade.com/brain-arcade/word-search/",
+    "description": "Free word search puzzles with a daily puzzle feel, perfect for classroom brain breaks and vocabulary practice.",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Teach Arcade",
+      "url": "https://teacharcade.com/"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://teacharcade.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Brain Arcade",
+        "item": "https://teacharcade.com/brain-arcade/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Word Search",
+        "item": "https://teacharcade.com/brain-arcade/word-search/"
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <!-- Global Header mount -->
+  <div id="site-header"></div>
+  <script src="/assets/scripts/nav.js?v=5" defer></script>
+
+  <main class="container word-search-page">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a> ›
+      <a href="/brain-arcade/">Brain Arcade</a> ›
+      <span>Word Search</span>
+    </nav>
+
+    <header class="page-hero">
+      <div class="hero-text">
+        <p class="eyebrow">Brain Arcade</p>
+        <h1>Word Search</h1>
+        <p class="page-lead">
+          Enjoy a clean, classroom-ready word search with daily puzzle vibes. Use it as a quick brain break,
+          vocabulary builder, or collaborative warm-up—no logins or downloads needed.
+        </p>
+      </div>
+      <div class="hero-stats" aria-label="Puzzle status">
+        <div class="stat">
+          <span class="stat-label">Found</span>
+          <span class="stat-value" id="found-count">0</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Words</span>
+          <span class="stat-value" id="total-count">0</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Timer</span>
+          <span class="stat-value" id="timer-display">00:00</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="control-panel" aria-label="Game controls">
+      <div class="control-group">
+        <label for="difficulty">Difficulty</label>
+        <select id="difficulty" aria-label="Select difficulty">
+          <option value="easy">Easy</option>
+          <option value="medium" selected>Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label for="category">Category</label>
+        <select id="category" aria-label="Select category">
+          <option value="random" selected>Random</option>
+          <option value="us-history">U.S. History</option>
+          <option value="world-history">World History</option>
+          <option value="geography">Geography</option>
+          <option value="science">Science</option>
+          <option value="ela">ELA/Vocabulary</option>
+          <option value="brain-break">Brain Break Fun</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label for="grid-size">Grid Size</label>
+        <select id="grid-size" aria-label="Select grid size">
+          <option value="12" selected>12 x 12</option>
+          <option value="15">15 x 15</option>
+          <option value="18">18 x 18</option>
+        </select>
+        <span class="helper" id="grid-helper">Grid size may clamp on small screens.</span>
+      </div>
+      <div class="control-group toggle">
+        <label for="daily-toggle">Daily Puzzle</label>
+        <button id="daily-toggle" class="toggle-btn" type="button" aria-pressed="false" aria-label="Toggle daily puzzle">Off</button>
+      </div>
+      <div class="control-group toggle">
+        <label for="timer-toggle">Timer</label>
+        <button id="timer-toggle" class="toggle-btn" type="button" aria-pressed="true" aria-label="Toggle timer">On</button>
+      </div>
+      <div class="control-actions">
+        <button class="action-btn primary" id="new-puzzle" type="button" aria-label="Start a new puzzle">New Puzzle</button>
+        <button class="action-btn" id="new-random" type="button" aria-label="Start a new random puzzle">New Random Puzzle</button>
+        <button class="action-btn" id="reset-puzzle" type="button" aria-label="Reset the current puzzle">Reset Puzzle</button>
+        <button class="action-btn" id="hint" type="button" aria-label="Use a hint">Hint (3)</button>
+        <button class="action-btn" id="clear-save" type="button" aria-label="Clear saved game">Clear Saved Game</button>
+      </div>
+    </section>
+
+    <div class="ad-slot" aria-label="Advertisement">Ad space</div>
+
+    <section class="game-area" aria-live="polite">
+      <div class="board-wrap">
+        <div class="board-header">
+          <h2>Find the words</h2>
+          <p class="board-subtitle">Drag across letters to highlight a word. Straight lines only.</p>
+        </div>
+        <div id="game-board" class="board" role="grid" aria-label="Word search grid"></div>
+        <p id="feedback" class="feedback" role="status" aria-live="polite"></p>
+        <div id="complete-banner" class="complete-banner" hidden>
+          <span>🎉 Puzzle Complete!</span>
+          <button id="complete-new" class="action-btn primary" type="button">Play Again</button>
+        </div>
+      </div>
+
+      <aside class="word-panel" aria-label="Word list">
+        <div class="panel-header">
+          <h2>Word List</h2>
+          <span class="panel-meta">Tap or click-drag to find words.</span>
+        </div>
+        <ul id="word-list" class="word-list"></ul>
+        <div class="progress-card">
+          <p><strong>Hints:</strong> <span id="hint-remaining">3</span> remaining</p>
+          <p><strong>Category:</strong> <span id="category-label">Random</span></p>
+          <p><strong>Difficulty:</strong> <span id="difficulty-label">Medium</span></p>
+        </div>
+      </aside>
+    </section>
+
+    <section class="more-links">
+      <h2>More from Teach Arcade</h2>
+      <div class="link-grid">
+        <a href="/brain-arcade/" class="link-card">Brain Arcade Hub</a>
+        <a href="/submit/" class="link-card">Submit a Resource</a>
+        <a href="/tools/" class="link-card">Teacher Tools</a>
+      </div>
+    </section>
+
+    <div class="ad-slot" aria-label="Advertisement">Ad space</div>
+  </main>
+
+  <footer>
+    © <script>document.write(new Date().getFullYear())</script> Teach Arcade •
+    <a href="/privacy.html">Privacy</a> •
+    <a href="/terms.html">Terms</a>
+  </footer>
+
+  <script src="/brain-arcade/word-search/game.js" defer></script>
+</body>
+</html>
