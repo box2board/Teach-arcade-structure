@@ -116,6 +116,32 @@ a.cta.ghost {
   gap: 20px;
 }
 
+.seo-block {
+  margin-top: 32px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+  line-height: 1.7;
+  color: #0f172a;
+}
+
+.seo-block h2,
+.seo-block h3 {
+  font-family: 'Poppins', sans-serif;
+  color: var(--blue);
+  margin-top: 0;
+}
+
+.seo-block ul {
+  padding-left: 20px;
+}
+
+.seo-block li {
+  margin: 6px 0;
+}
+
 .card {
   background: #fff;
   border: 1px solid #e2e8f0;
