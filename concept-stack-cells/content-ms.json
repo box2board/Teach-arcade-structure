@@ -1,0 +1,286 @@
+{
+  "tier": "MS",
+  "categories": ["Nucleus", "Mitochondria", "Ribosomes", "Cell Membrane", "Vacuole"],
+  "items": [
+    {
+      "id": "ms_01",
+      "prompt": "Controls cell activities",
+      "answer": "Nucleus",
+      "explanation": "The nucleus holds DNA and directs cell functions.",
+      "tag": "Function",
+      "misconception": false
+    },
+    {
+      "id": "ms_02",
+      "prompt": "Powerhouse that makes ATP energy",
+      "answer": "Mitochondria",
+      "explanation": "Mitochondria convert food energy into ATP.",
+      "tag": "Function",
+      "misconception": false
+    },
+    {
+      "id": "ms_03",
+      "prompt": "Tiny factories that build proteins",
+      "answer": "Ribosomes",
+      "explanation": "Ribosomes assemble amino acids into proteins.",
+      "tag": "Function",
+      "misconception": false
+    },
+    {
+      "id": "ms_04",
+      "prompt": "Outer boundary that controls what enters and leaves",
+      "answer": "Cell Membrane",
+      "explanation": "The cell membrane is selectively permeable.",
+      "tag": "Function",
+      "misconception": false
+    },
+    {
+      "id": "ms_05",
+      "prompt": "Storage space for water, food, or waste",
+      "answer": "Vacuole",
+      "explanation": "Vacuoles store materials the cell needs.",
+      "tag": "Function",
+      "misconception": false
+    },
+    {
+      "id": "ms_06",
+      "prompt": "Which organelle contains the cell's instructions?",
+      "answer": "Nucleus",
+      "explanation": "DNA is stored in the nucleus.",
+      "tag": "Scenario",
+      "misconception": false
+    },
+    {
+      "id": "ms_07",
+      "prompt": "Where does cellular respiration happen?",
+      "answer": "Mitochondria",
+      "explanation": "Mitochondria are the site of cellular respiration.",
+      "tag": "Scenario",
+      "misconception": false
+    },
+    {
+      "id": "ms_08",
+      "prompt": "Where are proteins assembled?",
+      "answer": "Ribosomes",
+      "explanation": "Ribosomes link amino acids into proteins.",
+      "tag": "Scenario",
+      "misconception": false
+    },
+    {
+      "id": "ms_09",
+      "prompt": "Which organelle acts like a gatekeeper?",
+      "answer": "Cell Membrane",
+      "explanation": "The membrane regulates what enters and leaves.",
+      "tag": "Scenario",
+      "misconception": false
+    },
+    {
+      "id": "ms_10",
+      "prompt": "Which organelle stores excess water in plant cells?",
+      "answer": "Vacuole",
+      "explanation": "Large vacuoles store water and maintain turgor.",
+      "tag": "Scenario",
+      "misconception": false
+    },
+    {
+      "id": "ms_11",
+      "prompt": "Example: DNA housed inside a protective compartment",
+      "answer": "Nucleus",
+      "explanation": "The nucleus protects DNA inside the cell.",
+      "tag": "Example",
+      "misconception": false
+    },
+    {
+      "id": "ms_12",
+      "prompt": "Example: ATP production during a sprint",
+      "answer": "Mitochondria",
+      "explanation": "Mitochondria supply ATP for energy needs.",
+      "tag": "Example",
+      "misconception": false
+    },
+    {
+      "id": "ms_13",
+      "prompt": "Example: Protein made for muscle repair",
+      "answer": "Ribosomes",
+      "explanation": "Ribosomes build proteins from amino acids.",
+      "tag": "Example",
+      "misconception": false
+    },
+    {
+      "id": "ms_14",
+      "prompt": "Example: Cell lets oxygen in but blocks toxins",
+      "answer": "Cell Membrane",
+      "explanation": "Selective permeability is a membrane function.",
+      "tag": "Example",
+      "misconception": false
+    },
+    {
+      "id": "ms_15",
+      "prompt": "Example: Water storage for a desert plant cell",
+      "answer": "Vacuole",
+      "explanation": "Vacuoles store water to help plants survive.",
+      "tag": "Example",
+      "misconception": false
+    },
+    {
+      "id": "ms_16",
+      "prompt": "Controls when the cell divides",
+      "answer": "Nucleus",
+      "explanation": "The nucleus directs cell growth and division.",
+      "tag": "Function",
+      "misconception": false
+    },
+    {
+      "id": "ms_17",
+      "prompt": "Provides energy for active transport",
+      "answer": "Mitochondria",
+      "explanation": "ATP from mitochondria powers active transport.",
+      "tag": "Function",
+      "misconception": false
+    },
+    {
+      "id": "ms_18",
+      "prompt": "Where is protein made for enzymes?",
+      "answer": "Ribosomes",
+      "explanation": "Ribosomes synthesize enzyme proteins.",
+      "tag": "Scenario",
+      "misconception": false
+    },
+    {
+      "id": "ms_19",
+      "prompt": "Separates cell contents from the environment",
+      "answer": "Cell Membrane",
+      "explanation": "The membrane is the boundary of the cell.",
+      "tag": "Function",
+      "misconception": false
+    },
+    {
+      "id": "ms_20",
+      "prompt": "Stores waste until it can be removed",
+      "answer": "Vacuole",
+      "explanation": "Vacuoles store waste and extra materials.",
+      "tag": "Function",
+      "misconception": false
+    },
+    {
+      "id": "ms_21",
+      "prompt": "Which organelle keeps the cell's instructions safe?",
+      "answer": "Nucleus",
+      "explanation": "The nucleus is the control center with DNA.",
+      "tag": "Scenario",
+      "misconception": false
+    },
+    {
+      "id": "ms_22",
+      "prompt": "Which organelle makes energy for the cell?",
+      "answer": "Mitochondria",
+      "explanation": "Mitochondria produce ATP for energy.",
+      "tag": "Scenario",
+      "misconception": false
+    },
+    {
+      "id": "ms_23",
+      "prompt": "Where are new proteins put together?",
+      "answer": "Ribosomes",
+      "explanation": "Ribosomes assemble proteins.",
+      "tag": "Scenario",
+      "misconception": false
+    },
+    {
+      "id": "ms_24",
+      "prompt": "Which part controls entry and exit of materials?",
+      "answer": "Cell Membrane",
+      "explanation": "The membrane regulates transport.",
+      "tag": "Scenario",
+      "misconception": false
+    },
+    {
+      "id": "ms_25",
+      "prompt": "Which organelle stores nutrients for later use?",
+      "answer": "Vacuole",
+      "explanation": "Vacuoles store nutrients and water.",
+      "tag": "Scenario",
+      "misconception": false
+    },
+    {
+      "id": "ms_26",
+      "prompt": "The nucleus is the cell's control center",
+      "answer": "Nucleus",
+      "explanation": "It controls cell activities by managing DNA.",
+      "tag": "Function",
+      "misconception": false
+    },
+    {
+      "id": "ms_27",
+      "prompt": "Mitochondria release energy from food",
+      "answer": "Mitochondria",
+      "explanation": "They break down nutrients to make ATP.",
+      "tag": "Function",
+      "misconception": false
+    },
+    {
+      "id": "ms_28",
+      "prompt": "Ribosomes can be free in the cytoplasm",
+      "answer": "Ribosomes",
+      "explanation": "Ribosomes float freely or attach to membranes.",
+      "tag": "Example",
+      "misconception": false
+    },
+    {
+      "id": "ms_29",
+      "prompt": "Cell membrane has channels for movement",
+      "answer": "Cell Membrane",
+      "explanation": "Channel proteins help move materials in and out.",
+      "tag": "Example",
+      "misconception": false
+    },
+    {
+      "id": "ms_30",
+      "prompt": "Plant cells often have one large vacuole",
+      "answer": "Vacuole",
+      "explanation": "The central vacuole stores water and ions.",
+      "tag": "Example",
+      "misconception": false
+    },
+    {
+      "id": "ms_31",
+      "prompt": "Which organelle houses chromosomes?",
+      "answer": "Nucleus",
+      "explanation": "Chromosomes are stored inside the nucleus.",
+      "tag": "Scenario",
+      "misconception": false
+    },
+    {
+      "id": "ms_32",
+      "prompt": "Which organelle is a site of respiration?",
+      "answer": "Mitochondria",
+      "explanation": "Cellular respiration occurs in mitochondria.",
+      "tag": "Scenario",
+      "misconception": false
+    },
+    {
+      "id": "ms_33",
+      "prompt": "Which organelle helps make hemoglobin protein?",
+      "answer": "Ribosomes",
+      "explanation": "Ribosomes assemble protein components.",
+      "tag": "Scenario",
+      "misconception": false
+    },
+    {
+      "id": "ms_34",
+      "prompt": "The cell membrane is a rigid wall",
+      "answer": "Cell Membrane",
+      "explanation": "Misconception: the membrane is flexible, not a rigid wall.",
+      "tag": "Misconception",
+      "misconception": true
+    },
+    {
+      "id": "ms_35",
+      "prompt": "Vacuoles only store waste",
+      "answer": "Vacuole",
+      "explanation": "Misconception: vacuoles also store water and nutrients.",
+      "tag": "Misconception",
+      "misconception": true
+    }
+  ]
+}
