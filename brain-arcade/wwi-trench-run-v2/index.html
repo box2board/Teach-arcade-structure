@@ -1,0 +1,352 @@
+<!-- /brain-arcade/wwi-trench-run-v2/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WWI Trench Run v2 | World War I Review Game (Teacher Settings + Modes) | Teach Arcade</title>
+  <meta name="description" content="WWI Trench Run v2 is an upgraded classroom game with teacher settings, relay mode, branching trench decisions, learning reports, and fast-paced WWI review for students." />
+  <link rel="canonical" href="https://teacharcade.com/brain-arcade/wwi-trench-run-v2/" />
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="robots" content="index,follow" />
+  <meta property="og:title" content="WWI Trench Run v2 | World War I Review Game (Teacher Settings + Modes) | Teach Arcade" />
+  <meta property="og:description" content="Upgraded WWI Trench Run v2 with teacher settings, relay mode, branching trenches, and learning reports for classroom review." />
+  <meta property="og:url" content="https://teacharcade.com/brain-arcade/wwi-trench-run-v2/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/assets/images/teach-arcade-logo.png" />
+  <link rel="icon" href="/assets/images/teach-arcade-logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="/assets/nav.js"></script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoGame",
+      "name": "WWI Trench Run v2",
+      "description": "An upgraded World War I review runner with teacher settings, relay mode, branching trench decisions, and learning analytics.",
+      "applicationCategory": "EducationalGame",
+      "operatingSystem": "Web",
+      "url": "https://teacharcade.com/brain-arcade/wwi-trench-run-v2/",
+      "author": {
+        "@type": "Organization",
+        "name": "Teach Arcade"
+      },
+      "educationalUse": "World War I review, classroom assessment, historical thinking"
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://teacharcade.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Brain Arcade",
+          "item": "https://teacharcade.com/brain-arcade/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "WWI Trench Run v2",
+          "item": "https://teacharcade.com/brain-arcade/wwi-trench-run-v2/"
+        }
+      ]
+    }
+  </script>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main class="page">
+    <section class="hero">
+      <div class="hero-text">
+        <p class="eyebrow">Teach Arcade • Brain Arcade</p>
+        <h1>WWI Trench Run v2</h1>
+        <p class="lead">
+          Sprint through trenches, make tactical decisions at forks, and answer World War I questions that power your
+          run. Version 2 is designed for classrooms: teacher controls, relay mode, mistake memory, and actionable
+          learning analytics.
+        </p>
+        <div class="hero-buttons">
+          <button id="start-btn" class="primary">Start Run</button>
+          <button id="how-to-btn" class="secondary">Jump to How to Play</button>
+        </div>
+      </div>
+      <div class="panel settings-panel" aria-label="Teacher settings">
+        <h2>Teacher Settings</h2>
+        <form id="settings-form">
+          <div class="field-group">
+            <label for="mode">Mode</label>
+            <select id="mode" name="mode">
+              <option value="solo" selected>Solo</option>
+              <option value="relay">Relay Mode</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label for="focus">Focus</label>
+            <select id="focus" name="focus">
+              <option value="MIXED" selected>Mixed Review</option>
+              <option value="MAIN">M.A.I.N. Causes</option>
+              <option value="TRENCH">Trench Warfare</option>
+              <option value="US_ENTRY">U.S. Entry</option>
+              <option value="TREATY">Treaty of Versailles &amp; Aftermath</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label for="difficulty">Difficulty</label>
+            <select id="difficulty" name="difficulty">
+              <option value="easy">Easy (hints on)</option>
+              <option value="standard" selected>Standard</option>
+              <option value="challenge">Challenge (no hints)</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label for="question-count">Question Count</label>
+            <select id="question-count" name="questionCount">
+              <option value="10">10</option>
+              <option value="20" selected>20</option>
+              <option value="endless">Endless</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label for="speed">Speed</label>
+            <select id="speed" name="speed">
+              <option value="slow">Slow</option>
+              <option value="normal" selected>Normal</option>
+              <option value="fast">Fast</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label for="sound">Sound</label>
+            <select id="sound" name="sound">
+              <option value="on" selected>On</option>
+              <option value="off">Off</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label for="reduced-motion">Reduced Motion</label>
+            <select id="reduced-motion" name="reducedMotion">
+              <option value="off" selected>Off</option>
+              <option value="on">On</option>
+            </select>
+          </div>
+          <div id="relay-settings" class="relay-settings" aria-live="polite">
+            <h3>Relay Settings</h3>
+            <div class="field-group">
+              <label for="rotation">Rotation Timer</label>
+              <select id="rotation" name="rotation">
+                <option value="30">30 seconds</option>
+                <option value="60" selected>60 seconds</option>
+                <option value="90">90 seconds</option>
+              </select>
+            </div>
+            <div class="field-group">
+              <label for="teams">Teams (2–6)</label>
+              <input id="teams" name="teams" type="number" min="2" max="6" value="2" />
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="game-shell" aria-label="Game area">
+      <div class="hud">
+        <div class="hud-item">Distance <span id="distance">0</span>m</div>
+        <div class="hud-item">Score <span id="score">0</span></div>
+        <div class="hud-item">Stamina <span id="stamina">3</span></div>
+        <div class="hud-item">Accuracy <span id="accuracy">100%</span></div>
+        <div class="hud-item">Streak <span id="streak">0</span></div>
+        <button id="pause-btn" class="ghost">Pause</button>
+      </div>
+      <div class="canvas-wrap">
+        <canvas id="game-canvas" width="960" height="420" aria-label="WWI trench runner"></canvas>
+        <div id="toast" class="toast" role="status" aria-live="polite"></div>
+      </div>
+      <div class="controls">
+        <button class="control-btn" id="left-btn" aria-label="Move left">◀</button>
+        <button class="control-btn" id="jump-btn" aria-label="Jump">⤒</button>
+        <button class="control-btn" id="right-btn" aria-label="Move right">▶</button>
+        <button class="control-btn" id="action-btn" aria-label="Action">◎</button>
+      </div>
+    </section>
+
+    <section id="question-modal" class="overlay" aria-hidden="true" role="dialog" aria-modal="true">
+      <div class="panel overlay-panel">
+        <h2 id="question-title">Trench Checkpoint</h2>
+        <p id="question-text">Question text</p>
+        <p id="question-hint" class="hint"></p>
+        <div id="choices" class="choices"></div>
+      </div>
+    </section>
+
+    <section id="fork-modal" class="overlay" aria-hidden="true" role="dialog" aria-modal="true">
+      <div class="panel overlay-panel">
+        <h2>Fork in the Trench</h2>
+        <p class="muted">Choose a path. Your decision changes the next segment.</p>
+        <div class="fork-options">
+          <button id="fork-left" class="fork-card"></button>
+          <button id="fork-right" class="fork-card"></button>
+        </div>
+      </div>
+    </section>
+
+    <section id="pause-modal" class="overlay" aria-hidden="true" role="dialog" aria-modal="true">
+      <div class="panel overlay-panel">
+        <h2>Paused</h2>
+        <p class="muted">Press P or tap resume to keep running.</p>
+        <button id="resume-btn" class="primary">Resume</button>
+      </div>
+    </section>
+
+    <section id="relay-modal" class="overlay" aria-hidden="true" role="dialog" aria-modal="true">
+      <div class="panel overlay-panel">
+        <h2>Pass the Controls</h2>
+        <p id="relay-message" class="muted">Next team, get ready!</p>
+        <button id="relay-continue" class="primary">Continue Run</button>
+      </div>
+    </section>
+
+    <section id="results" class="results" aria-live="polite">
+      <div class="panel results-panel">
+        <h2>Run Report</h2>
+        <div class="results-grid">
+          <div>
+            <h3>Overall</h3>
+            <p>Score: <strong id="final-score">0</strong></p>
+            <p>Distance: <strong id="final-distance">0</strong>m</p>
+            <p>Accuracy: <strong id="final-accuracy">0%</strong></p>
+          </div>
+          <div>
+            <h3>By Topic</h3>
+            <ul id="topic-breakdown"></ul>
+          </div>
+          <div>
+            <h3>Missed Concepts</h3>
+            <ul id="missed-list"></ul>
+          </div>
+          <div>
+            <h3>Recent Forks</h3>
+            <ul id="fork-log"></ul>
+          </div>
+        </div>
+        <div class="results-actions">
+          <button id="rematch-btn" class="primary">Rematch: Missed Only</button>
+          <button id="restart-btn" class="secondary">New Run</button>
+        </div>
+        <p id="rematch-message" class="muted"></p>
+      </div>
+    </section>
+
+    <section class="content" id="how-to">
+      <h2>How to Play</h2>
+      <p>
+        WWI Trench Run v2 is a lane-based runner where your class reviews history while sprinting through a moving
+        trench line. The runner constantly advances, so students focus on reading fast and making confident decisions.
+        Move left or right to avoid obstacles like craters, low barriers, and barbed wire. Each obstacle has a distinct
+        silhouette and telegraph so students can react quickly without memorizing patterns.
+      </p>
+      <p>
+        Every checkpoint pauses the action for a question. Correct answers grant a short-term advantage such as a score
+        boost or slower obstacle spawns. Incorrect answers create consequences, including fog, increased obstacles, and
+        stamina loss. This keeps the pace high and reinforces careful reading. Stamina acts as lives; losing all stamina
+        ends the run.
+      </p>
+      <p>
+        Forks appear every few segments. Students must choose between two trench paths, each with a different tactical
+        tradeoff. One path rewards bravery with a higher score multiplier but spawns more obstacles. The other offers a
+        safer run with lower scoring. After choosing, the game immediately asks a question tied to the decision, helping
+        students connect strategy with content.
+      </p>
+      <p>
+        Controls are built for every classroom device. Use the arrow keys or A/D to change lanes, press Space to jump,
+        and tap on-screen buttons for touch devices. Press P to pause, and students can also use Enter to confirm fork
+        selections when a keyboard is available. The on-screen buttons are oversized for Chromebook touchpads and
+        tablets.
+      </p>
+
+      <h2>Teacher Guide</h2>
+      <p>
+        Start with the Teacher Settings panel to tailor the review. Mixed Review pulls questions from all topics, while
+        the focus categories target specific units such as the M.A.I.N. causes or the Treaty of Versailles. Use Easy mode
+        for introductions, Standard for daily practice, and Challenge for test prep with no hints and faster obstacles.
+      </p>
+      <p>
+        Relay Mode is built for team competitions. Set the rotation timer and the number of teams, then run the game
+        through multiple students. When the timer expires, the game pauses and displays a pass prompt so the next player
+        can take over. This keeps the pace lively and ensures every student gets a chance to participate without a noisy
+        scramble.
+      </p>
+      <p>
+        Question Count is ideal for lesson planning. Ten questions works for a short bell ringer, twenty questions fits
+        a full warm-up, and Endless mode provides ongoing stations practice. Reduced Motion should be enabled for
+        students who prefer fewer animations. Sound can be toggled for quiet classrooms, and speed settings help you
+        match the energy level of your group.
+      </p>
+      <p>
+        After each run, the report summarizes accuracy by topic and highlights missed concepts. Use this to pick
+        reteaching targets or to assign small-group review. The rematch button immediately launches a missed-only run so
+        students can repair misunderstandings without repeating what they already know.
+      </p>
+
+      <h2>Learning Targets</h2>
+      <p>
+        WWI Trench Run v2 targets core historical thinking skills. Students identify the causes of World War I, analyze
+        trench warfare conditions, evaluate why the United States entered the conflict, and assess the consequences of
+        the Treaty of Versailles. Each question includes a short explanation to support retrieval practice and immediate
+        feedback.
+      </p>
+
+      <h2>Topics Covered</h2>
+      <ul>
+        <li>Militarism, alliances, imperialism, and nationalism (M.A.I.N.)</li>
+        <li>Life in trenches, technology, and stalemate on the Western Front</li>
+        <li>U.S. neutrality, submarine warfare, and the Zimmermann Telegram</li>
+        <li>Key battles, total war, and mobilization on the home front</li>
+        <li>Terms of the Treaty of Versailles and postwar repercussions</li>
+      </ul>
+
+      <h2>FAQ</h2>
+      <h3>How long does a typical run last?</h3>
+      <p>
+        A ten-question run usually takes 6–8 minutes depending on speed and the number of forks. Twenty questions is
+        closer to 12–15 minutes, and Endless mode continues until stamina runs out.
+      </p>
+      <h3>Can students play on their own devices?</h3>
+      <p>
+        Yes. The game is optimized for Chromebooks, tablets, and phones with large buttons and keyboard support. It runs
+        entirely in the browser with no downloads.
+      </p>
+      <h3>What happens when students miss a question?</h3>
+      <p>
+        The game applies a temporary penalty like fog or higher obstacle density and removes one stamina point. The
+        question is saved to the mistake list so students can rematch with only missed items.
+      </p>
+      <h3>Is there a way to track progress without accounts?</h3>
+      <p>
+        The end-of-run report provides immediate analytics. Teachers can screenshot or have students copy their score
+        and accuracy into exit tickets or LMS discussions.
+      </p>
+      <h3>How is branching used for instruction?</h3>
+      <p>
+        Forks are short decision moments. Students choose a safer or riskier path and immediately connect that decision
+        to a question about leadership, strategy, or wartime consequences. It reinforces cause-and-effect thinking.
+      </p>
+      <h3>Does the game include accommodations?</h3>
+      <p>
+        Reduced Motion removes shake effects and softens visual intensity. Hints can be toggled via Easy difficulty, and
+        sound can be turned off for quiet environments.
+      </p>
+    </section>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>
