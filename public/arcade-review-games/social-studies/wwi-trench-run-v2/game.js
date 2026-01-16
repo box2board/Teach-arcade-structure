@@ -55,10 +55,32 @@
   const LANE_WIDTH = GAME_WIDTH / LANE_COUNT;
 
   const obstacleTypes = [
-    { type: 'barrier', width: 80, height: 40, color: '#fbbf24' },
-    { type: 'crater', width: 90, height: 28, color: '#64748b' },
-    { type: 'wire', width: 100, height: 32, color: '#38bdf8' }
+    { type: 'barrier', width: 84, height: 48, color: '#fbbf24' },
+    { type: 'crater', width: 100, height: 30, color: '#475569' },
+    { type: 'wire', width: 110, height: 28, color: '#38bdf8' }
   ];
+
+  const backgroundSources = [
+    '/assets/backgrounds/trenchA.png',
+    '/assets/backgrounds/trenchB.png',
+    '/assets/backgrounds/trenchC.png',
+    '/assets/backgrounds/trenchD.png',
+    '/assets/backgrounds/trenchE.png'
+  ];
+  const backgroundImages = backgroundSources.map((src) => {
+    const image = new Image();
+    image.src = src;
+    return { image, loaded: false };
+  });
+  backgroundImages.forEach((entry) => {
+    entry.image.addEventListener('load', () => {
+      entry.loaded = true;
+    });
+  });
+  const backgroundState = {
+    offset: 0,
+    index: 0
+  };
 
   const forkOptions = [
     {
@@ -122,7 +144,12 @@
     rotationRemaining: 60,
     teams: 2,
     activeTeam: 1,
-    fogUntil: 0
+    fogUntil: 0,
+    jumping: false,
+    jumpStart: 0,
+    jumpOffset: 0,
+    jumpDuration: 620,
+    jumpCooldownUntil: 0
   };
 
   let obstacles = [];
@@ -176,6 +203,11 @@
     gameState.nextForkAt = 1200;
     gameState.rotationRemaining = gameState.rotationTimer;
     gameState.activeTeam = 1;
+    gameState.jumping = false;
+    gameState.jumpOffset = 0;
+    gameState.jumpCooldownUntil = 0;
+    backgroundState.offset = 0;
+    backgroundState.index = 0;
   };
 
   const chooseQuestionPool = (useMissedOnly = false) => {
@@ -280,38 +312,117 @@
   };
 
   const drawBackground = () => {
-    ctx.fillStyle = '#0b1120';
+    const skyGradient = ctx.createLinearGradient(0, 0, 0, GAME_HEIGHT);
+    skyGradient.addColorStop(0, '#0b1120');
+    skyGradient.addColorStop(0.6, '#111827');
+    skyGradient.addColorStop(1, '#020617');
+    ctx.fillStyle = skyGradient;
     ctx.fillRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
-    ctx.fillStyle = 'rgba(148, 163, 184, 0.2)';
+
+    const current = backgroundImages[backgroundState.index];
+    const next = backgroundImages[(backgroundState.index + 1) % backgroundImages.length];
+    if (current.loaded && next.loaded) {
+      ctx.save();
+      ctx.globalAlpha = 0.45;
+      ctx.drawImage(current.image, 0, -backgroundState.offset, GAME_WIDTH, GAME_HEIGHT);
+      ctx.drawImage(next.image, 0, GAME_HEIGHT - backgroundState.offset, GAME_WIDTH, GAME_HEIGHT);
+      ctx.restore();
+    }
+
+    const trenchGradient = ctx.createLinearGradient(0, GAME_HEIGHT * 0.35, 0, GAME_HEIGHT);
+    trenchGradient.addColorStop(0, 'rgba(30, 41, 59, 0.35)');
+    trenchGradient.addColorStop(1, 'rgba(15, 23, 42, 0.85)');
+    ctx.fillStyle = trenchGradient;
+    ctx.fillRect(0, GAME_HEIGHT * 0.35, GAME_WIDTH, GAME_HEIGHT * 0.65);
+
+    ctx.fillStyle = 'rgba(148, 163, 184, 0.22)';
     for (let i = 1; i < LANE_COUNT; i += 1) {
       ctx.fillRect(i * LANE_WIDTH - 2, 0, 4, GAME_HEIGHT);
     }
+
+    ctx.fillStyle = 'rgba(148, 163, 184, 0.08)';
+    for (let i = 0; i < LANE_COUNT; i += 1) {
+      ctx.fillRect(i * LANE_WIDTH + 10, 40, LANE_WIDTH - 20, GAME_HEIGHT - 60);
+    }
+
     if (gameState.awaitingQuestion || gameState.awaitingFork) {
       ctx.fillStyle = 'rgba(15, 23, 42, 0.7)';
       ctx.fillRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
     }
     if (gameState.fogUntil > Date.now()) {
-      ctx.fillStyle = 'rgba(148, 163, 184, 0.25)';
+      ctx.fillStyle = 'rgba(148, 163, 184, 0.28)';
       ctx.fillRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
     }
   };
 
   const drawPlayer = () => {
     const laneX = gameState.lane * LANE_WIDTH + LANE_WIDTH / 2;
-    ctx.fillStyle = '#f8fafc';
+    const baseY = GAME_HEIGHT - 70 - gameState.jumpOffset;
+    ctx.fillStyle = 'rgba(15, 23, 42, 0.5)';
     ctx.beginPath();
-    ctx.arc(laneX, GAME_HEIGHT - 60, 20, 0, Math.PI * 2);
+    ctx.ellipse(laneX, GAME_HEIGHT - 35, 22, 10, 0, 0, Math.PI * 2);
     ctx.fill();
+
+    ctx.fillStyle = '#e2e8f0';
+    ctx.beginPath();
+    ctx.arc(laneX, baseY - 10, 16, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.fillStyle = '#1e293b';
+    ctx.fillRect(laneX - 18, baseY - 6, 36, 28);
+
     ctx.fillStyle = '#f29c38';
-    ctx.fillRect(laneX - 12, GAME_HEIGHT - 40, 24, 20);
+    ctx.fillRect(laneX - 14, baseY + 6, 28, 20);
+
+    ctx.fillStyle = '#f8fafc';
+    ctx.fillRect(laneX - 20, baseY - 32, 40, 14);
+    ctx.fillStyle = '#0f172a';
+    ctx.fillRect(laneX - 10, baseY - 18, 20, 8);
   };
 
   const drawObstacles = () => {
     obstacles.forEach((obstacle) => {
-      ctx.fillStyle = obstacle.color;
-      ctx.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
-      ctx.fillStyle = 'rgba(255,255,255,0.2)';
-      ctx.fillRect(obstacle.x, obstacle.y, obstacle.width, 6);
+      if (obstacle.type === 'crater') {
+        ctx.fillStyle = '#0f172a';
+        ctx.beginPath();
+        ctx.ellipse(
+          obstacle.x + obstacle.width / 2,
+          obstacle.y + obstacle.height / 2,
+          obstacle.width / 2,
+          obstacle.height / 2,
+          0,
+          0,
+          Math.PI * 2
+        );
+        ctx.fill();
+        ctx.strokeStyle = obstacle.color;
+        ctx.lineWidth = 3;
+        ctx.stroke();
+      } else if (obstacle.type === 'wire') {
+        ctx.strokeStyle = obstacle.color;
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        for (let i = 0; i <= 6; i += 1) {
+          const x = obstacle.x + (obstacle.width / 6) * i;
+          const y = obstacle.y + (i % 2 === 0 ? 4 : obstacle.height - 4);
+          if (i === 0) {
+            ctx.moveTo(x, y);
+          } else {
+            ctx.lineTo(x, y);
+          }
+        }
+        ctx.stroke();
+        ctx.strokeStyle = 'rgba(15, 23, 42, 0.6)';
+        ctx.lineWidth = 1;
+        ctx.strokeRect(obstacle.x, obstacle.y + 4, obstacle.width, obstacle.height - 8);
+      } else {
+        ctx.fillStyle = obstacle.color;
+        ctx.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
+        ctx.fillStyle = 'rgba(15, 23, 42, 0.35)';
+        ctx.fillRect(obstacle.x + 8, obstacle.y + 6, obstacle.width - 16, 10);
+        ctx.fillStyle = 'rgba(255,255,255,0.2)';
+        ctx.fillRect(obstacle.x, obstacle.y, obstacle.width, 6);
+      }
     });
   };
 
@@ -336,7 +447,7 @@
 
   const checkCollision = () => {
     const playerX = gameState.lane * LANE_WIDTH + LANE_WIDTH / 2;
-    const playerY = GAME_HEIGHT - 60;
+    const playerY = GAME_HEIGHT - 70 - gameState.jumpOffset;
     const playerRadius = 18;
 
     return obstacles.some((obstacle) => {
@@ -346,6 +457,29 @@
       const dy = playerY - nearestY;
       return dx * dx + dy * dy < playerRadius * playerRadius;
     });
+  };
+
+  const updateJump = (timestamp) => {
+    if (!gameState.jumping) {
+      gameState.jumpOffset = 0;
+      return;
+    }
+    const elapsed = timestamp - gameState.jumpStart;
+    const progress = Math.min(elapsed / gameState.jumpDuration, 1);
+    gameState.jumpOffset = Math.sin(progress * Math.PI) * 60;
+    if (progress >= 1) {
+      gameState.jumping = false;
+      gameState.jumpOffset = 0;
+    }
+  };
+
+  const updateBackground = (delta) => {
+    if (gameState.reducedMotion) return;
+    backgroundState.offset += gameState.speed * 28 * delta;
+    if (backgroundState.offset >= GAME_HEIGHT) {
+      backgroundState.offset -= GAME_HEIGHT;
+      backgroundState.index = (backgroundState.index + 1) % backgroundImages.length;
+    }
   };
 
   const applyAnswerEffect = (correct) => {
@@ -571,12 +705,14 @@
       spawnObstacle();
     }
 
+    updateBackground(delta);
     updateObstacles(delta);
     handleCollision();
+    updateJump(timestamp);
 
     if (gameState.distance >= gameState.nextQuestionAt) {
       gameState.nextQuestionAt += 700;
-    const nextQuestion = getNextQuestionByTopic(choice.topic);
+      const nextQuestion = getNextQuestion();
       if (nextQuestion) {
         showQuestion(nextQuestion);
       }
@@ -609,11 +745,17 @@
 
   const handleKey = (event) => {
     if (!gameState.running) return;
+    if (['ArrowLeft', 'ArrowRight', 'ArrowUp', ' '].includes(event.key)) {
+      event.preventDefault();
+    }
     if (event.key === 'ArrowLeft' || event.key.toLowerCase() === 'a') {
       gameState.lane = Math.max(0, gameState.lane - 1);
     }
     if (event.key === 'ArrowRight' || event.key.toLowerCase() === 'd') {
       gameState.lane = Math.min(LANE_COUNT - 1, gameState.lane + 1);
+    }
+    if (event.key === 'ArrowUp' || event.key.toLowerCase() === 'w' || event.key === ' ') {
+      handleJump();
     }
     if (event.key === 'Enter' && gameState.awaitingFork) {
       applyForkChoice(0);
@@ -628,20 +770,60 @@
   };
 
   const handleJump = () => {
+    if (!gameState.running || gameState.paused || gameState.awaitingQuestion || gameState.awaitingFork) return;
+    if (Date.now() < gameState.jumpCooldownUntil || gameState.jumping) return;
+    gameState.jumping = true;
+    gameState.jumpStart = performance.now();
+    gameState.jumpCooldownUntil = Date.now() + 500;
     showToast('Jump!', 'info');
   };
 
   const bindControls = () => {
-    leftBtn.addEventListener('click', () => {
+    let lastControlAt = 0;
+    const handleControl = (handler) => {
+      const now = Date.now();
+      if (now - lastControlAt < 120) return;
+      lastControlAt = now;
+      handler();
+    };
+
+    const bindPress = (element, handler) => {
+      element.addEventListener('pointerdown', (event) => {
+        event.preventDefault();
+        handleControl(handler);
+      });
+      element.addEventListener('click', (event) => {
+        event.preventDefault();
+        handleControl(handler);
+      });
+    };
+
+    bindPress(leftBtn, () => {
       gameState.lane = Math.max(0, gameState.lane - 1);
     });
-    rightBtn.addEventListener('click', () => {
+    bindPress(rightBtn, () => {
       gameState.lane = Math.min(LANE_COUNT - 1, gameState.lane + 1);
     });
-    jumpBtn.addEventListener('click', handleJump);
-    actionBtn.addEventListener('click', () => {
+    bindPress(jumpBtn, handleJump);
+    bindPress(actionBtn, () => {
       if (gameState.awaitingFork && forkModal.classList.contains('active')) {
-        applyForkChoice(0);
+        applyForkChoice(1);
+        return;
+      }
+      handleJump();
+    });
+
+    canvas.addEventListener('pointerdown', (event) => {
+      if (!gameState.running || gameState.paused || gameState.awaitingQuestion || gameState.awaitingFork) return;
+      const rect = canvas.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const third = rect.width / 3;
+      if (x < third) {
+        gameState.lane = Math.max(0, gameState.lane - 1);
+      } else if (x > third * 2) {
+        gameState.lane = Math.min(LANE_COUNT - 1, gameState.lane + 1);
+      } else {
+        handleJump();
       }
     });
   };

@@ -178,13 +178,15 @@ input {
   border-radius: 18px;
   overflow: hidden;
   border: 1px solid var(--border);
-  background: rgba(2, 6, 23, 0.8);
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.9), rgba(2, 6, 23, 0.95));
+  box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.08), 0 20px 40px rgba(15, 23, 42, 0.5);
 }
 
 #game-canvas {
   display: block;
   width: 100%;
   height: auto;
+  touch-action: none;
 }
 
 #game-canvas.shake {
