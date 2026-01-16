@@ -95,6 +95,21 @@
     "source": "sitemap"
   },
   {
+    "title": "Math Track Racer",
+    "url": "/arcade-review-games/math/math-track-racer",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:arcade-review-games",
+      "topic:math-track-racer"
+    ],
+    "source": "sitemap"
+  },
+  {
     "title": "Slope Street Sprint",
     "url": "/arcade-review-games/math/slope-street-sprint",
     "type": "game",
@@ -230,6 +245,33 @@
     "source": "sitemap"
   },
   {
+    "title": "Brain Arcade",
+    "url": "/brain-arcade/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Block Logic",
+    "url": "/brain-arcade/block-logic/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Solitaire",
+    "url": "/brain-arcade/solitaire",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
     "title": "Choose Your Path Adventure",
     "url": "/choose-your-path-adventure/",
     "type": "game",
@@ -302,6 +344,24 @@
       "category:escape",
       "topic:escape"
     ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Playbook",
+    "url": "/playbook/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Why Gamification Works",
+    "url": "/playbook/why-gamification-works/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
     "source": "sitemap"
   },
   {
@@ -1369,6 +1429,15 @@
   {
     "title": "Submit",
     "url": "/submit",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Submit",
+    "url": "/submit/",
     "type": "page",
     "description": "",
     "subject": "",
