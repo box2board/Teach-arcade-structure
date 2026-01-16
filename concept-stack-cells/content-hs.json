@@ -1,0 +1,334 @@
+{
+  "tier": "HS",
+  "categories": [
+    "Nucleus",
+    "Mitochondria",
+    "Ribosomes",
+    "Cell Membrane",
+    "Vacuole",
+    "Endoplasmic Reticulum",
+    "Golgi Apparatus"
+  ],
+  "items": [
+    {
+      "id": "hs_01",
+      "prompt": "Stores DNA and regulates gene expression",
+      "answer": "Nucleus",
+      "explanation": "The nucleus houses DNA and controls transcription.",
+      "tag": "Function",
+      "misconception": false
+    },
+    {
+      "id": "hs_02",
+      "prompt": "Site of cellular respiration and ATP production",
+      "answer": "Mitochondria",
+      "explanation": "Mitochondria generate ATP during respiration.",
+      "tag": "Function",
+      "misconception": false
+    },
+    {
+      "id": "hs_03",
+      "prompt": "Assembles amino acids into polypeptides",
+      "answer": "Ribosomes",
+      "explanation": "Ribosomes translate mRNA into protein.",
+      "tag": "Function",
+      "misconception": false
+    },
+    {
+      "id": "hs_04",
+      "prompt": "Selective barrier with embedded transport proteins",
+      "answer": "Cell Membrane",
+      "explanation": "The membrane controls movement of substances.",
+      "tag": "Function",
+      "misconception": false
+    },
+    {
+      "id": "hs_05",
+      "prompt": "Stores water, ions, and pigments",
+      "answer": "Vacuole",
+      "explanation": "Vacuoles provide storage and pressure support.",
+      "tag": "Function",
+      "misconception": false
+    },
+    {
+      "id": "hs_06",
+      "prompt": "Rough ER modifies proteins with ribosomes attached",
+      "answer": "Endoplasmic Reticulum",
+      "explanation": "Rough ER is studded with ribosomes for protein processing.",
+      "tag": "Function",
+      "misconception": false
+    },
+    {
+      "id": "hs_07",
+      "prompt": "Packages proteins into vesicles for export",
+      "answer": "Golgi Apparatus",
+      "explanation": "The Golgi sorts and ships cell products.",
+      "tag": "Function",
+      "misconception": false
+    },
+    {
+      "id": "hs_08",
+      "prompt": "Which organelle transcribes mRNA from DNA?",
+      "answer": "Nucleus",
+      "explanation": "Transcription occurs in the nucleus.",
+      "tag": "Scenario",
+      "misconception": false
+    },
+    {
+      "id": "hs_09",
+      "prompt": "Which organelle powers active transport with ATP?",
+      "answer": "Mitochondria",
+      "explanation": "ATP for active transport comes from mitochondria.",
+      "tag": "Scenario",
+      "misconception": false
+    },
+    {
+      "id": "hs_10",
+      "prompt": "Where does translation of proteins occur?",
+      "answer": "Ribosomes",
+      "explanation": "Translation happens on ribosomes.",
+      "tag": "Scenario",
+      "misconception": false
+    },
+    {
+      "id": "hs_11",
+      "prompt": "Which structure maintains homeostasis via transport?",
+      "answer": "Cell Membrane",
+      "explanation": "Membrane proteins regulate cell transport.",
+      "tag": "Scenario",
+      "misconception": false
+    },
+    {
+      "id": "hs_12",
+      "prompt": "Which organelle stores water to maintain turgor?",
+      "answer": "Vacuole",
+      "explanation": "The central vacuole maintains water balance.",
+      "tag": "Scenario",
+      "misconception": false
+    },
+    {
+      "id": "hs_13",
+      "prompt": "Which organelle synthesizes membrane lipids?",
+      "answer": "Endoplasmic Reticulum",
+      "explanation": "Smooth ER produces lipids and detoxifies.",
+      "tag": "Scenario",
+      "misconception": false
+    },
+    {
+      "id": "hs_14",
+      "prompt": "Which organelle modifies and ships enzymes?",
+      "answer": "Golgi Apparatus",
+      "explanation": "Golgi tags and packages proteins into vesicles.",
+      "tag": "Scenario",
+      "misconception": false
+    },
+    {
+      "id": "hs_15",
+      "prompt": "Example: ATP boosts muscle contraction",
+      "answer": "Mitochondria",
+      "explanation": "Mitochondria supply ATP for muscle work.",
+      "tag": "Example",
+      "misconception": false
+    },
+    {
+      "id": "hs_16",
+      "prompt": "Example: Proteins folded after leaving ribosome",
+      "answer": "Endoplasmic Reticulum",
+      "explanation": "Proteins enter the rough ER for folding.",
+      "tag": "Example",
+      "misconception": false
+    },
+    {
+      "id": "hs_17",
+      "prompt": "Example: Secreted hormones packaged into vesicles",
+      "answer": "Golgi Apparatus",
+      "explanation": "Golgi packages hormones for secretion.",
+      "tag": "Example",
+      "misconception": false
+    },
+    {
+      "id": "hs_18",
+      "prompt": "Example: RNA exits the nuclear pores",
+      "answer": "Nucleus",
+      "explanation": "mRNA leaves the nucleus through pores.",
+      "tag": "Example",
+      "misconception": false
+    },
+    {
+      "id": "hs_19",
+      "prompt": "Example: Ribosomes on rough ER",
+      "answer": "Ribosomes",
+      "explanation": "Ribosomes can attach to rough ER.",
+      "tag": "Example",
+      "misconception": false
+    },
+    {
+      "id": "hs_20",
+      "prompt": "Example: Cell membrane receptor binds insulin",
+      "answer": "Cell Membrane",
+      "explanation": "Membrane receptors receive signals.",
+      "tag": "Example",
+      "misconception": false
+    },
+    {
+      "id": "hs_21",
+      "prompt": "Which organelle helps detoxify drugs?",
+      "answer": "Endoplasmic Reticulum",
+      "explanation": "Smooth ER detoxifies chemicals.",
+      "tag": "Scenario",
+      "misconception": false
+    },
+    {
+      "id": "hs_22",
+      "prompt": "Which organelle sorts proteins by destination?",
+      "answer": "Golgi Apparatus",
+      "explanation": "Golgi sorts proteins for final delivery.",
+      "tag": "Scenario",
+      "misconception": false
+    },
+    {
+      "id": "hs_23",
+      "prompt": "Which organelle holds chromosomes during interphase?",
+      "answer": "Nucleus",
+      "explanation": "Chromosomes are stored in the nucleus.",
+      "tag": "Scenario",
+      "misconception": false
+    },
+    {
+      "id": "hs_24",
+      "prompt": "Where does oxidative phosphorylation occur?",
+      "answer": "Mitochondria",
+      "explanation": "The electron transport chain is in mitochondria.",
+      "tag": "Scenario",
+      "misconception": false
+    },
+    {
+      "id": "hs_25",
+      "prompt": "Which organelle makes membrane proteins?",
+      "answer": "Ribosomes",
+      "explanation": "Ribosomes on rough ER create membrane proteins.",
+      "tag": "Scenario",
+      "misconception": false
+    },
+    {
+      "id": "hs_26",
+      "prompt": "Which organelle controls what leaves the cell?",
+      "answer": "Cell Membrane",
+      "explanation": "The membrane regulates export and import.",
+      "tag": "Scenario",
+      "misconception": false
+    },
+    {
+      "id": "hs_27",
+      "prompt": "Which organelle is a storage center for ions?",
+      "answer": "Vacuole",
+      "explanation": "Vacuoles store ions and water.",
+      "tag": "Scenario",
+      "misconception": false
+    },
+    {
+      "id": "hs_28",
+      "prompt": "Rough ER is covered in ribosomes",
+      "answer": "Endoplasmic Reticulum",
+      "explanation": "Ribosomes give the rough ER its texture.",
+      "tag": "Function",
+      "misconception": false
+    },
+    {
+      "id": "hs_29",
+      "prompt": "Golgi stacks are like a shipping center",
+      "answer": "Golgi Apparatus",
+      "explanation": "The Golgi processes and ships cell products.",
+      "tag": "Function",
+      "misconception": false
+    },
+    {
+      "id": "hs_30",
+      "prompt": "Mitochondria have folded inner membranes",
+      "answer": "Mitochondria",
+      "explanation": "Cristae increase surface area for ATP production.",
+      "tag": "Example",
+      "misconception": false
+    },
+    {
+      "id": "hs_31",
+      "prompt": "Nucleus is the only place proteins are made",
+      "answer": "Nucleus",
+      "explanation": "Misconception: proteins are built on ribosomes, not in the nucleus.",
+      "tag": "Misconception",
+      "misconception": true
+    },
+    {
+      "id": "hs_32",
+      "prompt": "Mitochondria create glucose for the cell",
+      "answer": "Mitochondria",
+      "explanation": "Misconception: mitochondria use glucose to make ATP.",
+      "tag": "Misconception",
+      "misconception": true
+    },
+    {
+      "id": "hs_33",
+      "prompt": "Ribosomes are only in plant cells",
+      "answer": "Ribosomes",
+      "explanation": "Misconception: ribosomes are in all cells.",
+      "tag": "Misconception",
+      "misconception": true
+    },
+    {
+      "id": "hs_34",
+      "prompt": "Cell membrane is a rigid wall",
+      "answer": "Cell Membrane",
+      "explanation": "Misconception: membranes are flexible lipid bilayers.",
+      "tag": "Misconception",
+      "misconception": true
+    },
+    {
+      "id": "hs_35",
+      "prompt": "Vacuoles only store waste",
+      "answer": "Vacuole",
+      "explanation": "Misconception: vacuoles store water, ions, and nutrients too.",
+      "tag": "Misconception",
+      "misconception": true
+    },
+    {
+      "id": "hs_36",
+      "prompt": "Endoplasmic reticulum is only for lipids",
+      "answer": "Endoplasmic Reticulum",
+      "explanation": "Misconception: rough ER processes proteins too.",
+      "tag": "Misconception",
+      "misconception": true
+    },
+    {
+      "id": "hs_37",
+      "prompt": "Golgi apparatus makes proteins from scratch",
+      "answer": "Golgi Apparatus",
+      "explanation": "Misconception: ribosomes make proteins, Golgi modifies them.",
+      "tag": "Misconception",
+      "misconception": true
+    },
+    {
+      "id": "hs_38",
+      "prompt": "Misconception: DNA floats freely in the cytoplasm",
+      "answer": "Nucleus",
+      "explanation": "Misconception: DNA in eukaryotes is stored in the nucleus.",
+      "tag": "Misconception",
+      "misconception": true
+    },
+    {
+      "id": "hs_39",
+      "prompt": "Which organelle forms transport vesicles?",
+      "answer": "Golgi Apparatus",
+      "explanation": "Golgi buds off vesicles for transport.",
+      "tag": "Scenario",
+      "misconception": false
+    },
+    {
+      "id": "hs_40",
+      "prompt": "Which organelle handles protein folding and quality control?",
+      "answer": "Endoplasmic Reticulum",
+      "explanation": "The rough ER helps fold proteins before they leave.",
+      "tag": "Scenario",
+      "misconception": false
+    }
+  ]
+}

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Concept Stack: Cells (Middle &amp; High School) | Teach Arcade</title>
+  <meta name="description" content="Concept Stack: Cells is a Tetris-style biology review game for classroom use. Sort cell organelles and categories with a teacher tier toggle, misconceptions mode, and adjustable speed." />
+  <link rel="canonical" href="https://teacharcade.com/brain-arcade/concept-stack-cells/" />
+  <meta name="theme-color" content="#0f172a" />
+  <meta property="og:title" content="Concept Stack: Cells (Middle &amp; High School) | Teach Arcade" />
+  <meta property="og:description" content="Tetris-style biology review game for cell organelles with teacher toggles, misconceptions mode, and classroom-friendly play." />
+  <meta property="og:url" content="https://teacharcade.com/brain-arcade/concept-stack-cells/" />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="/assets/images/teach-arcade-logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="/assets/nav.js"></script>
+  <script defer src="game.js"></script>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main class="page">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Teach Arcade · Biology</p>
+        <h1>Concept Stack: Cells</h1>
+        <p class="subtitle">
+          Drop falling prompts into the correct organelle column. Build streaks, clear columns, and review
+          cell structures with classroom-ready controls.
+        </p>
+      </div>
+      <div class="instructions">
+        <h2>How to play</h2>
+        <ul>
+          <li>Use ← → to move, ↓ to soft drop, and Space to hard drop.</li>
+          <li>Match the prompt to the correct organelle column.</li>
+          <li>Clear a column at 10 tiles for a bonus.</li>
+          <li>Game ends when a column reaches the max height.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="panel settings" aria-labelledby="settings-title">
+      <div class="settings-header">
+        <h2 id="settings-title">Teacher settings</h2>
+        <p>Choose a tier, adjust speed, and turn misconceptions on/off before starting.</p>
+      </div>
+      <div class="settings-grid">
+        <label class="field">
+          <span>Tier</span>
+          <select id="tier-select" aria-label="Select tier">
+            <option value="ms">Middle School</option>
+            <option value="hs">High School</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>Game speed</span>
+          <select id="speed-select" aria-label="Select game speed">
+            <option value="slow">Slow</option>
+            <option value="normal" selected>Normal</option>
+            <option value="fast">Fast</option>
+          </select>
+        </label>
+        <label class="field toggle">
+          <span>Misconceptions mode</span>
+          <button id="misconception-toggle" type="button" aria-pressed="false">Off</button>
+        </label>
+        <label class="field toggle">
+          <span>Sound</span>
+          <button id="sound-toggle" type="button" aria-pressed="true">On</button>
+        </label>
+      </div>
+      <div class="category-preview">
+        <h3>Active columns</h3>
+        <div id="category-chips" class="chips" aria-live="polite"></div>
+      </div>
+      <div class="actions">
+        <button id="start-button" class="primary">Start Game</button>
+        <p class="note">Tip: Students can tap a column header to snap the falling tile.</p>
+      </div>
+      <div id="load-error" class="error" role="alert" hidden></div>
+    </section>
+
+    <section class="game-area" id="game-area" hidden>
+      <div class="board-panel panel">
+        <div class="board-header">
+          <h2>Concept Stack Board</h2>
+          <div class="status">
+            <span id="current-tier"></span>
+            <span id="current-speed"></span>
+            <span id="current-misconceptions"></span>
+          </div>
+        </div>
+        <div id="board" class="board" role="grid" aria-label="Concept Stack board"></div>
+        <div class="controls">
+          <button class="control-btn" data-action="left" aria-label="Move left">◀</button>
+          <button class="control-btn" data-action="right" aria-label="Move right">▶</button>
+          <button class="control-btn" data-action="down" aria-label="Soft drop">▼</button>
+          <button class="control-btn" data-action="drop" aria-label="Hard drop">DROP</button>
+        </div>
+      </div>
+
+      <aside class="panel stats" aria-labelledby="stats-title">
+        <h2 id="stats-title">Scoreboard</h2>
+        <div class="stat-grid">
+          <div class="stat">
+            <span class="label">Score</span>
+            <span id="score">0</span>
+          </div>
+          <div class="stat">
+            <span class="label">Accuracy</span>
+            <span id="accuracy">0%</span>
+          </div>
+          <div class="stat">
+            <span class="label">Streak</span>
+            <span id="streak">0</span>
+          </div>
+          <div class="stat">
+            <span class="label">Time</span>
+            <span id="time">0:00</span>
+          </div>
+        </div>
+        <div class="stat-grid small">
+          <div class="stat">
+            <span class="label">Answered</span>
+            <span id="answered">0</span>
+          </div>
+          <div class="stat">
+            <span class="label">Correct</span>
+            <span id="correct">0</span>
+          </div>
+        </div>
+        <div class="buttons">
+          <button id="pause-button" class="secondary">Pause</button>
+          <button id="restart-button" class="ghost">Restart</button>
+        </div>
+        <div class="legend">
+          <p><strong>Keyboard:</strong> ← → ↓, Space, P</p>
+          <p><strong>Touch:</strong> Tap a column or use buttons below board.</p>
+        </div>
+      </aside>
+    </section>
+
+    <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+    <div id="gameover-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="gameover-title" hidden>
+      <div class="modal-content panel">
+        <h2 id="gameover-title">Game Over</h2>
+        <p id="gameover-summary"></p>
+        <div class="summary-grid">
+          <div>
+            <h3>Accuracy by category</h3>
+            <ul id="category-summary" class="summary-list"></ul>
+          </div>
+          <div>
+            <h3>Top missed prompts</h3>
+            <ol id="missed-list" class="summary-list"></ol>
+          </div>
+        </div>
+        <button id="replay-button" class="primary">Replay</button>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
