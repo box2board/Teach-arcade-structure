@@ -254,6 +254,22 @@
     "source": "sitemap"
   },
   {
+    "title": "Apprentice Restorer",
+    "url": "/brain-arcade/apprentice-restorer/",
+    "type": "page",
+    "description": "Flagship SNES-inspired science adventure that teaches physical science through exploration and system restoration.",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:brain-arcade",
+      "topic:apprentice-restorer",
+      "subject:science"
+    ],
+    "source": "sitemap"
+  },
+  {
     "title": "Block Logic",
     "url": "/brain-arcade/block-logic/",
     "type": "page",
