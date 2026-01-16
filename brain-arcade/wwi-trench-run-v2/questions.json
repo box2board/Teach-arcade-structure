@@ -1,0 +1,546 @@
+{
+  "version": 2,
+  "topics": ["MAIN", "TRENCH", "US_ENTRY", "TREATY", "MIXED"],
+  "questions": [
+    {
+      "id": "q001",
+      "topic": "MAIN",
+      "difficulty": "EASY",
+      "question": "Which 'M' in M.A.I.N. refers to the buildup of weapons and armies?",
+      "choices": ["Militarism", "Imperialism", "Nationalism", "Neutrality"],
+      "answerIndex": 0,
+      "explanation": "Militarism is the policy of building armed forces and preparing for war."
+    },
+    {
+      "id": "q002",
+      "topic": "MAIN",
+      "difficulty": "EASY",
+      "question": "What does the 'A' in M.A.I.N. stand for?",
+      "choices": ["Alliance system", "Autocracy", "Agriculture", "Armistice"],
+      "answerIndex": 0,
+      "explanation": "The alliance system linked nations through defense agreements."
+    },
+    {
+      "id": "q003",
+      "topic": "MAIN",
+      "difficulty": "EASY",
+      "question": "Nationalism in pre-WWI Europe mostly encouraged people to?",
+      "choices": ["Prioritize loyalty to their nation", "Reject military service", "End imperial competition", "Avoid alliances"],
+      "answerIndex": 0,
+      "explanation": "Nationalism promoted intense loyalty and pride in one’s nation."
+    },
+    {
+      "id": "q004",
+      "topic": "MAIN",
+      "difficulty": "STANDARD",
+      "question": "Which region’s independence movement heightened tensions within Austria-Hungary?",
+      "choices": ["The Balkans", "Scandinavia", "Iberia", "North Africa"],
+      "answerIndex": 0,
+      "explanation": "Balkan nationalist movements threatened Austria-Hungary’s stability."
+    },
+    {
+      "id": "q005",
+      "topic": "MAIN",
+      "difficulty": "STANDARD",
+      "question": "The assassination of Archduke Franz Ferdinand occurred in which city?",
+      "choices": ["Sarajevo", "Vienna", "Berlin", "Paris"],
+      "answerIndex": 0,
+      "explanation": "The assassination in Sarajevo triggered the July Crisis."
+    },
+    {
+      "id": "q006",
+      "topic": "MAIN",
+      "difficulty": "STANDARD",
+      "question": "Which alliance included Germany, Austria-Hungary, and Italy at the start of WWI?",
+      "choices": ["Triple Alliance", "Triple Entente", "Central Pact", "Allied Charter"],
+      "answerIndex": 0,
+      "explanation": "The Triple Alliance linked Germany, Austria-Hungary, and Italy."
+    },
+    {
+      "id": "q007",
+      "topic": "MAIN",
+      "difficulty": "STANDARD",
+      "question": "Which nation was part of the Triple Entente before WWI?",
+      "choices": ["Russia", "Italy", "Ottoman Empire", "Bulgaria"],
+      "answerIndex": 0,
+      "explanation": "Russia joined Britain and France in the Triple Entente."
+    },
+    {
+      "id": "q008",
+      "topic": "MAIN",
+      "difficulty": "STANDARD",
+      "question": "Imperialism contributed to WWI by causing?",
+      "choices": ["Rivalry for colonies and resources", "A ban on military spending", "Peace treaties between empires", "End of overseas expansion"],
+      "answerIndex": 0,
+      "explanation": "Imperial competition created conflict over colonies and trade routes."
+    },
+    {
+      "id": "q009",
+      "topic": "MAIN",
+      "difficulty": "STANDARD",
+      "question": "Which country issued the July Ultimatum to Serbia?",
+      "choices": ["Austria-Hungary", "Germany", "Britain", "Russia"],
+      "answerIndex": 0,
+      "explanation": "Austria-Hungary issued the ultimatum after the assassination."
+    },
+    {
+      "id": "q010",
+      "topic": "MAIN",
+      "difficulty": "CHALLENGE",
+      "question": "The alliance system increased the risk of war because it?",
+      "choices": ["Turned local disputes into wider conflicts", "Prevented mobilization", "Ended rivalry between empires", "Limited military size"],
+      "answerIndex": 0,
+      "explanation": "Alliances meant an attack on one could involve many nations."
+    },
+    {
+      "id": "q011",
+      "topic": "MAIN",
+      "difficulty": "CHALLENGE",
+      "question": "Which event is commonly cited as the immediate spark of WWI?",
+      "choices": ["Assassination of Franz Ferdinand", "Signing of the Treaty of Versailles", "Russian Revolution", "Lusitania sinking"],
+      "answerIndex": 0,
+      "explanation": "The assassination in 1914 set off the July Crisis."
+    },
+    {
+      "id": "q012",
+      "topic": "MAIN",
+      "difficulty": "STANDARD",
+      "question": "Why did mobilization plans make diplomacy harder in 1914?",
+      "choices": ["They were rigid and time-sensitive", "They required unanimous votes", "They depended on UN approval", "They were only defensive"],
+      "answerIndex": 0,
+      "explanation": "Mobilization schedules created pressure to act quickly."
+    },
+    {
+      "id": "q013",
+      "topic": "MAIN",
+      "difficulty": "STANDARD",
+      "question": "Which term describes the belief that military strength kept nations safe and powerful?",
+      "choices": ["Militarism", "Isolationism", "Pacifism", "Federalism"],
+      "answerIndex": 0,
+      "explanation": "Militarism valued strong armies and preparedness."
+    },
+    {
+      "id": "q014",
+      "topic": "MAIN",
+      "difficulty": "CHALLENGE",
+      "question": "Which crisis before 1914 illustrated imperial rivalry between Germany and France?",
+      "choices": ["Moroccan Crises", "Cuban Missile Crisis", "Suez Crisis", "Berlin Airlift"],
+      "answerIndex": 0,
+      "explanation": "Germany challenged French influence in Morocco."
+    },
+    {
+      "id": "q015",
+      "topic": "MAIN",
+      "difficulty": "CHALLENGE",
+      "question": "The phrase powder keg of Europe refers to which region?",
+      "choices": ["The Balkans", "Scandinavia", "The Alps", "Iceland"],
+      "answerIndex": 0,
+      "explanation": "The Balkans had intense nationalist and imperial rivalries."
+    },
+    {
+      "id": "q016",
+      "topic": "TRENCH",
+      "difficulty": "EASY",
+      "question": "Trench warfare on the Western Front led to a long period of?",
+      "choices": ["Stalemate", "Rapid victory", "Naval dominance", "Air superiority"],
+      "answerIndex": 0,
+      "explanation": "Both sides dug in, creating a stalemate."
+    },
+    {
+      "id": "q017",
+      "topic": "TRENCH",
+      "difficulty": "EASY",
+      "question": "Which weapon made crossing open ground especially dangerous?",
+      "choices": ["Machine guns", "Longbows", "Harpoons", "Crossbows"],
+      "answerIndex": 0,
+      "explanation": "Machine guns fired rapidly and devastated attackers."
+    },
+    {
+      "id": "q018",
+      "topic": "TRENCH",
+      "difficulty": "EASY",
+      "question": "The area between opposing trenches was called?",
+      "choices": ["No Man's Land", "The Green Zone", "The Neutral Corridor", "The Ridge"],
+      "answerIndex": 0,
+      "explanation": "No Man's Land was the deadly space between trenches."
+    },
+    {
+      "id": "q019",
+      "topic": "TRENCH",
+      "difficulty": "STANDARD",
+      "question": "Which condition was common in trenches and caused severe health problems?",
+      "choices": ["Trench foot", "Heatstroke", "Altitude sickness", "Radiation burns"],
+      "answerIndex": 0,
+      "explanation": "Wet, cold trenches led to trench foot infections."
+    },
+    {
+      "id": "q020",
+      "topic": "TRENCH",
+      "difficulty": "STANDARD",
+      "question": "What new weapon was first used on a large scale in WWI to break trench lines?",
+      "choices": ["Tanks", "Balloons", "Cannons", "Zeppelins"],
+      "answerIndex": 0,
+      "explanation": "Tanks were introduced to cross trenches and barbed wire."
+    },
+    {
+      "id": "q021",
+      "topic": "TRENCH",
+      "difficulty": "STANDARD",
+      "question": "Which battle is known for massive casualties and little territorial gain?",
+      "choices": ["Somme", "Waterloo", "Hastings", "Gettysburg"],
+      "answerIndex": 0,
+      "explanation": "The Battle of the Somme caused heavy losses for small gains."
+    },
+    {
+      "id": "q022",
+      "topic": "TRENCH",
+      "difficulty": "STANDARD",
+      "question": "Trench systems usually included?",
+      "choices": ["Front, support, and reserve trenches", "Only a single line", "Underground cities", "Floating platforms"],
+      "answerIndex": 0,
+      "explanation": "Multiple trench lines provided depth and defense."
+    },
+    {
+      "id": "q023",
+      "topic": "TRENCH",
+      "difficulty": "STANDARD",
+      "question": "Why was barbed wire significant in trench warfare?",
+      "choices": ["It slowed attacks and exposed soldiers", "It provided clean water", "It blocked artillery shells", "It hid tanks"],
+      "answerIndex": 0,
+      "explanation": "Barbed wire trapped attackers in the open."
+    },
+    {
+      "id": "q024",
+      "topic": "TRENCH",
+      "difficulty": "CHALLENGE",
+      "question": "Which tactic involved leaving trenches to attack across No Man's Land?",
+      "choices": ["Going over the top", "Island hopping", "Blitzkrieg", "Scorched earth"],
+      "answerIndex": 0,
+      "explanation": "Going over the top meant charging out of the trenches."
+    },
+    {
+      "id": "q025",
+      "topic": "TRENCH",
+      "difficulty": "CHALLENGE",
+      "question": "Which gas was first used by Germany at Ypres in 1915?",
+      "choices": ["Chlorine gas", "Mustard gas", "Tear gas", "Carbon monoxide"],
+      "answerIndex": 0,
+      "explanation": "Chlorine gas was deployed at the Second Battle of Ypres."
+    },
+    {
+      "id": "q026",
+      "topic": "TRENCH",
+      "difficulty": "STANDARD",
+      "question": "Why did trench warfare favor defense over offense?",
+      "choices": ["Defenders had machine guns and cover", "Attackers had better supply lines", "Defenders lacked artillery", "Attackers controlled the sky"],
+      "answerIndex": 0,
+      "explanation": "Defensive positions and machine guns made assaults costly."
+    },
+    {
+      "id": "q027",
+      "topic": "TRENCH",
+      "difficulty": "STANDARD",
+      "question": "Which battle is associated with the phrase They shall not pass?",
+      "choices": ["Verdun", "Marne", "Jutland", "Gallipoli"],
+      "answerIndex": 0,
+      "explanation": "Verdun became a symbol of French determination."
+    },
+    {
+      "id": "q028",
+      "topic": "TRENCH",
+      "difficulty": "STANDARD",
+      "question": "What was the purpose of a creeping barrage?",
+      "choices": ["Artillery fire that moved ahead of infantry", "A naval blockade", "Aerial bombing campaign", "Tunneling under trenches"],
+      "answerIndex": 0,
+      "explanation": "Artillery advanced in timed stages to protect attackers."
+    },
+    {
+      "id": "q029",
+      "topic": "TRENCH",
+      "difficulty": "CHALLENGE",
+      "question": "Which front featured trench lines stretching from the North Sea to Switzerland?",
+      "choices": ["Western Front", "Eastern Front", "Italian Front", "Pacific Front"],
+      "answerIndex": 0,
+      "explanation": "The Western Front became a continuous trench system."
+    },
+    {
+      "id": "q030",
+      "topic": "TRENCH",
+      "difficulty": "CHALLENGE",
+      "question": "What was a common daily hardship for soldiers in the trenches?",
+      "choices": ["Constant mud and flooding", "Desert heat", "Lack of any artillery", "Constant air travel"],
+      "answerIndex": 0,
+      "explanation": "Rain and poor drainage made trenches muddy and flooded."
+    },
+    {
+      "id": "q031",
+      "topic": "US_ENTRY",
+      "difficulty": "EASY",
+      "question": "The United States tried to stay out of WWI at first by declaring?",
+      "choices": ["Neutrality", "Independence", "Isolationism from Europe", "Total war"],
+      "answerIndex": 0,
+      "explanation": "President Wilson proclaimed neutrality in 1914."
+    },
+    {
+      "id": "q032",
+      "topic": "US_ENTRY",
+      "difficulty": "EASY",
+      "question": "What was the name of the British passenger ship sunk by Germany in 1915?",
+      "choices": ["Lusitania", "Titanic", "Bismarck", "Mayflower"],
+      "answerIndex": 0,
+      "explanation": "The Lusitania’s sinking angered the United States."
+    },
+    {
+      "id": "q033",
+      "topic": "US_ENTRY",
+      "difficulty": "STANDARD",
+      "question": "Unrestricted submarine warfare meant German U-boats?",
+      "choices": ["Attacked ships without warning", "Only targeted warships", "Stopped all naval conflict", "Protected neutral ships"],
+      "answerIndex": 0,
+      "explanation": "Germany attacked ships without warning to cut off supplies."
+    },
+    {
+      "id": "q034",
+      "topic": "US_ENTRY",
+      "difficulty": "STANDARD",
+      "question": "The Zimmermann Telegram promised Mexico?",
+      "choices": ["Support to regain lost U.S. territory", "Free trade with Britain", "A seat at Versailles", "Control of the Panama Canal"],
+      "answerIndex": 0,
+      "explanation": "Germany offered Mexico land in return for alliance."
+    },
+    {
+      "id": "q035",
+      "topic": "US_ENTRY",
+      "difficulty": "STANDARD",
+      "question": "Which U.S. president asked Congress to declare war in 1917?",
+      "choices": ["Woodrow Wilson", "Theodore Roosevelt", "William Taft", "Herbert Hoover"],
+      "answerIndex": 0,
+      "explanation": "Wilson requested the war declaration in April 1917."
+    },
+    {
+      "id": "q036",
+      "topic": "US_ENTRY",
+      "difficulty": "STANDARD",
+      "question": "Which slogan reflected U.S. reasons for entering the war?",
+      "choices": ["Make the world safe for democracy", "Peace at any cost", "America first above all", "Isolation forever"],
+      "answerIndex": 0,
+      "explanation": "Wilson framed the war as defending democracy."
+    },
+    {
+      "id": "q037",
+      "topic": "US_ENTRY",
+      "difficulty": "STANDARD",
+      "question": "The U.S. policy that allowed trade with both sides while neutral was called?",
+      "choices": ["Freedom of the seas", "Open door", "Containment", "Appeasement"],
+      "answerIndex": 0,
+      "explanation": "Freedom of the seas protected neutral shipping rights."
+    },
+    {
+      "id": "q038",
+      "topic": "US_ENTRY",
+      "difficulty": "STANDARD",
+      "question": "The Selective Service Act of 1917 did what?",
+      "choices": ["Created the draft", "Ended rationing", "Declared neutrality", "Built new colonies"],
+      "answerIndex": 0,
+      "explanation": "The act required men to register for military service."
+    },
+    {
+      "id": "q039",
+      "topic": "US_ENTRY",
+      "difficulty": "CHALLENGE",
+      "question": "Which group of U.S. troops became known as Doughboys?",
+      "choices": ["American Expeditionary Force", "Navy Seabees", "Merchant Marines", "Rough Riders"],
+      "answerIndex": 0,
+      "explanation": "The nickname referred to U.S. Army soldiers in WWI."
+    },
+    {
+      "id": "q040",
+      "topic": "US_ENTRY",
+      "difficulty": "CHALLENGE",
+      "question": "Why did the U.S. economy favor the Allies before entering WWI?",
+      "choices": ["Trade and loans were tied to Allied success", "The U.S. colonized Europe", "Germany controlled U.S. banks", "The U.S. banned exports"],
+      "answerIndex": 0,
+      "explanation": "U.S. trade and loans made Allied victory important."
+    },
+    {
+      "id": "q041",
+      "topic": "US_ENTRY",
+      "difficulty": "CHALLENGE",
+      "question": "Which U.S. agency organized wartime industry and resources?",
+      "choices": ["War Industries Board", "Federal Reserve", "EPA", "Peace Corps"],
+      "answerIndex": 0,
+      "explanation": "The War Industries Board coordinated production."
+    },
+    {
+      "id": "q042",
+      "topic": "US_ENTRY",
+      "difficulty": "STANDARD",
+      "question": "Which statement best describes U.S. public opinion in early 1917?",
+      "choices": ["It was shifting toward intervention", "It strongly favored the Central Powers", "It was unaware of the war", "It rejected all trade"],
+      "answerIndex": 0,
+      "explanation": "Events like submarine attacks pushed opinion toward war."
+    },
+    {
+      "id": "q043",
+      "topic": "US_ENTRY",
+      "difficulty": "STANDARD",
+      "question": "Why did Germany resume unrestricted submarine warfare in 1917?",
+      "choices": ["To cut off Allied supplies", "To open trade", "To avoid conflict", "To end alliances"],
+      "answerIndex": 0,
+      "explanation": "Germany hoped to starve Britain before U.S. troops arrived."
+    },
+    {
+      "id": "q044",
+      "topic": "US_ENTRY",
+      "difficulty": "CHALLENGE",
+      "question": "Which American general commanded U.S. forces in Europe?",
+      "choices": ["John J. Pershing", "Douglas MacArthur", "George Patton", "Dwight Eisenhower"],
+      "answerIndex": 0,
+      "explanation": "General Pershing led the American Expeditionary Force."
+    },
+    {
+      "id": "q045",
+      "topic": "US_ENTRY",
+      "difficulty": "CHALLENGE",
+      "question": "Which factor was least connected to U.S. entry into WWI?",
+      "choices": ["Alliance treaty with Germany", "Zimmermann Telegram", "Unrestricted submarine warfare", "Lusitania sinking"],
+      "answerIndex": 0,
+      "explanation": "The U.S. did not have an alliance treaty with Germany."
+    },
+    {
+      "id": "q046",
+      "topic": "TREATY",
+      "difficulty": "EASY",
+      "question": "Which treaty officially ended WWI?",
+      "choices": ["Treaty of Versailles", "Treaty of Paris", "Treaty of Ghent", "Treaty of Tordesillas"],
+      "answerIndex": 0,
+      "explanation": "The Treaty of Versailles was signed in 1919."
+    },
+    {
+      "id": "q047",
+      "topic": "TREATY",
+      "difficulty": "EASY",
+      "question": "Which country was forced to accept blame for WWI in the treaty?",
+      "choices": ["Germany", "Russia", "Japan", "Canada"],
+      "answerIndex": 0,
+      "explanation": "The war guilt clause blamed Germany."
+    },
+    {
+      "id": "q048",
+      "topic": "TREATY",
+      "difficulty": "STANDARD",
+      "question": "One major consequence of the treaty was?",
+      "choices": ["Heavy reparations on Germany", "Immediate world peace", "End of all empires", "Abolition of nationalism"],
+      "answerIndex": 0,
+      "explanation": "Germany was required to pay reparations."
+    },
+    {
+      "id": "q049",
+      "topic": "TREATY",
+      "difficulty": "STANDARD",
+      "question": "Which U.S. leader proposed the Fourteen Points?",
+      "choices": ["Woodrow Wilson", "Winston Churchill", "David Lloyd George", "Georges Clemenceau"],
+      "answerIndex": 0,
+      "explanation": "Wilson outlined his peace plan in the Fourteen Points."
+    },
+    {
+      "id": "q050",
+      "topic": "TREATY",
+      "difficulty": "STANDARD",
+      "question": "The League of Nations was created to?",
+      "choices": ["Promote collective security and peace", "Control colonial trade", "Replace national governments", "Lead military attacks"],
+      "answerIndex": 0,
+      "explanation": "The League aimed to prevent future wars through cooperation."
+    },
+    {
+      "id": "q051",
+      "topic": "TREATY",
+      "difficulty": "STANDARD",
+      "question": "Why did the U.S. Senate reject the Treaty of Versailles?",
+      "choices": ["Fear of entangling alliances", "Support for German demands", "Lack of Allied signatures", "It ended all tariffs"],
+      "answerIndex": 0,
+      "explanation": "Many senators opposed joining the League of Nations."
+    },
+    {
+      "id": "q052",
+      "topic": "TREATY",
+      "difficulty": "STANDARD",
+      "question": "Which French leader wanted harsh punishments for Germany?",
+      "choices": ["Georges Clemenceau", "Woodrow Wilson", "Vittorio Orlando", "Nicholas II"],
+      "answerIndex": 0,
+      "explanation": "Clemenceau advocated strict penalties to weaken Germany."
+    },
+    {
+      "id": "q053",
+      "topic": "TREATY",
+      "difficulty": "CHALLENGE",
+      "question": "What was a long-term effect of the treaty on Germany?",
+      "choices": ["Economic hardship and resentment", "Rapid military expansion", "Immediate political stability", "Permanent occupation by the U.S."],
+      "answerIndex": 0,
+      "explanation": "Reparations and blame fueled resentment and instability."
+    },
+    {
+      "id": "q054",
+      "topic": "TREATY",
+      "difficulty": "CHALLENGE",
+      "question": "Which new nations emerged from the breakup of empires after WWI?",
+      "choices": ["Czechoslovakia and Yugoslavia", "Canada and Mexico", "Spain and Portugal", "Brazil and Argentina"],
+      "answerIndex": 0,
+      "explanation": "New states formed from Austro-Hungarian and Ottoman lands."
+    },
+    {
+      "id": "q055",
+      "topic": "TREATY",
+      "difficulty": "STANDARD",
+      "question": "The treaty limited Germany's military by?",
+      "choices": ["Restricting troops and banning tanks", "Expanding its navy", "Allowing conscription", "Rebuilding forts"],
+      "answerIndex": 0,
+      "explanation": "Germany faced strict military limits."
+    },
+    {
+      "id": "q056",
+      "topic": "TREATY",
+      "difficulty": "STANDARD",
+      "question": "Which leader represented Britain at the peace conference?",
+      "choices": ["David Lloyd George", "Franklin Roosevelt", "Kaiser Wilhelm", "Otto von Bismarck"],
+      "answerIndex": 0,
+      "explanation": "Lloyd George was Britain’s prime minister in 1919."
+    },
+    {
+      "id": "q057",
+      "topic": "TREATY",
+      "difficulty": "CHALLENGE",
+      "question": "Which clause assigned responsibility for war damages to Germany?",
+      "choices": ["War guilt clause", "Neutrality clause", "Open door clause", "Monroe clause"],
+      "answerIndex": 0,
+      "explanation": "Article 231 was the war guilt clause."
+    },
+    {
+      "id": "q058",
+      "topic": "TREATY",
+      "difficulty": "CHALLENGE",
+      "question": "Which empire dissolved as a result of postwar settlements?",
+      "choices": ["Ottoman Empire", "United States", "Sweden", "Netherlands"],
+      "answerIndex": 0,
+      "explanation": "The Ottoman Empire broke apart after the war."
+    },
+    {
+      "id": "q059",
+      "topic": "TREATY",
+      "difficulty": "CHALLENGE",
+      "question": "How did the treaty address Alsace-Lorraine?",
+      "choices": ["Returned it to France", "Gave it to Italy", "Made it independent", "Kept it German"],
+      "answerIndex": 0,
+      "explanation": "Alsace-Lorraine was returned to France."
+    },
+    {
+      "id": "q060",
+      "topic": "TREATY",
+      "difficulty": "STANDARD",
+      "question": "Which goal of the Fourteen Points was included in the treaty?",
+      "choices": ["League of Nations", "Secret treaties", "Colonial expansion", "Permanent German rearmament"],
+      "answerIndex": 0,
+      "explanation": "Wilson’s League of Nations was included in the treaty."
+    }
+  ]
+}
