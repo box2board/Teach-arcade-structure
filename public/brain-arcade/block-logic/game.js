@@ -42,6 +42,9 @@ const bestScoreEl = document.getElementById("best-score");
 const currentScoreEl = document.getElementById("current-score");
 const pieceEls = document.querySelectorAll(".piece");
 const floatingTextContainer = document.getElementById("floating-text-container");
+const gameOverEl = document.getElementById("game-over");
+const finalScoreEl = document.getElementById("final-score");
+const playAgainBtn = document.getElementById("play-again");
 
 bestScoreEl.textContent = bestScore;
 
@@ -264,4 +267,220 @@ function onDragEnd() {
   ghostEl.remove();
   ghostEl = null;
 
- 
+  pieceEl.style.opacity = "";
+  clearHighlights();
+
+  document.removeEventListener("touchmove", onDragMove);
+  document.removeEventListener("mousemove", onDragMove);
+  document.removeEventListener("touchend", onDragEnd);
+  document.removeEventListener("mouseup", onDragEnd);
+
+  currentGhostRow = null;
+  currentGhostCol = null;
+
+  if (Array.from(pieceEls).every(el => el.classList.contains("disabled"))) {
+    renderPieces();
+  }
+
+  if (!hasAnyMoves()) {
+    showGameOver();
+  }
+}
+
+/* ============================================================
+   PLACE / CHECK LOGIC
+   ============================================================ */
+function canPlacePiece(piece, row, col) {
+  if (row === null || col === null) return false;
+
+  const rows = piece.shape.length;
+  const cols = piece.shape[0].length;
+
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      if (!piece.shape[r][c]) continue;
+      const rr = row + r;
+      const cc = col + c;
+      if (rr < 0 || rr >= GRID_SIZE || cc < 0 || cc >= GRID_SIZE) return false;
+      if (gridState[rr][cc] !== 0) return false;
+    }
+  }
+  return true;
+}
+
+function placePiece(piece, row, col) {
+  let blocksPlaced = 0;
+  const rows = piece.shape.length;
+  const cols = piece.shape[0].length;
+
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      if (!piece.shape[r][c]) continue;
+      const rr = row + r;
+      const cc = col + c;
+      gridState[rr][cc] = piece.color;
+      blocksPlaced += 1;
+      const cell = gridEl.children[rr * GRID_SIZE + cc];
+      cell.className = `cell ${COLORS[piece.color]}`;
+      cell.classList.add("pop");
+      setTimeout(() => cell.classList.remove("pop"), 160);
+    }
+  }
+
+  const cleared = clearLines();
+  const scoreAdd = blocksPlaced * 10 + cleared * 100;
+  updateScore(scoreAdd);
+
+  if (cleared > 0) {
+    streak += 1;
+    showFloatingText(`+${scoreAdd} (${cleared} line${cleared > 1 ? "s" : ""})`);
+  } else {
+    streak = 0;
+    showFloatingText(`+${scoreAdd}`);
+  }
+}
+
+function clearLines() {
+  const rowsToClear = [];
+  const colsToClear = [];
+
+  for (let r = 0; r < GRID_SIZE; r++) {
+    if (gridState[r].every(val => val !== 0)) {
+      rowsToClear.push(r);
+    }
+  }
+
+  for (let c = 0; c < GRID_SIZE; c++) {
+    let full = true;
+    for (let r = 0; r < GRID_SIZE; r++) {
+      if (gridState[r][c] === 0) {
+        full = false;
+        break;
+      }
+    }
+    if (full) colsToClear.push(c);
+  }
+
+  const cellsToClear = new Set();
+  rowsToClear.forEach(r => {
+    for (let c = 0; c < GRID_SIZE; c++) {
+      cellsToClear.add(`${r}-${c}`);
+    }
+  });
+  colsToClear.forEach(c => {
+    for (let r = 0; r < GRID_SIZE; r++) {
+      cellsToClear.add(`${r}-${c}`);
+    }
+  });
+
+  if (cellsToClear.size === 0) return 0;
+
+  cellsToClear.forEach(key => {
+    const [r, c] = key.split("-").map(Number);
+    gridState[r][c] = 0;
+    const cell = gridEl.children[r * GRID_SIZE + c];
+    cell.classList.add("clear-anim");
+    setTimeout(() => {
+      cell.className = "cell";
+    }, 280);
+  });
+
+  gridEl.classList.add("full-board-flash");
+  setTimeout(() => gridEl.classList.remove("full-board-flash"), 450);
+
+  return rowsToClear.length + colsToClear.length;
+}
+
+/* ============================================================
+   SCORE + UI HELPERS
+   ============================================================ */
+function updateScore(amount) {
+  currentScore += amount;
+  currentScoreEl.textContent = currentScore;
+  currentScoreEl.classList.add("score-bump");
+  setTimeout(() => currentScoreEl.classList.remove("score-bump"), 240);
+
+  if (currentScore > bestScore) {
+    bestScore = currentScore;
+    bestScoreEl.textContent = bestScore;
+    localStorage.setItem("blocklogic_best", bestScore);
+  }
+}
+
+function showFloatingText(message) {
+  const textEl = document.createElement("div");
+  textEl.className = "floating-text";
+  textEl.textContent = message;
+  floatingTextContainer.appendChild(textEl);
+  setTimeout(() => textEl.remove(), 1000);
+}
+
+/* ============================================================
+   MOVE CHECKS + RESET
+   ============================================================ */
+function canFitAnywhere(piece) {
+  for (let r = 0; r < GRID_SIZE; r++) {
+    for (let c = 0; c < GRID_SIZE; c++) {
+      if (canPlacePiece(piece, r, c)) return true;
+    }
+  }
+  return false;
+}
+
+function hasAnyMoves() {
+  return Array.from(pieceEls).some(el => {
+    if (el.classList.contains("disabled")) return false;
+    const pieceDef = JSON.parse(el.dataset.piece);
+    return canFitAnywhere(pieceDef);
+  });
+}
+
+function resetGame() {
+  currentScore = 0;
+  currentScoreEl.textContent = currentScore;
+  streak = 0;
+  initGrid();
+  renderPieces();
+  hideGameOver();
+}
+
+/* ============================================================
+   UTILITIES + INIT
+   ============================================================ */
+function getEventPos(e) {
+  if (e.touches && e.touches[0]) {
+    return { x: e.touches[0].clientX, y: e.touches[0].clientY };
+  }
+  if (e.changedTouches && e.changedTouches[0]) {
+    return { x: e.changedTouches[0].clientX, y: e.changedTouches[0].clientY };
+  }
+  return { x: e.clientX, y: e.clientY };
+}
+
+function resizeGrid() {
+  const gridWidth = gridEl.clientWidth;
+  CELL_SIZE = gridWidth / GRID_SIZE;
+  gridEl.querySelectorAll(".cell").forEach(cell => {
+    cell.style.width = `${CELL_SIZE}px`;
+    cell.style.height = `${CELL_SIZE}px`;
+  });
+}
+
+window.addEventListener("resize", resizeGrid);
+
+initGrid();
+renderPieces();
+hideGameOver();
+
+playAgainBtn.addEventListener("click", () => {
+  resetGame();
+});
+
+function showGameOver() {
+  finalScoreEl.textContent = currentScore;
+  gameOverEl.classList.remove("hidden");
+}
+
+function hideGameOver() {
+  gameOverEl.classList.add("hidden");
+}

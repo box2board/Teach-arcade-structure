@@ -29,6 +29,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  position: relative;
 }
 
 /* GRID */
@@ -125,6 +126,69 @@ body {
 #floating-text-container {
   position: relative;
   height: 0;
+}
+
+/* GAME OVER */
+.game-over {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 10, 16, 0.78);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  border-radius: 28px;
+  padding: 16px;
+}
+
+.game-over.hidden {
+  display: none;
+}
+
+.game-over-card {
+  background: #1c1c25;
+  border-radius: 20px;
+  padding: 24px;
+  width: 100%;
+  max-width: 360px;
+  text-align: center;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+  border: 1px solid #2c2c38;
+}
+
+.game-over-card h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.game-over-card p {
+  margin-bottom: 18px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.game-over-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.game-over-actions button,
+.game-over-actions .menu-link {
+  background: #7c3aed;
+  border: none;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-over-actions .menu-link {
+  background: #2c2c38;
 }
 
 .floating-text {
