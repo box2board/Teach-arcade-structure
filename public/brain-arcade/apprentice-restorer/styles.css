@@ -1,0 +1,231 @@
+:root {
+  color-scheme: light;
+  --ink: #0f172a;
+  --muted: #475569;
+  --panel: #f8fafc;
+  --panel-dark: #e2e8f0;
+  --accent: #3b82f6;
+  --accent-2: #a855f7;
+  --accent-3: #22c55e;
+  --bg: #eff6ff;
+  --pixel: 6px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Nunito", system-ui, sans-serif;
+  color: var(--ink);
+  background: radial-gradient(circle at top, #fef9c3 0%, #e0f2fe 35%, #e2e8f0 100%);
+}
+
+main {
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 24px 16px 80px;
+}
+
+.hero {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  align-items: center;
+  margin-top: 32px;
+}
+
+.hero h1 {
+  font-family: "Press Start 2P", "Poppins", sans-serif;
+  font-size: 28px;
+  line-height: 1.3;
+  margin: 0 0 12px;
+  text-transform: uppercase;
+}
+
+.hero p {
+  font-size: 17px;
+  line-height: 1.7;
+  margin: 0 0 16px;
+  color: var(--muted);
+}
+
+.pixel-panel {
+  background: var(--panel);
+  border: 2px solid #0f172a;
+  box-shadow: 6px 6px 0 #0f172a;
+  padding: 20px;
+  border-radius: 6px;
+}
+
+.pixel-panel h2,
+.pixel-panel h3 {
+  font-family: "Poppins", sans-serif;
+  margin: 0 0 8px;
+}
+
+.meta-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--panel-dark);
+  background: #fff;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.section {
+  margin-top: 36px;
+}
+
+.section h2 {
+  font-family: "Press Start 2P", "Poppins", sans-serif;
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.card-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.card {
+  border: 2px solid #0f172a;
+  background: #fff;
+  box-shadow: 4px 4px 0 #0f172a;
+  border-radius: 6px;
+  padding: 16px;
+}
+
+.card h3 {
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+
+.card p,
+.card li {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.card ul {
+  padding-left: 18px;
+  margin: 8px 0 0;
+}
+
+.timeline {
+  display: grid;
+  gap: 12px;
+}
+
+.timeline-step {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.timeline-step span {
+  font-family: "Press Start 2P", "Poppins", sans-serif;
+  font-size: 12px;
+  background: var(--accent);
+  color: #fff;
+  padding: 6px 8px;
+  border-radius: 4px;
+}
+
+.timeline-step p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.toggle-row {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.toggle {
+  background: #fff;
+  border: 2px dashed #0f172a;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.toggle label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+}
+
+.toggle small {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+}
+
+.notice {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #1e293b;
+  background: #fef3c7;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #f59e0b;
+}
+
+.legend {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.legend span {
+  background: #fff;
+  border: 1px solid var(--panel-dark);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.data-panel {
+  background: #0f172a;
+  color: #f8fafc;
+  padding: 16px;
+  border-radius: 10px;
+  font-family: "Press Start 2P", "Poppins", sans-serif;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.footer-note {
+  margin-top: 40px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+@media (max-width: 640px) {
+  .hero h1 {
+    font-size: 22px;
+  }
+}

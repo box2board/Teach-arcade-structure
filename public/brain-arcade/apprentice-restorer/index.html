@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0f172a" />
+  <title>Apprentice Restorer | Teach Arcade Brain Arcade Flagship</title>
+  <meta name="description" content="A Zelda-like, SNES-inspired educational adventure that teaches physical science through exploration, experimentation, and reflection." />
+  <link rel="canonical" href="https://teacharcade.com/brain-arcade/apprentice-restorer/" />
+  <link rel="stylesheet" href="/assets/styles.css?v=1" />
+  <link rel="stylesheet" href="/brain-arcade/apprentice-restorer/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&family=Poppins:wght@600;700&family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
+</head>
+<body>
+  <div id="site-header"></div>
+  <script src="/assets/scripts/nav.js?v=5" defer></script>
+
+  <main>
+    <section class="hero">
+      <div>
+        <span class="tag">Flagship Brain Arcade</span>
+        <h1>Apprentice Restorer</h1>
+        <p>
+          A top-down, SNES-inspired educational adventure for Teach Arcade. Players restore a science-fantasy world by
+          experimenting with motion, energy, light, and electricity. Every region is a playground for discovery before
+          names appear.
+        </p>
+        <div class="chips" aria-label="Core experience goals">
+          <span class="tag">Exploration</span>
+          <span class="tag">Experimentation</span>
+          <span class="tag">Application</span>
+          <span class="tag">Reflection</span>
+          <span class="tag">No Scores</span>
+        </div>
+      </div>
+      <div class="pixel-panel">
+        <h2>Player Role</h2>
+        <p>
+          You are the <strong>Apprentice Restorer</strong>, guiding systems back into balance. Instead of combat, you
+          rely on tools and observation to resolve misconceptions represented as playful entities.
+        </p>
+        <div class="meta-grid">
+          <div>
+            <h3>Win Condition</h3>
+            <p>Stabilize all five regions and complete the Archive of Balance synthesis area.</p>
+          </div>
+          <div>
+            <h3>Play Style</h3>
+            <p>No lives, no timers, no scores. Progress is a record of understanding.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Teaching Pillars</h2>
+      <div class="card-grid" data-pillars></div>
+    </section>
+
+    <section class="section">
+      <h2>Game Architecture</h2>
+      <div class="card-grid" data-systems></div>
+      <div class="data-panel" aria-label="Architecture flow">
+        INPUT → ACTION → SYSTEM RESPONSE → OBSERVATION → REFLECTION → NOTEBOOK UPDATE → NEW TOOL
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Region Progression</h2>
+      <div class="legend" aria-hidden="true">
+        <span>Observation</span>
+        <span>Experimentation</span>
+        <span>Application</span>
+        <span>Reflection</span>
+      </div>
+      <div class="card-grid" data-regions></div>
+    </section>
+
+    <section class="section">
+      <h2>Notebook System</h2>
+      <p>
+        The notebook auto-fills after lived experiences. Vocabulary appears only after the player has demonstrated
+        understanding in play.
+      </p>
+      <div class="card-grid" data-notebook></div>
+    </section>
+
+    <section class="section">
+      <h2>Classroom Mode</h2>
+      <p>
+        Classroom Mode hides the teacher label but quietly changes region access, hint cadence, and vocabulary timing.
+        Teachers control it from a secure menu outside student view.
+      </p>
+      <div class="toggle-row" data-classroom></div>
+      <p class="notice" data-classroom-note></p>
+      <div class="card">
+        <h3>Additional Controls</h3>
+        <ul>
+          <li>Lock or unlock regions for pacing.</li>
+          <li>Enable soft pause checkpoints for station rotations.</li>
+          <li>Turn on reflection prompts after each major system repair.</li>
+          <li>Track milestones without showing wrong answers.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>NPC Dialogue Style</h2>
+      <p>NPCs ask questions more than they explain. Short, curious, and everyday language only.</p>
+      <div class="legend" data-npc></div>
+    </section>
+
+    <section class="section">
+      <h2>Player Journey Flow</h2>
+      <div class="timeline">
+        <div class="timeline-step">
+          <span>01</span>
+          <p>Explore a new region and notice a broken system.</p>
+        </div>
+        <div class="timeline-step">
+          <span>02</span>
+          <p>Experiment with tools, objects, and routes until something behaves differently.</p>
+        </div>
+        <div class="timeline-step">
+          <span>03</span>
+          <p>Apply the insight to stabilize the region and unlock the next pathway.</p>
+        </div>
+        <div class="timeline-step">
+          <span>04</span>
+          <p>Reflect with a short prompt that becomes a notebook entry.</p>
+        </div>
+        <div class="timeline-step">
+          <span>05</span>
+          <p>Receive the next tool that extends the system without adding new vocabulary.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Assessment Without Tests</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3>Gameplay choices</h3>
+          <p>Success is shown by how players route energy, motion, light, and flow.</p>
+        </div>
+        <div class="card">
+          <h3>Reflection prompts</h3>
+          <p>Short responses reinforce observations without grading or penalties.</p>
+        </div>
+        <div class="card">
+          <h3>Teacher observation</h3>
+          <p>Teachers see progress markers and can review notebook entries.</p>
+        </div>
+      </div>
+    </section>
+
+    <p class="footer-note">This flagship concept is built for Teach Arcade’s Brain Arcade and is ready for modular implementation in HTML, CSS, and JS.</p>
+  </main>
+
+  <footer>
+    © <script>document.write(new Date().getFullYear())</script> Teach Arcade •
+    <a href="/privacy.html">Privacy</a> •
+    <a href="/terms.html">Terms</a>
+  </footer>
+
+  <script type="module" src="/brain-arcade/apprentice-restorer/js/app.js"></script>
+</body>
+</html>
