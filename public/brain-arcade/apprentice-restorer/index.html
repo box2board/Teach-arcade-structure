@@ -55,6 +55,44 @@
       </div>
     </section>
 
+    <section class="section gameplay">
+      <h2>Playable Restoration Drill</h2>
+      <p>
+        Try a bite-sized gameplay loop: choose a tool, tap a system, and restore balance. Each repair updates the
+        Archive meter just like the full game would.
+      </p>
+      <div class="gameplay-panel" data-restoration>
+        <div class="gameplay-controls" aria-label="Tool selection">
+          <button class="tool-btn" type="button" data-tool="wind">Wind Tuner</button>
+          <button class="tool-btn" type="button" data-tool="prism">Light Prism</button>
+          <button class="tool-btn" type="button" data-tool="dynamo">Energy Dynamo</button>
+        </div>
+        <div class="gameplay-grid" role="group" aria-label="Restoration targets">
+          <button class="node" type="button" data-system="wind">
+            <span>Wind Gate</span>
+            <small>Needs Wind Tuner</small>
+          </button>
+          <button class="node" type="button" data-system="prism">
+            <span>Light Bridge</span>
+            <small>Needs Light Prism</small>
+          </button>
+          <button class="node" type="button" data-system="dynamo">
+            <span>Energy Loom</span>
+            <small>Needs Energy Dynamo</small>
+          </button>
+        </div>
+        <div class="gameplay-status">
+          <div class="meter" aria-hidden="true">
+            <div class="meter-fill" data-meter></div>
+          </div>
+          <p class="status-text" data-status aria-live="polite">
+            Select a tool to begin. Restored systems glow and fill the archive meter.
+          </p>
+          <button class="reset-btn" type="button" data-reset>Reset Drill</button>
+        </div>
+      </div>
+    </section>
+
     <section class="section">
       <h2>Teaching Pillars</h2>
       <div class="card-grid" data-pillars></div>
