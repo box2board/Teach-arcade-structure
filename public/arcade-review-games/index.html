@@ -12,6 +12,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <!-- Global site CSS -->
   <link rel="stylesheet" href="/assets/styles.css?v=1" />
 
   <!-- Meta description / keywords -->
@@ -157,7 +159,7 @@
   }
   </script>
 
-  <!-- PAGE STYLES -->
+  <!-- PAGE STYLES (scoped so they do NOT affect the injected global header/nav) -->
   <style>
     :root {
       --bg: #050714;
@@ -170,29 +172,28 @@
       --tile-bg: #15192b;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
+    /* IMPORTANT: do NOT flex-center the body (it can break global header layout) */
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: radial-gradient(circle at top, #141a33 0%, #050714 70%);
       color: var(--text);
       min-height: 100vh;
-      padding: 20px 12px 40px;
-      display: flex;
-      justify-content: center;
+      padding: 0; /* keep body clean for the injected global header */
     }
 
+    /* Page wrapper */
     .page {
       width: 100%;
       max-width: 1040px;
-      padding-top: 90px;
+      margin: 0 auto;
+      /* leave room for fixed/sticky global nav */
+      padding: 90px 12px 40px;
     }
 
-    header {
+    /* IMPORTANT: do NOT style the generic 'header' tag (nav.js likely injects one) */
+    .local-header {
       display: flex;
       flex-direction: column;
       gap: 10px;
@@ -213,9 +214,7 @@
       text-decoration: none;
     }
 
-    .crumbs a:hover {
-      text-decoration: underline;
-    }
+    .crumbs a:hover { text-decoration: underline; }
 
     h1 {
       font-family: "Press Start 2P", system-ui, sans-serif;
@@ -266,9 +265,7 @@
       margin-right: 10px;
     }
 
-    .jump-links a:hover {
-      text-decoration: underline;
-    }
+    .jump-links a:hover { text-decoration: underline; }
 
     main h2 {
       margin-top: 22px;
@@ -277,9 +274,7 @@
       font-weight: 700;
     }
 
-    main h2:first-of-type {
-      margin-top: 16px;
-    }
+    main h2:first-of-type { margin-top: 16px; }
 
     .game-grid {
       display: grid;
@@ -305,6 +300,7 @@
       align-items: center;
       font-size: 0.7rem;
       color: var(--muted);
+      gap: 10px;
     }
 
     .badge {
@@ -312,6 +308,7 @@
       padding: 2px 8px;
       border: 1px solid rgba(255,255,255,0.16);
       background: rgba(0,0,0,0.35);
+      white-space: nowrap;
     }
 
     .badge.subject {
@@ -365,6 +362,7 @@
       font-weight: 650;
       cursor: pointer;
       font-size: 0.78rem;
+      font याद: 0;
       font-family: "Press Start 2P", system-ui, sans-serif;
       text-transform: uppercase;
       text-decoration: none;
@@ -374,9 +372,7 @@
       white-space: nowrap;
     }
 
-    .play-btn span {
-      font-size: 0.9rem;
-    }
+    .play-btn span { font-size: 0.9rem; }
 
     .play-btn:hover {
       filter: brightness(1.06);
@@ -396,20 +392,20 @@
     }
 
     @media (max-width: 640px) {
-      h1 {
-        font-size: 0.9rem;
-      }
-      .subtitle {
-        font-size: 0.8rem;
-      }
+      h1 { font-size: 0.9rem; }
+      .subtitle { font-size: 0.8rem; }
     }
   </style>
 </head>
+
 <body>
+  <!-- Global header injection target -->
   <div id="site-header"></div>
+  <!-- Keep your existing nav path (as requested) -->
   <script src="/assets/scripts/nav.js?v=5" defer></script>
+
   <div class="page">
-    <header>
+    <header class="local-header">
       <div class="crumbs">
         <a href="/">Teach Arcade</a> · Arcade Review Games
       </div>
