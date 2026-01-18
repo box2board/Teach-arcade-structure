@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Play Chess on Teach Arcade's Brain Arcade. A classic strategy game that builds logic and planning skills." />
+  <title>Brain Arcade · Chess</title>
+  <link rel="canonical" href="https://teacharcade.com/brain-arcade/chess/" />
+
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <link rel="stylesheet" href="/brain-arcade/chess/style.css" />
+  <script src="/assets/scripts/nav.js"></script>
+  <script src="/brain-arcade/chess/script.js" defer></script>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main class="chess-page">
+    <header class="chess-hero">
+      <h1>♟️ Brain Arcade Chess</h1>
+      <p class="subtitle">Classic strategy. Think ahead.</p>
+    </header>
+
+    <section class="chess-board" aria-label="Chess game">
+      <div id="turn" class="turn" role="status" aria-live="polite"></div>
+      <div id="board" class="board" role="grid" aria-label="Chess board"></div>
+      <button class="reset" type="button" onclick="resetGame()">Reset Game</button>
+    </section>
+  </main>
+</body>
+</html>
