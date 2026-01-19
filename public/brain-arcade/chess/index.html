@@ -21,9 +21,32 @@
     </header>
 
     <section class="chess-board" aria-label="Chess game">
+      <div class="controls" role="group" aria-label="Game settings">
+        <label class="control">
+          <span>Mode</span>
+          <select id="mode">
+            <option value="2p">2 Player</option>
+            <option value="cpu">Vs Computer</option>
+          </select>
+        </label>
+        <label class="control">
+          <span>Side</span>
+          <select id="side">
+            <option value="white">Play as White</option>
+            <option value="black">Play as Black</option>
+          </select>
+        </label>
+        <label class="control">
+          <span>Difficulty</span>
+          <select id="difficulty">
+            <option value="easy">Easy</option>
+          </select>
+        </label>
+        <button class="reset" type="button" id="new-game">New Game</button>
+      </div>
+
       <div id="turn" class="turn" role="status" aria-live="polite"></div>
       <div id="board" class="board" role="grid" aria-label="Chess board"></div>
-      <button class="reset" type="button" onclick="resetGame()">Reset Game</button>
     </section>
   </main>
 </body>
