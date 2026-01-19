@@ -1,5 +1,9 @@
 const boardElement = document.getElementById("board");
 const turnElement = document.getElementById("turn");
+const modeSelect = document.getElementById("mode");
+const sideSelect = document.getElementById("side");
+const difficultySelect = document.getElementById("difficulty");
+const newGameButton = document.getElementById("new-game");
 
 const PIECES = {
   K: "♔",
@@ -14,6 +18,15 @@ const PIECES = {
   b: "♝",
   n: "♞",
   p: "♟",
+};
+
+const PIECE_VALUES = {
+  P: 1,
+  N: 3,
+  B: 3,
+  R: 5,
+  Q: 9,
+  K: 999,
 };
 
 const INITIAL_BOARD = [
@@ -33,6 +46,11 @@ let selected = null;
 let legalMoves = [];
 let castlingRights = null;
 let enPassantTarget = null;
+let gameMode = "2p";
+let playerSide = "white";
+let difficulty = "easy";
+let cpuThinking = false;
+let gameOver = false;
 
 const cloneBoard = (source) => source.map((row) => row.slice());
 
@@ -69,13 +87,30 @@ const renderBoard = () => {
   }
 };
 
-const updateTurnText = () => {
+const updateTurnText = (override) => {
+  if (override) {
+    turnElement.textContent = override;
+    return;
+  }
   const current = turn === "white" ? "White" : "Black";
   let text = `${current} to move`;
   if (isKingInCheck(turn)) {
     text = `${current} to move — CHECK!`;
   }
   turnElement.textContent = text;
+};
+
+const updateControlsForMode = () => {
+  const isCpu = gameMode === "cpu";
+  sideSelect.disabled = !isCpu;
+  difficultySelect.disabled = !isCpu;
+};
+
+const applySettings = () => {
+  gameMode = modeSelect.value;
+  playerSide = sideSelect.value;
+  difficulty = difficultySelect.value;
+  updateControlsForMode();
 };
 
 const resetGame = () => {
@@ -90,13 +125,22 @@ const resetGame = () => {
     bQ: true,
   };
   enPassantTarget = null;
+  cpuThinking = false;
+  gameOver = false;
   updateTurnText();
   renderBoard();
+  maybeCpuMove();
 };
 
-window.resetGame = resetGame;
+const startNewGame = () => {
+  applySettings();
+  resetGame();
+};
 
 const handleSquareClick = (r, c) => {
+  if (cpuThinking || gameOver) return;
+  if (gameMode === "cpu" && turn !== playerSide) return;
+
   const piece = board[r][c];
   const color = pieceColor(piece);
 
@@ -127,16 +171,28 @@ const handleSquareClick = (r, c) => {
   renderBoard();
 };
 
-const getLegalMovesForSquare = (r, c) => {
+const getLegalMovesForSquare = (r, c, color = turn) => {
   const piece = board[r][c];
   if (piece === ".") return [];
-  if (pieceColor(piece) !== turn) return [];
+  if (pieceColor(piece) !== color) return [];
 
   const pseudoMoves = getPseudoLegalMoves(board, r, c, piece);
   return pseudoMoves.filter((move) => {
     const simulated = applyMoveToBoard(board, move);
-    return !isKingInCheck(turn, simulated);
+    return !isKingInCheck(color, simulated);
   });
+};
+
+const getAllLegalMoves = (color) => {
+  const moves = [];
+  for (let r = 0; r < 8; r += 1) {
+    for (let c = 0; c < 8; c += 1) {
+      if (pieceColor(board[r][c]) === color) {
+        moves.push(...getLegalMovesForSquare(r, c, color));
+      }
+    }
+  }
+  return moves;
 };
 
 const getPseudoLegalMoves = (boardState, r, c, piece) => {
@@ -390,7 +446,7 @@ const applyMoveToBoard = (boardState, move) => {
   return next;
 };
 
-const makeMove = (move) => {
+const makeMove = (move, { fromCpu = false } = {}) => {
   const movingPiece = board[move.from.r][move.from.c];
   const targetPiece = board[move.to.r][move.to.c];
 
@@ -439,8 +495,78 @@ const makeMove = (move) => {
   selected = null;
   legalMoves = [];
   turn = turn === "white" ? "black" : "white";
-  updateTurnText();
+
+  if (getAllLegalMoves(turn).length === 0) {
+    gameOver = true;
+    updateTurnText("Game over (no legal moves).");
+  } else {
+    updateTurnText();
+  }
+
   renderBoard();
+
+  if (!fromCpu) {
+    maybeCpuMove();
+  }
+};
+
+const getPieceValue = (piece) => PIECE_VALUES[piece.toUpperCase()] || 0;
+
+const chooseCpuMove = (moves) => {
+  if (!moves.length) return null;
+
+  const captureScores = moves.map((move) => {
+    if (move.enPassant) return { move, score: 1 };
+    const target = board[move.to.r][move.to.c];
+    if (target === ".") return { move, score: 0 };
+    return { move, score: getPieceValue(target) };
+  });
+
+  const maxCapture = Math.max(...captureScores.map((entry) => entry.score));
+  if (maxCapture > 0) {
+    const bestCaptures = captureScores.filter((entry) => entry.score === maxCapture).map((entry) => entry.move);
+    return bestCaptures[Math.floor(Math.random() * bestCaptures.length)];
+  }
+
+  const cpuColor = turn;
+  const opponent = cpuColor === "white" ? "black" : "white";
+  const checkingMoves = moves.filter((move) => {
+    const simulated = applyMoveToBoard(board, move);
+    return isKingInCheck(opponent, simulated);
+  });
+
+  if (checkingMoves.length) {
+    return checkingMoves[Math.floor(Math.random() * checkingMoves.length)];
+  }
+
+  return moves[Math.floor(Math.random() * moves.length)];
+};
+
+const maybeCpuMove = () => {
+  if (gameMode !== "cpu" || gameOver) return;
+  const cpuSide = playerSide === "white" ? "black" : "white";
+  if (turn !== cpuSide) return;
+
+  const moves = getAllLegalMoves(cpuSide);
+  if (!moves.length) {
+    gameOver = true;
+    updateTurnText("Game over (no legal moves).");
+    return;
+  }
+
+  cpuThinking = true;
+  const delay = 300 + Math.floor(Math.random() * 300);
+  setTimeout(() => {
+    if (gameOver) {
+      cpuThinking = false;
+      return;
+    }
+    const move = chooseCpuMove(moves);
+    if (move) {
+      makeMove(move, { fromCpu: true });
+    }
+    cpuThinking = false;
+  }, delay);
 };
 
 const isKingInCheck = (color, boardState = board) => {
@@ -525,4 +651,12 @@ const isSquareAttacked = (boardState, r, c, attackerColor) => {
   return false;
 };
 
+modeSelect.addEventListener("change", () => {
+  gameMode = modeSelect.value;
+  updateControlsForMode();
+});
+
+newGameButton.addEventListener("click", startNewGame);
+
+applySettings();
 resetGame();
