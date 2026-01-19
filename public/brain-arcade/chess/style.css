@@ -95,6 +95,7 @@ body {
   align-items: center;
   justify-content: center;
   font-size: clamp(24px, 4vw, 36px);
+  font-family: "DejaVu Sans", "Segoe UI Symbol", "Noto Sans Symbols2", "Apple Symbols", system-ui, sans-serif;
   cursor: pointer;
   user-select: none;
 }
