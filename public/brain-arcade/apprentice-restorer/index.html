@@ -55,6 +55,48 @@
       </div>
     </section>
 
+    <section class="section gameplay">
+      <h2>Playable Restoration Map</h2>
+      <p>
+        Explore a full map, collect tools, and stabilize each system. Move with WASD or arrow keys, interact with
+        Space, and avoid roaming instability echoes. Restore every node to complete the run.
+      </p>
+      <div class="gameplay-panel" data-restoration>
+        <div class="gameplay-controls" aria-label="Tool selection">
+          <button class="tool-btn" type="button" data-tool="wind">Wind Tuner (1)</button>
+          <button class="tool-btn" type="button" data-tool="prism">Light Prism (2)</button>
+          <button class="tool-btn" type="button" data-tool="dynamo">Energy Dynamo (3)</button>
+          <button class="reset-btn" type="button" data-reset>Reset Map</button>
+        </div>
+        <div class="gameplay-canvas">
+          <canvas width="960" height="540" aria-label="Restoration map" role="img" data-canvas></canvas>
+          <div class="gameplay-hud" aria-live="polite">
+            <p><strong>Tool:</strong> <span data-tool-readout>None</span></p>
+            <p><strong>Archive:</strong> <span data-progress>0</span>/3 systems stabilized</p>
+            <p><strong>Status:</strong> <span data-status>Find a tool station, then stabilize each system.</span></p>
+          </div>
+        </div>
+        <div class="gameplay-notes">
+          <div class="note">
+            <h3>Controls</h3>
+            <ul>
+              <li>Move: WASD / Arrow keys</li>
+              <li>Interact: Space</li>
+              <li>Tool select: 1, 2, 3</li>
+            </ul>
+          </div>
+          <div class="note">
+            <h3>Objective</h3>
+            <p>Reach each system with the matching tool equipped and press Space to restore balance.</p>
+          </div>
+          <div class="note">
+            <h3>Dynamics</h3>
+            <p>Instability echoes roam the corridors. Touching them jolts you back to the last checkpoint.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="section">
       <h2>Teaching Pillars</h2>
       <div class="card-grid" data-pillars></div>

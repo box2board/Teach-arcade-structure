@@ -130,6 +130,115 @@ main {
   margin: 8px 0 0;
 }
 
+.gameplay {
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 16px;
+  padding: 24px;
+  border: 2px solid #0f172a;
+  box-shadow: 6px 6px 0 #0f172a;
+}
+
+.gameplay p {
+  color: var(--muted);
+  margin: 0 0 16px;
+}
+
+.gameplay-panel {
+  display: grid;
+  gap: 20px;
+}
+
+.gameplay-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.tool-btn {
+  border: 2px solid #0f172a;
+  border-radius: 999px;
+  padding: 10px 16px;
+  font-weight: 700;
+  background: #fff;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.2s ease;
+}
+
+.tool-btn.active {
+  background: var(--accent);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.gameplay-canvas {
+  display: grid;
+  gap: 16px;
+}
+
+.gameplay-canvas canvas {
+  width: 100%;
+  height: auto;
+  border: 2px solid #0f172a;
+  border-radius: 12px;
+  background: #0f172a;
+  image-rendering: pixelated;
+}
+
+.gameplay-hud {
+  border: 2px solid #0f172a;
+  border-radius: 12px;
+  background: #fff;
+  padding: 12px 14px;
+  display: grid;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.gameplay-hud p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.gameplay-notes {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.note {
+  border: 2px dashed #0f172a;
+  border-radius: 12px;
+  padding: 14px;
+  background: #fff;
+}
+
+.note h3 {
+  margin: 0 0 6px;
+  font-size: 15px;
+}
+
+.note p,
+.note li {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.note ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.reset-btn {
+  border: 2px solid #0f172a;
+  background: #fff;
+  padding: 8px 14px;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
 .timeline {
   display: grid;
   gap: 12px;
