@@ -56,39 +56,43 @@
     </section>
 
     <section class="section gameplay">
-      <h2>Playable Restoration Drill</h2>
+      <h2>Playable Restoration Map</h2>
       <p>
-        Try a bite-sized gameplay loop: choose a tool, tap a system, and restore balance. Each repair updates the
-        Archive meter just like the full game would.
+        Explore a full map, collect tools, and stabilize each system. Move with WASD or arrow keys, interact with
+        Space, and avoid roaming instability echoes. Restore every node to complete the run.
       </p>
       <div class="gameplay-panel" data-restoration>
         <div class="gameplay-controls" aria-label="Tool selection">
-          <button class="tool-btn" type="button" data-tool="wind">Wind Tuner</button>
-          <button class="tool-btn" type="button" data-tool="prism">Light Prism</button>
-          <button class="tool-btn" type="button" data-tool="dynamo">Energy Dynamo</button>
+          <button class="tool-btn" type="button" data-tool="wind">Wind Tuner (1)</button>
+          <button class="tool-btn" type="button" data-tool="prism">Light Prism (2)</button>
+          <button class="tool-btn" type="button" data-tool="dynamo">Energy Dynamo (3)</button>
+          <button class="reset-btn" type="button" data-reset>Reset Map</button>
         </div>
-        <div class="gameplay-grid" role="group" aria-label="Restoration targets">
-          <button class="node" type="button" data-system="wind">
-            <span>Wind Gate</span>
-            <small>Needs Wind Tuner</small>
-          </button>
-          <button class="node" type="button" data-system="prism">
-            <span>Light Bridge</span>
-            <small>Needs Light Prism</small>
-          </button>
-          <button class="node" type="button" data-system="dynamo">
-            <span>Energy Loom</span>
-            <small>Needs Energy Dynamo</small>
-          </button>
-        </div>
-        <div class="gameplay-status">
-          <div class="meter" aria-hidden="true">
-            <div class="meter-fill" data-meter></div>
+        <div class="gameplay-canvas">
+          <canvas width="960" height="540" aria-label="Restoration map" role="img" data-canvas></canvas>
+          <div class="gameplay-hud" aria-live="polite">
+            <p><strong>Tool:</strong> <span data-tool-readout>None</span></p>
+            <p><strong>Archive:</strong> <span data-progress>0</span>/3 systems stabilized</p>
+            <p><strong>Status:</strong> <span data-status>Find a tool station, then stabilize each system.</span></p>
           </div>
-          <p class="status-text" data-status aria-live="polite">
-            Select a tool to begin. Restored systems glow and fill the archive meter.
-          </p>
-          <button class="reset-btn" type="button" data-reset>Reset Drill</button>
+        </div>
+        <div class="gameplay-notes">
+          <div class="note">
+            <h3>Controls</h3>
+            <ul>
+              <li>Move: WASD / Arrow keys</li>
+              <li>Interact: Space</li>
+              <li>Tool select: 1, 2, 3</li>
+            </ul>
+          </div>
+          <div class="note">
+            <h3>Objective</h3>
+            <p>Reach each system with the matching tool equipped and press Space to restore balance.</p>
+          </div>
+          <div class="note">
+            <h3>Dynamics</h3>
+            <p>Instability echoes roam the corridors. Touching them jolts you back to the last checkpoint.</p>
+          </div>
         </div>
       </div>
     </section>
