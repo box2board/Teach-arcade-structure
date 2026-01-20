@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Cause and Effect Organizer | Teach Arcade Graphic Organizer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/assets/styles.css?v=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
+
+  <link rel="canonical" href="https://teacharcade.com/tools/graphic-organizers/cause-effect/" />
+  <meta name="description" content="Map one event or cause to multiple effects with this printable cause-and-effect organizer. Editable and classroom-ready." />
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Cause and Effect Organizer | Teach Arcade Graphic Organizer">
+  <meta property="og:description" content="Use this cause-and-effect chart to track results, outcomes, and consequences." />
+  <meta property="og:url" content="https://teacharcade.com/tools/graphic-organizers/cause-effect/">
+  <meta property="og:image" content="https://teacharcade.com/assets/images/teach-arcade-logo.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Cause and Effect Organizer | Teach Arcade Graphic Organizer">
+  <meta name="twitter:description" content="Printable cause-and-effect chart with add/remove effect boxes." />
+  <meta name="twitter:image" content="https://teacharcade.com/assets/images/teach-arcade-logo.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LearningResource",
+    "name": "Cause and Effect Organizer",
+    "learningResourceType": "Graphic Organizer",
+    "description": "Organizer with one cause box leading to multiple effects/results boxes.",
+    "url": "https://teacharcade.com/tools/graphic-organizers/cause-effect/",
+    "provider": {
+      "@type": "Organization",
+      "name": "Teach Arcade",
+      "url": "https://teacharcade.com"
+    }
+  }
+  </script>
+
+  <style>
+    .organizer-hero { margin: 16px 0 14px; }
+    .organizer-kicker { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px; background: #e0ecff; color: #2563eb; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+    .organizer-hero h1 { margin: 0 0 6px; font: 700 26px/1.1 "Poppins", system-ui, sans-serif; color: #0f172a; }
+    .organizer-hero p { margin: 0; font: 400 14px/1.5 "Nunito", system-ui, sans-serif; color: #475569; max-width: 720px; }
+    .ad-slot { width: 100%; margin: 14px 0; min-height: 48px; border-radius: 14px; background: #f1f5f9; border: 1px dashed #cbd5f5; }
+
+    .organizer-toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; margin: 12px 0 18px; font-size: 13px; }
+    .btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
+    button { border: none; cursor: pointer; font-family: inherit; }
+    .btn-primary { padding: 7px 12px; border-radius: 999px; background: #2563eb; color: #ffffff; font: 700 12px/1.1 "Nunito", system-ui, sans-serif; box-shadow: 0 10px 20px rgba(37, 99, 235, 0.35); }
+    .btn-secondary { padding: 7px 12px; border-radius: 999px; background: #f9fafb; color: #374151; font: 600 12px/1.1 "Nunito", system-ui, sans-serif; border: 1px solid #d1d5db; }
+    .save-status { font-size: 12px; color: #64748b; }
+    .save-status.is-saved { color: #16a34a; font-weight: 700; }
+
+    .organizer-card { border-radius: 18px; border: 1px solid #dde4f0; background: #ffffff; box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06); padding: 18px 20px 24px; }
+
+    .student-header { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin-bottom: 14px; }
+    .student-field label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; color: #94a3b8; display: block; margin-bottom: 4px; }
+    .student-field input { width: 100%; border-radius: 10px; border: 1px solid #d1d5db; padding: 6px 8px; font: 600 13px/1.3 "Nunito", system-ui, sans-serif; }
+
+    .cause-box {
+      border: 1px solid #d1d5db;
+      border-radius: 14px;
+      padding: 12px;
+      background: #f8fafc;
+      margin-bottom: 16px;
+    }
+    .cause-box h3 { margin: 0 0 6px; font: 700 13px/1.2 "Poppins", system-ui, sans-serif; }
+    .cause-box textarea {
+      width: 100%;
+      min-height: 80px;
+      border-radius: 10px;
+      border: 1px dashed #cbd5f5;
+      padding: 8px;
+      font: 400 13px/1.4 "Nunito", system-ui, sans-serif;
+      resize: vertical;
+      background: #ffffff;
+    }
+
+    .effects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .effect-card {
+      border: 1px solid #d1d5db;
+      border-radius: 14px;
+      padding: 10px;
+      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .effect-card textarea {
+      min-height: 70px;
+      border-radius: 10px;
+      border: 1px dashed #cbd5f5;
+      padding: 8px;
+      font: 400 13px/1.4 "Nunito", system-ui, sans-serif;
+      resize: vertical;
+    }
+    .effect-card button {
+      align-self: flex-end;
+      background: #fee2e2;
+      border: 1px solid #fecaca;
+      border-radius: 10px;
+      padding: 4px 8px;
+      font-size: 12px;
+    }
+
+    .seo-block { margin: 26px 0 0; color: #334155; font: 400 14px/1.6 "Nunito", system-ui, sans-serif; }
+    .seo-block h2 { font: 700 18px/1.2 "Poppins", system-ui, sans-serif; color: #0f172a; margin-bottom: 8px; }
+    .seo-block ul { padding-left: 18px; }
+    .faq { margin-top: 18px; border-top: 1px solid #e2e8f0; padding-top: 16px; }
+    .faq-item { margin-bottom: 12px; }
+    .faq-item h3 { font: 700 14px/1.3 "Poppins", system-ui, sans-serif; margin: 0 0 4px; }
+
+    @media print {
+      @page { size: letter portrait; margin: 0.25in; }
+      #site-header, nav.breadcrumbs, .organizer-hero, .organizer-toolbar, .seo-block, footer, .ad-slot { display: none !important; }
+      main.container { max-width: 100%; padding: 0; }
+      .organizer-card { box-shadow: none; border: none; padding: 0; }
+      .effect-card textarea, .cause-box textarea, .effect-card, .cause-box { border-color: #000; }
+      .effect-card button { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+  <script src="/assets/scripts/nav.js?v=5" defer></script>
+  <script src="/assets/scripts/global.js?v=1" defer></script>
+
+  <main class="container">
+    <nav class="breadcrumbs">
+      <a href="/">Home</a> ›
+      <a href="/tools/">Teacher Tools</a> ›
+      <a href="/tools/graphic-organizers/">Graphic Organizers</a> ›
+      Cause &amp; Effect
+    </nav>
+
+    <section class="organizer-hero">
+      <div class="organizer-kicker">Graphic Organizer</div>
+      <h1>Cause and Effect Organizer</h1>
+      <p>Track one event and multiple outcomes with a simple cause-and-effect map. Add or remove effect boxes based on your lesson.</p>
+    </section>
+
+    <div class="ad-slot ad-top" aria-label="Advertisement"></div>
+
+    <section class="organizer-toolbar" aria-label="Organizer controls">
+      <div class="btn-row">
+        <button class="btn-primary" type="button" id="addEffectBtn">➕ Add Effect</button>
+        <button class="btn-secondary" type="button" id="printBtn">🖨 Print</button>
+        <button class="btn-secondary" type="button" id="resetBtn">🧹 Reset</button>
+      </div>
+      <span class="save-status" id="saveStatus">Not saved yet</span>
+    </section>
+
+    <section class="organizer-card" aria-label="Cause and effect organizer">
+      <div class="student-header">
+        <div class="student-field">
+          <label for="studentName">Student Name</label>
+          <input id="studentName" data-field="studentName" type="text" placeholder="Name">
+        </div>
+        <div class="student-field">
+          <label for="studentClass">Class / Period</label>
+          <input id="studentClass" data-field="studentClass" type="text" placeholder="Class">
+        </div>
+        <div class="student-field">
+          <label for="studentDate">Date</label>
+          <input id="studentDate" data-field="studentDate" type="text" placeholder="Date">
+        </div>
+      </div>
+
+      <div class="cause-box">
+        <h3>Event / Cause</h3>
+        <textarea data-field="cause" placeholder="Describe the main event or cause"></textarea>
+      </div>
+
+      <div class="effects-grid" id="effects"></div>
+    </section>
+
+    <section class="seo-block">
+      <h2>How to Use in Class</h2>
+      <ul>
+        <li>Use the cause box for a key historical event, then list short- and long-term effects.</li>
+        <li>Assign groups different causes and compare their effect maps during discussion.</li>
+        <li>Ask students to highlight which effects are immediate versus delayed.</li>
+      </ul>
+
+      <div class="faq">
+        <h2>Cause &amp; Effect FAQs</h2>
+        <div class="faq-item">
+          <h3>How many effects should students list?</h3>
+          <p>Three to five effects is a solid target, but you can add or remove boxes depending on the activity.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Can this be used for science experiments?</h3>
+          <p>Yes. Use the cause box for the change in variables and effects for observations.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Will the chart print cleanly?</h3>
+          <p>The print layout removes extra UI so students get a clean worksheet.</p>
+        </div>
+      </div>
+
+      <p>
+        Related organizers: <a href="/tools/graphic-organizers/sequence-chart/">Sequence Chart</a>,
+        <a href="/tools/graphic-organizers/main-idea-details/">Main Idea &amp; Details</a>, and
+        <a href="/tools/graphic-organizers/timeline-template/">Timeline Template</a>.
+      </p>
+      <p><a href="/tools/graphic-organizers/">Back to Graphic Organizers</a></p>
+    </section>
+  </main>
+
+  <footer>
+    © <script>document.write(new Date().getFullYear())</script> Teach Arcade •
+    <a href="/privacy.html">Privacy</a> • <a href="/terms.html">Terms</a>
+  </footer>
+
+  <script>
+    (function () {
+      const STORAGE_KEY = 'teacharcade_cause_effect_v1';
+      const statusEl = document.getElementById('saveStatus');
+      const effectsContainer = document.getElementById('effects');
+      const addEffectBtn = document.getElementById('addEffectBtn');
+      const resetBtn = document.getElementById('resetBtn');
+      const printBtn = document.getElementById('printBtn');
+
+      function setSaved() {
+        if (!statusEl) return;
+        statusEl.textContent = 'Saved';
+        statusEl.classList.add('is-saved');
+      }
+
+      function createEffect(value = '') {
+        const card = document.createElement('div');
+        card.className = 'effect-card';
+        card.innerHTML = `
+          <label class="sr-only">Effect</label>
+          <textarea placeholder="Effect or result"></textarea>
+          <button type="button" aria-label="Remove effect">Remove</button>
+        `;
+        const textarea = card.querySelector('textarea');
+        textarea.value = value;
+        textarea.addEventListener('input', saveState);
+        card.querySelector('button').addEventListener('click', () => {
+          card.remove();
+          saveState();
+        });
+        effectsContainer.appendChild(card);
+      }
+
+      function saveState() {
+        const data = {
+          studentName: document.getElementById('studentName').value,
+          studentClass: document.getElementById('studentClass').value,
+          studentDate: document.getElementById('studentDate').value,
+          cause: document.querySelector('[data-field="cause"]').value,
+          effects: []
+        };
+        effectsContainer.querySelectorAll('textarea').forEach(textarea => {
+          data.effects.push(textarea.value);
+        });
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+          setSaved();
+        } catch (e) {
+          console.warn('Cause/Effect: unable to save', e);
+        }
+      }
+
+      function loadState() {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          if (!raw) {
+            for (let i = 0; i < 4; i += 1) createEffect();
+            return;
+          }
+          const data = JSON.parse(raw);
+          document.getElementById('studentName').value = data.studentName || '';
+          document.getElementById('studentClass').value = data.studentClass || '';
+          document.getElementById('studentDate').value = data.studentDate || '';
+          document.querySelector('[data-field="cause"]').value = data.cause || '';
+          if (Array.isArray(data.effects) && data.effects.length) {
+            data.effects.forEach(effect => createEffect(effect));
+          } else {
+            for (let i = 0; i < 4; i += 1) createEffect();
+          }
+        } catch (e) {
+          console.warn('Cause/Effect: unable to load', e);
+          for (let i = 0; i < 4; i += 1) createEffect();
+        }
+      }
+
+      function resetAll() {
+        const confirmReset = window.confirm('Clear all fields for a fresh copy?');
+        if (!confirmReset) return;
+        document.getElementById('studentName').value = '';
+        document.getElementById('studentClass').value = '';
+        document.getElementById('studentDate').value = '';
+        document.querySelector('[data-field="cause"]').value = '';
+        effectsContainer.innerHTML = '';
+        for (let i = 0; i < 4; i += 1) createEffect();
+        saveState();
+      }
+
+      document.querySelectorAll('[data-field]').forEach(field => field.addEventListener('input', saveState));
+      if (addEffectBtn) addEffectBtn.addEventListener('click', () => { createEffect(); saveState(); });
+      if (resetBtn) resetBtn.addEventListener('click', resetAll);
+      if (printBtn) printBtn.addEventListener('click', () => window.print());
+
+      loadState();
+    })();
+  </script>
+</body>
+</html>

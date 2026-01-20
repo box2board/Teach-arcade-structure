@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Venn Diagram Template | Teach Arcade Graphic Organizer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/assets/styles.css?v=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
+
+  <link rel="canonical" href="https://teacharcade.com/tools/graphic-organizers/venn-diagram/" />
+  <meta name="description" content="Build a printable Venn diagram in minutes. Compare two ideas, texts, or topics with an editable, classroom-ready template from Teach Arcade." />
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Venn Diagram Template | Teach Arcade Graphic Organizer">
+  <meta property="og:description" content="Editable Venn diagram organizer for comparing two ideas with a clear overlap section. Print-ready and free." />
+  <meta property="og:url" content="https://teacharcade.com/tools/graphic-organizers/venn-diagram/">
+  <meta property="og:image" content="https://teacharcade.com/assets/images/teach-arcade-logo.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Venn Diagram Template | Teach Arcade Graphic Organizer">
+  <meta name="twitter:description" content="Use this printable Venn diagram to highlight similarities and differences in any subject." />
+  <meta name="twitter:image" content="https://teacharcade.com/assets/images/teach-arcade-logo.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LearningResource",
+    "name": "Venn Diagram Template",
+    "learningResourceType": "Graphic Organizer",
+    "description": "Editable Venn diagram with two circles and a shared overlap space for comparisons.",
+    "url": "https://teacharcade.com/tools/graphic-organizers/venn-diagram/",
+    "provider": {
+      "@type": "Organization",
+      "name": "Teach Arcade",
+      "url": "https://teacharcade.com"
+    }
+  }
+  </script>
+
+  <style>
+    .organizer-hero {
+      margin: 16px 0 14px;
+    }
+    .organizer-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #e0ecff;
+      color: #2563eb;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+    .organizer-hero h1 {
+      margin: 0 0 6px;
+      font: 700 26px/1.1 "Poppins", system-ui, sans-serif;
+      color: #0f172a;
+    }
+    .organizer-hero p {
+      margin: 0;
+      font: 400 14px/1.5 "Nunito", system-ui, sans-serif;
+      color: #475569;
+      max-width: 720px;
+    }
+
+    .ad-slot { width: 100%; margin: 14px 0; min-height: 48px; border-radius: 14px; background: #f1f5f9; border: 1px dashed #cbd5f5; }
+
+    .organizer-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      margin: 12px 0 18px;
+      font-size: 13px;
+    }
+    .btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
+    button {
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .btn-primary {
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: #2563eb;
+      color: #ffffff;
+      font: 700 12px/1.1 "Nunito", system-ui, sans-serif;
+      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.35);
+    }
+    .btn-secondary {
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: #f9fafb;
+      color: #374151;
+      font: 600 12px/1.1 "Nunito", system-ui, sans-serif;
+      border: 1px solid #d1d5db;
+    }
+    .save-status {
+      font-size: 12px;
+      color: #64748b;
+    }
+    .save-status.is-saved { color: #16a34a; font-weight: 700; }
+
+    .organizer-card {
+      border-radius: 18px;
+      border: 1px solid #dde4f0;
+      background: #ffffff;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
+      padding: 18px 20px 22px;
+    }
+
+    .student-header {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .student-field label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      color: #94a3b8;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .student-field input {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid #d1d5db;
+      padding: 6px 8px;
+      font: 600 13px/1.3 "Nunito", system-ui, sans-serif;
+    }
+
+    .venn-options {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+      font-size: 13px;
+      color: #475569;
+    }
+    .venn-labels {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .venn-labels input {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid #d1d5db;
+      padding: 6px 8px;
+      font: 600 13px/1.3 "Nunito", system-ui, sans-serif;
+    }
+
+    .venn-stage {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 6px 0 4px;
+      min-height: 320px;
+    }
+    .venn-circle {
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      border: 2px solid #94a3b8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      background: rgba(226, 232, 240, 0.3);
+    }
+    .venn-left { margin-right: -70px; }
+    .venn-right { margin-left: -70px; }
+    .venn-circle textarea {
+      width: 100%;
+      height: 100%;
+      border: none;
+      resize: none;
+      background: transparent;
+      font: 400 13px/1.4 "Nunito", system-ui, sans-serif;
+      color: #0f172a;
+      outline: none;
+    }
+    .venn-overlap {
+      position: absolute;
+      width: 160px;
+      height: 160px;
+      border-radius: 18px;
+      border: 2px dashed #94a3b8;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+    }
+    .venn-overlap textarea {
+      width: 100%;
+      height: 100%;
+      border: none;
+      resize: none;
+      background: transparent;
+      font: 600 12px/1.4 "Nunito", system-ui, sans-serif;
+      color: #0f172a;
+      outline: none;
+    }
+
+    .seo-block {
+      margin: 26px 0 0;
+      color: #334155;
+      font: 400 14px/1.6 "Nunito", system-ui, sans-serif;
+    }
+    .seo-block h2 {
+      font: 700 18px/1.2 "Poppins", system-ui, sans-serif;
+      color: #0f172a;
+      margin-bottom: 8px;
+    }
+    .seo-block ul {
+      padding-left: 18px;
+    }
+    .faq {
+      margin-top: 18px;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 16px;
+    }
+    .faq-item { margin-bottom: 12px; }
+    .faq-item h3 { font: 700 14px/1.3 "Poppins", system-ui, sans-serif; margin: 0 0 4px; }
+
+    @media (max-width: 720px) {
+      .venn-stage { flex-direction: column; min-height: 560px; }
+      .venn-left, .venn-right { margin: 0; }
+      .venn-overlap { position: static; margin: 12px 0; }
+    }
+
+    @media print {
+      @page { size: letter portrait; margin: 0.25in; }
+      #site-header, nav.breadcrumbs, .organizer-hero, .organizer-toolbar, .seo-block, footer, .ad-slot { display: none !important; }
+      main.container { max-width: 100%; padding: 0; }
+      .organizer-card { box-shadow: none; border: none; padding: 0; }
+      .venn-circle, .venn-overlap { border-color: #000; }
+    }
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+  <script src="/assets/scripts/nav.js?v=5" defer></script>
+  <script src="/assets/scripts/global.js?v=1" defer></script>
+
+  <main class="container">
+    <nav class="breadcrumbs">
+      <a href="/">Home</a> ›
+      <a href="/tools/">Teacher Tools</a> ›
+      <a href="/tools/graphic-organizers/">Graphic Organizers</a> ›
+      Venn Diagram
+    </nav>
+
+    <section class="organizer-hero">
+      <div class="organizer-kicker">Graphic Organizer</div>
+      <h1>Venn Diagram Template</h1>
+      <p>Compare two topics, characters, or processes with a clean two-circle Venn diagram. Type directly in each area and print a ready-to-go worksheet.</p>
+    </section>
+
+    <div class="ad-slot ad-top" aria-label="Advertisement"></div>
+
+    <section class="organizer-toolbar" aria-label="Organizer controls">
+      <div class="btn-row">
+        <button class="btn-primary" type="button" id="printBtn">🖨 Print</button>
+        <button class="btn-secondary" type="button" id="resetBtn">🧹 Reset</button>
+      </div>
+      <span class="save-status" id="saveStatus">Not saved yet</span>
+    </section>
+
+    <section class="organizer-card" aria-label="Venn diagram organizer">
+      <div class="student-header">
+        <div class="student-field">
+          <label for="studentName">Student Name</label>
+          <input id="studentName" data-field="studentName" type="text" placeholder="Name">
+        </div>
+        <div class="student-field">
+          <label for="studentClass">Class / Period</label>
+          <input id="studentClass" data-field="studentClass" type="text" placeholder="Class">
+        </div>
+        <div class="student-field">
+          <label for="studentDate">Date</label>
+          <input id="studentDate" data-field="studentDate" type="text" placeholder="Date">
+        </div>
+      </div>
+
+      <div class="venn-options">
+        <label>
+          <input type="checkbox" id="toggleLabels" data-field="toggleLabels" checked>
+          Add title labels for the two circles
+        </label>
+      </div>
+
+      <div class="venn-labels" id="labelFields">
+        <input type="text" id="leftLabel" data-field="leftLabel" value="Topic A">
+        <input type="text" id="rightLabel" data-field="rightLabel" value="Topic B">
+      </div>
+
+      <div class="venn-stage">
+        <div class="venn-circle venn-left">
+          <label class="sr-only" for="leftText">Left circle notes</label>
+          <textarea id="leftText" data-field="leftText" placeholder="Only in Topic A"></textarea>
+        </div>
+        <div class="venn-circle venn-right">
+          <label class="sr-only" for="rightText">Right circle notes</label>
+          <textarea id="rightText" data-field="rightText" placeholder="Only in Topic B"></textarea>
+        </div>
+        <div class="venn-overlap">
+          <label class="sr-only" for="overlapText">Overlap notes</label>
+          <textarea id="overlapText" data-field="overlapText" placeholder="Both"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <section class="seo-block">
+      <h2>How to Use in Class</h2>
+      <ul>
+        <li>Assign pairs to compare two characters, events, or scientific concepts.</li>
+        <li>Model one overlap item as a class, then let students finish independently.</li>
+        <li>Use the overlap section for evidence-based similarities, not just opinions.</li>
+      </ul>
+
+      <div class="faq">
+        <h2>Venn Diagram FAQs</h2>
+        <div class="faq-item">
+          <h3>Can I use this Venn diagram for more than two topics?</h3>
+          <p>For two-topic comparisons, this layout stays clean. For three topics, consider pairing students and comparing two at a time.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Do students need accounts to save?</h3>
+          <p>No logins required. The organizer saves automatically in the current browser.</p>
+        </div>
+        <div class="faq-item">
+          <h3>What if I want blank copies?</h3>
+          <p>Click reset, then print. The student header stays so you can hand out ready-to-write pages.</p>
+        </div>
+      </div>
+
+      <p>
+        Explore more templates: <a href="/tools/graphic-organizers/t-chart/">T-Chart</a>,
+        <a href="/tools/graphic-organizers/frayer-model/">Frayer Model</a>, and
+        <a href="/tools/graphic-organizers/cause-effect/">Cause &amp; Effect</a>.
+      </p>
+      <p><a href="/tools/graphic-organizers/">Back to Graphic Organizers</a></p>
+    </section>
+  </main>
+
+  <footer>
+    © <script>document.write(new Date().getFullYear())</script> Teach Arcade •
+    <a href="/privacy.html">Privacy</a> • <a href="/terms.html">Terms</a>
+  </footer>
+
+  <script>
+    (function () {
+      const STORAGE_KEY = 'teacharcade_venn_diagram_v1';
+      const statusEl = document.getElementById('saveStatus');
+      const labelFields = document.getElementById('labelFields');
+      const toggleLabels = document.getElementById('toggleLabels');
+      const resetBtn = document.getElementById('resetBtn');
+      const printBtn = document.getElementById('printBtn');
+
+      const fields = Array.from(document.querySelectorAll('[data-field]'));
+
+      function setSaved() {
+        if (!statusEl) return;
+        statusEl.textContent = 'Saved';
+        statusEl.classList.add('is-saved');
+      }
+
+      function saveState() {
+        const data = {};
+        fields.forEach(field => {
+          const key = field.getAttribute('data-field');
+          if (!key) return;
+          if (field.type === 'checkbox') {
+            data[key] = field.checked;
+          } else {
+            data[key] = field.value;
+          }
+        });
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+          setSaved();
+        } catch (e) {
+          console.warn('Venn: unable to save', e);
+        }
+      }
+
+      function loadState() {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          if (!raw) return;
+          const data = JSON.parse(raw);
+          fields.forEach(field => {
+            const key = field.getAttribute('data-field');
+            if (!key || data[key] === undefined) return;
+            if (field.type === 'checkbox') {
+              field.checked = data[key];
+            } else {
+              field.value = data[key];
+            }
+          });
+        } catch (e) {
+          console.warn('Venn: unable to load', e);
+        }
+      }
+
+      function syncLabels() {
+        if (!toggleLabels || !labelFields) return;
+        labelFields.style.display = toggleLabels.checked ? 'grid' : 'none';
+      }
+
+      function resetAll() {
+        const confirmReset = window.confirm('Clear all fields for a fresh copy?');
+        if (!confirmReset) return;
+        fields.forEach(field => {
+          if (field.type === 'checkbox') {
+            field.checked = true;
+          } else {
+            field.value = '';
+          }
+        });
+        document.getElementById('leftLabel').value = 'Topic A';
+        document.getElementById('rightLabel').value = 'Topic B';
+        syncLabels();
+        saveState();
+      }
+
+      fields.forEach(field => {
+        field.addEventListener('input', saveState);
+        field.addEventListener('change', () => {
+          syncLabels();
+          saveState();
+        });
+      });
+
+      if (resetBtn) resetBtn.addEventListener('click', resetAll);
+      if (printBtn) printBtn.addEventListener('click', () => window.print());
+      if (toggleLabels) toggleLabels.addEventListener('change', syncLabels);
+
+      loadState();
+      syncLabels();
+    })();
+  </script>
+</body>
+</html>
