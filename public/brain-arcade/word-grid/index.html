@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Word Grid | Teach Arcade Brain Arcade</title>
+  <meta name="description" content="Connect adjacent letters to build words before time runs out in Word Grid, a fast-paced Boggle-style game in Teach Arcade." />
+  <link rel="canonical" href="https://teacharcade.com/brain-arcade/word-grid/" />
+  <meta property="og:title" content="Word Grid | Teach Arcade Brain Arcade" />
+  <meta property="og:description" content="Connect letters to build words before time runs out in Word Grid, a Boggle-style game for quick thinking." />
+  <meta property="og:url" content="https://teacharcade.com/brain-arcade/word-grid/" />
+  <meta property="og:type" content="website" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <link rel="stylesheet" href="./game.css" />
+  <script defer src="/assets/nav.js"></script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Word Grid",
+      "applicationCategory": "Game",
+      "operatingSystem": "All",
+      "url": "https://teacharcade.com/brain-arcade/word-grid/",
+      "description": "Connect adjacent letters to build words before time runs out in Word Grid, a Boggle-style game in Teach Arcade.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Teach Arcade"
+      }
+    }
+  </script>
+</head>
+<body>
+  <main class="page">
+    <div class="breadcrumb" aria-label="Breadcrumb">
+      <span>Home</span>
+      <span class="divider">›</span>
+      <span>Brain Arcade</span>
+      <span class="divider">›</span>
+      <span aria-current="page">Word Grid</span>
+    </div>
+
+    <section class="cabinet" aria-label="Word Grid game">
+      <header class="cabinet-header">
+        <div>
+          <h1>Word Grid</h1>
+          <p>Connect letters to build words before time runs out.</p>
+        </div>
+        <div class="status-bar" role="status" aria-live="polite">
+          <div class="status-item">
+            <span class="label">Timer</span>
+            <span class="value" id="timerDisplay">60s</span>
+          </div>
+          <div class="status-item">
+            <span class="label">Score</span>
+            <span class="value" id="scoreDisplay">0</span>
+          </div>
+          <div class="status-item">
+            <span class="label">Best</span>
+            <span class="value" id="bestDisplay">0</span>
+          </div>
+          <div class="status-item badge" id="gridBadge">4x4</div>
+          <button class="settings-btn" id="settingsToggle" type="button" aria-expanded="false">Settings</button>
+        </div>
+      </header>
+
+      <div class="cabinet-body">
+        <section class="left-panel">
+          <div class="board" id="board" role="grid" aria-label="Word Grid board"></div>
+          <div class="current-word" aria-live="polite">
+            <span class="label">Current Word:</span>
+            <span id="currentWord">—</span>
+          </div>
+          <div class="controls">
+            <button id="submitWord" type="button" class="primary">Submit</button>
+            <button id="undoWord" type="button">Undo</button>
+            <button id="clearWord" type="button">Clear</button>
+          </div>
+          <div class="controls">
+            <button id="startPause" type="button" class="primary">Start</button>
+            <button id="finishRound" type="button">Finish Round</button>
+            <button id="newGrid" type="button">New Grid</button>
+          </div>
+        </section>
+
+        <aside class="right-panel">
+          <section class="panel">
+            <h2>Found Words</h2>
+            <div class="found-list" id="foundList" aria-live="polite"></div>
+          </section>
+
+          <section class="panel stats">
+            <h2>Quick Stats</h2>
+            <ul>
+              <li><span>Words Found</span><strong id="statCount">0</strong></li>
+              <li><span>Longest Word</span><strong id="statLongest">—</strong></li>
+              <li><span>Average Length</span><strong id="statAverage">0</strong></li>
+            </ul>
+          </section>
+
+          <section class="panel">
+            <details>
+              <summary>How to play</summary>
+              <div class="how-to">
+                <p>Drag or tap adjacent letters to form a word. Letters must touch horizontally, vertically, or diagonally, and you can’t reuse the same tile in one word.</p>
+                <p>Hit Submit to score points. Short words score less; longer words score more. Use Settings to adjust grid size, timer, and minimum length.</p>
+              </div>
+            </details>
+          </section>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <div class="settings-drawer" id="settingsDrawer" aria-hidden="true">
+    <div class="drawer-content" role="dialog" aria-modal="true" aria-label="Game settings">
+      <header>
+        <h2>Settings</h2>
+        <button id="closeSettings" type="button" aria-label="Close settings">×</button>
+      </header>
+      <div class="drawer-body">
+        <label>
+          Grid Size
+          <select id="gridSize">
+            <option value="4">4 x 4</option>
+            <option value="5">5 x 5</option>
+          </select>
+        </label>
+        <label>
+          Timer
+          <select id="timerSetting">
+            <option value="60">60 seconds</option>
+            <option value="120">120 seconds</option>
+            <option value="0">Practice (no timer)</option>
+          </select>
+        </label>
+        <label>
+          Minimum Word Length
+          <select id="minLength">
+            <option value="3">3 letters</option>
+            <option value="4">4 letters</option>
+          </select>
+        </label>
+        <label class="theme-toggle">
+          Theme
+          <select id="themeSetting">
+            <option value="arcade">Arcade</option>
+            <option value="classroom">Classroom</option>
+          </select>
+        </label>
+      </div>
+      <footer>
+        <button id="saveSettings" type="button" class="primary">Save Settings</button>
+      </footer>
+    </div>
+  </div>
+
+  <div class="modal" id="endModal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="endTitle">
+      <h2 id="endTitle">Round Complete!</h2>
+      <p class="modal-score">Final Score: <strong id="endScore">0</strong></p>
+      <div class="modal-stats">
+        <p>Words Found: <strong id="endCount">0</strong></p>
+        <p>Longest Word: <strong id="endLongest">—</strong></p>
+      </div>
+      <div class="modal-actions">
+        <button id="playAgain" type="button" class="primary">Play Again</button>
+        <button id="newGridModal" type="button">New Grid</button>
+        <button id="reviewWords" type="button">Review Words</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="./dictionary.js"></script>
+  <script src="./game.js" defer></script>
+</body>
+</html>
