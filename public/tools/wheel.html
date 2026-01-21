@@ -51,7 +51,10 @@
   }
   </script>
 
-  <link rel="stylesheet" href="/assets/styles.css?v=1" />
+  <link rel="preload" href="/assets/styles.css?v=1" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/assets/styles.css?v=1"></noscript>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
 
@@ -166,6 +169,8 @@
     .dark .hero p {
       color: #d1d5db;
     }
+    #site-header { min-height: 72px; }
+    @media (max-width: 640px){ #site-header { min-height: 64px; } }
   </style>
 </head>
 
@@ -294,6 +299,7 @@
           "Sofia K.",
           "Jaden T.",
           "Harper L.",
+          "Gary D.",
           "Nora S.",
           "Diego P.",
           "Zoe W.",
