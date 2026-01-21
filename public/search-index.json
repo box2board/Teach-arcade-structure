@@ -1559,6 +1559,171 @@
     "source": "sitemap"
   },
   {
+    "title": "Venn Diagram",
+    "url": "/tools/graphic-organizers/venn-diagram/",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:venn-diagram"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Frayer Model",
+    "url": "/tools/graphic-organizers/frayer-model/",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:frayer-model"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "T Chart",
+    "url": "/tools/graphic-organizers/t-chart/",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:t-chart"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Cause Effect",
+    "url": "/tools/graphic-organizers/cause-effect/",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:cause-effect"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Main Idea Details",
+    "url": "/tools/graphic-organizers/main-idea-details/",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:main-idea-details"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Sequence Chart",
+    "url": "/tools/graphic-organizers/sequence-chart/",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:sequence-chart"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Character Map",
+    "url": "/tools/graphic-organizers/character-map/",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:character-map"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Story Plot Diagram",
+    "url": "/tools/graphic-organizers/story-plot-diagram/",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:story-plot-diagram"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Pros Cons",
+    "url": "/tools/graphic-organizers/pros-cons/",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:pros-cons"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Vocabulary Organizer",
+    "url": "/tools/graphic-organizers/vocabulary-organizer/",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:vocabulary-organizer"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Timeline Template",
+    "url": "/tools/graphic-organizers/timeline-template/",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:timeline-template"
+    ],
+    "source": "sitemap"
+  },
+  {
     "title": "Group Maker",
     "url": "/tools/group-maker",
     "type": "tool",
