@@ -36,6 +36,8 @@ const FALL_SPEEDS = {
   fast: 650,
 };
 
+let gameState = "READY";
+
 const state = {
   tier: "ms",
   content: null,
@@ -49,8 +51,10 @@ const state = {
   currentRow: 0,
   intervalId: null,
   timeId: null,
+  rafId: null,
   seconds: 0,
   paused: false,
+  gameOver: false,
   stats: {
     score: 0,
     answered: 0,
@@ -147,14 +151,37 @@ function buildItemQueue() {
   return shuffle(items);
 }
 
-function setupGame() {
+function hideAllOverlays() {
+  gameoverModal.hidden = true;
+  toast.hidden = true;
+}
+
+function showGameOverOverlay() {
+  if (gameState !== "GAME_OVER") return;
+  gameoverModal.hidden = false;
+}
+
+function stopLoops() {
+  clearInterval(state.intervalId);
+  clearInterval(state.timeId);
+  if (state.rafId) {
+    cancelAnimationFrame(state.rafId);
+  }
+  state.intervalId = null;
+  state.timeId = null;
+  state.rafId = null;
+}
+
+function resetGameState() {
+  stopLoops();
   state.stacks = state.categories.map(() => []);
-  state.itemsQueue = buildItemQueue();
+  state.itemsQueue = [];
   state.currentItem = null;
   state.currentColumn = 0;
   state.currentRow = 0;
   state.seconds = 0;
   state.paused = false;
+  state.gameOver = false;
   state.stats = {
     score: 0,
     answered: 0,
@@ -166,14 +193,67 @@ function setupGame() {
   state.categories.forEach((category) => {
     state.stats.categoryStats[category] = { correct: 0, total: 0 };
   });
-  updateStats();
+  scoreEl.textContent = "0";
+  answeredEl.textContent = "0";
+  correctEl.textContent = "0";
+  streakEl.textContent = "0";
+  accuracyEl.textContent = "0%";
+  timeEl.textContent = "0:00";
+  gameoverSummary.textContent = "";
+  categorySummary.innerHTML = "";
+  missedList.innerHTML = "";
+  updatePreview(state.categories);
+  updateStatusLabels();
   buildBoard();
-  spawnTile();
-  startTimers();
-  gameArea.hidden = false;
-  gameoverModal.hidden = true;
   pauseButton.textContent = "Pause";
 }
+
+function startGame() {
+  if (!state.content) return;
+  stopLoops();
+  applySettingsToCategories();
+  resetGameState();
+  hideAllOverlays();
+  gameState = "PLAYING";
+  gameArea.hidden = false;
+  pauseButton.disabled = false;
+  restartButton.disabled = false;
+  state.itemsQueue = buildItemQueue();
+  spawnTile();
+  startTimers();
+}
+
+function replayGame() {
+  stopLoops();
+  hideAllOverlays();
+  gameState = "PLAYING";
+  resetGameState();
+  gameArea.hidden = false;
+  pauseButton.disabled = false;
+  restartButton.disabled = false;
+  state.itemsQueue = buildItemQueue();
+  spawnTile();
+  startTimers();
+}
+
+function initUI() {
+  gameState = "READY";
+  hideAllOverlays();
+  state.gameOver = false;
+  gameArea.hidden = false;
+  pauseButton.disabled = true;
+  restartButton.disabled = true;
+  resetGameState();
+}
+
+/**
+ * Test plan:
+ * - Load page → READY, no overlays
+ * - Start → PLAYING
+ * - Lose → GAME_OVER overlay
+ * - Replay → PLAYING, overlay hidden
+ * - Refresh anytime → READY, no overlays
+ */
 
 function buildBoard() {
   boardEl.innerHTML = "";
@@ -255,7 +335,7 @@ function spawnTile() {
 }
 
 function tick() {
-  if (state.paused) return;
+  if (gameState !== "PLAYING" || state.paused) return;
   const stackHeight = state.stacks[state.currentColumn].length;
   if (state.currentRow + 1 >= MAX_HEIGHT - stackHeight) {
     lockTile();
@@ -266,7 +346,7 @@ function tick() {
 }
 
 function moveToColumn(index) {
-  if (state.paused) return;
+  if (gameState !== "PLAYING" || state.paused) return;
   const prevColumn = state.currentColumn;
   state.currentColumn = Math.max(0, Math.min(state.categories.length - 1, index));
   const stackHeight = state.stacks[state.currentColumn].length;
@@ -280,12 +360,12 @@ function moveDirection(direction) {
 }
 
 function softDrop() {
-  if (state.paused) return;
+  if (gameState !== "PLAYING" || state.paused) return;
   tick();
 }
 
 function hardDrop() {
-  if (state.paused) return;
+  if (gameState !== "PLAYING" || state.paused) return;
   const stackHeight = state.stacks[state.currentColumn].length;
   state.currentRow = MAX_HEIGHT - stackHeight - 1;
   renderColumn(state.currentColumn);
@@ -372,14 +452,20 @@ function startTimers() {
 }
 
 function pauseGame() {
+  if (gameState !== "PLAYING" && gameState !== "PAUSED") return;
   state.paused = !state.paused;
+  gameState = state.paused ? "PAUSED" : "PLAYING";
   pauseButton.textContent = state.paused ? "Resume" : "Pause";
 }
 
 function endGame() {
-  clearInterval(state.intervalId);
-  clearInterval(state.timeId);
-  gameoverModal.hidden = false;
+  if (gameState !== "PLAYING") return;
+  gameState = "GAME_OVER";
+  state.gameOver = true;
+  stopLoops();
+  showGameOverOverlay();
+  pauseButton.disabled = true;
+  restartButton.disabled = true;
   const accuracy = state.stats.answered
     ? Math.round((state.stats.correct / state.stats.answered) * 100)
     : 0;
@@ -422,6 +508,9 @@ function handleTierChange() {
   setToggle(misconceptionToggle, state.misconceptions);
   loadContent(state.tier).then(() => {
     applySettingsToCategories();
+    if (gameState !== "PLAYING") {
+      resetGameState();
+    }
   });
 }
 
@@ -429,6 +518,9 @@ function handleMisconceptionToggle() {
   state.misconceptions = !state.misconceptions;
   setToggle(misconceptionToggle, state.misconceptions);
   applySettingsToCategories();
+  if (gameState !== "PLAYING") {
+    resetGameState();
+  }
 }
 
 function handleSoundToggle() {
@@ -438,6 +530,11 @@ function handleSoundToggle() {
 
 function handleKeydown(event) {
   if (gameArea.hidden) return;
+  if (event.key === "p" || event.key === "P") {
+    pauseGame();
+    return;
+  }
+  if (gameState !== "PLAYING") return;
   switch (event.key) {
     case "ArrowLeft":
       moveDirection(-1);
@@ -452,10 +549,6 @@ function handleKeydown(event) {
       event.preventDefault();
       hardDrop();
       break;
-    case "p":
-    case "P":
-      pauseGame();
-      break;
     default:
       break;
   }
@@ -463,6 +556,7 @@ function handleKeydown(event) {
 
 controls.forEach((button) => {
   button.addEventListener("click", () => {
+    if (gameState !== "PLAYING") return;
     const action = button.dataset.action;
     if (action === "left") moveDirection(-1);
     if (action === "right") moveDirection(1);
@@ -472,19 +566,15 @@ controls.forEach((button) => {
 });
 
 startButton.addEventListener("click", () => {
-  if (!state.content) return;
-  applySettingsToCategories();
-  updateStatusLabels();
-  setupGame();
+  startGame();
 });
 
 pauseButton.addEventListener("click", pauseGame);
 restartButton.addEventListener("click", () => {
-  setupGame();
+  startGame();
 });
 replayButton.addEventListener("click", () => {
-  gameoverModal.hidden = true;
-  setupGame();
+  replayGame();
 });
 
 tierSelect.addEventListener("change", handleTierChange);
@@ -492,12 +582,15 @@ misconceptionToggle.addEventListener("click", handleMisconceptionToggle);
 soundToggle.addEventListener("click", handleSoundToggle);
 speedSelect.addEventListener("change", () => {
   updateStatusLabels();
-  if (!gameArea.hidden) {
+  if (gameState === "PLAYING") {
     startTimers();
   }
 });
 
 document.addEventListener("keydown", handleKeydown);
 
-initSounds();
-handleTierChange();
+document.addEventListener("DOMContentLoaded", () => {
+  initSounds();
+  initUI();
+  handleTierChange();
+});

@@ -381,6 +381,12 @@ button.ghost {
   justify-content: center;
   padding: 1.5rem;
   z-index: 20;
+  pointer-events: auto;
+}
+
+.modal[hidden] {
+  display: none;
+  pointer-events: none;
 }
 
 .modal-content {
