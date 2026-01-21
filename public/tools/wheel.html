@@ -3,7 +3,53 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Spin the Wheel (Random Picker) | Teach Arcade</title>
+
+  <!-- ✅ SEO Title (keyword-forward, still brand-safe) -->
+  <title>Wheel Spinner for Classroom Random Picker | Teach Arcade</title>
+
+  <!-- ✅ Canonical + Meta Description (more teacher/search intent) -->
+  <link rel="canonical" href="https://teacharcade.com/tools/wheel.html" />
+  <meta
+    name="description"
+    content="Free classroom wheel spinner (random name picker) for teachers. Add names, groups, questions, stations, or tasks—spin to choose fairly, remove winners, shuffle, and share."
+  />
+
+  <!-- ✅ Open Graph / Twitter (match SEO description) -->
+  <meta property="og:title" content="Wheel Spinner for Classroom Random Picker | Teach Arcade" />
+  <meta
+    property="og:description"
+    content="Free classroom wheel spinner (random name picker) for teachers. Add names, groups, questions, stations, or tasks—spin to choose fairly, remove winners, shuffle, and share."
+  />
+  <meta property="og:url" content="https://teacharcade.com/tools/wheel.html" />
+  <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Wheel Spinner for Classroom Random Picker | Teach Arcade" />
+  <meta
+    name="twitter:description"
+    content="Free classroom wheel spinner (random name picker) for teachers. Add names, groups, questions, stations, or tasks—spin to choose fairly, remove winners, shuffle, and share."
+  />
+  <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+
+  <!-- ✅ Optional: Helps SEO understand site identity -->
+  <meta name="robots" content="index, follow" />
+
+  <!-- ✅ Structured Data (SoftwareApplication) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"SoftwareApplication",
+    "name":"Wheel Spinner (Random Picker)",
+    "applicationCategory":"EducationalApplication",
+    "operatingSystem":"Web",
+    "url":"https://teacharcade.com/tools/wheel.html",
+    "description":"A free classroom wheel spinner (random name picker) for teachers. Add names, groups, questions, stations, or tasks—spin to choose fairly, remove winners, shuffle, save, restore, and share.",
+    "publisher":{
+      "@type":"Organization",
+      "name":"Teach Arcade",
+      "url":"https://teacharcade.com"
+    }
+  }
+  </script>
 
   <link rel="stylesheet" href="/assets/styles.css?v=1" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet" />
@@ -105,37 +151,41 @@
       position:absolute; width:8px; height:12px; border-radius:2px;
       animation: fall 1200ms ease-out forwards;
     }
-  </style>
-  <meta name="description" content="Explore Spin the Wheel (Random Picker) resources, games, and teaching tools from Teach Arcade." />
-  <link rel="canonical" href="https://teacharcade.com/tools/wheel.html" />
-  <meta property="og:title" content="Spin the Wheel (Random Picker) | Teach Arcade" />
-  <meta property="og:description" content="Explore Spin the Wheel (Random Picker) resources, games, and teaching tools from Teach Arcade." />
-  <meta property="og:url" content="https://teacharcade.com/tools/wheel.html" />
-  <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Spin the Wheel (Random Picker) | Teach Arcade" />
-  <meta name="twitter:description" content="Explore Spin the Wheel (Random Picker) resources, games, and teaching tools from Teach Arcade." />
-  <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
 
+    /* ✅ Small accessibility helper text */
+    .sr-only{
+      position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+      overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+    }
+  </style>
 </head>
+
 <body>
   <div id="site-header"></div>
   <script src="/assets/scripts/nav.js?v=5" defer></script>
 
   <main class="container">
-    <nav class="breadcrumbs">
-  <a href="/">Home</a> › <a href="https://teacharcade.com/tools/">Teacher Tools</a> › Spin the Wheel
-</nav>
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a> › <a href="https://teacharcade.com/tools/">Teacher Tools</a> › Wheel Spinner
+    </nav>
+
     <section class="hero">
-      <h1>🎯 Spin the Wheel (Random Picker)</h1>
-      <p>Enter your items, choose options, and spin to pick fairly at random.</p>
+      <h1>🎯 Classroom Wheel Spinner (Random Picker)</h1>
+      <p>
+        Paste a list of names, groups, questions, or tasks—then spin to pick fairly at random.
+      </p>
     </section>
 
-    <section class="panel">
+    <section class="panel" aria-label="Wheel spinner controls">
       <label for="items"><strong>Your List</strong></label>
-      <textarea id="items" placeholder="Type one item per line (names, choices, etc.)"></textarea>
 
-      <div class="controls">
+      <!-- ✅ Randomized, teacher-ish placeholder examples (see script at bottom) -->
+      <textarea id="items" placeholder=""></textarea>
+      <p class="sr-only" id="itemsHelp">
+        Enter one item per line. Example: student names, discussion prompts, stations, or review questions.
+      </p>
+
+      <div class="controls" role="group" aria-label="Wheel actions">
         <button id="spin" class="btn primary">Spin</button>
         <button id="clear" class="btn danger">Clear</button>
         <button id="shuffle" class="btn">Shuffle</button>
@@ -145,7 +195,7 @@
         <button id="darkToggle" class="btn" title="Dark mode">Dark Mode</button>
       </div>
 
-      <div class="opts">
+      <div class="opts" aria-label="Wheel options">
         <label><input type="checkbox" id="removeAfter" /> Remove winner after spin</label>
         <label><input type="checkbox" id="confetti" checked /> Confetti</label>
 
@@ -160,53 +210,46 @@
       </div>
     </section>
 
-    <div class="canvas-wrap">
+    <div class="canvas-wrap" role="region" aria-label="Wheel spinner canvas">
       <canvas id="wheelCanvas" width="400" height="400" aria-label="Random choice wheel"></canvas>
-      <div class="confetti" id="confettiLayer"></div>
+      <div class="confetti" id="confettiLayer" aria-hidden="true"></div>
     </div>
-    <p id="status">Status: Ready</p>
-    <p id="result"></p>
 
-    <section class="seo-block" aria-label="Wheel Spinner classroom uses and lesson ideas">
-      <h2>Spin the Wheel: A Simple Tool for Engagement and Fairness</h2>
+    <p id="status">Status: Ready</p>
+    <p id="result" aria-live="polite"></p>
+
+    <!-- ✅ Teacher-voice SEO block (keeps your keywords, reads like a real classroom tip section) -->
+    <section class="seo-block" aria-label="Wheel spinner classroom uses and lesson ideas">
+      <h2>Spin the Wheel: A Teacher-Friendly Random Picker for Fair Classroom Choices</h2>
       <p>
-        The Wheel Spinner brings a visual, game-like element to random selection. Whether you’re choosing a student, a
-        discussion topic, a station, or a challenge, the spinning wheel makes the process transparent and fun. That
-        matters for classroom culture: students see that choices are fair, and the excitement of the spin increases
-        attention. Because you can paste any list, the tool adapts to almost any subject or activity—from vocabulary
-        games to project topic selection.
+        If you’ve ever tried to “randomly” call on students and immediately heard, “You always pick the same people,” this
+        wheel spinner solves that problem fast. The visual spin makes your selection feel transparent, and the excitement
+        keeps attention up—especially during review, stations, or discussion days.
       </p>
       <p>
-        Start by entering names, tasks, or questions in the list. Choose a palette that matches your class vibe, then
-        spin for a random selection. In ELA, you can spin for a sentence starter or a theme to analyze. In math, spin for
-        a type of problem or strategy a student must explain. In science, spin for lab roles or variables to investigate.
-        In social studies, spin for a historical perspective or primary source to examine. The removal option lets you
-        avoid repeats so every student or option appears once per round.
+        To use the wheel, type or paste one item per line: student names, team numbers, discussion prompts, vocabulary
+        words, lab roles, or even quick formative check questions. Pick a color palette, hit <em>Spin</em>, and let the
+        wheel choose. Turn on <strong>Remove winner after spin</strong> when you want everyone to get a turn before repeats.
       </p>
       <p>
-        The wheel is especially powerful for classroom routines. Use it to pick a daily helper, select a warm-up problem,
-        or choose a discussion leader. Pair it with the <a href="/tools/timer.html">Classroom Timer</a> to keep selections
-        moving and to set clear response limits. If you want randomization without the visuals, the
-        <a href="/tools/text-randomizer.html">Text Randomizer</a> provides a list-based alternative, but the wheel’s visual
-        drama helps keep even reluctant students engaged.
+        Here are a few classroom-ready ways I’d use it:
+        pick a <strong>discussion leader</strong>, assign <strong>station rotations</strong>, choose a <strong>random problem type</strong>,
+        or select which group shares first. In ELA, spin for a claim/evidence sentence starter. In math, spin for a strategy
+        a student must explain. In science, spin for lab roles or variables to test. In social studies, spin for a perspective,
+        region, or primary source to analyze.
       </p>
       <p>
-        Differentiation is easy: create multiple wheels for different readiness levels. For example, a “foundation” wheel
-        and a “challenge” wheel let students stretch when they’re ready. You can also allow students to add items to the
-        wheel as part of a choice-based lesson, increasing ownership and motivation. For group activities, spin to assign
-        roles—speaker, researcher, designer—so collaboration stays balanced.
+        Want to keep the pace tight? Pair the wheel with the <a href="/tools/timer.html">Classroom Timer</a> so students have a
+        clear response window. If you prefer list-only randomization, try the <a href="/tools/text-randomizer.html">Text Randomizer</a>,
+        but the wheel’s “big moment” energy is great for boosting participation—especially with classes that need a little extra spark.
       </p>
       <p>
-        As a formative assessment tool, the wheel helps you sample understanding across the class. Spin to select a name,
-        then ask that student to explain a concept or solve a problem. Track which prompts are most difficult and revisit
-        those concepts during review. The wheel also pairs nicely with the
-        <a href="/arcade-review-games/">Arcade Review Games</a> when you want to decide which team answers next or which
-        category to play.
+        For differentiation, I’ll often keep multiple wheels: a “foundations” wheel and a “challenge” wheel. Students can earn a spin
+        on the challenge wheel after demonstrating mastery, which makes differentiation feel like a reward instead of a label.
       </p>
       <p>
-        Ultimately, the Wheel Spinner is about making everyday classroom choices feel fair and exciting. With minimal
-        setup and clear visuals, it turns routine selection into a moment of anticipation—keeping students focused while
-        you keep the lesson moving.
+        Bottom line: this classroom wheel spinner is an easy, low-prep way to make everyday choices feel fair, fun, and consistent—
+        while keeping you moving through the lesson without wasting time.
       </p>
     </section>
   </main>
@@ -228,5 +271,73 @@
   </footer>
 
   <script src="/assets/scripts/wheel.js?v=6" defer></script>
+
+  <!-- ✅ Random teacher-style placeholder samples (no dependency on wheel.js) -->
+  <script>
+    (function () {
+      const ta = document.getElementById("items");
+      if (!ta) return;
+
+      const sets = [
+        [
+          "Ava M.",
+          "Malik R.",
+          "Sofia K.",
+          "Jaden T.",
+          "Harper L.",
+          "Nora S.",
+          "Diego P.",
+          "Zoe W.",
+          "Ethan C.",
+          "Mia G."
+        ],
+        [
+          "Table 1",
+          "Table 2",
+          "Table 3",
+          "Table 4",
+          "Read-aloud helper",
+          "Materials manager",
+          "Timekeeper",
+          "Speaker",
+          "Recorder",
+          "Tech helper"
+        ],
+        [
+          "Warm-up: 2-minute quick write",
+          "Turn-and-talk prompt",
+          "Exit ticket question",
+          "Vocabulary review",
+          "Challenge problem",
+          "Think-Pair-Share",
+          "Quick check: thumbs up/down",
+          "Mini whiteboard response",
+          "Station rotation",
+          "Bonus question"
+        ],
+        [
+          "Discuss: Claim vs. evidence",
+          "Solve: multi-step equation",
+          "Analyze: cause & effect",
+          "Explain: your strategy",
+          "Compare: two perspectives",
+          "Summarize: today’s learning",
+          "Predict: what happens next?",
+          "Define: key term",
+          "Connect: to real life",
+          "Reflect: one takeaway"
+        ]
+      ];
+
+      // Pick a random set + randomize order a bit
+      const pick = sets[Math.floor(Math.random() * sets.length)].slice();
+      for (let i = pick.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [pick[i], pick[j]] = [pick[j], pick[i]];
+      }
+
+      ta.placeholder = pick.join("\n");
+    })();
+  </script>
 </body>
 </html>
