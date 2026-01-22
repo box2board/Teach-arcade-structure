@@ -24,4 +24,6 @@ const WORDGRID_DICTIONARY = [
   "zebra", "zesty", "zonal"
 ];
 
-window.WORDGRID_DICTIONARY = WORDGRID_DICTIONARY;
+if (!window.WORDGRID_DICTIONARY || !window.WORDGRID_DICTIONARY.length) {
+  window.WORDGRID_DICTIONARY = WORDGRID_DICTIONARY;
+}
