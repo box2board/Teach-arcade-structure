@@ -59,6 +59,7 @@
             <span class="value" id="bestDisplay">0</span>
           </div>
           <div class="status-item badge" id="gridBadge">4x4</div>
+          <div class="status-item badge status-toggle" id="speedModeBadge">Speed Mode: ON</div>
           <button class="settings-btn" id="settingsToggle" type="button" aria-expanded="false">Settings</button>
         </div>
       </header>
@@ -71,7 +72,7 @@
             <span id="currentWord">—</span>
           </div>
           <div class="controls">
-            <button id="submitWord" type="button" class="primary">Submit</button>
+            <button id="submitWord" type="button" class="primary">Submit (Optional)</button>
             <button id="undoWord" type="button">Undo</button>
             <button id="clearWord" type="button">Clear</button>
           </div>
@@ -102,7 +103,7 @@
               <summary>How to play</summary>
               <div class="how-to">
                 <p>Drag or tap adjacent letters to form a word. Letters must touch horizontally, vertically, or diagonally, and you can’t reuse the same tile in one word.</p>
-                <p>Hit Submit to score points. Short words score less; longer words score more. Use Settings to adjust grid size, timer, and minimum length.</p>
+                <p>In Speed Mode, words score instantly once they are valid. Submit is optional for slower play. Short words score less; longer words score more. Use Settings to adjust grid size, timer, and minimum length.</p>
               </div>
             </details>
           </section>
@@ -140,6 +141,14 @@
             <option value="4">4 letters</option>
           </select>
         </label>
+        <label class="setting-toggle">
+          <span>Speed Mode (Instant scoring)</span>
+          <input type="checkbox" id="speedMode" checked />
+        </label>
+        <label class="setting-toggle">
+          <span>Strict Dictionary</span>
+          <input type="checkbox" id="strictDictionary" checked />
+        </label>
         <label class="theme-toggle">
           Theme
           <select id="themeSetting">
@@ -172,6 +181,7 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+  <script src="./dictionary-large.js"></script>
   <script src="./dictionary.js"></script>
   <script src="./game.js" defer></script>
 </body>

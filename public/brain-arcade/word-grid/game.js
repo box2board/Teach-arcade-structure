@@ -3,6 +3,8 @@
     gridSize: 4,
     timerSetting: 60,
     minLength: 3,
+    speedMode: true,
+    strictDictionary: true,
     theme: "arcade"
   };
 
@@ -20,6 +22,8 @@
     isPaused: false,
     isEnded: false,
     isPointerDown: false,
+    activePointerId: null,
+    justScored: false,
     lastToastTime: 0,
     dictionaryReady: true
   };
@@ -87,6 +91,7 @@
       "scoreDisplay",
       "bestDisplay",
       "gridBadge",
+      "speedModeBadge",
       "currentWord",
       "submitWord",
       "undoWord",
@@ -105,6 +110,8 @@
       "gridSize",
       "timerSetting",
       "minLength",
+      "speedMode",
+      "strictDictionary",
       "themeSetting",
       "endModal",
       "endScore",
@@ -126,10 +133,13 @@
     }, {});
 
     const dictionaryWords = (window.WORDGRID_DICTIONARY || [])
-      .map((word) => String(word).toLowerCase())
+      .map((word) => String(word).toLowerCase().trim())
       .filter(Boolean);
-    const dictionarySet = new Set(dictionaryWords);
-    state.dictionaryReady = dictionarySet.size > 0;
+    const DICT = new Set(dictionaryWords);
+    state.dictionaryReady = DICT.size > 0;
+    if (!DICT.has("face") || !DICT.has("pace")) {
+      console.warn("Dictionary missing common words: face/pace");
+    }
 
     const updateBestScore = () => {
       const key = getSettingsKey(state.settings);
@@ -147,6 +157,10 @@
 
     const updateBadge = () => {
       elements.gridBadge.textContent = `${state.settings.gridSize}x${state.settings.gridSize}`;
+    };
+
+    const updateSpeedModeBadge = () => {
+      elements.speedModeBadge.textContent = `Speed Mode: ${state.settings.speedMode ? "ON" : "OFF"}`;
     };
 
     const updateTimerDisplay = () => {
@@ -265,29 +279,52 @@
       });
     };
 
+    const getCurrentWord = () => state.selected
+      .map((index) => state.grid[index])
+      .join("");
+
     const updateCurrentWord = () => {
       if (!state.selected.length) {
         elements.currentWord.textContent = "—";
-        return;
+        return "";
       }
-      const word = state.selected
-        .map((index) => state.grid[index])
-        .join("");
+      const word = getCurrentWord();
       elements.currentWord.textContent = word.toUpperCase();
+      return word;
     };
 
     const attemptSelectTile = (tile) => {
       if (!state.isActive || state.isPaused || state.isEnded) return;
       const index = getTileIndex(tile);
-      if (state.selected.includes(index)) return;
-      if (state.selected.length > 0) {
-        const lastIndex = state.selected[state.selected.length - 1];
-        if (!isAdjacent(lastIndex, index)) return;
+      const selected = state.selected;
+      const lastIndex = selected[selected.length - 1];
+      const secondLastIndex = selected[selected.length - 2];
+
+      if (selected.length > 1 && index === secondLastIndex) {
+        const removed = selected.pop();
+        const removedTile = elements.board.querySelector(`[data-index='${removed}']`);
+        if (removedTile) {
+          removedTile.classList.remove("selected");
+        }
+        updateCurrentWord();
+        updateAdjacents();
+        return;
       }
-      state.selected.push(index);
+
+      if (selected.includes(index)) return;
+      if (selected.length > 0 && !isAdjacent(lastIndex, index)) return;
+
+      if (state.justScored && selected.length === 0) {
+        state.justScored = false;
+      }
+
+      selected.push(index);
       tile.classList.add("selected");
-      updateCurrentWord();
+      const word = updateCurrentWord();
       updateAdjacents();
+      if (state.settings.speedMode) {
+        attemptScoreWord(word);
+      }
     };
 
     const undoSelection = () => {
@@ -301,25 +338,34 @@
       updateAdjacents();
     };
 
-    const submitWord = () => {
-      if (!state.selected.length) return;
-      const word = state.selected.map((index) => state.grid[index]).join("");
+    const attemptScoreWord = (word, { showToasts = false } = {}) => {
+      if (!word) return { scored: false, reason: "empty" };
       const length = word.length;
       if (length < state.settings.minLength) {
-        showToast("Too short");
-        return;
+        if (showToasts) {
+          showToast("Too short");
+        }
+        return { scored: false, reason: "short" };
       }
-      if (!state.dictionaryReady) {
-        showToast("Dictionary not loaded");
-        return;
-      }
-      if (!dictionarySet.has(word)) {
-        showToast("Not in dictionary");
-        return;
+      if (state.settings.strictDictionary) {
+        if (!state.dictionaryReady) {
+          if (showToasts) {
+            showToast("Dictionary not loaded");
+          }
+          return { scored: false, reason: "dictionary-missing" };
+        }
+        if (!DICT.has(word)) {
+          if (showToasts) {
+            showToast("Not in dictionary");
+          }
+          return { scored: false, reason: "dictionary" };
+        }
       }
       if (state.foundSet.has(word)) {
-        showToast("Already found");
-        return;
+        if (showToasts) {
+          showToast("Already found");
+        }
+        return { scored: false, reason: "duplicate" };
       }
       const points = scoreTable(length);
       state.found.push({ word, points });
@@ -328,6 +374,39 @@
       updateScore();
       updateFoundList();
       updateStats();
+      showToast(`+${points} ${word.toUpperCase()}`);
+      resetSelection();
+      state.justScored = true;
+      return { scored: true, reason: "scored" };
+    };
+
+    const submitWord = () => {
+      if (!state.selected.length) return;
+      const word = getCurrentWord();
+      attemptScoreWord(word, { showToasts: true });
+    };
+
+    const handleSelectionEnd = () => {
+      if (!state.selected.length || !state.settings.speedMode) return;
+      const word = getCurrentWord();
+      const length = word.length;
+      if (length >= state.settings.minLength) {
+        if (state.settings.strictDictionary) {
+          if (!state.dictionaryReady) {
+            showToast("Dictionary not loaded");
+            resetSelection();
+            return;
+          }
+          if (!DICT.has(word)) {
+            showToast("Not in dictionary");
+            resetSelection();
+            return;
+          }
+        }
+        if (state.foundSet.has(word)) {
+          showToast("Already found");
+        }
+      }
       resetSelection();
     };
 
@@ -401,6 +480,9 @@
       state.isActive = false;
       state.isPaused = false;
       state.isEnded = false;
+      state.isPointerDown = false;
+      state.activePointerId = null;
+      state.justScored = false;
       state.timerRemaining = state.settings.timerSetting;
       clearInterval(state.timerId);
       state.timerId = null;
@@ -422,10 +504,13 @@
       state.settings.gridSize = Number(elements.gridSize.value);
       state.settings.timerSetting = Number(elements.timerSetting.value);
       state.settings.minLength = Number(elements.minLength.value);
+      state.settings.speedMode = elements.speedMode.checked;
+      state.settings.strictDictionary = elements.strictDictionary.checked;
       state.settings.theme = elements.themeSetting.value;
       applyTheme();
       saveSettingsToStorage();
       updateBadge();
+      updateSpeedModeBadge();
       resetRound({ regenerate: true });
       elements.settingsDrawer.classList.remove("open");
       elements.settingsDrawer.setAttribute("aria-hidden", "true");
@@ -436,6 +521,8 @@
       elements.gridSize.value = String(state.settings.gridSize);
       elements.timerSetting.value = String(state.settings.timerSetting);
       elements.minLength.value = String(state.settings.minLength);
+      elements.speedMode.checked = state.settings.speedMode;
+      elements.strictDictionary.checked = state.settings.strictDictionary;
       elements.themeSetting.value = state.settings.theme;
       elements.settingsDrawer.classList.add("open");
       elements.settingsDrawer.setAttribute("aria-hidden", "false");
@@ -452,6 +539,7 @@
     applyTheme();
     renderGrid();
     updateBadge();
+    updateSpeedModeBadge();
     updateTimerDisplay();
     updateScore();
     updateFoundList();
@@ -466,30 +554,37 @@
       const tile = event.target.closest(".tile");
       if (!tile) return;
       state.isPointerDown = true;
+      state.activePointerId = event.pointerId;
+      try {
+        elements.board.setPointerCapture(event.pointerId);
+      } catch (error) {
+        // ignore capture errors
+      }
       attemptSelectTile(tile);
     });
 
-    elements.board.addEventListener("pointerover", (event) => {
-      if (!state.isPointerDown) return;
-      const tile = event.target.closest(".tile");
+    elements.board.addEventListener("pointermove", (event) => {
+      if (!state.isPointerDown || event.pointerId !== state.activePointerId) return;
+      const element = document.elementFromPoint(event.clientX, event.clientY);
+      const tile = element && element.closest(".tile");
       if (!tile) return;
       attemptSelectTile(tile);
     });
 
-    window.addEventListener("pointerup", () => {
+    const handlePointerEnd = (event) => {
+      if (event.pointerId !== state.activePointerId) return;
       state.isPointerDown = false;
-    });
-
-    elements.board.addEventListener("touchmove", (event) => {
-      if (!state.isPointerDown) return;
-      const touch = event.touches[0];
-      if (!touch) return;
-      const element = document.elementFromPoint(touch.clientX, touch.clientY);
-      const tile = element && element.closest(".tile");
-      if (tile) {
-        attemptSelectTile(tile);
+      state.activePointerId = null;
+      try {
+        elements.board.releasePointerCapture(event.pointerId);
+      } catch (error) {
+        // ignore capture errors
       }
-    }, { passive: true });
+      handleSelectionEnd();
+    };
+
+    elements.board.addEventListener("pointerup", handlePointerEnd);
+    elements.board.addEventListener("pointercancel", handlePointerEnd);
 
     elements.submitWord.addEventListener("click", submitWord);
     elements.undoWord.addEventListener("click", undoSelection);
