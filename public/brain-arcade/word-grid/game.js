@@ -66,6 +66,9 @@
     lastToastTime: 0
   };
 
+  let DICT = new Set();
+  let DICT_READY = false;
+
   const vowels = ["a", "e", "i", "o", "u"];
   const consonantBag = [
     "b", "b", "c", "c", "d", "d", "f", "f", "g", "g", "h", "h", "j", "k", "l", "l", "m", "m", "n", "n", "p", "p", "q", "r", "r", "s", "s", "t", "t", "v", "w", "x", "y", "z", "qu", "qu"
@@ -128,6 +131,7 @@
       "timerDisplay",
       "scoreDisplay",
       "bestDisplay",
+      "dictionaryStatus",
       "gridBadge",
       "speedModeBadge",
       "currentWord",
