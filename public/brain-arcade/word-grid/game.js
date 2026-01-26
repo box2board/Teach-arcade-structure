@@ -24,9 +24,11 @@
     isPointerDown: false,
     activePointerId: null,
     justScored: false,
-    lastToastTime: 0,
-    dictionaryReady: true
+    lastToastTime: 0
   };
+
+  let DICT = new Set();
+  let DICT_READY = false;
 
   const vowels = ["a", "e", "i", "o", "u"];
   const consonantBag = [
@@ -90,6 +92,7 @@
       "timerDisplay",
       "scoreDisplay",
       "bestDisplay",
+      "dictionaryStatus",
       "gridBadge",
       "speedModeBadge",
       "currentWord",
@@ -132,14 +135,37 @@
       return accumulator;
     }, {});
 
-    const dictionaryWords = (window.WORDGRID_DICTIONARY || [])
-      .map((word) => String(word).toLowerCase().trim())
-      .filter(Boolean);
-    const DICT = new Set(dictionaryWords);
-    state.dictionaryReady = DICT.size > 0;
-    if (!DICT.has("face") || !DICT.has("pace")) {
-      console.warn("Dictionary missing common words: face/pace");
-    }
+    const updateDictionaryStatus = (status) => {
+      if (elements.dictionaryStatus) {
+        elements.dictionaryStatus.textContent = status;
+      }
+    };
+
+    const loadDictionary = async () => {
+      try {
+        updateDictionaryStatus("Loading…");
+        const response = await fetch("./dictionary.txt", { cache: "force-cache" });
+        if (!response.ok) {
+          throw new Error(`Dictionary fetch failed: ${response.status}`);
+        }
+        const text = await response.text();
+        const words = text
+          .split(/\r?\n/)
+          .map((word) => word.trim().toLowerCase())
+          .filter((word) => /^[a-z]+$/.test(word));
+        DICT = new Set(words);
+        DICT_READY = true;
+        updateDictionaryStatus("Ready");
+        console.log("Dictionary loaded", DICT.size, "face", DICT.has("face"), "pace", DICT.has("pace"));
+        if (DICT.size < 5000) {
+          console.warn("Dictionary may be missing or too small.");
+        }
+      } catch (error) {
+        console.error("Dictionary failed to load.", error);
+        showToast("Dictionary failed to load. Check dictionary.txt.");
+        updateDictionaryStatus("Loading…");
+      }
+    };
 
     const updateBestScore = () => {
       const key = getSettingsKey(state.settings);
@@ -348,10 +374,8 @@
         return { scored: false, reason: "short" };
       }
       if (state.settings.strictDictionary) {
-        if (!state.dictionaryReady) {
-          if (showToasts) {
-            showToast("Dictionary not loaded");
-          }
+        if (!DICT_READY) {
+          showToast("Dictionary loading…");
           return { scored: false, reason: "dictionary-missing" };
         }
         if (!DICT.has(word)) {
@@ -392,8 +416,8 @@
       const length = word.length;
       if (length >= state.settings.minLength) {
         if (state.settings.strictDictionary) {
-          if (!state.dictionaryReady) {
-            showToast("Dictionary not loaded");
+          if (!DICT_READY) {
+            showToast("Dictionary loading…");
             resetSelection();
             return;
           }
@@ -546,9 +570,8 @@
     updateStats();
     updateControlsState();
 
-    if (!state.dictionaryReady) {
-      showToast("Dictionary not loaded");
-    }
+    updateDictionaryStatus("Loading…");
+    loadDictionary();
 
     elements.board.addEventListener("pointerdown", (event) => {
       const tile = event.target.closest(".tile");
