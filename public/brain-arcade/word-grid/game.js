@@ -1,4 +1,43 @@
 (() => {
+  let DICT = new Set();
+  let DICT_READY = false;
+
+  const loadDictionary = async (showToast) => {
+    const toast = typeof showToast === "function" ? showToast : () => {};
+    DICT = new Set();
+    DICT_READY = false;
+    fetch("./dictionary.txt", { cache: "force-cache" })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+        return response.text();
+      })
+      .then((text) => {
+        const words = text
+          .split("\n")
+          .map((word) => word.trim().toLowerCase())
+          .filter((word) => /^[a-z]+$/.test(word));
+        DICT = new Set(words);
+        DICT_READY = true;
+        console.log(
+          "Dictionary loaded:",
+          DICT.size,
+          "face:",
+          DICT.has("face"),
+          "pace:",
+          DICT.has("pace")
+        );
+        if (DICT.size < 5000) {
+          console.warn("dictionary.txt may be missing or too small");
+        }
+      })
+      .catch((error) => {
+        console.error("Dictionary failed to load.", error);
+        DICT_READY = false;
+        toast("Dictionary failed to load. Check dictionary.txt.");
+      });
+  };
   const defaultSettings = {
     gridSize: 4,
     timerSetting: 60,
@@ -24,8 +63,7 @@
     isPointerDown: false,
     activePointerId: null,
     justScored: false,
-    lastToastTime: 0,
-    dictionaryReady: true
+    lastToastTime: 0
   };
 
   const vowels = ["a", "e", "i", "o", "u"];
@@ -84,7 +122,7 @@
     state.grid = letters;
   };
 
-  const init = () => {
+  const init = async () => {
     const requiredIds = [
       "board",
       "timerDisplay",
@@ -132,14 +170,20 @@
       return accumulator;
     }, {});
 
-    const dictionaryWords = (window.WORDGRID_DICTIONARY || [])
-      .map((word) => String(word).toLowerCase().trim())
-      .filter(Boolean);
-    const DICT = new Set(dictionaryWords);
-    state.dictionaryReady = DICT.size > 0;
-    if (!DICT.has("face") || !DICT.has("pace")) {
-      console.warn("Dictionary missing common words: face/pace");
-    }
+    const showToast = (message) => {
+      const now = Date.now();
+      if (now - state.lastToastTime < 500) {
+        return;
+      }
+      state.lastToastTime = now;
+      elements.toast.textContent = message;
+      elements.toast.classList.add("show");
+      setTimeout(() => {
+        elements.toast.classList.remove("show");
+      }, 1400);
+    };
+
+    await loadDictionary(showToast);
 
     const updateBestScore = () => {
       const key = getSettingsKey(state.settings);
@@ -178,19 +222,6 @@
       elements.clearWord.disabled = disabled;
       elements.board.setAttribute("aria-disabled", String(disabled));
       elements.finishRound.style.display = state.settings.timerSetting === 0 && state.isActive ? "inline-flex" : "none";
-    };
-
-    const showToast = (message) => {
-      const now = Date.now();
-      if (now - state.lastToastTime < 500) {
-        return;
-      }
-      state.lastToastTime = now;
-      elements.toast.textContent = message;
-      elements.toast.classList.add("show");
-      setTimeout(() => {
-        elements.toast.classList.remove("show");
-      }, 1400);
     };
 
     const renderGrid = () => {
@@ -348,11 +379,9 @@
         return { scored: false, reason: "short" };
       }
       if (state.settings.strictDictionary) {
-        if (!state.dictionaryReady) {
-          if (showToasts) {
-            showToast("Dictionary not loaded");
-          }
-          return { scored: false, reason: "dictionary-missing" };
+        if (!DICT_READY) {
+          showToast("Dictionary loading…");
+          return { scored: false, reason: "dictionary-loading" };
         }
         if (!DICT.has(word)) {
           if (showToasts) {
@@ -392,8 +421,8 @@
       const length = word.length;
       if (length >= state.settings.minLength) {
         if (state.settings.strictDictionary) {
-          if (!state.dictionaryReady) {
-            showToast("Dictionary not loaded");
+          if (!DICT_READY) {
+            showToast("Dictionary loading…");
             resetSelection();
             return;
           }
@@ -545,10 +574,6 @@
     updateFoundList();
     updateStats();
     updateControlsState();
-
-    if (!state.dictionaryReady) {
-      showToast("Dictionary not loaded");
-    }
 
     elements.board.addEventListener("pointerdown", (event) => {
       const tile = event.target.closest(".tile");
