@@ -58,6 +58,10 @@
             <span class="label">Best</span>
             <span class="value" id="bestDisplay">0</span>
           </div>
+          <div class="status-item">
+            <span class="label">Dictionary</span>
+            <span class="value" id="dictionaryStatus">Loading…</span>
+          </div>
           <div class="status-item badge" id="gridBadge">4x4</div>
           <div class="status-item badge status-toggle" id="speedModeBadge">Speed Mode: ON</div>
           <button class="settings-btn" id="settingsToggle" type="button" aria-expanded="false">Settings</button>
@@ -181,8 +185,6 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <script src="./dictionary-large.js"></script>
-  <script src="./dictionary.js"></script>
   <script src="./game.js" defer></script>
 </body>
 </html>
