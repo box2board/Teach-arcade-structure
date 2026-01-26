@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0f172a" />
+
+  <title>Brain Crush (Match-3 Puzzle Game) | Teach Arcade</title>
+  <meta name="description" content="Brain Crush is a free, mobile-friendly match-3 puzzle game made for quick classroom breaks and pure fun. Swap gems, trigger power-ups, and chase combos in seconds." />
+  <link rel="canonical" href="https://teacharcade.com/games-for-fun/brain-crush/" />
+
+  <link rel="stylesheet" href="/assets/styles.css?v=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
+  <link rel="stylesheet" href="/games-for-fun/brain-crush/styles.css" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Teach Arcade" />
+  <meta property="og:title" content="Brain Crush (Match-3 Puzzle Game) | Teach Arcade" />
+  <meta property="og:description" content="Free, fast match-3 fun with power-ups, combos, and mobile-friendly controls. Play Brain Crush instantly on Teach Arcade." />
+  <meta property="og:url" content="https://teacharcade.com/games-for-fun/brain-crush/" />
+  <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Brain Crush (Match-3 Puzzle Game) | Teach Arcade" />
+  <meta name="twitter:description" content="Swap, match, and blast combos in this free match-3 puzzle game built for quick fun on any device." />
+  <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "Brain Crush",
+    "url": "https://teacharcade.com/games-for-fun/brain-crush/",
+    "applicationCategory": "Game",
+    "operatingSystem": "Web",
+    "description": "Brain Crush is a free, mobile-friendly match-3 puzzle game featuring combo chains, power-ups, and quick-play levels.",
+    "author": {
+      "@type": "Organization",
+      "name": "Teach Arcade",
+      "url": "https://teacharcade.com/"
+    },
+    "brand": {
+      "@type": "Organization",
+      "name": "Teach Arcade"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div id="site-header"></div>
+  <script src="/assets/scripts/nav.js?v=5" defer></script>
+
+  <main class="container">
+    <section class="brain-crush-hero">
+      <h1>Brain Crush</h1>
+      <p>
+        Swap colorful gems to create match-3 combos, trigger power-ups, and climb through quick-fire levels.
+        Brain Crush is free, fast, and built for touch-friendly classroom breaks.
+      </p>
+      <details class="how-to">
+        <summary>How to Play</summary>
+        <ul>
+          <li>Swap adjacent tiles to make lines of 3 or more.</li>
+          <li>Match 4 to create Line Blasters, match 5 for a Color Bomb, or build T/L shapes for a Bomb.</li>
+          <li>Chain matches to boost your combo multiplier and score.</li>
+        </ul>
+      </details>
+    </section>
+
+    <section class="game-shell" aria-label="Brain Crush game">
+      <div class="game-panel">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span>Score</span>
+            <strong id="score">0</strong>
+          </div>
+          <div class="stat-card">
+            <span>High Score</span>
+            <strong id="high-score">0</strong>
+          </div>
+          <div class="stat-card">
+            <span>Level</span>
+            <strong id="level-label">1</strong>
+          </div>
+          <div class="stat-card">
+            <span id="moves-label">Moves</span>
+            <strong id="moves-remaining">0</strong>
+          </div>
+          <div class="stat-card">
+            <span>Goal</span>
+            <strong id="goal-label">Score 0</strong>
+          </div>
+          <div class="stat-card">
+            <span>Pace</span>
+            <strong id="pace-label">x1</strong>
+          </div>
+        </div>
+
+        <div class="controls-row">
+          <button class="button toggle active" id="level-mode">Level Mode</button>
+          <button class="button toggle" id="endless-mode">Endless Mode</button>
+          <button class="button" id="pause-game">Pause</button>
+          <button class="button" id="restart-game">Restart</button>
+          <button class="button" id="mute-toggle">Sound: On</button>
+        </div>
+      </div>
+
+      <div class="game-panel game-layout">
+        <div class="board-wrap">
+          <div class="board" id="board" aria-label="Match-3 board" role="grid"></div>
+          <div class="overlay" id="overlay">
+            <div class="overlay-card">
+              <h2 id="overlay-title">Paused</h2>
+              <p id="overlay-text">Tap resume to keep matching.</p>
+              <button class="button primary" id="resume-game">Resume</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ad-slot" aria-label="Advertisement">Advertisement</div>
+  </main>
+
+  <div class="toast-stack" id="toast-stack" aria-live="polite"></div>
+
+  <script src="/games-for-fun/brain-crush/levels.js"></script>
+  <script src="/games-for-fun/brain-crush/game.js"></script>
+</body>
+</html>
