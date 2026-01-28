@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chess Engine Tests</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      margin: 24px;
+      color: #0f172a;
+      background: #f8fafc;
+    }
+    #test-results {
+      margin-top: 16px;
+      padding: 12px;
+      border-radius: 8px;
+      background: #e2e8f0;
+    }
+    .pass {
+      color: #15803d;
+    }
+    .fail {
+      color: #b91c1c;
+    }
+  </style>
+  <script src="/brain-arcade/chess/script.js" defer></script>
+  <script src="/brain-arcade/chess/tests.js" defer></script>
+</head>
+<body>
+  <h1>Chess Regression Tests</h1>
+  <p>Open the console for detailed logs.</p>
+
+  <div id="test-results" aria-live="polite"></div>
+
+  <div class="controls" hidden>
+    <select id="mode"><option value="2p">2 Player</option></select>
+    <select id="side"><option value="white">Play as White</option></select>
+    <select id="difficulty"><option value="easy">Easy</option></select>
+    <button id="new-game" type="button">New Game</button>
+    <button id="debug-toggle" type="button">Debug</button>
+  </div>
+  <div id="turn"></div>
+  <div id="debug-status"></div>
+  <div id="board"></div>
+</body>
+</html>
