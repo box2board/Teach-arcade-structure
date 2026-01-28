@@ -4,6 +4,8 @@ const modeSelect = document.getElementById("mode");
 const sideSelect = document.getElementById("side");
 const difficultySelect = document.getElementById("difficulty");
 const newGameButton = document.getElementById("new-game");
+const debugToggleButton = document.getElementById("debug-toggle");
+const debugStatusElement = document.getElementById("debug-status");
 
 const PIECES = {
   K: "♔",
@@ -52,6 +54,8 @@ let cpuColor = "black";
 let difficulty = "easy";
 let cpuThinking = false;
 let gameOver = false;
+let debugEnabled = false;
+let lastStatus = null;
 
 const cloneBoard = (source) => source.map((row) => row.slice());
 
@@ -60,10 +64,36 @@ const pieceColor = (piece) => {
   return piece === piece.toUpperCase() ? "white" : "black";
 };
 
+const getOppositeColor = (color) => (color === "white" ? "black" : "white");
+
 const inBounds = (r, c) => r >= 0 && r < 8 && c >= 0 && c < 8;
+
+const getSquareIndex = (r, c) => r * 8 + c;
+
+const getGameState = () => ({
+  board,
+  turn,
+  castlingRights,
+  enPassantTarget,
+});
+
+const assertTurnSynced = () => {
+  if (!turnElement) return;
+  const uiTurn = turnElement.dataset.turn;
+  if (uiTurn && uiTurn !== turn) {
+    console.warn(`Turn desync detected (ui=${uiTurn}, engine=${turn}). Using engine turn.`);
+  }
+  turnElement.dataset.turn = turn;
+};
 
 const renderBoard = () => {
   boardElement.innerHTML = "";
+  const state = getGameState();
+  const opponent = getOppositeColor(state.turn);
+  const attackedSquares = debugEnabled ? getAttackedSquares(state, opponent) : null;
+  const kingSquare = debugEnabled ? locateKingSquare(state.board, state.turn) : null;
+  const inCheck = debugEnabled ? isKingInCheck(state, state.turn) : false;
+
   for (let r = 0; r < 8; r += 1) {
     for (let c = 0; c < 8; c += 1) {
       const square = document.createElement("div");
@@ -80,6 +110,14 @@ const renderBoard = () => {
         square.classList.add("legal");
       }
 
+      if (debugEnabled && attackedSquares && attackedSquares.has(getSquareIndex(r, c))) {
+        square.classList.add("attacked");
+      }
+
+      if (debugEnabled && inCheck && kingSquare && kingSquare.r === r && kingSquare.c === c) {
+        square.classList.add("in-check");
+      }
+
       const piece = board[r][c];
       square.textContent = PIECES[piece] || "";
       square.addEventListener("click", () => handleSquareClick(r, c));
@@ -88,17 +126,21 @@ const renderBoard = () => {
   }
 };
 
-const updateTurnText = (override) => {
-  if (override) {
-    turnElement.textContent = override;
+const updateTurnText = (status) => {
+  turnElement.textContent = status.message;
+  assertTurnSynced();
+};
+
+const updateDebugStatus = (status) => {
+  if (!debugStatusElement) return;
+  if (!debugEnabled) {
+    debugStatusElement.hidden = true;
+    debugStatusElement.textContent = "";
     return;
   }
-  const current = turn === "white" ? "White" : "Black";
-  let text = `${current} to move`;
-  if (isKingInCheck(turn)) {
-    text = `${current} to move — CHECK!`;
-  }
-  turnElement.textContent = text;
+  const current = status.details.turn === "white" ? "White" : "Black";
+  debugStatusElement.hidden = false;
+  debugStatusElement.textContent = `Turn: ${current} | In check: ${status.details.inCheck} | Legal moves: ${status.details.legalMoves}`;
 };
 
 const updateControlsForMode = () => {
@@ -134,28 +176,23 @@ const resetGameState = () => {
 const startNewGame = () => {
   applySettings();
   resetGameState();
-  updateTurnText();
+  refreshGameStatus();
   renderBoard();
   if (mode === "cpu" && playerColor === "black") {
     scheduleCpuMove();
   }
 };
 
-const endIfNoMoves = () => {
-  const moves = getAllLegalMoves(turn);
-  if (moves.length !== 0) return;
-
-  gameOver = true;
-  if (isKingInCheck(turn)) {
-    updateTurnText("Checkmate (no legal moves).");
-  } else {
-    updateTurnText("Stalemate (no legal moves).");
-  }
+const refreshGameStatus = () => {
+  const state = getGameState();
+  lastStatus = getGameStatus(state);
+  updateTurnText(lastStatus);
+  updateDebugStatus(lastStatus);
+  gameOver = ["checkmate", "stalemate", "draw"].includes(lastStatus.outcome);
 };
 
 const afterMoveUpdate = () => {
-  updateTurnText();
-  endIfNoMoves();
+  refreshGameStatus();
 };
 
 const handleSquareClick = (r, c) => {
@@ -170,7 +207,7 @@ const handleSquareClick = (r, c) => {
   if (!selected) {
     if (color === turn) {
       selected = { r, c };
-      legalMoves = getLegalMovesForSquare(r, c);
+      legalMoves = getLegalMovesForSquare(getGameState(), r, c);
       renderBoard();
     }
     return;
@@ -184,7 +221,7 @@ const handleSquareClick = (r, c) => {
 
   if (color === turn) {
     selected = { r, c };
-    legalMoves = getLegalMovesForSquare(r, c);
+    legalMoves = getLegalMovesForSquare(getGameState(), r, c);
     renderBoard();
     return;
   }
@@ -194,34 +231,38 @@ const handleSquareClick = (r, c) => {
   renderBoard();
 };
 
-const getLegalMovesForSquare = (r, c, color = turn) => {
-  const piece = board[r][c];
+const getLegalMovesForSquare = (state, r, c, color = state.turn) => {
+  const piece = state.board[r][c];
   if (piece === ".") return [];
   if (pieceColor(piece) !== color) return [];
 
-  const pseudoMoves = getPseudoLegalMoves(board, r, c, piece);
-  return pseudoMoves.filter((move) => {
-    const simulated = applyMoveToBoard(board, move);
-    return !isKingInCheck(color, simulated);
-  });
+  const pseudoMoves = getPseudoLegalMoves(state, r, c, piece);
+  return filterMovesThatLeaveKingInCheck(state, pseudoMoves, color);
 };
 
-const getAllLegalMoves = (color) => {
+const getAllLegalMoves = (state, color = state.turn) => {
   const moves = [];
   for (let r = 0; r < 8; r += 1) {
     for (let c = 0; c < 8; c += 1) {
-      if (pieceColor(board[r][c]) === color) {
-        moves.push(...getLegalMovesForSquare(r, c, color));
+      if (pieceColor(state.board[r][c]) === color) {
+        moves.push(...getLegalMovesForSquare(state, r, c, color));
       }
     }
   }
   return moves;
 };
 
-const getPseudoLegalMoves = (boardState, r, c, piece) => {
+const filterMovesThatLeaveKingInCheck = (state, pseudoMoves, color) =>
+  pseudoMoves.filter((move) => {
+    const simulated = applyMoveToBoard(state.board, move);
+    return !isKingInCheck({ board: simulated }, color);
+  });
+
+const getPseudoLegalMoves = (state, r, c, piece) => {
   const moves = [];
   const color = pieceColor(piece);
   const opponent = color === "white" ? "black" : "white";
+  const boardState = state.board;
 
   const addMove = (toR, toC, options = {}) => {
     if (!inBounds(toR, toC)) return;
@@ -257,7 +298,11 @@ const getPseudoLegalMoves = (boardState, r, c, piece) => {
         if (isOpponentPiece(target)) {
           addMove(captureR, captureC, { capture: true, promotion: captureR === lastRow ? "Q" : null });
         }
-        if (enPassantTarget && enPassantTarget.r === captureR && enPassantTarget.c === captureC) {
+        if (
+          state.enPassantTarget &&
+          state.enPassantTarget.r === captureR &&
+          state.enPassantTarget.c === captureC
+        ) {
           addMove(captureR, captureC, { enPassant: true });
         }
       });
@@ -389,19 +434,19 @@ const getPseudoLegalMoves = (boardState, r, c, piece) => {
       });
 
       if (color === "white" && r === 7 && c === 4) {
-        if (castlingRights.wK && canCastle(boardState, "white", "kingside")) {
+        if (state.castlingRights.wK && canCastle(state, "white", "kingside")) {
           addMove(7, 6, { castle: "kingside" });
         }
-        if (castlingRights.wQ && canCastle(boardState, "white", "queenside")) {
+        if (state.castlingRights.wQ && canCastle(state, "white", "queenside")) {
           addMove(7, 2, { castle: "queenside" });
         }
       }
 
       if (color === "black" && r === 0 && c === 4) {
-        if (castlingRights.bK && canCastle(boardState, "black", "kingside")) {
+        if (state.castlingRights.bK && canCastle(state, "black", "kingside")) {
           addMove(0, 6, { castle: "kingside" });
         }
-        if (castlingRights.bQ && canCastle(boardState, "black", "queenside")) {
+        if (state.castlingRights.bQ && canCastle(state, "black", "queenside")) {
           addMove(0, 2, { castle: "queenside" });
         }
       }
@@ -414,17 +459,19 @@ const getPseudoLegalMoves = (boardState, r, c, piece) => {
   return moves;
 };
 
-const canCastle = (boardState, color, side) => {
+const canCastle = (state, color, side) => {
+  const boardState = state.board;
   const row = color === "white" ? 7 : 0;
-  const opponent = color === "white" ? "black" : "white";
-  if (isKingInCheck(color, boardState)) return false;
+  const opponent = getOppositeColor(color);
+  if (isKingInCheck(state, color)) return false;
+  const attackedSquares = getAttackedSquares(state, opponent);
 
   if (side === "kingside") {
     if (boardState[row][5] !== "." || boardState[row][6] !== ".") return false;
     const rook = boardState[row][7];
     if (rook !== (color === "white" ? "R" : "r")) return false;
-    if (isSquareAttacked(boardState, row, 5, opponent)) return false;
-    if (isSquareAttacked(boardState, row, 6, opponent)) return false;
+    if (attackedSquares.has(getSquareIndex(row, 5))) return false;
+    if (attackedSquares.has(getSquareIndex(row, 6))) return false;
     return true;
   }
 
@@ -433,8 +480,8 @@ const canCastle = (boardState, color, side) => {
   }
   const rook = boardState[row][0];
   if (rook !== (color === "white" ? "R" : "r")) return false;
-  if (isSquareAttacked(boardState, row, 3, opponent)) return false;
-  if (isSquareAttacked(boardState, row, 2, opponent)) return false;
+  if (attackedSquares.has(getSquareIndex(row, 3))) return false;
+  if (attackedSquares.has(getSquareIndex(row, 2))) return false;
   return true;
 };
 
@@ -532,7 +579,7 @@ const getPieceValue = (piece) => PIECE_VALUES[piece.toUpperCase()] || 0;
 const chooseCpuMove = (moves) => {
   if (!moves.length) return null;
 
-  const opponent = cpuColor === "white" ? "black" : "white";
+  const opponent = getOppositeColor(cpuColor);
   const scoredMoves = moves.map((move) => {
     let score = 0;
     if (move.enPassant) {
@@ -545,7 +592,7 @@ const chooseCpuMove = (moves) => {
     }
 
     const simulated = applyMoveToBoard(board, move);
-    if (isKingInCheck(opponent, simulated)) {
+    if (isKingInCheck({ board: simulated }, opponent)) {
       score += 2;
     }
 
@@ -573,14 +620,10 @@ const scheduleCpuMove = () => {
       return;
     }
 
-    const moves = getAllLegalMoves(cpuColor);
+    const state = getGameState();
+    const moves = getAllLegalMoves(state, cpuColor);
     if (!moves.length) {
-      gameOver = true;
-      if (isKingInCheck(turn)) {
-        updateTurnText("Checkmate (no legal moves).");
-      } else {
-        updateTurnText("Stalemate (no legal moves).");
-      }
+      refreshGameStatus();
       cpuThinking = false;
       renderBoard();
       return;
@@ -594,86 +637,167 @@ const scheduleCpuMove = () => {
   }, delay);
 };
 
-const isKingInCheck = (color, boardState = board) => {
+const locateKingSquare = (boardState, color) => {
   const king = color === "white" ? "K" : "k";
   for (let r = 0; r < 8; r += 1) {
     for (let c = 0; c < 8; c += 1) {
       if (boardState[r][c] === king) {
-        return isSquareAttacked(boardState, r, c, color === "white" ? "black" : "white");
+        return { r, c };
       }
     }
   }
-  return false;
+  return null;
 };
 
-const isSquareAttacked = (boardState, r, c, attackerColor) => {
-  const pawn = attackerColor === "white" ? "P" : "p";
-  const pawnDir = attackerColor === "white" ? 1 : -1;
-  for (const dc of [-1, 1]) {
-    const pr = r + pawnDir;
-    const pc = c + dc;
-    if (inBounds(pr, pc) && boardState[pr][pc] === pawn) {
-      return true;
+const getAttackedSquares = (state, attackerColor) => {
+  const attacked = new Set();
+  const boardState = state.board;
+  const addAttack = (r, c) => {
+    if (inBounds(r, c)) {
+      attacked.add(getSquareIndex(r, c));
     }
-  }
+  };
 
-  const knight = attackerColor === "white" ? "N" : "n";
-  const knightMoves = [
-    [2, 1],
-    [2, -1],
-    [-2, 1],
-    [-2, -1],
-    [1, 2],
-    [1, -2],
-    [-1, 2],
-    [-1, -2],
-  ];
-  for (const [dr, dc] of knightMoves) {
-    const nr = r + dr;
-    const nc = c + dc;
-    if (inBounds(nr, nc) && boardState[nr][nc] === knight) {
-      return true;
-    }
-  }
-
-  const directions = [
-    [1, 0],
-    [-1, 0],
-    [0, 1],
-    [0, -1],
-    [1, 1],
-    [1, -1],
-    [-1, 1],
-    [-1, -1],
-  ];
-
-  for (const [dr, dc] of directions) {
-    let nr = r + dr;
-    let nc = c + dc;
-    while (inBounds(nr, nc)) {
-      const target = boardState[nr][nc];
-      if (target !== ".") {
-        const isWhite = target === target.toUpperCase();
-        if ((attackerColor === "white" && isWhite) || (attackerColor === "black" && !isWhite)) {
-          const upper = target.toUpperCase();
-          if ((dr === 0 || dc === 0) && (upper === "R" || upper === "Q")) {
-            return true;
-          }
-          if (dr !== 0 && dc !== 0 && (upper === "B" || upper === "Q")) {
-            return true;
-          }
-          if (upper === "K" && Math.max(Math.abs(nr - r), Math.abs(nc - c)) === 1) {
-            return true;
-          }
+  const addRayAttacks = (r, c, directions) => {
+    directions.forEach(([dr, dc]) => {
+      let nr = r + dr;
+      let nc = c + dc;
+      while (inBounds(nr, nc)) {
+        addAttack(nr, nc);
+        if (boardState[nr][nc] !== ".") {
+          break;
         }
-        break;
+        nr += dr;
+        nc += dc;
       }
-      nr += dr;
-      nc += dc;
+    });
+  };
+
+  for (let r = 0; r < 8; r += 1) {
+    for (let c = 0; c < 8; c += 1) {
+      const piece = boardState[r][c];
+      if (piece === "." || pieceColor(piece) !== attackerColor) continue;
+      switch (piece.toUpperCase()) {
+        case "P": {
+          // Pawn attacks are diagonals only (not forward pushes).
+          const dir = attackerColor === "white" ? -1 : 1;
+          addAttack(r + dir, c - 1);
+          addAttack(r + dir, c + 1);
+          break;
+        }
+        case "N": {
+          const jumps = [
+            [2, 1],
+            [2, -1],
+            [-2, 1],
+            [-2, -1],
+            [1, 2],
+            [1, -2],
+            [-1, 2],
+            [-1, -2],
+          ];
+          jumps.forEach(([dr, dc]) => addAttack(r + dr, c + dc));
+          break;
+        }
+        case "B":
+          addRayAttacks(r, c, [
+            [1, 1],
+            [1, -1],
+            [-1, 1],
+            [-1, -1],
+          ]);
+          break;
+        case "R":
+          addRayAttacks(r, c, [
+            [1, 0],
+            [-1, 0],
+            [0, 1],
+            [0, -1],
+          ]);
+          break;
+        case "Q":
+          addRayAttacks(r, c, [
+            [1, 0],
+            [-1, 0],
+            [0, 1],
+            [0, -1],
+            [1, 1],
+            [1, -1],
+            [-1, 1],
+            [-1, -1],
+          ]);
+          break;
+        case "K": {
+          const steps = [
+            [1, 0],
+            [-1, 0],
+            [0, 1],
+            [0, -1],
+            [1, 1],
+            [1, -1],
+            [-1, 1],
+            [-1, -1],
+          ];
+          steps.forEach(([dr, dc]) => addAttack(r + dr, c + dc));
+          break;
+        }
+        default:
+          break;
+      }
     }
   }
+  return attacked;
+};
 
-  return false;
+const isKingInCheck = (state, color) => {
+  const kingSquare = locateKingSquare(state.board, color);
+  if (!kingSquare) return false;
+  const attackedByOpponent = getAttackedSquares(state, getOppositeColor(color));
+  return attackedByOpponent.has(getSquareIndex(kingSquare.r, kingSquare.c));
+};
+
+const getGameStatus = (state) => {
+  const legalMoves = getAllLegalMoves(state, state.turn);
+  const inCheck = isKingInCheck(state, state.turn);
+  const current = state.turn === "white" ? "White" : "Black";
+
+  if (legalMoves.length === 0) {
+    return {
+      outcome: inCheck ? "checkmate" : "stalemate",
+      message: inCheck ? "Checkmate (no legal moves)." : "Stalemate (no legal moves).",
+      details: { inCheck, legalMoves: legalMoves.length, turn: state.turn },
+    };
+  }
+
+  if (inCheck) {
+    return {
+      outcome: "check",
+      message: `${current} to move — CHECK!`,
+      details: { inCheck, legalMoves: legalMoves.length, turn: state.turn },
+    };
+  }
+
+  return {
+    outcome: "playing",
+    message: `${current} to move`,
+    details: { inCheck, legalMoves: legalMoves.length, turn: state.turn },
+  };
+};
+
+const setGameState = (nextState) => {
+  board = cloneBoard(nextState.board);
+  turn = nextState.turn;
+  castlingRights = nextState.castlingRights || {
+    wK: false,
+    wQ: false,
+    bK: false,
+    bQ: false,
+  };
+  enPassantTarget = nextState.enPassantTarget || null;
+  selected = null;
+  legalMoves = [];
+  gameOver = false;
+  cpuThinking = false;
 };
 
 modeSelect.addEventListener("change", () => {
@@ -682,5 +806,34 @@ modeSelect.addEventListener("change", () => {
 });
 
 newGameButton.addEventListener("click", startNewGame);
+
+if (debugToggleButton) {
+  debugToggleButton.addEventListener("click", () => {
+    debugEnabled = !debugEnabled;
+    debugToggleButton.setAttribute("aria-pressed", debugEnabled ? "true" : "false");
+    renderBoard();
+    refreshGameStatus();
+  });
+}
+
+document.addEventListener("keydown", (event) => {
+  if (event.key.toLowerCase() !== "d") return;
+  if (event.target && ["INPUT", "SELECT", "TEXTAREA"].includes(event.target.tagName)) return;
+  debugEnabled = !debugEnabled;
+  if (debugToggleButton) {
+    debugToggleButton.setAttribute("aria-pressed", debugEnabled ? "true" : "false");
+  }
+  renderBoard();
+  refreshGameStatus();
+});
+
+window.ChessGame = {
+  getGameState,
+  getGameStatus,
+  getAttackedSquares,
+  isKingInCheck,
+  getAllLegalMoves,
+  setGameState,
+};
 
 startNewGame();
