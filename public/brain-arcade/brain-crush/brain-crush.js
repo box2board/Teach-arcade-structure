@@ -5,6 +5,33 @@
   const BASE_GOAL = 500;
   const GOAL_INCREMENT = 250;
 
+  const ICONS = [
+    {
+      name: "bolt",
+      svg: "<svg viewBox='0 0 24 24' aria-hidden='true'><path d='M13 2L4 14h6l-1 8 9-12h-6l1-8z'/></svg>",
+    },
+    {
+      name: "atom",
+      svg: "<svg viewBox='0 0 24 24' aria-hidden='true'><circle cx='12' cy='12' r='2.4'/><ellipse cx='12' cy='12' rx='9' ry='4.2' fill='none' stroke='currentColor' stroke-width='2'/><ellipse cx='12' cy='12' rx='4.2' ry='9' fill='none' stroke='currentColor' stroke-width='2'/></svg>",
+    },
+    {
+      name: "flask",
+      svg: "<svg viewBox='0 0 24 24' aria-hidden='true'><path d='M9 3h6v2l-1 1v3.2l4.6 7.8A3 3 0 0115.9 21H8.1a3 3 0 01-2.7-4.3L10 9.2V6L9 5V3zm1.8 10.2l-3.2 5.3a1 1 0 00.9 1.5h7a1 1 0 00.9-1.5l-3.2-5.3H10.8z'/></svg>",
+    },
+    {
+      name: "globe",
+      svg: "<svg viewBox='0 0 24 24' aria-hidden='true'><circle cx='12' cy='12' r='9' fill='none' stroke='currentColor' stroke-width='2'/><path d='M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18' fill='none' stroke='currentColor' stroke-width='2'/></svg>",
+    },
+    {
+      name: "book",
+      svg: "<svg viewBox='0 0 24 24' aria-hidden='true'><path d='M4 5.5A2.5 2.5 0 016.5 3H20v16.5a1 1 0 01-1 1H6.5A2.5 2.5 0 014 18V5.5zm2.5-.5A.5.5 0 006 5.5V18a.5.5 0 00.5.5H18V5H6.5z'/></svg>",
+    },
+    {
+      name: "star",
+      svg: "<svg viewBox='0 0 24 24' aria-hidden='true'><path d='M12 3l2.8 5.7 6.2.9-4.5 4.4 1 6.1L12 17l-5.5 2.9 1-6.1L3 9.6l6.2-.9L12 3z'/></svg>",
+    },
+  ];
+
   const boardEl = document.getElementById("board");
   const scoreEl = document.getElementById("score");
   const highScoreEl = document.getElementById("high-score");
@@ -27,7 +54,7 @@
 
   let grid = [];
   let selected = null;
-  let isProcessing = false;
+  let isResolving = false;
   let isPaused = false;
   let isEndless = false;
   let levelIndex = 0;
@@ -37,8 +64,18 @@
   let audioContext = null;
   let isMuted = false;
   let cascadeCount = 0;
+  let resolveFailSafe = null;
 
+  const debugEnabled = new URLSearchParams(window.location.search).get("debug") === "1";
+  const debugLog = (...args) => {
+    if (debugEnabled) {
+      console.log("[Brain Crush]", ...args);
+    }
+  };
+
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+  const motionDelay = (ms) => (prefersReducedMotion ? 0 : ms);
 
   const showToast = (message) => {
     const toast = document.createElement("div");
@@ -136,9 +173,20 @@
       const row = Number(tile.dataset.row);
       const col = Number(tile.dataset.col);
       const cell = grid[row][col];
-      tile.dataset.type = cell.type;
       tile.classList.toggle("selected", selected?.row === row && selected?.col === col);
-      tile.classList.remove("line-clear", "color-bomb", "vertical", "fade", "swap-back");
+      tile.classList.remove("line-clear", "color-bomb", "vertical", "fade", "swap-back", "empty");
+      if (!cell) {
+        tile.dataset.type = "";
+        tile.dataset.icon = "";
+        tile.innerHTML = "";
+        tile.disabled = true;
+        tile.classList.add("empty");
+        return;
+      }
+      tile.disabled = false;
+      tile.dataset.type = cell.type;
+      tile.dataset.icon = ICONS[cell.type].name;
+      tile.innerHTML = ICONS[cell.type].svg;
       if (cell.special === "lineH") {
         tile.classList.add("line-clear");
       }
@@ -193,10 +241,10 @@
       for (let col = 1; col <= BOARD_SIZE; col += 1) {
         const current = grid[row][col];
         const prev = grid[row][col - 1];
-        if (col < BOARD_SIZE && current.type === prev.type) {
+        if (col < BOARD_SIZE && current && prev && current.type === prev.type) {
           run += 1;
         } else {
-          if (run >= 3) {
+          if (run >= 3 && prev) {
             const tiles = [];
             for (let offset = 0; offset < run; offset += 1) {
               tiles.push({ row, col: col - 1 - offset });
@@ -213,10 +261,10 @@
       for (let row = 1; row <= BOARD_SIZE; row += 1) {
         const current = grid[row]?.[col];
         const prev = grid[row - 1]?.[col];
-        if (row < BOARD_SIZE && current.type === prev.type) {
+        if (row < BOARD_SIZE && current && prev && current.type === prev.type) {
           run += 1;
         } else {
-          if (run >= 3) {
+          if (run >= 3 && prev) {
             const tiles = [];
             for (let offset = 0; offset < run; offset += 1) {
               tiles.push({ row: row - 1 - offset, col });
@@ -311,6 +359,15 @@
     });
   };
 
+  const animateClear = async (clearSet) => {
+    clearSet.forEach((key) => {
+      const [row, col] = key.split(",").map(Number);
+      const tileEl = boardEl.querySelector(`[data-row='${row}'][data-col='${col}']`);
+      tileEl?.classList.add("fade");
+    });
+    await sleep(motionDelay(140 / getPace()));
+  };
+
   const collapseColumns = () => {
     for (let col = 0; col < BOARD_SIZE; col += 1) {
       let writeRow = BOARD_SIZE - 1;
@@ -335,6 +392,7 @@
       return false;
     }
     cascadeCount += 1;
+    debugLog(`cascade ${cascadeCount}: matches found`, matches.length);
 
     const isFirstCascade = cascadeCount === 1;
     const createdSpecials = isFirstCascade ? applySpecialCreation(matches, swapOrigin) : [];
@@ -352,13 +410,16 @@
     playSound(createdSpecials.length ? "special" : "match");
     updateHUD();
 
+    debugLog(`clearing ${clearSet.size} tiles`);
+    await animateClear(clearSet);
     clearTiles(clearSet);
     renderBoard();
-    await sleep(140 / getPace());
+    await sleep(motionDelay(120 / getPace()));
 
+    debugLog("gravity + refill");
     collapseColumns();
     renderBoard();
-    await sleep(160 / getPace());
+    await sleep(motionDelay(140 / getPace()));
 
     return true;
   };
@@ -402,95 +463,115 @@
     }
   };
 
+  const lockInput = () => {
+    isResolving = true;
+    clearTimeout(resolveFailSafe);
+    resolveFailSafe = setTimeout(() => {
+      debugLog("failsafe unlock");
+      isResolving = false;
+      resetSelection();
+      renderBoard();
+    }, 1500);
+    debugLog("lock");
+  };
+
+  const unlockInput = () => {
+    isResolving = false;
+    clearTimeout(resolveFailSafe);
+    resolveFailSafe = null;
+    debugLog("unlock");
+  };
+
   const attemptSwap = async (a, b) => {
     if (!inBounds(a.row, a.col) || !inBounds(b.row, b.col)) return;
     if (!isEndless && movesRemaining <= 0) return;
-
-    isProcessing = true;
-    swapTiles(a, b);
-    renderBoard();
-
-    if (!isEndless) {
-      movesRemaining = Math.max(0, movesRemaining - 1);
-    }
-    updateHUD();
-    playSound("swap");
-
-    cascadeCount = 0;
-
-    const aCell = grid[a.row][a.col];
-    const bCell = grid[b.row][b.col];
-    let colorBombTarget = null;
-    if (aCell.special === "color" && bCell.special === "color") {
-      colorBombTarget = null;
-    } else if (aCell.special === "color") {
-      colorBombTarget = bCell.type;
-    } else if (bCell.special === "color") {
-      colorBombTarget = aCell.type;
-    }
-
-    if (colorBombTarget !== null || aCell.special === "color" || bCell.special === "color") {
-      const clearSet = new Set();
-      for (let row = 0; row < BOARD_SIZE; row += 1) {
-        for (let col = 0; col < BOARD_SIZE; col += 1) {
-          if (!colorBombTarget || grid[row][col].type === colorBombTarget) {
-            clearSet.add(`${row},${col}`);
-          }
-        }
-      }
-      clearTiles(clearSet);
-      score += Math.round(120 * (1 + cascadeCount * 0.1));
-      playSound("special");
-      collapseColumns();
-      renderBoard();
-      await sleep(180 / getPace());
-      cascadeCount = 0;
-    }
-
-    let matched = await resolveMatches(
-      { row: a.row, col: a.col, rowB: b.row, colB: b.col },
-      colorBombTarget
-    );
-
-    while (matched) {
-      matched = await resolveMatches(null, null);
-    }
-
-    if (!findMatches().length && !findPossibleMoves().length) {
-      shuffleBoard();
-      renderBoard();
-      showToast("No moves left. Shuffling board!");
-    }
-
-    if (!findMatches().length && cascadeCount === 0 && colorBombTarget === null) {
+    lockInput();
+    try {
+      debugLog("swap", a, b);
       swapTiles(a, b);
       renderBoard();
-      const tileAEl = boardEl.querySelector(`[data-row='${a.row}'][data-col='${a.col}']`);
-      const tileBEl = boardEl.querySelector(`[data-row='${b.row}'][data-col='${b.col}']`);
-      tileAEl?.classList.add("swap-back");
-      tileBEl?.classList.add("swap-back");
-      playSound("invalid");
-      await sleep(140 / getPace());
-    }
 
-    if (!isEndless && movesRemaining <= 0 && score < BASE_GOAL + levelIndex * GOAL_INCREMENT) {
-      showOverlay("Level Failed", "Out of moves. Try again?", "Restart Level");
-      isProcessing = false;
-      return;
-    }
+      if (!isEndless) {
+        movesRemaining = Math.max(0, movesRemaining - 1);
+      }
+      updateHUD();
+      playSound("swap");
 
-    if (!isEndless && score >= BASE_GOAL + levelIndex * GOAL_INCREMENT) {
-      showOverlay("Level Complete!", "Great work. Ready for the next level?", "Next Level");
-      isProcessing = false;
-      return;
-    }
+      cascadeCount = 0;
 
-    isProcessing = false;
+      const aCell = grid[a.row][a.col];
+      const bCell = grid[b.row][b.col];
+      let colorBombTarget = null;
+      if (aCell?.special === "color" && bCell?.special === "color") {
+        colorBombTarget = null;
+      } else if (aCell?.special === "color") {
+        colorBombTarget = bCell?.type ?? null;
+      } else if (bCell?.special === "color") {
+        colorBombTarget = aCell?.type ?? null;
+      }
+
+      if (aCell?.special === "color" || bCell?.special === "color") {
+        const clearSet = new Set();
+        for (let row = 0; row < BOARD_SIZE; row += 1) {
+          for (let col = 0; col < BOARD_SIZE; col += 1) {
+            if (!colorBombTarget || grid[row][col]?.type === colorBombTarget) {
+              clearSet.add(`${row},${col}`);
+            }
+          }
+        }
+        debugLog("color bomb clear", clearSet.size);
+        await animateClear(clearSet);
+        clearTiles(clearSet);
+        score += Math.round(120 * (1 + cascadeCount * 0.1));
+        playSound("special");
+        collapseColumns();
+        renderBoard();
+        await sleep(motionDelay(160 / getPace()));
+      }
+
+      let matched = await resolveMatches(
+        { row: a.row, col: a.col, rowB: b.row, colB: b.col },
+        colorBombTarget
+      );
+
+      while (matched) {
+        matched = await resolveMatches(null, null);
+      }
+
+      if (!findMatches().length && !findPossibleMoves().length) {
+        shuffleBoard();
+        renderBoard();
+        showToast("No moves left. Shuffling board!");
+      }
+
+      if (!findMatches().length && cascadeCount === 0 && !colorBombTarget && !aCell?.special && !bCell?.special) {
+        debugLog("invalid swap, swapping back");
+        swapTiles(a, b);
+        renderBoard();
+        const tileAEl = boardEl.querySelector(`[data-row='${a.row}'][data-col='${a.col}']`);
+        const tileBEl = boardEl.querySelector(`[data-row='${b.row}'][data-col='${b.col}']`);
+        tileAEl?.classList.add("swap-back");
+        tileBEl?.classList.add("swap-back");
+        playSound("invalid");
+        await sleep(motionDelay(140 / getPace()));
+      }
+
+      if (!isEndless && movesRemaining <= 0 && score < BASE_GOAL + levelIndex * GOAL_INCREMENT) {
+        showOverlay("Level Failed", "Out of moves. Try again?", "Restart Level");
+        return;
+      }
+
+      if (!isEndless && score >= BASE_GOAL + levelIndex * GOAL_INCREMENT) {
+        showOverlay("Level Complete!", "Great work. Ready for the next level?", "Next Level");
+      }
+    } finally {
+      unlockInput();
+    }
   };
 
   const handleTileInteraction = (event) => {
     const tile = event.target.closest(".tile");
-    if (!tile || isProcessing || isPaused) return;
+    if (!tile || isResolving || isPaused) return;
     const row = Number(tile.dataset.row);
     const col = Number(tile.dataset.col);
     const current = { row, col };
@@ -541,6 +622,7 @@
     movesRemaining = STARTING_MOVES;
     cascadeCount = 0;
     resetSelection();
+    unlockInput();
     hideOverlay();
     initBoard();
     updateHUD();
