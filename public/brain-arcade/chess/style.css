@@ -88,6 +88,11 @@ body {
   box-shadow: 0 16px 30px rgba(0, 0, 0, 0.35);
 }
 
+.board-wrapper {
+  position: relative;
+  width: min(100%, 520px);
+}
+
 .square {
   width: clamp(42px, 8vw, 60px);
   height: clamp(42px, 8vw, 60px);
@@ -151,23 +156,14 @@ body {
   opacity: 0.85;
 }
 
-.debug-toggle {
-  background: #1d4ed8;
-  border: none;
-  color: #e2e8f0;
-  font-weight: 700;
-  padding: 10px 16px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: opacity 0.15s ease;
-  align-self: stretch;
-}
-
-.debug-toggle:hover {
-  opacity: 0.85;
-}
-
 .debug-status {
+  position: absolute;
+  top: 6px;
+  left: 8px;
+  z-index: 2;
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: rgba(15, 23, 42, 0.7);
   font-size: 12px;
   color: #94a3b8;
 }

@@ -4,7 +4,6 @@ const modeSelect = document.getElementById("mode");
 const sideSelect = document.getElementById("side");
 const difficultySelect = document.getElementById("difficulty");
 const newGameButton = document.getElementById("new-game");
-const debugToggleButton = document.getElementById("debug-toggle");
 const debugStatusElement = document.getElementById("debug-status");
 
 const PIECES = {
@@ -54,7 +53,20 @@ let cpuColor = "black";
 let difficulty = "easy";
 let cpuThinking = false;
 let gameOver = false;
-let debugEnabled = false;
+const isDebugAllowed = () => {
+  const params = new URLSearchParams(window.location.search);
+  const param = params.get("debug");
+  if (param === "1" || param === "true") return true;
+  try {
+    const stored = window.localStorage?.getItem("chessDebug");
+    return stored === "1" || stored === "true";
+  } catch (error) {
+    return false;
+  }
+};
+
+const debugAllowed = isDebugAllowed();
+let debugEnabled = debugAllowed;
 let lastStatus = null;
 
 const cloneBoard = (source) => source.map((row) => row.slice());
@@ -807,22 +819,11 @@ modeSelect.addEventListener("change", () => {
 
 newGameButton.addEventListener("click", startNewGame);
 
-if (debugToggleButton) {
-  debugToggleButton.addEventListener("click", () => {
-    debugEnabled = !debugEnabled;
-    debugToggleButton.setAttribute("aria-pressed", debugEnabled ? "true" : "false");
-    renderBoard();
-    refreshGameStatus();
-  });
-}
-
 document.addEventListener("keydown", (event) => {
   if (event.key.toLowerCase() !== "d") return;
   if (event.target && ["INPUT", "SELECT", "TEXTAREA"].includes(event.target.tagName)) return;
+  if (!debugAllowed) return;
   debugEnabled = !debugEnabled;
-  if (debugToggleButton) {
-    debugToggleButton.setAttribute("aria-pressed", debugEnabled ? "true" : "false");
-  }
   renderBoard();
   refreshGameStatus();
 });
