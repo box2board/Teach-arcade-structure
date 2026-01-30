@@ -38,10 +38,11 @@
     <select id="side"><option value="white">Play as White</option></select>
     <select id="difficulty"><option value="easy">Easy</option></select>
     <button id="new-game" type="button">New Game</button>
-    <button id="debug-toggle" type="button">Debug</button>
   </div>
   <div id="turn"></div>
-  <div id="debug-status"></div>
-  <div id="board"></div>
+  <div class="board-wrapper">
+    <div id="debug-status" class="debug-status" hidden></div>
+    <div id="board"></div>
+  </div>
 </body>
 </html>

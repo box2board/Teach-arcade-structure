@@ -43,12 +43,13 @@
           </select>
         </label>
         <button class="reset" type="button" id="new-game">New Game</button>
-        <button class="debug-toggle" type="button" id="debug-toggle" aria-pressed="false">Debug</button>
       </div>
 
       <div id="turn" class="turn" role="status" aria-live="polite"></div>
-      <div id="debug-status" class="debug-status" role="status" aria-live="polite" hidden></div>
-      <div id="board" class="board" role="grid" aria-label="Chess board"></div>
+      <div class="board-wrapper">
+        <div id="debug-status" class="debug-status" role="status" aria-live="polite" hidden></div>
+        <div id="board" class="board" role="grid" aria-label="Chess board"></div>
+      </div>
     </section>
   </main>
 </body>
