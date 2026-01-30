@@ -1,0 +1,56 @@
+{
+  "width": 7680,
+  "height": 4320,
+  "spawn": { "x": 480, "y": 480 },
+  "regions": [
+    { "name": "Jungle Ruins", "x": 0, "y": 0, "width": 3840, "height": 2160, "color": "#1b2f2a" },
+    { "name": "Temple Heights", "x": 3840, "y": 0, "width": 3840, "height": 2160, "color": "#1a2430" },
+    { "name": "Archive Hall", "x": 0, "y": 2160, "width": 3840, "height": 2160, "color": "#20211f" },
+    { "name": "Flooded Passage", "x": 3840, "y": 2160, "width": 3840, "height": 2160, "color": "#182237" }
+  ],
+  "walls": [
+    { "x": 980, "y": 200, "width": 280, "height": 520 },
+    { "x": 1680, "y": 620, "width": 500, "height": 200 },
+    { "x": 2650, "y": 300, "width": 260, "height": 700 },
+    { "x": 3300, "y": 820, "width": 220, "height": 520 },
+    { "x": 3940, "y": 820, "width": 220, "height": 520 },
+    { "x": 4200, "y": 260, "width": 320, "height": 680 },
+    { "x": 5400, "y": 200, "width": 300, "height": 520 },
+    { "x": 6200, "y": 680, "width": 420, "height": 220 },
+    { "x": 900, "y": 2500, "width": 420, "height": 260 },
+    { "x": 1900, "y": 2800, "width": 500, "height": 260 },
+    { "x": 2900, "y": 2400, "width": 260, "height": 620 },
+    { "x": 4300, "y": 2500, "width": 320, "height": 520 },
+    { "x": 5200, "y": 2900, "width": 360, "height": 240 },
+    { "x": 6400, "y": 2440, "width": 420, "height": 520 },
+    { "x": 3550, "y": 1800, "width": 580, "height": 180 },
+    { "x": 3480, "y": 3400, "width": 680, "height": 180 }
+  ],
+  "slowZones": [
+    { "x": 1200, "y": 1400, "width": 700, "height": 320, "modifier": 0.6 },
+    { "x": 4600, "y": 1600, "width": 620, "height": 320, "modifier": 0.6 },
+    { "x": 2200, "y": 3300, "width": 720, "height": 320, "modifier": 0.55 },
+    { "x": 5200, "y": 3300, "width": 760, "height": 320, "modifier": 0.55 }
+  ],
+  "chests": [
+    { "id": "c1", "x": 520, "y": 740, "region": "Jungle Ruins" },
+    { "id": "c2", "x": 1400, "y": 420, "region": "Jungle Ruins" },
+    { "id": "c3", "x": 2160, "y": 1080, "region": "Jungle Ruins" },
+    { "id": "c4", "x": 3200, "y": 1620, "region": "Jungle Ruins" },
+    { "id": "c5", "x": 4280, "y": 520, "region": "Temple Heights" },
+    { "id": "c6", "x": 5200, "y": 820, "region": "Temple Heights" },
+    { "id": "c7", "x": 6400, "y": 520, "region": "Temple Heights" },
+    { "id": "c8", "x": 7200, "y": 1600, "region": "Temple Heights" },
+    { "id": "c9", "x": 620, "y": 2800, "region": "Archive Hall" },
+    { "id": "c10", "x": 1600, "y": 2400, "region": "Archive Hall" },
+    { "id": "c11", "x": 2600, "y": 3100, "region": "Archive Hall" },
+    { "id": "c12", "x": 3200, "y": 3800, "region": "Archive Hall" },
+    { "id": "c13", "x": 4400, "y": 2500, "region": "Flooded Passage" },
+    { "id": "c14", "x": 5600, "y": 3600, "region": "Flooded Passage" },
+    { "id": "c15", "x": 7000, "y": 3000, "region": "Flooded Passage" }
+  ],
+  "secretChests": [
+    { "id": "s1", "x": 3600, "y": 1180, "region": "Temple Heights" },
+    { "id": "s2", "x": 7280, "y": 3920, "region": "Flooded Passage" }
+  ]
+}

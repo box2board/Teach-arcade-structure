@@ -1,0 +1,334 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "type": "multiple",
+      "category": "causes",
+      "prompt": "Which event is widely considered the immediate trigger that started World War II in Europe?",
+      "choices": [
+        "Germany's invasion of Poland in 1939",
+        "The bombing of Pearl Harbor in 1941",
+        "The Battle of Britain in 1940",
+        "The signing of the Munich Agreement"
+      ],
+      "correctIndex": 0,
+      "explanation": "Germany's invasion of Poland prompted Britain and France to declare war, starting the conflict in Europe."
+    },
+    {
+      "id": 2,
+      "type": "multiple",
+      "category": "causes",
+      "prompt": "Which treaty after World War I created resentment that helped set the stage for World War II?",
+      "choices": [
+        "Treaty of Versailles",
+        "Treaty of Paris",
+        "Treaty of Tordesillas",
+        "Treaty of Utrecht"
+      ],
+      "correctIndex": 0,
+      "explanation": "The Treaty of Versailles imposed heavy penalties on Germany, fueling anger and instability."
+    },
+    {
+      "id": 3,
+      "type": "multiple",
+      "category": "leaders",
+      "prompt": "Which leader is associated with the rise of Nazi Germany?",
+      "choices": [
+        "Adolf Hitler",
+        "Winston Churchill",
+        "Franklin D. Roosevelt",
+        "Joseph Stalin"
+      ],
+      "correctIndex": 0,
+      "explanation": "Adolf Hitler led the Nazi Party and became Germany's dictator in the 1930s."
+    },
+    {
+      "id": 4,
+      "type": "multiple",
+      "category": "leaders",
+      "prompt": "Which country was led by Benito Mussolini during World War II?",
+      "choices": [
+        "Italy",
+        "Spain",
+        "Greece",
+        "Turkey"
+      ],
+      "correctIndex": 0,
+      "explanation": "Benito Mussolini led Italy and aligned it with the Axis Powers."
+    },
+    {
+      "id": 5,
+      "type": "multiple",
+      "category": "turning-points",
+      "prompt": "Which battle in 1942 is often considered a turning point in the Pacific War?",
+      "choices": [
+        "Battle of Midway",
+        "Battle of the Bulge",
+        "Battle of El Alamein",
+        "Battle of Stalingrad"
+      ],
+      "correctIndex": 0,
+      "explanation": "At Midway, the United States destroyed key Japanese aircraft carriers, shifting momentum."
+    },
+    {
+      "id": 6,
+      "type": "multiple",
+      "category": "turning-points",
+      "prompt": "Which battle is known as a major turning point on the Eastern Front?",
+      "choices": [
+        "Battle of Stalingrad",
+        "Battle of Dunkirk",
+        "Battle of Iwo Jima",
+        "Battle of Britain"
+      ],
+      "correctIndex": 0,
+      "explanation": "The Soviet victory at Stalingrad stopped the German advance and shifted the war in the East."
+    },
+    {
+      "id": 7,
+      "type": "multiple",
+      "category": "home-front",
+      "prompt": "What was a major role of women on the U.S. home front during World War II?",
+      "choices": [
+        "Working in factories and shipyards",
+        "Commanding front-line combat units",
+        "Serving as foreign diplomats",
+        "Running for national political office in large numbers"
+      ],
+      "correctIndex": 0,
+      "explanation": "Women filled industrial jobs and kept wartime production running at home."
+    },
+    {
+      "id": 8,
+      "type": "multiple",
+      "category": "home-front",
+      "prompt": "Which program asked Americans to limit the use of goods like gasoline, rubber, and sugar?",
+      "choices": [
+        "Rationing",
+        "Isolationism",
+        "Appeasement",
+        "Containment"
+      ],
+      "correctIndex": 0,
+      "explanation": "Rationing conserved resources for the military and war effort."
+    },
+    {
+      "id": 9,
+      "type": "multiple",
+      "category": "home-front",
+      "prompt": "What was the purpose of war bonds in the United States?",
+      "choices": [
+        "To help finance the war effort",
+        "To punish enemy nations",
+        "To replace currency in circulation",
+        "To pay soldiers directly"
+      ],
+      "correctIndex": 0,
+      "explanation": "War bonds were loans from citizens to help fund military expenses."
+    },
+    {
+      "id": 10,
+      "type": "multiple",
+      "category": "holocaust",
+      "prompt": "The Holocaust refers to the systematic persecution and murder of which group primarily?",
+      "choices": [
+        "Jewish people in Europe",
+        "Industrial workers in Germany",
+        "Political leaders in Britain",
+        "Military leaders in the United States"
+      ],
+      "correctIndex": 0,
+      "explanation": "The Holocaust was the Nazi-led genocide primarily targeting Jewish people, among other groups."
+    },
+    {
+      "id": 11,
+      "type": "multiple",
+      "category": "holocaust",
+      "prompt": "Which term describes the Nazi policy of removing people from public life and rights before deportations?",
+      "choices": [
+        "Persecution",
+        "Detente",
+        "Decolonization",
+        "Demobilization"
+      ],
+      "correctIndex": 0,
+      "explanation": "Persecution included laws and actions that stripped rights and isolated targeted groups."
+    },
+    {
+      "id": 12,
+      "type": "multiple",
+      "category": "consequences",
+      "prompt": "Which organization was created after World War II to promote peace and cooperation?",
+      "choices": [
+        "United Nations",
+        "League of Nations",
+        "NATO",
+        "European Union"
+      ],
+      "correctIndex": 0,
+      "explanation": "The United Nations was founded in 1945 to support international cooperation and peace."
+    },
+    {
+      "id": 13,
+      "type": "multiple",
+      "category": "consequences",
+      "prompt": "Which two countries emerged as superpowers after World War II?",
+      "choices": [
+        "United States and Soviet Union",
+        "Germany and Japan",
+        "France and Italy",
+        "China and India"
+      ],
+      "correctIndex": 0,
+      "explanation": "The U.S. and the Soviet Union became dominant global powers after the war."
+    },
+    {
+      "id": 14,
+      "type": "multiple",
+      "category": "leaders",
+      "prompt": "Which Allied leader is associated with the phrase ""We shall fight on the beaches""?",
+      "choices": [
+        "Winston Churchill",
+        "Franklin D. Roosevelt",
+        "Dwight D. Eisenhower",
+        "Charles de Gaulle"
+      ],
+      "correctIndex": 0,
+      "explanation": "Prime Minister Winston Churchill used that phrase to rally British resolve."
+    },
+    {
+      "id": 15,
+      "type": "multiple",
+      "category": "causes",
+      "prompt": "What was appeasement in the years before World War II?",
+      "choices": [
+        "Giving in to aggressive demands to avoid conflict",
+        "Building alliances to stop expansion",
+        "Rapid rearmament of democratic nations",
+        "A strategy of total war"
+      ],
+      "correctIndex": 0,
+      "explanation": "Appeasement involved making concessions to avoid war, such as allowing territorial expansion."
+    },
+    {
+      "id": 16,
+      "type": "multiple",
+      "category": "turning-points",
+      "prompt": "Which Allied invasion opened a major Western Front in Europe in 1944?",
+      "choices": [
+        "D-Day (Normandy invasion)",
+        "Operation Barbarossa",
+        "Pearl Harbor",
+        "Battle of the Coral Sea"
+      ],
+      "correctIndex": 0,
+      "explanation": "D-Day landed Allied forces in Normandy and established a Western Front against Germany."
+    },
+    {
+      "id": 17,
+      "type": "multiple",
+      "category": "consequences",
+      "prompt": "Which program helped rebuild Western Europe after World War II?",
+      "choices": [
+        "Marshall Plan",
+        "New Deal",
+        "Great Society",
+        "Truman Doctrine"
+      ],
+      "correctIndex": 0,
+      "explanation": "The Marshall Plan provided economic aid to rebuild European economies."
+    },
+    {
+      "id": 18,
+      "type": "multiple",
+      "category": "turning-points",
+      "prompt": "Which battle is famous for being the largest tank battle in history?",
+      "choices": [
+        "Battle of Kursk",
+        "Battle of Guadalcanal",
+        "Battle of Okinawa",
+        "Battle of Singapore"
+      ],
+      "correctIndex": 0,
+      "explanation": "The Battle of Kursk featured massive armored forces and marked a Soviet victory."
+    },
+    {
+      "id": 19,
+      "type": "multiple",
+      "category": "causes",
+      "prompt": "Which ideology promoted extreme nationalism and authoritarian rule in Germany?",
+      "choices": [
+        "Fascism",
+        "Liberalism",
+        "Social democracy",
+        "Mercantilism"
+      ],
+      "correctIndex": 0,
+      "explanation": "Fascism emphasized strict control, nationalism, and expansion under authoritarian leaders."
+    },
+    {
+      "id": 20,
+      "type": "multiple",
+      "category": "leaders",
+      "prompt": "Which leader led the Soviet Union during most of World War II?",
+      "choices": [
+        "Joseph Stalin",
+        "Nikita Khrushchev",
+        "Leon Trotsky",
+        "Vladimir Lenin"
+      ],
+      "correctIndex": 0,
+      "explanation": "Joseph Stalin was the Soviet leader during World War II."
+    },
+    {
+      "id": 21,
+      "type": "true-false",
+      "category": "turning-points",
+      "prompt": "True or False: The Battle of Britain was fought mainly in the skies over the United Kingdom.",
+      "choices": ["True", "False"],
+      "correctIndex": 0,
+      "explanation": "The Battle of Britain was an aerial campaign between the German Luftwaffe and the Royal Air Force."
+    },
+    {
+      "id": 22,
+      "type": "true-false",
+      "category": "causes",
+      "prompt": "True or False: The United States entered World War II before the attack on Pearl Harbor.",
+      "choices": ["True", "False"],
+      "correctIndex": 1,
+      "explanation": "The U.S. entered the war after Pearl Harbor in December 1941."
+    },
+    {
+      "id": 23,
+      "type": "true-false",
+      "category": "home-front",
+      "prompt": "True or False: Victory gardens were planted to supplement food supplies during the war.",
+      "choices": ["True", "False"],
+      "correctIndex": 0,
+      "explanation": "Victory gardens helped reduce pressure on commercial food supplies."
+    },
+    {
+      "id": 24,
+      "type": "true-false",
+      "category": "consequences",
+      "prompt": "True or False: World War II ended in 1945.",
+      "choices": ["True", "False"],
+      "correctIndex": 0,
+      "explanation": "The war ended in 1945 with the surrender of Germany and Japan."
+    },
+    {
+      "id": 25,
+      "type": "multiple",
+      "category": "consequences",
+      "prompt": "Which country was divided into East and West after World War II?",
+      "choices": [
+        "Germany",
+        "Italy",
+        "France",
+        "Canada"
+      ],
+      "correctIndex": 0,
+      "explanation": "Germany was split into East and West zones, reflecting Cold War divisions."
+    }
+  ]
+}

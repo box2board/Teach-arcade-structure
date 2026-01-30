@@ -1,0 +1,10 @@
+{
+  "packs": [
+    {
+      "id": "wwii-ruins",
+      "title": "World War II Review Adventure",
+      "mapPack": "social-studies-ruins",
+      "questionPack": "wwii"
+    }
+  ]
+}
