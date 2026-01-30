@@ -1,0 +1,16 @@
+{
+  "name": "Social Studies Ruins",
+  "colors": {
+    "background": "#0a0f20",
+    "wall": "#2b2f3a",
+    "slowZone": "rgba(30, 80, 120, 0.55)",
+    "chest": "#c98b2a",
+    "chestTrim": "#43200f",
+    "chestOpen": "#8fd1a5",
+    "chestOpenLid": "#dfeee2",
+    "secretChest": "#7c5cff",
+    "lock": "#f4d38b",
+    "player": "#f5d06f",
+    "playerHighlight": "#fff7d6"
+  }
+}
