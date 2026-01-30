@@ -1,0 +1,508 @@
+# Teach Arcade SEO Audit Report
+
+## Pages Passed (no changes)
+- public/404.html
+- public/about.html
+- public/arcade-review-games/adventure-review-wwii/index.html
+- public/arcade-review-games/ela/grammar-gauntlet.html
+- public/arcade-review-games/ela/undertext-rifts-mood-tone.html
+- public/arcade-review-games/index.html
+- public/arcade-review-games/math/algebra-city-run.html
+- public/arcade-review-games/math/math-rush-genesis-addition.html
+- public/arcade-review-games/math/math-track-racer.html
+- public/arcade-review-games/math/slope-street-sprint.html
+- public/arcade-review-games/science/concept-stack-cells/index.html
+- public/arcade-review-games/science/moon-mission-run.html
+- public/arcade-review-games/science/scientific-method.html
+- public/arcade-review-games/social-studies/constitution-courthouse-run.html
+- public/arcade-review-games/social-studies/progressive-era-sky-climb.html
+- public/arcade-review-games/social-studies/pyramid-escape-run.html
+- public/arcade-review-games/social-studies/wwi-trench-run-v2/index.html
+- public/arcade-review-games/social-studies/wwi-trench-run.html
+- public/arcade-review-games/social-studies/wwi-trench-run/debug.html
+- public/arcade-review-games/social-studies/wwi-trench-run/index.html
+- public/brain-arcade/apprentice-restorer/index.html
+- public/brain-arcade/block-logic/index.html
+- public/brain-arcade/brain-crush/index.html
+- public/brain-arcade/chess/index.html
+- public/brain-arcade/chess/tests.html
+- public/brain-arcade/index.html
+- public/brain-arcade/solitaire.html
+- public/brain-arcade/sudoku/index.html
+- public/brain-arcade/word-grid/index.html
+- public/brain-arcade/word-search/index.html
+- public/choose-your-path-adventure/cuban-missile-crisis.html
+- public/choose-your-path-adventure/index.html
+- public/decision-simulator/american-revolution-breaking-point/index.html
+- public/decision-simulator/index.html
+- public/escape/index.html
+- public/games/american-revolution-breaking-point/index.html
+- public/icebreakers/index.html
+- public/playbook/index.html
+- public/playbook/why-gamification-works/index.html
+- public/print-play-games/board-games/index.html
+- public/print-play-games/card-games/index.html
+- public/print-play-games/decision-scenarios/index.html
+- public/print-play-games/escape-style/index.html
+- public/print-play-games/index.html
+- public/privacy.html
+- public/professional-development/index.html
+- public/search.html
+- public/side-scroller.html
+- public/store/index.html
+- public/subjects/ela/grammar-language/index.html
+- public/subjects/ela/index.html
+- public/subjects/ela/poetry/index.html
+- public/subjects/ela/reading-informational-text/index.html
+- public/subjects/ela/reading-literature/index.html
+- public/subjects/ela/research-media-literacy/index.html
+- public/subjects/ela/speaking-listening/index.html
+- public/subjects/ela/test-prep/index.html
+- public/subjects/ela/vocabulary-word-study/index.html
+- public/subjects/ela/writing/index.html
+- public/subjects/fine-arts/art-history/index.html
+- public/subjects/fine-arts/dance/index.html
+- public/subjects/fine-arts/drama-theatre/index.html
+- public/subjects/fine-arts/index.html
+- public/subjects/fine-arts/media-arts/index.html
+- public/subjects/fine-arts/music/index.html
+- public/subjects/fine-arts/visual-arts/index.html
+- public/subjects/math/high-school-math/algebra-1/index.html
+- public/subjects/math/high-school-math/algebra-2/index.html
+- public/subjects/math/high-school-math/calculus/index.html
+- public/subjects/math/high-school-math/geometry/index.html
+- public/subjects/math/high-school-math/index.html
+- public/subjects/math/high-school-math/precalculus/index.html
+- public/subjects/math/high-school-math/sat-act-math-prep/index.html
+- public/subjects/math/high-school-math/statistics-data-analysis/index.html
+- public/subjects/math/high-school-math/trigonometry/index.html
+- public/subjects/math/index.html
+- public/subjects/math/k-5-math/addition-subtraction/index.html
+- public/subjects/math/k-5-math/decimals-intro/index.html
+- public/subjects/math/k-5-math/fractions-basics/index.html
+- public/subjects/math/k-5-math/geometry-shapes/index.html
+- public/subjects/math/k-5-math/index.html
+- public/subjects/math/k-5-math/measurement-data/index.html
+- public/subjects/math/k-5-math/money/index.html
+- public/subjects/math/k-5-math/multiplication-division/index.html
+- public/subjects/math/k-5-math/place-value-rounding/index.html
+- public/subjects/math/k-5-math/time/index.html
+- public/subjects/math/k-5-math/word-problems-problem-solving/index.html
+- public/subjects/math/math-games-puzzles/algebra-equations-games/index.html
+- public/subjects/math/math-games-puzzles/escape-room-review-games/index.html
+- public/subjects/math/math-games-puzzles/fact-fluency-games/index.html
+- public/subjects/math/math-games-puzzles/fractions-integers-games/index.html
+- public/subjects/math/math-games-puzzles/geometry-coordinate-plane-games/index.html
+- public/subjects/math/math-games-puzzles/index.html
+- public/subjects/math/math-games-puzzles/logic-puzzles-brain-teasers/index.html
+- public/subjects/math/middle-school-math/expressions-equations/index.html
+- public/subjects/math/middle-school-math/functions-graphs/index.html
+- public/subjects/math/middle-school-math/geometry-area-volume/index.html
+- public/subjects/math/middle-school-math/index.html
+- public/subjects/math/middle-school-math/inequalities/index.html
+- public/subjects/math/middle-school-math/integer-operations/index.html
+- public/subjects/math/middle-school-math/percents/index.html
+- public/subjects/math/middle-school-math/ratios-proportions-unit-rate/index.html
+- public/subjects/math/middle-school-math/slope-linear-relationships/index.html
+- public/subjects/math/middle-school-math/statistics-probability/index.html
+- public/subjects/math/middle-school-math/transformations-congruence/index.html
+- public/subjects/science/astronomy/index.html
+- public/subjects/science/biology/biodiversity-conservation.html
+- public/subjects/science/biology/biotechnology-genetic-engineering.html
+- public/subjects/science/biology/cell-division-mitosis-meiosis.html
+- public/subjects/science/biology/cell-energy-photosynthesis-respiration.html
+- public/subjects/science/biology/cell-transport-homeostasis.html
+- public/subjects/science/biology/cells-structure-function.html
+- public/subjects/science/biology/classification-taxonomy.html
+- public/subjects/science/biology/dna-rna-protein-synthesis.html
+- public/subjects/science/biology/ecology-ecosystems.html
+- public/subjects/science/biology/evolution-natural-selection.html
+- public/subjects/science/biology/genetics-heredity.html
+- public/subjects/science/biology/human-body-systems.html
+- public/subjects/science/biology/index.html
+- public/subjects/science/biology/microorganisms-viruses.html
+- public/subjects/science/biology/scientific-method-introduction-to-biology.html
+- public/subjects/science/biology/scientific-skills-lab-safety.html
+- public/subjects/science/chemistry/index.html
+- public/subjects/science/earth-space-science/index.html
+- public/subjects/science/environmental-science/index.html
+- public/subjects/science/index.html
+- public/subjects/science/life-science/index.html
+- public/subjects/science/physical-science/index.html
+- public/subjects/science/physics/index.html
+- public/subjects/science/stem-engineering/index.html
+- public/subjects/social-studies/economics/index.html
+- public/subjects/social-studies/geography/index.html
+- public/subjects/social-studies/government-and-political-science/civil-liberties-civil-rights.html
+- public/subjects/social-studies/government-and-political-science/comparative-government-systems.html
+- public/subjects/social-studies/government-and-political-science/executive-president-bureaucracy.html
+- public/subjects/social-studies/government-and-political-science/federalism-state-national-power.html
+- public/subjects/social-studies/government-and-political-science/foreign-policy-national-security.html
+- public/subjects/social-studies/government-and-political-science/foundations-government-political-theory.html
+- public/subjects/social-studies/government-and-political-science/global-conflict-peacekeeping.html
+- public/subjects/social-studies/government-and-political-science/globalization-economy-environment.html
+- public/subjects/social-studies/government-and-political-science/governments-world-regions.html
+- public/subjects/social-studies/government-and-political-science/human-rights-international-law.html
+- public/subjects/social-studies/government-and-political-science/interest-groups-campaign-finance.html
+- public/subjects/social-studies/government-and-political-science/judicial-branch-supreme-court.html
+- public/subjects/social-studies/government-and-political-science/legislative-congress.html
+- public/subjects/social-studies/government-and-political-science/political-ideologies-global.html
+- public/subjects/social-studies/government-and-political-science/political-parties-elections.html
+- public/subjects/social-studies/government-and-political-science/public-opinion-media.html
+- public/subjects/social-studies/government-and-political-science/public-policy-domestic-issues.html
+- public/subjects/social-studies/government-and-political-science/us-constitution.html
+- public/subjects/social-studies/government-and-political-science/voting-civic-engagement.html
+- public/subjects/social-studies/government-political-science/index.html
+- public/subjects/social-studies/index.html
+- public/subjects/social-studies/us-history/american-revolution.html
+- public/subjects/social-studies/us-history/civil-rights.html
+- public/subjects/social-studies/us-history/civil-war-reconstruction.html
+- public/subjects/social-studies/us-history/cold-war.html
+- public/subjects/social-studies/us-history/colonial-america.html
+- public/subjects/social-studies/us-history/constitution-early-republic.html
+- public/subjects/social-studies/us-history/contemporary-us-1970s-present.html
+- public/subjects/social-studies/us-history/expansion-reform-jacksonian-era.html
+- public/subjects/social-studies/us-history/great-depression-new-deal.html
+- public/subjects/social-studies/us-history/index.html
+- public/subjects/social-studies/us-history/industrialization-gilded-age.html
+- public/subjects/social-studies/us-history/progressive-era-imperialism.html
+- public/subjects/social-studies/us-history/world-war-i.html
+- public/subjects/social-studies/us-history/world-war-ii.html
+- public/subjects/social-studies/world-history/ancient-greece.html
+- public/subjects/social-studies/world-history/ancient-rome.html
+- public/subjects/social-studies/world-history/byzantine-islamic-world.html
+- public/subjects/social-studies/world-history/classical-india-east-asia.html
+- public/subjects/social-studies/world-history/early-humans-river-valleys.html
+- public/subjects/social-studies/world-history/index.html
+- public/subjects/social-studies/world-history/medieval-europe.html
+- public/subjects/social-studies/world-history/mesoamerican-andean-civilizations.html
+- public/submit.html
+- public/submit/index.html
+- public/teacher-tools/index.html
+- public/terms.html
+- public/tools/buzzer.html
+- public/tools/flashcards.html
+- public/tools/graphic-organizers/cause-effect/index.html
+- public/tools/graphic-organizers/character-map/index.html
+- public/tools/graphic-organizers/frayer-model/index.html
+- public/tools/graphic-organizers/index.html
+- public/tools/graphic-organizers/kwl-chart/index.html
+- public/tools/graphic-organizers/main-idea-details/index.html
+- public/tools/graphic-organizers/pros-cons/index.html
+- public/tools/graphic-organizers/sequence-chart/index.html
+- public/tools/graphic-organizers/story-plot-diagram/index.html
+- public/tools/graphic-organizers/t-chart/index.html
+- public/tools/graphic-organizers/timeline-template/index.html
+- public/tools/graphic-organizers/venn-diagram/index.html
+- public/tools/graphic-organizers/vocabulary-organizer/index.html
+- public/tools/group-maker.html
+- public/tools/index.html
+- public/tools/name-picker.html
+- public/tools/prompt-generator.html
+- public/tools/timer.html
+- public/tools/wheel.html
+
+## Pages Modified
+- public/index.html: fixed internal links to existing destinations.
+- public/tools/text-randomizer.html: fixed internal links to existing destinations.
+
+## Pages Created (404 repair)
+- public/subjects/index.html: new hub page to prevent 404s and organize subject navigation.
+
+## Redirects Created (from → to)
+- /brain-arcade/crossword.html → /brain-arcade/
+- /cuban-missile-crisis.html → //
+- /games/american-revolution-breaking-point/index.html → //
+- /print-play-games/board-games/index.html → /print-play-games/
+- /print-play-games/card-games/index.html → /print-play-games/
+- /print-play-games/decision-scenarios/index.html → /print-play-games/
+- /print-play-games/escape-style/index.html → /print-play-games/
+- /professional-development/index.html → //
+- /subjects/ela/grammar-language/capitalization-rules.html → /subjects/ela/grammar-language/
+- /subjects/ela/grammar-language/editing-revision-practice.html → /subjects/ela/grammar-language/
+- /subjects/ela/grammar-language/parts-of-speech.html → /subjects/ela/grammar-language/
+- /subjects/ela/grammar-language/punctuation-commas-quotes.html → /subjects/ela/grammar-language/
+- /subjects/ela/grammar-language/run-ons-fragments.html → /subjects/ela/grammar-language/
+- /subjects/ela/grammar-language/sentence-types-structure.html → /subjects/ela/grammar-language/
+- /subjects/ela/grammar-language/subject-verb-pronoun-agreement.html → /subjects/ela/grammar-language/
+- /subjects/ela/grammar-language/usage-commonly-confused-words.html → /subjects/ela/grammar-language/
+- /subjects/ela/poetry/figurative-language-poetry.html → /subjects/ela/poetry/
+- /subjects/ela/poetry/forms-types-poetry.html → /subjects/ela/poetry/
+- /subjects/ela/poetry/poetic-devices.html → /subjects/ela/poetry/
+- /subjects/ela/poetry/poetry-analysis.html → /subjects/ela/poetry/
+- /subjects/ela/poetry/rhyme-rhythm-meter.html → /subjects/ela/poetry/
+- /subjects/ela/poetry/writing-original-poems.html → /subjects/ela/poetry/
+- /subjects/ela/reading-informational-text/arguments-evidence.html → /subjects/ela/reading-informational-text/
+- /subjects/ela/reading-informational-text/author-purpose-tone.html → /subjects/ela/reading-informational-text/
+- /subjects/ela/reading-informational-text/fact-opinion-bias.html → /subjects/ela/reading-informational-text/
+- /subjects/ela/reading-informational-text/inference-text-evidence-nonfiction.html → /subjects/ela/reading-informational-text/
+- /subjects/ela/reading-informational-text/main-idea-details.html → /subjects/ela/reading-informational-text/
+- /subjects/ela/reading-informational-text/summarizing-paraphrasing.html → /subjects/ela/reading-informational-text/
+- /subjects/ela/reading-informational-text/text-features.html → /subjects/ela/reading-informational-text/
+- /subjects/ela/reading-informational-text/text-structure.html → /subjects/ela/reading-informational-text/
+- /subjects/ela/reading-literature/character-analysis.html → /subjects/ela/reading-literature/
+- /subjects/ela/reading-literature/conflict-resolution.html → /subjects/ela/reading-literature/
+- /subjects/ela/reading-literature/figurative-language-in-literature.html → /subjects/ela/reading-literature/
+- /subjects/ela/reading-literature/inference-text-evidence.html → /subjects/ela/reading-literature/
+- /subjects/ela/reading-literature/mood-tone.html → /subjects/ela/reading-literature/
+- /subjects/ela/reading-literature/plot-structure.html → /subjects/ela/reading-literature/
+- /subjects/ela/reading-literature/point-of-view-perspective.html → /subjects/ela/reading-literature/
+- /subjects/ela/reading-literature/setting-context.html → /subjects/ela/reading-literature/
+- /subjects/ela/reading-literature/theme.html → /subjects/ela/reading-literature/
+- /subjects/ela/research-media-literacy/citing-sources-avoiding-plagiarism.html → /subjects/ela/research-media-literacy/
+- /subjects/ela/research-media-literacy/digital-citizenship.html → /subjects/ela/research-media-literacy/
+- /subjects/ela/research-media-literacy/finding-credible-sources.html → /subjects/ela/research-media-literacy/
+- /subjects/ela/research-media-literacy/media-bias-reliability.html → /subjects/ela/research-media-literacy/
+- /subjects/ela/research-media-literacy/note-taking-organizers.html → /subjects/ela/research-media-literacy/
+- /subjects/ela/speaking-listening/class-discussions.html → /subjects/ela/speaking-listening/
+- /subjects/ela/speaking-listening/collaborative-conversations.html → /subjects/ela/speaking-listening/
+- /subjects/ela/speaking-listening/debates-structured-argument.html → /subjects/ela/speaking-listening/
+- /subjects/ela/speaking-listening/listening-comprehension-tasks.html → /subjects/ela/speaking-listening/
+- /subjects/ela/speaking-listening/presentations-speeches.html → /subjects/ela/speaking-listening/
+- /subjects/ela/test-prep/editing-revising-passages.html → /subjects/ela/test-prep/
+- /subjects/ela/test-prep/grammar-review-sets.html → /subjects/ela/test-prep/
+- /subjects/ela/test-prep/reading-comprehension-practice.html → /subjects/ela/test-prep/
+- /subjects/ela/test-prep/sat-act-ela-practice.html → /subjects/ela/test-prep/
+- /subjects/ela/test-prep/test-taking-strategies.html → /subjects/ela/test-prep/
+- /subjects/ela/test-prep/writing-prompts-test-style.html → /subjects/ela/test-prep/
+- /subjects/ela/vocabulary-word-study/academic-vocabulary.html → /subjects/ela/vocabulary-word-study/
+- /subjects/ela/vocabulary-word-study/context-clues.html → /subjects/ela/vocabulary-word-study/
+- /subjects/ela/vocabulary-word-study/figurative-language-words.html → /subjects/ela/vocabulary-word-study/
+- /subjects/ela/vocabulary-word-study/greek-latin-roots.html → /subjects/ela/vocabulary-word-study/
+- /subjects/ela/vocabulary-word-study/multiple-meaning-words.html → /subjects/ela/vocabulary-word-study/
+- /subjects/ela/vocabulary-word-study/prefixes-suffixes.html → /subjects/ela/vocabulary-word-study/
+- /subjects/ela/vocabulary-word-study/synonyms-antonyms.html → /subjects/ela/vocabulary-word-study/
+- /subjects/ela/writing/argumentative-persuasive-writing.html → /subjects/ela/writing/
+- /subjects/ela/writing/informational-explanatory-writing.html → /subjects/ela/writing/
+- /subjects/ela/writing/introductions-conclusions.html → /subjects/ela/writing/
+- /subjects/ela/writing/narrative-writing.html → /subjects/ela/writing/
+- /subjects/ela/writing/organization-paragraph-structure.html → /subjects/ela/writing/
+- /subjects/ela/writing/revising-editing.html → /subjects/ela/writing/
+- /subjects/ela/writing/thesis-claims-topic-sentences.html → /subjects/ela/writing/
+- /subjects/ela/writing/using-evidence-citations.html → /subjects/ela/writing/
+- /subjects/fine-arts/art-history/19th-century-movements.html → /subjects/fine-arts/art-history/
+- /subjects/fine-arts/art-history/baroque-rococo.html → /subjects/fine-arts/art-history/
+- /subjects/fine-arts/art-history/contemporary-art-artists.html → /subjects/fine-arts/art-history/
+- /subjects/fine-arts/art-history/how-to-analyze-art.html → /subjects/fine-arts/art-history/
+- /subjects/fine-arts/art-history/impressionism-post-impressionism.html → /subjects/fine-arts/art-history/
+- /subjects/fine-arts/art-history/medieval-byzantine-art.html → /subjects/fine-arts/art-history/
+- /subjects/fine-arts/art-history/modern-art-movements.html → /subjects/fine-arts/art-history/
+- /subjects/fine-arts/art-history/prehistoric-ancient-art.html → /subjects/fine-arts/art-history/
+- /subjects/fine-arts/art-history/renaissance.html → /subjects/fine-arts/art-history/
+- /subjects/fine-arts/dance/choreography-basics.html → /subjects/fine-arts/dance/
+- /subjects/fine-arts/dance/cultural-dances.html → /subjects/fine-arts/dance/
+- /subjects/fine-arts/dance/dance-styles-overview.html → /subjects/fine-arts/dance/
+- /subjects/fine-arts/dance/dance-technique-safety.html → /subjects/fine-arts/dance/
+- /subjects/fine-arts/dance/elements-of-dance.html → /subjects/fine-arts/dance/
+- /subjects/fine-arts/dance/expression-performance.html → /subjects/fine-arts/dance/
+- /subjects/fine-arts/dance/movement-basics.html → /subjects/fine-arts/dance/
+- /subjects/fine-arts/drama-theatre/acting-basics.html → /subjects/fine-arts/drama-theatre/
+- /subjects/fine-arts/drama-theatre/character-development.html → /subjects/fine-arts/drama-theatre/
+- /subjects/fine-arts/drama-theatre/dramatic-structure.html → /subjects/fine-arts/drama-theatre/
+- /subjects/fine-arts/drama-theatre/improvisation-games.html → /subjects/fine-arts/drama-theatre/
+- /subjects/fine-arts/drama-theatre/scriptwriting-dialogue.html → /subjects/fine-arts/drama-theatre/
+- /subjects/fine-arts/drama-theatre/set-costume-design.html → /subjects/fine-arts/drama-theatre/
+- /subjects/fine-arts/drama-theatre/stage-directions-blocking.html → /subjects/fine-arts/drama-theatre/
+- /subjects/fine-arts/drama-theatre/theatre-history.html → /subjects/fine-arts/drama-theatre/
+- /subjects/fine-arts/media-arts/animation-basics.html → /subjects/fine-arts/media-arts/
+- /subjects/fine-arts/media-arts/digital-citizenship.html → /subjects/fine-arts/media-arts/
+- /subjects/fine-arts/media-arts/digital-illustration.html → /subjects/fine-arts/media-arts/
+- /subjects/fine-arts/media-arts/graphic-design-basics.html → /subjects/fine-arts/media-arts/
+- /subjects/fine-arts/media-arts/intro-media-arts.html → /subjects/fine-arts/media-arts/
+- /subjects/fine-arts/media-arts/photo-editing.html → /subjects/fine-arts/media-arts/
+- /subjects/fine-arts/media-arts/storyboarding.html → /subjects/fine-arts/media-arts/
+- /subjects/fine-arts/media-arts/video-editing-projects.html → /subjects/fine-arts/media-arts/
+- /subjects/fine-arts/music/composer-studies.html → /subjects/fine-arts/music/
+- /subjects/fine-arts/music/composition-creation.html → /subjects/fine-arts/music/
+- /subjects/fine-arts/music/dynamics-tempo.html → /subjects/fine-arts/music/
+- /subjects/fine-arts/music/genres-styles.html → /subjects/fine-arts/music/
+- /subjects/fine-arts/music/instrument-families.html → /subjects/fine-arts/music/
+- /subjects/fine-arts/music/melody-pitch.html → /subjects/fine-arts/music/
+- /subjects/fine-arts/music/music-notation.html → /subjects/fine-arts/music/
+- /subjects/fine-arts/music/rhythm-beat.html → /subjects/fine-arts/music/
+- /subjects/fine-arts/music/scales-keys.html → /subjects/fine-arts/music/
+- /subjects/fine-arts/music/world-instruments.html → /subjects/fine-arts/music/
+- /subjects/fine-arts/visual-arts/art-critique-process.html → /subjects/fine-arts/visual-arts/
+- /subjects/fine-arts/visual-arts/color-theory.html → /subjects/fine-arts/visual-arts/
+- /subjects/fine-arts/visual-arts/digital-illustration.html → /subjects/fine-arts/visual-arts/
+- /subjects/fine-arts/visual-arts/drawing-basics.html → /subjects/fine-arts/visual-arts/
+- /subjects/fine-arts/visual-arts/elements-of-art.html → /subjects/fine-arts/visual-arts/
+- /subjects/fine-arts/visual-arts/mixed-media.html → /subjects/fine-arts/visual-arts/
+- /subjects/fine-arts/visual-arts/painting-techniques.html → /subjects/fine-arts/visual-arts/
+- /subjects/fine-arts/visual-arts/principles-of-design.html → /subjects/fine-arts/visual-arts/
+- /subjects/fine-arts/visual-arts/sculpture-3d-art.html → /subjects/fine-arts/visual-arts/
+- /subjects/math/high-school-math/algebra-1/index.html → /subjects/math/high-school-math/
+- /subjects/math/high-school-math/algebra-2/index.html → /subjects/math/high-school-math/
+- /subjects/math/high-school-math/calculus/index.html → /subjects/math/high-school-math/
+- /subjects/math/high-school-math/geometry/index.html → /subjects/math/high-school-math/
+- /subjects/math/high-school-math/precalculus/index.html → /subjects/math/high-school-math/
+- /subjects/math/high-school-math/sat-act-math-prep/index.html → /subjects/math/high-school-math/
+- /subjects/math/high-school-math/statistics-data-analysis/index.html → /subjects/math/high-school-math/
+- /subjects/math/high-school-math/trigonometry/index.html → /subjects/math/high-school-math/
+- /subjects/math/k-5-math/addition-subtraction/index.html → /subjects/math/k-5-math/
+- /subjects/math/k-5-math/decimals-intro/index.html → /subjects/math/k-5-math/
+- /subjects/math/k-5-math/fractions-basics/index.html → /subjects/math/k-5-math/
+- /subjects/math/k-5-math/geometry-shapes/index.html → /subjects/math/k-5-math/
+- /subjects/math/k-5-math/measurement-data/index.html → /subjects/math/k-5-math/
+- /subjects/math/k-5-math/money/index.html → /subjects/math/k-5-math/
+- /subjects/math/k-5-math/multiplication-division/index.html → /subjects/math/k-5-math/
+- /subjects/math/k-5-math/place-value-rounding/index.html → /subjects/math/k-5-math/
+- /subjects/math/k-5-math/time/index.html → /subjects/math/k-5-math/
+- /subjects/math/k-5-math/word-problems-problem-solving/index.html → /subjects/math/k-5-math/
+- /subjects/math/math-games-puzzles/algebra-equations-games/index.html → /subjects/math/math-games-puzzles/
+- /subjects/math/math-games-puzzles/escape-room-review-games/index.html → /subjects/math/math-games-puzzles/
+- /subjects/math/math-games-puzzles/fact-fluency-games/index.html → /subjects/math/math-games-puzzles/
+- /subjects/math/math-games-puzzles/fractions-integers-games/index.html → /subjects/math/math-games-puzzles/
+- /subjects/math/math-games-puzzles/geometry-coordinate-plane-games/index.html → /subjects/math/math-games-puzzles/
+- /subjects/math/math-games-puzzles/logic-puzzles-brain-teasers/index.html → /subjects/math/math-games-puzzles/
+- /subjects/math/middle-school-math/expressions-equations/index.html → /subjects/math/middle-school-math/
+- /subjects/math/middle-school-math/functions-graphs/index.html → /subjects/math/middle-school-math/
+- /subjects/math/middle-school-math/geometry-area-volume/index.html → /subjects/math/middle-school-math/
+- /subjects/math/middle-school-math/inequalities/index.html → /subjects/math/middle-school-math/
+- /subjects/math/middle-school-math/integer-operations/index.html → /subjects/math/middle-school-math/
+- /subjects/math/middle-school-math/percents/index.html → /subjects/math/middle-school-math/
+- /subjects/math/middle-school-math/ratios-proportions-unit-rate/index.html → /subjects/math/middle-school-math/
+- /subjects/math/middle-school-math/slope-linear-relationships/index.html → /subjects/math/middle-school-math/
+- /subjects/math/middle-school-math/statistics-probability/index.html → /subjects/math/middle-school-math/
+- /subjects/math/middle-school-math/transformations-congruence/index.html → /subjects/math/middle-school-math/
+- /subjects/science/astronomy/earth-sun-moon-system.html → /subjects/science/astronomy/
+- /subjects/science/astronomy/galaxies-universe-structure.html → /subjects/science/astronomy/
+- /subjects/science/astronomy/solar-system-planets.html → /subjects/science/astronomy/
+- /subjects/science/astronomy/space-exploration-missions.html → /subjects/science/astronomy/
+- /subjects/science/astronomy/stars-constellations.html → /subjects/science/astronomy/
+- /subjects/science/astronomy/telescopes-space-observation.html → /subjects/science/astronomy/
+- /subjects/science/biology/cell-structure-function.html → /subjects/science/biology/
+- /subjects/science/chemistry/atomic-structure.html → /subjects/science/chemistry/
+- /subjects/science/chemistry/chemical-bonding.html → /subjects/science/chemistry/
+- /subjects/science/chemistry/chemical-reactions.html → /subjects/science/chemistry/
+- /subjects/science/chemistry/intro-matter-properties.html → /subjects/science/chemistry/
+- /subjects/science/chemistry/intro-organic-biochemistry.html → /subjects/science/chemistry/
+- /subjects/science/chemistry/nuclear-chemistry.html → /subjects/science/chemistry/
+- /subjects/science/chemistry/periodic-table.html → /subjects/science/chemistry/
+- /subjects/science/chemistry/reaction-rates-equilibrium.html → /subjects/science/chemistry/
+- /subjects/science/chemistry/solutions-acids-bases.html → /subjects/science/chemistry/
+- /subjects/science/chemistry/states-gases-liquids-solids.html → /subjects/science/chemistry/
+- /subjects/science/chemistry/stoichiometry.html → /subjects/science/chemistry/
+- /subjects/science/chemistry/thermochemistry-energy.html → /subjects/science/chemistry/
+- /subjects/science/earth-space-science/atmosphere-weather.html → /subjects/science/earth-space-science/
+- /subjects/science/earth-space-science/climate-climate-change.html → /subjects/science/earth-space-science/
+- /subjects/science/earth-space-science/earth-sun-moon-systems.html → /subjects/science/earth-space-science/
+- /subjects/science/earth-space-science/earths-structure-plate-tectonics.html → /subjects/science/earth-space-science/
+- /subjects/science/earth-space-science/human-impact-earth-systems.html → /subjects/science/earth-space-science/
+- /subjects/science/earth-space-science/oceans-oceanography.html → /subjects/science/earth-space-science/
+- /subjects/science/earth-space-science/rocks-minerals-geologic-time.html → /subjects/science/earth-space-science/
+- /subjects/science/earth-space-science/solar-system.html → /subjects/science/earth-space-science/
+- /subjects/science/earth-space-science/stars-galaxies-universe.html → /subjects/science/earth-space-science/
+- /subjects/science/earth-space-science/weathering-erosion-surface-processes.html → /subjects/science/earth-space-science/
+- /subjects/science/environmental-science/climate-change-global-warming.html → /subjects/science/environmental-science/
+- /subjects/science/environmental-science/ecosystems-biomes.html → /subjects/science/environmental-science/
+- /subjects/science/environmental-science/energy-resources-renewables.html → /subjects/science/environmental-science/
+- /subjects/science/environmental-science/environmental-policy-ethics.html → /subjects/science/environmental-science/
+- /subjects/science/environmental-science/human-population-growth.html → /subjects/science/environmental-science/
+- /subjects/science/environmental-science/natural-resources.html → /subjects/science/environmental-science/
+- /subjects/science/environmental-science/pollution-human-impact.html → /subjects/science/environmental-science/
+- /subjects/science/environmental-science/sustainability-conservation.html → /subjects/science/environmental-science/
+- /subjects/science/life-science/adaptations-natural-selection.html → /subjects/science/life-science/
+- /subjects/science/life-science/cells-structure-function.html → /subjects/science/life-science/
+- /subjects/science/life-science/classification-living-things.html → /subjects/science/life-science/
+- /subjects/science/life-science/ecosystems-food-webs.html → /subjects/science/life-science/
+- /subjects/science/life-science/genetics-heredity-basics.html → /subjects/science/life-science/
+- /subjects/science/life-science/human-body-systems.html → /subjects/science/life-science/
+- /subjects/science/life-science/life-cycles-reproduction.html → /subjects/science/life-science/
+- /subjects/science/life-science/microorganisms-health.html → /subjects/science/life-science/
+- /subjects/science/life-science/populations-communities-ecosystems.html → /subjects/science/life-science/
+- /subjects/science/physical-science/atoms-molecules-basics.html → /subjects/science/physical-science/
+- /subjects/science/physical-science/electricity-magnetism-intro.html → /subjects/science/physical-science/
+- /subjects/science/physical-science/energy-forms-transformations.html → /subjects/science/physical-science/
+- /subjects/science/physical-science/forces-newtons-laws-intro.html → /subjects/science/physical-science/
+- /subjects/science/physical-science/matter-properties-changes.html → /subjects/science/physical-science/
+- /subjects/science/physical-science/motion-speed-acceleration.html → /subjects/science/physical-science/
+- /subjects/science/physical-science/simple-machines-work-power.html → /subjects/science/physical-science/
+- /subjects/science/physical-science/waves-sound-light-basics.html → /subjects/science/physical-science/
+- /subjects/science/physics/circular-motion-gravitation.html → /subjects/science/physics/
+- /subjects/science/physics/electricity-circuits.html → /subjects/science/physics/
+- /subjects/science/physics/fluids-thermal-physics.html → /subjects/science/physics/
+- /subjects/science/physics/forces-newtons-laws.html → /subjects/science/physics/
+- /subjects/science/physics/light-optics.html → /subjects/science/physics/
+- /subjects/science/physics/magnetism-electromagnetism.html → /subjects/science/physics/
+- /subjects/science/physics/modern-physics.html → /subjects/science/physics/
+- /subjects/science/physics/momentum-collisions.html → /subjects/science/physics/
+- /subjects/science/physics/motion-kinematics.html → /subjects/science/physics/
+- /subjects/science/physics/waves-sound.html → /subjects/science/physics/
+- /subjects/science/physics/work-energy-power.html → /subjects/science/physics/
+- /subjects/science/stem-engineering/coding-robotics-basics.html → /subjects/science/stem-engineering/
+- /subjects/science/stem-engineering/data-measurement-models.html → /subjects/science/stem-engineering/
+- /subjects/science/stem-engineering/engineering-design-process.html → /subjects/science/stem-engineering/
+- /subjects/science/stem-engineering/simple-machines-structures.html → /subjects/science/stem-engineering/
+- /subjects/science/stem-engineering/stem-careers-real-world.html → /subjects/science/stem-engineering/
+- /subjects/science/stem-engineering/stem-challenges-projects.html → /subjects/science/stem-engineering/
+- /subjects/social-studies/economics/basic-economic-concepts.html → /subjects/social-studies/economics/
+- /subjects/social-studies/economics/business-market-structures.html → /subjects/social-studies/economics/
+- /subjects/social-studies/economics/costs-production-profit.html → /subjects/social-studies/economics/
+- /subjects/social-studies/economics/economic-development.html → /subjects/social-studies/economics/
+- /subjects/social-studies/economics/economic-indicators.html → /subjects/social-studies/economics/
+- /subjects/social-studies/economics/economic-systems.html → /subjects/social-studies/economics/
+- /subjects/social-studies/economics/entrepreneurship-small-business.html → /subjects/social-studies/economics/
+- /subjects/social-studies/economics/fiscal-policy.html → /subjects/social-studies/economics/
+- /subjects/social-studies/economics/international-trade-globalization.html → /subjects/social-studies/economics/
+- /subjects/social-studies/economics/labor-markets-income.html → /subjects/social-studies/economics/
+- /subjects/social-studies/economics/monetary-policy.html → /subjects/social-studies/economics/
+- /subjects/social-studies/economics/money-banking-financial-institutions.html → /subjects/social-studies/economics/
+- /subjects/social-studies/economics/personal-finance-financial-literacy.html → /subjects/social-studies/economics/
+- /subjects/social-studies/economics/supply-demand-market-equilibrium.html → /subjects/social-studies/economics/
+- /subjects/social-studies/geography/africa.html → /subjects/social-studies/geography/
+- /subjects/social-studies/geography/cultural-geography.html → /subjects/social-studies/geography/
+- /subjects/social-studies/geography/east-asia.html → /subjects/social-studies/geography/
+- /subjects/social-studies/geography/economic-geography.html → /subjects/social-studies/geography/
+- /subjects/social-studies/geography/environmental-geography.html → /subjects/social-studies/geography/
+- /subjects/social-studies/geography/europe.html → /subjects/social-studies/geography/
+- /subjects/social-studies/geography/latin-america.html → /subjects/social-studies/geography/
+- /subjects/social-studies/geography/maps-skills-tools.html → /subjects/social-studies/geography/
+- /subjects/social-studies/geography/middle-east-north-africa.html → /subjects/social-studies/geography/
+- /subjects/social-studies/geography/north-america.html → /subjects/social-studies/geography/
+- /subjects/social-studies/geography/physical-geography-earth-systems.html → /subjects/social-studies/geography/
+- /subjects/social-studies/geography/political-geography.html → /subjects/social-studies/geography/
+- /subjects/social-studies/geography/population-migration.html → /subjects/social-studies/geography/
+- /subjects/social-studies/geography/south-asia.html → /subjects/social-studies/geography/
+- /subjects/social-studies/geography/southeast-asia-oceania.html → /subjects/social-studies/geography/
+- /subjects/social-studies/geography/urban-geography-development.html → /subjects/social-studies/geography/
+- /subjects/social-studies/government-and-political-science/civil-liberties-civil-rights.html → /subjects/social-studies/
+- /subjects/social-studies/government-and-political-science/comparative-government-systems.html → /subjects/social-studies/
+- /subjects/social-studies/government-and-political-science/executive-president-bureaucracy.html → /subjects/social-studies/
+- /subjects/social-studies/government-and-political-science/federalism-state-national-power.html → /subjects/social-studies/
+- /subjects/social-studies/government-and-political-science/foreign-policy-national-security.html → /subjects/social-studies/
+- /subjects/social-studies/government-and-political-science/foundations-government-political-theory.html → /subjects/social-studies/
+- /subjects/social-studies/government-and-political-science/global-conflict-peacekeeping.html → /subjects/social-studies/
+- /subjects/social-studies/government-and-political-science/globalization-economy-environment.html → /subjects/social-studies/
+- /subjects/social-studies/government-and-political-science/governments-world-regions.html → /subjects/social-studies/
+- /subjects/social-studies/government-and-political-science/human-rights-international-law.html → /subjects/social-studies/
+- /subjects/social-studies/government-and-political-science/interest-groups-campaign-finance.html → /subjects/social-studies/
+- /subjects/social-studies/government-and-political-science/judicial-branch-supreme-court.html → /subjects/social-studies/
+- /subjects/social-studies/government-and-political-science/legislative-congress.html → /subjects/social-studies/
+- /subjects/social-studies/government-and-political-science/political-ideologies-global.html → /subjects/social-studies/
+- /subjects/social-studies/government-and-political-science/political-parties-elections.html → /subjects/social-studies/
+- /subjects/social-studies/government-and-political-science/public-opinion-media.html → /subjects/social-studies/
+- /subjects/social-studies/government-and-political-science/public-policy-domestic-issues.html → /subjects/social-studies/
+- /subjects/social-studies/government-and-political-science/us-constitution.html → /subjects/social-studies/
+- /subjects/social-studies/government-and-political-science/voting-civic-engagement.html → /subjects/social-studies/
+- /subjects/social-studies/world-history/african-civilizations.html → /subjects/social-studies/world-history/
+- /subjects/social-studies/world-history/age-of-exploration-colonialism.html → /subjects/social-studies/world-history/
+- /subjects/social-studies/world-history/cold-war-decolonization.html → /subjects/social-studies/world-history/
+- /subjects/social-studies/world-history/east-asia-china-japan.html → /subjects/social-studies/world-history/
+- /subjects/social-studies/world-history/enlightenment-scientific-revolution.html → /subjects/social-studies/world-history/
+- /subjects/social-studies/world-history/globalization-contemporary-world.html → /subjects/social-studies/world-history/
+- /subjects/social-studies/world-history/imperialism-global-change.html → /subjects/social-studies/world-history/
+- /subjects/social-studies/world-history/industrial-revolution.html → /subjects/social-studies/world-history/
+- /subjects/social-studies/world-history/renaissance-reformation.html → /subjects/social-studies/world-history/
+- /subjects/social-studies/world-history/revolutions-era.html → /subjects/social-studies/world-history/
+- /subjects/social-studies/world-history/world-war-i.html → /subjects/social-studies/world-history/
+- /subjects/social-studies/world-history/world-war-ii.html → /subjects/social-studies/world-history/
+- /teacher-tools/index.html → //
+- /tools/noise-meter.html → /tools/
+
+## Broken links found and resolution
+- Fixed internal links on the homepage and tool navigation to point to live destinations.
+- Created redirect stubs for previously missing internal URLs so legacy links now resolve.
+
+## Pages requiring human review
+- None.
