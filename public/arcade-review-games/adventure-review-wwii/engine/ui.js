@@ -178,14 +178,79 @@ export function createUI({
   }
 
   function hideStart() {
+    if (!startScreen) return;
     startScreen.style.display = "none";
   }
 
   function showStart() {
+    if (!startScreen) return;
     startScreen.style.display = "flex";
   }
 
-  startButton.addEventListener("click", onStart);
+  let hasStarted = false;
+
+  function startOnce(event) {
+    if (hasStarted) return;
+    hasStarted = true;
+    if (event?.cancelable) {
+      event.preventDefault();
+    }
+    hideStart();
+    onStart();
+    const canvas = document.getElementById("game-canvas");
+    if (canvas) {
+      if (!canvas.hasAttribute("tabindex")) {
+        canvas.setAttribute("tabindex", "-1");
+      }
+      if (typeof canvas.focus === "function") {
+        canvas.focus({ preventScroll: true });
+      }
+    }
+  }
+
+  function bindStartButton() {
+    if (startButton) {
+      startButton.addEventListener("click", startOnce);
+      startButton.addEventListener("pointerup", startOnce, { passive: true });
+      startButton.addEventListener("touchstart", startOnce, { passive: true });
+    }
+
+    document.addEventListener(
+      "click",
+      (event) => {
+        if (event.target.closest("#start-button")) {
+          startOnce(event);
+        }
+      },
+      { passive: true }
+    );
+
+    document.addEventListener(
+      "pointerup",
+      (event) => {
+        if (event.target.closest("#start-button")) {
+          startOnce(event);
+        }
+      },
+      { passive: true }
+    );
+
+    document.addEventListener(
+      "touchstart",
+      (event) => {
+        if (event.target.closest("#start-button")) {
+          startOnce(event);
+        }
+      },
+      { passive: true }
+    );
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", bindStartButton, { once: true });
+  } else {
+    bindStartButton();
+  }
   completion.finishBtn.addEventListener("click", () => {
     hideCompletion();
     onFinish();
