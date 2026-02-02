@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0f172a" />
+
+  <title>Play Slide &amp; Snap | Brain Arcade | Teach Arcade</title>
+  <meta name="description" content="Play Slide &amp; Snap, a sliding tile puzzle with multiple grid sizes. Track moves, time, and best scores while sharpening focus." />
+  <link rel="canonical" href="https://teacharcade.com/brain-arcade/slide-and-snap/game.html" />
+
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+
+  <link rel="stylesheet" href="/assets/styles.css?v=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
+  <link rel="stylesheet" href="/brain-arcade/slide-and-snap/styles.css" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Teach Arcade" />
+  <meta property="og:title" content="Play Slide &amp; Snap | Brain Arcade | Teach Arcade" />
+  <meta property="og:description" content="Slide tiles into place, track moves and time, and pick your puzzle size." />
+  <meta property="og:url" content="https://teacharcade.com/brain-arcade/slide-and-snap/game.html" />
+  <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Play Slide &amp; Snap | Brain Arcade | Teach Arcade" />
+  <meta name="twitter:description" content="A sliding tile puzzle with 3x3 to 6x6 boards, move tracking, and calm mode." />
+  <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Play Slide & Snap",
+    "url": "https://teacharcade.com/brain-arcade/slide-and-snap/game.html",
+    "description": "Play Slide & Snap, a sliding tile puzzle with move and time tracking.",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Teach Arcade",
+      "url": "https://teacharcade.com/"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://teacharcade.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Brain Arcade",
+        "item": "https://teacharcade.com/brain-arcade/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Slide & Snap",
+        "item": "https://teacharcade.com/brain-arcade/slide-and-snap/"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <div id="site-header"></div>
+  <script src="/assets/scripts/nav.js?v=5" defer></script>
+
+  <main class="container">
+    <section class="game-hero">
+      <p class="eyebrow">Brain Arcade</p>
+      <h1>Slide &amp; Snap</h1>
+      <p>Slide tiles into place, track your moves, and build focus one puzzle at a time.</p>
+    </section>
+
+    <section class="game-shell" aria-label="Slide and Snap puzzle">
+      <div class="control-panel">
+        <div class="controls">
+          <label for="size-select">Difficulty</label>
+          <select id="size-select" aria-label="Select puzzle size">
+            <option value="3">3×3 (Easy)</option>
+            <option value="4">4×4 (Medium)</option>
+            <option value="5">5×5 (Hard)</option>
+            <option value="6">6×6 (Expert)</option>
+          </select>
+          <button class="button" id="new-puzzle" aria-label="Start a new puzzle">New Puzzle</button>
+          <button class="button secondary" id="calm-toggle" aria-pressed="false" aria-label="Toggle calm mode">Calm Mode: Off</button>
+        </div>
+        <div class="stats">
+          <div class="stat">
+            <span>Moves</span>
+            <strong id="move-count">0</strong>
+          </div>
+          <div class="stat">
+            <span>Time</span>
+            <strong id="timer">00:00</strong>
+          </div>
+          <div class="stat">
+            <span>Board</span>
+            <strong id="board-size">4×4</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="board-wrap">
+        <div class="board" id="board" role="grid" aria-label="Sliding puzzle board"></div>
+        <p class="best-time" id="best-time">Best: --</p>
+      </div>
+
+      <div class="ad-slot" aria-label="Advertisement">Ad Slot</div>
+
+      <section class="how-to">
+        <details>
+          <summary>How to Play</summary>
+          <ul>
+            <li>Tap or click a tile that sits next to the empty space.</li>
+            <li>Slide tiles until the numbers are in order from 1 to the final space.</li>
+            <li>Use the arrow keys on a keyboard to move the empty space.</li>
+            <li>Toggle Calm Mode to hide the timer and focus on thinking.</li>
+          </ul>
+        </details>
+      </section>
+    </section>
+  </main>
+
+  <div class="win-modal" id="win-modal" role="dialog" aria-modal="true" aria-labelledby="win-title" aria-hidden="true">
+    <div class="win-card">
+      <h2 id="win-title">Solved!</h2>
+      <p>Nice work. You snapped every tile into place.</p>
+      <div class="win-stats" id="win-stats"></div>
+      <div class="hero-actions">
+        <button class="button" id="play-again" aria-label="Play again">Play Again</button>
+        <button class="button secondary" id="change-difficulty" aria-label="Change difficulty">Change Difficulty</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="confetti" id="confetti" aria-hidden="true"></div>
+
+  <footer class="footer">
+    © <script>document.write(new Date().getFullYear())</script> Teach Arcade •
+    <a href="/privacy.html">Privacy</a> •
+    <a href="/terms.html">Terms</a>
+  </footer>
+
+  <script src="/brain-arcade/slide-and-snap/game.js"></script>
+</body>
+</html>
