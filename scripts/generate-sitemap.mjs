@@ -10,9 +10,7 @@ const PUBLIC_DIR = path.join(__dirname, '..', 'public');
 const SITE = 'https://teacharcade.com';
 
 const EXCLUDE = new Set([
-  '/404.html',
-  '/privacy.html',
-  '/terms.html'
+  '/404.html'
 ]);
 
 function toUrl(fileAbs) {
@@ -46,6 +44,10 @@ async function main() {
   for (const f of all) {
     const url = toUrl(f);
     if (!url) continue;
+    const contents = await fs.readFile(f, 'utf8');
+    if (/name=\"robots\"\\s+content=\"noindex/i.test(contents)) {
+      continue;
+    }
     const stat = await fs.stat(f);
     pages.push({ url, lastmod: fmtDate(stat.mtime) });
   }

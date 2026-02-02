@@ -259,6 +259,35 @@
         .ta-links{ display: none; }
         .ta-burger{ display: block; }
       }
+
+      .ta-footer{
+        margin-top: 32px;
+        padding: 24px 16px 32px;
+        background: #0f172a;
+        color: #e2e8f0;
+        text-align: center;
+      }
+      .ta-footer .ta-footer-links{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+        margin: 0 0 10px;
+        padding: 0;
+        list-style: none;
+      }
+      .ta-footer a{
+        color: #e2e8f0;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 13px;
+      }
+      .ta-footer a:hover{
+        text-decoration: underline;
+      }
+      .ta-footer small{
+        color: #cbd5e1;
+      }
     `;
     document.head.appendChild(style);
   }
@@ -313,6 +342,31 @@
     mount.appendChild(header);
   } else {
     document.body.prepend(header);
+  }
+
+  const footerMarkup = `
+      <ul class="ta-footer-links">
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+        <li><a href="/privacy.html">Privacy Policy</a></li>
+        <li><a href="/terms.html">Terms</a></li>
+      </ul>
+      <small>© ${new Date().getFullYear()} Teach Arcade. Built by teachers for teachers.</small>
+  `;
+
+  const existingFooter = document.querySelector("footer");
+  if (existingFooter) {
+    existingFooter.id = existingFooter.id || "ta-footer";
+    existingFooter.classList.add("ta-footer");
+    if (!existingFooter.querySelector(".ta-footer-links")) {
+      existingFooter.insertAdjacentHTML("beforeend", footerMarkup);
+    }
+  } else {
+    const footer = document.createElement("footer");
+    footer.className = "ta-footer";
+    footer.id = "ta-footer";
+    footer.innerHTML = footerMarkup;
+    document.body.appendChild(footer);
   }
 
   /* =========================
