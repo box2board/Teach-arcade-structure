@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0f172a" />
+
+  <title>Play Sequence Breaker | Brain Arcade | Teach Arcade</title>
+  <meta name="description" content="Play Sequence Breaker, a fast Brain Arcade puzzle where you spot the tile that breaks the pattern. Choose your mode and build a streak." />
+  <link rel="canonical" href="https://teacharcade.com/brain-arcade/sequence-breaker/game.html" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Teach Arcade" />
+  <meta property="og:title" content="Play Sequence Breaker | Brain Arcade | Teach Arcade" />
+  <meta property="og:description" content="Spot the impostor tile and keep your streak alive in Sequence Breaker." />
+  <meta property="og:url" content="https://teacharcade.com/brain-arcade/sequence-breaker/game.html" />
+  <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Play Sequence Breaker | Brain Arcade | Teach Arcade" />
+  <meta name="twitter:description" content="A fast puzzle game: find the tile that breaks the pattern." />
+  <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+
+  <link rel="stylesheet" href="/assets/styles.css?v=1" />
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Play Sequence Breaker",
+    "url": "https://teacharcade.com/brain-arcade/sequence-breaker/game.html",
+    "description": "Play Sequence Breaker, a fast Brain Arcade puzzle where you spot the tile that breaks the pattern."
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://teacharcade.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Brain Arcade",
+        "item": "https://teacharcade.com/brain-arcade/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Sequence Breaker",
+        "item": "https://teacharcade.com/brain-arcade/sequence-breaker/"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main>
+    <div class="container">
+      <section class="section">
+        <div class="game-header">
+          <p class="eyebrow">Brain Arcade</p>
+          <h1>Sequence Breaker</h1>
+          <p class="helper-text">Find the tile that breaks the pattern. Keep your streak alive!</p>
+        </div>
+
+        <div class="game-layout">
+          <div class="controls">
+            <div class="group">
+              <label for="modeSelect"><strong>Mode</strong></label>
+              <select id="modeSelect" aria-label="Select difficulty mode">
+                <option value="easy">Easy</option>
+                <option value="normal">Normal</option>
+                <option value="hard">Hard</option>
+                <option value="calm">Calm</option>
+              </select>
+            </div>
+            <div class="group">
+              <div class="toggle">
+                <input type="checkbox" id="explainToggle" />
+                <label for="explainToggle">Explain the Pattern</label>
+              </div>
+              <button class="btn secondary" id="endRunBtn" type="button">End Run</button>
+            </div>
+          </div>
+
+          <div class="stats-bar" role="status" aria-live="polite">
+            <div class="stat-card">
+              <span>Timer</span>
+              <strong id="timerDisplay">—</strong>
+            </div>
+            <div class="stat-card">
+              <span>Streak</span>
+              <strong id="streakDisplay">0</strong>
+            </div>
+            <div class="stat-card">
+              <span>Best</span>
+              <strong id="bestDisplay">0</strong>
+            </div>
+            <div class="stat-card">
+              <span>Accuracy</span>
+              <strong id="accuracyDisplay">0%</strong>
+            </div>
+            <div class="stat-card">
+              <span>Rounds</span>
+              <strong id="roundsDisplay">0</strong>
+            </div>
+            <div class="stat-card">
+              <span>Avg Time</span>
+              <strong id="avgTimeDisplay">—</strong>
+            </div>
+          </div>
+
+          <div class="tile-grid" id="tileGrid" aria-label="Sequence tiles"></div>
+
+          <div class="explanation" id="explanation" hidden>
+            <strong>Rule:</strong> <span id="ruleText">—</span><br />
+            <strong>Odd tile:</strong> <span id="oddText">—</span>
+          </div>
+
+          <p class="helper-text" id="modeHint"></p>
+        </div>
+      </section>
+
+      <div class="ad-slot" aria-label="Advertisement">
+        <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-7899890641544647"
+          data-ad-slot="1234567892"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
+      </div>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+  </main>
+
+  <div class="modal" id="summaryModal" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="summaryTitle">
+      <h2 id="summaryTitle">Run Summary</h2>
+      <p class="helper-text" id="summaryMode">Mode: Normal</p>
+      <div class="stats-bar">
+        <div class="stat-card">
+          <span>Best</span>
+          <strong id="summaryBest">0</strong>
+        </div>
+        <div class="stat-card">
+          <span>Streak</span>
+          <strong id="summaryStreak">0</strong>
+        </div>
+        <div class="stat-card">
+          <span>Accuracy</span>
+          <strong id="summaryAccuracy">0%</strong>
+        </div>
+        <div class="stat-card">
+          <span>Rounds</span>
+          <strong id="summaryRounds">0</strong>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="btn" id="playAgainBtn" type="button">Play Again</button>
+        <a class="btn secondary" href="./index.html">Back to Landing</a>
+        <a class="btn secondary" href="/brain-arcade/">Back to Brain Arcade</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    © <script>document.write(new Date().getFullYear())</script> Teach Arcade ·
+    <a href="/privacy.html">Privacy</a> ·
+    <a href="/terms.html">Terms</a>
+  </footer>
+
+  <script src="/assets/scripts/nav.js?v=5" defer></script>
+  <script src="./game.js" defer></script>
+</body>
+</html>
