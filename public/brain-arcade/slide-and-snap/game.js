@@ -195,10 +195,10 @@
     const { row, col } = getRowCol(emptyIndex);
     let targetIndex = null;
 
-    if (key === "ArrowUp" && row < size - 1) targetIndex = emptyIndex + size;
-    if (key === "ArrowDown" && row > 0) targetIndex = emptyIndex - size;
-    if (key === "ArrowLeft" && col < size - 1) targetIndex = emptyIndex + 1;
-    if (key === "ArrowRight" && col > 0) targetIndex = emptyIndex - 1;
+    if (key === "ArrowUp" && row > 0) targetIndex = emptyIndex - size;
+    if (key === "ArrowDown" && row < size - 1) targetIndex = emptyIndex + size;
+    if (key === "ArrowLeft" && col > 0) targetIndex = emptyIndex - 1;
+    if (key === "ArrowRight" && col < size - 1) targetIndex = emptyIndex + 1;
 
     if (targetIndex !== null) {
       event.preventDefault();
