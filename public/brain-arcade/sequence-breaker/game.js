@@ -374,6 +374,7 @@
   };
 
   const handleTimeout = () => {
+    state.isLocked = true;
     state.rounds += 1;
     state.streak = 0;
     state.totalResponseTime += MODES[state.mode].timerSeconds;
@@ -386,6 +387,7 @@
     }
 
     window.setTimeout(() => {
+      state.isLocked = false;
       nextRound();
     }, 500);
   };
