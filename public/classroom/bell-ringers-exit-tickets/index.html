@@ -1,0 +1,649 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0f172a" />
+
+  <title>Bell Ringers &amp; Exit Tickets | Teach Arcade</title>
+  <meta name="description" content="Explore Bell Ringers & Exit Tickets from Teach Arcade—fast classroom prompts with student directions, answer keys, and print-friendly options for warm-ups and quick closure." />
+  <link rel="canonical" href="https://teacharcade.com/classroom/bell-ringers-exit-tickets/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Teach Arcade" />
+  <meta property="og:title" content="Bell Ringers &amp; Exit Tickets | Teach Arcade" />
+  <meta property="og:description" content="Fast, classroom-ready prompts in 3–8 minutes. Filters by type, grade band, and subject plus printable versions." />
+  <meta property="og:url" content="https://teacharcade.com/classroom/bell-ringers-exit-tickets/" />
+  <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Bell Ringers &amp; Exit Tickets | Teach Arcade" />
+  <meta name="twitter:description" content="Fast, classroom-ready prompts with directions, answer keys, and print-friendly options." />
+  <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+
+  <link rel="stylesheet" href="/assets/styles.css?v=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
+
+  <style>
+    .page-hero{ padding:72px 0 18px; text-align:center; }
+    .page-hero h1{
+      font:700 34px/1.15 Poppins,sans-serif;
+      margin:0 0 10px; letter-spacing:-0.02em; color:#0f172a;
+    }
+    .page-hero p{
+      font:400 18px/1.55 Nunito,system-ui,sans-serif;
+      margin:0 auto 16px; max-width:900px; color:#475569;
+    }
+    .jump-buttons{ display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 14px; border-radius:10px; text-decoration:none;
+      font:700 14px/1 Poppins,sans-serif; border:1px solid #2563eb;
+      color:#fff; background:#2563eb; cursor:pointer;
+    }
+    .btn.secondary{ background:#fff; color:#1f2937; border-color:#cbd5e1; }
+
+    .ad-slot{
+      max-width:1100px;
+      margin:18px auto 0;
+      padding:14px;
+      border:1px dashed #cbd5e1;
+      border-radius:14px;
+      background:#f8fafc;
+      color:#64748b;
+      font:700 12px/1 Poppins,sans-serif;
+      text-transform:uppercase;
+      letter-spacing:.6px;
+      text-align:center;
+    }
+
+    .section{
+      margin:26px 0;
+      background:#ffffff;
+      border:1px solid #e2e8f0;
+      border-radius:16px;
+      padding:20px;
+      box-shadow:0 6px 16px rgba(0,0,0,0.06);
+    }
+    .section h2{
+      font:700 22px/1.3 Poppins,sans-serif;
+      margin:0 0 10px;
+      color:#0f172a;
+    }
+    .section h3{
+      font:700 18px/1.25 Poppins,sans-serif;
+      margin:0 0 8px;
+      color:#0f172a;
+    }
+    .section p{
+      margin:0 0 12px;
+      color:#475569;
+      font:400 15px/1.6 Nunito,system-ui,sans-serif;
+    }
+
+    .filter-bar{
+      display:grid;
+      gap:12px;
+      grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+      margin-top:12px;
+    }
+    .filter-bar label{
+      font:700 12px/1 Poppins,sans-serif;
+      color:#0f172a;
+      text-transform:uppercase;
+      letter-spacing:.4px;
+      margin-bottom:6px;
+      display:block;
+    }
+    .filter-bar select{
+      width:100%;
+      border:1px solid #cbd5e1;
+      border-radius:10px;
+      padding:10px 12px;
+      font:600 14px/1.2 Nunito,system-ui,sans-serif;
+      background:#fff;
+      color:#0f172a;
+    }
+    .toggle-group{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+    .toggle-group button{
+      border-radius:999px;
+      border:1px solid #cbd5e1;
+      background:#f8fafc;
+      color:#0f172a;
+      font:700 12px/1 Poppins,sans-serif;
+      letter-spacing:.4px;
+      padding:8px 12px;
+      cursor:pointer;
+      text-transform:uppercase;
+    }
+    .toggle-group button[aria-pressed="true"]{
+      background:#2563eb;
+      border-color:#2563eb;
+      color:#fff;
+    }
+
+    .quick-links{ margin-top:14px; }
+    .quick-links ul{ margin:6px 0 0; padding-left:18px; color:#475569; }
+    .quick-links a{ color:#2563eb; text-decoration:none; font-weight:700; }
+
+    .sample-group{ margin-top:20px; }
+    .sample-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:16px;
+      margin-top:12px;
+    }
+    .sample-card{
+      border:1px solid #e2e8f0;
+      border-radius:14px;
+      padding:16px;
+      background:#fff;
+      box-shadow:0 2px 8px rgba(15,23,42,0.06);
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .sample-card h4{
+      margin:0;
+      font:700 18px/1.3 Poppins,sans-serif;
+      color:#0f172a;
+    }
+    .sample-meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+    .tag{
+      font:700 11px/1 Poppins,sans-serif;
+      padding:6px 10px;
+      border-radius:999px;
+      background:#f8fafc;
+      border:1px solid #e2e8f0;
+      color:#334155;
+    }
+    .sample-card ul{
+      margin:0;
+      padding-left:18px;
+      color:#475569;
+      font:400 14px/1.6 Nunito,system-ui,sans-serif;
+    }
+    .sample-card strong{ color:#0f172a; }
+    .sample-card .label{
+      font:700 12px/1 Poppins,sans-serif;
+      color:#0f172a;
+      text-transform:uppercase;
+      letter-spacing:.4px;
+      margin-bottom:4px;
+      display:block;
+    }
+    .print-row{
+      margin-top:auto;
+      display:flex;
+      justify-content:flex-end;
+    }
+    .print-btn{
+      border:1px solid #cbd5e1;
+      background:#fff;
+      color:#0f172a;
+      border-radius:10px;
+      padding:8px 12px;
+      font:700 12px/1 Poppins,sans-serif;
+      cursor:pointer;
+    }
+    .print-btn:focus,
+    .toggle-group button:focus,
+    .filter-bar select:focus,
+    .btn:focus{
+      outline:2px solid #2563eb;
+      outline-offset:2px;
+    }
+
+    .how-to-steps{
+      margin:12px 0 0;
+      padding-left:18px;
+      color:#475569;
+      font:400 15px/1.7 Nunito,system-ui,sans-serif;
+    }
+
+    @media (max-width: 600px){
+      .page-hero{ padding-top:60px; }
+      .page-hero h1{ font-size:28px; }
+    }
+
+    @media print{
+      body *{ visibility:hidden !important; }
+      .print-target, .print-target *{ visibility:visible !important; }
+      .print-target{
+        position:absolute;
+        left:0;
+        top:0;
+        width:100%;
+        box-shadow:none;
+        border:none;
+      }
+      .print-target .no-print{ display:none !important; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebPage",
+    "name":"Bell Ringers & Exit Tickets",
+    "url":"https://teacharcade.com/classroom/bell-ringers-exit-tickets/",
+    "description":"Fast, classroom-ready bell ringers and exit tickets with directions and answer keys.",
+    "isPartOf":{
+      "@type":"WebSite",
+      "name":"Teach Arcade",
+      "url":"https://teacharcade.com/"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {
+        "@type":"ListItem",
+        "position":1,
+        "name":"Home",
+        "item":"https://teacharcade.com/"
+      },
+      {
+        "@type":"ListItem",
+        "position":2,
+        "name":"Bell Ringers & Exit Tickets",
+        "item":"https://teacharcade.com/classroom/bell-ringers-exit-tickets/"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <div id="site-header"></div>
+  <script src="/assets/scripts/nav.js?v=5" defer></script>
+
+  <main class="container">
+    <div class="ad-slot ad-top" aria-label="Advertisement">Ad Slot</div>
+
+    <section class="page-hero">
+      <h1>Bell Ringers &amp; Exit Tickets</h1>
+      <p>
+        Give students a tight, meaningful start or finish with ready-to-run prompts. Each sample below includes
+        teacher directions, student directions, expected responses, and a quick gamify option.
+      </p>
+      <div class="jump-buttons">
+        <a class="btn" href="#bell-ringers">Bell Ringers</a>
+        <a class="btn secondary" href="#exit-tickets">Exit Tickets</a>
+        <a class="btn secondary" href="#how-to-use">How to Use</a>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="samples-title">
+      <h2 id="samples-title">Browse Samples</h2>
+      <p>Filter by type, grade band, or subject. Use the tabs to focus on bell ringers or exit tickets.</p>
+
+      <div class="toggle-group" role="tablist" aria-label="Sample type tabs">
+        <button type="button" class="type-toggle" data-type="Bell Ringer" role="tab" aria-pressed="false">Bell Ringers</button>
+        <button type="button" class="type-toggle" data-type="Exit Ticket" role="tab" aria-pressed="false">Exit Tickets</button>
+        <button type="button" class="type-toggle" data-type="All" role="tab" aria-pressed="true">Show All</button>
+      </div>
+
+      <div class="filter-bar">
+        <div>
+          <label for="filter-type">Type</label>
+          <select id="filter-type">
+            <option value="All">All</option>
+            <option value="Bell Ringer">Bell Ringer</option>
+            <option value="Exit Ticket">Exit Ticket</option>
+          </select>
+        </div>
+        <div>
+          <label for="filter-grade">Grade Band</label>
+          <select id="filter-grade">
+            <option value="All">All</option>
+            <option value="Elem">Elem</option>
+            <option value="Middle">Middle</option>
+            <option value="High">High</option>
+            <option value="Middle/High">Middle/High</option>
+          </select>
+        </div>
+        <div>
+          <label for="filter-subject">Subject</label>
+          <select id="filter-subject">
+            <option value="All">All</option>
+            <option value="Social Studies">Social Studies</option>
+            <option value="ELA">ELA</option>
+            <option value="Science">Science</option>
+            <option value="Math">Math</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="quick-links" aria-label="Quick navigation">
+        <h3>Quick navigation</h3>
+        <ul id="sample-links"></ul>
+      </div>
+
+      <div class="ad-slot ad-mid" aria-label="Advertisement">Ad Slot</div>
+
+      <section id="bell-ringers" class="sample-group" aria-labelledby="bell-ringers-heading">
+        <h3 id="bell-ringers-heading">Bell Ringers</h3>
+        <div class="sample-grid" data-group="Bell Ringer"></div>
+      </section>
+
+      <section id="exit-tickets" class="sample-group" aria-labelledby="exit-tickets-heading">
+        <h3 id="exit-tickets-heading">Exit Tickets</h3>
+        <div class="sample-grid" data-group="Exit Ticket"></div>
+      </section>
+    </section>
+
+    <section id="how-to-use" class="section" aria-labelledby="how-to-use-title">
+      <h2 id="how-to-use-title">How to Use in Class</h2>
+      <p>Run bell ringers and exit tickets as quick, repeatable routines that build confidence and accountability.</p>
+      <ol class="how-to-steps">
+        <li>Set a timer and display the prompt.</li>
+        <li>Students respond independently or in pairs.</li>
+        <li>Quick share: ask 2–3 students to read answers.</li>
+        <li>Reveal the key and discuss patterns or misconceptions.</li>
+        <li>Optional gamify with points, streaks, or team totals.</li>
+      </ol>
+    </section>
+
+    <div class="ad-slot ad-bottom" aria-label="Advertisement">Ad Slot</div>
+  </main>
+
+  <footer>
+    © <script>document.write(new Date().getFullYear())</script> Teach Arcade •
+    <a href="/privacy.html">Privacy</a> •
+    <a href="/terms.html">Terms</a>
+  </footer>
+
+  <script>
+    const SAMPLE_ITEMS = [
+      {
+        id: "primary-source-snapshot",
+        type: "Bell Ringer",
+        title: "Primary Source Snapshot",
+        grade: "Middle/High",
+        subject: "Social Studies",
+        time: "5",
+        materials: "Excerpt handout or projected slide",
+        prompt: "Excerpt (paraphrased): \"We have pledged our lives and honor for liberty, yet taxes are laid without our voice.\"",
+        teacherDirections: [
+          "Project or hand out the excerpt.",
+          "Ask students to underline one powerful word or phrase.",
+          "Have students answer the three prompts in 3 minutes.",
+          "Cold call 2–3 students and note patterns on the board."
+        ],
+        studentDirections: [
+          "Read the excerpt once all the way through.",
+          "Answer: Who is the audience?",
+          "Answer: What is the author’s purpose?",
+          "Circle one powerful word or phrase and explain why."
+        ],
+        expectedResponses: [
+          "Audience: Leaders or citizens being addressed about government actions.",
+          "Purpose: Persuade or protest unfair taxation; call for change.",
+          "Powerful word/phrase: \"pledged our lives\" or \"without our voice\" (shows sacrifice and injustice)."
+        ],
+        gamify: "Award 1 point for a clear audience, 1 for purpose, and 1 for a strong word choice explanation."
+      },
+      {
+        id: "claim-evidence-sprint",
+        type: "Bell Ringer",
+        title: "Claim–Evidence Sprint",
+        grade: "Middle",
+        subject: "ELA",
+        time: "4",
+        materials: "None",
+        prompt: "Claim: \"Characters’ choices reveal their values.\" Students list one piece of evidence from a recent class text.",
+        teacherDirections: [
+          "Display the claim and remind students of the current text.",
+          "Set a 2-minute timer for evidence brainstorming.",
+          "Ask students to add the page/scene if possible.",
+          "Invite a quick share from 2 volunteers."
+        ],
+        studentDirections: [
+          "Write the claim at the top of your notes.",
+          "List one specific event or line that supports the claim.",
+          "Level up: explain how the evidence proves the claim in one sentence."
+        ],
+        expectedResponses: [
+          "Evidence should be a specific scene, quote, or action from the class text.",
+          "Explanation ties the action to a value (loyalty, honesty, courage, etc.)."
+        ],
+        gamify: "Give a bonus point for a precise quote or page reference."
+      },
+      {
+        id: "mystery-variable",
+        type: "Bell Ringer",
+        title: "Mystery Variable",
+        grade: "High",
+        subject: "Science",
+        time: "6",
+        materials: "None",
+        prompt: "Scenario: Two identical plants are grown under the same light and soil. One receives 50 mL of water daily, the other 150 mL. After two weeks, their height is measured.",
+        teacherDirections: [
+          "Read the scenario aloud or project it.",
+          "Ask students to identify the independent variable, dependent variable, and a control.",
+          "Have students write answers before discussing.",
+          "Confirm correct terms and why."
+        ],
+        studentDirections: [
+          "Identify the independent variable (what was changed).",
+          "Identify the dependent variable (what was measured).",
+          "Name one control (what stayed the same)."
+        ],
+        expectedResponses: [
+          "Independent variable: amount of water (50 mL vs 150 mL).",
+          "Dependent variable: plant height after two weeks.",
+          "Control: light exposure, soil type, plant type, container size."
+        ],
+        gamify: "Teams earn 1 point per correct variable; first team to 3 points wins."
+      },
+      {
+        id: "one-sentence-one-detail-one-question",
+        type: "Exit Ticket",
+        title: "One Sentence, One Detail, One Question",
+        grade: "High",
+        subject: "Social Studies",
+        time: "3",
+        materials: "Exit slip or notebook",
+        prompt: "Students synthesize the day’s lesson in one sentence, add one specific detail, and pose one lingering question.",
+        teacherDirections: [
+          "Pass out exit slips with three prompts.",
+          "Collect responses at the door.",
+          "Quick-sort using rubric: Got it / Almost / Needs help.",
+          "Use the question column to plan tomorrow’s warm-up."
+        ],
+        studentDirections: [
+          "Write one sentence summarizing today’s learning.",
+          "Add one specific detail from class (fact, name, or example).",
+          "Ask one question you still have."
+        ],
+        expectedResponses: [
+          "Summary includes the main idea of the lesson.",
+          "Detail is accurate and specific (date, example, term).",
+          "Question shows curiosity or confusion about a topic."
+        ],
+        gamify: "Class earns a point if 80% of summaries are accurate; track streaks by week."
+      },
+      {
+        id: "error-detective",
+        type: "Exit Ticket",
+        title: "Error Detective",
+        grade: "Middle",
+        subject: "Math",
+        time: "5",
+        materials: "Worked example on board",
+        prompt: "Worked example: -3(x + 4) = -3x + 4. Students find the error and correct it.",
+        teacherDirections: [
+          "Display the worked example with the incorrect step.",
+          "Ask students to identify the mistake and fix it.",
+          "Collect responses to check for distribution misconceptions.",
+          "Review the correct step before dismissal."
+        ],
+        studentDirections: [
+          "Circle the incorrect step.",
+          "Rewrite the expression correctly.",
+          "Explain why the original step was wrong in one sentence."
+        ],
+        expectedResponses: [
+          "Correct distribution: -3(x + 4) = -3x - 12.",
+          "Explanation: -3 must multiply both terms; 4 becomes -12."
+        ],
+        gamify: "Award 2 points for a correct fix and 1 point for a clear explanation."
+      }
+    ];
+
+    const groupMap = {
+      "Bell Ringer": document.querySelector('[data-group="Bell Ringer"]'),
+      "Exit Ticket": document.querySelector('[data-group="Exit Ticket"]')
+    };
+
+    const quickLinks = document.getElementById('sample-links');
+
+    const renderCards = () => {
+      Object.values(groupMap).forEach(container => { container.innerHTML = ''; });
+      quickLinks.innerHTML = '';
+
+      SAMPLE_ITEMS.forEach((item) => {
+        const card = document.createElement('article');
+        card.className = 'sample-card';
+        card.id = item.id;
+        card.dataset.type = item.type;
+        card.dataset.grade = item.grade;
+        card.dataset.subject = item.subject;
+
+        card.innerHTML = `
+          <div class="sample-meta">
+            <span class="tag">${item.type}</span>
+            <span class="tag">${item.grade}</span>
+            <span class="tag">${item.subject}</span>
+            <span class="tag">${item.time} min</span>
+          </div>
+          <h4>${item.title}</h4>
+          <p><span class="label">Prompt</span>${item.prompt}</p>
+          <p><span class="label">Materials</span>${item.materials}</p>
+          <div>
+            <span class="label">Teacher Directions</span>
+            <ul>${item.teacherDirections.map(step => `<li>${step}</li>`).join('')}</ul>
+          </div>
+          <div>
+            <span class="label">Student Directions</span>
+            <ul>${item.studentDirections.map(step => `<li>${step}</li>`).join('')}</ul>
+          </div>
+          <div>
+            <span class="label">Answer Key / Expected Responses</span>
+            <ul>${item.expectedResponses.map(step => `<li>${step}</li>`).join('')}</ul>
+          </div>
+          <p><span class="label">Gamify It</span>${item.gamify}</p>
+          <div class="print-row">
+            <button class="print-btn no-print" type="button" data-print="${item.id}" aria-label="Print ${item.title}">Print</button>
+          </div>
+        `;
+
+        const linkItem = document.createElement('li');
+        linkItem.innerHTML = `<a href="#${item.id}">${item.title}</a>`;
+        quickLinks.appendChild(linkItem);
+
+        groupMap[item.type].appendChild(card);
+      });
+    };
+
+    const filterSelects = {
+      type: document.getElementById('filter-type'),
+      grade: document.getElementById('filter-grade'),
+      subject: document.getElementById('filter-subject')
+    };
+
+    const applyFilters = () => {
+      const type = filterSelects.type.value;
+      const grade = filterSelects.grade.value;
+      const subject = filterSelects.subject.value;
+
+      document.querySelectorAll('.sample-card').forEach((card) => {
+        const matchesType = type === 'All' || card.dataset.type === type;
+        const matchesGrade = grade === 'All' || card.dataset.grade === grade;
+        const matchesSubject = subject === 'All' || card.dataset.subject === subject;
+        card.style.display = matchesType && matchesGrade && matchesSubject ? 'flex' : 'none';
+      });
+
+      document.querySelectorAll('.sample-group').forEach((group) => {
+        const visible = Array.from(group.querySelectorAll('.sample-card')).some(card => card.style.display !== 'none');
+        group.style.display = visible ? 'block' : 'none';
+      });
+    };
+
+    const setToggle = (value) => {
+      document.querySelectorAll('.type-toggle').forEach((btn) => {
+        const active = btn.dataset.type === value;
+        btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+      filterSelects.type.value = value;
+      applyFilters();
+    };
+
+    document.addEventListener('click', (event) => {
+      const toggle = event.target.closest('.type-toggle');
+      if (toggle) {
+        const value = toggle.dataset.type;
+        setToggle(value);
+      }
+
+      const printBtn = event.target.closest('[data-print]');
+      if (printBtn) {
+        const id = printBtn.getAttribute('data-print');
+        const card = document.getElementById(id);
+        if (!card) return;
+        document.querySelectorAll('.print-target').forEach(el => el.classList.remove('print-target'));
+        card.classList.add('print-target');
+        window.print();
+      }
+    });
+
+    Object.values(filterSelects).forEach((select) => {
+      select.addEventListener('change', () => {
+        const value = filterSelects.type.value;
+        setToggle(value);
+      });
+    });
+
+    window.addEventListener('afterprint', () => {
+      document.querySelectorAll('.print-target').forEach(el => el.classList.remove('print-target'));
+    });
+
+    renderCards();
+    applyFilters();
+
+    const itemListJson = {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Bell Ringers & Exit Tickets Samples",
+      "itemListOrder": "https://schema.org/ItemListOrderAscending",
+      "itemListElement": SAMPLE_ITEMS.map((item, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "name": item.title,
+        "url": `https://teacharcade.com/classroom/bell-ringers-exit-tickets/#${item.id}`
+      }))
+    };
+
+    const itemListScript = document.createElement('script');
+    itemListScript.type = 'application/ld+json';
+    itemListScript.textContent = JSON.stringify(itemListJson);
+    document.head.appendChild(itemListScript);
+  </script>
+</body>
+</html>

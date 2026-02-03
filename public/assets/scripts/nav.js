@@ -53,6 +53,7 @@
     { label: "Brain Arcade", href: "/brain-arcade/" },
     { label: "Icebreakers", href: "/icebreakers/" },
     { label: "Teacher Tools", href: "/tools/" },
+    { label: "Bell Ringers", href: "/classroom/bell-ringers-exit-tickets/" },
     { label: "Escape Rooms", href: "/escape/" },
     { label: "Playbook", href: "/playbook/" },
     { label: "Merch", href: "/store/index.html" },
