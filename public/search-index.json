@@ -35,6 +35,21 @@
     "source": "sitemap"
   },
   {
+    "title": "Adventure Review Wwii",
+    "url": "/arcade-review-games/adventure-review-wwii/",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:arcade-review-games",
+      "topic:adventure-review-wwii"
+    ],
+    "source": "sitemap"
+  },
+  {
     "title": "Grammar Gauntlet",
     "url": "/arcade-review-games/ela/grammar-gauntlet",
     "type": "game",
@@ -125,21 +140,6 @@
     "source": "sitemap"
   },
   {
-    "title": "Moon Mission Run",
-    "url": "/arcade-review-games/science/moon-mission-run",
-    "type": "game",
-    "description": "",
-    "subject": "",
-    "tags": [
-      "type:game",
-      "format:game",
-      "platform:web",
-      "category:arcade-review-games",
-      "topic:moon-mission-run"
-    ],
-    "source": "sitemap"
-  },
-  {
     "title": "Concept Stack Cells",
     "url": "/arcade-review-games/science/concept-stack-cells/",
     "type": "game",
@@ -151,6 +151,21 @@
       "platform:web",
       "category:arcade-review-games",
       "topic:concept-stack-cells"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Moon Mission Run",
+    "url": "/arcade-review-games/science/moon-mission-run",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:arcade-review-games",
+      "topic:moon-mission-run"
     ],
     "source": "sitemap"
   },
@@ -302,8 +317,89 @@
     "source": "sitemap"
   },
   {
+    "title": "Brain Crush",
+    "url": "/brain-arcade/brain-crush/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Checkers",
+    "url": "/brain-arcade/checkers/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Chess",
+    "url": "/brain-arcade/chess/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Tests",
+    "url": "/brain-arcade/chess/tests",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Crossword",
+    "url": "/brain-arcade/crossword",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Jigsaw Puzzle",
+    "url": "/brain-arcade/jigsaw-puzzle/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
     "title": "Solitaire",
     "url": "/brain-arcade/solitaire",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Sudoku",
+    "url": "/brain-arcade/sudoku/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Word Grid",
+    "url": "/brain-arcade/word-grid/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Word Search",
+    "url": "/brain-arcade/word-search/",
     "type": "page",
     "description": "",
     "subject": "",
@@ -338,6 +434,24 @@
       "category:choose-your-path-adventure",
       "topic:cuban-missile-crisis"
     ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Contact",
+    "url": "/contact",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Cuban Missile Crisis",
+    "url": "/cuban-missile-crisis",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
     "source": "sitemap"
   },
   {
@@ -386,6 +500,150 @@
     "source": "sitemap"
   },
   {
+    "title": "American Revolution Breaking Point",
+    "url": "/games/american-revolution-breaking-point/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Knowledge Expedition",
+    "url": "/games/knowledge-expedition/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Ela",
+    "url": "/games/knowledge-expedition/ela/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Math",
+    "url": "/games/knowledge-expedition/math/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Science",
+    "url": "/games/knowledge-expedition/science/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Social Studies",
+    "url": "/games/knowledge-expedition/social-studies/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Wwii Expedition",
+    "url": "/games/knowledge-expedition/social-studies/wwii-expedition/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Icebreakers",
+    "url": "/icebreakers/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Movie Guides",
+    "url": "/movie-guides/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "War Horse",
+    "url": "/movie-guides/guides/war-horse/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Schindlers List",
+    "url": "/movie-guides/guides/schindlers-list/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Advisory",
+    "url": "/movie-guides/subjects/advisory/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Careers Life Skills",
+    "url": "/movie-guides/subjects/careers-life-skills/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "English Ela",
+    "url": "/movie-guides/subjects/english-ela/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Science",
+    "url": "/movie-guides/subjects/science/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Social Studies",
+    "url": "/movie-guides/subjects/social-studies/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
     "title": "Playbook",
     "url": "/playbook/",
     "type": "page",
@@ -419,6 +677,84 @@
     "source": "sitemap"
   },
   {
+    "title": "Board Games",
+    "url": "/print-play-games/board-games/",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:print-play-games",
+      "topic:board-games"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Card Games",
+    "url": "/print-play-games/card-games/",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:print-play-games",
+      "topic:card-games"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Decision Scenarios",
+    "url": "/print-play-games/decision-scenarios/",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:print-play-games",
+      "topic:decision-scenarios"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Escape Style",
+    "url": "/print-play-games/escape-style/",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:print-play-games",
+      "topic:escape-style"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Privacy",
+    "url": "/privacy",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Professional Development",
+    "url": "/professional-development/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
     "title": "Search",
     "url": "/search",
     "type": "page",
@@ -445,6 +781,18 @@
     "tags": [
       "type:store",
       "format:merch"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Subjects",
+    "url": "/subjects/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "topic:subjects"
     ],
     "source": "sitemap"
   },
@@ -476,6 +824,118 @@
     "source": "sitemap"
   },
   {
+    "title": "Capitalization Rules",
+    "url": "/subjects/ela/grammar-language/capitalization-rules",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:grammar-language",
+      "topic:capitalization-rules"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Editing Revision Practice",
+    "url": "/subjects/ela/grammar-language/editing-revision-practice",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:grammar-language",
+      "topic:editing-revision-practice"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Parts Of Speech",
+    "url": "/subjects/ela/grammar-language/parts-of-speech",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:grammar-language",
+      "topic:parts-of-speech"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Punctuation Commas Quotes",
+    "url": "/subjects/ela/grammar-language/punctuation-commas-quotes",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:grammar-language",
+      "topic:punctuation-commas-quotes"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Run Ons Fragments",
+    "url": "/subjects/ela/grammar-language/run-ons-fragments",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:grammar-language",
+      "topic:run-ons-fragments"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Sentence Types Structure",
+    "url": "/subjects/ela/grammar-language/sentence-types-structure",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:grammar-language",
+      "topic:sentence-types-structure"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Subject Verb Pronoun Agreement",
+    "url": "/subjects/ela/grammar-language/subject-verb-pronoun-agreement",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:grammar-language",
+      "topic:subject-verb-pronoun-agreement"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Usage Commonly Confused Words",
+    "url": "/subjects/ela/grammar-language/usage-commonly-confused-words",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:grammar-language",
+      "topic:usage-commonly-confused-words"
+    ],
+    "source": "sitemap"
+  },
+  {
     "title": "Poetry",
     "url": "/subjects/ela/poetry/",
     "type": "topic",
@@ -486,6 +946,90 @@
       "subject:ela",
       "subject:poetry",
       "topic:poetry"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Figurative Language Poetry",
+    "url": "/subjects/ela/poetry/figurative-language-poetry",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:poetry",
+      "topic:figurative-language-poetry"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Forms Types Poetry",
+    "url": "/subjects/ela/poetry/forms-types-poetry",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:poetry",
+      "topic:forms-types-poetry"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Poetic Devices",
+    "url": "/subjects/ela/poetry/poetic-devices",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:poetry",
+      "topic:poetic-devices"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Poetry Analysis",
+    "url": "/subjects/ela/poetry/poetry-analysis",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:poetry",
+      "topic:poetry-analysis"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Rhyme Rhythm Meter",
+    "url": "/subjects/ela/poetry/rhyme-rhythm-meter",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:poetry",
+      "topic:rhyme-rhythm-meter"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Writing Original Poems",
+    "url": "/subjects/ela/poetry/writing-original-poems",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:poetry",
+      "topic:writing-original-poems"
     ],
     "source": "sitemap"
   },
@@ -504,6 +1048,118 @@
     "source": "sitemap"
   },
   {
+    "title": "Arguments Evidence",
+    "url": "/subjects/ela/reading-informational-text/arguments-evidence",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:reading-informational-text",
+      "topic:arguments-evidence"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Author Purpose Tone",
+    "url": "/subjects/ela/reading-informational-text/author-purpose-tone",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:reading-informational-text",
+      "topic:author-purpose-tone"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Fact Opinion Bias",
+    "url": "/subjects/ela/reading-informational-text/fact-opinion-bias",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:reading-informational-text",
+      "topic:fact-opinion-bias"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Inference Text Evidence Nonfiction",
+    "url": "/subjects/ela/reading-informational-text/inference-text-evidence-nonfiction",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:reading-informational-text",
+      "topic:inference-text-evidence-nonfiction"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Main Idea Details",
+    "url": "/subjects/ela/reading-informational-text/main-idea-details",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:reading-informational-text",
+      "topic:main-idea-details"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Summarizing Paraphrasing",
+    "url": "/subjects/ela/reading-informational-text/summarizing-paraphrasing",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:reading-informational-text",
+      "topic:summarizing-paraphrasing"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Text Features",
+    "url": "/subjects/ela/reading-informational-text/text-features",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:reading-informational-text",
+      "topic:text-features"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Text Structure",
+    "url": "/subjects/ela/reading-informational-text/text-structure",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:reading-informational-text",
+      "topic:text-structure"
+    ],
+    "source": "sitemap"
+  },
+  {
     "title": "Reading Literature",
     "url": "/subjects/ela/reading-literature/",
     "type": "topic",
@@ -514,6 +1170,132 @@
       "subject:ela",
       "subject:reading-literature",
       "topic:reading-literature"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Character Analysis",
+    "url": "/subjects/ela/reading-literature/character-analysis",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:reading-literature",
+      "topic:character-analysis"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Conflict Resolution",
+    "url": "/subjects/ela/reading-literature/conflict-resolution",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:reading-literature",
+      "topic:conflict-resolution"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Figurative Language In Literature",
+    "url": "/subjects/ela/reading-literature/figurative-language-in-literature",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:reading-literature",
+      "topic:figurative-language-in-literature"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Inference Text Evidence",
+    "url": "/subjects/ela/reading-literature/inference-text-evidence",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:reading-literature",
+      "topic:inference-text-evidence"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Mood Tone",
+    "url": "/subjects/ela/reading-literature/mood-tone",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:reading-literature",
+      "topic:mood-tone"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Plot Structure",
+    "url": "/subjects/ela/reading-literature/plot-structure",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:reading-literature",
+      "topic:plot-structure"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Point Of View Perspective",
+    "url": "/subjects/ela/reading-literature/point-of-view-perspective",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:reading-literature",
+      "topic:point-of-view-perspective"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Setting Context",
+    "url": "/subjects/ela/reading-literature/setting-context",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:reading-literature",
+      "topic:setting-context"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Theme",
+    "url": "/subjects/ela/reading-literature/theme",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:reading-literature",
+      "topic:theme"
     ],
     "source": "sitemap"
   },
@@ -532,6 +1314,76 @@
     "source": "sitemap"
   },
   {
+    "title": "Citing Sources Avoiding Plagiarism",
+    "url": "/subjects/ela/research-media-literacy/citing-sources-avoiding-plagiarism",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:research-media-literacy",
+      "topic:citing-sources-avoiding-plagiarism"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Digital Citizenship",
+    "url": "/subjects/ela/research-media-literacy/digital-citizenship",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:research-media-literacy",
+      "topic:digital-citizenship"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Finding Credible Sources",
+    "url": "/subjects/ela/research-media-literacy/finding-credible-sources",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:research-media-literacy",
+      "topic:finding-credible-sources"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Media Bias Reliability",
+    "url": "/subjects/ela/research-media-literacy/media-bias-reliability",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:research-media-literacy",
+      "topic:media-bias-reliability"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Note Taking Organizers",
+    "url": "/subjects/ela/research-media-literacy/note-taking-organizers",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:research-media-literacy",
+      "topic:note-taking-organizers"
+    ],
+    "source": "sitemap"
+  },
+  {
     "title": "Speaking Listening",
     "url": "/subjects/ela/speaking-listening/",
     "type": "topic",
@@ -542,6 +1394,76 @@
       "subject:ela",
       "subject:speaking-listening",
       "topic:speaking-listening"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Class Discussions",
+    "url": "/subjects/ela/speaking-listening/class-discussions",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:speaking-listening",
+      "topic:class-discussions"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Collaborative Conversations",
+    "url": "/subjects/ela/speaking-listening/collaborative-conversations",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:speaking-listening",
+      "topic:collaborative-conversations"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Debates Structured Argument",
+    "url": "/subjects/ela/speaking-listening/debates-structured-argument",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:speaking-listening",
+      "topic:debates-structured-argument"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Listening Comprehension Tasks",
+    "url": "/subjects/ela/speaking-listening/listening-comprehension-tasks",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:speaking-listening",
+      "topic:listening-comprehension-tasks"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Presentations Speeches",
+    "url": "/subjects/ela/speaking-listening/presentations-speeches",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:speaking-listening",
+      "topic:presentations-speeches"
     ],
     "source": "sitemap"
   },
@@ -560,6 +1482,90 @@
     "source": "sitemap"
   },
   {
+    "title": "Editing Revising Passages",
+    "url": "/subjects/ela/test-prep/editing-revising-passages",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:test-prep",
+      "topic:editing-revising-passages"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Grammar Review Sets",
+    "url": "/subjects/ela/test-prep/grammar-review-sets",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:test-prep",
+      "topic:grammar-review-sets"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Reading Comprehension Practice",
+    "url": "/subjects/ela/test-prep/reading-comprehension-practice",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:test-prep",
+      "topic:reading-comprehension-practice"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Sat Act Ela Practice",
+    "url": "/subjects/ela/test-prep/sat-act-ela-practice",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:test-prep",
+      "topic:sat-act-ela-practice"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Test Taking Strategies",
+    "url": "/subjects/ela/test-prep/test-taking-strategies",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:test-prep",
+      "topic:test-taking-strategies"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Writing Prompts Test Style",
+    "url": "/subjects/ela/test-prep/writing-prompts-test-style",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:test-prep",
+      "topic:writing-prompts-test-style"
+    ],
+    "source": "sitemap"
+  },
+  {
     "title": "Vocabulary Word Study",
     "url": "/subjects/ela/vocabulary-word-study/",
     "type": "topic",
@@ -574,6 +1580,104 @@
     "source": "sitemap"
   },
   {
+    "title": "Academic Vocabulary",
+    "url": "/subjects/ela/vocabulary-word-study/academic-vocabulary",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:vocabulary-word-study",
+      "topic:academic-vocabulary"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Context Clues",
+    "url": "/subjects/ela/vocabulary-word-study/context-clues",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:vocabulary-word-study",
+      "topic:context-clues"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Figurative Language Words",
+    "url": "/subjects/ela/vocabulary-word-study/figurative-language-words",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:vocabulary-word-study",
+      "topic:figurative-language-words"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Greek Latin Roots",
+    "url": "/subjects/ela/vocabulary-word-study/greek-latin-roots",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:vocabulary-word-study",
+      "topic:greek-latin-roots"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Multiple Meaning Words",
+    "url": "/subjects/ela/vocabulary-word-study/multiple-meaning-words",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:vocabulary-word-study",
+      "topic:multiple-meaning-words"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Prefixes Suffixes",
+    "url": "/subjects/ela/vocabulary-word-study/prefixes-suffixes",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:vocabulary-word-study",
+      "topic:prefixes-suffixes"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Synonyms Antonyms",
+    "url": "/subjects/ela/vocabulary-word-study/synonyms-antonyms",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:vocabulary-word-study",
+      "topic:synonyms-antonyms"
+    ],
+    "source": "sitemap"
+  },
+  {
     "title": "Writing",
     "url": "/subjects/ela/writing/",
     "type": "topic",
@@ -584,6 +1688,118 @@
       "subject:ela",
       "subject:writing",
       "topic:writing"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Argumentative Persuasive Writing",
+    "url": "/subjects/ela/writing/argumentative-persuasive-writing",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:writing",
+      "topic:argumentative-persuasive-writing"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Informational Explanatory Writing",
+    "url": "/subjects/ela/writing/informational-explanatory-writing",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:writing",
+      "topic:informational-explanatory-writing"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Introductions Conclusions",
+    "url": "/subjects/ela/writing/introductions-conclusions",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:writing",
+      "topic:introductions-conclusions"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Narrative Writing",
+    "url": "/subjects/ela/writing/narrative-writing",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:writing",
+      "topic:narrative-writing"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Organization Paragraph Structure",
+    "url": "/subjects/ela/writing/organization-paragraph-structure",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:writing",
+      "topic:organization-paragraph-structure"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Revising Editing",
+    "url": "/subjects/ela/writing/revising-editing",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:writing",
+      "topic:revising-editing"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Thesis Claims Topic Sentences",
+    "url": "/subjects/ela/writing/thesis-claims-topic-sentences",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:writing",
+      "topic:thesis-claims-topic-sentences"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Using Evidence Citations",
+    "url": "/subjects/ela/writing/using-evidence-citations",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:writing",
+      "topic:using-evidence-citations"
     ],
     "source": "sitemap"
   },
@@ -615,6 +1831,132 @@
     "source": "sitemap"
   },
   {
+    "title": "19th Century Movements",
+    "url": "/subjects/fine-arts/art-history/19th-century-movements",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:art-history",
+      "topic:19th-century-movements"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Baroque Rococo",
+    "url": "/subjects/fine-arts/art-history/baroque-rococo",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:art-history",
+      "topic:baroque-rococo"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Contemporary Art Artists",
+    "url": "/subjects/fine-arts/art-history/contemporary-art-artists",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:art-history",
+      "topic:contemporary-art-artists"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "How To Analyze Art",
+    "url": "/subjects/fine-arts/art-history/how-to-analyze-art",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:art-history",
+      "topic:how-to-analyze-art"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Impressionism Post Impressionism",
+    "url": "/subjects/fine-arts/art-history/impressionism-post-impressionism",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:art-history",
+      "topic:impressionism-post-impressionism"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Medieval Byzantine Art",
+    "url": "/subjects/fine-arts/art-history/medieval-byzantine-art",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:art-history",
+      "topic:medieval-byzantine-art"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Modern Art Movements",
+    "url": "/subjects/fine-arts/art-history/modern-art-movements",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:art-history",
+      "topic:modern-art-movements"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Prehistoric Ancient Art",
+    "url": "/subjects/fine-arts/art-history/prehistoric-ancient-art",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:art-history",
+      "topic:prehistoric-ancient-art"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Renaissance",
+    "url": "/subjects/fine-arts/art-history/renaissance",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:art-history",
+      "topic:renaissance"
+    ],
+    "source": "sitemap"
+  },
+  {
     "title": "Dance",
     "url": "/subjects/fine-arts/dance/",
     "type": "topic",
@@ -625,6 +1967,104 @@
       "subject:fine-arts",
       "subject:dance",
       "topic:dance"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Choreography Basics",
+    "url": "/subjects/fine-arts/dance/choreography-basics",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:dance",
+      "topic:choreography-basics"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Cultural Dances",
+    "url": "/subjects/fine-arts/dance/cultural-dances",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:dance",
+      "topic:cultural-dances"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Dance Styles Overview",
+    "url": "/subjects/fine-arts/dance/dance-styles-overview",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:dance",
+      "topic:dance-styles-overview"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Dance Technique Safety",
+    "url": "/subjects/fine-arts/dance/dance-technique-safety",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:dance",
+      "topic:dance-technique-safety"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Elements Of Dance",
+    "url": "/subjects/fine-arts/dance/elements-of-dance",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:dance",
+      "topic:elements-of-dance"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Expression Performance",
+    "url": "/subjects/fine-arts/dance/expression-performance",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:dance",
+      "topic:expression-performance"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Movement Basics",
+    "url": "/subjects/fine-arts/dance/movement-basics",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:dance",
+      "topic:movement-basics"
     ],
     "source": "sitemap"
   },
@@ -643,6 +2083,118 @@
     "source": "sitemap"
   },
   {
+    "title": "Acting Basics",
+    "url": "/subjects/fine-arts/drama-theatre/acting-basics",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:drama-theatre",
+      "topic:acting-basics"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Character Development",
+    "url": "/subjects/fine-arts/drama-theatre/character-development",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:drama-theatre",
+      "topic:character-development"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Dramatic Structure",
+    "url": "/subjects/fine-arts/drama-theatre/dramatic-structure",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:drama-theatre",
+      "topic:dramatic-structure"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Improvisation Games",
+    "url": "/subjects/fine-arts/drama-theatre/improvisation-games",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:drama-theatre",
+      "topic:improvisation-games"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Scriptwriting Dialogue",
+    "url": "/subjects/fine-arts/drama-theatre/scriptwriting-dialogue",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:drama-theatre",
+      "topic:scriptwriting-dialogue"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Set Costume Design",
+    "url": "/subjects/fine-arts/drama-theatre/set-costume-design",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:drama-theatre",
+      "topic:set-costume-design"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Stage Directions Blocking",
+    "url": "/subjects/fine-arts/drama-theatre/stage-directions-blocking",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:drama-theatre",
+      "topic:stage-directions-blocking"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Theatre History",
+    "url": "/subjects/fine-arts/drama-theatre/theatre-history",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:drama-theatre",
+      "topic:theatre-history"
+    ],
+    "source": "sitemap"
+  },
+  {
     "title": "Media Arts",
     "url": "/subjects/fine-arts/media-arts/",
     "type": "topic",
@@ -653,6 +2205,118 @@
       "subject:fine-arts",
       "subject:media-arts",
       "topic:media-arts"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Animation Basics",
+    "url": "/subjects/fine-arts/media-arts/animation-basics",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:media-arts",
+      "topic:animation-basics"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Digital Citizenship",
+    "url": "/subjects/fine-arts/media-arts/digital-citizenship",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:media-arts",
+      "topic:digital-citizenship"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Digital Illustration",
+    "url": "/subjects/fine-arts/media-arts/digital-illustration",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:media-arts",
+      "topic:digital-illustration"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Graphic Design Basics",
+    "url": "/subjects/fine-arts/media-arts/graphic-design-basics",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:media-arts",
+      "topic:graphic-design-basics"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Intro Media Arts",
+    "url": "/subjects/fine-arts/media-arts/intro-media-arts",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:media-arts",
+      "topic:intro-media-arts"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Photo Editing",
+    "url": "/subjects/fine-arts/media-arts/photo-editing",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:media-arts",
+      "topic:photo-editing"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Storyboarding",
+    "url": "/subjects/fine-arts/media-arts/storyboarding",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:media-arts",
+      "topic:storyboarding"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Video Editing Projects",
+    "url": "/subjects/fine-arts/media-arts/video-editing-projects",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:media-arts",
+      "topic:video-editing-projects"
     ],
     "source": "sitemap"
   },
@@ -671,6 +2335,146 @@
     "source": "sitemap"
   },
   {
+    "title": "Composer Studies",
+    "url": "/subjects/fine-arts/music/composer-studies",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:music",
+      "topic:composer-studies"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Composition Creation",
+    "url": "/subjects/fine-arts/music/composition-creation",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:music",
+      "topic:composition-creation"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Dynamics Tempo",
+    "url": "/subjects/fine-arts/music/dynamics-tempo",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:music",
+      "topic:dynamics-tempo"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Genres Styles",
+    "url": "/subjects/fine-arts/music/genres-styles",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:music",
+      "topic:genres-styles"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Instrument Families",
+    "url": "/subjects/fine-arts/music/instrument-families",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:music",
+      "topic:instrument-families"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Melody Pitch",
+    "url": "/subjects/fine-arts/music/melody-pitch",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:music",
+      "topic:melody-pitch"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Music Notation",
+    "url": "/subjects/fine-arts/music/music-notation",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:music",
+      "topic:music-notation"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Rhythm Beat",
+    "url": "/subjects/fine-arts/music/rhythm-beat",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:music",
+      "topic:rhythm-beat"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Scales Keys",
+    "url": "/subjects/fine-arts/music/scales-keys",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:music",
+      "topic:scales-keys"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "World Instruments",
+    "url": "/subjects/fine-arts/music/world-instruments",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:music",
+      "topic:world-instruments"
+    ],
+    "source": "sitemap"
+  },
+  {
     "title": "Visual Arts",
     "url": "/subjects/fine-arts/visual-arts/",
     "type": "topic",
@@ -681,6 +2485,132 @@
       "subject:fine-arts",
       "subject:visual-arts",
       "topic:visual-arts"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Art Critique Process",
+    "url": "/subjects/fine-arts/visual-arts/art-critique-process",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:visual-arts",
+      "topic:art-critique-process"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Color Theory",
+    "url": "/subjects/fine-arts/visual-arts/color-theory",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:visual-arts",
+      "topic:color-theory"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Digital Illustration",
+    "url": "/subjects/fine-arts/visual-arts/digital-illustration",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:visual-arts",
+      "topic:digital-illustration"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Drawing Basics",
+    "url": "/subjects/fine-arts/visual-arts/drawing-basics",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:visual-arts",
+      "topic:drawing-basics"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Elements Of Art",
+    "url": "/subjects/fine-arts/visual-arts/elements-of-art",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:visual-arts",
+      "topic:elements-of-art"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Mixed Media",
+    "url": "/subjects/fine-arts/visual-arts/mixed-media",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:visual-arts",
+      "topic:mixed-media"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Painting Techniques",
+    "url": "/subjects/fine-arts/visual-arts/painting-techniques",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:visual-arts",
+      "topic:painting-techniques"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Principles Of Design",
+    "url": "/subjects/fine-arts/visual-arts/principles-of-design",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:visual-arts",
+      "topic:principles-of-design"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Sculpture 3d Art",
+    "url": "/subjects/fine-arts/visual-arts/sculpture-3d-art",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:visual-arts",
+      "topic:sculpture-3d-art"
     ],
     "source": "sitemap"
   },
@@ -712,6 +2642,118 @@
     "source": "sitemap"
   },
   {
+    "title": "Algebra 1",
+    "url": "/subjects/math/high-school-math/algebra-1/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:math",
+      "subject:high-school-math",
+      "topic:algebra-1"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Algebra 2",
+    "url": "/subjects/math/high-school-math/algebra-2/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:math",
+      "subject:high-school-math",
+      "topic:algebra-2"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Calculus",
+    "url": "/subjects/math/high-school-math/calculus/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:math",
+      "subject:high-school-math",
+      "topic:calculus"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Geometry",
+    "url": "/subjects/math/high-school-math/geometry/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:math",
+      "subject:high-school-math",
+      "topic:geometry"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Precalculus",
+    "url": "/subjects/math/high-school-math/precalculus/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:math",
+      "subject:high-school-math",
+      "topic:precalculus"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Sat Act Math Prep",
+    "url": "/subjects/math/high-school-math/sat-act-math-prep/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:math",
+      "subject:high-school-math",
+      "topic:sat-act-math-prep"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Statistics Data Analysis",
+    "url": "/subjects/math/high-school-math/statistics-data-analysis/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:math",
+      "subject:high-school-math",
+      "topic:statistics-data-analysis"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Trigonometry",
+    "url": "/subjects/math/high-school-math/trigonometry/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:math",
+      "subject:high-school-math",
+      "topic:trigonometry"
+    ],
+    "source": "sitemap"
+  },
+  {
     "title": "K 5 Math",
     "url": "/subjects/math/k-5-math/",
     "type": "topic",
@@ -722,6 +2764,146 @@
       "subject:math",
       "subject:k-5-math",
       "topic:k-5-math"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Addition Subtraction",
+    "url": "/subjects/math/k-5-math/addition-subtraction/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:math",
+      "subject:k-5-math",
+      "topic:addition-subtraction"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Decimals Intro",
+    "url": "/subjects/math/k-5-math/decimals-intro/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:math",
+      "subject:k-5-math",
+      "topic:decimals-intro"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Fractions Basics",
+    "url": "/subjects/math/k-5-math/fractions-basics/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:math",
+      "subject:k-5-math",
+      "topic:fractions-basics"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Geometry Shapes",
+    "url": "/subjects/math/k-5-math/geometry-shapes/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:math",
+      "subject:k-5-math",
+      "topic:geometry-shapes"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Measurement Data",
+    "url": "/subjects/math/k-5-math/measurement-data/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:math",
+      "subject:k-5-math",
+      "topic:measurement-data"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Money",
+    "url": "/subjects/math/k-5-math/money/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:math",
+      "subject:k-5-math",
+      "topic:money"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Multiplication Division",
+    "url": "/subjects/math/k-5-math/multiplication-division/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:math",
+      "subject:k-5-math",
+      "topic:multiplication-division"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Place Value Rounding",
+    "url": "/subjects/math/k-5-math/place-value-rounding/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:math",
+      "subject:k-5-math",
+      "topic:place-value-rounding"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Time",
+    "url": "/subjects/math/k-5-math/time/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:math",
+      "subject:k-5-math",
+      "topic:time"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Word Problems Problem Solving",
+    "url": "/subjects/math/k-5-math/word-problems-problem-solving/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:math",
+      "subject:k-5-math",
+      "topic:word-problems-problem-solving"
     ],
     "source": "sitemap"
   },
@@ -740,6 +2922,90 @@
     "source": "sitemap"
   },
   {
+    "title": "Algebra Equations Games",
+    "url": "/subjects/math/math-games-puzzles/algebra-equations-games/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:math",
+      "subject:math-games-puzzles",
+      "topic:algebra-equations-games"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Escape Room Review Games",
+    "url": "/subjects/math/math-games-puzzles/escape-room-review-games/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:math",
+      "subject:math-games-puzzles",
+      "topic:escape-room-review-games"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Fact Fluency Games",
+    "url": "/subjects/math/math-games-puzzles/fact-fluency-games/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:math",
+      "subject:math-games-puzzles",
+      "topic:fact-fluency-games"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Fractions Integers Games",
+    "url": "/subjects/math/math-games-puzzles/fractions-integers-games/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:math",
+      "subject:math-games-puzzles",
+      "topic:fractions-integers-games"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Geometry Coordinate Plane Games",
+    "url": "/subjects/math/math-games-puzzles/geometry-coordinate-plane-games/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:math",
+      "subject:math-games-puzzles",
+      "topic:geometry-coordinate-plane-games"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Logic Puzzles Brain Teasers",
+    "url": "/subjects/math/math-games-puzzles/logic-puzzles-brain-teasers/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:math",
+      "subject:math-games-puzzles",
+      "topic:logic-puzzles-brain-teasers"
+    ],
+    "source": "sitemap"
+  },
+  {
     "title": "Middle School Math",
     "url": "/subjects/math/middle-school-math/",
     "type": "topic",
@@ -750,6 +3016,146 @@
       "subject:math",
       "subject:middle-school-math",
       "topic:middle-school-math"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Expressions Equations",
+    "url": "/subjects/math/middle-school-math/expressions-equations/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:math",
+      "subject:middle-school-math",
+      "topic:expressions-equations"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Functions Graphs",
+    "url": "/subjects/math/middle-school-math/functions-graphs/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:math",
+      "subject:middle-school-math",
+      "topic:functions-graphs"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Geometry Area Volume",
+    "url": "/subjects/math/middle-school-math/geometry-area-volume/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:math",
+      "subject:middle-school-math",
+      "topic:geometry-area-volume"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Inequalities",
+    "url": "/subjects/math/middle-school-math/inequalities/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:math",
+      "subject:middle-school-math",
+      "topic:inequalities"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Integer Operations",
+    "url": "/subjects/math/middle-school-math/integer-operations/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:math",
+      "subject:middle-school-math",
+      "topic:integer-operations"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Percents",
+    "url": "/subjects/math/middle-school-math/percents/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:math",
+      "subject:middle-school-math",
+      "topic:percents"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Ratios Proportions Unit Rate",
+    "url": "/subjects/math/middle-school-math/ratios-proportions-unit-rate/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:math",
+      "subject:middle-school-math",
+      "topic:ratios-proportions-unit-rate"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Slope Linear Relationships",
+    "url": "/subjects/math/middle-school-math/slope-linear-relationships/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:math",
+      "subject:middle-school-math",
+      "topic:slope-linear-relationships"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Statistics Probability",
+    "url": "/subjects/math/middle-school-math/statistics-probability/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:math",
+      "subject:middle-school-math",
+      "topic:statistics-probability"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Transformations Congruence",
+    "url": "/subjects/math/middle-school-math/transformations-congruence/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:math",
+      "subject:middle-school-math",
+      "topic:transformations-congruence"
     ],
     "source": "sitemap"
   },
@@ -777,6 +3183,90 @@
       "subject:science",
       "subject:astronomy",
       "topic:astronomy"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Earth Sun Moon System",
+    "url": "/subjects/science/astronomy/earth-sun-moon-system",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:astronomy",
+      "topic:earth-sun-moon-system"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Galaxies Universe Structure",
+    "url": "/subjects/science/astronomy/galaxies-universe-structure",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:astronomy",
+      "topic:galaxies-universe-structure"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Solar System Planets",
+    "url": "/subjects/science/astronomy/solar-system-planets",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:astronomy",
+      "topic:solar-system-planets"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Space Exploration Missions",
+    "url": "/subjects/science/astronomy/space-exploration-missions",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:astronomy",
+      "topic:space-exploration-missions"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Stars Constellations",
+    "url": "/subjects/science/astronomy/stars-constellations",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:astronomy",
+      "topic:stars-constellations"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Telescopes Space Observation",
+    "url": "/subjects/science/astronomy/telescopes-space-observation",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:astronomy",
+      "topic:telescopes-space-observation"
     ],
     "source": "sitemap"
   },
@@ -847,6 +3337,20 @@
       "subject:science",
       "subject:biology",
       "topic:cell-energy-photosynthesis-respiration"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Cell Structure Function",
+    "url": "/subjects/science/biology/cell-structure-function",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:biology",
+      "topic:cell-structure-function"
     ],
     "source": "sitemap"
   },
@@ -1019,6 +3523,174 @@
     "source": "sitemap"
   },
   {
+    "title": "Atomic Structure",
+    "url": "/subjects/science/chemistry/atomic-structure",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:chemistry",
+      "topic:atomic-structure"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Chemical Bonding",
+    "url": "/subjects/science/chemistry/chemical-bonding",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:chemistry",
+      "topic:chemical-bonding"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Chemical Reactions",
+    "url": "/subjects/science/chemistry/chemical-reactions",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:chemistry",
+      "topic:chemical-reactions"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Intro Matter Properties",
+    "url": "/subjects/science/chemistry/intro-matter-properties",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:chemistry",
+      "topic:intro-matter-properties"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Intro Organic Biochemistry",
+    "url": "/subjects/science/chemistry/intro-organic-biochemistry",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:chemistry",
+      "topic:intro-organic-biochemistry"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Nuclear Chemistry",
+    "url": "/subjects/science/chemistry/nuclear-chemistry",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:chemistry",
+      "topic:nuclear-chemistry"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Periodic Table",
+    "url": "/subjects/science/chemistry/periodic-table",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:chemistry",
+      "topic:periodic-table"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Reaction Rates Equilibrium",
+    "url": "/subjects/science/chemistry/reaction-rates-equilibrium",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:chemistry",
+      "topic:reaction-rates-equilibrium"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Solutions Acids Bases",
+    "url": "/subjects/science/chemistry/solutions-acids-bases",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:chemistry",
+      "topic:solutions-acids-bases"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "States Gases Liquids Solids",
+    "url": "/subjects/science/chemistry/states-gases-liquids-solids",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:chemistry",
+      "topic:states-gases-liquids-solids"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Stoichiometry",
+    "url": "/subjects/science/chemistry/stoichiometry",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:chemistry",
+      "topic:stoichiometry"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Thermochemistry Energy",
+    "url": "/subjects/science/chemistry/thermochemistry-energy",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:chemistry",
+      "topic:thermochemistry-energy"
+    ],
+    "source": "sitemap"
+  },
+  {
     "title": "Earth Space Science",
     "url": "/subjects/science/earth-space-science/",
     "type": "topic",
@@ -1029,6 +3701,146 @@
       "subject:science",
       "subject:earth-space-science",
       "topic:earth-space-science"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Atmosphere Weather",
+    "url": "/subjects/science/earth-space-science/atmosphere-weather",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:earth-space-science",
+      "topic:atmosphere-weather"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Climate Climate Change",
+    "url": "/subjects/science/earth-space-science/climate-climate-change",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:earth-space-science",
+      "topic:climate-climate-change"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Earth Sun Moon Systems",
+    "url": "/subjects/science/earth-space-science/earth-sun-moon-systems",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:earth-space-science",
+      "topic:earth-sun-moon-systems"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Earths Structure Plate Tectonics",
+    "url": "/subjects/science/earth-space-science/earths-structure-plate-tectonics",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:earth-space-science",
+      "topic:earths-structure-plate-tectonics"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Human Impact Earth Systems",
+    "url": "/subjects/science/earth-space-science/human-impact-earth-systems",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:earth-space-science",
+      "topic:human-impact-earth-systems"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Oceans Oceanography",
+    "url": "/subjects/science/earth-space-science/oceans-oceanography",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:earth-space-science",
+      "topic:oceans-oceanography"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Rocks Minerals Geologic Time",
+    "url": "/subjects/science/earth-space-science/rocks-minerals-geologic-time",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:earth-space-science",
+      "topic:rocks-minerals-geologic-time"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Solar System",
+    "url": "/subjects/science/earth-space-science/solar-system",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:earth-space-science",
+      "topic:solar-system"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Stars Galaxies Universe",
+    "url": "/subjects/science/earth-space-science/stars-galaxies-universe",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:earth-space-science",
+      "topic:stars-galaxies-universe"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Weathering Erosion Surface Processes",
+    "url": "/subjects/science/earth-space-science/weathering-erosion-surface-processes",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:earth-space-science",
+      "topic:weathering-erosion-surface-processes"
     ],
     "source": "sitemap"
   },
@@ -1047,6 +3859,118 @@
     "source": "sitemap"
   },
   {
+    "title": "Climate Change Global Warming",
+    "url": "/subjects/science/environmental-science/climate-change-global-warming",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:environmental-science",
+      "topic:climate-change-global-warming"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Ecosystems Biomes",
+    "url": "/subjects/science/environmental-science/ecosystems-biomes",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:environmental-science",
+      "topic:ecosystems-biomes"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Energy Resources Renewables",
+    "url": "/subjects/science/environmental-science/energy-resources-renewables",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:environmental-science",
+      "topic:energy-resources-renewables"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Environmental Policy Ethics",
+    "url": "/subjects/science/environmental-science/environmental-policy-ethics",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:environmental-science",
+      "topic:environmental-policy-ethics"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Human Population Growth",
+    "url": "/subjects/science/environmental-science/human-population-growth",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:environmental-science",
+      "topic:human-population-growth"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Natural Resources",
+    "url": "/subjects/science/environmental-science/natural-resources",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:environmental-science",
+      "topic:natural-resources"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Pollution Human Impact",
+    "url": "/subjects/science/environmental-science/pollution-human-impact",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:environmental-science",
+      "topic:pollution-human-impact"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Sustainability Conservation",
+    "url": "/subjects/science/environmental-science/sustainability-conservation",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:environmental-science",
+      "topic:sustainability-conservation"
+    ],
+    "source": "sitemap"
+  },
+  {
     "title": "Life Science",
     "url": "/subjects/science/life-science/",
     "type": "topic",
@@ -1057,6 +3981,132 @@
       "subject:science",
       "subject:life-science",
       "topic:life-science"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Adaptations Natural Selection",
+    "url": "/subjects/science/life-science/adaptations-natural-selection",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:life-science",
+      "topic:adaptations-natural-selection"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Cells Structure Function",
+    "url": "/subjects/science/life-science/cells-structure-function",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:life-science",
+      "topic:cells-structure-function"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Classification Living Things",
+    "url": "/subjects/science/life-science/classification-living-things",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:life-science",
+      "topic:classification-living-things"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Ecosystems Food Webs",
+    "url": "/subjects/science/life-science/ecosystems-food-webs",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:life-science",
+      "topic:ecosystems-food-webs"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Genetics Heredity Basics",
+    "url": "/subjects/science/life-science/genetics-heredity-basics",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:life-science",
+      "topic:genetics-heredity-basics"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Human Body Systems",
+    "url": "/subjects/science/life-science/human-body-systems",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:life-science",
+      "topic:human-body-systems"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Life Cycles Reproduction",
+    "url": "/subjects/science/life-science/life-cycles-reproduction",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:life-science",
+      "topic:life-cycles-reproduction"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Microorganisms Health",
+    "url": "/subjects/science/life-science/microorganisms-health",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:life-science",
+      "topic:microorganisms-health"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Populations Communities Ecosystems",
+    "url": "/subjects/science/life-science/populations-communities-ecosystems",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:life-science",
+      "topic:populations-communities-ecosystems"
     ],
     "source": "sitemap"
   },
@@ -1075,6 +4125,118 @@
     "source": "sitemap"
   },
   {
+    "title": "Atoms Molecules Basics",
+    "url": "/subjects/science/physical-science/atoms-molecules-basics",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:physical-science",
+      "topic:atoms-molecules-basics"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Electricity Magnetism Intro",
+    "url": "/subjects/science/physical-science/electricity-magnetism-intro",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:physical-science",
+      "topic:electricity-magnetism-intro"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Energy Forms Transformations",
+    "url": "/subjects/science/physical-science/energy-forms-transformations",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:physical-science",
+      "topic:energy-forms-transformations"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Forces Newtons Laws Intro",
+    "url": "/subjects/science/physical-science/forces-newtons-laws-intro",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:physical-science",
+      "topic:forces-newtons-laws-intro"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Matter Properties Changes",
+    "url": "/subjects/science/physical-science/matter-properties-changes",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:physical-science",
+      "topic:matter-properties-changes"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Motion Speed Acceleration",
+    "url": "/subjects/science/physical-science/motion-speed-acceleration",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:physical-science",
+      "topic:motion-speed-acceleration"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Simple Machines Work Power",
+    "url": "/subjects/science/physical-science/simple-machines-work-power",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:physical-science",
+      "topic:simple-machines-work-power"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Waves Sound Light Basics",
+    "url": "/subjects/science/physical-science/waves-sound-light-basics",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:physical-science",
+      "topic:waves-sound-light-basics"
+    ],
+    "source": "sitemap"
+  },
+  {
     "title": "Physics",
     "url": "/subjects/science/physics/",
     "type": "topic",
@@ -1089,6 +4251,160 @@
     "source": "sitemap"
   },
   {
+    "title": "Circular Motion Gravitation",
+    "url": "/subjects/science/physics/circular-motion-gravitation",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:physics",
+      "topic:circular-motion-gravitation"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Electricity Circuits",
+    "url": "/subjects/science/physics/electricity-circuits",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:physics",
+      "topic:electricity-circuits"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Fluids Thermal Physics",
+    "url": "/subjects/science/physics/fluids-thermal-physics",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:physics",
+      "topic:fluids-thermal-physics"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Forces Newtons Laws",
+    "url": "/subjects/science/physics/forces-newtons-laws",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:physics",
+      "topic:forces-newtons-laws"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Light Optics",
+    "url": "/subjects/science/physics/light-optics",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:physics",
+      "topic:light-optics"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Magnetism Electromagnetism",
+    "url": "/subjects/science/physics/magnetism-electromagnetism",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:physics",
+      "topic:magnetism-electromagnetism"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Modern Physics",
+    "url": "/subjects/science/physics/modern-physics",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:physics",
+      "topic:modern-physics"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Momentum Collisions",
+    "url": "/subjects/science/physics/momentum-collisions",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:physics",
+      "topic:momentum-collisions"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Motion Kinematics",
+    "url": "/subjects/science/physics/motion-kinematics",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:physics",
+      "topic:motion-kinematics"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Waves Sound",
+    "url": "/subjects/science/physics/waves-sound",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:physics",
+      "topic:waves-sound"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Work Energy Power",
+    "url": "/subjects/science/physics/work-energy-power",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:physics",
+      "topic:work-energy-power"
+    ],
+    "source": "sitemap"
+  },
+  {
     "title": "Stem Engineering",
     "url": "/subjects/science/stem-engineering/",
     "type": "topic",
@@ -1099,6 +4415,90 @@
       "subject:science",
       "subject:stem-engineering",
       "topic:stem-engineering"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Coding Robotics Basics",
+    "url": "/subjects/science/stem-engineering/coding-robotics-basics",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:stem-engineering",
+      "topic:coding-robotics-basics"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Data Measurement Models",
+    "url": "/subjects/science/stem-engineering/data-measurement-models",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:stem-engineering",
+      "topic:data-measurement-models"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Engineering Design Process",
+    "url": "/subjects/science/stem-engineering/engineering-design-process",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:stem-engineering",
+      "topic:engineering-design-process"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Simple Machines Structures",
+    "url": "/subjects/science/stem-engineering/simple-machines-structures",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:stem-engineering",
+      "topic:simple-machines-structures"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Stem Careers Real World",
+    "url": "/subjects/science/stem-engineering/stem-careers-real-world",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:stem-engineering",
+      "topic:stem-careers-real-world"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Stem Challenges Projects",
+    "url": "/subjects/science/stem-engineering/stem-challenges-projects",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:stem-engineering",
+      "topic:stem-challenges-projects"
     ],
     "source": "sitemap"
   },
@@ -1130,6 +4530,202 @@
     "source": "sitemap"
   },
   {
+    "title": "Basic Economic Concepts",
+    "url": "/subjects/social-studies/economics/basic-economic-concepts",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:economics",
+      "topic:basic-economic-concepts"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Business Market Structures",
+    "url": "/subjects/social-studies/economics/business-market-structures",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:economics",
+      "topic:business-market-structures"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Costs Production Profit",
+    "url": "/subjects/social-studies/economics/costs-production-profit",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:economics",
+      "topic:costs-production-profit"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Economic Development",
+    "url": "/subjects/social-studies/economics/economic-development",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:economics",
+      "topic:economic-development"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Economic Indicators",
+    "url": "/subjects/social-studies/economics/economic-indicators",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:economics",
+      "topic:economic-indicators"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Economic Systems",
+    "url": "/subjects/social-studies/economics/economic-systems",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:economics",
+      "topic:economic-systems"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Entrepreneurship Small Business",
+    "url": "/subjects/social-studies/economics/entrepreneurship-small-business",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:economics",
+      "topic:entrepreneurship-small-business"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Fiscal Policy",
+    "url": "/subjects/social-studies/economics/fiscal-policy",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:economics",
+      "topic:fiscal-policy"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "International Trade Globalization",
+    "url": "/subjects/social-studies/economics/international-trade-globalization",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:economics",
+      "topic:international-trade-globalization"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Labor Markets Income",
+    "url": "/subjects/social-studies/economics/labor-markets-income",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:economics",
+      "topic:labor-markets-income"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Monetary Policy",
+    "url": "/subjects/social-studies/economics/monetary-policy",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:economics",
+      "topic:monetary-policy"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Money Banking Financial Institutions",
+    "url": "/subjects/social-studies/economics/money-banking-financial-institutions",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:economics",
+      "topic:money-banking-financial-institutions"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Personal Finance Financial Literacy",
+    "url": "/subjects/social-studies/economics/personal-finance-financial-literacy",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:economics",
+      "topic:personal-finance-financial-literacy"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Supply Demand Market Equilibrium",
+    "url": "/subjects/social-studies/economics/supply-demand-market-equilibrium",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:economics",
+      "topic:supply-demand-market-equilibrium"
+    ],
+    "source": "sitemap"
+  },
+  {
     "title": "Geography",
     "url": "/subjects/social-studies/geography/",
     "type": "topic",
@@ -1140,6 +4736,496 @@
       "subject:social-studies",
       "subject:geography",
       "topic:geography"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Africa",
+    "url": "/subjects/social-studies/geography/africa",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:geography",
+      "topic:africa"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Cultural Geography",
+    "url": "/subjects/social-studies/geography/cultural-geography",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:geography",
+      "topic:cultural-geography"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "East Asia",
+    "url": "/subjects/social-studies/geography/east-asia",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:geography",
+      "topic:east-asia"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Economic Geography",
+    "url": "/subjects/social-studies/geography/economic-geography",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:geography",
+      "topic:economic-geography"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Environmental Geography",
+    "url": "/subjects/social-studies/geography/environmental-geography",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:geography",
+      "topic:environmental-geography"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Europe",
+    "url": "/subjects/social-studies/geography/europe",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:geography",
+      "topic:europe"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Latin America",
+    "url": "/subjects/social-studies/geography/latin-america",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:geography",
+      "topic:latin-america"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Maps Skills Tools",
+    "url": "/subjects/social-studies/geography/maps-skills-tools",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:geography",
+      "topic:maps-skills-tools"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Middle East North Africa",
+    "url": "/subjects/social-studies/geography/middle-east-north-africa",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:geography",
+      "topic:middle-east-north-africa"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "North America",
+    "url": "/subjects/social-studies/geography/north-america",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:geography",
+      "topic:north-america"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Physical Geography Earth Systems",
+    "url": "/subjects/social-studies/geography/physical-geography-earth-systems",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:geography",
+      "topic:physical-geography-earth-systems"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Political Geography",
+    "url": "/subjects/social-studies/geography/political-geography",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:geography",
+      "topic:political-geography"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Population Migration",
+    "url": "/subjects/social-studies/geography/population-migration",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:geography",
+      "topic:population-migration"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "South Asia",
+    "url": "/subjects/social-studies/geography/south-asia",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:geography",
+      "topic:south-asia"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Southeast Asia Oceania",
+    "url": "/subjects/social-studies/geography/southeast-asia-oceania",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:geography",
+      "topic:southeast-asia-oceania"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Urban Geography Development",
+    "url": "/subjects/social-studies/geography/urban-geography-development",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:geography",
+      "topic:urban-geography-development"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Civil Liberties Civil Rights",
+    "url": "/subjects/social-studies/government-and-political-science/civil-liberties-civil-rights",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:government-and-political-science",
+      "topic:civil-liberties-civil-rights"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Comparative Government Systems",
+    "url": "/subjects/social-studies/government-and-political-science/comparative-government-systems",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:government-and-political-science",
+      "topic:comparative-government-systems"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Executive President Bureaucracy",
+    "url": "/subjects/social-studies/government-and-political-science/executive-president-bureaucracy",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:government-and-political-science",
+      "topic:executive-president-bureaucracy"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Federalism State National Power",
+    "url": "/subjects/social-studies/government-and-political-science/federalism-state-national-power",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:government-and-political-science",
+      "topic:federalism-state-national-power"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Foreign Policy National Security",
+    "url": "/subjects/social-studies/government-and-political-science/foreign-policy-national-security",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:government-and-political-science",
+      "topic:foreign-policy-national-security"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Foundations Government Political Theory",
+    "url": "/subjects/social-studies/government-and-political-science/foundations-government-political-theory",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:government-and-political-science",
+      "topic:foundations-government-political-theory"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Global Conflict Peacekeeping",
+    "url": "/subjects/social-studies/government-and-political-science/global-conflict-peacekeeping",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:government-and-political-science",
+      "topic:global-conflict-peacekeeping"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Globalization Economy Environment",
+    "url": "/subjects/social-studies/government-and-political-science/globalization-economy-environment",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:government-and-political-science",
+      "topic:globalization-economy-environment"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Governments World Regions",
+    "url": "/subjects/social-studies/government-and-political-science/governments-world-regions",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:government-and-political-science",
+      "topic:governments-world-regions"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Human Rights International Law",
+    "url": "/subjects/social-studies/government-and-political-science/human-rights-international-law",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:government-and-political-science",
+      "topic:human-rights-international-law"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Interest Groups Campaign Finance",
+    "url": "/subjects/social-studies/government-and-political-science/interest-groups-campaign-finance",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:government-and-political-science",
+      "topic:interest-groups-campaign-finance"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Judicial Branch Supreme Court",
+    "url": "/subjects/social-studies/government-and-political-science/judicial-branch-supreme-court",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:government-and-political-science",
+      "topic:judicial-branch-supreme-court"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Legislative Congress",
+    "url": "/subjects/social-studies/government-and-political-science/legislative-congress",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:government-and-political-science",
+      "topic:legislative-congress"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Political Ideologies Global",
+    "url": "/subjects/social-studies/government-and-political-science/political-ideologies-global",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:government-and-political-science",
+      "topic:political-ideologies-global"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Political Parties Elections",
+    "url": "/subjects/social-studies/government-and-political-science/political-parties-elections",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:government-and-political-science",
+      "topic:political-parties-elections"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Public Opinion Media",
+    "url": "/subjects/social-studies/government-and-political-science/public-opinion-media",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:government-and-political-science",
+      "topic:public-opinion-media"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Public Policy Domestic Issues",
+    "url": "/subjects/social-studies/government-and-political-science/public-policy-domestic-issues",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:government-and-political-science",
+      "topic:public-policy-domestic-issues"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Us Constitution",
+    "url": "/subjects/social-studies/government-and-political-science/us-constitution",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:government-and-political-science",
+      "topic:us-constitution"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Voting Civic Engagement",
+    "url": "/subjects/social-studies/government-and-political-science/voting-civic-engagement",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:government-and-political-science",
+      "topic:voting-civic-engagement"
     ],
     "source": "sitemap"
   },
@@ -1368,6 +5454,34 @@
     "source": "sitemap"
   },
   {
+    "title": "African Civilizations",
+    "url": "/subjects/social-studies/world-history/african-civilizations",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:world-history",
+      "topic:african-civilizations"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Age Of Exploration Colonialism",
+    "url": "/subjects/social-studies/world-history/age-of-exploration-colonialism",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:world-history",
+      "topic:age-of-exploration-colonialism"
+    ],
+    "source": "sitemap"
+  },
+  {
     "title": "Ancient Greece",
     "url": "/subjects/social-studies/world-history/ancient-greece",
     "type": "topic",
@@ -1424,6 +5538,20 @@
     "source": "sitemap"
   },
   {
+    "title": "Cold War Decolonization",
+    "url": "/subjects/social-studies/world-history/cold-war-decolonization",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:world-history",
+      "topic:cold-war-decolonization"
+    ],
+    "source": "sitemap"
+  },
+  {
     "title": "Early Humans River Valleys",
     "url": "/subjects/social-studies/world-history/early-humans-river-valleys",
     "type": "topic",
@@ -1434,6 +5562,76 @@
       "subject:social-studies",
       "subject:world-history",
       "topic:early-humans-river-valleys"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "East Asia China Japan",
+    "url": "/subjects/social-studies/world-history/east-asia-china-japan",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:world-history",
+      "topic:east-asia-china-japan"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Enlightenment Scientific Revolution",
+    "url": "/subjects/social-studies/world-history/enlightenment-scientific-revolution",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:world-history",
+      "topic:enlightenment-scientific-revolution"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Globalization Contemporary World",
+    "url": "/subjects/social-studies/world-history/globalization-contemporary-world",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:world-history",
+      "topic:globalization-contemporary-world"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Imperialism Global Change",
+    "url": "/subjects/social-studies/world-history/imperialism-global-change",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:world-history",
+      "topic:imperialism-global-change"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Industrial Revolution",
+    "url": "/subjects/social-studies/world-history/industrial-revolution",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:world-history",
+      "topic:industrial-revolution"
     ],
     "source": "sitemap"
   },
@@ -1466,6 +5664,62 @@
     "source": "sitemap"
   },
   {
+    "title": "Renaissance Reformation",
+    "url": "/subjects/social-studies/world-history/renaissance-reformation",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:world-history",
+      "topic:renaissance-reformation"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Revolutions Era",
+    "url": "/subjects/social-studies/world-history/revolutions-era",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:world-history",
+      "topic:revolutions-era"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "World War I",
+    "url": "/subjects/social-studies/world-history/world-war-i",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:world-history",
+      "topic:world-war-i"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "World War Ii",
+    "url": "/subjects/social-studies/world-history/world-war-ii",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:world-history",
+      "topic:world-war-ii"
+    ],
+    "source": "sitemap"
+  },
+  {
     "title": "Submit",
     "url": "/submit",
     "type": "page",
@@ -1477,6 +5731,24 @@
   {
     "title": "Submit",
     "url": "/submit/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Teacher Tools",
+    "url": "/teacher-tools/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Terms",
+    "url": "/terms",
     "type": "page",
     "description": "",
     "subject": "",
@@ -1544,66 +5816,6 @@
     "source": "sitemap"
   },
   {
-    "title": "Kwl Chart",
-    "url": "/tools/graphic-organizers/kwl-chart/",
-    "type": "tool",
-    "description": "",
-    "subject": "",
-    "tags": [
-      "type:tool",
-      "format:tool",
-      "subject:all",
-      "platform:web",
-      "tool:kwl-chart"
-    ],
-    "source": "sitemap"
-  },
-  {
-    "title": "Venn Diagram",
-    "url": "/tools/graphic-organizers/venn-diagram/",
-    "type": "tool",
-    "description": "",
-    "subject": "",
-    "tags": [
-      "type:tool",
-      "format:tool",
-      "subject:all",
-      "platform:web",
-      "tool:venn-diagram"
-    ],
-    "source": "sitemap"
-  },
-  {
-    "title": "Frayer Model",
-    "url": "/tools/graphic-organizers/frayer-model/",
-    "type": "tool",
-    "description": "",
-    "subject": "",
-    "tags": [
-      "type:tool",
-      "format:tool",
-      "subject:all",
-      "platform:web",
-      "tool:frayer-model"
-    ],
-    "source": "sitemap"
-  },
-  {
-    "title": "T Chart",
-    "url": "/tools/graphic-organizers/t-chart/",
-    "type": "tool",
-    "description": "",
-    "subject": "",
-    "tags": [
-      "type:tool",
-      "format:tool",
-      "subject:all",
-      "platform:web",
-      "tool:t-chart"
-    ],
-    "source": "sitemap"
-  },
-  {
     "title": "Cause Effect",
     "url": "/tools/graphic-organizers/cause-effect/",
     "type": "tool",
@@ -1615,36 +5827,6 @@
       "subject:all",
       "platform:web",
       "tool:cause-effect"
-    ],
-    "source": "sitemap"
-  },
-  {
-    "title": "Main Idea Details",
-    "url": "/tools/graphic-organizers/main-idea-details/",
-    "type": "tool",
-    "description": "",
-    "subject": "",
-    "tags": [
-      "type:tool",
-      "format:tool",
-      "subject:all",
-      "platform:web",
-      "tool:main-idea-details"
-    ],
-    "source": "sitemap"
-  },
-  {
-    "title": "Sequence Chart",
-    "url": "/tools/graphic-organizers/sequence-chart/",
-    "type": "tool",
-    "description": "",
-    "subject": "",
-    "tags": [
-      "type:tool",
-      "format:tool",
-      "subject:all",
-      "platform:web",
-      "tool:sequence-chart"
     ],
     "source": "sitemap"
   },
@@ -1664,8 +5846,8 @@
     "source": "sitemap"
   },
   {
-    "title": "Story Plot Diagram",
-    "url": "/tools/graphic-organizers/story-plot-diagram/",
+    "title": "Frayer Model",
+    "url": "/tools/graphic-organizers/frayer-model/",
     "type": "tool",
     "description": "",
     "subject": "",
@@ -1674,7 +5856,37 @@
       "format:tool",
       "subject:all",
       "platform:web",
-      "tool:story-plot-diagram"
+      "tool:frayer-model"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Kwl Chart",
+    "url": "/tools/graphic-organizers/kwl-chart/",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:kwl-chart"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Main Idea Details",
+    "url": "/tools/graphic-organizers/main-idea-details/",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:main-idea-details"
     ],
     "source": "sitemap"
   },
@@ -1694,8 +5906,8 @@
     "source": "sitemap"
   },
   {
-    "title": "Vocabulary Organizer",
-    "url": "/tools/graphic-organizers/vocabulary-organizer/",
+    "title": "Sequence Chart",
+    "url": "/tools/graphic-organizers/sequence-chart/",
     "type": "tool",
     "description": "",
     "subject": "",
@@ -1704,7 +5916,37 @@
       "format:tool",
       "subject:all",
       "platform:web",
-      "tool:vocabulary-organizer"
+      "tool:sequence-chart"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Story Plot Diagram",
+    "url": "/tools/graphic-organizers/story-plot-diagram/",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:story-plot-diagram"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "T Chart",
+    "url": "/tools/graphic-organizers/t-chart/",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:t-chart"
     ],
     "source": "sitemap"
   },
@@ -1720,6 +5962,36 @@
       "subject:all",
       "platform:web",
       "tool:timeline-template"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Venn Diagram",
+    "url": "/tools/graphic-organizers/venn-diagram/",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:venn-diagram"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Vocabulary Organizer",
+    "url": "/tools/graphic-organizers/vocabulary-organizer/",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:vocabulary-organizer"
     ],
     "source": "sitemap"
   },
@@ -1750,6 +6022,21 @@
       "subject:all",
       "platform:web",
       "tool:name-picker"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Noise Meter",
+    "url": "/tools/noise-meter",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:noise-meter"
     ],
     "source": "sitemap"
   },
