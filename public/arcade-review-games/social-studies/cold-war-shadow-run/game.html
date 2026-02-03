@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="theme-color" content="#0f172a"/>
+  <title>Play Cold War: Shadow Run | Teach Arcade</title>
+  <meta name="description" content="Play Cold War: Shadow Run, a side-scrolling Cold War review game with checkpoints, stability scoring, and multiple-choice questions."/>
+  <link rel="canonical" href="https://teacharcade.com/arcade-review-games/social-studies/cold-war-shadow-run/game.html"/>
+  <meta property="og:title" content="Play Cold War: Shadow Run | Teach Arcade"/>
+  <meta property="og:description" content="Play a Cold War classroom side-scroller with checkpoints, questions, and a Stability meter."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://teacharcade.com/arcade-review-games/social-studies/cold-war-shadow-run/game.html"/>
+  <meta property="og:image" content="https://teacharcade.com/assets/images/teach-arcade-logo.png"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Play Cold War: Shadow Run | Teach Arcade"/>
+  <meta name="twitter:description" content="A Cold War classroom side-scroller with checkpoints, questions, and a Stability meter."/>
+  <meta name="twitter:image" content="https://teacharcade.com/assets/images/teach-arcade-logo.png"/>
+  <link rel="icon" href="/assets/images/teach-arcade-logo.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <div id="site-header"></div>
+  <script src="/assets/scripts/nav.js?v=5" defer></script>
+
+  <main class="page game-page">
+    <nav class="breadcrumbs">
+      <a href="/">Home</a> ›
+      <a href="/arcade-review-games/index.html">Arcade Review Games</a> ›
+      <a href="/arcade-review-games/social-studies/cold-war-shadow-run/">Cold War: Shadow Run</a>
+    </nav>
+
+    <header class="game-header">
+      <h1>Cold War: Shadow Run</h1>
+      <p>
+        Navigate the Berlin Sector, answer Cold War questions at surveillance zones, and keep Stability above 40 to
+        finish the mission.
+      </p>
+      <div class="game-actions">
+        <a class="btn btn-secondary" href="/arcade-review-games/index.html#subject-social-studies">Back to Social Studies Arcade Review Games</a>
+        <button class="btn btn-secondary" id="resetRun" type="button">Reset Run</button>
+        <button class="btn btn-secondary" id="muteToggle" type="button" aria-pressed="false">Mute: Off</button>
+      </div>
+    </header>
+
+    <div class="ad-slot ad-top" aria-label="Advertisement"></div>
+
+    <section class="game-shell" aria-label="Cold War: Shadow Run game area">
+      <div class="hud" aria-live="polite">
+        <div>Stability: <span id="stabilityValue">70</span></div>
+        <div>Intel Collected: <span id="intelValue">0</span></div>
+        <div>Zone: <span id="zoneValue">Berlin Sector</span></div>
+      </div>
+      <div class="canvas-wrap">
+        <canvas id="gameCanvas" width="960" height="540" aria-label="Cold War side-scroller game canvas"></canvas>
+        <div class="mobile-controls" aria-label="Touch controls">
+          <div class="control-group">
+            <button class="control-btn" id="leftBtn" aria-label="Move left">◀</button>
+            <button class="control-btn" id="rightBtn" aria-label="Move right">▶</button>
+          </div>
+          <div class="control-group">
+            <button class="control-btn" id="jumpBtn" aria-label="Jump">⤒</button>
+          </div>
+        </div>
+      </div>
+      <div class="instructions">
+        <p><strong>Desktop:</strong> Use ← → to move and Space to jump. <strong>Mobile:</strong> Use the on-screen buttons.</p>
+        <p>Surveillance zones pause the game. Answer correctly to gain Stability and intel.</p>
+      </div>
+    </section>
+
+    <div class="ad-slot ad-mid" aria-label="Advertisement"></div>
+
+    <section class="panel instructions">
+      <h2>How to Win</h2>
+      <p>
+        Reach the finish marker with Stability at 40 or higher. Checkpoints lock in progress, so keep Stability up by
+        answering questions accurately. If Stability drops too low, reset and try again.
+      </p>
+    </section>
+
+    <div class="ad-slot ad-bottom" aria-label="Advertisement"></div>
+  </main>
+
+  <section id="questionModal" class="overlay" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal">
+      <span id="questionStatus" class="status-pill">Surveillance Zone</span>
+      <h2 id="questionTitle">Cold War Checkpoint</h2>
+      <p id="questionText"></p>
+      <div id="choiceGrid" class="choice-grid" role="group" aria-label="Answer choices"></div>
+      <p id="questionFeedback" class="status-pill danger" hidden></p>
+    </div>
+  </section>
+
+  <section id="finishModal" class="overlay" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal">
+      <h2 id="finishTitle">Mission Complete</h2>
+      <p id="finishText"></p>
+      <div class="button-row">
+        <button class="btn btn-primary" id="playAgain" type="button">Run Again</button>
+        <a class="btn btn-secondary" href="/arcade-review-games/social-studies/cold-war-shadow-run/">Return to Landing Page</a>
+      </div>
+    </div>
+  </section>
+
+  <script src="game.js"></script>
+</body>
+</html>
