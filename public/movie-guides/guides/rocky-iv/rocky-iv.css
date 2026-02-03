@@ -86,6 +86,32 @@
   font-weight: 600;
 }
 
+.wh-pdf-controls {
+  align-items: center;
+}
+
+.wh-pdf-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font: 600 13px/1 Nunito, system-ui, sans-serif;
+  color: #334155;
+}
+
+.wh-pdf-toggle input {
+  accent-color: #2563eb;
+}
+
+.wh-pdf-hint {
+  font: 400 12px/1.4 Nunito, system-ui, sans-serif;
+  color: #64748b;
+}
+
+.wh-print-header,
+.wh-print-footer {
+  display: none;
+}
+
 @media (max-width: 640px) {
   .wh-cover img {
     max-height: 260px;
@@ -93,10 +119,20 @@
 }
 
 @media print {
+  @page {
+    margin: 0.75in 0.65in 0.9in;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  #site-header,
   .mg-breadcrumbs,
-  .mg-hero,
   .mg-guide-meta,
   .mg-note,
+  .wh-pdf-controls,
   .wh-cover,
   .ad-slot,
   .mg-cta-box,
@@ -104,9 +140,41 @@
     display: none !important;
   }
 
-  .wh-print {
+  .wh-print-header {
+    display: block;
+    font: 700 22px/1.2 Poppins, sans-serif;
+    margin: 0 0 18px;
+    color: #000;
+  }
+
+  .wh-print-footer {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font: 400 11px/1.3 Nunito, system-ui, sans-serif;
+    color: #000;
+  }
+
+  .mg-hero p,
+  .mg-hero h1,
+  .mg-guide-section p,
+  .mg-guide-section ul,
+  .mg-guide-section ol,
+  .mg-guide-section h2 {
+    color: #000;
+  }
+
+  .mg-guide-section {
     break-inside: avoid;
     page-break-inside: avoid;
+  }
+
+  .wh-print {
+    break-before: page;
+    page-break-before: always;
   }
 
   .wh-print,
@@ -118,5 +186,28 @@
 
   .wh-table {
     overflow: visible;
+  }
+
+  .wh-table table {
+    min-width: 0;
+    width: 100%;
+    table-layout: fixed;
+  }
+
+  .wh-table th,
+  .wh-table td {
+    word-break: break-word;
+  }
+
+  body.print-show-answers .wh-teacher-only {
+    display: block !important;
+  }
+
+  body.print-show-answers .wh-teacher-only summary {
+    display: none !important;
+  }
+
+  body.print-show-answers .wh-teacher-only details > *:not(summary) {
+    display: block !important;
   }
 }

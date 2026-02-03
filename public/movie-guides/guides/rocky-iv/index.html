@@ -67,6 +67,7 @@
   <script src="/assets/scripts/nav.js?v=5" defer></script>
 
   <main class="container">
+    <div class="wh-print-header" aria-hidden="true">Teacher Guide – Rocky IV</div>
     <nav class="breadcrumbs mg-breadcrumbs">
       <a href="/">Home</a> › <a href="/movie-guides/">Movie Guides</a> › <a href="/movie-guides/subjects/social-studies/">Social Studies</a> › Rocky IV
     </nav>
@@ -81,6 +82,14 @@
         <span class="mg-pill">Subject Area: U.S. History / Cold War / Media Literacy</span>
         <span class="mg-pill">Grade Levels: Middle + High School</span>
         <span class="mg-pill">Focus Topics: Propaganda, Nationalism, Media Bias, Sports &amp; Politics</span>
+      </div>
+      <div class="mg-cta-row wh-pdf-controls">
+        <button class="mg-btn" type="button" id="download-pdf">Download PDF</button>
+        <label class="wh-pdf-toggle" for="print-answers-toggle">
+          <input type="checkbox" id="print-answers-toggle" />
+          Include Answer Key
+        </label>
+        <span class="wh-pdf-hint">Opens print view—choose Save as PDF</span>
       </div>
       <p class="mg-note">Print-friendly: Student sections are styled for easy handouts or slides.</p>
     </section>
@@ -304,6 +313,38 @@
     </section>
 
     <div class="ad-slot ad-bottom" aria-label="Advertisement"></div>
+    <div class="wh-print-footer" aria-hidden="true">
+      TeachArcade.com <span id="print-date"></span>
+    </div>
   </main>
+  <script>
+    const printButton = document.getElementById('download-pdf');
+    const printToggle = document.getElementById('print-answers-toggle');
+    const printDate = document.getElementById('print-date');
+    const originalTitle = document.title;
+
+    const handleAfterPrint = () => {
+      document.body.classList.remove('print-show-answers');
+      document.title = originalTitle;
+    };
+
+    window.addEventListener('afterprint', handleAfterPrint);
+
+    printButton.addEventListener('click', () => {
+      if (printToggle.checked) {
+        document.body.classList.add('print-show-answers');
+      } else {
+        document.body.classList.remove('print-show-answers');
+      }
+
+      if (printDate) {
+        const now = new Date();
+        printDate.textContent = `• ${now.toLocaleDateString()}`;
+      }
+
+      document.title = 'Teacher Guide - Rocky IV (Teach Arcade)';
+      window.print();
+    });
+  </script>
 </body>
 </html>
