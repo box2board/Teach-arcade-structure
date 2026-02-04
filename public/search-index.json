@@ -18,19 +18,6 @@
     "source": "sitemap"
   },
   {
-    "title": "Bell Ringers & Exit Tickets",
-    "url": "/classroom/bell-ringers-exit-tickets/",
-    "type": "page",
-    "description": "Fast, classroom-ready prompts for warm-ups and quick closure.",
-    "subject": "",
-    "tags": [
-      "type:page",
-      "category:classroom",
-      "topic:bell-ringers-exit-tickets"
-    ],
-    "source": "sitemap"
-  },
-  {
     "title": "Arcade Review Games",
     "url": "/arcade-review-games/",
     "type": "game",
@@ -305,6 +292,15 @@
   {
     "title": "Brain Arcade",
     "url": "/brain-arcade/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Bell Ringers Exit Tickets",
+    "url": "/classroom/bell-ringers-exit-tickets/",
     "type": "page",
     "description": "",
     "subject": "",
