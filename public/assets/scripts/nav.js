@@ -406,4 +406,151 @@
   document.addEventListener("keydown", e => {
     if (e.key === "Escape") closeMenu();
   });
+
+  /* =========================
+     INTERACTIVE EXPERIENCES
+     ========================= */
+  const shouldRenderInteractiveSection = () => {
+    const path = window.location.pathname;
+    if (path === "/subjects/" || path === "/subjects/index.html") return false;
+    return path.startsWith("/subjects/") || path.startsWith("/topics/");
+  };
+
+  const getSubjectAndTopicSlugs = () => {
+    const segments = window.location.pathname.split("/").filter(Boolean);
+    if (!segments.length) return { subjectSlug: null, topicSlug: null };
+
+    if (segments[0] === "topics") {
+      const topicSlug = (segments[1] || "").replace(/\\.html$/, "") || null;
+      return { subjectSlug: null, topicSlug };
+    }
+
+    if (segments[0] !== "subjects") return { subjectSlug: null, topicSlug: null };
+
+    const subjectSegments = segments.slice(1);
+    if (!subjectSegments.length) return { subjectSlug: null, topicSlug: null };
+
+    const lastSegment = subjectSegments[subjectSegments.length - 1];
+    const isIndex = lastSegment === "index.html";
+    const hasExtension = lastSegment.includes(".html");
+
+    if (!hasExtension && !isIndex) {
+      return { subjectSlug: lastSegment, topicSlug: null };
+    }
+
+    const subjectSlug = subjectSegments.length >= 2
+      ? subjectSegments[subjectSegments.length - 2].replace(/\\.html$/, "")
+      : subjectSegments[0].replace(/\\.html$/, "");
+    const topicSlug = isIndex ? null : lastSegment.replace(/\\.html$/, "");
+
+    return { subjectSlug, topicSlug };
+  };
+
+  const buildInteractiveCard = (item) => {
+    const typeLabels = {
+      game: "Game",
+      "escape-room": "Escape Room",
+      simulation: "Simulation",
+      activity: "Activity",
+    };
+
+    const card = document.createElement("article");
+    card.className = "interactive-card";
+
+    const thumb = document.createElement("div");
+    thumb.className = "interactive-thumb";
+    const img = document.createElement("img");
+    img.src = item.thumbnail;
+    img.alt = item.title;
+    img.loading = "lazy";
+    thumb.appendChild(img);
+
+    const body = document.createElement("div");
+    body.className = "interactive-card-body";
+
+    const badge = document.createElement("span");
+    badge.className = "interactive-type";
+    badge.textContent = typeLabels[item.type] || "Interactive";
+
+    const title = document.createElement("h3");
+    title.textContent = item.title;
+
+    const desc = document.createElement("p");
+    desc.textContent = item.description;
+
+    body.appendChild(badge);
+    body.appendChild(title);
+    body.appendChild(desc);
+
+    const footer = document.createElement("div");
+    footer.className = "interactive-card-footer";
+    const cta = document.createElement("a");
+    cta.className = "cta";
+    cta.href = item.canonicalUrl;
+    cta.textContent = "Play in Arcade";
+    footer.appendChild(cta);
+
+    card.appendChild(thumb);
+    card.appendChild(body);
+    card.appendChild(footer);
+
+    return card;
+  };
+
+  const renderInteractiveSection = async () => {
+    if (!shouldRenderInteractiveSection()) return;
+    const main = document.querySelector("main.container") || document.querySelector("main");
+    if (!main || document.getElementById("interactive-learning-experiences")) return;
+
+    const { subjectSlug, topicSlug } = getSubjectAndTopicSlugs();
+    if (!subjectSlug && !topicSlug) return;
+
+    try {
+      const response = await fetch("/data/interactiveContent.json", { cache: "force-cache" });
+      if (!response.ok) return;
+      const data = await response.json();
+      const matches = data.filter(item => {
+        const subjectMatch = subjectSlug && Array.isArray(item.subjects) && item.subjects.includes(subjectSlug);
+        const topicMatch = topicSlug && Array.isArray(item.topics) && item.topics.includes(topicSlug);
+        return subjectMatch || topicMatch;
+      });
+
+      const uniqueMatches = Array.from(new Map(matches.map(item => [item.id, item])).values());
+      if (!uniqueMatches.length) return;
+
+      const section = document.createElement("section");
+      section.className = "interactive-section";
+      section.id = "interactive-learning-experiences";
+      section.setAttribute("aria-labelledby", "interactive-learning-experiences-title");
+
+      const header = document.createElement("div");
+      header.className = "interactive-header";
+
+      const title = document.createElement("h2");
+      title.id = "interactive-learning-experiences-title";
+      title.textContent = "Interactive Learning Experiences";
+
+      const subtitle = document.createElement("p");
+      subtitle.textContent = "Games, simulations, and challenges aligned to this topic.";
+
+      header.appendChild(title);
+      header.appendChild(subtitle);
+
+      const grid = document.createElement("div");
+      grid.className = "interactive-grid";
+
+      uniqueMatches.forEach(item => {
+        grid.appendChild(buildInteractiveCard(item));
+      });
+
+      section.appendChild(header);
+      section.appendChild(grid);
+
+      main.appendChild(section);
+    } catch (error) {
+      console.warn("Interactive experiences failed to load.", error);
+    }
+  };
+
+  renderInteractiveSection();
 })();
