@@ -3,7 +3,6 @@
     "id": "wwi-trench-run",
     "title": "WWI Trench Run",
     "type": "game",
-    "format": "side-scroller",
     "canonicalUrl": "/arcade-review-games/social-studies/wwi-trench-run.html",
     "subjects": [
       "us-history",
@@ -12,18 +11,15 @@
     "topics": [
       "world-war-i"
     ],
-    "grades": [
-      "6-8",
-      "9-12"
-    ],
-    "description": "Dash through the trenches and answer WWI questions on causes, trench warfare, U.S. involvement, and the Treaty of Versailles.",
-    "thumbnail": "/assets/images/teach-arcade-logo.png"
+    "blurb": "Dash through the trenches and answer WWI questions on causes, trench warfare, U.S. involvement, and the Treaty of Versailles.",
+    "duration": "15–25 minutes",
+    "deviceNotes": "Works on Chromebooks & iPads",
+    "icon": ""
   },
   {
     "id": "wwi-trench-run-v2",
     "title": "WWI Trench Run v2",
     "type": "game",
-    "format": "side-scroller",
     "canonicalUrl": "/arcade-review-games/social-studies/wwi-trench-run-v2/",
     "subjects": [
       "us-history",
@@ -32,18 +28,15 @@
     "topics": [
       "world-war-i"
     ],
-    "grades": [
-      "6-8",
-      "9-12"
-    ],
-    "description": "An upgraded trench sprint with teacher settings, relay mode, and adaptive World War I review questions.",
-    "thumbnail": "/assets/images/teach-arcade-logo.png"
+    "blurb": "An upgraded trench sprint with teacher settings, relay mode, and adaptive World War I review questions.",
+    "duration": "20–35 minutes",
+    "deviceNotes": "Works on Chromebooks & iPads",
+    "icon": ""
   },
   {
     "id": "pyramid-escape-run",
     "title": "Pyramid Escape Run — Ancient Egypt",
     "type": "game",
-    "format": "side-scroller",
     "canonicalUrl": "/arcade-review-games/social-studies/pyramid-escape-run.html",
     "subjects": [
       "world-history"
@@ -51,18 +44,15 @@
     "topics": [
       "early-humans-river-valleys"
     ],
-    "grades": [
-      "6-8",
-      "9-12"
-    ],
-    "description": "Race through pyramid tunnels while reviewing the Nile River, pharaohs, pyramids, religion, and daily life in Ancient Egypt.",
-    "thumbnail": "/assets/images/teach-arcade-logo.png"
+    "blurb": "Race through pyramid tunnels while reviewing the Nile River, pharaohs, pyramids, religion, and daily life in Ancient Egypt.",
+    "duration": "15–25 minutes",
+    "deviceNotes": "Works on Chromebooks & iPads",
+    "icon": ""
   },
   {
     "id": "cold-war-shadow-run",
     "title": "Cold War: Shadow Run",
     "type": "game",
-    "format": "side-scroller",
     "canonicalUrl": "/arcade-review-games/social-studies/cold-war-shadow-run/",
     "subjects": [
       "us-history",
@@ -72,38 +62,32 @@
       "cold-war",
       "cold-war-decolonization"
     ],
-    "grades": [
-      "7-10",
-      "9-12"
-    ],
-    "description": "A side-scrolling Cold War adventure with checkpoints, questions, and a stability meter that tracks global tension.",
-    "thumbnail": "/assets/images/teach-arcade-logo.png"
+    "blurb": "A side-scrolling Cold War adventure with checkpoints, questions, and a stability meter that tracks global tension.",
+    "duration": "20–35 minutes",
+    "deviceNotes": "Works on Chromebooks & iPads",
+    "icon": ""
   },
   {
     "id": "constitution-courthouse-run",
     "title": "Constitution Courthouse Run — U.S. Constitution",
     "type": "game",
-    "format": "maze",
     "canonicalUrl": "/arcade-review-games/social-studies/constitution-courthouse-run.html",
     "subjects": [
       "government-political-science",
       "us-history"
     ],
     "topics": [
-      "us-constitution"
+      "constitution"
     ],
-    "grades": [
-      "6-8",
-      "9-12"
-    ],
-    "description": "Navigate a courthouse maze and answer questions about the Constitution, Bill of Rights, and checks & balances.",
-    "thumbnail": "/assets/images/teach-arcade-logo.png"
+    "blurb": "Navigate a courthouse maze and answer questions about the Constitution, Bill of Rights, and checks & balances.",
+    "duration": "15–25 minutes",
+    "deviceNotes": "Works on Chromebooks & iPads",
+    "icon": ""
   },
   {
     "id": "progressive-era-sky-climb",
     "title": "Progressive Era Sky Climb",
     "type": "game",
-    "format": "platformer",
     "canonicalUrl": "/arcade-review-games/social-studies/progressive-era-sky-climb.html",
     "subjects": [
       "us-history"
@@ -111,18 +95,15 @@
     "topics": [
       "progressive-era-imperialism"
     ],
-    "grades": [
-      "7-10",
-      "9-12"
-    ],
-    "description": "A vertical platformer review game on the Progressive Era. Jump between rooftops and answer 15 questions to reach the top.",
-    "thumbnail": "/assets/images/teach-arcade-logo.png"
+    "blurb": "A vertical platformer review game on the Progressive Era. Jump between rooftops and answer 15 questions to reach the top.",
+    "duration": "15–25 minutes",
+    "deviceNotes": "Works on Chromebooks & iPads",
+    "icon": ""
   },
   {
     "id": "world-war-ii-review-adventure",
     "title": "World War II Review Adventure",
     "type": "game",
-    "format": "adventure",
     "canonicalUrl": "/arcade-review-games/adventure-review-wwii/",
     "subjects": [
       "us-history",
@@ -131,18 +112,15 @@
     "topics": [
       "world-war-ii"
     ],
-    "grades": [
-      "7-10",
-      "9-12"
-    ],
-    "description": "Navigate jungle ruins, unlock chests, and review World War II topics in a classroom-ready adventure.",
-    "thumbnail": "/assets/images/teach-arcade-logo.png"
+    "blurb": "Navigate jungle ruins, unlock chests, and review World War II topics in a classroom-ready adventure.",
+    "duration": "20–35 minutes",
+    "deviceNotes": "Works on Chromebooks & iPads",
+    "icon": ""
   },
   {
     "id": "moon-mission-run",
     "title": "Moon Mission Run",
     "type": "game",
-    "format": "side-scroller",
     "canonicalUrl": "/arcade-review-games/science/moon-mission-run.html",
     "subjects": [
       "earth-space-science"
@@ -150,18 +128,15 @@
     "topics": [
       "earth-sun-moon-systems"
     ],
-    "grades": [
-      "6-8",
-      "9-12"
-    ],
-    "description": "Bounce across the lunar surface and answer questions on gravity, moon phases, tides, seasons, and orbits.",
-    "thumbnail": "/assets/images/teach-arcade-logo.png"
+    "blurb": "Bounce across the lunar surface and answer questions on gravity, moon phases, tides, seasons, and orbits.",
+    "duration": "15–25 minutes",
+    "deviceNotes": "Works on Chromebooks & iPads",
+    "icon": ""
   },
   {
     "id": "concept-stack-cells",
     "title": "Concept Stack: Cells",
     "type": "game",
-    "format": "puzzle",
     "canonicalUrl": "/arcade-review-games/science/concept-stack-cells/",
     "subjects": [
       "biology"
@@ -170,18 +145,15 @@
       "cell-structure-function",
       "cells-structure-function"
     ],
-    "grades": [
-      "6-8",
-      "9-12"
-    ],
-    "description": "Stack organelle prompts into the right columns for a Tetris-style review of cell structure and function.",
-    "thumbnail": "/assets/images/teach-arcade-logo.png"
+    "blurb": "Stack organelle prompts into the right columns for a Tetris-style review of cell structure and function.",
+    "duration": "15–25 minutes",
+    "deviceNotes": "Works on Chromebooks & iPads",
+    "icon": ""
   },
   {
     "id": "scientific-method-maze",
     "title": "Scientific Method Maze",
     "type": "game",
-    "format": "maze",
     "canonicalUrl": "/arcade-review-games/science/scientific-method.html",
     "subjects": [
       "biology"
@@ -189,18 +161,15 @@
     "topics": [
       "scientific-method-introduction-to-biology"
     ],
-    "grades": [
-      "6-8",
-      "9-12"
-    ],
-    "description": "Guide a student through a pixel maze while reviewing the scientific method, variables, hypotheses, and lab safety.",
-    "thumbnail": "/assets/images/teach-arcade-logo.png"
+    "blurb": "Guide a student through a pixel maze while reviewing the scientific method, variables, hypotheses, and lab safety.",
+    "duration": "15–25 minutes",
+    "deviceNotes": "Works on Chromebooks & iPads",
+    "icon": ""
   },
   {
     "id": "algebra-city-run",
     "title": "Algebra City Run",
     "type": "game",
-    "format": "side-scroller",
     "canonicalUrl": "/arcade-review-games/math/algebra-city-run.html",
     "subjects": [
       "middle-school-math",
@@ -210,18 +179,15 @@
       "expressions-equations",
       "algebra-1"
     ],
-    "grades": [
-      "6-8",
-      "9-12"
-    ],
-    "description": "Race across neon rooftops while reviewing algebra essentials: expressions, equations, inequalities, and variables.",
-    "thumbnail": "/assets/images/teach-arcade-logo.png"
+    "blurb": "Race across neon rooftops while reviewing algebra essentials: expressions, equations, inequalities, and variables.",
+    "duration": "15–25 minutes",
+    "deviceNotes": "Works on Chromebooks & iPads",
+    "icon": ""
   },
   {
     "id": "slope-street-sprint",
     "title": "Slope Street Sprint — Slope & Linear Functions",
     "type": "game",
-    "format": "side-scroller",
     "canonicalUrl": "/arcade-review-games/math/slope-street-sprint.html",
     "subjects": [
       "middle-school-math",
@@ -230,18 +196,15 @@
     "topics": [
       "slope-linear-relationships"
     ],
-    "grades": [
-      "6-8",
-      "9-12"
-    ],
-    "description": "Race up and down digital hills while reviewing slope, y-intercept, rate of change, and linear functions.",
-    "thumbnail": "/assets/images/teach-arcade-logo.png"
+    "blurb": "Race up and down digital hills while reviewing slope, y-intercept, rate of change, and linear functions.",
+    "duration": "15–25 minutes",
+    "deviceNotes": "Works on Chromebooks & iPads",
+    "icon": ""
   },
   {
     "id": "math-track-racer",
     "title": "Math Track Racer",
     "type": "game",
-    "format": "racing",
     "canonicalUrl": "/arcade-review-games/math/math-track-racer.html",
     "subjects": [
       "k-5-math",
@@ -252,18 +215,15 @@
       "multiplication-division",
       "integer-operations"
     ],
-    "grades": [
-      "2-5",
-      "6-8"
-    ],
-    "description": "A racing-style math review game where students steer into the correct answer for operations practice.",
-    "thumbnail": "/assets/images/teach-arcade-logo.png"
+    "blurb": "A racing-style math review game where students steer into the correct answer for operations practice.",
+    "duration": "10–20 minutes",
+    "deviceNotes": "Works on Chromebooks & iPads",
+    "icon": ""
   },
   {
     "id": "math-rush-genesis-addition",
     "title": "Math Rush Genesis — Addition Zone",
     "type": "game",
-    "format": "side-scroller",
     "canonicalUrl": "/arcade-review-games/math/math-rush-genesis-addition.html",
     "subjects": [
       "k-5-math"
@@ -271,17 +231,15 @@
     "topics": [
       "addition-subtraction"
     ],
-    "grades": [
-      "2-5"
-    ],
-    "description": "Sprint through a 16-bit arcade while practicing addition facts and building streak bonuses.",
-    "thumbnail": "/assets/images/teach-arcade-logo.png"
+    "blurb": "Sprint through a 16-bit arcade while practicing addition facts and building streak bonuses.",
+    "duration": "10–20 minutes",
+    "deviceNotes": "Works on Chromebooks & iPads",
+    "icon": ""
   },
   {
     "id": "grammar-gauntlet",
     "title": "Grammar Gauntlet",
     "type": "game",
-    "format": "side-scroller",
     "canonicalUrl": "/arcade-review-games/ela/grammar-gauntlet.html",
     "subjects": [
       "ela",
@@ -292,18 +250,15 @@
       "punctuation-commas-quotes",
       "capitalization-rules"
     ],
-    "grades": [
-      "6-8",
-      "9-12"
-    ],
-    "description": "Race across the notebook page while answering grammar and mechanics questions on parts of speech and usage.",
-    "thumbnail": "/assets/images/teach-arcade-logo.png"
+    "blurb": "Race across the notebook page while answering grammar and mechanics questions on parts of speech and usage.",
+    "duration": "15–25 minutes",
+    "deviceNotes": "Works on Chromebooks & iPads",
+    "icon": ""
   },
   {
     "id": "undertext-rifts-mood-tone",
     "title": "Undertext Rifts — Mood & Tone",
     "type": "game",
-    "format": "adventure",
     "canonicalUrl": "/arcade-review-games/ela/undertext-rifts-mood-tone.html",
     "subjects": [
       "ela",
@@ -312,11 +267,9 @@
     "topics": [
       "mood-tone"
     ],
-    "grades": [
-      "6-8",
-      "9-12"
-    ],
-    "description": "Explore a glitchy middle school and stabilize rifts by identifying the mood and tone of reading passages.",
-    "thumbnail": "/assets/images/teach-arcade-logo.png"
+    "blurb": "Explore a glitchy middle school and stabilize rifts by identifying the mood and tone of reading passages.",
+    "duration": "20–35 minutes",
+    "deviceNotes": "Works on Chromebooks & iPads",
+    "icon": ""
   }
 ]
