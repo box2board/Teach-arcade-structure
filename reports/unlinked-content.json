@@ -1,0 +1,507 @@
+{
+  "generatedAt": "2026-02-05T05:00:28.238Z",
+  "missingTopics": [
+    {
+      "id": "grammar-gauntlet.html",
+      "title": "Teach Arcade · Grammar Gauntlet",
+      "canonicalUrl": "/arcade-review-games/ela/grammar-gauntlet.html"
+    },
+    {
+      "id": "undertext-rifts-mood-tone.html",
+      "title": "Mood & Tone: Undertext Flip · ELA Arcade Game | Teach Arcade",
+      "canonicalUrl": "/arcade-review-games/ela/undertext-rifts-mood-tone.html"
+    },
+    {
+      "id": "algebra-city-run.html",
+      "title": "Algebra City Run · Free Algebra Review Game | Teach Arcade",
+      "canonicalUrl": "/arcade-review-games/math/algebra-city-run.html"
+    },
+    {
+      "id": "math-rush-genesis-addition.html",
+      "title": "Math Rush Genesis — Addition | Teach Arcade",
+      "canonicalUrl": "/arcade-review-games/math/math-rush-genesis-addition.html"
+    },
+    {
+      "id": "math-track-racer.html",
+      "title": "Math Track Racer · Teach Arcade",
+      "canonicalUrl": "/arcade-review-games/math/math-track-racer.html"
+    },
+    {
+      "id": "slope-street-sprint.html",
+      "title": "Slope Street Sprint · Free Slope & Linear Functions Game | Teach Arcade",
+      "canonicalUrl": "/arcade-review-games/math/slope-street-sprint.html"
+    },
+    {
+      "id": "concept-stack-cells",
+      "title": "Concept Stack: Cells (Middle &amp; High School) | Teach Arcade",
+      "canonicalUrl": "/arcade-review-games/science/concept-stack-cells/"
+    },
+    {
+      "id": "moon-mission-run.html",
+      "title": "Moon Mission Run · Earth &amp; Space Science Review Game | Teach Arcade",
+      "canonicalUrl": "/arcade-review-games/science/moon-mission-run.html"
+    },
+    {
+      "id": "scientific-method.html",
+      "title": "Classroom Review Maze | Teach Arcade",
+      "canonicalUrl": "/arcade-review-games/science/scientific-method.html"
+    },
+    {
+      "id": "constitution-courthouse-run.html",
+      "title": "Constitution Courthouse Run · U.S. Constitution Review Game | Teach Arcade",
+      "canonicalUrl": "/arcade-review-games/social-studies/constitution-courthouse-run.html"
+    },
+    {
+      "id": "progressive-era-sky-climb.html",
+      "title": "Progressive Era Sky Climb — U.S. History Vertical Platformer",
+      "canonicalUrl": "/arcade-review-games/social-studies/progressive-era-sky-climb.html"
+    },
+    {
+      "id": "pyramid-escape-run.html",
+      "title": "Pyramid Escape Run · Ancient Egypt Game | Teach Arcade",
+      "canonicalUrl": "/arcade-review-games/social-studies/pyramid-escape-run.html"
+    },
+    {
+      "id": "apprentice-restorer",
+      "title": "Apprentice Restorer | Teach Arcade Brain Arcade Flagship",
+      "canonicalUrl": "/brain-arcade/apprentice-restorer/"
+    },
+    {
+      "id": "block-logic",
+      "title": "Block Logic",
+      "canonicalUrl": "/brain-arcade/block-logic/"
+    },
+    {
+      "id": "brain-crush",
+      "title": "Brain Crush (Match-3) | Teach Arcade",
+      "canonicalUrl": "/brain-arcade/brain-crush/"
+    },
+    {
+      "id": "checkers",
+      "title": "Free Online Checkers Game | Brain Arcade · Teach Arcade",
+      "canonicalUrl": "/brain-arcade/checkers/"
+    },
+    {
+      "id": "chess",
+      "title": "Brain Arcade · Chess",
+      "canonicalUrl": "/brain-arcade/chess/"
+    },
+    {
+      "id": "tests.html",
+      "title": "Chess Engine Tests",
+      "canonicalUrl": "/brain-arcade/chess/tests.html"
+    },
+    {
+      "id": "crossword.html",
+      "title": "Crossword.Html | Teach Arcade",
+      "canonicalUrl": "/brain-arcade/crossword.html"
+    },
+    {
+      "id": "jigsaw-puzzle",
+      "title": "Jigsaw Puzzle (Coming Soon) | Brain Arcade | Teach Arcade",
+      "canonicalUrl": "/brain-arcade/jigsaw-puzzle/"
+    },
+    {
+      "id": "game.html",
+      "title": "Play Sequence Breaker | Brain Arcade | Teach Arcade",
+      "canonicalUrl": "/brain-arcade/sequence-breaker/game.html"
+    },
+    {
+      "id": "sequence-breaker",
+      "title": "Sequence Breaker | Brain Arcade | Teach Arcade",
+      "canonicalUrl": "/brain-arcade/sequence-breaker/"
+    },
+    {
+      "id": "game.html",
+      "title": "Play Slide &amp; Snap | Brain Arcade | Teach Arcade",
+      "canonicalUrl": "/brain-arcade/slide-and-snap/game.html"
+    },
+    {
+      "id": "slide-and-snap",
+      "title": "Slide &amp; Snap (Sliding Puzzle) | Brain Arcade | Teach Arcade",
+      "canonicalUrl": "/brain-arcade/slide-and-snap/"
+    },
+    {
+      "id": "solitaire.html",
+      "title": "Solitaire (Klondike) · Web Game",
+      "canonicalUrl": "/brain-arcade/solitaire.html"
+    },
+    {
+      "id": "sudoku",
+      "title": "Sudoku · Brain Arcade | Teach Arcade",
+      "canonicalUrl": "/brain-arcade/sudoku/"
+    },
+    {
+      "id": "word-grid",
+      "title": "Word Grid | Teach Arcade Brain Arcade",
+      "canonicalUrl": "/brain-arcade/word-grid/"
+    },
+    {
+      "id": "word-search",
+      "title": "Word Search · Brain Arcade | Teach Arcade",
+      "canonicalUrl": "/brain-arcade/word-search/"
+    },
+    {
+      "id": "ela",
+      "title": "Knowledge Expedition: ELA | Teach Arcade",
+      "canonicalUrl": "/games/knowledge-expedition/ela/"
+    },
+    {
+      "id": "math",
+      "title": "Knowledge Expedition: Math | Teach Arcade",
+      "canonicalUrl": "/games/knowledge-expedition/math/"
+    },
+    {
+      "id": "science",
+      "title": "Knowledge Expedition: Science | Teach Arcade",
+      "canonicalUrl": "/games/knowledge-expedition/science/"
+    },
+    {
+      "id": "buzzer.html",
+      "title": "Quiz Buzzer | Teacher Tools | Teach Arcade",
+      "canonicalUrl": "/tools/buzzer.html"
+    },
+    {
+      "id": "flashcards.html",
+      "title": "Flashcard Studio | Teach Arcade",
+      "canonicalUrl": "/tools/flashcards.html"
+    },
+    {
+      "id": "cause-effect",
+      "title": "Cause and Effect Organizer | Teach Arcade Graphic Organizer",
+      "canonicalUrl": "/tools/graphic-organizers/cause-effect/"
+    },
+    {
+      "id": "character-map",
+      "title": "Character Map Template | Teach Arcade",
+      "canonicalUrl": "/tools/graphic-organizers/character-map/"
+    },
+    {
+      "id": "frayer-model",
+      "title": "Frayer Model Template | Teach Arcade Graphic Organizer",
+      "canonicalUrl": "/tools/graphic-organizers/frayer-model/"
+    },
+    {
+      "id": "graphic-organizers",
+      "title": "Free Printable Graphic Organizers for the Classroom | Teach Arcade",
+      "canonicalUrl": "/tools/graphic-organizers/"
+    },
+    {
+      "id": "kwl-chart",
+      "title": "KWL Chart Template | Free Printable Graphic Organizer – Teach Arcade",
+      "canonicalUrl": "/tools/graphic-organizers/kwl-chart/"
+    },
+    {
+      "id": "main-idea-details",
+      "title": "Main Idea and Details Organizer | Teach Arcade",
+      "canonicalUrl": "/tools/graphic-organizers/main-idea-details/"
+    },
+    {
+      "id": "pros-cons",
+      "title": "Pros and Cons Organizer | Teach Arcade",
+      "canonicalUrl": "/tools/graphic-organizers/pros-cons/"
+    },
+    {
+      "id": "sequence-chart",
+      "title": "Sequence Chart Template | Teach Arcade",
+      "canonicalUrl": "/tools/graphic-organizers/sequence-chart/"
+    },
+    {
+      "id": "story-plot-diagram",
+      "title": "Story Plot Diagram (Freytag) | Teach Arcade",
+      "canonicalUrl": "/tools/graphic-organizers/story-plot-diagram/"
+    },
+    {
+      "id": "t-chart",
+      "title": "T-Chart Template | Teach Arcade Graphic Organizer",
+      "canonicalUrl": "/tools/graphic-organizers/t-chart/"
+    },
+    {
+      "id": "timeline-template",
+      "title": "Timeline Template | Teach Arcade",
+      "canonicalUrl": "/tools/graphic-organizers/timeline-template/"
+    },
+    {
+      "id": "venn-diagram",
+      "title": "Venn Diagram Template | Teach Arcade Graphic Organizer",
+      "canonicalUrl": "/tools/graphic-organizers/venn-diagram/"
+    },
+    {
+      "id": "vocabulary-organizer",
+      "title": "Vocabulary Organizer Template | Teach Arcade",
+      "canonicalUrl": "/tools/graphic-organizers/vocabulary-organizer/"
+    },
+    {
+      "id": "group-maker.html",
+      "title": "Random Group Maker | Teacher Tools | Teach Arcade",
+      "canonicalUrl": "/tools/group-maker.html"
+    },
+    {
+      "id": "name-picker.html",
+      "title": "Random Name Picker | Teach Arcade",
+      "canonicalUrl": "/tools/name-picker.html"
+    },
+    {
+      "id": "noise-meter.html",
+      "title": "Noise Meter.Html | Teach Arcade",
+      "canonicalUrl": "/tools/noise-meter.html"
+    },
+    {
+      "id": "prompt-generator.html",
+      "title": "Prompt Generator | Teacher Tools | Teach Arcade",
+      "canonicalUrl": "/tools/prompt-generator.html"
+    },
+    {
+      "id": "text-randomizer.html",
+      "title": "Text Randomizer | Teacher Tools | Teach Arcade",
+      "canonicalUrl": "/tools/text-randomizer.html"
+    },
+    {
+      "id": "timer.html",
+      "title": "Timer & Stopwatch | Teach Arcade",
+      "canonicalUrl": "/tools/timer.html"
+    },
+    {
+      "id": "wheel.html",
+      "title": "Wheel Spinner for Classroom Random Picker | Teach Arcade",
+      "canonicalUrl": "/tools/wheel.html"
+    },
+    {
+      "id": "cuban-missile-crisis.html",
+      "title": "13 Days — Visual Style Mockups",
+      "canonicalUrl": "/choose-your-path-adventure/cuban-missile-crisis.html"
+    },
+    {
+      "id": "amistad",
+      "title": "Amistad Movie Guide | Teach Arcade",
+      "canonicalUrl": "/movie-guides/guides/amistad/"
+    },
+    {
+      "id": "flags-of-our-fathers",
+      "title": "Flags of Our Fathers Movie Guide | Teach Arcade",
+      "canonicalUrl": "/movie-guides/guides/flags-of-our-fathers/"
+    },
+    {
+      "id": "schindlers-list",
+      "title": "Teacher Guide – Schindler’s List | Teach Arcade",
+      "canonicalUrl": "/movie-guides/guides/schindlers-list/"
+    },
+    {
+      "id": "wwi",
+      "title": "Escape from the Trenches (WWI)",
+      "canonicalUrl": "/escape/?room=wwi"
+    }
+  ],
+  "missingSubjects": [
+    {
+      "id": "grammar-gauntlet.html",
+      "title": "Teach Arcade · Grammar Gauntlet",
+      "canonicalUrl": "/arcade-review-games/ela/grammar-gauntlet.html"
+    },
+    {
+      "id": "constitution-courthouse-run.html",
+      "title": "Constitution Courthouse Run · U.S. Constitution Review Game | Teach Arcade",
+      "canonicalUrl": "/arcade-review-games/social-studies/constitution-courthouse-run.html"
+    },
+    {
+      "id": "progressive-era-sky-climb.html",
+      "title": "Progressive Era Sky Climb — U.S. History Vertical Platformer",
+      "canonicalUrl": "/arcade-review-games/social-studies/progressive-era-sky-climb.html"
+    },
+    {
+      "id": "pyramid-escape-run.html",
+      "title": "Pyramid Escape Run · Ancient Egypt Game | Teach Arcade",
+      "canonicalUrl": "/arcade-review-games/social-studies/pyramid-escape-run.html"
+    },
+    {
+      "id": "block-logic",
+      "title": "Block Logic",
+      "canonicalUrl": "/brain-arcade/block-logic/"
+    },
+    {
+      "id": "brain-crush",
+      "title": "Brain Crush (Match-3) | Teach Arcade",
+      "canonicalUrl": "/brain-arcade/brain-crush/"
+    },
+    {
+      "id": "checkers",
+      "title": "Free Online Checkers Game | Brain Arcade · Teach Arcade",
+      "canonicalUrl": "/brain-arcade/checkers/"
+    },
+    {
+      "id": "chess",
+      "title": "Brain Arcade · Chess",
+      "canonicalUrl": "/brain-arcade/chess/"
+    },
+    {
+      "id": "tests.html",
+      "title": "Chess Engine Tests",
+      "canonicalUrl": "/brain-arcade/chess/tests.html"
+    },
+    {
+      "id": "crossword.html",
+      "title": "Crossword.Html | Teach Arcade",
+      "canonicalUrl": "/brain-arcade/crossword.html"
+    },
+    {
+      "id": "jigsaw-puzzle",
+      "title": "Jigsaw Puzzle (Coming Soon) | Brain Arcade | Teach Arcade",
+      "canonicalUrl": "/brain-arcade/jigsaw-puzzle/"
+    },
+    {
+      "id": "game.html",
+      "title": "Play Sequence Breaker | Brain Arcade | Teach Arcade",
+      "canonicalUrl": "/brain-arcade/sequence-breaker/game.html"
+    },
+    {
+      "id": "sequence-breaker",
+      "title": "Sequence Breaker | Brain Arcade | Teach Arcade",
+      "canonicalUrl": "/brain-arcade/sequence-breaker/"
+    },
+    {
+      "id": "game.html",
+      "title": "Play Slide &amp; Snap | Brain Arcade | Teach Arcade",
+      "canonicalUrl": "/brain-arcade/slide-and-snap/game.html"
+    },
+    {
+      "id": "slide-and-snap",
+      "title": "Slide &amp; Snap (Sliding Puzzle) | Brain Arcade | Teach Arcade",
+      "canonicalUrl": "/brain-arcade/slide-and-snap/"
+    },
+    {
+      "id": "solitaire.html",
+      "title": "Solitaire (Klondike) · Web Game",
+      "canonicalUrl": "/brain-arcade/solitaire.html"
+    },
+    {
+      "id": "sudoku",
+      "title": "Sudoku · Brain Arcade | Teach Arcade",
+      "canonicalUrl": "/brain-arcade/sudoku/"
+    },
+    {
+      "id": "word-grid",
+      "title": "Word Grid | Teach Arcade Brain Arcade",
+      "canonicalUrl": "/brain-arcade/word-grid/"
+    },
+    {
+      "id": "word-search",
+      "title": "Word Search · Brain Arcade | Teach Arcade",
+      "canonicalUrl": "/brain-arcade/word-search/"
+    },
+    {
+      "id": "buzzer.html",
+      "title": "Quiz Buzzer | Teacher Tools | Teach Arcade",
+      "canonicalUrl": "/tools/buzzer.html"
+    },
+    {
+      "id": "flashcards.html",
+      "title": "Flashcard Studio | Teach Arcade",
+      "canonicalUrl": "/tools/flashcards.html"
+    },
+    {
+      "id": "character-map",
+      "title": "Character Map Template | Teach Arcade",
+      "canonicalUrl": "/tools/graphic-organizers/character-map/"
+    },
+    {
+      "id": "frayer-model",
+      "title": "Frayer Model Template | Teach Arcade Graphic Organizer",
+      "canonicalUrl": "/tools/graphic-organizers/frayer-model/"
+    },
+    {
+      "id": "kwl-chart",
+      "title": "KWL Chart Template | Free Printable Graphic Organizer – Teach Arcade",
+      "canonicalUrl": "/tools/graphic-organizers/kwl-chart/"
+    },
+    {
+      "id": "main-idea-details",
+      "title": "Main Idea and Details Organizer | Teach Arcade",
+      "canonicalUrl": "/tools/graphic-organizers/main-idea-details/"
+    },
+    {
+      "id": "sequence-chart",
+      "title": "Sequence Chart Template | Teach Arcade",
+      "canonicalUrl": "/tools/graphic-organizers/sequence-chart/"
+    },
+    {
+      "id": "story-plot-diagram",
+      "title": "Story Plot Diagram (Freytag) | Teach Arcade",
+      "canonicalUrl": "/tools/graphic-organizers/story-plot-diagram/"
+    },
+    {
+      "id": "t-chart",
+      "title": "T-Chart Template | Teach Arcade Graphic Organizer",
+      "canonicalUrl": "/tools/graphic-organizers/t-chart/"
+    },
+    {
+      "id": "timeline-template",
+      "title": "Timeline Template | Teach Arcade",
+      "canonicalUrl": "/tools/graphic-organizers/timeline-template/"
+    },
+    {
+      "id": "venn-diagram",
+      "title": "Venn Diagram Template | Teach Arcade Graphic Organizer",
+      "canonicalUrl": "/tools/graphic-organizers/venn-diagram/"
+    },
+    {
+      "id": "vocabulary-organizer",
+      "title": "Vocabulary Organizer Template | Teach Arcade",
+      "canonicalUrl": "/tools/graphic-organizers/vocabulary-organizer/"
+    },
+    {
+      "id": "group-maker.html",
+      "title": "Random Group Maker | Teacher Tools | Teach Arcade",
+      "canonicalUrl": "/tools/group-maker.html"
+    },
+    {
+      "id": "name-picker.html",
+      "title": "Random Name Picker | Teach Arcade",
+      "canonicalUrl": "/tools/name-picker.html"
+    },
+    {
+      "id": "noise-meter.html",
+      "title": "Noise Meter.Html | Teach Arcade",
+      "canonicalUrl": "/tools/noise-meter.html"
+    },
+    {
+      "id": "text-randomizer.html",
+      "title": "Text Randomizer | Teacher Tools | Teach Arcade",
+      "canonicalUrl": "/tools/text-randomizer.html"
+    },
+    {
+      "id": "timer.html",
+      "title": "Timer & Stopwatch | Teach Arcade",
+      "canonicalUrl": "/tools/timer.html"
+    },
+    {
+      "id": "wheel.html",
+      "title": "Wheel Spinner for Classroom Random Picker | Teach Arcade",
+      "canonicalUrl": "/tools/wheel.html"
+    },
+    {
+      "id": "cuban-missile-crisis.html",
+      "title": "13 Days — Visual Style Mockups",
+      "canonicalUrl": "/choose-your-path-adventure/cuban-missile-crisis.html"
+    },
+    {
+      "id": "amistad",
+      "title": "Amistad Movie Guide | Teach Arcade",
+      "canonicalUrl": "/movie-guides/guides/amistad/"
+    },
+    {
+      "id": "flags-of-our-fathers",
+      "title": "Flags of Our Fathers Movie Guide | Teach Arcade",
+      "canonicalUrl": "/movie-guides/guides/flags-of-our-fathers/"
+    },
+    {
+      "id": "schindlers-list",
+      "title": "Teacher Guide – Schindler’s List | Teach Arcade",
+      "canonicalUrl": "/movie-guides/guides/schindlers-list/"
+    },
+    {
+      "id": "wwi",
+      "title": "Escape from the Trenches (WWI)",
+      "canonicalUrl": "/escape/?room=wwi"
+    }
+  ]
+}
