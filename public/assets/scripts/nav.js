@@ -408,7 +408,7 @@
   });
 
   /* =========================
-     INTERACTIVE EXPERIENCES
+     FEATURED EXPERIENCES
      ========================= */
   const shouldRenderInteractiveSection = () => {
     const path = window.location.pathname;
@@ -451,14 +451,18 @@
       game: "Game",
       "escape-room": "Escape Room",
       simulation: "Simulation",
-      activity: "Activity",
+      "movie-guide": "Movie Guide",
+      tool: "Tool",
+      interactive: "Interactive",
     };
 
     const typeIcons = {
       game: "🎮",
       "escape-room": "🗝️",
       simulation: "🧪",
-      activity: "🧩",
+      "movie-guide": "🎬",
+      tool: "🛠️",
+      interactive: "⭐",
     };
 
     const feature = document.createElement("article");
@@ -469,7 +473,8 @@
 
     const icon = document.createElement("span");
     icon.className = "interactive-icon";
-    const iconValue = item.icon || typeIcons[item.type] || "🎮";
+    const itemType = item.contentType || item.type || "interactive";
+    const iconValue = item.icon || typeIcons[itemType] || "⭐";
     if (typeof iconValue === "string" && iconValue.includes("/")) {
       const iconImg = document.createElement("img");
       iconImg.src = iconValue;
@@ -487,14 +492,14 @@
     title.textContent = item.title;
 
     const descriptor = document.createElement("p");
-    if (item.blurb) {
-      descriptor.textContent = item.blurb;
-    } else {
-      const descriptorParts = [typeLabels[item.type] || "Interactive experience"];
-      if (item.duration) descriptorParts.push(item.duration);
-      if (item.deviceNotes) descriptorParts.push(item.deviceNotes);
-      descriptor.textContent = descriptorParts.join(" • ");
+    const descriptorParts = [];
+    if (item.blurb) descriptorParts.push(item.blurb);
+    if (item.duration) descriptorParts.push(item.duration);
+    if (item.deviceNotes) descriptorParts.push(item.deviceNotes);
+    if (!descriptorParts.length) {
+      descriptorParts.push(typeLabels[itemType] || "Interactive experience");
     }
+    descriptor.textContent = descriptorParts.join(" • ");
 
     content.appendChild(title);
     content.appendChild(descriptor);
@@ -505,7 +510,14 @@
     const cta = document.createElement("a");
     cta.className = "interactive-cta";
     cta.href = item.canonicalUrl;
-    cta.textContent = ["game", "escape-room"].includes(item.type) ? "Play" : "Open";
+    const isGuide =
+      itemType === "movie-guide"
+      || (item.canonicalUrl || "").includes("/movie-guides/")
+      || (item.canonicalUrl || "").includes("/guides/")
+      || (item.canonicalUrl || "").includes("/teacher-guides/");
+    cta.textContent = ["game", "escape-room", "simulation"].includes(itemType)
+      ? "Open Activity"
+      : (isGuide ? "Open Guide" : "Open Activity");
 
     feature.appendChild(main);
     feature.appendChild(cta);
@@ -522,7 +534,7 @@
     if (!subjectSlug && !topicSlug) return;
 
     try {
-      const response = await fetch("/data/interactiveContent.json", { cache: "force-cache" });
+      const response = await fetch("/data/contentIndex.json", { cache: "force-cache" });
       if (!response.ok) return;
       const data = await response.json();
       const matches = data.filter(item => {
@@ -547,10 +559,10 @@
 
         const title = document.createElement("h2");
         title.id = "interactive-learning-experiences-title";
-        title.textContent = "Interactive Learning Experiences";
+        title.textContent = "Featured Experiences & Guides";
 
         const subtitle = document.createElement("p");
-        subtitle.textContent = "No interactive experiences linked to this topic yet.";
+        subtitle.textContent = "No experiences or guides linked to this topic yet.";
 
         header.appendChild(title);
         header.appendChild(subtitle);
@@ -576,12 +588,11 @@
 
       const title = document.createElement("h2");
       title.id = "interactive-learning-experiences-title";
-      title.textContent = "Interactive Learning Experiences";
+      title.textContent = "Featured Experiences & Guides";
 
       const subtitle = document.createElement("p");
-      subtitle.textContent = topicSlug
-        ? "Featured interactive experiences aligned to this topic."
-        : "Featured interactive experiences aligned to this subject.";
+      subtitle.textContent =
+        "Games, simulations, challenges, and guides aligned to this topic.";
 
       header.appendChild(title);
       header.appendChild(subtitle);
