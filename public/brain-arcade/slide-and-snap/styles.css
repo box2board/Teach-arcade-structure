@@ -1,6 +1,7 @@
 :root {
-  color-scheme: light dark;
+  color-scheme: light;
   --bg: #f8fafc;
+  --surface: #ffffff;
   --panel: #ffffff;
   --text: #0f172a;
   --muted: #64748b;
@@ -8,6 +9,11 @@
   --primary-dark: #1d4ed8;
   --accent: #a855f7;
   --border: #e2e8f0;
+  --link: #1d4ed8;
+  --button-bg: #2563eb;
+  --button-text: #ffffff;
+  --button-secondary-bg: transparent;
+  --button-secondary-text: #0f172a;
   --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
   --radius-lg: 18px;
   --radius-md: 14px;
@@ -22,13 +28,40 @@
   --max-width: 1080px;
 }
 
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0b1120;
+  --surface: #0f172a;
+  --panel: #0f172a;
+  --text: #f8fafc;
+  --muted: #94a3b8;
+  --border: #1e293b;
+  --link: #93c5fd;
+  --button-bg: #3b82f6;
+  --button-text: #0b1120;
+  --button-secondary-bg: rgba(148, 163, 184, 0.08);
+  --button-secondary-text: #e2e8f0;
+  --shadow: 0 12px 30px rgba(2, 6, 23, 0.6);
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+}
+
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme]) {
+    color-scheme: dark;
     --bg: #0b1120;
+    --surface: #0f172a;
     --panel: #0f172a;
     --text: #f8fafc;
     --muted: #94a3b8;
     --border: #1e293b;
+    --link: #93c5fd;
+    --button-bg: #3b82f6;
+    --button-text: #0b1120;
+    --button-secondary-bg: rgba(148, 163, 184, 0.08);
+    --button-secondary-text: #e2e8f0;
     --shadow: 0 12px 30px rgba(2, 6, 23, 0.6);
   }
 }
@@ -61,7 +94,7 @@ main {
 }
 
 .hero-card {
-  background: var(--panel);
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: var(--space-6);
@@ -113,15 +146,15 @@ button.button {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
   cursor: pointer;
-  background: var(--primary);
-  color: #fff;
+  background: var(--button-bg);
+  color: var(--button-text);
   transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
 }
 
 .button.secondary {
-  background: transparent;
+  background: var(--button-secondary-bg);
   border-color: var(--border);
-  color: var(--text);
+  color: var(--button-secondary-text);
 }
 
 .button.ghost {
@@ -139,7 +172,8 @@ button.button:hover {
 .button:focus-visible,
 button.button:focus-visible,
 select:focus-visible,
-summary:focus-visible {
+summary:focus-visible,
+.theme-option:focus-visible {
   outline: 3px solid rgba(37, 99, 235, 0.6);
   outline-offset: 2px;
 }
@@ -161,7 +195,7 @@ summary:focus-visible {
 }
 
 .card {
-  background: var(--panel);
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   padding: var(--space-4);
@@ -224,14 +258,115 @@ summary:focus-visible {
 }
 
 .footer a {
-  color: inherit;
+  color: var(--link);
 }
 
 /* Game page */
 .game-hero {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: var(--space-6);
+}
+
+.game-hero > div:first-child {
+  flex: 1 1 320px;
+}
+
+.theme-toggle {
   display: grid;
-  gap: var(--space-3);
-  margin-bottom: var(--space-5);
+  gap: var(--space-2);
+  align-items: start;
+  justify-items: start;
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.theme-label {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.9rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+
+.theme-options {
+  display: inline-flex;
+  gap: var(--space-1);
+  background: rgba(148, 163, 184, 0.12);
+  padding: 4px;
+  border-radius: 999px;
+}
+
+.theme-option {
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text);
+  font-family: "Poppins", sans-serif;
+  font-size: 0.85rem;
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.theme-option[aria-pressed="true"] {
+  background: var(--button-bg);
+  color: var(--button-text);
+  box-shadow: 0 6px 12px rgba(15, 23, 42, 0.2);
+}
+
+.how-to-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: var(--shadow);
+  display: grid;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.how-to-card h2 {
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  margin: 0 0 var(--space-2);
+}
+
+.how-to-header p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.how-to-steps {
+  margin: 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: var(--space-2);
+}
+
+.how-to-steps li {
+  color: var(--text);
+}
+
+.how-to-benefits {
+  display: grid;
+  gap: var(--space-2);
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.benefit-list {
+  margin: 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: var(--space-1);
+  color: var(--text);
 }
 
 .game-shell {
@@ -242,7 +377,7 @@ summary:focus-visible {
 .control-panel {
   display: grid;
   gap: var(--space-3);
-  background: var(--panel);
+  background: var(--surface);
   border-radius: var(--radius-lg);
   border: 1px solid var(--border);
   padding: var(--space-4);
@@ -265,7 +400,7 @@ summary:focus-visible {
   padding: 10px 12px;
   border-radius: var(--radius-sm);
   border: 1px solid var(--border);
-  background: var(--panel);
+  background: var(--surface);
   color: var(--text);
 }
 
@@ -276,7 +411,7 @@ summary:focus-visible {
 }
 
 .stat {
-  background: rgba(37, 99, 235, 0.08);
+  background: rgba(37, 99, 235, 0.12);
   border-radius: var(--radius-md);
   padding: var(--space-3);
   border: 1px solid rgba(37, 99, 235, 0.18);
@@ -302,7 +437,7 @@ summary:focus-visible {
   width: min(92vw, 480px);
   aspect-ratio: 1;
   border-radius: var(--radius-lg);
-  background: linear-gradient(160deg, rgba(37, 99, 235, 0.1), rgba(168, 85, 247, 0.08));
+  background: linear-gradient(160deg, rgba(37, 99, 235, 0.12), rgba(168, 85, 247, 0.12));
   position: relative;
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
@@ -313,7 +448,7 @@ summary:focus-visible {
   display: grid;
   place-items: center;
   border-radius: 16px;
-  background: var(--panel);
+  background: var(--surface);
   border: 2px solid rgba(37, 99, 235, 0.2);
   color: var(--text);
   font-family: "Poppins", sans-serif;
@@ -335,18 +470,6 @@ summary:focus-visible {
   color: var(--muted);
 }
 
-.how-to details {
-  background: var(--panel);
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border);
-  padding: var(--space-3);
-}
-
-.how-to summary {
-  font-family: "Poppins", sans-serif;
-  font-size: 1rem;
-}
-
 .win-modal {
   position: fixed;
   inset: 0;
@@ -363,7 +486,7 @@ summary:focus-visible {
 }
 
 .win-card {
-  background: var(--panel);
+  background: var(--surface);
   border-radius: var(--radius-lg);
   padding: var(--space-6);
   border: 1px solid var(--border);

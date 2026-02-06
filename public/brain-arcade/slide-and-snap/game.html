@@ -1,12 +1,13 @@
 <!doctype html>
+<!-- CHANGELOG: Improved Slide & Snap game page layout with a prominent How to Play section, added theme toggle with dark mode, and upgraded SEO/structured data metadata. -->
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#0f172a" />
 
-  <title>Play Slide &amp; Snap | Brain Arcade | Teach Arcade</title>
-  <meta name="description" content="Play Slide &amp; Snap, a sliding tile puzzle with multiple grid sizes. Track moves, time, and best scores while sharpening focus." />
+  <title>Slide &amp; Snap Sliding Puzzle Game | Teach Arcade</title>
+  <meta name="description" content="Play Slide &amp; Snap, a fast sliding puzzle game from Teach Arcade. Choose 3x3–6x6 boards, track moves and time, and sharpen focus." />
   <link rel="canonical" href="https://teacharcade.com/brain-arcade/slide-and-snap/game.html" />
 
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
@@ -20,23 +21,23 @@
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Teach Arcade" />
-  <meta property="og:title" content="Play Slide &amp; Snap | Brain Arcade | Teach Arcade" />
-  <meta property="og:description" content="Slide tiles into place, track moves and time, and pick your puzzle size." />
+  <meta property="og:title" content="Slide &amp; Snap Sliding Puzzle Game | Teach Arcade" />
+  <meta property="og:description" content="Play Slide &amp; Snap, a sliding puzzle game with multiple board sizes, move tracking, and calm mode for focused play." />
   <meta property="og:url" content="https://teacharcade.com/brain-arcade/slide-and-snap/game.html" />
   <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Play Slide &amp; Snap | Brain Arcade | Teach Arcade" />
-  <meta name="twitter:description" content="A sliding tile puzzle with 3x3 to 6x6 boards, move tracking, and calm mode." />
+  <meta name="twitter:title" content="Slide &amp; Snap Sliding Puzzle Game | Teach Arcade" />
+  <meta name="twitter:description" content="A sliding puzzle game with 3x3 to 6x6 boards, move tracking, and calm mode for focused play." />
   <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "Play Slide & Snap",
+    "name": "Slide & Snap Sliding Puzzle Game",
     "url": "https://teacharcade.com/brain-arcade/slide-and-snap/game.html",
-    "description": "Play Slide & Snap, a sliding tile puzzle with move and time tracking.",
+    "description": "Play Slide & Snap, a sliding puzzle game with move and time tracking.",
     "isPartOf": {
       "@type": "WebSite",
       "name": "Teach Arcade",
@@ -70,6 +71,22 @@
     ]
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Slide & Snap",
+    "applicationCategory": "Game",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "A sliding puzzle game with multiple board sizes, move tracking, and calm mode for focused play.",
+    "url": "https://teacharcade.com/brain-arcade/slide-and-snap/game.html"
+  }
+  </script>
 </head>
 <body>
   <div id="site-header"></div>
@@ -77,9 +94,52 @@
 
   <main class="container">
     <section class="game-hero">
-      <p class="eyebrow">Brain Arcade</p>
-      <h1>Slide &amp; Snap</h1>
-      <p>Slide tiles into place, track your moves, and build focus one puzzle at a time.</p>
+      <div>
+        <p class="eyebrow">Brain Arcade</p>
+        <h1>Slide &amp; Snap</h1>
+        <p>Slide tiles into place, track your moves, and build focus one puzzle at a time.</p>
+      </div>
+      <div class="theme-toggle" aria-label="Theme selection">
+        <span class="theme-label">Theme</span>
+        <div class="theme-options" role="group" aria-label="Theme options">
+          <button type="button" class="theme-option" data-theme-option="light" aria-pressed="false">Light</button>
+          <button type="button" class="theme-option" data-theme-option="dark" aria-pressed="false">Dark</button>
+          <button type="button" class="theme-option" data-theme-option="auto" aria-pressed="true">Auto</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="how-to-card" aria-label="How to play Slide and Snap">
+      <div class="how-to-header">
+        <h2>How to Play</h2>
+        <p>Slide &amp; Snap is a classic sliding puzzle. Move tiles into the empty space until the grid is in order.</p>
+      </div>
+      <ul class="how-to-steps">
+        <li>Tap or click a tile adjacent to the empty space to slide it.</li>
+        <li>Arrange tiles in order from 1 through the final space.</li>
+        <li>Use arrow keys on desktop to move the empty space quickly.</li>
+        <li>Toggle Calm Mode to hide the timer and focus on strategy.</li>
+      </ul>
+      <div class="how-to-benefits">
+        <p>
+          Sliding puzzles are a simple way to practice pattern recognition and spatial reasoning. With every move,
+          you’re visualizing the board and planning ahead, which can help support working memory and flexible thinking.
+        </p>
+        <p>
+          Slide &amp; Snap is often used as a quick brain break because it’s focused and calming without being
+          overwhelming. A few rounds can encourage attention and steady problem-solving while still feeling relaxing.
+        </p>
+        <p>
+          Pick a smaller grid for a fast win or step up the size when you want a deeper challenge. Either way, the
+          puzzle rewards patience and a clear plan.
+        </p>
+        <ul class="benefit-list">
+          <li>Pattern recognition and visual scanning</li>
+          <li>Spatial reasoning and mental rotation</li>
+          <li>Working memory and short-term planning</li>
+          <li>Focus, attention, and calm persistence</li>
+        </ul>
+      </div>
     </section>
 
     <section class="game-shell" aria-label="Slide and Snap puzzle">
@@ -117,18 +177,18 @@
       </div>
 
       <div class="ad-slot" aria-label="Advertisement">Ad Slot</div>
+    </section>
 
-      <section class="how-to">
-        <details>
-          <summary>How to Play</summary>
-          <ul>
-            <li>Tap or click a tile that sits next to the empty space.</li>
-            <li>Slide tiles until the numbers are in order from 1 to the final space.</li>
-            <li>Use the arrow keys on a keyboard to move the empty space.</li>
-            <li>Toggle Calm Mode to hide the timer and focus on thinking.</li>
-          </ul>
-        </details>
-      </section>
+    <section class="section faq" aria-label="Slide and Snap FAQ">
+      <h2>Slide &amp; Snap FAQ</h2>
+      <details>
+        <summary>Is every puzzle solvable?</summary>
+        <p>Yes. The board is shuffled using valid moves from the solved state, so every puzzle can be completed.</p>
+      </details>
+      <details>
+        <summary>Can I play on mobile or tablet?</summary>
+        <p>Absolutely. Slide &amp; Snap supports touch input and works well on phones and tablets.</p>
+      </details>
     </section>
   </main>
 
@@ -153,5 +213,30 @@
   </footer>
 
   <script src="/brain-arcade/slide-and-snap/game.js"></script>
+  <script>
+    const themeButtons = document.querySelectorAll(".theme-option");
+    const setTheme = (theme) => {
+      if (theme === "auto") {
+        document.documentElement.removeAttribute("data-theme");
+      } else {
+        document.documentElement.setAttribute("data-theme", theme);
+      }
+      themeButtons.forEach((button) => {
+        const isActive = button.dataset.themeOption === theme;
+        button.setAttribute("aria-pressed", String(isActive));
+      });
+    };
+
+    const storedTheme = localStorage.getItem("theme") || "auto";
+    setTheme(storedTheme);
+
+    themeButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const selectedTheme = button.dataset.themeOption;
+        localStorage.setItem("theme", selectedTheme);
+        setTheme(selectedTheme);
+      });
+    });
+  </script>
 </body>
 </html>
