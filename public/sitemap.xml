@@ -127,7 +127,13 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://teacharcade.com/classroom/bell-ringers-exit-tickets/</loc>
+    <loc>https://teacharcade.com/teacher-tools/bell-ringers/</loc>
+    <lastmod>2026-02-02T05:07:30.331Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://teacharcade.com/teacher-tools/exit-tickets/</loc>
     <lastmod>2026-02-02T05:07:30.331Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
@@ -295,7 +301,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://teacharcade.com/icebreakers/</loc>
+    <loc>https://teacharcade.com/teacher-tools/icebreakers/</loc>
     <lastmod>2026-02-02T04:57:10.668Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>

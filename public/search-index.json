@@ -300,7 +300,16 @@
   },
   {
     "title": "Bell Ringers Exit Tickets",
-    "url": "/classroom/bell-ringers-exit-tickets/",
+    "url": "/teacher-tools/bell-ringers/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Exit Tickets",
+    "url": "/teacher-tools/exit-tickets/",
     "type": "page",
     "description": "",
     "subject": "",
@@ -582,7 +591,7 @@
   },
   {
     "title": "Icebreakers",
-    "url": "/icebreakers/",
+    "url": "/teacher-tools/icebreakers/",
     "type": "page",
     "description": "",
     "subject": "",
