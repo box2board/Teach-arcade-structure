@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0f172a" />
+
+  <title>3D Block Builder for the Classroom | Teach Arcade</title>
+  <meta name="description" content="Build classroom-ready 3D models with snap-to-grid blocks in this teacher-centered creative sandbox. Great for planning, storytelling, and systems thinking." />
+  <link rel="canonical" href="https://teacharcade.com/brain-arcade/block-builder/" />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+
+  <link rel="stylesheet" href="/assets/styles.css?v=1" />
+  <link rel="stylesheet" href="/brain-arcade/block-builder/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Teach Arcade" />
+  <meta property="og:title" content="3D Block Builder for the Classroom | Teach Arcade" />
+  <meta property="og:description" content="Teacher-centered 3D block sandbox for planning, storytelling, and systems modeling. Local-only saves and classroom-friendly prompts included." />
+  <meta property="og:url" content="https://teacharcade.com/brain-arcade/block-builder/" />
+  <meta property="og:image" content="https://teacharcade.com/assets/block-builder/block-builder-social-card.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="3D Block Builder for the Classroom | Teach Arcade" />
+  <meta name="twitter:description" content="Design and iterate 3D models with drag-place blocks, rotate tools, undo/redo, and local-only save/load." />
+  <meta name="twitter:image" content="https://teacharcade.com/assets/block-builder/block-builder-social-card.svg" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebPage",
+    "name":"3D Block Builder for the Classroom",
+    "url":"https://teacharcade.com/brain-arcade/block-builder/",
+    "description":"Teacher-friendly 3D block building sandbox with grid snapping, undo/redo, and local-only save/load.",
+    "isPartOf":{"@type":"WebSite","name":"Teach Arcade","url":"https://teacharcade.com/"}
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"SoftwareApplication",
+    "name":"Teach Arcade 3D Block Builder",
+    "applicationCategory":"EducationalApplication",
+    "operatingSystem":"Any",
+    "url":"https://teacharcade.com/brain-arcade/block-builder/",
+    "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
+    "audience":{"@type":"EducationalAudience","educationalRole":"teacher"}
+  }
+  </script>
+</head>
+<body>
+  <div id="site-header"></div>
+  <script src="/assets/scripts/nav.js?v=5" defer></script>
+
+  <main class="container block-builder-page">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span>›</span>
+      <a href="/brain-arcade/">Brain Arcade</a> <span>›</span>
+      <span aria-current="page">3D Block Builder</span>
+    </nav>
+
+    <section class="intro" aria-labelledby="builder-title">
+      <h1 id="builder-title">3D Block Builder</h1>
+      <p>Use this <strong>teacher-centered creative sandbox</strong> to model systems, timelines, processes, and story structures in 3D. This is a classroom ideation tool—<strong>not</strong> a gambling, picks, or predictions activity.</p>
+      <p class="privacy-note">Privacy note: Builds are saved <strong>locally</strong> in your browser only. No accounts are required and no student data is collected by this activity.</p>
+    </section>
+
+    <section class="builder-shell" aria-label="3D Block Builder Workspace">
+      <header class="toolbar">
+        <h2>Workspace</h2>
+        <div class="action-row">
+          <button id="saveBuild" aria-label="Save build">Save</button>
+          <button id="loadBuild" aria-label="Load build">Load</button>
+          <button id="undoAction" aria-label="Undo">Undo</button>
+          <button id="redoAction" aria-label="Redo">Redo</button>
+          <button id="exportJson" aria-label="Export JSON">Export JSON</button>
+          <button id="importJson" aria-label="Import JSON">Import JSON</button>
+          <button id="downloadImage" aria-label="Download screenshot image">Download Image</button>
+          <button id="resetBuild" class="danger" aria-label="Reset build">Reset</button>
+        </div>
+      </header>
+
+      <div class="workspace-grid">
+        <aside class="palette" aria-label="Block palette">
+          <label for="blockSearch">Search blocks</label>
+          <input id="blockSearch" type="search" placeholder="Search by name" />
+          <div id="categoryTabs" class="category-tabs" role="tablist" aria-label="Block categories"></div>
+          <div id="blockList" class="block-list"></div>
+        </aside>
+
+        <section class="canvas-region" aria-label="3D build area">
+          <div id="canvasFallback" class="canvas-loading">Loading 3D workspace… If this takes a while, your browser may not support WebGL. You can still use the classroom prompts below.</div>
+          <div id="canvasMount" class="canvas-mount" aria-live="polite"></div>
+          <div class="touch-controls">
+            <button id="rotateLeft" aria-label="Rotate selected left">⟲ Rotate</button>
+            <button id="rotateRight" aria-label="Rotate selected right">⟳ Rotate</button>
+            <button id="deleteSelected" aria-label="Delete selected block">🗑 Delete</button>
+          </div>
+        </section>
+
+        <aside class="inspector" aria-label="Selected block inspector">
+          <h3>Inspector</h3>
+          <p id="selectionLabel">No block selected.</p>
+          <div class="inspector-fields">
+            <label>X <input id="propX" type="number" step="1" /></label>
+            <label>Y <input id="propY" type="number" step="1" /></label>
+            <label>Z <input id="propZ" type="number" step="1" /></label>
+            <label>Rotation Y° <input id="propRot" type="number" step="90" /></label>
+            <button id="applyProps" aria-label="Apply block properties">Apply</button>
+          </div>
+          <details>
+            <summary>Shortcuts</summary>
+            <ul>
+              <li>R / Shift+R: Rotate preview or selected block</li>
+              <li>Delete / Backspace: Remove selected block</li>
+              <li>Ctrl/Cmd+Z: Undo • Ctrl/Cmd+Shift+Z: Redo</li>
+              <li>Tap a block type, then tap the grid to place</li>
+            </ul>
+          </details>
+        </aside>
+      </div>
+
+      <footer class="hint-bar">Teacher tip: Ask students to narrate why each placed block belongs in the model to strengthen content reasoning and evidence-based thinking.</footer>
+    </section>
+
+    <section class="how-to" aria-labelledby="howto-title">
+      <h2 id="howto-title">How to Use (Quick Steps)</h2>
+      <ol>
+        <li>Select a category and block type from the left palette.</li>
+        <li>Move your pointer over the grid and click/tap to place blocks.</li>
+        <li>Rotate with keyboard shortcuts or touch buttons.</li>
+        <li>Use the inspector to adjust selected blocks.</li>
+        <li>Save locally, export JSON, or download a screenshot for class slides.</li>
+      </ol>
+    </section>
+
+    <section class="classroom-ideas" aria-labelledby="ideas-title">
+      <h2 id="ideas-title">Classroom Ideas</h2>
+      <ul>
+        <li><strong>History:</strong> Build the causes and effects of a major event as linked structures.</li>
+        <li><strong>Civics:</strong> Model checks and balances with connectors and constraints.</li>
+        <li><strong>Economics:</strong> Represent supply chain flow with timeline and resource blocks.</li>
+        <li><strong>Science:</strong> Build a systems model of ecosystems or the water cycle.</li>
+        <li><strong>ELA:</strong> Map plot structure and character decision points in 3D.</li>
+        <li><strong>Interdisciplinary:</strong> Design a resilient city and justify each component.</li>
+        <li><strong>SEL:</strong> Build “support systems” and discuss how constraints can be reduced.</li>
+        <li><strong>Project Planning:</strong> Sequence milestones and dependencies before presentations.</li>
+      </ul>
+      <p class="internal-links"><a href="/">Back to homepage</a> • <a href="/brain-arcade/">Explore Brain Arcade</a> • <a href="/tools/">Browse Teacher Tools</a></p>
+    </section>
+  </main>
+
+  <dialog id="importDialog">
+    <form method="dialog" class="import-form">
+      <h3>Import Build JSON</h3>
+      <textarea id="importTextarea" rows="8" placeholder='Paste JSON here'></textarea>
+      <input id="importFile" type="file" accept="application/json" />
+      <menu>
+        <button value="cancel">Cancel</button>
+        <button id="confirmImport" value="default">Import</button>
+      </menu>
+    </form>
+  </dialog>
+
+  <script type="module" src="/brain-arcade/block-builder/app.js"></script>
+</body>
+</html>

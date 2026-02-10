@@ -1,0 +1,18 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'>
+  <defs>
+    <linearGradient id='g' x1='0' x2='1' y1='0' y2='1'>
+      <stop offset='0' stop-color='#0f172a'/>
+      <stop offset='1' stop-color='#1d4ed8'/>
+    </linearGradient>
+  </defs>
+  <rect width='800' height='450' fill='url(#g)'/>
+  <g fill='none' stroke='#93c5fd' stroke-width='3' opacity='.35'>
+    <path d='M0 300h800M0 240h800M0 180h800M120 0v450M240 0v450M360 0v450M480 0v450M600 0v450'/>
+  </g>
+  <g transform='translate(220 130)'>
+    <rect x='0' y='80' width='140' height='140' rx='10' fill='#38bdf8'/>
+    <rect x='100' y='20' width='160' height='160' rx='14' fill='#a78bfa'/>
+    <rect x='220' y='110' width='140' height='120' rx='10' fill='#f59e0b'/>
+  </g>
+  <text x='40' y='70' fill='#e2e8f0' font-size='40' font-family='Poppins, Arial' font-weight='700'>3D Block Builder</text>
+</svg>

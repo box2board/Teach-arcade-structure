@@ -1,0 +1,12 @@
+{
+  "categories": {
+    "Structural": "/assets/block-builder/icons/svg/structural.svg",
+    "Connector": "/assets/block-builder/icons/svg/connector.svg",
+    "Logic": "/assets/block-builder/icons/svg/logic.svg",
+    "Resource": "/assets/block-builder/icons/svg/resource.svg",
+    "System": "/assets/block-builder/icons/svg/system.svg",
+    "Timeline": "/assets/block-builder/icons/svg/timeline.svg",
+    "Constraint": "/assets/block-builder/icons/svg/constraint.svg",
+    "Event": "/assets/block-builder/icons/svg/event.svg"
+  }
+}
