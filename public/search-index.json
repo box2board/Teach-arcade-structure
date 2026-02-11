@@ -185,6 +185,36 @@
     "source": "sitemap"
   },
   {
+    "title": "Cold War Shadow Run",
+    "url": "/arcade-review-games/social-studies/cold-war-shadow-run/",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:arcade-review-games",
+      "topic:cold-war-shadow-run"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Game",
+    "url": "/arcade-review-games/social-studies/cold-war-shadow-run/game",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:arcade-review-games",
+      "topic:game"
+    ],
+    "source": "sitemap"
+  },
+  {
     "title": "Constitution Courthouse Run",
     "url": "/arcade-review-games/social-studies/constitution-courthouse-run",
     "type": "game",
@@ -299,35 +329,17 @@
     "source": "sitemap"
   },
   {
-    "title": "Bell Ringers",
-    "url": "/teacher-tools/bell-ringers/",
-    "type": "page",
-    "description": "",
-    "subject": "",
-    "tags": [],
-    "source": "sitemap"
-  },
-  {
-    "title": "Exit Tickets",
-    "url": "/teacher-tools/exit-tickets/",
-    "type": "page",
-    "description": "",
-    "subject": "",
-    "tags": [],
-    "source": "sitemap"
-  },
-  {
-    "title": "Toy Toolbox",
-    "url": "/classroom/toy-toolbox/",
-    "type": "page",
-    "description": "",
-    "subject": "",
-    "tags": [],
-    "source": "sitemap"
-  },
-  {
     "title": "Apprentice Restorer",
     "url": "/brain-arcade/apprentice-restorer/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Block Builder",
+    "url": "/brain-arcade/block-builder/",
     "type": "page",
     "description": "",
     "subject": "",
@@ -398,6 +410,42 @@
     "source": "sitemap"
   },
   {
+    "title": "Sequence Breaker",
+    "url": "/brain-arcade/sequence-breaker/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Game",
+    "url": "/brain-arcade/sequence-breaker/game",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Slide And Snap",
+    "url": "/brain-arcade/slide-and-snap/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Game",
+    "url": "/brain-arcade/slide-and-snap/game",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
     "title": "Solitaire",
     "url": "/brain-arcade/solitaire",
     "type": "page",
@@ -461,6 +509,24 @@
       "category:choose-your-path-adventure",
       "topic:cuban-missile-crisis"
     ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Bell Ringers Exit Tickets",
+    "url": "/classroom/bell-ringers-exit-tickets/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Toy Toolbox",
+    "url": "/classroom/toy-toolbox/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
     "source": "sitemap"
   },
   {
@@ -591,7 +657,7 @@
   },
   {
     "title": "Icebreakers",
-    "url": "/teacher-tools/icebreakers/",
+    "url": "/icebreakers/",
     "type": "page",
     "description": "",
     "subject": "",
@@ -608,8 +674,35 @@
     "source": "sitemap"
   },
   {
-    "title": "War Horse",
-    "url": "/movie-guides/guides/war-horse/",
+    "title": "Amistad",
+    "url": "/movie-guides/guides/amistad/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Flags Of Our Fathers",
+    "url": "/movie-guides/guides/flags-of-our-fathers/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Mississippi Burning",
+    "url": "/movie-guides/guides/mississippi-burning/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Rocky Iv",
+    "url": "/movie-guides/guides/rocky-iv/",
     "type": "page",
     "description": "",
     "subject": "",
@@ -619,6 +712,15 @@
   {
     "title": "Schindlers List",
     "url": "/movie-guides/guides/schindlers-list/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "War Horse",
+    "url": "/movie-guides/guides/war-horse/",
     "type": "page",
     "description": "",
     "subject": "",
@@ -5767,6 +5869,33 @@
   {
     "title": "Teacher Tools",
     "url": "/teacher-tools/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Bell Ringers",
+    "url": "/teacher-tools/bell-ringers/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Exit Tickets",
+    "url": "/teacher-tools/exit-tickets/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Icebreakers",
+    "url": "/teacher-tools/icebreakers/",
     "type": "page",
     "description": "",
     "subject": "",
