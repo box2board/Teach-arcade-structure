@@ -1,0 +1,1959 @@
+[
+  {
+    "id": "registered-nurse",
+    "title": "Registered Nurse",
+    "cluster": "Health Science",
+    "educationOptions": [
+      "workforce",
+      "cc",
+      "grad",
+      "college",
+      "trade"
+    ],
+    "salaryStartRange": [
+      34201,
+      48201
+    ],
+    "salaryMidRange": [
+      56336,
+      74336
+    ],
+    "baselineStress": 51,
+    "baselineWorkLife": 42,
+    "skillAffinities": {
+      "communication": 1.1,
+      "teamwork": 1.05,
+      "problemSolving": 1.25,
+      "leadership": 2.19,
+      "techLiteracy": 1.49,
+      "financialLiteracy": 0.63,
+      "timeManagement": 1.44,
+      "adaptability": 1.83,
+      "professionalism": 1.36,
+      "creativity": 0.6
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "life-balance"
+    ]
+  },
+  {
+    "id": "physical-therapist-assistant",
+    "title": "Physical Therapist Assistant",
+    "cluster": "Health Science",
+    "educationOptions": [
+      "cc",
+      "workforce",
+      "grad"
+    ],
+    "salaryStartRange": [
+      44370,
+      58370
+    ],
+    "salaryMidRange": [
+      62973,
+      80973
+    ],
+    "baselineStress": 59,
+    "baselineWorkLife": 48,
+    "skillAffinities": {
+      "communication": 2.37,
+      "teamwork": 2.13,
+      "problemSolving": 1.13,
+      "leadership": 1.36,
+      "techLiteracy": 1.54,
+      "financialLiteracy": 1.15,
+      "timeManagement": 1.75,
+      "adaptability": 1.28,
+      "professionalism": 1.36,
+      "creativity": 1.55
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "productivity"
+    ]
+  },
+  {
+    "id": "radiologic-technologist",
+    "title": "Radiologic Technologist",
+    "cluster": "Health Science",
+    "educationOptions": [
+      "grad",
+      "cc",
+      "workforce",
+      "trade"
+    ],
+    "salaryStartRange": [
+      50820,
+      64820
+    ],
+    "salaryMidRange": [
+      101640,
+      119640
+    ],
+    "baselineStress": 62,
+    "baselineWorkLife": 67,
+    "skillAffinities": {
+      "communication": 1.43,
+      "teamwork": 1.27,
+      "problemSolving": 1.7000000000000002,
+      "leadership": 1.19,
+      "techLiteracy": 1.48,
+      "financialLiteracy": 1.45,
+      "timeManagement": 1.9100000000000001,
+      "adaptability": 1.19,
+      "professionalism": 0.63,
+      "creativity": 1.6400000000000001
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "life-balance"
+    ]
+  },
+  {
+    "id": "dental-hygienist",
+    "title": "Dental Hygienist",
+    "cluster": "Health Science",
+    "educationOptions": [
+      "grad",
+      "trade",
+      "college",
+      "cc",
+      "workforce"
+    ],
+    "salaryStartRange": [
+      50830,
+      64830
+    ],
+    "salaryMidRange": [
+      75903,
+      93903
+    ],
+    "baselineStress": 45,
+    "baselineWorkLife": 68,
+    "skillAffinities": {
+      "communication": 2.24,
+      "teamwork": 0.97,
+      "problemSolving": 1.33,
+      "leadership": 1.87,
+      "techLiteracy": 0.91,
+      "financialLiteracy": 1.45,
+      "timeManagement": 1.21,
+      "adaptability": 1.18,
+      "professionalism": 1.25,
+      "creativity": 1.57
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "productivity"
+    ]
+  },
+  {
+    "id": "medical-laboratory-technician",
+    "title": "Medical Laboratory Technician",
+    "cluster": "Health Science",
+    "educationOptions": [
+      "grad",
+      "cc",
+      "trade"
+    ],
+    "salaryStartRange": [
+      50411,
+      64411
+    ],
+    "salaryMidRange": [
+      68785,
+      86785
+    ],
+    "baselineStress": 59,
+    "baselineWorkLife": 67,
+    "skillAffinities": {
+      "communication": 1.41,
+      "teamwork": 1.12,
+      "problemSolving": 1.16,
+      "leadership": 1.03,
+      "techLiteracy": 0.66,
+      "financialLiteracy": 2.27,
+      "timeManagement": 1.97,
+      "adaptability": 0.8,
+      "professionalism": 1.1,
+      "creativity": 1.8800000000000001
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "life-balance"
+    ]
+  },
+  {
+    "id": "software-developer",
+    "title": "Software Developer",
+    "cluster": "Information Technology",
+    "educationOptions": [
+      "workforce",
+      "trade",
+      "college",
+      "cc"
+    ],
+    "salaryStartRange": [
+      32458,
+      46458
+    ],
+    "salaryMidRange": [
+      65505,
+      83505
+    ],
+    "baselineStress": 46,
+    "baselineWorkLife": 70,
+    "skillAffinities": {
+      "communication": 1.98,
+      "teamwork": 1.46,
+      "problemSolving": 1.4,
+      "leadership": 2.2,
+      "techLiteracy": 2.2199999999999998,
+      "financialLiteracy": 0.86,
+      "timeManagement": 1.44,
+      "adaptability": 1.27,
+      "professionalism": 0.68,
+      "creativity": 0.62
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "ethics"
+    ]
+  },
+  {
+    "id": "cybersecurity-analyst",
+    "title": "Cybersecurity Analyst",
+    "cluster": "Information Technology",
+    "educationOptions": [
+      "grad",
+      "trade",
+      "cc",
+      "college",
+      "workforce"
+    ],
+    "salaryStartRange": [
+      38243,
+      52243
+    ],
+    "salaryMidRange": [
+      66704,
+      84704
+    ],
+    "baselineStress": 51,
+    "baselineWorkLife": 68,
+    "skillAffinities": {
+      "communication": 1.55,
+      "teamwork": 2.06,
+      "problemSolving": 1.25,
+      "leadership": 0.89,
+      "techLiteracy": 2.1,
+      "financialLiteracy": 1.1,
+      "timeManagement": 0.71,
+      "adaptability": 0.91,
+      "professionalism": 0.94,
+      "creativity": 2.2
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "ethics"
+    ]
+  },
+  {
+    "id": "network-technician",
+    "title": "Network Technician",
+    "cluster": "Information Technology",
+    "educationOptions": [
+      "college",
+      "workforce",
+      "cc",
+      "trade",
+      "grad"
+    ],
+    "salaryStartRange": [
+      39292,
+      53292
+    ],
+    "salaryMidRange": [
+      83330,
+      101330
+    ],
+    "baselineStress": 44,
+    "baselineWorkLife": 37,
+    "skillAffinities": {
+      "communication": 2.12,
+      "teamwork": 0.76,
+      "problemSolving": 1.3,
+      "leadership": 1.28,
+      "techLiteracy": 1.14,
+      "financialLiteracy": 1.62,
+      "timeManagement": 2.38,
+      "adaptability": 1.4,
+      "professionalism": 1.12,
+      "creativity": 0.82
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "ethics"
+    ]
+  },
+  {
+    "id": "data-analyst",
+    "title": "Data Analyst",
+    "cluster": "Information Technology",
+    "educationOptions": [
+      "grad",
+      "workforce",
+      "trade",
+      "college",
+      "cc"
+    ],
+    "salaryStartRange": [
+      43277,
+      57277
+    ],
+    "salaryMidRange": [
+      81356,
+      99356
+    ],
+    "baselineStress": 39,
+    "baselineWorkLife": 39,
+    "skillAffinities": {
+      "communication": 0.91,
+      "teamwork": 1.54,
+      "problemSolving": 2.14,
+      "leadership": 1.02,
+      "techLiteracy": 0.85,
+      "financialLiteracy": 0.61,
+      "timeManagement": 1.48,
+      "adaptability": 1.44,
+      "professionalism": 1.42,
+      "creativity": 2.3600000000000003
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "ethics"
+    ]
+  },
+  {
+    "id": "ux-designer",
+    "title": "UX Designer",
+    "cluster": "Information Technology",
+    "educationOptions": [
+      "trade",
+      "cc",
+      "college",
+      "workforce"
+    ],
+    "salaryStartRange": [
+      49371,
+      63371
+    ],
+    "salaryMidRange": [
+      95744,
+      113744
+    ],
+    "baselineStress": 47,
+    "baselineWorkLife": 66,
+    "skillAffinities": {
+      "communication": 0.7,
+      "teamwork": 1.27,
+      "problemSolving": 1.7000000000000002,
+      "leadership": 1.1,
+      "techLiteracy": 0.93,
+      "financialLiteracy": 2.27,
+      "timeManagement": 1.5,
+      "adaptability": 0.62,
+      "professionalism": 0.8,
+      "creativity": 1.73
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "productivity"
+    ]
+  },
+  {
+    "id": "project-coordinator",
+    "title": "Project Coordinator",
+    "cluster": "Business",
+    "educationOptions": [
+      "workforce",
+      "cc",
+      "grad",
+      "trade"
+    ],
+    "salaryStartRange": [
+      40972,
+      54972
+    ],
+    "salaryMidRange": [
+      81506,
+      99506
+    ],
+    "baselineStress": 69,
+    "baselineWorkLife": 66,
+    "skillAffinities": {
+      "communication": 1.37,
+      "teamwork": 1.13,
+      "problemSolving": 0.67,
+      "leadership": 0.64,
+      "techLiteracy": 1.53,
+      "financialLiteracy": 1.57,
+      "timeManagement": 1.14,
+      "adaptability": 0.87,
+      "professionalism": 1.73,
+      "creativity": 1.11
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "ethics"
+    ]
+  },
+  {
+    "id": "operations-manager",
+    "title": "Operations Manager",
+    "cluster": "Business",
+    "educationOptions": [
+      "cc",
+      "workforce",
+      "trade",
+      "grad"
+    ],
+    "salaryStartRange": [
+      45002,
+      59002
+    ],
+    "salaryMidRange": [
+      69835,
+      87835
+    ],
+    "baselineStress": 55,
+    "baselineWorkLife": 37,
+    "skillAffinities": {
+      "communication": 1.01,
+      "teamwork": 1.78,
+      "problemSolving": 1.59,
+      "leadership": 0.75,
+      "techLiteracy": 1.53,
+      "financialLiteracy": 0.71,
+      "timeManagement": 1.19,
+      "adaptability": 1.53,
+      "professionalism": 0.68,
+      "creativity": 1.95
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "ethics"
+    ]
+  },
+  {
+    "id": "marketing-specialist",
+    "title": "Marketing Specialist",
+    "cluster": "Business",
+    "educationOptions": [
+      "cc",
+      "grad",
+      "college",
+      "trade",
+      "workforce"
+    ],
+    "salaryStartRange": [
+      39749,
+      53749
+    ],
+    "salaryMidRange": [
+      77130,
+      95130
+    ],
+    "baselineStress": 35,
+    "baselineWorkLife": 35,
+    "skillAffinities": {
+      "communication": 0.69,
+      "teamwork": 1.52,
+      "problemSolving": 1.49,
+      "leadership": 0.64,
+      "techLiteracy": 0.84,
+      "financialLiteracy": 1.59,
+      "timeManagement": 1.82,
+      "adaptability": 0.72,
+      "professionalism": 1.57,
+      "creativity": 0.84
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "ethics"
+    ]
+  },
+  {
+    "id": "human-resources-assistant",
+    "title": "Human Resources Assistant",
+    "cluster": "Business",
+    "educationOptions": [
+      "grad",
+      "college",
+      "cc",
+      "trade",
+      "workforce"
+    ],
+    "salaryStartRange": [
+      45901,
+      59901
+    ],
+    "salaryMidRange": [
+      84703,
+      102703
+    ],
+    "baselineStress": 37,
+    "baselineWorkLife": 36,
+    "skillAffinities": {
+      "communication": 0.61,
+      "teamwork": 2.38,
+      "problemSolving": 0.9,
+      "leadership": 2.0,
+      "techLiteracy": 1.85,
+      "financialLiteracy": 0.91,
+      "timeManagement": 0.66,
+      "adaptability": 1.51,
+      "professionalism": 1.57,
+      "creativity": 1.57
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "ethics"
+    ]
+  },
+  {
+    "id": "sales-representative",
+    "title": "Sales Representative",
+    "cluster": "Business",
+    "educationOptions": [
+      "cc",
+      "trade",
+      "college",
+      "workforce",
+      "grad"
+    ],
+    "salaryStartRange": [
+      54873,
+      68873
+    ],
+    "salaryMidRange": [
+      86493,
+      104493
+    ],
+    "baselineStress": 54,
+    "baselineWorkLife": 47,
+    "skillAffinities": {
+      "communication": 0.85,
+      "teamwork": 0.68,
+      "problemSolving": 1.6800000000000002,
+      "leadership": 1.58,
+      "techLiteracy": 1.05,
+      "financialLiteracy": 2.05,
+      "timeManagement": 1.24,
+      "adaptability": 1.54,
+      "professionalism": 0.99,
+      "creativity": 1.71
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "ethics"
+    ]
+  },
+  {
+    "id": "accountant",
+    "title": "Accountant",
+    "cluster": "Finance",
+    "educationOptions": [
+      "trade",
+      "grad",
+      "workforce",
+      "cc",
+      "college"
+    ],
+    "salaryStartRange": [
+      35607,
+      49607
+    ],
+    "salaryMidRange": [
+      54942,
+      72942
+    ],
+    "baselineStress": 50,
+    "baselineWorkLife": 60,
+    "skillAffinities": {
+      "communication": 0.67,
+      "teamwork": 1.95,
+      "problemSolving": 0.67,
+      "leadership": 0.68,
+      "techLiteracy": 1.24,
+      "financialLiteracy": 1.69,
+      "timeManagement": 1.39,
+      "adaptability": 1.09,
+      "professionalism": 2.26,
+      "creativity": 0.75
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "productivity"
+    ]
+  },
+  {
+    "id": "financial-analyst",
+    "title": "Financial Analyst",
+    "cluster": "Finance",
+    "educationOptions": [
+      "grad",
+      "trade",
+      "workforce",
+      "cc"
+    ],
+    "salaryStartRange": [
+      37251,
+      51251
+    ],
+    "salaryMidRange": [
+      88959,
+      106959
+    ],
+    "baselineStress": 53,
+    "baselineWorkLife": 43,
+    "skillAffinities": {
+      "communication": 1.49,
+      "teamwork": 0.74,
+      "problemSolving": 2.31,
+      "leadership": 1.4300000000000002,
+      "techLiteracy": 1.7200000000000002,
+      "financialLiteracy": 1.5,
+      "timeManagement": 1.4,
+      "adaptability": 1.51,
+      "professionalism": 1.44,
+      "creativity": 1.35
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "productivity"
+    ]
+  },
+  {
+    "id": "loan-officer",
+    "title": "Loan Officer",
+    "cluster": "Finance",
+    "educationOptions": [
+      "trade",
+      "grad",
+      "workforce",
+      "college",
+      "cc"
+    ],
+    "salaryStartRange": [
+      40055,
+      54055
+    ],
+    "salaryMidRange": [
+      87329,
+      105329
+    ],
+    "baselineStress": 62,
+    "baselineWorkLife": 70,
+    "skillAffinities": {
+      "communication": 1.65,
+      "teamwork": 1.04,
+      "problemSolving": 1.14,
+      "leadership": 0.61,
+      "techLiteracy": 1.44,
+      "financialLiteracy": 1.57,
+      "timeManagement": 1.09,
+      "adaptability": 1.39,
+      "professionalism": 1.53,
+      "creativity": 2.38
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "productivity"
+    ]
+  },
+  {
+    "id": "tax-specialist",
+    "title": "Tax Specialist",
+    "cluster": "Finance",
+    "educationOptions": [
+      "grad",
+      "cc",
+      "college",
+      "workforce"
+    ],
+    "salaryStartRange": [
+      51741,
+      65741
+    ],
+    "salaryMidRange": [
+      96026,
+      114026
+    ],
+    "baselineStress": 46,
+    "baselineWorkLife": 40,
+    "skillAffinities": {
+      "communication": 0.83,
+      "teamwork": 0.61,
+      "problemSolving": 1.13,
+      "leadership": 1.9000000000000001,
+      "techLiteracy": 1.25,
+      "financialLiteracy": 1.04,
+      "timeManagement": 2.09,
+      "adaptability": 2.13,
+      "professionalism": 0.84,
+      "creativity": 1.1
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "ethics"
+    ]
+  },
+  {
+    "id": "insurance-underwriter",
+    "title": "Insurance Underwriter",
+    "cluster": "Finance",
+    "educationOptions": [
+      "trade",
+      "cc",
+      "grad"
+    ],
+    "salaryStartRange": [
+      47172,
+      61172
+    ],
+    "salaryMidRange": [
+      98706,
+      116706
+    ],
+    "baselineStress": 58,
+    "baselineWorkLife": 45,
+    "skillAffinities": {
+      "communication": 1.11,
+      "teamwork": 2.19,
+      "problemSolving": 0.8,
+      "leadership": 0.9,
+      "techLiteracy": 0.9,
+      "financialLiteracy": 1.15,
+      "timeManagement": 1.57,
+      "adaptability": 1.3,
+      "professionalism": 1.86,
+      "creativity": 0.68
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "ethics"
+    ]
+  },
+  {
+    "id": "civil-engineering-technician",
+    "title": "Civil Engineering Technician",
+    "cluster": "Engineering",
+    "educationOptions": [
+      "trade",
+      "college",
+      "grad",
+      "cc"
+    ],
+    "salaryStartRange": [
+      41330,
+      55330
+    ],
+    "salaryMidRange": [
+      62746,
+      80746
+    ],
+    "baselineStress": 66,
+    "baselineWorkLife": 60,
+    "skillAffinities": {
+      "communication": 1.32,
+      "teamwork": 1.75,
+      "problemSolving": 1.9200000000000002,
+      "leadership": 0.76,
+      "techLiteracy": 1.33,
+      "financialLiteracy": 0.64,
+      "timeManagement": 1.58,
+      "adaptability": 1.41,
+      "professionalism": 1.23,
+      "creativity": 1.67
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "ethics"
+    ]
+  },
+  {
+    "id": "mechanical-designer",
+    "title": "Mechanical Designer",
+    "cluster": "Engineering",
+    "educationOptions": [
+      "grad",
+      "trade",
+      "college",
+      "workforce",
+      "cc"
+    ],
+    "salaryStartRange": [
+      40832,
+      54832
+    ],
+    "salaryMidRange": [
+      87545,
+      105545
+    ],
+    "baselineStress": 43,
+    "baselineWorkLife": 66,
+    "skillAffinities": {
+      "communication": 2.3600000000000003,
+      "teamwork": 0.72,
+      "problemSolving": 1.2,
+      "leadership": 1.01,
+      "techLiteracy": 0.72,
+      "financialLiteracy": 0.9,
+      "timeManagement": 0.85,
+      "adaptability": 2.1500000000000004,
+      "professionalism": 1.4,
+      "creativity": 0.79
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "productivity"
+    ]
+  },
+  {
+    "id": "electrical-engineering-technician",
+    "title": "Electrical Engineering Technician",
+    "cluster": "Engineering",
+    "educationOptions": [
+      "workforce",
+      "grad",
+      "college",
+      "cc"
+    ],
+    "salaryStartRange": [
+      41431,
+      55431
+    ],
+    "salaryMidRange": [
+      72567,
+      90567
+    ],
+    "baselineStress": 52,
+    "baselineWorkLife": 54,
+    "skillAffinities": {
+      "communication": 1.19,
+      "teamwork": 0.85,
+      "problemSolving": 1.28,
+      "leadership": 2.19,
+      "techLiteracy": 1.41,
+      "financialLiteracy": 1.57,
+      "timeManagement": 1.95,
+      "adaptability": 1.09,
+      "professionalism": 1.46,
+      "creativity": 2.17
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "life-balance"
+    ]
+  },
+  {
+    "id": "environmental-engineer",
+    "title": "Environmental Engineer",
+    "cluster": "Engineering",
+    "educationOptions": [
+      "college",
+      "grad",
+      "workforce",
+      "cc",
+      "trade"
+    ],
+    "salaryStartRange": [
+      47356,
+      61356
+    ],
+    "salaryMidRange": [
+      74307,
+      92307
+    ],
+    "baselineStress": 39,
+    "baselineWorkLife": 67,
+    "skillAffinities": {
+      "communication": 0.97,
+      "teamwork": 2.21,
+      "problemSolving": 1.04,
+      "leadership": 1.28,
+      "techLiteracy": 1.36,
+      "financialLiteracy": 1.7200000000000002,
+      "timeManagement": 0.72,
+      "adaptability": 2.12,
+      "professionalism": 0.95,
+      "creativity": 1.14
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "life-balance"
+    ]
+  },
+  {
+    "id": "quality-engineer",
+    "title": "Quality Engineer",
+    "cluster": "Engineering",
+    "educationOptions": [
+      "grad",
+      "workforce",
+      "trade",
+      "college"
+    ],
+    "salaryStartRange": [
+      55800,
+      69800
+    ],
+    "salaryMidRange": [
+      107286,
+      125286
+    ],
+    "baselineStress": 47,
+    "baselineWorkLife": 64,
+    "skillAffinities": {
+      "communication": 1.2,
+      "teamwork": 1.12,
+      "problemSolving": 1.54,
+      "leadership": 1.31,
+      "techLiteracy": 1.59,
+      "financialLiteracy": 1.3,
+      "timeManagement": 1.85,
+      "adaptability": 1.27,
+      "professionalism": 1.6,
+      "creativity": 1.93
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "life-balance"
+    ]
+  },
+  {
+    "id": "elementary-teacher",
+    "title": "Elementary Teacher",
+    "cluster": "Education & Training",
+    "educationOptions": [
+      "college",
+      "cc",
+      "trade"
+    ],
+    "salaryStartRange": [
+      42629,
+      56629
+    ],
+    "salaryMidRange": [
+      79692,
+      97692
+    ],
+    "baselineStress": 36,
+    "baselineWorkLife": 61,
+    "skillAffinities": {
+      "communication": 1.32,
+      "teamwork": 0.76,
+      "problemSolving": 1.38,
+      "leadership": 1.0,
+      "techLiteracy": 1.67,
+      "financialLiteracy": 0.78,
+      "timeManagement": 1.4700000000000002,
+      "adaptability": 1.38,
+      "professionalism": 1.4100000000000001,
+      "creativity": 1.51
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "ethics"
+    ]
+  },
+  {
+    "id": "school-counselor",
+    "title": "School Counselor",
+    "cluster": "Education & Training",
+    "educationOptions": [
+      "trade",
+      "grad",
+      "college",
+      "cc",
+      "workforce"
+    ],
+    "salaryStartRange": [
+      43153,
+      57153
+    ],
+    "salaryMidRange": [
+      94597,
+      112597
+    ],
+    "baselineStress": 37,
+    "baselineWorkLife": 52,
+    "skillAffinities": {
+      "communication": 1.11,
+      "teamwork": 1.34,
+      "problemSolving": 1.02,
+      "leadership": 1.76,
+      "techLiteracy": 2.06,
+      "financialLiteracy": 0.62,
+      "timeManagement": 1.11,
+      "adaptability": 1.55,
+      "professionalism": 1.29,
+      "creativity": 1.8
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "ethics"
+    ]
+  },
+  {
+    "id": "instructional-designer",
+    "title": "Instructional Designer",
+    "cluster": "Education & Training",
+    "educationOptions": [
+      "trade",
+      "cc",
+      "college",
+      "workforce",
+      "grad"
+    ],
+    "salaryStartRange": [
+      50455,
+      64455
+    ],
+    "salaryMidRange": [
+      92585,
+      110585
+    ],
+    "baselineStress": 64,
+    "baselineWorkLife": 67,
+    "skillAffinities": {
+      "communication": 1.16,
+      "teamwork": 0.65,
+      "problemSolving": 0.9,
+      "leadership": 1.34,
+      "techLiteracy": 2.4000000000000004,
+      "financialLiteracy": 1.96,
+      "timeManagement": 0.96,
+      "adaptability": 2.14,
+      "professionalism": 0.99,
+      "creativity": 1.0
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "life-balance"
+    ]
+  },
+  {
+    "id": "special-education-teacher",
+    "title": "Special Education Teacher",
+    "cluster": "Education & Training",
+    "educationOptions": [
+      "college",
+      "cc",
+      "trade"
+    ],
+    "salaryStartRange": [
+      49096,
+      63096
+    ],
+    "salaryMidRange": [
+      87840,
+      105840
+    ],
+    "baselineStress": 62,
+    "baselineWorkLife": 50,
+    "skillAffinities": {
+      "communication": 1.39,
+      "teamwork": 0.79,
+      "problemSolving": 2.0300000000000002,
+      "leadership": 0.77,
+      "techLiteracy": 1.57,
+      "financialLiteracy": 1.04,
+      "timeManagement": 1.51,
+      "adaptability": 1.33,
+      "professionalism": 2.01,
+      "creativity": 1.6600000000000001
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "productivity"
+    ]
+  },
+  {
+    "id": "career-coach",
+    "title": "Career Coach",
+    "cluster": "Education & Training",
+    "educationOptions": [
+      "cc",
+      "workforce",
+      "grad",
+      "college"
+    ],
+    "salaryStartRange": [
+      49940,
+      63940
+    ],
+    "salaryMidRange": [
+      75531,
+      93531
+    ],
+    "baselineStress": 48,
+    "baselineWorkLife": 54,
+    "skillAffinities": {
+      "communication": 0.67,
+      "teamwork": 0.83,
+      "problemSolving": 0.92,
+      "leadership": 1.53,
+      "techLiteracy": 1.56,
+      "financialLiteracy": 0.64,
+      "timeManagement": 1.41,
+      "adaptability": 1.42,
+      "professionalism": 2.1500000000000004,
+      "creativity": 2.08
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "ethics"
+    ]
+  },
+  {
+    "id": "graphic-designer",
+    "title": "Graphic Designer",
+    "cluster": "Arts, A/V Technology & Communications",
+    "educationOptions": [
+      "workforce",
+      "grad",
+      "trade"
+    ],
+    "salaryStartRange": [
+      35638,
+      49638
+    ],
+    "salaryMidRange": [
+      79833,
+      97833
+    ],
+    "baselineStress": 49,
+    "baselineWorkLife": 66,
+    "skillAffinities": {
+      "communication": 1.05,
+      "teamwork": 2.1500000000000004,
+      "problemSolving": 1.57,
+      "leadership": 1.6400000000000001,
+      "techLiteracy": 0.88,
+      "financialLiteracy": 1.15,
+      "timeManagement": 0.99,
+      "adaptability": 1.05,
+      "professionalism": 0.86,
+      "creativity": 1.9000000000000001
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "productivity"
+    ]
+  },
+  {
+    "id": "video-editor",
+    "title": "Video Editor",
+    "cluster": "Arts, A/V Technology & Communications",
+    "educationOptions": [
+      "workforce",
+      "grad",
+      "cc"
+    ],
+    "salaryStartRange": [
+      41777,
+      55777
+    ],
+    "salaryMidRange": [
+      78599,
+      96599
+    ],
+    "baselineStress": 47,
+    "baselineWorkLife": 60,
+    "skillAffinities": {
+      "communication": 0.76,
+      "teamwork": 2.2199999999999998,
+      "problemSolving": 1.25,
+      "leadership": 1.39,
+      "techLiteracy": 1.4300000000000002,
+      "financialLiteracy": 0.99,
+      "timeManagement": 1.48,
+      "adaptability": 1.94,
+      "professionalism": 1.16,
+      "creativity": 0.85
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "ethics"
+    ]
+  },
+  {
+    "id": "journalist",
+    "title": "Journalist",
+    "cluster": "Arts, A/V Technology & Communications",
+    "educationOptions": [
+      "grad",
+      "trade",
+      "college",
+      "cc",
+      "workforce"
+    ],
+    "salaryStartRange": [
+      39701,
+      53701
+    ],
+    "salaryMidRange": [
+      75631,
+      93631
+    ],
+    "baselineStress": 42,
+    "baselineWorkLife": 62,
+    "skillAffinities": {
+      "communication": 1.49,
+      "teamwork": 0.63,
+      "problemSolving": 1.24,
+      "leadership": 2.14,
+      "techLiteracy": 1.29,
+      "financialLiteracy": 1.45,
+      "timeManagement": 1.26,
+      "adaptability": 0.99,
+      "professionalism": 1.23,
+      "creativity": 2.37
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "productivity"
+    ]
+  },
+  {
+    "id": "social-media-manager",
+    "title": "Social Media Manager",
+    "cluster": "Arts, A/V Technology & Communications",
+    "educationOptions": [
+      "workforce",
+      "grad",
+      "cc"
+    ],
+    "salaryStartRange": [
+      51460,
+      65460
+    ],
+    "salaryMidRange": [
+      96503,
+      114503
+    ],
+    "baselineStress": 69,
+    "baselineWorkLife": 47,
+    "skillAffinities": {
+      "communication": 2.1100000000000003,
+      "teamwork": 1.14,
+      "problemSolving": 1.52,
+      "leadership": 1.4700000000000002,
+      "techLiteracy": 0.87,
+      "financialLiteracy": 1.21,
+      "timeManagement": 2.37,
+      "adaptability": 0.67,
+      "professionalism": 0.78,
+      "creativity": 0.7
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "productivity"
+    ]
+  },
+  {
+    "id": "animator",
+    "title": "Animator",
+    "cluster": "Arts, A/V Technology & Communications",
+    "educationOptions": [
+      "college",
+      "workforce",
+      "cc"
+    ],
+    "salaryStartRange": [
+      54210,
+      68210
+    ],
+    "salaryMidRange": [
+      96474,
+      114474
+    ],
+    "baselineStress": 41,
+    "baselineWorkLife": 55,
+    "skillAffinities": {
+      "communication": 0.64,
+      "teamwork": 1.93,
+      "problemSolving": 1.04,
+      "leadership": 0.73,
+      "techLiteracy": 1.8,
+      "financialLiteracy": 2.1100000000000003,
+      "timeManagement": 1.48,
+      "adaptability": 0.62,
+      "professionalism": 1.12,
+      "creativity": 0.69
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "productivity"
+    ]
+  },
+  {
+    "id": "hotel-manager",
+    "title": "Hotel Manager",
+    "cluster": "Hospitality & Tourism",
+    "educationOptions": [
+      "college",
+      "workforce",
+      "trade"
+    ],
+    "salaryStartRange": [
+      37131,
+      51131
+    ],
+    "salaryMidRange": [
+      63651,
+      81651
+    ],
+    "baselineStress": 51,
+    "baselineWorkLife": 59,
+    "skillAffinities": {
+      "communication": 1.41,
+      "teamwork": 2.26,
+      "problemSolving": 0.9,
+      "leadership": 1.02,
+      "techLiteracy": 0.85,
+      "financialLiteracy": 1.16,
+      "timeManagement": 0.93,
+      "adaptability": 1.74,
+      "professionalism": 1.38,
+      "creativity": 2.3600000000000003
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "life-balance"
+    ]
+  },
+  {
+    "id": "event-planner",
+    "title": "Event Planner",
+    "cluster": "Hospitality & Tourism",
+    "educationOptions": [
+      "workforce",
+      "trade",
+      "college",
+      "cc",
+      "grad"
+    ],
+    "salaryStartRange": [
+      38072,
+      52072
+    ],
+    "salaryMidRange": [
+      69177,
+      87177
+    ],
+    "baselineStress": 58,
+    "baselineWorkLife": 59,
+    "skillAffinities": {
+      "communication": 1.9200000000000002,
+      "teamwork": 0.7,
+      "problemSolving": 0.95,
+      "leadership": 1.17,
+      "techLiteracy": 0.64,
+      "financialLiteracy": 2.21,
+      "timeManagement": 1.25,
+      "adaptability": 0.91,
+      "professionalism": 1.7000000000000002,
+      "creativity": 0.95
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "life-balance"
+    ]
+  },
+  {
+    "id": "chef",
+    "title": "Chef",
+    "cluster": "Hospitality & Tourism",
+    "educationOptions": [
+      "cc",
+      "college",
+      "trade",
+      "grad"
+    ],
+    "salaryStartRange": [
+      40127,
+      54127
+    ],
+    "salaryMidRange": [
+      87737,
+      105737
+    ],
+    "baselineStress": 52,
+    "baselineWorkLife": 65,
+    "skillAffinities": {
+      "communication": 1.05,
+      "teamwork": 0.96,
+      "problemSolving": 1.34,
+      "leadership": 1.78,
+      "techLiteracy": 2.29,
+      "financialLiteracy": 1.48,
+      "timeManagement": 1.18,
+      "adaptability": 0.66,
+      "professionalism": 0.65,
+      "creativity": 1.09
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "life-balance"
+    ]
+  },
+  {
+    "id": "travel-advisor",
+    "title": "Travel Advisor",
+    "cluster": "Hospitality & Tourism",
+    "educationOptions": [
+      "workforce",
+      "grad",
+      "college",
+      "cc"
+    ],
+    "salaryStartRange": [
+      48077,
+      62077
+    ],
+    "salaryMidRange": [
+      99339,
+      117339
+    ],
+    "baselineStress": 45,
+    "baselineWorkLife": 36,
+    "skillAffinities": {
+      "communication": 0.75,
+      "teamwork": 2.09,
+      "problemSolving": 1.16,
+      "leadership": 2.31,
+      "techLiteracy": 1.58,
+      "financialLiteracy": 1.01,
+      "timeManagement": 1.33,
+      "adaptability": 0.65,
+      "professionalism": 0.7,
+      "creativity": 1.15
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "life-balance"
+    ]
+  },
+  {
+    "id": "restaurant-supervisor",
+    "title": "Restaurant Supervisor",
+    "cluster": "Hospitality & Tourism",
+    "educationOptions": [
+      "workforce",
+      "cc",
+      "trade",
+      "grad"
+    ],
+    "salaryStartRange": [
+      48840,
+      62840
+    ],
+    "salaryMidRange": [
+      100360,
+      118360
+    ],
+    "baselineStress": 62,
+    "baselineWorkLife": 36,
+    "skillAffinities": {
+      "communication": 1.19,
+      "teamwork": 1.5,
+      "problemSolving": 1.09,
+      "leadership": 2.21,
+      "techLiteracy": 0.82,
+      "financialLiteracy": 1.6,
+      "timeManagement": 1.09,
+      "adaptability": 1.5,
+      "professionalism": 1.6400000000000001,
+      "creativity": 1.05
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "ethics"
+    ]
+  },
+  {
+    "id": "social-worker",
+    "title": "Social Worker",
+    "cluster": "Human Services",
+    "educationOptions": [
+      "grad",
+      "cc",
+      "college",
+      "trade"
+    ],
+    "salaryStartRange": [
+      40716,
+      54716
+    ],
+    "salaryMidRange": [
+      83666,
+      101666
+    ],
+    "baselineStress": 67,
+    "baselineWorkLife": 66,
+    "skillAffinities": {
+      "communication": 1.48,
+      "teamwork": 2.02,
+      "problemSolving": 1.11,
+      "leadership": 1.18,
+      "techLiteracy": 1.03,
+      "financialLiteracy": 0.95,
+      "timeManagement": 1.59,
+      "adaptability": 0.61,
+      "professionalism": 2.3600000000000003,
+      "creativity": 1.3
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "life-balance"
+    ]
+  },
+  {
+    "id": "substance-abuse-counselor",
+    "title": "Substance Abuse Counselor",
+    "cluster": "Human Services",
+    "educationOptions": [
+      "college",
+      "cc",
+      "grad",
+      "workforce"
+    ],
+    "salaryStartRange": [
+      42240,
+      56240
+    ],
+    "salaryMidRange": [
+      94178,
+      112178
+    ],
+    "baselineStress": 61,
+    "baselineWorkLife": 72,
+    "skillAffinities": {
+      "communication": 1.71,
+      "teamwork": 0.9,
+      "problemSolving": 1.11,
+      "leadership": 1.19,
+      "techLiteracy": 1.15,
+      "financialLiteracy": 2.38,
+      "timeManagement": 0.76,
+      "adaptability": 1.24,
+      "professionalism": 1.59,
+      "creativity": 2.14
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "ethics"
+    ]
+  },
+  {
+    "id": "community-outreach-specialist",
+    "title": "Community Outreach Specialist",
+    "cluster": "Human Services",
+    "educationOptions": [
+      "trade",
+      "cc",
+      "grad",
+      "college"
+    ],
+    "salaryStartRange": [
+      40475,
+      54475
+    ],
+    "salaryMidRange": [
+      58790,
+      76790
+    ],
+    "baselineStress": 59,
+    "baselineWorkLife": 52,
+    "skillAffinities": {
+      "communication": 1.86,
+      "teamwork": 1.4,
+      "problemSolving": 1.77,
+      "leadership": 1.35,
+      "techLiteracy": 1.8800000000000001,
+      "financialLiteracy": 0.94,
+      "timeManagement": 1.06,
+      "adaptability": 0.72,
+      "professionalism": 0.95,
+      "creativity": 1.02
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "life-balance"
+    ]
+  },
+  {
+    "id": "childcare-director",
+    "title": "Childcare Director",
+    "cluster": "Human Services",
+    "educationOptions": [
+      "college",
+      "workforce",
+      "trade"
+    ],
+    "salaryStartRange": [
+      47206,
+      61206
+    ],
+    "salaryMidRange": [
+      92780,
+      110780
+    ],
+    "baselineStress": 52,
+    "baselineWorkLife": 62,
+    "skillAffinities": {
+      "communication": 1.74,
+      "teamwork": 2.31,
+      "problemSolving": 0.82,
+      "leadership": 1.43,
+      "techLiteracy": 2.35,
+      "financialLiteracy": 1.0,
+      "timeManagement": 1.03,
+      "adaptability": 0.66,
+      "professionalism": 0.81,
+      "creativity": 0.75
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "life-balance"
+    ]
+  },
+  {
+    "id": "case-manager",
+    "title": "Case Manager",
+    "cluster": "Human Services",
+    "educationOptions": [
+      "college",
+      "workforce",
+      "grad"
+    ],
+    "salaryStartRange": [
+      57853,
+      71853
+    ],
+    "salaryMidRange": [
+      88136,
+      106136
+    ],
+    "baselineStress": 35,
+    "baselineWorkLife": 40,
+    "skillAffinities": {
+      "communication": 1.03,
+      "teamwork": 2.35,
+      "problemSolving": 0.65,
+      "leadership": 0.82,
+      "techLiteracy": 1.82,
+      "financialLiteracy": 0.65,
+      "timeManagement": 1.25,
+      "adaptability": 1.53,
+      "professionalism": 2.13,
+      "creativity": 1.28
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "life-balance"
+    ]
+  },
+  {
+    "id": "city-planner",
+    "title": "City Planner",
+    "cluster": "Government & Public Administration",
+    "educationOptions": [
+      "grad",
+      "cc",
+      "trade",
+      "workforce",
+      "college"
+    ],
+    "salaryStartRange": [
+      42555,
+      56555
+    ],
+    "salaryMidRange": [
+      66269,
+      84269
+    ],
+    "baselineStress": 59,
+    "baselineWorkLife": 42,
+    "skillAffinities": {
+      "communication": 1.27,
+      "teamwork": 0.89,
+      "problemSolving": 1.11,
+      "leadership": 1.51,
+      "techLiteracy": 1.52,
+      "financialLiteracy": 1.45,
+      "timeManagement": 1.51,
+      "adaptability": 0.99,
+      "professionalism": 2.31,
+      "creativity": 0.8
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "productivity"
+    ]
+  },
+  {
+    "id": "public-health-inspector",
+    "title": "Public Health Inspector",
+    "cluster": "Government & Public Administration",
+    "educationOptions": [
+      "grad",
+      "trade",
+      "college",
+      "cc",
+      "workforce"
+    ],
+    "salaryStartRange": [
+      37185,
+      51185
+    ],
+    "salaryMidRange": [
+      55746,
+      73746
+    ],
+    "baselineStress": 57,
+    "baselineWorkLife": 52,
+    "skillAffinities": {
+      "communication": 1.46,
+      "teamwork": 1.23,
+      "problemSolving": 0.9,
+      "leadership": 1.5,
+      "techLiteracy": 0.7,
+      "financialLiteracy": 1.11,
+      "timeManagement": 1.67,
+      "adaptability": 0.85,
+      "professionalism": 1.55,
+      "creativity": 0.86
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "productivity"
+    ]
+  },
+  {
+    "id": "emergency-dispatcher",
+    "title": "Emergency Dispatcher",
+    "cluster": "Government & Public Administration",
+    "educationOptions": [
+      "trade",
+      "cc",
+      "college",
+      "grad",
+      "workforce"
+    ],
+    "salaryStartRange": [
+      50393,
+      64393
+    ],
+    "salaryMidRange": [
+      88433,
+      106433
+    ],
+    "baselineStress": 52,
+    "baselineWorkLife": 66,
+    "skillAffinities": {
+      "communication": 0.81,
+      "teamwork": 0.97,
+      "problemSolving": 1.87,
+      "leadership": 0.94,
+      "techLiteracy": 1.21,
+      "financialLiteracy": 1.58,
+      "timeManagement": 1.48,
+      "adaptability": 1.29,
+      "professionalism": 1.93,
+      "creativity": 0.66
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "productivity"
+    ]
+  },
+  {
+    "id": "policy-analyst",
+    "title": "Policy Analyst",
+    "cluster": "Government & Public Administration",
+    "educationOptions": [
+      "grad",
+      "trade",
+      "workforce",
+      "cc"
+    ],
+    "salaryStartRange": [
+      44439,
+      58439
+    ],
+    "salaryMidRange": [
+      70822,
+      88822
+    ],
+    "baselineStress": 43,
+    "baselineWorkLife": 51,
+    "skillAffinities": {
+      "communication": 1.63,
+      "teamwork": 1.24,
+      "problemSolving": 1.43,
+      "leadership": 0.65,
+      "techLiteracy": 0.77,
+      "financialLiteracy": 1.52,
+      "timeManagement": 1.16,
+      "adaptability": 1.1,
+      "professionalism": 2.06,
+      "creativity": 0.91
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "productivity"
+    ]
+  },
+  {
+    "id": "parks-program-coordinator",
+    "title": "Parks Program Coordinator",
+    "cluster": "Government & Public Administration",
+    "educationOptions": [
+      "grad",
+      "workforce",
+      "trade",
+      "college"
+    ],
+    "salaryStartRange": [
+      57152,
+      71152
+    ],
+    "salaryMidRange": [
+      97504,
+      115504
+    ],
+    "baselineStress": 52,
+    "baselineWorkLife": 68,
+    "skillAffinities": {
+      "communication": 0.98,
+      "teamwork": 0.72,
+      "problemSolving": 0.95,
+      "leadership": 1.51,
+      "techLiteracy": 2.3,
+      "financialLiteracy": 1.54,
+      "timeManagement": 1.17,
+      "adaptability": 0.95,
+      "professionalism": 0.69,
+      "creativity": 1.6
+    },
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "opportunity",
+      "ethics"
+    ]
+  }
+]

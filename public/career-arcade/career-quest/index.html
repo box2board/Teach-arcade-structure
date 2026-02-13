@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0f172a" />
+  <title>Career Quest | Scenario-Based Career and Money Simulator</title>
+  <meta name="description" content="Play Career Quest, a classroom-ready simulation where students make career, education, workplace, and money decisions over five in-game years." />
+  <link rel="canonical" href="https://teacharcade.com/career-arcade/career-quest/" />
+  <link rel="stylesheet" href="/assets/styles.css?v=1" />
+  <link rel="stylesheet" href="/career-arcade/career-quest/career-quest.css" />
+</head>
+<body>
+  <div id="site-header"></div>
+  <script src="/assets/scripts/nav.js?v=5" defer></script>
+
+  <main class="container cq-page" id="app">
+    <nav class="cq-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span>&gt;</span> <a href="/career-arcade/">Career Arcade</a> <span>&gt;</span> <span>Career Quest</span>
+    </nav>
+
+    <header class="cq-hero">
+      <h1>Career Quest</h1>
+      <p>Scenario-based career and money decisions—see where your choices lead.</p>
+    </header>
+
+    <section class="cq-seo-block">
+      <p>Career Quest helps students practice practical decision-making before they face these choices in real life. In each run, students explore career fit, choose an education path, manage stress and performance, and adapt to workplace or financial curveballs over five simulated years.</p>
+      <p>Teachers can quickly tune the challenge level, cost-of-living pressure, and career availability to match class goals. Because the simulation is anonymous and browser-based, it works well for stations, advisory periods, or whole-group discussion with minimal setup.</p>
+    </section>
+
+    <details class="cq-settings" open>
+      <summary>Teacher Settings</summary>
+      <form id="settings-form" class="cq-settings-grid" aria-label="Teacher settings form"></form>
+    </details>
+
+    <section class="cq-controls" aria-label="Run controls">
+      <button id="start-run" class="btn" type="button">Start New Run</button>
+      <button id="continue-run" class="btn secondary" type="button">Continue Saved Run</button>
+      <button id="reset-run" class="btn danger" type="button" aria-label="Reset current run">Reset Run</button>
+      <p id="storage-warning" class="cq-warning" hidden></p>
+    </section>
+
+    <section id="screen" class="cq-screen" aria-live="polite"></section>
+  </main>
+
+  <footer>
+    © <script>document.write(new Date().getFullYear())</script> Teach Arcade •
+    <a href="/privacy.html">Privacy</a> •
+    <a href="/terms.html">Terms</a>
+  </footer>
+
+  <script src="/career-arcade/career-quest/career-quest.js" defer></script>
+</body>
+</html>

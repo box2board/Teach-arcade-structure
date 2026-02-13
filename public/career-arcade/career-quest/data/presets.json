@@ -1,0 +1,32 @@
+[
+  {
+    "id": "advisory-default",
+    "name": "Advisory Default",
+    "difficulty": "normal",
+    "costOfLiving": "average",
+    "randomEvents": true,
+    "allowOverride": true,
+    "allowReplay": true,
+    "clusters": ["Health Science","Information Technology","Business","Education & Training","Engineering","Arts, A/V Technology & Communications"]
+  },
+  {
+    "id": "finance-focus",
+    "name": "Finance Focus",
+    "difficulty": "hard",
+    "costOfLiving": "high",
+    "randomEvents": true,
+    "allowOverride": false,
+    "allowReplay": false,
+    "clusters": ["Business","Finance","Hospitality & Tourism","Human Services"]
+  },
+  {
+    "id": "intro-careers",
+    "name": "Intro Careers",
+    "difficulty": "easy",
+    "costOfLiving": "low",
+    "randomEvents": false,
+    "allowOverride": true,
+    "allowReplay": true,
+    "clusters": ["Education & Training","Government & Public Administration","Health Science","Information Technology"]
+  }
+]
