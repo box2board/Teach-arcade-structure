@@ -51,6 +51,7 @@
     { label: "Subjects", href: "/subjects/" },
     { label: "Arcade Games", href: "/arcade-review-games/" },
     { label: "Brain Arcade", href: "/brain-arcade/" },
+    { label: "Career Arcade", href: "/career-arcade/" },
     { label: "Teacher Tools", href: "/tools/" },
     { label: "Escape Rooms", href: "/escape/" },
     { label: "Playbook", href: "/playbook/" },
