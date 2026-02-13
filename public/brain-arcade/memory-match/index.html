@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0f172a" />
+
+  <title>Memory Match | Brain Arcade | Teach Arcade</title>
+  <meta name="description" content="Play Memory Match on Teach Arcade: flip cards, match classroom-friendly emojis, and train memory with multiple difficulty levels and teacher controls." />
+  <link rel="canonical" href="https://teacharcade.com/brain-arcade/memory-match/" />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+
+  <link rel="stylesheet" href="/assets/styles.css?v=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
+  <link rel="stylesheet" href="/brain-arcade/memory-match/memory-match.css" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Teach Arcade" />
+  <meta property="og:title" content="Memory Match | Brain Arcade | Teach Arcade" />
+  <meta property="og:description" content="Flip cards, match emojis, and sharpen focus with adjustable difficulty and theme packs." />
+  <meta property="og:url" content="https://teacharcade.com/brain-arcade/memory-match/" />
+  <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Memory Match | Brain Arcade | Teach Arcade" />
+  <meta name="twitter:description" content="A classroom-friendly emoji memory game with levels, theme packs, and personal best tracking." />
+  <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Memory Match",
+    "url": "https://teacharcade.com/brain-arcade/memory-match/",
+    "description": "Flip cards, match emojis, and train memory with multiple difficulty options.",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Teach Arcade",
+      "url": "https://teacharcade.com/"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Memory Match",
+    "applicationCategory": "educationalApplication",
+    "operatingSystem": "Web",
+    "url": "https://teacharcade.com/brain-arcade/memory-match/",
+    "description": "A browser-based emoji matching game for memory, focus, and classroom brain breaks.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Teach Arcade",
+      "url": "https://teacharcade.com/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div id="site-header"></div>
+  <script src="/assets/scripts/nav.js?v=5" defer></script>
+
+  <main class="container memory-page">
+    <section class="memory-hero">
+      <div>
+        <p class="eyebrow">Brain Arcade</p>
+        <h1>Memory Match</h1>
+        <p class="subtitle">Flip the cards. Match the emojis. Train your brain.</p>
+      </div>
+      <a class="button secondary" href="/brain-arcade/" aria-label="Back to Brain Arcade">Back to Brain Arcade</a>
+    </section>
+
+    <section class="game-shell" aria-label="Memory Match game area">
+      <div class="controls-bar">
+        <label>
+          Difficulty
+          <select id="difficulty-select" aria-label="Select difficulty">
+            <option value="starter">Starter</option>
+            <option value="standard" selected>Standard</option>
+            <option value="challenge">Challenge</option>
+            <option value="expert">Expert</option>
+            <option value="teacher">Teacher Mode</option>
+          </select>
+        </label>
+
+        <label>
+          Theme
+          <select id="theme-select" aria-label="Select theme">
+            <option value="school">School Supplies</option>
+            <option value="math">Math &amp; Shapes</option>
+            <option value="science">Science Lab</option>
+            <option value="world">World &amp; Geography</option>
+            <option value="arts">Arts &amp; Music</option>
+            <option value="sports">Sports &amp; Fitness</option>
+            <option value="food">Food</option>
+            <option value="animals">Animals</option>
+          </select>
+        </label>
+
+        <div class="control-buttons">
+          <button class="button" id="restart-btn">Restart</button>
+          <button class="button secondary" id="hint-btn">Hint</button>
+          <button class="button secondary" id="how-to-btn">How to Play</button>
+          <button class="button secondary" id="teacher-btn">Teacher Controls</button>
+        </div>
+      </div>
+
+      <div class="stats-row" aria-live="polite">
+        <div class="stat"><span>Moves</span><strong id="moves">0</strong></div>
+        <div class="stat"><span>Time</span><strong id="time">00:00</strong></div>
+        <div class="stat"><span>Accuracy</span><strong id="accuracy">100%</strong></div>
+        <div class="stat"><span>Matches</span><strong id="matches">0/8</strong></div>
+      </div>
+
+      <div class="best-row" id="best-panel" aria-live="polite">Personal Best: No saved score yet.</div>
+
+      <div class="status-row">
+        <p id="status-text">Find all matching emoji pairs.</p>
+        <div id="strikes-wrap" hidden>Strikes: <strong id="strikes">0/3</strong></div>
+      </div>
+
+      <div class="board-wrap">
+        <div id="game-board" class="game-board" role="grid" aria-label="Memory Match card grid"></div>
+      </div>
+    </section>
+
+    <div class="ad-slot" aria-label="Advertisement">Ad Slot</div>
+
+    <section class="info-grid">
+      <article class="info-card">
+        <h2>Classroom Ideas</h2>
+        <ul>
+          <li>Use Starter mode as a 5-minute morning bell-ringer.</li>
+          <li>Assign different themes by content area for station rotations.</li>
+          <li>Run a partner challenge where teams explain their memory strategy.</li>
+          <li>Have students predict moves before flipping for metacognition practice.</li>
+          <li>Use Teacher Mode for differentiated pairs across groups.</li>
+          <li>Host a weekly “personal best” reflection with growth goals.</li>
+          <li>Pair this game with vocabulary review by naming each emoji aloud.</li>
+        </ul>
+      </article>
+
+      <article class="info-card">
+        <h2>Accessibility + Tips</h2>
+        <ul>
+          <li>Cards are keyboard focusable. Press <strong>Enter</strong> or <strong>Space</strong> to flip.</li>
+          <li>Press <strong>R</strong> anytime to restart with the current settings.</li>
+          <li>Use larger screens in landscape for Expert mode comfort.</li>
+          <li>If you prefer reduced motion, flip animations are minimized automatically.</li>
+          <li>Touch controls are optimized for tablets and Chromebooks.</li>
+        </ul>
+      </article>
+
+      <article class="info-card">
+        <h2>Privacy note</h2>
+        <p>
+          Memory Match runs entirely in your browser. Scores are saved locally on your device only.
+          Teach Arcade does not collect student gameplay data from this activity.
+        </p>
+      </article>
+    </section>
+  </main>
+
+  <aside class="teacher-drawer" id="teacher-drawer" aria-label="Teacher Controls" aria-hidden="true">
+    <h2>Teacher Controls</h2>
+    <label>Teacher pairs
+      <select id="teacher-pairs">
+        <option value="6">6 pairs</option>
+        <option value="8" selected>8 pairs</option>
+        <option value="12">12 pairs</option>
+        <option value="18">18 pairs</option>
+      </select>
+    </label>
+    <label><input type="checkbox" id="toggle-timer" checked /> Show timer</label>
+    <label><input type="checkbox" id="toggle-hints" /> Allow hints</label>
+    <label><input type="checkbox" id="toggle-strikes" /> Use 3 strikes</label>
+    <label><input type="checkbox" id="toggle-sound" /> Sound effects</label>
+    <button class="button" id="apply-teacher">Apply &amp; Restart</button>
+  </aside>
+
+  <dialog id="how-to-modal" class="how-to-modal">
+    <h2>How to Play</h2>
+    <ol>
+      <li>Flip two cards each turn to find matching emojis.</li>
+      <li>Matched pairs stay revealed. Mismatches flip back after a short delay.</li>
+      <li>Clear every pair to win. Fewer moves and faster times earn better scores.</li>
+      <li>Use Teacher Controls to customize timer, hints, strikes, and sound.</li>
+    </ol>
+    <button class="button" id="close-how-to">Close</button>
+  </dialog>
+
+  <footer class="footer">
+    © <script>document.write(new Date().getFullYear())</script> Teach Arcade •
+    <a href="/privacy.html">Privacy</a> •
+    <a href="/terms.html">Terms</a>
+  </footer>
+
+  <script src="/brain-arcade/memory-match/memory-match.js"></script>
+</body>
+</html>

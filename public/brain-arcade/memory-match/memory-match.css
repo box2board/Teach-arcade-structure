@@ -1,0 +1,207 @@
+:root {
+  --mm-bg: #0f172a;
+  --mm-panel: #111c35;
+  --mm-card: #182847;
+  --mm-border: #334155;
+  --mm-text: #e2e8f0;
+  --mm-muted: #94a3b8;
+  --mm-accent: #22c55e;
+  --mm-warn: #f97316;
+}
+
+.memory-page {
+  padding: 24px 16px 48px;
+  color: var(--mm-text);
+}
+
+.memory-hero,
+.game-shell,
+.info-card,
+.best-row,
+.status-row,
+.teacher-drawer,
+.how-to-modal {
+  background: var(--mm-panel);
+  border: 1px solid var(--mm-border);
+  border-radius: 14px;
+}
+
+.memory-hero {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-end;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.memory-hero h1 {
+  margin: 0;
+  color: #fff;
+}
+
+.subtitle { margin: 8px 0 0; color: var(--mm-muted); }
+
+.game-shell { padding: 16px; }
+
+.controls-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 10px;
+  align-items: end;
+}
+
+.controls-bar label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font: 700 13px/1.2 Poppins, sans-serif;
+}
+
+select {
+  border-radius: 10px;
+  border: 1px solid #475569;
+  background: #0b1222;
+  color: #f8fafc;
+  min-height: 40px;
+  padding: 8px 10px;
+}
+
+.control-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.stats-row {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+}
+
+.stat {
+  background: #0b1222;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 10px;
+}
+
+.stat span {
+  display: block;
+  font: 700 11px/1.2 Poppins, sans-serif;
+  color: var(--mm-muted);
+  text-transform: uppercase;
+}
+
+.stat strong {
+  font: 700 20px/1.2 Poppins, sans-serif;
+  color: #fff;
+}
+
+.best-row,
+.status-row {
+  margin-top: 10px;
+  padding: 10px 12px;
+  color: var(--mm-muted);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+#status-text { margin: 0; }
+#strikes-wrap { color: #fed7aa; }
+
+.board-wrap { margin-top: 12px; }
+
+.game-board {
+  display: grid;
+  gap: 10px;
+}
+
+.memory-card {
+  position: relative;
+  border: 1px solid #475569;
+  border-radius: 12px;
+  background: var(--mm-card);
+  color: #fff;
+  min-height: clamp(68px, 12vw, 110px);
+  cursor: pointer;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  transition: transform .2s ease, background .2s ease;
+}
+
+.memory-card:focus-visible {
+  outline: 3px solid #38bdf8;
+  outline-offset: 2px;
+}
+
+.memory-card .front,
+.memory-card .back {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  backface-visibility: hidden;
+  border-radius: 12px;
+}
+
+.memory-card .back { background: linear-gradient(145deg, #1d4ed8, #1e293b); }
+.memory-card .front { transform: rotateY(180deg); background: #0b1222; }
+.memory-card.is-flipped { transform: rotateY(180deg); }
+.memory-card.is-matched { background: #052e16; border-color: #16a34a; cursor: default; }
+.memory-card[disabled] { opacity: 0.95; }
+
+.info-grid {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 12px;
+}
+
+.info-card { padding: 14px; }
+.info-card h2 { margin-top: 0; color: #fff; font-size: 1.1rem; }
+.info-card ul { margin: 0; padding-left: 20px; color: var(--mm-muted); }
+.info-card p { color: var(--mm-muted); margin: 0; }
+
+.teacher-drawer {
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: min(320px, 92vw);
+  padding: 18px;
+  z-index: 40;
+  transform: translateX(102%);
+  transition: transform .2s ease;
+  background: #0b1222;
+}
+
+.teacher-drawer.open { transform: translateX(0); }
+.teacher-drawer h2 { margin-top: 0; color: #fff; }
+.teacher-drawer label { display: block; margin-bottom: 10px; color: var(--mm-text); }
+.teacher-drawer select { margin-top: 6px; width: 100%; }
+
+.how-to-modal {
+  max-width: 480px;
+  width: calc(100% - 24px);
+  color: var(--mm-text);
+  background: #0b1222;
+}
+
+.how-to-modal::backdrop { background: rgba(2, 6, 23, .7); }
+.how-to-modal h2 { margin-top: 0; color: #fff; }
+.how-to-modal ol { color: var(--mm-muted); }
+
+body { background: radial-gradient(circle at top, #172554, #020617 55%); }
+
+@media (max-width: 760px) {
+  .memory-hero { flex-direction: column; align-items: flex-start; }
+  .control-buttons .button { flex: 1 1 auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .memory-card,
+  .teacher-drawer { transition: none !important; }
+}
