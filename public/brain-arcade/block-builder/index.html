@@ -92,7 +92,9 @@
         </aside>
 
         <section class="canvas-region" aria-label="3D build area">
-          <div id="canvasFallback" class="canvas-loading">Loading 3D workspace… If this takes a while, your browser may not support WebGL. You can still use the classroom prompts below.</div>
+          <div id="canvasFallback" class="canvas-loading">
+            Loading 3D workspace… If this takes a while, your browser may not support WebGL. You can still use the classroom prompts below.
+          </div>
           <div id="canvasMount" class="canvas-mount" aria-live="polite"></div>
           <div class="touch-controls">
             <button id="rotateLeft" aria-label="Rotate selected left">⟲ Rotate</button>
@@ -123,7 +125,9 @@
         </aside>
       </div>
 
-      <footer class="hint-bar">Teacher tip: Ask students to narrate why each placed block belongs in the model to strengthen content reasoning and evidence-based thinking.</footer>
+      <footer class="hint-bar">
+        Teacher tip: Ask students to narrate why each placed block belongs in the model to strengthen content reasoning and evidence-based thinking.
+      </footer>
     </section>
 
     <section class="how-to" aria-labelledby="howto-title">
@@ -149,7 +153,11 @@
         <li><strong>SEL:</strong> Build “support systems” and discuss how constraints can be reduced.</li>
         <li><strong>Project Planning:</strong> Sequence milestones and dependencies before presentations.</li>
       </ul>
-      <p class="internal-links"><a href="/">Back to homepage</a> • <a href="/brain-arcade/">Explore Brain Arcade</a> • <a href="/tools/">Browse Teacher Tools</a></p>
+      <p class="internal-links">
+        <a href="/">Back to homepage</a> •
+        <a href="/brain-arcade/">Explore Brain Arcade</a> •
+        <a href="/tools/">Browse Teacher Tools</a>
+      </p>
     </section>
   </main>
 
@@ -165,6 +173,51 @@
     </form>
   </dialog>
 
-  <script type="module" src="/brain-arcade/block-builder/app.js"></script>
+  <!-- Fail-safe: prevent endless "Loading..." on iPad when app.js fails early -->
+  <script>
+    window.__bbFail = function (msg) {
+      const fallback = document.getElementById("canvasFallback");
+      if (fallback) {
+        fallback.textContent = msg || "3D failed to load. Please try another browser or device.";
+        fallback.style.display = "flex";
+        fallback.style.alignItems = "center";
+        fallback.style.justifyContent = "center";
+        fallback.style.textAlign = "center";
+        fallback.style.padding = "18px";
+      }
+    };
+
+    window.addEventListener("error", (e) => {
+      console.error("Block Builder error:", e.message);
+      window.__bbFail("3D failed to load: " + e.message);
+    });
+
+    window.addEventListener("unhandledrejection", (e) => {
+      console.error("Block Builder rejection:", e.reason);
+      window.__bbFail("3D failed to load: " + String(e.reason));
+    });
+  </script>
+
+  <!-- WebGL check + module import (static-site safe) -->
+  <script type="module">
+    (function () {
+      try {
+        const c = document.createElement("canvas");
+        const ok = !!(window.WebGLRenderingContext && (c.getContext("webgl") || c.getContext("experimental-webgl")));
+        if (!ok) {
+          window.__bbFail("WebGL is not available in this browser/device. You can still use the classroom prompts below.");
+          return;
+        }
+      } catch (err) {
+        window.__bbFail("WebGL check failed. You can still use the classroom prompts below.");
+        return;
+      }
+
+      import("/brain-arcade/block-builder/app.js").catch((err) => {
+        console.error("Failed to import app.js:", err);
+        window.__bbFail("3D failed to load (module import error). Most often this happens when Three.js is imported incorrectly in app.js.");
+      });
+    })();
+  </script>
 </body>
 </html>
