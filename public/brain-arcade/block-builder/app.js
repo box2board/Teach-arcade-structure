@@ -55,6 +55,7 @@ const state = {
   redo: [],
   pointer: { x: 0, y: 0 },
   canPlace: false,
+  tool: "pointer", // "pointer" or "build"
 };
 
 let renderer, scene, camera, controls, raycaster, plane, previewMesh;
@@ -135,11 +136,15 @@ function initUi() {
 
   $("downloadImage").onclick = downloadImage;
 
+  $("pointerTool").onclick = toggleTool;
+
   $("rotateLeft").onclick = () => rotate(-90);
   $("rotateRight").onclick = () => rotate(90);
   $("deleteSelected").onclick = deleteSelected;
 
   $("applyProps").onclick = applyInspector;
+
+  syncToolUI();
 
   window.addEventListener("keydown", handleKeys);
 }
@@ -170,6 +175,7 @@ function renderBlockList() {
       `;
       item.onclick = () => {
         state.selectedType = b;
+        setTool("build");
         updatePreview();
         track("block_select", { block_type: b.type });
       };
@@ -260,6 +266,7 @@ function initThree() {
   // Use clientX/clientY relative to rect (offsetX is inconsistent on iOS/Safari)
   renderer.domElement.addEventListener("pointermove", onPointerMove, { passive: true });
   renderer.domElement.addEventListener("pointerdown", onPointerDown);
+  syncToolUI();
 
   window.addEventListener("resize", onResize);
   window.addEventListener("orientationchange", onResize);
@@ -382,8 +389,37 @@ async function createBlockMesh(block) {
   meshMap.set(block.id, mesh);
 }
 
+function toggleTool() {
+  setTool(state.tool === "pointer" ? "build" : "pointer");
+}
+
+function setTool(next) {
+  if (next !== "pointer" && next !== "build") return;
+  state.tool = next;
+  syncToolUI();
+}
+
+function syncToolUI() {
+  const pointerButton = $("pointerTool");
+  const isPointer = state.tool === "pointer";
+
+  if (pointerButton) {
+    pointerButton.textContent = isPointer ? "🖱 Pointer" : "🧱 Build";
+    pointerButton.setAttribute("aria-pressed", String(isPointer));
+    pointerButton.classList.toggle("is-active", isPointer);
+  }
+
+  if (previewMesh) previewMesh.visible = !isPointer;
+  if (renderer?.domElement) renderer.domElement.style.cursor = isPointer ? "grab" : "crosshair";
+}
+
 function updatePreview() {
   if (!previewMesh) return;
+  if (state.tool === "pointer") {
+    previewMesh.visible = false;
+    return;
+  }
+
   const def = state.selectedType;
 
   previewMesh.geometry = makeGeometry(def);
@@ -453,6 +489,7 @@ function onPointerDown(e) {
   }
 
   // place new block
+  if (state.tool === "pointer") return;
   if (!state.canPlace || !previewMesh) return;
 
   pushUndo();
