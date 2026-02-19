@@ -59,6 +59,10 @@ const state = {
 };
 
 let renderer, scene, camera, controls, raycaster, plane, previewMesh;
+let isDraggingBlock = false;
+let dragPlane = null;
+let dragOffset = new THREE.Vector3();
+let dragStartBlockPos = null;
 const meshMap = new Map();
 const textureCache = new Map();
 const geometryCache = new Map();
@@ -256,6 +260,8 @@ function initThree() {
   plane.receiveShadow = true;
   scene.add(plane);
 
+  dragPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
+
   previewMesh = new THREE.Mesh(
     new THREE.BoxGeometry(1, 1, 1),
     new THREE.MeshStandardMaterial({ color: "#93c5fd", transparent: true, opacity: 0.45 })
@@ -266,6 +272,8 @@ function initThree() {
   // Use clientX/clientY relative to rect (offsetX is inconsistent on iOS/Safari)
   renderer.domElement.addEventListener("pointermove", onPointerMove, { passive: true });
   renderer.domElement.addEventListener("pointerdown", onPointerDown);
+  renderer.domElement.addEventListener("pointerup", onPointerUp);
+  renderer.domElement.addEventListener("pointercancel", onPointerUp);
   syncToolUI();
 
   window.addEventListener("resize", onResize);
@@ -451,6 +459,37 @@ function getPointerNDCFromEvent(e) {
 
 function onPointerMove(e) {
   if (!renderer || !camera || !raycaster || !plane) return;
+
+  if (state.tool === "pointer" && isDraggingBlock && state.selectedId) {
+    const p = getPointerNDCFromEvent(e);
+    raycaster.setFromCamera(p, camera);
+
+    const hitPoint = new THREE.Vector3();
+    if (!raycaster.ray.intersectPlane(dragPlane, hitPoint)) return;
+
+    hitPoint.add(dragOffset);
+
+    const snappedX = Math.round(hitPoint.x);
+    const snappedZ = Math.round(hitPoint.z);
+    const mesh = meshMap.get(state.selectedId);
+    const block = state.blocks.find((b) => b.id === state.selectedId);
+    if (!mesh || !block) return;
+
+    mesh.position.set(snappedX, mesh.position.y, snappedZ);
+    block.position = [snappedX, block.position[1], snappedZ];
+
+    if ($("propX")) $("propX").value = snappedX;
+    if ($("propY")) $("propY").value = block.position[1];
+    if ($("propZ")) $("propZ").value = snappedZ;
+    return;
+  }
+
+  if (state.tool === "pointer" && previewMesh) {
+    previewMesh.visible = false;
+    state.canPlace = false;
+    return;
+  }
+
   if (moveScheduled) return;
   moveScheduled = true;
 
@@ -485,6 +524,29 @@ function onPointerDown(e) {
   if (selectable) {
     const id = selectable.object.userData.id || selectable.object.parent.userData.id;
     selectBlock(id);
+
+    if (state.tool === "pointer") {
+      const mesh = meshMap.get(id);
+      if (!mesh || !dragPlane) return;
+
+      isDraggingBlock = true;
+      controls.enabled = false;
+      dragStartBlockPos = mesh.position.clone();
+
+      const hitPoint = new THREE.Vector3();
+      if (raycaster.ray.intersectPlane(dragPlane, hitPoint)) {
+        dragOffset.copy(mesh.position).sub(hitPoint);
+      } else {
+        dragOffset.set(0, 0, 0);
+      }
+
+      try {
+        renderer.domElement.setPointerCapture(e.pointerId);
+      } catch {
+        // no-op
+      }
+    }
+
     return;
   }
 
@@ -505,6 +567,38 @@ function onPointerDown(e) {
   state.blocks.push(block);
   createBlockMesh(block);
   track("block_place", { block_type: block.type });
+}
+
+function onPointerUp(e) {
+  if (!isDraggingBlock) return;
+
+  isDraggingBlock = false;
+  controls.enabled = true;
+
+  const selected = state.blocks.find((b) => b.id === state.selectedId);
+  const moved =
+    !!selected &&
+    !!dragStartBlockPos &&
+    (selected.position[0] !== dragStartBlockPos.x || selected.position[2] !== dragStartBlockPos.z);
+
+  if (moved) {
+    // push prior state at drag-end so one undo restores pre-drag position
+    const mesh = meshMap.get(state.selectedId);
+    const finalX = mesh?.position.x ?? selected.position[0];
+    const finalZ = mesh?.position.z ?? selected.position[2];
+
+    selected.position = [dragStartBlockPos.x, selected.position[1], dragStartBlockPos.z];
+    pushUndo();
+    selected.position = [finalX, selected.position[1], finalZ];
+  }
+
+  dragStartBlockPos = null;
+
+  try {
+    renderer.domElement.releasePointerCapture(e.pointerId);
+  } catch {
+    // no-op
+  }
 }
 
 function clearSelectionVisuals() {
