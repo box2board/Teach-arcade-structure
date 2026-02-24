@@ -1,230 +1,54 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="theme-color" content="#0f172a" />
-
-  <title>Social Studies Lessons &amp; Activities | Teach Arcade</title>
-
-  <!-- Styles & Favicon -->
-  <link rel="stylesheet" href="/assets/styles.css?v=1" />
-  <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet" />
-
-  <!-- SEO -->
-  <meta name="description" content="Browse free Social Studies resources from Teach Arcade, including U.S. History, World History, Government &amp; Civics, Geography, and Economics. Classroom-ready lessons, worksheets, primary sources, and activities." />
-  <link rel="canonical" href="https://teacharcade.com/subjects/social-studies/index.html" />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Social Studies Lessons &amp; Activities | Teach Arcade" />
-  <meta property="og:description" content="Explore free Social Studies lessons, worksheets, primary sources, and activities for U.S. History, World History, Civics, Geography, and Economics." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://teacharcade.com/subjects/social-studies/index.html" />
-  <meta property="og:site_name" content="Teach Arcade" />
-  <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Social Studies Lessons &amp; Activities | Teach Arcade" />
-  <meta name="twitter:description" content="Free Social Studies resources for U.S. History, World History, Civics, Geography, and Economics." />
-  <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
-
-  <!-- JSON-LD: Breadcrumbs -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {"@type":"ListItem","position":1,"name":"Home","item":"https://teacharcade.com/"},
-      {"@type":"ListItem","position":2,"name":"Subjects","item":"https://teacharcade.com/subjects/index.html"},
-      {"@type":"ListItem","position":3,"name":"Social Studies","item":"https://teacharcade.com/subjects/social-studies/index.html"}
-    ]
-  }
-  </script>
-
-  <!-- JSON-LD: ItemList -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"ItemList",
-    "name":"Social Studies Courses",
-    "itemListElement":[
-      {"@type":"ListItem","position":1,"name":"U.S. History","url":"https://teacharcade.com/subjects/social-studies/us-history/index.html"},
-      {"@type":"ListItem","position":2,"name":"World History","url":"https://teacharcade.com/subjects/social-studies/world-history/index.html"},
-      {"@type":"ListItem","position":3,"name":"Government & Civics","url":"https://teacharcade.com/subjects/social-studies/government-political-science/index.html"},
-      {"@type":"ListItem","position":4,"name":"Geography","url":"https://teacharcade.com/subjects/social-studies/geography/index.html"},
-      {"@type":"ListItem","position":5,"name":"Economics","url":"https://teacharcade.com/subjects/social-studies/economics/index.html"}
-    ]
-  }
-  </script>
-
-  <!-- JSON-LD: CollectionPage (content-quality signal) -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"CollectionPage",
-    "name":"Social Studies",
-    "url":"https://teacharcade.com/subjects/social-studies/index.html",
-    "isPartOf":{
-      "@type":"WebSite",
-      "name":"Teach Arcade",
-      "url":"https://teacharcade.com/"
-    },
-    "about":[
-      {"@type":"Thing","name":"Social Studies"},
-      {"@type":"Thing","name":"U.S. History"},
-      {"@type":"Thing","name":"World History"},
-      {"@type":"Thing","name":"Government & Civics"},
-      {"@type":"Thing","name":"Geography"},
-      {"@type":"Thing","name":"Economics"},
-      {"@type":"Thing","name":"Primary Sources"},
-      {"@type":"Thing","name":"DBQ"},
-      {"@type":"Thing","name":"Lesson Plans"},
-      {"@type":"Thing","name":"Worksheets"},
-      {"@type":"Thing","name":"Classroom Activities"}
-    ]
-  }
-  </script>
-
-  <style>
-    /* Collapsed ad placeholders (ready for ads later) */
-    .ad-slot { width: 100%; margin: 16px 0; height: 0; overflow: hidden; }
-
-    /* SEO intro text */
-    .topic-intro p{
-      font: 400 16px/1.6 Nunito, system-ui, sans-serif;
-      color:#475569;
-      margin:0 0 12px;
-      max-width: 980px;
-    }
-
-    /* Coming Soon overlay system:
-       Add class "coming-soon" to a card to enable it. */
-    .card.coming-soon {
-      position: relative;
-      overflow: hidden;
-    }
-    .card.coming-soon .cta {
-      pointer-events: none;
-      opacity: .55;
-    }
-    .card.coming-soon::after{
-      content:"Coming Soon";
-      position:absolute;
-      inset:0;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:rgba(0,0,0,0.55);
-      color:#fff;
-      font:700 18px Poppins, sans-serif;
-      text-transform:uppercase;
-      letter-spacing:1px;
-      z-index:5;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Social Studies Teaching Hub for History, Civics, Geography, and Economics | Teach Arcade</title>
+  <meta name="description" content="Plan stronger social studies instruction with practical classroom pathways, grade-band guidance, and decision support for history, civics, geography, and economics." />
+  <link rel="canonical" href="https://teacharcade.com/subjects/social-studies/" />
+  <link rel="stylesheet" href="/assets/styles.css" />
 </head>
-
 <body>
-  <!-- Global Header mount (matches your newer pages) -->
   <div id="site-header"></div>
   <script src="/assets/scripts/nav.js?v=5" defer></script>
 
   <main class="container">
-    <nav class="breadcrumbs">
-      <a href="/">Home</a> ›
-      <a href="/subjects/index.html">Subjects</a> ›
-      Social Studies
-    </nav>
+    <h1>Social Studies Teaching Hub for Inquiry and Civic Thinking</h1>
+    <p>This Social Studies hub is designed for teachers who want students to analyze evidence, understand systems, and connect the past to present decisions. Resources are organized by major course pathways so you can build coherent units with primary sources, writing tasks, map work, and discussion structures. The emphasis is on meaningful thinking, not passive fact recall.</p>
 
-    <h1>Social Studies Lessons &amp; Classroom Resources</h1>
-    <p>Select a Social Studies course to find free lessons, worksheets, primary sources, activities, and review resources for your classroom.</p>
+    <h2>Practical classroom uses</h2>
+    <p>Use this hub for document-based instruction, thematic inquiry, and standards-aligned review. Teachers commonly select one core source set, pair it with an analysis organizer, and end with writing or debate. For short class periods, choose quick source analysis protocols. For block classes, layer source comparison, map interpretation, and argument writing in one lesson cycle.</p>
+    <p><strong>Unique classroom example:</strong> During a constitutional rights unit, students read two short court case excerpts, annotate claims and evidence, compare majority and dissent reasoning, and then write a short position statement explaining which interpretation they find more convincing and why.</p>
 
-    <!-- SEO INTRO SECTION (major AdSense/content quality boost) -->
-    <section class="topic-intro">
-      <p>
-        Teach Arcade’s Social Studies hub helps teachers find classroom-ready resources fast—organized by course and built for real instruction.
-        Each section includes free materials such as lesson plans, worksheets, primary sources, guided notes, projects, and review activities that support
-        historical thinking, civic reasoning, map skills, and economic decision-making.
-      </p>
-      <p>
-        These collections work well for stations, inquiry lessons, DBQ-style writing, document analysis, test prep, and sub days. If you’re planning a new unit
-        or building a standards-based curriculum, you can browse by course below and quickly pull resources without paywalls.
-      </p>
-      <p>
-        Start with U.S. History and World History for chronological units and major eras, use Government &amp; Civics for constitutional principles and civic participation,
-        explore Geography for regions and human-environment interactions, and use Economics for markets, tradeoffs, and real-world financial literacy connections.
-      </p>
-    </section>
+    <h2>Grade-band guidance</h2>
+    <p><strong>Elementary Social Studies:</strong> Build civic vocabulary, timeline awareness, and community connections through stories, visuals, and guided discussion.</p>
+    <p><strong>Middle School Social Studies:</strong> Strengthen sourcing and contextualization skills. Teach students to support claims with evidence from multiple documents.</p>
+    <p><strong>High School Social Studies:</strong> Increase complexity in argumentation, historiography, and policy analysis using primary and secondary source synthesis.</p>
 
-    <!-- Top Ad Placeholder -->
-    <div class="ad-slot ad-top" aria-label="Advertisement"></div>
+    <h2>When to use this resource: decision aid</h2>
+    <ul>
+      <li>Use this hub when students need structured support for evidence-based writing and discussion.</li>
+      <li>Use this hub when launching a new era or theme and you need a coherent entry sequence.</li>
+      <li>Use this hub when preparing for DBQ-style assessments or cumulative unit evaluations.</li>
+      <li>Use this hub when collaborating across courses to align civic reasoning and source analysis expectations.</li>
+    </ul>
 
-    <div class="grid" style="margin-top:18px">
-      <div class="card">
-        <h3>U.S. History</h3>
-        <p>Colonial America through the present, organized by unit.</p>
-        <a href="/subjects/social-studies/us-history/index.html" class="cta js-tile" data-tile-name="U.S. History">Open</a>
-      </div>
 
-      <div class="card">
-        <h3>World History</h3>
-        <p>Major eras, regions, and global themes across time.</p>
-        <a href="/subjects/social-studies/world-history/index.html" class="cta js-tile" data-tile-name="World History">Open</a>
-      </div>
+    <h2>Unit design and discussion structures</h2>
+    <p>Social studies instruction is strongest when content and thinking skills are taught together. A practical weekly structure is source analysis early in the week, collaborative interpretation midweek, and evidence-based writing by week's end. Use recurring prompts such as "What changed, what stayed the same, and why?" to build continuity across topics. This hub supports that model by organizing materials into course pathways while still allowing thematic connections.</p>
+    <p>For classrooms that include multilingual learners or students needing literacy support, use sentence stems, vocabulary previews, and visual timelines before deeper source analysis. Students can first annotate for gist, then revisit for evidence and perspective. This two-pass approach raises confidence and keeps historical reasoning accessible without lowering rigor.</p>
+    <h2>Assessment and civic transfer</h2>
+    <p>Use this hub during assessment cycles to shift from recall-heavy reviews to performance tasks. Ask students to evaluate competing claims, compare two documents, or explain how a historical precedent informs a modern civic issue. These tasks strengthen transfer and make social studies more relevant to students' lived experiences. The course pages linked below provide topic-specific entry points for building those assessments efficiently.</p>
 
-      <div class="card">
-        <h3>Government &amp; Civics</h3>
-        <p>Constitution, rights, institutions, and civic participation.</p>
-        <a href="/subjects/social-studies/government-political-science/index.html" class="cta js-tile" data-tile-name="Government & Civics">Open</a>
-      </div>
+    <div class="ad-slot" data-ad="in-article" aria-label="Advertisement"></div>
 
-      <div class="card">
-        <h3>Geography</h3>
-        <p>Maps, regions, and human-environment interactions.</p>
-        <a href="/subjects/social-studies/geography/index.html" class="cta js-tile" data-tile-name="Geography">Open</a>
-      </div>
-
-      <div class="card">
-        <h3>Economics</h3>
-        <p>Markets, tradeoffs, macro basics, and real-world applications.</p>
-        <a href="/subjects/social-studies/economics/index.html" class="cta js-tile" data-tile-name="Economics">Open</a>
-      </div>
+    <div class="grid">
+      <div class="card"><h3>U.S. History</h3><p>Colonial America through modern U.S. history with key turning points.</p><a href="/subjects/social-studies/us-history/" class="cta">Open</a></div>
+      <div class="card"><h3>World History</h3><p>Ancient to modern world developments, systems, and global interactions.</p><a href="/subjects/social-studies/world-history/" class="cta">Open</a></div>
+      <div class="card"><h3>Government &amp; Civics</h3><p>Constitutional principles, institutions, participation, and public policy.</p><a href="/subjects/social-studies/government-political-science/" class="cta">Open</a></div>
+      <div class="card"><h3>Geography</h3><p>Maps, regions, human-environment interaction, and spatial reasoning.</p><a href="/subjects/social-studies/geography/" class="cta">Open</a></div>
+      <div class="card"><h3>Economics</h3><p>Markets, incentives, tradeoffs, macro ideas, and personal finance links.</p><a href="/subjects/social-studies/economics/" class="cta">Open</a></div>
     </div>
-
-    <!-- Bottom Ad Placeholder -->
-    <div class="ad-slot ad-bottom" aria-label="Advertisement"></div>
   </main>
-
-  <footer>
-    © <script>document.write(new Date().getFullYear())</script> Teach Arcade •
-    <a href="/privacy.html">Privacy</a> •
-    <a href="/terms.html">Terms</a>
-  </footer>
-
-  <!-- GA4 click tracking (F) -->
-  <script>
-    (function () {
-      function track(e) {
-        var a = e.currentTarget;
-        var name = a.getAttribute('data-tile-name') || 'Unknown';
-        var href = a.getAttribute('href') || '';
-        if (typeof gtag === 'function') {
-          gtag('event', 'tile_click', {
-            tile_group: 'social-studies',
-            tile_name: name,
-            tile_href: href
-          });
-        }
-      }
-
-      document.addEventListener('DOMContentLoaded', function () {
-        document.querySelectorAll('.js-tile').forEach(function (a) {
-          a.addEventListener('click', track);
-        });
-      });
-    })();
-  </script>
 </body>
 </html>
