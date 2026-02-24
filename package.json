@@ -3,6 +3,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "node scripts/sync-interactive-content.mjs && node scripts/generate-sitemap.mjs && node scripts/generate-robots.mjs && echo 'static site'"
+    "build": "node scripts/sync-interactive-content.mjs && node scripts/generate-sitemap.mjs && node scripts/generate-robots.mjs && echo 'static site'",
+    "generate:sitemap": "node scripts/generate-sitemap.mjs",
+    "audit:content": "node scripts/adsense-content-gate.mjs",
+    "audit:links": "node scripts/check-internal-links.mjs",
+    "audit:adsense": "node scripts/generate-sitemap.mjs && node scripts/adsense-content-gate.mjs && node scripts/check-internal-links.mjs"
   }
 }
