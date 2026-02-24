@@ -1,260 +1,101 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Submit a Resource or Idea | Teach Arcade</title>
-  <meta name="description" content="Submit a classroom resource, report an issue, share feedback, or suggest a new game idea for Teach Arcade." />
-  <link rel="icon" href="/assets/images/teach-arcade-logo.png" />
-  <link rel="stylesheet" href="/assets/styles.css" />
-
-  <!-- Cloudflare Turnstile -->
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-
-  <style>
-    body{ background: radial-gradient(circle at top, #0f172a, #020617); color:#e5e7eb; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin:0; }
-    .wrap{ max-width: 920px; margin: 0 auto; padding: 28px 16px 64px; }
-    .card{ background: rgba(15,23,42,.85); border: 1px solid rgba(255,255,255,.10); border-radius: 16px; padding: 18px; box-shadow: 0 16px 40px rgba(0,0,0,.35); }
-    h1{ margin: 0 0 6px; font-size: 28px; }
-    p{ margin: 8px 0; color: rgba(229,231,235,.86); line-height: 1.5; }
-    .grid{ display:grid; grid-template-columns: 1fr; gap: 12px; margin-top: 14px; }
-    @media (min-width: 760px){ .grid.two{ grid-template-columns: 1fr 1fr; } }
-    label{ display:block; font-weight: 700; margin-bottom: 6px; }
-    input, select, textarea{
-      width: 100%; padding: 10px 12px; border-radius: 12px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(2,6,23,.55); color:#e5e7eb;
-      outline: none;
-    }
-    textarea{ min-height: 120px; resize: vertical; }
-    .muted{ color: rgba(156,163,175,.9); font-size: 13px; }
-    .btnrow{ display:flex; gap:10px; align-items:center; margin-top: 10px; flex-wrap: wrap; }
-    button{
-      background:#22c55e; color:#04110a; border:0; border-radius: 12px;
-      padding: 10px 14px; font-weight: 800; cursor: pointer;
-    }
-    button[disabled]{ opacity:.6; cursor:not-allowed; }
-    .status{ margin-top: 10px; font-weight: 700; }
-    .ok{ color:#34d399; }
-    .bad{ color:#fb7185; }
-    .note{ margin-top: 14px; padding: 12px; border-radius: 12px; background: rgba(2,6,23,.45); border:1px solid rgba(255,255,255,.10); }
-    .tiny{ font-size: 12px; }
-  </style>
-  <link rel="canonical" href="https://teacharcade.com/submit/" />
-  <meta property="og:title" content="Submit a Resource or Idea | Teach Arcade" />
-  <meta property="og:description" content="Submit a classroom resource, report an issue, share feedback, or suggest a new game idea for Teach Arcade." />
-  <meta property="og:url" content="https://teacharcade.com/submit/" />
-  <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Submit a Resource or Idea | Teach Arcade" />
-  <meta name="twitter:description" content="Submit a classroom resource, report an issue, share feedback, or suggest a new game idea for Teach Arcade." />
-  <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
-
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Submit a Resource or Request | Teach Arcade</title>
+<meta name="description" content="Submit classroom resources, activity requests, and feedback to Teach Arcade. Review scope, workflow, and response expectations before sending." />
+<link rel="canonical" href="https://teacharcade.com/submit/" />
+<link rel="stylesheet" href="/assets/styles.css" />
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
-
 <body>
-  <div class="wrap">
-    <div class="card">
-      <h1>Submit to Teach Arcade</h1>
-      <p>
-        Teach Arcade is a growing classroom game + resource library. This page lets teachers submit resources to be reviewed,
-        leave feedback about existing content, or suggest new game ideas.
-      </p>
-      <p class="muted">
-        Quick note: I’m building this project while learning as I go (my coding experience is limited), so thank you for helping improve the site.
-        Every submission is reviewed before anything is published.
-      </p>
+<div id="site-header"></div><script src="/assets/scripts/nav.js?v=5" defer></script>
+<main class="container">
+  <nav class="breadcrumbs"><a href="/">Home</a> › Submit</nav>
+  <h1>Submit a Resource or Classroom Request</h1>
+  <p>This page is for educators who want to recommend classroom-ready resources, request a new Teach Arcade activity, or report a gap in existing content. We value practical submissions that help teachers plan faster and teach with confidence.</p>
 
-      <form id="submitForm" class="grid" autocomplete="off">
-        <div class="grid two">
-          <div>
-            <label for="type">What are you submitting?</label>
-            <select id="type" name="type" required>
-              <option value="resource">A resource to add (link or file idea)</option>
-              <option value="feedback">Feedback / report an issue</option>
-              <option value="idea">Game idea / feature request</option>
-            </select>
-          </div>
+  <h2>What this form is for</h2>
+  <ul>
+    <li>Free resource recommendations (no paywall or account wall preferred).</li>
+    <li>Requests for new game-based review topics.</li>
+    <li>Suggestions to improve existing resources for clarity or accessibility.</li>
+    <li>Corrections for content quality or broken page experiences.</li>
+  </ul>
 
-          <div>
-            <label for="email">Email (optional)</label>
-            <input id="email" name="email" type="email" placeholder="teacher@example.com" />
-            <div class="muted tiny">Only if you want a reply. Not displayed publicly.</div>
-          </div>
-        </div>
+  <h2>What we do not accept</h2>
+  <ul>
+    <li>Affiliate-only landing pages, aggressive marketing pages, or doorway pages.</li>
+    <li>Resources that require student personal data collection.</li>
+    <li>Copyrighted materials submitted without permission.</li>
+    <li>Requests unrelated to classroom teaching and learning.</li>
+  </ul>
 
-        <div class="grid two">
-          <div>
-            <label for="title">Title (optional)</label>
-            <input id="title" name="title" type="text" placeholder="e.g., WWI Causes Kahoot / Game idea: Cold War Spy Run" />
-          </div>
+  <h2>How submissions are processed</h2>
+  <ol>
+    <li><strong>Submit details</strong> with title, link, subject, and classroom context.</li>
+    <li><strong>Editorial review</strong> checks instructional value, clarity, and safety fit.</li>
+    <li><strong>Follow-up</strong> may include publication, revision request, or decline notice.</li>
+  </ol>
+  <p>Most submission updates are shared within 3–7 school days. Large requests or complex review items may take longer, but we keep contributors informed when possible.</p>
 
-          <div>
-            <label for="url">Link (optional)</label>
-            <input id="url" name="url" type="url" placeholder="https://..." />
-            <div class="muted tiny">If you’re submitting a resource, paste the link here.</div>
-          </div>
-        </div>
+  <h2>Submission form</h2>
+  <form id="submitForm" class="card" style="padding:16px;">
+    <label for="name">Your name (optional)</label>
+    <input id="name" name="name" type="text" />
 
-        <div class="grid two">
-          <div>
-            <label for="subject">Subject (optional)</label>
-            <input id="subject" name="subject" type="text" placeholder="U.S. History, World History, Math, ELA..." />
-          </div>
+    <label for="email">Email (for follow-up)</label>
+    <input id="email" name="email" type="email" required />
 
-          <div>
-            <label for="grade_band">Grade band (optional)</label>
-            <select id="grade_band" name="grade_band">
-              <option value="">Select…</option>
-              <option value="Elementary">Elementary</option>
-              <option value="Middle">Middle</option>
-              <option value="High">High</option>
-              <option value="College">College</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
-        </div>
+    <label for="subject">Subject area</label>
+    <select id="subject" name="subject" required>
+      <option value="">Choose one</option>
+      <option>Math</option><option>ELA</option><option>Science</option><option>Social Studies</option><option>Fine Arts</option><option>Other</option>
+    </select>
 
-        <div>
-          <label for="description">Details (required)</label>
-          <textarea id="description" name="description" required
-            placeholder="Describe the resource, the feedback, or the game idea. The more detail, the better."></textarea>
-        </div>
+    <label for="resourceUrl">Resource URL (if applicable)</label>
+    <input id="resourceUrl" name="resourceUrl" type="url" placeholder="https://" />
 
-        <!-- Honeypot anti-bot field (must stay hidden) -->
-        <div style="position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;">
-          <label>Website</label>
-          <input name="website" tabindex="-1" autocomplete="off" />
-        </div>
+    <label for="message">Description / request</label>
+    <textarea id="message" name="message" rows="6" required></textarea>
 
-        <!-- Turnstile widget (callback stores token in JS) -->
-        <div
-          id="cfWidget"
-          class="cf-turnstile"
-          data-sitekey="0x4AAAAAACMCyL2PpQiIbF8H"
-          data-theme="dark"
-          data-callback="onTurnstileSuccess"
-          data-expired-callback="onTurnstileExpired"
-          data-error-callback="onTurnstileError"
-        ></div>
+    <div class="cf-turnstile" data-sitekey="YOUR_TURNSTILE_SITE_KEY"></div>
+    <button type="submit">Send submission</button>
+    <p id="status" aria-live="polite"></p>
+  </form>
 
-        <div class="btnrow">
-          <button id="submitBtn" type="submit">Send submission</button>
-          <span id="status" class="status"></span>
-          <span id="tokenHint" class="muted tiny"></span>
-        </div>
+  <h2>FAQ</h2>
+  <h3>Do I need to submit only original resources?</h3>
+  <p>You may submit your own work or recommend existing public resources that are classroom-appropriate and properly attributed.</p>
+  <h3>Can I submit district-specific requests?</h3>
+  <p>Yes, but include enough context (grade, unit, constraints) so we can determine whether it fits broad educator use.</p>
+  <h3>Will every submission be published?</h3>
+  <p>No. We prioritize instructional usefulness, clarity, and student-safe implementation.</p>
+  <h3>Can I submit without a URL?</h3>
+  <p>Yes. Idea submissions are welcome when you clearly describe the classroom problem and desired format.</p>
+  <h3>How will I know if you accepted my submission?</h3>
+  <p>If you provide an email, we may send a status update or follow-up question after review.</p>
+  <h3>Can I send multiple submissions?</h3>
+  <p>Absolutely. Separate submissions by topic often speed review.</p>
 
-        <div class="note">
-          <div style="font-weight:800; margin-bottom:6px;">What happens next?</div>
-          <div class="muted">
-            Submissions go into a private review inbox. I review each one for quality and safety before it’s added anywhere on the site.
-            Links are checked and anything suspicious is rejected.
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <script>
-    const PROJECT_ID = "ohrdaqnaoyiyaeebbpby";
-    const ENDPOINT = `https://${PROJECT_ID}.functions.supabase.co/submit`;
-
-    const form = document.getElementById("submitForm");
-    const statusEl = document.getElementById("status");
-    const tokenHintEl = document.getElementById("tokenHint");
-    const btn = document.getElementById("submitBtn");
-    const widgetEl = document.getElementById("cfWidget");
-
-    // Turnstile token captured here (most reliable)
-    let TURNSTILE_TOKEN = "";
-
-    // These callbacks are referenced by data-* attributes above
-    window.onTurnstileSuccess = function(token) {
-      TURNSTILE_TOKEN = token || "";
-      tokenHintEl.textContent = TURNSTILE_TOKEN ? `Captcha token captured (${TURNSTILE_TOKEN.length} chars)` : "";
-    };
-    window.onTurnstileExpired = function() {
-      TURNSTILE_TOKEN = "";
-      tokenHintEl.textContent = "Captcha expired — please try again.";
-    };
-    window.onTurnstileError = function() {
-      TURNSTILE_TOKEN = "";
-      tokenHintEl.textContent = "Captcha error — please refresh.";
-    };
-
-    function setStatus(msg, ok=true){
-      statusEl.textContent = msg;
-      statusEl.className = "status " + (ok ? "ok" : "bad");
-    }
-
-    function getTokenFallbackFromDOM() {
-      // Turnstile also writes into a hidden textarea named cf-turnstile-response
-      const el = form.querySelector('[name="cf-turnstile-response"]');
-      return el ? (el.value || "") : "";
-    }
-
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      setStatus("");
-      btn.disabled = true;
-
-      try {
-        const token = TURNSTILE_TOKEN || getTokenFallbackFromDOM();
-
-        if (!token) {
-          setStatus("Captcha required", false);
-          btn.disabled = false;
-          return;
-        }
-
-        const payload = {
-          type: form.type.value,
-          title: form.title.value || null,
-          url: form.url.value || null,
-          description: form.description.value,
-          subject: form.subject.value || null,
-          grade_band: form.grade_band.value || null,
-          email: form.email.value || null,
-          page_url: location.href,
-          device: navigator.userAgent,
-          website: form.website.value || "",
-
-          // ✅ Send token under multiple common names so it matches your Edge Function
-          turnstileToken: token,
-          token: token,
-          response: token,
-          "cf-turnstile-response": token,
-          cf_turnstile_response: token
-        };
-
-        const res = await fetch(ENDPOINT, {
-          method: "POST",
-          headers: { "content-type": "application/json" },
-          body: JSON.stringify(payload)
-        });
-
-        const data = await res.json().catch(() => ({}));
-
-        if (!res.ok || !data.ok) {
-          setStatus(data.error || "Something went wrong. Try again.", false);
-          btn.disabled = false;
-          return;
-        }
-
-        setStatus("Submitted! Thank you — it’s in the review inbox.", true);
-        form.reset();
-        TURNSTILE_TOKEN = "";
-        tokenHintEl.textContent = "";
-
-        // Reset Turnstile
-        if (window.turnstile) window.turnstile.reset(widgetEl);
-
-      } catch (err) {
-        setStatus("Network error. Please try again.", false);
-      } finally {
-        btn.disabled = false;
-      }
-    });
-  </script>
+  <p><small>Safety and privacy note: do not include student-identifying information. See our <a href="/privacy.html">Privacy Policy</a> for data handling details.</small></p>
+</main>
+<script>
+const form = document.getElementById('submitForm');
+const statusEl = document.getElementById('status');
+form?.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  statusEl.textContent = 'Submitting...';
+  const data = Object.fromEntries(new FormData(form).entries());
+  try {
+    const res = await fetch('/api/resources', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(data) });
+    statusEl.textContent = res.ok ? 'Thanks! Your submission was received.' : 'Submission failed. Please try again.';
+    if (res.ok) form.reset();
+  } catch {
+    statusEl.textContent = 'Network issue. Please email support@teacharcade.com.';
+  }
+});
+</script>
 </body>
 </html>

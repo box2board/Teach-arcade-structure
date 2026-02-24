@@ -1,5 +1,4 @@
-# Broken Link / 404 Risk Report
+# Broken Internal Links Report
 
-Generated: 2026-02-10
+Broken links found: 0
 
-No broken internal links detected in static href analysis.
