@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0f172a" />
+  <title>Type Turbo | Brain Arcade | Teach Arcade</title>
+  <meta name="description" content="Type Turbo is a multi-mode typing challenge with difficulty levels, WPM tracking, accuracy scoring, and personal bests in Brain Arcade." />
+  <link rel="canonical" href="https://teacharcade.com/brain-arcade/type-turbo/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Teach Arcade" />
+  <meta property="og:title" content="Type Turbo | Brain Arcade | Teach Arcade" />
+  <meta property="og:description" content="Race your fingers. Build speed. Stay accurate." />
+  <meta property="og:url" content="https://teacharcade.com/brain-arcade/type-turbo/" />
+  <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Type Turbo | Brain Arcade | Teach Arcade" />
+  <meta name="twitter:description" content="Typing race modes with difficulty levels—track WPM and accuracy." />
+  <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+
+  <link rel="stylesheet" href="/assets/styles.css?v=1" />
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Type Turbo",
+    "url": "https://teacharcade.com/brain-arcade/type-turbo/",
+    "description": "Race your fingers. Build speed. Stay accurate."
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "Type Turbo",
+    "genre": "Typing game",
+    "url": "https://teacharcade.com/brain-arcade/type-turbo/",
+    "description": "A multi-difficulty typing game with Sprint, Endless, Accuracy, and Zen modes.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Teach Arcade"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main>
+    <div class="page-wrap">
+      <div class="breadcrumbs"><a href="/brain-arcade/">← Brain Arcade</a></div>
+      <header class="hero">
+        <h1>Type Turbo</h1>
+        <p>Race your fingers. Build speed. Stay accurate.</p>
+      </header>
+
+      <section class="game-shell" aria-label="Type Turbo game panel">
+        <div class="control-grid">
+          <div>
+            <label for="difficultySelect">Difficulty</label>
+            <select id="difficultySelect">
+              <option value="easy">Easy</option>
+              <option value="normal">Normal</option>
+              <option value="hard">Hard</option>
+              <option value="pro">Pro</option>
+            </select>
+          </div>
+          <div>
+            <label for="modeSelect">Mode</label>
+            <select id="modeSelect">
+              <option value="sprint">Sprint (60s)</option>
+              <option value="endless">Endless (5 lives)</option>
+              <option value="accuracy">Accuracy (50 items)</option>
+              <option value="zen">Zen</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <button id="startBtn" type="button">Start</button>
+          <button id="pauseBtn" class="secondary" type="button">Pause</button>
+          <button id="restartBtn" class="ghost" type="button">Restart</button>
+        </div>
+
+        <div class="hud-grid" role="status" aria-live="polite">
+          <div class="hud-item"><span class="k">Timer</span><span class="v" id="timerDisplay">60.0s</span></div>
+          <div class="hud-item"><span class="k">Lives</span><span class="v" id="livesDisplay">5</span></div>
+          <div class="hud-item"><span class="k">WPM</span><span class="v" id="wpmDisplay">0</span></div>
+          <div class="hud-item"><span class="k">Accuracy</span><span class="v" id="accuracyDisplay">100%</span></div>
+          <div class="hud-item"><span class="k">Combo</span><span class="v" id="comboDisplay">0</span></div>
+          <div class="hud-item"><span class="k">Streak</span><span class="v" id="streakDisplay">0</span></div>
+        </div>
+
+        <div class="target" id="targetWrap">
+          <p id="targetText">Press Start to begin.</p>
+        </div>
+        <input id="typingInput" type="text" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" aria-label="Type the target text" placeholder="Type here..." />
+        <p class="feedback" id="feedbackLine" aria-live="polite">Ready.</p>
+
+        <section class="results" id="resultsPanel" hidden>
+          <h2>Results</h2>
+          <div class="result-grid">
+            <div class="result-card">Final WPM: <strong id="finalWpm">0</strong></div>
+            <div class="result-card">Accuracy: <strong id="finalAccuracy">0%</strong></div>
+            <div class="result-card">Correct: <strong id="finalCorrect">0</strong></div>
+            <div class="result-card">Best streak: <strong id="finalStreak">0</strong></div>
+            <div class="result-card">PB: <strong id="pbStats">—</strong></div>
+          </div>
+          <div class="row">
+            <button id="copyResultBtn" type="button">Copy result</button>
+            <button id="playAgainBtn" class="secondary" type="button">Play again</button>
+            <a class="btn ghost" href="/brain-arcade/">Back to Brain Arcade</a>
+          </div>
+        </section>
+      </section>
+
+      <div class="ad-slot" aria-label="Advertisement">
+        <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-7899890641544647"
+          data-ad-slot="1234567890"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
+      </div>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+  </main>
+
+  <footer class="footer">
+    © <script>document.write(new Date().getFullYear())</script> Teach Arcade ·
+    <a href="/privacy.html">Privacy</a> ·
+    <a href="/terms.html">Terms</a>
+  </footer>
+
+  <script src="/assets/scripts/nav.js?v=5" defer></script>
+  <script src="./wordlists.js"></script>
+  <script src="./game.js" defer></script>
+</body>
+</html>
