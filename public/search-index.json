@@ -54,6 +54,24 @@
     "source": "sitemap"
   },
   {
+    "title": "Brain Arcade",
+    "url": "/brain-arcade/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Type Turbo",
+    "url": "/brain-arcade/type-turbo/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
     "title": "Subjects",
     "url": "/subjects/",
     "type": "topic",
