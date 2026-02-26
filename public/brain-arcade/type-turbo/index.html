@@ -82,6 +82,13 @@
               <option value="zen">Zen</option>
             </select>
           </div>
+          <div>
+            <label for="visualModeSelect">Visual Mode</label>
+            <select id="visualModeSelect">
+              <option value="rocket">Rocket Launch</option>
+              <option value="city">City Builder</option>
+            </select>
+          </div>
         </div>
 
         <div class="row">
@@ -99,11 +106,19 @@
           <div class="hud-item"><span class="k">Streak</span><span class="v" id="streakDisplay">0</span></div>
         </div>
 
-        <div class="target" id="targetWrap">
-          <p id="targetText">Press Start to begin.</p>
+        <div class="game-layout">
+          <section class="typing-panel">
+            <div class="target" id="targetWrap">
+              <p id="targetText">Press Start to begin.</p>
+            </div>
+            <input id="typingInput" type="text" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" aria-label="Type the target text" placeholder="Type here..." />
+            <p class="feedback" id="feedbackLine" aria-live="polite">Ready.</p>
+          </section>
+
+          <section class="visual-panel" aria-label="Visual mode preview">
+            <div id="visualModePanel" class="visual-mode-host"></div>
+          </section>
         </div>
-        <input id="typingInput" type="text" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" aria-label="Type the target text" placeholder="Type here..." />
-        <p class="feedback" id="feedbackLine" aria-live="polite">Ready.</p>
 
         <section class="results" id="resultsPanel" hidden>
           <h2>Results</h2>
@@ -143,7 +158,10 @@
   </footer>
 
   <script src="/assets/scripts/nav.js?v=5" defer></script>
-  <script src="./wordlists.js"></script>
+  <script src="./content/wordlists.js" defer></script>
+  <script src="./engine.js" defer></script>
+  <script src="./modes/rocket.js" defer></script>
+  <script src="./modes/city.js" defer></script>
   <script src="./game.js" defer></script>
 </body>
 </html>

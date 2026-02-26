@@ -1,21 +1,10 @@
 (() => {
-  const STATES = { IDLE: 'IDLE', RUNNING: 'RUNNING', PAUSED: 'PAUSED', ENDED: 'ENDED' };
-  const MODE_CONFIG = {
-    sprint: { label: 'Sprint', timeLimitMs: 60000, lives: null, targetItems: null },
-    endless: { label: 'Endless', timeLimitMs: null, lives: 5, targetItems: null },
-    accuracy: { label: 'Accuracy', timeLimitMs: null, lives: null, targetItems: 50 },
-    zen: { label: 'Zen', timeLimitMs: null, lives: null, targetItems: null }
-  };
-  const DIFFICULTY_WINDOWS = {
-    easy: [4000, 6000],
-    normal: [3000, 5000],
-    hard: [2000, 4000],
-    pro: [1000, 3000]
-  };
+  const { STATES, MODE_CONFIG, create } = window.TypeTurboEngine;
 
   const els = {
     difficulty: document.getElementById('difficultySelect'),
     mode: document.getElementById('modeSelect'),
+    visualMode: document.getElementById('visualModeSelect'),
     startBtn: document.getElementById('startBtn'),
     pauseBtn: document.getElementById('pauseBtn'),
     restartBtn: document.getElementById('restartBtn'),
@@ -36,237 +25,145 @@
     finalStreak: document.getElementById('finalStreak'),
     pbStats: document.getElementById('pbStats'),
     copyBtn: document.getElementById('copyResultBtn'),
-    playAgainBtn: document.getElementById('playAgainBtn')
+    playAgainBtn: document.getElementById('playAgainBtn'),
+    visualPanel: document.getElementById('visualModePanel')
   };
 
   const WORDS = window.TYPE_TURBO_WORDLISTS || {};
 
-  let state = STATES.IDLE;
-  let run = {};
+  const MODE_MAP = {
+    rocket: window.TypeTurboModes?.Rocket,
+    city: window.TypeTurboModes?.City
+  };
 
-  function resetRun() {
-    const mode = els.mode.value;
-    run = {
-      mode,
-      difficulty: els.difficulty.value,
-      startTs: 0,
-      elapsedMs: 0,
-      lastTick: 0,
-      lastWord: '',
-      target: '',
-      targetDeadline: 0,
-      timeoutCount: 0,
-      correctItems: 0,
-      missedItems: 0,
-      totalChars: 0,
-      correctChars: 0,
-      combo: 0,
-      streak: 0,
-      bestStreak: 0,
-      lives: MODE_CONFIG[mode].lives,
-      remainingMs: MODE_CONFIG[mode].timeLimitMs,
-      completedItems: 0,
-      rafId: 0,
-      pauseStartedAt: 0
-    };
-  }
+  const engine = create({
+    wordlists: WORDS,
+    onEvent: handleEngineEvent
+  });
 
-  function getPool() {
-    const d = run.difficulty;
-    const byD = {
-      easy: WORDS.EASY_WORDS || [],
-      normal: WORDS.NORMAL_WORDS || [],
-      hard: WORDS.HARD_WORDS || [],
-      pro: WORDS.PRO_WORDS || []
-    };
-    const pool = [...byD[d]];
-    if ((d === 'hard' || d === 'pro') && Math.random() < 0.3) {
-      pool.push(...(WORDS.PHRASES || []));
-    }
-    return pool;
-  }
-
-  function pickNextTarget() {
-    const pool = getPool();
-    if (!pool.length) return 'type';
-    let next = pool[Math.floor(Math.random() * pool.length)];
-    let guard = 0;
-    while (next === run.lastWord && guard < 8) {
-      next = pool[Math.floor(Math.random() * pool.length)];
-      guard += 1;
-    }
-    run.lastWord = next;
-    run.target = next;
-    const [minMs, maxMs] = DIFFICULTY_WINDOWS[run.difficulty] || [3000, 5000];
-    run.targetDeadline = performance.now() + Math.floor(minMs + Math.random() * (maxMs - minMs));
-    els.target.textContent = next;
-    els.input.value = '';
-    focusInput();
-  }
-
-  function focusInput() {
-    requestAnimationFrame(() => els.input.focus());
-  }
+  let activeVisual = null;
+  let latestStats = null;
 
   function setFeedback(msg, kind = '') {
     els.feedback.textContent = msg;
     els.feedback.className = `feedback ${kind}`.trim();
   }
 
-  function startGame() {
-    resetRun();
-    state = STATES.RUNNING;
-    run.startTs = performance.now();
-    run.lastTick = run.startTs;
-    els.results.hidden = true;
-    pickNextTarget();
-    setFeedback('Go!', 'ok');
-    updateHud();
-    runLoop();
+  function focusInput() {
+    requestAnimationFrame(() => els.input.focus());
   }
 
-  function restartGame() {
-    cancelAnimationFrame(run.rafId || 0);
-    resetRun();
-    state = STATES.IDLE;
-    els.target.textContent = 'Press Start to begin.';
-    els.input.value = '';
-    setFeedback('Ready.');
-    els.results.hidden = true;
-    updateHud();
-    focusInput();
+  function canChangeVisualMode() {
+    const state = engine.getState();
+    return state === STATES.IDLE || state === STATES.ENDED;
   }
 
-  function togglePause() {
-    if (state === STATES.RUNNING) {
-      state = STATES.PAUSED;
-      run.pauseStartedAt = performance.now();
-      cancelAnimationFrame(run.rafId);
-      setFeedback('Paused');
-      els.pauseBtn.textContent = 'Resume';
-    } else if (state === STATES.PAUSED) {
-      const pausedMs = performance.now() - run.pauseStartedAt;
-      run.startTs += pausedMs;
-      if (run.remainingMs != null) run.remainingMs += pausedMs;
-      run.targetDeadline += pausedMs;
-      state = STATES.RUNNING;
-      els.pauseBtn.textContent = 'Pause';
-      setFeedback('Resumed', 'ok');
-      runLoop();
-      focusInput();
-    }
-  }
-
-  function markMistake(reason = 'Mistake') {
-    run.combo = 0;
-    run.missedItems += 1;
-    els.targetWrap.classList.remove('flash');
-    els.targetWrap.classList.add('shake');
-    setTimeout(() => els.targetWrap.classList.remove('shake'), 260);
-    setFeedback(reason, 'bad');
-    if (run.mode === 'endless') {
-      run.lives -= 1;
-      if (run.lives <= 0) {
-        endGame('Out of lives');
-        return;
-      }
-    }
-    run.completedItems += 1;
-    advanceOrEnd();
-  }
-
-  function markCorrect() {
-    run.correctItems += 1;
-    run.combo += 1;
-    run.streak += 1;
-    run.bestStreak = Math.max(run.bestStreak, run.streak);
-    run.completedItems += 1;
-    els.targetWrap.classList.remove('shake');
-    els.targetWrap.classList.add('flash');
-    setTimeout(() => els.targetWrap.classList.remove('flash'), 240);
-    setFeedback('Correct', 'ok');
-    advanceOrEnd();
-  }
-
-  function advanceOrEnd() {
-    if (run.mode === 'accuracy' && run.completedItems >= MODE_CONFIG.accuracy.targetItems) {
-      endGame('Accuracy set complete');
+  function setVisualMode(modeName) {
+    if (!canChangeVisualMode()) {
+      els.visualMode.value = activeVisual?.name || 'rocket';
+      setFeedback('Finish or restart the run before switching visual mode.', 'bad');
       return;
     }
-    if (state === STATES.RUNNING) {
-      pickNextTarget();
-      updateHud();
+
+    if (activeVisual?.instance?.destroy) activeVisual.instance.destroy();
+    const Mode = MODE_MAP[modeName] || MODE_MAP.rocket;
+    const instance = Object.create(Mode);
+    instance.init(els.visualPanel);
+    activeVisual = { name: modeName, instance };
+    setFeedback(`${modeName === 'city' ? 'City Builder' : 'Rocket Launch'} mode ready.`, 'ok');
+  }
+
+  function handleEngineEvent(eventName, payload = {}) {
+    if (eventName === 'onStart') {
+      els.results.hidden = true;
+      els.pauseBtn.textContent = 'Pause';
+      setFeedback('Go!', 'ok');
+      els.visualMode.disabled = true;
+      activeVisual.instance.reset();
+      focusInput();
+    }
+
+    if (eventName === 'onPause') {
+      els.pauseBtn.textContent = 'Resume';
+      setFeedback('Paused. Press resume to continue.');
+    }
+
+    if (eventName === 'onResume') {
+      els.pauseBtn.textContent = 'Pause';
+      setFeedback('Resumed.', 'ok');
+      focusInput();
+    }
+
+    if (eventName === 'onTargetNew') {
+      els.target.textContent = payload.targetText;
+      els.input.value = '';
+      els.targetWrap.classList.remove('shake', 'flash');
+      focusInput();
+    }
+
+    if (eventName === 'onCorrect') {
+      els.targetWrap.classList.add('flash');
+      setTimeout(() => els.targetWrap.classList.remove('flash'), 220);
+      setFeedback('Correct', 'ok');
+    }
+
+    if (eventName === 'onMistake') {
+      els.targetWrap.classList.add('shake');
+      setTimeout(() => els.targetWrap.classList.remove('shake'), 240);
+      setFeedback(payload.reason || 'Mistake', 'bad');
+    }
+
+    if (eventName === 'onTimeout') {
+      els.targetWrap.classList.add('shake');
+      setTimeout(() => els.targetWrap.classList.remove('shake'), 240);
+      setFeedback('Too slow', 'bad');
+    }
+
+    if (eventName === 'onStatsUpdate') {
+      latestStats = payload;
+      updateHud(payload);
+    }
+
+    if (eventName === 'onEnd') {
+      els.pauseBtn.textContent = 'Pause';
+      els.visualMode.disabled = false;
+      setFeedback(payload.reason || 'Run ended', latestStats?.correctItems >= latestStats?.missedItems ? 'ok' : 'bad');
+      renderResults();
+    }
+
+    if (activeVisual?.instance?.handleEvent) {
+      activeVisual.instance.handleEvent(eventName, payload);
     }
   }
 
-  function runLoop(now = performance.now()) {
-    if (state !== STATES.RUNNING) return;
-
-    if (run.remainingMs != null) {
-      const elapsed = now - run.lastTick;
-      run.remainingMs = Math.max(0, run.remainingMs - elapsed);
-      if (run.remainingMs <= 0) {
-        endGame('Time up');
-        return;
-      }
-    }
-
-    if (now >= run.targetDeadline) {
-      run.timeoutCount += 1;
-      run.streak = 0;
-      markMistake('Too slow');
-    }
-
-    run.lastTick = now;
-    updateHud();
-    run.rafId = requestAnimationFrame(runLoop);
-  }
-
-  function computeWpm() {
-    const mins = Math.max((performance.now() - run.startTs) / 60000, 1 / 60000);
-    return ((run.correctChars / 5) / mins) || 0;
-  }
-
-  function computeAccuracy() {
-    return run.totalChars > 0 ? (run.correctChars / run.totalChars) * 100 : 100;
-  }
-
-  function updateHud() {
-    const wpm = computeWpm();
-    const acc = computeAccuracy();
-    const timerText = run.mode === 'accuracy'
-      ? `${run.completedItems}/${MODE_CONFIG.accuracy.targetItems}`
-      : run.mode === 'endless'
+  function updateHud(stats) {
+    const mode = stats.mode || els.mode.value;
+    const timerText = mode === 'accuracy'
+      ? `${stats.completedItems}/${MODE_CONFIG.accuracy.targetItems}`
+      : mode === 'endless'
         ? '—'
-        : run.remainingMs != null
-          ? `${(run.remainingMs / 1000).toFixed(1)}s`
+        : stats.remainingMs != null
+          ? `${(stats.remainingMs / 1000).toFixed(1)}s`
           : '∞';
 
     els.timer.textContent = timerText;
-    els.lives.textContent = run.lives == null ? '∞' : String(run.lives);
-    els.wpm.textContent = Math.round(wpm);
-    els.accuracy.textContent = `${Math.round(acc)}%`;
-    els.combo.textContent = String(run.combo);
-    els.streak.textContent = String(run.bestStreak);
-  }
-
-  function endGame(reason = 'Run ended') {
-    state = STATES.ENDED;
-    cancelAnimationFrame(run.rafId);
-    els.pauseBtn.textContent = 'Pause';
-    setFeedback(reason, run.correctItems >= run.missedItems ? 'ok' : 'bad');
-    renderResults();
+    els.lives.textContent = stats.lives == null ? '∞' : String(stats.lives);
+    els.wpm.textContent = String(Math.round(stats.wpm || 0));
+    els.accuracy.textContent = `${Math.round(stats.accuracy || 0)}%`;
+    els.combo.textContent = String(stats.combo || 0);
+    els.streak.textContent = String(stats.streak || 0);
   }
 
   function getPBKey() {
-    return `typeTurboPB:${run.mode}:${run.difficulty}`;
+    const visual = els.visualMode.value;
+    return `typeTurboPB:${visual}:${els.mode.value}:${els.difficulty.value}`;
   }
 
   function loadPb() {
     try {
-      return JSON.parse(localStorage.getItem(getPBKey())) || { wpm: 0, accuracy: 0, streak: 0 };
+      return JSON.parse(localStorage.getItem(getPBKey())) || { bestWPM: 0, bestAccuracy: 0, bestStreak: 0 };
     } catch {
-      return { wpm: 0, accuracy: 0, streak: 0 };
+      return { bestWPM: 0, bestAccuracy: 0, bestStreak: 0 };
     }
   }
 
@@ -274,37 +171,78 @@
     try {
       localStorage.setItem(getPBKey(), JSON.stringify(next));
     } catch {
-      // graceful fail
+      // graceful no-op
     }
   }
 
   function renderResults() {
-    const wpm = Math.round(computeWpm());
-    const acc = Math.round(computeAccuracy());
+    const stats = latestStats || {};
+    const wpm = Math.round(stats.wpm || 0);
+    const acc = Math.round(stats.accuracy || 0);
     const pb = loadPb();
     const merged = {
-      wpm: Math.max(pb.wpm || 0, wpm),
-      accuracy: Math.max(pb.accuracy || 0, acc),
-      streak: Math.max(pb.streak || 0, run.bestStreak)
+      bestWPM: Math.max(pb.bestWPM || 0, wpm),
+      bestAccuracy: Math.max(pb.bestAccuracy || 0, acc),
+      bestStreak: Math.max(pb.bestStreak || 0, stats.streak || 0)
     };
     savePb(merged);
 
     els.finalWpm.textContent = String(wpm);
     els.finalAcc.textContent = `${acc}%`;
-    els.finalCorrect.textContent = String(run.correctItems);
-    els.finalStreak.textContent = String(run.bestStreak);
-    els.pbStats.textContent = `WPM ${merged.wpm} • Acc ${merged.accuracy}% • Streak ${merged.streak}`;
+    els.finalCorrect.textContent = String(stats.correctItems || 0);
+    els.finalStreak.textContent = String(stats.streak || 0);
+    els.pbStats.textContent = `WPM ${merged.bestWPM} • Acc ${merged.bestAccuracy}% • Streak ${merged.bestStreak}`;
     els.results.hidden = false;
   }
 
+  function startGame() {
+    engine.start({ mode: els.mode.value, difficulty: els.difficulty.value });
+  }
+
+  function togglePause() {
+    const state = engine.getState();
+    if (state === STATES.RUNNING) {
+      engine.pause();
+    } else if (state === STATES.PAUSED) {
+      engine.resume();
+    }
+  }
+
+  function restartGame() {
+    engine.restart();
+    latestStats = {
+      mode: els.mode.value,
+      remainingMs: MODE_CONFIG[els.mode.value].timeLimitMs,
+      lives: MODE_CONFIG[els.mode.value].lives,
+      wpm: 0,
+      accuracy: 100,
+      combo: 0,
+      streak: 0,
+      completedItems: 0
+    };
+    updateHud(latestStats);
+    els.target.textContent = 'Press Start to begin.';
+    els.input.value = '';
+    els.results.hidden = true;
+    els.pauseBtn.textContent = 'Pause';
+    els.visualMode.disabled = false;
+    activeVisual.instance.reset();
+    setFeedback('Ready.');
+    focusInput();
+  }
+
   function copyResult() {
-    const resultText = `Type Turbo — ${MODE_CONFIG[run.mode].label}/${run.difficulty.toUpperCase()} | WPM ${els.finalWpm.textContent} | Accuracy ${els.finalAcc.textContent} | Correct ${els.finalCorrect.textContent} | Best streak ${els.finalStreak.textContent}`;
+    if (!latestStats) return;
+    const modeLabel = MODE_CONFIG[els.mode.value].label;
+    const visualLabel = els.visualMode.value === 'city' ? 'City Builder' : 'Rocket Launch';
+    const resultText = `Type Turbo — ${modeLabel}/${els.difficulty.value.toUpperCase()}/${visualLabel} | WPM ${els.finalWpm.textContent} | Accuracy ${els.finalAcc.textContent} | Correct ${els.finalCorrect.textContent} | Best streak ${els.finalStreak.textContent}`;
     navigator.clipboard.writeText(resultText)
       .then(() => setFeedback('Result copied!', 'ok'))
       .catch(() => setFeedback('Copy unavailable on this device', 'bad'));
   }
 
   els.startBtn.addEventListener('click', () => {
+    const state = engine.getState();
     if (state === STATES.RUNNING) return;
     startGame();
   });
@@ -313,38 +251,24 @@
   els.playAgainBtn.addEventListener('click', startGame);
   els.copyBtn.addEventListener('click', copyResult);
 
-  els.input.addEventListener('keydown', (event) => {
-    if (event.key === 'Enter') {
-      event.preventDefault();
-      if (state !== STATES.RUNNING) return;
-      evaluateInput();
-      return;
-    }
-    if (state === STATES.RUNNING && event.key.length === 1) {
-      run.totalChars += 1;
-      const nextPos = els.input.value.length;
-      if ((run.target[nextPos] || '') === event.key) run.correctChars += 1;
-    }
+  els.visualMode.addEventListener('change', () => setVisualMode(els.visualMode.value));
+
+  els.mode.addEventListener('change', () => {
+    if (engine.getState() === STATES.RUNNING || engine.getState() === STATES.PAUSED) return;
+    restartGame();
   });
 
   els.input.addEventListener('input', () => {
-    if (state !== STATES.RUNNING) return;
-    evaluateInput();
+    engine.submitInput(els.input.value);
   });
 
-  function evaluateInput() {
-    const raw = els.input.value;
-
-    if (raw === run.target) {
-      markCorrect();
-      return;
+  els.input.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      engine.submitInput(els.input.value);
     }
+  });
 
-    if (!run.target.startsWith(raw) && raw.length > 0) {
-      run.streak = 0;
-      markMistake('Mistake');
-    }
-  }
-
+  setVisualMode('rocket');
   restartGame();
 })();
