@@ -5,69 +5,383 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#0f172a" />
 
-  <title>Teacher Subject Hubs for Lessons, Games, and Planning Support | Teach Arcade</title>
-  <meta name="description" content="Use Teach Arcade subject hubs to plan faster with standards-aligned lessons, classroom games, and practical teacher workflows for elementary, middle, and high school." />
+  <title>Subject Hubs for Teacher Planning, Lessons, and Review Games | Teach Arcade</title>
+  <meta name="description" content="Explore Teach Arcade subject hubs for Math, ELA, Science, Social Studies, and Fine Arts. Find teacher-ready lessons, review games, and planning pathways by grade band." />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://teacharcade.com/subjects/" />
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Teach Arcade" />
-  <meta property="og:title" content="Teacher Subject Hubs for Lessons, Games, and Planning Support | Teach Arcade" />
-  <meta property="og:description" content="Browse subject hubs built for real classrooms, with grade-band guidance, activity ideas, and quick planning pathways for teachers." />
+  <meta property="og:title" content="Subject Hubs for Teacher Planning, Lessons, and Review Games | Teach Arcade" />
+  <meta property="og:description" content="Browse clean, grade-aware subject hubs with planning support, classroom use cases, and quick pathways to real teaching resources." />
   <meta property="og:url" content="https://teacharcade.com/subjects/" />
   <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Teacher Subject Hubs for Lessons, Games, and Planning Support | Teach Arcade" />
-  <meta name="twitter:description" content="Find practical, classroom-tested pathways for Math, ELA, Science, and Social Studies planning." />
+  <meta name="twitter:title" content="Subject Hubs for Teacher Planning, Lessons, and Review Games | Teach Arcade" />
+  <meta name="twitter:description" content="Find practical teacher planning pathways for Math, ELA, Science, Social Studies, and Fine Arts." />
   <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
 
   <link rel="stylesheet" href="/assets/styles.css?v=1" />
   <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Teach Arcade Subjects Hub",
+    "url": "https://teacharcade.com/subjects/",
+    "description": "Subject hub directory for teacher planning, lessons, and classroom review games.",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Teach Arcade",
+      "url": "https://teacharcade.com/"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://teacharcade.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Subjects",
+        "item": "https://teacharcade.com/subjects/"
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+
+    .subjects-hub-hero {
+      text-align: left;
+      border: 1px solid #dbeafe;
+      border-radius: 16px;
+      padding: 56px 22px 28px;
+      margin: 18px 0 20px;
+      background:
+        radial-gradient(circle at 10% 15%, rgba(37, 99, 235, 0.12), transparent 36%),
+        radial-gradient(circle at 90% 8%, rgba(242, 156, 56, 0.18), transparent 34%),
+        linear-gradient(145deg, #f8fbff, #fefcf8);
+    }
+
+    .subjects-hub-hero h1 {
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      line-height: 1.15;
+      margin: 0 0 10px;
+    }
+
+    .subjects-hub-hero p {
+      margin: 0;
+      max-width: 760px;
+      font-size: 1.03rem;
+      color: #475569;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .intro-card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 24px;
+      line-height: 1.65;
+    }
+
+    .subject-search-wrap {
+      margin: 14px 0 16px;
+    }
+
+    #subject-search {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      font: 600 14px/1.3 Nunito, system-ui, sans-serif;
+    }
+
+    .subjects-grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: 1fr;
+      margin-bottom: 24px;
+    }
+
+    .subject-card {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+    }
+
+    .subject-icon {
+      width: 40px;
+      height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      background: #eff6ff;
+      color: #1d4ed8;
+    }
+
+    .subject-card h3 {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      color: #0f172a;
+    }
+
+    .subject-card p {
+      margin: 0;
+      color: #475569;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      font: 700 12px/1 Poppins, sans-serif;
+      padding: 6px 9px;
+      border-radius: 999px;
+      color: #1e3a8a;
+      background: #dbeafe;
+      border: 1px solid #bfdbfe;
+    }
+
+    .use-cases,
+    .grade-cards {
+      display: grid;
+      gap: 14px;
+      margin: 12px 0 20px;
+    }
+
+    .use-case-card,
+    .grade-card,
+    .checklist-card,
+    .workflow-callout {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .workflow-callout {
+      border-left: 4px solid #1d4ed8;
+      background: #f8fbff;
+    }
+
+    .checklist-card ul {
+      margin: 0;
+      padding-left: 20px;
+      line-height: 1.55;
+    }
+
+    .seo-links {
+      margin: 8px 0 0;
+      color: #475569;
+      font-size: 0.96rem;
+    }
+
+    .all-subject-links {
+      margin: 20px 0 24px;
+      padding: 14px 16px;
+      border: 1px dashed #cbd5e1;
+      border-radius: 12px;
+      background: #fff;
+    }
+
+    .all-subject-links a {
+      margin-right: 10px;
+      white-space: nowrap;
+    }
+
+    @media (min-width: 700px) {
+      .subjects-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .use-cases,
+      .grade-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    @media (min-width: 1024px) {
+      .subjects-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+  </style>
 </head>
 <body>
   <div id="site-header"></div>
   <script src="/assets/scripts/nav.js?v=5" defer></script>
 
   <main class="container">
-    <section class="hero">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a> &raquo; <span>Subjects</span>
+    </nav>
+
+    <section class="subjects-hub-hero">
       <h1>Subject Hubs Built for Teacher Planning</h1>
-      <p>Teach Arcade subject hubs are designed to reduce planning time while increasing classroom engagement. Instead of searching across dozens of disconnected websites, you can begin with one hub, choose your grade band, and move straight into ready-to-use lessons, review games, and skill practice.</p>
-      <p>Each hub is written for classroom implementation. You will find topic groupings, practical activity ideas, and instructional pathways for elementary, middle, and high school. Whether you are prepping tomorrow's warm-up or mapping next month's unit, these pages help you make decisions quickly and teach with confidence.</p>
+      <p>Plan faster with classroom-ready subject pathways for lessons, stations, review games, and daily skill practice. Choose a hub, scan the structure, and move from idea to implementation in minutes.</p>
+      <div class="hero-actions">
+        <a class="cta" href="#browse-subjects">Browse Subjects</a>
+        <a class="cta ghost" href="#how-to-use">How to Use These Hubs</a>
+      </div>
     </section>
 
-    <section>
-      <h2>How teachers use these hubs in real classrooms</h2>
-      <p>Most teachers use this page in one of three ways. First, they start with a subject and pull a fast bell-ringer, station, or review game for immediate use. Second, they use the hub as a weekly planning map, selecting one skill focus and one practice format for each day. Third, departments and PLC teams use these hub pages to align instruction across grade levels by looking at skill progression and vocabulary emphasis.</p>
-      <p><strong>Example workflow:</strong> A grade 7 team planning proportional reasoning can open Math, select middle school, pull a short concept refresher, assign a collaborative game-based practice activity, and close with an exit ticket reflection prompt. The same structure works in ELA for claim-evidence writing, in Science for modeling investigations, and in Social Studies for source analysis.</p>
+    <section class="intro-card" aria-label="Subjects hub intro">
+      <p>Teach Arcade subject hubs are organized for real teacher workflows: daily lesson prep, weekly pacing, and team planning. Instead of hunting through disconnected tabs, you can open one page and jump directly into curated pathways by grade band and skill focus. Start with <a href="/subjects/math/">Math</a> for spiral review and intervention, open <a href="/subjects/ela/">ELA</a> for reading-writing planning, or use <a href="/subjects/science/">Science</a> to map investigations and concept checks. Each hub is built to support practical classroom needs with clear next steps, whether you are preparing stations, building an assessment review cycle, or aligning instruction across your department.</p>
+      <p class="seo-links">Also explore <a href="/subjects/social-studies/">Social Studies</a> and <a href="/subjects/fine-arts/">Fine Arts</a> for content-specific planning pathways.</p>
+    </section>
+
+    <section id="browse-subjects" aria-labelledby="browse-title">
+      <h2 id="browse-title">Browse subject hubs</h2>
+      <div class="subject-search-wrap">
+        <label for="subject-search"><strong>Search subjects</strong></label>
+        <input id="subject-search" type="search" placeholder="Try: science, arts, review games, writing..." aria-describedby="subject-search-note" />
+        <small id="subject-search-note">Filter cards by subject name, description, or tag.</small>
+      </div>
+
+      <!--
+        Verified subject mapping (real pages only):
+        Math -> /subjects/math/ -> public/subjects/math/index.html
+        ELA -> /subjects/ela/ -> public/subjects/ela/index.html
+        Science -> /subjects/science/ -> public/subjects/science/index.html
+        Social Studies -> /subjects/social-studies/ -> public/subjects/social-studies/index.html
+        Fine Arts -> /subjects/fine-arts/ -> public/subjects/fine-arts/index.html
+      -->
+      <div class="subjects-grid" id="subjects-grid">
+        <article class="subject-card" data-search="math stations review games skills practice intervention">
+          <span class="subject-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5v14M6 6l12 12M18 6 6 18"/></svg>
+          </span>
+          <h3>Math</h3>
+          <p>Build daily routines for number sense, algebra, geometry, and targeted intervention support.</p>
+          <div class="tags"><span class="tag">Stations</span><span class="tag">Review Games</span><span class="tag">Skills Practice</span></div>
+          <a class="cta" href="/subjects/math/">Explore</a>
+        </article>
+
+        <article class="subject-card" data-search="ela english language arts reading writing grammar vocabulary">
+          <span class="subject-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h11a4 4 0 0 1 4 4v10H8a4 4 0 0 0-4 4V5z"/><path d="M8 8h8M8 12h8"/></svg>
+          </span>
+          <h3>ELA</h3>
+          <p>Support reading, writing, speaking, vocabulary, and text analysis with classroom-ready formats.</p>
+          <div class="tags"><span class="tag">Writing</span><span class="tag">Discussion</span><span class="tag">Assessment Prep</span></div>
+          <a class="cta" href="/subjects/ela/">Explore</a>
+        </article>
+
+        <article class="subject-card" data-search="science biology chemistry physics earth space lab stem">
+          <span class="subject-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7l-5 9a2 2 0 0 0 1.8 3h10.4A2 2 0 0 0 19 18l-5-9V2"/><path d="M8 14h8"/></svg>
+          </span>
+          <h3>Science</h3>
+          <p>Move from concept launch to investigation, analysis, and review with structured science pathways.</p>
+          <div class="tags"><span class="tag">Labs</span><span class="tag">Concept Review</span><span class="tag">Inquiry</span></div>
+          <a class="cta" href="/subjects/science/">Explore</a>
+        </article>
+
+        <article class="subject-card" data-search="social studies history civics geography economics dbq sources">
+          <span class="subject-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+          </span>
+          <h3>Social Studies</h3>
+          <p>Plan source analysis, argument writing, and civic-thinking activities for history and civics blocks.</p>
+          <div class="tags"><span class="tag">Primary Sources</span><span class="tag">DBQ Skills</span><span class="tag">Discussion</span></div>
+          <a class="cta" href="/subjects/social-studies/">Explore</a>
+        </article>
+
+        <article class="subject-card" data-search="fine arts art music drama dance media creativity performance">
+          <span class="subject-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a9 9 0 1 0 9 9c0-3-2-5-5-5h-1a2 2 0 0 1-2-2V3z"/><circle cx="7.5" cy="12.5" r="1"/><circle cx="9.5" cy="8.5" r="1"/><circle cx="13.5" cy="7.5" r="1"/></svg>
+          </span>
+          <h3>Fine Arts</h3>
+          <p>Blend studio, performance, and media projects with clear instructional targets and reflection tools.</p>
+          <div class="tags"><span class="tag">Creative Projects</span><span class="tag">Performance</span><span class="tag">Portfolio Work</span></div>
+          <a class="cta" href="/subjects/fine-arts/">Explore</a>
+        </article>
+      </div>
     </section>
 
     <div class="ad-slot" data-ad="in-article" aria-label="Advertisement"></div>
 
-    <section>
-      <h2>When to use this resource: quick decision aid</h2>
-      <ul>
-        <li><strong>Use subject hubs when you need speed:</strong> You want to teach a strong lesson without spending hours searching.</li>
-        <li><strong>Use subject hubs when students need engagement:</strong> You need interactive review or structured practice before an assessment.</li>
-        <li><strong>Use subject hubs when differentiating:</strong> You want topic pathways that scale from foundational to extension activities.</li>
-        <li><strong>Use subject hubs when collaborating:</strong> You want a shared planning reference for grade-level or department teams.</li>
-      </ul>
+    <section id="how-to-use" aria-labelledby="use-cases-title">
+      <h2 id="use-cases-title">How teachers use these hubs</h2>
+      <div class="use-cases">
+        <article class="use-case-card"><h3>Quick lesson build</h3><p>Choose one skill focus, pull a warm-up, and select one structured practice format for same-day instruction.</p></article>
+        <article class="use-case-card"><h3>Weekly planning map</h3><p>Map five days of instruction by rotating concept launch, guided practice, review game, and exit checks.</p></article>
+        <article class="use-case-card"><h3>PLC / department alignment</h3><p>Use shared hub pathways to align vocabulary, pacing, and common assessment evidence across teams.</p></article>
+      </div>
+      <aside class="workflow-callout">
+        <strong>Example workflow:</strong> A grade 7 team opens the Math hub, selects a proportional reasoning target, assigns a short visual warm-up, runs partner practice, then closes with a common exit prompt. The same sequence can be adapted in ELA for claim-evidence writing or in Science for investigation claims.
+      </aside>
     </section>
 
-    <section>
-      <h2>Grade-band guidance</h2>
-      <p><strong>Elementary:</strong> Prioritize routine, concrete examples, and short practice cycles. Use visual supports and frequent checks for understanding.</p>
-      <p><strong>Middle school:</strong> Focus on concept transfer, discussion protocols, and low-stakes retrieval. Rotate between direct instruction and collaborative challenge tasks.</p>
-      <p><strong>High school:</strong> Emphasize rigor, evidence-based reasoning, and independent application. Pair review games with analysis tasks and writing-to-learn prompts.</p>
+    <section aria-labelledby="decision-aid-title">
+      <h2 id="decision-aid-title">When to use this resource: quick decision aid</h2>
+      <div class="checklist-card">
+        <ul>
+          <li><strong>Need speed:</strong> You want a strong lesson without spending hours searching multiple sites.</li>
+          <li><strong>Need engagement:</strong> You want interactive practice before quizzes, checkpoints, or unit assessments.</li>
+          <li><strong>Need differentiation:</strong> You need pathways that scale from foundational to extension work.</li>
+          <li><strong>Need team coherence:</strong> You want a shared planning reference across grade levels or departments.</li>
+        </ul>
+      </div>
     </section>
 
-    <section class="subjects-grid">
-      <a class="subject-tile" href="/subjects/math/"><span class="subject-emoji">➗</span><span class="subject-title">Math</span><span class="subject-desc">Number sense, algebra, geometry, and practice games.</span></a>
-      <a class="subject-tile" href="/subjects/ela/"><span class="subject-emoji">📚</span><span class="subject-title">ELA</span><span class="subject-desc">Reading, writing, vocabulary, and grammar resources.</span></a>
-      <a class="subject-tile" href="/subjects/science/"><span class="subject-emoji">🔬</span><span class="subject-title">Science</span><span class="subject-desc">Life, physical, earth, and STEM learning resources.</span></a>
-      <a class="subject-tile" href="/subjects/social-studies/"><span class="subject-emoji">🧭</span><span class="subject-title">Social Studies</span><span class="subject-desc">History, civics, geography, and economics topics.</span></a>
-      <a class="subject-tile" href="/subjects/fine-arts/"><span class="subject-emoji">🎨</span><span class="subject-title">Fine Arts</span><span class="subject-desc">Visual arts, music, drama, and creative expression.</span></a>
+    <section aria-labelledby="grade-guidance-title">
+      <h2 id="grade-guidance-title">Grade-band guidance</h2>
+      <div class="grade-cards">
+        <article class="grade-card"><h3>Elementary</h3><p>Use short cycles, visual supports, and concrete modeling with frequent checks for understanding.</p></article>
+        <article class="grade-card"><h3>Middle</h3><p>Prioritize concept transfer, discussion protocols, and mixed-format retrieval practice throughout the week.</p></article>
+        <article class="grade-card"><h3>High</h3><p>Emphasize rigor, evidence-based reasoning, and independent application with clear performance targets.</p></article>
+      </div>
+    </section>
+
+    <section class="all-subject-links" aria-label="All subjects links">
+      <strong>All subjects:</strong>
+      <a href="/subjects/math/">Math</a>
+      <a href="/subjects/ela/">ELA</a>
+      <a href="/subjects/science/">Science</a>
+      <a href="/subjects/social-studies/">Social Studies</a>
+      <a href="/subjects/fine-arts/">Fine Arts</a>
     </section>
   </main>
+
+  <div id="site-footer"></div>
+
+  <script>
+    (() => {
+      const input = document.getElementById('subject-search');
+      const cards = Array.from(document.querySelectorAll('.subject-card'));
+      if (!input || !cards.length) return;
+
+      input.addEventListener('input', () => {
+        const query = input.value.trim().toLowerCase();
+        cards.forEach((card) => {
+          const text = `${card.dataset.search || ''} ${card.textContent || ''}`.toLowerCase();
+          card.style.display = text.includes(query) ? '' : 'none';
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
