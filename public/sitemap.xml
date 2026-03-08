@@ -8,6 +8,7 @@
   <url><loc>https://teacharcade.com/terms.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://teacharcade.com/brain-arcade/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://teacharcade.com/brain-arcade/type-turbo/</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://teacharcade.com/brain-arcade/memory-heist/</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
 
   <url><loc>https://teacharcade.com/subjects/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://teacharcade.com/subjects/math/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>

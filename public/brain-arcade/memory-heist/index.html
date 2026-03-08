@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#020617" />
+  <title>Memory Heist | Brain Arcade Memory Game | Teach Arcade</title>
+  <meta name="description" content="Play Memory Heist on Teach Arcade’s Brain Arcade. Memorize the vault sequence, dodge rising security, and test your focus, pattern recognition, and working memory in this fast-paced classroom-friendly game." />
+  <link rel="canonical" href="https://teacharcade.com/brain-arcade/memory-heist/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Teach Arcade" />
+  <meta property="og:title" content="Memory Heist | Brain Arcade Memory Game | Teach Arcade" />
+  <meta property="og:description" content="Crack the sequence, dodge the alarm, and clear the vault in this stealth-themed memory challenge." />
+  <meta property="og:url" content="https://teacharcade.com/brain-arcade/memory-heist/" />
+  <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Memory Heist | Brain Arcade Memory Game | Teach Arcade" />
+  <meta name="twitter:description" content="Memorize flashing vault tiles, repeat the sequence, and beat rising alarm pressure." />
+  <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+
+  <link rel="stylesheet" href="/assets/styles.css?v=1" />
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Nunito:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "Memory Heist",
+    "url": "https://teacharcade.com/brain-arcade/memory-heist/",
+    "description": "A fast-paced memory game where players repeat flashing vault sequences while managing rising security pressure.",
+    "genre": "Puzzle",
+    "applicationCategory": "Game",
+    "operatingSystem": "Any",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Teach Arcade"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://teacharcade.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Brain Arcade",
+        "item": "https://teacharcade.com/brain-arcade/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Memory Heist",
+        "item": "https://teacharcade.com/brain-arcade/memory-heist/"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main>
+    <div class="page-wrap">
+      <div class="breadcrumbs"><a href="/brain-arcade/">← Brain Arcade</a></div>
+
+      <header class="hero">
+        <p class="eyebrow">Brain Arcade</p>
+        <h1>Memory Heist</h1>
+        <p class="subtitle">Crack the sequence, dodge the alarm, and clear the vault.</p>
+        <p class="description">
+          Memory Heist is a fast-paced brain challenge where players study a flashing vault pattern and repeat it before
+          security locks them out. Each round gets harder, faster, and more intense.
+        </p>
+      </header>
+
+      <section class="game-shell" aria-label="Memory Heist game">
+        <div class="controls">
+          <button id="startBtn" type="button">Start Heist</button>
+          <button id="restartBtn" class="secondary" type="button">Restart Run</button>
+          <button id="soundBtn" class="ghost" type="button" aria-pressed="false">Sound: Off</button>
+        </div>
+
+        <div class="hud" role="status" aria-live="polite">
+          <div class="hud-card"><span class="k">Round</span><span class="v" id="roundDisplay">1</span></div>
+          <div class="hud-card"><span class="k">Score</span><span class="v" id="scoreDisplay">0</span></div>
+          <div class="hud-card"><span class="k">Best</span><span class="v" id="bestDisplay">0</span></div>
+          <div class="hud-card"><span class="k">Streak</span><span class="v" id="streakDisplay">0</span></div>
+          <div class="hud-card"><span class="k">Rank</span><span class="v" id="rankDisplay">Rookie</span></div>
+          <div class="hud-card"><span class="k">Phase</span><span class="v" id="phaseDisplay">Ready</span></div>
+        </div>
+
+        <section class="security-panel" aria-label="Security meter">
+          <div class="security-headline">
+            <h2>Security Meter</h2>
+            <strong id="securityState">SAFE</strong>
+          </div>
+          <div class="meter-track" aria-hidden="true">
+            <div id="meterFill" class="meter-fill"></div>
+          </div>
+          <div class="meter-labels" aria-hidden="true">
+            <span>SAFE</span><span>CAUTION</span><span>ALERT</span><span>LOCKDOWN</span>
+          </div>
+        </section>
+
+        <p id="statusLine" class="status-line" aria-live="polite">Press Start Heist to begin your run.</p>
+
+        <div id="vaultGrid" class="vault-grid" role="grid" aria-label="16 tile security vault grid"></div>
+      </section>
+
+      <div class="ad-slot" aria-label="Advertisement">
+        <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-7899890641544647"
+          data-ad-slot="1234567892"
+          data-ad-format="auto"
+          data-full-width-responsive="true"></ins>
+      </div>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+
+      <section class="content-panel" aria-label="How to play Memory Heist">
+        <h2>How to Play</h2>
+        <ul>
+          <li>Watch the vault sequence carefully.</li>
+          <li>Repeat the pattern in the correct order.</li>
+          <li>Build your streak and raise your score.</li>
+          <li>Don’t hesitate too long or security will rise.</li>
+          <li>One bad run can trigger the alarm.</li>
+        </ul>
+      </section>
+
+      <section class="content-panel" aria-label="Why Memory Heist is great for your brain and classroom">
+        <h2>Why Memory Heist Works for the Brain and Classroom</h2>
+        <ul>
+          <li>Strengthens working memory in short, repeatable rounds.</li>
+          <li>Builds focus and sustained attention under light pressure.</li>
+          <li>Rewards pattern recognition and sequencing skills.</li>
+          <li>Encourages calm decision-making under pressure.</li>
+        </ul>
+        <p>
+          Looking for more fast-thinking challenges? Visit <a href="/brain-arcade/">Brain Arcade</a> to explore classroom-safe puzzle games,
+          or try <a href="/brain-arcade/sequence-breaker/">Sequence Breaker</a> for another pattern-focused sprint.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    © <script>document.write(new Date().getFullYear())</script> Teach Arcade ·
+    <a href="/privacy.html">Privacy</a> ·
+    <a href="/terms.html">Terms</a>
+  </footer>
+
+  <script src="/assets/scripts/nav.js?v=5" defer></script>
+  <script src="./game.js" defer></script>
+</body>
+</html>
