@@ -207,3 +207,44 @@
     font-size: 28px;
   }
 }
+
+.mg-grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.mg-guide-list {
+  display: grid;
+  gap: 16px;
+  margin: 12px 0 24px;
+}
+
+.mg-guide-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 18px;
+  background: #fff;
+  display: grid;
+  gap: 14px;
+}
+
+.mg-guide-card h3 {
+  margin: 0 0 6px;
+  font: 700 20px/1.2 Poppins, sans-serif;
+}
+
+.mg-guide-card h3 a {
+  color: #0f172a;
+  text-decoration: none;
+}
+
+.mg-guide-card-meta {
+  margin: 0 0 10px;
+  color: #1e293b;
+  font: 700 13px/1.4 Nunito, sans-serif;
+}
+
+.mg-guide-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
