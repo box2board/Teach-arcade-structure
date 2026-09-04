@@ -36,6 +36,7 @@
       "complete",
       "paused",
       "results",
+      "explore",
       "quick",
       "classroom",
       "ideas",
@@ -104,7 +105,8 @@
     "contentType": "game",
     "canonicalUrl": "/arcade-review-games/ela/grammar-gauntlet.html",
     "subjects": [
-      "ela"
+      "ela",
+      "grammar-language"
     ],
     "topics": [],
     "keywords": [
@@ -131,6 +133,9 @@
       "purpose",
       "how",
       "this",
+      "continue",
+      "your",
+      "lesson",
       "quick",
       "classroom",
       "ideas",
@@ -152,7 +157,8 @@
     "contentType": "game",
     "canonicalUrl": "/arcade-review-games/ela/undertext-rifts-mood-tone.html",
     "subjects": [
-      "ela"
+      "ela",
+      "reading-literature"
     ],
     "topics": [],
     "keywords": [
@@ -192,6 +198,9 @@
       "use",
       "this",
       "class",
+      "continue",
+      "your",
+      "lesson",
       "run",
       "complete",
       "quick",
@@ -216,7 +225,8 @@
     "contentType": "game",
     "canonicalUrl": "/arcade-review-games/math/algebra-city-run.html",
     "subjects": [
-      "math"
+      "math",
+      "high-school-math"
     ],
     "topics": [],
     "keywords": [
@@ -256,11 +266,12 @@
       "use",
       "this",
       "class",
+      "more",
+      "practice",
       "quick",
       "ideas",
       "skills",
       "students",
-      "practice",
       "suggested",
       "grade",
       "levels",
@@ -278,7 +289,8 @@
     "contentType": "game",
     "canonicalUrl": "/arcade-review-games/math/math-rush-genesis-addition.html",
     "subjects": [
-      "math"
+      "math",
+      "k-5-math"
     ],
     "topics": [],
     "keywords": [
@@ -305,11 +317,12 @@
       "confidence",
       "how",
       "this",
+      "more",
+      "practice",
       "quick",
       "classroom",
       "ideas",
       "students",
-      "practice",
       "suggested",
       "grade",
       "levels",
@@ -327,7 +340,8 @@
     "contentType": "game",
     "canonicalUrl": "/arcade-review-games/math/math-track-racer.html",
     "subjects": [
-      "math"
+      "math",
+      "math-games-puzzles"
     ],
     "topics": [],
     "keywords": [
@@ -360,12 +374,13 @@
       "use",
       "this",
       "class",
+      "more",
+      "practice",
       "quick",
       "classroom",
       "ideas",
       "skills",
       "students",
-      "practice",
       "suggested",
       "grade",
       "levels",
@@ -384,7 +399,8 @@
     "contentType": "game",
     "canonicalUrl": "/arcade-review-games/math/slope-street-sprint.html",
     "subjects": [
-      "math"
+      "math",
+      "middle-school-math"
     ],
     "topics": [],
     "keywords": [
@@ -424,6 +440,7 @@
       "use",
       "this",
       "class",
+      "more",
       "quick",
       "classroom",
       "ideas",
@@ -446,6 +463,7 @@
     "contentType": "game",
     "canonicalUrl": "/arcade-review-games/science/concept-stack-cells/",
     "subjects": [
+      "science",
       "biology"
     ],
     "topics": [],
@@ -486,6 +504,9 @@
       "over",
       "this",
       "class",
+      "continue",
+      "your",
+      "unit",
       "active",
       "columns",
       "accuracy",
@@ -554,6 +575,9 @@
       "use",
       "this",
       "class",
+      "continue",
+      "your",
+      "unit",
       "quick",
       "ideas",
       "skills",
@@ -575,9 +599,12 @@
     "contentType": "game",
     "canonicalUrl": "/arcade-review-games/science/scientific-method.html",
     "subjects": [
-      "science"
+      "science",
+      "biology"
     ],
-    "topics": [],
+    "topics": [
+      "scientific-method-introduction-to-biology"
+    ],
     "keywords": [
       "classroom",
       "review",
@@ -602,6 +629,9 @@
       "action",
       "how",
       "this",
+      "continue",
+      "your",
+      "lesson",
       "quick",
       "ideas",
       "students",
@@ -708,7 +738,10 @@
       "covered",
       "teacher",
       "tips",
-      "faq"
+      "faq",
+      "continue",
+      "your",
+      "unit"
     ],
     "blurb": "Cold War: Shadow Run is a classroom-ready side-scroller review game with checkpoints, stability scoring, and multiple-choice questions about containment, NATO, the Berlin Crisis, and the Space Race.",
     "duration": "",
@@ -720,8 +753,13 @@
     "title": "Constitution Courthouse Run · U.S. Constitution Review Game | Teach Arcade",
     "contentType": "game",
     "canonicalUrl": "/arcade-review-games/social-studies/constitution-courthouse-run.html",
-    "subjects": [],
-    "topics": [],
+    "subjects": [
+      "social-studies",
+      "government-political-science"
+    ],
+    "topics": [
+      "us-constitution"
+    ],
     "keywords": [
       "constitution",
       "courthouse",
@@ -756,6 +794,9 @@
       "use",
       "this",
       "class",
+      "continue",
+      "your",
+      "unit",
       "quick",
       "classroom",
       "ideas",
@@ -778,8 +819,13 @@
     "title": "Progressive Era Sky Climb — U.S. History Vertical Platformer",
     "contentType": "game",
     "canonicalUrl": "/arcade-review-games/social-studies/progressive-era-sky-climb.html",
-    "subjects": [],
-    "topics": [],
+    "subjects": [
+      "social-studies",
+      "us-history"
+    ],
+    "topics": [
+      "progressive-era-imperialism"
+    ],
     "keywords": [
       "progressive",
       "era",
@@ -809,6 +855,9 @@
       "use",
       "this",
       "class",
+      "continue",
+      "your",
+      "unit",
       "quick",
       "classroom",
       "ideas",
@@ -831,7 +880,10 @@
     "title": "Pyramid Escape Run · Ancient Egypt Game | Teach Arcade",
     "contentType": "game",
     "canonicalUrl": "/arcade-review-games/social-studies/pyramid-escape-run.html",
-    "subjects": [],
+    "subjects": [
+      "social-studies",
+      "world-history"
+    ],
     "topics": [],
     "keywords": [
       "pyramid",
@@ -870,6 +922,10 @@
       "use",
       "this",
       "class",
+      "explore",
+      "related",
+      "teaching",
+      "collections",
       "quick",
       "classroom",
       "ideas",
@@ -944,6 +1000,9 @@
       "use",
       "this",
       "class",
+      "continue",
+      "your",
+      "unit",
       "quick",
       "ideas",
       "skills",
@@ -1014,6 +1073,9 @@
       "use",
       "this",
       "class",
+      "continue",
+      "your",
+      "unit",
       "overall",
       "topic",
       "missed",
@@ -1118,6 +1180,47 @@
       "faq"
     ],
     "blurb": "WWI Trench Run is a free World War I review game from Teach Arcade. Run through the trenches, avoid obstacles, and answer 20 randomized WWI questions. Perfect for classroom review, bell-ringers, or history stations.",
+    "duration": "",
+    "deviceNotes": "",
+    "icon": ""
+  },
+  {
+    "id": "survey-showdown",
+    "title": "Survey Showdown — Custom Classroom Review Game | Teach Arcade",
+    "contentType": "game",
+    "canonicalUrl": "/arcade-review-games/survey-showdown/",
+    "subjects": [],
+    "topics": [],
+    "keywords": [
+      "survey",
+      "showdown",
+      "custom",
+      "classroom",
+      "review",
+      "game",
+      "teach",
+      "arcade",
+      "create",
+      "and",
+      "play",
+      "free",
+      "customizable",
+      "team",
+      "with",
+      "ranked",
+      "answers",
+      "steals",
+      "scoring",
+      "lightning",
+      "round",
+      "build",
+      "your",
+      "player",
+      "manual",
+      "lineup",
+      "builder"
+    ],
+    "blurb": "Create and play Survey Showdown, a free customizable team classroom review game with ranked answers, steals, scoring, and a lightning round.",
     "duration": "",
     "deviceNotes": "",
     "icon": ""
@@ -2141,7 +2244,10 @@
       "breaking",
       "point",
       "teach",
-      "arcade"
+      "arcade",
+      "continue",
+      "your",
+      "unit"
     ],
     "blurb": "This page has moved to American Revolution Breaking Point .",
     "duration": "",
@@ -3762,8 +3868,12 @@
     "title": "13 Days — Visual Style Mockups",
     "contentType": "interactive",
     "canonicalUrl": "/choose-your-path-adventure/cuban-missile-crisis.html",
-    "subjects": [],
-    "topics": [],
+    "subjects": [
+      "us-history"
+    ],
+    "topics": [
+      "cold-war"
+    ],
     "keywords": [
       "days",
       "visual",
@@ -3785,6 +3895,11 @@
       "class",
       "how",
       "this",
+      "continue",
+      "your",
+      "cold",
+      "war",
+      "unit",
       "quick",
       "classroom",
       "ideas",
@@ -3885,8 +4000,12 @@
     "title": "Flags of Our Fathers Movie Guide | Teach Arcade",
     "contentType": "movie-guide",
     "canonicalUrl": "/movie-guides/guides/flags-of-our-fathers/",
-    "subjects": [],
-    "topics": [],
+    "subjects": [
+      "us-history"
+    ],
+    "topics": [
+      "world-war-ii"
+    ],
     "keywords": [
       "flags",
       "our",
@@ -3947,6 +4066,11 @@
       "key",
       "keep",
       "exploring",
+      "continue",
+      "your",
+      "world",
+      "war",
+      "unit",
       "review",
       "summary",
       "resume",
@@ -4019,7 +4143,10 @@
       "answer",
       "key",
       "keep",
-      "exploring"
+      "exploring",
+      "continue",
+      "your",
+      "unit"
     ],
     "blurb": "Teacher guide for Mississippi Burning with Civil Rights context, classroom-ready prompts, vocabulary, guiding questions, a quick quiz, and a printable rubric.",
     "duration": "",
@@ -4072,6 +4199,8 @@
       "key",
       "keep",
       "exploring",
+      "more",
+      "resources",
       "summary"
     ],
     "blurb": "Teacher guide for Rocky IV with Cold War context, classroom-ready, print-friendly review questions, a visual project, and a quick quiz for 1980s film analysis.",
@@ -4084,8 +4213,12 @@
     "title": "Teacher Guide – Schindler’s List | Teach Arcade",
     "contentType": "movie-guide",
     "canonicalUrl": "/movie-guides/guides/schindlers-list/",
-    "subjects": [],
-    "topics": [],
+    "subjects": [
+      "world-history"
+    ],
+    "topics": [
+      "world-war-ii"
+    ],
     "keywords": [
       "teacher",
       "guide",
@@ -4120,6 +4253,11 @@
       "key",
       "keep",
       "exploring",
+      "continue",
+      "your",
+      "world",
+      "war",
+      "unit",
       "review",
       "summary"
     ],
@@ -4186,6 +4324,9 @@
       "notes",
       "next",
       "step",
+      "more",
+      "world",
+      "resources",
       "why",
       "this",
       "film",
@@ -4302,8 +4443,13 @@
     "title": "Escape from the Trenches (WWI)",
     "contentType": "escape-room",
     "canonicalUrl": "/escape/?room=wwi",
-    "subjects": [],
-    "topics": [],
+    "subjects": [
+      "world-history",
+      "us-history"
+    ],
+    "topics": [
+      "world-war-i"
+    ],
     "keywords": [
       "escape",
       "escape room",
