@@ -1,0 +1,22 @@
+window.TT_SAMPLE_QUESTIONS = [
+  ["What is 12 multiplied by 8?","96","ninety-six","easy",100,"Math"],
+  ["What is the value of 3 squared?","9","nine","easy",100,"Math"],
+  ["What is one half written as a decimal?","0.5",".5; one-half","easy",100,"Math"],
+  ["What is the perimeter of a square with side length 4?","16 units","16; sixteen units","medium",150,"Math"],
+  ["Which planet is closest to the Sun?","Mercury","", "easy",100,"Science"],
+  ["What gas do plants take in during photosynthesis?","Carbon dioxide","CO2", "medium",150,"Science"],
+  ["What force pulls objects toward Earth?","Gravity","gravitational force", "easy",100,"Science"],
+  ["What is the process by which liquid water becomes vapor?","Evaporation","", "easy",100,"Science"],
+  ["Which organ pumps blood through the human body?","The heart","heart", "easy",100,"Science"],
+  ["What is the capital of Japan?","Tokyo","", "medium",150,"Geography"],
+  ["On which continent is the Sahara Desert?","Africa","", "easy",100,"Geography"],
+  ["Which ocean is the largest?","Pacific Ocean","Pacific", "easy",100,"Geography"],
+  ["What imaginary line divides Earth into Northern and Southern Hemispheres?","The Equator","Equator", "medium",150,"Geography"],
+  ["Who wrote Romeo and Juliet?","William Shakespeare","Shakespeare", "easy",100,"Language Arts"],
+  ["What part of speech names a person, place, thing, or idea?","Noun","a noun", "easy",100,"Language Arts"],
+  ["What is a comparison using like or as called?","Simile","a simile", "medium",150,"Language Arts"],
+  ["What is the past tense of the verb go?","Went","", "easy",100,"Language Arts"],
+  ["How many branches are in the United States federal government?","Three","3", "easy",100,"Civics"],
+  ["What ancient civilization built Machu Picchu?","The Inca","Inca; Incan", "medium",150,"History"],
+  ["In which year did the first human land on the Moon?","1969","nineteen sixty-nine", "hard",200,"History"]
+].map((q,i)=>({id:`sample-${i+1}`,question:q[0],answer:q[1],alternates:q[2]?q[2].split(";").map(x=>x.trim()):[],difficulty:q[3],points:q[4],category:q[5]}));
