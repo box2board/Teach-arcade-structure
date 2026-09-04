@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Category Clash — Custom Classroom Review Game | Teach Arcade</title>
+  <meta name="description" content="Build and play a free, customizable category-board classroom review game for 2–8 teams, with wagers, timers, scoring, and saved question sets.">
+  <link rel="canonical" href="https://teacharcade.com/arcade-review-games/category-clash/">
+  <meta name="theme-color" content="#10153b">
+  <meta property="og:title" content="Category Clash — Classroom Review Game | Teach Arcade">
+  <meta property="og:description" content="Create a custom team review board with questions, scores, timers, Power Plays, and a final round.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://teacharcade.com/arcade-review-games/category-clash/">
+  <meta property="og:image" content="https://teacharcade.com/assets/images/teach-arcade-logo.png">
+  <meta property="og:site_name" content="Teach Arcade">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Category Clash — Classroom Review Game">
+  <meta name="twitter:description" content="Make, save, and play a classroom category-board game for up to eight teams.">
+  <meta name="twitter:image" content="https://teacharcade.com/assets/images/teach-arcade-logo.png">
+  <link rel="icon" href="/assets/images/teach-arcade-logo.png">
+  <link rel="stylesheet" href="/assets/styles.css?v=1">
+  <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Category Clash","applicationCategory":"EducationalApplication","operatingSystem":"Any web browser","url":"https://teacharcade.com/arcade-review-games/category-clash/","description":"A customizable category-board classroom review game for two to eight teams.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"Teach Arcade","url":"https://teacharcade.com"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://teacharcade.com/"},{"@type":"ListItem","position":2,"name":"Arcade Review Games","item":"https://teacharcade.com/arcade-review-games/"},{"@type":"ListItem","position":3,"name":"Category Clash","item":"https://teacharcade.com/arcade-review-games/category-clash/"}]}</script>
+  <script src="/assets/scripts/nav.js?v=5" defer></script>
+  <script src="game.js" defer></script>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main class="app-shell">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Teach Arcade</a><span aria-hidden="true">›</span><a href="/arcade-review-games/">Arcade Review Games</a><span aria-hidden="true">›</span><span>Category Clash</span></nav>
+    <header class="game-header">
+      <div><p class="eyebrow">Teach Arcade presents</p><h1>Category <span>Clash</span></h1><p id="gameSubtitle">Build a board. Rally your teams. Make every answer count.</p></div>
+      <div class="utility-bar" aria-label="Game utilities">
+        <button id="soundBtn" class="icon-btn" type="button" aria-pressed="true" aria-label="Mute game sounds">🔊 <span>Sound</span></button>
+        <button id="fullscreenBtn" class="icon-btn" type="button">⛶ <span>Present</span></button>
+      </div>
+    </header>
+
+    <div id="notice" class="notice" role="status" aria-live="polite"></div>
+
+    <section id="setupView" class="view" aria-labelledby="setupTitle">
+      <div class="section-heading"><div><p class="step">Game studio</p><h2 id="setupTitle">Create your clash</h2></div><p>Your draft saves automatically on this device.</p></div>
+      <div class="panel setup-basics">
+        <label class="field grow"><span>Game title</span><input id="titleInput" maxlength="80" autocomplete="off"></label>
+        <label class="field compact"><span>Teams (2–8)</span><select id="teamCount"></select></label>
+        <label class="toggle"><input id="timerEnabled" type="checkbox"><span>Use countdown</span></label>
+        <label class="field compact"><span>Seconds</span><input id="timerSeconds" type="number" min="5" max="300" step="5"></label>
+        <label class="toggle"><input id="finalEnabled" type="checkbox"><span>Final round</span></label>
+      </div>
+      <section class="panel" aria-labelledby="teamsTitle"><div class="panel-title"><h3 id="teamsTitle">Team lineup</h3><span>Choose names and colors</span></div><div id="teamEditor" class="team-editor"></div></section>
+      <section class="panel" aria-labelledby="boardEditorTitle">
+        <div class="panel-title"><div><h3 id="boardEditorTitle">Question board</h3><span>Up to 6 categories · 5 clues each</span></div><button id="addCategoryBtn" class="btn secondary" type="button">+ Add category</button></div>
+        <div id="categoryEditor" class="category-editor"></div>
+      </section>
+      <section id="finalEditor" class="panel" aria-labelledby="finalEditorTitle">
+        <div class="panel-title"><div><h3 id="finalEditorTitle">Final face-off</h3><span>All teams wager before the reveal</span></div></div>
+        <div class="final-editor"><label class="field"><span>Final category</span><input id="finalCategory" maxlength="50"></label><label class="field"><span>Question</span><textarea id="finalQuestion" rows="2"></textarea></label><label class="field"><span>Answer</span><textarea id="finalAnswer" rows="2"></textarea></label></div>
+      </section>
+      <div class="setup-actions">
+        <button id="sampleBtn" class="btn secondary" type="button">Load sample</button><button id="saveBtn" class="btn secondary" type="button">Download JSON</button><button id="loadBtn" class="btn secondary" type="button">Load JSON</button><input id="fileInput" type="file" accept="application/json,.json" hidden>
+        <button id="startBtn" class="btn primary" type="button">Start the clash <span aria-hidden="true">→</span></button>
+      </div>
+    </section>
+
+    <section id="boardView" class="view" hidden aria-labelledby="boardTitle">
+      <div class="play-topbar"><div><p class="step">Live game</p><h2 id="boardTitle"></h2></div><div class="board-actions"><button id="adjustBtn" class="btn secondary" type="button">± Adjust scores</button><button id="resetBtn" class="btn danger" type="button">Reset game</button></div></div>
+      <div id="scoreboard" class="scoreboard" aria-label="Team scores"></div>
+      <p id="turnAnnouncer" class="turn-announcer" aria-live="polite"></p>
+      <div id="gameBoard" class="game-board" role="grid" aria-label="Category question board"></div>
+      <div class="board-footer"><p><kbd>←</kbd><kbd>→</kbd> active team · <kbd>F</kbd> full screen · <kbd>M</kbd> sound</p><button id="finalBtn" class="btn final" type="button" hidden>Play final face-off ✦</button></div>
+    </section>
+
+    <section id="questionView" class="view question-stage" hidden aria-labelledby="questionText">
+      <div class="question-meta"><span id="questionCategory"></span><strong id="questionValue"></strong></div>
+      <div id="powerPanel" class="power-panel" hidden><p>⚡ POWER PLAY</p><label>Active team wager <input id="powerWager" type="number" min="0" step="10"></label><button id="lockWagerBtn" class="btn power" type="button">Lock wager</button></div>
+      <div class="prompt-card"><p id="viewLabel" class="step">Question</p><h2 id="questionText" tabindex="-1"></h2><div id="answerArea" hidden><div class="answer-rule"></div><p class="step">Answer</p><p id="answerText"></p></div></div>
+      <div id="timerBox" class="timer-box" aria-live="polite"><div class="timer-track"><span id="timerFill"></span></div><strong id="timerDisplay">30</strong><div><button id="timerStartBtn" class="mini-btn" type="button">Start</button><button id="timerPauseBtn" class="mini-btn" type="button">Pause</button><button id="timerResetBtn" class="mini-btn" type="button">Reset</button></div></div>
+      <div class="question-controls"><button id="revealBtn" class="btn primary" type="button">Reveal answer <kbd>Space</kbd></button><div id="judgeControls" hidden><label class="field"><span>Which team answered?</span><select id="answeringTeam"></select></label><button id="correctBtn" class="btn correct" type="button">✓ Correct</button><button id="incorrectBtn" class="btn incorrect" type="button">✕ Incorrect</button></div></div>
+    </section>
+
+    <section id="finalView" class="view question-stage" hidden aria-labelledby="finalRoundTitle"><p class="step">Final face-off</p><h2 id="finalRoundTitle"></h2><div id="finalWagers" class="wager-grid"></div><button id="lockFinalBtn" class="btn primary" type="button">Lock all wagers &amp; show question</button><div id="finalPrompt" class="prompt-card" hidden><h3 id="finalQuestionText"></h3><div id="finalAnswerArea" hidden><div class="answer-rule"></div><p class="step">Answer</p><p id="finalAnswerText"></p></div></div><div id="finalControls" class="question-controls" hidden><button id="revealFinalBtn" class="btn primary" type="button">Reveal answer</button><div id="finalJudge" class="final-judge" hidden></div><button id="finishFinalBtn" class="btn final" type="button" hidden>See the winner ✦</button></div></section>
+
+    <section id="winnerView" class="view winner-view" hidden aria-labelledby="winnerTitle"><div class="burst" aria-hidden="true">✦</div><p class="step">Clash complete</p><h2 id="winnerTitle"></h2><p id="winnerSummary"></p><div id="finalScores" class="final-scores"></div><div><button id="rematchBtn" class="btn secondary" type="button">Reset game</button><button id="newGameBtn" class="btn primary" type="button">Start a new game</button></div></section>
+  </main>
+
+  <dialog id="adjustDialog"><form method="dialog"><div class="panel-title"><h2>Adjust scores</h2><button class="close-btn" value="cancel" aria-label="Close">×</button></div><p>Enter a positive or negative change. Adjustments are applied immediately.</p><div id="adjustRows"></div><button class="btn primary" value="done">Done</button></form></dialog>
+</body>
+</html>
