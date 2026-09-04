@@ -3,6 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "node scripts/sync-interactive-content.mjs && node scripts/generate-sitemap.mjs && node scripts/generate-robots.mjs && echo 'static site'"
+    "build": "node scripts/sync-interactive-content.mjs && node scripts/generate-sitemap.mjs && node scripts/generate-robots.mjs && echo 'static site'",
+    "audit": "node scripts/audit-site.mjs"
   }
 }

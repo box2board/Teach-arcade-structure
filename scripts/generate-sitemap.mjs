@@ -20,7 +20,7 @@ function toUrl(fileAbs) {
   // map /index.html -> /
   return rel.endsWith('/index.html')
     ? SITE + rel.slice(0, -'/index.html'.length) + '/'
-    : SITE + rel.replace(/\.html$/, '');
+    : SITE + rel;
 }
 
 async function walk(dir) {
@@ -45,7 +45,8 @@ async function main() {
     const url = toUrl(f);
     if (!url) continue;
     const contents = await fs.readFile(f, 'utf8');
-    if (/name=\"robots\"\\s+content=\"noindex/i.test(contents)) {
+    if (/<meta\b[^>]*\bname=["']robots["'][^>]*\bcontent=["'][^"']*noindex/i.test(contents)
+      || /<meta\b[^>]*\bcontent=["'][^"']*noindex[^"']*["'][^>]*\bname=["']robots["']/i.test(contents)) {
       continue;
     }
     const stat = await fs.stat(f);
