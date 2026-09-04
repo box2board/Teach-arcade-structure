@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Territory Takedown — Custom Classroom Review Game | Teach Arcade</title>
+  <meta name="description" content="Create a free Territory Takedown classroom review game for any subject. Teams answer teacher-provided questions to capture, defend, and reclaim a colorful strategy grid.">
+  <link rel="canonical" href="https://teacharcade.com/arcade-review-games/territory-takedown/">
+  <meta name="theme-color" content="#102657">
+  <meta property="og:title" content="Territory Takedown — Classroom Review Game | Teach Arcade">
+  <meta property="og:description" content="Turn any question set into a colorful, teacher-controlled territory strategy game for 2–8 teams.">
+  <meta property="og:type" content="website"><meta property="og:url" content="https://teacharcade.com/arcade-review-games/territory-takedown/">
+  <meta property="og:image" content="https://teacharcade.com/assets/images/teach-arcade-logo.png"><meta property="og:site_name" content="Teach Arcade">
+  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Territory Takedown — Classroom Review Game"><meta name="twitter:description" content="Capture a colorful classroom command map using any teacher question set."><meta name="twitter:image" content="https://teacharcade.com/assets/images/teach-arcade-logo.png">
+  <link rel="icon" href="/assets/images/teach-arcade-logo.png"><link rel="stylesheet" href="/assets/styles.css?v=1"><link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Territory Takedown","applicationCategory":"EducationalApplication","operatingSystem":"Any web browser","url":"https://teacharcade.com/arcade-review-games/territory-takedown/","description":"A customizable, teacher-controlled territory strategy review game for two to eight classroom teams and any subject.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"Teach Arcade","url":"https://teacharcade.com"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://teacharcade.com/"},{"@type":"ListItem","position":2,"name":"Arcade Review Games","item":"https://teacharcade.com/arcade-review-games/"},{"@type":"ListItem","position":3,"name":"Territory Takedown","item":"https://teacharcade.com/arcade-review-games/territory-takedown/"}]}</script>
+  <script src="/assets/scripts/nav.js?v=5" defer></script><script src="questions.js" defer></script><script src="game.js" defer></script>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main class="app-shell">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Teach Arcade</a><span>›</span><a href="/arcade-review-games/">Arcade Review Games</a><span>›</span><span>Territory Takedown</span></nav>
+    <header class="game-header"><div><p class="eyebrow">Teach Arcade presents</p><h1>Territory <span>Takedown</span></h1><p>Answer. Expand. Rally your team around the command map.</p></div><div class="utility"><button id="howBtn">? How to play</button><button id="soundBtn" aria-pressed="true">🔊 Sound</button><button id="fullBtn">⛶ Present</button></div></header>
+    <div id="notice" class="notice" role="status" aria-live="polite"></div><div id="announcer" class="sr-only" aria-live="assertive"></div>
+
+    <section id="recovery" class="view recovery" hidden><p class="eyebrow">Game recovered</p><h2>Continue your previous command?</h2><p>A saved game is available on this device.</p><div class="actions"><button id="resumeBtn" class="btn primary">Resume Previous Game</button><button id="discardBtn" class="btn secondary">Start New Game</button><button id="recoverySetupBtn" class="btn ghost">Return to Setup</button></div></section>
+
+    <section id="setupView" class="view" aria-labelledby="setupTitle">
+      <div class="section-head"><div><p class="eyebrow">Game studio</p><h2 id="setupTitle">Build your command map</h2></div><p>Settings and questions save automatically on this device.</p></div>
+      <div class="setup-grid">
+        <section class="panel settings"><h3>Match settings</h3>
+          <label class="field wide"><span>Game title</span><input id="titleInput" maxlength="80" value="Territory Takedown Review"></label>
+          <fieldset><legend>Question mode</legend><label><input type="radio" name="qmode" value="prepared" checked> Prepared questions</label><label><input type="radio" name="qmode" value="quick"> Quick Play (ask aloud)</label></fieldset>
+          <label class="field"><span>Teams</span><select id="teamCount"></select></label><label class="field"><span>Map size</span><select id="mapSize"><option value="5">Small · 25 spaces</option><option value="6" selected>Standard · 36 spaces</option><option value="7">Large · 49 spaces</option></select></label>
+          <label class="field"><span>Game length</span><select id="roundLimit"><option value="4">4 rounds</option><option value="6" selected>6 rounds</option><option value="8">8 rounds</option><option value="10">10 rounds</option></select></label><label class="field"><span>Question timer</span><select id="timerSeconds"><option value="15">15 seconds</option><option value="30" selected>30 seconds</option><option value="45">45 seconds</option><option value="60">60 seconds</option><option value="0">Untimed</option></select></label>
+          <label class="field wide"><span>Win condition</span><select id="winMode"><option value="quick">Quick Match · most territory</option><option value="total">Total Takedown · capture home bases</option><option value="conquest" disabled>Classroom Conquest · future mode</option></select><small>Classroom Conquest is planned for a future release.</small></label>
+          <div class="toggles wide"><label><input id="powerEnabled" type="checkbox" checked> Power-ups</label><label><input id="specialEnabled" type="checkbox" checked> Special territories</label><label><input id="openExpansion" type="checkbox"> Open Expansion</label><label><input id="setupSound" type="checkbox" checked> Sound</label><label><input id="reducedMotion" type="checkbox"> Reduced animation</label></div>
+          <details class="wide scoring"><summary>Scoring values</summary><div class="scoring-grid"><label>Standard <input id="scoreStandard" type="number" min="0" max="1000" value="100"></label><label>Fortress <input id="scoreFortress" type="number" min="0" max="1000" value="200"></label><label>Treasure <input id="scoreTreasure" type="number" min="0" max="1000" value="300"></label><label>Opposing tile <input id="scoreAttack" type="number" min="0" max="1000" value="150"></label><label>Defense <input id="scoreDefense" type="number" min="0" max="1000" value="50"></label><label>Comeback <input id="scoreComeback" type="number" min="0" max="1000" value="300"></label><label>End special <input id="scoreEndSpecial" type="number" min="0" max="1000" value="25"></label></div></details>
+        </section>
+        <section class="panel"><div class="panel-title"><h3>Team lineup</h3><span>Names, colors, and emblems</span></div><div id="teamEditor" class="team-editor"></div></section>
+      </div>
+      <section id="questionEditor" class="panel editor"><div class="panel-title"><div><h3>Prepared question set</h3><span><b id="questionCount">0</b> questions · no repeats until the set is exhausted</span></div><div class="compact-actions"><button id="sampleBtn">Load 20-question sample</button><button id="addQuestionBtn">+ Add</button></div></div>
+        <p class="format-note">Bulk format: one question per line as <code>Question | Answer | Alternate 1; Alternate 2 | Difficulty | Points | Category</code></p>
+        <div class="import-row"><textarea id="bulkInput" rows="3" placeholder="What is 5 × 6? | 30 | thirty | easy | 100 | Math"></textarea><button id="bulkBtn">Add pasted questions</button></div>
+        <div id="questionRows" class="question-rows"></div>
+        <div class="editor-actions"><button id="downloadBtn">Download JSON</button><button id="templateBtn">Blank JSON template</button><button id="uploadBtn">Upload JSON</button><input id="uploadInput" type="file" accept=".json,application/json" hidden><button id="clearDraftBtn" class="danger">Clear questions</button></div>
+      </section>
+      <div class="setup-actions"><button id="clearSavedBtn" class="btn danger">Clear Saved Game</button><button id="startBtn" class="btn primary">Launch map <span>→</span></button></div>
+    </section>
+
+    <section id="gameView" class="view game-view" hidden>
+      <div class="game-top"><div><p class="eyebrow">Live command map</p><h2 id="liveTitle"></h2></div><div class="round-box"><span id="roundText">Round 1 / 6</span><strong id="timerDisplay">0:30</strong></div></div>
+      <div id="scoreboard" class="scoreboard" aria-label="Live team scoreboard"></div>
+      <div class="play-layout"><section class="map-panel"><div class="turn-banner"><span id="activeBadge"></span><strong id="turnText"></strong><small id="selectionHint">Choose a glowing territory.</small></div><div class="map-scroll"><div id="map" class="map" role="grid" aria-label="Territory map"></div></div><div id="legend" class="legend"><b>Map key</b><span>● Standard</span><span>🏰 Fortress</span><span>⚡ Power-Up</span><span>◆ Treasure</span><span>↔ Challenge</span><span>★ Wild Card</span><span>⌂ Home Base</span></div></section>
+        <aside id="teacherPanel" class="teacher-panel"><button id="panelToggle" class="panel-toggle" aria-expanded="true">Teacher controls <span>▾</span></button><div id="panelBody">
+          <section class="question-card"><p id="questionLabel" class="eyebrow">Select a territory</p><h3 id="questionText">Legal choices glow on the map.</h3><div id="answerWrap" hidden><span>Answer</span><p id="answerText"></p></div></section>
+          <div class="timer-actions"><button id="timerBtn">▶ Start timer</button><button id="timerResetBtn">↺ Reset</button></div>
+          <div class="judge"><button id="correctBtn" class="correct" disabled>✓ Correct <kbd>C</kbd></button><button id="incorrectBtn" class="incorrect" disabled>× Incorrect <kbd>X</kbd></button><button id="answerBtn" disabled>Show Answer <kbd>A</kbd></button></div>
+          <section><div class="panel-title"><h3>Power-up inventory</h3><span>Maximum 3 per team</span></div><div id="inventory" class="inventory"></div></section>
+          <details><summary>Match tools</summary><div class="tool-grid"><button id="prevBtn">← Previous team</button><button id="nextBtn">Next team →</button><button id="addPointsBtn">+100 points</button><button id="subtractPointsBtn">−100 points</button><button id="overrideBtn" aria-pressed="false">Teacher override</button><button id="reassignBtn">Reassign selected</button><button id="undoBtn">↶ Undo <kbd>U</kbd></button><button id="soundGameBtn">🔊 Sound</button><button id="fullGameBtn">⛶ Full screen</button><button id="setupBtn">Return to setup</button><button id="endBtn" class="danger">End game</button></div></details>
+        </div></aside></div>
+    </section>
+
+    <section id="winnerView" class="view winner" hidden><div class="winner-star">✦</div><p class="eyebrow">Map complete</p><h2 id="winnerTitle"></h2><p id="winnerSummary"></p><div id="standings" class="standings"></div><div id="tieBox" hidden><p>Territory and points are tied. Ask one teacher-controlled tiebreaker question.</p><div id="tieButtons"></div></div><div class="actions"><button id="resumeGameBtn" class="btn ghost">Resume game</button><button id="rematchBtn" class="btn secondary">Rematch</button><button id="winnerSetupBtn" class="btn primary">Return to setup</button></div></section>
+  </main>
+
+  <dialog id="helpDialog"><form method="dialog"><button class="close" value="cancel" aria-label="Close help">×</button><h2>How to Play</h2><div class="help-grid"><section><h3>Take a turn</h3><ol><li>The active team chooses a glowing tile.</li><li>Ask the displayed question or your own Quick Play prompt.</li><li>Control the timer, reveal the answer if prepared, then mark Correct or Incorrect.</li><li>A correct answer captures the tile or damages a fortress. Play advances automatically.</li></ol><h3>Expansion &amp; comeback</h3><p>Normally, teams choose adjacent tiles. Open Expansion allows any unclaimed tile. A team without a home base receives a Comeback Question; success restores a protected base on an open tile, or challenges a non-base border tile.</p></section><section><h3>Special territories</h3><p>🏰 takes two hits · ⚡ awards an ability · ◆ adds bonus points · ↔ opens a friendly challenge · ★ triggers a positive random event · ⌂ marks a home base.</p><h3>Power-ups</h3><p><b>Shield</b> blocks one capture; <b>Extra Turn</b> acts again; <b>Long Range</b> reaches two spaces; <b>Double Capture</b> claims a connected open tile; <b>Blockade</b> pauses one territory; <b>Reinforce</b> adds defense; <b>Score Boost</b> doubles capture points; <b>Second Chance</b> retries an incorrect answer.</p><h3>Shortcuts</h3><p><kbd>C</kbd> correct · <kbd>X</kbd> incorrect · <kbd>A</kbd> answer · <kbd>Space</kbd> timer · <kbd>N</kbd> next · <kbd>U</kbd> undo · <kbd>F</kbd> full screen · <kbd>M</kbd> mute · <kbd>Esc</kbd> close</p></section></div></form></dialog>
+  <dialog id="confirmDialog"><form method="dialog"><h2 id="confirmTitle">Confirm action</h2><p id="confirmText"></p><div class="actions"><button value="cancel">Cancel</button><button id="confirmAction" value="default" class="danger">Confirm</button></div></form></dialog>
+  <footer class="local-footer"><p>Territory Takedown stores game data only in this browser.</p><p><a href="/arcade-review-games/">Arcade Review Games</a> · <a href="/teacher-tools/">Teacher Tools</a> · <a href="/privacy.html">Privacy</a></p></footer>
+</body></html>
