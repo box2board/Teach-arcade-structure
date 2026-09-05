@@ -6,17 +6,25 @@
 .topic-heading {
   max-width: 780px;
   margin-bottom: 18px;
+  padding: 20px 24px;
+  border-left: 5px solid #f29c38;
+  border-radius: 14px;
+  background: #1e293b;
+  color: #fff;
+  display: block;
 }
 
 .topic-heading h1 {
-  margin-bottom: 8px;
+  margin: 0 0 6px;
+  color: #fff;
+  font: 700 clamp(2rem, 5vw, 2.75rem)/1.15 Poppins, sans-serif;
 }
 
 .topic-heading p {
   margin: 0;
-  color: #475569;
+  color: #f1f5f9;
   font-size: 1.05rem;
-  line-height: 1.6;
+  line-height: 1.45;
 }
 
 .topic-section {
@@ -124,9 +132,22 @@
   color: #1e293b;
 }
 
+.try-this-in-class {
+  max-width: 780px;
+  padding: 20px 22px;
+  border-left: 5px solid #f29c38;
+  border-radius: 14px;
+  background: #fff7ed;
+}
+
+.try-this-in-class .topic-section-intro {
+  margin-bottom: 0;
+  color: #334155;
+}
+
 @media (max-width: 640px) {
   .standard-topic-page { padding-inline: 16px; }
-  .topic-heading { margin-bottom: 12px; }
+  .topic-heading { margin-bottom: 12px; padding: 16px 18px; }
   .topic-section { margin: 24px 0; }
   .topic-resource-grid,
   .topic-concept-grid,

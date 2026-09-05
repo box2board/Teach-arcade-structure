@@ -8,7 +8,7 @@ Before creating a page, provide:
 
 - topic name and URL slug;
 - parent subject and, where applicable, its subject branch (for example, Social Studies → World History);
-- a one- to three-sentence teacher-facing introduction;
+- a short, one-sentence teacher-facing hero description;
 - verified existing resources, including their actual URL, type, behavior, and a short accurate description;
 - a concise set of major concepts teachers can use; and
 - two to four related **existing** topic pages.
@@ -19,9 +19,10 @@ Inspect every attached resource before describing it. Never invent cards, types,
 
 1. Follow the parent subject’s established route convention. World History topic pages are flat `.html` files under `public/subjects/social-studies/world-history/`.
 2. Add a unique title, meta description, self-referencing canonical URL, Open Graph fields, and Twitter card fields. Use the standard Teach Arcade social image unless a verified topic image exists.
-3. Include exactly one descriptive `h1`. Keep the introduction short and place featured resource cards immediately after it.
+3. Include exactly one descriptive `h1` in a compact `.topic-heading` hero. Use a short, readable description; the H1 must remain dominant and resources must stay near the top.
 4. Load `/assets/styles.css` followed by `/assets/topic-page.css`. Use `standard-topic-page`, `topic-heading`, `topic-section`, and the shared card classes rather than adding page-local layout CSS.
-5. Order content as: visual breadcrumbs; H1 and short introduction; featured resources; teaching concepts; optional additional activities or classroom prompts; related topics; parent-subject return link.
+5. Order content as: visual breadcrumbs; compact topic hero; featured existing Teach Arcade resources; concise teaching points; optional **Try This in Class**; related topics; parent-subject return link. Prioritize Teach Arcade resources over general informational text.
+6. Render a resource section only when it contains at least one verified, existing Teach Arcade resource. Never show an empty container, placeholder card, “Coming Soon,” or “No resources yet” message.
 
 ## Relationships and breadcrumbs
 
@@ -33,7 +34,11 @@ Inspect every attached resource before describing it. Never invent cards, types,
 
 ## Optional sections
 
-Teaching concepts, classroom-use prompts, additional resource groups, and related topics should appear only when they add real teacher value. The H1/introduction, at least one verified resource, parent connection, metadata, visual/schema breadcrumbs, and subject discovery path are required for a complete indexable topic destination.
+Teaching concepts, **Try This in Class**, additional resource groups, and related topics should appear only when they add real teacher value. Teaching cards should use short headings and generally one or two concise sentences containing only the most useful classroom context.
+
+Use the optional **Try This in Class** section for one short, actionable way to extend a featured resource through discussion, reflection, or another instructional move. Mark it up as a `.topic-section.try-this-in-class` with an accessible heading; omit the entire section when there is no meaningful idea.
+
+The H1/introduction, at least one verified resource, parent connection, metadata, visual/schema breadcrumbs, and subject discovery path are required for a complete indexable topic destination. If a particular resource category has no verified items, omit its heading and container completely.
 
 ## Sitemap, indexes, and validation
 

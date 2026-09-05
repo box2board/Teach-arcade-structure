@@ -549,34 +549,6 @@
       });
 
       const uniqueMatches = Array.from(new Map(matches.map(item => [item.id, item])).values());
-      if (!uniqueMatches.length && topicSlug) {
-        const emptySection = document.createElement("section");
-        emptySection.className = "interactive-section";
-        emptySection.id = "interactive-learning-experiences";
-        emptySection.setAttribute("aria-labelledby", "interactive-learning-experiences-title");
-
-        const header = document.createElement("div");
-        header.className = "interactive-header";
-
-        const title = document.createElement("h2");
-        title.id = "interactive-learning-experiences-title";
-        title.textContent = "Featured Experiences & Guides";
-
-        const subtitle = document.createElement("p");
-        subtitle.textContent = "No experiences or guides linked to this topic yet.";
-
-        header.appendChild(title);
-        header.appendChild(subtitle);
-        emptySection.appendChild(header);
-
-        const insertTarget = main.querySelector(".filters-row")
-          || main.querySelector("#tabs")
-          || main.querySelector("#resource-list");
-        if (insertTarget) main.insertBefore(emptySection, insertTarget);
-        else main.appendChild(emptySection);
-        return;
-      }
-
       if (!uniqueMatches.length) return;
 
       const section = document.createElement("section");
