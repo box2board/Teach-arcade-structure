@@ -67,7 +67,7 @@ export const contentMappings = [
   {
     match: { canonicalUrl: "/arcade-review-games/social-studies/pyramid-escape-run.html" },
     subjects: ["social-studies", "world-history"],
-    topics: [],
+    topics: ["ancient-egypt"],
   },
   {
     match: { id: "wwi-trench-run" },
