@@ -7,7 +7,7 @@ export const contentMappings = [
   {
     match: { canonicalUrl: "/arcade-review-games/ela/grammar-gauntlet.html" },
     subjects: ["ela", "grammar-language"],
-    topics: [],
+    topics: ["grammar-language"],
   },
   {
     match: { canonicalUrl: "/arcade-review-games/ela/undertext-rifts-mood-tone.html" },
@@ -42,7 +42,7 @@ export const contentMappings = [
   {
     match: { canonicalUrl: "/arcade-review-games/science/moon-mission-run.html" },
     subjects: ["science", "astronomy"],
-    topics: [],
+    topics: ["earth-sun-moon-system"],
   },
   {
     match: { canonicalUrl: "/arcade-review-games/science/scientific-method.html" },
