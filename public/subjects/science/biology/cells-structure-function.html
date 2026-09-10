@@ -1,100 +1,39 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cell Structure &amp; Function | Biology | Teach Arcade</title>
-
-  <!-- Styles & Fonts -->
-  <link rel="stylesheet" href="/assets/styles.css?v=1" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
-
-  <!-- SEO & Social -->
-  <meta name="description" content="Free Cell Structure & Function resources: lessons, worksheets, labs, activities, and interactives for high school biology. Cover prokaryotic vs. eukaryotic cells, organelles, and specialization." />
-  <link rel="canonical" href="https://teacharcade.com/subjects/science/biology/cells-structure-function.html" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Teach Arcade" />
-  <meta property="og:title" content="Cell Structure &amp; Function — Free Biology Teaching Resources" />
-  <meta property="og:description" content="Curated lessons, worksheets, labs, and interactive activities for teaching cell structure, organelles, and how cells function." />
-  <meta property="og:url" content="https://teacharcade.com/subjects/science/biology/cells-structure-function.html" />
-  <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Cell Structure &amp; Function — Free Biology Teaching Resources" />
-  <meta name="twitter:description" content="Curated lessons, worksheets, labs, and interactive activities for teaching cell structure and function." />
-  <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
-
-  <!-- Structured Data: Breadcrumbs -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {"@type":"ListItem","position":1,"name":"Home","item":"https://teacharcade.com/"},
+<html lang="en"><head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="theme-color" content="#0f172a" />
+  <title>Cell Structure &amp; Function Game and Teaching Guide | Teach Arcade</title><meta name="description" content="Review cell organelles, plant and animal cells, and structure-function relationships with Concept Stack: Cells and concise biology teaching points." /><link rel="canonical" href="https://teacharcade.com/subjects/science/biology/cells-structure-function.html" />
+  <link rel="stylesheet" href="/assets/styles.css?v=1" /><link rel="stylesheet" href="/assets/topic-page.css?v=2" /><link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
+  <meta property="og:type" content="website" /><meta property="og:site_name" content="Teach Arcade" /><meta property="og:title" content="Cell Structure &amp; Function Game and Teaching Guide | Teach Arcade" /><meta property="og:description" content="Review cell organelles, plant and animal cells, and structure-function relationships with Concept Stack: Cells and concise biology teaching points." /><meta property="og:url" content="https://teacharcade.com/subjects/science/biology/cells-structure-function.html" /><meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+  <meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content="Cell Structure &amp; Function Game and Teaching Guide | Teach Arcade" /><meta name="twitter:description" content="Review cell organelles, plant and animal cells, and structure-function relationships with Concept Stack: Cells and concise biology teaching points." /><meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://teacharcade.com/"},
       {"@type":"ListItem","position":2,"name":"Subjects","item":"https://teacharcade.com/subjects/"},
       {"@type":"ListItem","position":3,"name":"Science","item":"https://teacharcade.com/subjects/science/"},
       {"@type":"ListItem","position":4,"name":"Biology","item":"https://teacharcade.com/subjects/science/biology/"},
-      {"@type":"ListItem","position":5,"name":"Cell Structure & Function","item":"https://teacharcade.com/subjects/science/biology/cells-structure-function.html"}
-    ]
-  }
-  </script>
-
-  <!-- Topic Explorer micro styles -->
-  <style>
-    .tabs{display:flex;gap:10px;flex-wrap:wrap;align-items:center;background:#f1f5f9;border:1px solid #e5e7eb;border-radius:12px;padding:10px;margin:18px 0 16px}
-    .tab{appearance:none;border:1px solid #cbd5e1;background:#fff;color:#1f2937;padding:8px 12px;border-radius:999px;cursor:pointer;font:600 14px/1 Poppins,sans-serif}
-    .tab[aria-selected="true"]{background:#2563eb;color:#fff;border-color:#2563eb}
-    .pill{display:inline-block;padding:4px 8px;border-radius:999px;font:600 12px/1 Nunito,sans-serif;background:#eef2ff;color:#3730a3;margin-right:6px}
-    .pill.gray{background:#f1f5f9;color:#334155}
-    .pill.green{background:#ecfdf5;color:#065f46}
-    .pill.orange{background:#fff7ed;color:#9a3412}
-    .pill.blue{background:#eff6ff;color:#1d4ed8}
-    .filters-row{display:flex;gap:10px;align-items:center;margin:12px 0 8px}
-    .filters-row input[type="search"]{flex:1;min-width:220px;padding:10px 12px;border:1px solid #cbd5e1;border-radius:10px}
-    #resource-list.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-    .card h3{margin:0 0 8px}
-    .meta{margin:0 0 12px;color:#475569;font:600 13px/1.4 Nunito,sans-serif}
-  </style>
-</head>
-
-<body>
-
-  <!-- Global Header -->
-  <div id="site-header"></div>
-  <script src="/assets/scripts/nav.js?v=5" defer></script>
-
-  <!-- Topic content -->
-  <main class="container topic-page"
-        data-sheet-id="YOUR_CELL_SHEET_ID_HERE"
-        data-tab="Cell Structure & Function">
-
-    <nav class="breadcrumbs">
-      <a href="/">Home</a> ›
-      <a href="/subjects/index.html">Subjects</a> ›
-      <a href="/subjects/science/index.html">Science</a> ›
-      <a href="/subjects/science/biology/index.html">Biology</a> ›
-      Cell Structure &amp; Function
-    </nav>
-
-    <h1>Cell Structure &amp; Function</h1>
-    <p>Curated lessons, worksheets, labs, simulations, and activities on prokaryotic and eukaryotic cells, organelles, and how structure relates to cell function.</p>
-
-    <div class="filters-row">
-      <input id="searchInput" type="search" placeholder="Search titles…" aria-label="Search resources" />
-    </div>
-
-    <div id="tabs" class="tabs" role="tablist" aria-label="Resource categories"></div>
-    <section id="resource-list" class="card-grid" aria-live="polite"></section>
-
-  </main>
-
-  <footer>
-    © <script>document.write(new Date().getFullYear())</script> Teach Arcade •
-    <a href="/privacy.html">Privacy</a> •
-    <a href="/terms.html">Terms</a>
-  </footer>
-
-  <!-- Shared Topic Loader (updated JS with sheetId support) -->
-  <script src="/assets/scripts/topic.v1.js?v=2" defer></script>
-</body>
-</html>
+      {"@type":"ListItem","position":5,"name":"Cells: Structure & Function","item":"https://teacharcade.com/subjects/science/biology/cells-structure-function.html"}]}</script>
+</head><body><div id="site-header"></div><script src="/assets/scripts/nav.js?v=6" defer></script>
+<main class="container standard-topic-page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a> ›
+      <a href="/subjects/">Subjects</a> ›
+      <a href="/subjects/science/">Science</a> ›
+      <a href="/subjects/science/biology/">Biology</a> ›
+      <span aria-current="page">Cells: Structure & Function</span></nav>
+  <header class="topic-heading"><h1>Cells: Structure & Function</h1><p>A classroom review game and clear teaching points for organelles, cell types, and structure-function relationships.</p></header>
+  <section class="topic-section" aria-labelledby="featured-resources"><h2 id="featured-resources">Featured Teach Arcade resources</h2><p class="topic-section-intro">Start with these classroom-ready activities for focused practice or review.</p><div class="topic-resource-grid">
+        <article class="topic-resource-card"><span class="resource-type">Arcade Game</span><h3>Concept Stack: Cells</h3><p>Students sort falling cell terms into categories in a Tetris-style review with middle- and high-school tiers, adjustable speed, and an optional misconceptions mode.</p><a class="topic-resource-action" href="/arcade-review-games/science/concept-stack-cells/">Play Concept Stack: Cells</a></article>
+      </div></section>
+  <section class="topic-section" aria-labelledby="teaching-points"><h2 id="teaching-points">Teaching cell structure and function</h2><p class="topic-section-intro">Use these points to frame instruction, discussion, or a quick debrief.</p><div class="topic-concept-grid">
+        <article class="topic-concept-card"><h3>Cell theory</h3><p>Living things are made of cells, cells are the basic unit of life, and new cells come from existing cells.</p></article>
+        <article class="topic-concept-card"><h3>Cell boundaries</h3><p>The cell membrane regulates what enters and leaves; plant cells also have a supportive cell wall.</p></article>
+        <article class="topic-concept-card"><h3>Genetic control</h3><p>The nucleus houses DNA in eukaryotic cells and directs many cell activities.</p></article>
+        <article class="topic-concept-card"><h3>Energy and materials</h3><p>Mitochondria release usable energy, chloroplasts capture light energy in plants, and cytoplasm supports cellular reactions.</p></article>
+        <article class="topic-concept-card"><h3>Plant and animal cells</h3><p>Both are eukaryotic and share many structures; chloroplasts, cell walls, and large central vacuoles distinguish typical plant cells.</p></article>
+        <article class="topic-concept-card"><h3>Structure supports function</h3><p>An organelle’s form, location, and internal features help it perform a specific job within the cell.</p></article>
+      </div></section>
+  <section class="topic-section try-this-in-class" aria-labelledby="try-this-in-class"><h2 id="try-this-in-class">Try This in Class</h2><p class="topic-section-intro">Pause after a sorting decision and ask students to justify it with a structure-function statement: “This belongs here because its structure helps the cell…”</p></section>
+  <section class="topic-section" aria-labelledby="related-topics"><h2 id="related-topics">Related topics</h2><div class="related-topic-grid">
+        <article class="related-topic-card"><h3><a href="/subjects/science/biology/cell-transport-homeostasis.html">Cell Transport & Homeostasis</a></h3><p>Examine how membranes help cells maintain stable conditions.</p></article>
+        <article class="related-topic-card"><h3><a href="/subjects/science/biology/cell-energy-photosynthesis-respiration.html">Cell Energy</a></h3><p>Trace how cells capture and release energy.</p></article>
+        <article class="related-topic-card"><h3><a href="/subjects/science/biology/cell-division-mitosis-meiosis.html">Cell Division</a></h3><p>Continue from cell organization to growth and reproduction.</p></article>
+      </div></section>
+  <p class="subject-return"><a href="/subjects/science/biology/">Explore more Biology</a> for more classroom resources.</p>
+</main><footer>© <script>document.write(new Date().getFullYear())</script> Teach Arcade • <a href="/privacy.html">Privacy</a> • <a href="/terms.html">Terms</a></footer></body></html>

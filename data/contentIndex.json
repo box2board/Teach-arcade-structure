@@ -160,7 +160,9 @@
       "ela",
       "reading-literature"
     ],
-    "topics": [],
+    "topics": [
+      "mood-tone"
+    ],
     "keywords": [
       "mood",
       "tone",
@@ -228,7 +230,9 @@
       "math",
       "high-school-math"
     ],
-    "topics": [],
+    "topics": [
+      "slope-linear-relationships"
+    ],
     "keywords": [
       "algebra",
       "city",
@@ -292,7 +296,9 @@
       "math",
       "k-5-math"
     ],
-    "topics": [],
+    "topics": [
+      "fact-fluency-games"
+    ],
     "keywords": [
       "math",
       "rush",
@@ -343,7 +349,9 @@
       "math",
       "math-games-puzzles"
     ],
-    "topics": [],
+    "topics": [
+      "fact-fluency-games"
+    ],
     "keywords": [
       "math",
       "track",
@@ -402,7 +410,9 @@
       "math",
       "middle-school-math"
     ],
-    "topics": [],
+    "topics": [
+      "slope-linear-relationships"
+    ],
     "keywords": [
       "slope",
       "street",
@@ -466,7 +476,9 @@
       "science",
       "biology"
     ],
-    "topics": [],
+    "topics": [
+      "cells-structure-function"
+    ],
     "keywords": [
       "concept",
       "stack",
