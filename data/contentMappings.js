@@ -12,32 +12,32 @@ export const contentMappings = [
   {
     match: { canonicalUrl: "/arcade-review-games/ela/undertext-rifts-mood-tone.html" },
     subjects: ["ela", "reading-literature"],
-    topics: [],
+    topics: ["mood-tone"],
   },
   {
     match: { canonicalUrl: "/arcade-review-games/math/algebra-city-run.html" },
     subjects: ["math", "high-school-math"],
-    topics: [],
+    topics: ["slope-linear-relationships"],
   },
   {
     match: { canonicalUrl: "/arcade-review-games/math/math-rush-genesis-addition.html" },
     subjects: ["math", "k-5-math"],
-    topics: [],
+    topics: ["fact-fluency-games"],
   },
   {
     match: { canonicalUrl: "/arcade-review-games/math/math-track-racer.html" },
     subjects: ["math", "math-games-puzzles"],
-    topics: [],
+    topics: ["fact-fluency-games"],
   },
   {
     match: { canonicalUrl: "/arcade-review-games/math/slope-street-sprint.html" },
     subjects: ["math", "middle-school-math"],
-    topics: [],
+    topics: ["slope-linear-relationships"],
   },
   {
     match: { id: "concept-stack-cells" },
     subjects: ["science", "biology"],
-    topics: [],
+    topics: ["cells-structure-function"],
   },
   {
     match: { canonicalUrl: "/arcade-review-games/science/moon-mission-run.html" },
