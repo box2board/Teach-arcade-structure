@@ -230,9 +230,13 @@
         display: flex;
         flex-direction: column;
         gap: 16px;
+        visibility: hidden;
+        pointer-events: none;
       }
       .ta-panel.open{
         transform: translateX(0);
+        visibility: visible;
+        pointer-events: auto;
       }
 
       .ta-panel ul{
@@ -331,7 +335,7 @@
 
     <div class="ta-overlay" id="${overlayId}"></div>
 
-    <aside class="ta-panel" id="${panelId}" aria-hidden="true">
+    <aside class="ta-panel" id="${panelId}" aria-hidden="true" inert>
       <ul>
         ${LINKS.map(l => `<li><a href="${l.href}">${l.label}</a></li>`).join("")}
       </ul>
@@ -381,13 +385,16 @@
   const setAria = (isOpen) => {
     burger.setAttribute("aria-expanded", isOpen ? "true" : "false");
     panel.setAttribute("aria-hidden", isOpen ? "false" : "true");
+    panel.inert = !isOpen;
   };
 
   const closeMenu = () => {
+    const wasOpen = burger.getAttribute("aria-expanded") === "true";
     setAria(false);
     panel.classList.remove("open");
     overlay.classList.remove("open");
     document.documentElement.style.overflow = "";
+    if (wasOpen) burger.focus();
   };
 
   const openMenu = () => {
@@ -395,6 +402,7 @@
     panel.classList.add("open");
     overlay.classList.add("open");
     document.documentElement.style.overflow = "hidden";
+    panel.querySelector("a")?.focus();
   };
 
   burger.addEventListener("click", () => {
