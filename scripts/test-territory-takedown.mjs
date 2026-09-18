@@ -14,4 +14,7 @@ for(const x of q.questions){assert.ok(x.choices.length>=2);assert.ok(x.answer>=0
 for(const n of [2,3,4,5,6]){const owners=api.distribute(n,()=>.42),counts=Array(n).fill(0);Object.values(owners).forEach(i=>counts[i]++);assert.equal(Object.keys(owners).length,24);assert.ok(Math.max(...counts)-Math.min(...counts)<=1,`${n}-team deal balanced`)}
 const s=api.createState({teamCount:2,names:['A','B'],duration:600},()=>.3);const own=Object.keys(s.owners).find(id=>s.owners[id]===s.current&&api.legalTargets(s,id).length);assert.ok(own);assert.ok(api.legalTargets(s,own).every(id=>s.owners[id]!==s.current));
 assert.equal((html.match(/<h1\b/g)||[]).length,1);for(const meta of ['canonical','og:title','twitter:title','application/ld+json'])assert.ok(html.includes(meta));for(const id of [...fs.readFileSync(new URL('game.js',base),'utf8').matchAll(/\$\('([^']+)'\)/g)].map(x=>x[1]))assert.match(html,new RegExp(`id=["']${id}["']`),`#${id}`);
-console.log('Territory Takedown checks passed: 24 connected territories, six specials, 30 questions, balanced 2–6 team deals, legal adjacency, DOM bindings, and metadata.');
+assert.match(html,/<dialog id="questionPanel"[^>]+aria-labelledby="questionText"[^>]+aria-describedby="questionMeta"/,'question uses a labelled native modal dialog');
+const gameJs=fs.readFileSync(new URL('game.js',base),'utf8');
+for(const behavior of ['showModal()','dialog.close()','requestAnimationFrame','cancel'])assert.ok(gameJs.includes(behavior),`question dialog includes ${behavior}`);
+console.log('Territory Takedown checks passed: 24 connected territories, six specials, 30 questions, balanced 2–6 team deals, legal adjacency, accessible modal behavior, DOM bindings, and metadata.');
