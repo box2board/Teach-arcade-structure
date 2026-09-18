@@ -1246,6 +1246,8 @@
     "try",
     "class",
     "related",
+    "territory",
+    "takedown",
     "observations",
     "skills",
     "lab",
@@ -1253,8 +1255,6 @@
     "cell",
     "structure",
     "function",
-    "models",
-    "resource-first",
     "scientific method introduction to biology"
   ],
   "topics/scientific-skills-lab-safety": [
