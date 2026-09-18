@@ -108,7 +108,9 @@
       "ela",
       "grammar-language"
     ],
-    "topics": [],
+    "topics": [
+      "grammar-language"
+    ],
     "keywords": [
       "teach",
       "arcade",
@@ -551,7 +553,9 @@
       "science",
       "astronomy"
     ],
-    "topics": [],
+    "topics": [
+      "earth-sun-moon-system"
+    ],
     "keywords": [
       "moon",
       "mission",
