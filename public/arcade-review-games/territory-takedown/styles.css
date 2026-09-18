@@ -53,3 +53,27 @@ dialog{width:min(700px,calc(100% - 2rem))}
 .question-panel .result{text-align:center;font-size:clamp(1.65rem,3vw,2.5rem);margin:clamp(.75rem,2vh,1.25rem) 0}
 .continue-answer{display:block;min-width:min(320px,100%);margin:.75rem auto 0;font-size:1.2rem}
 @media(max-width:700px){.question-panel{width:calc(100vw - 20px);max-height:92dvh}.question-dialog-content{padding:1rem}.question-panel .choices{grid-template-columns:1fr}.question-panel .choice{min-height:64px}.question-panel h2{font-size:clamp(1.45rem,5.5vw,2.2rem)}}
+
+/* Brief, classroom-legible resolution and Push-or-Bank moments. */
+.territory.captured polygon{animation:capture-polish .8s ease-out}
+.question-actions{display:flex;align-items:center;justify-content:center;gap:.75rem;margin-top:.75rem}
+.continue-answer{margin:0;min-width:min(320px,100%);font-size:1.2rem}
+.quiet-action{background:transparent;color:var(--muted)}
+.gameplay-feedback,.decision-panel{width:min(860px,calc(100vw - 32px));max-width:860px;margin:auto;border:2px solid var(--gold);background:linear-gradient(145deg,#15395e,#07172b 72%);text-align:center;box-shadow:0 28px 100px #000,0 0 45px #ffd45b26}
+.gameplay-feedback::backdrop,.decision-panel::backdrop{background:rgba(1,7,15,.68);backdrop-filter:blur(2px)}
+.gameplay-feedback{animation:feedback-in .22s ease-out}
+.feedback-icon{font-size:clamp(3rem,8vw,5.5rem);line-height:1;color:var(--gold);filter:drop-shadow(0 0 18px #ffd45b99)}
+.gameplay-feedback h2{margin:.25rem 0;font-size:clamp(2rem,5vw,4rem);line-height:1.05;text-wrap:balance}
+.gameplay-feedback>p:last-child{margin:.8rem 0 0;color:#d7e8f5;font-size:clamp(1.1rem,2vw,1.45rem);font-weight:800}
+.decision-panel{max-height:90dvh;overflow:auto;padding:0;border-color:#69f7ee}
+.decision-content{padding:clamp(1.25rem,3.5vw,2.75rem)}
+.decision-panel h2{max-width:20ch;margin:.35rem auto 1.35rem;font-size:clamp(2rem,4vw,3.4rem);line-height:1.05;text-wrap:balance}
+.decision-streak{display:inline-flex;gap:.35rem;align-items:center;margin:.25rem auto .5rem;border:1px solid #ffbf69;border-radius:999px;background:#6e351a;padding:.45rem .8rem;color:#fff1c5;font-size:clamp(.95rem,1.8vw,1.2rem);font-weight:1000;letter-spacing:.08em}
+.decision-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.decision-option{display:flex;min-height:170px;padding:1.25rem;flex-direction:column;align-items:center;justify-content:center;border-width:2px}
+.decision-option b{font-size:clamp(2rem,4vw,3.25rem);line-height:1}
+.decision-option span{max-width:28ch;margin-top:.7rem;font-size:clamp(1rem,1.5vw,1.2rem);font-weight:650}
+.decision-option.bank{border-color:#67ffd0}.decision-option.push{border-color:#ffc06c}
+@keyframes feedback-in{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
+@keyframes capture-polish{0%{filter:brightness(1)}35%{filter:brightness(1.8) drop-shadow(0 0 18px var(--team));stroke-width:12;transform:scale(1.035);transform-origin:center}100%{filter:brightness(1);stroke-width:4;transform:scale(1)}}
+@media(max-width:700px){.question-actions{align-items:stretch;flex-direction:column-reverse}.question-actions button{width:100%}.gameplay-feedback,.decision-panel{width:calc(100vw - 20px)}.decision-options{grid-template-columns:1fr}.decision-option{min-height:112px}.decision-panel h2{font-size:clamp(1.7rem,7vw,2.5rem)}}
