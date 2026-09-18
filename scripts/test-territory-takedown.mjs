@@ -15,6 +15,10 @@ for(const n of [2,3,4,5,6]){const owners=api.distribute(n,()=>.42),counts=Array(
 const s=api.createState({teamCount:2,names:['A','B'],duration:600},()=>.3);const own=Object.keys(s.owners).find(id=>s.owners[id]===s.current&&api.legalTargets(s,id).length);assert.ok(own);assert.ok(api.legalTargets(s,own).every(id=>s.owners[id]!==s.current));
 assert.equal((html.match(/<h1\b/g)||[]).length,1);for(const meta of ['canonical','og:title','twitter:title','application/ld+json'])assert.ok(html.includes(meta));for(const id of [...fs.readFileSync(new URL('game.js',base),'utf8').matchAll(/\$\('([^']+)'\)/g)].map(x=>x[1]))assert.match(html,new RegExp(`id=["']${id}["']`),`#${id}`);
 assert.match(html,/<dialog id="questionPanel"[^>]+aria-labelledby="questionText"[^>]+aria-describedby="questionMeta"/,'question uses a labelled native modal dialog');
+assert.match(html,/<dialog id="decisionPanel"[^>]+aria-labelledby="decisionTitle"[^>]+aria-describedby="decisionRisk"/,'Bank/Push uses a labelled native modal dialog');
+assert.match(html,/<dialog id="gameplayFeedback"[^>]+aria-labelledby="feedbackTitle"[^>]+aria-describedby="feedbackDetail"/,'capture feedback uses a labelled native modal dialog');
 const gameJs=fs.readFileSync(new URL('game.js',base),'utf8');
 for(const behavior of ['showModal()','dialog.close()','requestAnimationFrame','cancel'])assert.ok(gameJs.includes(behavior),`question dialog includes ${behavior}`);
-console.log('Territory Takedown checks passed: 24 connected territories, six specials, 30 questions, balanced 2–6 team deals, legal adjacency, accessible modal behavior, DOM bindings, and metadata.');
+for(const feedback of ['DOUBLE ATTACK!','SHIELD ACQUIRED','CHALLENGE CONQUERED','STRONGHOLD SECURED','Push failed','Captures banked'])assert.ok(gameJs.includes(feedback),`${feedback} feedback is present`);
+assert.match(gameJs,/prefers-reduced-motion/,'timed feedback respects reduced-motion preferences');
+console.log('Territory Takedown checks passed: 24 connected territories, six specials, 30 questions, balanced 2–6 team deals, legal adjacency, accessible question/decision/feedback dialogs, special and rollback feedback, reduced motion, DOM bindings, and metadata.');
