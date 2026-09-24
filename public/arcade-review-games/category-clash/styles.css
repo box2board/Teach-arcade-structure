@@ -9,3 +9,5 @@
 /* Classroom presentation: keep the complete board and scores in one view on projector-sized displays. */
 @media (min-width:900px){body:fullscreen .app-shell{padding:16px 24px;max-width:none}body:fullscreen #site-header,body:fullscreen .crumbs,body:fullscreen .game-header{display:none}body:fullscreen .play-topbar{margin-bottom:4px}body:fullscreen .scoreboard{margin:8px 0}body:fullscreen .turn-announcer{margin:6px 0}body:fullscreen .game-board{overflow:visible;gap:6px}body:fullscreen .category-label{min-height:54px;padding:7px;font-size:.9rem}body:fullscreen .square{min-height:62px;font-size:1.25rem}body:fullscreen .board-footer{margin-top:8px}}
 @media(max-width:760px){.mode-grid{grid-template-columns:1fr}}
+
+.result-grid{display:grid;grid-template-columns:repeat(4,minmax(130px,1fr));gap:12px;margin:22px 0}.result-note{color:var(--muted);max-width:760px;margin:14px auto;line-height:1.5}@media(max-width:760px){.result-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
