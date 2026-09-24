@@ -1,3 +1,4 @@
+// Shared-engine question pack. Topic editions replace this data while reusing game.js and styles.css.
 (function(){window.CC_QUESTION_SET={id:'brainwave-battle-v1',
 version:1,title:'Brainwave Battle',timerEnabled:true,timerSeconds:30,finalEnabled:true,
 teams:[{name:'Team Nova',color:'#4de3d1'},{name:'Quiz Crew',color:'#ffd45c'},{name:'Bright Sparks',color:'#ff6b7a'}],
