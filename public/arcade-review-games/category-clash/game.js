@@ -3,18 +3,15 @@
   const $ = (id) => document.getElementById(id);
   const STORAGE_KEY = 'teachArcade.categoryClash.v1';
   const palette = ['#4de3d1','#ffd45c','#ff6b7a','#9c7cff','#55a7ff','#ff9d4d','#78dd75','#ef82d5'];
-  const sample = {
-    version: 1, title: 'Brainwave Battle', timerEnabled: true, timerSeconds: 30, finalEnabled: true,
-    teams: [{name:'Team Nova',color:palette[0]},{name:'Quiz Crew',color:palette[1]},{name:'Bright Sparks',color:palette[2]}],
-    categories: [
-      ['Word Works',['A word that means the opposite of another word.','What is an antonym?'],['The main character in a story.','Who is the protagonist?'],['A comparison using like or as.','What is a simile?']],
-      ['Number Lab',['The product of 7 and 8.','What is 56?'],['The name for a triangle with three equal sides.','What is an equilateral triangle?'],['The value of 3 squared plus 4 squared.','What is 25?']],
-      ['Science Signals',['The force that pulls objects toward Earth.','What is gravity?'],['The process plants use to make food from light.','What is photosynthesis?'],['The smallest unit of a living organism.','What is a cell?']],
-      ['World Window',['The largest ocean on Earth.','What is the Pacific Ocean?'],['The imaginary line dividing the Northern and Southern Hemispheres.','What is the equator?'],['The continent containing the Sahara Desert.','What is Africa?']],
-      ['Mixed Bag',['The number of sides on a hexagon.','What is six?'],['The instrument used to measure temperature.','What is a thermometer?'],['The author of a written work.','Who is the writer?']]
-    ].map((c,ci)=>({name:c[0],questions:c.slice(1).map((q,qi)=>({question:q[0],answer:q[1],points:(qi+1)*100,power:ci===2&&qi===1}))})),
-    final:{category:'Big Picture',question:'Name one habit that helps a team learn successfully, and explain why it works.',answer:'Answers vary: examples include listening, sharing evidence, practicing, asking questions, or giving constructive feedback.'}
+  // Curriculum content lives outside the engine in questions.js.
+  // Topic editions can provide their own window.CC_QUESTION_SET while reusing this file unchanged.
+  const fallbackSample = {
+    version:1,title:'Category Clash',timerEnabled:true,timerSeconds:30,finalEnabled:true,
+    teams:[{name:'Team 1',color:palette[0]},{name:'Team 2',color:palette[1]}],
+    categories:[{name:'Sample',questions:[{question:'Add a question pack to begin.',answer:'questions.js',points:100,power:false}]}],
+    final:{category:'Final Face-off',question:'Add a final question in the question pack.',answer:'questions.js'}
   };
+  const sample = (window.CC_QUESTION_SET && typeof window.CC_QUESTION_SET === 'object') ? window.CC_QUESTION_SET : fallbackSample;
   let data, state, timerId = null, secondsLeft = 30, timerRunning = false, audioCtx = null;
 
   function clone(value){ return JSON.parse(JSON.stringify(value)); }
