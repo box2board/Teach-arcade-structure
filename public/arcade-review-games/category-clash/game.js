@@ -1,7 +1,8 @@
 (() => {
   'use strict';
   const $ = (id) => document.getElementById(id);
-  const STORAGE_KEY = 'teachArcade.categoryClash.v1';
+  const PACK_ID = String(window.CC_QUESTION_SET?.id || 'custom-v1').replace(/[^a-z0-9_-]/gi,'-');
+  const STORAGE_KEY = `teachArcade.categoryClash.${PACK_ID}`;
   const palette = ['#4de3d1','#ffd45c','#ff6b7a','#9c7cff','#55a7ff','#ff9d4d','#78dd75','#ef82d5'];
   // Curriculum content lives outside the engine in questions.js.
   // Topic editions can provide their own window.CC_QUESTION_SET while reusing this file unchanged.
