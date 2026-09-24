@@ -1,4 +1,4 @@
-(function(){window.CC_QUESTION_SET={
+(function(){window.CC_QUESTION_SET={id:'french-revolution-v1',
 version:1,title:'French Revolution Category Clash',timerEnabled:true,timerSeconds:30,finalEnabled:true,
 teams:[{name:'Team Liberty',color:'#4de3d1'},{name:'Team Republic',color:'#ffd45c'},{name:'Team Revolution',color:'#ff6b7a'}],
 categories:[
