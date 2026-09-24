@@ -371,10 +371,12 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
       margin-top: 8px;
       font-size: 0.74rem;
       color: var(--muted);
       gap: 10px;
+      min-width: 0;
     }
 
     .play-btn {
@@ -418,6 +420,12 @@
     @media (max-width: 640px) {
       h1 { font-size: 0.9rem; }
       .subtitle { font-size: 0.8rem; }
+      .game-grid { grid-template-columns: minmax(0, 1fr); }
+      .game-card { min-width: 0; overflow: hidden; }
+      .game-badge-row { flex-wrap: wrap; align-items: flex-start; }
+      .card-footer { align-items: stretch; }
+      .card-footer .play-btn { width: 100%; justify-content: center; white-space: normal; text-align: center; line-height: 1.35; }
+      .card-footer > span { margin-left: auto; }
     }
   </style>
 </head>
