@@ -10,7 +10,7 @@
   ============================ -->
   <title>Brain Arcade | Free Browser Games, Puzzles & Arcade Challenges</title>
   <meta name="description" content="Play free browser games at Teach Arcade. Jump into arcade challenges, puzzles, strategy classics, word games, memory games, and quick-play favorites—no account required." />
-  <meta name="keywords" content="brain games, logic games, puzzle games, sudoku, crossword, word search, solitaire, classroom brain breaks, critical thinking games, focus games, Teach Arcade" />
+  <meta name="keywords" content="brain games, logic games, puzzle games, sudoku, crossword, word search, solitaire, browser games, arcade games, strategy games, word games, memory games, Teach Arcade" />
   <link rel="canonical" href="https://teacharcade.com/brain-arcade/" />
 
   <!-- Indexing -->
@@ -50,9 +50,22 @@
     .hero-chips{ display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:10px; }
     .chip{
       font:700 12px/1 Poppins,sans-serif;
-      padding:8px 12px; border-radius:999px;
+      padding:9px 13px; border-radius:999px;
       background:#f1f5f9; border:1px solid #e2e8f0; color:#334155;
+      cursor:pointer;
     }
+    .chip.active{ background:#0f172a; border-color:#0f172a; color:#fff; }
+    .game-card[hidden]{ display:none; }
+    .featured-wrap{ max-width:1100px; margin:18px auto 4px; padding:0 16px; }
+    .featured-wrap h2{ margin:0 0 4px; font:800 22px/1.2 Poppins,sans-serif; color:#0f172a; }
+    .featured-wrap p{ margin:0; font:400 14px/1.5 Nunito,sans-serif; color:#64748b; }
+    .featured-grid{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; margin-top:12px; }
+    .featured-card{ display:block; padding:16px; border-radius:14px; background:#0f172a; color:#fff; text-decoration:none; min-height:130px; }
+    .featured-card strong{ display:block; font:800 16px/1.2 Poppins,sans-serif; margin:8px 0 5px; }
+    .featured-card span{ font:400 13px/1.4 Nunito,sans-serif; color:#cbd5e1; }
+    .featured-card .feature-icon{ font-size:28px; }
+    @media(max-width:800px){ .featured-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
+    @media(max-width:480px){ .featured-grid{ grid-template-columns:1fr; } }
 
     .section-wrap{ max-width:1100px; margin:0 auto; padding:0 16px 40px; }
     .grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px; margin-top:18px; }
@@ -206,7 +219,7 @@
     "@type":"CollectionPage",
     "name":"Brain Arcade",
     "url":"https://teacharcade.com/brain-arcade/",
-    "description":"A free collection of skill-based thinking games—Sudoku, Block Logic, Crossword, Word Search, and Solitaire—designed to sharpen logic, focus, memory, and strategy.",
+    "description":"A free collection of browser games including arcade challenges, puzzles, strategy classics, word games, memory games, and quick-play favorites.",
     "isPartOf":{
       "@type":"WebSite",
       "name":"Teach Arcade",
@@ -301,10 +314,26 @@
     <section class="page-hero">
       <h1>Brain Arcade</h1>
       <p><strong>Pick a game. Chase a score. Have fun.</strong><br>Free games you can play right in your browser—no account, setup, or assignment required.</p>
-      <div class="hero-chips" aria-label="Game categories">
-        <span class="chip">Featured</span><span class="chip">Arcade</span><span class="chip">Puzzle</span><span class="chip">Strategy</span><span class="chip">Word</span><span class="chip">Memory</span>
+      <div class="hero-chips" aria-label="Filter games by category">
+        <button class="chip active" type="button" data-filter="all">All Games</button>
+        <button class="chip" type="button" data-filter="arcade">Arcade</button>
+        <button class="chip" type="button" data-filter="puzzle">Puzzle</button>
+        <button class="chip" type="button" data-filter="strategy">Strategy</button>
+        <button class="chip" type="button" data-filter="word">Word</button>
+        <button class="chip" type="button" data-filter="memory">Memory</button>
       </div>
       <div class="top-actions"><a class="btn" href="#games">Browse Games</a><a class="btn secondary" href="/">Back to Home</a></div>
+    </section>
+
+    <section class="featured-wrap" aria-label="Featured Brain Arcade games">
+      <h2>Featured Games</h2>
+      <p>Start with four of Brain Arcade’s most replayable original games.</p>
+      <div class="featured-grid">
+        <a class="featured-card" href="/brain-arcade/brain-crush/"><div class="feature-icon">💎</div><strong>Brain Crush</strong><span>Match gems, trigger power-ups, chase combos.</span></a>
+        <a class="featured-card" href="/brain-arcade/memory-heist/"><div class="feature-icon">🔐</div><strong>Memory Heist</strong><span>Crack the sequence before security locks down.</span></a>
+        <a class="featured-card" href="/brain-arcade/sequence-breaker/"><div class="feature-icon">⚡</div><strong>Sequence Breaker</strong><span>Find the impostor and build your streak.</span></a>
+        <a class="featured-card" href="/brain-arcade/type-turbo/"><div class="feature-icon">⌨️</div><strong>Type Turbo</strong><span>Race for speed, accuracy, and a new personal best.</span></a>
+      </div>
     </section>
 
     <!-- Ad slot (top of content) -->
@@ -316,7 +345,7 @@
       <div class="grid" id="games">
 
         <!-- Solitaire -->
-        <a class="game-card" href="/brain-arcade/solitaire.html" aria-label="Play Solitaire (Klondike)">
+        <a class="game-card" data-category="strategy" href="/brain-arcade/solitaire.html" aria-label="Play Solitaire (Klondike)">
           <div class="badge">Featured</div>
           <div class="icon" aria-hidden="true">🂡</div>
           <h3 class="game-title">Solitaire (Klondike)</h3>
@@ -332,7 +361,7 @@
         </a>
 
         <!-- Chess -->
-        <a class="game-card" href="/brain-arcade/chess/" aria-label="Play Chess">
+        <a class="game-card" data-category="strategy" href="/brain-arcade/chess/" aria-label="Play Chess">
           <div class="badge">New</div>
           <div class="icon" aria-hidden="true">♟️</div>
           <h3 class="game-title">Chess</h3>
@@ -348,7 +377,7 @@
         </a>
 
         <!-- Checkers -->
-        <a class="game-card" href="/brain-arcade/checkers/" aria-label="Play Checkers">
+        <a class="game-card" data-category="strategy" href="/brain-arcade/checkers/" aria-label="Play Checkers">
           <div class="badge">New</div>
           <div class="icon" aria-hidden="true">🏁</div>
           <h3 class="game-title">Checkers</h3>
@@ -363,7 +392,7 @@
         </a>
 
         <!-- Sudoku -->
-        <a class="game-card" href="/brain-arcade/sudoku/index.html" aria-label="Play Sudoku">
+        <a class="game-card" data-category="puzzle strategy" href="/brain-arcade/sudoku/index.html" aria-label="Play Sudoku">
           <div class="badge">New</div>
           <div class="icon" aria-hidden="true">🔢</div>
           <h3 class="game-title">Sudoku</h3>
@@ -379,7 +408,7 @@
         </a>
 
         <!-- Block Logic -->
-        <a class="game-card" href="/brain-arcade/block-logic/index.html" aria-label="Play Block Logic">
+        <a class="game-card" data-category="puzzle strategy" href="/brain-arcade/block-logic/index.html" aria-label="Play Block Logic">
           <div class="badge">New</div>
           <div class="icon" aria-hidden="true">🧱</div>
           <h3 class="game-title">Block Logic</h3>
@@ -395,7 +424,7 @@
         </a>
 
         <!-- Crossword -->
-        <a class="game-card" href="/brain-arcade/crossword.html" aria-label="Play Crossword">
+        <a class="game-card" data-category="word puzzle" href="/brain-arcade/crossword.html" aria-label="Play Crossword">
           <div class="badge">New</div>
           <div class="icon" aria-hidden="true">🧩</div>
           <h3 class="game-title">Crossword</h3>
@@ -411,7 +440,7 @@
         </a>
 
         <!-- Word Search -->
-        <a class="game-card" href="/brain-arcade/word-search/index.html" aria-label="Play Word Search">
+        <a class="game-card" data-category="word puzzle" href="/brain-arcade/word-search/index.html" aria-label="Play Word Search">
           <div class="badge">New</div>
           <div class="icon" aria-hidden="true">🔎</div>
           <h3 class="game-title">Word Search</h3>
@@ -427,7 +456,7 @@
         </a>
 
         <!-- Word Grid -->
-        <a class="game-card" href="/brain-arcade/word-grid/" aria-label="Play Word Grid">
+        <a class="game-card" data-category="word arcade" href="/brain-arcade/word-grid/" aria-label="Play Word Grid">
           <div class="badge">New</div>
           <div class="icon" aria-hidden="true">🔤</div>
           <h3 class="game-title">Word Grid</h3>
@@ -445,7 +474,7 @@
 
 
         <!-- Emoji Case Files -->
-        <a class="game-card" href="/brain-arcade/emoji-case-files/" aria-label="Play Emoji Case Files">
+        <a class="game-card" data-category="word puzzle" href="/brain-arcade/emoji-case-files/" aria-label="Play Emoji Case Files">
           <div class="badge">New</div>
           <div class="icon" aria-hidden="true">🕵️</div>
           <h3 class="game-title">Emoji Case Files</h3>
@@ -460,7 +489,7 @@
           </div>
         </a>
         <!-- Type Turbo -->
-        <a class="game-card" href="/brain-arcade/type-turbo/" aria-label="Play Type Turbo">
+        <a class="game-card" data-category="arcade" href="/brain-arcade/type-turbo/" aria-label="Play Type Turbo">
           <div class="badge">New</div>
           <div class="icon" aria-hidden="true">⌨️</div>
           <h3 class="game-title">Type Turbo</h3>
@@ -476,7 +505,7 @@
         </a>
 
         <!-- Memory Match -->
-        <a class="game-card" href="/brain-arcade/memory-match/" aria-label="Play Memory Match">
+        <a class="game-card" data-category="memory puzzle" href="/brain-arcade/memory-match/" aria-label="Play Memory Match">
           <div class="badge">New</div>
           <div class="icon" aria-hidden="true">🧠</div>
           <h3 class="game-title">Memory Match</h3>
@@ -493,7 +522,7 @@
         </a>
 
         <!-- Memory Heist -->
-        <a class="game-card" href="/brain-arcade/memory-heist/" aria-label="Play Memory Heist">
+        <a class="game-card" data-category="memory arcade" href="/brain-arcade/memory-heist/" aria-label="Play Memory Heist">
           <div class="badge">New</div>
           <div class="icon" aria-hidden="true">🔐</div>
           <h3 class="game-title">Memory Heist</h3>
@@ -510,7 +539,7 @@
         </a>
 
         <!-- Brain Crush -->
-        <a class="game-card" href="/brain-arcade/brain-crush/" aria-label="Play Brain Crush">
+        <a class="game-card" data-category="arcade puzzle" href="/brain-arcade/brain-crush/" aria-label="Play Brain Crush">
           <div class="badge">New</div>
           <div class="icon" aria-hidden="true">💎</div>
           <h3 class="game-title">Brain Crush</h3>
@@ -527,7 +556,7 @@
         </a>
 
         <!-- Sequence Breaker -->
-        <a class="game-card" href="/brain-arcade/sequence-breaker/" aria-label="Play Sequence Breaker">
+        <a class="game-card" data-category="arcade puzzle" href="/brain-arcade/sequence-breaker/" aria-label="Play Sequence Breaker">
           <div class="badge">New</div>
           <div class="icon" aria-hidden="true">
             <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Sequence Breaker icon">
@@ -551,7 +580,7 @@
         </a>
 
         <!-- Slide & Snap -->
-        <a class="game-card" href="/brain-arcade/slide-and-snap/" aria-label="Play Slide &amp; Snap">
+        <a class="game-card" data-category="puzzle" href="/brain-arcade/slide-and-snap/" aria-label="Play Slide &amp; Snap">
           <div class="badge">New</div>
           <div class="icon" aria-hidden="true">🧩</div>
           <h3 class="game-title">Slide &amp; Snap</h3>
@@ -568,12 +597,12 @@
         </a>
 
         <!-- Jigsaw Puzzle -->
-        <a class="game-card" href="/brain-arcade/jigsaw-puzzle/" aria-label="Explore Jigsaw Puzzle (Coming Soon)">
+        <a class="game-card" data-category="puzzle" href="/brain-arcade/jigsaw-puzzle/" aria-label="Explore Jigsaw Puzzle (Coming Soon)">
           <div class="badge">Coming Soon</div>
           <div class="icon" aria-hidden="true">🧩</div>
           <h3 class="game-title">Jigsaw Puzzle</h3>
           <p class="game-desc">
-            Classic jigsaw puzzling for focus and spatial thinking. A calm, classroom-friendly experience is on the way.
+            Classic jigsaw puzzling for focus and spatial thinking. A calm, satisfying spatial puzzle is on the way.
           </p>
           <div class="meta" aria-hidden="true">
             <span class="tag">Coming Soon</span>
@@ -583,18 +612,7 @@
         </a>
 
         <!-- Coming Soon -->
-        <a class="game-card" href="#" aria-label="More brain games coming soon">
-          <div class="icon" aria-hidden="true">✨</div>
-          <h3 class="game-title">More Brain Games</h3>
-          <p class="game-desc">
-            Coming soon—more logic, memory, and problem-solving games are on the way. Brain Arcade will keep growing with
-            new challenges designed to be fun, fast, and classroom-friendly.
-          </p>
-          <div class="meta" aria-hidden="true">
-            <span class="tag">Coming Soon</span>
-            <span class="tag">Skill-Based</span>
-          </div>
-        </a>
+        
 
       </div>
 
@@ -627,13 +645,13 @@
         </details>
 
         <details>
-          <summary>Are these games classroom-friendly?</summary>
-          <p>Yes. Brain Arcade is designed to work well on school devices and as a quick station, bell-ringer, or brain-break option.</p>
+          <summary>What devices can I use?</summary>
+          <p>Brain Arcade is built for modern browsers and includes games that work with touch, mouse, or keyboard controls depending on the title.</p>
         </details>
 
         <details>
-          <summary>What age levels work best?</summary>
-          <p>Most games work for upper elementary through adults. Teachers often use them as differentiated activities because difficulty can be adjusted through gameplay.</p>
+          <summary>Can I play for just a few minutes?</summary>
+          <p>Yes. Many Brain Arcade games are designed around short rounds, while classics like Chess and Solitaire also support longer play sessions.</p>
         </details>
       </section>
 
@@ -650,5 +668,19 @@
     <a href="/privacy.html">Privacy</a> •
     <a href="/terms.html">Terms</a>
   </footer>
+  <script>
+    (() => {
+      const buttons = document.querySelectorAll('[data-filter]');
+      const cards = document.querySelectorAll('#games .game-card[data-category]');
+      buttons.forEach(button => button.addEventListener('click', () => {
+        const filter = button.dataset.filter;
+        buttons.forEach(item => item.classList.toggle('active', item === button));
+        cards.forEach(card => {
+          const categories = card.dataset.category.split(' ');
+          card.hidden = filter !== 'all' && !categories.includes(filter);
+        });
+      }));
+    })();
+  </script>
 </body>
 </html>
