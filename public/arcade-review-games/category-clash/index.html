@@ -42,24 +42,24 @@
 
     <section id="setupView" class="view" aria-labelledby="setupTitle">
       <div class="section-heading"><div><p class="step">Game studio</p><h2 id="setupTitle">Create your clash</h2></div><p>Your draft saves automatically on this device.</p></div>
-      <section class="panel mode-panel" aria-labelledby="modeTitle"><div class="panel-title"><div><h3 id="modeTitle">How are you playing?</h3><span>Choose the experience for this session</span></div></div><div class="mode-grid"><label class="mode-card"><input type="radio" name="playMode" value="classroom" checked><span><strong>🏫 Classroom Teams</strong><small>Project the full board, keep team scores, and let the teacher judge answers.</small></span></label><label class="mode-card"><input type="radio" name="playMode" value="individual"><span><strong>🎮 Individual Review</strong><small>Students play independently with automatic answer checking and progress.</small></span></label></div></section><div class="panel setup-basics">
+      <section class="panel mode-panel" aria-labelledby="modeTitle"><div class="panel-title"><div><h3 id="modeTitle">How are you playing?</h3><span>Choose the experience for this session</span></div></div><div class="mode-grid"><label class="mode-card"><input type="radio" name="playMode" value="classroom" checked><span><strong>🏫 Classroom Teams</strong><small>Project the full board, keep team scores, and let the teacher judge answers.</small></span></label><label class="mode-card"><input type="radio" name="playMode" value="individual"><span><strong>🎮 Individual Review</strong><small>Students play independently with automatic answer checking and progress.</small></span></label></div></section><div id="classroomBasics" class="panel setup-basics classroom-only">
         <label class="field grow"><span>Game title</span><input id="titleInput" maxlength="80" autocomplete="off"></label>
         <label class="field compact"><span>Teams (2–8)</span><select id="teamCount"></select></label>
         <label class="toggle"><input id="timerEnabled" type="checkbox"><span>Use countdown</span></label>
         <label class="field compact"><span>Seconds</span><input id="timerSeconds" type="number" min="5" max="300" step="5"></label>
         <label class="toggle"><input id="finalEnabled" type="checkbox"><span>Final round</span></label>
       </div>
-      <section class="panel" aria-labelledby="teamsTitle"><div class="panel-title"><h3 id="teamsTitle">Team lineup</h3><span>Choose names and colors</span></div><div id="teamEditor" class="team-editor"></div></section>
-      <section class="panel" aria-labelledby="boardEditorTitle">
+      <section id="teamSetupPanel" class="panel classroom-only" aria-labelledby="teamsTitle"><div class="panel-title"><h3 id="teamsTitle">Team lineup</h3><span>Choose names and colors</span></div><div id="teamEditor" class="team-editor"></div></section>
+      <section id="boardEditorPanel" class="panel classroom-only" aria-labelledby="boardEditorTitle">
         <div class="panel-title"><div><h3 id="boardEditorTitle">Question board</h3><span>Up to 6 categories · 5 clues each</span></div><button id="addCategoryBtn" class="btn secondary" type="button">+ Add category</button></div>
         <div id="categoryEditor" class="category-editor"></div>
       </section>
-      <section id="finalEditor" class="panel" aria-labelledby="finalEditorTitle">
+      <section id="finalEditor" class="panel classroom-only" aria-labelledby="finalEditorTitle">
         <div class="panel-title"><div><h3 id="finalEditorTitle">Final face-off</h3><span>All teams wager before the reveal</span></div></div>
         <div class="final-editor"><label class="field"><span>Final category</span><input id="finalCategory" maxlength="50"></label><label class="field"><span>Question</span><textarea id="finalQuestion" rows="2"></textarea></label><label class="field"><span>Answer</span><textarea id="finalAnswer" rows="2"></textarea></label></div>
       </section>
       <div class="setup-actions">
-        <button id="sampleBtn" class="btn secondary" type="button">Load sample</button><button id="saveBtn" class="btn secondary" type="button">Download JSON</button><button id="loadBtn" class="btn secondary" type="button">Load JSON</button><input id="fileInput" type="file" accept="application/json,.json" hidden>
+        <span id="classroomSetupActions" class="classroom-only"><button id="sampleBtn" class="btn secondary" type="button">Load sample</button><button id="saveBtn" class="btn secondary" type="button">Download JSON</button><button id="loadBtn" class="btn secondary" type="button">Load JSON</button><input id="fileInput" type="file" accept="application/json,.json" hidden></span>
         <button id="startBtn" class="btn primary" type="button">Start the clash <span aria-hidden="true">→</span></button>
       </div>
     </section>
