@@ -72,12 +72,30 @@
 
     .game-card{
       display:flex; flex-direction:column; background:#fff;
-      border:1px solid #e2e8f0; border-radius:14px; padding:18px;
+      border:1px solid #e2e8f0; border-radius:16px; padding:0;
       text-decoration:none; color:#0f172a;
       box-shadow:0 2px 6px rgba(0,0,0,.05);
       transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
-      position:relative; overflow:hidden; min-height:210px;
+      position:relative; overflow:hidden; min-height:230px;
     }
+    .game-card::before{
+      content:""; display:block; height:104px;
+      background:linear-gradient(135deg,#0f172a,#334155);
+      border-bottom:1px solid #e2e8f0;
+    }
+    .game-card .icon{
+      position:absolute; top:28px; left:18px; z-index:1;
+      margin:0; font-size:44px;
+    }
+    .game-card .game-title{ padding:15px 16px 0; }
+    .game-card .game-desc{ padding:0 16px; }
+    .game-card .meta{ padding:0 16px 16px; }
+    .game-card .card-cta{ margin:0 16px 12px; align-self:flex-start; }
+    .game-card[data-category~="arcade"]::before{ background:linear-gradient(135deg,#312e81,#7c3aed); }
+    .game-card[data-category~="memory"]::before{ background:linear-gradient(135deg,#164e63,#0f766e); }
+    .game-card[data-category~="word"]::before{ background:linear-gradient(135deg,#7c2d12,#c2410c); }
+    .game-card[data-category~="strategy"]::before{ background:linear-gradient(135deg,#1e3a8a,#0369a1); }
+    .game-card[data-category~="puzzle"]::before{ background:linear-gradient(135deg,#3f3f46,#52525b); }
     .game-card:hover{
       transform:translateY(-3px);
       box-shadow:0 10px 20px rgba(0,0,0,.08);
@@ -94,9 +112,9 @@
       color:#5b21b6; text-transform:uppercase;
     }
 
-    .icon{ font-size:40px; margin-bottom:10px; }
+     .icon{ font-size:40px; margin-bottom:10px; }
     .game-title{ margin:0 0 6px; font:700 18px/1.2 Poppins,sans-serif; }
-    .game-desc{ margin:0 0 12px; font:400 14px/1.55 Nunito,sans-serif; color:#475569; }
+    .game-desc{ margin:0 0 12px; font:400 14px/1.45 Nunito,sans-serif; color:#475569; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
 
     .meta{ margin-top:auto; display:flex; gap:10px; flex-wrap:wrap; }
     .tag{
@@ -382,7 +400,7 @@
           <div class="icon" aria-hidden="true">🏁</div>
           <h3 class="game-title">Checkers</h3>
           <p class="game-desc">
-            Classic strategy with captures, multi-jumps, and kinging. Great for planning and logic.
+            Capture, multi-jump, reach the back row, and crown your kings.
           </p>
           <div class="meta" aria-hidden="true">
             <span class="tag">Strategy</span>
