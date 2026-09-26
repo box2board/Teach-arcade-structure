@@ -118,10 +118,6 @@ body {
   box-shadow: none !important;
 }
 
-.ghost-piece div {
-  background: transparent !important;
-}
-
 /* FLOATING TEXT */
 #floating-text-container {
   position: relative;
