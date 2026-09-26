@@ -285,12 +285,12 @@
       <h1>Brain Arcade</h1>
       <p><strong>Pick a game. Chase a score. Have fun.</strong><br>Free games you can play right in your browser—no account, setup, or assignment required.</p>
       <div class="hero-chips" aria-label="Filter games by category">
-        <button class="chip active" type="button" data-filter="all">All Games</button>
-        <button class="chip" type="button" data-filter="arcade">Arcade</button>
-        <button class="chip" type="button" data-filter="puzzle">Puzzle</button>
-        <button class="chip" type="button" data-filter="strategy">Strategy</button>
-        <button class="chip" type="button" data-filter="word">Word</button>
-        <button class="chip" type="button" data-filter="memory">Memory</button>
+        <button class="chip active" type="button" data-filter="all" aria-pressed="true">All Games</button>
+        <button class="chip" type="button" data-filter="arcade" aria-pressed="false">Arcade</button>
+        <button class="chip" type="button" data-filter="puzzle" aria-pressed="false">Puzzle</button>
+        <button class="chip" type="button" data-filter="strategy" aria-pressed="false">Strategy</button>
+        <button class="chip" type="button" data-filter="word" aria-pressed="false">Word</button>
+        <button class="chip" type="button" data-filter="memory" aria-pressed="false">Memory</button>
       </div>
       <div class="top-actions"><a class="btn" href="#games">Browse Games</a><a class="btn secondary" href="/">Back to Home</a></div>
     </section>
@@ -642,7 +642,11 @@
       const cards = document.querySelectorAll('#games .game-card[data-category]');
       buttons.forEach(button => button.addEventListener('click', () => {
         const filter = button.dataset.filter;
-        buttons.forEach(item => item.classList.toggle('active', item === button));
+        buttons.forEach(item => {
+          const active = item === button;
+          item.classList.toggle('active', active);
+          item.setAttribute('aria-pressed', String(active));
+        });
         cards.forEach(card => {
           const categories = card.dataset.category.split(' ');
           card.hidden = filter !== 'all' && !categories.includes(filter);
