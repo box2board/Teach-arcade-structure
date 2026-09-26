@@ -169,16 +169,20 @@
 
 .game-area {
   display: grid;
-  gap: 24px;
+  gap: 22px;
   align-items: start;
+  max-width: 1120px;
+  margin: 0 auto;
 }
 
 .board-wrap {
-  background: #fff;
-  border-radius: 18px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(249,115,22,.05), transparent 34%),
+    #fff;
+  border-radius: 20px;
   border: 1px solid #e2e8f0;
   padding: 16px;
-  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.06);
+  box-shadow: 0 18px 40px rgba(15,23,42,.09);
 }
 
 .board-header h2 {
@@ -196,11 +200,12 @@
 .board {
   display: grid;
   gap: 4px;
-  background: #e2e8f0;
+  background: #dbe4ef;
   padding: 8px;
-  border-radius: 14px;
+  border-radius: 16px;
   user-select: none;
   touch-action: none;
+  box-shadow: inset 0 0 0 1px #cbd5e1;
 }
 
 .board[data-difficulty="easy"] .cell {
@@ -212,7 +217,7 @@
   aspect-ratio: 1 / 1;
   border-radius: 8px;
   border: 1px solid #cbd5e1;
-  background: #fff;
+  background: linear-gradient(180deg,#fff,#f8fafc);
   color: #0f172a;
   font: 700 16px/1 Poppins, sans-serif;
   display: flex;
@@ -233,9 +238,10 @@
 }
 
 .cell.found {
-  background: #f97316;
+  background: linear-gradient(180deg,#fb923c,#f97316);
   color: #fff;
   border-color: #ea580c;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.18);
 }
 
 .cell.hint {
@@ -279,10 +285,11 @@
 }
 
 .word-panel {
-  background: #0f172a;
+  background: linear-gradient(180deg,#111827,#0f172a);
   color: #fff;
   border-radius: 18px;
   padding: 18px;
+  box-shadow: 0 16px 34px rgba(15,23,42,.18);
 }
 
 .panel-header h2 {
@@ -377,7 +384,11 @@
   }
 
   .game-area {
-    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    grid-template-columns: minmax(0, 1.25fr) minmax(260px, .75fr);
+  }
+  .word-panel {
+    position: sticky;
+    top: 84px;
   }
 
   .link-grid {
@@ -393,4 +404,12 @@
   .cell {
     font-size: 18px;
   }
+}
+
+@media (max-width: 799px) {
+  .control-panel { padding: 12px; gap: 12px; }
+  .hero-stats { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .board-wrap { padding: 10px; }
+  .board { padding: 6px; gap: 3px; }
+  .cell { border-radius: 6px; }
 }
