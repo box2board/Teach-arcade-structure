@@ -36,12 +36,8 @@
   }
   function show(view){
     ['setupView','boardView','questionView','finalView','winnerView'].forEach(id=>{
-      const el=$(id),active=id===view;
-      el.hidden=!active;
-      el.style.display=active?'':'none';
-      el.setAttribute('aria-hidden',active?'false':'true');
+      $(id).hidden=id!==view;
     });
-    window.scrollTo({top:0,behavior:'auto'});
   }
 
   function renderSetup(){
@@ -79,18 +75,129 @@
   function syncSetupMode(){const individual=selectedMode()==='individual';document.querySelectorAll('.classroom-only').forEach(el=>el.hidden=individual);$('startBtn').innerHTML=individual?'Start review <span aria-hidden="true">→</span>':'Start the clash <span aria-hidden="true">→</span>';$('setupTitle').textContent=individual?(PACK_ID==='french-revolution-v1'?'French Revolution Review':'Individual Review'):(PACK_ID==='french-revolution-v1'?'French Revolution':'Create your clash');}
   function validate(){ const qs=data.categories.flatMap(c=>c.questions); if(!data.title.trim())return 'Add a game title first.';if(!data.categories.length)return 'Add at least one category.';if(!qs.length)return 'Add at least one question.';if(qs.some(q=>!q.question.trim()||!q.answer.trim()))return 'Every question needs both a question and an answer.';if(selectedMode()==='classroom'&&data.finalEnabled&&(!data.final.question.trim()||!data.final.answer.trim()))return 'Complete the final question and answer, or turn off the final round.';return ''; }
   function startGame(){
-    const problem=validate();if(problem){announce(problem);return;}
-    state={soundOn:state?.soundOn!==false,mode:selectedMode(),multipleChoice:selectedMode()==='individual'||Boolean($('multipleChoiceEnabled')?.checked),scores:data.teams.map(()=>0),activeTeam:0,completed:{},current:null,powerWager:null,finalWagers:[],finalResults:[],individualCorrect:0,individualAnswered:0,individualMissed:[],individualAttempts:[],bestStreak:0,currentStreak:0,reviewQueue:[],reviewMode:false,masteredOnRetry:0,powerBonus:null,startedAt:Date.now()};
-    renderBoard();show('boardView');sound('good');
+    const problem=validate();
+    if(problem){announce(problem);return;}
+    state={
+      soundOn:state?.soundOn!==false,
+      mode:selectedMode(),
+      multipleChoice:selectedMode()==='individual'||Boolean($('multipleChoiceEnabled')?.checked),
+      scores:data.teams.map(()=>0),
+      activeTeam:0,
+      completed:{},
+      current:null,
+      powerWager:null,
+      finalWagers:[],
+      finalResults:[],
+      individualCorrect:0,
+      individualAnswered:0,
+      individualMissed:[],
+      individualAttempts:[],
+      bestStreak:0,
+      currentStreak:0,
+      reviewQueue:[],
+      reviewMode:false,
+      masteredOnRetry:0,
+      powerBonus:null,
+      startedAt:Date.now()
+    };
+    show('boardView');
+    renderBoard();
+    sound('good');
   }
+
+  function boardIsComplete(){
+    return data.categories.every((category,ci)=>
+      category.questions.every((_,qi)=>Boolean(state.completed[`${ci}-${qi}`]))
+    );
+  }
+
+  function renderScoreboard(){
+    const board=$('scoreboard');
+    board.hidden=state.mode==='individual';
+    if(state.mode==='individual'){
+      board.innerHTML='';
+      return;
+    }
+    board.innerHTML=data.teams.map((team,i)=>`
+      <button type="button" class="score-card ${i===state.activeTeam?'active':''}"
+        style="--team:${team.color}" data-active-team="${i}"
+        aria-label="Make ${escapeHtml(team.name)} active">
+        <span>${escapeHtml(team.name)}</span><strong>${state.scores[i]}</strong>
+      </button>`).join('');
+    board.querySelectorAll('[data-active-team]').forEach(button=>{
+      button.addEventListener('click',()=>{
+        state.activeTeam=Number(button.dataset.activeTeam);
+        renderScoreboard();
+        $('turnAnnouncer').textContent=`${data.teams[state.activeTeam].name} is the active team.`;
+        sound();
+      });
+    });
+  }
+
+  function bindBoardTiles(){
+    $('gameBoard').querySelectorAll('button[data-square]:not(:disabled)').forEach(button=>{
+      button.addEventListener('click',()=>{
+        const ci=Number(button.dataset.ci);
+        const qi=Number(button.dataset.qi);
+        openQuestion(ci,qi);
+      });
+    });
+  }
+
   function renderBoard(){
-    $('boardTitle').textContent=data.title;$('adjustBtn').hidden=state.mode==='individual';$('scoreboard').hidden=state.mode==='individual';$('turnAnnouncer').hidden=false;document.querySelector('.board-footer p').hidden=state.mode==='individual';$('scoreboard').innerHTML=state.mode==='individual'?'':data.teams.map((t,i)=>`<button class="score-card ${i===state.activeTeam?'active':''}" style="--team:${t.color}" data-active-team="${i}" aria-label="Make ${escapeHtml(t.name)} active"><span>${escapeHtml(t.name)}</span><strong>${state.scores[i]}</strong></button>`).join('');
-    $('practiceHud').hidden=state.mode!=='individual';if(state.mode==='individual'){const total=data.categories.reduce((n,c)=>n+c.questions.length,0),done=Object.keys(state.completed).length;$('practiceHud').innerHTML=`<div><span>PROGRESS</span><strong>${Math.min(done,total)}/${total}</strong></div><div><span>STREAK</span><strong>🔥 ${state.currentStreak}</strong></div><div><span>BEST</span><strong>${state.bestStreak}</strong></div><div><span>SCORE</span><strong>${state.scores[0]}</strong></div>`;} $('turnAnnouncer').textContent=state.mode==='individual'?(state.reviewMode?'Review Round · Master the questions you missed':`${state.individualAnswered} answered · ${state.individualCorrect} correct`):`${data.teams[state.activeTeam].name} is the active team.`;
-    const max=Math.max(...data.categories.map(c=>c.questions.length));$('gameBoard').style.setProperty('--cols',data.categories.length);
+    $('boardTitle').textContent=data.title;
+    $('adjustBtn').hidden=state.mode==='individual';
+    $('turnAnnouncer').hidden=false;
+    document.querySelector('.board-footer p').hidden=state.mode==='individual';
+
+    renderScoreboard();
+
+    $('practiceHud').hidden=state.mode!=='individual';
+    if(state.mode==='individual'){
+      const total=data.categories.reduce((n,c)=>n+c.questions.length,0);
+      const done=Object.keys(state.completed).length;
+      $('practiceHud').innerHTML=`
+        <div><span>PROGRESS</span><strong>${Math.min(done,total)}/${total}</strong></div>
+        <div><span>STREAK</span><strong>🔥 ${state.currentStreak}</strong></div>
+        <div><span>BEST</span><strong>${state.bestStreak}</strong></div>
+        <div><span>SCORE</span><strong>${state.scores[0]}</strong></div>`;
+    }
+
+    $('turnAnnouncer').textContent=state.mode==='individual'
+      ?(state.reviewMode?'Review Round · Master the questions you missed':`${state.individualAnswered} answered · ${state.individualCorrect} correct`)
+      :`${data.teams[state.activeTeam].name} is the active team.`;
+
+    const max=Math.max(...data.categories.map(c=>c.questions.length));
+    $('gameBoard').style.setProperty('--cols',data.categories.length);
+
     let html=data.categories.map(c=>`<div class="category-label" role="columnheader">${escapeHtml(c.name)}</div>`).join('');
-    for(let qi=0;qi<max;qi++)html+=data.categories.map((c,ci)=>{const q=c.questions[qi];if(!q)return '<div aria-hidden="true"></div>';const done=state.completed[`${ci}-${qi}`];return `<button class="square" role="gridcell" data-square="${ci},${qi}" ${done?'disabled':''} aria-label="${escapeHtml(c.name)}, ${q.points} points${done?', completed':''}">${done?'✓':q.points}</button>`;}).join('');
-    $('gameBoard').innerHTML=html;const allDone=data.categories.every((c,ci)=>c.questions.every((_,qi)=>state.completed[`${ci}-${qi}`]));$('finalBtn').hidden=!(state.mode==='classroom'&&allDone&&data.finalEnabled);if(allDone&&state.mode==='individual'){if(state.individualMissed.length&&!state.reviewMode)setTimeout(startReviewRound,250);else setTimeout(showWinner,250);}else if(allDone&&!data.finalEnabled)setTimeout(showWinner,250);
+    for(let qi=0;qi<max;qi++){
+      html+=data.categories.map((category,ci)=>{
+        const q=category.questions[qi];
+        if(!q)return '<div aria-hidden="true"></div>';
+        const done=Boolean(state.completed[`${ci}-${qi}`]);
+        return `<button type="button" class="square" role="gridcell"
+          data-square="${ci},${qi}" data-ci="${ci}" data-qi="${qi}"
+          ${done?'disabled':''}
+          aria-label="${escapeHtml(category.name)}, ${q.points} points${done?', completed':''}">
+          ${done?'✓':q.points}
+        </button>`;
+      }).join('');
+    }
+
+    $('gameBoard').innerHTML=html;
+    bindBoardTiles();
+
+    const allDone=boardIsComplete();
+    $('finalBtn').hidden=!(state.mode==='classroom'&&allDone&&data.finalEnabled);
+    if(allDone&&state.mode==='individual'){
+      if(state.individualMissed.length&&!state.reviewMode)setTimeout(startReviewRound,250);
+      else setTimeout(showWinner,250);
+    }else if(allDone&&!data.finalEnabled){
+      setTimeout(showWinner,250);
+    }
   }
+
   function startReviewRound(){state.reviewMode=true;state.reviewQueue=[...new Map(state.individualMissed.map(x=>[`${x.ci}-${x.qi}`,x])).values()];state.completed={};data.categories.forEach((c,ci)=>c.questions.forEach((_,qi)=>{if(!state.reviewQueue.some(x=>x.ci===ci&&x.qi===qi))state.completed[`${ci}-${qi}`]=true;}));announce(`Review Round: ${state.reviewQueue.length} question${state.reviewQueue.length===1?'':'s'} to master.`);renderBoard();show('boardView');}
   function openQuestion(ci,qi){
     state.current={ci,qi};$('individualControls').hidden=true;$('individualControls').innerHTML='';const q=data.categories[ci].questions[qi];state.powerWager=(q.power&&state.mode==='classroom')?null:q.points;if(state.mode==='individual'&&q.power&&!state.reviewMode){state.powerBonus='double';announce('⚡ POWER PLAY! Get this right for double points.');}$('questionCategory').textContent=data.categories[ci].name;$('questionValue').textContent=`${q.points} points`;$('questionText').textContent=q.question;$('answerText').textContent=q.answer;$('answerArea').hidden=true;$('revealBtn').hidden=state.mode==='individual';$('judgeControls').hidden=true;$('judgeControls').style.display='none';
@@ -100,19 +207,54 @@
   }
   function renderClassroomScoring(){const q=data.categories[state.current.ci].questions[state.current.qi],wrap=$('judgeControls');wrap.hidden=false;wrap.style.removeProperty('display');wrap.innerHTML=data.teams.map((t,i)=>`<button type="button" class="btn correct team-award" data-award-team="${i}">✓ ${escapeHtml(t.name)} +${q.points}</button>`).join('')+`<button type="button" class="btn incorrect no-award" data-no-award>✕ No correct answer</button>`;wrap.querySelectorAll('[data-award-team]').forEach(b=>b.onclick=()=>judge(true,+b.dataset.awardTeam));wrap.querySelector('[data-no-award]').onclick=()=>judge(false,state.activeTeam);}
   function revealAnswer(){ if(state.current&&state.powerWager!==null){$('answerArea').hidden=false;$('revealBtn').hidden=true;const classroom=state.mode==='classroom';if(classroom)renderClassroomScoring();else{$('judgeControls').hidden=true;$('judgeControls').style.display='none';}$('individualControls').hidden=classroom;if(!classroom)setTimeout(renderIndividualControls,1800);pauseTimer();sound();} }
-  function judge(correct,teamOverride){if(!state.current)return;const team=Number.isInteger(teamOverride)?teamOverride:+$('answeringTeam').value,q=data.categories[state.current.ci].questions[state.current.qi],baseValue=q.power&&state.mode==='classroom'?(Number(state.powerWager)||0):Number(q.points)||0,value=(state.mode==='individual'&&state.powerBonus==='double')?baseValue*2:baseValue;if(correct&&Number.isInteger(team)&&team>=0&&team<state.scores.length)state.scores[team]=(Number(state.scores[team])||0)+value;if(state.mode==='individual'){state.individualAnswered++;state.currentStreak=correct?state.currentStreak+1:0;state.bestStreak=Math.max(state.bestStreak,state.currentStreak);if(correct){if(!state.reviewMode)state.individualCorrect++;else state.masteredOnRetry++;}else if(!state.reviewMode)state.individualMissed.push({ci:state.current.ci,qi:state.current.qi});state.individualAttempts.push({category:data.categories[state.current.ci].name,question:q.question,correct,points:q.points,answeredAt:new Date().toISOString()});}const completedKey=`${state.current.ci}-${state.current.qi}`,completedCi=state.current.ci,completedQi=state.current.qi;state.completed[completedKey]=true;if(state.mode==='individual')state.powerBonus=null;state.activeTeam=correct?team:(state.activeTeam+1)%data.teams.length;pauseTimer();sound(correct?'good':'bad');state.current=null;show('boardView');
-    // Do not rebuild the game board after each answer. Keeping the original tile DOM
-    // preserves its interaction state on touch browsers; only update what changed.
-    const completedTile=$('gameBoard').querySelector(`[data-square="${completedCi},${completedQi}"]`);
-    if(completedTile){completedTile.disabled=true;completedTile.textContent='✓';completedTile.setAttribute('aria-label',`${data.categories[completedCi].name}, ${q.points} points, completed`);}
-    if(state.mode==='classroom'){
-      $('scoreboard').innerHTML=data.teams.map((t,i)=>`<button class="score-card ${i===state.activeTeam?'active':''}" style="--team:${t.color}" data-active-team="${i}" aria-label="Make ${escapeHtml(t.name)} active"><span>${escapeHtml(t.name)}</span><strong>${state.scores[i]}</strong></button>`).join('');
-      $('turnAnnouncer').textContent=`${data.teams[state.activeTeam].name} is the active team.`;
-    }else renderBoard();
-    const allDone=data.categories.every((cat,ci)=>cat.questions.every((_,qi)=>state.completed[`${ci}-${qi}`]));
-    $('finalBtn').hidden=!(state.mode==='classroom'&&allDone&&data.finalEnabled);
-    if(allDone&&!data.finalEnabled)setTimeout(showWinner,250);
+  function judge(correct,teamOverride){
+    if(!state.current)return;
+
+    const {ci,qi}=state.current;
+    const q=data.categories[ci].questions[qi];
+    const team=state.mode==='individual'
+      ?0
+      :(Number.isInteger(teamOverride)?teamOverride:state.activeTeam);
+    const baseValue=q.power&&state.mode==='classroom'
+      ?(Number(state.powerWager)||0)
+      :(Number(q.points)||0);
+    const value=(state.mode==='individual'&&state.powerBonus==='double')?baseValue*2:baseValue;
+
+    if(correct&&team>=0&&team<state.scores.length){
+      state.scores[team]=(Number(state.scores[team])||0)+value;
+    }
+
+    if(state.mode==='individual'){
+      state.individualAnswered++;
+      state.currentStreak=correct?state.currentStreak+1:0;
+      state.bestStreak=Math.max(state.bestStreak,state.currentStreak);
+      if(correct){
+        if(!state.reviewMode)state.individualCorrect++;
+        else state.masteredOnRetry++;
+      }else if(!state.reviewMode){
+        state.individualMissed.push({ci,qi});
+      }
+      state.individualAttempts.push({
+        category:data.categories[ci].name,
+        question:q.question,
+        correct,
+        points:q.points,
+        answeredAt:new Date().toISOString()
+      });
+      state.powerBonus=null;
+    }else{
+      state.activeTeam=correct?team:(state.activeTeam+1)%data.teams.length;
+    }
+
+    state.completed[`${ci}-${qi}`]=true;
+    state.current=null;
+    pauseTimer();
+    sound(correct?'good':'bad');
+
+    renderBoard();
+    show('boardView');
   }
+
   function cleanAnswer(v){return String(v||'').toLowerCase().replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim().replace(/^(what|who|where|when|why|how)\s+(is|was|were|are)\s+/,'').replace(/^(a|an|the)\s+/,'').trim();}
   function renderIndividualControls(){const q=data.categories[state.current.ci].questions[state.current.qi],wrap=$('individualControls');wrap.innerHTML='';if(q.choices&&q.choices.length){q.choices.forEach(choice=>{const b=document.createElement('button');b.type='button';b.className='btn secondary individual-choice';b.textContent=choice;b.addEventListener('click',()=>submitIndividual(choice));wrap.appendChild(b);});}else{wrap.innerHTML='<label class="field individual-answer"><span>Your answer</span><input id="individualAnswer" autocomplete="off" placeholder="Type your answer"><button id="submitIndividualBtn" class="btn primary" type="button">Submit answer</button></label>';$('submitIndividualBtn').onclick=()=>submitIndividual($('individualAnswer').value);$('individualAnswer').addEventListener('keydown',e=>{if(e.key==='Enter')submitIndividual(e.target.value);});$('individualAnswer').focus();}}
   function submitIndividual(value){const q=data.categories[state.current.ci].questions[state.current.qi];$('answerArea').hidden=false;const accepted=[q.answer,...(q.acceptedAnswers||[]),...(q.choices||[]).filter(choice=>cleanAnswer(choice)===cleanAnswer(q.answer))].map(cleanAnswer),correct=accepted.includes(cleanAnswer(value));$('individualControls').innerHTML='<div class="feedback '+(correct?'correct-feedback':'incorrect-feedback')+'"><strong>'+(correct?'✓ Correct!':'✕ Not quite')+'</strong><p>'+escapeHtml(q.answer)+'</p>'+(q.explanation?'<p class="answer-explanation">'+escapeHtml(q.explanation)+'</p>':'')+'<button id="continueIndividual" class="btn primary" type="button">Back to board →</button></div>';$('continueIndividual').onclick=()=>judge(correct);sound(correct?'good':'bad');}
@@ -136,7 +278,7 @@
   function wire(){
     bindSetupChanges();document.querySelectorAll('input[name="playMode"]').forEach(el=>el.addEventListener('change',syncSetupMode));syncSetupMode();$('teamCount').addEventListener('change',e=>changeTeamCount(+e.target.value));$('addCategoryBtn').onclick=()=>{if(data.categories.length<6){data.categories.push({name:`Category ${data.categories.length+1}`,questions:[{question:'',answer:'',points:100,power:false}]});renderSetup();persist();}};
     $('sampleBtn').onclick=()=>{if(confirm('Replace the current editor with the built-in sample?')){data=clone(sample);persist();renderSetup();announce('Sample game loaded.');}};$('saveBtn').onclick=download;$('loadBtn').onclick=()=>$('fileInput').click();$('fileInput').onchange=e=>e.target.files[0]&&loadFile(e.target.files[0]);$('startBtn').onclick=startGame;
-    document.addEventListener('click',e=>{const b=e.target.closest?.('#gameBoard [data-square]');if(!b||b.disabled||!state||state.current||$('boardView').hidden)return;e.preventDefault();const [ci,qi]=b.dataset.square.split(',').map(Number);openQuestion(ci,qi);});$('scoreboard').onclick=e=>{const b=e.target.closest('[data-active-team]');if(b&&state.mode==='classroom'){state.activeTeam=+b.dataset.activeTeam;renderBoard();sound();}};
+
     $('lockWagerBtn').onclick=()=>{const max=Math.max(0,state.scores[state.activeTeam]),w=Math.max(0,Number($('powerWager').value)||0);if(w>max){announce(`Wager cannot exceed ${max} points.`);return;}state.powerWager=w;$('lockWagerBtn').disabled=true;$('revealBtn').disabled=false;announce(`${data.teams[state.activeTeam].name} wagers ${w} points.`);};
     $('revealBtn').onclick=revealAnswer;$('timerStartBtn').onclick=startTimer;$('timerPauseBtn').onclick=pauseTimer;$('timerResetBtn').onclick=resetTimer;
     $('adjustBtn').onclick=openAdjust;$('adjustRows').onclick=e=>{const b=e.target.closest('[data-apply-adjust]');if(b){const i=+b.dataset.applyAdjust,input=document.querySelector(`[data-adjust-input="${i}"]`);state.scores[i]+=Number(input.value)||0;input.value=0;openAdjust();renderBoard();sound();}};
