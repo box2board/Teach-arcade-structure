@@ -371,10 +371,12 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
       margin-top: 8px;
       font-size: 0.74rem;
       color: var(--muted);
       gap: 10px;
+      min-width: 0;
     }
 
     .play-btn {
@@ -418,6 +420,12 @@
     @media (max-width: 640px) {
       h1 { font-size: 0.9rem; }
       .subtitle { font-size: 0.8rem; }
+      .game-grid { grid-template-columns: minmax(0, 1fr); }
+      .game-card { min-width: 0; overflow: hidden; }
+      .game-badge-row { flex-wrap: wrap; align-items: flex-start; }
+      .card-footer { align-items: stretch; }
+      .card-footer .play-btn { width: 100%; justify-content: center; white-space: normal; text-align: center; line-height: 1.35; }
+      .card-footer > span { margin-left: auto; }
     }
   </style>
 </head>
@@ -478,23 +486,21 @@
         </article>
         <article class="game-card">
           <div class="game-badge-row">
-            <span class="badge subject">Custom · Any Subject</span>
-            <span class="badge">Grades 3–12</span>
+            <span class="badge subject">Game Engine · Any Subject</span>
+            <span class="badge">Classroom + Individual</span>
           </div>
           <div class="game-title">Category Clash</div>
           <p class="game-desc">
-            Build a custom category board, divide the class into 2–8 teams, and run a lively whole-class review with timers, wagers, scoring, and a final face-off.
+            Play a prepared curriculum edition or open the customizable Category Clash studio to build your own category-board review.
           </p>
           <div class="meta-row">
-            <span>Built-in question editor</span>
-            <span>Save &amp; load JSON sets</span>
-            <span>Presentation-ready</span>
+            <span>Prepared topic editions</span>
+            <span>Custom question editor</span>
+            <span>Reusable game engine</span>
           </div>
           <div class="card-footer">
-            <a href="/arcade-review-games/category-clash/" class="play-btn">
-              <span>▶</span> Create Game
-            </a>
-            <span>2–8 teams</span>
+            <a href="/arcade-review-games/category-clash/french-revolution/" class="play-btn"><span>▶</span> French Revolution</a>
+            <a href="/arcade-review-games/category-clash/" class="play-btn"><span>＋</span> Create Your Own</a>
           </div>
         </article>
         <article class="game-card">
@@ -523,6 +529,16 @@
       <!-- SOCIAL STUDIES -->
       <h2 id="subject-social-studies">Social Studies</h2>
       <section class="game-grid">
+        <article class="game-card">
+          <div class="game-badge-row">
+            <span class="badge subject">World History · French Revolution</span>
+            <span class="badge">Grades 9–12</span>
+          </div>
+          <div class="game-title">Category Clash: French Revolution</div>
+          <p class="game-desc">Review the Old Regime, Revolution, Reign of Terror, and Napoleon with 25 built-in questions in classroom team or individual practice mode.</p>
+          <div class="meta-row"><span>25 built-in questions</span><span>Classroom teams</span><span>Individual mastery review</span></div>
+          <div class="card-footer"><a href="/arcade-review-games/category-clash/french-revolution/" class="play-btn"><span>▶</span> Play Game</a><span>World History</span></div>
+        </article>
         <article class="game-card">
           <div class="game-badge-row">
             <span class="badge subject">World History · French Revolution</span>
