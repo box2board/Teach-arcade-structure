@@ -43,12 +43,14 @@ button{font:inherit}
 .cw-cell.incorrect{background:var(--cw-error)}.cw-cell.correct{background:var(--cw-correct)}
 .cw-cell.revealed{color:#6d28d9}
 .cw-number{position:absolute;left:3px;top:2px;font:700 clamp(7px,1.5vw,10px)/1 Poppins,sans-serif;color:#475569}
-.cw-keyboard{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:6px;margin:16px auto 0;max-width:610px}
-.cw-key{min-height:42px;border:1px solid var(--cw-border);border-radius:9px;background:#fff;color:var(--cw-ink);font:800 14px/1 Poppins,sans-serif;cursor:pointer}
+.cw-keyboard{display:grid;gap:6px;margin:16px auto 0;max-width:610px}
+.cw-key-row{display:flex;justify-content:center;gap:6px}
+.cw-key{flex:1 1 0;max-width:52px;min-width:0;min-height:42px;border:1px solid var(--cw-border);border-radius:9px;background:#fff;color:var(--cw-ink);font:800 14px/1 Poppins,sans-serif;cursor:pointer;box-shadow:0 3px 0 #cbd5e1;transition:transform .08s ease,box-shadow .08s ease,background .12s ease}
+.cw-key:active{transform:translateY(2px);box-shadow:0 1px 0 #cbd5e1}
 .cw-key:hover,.cw-key:focus-visible{background:var(--cw-accent-soft);outline:2px solid var(--cw-accent);outline-offset:1px}
-.cw-key.wide{grid-column:span 2}
+.cw-key.wide{flex:1.55 1 0;max-width:76px}
 .cw-tip{margin:12px 0 0;text-align:center;color:var(--cw-muted);font:600 12px/1.4 Nunito,sans-serif}
-.cw-clues{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-height:720px;overflow:auto}
+.cw-clues{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-height:720px;overflow:auto;position:sticky;top:82px}
 .cw-clues h2{margin:0 0 10px;font:700 18px/1.2 Poppins,sans-serif}
 .clue-list{display:grid;gap:7px}
 .clue-btn{border:0;background:transparent;text-align:left;border-radius:10px;padding:9px;color:var(--cw-ink);cursor:pointer;font:600 14px/1.35 Nunito,sans-serif}
@@ -57,20 +59,22 @@ button{font:inherit}
 .cw-how{margin-top:16px;background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:14px 16px;color:var(--cw-muted);font:600 14px/1.5 Nunito,sans-serif}
 .cw-how summary{cursor:pointer;color:var(--cw-ink);font-family:Poppins,sans-serif;font-weight:700}
 .cw-modal{position:fixed;inset:0;background:rgba(15,23,42,.72);display:none;place-items:center;padding:18px;z-index:10000}
-.cw-modal.open{display:grid}.cw-modal-card{width:min(440px,100%);background:#fff;border-radius:20px;padding:24px;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,.3)}
+.cw-modal.open{display:grid}.cw-modal-card{width:min(440px,100%);background:#fff;border-radius:20px;padding:24px;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,.3);animation:cw-pop .22s ease-out}
+@keyframes cw-pop{from{opacity:0;transform:scale(.94) translateY(8px)}to{opacity:1;transform:scale(1) translateY(0)}}
 .cw-modal-card h2{margin:0;font:700 28px/1.2 Poppins,sans-serif}.cw-modal-card p{color:var(--cw-muted);line-height:1.5}
 .cw-modal-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:18px}
 @media(max-width:860px){
   .cw-page{padding-top:72px}
   .cw-hero{align-items:flex-start;flex-direction:column}.cw-stats{justify-content:flex-start}
-  .cw-game{grid-template-columns:1fr}.cw-clues{max-height:none}
+  .cw-game{grid-template-columns:1fr}.cw-clues{max-height:none;position:static}
 }
 @media(max-width:560px){
   .cw-page{width:min(100% - 16px,1180px)}
   .cw-board-panel,.cw-clues{padding:10px;border-radius:15px}
   .cw-clues{grid-template-columns:1fr}
-  .cw-keyboard{grid-template-columns:repeat(9,minmax(0,1fr));gap:4px}
-  .cw-key{min-height:38px;font-size:12px}
+  .cw-keyboard{gap:4px}
+  .cw-key-row{gap:4px}
+  .cw-key{min-height:38px;font-size:12px;max-width:44px}
   .cw-toolbar button{flex:1 1 42%}
 }
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
