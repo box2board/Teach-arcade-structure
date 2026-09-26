@@ -4,15 +4,15 @@
   const PACK_ID = String(window.CC_QUESTION_SET?.id || 'custom-v1').replace(/[^a-z0-9_-]/gi,'-');
   const STORAGE_KEY = `teachArcade.categoryClash.${PACK_ID}`;
   const palette = ['#4de3d1','#ffd45c','#ff6b7a','#9c7cff','#55a7ff','#ff9d4d','#78dd75','#ef82d5'];
-  // Curriculum content lives outside the engine in questions.js.
-  // Topic editions can provide their own window.CC_QUESTION_SET while reusing this file unchanged.
   const fallbackSample = {
     version:1,title:'Category Clash',timerEnabled:true,timerSeconds:30,finalEnabled:true,
     teams:[{name:'Team 1',color:palette[0]},{name:'Team 2',color:palette[1]}],
     categories:[{name:'Sample',questions:[{question:'Add a question pack to begin.',answer:'questions.js',points:100,power:false}]}],
     final:{category:'Final Face-off',question:'Add a final question in the question pack.',answer:'questions.js'}
   };
-  const sample = (window.CC_QUESTION_SET && typeof window.CC_QUESTION_SET === 'object') ? window.CC_QUESTION_SET : fallbackSample;
+  const sample = (window.CC_QUESTION_SET && typeof window.CC_QUESTION_SET === 'object')
+    ? window.CC_QUESTION_SET
+    : fallbackSample;
   let data, state, timerId = null, secondsLeft = 30, timerRunning = false, audioCtx = null;
 
   function clone(value){ return JSON.parse(JSON.stringify(value)); }
@@ -22,7 +22,7 @@
       version:1, title:String(safe.title||'Untitled Clash').slice(0,80), timerEnabled:safe.timerEnabled!==false,
       timerSeconds:Math.min(300,Math.max(5,Number(safe.timerSeconds)||30)), finalEnabled:safe.finalEnabled!==false,
       teams:(Array.isArray(safe.teams)?safe.teams:sample.teams).slice(0,8).map((t,i)=>({name:String(t.name||`Team ${i+1}`).slice(0,30),color:/^#[0-9a-f]{6}$/i.test(t.color)?t.color:palette[i]})).concat([]).slice(0,8),
-      categories:(Array.isArray(safe.categories)?safe.categories:sample.categories).slice(0,6).map((c,ci)=>({name:String(c.name||`Category ${ci+1}`).slice(0,50),questions:(Array.isArray(c.questions)?c.questions:[]).slice(0,5).map((q,qi)=>({question:String(q.question||''),answer:String(q.answer||''),points:Math.max(0,Number(q.points)||((qi+1)*100)),power:Boolean(q.power),choices:Array.isArray(q.choices)?q.choices.slice(0,6).map(String):[],acceptedAnswers:(Array.isArray(q.acceptedAnswers)?q.acceptedAnswers:[q.answer]).map(String),explanation:String(q.explanation||'')}))})),
+      categories:(Array.isArray(safe.categories)?safe.categories:sample.categories).slice(0,6).map((c,ci)=>({name:String(c.name||`Category ${ci+1}`).slice(0,50),questions:(Array.isArray(c.questions)?c.questions:[]).slice(0,5).map((q,qi)=>({question:String(q.question||''),answer:String(q.answer||''),points:Math.max(0,Number(q.points)||((qi+1)*100)),power:Boolean(q.power),choices:Array.isArray(q.choices)?q.choices.slice(0,6).map(String):[],acceptedAnswers:(Array.isArray(q.acceptedAnswers)?q.acceptedAnswers:[q.answer]).filter(Boolean).map(String),explanation:String(q.explanation||'')}))})),
       final:{category:String(safe.final?.category||'Final Face-off').slice(0,50),question:String(safe.final?.question||''),answer:String(safe.final?.answer||'')}
     };
   }
@@ -34,14 +34,10 @@
     if(state && !state.soundOn)return;
     try{ audioCtx ||= new (window.AudioContext||window.webkitAudioContext)(); const osc=audioCtx.createOscillator(),gain=audioCtx.createGain(); osc.connect(gain);gain.connect(audioCtx.destination);osc.type='sine';osc.frequency.value=kind==='good'?660:kind==='bad'?180:kind==='win'?880:360;gain.gain.setValueAtTime(.06,audioCtx.currentTime);gain.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+.18);osc.start();osc.stop(audioCtx.currentTime+.18);}catch{/* Audio is optional. */}
   }
-  function show(view){
-    ['setupView','boardView','questionView','finalView','winnerView'].forEach(id=>{
-      $(id).hidden=id!==view;
-    });
-  }
+  function show(view){ ['setupView','boardView','questionView','finalView','winnerView'].forEach(id=>$(id).hidden=id!==view); window.scrollTo({top:0,behavior:'smooth'}); }
 
   function renderSetup(){
-    ensureTeams(); $('titleInput').value=data.title; $('timerEnabled').checked=data.timerEnabled; $('timerSeconds').value=data.timerSeconds; $('finalEnabled').checked=data.finalEnabled;if($('multipleChoiceEnabled'))$('multipleChoiceEnabled').checked=false; $('finalEditor').hidden=!data.finalEnabled;
+    ensureTeams(); $('titleInput').value=data.title; $('timerEnabled').checked=data.timerEnabled; $('timerSeconds').value=data.timerSeconds; $('finalEnabled').checked=data.finalEnabled; $('finalEditor').hidden=!data.finalEnabled;
     $('teamCount').innerHTML=Array.from({length:7},(_,i)=>`<option value="${i+2}" ${(i+2)===data.teams.length?'selected':''}>${i+2}</option>`).join('');
     $('teamEditor').innerHTML=data.teams.map((t,i)=>`<div class="team-row"><label class="field"><span>Color</span><input type="color" data-team-color="${i}" value="${t.color}" aria-label="${escapeHtml(t.name)} color"></label><label class="field"><span>Team ${i+1}</span><input data-team-name="${i}" value="${escapeHtml(t.name)}" maxlength="30"></label></div>`).join('');
     $('categoryEditor').innerHTML=data.categories.map((c,ci)=>`<article class="category-card"><div class="category-head"><input data-cat-name="${ci}" value="${escapeHtml(c.name)}" maxlength="50" aria-label="Category ${ci+1} name"><button class="remove-btn" data-remove-cat="${ci}" aria-label="Remove ${escapeHtml(c.name)}">×</button></div>${c.questions.map((q,qi)=>questionEditor(q,ci,qi)).join('')}<button class="btn secondary add-question" data-add-question="${ci}" ${c.questions.length>=5?'disabled':''}>+ Add question</button></article>`).join('');
@@ -71,16 +67,25 @@
     });
   }
   function changeTeamCount(count){ while(data.teams.length<count)data.teams.push({name:`Team ${data.teams.length+1}`,color:palette[data.teams.length]});data.teams=data.teams.slice(0,count);renderSetup();persist(); }
-  function selectedMode(){return document.querySelector('input[name="playMode"]:checked')?.value||'classroom';}
-  function syncSetupMode(){const individual=selectedMode()==='individual';document.querySelectorAll('.classroom-only').forEach(el=>el.hidden=individual);$('startBtn').innerHTML=individual?'Start review <span aria-hidden="true">→</span>':'Start the clash <span aria-hidden="true">→</span>';$('setupTitle').textContent=individual?(PACK_ID==='french-revolution-v1'?'French Revolution Review':'Individual Review'):(PACK_ID==='french-revolution-v1'?'French Revolution':'Create your clash');}
+  function selectedMode(){ return document.querySelector('input[name="playMode"]:checked')?.value || 'classroom'; }
+  function syncSetupMode(){
+    const individual=selectedMode()==='individual';
+    document.querySelectorAll('.classroom-only').forEach(el=>el.hidden=individual);
+    $('startBtn').innerHTML=individual
+      ? 'Start review <span aria-hidden="true">→</span>'
+      : 'Start the clash <span aria-hidden="true">→</span>';
+    $('setupTitle').textContent=individual
+      ? (PACK_ID==='french-revolution-v1'?'French Revolution Review':'Individual Review')
+      : (PACK_ID==='french-revolution-v1'?'French Revolution':'Create your clash');
+  }
   function validate(){ const qs=data.categories.flatMap(c=>c.questions); if(!data.title.trim())return 'Add a game title first.';if(!data.categories.length)return 'Add at least one category.';if(!qs.length)return 'Add at least one question.';if(qs.some(q=>!q.question.trim()||!q.answer.trim()))return 'Every question needs both a question and an answer.';if(selectedMode()==='classroom'&&data.finalEnabled&&(!data.final.question.trim()||!data.final.answer.trim()))return 'Complete the final question and answer, or turn off the final round.';return ''; }
   function startGame(){
-    const problem=validate();
-    if(problem){announce(problem);return;}
+    const problem=validate();if(problem){announce(problem);return;}
+    const mode=selectedMode();
     state={
       soundOn:state?.soundOn!==false,
-      mode:selectedMode(),
-      multipleChoice:selectedMode()==='individual'||Boolean($('multipleChoiceEnabled')?.checked),
+      mode,
+      multipleChoice:mode==='individual'||Boolean($('multipleChoiceEnabled')?.checked),
       scores:data.teams.map(()=>0),
       activeTeam:0,
       completed:{},
@@ -90,6 +95,7 @@
       finalResults:[],
       individualCorrect:0,
       individualAnswered:0,
+      individualFirstAnswered:0,
       individualMissed:[],
       individualAttempts:[],
       bestStreak:0,
@@ -100,95 +106,45 @@
       powerBonus:null,
       startedAt:Date.now()
     };
-    show('boardView');
-    renderBoard();
-    sound('good');
-  }
-
-  function boardIsComplete(){
-    return data.categories.every((category,ci)=>
-      category.questions.every((_,qi)=>Boolean(state.completed[`${ci}-${qi}`]))
-    );
-  }
-
-  function renderScoreboard(){
-    const board=$('scoreboard');
-    board.hidden=state.mode==='individual';
-    if(state.mode==='individual'){
-      board.innerHTML='';
-      return;
-    }
-    board.innerHTML=data.teams.map((team,i)=>`
-      <button type="button" class="score-card ${i===state.activeTeam?'active':''}"
-        style="--team:${team.color}" data-active-team="${i}"
-        aria-label="Make ${escapeHtml(team.name)} active">
-        <span>${escapeHtml(team.name)}</span><strong>${state.scores[i]}</strong>
-      </button>`).join('');
-    board.querySelectorAll('[data-active-team]').forEach(button=>{
-      button.addEventListener('click',()=>{
-        state.activeTeam=Number(button.dataset.activeTeam);
-        renderScoreboard();
-        $('turnAnnouncer').textContent=`${data.teams[state.activeTeam].name} is the active team.`;
-        sound();
-      });
-    });
-  }
-
-  function bindBoardTiles(){
-    $('gameBoard').querySelectorAll('button[data-square]:not(:disabled)').forEach(button=>{
-      button.addEventListener('click',()=>{
-        const ci=Number(button.dataset.ci);
-        const qi=Number(button.dataset.qi);
-        openQuestion(ci,qi);
-      });
-    });
+    renderBoard();show('boardView');sound('good');
   }
 
   function renderBoard(){
     $('boardTitle').textContent=data.title;
     $('adjustBtn').hidden=state.mode==='individual';
-    $('turnAnnouncer').hidden=false;
+    $('scoreboard').hidden=state.mode==='individual';
+    $('practiceHud').hidden=state.mode!=='individual';
     document.querySelector('.board-footer p').hidden=state.mode==='individual';
 
-    renderScoreboard();
+    $('scoreboard').innerHTML=state.mode==='individual'?'':data.teams.map((t,i)=>
+      `<button class="score-card ${i===state.activeTeam?'active':''}" style="--team:${t.color}" data-active-team="${i}" aria-label="Make ${escapeHtml(t.name)} active"><span>${escapeHtml(t.name)}</span><strong>${state.scores[i]}</strong></button>`
+    ).join('');
 
-    $('practiceHud').hidden=state.mode!=='individual';
     if(state.mode==='individual'){
-      const total=data.categories.reduce((n,c)=>n+c.questions.length,0);
+      const total=data.categories.reduce((n,category)=>n+category.questions.length,0);
       const done=Object.keys(state.completed).length;
-      $('practiceHud').innerHTML=`
-        <div><span>PROGRESS</span><strong>${Math.min(done,total)}/${total}</strong></div>
-        <div><span>STREAK</span><strong>🔥 ${state.currentStreak}</strong></div>
-        <div><span>BEST</span><strong>${state.bestStreak}</strong></div>
-        <div><span>SCORE</span><strong>${state.scores[0]}</strong></div>`;
+      $('practiceHud').innerHTML=`<div><span>PROGRESS</span><strong>${Math.min(done,total)}/${total}</strong></div><div><span>STREAK</span><strong>🔥 ${state.currentStreak}</strong></div><div><span>BEST</span><strong>${state.bestStreak}</strong></div><div><span>SCORE</span><strong>${state.scores[0]}</strong></div>`;
+      $('turnAnnouncer').textContent=state.reviewMode
+        ? 'Review Round · Master the questions you missed'
+        : `${state.individualFirstAnswered} answered · ${state.individualCorrect} correct`;
+    }else{
+      $('turnAnnouncer').textContent=`${data.teams[state.activeTeam].name} is the active team.`;
     }
 
-    $('turnAnnouncer').textContent=state.mode==='individual'
-      ?(state.reviewMode?'Review Round · Master the questions you missed':`${state.individualAnswered} answered · ${state.individualCorrect} correct`)
-      :`${data.teams[state.activeTeam].name} is the active team.`;
-
-    const max=Math.max(...data.categories.map(c=>c.questions.length));
+    const max=Math.max(...data.categories.map(category=>category.questions.length));
     $('gameBoard').style.setProperty('--cols',data.categories.length);
-
-    let html=data.categories.map(c=>`<div class="category-label" role="columnheader">${escapeHtml(c.name)}</div>`).join('');
+    let html=data.categories.map(category=>`<div class="category-label" role="columnheader">${escapeHtml(category.name)}</div>`).join('');
     for(let qi=0;qi<max;qi++){
       html+=data.categories.map((category,ci)=>{
         const q=category.questions[qi];
         if(!q)return '<div aria-hidden="true"></div>';
         const done=Boolean(state.completed[`${ci}-${qi}`]);
-        return `<button type="button" class="square" role="gridcell"
-          data-square="${ci},${qi}" data-ci="${ci}" data-qi="${qi}"
-          ${done?'disabled':''}
-          aria-label="${escapeHtml(category.name)}, ${q.points} points${done?', completed':''}">
-          ${done?'✓':q.points}
-        </button>`;
+        return `<button type="button" class="square" role="gridcell" data-square="${ci},${qi}" ${done?'disabled':''} aria-label="${escapeHtml(category.name)}, ${q.points} points${q.power?', Power Play':''}${done?', completed':''}">${done?'✓':q.points}${q.power&&!done?'<span class="power-mark">⚡ POWER PLAY</span>':''}</button>`;
       }).join('');
     }
-
     $('gameBoard').innerHTML=html;
-    bindBoardTiles();
 
-    const allDone=boardIsComplete();
+    const allDone=data.categories.every((category,ci)=>category.questions.every((_,qi)=>state.completed[`${ci}-${qi}`]));
     $('finalBtn').hidden=!(state.mode==='classroom'&&allDone&&data.finalEnabled);
     if(allDone&&state.mode==='individual'){
       if(state.individualMissed.length&&!state.reviewMode)setTimeout(startReviewRound,250);
@@ -198,34 +154,103 @@
     }
   }
 
-  function startReviewRound(){state.reviewMode=true;state.reviewQueue=[...new Map(state.individualMissed.map(x=>[`${x.ci}-${x.qi}`,x])).values()];state.completed={};data.categories.forEach((c,ci)=>c.questions.forEach((_,qi)=>{if(!state.reviewQueue.some(x=>x.ci===ci&&x.qi===qi))state.completed[`${ci}-${qi}`]=true;}));announce(`Review Round: ${state.reviewQueue.length} question${state.reviewQueue.length===1?'':'s'} to master.`);renderBoard();show('boardView');}
-  function openQuestion(ci,qi){
-    state.current={ci,qi};$('individualControls').hidden=true;$('individualControls').innerHTML='';const q=data.categories[ci].questions[qi];state.powerWager=(q.power&&state.mode==='classroom')?null:q.points;if(state.mode==='individual'&&q.power&&!state.reviewMode){state.powerBonus='double';announce('⚡ POWER PLAY! Get this right for double points.');}$('questionCategory').textContent=data.categories[ci].name;$('questionValue').textContent=`${q.points} points`;$('questionText').textContent=q.question;$('answerText').textContent=q.answer;$('answerArea').hidden=true;$('revealBtn').hidden=state.mode==='individual';$('judgeControls').hidden=true;$('judgeControls').style.display='none';
-    if(state.mode==='individual'){ $('individualControls').hidden=false;renderIndividualControls(); }else if(state.multipleChoice&&q.choices&&q.choices.length){$('individualControls').hidden=false;const wrap=$('individualControls');wrap.innerHTML=q.choices.map(choice=>`<button type="button" class="btn secondary individual-choice classroom-choice" disabled>${escapeHtml(choice)}</button>`).join('');}
-    $('powerPanel').hidden=!(q.power&&state.mode==='classroom');$('powerWager').max=Math.max(0,state.scores[state.activeTeam]);$('powerWager').value=Math.min(q.points,Math.max(0,state.scores[state.activeTeam]));$('lockWagerBtn').disabled=false;$('revealBtn').disabled=q.power&&state.mode==='classroom';
-    $('answeringTeam').innerHTML=state.mode==='individual'?'':data.teams.map((t,i)=>`<option value="${i}" ${i===state.activeTeam?'selected':''}>${escapeHtml(t.name)}</option>`).join('');resetTimer();$('timerBox').hidden=!data.timerEnabled;show('questionView');$('questionText').focus();sound();
+  function startReviewRound(){
+    state.reviewMode=true;
+    state.reviewQueue=[...new Map(state.individualMissed.map(item=>[`${item.ci}-${item.qi}`,item])).values()];
+    state.completed={};
+    data.categories.forEach((category,ci)=>category.questions.forEach((_,qi)=>{
+      if(!state.reviewQueue.some(item=>item.ci===ci&&item.qi===qi))state.completed[`${ci}-${qi}`]=true;
+    }));
+    announce(`Review Round: ${state.reviewQueue.length} question${state.reviewQueue.length===1?'':'s'} to master.`);
+    renderBoard();show('boardView');
   }
-  function renderClassroomScoring(){const q=data.categories[state.current.ci].questions[state.current.qi],wrap=$('judgeControls');wrap.hidden=false;wrap.style.removeProperty('display');wrap.innerHTML=data.teams.map((t,i)=>`<button type="button" class="btn correct team-award" data-award-team="${i}">✓ ${escapeHtml(t.name)} +${q.points}</button>`).join('')+`<button type="button" class="btn incorrect no-award" data-no-award>✕ No correct answer</button>`;wrap.querySelectorAll('[data-award-team]').forEach(b=>b.onclick=()=>judge(true,+b.dataset.awardTeam));wrap.querySelector('[data-no-award]').onclick=()=>judge(false,state.activeTeam);}
-  function revealAnswer(){ if(state.current&&state.powerWager!==null){$('answerArea').hidden=false;$('revealBtn').hidden=true;const classroom=state.mode==='classroom';if(classroom)renderClassroomScoring();else{$('judgeControls').hidden=true;$('judgeControls').style.display='none';}$('individualControls').hidden=classroom;if(!classroom)setTimeout(renderIndividualControls,1800);pauseTimer();sound();} }
-  function judge(correct,teamOverride){
-    if(!state.current)return;
 
-    const {ci,qi}=state.current;
+  function openQuestion(ci,qi){
+    if(state.completed[`${ci}-${qi}`])return;
+    state.current={ci,qi};
     const q=data.categories[ci].questions[qi];
-    const team=state.mode==='individual'
-      ?0
-      :(Number.isInteger(teamOverride)?teamOverride:state.activeTeam);
-    const baseValue=q.power&&state.mode==='classroom'
-      ?(Number(state.powerWager)||0)
-      :(Number(q.points)||0);
-    const value=(state.mode==='individual'&&state.powerBonus==='double')?baseValue*2:baseValue;
 
-    if(correct&&team>=0&&team<state.scores.length){
-      state.scores[team]=(Number(state.scores[team])||0)+value;
+    $('individualControls').innerHTML='';
+    $('individualControls').hidden=true;
+    $('questionCategory').textContent=data.categories[ci].name;
+    $('questionValue').textContent=`${q.points} points`;
+    $('questionText').textContent=q.question;
+    $('answerText').textContent=q.answer;
+    $('answerArea').hidden=true;
+    $('judgeControls').hidden=true;
+
+    state.powerWager=(q.power&&state.mode==='classroom')?null:q.points;
+    if(state.mode==='individual'&&q.power&&!state.reviewMode){
+      state.powerBonus='double';
+      announce('⚡ POWER PLAY! Get this right for double points.');
     }
 
     if(state.mode==='individual'){
+      $('revealBtn').hidden=true;
+      $('individualControls').hidden=false;
+      renderIndividualControls();
+    }else{
+      $('revealBtn').hidden=false;
+      if(state.multipleChoice&&q.choices?.length){
+        $('individualControls').hidden=false;
+        $('individualControls').innerHTML=q.choices.map(choice=>
+          `<button type="button" class="btn secondary individual-choice classroom-choice" disabled>${escapeHtml(choice)}</button>`
+        ).join('');
+      }
+    }
+
+    $('powerPanel').hidden=!(q.power&&state.mode==='classroom');
+    $('powerWager').max=Math.max(0,state.scores[state.activeTeam]);
+    $('powerWager').value=Math.min(q.points,Math.max(0,state.scores[state.activeTeam]));
+    $('lockWagerBtn').disabled=false;
+    $('revealBtn').disabled=q.power&&state.mode==='classroom';
+
+    $('answeringTeam').innerHTML=state.mode==='classroom'
+      ? data.teams.map((t,i)=>`<option value="${i}" ${i===state.activeTeam?'selected':''}>${escapeHtml(t.name)}</option>`).join('')
+      : '';
+
+    resetTimer();
+    $('timerBox').hidden=!data.timerEnabled;
+    show('questionView');
+    $('questionText').focus();
+    sound();
+  }
+
+  function renderClassroomScoring(){
+    if(!state.current)return;
+    const q=data.categories[state.current.ci].questions[state.current.qi];
+    const value=q.power?(Number(state.powerWager)||0):q.points;
+    $('judgeControls').hidden=false;
+    $('judgeControls').innerHTML=data.teams.map((team,i)=>
+      `<button type="button" class="btn correct team-award" data-award-team="${i}">✓ ${escapeHtml(team.name)} +${value}</button>`
+    ).join('')+`<button type="button" class="btn incorrect no-award" data-no-award>✕ No correct answer</button>`;
+  }
+
+  function revealAnswer(){
+    if(!state.current||state.powerWager===null)return;
+    $('answerArea').hidden=false;
+    $('revealBtn').hidden=true;
+    if(state.mode==='classroom'){
+      $('individualControls').hidden=true;
+      renderClassroomScoring();
+    }
+    pauseTimer();
+    sound();
+  }
+
+  function judge(correct,teamOverride){
+    if(!state.current)return;
+    const {ci,qi}=state.current;
+    const q=data.categories[ci].questions[qi];
+    const baseValue=q.power&&state.mode==='classroom'?(Number(state.powerWager)||0):Number(q.points)||0;
+    const value=(state.mode==='individual'&&state.powerBonus==='double')?baseValue*2:baseValue;
+    const team=state.mode==='individual'?0:(Number.isInteger(teamOverride)?teamOverride:state.activeTeam);
+
+    if(correct)state.scores[team]=(Number(state.scores[team])||0)+value;
+
+    if(state.mode==='individual'){
       state.individualAnswered++;
+      if(!state.reviewMode)state.individualFirstAnswered++;
       state.currentStreak=correct?state.currentStreak+1:0;
       state.bestStreak=Math.max(state.bestStreak,state.currentStreak);
       if(correct){
@@ -238,6 +263,7 @@
         category:data.categories[ci].name,
         question:q.question,
         correct,
+        review:state.reviewMode,
         points:q.points,
         answeredAt:new Date().toISOString()
       });
@@ -250,14 +276,49 @@
     state.current=null;
     pauseTimer();
     sound(correct?'good':'bad');
-
     renderBoard();
     show('boardView');
   }
 
-  function cleanAnswer(v){return String(v||'').toLowerCase().replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim().replace(/^(what|who|where|when|why|how)\s+(is|was|were|are)\s+/,'').replace(/^(a|an|the)\s+/,'').trim();}
-  function renderIndividualControls(){const q=data.categories[state.current.ci].questions[state.current.qi],wrap=$('individualControls');wrap.innerHTML='';if(q.choices&&q.choices.length){q.choices.forEach(choice=>{const b=document.createElement('button');b.type='button';b.className='btn secondary individual-choice';b.textContent=choice;b.addEventListener('click',()=>submitIndividual(choice));wrap.appendChild(b);});}else{wrap.innerHTML='<label class="field individual-answer"><span>Your answer</span><input id="individualAnswer" autocomplete="off" placeholder="Type your answer"><button id="submitIndividualBtn" class="btn primary" type="button">Submit answer</button></label>';$('submitIndividualBtn').onclick=()=>submitIndividual($('individualAnswer').value);$('individualAnswer').addEventListener('keydown',e=>{if(e.key==='Enter')submitIndividual(e.target.value);});$('individualAnswer').focus();}}
-  function submitIndividual(value){const q=data.categories[state.current.ci].questions[state.current.qi];$('answerArea').hidden=false;const accepted=[q.answer,...(q.acceptedAnswers||[]),...(q.choices||[]).filter(choice=>cleanAnswer(choice)===cleanAnswer(q.answer))].map(cleanAnswer),correct=accepted.includes(cleanAnswer(value));$('individualControls').innerHTML='<div class="feedback '+(correct?'correct-feedback':'incorrect-feedback')+'"><strong>'+(correct?'✓ Correct!':'✕ Not quite')+'</strong><p>'+escapeHtml(q.answer)+'</p>'+(q.explanation?'<p class="answer-explanation">'+escapeHtml(q.explanation)+'</p>':'')+'<button id="continueIndividual" class="btn primary" type="button">Back to board →</button></div>';$('continueIndividual').onclick=()=>judge(correct);sound(correct?'good':'bad');}
+  function cleanAnswer(value){
+    return String(value||'').toLowerCase().replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim()
+      .replace(/^(what|who|where|when|why|how)\s+(is|was|were|are)\s+/,'')
+      .replace(/^(a|an|the)\s+/,'').trim();
+  }
+
+  function renderIndividualControls(){
+    if(!state.current)return;
+    const q=data.categories[state.current.ci].questions[state.current.qi];
+    const wrap=$('individualControls');
+    wrap.innerHTML='';
+    if(q.choices?.length){
+      q.choices.forEach(choice=>{
+        const button=document.createElement('button');
+        button.type='button';
+        button.className='btn secondary individual-choice';
+        button.textContent=choice;
+        button.onclick=()=>submitIndividual(choice);
+        wrap.appendChild(button);
+      });
+    }else{
+      wrap.innerHTML='<label class="field individual-answer"><span>Your answer</span><input id="individualAnswer" autocomplete="off" placeholder="Type your answer"><button id="submitIndividualBtn" class="btn primary" type="button">Submit answer</button></label>';
+      $('submitIndividualBtn').onclick=()=>submitIndividual($('individualAnswer').value);
+      $('individualAnswer').onkeydown=e=>{if(e.key==='Enter')submitIndividual(e.target.value);};
+      $('individualAnswer').focus();
+    }
+  }
+
+  function submitIndividual(value){
+    if(!state.current)return;
+    const q=data.categories[state.current.ci].questions[state.current.qi];
+    const accepted=[q.answer,...(q.acceptedAnswers||[])].map(cleanAnswer);
+    const correct=accepted.includes(cleanAnswer(value));
+    $('answerArea').hidden=false;
+    $('individualControls').innerHTML=`<div class="feedback ${correct?'correct-feedback':'incorrect-feedback'}"><strong>${correct?'✓ Correct!':'✕ Not quite'}</strong><p>${escapeHtml(q.answer)}</p>${q.explanation?`<p class="answer-explanation">${escapeHtml(q.explanation)}</p>`:''}<button id="continueIndividual" class="btn primary" type="button">Back to board →</button></div>`;
+    $('continueIndividual').onclick=()=>judge(correct);
+    sound(correct?'good':'bad');
+  }
+
   function resetTimer(){pauseTimer();secondsLeft=data.timerSeconds;renderTimer();}
   function renderTimer(){ $('timerDisplay').textContent=secondsLeft;$('timerFill').style.width=`${Math.max(0,secondsLeft/data.timerSeconds*100)}%`;$('timerFill').style.background=secondsLeft<=5?'var(--coral)':'var(--cyan)'; }
   function startTimer(){if(timerRunning||secondsLeft<=0)return;timerRunning=true;timerId=setInterval(()=>{secondsLeft--;renderTimer();if(secondsLeft<=0){pauseTimer();sound('bad');announce('Time is up! Reveal the answer when ready.');}},1000);}
@@ -270,21 +331,128 @@
   function lockFinal(){const inputs=[...document.querySelectorAll('[data-final-wager]')];state.finalWagers=inputs.map((el,i)=>Math.min(Math.max(0,state.scores[i]),Math.max(0,Number(el.value)||0)));$('finalWagers').hidden=true;$('lockFinalBtn').hidden=true;$('finalPrompt').hidden=false;$('finalControls').hidden=false;$('revealFinalBtn').hidden=false;$('finalAnswerArea').hidden=true;}
   function revealFinal(){ $('finalAnswerArea').hidden=false;$('revealFinalBtn').hidden=true;$('finalJudge').hidden=false;$('finalJudge').innerHTML=data.teams.map((t,i)=>`<label class="toggle"><input type="checkbox" data-final-correct="${i}"><span>${escapeHtml(t.name)} correct</span></label>`).join('');$('finishFinalBtn').hidden=false; }
   function finishFinal(){document.querySelectorAll('[data-final-correct]').forEach((el,i)=>{state.scores[i]+=el.checked?state.finalWagers[i]:-state.finalWagers[i];});showWinner();}
-  function buildResult(){const total=state.individualAnswered,correct=state.individualCorrect;return {schemaVersion:1,engine:'category-clash',questionSetId:PACK_ID,title:data.title,mode:state.mode,startedAt:new Date(state.startedAt).toISOString(),completedAt:new Date().toISOString(),firstAttempt:{correct,total,accuracy:total?Math.round(correct/total*100):0},mastery:{mastered:Math.min(total,correct+state.masteredOnRetry),total,masteredOnRetry:state.masteredOnRetry},missed:state.individualAttempts.filter(a=>!a.correct).map(a=>({category:a.category,question:a.question})),timeSpentSeconds:Math.max(0,Math.round((Date.now()-state.startedAt)/1000)),arcade:{score:state.scores[0],bestStreak:state.bestStreak},assignment:{id:null,lockedSettings:null}};}
-  function showWinner(){if(state.mode==='individual'){const r=buildResult();window.TEACH_ARCADE_LAST_RESULT=r;$('winnerTitle').textContent='Review complete!';$('winnerSummary').textContent=`${r.firstAttempt.accuracy}% first-attempt accuracy · ${r.firstAttempt.correct}/${r.firstAttempt.total} correct`;$('finalScores').innerHTML=`<div class="result-grid"><div class="final-score"><span>Accuracy</span><strong>${r.firstAttempt.accuracy}%</strong></div><div class="final-score"><span>Arcade score</span><strong>${r.arcade.score}</strong></div><div class="final-score"><span>Best streak</span><strong>${r.arcade.bestStreak}</strong></div><div class="final-score"><span>Mastery</span><strong>${r.mastery.mastered}/${r.mastery.total}</strong></div></div><p class="result-note">Practice results stay on this device for now. This result format is ready to connect to Teach Arcade assignments and teacher reports later.</p>`;show('winnerView');sound('win');return;}const max=Math.max(...state.scores),winners=data.teams.filter((_,i)=>state.scores[i]===max).map(t=>t.name);$('winnerTitle').textContent=winners.length>1?'It’s a tie!':`${winners[0]} wins!`;$('winnerSummary').textContent=winners.length>1?`${winners.join(' and ')} finish together at ${max} points.`:`A brilliant clash ends with ${max} points.`;$('finalScores').innerHTML=data.teams.map((t,i)=>`<div class="final-score" style="--team:${t.color}"><span>${escapeHtml(t.name)}</span><strong>${state.scores[i]}</strong></div>`).join('');show('winnerView');sound('win'); }
+  function buildResult(){
+    const total=state.individualFirstAnswered;
+    const correct=state.individualCorrect;
+    return {
+      schemaVersion:1,
+      engine:'category-clash',
+      questionSetId:PACK_ID,
+      title:data.title,
+      mode:state.mode,
+      startedAt:new Date(state.startedAt).toISOString(),
+      completedAt:new Date().toISOString(),
+      firstAttempt:{correct,total,accuracy:total?Math.round(correct/total*100):0},
+      mastery:{mastered:Math.min(total,correct+state.masteredOnRetry),total,masteredOnRetry:state.masteredOnRetry},
+      missed:state.individualAttempts.filter(attempt=>!attempt.correct&&!attempt.review).map(attempt=>({category:attempt.category,question:attempt.question})),
+      timeSpentSeconds:Math.max(0,Math.round((Date.now()-state.startedAt)/1000)),
+      arcade:{score:state.scores[0],bestStreak:state.bestStreak},
+      assignment:{id:null,lockedSettings:null}
+    };
+  }
+
+  function showWinner(){
+    if(state.mode==='individual'){
+      const result=buildResult();
+      window.TEACH_ARCADE_LAST_RESULT=result;
+      $('winnerTitle').textContent='Review complete!';
+      $('winnerSummary').textContent=`${result.firstAttempt.accuracy}% first-attempt accuracy · ${result.firstAttempt.correct}/${result.firstAttempt.total} correct`;
+      $('finalScores').innerHTML=`<div class="result-grid"><div class="final-score"><span>Accuracy</span><strong>${result.firstAttempt.accuracy}%</strong></div><div class="final-score"><span>Arcade score</span><strong>${result.arcade.score}</strong></div><div class="final-score"><span>Best streak</span><strong>${result.arcade.bestStreak}</strong></div><div class="final-score"><span>Mastery</span><strong>${result.mastery.mastered}/${result.mastery.total}</strong></div></div><p class="result-note">Practice results stay on this device for now. This result format is ready to connect to Teach Arcade assignments and teacher reports later.</p>`;
+      show('winnerView');sound('win');return;
+    }
+    const max=Math.max(...state.scores),winners=data.teams.filter((_,i)=>state.scores[i]===max).map(t=>t.name);
+    $('winnerTitle').textContent=winners.length>1?'It’s a tie!':`${winners[0]} wins!`;
+    $('winnerSummary').textContent=winners.length>1?`${winners.join(' and ')} finish together at ${max} points.`:`A brilliant clash ends with ${max} points.`;
+    $('finalScores').innerHTML=data.teams.map((t,i)=>`<div class="final-score" style="--team:${t.color}"><span>${escapeHtml(t.name)}</span><strong>${state.scores[i]}</strong></div>`).join('');
+    show('winnerView');sound('win');
+  }
+
   function download(){ const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`${data.title.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'category-clash'}.json`;a.click();URL.revokeObjectURL(a.href);announce('Game set downloaded.'); }
   function loadFile(file){const reader=new FileReader();reader.onload=()=>{try{data=normalize(JSON.parse(reader.result));ensureTeams();persist();renderSetup();announce('Game set loaded.');}catch{announce('That file is not valid Category Clash JSON.');}};reader.readAsText(file);}
   async function toggleFullscreen(){try{if(!document.fullscreenElement)await document.documentElement.requestFullscreen();else await document.exitFullscreen();}catch{announce('Full-screen mode is unavailable in this browser.');}}
   function wire(){
-    bindSetupChanges();document.querySelectorAll('input[name="playMode"]').forEach(el=>el.addEventListener('change',syncSetupMode));syncSetupMode();$('teamCount').addEventListener('change',e=>changeTeamCount(+e.target.value));$('addCategoryBtn').onclick=()=>{if(data.categories.length<6){data.categories.push({name:`Category ${data.categories.length+1}`,questions:[{question:'',answer:'',points:100,power:false}]});renderSetup();persist();}};
-    $('sampleBtn').onclick=()=>{if(confirm('Replace the current editor with the built-in sample?')){data=clone(sample);persist();renderSetup();announce('Sample game loaded.');}};$('saveBtn').onclick=download;$('loadBtn').onclick=()=>$('fileInput').click();$('fileInput').onchange=e=>e.target.files[0]&&loadFile(e.target.files[0]);$('startBtn').onclick=startGame;
+    bindSetupChanges();
+    document.querySelectorAll('input[name="playMode"]').forEach(el=>el.addEventListener('change',syncSetupMode));
+    $('teamCount').addEventListener('change',e=>changeTeamCount(+e.target.value));
+    $('addCategoryBtn').onclick=()=>{if(data.categories.length<6){data.categories.push({name:`Category ${data.categories.length+1}`,questions:[{question:'',answer:'',points:100,power:false}]});renderSetup();persist();}};
+    $('sampleBtn').onclick=()=>{if(confirm('Replace the current editor with the built-in sample?')){data=clone(sample);persist();renderSetup();announce('Sample game loaded.');}};
+    $('saveBtn').onclick=download;
+    $('loadBtn').onclick=()=>$('fileInput').click();
+    $('fileInput').onchange=e=>e.target.files[0]&&loadFile(e.target.files[0]);
+    $('startBtn').onclick=startGame;
 
-    $('lockWagerBtn').onclick=()=>{const max=Math.max(0,state.scores[state.activeTeam]),w=Math.max(0,Number($('powerWager').value)||0);if(w>max){announce(`Wager cannot exceed ${max} points.`);return;}state.powerWager=w;$('lockWagerBtn').disabled=true;$('revealBtn').disabled=false;announce(`${data.teams[state.activeTeam].name} wagers ${w} points.`);};
-    $('revealBtn').onclick=revealAnswer;$('timerStartBtn').onclick=startTimer;$('timerPauseBtn').onclick=pauseTimer;$('timerResetBtn').onclick=resetTimer;
-    $('adjustBtn').onclick=openAdjust;$('adjustRows').onclick=e=>{const b=e.target.closest('[data-apply-adjust]');if(b){const i=+b.dataset.applyAdjust,input=document.querySelector(`[data-adjust-input="${i}"]`);state.scores[i]+=Number(input.value)||0;input.value=0;openAdjust();renderBoard();sound();}};
-    $('resetBtn').onclick=()=>{if(confirm('Reset scores and reopen every square?'))startGame();};$('finalBtn').onclick=startFinal;$('lockFinalBtn').onclick=lockFinal;$('revealFinalBtn').onclick=revealFinal;$('finishFinalBtn').onclick=finishFinal;
-    $('rematchBtn').onclick=startGame;$('newGameBtn').onclick=()=>{show('setupView');renderSetup();};$('fullscreenBtn').onclick=toggleFullscreen;$('soundBtn').onclick=()=>{state ||= {};state.soundOn=state.soundOn===false;$('soundBtn').setAttribute('aria-pressed',state.soundOn);$('soundBtn').innerHTML=`${state.soundOn?'🔊':'🔇'} <span>Sound</span>`;if(state.soundOn)sound();};
-    document.addEventListener('keydown',e=>{if(e.target.matches('input,textarea,select')||$('setupView').hidden===false)return;if(e.key.toLowerCase()==='f')toggleFullscreen();if(e.key.toLowerCase()==='m')$('soundBtn').click();if(!$('questionView').hidden&&e.code==='Space'){e.preventDefault();revealAnswer();}if(state.mode==='classroom'&&!$('boardView').hidden&&(e.key==='ArrowLeft'||e.key==='ArrowRight')){const d=e.key==='ArrowRight'?1:-1;state.activeTeam=(state.activeTeam+d+data.teams.length)%data.teams.length;renderBoard();}});
+    // These roots never get replaced. Their delegated handlers survive every board/score redraw.
+    $('gameBoard').onclick=e=>{
+      const button=e.target.closest('[data-square]');
+      if(!button||button.disabled)return;
+      const [ci,qi]=button.dataset.square.split(',').map(Number);
+      openQuestion(ci,qi);
+    };
+    $('scoreboard').onclick=e=>{
+      const button=e.target.closest('[data-active-team]');
+      if(!button||state.mode!=='classroom')return;
+      state.activeTeam=Number(button.dataset.activeTeam);
+      renderBoard();
+      sound();
+    };
+    $('judgeControls').onclick=e=>{
+      const award=e.target.closest('[data-award-team]');
+      if(award){judge(true,Number(award.dataset.awardTeam));return;}
+      if(e.target.closest('[data-no-award]'))judge(false,state.activeTeam);
+    };
+
+    $('lockWagerBtn').onclick=()=>{
+      const max=Math.max(0,state.scores[state.activeTeam]);
+      const wager=Math.max(0,Number($('powerWager').value)||0);
+      if(wager>max){announce(`Wager cannot exceed ${max} points.`);return;}
+      state.powerWager=wager;
+      $('lockWagerBtn').disabled=true;
+      $('revealBtn').disabled=false;
+      announce(`${data.teams[state.activeTeam].name} wagers ${wager} points.`);
+    };
+
+    $('revealBtn').onclick=revealAnswer;
+    $('timerStartBtn').onclick=startTimer;
+    $('timerPauseBtn').onclick=pauseTimer;
+    $('timerResetBtn').onclick=resetTimer;
+    $('adjustBtn').onclick=openAdjust;
+    $('adjustRows').onclick=e=>{
+      const button=e.target.closest('[data-apply-adjust]');
+      if(button){
+        const i=Number(button.dataset.applyAdjust);
+        const input=document.querySelector(`[data-adjust-input="${i}"]`);
+        state.scores[i]+=Number(input.value)||0;
+        input.value=0;
+        openAdjust();renderBoard();sound();
+      }
+    };
+    $('resetBtn').onclick=()=>{if(confirm('Reset scores and reopen every square?'))startGame();};
+    $('finalBtn').onclick=startFinal;
+    $('lockFinalBtn').onclick=lockFinal;
+    $('revealFinalBtn').onclick=revealFinal;
+    $('finishFinalBtn').onclick=finishFinal;
+    $('rematchBtn').onclick=startGame;
+    $('newGameBtn').onclick=()=>{show('setupView');renderSetup();syncSetupMode();};
+    $('fullscreenBtn').onclick=toggleFullscreen;
+    $('soundBtn').onclick=()=>{
+      state ||= {};
+      state.soundOn=state.soundOn===false;
+      $('soundBtn').setAttribute('aria-pressed',state.soundOn);
+      $('soundBtn').innerHTML=`${state.soundOn?'🔊':'🔇'} <span>Sound</span>`;
+      if(state.soundOn)sound();
+    };
+
+    document.addEventListener('keydown',e=>{
+      if(e.target.matches('input,textarea,select')||$('setupView').hidden===false)return;
+      if(e.key.toLowerCase()==='f')toggleFullscreen();
+      if(e.key.toLowerCase()==='m')$('soundBtn').click();
+      if(!$('questionView').hidden&&e.code==='Space'){e.preventDefault();revealAnswer();}
+      if(state.mode==='classroom'&&!$('boardView').hidden&&(e.key==='ArrowLeft'||e.key==='ArrowRight')){
+        const delta=e.key==='ArrowRight'?1:-1;
+        state.activeTeam=(state.activeTeam+delta+data.teams.length)%data.teams.length;
+        renderBoard();
+      }
+    });
   }
   data=loadLocal();state={soundOn:true};renderSetup();wire();syncSetupMode();
 })();
