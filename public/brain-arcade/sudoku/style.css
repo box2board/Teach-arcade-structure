@@ -66,16 +66,20 @@
 .sudoku-layout {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 24px;
+  gap: 20px;
   align-items: start;
+  max-width: 980px;
+  margin: 0 auto;
 }
 
 .sudoku-board-wrap {
-  background: #f8fafc;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(124,58,237,.05), transparent 34%),
+    #f8fafc;
   border: 1px solid #e2e8f0;
-  border-radius: 16px;
+  border-radius: 20px;
   padding: 16px;
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 18px 42px rgba(15,23,42,.10);
 }
 
 .sudoku-status {
@@ -89,18 +93,21 @@
   display: grid;
   grid-template-columns: repeat(9, 1fr);
   gap: 0;
-  border: 2px solid #0f172a;
-  border-radius: 12px;
+  border: 3px solid #0f172a;
+  border-radius: 14px;
   overflow: hidden;
   background: #fff;
   aspect-ratio: 1 / 1;
+  width: min(100%, 620px);
+  margin: 0 auto;
+  box-shadow: 0 12px 28px rgba(15,23,42,.10);
 }
 
 .sudoku-cell {
   position: relative;
   border: 1px solid #e2e8f0;
   background: #ffffff;
-  font: 700 18px/1 Poppins, sans-serif;
+  font: 700 clamp(14px,3vw,20px)/1 Poppins, sans-serif;
   color: #0f172a;
   display: flex;
   align-items: center;
@@ -202,11 +209,15 @@
   border: 1px solid #cbd5e1;
   background: #fff;
   border-radius: 10px;
-  padding: 10px 0;
+  padding: 11px 0;
   font: 700 16px/1 Poppins, sans-serif;
   color: #0f172a;
   cursor: pointer;
+  box-shadow: 0 3px 0 #cbd5e1;
+  transition: transform .08s ease, box-shadow .08s ease, background .12s ease;
 }
+.sudoku-keypad .key:hover { background: #fff7ed; }
+.sudoku-keypad .key:active { transform: translateY(2px); box-shadow: 0 1px 0 #cbd5e1; }
 
 .sudoku-keypad .key.erase {
   grid-column: span 2;
@@ -217,7 +228,7 @@
 .sudoku-controls {
   background: #ffffff;
   border: 1px solid #e2e8f0;
-  border-radius: 16px;
+  border-radius: 18px;
   padding: 18px;
   box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
 }
@@ -344,7 +355,11 @@
 
 @media (min-width: 900px) {
   .sudoku-layout {
-    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    grid-template-columns: minmax(0, 1.25fr) minmax(270px, .75fr);
+  }
+  .sudoku-controls {
+    position: sticky;
+    top: 84px;
   }
 
   .sudoku-keypad {
