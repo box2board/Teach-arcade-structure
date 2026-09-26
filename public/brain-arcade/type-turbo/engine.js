@@ -79,8 +79,8 @@
       const pausedFor = now - this.run.pauseStartedAt;
       this.run.startTs += pausedFor;
       this.run.lastTick = now;
-      if (this.run.remainingMs != null) this.run.remainingMs += pausedFor;
-      this.run.targetDeadline += pausedFor;
+      // remainingMs is already frozen while paused; only move the per-target deadline.
+      if (Number.isFinite(this.run.targetDeadline)) this.run.targetDeadline += pausedFor;
       this.state = STATES.RUNNING;
       this.emit('onResume');
       this.loop();
@@ -170,8 +170,9 @@
       this.run.lastInputLen = 0;
       this.run.lastCorrectLen = 0;
       const [minMs, maxMs] = DIFFICULTY_WINDOWS[this.run.difficulty] || [3000, 5000];
-      const limit = Math.floor(minMs + Math.random() * (maxMs - minMs));
-      this.run.targetDeadline = performance.now() + limit;
+      const untimedTarget = this.run.mode === 'zen';
+      const limit = untimedTarget ? null : Math.floor(minMs + Math.random() * (maxMs - minMs));
+      this.run.targetDeadline = untimedTarget ? Infinity : performance.now() + limit;
       this.emit('onTargetNew', { targetText: next, timeLimitMs: limit });
     }
 
