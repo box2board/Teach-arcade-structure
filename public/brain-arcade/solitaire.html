@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Solitaire (Klondike) · Web Game</title>
-  <meta name="description" content="Play Klondike Solitaire in your browser. Drag-and-drop, tap-to-move (foundation-only), undo, and auto-move to foundations." />
+  <meta name="description" content="Play Klondike Solitaire in your browser with drag-and-drop, full tap-to-move controls, undo, hints, and auto-move to foundations." />
 
   <style>
     :root{
@@ -393,7 +393,7 @@
   </style>
   <link rel="canonical" href="https://teacharcade.com/brain-arcade/solitaire.html" />
   <meta property="og:title" content="Solitaire (Klondike) · Web Game" />
-  <meta property="og:description" content="Play Klondike Solitaire in your browser. Drag-and-drop, tap-to-move (foundation-only), undo, and auto-move to foundations." />
+  <meta property="og:description" content="Play Klondike Solitaire in your browser with drag-and-drop, full tap-to-move controls, undo, hints, and auto-move to foundations." />
   <meta property="og:url" content="https://teacharcade.com/brain-arcade/solitaire.html" />
   <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -408,7 +408,7 @@
     <header>
       <div class="brand">
         <h1>Solitaire (Klondike)</h1>
-        <small id="subtitle">Drag cards • Click to send to foundations • Undo • Draw 1</small>
+        <small id="subtitle">Drag cards • Tap mode available • Undo • Draw 1</small>
       </div>
       <div class="controls">
         <button id="newBtn">New Game</button>
@@ -624,7 +624,7 @@
   }
 
   function bumpScore(delta){
-    state.score += delta;
+    state.score = Math.max(0, state.score + delta);
     els.score.textContent = String(state.score);
   }
 
@@ -689,7 +689,7 @@
     els.modeLabel.textContent = (state.controlMode === "tap") ? "Tap" : "Drag";
     els.subtitle.textContent =
       (state.controlMode === "tap")
-        ? "Tap: foundation-only • Drag for tableau moves • Undo • Draw 1"
+        ? "Tap a card, then tap its destination • Undo • Draw 1"
         : "Drag cards • Click to send to foundations • Undo • Draw 1";
   }
 
@@ -698,7 +698,7 @@
     state.controlMode = (state.controlMode === "drag") ? "tap" : "drag";
     saveMode();
     syncModeUI();
-    toast(`Mode: ${state.controlMode === "tap" ? "Tap (foundation-only)" : "Drag"}`);
+    toast(`Mode: ${state.controlMode === "tap" ? "Tap" : "Drag"}`);
   }
 
   // =========================
@@ -796,7 +796,6 @@
       const t = top(state.tableau[col]);
       if (t){
         t.faceUp = true;
-        bumpScore(5);
         render(true);
         const el = document.querySelector(`[data-card-id="${t.id}"]`);
         if (el) { el.classList.add("flipIn"); setTimeout(() => el.classList.remove("flipIn"), 240); }
@@ -804,6 +803,8 @@
       }
     }
 
+    state.startTs = Date.now();
+    updateHUD();
     els.undoBtn.disabled = true;
     els.win.classList.remove("show");
     els.end.classList.remove("show");
@@ -868,7 +869,6 @@
     c.faceUp = true;
     state.waste.push(c);
     bumpMoves(1);
-    bumpScore(5);
     render();
   }
 
@@ -900,10 +900,8 @@
       }
     }
 
-    if (state.controlMode === "drag"){
-      for (let ti = 0; ti < 7; ti++){
-        if (canMoveToTableau(first, ti)) els.tableau[ti].classList.add("highlight");
-      }
+    for (let ti = 0; ti < 7; ti++){
+      if (canMoveToTableau(first, ti)) els.tableau[ti].classList.add("highlight");
     }
   }
 
@@ -1438,13 +1436,26 @@
     const cards = press.cards;
     press = null;
 
-    // Tap mode: foundation-only auto move
+    // Tap mode: select a card/stack, then tap a legal destination.
     if (state.controlMode === "tap"){
-      const did = foundationClickMoveOnly(fromRef, cards[0]);
-      if (!did){
-        setSelected(fromRef, cards);
-        setTimeout(() => { if (state.selected) clearSelected(); }, 700);
+      if (state.selected){
+        const sameSource =
+          state.selected.from.type === fromRef.type &&
+          state.selected.from.idx === fromRef.idx &&
+          state.selected.cards[0]?.id === cards[0]?.id;
+
+        if (sameSource){
+          clearSelected();
+          return;
+        }
+
+        if ((fromRef.type === "tableau" || fromRef.type === "foundation") && tryMoveSelectedTo(fromRef)){
+          return;
+        }
       }
+
+      const did = cards.length === 1 && foundationClickMoveOnly(fromRef, cards[0]);
+      if (!did) setSelected(fromRef, cards);
       return;
     }
 
@@ -1468,10 +1479,11 @@
     if (!ref) return;
 
     if (ref.type === "stock"){
+      clearSelected();
       drawFromStock();
       return;
     }
-    if (state.selected && ref.type === "foundation"){
+    if (state.selected && (ref.type === "foundation" || ref.type === "tableau")){
       tryMoveSelectedTo(ref);
     }
   }
