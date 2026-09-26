@@ -8,9 +8,9 @@
   <!-- ===========================
        SEO: Title + Description
   ============================ -->
-  <title>Brain Arcade | Logic, Puzzle & Thinking Games for Students and Adults</title>
-  <meta name="description" content="Brain Arcade by Teach Arcade is a free collection of skill-based thinking games—Sudoku, Block Logic, Crossword, Word Search, and Solitaire—designed to sharpen logic, focus, memory, and strategy without feeling like school." />
-  <meta name="keywords" content="brain games, logic games, puzzle games, sudoku, crossword, word search, solitaire, classroom brain breaks, critical thinking games, focus games, Teach Arcade" />
+  <title>Brain Arcade | Free Browser Games, Puzzles & Arcade Challenges</title>
+  <meta name="description" content="Play free browser games at Teach Arcade. Jump into arcade challenges, puzzles, strategy classics, word games, memory games, and quick-play favorites—no account required." />
+  <meta name="keywords" content="brain games, logic games, puzzle games, sudoku, crossword, word search, solitaire, browser games, arcade games, strategy games, word games, memory games, Teach Arcade" />
   <link rel="canonical" href="https://teacharcade.com/brain-arcade/" />
 
   <!-- Indexing -->
@@ -26,15 +26,15 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Teach Arcade" />
-  <meta property="og:title" content="Brain Arcade | Logic, Puzzle & Thinking Games" />
-  <meta property="og:description" content="Play free skill-based thinking games—Sudoku, Block Logic, Crossword, Word Search, and Solitaire—to build logic, focus, memory, and strategy." />
+  <meta property="og:title" content="Brain Arcade | Free Games to Play" />
+  <meta property="og:description" content="Pick a game, chase a score, and have fun with free arcade, puzzle, strategy, word, and memory games." />
   <meta property="og:url" content="https://teacharcade.com/brain-arcade/" />
   <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Brain Arcade | Logic, Puzzle & Thinking Games" />
-  <meta name="twitter:description" content="Free brain games that sharpen logic, focus, memory, and strategy—without feeling like school." />
+  <meta name="twitter:title" content="Brain Arcade | Free Games to Play" />
+  <meta name="twitter:description" content="Pick a game. Chase a score. Have fun. Free browser games from Teach Arcade." />
   <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
 
   <style>
@@ -50,21 +50,52 @@
     .hero-chips{ display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:10px; }
     .chip{
       font:700 12px/1 Poppins,sans-serif;
-      padding:8px 12px; border-radius:999px;
+      padding:9px 13px; border-radius:999px;
       background:#f1f5f9; border:1px solid #e2e8f0; color:#334155;
+      cursor:pointer;
     }
+    .chip.active{ background:#0f172a; border-color:#0f172a; color:#fff; }
+    .game-card[hidden]{ display:none; }
+    .featured-wrap{ max-width:1100px; margin:18px auto 4px; padding:0 16px; }
+    .featured-wrap h2{ margin:0 0 4px; font:800 22px/1.2 Poppins,sans-serif; color:#0f172a; }
+    .featured-wrap p{ margin:0; font:400 14px/1.5 Nunito,sans-serif; color:#64748b; }
+    .featured-grid{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; margin-top:12px; }
+    .featured-card{ display:block; padding:16px; border-radius:14px; background:#0f172a; color:#fff; text-decoration:none; min-height:130px; }
+    .featured-card strong{ display:block; font:800 16px/1.2 Poppins,sans-serif; margin:8px 0 5px; }
+    .featured-card span{ font:400 13px/1.4 Nunito,sans-serif; color:#cbd5e1; }
+    .featured-card .feature-icon{ font-size:28px; }
+    @media(max-width:800px){ .featured-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
+    @media(max-width:480px){ .featured-grid{ grid-template-columns:1fr; } }
 
     .section-wrap{ max-width:1100px; margin:0 auto; padding:0 16px 40px; }
     .grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px; margin-top:18px; }
 
     .game-card{
       display:flex; flex-direction:column; background:#fff;
-      border:1px solid #e2e8f0; border-radius:14px; padding:18px;
+      border:1px solid #e2e8f0; border-radius:16px; padding:0;
       text-decoration:none; color:#0f172a;
       box-shadow:0 2px 6px rgba(0,0,0,.05);
       transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
-      position:relative; overflow:hidden; min-height:210px;
+      position:relative; overflow:hidden; min-height:230px;
     }
+    .game-card::before{
+      content:""; display:block; height:104px;
+      background:linear-gradient(135deg,#0f172a,#334155);
+      border-bottom:1px solid #e2e8f0;
+    }
+    .game-card .icon{
+      position:absolute; top:28px; left:18px; z-index:1;
+      margin:0; font-size:44px;
+    }
+    .game-card .game-title{ padding:15px 16px 0; }
+    .game-card .game-desc{ padding:0 16px; }
+    .game-card .meta{ padding:0 16px 16px; }
+    .game-card .card-cta{ margin:0 16px 12px; align-self:flex-start; }
+    .game-card[data-category~="arcade"]::before{ background:linear-gradient(135deg,#312e81,#7c3aed); }
+    .game-card[data-category~="memory"]::before{ background:linear-gradient(135deg,#164e63,#0f766e); }
+    .game-card[data-category~="word"]::before{ background:linear-gradient(135deg,#7c2d12,#c2410c); }
+    .game-card[data-category~="strategy"]::before{ background:linear-gradient(135deg,#1e3a8a,#0369a1); }
+    .game-card[data-category~="puzzle"]::before{ background:linear-gradient(135deg,#3f3f46,#52525b); }
     .game-card:hover{
       transform:translateY(-3px);
       box-shadow:0 10px 20px rgba(0,0,0,.08);
@@ -81,9 +112,9 @@
       color:#5b21b6; text-transform:uppercase;
     }
 
-    .icon{ font-size:40px; margin-bottom:10px; }
+     .icon{ font-size:40px; margin-bottom:10px; }
     .game-title{ margin:0 0 6px; font:700 18px/1.2 Poppins,sans-serif; }
-    .game-desc{ margin:0 0 12px; font:400 14px/1.55 Nunito,sans-serif; color:#475569; }
+    .game-desc{ margin:0 0 12px; font:400 14px/1.45 Nunito,sans-serif; color:#475569; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
 
     .meta{ margin-top:auto; display:flex; gap:10px; flex-wrap:wrap; }
     .tag{
@@ -206,7 +237,7 @@
     "@type":"CollectionPage",
     "name":"Brain Arcade",
     "url":"https://teacharcade.com/brain-arcade/",
-    "description":"A free collection of skill-based thinking games—Sudoku, Block Logic, Crossword, Word Search, and Solitaire—designed to sharpen logic, focus, memory, and strategy.",
+    "description":"A free collection of browser games including arcade challenges, puzzles, strategy classics, word games, memory games, and quick-play favorites.",
     "isPartOf":{
       "@type":"WebSite",
       "name":"Teach Arcade",
@@ -255,48 +286,36 @@
       {
         "@type":"ListItem",
         "position":6,
-        "name":"Apprentice Restorer",
-        "url":"https://teacharcade.com/brain-arcade/apprentice-restorer/"
-      },
-      {
-        "@type":"ListItem",
-        "position":7,
         "name":"Brain Crush",
         "url":"https://teacharcade.com/brain-arcade/brain-crush/"
       },
       {
         "@type":"ListItem",
-        "position":8,
+        "position":7,
         "name":"Checkers",
         "url":"https://teacharcade.com/brain-arcade/checkers/"
       },
       {
         "@type":"ListItem",
-        "position":9,
+        "position":8,
         "name":"Sequence Breaker",
         "url":"https://teacharcade.com/brain-arcade/sequence-breaker/"
       },
       {
         "@type":"ListItem",
-        "position":10,
-        "name":"3D Block Builder",
-        "url":"https://teacharcade.com/brain-arcade/block-builder/"
-      },
-      {
-        "@type":"ListItem",
-        "position":11,
+        "position":9,
         "name":"Memory Match",
         "url":"https://teacharcade.com/brain-arcade/memory-match/"
       },
       {
         "@type":"ListItem",
-        "position":12,
+        "position":10,
         "name":"Type Turbo",
         "url":"https://teacharcade.com/brain-arcade/type-turbo/"
       },
       {
         "@type":"ListItem",
-        "position":13,
+        "position":11,
         "name":"Memory Heist",
         "url":"https://teacharcade.com/brain-arcade/memory-heist/"
       }
@@ -312,25 +331,26 @@
   <main class="container">
     <section class="page-hero">
       <h1>Brain Arcade</h1>
-      <p>
-        Welcome to <strong>Brain Arcade</strong>—a growing collection of free, skill-based thinking games built for students,
-        teachers, and anyone who loves a good puzzle. These games are designed as quick brain breaks or longer challenge sessions,
-        strengthening <strong>logic</strong>, <strong>focus</strong>, <strong>pattern recognition</strong>, and <strong>strategic planning</strong>.
-        Try strategy classics like Chess and Checkers alongside quick logic warm-ups, all without feeling like a worksheet.
-      </p>
-
-      <div class="hero-chips" aria-hidden="true">
-        <span class="chip">Critical Thinking</span>
-        <span class="chip">Logic</span>
-        <span class="chip">Focus</span>
-        <span class="chip">Strategy</span>
-        <span class="chip">Patterns</span>
-        <span class="chip">Brain Breaks</span>
+      <p><strong>Pick a game. Chase a score. Have fun.</strong><br>Free games you can play right in your browser—no account, setup, or assignment required.</p>
+      <div class="hero-chips" aria-label="Filter games by category">
+        <button class="chip active" type="button" data-filter="all">All Games</button>
+        <button class="chip" type="button" data-filter="arcade">Arcade</button>
+        <button class="chip" type="button" data-filter="puzzle">Puzzle</button>
+        <button class="chip" type="button" data-filter="strategy">Strategy</button>
+        <button class="chip" type="button" data-filter="word">Word</button>
+        <button class="chip" type="button" data-filter="memory">Memory</button>
       </div>
+      <div class="top-actions"><a class="btn" href="#games">Browse Games</a><a class="btn secondary" href="/">Back to Home</a></div>
+    </section>
 
-      <div class="top-actions">
-        <a class="btn" href="/brain-arcade/solitaire.html">Play Solitaire</a>
-        <a class="btn secondary" href="/">Back to Home</a>
+    <section class="featured-wrap" aria-label="Popular Brain Arcade games">
+      <h2>Popular Games</h2>
+      <p>Jump into four familiar favorites. We’ll update this section with real play data as Brain Arcade grows.</p>
+      <div class="featured-grid">
+        <a class="featured-card" href="/brain-arcade/solitaire.html"><div class="feature-icon">🂡</div><strong>Solitaire</strong><span>Play the classic Klondike card game and clear the table.</span></a>
+        <a class="featured-card" href="/brain-arcade/chess/"><div class="feature-icon">♟️</div><strong>Chess</strong><span>Plan your attack, protect your king, and outthink your opponent.</span></a>
+        <a class="featured-card" href="/brain-arcade/sudoku/index.html"><div class="feature-icon">🔢</div><strong>Sudoku</strong><span>Choose a difficulty and solve the grid using logic alone.</span></a>
+        <a class="featured-card" href="/brain-arcade/word-search/index.html"><div class="feature-icon">🔎</div><strong>Word Search</strong><span>Scan the grid and find every hidden word.</span></a>
       </div>
     </section>
 
@@ -340,26 +360,10 @@
     </div>
 
     <div class="section-wrap">
-      <div class="grid">
-
-        <!-- Apprentice Restorer -->
-        <a class="game-card" href="/brain-arcade/apprentice-restorer/" aria-label="Explore Apprentice Restorer">
-          <div class="badge">Flagship</div>
-          <div class="icon" aria-hidden="true">🧭</div>
-          <h3 class="game-title">Apprentice Restorer</h3>
-          <p class="game-desc">
-            A Zelda-like science adventure where you restore systems through experimentation. Explore five regions,
-            discover how forces, energy, light, and electricity behave, and unlock notebook insights after you figure it out.
-          </p>
-          <div class="meta" aria-hidden="true">
-            <span class="tag">Exploration</span>
-            <span class="tag">Science</span>
-            <span class="tag">Flagship</span>
-          </div>
-        </a>
+      <div class="grid" id="games">
 
         <!-- Solitaire -->
-        <a class="game-card" href="/brain-arcade/solitaire.html" aria-label="Play Solitaire (Klondike)">
+        <a class="game-card" data-category="strategy" href="/brain-arcade/solitaire.html" aria-label="Play Solitaire (Klondike)">
           <div class="badge">Featured</div>
           <div class="icon" aria-hidden="true">🂡</div>
           <h3 class="game-title">Solitaire (Klondike)</h3>
@@ -375,7 +379,7 @@
         </a>
 
         <!-- Chess -->
-        <a class="game-card" href="/brain-arcade/chess/" aria-label="Play Chess">
+        <a class="game-card" data-category="strategy" href="/brain-arcade/chess/" aria-label="Play Chess">
           <div class="badge">New</div>
           <div class="icon" aria-hidden="true">♟️</div>
           <h3 class="game-title">Chess</h3>
@@ -391,12 +395,12 @@
         </a>
 
         <!-- Checkers -->
-        <a class="game-card" href="/brain-arcade/checkers/" aria-label="Play Checkers">
+        <a class="game-card" data-category="strategy" href="/brain-arcade/checkers/" aria-label="Play Checkers">
           <div class="badge">New</div>
           <div class="icon" aria-hidden="true">🏁</div>
           <h3 class="game-title">Checkers</h3>
           <p class="game-desc">
-            Classic strategy with captures, multi-jumps, and kinging. Great for planning and logic.
+            Capture, multi-jump, reach the back row, and crown your kings.
           </p>
           <div class="meta" aria-hidden="true">
             <span class="tag">Strategy</span>
@@ -406,7 +410,7 @@
         </a>
 
         <!-- Sudoku -->
-        <a class="game-card" href="/brain-arcade/sudoku/index.html" aria-label="Play Sudoku">
+        <a class="game-card" data-category="puzzle strategy" href="/brain-arcade/sudoku/index.html" aria-label="Play Sudoku">
           <div class="badge">New</div>
           <div class="icon" aria-hidden="true">🔢</div>
           <h3 class="game-title">Sudoku</h3>
@@ -422,7 +426,7 @@
         </a>
 
         <!-- Block Logic -->
-        <a class="game-card" href="/brain-arcade/block-logic/index.html" aria-label="Play Block Logic">
+        <a class="game-card" data-category="puzzle strategy" href="/brain-arcade/block-logic/index.html" aria-label="Play Block Logic">
           <div class="badge">New</div>
           <div class="icon" aria-hidden="true">🧱</div>
           <h3 class="game-title">Block Logic</h3>
@@ -438,7 +442,7 @@
         </a>
 
         <!-- Crossword -->
-        <a class="game-card" href="/brain-arcade/crossword.html" aria-label="Play Crossword">
+        <a class="game-card" data-category="word puzzle" href="/brain-arcade/crossword.html" aria-label="Play Crossword">
           <div class="badge">New</div>
           <div class="icon" aria-hidden="true">🧩</div>
           <h3 class="game-title">Crossword</h3>
@@ -454,7 +458,7 @@
         </a>
 
         <!-- Word Search -->
-        <a class="game-card" href="/brain-arcade/word-search/index.html" aria-label="Play Word Search">
+        <a class="game-card" data-category="word puzzle" href="/brain-arcade/word-search/index.html" aria-label="Play Word Search">
           <div class="badge">New</div>
           <div class="icon" aria-hidden="true">🔎</div>
           <h3 class="game-title">Word Search</h3>
@@ -470,7 +474,7 @@
         </a>
 
         <!-- Word Grid -->
-        <a class="game-card" href="/brain-arcade/word-grid/" aria-label="Play Word Grid">
+        <a class="game-card" data-category="word arcade" href="/brain-arcade/word-grid/" aria-label="Play Word Grid">
           <div class="badge">New</div>
           <div class="icon" aria-hidden="true">🔤</div>
           <h3 class="game-title">Word Grid</h3>
@@ -488,7 +492,7 @@
 
 
         <!-- Emoji Case Files -->
-        <a class="game-card" href="/brain-arcade/emoji-case-files/" aria-label="Play Emoji Case Files">
+        <a class="game-card" data-category="word puzzle" href="/brain-arcade/emoji-case-files/" aria-label="Play Emoji Case Files">
           <div class="badge">New</div>
           <div class="icon" aria-hidden="true">🕵️</div>
           <h3 class="game-title">Emoji Case Files</h3>
@@ -503,7 +507,7 @@
           </div>
         </a>
         <!-- Type Turbo -->
-        <a class="game-card" href="/brain-arcade/type-turbo/" aria-label="Play Type Turbo">
+        <a class="game-card" data-category="arcade" href="/brain-arcade/type-turbo/" aria-label="Play Type Turbo">
           <div class="badge">New</div>
           <div class="icon" aria-hidden="true">⌨️</div>
           <h3 class="game-title">Type Turbo</h3>
@@ -519,7 +523,7 @@
         </a>
 
         <!-- Memory Match -->
-        <a class="game-card" href="/brain-arcade/memory-match/" aria-label="Play Memory Match">
+        <a class="game-card" data-category="memory puzzle" href="/brain-arcade/memory-match/" aria-label="Play Memory Match">
           <div class="badge">New</div>
           <div class="icon" aria-hidden="true">🧠</div>
           <h3 class="game-title">Memory Match</h3>
@@ -536,7 +540,7 @@
         </a>
 
         <!-- Memory Heist -->
-        <a class="game-card" href="/brain-arcade/memory-heist/" aria-label="Play Memory Heist">
+        <a class="game-card" data-category="memory arcade" href="/brain-arcade/memory-heist/" aria-label="Play Memory Heist">
           <div class="badge">New</div>
           <div class="icon" aria-hidden="true">🔐</div>
           <h3 class="game-title">Memory Heist</h3>
@@ -553,7 +557,7 @@
         </a>
 
         <!-- Brain Crush -->
-        <a class="game-card" href="/brain-arcade/brain-crush/" aria-label="Play Brain Crush">
+        <a class="game-card" data-category="arcade puzzle" href="/brain-arcade/brain-crush/" aria-label="Play Brain Crush">
           <div class="badge">New</div>
           <div class="icon" aria-hidden="true">💎</div>
           <h3 class="game-title">Brain Crush</h3>
@@ -569,21 +573,8 @@
           </div>
         </a>
 
-        <!-- 3D Block Builder -->
-        <a class="game-card" href="/brain-arcade/block-builder/" aria-label="Open 3D Block Builder">
-          <span class="badge">New</span>
-          <div class="icon" aria-hidden="true">🧱</div>
-          <h3 class="game-title">3D Block Builder</h3>
-          <p class="game-desc">Build 3D classroom models with drag-place blocks, rotation, undo/redo, local save/load, and export tools.</p>
-          <div class="meta">
-            <span class="tag">Creative Sandbox</span>
-            <span class="tag">Teacher Tool</span>
-            <span class="card-cta">Open Builder</span>
-          </div>
-        </a>
-
         <!-- Sequence Breaker -->
-        <a class="game-card" href="/brain-arcade/sequence-breaker/" aria-label="Play Sequence Breaker">
+        <a class="game-card" data-category="arcade puzzle" href="/brain-arcade/sequence-breaker/" aria-label="Play Sequence Breaker">
           <div class="badge">New</div>
           <div class="icon" aria-hidden="true">
             <svg width="40" height="40" viewBox="0 0 40 40" role="img" aria-label="Sequence Breaker icon">
@@ -607,7 +598,7 @@
         </a>
 
         <!-- Slide & Snap -->
-        <a class="game-card" href="/brain-arcade/slide-and-snap/" aria-label="Play Slide &amp; Snap">
+        <a class="game-card" data-category="puzzle" href="/brain-arcade/slide-and-snap/" aria-label="Play Slide &amp; Snap">
           <div class="badge">New</div>
           <div class="icon" aria-hidden="true">🧩</div>
           <h3 class="game-title">Slide &amp; Snap</h3>
@@ -624,12 +615,12 @@
         </a>
 
         <!-- Jigsaw Puzzle -->
-        <a class="game-card" href="/brain-arcade/jigsaw-puzzle/" aria-label="Explore Jigsaw Puzzle (Coming Soon)">
+        <a class="game-card" data-category="puzzle" href="/brain-arcade/jigsaw-puzzle/" aria-label="Explore Jigsaw Puzzle (Coming Soon)">
           <div class="badge">Coming Soon</div>
           <div class="icon" aria-hidden="true">🧩</div>
           <h3 class="game-title">Jigsaw Puzzle</h3>
           <p class="game-desc">
-            Classic jigsaw puzzling for focus and spatial thinking. A calm, classroom-friendly experience is on the way.
+            Classic jigsaw puzzling for focus and spatial thinking. A calm, satisfying spatial puzzle is on the way.
           </p>
           <div class="meta" aria-hidden="true">
             <span class="tag">Coming Soon</span>
@@ -639,64 +630,25 @@
         </a>
 
         <!-- Coming Soon -->
-        <a class="game-card" href="#" aria-label="More brain games coming soon">
-          <div class="icon" aria-hidden="true">✨</div>
-          <h3 class="game-title">More Brain Games</h3>
-          <p class="game-desc">
-            Coming soon—more logic, memory, and problem-solving games are on the way. Brain Arcade will keep growing with
-            new challenges designed to be fun, fast, and classroom-friendly.
-          </p>
-          <div class="meta" aria-hidden="true">
-            <span class="tag">Coming Soon</span>
-            <span class="tag">Skill-Based</span>
-          </div>
-        </a>
+        
 
       </div>
 
-      <div class="note">
-        <strong>Note:</strong> Brain Arcade games are designed to strengthen general thinking skills (logic, focus, strategy)
-        and may not be aligned to a specific curriculum or standard.
-      </div>
+      <div class="note"><strong>Just play:</strong> Brain Arcade is Teach Arcade’s free-play game room. Pick something that looks fun and jump in.</div>
 
       <!-- Ad slot (mid page) -->
       <div class="ad-slot" aria-label="Advertisement placeholder">
         Ad Slot (Mid Page)
       </div>
 
-      <!-- Long-form SEO content -->
+      <!-- Concise indexable content -->
       <section class="seo-block" aria-label="About Brain Arcade">
-        <h2>What is Brain Arcade?</h2>
-        <p>
-          <strong>Brain Arcade</strong> is Teach Arcade’s hub for classic and modern puzzle games. Whether you’re a student who
-          wants a fun brain break, a teacher looking for a classroom-friendly station activity, or an adult who enjoys
-          logic challenges, these games are built to be easy to start and rewarding to master.
-        </p>
-
-        <h3>Why teachers use Brain Arcade</h3>
-        <ul>
-          <li><strong>Fast startup:</strong> No accounts required—just click and play.</li>
-          <li><strong>Skill-first design:</strong> Games emphasize logic, focus, and strategy rather than trivia or memorization.</li>
-          <li><strong>Classroom-friendly:</strong> Simple rules, minimal distractions, and clear learning value.</li>
-          <li><strong>Great for routines:</strong> Perfect for bell ringers, stations, early finishers, or brain breaks.</li>
-        </ul>
-
-        <h3>Thinking skills these games support</h3>
-        <ul>
-          <li><strong>Logic & deduction:</strong> Sudoku and crosswords reward careful reasoning.</li>
-          <li><strong>Spatial planning:</strong> Block Logic trains visual organization and foresight.</li>
-          <li><strong>Attention & persistence:</strong> Word Search builds scanning, focus, and follow-through.</li>
-          <li><strong>Strategic decision-making:</strong> Solitaire helps players think several moves ahead.</li>
-        </ul>
-
-        <h3>More games are coming</h3>
-        <p>
-          Brain Arcade is a growing library. Over time, you’ll see more classic games, daily puzzle challenges, and original
-          Teach Arcade-style thinking games that feel like an arcade—but strengthen real skills.
-        </p>
+        <h2>Free browser games for quick play</h2>
+        <p>Brain Arcade brings together free puzzles, strategy classics, word games, memory challenges, typing games, and original Teach Arcade titles. Everything runs in the browser with no account required, making it easy to play at school or at home.</p>
+        <p>Try a quick round when you have a few minutes, settle into a classic like Chess or Solitaire, or chase a new high score in games such as Brain Crush, Memory Heist, Sequence Breaker, and Type Turbo.</p>
       </section>
 
-      <!-- FAQ (helps SEO + AdSense content depth) -->
+      <!-- FAQ -->
       <section class="faq" aria-label="Frequently asked questions">
         <h2>Brain Arcade FAQ</h2>
 
@@ -711,13 +663,13 @@
         </details>
 
         <details>
-          <summary>Are these games classroom-friendly?</summary>
-          <p>Yes. Brain Arcade is designed to work well on school devices and as a quick station, bell-ringer, or brain-break option.</p>
+          <summary>What devices can I use?</summary>
+          <p>Brain Arcade is built for modern browsers and includes games that work with touch, mouse, or keyboard controls depending on the title.</p>
         </details>
 
         <details>
-          <summary>What age levels work best?</summary>
-          <p>Most games work for upper elementary through adults. Teachers often use them as differentiated activities because difficulty can be adjusted through gameplay.</p>
+          <summary>Can I play for just a few minutes?</summary>
+          <p>Yes. Many Brain Arcade games are designed around short rounds, while classics like Chess and Solitaire also support longer play sessions.</p>
         </details>
       </section>
 
@@ -727,42 +679,6 @@
       </div>
 
     </div>
-  <section class="ta-value">
-  <h2>How to Use This in Class</h2>
-  <p><strong>What this tool does:</strong> This Brain Arcade activity is designed to turn content practice into a guided experience students can navigate with confidence. The layout keeps directions visible and reduces distraction so students can concentrate on the Brain Arcade objective. It provides a focused space for students to engage with Brain Arcade tasks, make choices, and see immediate feedback. Because the activity is self-contained, you can run it on a projector, in stations, or as an independent practice option.</p>
-  <p>Launch the Brain Arcade activity after direct instruction as a practice block where students apply key terms and steps. After the session, debrief with a few student examples so the class connects the activity to the lesson goal. For accountability, ask students to complete a short exit ticket tied to the same Brain Arcade skill they practiced.</p>
-  <h3>Quick Classroom Ideas</h3>
-  <ul>
-    <li>Whole-class projection for guided practice</li><li>Independent practice during workshop time</li><li>Review day competition with team scoring</li><li>Exit ticket tie-in after the session</li><li>Warm-up challenge to activate prior knowledge</li>
-  </ul>
-  <h3>Skills Students Practice</h3>
-  <ul>
-    <li>Collaboration and peer discussion</li><li>Reflecting on mistakes and adjustments</li><li>Academic language usage</li><li>Goal setting and self-monitoring</li><li>Evidence-based explanations</li><li>Time management during practice</li><li>Content vocabulary and key terms</li><li>Critical thinking and reasoning</li>
-  </ul>
-  <h3>Suggested Grade Levels &amp; Timing</h3>
-  <p>Brain Arcade fits grades 4–10 with easy adjustments. Plan 10–25 minutes of active use plus a 5–10 minute reflection. Differentiate by pairing students, providing sentence starters, or letting advanced learners set a challenge goal.</p>
-  <h3>FAQ</h3>
-  <details>
-    <summary>Do students need accounts?</summary>
-    <p>No. The Brain Arcade activity runs directly in the browser with no logins required.</p>
-  </details>
-  <details>
-    <summary>How long should a session last?</summary>
-    <p>Most classes use Brain Arcade for 10–20 minutes, with a quick debrief afterward.</p>
-  </details>
-  <details>
-    <summary>Can I use this with limited devices?</summary>
-    <p>Yes. Brain Arcade works well in stations, partner play, or whole-class projection.</p>
-  </details>
-  <details>
-    <summary>Is it aligned to standards?</summary>
-    <p>The Brain Arcade focus supports common skills such as analysis, reasoning, and content recall.</p>
-  </details>
-  <details>
-    <summary>What if students finish early?</summary>
-    <p>Have early finishers replay Brain Arcade with a new goal or write a short summary of strategies used.</p>
-  </details>
-</section>
 </main>
 
   <footer>
@@ -770,5 +686,19 @@
     <a href="/privacy.html">Privacy</a> •
     <a href="/terms.html">Terms</a>
   </footer>
+  <script>
+    (() => {
+      const buttons = document.querySelectorAll('[data-filter]');
+      const cards = document.querySelectorAll('#games .game-card[data-category]');
+      buttons.forEach(button => button.addEventListener('click', () => {
+        const filter = button.dataset.filter;
+        buttons.forEach(item => item.classList.toggle('active', item === button));
+        cards.forEach(card => {
+          const categories = card.dataset.category.split(' ');
+          card.hidden = filter !== 'all' && !categories.includes(filter);
+        });
+      }));
+    })();
+  </script>
 </body>
 </html>
