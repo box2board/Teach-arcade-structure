@@ -491,23 +491,30 @@
   }
 
   function buildKeyboard() {
-    const keys = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+    const rows = ["QWERTYUIOP", "ASDFGHJKL", "ZXCVBNM"];
     keyboardEl.innerHTML = "";
-    keys.forEach((letter) => {
-      const button = document.createElement("button");
-      button.type = "button";
-      button.className = "cw-key";
-      button.textContent = letter;
-      button.dataset.key = letter;
-      keyboardEl.appendChild(button);
+    rows.forEach((row, rowIndex) => {
+      const rowEl = document.createElement("div");
+      rowEl.className = `cw-key-row row-${rowIndex + 1}`;
+      row.split("").forEach((letter) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "cw-key";
+        button.textContent = letter;
+        button.dataset.key = letter;
+        rowEl.appendChild(button);
+      });
+      if (rowIndex === 2) {
+        const erase = document.createElement("button");
+        erase.type = "button";
+        erase.className = "cw-key wide";
+        erase.textContent = "⌫";
+        erase.dataset.key = "Backspace";
+        erase.setAttribute("aria-label", "Backspace");
+        rowEl.appendChild(erase);
+      }
+      keyboardEl.appendChild(rowEl);
     });
-    const erase = document.createElement("button");
-    erase.type = "button";
-    erase.className = "cw-key wide";
-    erase.textContent = "⌫";
-    erase.dataset.key = "Backspace";
-    erase.setAttribute("aria-label", "Backspace");
-    keyboardEl.appendChild(erase);
   }
 
   boardEl.addEventListener("click", (event) => {
