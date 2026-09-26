@@ -60,10 +60,12 @@
     .featured-wrap h2{ margin:0 0 4px; font:800 22px/1.2 Poppins,sans-serif; color:#0f172a; }
     .featured-wrap p{ margin:0; font:400 14px/1.5 Nunito,sans-serif; color:#64748b; }
     .featured-grid{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; margin-top:12px; }
-    .featured-card{ display:block; padding:16px; border-radius:14px; background:#0f172a; color:#fff; text-decoration:none; min-height:130px; }
+    .featured-card{ display:block; padding:16px; border-radius:14px; background:linear-gradient(145deg,#0f172a,#1e293b); color:#fff; text-decoration:none; min-height:130px; border:1px solid rgba(255,255,255,.06); box-shadow:0 8px 20px rgba(15,23,42,.12); transition:transform .14s ease, box-shadow .14s ease, border-color .14s ease; }
     .featured-card strong{ display:block; font:800 16px/1.2 Poppins,sans-serif; margin:8px 0 5px; }
     .featured-card span{ font:400 13px/1.4 Nunito,sans-serif; color:#cbd5e1; }
     .featured-card .feature-icon{ font-size:28px; }
+    .featured-card:hover{ transform:translateY(-3px); box-shadow:0 14px 26px rgba(15,23,42,.18); border-color:rgba(96,165,250,.35); }
+    .featured-card:focus-visible,.game-card:focus-visible,.chip:focus-visible,.btn:focus-visible{ outline:3px solid rgba(37,99,235,.35); outline-offset:3px; }
     @media(max-width:800px){ .featured-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
     @media(max-width:480px){ .featured-grid{ grid-template-columns:1fr; } }
 
@@ -101,6 +103,7 @@
       box-shadow:0 10px 20px rgba(0,0,0,.08);
       border-color:#cbd5e1;
     }
+    .game-card:hover .card-cta{ background:#1d4ed8; }
 
     .badge{
       position:absolute; top:12px; right:12px;
@@ -298,15 +301,13 @@
       <div class="featured-grid">
         <a class="featured-card" href="/brain-arcade/solitaire.html"><div class="feature-icon">🂡</div><strong>Solitaire</strong><span>Play the classic Klondike card game and clear the table.</span></a>
         <a class="featured-card" href="/brain-arcade/chess/"><div class="feature-icon">♟️</div><strong>Chess</strong><span>Plan your attack, protect your king, and outthink your opponent.</span></a>
-        <a class="featured-card" href="/brain-arcade/sudoku/index.html"><div class="feature-icon">🔢</div><strong>Sudoku</strong><span>Choose a difficulty and solve the grid using logic alone.</span></a>
-        <a class="featured-card" href="/brain-arcade/word-search/index.html"><div class="feature-icon">🔎</div><strong>Word Search</strong><span>Scan the grid and find every hidden word.</span></a>
+        <a class="featured-card" href="/brain-arcade/sudoku/"><div class="feature-icon">🔢</div><strong>Sudoku</strong><span>Choose a difficulty and solve the grid using logic alone.</span></a>
+        <a class="featured-card" href="/brain-arcade/word-search/"><div class="feature-icon">🔎</div><strong>Word Search</strong><span>Scan the grid and find every hidden word.</span></a>
       </div>
     </section>
 
     <!-- Ad slot (top of content) -->
-    <div class="ad-slot" aria-label="Advertisement placeholder">
-      Ad Slot (Top Banner)
-    </div>
+    <div class="ad-slot ad-slot-empty" aria-hidden="true" hidden></div>
 
     <div class="section-wrap">
       <div class="grid" id="games">
@@ -320,6 +321,7 @@
             The classic card challenge—build foundations by suit, uncover hidden cards, and plan several moves ahead.
             Great for strategy, patience, and decision-making.
           </p>
+          <span class="card-cta" aria-hidden="true">Play</span>
           <div class="meta" aria-hidden="true">
             <span class="tag">Single Player</span>
             <span class="tag">Strategy</span>
@@ -336,6 +338,7 @@
             The timeless strategy showdown—plan attacks, protect your king, and think several moves ahead.
             Perfect for logic, focus, and long-term planning.
           </p>
+          <span class="card-cta" aria-hidden="true">Play</span>
           <div class="meta" aria-hidden="true">
             <span class="tag">Strategy</span>
             <span class="tag">Logic</span>
@@ -351,6 +354,7 @@
           <p class="game-desc">
             Capture, multi-jump, reach the back row, and crown your kings.
           </p>
+          <span class="card-cta" aria-hidden="true">Play</span>
           <div class="meta" aria-hidden="true">
             <span class="tag">Strategy</span>
             <span class="tag">Logic</span>
@@ -359,7 +363,7 @@
         </a>
 
         <!-- Sudoku -->
-        <a class="game-card" data-category="puzzle strategy" href="/brain-arcade/sudoku/index.html" aria-label="Play Sudoku">
+        <a class="game-card" data-category="puzzle strategy" href="/brain-arcade/sudoku/" aria-label="Play Sudoku">
           <div class="badge">New</div>
           <div class="icon" aria-hidden="true">🔢</div>
           <h3 class="game-title">Sudoku</h3>
@@ -367,6 +371,7 @@
             Fill the grid using logic alone. Each row, column, and box must contain the numbers 1–9 without repeats.
             A perfect focus game that rewards careful thinking over speed.
           </p>
+          <span class="card-cta" aria-hidden="true">Play</span>
           <div class="meta" aria-hidden="true">
             <span class="tag">Logic</span>
             <span class="tag">Patterns</span>
@@ -375,7 +380,7 @@
         </a>
 
         <!-- Block Logic -->
-        <a class="game-card" data-category="puzzle strategy" href="/brain-arcade/block-logic/index.html" aria-label="Play Block Logic">
+        <a class="game-card" data-category="puzzle strategy" href="/brain-arcade/block-logic/" aria-label="Play Block Logic">
           <div class="badge">New</div>
           <div class="icon" aria-hidden="true">🧱</div>
           <h3 class="game-title">Block Logic</h3>
@@ -383,6 +388,7 @@
             Drag and place shapes on a 10×10 grid to clear rows and columns. Think ahead to avoid dead ends and keep
             your board flexible. A spatial reasoning puzzle that’s easy to learn and hard to put down.
           </p>
+          <span class="card-cta" aria-hidden="true">Play</span>
           <div class="meta" aria-hidden="true">
             <span class="tag">Spatial</span>
             <span class="tag">Strategy</span>
@@ -398,6 +404,7 @@
           <p class="game-desc">
             Follow the clues, work the crossings, and finish a fresh mini crossword. Play random puzzles or return for the daily challenge.
           </p>
+          <span class="card-cta" aria-hidden="true">Play</span>
           <div class="meta" aria-hidden="true">
             <span class="tag">Word Game</span>
             <span class="tag">Clues</span>
@@ -406,7 +413,7 @@
         </a>
 
         <!-- Word Search -->
-        <a class="game-card" data-category="word puzzle" href="/brain-arcade/word-search/index.html" aria-label="Play Word Search">
+        <a class="game-card" data-category="word puzzle" href="/brain-arcade/word-search/" aria-label="Play Word Search">
           <div class="badge">New</div>
           <div class="icon" aria-hidden="true">🔎</div>
           <h3 class="game-title">Word Search</h3>
@@ -414,6 +421,7 @@
             Scan the grid, spot patterns, and highlight hidden words quickly. Word Search is a fast, satisfying game that
             strengthens attention, visual tracking, and persistence.
           </p>
+          <span class="card-cta" aria-hidden="true">Play</span>
           <div class="meta" aria-hidden="true">
             <span class="tag">Focus</span>
             <span class="tag">Patterns</span>
@@ -620,9 +628,7 @@
       </section>
 
       <!-- Ad slot (bottom) -->
-      <div class="ad-slot" aria-label="Advertisement placeholder">
-        Ad Slot (Bottom)
-      </div>
+      <div class="ad-slot ad-slot-empty" aria-hidden="true" hidden></div>
 
     </div>
 </main>
