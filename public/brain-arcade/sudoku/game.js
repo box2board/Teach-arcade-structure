@@ -30,6 +30,7 @@ const state = {
   notesMode: false,
   elapsed: 0,
   timerRunning: true,
+  solved: false,
   undoStack: [],
   checkedIncorrect: new Set(),
 };
@@ -203,6 +204,7 @@ const saveState = () => {
     notesMode: state.notesMode,
     elapsed: state.elapsed,
     timerRunning: state.timerRunning,
+    solved: state.solved,
     undoStack: state.undoStack,
   };
   try {
@@ -231,6 +233,7 @@ const loadState = () => {
       notesMode: data.notesMode || false,
       elapsed: data.elapsed || 0,
       timerRunning: data.timerRunning !== false,
+      solved: data.solved === true,
       undoStack: data.undoStack || [],
     });
     return true;
@@ -438,11 +441,18 @@ const checkSolved = () => {
   for (let row = 0; row < BOARD_SIZE; row += 1) {
     for (let col = 0; col < BOARD_SIZE; col += 1) {
       if (state.entries[row][col] !== state.solution[row][col]) {
-        return;
+        state.solved = false;
+        return false;
       }
     }
   }
-  setStatus("Solved! Great job.");
+  state.solved = true;
+  state.timerRunning = false;
+  stopTimer();
+  syncTimer();
+  saveState();
+  setStatus(`Solved in ${formatTime(state.elapsed)}! Great job.`);
+  return true;
 };
 
 const resetPuzzle = () => {
@@ -452,6 +462,7 @@ const resetPuzzle = () => {
   state.undoStack = [];
   state.elapsed = 0;
   state.timerRunning = true;
+  state.solved = false;
   clearCheckState();
   setInitialSelection();
   updateHintButton();
@@ -473,6 +484,7 @@ const startNewGame = (difficulty) => {
   state.undoStack = [];
   state.elapsed = 0;
   state.timerRunning = true;
+  state.solved = false;
   clearCheckState();
   setInitialSelection();
   updateHintButton();
@@ -485,27 +497,48 @@ const startNewGame = (difficulty) => {
 };
 
 const applyHint = () => {
+  if (state.solved) {
+    setStatus("Puzzle already solved.");
+    return;
+  }
   if (state.hintsUsed >= MAX_HINTS) {
     setStatus("No hints left. Try Notes Mode for logic.", true);
     return;
   }
-  const emptyCells = [];
+
+  const candidates = [];
   for (let row = 0; row < BOARD_SIZE; row += 1) {
     for (let col = 0; col < BOARD_SIZE; col += 1) {
-      if (state.entries[row][col] === 0) {
-        emptyCells.push([row, col]);
+      if (state.puzzle[row][col] === 0 && state.entries[row][col] !== state.solution[row][col]) {
+        candidates.push([row, col]);
       }
     }
   }
-  if (!emptyCells.length) return;
-  const [row, col] = emptyCells[Math.floor(Math.random() * emptyCells.length)];
-  const value = state.solution[row][col];
-  applyMove(row, col, value, false);
+  if (!candidates.length) {
+    checkSolved();
+    return;
+  }
+
+  let target = null;
+  if (
+    state.selected &&
+    state.puzzle[state.selected.row][state.selected.col] === 0 &&
+    state.entries[state.selected.row][state.selected.col] !== state.solution[state.selected.row][state.selected.col]
+  ) {
+    target = [state.selected.row, state.selected.col];
+  } else {
+    target = candidates[Math.floor(Math.random() * candidates.length)];
+  }
+
+  const [row, col] = target;
+  state.selected = { row, col };
+  applyMove(row, col, state.solution[row][col], false);
   state.hintsUsed += 1;
   updateHintButton();
-  setStatus("Hint used. Keep going!");
+  setStatus("Hint filled the selected cell. Keep going!");
   saveState();
 };
+
 
 const checkPuzzle = () => {
   state.checkedIncorrect.clear();
@@ -535,13 +568,19 @@ const undoMove = () => {
   }
   state.entries[last.row][last.col] = last.prevValue;
   state.notes[last.row][last.col] = [...last.prevNotes];
+  if (state.solved) {
+    state.solved = false;
+    state.timerRunning = true;
+    startTimer();
+    syncTimer();
+  }
   clearCheckState();
   renderBoard();
   saveState();
 };
 
 const handleInput = (value) => {
-  if (!state.selected) return;
+  if (!state.selected || state.solved) return;
   applyMove(state.selected.row, state.selected.col, value, state.notesMode);
 };
 
@@ -643,6 +682,7 @@ const init = () => {
     }
     syncTimer();
     renderBoard();
+    checkSolved();
   }
   initEvents();
   startTimer();
