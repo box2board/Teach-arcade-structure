@@ -52,6 +52,7 @@ let playerColor = "white";
 let cpuColor = "black";
 let difficulty = "easy";
 let cpuThinking = false;
+let cpuTimer = null;
 let gameOver = false;
 const isDebugAllowed = () => {
   const params = new URLSearchParams(window.location.search);
@@ -106,8 +107,11 @@ const renderBoard = () => {
   const kingSquare = debugEnabled ? locateKingSquare(state.board, state.turn) : null;
   const inCheck = debugEnabled ? isKingInCheck(state, state.turn) : false;
 
-  for (let r = 0; r < 8; r += 1) {
-    for (let c = 0; c < 8; c += 1) {
+  const flipBoard = mode === "cpu" && playerColor === "black";
+  for (let displayRow = 0; displayRow < 8; displayRow += 1) {
+    for (let displayCol = 0; displayCol < 8; displayCol += 1) {
+      const r = flipBoard ? 7 - displayRow : displayRow;
+      const c = flipBoard ? 7 - displayCol : displayCol;
       const square = document.createElement("div");
       square.classList.add("square");
       square.classList.add((r + c) % 2 === 0 ? "light" : "dark");
@@ -186,6 +190,10 @@ const resetGameState = () => {
 };
 
 const startNewGame = () => {
+  if (cpuTimer) {
+    clearTimeout(cpuTimer);
+    cpuTimer = null;
+  }
   applySettings();
   resetGameState();
   refreshGameStatus();
@@ -622,8 +630,10 @@ const scheduleCpuMove = () => {
 
   cpuThinking = true;
   const delay = 300 + Math.floor(Math.random() * 300);
-  setTimeout(() => {
-    if (gameOver) {
+  if (cpuTimer) clearTimeout(cpuTimer);
+  cpuTimer = setTimeout(() => {
+    cpuTimer = null;
+    if (gameOver || mode !== "cpu") {
       cpuThinking = false;
       return;
     }
@@ -774,9 +784,10 @@ const getGameStatus = (state) => {
   const current = state.turn === "white" ? "White" : "Black";
 
   if (legalMoves.length === 0) {
+    const winner = state.turn === "white" ? "Black" : "White";
     return {
       outcome: inCheck ? "checkmate" : "stalemate",
-      message: inCheck ? "Checkmate (no legal moves)." : "Stalemate (no legal moves).",
+      message: inCheck ? `Checkmate — ${winner} wins.` : "Stalemate — draw.",
       details: { inCheck, legalMoves: legalMoves.length, turn: state.turn },
     };
   }
@@ -812,9 +823,12 @@ const setGameState = (nextState) => {
   cpuThinking = false;
 };
 
-modeSelect.addEventListener("change", () => {
-  mode = modeSelect.value;
-  updateControlsForMode();
+modeSelect.addEventListener("change", startNewGame);
+sideSelect.addEventListener("change", () => {
+  if (modeSelect.value === "cpu") startNewGame();
+});
+difficultySelect.addEventListener("change", () => {
+  if (modeSelect.value === "cpu") startNewGame();
 });
 
 newGameButton.addEventListener("click", startNewGame);
