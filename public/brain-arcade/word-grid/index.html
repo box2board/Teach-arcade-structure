@@ -12,8 +12,6 @@
   <meta property="og:type" content="website" />
   <link rel="stylesheet" href="/assets/styles.css" />
   <link rel="stylesheet" href="./game.css" />
-  <div id="site-header"></div>
-  <script src="/assets/scripts/nav.js?v=5" defer></script>
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -31,11 +29,14 @@
   </script>
 </head>
 <body>
+  <div id="site-header"></div>
+  <script src="/assets/scripts/nav.js?v=5" defer></script>
+
   <main class="page">
     <div class="breadcrumb" aria-label="Breadcrumb">
-      <span>Home</span>
+      <a href="/">Home</a>
       <span class="divider">›</span>
-      <span>Brain Arcade</span>
+      <a href="/brain-arcade/">Brain Arcade</a>
       <span class="divider">›</span>
       <span aria-current="page">Word Grid</span>
     </div>
@@ -59,7 +60,7 @@
             <span class="label">Best</span>
             <span class="value" id="bestDisplay">0</span>
           </div>
-          <div class="status-item">
+          <div class="status-item dictionary-status">
             <span class="label">Dictionary</span>
             <span class="value" id="dictionaryStatus">Loading…</span>
           </div>
