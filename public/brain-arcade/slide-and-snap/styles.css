@@ -261,6 +261,28 @@ summary:focus-visible,
   color: var(--link);
 }
 
+.quick-howto {
+  max-width: 760px;
+  margin: 0 auto var(--space-4);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  box-shadow: var(--shadow);
+}
+
+.quick-howto summary {
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+}
+
+.quick-howto p {
+  margin: 10px 0 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
 /* Game page */
 .game-hero {
   display: flex;
@@ -371,13 +393,17 @@ summary:focus-visible,
 
 .game-shell {
   display: grid;
-  gap: var(--space-5);
+  gap: var(--space-4);
+  max-width: 760px;
+  margin: 0 auto;
 }
 
 .control-panel {
   display: grid;
   gap: var(--space-3);
-  background: var(--surface);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(37,99,235,.06), transparent 38%),
+    var(--surface);
   border-radius: var(--radius-lg);
   border: 1px solid var(--border);
   padding: var(--space-4);
@@ -434,13 +460,15 @@ summary:focus-visible,
 }
 
 .board {
-  width: min(92vw, 480px);
+  width: min(92vw, 500px);
   aspect-ratio: 1;
-  border-radius: var(--radius-lg);
-  background: linear-gradient(160deg, rgba(37, 99, 235, 0.12), rgba(168, 85, 247, 0.12));
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(168,85,247,.10), transparent 38%),
+    linear-gradient(160deg, rgba(37,99,235,.12), rgba(168,85,247,.10));
   position: relative;
   border: 1px solid var(--border);
-  box-shadow: var(--shadow);
+  box-shadow: 0 24px 54px rgba(15,23,42,.16), inset 0 0 0 1px rgba(255,255,255,.03);
 }
 
 .tile {
@@ -448,15 +476,23 @@ summary:focus-visible,
   display: grid;
   place-items: center;
   border-radius: 16px;
-  background: var(--surface);
-  border: 2px solid rgba(37, 99, 235, 0.2);
+  background:
+    radial-gradient(circle at 30% 22%, rgba(255,255,255,.12), transparent 26%),
+    var(--surface);
+  border: 2px solid rgba(37,99,235,.22);
   color: var(--text);
   font-family: "Poppins", sans-serif;
-  font-size: clamp(1rem, 3vw, 1.6rem);
-  font-weight: 700;
-  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.15);
-  transition: transform 0.2s ease;
+  font-size: clamp(1rem,3vw,1.65rem);
+  font-weight: 800;
+  box-shadow: 0 9px 0 rgba(15,23,42,.10), 0 14px 20px rgba(15,23,42,.12);
+  transition: transform .16s ease, box-shadow .16s ease, filter .16s ease;
   cursor: pointer;
+}
+
+.tile:hover { filter: brightness(1.04); }
+.tile:active {
+  box-shadow: 0 4px 0 rgba(15,23,42,.10), 0 8px 12px rgba(15,23,42,.10);
+  transform: translateY(4px);
 }
 
 .tile:focus-visible {
