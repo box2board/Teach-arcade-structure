@@ -271,6 +271,8 @@ function applyMove(from, move) {
 
   const [toR, toC] = move.to;
   const piece = board[from.r][from.c];
+  const wasMan = piece === RED || piece === YELLOW;
+  let crownedThisMove = false;
   board[from.r][from.c] = 0;
   board[toR][toC] = piece;
 
@@ -281,9 +283,17 @@ function applyMove(from, move) {
 
   if (piece === RED && toR === 0) {
     board[toR][toC] = RED_KING;
+    crownedThisMove = wasMan;
   }
   if (piece === YELLOW && toR === SIZE - 1) {
     board[toR][toC] = YELLOW_KING;
+    crownedThisMove = wasMan;
+  }
+
+  // In American checkers, reaching the king row ends a man's capture turn.
+  if (move.capture && crownedThisMove) {
+    finishTurn();
+    return;
   }
 
   if (move.capture) {
