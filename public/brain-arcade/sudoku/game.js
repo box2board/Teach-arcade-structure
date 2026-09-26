@@ -1,5 +1,6 @@
 const BOARD_SIZE = 9;
 const STORAGE_KEY = "ta_sudoku_state_v1";
+const BEST_KEY = "ta_sudoku_bests_v1";
 const MAX_HINTS = 3;
 const UNDO_LIMIT = 200;
 
@@ -451,7 +452,21 @@ const checkSolved = () => {
   stopTimer();
   syncTimer();
   saveState();
-  setStatus(`Solved in ${formatTime(state.elapsed)}! Great job.`);
+
+  let bestMessage = "";
+  try {
+    const bests = JSON.parse(localStorage.getItem(BEST_KEY) || "{}");
+    const previousBest = Number(bests[state.difficulty]) || 0;
+    if (!previousBest || state.elapsed < previousBest) {
+      bests[state.difficulty] = state.elapsed;
+      localStorage.setItem(BEST_KEY, JSON.stringify(bests));
+      bestMessage = previousBest ? " New best!" : " First best time saved!";
+    } else {
+      bestMessage = ` Best: ${formatTime(previousBest)}.`;
+    }
+  } catch {}
+
+  setStatus(`Solved in ${formatTime(state.elapsed)}!${bestMessage}`);
   return true;
 };
 
