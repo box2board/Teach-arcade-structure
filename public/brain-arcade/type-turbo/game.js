@@ -79,6 +79,8 @@
       els.pauseBtn.textContent = 'Pause';
       setFeedback('Go!', 'ok');
       els.visualMode.disabled = true;
+      els.mode.disabled = true;
+      els.difficulty.disabled = true;
       activeVisual.instance.reset();
       focusInput();
     }
@@ -127,6 +129,8 @@
     if (eventName === 'onEnd') {
       els.pauseBtn.textContent = 'Pause';
       els.visualMode.disabled = false;
+      els.mode.disabled = false;
+      els.difficulty.disabled = false;
       setFeedback(payload.reason || 'Run ended', latestStats?.correctItems >= latestStats?.missedItems ? 'ok' : 'bad');
       renderResults();
     }
@@ -226,6 +230,8 @@
     els.results.hidden = true;
     els.pauseBtn.textContent = 'Pause';
     els.visualMode.disabled = false;
+    els.mode.disabled = false;
+    els.difficulty.disabled = false;
     activeVisual.instance.reset();
     setFeedback('Ready.');
     focusInput();
@@ -254,6 +260,11 @@
   els.visualMode.addEventListener('change', () => setVisualMode(els.visualMode.value));
 
   els.mode.addEventListener('change', () => {
+    if (engine.getState() === STATES.RUNNING || engine.getState() === STATES.PAUSED) return;
+    restartGame();
+  });
+
+  els.difficulty.addEventListener('change', () => {
     if (engine.getState() === STATES.RUNNING || engine.getState() === STATES.PAUSED) return;
     restartGame();
   });
