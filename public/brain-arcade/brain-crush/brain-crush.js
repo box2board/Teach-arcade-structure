@@ -41,6 +41,9 @@
   const goalLabelEl = document.getElementById("goal-label");
   const paceLabelEl = document.getElementById("pace-label");
   const toastStack = document.getElementById("toast-stack");
+  const gameStatusEl = document.getElementById("game-status");
+  const comboStatusEl = document.getElementById("combo-status");
+  const playStatusEl = document.querySelector(".play-status");
   const overlay = document.getElementById("overlay");
   const overlayTitle = document.getElementById("overlay-title");
   const overlayText = document.getElementById("overlay-text");
@@ -64,7 +67,6 @@
   let audioContext = null;
   let isMuted = false;
   let cascadeCount = 0;
-  let resolveFailSafe = null;
 
   const debugEnabled = new URLSearchParams(window.location.search).get("debug") === "1";
   const debugLog = (...args) => {
@@ -83,6 +85,12 @@
     toast.textContent = message;
     toastStack.appendChild(toast);
     setTimeout(() => toast.remove(), 2400);
+  };
+
+  const updatePlayStatus = (message, combo = 1) => {
+    if (gameStatusEl) gameStatusEl.textContent = message;
+    if (comboStatusEl) comboStatusEl.textContent = `Combo x${Math.max(1, combo)}`;
+    if (playStatusEl) playStatusEl.dataset.hot = combo > 1 ? "true" : "false";
   };
 
   const initAudio = () => {
@@ -401,7 +409,10 @@
 
     const matchScore = matches.reduce((total, match) => total + getBaseScore(match.tiles.length), 0);
     const cascadeMultiplier = 1 + (cascadeCount - 1) * 0.1;
-    score += Math.round(matchScore * cascadeMultiplier);
+    const pointsAdded = Math.round(matchScore * cascadeMultiplier);
+    score += pointsAdded;
+    updatePlayStatus(cascadeCount > 1 ? `Cascade x${cascadeCount}! +${pointsAdded}` : `Match! +${pointsAdded}`, cascadeCount);
+    if (createdSpecials.length) showToast(createdSpecials.some(tile => grid[tile.row][tile.col]?.special === "color") ? "Color Bomb created!" : "Line Clear created!");
     if (score > highScore) {
       highScore = score;
       localStorage.setItem("brain-crush-high-score", `${highScore}`);
@@ -465,42 +476,51 @@
 
   const lockInput = () => {
     isResolving = true;
-    clearTimeout(resolveFailSafe);
-    resolveFailSafe = setTimeout(() => {
-      debugLog("failsafe unlock");
-      isResolving = false;
-      resetSelection();
-      renderBoard();
-    }, 1500);
     debugLog("lock");
   };
 
   const unlockInput = () => {
     isResolving = false;
-    clearTimeout(resolveFailSafe);
-    resolveFailSafe = null;
     debugLog("unlock");
   };
 
   const attemptSwap = async (a, b) => {
     if (!inBounds(a.row, a.col) || !inBounds(b.row, b.col)) return;
     if (!isEndless && movesRemaining <= 0) return;
+
     lockInput();
     try {
       debugLog("swap", a, b);
       swapTiles(a, b);
       renderBoard();
-
-      if (!isEndless) {
-        movesRemaining = Math.max(0, movesRemaining - 1);
-      }
-      updateHUD();
       playSound("swap");
 
       cascadeCount = 0;
 
       const aCell = grid[a.row][a.col];
       const bCell = grid[b.row][b.col];
+      const hasColorBomb = aCell?.special === "color" || bCell?.special === "color";
+      const hasInitialMatch = findMatches().length > 0;
+
+      // Invalid swaps snap back and do not consume a move.
+      if (!hasColorBomb && !hasInitialMatch) {
+        swapTiles(a, b);
+        renderBoard();
+        const tileAEl = boardEl.querySelector(`[data-row='${a.row}'][data-col='${a.col}']`);
+        const tileBEl = boardEl.querySelector(`[data-row='${b.row}'][data-col='${b.col}']`);
+        tileAEl?.classList.add("swap-back");
+        tileBEl?.classList.add("swap-back");
+        updatePlayStatus("That swap doesn't make a match.", 1);
+        playSound("invalid");
+        await sleep(motionDelay(140 / getPace()));
+        return;
+      }
+
+      if (!isEndless) {
+        movesRemaining = Math.max(0, movesRemaining - 1);
+        updateHUD();
+      }
+
       let colorBombTarget = null;
       if (aCell?.special === "color" && bCell?.special === "color") {
         colorBombTarget = null;
@@ -510,11 +530,11 @@
         colorBombTarget = aCell?.type ?? null;
       }
 
-      if (aCell?.special === "color" || bCell?.special === "color") {
+      if (hasColorBomb) {
         const clearSet = new Set();
         for (let row = 0; row < BOARD_SIZE; row += 1) {
           for (let col = 0; col < BOARD_SIZE; col += 1) {
-            if (!colorBombTarget || grid[row][col]?.type === colorBombTarget) {
+            if (colorBombTarget === null || grid[row][col]?.type === colorBombTarget) {
               clearSet.add(`${row},${col}`);
             }
           }
@@ -522,7 +542,14 @@
         debugLog("color bomb clear", clearSet.size);
         await animateClear(clearSet);
         clearTiles(clearSet);
-        score += Math.round(120 * (1 + cascadeCount * 0.1));
+        const bonus = 120;
+        score += bonus;
+        updatePlayStatus(`Color Bomb! +${bonus}`, 1);
+        if (score > highScore) {
+          highScore = score;
+          try { localStorage.setItem("brain-crush-high-score", `${highScore}`); } catch {}
+        }
+        updateHUD();
         playSound("special");
         collapseColumns();
         renderBoard();
@@ -544,24 +571,14 @@
         showToast("No moves left. Shuffling board!");
       }
 
-      if (!findMatches().length && cascadeCount === 0 && !colorBombTarget && !aCell?.special && !bCell?.special) {
-        debugLog("invalid swap, swapping back");
-        swapTiles(a, b);
-        renderBoard();
-        const tileAEl = boardEl.querySelector(`[data-row='${a.row}'][data-col='${a.col}']`);
-        const tileBEl = boardEl.querySelector(`[data-row='${b.row}'][data-col='${b.col}']`);
-        tileAEl?.classList.add("swap-back");
-        tileBEl?.classList.add("swap-back");
-        playSound("invalid");
-        await sleep(motionDelay(140 / getPace()));
-      }
-
       if (!isEndless && movesRemaining <= 0 && score < BASE_GOAL + levelIndex * GOAL_INCREMENT) {
+        updatePlayStatus("Out of moves.", 1);
         showOverlay("Level Failed", "Out of moves. Try again?", "Restart Level");
         return;
       }
 
       if (!isEndless && score >= BASE_GOAL + levelIndex * GOAL_INCREMENT) {
+        updatePlayStatus("Level complete!", Math.max(1, cascadeCount));
         showOverlay("Level Complete!", "Great work. Ready for the next level?", "Next Level");
       }
     } finally {
@@ -626,6 +643,7 @@
     hideOverlay();
     initBoard();
     updateHUD();
+    updatePlayStatus("Make a match of 3 or more.", 1);
   };
 
   const startLevel = () => {
