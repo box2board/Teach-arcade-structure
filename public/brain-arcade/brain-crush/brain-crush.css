@@ -136,6 +136,33 @@ main.container {
   width: 100%;
 }
 
+.play-status {
+  width: min(92vw, var(--board-max), calc(100vh - 280px));
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 9px 12px;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: 12px;
+  background: rgba(2, 6, 23, 0.48);
+  color: var(--muted);
+  font: 600 13px/1.25 Poppins, sans-serif;
+}
+
+.play-status strong {
+  flex: 0 0 auto;
+  color: #fde68a;
+  font-size: 13px;
+}
+
+.play-status[data-hot="true"] {
+  border-color: rgba(250, 204, 21, 0.55);
+  background: rgba(120, 53, 15, 0.22);
+}
+
+
 .board {
   position: relative;
   width: min(92vw, var(--board-max), calc(100vh - 280px));
