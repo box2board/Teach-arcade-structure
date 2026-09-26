@@ -41,7 +41,7 @@
 .tile-btn { min-width: 62px; min-height: 56px; border-radius: 12px; border: 1px solid var(--ecf-border); background: #fff; font-size: 26px; cursor: pointer; }
 
 .controls-card { display: flex; flex-wrap: wrap; gap: 10px; position: sticky; bottom: 10px; }
-.helper { margin-top: 10px; font: 700 13px/1.4 Nunito,sans-serif; color: var(--ecf-danger); min-height: 20px; }
+.helper { margin-top: 10px; font: 700 13px/1.4 Nunito,sans-serif; color: var(--ecf-muted); min-height: 20px; }
 .file-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 12px; margin-top: 14px; }
 .file-btn { text-align: left; border: 1px solid var(--ecf-border); border-radius: 12px; background: #fff; padding: 14px; cursor: pointer; min-height: 120px; }
 .file-btn.locked { opacity: .65; cursor: not-allowed; }
