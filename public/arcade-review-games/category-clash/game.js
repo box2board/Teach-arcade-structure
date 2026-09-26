@@ -205,10 +205,6 @@
     $('lockWagerBtn').disabled=false;
     $('revealBtn').disabled=q.power&&state.mode==='classroom';
 
-    $('answeringTeam').innerHTML=state.mode==='classroom'
-      ? data.teams.map((t,i)=>`<option value="${i}" ${i===state.activeTeam?'selected':''}>${escapeHtml(t.name)}</option>`).join('')
-      : '';
-
     resetTimer();
     $('timerBox').hidden=!data.timerEnabled;
     show('questionView');
