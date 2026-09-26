@@ -68,7 +68,13 @@
     <section class="checkers-game" aria-label="Checkers game">
       <div class="board-panel">
         <div class="status-bar">
-          <div id="status" class="status" role="status" aria-live="polite">Red goes first.</div>
+          <div class="status-top">
+            <div id="status" class="status" role="status" aria-live="polite">Red goes first.</div>
+            <div class="piece-counts" aria-label="Pieces remaining">
+              <span class="count-chip red-chip">Red <strong id="red-count">12</strong></span>
+              <span class="count-chip yellow-chip">Yellow <strong id="yellow-count">12</strong></span>
+            </div>
+          </div>
           <div class="action-row">
             <button id="new-game" class="action primary" type="button">New Game</button>
             <button id="undo" class="action" type="button" disabled>Undo</button>
