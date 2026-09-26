@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Solitaire (Klondike) · Web Game</title>
+  <title>Solitaire (Klondike) | Brain Arcade | Teach Arcade</title>
   <meta name="description" content="Play Klondike Solitaire in your browser with drag-and-drop, full tap-to-move controls, undo, hints, and auto-move to foundations." />
 
   <style>
@@ -75,6 +75,18 @@
       padding: 18px 14px calc(28px + env(safe-area-inset-bottom));
     }
 
+    .backLink{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      color:rgba(255,255,255,.7);
+      text-decoration:none;
+      font-weight:800;
+      font-size:12px;
+      margin-bottom:10px;
+    }
+    .backLink:hover,.backLink:focus-visible{ color:#fff; outline:none; text-decoration:underline; }
+
     header{
       display:flex;
       align-items:flex-start;
@@ -83,8 +95,15 @@
       margin-bottom: 14px;
     }
 
-    .brand{ display:flex; flex-direction:column; gap:2px; }
-    .brand h1{ margin:0; font-size:18px; letter-spacing:.3px; }
+    .brand{ display:flex; flex-direction:column; gap:3px; }
+    .eyebrow{
+      color:rgba(216,180,254,.9);
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      font-size:10px;
+      font-weight:900;
+    }
+    .brand h1{ margin:0; font-size:22px; letter-spacing:.1px; }
     .brand small{ color: var(--muted); font-size:12px; max-width: 560px; }
 
     .controls{
@@ -125,13 +144,37 @@
       font-size: 12px;
       flex-wrap:wrap;
     }
+    .hud{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+    .hudStat{
+      min-width:74px;
+      display:grid;
+      gap:3px;
+      padding:8px 10px;
+      border-radius:11px;
+      background:rgba(0,0,0,.14);
+      border:1px solid rgba(255,255,255,.12);
+    }
+    .hudStat span{
+      font-size:9px;
+      text-transform:uppercase;
+      letter-spacing:.1em;
+      color:rgba(255,255,255,.48);
+      font-weight:900;
+    }
+    .hudStat b{ color:#fff; font-size:15px; }
 
     .board{
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255,255,255,.055), transparent 30%),
+        linear-gradient(180deg, rgba(255,255,255,.055), rgba(0,0,0,.045));
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 18px;
       padding: 14px;
-      box-shadow: var(--shadow);
+      box-shadow: 0 22px 55px rgba(0,0,0,.34), inset 0 0 0 1px rgba(255,255,255,.025);
       overflow: auto;
       -webkit-overflow-scrolling: touch;
       max-height: calc(100svh - 160px);
@@ -182,8 +225,9 @@
     }
 
     .pile.highlight .slot{
-      border-color: rgba(255,255,255,.65);
-      background: rgba(255,255,255,.10);
+      border-color: #fde68a;
+      background: rgba(253,230,138,.11);
+      box-shadow: 0 0 0 3px rgba(253,230,138,.08), inset 0 0 18px rgba(253,230,138,.06);
     }
 
     .tableau{
@@ -219,7 +263,15 @@
       will-change: transform;
       pointer-events:auto;
     }
+    .card:hover{ filter:brightness(1.025); }
     .card:active{ cursor:grabbing; }
+    .card.selected-source{
+      box-shadow:
+        0 0 0 3px rgba(253,230,138,.88),
+        0 16px 34px rgba(0,0,0,.3),
+        0 1px 0 rgba(255,255,255,.55) inset;
+      filter:brightness(1.05);
+    }
 
     /* ✅ NEW: Cleaner, consistent card back (no cut-off symbols) */
     .card.faceDown{
@@ -392,21 +444,23 @@
     .rowbtn{ display:flex; gap: 10px; flex-wrap:wrap; }
   </style>
   <link rel="canonical" href="https://teacharcade.com/brain-arcade/solitaire.html" />
-  <meta property="og:title" content="Solitaire (Klondike) · Web Game" />
+  <meta property="og:title" content="Solitaire (Klondike) | Brain Arcade | Teach Arcade" />
   <meta property="og:description" content="Play Klondike Solitaire in your browser with drag-and-drop, full tap-to-move controls, undo, hints, and auto-move to foundations." />
   <meta property="og:url" content="https://teacharcade.com/brain-arcade/solitaire.html" />
   <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Solitaire (Klondike) · Web Game" />
-  <meta name="twitter:description" content="Play Klondike Solitaire in your browser. Drag-and-drop, tap-to-move (foundation-only), undo, and auto-move to foundations." />
+  <meta name="twitter:title" content="Solitaire (Klondike) | Brain Arcade | Teach Arcade" />
+  <meta name="twitter:description" content="Play Klondike Solitaire with drag-and-drop, full tap controls, undo, hints, and auto-move to foundations." />
   <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
 
 </head>
 
 <body>
   <div class="wrap">
+    <a class="backLink" href="/brain-arcade/">← Brain Arcade</a>
     <header>
       <div class="brand">
+        <span class="eyebrow">Brain Arcade</span>
         <h1>Solitaire (Klondike)</h1>
         <small id="subtitle">Drag cards • Tap mode available • Undo • Draw 1</small>
       </div>
@@ -421,12 +475,12 @@
     </header>
 
     <div class="bar">
-      <div>
-        Moves: <b id="moves">0</b> ·
-        Time: <b id="time">0:00</b> ·
-        Score: <b id="score">0</b>
+      <div class="hud" role="status" aria-live="polite">
+        <div class="hudStat"><span>Moves</span><b id="moves">0</b></div>
+        <div class="hudStat"><span>Time</span><b id="time">0:00</b></div>
+        <div class="hudStat"><span>Score</span><b id="score">0</b></div>
       </div>
-      <div class="muted">Rules: Build tableau down alternating colors · Foundations up by suit</div>
+      <div class="muted">Build down in alternating colors · Foundations build up by suit</div>
     </div>
 
     <div class="board" id="board">
@@ -877,11 +931,15 @@
   // =========================
   function clearHighlights(){
     [...els.tableau, ...els.foundations, els.stock, els.waste].forEach(p => p.classList.remove("highlight"));
+    document.querySelectorAll(".card.selected-source").forEach(card => card.classList.remove("selected-source"));
   }
 
   function setSelected(fromRef, cards){
     state.selected = { from: fromRef, cards };
     clearHighlights();
+    cards.forEach(card => {
+      document.querySelector(`[data-card-id="${card.id}"]`)?.classList.add("selected-source");
+    });
     highlightDestinations(cards);
   }
 
@@ -1492,11 +1550,40 @@
   // Buttons / keys
   // =========================
   function computeHint(){
-    const a = findAutoFoundationMove();
-    if (a){
-      const c = a.cards[0];
-      return `Tap ${rankLabel(c.rank)}${c.suit} to send it up`;
+    const foundationMove = findAutoFoundationMove();
+    if (foundationMove){
+      const card = foundationMove.cards[0];
+      return `Move ${rankLabel(card.rank)}${card.suit} to a foundation`;
     }
+
+    const waste = top(state.waste);
+    if (waste?.faceUp){
+      for (let ti = 0; ti < 7; ti++){
+        if (canMoveToTableau(waste, ti)) {
+          return `Move ${rankLabel(waste.rank)}${waste.suit} from waste to tableau ${ti + 1}`;
+        }
+      }
+    }
+
+    for (let from = 0; from < 7; from++){
+      const pile = state.tableau[from];
+      for (let index = 0; index < pile.length; index++){
+        const card = pile[index];
+        if (!card.faceUp) continue;
+        const stack = pile.slice(index);
+        if (!isValidSequence(stack)) continue;
+        for (let to = 0; to < 7; to++){
+          if (to !== from && canMoveToTableau(card, to)) {
+            return `Move ${rankLabel(card.rank)}${card.suit} to tableau ${to + 1}`;
+          }
+        }
+      }
+      const topCard = top(pile);
+      if (topCard && !topCard.faceUp) return `Flip the hidden card in tableau ${from + 1}`;
+    }
+
+    if (state.stock.length) return "Draw a card from the stock";
+    if (!state.stock.length && state.waste.length) return "Recycle the waste pile and keep looking";
     return null;
   }
 
@@ -1518,7 +1605,7 @@
     els.hintBtn.addEventListener("click", () => {
       if (state.busy) return;
       const move = computeHint();
-      if (!move) return toast("No obvious foundation move");
+      if (!move) return toast("No obvious move found");
       toast(move);
     });
 
