@@ -98,8 +98,10 @@
       const r = row + dr * i;
       const c = col + dc * i;
       const existing = grid[r][c];
-      if (existing && existing !== word[i]) return null;
-      if (existing === word[i]) {
+
+      if (existing) {
+        if (existing.char !== word[i]) return null;
+        if (existing.dirs.has(dir)) return null;
         crosses += 1;
         continue;
       }
@@ -116,16 +118,18 @@
 
   function buildAttempt(seed) {
     const SIZE = 15;
-    const grid = Array.from({ length: SIZE }, () => Array(SIZE).fill(""));
+    const grid = Array.from({ length: SIZE }, () => Array(SIZE).fill(null));
     const rng = rngFrom(seed);
     const candidates = shuffle(BANK, rng);
-    candidates.sort((a, b) => b.answer.length - a.answer.length + (rng() - 0.5));
+    candidates.sort((a, b) => b.answer.length - a.answer.length);
 
     const entries = [];
     const first = candidates.shift();
     const firstRow = Math.floor(SIZE / 2);
     const firstCol = Math.floor((SIZE - first.answer.length) / 2);
-    for (let i = 0; i < first.answer.length; i += 1) grid[firstRow][firstCol + i] = first.answer[i];
+    for (let i = 0; i < first.answer.length; i += 1) {
+      grid[firstRow][firstCol + i] = { char: first.answer[i], dirs: new Set(["across"]) };
+    }
     entries.push({ ...first, row: firstRow, col: firstCol, dir: "across" });
 
     let passes = 0;
@@ -134,11 +138,12 @@
       for (const item of candidates) {
         if (entries.some((entry) => entry.answer === item.answer)) continue;
         const options = [];
+
         for (let wi = 0; wi < item.answer.length; wi += 1) {
           const letter = item.answer[wi];
           for (let r = 0; r < SIZE; r += 1) {
             for (let c = 0; c < SIZE; c += 1) {
-              if (grid[r][c] !== letter) continue;
+              if (grid[r][c]?.char !== letter) continue;
               for (const dir of ["across", "down"]) {
                 const row = r - (dir === "down" ? wi : 0);
                 const col = c - (dir === "across" ? wi : 0);
@@ -148,14 +153,21 @@
             }
           }
         }
+
         if (!options.length) continue;
-        options.sort((a, b) => b.crosses - a.crosses || rng() - 0.5);
-        const pick = options[0];
+        const bestCrosses = Math.max(...options.map((option) => option.crosses));
+        const best = options.filter((option) => option.crosses === bestCrosses);
+        const pick = best[Math.floor(rng() * best.length)];
         const dr = pick.dir === "down" ? 1 : 0;
         const dc = pick.dir === "across" ? 1 : 0;
+
         for (let i = 0; i < item.answer.length; i += 1) {
-          grid[pick.row + dr * i][pick.col + dc * i] = item.answer[i];
+          const r = pick.row + dr * i;
+          const c = pick.col + dc * i;
+          if (grid[r][c]) grid[r][c].dirs.add(pick.dir);
+          else grid[r][c] = { char: item.answer[i], dirs: new Set([pick.dir]) };
         }
+
         entries.push({ ...item, ...pick });
         if (entries.length >= 11) break;
       }
@@ -174,10 +186,13 @@
     });
 
     const trimmed = [];
-    for (let r = minR; r <= maxR; r += 1) trimmed.push(grid[r].slice(minC, maxC + 1));
-    const shifted = entries.map((entry) => ({ ...entry, row: entry.row - minR, col: entry.col - minC }));
+    for (let r = minR; r <= maxR; r += 1) {
+      trimmed.push(grid[r].slice(minC, maxC + 1).map((cell) => cell?.char || ""));
+    }
 
+    const shifted = entries.map((entry) => ({ ...entry, row: entry.row - minR, col: entry.col - minC }));
     const startMap = new Map();
+
     shifted
       .slice()
       .sort((a, b) => a.row - b.row || a.col - b.col || (a.dir === "across" ? -1 : 1))
