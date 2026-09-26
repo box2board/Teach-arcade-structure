@@ -105,9 +105,6 @@ function renderPieces() {
 
     container.appendChild(pieceGrid);
 
-    // Add drag listeners
-    container.addEventListener("touchstart", e => startDrag(e, i), { passive: false });
-    container.addEventListener("mousedown", e => startDrag(e, i));
   });
 }
 
@@ -467,6 +464,11 @@ function resizeGrid() {
 }
 
 window.addEventListener("resize", resizeGrid);
+
+pieceEls.forEach((container, i) => {
+  container.addEventListener("touchstart", e => startDrag(e, i), { passive: false });
+  container.addEventListener("mousedown", e => startDrag(e, i));
+});
 
 initGrid();
 renderPieces();
