@@ -139,7 +139,7 @@
         const q=category.questions[qi];
         if(!q)return '<div aria-hidden="true"></div>';
         const done=Boolean(state.completed[`${ci}-${qi}`]);
-        return `<button type="button" class="square" role="gridcell" data-square="${ci},${qi}" ${done?'disabled':''} aria-label="${escapeHtml(category.name)}, ${q.points} points${q.power?', Power Play':''}${done?', completed':''}">${done?'✓':q.points}${q.power&&!done?'<span class="power-mark">⚡ POWER PLAY</span>':''}</button>`;
+        return `<button type="button" class="square" role="gridcell" data-square="${ci},${qi}" ${done?'disabled':''} aria-label="${escapeHtml(category.name)}, ${q.points} points${done?', completed':''}">${done?'✓':q.points}</button>`;
       }).join('');
     }
     $('gameBoard').innerHTML=html;
