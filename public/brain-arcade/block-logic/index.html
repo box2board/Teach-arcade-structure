@@ -5,15 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Block Logic</title>
   <link rel="stylesheet" href="style.css" />
-  <meta name="description" content="Block Logic is a classroom-ready Teach Arcade activity with tips, standards-aligned skills, and teacher guidance for use in class." />
+  <meta name="description" content="Play Block Logic, a free block-placement puzzle. Drag shapes onto the grid, clear rows and columns, build streaks, and chase a new high score." />
   <link rel="canonical" href="https://teacharcade.com/brain-arcade/block-logic/" />
   <meta property="og:title" content="Block Logic" />
-  <meta property="og:description" content="Explore Block Logic resources, games, and teaching tools from Teach Arcade." />
+  <meta property="og:description" content="Drag shapes onto the grid, clear lines, and chase a high score in Block Logic." />
   <meta property="og:url" content="https://teacharcade.com/brain-arcade/block-logic/" />
   <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Block Logic" />
-  <meta name="twitter:description" content="Explore Block Logic resources, games, and teaching tools from Teach Arcade." />
+  <meta name="twitter:description" content="Drag shapes, clear lines, and chase your high score in Block Logic." />
   <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
 
 </head>
@@ -28,9 +28,7 @@
       </div>
       <div class="score" id="current-score">0</div>
       <div class="top-right">
-        <div class="gear-wrapper" title="Settings">
-          <div class="gear-icon"></div>
-        </div>
+        <button type="button" id="new-game" class="icon-button" aria-label="Start a new Block Logic game" title="New Game">↻</button>
       </div>
     </div>
 
@@ -60,6 +58,7 @@
       <div class="piece" data-piece-index="1"></div>
       <div class="piece" data-piece-index="2"></div>
     </div>
+    <a class="back-link" href="/brain-arcade/">← Brain Arcade</a>
   </div>
 
   <!-- Game Script -->
