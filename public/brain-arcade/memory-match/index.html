@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#0f172a" />
 
   <title>Memory Match | Brain Arcade | Teach Arcade</title>
-  <meta name="description" content="Play Memory Match on Teach Arcade: flip cards, match classroom-friendly emojis, and train memory with multiple difficulty levels and teacher controls." />
+  <meta name="description" content="Play Memory Match on Teach Arcade: flip cards, match emoji pairs, choose a theme and difficulty, and chase a faster, cleaner run." />
   <link rel="canonical" href="https://teacharcade.com/brain-arcade/memory-match/" />
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
 
@@ -26,7 +26,7 @@
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Memory Match | Brain Arcade | Teach Arcade" />
-  <meta name="twitter:description" content="A classroom-friendly emoji memory game with levels, theme packs, and personal best tracking." />
+  <meta name="twitter:description" content="An emoji memory game with difficulty levels, theme packs, custom settings, and personal best tracking." />
   <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
 
   <script type="application/ld+json">
@@ -48,10 +48,10 @@
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "Memory Match",
-    "applicationCategory": "educationalApplication",
+    "applicationCategory": "Game",
     "operatingSystem": "Web",
     "url": "https://teacharcade.com/brain-arcade/memory-match/",
-    "description": "A browser-based emoji matching game for memory, focus, and classroom brain breaks.",
+    "description": "A browser-based emoji matching game with themes, multiple difficulties, custom settings, and personal bests.",
     "publisher": {
       "@type": "Organization",
       "name": "Teach Arcade",
@@ -83,7 +83,7 @@
             <option value="standard" selected>Standard</option>
             <option value="challenge">Challenge</option>
             <option value="expert">Expert</option>
-            <option value="teacher">Teacher Mode</option>
+            <option value="teacher">Custom</option>
           </select>
         </label>
 
@@ -105,7 +105,7 @@
           <button class="button" id="restart-btn">Restart</button>
           <button class="button secondary" id="hint-btn">Hint</button>
           <button class="button secondary" id="how-to-btn">How to Play</button>
-          <button class="button secondary" id="teacher-btn">Teacher Controls</button>
+          <button class="button secondary" id="teacher-btn">Game Settings</button>
         </div>
       </div>
 
@@ -132,15 +132,14 @@
 
     <section class="info-grid">
       <article class="info-card">
-        <h2>Classroom Ideas</h2>
+        <h2>Ways to Play</h2>
         <ul>
-          <li>Use Starter mode as a 5-minute morning bell-ringer.</li>
-          <li>Assign different themes by content area for station rotations.</li>
-          <li>Run a partner challenge where teams explain their memory strategy.</li>
-          <li>Have students predict moves before flipping for metacognition practice.</li>
-          <li>Use Teacher Mode for differentiated pairs across groups.</li>
-          <li>Host a weekly “personal best” reflection with growth goals.</li>
-          <li>Pair this game with vocabulary review by naming each emoji aloud.</li>
+          <li>Start with Starter mode and work up to Expert as your memory improves.</li>
+          <li>Switch themes when you want the board to feel fresh.</li>
+          <li>Challenge yourself to finish with fewer moves than your previous run.</li>
+          <li>Race your best time on Standard or Challenge mode.</li>
+          <li>Use Custom settings to choose the number of pairs, hints, timer, and strikes.</li>
+          <li>Try three-strikes mode when you want a higher-pressure run.</li>
         </ul>
       </article>
 
@@ -165,9 +164,9 @@
     </section>
   </main>
 
-  <aside class="teacher-drawer" id="teacher-drawer" aria-label="Teacher Controls" aria-hidden="true">
-    <h2>Teacher Controls</h2>
-    <label>Teacher pairs
+  <aside class="teacher-drawer" id="teacher-drawer" aria-label="Game Settings" aria-hidden="true">
+    <h2>Game Settings</h2>
+    <label>Pairs
       <select id="teacher-pairs">
         <option value="6">6 pairs</option>
         <option value="8" selected>8 pairs</option>
@@ -188,7 +187,7 @@
       <li>Flip two cards each turn to find matching emojis.</li>
       <li>Matched pairs stay revealed. Mismatches flip back after a short delay.</li>
       <li>Clear every pair to win. Fewer moves and faster times earn better scores.</li>
-      <li>Use Teacher Controls to customize timer, hints, strikes, and sound.</li>
+      <li>Use Game Settings to customize pairs, timer, hints, strikes, and sound.</li>
     </ol>
     <button class="button" id="close-how-to">Close</button>
   </dialog>
