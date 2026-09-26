@@ -744,7 +744,7 @@
     els.subtitle.textContent =
       (state.controlMode === "tap")
         ? "Tap a card, then tap its destination • Undo • Draw 1"
-        : "Drag cards • Click to send to foundations • Undo • Draw 1";
+        : "Drag cards • Click to send upward • Undo • Draw 1";
   }
 
   function toggleMode(){
@@ -1019,6 +1019,7 @@
     bumpMoves(1);
     if (toRef.type === "foundation") bumpScore(10);
     if (toRef.type === "tableau" && from.type === "waste") bumpScore(5);
+    if (toRef.type === "tableau" && from.type === "foundation") bumpScore(-10);
 
     clearSelected();
     render();
@@ -1413,7 +1414,9 @@
       if (!c || c.id !== cardId || !c.faceUp) return null;
       cards = [c];
     } else if (fromRef.type === "foundation"){
-      return null; // no pulling down
+      const c = top(state.foundations[fromRef.idx]);
+      if (!c || c.id !== cardId || !c.faceUp) return null;
+      cards = [c];
     } else if (fromRef.type === "tableau"){
       const pile = state.tableau[fromRef.idx];
       const clicked = pile.find(c => c.id === cardId);
@@ -1512,14 +1515,14 @@
         }
       }
 
-      const did = cards.length === 1 && foundationClickMoveOnly(fromRef, cards[0]);
+      const did = fromRef.type !== "foundation" && cards.length === 1 && foundationClickMoveOnly(fromRef, cards[0]);
       if (!did) setSelected(fromRef, cards);
       return;
     }
 
     // Drag mode: click = foundation-only auto move
     if (cards.length === 1){
-      const did = foundationClickMoveOnly(fromRef, cards[0]);
+      const did = fromRef.type !== "foundation" && foundationClickMoveOnly(fromRef, cards[0]);
       if (!did){
         setSelected(fromRef, cards);
         setTimeout(() => { if (state.selected) clearSelected(); }, 800);
