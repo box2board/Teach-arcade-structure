@@ -20,13 +20,19 @@
 <body>
   <h1 class="sr-only">Block Logic</h1>
   <div class="game-container">
+    <div class="game-label">
+      <span>Brain Arcade</span>
+      <strong>Block Logic</strong>
+      <small>Drag a shape onto the board. Fill a full row or column to clear it.</small>
+    </div>
+
     <!-- Top Bar -->
     <div class="top-bar">
-      <div class="top-left">
+      <div class="top-left" aria-label="Best score">
         <div class="crown">★</div>
-        <span id="best-score">0</span>
+        <span class="best-stack"><small>Best</small><strong id="best-score">0</strong></span>
       </div>
-      <div class="score" id="current-score">0</div>
+      <div class="score-stack" aria-label="Current score"><small>Score</small><div class="score" id="current-score">0</div></div>
       <div class="top-right">
         <button type="button" id="new-game" class="icon-button" aria-label="Start a new Block Logic game" title="New Game">↻</button>
       </div>
