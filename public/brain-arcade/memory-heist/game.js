@@ -34,6 +34,34 @@
     meterFill: document.getElementById("meterFill"),
   };
 
+  let audioContext = null;
+
+  function ensureAudio() {
+    if (!audioContext) {
+      const AudioCtor = window.AudioContext || window.webkitAudioContext;
+      if (AudioCtor) audioContext = new AudioCtor();
+    }
+    if (audioContext?.state === "suspended") audioContext.resume().catch(() => {});
+  }
+
+  function playTone(frequency, duration = 0.08, type = "sine", volume = 0.045) {
+    if (!state.soundEnabled) return;
+    try {
+      ensureAudio();
+      if (!audioContext) return;
+      const oscillator = audioContext.createOscillator();
+      const gain = audioContext.createGain();
+      oscillator.type = type;
+      oscillator.frequency.value = frequency;
+      gain.gain.setValueAtTime(volume, audioContext.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + duration);
+      oscillator.connect(gain);
+      gain.connect(audioContext.destination);
+      oscillator.start();
+      oscillator.stop(audioContext.currentTime + duration);
+    } catch {}
+  }
+
   function initGame() {
     renderTiles();
     wireEvents();
@@ -84,6 +112,7 @@
 
   function startRun() {
     clearTimers();
+    if (state.soundEnabled) ensureAudio();
     state.sequence = [];
     state.inputIndex = 0;
     state.round = 1;
@@ -131,6 +160,7 @@
       const tileIndex = state.sequence[i];
       const tile = getTile(tileIndex);
       flashTile(tile, flashDuration);
+      playTone(330 + (tileIndex % 8) * 42, Math.min(0.12, flashDuration / 3000), "sine", 0.035);
       await wait(flashDuration + pauseDuration);
     }
   }
@@ -159,11 +189,13 @@
     const expectedIndex = state.sequence[state.inputIndex];
     if (index !== expectedIndex) {
       markWrong(tile);
+      playTone(150, 0.16, "sawtooth", 0.05);
       failInput("Wrong tile. Security spiked.");
       return;
     }
 
     markHit(tile);
+    playTone(720, 0.06, "triangle", 0.035);
     state.inputIndex += 1;
 
     if (state.inputIndex >= state.sequence.length) {
@@ -180,8 +212,12 @@
     state.streak += 1;
     const points = 25 + state.round * 12 + Math.min(120, state.streak * 4);
     state.score += points;
+    const securityDrop = Math.max(3, 7 - Math.floor(state.round / 4));
+    state.security = Math.max(0, state.security - securityDrop);
+    updateSecurityMeter();
+    playTone(920, 0.12, "triangle", 0.05);
 
-    dom.statusLine.textContent = `Vault cracked. +${points} points.`;
+    dom.statusLine.textContent = `Vault cracked. +${points} points · security -${securityDrop}%.`;
     state.round += 1;
     updateBestScore();
     updateHUD();
@@ -296,9 +332,13 @@
     state.soundEnabled = !state.soundEnabled;
     dom.soundBtn.setAttribute("aria-pressed", state.soundEnabled ? "true" : "false");
     dom.soundBtn.textContent = `Sound: ${state.soundEnabled ? "On" : "Off"}`;
-    dom.statusLine.textContent = state.soundEnabled
-      ? "Sound enabled (audio effects can be added in a future update)."
-      : "Sound disabled.";
+    if (state.soundEnabled) {
+      ensureAudio();
+      playTone(660, 0.08, "sine", 0.04);
+      dom.statusLine.textContent = "Sound enabled.";
+    } else {
+      dom.statusLine.textContent = "Sound disabled.";
+    }
   }
 
   function handleArrowNavigation(event, currentIndex) {
@@ -343,7 +383,12 @@
   }
 
   function randomTileIndex() {
-    return Math.floor(Math.random() * GRID_SIZE);
+    const previous = state.sequence[state.sequence.length - 1];
+    let next = Math.floor(Math.random() * GRID_SIZE);
+    while (state.sequence.length && next === previous) {
+      next = Math.floor(Math.random() * GRID_SIZE);
+    }
+    return next;
   }
 
   function wait(ms) {
