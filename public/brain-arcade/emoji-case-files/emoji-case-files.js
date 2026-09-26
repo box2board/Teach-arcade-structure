@@ -34,14 +34,25 @@ const app = document.getElementById('app');
 init();
 
 async function init() {
-  const response = await fetch('/brain-arcade/emoji-case-files/data/cases.json');
-  state.cases = await response.json();
-  state.cases.sort((a, b) => a.file - b.file || a.case - b.case);
-  state.cases.forEach((c) => {
-    if (!state.files.has(c.file)) state.files.set(c.file, []);
-    state.files.get(c.file).push(c);
-  });
-  render();
+  document.addEventListener('keydown', handleKeys);
+  try {
+    const response = await fetch('/brain-arcade/emoji-case-files/data/cases.json');
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    state.cases = await response.json();
+    state.cases.sort((a, b) => a.file - b.file || a.case - b.case);
+    state.cases.forEach((c) => {
+      if (!state.files.has(c.file)) state.files.set(c.file, []);
+      state.files.get(c.file).push(c);
+    });
+    render();
+  } catch (error) {
+    console.error('Unable to load Emoji Case Files.', error);
+    app.innerHTML = `<section class="ecf-panel">
+      <h1 class="ecf-title">Emoji Case Files</h1>
+      <p class="ecf-subtitle">The case files could not be loaded. Refresh the page to try again.</p>
+      <div class="ecf-actions"><button class="ecf-btn" onclick="window.location.reload()">Retry</button></div>
+    </section>`;
+  }
 }
 
 function loadProgress() {
@@ -199,7 +210,6 @@ function renderCase() {
   app.querySelector('#submit-btn').onclick = submitCase;
   app.querySelector('#menu-btn').onclick = () => { state.screen = 'files'; render(); };
 
-  app.addEventListener('keydown', handleKeys, { once: true });
 }
 
 function placeTile(emoji, tileEl) {
@@ -221,7 +231,13 @@ function placeTile(emoji, tileEl) {
   }
 
   const previous = state.placements[slot.id] || null;
-  state.history.push({ slotId: slot.id, prevPlacement: previous, integrityBefore: state.integrity });
+  state.history.push({
+    slotId: slot.id,
+    prevPlacement: previous,
+    integrityBefore: state.integrity,
+    removedDecoysBefore: [...state.removedDecoys],
+    movesBefore: state.moves
+  });
   state.placements[slot.id] = { emoji, value: mappedValue, locked: true };
   state.selectedSlotId = null;
   state.moves += 1;
@@ -253,6 +269,9 @@ function undoMove() {
   } else {
     delete state.placements[last.slotId];
   }
+  state.removedDecoys = new Set(last.removedDecoysBefore || []);
+  state.moves = Number.isFinite(last.movesBefore) ? last.movesBefore : Math.max(0, state.moves - 1);
+  state.selectedSlotId = last.slotId;
   state.helperText = 'Last placement removed. Integrity does not recover.';
   render();
 }
