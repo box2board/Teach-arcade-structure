@@ -17,3 +17,6 @@
 .answer-explanation{color:var(--muted);line-height:1.5;max-width:680px;margin:8px auto 18px}.individual-controls:empty:before{content:'Think of your answer…';color:var(--muted);font-weight:800;letter-spacing:.04em}
 
 #judgeControls[hidden],.classroom-only[hidden]{display:none!important}#judgeControls{gap:10px;flex-wrap:wrap;justify-content:center}.team-award{flex:1 1 180px}.no-award{flex:1 1 100%}.classroom-choice:disabled{opacity:1;cursor:default}
+
+/* Native hidden must win over .view display/animation rules after changing screens. */
+.view[hidden]{display:none!important}
