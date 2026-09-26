@@ -35,6 +35,7 @@
     startTime: 0,
     elapsedSeconds: 0,
     timerId: null,
+    timerStarted: false,
     teacherPairs: 8,
     activeRows: 4,
     activeCols: 4
@@ -183,7 +184,8 @@
 
   function startTimer() {
     clearInterval(state.timerId);
-    if (!state.timerEnabled) return;
+    if (!state.timerEnabled || state.timerStarted) return;
+    state.timerStarted = true;
     state.startTime = Date.now() - (state.elapsedSeconds * 1000);
     state.timerId = setInterval(() => {
       state.elapsedSeconds = Math.floor((Date.now() - state.startTime) / 1000);
@@ -291,7 +293,11 @@
         if (state.strikes >= 3) {
           stopTimer();
           els.status.textContent = "Three strikes reached. Restart to try again.";
+          state.firstCard = null;
+          state.secondCard = null;
           state.lockBoard = true;
+          updateStats();
+          return;
         }
       }
       updateStats();
@@ -306,6 +312,7 @@
 
     if (cfg.rapidLock && state.secondCard) return;
 
+    if (!state.timerStarted) startTimer();
     card.flipped = true;
     paintCard(index);
     playTone(360, 0.05);
@@ -358,6 +365,7 @@
     state.matches = 0;
     state.strikes = 0;
     state.elapsedSeconds = 0;
+    state.timerStarted = false;
     state.hintUsed = false;
     els.status.textContent = "Find all matching emoji pairs.";
     els.hint.disabled = !state.hintEnabled;
@@ -367,7 +375,6 @@
     renderBoard();
     updateStats();
     updateBestPanel();
-    startTimer();
   }
 
   function syncTeacherUI() {
