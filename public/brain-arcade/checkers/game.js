@@ -2,6 +2,8 @@ const boardEl = document.getElementById("board");
 const statusEl = document.getElementById("status");
 const newGameBtn = document.getElementById("new-game");
 const undoBtn = document.getElementById("undo");
+const redCountEl = document.getElementById("red-count");
+const yellowCountEl = document.getElementById("yellow-count");
 
 const SIZE = 8;
 const RED = 1;
@@ -191,6 +193,15 @@ function updateUndo() {
 function renderBoard() {
   boardEl.innerHTML = "";
   computeForcedCaptures(currentPlayer);
+
+  let redCount = 0;
+  let yellowCount = 0;
+  board.forEach((row) => row.forEach((value) => {
+    if (value > 0) redCount += 1;
+    if (value < 0) yellowCount += 1;
+  }));
+  if (redCountEl) redCountEl.textContent = String(redCount);
+  if (yellowCountEl) yellowCountEl.textContent = String(yellowCount);
 
   for (let r = 0; r < SIZE; r += 1) {
     for (let c = 0; c < SIZE; c += 1) {
