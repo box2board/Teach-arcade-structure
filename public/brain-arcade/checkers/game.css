@@ -368,3 +368,62 @@ body {
 @media (max-width: 600px) {
   .status-top { align-items: flex-start; }
 }
+
+
+.mode-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.mode-label {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+.mode-toggle {
+  display: inline-flex;
+  padding: 4px;
+  gap: 4px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--card) 88%, var(--text) 12%);
+}
+.mode-choice {
+  border: 0;
+  border-radius: 9px;
+  padding: 8px 12px;
+  background: transparent;
+  color: var(--muted);
+  font-weight: 800;
+  cursor: pointer;
+}
+.mode-choice.active {
+  background: var(--text);
+  color: var(--card);
+  box-shadow: 0 4px 10px rgba(15,23,42,.16);
+}
+.board.computer-turn {
+  pointer-events: none;
+}
+.board.computer-turn::after {
+  content: "Computer thinking…";
+  position: absolute;
+  inset: auto 12px 12px auto;
+  z-index: 10;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(15,23,42,.88);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  box-shadow: 0 6px 16px rgba(15,23,42,.24);
+}
+@media (max-width: 600px) {
+  .mode-row { align-items: flex-start; }
+  .mode-toggle { width: 100%; }
+  .mode-choice { flex: 1; }
+}
