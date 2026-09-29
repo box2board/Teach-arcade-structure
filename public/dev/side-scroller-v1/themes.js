@@ -1,0 +1,4 @@
+window.TA_THEMES={
+wwi:{name:'WWI Frontline',skyTop:'#6b7280',skyBottom:'#cbd5b1',ground:'#594536',groundTop:'#75604c',hazard:'#2f2f2f',question:'#b91c1c',checkpoint:'#d6c59a',finish:'#f5e7b2',player:'#384b3c',far:'#707d68',near:'#4b5848',sun:'rgba(238,220,180,.45)',labels:{hazard:'WIRE',collectible:'INTEL'}},
+egypt:{name:'Ancient Egypt Tomb Run',skyTop:'#0f2942',skyBottom:'#d6a85f',ground:'#b98243',groundTop:'#e0b86b',hazard:'#6b3f20',question:'#1f7a70',checkpoint:'#f0cf78',finish:'#f4d35e',player:'#e8d5a7',far:'#b37a3f',near:'#8d5b31',sun:'rgba(255,225,137,.65)',labels:{hazard:'TRAP',collectible:'SCARAB'}}
+};
