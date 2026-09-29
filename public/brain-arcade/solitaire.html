@@ -8,8 +8,8 @@
 
   <style>
     :root{
-      --bg1:#0b3d2e;
-      --bg2:#06291f;
+      --bg1:#0f5a43;
+      --bg2:#052d23;
       --card:#ffffff;
       --ink:#0b1220;
       --muted:rgba(255,255,255,.45);
@@ -60,7 +60,9 @@
       margin:0;
       min-height:100svh;
       padding-bottom: env(safe-area-inset-bottom);
-      background: radial-gradient(1200px 700px at 30% 10%, var(--bg1), var(--bg2));
+      background:
+        radial-gradient(900px 520px at 50% -8%, rgba(34,197,94,.18), transparent 58%),
+        radial-gradient(1200px 760px at 30% 8%, var(--bg1), var(--bg2));
       color:#fff;
       font-family:var(--font);
       user-select:none;
@@ -91,8 +93,14 @@
       display:flex;
       align-items:flex-start;
       justify-content:space-between;
-      gap: 12px;
+      gap: 14px;
       margin-bottom: 14px;
+      padding:14px;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:16px;
+      background:rgba(3,24,18,.24);
+      box-shadow:0 12px 28px rgba(0,0,0,.12);
+      backdrop-filter:blur(8px);
     }
 
     .brand{ display:flex; flex-direction:column; gap:3px; }
@@ -119,8 +127,9 @@
       border: 1px solid var(--line);
       background: rgba(255,255,255,.08);
       color:#fff;
-      padding: 9px 11px;
-      border-radius: 12px;
+      padding: 10px 12px;
+      min-height:40px;
+      border-radius: 11px;
       font-weight: 800;
       cursor:pointer;
       transition: transform .05s ease, background .15s ease, border-color .15s ease, opacity .15s ease;
@@ -130,6 +139,12 @@
     button:hover{ background: rgba(255,255,255,.12); }
     button[disabled]{ opacity:.55; cursor:not-allowed; }
 
+    .controls #newBtn{
+      background:#fff;
+      border-color:#fff;
+      color:#073226;
+    }
+    .controls #newBtn:hover{ background:#ecfdf5; }
     .modeBtn{
       border-color: var(--accentBorder);
       background: var(--accent);
@@ -169,12 +184,13 @@
 
     .board{
       background:
-        radial-gradient(circle at 50% 0%, rgba(255,255,255,.055), transparent 30%),
-        linear-gradient(180deg, rgba(255,255,255,.055), rgba(0,0,0,.045));
-      border: 1px solid rgba(255,255,255,.2);
-      border-radius: 18px;
-      padding: 14px;
-      box-shadow: 0 22px 55px rgba(0,0,0,.34), inset 0 0 0 1px rgba(255,255,255,.025);
+        radial-gradient(circle at 50% 0%, rgba(255,255,255,.05), transparent 34%),
+        repeating-linear-gradient(45deg, rgba(255,255,255,.012) 0 2px, transparent 2px 5px),
+        rgba(1,34,25,.26);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 20px;
+      padding: 16px;
+      box-shadow: 0 24px 60px rgba(0,0,0,.30), inset 0 0 0 1px rgba(255,255,255,.025);
       overflow: auto;
       -webkit-overflow-scrolling: touch;
       max-height: calc(100svh - 160px);
@@ -217,12 +233,22 @@
       width: var(--cardW);
       height: var(--cardH);
       border-radius: 12px;
-      border: 1px dashed rgba(255,255,255,.25);
-      background: rgba(0,0,0,.06);
+      border: 1px dashed rgba(255,255,255,.24);
+      background: rgba(0,0,0,.08);
       position:absolute;
       inset:0;
       pointer-events:none;
+      display:grid;
+      place-items:center;
     }
+    .slot::after{
+      color:rgba(255,255,255,.16);
+      font-size:24px;
+      font-weight:900;
+    }
+    #stock .slot::after{ content:"◆"; }
+    #waste .slot::after{ content:"↻"; font-size:20px; }
+    #f0 .slot::after,#f1 .slot::after,#f2 .slot::after,#f3 .slot::after{ content:"A"; font-size:22px; font-family:Georgia,serif; }
 
     .pile.highlight .slot{
       border-color: #fde68a;
@@ -244,10 +270,11 @@
       top:0;
       background: var(--card);
       color: var(--ink);
-      border: 1px solid rgba(0,0,0,.18);
+      border: 1px solid rgba(15,23,42,.16);
       box-shadow:
-        0 10px 26px rgba(0,0,0,.22),
-        0 1px 0 rgba(255,255,255,.55) inset;
+        0 8px 18px rgba(0,0,0,.20),
+        0 1px 0 rgba(255,255,255,.72) inset,
+        0 0 0 1px rgba(255,255,255,.35) inset;
       box-sizing:border-box;
       cursor:grab;
 
@@ -1308,34 +1335,27 @@
     state.drag.curY = startY;
     const initialX = startX - state.drag.pointerOffsetX;
     const initialY = startY - state.drag.pointerOffsetY;
-    ghost.style.transform = `translate(${initialX}px, ${initialY}px)`;
+    ghost.style.transform = `translate3d(${initialX}px, ${initialY}px, 0)`;
 
-    // ✅ Dynamic interpolation tick (smoother)
-    const tick = () => {
-      if (!state.drag) return;
-      const d = state.drag;
-
-      const dx = d.targetX - d.curX;
-      const dy = d.targetY - d.curY;
-      const distance = Math.sqrt(dx * dx + dy * dy);
-
-      const lerp = distance > 100 ? 0.5 : 0.3;
-
-      d.curX += dx * lerp;
-      d.curY += dy * lerp;
-
-      const gx = d.curX - d.pointerOffsetX;
-      const gy = d.curY - d.pointerOffsetY;
-      d.ghost.style.transform = `translate(${gx}px, ${gy}px)`;
-      d.rafId = requestAnimationFrame(tick);
-    };
-    state.drag.rafId = requestAnimationFrame(tick);
   }
 
   function moveDrag(x,y){
     if (!state.drag) return;
-    state.drag.targetX = x;
-    state.drag.targetY = y;
+    const d = state.drag;
+    d.targetX = x;
+    d.targetY = y;
+    if (d.rafId) return;
+
+    d.rafId = requestAnimationFrame(() => {
+      if (!state.drag) return;
+      const active = state.drag;
+      active.rafId = 0;
+      active.curX = active.targetX;
+      active.curY = active.targetY;
+      const gx = active.curX - active.pointerOffsetX;
+      const gy = active.curY - active.pointerOffsetY;
+      active.ghost.style.transform = `translate3d(${gx}px, ${gy}px, 0)`;
+    });
   }
 
   function resolveDraggedCards(){
@@ -1362,12 +1382,10 @@
 
     cancelAnimationFrame(state.drag.rafId);
 
-    // ✅ Smooth drop fade (instead of instant remove)
     const ghost = state.drag.ghost;
-    ghost.style.transition = 'opacity 150ms ease, transform 150ms ease';
+    ghost.style.transition = 'opacity 90ms ease';
     ghost.style.opacity = '0';
-    ghost.style.transform = (ghost.style.transform || '') + ' scale(0.95)';
-    setTimeout(() => ghost.remove(), 150);
+    setTimeout(() => ghost.remove(), 90);
 
     const dragged = state.drag;
     state.drag = null;
@@ -1476,8 +1494,7 @@
     const dx = Math.abs(ev.clientX - press.startX);
     const dy = Math.abs(ev.clientY - press.startY);
 
-    // ✅ Lower threshold: 10 -> 4 for responsive dragging
-    if (!press.moved && (dx + dy) > 4){
+    if (!press.moved && (dx + dy) > 7){
       press.moved = true;
       startDrag(press.cardEl, press.fromRef, press.cards, press.startX, press.startY);
     }
