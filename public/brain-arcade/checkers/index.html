@@ -51,11 +51,12 @@
         <p class="eyebrow">Brain Arcade</p>
         <h1>Checkers</h1>
         <p class="subtitle">
-          Classic checkers with forced captures, multi-jumps, kinging, and quick two-player strategy.
+          Classic checkers with forced captures, multi-jumps, kinging, and your choice of local two-player or computer play.
           Capture, chain multi-jumps, and crown kings to win.
         </p>
       </div>
       <div class="hero-badges" aria-label="Game highlights">
+        <span>Vs Computer</span>
         <span>2 Players</span>
         <span>Forced Captures</span>
         <span>Multi-Jumps</span>
@@ -75,6 +76,13 @@
               <span class="count-chip yellow-chip">Yellow <strong id="yellow-count">12</strong></span>
             </div>
           </div>
+          <div class="mode-row" aria-label="Game mode">
+            <span class="mode-label">Mode</span>
+            <div class="mode-toggle" role="group" aria-label="Choose game mode">
+              <button id="mode-computer" class="mode-choice active" type="button" aria-pressed="true">Vs Computer</button>
+              <button id="mode-two-player" class="mode-choice" type="button" aria-pressed="false">2 Players</button>
+            </div>
+          </div>
           <div class="action-row">
             <button id="new-game" class="action primary" type="button">New Game</button>
             <button id="undo" class="action" type="button" disabled>Undo</button>
@@ -89,7 +97,8 @@
         <div class="panel-card">
           <h2>How to Play</h2>
           <ul>
-            <li>Red moves first. Take turns moving diagonally on dark squares.</li>
+            <li>Red moves first. In Computer mode, you are Red and the computer is Yellow.</li>
+            <li>In 2 Players mode, take turns moving diagonally on dark squares.</li>
             <li>Captures are required when available.</li>
             <li>Jump again if another capture is possible.</li>
             <li>Reach the far row to crown a king (moves both directions).</li>
