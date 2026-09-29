@@ -450,6 +450,7 @@ function applyMove(from, move) {
       mustContinue = true;
       legalMoves = nextCaptures;
       renderBoard();
+      if (isComputerTurn()) queueComputerTurn(300);
       return;
     }
   }
