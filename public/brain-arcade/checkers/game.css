@@ -73,6 +73,7 @@ body {
 
 .hero-badges span {
   background: var(--card);
+  color: var(--text);
   border: 1px solid var(--border);
   border-radius: 999px;
   padding: 6px 12px;
