@@ -4,6 +4,8 @@ const newGameBtn = document.getElementById("new-game");
 const undoBtn = document.getElementById("undo");
 const redCountEl = document.getElementById("red-count");
 const yellowCountEl = document.getElementById("yellow-count");
+const modeComputerBtn = document.getElementById("mode-computer");
+const modeTwoPlayerBtn = document.getElementById("mode-two-player");
 
 const SIZE = 8;
 const RED = 1;
@@ -20,6 +22,9 @@ let mustContinue = false;
 let history = [];
 let gameOver = false;
 let pendingSnapshot = null;
+let gameMode = "computer";
+let computerThinking = false;
+let computerTimer = null;
 
 const directions = {
   [RED]: [{ r: -1, c: -1 }, { r: -1, c: 1 }],
@@ -34,6 +39,9 @@ const kingDirections = [
 ];
 
 function initBoard() {
+  clearTimeout(computerTimer);
+  computerThinking = false;
+  boardEl.classList.remove("computer-turn");
   board = Array.from({ length: SIZE }, () => Array(SIZE).fill(0));
   for (let r = 0; r < 3; r += 1) {
     for (let c = 0; c < SIZE; c += 1) {
@@ -58,7 +66,8 @@ function initBoard() {
   gameOver = false;
   pendingSnapshot = null;
   updateUndo();
-  updateStatus("Red goes first.");
+  updateStatus(gameMode === "computer" ? "Your turn. Red goes first." : "Red goes first.");
+  syncModeUI();
   renderBoard();
 }
 
@@ -190,6 +199,133 @@ function updateUndo() {
   undoBtn.disabled = history.length === 0;
 }
 
+function syncModeUI() {
+  const vsComputer = gameMode === "computer";
+  modeComputerBtn.classList.toggle("active", vsComputer);
+  modeTwoPlayerBtn.classList.toggle("active", !vsComputer);
+  modeComputerBtn.setAttribute("aria-pressed", String(vsComputer));
+  modeTwoPlayerBtn.setAttribute("aria-pressed", String(!vsComputer));
+}
+
+function setGameMode(mode) {
+  if (mode !== "computer" && mode !== "two-player") return;
+  gameMode = mode;
+  initBoard();
+}
+
+function isComputerTurn() {
+  return gameMode === "computer" && currentPlayer === YELLOW && !gameOver;
+}
+
+function collectLegalChoices(player) {
+  computeForcedCaptures(player);
+  const capturesRequired = forcedCaptureMap.size > 0;
+  const choices = [];
+
+  for (let r = 0; r < SIZE; r += 1) {
+    for (let c = 0; c < SIZE; c += 1) {
+      if (!isPlayerPiece(board[r][c], player)) continue;
+      const available = getAvailableMoves(r, c, player);
+      const moves = capturesRequired ? available.captures : (available.captures.length ? available.captures : available.moves);
+      moves.forEach((move) => choices.push({ from: { r, c }, move }));
+    }
+  }
+  return choices;
+}
+
+function scoreComputerChoice(choice) {
+  const piece = board[choice.from.r][choice.from.c];
+  const [toR, toC] = choice.move.to;
+  let score = 0;
+
+  if (choice.move.capture) score += 100;
+  if (piece === YELLOW && toR === SIZE - 1) score += 70;
+  if (piece === YELLOW_KING) score += 8;
+
+  // Prefer useful central squares and forward progress.
+  const centerDistance = Math.abs(3.5 - toR) + Math.abs(3.5 - toC);
+  score += Math.max(0, 12 - centerDistance * 2);
+  if (piece === YELLOW) score += toR * 2;
+
+  // Avoid obvious immediate capture when possible.
+  const original = board[toR][toC];
+  board[choice.from.r][choice.from.c] = 0;
+  board[toR][toC] = piece;
+  if (choice.move.capture) {
+    const [capR, capC] = choice.move.capture;
+    const captured = board[capR][capC];
+    board[capR][capC] = 0;
+    const threatened = collectLegalChoices(RED).some((reply) =>
+      reply.move.capture && reply.move.capture[0] === toR && reply.move.capture[1] === toC
+    );
+    if (threatened) score -= 24;
+    board[capR][capC] = captured;
+  } else {
+    const threatened = collectLegalChoices(RED).some((reply) =>
+      reply.move.capture && reply.move.capture[0] === toR && reply.move.capture[1] === toC
+    );
+    if (threatened) score -= 24;
+  }
+  board[toR][toC] = original;
+  board[choice.from.r][choice.from.c] = piece;
+
+  return score + Math.random() * 4;
+}
+
+function chooseComputerMove() {
+  const choices = collectLegalChoices(YELLOW);
+  if (!choices.length) return null;
+  return choices
+    .map((choice) => ({ ...choice, score: scoreComputerChoice(choice) }))
+    .sort((a, b) => b.score - a.score)[0];
+}
+
+function queueComputerTurn(delay = 420) {
+  if (!isComputerTurn() || computerThinking) return;
+  computerThinking = true;
+  boardEl.classList.add("computer-turn");
+  updateStatus("Computer thinking…");
+  clearTimeout(computerTimer);
+  computerTimer = setTimeout(runComputerTurn, delay);
+}
+
+function runComputerTurn() {
+  if (!isComputerTurn()) {
+    computerThinking = false;
+    boardEl.classList.remove("computer-turn");
+    return;
+  }
+
+  computerThinking = false;
+  boardEl.classList.remove("computer-turn");
+
+  // During a multi-jump, continue with the selected piece only.
+  let choice = null;
+  if (mustContinue && selected) {
+    const captures = getAvailableMoves(selected.r, selected.c, YELLOW).captures;
+    if (captures.length) {
+      choice = captures
+        .map((move) => ({ from: { ...selected }, move, score: scoreComputerChoice({ from: selected, move }) }))
+        .sort((a, b) => b.score - a.score)[0];
+    }
+  } else {
+    choice = chooseComputerMove();
+  }
+
+  if (!choice) {
+    gameOver = true;
+    updateStatus("Red wins!");
+    renderBoard();
+    return;
+  }
+
+  selected = { ...choice.from };
+  legalMoves = [choice.move];
+  applyMove(selected, choice.move);
+}
+
+
+
 function renderBoard() {
   boardEl.innerHTML = "";
   computeForcedCaptures(currentPlayer);
@@ -242,7 +378,7 @@ function renderBoard() {
     return;
   }
 
-  const playerLabel = currentPlayer === RED ? "Red" : "Yellow";
+  const playerLabel = currentPlayer === RED ? "Red" : (gameMode === "computer" ? "Computer" : "Yellow");
   if (mustContinue) {
     updateStatus(`${playerLabel}, continue capturing with the same piece.`);
     return;
@@ -251,7 +387,7 @@ function renderBoard() {
     updateStatus(`${playerLabel} to move. Capture required.`);
     return;
   }
-  updateStatus(`${playerLabel} to move.`);
+  updateStatus(gameMode === "computer" && currentPlayer === RED ? "Your turn." : `${playerLabel} to move.`);
 }
 
 function handleSelection(r, c) {
@@ -345,6 +481,7 @@ function finishTurn() {
   }
 
   renderBoard();
+  if (isComputerTurn()) queueComputerTurn();
 }
 
 function handleMove(r, c) {
@@ -374,6 +511,7 @@ function handleMove(r, c) {
 }
 
 boardEl.addEventListener("click", (event) => {
+  if (computerThinking || isComputerTurn()) return;
   const target = event.target.closest("button.square");
   if (!target) {
     return;
@@ -387,11 +525,24 @@ newGameBtn.addEventListener("click", () => {
   initBoard();
 });
 
+modeComputerBtn.addEventListener("click", () => setGameMode("computer"));
+modeTwoPlayerBtn.addEventListener("click", () => setGameMode("two-player"));
+
 undoBtn.addEventListener("click", () => {
-  const snapshot = history.pop();
+  clearTimeout(computerTimer);
+  computerThinking = false;
+  boardEl.classList.remove("computer-turn");
+
+  let snapshot = history.pop();
   if (!snapshot) {
     return;
   }
+
+  // In computer mode, undo both the computer reply and the player's preceding turn.
+  if (gameMode === "computer" && currentPlayer === RED && history.length > 0) {
+    snapshot = history.pop();
+  }
+
   board = cloneBoard(snapshot.board);
   currentPlayer = snapshot.currentPlayer;
   selected = null;
@@ -401,6 +552,8 @@ undoBtn.addEventListener("click", () => {
   pendingSnapshot = null;
   updateUndo();
   renderBoard();
+  if (isComputerTurn()) queueComputerTurn();
 });
 
+syncModeUI();
 initBoard();
