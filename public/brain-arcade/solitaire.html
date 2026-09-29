@@ -149,6 +149,11 @@
       border-color: var(--accentBorder);
       background: var(--accent);
     }
+    #autoBtn.ready{
+      background:linear-gradient(135deg,#7c3aed,#2563eb);
+      border-color:rgba(191,219,254,.55);
+      box-shadow:0 8px 20px rgba(37,99,235,.22);
+    }
     .modeBtn b{ font-weight: 900; }
 
     .bar{
@@ -520,7 +525,7 @@
         <button id="restartBtn">Restart Deal</button>
         <button id="undoBtn" disabled>Undo</button>
         <button id="hintBtn">Hint</button>
-        <button id="autoBtn">Auto-Move</button>
+        <button id="autoBtn" title="Finishes the game when all remaining tableau cards are face up and the stock is clear">Auto-Complete</button>
         <button id="modeBtn" class="modeBtn" title="Toggle controls">Mode: <b id="modeLabel">Drag</b></button>
         <button id="endBtn" title="End game and show score">End Game</button>
       </div>
@@ -1211,6 +1216,20 @@
     els.undoBtn.disabled = state.history.length === 0;
   }
 
+  function isAutoCompleteReady(){
+    if (checkWin()) return false;
+    if (state.stock.length || state.waste.length) return false;
+    return state.tableau.every(pile => pile.every(card => card.faceUp));
+  }
+
+  function syncAutoCompleteUI(){
+    const ready = isAutoCompleteReady();
+    els.autoBtn.classList.toggle("ready", ready);
+    els.autoBtn.setAttribute("aria-label", ready
+      ? "Auto-complete the remaining game"
+      : "Auto-complete unlocks when the stock and waste are empty and all tableau cards are face up");
+  }
+
   function snapshotRects(){
     state.lastRects.clear();
     document.querySelectorAll(".card").forEach(el => {
@@ -1305,6 +1324,7 @@
 
   function render(skipFlip=false){
     updateHUD();
+    syncAutoCompleteUI();
     clearSelected();
 
     if (!skipFlip) snapshotRects();
@@ -1694,6 +1714,89 @@
   // =========================
   // Buttons / keys
   // =========================
+  async function animateAutoFoundationMove(card, targetEl){
+    const sourceEl = document.querySelector(`[data-card-id="${card.id}"]`);
+    if (!sourceEl || !targetEl) return;
+
+    const from = sourceEl.getBoundingClientRect();
+    const to = targetEl.getBoundingClientRect();
+    const ghost = sourceEl.cloneNode(true);
+    ghost.classList.add("is-dragging");
+    ghost.style.position = "fixed";
+    ghost.style.left = `${from.left}px`;
+    ghost.style.top = `${from.top}px`;
+    ghost.style.setProperty("--y", "0px");
+    ghost.style.zIndex = "10000";
+    ghost.style.pointerEvents = "none";
+    ghost.style.transition = "transform 180ms cubic-bezier(.2,.8,.2,1), opacity 180ms ease";
+    document.body.appendChild(ghost);
+
+    await raf();
+    ghost.style.transform = `translate3d(${to.left - from.left}px,${to.top - from.top}px,0) scale(.98)`;
+    ghost.style.opacity = ".92";
+    await sleep(190);
+    ghost.remove();
+  }
+
+  async function autoCompleteGame(){
+    if (state.busy) return;
+
+    if (!isAutoCompleteReady()){
+      toast("Auto-complete unlocks when the stock is clear and every tableau card is face up");
+      return;
+    }
+
+    pushHistory();
+    setBusy(true);
+    clearSelected();
+
+    let movedCount = 0;
+    let safety = 0;
+
+    while (!checkWin() && safety < 60){
+      safety++;
+      let move = null;
+
+      for (let ti = 0; ti < state.tableau.length && !move; ti++){
+        const card = top(state.tableau[ti]);
+        if (!card || !card.faceUp) continue;
+        const fi = FOUNDATION_SUITS.indexOf(card.suit);
+        if (fi >= 0 && canMoveToFoundation(card, fi)){
+          move = { ti, fi, card };
+        }
+      }
+
+      if (!move) break;
+
+      await animateAutoFoundationMove(move.card, els.foundations[move.fi]);
+      state.tableau[move.ti].pop();
+      state.foundations[move.fi].push(move.card);
+      state.moves += 1;
+      state.score = Math.max(0, state.score + 10);
+      movedCount++;
+      render(true);
+      await sleep(35);
+    }
+
+    setBusy(false);
+    updateHUD();
+    syncAutoCompleteUI();
+
+    if (checkWin()){
+      const final = computeFinalScore();
+      const isBest = saveBestScore(final);
+      safeRemove(SAVE_KEY);
+      els.winScoreLine.textContent = `Final Score: ${final.toLocaleString()} • Time: ${formatTime(elapsedSeconds())} • Moves: ${state.moves}${isBest ? " • New Best!" : ""}`;
+      els.win.classList.add("show");
+      toast(isBest ? "Auto-complete finished — new best!" : "Auto-complete finished!");
+    } else {
+      persistGame();
+      toast(movedCount
+        ? `Auto-complete moved ${movedCount} card${movedCount === 1 ? "" : "s"}, but the position is still blocked`
+        : "No safe auto-complete move is available");
+    }
+  }
+
   function getHint(){
     const foundationMove = findAutoFoundationMove();
     if (foundationMove){
@@ -1792,21 +1895,7 @@
       showHint();
     });
 
-    els.autoBtn.addEventListener("click", () => {
-      if (state.busy) return;
-      let count = 0;
-      let moved;
-      do {
-        moved = findAutoFoundationMove();
-        if (moved){
-          setSelected(moved.from, moved.cards);
-          tryMoveSelectedTo(moved.to);
-          count++;
-        }
-      } while (moved && count < 50);
-      if (count) toast(`Auto-moved ${count} to foundations`);
-      else toast("No foundation moves");
-    });
+    els.autoBtn.addEventListener("click", autoCompleteGame);
 
     els.endBtn.addEventListener("click", showEndModal);
     els.endCloseBtn.addEventListener("click", () => els.end.classList.remove("show"));
