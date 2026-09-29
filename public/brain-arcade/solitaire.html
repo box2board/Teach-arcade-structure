@@ -248,7 +248,14 @@
     }
     #stock .slot::after{ content:"◆"; }
     #waste .slot::after{ content:"↻"; font-size:20px; }
-    #f0 .slot::after,#f1 .slot::after,#f2 .slot::after,#f3 .slot::after{ content:"A"; font-size:22px; font-family:Georgia,serif; }
+    #f0 .slot::after{ content:"♠"; }
+    #f1 .slot::after{ content:"♥"; color:rgba(248,113,113,.34); }
+    #f2 .slot::after{ content:"♦"; color:rgba(248,113,113,.34); }
+    #f3 .slot::after{ content:"♣"; }
+    #f0 .slot::after,#f1 .slot::after,#f2 .slot::after,#f3 .slot::after{
+      font-size:30px;
+      font-family:Georgia,serif;
+    }
 
     .pile.highlight .slot{
       border-color: #fde68a;
@@ -298,6 +305,23 @@
         0 16px 34px rgba(0,0,0,.3),
         0 1px 0 rgba(255,255,255,.55) inset;
       filter:brightness(1.05);
+    }
+    .hint-source{
+      animation:hintPulse .65s ease-in-out 2;
+      box-shadow:0 0 0 4px rgba(250,204,21,.8), 0 0 28px rgba(250,204,21,.55) !important;
+      z-index:20;
+    }
+    .hint-target .slot{
+      animation:hintTarget .65s ease-in-out 2;
+      border-color:#facc15 !important;
+      background:rgba(250,204,21,.13) !important;
+      box-shadow:0 0 0 4px rgba(250,204,21,.14), inset 0 0 22px rgba(250,204,21,.10) !important;
+    }
+    @keyframes hintPulse{
+      50%{ transform:translate3d(0,var(--y,0px),0) scale(1.045); }
+    }
+    @keyframes hintTarget{
+      50%{ box-shadow:0 0 0 7px rgba(250,204,21,.20), inset 0 0 28px rgba(250,204,21,.15); }
     }
 
     /* ✅ NEW: Cleaner, consistent card back (no cut-off symbols) */
@@ -493,6 +517,7 @@
       </div>
       <div class="controls">
         <button id="newBtn">New Game</button>
+        <button id="restartBtn">Restart Deal</button>
         <button id="undoBtn" disabled>Undo</button>
         <button id="hintBtn">Hint</button>
         <button id="autoBtn">Auto-Move</button>
@@ -506,6 +531,7 @@
         <div class="hudStat"><span>Moves</span><b id="moves">0</b></div>
         <div class="hudStat"><span>Time</span><b id="time">0:00</b></div>
         <div class="hudStat"><span>Score</span><b id="score">0</b></div>
+        <div class="hudStat"><span>Best</span><b id="best">0</b></div>
       </div>
       <div class="muted">Build down in alternating colors · Foundations build up by suit</div>
     </div>
@@ -567,7 +593,10 @@
 <script>
 (() => {
   const SUITS = ["♠","♥","♦","♣"];
+  const FOUNDATION_SUITS = ["♠","♥","♦","♣"];
   const RANKS = ["A","2","3","4","5","6","7","8","9","10","J","Q","K"];
+  const SAVE_KEY = "ta_solitaire_game_v2";
+  const BEST_KEY = "ta_solitaire_best_v1";
 
   const state = {
     stock: [],
@@ -582,7 +611,9 @@
     startTs: Date.now(),
     controlMode: "drag",
     lastRects: new Map(),
-    busy: false
+    busy: false,
+    initialDeal: null,
+    bestScore: 0
   };
 
   const els = {
@@ -592,9 +623,11 @@
     tableau: [0,1,2,3,4,5,6].map(i => document.getElementById(`t${i}`)),
     moves: document.getElementById("moves"),
     score: document.getElementById("score"),
+    best: document.getElementById("best"),
     time: document.getElementById("time"),
     undoBtn: document.getElementById("undoBtn"),
     newBtn: document.getElementById("newBtn"),
+    restartBtn: document.getElementById("restartBtn"),
     hintBtn: document.getElementById("hintBtn"),
     autoBtn: document.getElementById("autoBtn"),
     endBtn: document.getElementById("endBtn"),
@@ -619,7 +652,7 @@
 
   function setBusy(on){
     state.busy = on;
-    const buttons = [els.newBtn, els.undoBtn, els.hintBtn, els.autoBtn, els.modeBtn, els.endBtn];
+    const buttons = [els.newBtn, els.restartBtn, els.undoBtn, els.hintBtn, els.autoBtn, els.modeBtn, els.endBtn];
 
     if (on){
       state._btnPrev = new Map();
@@ -743,6 +776,86 @@
     return Math.max(0, Math.floor((Date.now() - state.startTs)/1000));
   }
 
+  function safeGet(key){
+    try { return localStorage.getItem(key); } catch { return null; }
+  }
+  function safeSet(key, value){
+    try { localStorage.setItem(key, value); return true; } catch { return false; }
+  }
+  function safeRemove(key){
+    try { localStorage.removeItem(key); } catch {}
+  }
+
+  function loadBestScore(){
+    const saved = Number(safeGet(BEST_KEY));
+    state.bestScore = Number.isFinite(saved) && saved > 0 ? saved : 0;
+    if (els.best) els.best.textContent = state.bestScore.toLocaleString();
+  }
+
+  function saveBestScore(score){
+    if (!Number.isFinite(score) || score <= state.bestScore) return false;
+    state.bestScore = score;
+    safeSet(BEST_KEY, String(score));
+    if (els.best) els.best.textContent = score.toLocaleString();
+    return true;
+  }
+
+  function persistGame(){
+    if (state.busy || !state.tableau.some(p => p.length) || checkWin()) return;
+    const snap = cloneState();
+    const payload = {
+      version: 2,
+      snap,
+      elapsed: elapsedSeconds(),
+      initialDeal: state.initialDeal
+    };
+    safeSet(SAVE_KEY, JSON.stringify(payload));
+  }
+
+  function loadSavedGame(){
+    const raw = safeGet(SAVE_KEY);
+    if (!raw) return false;
+    try {
+      const payload = JSON.parse(raw);
+      const snap = payload?.snap;
+      if (!snap || !Array.isArray(snap.stock) || !Array.isArray(snap.tableau) || snap.tableau.length !== 7) return false;
+      restoreState({
+        ...snap,
+        startTs: Date.now() - Math.max(0, Number(payload.elapsed) || 0) * 1000
+      });
+      state.history = [];
+      state.initialDeal = payload.initialDeal || null;
+      els.undoBtn.disabled = true;
+      toast("Game resumed");
+      return true;
+    } catch {
+      safeRemove(SAVE_KEY);
+      return false;
+    }
+  }
+
+  function restartDeal(){
+    if (state.busy || !state.initialDeal) return;
+    try {
+      const snap = JSON.parse(state.initialDeal);
+      state.history = [];
+      restoreState({
+        ...snap,
+        startTs: Date.now()
+      });
+      state.score = 0;
+      state.moves = 0;
+      updateHUD();
+      els.undoBtn.disabled = true;
+      els.win.classList.remove("show");
+      els.end.classList.remove("show");
+      persistGame();
+      toast("Deal restarted");
+    } catch {
+      toast("Restart unavailable");
+    }
+  }
+
   function checkWin(){
     return state.foundations.every(p => p.length === 13);
   }
@@ -761,10 +874,10 @@
   // Mode
   // =========================
   function loadMode(){
-    const saved = localStorage.getItem("ta_solitaire_mode");
+    const saved = safeGet("ta_solitaire_mode");
     if (saved === "tap" || saved === "drag") state.controlMode = saved;
   }
-  function saveMode(){ localStorage.setItem("ta_solitaire_mode", state.controlMode); }
+  function saveMode(){ safeSet("ta_solitaire_mode", state.controlMode); }
 
   function syncModeUI(){
     els.modeLabel.textContent = (state.controlMode === "tap") ? "Tap" : "Drag";
@@ -786,10 +899,11 @@
   // Rules
   // =========================
   function canMoveToFoundation(card, fIndex){
+    if (card.suit !== FOUNDATION_SUITS[fIndex]) return false;
     const pile = state.foundations[fIndex];
     const t = top(pile);
     if (!t) return card.rank === 1;
-    return (t.suit === card.suit) && (card.rank === t.rank + 1);
+    return card.rank === t.rank + 1;
   }
 
   function canMoveToTableau(card, tIndex){
@@ -885,12 +999,15 @@
     }
 
     state.startTs = Date.now();
+    state.initialDeal = JSON.stringify(cloneState());
     updateHUD();
     els.undoBtn.disabled = true;
     els.win.classList.remove("show");
     els.end.classList.remove("show");
-    toast("New game!");
+    safeRemove(SAVE_KEY);
     setBusy(false);
+    persistGame();
+    toast("New game!");
   }
 
   async function animateDealOne(col){
@@ -942,6 +1059,7 @@
       bumpScore(-50);
       toast("Recycled waste → stock");
       render();
+      persistGame();
       return;
     }
 
@@ -951,6 +1069,7 @@
     state.waste.push(c);
     bumpMoves(1);
     render();
+    persistGame();
   }
 
   // =========================
@@ -1053,9 +1172,13 @@
 
     if (checkWin()){
       const final = computeFinalScore();
-      els.winScoreLine.textContent = `Final Score: ${final.toLocaleString()} • Time: ${formatTime(elapsedSeconds())} • Moves: ${state.moves}`;
+      const isBest = saveBestScore(final);
+      safeRemove(SAVE_KEY);
+      els.winScoreLine.textContent = `Final Score: ${final.toLocaleString()} • Time: ${formatTime(elapsedSeconds())} • Moves: ${state.moves}${isBest ? " • New Best!" : ""}`;
       els.win.classList.add("show");
-      toast("You win!");
+      toast(isBest ? "New best score!" : "You win!");
+    } else {
+      persistGame();
     }
     return true;
   }
@@ -1071,6 +1194,7 @@
       render();
       const el = document.querySelector(`[data-card-id="${t.id}"]`);
       if (el) { el.classList.add("flipIn"); setTimeout(() => el.classList.remove("flipIn"), 240); }
+      persistGame();
       return true;
     }
     return false;
@@ -1082,6 +1206,7 @@
   function updateHUD(){
     els.moves.textContent = String(state.moves);
     els.score.textContent = String(state.score);
+    if (els.best) els.best.textContent = state.bestScore.toLocaleString();
     els.time.textContent = formatTime(elapsedSeconds());
     els.undoBtn.disabled = state.history.length === 0;
   }
@@ -1569,18 +1694,26 @@
   // =========================
   // Buttons / keys
   // =========================
-  function computeHint(){
+  function getHint(){
     const foundationMove = findAutoFoundationMove();
     if (foundationMove){
       const card = foundationMove.cards[0];
-      return `Move ${rankLabel(card.rank)}${card.suit} to a foundation`;
+      return {
+        text: `Move ${rankLabel(card.rank)}${card.suit} to its foundation`,
+        sourceCardId: card.id,
+        targetEl: els.foundations[foundationMove.to.idx]
+      };
     }
 
     const waste = top(state.waste);
     if (waste?.faceUp){
       for (let ti = 0; ti < 7; ti++){
         if (canMoveToTableau(waste, ti)) {
-          return `Move ${rankLabel(waste.rank)}${waste.suit} from waste to tableau ${ti + 1}`;
+          return {
+            text: `Move ${rankLabel(waste.rank)}${waste.suit} from waste to tableau ${ti + 1}`,
+            sourceCardId: waste.id,
+            targetEl: els.tableau[ti]
+          };
         }
       }
     }
@@ -1594,17 +1727,47 @@
         if (!isValidSequence(stack)) continue;
         for (let to = 0; to < 7; to++){
           if (to !== from && canMoveToTableau(card, to)) {
-            return `Move ${rankLabel(card.rank)}${card.suit} to tableau ${to + 1}`;
+            return {
+              text: `Move ${rankLabel(card.rank)}${card.suit} to tableau ${to + 1}`,
+              sourceCardId: card.id,
+              targetEl: els.tableau[to]
+            };
           }
         }
       }
       const topCard = top(pile);
-      if (topCard && !topCard.faceUp) return `Flip the hidden card in tableau ${from + 1}`;
+      if (topCard && !topCard.faceUp) {
+        return {
+          text: `Flip the hidden card in tableau ${from + 1}`,
+          sourceCardId: topCard.id,
+          targetEl: els.tableau[from]
+        };
+      }
     }
 
-    if (state.stock.length) return "Draw a card from the stock";
-    if (!state.stock.length && state.waste.length) return "Recycle the waste pile and keep looking";
+    if (state.stock.length) return { text:"Draw a card from the stock", targetEl:els.stock };
+    if (!state.stock.length && state.waste.length) return { text:"Recycle the waste pile", targetEl:els.stock };
     return null;
+  }
+
+  function showHint(){
+    const hint = getHint();
+    if (!hint) return toast("No obvious move found");
+
+    clearHighlights();
+    const source = hint.sourceCardId
+      ? document.querySelector(`[data-card-id="${hint.sourceCardId}"]`)
+      : null;
+
+    source?.classList.add("hint-source");
+    hint.targetEl?.classList.add("hint-target");
+    toast(hint.text);
+
+    clearTimeout(showHint._t);
+    showHint._t = setTimeout(() => {
+      source?.classList.remove("hint-source");
+      hint.targetEl?.classList.remove("hint-target");
+    }, 1350);
   }
 
   function bindHandlers(){
@@ -1613,20 +1776,20 @@
     });
 
     els.newBtn.addEventListener("click", newGame);
+    els.restartBtn.addEventListener("click", restartDeal);
 
     els.undoBtn.addEventListener("click", () => {
       if (state.busy) return;
       if (!state.history.length) return;
       const snap = state.history.pop();
       restoreState(snap);
+      persistGame();
       toast("Undid last move");
     });
 
     els.hintBtn.addEventListener("click", () => {
       if (state.busy) return;
-      const move = computeHint();
-      if (!move) return toast("No obvious move found");
-      toast(move);
+      showHint();
     });
 
     els.autoBtn.addEventListener("click", () => {
@@ -1657,6 +1820,7 @@
     document.addEventListener("keydown", (e) => {
       if (state.busy) return;
       if (e.key === "n" || e.key === "N") newGame();
+      if (e.key === "r" || e.key === "R") restartDeal();
       if (e.key === "u" || e.key === "U") els.undoBtn.click();
       if (e.key === "a" || e.key === "A") els.autoBtn.click();
       if (e.key === "h" || e.key === "H") els.hintBtn.click();
@@ -1676,10 +1840,12 @@
 
   // Init
   loadMode();
+  loadBestScore();
   syncModeUI();
   bindHandlers();
   render(true);
-  newGame();
+  if (!loadSavedGame()) newGame();
+  window.addEventListener("beforeunload", persistGame);
 })();
 </script>
 </body>
