@@ -68,15 +68,15 @@
   }
 
   function askOpeningQuestion() {
-    if (state.roundQuestion >= 10) {
+    if (state.roundQuestion >= 20) {
       state.mode = "fight";
       showScreen("");
       $("round-state").textContent = "FIGHT!";
-      toast("Power up complete — fight!");
+      toast("Both fighters are powered up — fight!");
       syncHud();
       return;
     }
-    state.activePlayer = state.roundQuestion % 2 === 0 ? 1 : 2;
+    state.activePlayer = state.roundQuestion < 10 ? 1 : 2;
     state.questionMode = "opening";
     presentQuestion();
   }
@@ -104,20 +104,27 @@
   function presentQuestion() {
     state.currentQuestion = pickQuestion();
     if (!state.currentQuestion) return;
+    const displayedChoices = state.currentQuestion.choices.map((text, sourceIndex) => ({ text, isCorrect: sourceIndex === state.currentQuestion.answer }));
+    for (let i = displayedChoices.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [displayedChoices[i], displayedChoices[j]] = [displayedChoices[j], displayedChoices[i]];
+    }
+    state.displayedChoices = displayedChoices;
+    state.displayAnswer = displayedChoices.findIndex((choice) => choice.isCorrect);
     state.feedbackLock = false;
     const p = fighters[state.activePlayer];
     $("question-phase").textContent = state.questionMode === "opening" ? "POWER ROUND" : "JUICE RECHARGE";
-    $("question-count").textContent = state.questionMode === "opening" ? `QUESTION ${state.roundQuestion + 1} OF 10` : "ANSWER CORRECTLY TO RECHARGE";
+    $("question-count").textContent = state.questionMode === "opening" ? `QUESTION ${(state.roundQuestion % 10) + 1} OF 10` : "ANSWER CORRECTLY TO RECHARGE";
     $("question-player").textContent = `PLAYER ${p.id}, ${state.questionMode === "opening" ? "ANSWER TO EARN JUICE" : "ANSWER TO GET BACK IN THE FIGHT"}`;
     $("question-prompt").textContent = state.currentQuestion.prompt;
     $("question-feedback").textContent = "";
     const grid = $("answer-grid");
     grid.replaceChildren();
-    state.currentQuestion.choices.forEach((choice, index) => {
+    displayedChoices.forEach((choice, index) => {
       const button = document.createElement("button");
       button.type = "button";
       button.className = "answer-button";
-      button.textContent = `${String.fromCharCode(65 + index)}. ${choice}`;
+      button.textContent = `${String.fromCharCode(65 + index)}. ${choice.text}`;
       button.addEventListener("click", () => answerQuestion(index, button));
       grid.append(button);
     });
@@ -126,17 +133,17 @@
   function answerQuestion(index, selectedButton) {
     if (state.feedbackLock) return;
     state.feedbackLock = true;
-    const correct = index === state.currentQuestion.answer;
+    const correct = index === state.displayAnswer;
     const buttons = [...$("answer-grid").querySelectorAll("button")];
     buttons.forEach((button, i) => {
       button.disabled = true;
-      if (i === state.currentQuestion.answer) button.classList.add("correct");
+      if (i === state.displayAnswer) button.classList.add("correct");
     });
     if (!correct) selectedButton.classList.add("incorrect");
     const player = fighters[state.activePlayer];
     if (correct) {
-      player.juice = Math.min(100, player.juice + (state.questionMode === "opening" ? 20 : 25));
-      $("question-feedback").textContent = `Correct! +${state.questionMode === "opening" ? 20 : 25} juice. ${state.currentQuestion.explanation}`;
+      player.juice = Math.min(100, player.juice + (state.questionMode === "opening" ? 10 : 25));
+      $("question-feedback").textContent = `Correct! +${state.questionMode === "opening" ? 10 : 25} juice. ${state.currentQuestion.explanation}`;
       playTone(660);
     } else {
       $("question-feedback").textContent = `Not quite. ${state.currentQuestion.explanation}`;
