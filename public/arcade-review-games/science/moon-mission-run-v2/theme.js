@@ -1,0 +1,1 @@
+window.TA_MOON_THEME={name:'Moon Mission Run',skyTop:'#030712',skyBottom:'#111827',ground:'#6b7280',groundTop:'#d1d5db',hazard:'#ef4444',question:'#38bdf8',checkpoint:'#93c5fd',finish:'#60a5fa',player:'#f8fafc',far:'#1f2937',near:'#374151',sun:'rgba(226,232,240,.82)',labels:{hazard:'CRATER',collectible:'SAMPLE',goal:'communications tower'}};
