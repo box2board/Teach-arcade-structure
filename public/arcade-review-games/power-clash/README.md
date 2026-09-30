@@ -5,14 +5,14 @@ Power Clash is a reusable, browser-based classroom review fighter prototype. Thi
 ## Current play loop
 
 1. Choose a topic pack.
-2. Players alternate answering ten multiple-choice questions. A correct answer earns 20 juice.
+2. Player 1 answers ten multiple-choice questions, then Player 2 answers ten different questions. Each correct answer earns that player 10 juice; the players never split one shared set.
 3. Fight in the arena. Moving drains juice over time; jumps, punches, kicks, and dashes also consume juice.
 4. When a player runs out, the match pauses for that player to answer a recharge question. A correct answer restores 25 juice. A missed answer gives feedback and another question; the other player cannot attack during the recharge.
 5. Reduce the opponent's health to zero to win.
 
 ## Reuse the engine for another topic
 
-Add a topic object to `content/topics.js` with an `id`, `title`, `shortTitle`, arena colors, and question records in the same format as the WWI pack. The engine reads the selected pack and does not contain topic-specific question logic. Future work can move packs into individual files once the collection grows.
+Add a topic object to `content/topics.js` with an `id`, `title`, `shortTitle`, arena colors, and at least 20 question records in the same format as the WWI pack. The opening round draws ten different questions for each player without repeating questions between them. The engine reads the selected pack and does not contain topic-specific question logic. Future work can move packs into individual files once the collection grows.
 
 ## Controls
 
