@@ -7,7 +7,7 @@ terrainSegments:[
 {from:45,to:59,top:12},{from:59,to:72,top:11},{from:72,to:86,top:12},{from:86,to:100,top:10}
 ],
 hazardTiles:[{col:24,row:11},{col:39,row:9},{col:53,row:11},{col:68,row:10},{col:81,row:11}],
-checkpointTiles:[{col:32,row:9},{col:72,row:11}],
+checkpointTiles:[{col:31,row:9},{col:71,row:10}],
 zones:[
 {id:'membrane-entry',from:0,to:640,label:'Cell Membrane',kind:'membrane'},
 {id:'cytoplasm',from:640,to:1280,label:'Cytoplasm',kind:'cytoplasm'},
