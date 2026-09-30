@@ -1,0 +1,1 @@
+window.TA_GAME={id:'replace-with-topic-slug',physicsPreset:TA_TEMPLATE_LEVEL.physicsPreset,level:TA_TEMPLATE_LEVEL,questions:TA_TEMPLATE_QUESTIONS,theme:TA_TEMPLATE_THEME};
