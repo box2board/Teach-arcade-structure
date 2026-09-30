@@ -18,7 +18,7 @@ function installQuestionKeyboard(){
  const prepare=()=>{const list=buttons();if(!list.length)return;selected=0;select(0);let hint=modal.querySelector('.ta-question-keyboard-hint');if(!hint){hint=document.createElement('p');hint.className='ta-question-keyboard-hint';hint.textContent='Keyboard: ↑ ↓ select · Enter answer';choices.before(hint);}};
  new MutationObserver(()=>{if(!modal.hidden)requestAnimationFrame(prepare)}).observe(modal,{attributes:true,attributeFilter:['hidden']});
  choices.addEventListener('pointermove',e=>{const b=e.target.closest('button');if(!b||b.disabled)return;const list=buttons(),i=list.indexOf(b);if(i>=0)select(i)});
- addEventListener('keydown',e=>{if(modal.hidden)return;const list=buttons();if(!list.length)return;if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();e.stopImmediatePropagation();select(selected+(e.key==='ArrowDown'?1:-1));return}if(e.key==='Enter'&&!e.repeat){e.preventDefault();e.stopImmediatePropagation();const b=list[selected];if(b)b.click();}},true);
+ addEventListener('keydown',e=>{if(modal.hidden)return;const nav=e.key==='ArrowDown'||e.key==='ArrowUp',submit=e.key==='Enter';if(!nav&&!submit)return;e.preventDefault();e.stopImmediatePropagation();const list=buttons();if(!list.length)return;if(nav){select(selected+(e.key==='ArrowDown'?1:-1));return}if(submit&&!e.repeat){const b=list[selected];if(b)b.click();}},true);
 }
 function boot(){
  installSharedUI();
