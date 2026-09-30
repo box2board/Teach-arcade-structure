@@ -18,39 +18,320 @@
     "source": "sitemap"
   },
   {
-    "title": "Contact",
-    "url": "/contact.html",
-    "type": "page",
-    "description": "",
+    "title": "Arcade Review Games",
+    "url": "/arcade-review-games/",
+    "type": "game",
+    "description": "Side-scrolling arcade-style review games with built-in questions across subjects.",
     "subject": "",
-    "tags": [],
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:arcade-review-games",
+      "topic:arcade-review-games",
+      "format:arcade",
+      "category:arcade-review"
+    ],
     "source": "sitemap"
   },
   {
-    "title": "Submit",
-    "url": "/submit/",
-    "type": "page",
+    "title": "Adventure Review Wwii",
+    "url": "/arcade-review-games/adventure-review-wwii/",
+    "type": "game",
     "description": "",
     "subject": "",
-    "tags": [],
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:arcade-review-games",
+      "topic:adventure-review-wwii"
+    ],
     "source": "sitemap"
   },
   {
-    "title": "Privacy",
-    "url": "/privacy.html",
-    "type": "page",
+    "title": "Category Clash",
+    "url": "/arcade-review-games/category-clash/",
+    "type": "game",
     "description": "",
     "subject": "",
-    "tags": [],
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:arcade-review-games",
+      "topic:category-clash"
+    ],
     "source": "sitemap"
   },
   {
-    "title": "Terms",
-    "url": "/terms.html",
-    "type": "page",
+    "title": "Grammar Gauntlet",
+    "url": "/arcade-review-games/ela/grammar-gauntlet.html",
+    "type": "game",
     "description": "",
     "subject": "",
-    "tags": [],
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:arcade-review-games",
+      "topic:grammar-gauntlet"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Undertext Rifts Mood Tone",
+    "url": "/arcade-review-games/ela/undertext-rifts-mood-tone.html",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:arcade-review-games",
+      "topic:undertext-rifts-mood-tone"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Algebra City Run",
+    "url": "/arcade-review-games/math/algebra-city-run.html",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:arcade-review-games",
+      "topic:algebra-city-run"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Math Rush Genesis Addition",
+    "url": "/arcade-review-games/math/math-rush-genesis-addition.html",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:arcade-review-games",
+      "topic:math-rush-genesis-addition"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Math Track Racer",
+    "url": "/arcade-review-games/math/math-track-racer.html",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:arcade-review-games",
+      "topic:math-track-racer"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Slope Street Sprint",
+    "url": "/arcade-review-games/math/slope-street-sprint.html",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:arcade-review-games",
+      "topic:slope-street-sprint"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Concept Stack Cells",
+    "url": "/arcade-review-games/science/concept-stack-cells/",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:arcade-review-games",
+      "topic:concept-stack-cells"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Moon Mission Run",
+    "url": "/arcade-review-games/science/moon-mission-run.html",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:arcade-review-games",
+      "topic:moon-mission-run"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Scientific Method",
+    "url": "/arcade-review-games/science/scientific-method.html",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:arcade-review-games",
+      "topic:scientific-method"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Cold War Shadow Run",
+    "url": "/arcade-review-games/social-studies/cold-war-shadow-run/",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:arcade-review-games",
+      "topic:cold-war-shadow-run"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Game",
+    "url": "/arcade-review-games/social-studies/cold-war-shadow-run/game.html",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:arcade-review-games",
+      "topic:game"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Constitution Courthouse Run",
+    "url": "/arcade-review-games/social-studies/constitution-courthouse-run.html",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:arcade-review-games",
+      "topic:constitution-courthouse-run"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Progressive Era Sky Climb",
+    "url": "/arcade-review-games/social-studies/progressive-era-sky-climb.html",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:arcade-review-games",
+      "topic:progressive-era-sky-climb"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Pyramid Escape Run",
+    "url": "/arcade-review-games/social-studies/pyramid-escape-run.html",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:arcade-review-games",
+      "topic:pyramid-escape-run"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Wwi Trench Run V2",
+    "url": "/arcade-review-games/social-studies/wwi-trench-run-v2/",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:arcade-review-games",
+      "topic:wwi-trench-run-v2"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Wwi Trench Run",
+    "url": "/arcade-review-games/social-studies/wwi-trench-run.html",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:arcade-review-games",
+      "topic:wwi-trench-run"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Wwi Trench Run",
+    "url": "/arcade-review-games/social-studies/wwi-trench-run/",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:arcade-review-games",
+      "topic:wwi-trench-run"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Survey Showdown",
+    "url": "/arcade-review-games/survey-showdown/",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:arcade-review-games",
+      "topic:survey-showdown"
+    ],
     "source": "sitemap"
   },
   {
@@ -69,6 +350,21 @@
     "source": "sitemap"
   },
   {
+    "title": "French Revolution",
+    "url": "/arcade-review-games/territory-takedown/french-revolution/",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:arcade-review-games",
+      "topic:french-revolution"
+    ],
+    "source": "sitemap"
+  },
+  {
     "title": "Brain Arcade",
     "url": "/brain-arcade/",
     "type": "page",
@@ -78,8 +374,71 @@
     "source": "sitemap"
   },
   {
-    "title": "Type Turbo",
-    "url": "/brain-arcade/type-turbo/",
+    "title": "Apprentice Restorer",
+    "url": "/brain-arcade/apprentice-restorer/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Block Builder",
+    "url": "/brain-arcade/block-builder/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Block Logic",
+    "url": "/brain-arcade/block-logic/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Brain Crush",
+    "url": "/brain-arcade/brain-crush/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Checkers",
+    "url": "/brain-arcade/checkers/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Chess",
+    "url": "/brain-arcade/chess/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Emoji Case Files",
+    "url": "/brain-arcade/emoji-case-files/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Jigsaw Puzzle",
+    "url": "/brain-arcade/jigsaw-puzzle/",
     "type": "page",
     "description": "",
     "subject": "",
@@ -96,6 +455,459 @@
     "source": "sitemap"
   },
   {
+    "title": "Memory Match",
+    "url": "/brain-arcade/memory-match/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Sequence Breaker",
+    "url": "/brain-arcade/sequence-breaker/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Game",
+    "url": "/brain-arcade/sequence-breaker/game.html",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Slide And Snap",
+    "url": "/brain-arcade/slide-and-snap/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Game",
+    "url": "/brain-arcade/slide-and-snap/game.html",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Solitaire",
+    "url": "/brain-arcade/solitaire.html",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Sudoku",
+    "url": "/brain-arcade/sudoku/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Type Turbo",
+    "url": "/brain-arcade/type-turbo/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Word Grid",
+    "url": "/brain-arcade/word-grid/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Word Search",
+    "url": "/brain-arcade/word-search/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Career Arcade",
+    "url": "/career-arcade/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Career Quest",
+    "url": "/career-arcade/career-quest/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Choose Your Path Adventure",
+    "url": "/choose-your-path-adventure/",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:choose-your-path-adventure",
+      "topic:choose-your-path-adventure"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Cuban Missile Crisis",
+    "url": "/choose-your-path-adventure/cuban-missile-crisis.html",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:choose-your-path-adventure",
+      "topic:cuban-missile-crisis"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Toy Toolbox",
+    "url": "/classroom/toy-toolbox/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Contact",
+    "url": "/contact.html",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Decision Simulator",
+    "url": "/decision-simulator/",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:decision-simulator",
+      "topic:decision-simulator"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "American Revolution Breaking Point",
+    "url": "/decision-simulator/american-revolution-breaking-point/",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:decision-simulator",
+      "topic:american-revolution-breaking-point"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Escape",
+    "url": "/escape/",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:escape",
+      "topic:escape"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Knowledge Expedition",
+    "url": "/games/knowledge-expedition/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Ela",
+    "url": "/games/knowledge-expedition/ela/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Math",
+    "url": "/games/knowledge-expedition/math/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Science",
+    "url": "/games/knowledge-expedition/science/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Social Studies",
+    "url": "/games/knowledge-expedition/social-studies/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Wwii Expedition",
+    "url": "/games/knowledge-expedition/social-studies/wwii-expedition/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Movie Guides",
+    "url": "/movie-guides/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Amistad",
+    "url": "/movie-guides/guides/amistad/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Flags Of Our Fathers",
+    "url": "/movie-guides/guides/flags-of-our-fathers/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Mississippi Burning",
+    "url": "/movie-guides/guides/mississippi-burning/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Rocky Iv",
+    "url": "/movie-guides/guides/rocky-iv/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Schindlers List",
+    "url": "/movie-guides/guides/schindlers-list/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "War Horse",
+    "url": "/movie-guides/guides/war-horse/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Interactive",
+    "url": "/movie-guides/guides/war-horse/interactive/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Print",
+    "url": "/movie-guides/guides/war-horse/print/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Advisory",
+    "url": "/movie-guides/subjects/advisory/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Careers Life Skills",
+    "url": "/movie-guides/subjects/careers-life-skills/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "English Ela",
+    "url": "/movie-guides/subjects/english-ela/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Science",
+    "url": "/movie-guides/subjects/science/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Social Studies",
+    "url": "/movie-guides/subjects/social-studies/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Playbook",
+    "url": "/playbook/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Why Gamification Works",
+    "url": "/playbook/why-gamification-works/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Print Play Games",
+    "url": "/print-play-games/",
+    "type": "game",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:game",
+      "format:game",
+      "platform:web",
+      "category:print-play-games",
+      "topic:print-play-games"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Privacy",
+    "url": "/privacy.html",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Search",
+    "url": "/search.html",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Side Scroller",
+    "url": "/side-scroller.html",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Store",
+    "url": "/store/",
+    "type": "store",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:store",
+      "format:merch"
+    ],
+    "source": "sitemap"
+  },
+  {
     "title": "Subjects",
     "url": "/subjects/",
     "type": "topic",
@@ -104,19 +916,6 @@
     "tags": [
       "type:topic",
       "topic:subjects"
-    ],
-    "source": "sitemap"
-  },
-  {
-    "title": "Math",
-    "url": "/subjects/math/",
-    "type": "topic",
-    "description": "",
-    "subject": "",
-    "tags": [
-      "type:topic",
-      "subject:math",
-      "topic:math"
     ],
     "source": "sitemap"
   },
@@ -134,84 +933,30 @@
     "source": "sitemap"
   },
   {
-    "title": "Science",
-    "url": "/subjects/science/",
-    "type": "topic",
-    "description": "",
-    "subject": "",
-    "tags": [
-      "type:topic",
-      "subject:science",
-      "topic:science"
-    ],
-    "source": "sitemap"
-  },
-  {
-    "title": "Social Studies",
-    "url": "/subjects/social-studies/",
-    "type": "topic",
-    "description": "",
-    "subject": "",
-    "tags": [
-      "type:topic",
-      "subject:social-studies",
-      "topic:social-studies"
-    ],
-    "source": "sitemap"
-  },
-  {
-    "title": "K 5 Math",
-    "url": "/subjects/math/k-5-math/",
-    "type": "topic",
-    "description": "",
-    "subject": "",
-    "tags": [
-      "type:topic",
-      "subject:math",
-      "subject:k-5-math",
-      "topic:k-5-math"
-    ],
-    "source": "sitemap"
-  },
-  {
-    "title": "Middle School Math",
-    "url": "/subjects/math/middle-school-math/",
-    "type": "topic",
-    "description": "",
-    "subject": "",
-    "tags": [
-      "type:topic",
-      "subject:math",
-      "subject:middle-school-math",
-      "topic:middle-school-math"
-    ],
-    "source": "sitemap"
-  },
-  {
-    "title": "High School Math",
-    "url": "/subjects/math/high-school-math/",
-    "type": "topic",
-    "description": "",
-    "subject": "",
-    "tags": [
-      "type:topic",
-      "subject:math",
-      "subject:high-school-math",
-      "topic:high-school-math"
-    ],
-    "source": "sitemap"
-  },
-  {
-    "title": "Reading Literature",
-    "url": "/subjects/ela/reading-literature/",
+    "title": "Grammar Language",
+    "url": "/subjects/ela/grammar-language/",
     "type": "topic",
     "description": "",
     "subject": "",
     "tags": [
       "type:topic",
       "subject:ela",
-      "subject:reading-literature",
-      "topic:reading-literature"
+      "subject:grammar-language",
+      "topic:grammar-language"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Poetry",
+    "url": "/subjects/ela/poetry/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:poetry",
+      "topic:poetry"
     ],
     "source": "sitemap"
   },
@@ -230,6 +975,90 @@
     "source": "sitemap"
   },
   {
+    "title": "Reading Literature",
+    "url": "/subjects/ela/reading-literature/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:reading-literature",
+      "topic:reading-literature"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Mood Tone",
+    "url": "/subjects/ela/reading-literature/mood-tone.html",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:reading-literature",
+      "topic:mood-tone"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Research Media Literacy",
+    "url": "/subjects/ela/research-media-literacy/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:research-media-literacy",
+      "topic:research-media-literacy"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Speaking Listening",
+    "url": "/subjects/ela/speaking-listening/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:speaking-listening",
+      "topic:speaking-listening"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Test Prep",
+    "url": "/subjects/ela/test-prep/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:test-prep",
+      "topic:test-prep"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Vocabulary Word Study",
+    "url": "/subjects/ela/vocabulary-word-study/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:ela",
+      "subject:vocabulary-word-study",
+      "topic:vocabulary-word-study"
+    ],
+    "source": "sitemap"
+  },
+  {
     "title": "Writing",
     "url": "/subjects/ela/writing/",
     "type": "topic",
@@ -240,6 +1069,507 @@
       "subject:ela",
       "subject:writing",
       "topic:writing"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Fine Arts",
+    "url": "/subjects/fine-arts/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "topic:fine-arts"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Art History",
+    "url": "/subjects/fine-arts/art-history/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:art-history",
+      "topic:art-history"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Dance",
+    "url": "/subjects/fine-arts/dance/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:dance",
+      "topic:dance"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Drama Theatre",
+    "url": "/subjects/fine-arts/drama-theatre/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:drama-theatre",
+      "topic:drama-theatre"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Media Arts",
+    "url": "/subjects/fine-arts/media-arts/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:media-arts",
+      "topic:media-arts"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Music",
+    "url": "/subjects/fine-arts/music/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:music",
+      "topic:music"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Visual Arts",
+    "url": "/subjects/fine-arts/visual-arts/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:fine-arts",
+      "subject:visual-arts",
+      "topic:visual-arts"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Math",
+    "url": "/subjects/math/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:math",
+      "topic:math"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "High School Math",
+    "url": "/subjects/math/high-school-math/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:math",
+      "subject:high-school-math",
+      "topic:high-school-math"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "K 5 Math",
+    "url": "/subjects/math/k-5-math/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:math",
+      "subject:k-5-math",
+      "topic:k-5-math"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Math Games Puzzles",
+    "url": "/subjects/math/math-games-puzzles/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:math",
+      "subject:math-games-puzzles",
+      "topic:math-games-puzzles"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Fact Fluency Games",
+    "url": "/subjects/math/math-games-puzzles/fact-fluency-games/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:math",
+      "subject:math-games-puzzles",
+      "topic:fact-fluency-games"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Middle School Math",
+    "url": "/subjects/math/middle-school-math/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:math",
+      "subject:middle-school-math",
+      "topic:middle-school-math"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Slope Linear Relationships",
+    "url": "/subjects/math/middle-school-math/slope-linear-relationships/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:math",
+      "subject:middle-school-math",
+      "topic:slope-linear-relationships"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Science",
+    "url": "/subjects/science/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "topic:science"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Astronomy",
+    "url": "/subjects/science/astronomy/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:astronomy",
+      "topic:astronomy"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Earth Sun Moon System",
+    "url": "/subjects/science/astronomy/earth-sun-moon-system.html",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:astronomy",
+      "topic:earth-sun-moon-system"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Biology",
+    "url": "/subjects/science/biology/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:biology",
+      "topic:biology"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Biodiversity Conservation",
+    "url": "/subjects/science/biology/biodiversity-conservation.html",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:biology",
+      "topic:biodiversity-conservation"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Biotechnology Genetic Engineering",
+    "url": "/subjects/science/biology/biotechnology-genetic-engineering.html",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:biology",
+      "topic:biotechnology-genetic-engineering"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Cell Division Mitosis Meiosis",
+    "url": "/subjects/science/biology/cell-division-mitosis-meiosis.html",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:biology",
+      "topic:cell-division-mitosis-meiosis"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Cell Energy Photosynthesis Respiration",
+    "url": "/subjects/science/biology/cell-energy-photosynthesis-respiration.html",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:biology",
+      "topic:cell-energy-photosynthesis-respiration"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Cell Transport Homeostasis",
+    "url": "/subjects/science/biology/cell-transport-homeostasis.html",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:biology",
+      "topic:cell-transport-homeostasis"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Cells Structure Function",
+    "url": "/subjects/science/biology/cells-structure-function.html",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:biology",
+      "topic:cells-structure-function"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Classification Taxonomy",
+    "url": "/subjects/science/biology/classification-taxonomy.html",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:biology",
+      "topic:classification-taxonomy"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Dna Rna Protein Synthesis",
+    "url": "/subjects/science/biology/dna-rna-protein-synthesis.html",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:biology",
+      "topic:dna-rna-protein-synthesis"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Ecology Ecosystems",
+    "url": "/subjects/science/biology/ecology-ecosystems.html",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:biology",
+      "topic:ecology-ecosystems"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Evolution Natural Selection",
+    "url": "/subjects/science/biology/evolution-natural-selection.html",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:biology",
+      "topic:evolution-natural-selection"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Genetics Heredity",
+    "url": "/subjects/science/biology/genetics-heredity.html",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:biology",
+      "topic:genetics-heredity"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Human Body Systems",
+    "url": "/subjects/science/biology/human-body-systems.html",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:biology",
+      "topic:human-body-systems"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Microorganisms Viruses",
+    "url": "/subjects/science/biology/microorganisms-viruses.html",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:biology",
+      "topic:microorganisms-viruses"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Scientific Method Introduction To Biology",
+    "url": "/subjects/science/biology/scientific-method-introduction-to-biology.html",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:biology",
+      "topic:scientific-method-introduction-to-biology"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Scientific Skills Lab Safety",
+    "url": "/subjects/science/biology/scientific-skills-lab-safety.html",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:biology",
+      "topic:scientific-skills-lab-safety"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Chemistry",
+    "url": "/subjects/science/chemistry/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:chemistry",
+      "topic:chemistry"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Earth Space Science",
+    "url": "/subjects/science/earth-space-science/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:earth-space-science",
+      "topic:earth-space-science"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Environmental Science",
+    "url": "/subjects/science/environmental-science/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:environmental-science",
+      "topic:environmental-science"
     ],
     "source": "sitemap"
   },
@@ -272,44 +1602,85 @@
     "source": "sitemap"
   },
   {
-    "title": "Earth Space Science",
-    "url": "/subjects/science/earth-space-science/",
+    "title": "Physics",
+    "url": "/subjects/science/physics/",
     "type": "topic",
     "description": "",
     "subject": "",
     "tags": [
       "type:topic",
       "subject:science",
-      "subject:earth-space-science",
-      "topic:earth-space-science"
+      "subject:physics",
+      "topic:physics"
     ],
     "source": "sitemap"
   },
   {
-    "title": "Us History",
-    "url": "/subjects/social-studies/us-history/",
+    "title": "Stem Engineering",
+    "url": "/subjects/science/stem-engineering/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:science",
+      "subject:stem-engineering",
+      "topic:stem-engineering"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Social Studies",
+    "url": "/subjects/social-studies/",
     "type": "topic",
     "description": "",
     "subject": "",
     "tags": [
       "type:topic",
       "subject:social-studies",
-      "subject:us-history",
-      "topic:us-history"
+      "topic:social-studies"
     ],
     "source": "sitemap"
   },
   {
-    "title": "World History",
-    "url": "/subjects/social-studies/world-history/",
+    "title": "Economics",
+    "url": "/subjects/social-studies/economics/",
     "type": "topic",
     "description": "",
     "subject": "",
     "tags": [
       "type:topic",
       "subject:social-studies",
-      "subject:world-history",
-      "topic:world-history"
+      "subject:economics",
+      "topic:economics"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Geography",
+    "url": "/subjects/social-studies/geography/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:geography",
+      "topic:geography"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Us Constitution",
+    "url": "/subjects/social-studies/government-and-political-science/us-constitution.html",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:government-and-political-science",
+      "topic:us-constitution"
     ],
     "source": "sitemap"
   },
@@ -328,1927 +1699,701 @@
     "source": "sitemap"
   },
   {
-    "title": "13 Colonies Jeopardy",
-    "url": "https://mrnussbaum.com/not-boring-jeopardy-13-colonies-editiion",
-    "type": "resource",
+    "title": "Us History",
+    "url": "/subjects/social-studies/us-history/",
+    "type": "topic",
     "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:colonial-america",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "5 Powerful Primary Sources for the 13 Colonies",
-    "url": "https://www.thecleverteacher.com/primary-sources-for-13-colonies/",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:colonial-america",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Settling the Colonies: Step-by-Step Activities",
-    "url": "https://csusb.edu/sites/default/files/Settling%20the%20Colonies%20Guide%205.4.pdf",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:colonial-america",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "American Colonial Life in the Late 1700s",
-    "url": "https://edsitement.neh.gov/lesson-plans/american-colonial-life-late-1700s-distant-cousins",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:colonial-america",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "The Ultimate Guide to Teaching the 13 Colonies",
-    "url": "https://www.thecleverteacher.com/the-ultimate-guide-to-teaching-the-13-colonies/",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:colonial-america",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Learn All About the First 13 American Colonies",
-    "url": "https://www.youtube.com/watch?v=UUmi3iNMawo",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:colonial-america",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "The Founding Fathers",
-    "url": "https://www.youtube.com/watch?v=bh79MXVZsds",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:colonial-america",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Crash Course US History: When is Thanksgiving? Colonizing America",
-    "url": "https://www.youtube.com/watch?v=o69TvQqyGdg",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:colonial-america",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Pilgrims, the Mayflower Compact, and Thanksgiving",
-    "url": "https://www.gilderlehrman.org/sites/default/files/file_media/ThanksgivingElementary2024_LessonPlan.pdf",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:colonial-america",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Differing Views of Pilgrims and American Indians in Seventeenth-Century New England",
-    "url": "https://www.gilderlehrman.org/history-resources/lesson-plan/differing-views-pilgrims-and-american-indians-seventeenth-century-new",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:colonial-america",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "13 Colonies Map/Quiz Printout",
-    "url": "https://www.enchantedlearning.com/usa/statesbw/13colonies/13colonies.shtml",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:colonial-america",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "13 Colonies Blank Map and Labels",
-    "url": "https://www.enchantedlearning.com/usa/label/13/13.shtml",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:colonial-america",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "18th Century Documents : 1700 - 1799",
-    "url": "https://avalon.law.yale.edu/subject_menus/18th.asp",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:colonial-america",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Colonial Arithmetic",
-    "url": "https://www.educationworld.com/a_lesson/TM/WS_colonial_arithmetic.shtml",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:colonial-america",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Create a Colony Project",
-    "url": "https://vanthournout.weebly.com/uploads/6/3/1/4/6314986/create_a_colony_project.pdf",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:colonial-america",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Mission US: For Crown or Colony?",
-    "url": "https://www.mission-us.org/games/for-crown-or-colony/",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:american-revolution",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Teach 'For Crown or Colony?'",
-    "url": "https://www.mission-us.org/teach/for-crown-or-colony/",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:american-revolution",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Revolutionary War Animated Map",
-    "url": "https://www.battlefields.org/learn/maps/revolutionary-war-animated-map",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:american-revolution",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Library of Congress: The American Revolution, 1763–1783",
-    "url": "https://www.loc.gov/classroom-materials/united-states-history-primary-source-timeline/american-revolution-1763-1783/",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:american-revolution",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "DocsTeach: American Revolution",
-    "url": "https://docsteach.org/topics/american-revolution/",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:american-revolution",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Spy Letters of the American Revolution",
-    "url": "https://clements.umich.edu/exhibit/spy-letters-of-the-american-revolution/",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:american-revolution",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "American Revolution Fill‑in‑the‑Blank (Direct PDF)",
-    "url": "https://mtv-main-assets.mountvernon.org/files/modules/lessonplans/downloads/american-revolution-fill-in-the-blank-pdf.pdf",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:american-revolution",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Crash Course US History – American Revolution",
-    "url": "https://www.youtube.com/watch?v=3EiSymRrKI4",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:american-revolution",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Ten Crucial Days: From Washington Crossing the Delaware to the Battles of Trenton and Princeton",
-    "url": "https://docsteach.org/lesson/ten-crucial-days-from-washington-crossing-the-delaware-to-the-battles-of-trenton-and-princeton/",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:american-revolution",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Federalist Papers Excerpts for Students",
-    "url": "https://founders.archives.gov",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:constitution-and-early-republic",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Do I Have a Right?",
-    "url": "https://www.icivics.org/games/do-i-have-right",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:constitution-and-early-republic",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Branches of Power",
-    "url": "https://www.icivics.org/games/branches-power",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:constitution-and-early-republic",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Founding Documents Library",
-    "url": "https://billofrightsinstitute.org/primary-sources",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:constitution-and-early-republic",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Civil War Curriculum Lesson Plans (High School)",
-    "url": "https://www.battlefields.org/learn/educators/curriculum/civil-war-curriculum-lesson-plans-high-school",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-war-and-reconstruction",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "A Nation Divided: High School Lesson Plan",
-    "url": "https://www.nps.gov/teachers/classrooms/a-nation-divided-high-school-lesson-plan.htm",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-war-and-reconstruction",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Life & Limb: The Toll of the Civil War",
-    "url": "https://www.nlm.nih.gov/exhibition/lifeandlimb/education/lessonplans/highschool.html",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-war-and-reconstruction",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "The Battle of Gettysburg through Union and Confederate Eyes",
-    "url": "https://www.gilderlehrman.org/sites/default/files/2024-04/GLI_Battle%20of%20Gettysburg_2024.pdf",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-war-and-reconstruction",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Civil War & Reconstruction Worksheet Packet",
-    "url": "https://www.greenecsd.org/Downloads/7%20-%20Civil%20War%20-%20Reconstruction%20-%20packet%2019-20.pdf",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-war-and-reconstruction",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Shifting Tides Civil War Lesson (1863)",
-    "url": "https://www.debbiewaggoner.com/uploads/1/2/9/9/12998469/shifting_tides_civil_war_lesson.pdf",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-war-and-reconstruction",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Life Before the Civil War",
-    "url": "https://edsitement.neh.gov/lesson-plans/lesson-4-life-civil-war",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-war-and-reconstruction",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Classroom Activities for the Civil War",
-    "url": "https://www.lessonplanguru.com/blog/10-classroom-activities-for-the-civil-war-history-lesson-plans",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-war-and-reconstruction",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Lincoln's Gettysburg Address",
-    "url": "https://s3.amazonaws.com/kajabi-storefronts-production/file-uploads/sites/27408/themes/2160711171/downloads/366d7e4-d65d-e7ae-65bb-f56f32feef5_Gettysburg_Address_Worksheet.pdf",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-war-and-reconstruction",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "American Civil War Reading Comprehension Worksheet",
-    "url": "https://www.teach-nology.com/worksheets/soc_studies/civil/read/",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-war-and-reconstruction",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Disunion 1860",
-    "url": "https://www.battlefields.org/learn/educators/curriculum/high-school/disunion-1860-traditional-high-school-lesson-plan",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-war-and-reconstruction",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Battle of Antietam",
-    "url": "https://www.easyteacherworksheets.com/pages/pdf/socialstudies/civilwar/2.html",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-war-and-reconstruction",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Early Days of the Civil War",
-    "url": "https://www.easyteacherworksheets.com/pages/pdf/socialstudies/civilwar/5.html",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-war-and-reconstruction",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Cradle of the Confederacy Trees",
-    "url": "https://www.easyteacherworksheets.com/pages/pdf/socialstudies/civilwar/8.html",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-war-and-reconstruction",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "The North",
-    "url": "https://www.easyteacherworksheets.com/pages/pdf/socialstudies/civilwar/11.html",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-war-and-reconstruction",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "The South",
-    "url": "https://www.easyteacherworksheets.com/pages/pdf/socialstudies/civilwar/14.html",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-war-and-reconstruction",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Harriet Tubman",
-    "url": "https://www.easyteacherworksheets.com/pages/pdf/socialstudies/civilwar/17.html",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-war-and-reconstruction",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "The Names of the Civil War",
-    "url": "https://www.easyteacherworksheets.com/pages/pdf/socialstudies/civilwar/20.html",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-war-and-reconstruction",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Frederick Douglass",
-    "url": "https://www.easyteacherworksheets.com/pages/pdf/socialstudies/civilwar/23.html",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-war-and-reconstruction",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "The Liberator",
-    "url": "https://www.easyteacherworksheets.com/pages/pdf/socialstudies/civilwar/26.html",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-war-and-reconstruction",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Southern Views",
-    "url": "https://www.easyteacherworksheets.com/pages/pdf/socialstudies/civilwar/29.html",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-war-and-reconstruction",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Jefferson Davis",
-    "url": "https://www.easyteacherworksheets.com/pages/pdf/socialstudies/civilwar/32.html",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-war-and-reconstruction",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Soldier Life",
-    "url": "https://www.easyteacherworksheets.com/pages/pdf/socialstudies/civilwar/35.html",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-war-and-reconstruction",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "American Civil War Soldiers",
-    "url": "https://www.easyteacherworksheets.com/pages/pdf/socialstudies/civilwar/38.html",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-war-and-reconstruction",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Armies",
-    "url": "https://www.easyteacherworksheets.com/pages/pdf/socialstudies/civilwar/41.html",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-war-and-reconstruction",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Glory Brigade",
-    "url": "https://www.easyteacherworksheets.com/pages/pdf/socialstudies/civilwar/44.html",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-war-and-reconstruction",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Women in the Civil War",
-    "url": "https://www.easyteacherworksheets.com/pages/pdf/socialstudies/civilwar/47.html",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-war-and-reconstruction",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Civil War Stats",
-    "url": "https://www.easyteacherworksheets.com/pages/pdf/socialstudies/civilwar/50.html",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-war-and-reconstruction",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Civil War Acrostic Poem",
-    "url": "https://www.teach-nology.com/worksheets/soc_studies/civil/poem/",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-war-and-reconstruction",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "American Civil War Summary",
-    "url": "https://www.teach-nology.com/worksheets/soc_studies/civil/summary/",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-war-and-reconstruction",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Comparing the Confederacy and the Union VENN Diagram",
-    "url": "https://www.teach-nology.com/worksheets/soc_studies/civil/venn/",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-war-and-reconstruction",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Civil War Cryptogram",
-    "url": "https://www.teach-nology.com/worksheets/soc_studies/civil/cry/",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-war-and-reconstruction",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Generals of the Civil War Word Search",
-    "url": "https://www.teach-nology.com/worksheets/soc_studies/civil/words/",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-war-and-reconstruction",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "American Civil War Group Creative Writing",
-    "url": "https://www.teach-nology.com/worksheets/soc_studies/civil/gwrite/",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-war-and-reconstruction",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "The American Civil War KWL Chart",
-    "url": "https://www.teach-nology.com/worksheets/soc_studies/civil/kwl/",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-war-and-reconstruction",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Civil War Maze",
-    "url": "https://www.teach-nology.com/worksheets/soc_studies/civil/maze/",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-war-and-reconstruction",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "American Civil War Reading Comprehension Worksheet",
-    "url": "https://www.teach-nology.com/worksheets/soc_studies/civil/",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-war-and-reconstruction",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Ten Questions on the Civil War",
-    "url": "https://www.teach-nology.com/worksheets/soc_studies/civil/10/",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-war-and-reconstruction",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "American Civil War Timeline",
-    "url": "https://www.teach-nology.com/worksheets/soc_studies/civil/timeline/",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-war-and-reconstruction",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "The American Civil War Vocabulary",
-    "url": "https://www.teach-nology.com/worksheets/soc_studies/civil/vocab/",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-war-and-reconstruction",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "American Civil War Vocabulary Quiz",
-    "url": "https://www.teach-nology.com/worksheets/soc_studies/civil/quiz/",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-war-and-reconstruction",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "American Civil War Word Search Worksheet",
-    "url": "https://www.teach-nology.com/worksheets/soc_studies/civil/search/",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-war-and-reconstruction",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "13th, 14th, 15th Amendements",
-    "url": "https://www.easyteacherworksheets.com/pages/pdf/socialstudies/civilrights/47.html",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-war-and-reconstruction",
-      "subject:u-s-history",
-      "format:resource",
-      "topic:civil-rights"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Jim Crow Laws",
-    "url": "https://www.easyteacherworksheets.com/pages/pdf/socialstudies/civilrights/50.html",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-war-and-reconstruction",
-      "subject:u-s-history",
-      "format:resource",
-      "topic:civil-rights"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Gilded Age & Progressive Era Unit",
-    "url": "https://www.newvisions.org/curriculum/social-studies/u-s-history/gilded-age-progressive-era",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:industrialization-and-gilded-age",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Industry and Immigration in the Gilded Age",
-    "url": "https://billofrightsinstitute.org/lessons/industry-and-immigration-in-the-gilded-age",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:industrialization-and-gilded-age",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "The Industrial Age in America: Robber Barons and Captains of Industry – NEH/EDSITEment",
-    "url": "https://edsitement.neh.gov/lesson-plans/industrial-age-america-robber-barons-and-captains-industry",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:industrialization-and-gilded-age",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "The Gilded Age featuring the Phonograph",
-    "url": "https://teachrock.org/lesson/the-gilded-age-featuring-the-phonograph/",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:industrialization-and-gilded-age",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Workers in the Gilded Age and Progressive Era",
-    "url": "https://billofrightsinstitute.org/lessons/industry-and-immigration-in-the-gilded-age",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:industrialization-and-gilded-age",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "The Rise of Big Business",
-    "url": "https://billofrightsinstitute.org/lessons/rise-big-business",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:industrialization-and-gilded-age",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Farmers in the Gilded Age",
-    "url": "https://billofrightsinstitute.org/lessons/farmers-gilded-age",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:industrialization-and-gilded-age",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Immigration in the Gilded Age and Progressive Era",
-    "url": "https://billofrightsinstitute.org/lessons/immigration-gilded-age-progressive-era",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:industrialization-and-gilded-age",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "The Gilded Age, Robber Barons, & The Rise of Big Business",
-    "url": "https://billofrightsinstitute.org/videos/the-gilded-age-robber-barons-and-the-rise-of-big-business-homework-help",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:industrialization-and-gilded-age",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "African Americans in the Gilded Age",
-    "url": "https://billofrightsinstitute.org/lessons/african-americans-gilded-age",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:industrialization-and-gilded-age",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Women in the Gilded Age and Progressive Era",
-    "url": "https://billofrightsinstitute.org/lessons/women-gilded-age-progressive-era",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:industrialization-and-gilded-age",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "The Rise of Reform Politics",
-    "url": "https://billofrightsinstitute.org/lessons/rise-reform-politics",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:industrialization-and-gilded-age",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "The Rise of American Power in the World",
-    "url": "https://billofrightsinstitute.org/lessons/rise-american-power-world",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:industrialization-and-gilded-age",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Progressive Era Primary Sources – DocsTeach",
-    "url": "https://docsteach.org/topics/progressive-era",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:progressive-era-and-imperialism",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Pilgrim Hat Template",
-    "url": "https://alphamom.com/wp-content/uploads/2013/11/Pilgrim-Hat-Template-skiptomylou.org_.pdf",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:progressive-era-and-imperialism",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Planning for the Voyage - Pilgrim Study Unit",
-    "url": "https://www.teachervision.com/colonial-america/planning-voyage-pilgrim-study-unit-lesson-1-7",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:progressive-era-and-imperialism",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Alliances and the Start of World War II",
-    "url": "https://s3.amazonaws.com/kajabi-storefronts-production/file-uploads/sites/27408/themes/2160711171/downloads/ca6b27d-e67c-34ac-45c7-a66c0178c37_WW2_Cartoon_Worksheet.pdf",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:world-war-ii",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "World War II Worksheet Packet",
-    "url": "https://texaslre.org/wp-content/uploads/2020/12/6_World_War_II_Module.pdf",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:world-war-ii",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "The Red ball Express",
-    "url": "https://www.ww2classroom.org/?q=system/files/wie181_0.pdf",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:world-war-ii",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "World War II on the Home Front",
-    "url": "https://learninglab.si.edu/cabinet/file/aeb530e7-ec81-41fb-bc77-e4d1d9606462/smithsonian_siyc_fall07.pdf",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:world-war-ii",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Georgia Journeys: Legacies of World War II (Teacher’s Guide)",
-    "url": "https://www.kennesaw.edu/marb/museum-history-holocaust-education/education/docs/ga-journeys.pdf",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:world-war-ii",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "World War II Assessment",
-    "url": "https://www.historyonthenet.com/causes-world-war-two-assessment-history-worksheet",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:world-war-ii",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Causes of World War Two: History Worksheet",
-    "url": "https://www.historyonthenet.com/causes-world-war-two-history-worksheet",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:world-war-ii",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Causes of World War Two Wordsearch",
-    "url": "https://www.historyonthenet.com/causes-world-war-two-wordsearch-history-worksheet",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:world-war-ii",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Causes of World War Two Crossword",
-    "url": "https://www.historyonthenet.com/causes-world-war-two-crossword-history-worksheet",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:world-war-ii",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Appeasement Crossword",
-    "url": "https://www.historyonthenet.com/appeasement-crossword-history-worksheet",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:world-war-ii",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "World War II Conscription Worksheet",
-    "url": "https://www.historyonthenet.com/conscription-history-worksheet",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:world-war-ii",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "World War II Conscription Crossword",
-    "url": "https://www.historyonthenet.com/conscription-crossword-history-worksheet",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:world-war-ii",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "World War II Conscription Word Search",
-    "url": "https://www.historyonthenet.com/conscription-wordsearch-history-worksheet",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:world-war-ii",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "World War II Blitz Worksheet",
-    "url": "https://www.historyonthenet.com/blitz-history-worksheet",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:world-war-ii",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "World War II Blitz Crossword",
-    "url": "https://www.historyonthenet.com/blitz-crossword-history-worksheet",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:world-war-ii",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "The Axis Powers",
-    "url": "https://www.easyteacherworksheets.com/pages/pdf/socialstudies/1/ww2/10.html",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:world-war-ii",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "The Allied Powers Multiple Choice",
-    "url": "https://www.easyteacherworksheets.com/pages/pdf/socialstudies/1/ww2/8.html",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:world-war-ii",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "The Allied Powers Reading",
-    "url": "https://www.easyteacherworksheets.com/pages/pdf/socialstudies/1/ww2/7.html",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:world-war-ii",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Brown v. Board of Education (1954)",
-    "url": "https://www.oyez.org/cases/1940-1955/347us483",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-rights",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Lynching in America: Confronting the Legacy of Racial Terror",
-    "url": "https://eji.org/reports/lynching-in-america/",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-rights",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Civil Rights Digital Library",
-    "url": "https://crdl.usg.edu/",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-rights",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Beyond Rosa Parks: Powerful Voices for Civil Rights and Social Justice",
-    "url": "https://www.learningforjustice.org/classroom-resources/lessons/beyond-rosa-parks-powerful-voices-for-civil-rights-and-social-justice",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-rights",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Maya Angelou Lesson",
-    "url": "https://www.learningforjustice.org/classroom-resources/lessons/maya-angelou",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-rights",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Mary Church Terrell Lesson",
-    "url": "https://www.learningforjustice.org/classroom-resources/lessons/mary-church-terrell",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-rights",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "The True History of Voting Rights",
-    "url": "https://www.learningforjustice.org/classroom-resources/lessons/the-true-history-of-voting-rights",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-rights",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Mary McLeod Bethune Lesson",
-    "url": "https://www.learningforjustice.org/classroom-resources/lessons/mary-mcleod-bethune",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-rights",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Sit-Ins and Protests",
-    "url": "https://www.easyteacherworksheets.com/pages/pdf/socialstudies/civilrights/2.html",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-rights",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Congress of Racial Equality (CORE)",
-    "url": "https://www.easyteacherworksheets.com/pages/pdf/socialstudies/civilrights/5.html",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-rights",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Freedom Riders",
-    "url": "https://www.easyteacherworksheets.com/pages/pdf/socialstudies/civilrights/8.html",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-rights",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "March on Washington",
-    "url": "https://www.easyteacherworksheets.com/pages/pdf/socialstudies/civilrights/11.html",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-rights",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "We Shall Overcome",
-    "url": "https://www.easyteacherworksheets.com/pages/pdf/socialstudies/civilrights/14.html",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-rights",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Protests",
-    "url": "https://www.easyteacherworksheets.com/pages/pdf/socialstudies/civilrights/17.html",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-rights",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Civil Rights - 1964",
-    "url": "https://www.easyteacherworksheets.com/pages/pdf/socialstudies/civilrights/20.html",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-rights",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Civil Rights - 1965",
-    "url": "https://www.easyteacherworksheets.com/pages/pdf/socialstudies/civilrights/23.html",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-rights",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Voting Rights Act of 1965",
-    "url": "https://www.easyteacherworksheets.com/pages/pdf/socialstudies/civilrights/26.html",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-rights",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Civil Rights - 1968",
-    "url": "https://www.easyteacherworksheets.com/pages/pdf/socialstudies/civilrights/29.html",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-rights",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Origins of Civil Rights",
-    "url": "https://www.easyteacherworksheets.com/pages/pdf/socialstudies/civilrights/32.html",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-rights",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Civil Rights Segregation",
-    "url": "https://www.easyteacherworksheets.com/pages/pdf/socialstudies/civilrights/35.html",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-rights",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Promise for Change",
-    "url": "https://www.easyteacherworksheets.com/pages/pdf/socialstudies/civilrights/38.html",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-rights",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Civil Rights and Brown v. Board of Education",
-    "url": "https://www.easyteacherworksheets.com/pages/pdf/socialstudies/civilrights/41.html",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-rights",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Struggle for Civil Rights",
-    "url": "https://www.easyteacherworksheets.com/pages/pdf/socialstudies/civilrights/44.html",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-rights",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Jackie Robinson",
-    "url": "https://www.easyteacherworksheets.com/pages/pdf/socialstudies/civilrights/53.html",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:civil-rights",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "U.S. Political Polarization Trends",
-    "url": "https://www.pewresearch.org/politics/2014/06/12/political-polarization-in-the-american-public/",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:contemporary-america-1970s-present",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Effects of 9/11 on U.S. Policy",
-    "url": "https://www.brookings.edu/topic/9-11-anniversaries/",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:contemporary-america-1970s-present",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Social Media & Technology Use Trends",
-    "url": "https://www.pewresearch.org/internet/topics/social-media/",
-    "type": "resource",
-    "description": "",
-    "subject": "U.S. History",
-    "tags": [
-      "type:resource",
-      "topic:contemporary-america-1970s-present",
-      "subject:u-s-history",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "How Science Works Lesson",
-    "url": "https://www.biointeractive.org/classroom-resources/how-science-works",
-    "type": "resource",
-    "description": "",
-    "subject": "Biology",
-    "tags": [
-      "type:resource",
-      "topic:scientific-method-and-introduction-to-biology",
-      "subject:biology",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Scientific Method Interactive",
-    "url": "https://www.pbs.org/wgbh/nova/labs/lab/evolution/research",
-    "type": "resource",
-    "description": "",
-    "subject": "Biology",
-    "tags": [
-      "type:resource",
-      "topic:scientific-method-and-introduction-to-biology",
-      "subject:biology",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Science Fair Project Guide",
-    "url": "https://www.sciencebuddies.org/science-fair-projects/science-fair",
-    "type": "resource",
-    "description": "",
-    "subject": "Biology",
-    "tags": [
-      "type:resource",
-      "topic:scientific-method-and-introduction-to-biology",
-      "subject:biology",
-      "format:resource"
-    ],
-    "source": "apps-script"
-  },
-  {
-    "title": "Arcade Review Games",
-    "url": "/arcade-review-games/",
-    "type": "game",
-    "description": "Side-scrolling arcade-style review games with built-in questions across subjects.",
     "subject": "",
     "tags": [
-      "type:game",
-      "format:arcade",
-      "platform:web",
-      "category:arcade-review",
-      "format:game",
-      "category:arcade-review-games",
-      "topic:arcade-review-games"
+      "type:topic",
+      "subject:social-studies",
+      "subject:us-history",
+      "topic:us-history"
     ],
-    "source": "manifest:game"
+    "source": "sitemap"
+  },
+  {
+    "title": "American Revolution",
+    "url": "/subjects/social-studies/us-history/american-revolution.html",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:us-history",
+      "topic:american-revolution"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Civil Rights",
+    "url": "/subjects/social-studies/us-history/civil-rights.html",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:us-history",
+      "topic:civil-rights"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Civil War Reconstruction",
+    "url": "/subjects/social-studies/us-history/civil-war-reconstruction.html",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:us-history",
+      "topic:civil-war-reconstruction"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Cold War",
+    "url": "/subjects/social-studies/us-history/cold-war.html",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:us-history",
+      "topic:cold-war"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Colonial America",
+    "url": "/subjects/social-studies/us-history/colonial-america.html",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:us-history",
+      "topic:colonial-america"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Constitution Early Republic",
+    "url": "/subjects/social-studies/us-history/constitution-early-republic.html",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:us-history",
+      "topic:constitution-early-republic"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Contemporary Us 1970s Present",
+    "url": "/subjects/social-studies/us-history/contemporary-us-1970s-present.html",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:us-history",
+      "topic:contemporary-us-1970s-present"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Expansion Reform Jacksonian Era",
+    "url": "/subjects/social-studies/us-history/expansion-reform-jacksonian-era.html",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:us-history",
+      "topic:expansion-reform-jacksonian-era"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Great Depression New Deal",
+    "url": "/subjects/social-studies/us-history/great-depression-new-deal.html",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:us-history",
+      "topic:great-depression-new-deal"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Industrialization Gilded Age",
+    "url": "/subjects/social-studies/us-history/industrialization-gilded-age.html",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:us-history",
+      "topic:industrialization-gilded-age"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Progressive Era Imperialism",
+    "url": "/subjects/social-studies/us-history/progressive-era-imperialism.html",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:us-history",
+      "topic:progressive-era-imperialism"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "World War I",
+    "url": "/subjects/social-studies/us-history/world-war-i.html",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:us-history",
+      "topic:world-war-i"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "World War Ii",
+    "url": "/subjects/social-studies/us-history/world-war-ii.html",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:us-history",
+      "topic:world-war-ii"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "World History",
+    "url": "/subjects/social-studies/world-history/",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:world-history",
+      "topic:world-history"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Ancient Egypt",
+    "url": "/subjects/social-studies/world-history/ancient-egypt.html",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:world-history",
+      "topic:ancient-egypt"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Ancient Greece",
+    "url": "/subjects/social-studies/world-history/ancient-greece.html",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:world-history",
+      "topic:ancient-greece"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Ancient Rome",
+    "url": "/subjects/social-studies/world-history/ancient-rome.html",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:world-history",
+      "topic:ancient-rome"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Byzantine Islamic World",
+    "url": "/subjects/social-studies/world-history/byzantine-islamic-world.html",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:world-history",
+      "topic:byzantine-islamic-world"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Classical India East Asia",
+    "url": "/subjects/social-studies/world-history/classical-india-east-asia.html",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:world-history",
+      "topic:classical-india-east-asia"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Early Humans River Valleys",
+    "url": "/subjects/social-studies/world-history/early-humans-river-valleys.html",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:world-history",
+      "topic:early-humans-river-valleys"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Medieval Europe",
+    "url": "/subjects/social-studies/world-history/medieval-europe.html",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:world-history",
+      "topic:medieval-europe"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Mesoamerican Andean Civilizations",
+    "url": "/subjects/social-studies/world-history/mesoamerican-andean-civilizations.html",
+    "type": "topic",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:topic",
+      "subject:social-studies",
+      "subject:world-history",
+      "topic:mesoamerican-andean-civilizations"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Submit",
+    "url": "/submit/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Bell Ringers",
+    "url": "/teacher-tools/bell-ringers/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Exit Tickets",
+    "url": "/teacher-tools/exit-tickets/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Icebreakers",
+    "url": "/teacher-tools/icebreakers/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Terms",
+    "url": "/terms.html",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
+    "title": "Tools",
+    "url": "/tools/",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:tools"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Buzzer",
+    "url": "/tools/buzzer.html",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:buzzer"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Flashcards",
+    "url": "/tools/flashcards.html",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:flashcards"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Graphic Organizers",
+    "url": "/tools/graphic-organizers/",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:graphic-organizers"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Cause Effect",
+    "url": "/tools/graphic-organizers/cause-effect/",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:cause-effect"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Character Map",
+    "url": "/tools/graphic-organizers/character-map/",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:character-map"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Frayer Model",
+    "url": "/tools/graphic-organizers/frayer-model/",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:frayer-model"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Kwl Chart",
+    "url": "/tools/graphic-organizers/kwl-chart/",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:kwl-chart"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Main Idea Details",
+    "url": "/tools/graphic-organizers/main-idea-details/",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:main-idea-details"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Pros Cons",
+    "url": "/tools/graphic-organizers/pros-cons/",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:pros-cons"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Sequence Chart",
+    "url": "/tools/graphic-organizers/sequence-chart/",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:sequence-chart"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Story Plot Diagram",
+    "url": "/tools/graphic-organizers/story-plot-diagram/",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:story-plot-diagram"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "T Chart",
+    "url": "/tools/graphic-organizers/t-chart/",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:t-chart"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Timeline Template",
+    "url": "/tools/graphic-organizers/timeline-template/",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:timeline-template"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Venn Diagram",
+    "url": "/tools/graphic-organizers/venn-diagram/",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:venn-diagram"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Vocabulary Organizer",
+    "url": "/tools/graphic-organizers/vocabulary-organizer/",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:vocabulary-organizer"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Group Maker",
+    "url": "/tools/group-maker.html",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:group-maker"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Name Picker",
+    "url": "/tools/name-picker.html",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:name-picker"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Prompt Generator",
+    "url": "/tools/prompt-generator.html",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:prompt-generator"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Text Randomizer",
+    "url": "/tools/text-randomizer.html",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:text-randomizer"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Timer",
+    "url": "/tools/timer.html",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:timer"
+    ],
+    "source": "sitemap"
+  },
+  {
+    "title": "Wheel",
+    "url": "/tools/wheel.html",
+    "type": "tool",
+    "description": "",
+    "subject": "",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "tool:wheel"
+    ],
+    "source": "sitemap"
   },
   {
     "title": "Escape Rooms",
