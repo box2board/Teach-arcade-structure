@@ -1,6 +1,6 @@
 # Teach Arcade Side-Scroller Engine V1
 
-Version: **1.0.2**  
+Version: **1.0.3**  
 Status: **Frozen production core**
 
 ## Frozen engine files
@@ -34,3 +34,5 @@ Production games may consume V1, but should not edit V1 in place. Engine changes
 - **1.0.1 (2026-09-30):** Question and results overlays are now positioned by the shared engine shell so every V1 game displays them centered in the viewport on desktop and mobile. No game-package contract change.
 
 - **1.0.2 (2026-09-30):** Replaced the always-follow camera with a horizontal dead zone, velocity-based damped look-ahead, eased follow speed, and camera speed cap. Quick direction reversals no longer force immediate camera reversals. Camera recenters cleanly on spawn/respawn. No game-package contract change.
+
+- **1.0.3 (2026-09-30):** Added shared keyboard question navigation. The first answer is highlighted automatically; Up/Down moves the selection and Enter submits it. Mouse/touch remain supported, and question keystrokes are isolated from gameplay until feedback closes. No game-package contract change.
