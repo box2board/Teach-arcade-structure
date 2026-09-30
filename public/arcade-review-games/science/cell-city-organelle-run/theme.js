@@ -1,0 +1,1 @@
+window.TA_CELL_THEME={name:'Cell City: Organelle Run',skyTop:'#351b58',skyBottom:'#101936',ground:'#4d2d6d',groundTop:'#b06bd3',hazard:'#ef476f',question:'#4de2c5',checkpoint:'#f6c85f',finish:'#7df9ff',player:'#f8e16c',far:'#3a2a61',near:'#593978',labels:{hazard:'CELL HAZARD',collectible:'VESICLES',goal:'cell exit'}};
