@@ -161,7 +161,7 @@
       if (c.punch.includes(code)) attack(fighters[id], "punch");
       if (c.kick.includes(code)) attack(fighters[id], "kick");
       if (c.dash.includes(code)) dash(fighters[id]);
-      if (c.jump.includes(code) && fighters[id].grounded) { fighters[id].vy = -690; fighters[id].grounded = false; }
+      if (c.jump.includes(code) && fighters[id].grounded && spend(fighters[id], 4, "jump")) { fighters[id].vy = -690; fighters[id].grounded = false; }
     }
   }
 
@@ -215,6 +215,8 @@
   function update(dt) {
     if (state.mode !== "fight") return;
     const p1 = fighters[1], p2 = fighters[2];
+    let energyChanged = false;
+    let depletedPlayer = 0;
     p1.face = p2.x >= p1.x ? 1 : -1;
     p2.face = p1.x >= p2.x ? 1 : -1;
     for (const p of [p1, p2]) {
@@ -222,7 +224,13 @@
       let direction = 0;
       if (c.left.some((key) => keys.has(key))) direction -= 1;
       if (c.right.some((key) => keys.has(key))) direction += 1;
-      if (direction) p.vx = direction * 245;
+      if (direction && p.juice > 0) {
+        p.vx = direction * 245;
+        p.juice = Math.max(0, p.juice - 4 * dt);
+        energyChanged = true;
+        if (p.juice === 0 && !depletedPlayer) depletedPlayer = p.id;
+      }
+      else if (direction && p.juice <= 0) { p.vx = 0; if (!depletedPlayer) depletedPlayer = p.id; }
       else if (p.grounded) p.vx *= Math.pow(.0008, dt);
       p.x += p.vx * dt;
       p.y += p.vy * dt;
@@ -232,6 +240,8 @@
       p.attack = Math.max(0, p.attack - dt);
       p.invuln = Math.max(0, p.invuln - dt);
     }
+    if (energyChanged) syncHud();
+    if (depletedPlayer && state.mode === "fight") askRecharge(depletedPlayer);
   }
 
   function frame(time) {
@@ -305,7 +315,7 @@
       $(`p${p.id}-health`).style.width = `${p.hp}%`;
       $(`p${p.id}-energy`).style.width = `${p.juice}%`;
       $(`p${p.id}-health-label`).textContent = `${p.hp} HP`;
-      $(`p${p.id}-energy-label`).textContent = `${p.juice} / 100`;
+      $(`p${p.id}-energy-label`).textContent = `${Math.floor(p.juice)} / 100`;
     }
   }
 
