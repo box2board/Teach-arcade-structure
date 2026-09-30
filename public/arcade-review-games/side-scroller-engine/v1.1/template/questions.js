@@ -1,0 +1,1 @@
+window.TA_TEMPLATE_QUESTIONS=Array.from({length:10},(_,i)=>({id:'q'+(i+1),text:'Replace with curriculum question '+(i+1)+'.',choices:['Correct answer','Distractor B','Distractor C','Distractor D'],correctIndex:0,explanation:'Replace with a concise teaching explanation.'}));
