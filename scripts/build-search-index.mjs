@@ -11,10 +11,6 @@ const PUBLIC_DIR = path.join(ROOT, "public");
 const DATA_DIR = path.join(ROOT, "data");
 const OUT_FILE = path.join(PUBLIC_DIR, "search-index.json");
 
-// ✅ Your NEW Apps Script Web App URL (no query params here)
-const RESOURCES_API_BASE =
-  "https://script.google.com/macros/s/AKfycbwtXCA5kdNxVzAZejxQMz4cQYzuR6wzd9bJ1SghtQXLrV41W1zXUuSPF97fKwUURAhO/exec";
-
 // ---------------- helpers ----------------
 function slugify(s) {
   return String(s || "")
@@ -165,97 +161,8 @@ async function readSitemapPaths() {
   return out;
 }
 
-// ---------------- Apps Script resources ----------------
-function withQuery(base, paramsObj) {
-  const u = new URL(base);
-  for (const [k, v] of Object.entries(paramsObj || {})) {
-    u.searchParams.set(k, v);
-  }
-  return u.toString();
-}
+// ---------------- original site manifests ----------------
 
-async function fetchResourcesFromAppsScript() {
-  const url = withQuery(RESOURCES_API_BASE, { action: "all" });
-
-  const res = await fetch(url, {
-    cache: "no-store",
-    redirect: "follow",
-    headers: {
-      "User-Agent": "TeachArcadeSearchIndexer/1.0"
-    }
-  });
-
-  if (!res.ok) throw new Error(`Resources API failed: ${res.status}`);
-
-  const data = await res.json();
-
-  if (!data || data.ok !== true || !Array.isArray(data.items)) {
-    throw new Error("Resources API must return { ok:true, items:[...] }");
-  }
-
-  return data.items;
-}
-
-function gradeTagsFromString(gradesStr) {
-  const tags = [];
-  const g = String(gradesStr || "").trim();
-  if (!g) return tags;
-
-  const compact = g.replace(/\s+/g, "");
-  if (/^\d+\-\d+$/.test(compact)) {
-    tags.push(`grade:${compact}`);
-    return tags;
-  }
-
-  if (/k-?2|primary/i.test(g)) tags.push("grade:k-2");
-  if (/3-?5|elementary/i.test(g)) tags.push("grade:3-5");
-  if (/6-?8|middle|ms/i.test(g)) tags.push("grade:6-8");
-  if (/9-?12|high|hs/i.test(g)) tags.push("grade:9-12");
-
-  return tags;
-}
-
-function mapResourceToRecord(item) {
-  // Expected Apps Script shape:
-  // { title, url, type, subject, grades, description, tags:[], topic }
-  const title = String(item.title || "").trim();
-  const url = toInternalOrExternal(item.url);
-  if (!title || !url) return null;
-
-  const topicName = String(item.topic || "").trim(); // tab name
-  const subject = String(item.subject || "").trim();
-  const typeLabel = String(item.type || "").trim();
-  const description = String(item.description || "").trim();
-
-  const tags = ["type:resource"];
-
-  if (topicName) tags.push(`topic:${slugify(topicName)}`);
-  if (subject) tags.push(`subject:${slugify(subject)}`);
-  if (typeLabel) tags.push(`format:${slugify(typeLabel)}`);
-
-  tags.push(...gradeTagsFromString(item.grades));
-
-  if (Array.isArray(item.tags)) {
-    for (const t of item.tags) {
-      const raw = String(t || "").trim();
-      if (!raw) continue;
-      if (raw.includes(":")) tags.push(raw.toLowerCase());
-      else tags.push(`tag:${slugify(raw)}`);
-    }
-  }
-
-  return {
-    title,
-    url,
-    type: "resource",
-    description,
-    subject,
-    tags: dedupe(tags),
-    source: "apps-script"
-  };
-}
-
-// ---------------- manifests ----------------
 function manifestToRecord(x, defaultType) {
   if (!x || !x.title || !x.url) return null;
 
@@ -304,16 +211,7 @@ async function main() {
       };
     });
 
-  // 2) Resources from Apps Script
-  let resourceRecords = [];
-  try {
-    const items = await fetchResourcesFromAppsScript();
-    resourceRecords = items.map(mapResourceToRecord).filter(Boolean);
-  } catch (e) {
-    console.warn("WARNING: resources fetch failed:", String(e?.message || e));
-  }
-
-  // 3) Optional manifests for items not in sitemap
+  // 2) Optional manifests for items not in sitemap
   const gamesManifest = await readJsonIfExists(path.join(DATA_DIR, "games.json"), []);
   const toolsManifest = await readJsonIfExists(path.join(DATA_DIR, "tools.json"), []);
   const storeManifest = await readJsonIfExists(path.join(DATA_DIR, "store-items.json"), []);
@@ -328,7 +226,7 @@ async function main() {
   const map = new Map();
   const keyFor = (r) => `${String(r.url).toLowerCase()}||${String(r.title).toLowerCase()}`;
 
-  for (const rec of [...pageRecords, ...resourceRecords, ...manifestRecords]) {
+  for (const rec of [...pageRecords, ...manifestRecords]) {
     const k = keyFor(rec);
     if (!map.has(k)) {
       map.set(k, rec);

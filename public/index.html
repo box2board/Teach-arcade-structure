@@ -17,17 +17,17 @@
   <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
 
   <!-- SEO & Social -->
-  <meta name="description" content="Teach Arcade offers free, classroom-ready teaching resources including worksheets, lessons, primary sources, custom learning games, and interactive teacher tools. Made by a teacher, for teachers." />
+  <meta name="description" content="Free original classroom resources created by a teacher: interactive review games, escape rooms, simulations, printables, and practical teacher tools." />
   <link rel="canonical" href="https://teacharcade.com/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Teach Arcade" />
   <meta property="og:title" content="Teach Arcade — Free Teacher Resources" />
-  <meta property="og:description" content="Classroom-ready resources, original games, teacher tools, and interactives — all 100% free. Made by a teacher for teachers." />
+  <meta property="og:description" content="Original classroom games, escape rooms, simulations, printables, and teacher tools—free and ready to use." />
   <meta property="og:url" content="https://teacharcade.com/" />
   <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Teach Arcade — Free Teacher Resources" />
-  <meta name="twitter:description" content="Interactive games, teacher tools, and curated free resources — always free, always classroom-ready." />
+  <meta name="twitter:description" content="Free original classroom games, escape rooms, simulations, printables, and teacher tools." />
   <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
 
   <!-- JSON-LD: WebSite -->
@@ -93,6 +93,37 @@
       font: 400 16px/1.6 Nunito, system-ui, sans-serif;
       color: #475569;
       margin: 0 0 12px;
+    }
+
+    .section-intro {
+      color: #475569;
+      max-width: 760px;
+      margin: 0 0 18px;
+    }
+
+    .more-originals {
+      max-width: 1000px;
+      margin: 8px auto 0;
+      padding: 16px 18px;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      background: #f8fafc;
+    }
+
+    .more-originals h3 {
+      margin: 0 0 6px;
+      font: 700 17px/1.3 Poppins, sans-serif;
+      color: #0f172a;
+    }
+
+    .more-originals p {
+      margin: 0;
+      line-height: 2;
+    }
+
+    .more-originals a {
+      display: inline-block;
+      white-space: nowrap;
     }
 
     /* ===========================
@@ -168,9 +199,10 @@
       </a>
       <nav>
         <a href="/" style="color:#fff;margin-right:16px;">Home</a>
-        <a href="/subjects/index.html" style="color:#fff;margin-right:16px;">Subjects</a>
-        <a href="/escape/?room=wwi" style="color:#fff;margin-right:16px;">Escape Rooms</a>
-        <a href="/submit/" style="color:#fff;margin-right:16px;">Submit</a>
+        <a href="/subjects/" style="color:#fff;margin-right:16px;">Subjects</a>
+        <a href="/arcade-review-games/" style="color:#fff;margin-right:16px;">Arcade Games</a>
+        <a href="/escape/" style="color:#fff;margin-right:16px;">Escape Rooms</a>
+        <a href="/tools/" style="color:#fff;margin-right:16px;">Teacher Tools</a>
         <a href="/about.html" style="color:#fff;">About</a>
       </nav>
     </header>
@@ -183,182 +215,110 @@
 
     <!-- Hero -->
     <section class="hero">
-      <h1>Find Free, Classroom-Ready Teaching Resources</h1>
+      <h1>Original Classroom Resources, Ready to Use</h1>
       <p>
-        Teach Arcade gives you free classroom resources you can actually use tomorrow: review games, teacher tools, simulations, worksheets, lessons, and primary sources. Everything is in one place so planning is faster and easier.
+        Teach Arcade creates free learning games, classroom tools, simulations, escape rooms, and printables for teachers. Choose a subject or jump into an original activity built for real class time.
       </p>
 
       <div class="cta-row">
-        <a class="btn" href="/subjects/index.html">Browse Subjects</a>
-        <!-- FIXED: submit now points to /submit/ -->
-        <a class="btn secondary" href="/submit/">Submit a Resource</a>
+        <a class="btn" href="/subjects/">Browse Subjects</a>
+        <a class="btn secondary" href="/arcade-review-games/">Explore Arcade Games</a>
       </div>
 
       <form id="home-search" style="margin:16px auto 0; max-width:720px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
         <label class="sr-only" for="q">Search Teach Arcade resources</label>
         <input id="q" name="q" type="search" autocomplete="off"
-          placeholder="Search: constitution, Cold War, genetics, fractions..."
+          placeholder="Search: French Revolution, cells, fractions, mood and tone..."
           style="flex:1; min-width:240px; padding:12px 12px; border:1px solid #cbd5e1; border-radius:10px; font:600 14px/1 Nunito, system-ui, sans-serif;" />
         <button class="btn" type="submit">Search</button>
       </form>
       <p style="margin:10px auto 0; max-width:720px; color:#64748b; font:400 13px/1.5 Nunito, system-ui, sans-serif;">
-        Tip: Try keywords like “DBQ”, “primary source”, “review game”, or a topic name.
+        Search original games, tools, and activities by subject or topic.
       </p>
     </section>
 
     <!-- Mid Ad -->
     <div class="ad-slot ad-mid" aria-label="Advertisement"></div>
 
-    <!-- NEW SEO-RICH INTRO SECTION -->
+    <!-- Original Teach Arcade resources -->
     <section class="home-intro" aria-labelledby="home-intro-heading">
-      <h2 id="home-intro-heading">What Is Teach Arcade?</h2>
+      <h2 id="home-intro-heading">Made by a Teacher for Real Classrooms</h2>
       <p>
-        Teach Arcade is a free teaching resource hub for real classroom planning. You will find trusted materials plus original content like review games, digital organizers, escape-style missions, and teacher tools.
-      </p>
-      <p>
-        You can browse Social Studies, Science, Math, and ELA collections with worksheets, primary sources, lesson ideas, project guides, and enrichment activities. Pages are organized so you can find what you need quickly.
-      </p>
-      <p>
-        Beyond traditional materials, Teach Arcade includes custom games and tools that make review smoother and keep students involved. Everything is free and updated regularly, so you can keep coming back for fresh classroom-ready options.
+        Teach Arcade is a free library of original classroom activities: review games, escape rooms, simulations, printables, and teacher tools. Each activity is designed for practical classroom use, with clear directions and flexible options for whole-class, partner, station, or independent play.
       </p>
     </section>
 
-    <!-- Subject Tiles -->
+    <!-- Browse by subject -->
     <section aria-labelledby="subjects-title" style="margin-top:24px;">
-      <h2 id="subjects-title" class="sr-only">Subjects</h2>
-
+      <h2 id="subjects-title">Browse by Subject</h2>
+      <p class="section-intro">Choose a subject to find Teach Arcade’s original classroom materials and activities.</p>
       <div class="subjects-grid">
-
-        <a href="/subjects/social-studies/index.html" class="subject-tile" aria-label="Social Studies">
+        <a href="/subjects/social-studies/" class="subject-tile">
           <div class="subject-emoji">🌎</div>
           <h3 class="subject-title">Social Studies</h3>
-          <p class="subject-desc">U.S. History, World History, Government, Geography, Economics</p>
+          <p class="subject-desc">History, civics, geography, and economics.</p>
         </a>
-
-        <a href="/subjects/math/index.html" class="subject-tile" aria-label="Math">
+        <a href="/subjects/math/" class="subject-tile">
           <div class="subject-emoji">➗</div>
           <h3 class="subject-title">Math</h3>
-          <p class="subject-desc">Algebra, Geometry, Statistics, Calculus & more</p>
+          <p class="subject-desc">Number sense, algebra, geometry, and more.</p>
         </a>
-
-        <a href="/subjects/science/index.html" class="subject-tile" aria-label="Science">
+        <a href="/subjects/science/" class="subject-tile">
           <div class="subject-emoji">🔬</div>
           <h3 class="subject-title">Science</h3>
-          <p class="subject-desc">Biology, Chemistry, Physics, Earth & Space</p>
+          <p class="subject-desc">Biology, chemistry, physics, and Earth &amp; space.</p>
         </a>
-
-        <a href="/subjects/ela/index.html" class="subject-tile" aria-label="English Language Arts">
+        <a href="/subjects/ela/" class="subject-tile">
           <div class="subject-emoji">📚</div>
           <h3 class="subject-title">English / Language Arts</h3>
-          <p class="subject-desc">Reading, Writing, Grammar, Research, Poetry</p>
+          <p class="subject-desc">Reading, writing, grammar, and language.</p>
         </a>
-
-        <a href="/subjects/fine-arts/index.html" class="subject-tile" aria-label="Fine Arts">
+        <a href="/subjects/fine-arts/" class="subject-tile">
           <div class="subject-emoji">🎨</div>
           <h3 class="subject-title">Fine Arts</h3>
-          <p class="subject-desc">Art, Music, Drama, Media Arts</p>
+          <p class="subject-desc">Art, music, drama, and media arts.</p>
         </a>
+      </div>
+    </section>
 
-        <a href="/movie-guides/" class="subject-tile" aria-label="Movie Guides">
-          <div class="subject-emoji">🎬</div>
-          <h3 class="subject-title">Movie Guides</h3>
-          <p class="subject-desc">Free viewing guides with discussion questions and prompts.</p>
-        </a>
-
-        <a href="/tools/" class="subject-tile" aria-label="Teacher Tools">
-          <div class="subject-emoji">🛠️</div>
-          <h3 class="subject-title">Teacher Tools</h3>
-          <p class="subject-desc">Generators, organizers, and interactive classroom helpers</p>
-        </a>
-
-        <a href="/career-arcade/" class="subject-tile" aria-label="Career Arcade">
-          <div class="subject-emoji">💼</div>
-          <h3 class="subject-title">Career Arcade</h3>
-          <p class="subject-desc">Interactive career games and personal finance simulators for students.</p>
-        </a>
-
-        <a href="/classroom/toy-toolbox/" class="subject-tile" aria-label="Toy Toolbox">
-          <div class="subject-emoji">🧰</div>
-          <h3 class="subject-title">Toy Toolbox</h3>
-          <p class="subject-desc">Hands-on learning with blocks, LEGO-style builds, manipulatives, and puzzles—organized by grade level and subject.</p>
-        </a>
-
-        <a href="/escape/?room=wwi" class="subject-tile" aria-label="Escape Rooms">
-          <div class="subject-emoji">🎮</div>
-          <h3 class="subject-title">Escape Rooms</h3>
-          <p class="subject-desc">Interactive, student-led puzzle missions</p>
-        </a>
-
-        <a href="/print-play-games/index.html" class="subject-tile" aria-label="Print &amp; Play Games">
-          <div class="subject-emoji">🎲</div>
-          <h3 class="subject-title">Print &amp; Play Games</h3>
-          <p class="subject-desc">Printable review games for any subject—no tech required.</p>
-        </a>
-
-        <a href="/arcade-review-games/index.html" class="subject-tile" aria-label="Arcade Review Games">
+    <section aria-labelledby="activities-title" style="margin-top:36px;">
+      <h2 id="activities-title">Original Activities Built for Class</h2>
+      <div class="subjects-grid">
+        <a href="/arcade-review-games/" class="subject-tile">
           <div class="subject-emoji">🕹️</div>
           <h3 class="subject-title">Arcade Review Games</h3>
-          <p class="subject-desc">Side-scrolling content review games with built-in questions</p>
+          <p class="subject-desc">Play original games that make subject review active and memorable.</p>
         </a>
-
-        <a href="/games/knowledge-expedition/" class="subject-tile" aria-label="Knowledge Expedition">
-          <div class="subject-emoji">🧭</div>
-          <h3 class="subject-title">Knowledge Expedition</h3>
-          <p class="subject-desc">Adventure-style review games organized by subject.</p>
+        <a href="/escape/" class="subject-tile">
+          <div class="subject-emoji">🔐</div>
+          <h3 class="subject-title">Escape Rooms</h3>
+          <p class="subject-desc">Gather clues, solve connected puzzles, and crack the final challenge.</p>
         </a>
-
-        <!-- Brain Arcade -->
-        <a href="/brain-arcade/" class="subject-tile brain-arcade" aria-label="Brain Arcade">
-          <div class="brain-arcade-badge">New</div>
-          <div class="subject-emoji">🧠</div>
-          <h3 class="subject-title">Brain Arcade</h3>
-          <p class="subject-desc">Logic, reasoning, focus &amp; strategy games — fun, skill-based play.</p>
+        <a href="/tools/" class="subject-tile">
+          <div class="subject-emoji">🛠️</div>
+          <h3 class="subject-title">Teacher Tools</h3>
+          <p class="subject-desc">Quick classroom helpers for participation, practice, and routines.</p>
         </a>
-
-        <a href="/brain-arcade/block-builder/" class="subject-tile" aria-label="3D Block Builder">
-          <div class="subject-emoji">🧱</div>
-          <h3 class="subject-title">3D Block Builder</h3>
-          <p class="subject-desc">Teacher-friendly LEGO-style 3D sandbox for modeling systems, stories, and ideas.</p>
+        <a href="/print-play-games/" class="subject-tile">
+          <div class="subject-emoji">🎲</div>
+          <h3 class="subject-title">Print &amp; Play Games</h3>
+          <p class="subject-desc">Original paper-based games for classrooms with or without devices.</p>
         </a>
-
-        <a href="/choose-your-path-adventure/index.html" class="subject-tile" aria-label="Choose Your Path Adventures">
-          <div class="subject-emoji">🧭</div>
-          <h3 class="subject-title">Choose Your Path Adventures</h3>
-          <p class="subject-desc">Choice-driven historical scenarios with multiple endings</p>
-        </a>
-
-        <!-- Historical Decision Simulator -->
-        <a href="/decision-simulator/american-revolution-breaking-point/" class="subject-tile" aria-label="Historical Decision Simulator: American Revolution">
-          <div class="subject-emoji">📉</div>
-          <h3 class="subject-title">Historical Decision Simulator</h3>
-          <p class="subject-desc">Play “American Revolution: The Breaking Point” — make tough choices, track pressure, and reach multiple endings.</p>
-        </a>
-
-        <a href="/playbook/" class="subject-tile" aria-label="Professional Development">
-          <div style="
-            position:absolute;
-            top:0;
-            left:0;
-            width:100%;
-            height:100%;
-            background:rgba(0,0,0,0.55);
-            color:#fff;
-            font:700 18px Poppins, sans-serif;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            text-transform:uppercase;
-            letter-spacing:1px;
-            z-index:5;
-          ">
-            Coming Soon
-          </div>
-
-          <div class="subject-emoji">📘</div>
-          <h3 class="subject-title">Professional Development</h3>
-          <p class="subject-desc">Workshops, training guides, and instructional support</p>
-        </a>
-
+      </div>
+      <div class="more-originals">
+        <h3>More to Explore</h3>
+        <p>
+          <a href="/brain-arcade/">Brain Arcade</a> ·
+          <a href="/career-arcade/">Career Arcade</a> ·
+          <a href="/games/knowledge-expedition/">Knowledge Expedition</a> ·
+          <a href="/choose-your-path-adventure/">Choose Your Path Adventures</a> ·
+          <a href="/decision-simulator/">Decision Simulators</a> ·
+          <a href="/movie-guides/">Movie Guides</a> ·
+          <a href="/classroom/toy-toolbox/">Toy Toolbox</a> ·
+          <a href="/brain-arcade/block-builder/">3D Block Builder</a> ·
+          <a href="/playbook/">Teach Arcade Playbook</a> ·
+          <a href="/store/">Teach Arcade Merch</a>
+        </p>
       </div>
     </section>
 

@@ -50,13 +50,8 @@
     { label: "Home", href: "/" },
     { label: "Subjects", href: "/subjects/" },
     { label: "Arcade Games", href: "/arcade-review-games/" },
-    { label: "Brain Arcade", href: "/brain-arcade/" },
-    { label: "Career Arcade", href: "/career-arcade/" },
-    { label: "Teacher Tools", href: "/tools/" },
     { label: "Escape Rooms", href: "/escape/" },
-    { label: "Playbook", href: "/playbook/" },
-    { label: "Merch", href: "/store/index.html" },
-    { label: "Submit", href: "/submit/" },
+    { label: "Teacher Tools", href: "/tools/" },
     { label: "About", href: "/about.html" },
   ];
 
