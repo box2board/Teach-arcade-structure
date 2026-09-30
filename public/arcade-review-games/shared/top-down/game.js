@@ -1,6 +1,6 @@
 const configuration=document.querySelector('script[data-map]');
 const [{adventure:map},{content}]=await Promise.all([import(configuration.dataset.map),import(configuration.dataset.questionSet)]);
-import { createState, move, undo, interact, doorOpen, completeChallenge, resetPuzzle, shuffle } from './model.js';
+import { createState, move, undo, interact, doorOpen, completeChallenge, resetPuzzle, shuffle, exitReady } from './model.js';
 const $=id=>document.getElementById(id);
 let state=createState(map), started=false, held=null, nextStep=0, elapsed=0, last=0;
 let questionDeck=shuffle(content.questions), activeQuestion=null;
@@ -8,17 +8,23 @@ const board=$('board'), dialog=$('dialog');
 const symbols={block:'▤',plate:'◎',door:'⌑',challenge:'▣',sign:'i',lever:'ϟ',exit:'◇'};
 function element(tag,text,className){const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(className)e.className=className;return e;}
 function message(text){$('message').textContent=text;}
-function sealed(){return Number(doorOpen(map,state,map.doors[0]))+Number(state.opened.includes('east'))+Number(state.activated.length===2);}
+function sealed(){return Number(doorOpen(map,state,map.doors[0]))+Number(state.opened.includes('east'))+Number(exitReady(map,state,map.objects.find(o=>o.type==='exit')));}
 function render(){
   $('entities').replaceChildren();
   const items=[...map.plates.map(o=>({...o,type:'plate'})),...map.doors.map(o=>({...o,type:'door'})),...map.objects,...state.blocks.map(o=>({...o,type:'block'}))];
   for(const item of items){
-    let active=item.type==='door'?doorOpen(map,state,item):item.type==='plate'?state.blocks.some(b=>b.x===item.x&&b.y===item.y):item.type==='exit'?item.requires.every(id=>state.activated.includes(id)):state.activated.includes(item.id);
+    let active=item.type==='door'?doorOpen(map,state,item):item.type==='plate'?state.blocks.some(b=>b.x===item.x&&b.y===item.y):item.type==='exit'?exitReady(map,state,item):state.activated.includes(item.id);
     const e=element('div',undefined,`entity ${item.type}${active?' active':''}${item.type==='door'&&active?' open':''}${state.solved.includes(item.id)?' done':''}`);
     e.style.left=`${item.x/21*100}%`;e.style.top=`${item.y/13*100}%`;e.append(element('span',active&&item.type==='door'?'·':symbols[item.type]));$('entities').append(e);
   }
   $('player').style.left=`${state.player.x/21*100}%`;$('player').style.top=`${state.player.y/13*100}%`;$('player').dataset.facing=state.facing;
   const room=map.rooms.find(r=>state.player.x>=r.min&&state.player.x<=r.max)||map.rooms[0];
+  const viewMin=room.viewMin??0, viewMax=room.viewMax??(map.tiles[0].length-1);
+  const viewWidth=viewMax-viewMin+1;
+  board.style.aspectRatio=`${viewWidth}/${map.tiles.length}`;
+  $('world').style.width=`${map.tiles[0].length/viewWidth*100}%`;
+  $('world').style.left=`${-viewMin/viewWidth*100}%`;
+  $('map-labels').textContent=room.name;
   $('room').textContent=room.name;$('objective').textContent=state.won?'Adventure complete!':room.objective;
   $('inventory').textContent=state.keys.length?'Key: archive':state.opened.includes('east')?'Key: used':'Key: —';$('seals').textContent=`Seals: ${sealed()} / 3`;
   board.setAttribute('aria-label',`${room.name}. Position column ${state.player.x}, row ${state.player.y}. ${room.objective} Move with arrows or WASD; interact with E or Space.`);
@@ -43,7 +49,7 @@ function performInteraction(){
   if(result.type==='challenge')openQuestion(result.id);
   if(result.type==='win'){
     $('pause').disabled=true;
-    popup('ALL THREE SEALS OPEN','Adventure complete',[`You solved the block switch, unlocked the archive gate, and activated both signals.`,`Exploration time: ${Math.floor(elapsed/60)}m ${Math.floor(elapsed%60)}s · Moves: ${state.moves} · Review points: ${state.score}.`,`Chest question attempts: ${state.attempts.archive||0}. Try a new route on your next adventure.`],[{text:'Play again',run:restart,primary:true},{text:'Back to Arcade',run:()=>{window.location.href='/arcade-review-games/';}}]);
+    popup('ALL THREE SEALS OPEN','Adventure complete',[`You solved the block switch, unlocked the archive gate, and solved the signal sequence.`,`Exploration time: ${Math.floor(elapsed/60)}m ${Math.floor(elapsed%60)}s · Moves: ${state.moves} · Review points: ${state.score}.`,`Chest question attempts: ${state.attempts.archive||0}. Try a new route on your next adventure.`],[{text:'Play again',run:restart,primary:true},{text:'Back to Arcade',run:()=>{window.location.href='/arcade-review-games/';}}]);
   }
 }
 function openQuestion(id){
@@ -84,5 +90,5 @@ $('reset-puzzle').addEventListener('click',()=>popup('RESET PUZZLE','Return the 
 $('pause').addEventListener('click',pause);
 dialog.addEventListener('cancel',e=>{e.preventDefault();if(started&&!state.won){activeQuestion=null;resume();}});
 function frame(now){if(started&&!dialog.open&&!state.won&&!document.hidden){if(last)elapsed+=Math.min((now-last)/1000,.1);if(held&&now>=nextStep){performMove(held);nextStep=now+165;}}last=now;requestAnimationFrame(frame);}
-render();popup('THE THREE SEALS','Explore the courthouse',['Solve three connected rooms: hold a floor switch with a block, earn a key from the archive chest, and activate two signals to open the final exit.','Move with arrows or WASD. Face an object and press E / Space to interact. On a tablet, use the buttons below the map.','There is no time limit. Undo and Reset puzzle help you recover from a tricky push.'],[{text:'Start adventure',run:restart,primary:true}]);
+render();popup('QUEST ARCADE · THE THREE SEALS','Explore the courthouse',['Solve three connected rooms: hold a floor switch with a block, earn a key from the archive chest, and follow an inscription to solve the final signal sequence.','Move with arrows or WASD. Face an object and press E / Space to interact. On a tablet, use the buttons below the map.','There is no time limit. Undo and Reset puzzle help you recover from a tricky push.'],[{text:'Start adventure',run:restart,primary:true}]);
 requestAnimationFrame(frame);

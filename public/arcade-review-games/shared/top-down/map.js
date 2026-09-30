@@ -26,14 +26,15 @@ export const adventure = {
   objects: [
     { id: 'lobby-sign', type: 'sign', x: 2, y: 3, text: 'A heavy block holds a floor switch down. Push the block onto the amber switch to open the west gate. If you get stuck, use Undo or Reset puzzle.' },
     { id: 'archive', type: 'challenge', x: 10, y: 3, key: 'archive' },
-    { id: 'chamber-sign', type: 'sign', x: 16, y: 8, text: 'The final seal needs two signals. Activate both blue switches, then enter the glowing exit.' },
+    { id: 'chamber-sign', type: 'sign', x: 16, y: 8, text: 'The inscription reads: NORTH, SOUTH, NORTH. Activate the upper switch, then the right switch, then return to the upper switch. A wrong signal resets the sequence.' },
     { id: 'north-switch', type: 'lever', x: 16, y: 3 },
     { id: 'south-switch', type: 'lever', x: 18, y: 6 },
-    { id: 'exit', type: 'exit', x: 18, y: 10, requires: ['north-switch', 'south-switch'] }
+    { id: 'exit', type: 'exit', x: 18, y: 10, requires: ['north-switch', 'south-switch'], sequencePuzzle: 'signals' }
   ],
+  puzzles: [{ id: 'signals', sequence: ['north-switch', 'south-switch', 'north-switch'] }],
   rooms: [
-    { name: '01 · Switch Hall', min: 1, max: 7, objective: 'Push the block onto the amber floor switch.' },
-    { name: '02 · Archive', min: 8, max: 14, objective: 'Open the archive chest to earn a key. Use it at the east gate.' },
-    { name: '03 · Signal Chamber', min: 15, max: 19, objective: 'Activate both blue switches, then enter the glowing exit.' }
+    { name: '01 · Switch Hall', min: 1, max: 7, viewMin: 0, viewMax: 7, objective: 'Push the block onto the amber floor switch.' },
+    { name: '02 · Archive', min: 8, max: 14, viewMin: 7, viewMax: 14, objective: 'Open the archive chest to earn a key. Use it at the east gate.' },
+    { name: '03 · Signal Chamber', min: 15, max: 19, viewMin: 14, viewMax: 20, objective: 'Read the inscription and activate the signals in the correct order.' }
   ]
 };

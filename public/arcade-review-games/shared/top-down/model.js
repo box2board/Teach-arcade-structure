@@ -1,7 +1,7 @@
 export const directions = { up: [0,-1], down: [0,1], left: [-1,0], right: [1,0] };
 const at = (a, b) => a.x === b.x && a.y === b.y;
 export function createState(map) {
-  return { player: { ...map.start }, facing: 'up', blocks: structuredClone(map.blocks), opened: [], activated: [], keys: [], solved: [], attempts: {}, score: 0, won: false, moves: 0, history: [] };
+  return { player: { ...map.start }, facing: 'up', blocks: structuredClone(map.blocks), opened: [], activated: [], sequences: {}, keys: [], solved: [], attempts: {}, score: 0, won: false, moves: 0, history: [] };
 }
 export function doorOpen(map, state, door) {
   if (state.opened.includes(door.id)) return true;
@@ -35,6 +35,11 @@ export function undo(state) {
   const previous=state.history.pop();
   if (previous) { state.player=previous.player; state.blocks=previous.blocks; }
 }
+export function exitReady(map,state,exit) {
+  const puzzle=(map.puzzles||[]).find(p=>p.id===exit.sequencePuzzle);
+  return (exit.requires||[]).every(id=>state.activated.includes(id)) &&
+    (!puzzle || state.sequences[puzzle.id]===puzzle.sequence.length);
+}
 export function interact(map,state) {
   if (state.won) return { type:'none' };
   const [dx,dy]=directions[state.facing];
@@ -53,12 +58,25 @@ export function interact(map,state) {
   if (object.type==='sign') return {type:'message',text:object.text};
   if (object.type==='challenge') return state.solved.includes(object.id)?{type:'message',text:'This chest is empty. You already earned its key.'}:{type:'challenge',id:object.id};
   if (object.type==='lever') {
+    const puzzle=(map.puzzles||[]).find(p=>p.sequence.includes(object.id));
+    if (puzzle) {
+      const progress=state.sequences[puzzle.id]||0;
+      if(progress===puzzle.sequence.length) return {type:'message',text:'The signal puzzle is already solved. Head to the exit.'};
+      if(object.id!==puzzle.sequence[progress]) {
+        state.sequences[puzzle.id]=0;
+        state.activated=state.activated.filter(id=>!puzzle.sequence.includes(id));
+        return {type:'message',text:'Wrong signal. The sequence has reset. Read the inscription and try again.'};
+      }
+      state.sequences[puzzle.id]=progress+1;
+      if(!state.activated.includes(object.id))state.activated.push(object.id);
+      return {type:'message',text:progress+1===puzzle.sequence.length?'Final seal opened! Head to the glowing exit.':`Correct signal: ${progress+1} / ${puzzle.sequence.length}. Continue the inscription sequence.`};
+    }
     if (!state.activated.includes(object.id)) state.activated.push(object.id);
     return {type:'message',text:'Signal activated. Both blue signals open the final seal.'};
   }
   if (object.type==='exit') {
-    if (object.requires.every(id=>state.activated.includes(id))) { state.won=true; return {type:'win'}; }
-    return {type:'message',text:'The final seal is locked. Activate both blue switches.'};
+    if (exitReady(map,state,object)) { state.won=true; return {type:'win'}; }
+    return {type:'message',text:'The final seal is locked. Follow the inscription to complete the signal sequence.'};
   }
   return {type:'none'};
 }
