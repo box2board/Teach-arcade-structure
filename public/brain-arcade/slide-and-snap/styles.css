@@ -261,6 +261,28 @@ summary:focus-visible,
   color: var(--link);
 }
 
+.quick-howto {
+  max-width: 760px;
+  margin: 0 auto var(--space-4);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  box-shadow: var(--shadow);
+}
+
+.quick-howto summary {
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+}
+
+.quick-howto p {
+  margin: 10px 0 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
 /* Game page */
 .game-hero {
   display: flex;
@@ -371,13 +393,17 @@ summary:focus-visible,
 
 .game-shell {
   display: grid;
-  gap: var(--space-5);
+  gap: var(--space-4);
+  max-width: 760px;
+  margin: 0 auto;
 }
 
 .control-panel {
   display: grid;
   gap: var(--space-3);
-  background: var(--surface);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(37,99,235,.06), transparent 38%),
+    var(--surface);
   border-radius: var(--radius-lg);
   border: 1px solid var(--border);
   padding: var(--space-4);
@@ -434,13 +460,15 @@ summary:focus-visible,
 }
 
 .board {
-  width: min(92vw, 480px);
+  width: min(92vw, 500px);
   aspect-ratio: 1;
-  border-radius: var(--radius-lg);
-  background: linear-gradient(160deg, rgba(37, 99, 235, 0.12), rgba(168, 85, 247, 0.12));
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(168,85,247,.10), transparent 38%),
+    linear-gradient(160deg, rgba(37,99,235,.12), rgba(168,85,247,.10));
   position: relative;
   border: 1px solid var(--border);
-  box-shadow: var(--shadow);
+  box-shadow: 0 24px 54px rgba(15,23,42,.16), inset 0 0 0 1px rgba(255,255,255,.03);
 }
 
 .tile {
@@ -448,15 +476,23 @@ summary:focus-visible,
   display: grid;
   place-items: center;
   border-radius: 16px;
-  background: var(--surface);
-  border: 2px solid rgba(37, 99, 235, 0.2);
+  background:
+    radial-gradient(circle at 30% 22%, rgba(255,255,255,.12), transparent 26%),
+    var(--surface);
+  border: 2px solid rgba(37,99,235,.22);
   color: var(--text);
   font-family: "Poppins", sans-serif;
-  font-size: clamp(1rem, 3vw, 1.6rem);
-  font-weight: 700;
-  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.15);
-  transition: transform 0.2s ease;
+  font-size: clamp(1rem,3vw,1.65rem);
+  font-weight: 800;
+  box-shadow: 0 9px 0 rgba(15,23,42,.10), 0 14px 20px rgba(15,23,42,.12);
+  transition: transform .16s ease, box-shadow .16s ease, filter .16s ease;
   cursor: pointer;
+}
+
+.tile:hover { filter: brightness(1.04); }
+.tile:active {
+  box-shadow: 0 4px 0 rgba(15,23,42,.10), 0 8px 12px rgba(15,23,42,.10);
+  transform: translateY(4px);
 }
 
 .tile:focus-visible {
@@ -544,4 +580,86 @@ summary:focus-visible,
   .confetti span {
     animation: none;
   }
+}
+
+
+/* Focused play treatment */
+.slide-game-page {
+  --bg:#070b16;
+  --surface:#101827;
+  --panel:#101827;
+  --text:#f8fafc;
+  --muted:#9ca9bf;
+  --border:#22314a;
+  --button-bg:#3b82f6;
+  --button-text:#fff;
+  --button-secondary-bg:#121c2e;
+  --button-secondary-text:#e2e8f0;
+  --shadow:0 22px 54px rgba(2,6,23,.48);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(59,130,246,.14), transparent 30%),
+    #070b16;
+}
+
+.slide-game-page main { padding-top: 22px; }
+.slide-game-page .game-hero,
+.slide-game-page .how-to-card,
+.slide-game-page .section.faq {
+  max-width: 860px;
+  margin-inline: auto;
+}
+
+.slide-game-page .game-shell {
+  max-width: 760px;
+  margin-inline: auto;
+}
+
+.slide-game-page .control-panel {
+  background: linear-gradient(180deg,#111c30,#0c1424);
+  border-color:#263754;
+}
+
+.slide-game-page .stats {
+  grid-template-columns: repeat(3,minmax(0,1fr));
+}
+
+.slide-game-page .stat {
+  background:linear-gradient(180deg,rgba(59,130,246,.14),rgba(59,130,246,.06));
+  border-color:rgba(96,165,250,.18);
+}
+
+.slide-game-page .board {
+  width:min(92vw,540px);
+  background:
+    radial-gradient(circle at 50% 0%,rgba(168,85,247,.08),transparent 36%),
+    linear-gradient(160deg,rgba(37,99,235,.12),rgba(168,85,247,.08));
+  border-color:#2d4266;
+  box-shadow:0 26px 66px rgba(2,6,23,.45), inset 0 0 30px rgba(59,130,246,.04);
+}
+
+.slide-game-page .tile {
+  border-color:#304a74;
+  background:linear-gradient(180deg,#17243a,#111a2c);
+  box-shadow:0 10px 22px rgba(2,6,23,.28),inset 0 1px 0 rgba(255,255,255,.04);
+  transition:transform .12s ease,box-shadow .12s ease,border-color .12s ease,filter .12s ease;
+}
+
+.slide-game-page .tile:hover {
+  transform:translateY(-2px);
+  border-color:#60a5fa;
+  filter:brightness(1.08);
+}
+
+.slide-game-page .tile:active { transform:scale(.96); }
+
+.slide-game-page .best-time {
+  background:rgba(15,23,42,.72);
+  border:1px solid #23324d;
+  border-radius:999px;
+  padding:8px 13px;
+}
+
+@media(max-width:640px){
+  .slide-game-page main{padding-inline:8px}
+  .slide-game-page .stats{grid-template-columns:repeat(3,minmax(0,1fr))}
 }

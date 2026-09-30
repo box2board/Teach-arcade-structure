@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0f172a" />
+  <title>Crossword | Brain Arcade | Teach Arcade</title>
+  <meta name="description" content="Play free mini crosswords in your browser. Solve fresh clue-based puzzles with hints, checking, daily puzzles, and mobile-friendly controls." />
+  <link rel="canonical" href="https://teacharcade.com/brain-arcade/crossword/" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <link rel="stylesheet" href="/brain-arcade/crossword/style.css" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Teach Arcade" />
+  <meta property="og:title" content="Crossword | Brain Arcade | Teach Arcade" />
+  <meta property="og:description" content="Solve fresh mini crosswords with daily and random puzzles, hints, and checking." />
+  <meta property="og:url" content="https://teacharcade.com/brain-arcade/crossword/" />
+  <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"Crossword",
+    "applicationCategory":"Game",
+    "operatingSystem":"All",
+    "url":"https://teacharcade.com/brain-arcade/crossword/",
+    "description":"A free browser mini crossword game with daily and random puzzles.",
+    "publisher":{"@type":"Organization","name":"Teach Arcade"}
+  }
+  </script>
+</head>
+<body>
+  <div id="site-header"></div>
+  <script src="/assets/scripts/nav.js?v=5" defer></script>
+
+  <main class="cw-page">
+    <nav class="cw-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a><span>›</span><a href="/brain-arcade/">Brain Arcade</a><span>›</span><span aria-current="page">Crossword</span>
+    </nav>
+
+    <header class="cw-hero">
+      <div>
+        <p class="cw-eyebrow">Brain Arcade</p>
+        <h1>Crossword</h1>
+        <p>Follow the clues, work the crossings, and finish a fresh mini puzzle.</p>
+      </div>
+      <div class="cw-stats" role="status" aria-live="polite">
+        <div><span>Time</span><strong id="timer">00:00</strong></div>
+        <div><span>Solved</span><strong id="progress">0/0</strong></div>
+        <div><span>Hints</span><strong id="hints">0</strong></div>
+      </div>
+    </header>
+
+    <section class="cw-toolbar" aria-label="Crossword controls">
+      <button type="button" class="primary" id="new-puzzle">New Puzzle</button>
+      <button type="button" id="daily-puzzle" aria-pressed="false">Daily: Off</button>
+      <button type="button" id="check-puzzle">Check</button>
+      <button type="button" id="hint-letter">Hint Letter</button>
+      <button type="button" id="clear-puzzle">Clear</button>
+    </section>
+
+    <p id="message" class="cw-message" role="status" aria-live="polite">Choose a clue or tap a square to begin.</p>
+
+    <section class="cw-game">
+      <div class="cw-board-panel">
+        <div id="board" class="cw-board" role="grid" aria-label="Crossword puzzle"></div>
+        <div id="keyboard" class="cw-keyboard" aria-label="Crossword keyboard"></div>
+        <p class="cw-tip">Keyboard: type letters · Backspace erases · Space switches Across/Down at a crossing.</p>
+      </div>
+
+      <aside class="cw-clues" aria-label="Crossword clues">
+        <section>
+          <h2>Across</h2>
+          <div id="across-clues" class="clue-list"></div>
+        </section>
+        <section>
+          <h2>Down</h2>
+          <div id="down-clues" class="clue-list"></div>
+        </section>
+      </aside>
+    </section>
+
+    <section class="cw-how">
+      <details>
+        <summary>How to play</summary>
+        <p>Tap a clue or square, then type or use the on-screen keyboard. Crossed answers share letters. Check marks mistakes without revealing answers. Hint Letter fills only the selected square.</p>
+      </details>
+    </section>
+  </main>
+
+  <div class="cw-modal" id="win-modal" aria-hidden="true">
+    <div class="cw-modal-card" role="dialog" aria-modal="true" aria-labelledby="win-title">
+      <p class="cw-eyebrow">Puzzle Complete</p>
+      <h2 id="win-title">Crossword solved!</h2>
+      <p id="win-summary"></p>
+      <div class="cw-modal-actions">
+        <button type="button" class="primary" id="play-again">New Puzzle</button>
+        <a href="/brain-arcade/">Brain Arcade</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="/brain-arcade/crossword/game.js" defer></script>
+</body>
+</html>

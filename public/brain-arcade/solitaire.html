@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Solitaire (Klondike) · Web Game</title>
-  <meta name="description" content="Play Klondike Solitaire in your browser. Drag-and-drop, tap-to-move (foundation-only), undo, and auto-move to foundations." />
+  <title>Solitaire (Klondike) | Brain Arcade | Teach Arcade</title>
+  <meta name="description" content="Play Klondike Solitaire in your browser with drag-and-drop, full tap-to-move controls, undo, hints, and auto-move to foundations." />
 
   <style>
     :root{
-      --bg1:#0b3d2e;
-      --bg2:#06291f;
+      --bg1:#0f5a43;
+      --bg2:#052d23;
       --card:#ffffff;
       --ink:#0b1220;
       --muted:rgba(255,255,255,.45);
@@ -60,7 +60,9 @@
       margin:0;
       min-height:100svh;
       padding-bottom: env(safe-area-inset-bottom);
-      background: radial-gradient(1200px 700px at 30% 10%, var(--bg1), var(--bg2));
+      background:
+        radial-gradient(900px 520px at 50% -8%, rgba(34,197,94,.18), transparent 58%),
+        radial-gradient(1200px 760px at 30% 8%, var(--bg1), var(--bg2));
       color:#fff;
       font-family:var(--font);
       user-select:none;
@@ -75,16 +77,41 @@
       padding: 18px 14px calc(28px + env(safe-area-inset-bottom));
     }
 
+    .backLink{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      color:rgba(255,255,255,.7);
+      text-decoration:none;
+      font-weight:800;
+      font-size:12px;
+      margin-bottom:10px;
+    }
+    .backLink:hover,.backLink:focus-visible{ color:#fff; outline:none; text-decoration:underline; }
+
     header{
       display:flex;
       align-items:flex-start;
       justify-content:space-between;
-      gap: 12px;
+      gap: 14px;
       margin-bottom: 14px;
+      padding:14px;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:16px;
+      background:rgba(3,24,18,.24);
+      box-shadow:0 12px 28px rgba(0,0,0,.12);
+      backdrop-filter:blur(8px);
     }
 
-    .brand{ display:flex; flex-direction:column; gap:2px; }
-    .brand h1{ margin:0; font-size:18px; letter-spacing:.3px; }
+    .brand{ display:flex; flex-direction:column; gap:3px; }
+    .eyebrow{
+      color:rgba(216,180,254,.9);
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      font-size:10px;
+      font-weight:900;
+    }
+    .brand h1{ margin:0; font-size:22px; letter-spacing:.1px; }
     .brand small{ color: var(--muted); font-size:12px; max-width: 560px; }
 
     .controls{
@@ -100,8 +127,9 @@
       border: 1px solid var(--line);
       background: rgba(255,255,255,.08);
       color:#fff;
-      padding: 9px 11px;
-      border-radius: 12px;
+      padding: 10px 12px;
+      min-height:40px;
+      border-radius: 11px;
       font-weight: 800;
       cursor:pointer;
       transition: transform .05s ease, background .15s ease, border-color .15s ease, opacity .15s ease;
@@ -111,9 +139,20 @@
     button:hover{ background: rgba(255,255,255,.12); }
     button[disabled]{ opacity:.55; cursor:not-allowed; }
 
+    .controls #newBtn{
+      background:#fff;
+      border-color:#fff;
+      color:#073226;
+    }
+    .controls #newBtn:hover{ background:#ecfdf5; }
     .modeBtn{
       border-color: var(--accentBorder);
       background: var(--accent);
+    }
+    #autoBtn.ready{
+      background:linear-gradient(135deg,#7c3aed,#2563eb);
+      border-color:rgba(191,219,254,.55);
+      box-shadow:0 8px 20px rgba(37,99,235,.22);
     }
     .modeBtn b{ font-weight: 900; }
 
@@ -125,13 +164,38 @@
       font-size: 12px;
       flex-wrap:wrap;
     }
+    .hud{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+    .hudStat{
+      min-width:74px;
+      display:grid;
+      gap:3px;
+      padding:8px 10px;
+      border-radius:11px;
+      background:rgba(0,0,0,.14);
+      border:1px solid rgba(255,255,255,.12);
+    }
+    .hudStat span{
+      font-size:9px;
+      text-transform:uppercase;
+      letter-spacing:.1em;
+      color:rgba(255,255,255,.48);
+      font-weight:900;
+    }
+    .hudStat b{ color:#fff; font-size:15px; }
 
     .board{
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 14px;
-      box-shadow: var(--shadow);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255,255,255,.05), transparent 34%),
+        repeating-linear-gradient(45deg, rgba(255,255,255,.012) 0 2px, transparent 2px 5px),
+        rgba(1,34,25,.26);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 20px;
+      padding: 16px;
+      box-shadow: 0 24px 60px rgba(0,0,0,.30), inset 0 0 0 1px rgba(255,255,255,.025);
       overflow: auto;
       -webkit-overflow-scrolling: touch;
       max-height: calc(100svh - 160px);
@@ -174,16 +238,34 @@
       width: var(--cardW);
       height: var(--cardH);
       border-radius: 12px;
-      border: 1px dashed rgba(255,255,255,.25);
-      background: rgba(0,0,0,.06);
+      border: 1px dashed rgba(255,255,255,.24);
+      background: rgba(0,0,0,.08);
       position:absolute;
       inset:0;
       pointer-events:none;
+      display:grid;
+      place-items:center;
+    }
+    .slot::after{
+      color:rgba(255,255,255,.16);
+      font-size:24px;
+      font-weight:900;
+    }
+    #stock .slot::after{ content:"◆"; }
+    #waste .slot::after{ content:"↻"; font-size:20px; }
+    #f0 .slot::after{ content:"♠"; }
+    #f1 .slot::after{ content:"♥"; color:rgba(248,113,113,.34); }
+    #f2 .slot::after{ content:"♦"; color:rgba(248,113,113,.34); }
+    #f3 .slot::after{ content:"♣"; }
+    #f0 .slot::after,#f1 .slot::after,#f2 .slot::after,#f3 .slot::after{
+      font-size:30px;
+      font-family:Georgia,serif;
     }
 
     .pile.highlight .slot{
-      border-color: rgba(255,255,255,.65);
-      background: rgba(255,255,255,.10);
+      border-color: #fde68a;
+      background: rgba(253,230,138,.11);
+      box-shadow: 0 0 0 3px rgba(253,230,138,.08), inset 0 0 18px rgba(253,230,138,.06);
     }
 
     .tableau{
@@ -200,10 +282,11 @@
       top:0;
       background: var(--card);
       color: var(--ink);
-      border: 1px solid rgba(0,0,0,.18);
+      border: 1px solid rgba(15,23,42,.16);
       box-shadow:
-        0 10px 26px rgba(0,0,0,.22),
-        0 1px 0 rgba(255,255,255,.55) inset;
+        0 8px 18px rgba(0,0,0,.20),
+        0 1px 0 rgba(255,255,255,.72) inset,
+        0 0 0 1px rgba(255,255,255,.35) inset;
       box-sizing:border-box;
       cursor:grab;
 
@@ -219,7 +302,32 @@
       will-change: transform;
       pointer-events:auto;
     }
+    .card:hover{ filter:brightness(1.025); }
     .card:active{ cursor:grabbing; }
+    .card.selected-source{
+      box-shadow:
+        0 0 0 3px rgba(253,230,138,.88),
+        0 16px 34px rgba(0,0,0,.3),
+        0 1px 0 rgba(255,255,255,.55) inset;
+      filter:brightness(1.05);
+    }
+    .hint-source{
+      animation:hintPulse .65s ease-in-out 2;
+      box-shadow:0 0 0 4px rgba(250,204,21,.8), 0 0 28px rgba(250,204,21,.55) !important;
+      z-index:20;
+    }
+    .hint-target .slot{
+      animation:hintTarget .65s ease-in-out 2;
+      border-color:#facc15 !important;
+      background:rgba(250,204,21,.13) !important;
+      box-shadow:0 0 0 4px rgba(250,204,21,.14), inset 0 0 22px rgba(250,204,21,.10) !important;
+    }
+    @keyframes hintPulse{
+      50%{ transform:translate3d(0,var(--y,0px),0) scale(1.045); }
+    }
+    @keyframes hintTarget{
+      50%{ box-shadow:0 0 0 7px rgba(250,204,21,.20), inset 0 0 28px rgba(250,204,21,.15); }
+    }
 
     /* ✅ NEW: Cleaner, consistent card back (no cut-off symbols) */
     .card.faceDown{
@@ -392,41 +500,45 @@
     .rowbtn{ display:flex; gap: 10px; flex-wrap:wrap; }
   </style>
   <link rel="canonical" href="https://teacharcade.com/brain-arcade/solitaire.html" />
-  <meta property="og:title" content="Solitaire (Klondike) · Web Game" />
-  <meta property="og:description" content="Play Klondike Solitaire in your browser. Drag-and-drop, tap-to-move (foundation-only), undo, and auto-move to foundations." />
+  <meta property="og:title" content="Solitaire (Klondike) | Brain Arcade | Teach Arcade" />
+  <meta property="og:description" content="Play Klondike Solitaire in your browser with drag-and-drop, full tap-to-move controls, undo, hints, and auto-move to foundations." />
   <meta property="og:url" content="https://teacharcade.com/brain-arcade/solitaire.html" />
   <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Solitaire (Klondike) · Web Game" />
-  <meta name="twitter:description" content="Play Klondike Solitaire in your browser. Drag-and-drop, tap-to-move (foundation-only), undo, and auto-move to foundations." />
+  <meta name="twitter:title" content="Solitaire (Klondike) | Brain Arcade | Teach Arcade" />
+  <meta name="twitter:description" content="Play Klondike Solitaire with drag-and-drop, full tap controls, undo, hints, and auto-move to foundations." />
   <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
 
 </head>
 
 <body>
   <div class="wrap">
+    <a class="backLink" href="/brain-arcade/">← Brain Arcade</a>
     <header>
       <div class="brand">
+        <span class="eyebrow">Brain Arcade</span>
         <h1>Solitaire (Klondike)</h1>
-        <small id="subtitle">Drag cards • Click to send to foundations • Undo • Draw 1</small>
+        <small id="subtitle">Drag cards • Tap mode available • Undo • Draw 1</small>
       </div>
       <div class="controls">
         <button id="newBtn">New Game</button>
+        <button id="restartBtn">Restart Deal</button>
         <button id="undoBtn" disabled>Undo</button>
         <button id="hintBtn">Hint</button>
-        <button id="autoBtn">Auto-Move</button>
+        <button id="autoBtn" title="Finishes the game when all remaining tableau cards are face up and the stock is clear">Auto-Complete</button>
         <button id="modeBtn" class="modeBtn" title="Toggle controls">Mode: <b id="modeLabel">Drag</b></button>
         <button id="endBtn" title="End game and show score">End Game</button>
       </div>
     </header>
 
     <div class="bar">
-      <div>
-        Moves: <b id="moves">0</b> ·
-        Time: <b id="time">0:00</b> ·
-        Score: <b id="score">0</b>
+      <div class="hud" role="status" aria-live="polite">
+        <div class="hudStat"><span>Moves</span><b id="moves">0</b></div>
+        <div class="hudStat"><span>Time</span><b id="time">0:00</b></div>
+        <div class="hudStat"><span>Score</span><b id="score">0</b></div>
+        <div class="hudStat"><span>Best</span><b id="best">0</b></div>
       </div>
-      <div class="muted">Rules: Build tableau down alternating colors · Foundations up by suit</div>
+      <div class="muted">Build down in alternating colors · Foundations build up by suit</div>
     </div>
 
     <div class="board" id="board">
@@ -486,7 +598,10 @@
 <script>
 (() => {
   const SUITS = ["♠","♥","♦","♣"];
+  const FOUNDATION_SUITS = ["♠","♥","♦","♣"];
   const RANKS = ["A","2","3","4","5","6","7","8","9","10","J","Q","K"];
+  const SAVE_KEY = "ta_solitaire_game_v2";
+  const BEST_KEY = "ta_solitaire_best_v1";
 
   const state = {
     stock: [],
@@ -501,7 +616,9 @@
     startTs: Date.now(),
     controlMode: "drag",
     lastRects: new Map(),
-    busy: false
+    busy: false,
+    initialDeal: null,
+    bestScore: 0
   };
 
   const els = {
@@ -511,9 +628,11 @@
     tableau: [0,1,2,3,4,5,6].map(i => document.getElementById(`t${i}`)),
     moves: document.getElementById("moves"),
     score: document.getElementById("score"),
+    best: document.getElementById("best"),
     time: document.getElementById("time"),
     undoBtn: document.getElementById("undoBtn"),
     newBtn: document.getElementById("newBtn"),
+    restartBtn: document.getElementById("restartBtn"),
     hintBtn: document.getElementById("hintBtn"),
     autoBtn: document.getElementById("autoBtn"),
     endBtn: document.getElementById("endBtn"),
@@ -538,7 +657,7 @@
 
   function setBusy(on){
     state.busy = on;
-    const buttons = [els.newBtn, els.undoBtn, els.hintBtn, els.autoBtn, els.modeBtn, els.endBtn];
+    const buttons = [els.newBtn, els.restartBtn, els.undoBtn, els.hintBtn, els.autoBtn, els.modeBtn, els.endBtn];
 
     if (on){
       state._btnPrev = new Map();
@@ -624,7 +743,7 @@
   }
 
   function bumpScore(delta){
-    state.score += delta;
+    state.score = Math.max(0, state.score + delta);
     els.score.textContent = String(state.score);
   }
 
@@ -662,6 +781,86 @@
     return Math.max(0, Math.floor((Date.now() - state.startTs)/1000));
   }
 
+  function safeGet(key){
+    try { return localStorage.getItem(key); } catch { return null; }
+  }
+  function safeSet(key, value){
+    try { localStorage.setItem(key, value); return true; } catch { return false; }
+  }
+  function safeRemove(key){
+    try { localStorage.removeItem(key); } catch {}
+  }
+
+  function loadBestScore(){
+    const saved = Number(safeGet(BEST_KEY));
+    state.bestScore = Number.isFinite(saved) && saved > 0 ? saved : 0;
+    if (els.best) els.best.textContent = state.bestScore.toLocaleString();
+  }
+
+  function saveBestScore(score){
+    if (!Number.isFinite(score) || score <= state.bestScore) return false;
+    state.bestScore = score;
+    safeSet(BEST_KEY, String(score));
+    if (els.best) els.best.textContent = score.toLocaleString();
+    return true;
+  }
+
+  function persistGame(){
+    if (state.busy || !state.tableau.some(p => p.length) || checkWin()) return;
+    const snap = cloneState();
+    const payload = {
+      version: 2,
+      snap,
+      elapsed: elapsedSeconds(),
+      initialDeal: state.initialDeal
+    };
+    safeSet(SAVE_KEY, JSON.stringify(payload));
+  }
+
+  function loadSavedGame(){
+    const raw = safeGet(SAVE_KEY);
+    if (!raw) return false;
+    try {
+      const payload = JSON.parse(raw);
+      const snap = payload?.snap;
+      if (!snap || !Array.isArray(snap.stock) || !Array.isArray(snap.tableau) || snap.tableau.length !== 7) return false;
+      restoreState({
+        ...snap,
+        startTs: Date.now() - Math.max(0, Number(payload.elapsed) || 0) * 1000
+      });
+      state.history = [];
+      state.initialDeal = payload.initialDeal || null;
+      els.undoBtn.disabled = true;
+      toast("Game resumed");
+      return true;
+    } catch {
+      safeRemove(SAVE_KEY);
+      return false;
+    }
+  }
+
+  function restartDeal(){
+    if (state.busy || !state.initialDeal) return;
+    try {
+      const snap = JSON.parse(state.initialDeal);
+      state.history = [];
+      restoreState({
+        ...snap,
+        startTs: Date.now()
+      });
+      state.score = 0;
+      state.moves = 0;
+      updateHUD();
+      els.undoBtn.disabled = true;
+      els.win.classList.remove("show");
+      els.end.classList.remove("show");
+      persistGame();
+      toast("Deal restarted");
+    } catch {
+      toast("Restart unavailable");
+    }
+  }
+
   function checkWin(){
     return state.foundations.every(p => p.length === 13);
   }
@@ -680,17 +879,17 @@
   // Mode
   // =========================
   function loadMode(){
-    const saved = localStorage.getItem("ta_solitaire_mode");
+    const saved = safeGet("ta_solitaire_mode");
     if (saved === "tap" || saved === "drag") state.controlMode = saved;
   }
-  function saveMode(){ localStorage.setItem("ta_solitaire_mode", state.controlMode); }
+  function saveMode(){ safeSet("ta_solitaire_mode", state.controlMode); }
 
   function syncModeUI(){
     els.modeLabel.textContent = (state.controlMode === "tap") ? "Tap" : "Drag";
     els.subtitle.textContent =
       (state.controlMode === "tap")
-        ? "Tap: foundation-only • Drag for tableau moves • Undo • Draw 1"
-        : "Drag cards • Click to send to foundations • Undo • Draw 1";
+        ? "Tap a card, then tap its destination • Undo • Draw 1"
+        : "Drag cards • Click to send upward • Undo • Draw 1";
   }
 
   function toggleMode(){
@@ -698,17 +897,18 @@
     state.controlMode = (state.controlMode === "drag") ? "tap" : "drag";
     saveMode();
     syncModeUI();
-    toast(`Mode: ${state.controlMode === "tap" ? "Tap (foundation-only)" : "Drag"}`);
+    toast(`Mode: ${state.controlMode === "tap" ? "Tap" : "Drag"}`);
   }
 
   // =========================
   // Rules
   // =========================
   function canMoveToFoundation(card, fIndex){
+    if (card.suit !== FOUNDATION_SUITS[fIndex]) return false;
     const pile = state.foundations[fIndex];
     const t = top(pile);
     if (!t) return card.rank === 1;
-    return (t.suit === card.suit) && (card.rank === t.rank + 1);
+    return card.rank === t.rank + 1;
   }
 
   function canMoveToTableau(card, tIndex){
@@ -796,7 +996,6 @@
       const t = top(state.tableau[col]);
       if (t){
         t.faceUp = true;
-        bumpScore(5);
         render(true);
         const el = document.querySelector(`[data-card-id="${t.id}"]`);
         if (el) { el.classList.add("flipIn"); setTimeout(() => el.classList.remove("flipIn"), 240); }
@@ -804,11 +1003,16 @@
       }
     }
 
+    state.startTs = Date.now();
+    state.initialDeal = JSON.stringify(cloneState());
+    updateHUD();
     els.undoBtn.disabled = true;
     els.win.classList.remove("show");
     els.end.classList.remove("show");
-    toast("New game!");
+    safeRemove(SAVE_KEY);
     setBusy(false);
+    persistGame();
+    toast("New game!");
   }
 
   async function animateDealOne(col){
@@ -860,6 +1064,7 @@
       bumpScore(-50);
       toast("Recycled waste → stock");
       render();
+      persistGame();
       return;
     }
 
@@ -868,8 +1073,8 @@
     c.faceUp = true;
     state.waste.push(c);
     bumpMoves(1);
-    bumpScore(5);
     render();
+    persistGame();
   }
 
   // =========================
@@ -877,11 +1082,15 @@
   // =========================
   function clearHighlights(){
     [...els.tableau, ...els.foundations, els.stock, els.waste].forEach(p => p.classList.remove("highlight"));
+    document.querySelectorAll(".card.selected-source").forEach(card => card.classList.remove("selected-source"));
   }
 
   function setSelected(fromRef, cards){
     state.selected = { from: fromRef, cards };
     clearHighlights();
+    cards.forEach(card => {
+      document.querySelector(`[data-card-id="${card.id}"]`)?.classList.add("selected-source");
+    });
     highlightDestinations(cards);
   }
 
@@ -900,10 +1109,8 @@
       }
     }
 
-    if (state.controlMode === "drag"){
-      for (let ti = 0; ti < 7; ti++){
-        if (canMoveToTableau(first, ti)) els.tableau[ti].classList.add("highlight");
-      }
+    for (let ti = 0; ti < 7; ti++){
+      if (canMoveToTableau(first, ti)) els.tableau[ti].classList.add("highlight");
     }
   }
 
@@ -963,15 +1170,20 @@
     bumpMoves(1);
     if (toRef.type === "foundation") bumpScore(10);
     if (toRef.type === "tableau" && from.type === "waste") bumpScore(5);
+    if (toRef.type === "tableau" && from.type === "foundation") bumpScore(-10);
 
     clearSelected();
     render();
 
     if (checkWin()){
       const final = computeFinalScore();
-      els.winScoreLine.textContent = `Final Score: ${final.toLocaleString()} • Time: ${formatTime(elapsedSeconds())} • Moves: ${state.moves}`;
+      const isBest = saveBestScore(final);
+      safeRemove(SAVE_KEY);
+      els.winScoreLine.textContent = `Final Score: ${final.toLocaleString()} • Time: ${formatTime(elapsedSeconds())} • Moves: ${state.moves}${isBest ? " • New Best!" : ""}`;
       els.win.classList.add("show");
-      toast("You win!");
+      toast(isBest ? "New best score!" : "You win!");
+    } else {
+      persistGame();
     }
     return true;
   }
@@ -987,6 +1199,7 @@
       render();
       const el = document.querySelector(`[data-card-id="${t.id}"]`);
       if (el) { el.classList.add("flipIn"); setTimeout(() => el.classList.remove("flipIn"), 240); }
+      persistGame();
       return true;
     }
     return false;
@@ -998,8 +1211,23 @@
   function updateHUD(){
     els.moves.textContent = String(state.moves);
     els.score.textContent = String(state.score);
+    if (els.best) els.best.textContent = state.bestScore.toLocaleString();
     els.time.textContent = formatTime(elapsedSeconds());
     els.undoBtn.disabled = state.history.length === 0;
+  }
+
+  function isAutoCompleteReady(){
+    if (checkWin()) return false;
+    if (state.stock.length || state.waste.length) return false;
+    return state.tableau.every(pile => pile.every(card => card.faceUp));
+  }
+
+  function syncAutoCompleteUI(){
+    const ready = isAutoCompleteReady();
+    els.autoBtn.classList.toggle("ready", ready);
+    els.autoBtn.setAttribute("aria-label", ready
+      ? "Auto-complete the remaining game"
+      : "Auto-complete unlocks when the stock and waste are empty and all tableau cards are face up");
   }
 
   function snapshotRects(){
@@ -1096,6 +1324,7 @@
 
   function render(skipFlip=false){
     updateHUD();
+    syncAutoCompleteUI();
     clearSelected();
 
     if (!skipFlip) snapshotRects();
@@ -1251,34 +1480,27 @@
     state.drag.curY = startY;
     const initialX = startX - state.drag.pointerOffsetX;
     const initialY = startY - state.drag.pointerOffsetY;
-    ghost.style.transform = `translate(${initialX}px, ${initialY}px)`;
+    ghost.style.transform = `translate3d(${initialX}px, ${initialY}px, 0)`;
 
-    // ✅ Dynamic interpolation tick (smoother)
-    const tick = () => {
-      if (!state.drag) return;
-      const d = state.drag;
-
-      const dx = d.targetX - d.curX;
-      const dy = d.targetY - d.curY;
-      const distance = Math.sqrt(dx * dx + dy * dy);
-
-      const lerp = distance > 100 ? 0.5 : 0.3;
-
-      d.curX += dx * lerp;
-      d.curY += dy * lerp;
-
-      const gx = d.curX - d.pointerOffsetX;
-      const gy = d.curY - d.pointerOffsetY;
-      d.ghost.style.transform = `translate(${gx}px, ${gy}px)`;
-      d.rafId = requestAnimationFrame(tick);
-    };
-    state.drag.rafId = requestAnimationFrame(tick);
   }
 
   function moveDrag(x,y){
     if (!state.drag) return;
-    state.drag.targetX = x;
-    state.drag.targetY = y;
+    const d = state.drag;
+    d.targetX = x;
+    d.targetY = y;
+    if (d.rafId) return;
+
+    d.rafId = requestAnimationFrame(() => {
+      if (!state.drag) return;
+      const active = state.drag;
+      active.rafId = 0;
+      active.curX = active.targetX;
+      active.curY = active.targetY;
+      const gx = active.curX - active.pointerOffsetX;
+      const gy = active.curY - active.pointerOffsetY;
+      active.ghost.style.transform = `translate3d(${gx}px, ${gy}px, 0)`;
+    });
   }
 
   function resolveDraggedCards(){
@@ -1305,12 +1527,10 @@
 
     cancelAnimationFrame(state.drag.rafId);
 
-    // ✅ Smooth drop fade (instead of instant remove)
     const ghost = state.drag.ghost;
-    ghost.style.transition = 'opacity 150ms ease, transform 150ms ease';
+    ghost.style.transition = 'opacity 90ms ease';
     ghost.style.opacity = '0';
-    ghost.style.transform = (ghost.style.transform || '') + ' scale(0.95)';
-    setTimeout(() => ghost.remove(), 150);
+    setTimeout(() => ghost.remove(), 90);
 
     const dragged = state.drag;
     state.drag = null;
@@ -1357,7 +1577,9 @@
       if (!c || c.id !== cardId || !c.faceUp) return null;
       cards = [c];
     } else if (fromRef.type === "foundation"){
-      return null; // no pulling down
+      const c = top(state.foundations[fromRef.idx]);
+      if (!c || c.id !== cardId || !c.faceUp) return null;
+      cards = [c];
     } else if (fromRef.type === "tableau"){
       const pile = state.tableau[fromRef.idx];
       const clicked = pile.find(c => c.id === cardId);
@@ -1417,8 +1639,7 @@
     const dx = Math.abs(ev.clientX - press.startX);
     const dy = Math.abs(ev.clientY - press.startY);
 
-    // ✅ Lower threshold: 10 -> 4 for responsive dragging
-    if (!press.moved && (dx + dy) > 4){
+    if (!press.moved && (dx + dy) > 7){
       press.moved = true;
       startDrag(press.cardEl, press.fromRef, press.cards, press.startX, press.startY);
     }
@@ -1438,19 +1659,32 @@
     const cards = press.cards;
     press = null;
 
-    // Tap mode: foundation-only auto move
+    // Tap mode: select a card/stack, then tap a legal destination.
     if (state.controlMode === "tap"){
-      const did = foundationClickMoveOnly(fromRef, cards[0]);
-      if (!did){
-        setSelected(fromRef, cards);
-        setTimeout(() => { if (state.selected) clearSelected(); }, 700);
+      if (state.selected){
+        const sameSource =
+          state.selected.from.type === fromRef.type &&
+          state.selected.from.idx === fromRef.idx &&
+          state.selected.cards[0]?.id === cards[0]?.id;
+
+        if (sameSource){
+          clearSelected();
+          return;
+        }
+
+        if ((fromRef.type === "tableau" || fromRef.type === "foundation") && tryMoveSelectedTo(fromRef)){
+          return;
+        }
       }
+
+      const did = fromRef.type !== "foundation" && cards.length === 1 && foundationClickMoveOnly(fromRef, cards[0]);
+      if (!did) setSelected(fromRef, cards);
       return;
     }
 
     // Drag mode: click = foundation-only auto move
     if (cards.length === 1){
-      const did = foundationClickMoveOnly(fromRef, cards[0]);
+      const did = fromRef.type !== "foundation" && foundationClickMoveOnly(fromRef, cards[0]);
       if (!did){
         setSelected(fromRef, cards);
         setTimeout(() => { if (state.selected) clearSelected(); }, 800);
@@ -1468,10 +1702,11 @@
     if (!ref) return;
 
     if (ref.type === "stock"){
+      clearSelected();
       drawFromStock();
       return;
     }
-    if (state.selected && ref.type === "foundation"){
+    if (state.selected && (ref.type === "foundation" || ref.type === "tableau")){
       tryMoveSelectedTo(ref);
     }
   }
@@ -1479,13 +1714,163 @@
   // =========================
   // Buttons / keys
   // =========================
-  function computeHint(){
-    const a = findAutoFoundationMove();
-    if (a){
-      const c = a.cards[0];
-      return `Tap ${rankLabel(c.rank)}${c.suit} to send it up`;
+  async function animateAutoFoundationMove(card, targetEl){
+    const sourceEl = document.querySelector(`[data-card-id="${card.id}"]`);
+    if (!sourceEl || !targetEl) return;
+
+    const from = sourceEl.getBoundingClientRect();
+    const to = targetEl.getBoundingClientRect();
+    const ghost = sourceEl.cloneNode(true);
+    ghost.classList.add("is-dragging");
+    ghost.style.position = "fixed";
+    ghost.style.left = `${from.left}px`;
+    ghost.style.top = `${from.top}px`;
+    ghost.style.setProperty("--y", "0px");
+    ghost.style.zIndex = "10000";
+    ghost.style.pointerEvents = "none";
+    ghost.style.transition = "transform 180ms cubic-bezier(.2,.8,.2,1), opacity 180ms ease";
+    document.body.appendChild(ghost);
+
+    await raf();
+    ghost.style.transform = `translate3d(${to.left - from.left}px,${to.top - from.top}px,0) scale(.98)`;
+    ghost.style.opacity = ".92";
+    await sleep(190);
+    ghost.remove();
+  }
+
+  async function autoCompleteGame(){
+    if (state.busy) return;
+
+    if (!isAutoCompleteReady()){
+      toast("Auto-complete unlocks when the stock is clear and every tableau card is face up");
+      return;
     }
+
+    pushHistory();
+    setBusy(true);
+    clearSelected();
+
+    let movedCount = 0;
+    let safety = 0;
+
+    while (!checkWin() && safety < 60){
+      safety++;
+      let move = null;
+
+      for (let ti = 0; ti < state.tableau.length && !move; ti++){
+        const card = top(state.tableau[ti]);
+        if (!card || !card.faceUp) continue;
+        const fi = FOUNDATION_SUITS.indexOf(card.suit);
+        if (fi >= 0 && canMoveToFoundation(card, fi)){
+          move = { ti, fi, card };
+        }
+      }
+
+      if (!move) break;
+
+      await animateAutoFoundationMove(move.card, els.foundations[move.fi]);
+      state.tableau[move.ti].pop();
+      state.foundations[move.fi].push(move.card);
+      state.moves += 1;
+      state.score = Math.max(0, state.score + 10);
+      movedCount++;
+      render(true);
+      await sleep(35);
+    }
+
+    setBusy(false);
+    updateHUD();
+    syncAutoCompleteUI();
+
+    if (checkWin()){
+      const final = computeFinalScore();
+      const isBest = saveBestScore(final);
+      safeRemove(SAVE_KEY);
+      els.winScoreLine.textContent = `Final Score: ${final.toLocaleString()} • Time: ${formatTime(elapsedSeconds())} • Moves: ${state.moves}${isBest ? " • New Best!" : ""}`;
+      els.win.classList.add("show");
+      toast(isBest ? "Auto-complete finished — new best!" : "Auto-complete finished!");
+    } else {
+      persistGame();
+      toast(movedCount
+        ? `Auto-complete moved ${movedCount} card${movedCount === 1 ? "" : "s"}, but the position is still blocked`
+        : "No safe auto-complete move is available");
+    }
+  }
+
+  function getHint(){
+    const foundationMove = findAutoFoundationMove();
+    if (foundationMove){
+      const card = foundationMove.cards[0];
+      return {
+        text: `Move ${rankLabel(card.rank)}${card.suit} to its foundation`,
+        sourceCardId: card.id,
+        targetEl: els.foundations[foundationMove.to.idx]
+      };
+    }
+
+    const waste = top(state.waste);
+    if (waste?.faceUp){
+      for (let ti = 0; ti < 7; ti++){
+        if (canMoveToTableau(waste, ti)) {
+          return {
+            text: `Move ${rankLabel(waste.rank)}${waste.suit} from waste to tableau ${ti + 1}`,
+            sourceCardId: waste.id,
+            targetEl: els.tableau[ti]
+          };
+        }
+      }
+    }
+
+    for (let from = 0; from < 7; from++){
+      const pile = state.tableau[from];
+      for (let index = 0; index < pile.length; index++){
+        const card = pile[index];
+        if (!card.faceUp) continue;
+        const stack = pile.slice(index);
+        if (!isValidSequence(stack)) continue;
+        for (let to = 0; to < 7; to++){
+          if (to !== from && canMoveToTableau(card, to)) {
+            return {
+              text: `Move ${rankLabel(card.rank)}${card.suit} to tableau ${to + 1}`,
+              sourceCardId: card.id,
+              targetEl: els.tableau[to]
+            };
+          }
+        }
+      }
+      const topCard = top(pile);
+      if (topCard && !topCard.faceUp) {
+        return {
+          text: `Flip the hidden card in tableau ${from + 1}`,
+          sourceCardId: topCard.id,
+          targetEl: els.tableau[from]
+        };
+      }
+    }
+
+    if (state.stock.length) return { text:"Draw a card from the stock", targetEl:els.stock };
+    if (!state.stock.length && state.waste.length) return { text:"Recycle the waste pile", targetEl:els.stock };
     return null;
+  }
+
+  function showHint(){
+    const hint = getHint();
+    if (!hint) return toast("No obvious move found");
+
+    clearHighlights();
+    const source = hint.sourceCardId
+      ? document.querySelector(`[data-card-id="${hint.sourceCardId}"]`)
+      : null;
+
+    source?.classList.add("hint-source");
+    hint.targetEl?.classList.add("hint-target");
+    toast(hint.text);
+
+    clearTimeout(showHint._t);
+    showHint._t = setTimeout(() => {
+      source?.classList.remove("hint-source");
+      hint.targetEl?.classList.remove("hint-target");
+    }, 1350);
   }
 
   function bindHandlers(){
@@ -1494,37 +1879,23 @@
     });
 
     els.newBtn.addEventListener("click", newGame);
+    els.restartBtn.addEventListener("click", restartDeal);
 
     els.undoBtn.addEventListener("click", () => {
       if (state.busy) return;
       if (!state.history.length) return;
       const snap = state.history.pop();
       restoreState(snap);
+      persistGame();
       toast("Undid last move");
     });
 
     els.hintBtn.addEventListener("click", () => {
       if (state.busy) return;
-      const move = computeHint();
-      if (!move) return toast("No obvious foundation move");
-      toast(move);
+      showHint();
     });
 
-    els.autoBtn.addEventListener("click", () => {
-      if (state.busy) return;
-      let count = 0;
-      let moved;
-      do {
-        moved = findAutoFoundationMove();
-        if (moved){
-          setSelected(moved.from, moved.cards);
-          tryMoveSelectedTo(moved.to);
-          count++;
-        }
-      } while (moved && count < 50);
-      if (count) toast(`Auto-moved ${count} to foundations`);
-      else toast("No foundation moves");
-    });
+    els.autoBtn.addEventListener("click", autoCompleteGame);
 
     els.endBtn.addEventListener("click", showEndModal);
     els.endCloseBtn.addEventListener("click", () => els.end.classList.remove("show"));
@@ -1538,6 +1909,7 @@
     document.addEventListener("keydown", (e) => {
       if (state.busy) return;
       if (e.key === "n" || e.key === "N") newGame();
+      if (e.key === "r" || e.key === "R") restartDeal();
       if (e.key === "u" || e.key === "U") els.undoBtn.click();
       if (e.key === "a" || e.key === "A") els.autoBtn.click();
       if (e.key === "h" || e.key === "H") els.hintBtn.click();
@@ -1557,47 +1929,13 @@
 
   // Init
   loadMode();
+  loadBestScore();
   syncModeUI();
   bindHandlers();
   render(true);
-  newGame();
+  if (!loadSavedGame()) newGame();
+  window.addEventListener("beforeunload", persistGame);
 })();
 </script>
-<section class="ta-value">
-  <h2>How to Use This in Class</h2>
-  <p><strong>What this tool does:</strong> The Solitaire (Klondike) · Web Game experience combines simple controls with clear goals so students focus on the learning, not the interface. It provides a focused space for students to engage with Solitaire (Klondike) · Web Game tasks, make choices, and see immediate feedback. Students interact with the Solitaire (Klondike) · Web Game content through short prompts, decisions, and checkpoints that keep momentum high. The design works in whole-group modeling or in small groups, letting you differentiate with pace and support.</p>
-  <p>Use Solitaire (Klondike) · Web Game as a review station: set a timer, pair students, and rotate groups for short bursts of practice. As students work, circulate with a clipboard to capture misconceptions and highlight effective strategies. You can also project the activity and run it as a guided whole-class challenge to build shared vocabulary.</p>
-  <h3>Quick Classroom Ideas</h3>
-  <ul>
-    <li>Review day competition with team scoring</li><li>Exit ticket tie-in after the session</li><li>Warm-up challenge to activate prior knowledge</li><li>Small-group rotation station</li><li>Partner practice with discussion pauses</li>
-  </ul>
-  <h3>Skills Students Practice</h3>
-  <ul>
-    <li>Collaboration and peer discussion</li><li>Reflecting on mistakes and adjustments</li><li>Academic language usage</li><li>Goal setting and self-monitoring</li><li>Evidence-based explanations</li><li>Time management during practice</li><li>Content vocabulary and key terms</li><li>Critical thinking and reasoning</li>
-  </ul>
-  <h3>Suggested Grade Levels &amp; Timing</h3>
-  <p>Solitaire (Klondike) · Web Game fits grades 4–10 with easy adjustments. Plan 10–25 minutes of active use plus a 5–10 minute reflection. Differentiate by pairing students, providing sentence starters, or letting advanced learners set a challenge goal.</p>
-  <h3>FAQ</h3>
-  <details>
-    <summary>Do students need accounts?</summary>
-    <p>No. The Solitaire (Klondike) · Web Game activity runs directly in the browser with no logins required.</p>
-  </details>
-  <details>
-    <summary>How long should a session last?</summary>
-    <p>Most classes use Solitaire (Klondike) · Web Game for 10–20 minutes, with a quick debrief afterward.</p>
-  </details>
-  <details>
-    <summary>Can I use this with limited devices?</summary>
-    <p>Yes. Solitaire (Klondike) · Web Game works well in stations, partner play, or whole-class projection.</p>
-  </details>
-  <details>
-    <summary>Is it aligned to standards?</summary>
-    <p>The Solitaire (Klondike) · Web Game focus supports common skills such as analysis, reasoning, and content recall.</p>
-  </details>
-  <details>
-    <summary>What if students finish early?</summary>
-    <p>Have early finishers replay Solitaire (Klondike) · Web Game with a new goal or write a short summary of strategies used.</p>
-  </details>
-</section>
 </body>
 </html>
