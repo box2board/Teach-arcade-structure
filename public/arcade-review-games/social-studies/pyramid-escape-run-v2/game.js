@@ -1,0 +1,1 @@
+window.TA_GAME={id:'egypt',physicsPreset:'earth',level:TA_EGYPT_LEVEL,questions:TA_EGYPT_QUESTIONS,theme:TA_EGYPT_THEME};
