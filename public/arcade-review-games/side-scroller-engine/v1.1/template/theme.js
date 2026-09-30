@@ -1,0 +1,1 @@
+window.TA_TEMPLATE_THEME={name:'Replace With Game Title',skyTop:'#64748b',skyBottom:'#cbd5e1',far:'#94a3b8',near:'#64748b',sun:'#f8fafc',ground:'#475569',groundTop:'#94a3b8',hazard:'#ef4444',player:'#f8fafc',labels:{goal:'mission goal',collectible:'Collectibles'}};
