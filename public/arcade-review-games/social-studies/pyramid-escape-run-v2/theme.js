@@ -1,0 +1,1 @@
+window.TA_EGYPT_THEME={name:'Pyramid Escape Run',skyTop:'#102a43',skyBottom:'#d6a85f',ground:'#a66f38',groundTop:'#e1b86b',hazard:'#6b3f20',question:'#1f7a70',checkpoint:'#f0cf78',finish:'#f4d35e',player:'#e8d5a7',far:'#b37a3f',near:'#8d5b31',sun:'rgba(255,225,137,.68)',labels:{hazard:'TRAP',collectible:'SCARABS',goal:'tomb exit'}};
