@@ -1,6 +1,6 @@
 # Teach Arcade Side-Scroller Engine V1
 
-Version: **1.0.0**  
+Version: **1.0.1**  
 Status: **Frozen production core**
 
 ## Frozen engine files
@@ -9,7 +9,7 @@ Status: **Frozen production core**
 - `level-builder.js` — tile/level construction.
 - `gameplay-validator.js` — reachability and jump-difficulty QA.
 - `visual-validator.js` — placement/anchoring/patrol QA.
-- `shell.js` — standardized single-game production launcher.
+- `shell.js` — standardized single-game production launcher and shared viewport overlays for questions/results.
 
 ## Game package contract
 Every game supplies its own:
@@ -29,3 +29,6 @@ Production games may consume V1, but should not edit V1 in place. Engine changes
 - Manual playtest on desktop and touch controls.
 - Complete all review questions and reach the finish.
 - Verify Mission Report values.
+
+## Patch history
+- **1.0.1 (2026-09-30):** Question and results overlays are now positioned by the shared engine shell so every V1 game displays them centered in the viewport on desktop and mobile. No game-package contract change.
