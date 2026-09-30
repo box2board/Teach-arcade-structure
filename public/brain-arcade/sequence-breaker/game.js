@@ -147,9 +147,10 @@
     const useGradient = difficulty === "hard" ? Math.random() < 0.6 : Math.random() < 0.3;
     let colors = [];
     let rule = "";
+    let step = 0;
 
     if (useGradient) {
-      const step = difficulty === "hard" ? randomInt(10, 18) : randomInt(18, 24);
+      step = difficulty === "hard" ? randomInt(10, 18) : randomInt(18, 24);
       colors = Array.from({ length: count }, (_, i) => `hsl(${baseHue + i * step}, 70%, 60%)`);
       rule = "Colors shift in a smooth gradient.";
     } else {
@@ -161,7 +162,7 @@
 
     const oddIndex = randomInt(0, count - 1);
     const oddColor = useGradient
-      ? `hsl(${baseHue + oddIndex * 18 + 12}, 70%, 60%)`
+      ? `hsl(${baseHue + oddIndex * step + Math.max(7, Math.round(step * 0.55))}, 70%, 60%)`
       : `hsl(${baseHue + 120}, 70%, 60%)`;
 
     const tiles = colors.map((color, index) => ({
@@ -230,16 +231,11 @@
     const tileCount = randomInt(config.tileRange[0], config.tileRange[1]);
     const ruleType = config.rules[randomInt(0, config.rules.length - 1)];
     const round = RULE_GENERATORS[ruleType](tileCount, state.mode);
-    const tilesWithFlag = round.tiles.map((tile, index) => ({
+    state.tiles = round.tiles.map((tile, index) => ({
       ...tile,
       isOdd: index === round.oddIndex
     }));
-
-    const shuffled = shuffle(tilesWithFlag);
-    const oddIndex = shuffled.findIndex((tile) => tile.isOdd);
-
-    state.tiles = shuffled;
-    state.oddIndex = oddIndex;
+    state.oddIndex = round.oddIndex;
     state.explanation = {
       rule: round.rule,
       odd: round.oddExplanation
@@ -331,6 +327,11 @@
     });
   };
 
+  const revealCorrectTile = () => {
+    const correctTile = tileGrid.querySelector(`[data-index="${state.oddIndex}"]`);
+    correctTile?.classList.add("reveal");
+  };
+
   const showExplanation = () => {
     if (!explainToggle.checked) {
       explanation.hidden = true;
@@ -355,6 +356,7 @@
     } else {
       state.streak = 0;
       element.classList.add("wrong");
+      revealCorrectTile();
     }
 
     state.rounds += 1;
@@ -379,23 +381,19 @@
     state.streak = 0;
     state.totalResponseTime += MODES[state.mode].timerSeconds;
     updateStats();
+    revealCorrectTile();
     showExplanation();
-
-    if (state.mode === "hard") {
-      openSummary();
-      return;
-    }
 
     window.setTimeout(() => {
       state.isLocked = false;
       nextRound();
-    }, 500);
+    }, 700);
   };
 
   const nextRound = () => {
     buildRound();
     renderTiles();
-    showExplanation();
+    explanation.hidden = true;
     startTimer();
     state.roundStart = Date.now();
   };

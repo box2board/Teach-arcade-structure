@@ -88,7 +88,7 @@
   }
   </script>
 </head>
-<body>
+<body class="slide-game-page">
   <div id="site-header"></div>
   <script src="/assets/scripts/nav.js?v=5" defer></script>
 
@@ -109,38 +109,10 @@
       </div>
     </section>
 
-    <section class="how-to-card" aria-label="How to play Slide and Snap">
-      <div class="how-to-header">
-        <h2>How to Play</h2>
-        <p>Slide &amp; Snap is a classic sliding puzzle. Move tiles into the empty space until the grid is in order.</p>
-      </div>
-      <ul class="how-to-steps">
-        <li>Tap or click a tile adjacent to the empty space to slide it.</li>
-        <li>Arrange tiles in order from 1 through the final space.</li>
-        <li>Use arrow keys on desktop to move the empty space quickly.</li>
-        <li>Toggle Calm Mode to hide the timer and focus on strategy.</li>
-      </ul>
-      <div class="how-to-benefits">
-        <p>
-          Sliding puzzles are a simple way to practice pattern recognition and spatial reasoning. With every move,
-          you’re visualizing the board and planning ahead, which can help support working memory and flexible thinking.
-        </p>
-        <p>
-          Slide &amp; Snap is often used as a quick brain break because it’s focused and calming without being
-          overwhelming. A few rounds can encourage attention and steady problem-solving while still feeling relaxing.
-        </p>
-        <p>
-          Pick a smaller grid for a fast win or step up the size when you want a deeper challenge. Either way, the
-          puzzle rewards patience and a clear plan.
-        </p>
-        <ul class="benefit-list">
-          <li>Pattern recognition and visual scanning</li>
-          <li>Spatial reasoning and mental rotation</li>
-          <li>Working memory and short-term planning</li>
-          <li>Focus, attention, and calm persistence</li>
-        </ul>
-      </div>
-    </section>
+    <details class="quick-howto">
+      <summary>How to Play</summary>
+      <p>Tap a tile next to the empty space to slide it. Put the numbers back in order from 1 through the final blank. Use Calm Mode when you want to hide the timer.</p>
+    </details>
 
     <section class="game-shell" aria-label="Slide and Snap puzzle">
       <div class="control-panel">
@@ -176,7 +148,7 @@
         <p class="best-time" id="best-time">Best: --</p>
       </div>
 
-      <div class="ad-slot" aria-label="Advertisement">Ad Slot</div>
+      <div class="ad-slot ad-slot-empty" aria-hidden="true" hidden></div>
     </section>
 
     <section class="section faq" aria-label="Slide and Snap FAQ">
@@ -191,20 +163,7 @@
       </details>
     </section>
   
-    <section class="section" aria-label="Educator notes for Slide and Snap">
-      <h2>Educator Notes: Classroom Use</h2>
-      <p><strong>What this does:</strong> Slide &amp; Snap is a logic puzzle where students reorder tiles by planning moves ahead. It builds persistence and pattern recognition in a short, low-prep format.</p>
-      <p><strong>Grade fit:</strong> Grades 3–10 as a bell ringer, station task, or early-finisher option across math, STEM, and advisory blocks.</p>
-      <ul>
-        <li><strong>Use idea 1:</strong> Project one round as a whole-class warm-up and ask students to justify each move.</li>
-        <li><strong>Use idea 2:</strong> Run puzzle stations with different board sizes and compare strategies.</li>
-        <li><strong>Use idea 3:</strong> Pair with <a href="/tools/timer.html">Classroom Timer</a> for short focus rounds and reflection.</li>
-      </ul>
-      <p><strong>Quick directions:</strong> (1) Choose a board size. (2) Slide tiles into the empty space until ordered. (3) Replay on a harder size and discuss strategy changes.</p>
-      <details><summary>Does Slide &amp; Snap save student data?</summary><p>No. Best-time data is stored locally on the device only.</p></details>
-      <details><summary>Can students use Chromebooks or iPads?</summary><p>Yes. The game supports keyboard and touch input.</p></details>
-      <details><summary>Where can I find more practice games?</summary><p>Try more activities in <a href="/brain-arcade/">Brain Arcade</a> and <a href="/arcade-review-games/">Arcade Review Games</a>.</p></details>
-    </section>
+
   </main>
 
   <div class="win-modal" id="win-modal" role="dialog" aria-modal="true" aria-labelledby="win-title" aria-hidden="true">

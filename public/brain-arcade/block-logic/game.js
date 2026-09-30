@@ -4,6 +4,7 @@
 
 const GRID_SIZE = 10;
 let CELL_SIZE = 0; // Calculated dynamically
+let CELL_GAP = 4;
 
 const COLORS = {
   1: "color-1",
@@ -45,6 +46,7 @@ const floatingTextContainer = document.getElementById("floating-text-container")
 const gameOverEl = document.getElementById("game-over");
 const finalScoreEl = document.getElementById("final-score");
 const playAgainBtn = document.getElementById("play-again");
+const newGameBtn = document.getElementById("new-game");
 
 bestScoreEl.textContent = bestScore;
 
@@ -55,8 +57,7 @@ function initGrid() {
   gridEl.innerHTML = "";
   gridState = [];
 
-  const gridWidth = gridEl.clientWidth;
-  CELL_SIZE = gridWidth / GRID_SIZE;
+  updateGridMetrics();
 
   for (let r = 0; r < GRID_SIZE; r++) {
     const row = [];
@@ -105,9 +106,6 @@ function renderPieces() {
 
     container.appendChild(pieceGrid);
 
-    // Add drag listeners
-    container.addEventListener("touchstart", e => startDrag(e, i), { passive: false });
-    container.addEventListener("mousedown", e => startDrag(e, i));
   });
 }
 
@@ -157,7 +155,7 @@ function createGhostPiece(piece) {
 
   ghost.style.display = "grid";
   ghost.style.gridTemplateColumns = `repeat(${cols}, ${CELL_SIZE}px)`;
-  ghost.style.gap = "4px";
+  ghost.style.gap = `${CELL_GAP}px`;
 
   for (let r = 0; r < rows; r++) {
     for (let c = 0; c < cols; c++) {
@@ -194,8 +192,9 @@ function onDragMove(e) {
   const ghostTopLeftX = pos.x - dragOffsetX;
   const ghostTopLeftY = pos.y - dragOffsetY;
 
-  const col = Math.floor((ghostTopLeftX - gridRect.left) / CELL_SIZE);
-  const row = Math.floor((ghostTopLeftY - gridRect.top) / CELL_SIZE);
+  const pitch = CELL_SIZE + CELL_GAP;
+  const col = Math.floor((ghostTopLeftX - gridRect.left) / pitch);
+  const row = Math.floor((ghostTopLeftY - gridRect.top) / pitch);
 
   currentGhostRow = row;
   currentGhostCol = col;
@@ -457,9 +456,15 @@ function getEventPos(e) {
   return { x: e.clientX, y: e.clientY };
 }
 
-function resizeGrid() {
+function updateGridMetrics() {
+  const styles = getComputedStyle(gridEl);
+  CELL_GAP = parseFloat(styles.columnGap || styles.gap) || 0;
   const gridWidth = gridEl.clientWidth;
-  CELL_SIZE = gridWidth / GRID_SIZE;
+  CELL_SIZE = (gridWidth - CELL_GAP * (GRID_SIZE - 1)) / GRID_SIZE;
+}
+
+function resizeGrid() {
+  updateGridMetrics();
   gridEl.querySelectorAll(".cell").forEach(cell => {
     cell.style.width = `${CELL_SIZE}px`;
     cell.style.height = `${CELL_SIZE}px`;
@@ -468,6 +473,11 @@ function resizeGrid() {
 
 window.addEventListener("resize", resizeGrid);
 
+pieceEls.forEach((container, i) => {
+  container.addEventListener("touchstart", e => startDrag(e, i), { passive: false });
+  container.addEventListener("mousedown", e => startDrag(e, i));
+});
+
 initGrid();
 renderPieces();
 hideGameOver();
@@ -475,6 +485,7 @@ hideGameOver();
 playAgainBtn.addEventListener("click", () => {
   resetGame();
 });
+newGameBtn?.addEventListener("click", resetGame);
 
 function showGameOver() {
   finalScoreEl.textContent = currentScore;

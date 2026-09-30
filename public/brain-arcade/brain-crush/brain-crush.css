@@ -43,24 +43,26 @@ main.container {
 
 .game-shell {
   display: grid;
-  gap: 20px;
+  gap: 16px;
   grid-template-columns: minmax(0, 1fr);
   align-items: start;
+  max-width: 760px;
+  margin: 0 auto;
 }
 
 .game-panel {
-  background: var(--panel);
-  border: 1px solid rgba(148, 163, 184, 0.2);
-  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(15,23,42,.9), rgba(2,6,23,.88));
+  border: 1px solid rgba(96,165,250,.22);
+  border-radius: 20px;
   padding: 16px;
-  box-shadow: 0 20px 40px rgba(2, 6, 23, 0.35);
+  box-shadow: 0 22px 50px rgba(2,6,23,.42), 0 0 0 1px rgba(167,139,250,.05) inset;
   backdrop-filter: blur(12px);
 }
 
 .stats-grid {
   display: grid;
-  gap: 12px;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .stat-card {
@@ -136,8 +138,36 @@ main.container {
   width: 100%;
 }
 
+.play-status {
+  width: min(92vw, var(--board-max), calc(100vh - 280px));
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 9px 12px;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: 12px;
+  background: rgba(2, 6, 23, 0.48);
+  color: var(--muted);
+  font: 600 13px/1.25 Poppins, sans-serif;
+}
+
+.play-status strong {
+  flex: 0 0 auto;
+  color: #fde68a;
+  font-size: 13px;
+}
+
+.play-status[data-hot="true"] {
+  border-color: rgba(250, 204, 21, 0.55);
+  background: rgba(120, 53, 15, 0.22);
+}
+
+
 .board {
   position: relative;
+  box-shadow: 0 24px 70px rgba(2,6,23,.5), 0 0 32px rgba(56,189,248,.10);
   width: min(92vw, var(--board-max), calc(100vh - 280px));
   aspect-ratio: 1 / 1;
   height: min(92vw, var(--board-max), calc(100vh - 280px));
@@ -354,15 +384,9 @@ main.container {
   color: var(--muted);
 }
 
-@media (min-width: 980px) {
-  .game-shell {
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.7fr);
-  }
-}
-
 @media (max-width: 600px) {
   .stats-grid {
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .button {

@@ -125,6 +125,15 @@
       blankIndex = nextIndex;
     }
 
+    const solvedAgain = current.every((value, index) => value === solved[index]);
+    if (solvedAgain) {
+      const neighbors = getAdjacentIndices(blankIndex);
+      const nextIndex = neighbors[Math.floor(Math.random() * neighbors.length)];
+      current[blankIndex] = current[nextIndex];
+      current[nextIndex] = 0;
+      blankIndex = nextIndex;
+    }
+
     board = current;
     emptyIndex = blankIndex;
   };
@@ -292,7 +301,8 @@
       stopTimer();
       setTimerDisplay();
     } else {
-      resetTimer();
+      setTimerDisplay();
+      if (hasStarted && !isSolved) startTimer();
     }
   };
 

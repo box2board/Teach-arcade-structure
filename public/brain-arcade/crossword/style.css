@@ -1,0 +1,80 @@
+:root{
+  --cw-bg:#f8fafc;
+  --cw-card:#fff;
+  --cw-ink:#0f172a;
+  --cw-muted:#64748b;
+  --cw-border:#cbd5e1;
+  --cw-dark:#0f172a;
+  --cw-accent:#7c3aed;
+  --cw-accent-soft:#ede9fe;
+  --cw-selected:#fde68a;
+  --cw-related:#fef3c7;
+  --cw-error:#fecaca;
+  --cw-correct:#dcfce7;
+}
+
+*{box-sizing:border-box}
+body{background:var(--cw-bg);color:var(--cw-ink)}
+button{font:inherit}
+.cw-page{width:min(1180px,calc(100% - 28px));margin:0 auto;padding:86px 0 50px}
+.cw-breadcrumb{display:flex;gap:8px;align-items:center;font:700 13px/1.2 Nunito,system-ui,sans-serif;color:var(--cw-muted);margin-bottom:22px}
+.cw-breadcrumb a{color:inherit;text-decoration:none}.cw-breadcrumb a:hover{text-decoration:underline}
+.cw-hero{display:flex;justify-content:space-between;gap:24px;align-items:end;margin-bottom:18px}
+.cw-eyebrow{margin:0 0 8px;text-transform:uppercase;letter-spacing:.13em;font:700 12px/1 Poppins,sans-serif;color:var(--cw-accent)}
+.cw-hero h1{margin:0;font:700 clamp(34px,6vw,54px)/1 Poppins,sans-serif}
+.cw-hero p:not(.cw-eyebrow){margin:10px 0 0;color:var(--cw-muted);font:600 16px/1.5 Nunito,sans-serif}
+.cw-stats{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+.cw-stats div{min-width:88px;background:var(--cw-dark);color:#fff;border-radius:14px;padding:11px 13px;display:grid;gap:5px}
+.cw-stats span{font:700 10px/1 Poppins,sans-serif;text-transform:uppercase;letter-spacing:.09em;opacity:.72}
+.cw-stats strong{font:700 20px/1 Poppins,sans-serif}
+.cw-toolbar{display:flex;gap:9px;flex-wrap:wrap;background:var(--cw-card);border:1px solid #e2e8f0;padding:12px;border-radius:16px}
+.cw-toolbar button,.cw-modal-actions button,.cw-modal-actions a{border:1px solid var(--cw-border);background:#fff;color:var(--cw-ink);border-radius:11px;padding:10px 14px;font:700 13px/1 Poppins,sans-serif;cursor:pointer;text-decoration:none}
+.cw-toolbar .primary,.cw-modal-actions .primary{background:var(--cw-accent);border-color:var(--cw-accent);color:#fff}
+.cw-toolbar button[aria-pressed="true"]{background:var(--cw-dark);border-color:var(--cw-dark);color:#fff}
+.cw-message{min-height:24px;margin:12px 2px;color:var(--cw-muted);font:700 14px/1.5 Nunito,sans-serif}
+.cw-message.error{color:#b91c1c}.cw-message.success{color:#166534}
+.cw-game{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(300px,.9fr);gap:22px;align-items:start}
+.cw-board-panel,.cw-clues{background:var(--cw-card);border:1px solid #e2e8f0;border-radius:20px;padding:18px;box-shadow:0 12px 28px rgba(15,23,42,.07)}
+.cw-board{display:grid;gap:2px;width:min(100%,610px);margin:0 auto;background:var(--cw-dark);border:3px solid var(--cw-dark);touch-action:manipulation}
+.cw-cell,.cw-block{aspect-ratio:1/1;min-width:0}
+.cw-block{background:var(--cw-dark)}
+.cw-cell{position:relative;border:0;background:#fff;color:var(--cw-ink);display:grid;place-items:center;cursor:pointer;padding:0;font:800 clamp(18px,4vw,30px)/1 Poppins,sans-serif;text-transform:uppercase}
+.cw-cell.related{background:var(--cw-related)}.cw-cell.selected{background:var(--cw-selected)}
+.cw-cell.incorrect{background:var(--cw-error)}.cw-cell.correct{background:var(--cw-correct)}
+.cw-cell.revealed{color:#6d28d9}
+.cw-number{position:absolute;left:3px;top:2px;font:700 clamp(7px,1.5vw,10px)/1 Poppins,sans-serif;color:#475569}
+.cw-keyboard{display:grid;gap:6px;margin:16px auto 0;max-width:610px}
+.cw-key-row{display:flex;justify-content:center;gap:6px}
+.cw-key{flex:1 1 0;max-width:52px;min-width:0;min-height:42px;border:1px solid var(--cw-border);border-radius:9px;background:#fff;color:var(--cw-ink);font:800 14px/1 Poppins,sans-serif;cursor:pointer;box-shadow:0 3px 0 #cbd5e1;transition:transform .08s ease,box-shadow .08s ease,background .12s ease}
+.cw-key:active{transform:translateY(2px);box-shadow:0 1px 0 #cbd5e1}
+.cw-key:hover,.cw-key:focus-visible{background:var(--cw-accent-soft);outline:2px solid var(--cw-accent);outline-offset:1px}
+.cw-key.wide{flex:1.55 1 0;max-width:76px}
+.cw-tip{margin:12px 0 0;text-align:center;color:var(--cw-muted);font:600 12px/1.4 Nunito,sans-serif}
+.cw-clues{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-height:720px;overflow:auto;position:sticky;top:82px}
+.cw-clues h2{margin:0 0 10px;font:700 18px/1.2 Poppins,sans-serif}
+.clue-list{display:grid;gap:7px}
+.clue-btn{border:0;background:transparent;text-align:left;border-radius:10px;padding:9px;color:var(--cw-ink);cursor:pointer;font:600 14px/1.35 Nunito,sans-serif}
+.clue-btn:hover{background:#f1f5f9}.clue-btn.active{background:var(--cw-accent-soft);color:#5b21b6}.clue-btn.solved{text-decoration:line-through;color:#64748b}
+.clue-btn strong{font-family:Poppins,sans-serif;margin-right:5px}
+.cw-how{margin-top:16px;background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:14px 16px;color:var(--cw-muted);font:600 14px/1.5 Nunito,sans-serif}
+.cw-how summary{cursor:pointer;color:var(--cw-ink);font-family:Poppins,sans-serif;font-weight:700}
+.cw-modal{position:fixed;inset:0;background:rgba(15,23,42,.72);display:none;place-items:center;padding:18px;z-index:10000}
+.cw-modal.open{display:grid}.cw-modal-card{width:min(440px,100%);background:#fff;border-radius:20px;padding:24px;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,.3);animation:cw-pop .22s ease-out}
+@keyframes cw-pop{from{opacity:0;transform:scale(.94) translateY(8px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.cw-modal-card h2{margin:0;font:700 28px/1.2 Poppins,sans-serif}.cw-modal-card p{color:var(--cw-muted);line-height:1.5}
+.cw-modal-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:18px}
+@media(max-width:860px){
+  .cw-page{padding-top:72px}
+  .cw-hero{align-items:flex-start;flex-direction:column}.cw-stats{justify-content:flex-start}
+  .cw-game{grid-template-columns:1fr}.cw-clues{max-height:none;position:static}
+}
+@media(max-width:560px){
+  .cw-page{width:min(100% - 16px,1180px)}
+  .cw-board-panel,.cw-clues{padding:10px;border-radius:15px}
+  .cw-clues{grid-template-columns:1fr}
+  .cw-keyboard{gap:4px}
+  .cw-key-row{gap:4px}
+  .cw-key{min-height:38px;font-size:12px;max-width:44px}
+  .cw-toolbar button{flex:1 1 42%}
+}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}

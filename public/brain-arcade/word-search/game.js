@@ -197,6 +197,14 @@ const formatTime = (seconds) => {
   return `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
 };
 
+const getLocalDateKey = () => {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const day = String(now.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+};
+
 const hashString = (value) => {
   let hash = 2166136261;
   for (let i = 0; i < value.length; i += 1) {
@@ -444,7 +452,7 @@ const updateStats = () => {
   elements.foundCount.textContent = String(state.foundWords.length);
   elements.totalCount.textContent = String(state.words.length);
   elements.hintRemaining.textContent = String(MAX_HINTS - state.hintsUsed);
-  elements.timerDisplay.textContent = formatTime(state.elapsed);
+  elements.timerDisplay.textContent = state.timerEnabled ? formatTime(state.elapsed) : "Off";
   elements.categoryLabel.textContent = CATEGORY_LABELS[state.resolvedCategory] || "Random";
   elements.difficultyLabel.textContent = state.difficulty.charAt(0).toUpperCase() + state.difficulty.slice(1);
   elements.hint.textContent = `Hint (${MAX_HINTS - state.hintsUsed})`;
@@ -468,8 +476,13 @@ const markFound = (wordValue, coords) => {
 };
 
 const checkCompletion = () => {
-  if (state.foundWords.length === state.words.length) {
+  if (state.foundWords.length === state.words.length && state.words.length > 0) {
     elements.completeBanner.hidden = false;
+    if (timerInterval) {
+      clearInterval(timerInterval);
+      timerInterval = null;
+    }
+    setFeedback(`Puzzle complete in ${formatTime(state.elapsed)}!`);
   } else {
     elements.completeBanner.hidden = true;
   }
@@ -511,6 +524,7 @@ const handlePointerDown = (event) => {
   isDragging = true;
   dragPointerId = event.pointerId;
   dragStart = { row: Number(cell.dataset.row), col: Number(cell.dataset.col) };
+  try { elements.board.setPointerCapture(event.pointerId); } catch {}
   selection = [cell];
   cell.classList.add("selected");
   setFeedback("");
@@ -554,6 +568,7 @@ const handlePointerUp = (event) => {
     return;
   }
   isDragging = false;
+  try { elements.board.releasePointerCapture(event.pointerId); } catch {}
   dragPointerId = null;
   dragStart = null;
 
@@ -625,7 +640,7 @@ const startTimer = () => {
   if (timerInterval) {
     clearInterval(timerInterval);
   }
-  if (!state.timerEnabled) {
+  if (!state.timerEnabled || (state.words.length > 0 && state.foundWords.length === state.words.length)) {
     return;
   }
   timerInterval = setInterval(() => {
@@ -660,8 +675,7 @@ const createNewPuzzle = ({ useDailySeed, forceRandomCategory = false } = {}) => 
   state.dailyOn = useDailySeed ?? state.dailyOn;
   state.timerEnabled = elements.timerToggle.getAttribute("aria-pressed") === "true";
 
-  const today = new Date();
-  const dailyDate = today.toISOString().slice(0, 10);
+  const dailyDate = getLocalDateKey();
   state.dailyDate = state.dailyOn ? dailyDate : "";
 
   const rngForCategory = seededRng(buildConfigSeed(dailyDate, state.difficulty, state.category, state.gridSize));
@@ -721,7 +735,7 @@ const resetPuzzle = () => {
 };
 
 const applySavedState = (saved) => {
-  const today = new Date().toISOString().slice(0, 10);
+  const today = getLocalDateKey();
   if (saved.dailyOn && saved.dailyDate && saved.dailyDate !== today) {
     return false;
   }
@@ -818,7 +832,6 @@ const init = () => {
   elements.timerToggle.addEventListener("click", () => {
     state.timerEnabled = !state.timerEnabled;
     updateToggle(elements.timerToggle, state.timerEnabled);
-    state.elapsed = 0;
     updateStats();
     startTimer();
     saveState();

@@ -2,42 +2,33 @@
   let DICT = new Set();
   let DICT_READY = false;
 
-  const loadDictionary = async (showToast) => {
+  const loadDictionary = async (showToast, setStatus) => {
     const toast = typeof showToast === "function" ? showToast : () => {};
+    const status = typeof setStatus === "function" ? setStatus : () => {};
     DICT = new Set();
     DICT_READY = false;
-    fetch("./dictionary.txt", { cache: "force-cache" })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP ${response.status}`);
-        }
-        return response.text();
-      })
-      .then((text) => {
-        const words = text
-          .split("\n")
-          .map((word) => word.trim().toLowerCase())
-          .filter((word) => /^[a-z]+$/.test(word));
-        DICT = new Set(words);
-        DICT_READY = true;
-        console.log(
-          "Dictionary loaded:",
-          DICT.size,
-          "face:",
-          DICT.has("face"),
-          "pace:",
-          DICT.has("pace")
-        );
-        if (DICT.size < 5000) {
-          console.warn("dictionary.txt may be missing or too small");
-        }
-      })
-      .catch((error) => {
-        console.error("Dictionary failed to load.", error);
-        DICT_READY = false;
-        toast("Dictionary failed to load. Check dictionary.txt.");
-      });
+    status("Loading…");
+
+    try {
+      const response = await fetch("./dictionary.txt", { cache: "force-cache" });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const text = await response.text();
+      const words = text
+        .split("\n")
+        .map((word) => word.trim().toLowerCase())
+        .filter((word) => /^[a-z]+$/.test(word));
+      DICT = new Set(words);
+      DICT_READY = true;
+      status(`${DICT.size.toLocaleString()} words`);
+      if (DICT.size < 5000) console.warn("dictionary.txt may be missing or too small");
+    } catch (error) {
+      console.error("Dictionary failed to load.", error);
+      DICT_READY = false;
+      status("Unavailable");
+      toast("Dictionary unavailable. Turn off Strict Dictionary to keep playing.");
+    }
   };
+
   const defaultSettings = {
     gridSize: 4,
     timerSetting: 60,
@@ -62,12 +53,11 @@
     isEnded: false,
     isPointerDown: false,
     activePointerId: null,
+    pointerMoved: false,
+    pointerStartIndex: null,
     justScored: false,
     lastToastTime: 0
   };
-
-  let DICT = new Set();
-  let DICT_READY = false;
 
   const vowels = ["a", "e", "i", "o", "u"];
   const consonantBag = [
@@ -187,7 +177,9 @@
       }, 1400);
     };
 
-    await loadDictionary(showToast);
+    await loadDictionary(showToast, (value) => {
+      elements.dictionaryStatus.textContent = value;
+    });
 
     const updateBestScore = () => {
       const key = getSettingsKey(state.settings);
@@ -357,9 +349,6 @@
       tile.classList.add("selected");
       const word = updateCurrentWord();
       updateAdjacents();
-      if (state.settings.speedMode) {
-        attemptScoreWord(word);
-      }
     };
 
     const undoSelection = () => {
@@ -420,27 +409,10 @@
     };
 
     const handleSelectionEnd = () => {
-      if (!state.selected.length || !state.settings.speedMode) return;
+      if (!state.selected.length || !state.settings.speedMode || !state.pointerMoved) return;
       const word = getCurrentWord();
-      const length = word.length;
-      if (length >= state.settings.minLength) {
-        if (state.settings.strictDictionary) {
-          if (!DICT_READY) {
-            showToast("Dictionary loading…");
-            resetSelection();
-            return;
-          }
-          if (!DICT.has(word)) {
-            showToast("Not in dictionary");
-            resetSelection();
-            return;
-          }
-        }
-        if (state.foundSet.has(word)) {
-          showToast("Already found");
-        }
-      }
-      resetSelection();
+      attemptScoreWord(word, { showToasts: true });
+      if (state.selected.length) resetSelection();
     };
 
     const startTimer = () => {
@@ -515,6 +487,8 @@
       state.isEnded = false;
       state.isPointerDown = false;
       state.activePointerId = null;
+      state.pointerMoved = false;
+      state.pointerStartIndex = null;
       state.justScored = false;
       state.timerRemaining = state.settings.timerSetting;
       clearInterval(state.timerId);
@@ -584,6 +558,8 @@
       if (!tile) return;
       state.isPointerDown = true;
       state.activePointerId = event.pointerId;
+      state.pointerMoved = false;
+      state.pointerStartIndex = getTileIndex(tile);
       try {
         elements.board.setPointerCapture(event.pointerId);
       } catch (error) {
@@ -597,6 +573,7 @@
       const element = document.elementFromPoint(event.clientX, event.clientY);
       const tile = element && element.closest(".tile");
       if (!tile) return;
+      if (getTileIndex(tile) !== state.pointerStartIndex) state.pointerMoved = true;
       attemptSelectTile(tile);
     });
 
@@ -610,6 +587,8 @@
         // ignore capture errors
       }
       handleSelectionEnd();
+      state.pointerMoved = false;
+      state.pointerStartIndex = null;
     };
 
     elements.board.addEventListener("pointerup", handlePointerEnd);
