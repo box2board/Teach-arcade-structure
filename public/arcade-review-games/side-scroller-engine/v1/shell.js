@@ -1,5 +1,16 @@
 (()=>{const TA=window.TASideScroller=window.TASideScroller||{};
+function installSharedUI(){
+ if(document.getElementById('ta-side-scroller-ui'))return;
+ const style=document.createElement('style');style.id='ta-side-scroller-ui';
+ style.textContent=`
+ #question-modal[hidden],#results-modal[hidden]{display:none!important}
+ #question-modal:not([hidden]),#results-modal:not([hidden]){position:fixed!important;inset:0!important;z-index:1000!important;display:grid!important;place-items:center!important;padding:16px!important;background:rgba(2,6,23,.72)!important}
+ #question-modal:not([hidden]) dialog,#results-modal:not([hidden]) dialog{position:relative!important;inset:auto!important;margin:0!important;max-height:calc(100dvh - 32px)!important;overflow:auto!important}
+ `;
+ document.head.appendChild(style);
+}
 function boot(){
+ installSharedUI();
  const game=window.TA_GAME;if(!game)throw new Error('TA_GAME package is missing.');
  const canvas=document.getElementById('game'),status=document.getElementById('status'),debugEl=document.getElementById('level-debug');
  if(!canvas)throw new Error('Production shell requires #game canvas.');
@@ -10,4 +21,4 @@ function boot(){
  const engine=new TA.Engine({canvas,config:{player:physics},level:game.level,theme:game.theme,questions:game.questions||[],themeId:game.id||'default'});
  engine.validation=gameplay;engine.visualValidation=visual;engine.debugLevel=debug;window.TA_ACTIVE_GAME=engine;engine.start();
 }
-TA.bootProductionGame=boot;if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
+TA.installSharedUI=installSharedUI;TA.bootProductionGame=boot;if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();
