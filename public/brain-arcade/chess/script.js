@@ -2,7 +2,6 @@ const boardElement = document.getElementById("board");
 const turnElement = document.getElementById("turn");
 const modeSelect = document.getElementById("mode");
 const sideSelect = document.getElementById("side");
-const difficultySelect = document.getElementById("difficulty");
 const newGameButton = document.getElementById("new-game");
 const debugStatusElement = document.getElementById("debug-status");
 
@@ -50,7 +49,6 @@ let enPassantTarget = null;
 let mode = "2p";
 let playerColor = "white";
 let cpuColor = "black";
-let difficulty = "easy";
 let cpuThinking = false;
 let cpuTimer = null;
 let gameOver = false;
@@ -162,14 +160,12 @@ const updateDebugStatus = (status) => {
 const updateControlsForMode = () => {
   const isCpu = mode === "cpu";
   sideSelect.disabled = !isCpu;
-  difficultySelect.disabled = !isCpu;
 };
 
 const applySettings = () => {
   mode = modeSelect.value;
   playerColor = sideSelect.value;
   cpuColor = playerColor === "white" ? "black" : "white";
-  difficulty = difficultySelect.value;
   updateControlsForMode();
 };
 
@@ -827,10 +823,6 @@ modeSelect.addEventListener("change", startNewGame);
 sideSelect.addEventListener("change", () => {
   if (modeSelect.value === "cpu") startNewGame();
 });
-difficultySelect.addEventListener("change", () => {
-  if (modeSelect.value === "cpu") startNewGame();
-});
-
 newGameButton.addEventListener("click", startNewGame);
 
 document.addEventListener("keydown", (event) => {
