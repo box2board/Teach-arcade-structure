@@ -1,0 +1,55 @@
+(()=>{const B=TASideScroller.LevelBuilder,review=(id,x,y,reward,stationType)=>({id:'q'+id,questionIndex:id-1,x,y,w:36,h:54,visualY:y,reward,stationType});
+window.TA_CELL_LEVEL=B.build({
+id:'cell-city-organelle-run-v1',physicsPreset:'earth',tileSize:32,world:{width:3200,height:480},spawn:{x:64,y:290},finish:{x:3070,y:244,w:58,h:112},
+design:{style:'inside-an-animal-cell',target:'classroom',engine:'1.0.3'},
+terrainSegments:[
+{from:0,to:18,top:11},{from:18,to:31,top:12},{from:31,to:45,top:10},
+{from:45,to:59,top:12},{from:59,to:72,top:11},{from:72,to:86,top:12},{from:86,to:100,top:10}
+],
+hazardTiles:[{col:24,row:11},{col:39,row:9},{col:53,row:11},{col:68,row:10},{col:81,row:11}],
+checkpointTiles:[{col:32,row:9},{col:72,row:11}],
+zones:[
+{id:'membrane-entry',from:0,to:640,label:'Cell Membrane',kind:'membrane'},
+{id:'cytoplasm',from:640,to:1280,label:'Cytoplasm',kind:'cytoplasm'},
+{id:'nucleus-zone',from:1280,to:1888,label:'Nucleus',kind:'nucleus'},
+{id:'er-network',from:1888,to:2496,label:'Endoplasmic Reticulum',kind:'er'},
+{id:'golgi-energy',from:2496,to:3200,label:'Golgi & Mitochondria',kind:'golgi'}
+],
+questionPoints:[
+review(1,230,298,'boost','membrane'),
+review(2,520,330,'clearHazard','cytoplasm'),
+review(3,820,246,'checkpoint','nucleus'),
+review(4,1110,278,'disableMover','ribosome'),
+review(5,1390,214,'boost','mitochondria'),
+review(6,1690,330,'clearHazard','er'),
+review(7,1980,276,'checkpoint','golgi'),
+review(8,2240,302,'disableMover','lysosome'),
+review(9,2600,250,'boost','vesicle'),
+review(10,2940,196,'boost','dna')
+],
+platforms:[
+{id:'membrane-channel',x:390,y:304,w:120},{id:'cytoskeleton-a',x:650,y:352,w:135},{id:'ribosome-shelf',x:800,y:300,w:118},
+{id:'cytoskeleton-b',x:1030,y:332,w:126},{id:'nuclear-pore',x:1290,y:268,w:125},{id:'chromatin-bridge',x:1480,y:314,w:145},
+{id:'nuclear-step',x:1710,y:250,w:110},{id:'rough-er-a',x:1920,y:326,w:145},{id:'rough-er-b',x:2110,y:282,w:130},
+{id:'smooth-er',x:2310,y:338,w:130},{id:'golgi-stack',x:2530,y:304,w:128},{id:'mitochondria-ridge',x:2740,y:270,w:130},
+{id:'exit-vesicle',x:2920,y:238,w:150}
+],
+gates:[
+{id:'membrane-gate',questionId:'q2',x:610,y:0,w:24,h:384},
+{id:'nuclear-envelope',questionId:'q5',x:1570,y:0,w:24,h:384},
+{id:'er-gate',questionId:'q8',x:2370,y:0,w:24,h:384}
+],
+collectibles:[
+{x:455,y:266},{x:930,y:262},{x:1515,y:274},{x:2180,y:240},{x:2820,y:232}
+],
+movers:[
+{type:'enzyme',x:700,y:324,w:28,h:22,axis:'x',range:85,speed:92,movement:'groundPatrol',behavior:'hazard'},
+{type:'radical',x:1190,y:170,w:26,h:26,axis:'y',range:80,speed:72,movement:'flyPatrol',behavior:'hazard'},
+{type:'enzyme',x:2050,y:304,w:28,h:22,axis:'x',range:80,speed:102,movement:'groundPatrol',behavior:'hazard'},
+{type:'radical',x:2670,y:160,w:26,h:26,axis:'y',range:92,speed:78,movement:'flyPatrol',behavior:'hazard'}
+],
+movingPlatforms:[
+{id:'transport-vesicle-a',x:1160,y:292,w:96,h:18,axis:'y',range:72,speed:38},
+{id:'transport-vesicle-b',x:2420,y:286,w:100,h:18,axis:'x',range:90,speed:42}
+]
+});})();
