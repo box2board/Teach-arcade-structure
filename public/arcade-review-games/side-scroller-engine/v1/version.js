@@ -1,1 +1,1 @@
-window.TA_SIDE_SCROLLER_ENGINE={version:'1.0.2',status:'frozen',released:'2026-09-30',contract:1};
+window.TA_SIDE_SCROLLER_ENGINE={version:'1.0.3',status:'frozen',released:'2026-09-30',contract:1};
