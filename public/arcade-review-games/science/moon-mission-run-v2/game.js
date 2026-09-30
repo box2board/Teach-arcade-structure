@@ -1,0 +1,1 @@
+window.TA_GAME={id:'moon',physicsPreset:'moon',level:TA_MOON_LEVEL,questions:TA_MOON_QUESTIONS,theme:TA_MOON_THEME};
