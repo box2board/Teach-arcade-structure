@@ -1,0 +1,1 @@
+window.TA_WWI_THEME={name:'WWI Trench Run',skyTop:'#6b7280',skyBottom:'#cbd5b1',ground:'#594536',groundTop:'#75604c',hazard:'#2f2f2f',question:'#7f1d1d',checkpoint:'#d6c59a',finish:'#f5e7b2',player:'#384b3c',far:'#707d68',near:'#4b5848',sun:'rgba(238,220,180,.45)',labels:{hazard:'WIRE',collectible:'INTEL',goal:'command post'}};
