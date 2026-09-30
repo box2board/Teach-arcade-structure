@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Pyramid Escape Run | Ancient Egypt Review Game | Teach Arcade</title>
+<meta name="description" content="Explore an Ancient Egyptian tomb in a classroom review platformer covering the Nile, pharaohs, hieroglyphics, pyramids, mummification, religion, scribes, papyrus, and society.">
+<style>
+:root{--bg:#0b0806;--panel:#1c1510;--line:#6f4c2c;--text:#fffaf0;--muted:#d6c6a8;--accent:#d9a441}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at top,#49321f,#0b0806 72%);color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.wrap{width:min(100%,1040px);margin:auto;padding:14px}.top{display:flex;align-items:end;justify-content:space-between;gap:14px;margin-bottom:10px}.eyebrow{color:#f0cf78;font-size:.72rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase}.top h1{font-size:1.35rem;margin:3px 0}.sub{color:var(--muted);font-size:.84rem;margin:0}.back{color:#f0cf78;text-decoration:none;font-size:.8rem;font-weight:800}.hud{display:grid;grid-template-columns:minmax(200px,1fr) minmax(160px,300px) auto auto;align-items:center;gap:12px;background:rgba(28,21,16,.95);border:1px solid var(--line);border-radius:12px;padding:9px 12px;margin-bottom:8px;font-size:.86rem}.progress{height:8px;background:#3c2a1d;border-radius:999px;overflow:hidden}.progress i{display:block;height:100%;width:2%;background:linear-gradient(90deg,#1f7a70,#f0cf78);border-radius:inherit}canvas{display:block;width:100%;height:auto;border:2px solid #6f4c2c;border-radius:14px;background:#0b0806;box-shadow:0 18px 55px #0009}.controls{display:flex;justify-content:center;gap:12px;margin:12px 0}.controls button,#question-choices button,.result-actions button{font:inherit;font-weight:850;border:0;border-radius:12px}.controls button{min-width:105px;padding:15px 22px;background:#e8d5a7;color:#2b1b10;touch-action:none}.hint{text-align:center;color:var(--muted);font-size:.77rem}.debug-panel{margin-top:10px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--panel);font-size:.8rem;color:#ead9ba}.debug-panel[hidden],#question-modal[hidden],#results-modal[hidden]{display:none}dialog{border:2px solid #b78549;border-radius:18px;max-width:560px;width:92%;padding:22px;box-shadow:0 25px 80px #0009;background:#fffaf0;color:#271a11}#question-meta,#results-meta{font-size:.78rem;font-weight:900;color:#7c5a37;text-transform:uppercase;letter-spacing:.05em}#question-choices{display:grid;gap:9px}#question-choices button{padding:14px 18px;text-align:left;background:#ead9ba;color:#271a11;border:2px solid transparent}#question-choices button.correct{background:#dcfce7;border-color:#16a34a}#question-choices button.wrong{background:#fee2e2;border-color:#dc2626}#question-feedback{font-weight:800;min-height:1.5em}.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0}.result-card{background:#f4ead8;border-radius:12px;padding:12px}.result-card b{display:block;font-size:1.35rem;color:#271a11}.result-card span{font-size:.75rem;color:#7c5a37;font-weight:900;text-transform:uppercase}.result-actions button{width:100%;padding:13px;background:#3f2b1c;color:#fff}@media(max-width:700px){.top{display:block}.back{display:inline-block;margin-top:6px}.hud{grid-template-columns:1fr}.keys{display:none}.wrap{padding:8px}.controls{gap:8px}.controls button{min-width:0;flex:1;padding:16px 10px}.sub{font-size:.78rem}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<header class="top"><div><div class="eyebrow">Social Studies · Ancient Egypt</div><h1>Pyramid Escape Run</h1><p class="sub">Descend into the tomb, decode review tablets, avoid ancient traps, and find the burial chamber exit.</p></div><a class="back" href="/arcade-review-games/">← Arcade Review Games</a></header>
+<div class="hud"><span id="status">Preparing tomb expedition…</span><span class="progress" aria-label="Level progress"><i id="progress-fill"></i></span><span id="question-stats">Q 0/10 · Correct 0</span><span class="keys">← → / A D · Jump ↑ W Space</span></div>
+<canvas id="game" width="960" height="480" aria-label="Pyramid Escape Run game"></canvas>
+<div class="controls"><button data-control="arrowleft">◀ LEFT</button><button data-control=" ">JUMP</button><button data-control="arrowright">RIGHT ▶</button></div>
+<p class="hint">Answer all 10 review tablets, collect golden scarabs, open the tomb seals, and reach the final exit.</p>
+<div id="level-debug" class="debug-panel" hidden></div>
+</main>
+<div id="question-modal" hidden><dialog open><p id="question-meta"></p><h2>Decode the Tablet</h2><p id="question-text"></p><div id="question-choices"></div><p id="question-feedback"></p></dialog></div>
+<div id="results-modal" hidden><dialog open><p id="results-meta">EXPEDITION REPORT</p><h2 id="results-title">Pyramid Escape Complete!</h2><div class="result-grid"><div class="result-card"><b id="results-score">0</b><span>Score</span></div><div class="result-card"><b id="results-accuracy">0/10</b><span>Accuracy</span></div><div class="result-card"><b id="results-items">0/5</b><span>Scarabs</span></div><div class="result-card"><b id="results-time">0:00</b><span>Time</span></div><div class="result-card"><b id="results-respawns">0</b><span>Respawns</span></div><div class="result-card"><b>+1000</b><span>Escape Bonus</span></div></div><div class="result-actions"><button id="replay">Play Again</button></div></dialog></div>
+<script src="/arcade-review-games/side-scroller-engine/v1/version.js?v=1.0.0"></script>
+<script src="/arcade-review-games/side-scroller-engine/v1/physics-presets.js?v=1.0.0"></script>
+<script src="/arcade-review-games/side-scroller-engine/v1/level-builder.js?v=1.0.0"></script>
+<script src="level.js?v=1"></script>
+<script src="questions.js?v=1"></script>
+<script src="theme.js?v=1"></script>
+<script src="renderer.js?v=1"></script>
+<script src="/arcade-review-games/side-scroller-engine/v1/gameplay-validator.js?v=1.0.0"></script>
+<script src="/arcade-review-games/side-scroller-engine/v1/visual-validator.js?v=1.0.0"></script>
+<script src="/arcade-review-games/side-scroller-engine/v1/core.js?v=1.0.0"></script>
+<script src="game.js?v=1"></script>
+<script>document.getElementById('replay').addEventListener('click',()=>location.reload())</script>
+<script src="/arcade-review-games/side-scroller-engine/v1/shell.js?v=1.0.0"></script>
+</body>
+</html>
