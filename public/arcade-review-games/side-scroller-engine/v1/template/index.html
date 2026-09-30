@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Side-Scroller V1 Production Template</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#020617;color:#fff;font-family:system-ui}.wrap{width:min(100%,1040px);margin:auto;padding:14px}h1{font-size:1.2rem}.hud{display:grid;grid-template-columns:1fr minmax(160px,300px) auto;gap:12px;align-items:center;background:#0f172a;border:1px solid #334155;border-radius:12px;padding:10px 12px;margin-bottom:8px}.progress{height:8px;background:#263247;border-radius:999px;overflow:hidden}.progress i{display:block;height:100%;width:2%;background:#f5df8b}.controls{display:flex;justify-content:center;gap:12px;margin:12px 0}.controls button,#question-choices button{font:inherit;font-weight:800;padding:14px 22px;border:0;border-radius:12px}.controls button{touch-action:none;background:#e2e8f0;color:#0f172a}canvas{display:block;width:100%;height:auto;border:2px solid #334155;border-radius:14px}.debug-panel{padding:10px;margin-top:8px;background:#0f172a;border:1px solid #334155;border-radius:10px}.debug-panel[hidden],#question-modal[hidden],#results-modal[hidden]{display:none}dialog{border:0;border-radius:18px;max-width:520px;width:90%;padding:22px}#question-choices{display:grid;gap:8px}#question-choices button{text-align:left;background:#e2e8f0;color:#0f172a}#question-feedback{font-weight:800}#results-body{line-height:1.6}@media(max-width:650px){.hud{grid-template-columns:1fr}.wrap{padding:8px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<h1>Teach Arcade · Side-Scroller V1 Production Template</h1>
+<div class="hud"><span id="status">Loading…</span><span class="progress"><i id="progress-fill"></i></span><span id="question-stats">Q 0/10</span></div>
+<canvas id="game" width="960" height="480"></canvas>
+<div class="controls"><button data-control="arrowleft">◀ LEFT</button><button data-control=" ">JUMP</button><button data-control="arrowright">RIGHT ▶</button></div>
+<div id="level-debug" class="debug-panel" hidden></div>
+</main>
+<div id="question-modal" hidden><dialog open><p id="question-meta"></p><h2>Review Checkpoint</h2><p id="question-text"></p><div id="question-choices"></div><p id="question-feedback"></p></dialog></div>
+<div id="results-modal" hidden><dialog open><h2 id="results-title">Level Complete!</h2><p id="results-body"></p><button id="replay">Play Again</button></dialog></div>
+<script src="../version.js"></script>
+<script src="../physics-presets.js"></script>
+<script src="../level-builder.js"></script>
+<script src="level.js"></script>
+<script src="questions.js"></script>
+<script src="theme.js"></script>
+<script src="renderer.js"></script>
+<script src="../gameplay-validator.js"></script>
+<script src="../visual-validator.js"></script>
+<script src="../core.js"></script>
+<script src="game.js"></script>
+<script>document.getElementById('replay').addEventListener('click',()=>location.reload())</script>
+<script src="../shell.js"></script>
+</body>
+</html>
