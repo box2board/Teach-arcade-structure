@@ -1,0 +1,1 @@
+window.TA_GAME={id:'wwi',physicsPreset:'earth',level:window.TA_WWI_LEVEL,questions:window.TA_WWI_QUESTIONS,theme:window.TA_WWI_THEME};
