@@ -103,27 +103,57 @@
 
     .more-originals {
       max-width: 1000px;
-      margin: 8px auto 0;
-      padding: 16px 18px;
-      border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      background: #f8fafc;
+      margin: 28px auto 0;
     }
 
     .more-originals h3 {
-      margin: 0 0 6px;
-      font: 700 17px/1.3 Poppins, sans-serif;
+      margin: 0 0 14px;
+      font: 700 21px/1.3 Poppins, sans-serif;
       color: #0f172a;
     }
 
-    .more-originals p {
-      margin: 0;
-      line-height: 2;
+    .more-originals-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 14px;
     }
 
-    .more-originals a {
-      display: inline-block;
-      white-space: nowrap;
+    .more-tile {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      min-height: 78px;
+      padding: 14px;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      background: #fff;
+      color: #1e293b;
+      text-decoration: none;
+      box-shadow: 0 2px 4px rgba(0,0,0,.04);
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+    }
+
+    .more-tile:hover {
+      transform: translateY(-2px);
+      border-color: #cbd5e1;
+      box-shadow: 0 5px 12px rgba(0,0,0,.07);
+    }
+
+    .more-tile-icon {
+      flex: 0 0 auto;
+      font-size: 25px;
+      line-height: 1;
+    }
+
+    .more-tile strong {
+      display: block;
+      margin-bottom: 4px;
+      font: 700 14px/1.25 Poppins, sans-serif;
+    }
+
+    .more-tile span:last-child {
+      color: #64748b;
+      font: 400 12px/1.4 Nunito, system-ui, sans-serif;
     }
 
     /* ===========================
@@ -305,21 +335,21 @@
           <p class="subject-desc">Original paper-based games for classrooms with or without devices.</p>
         </a>
       </div>
-      <div class="more-originals">
-        <h3>More to Explore</h3>
-        <p>
-          <a href="/brain-arcade/">Brain Arcade</a> ·
-          <a href="/career-arcade/">Career Arcade</a> ·
-          <a href="/games/knowledge-expedition/">Knowledge Expedition</a> ·
-          <a href="/choose-your-path-adventure/">Choose Your Path Adventures</a> ·
-          <a href="/decision-simulator/">Decision Simulators</a> ·
-          <a href="/movie-guides/">Movie Guides</a> ·
-          <a href="/classroom/toy-toolbox/">Toy Toolbox</a> ·
-          <a href="/brain-arcade/block-builder/">3D Block Builder</a> ·
-          <a href="/playbook/">Teach Arcade Playbook</a> ·
-          <a href="/store/">Teach Arcade Merch</a>
-        </p>
-      </div>
+      <section class="more-originals" aria-labelledby="more-originals-title">
+        <h3 id="more-originals-title">More Original Resources</h3>
+        <div class="more-originals-grid">
+          <a class="more-tile" href="/brain-arcade/"><span class="more-tile-icon" aria-hidden="true">🧠</span><span><strong>Brain Arcade</strong><span>Logic, focus, and strategy games.</span></span></a>
+          <a class="more-tile" href="/career-arcade/"><span class="more-tile-icon" aria-hidden="true">💼</span><span><strong>Career Arcade</strong><span>Career and personal finance games.</span></span></a>
+          <a class="more-tile" href="/games/knowledge-expedition/"><span class="more-tile-icon" aria-hidden="true">🧭</span><span><strong>Knowledge Expedition</strong><span>Adventure-style subject review.</span></span></a>
+          <a class="more-tile" href="/choose-your-path-adventure/"><span class="more-tile-icon" aria-hidden="true">🗺️</span><span><strong>Choose Your Path</strong><span>Branching stories with consequences.</span></span></a>
+          <a class="more-tile" href="/decision-simulator/"><span class="more-tile-icon" aria-hidden="true">📉</span><span><strong>Decision Simulators</strong><span>Explore choices and their outcomes.</span></span></a>
+          <a class="more-tile" href="/movie-guides/"><span class="more-tile-icon" aria-hidden="true">🎬</span><span><strong>Movie Guides</strong><span>Original classroom viewing guides.</span></span></a>
+          <a class="more-tile" href="/classroom/toy-toolbox/"><span class="more-tile-icon" aria-hidden="true">🧰</span><span><strong>Toy Toolbox</strong><span>Hands-on builds and learning play.</span></span></a>
+          <a class="more-tile" href="/brain-arcade/block-builder/"><span class="more-tile-icon" aria-hidden="true">🧱</span><span><strong>3D Block Builder</strong><span>Build and model ideas in 3D.</span></span></a>
+          <a class="more-tile" href="/playbook/"><span class="more-tile-icon" aria-hidden="true">📘</span><span><strong>Teach Arcade Playbook</strong><span>Guides for using activities in class.</span></span></a>
+          <a class="more-tile" href="/store/"><span class="more-tile-icon" aria-hidden="true">🛍️</span><span><strong>Teach Arcade Merch</strong><span>Browse original branded gear.</span></span></a>
+        </div>
+      </section>
     </section>
 
     <!-- Bottom Ad -->
