@@ -9,8 +9,8 @@
   const state = { mode: "welcome", topic: topics[0], sound: false, roundQuestion: 0, usedQuestions: [], activePlayer: 1, questionMode: "opening", feedbackLock: false, lastTime: 0, toastTimer: 0, winner: 0 };
   const fighters = [
     null,
-    { id: 1, x: 245, y: 326, vx: 0, vy: 0, w: 58, h: 112, face: 1, hp: 100, juice: 0, color: "#57d7ff", dark: "#17688b", attack: 0, invuln: 0, grounded: false },
-    { id: 2, x: 655, y: 326, vx: 0, vy: 0, w: 58, h: 112, face: -1, hp: 100, juice: 0, color: "#ff7099", dark: "#91385f", attack: 0, invuln: 0, grounded: false }
+    { id: 1, x: 245, y: 326, vx: 0, vy: 0, w: 58, h: 112, face: 1, hp: 100, juice: 0, color: "#57d7ff", dark: "#17688b", attack: 0, attackKind: "", attackCooldown: 0, hitFlash: 0, invuln: 0, grounded: false },
+    { id: 2, x: 655, y: 326, vx: 0, vy: 0, w: 58, h: 112, face: -1, hp: 100, juice: 0, color: "#ff7099", dark: "#91385f", attack: 0, attackKind: "", attackCooldown: 0, hitFlash: 0, invuln: 0, grounded: false }
   ];
   const floorY = 438;
   const GRAVITY = 1900;
@@ -45,7 +45,7 @@
     state.roundQuestion = 0;
     state.usedQuestions = [];
     state.winner = 0;
-    for (const player of fighters.slice(1)) Object.assign(player, { x: player.id === 1 ? 245 : 655, y: floorY - 112, vx: 0, vy: 0, face: player.id === 1 ? 1 : -1, hp: 100, juice: 0, attack: 0, invuln: 0, grounded: true });
+    for (const player of fighters.slice(1)) Object.assign(player, { x: player.id === 1 ? 245 : 655, y: floorY - 112, vx: 0, vy: 0, face: player.id === 1 ? 1 : -1, hp: 100, juice: 0, attack: 0, attackKind: "", attackCooldown: 0, hitFlash: 0, invuln: 0, grounded: true });
     $("topic-label").textContent = state.topic.shortTitle;
     applyArenaTheme();
     $("hud").hidden = false;
@@ -180,10 +180,12 @@
   }
 
   function attack(player, kind) {
-    if (state.mode !== "fight") return;
+    if (state.mode !== "fight" || player.attackCooldown > 0) return;
     const cost = kind === "punch" ? 8 : 15;
     if (!spend(player, cost, kind)) return;
     player.attack = kind === "punch" ? .2 : .3;
+    player.attackKind = kind;
+    player.attackCooldown = kind === "punch" ? .26 : .4;
     const opponent = fighters[player.id === 1 ? 2 : 1];
     const reach = kind === "punch" ? 88 : 105;
     const verticalReach = kind === "punch" ? 68 : 90;
@@ -195,6 +197,7 @@
       opponent.vy = kind === "punch" ? -125 : -225;
       opponent.grounded = false;
       opponent.invuln = .38;
+      opponent.hitFlash = .18;
       toast(`${kind === "punch" ? "Punch" : "Kick"} connected! -${damage} HP`);
       playTone(kind === "punch" ? 340 : 480);
       if (!opponent.hp) finishGame(player.id);
@@ -245,6 +248,9 @@
       if (p.y + p.h >= floorY) { p.y = floorY - p.h; p.vy = 0; p.grounded = true; }
       p.x = Math.max(26, Math.min(canvas.width - p.w - 26, p.x));
       p.attack = Math.max(0, p.attack - dt);
+      if (p.attack <= 0) p.attackKind = "";
+      p.attackCooldown = Math.max(0, p.attackCooldown - dt);
+      p.hitFlash = Math.max(0, p.hitFlash - dt);
       p.invuln = Math.max(0, p.invuln - dt);
     }
     if (energyChanged) syncHud();
@@ -292,14 +298,23 @@
     const cx = p.x + p.w / 2, y = p.y, facing = p.face;
     ctx.save();
     if (p.invuln > 0 && Math.floor(performance.now() / 60) % 2) ctx.globalAlpha = .45;
+    if (p.hitFlash > 0) { ctx.shadowColor = "#fff2a6"; ctx.shadowBlur = 25; }
     ctx.fillStyle = "rgba(0,0,0,.26)"; ctx.beginPath(); ctx.ellipse(cx, floorY + 7, 43, 8, 0, 0, Math.PI * 2); ctx.fill();
     ctx.translate(cx, 0); ctx.scale(facing, 1); ctx.translate(-cx, 0);
-    const punchActive = p.attack > .1;
+    const punchActive = p.attackKind === "punch" && p.attack > .04;
+    const kickActive = p.attackKind === "kick" && p.attack > .04;
     ctx.lineCap = "round"; ctx.lineJoin = "round";
     // Original, simple training-bot silhouette: no weapons or injury detail.
     ctx.strokeStyle = p.dark; ctx.lineWidth = 17;
     ctx.beginPath(); ctx.moveTo(cx - 12, y + 76); ctx.lineTo(cx - 18, y + 101); ctx.lineTo(cx - 27, y + 108); ctx.stroke();
-    ctx.beginPath(); ctx.moveTo(cx + 12, y + 76); ctx.lineTo(cx + 18, y + 99); ctx.lineTo(cx + 27, y + 105); ctx.stroke();
+    if (kickActive) {
+      const progress = 1 - p.attack / .3;
+      const extension = Math.sin(Math.min(1, Math.max(0, progress)) * Math.PI) * 46;
+      ctx.beginPath(); ctx.moveTo(cx + 12, y + 76); ctx.lineTo(cx + 25 + extension * .55, y + 86); ctx.lineTo(cx + 35 + extension, y + 77); ctx.stroke();
+      ctx.fillStyle = p.color; ctx.beginPath(); ctx.arc(cx + 35 + extension, y + 77, 8, 0, Math.PI * 2); ctx.fill();
+    } else {
+      ctx.beginPath(); ctx.moveTo(cx + 12, y + 76); ctx.lineTo(cx + 18, y + 99); ctx.lineTo(cx + 27, y + 105); ctx.stroke();
+    }
     ctx.fillStyle = p.color; roundedRect(cx - 23, y + 39, 46, 47, 13); ctx.fill();
     ctx.fillStyle = p.dark; roundedRect(cx - 25, y + 78, 50, 9, 4); ctx.fill();
     ctx.fillStyle = p.color; ctx.beginPath(); ctx.arc(cx, y + 23, 23, 0, Math.PI * 2); ctx.fill();
@@ -307,9 +322,10 @@
     ctx.fillStyle = "#eaf8ff"; ctx.fillRect(cx + 5, y + 20, 5, 4); ctx.fillRect(cx - 8, y + 20, 5, 4);
     ctx.strokeStyle = p.dark; ctx.lineWidth = 13;
     ctx.beginPath(); ctx.moveTo(cx - 18, y + 49); ctx.lineTo(cx - 31, y + 69); ctx.stroke();
-    const armEndX = punchActive ? cx + 47 : cx + 27, armEndY = punchActive ? y + 55 : y + 70;
+    const armEndX = punchActive ? cx + 49 : cx + 27, armEndY = punchActive ? y + 52 : y + 70;
     ctx.beginPath(); ctx.moveTo(cx + 18, y + 49); ctx.lineTo(armEndX, armEndY); ctx.stroke();
     ctx.fillStyle = p.color; ctx.beginPath(); ctx.arc(armEndX, armEndY, 9, 0, Math.PI * 2); ctx.fill();
+    if (punchActive) { ctx.strokeStyle = "rgba(255,255,255,.7)"; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(cx + 35, y + 44); ctx.lineTo(cx + 61, y + 44); ctx.stroke(); }
     ctx.fillStyle = "rgba(255,255,255,.72)"; ctx.font = "800 10px Inter"; ctx.textAlign = "center"; ctx.fillText(`P${p.id}`, cx, y + 66);
     ctx.restore();
   }
