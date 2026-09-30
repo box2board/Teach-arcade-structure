@@ -6,7 +6,7 @@ Power Clash is a reusable, browser-based classroom review fighter prototype. Thi
 
 1. Choose a topic pack.
 2. Players alternate answering ten multiple-choice questions. A correct answer earns 20 juice.
-3. Fight in the arena. Walking and jumping are free; punches, kicks, and dashes consume juice.
+3. Fight in the arena. Moving drains juice over time; jumps, punches, kicks, and dashes also consume juice.
 4. When a player runs out, the match pauses for that player to answer a recharge question. A correct answer restores 25 juice. A missed answer gives feedback and another question; the other player cannot attack during the recharge.
 5. Reduce the opponent's health to zero to win.
 
