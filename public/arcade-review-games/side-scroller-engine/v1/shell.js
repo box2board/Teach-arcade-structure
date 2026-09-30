@@ -5,9 +5,20 @@ function installSharedUI(){
  style.textContent=`
  #question-modal[hidden],#results-modal[hidden]{display:none!important}
  #question-modal:not([hidden]),#results-modal:not([hidden]){position:fixed!important;inset:0!important;z-index:1000!important;display:grid!important;place-items:center!important;padding:16px!important;background:rgba(2,6,23,.72)!important}
- #question-modal:not([hidden]) dialog,#results-modal:not([hidden]) dialog{position:relative!important;inset:auto!important;margin:0!important;max-height:calc(100dvh - 32px)!important;overflow:auto!important}
- `;
+ #question-modal:not([hidden]) dialog,#results-modal:not([hidden]) dialog{position:relative!important;inset:auto!important;margin:0!important;max-height:calc(100dvh - 32px)!important;overflow:auto!important}\n #question-choices button{transition:transform .08s ease,box-shadow .08s ease,outline-color .08s ease}\n #question-choices button.ta-key-selected{outline:3px solid #facc15!important;outline-offset:2px!important;box-shadow:inset 6px 0 0 #facc15!important;transform:translateX(4px)}\n .ta-question-keyboard-hint{margin:8px 0 10px;font-size:.76rem;font-weight:800;letter-spacing:.02em;opacity:.72}\n @media(max-width:699px){.ta-question-keyboard-hint{display:none}}\n `;
  document.head.appendChild(style);
+ installQuestionKeyboard();
+}
+function installQuestionKeyboard(){
+ if(TA.questionKeyboardInstalled)return;TA.questionKeyboardInstalled=true;
+ const modal=document.getElementById('question-modal'),choices=document.getElementById('question-choices');if(!modal||!choices)return;
+ let selected=0;
+ const buttons=()=>[...choices.querySelectorAll('button:not([disabled])')];
+ const select=i=>{const list=buttons();if(!list.length)return;selected=(i+list.length)%list.length;[...choices.querySelectorAll('button')].forEach(b=>b.classList.remove('ta-key-selected'));const b=list[selected];b.classList.add('ta-key-selected');b.scrollIntoView({block:'nearest'});};
+ const prepare=()=>{const list=buttons();if(!list.length)return;selected=0;select(0);let hint=modal.querySelector('.ta-question-keyboard-hint');if(!hint){hint=document.createElement('p');hint.className='ta-question-keyboard-hint';hint.textContent='Keyboard: ↑ ↓ select · Enter answer';choices.before(hint);}};
+ new MutationObserver(()=>{if(!modal.hidden)requestAnimationFrame(prepare)}).observe(modal,{attributes:true,attributeFilter:['hidden']});
+ choices.addEventListener('pointermove',e=>{const b=e.target.closest('button');if(!b||b.disabled)return;const list=buttons(),i=list.indexOf(b);if(i>=0)select(i)});
+ addEventListener('keydown',e=>{if(modal.hidden)return;const list=buttons();if(!list.length)return;if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();e.stopImmediatePropagation();select(selected+(e.key==='ArrowDown'?1:-1));return}if(e.key==='Enter'&&!e.repeat){e.preventDefault();e.stopImmediatePropagation();const b=list[selected];if(b)b.click();}},true);
 }
 function boot(){
  installSharedUI();
