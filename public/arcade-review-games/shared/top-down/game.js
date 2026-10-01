@@ -5,7 +5,7 @@ const $=id=>document.getElementById(id);
 let state=createState(map), started=false, held=null, nextStep=0, elapsed=0, last=0;
 let questionDeck=shuffle(content.questions), activeQuestion=null;
 const board=$('board'), dialog=$('dialog');
-const symbols={block:'▤',plate:'◎',door:'⌑',challenge:'▣',sign:'i',lever:'ϟ',exit:'◇'};
+const symbols={block:'▤',plate:'◎',door:'⌑',challenge:'▣',sign:'i',lever:'ϟ',exit:'◇',tool:'⚒',item:'◆'};
 function element(tag,text,className){const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(className)e.className=className;return e;}
 function message(text){$('message').textContent=text;}
 function sealed(){return Number(doorOpen(map,state,map.doors[0]))+Number(state.opened.includes('east'))+Number(exitReady(map,state,map.objects.find(o=>o.type==='exit')));}
@@ -13,8 +13,9 @@ function render(){
   $('entities').replaceChildren();
   const items=[...map.plates.map(o=>({...o,type:'plate'})),...map.doors.map(o=>({...o,type:'door'})),...map.objects,...state.blocks.map(o=>({...o,type:'block'}))];
   for(const item of items){
+    if(state.collected.includes(item.id))continue;
     let active=item.type==='door'?doorOpen(map,state,item):item.type==='plate'?state.blocks.some(b=>b.x===item.x&&b.y===item.y):item.type==='exit'?exitReady(map,state,item):state.activated.includes(item.id);
-    const e=element('div',undefined,`entity ${item.type}${active?' active':''}${item.type==='door'&&active?' open':''}${state.solved.includes(item.id)?' done':''}`);
+    const e=element('div',undefined,`entity ${item.type}${item.appearance?' '+item.appearance:''}${active?' active':''}${item.type==='door'&&active?' open':''}${state.solved.includes(item.id)?' done':''}`);
     e.style.left=`${item.x/21*100}%`;e.style.top=`${item.y/13*100}%`;e.append(element('span',active&&item.type==='door'?'·':symbols[item.type]));$('entities').append(e);
   }
   $('player').style.left=`${state.player.x/21*100}%`;$('player').style.top=`${state.player.y/13*100}%`;$('player').dataset.facing=state.facing;
@@ -25,9 +26,12 @@ function render(){
   $('world').style.width=`${map.tiles[0].length/viewWidth*100}%`;
   $('world').style.left=`${-viewMin/viewWidth*100}%`;
   $('map-labels').textContent=room.name;
-  $('room').textContent=room.name;$('objective').textContent=state.won?'Adventure complete!':room.objective;
-  $('inventory').textContent=state.keys.length?'Key: archive':state.opened.includes('east')?'Key: used':'Key: —';$('seals').textContent=`Seals: ${sealed()} / 3`;
-  board.setAttribute('aria-label',`${room.name}. Position column ${state.player.x}, row ${state.player.y}. ${room.objective} Move with arrows or WASD; interact with E or Space.`);
+    let objective=room.objective;
+  if(room===map.rooms[0] && state.tools.includes('hammer'))objective=state.items.includes('seal-crystal')?'Take the seal crystal to the final chamber.':'Break the cracked wall to the north and collect the seal crystal.';
+  if(room===map.rooms[1])objective=state.tools.includes('hammer')?(state.items.includes('seal-crystal')?'Unlock the east gate and continue to the final chamber.':'Return to Switch Hall. Your hammer can break its cracked wall.'):'Find the hammer in the lower Archive and earn the key from the chest.';
+  $('room').textContent=room.name;$('objective').textContent=state.won?'Adventure complete!':objective;
+  $('inventory').textContent=[state.keys.length?'Key: archive':state.opened.includes('east')?'Key: used':'Key: —',state.tools.includes('hammer')?'Hammer':null,state.items.includes('seal-crystal')?'Seal crystal':null].filter(Boolean).join(' · ');$('seals').textContent=`Seals: ${sealed()} / 3`;
+  board.setAttribute('aria-label',`${room.name}. Position column ${state.player.x}, row ${state.player.y}. ${objective} Move with arrows or WASD; interact with E or Space.`);
   $('undo').disabled=!started||state.won||!state.history.length;
   $('reset-puzzle').disabled=!started||state.won;
   $('interact').disabled=!started||state.won;
@@ -49,7 +53,7 @@ function performInteraction(){
   if(result.type==='challenge')openQuestion(result.id);
   if(result.type==='win'){
     $('pause').disabled=true;
-    popup('ALL THREE SEALS OPEN','Adventure complete',[`You solved the block switch, unlocked the archive gate, and solved the signal sequence.`,`Exploration time: ${Math.floor(elapsed/60)}m ${Math.floor(elapsed%60)}s · Moves: ${state.moves} · Review points: ${state.score}.`,`Chest question attempts: ${state.attempts.archive||0}. Try a new route on your next adventure.`],[{text:'Play again',run:restart,primary:true},{text:'Back to Arcade',run:()=>{window.location.href='/arcade-review-games/';}}]);
+    popup('ALL THREE SEALS OPEN','Adventure complete',[`You solved the block switch, unlocked the archive gate, recovered the seal crystal with your hammer, and solved the signal sequence.`,`Exploration time: ${Math.floor(elapsed/60)}m ${Math.floor(elapsed%60)}s · Moves: ${state.moves} · Review points: ${state.score}.`,`Chest question attempts: ${state.attempts.archive||0}. Try a new route on your next adventure.`],[{text:'Play again',run:restart,primary:true},{text:'Back to Arcade',run:()=>{window.location.href='/arcade-review-games/';}}]);
   }
 }
 function openQuestion(id){
@@ -86,9 +90,9 @@ for(const b of document.querySelectorAll('[data-dir]')){
 }
 $('interact').addEventListener('click',()=>{performInteraction();if(!dialog.open)board.focus();});
 $('undo').addEventListener('click',()=>{release();undo(state);render();message('Last move undone.');board.focus();});
-$('reset-puzzle').addEventListener('click',()=>popup('RESET PUZZLE','Return the block to its start?',['You will return to the entrance. Earned keys, opened key gates, and completed questions stay saved for this play.'],[{text:'Reset puzzle',run:()=>{resetPuzzle(map,state);render();resume();message('Block restored. Your earned progress is kept.');},primary:true},{text:'Keep exploring',run:resume}]));
+$('reset-puzzle').addEventListener('click',()=>popup('RESET PUZZLE','Return the block to its start?',['You will return to the entrance. Earned keys, tools, collectibles, opened paths, and completed questions stay saved for this play.'],[{text:'Reset puzzle',run:()=>{resetPuzzle(map,state);render();resume();message('Block restored. Your earned progress is kept.');},primary:true},{text:'Keep exploring',run:resume}]));
 $('pause').addEventListener('click',pause);
 dialog.addEventListener('cancel',e=>{e.preventDefault();if(started&&!state.won){activeQuestion=null;resume();}});
 function frame(now){if(started&&!dialog.open&&!state.won&&!document.hidden){if(last)elapsed+=Math.min((now-last)/1000,.1);if(held&&now>=nextStep){performMove(held);nextStep=now+165;}}last=now;requestAnimationFrame(frame);}
-render();popup('QUEST ARCADE · THE THREE SEALS','Explore the courthouse',['Solve three connected rooms: hold a floor switch with a block, earn a key from the archive chest, and follow an inscription to solve the final signal sequence.','Move with arrows or WASD. Face an object and press E / Space to interact. On a tablet, use the buttons below the map.','There is no time limit. Undo and Reset puzzle help you recover from a tricky push.'],[{text:'Start adventure',run:restart,primary:true}]);
+render();popup('QUEST ARCADE · THE THREE SEALS','Explore the courthouse',['Solve three connected rooms: hold a floor switch with a block, earn a key from the archive chest, collect a hammer to reopen a path in Switch Hall, and bring the hidden seal crystal to the final signal puzzle.','Move with arrows or WASD. Face an object and press E / Space to interact. On a tablet, use the buttons below the map.','There is no time limit. Undo and Reset puzzle help you recover from a tricky push.'],[{text:'Start adventure',run:restart,primary:true}]);
 requestAnimationFrame(frame);

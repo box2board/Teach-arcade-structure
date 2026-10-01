@@ -1,14 +1,34 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { adventure as map } from '../public/arcade-review-games/shared/top-down/map.js';
-import {createState,move,interact,doorOpen,completeChallenge,undo,resetPuzzle,shuffle,exitReady} from '../public/arcade-review-games/shared/top-down/model.js';
+import {createState,move,interact,doorOpen,completeChallenge,undo,resetPuzzle,shuffle,exitReady,obstacle} from '../public/arcade-review-games/shared/top-down/model.js';
 const walk=(state,dir,count=1)=>{for(let i=0;i<count;i++)assert.equal(move(map,state,dir),true,`${dir} at ${JSON.stringify(state.player)}`);};
+function walkTo(s,x,y) {
+ const queue=[{x:s.player.x,y:s.player.y,path:[]}], seen=new Set();
+ while(queue.length) {
+   const here=queue.shift();if(here.x===x&&here.y===y){for(const dir of here.path)walk(s,dir);return;}
+   for(const [dir,dx,dy] of [['up',0,-1],['down',0,1],['left',-1,0],['right',1,0]]) {
+     const next={x:here.x+dx,y:here.y+dy}, key=next.x+','+next.y;
+     if(seen.has(key)||obstacle(map,s,next)||s.blocks.some(b=>b.x===next.x&&b.y===next.y))continue;
+     seen.add(key);queue.push({...next,path:[...here.path,dir]});
+   }
+ }
+ throw Error('No walking route to '+x+','+y);
+}
+function collectVaultCrystal(s) {
+ walkTo(s,11,9);s.facing='right';interact(map,s);
+ assert.deepEqual(s.tools,['hammer']);
+ walkTo(s,4,5);s.facing='up';interact(map,s);
+ assert.equal(s.opened.includes('vault-wall'),true);
+ walkTo(s,4,3);s.facing='up';interact(map,s);
+ assert.deepEqual(s.items,['seal-crystal']);
+}
 function firstSeal(state){walk(state,'up',3);walk(state,'right',2);assert.equal(doorOpen(map,state,map.doors[0]),true);walk(state,'up');walk(state,'right',2);walk(state,'down');walk(state,'right',2);}
 test('full adventure can be completed using real movement and interactions',()=>{
  const s=createState(map);firstSeal(s);
  walk(s,'up',3);walk(s,'right');assert.deepEqual(interact(map,s),{type:'challenge',id:'archive'});
  s.attempts.archive=1;assert.equal(completeChallenge(map,s,'archive'),true);assert.equal(completeChallenge(map,s,'archive'),false);assert.equal(s.score,100);
- walk(s,'down',3);walk(s,'right',4);assert.equal(interact(map,s).type,'message');assert.equal(s.opened.includes('east'),true);assert.equal(s.keys.length,0);
+ collectVaultCrystal(s);walkTo(s,13,6);s.facing='right';assert.equal(interact(map,s).type,'message');assert.equal(s.opened.includes('east'),true);assert.equal(s.keys.length,0);
  walk(s,'right',2);walk(s,'up',3);assert.equal(move(map,s,'right'),false);interact(map,s);
  walk(s,'down',3);walk(s,'right',2);assert.equal(move(map,s,'right'),false);interact(map,s);
  walk(s,'left',2);walk(s,'up',3);assert.equal(move(map,s,'right'),false);interact(map,s);
@@ -29,7 +49,7 @@ test('question shuffling preserves correct-answer identity and source data',()=>
 });
 
 test('signal sequence rejects wrong order and does not open after only two signals',()=>{
- const s=createState(map);const exit=map.objects.find(o=>o.type==='exit');
+ const s=createState(map);s.items.push('seal-crystal');const exit=map.objects.find(o=>o.type==='exit');
  s.player={x:17,y:6};s.facing='right';interact(map,s);
  assert.equal(s.sequences.signals,0);
  s.player={x:15,y:3};s.facing='right';interact(map,s);
@@ -38,4 +58,25 @@ test('signal sequence rejects wrong order and does not open after only two signa
  s.player={x:15,y:3};interact(map,s);
  assert.equal(exitReady(map,s,exit),true);
  interact(map,s);assert.equal(s.sequences.signals,3);
+});
+
+test('hammer gate cannot be bypassed; collection and recovery preserve the tool and crystal',()=>{
+ const s=createState(map);
+ walk(s,'up',3);walk(s,'right',2);walk(s,'up');s.facing='up';
+ assert.equal(interact(map,s).type,'message');assert.equal(move(map,s,'up'),false);
+ assert.equal(s.opened.includes('vault-wall'),false);
+ walk(s,'right',2);walk(s,'down');walk(s,'right',2);
+ collectVaultCrystal(s);
+ const tools=s.tools.length,items=s.items.length;interact(map,s);
+ assert.equal(s.tools.length,tools);assert.equal(s.items.length,items);
+ resetPuzzle(map,s);
+ assert.deepEqual(s.tools,['hammer']);assert.deepEqual(s.items,['seal-crystal']);
+ assert.equal(doorOpen(map,s,map.doors.find(d=>d.id==='vault-wall')),true);
+ const fresh=createState(map);assert.equal(fresh.tools.length,0);assert.equal(fresh.items.length,0);
+});
+test('signals alone cannot win without the recovered seal crystal',()=>{
+ const s=createState(map);s.activated=['north-switch','south-switch'];s.sequences.signals=3;
+ const exit=map.objects.find(o=>o.type==='exit');assert.equal(exitReady(map,s,exit),false);
+ s.player={x:18,y:10};assert.equal(interact(map,s).type,'message');assert.equal(s.won,false);
+ s.items.push('seal-crystal');assert.equal(interact(map,s).type,'win');
 });

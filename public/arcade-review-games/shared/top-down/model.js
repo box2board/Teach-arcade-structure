@@ -1,7 +1,7 @@
 export const directions = { up: [0,-1], down: [0,1], left: [-1,0], right: [1,0] };
 const at = (a, b) => a.x === b.x && a.y === b.y;
 export function createState(map) {
-  return { player: { ...map.start }, facing: 'up', blocks: structuredClone(map.blocks), opened: [], activated: [], sequences: {}, keys: [], solved: [], attempts: {}, score: 0, won: false, moves: 0, history: [] };
+  return { player: { ...map.start }, facing: 'up', blocks: structuredClone(map.blocks), opened: [], activated: [], sequences: {}, tools: [], items: [], collected: [], keys: [], solved: [], attempts: {}, score: 0, won: false, moves: 0, history: [] };
 }
 export function doorOpen(map, state, door) {
   if (state.opened.includes(door.id)) return true;
@@ -11,7 +11,7 @@ export function doorOpen(map, state, door) {
 export function obstacle(map, state, pos) {
   if (!map.tiles[pos.y] || map.tiles[pos.y][pos.x] !== '.') return true;
   if (map.doors.some(d => at(d, pos) && !doorOpen(map,state,d))) return true;
-  return map.objects.some(o => at(o,pos) && o.type !== 'exit');
+  return map.objects.some(o => at(o,pos) && o.type !== 'exit' && !state.collected.includes(o.id));
 }
 export function move(map, state, direction) {
   if (state.won || !directions[direction]) return false;
@@ -37,17 +37,22 @@ export function undo(state) {
 }
 export function exitReady(map,state,exit) {
   const puzzle=(map.puzzles||[]).find(p=>p.id===exit.sequencePuzzle);
-  return (exit.requires||[]).every(id=>state.activated.includes(id)) &&
+  return (exit.requiredItems||[]).every(id=>state.items.includes(id)) && (exit.requires||[]).every(id=>state.activated.includes(id)) &&
     (!puzzle || state.sequences[puzzle.id]===puzzle.sequence.length);
 }
 export function interact(map,state) {
   if (state.won) return { type:'none' };
   const [dx,dy]=directions[state.facing];
   const front={x:state.player.x+dx,y:state.player.y+dy};
-  const object=map.objects.find(o=>at(o,state.player)&&o.type==='exit') || map.objects.find(o=>at(o,front));
+  const object=map.objects.find(o=>at(o,state.player)&&o.type==='exit') || map.objects.find(o=>at(o,front)&&!state.collected.includes(o.id));
   const door=map.doors.find(d=>at(d,front));
   if (door) {
     if (doorOpen(map,state,door)) return {type:'message',text:'The gate is open.'};
+    if (door.tool) {
+      if (!state.tools.includes(door.tool)) return {type:'message',text:'This cracked wall needs a hammer. Search the Archive, then return here.'};
+      state.opened.push(door.id);
+      return {type:'message',text:'The hammer breaks the cracked wall! The vault beyond is open. Your hammer stays in your inventory.'};
+    }
     if (door.key && state.keys.includes(door.key)) {
       state.opened.push(door.id); state.keys=state.keys.filter(k=>k!==door.key);
       return {type:'message',text:'Key used. The east gate is now open.'};
@@ -55,6 +60,14 @@ export function interact(map,state) {
     return {type:'message',text:door.plate?'Hold the amber floor switch down with the block.':'Find the archive key first.'};
   }
   if (!object) return {type:'message',text:'Face a sign, chest, switch, or gate and interact.'};
+  if (object.type==='tool' || object.type==='item') {
+    if(state.collected.includes(object.id))return {type:'none'};
+    state.collected.push(object.id);
+    const inventory=object.type==='tool'?state.tools:state.items;
+    const value=object.type==='tool'?object.tool:object.item;
+    if(!inventory.includes(value))inventory.push(value);
+    return {type:'message',text:object.text||`${object.label} collected.`};
+  }
   if (object.type==='sign') return {type:'message',text:object.text};
   if (object.type==='challenge') return state.solved.includes(object.id)?{type:'message',text:'This chest is empty. You already earned its key.'}:{type:'challenge',id:object.id};
   if (object.type==='lever') {
@@ -69,14 +82,14 @@ export function interact(map,state) {
       }
       state.sequences[puzzle.id]=progress+1;
       if(!state.activated.includes(object.id))state.activated.push(object.id);
-      return {type:'message',text:progress+1===puzzle.sequence.length?'Final seal opened! Head to the glowing exit.':`Correct signal: ${progress+1} / ${puzzle.sequence.length}. Continue the inscription sequence.`};
+      return {type:'message',text:progress+1===puzzle.sequence.length?'Signal sequence solved! Bring the seal crystal to the glowing exit.':`Correct signal: ${progress+1} / ${puzzle.sequence.length}. Continue the inscription sequence.`};
     }
     if (!state.activated.includes(object.id)) state.activated.push(object.id);
     return {type:'message',text:'Signal activated. Both blue signals open the final seal.'};
   }
   if (object.type==='exit') {
     if (exitReady(map,state,object)) { state.won=true; return {type:'win'}; }
-    return {type:'message',text:'The final seal is locked. Follow the inscription to complete the signal sequence.'};
+    return {type:'message',text:'The final seal needs the crystal from Switch Hall and the completed signal sequence.'};
   }
   return {type:'none'};
 }

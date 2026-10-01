@@ -2,3 +2,5 @@
 
 /* Room camera keeps unexplored rooms outside the viewport. */
 #board{max-width:360px;margin-inline:auto}#world{position:absolute;top:0;height:100%;overflow:hidden}.map-labels{display:block;font-size:.875rem;letter-spacing:.06em}.map-frame{padding-block-start:16px}#world .entity,#world #player{font-size:clamp(18px,4.8vw,28px)}
+
+.entity.tool span{color:#ffe7a9;border:2px solid #ffe7a9;background:#504535}.entity.item span{color:#b8a4ff;border:2px solid #b8a4ff;background:#342852;box-shadow:0 0 18px #b8a4ff44}.entity.door.cracked:not(.open) span{background:#796854;border-color:#b7a285;color:#f4d3a0}.entity.door.cracked:not(.open) span::after{content:'ϟ';position:absolute;color:#241c16;font-size:1.5em}.status-bar{flex-wrap:wrap}#inventory{font-size:.8125rem}
