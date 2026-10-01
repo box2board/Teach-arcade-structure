@@ -16,11 +16,11 @@ function walkTo(s,x,y) {
  throw Error('No walking route to '+x+','+y);
 }
 function collectVaultCrystal(s) {
- walkTo(s,11,9);s.facing='right';interact(map,s);
+ walkTo(s,12,9);
  assert.deepEqual(s.tools,['hammer']);
  walkTo(s,4,5);s.facing='up';interact(map,s);
  assert.equal(s.opened.includes('vault-wall'),true);
- walkTo(s,4,3);s.facing='up';interact(map,s);
+ walkTo(s,4,2);
  assert.deepEqual(s.items,['seal-crystal']);
 }
 function firstSeal(state){walk(state,'up',3);walk(state,'right',2);assert.equal(doorOpen(map,state,map.doors[0]),true);walk(state,'up');walk(state,'right',2);walk(state,'down');walk(state,'right',2);}
@@ -91,4 +91,25 @@ test('door light feedback follows progress and clears all lights after a mistake
  assert.equal(s.sequences.signals,2);
  s.player={x:15,y:3};result=interact(map,s);assert.match(result.text,/exit is unlocked/);
  assert.equal(exitReady(map,s,map.objects.find(o=>o.type==='exit')),true);
+});
+
+test('loose pickups collect only on contact, once, and stay collected after undo',()=>{
+ const s=createState(map);firstSeal(s);walkTo(s,11,9);s.facing='right';
+ assert.match(interact(map,s).text,/Walk over/);assert.deepEqual(s.tools,[]);
+ walk(s,'right');assert.deepEqual(s.tools,['hammer']);assert.ok(s.collected.includes('hammer-pickup'));
+ undo(s);assert.deepEqual(s.player,{x:11,y:9});assert.deepEqual(s.tools,['hammer']);
+ walk(s,'right');assert.equal(s.tools.length,1);assert.equal(s.collected.filter(id=>id==='hammer-pickup').length,1);
+});
+test('loose keys collect on contact while chests and switches require interaction',()=>{
+ const custom=structuredClone(map);custom.objects.push({id:'loose-key',type:'key',key:'bonus',x:3,y:9,label:'Bonus key'});
+ const s=createState(custom);assert.equal(move(custom,s,'right'),true);assert.deepEqual(s.keys,['bonus']);
+ s.player={x:9,y:3};s.facing='right';assert.equal(move(custom,s,'right'),false);assert.deepEqual(s.solved,[]);
+ assert.equal(interact(custom,s).type,'challenge');
+ s.player={x:15,y:3};s.facing='right';assert.equal(move(custom,s,'right'),false);assert.equal(s.sequences.signals,undefined);
+ assert.equal(interact(custom,s).tone,'correct');
+});
+test('pushing a block cannot bury an uncollected pickup',()=>{
+ const custom=structuredClone(map);custom.objects.push({id:'loose-crystal',type:'item',item:'extra',x:4,y:6});
+ const s=createState(custom);s.player={x:2,y:6};assert.equal(move(custom,s,'right'),false);
+ assert.deepEqual(s.items,[]);assert.equal(s.blocks[0].x,3);
 });

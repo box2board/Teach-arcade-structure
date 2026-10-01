@@ -14,3 +14,9 @@
 .door-lights b{display:grid;place-items:center;width:12px;height:12px;font-size:9px;line-height:1;background:#27384b;border:1px solid #8da1b5;border-radius:50%;color:#b0c0d4}
 .door-lights b.lit{background:var(--cyan);border-color:var(--cyan);color:#0b1220;box-shadow:0 0 6px #66dcf4}
 #message[data-tone="wrong"]{color:#ffb3a5}#message[data-tone="correct"]{color:#8dffbd}
+
+.pickup-effect{position:absolute;width:var(--cell);height:7.692308%;display:grid;place-items:center;pointer-events:none;z-index:3;color:#ffe7a9;font-size:28px;text-shadow:0 0 12px #ffe7a9;animation:pickup-rise .65s ease-out forwards}
+@keyframes pickup-rise{0%{opacity:1;transform:scale(1)}35%{opacity:1;transform:translateY(-25%) scale(1.4)}100%{opacity:0;transform:translateY(-85%) scale(1.6)}}
+.pickup-flash{animation:inventory-pickup .7s ease-out}
+@keyframes inventory-pickup{0%,45%{color:#ffe7a9;text-shadow:0 0 10px #ffe7a9}100%{text-shadow:none}}
+@media(prefers-reduced-motion:reduce){.pickup-effect{animation:none}.pickup-flash{animation:none;color:#ffe7a9}}
