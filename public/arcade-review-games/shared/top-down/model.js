@@ -100,7 +100,7 @@ export function interact(map,state) {
   if (!object) return {type:'message',text:'Face a sign, chest, switch, or gate and interact.'};
   if (isPickup(object)) return {type:'message',text:`Walk over ${object.label||'the item'} to collect it.`};
   if (object.type==='sign') return {type:'message',text:object.text};
-  if (object.type==='challenge') return state.solved.includes(object.id)?{type:'message',text:'This chest is empty. You already earned its key.'}:{type:'challenge',id:object.id};
+  if (object.type==='challenge') return state.solved.includes(object.id)?{type:'message',text:'This chest is complete. Its reward has already been earned.'}:{type:'challenge',id:object.id};
   if (object.type==='lever') {
     const puzzle=(map.puzzles||[]).find(p=>p.sequence.includes(object.id));
     if (puzzle) {
@@ -113,22 +113,28 @@ export function interact(map,state) {
       }
       state.sequences[puzzle.id]=progress+1;
       if(!state.activated.includes(object.id))state.activated.push(object.id);
-      return {type:'message',tone:'correct',text:progress+1===puzzle.sequence.length?(state.items.includes('seal-crystal')?'All three door lights are on! The exit is unlocked. Walk to it and interact.':'All three door lights are on! Return to Switch Hall for the seal crystal to unlock the exit.'):`Door light ${progress+1} of ${puzzle.sequence.length} powered. Next: ${map.objects.find(o=>o.id===puzzle.sequence[progress+1])?.label||'read the inscription'}.`};
+      return {type:'message',tone:'correct',text:progress+1===puzzle.sequence.length?(exitReady(map,state,map.objects.find(o=>o.type==='exit'&&o.sequencePuzzle===puzzle.id))?'All three door lights are on! The exit is unlocked. Walk to it and interact.':'All three door lights are on! Earn the missing supplies before using the exit.'):`Door light ${progress+1} of ${puzzle.sequence.length} powered. Next: ${map.objects.find(o=>o.id===puzzle.sequence[progress+1])?.label||'read the inscription'}.`};
     }
     if (!state.activated.includes(object.id)) state.activated.push(object.id);
     return {type:'message',text:'Signal activated. Both blue signals open the final seal.'};
   }
   if (object.type==='exit') {
     if (exitReady(map,state,object)) { state.won=true; return {type:'win'}; }
-    return {type:'message',text:!state.items.includes('seal-crystal')?'Exit locked: recover the seal crystal behind the cracked wall in Switch Hall.':'Exit locked: power all three door lights. Follow TOP → BOTTOM → TOP.'};
+    return {type:'message',text:(object.requiredItems||[]).some(id=>!state.items.includes(id))?'Exit locked: earn the missing supplies. Check your inventory and the reward chests.':'Exit locked: power all three door lights. Follow TOP → BOTTOM → TOP.'};
   }
   return {type:'none'};
 }
 export function completeChallenge(map,state,id) {
   const object=map.objects.find(o=>o.id===id&&o.type==='challenge');
   if (!object || state.solved.includes(id)) return false;
-  state.solved.push(id); state.keys.push(object.key);
-  state.score+=(state.attempts[id]===1?100:50);
+  const encounter=state.review?.encounters[id];
+  if((state.review&&!encounter)||(encounter&&encounter.index!==encounter.questions.length))return false;
+  if((object.questionCount||1)>1&&!encounter)return false;
+  const reward=object.reward||{type:'key',value:object.key};
+  const inventory=reward.type==='tool'?state.tools:reward.type==='item'?state.items:state.keys;
+  if(!inventory.includes(reward.value))inventory.push(reward.value);
+  state.solved.push(id);
+  state.score+=encounter?encounter.questions.reduce((n,e)=>n+(e.attempts===1?100:50),0):(state.attempts[id]===1?100:50);
   return true;
 }
 export function resetPuzzle(map,state) {

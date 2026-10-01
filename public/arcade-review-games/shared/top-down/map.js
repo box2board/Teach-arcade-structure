@@ -68,3 +68,19 @@ export const adventure = {
     { name: '03 · Signal Chamber', theme:'signals', min: 15, max: 19, viewMin: 14, viewMax: 20, objective: 'Bring the seal crystal from Switch Hall, then solve the inscription.' }
   ]
 };
+
+export function createAdventure(mode='easy'){
+  const map=structuredClone(adventure);map.mode=mode==='medium'?'medium':'easy';
+  if(map.mode==='easy')return map;
+  const hammer=map.objects.find(o=>o.id==='hammer-pickup');
+  Object.assign(hammer,{type:'challenge',label:'Workshop chest',questionCount:2,reward:{type:'tool',value:'hammer',label:'Hammer',message:'Hammer earned! Return to Switch Hall and break the cracked wall.'}});
+  const archive=map.objects.find(o=>o.id==='archive');
+  Object.assign(archive,{label:'Archive chest',questionCount:3,reward:{type:'key',value:'archive',label:'Archive key',message:'Archive key earned! Walk into the east gate to unlock it.'}});
+  const crystal=map.objects.find(o=>o.id==='seal-crystal');
+  Object.assign(crystal,{type:'challenge',label:'Vault chest',questionCount:2,reward:{type:'item',value:'seal-crystal',label:'Seal crystal',message:'Seal crystal earned! Carry it to the Signal Chamber.'}});
+  map.objects.push({id:'power-chest',type:'challenge',x:18,y:2,label:'Power chest',questionCount:3,reward:{type:'item',value:'power-cell',label:'Power cell',message:'Power cell earned! Complete the signal sequence to open the exit.'}});
+  map.objects.find(o=>o.id==='chamber-sign').text+=' The Power chest in this chamber earns the power cell for the exit.';
+  map.inventory.push({id:'power-cell',type:'item',value:'power-cell',label:'Power cell',icon:'◆'});
+  map.objects.find(o=>o.type==='exit').requiredItems.push('power-cell');
+  return map;
+}
