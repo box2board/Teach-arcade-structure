@@ -1,0 +1,1 @@
+window.TA_V12_TEST_THEME={name:'V1.2 Mechanics Playground',labels:{goal:'test flag'}};
