@@ -1,5 +1,6 @@
 import * as THREE from '/assets/vendor/three-0.162.0/three.module.js';
 import { segmentSphereHit } from './collision.js?v=2';
+import { UPGRADE_RULES, freshUpgrades, grantTokens, canBuy, buyUpgrade } from './upgrades.js?v=3';
 
 const $ = id => document.getElementById(id);
 const canvas = $('scene'), stage = $('stage');
@@ -55,9 +56,12 @@ for(const ex of [-.15,.15])mesh(sphere,'#27415c',ex,1.6,.39,.065,.065,.065,root)
 const nose=mesh(cone,'#ee994c',0,1.47,.5,.095,.32,.095,root);nose.rotation.x=Math.PI/2;
 const hands=[mesh(sphere,hat,-.73,.93,0,.16,.16,.16,root),mesh(sphere,hat,.73,.93,0,.16,.16,.16,root)];
 const maxHp=[2,1,5][type], pips=[];
+const slowRing=new THREE.Mesh(new THREE.TorusGeometry(.8,.045,5,20),mat('#70cee1'));slowRing.rotation.x=Math.PI/2;slowRing.position.y=.06;slowRing.visible=false;root.add(slowRing);
 for(let i=0;i<maxHp;i++)pips.push(mesh(sphere,hat,(i-(maxHp-1)/2)*.2,2.55,0,.07,.07,.07,root));
 root.scale.setScalar(size);root.position.set(x,0,z);
-return {root,body,pips,type,x,z,size,hands,hp:maxHp,maxHp,hitTime:0,speed:[1.7,2.8,1.15][type],radius:.65*size,phase:Math.random()*6};}
+return {root,body,pips,slowRing,slowTime:0,type,x,z,size,hands,hp:maxHp,maxHp,hitTime:0,speed:[1.7,2.8,1.15][type],radius:.65*size,phase:Math.random()*6};}
+let upgrades=freshUpgrades(), volley=0, splashes=[], splashHits=0, stickyHits=0;
+const splashGeo=new THREE.RingGeometry(.85,1,32), splashMaterial=new THREE.MeshBasicMaterial({color:0x72cbe6,side:THREE.DoubleSide,transparent:true,opacity:.65});
 let mode='ready', wave=1, fort=100, cleared=0, spawned=0, waveTime=0, spawnClock=0, tossClock=0, elapsed=0;
 let enemies=[], balls=[], flakes=[], piles=[], tumbles=[], hits=0, defeatedByType=[0,0,0], moveLeft=false,moveRight=false,drag=false,targetX=null;
 const waves=[{count:16,interval:.95},{count:23,interval:.7},{count:30,interval:.57}];
@@ -71,11 +75,38 @@ function snowPile(e){
  mesh(box,['#8f7fc0','#52a995','#ec9e55'][e.type],-.15,.25,0,.5*e.size,.1,.4*e.size,g);
  piles.push({root:g,life:5});
 }
+function updateShop(){
+ $('tokens').textContent=upgrades.tokens;
+ for(const id of Object.keys(UPGRADE_RULES)){
+  const b=$(`upgrade-${id}`),owned=id!=='repair'&&upgrades[id];
+  b.disabled=mode!=='between'||!canBuy(upgrades,id,fort);b.dataset.owned=String(!!owned);
+  b.querySelector('strong').textContent=owned?`${UPGRADE_RULES[id].label} · Equipped`:`${UPGRADE_RULES[id].label} · ${UPGRADE_RULES[id].cost} ${UPGRADE_RULES[id].cost===1?'token':'tokens'}`;
+ }
+ const gear=['double','sticky','powder'].filter(id=>upgrades[id]).map(id=>UPGRADE_RULES[id].label);
+ $('gear').textContent=`Active upgrades: ${gear.length?gear.join(' · '):'none yet'}`;
+}
+for(const id of Object.keys(UPGRADE_RULES))$(`upgrade-${id}`).addEventListener('click',()=>{
+ if(mode!=='between')return;
+ const result=buyUpgrade(upgrades,id,fort);if(!result.purchased)return;
+ fort=result.fort;fortGroup.scale.y=.4+.6*fort/100;hud();updateShop();
+ $('shop-feedback').textContent=id==='repair'?`Fort repaired to ${fort}%.`:`${UPGRADE_RULES[id].label} equipped for the rest of this run.`;
+});
+function damageCreature(e){
+ if(!enemies.includes(e))return;
+ e.hp--;hits++;e.hitTime=.18;e.z-=.35;e.pips.forEach((p,j)=>p.visible=j<e.hp);
+ if(upgrades.sticky){e.slowTime=2.4;e.slowRing.visible=true;stickyHits++;}
+ burst(e.x,e.z);
+ if(e.hp<=0){snowPile(e);tumbles.push({root:e.root,life:.4,size:e.size});enemies.splice(enemies.indexOf(e),1);cleared++;defeatedByType[e.type]++;hud();$('status').textContent=`Snow creature cleared! ${cleared} snow piles.`;}
+}
+function powderSplash(x,z,victim){
+ const ring=new THREE.Mesh(splashGeo,splashMaterial);ring.rotation.x=-Math.PI/2;ring.position.set(x,.08,z);scene.add(ring);splashes.push({mesh:ring,life:.5});
+ for(const e of [...enemies])if(e!==victim&&Math.hypot(e.x-x,e.z-z)<=2.6){damageCreature(e);e.z-=.7;splashHits++;}
+}
 function hud(){ $('fort-text').textContent=`${fort}%`;$('fort').value=fort;$('wave').textContent=`${wave} / 3`;$('cleared').textContent=cleared; }
-function overlay(title,message,label,eyebrow){$('overlay').hidden=false;$('title').textContent=title;$('message').textContent=message;$('start').textContent=label;$('eyebrow').textContent=eyebrow;}
+function overlay(title,message,label,eyebrow){$('shop').hidden=mode!=='between';$('overlay').hidden=false;$('title').textContent=title;$('message').textContent=message;$('start').textContent=label;$('eyebrow').textContent=eyebrow;}
 function clearInputs(){moveLeft=moveRight=drag=false;targetX=null;}
-function reset(){[...enemies,...balls,...flakes,...piles,...tumbles].forEach(disposeEntity);enemies=[];balls=[];flakes=[];piles=[];tumbles=[];hits=0;defeatedByType=[0,0,0];fort=100;cleared=0;wave=1;spawned=0;waveTime=spawnClock=tossClock=0;$('tip').hidden=false;player.position.x=0;clearInputs();fortGroup.scale.y=1;hud();}
-function begin(){mode='playing';$('overlay').hidden=true;$('pause').disabled=false;$('pause').textContent='Pause';$('status').textContent=`Wave ${wave}: protect your fort!`;canvas.focus({preventScroll:true});}
+function reset(){[...enemies,...balls,...flakes,...piles,...tumbles,...splashes].forEach(disposeEntity);enemies=[];balls=[];flakes=[];piles=[];tumbles=[];splashes=[];upgrades=freshUpgrades();volley=splashHits=stickyHits=0;hits=0;defeatedByType=[0,0,0];fort=100;cleared=0;wave=1;spawned=0;waveTime=spawnClock=tossClock=0;$('tip').hidden=false;player.position.x=0;clearInputs();fortGroup.scale.y=1;hud();updateShop();}
+function begin(){mode='playing';$('overlay').hidden=true;$('shop').hidden=true;$('pause').disabled=false;$('pause').textContent='Pause';$('status').textContent=`Wave ${wave}: protect your fort!`;canvas.focus({preventScroll:true});}
 function finish(won){mode=won?'won':'lost';clearInputs();$('pause').disabled=true;overlay(won?'Snow day saved!':'Time to rebuild!',`You turned ${cleared} creatures into snow piles. ${won?`Your fort finished at ${fort}% strength.`:'Try lining up with the leading creatures before they reach the fort.'}`,'Play again',won?'FORT PROTECTED':'A FRESH START');$('status').textContent=won?'All three waves complete.':'The snow fort tumbled. Try again!';}
 $('start').addEventListener('click',()=>{if(mode==='paused')begin();else if(mode==='between'){wave++;spawned=0;spawnClock=waveTime=0;hud();begin();}else{reset();begin();}});
 $('restart').addEventListener('click',()=>{reset();begin();});
@@ -100,11 +131,15 @@ if(mode==='playing'){
  if(tossClock>=.22){
   tossClock=0;
   // Gentle aim assistance within the player's lane. Movement still selects the crowd.
-  const target=enemies.filter(e=>e.z<4.7&&Math.abs(e.x-player.position.x)<=2.4).sort((a,b)=>b.z-a.z)[0]||null;
-  const m=mesh(ballGeo,'#ffffff',player.position.x,1.1,4.7);
-  const velocity=new THREE.Vector3(0,0,-1);
-  if(target)velocity.set(target.x-m.position.x,target.root.position.y+.7*target.size-m.position.y,target.z-m.position.z).normalize();
-  balls.push({mesh:m,target,velocity,life:0});
+  const targets=enemies.filter(e=>e.z<4.7&&Math.abs(e.x-player.position.x)<=2.4).sort((a,b)=>b.z-a.z);
+  volley++;
+  for(let shot=0;shot<(upgrades.double?2:1);shot++){
+   const target=targets[shot]||targets[0]||null,powder=upgrades.powder&&volley%4===0&&shot===0;
+   const m=mesh(ballGeo,powder?'#83d9ed':upgrades.sticky?'#b2eddd':'#ffffff',player.position.x+(upgrades.double?(shot===0?-.24:.24):0),1.1,4.7);
+   const velocity=new THREE.Vector3(0,0,-1);
+   if(target)velocity.set(target.x-m.position.x,target.root.position.y+.7*target.size-m.position.y,target.z-m.position.z).normalize();
+   balls.push({mesh:m,target,velocity,powder,life:0});
+  }
  }
  arms[1].rotation.x=Math.sin(tossClock/.22*Math.PI)*-.8;
  for(let i=balls.length-1;i>=0;i--){
@@ -117,19 +152,16 @@ if(mode==='playing'){
    if(contact!==null&&contact<first){first=contact;victim=e;}
   }
   if(victim){
-   const e=victim;e.hp--;hits++;e.hitTime=.18;e.z-=.35;e.pips.forEach((p,j)=>p.visible=j<e.hp);
-   burst(e.x,e.z);disposeEntity(b);balls.splice(i,1);
-   if(e.hp<=0){
-    snowPile(e);tumbles.push({root:e.root,life:.4,size:e.size});enemies.splice(enemies.indexOf(e),1);
-    cleared++;defeatedByType[e.type]++;hud();$('status').textContent=`Snow creature cleared! ${cleared} snow piles.`;
-   }
+   const x=victim.x,z=victim.z;damageCreature(victim);disposeEntity(b);balls.splice(i,1);
+   if(b.powder)powderSplash(x,z,victim);
   }else{b.mesh.position.copy(end);if(end.z<-40||b.life>2){disposeEntity(b);balls.splice(i,1);}}
  }
- for(let i=enemies.length-1;i>=0;i--){const e=enemies[i];e.hitTime=Math.max(0,e.hitTime-dt);e.body.scale.set(.66*(e.hitTime?1.18:1),.72*(e.hitTime?.86:1),.62);e.z+=e.speed*dt*(1+(wave-1)*.12);e.root.position.set(e.x,Math.abs(Math.sin(elapsed*4+e.phase))*.12,e.z);e.root.rotation.z=Math.sin(elapsed*3+e.phase)*.055;e.hands.forEach((h,j)=>h.position.y=.93+Math.sin(elapsed*5+e.phase+j*Math.PI)*.13);if(e.z>7.9){burst(e.x,8);disposeEntity(e);enemies.splice(i,1);fort=Math.max(0,fort-[8,5,16][e.type]);fortGroup.scale.y=.4+.6*fort/100;hud();if(fort===0){finish(false);break;}}}
- if(mode==='playing'&&spawned===cfg.count&&enemies.length===0){balls.forEach(disposeEntity);balls=[];if(wave===3)finish(true);else{mode='between';clearInputs();$('pause').disabled=true;overlay(`Wave ${wave} cleared!`,`Fort strength: ${fort}%. Next up: ${wave===1?'quicker snow creatures':'a bigger crowd and chunky snow giants'}.`,'Start next wave','NICE TOSSING');$('status').textContent='Take a breather. Start the next wave when ready.';}}
+ for(let i=enemies.length-1;i>=0;i--){const e=enemies[i];e.slowTime=Math.max(0,e.slowTime-dt);e.slowRing.visible=e.slowTime>0;e.hitTime=Math.max(0,e.hitTime-dt);e.body.scale.set(.66*(e.hitTime?1.18:1),.72*(e.hitTime?.86:1),.62);e.z+=e.speed*dt*(1+(wave-1)*.12)*(e.slowTime>0?.55:1);e.root.position.set(e.x,Math.abs(Math.sin(elapsed*4+e.phase))*.12,e.z);e.root.rotation.z=Math.sin(elapsed*3+e.phase)*.055;e.hands.forEach((h,j)=>h.position.y=.93+Math.sin(elapsed*5+e.phase+j*Math.PI)*.13);if(e.z>7.9){burst(e.x,8);disposeEntity(e);enemies.splice(i,1);fort=Math.max(0,fort-[8,5,16][e.type]);fortGroup.scale.y=.4+.6*fort/100;hud();if(fort===0){finish(false);break;}}}
+ if(mode==='playing'&&spawned===cfg.count&&enemies.length===0){balls.forEach(disposeEntity);balls=[];if(wave===3)finish(true);else{mode='between';grantTokens(upgrades,3);updateShop();$('shop-feedback').textContent='Pick an upgrade or save your tokens for the next break.';clearInputs();$('pause').disabled=true;overlay(`Wave ${wave} cleared!`,`Fort strength: ${fort}%. Next up: ${wave===1?'quicker snow creatures':'a bigger crowd and chunky snow giants'}.`,'Start next wave','UPGRADE BREAK');$('status').textContent='Take a breather. Start the next wave when ready.';}}
  $('tip').hidden=waveTime>8;
 }
 if(mode!=='paused'){
+ for(let i=splashes.length-1;i>=0;i--){const p=splashes[i];p.life-=dt;p.mesh.scale.setScalar(.3+(1-p.life/.5)*2.3);if(p.life<=0){disposeEntity(p);splashes.splice(i,1);}}
  for(let i=tumbles.length-1;i>=0;i--){const e=tumbles[i];e.life-=dt;e.root.rotation.x+=(Math.PI/2)*dt/.4;e.root.scale.setScalar(e.size*Math.max(.01,e.life/.4));if(e.life<=0){disposeEntity(e);tumbles.splice(i,1);}}
  for(let i=piles.length-1;i>=0;i--){const p=piles[i];p.life-=dt;p.root.scale.setScalar(Math.min(1,Math.max(.01,p.life)));if(p.life<=0){disposeEntity(p);piles.splice(i,1);}}
 }
@@ -137,5 +169,5 @@ if(mode!=='paused')for(let i=flakes.length-1;i>=0;i--){const p=flakes[i];p.life-
 }
 let last=performance.now();function frame(now){const dt=Math.min((now-last)/1000,.05);last=now;tick(dt);renderer.render(scene,camera);requestAnimationFrame(frame);}requestAnimationFrame(frame);
 // Read-only diagnostics for playtest verification; no gameplay bypasses.
-window.snowDayState=()=>({mode,wave,fort,cleared,spawned,enemies:enemies.length,balls:balls.length,playerX:player.position.x,hits,defeatedByType:[...defeatedByType],piles:piles.length});
+window.snowDayState=()=>({mode,wave,fort,cleared,spawned,enemies:enemies.length,balls:balls.length,playerX:player.position.x,hits,defeatedByType:[...defeatedByType],piles:piles.length,upgrades:{...upgrades},volley,splashHits,stickyHits});
 canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();pause();$('title').textContent='3D graphics paused';$('message').textContent='The browser interrupted 3D graphics. Reload this page to start a fresh snow day.';$('start').disabled=true;$('restart').disabled=true;});
