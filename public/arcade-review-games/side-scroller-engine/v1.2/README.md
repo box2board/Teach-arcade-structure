@@ -1,31 +1,49 @@
 # Teach Arcade Side-Scroller Engine V1.2 Candidate
 
-Version: **1.2.0-alpha.1**  
+Version: **1.2.0-alpha.2**  
 Status: **Candidate — do not migrate production games yet**
 
-V1.2 evolves the side-scroller from a reusable rectangular-platform engine into a mechanic-capable platformer foundation.
+V1.2 is becoming a mechanic library rather than a single platforming formula. V1.1 remains the stable engine for approved games.
 
-## New candidate mechanics
+## Candidate mechanic library
 
 ### True sloped terrain
 Levels may define `slopes` with `x1, y1, x2, y2`.
-- Player feet follow the interpolated surface instead of a rectangular approximation.
-- Flat-to-slope and slope-to-flat transitions are supported.
-- Downhill grade adds modest momentum; uphill travel resists it naturally.
-- Ground-patrol movers can follow supported slope surfaces.
-- Gameplay and visual QA validate slope length, bounds, and excessive grade.
+- Smooth uphill/downhill player movement.
+- Flat-to-slope transitions.
+- Grade-based momentum.
+- Ground enemies can patrol supported slopes.
+- QA checks bounds and excessive grade.
 
 ### Enemy interaction types
 Movers may define `interaction`.
-- `stompable`: landing from above eliminates the enemy, awards score, and bounces the player upward.
+- `stompable`: landing from above defeats the enemy and bounces the player.
 - `hazard`: contact from any direction respawns the player.
-- `bounce`: retained for spring/bounce objects.
-- A stompable enemy is still dangerous from the side.
+- `bounce`: retained for moving bounce objects.
+- Side contact with a stompable enemy is still dangerous.
 
-This is intentionally data-driven so each game can choose which enemies can be defeated.
+### Breakable objects
+Levels may define `breakables`.
+- Current break mode is `headbutt`.
+- A sufficiently fast upward hit breaks the object, awards a small score bonus, and removes its collision.
+- Breakables can be used for hidden routes, shortcuts, gates, or optional collectibles.
+
+### Bounce / spring surfaces
+Levels may define `bounceSurfaces`.
+- Landing on one immediately launches the player upward.
+- Bounce strength is configurable per surface.
+- These can support vertical routes, timing sections, and alternate traversal.
+
+### Climbable / ladder zones
+Levels may define `climbables`.
+- Up/Down enters and traverses the climbable.
+- Gravity is suspended while climbing.
+- The player centers on the climbable automatically.
+- Space jumps off; Left/Right controls jump-off direction.
+- A climbable can lead to upper routes without requiring a sequence of normal platforms.
 
 ## Compatibility
-V1.1 remains the stable production engine. V1.2 is isolated in its own directory and should be tested in the mechanics playground before any existing game migrates.
+Do not migrate V1.1 production games simply because V1.2 exists. Engine generations may coexist. Existing approved games should move only for a genuine shared bug or a deliberate redesign.
 
-## Next mechanic-library candidates
-Pits and rectangular platforms remain available. Future opt-in mechanics can include climbables, breakables, conveyors, switches/doors, water, vehicles, and other game-specific systems without forcing every game to use the same level formula.
+## Design rule
+New games should select mechanics because they fit the concept. A game does not need to use every mechanic. Reuse the engine and mechanic library — not the same level structure.
