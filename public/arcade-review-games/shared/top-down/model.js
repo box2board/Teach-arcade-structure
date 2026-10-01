@@ -11,7 +11,7 @@ function collectAtPlayer(map,state) {
   }
 }
 export function createState(map) {
-  return { player: { ...map.start }, facing: 'up', blocks: structuredClone(map.blocks), opened: [], activated: [], sequences: {}, tools: [], items: [], collected: [], keys: [], usedKeys: [], moveFeedback: null, solved: [], attempts: {}, score: 0, won: false, moves: 0, history: [] };
+  return { player: { ...map.start }, facing: 'up', blocks: structuredClone(map.blocks), opened: [], activated: [], sequences: {}, discovered: [], tools: [], items: [], collected: [], keys: [], usedKeys: [], moveFeedback: null, solved: [], attempts: {}, score: 0, won: false, moves: 0, history: [] };
 }
 export function doorOpen(map, state, door) {
   if (state.opened.includes(door.id)) return true;
@@ -54,7 +54,7 @@ export function move(map, state, direction) {
   const lockedDoor=map.doors.find(d=>at(d,next)&&!doorOpen(map,state,d));
   const canUnlock=lockedDoor&&((lockedDoor.key&&state.keys.includes(lockedDoor.key))||(lockedDoor.tool&&state.tools.includes(lockedDoor.tool)));
   if (obstacle(map,state,next,canUnlock?lockedDoor.id:null)) {
-    if(lockedDoor)state.moveFeedback={text:lockedDoor.key?'Archive key required. Open the chest in the Archive.':lockedDoor.tool?'Hammer required. Find it in the Archive.':'Hold the amber floor switch down with the block.',tone:'neutral'};
+    if(lockedDoor)state.moveFeedback={text:lockedDoor.key?'Archive key required. Open the chest in the Archive.':lockedDoor.tool?(map.mode==='medium'?'Hammer required. Earn it in the Workshop south of the Archive.':'Hammer required. Find it in the Archive.'):'Hold the amber floor switch down with the block.',tone:'neutral'};
     return false;
   }
   const block = state.blocks.find(b => at(b,next));
@@ -78,7 +78,7 @@ export function undo(state) {
 export function exitReady(map,state,exit) {
   const puzzle=(map.puzzles||[]).find(p=>p.id===exit.sequencePuzzle);
   return (exit.requiredItems||[]).every(id=>state.items.includes(id)) && (exit.requires||[]).every(id=>state.activated.includes(id)) &&
-    (!puzzle || state.sequences[puzzle.id]===puzzle.sequence.length);
+    (!puzzle || ((!puzzle.requiredClue || state.discovered.includes(puzzle.requiredClue)) && state.sequences[puzzle.id]===puzzle.sequence.length));
 }
 export function interact(map,state) {
   if (state.won) return { type:'none' };
@@ -89,7 +89,7 @@ export function interact(map,state) {
   if (door) {
     if (doorOpen(map,state,door)) return {type:'message',text:'The gate is open.'};
     if (door.tool) {
-      if (!state.tools.includes(door.tool)) return {type:'message',text:'This cracked wall needs a hammer. Search the Archive, then return here.'};
+      if (!state.tools.includes(door.tool)) return {type:'message',text:map.mode==='medium'?'This cracked wall needs a hammer. Earn it in the Workshop south of the Archive.':'This cracked wall needs a hammer. Search the Archive, then return here.'};
       return {type:'message',...openWithInventory(state,door)};
     }
     if (door.key && state.keys.includes(door.key)) {
@@ -99,28 +99,33 @@ export function interact(map,state) {
   }
   if (!object) return {type:'message',text:'Face a sign, chest, switch, or gate and interact.'};
   if (isPickup(object)) return {type:'message',text:`Walk over ${object.label||'the item'} to collect it.`};
-  if (object.type==='sign') return {type:'message',text:object.text};
+  if (object.type==='sign') {
+    if(object.requiresTool&&!state.tools.includes(object.requiresTool))return {type:'message',text:object.lockedText||'A tool is needed to read this inscription.'};
+    if(object.clue&&!state.discovered.includes(object.clue))state.discovered.push(object.clue);
+    return {type:'message',text:object.text};
+  }
   if (object.type==='challenge') return state.solved.includes(object.id)?{type:'message',text:'This chest is complete. Its reward has already been earned.'}:{type:'challenge',id:object.id};
   if (object.type==='lever') {
     const puzzle=(map.puzzles||[]).find(p=>p.sequence.includes(object.id));
     if (puzzle) {
+      if(puzzle.requiredClue&&!state.discovered.includes(puzzle.requiredClue))return {type:'message',text:'The switches need their code. Use your lantern to read the faded inscription in the Hidden Library.'};
       const progress=state.sequences[puzzle.id]||0;
       if(progress===puzzle.sequence.length) return {type:'message',text:'The signal puzzle is already solved. Head to the exit.'};
       if(object.id!==puzzle.sequence[progress]) {
         state.sequences[puzzle.id]=0;
         state.activated=state.activated.filter(id=>!puzzle.sequence.includes(id));
-        return {type:'message',tone:'wrong',text:'Wrong switch — all three door lights reset. Start again with TOP → BOTTOM → TOP.'};
+        return {type:'message',tone:'wrong',text:puzzle.requiredClue?'Wrong switch — all door lights reset. Follow the code in your journal or read the inscription again.':'Wrong switch — all three door lights reset. Start again with TOP → BOTTOM → TOP.'};
       }
       state.sequences[puzzle.id]=progress+1;
       if(!state.activated.includes(object.id))state.activated.push(object.id);
-      return {type:'message',tone:'correct',text:progress+1===puzzle.sequence.length?(exitReady(map,state,map.objects.find(o=>o.type==='exit'&&o.sequencePuzzle===puzzle.id))?'All three door lights are on! The exit is unlocked. Walk to it and interact.':'All three door lights are on! Earn the missing supplies before using the exit.'):`Door light ${progress+1} of ${puzzle.sequence.length} powered. Next: ${map.objects.find(o=>o.id===puzzle.sequence[progress+1])?.label||'read the inscription'}.`};
+      return {type:'message',tone:'correct',text:progress+1===puzzle.sequence.length?(exitReady(map,state,map.objects.find(o=>o.type==='exit'&&o.sequencePuzzle===puzzle.id))?'All door lights are on! The exit is unlocked. Walk to it and interact.':'All door lights are on! Earn the missing supplies before using the exit.'):`Door light ${progress+1} of ${puzzle.sequence.length} powered. Next: ${map.objects.find(o=>o.id===puzzle.sequence[progress+1])?.label||'read the inscription'}.`};
     }
     if (!state.activated.includes(object.id)) state.activated.push(object.id);
     return {type:'message',text:'Signal activated. Both blue signals open the final seal.'};
   }
   if (object.type==='exit') {
     if (exitReady(map,state,object)) { state.won=true; return {type:'win'}; }
-    return {type:'message',text:(object.requiredItems||[]).some(id=>!state.items.includes(id))?'Exit locked: earn the missing supplies. Check your inventory and the reward chests.':'Exit locked: power all three door lights. Follow TOP → BOTTOM → TOP.'};
+    return {type:'message',text:(object.requiredItems||[]).some(id=>!state.items.includes(id))?'Exit locked: earn the missing supplies. Check your inventory and the reward chests.':'Exit locked: find the signal code and power every door light. Read the inscription or check your journal.'};
   }
   return {type:'none'};
 }
@@ -146,3 +151,4 @@ export function shuffle(items, random=Math.random) {
   for(let i=result.length-1;i>0;i--) { const j=Math.floor(random()*(i+1)); [result[i],result[j]]=[result[j],result[i]]; }
   return result;
 }
+

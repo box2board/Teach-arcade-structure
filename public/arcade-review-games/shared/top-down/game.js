@@ -18,6 +18,8 @@ for(const icon of document.querySelectorAll('.legend i')){
   const kind={'■':'block','◎':'plate','▣':'challenge','ϟ':'lever','⚒':'tool','◆':'item','◇':'exit'}[icon.textContent];
   if(kind){icon.innerHTML=artwork(kind);icon.classList.add('legend-art');icon.setAttribute('aria-hidden','true');}
 }
+const journal=element('div',undefined,'journal');journal.hidden=true;$('inventory').after(journal);
+function roomAt(x,y){return map.rooms.find(r=>x>=r.min&&x<=r.max&&y>=(r.minY??0)&&y<=(r.maxY??map.tiles.length-1));}
 const circuitPanel=element('div',undefined,'circuit-panel');
 circuitPanel.hidden=true;board.before(circuitPanel);
 function render(){
@@ -27,7 +29,7 @@ function render(){
     if(state.collected.includes(item.id))continue;
     let active=item.type==='door'?doorOpen(map,state,item):item.type==='plate'?state.blocks.some(b=>b.x===item.x&&b.y===item.y):item.type==='exit'?exitReady(map,state,item):state.activated.includes(item.id);
     const e=element('div',undefined,`entity sprite ${item.type}${item.appearance?' '+item.appearance:''}${active?' active':''}${item.type==='door'&&active?' open':''}${state.solved.includes(item.id)?' done':''}`);
-    e.style.left=`${item.x/21*100}%`;e.style.top=`${item.y/13*100}%`;const kind=item.type==='door'?(active?'open':item.appearance==='cracked'?'cracked':'door'):item.appearance||item.type;
+    e.style.left=`${item.x/map.tiles[0].length*100}%`;e.style.top=`${item.y/map.tiles.length*100}%`;const kind=item.type==='door'?(active?'open':item.appearance==='cracked'?'cracked':'door'):item.appearance||item.type;
     e.append(sprite(kind));
     if(item.type==='lever'&&item.label)e.append(element('small',item.label,'switch-label'));
     if(item.type==='exit'&&item.sequencePuzzle){
@@ -38,29 +40,32 @@ function render(){
     }
     $('entities').append(e);
   }
-  $('player').style.left=`${state.player.x/21*100}%`;$('player').style.top=`${state.player.y/13*100}%`;if($('player').dataset.facing!==state.facing||!$('player').querySelector('svg'))$('player').replaceChildren(sprite('hero',state.facing));$('player').dataset.facing=state.facing;
-  const room=map.rooms.find(r=>state.player.x>=r.min&&state.player.x<=r.max)||map.rooms[0];
+  $('player').style.left=`${state.player.x/map.tiles[0].length*100}%`;$('player').style.top=`${state.player.y/map.tiles.length*100}%`;if($('player').dataset.facing!==state.facing||!$('player').querySelector('svg'))$('player').replaceChildren(sprite('hero',state.facing));$('player').dataset.facing=state.facing;
+  const room=roomAt(state.player.x,state.player.y)||map.rooms[0];
   board.dataset.theme=room.theme||'hall';
   const viewMin=room.viewMin??0, viewMax=room.viewMax??(map.tiles[0].length-1);
   const viewWidth=viewMax-viewMin+1;
-  board.style.aspectRatio=`${viewWidth}/${map.tiles.length}`;
+  const viewMinY=room.viewMinY??0,viewHeight=(room.viewMaxY??map.tiles.length-1)-viewMinY+1;
+  board.style.aspectRatio=`${viewWidth}/${viewHeight}`;
+  $('world').style.height=`${map.tiles.length/viewHeight*100}%`;
+  $('world').style.top=`${-viewMinY/viewHeight*100}%`;
   $('world').style.width=`${map.tiles[0].length/viewWidth*100}%`;
   $('world').style.left=`${-viewMin/viewWidth*100}%`;
   $('map-labels').textContent=room.name;
     let objective=room.objective;
-  if(room===map.rooms[0] && state.tools.includes('hammer'))objective=state.items.includes('seal-crystal')?'Take the seal crystal to the final chamber.':'Walk into the cracked wall to the north with your hammer, then collect the seal crystal.';
-  if(room===map.rooms[1])objective=state.tools.includes('hammer')?(state.items.includes('seal-crystal')?'Unlock the east gate and continue to the final chamber.':'Return to Switch Hall. Walk into its cracked wall with your hammer.'):(map.mode==='medium'?'Earn the hammer from the Workshop chest and the key from the Archive chest.':'Find the hammer in the lower Archive and earn the key from the chest.');
+  if(map.mode!=='medium'&&room===map.rooms[0] && state.tools.includes('hammer'))objective=state.items.includes('seal-crystal')?'Take the seal crystal to the final chamber.':'Walk into the cracked wall to the north with your hammer, then collect the seal crystal.';
+  if(map.mode!=='medium'&&room===map.rooms[1])objective=state.tools.includes('hammer')?(state.items.includes('seal-crystal')?'Unlock the east gate and continue to the final chamber.':'Return to Switch Hall. Walk into its cracked wall with your hammer.'):(map.mode==='medium'?'Earn the hammer from the Workshop chest and the key from the Archive chest.':'Find the hammer in the lower Archive and earn the key from the chest.');
   const exit=map.objects.find(o=>o.type==='exit'&&o.sequencePuzzle);
   const puzzle=(map.puzzles||[]).find(p=>p.id===exit?.sequencePuzzle);
-  const inChamber=Boolean(exit&&exit.x>=room.min&&exit.x<=room.max&&puzzle);
+  const inChamber=Boolean(exit&&roomAt(exit.x,exit.y)===room&&puzzle);
   circuitPanel.hidden=!inChamber;
   if(inChamber){
     const progress=state.sequences[puzzle.id]||0;
     const ready=exitReady(map,state,exit), missing=(exit.requiredItems||[]).filter(id=>!state.items.includes(id));
-    circuitPanel.replaceChildren(element('strong',ready?'EXIT UNLOCKED':'POWER THE EXIT'),element('p','TOP → BOTTOM → TOP'),element('p',`Door lights: ${progress} / ${puzzle.sequence.length} · Supplies: ${missing.length?missing.map(id=>map.inventory.find(i=>i.value===id)?.label||id).join(', ')+' needed':'ready'}`,'circuit-detail'));
-    objective=ready?'Walk to the glowing exit and interact.':progress===puzzle.sequence.length?'Earn the missing supplies from their chests, then return to the exit.':'Face a labeled switch and interact. Each correct step powers one door light.';
+    circuitPanel.replaceChildren(element('strong',ready?'EXIT UNLOCKED':'POWER THE EXIT'),element('p',puzzle.requiredClue&&!state.discovered.includes(puzzle.requiredClue)?'Find the signal code in the Hidden Library.':puzzle.sequence.map(id=>map.objects.find(o=>o.id===id)?.label||id).join(' → ')),element('p',`Door lights: ${progress} / ${puzzle.sequence.length} · Supplies: ${missing.length?missing.map(id=>map.inventory.find(i=>i.value===id)?.label||id).join(', ')+' needed':'ready'}`,'circuit-detail'));
+    objective=puzzle.requiredClue&&!state.discovered.includes(puzzle.requiredClue)?'Visit the Hidden Library with your lantern to reveal the code.':ready?'Walk to the glowing exit and interact.':progress===puzzle.sequence.length?'Earn the missing supplies from their chests, then return to the exit.':'Face a labeled switch and interact. Each correct step powers one door light.';
   }
-  $('difficulty').textContent=map.mode==='medium'?'Medium · 10 questions':'Easy · 1 question';
+  $('difficulty').textContent=map.mode==='medium'?'Medium · 12 questions':'Easy · 1 question';
   $('room').textContent=room.name;$('objective').textContent=state.won?'Adventure complete!':objective;
   const previousItems=new Set(Array.from($('inventory').children,item=>item.dataset.item));
   const badges=inventoryEntries(map,state);
@@ -68,29 +73,36 @@ function render(){
     const badge=element('div',undefined,`inventory-badge${item.status==='Used'?' used':''}`);
     badge.dataset.item=item.id;
     if(!previousItems.has(item.id)){badge.classList.add('pickup-flash');setTimeout(()=>badge.classList.remove('pickup-flash'),700);}
-    const icon=sprite(item.id==='explorer-token'?'treasure':item.type);icon.classList.add('inventory-icon');icon.setAttribute('aria-hidden','true');
+    const icon=sprite(item.appearance||(item.id==='explorer-token'?'treasure':item.type));icon.classList.add('inventory-icon');icon.setAttribute('aria-hidden','true');
     const reward=map.objects.find(o=>o.optional&&o.item===item.value)?.bonusPoints||0;
     badge.append(icon,element('span',item.label),element('small',item.optional?`Bonus +${reward}`:item.status));
     return badge;
   }));
   if(!badges.length)$('inventory').append(element('span','No items yet — walk over loose items to collect them.','inventory-empty'));$('seals').textContent=inChamber?`Door lights: ${state.sequences[puzzle.id]||0} / ${puzzle.sequence.length}`:`Seals: ${sealed()} / 3`;
+  const clues=(map.clues||[]).filter(c=>state.discovered.includes(c.id));journal.hidden=!clues.length;journal.textContent=clues.map(c=>`${c.label}: ${c.text}`).join(' · ');
   board.setAttribute('aria-label',`${room.name}. Position column ${state.player.x}, row ${state.player.y}. ${objective} Move with arrows or WASD; interact with E or Space.`);
   $('undo').disabled=!started||state.won||!state.history.length;
   $('reset-puzzle').disabled=!started||state.won;
   $('interact').disabled=!started||state.won;
   for(const b of document.querySelectorAll('[data-dir]'))b.disabled=!started||state.won;
 }
-for(const row of map.tiles)for(const [x,tile] of Array.from(row).entries()){
-  const room=map.rooms.find(r=>x>=r.min&&x<=r.max);
-  $('tiles').append(element('div',undefined,`tile ${room?.theme||'hall'}${tile==='#'?' wall':''}`));
-}
 const decor=element('div',undefined,'room-decor');
 decor.setAttribute('aria-hidden','true');$('world').prepend(decor);
-for(const decoration of map.decorations||[]){
-  const lamp=element('div',undefined,'decoration lamp');
-  lamp.style.left=`${decoration.x/21*100}%`;lamp.style.top=`${decoration.y/13*100}%`;
-  lamp.append(sprite('lamp'));decor.append(lamp);
+function buildWorld(){
+  const width=map.tiles[0].length,height=map.tiles.length;
+  $('world').style.setProperty('--cell',`${100/width}%`);$('world').style.setProperty('--row',`${100/height}%`);
+  $('tiles').style.setProperty('--columns',width);$('tiles').style.setProperty('--rows',height);
+  $('tiles').replaceChildren();decor.replaceChildren();
+  for(const [y,row] of map.tiles.entries())for(const [x,tile] of Array.from(row).entries()){
+    const room=roomAt(x,y);$('tiles').append(element('div',undefined,`tile ${room?.theme||'hall'}${tile==='#'?' wall':''}`));
+  }
+  for(const decoration of map.decorations||[]){
+    const lamp=element('div',undefined,'decoration lamp');
+    lamp.style.left=`${decoration.x/width*100}%`;lamp.style.top=`${decoration.y/height*100}%`;
+    lamp.append(sprite('lamp'));decor.append(lamp);
+  }
 }
+buildWorld();
 let walkingTimer;
 function release(){held=null;nextStep=0;clearTimeout(walkingTimer);$('player').classList.remove('walking');}
 function popup(label,title,paragraphs,actions){
@@ -103,7 +115,7 @@ let pickupFlashTimer;
 function pickupFeedback(items){
   for(const item of items){
     const effect=element('div',undefined,'pickup-effect');effect.append(sprite(item.appearance==='treasure'?'treasure':item.type));
-    effect.style.left=`${item.x/21*100}%`;effect.style.top=`${item.y/13*100}%`;
+    effect.style.left=`${item.x/map.tiles[0].length*100}%`;effect.style.top=`${item.y/map.tiles.length*100}%`;
     effect.setAttribute('aria-hidden','true');$('world').append(effect);
     setTimeout(()=>effect.remove(),700);
   }
@@ -115,7 +127,7 @@ function pickupFeedback(items){
 function doorFeedback(door){
   if(!door)return;
   const effect=element('div',undefined,'pickup-effect');effect.append(sprite(door.tool?'tool':'key'));
-  effect.style.left=`${door.x/21*100}%`;effect.style.top=`${door.y/13*100}%`;
+  effect.style.left=`${door.x/map.tiles[0].length*100}%`;effect.style.top=`${door.y/map.tiles.length*100}%`;
   effect.setAttribute('aria-hidden','true');$('world').append(effect);setTimeout(()=>effect.remove(),700);
 }
 function performMove(dir){
@@ -139,7 +151,7 @@ function performInteraction(){
   if(result.type==='win'){
     $('pause').disabled=true;
     const results=adventureResults(map,state), learning=reviewSummary(state.review);
-    popup('ALL THREE SEALS OPEN','Adventure complete',[`You solved the block switch, unlocked the archive gate, recovered the seal crystal with your hammer, and solved the signal sequence.`,`Treasure found: ${results.treasureFound} / ${results.treasureTotal} · Treasure bonus: +${results.bonusPoints} points.`,`Review points: ${results.reviewPoints} · Total points: ${results.totalPoints}.`,`Review completed: ${learning.completed} / ${learning.total} · Correct on first try: ${learning.firstTry} · Answer attempts: ${learning.attempts}.`,`Exploration time: ${Math.floor(elapsed/60)}m ${Math.floor(elapsed%60)}s · Moves: ${state.moves}.`],[{text:'Play again',run:restart,primary:true},{text:'Back to Arcade',run:()=>{window.location.href='/arcade-review-games/';}}]);
+    popup('ALL THREE SEALS OPEN','Adventure complete',[map.mode==='medium'?'You explored five rooms, earned a hammer and lantern, uncovered the hidden code, and powered the exit.':'You solved the block switch, unlocked the archive gate, recovered the seal crystal with your hammer, and solved the signal sequence.',`Treasure found: ${results.treasureFound} / ${results.treasureTotal} · Treasure bonus: +${results.bonusPoints} points.`,`Review points: ${results.reviewPoints} · Total points: ${results.totalPoints}.`,`Review completed: ${learning.completed} / ${learning.total} · Correct on first try: ${learning.firstTry} · Answer attempts: ${learning.attempts}.`,`Exploration time: ${Math.floor(elapsed/60)}m ${Math.floor(elapsed%60)}s · Moves: ${state.moves}.`],[{text:'Play again',run:restart,primary:true},{text:'Back to Arcade',run:()=>{window.location.href='/arcade-review-games/';}}]);
   }
 }
 function openQuestion(id){
@@ -206,11 +218,12 @@ function frame(now){if(started&&!dialog.open&&!state.won&&!document.hidden){if(l
 function chooseMode(){
   popup('QUEST ARCADE · THE THREE SEALS','Choose your adventure',[
     'Easy: the original route with one review question, loose tools, and direct guidance.',
-    'Medium: ten review questions across four reward chests. Earn the hammer, archive key, seal crystal, and power cell as you explore.',
-    'This preview uses the same three-room map to test review rewards. More rooms and linked puzzles are the next Medium upgrade.',
+    'Medium: twelve review questions across five reward chests in five rooms. Earn the hammer, archive key, lantern, seal crystal, and power cell.',
+    'Explore the Workshop south of the Archive. Return with its hammer to enter the Hidden Library, then use the lantern to reveal the Signal Chamber code. Your journal saves the clue.',
     'Question order and choices change each play. Missed answers allow retries. Chest progress stays saved when you return to the map.'
-  ],[{text:'Easy · 1 question',run:()=>startMode('easy'),primary:true},{text:'Medium · 10 questions',run:()=>startMode('medium')}]);
+  ],[{text:'Easy · 1 question',run:()=>startMode('easy'),primary:true},{text:'Medium · 12 questions',run:()=>startMode('medium')}]);
 }
-function startMode(mode){map=createAdventure(mode);restart();}
+function startMode(mode){map=createAdventure(mode);buildWorld();restart();}
 render();chooseMode();
 requestAnimationFrame(frame);
+

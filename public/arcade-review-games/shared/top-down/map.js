@@ -82,5 +82,37 @@ export function createAdventure(mode='easy'){
   map.objects.find(o=>o.id==='chamber-sign').text+=' The Power chest in this chamber earns the power cell for the exit.';
   map.inventory.push({id:'power-cell',type:'item',value:'power-cell',label:'Power cell',icon:'◆'});
   map.objects.find(o=>o.type==='exit').requiredItems.push('power-cell');
+  // Two southward branches share the original room boundaries.
+  map.tiles[12]='####.#####.##########';
+  for(let y=13;y<24;y++)map.tiles.push('#......#......#######');
+  map.tiles.push('#####################');
+  for(const room of map.rooms){room.minY=0;room.maxY=11;room.viewMinY=0;room.viewMaxY=12;}
+  map.rooms[0].maxY=12;map.rooms[1].maxY=12;
+  map.rooms[0].objective='Push the block onto the switch. The south branch and north vault need a hammer from the Workshop.';
+  map.rooms[1].objective='Earn the archive key here. Follow the south passage to the Workshop for a hammer.';
+  map.rooms.push(
+    {name:'04 · Workshop',theme:'archive',min:8,max:14,minY:13,maxY:23,viewMin:7,viewMax:14,viewMinY:12,viewMaxY:24,objective:'Earn the hammer from the Workshop chest. Return north, then explore both cracked passages in Switch Hall.'},
+    {name:'05 · Hidden Library',theme:'library',min:1,max:7,minY:13,maxY:23,viewMin:0,viewMax:7,viewMinY:12,viewMaxY:24,objective:'Earn the lantern, then read the faded inscription at the south end. It reveals the Signal Chamber code.'}
+  );
+  Object.assign(hammer,{x:11,y:19});
+  hammer.reward.message='Hammer earned! Return north to Switch Hall. Break the north vault wall and the south library wall.';
+  map.doors.push({id:'library-wall',x:4,y:12,tool:'hammer',label:'library wall',appearance:'cracked'});
+  map.objects.push(
+    {id:'workshop-sign',type:'sign',x:9,y:15,text:'The Workshop chest earns a hammer. Return through the north passage to the Archive, then head west to Switch Hall. The hammer opens its north vault and south library.'},
+    {id:'workbench-a',type:'obstacle',appearance:'bookshelf',x:10,y:17},
+    {id:'workbench-b',type:'obstacle',appearance:'bookshelf',x:12,y:17},
+    {id:'lantern-chest',type:'challenge',x:3,y:16,label:'Lantern chest',questionCount:2,reward:{type:'tool',value:'lantern',label:'Lantern',message:'Lantern earned! Read the faded inscription at the south end of this library.'}},
+    {id:'hidden-inscription',type:'sign',appearance:'inscription',x:4,y:21,requiresTool:'lantern',clue:'signal-code',text:'The lantern reveals the signal code: BOTTOM → TOP → BOTTOM → TOP. Your journal keeps this clue.',lockedText:'This inscription has faded. Earn the lantern from the library chest to reveal its words.'},
+    {id:'library-shelf-a',type:'obstacle',appearance:'bookshelf',x:2,y:19},
+    {id:'library-shelf-b',type:'obstacle',appearance:'bookshelf',x:6,y:19}
+  );
+  map.inventory.push({id:'lantern',type:'tool',value:'lantern',label:'Lantern',appearance:'lantern'});
+  map.clues=[{id:'signal-code',label:'Signal code',text:'BOTTOM → TOP → BOTTOM → TOP'}];
+  map.puzzles[0].sequence=['south-switch','north-switch','south-switch','north-switch'];
+  map.puzzles[0].requiredClue='signal-code';
+  map.objects.find(o=>o.id==='chamber-sign').text='The signal code is hidden in the library south of Switch Hall. Earn its lantern and read the faded inscription. The Power chest here earns the exit power cell.';
+  map.objects.find(o=>o.id==='lobby-sign').text='Push the block onto the amber floor switch to reach the Archive. Its south passage leads to the Workshop. Earn a hammer there, then return to open the north vault and south library.';
+  map.decorations.push({x:8,y:14},{x:13,y:22},{x:1,y:14},{x:6,y:22});
   return map;
 }
+

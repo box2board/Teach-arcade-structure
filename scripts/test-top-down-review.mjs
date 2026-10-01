@@ -24,10 +24,10 @@ function earn(map,s,id){
  }
  assert.equal(completeChallenge(map,s,id),true);
 }
-test('Medium allocates ten unique questions across four encounters and shuffles choices',()=>{
+test('Medium allocates twelve unique questions across five encounters and shuffles choices',()=>{
  const map=createAdventure('medium'),r=createReview(map,content.questions,()=>0);
  const entries=Object.values(r.encounters).flatMap(e=>e.questions);
- assert.equal(entries.length,10);assert.equal(new Set(entries.map(e=>e.question.id)).size,10);
+ assert.equal(entries.length,12);assert.equal(new Set(entries.map(e=>e.question.id)).size,12);
  assert.equal(r.encounters['hammer-pickup'].questions.length,2);
  assert.equal(r.encounters.archive.questions.length,3);
  assert.equal(r.encounters['seal-crystal'].questions.length,2);
@@ -48,29 +48,53 @@ test('partial encounters cannot award rewards; retries and recovery preserve pro
  assert.equal(completeChallenge(map,s,'hammer-pickup'),false);
  earn(map,s,'hammer-pickup');assert.deepEqual(s.tools,['hammer']);assert.equal(s.score,150);
  assert.equal(completeChallenge(map,s,'hammer-pickup'),false);assert.equal(s.score,150);
- assert.deepEqual(reviewSummary(s.review),{total:10,completed:2,firstTry:1,attempts:3});
+ assert.deepEqual(reviewSummary(s.review),{total:12,completed:2,firstTry:1,attempts:3});
 });
-test('Medium route earns all four rewards and wins with real movement',()=>{
+test('Medium route earns all five rewards and wins with real movement',()=>{
  const map=createAdventure('medium'),s=createState(map);s.review=createReview(map,content.questions);
  for(const dir of ['up','up','up','right','right'])assert.equal(move(map,s,dir),true);
- go(map,s,11,9);s.facing='right';assert.equal(interact(map,s).id,'hammer-pickup');earn(map,s,'hammer-pickup');
+ go(map,s,10,19);s.facing='right';assert.equal(interact(map,s).id,'hammer-pickup');earn(map,s,'hammer-pickup');
  go(map,s,9,3);s.facing='right';assert.equal(interact(map,s).id,'archive');earn(map,s,'archive');
  go(map,s,4,5);assert.equal(move(map,s,'up'),true);
  go(map,s,4,3);s.facing='up';assert.equal(interact(map,s).id,'seal-crystal');earn(map,s,'seal-crystal');
+ go(map,s,4,11);assert.equal(move(map,s,'down'),true);
+ go(map,s,2,16);s.facing='right';assert.equal(interact(map,s).id,'lantern-chest');earn(map,s,'lantern-chest');
+ go(map,s,4,20);s.facing='down';assert.match(interact(map,s).text,/BOTTOM → TOP → BOTTOM → TOP/);
+ assert.deepEqual(s.discovered,['signal-code']);
  go(map,s,13,6);assert.equal(move(map,s,'right'),true);
  go(map,s,17,2);s.facing='right';assert.equal(interact(map,s).id,'power-chest');earn(map,s,'power-chest');
- go(map,s,15,3);s.facing='right';interact(map,s);
- go(map,s,17,6);s.facing='right';interact(map,s);
- go(map,s,15,3);s.facing='right';interact(map,s);
+ for(const [x,y] of [[17,6],[15,3],[17,6],[15,3]]){go(map,s,x,y);s.facing='right';interact(map,s);}
  go(map,s,18,10);assert.equal(interact(map,s).type,'win');
- assert.equal(s.score,1000);assert.deepEqual(reviewSummary(s.review),{total:10,completed:10,firstTry:10,attempts:10});
+ assert.equal(s.score,1200);assert.deepEqual(reviewSummary(s.review),{total:12,completed:12,firstTry:12,attempts:12});
 });
 test('signal puzzle cannot claim the exit is open before the power-cell reward',()=>{
- const map=createAdventure('medium'),s=createState(map);s.items.push('seal-crystal');
- for(const [x,y] of [[15,3],[17,6],[15,3]]){s.player={x,y};s.facing='right';var result=interact(map,s);}
+ const map=createAdventure('medium'),s=createState(map);s.items.push('seal-crystal');s.discovered.push('signal-code');
+ for(const [x,y] of [[17,6],[15,3],[17,6],[15,3]]){s.player={x,y};s.facing='right';var result=interact(map,s);}
  assert.match(result.text,/missing supplies/);assert.equal(exitReady(map,s,map.objects.find(o=>o.type==='exit')),false);
 });
 test('insufficient and invalid question banks fail before an adventure starts',()=>{
  assert.throws(()=>createReview(createAdventure('medium'),content.questions.slice(0,4)),/unique questions/);
  assert.throws(()=>createReview(adventure,[content.questions[0],content.questions[0]]),/IDs/);
+});
+
+test('library inscription requires the lantern; journal and progress survive reset',()=>{
+ const map=createAdventure('medium'),s=createState(map);
+ s.player={x:4,y:20};s.facing='down';
+ assert.match(interact(map,s).text,/Earn the lantern/);assert.deepEqual(s.discovered,[]);
+ s.player={x:17,y:6};s.facing='right';assert.match(interact(map,s).text,/Use your lantern/);assert.deepEqual(s.sequences,{});
+ s.tools.push('lantern');s.player={x:4,y:20};s.facing='down';
+ assert.match(interact(map,s).text,/BOTTOM → TOP → BOTTOM → TOP/);
+ interact(map,s);assert.deepEqual(s.discovered,['signal-code']);
+ resetPuzzle(map,s);assert.deepEqual(s.discovered,['signal-code']);assert.deepEqual(s.tools,['lantern']);
+ s.player={x:15,y:3};s.facing='right';assert.match(interact(map,s).text,/reset/);assert.equal(s.sequences.signals,0);
+ s.player={x:17,y:6};s.facing='right';interact(map,s);assert.equal(s.sequences.signals,1);
+});
+test('Medium geometry has five room views with floor objects and south branches',()=>{
+ const map=createAdventure('medium');assert.equal(map.rooms.length,5);assert.equal(map.tiles.length,25);
+ assert.ok(map.tiles.every(row=>row.length===21));
+ for(const o of [...map.objects,...map.doors,...map.plates,...map.blocks])assert.equal(map.tiles[o.y][o.x],'.',o.id);
+ for(const point of [{x:10,y:12},{x:10,y:13},{x:4,y:12},{x:4,y:13}]){
+  assert.equal(map.rooms.filter(r=>point.x>=r.min&&point.x<=r.max&&point.y>=r.minY&&point.y<=r.maxY).length,1);
+ }
+ assert.equal(createAdventure('easy').tiles.length,13);
 });
