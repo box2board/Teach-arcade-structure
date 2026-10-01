@@ -4,3 +4,13 @@
 #board{max-width:360px;margin-inline:auto}#world{position:absolute;top:0;height:100%;overflow:hidden}.map-labels{display:block;font-size:.875rem;letter-spacing:.06em}.map-frame{padding-block-start:16px}#world .entity,#world #player{font-size:clamp(18px,4.8vw,28px)}
 
 .entity.tool span{color:#ffe7a9;border:2px solid #ffe7a9;background:#504535}.entity.item span{color:#b8a4ff;border:2px solid #b8a4ff;background:#342852;box-shadow:0 0 18px #b8a4ff44}.entity.door.cracked:not(.open) span{background:#796854;border-color:#b7a285;color:#f4d3a0}.entity.door.cracked:not(.open) span::after{content:'ϟ';position:absolute;color:#241c16;font-size:1.5em}.status-bar{flex-wrap:wrap}#inventory{font-size:.8125rem}
+
+/* The final room shows the lock's state and the three inputs that power it. */
+.circuit-panel{max-width:360px;margin:0 auto 12px;padding:12px;background:#142d42;border:1px solid #66dcf4;border-radius:8px}
+.circuit-panel[hidden]{display:none}.circuit-panel strong{color:var(--amber);font-size:.8rem;letter-spacing:.08em}.circuit-panel p{margin:5px 0 0;font-weight:750}.circuit-panel .circuit-detail{font-size:.75rem;font-weight:500;color:var(--muted)}
+.entity .switch-label,.entity .exit-label{position:absolute;top:87%;font-size:9px;line-height:1.2;color:#edf4ff;background:#0b1220;padding:2px 3px;border-radius:3px;white-space:nowrap;z-index:1}
+.entity.exit span{background:#283b4e;border-style:solid}.entity.exit .exit-label{top:102%}
+.door-lights{position:absolute;display:flex;gap:3px;bottom:94%;left:50%;transform:translateX(-50%);padding:3px;background:#0b1220;border-radius:4px}
+.door-lights b{display:grid;place-items:center;width:12px;height:12px;font-size:9px;line-height:1;background:#27384b;border:1px solid #8da1b5;border-radius:50%;color:#b0c0d4}
+.door-lights b.lit{background:var(--cyan);border-color:var(--cyan);color:#0b1220;box-shadow:0 0 6px #66dcf4}
+#message[data-tone="wrong"]{color:#ffb3a5}#message[data-tone="correct"]{color:#8dffbd}

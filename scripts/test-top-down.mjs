@@ -80,3 +80,15 @@ test('signals alone cannot win without the recovered seal crystal',()=>{
  s.player={x:18,y:10};assert.equal(interact(map,s).type,'message');assert.equal(s.won,false);
  s.items.push('seal-crystal');assert.equal(interact(map,s).type,'win');
 });
+
+test('door light feedback follows progress and clears all lights after a mistake',()=>{
+ const s=createState(map);s.items.push('seal-crystal');
+ s.player={x:15,y:3};s.facing='right';
+ let result=interact(map,s);assert.equal(result.tone,'correct');assert.match(result.text,/light 1.*BOTTOM/);
+ result=interact(map,s);assert.equal(result.tone,'wrong');assert.equal(s.sequences.signals,0);assert.deepEqual(s.activated,[]);
+ assert.match(result.text,/all three door lights reset/);
+ interact(map,s);s.player={x:17,y:6};interact(map,s);
+ assert.equal(s.sequences.signals,2);
+ s.player={x:15,y:3};result=interact(map,s);assert.match(result.text,/exit is unlocked/);
+ assert.equal(exitReady(map,s,map.objects.find(o=>o.type==='exit')),true);
+});

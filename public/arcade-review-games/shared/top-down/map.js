@@ -29,9 +29,9 @@ export const adventure = {
     { id: 'archive', type: 'challenge', x: 10, y: 3, key: 'archive' },
     { id: 'hammer-pickup', type: 'tool', x: 12, y: 9, tool: 'hammer', label: 'Hammer', text: 'Hammer collected! Return to Switch Hall and use it on the cracked wall to the north.' },
     { id: 'seal-crystal', type: 'item', x: 4, y: 2, item: 'seal-crystal', label: 'Seal crystal', text: 'Seal crystal collected! Take it to the final chamber.' },
-    { id: 'chamber-sign', type: 'sign', x: 16, y: 8, text: 'The inscription reads: NORTH, SOUTH, NORTH. Activate the upper switch, then the right switch, then return to the upper switch. A wrong signal resets the sequence.' },
-    { id: 'north-switch', type: 'lever', x: 16, y: 3 },
-    { id: 'south-switch', type: 'lever', x: 18, y: 6 },
+    { id: 'chamber-sign', type: 'sign', x: 16, y: 8, text: 'Power the exit: TOP → BOTTOM → TOP. Each correct switch lights one door indicator. A wrong switch turns all three off. The exit also needs the seal crystal from Switch Hall.' },
+    { id: 'north-switch', label: 'TOP', type: 'lever', x: 16, y: 3 },
+    { id: 'south-switch', label: 'BOTTOM', type: 'lever', x: 18, y: 6 },
     { id: 'exit', type: 'exit', x: 18, y: 10, requiredItems: ['seal-crystal'], requires: ['north-switch', 'south-switch'], sequencePuzzle: 'signals' }
   ],
   puzzles: [{ id: 'signals', sequence: ['north-switch', 'south-switch', 'north-switch'] }],

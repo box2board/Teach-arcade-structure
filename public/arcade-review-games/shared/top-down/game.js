@@ -7,8 +7,10 @@ let questionDeck=shuffle(content.questions), activeQuestion=null;
 const board=$('board'), dialog=$('dialog');
 const symbols={block:'▤',plate:'◎',door:'⌑',challenge:'▣',sign:'i',lever:'ϟ',exit:'◇',tool:'⚒',item:'◆'};
 function element(tag,text,className){const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(className)e.className=className;return e;}
-function message(text){$('message').textContent=text;}
+function message(text,tone='neutral'){$('message').textContent=text;$('message').dataset.tone=tone;}
 function sealed(){return Number(doorOpen(map,state,map.doors[0]))+Number(state.opened.includes('east'))+Number(exitReady(map,state,map.objects.find(o=>o.type==='exit')));}
+const circuitPanel=element('div',undefined,'circuit-panel');
+circuitPanel.hidden=true;board.before(circuitPanel);
 function render(){
   $('entities').replaceChildren();
   const items=[...map.plates.map(o=>({...o,type:'plate'})),...map.doors.map(o=>({...o,type:'door'})),...map.objects,...state.blocks.map(o=>({...o,type:'block'}))];
@@ -16,7 +18,15 @@ function render(){
     if(state.collected.includes(item.id))continue;
     let active=item.type==='door'?doorOpen(map,state,item):item.type==='plate'?state.blocks.some(b=>b.x===item.x&&b.y===item.y):item.type==='exit'?exitReady(map,state,item):state.activated.includes(item.id);
     const e=element('div',undefined,`entity ${item.type}${item.appearance?' '+item.appearance:''}${active?' active':''}${item.type==='door'&&active?' open':''}${state.solved.includes(item.id)?' done':''}`);
-    e.style.left=`${item.x/21*100}%`;e.style.top=`${item.y/13*100}%`;e.append(element('span',active&&item.type==='door'?'·':symbols[item.type]));$('entities').append(e);
+    e.style.left=`${item.x/21*100}%`;e.style.top=`${item.y/13*100}%`;e.append(element('span',active&&item.type==='door'?'·':item.type==='exit'?(active?'↗':'🔒'):symbols[item.type]));
+    if(item.type==='lever'&&item.label)e.append(element('small',item.label,'switch-label'));
+    if(item.type==='exit'&&item.sequencePuzzle){
+      const puzzle=(map.puzzles||[]).find(p=>p.id===item.sequencePuzzle);
+      const lights=element('div',undefined,'door-lights');
+      for(let i=0;i<(puzzle?.sequence.length||0);i++)lights.append(element('b',String(i+1),i<(state.sequences[puzzle.id]||0)?'lit':''));
+      e.append(lights);e.append(element('small',active?'OPEN':'EXIT','exit-label'));
+    }
+    $('entities').append(e);
   }
   $('player').style.left=`${state.player.x/21*100}%`;$('player').style.top=`${state.player.y/13*100}%`;$('player').dataset.facing=state.facing;
   const room=map.rooms.find(r=>state.player.x>=r.min&&state.player.x<=r.max)||map.rooms[0];
@@ -29,8 +39,18 @@ function render(){
     let objective=room.objective;
   if(room===map.rooms[0] && state.tools.includes('hammer'))objective=state.items.includes('seal-crystal')?'Take the seal crystal to the final chamber.':'Break the cracked wall to the north and collect the seal crystal.';
   if(room===map.rooms[1])objective=state.tools.includes('hammer')?(state.items.includes('seal-crystal')?'Unlock the east gate and continue to the final chamber.':'Return to Switch Hall. Your hammer can break its cracked wall.'):'Find the hammer in the lower Archive and earn the key from the chest.';
+  const exit=map.objects.find(o=>o.type==='exit'&&o.sequencePuzzle);
+  const puzzle=(map.puzzles||[]).find(p=>p.id===exit?.sequencePuzzle);
+  const inChamber=Boolean(exit&&exit.x>=room.min&&exit.x<=room.max&&puzzle);
+  circuitPanel.hidden=!inChamber;
+  if(inChamber){
+    const progress=state.sequences[puzzle.id]||0;
+    const ready=exitReady(map,state,exit), crystal=(exit.requiredItems||[]).every(id=>state.items.includes(id));
+    circuitPanel.replaceChildren(element('strong',ready?'EXIT UNLOCKED':'POWER THE EXIT'),element('p','TOP → BOTTOM → TOP'),element('p',`Door lights: ${progress} / ${puzzle.sequence.length} · Crystal: ${crystal?'ready':'missing — find it in Switch Hall'}`,'circuit-detail'));
+    objective=ready?'Walk to the glowing exit and interact.':progress===puzzle.sequence.length?'Recover the seal crystal in Switch Hall, then return to the exit.':'Face a labeled switch and interact. Each correct step powers one door light.';
+  }
   $('room').textContent=room.name;$('objective').textContent=state.won?'Adventure complete!':objective;
-  $('inventory').textContent=[state.keys.length?'Key: archive':state.opened.includes('east')?'Key: used':'Key: —',state.tools.includes('hammer')?'Hammer':null,state.items.includes('seal-crystal')?'Seal crystal':null].filter(Boolean).join(' · ');$('seals').textContent=`Seals: ${sealed()} / 3`;
+  $('inventory').textContent=[state.keys.length?'Key: archive':state.opened.includes('east')?'Key: used':'Key: —',state.tools.includes('hammer')?'Hammer':null,state.items.includes('seal-crystal')?'Seal crystal':null].filter(Boolean).join(' · ');$('seals').textContent=inChamber?`Door lights: ${state.sequences[puzzle.id]||0} / ${puzzle.sequence.length}`:`Seals: ${sealed()} / 3`;
   board.setAttribute('aria-label',`${room.name}. Position column ${state.player.x}, row ${state.player.y}. ${objective} Move with arrows or WASD; interact with E or Space.`);
   $('undo').disabled=!started||state.won||!state.history.length;
   $('reset-puzzle').disabled=!started||state.won;
@@ -49,7 +69,7 @@ function performMove(dir){if(!started||dialog.open||state.won)return;const was=d
 function performInteraction(){
   if(!started||dialog.open||state.won)return;
   release();const result=interact(map,state);render();
-  if(result.type==='message')message(result.text);
+  if(result.type==='message')message(result.text,result.tone);
   if(result.type==='challenge')openQuestion(result.id);
   if(result.type==='win'){
     $('pause').disabled=true;

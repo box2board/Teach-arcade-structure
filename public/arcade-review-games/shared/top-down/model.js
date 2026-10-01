@@ -78,18 +78,18 @@ export function interact(map,state) {
       if(object.id!==puzzle.sequence[progress]) {
         state.sequences[puzzle.id]=0;
         state.activated=state.activated.filter(id=>!puzzle.sequence.includes(id));
-        return {type:'message',text:'Wrong signal. The sequence has reset. Read the inscription and try again.'};
+        return {type:'message',tone:'wrong',text:'Wrong switch — all three door lights reset. Start again with TOP → BOTTOM → TOP.'};
       }
       state.sequences[puzzle.id]=progress+1;
       if(!state.activated.includes(object.id))state.activated.push(object.id);
-      return {type:'message',text:progress+1===puzzle.sequence.length?'Signal sequence solved! Bring the seal crystal to the glowing exit.':`Correct signal: ${progress+1} / ${puzzle.sequence.length}. Continue the inscription sequence.`};
+      return {type:'message',tone:'correct',text:progress+1===puzzle.sequence.length?(state.items.includes('seal-crystal')?'All three door lights are on! The exit is unlocked. Walk to it and interact.':'All three door lights are on! Return to Switch Hall for the seal crystal to unlock the exit.'):`Door light ${progress+1} of ${puzzle.sequence.length} powered. Next: ${map.objects.find(o=>o.id===puzzle.sequence[progress+1])?.label||'read the inscription'}.`};
     }
     if (!state.activated.includes(object.id)) state.activated.push(object.id);
     return {type:'message',text:'Signal activated. Both blue signals open the final seal.'};
   }
   if (object.type==='exit') {
     if (exitReady(map,state,object)) { state.won=true; return {type:'win'}; }
-    return {type:'message',text:'The final seal needs the crystal from Switch Hall and the completed signal sequence.'};
+    return {type:'message',text:!state.items.includes('seal-crystal')?'Exit locked: recover the seal crystal behind the cracked wall in Switch Hall.':'Exit locked: power all three door lights. Follow TOP → BOTTOM → TOP.'};
   }
   return {type:'none'};
 }
