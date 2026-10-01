@@ -25,19 +25,20 @@
   };
   const shuffled = (items, key) => {
     state.shuffleOrders ||= {};
-    let ids = state.shuffleOrders[key];
-    const sourceIds = items.map(item => item.id);
-    if (!Array.isArray(ids) || ids.length !== sourceIds.length || sourceIds.some(id => !ids.includes(id))) {
-      ids = sourceIds.slice();
-      for (let i = ids.length - 1; i > 0; i--) {
+    let order = state.shuffleOrders[key];
+    const valid = Array.isArray(order) && order.length === items.length
+      && new Set(order).size === items.length
+      && order.every(index => Number.isInteger(index) && index >= 0 && index < items.length);
+    if (!valid) {
+      order = items.map((_, index) => index);
+      for (let i = order.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [ids[i], ids[j]] = [ids[j], ids[i]];
+        [order[i], order[j]] = [order[j], order[i]];
       }
-      state.shuffleOrders[key] = ids;
+      state.shuffleOrders[key] = order;
       save();
     }
-    const byId = new Map(items.map(item => [item.id, item]));
-    return ids.map(id => byId.get(id)).filter(Boolean);
+    return order.map(index => items[index]);
   };
   const setProgress = () => {
     const scenes = activeScenes();

@@ -16,14 +16,14 @@ window.ROOM_DATA = {
     },
     medium: {
       label: 'Medium', requireReasoning: true, minReasoningLength: 25,
-      sceneOrder: ['dispatch','sarajevo','source-check','main','atlantic','intercept','escalation','transmission','combination'],
+      sceneOrder: ['dispatch','sarajevo','source-check','main','escalation','atlantic','intercept','transmission','combination'],
       sceneOverrides: {
         transmission: { prompt: 'Rebuild the timeline in order. Then use your note to identify which decision widened the crisis beyond Austria-Hungary and Serbia.' }
       }
     },
     hard: {
       label: 'Hard', requireReasoning: true, minReasoningLength: 50,
-      sceneOrder: ['dispatch','sarajevo','source-check','main','atlantic','intercept','escalation','telegram-lock','transmission','us-entry','combination'],
+      sceneOrder: ['dispatch','sarajevo','source-check','main','escalation','atlantic','intercept','telegram-lock','transmission','us-entry','combination'],
       sceneOverrides: {
         main: { prompt: 'Match each case to the long-term pressure it best represents. Some examples involve more than one factor; choose the strongest fit and justify one difficult match in your field note.' },
         combination: { prompt: 'Reconstruct the five-part code from your evidence cards. Before unlocking it, check that your code follows the event chronology rather than the order in which you collected the cards.' }
@@ -116,7 +116,7 @@ window.ROOM_DATA = {
       id: 'intercept', type: 'Telegram analysis', kind: 'choice', kicker: 'ROOM 04 · INTERCEPTED MESSAGE', title: 'Read between the lines',
       requiresClues: ['lusitania-date'],
       evidence: [
-        { label: 'Intercept · January 1917', text: 'Classroom paraphrase: Germany planned to resume unrestricted submarine warfare, hoped the United States would remain neutral, and proposed an alliance with Mexico if the U.S. entered the war.', source: 'Zimmermann Telegram' },
+        { label: 'Decoded telegram · January 1917', text: 'Germany planned to resume unrestricted submarine warfare and proposed an alliance with Mexico if the United States entered the war. The message was part of Germany’s effort to manage the risk of U.S. involvement.', source: 'Teacher-written summary of the Zimmermann Telegram; not a direct quotation.' },
         { label: 'Strategic context', text: 'Germany expected renewed submarine attacks could bring the United States into the conflict.', source: 'Analyst summary' }
       ],
       prompt: 'What strategy can you infer from the message and its context?',
@@ -183,7 +183,7 @@ window.ROOM_DATA = {
       journal: 'A source can show context without proving how people acted on it.'
     },
     {
-      id: 'escalation', type: 'Cause and effect', kind: 'choice', kicker: 'ROOM 04A · FOLLOW THE DECISIONS', title: 'The crisis spreads',
+      id: 'escalation', type: 'Cause and effect', kind: 'choice', kicker: 'JULY–AUGUST 1914 · FOLLOW THE DECISIONS', title: 'The crisis spreads',
       requiresClues: ['main-map'],
       evidence: [
         { label: 'Crisis sequence', text: 'Austria-Hungary declared war on Serbia. Russia mobilized. Germany declared war on Russia and France, then invaded Belgium; Britain entered the conflict.', source: 'July–August 1914 timeline' }
@@ -203,14 +203,14 @@ window.ROOM_DATA = {
       journal: 'The crisis widened through linked decisions, not through one automatic event.'
     },
     {
-      id: 'telegram-lock', type: 'Two-part intelligence lock', kind: 'multi', kicker: 'ROOM 04B · DECODE THE STRATEGY', title: 'Two parts of one plan',
+      id: 'telegram-lock', type: 'Two-part intelligence lock', kind: 'multi', kicker: 'INTELLIGENCE LOCK · DECODE THE STRATEGY', title: 'Two parts of one plan',
       evidence: [
-        { label: 'Zimmermann Telegram · 1917', text: 'Germany hoped the United States would remain neutral. If the U.S. entered the war, Germany proposed an alliance with Mexico.', source: 'Classroom paraphrase' }
+        { label: 'Zimmermann Telegram · 1917', text: 'Germany hoped the United States would remain neutral. If the U.S. entered the war, Germany proposed an alliance with Mexico.', source: 'Teacher-written summary of the decoded telegram; not a direct quotation.' }
       ],
       prompt: 'The lock opens only when both parts of Germany’s strategy are identified.',
       parts: [
-        { label: 'Germany’s preferred outcome', placeholder: 'What did Germany hope the U.S. would do?', answers: ['remain neutral','stay neutral','keep neutral','neutrality','keep the united states neutral','keep the us neutral'] },
-        { label: 'Germany’s contingency plan', placeholder: 'What alliance did it propose if the U.S. entered?', answers: ['alliance with mexico','ally with mexico','mexican alliance','partnership with mexico'] }
+        { label: 'Germany’s preferred outcome', placeholder: 'Enter Germany’s goal', answers: ['remain neutral','stay neutral','keep neutral','neutrality','keep the united states neutral','keep the us neutral','the united states would remain neutral','the us would remain neutral','united states remains neutral','us remains neutral','america remains neutral','america stays neutral','the us stays neutral','us stays out of the war','the us stays out of the war','united states stays out of the war','united states stay out','keep america out','keep america neutral','stay out of war','stay out of the war','not enter the war','not join the war','avoid entering the war','the united states would not enter','the us would not enter'] },
+        { label: 'Germany’s contingency plan', placeholder: 'Enter the proposed ally', answers: ['alliance with mexico','ally with mexico','mexican alliance','partnership with mexico','form an alliance with mexico','a military alliance with mexico','germany would ally with mexico','mexico alliance','mexico'] }
       ],
       hints: ['The first part is what Germany hoped to avoid.', 'The second part was conditional: it applied if the U.S. entered.', 'Neutrality first; an alliance with Mexico if the U.S. joined.'],
       wrong: 'The lock needs both the preferred outcome and the conditional plan. Re-read the telegram evidence.',
