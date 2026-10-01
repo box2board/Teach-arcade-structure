@@ -1,1 +1,1 @@
-window.TA_SIDE_SCROLLER_ENGINE={version:'1.2.0-alpha.3',status:'candidate',released:'2026-10-01',contract:2};
+window.TA_SIDE_SCROLLER_ENGINE={version:'1.2.0',status:'stable',released:'2026-10-01',contract:2};

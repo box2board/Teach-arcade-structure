@@ -1,11 +1,11 @@
-# Teach Arcade Side-Scroller Engine V1.2 Candidate
+# Teach Arcade Side-Scroller Engine V1.2
 
-Version: **1.2.0-alpha.2**  
-Status: **Candidate — do not migrate production games yet**
+Version: **1.2.0**  
+Status: **Stable production engine**
 
-V1.2 is becoming a mechanic library rather than a single platforming formula. V1.1 remains the stable engine for approved games.
+V1.2 is a production mechanic library designed to support mechanically distinct side-scrollers rather than one repeated platforming formula. V1.1 remains supported for existing approved games; they do not need to migrate.
 
-## Candidate mechanic library
+## Mechanic library
 
 ### True sloped terrain
 Levels may define `slopes` with `x1, y1, x2, y2`.
@@ -80,3 +80,12 @@ Before publishing, ignore theme/art and ask: **Would this level still feel recog
 
 ### Length rule
 Do not make levels longer by stretching empty horizontal distance. Long-form levels gain time through additional gameplay zones, vertical travel, alternate traversal, mechanic-specific set pieces, and well-spaced review moments. A normal production target is roughly **6–10 minutes for a first classroom play**, unless the concept intentionally calls for something different.
+
+
+## V1.2.0 production release
+
+First production game: **Slope Street Sprint**.
+
+Production validation includes true slope traversal and flat/slope seams, world-anchored rendering, stompable and non-stompable enemies, breakables, bounce surfaces, climbables, difficulty presets, randomized questions and choices, keyboard/touch input, gameplay QA, visual QA, and Level Identity QA.
+
+Existing V1.1 games remain on V1.1 intentionally. Engine generations may coexist to preserve gameplay variety and avoid unnecessary migrations.
