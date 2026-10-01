@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f9fafb" />
+  <title>Hangman | Brain Arcade | Teach Arcade</title>
+  <meta name="description" content="Play Hangman in your browser. Pick a category or choose a surprise word, use clues, and build a winning streak." />
+  <link rel="canonical" href="https://teacharcade.com/brain-arcade/hangman/" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <link rel="stylesheet" href="/brain-arcade/hangman/style.css" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Teach Arcade" />
+  <meta property="og:title" content="Hangman | Brain Arcade | Teach Arcade" />
+  <meta property="og:description" content="Choose a category, guess the word, and see how long you can keep your streak alive." />
+  <meta property="og:url" content="https://teacharcade.com/brain-arcade/hangman/" />
+  <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"Hangman",
+    "applicationCategory":"Game",
+    "operatingSystem":"All",
+    "url":"https://teacharcade.com/brain-arcade/hangman/",
+    "description":"A free browser Hangman game with categories, clues, keyboard controls, and local streak tracking.",
+    "publisher":{"@type":"Organization","name":"Teach Arcade"}
+  }
+  </script>
+</head>
+<body>
+  <div id="site-header"></div>
+  <script src="/assets/scripts/nav.js?v=5" defer></script>
+
+  <main class="hangman-page" id="hangman-app">
+    <nav class="hangman-page__breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a><span aria-hidden="true">›</span>
+      <a href="/brain-arcade/">Brain Arcade</a><span aria-hidden="true">›</span>
+      <span aria-current="page">Hangman</span>
+    </nav>
+
+    <section class="hangman-page__hero">
+      <div>
+        <p class="hangman-page__eyebrow">Brain Arcade</p>
+        <h1>Hangman</h1>
+        <p>Choose a category, uncover the word, and keep the streak going before the drawing is complete.</p>
+      </div>
+      <div class="hangman-page__streaks" aria-label="Winning streak">
+        <div><span>Current streak</span><strong id="current-streak">0</strong></div>
+        <div><span>Best streak</span><strong id="best-streak">0</strong></div>
+      </div>
+    </section>
+
+    <section class="hangman-page__setup" aria-label="Game setup">
+      <div class="hangman-page__category-group">
+        <label for="category-select">Category</label>
+        <select id="category-select">
+          <option value="animals">Animals</option>
+          <option value="geography">Geography</option>
+          <option value="science">Science</option>
+          <option value="school">School</option>
+          <option value="food">Food</option>
+        </select>
+      </div>
+      <button type="button" class="hangman-page__button hangman-page__button--secondary" id="surprise-category">Surprise me</button>
+      <button type="button" class="hangman-page__button hangman-page__button--primary" id="new-word">New Word</button>
+    </section>
+
+    <section class="hangman-page__game" aria-label="Hangman game">
+      <div class="hangman-page__drawing-card">
+        <div class="hangman-page__drawing-wrap" aria-label="Hangman drawing">
+          <svg class="hangman-page__drawing" viewBox="0 0 260 270" role="img" aria-labelledby="gallows-title gallows-desc">
+            <title id="gallows-title">Hangman gallows</title>
+            <desc id="gallows-desc">The drawing gains one body part for each incorrect guess.</desc>
+            <g class="hangman-page__gallows">
+              <line x1="28" y1="242" x2="178" y2="242" />
+              <line x1="68" y1="242" x2="68" y2="28" />
+              <line x1="68" y1="28" x2="182" y2="28" />
+              <line x1="182" y1="28" x2="182" y2="55" />
+              <line x1="68" y1="62" x2="104" y2="28" />
+            </g>
+            <g class="hangman-page__person">
+              <circle class="hangman-page__part" data-part="1" cx="182" cy="78" r="22" />
+              <line class="hangman-page__part" data-part="2" x1="182" y1="100" x2="182" y2="164" />
+              <line class="hangman-page__part" data-part="3" x1="182" y1="116" x2="148" y2="142" />
+              <line class="hangman-page__part" data-part="4" x1="182" y1="116" x2="216" y2="142" />
+              <line class="hangman-page__part" data-part="5" x1="182" y1="164" x2="153" y2="205" />
+              <line class="hangman-page__part" data-part="6" x1="182" y1="164" x2="211" y2="205" />
+            </g>
+          </svg>
+        </div>
+
+        <div class="hangman-page__wrong">
+          <span>Incorrect guesses</span>
+          <strong><span id="wrong-count">0</span> / 6</strong>
+        </div>
+        <div class="hangman-page__wrong-letters" id="wrong-letters" aria-live="polite">None yet</div>
+      </div>
+
+      <div class="hangman-page__play-card">
+        <div class="hangman-page__round-meta">
+          <span class="hangman-page__category-pill" id="category-label">Animals</span>
+          <button type="button" class="hangman-page__clue-button" id="clue-button">Show clue</button>
+        </div>
+
+        <p class="hangman-page__clue" id="clue-text" hidden></p>
+
+        <div class="hangman-page__word" id="word-display" aria-label="Hidden word"></div>
+
+        <p class="hangman-page__feedback" id="feedback" role="status" aria-live="polite">
+          Pick a letter or type on your keyboard.
+        </p>
+
+        <div class="hangman-page__keyboard" id="keyboard" aria-label="Letter keyboard"></div>
+
+        <div class="hangman-page__end-actions" id="end-actions" hidden>
+          <button type="button" class="hangman-page__button hangman-page__button--primary" id="play-again">Play Again</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="hangman-page__how">
+      <h2>How to play</h2>
+      <p>Guess one letter at a time. Correct letters appear in the word; incorrect guesses add to the drawing. Solve the word before six incorrect guesses to extend your streak. Your best streak is saved on this device.</p>
+    </section>
+  </main>
+
+  <footer></footer>
+  <script src="/brain-arcade/hangman/game.js" defer></script>
+</body>
+</html>
