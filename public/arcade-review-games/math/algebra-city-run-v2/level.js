@@ -37,8 +37,8 @@ collectibles:[{x:445,y:248},{x:910,y:190},{x:1510,y:182},{x:2310,y:198},{x:2915,
 movers:[
 {type:'drone',x:560,y:205,w:30,h:20,axis:'x',range:105,speed:82,movement:'flyPatrol',behavior:'hazard'},
 {type:'drone',x:1190,y:175,w:30,h:20,axis:'y',range:72,speed:70,movement:'flyPatrol',behavior:'hazard'},
-{type:'drone',x:2000,y:322,w:30,h:20,axis:'x',range:90,speed:96,movement:'groundPatrol',behavior:'hazard'},
-{type:'spark',x:2540,y:100,w:26,h:26,movement:'falling',triggerDistance:150,gravity:1220,resetDelay:1.2,behavior:'hazard'}
+{type:'securityBot',x:2000,y:322,w:30,h:20,axis:'x',range:90,speed:96,movement:'groundPatrol',behavior:'hazard'},
+{type:'fallingSign',x:2540,y:100,w:26,h:26,movement:'falling',triggerDistance:150,gravity:1220,resetDelay:1.2,behavior:'hazard'}
 ],
 movingPlatforms:[
 {id:'service-lift-a',x:1160,y:300,w:96,h:18,axis:'y',range:82,speed:40},
