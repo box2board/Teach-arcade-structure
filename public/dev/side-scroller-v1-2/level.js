@@ -1,6 +1,6 @@
 (()=>{const B=TASideScroller.LevelBuilder;window.TA_V12_TEST_LEVEL=B.build({
 id:'v12-mechanics-playground',physicsPreset:'earth',tileSize:32,world:{width:3600,height:480},spawn:{x:64,y:290},finish:{x:3480,y:246,w:64,h:106},
-terrainSegments:[{from:0,to:10,top:11},{from:20,to:30,top:8},{from:40,to:47,top:11},{from:50,to:55,top:11},{from:64,to:75,top:9},{from:75,to:112,top:11}],
+terrainSegments:[{from:0,to:10,top:11},{from:20,to:30,top:8},{from:40,to:47,top:11},{from:50,to:55,top:11},{from:64,to:70,top:9},{from:70,to:112,top:11}],
 slopes:[
 {id:'hill-up',x1:320,y1:352,x2:640,y2:256},
 {id:'hill-down',x1:960,y1:256,x2:1280,y2:352},
