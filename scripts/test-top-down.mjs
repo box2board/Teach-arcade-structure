@@ -32,7 +32,7 @@ test('full adventure can be completed using real movement and interactions',()=>
  walk(s,'right');walk(s,'up',3);assert.equal(move(map,s,'right'),false);interact(map,s);
  walk(s,'down',3);walk(s,'right',2);assert.equal(move(map,s,'right'),false);interact(map,s);
  walk(s,'left',2);walk(s,'up',3);assert.equal(move(map,s,'right'),false);interact(map,s);
- walk(s,'down',7);walk(s,'right',3);assert.equal(interact(map,s).type,'win');assert.equal(s.won,true);assert.equal(move(map,s,'left'),false);
+ walk(s,'down',7);walk(s,'right',3);assert.equal(interact(map,s).type,'win');assert.equal(s.won,true);assert.equal(s.items.includes('explorer-token'),false);assert.equal(move(map,s,'left'),false);
 });
 test('locked gates cannot be bypassed and final exit needs both switches',()=>{
  const s=createState(map);walk(s,'up',3);walk(s,'up');walk(s,'right',4);walk(s,'down');assert.equal(move(map,s,'right'),false);
@@ -148,4 +148,22 @@ test('inventory lists only collected items and records keys used through Interac
  assert.deepEqual(inventoryEntries(map,s).map(i=>[i.label,i.status]),[['Archive key','Ready'],['Hammer','Ready'],['Seal crystal','Ready']]);
  s.player={x:13,y:6};s.facing='right';interact(map,s);
  assert.equal(inventoryEntries(map,s)[0].status,'Used');
+});
+
+test('optional Archive nook is reachable with the hammer and preserves its treasure after recovery',()=>{
+ const s=createState(map);firstSeal(s);
+ walkTo(s,12,3);s.facing='up';assert.equal(move(map,s,'up'),false);assert.deepEqual(s.items,[]);
+ walkTo(s,12,9);assert.deepEqual(s.tools,['hammer']);
+ walkTo(s,12,3);walk(s,'up',2);assert.ok(s.items.includes('explorer-token'));
+ assert.equal(inventoryEntries(map,s).find(i=>i.id==='explorer-token').optional,true);
+ undo(s);assert.ok(s.items.includes('explorer-token'));
+ resetPuzzle(map,s);assert.ok(s.items.includes('explorer-token'));
+ assert.equal(createState(map).items.includes('explorer-token'),false);
+});
+test('room scenery blocks movement while the required pickups and chamber remain reachable',()=>{
+ const s=createState(map);
+ for(const item of map.objects.filter(o=>o.type==='obstacle'))assert.equal(obstacle(map,s,item),true,item.id);
+ firstSeal(s);walkTo(s,9,3);s.facing='right';assert.equal(interact(map,s).type,'challenge');completeChallenge(map,s,'archive');
+ collectVaultCrystal(s);walkTo(s,13,6);walk(s,'right');walkTo(s,15,3);walkTo(s,17,6);walkTo(s,18,10);
+ assert.deepEqual(s.player,{x:18,y:10});
 });

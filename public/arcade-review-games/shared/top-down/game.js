@@ -5,7 +5,7 @@ const $=id=>document.getElementById(id);
 let state=createState(map), started=false, held=null, nextStep=0, elapsed=0, last=0;
 let questionDeck=shuffle(content.questions), activeQuestion=null;
 const board=$('board'), dialog=$('dialog');
-const symbols={block:'▤',plate:'◎',door:'⌑',challenge:'▣',sign:'i',lever:'ϟ',exit:'◇',tool:'⚒',item:'◆',key:'⚿'};
+const symbols={block:'▤',plate:'◎',door:'⌑',challenge:'▣',sign:'i',lever:'ϟ',exit:'◇',tool:'⚒',item:'◆',key:'⚿',obstacle:''};
 function element(tag,text,className){const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(className)e.className=className;return e;}
 function message(text,tone='neutral'){$('message').textContent=text;$('message').dataset.tone=tone;}
 function sealed(){return Number(doorOpen(map,state,map.doors[0]))+Number(state.opened.includes('east'))+Number(exitReady(map,state,map.objects.find(o=>o.type==='exit')));}
@@ -18,7 +18,7 @@ function render(){
     if(state.collected.includes(item.id))continue;
     let active=item.type==='door'?doorOpen(map,state,item):item.type==='plate'?state.blocks.some(b=>b.x===item.x&&b.y===item.y):item.type==='exit'?exitReady(map,state,item):state.activated.includes(item.id);
     const e=element('div',undefined,`entity ${item.type}${item.appearance?' '+item.appearance:''}${active?' active':''}${item.type==='door'&&active?' open':''}${state.solved.includes(item.id)?' done':''}`);
-    e.style.left=`${item.x/21*100}%`;e.style.top=`${item.y/13*100}%`;e.append(element('span',active&&item.type==='door'?'·':item.type==='exit'?(active?'↗':'🔒'):symbols[item.type]));
+    e.style.left=`${item.x/21*100}%`;e.style.top=`${item.y/13*100}%`;e.append(element('span',active&&item.type==='door'?'·':item.type==='exit'?(active?'↗':'🔒'):item.appearance==='treasure'?'★':symbols[item.type]));
     if(item.type==='lever'&&item.label)e.append(element('small',item.label,'switch-label'));
     if(item.type==='exit'&&item.sequencePuzzle){
       const puzzle=(map.puzzles||[]).find(p=>p.id===item.sequencePuzzle);
@@ -30,6 +30,7 @@ function render(){
   }
   $('player').style.left=`${state.player.x/21*100}%`;$('player').style.top=`${state.player.y/13*100}%`;$('player').dataset.facing=state.facing;
   const room=map.rooms.find(r=>state.player.x>=r.min&&state.player.x<=r.max)||map.rooms[0];
+  board.dataset.theme=room.theme||'hall';
   const viewMin=room.viewMin??0, viewMax=room.viewMax??(map.tiles[0].length-1);
   const viewWidth=viewMax-viewMin+1;
   board.style.aspectRatio=`${viewWidth}/${map.tiles.length}`;
@@ -57,7 +58,7 @@ function render(){
     badge.dataset.item=item.id;
     if(!previousItems.has(item.id)){badge.classList.add('pickup-flash');setTimeout(()=>badge.classList.remove('pickup-flash'),700);}
     const icon=element('span',item.icon,'inventory-icon');icon.setAttribute('aria-hidden','true');
-    badge.append(icon,element('span',item.label),element('small',item.status));
+    badge.append(icon,element('span',item.label),element('small',item.optional?'Bonus':item.status));
     return badge;
   }));
   if(!badges.length)$('inventory').append(element('span','No items yet — walk over loose items to collect them.','inventory-empty'));$('seals').textContent=inChamber?`Door lights: ${state.sequences[puzzle.id]||0} / ${puzzle.sequence.length}`:`Seals: ${sealed()} / 3`;
@@ -67,7 +68,10 @@ function render(){
   $('interact').disabled=!started||state.won;
   for(const b of document.querySelectorAll('[data-dir]'))b.disabled=!started||state.won;
 }
-for(const row of map.tiles)for(const tile of row)$('tiles').append(element('div',undefined,`tile${tile==='#'?' wall':''}`));
+for(const row of map.tiles)for(const [x,tile] of Array.from(row).entries()){
+  const room=map.rooms.find(r=>x>=r.min&&x<=r.max);
+  $('tiles').append(element('div',undefined,`tile ${room?.theme||'hall'}${tile==='#'?' wall':''}`));
+}
 function release(){held=null;nextStep=0;}
 function popup(label,title,paragraphs,actions){
   release();$('dialog-label').textContent=label;$('dialog-title').textContent=title;$('dialog-body').replaceChildren(...paragraphs.map(t=>element('p',t)));$('answers').replaceChildren();$('feedback').textContent='';$('dialog-actions').replaceChildren();
@@ -78,7 +82,7 @@ function resume(){dialog.close();release();last=0;board.focus();}
 let pickupFlashTimer;
 function pickupFeedback(items){
   for(const item of items){
-    const effect=element('div',symbols[item.type]||'✦','pickup-effect');
+    const effect=element('div',item.appearance==='treasure'?'★':symbols[item.type]||'✦','pickup-effect');
     effect.style.left=`${item.x/21*100}%`;effect.style.top=`${item.y/13*100}%`;
     effect.setAttribute('aria-hidden','true');$('world').append(effect);
     setTimeout(()=>effect.remove(),700);
@@ -111,7 +115,7 @@ function performInteraction(){
   if(result.type==='challenge')openQuestion(result.id);
   if(result.type==='win'){
     $('pause').disabled=true;
-    popup('ALL THREE SEALS OPEN','Adventure complete',[`You solved the block switch, unlocked the archive gate, recovered the seal crystal with your hammer, and solved the signal sequence.`,`Exploration time: ${Math.floor(elapsed/60)}m ${Math.floor(elapsed%60)}s · Moves: ${state.moves} · Review points: ${state.score}.`,`Chest question attempts: ${state.attempts.archive||0}. Try a new route on your next adventure.`],[{text:'Play again',run:restart,primary:true},{text:'Back to Arcade',run:()=>{window.location.href='/arcade-review-games/';}}]);
+    popup('ALL THREE SEALS OPEN','Adventure complete',[`You solved the block switch, unlocked the archive gate, recovered the seal crystal with your hammer, and solved the signal sequence.`,`Exploration time: ${Math.floor(elapsed/60)}m ${Math.floor(elapsed%60)}s · Moves: ${state.moves} · Review points: ${state.score}.`,`Chest question attempts: ${state.attempts.archive||0}. Optional treasure: ${state.items.includes('explorer-token')?'Explorer token found!':'not found — explore the Archive on your next adventure.'}`],[{text:'Play again',run:restart,primary:true},{text:'Back to Arcade',run:()=>{window.location.href='/arcade-review-games/';}}]);
   }
 }
 function openQuestion(id){

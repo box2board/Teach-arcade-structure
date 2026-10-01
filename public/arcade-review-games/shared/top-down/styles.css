@@ -29,3 +29,17 @@
 .inventory-badge.used{background:#162438;border-color:#40536a;color:#b0c0d4}.inventory-badge.used small{color:#b0c0d4}.inventory-badge.used .inventory-icon{color:#8498b0}
 .inventory-empty{font-size:.75rem;color:var(--muted)}
 @media(max-width:600px){.inventory-strip{padding:10px 12px}.inventory-badge{padding:6px 8px;gap:6px}}
+
+/* Room materials and solid scenery make each area recognizable. */
+.tile.hall:not(.wall){background:linear-gradient(135deg,#493f32,#39342d);border-color:#b9a27612}
+.tile.hall.wall{background:linear-gradient(#9a8b72 0 12%,#625a4b 12% 80%,#38362d 80%);border-color:#2a2c27}
+.tile.archive:not(.wall){background:repeating-linear-gradient(0deg,#273e38 0 22%,#20352f 22% 25%,#2c443b 25% 48%,#20352f 48% 50%);border-color:#d3c48b10}
+.tile.archive.wall{background:linear-gradient(#877557 0 12%,#564936 12% 80%,#2d3028 80%);border-color:#232b24}
+.tile.signals:not(.wall){background:linear-gradient(135deg,#17384a,#102b3d);border-color:#66dcf41a}
+.tile.signals.wall{background:linear-gradient(#508395 0 12%,#295266 12% 80%,#142e41 80%);border-color:#0c2231}
+#board[data-theme="hall"]{border-color:#b5a17e}#board[data-theme="archive"]{border-color:#9f976e}#board[data-theme="signals"]{border-color:#66dcf4}
+.entity.obstacle span{width:86%;height:90%;box-shadow:0 4px 0 #0006}
+.entity.column span{border-radius:35%;border:3px solid #d5c6a0;background:linear-gradient(90deg,#645e50,#b4a88a 40%,#716c5c 85%)}
+.entity.bookshelf span{border-radius:2px;border:3px solid #a48b5d;background:repeating-linear-gradient(0deg,transparent 0 42%,#aa8e5a 42% 50%),repeating-linear-gradient(90deg,#507b66 0 12%,#b39564 12% 24%,#685064 24% 38%,#4d7189 38% 51%);box-shadow:inset 0 0 5px #0009,0 4px 0 #0006}
+.entity.conduit span{border:3px solid #5e9cab;border-radius:6px;background:repeating-linear-gradient(0deg,#1b384b 0 24%,#6396a4 24% 29%);box-shadow:inset 0 0 8px #66dcf433,0 4px 0 #0006}
+.entity.treasure span{color:#ffe38a;border-color:#ffe38a;background:#584320;box-shadow:0 0 14px #ffe38a55}
