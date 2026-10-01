@@ -7,7 +7,7 @@ terrainSegments:[
 {from:61,to:73,top:11},{from:76,to:87,top:10},{from:89,to:101,top:12}
 ],
 hazardTiles:[{col:12,row:10},{col:25,row:9},{col:40,row:11},{col:53,row:8},{col:68,row:10},{col:82,row:9},{col:95,row:11}],
-checkpointTiles:[{col:34,row:11},{col:77,row:9}],
+checkpointTiles:[{col:34,row:11},{col:76,row:9}],
 zones:[
 {id:'downtown',from:0,to:650,label:'Downtown',kind:'downtown'},
 {id:'equation-district',from:650,to:1300,label:'Equation District',kind:'equations'},
@@ -37,7 +37,7 @@ collectibles:[{x:445,y:248},{x:910,y:190},{x:1510,y:182},{x:2310,y:198},{x:2915,
 movers:[
 {type:'drone',x:560,y:205,w:30,h:20,axis:'x',range:105,speed:82,movement:'flyPatrol',behavior:'hazard'},
 {type:'drone',x:1190,y:175,w:30,h:20,axis:'y',range:72,speed:70,movement:'flyPatrol',behavior:'hazard'},
-{type:'drone',x:2000,y:310,w:30,h:20,axis:'x',range:90,speed:96,movement:'groundPatrol',behavior:'hazard'},
+{type:'drone',x:2000,y:322,w:30,h:20,axis:'x',range:90,speed:96,movement:'groundPatrol',behavior:'hazard'},
 {type:'spark',x:2540,y:100,w:26,h:26,movement:'falling',triggerDistance:150,gravity:1220,resetDelay:1.2,behavior:'hazard'}
 ],
 movingPlatforms:[
