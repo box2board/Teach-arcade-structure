@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {adventure,createAdventure} from '../public/arcade-review-games/shared/top-down/map.js';
 import {content} from '../public/arcade-review-games/shared/top-down/constitution.js';
-import {createState,move,obstacle,interact,completeChallenge,exitReady,resetPuzzle} from '../public/arcade-review-games/shared/top-down/model.js';
+import {createState,move,obstacle,interact,completeChallenge,exitReady,resetPuzzle,doorOpen,cluesReady} from '../public/arcade-review-games/shared/top-down/model.js';
 import {createReview,answerReview,reviewSummary} from '../public/arcade-review-games/shared/top-down/review.js';
 function go(map,s,x,y){
  const queue=[{...s.player,path:[]}],seen=new Set();
@@ -24,6 +24,52 @@ function earn(map,s,id){
  }
  assert.equal(completeChallenge(map,s,id),true);
 }
+test('Hard completes the two-block gate, key chain, split clues and six-step code with real movement',()=>{
+ const map=createAdventure('hard'),s=createState(map);s.review=createReview(map,content.questions);
+ const encounters=Object.values(s.review.encounters);
+ assert.equal(map.mode,'hard');assert.equal(encounters.length,6);
+ assert.ok(encounters.every(e=>e.questions.length===2));
+ assert.equal(new Set(encounters.flatMap(e=>e.questions.map(q=>q.question.id))).size,12);
+ for(const dir of ['up','up','up','right','right'])assert.equal(move(map,s,dir),true);
+ assert.equal(doorOpen(map,s,map.doors[0]),false);
+ go(map,s,2,8);assert.equal(move(map,s,'right'),true);assert.equal(move(map,s,'right'),true);
+ assert.equal(doorOpen(map,s,map.doors[0]),false);
+ go(map,s,5,7);assert.equal(move(map,s,'down'),true);
+ assert.equal(doorOpen(map,s,map.doors[0]),true);
+ go(map,s,9,3);s.facing='right';assert.equal(interact(map,s).id,'archive');earn(map,s,'archive');
+ go(map,s,10,11);assert.equal(move(map,s,'down'),false);assert.match(s.moveFeedback.text,/Workshop key/);
+ go(map,s,11,9);s.facing='right';assert.equal(interact(map,s).id,'workshop-key-chest');earn(map,s,'workshop-key-chest');
+ go(map,s,10,11);assert.equal(move(map,s,'down'),true);assert.match(s.moveFeedback.text,/Workshop key used/);
+ assert.deepEqual(s.usedKeys,['workshop']);assert.deepEqual(s.keys,['archive']);
+ go(map,s,10,19);s.facing='right';assert.equal(interact(map,s).id,'hammer-pickup');earn(map,s,'hammer-pickup');
+ go(map,s,4,5);assert.equal(move(map,s,'up'),true);
+ go(map,s,4,3);s.facing='up';assert.equal(interact(map,s).id,'seal-crystal');earn(map,s,'seal-crystal');
+ go(map,s,4,11);assert.equal(move(map,s,'down'),true);
+ go(map,s,2,16);s.facing='right';assert.equal(interact(map,s).id,'lantern-chest');earn(map,s,'lantern-chest');
+ go(map,s,4,20);s.facing='down';assert.match(interact(map,s).text,/PART 1/);
+ assert.equal(cluesReady(map.puzzles[0],s),false);
+ go(map,s,12,22);s.facing='right';assert.match(interact(map,s).text,/PART 2/);
+ assert.equal(cluesReady(map.puzzles[0],s),true);
+ go(map,s,13,6);assert.equal(move(map,s,'right'),true);assert.deepEqual(s.usedKeys,['workshop','archive']);
+ go(map,s,17,2);s.facing='right';assert.equal(interact(map,s).id,'power-chest');earn(map,s,'power-chest');
+ for(const id of map.puzzles[0].sequence){const o=map.objects.find(o=>o.id===id);go(map,s,o.x-1,o.y);s.facing='right';const result=interact(map,s);assert.doesNotMatch(result.text,/Next:/);}
+ go(map,s,18,10);assert.equal(interact(map,s).type,'win');
+ assert.equal(s.score,1200);assert.deepEqual(reviewSummary(s.review),{total:12,completed:12,firstTry:12,attempts:12});
+});
+test('Hard needs both clues and blocks, allows repeated switches, and keeps earned progress on recovery',()=>{
+ const map=createAdventure('hard'),s=createState(map),p=map.puzzles[0];
+ s.player={x:15,y:3};s.facing='right';s.discovered.push('signal-start');
+ assert.match(interact(map,s).text,/both faded tablets/);assert.deepEqual(s.sequences,{});
+ s.tools.push('lantern');s.player={x:12,y:22};s.facing='right';interact(map,s);
+ s.player={x:15,y:3};interact(map,s);
+ s.player={x:17,y:6};interact(map,s);interact(map,s);assert.equal(s.sequences.signals,3);
+ interact(map,s);assert.equal(s.sequences.signals,0);assert.deepEqual(s.activated,[]);
+ s.blocks[0]={id:'stone',x:5,y:6};s.blocks[1]={id:'second-stone',x:5,y:9};assert.equal(doorOpen(map,s,map.doors[0]),true);
+ s.opened.push('workshop-gate');s.usedKeys.push('workshop');
+ resetPuzzle(map,s);assert.equal(doorOpen(map,s,map.doors[0]),false);
+ assert.equal(doorOpen(map,s,map.doors.find(d=>d.id==='workshop-gate')),true);
+ assert.equal(cluesReady(p,s),true);assert.deepEqual(s.tools,['lantern']);assert.deepEqual(s.usedKeys,['workshop']);
+});
 test('Easy requires six unique questions in three chests while keeping loose tools and simple puzzles',()=>{
  const map=createAdventure('easy'),s=createState(map);s.review=createReview(map,content.questions);
  const encounters=Object.values(s.review.encounters),entries=encounters.flatMap(e=>e.questions);

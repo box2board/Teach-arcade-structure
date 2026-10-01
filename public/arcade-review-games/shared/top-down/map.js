@@ -70,7 +70,7 @@ export const adventure = {
 };
 
 export function createAdventure(mode='easy'){
-  const map=structuredClone(adventure);map.mode=mode==='medium'?'medium':'easy';
+  const map=structuredClone(adventure);map.mode=['medium','hard'].includes(mode)?mode:'easy';
   if(map.mode==='easy'){
     Object.assign(map.objects.find(o=>o.id==='archive'),{label:'Archive chest',questionCount:2,reward:{type:'key',value:'archive',label:'Archive key',message:'Archive key earned! Walk into the east gate to unlock it.'}});
     Object.assign(map.objects.find(o=>o.id==='seal-crystal'),{type:'challenge',label:'Vault chest',questionCount:2,reward:{type:'item',value:'seal-crystal',label:'Seal crystal',message:'Seal crystal earned! Carry it to the Signal Chamber.'}});
@@ -121,5 +121,28 @@ export function createAdventure(mode='easy'){
   map.objects.find(o=>o.id==='chamber-sign').text='The signal code is hidden in the library south of Switch Hall. Earn its lantern and read the faded inscription. The Power chest here earns the exit power cell.';
   map.objects.find(o=>o.id==='lobby-sign').text='Push the block onto the amber floor switch to reach the Archive. Its south passage leads to the Workshop. Earn a hammer there, then return to open the north vault and south library.';
   map.decorations.push({x:8,y:14},{x:13,y:22},{x:1,y:14},{x:6,y:22});
+  if(map.mode==='hard'){
+    // Hard adds dependencies and multi-block planning, not extra questions.
+    for(const chest of map.objects.filter(o=>o.type==='challenge'))chest.questionCount=2;
+    map.blocks.push({id:'second-stone',x:3,y:8});
+    map.plates.push({id:'second-pressure',x:5,y:9});
+    Object.assign(map.doors[0],{plates:['pressure','second-pressure'],lockedText:'Both floor switches must stay occupied by blocks to open this gate.'});
+    delete map.doors[0].plate;
+    map.objects.push({id:'workshop-key-chest',type:'challenge',x:12,y:9,label:'Workshop key chest',questionCount:2,reward:{type:'key',value:'workshop',label:'Workshop key',message:'Workshop key earned! It opens the south passage of the Archive.'}});
+    map.doors.push({id:'workshop-gate',x:10,y:12,key:'workshop',keyLabel:'Workshop key',lockedText:'Workshop key required. Earn it from the lower Archive chest.'});
+    map.inventory.push({id:'workshop-key',type:'key',value:'workshop',label:'Workshop key'});
+    const inscription=map.objects.find(o=>o.id==='hidden-inscription');
+    Object.assign(inscription,{clue:'signal-start',text:'The lantern reveals CODE · PART 1: TOP → BOTTOM → BOTTOM. Find PART 2 on the faded Workshop tablet, then combine both parts in order.'});
+    map.objects.push({id:'workshop-inscription',type:'sign',appearance:'inscription',x:13,y:22,requiresTool:'lantern',clue:'signal-end',lockedText:'A faded tablet marked CODE · PART 2. Its words need lantern light.',text:'The lantern reveals CODE · PART 2: TOP → BOTTOM → TOP. Combine this after PART 1 from the Hidden Library.'});
+    map.clues=[{id:'signal-start',label:'Code · Part 1',text:'TOP → BOTTOM → BOTTOM'},{id:'signal-end',label:'Code · Part 2',text:'TOP → BOTTOM → TOP'}];
+    Object.assign(map.puzzles[0],{sequence:['north-switch','south-switch','south-switch','north-switch','south-switch','north-switch'],requiredClues:['signal-start','signal-end'],showNext:false,clueHint:'Read both faded tablets with the lantern: one in the Hidden Library, one in the Workshop.'});
+    delete map.puzzles[0].requiredClue;
+    map.rooms[0].objective='Keep both floor switches occupied. Later, use the hammer to explore the north vault and south library.';
+    map.rooms[1].objective='The Archive holds keys for two different gates. The south Workshop gate needs its own key.';
+    map.rooms[4].objective='Earn a lantern and reveal Code · Part 1. A second faded tablet waits in the Workshop.';
+    map.objects.find(o=>o.id==='lobby-sign').text='Two blocks, two amber floor switches. Both must stay occupied to open the Archive gate. Blocks can be pushed around corners; Undo or Reset puzzle can recover a trapped block.';
+    map.objects.find(o=>o.id==='chamber-sign').text='The six-step code has two parts. Use lantern light on the library inscription and the Workshop tablet, then read Part 1 followed by Part 2. This chamber also needs the crystal and power cell.';
+    map.objects.find(o=>o.id==='lantern-chest').reward.message='Lantern earned! Read the library inscription, then return to the Workshop to reveal its second tablet.';
+  }
   return map;
 }

@@ -3,7 +3,7 @@ const configuration=document.querySelector('script[data-map]');
 const [{createAdventure},{content}]=await Promise.all([import(configuration.dataset.map),import(configuration.dataset.questionSet)]);
 import {createReview,answerReview,reviewSummary} from './review.js';
 let map=createAdventure('easy');
-import { createState, move, undo, interact, doorOpen, completeChallenge, resetPuzzle, shuffle, exitReady, inventoryEntries, adventureResults } from './model.js';
+import { createState, move, undo, interact, doorOpen, completeChallenge, resetPuzzle, exitReady, cluesReady, inventoryEntries, adventureResults } from './model.js';
 const $=id=>document.getElementById(id);
 let state=createState(map), started=false, held=null, nextStep=0, elapsed=0, last=0;
 state.review=createReview(map,content.questions);
@@ -53,8 +53,8 @@ function render(){
   $('world').style.left=`${-viewMin/viewWidth*100}%`;
   $('map-labels').textContent=room.name;
     let objective=room.objective;
-  if(map.mode!=='medium'&&room===map.rooms[0] && state.tools.includes('hammer'))objective=state.items.includes('seal-crystal')?'Take the seal crystal to the final chamber.':'Walk into the cracked wall to the north with your hammer, then collect the seal crystal.';
-  if(map.mode!=='medium'&&room===map.rooms[1])objective=state.tools.includes('hammer')?(state.items.includes('seal-crystal')?'Unlock the east gate and continue to the final chamber.':'Return to Switch Hall. Walk into its cracked wall with your hammer.'):(map.mode==='medium'?'Earn the hammer from the Workshop chest and the key from the Archive chest.':'Find the hammer in the lower Archive and earn the key from the chest.');
+  if(map.mode==='easy'&&room===map.rooms[0] && state.tools.includes('hammer'))objective=state.items.includes('seal-crystal')?'Take the seal crystal to the final chamber.':'Walk into the cracked wall to the north with your hammer, then earn the seal crystal from the vault chest.';
+  if(map.mode==='easy'&&room===map.rooms[1])objective=state.tools.includes('hammer')?(state.items.includes('seal-crystal')?'Unlock the east gate and continue to the final chamber.':'Return to Switch Hall. Walk into its cracked wall with your hammer.'):'Find the hammer in the lower Archive and earn the key from the chest.';
   const exit=map.objects.find(o=>o.type==='exit'&&o.sequencePuzzle);
   const puzzle=(map.puzzles||[]).find(p=>p.id===exit?.sequencePuzzle);
   const inChamber=Boolean(exit&&roomAt(exit.x,exit.y)===room&&puzzle);
@@ -62,10 +62,11 @@ function render(){
   if(inChamber){
     const progress=state.sequences[puzzle.id]||0;
     const ready=exitReady(map,state,exit), missing=(exit.requiredItems||[]).filter(id=>!state.items.includes(id));
-    circuitPanel.replaceChildren(element('strong',ready?'EXIT UNLOCKED':'POWER THE EXIT'),element('p',puzzle.requiredClue&&!state.discovered.includes(puzzle.requiredClue)?'Find the signal code in the Hidden Library.':puzzle.sequence.map(id=>map.objects.find(o=>o.id===id)?.label||id).join(' → ')),element('p',`Door lights: ${progress} / ${puzzle.sequence.length} · Supplies: ${missing.length?missing.map(id=>map.inventory.find(i=>i.value===id)?.label||id).join(', ')+' needed':'ready'}`,'circuit-detail'));
-    objective=puzzle.requiredClue&&!state.discovered.includes(puzzle.requiredClue)?'Visit the Hidden Library with your lantern to reveal the code.':ready?'Walk to the glowing exit and interact.':progress===puzzle.sequence.length?'Earn the missing supplies from their chests, then return to the exit.':'Face a labeled switch and interact. Each correct step powers one door light.';
+    const known=cluesReady(puzzle,state);
+    circuitPanel.replaceChildren(element('strong',ready?'EXIT UNLOCKED':'POWER THE EXIT'),element('p',!known?(puzzle.clueHint||'Find the signal code in the Hidden Library.'):puzzle.showNext===false?'Combine Code · Part 1 followed by Part 2 from your journal.':puzzle.sequence.map(id=>map.objects.find(o=>o.id===id)?.label||id).join(' → ')),element('p',`Door lights: ${progress} / ${puzzle.sequence.length} · Supplies: ${missing.length?missing.map(id=>map.inventory.find(i=>i.value===id)?.label||id).join(', ')+' needed':'ready'}`,'circuit-detail'));
+    objective=!known?(puzzle.clueHint||'Visit the Hidden Library with your lantern to reveal the code.'):ready?'Walk to the glowing exit and interact.':progress===puzzle.sequence.length?'Earn the missing supplies from their chests, then return to the exit.':'Face a labeled switch and interact. Each correct step powers one door light.';
   }
-  $('difficulty').textContent=map.mode==='medium'?'Medium · 12 questions':'Easy · 6 questions';
+  $('difficulty').textContent=map.mode==='hard'?'Hard · 12 questions':map.mode==='medium'?'Medium · 12 questions':'Easy · 6 questions';
   $('room').textContent=room.name;$('objective').textContent=state.won?'Adventure complete!':objective;
   const previousItems=new Set(Array.from($('inventory').children,item=>item.dataset.item));
   const badges=inventoryEntries(map,state);
@@ -135,7 +136,7 @@ function performMove(dir){
   const was=doorOpen(map,state,map.doors[0]), previous=new Set(state.collected), openedBefore=new Set(state.opened);
   const moved=move(map,state,dir);render();
   if(moved){$('player').classList.add('walking');clearTimeout(walkingTimer);walkingTimer=setTimeout(()=>$('player').classList.remove('walking'),190);}
-  if(!was&&doorOpen(map,state,map.doors[0]))message('First seal opened! The block is holding the switch. Head through the west gate.');
+  if(!was&&doorOpen(map,state,map.doors[0]))message(map.mode==='hard'?'First seal opened! Both blocks are holding their switches. Head through the west gate.':'First seal opened! The block is holding the switch. Head through the west gate.');
   const pickups=map.objects.filter(o=>state.collected.includes(o.id)&&!previous.has(o.id));
   if(pickups.length)pickupFeedback(pickups);
   if(state.moveFeedback)message(state.moveFeedback.text,state.moveFeedback.tone);
@@ -151,7 +152,7 @@ function performInteraction(){
   if(result.type==='win'){
     $('pause').disabled=true;
     const results=adventureResults(map,state), learning=reviewSummary(state.review);
-    popup('ALL THREE SEALS OPEN','Adventure complete',[map.mode==='medium'?'You explored five rooms, earned a hammer and lantern, uncovered the hidden code, and powered the exit.':'You solved the block switch, unlocked the archive gate, recovered the seal crystal with your hammer, and solved the signal sequence.',`Treasure found: ${results.treasureFound} / ${results.treasureTotal} · Treasure bonus: +${results.bonusPoints} points.`,`Review points: ${results.reviewPoints} · Total points: ${results.totalPoints}.`,`Review completed: ${learning.completed} / ${learning.total} · Correct on first try: ${learning.firstTry} · Answer attempts: ${learning.attempts}.`,`Exploration time: ${Math.floor(elapsed/60)}m ${Math.floor(elapsed%60)}s · Moves: ${state.moves}.`],[{text:'Play again',run:restart,primary:true},{text:'Back to Arcade',run:()=>{window.location.href='/arcade-review-games/';}}]);
+    popup('ALL THREE SEALS OPEN','Adventure complete',[map.mode==='hard'?'You solved the two-block gate, earned separate keys, and combined two lantern clues to power the six-step exit code.':map.mode==='medium'?'You explored five rooms, earned a hammer and lantern, uncovered the hidden code, and powered the exit.':'You solved the block switch, unlocked the archive gate, recovered the seal crystal with your hammer, and solved the signal sequence.',`Treasure found: ${results.treasureFound} / ${results.treasureTotal} · Treasure bonus: +${results.bonusPoints} points.`,`Review points: ${results.reviewPoints} · Total points: ${results.totalPoints}.`,`Review completed: ${learning.completed} / ${learning.total} · Correct on first try: ${learning.firstTry} · Answer attempts: ${learning.attempts}.`,`Exploration time: ${Math.floor(elapsed/60)}m ${Math.floor(elapsed%60)}s · Moves: ${state.moves}.`],[{text:'Play again',run:restart,primary:true},{text:'Back to Arcade',run:()=>{window.location.href='/arcade-review-games/';}}]);
   }
 }
 function openQuestion(id){
@@ -219,9 +220,9 @@ function chooseMode(){
   popup('QUEST ARCADE · THE THREE SEALS','Choose your adventure',[
     'Easy: six review questions across three reward chests in three rooms. Find a loose hammer, then earn the archive key, seal crystal, and power cell. Puzzles have direct guidance.',
     'Medium: twelve review questions across five reward chests in five rooms. Earn the hammer, archive key, lantern, seal crystal, and power cell.',
-    'Explore the Workshop south of the Archive. Return with its hammer to enter the Hidden Library, then use the lantern to reveal the Signal Chamber code. Your journal saves the clue.',
+    'Hard: twelve review questions across six chests. Solve a two-block gate, earn separate keys, and use your lantern to assemble a six-step code from clues in different rooms. No next-switch hints.',
     'Question order and choices change each play. Missed answers allow retries. Chest progress stays saved when you return to the map.'
-  ],[{text:'Easy · 6 questions',run:()=>startMode('easy'),primary:true},{text:'Medium · 12 questions',run:()=>startMode('medium')}]);
+  ],[{text:'Easy · 6 questions',run:()=>startMode('easy'),primary:true},{text:'Medium · 12 questions',run:()=>startMode('medium')},{text:'Hard · 12 questions',run:()=>startMode('hard')}]);
 }
 function startMode(mode){map=createAdventure(mode);buildWorld();restart();}
 render();chooseMode();
