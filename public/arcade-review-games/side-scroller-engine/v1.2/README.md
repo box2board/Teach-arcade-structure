@@ -47,3 +47,36 @@ Do not migrate V1.1 production games simply because V1.2 exists. Engine generati
 
 ## Design rule
 New games should select mechanics because they fit the concept. A game does not need to use every mechanic. Reuse the engine and mechanic library — not the same level structure.
+
+
+## Level Identity and long-form design framework (alpha.3)
+
+V1.2 separates **mechanic capability** from **level identity**. A production game should define its identity before its geometry is finalized.
+
+Recommended `design` metadata:
+
+```js
+design: {
+  kind: 'production',
+  identity: 'One sentence describing what playing this game feels like.',
+  targetMinutes: [6, 10],
+  routeStyle: 'continuous-forward',
+  pacing: 'momentum-with-set-pieces',
+  verticality: 'medium',
+  primaryMechanics: ['slopes', 'stompableEnemies'],
+  signatureMechanic: 'slopes',
+  signatureSetPiece: 'long downhill run into a steep final climb'
+}
+```
+
+Zones describe gameplay beats, not merely visual regions. Each zone can declare a `role` and a `mechanics` list.
+
+The level-design validator checks required identity fields, meaningful multi-zone structure, target play-time metadata, declared mechanic use, zone coverage, repeated zone roles/mechanic combinations, question distribution, prototype-scale layouts, and mechanic mix.
+
+It also produces a **geometry/gameplay fingerprint** and exposes `LevelDesignValidator.similarity(a,b)`. Before promotion, compare a candidate fingerprint with existing games. High similarity triggers human review rather than automatic rejection.
+
+### Geometry-only diversity test
+Before publishing, ignore theme/art and ask: **Would this level still feel recognizably different from our other games if every surface were gray boxes and lines?** If not, redesign the route or mechanic emphasis before polishing the art.
+
+### Length rule
+Do not make levels longer by stretching empty horizontal distance. Long-form levels gain time through additional gameplay zones, vertical travel, alternate traversal, mechanic-specific set pieces, and well-spaced review moments. A normal production target is roughly **6–10 minutes for a first classroom play**, unless the concept intentionally calls for something different.
