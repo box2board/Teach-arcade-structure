@@ -116,8 +116,8 @@ window.ROOM_DATA = {
       id: 'intercept', type: 'Telegram analysis', kind: 'choice', kicker: 'ROOM 04 · INTERCEPTED MESSAGE', title: 'Read between the lines',
       requiresClues: ['lusitania-date'],
       evidence: [
-        { label: 'Decoded telegram · January 1917', text: 'Germany planned to resume unrestricted submarine warfare and proposed an alliance with Mexico if the United States entered the war. The message was part of Germany’s effort to manage the risk of U.S. involvement.', source: 'Teacher-written summary of the Zimmermann Telegram; not a direct quotation.' },
-        { label: 'Strategic context', text: 'Germany expected renewed submarine attacks could bring the United States into the conflict.', source: 'Analyst summary' }
+        { label: 'Decoded telegram · January 1917', text: 'Germany planned to resume unrestricted submarine warfare and proposed an alliance with Mexico if the United States entered the war. The message was part of Germany’s effort to manage the risk of U.S. involvement.', source: 'Historical analysis · based on the decoded Zimmermann Telegram' },
+        { label: 'Strategic context', text: 'Germany expected renewed submarine attacks could bring the United States into the conflict.', source: 'Strategic assessment · wartime policy analysis' }
       ],
       prompt: 'What strategy can you infer from the message and its context?',
       options: [
@@ -205,7 +205,7 @@ window.ROOM_DATA = {
     {
       id: 'telegram-lock', type: 'Two-part intelligence lock', kind: 'multi', kicker: 'INTELLIGENCE LOCK · DECODE THE STRATEGY', title: 'Two parts of one plan',
       evidence: [
-        { label: 'Zimmermann Telegram · 1917', text: 'Germany hoped the United States would remain neutral. If the U.S. entered the war, Germany proposed an alliance with Mexico.', source: 'Teacher-written summary of the decoded telegram; not a direct quotation.' }
+        { label: 'Zimmermann Telegram · 1917', text: 'Germany hoped the United States would remain neutral. If the U.S. entered the war, Germany proposed an alliance with Mexico.', source: 'Historical analysis · based on the decoded Zimmermann Telegram' }
       ],
       prompt: 'The lock opens only when both parts of Germany’s strategy are identified.',
       parts: [
