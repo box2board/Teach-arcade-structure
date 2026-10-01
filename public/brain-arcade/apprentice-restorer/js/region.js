@@ -5,10 +5,18 @@ export const region = {
   stations: [
     {id:'canal',name:'Canal junction',x:6,y:5,tool:'Flow wrench',objective:'Redirect the stream at the canal junction.',intro:'The stream enters from the west. Guide it south through the upper elbow, then east through the lower elbow toward the waterwheel.',hint:'An elbow has two open sides. Connect west to south in the upper elbow, then north to east in the lower one.',discovery:'A continuous channel redirects moving water to the wheel.'},
     {id:'wheel',name:'Waterwheel',x:10,y:10,tool:'Flow gauge',objective:'Adjust the waterwheel until its shaft runs steadily.',intro:'Water is reaching the wheel. Adjust the valve and test the shaft. Too little flow cannot lift the load; too much makes this worn wheel slip.',hint:'Compare low, middle, and high valve settings. Look for a steady shaft rather than the largest number.',discovery:'Moving water transfers energy to the wheel. This model runs steadily at 40–60% valve opening.'},
-    {id:'gears',name:'Gear workshop',x:18,y:5,tool:'Gear kit',objective:'Transfer the wheel’s motion to the generator at 50–70 rpm.',intro:'The wheel shaft turns a 20-tooth driver at 120 rpm. The generator needs 50–70 rpm. Try different driven gears and observe their speed.',hint:'When a small driver turns a larger gear, the larger gear turns more slowly. Compare the tooth counts.',discovery:'Meshing gears transfer motion. A 20-tooth driver at 120 rpm turns a 40-tooth gear at 60 rpm.'},
+    {id:'gears',name:'Gear workshop',x:18,y:5,tool:'Gear kit',objective:'Transfer motion to the generator at its working speed.',intro:'The wheel shaft turns the driver gear. The generator needs a slower, steady speed of 50–70 rpm. Change the size of the driven gear and observe the result. You do not need to calculate the speed.',hint:'When a small driver turns a larger gear, the larger gear turns more slowly. Compare the sizes.',discovery:'Gears transfer motion between parts. A larger driven gear turns more slowly. The generator then converts motion into electrical energy.'},
     {id:'gate',name:'Archive gate',x:22,y:11,tool:'Circuit kit',objective:'Complete a conducting circuit to power the archive gate.',intro:'The generator is ready. Connect its output to the gate motor and back to the generator. Test a connecting material and the return path.',hint:'The motor needs both a conducting connection and a complete return path. Copper conducts; rubber and wood insulate.',discovery:'A motor needs a closed conducting circuit. The chain transfers energy from moving water to motion, electricity, and motion again.'}
   ]
 };
+export function evaluateTransfer(config) {
+  const route=config.journey==='generator';
+  const conducting=config.wire==='aluminum';
+  const closed=config.loop==='closed';
+  return {success:route&&conducting&&closed,
+    message:!route?'The pump motor needs electrical energy. This route is missing the device that converts the turbine’s motion into electricity.':!closed?'The generator is turning, but the return wire is disconnected. Energy cannot reach the motor through an open circuit.':!conducting?'The circuit is connected, but the test strip is an insulator. Try a conducting material.':'The turbine turns the generator; electricity reaches the pump motor through the closed aluminum circuit. Water reaches the greenhouse!',
+    measurement:route&&conducting&&closed?'Turbine turning · Current flowing · Pump running':!route?'Turbine turning · No electrical supply':!closed?'Generator turning · Open circuit · Pump stopped':'Generator turning · Insulated connection · Pump stopped'};
+}
 export function evaluateExperiment(id, config) {
   if(id==='canal'){
     const first=config.upper==='ws',second=config.lower==='ne';

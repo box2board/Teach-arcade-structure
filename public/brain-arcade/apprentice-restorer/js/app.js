@@ -1,4 +1,4 @@
-import { region, evaluateExperiment } from './region.js';
+import { region, evaluateExperiment, evaluateTransfer } from './region.js';
 
 const root = document.querySelector('#restorer');
 if (root) startAdventure();
@@ -7,21 +7,24 @@ function startAdventure() {
   const canvas = $('#world'), ctx = canvas.getContext('2d');
   const dialog = $('#puzzle'), cell = 36, storageKey = 'teacharcade-restorer-waterworks-v1';
   const escape = text => String(text).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
-  const fresh = () => ({version:1,position:{...region.spawn},repairs:[],notes:{},attempts:{},hints:{},tools:[],completed:false});
+  const recordIds = [...region.stations.map(s=>s.id),'transfer'];
+  const fresh = () => ({version:2,position:{...region.spawn},repairs:[],notes:{},attempts:{},hints:{},trials:{},tools:[],completed:false,transferPassed:false});
   let state = fresh(), saveAvailable = true;
   try {
     const data = JSON.parse(localStorage.getItem(storageKey));
-    if (data?.version === 1 && Array.isArray(data.repairs)) {
+    if ([1,2].includes(data?.version) && Array.isArray(data.repairs)) {
       // Restore only a contiguous sequence: a malformed save cannot skip prerequisites.
       const repairs=[];
       for(const station of region.stations){if(!data.repairs.includes(station.id))break;repairs.push(station.id);}
-      const strings = source => Object.fromEntries(region.stations.map(s=>[s.id,typeof source?.[s.id]==='string'?source[s.id].slice(0,600):'']));
-      const counts = source => Object.fromEntries(region.stations.map(s=>[s.id,Number.isSafeInteger(source?.[s.id])&&source[s.id]>=0?source[s.id]:0]));
-      state = {...fresh(),repairs,notes:strings(data.notes),attempts:counts(data.attempts),hints:counts(data.hints),tools:region.stations.filter(s=>data.tools?.includes(s.id)).map(s=>s.id),completed:data.completed===true&&repairs.length===4};
+      const strings = source => Object.fromEntries(recordIds.map(id=>[id,typeof source?.[id]==='string'?source[id].slice(0,600):'']));
+      const counts = source => Object.fromEntries(recordIds.map(id=>[id,Number.isSafeInteger(source?.[id])&&source[id]>=0?source[id]:0]));
+      const trials = Object.fromEntries(recordIds.map(id=>[id,Array.isArray(data.trials?.[id])?data.trials[id].filter(t=>typeof t?.settings==='string'&&typeof t?.observation==='string').slice(-30).map(t=>({settings:t.settings.slice(0,500),observation:t.observation.slice(0,500)})):[]]));
+      const transferPassed=data.version===2&&data.transferPassed===true&&repairs.length===4;
+      state = {...fresh(),repairs,notes:strings(data.notes),attempts:counts(data.attempts),hints:counts(data.hints),trials,tools:region.stations.filter(s=>Array.isArray(data.tools)&&data.tools.includes(s.id)).map(s=>s.id),transferPassed,completed:data.completed===true&&transferPassed};
       if (Number.isInteger(data.position?.x)&&Number.isInteger(data.position?.y)) state.position={...data.position};
     }
   } catch { saveAvailable=false; }
-  let active=null, solved=false, paused=false, keys=new Set(), route=[], stepTime=0, lastTime=0, lastSave=0, destination=null;
+  let active=null, solved=false, paused=false, keys=new Set(), route=[], stepTime=0, lastTime=0, lastSave=0, destination=null, previousConfig=null;
   const complete = id => state.repairs.includes(id);
   const current = () => region.stations.find(s=>!complete(s.id));
   const accessible = station => region.stations.slice(0,region.stations.indexOf(station)).every(s=>complete(s.id));
@@ -34,13 +37,29 @@ function startAdventure() {
   function status(text){$('#status').textContent=text;}
   function refresh() {
     $('#progress').textContent=`${state.repairs.length} of 4 repairs`;
-    $('#objective').textContent=state.completed?'Valley restored! Print your notebook or revisit your discoveries.':current()?.objective||'Visit the archive gate and explain the energy journey.';
+    $('#objective').textContent=state.completed?'Valley restored! Print your notebook or revisit your discoveries.':current()?.objective||'Visit the archive gate and repair the wind-powered greenhouse pump.';
     $('#stations').innerHTML=region.stations.map(s=>`<button type="button" data-station="${s.id}" data-current="${current()?.id===s.id}"><span>${escape(s.name)}</span><small>${complete(s.id)?'✓ Repaired':accessible(s)?'Explore':'Locked'}</small></button>`).join('');
     $('#inventory').innerHTML='<li>Field notebook</li>'+state.tools.map(id=>`<li>${escape(region.stations.find(s=>s.id===id).tool)}</li>`).join('');
-    $('#notebook').innerHTML=state.repairs.length?state.repairs.map(id=>{const s=region.stations.find(s=>s.id===id);return `<article><h3>${escape(s.name)}</h3><p>${escape(s.discovery)}</p>${state.notes[id]?`<p><strong>My observation:</strong> ${escape(state.notes[id])}</p>`:''}<p>${state.attempts[id]||0} tests · ${state.hints[id]||0} hints</p></article>`;}).join('')+(state.completed?'<p><strong>Archive complete. You restored the valley.</strong></p>':''):'<p>Your observations will appear here after each repair.</p>';
+    $('#notebook').innerHTML=state.repairs.length?state.repairs.map(id=>{const s=region.stations.find(s=>s.id===id);return `<article><h3>${escape(s.name)}</h3><p>${escape(s.discovery)}</p>${trialHistory(id)}${state.notes[id]?`<p><strong>My observation:</strong> ${escape(state.notes[id])}</p>`:''}<p>${state.attempts[id]||0} tests · ${state.hints[id]||0} hints</p></article>`;}).join('')+(state.transferPassed?`<article><h3>Greenhouse transfer challenge</h3><p>Wind → turbine motion → generator → electrical energy → pump motor motion.</p>${trialHistory('transfer')}<p>${escape(state.notes.transfer||'')}</p><p>${state.attempts.transfer||0} tests · ${state.hints.transfer||0} hints</p></article>`:'')+(state.completed?'<p><strong>Archive complete. You restored the valley.</strong></p>':''):'<p>Your observations will appear here after each repair.</p>';
     $('#stations').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>walkTo(region.stations.find(s=>s.id===b.dataset.station))));
     $('#interact').disabled=paused;
     if(!saveAvailable)$('#save-status').textContent='Saving is unavailable. Keep this page open and print your notebook before leaving.';
+  }
+  function trialHistory(id) {
+    const trials=state.trials[id]||[];
+    return trials.length?`<details class="ar-trials"><summary>Compare ${trials.length} recorded trials</summary>${trials.slice(-5).map(t=>`<p><strong>Changed settings:</strong> ${escape(t.settings)}<br><strong>Observed:</strong> ${escape(t.observation)}</p>`).join('')}<p>Showing the latest ${Math.min(5,trials.length)} trials.</p></details>`:'';
+  }
+  function recordTrial(id,config,result) {
+    const changed=previousConfig?Object.keys(config).filter(k=>previousConfig[k]!==config[k]).length:0;
+    previousConfig={...config};
+    const settings=[...$('#experiment').querySelectorAll('select,input')].map(el=>{
+      const label=document.querySelector(`label[for="${el.id}"]`)?.textContent||el.id;
+      return `${label}: ${el.tagName==='SELECT'?el.selectedOptions[0]?.textContent:el.value}`;
+    }).join(' · ');
+    state.trials[id]=[...(state.trials[id]||[]),{settings,observation:result.measurement}].slice(-30);
+    state.attempts[id]=(state.attempts[id]||0)+1;
+    $('#trial-history').innerHTML=trialHistory(id);
+    return changed>1?' You changed more than one setting this time. In your next comparison, change just one so you can isolate its effect.':'';
   }
   function findPath(target) {
     const start=state.position,queue=[start],seen=new Set([`${start.x},${start.y}`]),parents=new Map();
@@ -66,53 +85,59 @@ function startAdventure() {
   const select = (label,id,options) => `<label for="${id}">${label}</label><select id="${id}">${options.map(([value,text])=>`<option value="${value}">${text}</option>`).join('')}</select>`;
   const diagram = id => id==='canal'?'<svg class="ar-diagram" viewBox="0 0 500 140" role="img" aria-label="Water enters from west into an upper elbow, travels south to a lower elbow, then east to the wheel"><path d="M30 35H170V105H445" fill="none" stroke="#9cb3c4" stroke-width="20"/><text x="15" y="18" fill="#142c42" font-size="14">Incoming stream</text><circle cx="170" cy="35" r="24" fill="#e87920"/><circle cx="170" cy="105" r="24" fill="#e87920"/><text x="205" y="40" fill="#142c42" font-size="14">Upper elbow</text><text x="205" y="86" fill="#142c42" font-size="14">Lower elbow</text><text x="370" y="135" fill="#142c42" font-size="14">To waterwheel</text></svg>':id==='gears'?'<svg class="ar-diagram" viewBox="0 0 500 140" role="img" aria-label="A 20-tooth driver gear meshes with a driven gear connected to the generator"><circle cx="155" cy="65" r="35" fill="#e87920"/><circle cx="245" cy="65" r="55" fill="#6d8ba3"/><circle cx="155" cy="65" r="8" fill="#142c42"/><circle cx="245" cy="65" r="8" fill="#142c42"/><text x="75" y="128" fill="#142c42" font-size="14">Driver: 20 teeth · 120 rpm</text><text x="315" y="65" fill="#142c42" font-size="14">Generator</text><path d="M300 65H410" stroke="#142c42" stroke-width="4"/></svg>':id==='gate'?'<svg class="ar-diagram" viewBox="0 0 500 140" role="img" aria-label="Generator output connects through a test material to the motor, which requires a return connection to the generator"><path d="M90 75V30H390V75M390 90V120H90V90" stroke="#6d8ba3" stroke-width="5" fill="none"/><rect x="45" y="55" width="90" height="40" rx="8" fill="#142c42"/><rect x="345" y="55" width="90" height="40" rx="8" fill="#142c42"/><text x="52" y="80" fill="white" font-size="14">Generator</text><text x="368" y="80" fill="white" font-size="14">Motor</text><rect x="204" y="18" width="74" height="24" rx="4" fill="#e87920"/><text x="188" y="65" fill="#142c42" font-size="14">Test material</text><text x="178" y="107" fill="#142c42" font-size="14">Return connection</text></svg>':'';
   function openStation(station) {
-    active=station;solved=false;keys.clear();route=[];destination=null;
+    active=station;solved=false;previousConfig=null;keys.clear();route=[];destination=null;
     if(!state.tools.includes(station.id)){state.tools.push(station.id);save();refresh();}
     $('#puzzle-title').textContent=station.name;
     $('#puzzle-intro').textContent=station.intro;
+    document.querySelector('label[for="reflection-text"]').textContent='What setting did you change? Compare two observations and explain why the repair worked.';
     $('#puzzle-step').textContent=`Station ${region.stations.indexOf(station)+1} of 4 · ${station.tool}`;
-    $('#feedback').textContent='Change a setting, then test and observe the result.';$('#feedback').dataset.success='false';
+    $('#feedback').textContent='Run a first test. Then change one setting and compare the result.';$('#feedback').dataset.success='false';
     $('#reflection').hidden=true;$('#reflection-text').value=state.notes[station.id]||'';$('#test').hidden=false;$('#hint').hidden=false;$('#test').disabled=false;
     let controls='';
     if(station.id==='canal')controls=select('Upper elbow openings','upper',[['we','West ↔ East'],['ne','North ↔ East'],['ws','West ↔ South'],['ns','North ↔ South']])+select('Lower elbow openings','lower',[['ws','West ↔ South'],['we','West ↔ East'],['ns','North ↔ South'],['ne','North ↔ East']]);
     if(station.id==='wheel')controls='<label for="flow">Valve opening: <output id="flow-value">20</output>%</label><input id="flow" type="range" min="0" max="100" step="10" value="20"><p>Test several openings. The shaft needs enough energy without slipping.</p>';
-    if(station.id==='gears')controls=select('Driven gear tooth count','teeth',[['10','10 teeth'],['20','20 teeth'],['40','40 teeth'],['60','60 teeth']]);
+    if(station.id==='gears')controls=select('Driven gear size','teeth',[['10','Smaller than driver'],['20','Same size as driver'],['40','Larger: twice the driver size'],['60','Largest: three times the driver size']])+'<details><summary>Optional math extension</summary><p>The driver has 20 teeth and turns at 120 rpm. The choices have 10, 20, 40, and 60 teeth. Predict the driven speed: 120 × 20 ÷ driven teeth.</p></details>';
     if(station.id==='gate')controls=select('Connecting material','material',[['rubber','Rubber'],['wood','Wood'],['copper','Copper']])+select('Return connection','returnPath',[['open','Disconnected'],['closed','Connected to generator']]);
-    $('#experiment').innerHTML=diagram(station.id)+controls+'<p class="ar-measurement" id="measurement">System awaiting test</p>';
+    $('#experiment').innerHTML=diagram(station.id)+controls+'<p class="ar-measurement" id="measurement">System awaiting test</p><div id="trial-history">'+trialHistory(station.id)+'</div>';
     if(station.id==='wheel')$('#flow').addEventListener('input',()=>{$('#flow-value').textContent=$('#flow').value;});
     if(complete(station.id)){
       $('#puzzle-intro').textContent=station.discovery;
-      if(station.id==='gate'&&!state.completed)showSynthesis();
+      if(station.id==='gate'&&!state.completed)showTransfer();
       else{$('#experiment').innerHTML='<p>This system is restored. Your observation is saved in the field notebook.</p>';$('#test').hidden=true;$('#hint').hidden=true;$('#feedback').textContent='You can add or revise your observation below.';$('#reflection').hidden=false;solved=true;}
     }
     dialog.showModal();
   }
-  function showSynthesis() {
-    $('#experiment').innerHTML=select('Trace the energy journey that opens the gate','energy',[['','Choose a sequence'],['reverse','Motor → water → generator → wheel'],['correct','Moving water → wheel and gears → generator → motor'],['skip','Water → electrical wires → gears → motor']]);
-    $('#puzzle-intro').textContent='The gate is powered. Before entering the archive, connect your discoveries: how did energy reach the gate motor?';
-    $('#test').textContent='Check energy journey';$('#test').disabled=false;$('#test').hidden=false;$('#hint').hidden=false;$('#reflection').hidden=true;solved=false;
+  function showTransfer() {
+    previousConfig=null;
+    $('#puzzle-title').textContent='A new system: greenhouse pump';
+    $('#puzzle-step').textContent='Apply your discoveries · Final challenge';
+    $('#experiment').innerHTML=select('Device between wind turbine and pump motor','journey',[['direct','Connect turbine directly to electrical wires'],['motor','Add another motor'],['generator','Connect a generator']])+select('Test strip in the wire','wire',[['wood','Dry wood'],['aluminum','Aluminum'],['plastic','Plastic']])+select('Return wire from pump motor','loop',[['open','Disconnected'],['closed','Connected back to supply']])+'<p class="ar-measurement" id="measurement">Wind turbine turning · Pump stopped</p><div id="trial-history">'+trialHistory('transfer')+'</div>';
+    $('#puzzle-intro').textContent='A greenhouse uses wind instead of water. Its turbine is turning, but the electric pump is stopped. Build the missing energy connection, then test the circuit. Apply what you discovered; the old waterwheel settings will not solve this new system.';
+    $('#test').textContent='Test greenhouse system';$('#test').disabled=false;$('#test').hidden=false;$('#hint').hidden=false;$('#reflection').hidden=true;solved=false;
   }
   function testSystem(){
     if(!active)return;
-    if($('#energy')){
-      const correct=$('#energy').value==='correct';$('#feedback').textContent=correct?'Exactly. Water provides the moving energy; the generator converts motion into electrical energy; the motor turns it back into motion. The archive is ready.':'Follow the actual order of your repairs. What turned the generator, and what did the electricity power?';$('#feedback').dataset.success=String(correct);
-      if(correct){state.completed=true;solved=true;$('#reflection').hidden=false;$('#test').disabled=true;save();refresh();}return;
-    }
     const config={};$('#experiment').querySelectorAll('select,input').forEach(el=>config[el.id]=el.value);
-    const result=evaluateExperiment(active.id,config);state.attempts[active.id]=(state.attempts[active.id]||0)+1;
-    $('#measurement').textContent=result.measurement;$('#feedback').textContent=result.message;$('#feedback').dataset.success=String(result.success);
+    const transfer=Boolean($('#journey'));
+    const result=transfer?evaluateTransfer(config):evaluateExperiment(active.id,config);
+    const comparison=recordTrial(transfer?'transfer':active.id,config,result);
+    $('#measurement').textContent=result.measurement;$('#feedback').textContent=result.message+comparison;$('#feedback').dataset.success=String(result.success);
+    if(transfer){
+      if(result.success){state.transferPassed=true;state.completed=true;solved=true;$('#reflection').hidden=false;$('#reflection-text').value=state.notes.transfer||'';document.querySelector('label[for="reflection-text"]').textContent='Trace the wind-to-pump energy journey. Which change made your pump work, and what observation supports your explanation?';$('#test').disabled=true;$('#hint').hidden=true;}
+      save();refresh();return;
+    }
     if(result.success){
       if(!complete(active.id))state.repairs.push(active.id);
       solved=true;$('#test').disabled=true;$('#hint').hidden=true;
-      if(active.id==='gate'){save();refresh();showSynthesis();$('#feedback').textContent=result.message+' One final connection: trace the energy journey.';}
+      if(active.id==='gate'){save();refresh();showTransfer();$('#feedback').textContent=result.message+' Now use your discoveries to repair a new system.';}
       else $('#reflection').hidden=false;
       status(result.message);
     }
     save();refresh();
   }
   $('#test').addEventListener('click',testSystem);
-  $('#hint').addEventListener('click',()=>{if(!active)return;state.hints[active.id]=(state.hints[active.id]||0)+1;$('#feedback').textContent=$('#energy')?'Start with moving water. The generator converts motion to electricity; the motor converts electricity to motion.':active.hint;save();refresh();});
-  $('#continue').addEventListener('click',()=>{if(!solved)return;state.notes[active.id]=$('#reflection-text').value.trim().slice(0,600);save();refresh();dialog.close();canvas.focus();status(state.completed?'Waterworks Valley restored! Your notebook is ready to print.':current()?`Repair saved. Next: ${current().name}.`:'Return to the archive gate to finish the energy journey.');});
+  $('#hint').addEventListener('click',()=>{if(!active)return;const id=$('#journey')?'transfer':active.id;state.hints[id]=(state.hints[id]||0)+1;$('#feedback').textContent=id==='transfer'?'What device converts motion to electrical energy? Aluminum is a conductor. Test the return wire separately to see whether current needs a complete loop.':active.hint;save();refresh();});
+  $('#continue').addEventListener('click',()=>{if(!solved)return;const id=$('#journey')?'transfer':active.id;state.notes[id]=$('#reflection-text').value.trim().slice(0,600);save();refresh();dialog.close();canvas.focus();status(state.completed?'Waterworks Valley restored! Your notebook is ready to print.':current()?`Repair saved. Next: ${current().name}.`:'Return to the archive gate to repair the greenhouse system.');});
   $('#close-puzzle').addEventListener('click',()=>dialog.close());
   dialog.addEventListener('close',()=>{keys.clear();$('#test').textContent='Test system';canvas.focus();});
   $('#interact').addEventListener('click',interact);
@@ -172,7 +197,7 @@ function startAdventure() {
     draw(time);requestAnimationFrame(frame);
   }
   $('#report').addEventListener('click',()=>{
-    document.querySelector('.ar-print-only')?.remove();const report=document.createElement('section');report.className='ar-print-only';report.innerHTML=`<h1>Apprentice Restorer</h1><h2>Waterworks Valley · Field notebook</h2><p>Name: ____________________ &nbsp; Class: ____________________</p><p>${state.repairs.length}/4 repairs · ${state.completed?'Archive complete':'Adventure in progress'}</p>`+region.stations.map(s=>`<article><h3>${escape(s.name)} · ${complete(s.id)?'Restored':'Not yet restored'}</h3>${complete(s.id)?`<p>${escape(s.discovery)}</p>`:''}<p>Experiments: ${state.attempts[s.id]||0} · Hints: ${state.hints[s.id]||0}</p><p>My observation: ${escape(state.notes[s.id]||'________________________________________')}</p></article>`).join('')+'<p>Explain the energy journey: moving water → wheel and gears → generator → motor.</p>';document.body.append(report);window.print();
+    document.querySelector('.ar-print-only')?.remove();const report=document.createElement('section');report.className='ar-print-only';report.innerHTML=`<h1>Worldsmith</h1><h2>Waterworks Valley · Field notebook</h2><p>Name: ____________________ &nbsp; Class: ____________________</p><p>Learning objective: Trace energy through a connected system and use test observations to explain how its parts work together.</p><p>${state.repairs.length}/4 repairs · ${state.completed?'Greenhouse transfer challenge complete':'Adventure in progress'}</p>`+region.stations.map(s=>`<article><h3>${escape(s.name)} · ${complete(s.id)?'Restored':'Not yet restored'}</h3>${complete(s.id)?`<p>${escape(s.discovery)}</p>`:''}<p>Experiments: ${state.attempts[s.id]||0} · Hints: ${state.hints[s.id]||0}</p>${(state.trials[s.id]||[]).slice(-3).map(t=>`<p>Settings: ${escape(t.settings)}<br>Observed: ${escape(t.observation)}</p>`).join('')}<p>My observation: ${escape(state.notes[s.id]||'________________________________________')}</p></article>`).join('')+`<article><h3>Apply it: wind-powered greenhouse</h3><p>${state.transferPassed?'Pump restored':'Not yet restored'} · ${state.attempts.transfer||0} tests · ${state.hints.transfer||0} hints</p>${(state.trials.transfer||[]).slice(-3).map(t=>`<p>Settings: ${escape(t.settings)}<br>Observed: ${escape(t.observation)}</p>`).join('')}<p>My explanation: ${escape(state.notes.transfer||'________________________________________')}</p><p>Trace the water-to-gate and wind-to-pump energy journeys. Identify where motion becomes electrical energy and where electricity becomes motion. If the return wire breaks, explain what stops and why.</p><p>____________________________________________________________</p></article>`;document.body.append(report);window.print();
   });
   refresh();if(state.repairs.length)status(state.completed?'Welcome back! The valley is restored. Your notebook is saved.':`Welcome back! Continue at ${current()?.name||'the archive gate'}.`);requestAnimationFrame(frame);
 }

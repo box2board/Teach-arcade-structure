@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#142c42">
-  <title>Apprentice Restorer · Waterworks Valley | Teach Arcade</title>
+  <title>Worldsmith · Waterworks Valley | Teach Arcade</title>
   <meta name="description" content="Explore Waterworks Valley, experiment with water flow, gears, and circuits, and restore a connected science adventure on Teach Arcade.">
   <meta name="robots" content="noindex,follow">
   <link rel="canonical" href="https://teacharcade.com/brain-arcade/apprentice-restorer/">
@@ -15,7 +15,8 @@
 <body class="restorer-page">
   <div id="site-header"></div>
   <main class="ar" id="restorer">
-    <div class="ar-title"><div><a href="/brain-arcade/">Brain Arcade</a><h1>Apprentice Restorer</h1><p>Waterworks Valley · First region</p></div><button type="button" id="restart">New adventure</button></div>
+    <div class="ar-title"><div><a href="/brain-arcade/">Brain Arcade</a><h1>Worldsmith</h1><p>Waterworks Valley · First region</p></div><button type="button" id="restart">New adventure</button></div>
+    <p class="ar-learning"><strong>Your discovery:</strong> Trace energy through a connected system. Change one setting, observe what happens, and use your evidence to make a repair.</p>
     <div class="ar-layout">
       <section class="ar-world" aria-label="Adventure">
         <div class="ar-mission"><span class="ar-kicker">Your mission</span><strong id="objective">Visit the canal junction and bring water back to the valley.</strong><span id="progress">0 of 4 repairs</span></div>
@@ -30,7 +31,7 @@
         <section class="ar-card"><span class="ar-kicker">Discoveries</span><h2>Field notebook</h2><div id="notebook"><p>Your observations will appear here after each repair.</p></div><button id="report">Print notebook</button><p class="ar-save" id="save-status">Saved locally; no account needed.</p></section>
       </aside>
     </div>
-    <details class="ar-teacher"><summary>For teachers</summary><p>This first region focuses on energy transfer: moving water turns a wheel, gears transfer motion, and a generator powers a circuit. Use it in pairs or as a science station. Puzzle numbers are simplified model values, not measurements from a real machine. Allow students to test unsuccessful configurations and explain what changed.</p><p>The printable notebook includes repairs, experiments, hints used, and student reflections. It stays on the current device; there is no class dashboard or online submission.</p></details>
+    <details class="ar-teacher"><summary>Learning objective & teacher guide · Grades 6–8</summary><p><strong>Objective:</strong> Students will trace how energy moves through a connected system and use observations from testing to explain how each part helps the system work.</p><p><strong>Evidence of learning:</strong> Students compare trials, distinguish energy transfer from conversion, and apply their discoveries to a new wind-powered greenhouse pump. Ask them to explain the energy journey and diagnose where a broken connection interrupts it. Reflection writing is not automatically graded.</p><p>Use in pairs or as a science station. Gear calculations are optional: students can choose gears by relative size and observe the resulting speed. For a math extension, calculate driven speed = driver speed × driver teeth ÷ driven teeth. Puzzle values are simplified model values, not real-machine measurements. The worn wheel’s slipping behavior is specific to this fictional mechanism, not a rule that more water always makes wheels worse.</p><p>The printable notebook includes trials, hints, and reflections. It stays on the current device; there is no class dashboard or online submission.</p></details>
     <noscript><p>This adventure needs JavaScript. Please enable it to play.</p></noscript>
   </main>
   <dialog id="puzzle" class="ar-dialog" aria-labelledby="puzzle-title"><div class="ar-dialog-head"><span class="ar-kicker" id="puzzle-step">Restoration station</span><button id="close-puzzle" aria-label="Close station">×</button></div><h2 id="puzzle-title"></h2><p id="puzzle-intro"></p><div id="experiment"></div><p id="feedback" role="status"></p><div class="ar-dialog-actions"><button id="test" class="ar-primary">Test system</button><button id="hint">Get a hint</button></div><div id="reflection" hidden><label for="reflection-text">What changed, and why did it work?</label><textarea id="reflection-text" rows="3" maxlength="600" placeholder="Describe one observation from your experiment."></textarea><button id="continue" class="ar-primary">Save observation & continue</button></div></dialog>
