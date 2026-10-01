@@ -11,30 +11,53 @@ function collectAtPlayer(map,state) {
   }
 }
 export function createState(map) {
-  return { player: { ...map.start }, facing: 'up', blocks: structuredClone(map.blocks), opened: [], activated: [], sequences: {}, tools: [], items: [], collected: [], keys: [], solved: [], attempts: {}, score: 0, won: false, moves: 0, history: [] };
+  return { player: { ...map.start }, facing: 'up', blocks: structuredClone(map.blocks), opened: [], activated: [], sequences: {}, tools: [], items: [], collected: [], keys: [], usedKeys: [], moveFeedback: null, solved: [], attempts: {}, score: 0, won: false, moves: 0, history: [] };
 }
 export function doorOpen(map, state, door) {
   if (state.opened.includes(door.id)) return true;
   const plate = map.plates.find(p => p.id === door.plate);
   return Boolean(plate && state.blocks.some(b => at(b, plate)));
 }
-export function obstacle(map, state, pos) {
+export function obstacle(map, state, pos, ignoreDoor = null) {
   if (!map.tiles[pos.y] || map.tiles[pos.y][pos.x] !== '.') return true;
-  if (map.doors.some(d => at(d, pos) && !doorOpen(map,state,d))) return true;
+  if (map.doors.some(d => at(d, pos) && d.id !== ignoreDoor && !doorOpen(map,state,d))) return true;
   return map.objects.some(o => at(o,pos) && o.type !== 'exit' && !isPickup(o) && !state.collected.includes(o.id));
 }
+function openWithInventory(state,door) {
+  state.opened.push(door.id);
+  if (door.key) {
+    state.keys=state.keys.filter(k=>k!==door.key);
+    if(!state.usedKeys.includes(door.key))state.usedKeys.push(door.key);
+    return {text:'Archive key used — the door is open.',tone:'correct'};
+  }
+  return {text:'Your hammer breaks the cracked wall! The vault is open.',tone:'correct'};
+}
+export function inventoryEntries(map,state) {
+  return (map.inventory||[]).flatMap(item=>{
+    const available=(item.type==='key'?state.keys:item.type==='tool'?state.tools:state.items).includes(item.value);
+    const used=item.type==='key'&&state.usedKeys.includes(item.value);
+    return available||used?[{...item,status:available?'Ready':'Used'}]:[];
+  });
+}
 export function move(map, state, direction) {
+  state.moveFeedback=null;
   if (state.won || !directions[direction]) return false;
   state.facing = direction;
   const [dx,dy] = directions[direction];
   const next = { x:state.player.x+dx, y:state.player.y+dy };
-  if (obstacle(map,state,next)) return false;
+  const lockedDoor=map.doors.find(d=>at(d,next)&&!doorOpen(map,state,d));
+  const canUnlock=lockedDoor&&((lockedDoor.key&&state.keys.includes(lockedDoor.key))||(lockedDoor.tool&&state.tools.includes(lockedDoor.tool)));
+  if (obstacle(map,state,next,canUnlock?lockedDoor.id:null)) {
+    if(lockedDoor)state.moveFeedback={text:lockedDoor.key?'Archive key required. Open the chest in the Archive.':lockedDoor.tool?'Hammer required. Find it in the Archive.':'Hold the amber floor switch down with the block.',tone:'neutral'};
+    return false;
+  }
   const block = state.blocks.find(b => at(b,next));
   const beyond = { x:next.x+dx, y:next.y+dy };
   if (block && (obstacle(map,state,beyond) || state.blocks.some(b => at(b,beyond)) || map.objects.some(o => isPickup(o) && at(o,beyond) && !state.collected.includes(o.id)))) return false;
   // Only physical moves are undone; awarded keys and learning progress remain intact.
   state.history.push({ player:{...state.player}, blocks:structuredClone(state.blocks) });
   if (state.history.length > 200) state.history.shift();
+  if (canUnlock)state.moveFeedback=openWithInventory(state,lockedDoor);
   if (block) Object.assign(block,beyond);
   state.player = next;
   collectAtPlayer(map,state);
@@ -61,12 +84,10 @@ export function interact(map,state) {
     if (doorOpen(map,state,door)) return {type:'message',text:'The gate is open.'};
     if (door.tool) {
       if (!state.tools.includes(door.tool)) return {type:'message',text:'This cracked wall needs a hammer. Search the Archive, then return here.'};
-      state.opened.push(door.id);
-      return {type:'message',text:'The hammer breaks the cracked wall! The vault beyond is open. Your hammer stays in your inventory.'};
+      return {type:'message',...openWithInventory(state,door)};
     }
     if (door.key && state.keys.includes(door.key)) {
-      state.opened.push(door.id); state.keys=state.keys.filter(k=>k!==door.key);
-      return {type:'message',text:'Key used. The east gate is now open.'};
+      return {type:'message',...openWithInventory(state,door)};
     }
     return {type:'message',text:door.plate?'Hold the amber floor switch down with the block.':'Find the archive key first.'};
   }

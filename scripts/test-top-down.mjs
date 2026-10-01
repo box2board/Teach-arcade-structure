@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { adventure as map } from '../public/arcade-review-games/shared/top-down/map.js';
-import {createState,move,interact,doorOpen,completeChallenge,undo,resetPuzzle,shuffle,exitReady,obstacle} from '../public/arcade-review-games/shared/top-down/model.js';
+import {createState,move,interact,doorOpen,completeChallenge,undo,resetPuzzle,shuffle,exitReady,obstacle,inventoryEntries} from '../public/arcade-review-games/shared/top-down/model.js';
 const walk=(state,dir,count=1)=>{for(let i=0;i<count;i++)assert.equal(move(map,state,dir),true,`${dir} at ${JSON.stringify(state.player)}`);};
 function walkTo(s,x,y) {
  const queue=[{x:s.player.x,y:s.player.y,path:[]}], seen=new Set();
@@ -18,7 +18,7 @@ function walkTo(s,x,y) {
 function collectVaultCrystal(s) {
  walkTo(s,12,9);
  assert.deepEqual(s.tools,['hammer']);
- walkTo(s,4,5);s.facing='up';interact(map,s);
+ walkTo(s,4,5);walk(s,'up');
  assert.equal(s.opened.includes('vault-wall'),true);
  walkTo(s,4,2);
  assert.deepEqual(s.items,['seal-crystal']);
@@ -28,8 +28,8 @@ test('full adventure can be completed using real movement and interactions',()=>
  const s=createState(map);firstSeal(s);
  walk(s,'up',3);walk(s,'right');assert.deepEqual(interact(map,s),{type:'challenge',id:'archive'});
  s.attempts.archive=1;assert.equal(completeChallenge(map,s,'archive'),true);assert.equal(completeChallenge(map,s,'archive'),false);assert.equal(s.score,100);
- collectVaultCrystal(s);walkTo(s,13,6);s.facing='right';assert.equal(interact(map,s).type,'message');assert.equal(s.opened.includes('east'),true);assert.equal(s.keys.length,0);
- walk(s,'right',2);walk(s,'up',3);assert.equal(move(map,s,'right'),false);interact(map,s);
+ collectVaultCrystal(s);walkTo(s,13,6);walk(s,'right');assert.equal(s.opened.includes('east'),true);assert.equal(s.keys.length,0);
+ walk(s,'right');walk(s,'up',3);assert.equal(move(map,s,'right'),false);interact(map,s);
  walk(s,'down',3);walk(s,'right',2);assert.equal(move(map,s,'right'),false);interact(map,s);
  walk(s,'left',2);walk(s,'up',3);assert.equal(move(map,s,'right'),false);interact(map,s);
  walk(s,'down',7);walk(s,'right',3);assert.equal(interact(map,s).type,'win');assert.equal(s.won,true);assert.equal(move(map,s,'left'),false);
@@ -112,4 +112,40 @@ test('pushing a block cannot bury an uncollected pickup',()=>{
  const custom=structuredClone(map);custom.objects.push({id:'loose-crystal',type:'item',item:'extra',x:4,y:6});
  const s=createState(custom);s.player={x:2,y:6};assert.equal(move(custom,s,'right'),false);
  assert.deepEqual(s.items,[]);assert.equal(s.blocks[0].x,3);
+});
+
+test('matching key unlocks on entry, is consumed once, and remains Used after undo',()=>{
+ const s=createState(map);completeChallenge(map,s,'archive');
+ s.player={x:13,y:5};move(map,s,'down');assert.deepEqual(s.keys,['archive']);assert.deepEqual(s.usedKeys,[]);
+ assert.equal(move(map,s,'right'),true);assert.deepEqual(s.player,{x:14,y:6});
+ assert.deepEqual(s.keys,[]);assert.deepEqual(s.usedKeys,['archive']);assert.ok(s.opened.includes('east'));
+ assert.equal(inventoryEntries(map,s).find(i=>i.id==='archive-key').status,'Used');
+ undo(s);assert.deepEqual(s.player,{x:13,y:6});assert.ok(s.opened.includes('east'));
+ move(map,s,'right');assert.deepEqual(s.usedKeys,['archive']);
+ resetPuzzle(map,s);assert.equal(inventoryEntries(map,s).find(i=>i.id==='archive-key').status,'Used');
+});
+test('wrong or absent key blocks entry and leaves inventory intact',()=>{
+ const s=createState(map);s.player={x:13,y:6};s.keys.push('other');
+ assert.equal(move(map,s,'right'),false);assert.match(s.moveFeedback.text,/Archive key required/);
+ assert.deepEqual(s.player,{x:13,y:6});assert.deepEqual(s.keys,['other']);assert.deepEqual(s.usedKeys,[]);
+});
+test('hammer opens a cracked wall on entry and stays Ready in inventory',()=>{
+ const s=createState(map);s.player={x:4,y:5};
+ assert.equal(move(map,s,'up'),false);assert.match(s.moveFeedback.text,/Hammer required/);
+ s.tools.push('hammer');assert.equal(move(map,s,'up'),true);assert.ok(s.opened.includes('vault-wall'));
+ assert.deepEqual(s.tools,['hammer']);assert.equal(inventoryEntries(map,s)[0].status,'Ready');
+ undo(s);assert.ok(s.opened.includes('vault-wall'));
+ const fresh=createState(map);assert.deepEqual(inventoryEntries(map,fresh),[]);
+});
+test('key stays held when another obstruction prevents entering the door tile',()=>{
+ const custom=structuredClone(map);custom.objects.push({id:'obstruction',type:'sign',x:14,y:6});
+ const s=createState(custom);s.player={x:13,y:6};s.keys.push('archive');
+ assert.equal(move(custom,s,'right'),false);assert.deepEqual(s.keys,['archive']);assert.deepEqual(s.opened,[]);
+});
+test('inventory lists only collected items and records keys used through Interact too',()=>{
+ const s=createState(map);assert.deepEqual(inventoryEntries(map,s),[]);
+ completeChallenge(map,s,'archive');s.tools.push('hammer');s.items.push('seal-crystal');
+ assert.deepEqual(inventoryEntries(map,s).map(i=>[i.label,i.status]),[['Archive key','Ready'],['Hammer','Ready'],['Seal crystal','Ready']]);
+ s.player={x:13,y:6};s.facing='right';interact(map,s);
+ assert.equal(inventoryEntries(map,s)[0].status,'Used');
 });

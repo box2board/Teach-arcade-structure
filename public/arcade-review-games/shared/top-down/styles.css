@@ -20,3 +20,12 @@
 .pickup-flash{animation:inventory-pickup .7s ease-out}
 @keyframes inventory-pickup{0%,45%{color:#ffe7a9;text-shadow:0 0 10px #ffe7a9}100%{text-shadow:none}}
 @media(prefers-reduced-motion:reduce){.pickup-effect{animation:none}.pickup-flash{animation:none;color:#ffe7a9}}
+
+.inventory-strip{padding:12px 20px;border-bottom:1px solid #40536a;background:#101d30}
+.inventory-strip>.label{display:block;margin-bottom:8px;font-size:.65rem}
+#inventory{display:flex;flex-wrap:wrap;gap:8px;font-size:.8125rem;min-height:36px;align-items:center}
+.inventory-badge{display:flex;align-items:center;gap:7px;padding:7px 10px;border:1px solid #617895;border-radius:8px;background:#21354d;line-height:1.2}
+.inventory-icon{font-size:1.2rem;color:#ffe7a9}.inventory-badge small{font-size:.65rem;color:#8dffbd}
+.inventory-badge.used{background:#162438;border-color:#40536a;color:#b0c0d4}.inventory-badge.used small{color:#b0c0d4}.inventory-badge.used .inventory-icon{color:#8498b0}
+.inventory-empty{font-size:.75rem;color:var(--muted)}
+@media(max-width:600px){.inventory-strip{padding:10px 12px}.inventory-badge{padding:6px 8px;gap:6px}}

@@ -1,6 +1,6 @@
 const configuration=document.querySelector('script[data-map]');
 const [{adventure:map},{content}]=await Promise.all([import(configuration.dataset.map),import(configuration.dataset.questionSet)]);
-import { createState, move, undo, interact, doorOpen, completeChallenge, resetPuzzle, shuffle, exitReady } from './model.js';
+import { createState, move, undo, interact, doorOpen, completeChallenge, resetPuzzle, shuffle, exitReady, inventoryEntries } from './model.js';
 const $=id=>document.getElementById(id);
 let state=createState(map), started=false, held=null, nextStep=0, elapsed=0, last=0;
 let questionDeck=shuffle(content.questions), activeQuestion=null;
@@ -37,8 +37,8 @@ function render(){
   $('world').style.left=`${-viewMin/viewWidth*100}%`;
   $('map-labels').textContent=room.name;
     let objective=room.objective;
-  if(room===map.rooms[0] && state.tools.includes('hammer'))objective=state.items.includes('seal-crystal')?'Take the seal crystal to the final chamber.':'Break the cracked wall to the north and collect the seal crystal.';
-  if(room===map.rooms[1])objective=state.tools.includes('hammer')?(state.items.includes('seal-crystal')?'Unlock the east gate and continue to the final chamber.':'Return to Switch Hall. Your hammer can break its cracked wall.'):'Find the hammer in the lower Archive and earn the key from the chest.';
+  if(room===map.rooms[0] && state.tools.includes('hammer'))objective=state.items.includes('seal-crystal')?'Take the seal crystal to the final chamber.':'Walk into the cracked wall to the north with your hammer, then collect the seal crystal.';
+  if(room===map.rooms[1])objective=state.tools.includes('hammer')?(state.items.includes('seal-crystal')?'Unlock the east gate and continue to the final chamber.':'Return to Switch Hall. Walk into its cracked wall with your hammer.'):'Find the hammer in the lower Archive and earn the key from the chest.';
   const exit=map.objects.find(o=>o.type==='exit'&&o.sequencePuzzle);
   const puzzle=(map.puzzles||[]).find(p=>p.id===exit?.sequencePuzzle);
   const inChamber=Boolean(exit&&exit.x>=room.min&&exit.x<=room.max&&puzzle);
@@ -50,7 +50,17 @@ function render(){
     objective=ready?'Walk to the glowing exit and interact.':progress===puzzle.sequence.length?'Recover the seal crystal in Switch Hall, then return to the exit.':'Face a labeled switch and interact. Each correct step powers one door light.';
   }
   $('room').textContent=room.name;$('objective').textContent=state.won?'Adventure complete!':objective;
-  $('inventory').textContent=[state.keys.length?'Key: archive':state.opened.includes('east')?'Key: used':'Key: —',state.tools.includes('hammer')?'Hammer':null,state.items.includes('seal-crystal')?'Seal crystal':null].filter(Boolean).join(' · ');$('seals').textContent=inChamber?`Door lights: ${state.sequences[puzzle.id]||0} / ${puzzle.sequence.length}`:`Seals: ${sealed()} / 3`;
+  const previousItems=new Set(Array.from($('inventory').children,item=>item.dataset.item));
+  const badges=inventoryEntries(map,state);
+  $('inventory').replaceChildren(...badges.map(item=>{
+    const badge=element('div',undefined,`inventory-badge${item.status==='Used'?' used':''}`);
+    badge.dataset.item=item.id;
+    if(!previousItems.has(item.id)){badge.classList.add('pickup-flash');setTimeout(()=>badge.classList.remove('pickup-flash'),700);}
+    const icon=element('span',item.icon,'inventory-icon');icon.setAttribute('aria-hidden','true');
+    badge.append(icon,element('span',item.label),element('small',item.status));
+    return badge;
+  }));
+  if(!badges.length)$('inventory').append(element('span','No items yet — walk over loose items to collect them.','inventory-empty'));$('seals').textContent=inChamber?`Door lights: ${state.sequences[puzzle.id]||0} / ${puzzle.sequence.length}`:`Seals: ${sealed()} / 3`;
   board.setAttribute('aria-label',`${room.name}. Position column ${state.player.x}, row ${state.player.y}. ${objective} Move with arrows or WASD; interact with E or Space.`);
   $('undo').disabled=!started||state.won||!state.history.length;
   $('reset-puzzle').disabled=!started||state.won;
@@ -78,13 +88,21 @@ function pickupFeedback(items){
   clearTimeout(pickupFlashTimer);pickupFlashTimer=setTimeout(()=>inventory.classList.remove('pickup-flash'),700);
   message(items.map(item=>item.text||`${item.label||'Item'} collected!`).join(' '),'correct');
 }
+function doorFeedback(door){
+  if(!door)return;
+  const effect=element('div',door.tool?'✦':'⚿','pickup-effect');
+  effect.style.left=`${door.x/21*100}%`;effect.style.top=`${door.y/13*100}%`;
+  effect.setAttribute('aria-hidden','true');$('world').append(effect);setTimeout(()=>effect.remove(),700);
+}
 function performMove(dir){
   if(!started||dialog.open||state.won)return;
-  const was=doorOpen(map,state,map.doors[0]), previous=new Set(state.collected);
+  const was=doorOpen(map,state,map.doors[0]), previous=new Set(state.collected), openedBefore=new Set(state.opened);
   move(map,state,dir);render();
   if(!was&&doorOpen(map,state,map.doors[0]))message('First seal opened! The block is holding the switch. Head through the west gate.');
   const pickups=map.objects.filter(o=>state.collected.includes(o.id)&&!previous.has(o.id));
   if(pickups.length)pickupFeedback(pickups);
+  if(state.moveFeedback)message(state.moveFeedback.text,state.moveFeedback.tone);
+  for(const id of state.opened.filter(id=>!openedBefore.has(id)))doorFeedback(map.doors.find(d=>d.id===id));
 }
 function performInteraction(){
   if(!started||dialog.open||state.won)return;
@@ -107,7 +125,7 @@ function openQuestion(id){
       if(choice!==question.answer){b.classList.add('wrong');b.disabled=true;$('feedback').textContent='That answer does not fit. Try another choice, or return to the map and come back.';return;}
       activeQuestion.answered=true;completeChallenge(map,state,id);b.classList.add('correct');for(const answer of $('answers').children)answer.disabled=true;
       $('feedback').textContent=`Key earned! ${question.explanation}`;
-      $('dialog-actions').replaceChildren();const next=element('button','Collect key & continue','primary');next.addEventListener('click',()=>{activeQuestion=null;resume();message('Archive key collected. Face the east gate and interact to unlock it.');render();});$('dialog-actions').append(next);next.focus();render();
+      $('dialog-actions').replaceChildren();const next=element('button','Collect key & continue','primary');next.addEventListener('click',()=>{activeQuestion=null;resume();message('Archive key collected. Walk into the east gate to unlock it automatically.');render();});$('dialog-actions').append(next);next.focus();render();
     });$('answers').append(b);
   }
 }
@@ -134,5 +152,5 @@ $('reset-puzzle').addEventListener('click',()=>popup('RESET PUZZLE','Return the 
 $('pause').addEventListener('click',pause);
 dialog.addEventListener('cancel',e=>{e.preventDefault();if(started&&!state.won){activeQuestion=null;resume();}});
 function frame(now){if(started&&!dialog.open&&!state.won&&!document.hidden){if(last)elapsed+=Math.min((now-last)/1000,.1);if(held&&now>=nextStep){performMove(held);nextStep=now+165;}}last=now;requestAnimationFrame(frame);}
-render();popup('QUEST ARCADE · THE THREE SEALS','Explore the courthouse',['Solve three connected rooms: hold a floor switch with a block, earn a key from the archive chest, collect a hammer to reopen a path in Switch Hall, and bring the hidden seal crystal to the final signal puzzle.','Move with arrows or WASD. Face an object and press E / Space to interact. Walk over loose items to collect them automatically. On a tablet, use the buttons below the map.','There is no time limit. Undo and Reset puzzle help you recover from a tricky push.'],[{text:'Start adventure',run:restart,primary:true}]);
+render();popup('QUEST ARCADE · THE THREE SEALS','Explore the courthouse',['Solve three connected rooms: hold a floor switch with a block, earn a key from the archive chest, collect a hammer and walk into the cracked wall to reopen a path in Switch Hall, and bring the hidden seal crystal to the final signal puzzle.','Move with arrows or WASD. Face an object and press E / Space to interact. Walk over loose items to collect them automatically. On a tablet, use the buttons below the map.','There is no time limit. Undo and Reset puzzle help you recover from a tricky push.'],[{text:'Start adventure',run:restart,primary:true}]);
 requestAnimationFrame(frame);
