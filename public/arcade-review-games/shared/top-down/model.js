@@ -32,6 +32,12 @@ function openWithInventory(state,door) {
   }
   return {text:'Your hammer breaks the cracked wall! The vault is open.',tone:'correct'};
 }
+export function adventureResults(map,state) {
+  const treasures=map.objects.filter(o=>isPickup(o)&&o.optional);
+  const found=treasures.filter(o=>state.collected.includes(o.id));
+  const bonusPoints=found.reduce((total,o)=>total+(Number.isFinite(o.bonusPoints)&&o.bonusPoints>0?o.bonusPoints:0),0);
+  return { treasureFound:found.length, treasureTotal:treasures.length, reviewPoints:state.score, bonusPoints, totalPoints:state.score+bonusPoints };
+}
 export function inventoryEntries(map,state) {
   return (map.inventory||[]).flatMap(item=>{
     const available=(item.type==='key'?state.keys:item.type==='tool'?state.tools:state.items).includes(item.value);

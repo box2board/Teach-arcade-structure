@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { adventure as map } from '../public/arcade-review-games/shared/top-down/map.js';
-import {createState,move,interact,doorOpen,completeChallenge,undo,resetPuzzle,shuffle,exitReady,obstacle,inventoryEntries} from '../public/arcade-review-games/shared/top-down/model.js';
+import {createState,move,interact,doorOpen,completeChallenge,undo,resetPuzzle,shuffle,exitReady,obstacle,inventoryEntries,adventureResults} from '../public/arcade-review-games/shared/top-down/model.js';
 const walk=(state,dir,count=1)=>{for(let i=0;i<count;i++)assert.equal(move(map,state,dir),true,`${dir} at ${JSON.stringify(state.player)}`);};
 function walkTo(s,x,y) {
  const queue=[{x:s.player.x,y:s.player.y,path:[]}], seen=new Set();
@@ -166,4 +166,14 @@ test('room scenery blocks movement while the required pickups and chamber remain
  firstSeal(s);walkTo(s,9,3);s.facing='right';assert.equal(interact(map,s).type,'challenge');completeChallenge(map,s,'archive');
  collectVaultCrystal(s);walkTo(s,13,6);walk(s,'right');walkTo(s,15,3);walkTo(s,17,6);walkTo(s,18,10);
  assert.deepEqual(s.player,{x:18,y:10});
+});
+
+test('optional treasure adds its bonus exactly once, preserves review points, and survives recovery',()=>{
+ const s=createState(map);firstSeal(s);s.attempts.archive=1;completeChallenge(map,s,'archive');
+ assert.deepEqual(adventureResults(map,s),{treasureFound:0,treasureTotal:1,reviewPoints:100,bonusPoints:0,totalPoints:100});
+ walkTo(s,12,9);walkTo(s,12,3);walk(s,'up',2);
+ assert.deepEqual(adventureResults(map,s),{treasureFound:1,treasureTotal:1,reviewPoints:100,bonusPoints:50,totalPoints:150});
+ undo(s);walk(s,'up');assert.equal(adventureResults(map,s).totalPoints,150);
+ resetPuzzle(map,s);assert.equal(adventureResults(map,s).bonusPoints,50);assert.equal(s.score,100);
+ assert.deepEqual(adventureResults(map,createState(map)),{treasureFound:0,treasureTotal:1,reviewPoints:0,bonusPoints:0,totalPoints:0});
 });

@@ -45,7 +45,7 @@ export const adventure = {
     { id:'signal-column-a', type:'obstacle', appearance:'conduit', x:17, y:4 },
     { id:'signal-column-b', type:'obstacle', appearance:'conduit', x:17, y:5 },
     { id:'signal-column-c', type:'obstacle', appearance:'conduit', x:17, y:9 },
-    { id:'explorer-token', type:'item', appearance:'treasure', x:12, y:1, item:'explorer-token', label:'Explorer token', optional:true, text:'Explorer token found! This optional treasure rewards your detour. It is not needed for the exit.' },
+    { id:'explorer-token', type:'item', appearance:'treasure', x:12, y:1, item:'explorer-token', label:'Explorer token', optional:true, bonusPoints:50, text:'Explorer token found! +50 treasure bonus points. This bonus treasure is not needed for the exit.' },
     { id:'archive-hint', type:'sign', x:9, y:10, text:'A forgotten nook lies above the archive chest. Look for cracked stone between the shelves. The hammer may reveal an optional treasure.' },
     { id: 'lobby-sign', type: 'sign', x: 1, y: 9, text: 'A heavy block holds a floor switch down. Push the block onto the amber switch to open the west gate. The cracked wall to the north needs a hammer. Look for one in the Archive, then return here.' },
     { id: 'archive', type: 'challenge', x: 10, y: 3, key: 'archive' },
