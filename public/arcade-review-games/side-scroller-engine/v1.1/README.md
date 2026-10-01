@@ -1,7 +1,7 @@
 # Teach Arcade Side-Scroller Engine V1.1
 
 Version: **1.1.0**  
-Status: **Candidate — regression testing before production promotion**
+Status: **Stable production engine**
 
 V1.1 is based on the stable V1.0.4 production engine and keeps game-package contract 1.
 
@@ -33,4 +33,4 @@ The shared shell asks the player to choose a difficulty before gameplay starts.
 - Gameplay and visual validators, including checkpoint obstruction QA from V1.0.4.
 
 ## Rollout rule
-Test V1.1 first on a candidate game. Do not migrate the existing production Moon, Egypt, or WWI games until regression playtesting confirms randomization, answer remapping, all three difficulty modes, checkpoints, rewards, questions and finish behavior.
+V1.1 was regression-tested first with Cell City: Organelle Run. New side-scrollers should use V1.1. Existing V1.0.x games may be migrated without changing their game-package contract. Continue game-specific desktop/touch playtesting and QA before publishing new levels.
