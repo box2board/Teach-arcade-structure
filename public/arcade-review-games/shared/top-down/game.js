@@ -1,8 +1,8 @@
 import { artwork } from './artwork.js';
 const configuration=document.querySelector('script[data-map]');
-const [{adventure:easyMap,createAdventure},{content}]=await Promise.all([import(configuration.dataset.map),import(configuration.dataset.questionSet)]);
+const [{createAdventure},{content}]=await Promise.all([import(configuration.dataset.map),import(configuration.dataset.questionSet)]);
 import {createReview,answerReview,reviewSummary} from './review.js';
-let map=easyMap;
+let map=createAdventure('easy');
 import { createState, move, undo, interact, doorOpen, completeChallenge, resetPuzzle, shuffle, exitReady, inventoryEntries, adventureResults } from './model.js';
 const $=id=>document.getElementById(id);
 let state=createState(map), started=false, held=null, nextStep=0, elapsed=0, last=0;
@@ -65,7 +65,7 @@ function render(){
     circuitPanel.replaceChildren(element('strong',ready?'EXIT UNLOCKED':'POWER THE EXIT'),element('p',puzzle.requiredClue&&!state.discovered.includes(puzzle.requiredClue)?'Find the signal code in the Hidden Library.':puzzle.sequence.map(id=>map.objects.find(o=>o.id===id)?.label||id).join(' → ')),element('p',`Door lights: ${progress} / ${puzzle.sequence.length} · Supplies: ${missing.length?missing.map(id=>map.inventory.find(i=>i.value===id)?.label||id).join(', ')+' needed':'ready'}`,'circuit-detail'));
     objective=puzzle.requiredClue&&!state.discovered.includes(puzzle.requiredClue)?'Visit the Hidden Library with your lantern to reveal the code.':ready?'Walk to the glowing exit and interact.':progress===puzzle.sequence.length?'Earn the missing supplies from their chests, then return to the exit.':'Face a labeled switch and interact. Each correct step powers one door light.';
   }
-  $('difficulty').textContent=map.mode==='medium'?'Medium · 12 questions':'Easy · 1 question';
+  $('difficulty').textContent=map.mode==='medium'?'Medium · 12 questions':'Easy · 6 questions';
   $('room').textContent=room.name;$('objective').textContent=state.won?'Adventure complete!':objective;
   const previousItems=new Set(Array.from($('inventory').children,item=>item.dataset.item));
   const badges=inventoryEntries(map,state);
@@ -217,13 +217,12 @@ dialog.addEventListener('cancel',e=>{e.preventDefault();if(started&&!state.won){
 function frame(now){if(started&&!dialog.open&&!state.won&&!document.hidden){if(last)elapsed+=Math.min((now-last)/1000,.1);if(held&&now>=nextStep){performMove(held);nextStep=now+165;}}last=now;requestAnimationFrame(frame);}
 function chooseMode(){
   popup('QUEST ARCADE · THE THREE SEALS','Choose your adventure',[
-    'Easy: the original route with one review question, loose tools, and direct guidance.',
+    'Easy: six review questions across three reward chests in three rooms. Find a loose hammer, then earn the archive key, seal crystal, and power cell. Puzzles have direct guidance.',
     'Medium: twelve review questions across five reward chests in five rooms. Earn the hammer, archive key, lantern, seal crystal, and power cell.',
     'Explore the Workshop south of the Archive. Return with its hammer to enter the Hidden Library, then use the lantern to reveal the Signal Chamber code. Your journal saves the clue.',
     'Question order and choices change each play. Missed answers allow retries. Chest progress stays saved when you return to the map.'
-  ],[{text:'Easy · 1 question',run:()=>startMode('easy'),primary:true},{text:'Medium · 12 questions',run:()=>startMode('medium')}]);
+  ],[{text:'Easy · 6 questions',run:()=>startMode('easy'),primary:true},{text:'Medium · 12 questions',run:()=>startMode('medium')}]);
 }
 function startMode(mode){map=createAdventure(mode);buildWorld();restart();}
 render();chooseMode();
 requestAnimationFrame(frame);
-

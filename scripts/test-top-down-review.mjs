@@ -24,6 +24,28 @@ function earn(map,s,id){
  }
  assert.equal(completeChallenge(map,s,id),true);
 }
+test('Easy requires six unique questions in three chests while keeping loose tools and simple puzzles',()=>{
+ const map=createAdventure('easy'),s=createState(map);s.review=createReview(map,content.questions);
+ const encounters=Object.values(s.review.encounters),entries=encounters.flatMap(e=>e.questions);
+ assert.equal(encounters.length,3);assert.ok(encounters.every(e=>e.questions.length===2));
+ assert.equal(new Set(entries.map(e=>e.question.id)).size,6);
+ assert.equal(map.objects.find(o=>o.id==='hammer-pickup').type,'tool');
+ assert.equal(map.rooms.length,3);assert.equal(map.puzzles[0].sequence.length,3);
+ for(const dir of ['up','up','up','right','right'])assert.equal(move(map,s,dir),true);
+ go(map,s,12,9);assert.deepEqual(s.tools,['hammer']);
+ go(map,s,9,3);s.facing='right';assert.equal(interact(map,s).id,'archive');
+ answerReview(s.review,'archive',s.review.encounters.archive.questions[0].question.answer);
+ assert.equal(completeChallenge(map,s,'archive'),false);assert.deepEqual(s.keys,[]);
+ earn(map,s,'archive');
+ go(map,s,4,5);assert.equal(move(map,s,'up'),true);
+ go(map,s,4,3);s.facing='up';assert.equal(interact(map,s).id,'seal-crystal');earn(map,s,'seal-crystal');
+ go(map,s,13,6);assert.equal(move(map,s,'right'),true);
+ for(const [x,y] of [[15,3],[17,6],[15,3]]){go(map,s,x,y);s.facing='right';interact(map,s);}
+ const exit=map.objects.find(o=>o.type==='exit');assert.equal(exitReady(map,s,exit),false);
+ go(map,s,17,2);s.facing='right';assert.equal(interact(map,s).id,'power-chest');earn(map,s,'power-chest');
+ go(map,s,18,10);assert.equal(interact(map,s).type,'win');
+ assert.equal(s.score,600);assert.deepEqual(reviewSummary(s.review),{total:6,completed:6,firstTry:6,attempts:6});
+});
 test('Medium allocates twelve unique questions across five encounters and shuffles choices',()=>{
  const map=createAdventure('medium'),r=createReview(map,content.questions,()=>0);
  const entries=Object.values(r.encounters).flatMap(e=>e.questions);
@@ -34,7 +56,7 @@ test('Medium allocates twelve unique questions across five encounters and shuffl
  assert.equal(r.encounters['power-chest'].questions.length,3);
  assert.notDeepEqual(entries[0].question.choices,content.questions.find(q=>q.id===entries[0].question.id).choices);
  assert.equal(adventure.objects.find(o=>o.id==='hammer-pickup').type,'tool');
- assert.equal(createReview(createAdventure('easy'),content.questions).encounters.archive.questions.length,1);
+ assert.equal(createReview(createAdventure('easy'),content.questions).encounters.archive.questions.length,2);
 });
 test('partial encounters cannot award rewards; retries and recovery preserve progress',()=>{
  const map=createAdventure('medium'),s=createState(map);s.review=createReview(map,content.questions);

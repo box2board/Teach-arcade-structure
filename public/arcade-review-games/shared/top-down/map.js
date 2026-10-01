@@ -71,7 +71,15 @@ export const adventure = {
 
 export function createAdventure(mode='easy'){
   const map=structuredClone(adventure);map.mode=mode==='medium'?'medium':'easy';
-  if(map.mode==='easy')return map;
+  if(map.mode==='easy'){
+    Object.assign(map.objects.find(o=>o.id==='archive'),{label:'Archive chest',questionCount:2,reward:{type:'key',value:'archive',label:'Archive key',message:'Archive key earned! Walk into the east gate to unlock it.'}});
+    Object.assign(map.objects.find(o=>o.id==='seal-crystal'),{type:'challenge',label:'Vault chest',questionCount:2,reward:{type:'item',value:'seal-crystal',label:'Seal crystal',message:'Seal crystal earned! Carry it to the Signal Chamber.'}});
+    map.objects.push({id:'power-chest',type:'challenge',x:18,y:2,label:'Power chest',questionCount:2,reward:{type:'item',value:'power-cell',label:'Power cell',message:'Power cell earned! Complete the signal sequence to open the exit.'}});
+    map.inventory.push({id:'power-cell',type:'item',value:'power-cell',label:'Power cell',icon:'◆'});
+    map.objects.find(o=>o.type==='exit').requiredItems.push('power-cell');
+    map.objects.find(o=>o.id==='chamber-sign').text+=' Earn the power cell from the Power chest in this chamber before using the exit.';
+    return map;
+  }
   const hammer=map.objects.find(o=>o.id==='hammer-pickup');
   Object.assign(hammer,{type:'challenge',label:'Workshop chest',questionCount:2,reward:{type:'tool',value:'hammer',label:'Hammer',message:'Hammer earned! Return to Switch Hall and break the cracked wall.'}});
   const archive=map.objects.find(o=>o.id==='archive');
@@ -115,4 +123,3 @@ export function createAdventure(mode='easy'){
   map.decorations.push({x:8,y:14},{x:13,y:22},{x:1,y:14},{x:6,y:22});
   return map;
 }
-
