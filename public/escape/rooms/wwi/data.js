@@ -4,6 +4,32 @@ window.ROOM_DATA = {
   title: 'Escape from the Trenches',
   missionQuestion: 'How did a crisis in Sarajevo widen into a world war, and why did the United States enter later?',
   completion: 'You reconstructed the dispatch by weighing evidence, tracing cause and effect, and connecting events across time. The signal reaches HQ; the unit is safe.',
+  difficultyLevels: [
+    { id: 'easy', label: 'Easy', description: 'A shorter mission with guided evidence checks. Notes are optional.' },
+    { id: 'medium', label: 'Medium', description: 'Two additional analysis rooms. Save a short evidence-based note after every puzzle.' },
+    { id: 'hard', label: 'Hard', description: 'A longer mission with source evaluation and multi-part locks. Explain your reasoning after every puzzle.' }
+  ],
+  difficultyProfiles: {
+    easy: {
+      label: 'Easy', requireReasoning: false,
+      sceneOrder: ['dispatch','sarajevo','main','atlantic','intercept','transmission','combination']
+    },
+    medium: {
+      label: 'Medium', requireReasoning: true, minReasoningLength: 25,
+      sceneOrder: ['dispatch','sarajevo','source-check','main','escalation','atlantic','intercept','transmission','combination'],
+      sceneOverrides: {
+        transmission: { prompt: 'Rebuild the timeline in order. Then use your note to identify which decision widened the crisis beyond Austria-Hungary and Serbia.' }
+      }
+    },
+    hard: {
+      label: 'Hard', requireReasoning: true, minReasoningLength: 50,
+      sceneOrder: ['dispatch','sarajevo','source-check','main','escalation','atlantic','intercept','telegram-lock','transmission','us-entry','combination'],
+      sceneOverrides: {
+        main: { prompt: 'Match each case to the long-term pressure it best represents. Some examples involve more than one factor; choose the strongest fit and justify one difficult match in your field note.' },
+        combination: { prompt: 'Reconstruct the five-part code from your evidence cards. Before unlocking it, check that your code follows the event chronology rather than the order in which you collected the cards.' }
+      }
+    }
+  },
   finalReport: {
     question: 'How did a crisis in Sarajevo widen into a world war, and why did the United States enter later?',
     answer: 'Europe was already tense from militarism, alliances, imperial competition, and nationalism. The assassination of Archduke Franz Ferdinand in Sarajevo triggered the July Crisis; declarations of war, mobilization, and Germany’s invasion of Belgium widened the conflict. The Lusitania sinking influenced U.S. opinion but did not bring immediate entry. Renewed unrestricted submarine warfare and the Zimmermann Telegram contributed to U.S. entry in 1917. The Armistice ended the fighting on November 11, 1918.',
@@ -90,8 +116,8 @@ window.ROOM_DATA = {
       id: 'intercept', type: 'Telegram analysis', kind: 'choice', kicker: 'ROOM 04 · INTERCEPTED MESSAGE', title: 'Read between the lines',
       requiresClues: ['lusitania-date'],
       evidence: [
-        { label: 'Intercept · January 1917', text: 'Classroom paraphrase: Germany planned to resume unrestricted submarine warfare, hoped the United States would remain neutral, and proposed an alliance with Mexico if the U.S. entered the war.', source: 'Zimmermann Telegram' },
-        { label: 'Strategic context', text: 'Germany expected renewed submarine attacks could bring the United States into the conflict.', source: 'Analyst summary' }
+        { label: 'Decoded telegram · January 1917', text: 'Germany planned to resume unrestricted submarine warfare and proposed an alliance with Mexico if the United States entered the war. The message was part of Germany’s effort to manage the risk of U.S. involvement.', source: 'Historical analysis · based on the decoded Zimmermann Telegram' },
+        { label: 'Strategic context', text: 'Germany expected renewed submarine attacks could bring the United States into the conflict.', source: 'Strategic assessment · wartime policy analysis' }
       ],
       prompt: 'What strategy can you infer from the message and its context?',
       options: [
@@ -135,6 +161,84 @@ window.ROOM_DATA = {
       reflect: 'Which clue changed how you understood the causes or course of the war?',
       clueReward: { id: 'final-code', label: 'Transmission case opened', detail: 'The dates form the chronology code 14 · 15 · 17 · 18.' },
       journal: 'The four clue dates opened the transmission case.'
+    },
+    {
+      id: 'source-check', type: 'Source evaluation', kind: 'choice', kicker: 'ROOM 01A · TEST THE DOSSIER', title: 'What can the record prove?',
+      evidence: [
+        { label: 'Event record', text: 'The dispatch identifies the assassination in Sarajevo and gives its date.', source: 'Contemporary report' },
+        { label: 'Diplomatic map', text: 'The map shows rival interests and alliances, but it does not show which decisions leaders made during the crisis.', source: 'Context map' }
+      ],
+      prompt: 'A student claims, “The alliance system turned the assassination into a world war.” Which additional evidence would best test that claim?',
+      options: [
+        { id: 'decisions', label: 'Diplomatic messages and declarations showing how governments responded after the assassination.' },
+        { id: 'another-map', label: 'A second map showing the same borders before the assassination.' },
+        { id: 'later', label: 'A soldier’s account written after the war, without details about government decisions.' },
+        { id: 'ship', label: 'A list of ships sunk in the Atlantic several years later.' }
+      ], answer: 'decisions',
+      wrong: 'The claim is about how alliances shaped leaders’ choices during the crisis. Look for evidence of those choices.',
+      hints: ['The map shows conditions, not actions.', 'Find evidence created during the July Crisis that records governments responding.', 'Diplomatic messages and declarations directly test whether alliance commitments affected decisions.'],
+      learn: 'A map can show the alliance structure, but it cannot by itself prove how leaders used it. To test a causal claim, historians compare the background conditions with evidence of decisions made during the crisis.',
+      reflect: 'What does the map help explain, and what does it leave unanswered? Name the additional evidence that would strengthen the claim.',
+      clueReward: { id: 'source-test', label: 'Source evaluation note', detail: 'The map shows context; diplomatic decisions are needed to test how alliances shaped the crisis.' },
+      journal: 'A source can show context without proving how people acted on it.'
+    },
+    {
+      id: 'escalation', type: 'Cause and effect', kind: 'choice', kicker: 'JULY–AUGUST 1914 · FOLLOW THE DECISIONS', title: 'The crisis spreads',
+      requiresClues: ['main-map'],
+      evidence: [
+        { label: 'Crisis sequence', text: 'Austria-Hungary declared war on Serbia. Russia mobilized. Germany declared war on Russia and France, then invaded Belgium; Britain entered the conflict.', source: 'July–August 1914 timeline' }
+      ],
+      prompt: 'Which explanation best accounts for the crisis expanding beyond the original dispute?',
+      options: [
+        { id: 'chain', label: 'Mobilization, declarations, and alliance commitments turned a regional conflict into a wider war.' },
+        { id: 'single', label: 'The assassination immediately forced every country to fight, leaving leaders no choices.' },
+        { id: 'belgium-only', label: 'The invasion of Belgium alone explains every country’s decision to join.' },
+        { id: 'technology', label: 'New weapons automatically caused countries to declare war on one another.' }
+      ], answer: 'chain',
+      wrong: 'Follow the sequence of decisions. Look for an explanation that connects several governments’ actions without claiming the war was automatic.',
+      hints: ['The evidence lists several decisions made after the assassination.', 'Mobilization and declarations came before Britain’s entry.', 'Choose the explanation that connects decisions and alliances across the sequence.'],
+      learn: 'The war widened through a chain of decisions. Alliances and military plans shaped choices, but leaders still made decisions; the conflict was not an automatic result of the assassination.',
+      reflect: 'Choose one decision in the sequence. How did it change who was involved in the war?',
+      clueReward: { id: 'escalation-chain', label: 'Escalation chain', detail: 'Declarations, mobilization, and the invasion of Belgium widened the July Crisis.' },
+      journal: 'The crisis widened through linked decisions, not through one automatic event.'
+    },
+    {
+      id: 'telegram-lock', type: 'Two-part intelligence lock', kind: 'multi', kicker: 'INTELLIGENCE LOCK · DECODE THE STRATEGY', title: 'Two parts of one plan',
+      evidence: [
+        { label: 'Zimmermann Telegram · 1917', text: 'Germany hoped the United States would remain neutral. If the U.S. entered the war, Germany proposed an alliance with Mexico.', source: 'Historical analysis · based on the decoded Zimmermann Telegram' }
+      ],
+      prompt: 'The lock opens only when both parts of Germany’s strategy are identified.',
+      parts: [
+        { label: 'Germany’s preferred outcome', placeholder: 'Enter Germany’s goal', answers: ['remain neutral','stay neutral','keep neutral','neutrality','keep the united states neutral','keep the us neutral','the united states would remain neutral','the us would remain neutral','united states remains neutral','us remains neutral','america remains neutral','america stays neutral','the us stays neutral','us stays out of the war','the us stays out of the war','united states stays out of the war','united states stay out','keep america out','keep america neutral','stay out of war','stay out of the war','not enter the war','not join the war','avoid entering the war','the united states would not enter','the us would not enter'] },
+        { label: 'Germany’s contingency plan', placeholder: 'Enter the proposed ally', answers: ['alliance with mexico','ally with mexico','mexican alliance','partnership with mexico','form an alliance with mexico','a military alliance with mexico','germany would ally with mexico','mexico alliance','mexico'] }
+      ],
+      hints: ['The first part is what Germany hoped to avoid.', 'The second part was conditional: it applied if the U.S. entered.', 'Neutrality first; an alliance with Mexico if the U.S. joined.'],
+      wrong: 'The lock needs both the preferred outcome and the conditional plan. Re-read the telegram evidence.',
+      learn: 'Reading both clauses matters: Germany hoped to keep the U.S. neutral but prepared a contingency if that failed.',
+      reflect: 'Why does the conditional part of the telegram suggest Germany saw U.S. entry as a risk?',
+      clueReward: { id: 'strategy-lock', label: 'Decoded strategy', detail: 'Germany hoped for U.S. neutrality and proposed an alliance with Mexico if the U.S. entered.' },
+      journal: 'The telegram contained both a preferred outcome and a contingency plan.'
+    },
+    {
+      id: 'us-entry', type: 'Competing explanations', kind: 'choice', kicker: 'ROOM 06 · WEIGH THE EVIDENCE', title: 'Why did the U.S. enter?',
+      requiresClues: ['lusitania-date','telegram-year'],
+      evidence: [
+        { label: 'Lusitania timeline', text: 'The ship sank in 1915. The United States remained neutral for nearly two years afterward.', source: 'U.S. policy timeline' },
+        { label: '1917 intelligence brief', text: 'Germany resumed unrestricted submarine warfare; the Zimmermann Telegram became public.', source: '1917 dossier' }
+      ],
+      prompt: 'Which claim is best supported by both pieces of evidence?',
+      options: [
+        { id: 'multiple', label: 'U.S. entry followed a buildup of tensions; the Lusitania mattered, but the 1917 events were more immediate.' },
+        { id: 'lusitania', label: 'The Lusitania sinking directly caused U.S. entry in 1915.' },
+        { id: 'telegram-only', label: 'The telegram alone explains the decision, so submarine warfare is irrelevant.' },
+        { id: 'no-change', label: 'The evidence shows U.S. policy did not change between 1915 and 1917.' }
+      ], answer: 'multiple',
+      wrong: 'Use the dates as well as the events. Which explanation accounts for the long gap and the new evidence in 1917?',
+      hints: ['The United States did not enter in 1915.', 'The 1917 brief gives two later developments.', 'Choose the explanation that distinguishes earlier influence from the more immediate 1917 pressures.'],
+      learn: 'The timeline challenges a single-event explanation: the Lusitania influenced opinion, while renewed submarine warfare and the telegram contributed to the later decision in 1917.',
+      reflect: 'Which evidence most changes the explanation from “one cause” to “several causes”? Support your choice with a date.',
+      clueReward: { id: 'us-entry-analysis', label: 'U.S. entry analysis', detail: 'The timeline points to multiple contributing pressures, with renewed submarine warfare and the telegram in 1917.' },
+      journal: 'The gap between the Lusitania and U.S. entry challenges a single-cause explanation.'
     }
   ]
 };

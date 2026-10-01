@@ -3,7 +3,7 @@
   const $ = (s, root = document) => root.querySelector(s);
   const root = $('#sceneRoot');
   const roomId = new URLSearchParams(location.search).get('room') || 'wwi';
-  const storageKey = `ta-escape:${roomId}:v3`;
+  const storageKey = `ta-escape:${roomId}:v4`;
   let data, state, hintLevel = 0;
 
   const clean = value => String(value ?? '').toLocaleLowerCase().normalize('NFD')
@@ -13,14 +13,42 @@
     const el = $('#feedback'); el.textContent = message; el.dataset.kind = kind;
     el.hidden = false;
   };
+  const profile = () => data.difficultyProfiles?.[state?.difficulty] || {};
+  const activeScenes = () => {
+    const source = new Map(data.scenes.map(scene => [scene.id, scene]));
+    const config = profile();
+    if (!config.sceneOrder) return data.scenes;
+    return config.sceneOrder.map(id => {
+      const scene = source.get(id) || config.extraScenes?.find(item => item.id === id);
+      return scene && config.sceneOverrides?.[id] ? { ...scene, ...config.sceneOverrides[id] } : scene;
+    }).filter(Boolean);
+  };
+  const shuffled = (items, key) => {
+    state.shuffleOrders ||= {};
+    let order = state.shuffleOrders[key];
+    const valid = Array.isArray(order) && order.length === items.length
+      && new Set(order).size === items.length
+      && order.every(index => Number.isInteger(index) && index >= 0 && index < items.length);
+    if (!valid) {
+      order = items.map((_, index) => index);
+      for (let i = order.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [order[i], order[j]] = [order[j], order[i]];
+      }
+      state.shuffleOrders[key] = order;
+      save();
+    }
+    return order.map(index => items[index]);
+  };
   const setProgress = () => {
-    const rooms = data.scenes.filter(scene => scene.kind !== 'intro');
-    const current = data.scenes[state.scene];
-    const done = data.scenes.slice(0, state.scene).filter(scene => scene.kind !== 'intro').length
+    const scenes = activeScenes();
+    const rooms = scenes.filter(scene => scene.kind !== 'intro');
+    const current = scenes[state.scene];
+    const done = scenes.slice(0, state.scene).filter(scene => scene.kind !== 'intro').length
       + (state.solved[state.scene] && current?.kind !== 'intro' ? 1 : 0);
     const roomNumber = Math.max(1, rooms.indexOf(current) + 1);
     $('#progressText').textContent = state.complete ? 'Mission complete'
-      : state.scene === 0 ? 'Mission briefing' : `Room ${roomNumber} of ${rooms.length} · ${state.solved[state.scene] ? 'insight unlocked' : 'investigate'}`;
+      : !state.difficulty ? 'Choose difficulty' : state.scene === 0 ? `${profile().label || 'Mission'} briefing` : `Room ${roomNumber} of ${rooms.length} · ${state.solved[state.scene] ? 'insight unlocked' : 'investigate'}`;
     $('#progressBar').style.width = `${state.complete ? 100 : done / Math.max(1, rooms.length) * 100}%`;
   };
   const button = (label, action, cls = 'choice') => {
@@ -38,7 +66,7 @@
     $('#journalFeed').innerHTML = state.journal.map(x => `<p>${escapeHtml(x)}</p>`).join('') || '<p class="quiet">Your discoveries appear here.</p>';
     const notes = Object.entries(state.reasoning || {}).filter(([, note]) => note?.trim());
     $('#reasoningList').innerHTML = notes.map(([sceneId, note]) => {
-      const scene = data.scenes.find(item => item.id === sceneId);
+      const scene = activeScenes().find(item => item.id === sceneId) || data.scenes.find(item => item.id === sceneId);
       return `<article class="reasoning-note"><strong>${escapeHtml(scene?.takeawayTitle || scene?.title || 'Field reasoning')}</strong><p>${escapeHtml(note)}</p></article>`;
     }).join('') || '<p class="quiet">Your reasoning notes will appear here.</p>';
   }
@@ -50,26 +78,37 @@
     save(); render();
   }
   function continueMission() {
-    if (state.scene >= data.scenes.length - 1) state.complete = true;
+    const current = activeScenes()[state.scene];
+    const note = state.reasoning?.[current?.id]?.trim() || '';
+    if (current?.kind !== 'intro' && profile().requireReasoning && note.length < (profile().minReasoningLength || 1)) return;
+    if (state.scene >= activeScenes().length - 1) state.complete = true;
     else state.scene++;
     hintLevel = 0; save(); render();
   }
   function renderReasoning(scene, panel) {
-    if (!scene.reflect) return;
+    if (!scene.reflect || scene.kind === 'intro') return;
     const box = document.createElement('section'); box.className = 'reflection';
     const prompt = document.createElement('p'); prompt.className = 'reflection-prompt'; prompt.textContent = scene.reflect;
     const label = document.createElement('label'); label.className = 'reflection-label'; label.textContent = 'Add your reasoning to the evidence board';
     const field = document.createElement('textarea'); field.className = 'reasoning-input'; field.rows = 3;
-    field.maxLength = 500; field.setAttribute('aria-label', scene.reflect);
+    field.maxLength = 800; field.setAttribute('aria-label', scene.reflect);
     field.placeholder = 'Use a clue to support your thinking…';
     field.value = state.reasoning?.[scene.id] || '';
     label.append(field);
     const saveNote = button(field.value ? 'Update reasoning note' : 'Save reasoning note', () => {
       const value = field.value.trim();
-      if (!value) { field.focus(); return; }
+      const minimum = profile().requireReasoning ? (profile().minReasoningLength || 1) : 1;
+      if (value.length < minimum) { field.focus(); field.setAttribute('aria-invalid', 'true'); return; }
+      field.removeAttribute('aria-invalid');
       state.reasoning ||= {}; state.reasoning[scene.id] = value; save(); render();
     }, 'small save-reasoning');
-    box.append(prompt, label, saveNote); panel.append(box);
+    box.append(prompt, label, saveNote);
+    if (profile().requireReasoning && field.value.trim().length < (profile().minReasoningLength || 1)) {
+      const required = document.createElement('span'); required.className = 'required-note';
+      required.textContent = `Required to unlock the next room · at least ${profile().minReasoningLength || 1} characters`;
+      box.append(required);
+    }
+    panel.append(box);
   }
   function checkText(input, answers, scene) {
     if (accepted(input.value, answers)) solve(scene);
@@ -78,28 +117,30 @@
   function renderPuzzle(scene, panel) {
     if (scene.kind === 'intro') {
       panel.innerHTML += `<div class="mission"><div class="mission-stamp">FIELD DISPATCH · 1918</div><p>${escapeHtml(scene.body)}</p>${data.missionQuestion ? `<div class="mission-question"><span>HQ'S QUESTION</span><p>${escapeHtml(data.missionQuestion)}</p></div>` : ''}<p class="quiet">Work together: read the evidence, agree on what it supports, then unlock the next room. Your progress saves on this device.</p>${scene.objectives?.length ? `<div class="objective-list"><strong>In this mission, you will</strong><ul>${scene.objectives.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul></div>` : ''}</div>`;
-      panel.append(button('Accept the mission', () => solve(scene), 'primary')); return;
+      panel.append(button('Accept the mission', continueMission, 'primary')); return;
     }
     if (scene.kind === 'choice') {
       const group = document.createElement('div'); group.className = 'choice-grid';
-      scene.options.forEach(option => group.append(button(option.label, () => option.id === scene.answer
+      shuffled(scene.options, `${scene.id}:options`).forEach(option => group.append(button(option.label, () => option.id === scene.answer
         ? solve(scene) : feedback(option.feedback || scene.wrong || 'Not this clue. Check the evidence again.', 'error'))));
       panel.append(group); return;
     }
     if (scene.kind === 'match') {
       const form = document.createElement('form'); form.className = 'match-list';
-      scene.pairs.forEach((pair, index) => {
+      const pairs = shuffled(scene.pairs, `${scene.id}:pairs`);
+      pairs.forEach((pair, index) => {
         const row = document.createElement('label'); row.className = 'match-row';
+        row.dataset.answer = pair.answer;
         const text = document.createElement('span'); text.textContent = pair.label;
         const select = document.createElement('select'); select.dataset.index = index; select.required = true;
-        select.innerHTML = `<option value="">Choose a cause…</option>${scene.categories.map(category => `<option value="${escapeHtml(category.id)}">${escapeHtml(category.label)}</option>`).join('')}`;
+        select.innerHTML = `<option value="">Choose a cause…</option>${shuffled(scene.categories, `${scene.id}:categories`).map(category => `<option value="${escapeHtml(category.id)}">${escapeHtml(category.label)}</option>`).join('')}`;
         row.append(text, select); form.append(row);
       });
       const submit = button(scene.actionLabel || 'Check the evidence', () => {}, 'primary'); submit.type = 'submit'; form.append(submit);
       form.addEventListener('submit', event => {
         event.preventDefault();
         const selected = [...form.querySelectorAll('select')].map(select => select.value);
-        if (scene.pairs.every((pair, index) => selected[index] === pair.answer)) solve(scene);
+        if ([...form.querySelectorAll('.match-row')].every((row, index) => selected[index] === row.dataset.answer)) solve(scene);
         else feedback(scene.wrong || 'Some clues are matched to the wrong cause. Compare what each statement describes.', 'error');
       });
       panel.append(form); return;
@@ -112,7 +153,7 @@
         row.append(button('Undo', () => { picked.splice(i, 1); display(); }, 'small')); list.append(row);
       }); };
       const options = document.createElement('div'); options.className = 'choice-grid';
-      scene.items.forEach(item => options.append(button(item.label, () => {
+      shuffled(scene.items, `${scene.id}:items`).forEach(item => options.append(button(item.label, () => {
         if (picked.some(x => x.id === item.id)) return;
         picked.push(item); display();
       })));
@@ -142,7 +183,9 @@
     panel.innerHTML += '<p>This room is unavailable.</p>';
   }
   function render() {
-    const scene = data.scenes[Math.min(state.scene, data.scenes.length - 1)]; setProgress(); renderSidebars();
+    if (!state.difficulty) return renderDifficultyPicker();
+    const scenes = activeScenes();
+    const scene = scenes[Math.min(state.scene, scenes.length - 1)]; setProgress(); renderSidebars();
     $('#roomTitle').textContent = data.title;
     $('#sceneTitle').textContent = state.complete ? 'Mission complete' : scene.title;
     $('#sceneKicker').textContent = state.complete ? 'ESCAPE CONFIRMED' : scene.kicker || `ROOM ${state.scene + 1} · ${scene.type || 'FIELD REPORT'}`;
@@ -152,7 +195,12 @@
       if (state.solved[state.scene]) {
         panel.innerHTML = `<div class="insight-card"><span class="insight-label">CASE NOTE · WHAT THE EVIDENCE SHOWS</span><h3>${escapeHtml(scene.takeawayTitle || 'What you figured out')}</h3><p>${escapeHtml(scene.learn || 'You solved the room by using the evidence. Connect this clue to the larger story as you continue.')}</p>${scene.clueReward ? `<div class="clue-found"><span>NEW CLUE · ADDED TO YOUR EVIDENCE BOARD</span><strong>${escapeHtml(scene.clueReward.label)}</strong><p>${escapeHtml(scene.clueReward.detail)}</p></div>` : ''}</div>`;
         renderReasoning(scene, panel);
-        panel.append(button(state.scene === data.scenes.length - 1 ? 'Send the final report' : 'Continue to next room', continueMission, 'primary'));
+        const next = button(state.scene === scenes.length - 1 ? 'Send the final report' : 'Continue to next room', continueMission, 'primary');
+        const savedNote = state.reasoning?.[scene.id]?.trim() || '';
+        const noteMissing = profile().requireReasoning && savedNote.length < (profile().minReasoningLength || 1);
+        next.disabled = Boolean(noteMissing);
+        if (noteMissing) next.title = 'Save your reasoning note to unlock the next room.';
+        panel.append(next);
       } else {
         const missing = (scene.requiresClues || []).filter(id => !state.clues.some(clue => clue.id === id));
         if (missing.length) {
@@ -185,23 +233,47 @@
     } else {
       const report = data.finalReport || {};
       const clueById = new Map(state.clues.map(clue => [clue.id, clue]));
-      const citedClues = (report.clueIds || []).map(id => clueById.get(id)).filter(Boolean);
+      const reportClueIds = [...new Set([...(report.clueIds || []), ...state.clues.map(clue => clue.id)])];
+      const citedClues = reportClueIds.map(id => clueById.get(id)).filter(Boolean);
       const savedReasoning = Object.entries(state.reasoning || {}).filter(([, note]) => note?.trim());
-      const reasoningReview = savedReasoning.length ? `<section class="final-reasoning"><h3>Your reasoning from the evidence board</h3>${savedReasoning.map(([sceneId, note]) => { const scene = data.scenes.find(item => item.id === sceneId); return `<p><strong>${escapeHtml(scene?.takeawayTitle || scene?.title || 'Field reasoning')}</strong><span>${escapeHtml(note)}</span></p>`; }).join('')}</section>` : '';
-      panel.innerHTML = `<div class="victory"><div class="victory-icon" aria-hidden="true">✦</div><h3>Transmission received</h3><p>${escapeHtml(data.completion)}</p></div>${report.answer ? `<section class="final-report"><span class="insight-label">RECOVERED HQ DISPATCH · THE ANSWER</span><h3>${escapeHtml(report.question || data.missionQuestion || 'What do the clues show?')}</h3><p class="report-answer">${escapeHtml(report.answer)}</p><h4>Evidence in the report</h4><ul>${citedClues.map(clue => `<li><strong>${escapeHtml(clue.label)}</strong><span>${escapeHtml(clue.detail)}</span></li>`).join('')}</ul></section>` : ''}${reasoningReview}<div class="debrief"><h3>Debrief · connect the clues</h3>${(data.debrief || []).map(item => `<p><strong>${escapeHtml(item.label)}</strong> ${escapeHtml(item.text)}</p>`).join('')}</div>`;
+      const reasoningReview = savedReasoning.length ? `<section class="final-reasoning"><h3>Your reasoning from the evidence board</h3>${savedReasoning.map(([sceneId, note]) => { const scene = activeScenes().find(item => item.id === sceneId) || data.scenes.find(item => item.id === sceneId); return `<article><strong>${escapeHtml(scene?.title || scene?.takeawayTitle || 'Field reasoning')}</strong>${scene?.reflect ? `<span class="reasoning-question">${escapeHtml(scene.reflect)}</span>` : ''}<span>${escapeHtml(note)}</span></article>`; }).join('')}</section>` : profile().requireReasoning ? '<section class="final-reasoning"><h3>Your reasoning from the evidence board</h3><p>No saved reasoning notes were found for this mission.</p></section>' : '';
+      const chosenLevel = data.difficultyLevels?.find(level => level.id === state.difficulty)?.label || state.difficulty;
+      panel.innerHTML = `<div class="victory"><div class="victory-icon" aria-hidden="true">✦</div><h3>Transmission received</h3><p>${escapeHtml(data.completion)}</p><span class="report-level">${escapeHtml(chosenLevel)} challenge · ${savedReasoning.length} reasoning note${savedReasoning.length === 1 ? '' : 's'}</span></div>${report.answer ? `<section class="final-report"><span class="insight-label">RECOVERED HQ DISPATCH · THE ANSWER</span><h3>${escapeHtml(report.question || data.missionQuestion || 'What do the clues show?')}</h3><p class="report-answer">${escapeHtml(report.answer)}</p><h4>Evidence in the report</h4><ul>${citedClues.map(clue => `<li><strong>${escapeHtml(clue.label)}</strong><span>${escapeHtml(clue.detail)}</span></li>`).join('')}</ul></section>` : ''}${reasoningReview}<div class="debrief"><h3>Debrief · connect the clues</h3>${(data.debrief || []).map(item => `<p><strong>${escapeHtml(item.label)}</strong> ${escapeHtml(item.text)}</p>`).join('')}</div>`;
       panel.append(button('Play again', reset, 'primary'));
     }
     root.append(panel);
   }
+  function renderDifficultyPicker() {
+    setProgress(); renderSidebars();
+    $('#roomTitle').textContent = data.title;
+    $('#sceneTitle').textContent = 'Choose your challenge';
+    $('#sceneKicker').textContent = 'MISSION SETTINGS';
+    root.replaceChildren(); root.dataset.scene = 'difficulty';
+    const panel = document.createElement('div'); panel.className = 'puzzle-panel difficulty-picker';
+    const intro = document.createElement('p'); intro.className = 'scene-copy';
+    intro.textContent = 'Choose a challenge level. Higher levels add more rooms, more complex evidence problems, and required written reasoning.';
+    const grid = document.createElement('div'); grid.className = 'difficulty-grid';
+    (data.difficultyLevels || [{id:'easy',label:'Easy',description:'A shorter mission with guided evidence checks.'}]).forEach(level => {
+      const card = document.createElement('article'); card.className = 'difficulty-card';
+      const heading = document.createElement('h3'); heading.textContent = level.label;
+      const description = document.createElement('p'); description.textContent = level.description;
+      card.append(heading, description, button(`Start ${level.label}`, () => {
+        state = { scene: 0, solved: [], clues: [], journal: [], reasoning: {}, shuffleOrders: {}, complete: false, difficulty: level.id };
+        hintLevel = 0; save(); render();
+      }, 'primary'));
+      grid.append(card);
+    });
+    panel.append(intro, grid); root.append(panel);
+  }
   function reset() {
-    state = { scene: 0, solved: [], clues: [], journal: [], reasoning: {}, complete: false }; hintLevel = 0; save(); render();
+    state = { scene: 0, solved: [], clues: [], journal: [], reasoning: {}, shuffleOrders: {}, complete: false, difficulty: null }; hintLevel = 0; save(); render();
   }
   function init() {
     data = window.ROOM_DATA;
     if (!data || !Array.isArray(data.scenes)) { root.textContent = 'This escape room could not be loaded.'; return; }
     try { state = JSON.parse(localStorage.getItem(storageKey)) || null; } catch { state = null; }
     if (!state || !Number.isInteger(state.scene) || state.scene > data.scenes.length || !Array.isArray(state.clues)) reset();
-    else state.reasoning ||= {};
+    else { state.reasoning ||= {}; state.shuffleOrders ||= {}; state.difficulty ||= null; }
     $('#restartBtn').addEventListener('click', () => { if (confirm('Restart this escape room from the beginning?')) reset(); });
     render();
   }
