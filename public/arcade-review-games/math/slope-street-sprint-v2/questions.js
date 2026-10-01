@@ -1,0 +1,12 @@
+window.TA_SLOPE_QUESTIONS=[
+{id:'slope-points',text:'Find the slope through (1, 2) and (3, 6).',choices:['2','4','3','1/2'],correctIndex:0,explanation:'Slope = (6 - 2) / (3 - 1) = 4 / 2 = 2.'},
+{id:'vertical-line',text:'What is the slope of a vertical line?',choices:['Undefined','0','1','Negative'],correctIndex:0,explanation:'A vertical line has zero horizontal change, so its slope is undefined.'},
+{id:'horizontal-line',text:'What is the slope of a horizontal line?',choices:['0','Undefined','1','It depends on x'],correctIndex:0,explanation:'A horizontal line has no vertical change, so rise is 0 and slope is 0.'},
+{id:'slope-intercept-m',text:'In y = -3x + 5, what is the slope?',choices:['-3','5','3','-5'],correctIndex:0,explanation:'In y = mx + b, m is the slope. Here m = -3.'},
+{id:'slope-intercept-b',text:'In y = 4x - 7, what is the y-intercept?',choices:['-7','4','7','-4'],correctIndex:0,explanation:'In y = mx + b, b is the y-intercept. Here b = -7.'},
+{id:'positive-slope',text:'Which description shows a positive slope?',choices:['The line rises as you move right','The line falls as you move right','The line is horizontal','The line is vertical'],correctIndex:0,explanation:'A positive slope rises from left to right.'},
+{id:'rate-change',text:'A taxi fare rises $2 for every mile traveled. What is the rate of change?',choices:['$2 per mile','$4 per mile','$1 per mile','0'],correctIndex:0,explanation:'The amount added for each mile is the rate of change, so the slope is 2.'},
+{id:'equation-match',text:'Which equation has slope 3 and y-intercept -2?',choices:['y = 3x - 2','y = -2x + 3','y = 3x + 2','y = -3x - 2'],correctIndex:0,explanation:'Slope-intercept form is y = mx + b, so m = 3 and b = -2 gives y = 3x - 2.'},
+{id:'negative-slope',text:'A line falls 5 units for every 1 unit moved right. What is its slope?',choices:['-5','5','-1/5','1/5'],correctIndex:0,explanation:'Falling as x increases gives a negative slope: -5/1 = -5.'},
+{id:'slope-formula',text:'Which formula finds slope from two points?',choices:['(y₂ - y₁) / (x₂ - x₁)','(x₂ - x₁) / (y₂ - y₁)','(x₁ + x₂) / (y₁ + y₂)','y = b / m'],correctIndex:0,explanation:'Slope is change in y divided by change in x: (y₂ - y₁)/(x₂ - x₁).'}
+];
