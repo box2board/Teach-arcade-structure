@@ -78,7 +78,7 @@ export function createAdventure(mode='easy'){
     map.inventory.push({id:'power-cell',type:'item',value:'power-cell',label:'Power cell',icon:'◆'});
     map.objects.find(o=>o.type==='exit').requiredItems.push('power-cell');
     map.objects.find(o=>o.id==='chamber-sign').text+=' Earn the power cell from the Power chest in this chamber before using the exit.';
-    return map;
+    return describe(map);
   }
   const hammer=map.objects.find(o=>o.id==='hammer-pickup');
   Object.assign(hammer,{type:'challenge',label:'Workshop chest',questionCount:2,reward:{type:'tool',value:'hammer',label:'Hammer',message:'Hammer earned! Return to Switch Hall and break the cracked wall.'}});
@@ -159,6 +159,30 @@ export function createAdventure(mode='easy'){
     );
     map.decorations.push({x:12,y:15,appearance:'mirror-target'});
     map.rooms[3].objective='Move and rotate the mirror to light the receiver. Use the BRIDGE switch, then cross to the hammer chest.';
+  }
+  return describe(map);
+}
+function describe(map){
+  map.id='three-seals';map.progressLabel='Seals';
+  map.milestones=[{when:{doorOpen:'west'}},{when:{opened:['east']}},{when:{exitReady:'exit'}}];
+  map.startMessage='Read the sign or push the block onto the amber floor switch.';
+  map.completion={label:'ALL THREE SEALS OPEN',summary:map.mode==='hard'?'You solved the two-block gate, earned separate keys, and combined two lantern clues to power the six-step exit code.':map.mode==='medium'?'You explored five rooms, earned a hammer and lantern, uncovered the hidden code, and powered the exit.':'You solved the block switch, unlocked the archive gate, recovered the seal crystal with your hammer, and solved the signal sequence.'};
+  map.modes=[
+    {id:'easy',label:'Easy',description:'Six questions across three reward chests in three rooms. Find a loose hammer and follow direct puzzle guidance.'},
+    {id:'medium',label:'Medium',description:'Twelve questions across five reward chests in five rooms. Earn tools and use a lantern to reveal the signal code.'},
+    {id:'hard',label:'Hard',description:'Twelve questions across six chests. Solve a two-block gate, a mirror-powered bridge, and a six-step code assembled from two rooms. No next-switch hints.'}
+  ];
+  if(map.mode==='easy'){
+    map.rooms[0].objectiveRules=[{when:{tools:['hammer'],items:['seal-crystal']},text:'Take the seal crystal to the final chamber.'},{when:{tools:['hammer']},text:'Walk into the north cracked wall, then earn the seal crystal from the vault chest.'}];
+    map.rooms[1].objectiveRules=[{when:{tools:['hammer'],items:['seal-crystal']},text:'Unlock the east gate and continue to the final chamber.'},{when:{tools:['hammer']},text:'Return to Switch Hall and open its cracked wall.'},{text:'Find the hammer in the lower Archive and earn the key from the chest.'}];
+  }
+  if(map.mode==='hard')map.rooms[3].objectiveRules=[{when:{opened:['workshop-bridge'],tools:['hammer']},text:'Use a lantern on the lower Workshop tablet to find Code · Part 2.'},{when:{opened:['workshop-bridge']},text:'Cross the raised bridge and earn the hammer from the lower chest.'}];
+  const sequence=map.puzzles[0];
+  if(map.mode==='medium')sequence.clueHint='Use your lantern to read the faded inscription in the Hidden Library.';
+  if(map.mode==='hard')sequence.knownText='Combine Code · Part 1 followed by Part 2 from your journal.';
+  for(const door of map.doors){
+    if(door.id==='west')door.openText=map.mode==='hard'?'First seal opened! Both blocks are holding their switches.':'First seal opened! The block is holding the switch.';
+    if(door.tool&&!door.lockedText)door.lockedText=map.mode==='easy'?'Hammer required. Find it in the lower Archive.':'Hammer required. Earn it in the Workshop south of the Archive.';
   }
   return map;
 }
