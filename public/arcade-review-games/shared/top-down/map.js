@@ -16,6 +16,11 @@ export const adventure = {
     '#......#......#.....#',
     '#####################'
   ],
+  decorations: [
+    { x:1,y:1 },{ x:6,y:1 },{ x:1,y:7 },{ x:6,y:11 },
+    { x:8,y:1 },{ x:13,y:4 },{ x:8,y:8 },{ x:13,y:11 },
+    { x:15,y:1 },{ x:19,y:1 },{ x:19,y:8 },{ x:15,y:11 }
+  ],
   inventory: [
     { id:'archive-key', type:'key', value:'archive', label:'Archive key', icon:'⚿' },
     { id:'hammer', type:'tool', value:'hammer', label:'Hammer', icon:'⚒' },

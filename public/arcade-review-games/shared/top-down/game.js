@@ -1,3 +1,4 @@
+import { artwork } from './artwork.js';
 const configuration=document.querySelector('script[data-map]');
 const [{adventure:map},{content}]=await Promise.all([import(configuration.dataset.map),import(configuration.dataset.questionSet)]);
 import { createState, move, undo, interact, doorOpen, completeChallenge, resetPuzzle, shuffle, exitReady, inventoryEntries, adventureResults } from './model.js';
@@ -7,8 +8,13 @@ let questionDeck=shuffle(content.questions), activeQuestion=null;
 const board=$('board'), dialog=$('dialog');
 const symbols={block:'▤',plate:'◎',door:'⌑',challenge:'▣',sign:'i',lever:'ϟ',exit:'◇',tool:'⚒',item:'◆',key:'⚿',obstacle:''};
 function element(tag,text,className){const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(className)e.className=className;return e;}
+function sprite(kind,facing){const host=element('span',undefined,'art');host.innerHTML=artwork(kind,facing);return host;}
 function message(text,tone='neutral'){$('message').textContent=text;$('message').dataset.tone=tone;}
 function sealed(){return Number(doorOpen(map,state,map.doors[0]))+Number(state.opened.includes('east'))+Number(exitReady(map,state,map.objects.find(o=>o.type==='exit')));}
+for(const icon of document.querySelectorAll('.legend i')){
+  const kind={'■':'block','◎':'plate','▣':'challenge','ϟ':'lever','⚒':'tool','◆':'item','◇':'exit'}[icon.textContent];
+  if(kind){icon.innerHTML=artwork(kind);icon.classList.add('legend-art');icon.setAttribute('aria-hidden','true');}
+}
 const circuitPanel=element('div',undefined,'circuit-panel');
 circuitPanel.hidden=true;board.before(circuitPanel);
 function render(){
@@ -17,8 +23,9 @@ function render(){
   for(const item of items){
     if(state.collected.includes(item.id))continue;
     let active=item.type==='door'?doorOpen(map,state,item):item.type==='plate'?state.blocks.some(b=>b.x===item.x&&b.y===item.y):item.type==='exit'?exitReady(map,state,item):state.activated.includes(item.id);
-    const e=element('div',undefined,`entity ${item.type}${item.appearance?' '+item.appearance:''}${active?' active':''}${item.type==='door'&&active?' open':''}${state.solved.includes(item.id)?' done':''}`);
-    e.style.left=`${item.x/21*100}%`;e.style.top=`${item.y/13*100}%`;e.append(element('span',active&&item.type==='door'?'·':item.type==='exit'?(active?'↗':'🔒'):item.appearance==='treasure'?'★':symbols[item.type]));
+    const e=element('div',undefined,`entity sprite ${item.type}${item.appearance?' '+item.appearance:''}${active?' active':''}${item.type==='door'&&active?' open':''}${state.solved.includes(item.id)?' done':''}`);
+    e.style.left=`${item.x/21*100}%`;e.style.top=`${item.y/13*100}%`;const kind=item.type==='door'?(active?'open':item.appearance==='cracked'?'cracked':'door'):item.appearance||item.type;
+    e.append(sprite(kind));
     if(item.type==='lever'&&item.label)e.append(element('small',item.label,'switch-label'));
     if(item.type==='exit'&&item.sequencePuzzle){
       const puzzle=(map.puzzles||[]).find(p=>p.id===item.sequencePuzzle);
@@ -28,7 +35,7 @@ function render(){
     }
     $('entities').append(e);
   }
-  $('player').style.left=`${state.player.x/21*100}%`;$('player').style.top=`${state.player.y/13*100}%`;$('player').dataset.facing=state.facing;
+  $('player').style.left=`${state.player.x/21*100}%`;$('player').style.top=`${state.player.y/13*100}%`;if($('player').dataset.facing!==state.facing||!$('player').querySelector('svg'))$('player').replaceChildren(sprite('hero',state.facing));$('player').dataset.facing=state.facing;
   const room=map.rooms.find(r=>state.player.x>=r.min&&state.player.x<=r.max)||map.rooms[0];
   board.dataset.theme=room.theme||'hall';
   const viewMin=room.viewMin??0, viewMax=room.viewMax??(map.tiles[0].length-1);
@@ -57,7 +64,7 @@ function render(){
     const badge=element('div',undefined,`inventory-badge${item.status==='Used'?' used':''}`);
     badge.dataset.item=item.id;
     if(!previousItems.has(item.id)){badge.classList.add('pickup-flash');setTimeout(()=>badge.classList.remove('pickup-flash'),700);}
-    const icon=element('span',item.icon,'inventory-icon');icon.setAttribute('aria-hidden','true');
+    const icon=sprite(item.id==='explorer-token'?'treasure':item.type);icon.classList.add('inventory-icon');icon.setAttribute('aria-hidden','true');
     const reward=map.objects.find(o=>o.optional&&o.item===item.value)?.bonusPoints||0;
     badge.append(icon,element('span',item.label),element('small',item.optional?`Bonus +${reward}`:item.status));
     return badge;
@@ -73,7 +80,15 @@ for(const row of map.tiles)for(const [x,tile] of Array.from(row).entries()){
   const room=map.rooms.find(r=>x>=r.min&&x<=r.max);
   $('tiles').append(element('div',undefined,`tile ${room?.theme||'hall'}${tile==='#'?' wall':''}`));
 }
-function release(){held=null;nextStep=0;}
+const decor=element('div',undefined,'room-decor');
+decor.setAttribute('aria-hidden','true');$('world').prepend(decor);
+for(const decoration of map.decorations||[]){
+  const lamp=element('div',undefined,'decoration lamp');
+  lamp.style.left=`${decoration.x/21*100}%`;lamp.style.top=`${decoration.y/13*100}%`;
+  lamp.append(sprite('lamp'));decor.append(lamp);
+}
+let walkingTimer;
+function release(){held=null;nextStep=0;clearTimeout(walkingTimer);$('player').classList.remove('walking');}
 function popup(label,title,paragraphs,actions){
   release();$('dialog-label').textContent=label;$('dialog-title').textContent=title;$('dialog-body').replaceChildren(...paragraphs.map(t=>element('p',t)));$('answers').replaceChildren();$('feedback').textContent='';$('dialog-actions').replaceChildren();
   for(const {text,run,primary} of actions){const b=element('button',text,primary?'primary':'');b.addEventListener('click',run);$('dialog-actions').append(b);}
@@ -83,7 +98,7 @@ function resume(){dialog.close();release();last=0;board.focus();}
 let pickupFlashTimer;
 function pickupFeedback(items){
   for(const item of items){
-    const effect=element('div',item.appearance==='treasure'?'★':symbols[item.type]||'✦','pickup-effect');
+    const effect=element('div',undefined,'pickup-effect');effect.append(sprite(item.appearance==='treasure'?'treasure':item.type));
     effect.style.left=`${item.x/21*100}%`;effect.style.top=`${item.y/13*100}%`;
     effect.setAttribute('aria-hidden','true');$('world').append(effect);
     setTimeout(()=>effect.remove(),700);
@@ -95,23 +110,26 @@ function pickupFeedback(items){
 }
 function doorFeedback(door){
   if(!door)return;
-  const effect=element('div',door.tool?'✦':'⚿','pickup-effect');
+  const effect=element('div',undefined,'pickup-effect');effect.append(sprite(door.tool?'tool':'key'));
   effect.style.left=`${door.x/21*100}%`;effect.style.top=`${door.y/13*100}%`;
   effect.setAttribute('aria-hidden','true');$('world').append(effect);setTimeout(()=>effect.remove(),700);
 }
 function performMove(dir){
   if(!started||dialog.open||state.won)return;
   const was=doorOpen(map,state,map.doors[0]), previous=new Set(state.collected), openedBefore=new Set(state.opened);
-  move(map,state,dir);render();
+  const moved=move(map,state,dir);render();
+  if(moved){$('player').classList.add('walking');clearTimeout(walkingTimer);walkingTimer=setTimeout(()=>$('player').classList.remove('walking'),190);}
   if(!was&&doorOpen(map,state,map.doors[0]))message('First seal opened! The block is holding the switch. Head through the west gate.');
   const pickups=map.objects.filter(o=>state.collected.includes(o.id)&&!previous.has(o.id));
   if(pickups.length)pickupFeedback(pickups);
   if(state.moveFeedback)message(state.moveFeedback.text,state.moveFeedback.tone);
   for(const id of state.opened.filter(id=>!openedBefore.has(id)))doorFeedback(map.doors.find(d=>d.id===id));
 }
+let interactionTimer;
 function performInteraction(){
   if(!started||dialog.open||state.won)return;
-  release();const result=interact(map,state);render();
+  release();$('player').classList.add('interacting');clearTimeout(interactionTimer);interactionTimer=setTimeout(()=>$('player').classList.remove('interacting'),240);
+  const result=interact(map,state);render();
   if(result.type==='message')message(result.text,result.tone);
   if(result.type==='challenge')openQuestion(result.id);
   if(result.type==='win'){
