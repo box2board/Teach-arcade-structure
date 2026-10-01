@@ -1,0 +1,1 @@
+window.TA_GAME={id:'algebra-city-run',physicsPreset:'earth',level:window.TA_ALGEBRA_LEVEL,questions:window.TA_ALGEBRA_QUESTIONS,theme:window.TA_ALGEBRA_THEME};
