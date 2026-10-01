@@ -143,6 +143,22 @@ export function createAdventure(mode='easy'){
     map.objects.find(o=>o.id==='lobby-sign').text='Two blocks, two amber floor switches. Both must stay occupied to open the Archive gate. Blocks can be pushed around corners; Undo or Reset puzzle can recover a trapped block.';
     map.objects.find(o=>o.id==='chamber-sign').text='The six-step code has two parts. Use lantern light on the library inscription and the Workshop tablet, then read Part 1 followed by Part 2. This chamber also needs the crystal and power cell.';
     map.objects.find(o=>o.id==='lantern-chest').reward.message='Lantern earned! Read the library inscription, then return to the Workshop to reveal its second tablet.';
+    // A light-powered, latched bridge protects the hammer route.
+    const trench=Array.from(map.tiles[18]);
+    for(let x=8;x<=13;x++)trench[x]='~';
+    trench[11]='.';map.tiles[18]=trench.join('');
+    Object.assign(hammer,{x:12,y:20});
+    map.blocks.push({id:'workshop-mirror',kind:'mirror',x:11,y:15,orientation:'/'});
+    map.objects=map.objects.filter(o=>o.id!=='workbench-b');
+    Object.assign(map.objects.find(o=>o.id==='workshop-sign'),{x:9,y:14,text:'Push the silver mirror onto the marked socket, then face it and interact to rotate it. Aim the light down at the receiver. Once it glows, use the BRIDGE switch to raise the crossing. The bridge stays raised; Reset puzzle keeps it safe.'});
+    map.objects.push(
+      {id:'workshop-light',type:'emitter',x:9,y:15,direction:'right'},
+      {id:'workshop-receiver',type:'receiver',x:12,y:17,label:'Light receiver'},
+      {id:'bridge-switch',type:'bridgeSwitch',x:8,y:16,label:'BRIDGE',receiver:'workshop-receiver',bridge:'workshop-bridge'},
+      {id:'workshop-bridge',type:'bridge',x:11,y:18,label:'Workshop bridge'}
+    );
+    map.decorations.push({x:12,y:15,appearance:'mirror-target'});
+    map.rooms[3].objective='Move and rotate the mirror to light the receiver. Use the BRIDGE switch, then cross to the hammer chest.';
   }
   return map;
 }

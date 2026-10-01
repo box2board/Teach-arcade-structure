@@ -24,10 +24,31 @@ export function doorOpen(map, state, door) {
 export function cluesReady(puzzle,state){
   return !puzzle||(puzzle.requiredClues||(puzzle.requiredClue?[puzzle.requiredClue]:[])).every(id=>state.discovered.includes(id));
 }
+export function lightPaths(map,state){
+  const segments=[],powered=new Set();
+  const reflected={'/':{right:'up',left:'down',up:'right',down:'left'},'\\':{right:'down',left:'up',up:'left',down:'right'}};
+  for(const source of map.objects.filter(o=>o.type==='emitter')){
+    let point={x:source.x,y:source.y},dir=source.direction;const seen=new Set();
+    while(directions[dir]){
+      const stamp=`${point.x},${point.y},${dir}`;if(seen.has(stamp))break;seen.add(stamp);
+      const [dx,dy]=directions[dir],next={x:point.x+dx,y:point.y+dy};
+      if(!map.tiles[next.y]||!map.tiles[next.y][next.x]||map.tiles[next.y][next.x]==='#')break;
+      segments.push({from:{...point},to:{...next}});
+      if(map.doors.some(d=>at(d,next)&&!doorOpen(map,state,d)))break;
+      const block=state.blocks.find(b=>at(b,next));
+      if(block){if(block.kind!=='mirror')break;dir=reflected[block.orientation]?.[dir];point=next;continue;}
+      const object=map.objects.find(o=>at(o,next));
+      if(object?.type==='receiver'){powered.add(object.id);break;}
+      if(object&&!['bridge','exit'].includes(object.type))break;
+      point=next;
+    }
+  }
+  return {segments,powered:[...powered]};
+}
 export function obstacle(map, state, pos, ignoreDoor = null) {
   if (!map.tiles[pos.y] || map.tiles[pos.y][pos.x] !== '.') return true;
   if (map.doors.some(d => at(d, pos) && d.id !== ignoreDoor && !doorOpen(map,state,d))) return true;
-  return map.objects.some(o => at(o,pos) && o.type !== 'exit' && !isPickup(o) && !state.collected.includes(o.id));
+  return map.objects.some(o => at(o,pos) && o.type !== 'exit' && !(o.type==='bridge'&&state.opened.includes(o.id)) && !isPickup(o) && !state.collected.includes(o.id));
 }
 function openWithInventory(state,door) {
   state.opened.push(door.id);
@@ -103,7 +124,17 @@ export function interact(map,state) {
     }
     return {type:'message',text:door.lockedText||(door.plate?'Hold the amber floor switch down with the block.':'Find the archive key first.')};
   }
+  const mirror=state.blocks.find(b=>b.kind==='mirror'&&at(b,front));
+  if(mirror){mirror.orientation=mirror.orientation==='/'?'\\':'/';return {type:'message',text:lightPaths(map,state).powered.length?'Mirror rotated. The receiver is glowing! Use the BRIDGE switch.':'Mirror rotated. Aim the light at the receiver, then use the BRIDGE switch.'};}
   if (!object) return {type:'message',text:'Face a sign, chest, switch, or gate and interact.'};
+  if(object.type==='bridgeSwitch'){
+    if(state.opened.includes(object.bridge))return {type:'message',text:'The bridge is already raised. Cross to the hammer chest.'};
+    if(!lightPaths(map,state).powered.includes(object.receiver))return {type:'message',text:'The bridge needs light power. Move and rotate the mirror until the receiver glows.'};
+    state.opened.push(object.bridge);state.activated.push(object.id);
+    return {type:'message',tone:'correct',text:'Bridge raised! Cross to the hammer chest. The crossing stays open even if the beam moves.'};
+  }
+  if(object.type==='bridge')return {type:'message',text:state.opened.includes(object.id)?'The bridge is safe to cross.':'The bridge is lowered. Power the receiver, then use the BRIDGE switch.'};
+  if(object.type==='receiver'||object.type==='emitter')return {type:'message',text:'Move and rotate the silver mirror to direct the light into the receiver.'};
   if (isPickup(object)) return {type:'message',text:`Walk over ${object.label||'the item'} to collect it.`};
   if (object.type==='sign') {
     if(object.requiresTool&&!state.tools.includes(object.requiresTool))return {type:'message',text:object.lockedText||'A tool is needed to read this inscription.'};

@@ -3,7 +3,7 @@ const configuration=document.querySelector('script[data-map]');
 const [{createAdventure},{content}]=await Promise.all([import(configuration.dataset.map),import(configuration.dataset.questionSet)]);
 import {createReview,answerReview,reviewSummary} from './review.js';
 let map=createAdventure('easy');
-import { createState, move, undo, interact, doorOpen, completeChallenge, resetPuzzle, exitReady, cluesReady, inventoryEntries, adventureResults } from './model.js';
+import { createState, move, undo, interact, doorOpen, completeChallenge, resetPuzzle, exitReady, cluesReady, lightPaths, inventoryEntries, adventureResults } from './model.js';
 const $=id=>document.getElementById(id);
 let state=createState(map), started=false, held=null, nextStep=0, elapsed=0, last=0;
 state.review=createReview(map,content.questions);
@@ -23,15 +23,17 @@ function roomAt(x,y){return map.rooms.find(r=>x>=r.min&&x<=r.max&&y>=(r.minY??0)
 const circuitPanel=element('div',undefined,'circuit-panel');
 circuitPanel.hidden=true;board.before(circuitPanel);
 function render(){
+  const light=lightPaths(map,state);
+  lightLayer.innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${map.tiles[0].length} ${map.tiles.length}" preserveAspectRatio="none" aria-hidden="true">${light.segments.map(s=>`<path d="M${s.from.x+.5} ${s.from.y+.5}L${s.to.x+.5} ${s.to.y+.5}"/>`).join('')}</svg>`;
   $('entities').replaceChildren();
-  const items=[...map.plates.map(o=>({...o,type:'plate'})),...map.doors.map(o=>({...o,type:'door'})),...map.objects,...state.blocks.map(o=>({...o,type:'block'}))];
+  const items=[...map.plates.map(o=>({...o,type:'plate'})),...map.doors.map(o=>({...o,type:'door'})),...map.objects,...state.blocks.map(o=>({...o,type:o.kind==='mirror'?'mirror':'block'}))];
   for(const item of items){
     if(state.collected.includes(item.id))continue;
-    let active=item.type==='door'?doorOpen(map,state,item):item.type==='plate'?state.blocks.some(b=>b.x===item.x&&b.y===item.y):item.type==='exit'?exitReady(map,state,item):state.activated.includes(item.id);
+    let active=item.type==='door'?doorOpen(map,state,item):item.type==='plate'?state.blocks.some(b=>b.x===item.x&&b.y===item.y):item.type==='exit'?exitReady(map,state,item):item.type==='receiver'?light.powered.includes(item.id):item.type==='bridge'?state.opened.includes(item.id):state.activated.includes(item.id);
     const e=element('div',undefined,`entity sprite ${item.type}${item.appearance?' '+item.appearance:''}${active?' active':''}${item.type==='door'&&active?' open':''}${state.solved.includes(item.id)?' done':''}`);
-    e.style.left=`${item.x/map.tiles[0].length*100}%`;e.style.top=`${item.y/map.tiles.length*100}%`;const kind=item.type==='door'?(active?'open':item.appearance==='cracked'?'cracked':'door'):item.appearance||item.type;
+    e.style.left=`${item.x/map.tiles[0].length*100}%`;e.style.top=`${item.y/map.tiles.length*100}%`;const kind=item.type==='door'?(active?'open':item.appearance==='cracked'?'cracked':'door'):item.type==='mirror'?(item.orientation==='/'?'mirror':'mirror-back'):item.type==='bridge'?(active?'bridge':'bridge-down'):item.type==='bridgeSwitch'?'lever':item.appearance||item.type;
     e.append(sprite(kind));
-    if(item.type==='lever'&&item.label)e.append(element('small',item.label,'switch-label'));
+    if(['lever','bridgeSwitch'].includes(item.type)&&item.label)e.append(element('small',item.label,'switch-label'));
     if(item.type==='exit'&&item.sequencePuzzle){
       const puzzle=(map.puzzles||[]).find(p=>p.id===item.sequencePuzzle);
       const lights=element('div',undefined,'door-lights');
@@ -55,6 +57,7 @@ function render(){
     let objective=room.objective;
   if(map.mode==='easy'&&room===map.rooms[0] && state.tools.includes('hammer'))objective=state.items.includes('seal-crystal')?'Take the seal crystal to the final chamber.':'Walk into the cracked wall to the north with your hammer, then earn the seal crystal from the vault chest.';
   if(map.mode==='easy'&&room===map.rooms[1])objective=state.tools.includes('hammer')?(state.items.includes('seal-crystal')?'Unlock the east gate and continue to the final chamber.':'Return to Switch Hall. Walk into its cracked wall with your hammer.'):'Find the hammer in the lower Archive and earn the key from the chest.';
+  if(map.mode==='hard'&&room===map.rooms[3]&&state.opened.includes('workshop-bridge'))objective=state.tools.includes('hammer')?'The bridge is safe. Use a lantern on the lower Workshop tablet to find Code · Part 2.':'Cross the raised bridge and earn the hammer from the lower chest.';
   const exit=map.objects.find(o=>o.type==='exit'&&o.sequencePuzzle);
   const puzzle=(map.puzzles||[]).find(p=>p.id===exit?.sequencePuzzle);
   const inChamber=Boolean(exit&&roomAt(exit.x,exit.y)===room&&puzzle);
@@ -89,18 +92,19 @@ function render(){
 }
 const decor=element('div',undefined,'room-decor');
 decor.setAttribute('aria-hidden','true');$('world').prepend(decor);
+const lightLayer=element('div',undefined,'light-paths');$('world').append(lightLayer);
 function buildWorld(){
   const width=map.tiles[0].length,height=map.tiles.length;
   $('world').style.setProperty('--cell',`${100/width}%`);$('world').style.setProperty('--row',`${100/height}%`);
   $('tiles').style.setProperty('--columns',width);$('tiles').style.setProperty('--rows',height);
   $('tiles').replaceChildren();decor.replaceChildren();
   for(const [y,row] of map.tiles.entries())for(const [x,tile] of Array.from(row).entries()){
-    const room=roomAt(x,y);$('tiles').append(element('div',undefined,`tile ${room?.theme||'hall'}${tile==='#'?' wall':''}`));
+    const room=roomAt(x,y);$('tiles').append(element('div',undefined,`tile ${room?.theme||'hall'}${tile==='#'?' wall':''}${tile==='~'?' water':''}`));
   }
   for(const decoration of map.decorations||[]){
     const lamp=element('div',undefined,'decoration lamp');
     lamp.style.left=`${decoration.x/width*100}%`;lamp.style.top=`${decoration.y/height*100}%`;
-    lamp.append(sprite('lamp'));decor.append(lamp);
+    lamp.append(sprite(decoration.appearance||'lamp'));decor.append(lamp);
   }
 }
 buildWorld();
@@ -212,7 +216,7 @@ for(const b of document.querySelectorAll('[data-dir]')){
 }
 $('interact').addEventListener('click',()=>{performInteraction();if(!dialog.open)board.focus();});
 $('undo').addEventListener('click',()=>{release();undo(state);render();message('Last move undone.');board.focus();});
-$('reset-puzzle').addEventListener('click',()=>popup('RESET PUZZLE','Return the block to its start?',['You will return to the entrance. Earned keys, tools, collectibles, opened paths, and completed questions stay saved for this play.'],[{text:'Reset puzzle',run:()=>{resetPuzzle(map,state);render();resume();message('Block restored. Your earned progress is kept.');},primary:true},{text:'Keep exploring',run:resume}]));
+$('reset-puzzle').addEventListener('click',()=>popup('RESET PUZZLE','Restore the movable objects?',['You will return to the entrance. Earned keys, tools, collectibles, opened paths, and completed questions stay saved for this play.'],[{text:'Reset puzzle',run:()=>{resetPuzzle(map,state);render();resume();message('Movable objects restored. Your earned progress and raised bridges are kept.');},primary:true},{text:'Keep exploring',run:resume}]));
 $('pause').addEventListener('click',pause);
 dialog.addEventListener('cancel',e=>{e.preventDefault();if(started&&!state.won){activeQuestion=null;resume();}});
 function frame(now){if(started&&!dialog.open&&!state.won&&!document.hidden){if(last)elapsed+=Math.min((now-last)/1000,.1);if(held&&now>=nextStep){performMove(held);nextStep=now+165;}}last=now;requestAnimationFrame(frame);}
@@ -220,7 +224,7 @@ function chooseMode(){
   popup('QUEST ARCADE · THE THREE SEALS','Choose your adventure',[
     'Easy: six review questions across three reward chests in three rooms. Find a loose hammer, then earn the archive key, seal crystal, and power cell. Puzzles have direct guidance.',
     'Medium: twelve review questions across five reward chests in five rooms. Earn the hammer, archive key, lantern, seal crystal, and power cell.',
-    'Hard: twelve review questions across six chests. Solve a two-block gate, earn separate keys, and use your lantern to assemble a six-step code from clues in different rooms. No next-switch hints.',
+    'Hard: twelve review questions across six chests. Solve a two-block gate, aim a mirror to power a bridge, earn separate keys, and use your lantern to assemble a six-step code from clues in different rooms. No next-switch hints.',
     'Question order and choices change each play. Missed answers allow retries. Chest progress stays saved when you return to the map.'
   ],[{text:'Easy · 6 questions',run:()=>startMode('easy'),primary:true},{text:'Medium · 12 questions',run:()=>startMode('medium')},{text:'Hard · 12 questions',run:()=>startMode('hard')}]);
 }

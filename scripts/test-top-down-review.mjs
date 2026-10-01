@@ -41,7 +41,10 @@ test('Hard completes the two-block gate, key chain, split clues and six-step cod
  go(map,s,11,9);s.facing='right';assert.equal(interact(map,s).id,'workshop-key-chest');earn(map,s,'workshop-key-chest');
  go(map,s,10,11);assert.equal(move(map,s,'down'),true);assert.match(s.moveFeedback.text,/Workshop key used/);
  assert.deepEqual(s.usedKeys,['workshop']);assert.deepEqual(s.keys,['archive']);
- go(map,s,10,19);s.facing='right';assert.equal(interact(map,s).id,'hammer-pickup');earn(map,s,'hammer-pickup');
+ go(map,s,10,15);assert.equal(move(map,s,'right'),true);
+ go(map,s,12,14);s.facing='down';assert.match(interact(map,s).text,/Mirror rotated/);
+ go(map,s,9,16);s.facing='left';assert.match(interact(map,s).text,/Bridge raised/);
+ go(map,s,11,20);s.facing='right';assert.equal(interact(map,s).id,'hammer-pickup');earn(map,s,'hammer-pickup');
  go(map,s,4,5);assert.equal(move(map,s,'up'),true);
  go(map,s,4,3);s.facing='up';assert.equal(interact(map,s).id,'seal-crystal');earn(map,s,'seal-crystal');
  go(map,s,4,11);assert.equal(move(map,s,'down'),true);

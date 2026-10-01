@@ -46,7 +46,9 @@ function earn(id){
 ['up','up','up','right','right'].forEach(step);go(2,8);step('right');step('right');go(5,7);step('down');
 go(9,3);face('right');earn('archive');
 go(11,9);face('right');earn('workshop-key-chest');go(10,11);step('down');
-go(10,19);face('right');earn('hammer-pickup');
+go(10,15);step('right');assert.match(action().text,/Mirror rotated/);
+go(9,16);face('left');assert.match(action().text,/Bridge raised/);
+go(11,20);face('right');earn('hammer-pickup');
 assert.equal(get('room').textContent,'04 · Workshop');assert.equal(get('world').style.top,`${-12/13*100}%`);
 go(4,5);step('up');go(4,3);face('up');earn('seal-crystal');
 go(4,11);step('down');go(2,16);face('right');earn('lantern-chest');
