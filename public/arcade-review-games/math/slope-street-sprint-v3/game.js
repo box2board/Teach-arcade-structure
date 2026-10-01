@@ -1,0 +1,1 @@
+window.TA_GAME={id:'slope-street-sprint-v3',physicsPreset:'earth',level:window.TA_SLOPE_LEVEL,questions:window.TA_SLOPE_QUESTIONS,theme:window.TA_SLOPE_THEME};
