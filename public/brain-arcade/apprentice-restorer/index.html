@@ -1,254 +1,40 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#0f172a" />
-  <title>Apprentice Restorer | Teach Arcade Brain Arcade Flagship</title>
-  <meta name="description" content="A Zelda-like, SNES-inspired educational adventure that teaches physical science through exploration, experimentation, and reflection." />
-  <link rel="canonical" href="https://teacharcade.com/brain-arcade/apprentice-restorer/" />
-  <meta name="robots" content="noindex,follow" />
-  <link rel="stylesheet" href="/assets/styles.css?v=1" />
-  <link rel="stylesheet" href="/brain-arcade/apprentice-restorer/styles.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&family=Poppins:wght@600;700&family=Press+Start+2P&display=swap" rel="stylesheet" />
-  <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
-
-  <meta property="og:title" content="Apprentice Restorer | Teach Arcade Brain Arcade Flagship" />
-  <meta property="og:description" content="Explore a science-fantasy Brain Arcade adventure that builds physical science understanding through experimentation and reflection." />
-
-</head>
-<body>
-  <div id="site-header"></div>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#142c42">
+  <title>Apprentice Restorer · Waterworks Valley | Teach Arcade</title>
+  <meta name="description" content="Explore Waterworks Valley, experiment with water flow, gears, and circuits, and restore a connected science adventure on Teach Arcade.">
+  <meta name="robots" content="noindex,follow">
+  <link rel="canonical" href="https://teacharcade.com/brain-arcade/apprentice-restorer/">
+  <link rel="stylesheet" href="/assets/styles.css?v=1">
+  <link rel="stylesheet" href="styles.css?v=2">
   <script src="/assets/scripts/nav.js?v=5" defer></script>
-
-  <main>
-    <section class="hero">
-      <div>
-        <span class="tag">Flagship Brain Arcade</span>
-        <h1>Apprentice Restorer</h1>
-        <p>
-          A top-down, SNES-inspired educational adventure for Teach Arcade. Players restore a science-fantasy world by
-          experimenting with motion, energy, light, and electricity. Every region is a playground for discovery before
-          names appear.
-        </p>
-        <div class="chips" aria-label="Core experience goals">
-          <span class="tag">Exploration</span>
-          <span class="tag">Experimentation</span>
-          <span class="tag">Application</span>
-          <span class="tag">Reflection</span>
-          <span class="tag">No Scores</span>
-        </div>
-      </div>
-      <div class="pixel-panel">
-        <h2>Player Role</h2>
-        <p>
-          You are the <strong>Apprentice Restorer</strong>, guiding systems back into balance. Instead of combat, you
-          rely on tools and observation to resolve misconceptions represented as playful entities.
-        </p>
-        <div class="meta-grid">
-          <div>
-            <h3>Win Condition</h3>
-            <p>Stabilize all five regions and complete the Archive of Balance synthesis area.</p>
-          </div>
-          <div>
-            <h3>Play Style</h3>
-            <p>No lives, no timers, no scores. Progress is a record of understanding.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section gameplay">
-      <h2>Playable Restoration Map</h2>
-      <p>
-        Explore a full map, collect tools, and stabilize each system. Move with WASD or arrow keys, interact with
-        Space, and avoid roaming instability echoes. Restore every node to complete the run.
-      </p>
-      <div class="gameplay-panel" data-restoration>
-        <div class="gameplay-controls" aria-label="Tool selection">
-          <button class="tool-btn" type="button" data-tool="wind">Wind Tuner (1)</button>
-          <button class="tool-btn" type="button" data-tool="prism">Light Prism (2)</button>
-          <button class="tool-btn" type="button" data-tool="dynamo">Energy Dynamo (3)</button>
-          <button class="reset-btn" type="button" data-reset>Reset Map</button>
-        </div>
-        <div class="gameplay-canvas">
-          <canvas width="960" height="540" aria-label="Restoration map" role="img" data-canvas></canvas>
-          <div class="gameplay-hud" aria-live="polite">
-            <p><strong>Tool:</strong> <span data-tool-readout>None</span></p>
-            <p><strong>Archive:</strong> <span data-progress>0</span>/3 systems stabilized</p>
-            <p><strong>Status:</strong> <span data-status>Find a tool station, then stabilize each system.</span></p>
-          </div>
-        </div>
-        <div class="gameplay-notes">
-          <div class="note">
-            <h3>Controls</h3>
-            <ul>
-              <li>Move: WASD / Arrow keys</li>
-              <li>Interact: Space</li>
-              <li>Tool select: 1, 2, 3</li>
-            </ul>
-          </div>
-          <div class="note">
-            <h3>Objective</h3>
-            <p>Reach each system with the matching tool equipped and press Space to restore balance.</p>
-          </div>
-          <div class="note">
-            <h3>Dynamics</h3>
-            <p>Instability echoes roam the corridors. Touching them jolts you back to the last checkpoint.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2>Teaching Pillars</h2>
-      <div class="card-grid" data-pillars></div>
-    </section>
-
-    <section class="section">
-      <h2>Game Architecture</h2>
-      <div class="card-grid" data-systems></div>
-      <div class="data-panel" aria-label="Architecture flow">
-        INPUT → ACTION → SYSTEM RESPONSE → OBSERVATION → REFLECTION → NOTEBOOK UPDATE → NEW TOOL
-      </div>
-    </section>
-
-    <section class="section">
-      <h2>Region Progression</h2>
-      <div class="legend" aria-hidden="true">
-        <span>Observation</span>
-        <span>Experimentation</span>
-        <span>Application</span>
-        <span>Reflection</span>
-      </div>
-      <div class="card-grid" data-regions></div>
-    </section>
-
-    <section class="section">
-      <h2>Notebook System</h2>
-      <p>
-        The notebook auto-fills after lived experiences. Vocabulary appears only after the player has demonstrated
-        understanding in play.
-      </p>
-      <div class="card-grid" data-notebook></div>
-    </section>
-
-    <section class="section">
-      <h2>Classroom Mode</h2>
-      <p>
-        Classroom Mode hides the teacher label but quietly changes region access, hint cadence, and vocabulary timing.
-        Teachers control it from a secure menu outside student view.
-      </p>
-      <div class="toggle-row" data-classroom></div>
-      <p class="notice" data-classroom-note></p>
-      <div class="card">
-        <h3>Additional Controls</h3>
-        <ul>
-          <li>Lock or unlock regions for pacing.</li>
-          <li>Enable soft pause checkpoints for station rotations.</li>
-          <li>Turn on reflection prompts after each major system repair.</li>
-          <li>Track milestones without showing wrong answers.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2>NPC Dialogue Style</h2>
-      <p>NPCs ask questions more than they explain. Short, curious, and everyday language only.</p>
-      <div class="legend" data-npc></div>
-    </section>
-
-    <section class="section">
-      <h2>Player Journey Flow</h2>
-      <div class="timeline">
-        <div class="timeline-step">
-          <span>01</span>
-          <p>Explore a new region and notice a broken system.</p>
-        </div>
-        <div class="timeline-step">
-          <span>02</span>
-          <p>Experiment with tools, objects, and routes until something behaves differently.</p>
-        </div>
-        <div class="timeline-step">
-          <span>03</span>
-          <p>Apply the insight to stabilize the region and unlock the next pathway.</p>
-        </div>
-        <div class="timeline-step">
-          <span>04</span>
-          <p>Reflect with a short prompt that becomes a notebook entry.</p>
-        </div>
-        <div class="timeline-step">
-          <span>05</span>
-          <p>Receive the next tool that extends the system without adding new vocabulary.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2>Assessment Without Tests</h2>
-      <div class="card-grid">
-        <div class="card">
-          <h3>Gameplay choices</h3>
-          <p>Success is shown by how players route energy, motion, light, and flow.</p>
-        </div>
-        <div class="card">
-          <h3>Reflection prompts</h3>
-          <p>Short responses reinforce observations without grading or penalties.</p>
-        </div>
-        <div class="card">
-          <h3>Teacher observation</h3>
-          <p>Teachers see progress markers and can review notebook entries.</p>
-        </div>
-      </div>
-    </section>
-
-    <p class="footer-note">This flagship concept is built for Teach Arcade’s Brain Arcade and is ready for modular implementation in HTML, CSS, and JS.</p>
-  <section class="ta-value">
-  <h2>How to Use This in Class</h2>
-  <p><strong>What this tool does:</strong> This Apprentice Restorer activity is designed to turn content practice into a guided experience students can navigate with confidence. The layout keeps directions visible and reduces distraction so students can concentrate on the Apprentice Restorer objective. It provides a focused space for students to engage with Apprentice Restorer tasks, make choices, and see immediate feedback. Because the activity is self-contained, you can run it on a projector, in stations, or as an independent practice option.</p>
-  <p>Launch the Apprentice Restorer activity after direct instruction as a practice block where students apply key terms and steps. After the session, debrief with a few student examples so the class connects the activity to the lesson goal. For accountability, ask students to complete a short exit ticket tied to the same Apprentice Restorer skill they practiced.</p>
-  <h3>Quick Classroom Ideas</h3>
-  <ul>
-    <li>Exit ticket tie-in after the session</li><li>Warm-up challenge to activate prior knowledge</li><li>Small-group rotation station</li><li>Partner practice with discussion pauses</li><li>Whole-class projection for guided practice</li>
-  </ul>
-  <h3>Skills Students Practice</h3>
-  <ul>
-    <li>Critical thinking and reasoning</li><li>Reading and interpreting prompts</li><li>Strategic decision-making</li><li>Collaboration and peer discussion</li><li>Reflecting on mistakes and adjustments</li><li>Academic language usage</li><li>Goal setting and self-monitoring</li><li>Evidence-based explanations</li>
-  </ul>
-  <h3>Suggested Grade Levels &amp; Timing</h3>
-  <p>Apprentice Restorer fits grades 4–10 with easy adjustments. Plan 10–25 minutes of active use plus a 5–10 minute reflection. Differentiate by pairing students, providing sentence starters, or letting advanced learners set a challenge goal.</p>
-  <h3>FAQ</h3>
-  <details>
-    <summary>Do students need accounts?</summary>
-    <p>No. The Apprentice Restorer activity runs directly in the browser with no logins required.</p>
-  </details>
-  <details>
-    <summary>How long should a session last?</summary>
-    <p>Most classes use Apprentice Restorer for 10–20 minutes, with a quick debrief afterward.</p>
-  </details>
-  <details>
-    <summary>Can I use this with limited devices?</summary>
-    <p>Yes. Apprentice Restorer works well in stations, partner play, or whole-class projection.</p>
-  </details>
-  <details>
-    <summary>Is it aligned to standards?</summary>
-    <p>The Apprentice Restorer focus supports common skills such as analysis, reasoning, and content recall.</p>
-  </details>
-  <details>
-    <summary>What if students finish early?</summary>
-    <p>Have early finishers replay Apprentice Restorer with a new goal or write a short summary of strategies used.</p>
-  </details>
-</section>
-</main>
-
-  <footer>
-    © <script>document.write(new Date().getFullYear())</script> Teach Arcade •
-    <a href="/privacy.html">Privacy</a> •
-    <a href="/terms.html">Terms</a>
-  </footer>
-
-  <script type="module" src="/brain-arcade/apprentice-restorer/js/app.js"></script>
+  <script type="module" src="js/app.js?v=2"></script>
+</head>
+<body class="restorer-page">
+  <div id="site-header"></div>
+  <main class="ar" id="restorer">
+    <div class="ar-title"><div><a href="/brain-arcade/">Brain Arcade</a><h1>Apprentice Restorer</h1><p>Waterworks Valley · First region</p></div><button type="button" id="restart">New adventure</button></div>
+    <div class="ar-layout">
+      <section class="ar-world" aria-label="Adventure">
+        <div class="ar-mission"><span class="ar-kicker">Your mission</span><strong id="objective">Visit the canal junction and bring water back to the valley.</strong><span id="progress">0 of 4 repairs</span></div>
+        <canvas id="world" width="936" height="576" tabindex="0" aria-label="Waterworks Valley. Use arrow keys or WASD to move; Space or E to interact. You can also use the station buttons below.">Use the station buttons to explore and interact with the valley.</canvas>
+        <div class="ar-status" id="status" role="status">Walk to the canal junction. The orange marker shows your next task.</div>
+        <div class="ar-controls"><div class="ar-dpad" aria-label="Movement controls"><button data-move="up" aria-label="Move up">↑</button><button data-move="left" aria-label="Move left">←</button><button data-move="down" aria-label="Move down">↓</button><button data-move="right" aria-label="Move right">→</button></div><button id="interact" class="ar-primary">Interact</button><button id="pause" aria-pressed="false">Pause</button></div>
+        <p class="ar-help">Move: arrows / WASD · Interact: Space / E · Tap the map to walk. Progress saves on this device.</p>
+      </section>
+      <aside class="ar-sidebar">
+        <section class="ar-card"><span class="ar-kicker">Explore the valley</span><h2>Restoration stations</h2><p>Choose a station to walk there.</p><div id="stations"></div></section>
+        <section class="ar-card"><span class="ar-kicker">Collected tools</span><h2>Your satchel</h2><ul id="inventory"><li>Field notebook</li></ul></section>
+        <section class="ar-card"><span class="ar-kicker">Discoveries</span><h2>Field notebook</h2><div id="notebook"><p>Your observations will appear here after each repair.</p></div><button id="report">Print notebook</button><p class="ar-save" id="save-status">Saved locally; no account needed.</p></section>
+      </aside>
+    </div>
+    <details class="ar-teacher"><summary>For teachers</summary><p>This first region focuses on energy transfer: moving water turns a wheel, gears transfer motion, and a generator powers a circuit. Use it in pairs or as a science station. Puzzle numbers are simplified model values, not measurements from a real machine. Allow students to test unsuccessful configurations and explain what changed.</p><p>The printable notebook includes repairs, experiments, hints used, and student reflections. It stays on the current device; there is no class dashboard or online submission.</p></details>
+    <noscript><p>This adventure needs JavaScript. Please enable it to play.</p></noscript>
+  </main>
+  <dialog id="puzzle" class="ar-dialog" aria-labelledby="puzzle-title"><div class="ar-dialog-head"><span class="ar-kicker" id="puzzle-step">Restoration station</span><button id="close-puzzle" aria-label="Close station">×</button></div><h2 id="puzzle-title"></h2><p id="puzzle-intro"></p><div id="experiment"></div><p id="feedback" role="status"></p><div class="ar-dialog-actions"><button id="test" class="ar-primary">Test system</button><button id="hint">Get a hint</button></div><div id="reflection" hidden><label for="reflection-text">What changed, and why did it work?</label><textarea id="reflection-text" rows="3" maxlength="600" placeholder="Describe one observation from your experiment."></textarea><button id="continue" class="ar-primary">Save observation & continue</button></div></dialog>
+  <dialog id="reset-dialog" class="ar-dialog" aria-labelledby="reset-title"><h2 id="reset-title">Start a new adventure?</h2><p>This replaces the progress and notebook saved on this device. Print your notebook first if you want to keep it.</p><button id="confirm-reset">Start fresh</button><button id="cancel-reset">Keep exploring</button></dialog>
+  <footer class="ar-footer">© Teach Arcade · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></footer>
 </body>
 </html>
