@@ -1,0 +1,1 @@
+window.TA_GAME={id:'volcano-ascent-graybox',physicsPreset:'earth',level:window.TA_VOLCANO_LEVEL,questions:window.TA_VOLCANO_QUESTIONS,theme:window.TA_VOLCANO_THEME,sound:window.TA_VOLCANO_SOUND};
