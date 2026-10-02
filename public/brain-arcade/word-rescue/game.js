@@ -56,6 +56,7 @@
       name: "Signal Station",
       resource: "Rescue signal",
       success: "Aircraft locked onto the signal.",
+      stages: [["Signal flicker","⚡",28,72],["Antenna damage","✕",40,37],["Clouds building","☁",67,16],["Static surge","⚡",57,49],["Aircraft losing lock","!",83,28],["Signal offline","×",47,28]],
       markup: `<svg viewBox="0 0 320 230" role="img" aria-label="A stranded explorer beside a radio tower while a rescue aircraft approaches.">
         <path class="wr-soft-fill" d="M0 190 Q58 174 111 191 T221 188 T320 188 V230 H0 Z"/>
         <g class="wr-line"><line x1="74" y1="184" x2="108" y2="82"/><line x1="142" y1="184" x2="108" y2="82"/><line x1="84" y1="151" x2="132" y2="151"/><line x1="93" y1="122" x2="123" y2="122"/><circle cx="108" cy="72" r="9"/></g>
@@ -69,6 +70,7 @@
       name: "Mountain Rescue",
       resource: "Helicopter fuel",
       success: "The helicopter reached the ledge.",
+      stages: [["Wind rising","≈",20,25],["Snow starts","❄",37,20],["Clouds close in","☁",58,16],["Rotor strain","!",81,27],["Visibility critical","❄",68,43],["Helicopter turns away","×",83,18]],
       markup: `<svg viewBox="0 0 320 230" role="img" aria-label="A hiker waits on a mountain ledge while a rescue helicopter approaches.">
         <path class="wr-snow" d="M0 220 L72 112 L109 151 L164 57 L250 220 Z"/><path class="wr-soft-fill" d="M150 220 L232 132 L320 220 Z"/>
         <path class="wr-line wr-thin" d="M72 112 L109 151 L164 57 L250 220 M150 220 L232 132 L320 220"/>
@@ -82,6 +84,7 @@
       name: "Island Rescue",
       resource: "Beacon power",
       success: "The rescue boat reached shore.",
+      stages: [["Tide rising","≈",22,69],["Beacon flickers","⚡",29,48],["Wind picks up","≈",50,26],["Waves build","≈",63,67],["Boat loses bearing","!",83,53],["Beacon dark","×",31,43]],
       markup: `<svg viewBox="0 0 320 230" role="img" aria-label="A castaway waits on a small island while a rescue boat approaches.">
         <path class="wr-water" d="M0 157 Q25 146 50 157 T100 157 T150 157 T200 157 T250 157 T320 157 V230 H0 Z"/>
         <path class="wr-sand" d="M35 176 Q86 132 151 173 Q120 198 49 195 Z"/>
@@ -95,6 +98,7 @@
       name: "Orbital Rescue",
       resource: "Oxygen reserve",
       success: "The rescue craft docked safely.",
+      stages: [["Oxygen warning","O₂",43,55],["Power fault","⚡",52,44],["Comms fading","≈",61,39],["Capsule drifting","↗",54,67],["Docking lock lost","!",79,40],["Oxygen depleted","×",48,50]],
       markup: `<svg viewBox="0 0 320 230" role="img" aria-label="A disabled space capsule waits for a rescue craft in orbit.">
         <circle cx="62" cy="54" r="3" fill="#64748b"/><circle cx="121" cy="28" r="2" fill="#64748b"/><circle cx="274" cy="94" r="3" fill="#64748b"/><circle cx="210" cy="39" r="2" fill="#64748b"/>
         <circle class="wr-water" cx="72" cy="187" r="76"/><path class="wr-soft-fill" d="M18 181 Q65 144 126 171 Q104 208 41 220 Z"/>
@@ -108,6 +112,7 @@
       name: "Flood Rescue",
       resource: "Rescue time",
       success: "The rescue boat reached the rooftop.",
+      stages: [["Water rising","≈",22,67],["Rain intensifies","☂",40,20],["Current strengthens","≈",56,69],["Roof access shrinking","!",43,47],["Boat pushed off line","↗",83,58],["Water critical","×",48,63]],
       markup: `<svg viewBox="0 0 320 230" role="img" aria-label="A person waits on a rooftop during a flood while a rescue boat approaches.">
         <path class="wr-water" d="M0 157 Q24 147 48 157 T96 157 T144 157 T192 157 T240 157 T320 157 V230 H0 Z"/>
         <g class="wr-fill"><rect x="53" y="108" width="98" height="67"/><path d="M42 109 L102 69 L162 109 Z"/></g>
@@ -121,6 +126,7 @@
       name: "Forest Search",
       resource: "Search daylight",
       success: "The search team found the explorer.",
+      stages: [["Trail lost","?",49,60],["Fog building","☁",37,30],["Daylight fading","◐",68,24],["Search route blocked","×",58,63],["Vehicle loses trail","!",84,64],["Darkness falls","●",50,33]],
       markup: `<svg viewBox="0 0 320 230" role="img" aria-label="A lost explorer waits in a forest as a rescue vehicle approaches.">
         <path class="wr-soft-fill" d="M0 199 Q70 183 140 199 T280 198 T320 198 V230 H0 Z"/>
         <g fill="#dbe7d2" stroke="#1e293b" stroke-width="4"><path d="M40 172 L67 105 L94 172 Z"/><path d="M92 174 L121 90 L150 174 Z"/><path d="M238 177 L266 98 L294 177 Z"/></g>
@@ -134,6 +140,7 @@
       name: "Arctic Rescue",
       resource: "Heat reserve",
       success: "The snowcat reached the research team.",
+      stages: [["Temperature drops","❄",47,62],["Wind rising","≈",38,27],["Snow thickens","❄",59,25],["Heat system failing","!",40,54],["Whiteout","☁",69,33],["Heat depleted","×",51,50]],
       markup: `<svg viewBox="0 0 320 230" role="img" aria-label="Researchers wait at an Arctic station while a snow rescue vehicle approaches.">
         <path class="wr-snow" d="M0 170 Q45 150 91 170 T184 168 T276 170 T320 166 V230 H0 Z"/>
         <g class="wr-fill"><rect x="47" y="111" width="102" height="67"/><path d="M39 111 L98 76 L157 111 Z"/><rect x="84" y="136" width="28" height="42"/></g>
@@ -147,6 +154,7 @@
       name: "Cave Rescue",
       resource: "Rope length",
       success: "The rescue line reached the caver.",
+      stages: [["Loose rock","◆",47,29],["Dust cloud","☁",57,44],["Rope snag","!",34,53],["Rockfall","◆",64,62],["Line retracting","↑",34,36],["Route blocked","×",50,70]],
       markup: `<svg viewBox="0 0 320 230" role="img" aria-label="A trapped caver waits below while a rescue team lowers a rope.">
         <path class="wr-dark-fill" d="M0 0 H320 V45 Q275 37 252 66 Q226 94 197 63 Q160 31 125 67 Q90 101 56 61 Q31 32 0 48 Z"/>
         <path class="wr-dark-fill" d="M0 230 V190 Q45 165 78 195 Q108 221 146 191 Q181 162 220 196 Q262 225 320 188 V230 Z"/>
@@ -160,6 +168,7 @@
       name: "Storm Rescue",
       resource: "Emergency power",
       success: "The Coast Guard boat reached the lighthouse.",
+      stages: [["Rain begins","☂",34,20],["Waves grow","≈",48,70],["Wind strengthens","≈",62,26],["Beacon flickers","⚡",37,37],["Boat pushed back","!",83,61],["Beacon out","×",41,34]],
       markup: `<svg viewBox="0 0 320 230" role="img" aria-label="A lighthouse keeper waits during a storm as a rescue boat approaches.">
         <path class="wr-water" d="M0 171 Q25 154 50 171 T100 171 T150 171 T200 171 T250 171 T320 171 V230 H0 Z"/>
         <g class="wr-fill"><path d="M56 171 L70 85 H116 L130 171 Z"/><rect x="67" y="68" width="52" height="20" rx="4"/><path d="M62 68 L93 48 L124 68 Z"/></g>
@@ -173,6 +182,7 @@
       name: "Desert Airlift",
       resource: "Water reserve",
       success: "The rescue aircraft reached the outpost.",
+      stages: [["Heat rising","☀",30,22],["Water low","!",49,63],["Wind picks up","≈",61,32],["Dust builds","☁",68,43],["Aircraft loses visual","!",83,29],["Water depleted","×",49,58]],
       markup: `<svg viewBox="0 0 320 230" role="img" aria-label="A stranded traveler waits at a desert outpost while a rescue aircraft approaches.">
         <path class="wr-sand" d="M0 176 Q57 135 118 175 Q173 205 229 171 Q274 144 320 177 V230 H0 Z"/>
         <g class="wr-fill"><rect x="56" y="125" width="84" height="56"/><path d="M48 126 L98 96 L148 126 Z"/></g>
@@ -274,7 +284,20 @@
     els.sceneName.textContent = activeScene.name;
     els.sceneKicker.textContent = "Rescue Mission";
     els.resourceLabel.textContent = activeScene.resource;
-    els.sceneArt.innerHTML = activeScene.markup;
+    els.sceneArt.innerHTML = activeScene.markup + '<div class="word-rescue-page__stage-layer" id="stage-layer" aria-hidden="true"></div>';
+    activeScene.stages.forEach((stage, index) => {
+      const [label, symbol, left, top] = stage;
+      const mark = document.createElement("span");
+      mark.className = "word-rescue-page__stage-mark";
+      mark.dataset.stage = String(index + 1);
+      mark.style.left = `${left}%`;
+      mark.style.top = `${top}%`;
+      mark.textContent = symbol;
+      mark.title = label;
+      mark.setAttribute("aria-label", label);
+      document.getElementById("stage-layer").appendChild(mark);
+    });
+    els.rescueScene.dataset.wrong = "0";
     els.rescueScene.setAttribute("aria-label", `${activeScene.name}: ${activeScene.resource} status`);
   }
 
@@ -342,8 +365,12 @@
   function renderSignal() {
     const remaining = Math.max(0, MAX_WRONG - wrong.length);
     els.signalStatus.textContent = `${remaining} / ${MAX_WRONG}`;
+    els.rescueScene.dataset.wrong = String(wrong.length);
     els.signalCells.forEach((cell, index) => {
       cell.classList.toggle("is-offline", index >= remaining);
+    });
+    els.sceneArt.querySelectorAll(".word-rescue-page__stage-mark").forEach(mark => {
+      mark.classList.toggle("is-visible", Number(mark.dataset.stage) <= wrong.length);
     });
     els.wrongCount.textContent = String(wrong.length);
     els.wrongLetters.textContent = wrong.length ? wrong.map(letter => letter.toUpperCase()).join("  ") : "None yet";
@@ -388,9 +415,10 @@
     } else {
       wrong.push(letter);
       const remaining = MAX_WRONG - wrong.length;
+      const stageLabel = activeScene.stages[wrong.length - 1]?.[0] || "Rescue conditions worsening";
       els.feedback.textContent = remaining === 1
-        ? `Critical — one ${activeScene.resource.toLowerCase()} unit left.`
-        : `Incorrect guess. ${remaining} rescue resource${remaining === 1 ? "" : "s"} remaining.`;
+        ? `${stageLabel}. Critical — one chance left.`
+        : `${stageLabel}. ${remaining} chances remaining.`;
     }
 
     if (isSolved()) {
