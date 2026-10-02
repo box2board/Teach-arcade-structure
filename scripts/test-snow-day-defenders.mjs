@@ -1,3 +1,5 @@
+import {GEAR,freshGear,gearPrice,purchaseGear,equipGear,validateQuestions} from '../public/dev/snow-day-defenders/gear.js';
+import {DEMO_QUESTIONS} from '../public/dev/snow-day-defenders/questions.js';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
@@ -21,8 +23,8 @@ class Element {
  setPointerCapture(){}
  getBoundingClientRect(){return {left:0,top:0,width:1100,height:620};}
 }
-function harness({fullscreen=false}={}){
- const window=new Element(),document=new Element();document.activeElement=null;
+function harness({fullscreen=false,equipment=false,questionSet}={}){
+ const window=new Element(),document=new Element();window.SNOW_QUESTION_SET=questionSet;document.activeElement=null;
  const elements=new Map(),get=id=>{if(!elements.has(id))elements.set(id,Object.assign(new Element(),{ownerDocument:document}));return elements.get(id);};
  Object.assign(get('stage'),{clientWidth:1100,clientHeight:620});
  document.getElementById=get;document.hidden=false;
@@ -31,8 +33,9 @@ function harness({fullscreen=false}={}){
  let callback,scene,clock=0,seed=42;
  const math=Object.create(Math);math.random=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296;};
  class Renderer {constructor(){this.shadowMap={};}setPixelRatio(){}setSize(){}render(s){scene=s;}}
- const ctx={CREATURE_TYPES,advanceCreature,fitSnowCamera,THREE:{...THREE,WebGLRenderer:Renderer},UPGRADE_RULES,freshUpgrades,grantTokens,canBuy,buyUpgrade,DIFFICULTIES,WAVE_PATTERNS,buildWave:(d,w)=>buildWave(d,w,math.random),segmentSphereHit,window,document,Math:math,devicePixelRatio:1,ResizeObserver:class{observe(){}},performance:{now:()=>clock},requestAnimationFrame:f=>callback=f,console};
+ const ctx={GEAR,freshGear,gearPrice,purchaseGear,equipGear,validateQuestions,DEMO_QUESTIONS,CREATURE_TYPES,advanceCreature,fitSnowCamera,THREE:{...THREE,WebGLRenderer:Renderer},UPGRADE_RULES,freshUpgrades,grantTokens,canBuy,buyUpgrade,DIFFICULTIES,WAVE_PATTERNS,buildWave:(d,w)=>buildWave(d,w,math.random),segmentSphereHit,window,document,Math:math,devicePixelRatio:1,ResizeObserver:class{observe(){}},performance:{now:()=>clock},requestAnimationFrame:f=>callback=f,console};
  vm.createContext(ctx);vm.runInContext(fs.readFileSync(new URL('../public/dev/snow-day-defenders/game.js',import.meta.url),'utf8').replace(/^import .*?;\n/gm,''),ctx);
+ if(!equipment)vm.runInContext('equipmentEnabled=false;',ctx);
  const step=(n=1)=>{for(let i=0;i<n;i++){clock+=50;callback(clock);}};
  const state=()=>window.snowDayState();
  const key=(key,type='keydown',options={})=>window.fire(type,{key,preventDefault(){},...options});
@@ -214,3 +217,38 @@ assert.equal(passiveHard.state().mode,'lost','simple follow-and-fire play cannot
 assert(DIFFICULTIES.hard.aimWidth<DIFFICULTIES.medium.aimWidth&&DIFFICULTIES.medium.aimWidth<DIFFICULTIES.easy.aimWidth);assert(!DIFFICULTIES.hard.tracking&&DIFFICULTIES.easy.tracking);
 const straight=harness();straight.select('hard');straight.click('start');straight.fixture('wavePlan.events=[];wavePlan.warnings=[];enemies=[creature(0,0,-15)];');straight.step(6);const fired=straight.fixture('balls[0].velocity.clone()');straight.fixture('enemies[0].x=4;enemies[0].baseX=4;');straight.step();assert(Math.abs(straight.fixture('balls[0].velocity.x')-fired.x)<.00001,'Hard snowballs keep their launch trajectory');
 console.log('PASS: Hard requires active play, narrower aim, straight projectile trajectories; abilities/upgrades can complete all three waves');
+
+assert.equal(Object.keys(GEAR).length,17);assert.throws(()=>validateQuestions({...DEMO_QUESTIONS,questions:[DEMO_QUESTIONS.questions[0],DEMO_QUESTIONS.questions[0]]}));assert.throws(()=>validateQuestions({title:'Bad',questions:[{id:'x',prompt:'x',choices:['a'],answer:2,explanation:''}]}));
+const wallet={tokens:30},catalog=freshGear();assert(purchaseGear(catalog,wallet,'roller'));assert.equal(catalog.equipped.toss,'roller');assert(equipGear(catalog,'scoop'));assert(!equipGear(catalog,'dome'));assert(purchaseGear(catalog,wallet,'scoop'));assert(purchaseGear(catalog,wallet,'scoop'));assert.equal(gearPrice(catalog,'scoop'),Infinity);assert(!purchaseGear(catalog,wallet,'scoop'));
+const school=harness({equipment:true});school.select('hard');school.click('start');assert(school.state().gearOpen&&school.state().reviewOpen);assert.equal(school.state().spawned,0);assert.equal(school.state().stars,2);const prep=JSON.stringify(school.state());school.step(200);assert.equal(JSON.stringify(school.state()),prep,'preparation freezes every simulation counter');
+assert.equal(school.focused(),'answer-0');school.key('Enter');assert.equal(school.state().stars,3);school.key('Enter','keydown',{repeat:true});assert.equal(school.state().stars,3);school.click('answer-0');assert.equal(school.state().academic.attempts,1,'double answer cannot award twice');school.click('review-next');school.click('answer-0');assert.equal(school.state().stars,3,'wrong answer earns no star');assert.match(school.get('review-feedback').textContent,/testable hypothesis/);school.click('review-next');school.click('answer-2');school.click('review-next');assert(!school.state().reviewOpen);assert.equal(school.state().stars,4);
+school.click('gear-scoop');assert.equal(school.state().equipment.levels.scoop,2);assert.equal(school.state().stars,2);school.click('tab-support');school.click('gear-bank');assert.equal(school.state().equipment.equipped.support,'bank');assert.equal(school.state().stars,0);school.click('gear-resume');assert.equal(school.state().mode,'playing');assert.equal(school.focused(),'scene');school.step(10);
+school.click('snow-gear');const frozenSchool=JSON.stringify(school.state()),frozenField=school.fixture('JSON.stringify([waveTime,tossClock,supportClock,helperClock,...enemies.map(e=>[e.x,e.z,e.age]),...balls.map(b=>b.mesh.position.toArray()),Array.from(snowPositions)])');school.step(100);assert.equal(JSON.stringify(school.state()),frozenSchool);assert.equal(school.fixture('JSON.stringify([waveTime,tossClock,supportClock,helperClock,...enemies.map(e=>[e.x,e.z,e.age]),...balls.map(b=>b.mesh.position.toArray()),Array.from(snowPositions)])'),frozenField,'gear menu freezes projectiles, creatures, snowfall, and support timers');
+school.key('ArrowRight');assert.equal(school.focused(),'tab-support');school.key('Escape');assert.equal(school.state().mode,'playing');assert.equal(school.state().wave,1);school.key('ArrowRight');school.step(5);school.click('snow-gear');school.click('gear-resume');const stoppedX=school.state().playerX;school.step();assert.equal(school.state().playerX,stoppedX,'opening gear clears held movement');
+// Finish the remaining unearned questions. Previously rewarded IDs cannot pay again.
+school.click('snow-gear');for(let rounds=0;rounds<4&&!school.get('gear-study').disabled;rounds++){school.click('gear-study');while(school.state().reviewOpen){const answer=school.fixture('reviewQueue[reviewIndex].answer');school.click(`answer-${answer}`);school.click('review-next');}}
+assert.equal(school.state().academic.correct,9);assert.equal(school.state().stars,7);assert(school.get('gear-study').disabled);school.click('gear-study');assert(!school.state().reviewOpen);school.click('gear-resume');school.fixture('spawned=wavePlan.events.length;enemies.forEach(disposeEntity);enemies=[];');school.step();assert(school.state().gearOpen);assert.equal(school.state().wave,1);school.click('gear-resume');assert.equal(school.state().wave,2,'between-wave gear advances exactly once');school.click('snow-gear');school.click('gear-resume');assert.equal(school.state().wave,2,'mid-wave gear does not advance the wave');school.click('restart');assert.equal(school.state().academic.correct,0);assert.equal(school.state().stars,2);assert(school.state().reviewOpen);assert.equal(school.state().equipment.levels.scoop,1);
+const custom=harness({equipment:true,questionSet:{title:'Math test',questions:[{id:'math',prompt:'2 + 2?',choices:['3','4'],answer:1,explanation:'Two pairs make four.'}]}});custom.click('start');assert(custom.get('answer-2').hidden);custom.click('answer-1');custom.click('review-next');assert.equal(custom.state().stars,3);assert(custom.get('gear-study').disabled);assert.match(custom.get('gear-set-label').textContent,/Review set: Math test/);
+const invalid=harness({equipment:true,questionSet:{title:'Broken',questions:[]}});invalid.click('start');assert(invalid.get('gear-study').disabled);assert(!invalid.state().reviewOpen);invalid.click('gear-resume');assert.equal(invalid.state().mode,'playing','malformed questions do not strand the player');
+console.log('PASS: opening rewards, sample/custom sets, wrong-answer feedback, once-per-question earnings, keyboard gear, pause safety, switching, purchases, wave flow, reset, invalid sets');
+
+for(const id of Object.keys(GEAR)){
+ const tool=harness({equipment:true});tool.fixture("reset();equipmentEnabled=true;mode='playing';wavePlan.events=[];wavePlan.warnings=[];spawned=0;upgrades.tokens=100;");tool.fixture(`gearState.levels['${id}']=3;gearState.equipped[GEAR['${id}'].slot]='${id}';rebuildSupport();enemies=[creature(2,0,0),creature(2,-3.8,0),creature(2,3.8,0)];`);
+ if(GEAR[id].slot==='special'){tool.click('snow-burst');assert.equal(tool.state().burstCharges,1,`${id} consumes a charge`);if(id==='dome'){tool.fixture('enemies[0].z=8;');tool.step();assert.equal(tool.state().fort,100);assert(tool.fixture('domeVisual.visible'));}if(id==='whiteout')assert(tool.fixture('enemies.every(e=>e.slowTime>0)'));if(id==='rally'){tool.step();assert(tool.fixture('rallyVisuals.every(r=>r.visible)'));}}
+ if(id==='patch')tool.fixture('fort=50;');if(id==='mittens')tool.fixture('burstCharges=0;');
+ tool.step(30);if(id==='patch'){tool.step(100);assert(tool.state().fort>50);}if(id==='mittens'){tool.step(100);assert(tool.state().burstCharges>0);}if(id==='bank')assert(tool.fixture('supportObjects.length===3'));if(id==='puddle')assert(tool.fixture('enemies.some(e=>e.slowTime>0)'));if(id==='magnet')assert(tool.fixture('enemies.some(e=>Math.abs(e.baseX)>0&&Math.abs(e.baseX)<3.8)'));if(GEAR[id].slot==='toss')assert(tool.state().hits>0||id==='sprayer',`${id} hits creatures`);
+ tool.click('snow-gear');const toolPause=JSON.stringify(tool.state());tool.step(40);assert.equal(JSON.stringify(tool.state()),toolPause,`${id} freezes in gear menu`);
+}
+console.log('PASS: all 17 gear items, special charges/shield/rally, automatic support, repairs/recharges, pause');
+
+for(const difficulty of Object.keys(DIFFICULTIES)){
+ const earned=harness({equipment:true});earned.select(difficulty);earned.click('start');earned.step();let frames=0;
+ const finishReview=()=>{while(earned.state().reviewOpen){earned.click(`answer-${earned.fixture('reviewQueue[reviewIndex].answer')}`);earned.click('review-next');}};
+ finishReview();earned.click('tab-toss');earned.click('gear-scoop');earned.click('tab-support');earned.click('gear-buddy');earned.click('gear-resume');
+ while(!['won','lost'].includes(earned.state().mode)&&frames++<15000){
+  if(earned.state().gearOpen){if(!earned.get('gear-study').disabled){earned.click('gear-study');finishReview();}earned.click('tab-toss');earned.click('gear-scoop');earned.click('tab-support');earned.click('gear-buddy');earned.click('gear-repair');earned.click('gear-resume');}
+  earned.aim();earned.step();
+ }
+ assert.equal(earned.state().mode,'won',`${difficulty}: academic gear loadout completes all waves with simple movement`);assert(earned.state().academic.correct>0);console.log(`PASS: ${difficulty} full academic run, earned gear, automatic helper, simple movement, between-wave questions`);
+}
+const bankCache=harness({equipment:true});bankCache.fixture("reset();mode='playing';gearState.levels.bank=1;gearState.equipped.support='bank';rebuildSupport();supportObjects[0].hp=0;gearState.equipped.support='buddy';rebuildSupport();gearState.equipped.support='bank';rebuildSupport();");assert.equal(bankCache.fixture('supportObjects[0].hp'),0,'free gear switching cannot refill spent barriers');
