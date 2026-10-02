@@ -1,5 +1,5 @@
 (()=>{const B=TASideScroller.LevelBuilder;window.TA_VOLCANO_LEVEL=B.build({
-id:'volcano-ascent-graybox',physicsPreset:'earth',tileSize:32,world:{width:5200,height:480},spawn:{x:64,y:346},finish:{x:5070,y:82,w:54,h:94},
+id:'volcano-ascent-v12',physicsPreset:'earth',tileSize:32,world:{width:5200,height:480},spawn:{x:64,y:346},finish:{x:5070,y:82,w:54,h:94},
 design:{kind:'production',identity:'A rising expedition where the player repeatedly earns height through climbing, bounce launches, moving lifts, and breakable shortcuts rather than simply running right.',targetMinutes:[5,8],routeStyle:'ascending-switchback-expedition',pacing:'climb-recover-launch-climb-finale',verticality:'high',primaryMechanics:['climbables','bounceSurfaces','movingPlatforms','breakables'],signatureMechanic:'climbables',signatureSetPiece:'a final multi-stage crater ascent combining spring launch, lift transfer, and ladder climb'},
 zones:[
 {id:'base',label:'Base Camp',from:0,to:850,role:'orientation',mechanics:['climbables']},
