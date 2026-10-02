@@ -1,30 +1,48 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#101820">
-  <title>Escape from the Trenches | Teach Arcade</title>
-  <meta name="description" content="A classroom World War I escape room from Teach Arcade.">
+  <title>Classroom Escape Rooms | Teach Arcade</title>
+  <meta name="description" content="Browse classroom escape room missions from Teach Arcade. Explore evidence, solve puzzles, and build subject knowledge.">
   <link rel="canonical" href="https://teacharcade.com/escape/">
   <link rel="stylesheet" href="/escape/css/base.css">
+  <link rel="stylesheet" href="/escape/css/hub.css">
+  <script>
+    const room = new URLSearchParams(location.search).get('room');
+    if (room) location.replace(`/escape/play.html?room=${encodeURIComponent(room)}`);
+  </script>
 </head>
-<body>
-  <header class="topbar"><a class="brand" href="/escape/" aria-label="Teach Arcade Escape Rooms">TEACH <b>ARCADE</b><span> / ESCAPE ROOMS</span></a><button id="restartBtn" class="restart">↻ Restart</button></header>
-  <main class="layout">
-    <section class="game">
-      <div class="game-backdrop" aria-hidden="true"></div>
-      <div class="game-content">
-        <div class="game-heading"><span class="eyebrow">CLASSROOM FIELD MISSION</span><h1 id="roomTitle">Escape from the Trenches</h1><p class="room-meta">WORLD WAR I <span>·</span> HISTORY <span>·</span> GRADES 7–10</p></div>
-        <div class="progress-wrap"><div class="progress-label"><span id="progressText">Loading mission…</span><span>PROGRESS</span></div><div class="progress-track" role="progressbar" aria-label="Mission progress"><span id="progressBar"></span></div></div>
-        <article class="scene-card" aria-live="polite"><div class="scene-head"><span id="sceneKicker" class="scene-kicker"></span><h2 id="sceneTitle"></h2></div><div id="sceneRoot"></div></article>
+<body class="escape-hub">
+  <header class="topbar">
+    <a class="brand" href="/">TEACH <b>ARCADE</b><span> / ESCAPE ROOMS</span></a>
+    <a class="hub-home" href="/">Teach Arcade home</a>
+  </header>
+  <main class="hub-main">
+    <section class="hub-hero" aria-labelledby="hub-title">
+      <div class="hero-copy">
+        <span class="eyebrow">CLASSROOM FIELD MISSIONS</span>
+        <h1 id="hub-title">Escape Rooms</h1>
+        <p>Follow the evidence, solve connected puzzles, and unlock the story. Choose a mission to begin.</p>
       </div>
+      <div class="signal-mark" aria-hidden="true"><span>FIELD<br>ARCHIVE</span><i>✦</i></div>
     </section>
-    <aside class="sidebar" aria-label="Mission notes">
-      <section class="side-panel clue-panel"><div class="side-title"><span class="side-icon">▣</span><h2>Evidence board</h2></div><p class="locker-note">Clues and your reasoning stay here as you investigate.</p><ul id="clueList" class="clue-list"><li class="quiet">No clues recovered yet.</li></ul><div id="reasoningList" class="reasoning-list"><p class="quiet">Your reasoning notes will appear here.</p></div></section>
-      <section class="side-panel journal-panel"><div class="side-title"><span class="side-icon">≡</span><h2>Field notes</h2></div><div id="journalFeed" class="journal-feed"><p class="quiet">Your discoveries appear here.</p></div></section>
-      <p class="save-note">Progress saves automatically on this device.</p>
-    </aside>
+    <section class="mission-library" aria-labelledby="available-title">
+      <div class="library-heading"><div><span class="eyebrow">MISSION ARCHIVE</span><h2 id="available-title">Available mission</h2></div><span class="mission-count">1 MISSION</span></div>
+      <article class="mission-card">
+        <div class="mission-art" role="img" aria-label="A World War I trench at dusk"><span class="art-stamp">1918 · WESTERN FRONT</span><span class="art-signal" aria-hidden="true">✦</span></div>
+        <div class="mission-info">
+          <div class="mission-tags"><span>WORLD HISTORY</span><span>GRADES 7–10</span></div>
+          <h3>Escape from the Trenches</h3>
+          <p class="mission-summary">A damaged dispatch holds clues to how a Sarajevo crisis widened into a world war—and why the United States entered later.</p>
+          <div class="mission-facts" aria-label="Mission details"><span><strong>Subject</strong>History</span><span><strong>Play time</strong>25–40 min</span><span><strong>Challenges</strong>Easy · Medium · Hard</span></div>
+          <a class="primary launch-mission" href="/escape/play.html?room=wwi">View mission briefing <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+      <p class="archive-note">More classroom missions will appear here as they are added.</p>
+    </section>
   </main>
-  <script src="/escape/js/app.js"></script>
+  <footer class="hub-footer"><a href="/">Teach Arcade</a><span>Evidence-led learning through play.</span></footer>
 </body>
 </html>
