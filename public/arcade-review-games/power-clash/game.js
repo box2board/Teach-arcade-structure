@@ -14,7 +14,8 @@
   ];
   const floorY = 438;
   const GRAVITY = 1900;
-  const MOVEMENT_JUICE_PER_SECOND = .75;
+  const PUNCH_JUICE_COST = 3;
+  const KICK_JUICE_COST = 6;
   const config = {
     1: { left: ["KeyA"], right: ["KeyD"], jump: ["KeyW"], punch: ["KeyF"], kick: ["KeyG"], dash: ["KeyQ"] },
     2: { left: ["ArrowLeft"], right: ["ArrowRight"], jump: ["ArrowUp"], punch: ["Slash"], kick: ["Period"], dash: ["ShiftRight", "ShiftLeft"] }
@@ -43,7 +44,8 @@
   function startGame() {
     state.topic = topics.find((topic) => topic.id === $("topic-select").value) || topics[0];
     state.gameMode = $("game-mode-select").value;
-    state.openingQuestionTotal = state.gameMode === "cpu" ? 10 : 20;
+    // The CPU never answers questions. Only local two-player mode has a second quiz set.
+    state.openingQuestionTotal = state.gameMode === "local" ? 20 : 10;
     state.mode = "opening";
     state.roundQuestion = 0;
     state.usedQuestions = [];
@@ -55,8 +57,8 @@
     $("p2-name").textContent = state.gameMode === "cpu" ? "CPU" : "PLAYER 2";
     $("p2-controls").hidden = state.gameMode === "cpu";
     $("mode-note").textContent = state.gameMode === "cpu"
-      ? "Movement costs less now. Your correct answers recharge only your fighter."
-      : "Movement and attacks spend juice. A recharge question pauses the match.";
+      ? "Move, jump, and dash freely. Punches and kicks use juice."
+      : "Move, jump, and dash freely. Punches and kicks use juice.";
     $("controls-bar").classList.toggle("controls-bar--cpu", state.gameMode === "cpu");
     applyArenaTheme();
     $("hud").hidden = false;
@@ -87,7 +89,7 @@
       syncHud();
       return;
     }
-    state.activePlayer = state.gameMode === "cpu" || state.roundQuestion < 10 ? 1 : 2;
+    state.activePlayer = state.gameMode === "local" && state.roundQuestion >= 10 ? 2 : 1;
     state.questionMode = "opening";
     presentQuestion();
   }
@@ -182,7 +184,7 @@
       if (c.punch.includes(code)) attack(fighters[id], "punch");
       if (c.kick.includes(code)) attack(fighters[id], "kick");
       if (c.dash.includes(code)) dash(fighters[id]);
-      if (c.jump.includes(code) && fighters[id].grounded && spend(fighters[id], 2, "jump")) { fighters[id].vy = -690; fighters[id].grounded = false; }
+      if (c.jump.includes(code) && fighters[id].grounded) { fighters[id].vy = -690; fighters[id].grounded = false; }
     }
   }
 
@@ -200,7 +202,7 @@
 
   function attack(player, kind) {
     if (state.mode !== "fight" || player.attackCooldown > 0) return;
-    const cost = kind === "punch" ? 4 : 8;
+    const cost = kind === "punch" ? PUNCH_JUICE_COST : KICK_JUICE_COST;
     if (!spend(player, cost, kind)) return;
     player.attack = kind === "punch" ? .2 : .3;
     player.attackKind = kind;
@@ -225,7 +227,7 @@
   }
 
   function dash(player) {
-    if (state.mode !== "fight" || !spend(player, 3, "dash")) return;
+    if (state.mode !== "fight") return;
     player.vx = player.face * 540;
     player.invuln = .13;
     if (player.juice === 0 && !(player.id === 2 && state.gameMode === "cpu")) window.setTimeout(() => { if (state.mode === "fight" && player.juice === 0) askRecharge(player.id); }, 180);
@@ -246,8 +248,6 @@
   function update(dt) {
     if (state.mode !== "fight") return;
     const p1 = fighters[1], p2 = fighters[2];
-    let energyChanged = false;
-    let depletedPlayer = 0;
     if (state.gameMode === "cpu") updateComputer(p2, p1, dt);
     p1.face = p2.x >= p1.x ? 1 : -1;
     p2.face = p1.x >= p2.x ? 1 : -1;
@@ -259,13 +259,7 @@
         if (c.left.some((key) => keys.has(key))) direction -= 1;
         if (c.right.some((key) => keys.has(key))) direction += 1;
       }
-      if (direction && p.juice > 0) {
-        p.vx = direction * 245;
-        p.juice = Math.max(0, p.juice - MOVEMENT_JUICE_PER_SECOND * dt);
-        energyChanged = true;
-        if (p.juice === 0 && p.id === 1 && !depletedPlayer) depletedPlayer = p.id;
-      }
-      else if (direction && p.juice <= 0) { p.vx = 0; if (p.id === 1 && !depletedPlayer) depletedPlayer = p.id; }
+      if (direction) p.vx = direction * 245;
       else if (p.grounded) p.vx *= Math.pow(.0008, dt);
       p.x += p.vx * dt;
       p.y += p.vy * dt;
@@ -278,8 +272,6 @@
       p.hitFlash = Math.max(0, p.hitFlash - dt);
       p.invuln = Math.max(0, p.invuln - dt);
     }
-    if (energyChanged) syncHud();
-    if (depletedPlayer && state.mode === "fight") askRecharge(depletedPlayer);
   }
 
   function updateComputer(cpu, human, dt) {
