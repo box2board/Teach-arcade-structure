@@ -5,13 +5,17 @@ import {createReview,answerReview,reviewSummary} from './review.js';
 import {validateAdventure} from './validate.js';
 import {roomAt as findRoom,objectiveFor,progressFor,rewardFor} from './presentation.js';
 import {roomSize,mountLayout} from './viewport.js';
+import {createMotion,syncMotion,advanceMotion} from './motion.js';
 let map=validateAdventure(createAdventure());
-import { createState, move, undo, interact, doorOpen, completeChallenge, resetPuzzle, exitReady, cluesReady, lightPaths, inventoryEntries, adventureResults } from './model.js';
+import { createState, undo, interact, doorOpen, completeChallenge, resetPuzzle, exitReady, cluesReady, lightPaths, inventoryEntries, adventureResults } from './model.js';
 const $=id=>document.getElementById(id);
-let state=createState(map), started=false, held=null, nextStep=0, elapsed=0, last=0;
+let state=createState(map), started=false, elapsed=0, last=0;
+const heldKeys=new Set(),heldPointers=new Map();
+let motion=createMotion(state);
 state.review=createReview(map,content.questions);
 let activeQuestion=null;
 const board=$('board'), dialog=$('dialog');
+$('board').setAttribute('aria-label','Adventure map. Move freely with arrow keys or WASD; hold two directions for diagonals. Interact with E or Space.');
 const {stage,sidebar}=mountLayout();
 let roomColumns=1,roomRows=1;
 function fitRoom(){
@@ -60,7 +64,7 @@ function render(){
     }
     $('entities').append(e);
   }
-  $('player').style.left=`${state.player.x/map.tiles[0].length*100}%`;$('player').style.top=`${state.player.y/map.tiles.length*100}%`;if($('player').dataset.facing!==state.facing||!$('player').querySelector('svg'))$('player').replaceChildren(sprite('hero',state.facing));$('player').dataset.facing=state.facing;
+  renderPlayer();
   const room=roomAt(state.player.x,state.player.y)||map.rooms[0];
   board.dataset.theme=room.theme||'hall';
   const viewMin=room.viewMin??0, viewMax=room.viewMax??(map.tiles[0].length-1);
@@ -125,8 +129,12 @@ function buildWorld(){
   }
 }
 buildWorld();
-let walkingTimer;
-function release(){held=null;nextStep=0;clearTimeout(walkingTimer);$('player').classList.remove('walking');}
+function renderPlayer(){
+  $('player').style.left=`${motion.x/map.tiles[0].length*100}%`;$('player').style.top=`${motion.y/map.tiles.length*100}%`;
+  if($('player').dataset.facing!==state.facing||!$('player').querySelector('svg'))$('player').replaceChildren(sprite('hero',state.facing));
+  $('player').dataset.facing=state.facing;
+}
+function release(){heldKeys.clear();heldPointers.clear();$('player').classList.remove('walking');}
 function popup(label,title,paragraphs,actions){
   release();$('dialog-label').textContent=label;$('dialog-title').textContent=title;$('dialog-body').replaceChildren(...paragraphs.map(t=>element('p',t)));$('answers').replaceChildren();$('feedback').textContent='';$('dialog-actions').replaceChildren();
   for(const {text,run,primary} of actions){const b=element('button',text,primary?'primary':'');b.addEventListener('click',run);$('dialog-actions').append(b);}
@@ -152,15 +160,17 @@ function doorFeedback(door){
   effect.style.left=`${door.x/map.tiles[0].length*100}%`;effect.style.top=`${door.y/map.tiles.length*100}%`;
   effect.setAttribute('aria-hidden','true');$('world').append(effect);setTimeout(()=>effect.remove(),700);
 }
-function performMove(dir){
+function performMotion(input,seconds){
   if(!started||dialog.open||state.won)return;
   const previouslyOpen=new Set(map.doors.filter(d=>doorOpen(map,state,d)).map(d=>d.id)), previous=new Set(state.collected), openedBefore=new Set(state.opened);
-  const moved=move(map,state,dir);render();
-  if(moved){$('player').classList.add('walking');clearTimeout(walkingTimer);walkingTimer=setTimeout(()=>$('player').classList.remove('walking'),190);}
+  const previousFeedback=state.moveFeedback?.text;
+  const result=advanceMotion(map,state,motion,input,seconds);
+  if(result.changed)render();else renderPlayer();
+  if(result.moved)$('player').classList.add('walking');else $('player').classList.remove('walking');
   for(const door of map.doors)if(!previouslyOpen.has(door.id)&&doorOpen(map,state,door)&&!door.key&&!door.tool)message(door.openText||'Gate opened. The floor switches are occupied.');
   const pickups=map.objects.filter(o=>state.collected.includes(o.id)&&!previous.has(o.id));
   if(pickups.length)pickupFeedback(pickups);
-  if(state.moveFeedback)message(state.moveFeedback.text,state.moveFeedback.tone);
+  if(state.moveFeedback&&state.moveFeedback.text!==previousFeedback)message(state.moveFeedback.text,state.moveFeedback.tone);
   for(const id of state.opened.filter(id=>!openedBefore.has(id)))doorFeedback(map.doors.find(d=>d.id===id));
 }
 let interactionTimer;
@@ -218,9 +228,10 @@ function openQuestion(id){
   }
   [...$('answers').children].find(answer=>!answer.disabled)?.focus();
 }
-function restart(){state=createState(map);state.review=createReview(map,content.questions);activeQuestion=null;elapsed=0;started=true;$('pause').disabled=false;render();resume();message(map.startMessage||'Explore the map and read the nearby signs.');}
+function restart(){state=createState(map);motion=createMotion(state);state.review=createReview(map,content.questions);activeQuestion=null;elapsed=0;started=true;$('pause').disabled=false;render();resume();message(map.startMessage||'Explore the map and read the nearby signs.');}
 function pause(){if(!started||dialog.open||state.won)return;popup('ADVENTURE PAUSED','Take your time',['Your position and progress are safe.'],[{text:'Resume adventure',run:resume,primary:true},{text:'Restart adventure',run:()=>popup('RESTART','Start a new adventure?',['This clears your keys, switches, and progress.'],[{text:'Start over',run:restart,primary:true},{text:'Keep playing',run:resume}])}]);}
 const keyDirs={ArrowUp:'up',ArrowDown:'down',ArrowLeft:'left',ArrowRight:'right',w:'up',s:'down',a:'left',d:'right'};
+const normalizedKeyDirs=Object.fromEntries(Object.entries(keyDirs).map(([key,dir])=>[key.toLowerCase(),dir]));
 dialog.addEventListener('keydown',e=>{
   const buttons=[...$('answers').children,...$('dialog-actions').children].filter(button=>!button.disabled);
   if(!buttons.length)return;
@@ -235,24 +246,33 @@ dialog.addEventListener('keydown',e=>{
 });
 board.addEventListener('keydown',e=>{
   const dir=keyDirs[e.key]||keyDirs[e.key.toLowerCase()];
-  if(dir){e.preventDefault();if(!e.repeat){held=dir;nextStep=performance.now()+165;performMove(dir);}return;}
+  if(dir){e.preventDefault();heldKeys.add(e.key.toLowerCase());return;}
   if(e.key.toLowerCase()==='e'||e.key===' '){e.preventDefault();if(!e.repeat)performInteraction();}
   if(e.key==='Escape'){e.preventDefault();pause();}
 });
-window.addEventListener('keyup',e=>{const dir=keyDirs[e.key]||keyDirs[e.key.toLowerCase()];if(dir===held)release();});
+window.addEventListener('keyup',e=>{heldKeys.delete(e.key.toLowerCase());if(!heldKeys.size&&!heldPointers.size)$('player').classList.remove('walking');});
 window.addEventListener('blur',release);board.addEventListener('blur',release);
 document.addEventListener('visibilitychange',()=>{release();last=0;if(document.hidden)pause();});
 for(const b of document.querySelectorAll('[data-dir]')){
-  b.addEventListener('pointerdown',e=>{if(b.disabled)return;e.preventDefault();b.setPointerCapture(e.pointerId);held=b.dataset.dir;nextStep=performance.now()+165;performMove(held);});
-  for(const event of ['pointerup','pointercancel','lostpointercapture'])b.addEventListener(event,()=>{release();board.focus();});
-  b.addEventListener('click',e=>{if(e.detail===0){performMove(b.dataset.dir);board.focus();}});
+  b.addEventListener('pointerdown',e=>{if(b.disabled)return;e.preventDefault();b.setPointerCapture(e.pointerId);heldPointers.set(e.pointerId,b.dataset.dir);});
+  for(const event of ['pointerup','pointercancel','lostpointercapture'])b.addEventListener(event,e=>{heldPointers.delete(e.pointerId);if(!heldPointers.size&&!heldKeys.size)$('player').classList.remove('walking');board.focus();});
+  b.addEventListener('click',e=>{if(e.detail===0){const vectors={up:{x:0,y:-1},down:{x:0,y:1},left:{x:-1,y:0},right:{x:1,y:0}};performMotion(vectors[b.dataset.dir],.05);board.focus();}});
 }
 $('interact').addEventListener('click',()=>{performInteraction();if(!dialog.open)board.focus();});
-$('undo').addEventListener('click',()=>{release();undo(state);render();message('Last move undone.');board.focus();});
-$('reset-puzzle').addEventListener('click',()=>popup('RESET PUZZLE','Restore the movable objects?',['You will return to the entrance. Earned keys, tools, collectibles, opened paths, and completed questions stay saved for this play.'],[{text:'Reset puzzle',run:()=>{resetPuzzle(map,state);render();resume();message('Movable objects restored. Your earned progress and raised bridges are kept.');},primary:true},{text:'Keep exploring',run:resume}]));
+$('undo').addEventListener('click',()=>{release();undo(state);syncMotion(motion,state);render();message('Last move undone.');board.focus();});
+$('reset-puzzle').addEventListener('click',()=>popup('RESET PUZZLE','Restore the movable objects?',['You will return to the entrance. Earned keys, tools, collectibles, opened paths, and completed questions stay saved for this play.'],[{text:'Reset puzzle',run:()=>{resetPuzzle(map,state);syncMotion(motion,state);render();resume();message('Movable objects restored. Your earned progress and raised bridges are kept.');},primary:true},{text:'Keep exploring',run:resume}]));
 $('pause').addEventListener('click',pause);
 dialog.addEventListener('cancel',e=>{e.preventDefault();if(started&&!state.won){activeQuestion=null;resume();}});
-function frame(now){if(started&&!dialog.open&&!state.won&&!document.hidden){if(last)elapsed+=Math.min((now-last)/1000,.1);if(held&&now>=nextStep){performMove(held);nextStep=now+165;}}last=now;requestAnimationFrame(frame);}
+function frame(now){
+  if(started&&!dialog.open&&!state.won&&!document.hidden){
+    const dt=last?Math.min((now-last)/1000,.05):0;elapsed+=dt;
+    const dirs=new Set([...heldKeys].map(key=>normalizedKeyDirs[key]));
+    for(const dir of heldPointers.values())dirs.add(dir);
+    const input={x:Number(dirs.has('right'))-Number(dirs.has('left')),y:Number(dirs.has('down'))-Number(dirs.has('up'))};
+    if(input.x||input.y)performMotion(input,dt);else $('player').classList.remove('walking');
+  }
+  last=now;requestAnimationFrame(frame);
+}
 function chooseMode(){
   const modes=map.modes||[{id:map.mode,label:'Explore',description:'Explore this adventure.'}];
   popup('QUEST ARCADE · '+map.title,'Choose your adventure',[
@@ -272,7 +292,7 @@ if(titleRow){
   });actions.append(supplies);
   const help=element('button','Help');help.addEventListener('click',()=>{
     if(dialog.open)return;
-    popup('HOW TO PLAY','Adventure controls',['Move with arrow keys, WASD, or the on-screen arrows. Walk over loose items to collect them. Matching keys and tools open doors when you walk into them.','Face a chest, sign, or switch and press Interact, E, or Space. Walk into blocks and mirrors to push them; interact with a mirror to rotate it.','Undo reverses your last physical move. Reset puzzle restores movable objects and returns you to the entrance while keeping earned rewards, clues, and raised bridges.'],[{text:'Back to adventure',run:resume,primary:true}]);
+    popup('HOW TO PLAY','Adventure controls',['Move freely with arrow keys, WASD, or the on-screen arrows. Hold two directions to move diagonally. Walk over loose items to collect them. Matching keys and tools open doors when you walk into them.','Face a chest, sign, or switch and press Interact, E, or Space. Approach the center of a block or mirror and walk into it to push it one tile at a time; interact with a mirror to rotate it.','Undo reverses your last physical move. Reset puzzle restores movable objects and returns you to the entrance while keeping earned rewards, clues, and raised bridges.'],[{text:'Back to adventure',run:resume,primary:true}]);
   });actions.append(help);
   if(document.fullscreenEnabled){
     const fullscreen=element('button','Fullscreen','fullscreen-button');

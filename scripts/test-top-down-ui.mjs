@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 class Node {
  constructor(){this.children=[];this.dataset={};this.style={setProperty:(k,v)=>this.style[k]=v};this.classList={add(){},remove(){}};this.listeners={};this.open=false;this.clientWidth=800;this.clientHeight=600;this.scrollHeight=0;}
  append(...nodes){this.children.push(...nodes)} prepend(...nodes){this.children.unshift(...nodes)} replaceChildren(...nodes){this.children=[...nodes]} before(){} after(){} setAttribute(k,v){this[k]=v} addEventListener(k,v){this.listeners[k]=v} querySelector(){return this.innerHTML?.includes('svg')?{}:null} focus(){document.activeElement=this} click(){if(!this.disabled)this.listeners.click?.()} showModal(){this.open=true} close(){this.open=false} remove(){} }
-const nodes=new Map();globalThis.document={getElementById(id){if(!nodes.has(id))nodes.set(id,new Node());return nodes.get(id)},body:new Node(),querySelector(selector){if(selector!=='script[data-map]'){if(selector==='#message')return this.getElementById('message');if(!nodes.has(selector))nodes.set(selector,new Node());return nodes.get(selector);}return {dataset:{map:'./map.js',questionSet:'./constitution.js'}}},querySelectorAll(){return []},createElement(){return new Node()},addEventListener(){},hidden:false};globalThis.window={addEventListener(){}};globalThis.requestAnimationFrame=()=>{};
+const nodes=new Map();globalThis.document={getElementById(id){if(!nodes.has(id))nodes.set(id,new Node());return nodes.get(id)},body:new Node(),querySelector(selector){if(selector!=='script[data-map]'){if(selector==='#message')return this.getElementById('message');if(!nodes.has(selector))nodes.set(selector,new Node());return nodes.get(selector);}return {dataset:{map:'./map.js',questionSet:'./constitution.js'}}},querySelectorAll(){return []},createElement(){return new Node()},addEventListener(){},hidden:false};const windowListeners={};globalThis.window={addEventListener(name,fn){windowListeners[name]=fn}};let animationFrame,clock=100;globalThis.requestAnimationFrame=fn=>{if(fn.name==='frame')animationFrame=fn};
 await import('../public/arcade-review-games/shared/top-down/game.js');
 const get=id=>nodes.get(id);
 assert.equal(get('tiles').children.length,273);assert.equal(get('dialog-actions').children.length,3);
@@ -18,7 +18,21 @@ const {createState,move,obstacle,interact,completeChallenge}=await import('../pu
 const {createReview,answerReview}=await import('../public/arcade-review-games/shared/top-down/review.js');
 const map=createAdventure('hard'),s=createState(map);s.review=createReview(map,content.questions);
 const keys={up:'ArrowUp',down:'ArrowDown',left:'ArrowLeft',right:'ArrowRight'};
-function key(value){get('board').listeners.keydown({key:value,repeat:false,preventDefault(){}})}
+function key(value){
+ get('board').listeners.keydown({key:value,repeat:false,preventDefault(){}});
+ if(!value.startsWith('Arrow'))return;
+ const axis=value==='ArrowLeft'||value==='ArrowRight'?'x':'y',size=axis==='x'?map.tiles[0].length:map.tiles.length;
+ const position=()=>parseFloat(get('player').style[axis==='x'?'left':'top'])/100*size;
+ const sign=value==='ArrowRight'||value==='ArrowDown'?1:-1;
+ let distance=(s.player[axis]-position())*sign;
+ if(distance<.01){clock+=1;animationFrame(clock);clock+=1;animationFrame(clock);}
+ else for(let i=0;i<100&&distance>.001;i++){
+  clock+=Math.min(25,distance/4*1000);animationFrame(clock);
+  distance=(s.player[axis]-position())*sign;
+ }
+ windowListeners.keyup({key:value});
+ assert.ok(Math.abs(position()-s.player[axis])<.03,'Continuous movement reaches '+axis+' '+s.player[axis]+' (was '+position()+')');
+}
 function step(dir){assert.equal(move(map,s,dir),true);key(keys[dir]);}
 function go(x,y){
  const queue=[{...s.player,path:[]}],seen=new Set();
