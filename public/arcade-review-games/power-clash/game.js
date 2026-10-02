@@ -6,14 +6,15 @@
   const $ = (id) => document.getElementById(id);
   const topics = window.POWER_CLASH_TOPICS || [];
   const keys = new Set();
-  const state = { mode: "welcome", topic: topics[0], sound: false, roundQuestion: 0, usedQuestions: [], activePlayer: 1, questionMode: "opening", feedbackLock: false, lastTime: 0, toastTimer: 0, winner: 0 };
+  const state = { mode: "welcome", gameMode: "cpu", topic: topics[0], sound: false, roundQuestion: 0, openingQuestionTotal: 10, usedQuestions: [], activePlayer: 1, questionMode: "opening", feedbackLock: false, lastTime: 0, toastTimer: 0, winner: 0 };
   const fighters = [
     null,
     { id: 1, x: 245, y: 326, vx: 0, vy: 0, w: 58, h: 112, face: 1, hp: 100, juice: 0, color: "#57d7ff", dark: "#17688b", attack: 0, attackKind: "", attackCooldown: 0, hitFlash: 0, invuln: 0, grounded: false },
-    { id: 2, x: 655, y: 326, vx: 0, vy: 0, w: 58, h: 112, face: -1, hp: 100, juice: 0, color: "#ff7099", dark: "#91385f", attack: 0, attackKind: "", attackCooldown: 0, hitFlash: 0, invuln: 0, grounded: false }
+    { id: 2, x: 655, y: 326, vx: 0, vy: 0, w: 58, h: 112, face: -1, hp: 100, juice: 0, color: "#ff7099", dark: "#91385f", attack: 0, attackKind: "", attackCooldown: 0, hitFlash: 0, invuln: 0, grounded: false, cpuDirection: 0, cpuThink: 0 }
   ];
   const floorY = 438;
   const GRAVITY = 1900;
+  const MOVEMENT_JUICE_PER_SECOND = .75;
   const config = {
     1: { left: ["KeyA"], right: ["KeyD"], jump: ["KeyW"], punch: ["KeyF"], kick: ["KeyG"], dash: ["KeyQ"] },
     2: { left: ["ArrowLeft"], right: ["ArrowRight"], jump: ["ArrowUp"], punch: ["Slash"], kick: ["Period"], dash: ["ShiftRight", "ShiftLeft"] }
@@ -41,12 +42,22 @@
 
   function startGame() {
     state.topic = topics.find((topic) => topic.id === $("topic-select").value) || topics[0];
+    state.gameMode = $("game-mode-select").value;
+    state.openingQuestionTotal = state.gameMode === "cpu" ? 10 : 20;
     state.mode = "opening";
     state.roundQuestion = 0;
     state.usedQuestions = [];
     state.winner = 0;
-    for (const player of fighters.slice(1)) Object.assign(player, { x: player.id === 1 ? 245 : 655, y: floorY - 112, vx: 0, vy: 0, face: player.id === 1 ? 1 : -1, hp: 100, juice: 0, attack: 0, attackKind: "", attackCooldown: 0, hitFlash: 0, invuln: 0, grounded: true });
+    for (const player of fighters.slice(1)) Object.assign(player, { x: player.id === 1 ? 245 : 655, y: floorY - 112, vx: 0, vy: 0, face: player.id === 1 ? 1 : -1, hp: 100, juice: 0, attack: 0, attackKind: "", attackCooldown: 0, hitFlash: 0, invuln: 0, grounded: true, cpuDirection: 0, cpuThink: .5 });
+    if (state.gameMode === "cpu") fighters[2].juice = 70;
     $("topic-label").textContent = state.topic.shortTitle;
+    $("p1-name").textContent = state.gameMode === "cpu" ? "YOU" : "PLAYER 1";
+    $("p2-name").textContent = state.gameMode === "cpu" ? "CPU" : "PLAYER 2";
+    $("p2-controls").hidden = state.gameMode === "cpu";
+    $("mode-note").textContent = state.gameMode === "cpu"
+      ? "Movement costs less now. Your correct answers recharge only your fighter."
+      : "Movement and attacks spend juice. A recharge question pauses the match.";
+    $("controls-bar").classList.toggle("controls-bar--cpu", state.gameMode === "cpu");
     applyArenaTheme();
     $("hud").hidden = false;
     $("controls-bar").hidden = false;
@@ -68,15 +79,15 @@
   }
 
   function askOpeningQuestion() {
-    if (state.roundQuestion >= 20) {
+    if (state.roundQuestion >= state.openingQuestionTotal) {
       state.mode = "fight";
       showScreen("");
       $("round-state").textContent = "FIGHT!";
-      toast("Both fighters are powered up — fight!");
+      toast(state.gameMode === "cpu" ? "Power up complete — fight the CPU!" : "Both fighters are powered up — fight!");
       syncHud();
       return;
     }
-    state.activePlayer = state.roundQuestion < 10 ? 1 : 2;
+    state.activePlayer = state.gameMode === "cpu" || state.roundQuestion < 10 ? 1 : 2;
     state.questionMode = "opening";
     presentQuestion();
   }
@@ -114,8 +125,10 @@
     state.feedbackLock = false;
     const p = fighters[state.activePlayer];
     $("question-phase").textContent = state.questionMode === "opening" ? "POWER ROUND" : "JUICE RECHARGE";
-    $("question-count").textContent = state.questionMode === "opening" ? `QUESTION ${(state.roundQuestion % 10) + 1} OF 10` : "ANSWER CORRECTLY TO RECHARGE";
-    $("question-player").textContent = `PLAYER ${p.id}, ${state.questionMode === "opening" ? "ANSWER TO EARN JUICE" : "ANSWER TO GET BACK IN THE FIGHT"}`;
+    const questionNumber = state.gameMode === "cpu" ? state.roundQuestion + 1 : (state.roundQuestion % 10) + 1;
+    $("question-count").textContent = state.questionMode === "opening" ? `QUESTION ${questionNumber} OF 10` : "ANSWER CORRECTLY TO RECHARGE";
+    const playerLabel = state.gameMode === "cpu" ? "YOU" : `PLAYER ${p.id}`;
+    $("question-player").textContent = `${playerLabel}, ${state.questionMode === "opening" ? "ANSWER TO EARN JUICE" : "ANSWER TO GET BACK IN THE FIGHT"}`;
     $("question-prompt").textContent = state.currentQuestion.prompt;
     $("question-feedback").textContent = "";
     const grid = $("answer-grid");
@@ -164,16 +177,22 @@
     if (keys.has(code)) return;
     keys.add(code);
     for (let id = 1; id <= 2; id++) {
+      if (id === 2 && state.gameMode === "cpu") continue;
       const c = config[id];
       if (c.punch.includes(code)) attack(fighters[id], "punch");
       if (c.kick.includes(code)) attack(fighters[id], "kick");
       if (c.dash.includes(code)) dash(fighters[id]);
-      if (c.jump.includes(code) && fighters[id].grounded && spend(fighters[id], 4, "jump")) { fighters[id].vy = -690; fighters[id].grounded = false; }
+      if (c.jump.includes(code) && fighters[id].grounded && spend(fighters[id], 2, "jump")) { fighters[id].vy = -690; fighters[id].grounded = false; }
     }
   }
 
   function spend(player, amount, action) {
-    if (player.juice < amount) { toast(`PLAYER ${player.id} needs juice for ${action}`); askRecharge(player.id); return false; }
+    if (player.juice < amount) {
+      if (player.id === 2 && state.gameMode === "cpu") return false;
+      toast(`${state.gameMode === "cpu" ? "You" : `Player ${player.id}`} need${state.gameMode === "cpu" ? "" : "s"} juice for ${action}`);
+      askRecharge(player.id);
+      return false;
+    }
     player.juice = Math.max(0, player.juice - amount);
     syncHud();
     return true;
@@ -181,7 +200,7 @@
 
   function attack(player, kind) {
     if (state.mode !== "fight" || player.attackCooldown > 0) return;
-    const cost = kind === "punch" ? 8 : 15;
+    const cost = kind === "punch" ? 4 : 8;
     if (!spend(player, cost, kind)) return;
     player.attack = kind === "punch" ? .2 : .3;
     player.attackKind = kind;
@@ -202,22 +221,24 @@
       playTone(kind === "punch" ? 340 : 480);
       if (!opponent.hp) finishGame(player.id);
     }
-    if (player.juice === 0 && state.mode === "fight") window.setTimeout(() => { if (state.mode === "fight" && player.juice === 0) askRecharge(player.id); }, 220);
+    if (player.juice === 0 && state.mode === "fight" && !(player.id === 2 && state.gameMode === "cpu")) window.setTimeout(() => { if (state.mode === "fight" && player.juice === 0) askRecharge(player.id); }, 220);
   }
 
   function dash(player) {
-    if (state.mode !== "fight" || !spend(player, 6, "dash")) return;
+    if (state.mode !== "fight" || !spend(player, 3, "dash")) return;
     player.vx = player.face * 540;
     player.invuln = .13;
-    if (player.juice === 0) window.setTimeout(() => { if (state.mode === "fight" && player.juice === 0) askRecharge(player.id); }, 180);
+    if (player.juice === 0 && !(player.id === 2 && state.gameMode === "cpu")) window.setTimeout(() => { if (state.mode === "fight" && player.juice === 0) askRecharge(player.id); }, 180);
   }
 
   function finishGame(winnerId) {
     state.mode = "end";
     state.winner = winnerId;
     $("round-state").textContent = "MATCH OVER";
-    $("winner-heading").textContent = `PLAYER ${winnerId} WINS!`;
-    $("winner-copy").textContent = `Player ${winnerId} used knowledge, timing, and energy to take the match.`;
+    $("winner-heading").textContent = state.gameMode === "cpu" ? (winnerId === 1 ? "YOU WIN!" : "CPU WINS!") : `PLAYER ${winnerId} WINS!`;
+    $("winner-copy").textContent = state.gameMode === "cpu"
+      ? (winnerId === 1 ? "Your answers powered the win." : "Answer carefully, manage your juice, and try again.")
+      : `Player ${winnerId} used knowledge, timing, and energy to take the match.`;
     showScreen("end-screen");
     playTone(820);
   }
@@ -227,20 +248,24 @@
     const p1 = fighters[1], p2 = fighters[2];
     let energyChanged = false;
     let depletedPlayer = 0;
+    if (state.gameMode === "cpu") updateComputer(p2, p1, dt);
     p1.face = p2.x >= p1.x ? 1 : -1;
     p2.face = p1.x >= p2.x ? 1 : -1;
     for (const p of [p1, p2]) {
       const c = config[p.id];
       let direction = 0;
-      if (c.left.some((key) => keys.has(key))) direction -= 1;
-      if (c.right.some((key) => keys.has(key))) direction += 1;
+      if (p.id === 2 && state.gameMode === "cpu") direction = p.cpuDirection;
+      else {
+        if (c.left.some((key) => keys.has(key))) direction -= 1;
+        if (c.right.some((key) => keys.has(key))) direction += 1;
+      }
       if (direction && p.juice > 0) {
         p.vx = direction * 245;
-        p.juice = Math.max(0, p.juice - 4 * dt);
+        p.juice = Math.max(0, p.juice - MOVEMENT_JUICE_PER_SECOND * dt);
         energyChanged = true;
-        if (p.juice === 0 && !depletedPlayer) depletedPlayer = p.id;
+        if (p.juice === 0 && p.id === 1 && !depletedPlayer) depletedPlayer = p.id;
       }
-      else if (direction && p.juice <= 0) { p.vx = 0; if (!depletedPlayer) depletedPlayer = p.id; }
+      else if (direction && p.juice <= 0) { p.vx = 0; if (p.id === 1 && !depletedPlayer) depletedPlayer = p.id; }
       else if (p.grounded) p.vx *= Math.pow(.0008, dt);
       p.x += p.vx * dt;
       p.y += p.vy * dt;
@@ -255,6 +280,26 @@
     }
     if (energyChanged) syncHud();
     if (depletedPlayer && state.mode === "fight") askRecharge(depletedPlayer);
+  }
+
+  function updateComputer(cpu, human, dt) {
+    if (cpu.juice < 4) {
+      cpu.cpuDirection = 0;
+      cpu.vx *= Math.pow(.0008, dt);
+      cpu.juice = Math.min(55, cpu.juice + 16 * dt);
+      syncHud();
+      return;
+    }
+    cpu.cpuThink -= dt;
+    if (cpu.cpuThink > 0) return;
+    const distance = (human.x + human.w / 2) - (cpu.x + cpu.w / 2);
+    const gap = Math.abs(distance);
+    cpu.cpuDirection = gap > 78 ? Math.sign(distance) : 0;
+    if (gap <= 98 && cpu.attackCooldown <= 0) {
+      const attackKind = cpu.juice >= 8 && Math.random() < .3 ? "kick" : "punch";
+      attack(cpu, attackKind);
+    }
+    cpu.cpuThink = .22 + Math.random() * .22;
   }
 
   function frame(time) {
