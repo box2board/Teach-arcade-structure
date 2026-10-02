@@ -4,7 +4,7 @@ import {roomSize} from '../public/arcade-review-games/shared/top-down/viewport.j
 
 test('rooms fit available laptop, tablet, phone and landscape stages',()=>{
   for(const [width,height] of [[980,600],[680,900],[370,480],[250,220]]){
-    for(const [columns,rows] of [[7,13],[9,9],[15,9]]){
+    for(const [columns,rows] of [[7,13],[9,9],[13,9],[15,9]]){
       const size=roomSize(width,height,columns,rows);
       assert.ok(size.width<=width && size.height<=height);
       assert.ok(size.cell>0);

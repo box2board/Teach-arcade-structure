@@ -5,10 +5,13 @@ class Node {
 const nodes=new Map();globalThis.document={getElementById(id){if(!nodes.has(id))nodes.set(id,new Node());return nodes.get(id)},body:new Node(),querySelector(selector){if(selector!=='script[data-map]'){if(selector==='#message')return this.getElementById('message');if(!nodes.has(selector))nodes.set(selector,new Node());return nodes.get(selector);}return {dataset:{map:'./outpost.js',questionSet:'./scientific-method.js'}}},querySelectorAll(){return []},createElement(){return new Node()},addEventListener(){},hidden:false};globalThis.window={addEventListener(){}};globalThis.requestAnimationFrame=()=>{};
 await import('../public/arcade-review-games/shared/top-down/game.js');
 const get=id=>nodes.get(id);
-assert.equal(get('tiles').children.length,289);assert.equal(get('dialog-actions').children.length,1);
+assert.equal(get('tiles').children.length,425);assert.equal(get('dialog-actions').children.length,1);
 get('dialog-actions').children[0].listeners.click();
-assert.equal(get('tiles').children.length,289);assert.equal(get('difficulty').textContent,'Explore · 6 questions');
+assert.equal(get('tiles').children.length,425);assert.equal(get('difficulty').textContent,'Explore · 6 questions');
 assert.equal(get('world').style.height,`${17/9*100}%`);assert.equal(get('world').style['--row'],`${100/17}%`);
+assert.equal(get('world').style.width,`${25/13*100}%`);
+assert.equal(get('board').style.aspectRatio,'13/9');
+assert.ok(parseFloat(get('board').style.width)>parseFloat(get('board').style.height));
 assert.equal(get('tiles').style['--rows'],17);assert.equal(get('dialog').open,false);
 assert.ok(get('entities').children.length>15);
 console.log('DOM smoke: Outpost selection rebuilds the tiles, entity scale and room camera without runtime errors.');
@@ -43,16 +46,17 @@ function earn(id){
  }
  assert.equal(completeChallenge(map,s,id),true);assert.equal(get('dialog').open,false);
 }
-go(3,12);face('up');earn('survey-chest');go(4,9);step('up');
+go(9,12);face('up');earn('survey-chest');go(4,9);step('up');
 assert.equal(get('room').textContent,'02 · Optics');assert.equal(get('world').style.top,'0%');
 go(3,3);step('right');assert.match(action().text,/CROSS/);
-go(6,4);face('down');assert.match(action().text,/Bridge raised/);
-go(3,6);face('left');earn('lens-chest');go(10,2);face('right');earn('cell-chest');
-assert.equal(get('room').textContent,'03 · Relay');assert.equal(get('world').style.left,`${-8/9*100}%`);
-go(10,6);step('right');step('right');go(12,7);step('down');step('down');
+go(10,4);face('down');assert.match(action().text,/Bridge raised/);
+go(9,6);face('right');earn('lens-chest');go(20,2);face('right');earn('cell-chest');
+assert.equal(get('room').textContent,'03 · Relay');assert.equal(get('world').style.left,`${-12/13*100}%`);
+go(14,6);for(let i=0;i<4;i++)step('right');go(16,7);step('down');step('down');
 assert.equal(get('room').textContent,'04 · Beacon');assert.equal(get('world').style.top,`${-8/9*100}%`);
+assert.equal(get('board').style.aspectRatio,'13/9');
 assert.equal(get('seals').textContent,'Stations: 4 / 4');
-go(12,12);assert.equal(action().type,'win');assert.equal(get('dialog-label').textContent,'BEACON RESTORED');
+go(20,12);assert.equal(action().type,'win');assert.equal(get('dialog-label').textContent,'BEACON RESTORED');
 assert.equal(get('dialog-title').textContent,'Adventure complete');
 assert.ok(get('dialog-body').children.some(p=>p.textContent.includes('Review completed: 6 / 6')));
 assert.ok(get('dialog-body').children.every(p=>!p.textContent.includes('Archive')&&!p.textContent.includes('seal crystal')));

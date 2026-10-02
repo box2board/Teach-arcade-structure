@@ -18,22 +18,22 @@ test('all adventures satisfy the reusable map contract',()=>{
  for(const mode of ['easy','medium','hard'])assert.equal(validateAdventure(courthouse(mode)).mode,mode);
  assert.equal(validateAdventure(outpost()).title,'Mosslight Outpost');
 });
-test('Outpost completes a distinct square route with different keys, supplies and no sequence puzzle',()=>{
+test('Outpost completes a distinct wide-room route with different keys, supplies and no sequence puzzle',()=>{
  const map=validateAdventure(outpost()),s=createState(map);s.review=createReview(map,content.questions);
- assert.equal(map.tiles.length,17);assert.equal(map.rooms.length,4);assert.deepEqual(map.puzzles,[]);
+ assert.equal(map.tiles.length,17);assert.equal(map.tiles[0].length,25);for(const room of map.rooms)assert.equal(room.viewMax-room.viewMin+1,13);assert.equal(map.rooms.length,4);assert.deepEqual(map.puzzles,[]);
  assert.deepEqual(progressFor(map,s),{label:'Stations',completed:0,total:4});
- go(map,s,3,12);s.facing='up';assert.equal(interact(map,s).id,'survey-chest');earn(map,s,'survey-chest');
+ go(map,s,9,12);s.facing='up';assert.equal(interact(map,s).id,'survey-chest');earn(map,s,'survey-chest');
  go(map,s,4,9);assert.equal(move(map,s,'up'),true);assert.match(s.moveFeedback.text,/Moss key used/);
  go(map,s,3,3);assert.equal(move(map,s,'right'),true);assert.match(interact(map,s).text,/CROSS/);
- go(map,s,6,4);s.facing='down';assert.match(interact(map,s).text,/Bridge raised/);
- go(map,s,3,6);s.facing='left';assert.equal(interact(map,s).id,'lens-chest');earn(map,s,'lens-chest');
- go(map,s,10,2);s.facing='right';assert.equal(interact(map,s).id,'cell-chest');earn(map,s,'cell-chest');
- go(map,s,10,6);move(map,s,'right');move(map,s,'right');
- go(map,s,12,7);assert.equal(move(map,s,'down'),true);assert.equal(move(map,s,'down'),true);
- assert.equal(roomAt(map,12,9).name,'04 · Beacon');assert.match(objectiveFor(map,s,roomAt(map,12,9)),/restore/);
+ go(map,s,10,4);s.facing='down';assert.match(interact(map,s).text,/Bridge raised/);
+ go(map,s,9,6);s.facing='right';assert.equal(interact(map,s).id,'lens-chest');earn(map,s,'lens-chest');
+ go(map,s,20,2);s.facing='right';assert.equal(interact(map,s).id,'cell-chest');earn(map,s,'cell-chest');
+ go(map,s,14,6);for(let i=0;i<4;i++)assert.equal(move(map,s,'right'),true);
+ go(map,s,16,7);assert.equal(move(map,s,'down'),true);assert.equal(move(map,s,'down'),true);
+ assert.equal(roomAt(map,16,9).name,'04 · Beacon');assert.match(objectiveFor(map,s,roomAt(map,16,9)),/restore/);
  assert.deepEqual(progressFor(map,s),{label:'Stations',completed:4,total:4});
- go(map,s,14,14);assert.equal(adventureResults(map,s).bonusPoints,50);
- go(map,s,12,12);assert.equal(interact(map,s).type,'win');assert.equal(s.score,600);
+ go(map,s,22,14);assert.equal(adventureResults(map,s).bonusPoints,50);
+ go(map,s,20,12);assert.equal(interact(map,s).type,'win');assert.equal(s.score,600);
  assert.deepEqual(reviewSummary(s.review),{total:6,completed:6,firstTry:6,attempts:6});
 });
 test('Outpost exit cannot bypass required review supplies and reset keeps the crossing and key use',()=>{

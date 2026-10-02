@@ -41,3 +41,5 @@ node --test scripts/test-top-down-viewport.mjs
 The UI scripts use a simulated DOM, not a browser. Browser/mobile visual and interaction verification remains necessary. Save/resume across refreshes and classroom report export are not implemented yet.
 
 The shared viewport layout fits the active room into the available stage with square tiles, recalculating on resize. Laptops place controls and objectives beside the map; portrait phones place compact controls below it. Bag & clues, Help, and full-message dialogs keep longer information accessible without extending the gameplay page. Tall rooms still use a tall footprint: design wider camera bounds and room geometry for adventures intended to fill a laptop horizontally.
+
+Mosslight Outpost demonstrates 13-by-9 room cameras on a 25-by-17 world. Its reward chests span the wider rooms, the crossing is on the east boundary, and the relay crate travels four tiles to its floor switch. All four room views keep the same aspect ratio at transitions.
