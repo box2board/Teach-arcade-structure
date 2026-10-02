@@ -1,4 +1,5 @@
-import {adventureState,interactables,stepAdventure,objective,sparks,extras} from './adventure.js';
+import {followCamera} from './camera.js';
+import {adventureState,interactables,stepAdventure,objective,sparks,extras,mirrors} from './adventure.js';
 import {fitViewport} from './viewport.js';
 import {WORLD,objects,initialState,connected,simulate,canStand} from './flow-model.js';
 const root=document.querySelector('#worldsmith');
@@ -6,13 +7,13 @@ if(root)start();
 function start(){
   const $=q=>document.querySelector(q),canvas=$('#world'),ctx=canvas.getContext('2d'),key='teacharcade-worldsmith-crossing-v1';
   let s=initialState(),keys=new Set(),actionHeld=false,paused=false,route=null,near=null,last=0,camera={x:0,y:0},vw=960,vh=600,resetArmed=false,saveClock=0,valveDrag=false,walkTime=0,particles=[];
-  const notes=['Connected channels redirect moving water.','A break in the channel stops energy reaching the wheel.','Moving water turns the wheel, which drives the winch and lowers the bridge.','Wind transfers energy to a pump through connected gears.','A working system needs controlled flow, not simply maximum flow.'];
+  const notes=['Connected channels redirect moving water.','A break in the channel stops energy reaching the wheel.','Moving water turns the wheel, which drives the winch and lowers the bridge.','Wind transfers energy to a pump through connected gears.','A working system needs controlled flow, not simply maximum flow.','Mirrors redirect light along a connected path to a receiver.'];
   Object.assign(s,adventureState());
-  try{const old=JSON.parse(localStorage.getItem(key));if(old?.version===1){s.elbow=Number.isInteger(old.elbow)&&old.elbow>=0&&old.elbow<=3?old.elbow:0;s.troughY=Number.isFinite(old.troughY)?Math.max(330,Math.min(475,old.troughY)):430;s.valve=Number.isFinite(old.valve)?Math.max(0,Math.min(1,old.valve)):0.12;s.bridge=Number.isFinite(old.bridge)?Math.max(0,Math.min(1,old.bridge)):0;Object.assign(s,adventureState(old));s.won=s.finished;s.discoveries=Array.isArray(old.discoveries)?old.discoveries.filter(n=>Number.isInteger(n)&&n>=0&&n<5):[];if(Number.isFinite(old.player?.x)&&Number.isFinite(old.player?.y)&&canStand(old.player.x,old.player.y,s))s.player={...old.player};}}catch{}
+  try{const old=JSON.parse(localStorage.getItem(key));if(old?.version===1){s.elbow=Number.isInteger(old.elbow)&&old.elbow>=0&&old.elbow<=3?old.elbow:0;s.troughY=Number.isFinite(old.troughY)?Math.max(330,Math.min(475,old.troughY)):430;s.valve=Number.isFinite(old.valve)?Math.max(0,Math.min(1,old.valve)):0.12;s.bridge=Number.isFinite(old.bridge)?Math.max(0,Math.min(1,old.bridge)):0;Object.assign(s,adventureState(old));s.won=s.finished;s.discoveries=Array.isArray(old.discoveries)?old.discoveries.filter(n=>Number.isInteger(n)&&n>=0&&n<6):[];if(Number.isFinite(old.player?.x)&&Number.isFinite(old.player?.y)&&canStand(old.player.x,old.player.y,s))s.player={...old.player};}}catch{}
   const save=()=>{try{localStorage.setItem(key,JSON.stringify({...s,version:1}));}catch{}};
   function message(text){$('#message').textContent=text;}
   function discover(n){if(!s.discoveries.includes(n)){s.discoveries.push(n);refreshNotes();save();}}
-  function refreshNotes(){$('#discovery-count').textContent=`${s.discoveries.length} / 5`;$('#discoveries').innerHTML=s.discoveries.length?s.discoveries.map(n=>`<li>${notes[n]}</li>`).join(''):'<li>Your discoveries appear here as you play.</li>';}
+  function refreshNotes(){$('#discovery-count').textContent=`${s.discoveries.length} / 6`;$('#discoveries').innerHTML=s.discoveries.length?s.discoveries.map(n=>`<li>${notes[n]}</li>`).join(''):'<li>Your discoveries appear here as you play.</li>';}
   const game=$('.ws-game'),fullscreen=$('#fullscreen');
   let sizing=false,focusScroll=0;
   function resize(){
@@ -54,10 +55,10 @@ function start(){
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&root.classList.contains('ws-focus')){root.classList.remove('ws-focus');window.scrollTo(0,focusScroll);syncFullscreen();}});
   window.addEventListener('resize',resize);window.visualViewport?.addEventListener('resize',resize);
   if(window.ResizeObserver){const observer=new ResizeObserver(resize);for(const el of [$('#site-header'),$('.ws-title'),$('.ws-top'),$('.ws-controls')])if(el)observer.observe(el);}
-  resize();refreshNotes();
+  resize();refreshNotes();canvas.focus({preventScroll:true});
   function nearest(){const candidates=[{id:'elbow',...objects.elbow},{id:'valve',...objects.valve},{id:'trough',x:objects.trough.x,y:s.troughY},...interactables(s)];return candidates.map(o=>({...o,d:Math.hypot(o.x-s.player.x,o.y-s.player.y)})).filter(o=>o.d<80).sort((a,b)=>a.d-b.d)[0]||null;}
-  function actOnce(){if(paused||!$('#win').hidden)return;near=nearest();if(near?.id==='elbow'){s.elbow=(s.elbow+1)%4;message(s.elbow===3?'The stream turns toward the wheel.':'Water spills from the open end.');if(s.elbow===3)discover(0);save();}else if(near?.id==='valve'){s.valve=Math.max(0,Math.min(1,s.valve+(keys.has('shift')?-0.12:0.12)));save();}else if(near?.id==='vane'){s.vane=(s.vane+1)%4;message(s.vane===1?'The sails catch the breeze.':'Turn the vane toward the wind →.');save();}else if(near?.id==='gate'){s.gate=(s.gate+1)%4;message(['Garden channels closed.','Water goes to the left bed.','Both beds receive water.','Water goes to the right bed.'][s.gate]);save();}else if(near?.id==='mill'&&!s.cog){message('The pump is missing a gear. Look along the far bank.');}else if(!near)message('Walk beside the channel elbow, loose channel, or valve.');}
-  function work(dt){near=nearest();if(!near)return;if(near.id==='mill'&&s.cog&&s.repair<1){s.repair=Math.min(1,s.repair+dt*.65);if(s.repair===1){burst(890,285);message('Gear fitted! Turn the vane toward the breeze.');save();}}if(near.id==='valve'){s.valve=Math.max(0,Math.min(1,s.valve+(keys.has('shift')?-1:1)*dt*0.42));}if(near.id==='trough'&&s.troughY>330){if(s.player.y>s.troughY+20){const step=Math.min(dt*65,s.troughY-330);s.troughY-=step;s.player.y-=step;if(s.troughY<=330.01){s.troughY=330;message('Channel connected. The stream can reach the wheel.');discover(1);save();}}else message('Get behind the loose channel and push it toward the gap.');}}
+  function actOnce(){if(paused||!$('#win').hidden)return;near=nearest();if(near?.id==='elbow'){s.elbow=(s.elbow+1)%4;message(s.elbow===3?'The stream turns toward the wheel.':'Water spills from the open end.');if(s.elbow===3)discover(0);save();}else if(near?.id==='valve'){const target=keys.has('q')||keys.has('shift')?0:s.pump===1?.5:1;s.valve+=Math.sign(target-s.valve)*Math.min(.12,Math.abs(target-s.valve));save();}else if(near?.id==='vane'){s.vane=(s.vane+1)%4;message(s.vane===1?'The sails catch the breeze.':'Turn the vane toward the wind →.');save();}else if(near?.id==='gate'){s.gate=(s.gate+1)%4;message(['Garden channels closed.','Water goes to the left bed.','Both beds receive water.','Water goes to the right bed.'][s.gate]);save();}else if(near?.id.startsWith('mirror')){const i=Number(near.id.slice(6));s.mirrors[i]=(s.mirrors[i]+1)%4;message('Mirror turned. Follow the sunbeam.');save();}else if(near?.id==='mill'&&!s.cog){message('The pump is missing a gear. Look along the far bank.');}else if(!near)message('Walk beside the channel elbow, loose channel, or valve.');}
+  function work(dt){near=nearest();if(!near)return;if(near.id==='mill'&&s.cog&&s.repair<1){s.repair=Math.min(1,s.repair+dt*.65);if(s.repair===1){burst(890,285);message('Gear fitted! Turn the vane toward the breeze.');save();}}if(near.id==='valve'){const target=keys.has('q')||keys.has('shift')?0:s.pump===1?.5:1;s.valve+=Math.sign(target-s.valve)*Math.min(dt*.42,Math.abs(target-s.valve));}if(near.id==='trough'&&s.troughY>330){if(s.player.y>s.troughY+20){const step=Math.min(dt*65,s.troughY-330);s.troughY-=step;s.player.y-=step;if(s.troughY<=330.01){s.troughY=330;message('Channel connected. The stream can reach the wheel.');discover(1);save();}}else message('Get behind the loose channel and push it toward the gap.');}}
   function move(dx,dy,dt){const speed=(keys.has('shift')&&!actionHeld?235:155)*dt,norm=Math.hypot(dx,dy)||1;dx=dx/norm*speed;dy=dy/norm*speed;
     const tryAxis=(amount,axis)=>{if(Math.abs(amount)<0.001)return false;const p={...s.player};p[axis]+=amount;if(!canStand(p.x,p.y,s))return false;
       if(Math.abs(p.x-475)<57&&Math.abs(p.y-s.troughY)<31){if(axis==='y'&&s.troughY>330){const next=Math.max(330,Math.min(475,s.troughY+amount));if(Math.abs(next-s.troughY-amount)>0.01)return false;s.troughY=next;if(s.troughY===330){message('Channel connected.');discover(1);}}else return false;}
@@ -65,8 +66,18 @@ function start(){
   }
   const dirs={arrowup:[0,-1],w:[0,-1],up:[0,-1],arrowdown:[0,1],s:[0,1],down:[0,1],arrowleft:[-1,0],a:[-1,0],left:[-1,0],arrowright:[1,0],d:[1,0],right:[1,0]};
   function clearInput(){keys.clear();actionHeld=false;route=null;valveDrag=false;}
-  root.addEventListener('keydown',e=>{if(e.target.matches('button,a,summary'))return;const k=e.key.toLowerCase();if(dirs[k]||[' ','e','shift'].includes(k)){e.preventDefault();keys.add(k);if(dirs[k])route=null;if((k==='e'||k===' ')&&!e.repeat){actionHeld=true;actOnce();}}});
-  window.addEventListener('keyup',e=>{const k=e.key.toLowerCase();keys.delete(k);if(k==='e'||k===' ')actionHeld=false;});
+  root.addEventListener('keydown',e=>{
+    const k=e.key.toLowerCase();
+    if(e.target.matches('a,summary,input,textarea,select')||!$('#win').hidden)return;
+    // Keep native Space/Enter button activation, but allow game keys after toolbar use.
+    if(e.target.matches('button')&&[' ','enter'].includes(k))return;
+    if(dirs[k]||[' ','e','q','shift'].includes(k)){
+      e.preventDefault();keys.add(k);canvas.focus({preventScroll:true});
+      if(dirs[k])route=null;
+      if(['e',' ','q'].includes(k)&&!e.repeat){if(k==='q'&&nearest()?.id!=='valve')return;actionHeld=true;actOnce();}
+    }
+  });
+  window.addEventListener('keyup',e=>{const k=e.key.toLowerCase();keys.delete(k);if(['e',' ','q'].includes(k))actionHeld=keys.has('e')||keys.has(' ')||keys.has('q');});
   window.addEventListener('blur',()=>{clearInput();save();});document.addEventListener('visibilitychange',()=>{clearInput();save();});
   document.querySelectorAll('[data-move]').forEach(b=>{b.addEventListener('pointerdown',e=>{e.preventDefault();if(paused)return;b.setPointerCapture(e.pointerId);keys.add(b.dataset.move);route=null;canvas.focus();});for(const ev of ['pointerup','pointercancel','lostpointercapture'])b.addEventListener(ev,()=>keys.delete(b.dataset.move));b.addEventListener('click',e=>{if(e.detail===0&&!paused){move(...dirs[b.dataset.move],0.22);save();}});});
   $('#action').addEventListener('pointerdown',e=>{e.preventDefault();if(paused)return;$('#action').setPointerCapture(e.pointerId);canvas.focus();actionHeld=true;actOnce();});for(const ev of ['pointerup','pointercancel','lostpointercapture'])$('#action').addEventListener(ev,()=>{actionHeld=false;save();});$('#action').addEventListener('click',e=>{if(e.detail===0){actOnce();work(0.3);save();}});
@@ -74,19 +85,19 @@ function start(){
   canvas.addEventListener('pointerdown',e=>{e.preventDefault();if(paused||!$('#win').hidden)return;canvas.focus();const p=point(e);canvas.setPointerCapture(e.pointerId);if(Math.hypot(p.x-objects.valve.x,p.y-objects.valve.y)<36&&Math.hypot(s.player.x-objects.valve.x,s.player.y-objects.valve.y)<80){valveDrag=true;route=null;return;}
     const extra=interactables(s).find(o=>Math.hypot(p.x-o.x,p.y-o.y)<38);
     const hit=extra?.id|| (Math.hypot(p.x-330,p.y-180)<40?'elbow':Math.hypot(p.x-475,p.y-s.troughY)<50?'trough':Math.hypot(p.x-180,p.y-180)<40?'valve':null);
-    if(['elbow','vane','gate'].includes(hit)&&nearest()?.id===hit){actOnce();return;}
+    if((['elbow','vane','gate'].includes(hit)||hit?.startsWith('mirror'))&&nearest()?.id===hit){actOnce();return;}
     const target=extra?{x:extra.x,y:extra.y+45}:hit==='elbow'?{x:330,y:238}:hit==='trough'?{x:475,y:s.troughY+60}:hit==='valve'?{x:180,y:238}:p;
     if(canStand(target.x,target.y,s)){
       let points=[target];
       if(hit==='trough'&&s.player.y<s.troughY+31)points=[{x:395,y:s.player.y},{x:395,y:s.troughY+65},target];
       else if(target.x>840&&s.player.x<718)points=[{x:700,y:425},{x:860,y:425},target];
       else if(target.x<718&&s.player.x>840)points=[{x:860,y:425},{x:700,y:425},target];
-      route={...points.shift(),next:points,act:['elbow','vane','gate'].includes(hit)};
+      route={...points.shift(),next:points,act:['elbow','vane','gate'].includes(hit)||hit?.startsWith('mirror')};
     }else message(s.bridge<1?'The crossing needs power first.':'Use the bridge to cross the river.');
   });
   canvas.addEventListener('pointermove',e=>{if(valveDrag){const p=point(e);s.valve=Math.max(0,Math.min(1,(240-p.y)/120));}});for(const ev of ['pointerup','pointercancel','lostpointercapture'])canvas.addEventListener(ev,()=>{if(valveDrag)save();valveDrag=false;});
   $('#pause').addEventListener('click',()=>{paused=!paused;clearInput();$('#pause').textContent=paused?'Resume':'Pause';$('#pause').setAttribute('aria-pressed',String(paused));save();});
-  function reset(){s={...initialState(),...adventureState()};particles=[];clearInput();paused=false;resetArmed=false;$('#pause').textContent='Pause';$('#pause').setAttribute('aria-pressed','false');$('#restart').textContent='Restart';$('#win').hidden=true;message('Find a way to get water to the wheel.');refreshNotes();save();canvas.focus();}
+  function reset(){s={...initialState(),...adventureState()};particles=[];camera={x:0,y:0};clearInput();paused=false;resetArmed=false;$('#pause').textContent='Pause';$('#pause').setAttribute('aria-pressed','false');$('#restart').textContent='Restart';$('#win').hidden=true;message('Find a way to get water to the wheel.');refreshNotes();save();canvas.focus();}
   $('#restart').addEventListener('click',()=>{if(resetArmed)reset();else{resetArmed=true;$('#restart').textContent='Confirm restart';message('Press Confirm restart to start over.');}});
   $('#play-again').addEventListener('click',reset);$('#keep-exploring').addEventListener('click',()=>{$('#win').hidden=true;canvas.focus();});
   function update(dt){if(paused||document.hidden||!$('#win').hidden)return;
@@ -99,17 +110,19 @@ function start(){
     for(const event of events){
       if(event==='crossing'){burst(890,425);message('Crossing restored! A wind pump waits on the far bank.');}
       if(event==='cog'){burst(890,510);message('Gear found! Carry it to the wind pump.');}
-      if(event==='spark'){burst(s.player.x,s.player.y);message(`Light seed found · ${s.sparks.length} / 5`);}
+      if(event==='spark'){burst(s.player.x,s.player.y);message(`Light seed found · ${s.sparks.length} / ${sparks.length}`);}
       if(event==='pump'){discover(3);burst(890,285);message('Wind pump restored! Bring water to the dry garden.');}
       if(event==='bloom'){burst(555,150);message('A garden bed is blooming!');}
-      if(event==='finish'){discover(4);burst(555,150);clearInput();$('#win').hidden=false;$('#play-again').focus({preventScroll:true});$('#win-score').textContent=`3 restorations · ${s.sparks.length} / 5 light seeds`;message('The whole valley is alive again.');}
+      if(event==='garden'){discover(4);burst(555,150);message('Garden restored! Follow the trail east to Sunstone Ridge.');}
+      if(event==='finish'){discover(5);burst(1750,680);clearInput();$('#win').hidden=false;$('#play-again').focus({preventScroll:true});$('#win-score').textContent=`4 restorations · ${s.sparks.length} / ${sparks.length} light seeds`;message('The whole valley is alive again.');}
       save();
     }
     particles=particles.map(p=>({...p,x:p.x+p.vx*dt,y:p.y+p.vy*dt,life:p.life-dt})).filter(p=>p.life>0);
     const next=nearest();near=next;
-    const labels={elbow:['Turn channel','Tap E to rotate. Watch the stream.'],trough:[s.troughY<=330?'Connected':'Push channel',s.troughY<=330?'Water can pass through this connection.':'Get below it and hold E to push.'],valve:['Turn valve','Hold E to open; Shift + E to close. Or drag up/down.'],vane:['Turn vane','Tap E to face the breeze →.'],mill:[s.repair===1?'Gear fitted':'Fit gear',s.cog?'Hold E to fit the gear.':'Find the missing gear along the far bank.'],gate:['Split water','Tap E: closed / left / both / right.']};
-    $('#action').textContent=next?labels[next.id][0]:'Explore';$('#context').textContent=next?labels[next.id][1]:objective(s);
-    $('#goal').textContent=objective(s);$('#chapter').textContent=`${s.finished?'Valley restored':!s.crossed?'1 · The crossing':s.pump<1?'2 · Wind pump':'3 · The garden'} · ✦ ${s.sparks.length}/5`;
+    const labels={elbow:['Turn channel','Tap E to rotate. Watch the stream.'],trough:[s.troughY<=330?'Connected':'Push channel',s.troughY<=330?'Water can pass through this connection.':'Get below it and hold E to push.'],valve:[s.pump===1?'Balance flow':'Open valve',s.pump===1?'Hold E to balance · Hold Q to lower · Shift + E also lowers.':'Hold E to open · Hold Q or Shift + E to lower.'],vane:['Turn vane','Tap E to face the breeze →.'],mill:[s.repair===1?'Gear fitted':'Fit gear',s.cog?'Hold E to fit the gear.':'Find the missing gear along the far bank.'],gate:['Split water','Tap E: closed / left / both / right.']};
+    const label=next?.id.startsWith('mirror')?['Turn mirror','Tap E to redirect the sunbeam.']:next?labels[next.id]:null;
+    $('#action').textContent=next?label[0]:'Explore';$('#context').textContent=next?label[1]:objective(s);
+    $('#goal').textContent=objective(s);$('#chapter').textContent=`${s.finished?'Valley restored':!s.crossed?'1 · The crossing':s.pump<1?'2 · Wind pump':s.gardenRestored?'4 · Sunstone Ridge':'3 · The garden'} · ✦ ${s.sparks.length}/${sparks.length}`;
     saveClock+=dt;if(saveClock>2){saveClock=0;save();}
   }
   function burst(x,y){for(let n=0;n<24;n++){const angle=n*Math.PI/12;particles.push({x,y,vx:Math.cos(angle)*45,vy:Math.sin(angle)*45-15,life:1.2});}}
@@ -117,14 +130,15 @@ function start(){
   function water(points,time){path(points,'#2594b2',15);path(points,'#75dce8',7);for(let i=1;i<points.length;i++){const a=points[i-1],b=points[i],len=Math.hypot(b[0]-a[0],b[1]-a[1]);for(let d=(time*0.07)%32;d<len;d+=32){const f=d/len;ctx.fillStyle='#c9f8ec';ctx.beginPath();ctx.arc(a[0]+(b[0]-a[0])*f,a[1]+(b[1]-a[1])*f,2,0,Math.PI*2);ctx.fill();}}}
   function tree(x,y,size){ctx.fillStyle='#153e3a55';ctx.beginPath();ctx.ellipse(x+8,y+9,size*0.8,size*0.28,0,0,Math.PI*2);ctx.fill();ctx.fillStyle='#986d43';ctx.fillRect(x-4,y-20,8,25);ctx.fillStyle='#164c3e';ctx.beginPath();ctx.arc(x,y-32,size,0,Math.PI*2);ctx.fill();ctx.fillStyle='#287456';ctx.beginPath();ctx.arc(x-6,y-38,size*0.75,0,Math.PI*2);ctx.fill();ctx.fillStyle='#479269';ctx.beginPath();ctx.arc(x-10,y-43,size*0.4,0,Math.PI*2);ctx.fill();}
   function glow(x,y,active,time){ctx.strokeStyle=active?'#ffe2a1':'#95c3a066';ctx.lineWidth=active?3:2;ctx.beginPath();ctx.arc(x,y,35+(active?Math.sin(time/250)*2:0),0,Math.PI*2);ctx.stroke();}
-  function draw(time){
-    camera.x=Math.max(0,Math.min(WORLD.width-vw,s.player.x-vw/2));camera.y=0;
+  function draw(time,dt){
+    camera=followCamera(camera,s.player,{width:vw,height:vh},WORLD,dt);
     ctx.clearRect(0,0,vw,vh);ctx.save();ctx.translate(-camera.x,-camera.y);
-    const bg=ctx.createLinearGradient(0,0,0,600);bg.addColorStop(0,'#184c43');bg.addColorStop(1,'#377b5b');ctx.fillStyle=bg;ctx.fillRect(0,0,960,600);
+    const bg=ctx.createLinearGradient(0,0,0,600);bg.addColorStop(0,'#184c43');bg.addColorStop(1,'#377b5b');ctx.fillStyle=bg;ctx.fillRect(0,0,WORLD.width,WORLD.height);
+    drawOutskirts(time);
     // Fixed world texture avoids shimmering as the camera moves.
-    for(let n=0;n<140;n++){const x=(n*137+33)%960,y=(n*71+60)%600;if(x>720&&x<840)continue;ctx.fillStyle=n%3?'#71a77635':'#d4c78344';ctx.fillRect(x,y,3,2);}
+    for(let n=0;n<360;n++){const x=(n*137+33)%WORLD.width,y=(n*71+60)%WORLD.height;if(x>720&&x<840)continue;ctx.fillStyle=n%3?'#71a77635':'#d4c78344';ctx.fillRect(x,y,3,2);}
     path([[70,470],[290,470],[340,420],[910,425]],'#193f3555',72);path([[70,466],[290,466],[340,416],[910,421]],'#bcaf7d',54);path([[70,466],[290,466],[340,416],[910,421]],'#d3c197',38);
-    const river=ctx.createLinearGradient(720,0,840,0);river.addColorStop(0,'#256e86');river.addColorStop(0.5,'#338fa7');river.addColorStop(1,'#225f76');ctx.fillStyle=river;ctx.fillRect(720,0,120,600);ctx.fillStyle='#99d5cc66';ctx.fillRect(718,0,4,600);ctx.fillRect(839,0,4,600);for(let n=0;n<55;n++){const y=(n*31+time*0.045)%610;path([[734+n%3*32,y],[748+n%3*32,y]],'#90dce56b',2);}
+    const river=ctx.createLinearGradient(720,0,840,0);river.addColorStop(0,'#256e86');river.addColorStop(0.5,'#338fa7');river.addColorStop(1,'#225f76');ctx.fillStyle=river;ctx.fillRect(720,0,120,WORLD.height);ctx.fillStyle='#99d5cc66';ctx.fillRect(718,0,4,WORLD.height);ctx.fillRect(839,0,4,WORLD.height);for(let n=0;n<65;n++){const y=(n*31+time*0.045)%(WORLD.height+10);path([[734+n%3*32,y],[748+n%3*32,y]],'#90dce56b',2);}
     for(const [x,y,z] of [[55,100,25],[105,87,31],[420,90,26],[545,83,31],[652,95,30],[50,280,29],[90,345,24],[600,530,29],[670,552,24],[890,540,29],[140,561,23],[310,562,27]])tree(x,y,z);
     // Channel bed has a visible missing section between the elbow and wheel.
     path([[70,180],[330,180],[330,330],[421,330]],'#4a5042',34);path([[70,180],[330,180],[330,330],[421,330]],'#b5aa82',25);path([[529,330],[650,330]],'#4a5042',34);path([[529,330],[650,330]],'#b5aa82',25);
@@ -147,10 +161,46 @@ function start(){
     ctx.fillStyle='#6e593a';ctx.fillRect(901,368,5,54);ctx.fillStyle=s.won?'#fed57f':'#a4d3a1';ctx.beginPath();ctx.moveTo(906,370);ctx.lineTo(936,378);ctx.lineTo(906,389);ctx.closePath();ctx.fill();
     for(const [id,x,y] of [['elbow',330,180],['valve',180,180],['trough',475,s.troughY]])glow(x,y,near?.id===id,time);
     ctx.font='bold 17px system-ui';ctx.textAlign='center';ctx.fillStyle='#e4eed0';ctx.fillText('VALVE',180,133);ctx.fillText('CHANNEL',330,133);if(s.troughY>330)ctx.fillText('PUSH',475,s.troughY-47);
-    if(near){ctx.fillStyle='#ffdda2';ctx.font='bold 15px system-ui';ctx.fillText(['elbow','vane','gate'].includes(near.id)?'E · TURN':near.id==='valve'?'HOLD E · ADJUST':near.id==='mill'?'HOLD E · FIT':'HOLD E · PUSH',near.x,near.y+57);}
+    if(near){ctx.fillStyle='#ffdda2';ctx.font='bold 15px system-ui';ctx.fillText((['elbow','vane','gate'].includes(near.id)||near.id.startsWith('mirror'))?'E · TURN':near.id==='valve'?(s.pump===1?'E · BALANCE / Q · LOWER':'E · OPEN / Q · LOWER'):near.id==='mill'?'HOLD E · FIT':'HOLD E · PUSH',near.x,near.y+57);}
     if(route){ctx.strokeStyle='#fce4a0';ctx.lineWidth=2;ctx.beginPath();ctx.arc(route.x,route.y,6,0,Math.PI*2);ctx.stroke();}
     const {x,y}=s.player,bob=keys.size||route?Math.sin(walkTime*17)*1.5:0;ctx.fillStyle='#15352977';ctx.beginPath();ctx.ellipse(x,y+13,13,5,0,0,Math.PI*2);ctx.fill();ctx.fillStyle='#233841';ctx.fillRect(x-8,y+6,6,10);ctx.fillRect(x+2,y+6,6,10);ctx.fillStyle='#ef9850';ctx.fillRect(x-10,y-10+bob,20,19);ctx.fillStyle='#f5d5aa';ctx.fillRect(x-8,y-23+bob,16,14);ctx.fillStyle='#193e46';ctx.fillRect(x-10,y-28+bob,20,8);ctx.fillStyle='#e7b35b';ctx.fillRect(x-12,y-21+bob,24,3);ctx.fillStyle='#765335';ctx.fillRect(x+7,y-9+bob,7,13);
-    ctx.restore();if(paused){ctx.fillStyle='#102e3acb';ctx.fillRect(0,0,vw,vh);ctx.fillStyle='#fff';ctx.font='bold 32px system-ui';ctx.textAlign='center';ctx.fillText('Paused',vw/2,vh/2);}
+    ctx.restore();drawOverview();if(paused){ctx.fillStyle='#102e3acb';ctx.fillRect(0,0,vw,vh);ctx.fillStyle='#fff';ctx.font='bold 32px system-ui';ctx.textAlign='center';ctx.fillText('Paused',vw/2,vh/2);}
+  }
+  function drawOverview(){
+    const x=vw-140,y=14,w=126,h=72;
+    ctx.fillStyle='#102e3cdd';ctx.fillRect(x-5,y-5,w+10,h+10);
+    ctx.fillStyle='#527858';ctx.fillRect(x,y,w,h);ctx.fillStyle='#778574';ctx.fillRect(x+1030/WORLD.width*w,y,w*(WORLD.width-1030)/WORLD.width,h);
+    ctx.fillStyle='#70b9ca';ctx.fillRect(x+718/WORLD.width*w,y,122/WORLD.width*w,h);
+    ctx.fillStyle='#e8c791';ctx.fillRect(x+718/WORLD.width*w,y+399/WORLD.height*h,122/WORLD.width*w,5);
+    for(const p of [{x:555,y:150},{x:890,y:285},{x:1750,y:620}]){ctx.fillStyle='#ffe4a1';ctx.fillRect(x+p.x/WORLD.width*w-2,y+p.y/WORLD.height*h-2,4,4);}
+    ctx.strokeStyle='#d6e6d4';ctx.lineWidth=1;ctx.strokeRect(x+camera.x/WORLD.width*w,y+camera.y/WORLD.height*h,vw/WORLD.width*w,vh/WORLD.height*h);
+    ctx.fillStyle='#ff9655';ctx.beginPath();ctx.arc(x+s.player.x/WORLD.width*w,y+s.player.y/WORLD.height*h,3,0,Math.PI*2);ctx.fill();
+  }
+  function drawOutskirts(time){
+    ctx.fillStyle='#718371';ctx.fillRect(1030,0,890,WORLD.height);
+    const ridge=ctx.createLinearGradient(1000,0,1150,0);ridge.addColorStop(0,'#377b5b');ridge.addColorStop(1,'#718371');ctx.fillStyle=ridge;ctx.fillRect(960,0,180,WORLD.height);
+    path([[910,425],[1070,425],[1150,520],[1280,520],[1390,780],[1770,780]],'#b7b292',45);
+    path([[280,470],[280,850],[650,850]],'#adbb82',30);
+    path([[890,425],[890,850],[1170,850]],'#b7b292',30);
+    for(const [x,y,z] of [[80,710,31],[130,880,28],[390,740,35],[570,960,28],[655,730,32],[920,980,29],[1010,700,26],[1220,160,30],[1610,120,30],[1770,300,28],[1820,540,34],[1570,930,30]])tree(x,y,z);
+    for(let i=0;i<18;i++){const x=70+(i*83)%620,y=640+(i*53)%380;ctx.fillStyle=['#f4d891','#d7bfe0','#b4d8a1'][i%3];ctx.beginPath();ctx.arc(x,y,4,0,Math.PI*2);ctx.fill();}
+    ctx.font='bold 20px system-ui';ctx.textAlign='center';ctx.fillStyle='#e0e8cd';ctx.fillText('WILDFLOWER MEADOW',380,680);ctx.fillText('SUNSTONE RIDGE',1470,80);
+    // Light advances only through mirrors that connect the current beam.
+    const beam=[[[1150,100],[1150,330]],[[1150,330],[1440,330]],[[1440,330],[1440,680]],[[1440,680],[1750,680]]];
+    let lit=true;
+    for(let i=0;i<beam.length;i++){path(beam[i],lit?'#ffe7a4':'#959c83',lit?5:2);if(i<mirrors.length)lit=lit&&s.mirrors[i]===mirrors[i].target;}
+    for(let i=0;i<mirrors.length;i++){
+      const m=mirrors[i];ctx.fillStyle='#4c5d54';ctx.beginPath();ctx.arc(m.x,m.y,29,0,Math.PI*2);ctx.fill();ctx.save();ctx.translate(m.x,m.y);ctx.rotate(s.mirrors[i]*Math.PI/2);
+      path([[-16,-16],[16,16]],'#cae8e4',8);
+      const turns=[[[0,-28],[28,0]],[[28,0],[0,28]],[[0,28],[-28,0]],[[-28,0],[0,-28]]];
+      for(const port of turns[s.mirrors[i]]){ctx.fillStyle='#ffe0a1';ctx.beginPath();ctx.arc(...port,4,0,Math.PI*2);ctx.fill();}ctx.restore();
+      glow(m.x,m.y,near?.id===`mirror${i}`,time);ctx.fillStyle='#e7edda';ctx.font='bold 14px system-ui';ctx.fillText('MIRROR',m.x,m.y-44);
+    }
+    ctx.fillStyle='#435649';ctx.fillRect(1727,627,46,81);ctx.fillStyle=s.beacon===1?'#ffe6a1':'#869b8b';ctx.beginPath();ctx.arc(1750,620,23,0,Math.PI*2);ctx.fill();
+    if(s.beacon>0){ctx.strokeStyle='#ffe8a7';ctx.lineWidth=5;ctx.beginPath();ctx.arc(1750,620,30,-Math.PI/2,-Math.PI/2+s.beacon*Math.PI*2);ctx.stroke();}
+    ctx.fillStyle='#e7edda';ctx.font='bold 14px system-ui';ctx.fillText('SUN BEACON',1750,745);
+    if(s.beacon===1)for(let n=0;n<6;n++){const angle=n*Math.PI/3+time/3000;path([[1750+Math.cos(angle)*36,620+Math.sin(angle)*36],[1750+Math.cos(angle)*49,620+Math.sin(angle)*49]],'#ffe0a1',3);}
+    ctx.fillStyle='#e1d0a0';ctx.fillRect(983,363,5,63);ctx.fillRect(947,360,79,29);ctx.fillStyle='#274735';ctx.font='bold 12px system-ui';ctx.fillText('RIDGE →',986,379);
   }
   function drawAdventure(time){
     // Wind, gearing and irrigation are visible parts of one connected valley.
@@ -179,10 +229,10 @@ function start(){
     for(let i=0;i<sparks.length;i++)if(!s.sparks.includes(i)){const p=sparks[i];ctx.fillStyle='#ffe299';ctx.beginPath();ctx.arc(p.x,p.y+Math.sin(time/350+i)*4,5,0,Math.PI*2);ctx.fill();ctx.strokeStyle='#fff3c366';ctx.beginPath();ctx.arc(p.x,p.y,11,0,Math.PI*2);ctx.stroke();}
     // Birds return when the crossing is restored; butterflies follow the blooms.
     if(s.crossed)for(let n=0;n<3;n++){const x=(time*.025+n*230)%680,y=65+Math.sin(time/1000+n)*12;path([[x-7,y-3],[x,y],[x+7,y-3]],'#cfdfce',2);}
-    if(s.garden.some(n=>n===1))for(let n=0;n<5;n++){const x=565+Math.sin(time/1600+n)*65,y=150+Math.cos(time/1100+n)*35;ctx.fillStyle=n%2?'#f6c590':'#dfbde2';ctx.beginPath();ctx.ellipse(x,y,5,2+Math.abs(Math.sin(time/100))*3,0,0,Math.PI*2);ctx.fill();}
+    if(s.garden.some(n=>n===1))for(let n=0;n<6;n++){const x=565+Math.sin(time/1600+n)*65,y=150+Math.cos(time/1100+n)*35;ctx.fillStyle=n%2?'#f6c590':'#dfbde2';ctx.beginPath();ctx.ellipse(x,y,5,2+Math.abs(Math.sin(time/100))*3,0,0,Math.PI*2);ctx.fill();}
     for(const p of particles){ctx.globalAlpha=Math.min(1,p.life);ctx.fillStyle='#ffe1a0';ctx.fillRect(p.x,p.y,4,4);}ctx.globalAlpha=1;
     if(s.cog&&s.repair<1){ctx.fillStyle='#efcf87';ctx.beginPath();ctx.arc(s.player.x+17,s.player.y-6,6,0,Math.PI*2);ctx.fill();}
   }
-  function frame(time){const dt=Math.min(0.04,Math.max(0,(time-last)/1000));last=time;update(dt);draw(time);requestAnimationFrame(frame);}
-  if(s.finished)message('Welcome back. Hunt for the remaining light seeds.');else if(s.crossed)message('Your crossing is saved. The adventure continues on the far bank.');requestAnimationFrame(frame);
+  function frame(time){const dt=Math.min(0.04,Math.max(0,(time-last)/1000));last=time;update(dt);draw(time,dt);requestAnimationFrame(frame);}
+  if(s.gardenRestored&&!s.finished)message('Your garden is saved. Follow the east trail to Sunstone Ridge.');else if(s.finished)message('Welcome back. Hunt for the remaining light seeds.');else if(s.crossed)message('Your crossing is saved. The adventure continues on the far bank.');requestAnimationFrame(frame);
 }

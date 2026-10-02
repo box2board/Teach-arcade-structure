@@ -1,6 +1,7 @@
+import {followCamera} from '../public/brain-arcade/apprentice-restorer/js/camera.js';
 import assert from 'node:assert/strict';
-import {initialState,simulate} from '../public/brain-arcade/apprentice-restorer/js/flow-model.js';
-import {adventureState,stepAdventure,sparks} from '../public/brain-arcade/apprentice-restorer/js/adventure.js';
+import {initialState,simulate,canStand,WORLD} from '../public/brain-arcade/apprentice-restorer/js/flow-model.js';
+import {adventureState,stepAdventure,sparks,mirrors} from '../public/brain-arcade/apprentice-restorer/js/adventure.js';
 const state=()=>({...initialState(),...adventureState()});
 const run=(s,seconds)=>{const events=[];for(let i=0;i<seconds*60;i++){simulate(s,1/60);events.push(...stepAdventure(s,1/60));}return events;};
 const s=state();s.player={x:890,y:425};run(s,1);assert.equal(s.crossed,false,'River cannot be crossed before restoration');
@@ -9,9 +10,18 @@ s.player={x:890,y:510};run(s,1);assert(s.cog);s.repair=1;run(s,8);assert.equal(s
 s.vane=1;assert(run(s,8).includes('pump'));assert.equal(s.pump,1);
 s.gate=2;run(s,10);assert.deepEqual(s.garden,[0,0],'Excessive flow cannot restore the beds');
 s.valve=.5;s.gate=1;run(s,8);assert.deepEqual(s.garden,[1,0],'Left branch only feeds the left bed');assert(!s.finished);
-s.gate=3;assert(run(s,8).includes('finish'));assert.deepEqual(s.garden,[1,1]);assert(s.won);assert(!run(s,1).includes('finish'),'Completion occurs once');
-for(const p of sparks){s.player={...p};run(s,.1);}assert.equal(s.sparks.length,5);run(s,1);assert.equal(s.sparks.length,5);
-const restored=adventureState(JSON.parse(JSON.stringify(s)));assert(restored.finished);assert.deepEqual(restored.garden,[1,1]);assert.equal(restored.sparks.length,5);
+s.gate=3;assert(run(s,8).includes('garden'));assert.deepEqual(s.garden,[1,1]);assert(s.gardenRestored);assert(!s.finished,'Restored garden leads to the ridge');
+s.mirrors[0]=mirrors[0].target;s.mirrors[1]=mirrors[1].target;run(s,8);assert.equal(s.beacon,0,'Missing mirror interrupts the light path');
+s.mirrors[2]=mirrors[2].target;assert(run(s,6).includes('finish'));assert(s.won);assert(!run(s,1).includes('finish'),'Completion occurs once');
+for(const p of sparks){s.player={...p};run(s,.1);}assert.equal(s.sparks.length,sparks.length);run(s,1);assert.equal(s.sparks.length,sparks.length);
+const restored=adventureState(JSON.parse(JSON.stringify(s)));assert(restored.finished);assert.deepEqual(restored.garden,[1,1]);assert.equal(restored.sparks.length,sparks.length);
 assert.equal(adventureState({finished:true,garden:[],pump:1}).finished,false);
 assert.deepEqual(adventureState({sparks:[1,1,-1,500],garden:[NaN,2]}).sparks,[1]);
-console.log('PASS: connected energy sources, three restorations, flow balance, separate irrigation branches, collectible uniqueness, saved progress.');
+console.log('PASS: connected energy sources, four restorations, flow balance, separate irrigation branches, collectible uniqueness, saved progress.');
+
+assert(canStand(1800,980,s),'Expanded ridge is playable');assert(canStand(250,880,s),'Southern meadow is playable');assert(!canStand(WORLD.width,900,s));assert(!canStand(780,900,s),'River cannot be bypassed outside the opening map');
+const legacy=adventureState({finished:true,garden:[1,1],pump:1});assert(legacy.gardenRestored);assert(!legacy.finished,'Previous completion preserves gardens and unlocks the ridge');
+let camera={x:0,y:0};camera=followCamera(camera,{x:205,y:465},{width:960,height:600},WORLD,.016);assert.deepEqual(camera,{x:0,y:0},'Opening camera remains stable');
+for(let i=0;i<120;i++)camera=followCamera(camera,{x:1850,y:1000},{width:960,height:600},WORLD,1/60);
+assert(camera.x>900&&camera.y>470,'Camera follows both axes');assert(camera.x<=WORLD.width-960&&camera.y<=WORLD.height-600);
+console.log('PASS: expanded boundaries, legacy save continuation, connected mirror path, stable opening camera, two-axis camera bounds.');
