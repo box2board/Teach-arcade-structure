@@ -6,7 +6,7 @@ Power Clash is a reusable, browser-based classroom review fighter prototype. It 
 
 1. Choose a topic pack and one-player or local two-player mode.
 2. In one-player mode, the student answers ten multiple-choice questions to earn juice before fighting the CPU. In two-player mode, each player answers a separate set of ten questions. Each correct answer earns that player 10 juice.
-3. Fight in the arena. Movement, jumps, punches, kicks, and dashes consume juice. The CPU has its own energy meter and automatically recovers energy when depleted.
+3. Fight in the arena. Walking, jumping, and dashing are free. Punches and kicks spend juice. The CPU has its own energy meter and automatically recovers energy when depleted.
 4. When a player runs out, the match pauses for that player to answer a recharge question. A correct answer restores 25 juice. A missed answer gives feedback and another question; the other player cannot attack during the recharge.
 5. Reduce the opponent's health to zero to win.
 
@@ -21,11 +21,9 @@ Add a topic object to `content/topics.js` with an `id`, `title`, `shortTitle`, a
 
 ## Juice costs
 
-- Movement: 0.75 juice per second while moving
-- Jump: 2 juice
-- Punch: 4 juice
-- Kick: 8 juice
-- Dash: 3 juice
+- Movement, jump, and dash: free
+- Punch: 3 juice
+- Kick: 6 juice
 - Correct opening-round answer: +10 juice
 - Correct recharge answer: +25 juice
 
