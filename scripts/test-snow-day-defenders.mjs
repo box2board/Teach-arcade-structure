@@ -60,13 +60,21 @@ for(const level of Object.keys(DIFFICULTIES)){
  while(!['won','lost'].includes(h.state().mode)&&frames++<15000){
   if(h.state().mode==='between'){
    const before=h.state();assert(!h.get('shop').hidden);h.step(20);assert.equal(h.state().spawned,before.spawned);assert.equal(h.state().upgrades.tokens,before.upgrades.tokens);
-   assert.equal(before.burstCharges,3,'wave breaks replenish charges up to the cap');
+   assert(before.burstCharges>=1&&before.burstCharges<=3,'wave breaks replenish charges up to the cap');
    const id=breaks++===0?'double':'powder';h.click(`upgrade-${id}`);assert(h.state().upgrades[id]);assert.equal(h.state().upgrades.tokens,before.upgrades.tokens-2);
    h.click(`upgrade-${id}`);assert.equal(h.state().upgrades.tokens,before.upgrades.tokens-2);
+   if(level==='hard'&&h.state().fort<100)h.click('upgrade-repair');
    h.select(level==='hard'?'easy':'hard');h.click('start');assert.equal(h.state().difficulty,level,'cannot change difficulty mid-run');continue;
+  }
+  if(level==='hard'){
+   const lead=h.fixture('enemies.slice().sort((a,b)=>b.z-a.z)[0]?.x');
+   if(lead!==undefined&&Math.abs(lead-h.state().playerX)>3&&h.state().dashCooldown===0)h.key(lead>h.state().playerX?'e':'q');
+   const close=h.fixture('enemies.filter(e=>Math.hypot(e.x-player.position.x,e.z-player.position.z)<=BURST_RADIUS).length');
+   if(close>=2&&h.state().burstCooldown===0&&h.state().burstCharges>0)h.key('b');
   }
   h.aim();h.step();
  }
+ if(level==='hard'){assert(h.state().burstUses>0,'Hard playtest uses close-range bursts');assert(h.state().fort<100,'Hard playtest creates meaningful fort pressure');}
  assert.equal(h.state().mode,'won',`${level} should be beatable with upgrades`);assert.equal(h.state().wave,3);assert(h.state().defeatedByType.every(n=>n>0));assert.equal(breaks,2);assert(h.state().splashHits>0,'powder burst must hit neighboring creatures');
  h.click('restart');assert.equal(h.state().upgrades.tokens,0);assert(!h.state().upgrades.double&&!h.state().upgrades.powder);assert.equal(h.state().wave,1);assert.equal(h.state().burstCharges,2);assert.equal(h.state().burstUses,0);
  console.log(`PASS: ${level} full run, upgrade breaks, collisions, all creature types, pause, difficulty lock, restart`);
@@ -196,3 +204,13 @@ polish.step(30);assert.equal(polish.get('fort').dataset.hit,'false');assert.equa
 polish.get('reduced-effects').checked=true;polish.get('reduced-effects').fire('change');assert(polish.fixture('!snowfall.visible&&!renderer.shadowMap.enabled'),'reduced effects removes snowfall and shadows');polish.fixture('celebrate();');assert.equal(polish.fixture('celebrationTime'),0);polish.click('restart');assert(polish.fixture('fortMerlons.every(m=>m.visible)'),'restart restores fort blocks');assert.equal(polish.get('fort').dataset.hit,'false');
 polish.get('reduced-effects').checked=false;polish.get('reduced-effects').fire('change');polish.click('pause');const snowBefore=polish.fixture('JSON.stringify(Array.from(snowPositions))');polish.step(20);assert.equal(polish.fixture('JSON.stringify(Array.from(snowPositions))'),snowBefore,'pause freezes ambient snow');polish.click('start');polish.step();assert.notEqual(polish.fixture('JSON.stringify(Array.from(snowPositions))'),snowBefore);assert.equal(polish.fixture('snowGeometry.attributes.position.count'),80,'snowfall stays bounded');
 console.log('PASS: visible creature wear, fort crumbling/flash/reset, brief celebration cleanup, reduced effects, bounded snowfall and pause');
+
+const passiveHard=harness();passiveHard.select('hard');passiveHard.click('start');passiveHard.step();let passiveFrames=0;
+while(!['won','lost'].includes(passiveHard.state().mode)&&passiveFrames++<15000){
+ if(passiveHard.state().mode==='between'){passiveHard.click(passiveHard.state().wave===1?'upgrade-double':'upgrade-powder');passiveHard.click('upgrade-repair');passiveHard.click('start');}
+ passiveHard.aim();passiveHard.step();
+}
+assert.equal(passiveHard.state().mode,'lost','simple follow-and-fire play cannot coast through Hard');
+assert(DIFFICULTIES.hard.aimWidth<DIFFICULTIES.medium.aimWidth&&DIFFICULTIES.medium.aimWidth<DIFFICULTIES.easy.aimWidth);assert(!DIFFICULTIES.hard.tracking&&DIFFICULTIES.easy.tracking);
+const straight=harness();straight.select('hard');straight.click('start');straight.fixture('wavePlan.events=[];wavePlan.warnings=[];enemies=[creature(0,0,-15)];');straight.step(6);const fired=straight.fixture('balls[0].velocity.clone()');straight.fixture('enemies[0].x=4;enemies[0].baseX=4;');straight.step();assert(Math.abs(straight.fixture('balls[0].velocity.x')-fired.x)<.00001,'Hard snowballs keep their launch trajectory');
+console.log('PASS: Hard requires active play, narrower aim, straight projectile trajectories; abilities/upgrades can complete all three waves');
