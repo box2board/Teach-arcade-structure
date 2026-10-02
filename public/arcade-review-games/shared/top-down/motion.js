@@ -23,7 +23,7 @@ export function advanceMotion(map,state,motion,input,seconds){
   const dt=Math.min(seconds,.05),dx=input.x/length*speed*dt,dy=input.y/length*speed*dt;
   const facing=Math.abs(input.x)>Math.abs(input.y)?(input.x>0?'right':'left'):(input.y>0?'down':'up');
   state.facing=facing;motion.time+=dt;
-  let changed=false;const before={x:motion.x,y:motion.y};
+  let changed=false,worldChanged=false;const before={x:motion.x,y:motion.y};
   const steps=Math.ceil(Math.max(Math.abs(dx),Math.abs(dy))/.06);
   function axis(axis,amount){
     if(!amount)return;
@@ -37,7 +37,7 @@ export function advanceMotion(map,state,motion,input,seconds){
       const aligned=Math.abs(axis==='x'?motion.y-hit.y:motion.x-hit.x)<.2;
       if((door||hit.block&&aligned)&&motion.time-motion.pushAt>=.25){
         const original={...state.player};
-        if(move(map,state,direction)){state.player=original;changed=true;}
+        if(move(map,state,direction)){state.player=original;changed=true;worldChanged=true;}
         motion.pushAt=motion.time;
         state.facing=facing;
         collisions=hits(map,state,x,y);
@@ -46,11 +46,13 @@ export function advanceMotion(map,state,motion,input,seconds){
     if(collisions.length)return;
     const tile={x:Math.round(x),y:Math.round(y)};
     if(tile.x!==state.player.x||tile.y!==state.player.y){
+      const collected=state.collected.length;
       if(!move(map,state,direction)){state.facing=facing;return;}
+      if(state.collected.length!==collected)worldChanged=true;
       changed=true;state.facing=facing;
     }
     motion.x=x;motion.y=y;
   }
   for(let i=0;i<steps;i++){axis('x',dx/steps);axis('y',dy/steps);}
-  return {moved:Math.hypot(motion.x-before.x,motion.y-before.y)>1e-6,changed};
+  return {moved:Math.hypot(motion.x-before.x,motion.y-before.y)>1e-6,changed,worldChanged};
 }

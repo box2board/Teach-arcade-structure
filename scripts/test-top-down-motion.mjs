@@ -45,3 +45,15 @@ test('large frame gaps cannot teleport through obstacles and wins freeze movemen
  const f=fixture();advanceMotion(f.map,f.state,f.motion,{x:1,y:0},10);assert.ok(f.motion.x<=2.2);
  f.state.won=true;const x=f.motion.x;travel(f,{x:1,y:0},1);assert.equal(f.motion.x,x);
 });
+test('ordinary cell crossings do not request a scene rebuild; pickups do',()=>{
+ const f=fixture();let crossed=false;
+ for(let i=0;i<20;i++){
+  const result=advanceMotion(f.map,f.state,f.motion,{x:1,y:0},.01);
+  if(result.changed){crossed=true;assert.equal(result.worldChanged,false);}
+ }
+ assert.ok(crossed);
+ f.map.objects.push({id:'pickup',type:'item',item:'lens',x:4,y:2});
+ let pickupChanged=false;
+ for(let i=0;i<30;i++){const result=advanceMotion(f.map,f.state,f.motion,{x:1,y:0},.01);if(result.worldChanged)pickupChanged=true;}
+ assert.ok(pickupChanged);assert.deepEqual(f.state.items,['lens']);
+});

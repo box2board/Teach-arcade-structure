@@ -22,7 +22,7 @@ function key(value){
  get('board').listeners.keydown({key:value,repeat:false,preventDefault(){}});
  if(!value.startsWith('Arrow'))return;
  const axis=value==='ArrowLeft'||value==='ArrowRight'?'x':'y',size=axis==='x'?map.tiles[0].length:map.tiles.length;
- const position=()=>parseFloat(get('player').style[axis==='x'?'left':'top'])/100*size;
+ const position=()=>Number(get('player').style.transform.match(/translate3d\(([^%]+)%,([^%]+)%/)[axis==='x'?1:2])/100;
  const sign=value==='ArrowRight'||value==='ArrowDown'?1:-1;
  let distance=(s.player[axis]-position())*sign;
  if(distance<.01){clock+=1;animationFrame(clock);clock+=1;animationFrame(clock);}

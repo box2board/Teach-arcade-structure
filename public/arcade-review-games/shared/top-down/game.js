@@ -43,6 +43,7 @@ for(const icon of document.querySelectorAll('.legend i')){
 const journal=element('div',undefined,'journal');journal.hidden=true;$('inventory').after(journal);
 function roomAt(x,y){return findRoom(map,x,y);}
 const circuitPanel=element('div',undefined,'circuit-panel');
+let renderedRoom=null,heroFacing=null;
 circuitPanel.hidden=true;if(sidebar)sidebar.prepend(circuitPanel);else board.before(circuitPanel);
 function render(){
   const light=lightPaths(map,state);
@@ -66,6 +67,7 @@ function render(){
   }
   renderPlayer();
   const room=roomAt(state.player.x,state.player.y)||map.rooms[0];
+  renderedRoom=room;
   board.dataset.theme=room.theme||'hall';
   const viewMin=room.viewMin??0, viewMax=room.viewMax??(map.tiles[0].length-1);
   const viewWidth=viewMax-viewMin+1;
@@ -130,8 +132,8 @@ function buildWorld(){
 }
 buildWorld();
 function renderPlayer(){
-  $('player').style.left=`${motion.x/map.tiles[0].length*100}%`;$('player').style.top=`${motion.y/map.tiles.length*100}%`;
-  if($('player').dataset.facing!==state.facing||!$('player').querySelector('svg'))$('player').replaceChildren(sprite('hero',state.facing));
+  $('player').style.transform=`translate3d(${motion.x*100}%,${motion.y*100}%,0)`;
+  if(heroFacing!==state.facing){$('player').replaceChildren(sprite('hero',state.facing));heroFacing=state.facing;}
   $('player').dataset.facing=state.facing;
 }
 function release(){heldKeys.clear();heldPointers.clear();$('player').classList.remove('walking');}
@@ -165,7 +167,8 @@ function performMotion(input,seconds){
   const previouslyOpen=new Set(map.doors.filter(d=>doorOpen(map,state,d)).map(d=>d.id)), previous=new Set(state.collected), openedBefore=new Set(state.opened);
   const previousFeedback=state.moveFeedback?.text;
   const result=advanceMotion(map,state,motion,input,seconds);
-  if(result.changed)render();else renderPlayer();
+  if(result.worldChanged||roomAt(state.player.x,state.player.y)!==renderedRoom)render();
+  else {renderPlayer();if(result.changed)$('undo').disabled=!state.history.length;}
   if(result.moved)$('player').classList.add('walking');else $('player').classList.remove('walking');
   for(const door of map.doors)if(!previouslyOpen.has(door.id)&&doorOpen(map,state,door)&&!door.key&&!door.tool)message(door.openText||'Gate opened. The floor switches are occupied.');
   const pickups=map.objects.filter(o=>state.collected.includes(o.id)&&!previous.has(o.id));

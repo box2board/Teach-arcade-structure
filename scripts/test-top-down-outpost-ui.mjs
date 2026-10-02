@@ -23,7 +23,7 @@ const map=createAdventure(),s=createState(map);s.review=createReview(map,content
 // Exercise real held-key composition before following the puzzle route.
 const press=key=>get('board').listeners.keydown({key,repeat:false,preventDefault(){}});
 const tick=()=>{clock+=25;animationFrame(clock);};
-const point=()=>({x:parseFloat(get('player').style.left)/100*25,y:parseFloat(get('player').style.top)/100*17});
+const point=()=>{const parts=get('player').style.transform.match(/translate3d\(([^%]+)%,([^%]+)%/);return {x:Number(parts[1])/100,y:Number(parts[2])/100}};
 tick();const origin=point();press('ArrowRight');press('ArrowDown');tick();
 let p=point();assert.ok(p.x>origin.x&&p.y>origin.y);assert.ok(Math.abs(p.x-origin.x-(p.y-origin.y))<1e-8);
 windowListeners.keyup({key:'ArrowDown'});tick();const afterRelease=point();assert.ok(afterRelease.x>p.x);assert.equal(afterRelease.y,p.y);
@@ -36,7 +36,7 @@ function key(value){
  get('board').listeners.keydown({key:value,repeat:false,preventDefault(){}});
  if(!value.startsWith('Arrow'))return;
  const axis=value==='ArrowLeft'||value==='ArrowRight'?'x':'y',size=axis==='x'?map.tiles[0].length:map.tiles.length;
- const position=()=>parseFloat(get('player').style[axis==='x'?'left':'top'])/100*size;
+ const position=()=>Number(get('player').style.transform.match(/translate3d\(([^%]+)%,([^%]+)%/)[axis==='x'?1:2])/100;
  const sign=value==='ArrowRight'||value==='ArrowDown'?1:-1;
  let distance=(s.player[axis]-position())*sign;
  if(distance<.01){clock+=1;animationFrame(clock);clock+=1;animationFrame(clock);}
@@ -71,6 +71,9 @@ function earn(id){
  }
  assert.equal(completeChallenge(map,s,id),true);assert.equal(get('dialog').open,false);
 }
+const walkingEntities=get('entities').children,walkingInventory=get('inventory').children;
+step('up');assert.equal(get('entities').children,walkingEntities);assert.equal(get('inventory').children,walkingInventory);
+assert.match(get('player').style.transform,/translate3d/);step('down');
 go(9,12);face('up');earn('survey-chest');go(4,9);step('up');
 assert.equal(get('room').textContent,'02 · Optics');assert.equal(get('world').style.top,'0%');
 go(3,3);step('right');assert.match(action().text,/CROSS/);
