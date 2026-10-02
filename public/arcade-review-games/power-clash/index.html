@@ -20,14 +20,14 @@
     <section class="game-shell" aria-label="Power Clash game">
       <div class="hud" id="hud" hidden>
         <div class="fighter-hud fighter-hud--one">
-          <div class="hud-title"><span class="player-dot dot-one"></span><span>PLAYER 1</span><b id="p1-health-label">100 HP</b></div>
+          <div class="hud-title"><span class="player-dot dot-one"></span><span id="p1-name">PLAYER 1</span><b id="p1-health-label">100 HP</b></div>
           <div class="meter health-meter"><span id="p1-health"></span></div>
           <div class="hud-title energy-title"><span>JUICE</span><b id="p1-energy-label">0 / 100</b></div>
           <div class="meter energy-meter"><span id="p1-energy"></span></div>
         </div>
         <div class="round-badge"><span>TOPIC</span><b id="topic-label">WWI</b><small id="round-state">GET READY</small></div>
         <div class="fighter-hud fighter-hud--two">
-          <div class="hud-title"><b id="p2-health-label">100 HP</b><span>PLAYER 2</span><span class="player-dot dot-two"></span></div>
+          <div class="hud-title"><b id="p2-health-label">100 HP</b><span id="p2-name">PLAYER 2</span><span class="player-dot dot-two"></span></div>
           <div class="meter health-meter"><span id="p2-health"></span></div>
           <div class="hud-title energy-title"><b id="p2-energy-label">0 / 100</b><span>JUICE</span></div>
           <div class="meter energy-meter"><span id="p2-energy"></span></div>
@@ -45,8 +45,13 @@
             <p class="lead">Answer questions. Build your juice. Enter the arena.</p>
             <label class="topic-label" for="topic-select">Choose a topic</label>
             <select id="topic-select" aria-label="Choose a topic"></select>
+            <label class="topic-label" for="game-mode-select">Choose a mode</label>
+            <select id="game-mode-select" aria-label="Choose a game mode">
+              <option value="cpu">One Player vs. CPU</option>
+              <option value="local">Two Players · Same Keyboard</option>
+            </select>
             <button class="primary-button" id="start-button" type="button">START THE CHALLENGE <span>→</span></button>
-            <p class="fine-print">Two players · one keyboard · cartoon arena combat</p>
+            <p class="fine-print">Earn juice with topic questions, then use it in the arena.</p>
           </div>
         </section>
 
@@ -76,8 +81,8 @@
 
       <footer class="controls-bar" id="controls-bar" hidden>
         <div class="control-set"><strong>PLAYER 1</strong><span><kbd>A</kbd><kbd>D</kbd> move <kbd>W</kbd> jump</span><span><kbd>F</kbd> punch <kbd>G</kbd> kick <kbd>Q</kbd> dash</span></div>
-        <div class="control-center"><span class="control-note">Movement, jumps, and attacks spend juice. Recharge pauses the match.</span></div>
-        <div class="control-set control-set--right"><strong>PLAYER 2</strong><span><kbd>←</kbd><kbd>→</kbd> move <kbd>↑</kbd> jump</span><span><kbd>/</kbd> punch <kbd>.</kbd> kick <kbd>Shift</kbd> dash</span></div>
+        <div class="control-center"><span class="control-note" id="mode-note">Movement, jumps, and attacks spend juice. Recharge pauses the match.</span></div>
+        <div class="control-set control-set--right" id="p2-controls"><strong>PLAYER 2</strong><span><kbd>←</kbd><kbd>→</kbd> move <kbd>↑</kbd> jump</span><span><kbd>/</kbd> punch <kbd>.</kbd> kick <kbd>Shift</kbd> dash</span></div>
       </footer>
     </section>
 
