@@ -35,6 +35,9 @@ Doors can reference a key, a tool, one plate or an array of plates that must all
 node --test scripts/test-top-down.mjs scripts/test-top-down-review.mjs scripts/test-top-down-light.mjs scripts/test-top-down-reuse.mjs
 node scripts/test-top-down-ui.mjs
 node scripts/test-top-down-outpost-ui.mjs
+node --test scripts/test-top-down-viewport.mjs
 ```
 
 The UI scripts use a simulated DOM, not a browser. Browser/mobile visual and interaction verification remains necessary. Save/resume across refreshes and classroom report export are not implemented yet.
+
+The shared viewport layout fits the active room into the available stage with square tiles, recalculating on resize. Laptops place controls and objectives beside the map; portrait phones place compact controls below it. Bag & clues, Help, and full-message dialogs keep longer information accessible without extending the gameplay page. Tall rooms still use a tall footprint: design wider camera bounds and room geometry for adventures intended to fill a laptop horizontally.

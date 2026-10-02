@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 class Node {
- constructor(){this.children=[];this.dataset={};this.style={setProperty:(k,v)=>this.style[k]=v};this.classList={add(){},remove(){}};this.listeners={};this.open=false;}
+ constructor(){this.children=[];this.dataset={};this.style={setProperty:(k,v)=>this.style[k]=v};this.classList={add(){},remove(){}};this.listeners={};this.open=false;this.clientWidth=800;this.clientHeight=600;this.scrollHeight=0;}
  append(...nodes){this.children.push(...nodes)} prepend(...nodes){this.children.unshift(...nodes)} replaceChildren(...nodes){this.children=[...nodes]} before(){} after(){} setAttribute(k,v){this[k]=v} addEventListener(k,v){this.listeners[k]=v} querySelector(){return this.innerHTML?.includes('svg')?{}:null} focus(){} showModal(){this.open=true} close(){this.open=false} remove(){} }
-const nodes=new Map();globalThis.document={getElementById(id){if(!nodes.has(id))nodes.set(id,new Node());return nodes.get(id)},querySelector(){return {dataset:{map:'./outpost.js',questionSet:'./scientific-method.js'}}},querySelectorAll(){return []},createElement(){return new Node()},addEventListener(){},hidden:false};globalThis.window={addEventListener(){}};globalThis.requestAnimationFrame=()=>{};
+const nodes=new Map();globalThis.document={getElementById(id){if(!nodes.has(id))nodes.set(id,new Node());return nodes.get(id)},body:new Node(),querySelector(selector){if(selector!=='script[data-map]'){if(selector==='#message')return this.getElementById('message');if(!nodes.has(selector))nodes.set(selector,new Node());return nodes.get(selector);}return {dataset:{map:'./outpost.js',questionSet:'./scientific-method.js'}}},querySelectorAll(){return []},createElement(){return new Node()},addEventListener(){},hidden:false};globalThis.window={addEventListener(){}};globalThis.requestAnimationFrame=()=>{};
 await import('../public/arcade-review-games/shared/top-down/game.js');
 const get=id=>nodes.get(id);
 assert.equal(get('tiles').children.length,289);assert.equal(get('dialog-actions').children.length,1);

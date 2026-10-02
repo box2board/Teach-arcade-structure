@@ -95,3 +95,92 @@ body{background:radial-gradient(ellipse at 50% 0,#294953,#0a1925 70%)}
 .tile.library:not(.wall){background:linear-gradient(135deg,#292e43,#1d2335);border-color:#d2b6ff18}.journal{padding:12px 20px;color:#e0cf9a;font-size:.875rem}.journal[hidden]{display:none}.entity.inscription .art{filter:drop-shadow(0 0 4px #dfc47755)}
 .tile.archive.water{background:repeating-linear-gradient(175deg,#12364a 0 14px,#1e5064 15px 17px,#12364a 18px 29px);border-color:#79acb622}.light-paths{position:absolute;inset:0;pointer-events:none;z-index:1}.light-paths svg{width:100%;height:100%;display:block}.light-paths path{fill:none;stroke:#ffe99c;stroke-width:.09;stroke-linecap:round;filter:drop-shadow(0 0 .06px #ffd878)}#entities{z-index:2}.entity.receiver.active .receiver-core{fill:#ffe39c;stroke:#fff5c5;filter:drop-shadow(0 0 4px #ffe9a0)}.entity.mirror .art{filter:drop-shadow(0 0 3px #8ed7db55)}
 .tile.garden:not(.wall){background:linear-gradient(135deg,#355148,#243e38);border-color:#bcda8f16}.tile.garden.water{background:repeating-linear-gradient(175deg,#12364a 0 14px,#1e5064 15px 17px,#12364a 18px 29px)}#board[data-theme="garden"]{border-color:#9eb98d;background:#28453d}
+
+/* The active game owns the viewport; controls are available through Help. */
+body.play-shell{height:100vh;height:100dvh;min-height:0;overflow:hidden}
+.play-shell main{height:100%;max-width:none;padding:max(8px,env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) max(8px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));display:flex;flex-direction:column;gap:8px;overflow:hidden}
+.play-shell header{flex:none;min-height:24px;margin:0;font-size:.75rem}
+.play-shell .title-row{flex:none;min-height:44px;margin:0;gap:12px}
+.play-shell .title-row h1{font-size:clamp(18px,2vw,27px);margin:0;line-height:1.15}
+.play-shell .title-row p{display:none}
+.title-actions{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.title-actions button{padding:6px 12px}
+.supplies-button{display:none}
+.play-shell .adventure{flex:1;min-height:0;display:flex;flex-direction:column;border-radius:12px}
+.play-shell .status-bar{flex:none;min-height:34px;padding:7px 14px;gap:8px;font-size:.8125rem}
+.play-layout{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) clamp(260px,24vw,330px)}
+.play-shell .map-frame{min-width:0;min-height:0;padding:12px;display:flex;background:radial-gradient(ellipse,#203e42,#0c202a 75%)}
+.board-stage{width:100%;height:100%;min-width:0;min-height:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.play-shell #board{flex:none;max-width:none;max-height:100%;margin:0}
+.play-shell .map-labels{display:none}
+.play-sidebar{min-width:0;min-height:0;padding:12px;display:flex;flex-direction:column;gap:10px;border-left:1px solid #70817655;overflow:hidden}
+.play-shell .inventory-strip{flex:none;padding:0 0 10px;background:none}
+.play-shell #inventory{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px;min-height:0}
+.play-shell .inventory-empty{grid-column:1/-1}
+.play-shell .inventory-badge{min-width:0;padding:5px;gap:4px;flex-wrap:wrap;font-size:.7rem}
+.play-shell .inventory-badge>span:not(.art){flex:1;min-width:55px}
+.play-shell .inventory-badge small{margin-left:auto;font-size:.6rem}
+.play-shell .inventory-icon.art{width:20px;height:20px;flex-basis:20px}
+.play-shell .journal{padding:8px 0 0;font-size:.75rem;line-height:1.4}
+.play-shell .objective{flex:none;display:block;padding:0}
+.play-shell .objective>.label{display:block;font-size:.65rem;margin-bottom:4px}
+.play-shell .objective p{font-size:.875rem;line-height:1.4}
+.feedback-box{flex:1;min-height:42px;display:flex;flex-direction:column;overflow:hidden}
+.play-shell #message{flex:1;margin:0;min-height:0;font-size:.8125rem;line-height:1.4;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;overflow:hidden;max-height:5.6em}
+.message-details{flex:none;text-align:left;min-height:28px;padding:3px 0;border:0;background:none;text-decoration:underline;font-size:.75rem;color:var(--cyan)}
+.message-details[hidden]{display:none}
+.play-shell .controls{flex:none;display:grid;grid-template-columns:140px minmax(0,1fr);gap:5px;padding:0;align-items:center}
+.play-shell .controls .dpad{grid-column:1;grid-row:1/4;align-self:center}
+.play-shell .controls>button{grid-column:2;padding:6px;font-size:.75rem;min-width:0}
+.play-shell .controls kbd{display:none}
+.play-shell .keyboard-help{flex:none;font-size:.7rem;line-height:1.35;margin:0;color:var(--muted)}
+.play-shell .circuit-panel{flex:none;max-width:none;margin:0;padding:8px}
+.play-shell .circuit-panel p{font-size:.8rem;line-height:1.3}
+.play-shell .circuit-panel .circuit-detail{font-size:.7rem}
+.play-shell .legend,.play-shell .classroom{display:none}
+.play-shell .entity .switch-label,.play-shell .entity .exit-label{font-size:clamp(9px,calc(var(--tile-size,45px)*.2),14px)}
+@media(max-height:760px){
+ .play-shell .inventory-strip{display:none}.play-shell .supplies-button{display:block}
+ .play-sidebar{gap:6px;padding:8px}.play-shell .objective p{font-size:.8rem}
+ .play-shell #message{-webkit-line-clamp:3;max-height:4.2em}
+ .play-shell .keyboard-help{display:none}
+}
+@media(max-width:759px) and (orientation:portrait){
+ .play-shell main{padding:6px;gap:5px}.play-shell header{min-height:20px;font-size:.65rem}
+ .play-shell .title-row{gap:6px}.play-shell .title-row h1{font-size:clamp(15px,4vw,20px)}
+ .title-actions{gap:3px}.title-actions button{font-size:.7rem;padding:5px 6px}
+ .play-shell .supplies-button{display:block}.play-shell .fullscreen-button{display:none}
+ .play-shell .status-bar{padding:6px 8px;font-size:.7rem;min-height:30px}
+ .play-layout{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto}
+ .play-shell .map-frame{padding:6px}
+ .play-sidebar{border-left:0;border-top:1px solid #70817655;padding:7px 8px;gap:5px;overflow:visible}
+ .play-shell .inventory-strip,.play-shell .keyboard-help{display:none}
+ .play-shell .objective>.label{display:none}.play-shell .objective p{font-size:.75rem;line-height:1.3}
+ .play-shell #message{font-size:.7rem;-webkit-line-clamp:2;max-height:2.8em}
+ .feedback-box{flex:none}
+ .play-shell .controls{grid-template-columns:140px repeat(3,minmax(0,1fr));gap:4px}
+ .play-shell .controls .dpad{grid-row:1;grid-column:1}
+ .play-shell .controls>button{grid-column:auto;grid-row:1;align-self:stretch;font-size:.7rem;padding:4px}
+ .play-shell .circuit-panel{padding:6px}.play-shell .circuit-panel strong{font-size:.65rem}
+ .play-shell .circuit-panel p{font-size:.7rem}.play-shell .circuit-panel .circuit-detail{font-size:.65rem}
+}
+@media(max-width:759px) and (orientation:landscape){
+ .play-shell main{padding:5px;gap:3px}.play-shell header{display:none}
+ .play-shell .title-row{min-height:36px}.play-shell .title-row h1{font-size:18px}
+ .play-layout{grid-template-columns:minmax(0,1fr) 260px}
+ .play-shell .map-frame{padding:6px}
+ .play-shell .controls{grid-template-columns:140px minmax(0,1fr)}
+}
+@media(max-height:540px) and (orientation:landscape){
+ .play-shell main{padding:5px;gap:3px}.play-shell header{display:none}
+ .play-shell .title-row{min-height:44px}.play-shell .title-row h1{font-size:18px}
+ .play-layout{grid-template-columns:minmax(0,1fr) 300px}
+ .play-shell .map-frame{padding:6px}
+ .play-shell .controls{grid-template-columns:140px repeat(3,minmax(0,1fr));gap:4px}
+ .play-shell .controls .dpad{grid-row:1;grid-column:1}
+ .play-shell .controls>button{grid-column:auto;grid-row:1;align-self:stretch;font-size:.7rem;padding:4px}
+ .play-shell .objective>.label{display:none}.play-shell .objective p{font-size:.75rem;line-height:1.3}
+ .play-shell #message{font-size:.7rem;-webkit-line-clamp:2;max-height:2.8em}
+ .play-shell .circuit-panel{padding:6px}.play-shell .circuit-panel strong{font-size:.65rem}
+ .play-shell .circuit-panel p{font-size:.7rem}.play-shell .circuit-panel .circuit-detail{font-size:.65rem}
+}

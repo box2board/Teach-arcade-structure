@@ -4,6 +4,7 @@ const [{createAdventure},{content}]=await Promise.all([import(configuration.data
 import {createReview,answerReview,reviewSummary} from './review.js';
 import {validateAdventure} from './validate.js';
 import {roomAt as findRoom,objectiveFor,progressFor,rewardFor} from './presentation.js';
+import {roomSize,mountLayout} from './viewport.js';
 let map=validateAdventure(createAdventure());
 import { createState, move, undo, interact, doorOpen, completeChallenge, resetPuzzle, exitReady, cluesReady, lightPaths, inventoryEntries, adventureResults } from './model.js';
 const $=id=>document.getElementById(id);
@@ -11,9 +12,26 @@ let state=createState(map), started=false, held=null, nextStep=0, elapsed=0, las
 state.review=createReview(map,content.questions);
 let activeQuestion=null;
 const board=$('board'), dialog=$('dialog');
+const {stage,sidebar}=mountLayout();
+let roomColumns=1,roomRows=1;
+function fitRoom(){
+  if(!stage)return;
+  const size=roomSize(stage.clientWidth,stage.clientHeight,roomColumns,roomRows);
+  if(size){board.style.width=size.width+'px';board.style.height=size.height+'px';board.style.setProperty('--tile-size',size.cell+'px');}
+}
+if(stage&&typeof ResizeObserver==='function')new ResizeObserver(fitRoom).observe(stage);
+window.addEventListener('resize',fitRoom);
 function element(tag,text,className){const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(className)e.className=className;return e;}
 function sprite(kind,facing){const host=element('span',undefined,'art');host.innerHTML=artwork(kind,facing);return host;}
-function message(text,tone='neutral'){$('message').textContent=text;$('message').dataset.tone=tone;}
+let fullMessage='';
+const messageDetails=element('button','Read full message','message-details');messageDetails.hidden=true;
+$('message').after(messageDetails);
+function updateMessageDetails(){
+  messageDetails.hidden=!fullMessage||!$('message').clientHeight||$('message').scrollHeight<=$('message').clientHeight+1;
+}
+messageDetails.addEventListener('click',()=>{if(!dialog.open)popup('MESSAGE','Adventure message',[fullMessage],[{text:'Back to adventure',run:resume,primary:true}]);});
+if(sidebar&&typeof ResizeObserver==='function')new ResizeObserver(updateMessageDetails).observe($('message'));
+function message(text,tone='neutral'){fullMessage=text;$('message').textContent=text;$('message').dataset.tone=tone;requestAnimationFrame(updateMessageDetails);}
 for(const icon of document.querySelectorAll('.legend i')){
   const kind={'■':'block','◎':'plate','▣':'challenge','ϟ':'lever','⚒':'tool','◆':'item','◇':'exit'}[icon.textContent];
   if(kind){icon.innerHTML=artwork(kind);icon.classList.add('legend-art');icon.setAttribute('aria-hidden','true');}
@@ -21,7 +39,7 @@ for(const icon of document.querySelectorAll('.legend i')){
 const journal=element('div',undefined,'journal');journal.hidden=true;$('inventory').after(journal);
 function roomAt(x,y){return findRoom(map,x,y);}
 const circuitPanel=element('div',undefined,'circuit-panel');
-circuitPanel.hidden=true;board.before(circuitPanel);
+circuitPanel.hidden=true;if(sidebar)sidebar.prepend(circuitPanel);else board.before(circuitPanel);
 function render(){
   const light=lightPaths(map,state);
   lightLayer.innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${map.tiles[0].length} ${map.tiles.length}" preserveAspectRatio="none" aria-hidden="true">${light.segments.map(s=>`<path d="M${s.from.x+.5} ${s.from.y+.5}L${s.to.x+.5} ${s.to.y+.5}"/>`).join('')}</svg>`;
@@ -48,6 +66,7 @@ function render(){
   const viewMin=room.viewMin??0, viewMax=room.viewMax??(map.tiles[0].length-1);
   const viewWidth=viewMax-viewMin+1;
   const viewMinY=room.viewMinY??0,viewHeight=(room.viewMaxY??map.tiles.length-1)-viewMinY+1;
+  roomColumns=viewWidth;roomRows=viewHeight;fitRoom();
   board.style.aspectRatio=`${viewWidth}/${viewHeight}`;
   $('world').style.height=`${map.tiles.length/viewHeight*100}%`;
   $('world').style.top=`${-viewMinY/viewHeight*100}%`;
@@ -226,5 +245,25 @@ function chooseMode(){
   ],modes.map((mode,index)=>({text:mode.label,run:()=>startMode(mode.id),primary:index===0})));
 }
 function startMode(mode){map=validateAdventure(createAdventure(mode));buildWorld();restart();}
+const titleRow=document.querySelector('.title-row');
+if(titleRow){
+  const actions=element('div',undefined,'title-actions');actions.append($('pause'));
+  const supplies=element('button','Bag & clues','supplies-button');
+  supplies.addEventListener('click',()=>{
+    if(dialog.open)return;
+    const items=inventoryEntries(map,state).map(i=>`${i.label} · ${i.status}`),clues=(map.clues||[]).filter(c=>state.discovered.includes(c.id)).map(c=>`${c.label}: ${c.text}`);
+    popup('INVENTORY','Bag & clues',[...(items.length?items:['No items collected yet.']),...clues],[{text:'Back to adventure',run:resume,primary:true}]);
+  });actions.append(supplies);
+  const help=element('button','Help');help.addEventListener('click',()=>{
+    if(dialog.open)return;
+    popup('HOW TO PLAY','Adventure controls',['Move with arrow keys, WASD, or the on-screen arrows. Walk over loose items to collect them. Matching keys and tools open doors when you walk into them.','Face a chest, sign, or switch and press Interact, E, or Space. Walk into blocks and mirrors to push them; interact with a mirror to rotate it.','Undo reverses your last physical move. Reset puzzle restores movable objects and returns you to the entrance while keeping earned rewards, clues, and raised bridges.'],[{text:'Back to adventure',run:resume,primary:true}]);
+  });actions.append(help);
+  if(document.fullscreenEnabled){
+    const fullscreen=element('button','Fullscreen','fullscreen-button');
+    fullscreen.addEventListener('click',async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else await document.documentElement.requestFullscreen();}catch{message('Fullscreen is unavailable in this browser.');}});
+    document.addEventListener('fullscreenchange',()=>{fullscreen.textContent=document.fullscreenElement?'Exit fullscreen':'Fullscreen';fitRoom();});actions.append(fullscreen);
+  }
+  titleRow.append(actions);
+}
 render();chooseMode();
 requestAnimationFrame(frame);
