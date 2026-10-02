@@ -111,11 +111,11 @@ export function exitReady(map,state,exit) {
   return (exit.requiredItems||[]).every(id=>state.items.includes(id)) && (exit.requires||[]).every(id=>state.activated.includes(id)) &&
     (!puzzle || (cluesReady(puzzle,state) && state.sequences[puzzle.id]===puzzle.sequence.length));
 }
-export function interact(map,state) {
+export function interact(map,state,target=null) {
   if (state.won) return { type:'none' };
   const [dx,dy]=directions[state.facing];
-  const front={x:state.player.x+dx,y:state.player.y+dy};
-  const object=map.objects.find(o=>at(o,state.player)&&o.type==='exit') || map.objects.find(o=>at(o,front)&&!state.collected.includes(o.id));
+  const front=target||{x:state.player.x+dx,y:state.player.y+dy};
+  const object=(target?map.objects.find(o=>at(o,front)&&o.type==='exit'):map.objects.find(o=>at(o,state.player)&&o.type==='exit')) || map.objects.find(o=>at(o,front)&&!state.collected.includes(o.id));
   const door=map.doors.find(d=>at(d,front));
   if (door) {
     if (doorOpen(map,state,door)) return {type:'message',text:'The gate is open.'};

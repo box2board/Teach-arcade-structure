@@ -61,6 +61,7 @@ function go(x,y){
 function face(dir){s.facing=dir;key(keys[dir]);assert.equal(move(map,s,dir),false);}
 function action(){const result=interact(map,s);key('e');return result;}
 function earn(id){
+ assert.equal(get('interact').textContent,'Open chest');
  assert.equal(action().id,id);
  const count=s.review.encounters[id].questions.length;
  for(let i=0;i<count;i++){

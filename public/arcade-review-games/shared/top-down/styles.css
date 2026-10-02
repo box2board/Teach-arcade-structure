@@ -98,6 +98,7 @@ body{background:radial-gradient(ellipse at 50% 0,#294953,#0a1925 70%)}
 
 /* The active game owns the viewport; controls are available through Help. */
 #world #player{left:0;top:0;transition:none;will-change:transform;filter:none}
+#world .entity.interactable::after{content:'';position:absolute;inset:3%;border:2px solid #ffe5a1;border-radius:9px;pointer-events:none}
 body.play-shell{height:100vh;height:100dvh;min-height:0;overflow:hidden}
 .play-shell main{height:100%;max-width:none;padding:max(8px,env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) max(8px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));display:flex;flex-direction:column;gap:8px;overflow:hidden}
 .play-shell header{flex:none;min-height:24px;margin:0;font-size:.75rem}

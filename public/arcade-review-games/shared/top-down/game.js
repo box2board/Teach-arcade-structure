@@ -5,7 +5,7 @@ import {createReview,answerReview,reviewSummary} from './review.js';
 import {validateAdventure} from './validate.js';
 import {roomAt as findRoom,objectiveFor,progressFor,rewardFor} from './presentation.js';
 import {roomSize,mountLayout} from './viewport.js';
-import {createMotion,syncMotion,advanceMotion} from './motion.js';
+import {createMotion,syncMotion,advanceMotion,interactionTarget} from './motion.js';
 let map=validateAdventure(createAdventure());
 import { createState, undo, interact, doorOpen, completeChallenge, resetPuzzle, exitReady, cluesReady, lightPaths, inventoryEntries, adventureResults } from './model.js';
 const $=id=>document.getElementById(id);
@@ -44,11 +44,13 @@ const journal=element('div',undefined,'journal');journal.hidden=true;$('inventor
 function roomAt(x,y){return findRoom(map,x,y);}
 const circuitPanel=element('div',undefined,'circuit-panel');
 let renderedRoom=null,heroFacing=null;
+const entityNodes=new Map();let highlightedNode=null,interactionLabel='';
 circuitPanel.hidden=true;if(sidebar)sidebar.prepend(circuitPanel);else board.before(circuitPanel);
 function render(){
   const light=lightPaths(map,state);
   lightLayer.innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${map.tiles[0].length} ${map.tiles.length}" preserveAspectRatio="none" aria-hidden="true">${light.segments.map(s=>`<path d="M${s.from.x+.5} ${s.from.y+.5}L${s.to.x+.5} ${s.to.y+.5}"/>`).join('')}</svg>`;
   $('entities').replaceChildren();
+  entityNodes.clear();
   const items=[...map.plates.map(o=>({...o,type:'plate'})),...map.doors.map(o=>({...o,type:'door'})),...map.objects,...state.blocks.map(o=>({...o,type:o.kind==='mirror'?'mirror':'block'}))];
   for(const item of items){
     if(state.collected.includes(item.id))continue;
@@ -64,6 +66,7 @@ function render(){
       e.append(lights);e.append(element('small',active?'OPEN':'EXIT','exit-label'));
     }
     $('entities').append(e);
+    entityNodes.set(item.id,e);
   }
   renderPlayer();
   const room=roomAt(state.player.x,state.player.y)||map.rooms[0];
@@ -135,6 +138,10 @@ function renderPlayer(){
   $('player').style.transform=`translate3d(${motion.x*100}%,${motion.y*100}%,0)`;
   if(heroFacing!==state.facing){$('player').replaceChildren(sprite('hero',state.facing));heroFacing=state.facing;}
   $('player').dataset.facing=state.facing;
+  const target=interactionTarget(map,state,motion),node=target?entityNodes.get(target.id):null;
+  if(node!==highlightedNode){highlightedNode?.classList.remove('interactable');node?.classList.add('interactable');highlightedNode=node;}
+  const label=!target?'Interact':target.kind==='mirror'?'Rotate mirror':target.type==='challenge'?'Open chest':target.type==='sign'?'Read sign':target.type==='exit'?'Use exit':target.type==='lever'||target.type==='bridgeSwitch'?'Use switch':'Inspect';
+  if(label!==interactionLabel){$('interact').textContent=label;interactionLabel=label;}
 }
 function release(){heldKeys.clear();heldPointers.clear();$('player').classList.remove('walking');}
 function popup(label,title,paragraphs,actions){
@@ -180,7 +187,8 @@ let interactionTimer;
 function performInteraction(){
   if(!started||dialog.open||state.won)return;
   release();$('player').classList.add('interacting');clearTimeout(interactionTimer);interactionTimer=setTimeout(()=>$('player').classList.remove('interacting'),240);
-  const result=interact(map,state);render();
+  const target=interactionTarget(map,state,motion);
+  const result=target?interact(map,state,target):{type:'message',text:'Move closer and face a chest, sign, switch, or gate. The highlighted object is ready to interact.'};render();
   if(result.type==='message')message(result.text,result.tone);
   if(result.type==='challenge')openQuestion(result.id);
   if(result.type==='win'){

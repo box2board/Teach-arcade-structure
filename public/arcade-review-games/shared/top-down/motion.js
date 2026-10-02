@@ -4,6 +4,22 @@ import {move,obstacle,directions} from './model.js';
 export function createMotion(state){return {x:state.player.x,y:state.player.y,time:0,pushAt:-Infinity};}
 export function syncMotion(motion,state){motion.x=state.player.x;motion.y=state.player.y;motion.pushAt=-Infinity;}
 const radius=.28,speed=4;
+export function interactionTarget(map,state,motion){
+  const [fx,fy]=directions[state.facing],candidates=[...map.doors,...state.blocks.filter(b=>b.kind==='mirror'),...map.objects.filter(o=>['sign','challenge','lever','bridgeSwitch','bridge','receiver','emitter','exit'].includes(o.type)&&!state.collected.includes(o.id))];
+  return candidates.map(target=>{
+    const dx=target.x-motion.x,dy=target.y-motion.y,distance=Math.hypot(dx,dy),forward=dx*fx+dy*fy,lateral=Math.abs(dx*fy-dy*fx);
+    const near=target.type==='exit'?distance<=.65&&state.player.x===target.x&&state.player.y===target.y:distance<=1.4&&forward>.1&&lateral<=.75;
+    if(!near)return null;
+    // Check the whole approach, including narrow diagonal corners.
+    const steps=Math.ceil(distance/.06);
+    for(let i=1;i<steps;i++)for(const ox of [-.025,.025])for(const oy of [-.025,.025]){
+      const tile={x:Math.round(motion.x+dx*i/steps+ox),y:Math.round(motion.y+dy*i/steps+oy)};
+      if(tile.x===target.x&&tile.y===target.y)continue;
+      if(obstacle(map,state,tile)||state.blocks.some(b=>b.x===tile.x&&b.y===tile.y))return null;
+    }
+    return {target,score:target.type==='exit'?-1:distance+lateral*.25};
+  }).filter(Boolean).sort((a,b)=>a.score-b.score)[0]?.target||null;
+}
 function hits(map,state,x,y){
   const cx=x+.5,cy=y+.5,result=[];
   for(let ty=Math.floor(cy-radius);ty<=Math.floor(cy+radius);ty++){
@@ -34,7 +50,15 @@ export function advanceMotion(map,state,motion,input,seconds){
     // Approach doors and push centered blocks without snapping the explorer.
     if(collisions.length===1&&collisions[0].x===front.x&&collisions[0].y===front.y){
       const hit=collisions[0],door=map.doors.find(d=>d.x===hit.x&&d.y===hit.y);
-      const aligned=Math.abs(axis==='x'?motion.y-hit.y:motion.x-hit.x)<.2;
+      const offset=axis==='x'?motion.y-hit.y:motion.x-hit.x;
+      const straight=axis==='x'?input.y===0:input.x===0;
+      const aligned=Math.abs(offset)<.42&&straight;
+      if(hit.block&&aligned&&Math.abs(offset)>.08){
+        const correction=-Math.sign(offset)*Math.min(Math.abs(offset),dt/steps*2);
+        const ax=motion.x+(axis==='y'?correction:0),ay=motion.y+(axis==='x'?correction:0);
+        if(!hits(map,state,ax,ay).length){motion.x=ax;motion.y=ay;}
+        return;
+      }
       if((door||hit.block&&aligned)&&motion.time-motion.pushAt>=.25){
         const original={...state.player};
         if(move(map,state,direction)){state.player=original;changed=true;worldChanged=true;}

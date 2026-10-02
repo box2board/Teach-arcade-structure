@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createState,undo,resetPuzzle,interact} from '../public/arcade-review-games/shared/top-down/model.js';
-import {createMotion,advanceMotion,syncMotion} from '../public/arcade-review-games/shared/top-down/motion.js';
+import {createMotion,advanceMotion,syncMotion,interactionTarget} from '../public/arcade-review-games/shared/top-down/motion.js';
 function fixture(){
  const map={start:{x:2,y:2},tiles:Array.from({length:10},(_,y)=>y===0||y===9?'##########':'#........#'),blocks:[],doors:[],objects:[],plates:[],inventory:[]};
  const state=createState(map);return {map,state,motion:createMotion(state)};
@@ -32,8 +32,27 @@ test('centered block pushes stay on grid and undo restores the puzzle',()=>{
  travel(f,{x:1,y:0},.1);
  assert.deepEqual(f.state.blocks[0],{id:'crate',x:4,y:2});assert.ok(f.motion.x<3);
  undo(f.state);syncMotion(f.motion,f.state);assert.equal(f.state.blocks[0].x,3);assert.equal(f.motion.x,2);
- f.motion.y=2.3;travel(f,{x:1,y:0},.3);assert.equal(f.state.blocks[0].x,3);
+ f.motion.y=2.46;travel(f,{x:1,y:0},.3);assert.equal(f.state.blocks[0].x,3);
  resetPuzzle(f.map,f.state);syncMotion(f.motion,f.state);assert.deepEqual({x:f.motion.x,y:f.motion.y},f.map.start);
+});
+test('slightly off-center pushes gently align; diagonal approaches do not push',()=>{
+ const f=fixture();f.map.blocks=[{id:'crate',x:3,y:2}];f.state.blocks=structuredClone(f.map.blocks);f.motion.y=2.35;
+ const first=f.motion.y;travel(f,{x:1,y:0},.09);assert.ok(f.motion.y<first&&f.motion.y>2);
+ travel(f,{x:1,y:0},.25);assert.equal(f.state.blocks[0].x,4);assert.ok(Math.abs(f.motion.y-2)<=.08);
+ const d=fixture();d.state.blocks=[{id:'crate',x:3,y:2}];travel(d,{x:1,y:1},.2);assert.equal(d.state.blocks[0].x,3);
+});
+test('nearby faced targets tolerate lateral offsets and select the nearest object',()=>{
+ const f=fixture();f.state.facing='right';f.motion.y=2.4;
+ f.map.objects=[{id:'chest',type:'challenge',x:3,y:2},{id:'sign',type:'sign',x:3,y:3,text:'Read me'}];
+ const target=interactionTarget(f.map,f.state,f.motion);assert.equal(target.id,'chest');assert.equal(interact(f.map,f.state,target).id,'chest');
+ f.state.facing='left';assert.equal(interactionTarget(f.map,f.state,f.motion),null);
+});
+test('targets behind walls or closed doors cannot be reached',()=>{
+ const f=fixture();f.state.facing='right';f.motion.x=2.4;f.motion.y=2.4;f.map.objects=[{id:'chest',type:'challenge',x:3,y:3}];
+ f.map.tiles[2]=f.map.tiles[2].slice(0,3)+'#'+f.map.tiles[2].slice(4);
+ assert.equal(interactionTarget(f.map,f.state,f.motion),null);
+ f.map.tiles[2]='#........#';f.map.doors=[{id:'gate',x:3,y:2,key:'locked'}];
+ assert.notEqual(interactionTarget(f.map,f.state,f.motion)?.id,'chest');
 });
 test('contact pickups persist through undo and nearby faced chests still interact',()=>{
  const f=fixture();f.map.objects=[{id:'key',type:'key',key:'moss',x:3,y:2},{id:'chest',type:'challenge',x:4,y:2}];
