@@ -28,14 +28,14 @@ function harness(){
  let callback,scene,clock=0,seed=42;
  const math=Object.create(Math);math.random=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296;};
  class Renderer {constructor(){this.shadowMap={};}setPixelRatio(){}setSize(){}render(s){scene=s;}}
- const ctx={THREE:{...THREE,WebGLRenderer:Renderer},UPGRADE_RULES,freshUpgrades,grantTokens,canBuy,buyUpgrade,DIFFICULTIES,WAVE_PATTERNS,buildWave:(d,w)=>buildWave(d,w,math.random),segmentSphereHit,window,document,Math:math,devicePixelRatio:1,ResizeObserver:class{observe(){}},performance:{now:()=>0},requestAnimationFrame:f=>callback=f,console};
+ const ctx={THREE:{...THREE,WebGLRenderer:Renderer},UPGRADE_RULES,freshUpgrades,grantTokens,canBuy,buyUpgrade,DIFFICULTIES,WAVE_PATTERNS,buildWave:(d,w)=>buildWave(d,w,math.random),segmentSphereHit,window,document,Math:math,devicePixelRatio:1,ResizeObserver:class{observe(){}},performance:{now:()=>clock},requestAnimationFrame:f=>callback=f,console};
  vm.createContext(ctx);vm.runInContext(fs.readFileSync(new URL('../public/dev/snow-day-defenders/game.js',import.meta.url),'utf8').replace(/^import .*?;\n/gm,''),ctx);
  const step=(n=1)=>{for(let i=0;i<n;i++){clock+=50;callback(clock);}};
  const state=()=>window.snowDayState();
  const key=(key,type='keydown',options={})=>window.fire(type,{key,preventDefault(){},...options});
  const select=value=>{for(const i of inputs)i.checked=i.value===value;inputs.find(i=>i.value===value).fire('change');};
  const click=id=>get(id).fire('click');
- const aim=()=>{const creatures=scene.children.filter(g=>g.userData.snowCreature&&g.scale.x>.6&&g.position.z<7.9).sort((a,b)=>b.position.z-a.position.z);key('ArrowLeft','keyup');key('ArrowRight','keyup');if(creatures[0]){const delta=creatures[0].position.x-state().playerX;if(Math.abs(delta)>.18)key(delta>0?'ArrowRight':'ArrowLeft');}};
+ const aim=()=>{const creatures=scene.children.filter(g=>g.userData.snowCreature&&g.scale.x>.6&&g.position.z<7.9).sort((a,b)=>b.position.z-a.position.z);key('a','keyup');key('d','keyup');if(creatures[0]){const delta=creatures[0].position.x-state().playerX;if(Math.abs(delta)>.18)key(delta>0?'d':'a');}};
  return {get,step,state,key,select,click,aim,focused:()=>[...elements].find(([,e])=>e===document.activeElement)?.[0],fixture:source=>vm.runInContext(source,ctx)};
 }
 for(const level of Object.keys(DIFFICULTIES))for(let wave=0;wave<3;wave++){
@@ -113,3 +113,20 @@ assert.equal(menu.focused(),'upgrade-double');menu.key('Tab','keydown',{shiftKey
 menu.key('ArrowUp');assert.equal(menu.focused(),'upgrade-double','up skips equipped and unavailable bottom-row upgrades');
 menu.key('ArrowRight');assert.equal(menu.focused(),'upgrade-sticky');menu.key(' ');assert(menu.state().upgrades.sticky);assert.equal(menu.focused(),'start');
 console.log('PASS: upgrade arrow navigation, keyboard purchases, repeat guard, disabled options, focus containment, keyboard next wave');
+
+const taps=harness();taps.click('start');
+taps.key('ArrowRight');taps.step();taps.key('ArrowRight','keyup');taps.step(2);taps.key('ArrowRight');
+assert(taps.state().dashTime>0,'quick second right-arrow tap triggers dash');taps.key('ArrowRight','keyup');taps.step(4);assert(taps.state().playerX>3.5);
+taps.key('ArrowLeft');taps.key('ArrowLeft','keyup');taps.key('ArrowLeft');assert.equal(taps.fixture('dashDirection'),1,'double-tap respects dash cooldown');
+taps.click('restart');taps.key('ArrowLeft');taps.step();taps.key('ArrowLeft','keyup');taps.step(6);taps.key('ArrowLeft');assert.equal(taps.state().dashTime,0,'slow second tap remains ordinary movement');
+taps.click('restart');taps.key('ArrowLeft');taps.key('ArrowLeft','keydown',{repeat:true});taps.key('ArrowLeft');assert.equal(taps.state().dashTime,0,'held key or duplicate keydown does not trigger dash');
+taps.key('ArrowLeft','keyup');taps.key('ArrowRight');assert.equal(taps.state().dashTime,0,'opposite arrows are not a double tap');
+taps.click('restart');taps.key('ArrowLeft');taps.key('ArrowLeft','keyup');taps.click('pause');taps.click('start');taps.key('ArrowLeft');assert.equal(taps.state().dashTime,0,'pause clears tap history');taps.key('ArrowLeft','keyup');taps.step();taps.key('ArrowLeft');assert(taps.state().dashTime>0,'left-arrow double tap works');
+const feedback=harness();feedback.click('start');feedback.key(' ');
+assert.equal(feedback.state().burstCharges,2);assert(!feedback.get('ability-feedback').hidden);assert.match(feedback.get('ability-feedback').textContent,/charge saved/);assert.equal(feedback.state().shockwaves,1,'empty burst shows its range');
+feedback.step(21);assert.equal(feedback.state().shockwaves,0,'range effect cleans up');feedback.step(30);assert(feedback.get('ability-feedback').hidden,'notification expires');
+feedback.fixture("enemies=[creature(0,0,0)];");feedback.step();assert.equal(feedback.get('snow-burst').dataset.ready,'true');feedback.key(' ');
+assert.equal(feedback.state().burstCharges,1);assert.equal(feedback.get('ability-feedback').dataset.kind,'burst');assert.match(feedback.get('ability-feedback').textContent,/1 creature hit/);assert.equal(feedback.state().shockwaves,1);
+feedback.key('b');assert.match(feedback.get('ability-feedback').textContent,/cooling/);feedback.step(25);feedback.fixture('burstCharges=0;');feedback.key(' ');assert.match(feedback.get('ability-feedback').textContent,/No Snow Burst charges/);
+feedback.click('restart');assert(feedback.get('ability-feedback').hidden);assert.equal(feedback.state().shockwaves,0);
+console.log('PASS: left/right double-tap dash, timing window, held-key guard, cooldown, pause reset, burst notifications, range effect, ready indicator, effect cleanup');

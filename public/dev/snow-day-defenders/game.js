@@ -66,6 +66,11 @@ let upgrades=freshUpgrades(), volley=0, splashes=[], splashHits=0, stickyHits=0;
 const splashGeo=new THREE.RingGeometry(.85,1,32), splashMaterial=new THREE.MeshBasicMaterial({color:0x72cbe6,side:THREE.DoubleSide,transparent:true,opacity:.65});
 let mode='ready', wave=1, fort=100, cleared=0, spawned=0, waveTime=0, spawnClock=0, tossClock=0, elapsed=0;
 let enemies=[], balls=[], flakes=[], piles=[], tumbles=[], hits=0, defeatedByType=[0,0,0], moveLeft=false,moveRight=false,drag=false,targetX=null;
+const BURST_RADIUS=8,DOUBLE_TAP_MS=280;
+const heldArrows=new Set();let lastArrowTap=null,lastArrowTapAt=-Infinity;
+let shockwaves=[],noticeTime=0;
+const burstRingMaterial=new THREE.MeshBasicMaterial({color:0x168dbd,side:THREE.DoubleSide,transparent:true,opacity:.9,depthWrite:false});
+const burstDiskGeo=new THREE.CircleGeometry(1,48),burstDiskMaterial=new THREE.MeshBasicMaterial({color:0xb5f4ff,side:THREE.DoubleSide,transparent:true,opacity:.25,depthWrite:false});
 let dashTime=0,dashCooldown=0,dashDirection=0,burstCooldown=0,burstCharges=2,burstUses=0,burstHits=0;
 let difficulty='easy',selectedDifficulty='easy',wavePlan=buildWave('easy',0);
 for(const input of document.querySelectorAll('input[name="difficulty"]'))input.addEventListener('change',()=>{
@@ -137,7 +142,9 @@ function abilityHud(){
   const b=$(id),label=dashCooldown>0?`${direction} Dash · ${Math.ceil(dashCooldown)}s`:`${direction} Dash`;
   if(b.textContent!==label)b.textContent=label;b.disabled=!active||dashCooldown>0;
  }
- const b=$('snow-burst'),label=`Snow Burst · ${burstCharges}${burstCooldown>0?' · Cooling':''}`;
+ const nearby=enemies.some(e=>Math.hypot(e.x-player.position.x,e.z-player.position.z)<=BURST_RADIUS);
+ const b=$('snow-burst'),ready=active&&burstCharges>0&&burstCooldown===0&&nearby,label=`Snow Burst · ${burstCharges}${burstCooldown>0?' · Cooling':ready?' · Ready':''}`;
+ b.dataset.ready=String(ready);
  if(b.textContent!==label)b.textContent=label;b.disabled=!active||burstCharges===0||burstCooldown>0;
 }
 function dash(direction){
@@ -146,18 +153,32 @@ function dash(direction){
  dashDirection=direction;dashTime=.16;dashCooldown=3;targetX=null;
  burst(player.position.x,player.position.z);abilityHud();
 }
+function abilityNotice(message,kind='info'){
+ const b=$('ability-feedback');b.textContent=message;b.dataset.kind=kind;b.hidden=false;noticeTime=2.4;
+}
+function snowWave(x,z){
+ const root=new THREE.Group();root.userData.snowWave=true;root.position.set(x,.13,z);scene.add(root);
+ for(const [geometry,material] of [[burstDiskGeo,burstDiskMaterial],[splashGeo,burstRingMaterial]]){
+  const m=new THREE.Mesh(geometry,material);m.rotation.x=-Math.PI/2;root.add(m);
+ }
+ root.scale.setScalar(.3);shockwaves.push({root,life:1,radius:BURST_RADIUS});
+}
 function snowBurst(){
- if(mode!=='playing'||burstCharges===0||burstCooldown>0)return;
- const x=player.position.x,z=player.position.z,radius=8;
+ if(mode!=='playing')return;
+ if(burstCharges===0){abilityNotice('No Snow Burst charges left. Gain one at the next wave break.');return;}
+ if(burstCooldown>0){abilityNotice('Snow Burst is cooling down.');return;}
+ const x=player.position.x,z=player.position.z,radius=BURST_RADIUS;
  const targets=enemies.filter(e=>Math.hypot(e.x-x,e.z-z)<=radius);
- if(!targets.length){$('status').textContent='Let creatures come closer. Your Snow Burst charge is saved.';return;}
+ if(!targets.length){snowWave(x,z);abilityNotice('No creatures in range — charge saved. Let them come closer.');return;}
  burstCharges--;burstUses++;burstCooldown=1.2;
- const ring=new THREE.Mesh(splashGeo,splashMaterial);ring.rotation.x=-Math.PI/2;ring.position.set(x,.09,z);scene.add(ring);splashes.push({mesh:ring,life:.5,radius});
+ snowWave(x,z);
+ for(let i=0;i<24;i++){const angle=i*Math.PI/12,m=mesh(ballGeo,'#ffffff',x,.9,z);flakes.push({mesh:m,life:.85,vx:Math.cos(angle)*10,vy:3+Math.random()*3,vz:Math.sin(angle)*10});}
  for(const e of targets){
   for(let hit=0;hit<2&&enemies.includes(e);hit++){damageCreature(e);burstHits++;}
   if(enemies.includes(e))e.z-=2;
  }
- $('status').textContent=`Snow Burst! ${targets.length} nearby creatures hit. ${burstCharges} charges left.`;abilityHud();
+ const message=`Snow Burst! ${targets.length} ${targets.length===1?'creature':'creatures'} hit · ${burstCharges} charges left`;
+ $('status').textContent=message;abilityNotice(message,'burst');abilityHud();
 }
 for(const [id,action] of [['dash-left',()=>dash(-1)],['dash-right',()=>dash(1)],['snow-burst',snowBurst]])$(id).addEventListener('click',()=>{action();if(mode==='playing')canvas.focus({preventScroll:true});});
 function hud(){ $('fort-text').textContent=`${fort}%`;$('fort').value=fort;$('wave').textContent=`${wave} / 3`;$('cleared').textContent=cleared; }
@@ -165,11 +186,12 @@ function overlay(title,message,label,eyebrow){
  $('shop').hidden=mode!=='between';$('difficulty-picker').hidden=!['ready','won','lost'].includes(mode);
  $('overlay').dataset.mode=mode;$('overlay').setAttribute('aria-modal',String(mode==='between'));$('overlay').hidden=false;
  $('title').textContent=title;$('message').textContent=message;$('start').textContent=label;$('eyebrow').textContent=eyebrow;
- $('menu-help').textContent=mode==='between'?'Arrows: choose · Enter: buy / start next wave':'Move: arrows / A & D / drag · Dash: Q / E · Snow Burst: Space / B';
+ $('menu-help').textContent=mode==='between'?'Arrows: choose · Enter: buy / start next wave':'Move: arrows / A & D / drag · Dash: double-tap arrows or Q / E · Snow Burst: Space / B';
+ $('ability-feedback').hidden=true;noticeTime=0;
  if(mode==='between'){$('tip').hidden=true;focusShopButton();}
 }
-function clearInputs(){moveLeft=moveRight=drag=false;targetX=null;}
-function reset(){[...enemies,...balls,...flakes,...piles,...tumbles,...splashes].forEach(disposeEntity);enemies=[];balls=[];flakes=[];piles=[];tumbles=[];splashes=[];upgrades=freshUpgrades();difficulty=selectedDifficulty;wavePlan=buildWave(difficulty,0);dashTime=dashCooldown=burstCooldown=burstUses=burstHits=0;dashDirection=0;burstCharges=2;volley=splashHits=stickyHits=0;hits=0;defeatedByType=[0,0,0];fort=100;cleared=0;wave=1;spawned=0;waveTime=spawnClock=tossClock=0;$('tip').hidden=false;player.position.x=0;clearInputs();fortGroup.scale.y=1;hud();updateShop();}
+function clearInputs(){moveLeft=moveRight=drag=false;targetX=null;heldArrows.clear();lastArrowTap=null;lastArrowTapAt=-Infinity;}
+function reset(){[...enemies,...balls,...flakes,...piles,...tumbles,...splashes,...shockwaves].forEach(disposeEntity);enemies=[];balls=[];flakes=[];piles=[];tumbles=[];splashes=[];shockwaves=[];noticeTime=0;$('ability-feedback').hidden=true;upgrades=freshUpgrades();difficulty=selectedDifficulty;wavePlan=buildWave(difficulty,0);dashTime=dashCooldown=burstCooldown=burstUses=burstHits=0;dashDirection=0;burstCharges=2;volley=splashHits=stickyHits=0;hits=0;defeatedByType=[0,0,0];fort=100;cleared=0;wave=1;spawned=0;waveTime=spawnClock=tossClock=0;$('tip').hidden=false;player.position.x=0;clearInputs();fortGroup.scale.y=1;hud();updateShop();}
 function begin(){mode='playing';$('overlay').dataset.mode=mode;$('overlay').hidden=true;$('shop').hidden=true;$('difficulty-picker').hidden=true;$('pattern').textContent=`${DIFFICULTIES[difficulty].label} · Wave ${wave}: ${wavePlan.name}`;$('pause').disabled=false;$('pause').textContent='Pause';$('status').textContent=wavePlan.hint;abilityHud();canvas.focus({preventScroll:true});}
 function finish(won){mode=won?'won':'lost';clearInputs();$('pause').disabled=true;overlay(won?'Snow day saved!':'Time to rebuild!',`You turned ${cleared} creatures into snow piles. ${won?`Your fort finished at ${fort}% strength.`:'Try lining up with the leading creatures before they reach the fort.'}`,'Play again',won?'FORT PROTECTED':'A FRESH START');$('status').textContent=won?'All three waves complete.':'The snow fort tumbled. Try again!';abilityHud();}
 $('start').addEventListener('click',()=>{if(mode==='paused')begin();else if(mode==='between'){wave++;wavePlan=buildWave(difficulty,wave-1);spawned=0;spawnClock=waveTime=0;hud();begin();}else{reset();begin();}});
@@ -186,10 +208,18 @@ window.addEventListener('keydown',e=>{
  if(['ArrowLeft','a','A'].includes(e.key))moveLeft=true;
  if(['ArrowRight','d','D'].includes(e.key))moveRight=true;
  if(e.repeat)return;
+ if(e.key==='ArrowLeft'||e.key==='ArrowRight'){
+  if(!heldArrows.has(e.key)){
+   const now=performance.now();
+   if(lastArrowTap===e.key&&now-lastArrowTapAt<=DOUBLE_TAP_MS){dash(e.key==='ArrowLeft'?-1:1);lastArrowTap=null;lastArrowTapAt=-Infinity;}
+   else{lastArrowTap=e.key;lastArrowTapAt=now;}
+   heldArrows.add(e.key);
+  }
+ }
  if(['q','Q'].includes(e.key))dash(-1);if(['e','E'].includes(e.key))dash(1);
  if([' ','b','B'].includes(e.key))snowBurst();if(e.key==='Escape')pause();
 });
-window.addEventListener('keyup',e=>{if(['ArrowLeft','a','A'].includes(e.key))moveLeft=false;if(['ArrowRight','d','D'].includes(e.key))moveRight=false;});
+window.addEventListener('keyup',e=>{heldArrows.delete(e.key);if(['ArrowLeft','a','A'].includes(e.key))moveLeft=false;if(['ArrowRight','d','D'].includes(e.key))moveRight=false;});
 for(const [id,set] of [['left',v=>moveLeft=v],['right',v=>moveRight=v]]){const b=$(id);b.addEventListener('pointerdown',e=>{if(mode!=='playing')return;e.preventDefault();b.setPointerCapture(e.pointerId);targetX=null;set(true);});for(const event of ['pointerup','pointercancel','lostpointercapture'])b.addEventListener(event,()=>set(false));}
 const raycaster=new THREE.Raycaster(),ground=new THREE.Plane(new THREE.Vector3(0,1,0),0),hit=new THREE.Vector3();
 function pointer(e){const r=canvas.getBoundingClientRect();raycaster.setFromCamera(new THREE.Vector2((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1),camera);if(raycaster.ray.intersectPlane(ground,hit))targetX=THREE.MathUtils.clamp(hit.x,-5.7,5.7);}
@@ -198,6 +228,7 @@ function resize(){const w=stage.clientWidth,h=stage.clientHeight;renderer.setSiz
 function tick(dt){elapsed+=dt;
 if(mode==='playing'){
  waveTime+=dt;spawnClock+=dt;tossClock+=dt;
+ noticeTime=Math.max(0,noticeTime-dt);if(noticeTime===0)$('ability-feedback').hidden=true;
  dashCooldown=Math.max(0,dashCooldown-dt);burstCooldown=Math.max(0,burstCooldown-dt);
  const oldX=player.position.x;
  if(dashTime>0){player.position.x+=dashDirection*22*Math.min(dt,dashTime);dashTime=Math.max(0,dashTime-dt);}
@@ -239,6 +270,7 @@ if(mode==='playing'){
  abilityHud();$('tip').hidden=waveTime>8;
 }
 if(mode!=='paused'){
+ for(let i=shockwaves.length-1;i>=0;i--){const p=shockwaves[i];p.life-=dt;p.root.scale.setScalar(.3+Math.min(1,(1-p.life)/.65)*(p.radius-.3));if(p.life<=0){disposeEntity(p);shockwaves.splice(i,1);}}
  for(let i=splashes.length-1;i>=0;i--){const p=splashes[i];p.life-=dt;p.mesh.scale.setScalar(.3+(1-p.life/.5)*((p.radius||2.6)-.3));if(p.life<=0){disposeEntity(p);splashes.splice(i,1);}}
  for(let i=tumbles.length-1;i>=0;i--){const e=tumbles[i];e.life-=dt;e.root.rotation.x+=(Math.PI/2)*dt/.4;e.root.scale.setScalar(e.size*Math.max(.01,e.life/.4));if(e.life<=0){disposeEntity(e);tumbles.splice(i,1);}}
  for(let i=piles.length-1;i>=0;i--){const p=piles[i];p.life-=dt;p.root.scale.setScalar(Math.min(1,Math.max(.01,p.life)));if(p.life<=0){disposeEntity(p);piles.splice(i,1);}}
@@ -247,6 +279,6 @@ if(mode!=='paused')for(let i=flakes.length-1;i>=0;i--){const p=flakes[i];p.life-
 }
 let last=performance.now();function frame(now){const dt=Math.min((now-last)/1000,.05);last=now;tick(dt);renderer.render(scene,camera);requestAnimationFrame(frame);}requestAnimationFrame(frame);
 // Read-only diagnostics for playtest verification; no gameplay bypasses.
-window.snowDayState=()=>({mode,wave,fort,cleared,spawned,enemies:enemies.length,balls:balls.length,playerX:player.position.x,hits,defeatedByType:[...defeatedByType],piles:piles.length,difficulty,pattern:wavePlan.name,planned:wavePlan.events.length,upgrades:{...upgrades},volley,splashHits,stickyHits,dashTime,dashCooldown,burstCooldown,burstCharges,burstUses,burstHits});
+window.snowDayState=()=>({mode,wave,fort,cleared,spawned,enemies:enemies.length,balls:balls.length,playerX:player.position.x,hits,defeatedByType:[...defeatedByType],piles:piles.length,difficulty,pattern:wavePlan.name,planned:wavePlan.events.length,upgrades:{...upgrades},volley,splashHits,stickyHits,dashTime,dashCooldown,burstCooldown,burstCharges,burstUses,burstHits,shockwaves:shockwaves.length});
 abilityHud();
 canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();pause();$('title').textContent='3D graphics paused';$('message').textContent='The browser interrupted 3D graphics. Reload this page to start a fresh snow day.';$('start').disabled=true;$('restart').disabled=true;});

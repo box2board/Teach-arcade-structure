@@ -37,3 +37,5 @@
 }
 
 @media(max-height:420px) and (min-width:500px){.snow-overlay[data-mode="between"] .snow-upgrade-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.snow-overlay[data-mode="between"] .snow-card{width:min(100%,760px);max-width:760px}}
+
+.snow-ability-feedback{position:absolute;top:16px;left:50%;transform:translateX(-50%);max-width:90%;width:max-content;padding:12px 18px;border-radius:12px;background:#15334de8;color:#fff;font-size:14px;font-weight:750;text-align:center;pointer-events:none;box-shadow:0 4px 18px #142a4233}.snow-ability-feedback[hidden]{display:none}.snow-ability-feedback[data-kind="burst"]{background:#08739a;border:2px solid #e4fcff}.snow-abilities #snow-burst[data-ready="true"]{background:#98e6da;border-color:#299a89;box-shadow:inset 0 0 0 1px #299a89}
