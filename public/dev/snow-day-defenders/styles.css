@@ -80,3 +80,5 @@
 }
 
 .snow-ability-feedback[data-kind="incoming"]{background:#354775;border:1px solid #adbfe9}.snow-ability-feedback[data-kind="fort"]{background:#92552b;border:1px solid #ffcca0}
+
+.snow-bottom .snow-incoming{color:#37567f;font-weight:750}.snow-incoming[hidden]{display:none}.snow-bottom[data-warning="true"] #status{display:none}

@@ -3,7 +3,7 @@ import { fitSnowCamera } from './camera.js?v=10';
 import { segmentSphereHit } from './collision.js?v=2';
 import { UPGRADE_RULES, freshUpgrades, grantTokens, canBuy, buyUpgrade } from './upgrades.js?v=3';
 import { CREATURE_TYPES, advanceCreature } from './creatures.js?v=10';
-import { DIFFICULTIES, WAVE_PATTERNS, buildWave } from './waves.js?v=10';
+import { DIFFICULTIES, WAVE_PATTERNS, buildWave } from './waves.js?v=11';
 
 const $ = id => document.getElementById(id);
 const canvas = $('scene'), stage = $('stage');
@@ -58,9 +58,22 @@ function creature(type,x,z){
  const size=rule.size,hat=rule.accent,roller=type===4,bodyBase=roller?[.8,.8,.8]:type===2?[.78,.72,.68]:[.66,.72,.62];
  const body=mesh(sphere,'#f4fbff',0,roller?.8:.65,0,...bodyBase,root),hands=[];
  if(roller){
-  for(const angle of [0,Math.PI/2]){const seam=new THREE.Mesh(slowRingGeo,mat(hat));seam.rotation.y=angle;seam.scale.setScalar(1.22);body.add(seam);}
-  mesh(box,hat,0,.9,.65,.9,.19,.14,root);
-  for(const ex of [-.2,.2])mesh(sphere,'#27415c',ex,.9,.75,.11,.1,.07,root);
+  // Packed snow rolls beneath a stable, readable face and winter outfit.
+  for(let i=0;i<8;i++){const a=i*Math.PI/4;mesh(sphere,i%2?'#dcebf4':'#ffffff',.3,Math.sin(a)*.98,Math.cos(a)*.98,.14,.16,.14,body);}
+  mesh(sphere,hat,0,1.48,0,.62,.3,.57,root);
+  mesh(box,'#f2b6d1',0,1.45,.48,.94,.16,.1,root);
+  mesh(sphere,'#fffaff',0,1.84,0,.13,.13,.13,root);
+  mesh(box,hat,0,.96,.65,1.08,.22,.16,root);
+  for(const ex of [-.23,.23]){
+   mesh(sphere,'#fffaff',ex,.96,.73,.22,.17,.09,root);
+   mesh(sphere,'#264f70',ex,.96,.81,.16,.11,.04,root);
+   mesh(sphere,'#9bd9ec',ex-.04,1.0,.85,.045,.025,.015,root);
+  }
+  const nose=mesh(cone,'#ee994c',0,.8,.83,.1,.28,.1,root);nose.rotation.x=Math.PI/2;
+  for(const ex of [-.15,0,.15])mesh(sphere,'#27415c',ex,.61+Math.abs(ex)*.3,.76,.035,.035,.03,root);
+  const scarf=new THREE.Mesh(slowRingGeo,mat(hat));scarf.rotation.x=Math.PI/2;scarf.position.y=.47;root.add(scarf);
+  mesh(box,hat,.64,.32,.22,.18,.42,.12,root);
+  for(const side of [-1,1])hands.push(mesh(sphere,hat,side*.83,.8,.1,.18,.22,.17,root));
  }else{
   mesh(sphere,'#fffaff',0,1.5,0,.45,.45,.45,root);
   if(type===2){mesh(bucketGeo,hat,0,2.05,0,1,1,1,root);mesh(box,'#fffaff',0,2.34,0,.72,.07,.72,root);}
@@ -74,7 +87,7 @@ function creature(type,x,z){
  }
  const maxHp=DIFFICULTIES[difficulty].hp[type],pips=[];
  const slowRing=new THREE.Mesh(slowRingGeo,mat('#70cee1'));slowRing.rotation.x=Math.PI/2;slowRing.position.y=.06;slowRing.visible=false;root.add(slowRing);
- for(let i=0;i<maxHp;i++)pips.push(mesh(sphere,hat,(i-(maxHp-1)/2)*.2,roller?1.95:2.9,0,.07,.07,.07,root));
+ for(let i=0;i<maxHp;i++)pips.push(mesh(sphere,hat,(i-(maxHp-1)/2)*.2,roller?2.23:2.9,0,.07,.07,.07,root));
  root.scale.setScalar(size);root.position.set(x,0,z);
  return {root,body,bodyBase,pips,slowRing,slowTime:0,type,x,z,baseX:x,spawnZ:z,age:0,roll:0,size,hands,hp:maxHp,maxHp,hitTime:0,speed:rule.speed,radius:rule.radius*size,phase:Math.random()*6};
 }
@@ -88,7 +101,11 @@ let shockwaves=[],noticeTime=0;
 const burstRingMaterial=new THREE.MeshBasicMaterial({color:0x168dbd,side:THREE.DoubleSide,transparent:true,opacity:.9,depthWrite:false});
 const burstDiskGeo=new THREE.CircleGeometry(1,48),burstDiskMaterial=new THREE.MeshBasicMaterial({color:0xb5f4ff,side:THREE.DoubleSide,transparent:true,opacity:.25,depthWrite:false});
 let dashTime=0,dashCooldown=0,dashDirection=0,burstCooldown=0,burstCharges=2,burstUses=0,burstHits=0;
-let warningIndex=0;
+let warningIndex=0,incomingTime=0;const introducedTypes=new Set();
+function incomingNotice(message){
+ $('incoming-warning').textContent=message;$('incoming-warning').hidden=false;$('status-row').dataset.warning='true';incomingTime=3;
+}
+function clearIncoming(){incomingTime=0;$('incoming-warning').hidden=true;$('status-row').dataset.warning='false';}
 let difficulty='easy',selectedDifficulty='easy',wavePlan=buildWave('easy',0);
 for(const input of document.querySelectorAll('input[name="difficulty"]'))input.addEventListener('change',()=>{
  if(!['ready','won','lost'].includes(mode)||!input.checked||!DIFFICULTIES[input.value])return;
@@ -204,12 +221,12 @@ function overlay(title,message,label,eyebrow){
  $('overlay').dataset.mode=mode;$('overlay').setAttribute('aria-modal',String(mode==='between'));$('overlay').hidden=false;
  $('title').textContent=title;$('message').textContent=message;$('start').textContent=label;$('eyebrow').textContent=eyebrow;
  $('menu-help').textContent=mode==='between'?'Arrows: choose · Enter: buy / start next wave':'Move: arrows / A & D / drag · Dash: double-tap arrows or Q / E · Snow Burst: Space / B';
- $('ability-feedback').hidden=true;noticeTime=0;
+ $('ability-feedback').hidden=true;noticeTime=0;clearIncoming();
  if(mode==='between'){$('tip').hidden=true;focusShopButton();}
 }
 function clearInputs(){moveLeft=moveRight=drag=false;targetX=null;heldArrows.clear();lastArrowTap=null;lastArrowTapAt=-Infinity;}
-function reset(){[...enemies,...balls,...flakes,...piles,...tumbles,...splashes,...shockwaves].forEach(disposeEntity);enemies=[];balls=[];flakes=[];piles=[];tumbles=[];splashes=[];shockwaves=[];noticeTime=0;$('ability-feedback').hidden=true;upgrades=freshUpgrades();difficulty=selectedDifficulty;wavePlan=buildWave(difficulty,0);dashTime=dashCooldown=burstCooldown=burstUses=burstHits=0;dashDirection=0;burstCharges=2;volley=splashHits=stickyHits=0;hits=0;defeatedByType=CREATURE_TYPES.map(()=>0);fort=100;cleared=0;wave=1;spawned=0;warningIndex=0;waveTime=spawnClock=tossClock=0;$('tip').hidden=false;player.position.x=0;clearInputs();fortGroup.scale.y=1;hud();updateShop();}
-function begin(){mode='playing';$('overlay').dataset.mode=mode;$('overlay').hidden=true;$('shop').hidden=true;$('difficulty-picker').hidden=true;$('pattern').textContent=`${DIFFICULTIES[difficulty].label} · Wave ${wave}: ${wavePlan.name}`;$('pause').disabled=false;$('pause').textContent='Pause';$('status').textContent=wavePlan.hint;abilityHud();canvas.focus({preventScroll:true});}
+function reset(){introducedTypes.clear();clearIncoming();[...enemies,...balls,...flakes,...piles,...tumbles,...splashes,...shockwaves].forEach(disposeEntity);enemies=[];balls=[];flakes=[];piles=[];tumbles=[];splashes=[];shockwaves=[];noticeTime=0;$('ability-feedback').hidden=true;upgrades=freshUpgrades();difficulty=selectedDifficulty;wavePlan=buildWave(difficulty,0);dashTime=dashCooldown=burstCooldown=burstUses=burstHits=0;dashDirection=0;burstCharges=2;volley=splashHits=stickyHits=0;hits=0;defeatedByType=CREATURE_TYPES.map(()=>0);fort=100;cleared=0;wave=1;spawned=0;warningIndex=0;waveTime=spawnClock=tossClock=0;$('tip').hidden=false;player.position.x=0;clearInputs();fortGroup.scale.y=1;hud();updateShop();}
+function begin(){clearIncoming();mode='playing';$('overlay').dataset.mode=mode;$('overlay').hidden=true;$('shop').hidden=true;$('difficulty-picker').hidden=true;$('pattern').textContent=`${DIFFICULTIES[difficulty].label} · Wave ${wave}: ${wavePlan.name}`;$('pause').disabled=false;$('pause').textContent='Pause';$('status').textContent=wavePlan.hint;abilityHud();canvas.focus({preventScroll:true});}
 function finish(won){mode=won?'won':'lost';clearInputs();$('pause').disabled=true;overlay(won?'Snow day saved!':'Time to rebuild!',`You turned ${cleared} creatures into snow piles. ${won?`Your fort finished at ${fort}% strength.`:'Try lining up with the leading creatures before they reach the fort.'}`,'Play again',won?'FORT PROTECTED':'A FRESH START');$('status').textContent=won?'All three waves complete.':'The snow fort tumbled. Try again!';abilityHud();}
 $('start').addEventListener('click',()=>{if(mode==='paused')begin();else if(mode==='between'){wave++;wavePlan=buildWave(difficulty,wave-1);spawned=0;warningIndex=0;spawnClock=waveTime=0;hud();begin();}else{reset();begin();}});
 $('restart').addEventListener('click',()=>{reset();begin();});
@@ -261,6 +278,7 @@ function tick(dt){elapsed+=dt;
 if(mode==='playing'){
  waveTime+=dt;spawnClock+=dt;tossClock+=dt;
  noticeTime=Math.max(0,noticeTime-dt);if(noticeTime===0)$('ability-feedback').hidden=true;
+ if(incomingTime>0){incomingTime=Math.max(0,incomingTime-dt);if(incomingTime===0)clearIncoming();}
  dashCooldown=Math.max(0,dashCooldown-dt);burstCooldown=Math.max(0,burstCooldown-dt);
  const oldX=player.position.x;
  if(dashTime>0){player.position.x+=dashDirection*22*Math.min(dt,dashTime);dashTime=Math.max(0,dashTime-dt);}
@@ -268,7 +286,7 @@ if(mode==='playing'){
  player.position.x=THREE.MathUtils.clamp(player.position.x,-5.7,5.7);
  const walking=Math.abs(oldX-player.position.x)>.001;feet.forEach((f,i)=>{f.position.z=walking?Math.sin(elapsed*16+i*Math.PI)*.15:0;});player.rotation.z=walking?(oldX-player.position.x)*.5:0;
  const settings=DIFFICULTIES[difficulty];
- while(warningIndex<wavePlan.warnings.length&&waveTime>=wavePlan.warnings[warningIndex].at){const notice=wavePlan.warnings[warningIndex++];abilityNotice(notice.message,'incoming');}
+ while(warningIndex<wavePlan.warnings.length&&waveTime>=wavePlan.warnings[warningIndex].at){const notice=wavePlan.warnings[warningIndex++];if(!introducedTypes.has(notice.type)){introducedTypes.add(notice.type);incomingNotice(notice.message);}}
  while(spawned<wavePlan.events.length&&waveTime>=wavePlan.events[spawned].at){const event=wavePlan.events[spawned++];enemies.push(creature(event.type,event.x,event.z));}
  if(tossClock>=.22){
   tossClock=0;

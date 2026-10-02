@@ -179,5 +179,12 @@ for(const difficulty of Object.keys(DIFFICULTIES)){
 const models=harness();models.click('start');models.fixture('enemies=CREATURE_TYPES.map((_,i)=>creature(i,0,-10));wavePlan.warnings=[];');
 assert.equal(new Set(models.fixture('enemies.map(e=>e.root.userData.creatureType)')).size,5,'models have distinct identities');
 models.step(10);const moving=JSON.stringify(models.fixture('enemies.map(e=>[e.x,e.z,e.age,e.roll])'));models.click('pause');models.step(20);assert.equal(JSON.stringify(models.fixture('enemies.map(e=>[e.x,e.z,e.age,e.roll])')),moving,'pause freezes every creature movement rule');
-models.click('restart');models.step(8);assert.equal(models.get('ability-feedback').dataset.kind,'incoming','new run resets and displays wave warning');
+models.click('restart');models.step(80);assert(!models.get('incoming-warning').hidden,'new run displays a creature introduction outside the stage');assert.equal(models.get('status-row').dataset.warning,'true');assert(models.get('ability-feedback').hidden,'incoming warnings do not occupy the play area');
 console.log('PASS: five creature identities, weaving bounds, roller acceleration/rotation/slow, mixed wave coverage, pacing gaps, warnings, pause');
+
+const quiet=harness();quiet.click('start');quiet.fixture("wavePlan.warnings=[{at:.05,type:4,message:'New: Snow Rollers · build speed'},{at:.15,type:4,message:'Duplicate'}];");quiet.key(' ');const burstMessage=quiet.get('ability-feedback').textContent;quiet.step(4);
+assert.equal(quiet.get('incoming-warning').textContent,'New: Snow Rollers · build speed','creature introductions appear once per run');assert.equal(quiet.get('ability-feedback').textContent,burstMessage,'incoming messages cannot replace burst feedback');
+quiet.step(60);assert(quiet.get('incoming-warning').hidden);assert.equal(quiet.get('status-row').dataset.warning,'false','normal status returns after introduction');
+quiet.fixture("warningIndex=0;waveTime=0;wavePlan.warnings=[{at:.05,type:4,message:'Already introduced'}];");quiet.step(2);assert(quiet.get('incoming-warning').hidden,'previously introduced creatures stay quiet in later waves');
+quiet.click('restart');assert.equal(quiet.fixture('introducedTypes.size'),0);assert(quiet.get('incoming-warning').hidden);
+console.log('PASS: unobtrusive warning strip, one introduction per type per run, burst feedback isolation, timeout and restart');

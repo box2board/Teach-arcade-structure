@@ -24,10 +24,10 @@ export function buildWave(difficulty,index,random=Math.random){
    groupTypes.add(type);events.push({at,type,x:Math.max(-5.1,Math.min(5.1,x+(random()-.5)*.35)),z:-30-random()*2});
   }
   const newTypes=[...groupTypes].filter(type=>!seen.has(type));groupTypes.forEach(type=>seen.add(type));
-  if(newTypes.length||group%3===2){
-   const introductions=['Snow pals incoming — line up with their group.','Snow hoppers incoming — quick little runners!','Bucket giants incoming — they take more hits.','Snow wigglers incoming — they weave between lanes.','Snow rollers incoming — they pick up speed!'];
-   const type=Math.max(...(newTypes.length?newTypes:[...groupTypes]));
-   warnings.push({at:Math.max(.25,time-.65),message:groupTypes.size>=4?'Mixed snowstorm incoming — watch the wigglers and rollers!':introductions[type]});
+  if(newTypes.some(type=>type>0)){
+   const introductions=['','New: Snow Hoppers · quick runners','New: Bucket Giants · sturdy and slow','New: Snow Wigglers · weave between lanes','New: Snow Rollers · build speed'];
+   const type=Math.max(...newTypes);
+   warnings.push({at:Math.max(.25,time-.65),type,message:introductions[type]});
   }
   // A short breathing gap after every second group rewards repositioning.
   time+=members*settings.cadence+(group%2===1?settings.cadence*2.5:0);group++;
