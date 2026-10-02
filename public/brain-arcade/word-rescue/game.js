@@ -82,15 +82,47 @@
     {
       id: "island",
       name: "Island Rescue",
-      resource: "Beacon power",
-      success: "The rescue boat reached shore.",
-      stages: [["Tide rising","≈",22,69],["Beacon flickers","⚡",29,48],["Wind picks up","≈",50,26],["Waves build","≈",63,67],["Boat loses bearing","!",83,53],["Beacon dark","×",31,43]],
-      markup: `<svg viewBox="0 0 320 230" role="img" aria-label="A castaway waits on a small island while a rescue boat approaches.">
-        <path class="wr-water" d="M0 157 Q25 146 50 157 T100 157 T150 157 T200 157 T250 157 T320 157 V230 H0 Z"/>
-        <path class="wr-sand" d="M35 176 Q86 132 151 173 Q120 198 49 195 Z"/>
-        <g class="wr-line wr-thin"><line x1="92" y1="159" x2="104" y2="107"/><path d="M104 107 Q127 120 119 143"/><circle cx="74" cy="153" r="10"/><line x1="74" y1="163" x2="74" y2="187"/></g>
-        <g class="wr-action wr-fill"><path d="M235 139 L297 139 L282 162 L246 162 Z"/><rect x="256" y="120" width="25" height="19" rx="3"/><line class="wr-line wr-thin" x1="267" y1="120" x2="267" y2="105"/></g>
-        <g class="wr-accent wr-beacon wr-success"><path d="M53 122 Q64 111 75 122"/><path d="M45 113 Q64 95 83 113"/></g>
+      resource: "Time before the tide wins",
+      success: "The rescue boat reached the island.",
+      stages: [["Water reaches the beach"],["The shoreline is disappearing"],["The island is half flooded"],["Water reaches the survivor"],["Only the high ground remains"],["The island is submerged"]],
+      markup: `<svg viewBox="0 0 320 230" role="img" aria-label="A stranded person waits on a shrinking island while a rescue boat approaches.">
+        <defs>
+          <linearGradient id="wrIslandSky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#dff3ff"/>
+            <stop offset="100%" stop-color="#f8fbff"/>
+          </linearGradient>
+          <linearGradient id="wrIslandWater" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#7dd3fc"/>
+            <stop offset="100%" stop-color="#3b82f6"/>
+          </linearGradient>
+        </defs>
+        <rect x="0" y="0" width="320" height="230" fill="url(#wrIslandSky)"/>
+        <circle cx="266" cy="40" r="18" fill="#fbbf24" opacity=".75"/>
+        <g id="island-palm" class="wr-island-palm">
+          <line class="wr-line wr-thin" x1="99" y1="165" x2="111" y2="101"/>
+          <path d="M111 102 Q135 106 143 126 Q124 125 110 113" fill="#86b97a" stroke="#1e293b" stroke-width="3"/>
+          <path d="M111 102 Q92 98 78 114 Q96 117 111 111" fill="#86b97a" stroke="#1e293b" stroke-width="3"/>
+        </g>
+        <path id="island-land" class="wr-sand" d="M32 181 Q84 136 157 176 Q134 202 52 201 Z"/>
+        <g id="island-survivor" class="wr-line wr-thin">
+          <circle cx="79" cy="151" r="10" fill="#fff"/>
+          <line x1="79" y1="161" x2="79" y2="188"/>
+          <line x1="79" y1="168" x2="64" y2="179"/>
+          <line x1="79" y1="168" x2="95" y2="177"/>
+          <line x1="79" y1="188" x2="68" y2="202"/>
+          <line x1="79" y1="188" x2="90" y2="202"/>
+        </g>
+        <g id="island-boat" class="wr-fill wr-island-boat">
+          <path d="M236 144 L304 144 L286 168 L247 168 Z"/>
+          <rect x="257" y="123" width="28" height="21" rx="3"/>
+          <line class="wr-line wr-thin" x1="271" y1="123" x2="271" y2="105"/>
+          <path d="M271 107 L289 116 L271 121 Z" fill="#f29c38" stroke="none"/>
+        </g>
+        <g id="island-waves-back" opacity=".55">
+          <path d="M0 164 Q20 153 40 164 T80 164 T120 164 T160 164 T200 164 T240 164 T280 164 T320 164" fill="none" stroke="#60a5fa" stroke-width="5"/>
+        </g>
+        <rect id="island-water-rise" x="0" y="164" width="320" height="90" fill="url(#wrIslandWater)" opacity=".82"/>
+        <path id="island-water-line" d="M0 164 Q20 153 40 164 T80 164 T120 164 T160 164 T200 164 T240 164 T280 164 T320 164" fill="none" stroke="#eff6ff" stroke-width="6"/>
       </svg>`
     },
     {
@@ -278,25 +310,27 @@
 
   function chooseScene() {
     const choices = SCENES.filter(scene => scene.id !== lastSceneId);
-    activeScene = randomItem(choices.length ? choices : SCENES);
+    activeScene = lastSceneId ? randomItem(choices.length ? choices : SCENES) : SCENES.find(scene => scene.id === "island");
     lastSceneId = activeScene.id;
     els.rescueScene.dataset.scene = activeScene.id;
     els.sceneName.textContent = activeScene.name;
     els.sceneKicker.textContent = "Rescue Mission";
     els.resourceLabel.textContent = activeScene.resource;
     els.sceneArt.innerHTML = activeScene.markup + '<div class="word-rescue-page__stage-layer" id="stage-layer" aria-hidden="true"></div>';
-    activeScene.stages.forEach((stage, index) => {
-      const [label, symbol, left, top] = stage;
-      const mark = document.createElement("span");
-      mark.className = "word-rescue-page__stage-mark";
-      mark.dataset.stage = String(index + 1);
-      mark.style.left = `${left}%`;
-      mark.style.top = `${top}%`;
-      mark.textContent = symbol;
-      mark.title = label;
-      mark.setAttribute("aria-label", label);
-      document.getElementById("stage-layer").appendChild(mark);
-    });
+    if (activeScene.id !== "island") {
+      activeScene.stages.forEach((stage, index) => {
+        const [label, symbol, left, top] = stage;
+        const mark = document.createElement("span");
+        mark.className = "word-rescue-page__stage-mark";
+        mark.dataset.stage = String(index + 1);
+        mark.style.left = `${left}%`;
+        mark.style.top = `${top}%`;
+        mark.textContent = symbol;
+        mark.title = label;
+        mark.setAttribute("aria-label", label);
+        document.getElementById("stage-layer").appendChild(mark);
+      });
+    }
     els.rescueScene.dataset.wrong = "0";
     els.rescueScene.setAttribute("aria-label", `${activeScene.name}: ${activeScene.resource} status`);
   }
@@ -362,6 +396,41 @@
     });
   }
 
+  function solvedProgress() {
+    const letters = [...activeEntry.word.toLowerCase()].filter(char => /[a-z]/.test(char));
+    if (!letters.length) return 0;
+    const revealed = letters.filter(char => guessed.has(char)).length;
+    return Math.max(0, Math.min(1, revealed / letters.length));
+  }
+
+  function renderIslandRescue() {
+    if (activeScene?.id !== "island") return;
+    const water = document.getElementById("island-water-rise");
+    const line = document.getElementById("island-water-line");
+    const boat = document.getElementById("island-boat");
+    const palm = document.getElementById("island-palm");
+    const survivor = document.getElementById("island-survivor");
+    if (!water || !line || !boat || !palm || !survivor) return;
+
+    const stage = Math.min(MAX_WRONG, wrong.length);
+    const waterY = 164 - (stage * 10);
+    water.setAttribute("y", String(waterY));
+    water.setAttribute("height", String(230 - waterY + 18));
+    line.setAttribute("d", `M0 ${waterY} Q20 ${waterY - 11} 40 ${waterY} T80 ${waterY} T120 ${waterY} T160 ${waterY} T200 ${waterY} T240 ${waterY} T280 ${waterY} T320 ${waterY}`);
+
+    const progress = solvedProgress();
+    const boatShift = Math.round(progress * -112);
+    boat.setAttribute("transform", `translate(${boatShift} 0)`);
+
+    const palmTilt = Math.max(0, stage - 2) * -2;
+    palm.setAttribute("transform", `rotate(${palmTilt} 104 151)`);
+    survivor.setAttribute("transform", stage >= 5 ? "translate(0 -8)" : "");
+
+    if (state === "won") {
+      boat.setAttribute("transform", "translate(-145 0)");
+    }
+  }
+
   function renderSignal() {
     const remaining = Math.max(0, MAX_WRONG - wrong.length);
     els.signalStatus.textContent = `${remaining} / ${MAX_WRONG}`;
@@ -374,6 +443,7 @@
     });
     els.wrongCount.textContent = String(wrong.length);
     els.wrongLetters.textContent = wrong.length ? wrong.map(letter => letter.toUpperCase()).join("  ") : "None yet";
+    renderIslandRescue();
   }
 
   function render() {
@@ -411,7 +481,9 @@
     guessed.add(letter);
 
     if (activeEntry.word.includes(letter)) {
-      els.feedback.textContent = "Good guess — the rescue is still on track.";
+      els.feedback.textContent = activeScene.id === "island"
+        ? "Good guess — the rescue boat is getting closer."
+        : "Good guess — the rescue is still on track.";
     } else {
       wrong.push(letter);
       const remaining = MAX_WRONG - wrong.length;
