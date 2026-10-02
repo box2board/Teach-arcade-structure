@@ -14,7 +14,7 @@ export function simulate(s,dt){
 }
 export function canStand(x,y,s){
   if(x<30||x>WORLD.width-30||y<50||y>WORLD.height-30)return false;
-  if(x>718&&x<840){const crossing=s.bridge>=1&&y>=399&&y<=451;const shortcut=s.pond===1&&y>=853&&y<=899;if(!crossing&&!shortcut)return false;}
+  if(x>718&&x<840){const crossing=s.bridge>=1&&y>=399&&y<=451;const shortcut=(s.pond===1||s.pondRestored)&&y>=853&&y<=899;if(!crossing&&!shortcut)return false;}
   if(s.logX<450&&Math.abs(x-s.logX)<30&&y>703&&y<817)return false;
   return true;
 }

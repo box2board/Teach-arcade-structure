@@ -6,7 +6,7 @@ export function meadowState(old={}){
     sluice:unit(old.sluice),pond:unit(old.pond),diverted:old.diverted===true,streamCleared:old.streamCleared===true};
 }
 export function meadowInteractables(s){return [meadowObjects.diverter,{...meadowObjects.log,x:s.logX},meadowObjects.sluice];}
-export function meadowSupply(s){return s.pump===1&&s.vane===1&&s.elbow===3&&Math.abs(s.troughY-330)<4&&s.valve>=.3&&s.valve<=.65;}
+export function meadowSupply(s){return s.pump===1&&s.vane===1&&s.elbow===3&&Math.abs(s.troughY-330)<4&&(s.mode==='engineer'?s.valve>0:s.valve>=.3&&s.valve<=.65);}
 export function workMeadow(s,id,dt){
   if(id==='log'&&s.logX<470){
     if(s.player.x>s.logX-20||Math.abs(s.player.y-760)>55)return 'Stand on the left of the log. Hold E to push right.';
@@ -38,7 +38,7 @@ export function drawMeadow(ctx,s,time,{path,water,glow}){
   // A dry basin becomes a living pond, rather than a percentage-only reward.
   ctx.fillStyle='#93805b';ctx.beginPath();ctx.ellipse(520,940,115,76,0,0,Math.PI*2);ctx.fill();
   if(s.pond>0){ctx.fillStyle='#48a4b1';ctx.beginPath();ctx.ellipse(520,940,110*s.pond,70*s.pond,0,0,Math.PI*2);ctx.fill();}
-  if(s.sluice===1&&s.logX>=450&&supply&&s.diverter===2)water([[500,825],[500,880]],time*s.valve);
+  if((s.mode==='engineer'?s.sluice>0:s.sluice===1)&&s.logX>=450&&supply&&s.diverter===2)water([[500,825],[500,880]],time*s.valve);
   ctx.fillStyle='#d3bc86';ctx.beginPath();ctx.arc(350,635,25,0,Math.PI*2);ctx.fill();
   const end=[[350,610],[380,635],[350,660],[320,635]][s.diverter];path([[320,635],[350,635],end],'#405f56',10);
   ctx.fillStyle='#91633e';ctx.fillRect(s.logX-18,715,36,90);ctx.strokeStyle='#c29d65';ctx.lineWidth=3;ctx.strokeRect(s.logX-18,715,36,90);path([[s.logX-5,720],[s.logX-5,800]],'#634b36',3);
@@ -46,7 +46,7 @@ export function drawMeadow(ctx,s,time,{path,water,glow}){
   for(const o of meadowInteractables(s)){glow(o.x,o.y,false,time);ctx.fillStyle='#e7edda';ctx.font='bold 14px system-ui';ctx.textAlign='center';ctx.fillText({diverter:'MEADOW CHANNEL',log:s.logX>=450?'STREAM CLEARED':'PUSH →',sluice:s.sluice===1?'GATE OPEN':'POND GATE'}[o.id],o.x,o.y-50);}
   ctx.fillStyle='#e7edda';ctx.fillText(s.pond===1?'POND RESTORED':'DRY POND',520,1040);
   ctx.fillStyle='#102e3c';ctx.fillRect(467,1020,106,7);ctx.fillStyle='#7fcfc8';ctx.fillRect(467,1020,106*s.pond,7);
-  if(s.pond===1){
+  if(s.pond===1||s.pondRestored){
     for(let n=0;n<5;n++){const x=450+n*30,y=946+Math.sin(time/1200+n)*18;ctx.fillStyle='#a5da8f';ctx.beginPath();ctx.ellipse(x,y,9,5,0,0,Math.PI*2);ctx.fill();}
     for(const x of [414,622])for(let n=0;n<4;n++){const y=918+n*17;path([[x,y+12],[x,y-8]],'#9cba6d',3);ctx.fillStyle='#e8c08a';ctx.fillRect(x-2,y-12,4,10);}
     path([[650,875],[920,875]],'#c0b487',30);

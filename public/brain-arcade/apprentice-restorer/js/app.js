@@ -1,3 +1,4 @@
+import {engineerState,systemReadings,stepEngineer,engineerHint,distributor,drawDistributor} from './engineer.js';
 import {workMeadow,drawMeadow} from './meadow.js';
 import {followCamera} from './camera.js';
 import {adventureState,interactables,stepAdventure,objective,sparks,extras,mirrors} from './adventure.js';
@@ -6,16 +7,33 @@ import {WORLD,objects,initialState,connected,simulate,canStand} from './flow-mod
 const root=document.querySelector('#worldsmith');
 if(root)start();
 function start(){
-  const $=q=>document.querySelector(q),canvas=$('#world'),ctx=canvas.getContext('2d'),key='teacharcade-worldsmith-crossing-v1';
+  const $=q=>document.querySelector(q),canvas=$('#world'),ctx=canvas.getContext('2d');
+  let key='teacharcade-worldsmith-crossing-v1';
   let s=initialState(),keys=new Set(),actionHeld=false,paused=false,route=null,near=null,last=0,camera={x:0,y:0},vw=960,vh=600,resetArmed=false,saveClock=0,valveDrag=false,walkTime=0,particles=[];
   const notes=['Connected channels redirect moving water.','A break in the channel stops energy reaching the wheel.','Moving water turns the wheel, which drives the winch and lowers the bridge.','Wind transfers energy to a pump through connected gears.','A working system needs controlled flow, not simply maximum flow.','Mirrors redirect light along a connected path to a receiver.','A blocked route interrupts water flow even when the source works.','Restoring a continuous water supply refills a pond and supports its habitat.'];
-  Object.assign(s,adventureState());
-  try{const old=JSON.parse(localStorage.getItem(key));if(old?.version===1){s.elbow=Number.isInteger(old.elbow)&&old.elbow>=0&&old.elbow<=3?old.elbow:0;s.troughY=Number.isFinite(old.troughY)?Math.max(330,Math.min(475,old.troughY)):430;s.valve=Number.isFinite(old.valve)?Math.max(0,Math.min(1,old.valve)):0.12;s.bridge=Number.isFinite(old.bridge)?Math.max(0,Math.min(1,old.bridge)):0;Object.assign(s,adventureState(old));s.won=s.finished;s.discoveries=Array.isArray(old.discoveries)?old.discoveries.filter(n=>Number.isInteger(n)&&n>=0&&n<8):[];if(Number.isFinite(old.player?.x)&&Number.isFinite(old.player?.y)&&canStand(old.player.x,old.player.y,s))s.player={...old.player};}}catch{}
+  function fresh(mode='explorer'){
+    const base={...initialState(),...adventureState(),...engineerState(),mode};
+    if(mode==='engineer')Object.assign(base,{player:{x:350,y:575},elbow:3,troughY:330,valve:.6,bridge:1,crossed:true,cog:true,repair:1,pump:1,vane:1,gate:2,garden:[.65,.65],pond:.45,discoveries:[0,1,2,3]});
+    return base;
+  }
+  function load(mode){
+    key=mode==='engineer'?'teacharcade-worldsmith-engineer-v1':'teacharcade-worldsmith-crossing-v1';
+    s=fresh(mode);
+    try{const old=JSON.parse(localStorage.getItem(key));if(old?.version===1){
+      s.elbow=Number.isInteger(old.elbow)?Math.max(0,Math.min(3,old.elbow)):s.elbow;
+      for(const [name,min,max] of [['troughY',330,475],['valve',0,1],['bridge',0,1]])if(Number.isFinite(old[name]))s[name]=Math.max(min,Math.min(max,old[name]));
+      Object.assign(s,adventureState(old),engineerState(old));s.mode=mode;
+      s.finished=mode==='engineer'?s.trialComplete:s.finished;s.won=s.finished;
+      s.discoveries=Array.isArray(old.discoveries)?old.discoveries.filter(n=>Number.isInteger(n)&&n>=0&&n<8):[];
+      if(Number.isFinite(old.player?.x)&&Number.isFinite(old.player?.y)&&canStand(old.player.x,old.player.y,s))s.player={...old.player};
+    }}catch{}
+  }
+  load('explorer');
   const save=()=>{try{localStorage.setItem(key,JSON.stringify({...s,version:1}));}catch{}};
   function message(text){$('#message').textContent=text;}
   function discover(n){if(!s.discoveries.includes(n)){s.discoveries.push(n);refreshNotes();save();}}
   function refreshNotes(){$('#discovery-count').textContent=`${s.discoveries.length} / 8`;$('#discoveries').innerHTML=s.discoveries.length?s.discoveries.map(n=>`<li>${notes[n]}</li>`).join(''):'<li>Your discoveries appear here as you play.</li>';}
-  const game=$('.ws-game'),fullscreen=$('#fullscreen');
+  const game=$('.ws-game'),fullscreen=$('#fullscreen'),explorerHelp=$('.ws-help').textContent;
   let sizing=false,focusScroll=0;
   function resize(){
     if(sizing)return;sizing=true;
@@ -28,12 +46,14 @@ function start(){
     const height=window.visualViewport?.height||window.innerHeight;
     const style=getComputedStyle(root);
     const width=root.clientWidth-parseFloat(style.paddingLeft)-parseFloat(style.paddingRight);
+    if(s.mode==='engineer')game.style.width=`${width}px`;
+    canvas.style.width=s.mode==='engineer'?'':'100%';
     // A second pass accounts for toolbar text wrapping at the fitted width.
     for(let pass=0;pass<2;pass++){
       const top=game.getBoundingClientRect().top+(focused?0:window.scrollY);
-      const chrome=$('.ws-top').getBoundingClientRect().height+$('.ws-controls').getBoundingClientRect().height+2;
+      const chrome=$('.ws-top').getBoundingClientRect().height+$('.ws-controls').getBoundingClientRect().height+$('#engineer-panel').getBoundingClientRect().height+2;
       const fit=fitViewport({width,height,top,chrome,ratio:vw/vh});
-      game.style.width=`${fit.width}px`;
+      if(s.mode==='engineer')canvas.style.width=`${fit.width}px`;else game.style.width=`${fit.width}px`;
     }
     sizing=false;
   }
@@ -55,11 +75,14 @@ function start(){
   document.addEventListener('fullscreenchange',syncFullscreen);
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&root.classList.contains('ws-focus')){root.classList.remove('ws-focus');window.scrollTo(0,focusScroll);syncFullscreen();}});
   window.addEventListener('resize',resize);window.visualViewport?.addEventListener('resize',resize);
-  if(window.ResizeObserver){const observer=new ResizeObserver(resize);for(const el of [$('#site-header'),$('.ws-title'),$('.ws-top'),$('.ws-controls')])if(el)observer.observe(el);}
+  if(window.ResizeObserver){const observer=new ResizeObserver(resize);for(const el of [$('#site-header'),$('.ws-title'),$('.ws-top'),$('.ws-controls'),$('#engineer-panel')])if(el)observer.observe(el);}
   resize();refreshNotes();canvas.focus({preventScroll:true});
-  function nearest(){const candidates=[{id:'elbow',...objects.elbow},{id:'valve',...objects.valve},{id:'trough',x:objects.trough.x,y:s.troughY},...interactables(s)];return candidates.map(o=>({...o,d:Math.hypot(o.x-s.player.x,o.y-s.player.y)})).filter(o=>o.d<80).sort((a,b)=>a.d-b.d)[0]||null;}
-  function actOnce(){if(paused||!$('#win').hidden)return;near=nearest();if(near?.id==='elbow'){s.elbow=(s.elbow+1)%4;message(s.elbow===3?'The stream turns toward the wheel.':'Water spills from the open end.');if(s.elbow===3)discover(0);save();}else if(near?.id==='valve'){const target=keys.has('q')||keys.has('shift')?0:s.pump===1?.5:1;s.valve+=Math.sign(target-s.valve)*Math.min(.12,Math.abs(target-s.valve));save();}else if(near?.id==='diverter'){s.diverter=(s.diverter+1)%4;message(s.diverter===2?'Water turns into the meadow stream.':'Follow the stream. Turn the channel south.');save();}else if(near?.id==='vane'){s.vane=(s.vane+1)%4;message(s.vane===1?'The sails catch the breeze.':'Turn the vane toward the wind →.');save();}else if(near?.id==='gate'){s.gate=(s.gate+1)%4;message(['Garden channels closed.','Water goes to the left bed.','Both beds receive water.','Water goes to the right bed.'][s.gate]);save();}else if(near?.id.startsWith('mirror')){const i=Number(near.id.slice(6));s.mirrors[i]=(s.mirrors[i]+1)%4;message('Mirror turned. Follow the sunbeam.');save();}else if(near?.id==='mill'&&!s.cog){message('The pump is missing a gear. Look along the far bank.');}else if(!near)message('Walk beside the channel elbow, loose channel, or valve.');}
-  function work(dt){near=nearest();if(!near)return;const hint=workMeadow(s,near.id,dt);if(hint)message(hint);if(near.id==='mill'&&s.cog&&s.repair<1){s.repair=Math.min(1,s.repair+dt*.65);if(s.repair===1){burst(890,285);message('Gear fitted! Turn the vane toward the breeze.');save();}}if(near.id==='valve'){const target=keys.has('q')||keys.has('shift')?0:s.pump===1?.5:1;s.valve+=Math.sign(target-s.valve)*Math.min(dt*.42,Math.abs(target-s.valve));}if(near.id==='trough'&&s.troughY>330){if(s.player.y>s.troughY+20){const step=Math.min(dt*65,s.troughY-330);s.troughY-=step;s.player.y-=step;if(s.troughY<=330.01){s.troughY=330;message('Channel connected. The stream can reach the wheel.');discover(1);save();}}else message('Get behind the loose channel and push it toward the gap.');}}
+  function nearest(){const candidates=[{id:'elbow',...objects.elbow},{id:'valve',...objects.valve},{id:'trough',x:objects.trough.x,y:s.troughY},...interactables(s),...(s.mode==='engineer'?[distributor]:[])];return candidates.map(o=>({...o,d:Math.hypot(o.x-s.player.x,o.y-s.player.y)})).filter(o=>o.d<80).sort((a,b)=>a.d-b.d)[0]||null;}
+  function actOnce(){if(paused||!$('#win').hidden)return;near=nearest();if(near?.id==='elbow'){s.elbow=(s.elbow+1)%4;message(s.elbow===3?'The stream turns toward the wheel.':'Water spills from the open end.');if(s.elbow===3)discover(0);save();}else if(near?.id==='valve'){const target=keys.has('q')||keys.has('shift')?0:s.mode!=='engineer'&&s.pump===1?.5:1;s.valve+=Math.sign(target-s.valve)*Math.min(.12,Math.abs(target-s.valve));save();}else if(near?.id==='distributor'){const direction=keys.has('q')||keys.has('shift')?-1:1;s.gardenShare=Math.max(.1,Math.min(.9,s.gardenShare+direction*.05));save();}else if(near?.id==='diverter'){s.diverter=(s.diverter+1)%4;message(s.diverter===2?'Water turns into the meadow stream.':'Follow the stream. Turn the channel south.');save();}else if(near?.id==='vane'){s.vane=(s.vane+1)%4;message(s.vane===1?'The sails catch the breeze.':'Turn the vane toward the wind →.');save();}else if(near?.id==='gate'){s.gate=(s.gate+1)%4;message(['Garden channels closed.','Water goes to the left bed.','Both beds receive water.','Water goes to the right bed.'][s.gate]);save();}else if(near?.id.startsWith('mirror')){const i=Number(near.id.slice(6));s.mirrors[i]=(s.mirrors[i]+1)%4;message('Mirror turned. Follow the sunbeam.');save();}else if(near?.id==='mill'&&!s.cog){message('The pump is missing a gear. Look along the far bank.');}else if(!near)message('Walk beside the channel elbow, loose channel, or valve.');}
+  function work(dt){near=nearest();if(!near)return;const direction=keys.has('q')||keys.has('shift')?-1:1;
+    if(s.mode==='engineer'&&near.id==='distributor')s.gardenShare=Math.max(.1,Math.min(.9,s.gardenShare+direction*dt*.22));
+    if(s.mode==='engineer'&&near.id==='sluice')s.sluice=Math.max(0,Math.min(1,s.sluice+direction*dt*.3));
+    const hint=s.mode==='engineer'&&near.id==='sluice'?null:workMeadow(s,near.id,dt);if(hint)message(hint);if(near.id==='mill'&&s.cog&&s.repair<1){s.repair=Math.min(1,s.repair+dt*.65);if(s.repair===1){burst(890,285);message('Gear fitted! Turn the vane toward the breeze.');save();}}if(near.id==='valve'){const target=keys.has('q')||keys.has('shift')?0:s.mode!=='engineer'&&s.pump===1?.5:1;s.valve+=Math.sign(target-s.valve)*Math.min(dt*.42,Math.abs(target-s.valve));}if(near.id==='trough'&&s.troughY>330){if(s.player.y>s.troughY+20){const step=Math.min(dt*65,s.troughY-330);s.troughY-=step;s.player.y-=step;if(s.troughY<=330.01){s.troughY=330;message('Channel connected. The stream can reach the wheel.');discover(1);save();}}else message('Get behind the loose channel and push it toward the gap.');}}
   function move(dx,dy,dt){const speed=(keys.has('shift')&&!actionHeld?235:155)*dt,norm=Math.hypot(dx,dy)||1;dx=dx/norm*speed;dy=dy/norm*speed;
     const tryAxis=(amount,axis)=>{if(Math.abs(amount)<0.001)return false;const p={...s.player};p[axis]+=amount;if(!canStand(p.x,p.y,s))return false;
       if(Math.abs(p.x-475)<57&&Math.abs(p.y-s.troughY)<31){if(axis==='y'&&s.troughY>330){const next=Math.max(330,Math.min(475,s.troughY+amount));if(Math.abs(next-s.troughY-amount)>0.01)return false;s.troughY=next;if(s.troughY===330){message('Channel connected.');discover(1);}}else return false;}
@@ -75,7 +98,7 @@ function start(){
     if(dirs[k]||[' ','e','q','shift'].includes(k)){
       e.preventDefault();keys.add(k);canvas.focus({preventScroll:true});
       if(dirs[k])route=null;
-      if(['e',' ','q'].includes(k)&&!e.repeat){if(k==='q'&&nearest()?.id!=='valve')return;actionHeld=true;actOnce();}
+      if(['e',' ','q'].includes(k)&&!e.repeat){if(k==='q'&&!(s.mode==='engineer'?['valve','distributor','sluice']:['valve']).includes(nearest()?.id))return;actionHeld=true;actOnce();}
     }
   });
   window.addEventListener('keyup',e=>{const k=e.key.toLowerCase();keys.delete(k);if(['e',' ','q'].includes(k))actionHeld=keys.has('e')||keys.has(' ')||keys.has('q');});
@@ -84,7 +107,7 @@ function start(){
   $('#action').addEventListener('pointerdown',e=>{e.preventDefault();if(paused)return;$('#action').setPointerCapture(e.pointerId);canvas.focus();actionHeld=true;actOnce();});for(const ev of ['pointerup','pointercancel','lostpointercapture'])$('#action').addEventListener(ev,()=>{actionHeld=false;save();});$('#action').addEventListener('click',e=>{if(e.detail===0){actOnce();work(0.3);save();}});
   function point(e){const r=canvas.getBoundingClientRect();return {x:(e.clientX-r.left)/r.width*vw+camera.x,y:(e.clientY-r.top)/r.height*vh+camera.y};}
   canvas.addEventListener('pointerdown',e=>{e.preventDefault();if(paused||!$('#win').hidden)return;canvas.focus();const p=point(e);canvas.setPointerCapture(e.pointerId);if(Math.hypot(p.x-objects.valve.x,p.y-objects.valve.y)<36&&Math.hypot(s.player.x-objects.valve.x,s.player.y-objects.valve.y)<80){valveDrag=true;route=null;return;}
-    const extra=interactables(s).find(o=>Math.hypot(p.x-o.x,p.y-o.y)<38);
+    const extra=[...interactables(s),...(s.mode==='engineer'?[distributor]:[])].find(o=>Math.hypot(p.x-o.x,p.y-o.y)<38);
     const hit=extra?.id|| (Math.hypot(p.x-330,p.y-180)<40?'elbow':Math.hypot(p.x-475,p.y-s.troughY)<50?'trough':Math.hypot(p.x-180,p.y-180)<40?'valve':null);
     if((['elbow','vane','gate','diverter'].includes(hit)||hit?.startsWith('mirror'))&&nearest()?.id===hit){actOnce();return;}
     const target=hit==='log'?{x:s.logX-55,y:760}:extra?{x:extra.x,y:extra.y+45}:hit==='elbow'?{x:330,y:238}:hit==='trough'?{x:475,y:s.troughY+60}:hit==='valve'?{x:180,y:238}:p;
@@ -99,16 +122,23 @@ function start(){
   });
   canvas.addEventListener('pointermove',e=>{if(valveDrag){const p=point(e);s.valve=Math.max(0,Math.min(1,(240-p.y)/120));}});for(const ev of ['pointerup','pointercancel','lostpointercapture'])canvas.addEventListener(ev,()=>{if(valveDrag)save();valveDrag=false;});
   $('#pause').addEventListener('click',()=>{paused=!paused;clearInput();$('#pause').textContent=paused?'Resume':'Pause';$('#pause').setAttribute('aria-pressed',String(paused));save();});
-  function reset(){s={...initialState(),...adventureState()};particles=[];camera={x:0,y:0};clearInput();paused=false;resetArmed=false;$('#pause').textContent='Pause';$('#pause').setAttribute('aria-pressed','false');$('#restart').textContent='Restart';$('#win').hidden=true;message('Find a way to get water to the wheel.');refreshNotes();save();canvas.focus();}
+  function reset(){s=fresh(s.mode);particles=[];camera={x:0,y:0};clearInput();paused=false;resetArmed=false;$('#pause').textContent='Pause';$('#pause').setAttribute('aria-pressed','false');$('#restart').textContent='Restart';$('#win').hidden=true;message(s.mode==='engineer'?'Balance the wheel, garden and pond. Hold all conditions for 12 seconds.':'Find a way to get water to the wheel.');refreshNotes();save();canvas.focus();}
+  $('#difficulty').addEventListener('change',()=>{
+    save();clearInput();load($('#difficulty').value);particles=[];camera={x:0,y:0};paused=false;resetArmed=false;
+    $('#pause').textContent='Pause';$('#pause').setAttribute('aria-pressed','false');$('#restart').textContent='Restart';$('#win').hidden=true;
+    $('#engineer-panel').hidden=s.mode!=='engineer';$('.ws-help').textContent=s.mode==='engineer'?'Move: WASD / arrows · Run: Shift · Work: E / Space · Adjust supply, distributor and pond gate: hold E to increase, Q to decrease · Tap the ground to walk.':explorerHelp;refreshNotes();resize();canvas.focus({preventScroll:true});
+    message(s.mode==='engineer'?'Engineer trial: keep the wheel turning, both beds healthy and the pond level steady.':'Explorer progress restored.');
+  });
+  $('#hint').addEventListener('click',()=>{message(engineerHint(s));canvas.focus({preventScroll:true});});
   $('#restart').addEventListener('click',()=>{if(resetArmed)reset();else{resetArmed=true;$('#restart').textContent='Confirm restart';message('Press Confirm restart to start over.');}});
   $('#play-again').addEventListener('click',reset);$('#keep-exploring').addEventListener('click',()=>{$('#win').hidden=true;canvas.focus();});
   function update(dt){if(paused||document.hidden||!$('#win').hidden)return;
     let dx=0,dy=0;for(const k of keys){if(dirs[k]){dx+=dirs[k][0];dy+=dirs[k][1];}}
     if(dx||dy)move(dx,dy,dt);else if(route){const x=route.x-s.player.x,y=route.y-s.player.y;if(Math.hypot(x,y)<7){if(route.next?.length){const next=route.next.shift();route={...route,...next};}else{const act=route.act;route=null;if(act)actOnce();}}else if(!move(x,y,dt)){route=null;message('Walk around the loose channel, or push it from below.');}}
     if(actionHeld)work(dt);
-    const result=simulate(s,dt);if(connected(s)&&s.valve>0.1)discover(1);
+    const result=s.mode==='engineer'?{bridgeOpen:true}:simulate(s,dt);if(connected(s)&&s.valve>0.1)discover(1);
     if(result.bridgeOpen)discover(2);
-    const events=stepAdventure(s,dt);
+    const events=s.mode==='engineer'?stepEngineer(s,dt):stepAdventure(s,dt);
     for(const event of events){
       if(event==='crossing'){burst(890,425);message('Crossing restored! A wind pump waits on the far bank.');}
       if(event==='cog'){burst(890,510);message('Gear found! Carry it to the wind pump.');}
@@ -119,15 +149,18 @@ function start(){
       if(event==='diversion'){burst(350,635);message('Meadow supply restored! Clear the log downstream.');}
       if(event==='stream'){discover(6);burst(350,760);message('Stream cleared! Lift the pond gate to let water through.');}
       if(event==='pond'){discover(7);burst(520,940);message('Pond restored! A new meadow crossing opens.');}
-      if(event==='finish'){discover(5);burst(1750,680);clearInput();$('#win').hidden=false;$('#play-again').focus({preventScroll:true});$('#win-score').textContent=`7 restorations · ${s.sparks.length} / ${sparks.length} light seeds`;message('The whole valley is alive again.');}
+      if(event==='engineered'){discover(4);discover(6);discover(7);burst(s.player.x,s.player.y);clearInput();$('#win span').textContent='Engineer trial complete';$('#win h2').textContent='You balanced a working system.';$('#win-score').textContent='Wheel, garden and pond stayed stable for 12 seconds.';$('#win').hidden=false;$('#play-again').focus({preventScroll:true});message('Engineer trial mastered.');}
+      if(event==='finish'){$('#win span').textContent='Valley restored';$('#win h2').textContent='You brought the valley to life.';discover(5);burst(1750,680);clearInput();$('#win').hidden=false;$('#play-again').focus({preventScroll:true});$('#win-score').textContent=`7 restorations · ${s.sparks.length} / ${sparks.length} light seeds`;message('The whole valley is alive again.');}
       save();
     }
     particles=particles.map(p=>({...p,x:p.x+p.vx*dt,y:p.y+p.vy*dt,life:p.life-dt})).filter(p=>p.life>0);
     const next=nearest();near=next;
     const labels={elbow:['Turn channel','Tap E to rotate. Watch the stream.'],trough:[s.troughY<=330?'Connected':'Push channel',s.troughY<=330?'Water can pass through this connection.':'Get below it and hold E to push.'],valve:[s.pump===1?'Balance flow':'Open valve',s.pump===1?'Hold E to balance · Hold Q to lower · Shift + E also lowers.':'Hold E to open · Hold Q or Shift + E to lower.'],vane:['Turn vane','Tap E to face the breeze →.'],mill:[s.repair===1?'Gear fitted':'Fit gear',s.cog?'Hold E to fit the gear.':'Find the missing gear along the far bank.'],gate:['Split water','Tap E: closed / left / both / right.'],diverter:['Turn channel','Tap E to send the stream south toward the pond.'],log:[s.logX>=450?'Stream cleared':'Push log','Stand left of the log. Hold E to push right.'],sluice:[s.sluice===1?'Gate open':'Lift gate','Hold E to lift the pond gate.']};
+    if(s.mode==='engineer'){labels.valve=['Adjust supply','Hold E to increase · Q to decrease. Watch all three gauges.'];labels.sluice=['Adjust pond gate','Hold E to open · Q to close. Partial openings work.'];labels.distributor=['Adjust split','Hold E for more garden water · Q for more pond water.'];}
     const label=next?.id.startsWith('mirror')?['Turn mirror','Tap E to redirect the sunbeam.']:next?labels[next.id]:null;
-    $('#action').textContent=next?label[0]:'Explore';$('#context').textContent=next?label[1]:objective(s);
-    $('#goal').textContent=objective(s);$('#chapter').textContent=`${s.finished?'Valley restored':!s.crossed?'1 · The crossing':s.pump<1?'2 · Wind pump':s.gardenRestored?(s.pond<1?'4 · Wildflower Meadow':'5 · Sunstone Ridge'):'3 · The garden'} · ✦ ${s.sparks.length}/${sparks.length}`;
+    $('#action').textContent=next?label[0]:'Explore';$('#context').textContent=next?label[1]:s.mode==='engineer'?'Inspect the gauges. Adjust the supply, distributor and pond gate.':objective(s);
+    $('#goal').textContent=s.mode==='engineer'?'Keep wheel, garden and pond stable for 12 seconds.':objective(s);$('#chapter').textContent=s.mode==='engineer'?`Engineer · ${s.trialComplete?'Mastered':s.stability.toFixed(1)+' / 12 s stable'}`:`${s.finished?'Valley restored':!s.crossed?'1 · The crossing':s.pump<1?'2 · Wind pump':s.gardenRestored?(s.pond<1?'4 · Wildflower Meadow':'5 · Sunstone Ridge'):'3 · The garden'} · ✦ ${s.sparks.length}/${sparks.length}`;
+    if(s.mode==='engineer'){const r=systemReadings(s);for(const [id,value,ok] of [['wheel',r.wheel,r.wheelOK],['garden',r.garden,r.gardenOK],['pond',s.pond,r.levelOK&&r.pondOK]]){const el=$('#gauge-'+id);el.value=value;el.classList.toggle('good',ok);el.parentElement.classList.toggle('good',ok);$('#value-'+id).textContent=`${Math.round(value*100)}%`;el.textContent=`${Math.round(value*100)}%`;el.setAttribute('aria-label',`${id}: ${Math.round(value*100)} percent, ${ok?'within range':'outside range'}`);}$('#pond-inlet').textContent=`Intake ${Math.round(r.pond*100)}% (12–23%)`;$('#bed-health').textContent=`Beds ${Math.round(Math.min(...s.garden)*100)}% (≥80%)`;$('#stable').textContent=s.trialComplete?'Mastered':`${s.stability.toFixed(1)} / 12s stable`;}
     saveClock+=dt;if(saveClock>2){saveClock=0;save();}
   }
   function burst(x,y){for(let n=0;n<24;n++){const angle=n*Math.PI/12;particles.push({x,y,vx:Math.cos(angle)*45,vy:Math.sin(angle)*45-15,life:1.2});}}
@@ -162,12 +195,13 @@ function start(){
     if(s.bridge<1){path([[718,395],[722,390-span*0.8]],'#bea06c',7);}
     ctx.save();ctx.translate(686,403);ctx.rotate(s.wheelAngle*0.5);ctx.fillStyle='#e2ba77';ctx.fillRect(-13,-13,26,26);path([[-13,0],[13,0]],'#6f5837',3);ctx.restore();path([[694,403],[719,396]],'#bfc7a4',2);
     drawMeadow(ctx,s,time,{path,water,glow});
+    if(s.mode==='engineer')drawDistributor(ctx,s,{path,glow},time);
     drawAdventure(time);
     // Destination banner on the far bank.
     ctx.fillStyle='#6e593a';ctx.fillRect(901,368,5,54);ctx.fillStyle=s.won?'#fed57f':'#a4d3a1';ctx.beginPath();ctx.moveTo(906,370);ctx.lineTo(936,378);ctx.lineTo(906,389);ctx.closePath();ctx.fill();
     for(const [id,x,y] of [['elbow',330,180],['valve',180,180],['trough',475,s.troughY]])glow(x,y,near?.id===id,time);
     ctx.font='bold 17px system-ui';ctx.textAlign='center';ctx.fillStyle='#e4eed0';ctx.fillText('VALVE',180,133);ctx.fillText('CHANNEL',330,133);if(s.troughY>330)ctx.fillText('PUSH',475,s.troughY-47);
-    if(near){ctx.fillStyle='#ffdda2';ctx.font='bold 15px system-ui';ctx.fillText((['elbow','vane','gate','diverter'].includes(near.id)||near.id.startsWith('mirror'))?'E · TURN':near.id==='valve'?(s.pump===1?'E · BALANCE / Q · LOWER':'E · OPEN / Q · LOWER'):near.id==='mill'?'HOLD E · FIT':near.id==='sluice'?'HOLD E · LIFT':'HOLD E · PUSH',near.x,near.y+57);}
+    if(near){ctx.fillStyle='#ffdda2';ctx.font='bold 15px system-ui';ctx.fillText(s.mode==='engineer'&&['valve','distributor','sluice'].includes(near.id)?'E / Q · ADJUST':(['elbow','vane','gate','diverter'].includes(near.id)||near.id.startsWith('mirror'))?'E · TURN':near.id==='valve'?(s.mode!=='engineer'&&s.pump===1?'E · BALANCE / Q · LOWER':'E · OPEN / Q · LOWER'):near.id==='mill'?'HOLD E · FIT':near.id==='sluice'?'HOLD E · LIFT':'HOLD E · PUSH',near.x,near.y+57);}
     if(route){ctx.strokeStyle='#fce4a0';ctx.lineWidth=2;ctx.beginPath();ctx.arc(route.x,route.y,6,0,Math.PI*2);ctx.stroke();}
     const {x,y}=s.player,bob=keys.size||route?Math.sin(walkTime*17)*1.5:0;ctx.fillStyle='#15352977';ctx.beginPath();ctx.ellipse(x,y+13,13,5,0,0,Math.PI*2);ctx.fill();ctx.fillStyle='#233841';ctx.fillRect(x-8,y+6,6,10);ctx.fillRect(x+2,y+6,6,10);ctx.fillStyle='#ef9850';ctx.fillRect(x-10,y-10+bob,20,19);ctx.fillStyle='#f5d5aa';ctx.fillRect(x-8,y-23+bob,16,14);ctx.fillStyle='#193e46';ctx.fillRect(x-10,y-28+bob,20,8);ctx.fillStyle='#e7b35b';ctx.fillRect(x-12,y-21+bob,24,3);ctx.fillStyle='#765335';ctx.fillRect(x+7,y-9+bob,7,13);
     ctx.restore();drawOverview();if(paused){ctx.fillStyle='#102e3acb';ctx.fillRect(0,0,vw,vh);ctx.fillStyle='#fff';ctx.font='bold 32px system-ui';ctx.textAlign='center';ctx.fillText('Paused',vw/2,vh/2);}
@@ -232,7 +266,7 @@ function start(){
     if(s.pump===1)glow(555,245,near?.id==='gate',time);
     ctx.fillStyle='#e4eed0';ctx.font='bold 14px system-ui';ctx.fillText('GARDEN',565,100);
     // The valve gauge teaches the balance through immediate visual feedback.
-    if(s.pump===1){ctx.fillStyle='#172e38';ctx.fillRect(142,220,76,10);ctx.fillStyle='#80bd79';ctx.fillRect(142+76*.3,220,76*.35,10);ctx.fillStyle='#ffe3aa';ctx.fillRect(142+74*s.valve,217,3,16);}
+    if(s.pump===1){ctx.fillStyle='#172e38';ctx.fillRect(142,220,76,10);ctx.fillStyle=s.mode==='engineer'?'#719eab':'#80bd79';ctx.fillRect(142+76*(s.mode==='engineer'?0:.3),220,76*(s.mode==='engineer'?.85:.35),10);ctx.fillStyle='#ffe3aa';ctx.fillRect(142+74*s.valve,217,3,16);}
     for(let i=0;i<sparks.length;i++)if(!s.sparks.includes(i)){const p=sparks[i];ctx.fillStyle='#ffe299';ctx.beginPath();ctx.arc(p.x,p.y+Math.sin(time/350+i)*4,5,0,Math.PI*2);ctx.fill();ctx.strokeStyle='#fff3c366';ctx.beginPath();ctx.arc(p.x,p.y,11,0,Math.PI*2);ctx.stroke();}
     // Birds return when the crossing is restored; butterflies follow the blooms.
     if(s.crossed)for(let n=0;n<3;n++){const x=(time*.025+n*230)%680,y=65+Math.sin(time/1000+n)*12;path([[x-7,y-3],[x,y],[x+7,y-3]],'#cfdfce',2);}
