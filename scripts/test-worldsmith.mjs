@@ -1,0 +1,17 @@
+import assert from 'node:assert/strict';
+import {initialState,simulate} from '../public/brain-arcade/apprentice-restorer/js/flow-model.js';
+import {adventureState,stepAdventure,sparks} from '../public/brain-arcade/apprentice-restorer/js/adventure.js';
+const state=()=>({...initialState(),...adventureState()});
+const run=(s,seconds)=>{const events=[];for(let i=0;i<seconds*60;i++){simulate(s,1/60);events.push(...stepAdventure(s,1/60));}return events;};
+const s=state();s.player={x:890,y:425};run(s,1);assert.equal(s.crossed,false,'River cannot be crossed before restoration');
+s.elbow=3;s.troughY=330;s.valve=1;run(s,12);assert.equal(s.bridge,1);assert(s.crossed);
+s.player={x:890,y:510};run(s,1);assert(s.cog);s.repair=1;run(s,8);assert.equal(s.pump,0,'Connected gears need a source of energy');
+s.vane=1;assert(run(s,8).includes('pump'));assert.equal(s.pump,1);
+s.gate=2;run(s,10);assert.deepEqual(s.garden,[0,0],'Excessive flow cannot restore the beds');
+s.valve=.5;s.gate=1;run(s,8);assert.deepEqual(s.garden,[1,0],'Left branch only feeds the left bed');assert(!s.finished);
+s.gate=3;assert(run(s,8).includes('finish'));assert.deepEqual(s.garden,[1,1]);assert(s.won);assert(!run(s,1).includes('finish'),'Completion occurs once');
+for(const p of sparks){s.player={...p};run(s,.1);}assert.equal(s.sparks.length,5);run(s,1);assert.equal(s.sparks.length,5);
+const restored=adventureState(JSON.parse(JSON.stringify(s)));assert(restored.finished);assert.deepEqual(restored.garden,[1,1]);assert.equal(restored.sparks.length,5);
+assert.equal(adventureState({finished:true,garden:[],pump:1}).finished,false);
+assert.deepEqual(adventureState({sparks:[1,1,-1,500],garden:[NaN,2]}).sparks,[1]);
+console.log('PASS: connected energy sources, three restorations, flow balance, separate irrigation branches, collectible uniqueness, saved progress.');
