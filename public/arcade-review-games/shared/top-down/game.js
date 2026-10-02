@@ -186,7 +186,8 @@ function openQuestion(id){
   const entry=encounter.questions[encounter.index], question=entry.question;
   popup('REVIEW REWARD',chest.label||'Reward chest',[
     `Question ${encounter.index+1} of ${encounter.questions.length} · Reward: ${reward.label}`,
-    question.text
+    question.text,
+    'Use arrow keys to highlight a choice; Enter selects it.'
   ],[{text:'Return to map',run:()=>{activeQuestion=null;resume();}}]);
   for(const choice of question.choices){
     const b=element('button',choice);
@@ -199,6 +200,8 @@ function openQuestion(id){
       if(result.type==='wrong'){
         b.classList.add('wrong');b.disabled=true;
         $('feedback').textContent='Try again. '+result.explanation;
+        const remaining=[...$('answers').children].filter(answer=>!answer.disabled);
+        (remaining.find(answer=>question.choices.indexOf(answer.textContent)>question.choices.indexOf(choice))||remaining[0])?.focus();
         return;
       }
       b.classList.add('correct');for(const answer of $('answers').children)answer.disabled=true;
@@ -213,10 +216,23 @@ function openQuestion(id){
       $('dialog-actions').append(next);next.focus();render();
     });$('answers').append(b);
   }
+  [...$('answers').children].find(answer=>!answer.disabled)?.focus();
 }
 function restart(){state=createState(map);state.review=createReview(map,content.questions);activeQuestion=null;elapsed=0;started=true;$('pause').disabled=false;render();resume();message(map.startMessage||'Explore the map and read the nearby signs.');}
 function pause(){if(!started||dialog.open||state.won)return;popup('ADVENTURE PAUSED','Take your time',['Your position and progress are safe.'],[{text:'Resume adventure',run:resume,primary:true},{text:'Restart adventure',run:()=>popup('RESTART','Start a new adventure?',['This clears your keys, switches, and progress.'],[{text:'Start over',run:restart,primary:true},{text:'Keep playing',run:resume}])}]);}
 const keyDirs={ArrowUp:'up',ArrowDown:'down',ArrowLeft:'left',ArrowRight:'right',w:'up',s:'down',a:'left',d:'right'};
+dialog.addEventListener('keydown',e=>{
+  const buttons=[...$('answers').children,...$('dialog-actions').children].filter(button=>!button.disabled);
+  if(!buttons.length)return;
+  if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key)){
+    e.preventDefault();
+    const index=buttons.indexOf(document.activeElement),direction=e.key==='ArrowUp'||e.key==='ArrowLeft'?-1:1;
+    buttons[index<0?0:(index+direction+buttons.length)%buttons.length].focus();
+  }else if(e.key==='Enter'){
+    e.preventDefault();
+    if(!e.repeat&&buttons.includes(document.activeElement))document.activeElement.click();
+  }else if(e.key===' '&&e.repeat)e.preventDefault();
+});
 board.addEventListener('keydown',e=>{
   const dir=keyDirs[e.key]||keyDirs[e.key.toLowerCase()];
   if(dir){e.preventDefault();if(!e.repeat){held=dir;nextStep=performance.now()+165;performMove(dir);}return;}

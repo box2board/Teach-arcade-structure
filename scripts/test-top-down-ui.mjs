@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 class Node {
  constructor(){this.children=[];this.dataset={};this.style={setProperty:(k,v)=>this.style[k]=v};this.classList={add(){},remove(){}};this.listeners={};this.open=false;this.clientWidth=800;this.clientHeight=600;this.scrollHeight=0;}
- append(...nodes){this.children.push(...nodes)} prepend(...nodes){this.children.unshift(...nodes)} replaceChildren(...nodes){this.children=[...nodes]} before(){} after(){} setAttribute(k,v){this[k]=v} addEventListener(k,v){this.listeners[k]=v} querySelector(){return this.innerHTML?.includes('svg')?{}:null} focus(){} showModal(){this.open=true} close(){this.open=false} remove(){} }
+ append(...nodes){this.children.push(...nodes)} prepend(...nodes){this.children.unshift(...nodes)} replaceChildren(...nodes){this.children=[...nodes]} before(){} after(){} setAttribute(k,v){this[k]=v} addEventListener(k,v){this.listeners[k]=v} querySelector(){return this.innerHTML?.includes('svg')?{}:null} focus(){document.activeElement=this} click(){if(!this.disabled)this.listeners.click?.()} showModal(){this.open=true} close(){this.open=false} remove(){} }
 const nodes=new Map();globalThis.document={getElementById(id){if(!nodes.has(id))nodes.set(id,new Node());return nodes.get(id)},body:new Node(),querySelector(selector){if(selector!=='script[data-map]'){if(selector==='#message')return this.getElementById('message');if(!nodes.has(selector))nodes.set(selector,new Node());return nodes.get(selector);}return {dataset:{map:'./map.js',questionSet:'./constitution.js'}}},querySelectorAll(){return []},createElement(){return new Node()},addEventListener(){},hidden:false};globalThis.window={addEventListener(){}};globalThis.requestAnimationFrame=()=>{};
 await import('../public/arcade-review-games/shared/top-down/game.js');
 const get=id=>nodes.get(id);
@@ -34,11 +34,23 @@ function face(dir){s.facing=dir;key(keys[dir]);assert.equal(move(map,s,dir),fals
 function action(){const result=interact(map,s);key('e');return result;}
 function earn(id){
  assert.equal(action().id,id);
+ const dialogKey=(key,repeat=false)=>{let prevented=false;get('dialog').listeners.keydown({key,repeat,preventDefault(){prevented=true;}});assert.equal(prevented,true);};
  const count=s.review.encounters[id].questions.length;
  for(let i=0;i<count;i++){
   const text=get('dialog-body').children[1].textContent,q=content.questions.find(q=>q.text===text);assert.ok(q);
-  const correct=get('answers').children.find(b=>b.textContent===q.answer);assert.ok(correct);correct.listeners.click();
-  assert.match(get('feedback').textContent,/Correct!/);get('dialog-actions').children[0].listeners.click();
+  const answers=get('answers').children,correct=answers.find(b=>b.textContent===q.answer);assert.ok(correct);
+  assert.equal(document.activeElement,answers[0]);
+  dialogKey('ArrowUp');assert.equal(document.activeElement,get('dialog-actions').children[0]);
+  dialogKey('ArrowDown');assert.equal(document.activeElement,answers[0]);
+  const wrong=answers.find(b=>b!==correct);
+  while(document.activeElement!==wrong)dialogKey('ArrowRight');
+  dialogKey('Enter',true);assert.ok(!wrong.disabled);
+  dialogKey(' ',true);assert.ok(!wrong.disabled);
+  dialogKey('Enter');assert.ok(wrong.disabled);assert.notEqual(document.activeElement,wrong);
+  for(let j=0;j<answers.length+1;j++){dialogKey('ArrowDown');assert.notEqual(document.activeElement,wrong);}
+  while(document.activeElement!==correct)dialogKey('ArrowLeft');
+  dialogKey('Enter');assert.match(get('feedback').textContent,/Correct!/);
+  assert.equal(document.activeElement,get('dialog-actions').children[0]);dialogKey('Enter');
   const encounter=s.review.encounters[id];answerReview(s.review,id,encounter.questions[encounter.index].question.answer);
  }
  assert.equal(completeChallenge(map,s,id),true);assert.equal(get('dialog').open,false);
@@ -58,4 +70,4 @@ for(const id of map.puzzles[0].sequence){const o=map.objects.find(o=>o.id===id);
 assert.equal(get('seals').textContent,'Door lights: 6 / 6');
 go(18,10);assert.equal(action().type,'win');assert.equal(get('dialog-title').textContent,'Adventure complete');
 assert.ok(get('dialog-body').children.some(p=>p.textContent.includes('Review completed: 12 / 12')));
-console.log('DOM flow: all six reward dialogs, both vertical room cameras, split clues and the Hard win screen complete successfully.');
+console.log('DOM flow: all six reward dialogs complete with arrows and Enter, including wrong-answer recovery, disabled-choice skipping and repeat guards; both room cameras, clues and the Hard win screen pass.');
