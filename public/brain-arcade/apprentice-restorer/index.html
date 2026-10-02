@@ -1,41 +1,24 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#142c42">
-  <title>Worldsmith · Waterworks Valley | Teach Arcade</title>
-  <meta name="description" content="Explore Waterworks Valley, experiment with water flow, gears, and circuits, and restore a connected science adventure on Teach Arcade.">
-  <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="https://teacharcade.com/brain-arcade/apprentice-restorer/">
-  <link rel="stylesheet" href="/assets/styles.css?v=1">
-  <link rel="stylesheet" href="styles.css?v=2">
-  <script src="/assets/scripts/nav.js?v=5" defer></script>
-  <script type="module" src="js/app.js?v=2"></script>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Worldsmith · The Waterwheel Crossing | Teach Arcade</title>
+<meta name="description" content="Redirect a stream, push a channel into place, and power a bridge in Worldsmith's continuous science adventure.">
+<meta name="robots" content="noindex,follow"><link rel="canonical" href="https://teacharcade.com/brain-arcade/apprentice-restorer/">
+<link rel="stylesheet" href="/assets/styles.css?v=1"><link rel="stylesheet" href="styles.css?v=4">
+<script src="/assets/scripts/nav.js?v=5" defer></script><script type="module" src="js/app.js?v=4"></script>
 </head>
-<body class="restorer-page">
-  <div id="site-header"></div>
-  <main class="ar" id="restorer">
-    <div class="ar-title"><div><a href="/brain-arcade/">Brain Arcade</a><h1>Worldsmith</h1><p>Waterworks Valley · First region</p></div><button type="button" id="restart">New adventure</button></div>
-    <p class="ar-learning"><strong>Your discovery:</strong> Trace energy through a connected system. Change one setting, observe what happens, and use your evidence to make a repair.</p>
-    <div class="ar-layout">
-      <section class="ar-world" aria-label="Adventure">
-        <div class="ar-mission"><span class="ar-kicker">Your mission</span><strong id="objective">Visit the canal junction and bring water back to the valley.</strong><span id="progress">0 of 4 repairs</span></div>
-        <canvas id="world" width="936" height="576" tabindex="0" aria-label="Waterworks Valley. Use arrow keys or WASD to move; Space or E to interact. You can also use the station buttons below.">Use the station buttons to explore and interact with the valley.</canvas>
-        <div class="ar-status" id="status" role="status">Walk to the canal junction. The orange marker shows your next task.</div>
-        <div class="ar-controls"><div class="ar-dpad" aria-label="Movement controls"><button data-move="up" aria-label="Move up">↑</button><button data-move="left" aria-label="Move left">←</button><button data-move="down" aria-label="Move down">↓</button><button data-move="right" aria-label="Move right">→</button></div><button id="interact" class="ar-primary">Interact</button><button id="pause" aria-pressed="false">Pause</button></div>
-        <p class="ar-help">Move: arrows / WASD · Interact: Space / E · Tap the map to walk. Progress saves on this device.</p>
-      </section>
-      <aside class="ar-sidebar">
-        <section class="ar-card"><span class="ar-kicker">Explore the valley</span><h2>Restoration stations</h2><p>Choose a station to walk there.</p><div id="stations"></div></section>
-        <section class="ar-card"><span class="ar-kicker">Collected tools</span><h2>Your satchel</h2><ul id="inventory"><li>Field notebook</li></ul></section>
-        <section class="ar-card"><span class="ar-kicker">Discoveries</span><h2>Field notebook</h2><div id="notebook"><p>Your observations will appear here after each repair.</p></div><button id="report">Print notebook</button><p class="ar-save" id="save-status">Saved locally; no account needed.</p></section>
-      </aside>
-    </div>
-    <details class="ar-teacher"><summary>Learning objective & teacher guide · Grades 6–8</summary><p><strong>Objective:</strong> Students will trace how energy moves through a connected system and use observations from testing to explain how each part helps the system work.</p><p><strong>Evidence of learning:</strong> Students compare trials, distinguish energy transfer from conversion, and apply their discoveries to a new wind-powered greenhouse pump. Ask them to explain the energy journey and diagnose where a broken connection interrupts it. Reflection writing is not automatically graded.</p><p>Use in pairs or as a science station. Gear calculations are optional: students can choose gears by relative size and observe the resulting speed. For a math extension, calculate driven speed = driver speed × driver teeth ÷ driven teeth. Puzzle values are simplified model values, not real-machine measurements. The worn wheel’s slipping behavior is specific to this fictional mechanism, not a rule that more water always makes wheels worse.</p><p>The printable notebook includes trials, hints, and reflections. It stays on the current device; there is no class dashboard or online submission.</p></details>
-    <noscript><p>This adventure needs JavaScript. Please enable it to play.</p></noscript>
-  </main>
-  <dialog id="puzzle" class="ar-dialog" aria-labelledby="puzzle-title"><div class="ar-dialog-head"><span class="ar-kicker" id="puzzle-step">Restoration station</span><button id="close-puzzle" aria-label="Close station">×</button></div><h2 id="puzzle-title"></h2><p id="puzzle-intro"></p><div id="experiment"></div><p id="feedback" role="status"></p><div class="ar-dialog-actions"><button id="test" class="ar-primary">Test system</button><button id="hint">Get a hint</button></div><div id="reflection" hidden><label for="reflection-text">What changed, and why did it work?</label><textarea id="reflection-text" rows="3" maxlength="600" placeholder="Describe one observation from your experiment."></textarea><button id="continue" class="ar-primary">Save observation & continue</button></div></dialog>
-  <dialog id="reset-dialog" class="ar-dialog" aria-labelledby="reset-title"><h2 id="reset-title">Start a new adventure?</h2><p>This replaces the progress and notebook saved on this device. Print your notebook first if you want to keep it.</p><button id="confirm-reset">Start fresh</button><button id="cancel-reset">Keep exploring</button></dialog>
-  <footer class="ar-footer">© Teach Arcade · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></footer>
-</body>
-</html>
+<body class="restorer-page"><div id="site-header"></div>
+<main class="ws" id="worldsmith">
+<div class="ws-title"><div><a href="/brain-arcade/">Brain Arcade</a><h1>Worldsmith</h1></div><div class="ws-tools"><button id="pause" aria-pressed="false">Pause</button><button id="restart">Restart</button></div></div>
+<section class="ws-game" aria-label="Waterwheel adventure">
+<div class="ws-top"><span>The Waterwheel Crossing</span><strong id="goal">Bring the old bridge back to life.</strong></div>
+<div class="ws-scene"><canvas id="world" tabindex="0" aria-label="Waterwheel Crossing. Move with WASD or arrows. Hold E or Space to work on nearby objects. Tap the ground to walk."></canvas><div class="ws-message" id="message" aria-live="polite">Find a way to get water to the wheel.</div><div class="ws-win" id="win" hidden><span>Crossing restored</span><h2>You brought the valley to life.</h2><p>Moving water → wheel → winch → bridge.</p><button id="play-again">Play again</button><button id="keep-exploring">Keep exploring</button></div></div>
+<div class="ws-controls"><div class="ws-dpad" aria-label="Movement"><button data-move="up" aria-label="Move up">↑</button><button data-move="left" aria-label="Move left">←</button><button data-move="down" aria-label="Move down">↓</button><button data-move="right" aria-label="Move right">→</button></div><button class="ws-action" id="action">Explore</button><span id="context">Walk beside a glowing object.</span></div>
+</section>
+<p class="ws-help">Move: WASD / arrows · Work: E / Space · Lower valve: Shift + E · Tap the ground to walk.</p>
+<details class="ws-notebook"><summary>Discoveries <span id="discovery-count">0 / 3</span></summary><ul id="discoveries"><li>Your discoveries appear here as you play.</li></ul></details>
+<details class="ws-teacher"><summary>Learning objective & teacher notes</summary><p>Students trace energy through a connected system and use observed changes to explain how its parts work together. In this small gameplay trial, they redirect water, reconnect a channel, and control flow. The wheel drives a winch that lowers a bridge. Repairs happen directly in the scene; observations appear quietly in the notebook.</p><p>This tests the feel of one puzzle, rather than a complete lesson or assessment. After play, ask: “What stopped when the water stopped? Where did the energy come from?”</p></details>
+<noscript>This game needs JavaScript enabled.</noscript>
+</main><footer class="ws-footer">© Teach Arcade · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></footer>
+</body></html>

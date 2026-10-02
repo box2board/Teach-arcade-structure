@@ -1,203 +1,100 @@
-import { region, evaluateExperiment, evaluateTransfer } from './region.js';
-
-const root = document.querySelector('#restorer');
-if (root) startAdventure();
-function startAdventure() {
-  const $ = selector => document.querySelector(selector);
-  const canvas = $('#world'), ctx = canvas.getContext('2d');
-  const dialog = $('#puzzle'), cell = 36, storageKey = 'teacharcade-restorer-waterworks-v1';
-  const escape = text => String(text).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
-  const recordIds = [...region.stations.map(s=>s.id),'transfer'];
-  const fresh = () => ({version:2,position:{...region.spawn},repairs:[],notes:{},attempts:{},hints:{},trials:{},tools:[],completed:false,transferPassed:false});
-  let state = fresh(), saveAvailable = true;
-  try {
-    const data = JSON.parse(localStorage.getItem(storageKey));
-    if ([1,2].includes(data?.version) && Array.isArray(data.repairs)) {
-      // Restore only a contiguous sequence: a malformed save cannot skip prerequisites.
-      const repairs=[];
-      for(const station of region.stations){if(!data.repairs.includes(station.id))break;repairs.push(station.id);}
-      const strings = source => Object.fromEntries(recordIds.map(id=>[id,typeof source?.[id]==='string'?source[id].slice(0,600):'']));
-      const counts = source => Object.fromEntries(recordIds.map(id=>[id,Number.isSafeInteger(source?.[id])&&source[id]>=0?source[id]:0]));
-      const trials = Object.fromEntries(recordIds.map(id=>[id,Array.isArray(data.trials?.[id])?data.trials[id].filter(t=>typeof t?.settings==='string'&&typeof t?.observation==='string').slice(-30).map(t=>({settings:t.settings.slice(0,500),observation:t.observation.slice(0,500)})):[]]));
-      const transferPassed=data.version===2&&data.transferPassed===true&&repairs.length===4;
-      state = {...fresh(),repairs,notes:strings(data.notes),attempts:counts(data.attempts),hints:counts(data.hints),trials,tools:region.stations.filter(s=>Array.isArray(data.tools)&&data.tools.includes(s.id)).map(s=>s.id),transferPassed,completed:data.completed===true&&transferPassed};
-      if (Number.isInteger(data.position?.x)&&Number.isInteger(data.position?.y)) state.position={...data.position};
-    }
-  } catch { saveAvailable=false; }
-  let active=null, solved=false, paused=false, keys=new Set(), route=[], stepTime=0, lastTime=0, lastSave=0, destination=null, previousConfig=null;
-  const complete = id => state.repairs.includes(id);
-  const current = () => region.stations.find(s=>!complete(s.id));
-  const accessible = station => region.stations.slice(0,region.stations.indexOf(station)).every(s=>complete(s.id));
-  const blocked = (x,y) => x<1||y<1||x>24||y>14||(x===13&&(y!==8||!complete('wheel')))||(x>=21&&x<=23&&y===13&&!complete('gate'));
-  if(blocked(state.position.x,state.position.y))state.position={...region.spawn};
-  function save() {
-    try {localStorage.setItem(storageKey,JSON.stringify(state));$('#save-status').textContent='Progress saved on this device.';}
-    catch {saveAvailable=false;$('#save-status').textContent='Saving is unavailable. Keep this page open and print your notebook before leaving.';}
+import {WORLD,objects,initialState,connected,simulate,canStand} from './flow-model.js';
+const root=document.querySelector('#worldsmith');
+if(root)start();
+function start(){
+  const $=q=>document.querySelector(q),canvas=$('#world'),ctx=canvas.getContext('2d'),key='teacharcade-worldsmith-crossing-v1';
+  let s=initialState(),keys=new Set(),actionHeld=false,paused=false,route=null,near=null,last=0,camera={x:0,y:0},vw=960,vh=600,resetArmed=false,saveClock=0,valveDrag=false,walkTime=0;
+  const notes=['Connected channels redirect moving water.','A break in the channel stops energy reaching the wheel.','Moving water turns the wheel, which drives the winch and lowers the bridge.'];
+  try{const old=JSON.parse(localStorage.getItem(key));if(old?.version===1){s.elbow=Number.isInteger(old.elbow)&&old.elbow>=0&&old.elbow<=3?old.elbow:0;s.troughY=Number.isFinite(old.troughY)?Math.max(330,Math.min(475,old.troughY)):430;s.valve=Number.isFinite(old.valve)?Math.max(0,Math.min(1,old.valve)):0.12;s.bridge=Number.isFinite(old.bridge)?Math.max(0,Math.min(1,old.bridge)):0;s.won=old.won===true&&s.bridge===1;s.discoveries=Array.isArray(old.discoveries)?old.discoveries.filter(n=>Number.isInteger(n)&&n>=0&&n<3):[];if(Number.isFinite(old.player?.x)&&Number.isFinite(old.player?.y)&&canStand(old.player.x,old.player.y,s))s.player={...old.player};}}catch{}
+  const save=()=>{try{localStorage.setItem(key,JSON.stringify({...s,version:1}));}catch{}};
+  function message(text){$('#message').textContent=text;}
+  function discover(n){if(!s.discoveries.includes(n)){s.discoveries.push(n);refreshNotes();save();}}
+  function refreshNotes(){$('#discovery-count').textContent=`${s.discoveries.length} / 3`;$('#discoveries').innerHTML=s.discoveries.length?s.discoveries.map(n=>`<li>${notes[n]}</li>`).join(''):'<li>Your discoveries appear here as you play.</li>';}
+  function resize(){const mobile=(canvas.clientWidth||960)<620;vw=mobile?600:960;vh=600;const dpr=Math.min(window.devicePixelRatio||1,2);canvas.width=vw*dpr;canvas.height=vh*dpr;canvas.style.aspectRatio=`${vw} / ${vh}`;ctx.setTransform(dpr,0,0,dpr,0,0);}
+  window.addEventListener('resize',resize);resize();refreshNotes();
+  function nearest(){const candidates=[{id:'elbow',...objects.elbow},{id:'valve',...objects.valve},{id:'trough',x:objects.trough.x,y:s.troughY}];return candidates.map(o=>({...o,d:Math.hypot(o.x-s.player.x,o.y-s.player.y)})).filter(o=>o.d<80).sort((a,b)=>a.d-b.d)[0]||null;}
+  function actOnce(){if(paused||!$('#win').hidden)return;near=nearest();if(near?.id==='elbow'){s.elbow=(s.elbow+1)%4;message(s.elbow===3?'The stream turns toward the wheel.':'Water spills from the open end.');if(s.elbow===3)discover(0);save();}else if(near?.id==='valve'){s.valve=Math.max(0,Math.min(1,s.valve+(keys.has('shift')?-0.12:0.12)));save();}else if(!near)message('Walk beside the channel elbow, loose channel, or valve.');}
+  function work(dt){near=nearest();if(!near)return;if(near.id==='valve'){s.valve=Math.max(0,Math.min(1,s.valve+(keys.has('shift')?-1:1)*dt*0.42));}if(near.id==='trough'&&s.troughY>330){if(s.player.y>s.troughY+20){const step=Math.min(dt*65,s.troughY-330);s.troughY-=step;s.player.y-=step;if(s.troughY<=330.01){s.troughY=330;message('Channel connected. The stream can reach the wheel.');discover(1);save();}}else message('Get behind the loose channel and push it toward the gap.');}}
+  function move(dx,dy,dt){const speed=155*dt,norm=Math.hypot(dx,dy)||1;dx=dx/norm*speed;dy=dy/norm*speed;
+    const tryAxis=(amount,axis)=>{if(Math.abs(amount)<0.001)return false;const p={...s.player};p[axis]+=amount;if(!canStand(p.x,p.y,s))return false;
+      if(Math.abs(p.x-475)<57&&Math.abs(p.y-s.troughY)<31){if(axis==='y'&&s.troughY>330){const next=Math.max(330,Math.min(475,s.troughY+amount));if(Math.abs(next-s.troughY-amount)>0.01)return false;s.troughY=next;if(s.troughY===330){message('Channel connected.');discover(1);}}else return false;}
+      s.player=p;return true;};const x=tryAxis(dx,'x'),y=tryAxis(dy,'y');if(Math.abs(dx)+Math.abs(dy)>0.01&&(x||y))walkTime+=dt;return x||y;
   }
-  function status(text){$('#status').textContent=text;}
-  function refresh() {
-    $('#progress').textContent=`${state.repairs.length} of 4 repairs`;
-    $('#objective').textContent=state.completed?'Valley restored! Print your notebook or revisit your discoveries.':current()?.objective||'Visit the archive gate and repair the wind-powered greenhouse pump.';
-    $('#stations').innerHTML=region.stations.map(s=>`<button type="button" data-station="${s.id}" data-current="${current()?.id===s.id}"><span>${escape(s.name)}</span><small>${complete(s.id)?'✓ Repaired':accessible(s)?'Explore':'Locked'}</small></button>`).join('');
-    $('#inventory').innerHTML='<li>Field notebook</li>'+state.tools.map(id=>`<li>${escape(region.stations.find(s=>s.id===id).tool)}</li>`).join('');
-    $('#notebook').innerHTML=state.repairs.length?state.repairs.map(id=>{const s=region.stations.find(s=>s.id===id);return `<article><h3>${escape(s.name)}</h3><p>${escape(s.discovery)}</p>${trialHistory(id)}${state.notes[id]?`<p><strong>My observation:</strong> ${escape(state.notes[id])}</p>`:''}<p>${state.attempts[id]||0} tests · ${state.hints[id]||0} hints</p></article>`;}).join('')+(state.transferPassed?`<article><h3>Greenhouse transfer challenge</h3><p>Wind → turbine motion → generator → electrical energy → pump motor motion.</p>${trialHistory('transfer')}<p>${escape(state.notes.transfer||'')}</p><p>${state.attempts.transfer||0} tests · ${state.hints.transfer||0} hints</p></article>`:'')+(state.completed?'<p><strong>Archive complete. You restored the valley.</strong></p>':''):'<p>Your observations will appear here after each repair.</p>';
-    $('#stations').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>walkTo(region.stations.find(s=>s.id===b.dataset.station))));
-    $('#interact').disabled=paused;
-    if(!saveAvailable)$('#save-status').textContent='Saving is unavailable. Keep this page open and print your notebook before leaving.';
-  }
-  function trialHistory(id) {
-    const trials=state.trials[id]||[];
-    return trials.length?`<details class="ar-trials"><summary>Compare ${trials.length} recorded trials</summary>${trials.slice(-5).map(t=>`<p><strong>Changed settings:</strong> ${escape(t.settings)}<br><strong>Observed:</strong> ${escape(t.observation)}</p>`).join('')}<p>Showing the latest ${Math.min(5,trials.length)} trials.</p></details>`:'';
-  }
-  function recordTrial(id,config,result) {
-    const changed=previousConfig?Object.keys(config).filter(k=>previousConfig[k]!==config[k]).length:0;
-    previousConfig={...config};
-    const settings=[...$('#experiment').querySelectorAll('select,input')].map(el=>{
-      const label=document.querySelector(`label[for="${el.id}"]`)?.textContent||el.id;
-      return `${label}: ${el.tagName==='SELECT'?el.selectedOptions[0]?.textContent:el.value}`;
-    }).join(' · ');
-    state.trials[id]=[...(state.trials[id]||[]),{settings,observation:result.measurement}].slice(-30);
-    state.attempts[id]=(state.attempts[id]||0)+1;
-    $('#trial-history').innerHTML=trialHistory(id);
-    return changed>1?' You changed more than one setting this time. In your next comparison, change just one so you can isolate its effect.':'';
-  }
-  function findPath(target) {
-    const start=state.position,queue=[start],seen=new Set([`${start.x},${start.y}`]),parents=new Map();
-    while(queue.length){const p=queue.shift();if(p.x===target.x&&p.y===target.y){const path=[];let key=`${p.x},${p.y}`;while(key!==`${start.x},${start.y}`){const [x,y]=key.split(',').map(Number);path.unshift({x,y});key=parents.get(key);}return path;}
-      for(const [dx,dy] of [[1,0],[-1,0],[0,1],[0,-1]]){const next={x:p.x+dx,y:p.y+dy},key=`${next.x},${next.y}`;if(!blocked(next.x,next.y)&&!seen.has(key)){seen.add(key);parents.set(key,`${p.x},${p.y}`);queue.push(next);}}
-    }return null;
-  }
-  function walkTo(station) {
-    if(paused){status('Resume the adventure before walking.');return;}
-    if(!accessible(station)){status(`Repair ${current().name.toLowerCase()} first. The next station will unlock afterward.`);return;}
-    const path=findPath(station);if(!path){status('The bridge is closed. Restore the waterwheel to cross.');return;}
-    route=path;destination=station;keys.clear();status(`Walking to ${station.name.toLowerCase()}…`);
-    if(!route.length){destination=null;openStation(station);}
-  }
-  const near = () => region.stations.find(s=>Math.hypot(s.x-state.position.x,s.y-state.position.y)<=1.5);
-  function interact() {
-    if(paused||dialog.open)return;
-    const station=near();
-    if(!station){status('Move beside a station, or choose one from Restoration stations.');return;}
-    if(!accessible(station)){status(`This station needs the earlier repairs. Next: ${current().name}.`);return;}
-    route=[];destination=null;openStation(station);
-  }
-  const select = (label,id,options) => `<label for="${id}">${label}</label><select id="${id}">${options.map(([value,text])=>`<option value="${value}">${text}</option>`).join('')}</select>`;
-  const diagram = id => id==='canal'?'<svg class="ar-diagram" viewBox="0 0 500 140" role="img" aria-label="Water enters from west into an upper elbow, travels south to a lower elbow, then east to the wheel"><path d="M30 35H170V105H445" fill="none" stroke="#9cb3c4" stroke-width="20"/><text x="15" y="18" fill="#142c42" font-size="14">Incoming stream</text><circle cx="170" cy="35" r="24" fill="#e87920"/><circle cx="170" cy="105" r="24" fill="#e87920"/><text x="205" y="40" fill="#142c42" font-size="14">Upper elbow</text><text x="205" y="86" fill="#142c42" font-size="14">Lower elbow</text><text x="370" y="135" fill="#142c42" font-size="14">To waterwheel</text></svg>':id==='gears'?'<svg class="ar-diagram" viewBox="0 0 500 140" role="img" aria-label="A 20-tooth driver gear meshes with a driven gear connected to the generator"><circle cx="155" cy="65" r="35" fill="#e87920"/><circle cx="245" cy="65" r="55" fill="#6d8ba3"/><circle cx="155" cy="65" r="8" fill="#142c42"/><circle cx="245" cy="65" r="8" fill="#142c42"/><text x="75" y="128" fill="#142c42" font-size="14">Driver: 20 teeth · 120 rpm</text><text x="315" y="65" fill="#142c42" font-size="14">Generator</text><path d="M300 65H410" stroke="#142c42" stroke-width="4"/></svg>':id==='gate'?'<svg class="ar-diagram" viewBox="0 0 500 140" role="img" aria-label="Generator output connects through a test material to the motor, which requires a return connection to the generator"><path d="M90 75V30H390V75M390 90V120H90V90" stroke="#6d8ba3" stroke-width="5" fill="none"/><rect x="45" y="55" width="90" height="40" rx="8" fill="#142c42"/><rect x="345" y="55" width="90" height="40" rx="8" fill="#142c42"/><text x="52" y="80" fill="white" font-size="14">Generator</text><text x="368" y="80" fill="white" font-size="14">Motor</text><rect x="204" y="18" width="74" height="24" rx="4" fill="#e87920"/><text x="188" y="65" fill="#142c42" font-size="14">Test material</text><text x="178" y="107" fill="#142c42" font-size="14">Return connection</text></svg>':'';
-  function openStation(station) {
-    active=station;solved=false;previousConfig=null;keys.clear();route=[];destination=null;
-    if(!state.tools.includes(station.id)){state.tools.push(station.id);save();refresh();}
-    $('#puzzle-title').textContent=station.name;
-    $('#puzzle-intro').textContent=station.intro;
-    document.querySelector('label[for="reflection-text"]').textContent='What setting did you change? Compare two observations and explain why the repair worked.';
-    $('#puzzle-step').textContent=`Station ${region.stations.indexOf(station)+1} of 4 · ${station.tool}`;
-    $('#feedback').textContent='Run a first test. Then change one setting and compare the result.';$('#feedback').dataset.success='false';
-    $('#reflection').hidden=true;$('#reflection-text').value=state.notes[station.id]||'';$('#test').hidden=false;$('#hint').hidden=false;$('#test').disabled=false;
-    let controls='';
-    if(station.id==='canal')controls=select('Upper elbow openings','upper',[['we','West ↔ East'],['ne','North ↔ East'],['ws','West ↔ South'],['ns','North ↔ South']])+select('Lower elbow openings','lower',[['ws','West ↔ South'],['we','West ↔ East'],['ns','North ↔ South'],['ne','North ↔ East']]);
-    if(station.id==='wheel')controls='<label for="flow">Valve opening: <output id="flow-value">20</output>%</label><input id="flow" type="range" min="0" max="100" step="10" value="20"><p>Test several openings. The shaft needs enough energy without slipping.</p>';
-    if(station.id==='gears')controls=select('Driven gear size','teeth',[['10','Smaller than driver'],['20','Same size as driver'],['40','Larger: twice the driver size'],['60','Largest: three times the driver size']])+'<details><summary>Optional math extension</summary><p>The driver has 20 teeth and turns at 120 rpm. The choices have 10, 20, 40, and 60 teeth. Predict the driven speed: 120 × 20 ÷ driven teeth.</p></details>';
-    if(station.id==='gate')controls=select('Connecting material','material',[['rubber','Rubber'],['wood','Wood'],['copper','Copper']])+select('Return connection','returnPath',[['open','Disconnected'],['closed','Connected to generator']]);
-    $('#experiment').innerHTML=diagram(station.id)+controls+'<p class="ar-measurement" id="measurement">System awaiting test</p><div id="trial-history">'+trialHistory(station.id)+'</div>';
-    if(station.id==='wheel')$('#flow').addEventListener('input',()=>{$('#flow-value').textContent=$('#flow').value;});
-    if(complete(station.id)){
-      $('#puzzle-intro').textContent=station.discovery;
-      if(station.id==='gate'&&!state.completed)showTransfer();
-      else{$('#experiment').innerHTML='<p>This system is restored. Your observation is saved in the field notebook.</p>';$('#test').hidden=true;$('#hint').hidden=true;$('#feedback').textContent='You can add or revise your observation below.';$('#reflection').hidden=false;solved=true;}
-    }
-    dialog.showModal();
-  }
-  function showTransfer() {
-    previousConfig=null;
-    $('#puzzle-title').textContent='A new system: greenhouse pump';
-    $('#puzzle-step').textContent='Apply your discoveries · Final challenge';
-    $('#experiment').innerHTML=select('Device between wind turbine and pump motor','journey',[['direct','Connect turbine directly to electrical wires'],['motor','Add another motor'],['generator','Connect a generator']])+select('Test strip in the wire','wire',[['wood','Dry wood'],['aluminum','Aluminum'],['plastic','Plastic']])+select('Return wire from pump motor','loop',[['open','Disconnected'],['closed','Connected back to supply']])+'<p class="ar-measurement" id="measurement">Wind turbine turning · Pump stopped</p><div id="trial-history">'+trialHistory('transfer')+'</div>';
-    $('#puzzle-intro').textContent='A greenhouse uses wind instead of water. Its turbine is turning, but the electric pump is stopped. Build the missing energy connection, then test the circuit. Apply what you discovered; the old waterwheel settings will not solve this new system.';
-    $('#test').textContent='Test greenhouse system';$('#test').disabled=false;$('#test').hidden=false;$('#hint').hidden=false;$('#reflection').hidden=true;solved=false;
-  }
-  function testSystem(){
-    if(!active)return;
-    const config={};$('#experiment').querySelectorAll('select,input').forEach(el=>config[el.id]=el.value);
-    const transfer=Boolean($('#journey'));
-    const result=transfer?evaluateTransfer(config):evaluateExperiment(active.id,config);
-    const comparison=recordTrial(transfer?'transfer':active.id,config,result);
-    $('#measurement').textContent=result.measurement;$('#feedback').textContent=result.message+comparison;$('#feedback').dataset.success=String(result.success);
-    if(transfer){
-      if(result.success){state.transferPassed=true;state.completed=true;solved=true;$('#reflection').hidden=false;$('#reflection-text').value=state.notes.transfer||'';document.querySelector('label[for="reflection-text"]').textContent='Trace the wind-to-pump energy journey. Which change made your pump work, and what observation supports your explanation?';$('#test').disabled=true;$('#hint').hidden=true;}
-      save();refresh();return;
-    }
-    if(result.success){
-      if(!complete(active.id))state.repairs.push(active.id);
-      solved=true;$('#test').disabled=true;$('#hint').hidden=true;
-      if(active.id==='gate'){save();refresh();showTransfer();$('#feedback').textContent=result.message+' Now use your discoveries to repair a new system.';}
-      else $('#reflection').hidden=false;
-      status(result.message);
-    }
-    save();refresh();
-  }
-  $('#test').addEventListener('click',testSystem);
-  $('#hint').addEventListener('click',()=>{if(!active)return;const id=$('#journey')?'transfer':active.id;state.hints[id]=(state.hints[id]||0)+1;$('#feedback').textContent=id==='transfer'?'What device converts motion to electrical energy? Aluminum is a conductor. Test the return wire separately to see whether current needs a complete loop.':active.hint;save();refresh();});
-  $('#continue').addEventListener('click',()=>{if(!solved)return;const id=$('#journey')?'transfer':active.id;state.notes[id]=$('#reflection-text').value.trim().slice(0,600);save();refresh();dialog.close();canvas.focus();status(state.completed?'Waterworks Valley restored! Your notebook is ready to print.':current()?`Repair saved. Next: ${current().name}.`:'Return to the archive gate to repair the greenhouse system.');});
-  $('#close-puzzle').addEventListener('click',()=>dialog.close());
-  dialog.addEventListener('close',()=>{keys.clear();$('#test').textContent='Test system';canvas.focus();});
-  $('#interact').addEventListener('click',interact);
-  $('#pause').addEventListener('click',()=>{paused=!paused;keys.clear();route=[];destination=null;$('#pause').textContent=paused?'Resume':'Pause';$('#pause').setAttribute('aria-pressed',String(paused));status(paused?'Adventure paused. Your progress is saved.':'Adventure resumed. Explore a restoration station.');save();refresh();});
-  $('#restart').addEventListener('click',()=>{keys.clear();route=[];destination=null;$('#reset-dialog').showModal();});
-  $('#cancel-reset').addEventListener('click',()=>$('#reset-dialog').close());
-  $('#confirm-reset').addEventListener('click',()=>{state=fresh();keys.clear();route=[];destination=null;paused=false;$('#pause').textContent='Pause';$('#pause').setAttribute('aria-pressed','false');save();refresh();$('#reset-dialog').close();status('A fresh adventure. Visit the canal junction to restore water flow.');canvas.focus();});
-  function inputIsEditable(event){return event.target.matches('input,textarea,select,button,a,summary')||dialog.open||$('#reset-dialog').open;}
-  const directions={arrowup:[0,-1],w:[0,-1],up:[0,-1],arrowdown:[0,1],s:[0,1],down:[0,1],arrowleft:[-1,0],a:[-1,0],left:[-1,0],arrowright:[1,0],d:[1,0],right:[1,0]};
-  root.addEventListener('keydown',event=>{if(inputIsEditable(event))return;const key=event.key.toLowerCase();if(directions[key]){event.preventDefault();keys.add(key);route=[];destination=null;}if((key===' '||key==='e')&&!event.repeat){event.preventDefault();interact();}});
-  window.addEventListener('keyup',event=>keys.delete(event.key.toLowerCase()));
-  window.addEventListener('blur',()=>{keys.clear();route=[];destination=null;save();});
-  document.addEventListener('visibilitychange',()=>{keys.clear();route=[];destination=null;if(document.hidden)save();});
-  document.querySelectorAll('[data-move]').forEach(button=>{
-    button.addEventListener('pointerdown',event=>{if(paused||dialog.open)return;event.preventDefault();button.setPointerCapture(event.pointerId);keys.add(button.dataset.move);route=[];destination=null;canvas.focus();});
-    for(const event of ['pointerup','pointercancel','lostpointercapture'])button.addEventListener(event,()=>keys.delete(button.dataset.move));
-    // Keyboard activation of touch controls moves one tile.
-    button.addEventListener('click',event=>{if(event.detail===0&&!paused){move(...directions[button.dataset.move]);save();}});
+  const dirs={arrowup:[0,-1],w:[0,-1],up:[0,-1],arrowdown:[0,1],s:[0,1],down:[0,1],arrowleft:[-1,0],a:[-1,0],left:[-1,0],arrowright:[1,0],d:[1,0],right:[1,0]};
+  function clearInput(){keys.clear();actionHeld=false;route=null;valveDrag=false;}
+  root.addEventListener('keydown',e=>{if(e.target.matches('button,a,summary'))return;const k=e.key.toLowerCase();if(dirs[k]||[' ','e','shift'].includes(k)){e.preventDefault();keys.add(k);if(dirs[k])route=null;if((k==='e'||k===' ')&&!e.repeat){actionHeld=true;actOnce();}}});
+  window.addEventListener('keyup',e=>{const k=e.key.toLowerCase();keys.delete(k);if(k==='e'||k===' ')actionHeld=false;});
+  window.addEventListener('blur',()=>{clearInput();save();});document.addEventListener('visibilitychange',()=>{clearInput();save();});
+  document.querySelectorAll('[data-move]').forEach(b=>{b.addEventListener('pointerdown',e=>{e.preventDefault();if(paused)return;b.setPointerCapture(e.pointerId);keys.add(b.dataset.move);route=null;canvas.focus();});for(const ev of ['pointerup','pointercancel','lostpointercapture'])b.addEventListener(ev,()=>keys.delete(b.dataset.move));b.addEventListener('click',e=>{if(e.detail===0&&!paused){move(...dirs[b.dataset.move],0.22);save();}});});
+  $('#action').addEventListener('pointerdown',e=>{e.preventDefault();if(paused)return;$('#action').setPointerCapture(e.pointerId);canvas.focus();actionHeld=true;actOnce();});for(const ev of ['pointerup','pointercancel','lostpointercapture'])$('#action').addEventListener(ev,()=>{actionHeld=false;save();});$('#action').addEventListener('click',e=>{if(e.detail===0){actOnce();work(0.3);save();}});
+  function point(e){const r=canvas.getBoundingClientRect();return {x:(e.clientX-r.left)/r.width*vw+camera.x,y:(e.clientY-r.top)/r.height*vh+camera.y};}
+  canvas.addEventListener('pointerdown',e=>{e.preventDefault();if(paused||!$('#win').hidden)return;canvas.focus();const p=point(e);canvas.setPointerCapture(e.pointerId);if(Math.hypot(p.x-objects.valve.x,p.y-objects.valve.y)<36&&Math.hypot(s.player.x-objects.valve.x,s.player.y-objects.valve.y)<80){valveDrag=true;route=null;return;}
+    const hit=Math.hypot(p.x-330,p.y-180)<40?'elbow':Math.hypot(p.x-475,p.y-s.troughY)<50?'trough':Math.hypot(p.x-180,p.y-180)<40?'valve':null;
+    if(hit==='elbow'&&nearest()?.id==='elbow'){actOnce();return;}
+    const target=hit==='elbow'?{x:330,y:238}:hit==='trough'?{x:475,y:s.troughY+60}:hit==='valve'?{x:180,y:238}:p;
+    if(canStand(target.x,target.y,s)){
+      let points=[target];
+      if(hit==='trough'&&s.player.y<s.troughY+31)points=[{x:395,y:s.player.y},{x:395,y:s.troughY+65},target];
+      else if(target.x>840&&s.player.x<718)points=[{x:700,y:425},{x:860,y:425},target];
+      else if(target.x<718&&s.player.x>840)points=[{x:860,y:425},{x:700,y:425},target];
+      route={...points.shift(),next:points,act:hit==='elbow'};
+    }else message(s.bridge<1?'The crossing needs power first.':'Use the bridge to cross the river.');
   });
-  canvas.addEventListener('click',event=>{
-    canvas.focus();if(paused||dialog.open)return;const bounds=canvas.getBoundingClientRect();const p={x:Math.floor((event.clientX-bounds.left)/bounds.width*26),y:Math.floor((event.clientY-bounds.top)/bounds.height*16)};
-    const station=region.stations.find(s=>s.x===p.x&&s.y===p.y);if(station){walkTo(station);return;}
-    if(blocked(p.x,p.y)){status('That route is blocked. Restore the waterwheel to lower the bridge.');return;}const path=findPath(p);if(path){route=path;destination=null;keys.clear();}else status('There is no open route yet.');
-  });
-  function move(dx,dy){const next={x:state.position.x+dx,y:state.position.y+dy};if(!blocked(next.x,next.y)){state.position=next;const s=near();if(s)status(`${s.name}: press Interact${complete(s.id)?' to revisit your discovery':'.'}`);return true;}return false;}
+  canvas.addEventListener('pointermove',e=>{if(valveDrag){const p=point(e);s.valve=Math.max(0,Math.min(1,(240-p.y)/120));}});for(const ev of ['pointerup','pointercancel','lostpointercapture'])canvas.addEventListener(ev,()=>{if(valveDrag)save();valveDrag=false;});
+  $('#pause').addEventListener('click',()=>{paused=!paused;clearInput();$('#pause').textContent=paused?'Resume':'Pause';$('#pause').setAttribute('aria-pressed',String(paused));save();});
+  function reset(){s=initialState();clearInput();paused=false;resetArmed=false;$('#pause').textContent='Pause';$('#pause').setAttribute('aria-pressed','false');$('#restart').textContent='Restart';$('#win').hidden=true;message('Find a way to get water to the wheel.');refreshNotes();save();canvas.focus();}
+  $('#restart').addEventListener('click',()=>{if(resetArmed)reset();else{resetArmed=true;$('#restart').textContent='Confirm restart';message('Press Confirm restart to start over.');}});
+  $('#play-again').addEventListener('click',reset);$('#keep-exploring').addEventListener('click',()=>{$('#win').hidden=true;canvas.focus();});
+  function update(dt){if(paused||document.hidden||!$('#win').hidden)return;
+    let dx=0,dy=0;for(const k of keys){if(dirs[k]){dx+=dirs[k][0];dy+=dirs[k][1];}}
+    if(dx||dy)move(dx,dy,dt);else if(route){const x=route.x-s.player.x,y=route.y-s.player.y;if(Math.hypot(x,y)<7){if(route.next?.length){const next=route.next.shift();route={...route,...next};}else{const act=route.act;route=null;if(act)actOnce();}}else if(!move(x,y,dt)){route=null;message('Walk around the loose channel, or push it from below.');}}
+    if(actionHeld)work(dt);
+    const result=simulate(s,dt);if(connected(s)&&s.valve>0.1)discover(1);
+    if(result.bridgeOpen){discover(2);if(s.player.x>878&&!s.won){s.won=true;clearInput();$('#win').hidden=false;message('Crossing restored.');save();}}
+    const next=nearest();near=next;
+    const labels={elbow:['Turn channel','Tap E to rotate. Watch the stream.'],trough:[s.troughY<=330?'Connected':'Push channel',s.troughY<=330?'Water can pass through this connection.':'Get below it and hold E to push.'],valve:['Turn valve','Hold E to open; Shift + E to close. Or drag the valve up/down.']};
+    $('#action').textContent=next?labels[next.id][0]:'Explore';$('#context').textContent=next?labels[next.id][1]:result.bridgeOpen?'The bridge is ready. Cross to the far bank.':'Walk beside a glowing object.';
+    $('#goal').textContent=s.won?'Crossing restored. Explore or restart.':result.bridgeOpen?'Cross the bridge.':result.turning?'The wheel is powering the bridge…':s.elbow!==3?'Redirect the stream.':!connected(s)?'Reconnect the loose channel.':'Give the wheel enough moving water.';
+    saveClock+=dt;if(saveClock>2){saveClock=0;save();}
+  }
+  function path(points,color,width){ctx.strokeStyle=color;ctx.lineWidth=width;ctx.lineCap='round';ctx.lineJoin='round';ctx.beginPath();points.forEach((p,i)=>i?ctx.lineTo(...p):ctx.moveTo(...p));ctx.stroke();}
+  function water(points,time){path(points,'#2594b2',15);path(points,'#75dce8',7);for(let i=1;i<points.length;i++){const a=points[i-1],b=points[i],len=Math.hypot(b[0]-a[0],b[1]-a[1]);for(let d=(time*0.07)%32;d<len;d+=32){const f=d/len;ctx.fillStyle='#c9f8ec';ctx.beginPath();ctx.arc(a[0]+(b[0]-a[0])*f,a[1]+(b[1]-a[1])*f,2,0,Math.PI*2);ctx.fill();}}}
+  function tree(x,y,size){ctx.fillStyle='#153e3a55';ctx.beginPath();ctx.ellipse(x+8,y+9,size*0.8,size*0.28,0,0,Math.PI*2);ctx.fill();ctx.fillStyle='#986d43';ctx.fillRect(x-4,y-20,8,25);ctx.fillStyle='#164c3e';ctx.beginPath();ctx.arc(x,y-32,size,0,Math.PI*2);ctx.fill();ctx.fillStyle='#287456';ctx.beginPath();ctx.arc(x-6,y-38,size*0.75,0,Math.PI*2);ctx.fill();ctx.fillStyle='#479269';ctx.beginPath();ctx.arc(x-10,y-43,size*0.4,0,Math.PI*2);ctx.fill();}
+  function glow(x,y,active,time){ctx.strokeStyle=active?'#ffe2a1':'#95c3a066';ctx.lineWidth=active?3:2;ctx.beginPath();ctx.arc(x,y,35+(active?Math.sin(time/250)*2:0),0,Math.PI*2);ctx.stroke();}
   function draw(time){
-    ctx.fillStyle='#24574d';ctx.fillRect(0,0,936,576);
-    for(let y=0;y<16;y++)for(let x=0;x<26;x++){
-      const edge=x===0||y===0||x===25||y===15;ctx.fillStyle=edge?'#173c38':(x+y)%2?'#2b6254':'#2d6658';ctx.fillRect(x*cell,y*cell,cell,cell);
-      if(!edge&&((x*7+y*11)%19===0)){ctx.fillStyle='#43836a';ctx.fillRect(x*cell+6,y*cell+8,3,7);ctx.fillRect(x*cell+11,y*cell+11,3,5);}
-    }
-    // Walkways connect every station; the river crossing is gated by the wheel repair.
-    ctx.fillStyle='#bdba95';ctx.fillRect(2*cell,8*cell,22*cell,cell);ctx.fillRect(6*cell,5*cell,cell,4*cell);ctx.fillRect(10*cell,8*cell,cell,3*cell);ctx.fillRect(18*cell,5*cell,cell,4*cell);ctx.fillRect(22*cell,8*cell,cell,5*cell);
-    ctx.fillStyle='#286780';ctx.fillRect(13*cell,cell,cell,14*cell);
-    for(let y=1;y<15;y++){ctx.fillStyle='#58a5bc';ctx.fillRect(13*cell+8, y*cell+((time/90+y*3)%24),20,2);}
-    if(complete('wheel')){ctx.fillStyle='#b8804c';ctx.fillRect(13*cell,8*cell,cell,cell);ctx.strokeStyle='#674529';for(let n=0;n<4;n++){ctx.beginPath();ctx.moveTo(13*cell,8*cell+n*9);ctx.lineTo(14*cell,8*cell+n*9);ctx.stroke();}}
-    else{ctx.fillStyle='#613f34';ctx.fillRect(13*cell,8*cell,cell,cell);}
-    ctx.lineCap='round';ctx.strokeStyle=complete('canal')?'#68c7e6':'#647767';ctx.lineWidth=12;ctx.beginPath();ctx.moveTo(2*cell,3*cell);ctx.lineTo(6.5*cell,3*cell);ctx.lineTo(6.5*cell,10.5*cell);ctx.lineTo(10.5*cell,10.5*cell);ctx.stroke();
-    if(complete('canal')){ctx.fillStyle='#bcefff';for(let n=0;n<4;n++)ctx.fillRect((3+n)*cell+(time/50%18),3*cell-3,10,3);}
-    ctx.lineWidth=5;ctx.strokeStyle=complete('gears')?'#f3c25c':'#476c61';ctx.beginPath();ctx.moveTo(18.5*cell,5.5*cell);ctx.lineTo(22.5*cell,5.5*cell);ctx.lineTo(22.5*cell,11.5*cell);ctx.stroke();
-    for(const s of region.stations){const x=s.x*cell+18,y=s.y*cell+18;ctx.fillStyle='#193b3d';ctx.fillRect(x-27,y-25,54,50);ctx.strokeStyle=complete(s.id)?'#81d3a5':current()?.id===s.id?'#f2a753':'#789793';ctx.lineWidth=3;ctx.strokeRect(x-27,y-25,54,50);
-      if(s.id==='wheel'||s.id==='gears'){ctx.save();ctx.translate(x,y);ctx.rotate(complete('wheel')?time/1200:0);ctx.strokeStyle='#d6b87f';ctx.lineWidth=4;ctx.beginPath();ctx.arc(0,0,18,0,Math.PI*2);ctx.stroke();for(let a=0;a<8;a++){ctx.rotate(Math.PI/4);ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(18,0);ctx.stroke();}ctx.restore();}
-      else if(s.id==='canal'){ctx.strokeStyle=complete(s.id)?'#79d8f1':'#d6b87f';ctx.lineWidth=6;ctx.beginPath();ctx.moveTo(x-15,y-15);ctx.lineTo(x,y-15);ctx.lineTo(x,y+15);ctx.lineTo(x+15,y+15);ctx.stroke();}
-      else{ctx.fillStyle=complete(s.id)?'#7ecea0':'#c19b72';ctx.fillRect(x-15,y-18,30,36);ctx.fillStyle='#193b3d';ctx.fillRect(x-3,y-18,6,36);}
-      ctx.font='bold 14px system-ui';ctx.textAlign='center';const width=ctx.measureText(s.name).width+14;ctx.fillStyle='#142c42';ctx.fillRect(x-width/2,y-50,width,23);ctx.fillStyle='#fff';ctx.fillText(s.name,x,y-34);
-      if(complete(s.id)){ctx.fillStyle='#bcf4ce';ctx.font='bold 18px system-ui';ctx.fillText('✓',x+23,y+23);}
-    }
-    ctx.fillStyle=complete('gate')?'#70b894':'#283c43';ctx.fillRect(21*cell,13*cell,3*cell,cell);
-    ctx.fillStyle='#fff';ctx.font='14px system-ui';ctx.fillText(complete('gate')?'Archive open':'Archive sealed',22.5*cell,14*cell+22);
-    const p=state.position,px=p.x*cell+18,py=p.y*cell+18;ctx.fillStyle='#0004';ctx.beginPath();ctx.ellipse(px,py+12,12,5,0,0,Math.PI*2);ctx.fill();ctx.fillStyle='#ed8a38';ctx.fillRect(px-8,py-3,16,18);ctx.fillStyle='#f6d5ae';ctx.fillRect(px-7,py-14,14,13);ctx.fillStyle='#142c42';ctx.fillRect(px-8,py-17,16,6);ctx.fillRect(px-7,py+15,5,5);ctx.fillRect(px+2,py+15,5,5);
-    if(paused){ctx.fillStyle='#142c42cc';ctx.fillRect(0,0,936,576);ctx.fillStyle='#fff';ctx.font='bold 36px system-ui';ctx.fillText('Paused',468,280);}
-    if(state.completed){ctx.fillStyle='#142c42';ctx.fillRect(260,15,416,39);ctx.fillStyle='#bdf0d0';ctx.font='bold 20px system-ui';ctx.fillText('Waterworks Valley restored',468,42);}
+    camera.x=Math.max(0,Math.min(WORLD.width-vw,s.player.x-vw/2));camera.y=0;
+    ctx.clearRect(0,0,vw,vh);ctx.save();ctx.translate(-camera.x,-camera.y);
+    const bg=ctx.createLinearGradient(0,0,0,600);bg.addColorStop(0,'#184c43');bg.addColorStop(1,'#377b5b');ctx.fillStyle=bg;ctx.fillRect(0,0,960,600);
+    // Fixed world texture avoids shimmering as the camera moves.
+    for(let n=0;n<140;n++){const x=(n*137+33)%960,y=(n*71+60)%600;if(x>720&&x<840)continue;ctx.fillStyle=n%3?'#71a77635':'#d4c78344';ctx.fillRect(x,y,3,2);}
+    path([[70,470],[290,470],[340,420],[910,425]],'#193f3555',72);path([[70,466],[290,466],[340,416],[910,421]],'#bcaf7d',54);path([[70,466],[290,466],[340,416],[910,421]],'#d3c197',38);
+    const river=ctx.createLinearGradient(720,0,840,0);river.addColorStop(0,'#256e86');river.addColorStop(0.5,'#338fa7');river.addColorStop(1,'#225f76');ctx.fillStyle=river;ctx.fillRect(720,0,120,600);ctx.fillStyle='#99d5cc66';ctx.fillRect(718,0,4,600);ctx.fillRect(839,0,4,600);for(let n=0;n<35;n++){const y=(n*31+time*0.045)%610;path([[734+n%3*32,y],[748+n%3*32,y]],'#90dce56b',2);}
+    for(const [x,y,z] of [[55,100,25],[105,87,31],[420,90,26],[545,83,31],[652,95,30],[50,280,29],[90,345,24],[600,530,29],[670,552,24],[875,92,29],[916,175,24],[890,540,29],[140,561,23],[310,562,27]])tree(x,y,z);
+    // Channel bed has a visible missing section between the elbow and wheel.
+    path([[70,180],[330,180],[330,330],[421,330]],'#4a5042',34);path([[70,180],[330,180],[330,330],[421,330]],'#b5aa82',25);path([[529,330],[650,330]],'#4a5042',34);path([[529,330],[650,330]],'#b5aa82',25);
+    ctx.strokeStyle='#d9d69a88';ctx.lineWidth=2;ctx.setLineDash([6,6]);ctx.strokeRect(429,309,92,42);ctx.setLineDash([]);
+    path([[475,330],[475,477]],'#9fae8460',4);
+    ctx.fillStyle='#163d3450';ctx.fillRect(430,s.troughY-13,92,38);ctx.fillStyle=s.troughY===330?'#c2b586':'#d7c392';ctx.fillRect(429,s.troughY-20,92,35);ctx.fillStyle='#655e45';ctx.fillRect(430,s.troughY-10,90,15);ctx.fillStyle='#f2dba9';ctx.fillRect(429,s.troughY-20,92,5);ctx.fillRect(429,s.troughY+10,92,5);for(const x of [435,513]){ctx.fillStyle='#706646';ctx.fillRect(x,s.troughY-19,4,34);}
+    if(s.valve>0.02){water([[70,180],[330,180]],time*s.valve);if(s.elbow===3){water([[330,180],[330,330],[421,330]],time*s.valve);if(connected(s))water([[421,330],[650,330]],time*s.valve);else{for(let n=0;n<8;n++){ctx.fillStyle='#76d2dc';ctx.fillRect(424+n%3*7,330+(time/8+n*9)%38,3,5);}}}else{const endpoints=[[330,150],[361,180],[330,211],[299,180]];const tip=endpoints[s.elbow];water([[330,180],tip],time*s.valve);ctx.fillStyle='#71cdd980';ctx.beginPath();ctx.ellipse(tip[0],tip[1]+8,16,8,0,0,Math.PI*2);ctx.fill();}}
+    // Rotating elbow: its open ports are visible in the world.
+    const ports=[[-1,0],[0,-1],[1,0],[0,1]];const pairs=[[0,1],[1,2],[2,3],[3,0]];const pair=pairs[s.elbow];ctx.fillStyle='#c5b17b';ctx.beginPath();ctx.arc(330,180,25,0,Math.PI*2);ctx.fill();path([[330+ports[pair[0]][0]*25,180+ports[pair[0]][1]*25],[330,180],[330+ports[pair[1]][0]*25,180+ports[pair[1]][1]*25]],'#536757',12);
+    // Valve handle and opening arc.
+    ctx.fillStyle='#163d43';ctx.beginPath();ctx.arc(180,180,23,0,Math.PI*2);ctx.fill();ctx.strokeStyle='#f3bb70';ctx.lineWidth=4;ctx.beginPath();ctx.arc(180,180,18,-Math.PI/2,-Math.PI/2+Math.PI*2*s.valve);ctx.stroke();ctx.save();ctx.translate(180,180);ctx.rotate(s.valve*Math.PI*1.5);path([[-17,0],[17,0]],'#efad57',5);path([[0,-17],[0,17]],'#efad57',5);ctx.restore();
+    // Wheel shaft visibly connects to the winch at the bridge.
+    path([[650,330],[686,330],[686,403]],'#182e32',12);path([[650,326],[682,326],[682,403]],'#a4ac84',4);ctx.fillStyle='#254247';ctx.fillRect(620,300,60,68);ctx.save();ctx.translate(650,330);ctx.rotate(s.wheelAngle);ctx.strokeStyle='#d3ac65';ctx.lineWidth=9;ctx.beginPath();ctx.arc(0,0,41,0,Math.PI*2);ctx.stroke();for(let n=0;n<10;n++){ctx.rotate(Math.PI/5);path([[0,0],[40,0]],'#c99d58',5);ctx.fillStyle='#e6bd74';ctx.fillRect(33,-11,10,22);}ctx.restore();ctx.fillStyle='#4b5144';ctx.beginPath();ctx.arc(650,330,10,0,Math.PI*2);ctx.fill();
+    // Bridge lowers continuously; collision opens only when fully deployed.
+    ctx.fillStyle='#51482f';ctx.fillRect(710,393,11,63);ctx.fillRect(840,393,11,63);const span=120*s.bridge;ctx.fillStyle='#b48c51';ctx.fillRect(720,401,span,48);for(let x=724;x<720+span;x+=13){path([[x,402],[x,448]],'#785b35',2);}path([[720,400],[720+span,400]],'#eed095',4);path([[720,450],[720+span,450]],'#eed095',4);
+    if(s.bridge<1){path([[718,395],[722,390-span*0.8]],'#bea06c',7);}
+    ctx.save();ctx.translate(686,403);ctx.rotate(s.wheelAngle*0.5);ctx.fillStyle='#e2ba77';ctx.fillRect(-13,-13,26,26);path([[-13,0],[13,0]],'#6f5837',3);ctx.restore();path([[694,403],[719,396]],'#bfc7a4',2);
+    // Destination banner on the far bank.
+    ctx.fillStyle='#6e593a';ctx.fillRect(901,368,5,54);ctx.fillStyle=s.won?'#fed57f':'#a4d3a1';ctx.beginPath();ctx.moveTo(906,370);ctx.lineTo(936,378);ctx.lineTo(906,389);ctx.closePath();ctx.fill();
+    for(const [id,x,y] of [['elbow',330,180],['valve',180,180],['trough',475,s.troughY]])glow(x,y,near?.id===id,time);
+    ctx.font='bold 17px system-ui';ctx.textAlign='center';ctx.fillStyle='#e4eed0';ctx.fillText('VALVE',180,133);ctx.fillText('CHANNEL',330,133);if(s.troughY>330)ctx.fillText('PUSH',475,s.troughY-47);
+    if(near){ctx.fillStyle='#ffdda2';ctx.font='bold 15px system-ui';ctx.fillText(near.id==='elbow'?'E · TURN':near.id==='valve'?'HOLD E · OPEN':s.troughY>330?'HOLD E · PUSH':'CONNECTED',near.x,near.y+57);}
+    if(route){ctx.strokeStyle='#fce4a0';ctx.lineWidth=2;ctx.beginPath();ctx.arc(route.x,route.y,6,0,Math.PI*2);ctx.stroke();}
+    const {x,y}=s.player,bob=keys.size||route?Math.sin(walkTime*17)*1.5:0;ctx.fillStyle='#15352977';ctx.beginPath();ctx.ellipse(x,y+13,13,5,0,0,Math.PI*2);ctx.fill();ctx.fillStyle='#233841';ctx.fillRect(x-8,y+6,6,10);ctx.fillRect(x+2,y+6,6,10);ctx.fillStyle='#ef9850';ctx.fillRect(x-10,y-10+bob,20,19);ctx.fillStyle='#f5d5aa';ctx.fillRect(x-8,y-23+bob,16,14);ctx.fillStyle='#193e46';ctx.fillRect(x-10,y-28+bob,20,8);ctx.fillStyle='#e7b35b';ctx.fillRect(x-12,y-21+bob,24,3);ctx.fillStyle='#765335';ctx.fillRect(x+7,y-9+bob,7,13);
+    ctx.restore();if(paused){ctx.fillStyle='#102e3acb';ctx.fillRect(0,0,vw,vh);ctx.fillStyle='#fff';ctx.font='bold 32px system-ui';ctx.textAlign='center';ctx.fillText('Paused',vw/2,vh/2);}
   }
-  function frame(time){const dt=Math.min(time-lastTime,100);lastTime=time;
-    if(!paused&&!dialog.open&&!$('#reset-dialog').open&&!document.hidden){stepTime+=dt;if(stepTime>=125){stepTime=0;if(keys.size){const d=directions[[...keys].at(-1)];if(d)move(...d);}else if(route.length){const next=route.shift();if(!blocked(next.x,next.y))state.position=next;else{route=[];destination=null;}if(!route.length&&destination){const s=destination;destination=null;openStation(s);}}}
-      if(time-lastSave>2500){lastSave=time;save();}}
-    draw(time);requestAnimationFrame(frame);
-  }
-  $('#report').addEventListener('click',()=>{
-    document.querySelector('.ar-print-only')?.remove();const report=document.createElement('section');report.className='ar-print-only';report.innerHTML=`<h1>Worldsmith</h1><h2>Waterworks Valley · Field notebook</h2><p>Name: ____________________ &nbsp; Class: ____________________</p><p>Learning objective: Trace energy through a connected system and use test observations to explain how its parts work together.</p><p>${state.repairs.length}/4 repairs · ${state.completed?'Greenhouse transfer challenge complete':'Adventure in progress'}</p>`+region.stations.map(s=>`<article><h3>${escape(s.name)} · ${complete(s.id)?'Restored':'Not yet restored'}</h3>${complete(s.id)?`<p>${escape(s.discovery)}</p>`:''}<p>Experiments: ${state.attempts[s.id]||0} · Hints: ${state.hints[s.id]||0}</p>${(state.trials[s.id]||[]).slice(-3).map(t=>`<p>Settings: ${escape(t.settings)}<br>Observed: ${escape(t.observation)}</p>`).join('')}<p>My observation: ${escape(state.notes[s.id]||'________________________________________')}</p></article>`).join('')+`<article><h3>Apply it: wind-powered greenhouse</h3><p>${state.transferPassed?'Pump restored':'Not yet restored'} · ${state.attempts.transfer||0} tests · ${state.hints.transfer||0} hints</p>${(state.trials.transfer||[]).slice(-3).map(t=>`<p>Settings: ${escape(t.settings)}<br>Observed: ${escape(t.observation)}</p>`).join('')}<p>My explanation: ${escape(state.notes.transfer||'________________________________________')}</p><p>Trace the water-to-gate and wind-to-pump energy journeys. Identify where motion becomes electrical energy and where electricity becomes motion. If the return wire breaks, explain what stops and why.</p><p>____________________________________________________________</p></article>`;document.body.append(report);window.print();
-  });
-  refresh();if(state.repairs.length)status(state.completed?'Welcome back! The valley is restored. Your notebook is saved.':`Welcome back! Continue at ${current()?.name||'the archive gate'}.`);requestAnimationFrame(frame);
+  function frame(time){const dt=Math.min(0.04,Math.max(0,(time-last)/1000));last=time;update(dt);draw(time);requestAnimationFrame(frame);}
+  if(s.won)message('Welcome back. The crossing is restored.');requestAnimationFrame(frame);
 }
