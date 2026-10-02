@@ -1,3 +1,4 @@
+import {workMeadow,drawMeadow} from './meadow.js';
 import {followCamera} from './camera.js';
 import {adventureState,interactables,stepAdventure,objective,sparks,extras,mirrors} from './adventure.js';
 import {fitViewport} from './viewport.js';
@@ -7,13 +8,13 @@ if(root)start();
 function start(){
   const $=q=>document.querySelector(q),canvas=$('#world'),ctx=canvas.getContext('2d'),key='teacharcade-worldsmith-crossing-v1';
   let s=initialState(),keys=new Set(),actionHeld=false,paused=false,route=null,near=null,last=0,camera={x:0,y:0},vw=960,vh=600,resetArmed=false,saveClock=0,valveDrag=false,walkTime=0,particles=[];
-  const notes=['Connected channels redirect moving water.','A break in the channel stops energy reaching the wheel.','Moving water turns the wheel, which drives the winch and lowers the bridge.','Wind transfers energy to a pump through connected gears.','A working system needs controlled flow, not simply maximum flow.','Mirrors redirect light along a connected path to a receiver.'];
+  const notes=['Connected channels redirect moving water.','A break in the channel stops energy reaching the wheel.','Moving water turns the wheel, which drives the winch and lowers the bridge.','Wind transfers energy to a pump through connected gears.','A working system needs controlled flow, not simply maximum flow.','Mirrors redirect light along a connected path to a receiver.','A blocked route interrupts water flow even when the source works.','Restoring a continuous water supply refills a pond and supports its habitat.'];
   Object.assign(s,adventureState());
-  try{const old=JSON.parse(localStorage.getItem(key));if(old?.version===1){s.elbow=Number.isInteger(old.elbow)&&old.elbow>=0&&old.elbow<=3?old.elbow:0;s.troughY=Number.isFinite(old.troughY)?Math.max(330,Math.min(475,old.troughY)):430;s.valve=Number.isFinite(old.valve)?Math.max(0,Math.min(1,old.valve)):0.12;s.bridge=Number.isFinite(old.bridge)?Math.max(0,Math.min(1,old.bridge)):0;Object.assign(s,adventureState(old));s.won=s.finished;s.discoveries=Array.isArray(old.discoveries)?old.discoveries.filter(n=>Number.isInteger(n)&&n>=0&&n<6):[];if(Number.isFinite(old.player?.x)&&Number.isFinite(old.player?.y)&&canStand(old.player.x,old.player.y,s))s.player={...old.player};}}catch{}
+  try{const old=JSON.parse(localStorage.getItem(key));if(old?.version===1){s.elbow=Number.isInteger(old.elbow)&&old.elbow>=0&&old.elbow<=3?old.elbow:0;s.troughY=Number.isFinite(old.troughY)?Math.max(330,Math.min(475,old.troughY)):430;s.valve=Number.isFinite(old.valve)?Math.max(0,Math.min(1,old.valve)):0.12;s.bridge=Number.isFinite(old.bridge)?Math.max(0,Math.min(1,old.bridge)):0;Object.assign(s,adventureState(old));s.won=s.finished;s.discoveries=Array.isArray(old.discoveries)?old.discoveries.filter(n=>Number.isInteger(n)&&n>=0&&n<8):[];if(Number.isFinite(old.player?.x)&&Number.isFinite(old.player?.y)&&canStand(old.player.x,old.player.y,s))s.player={...old.player};}}catch{}
   const save=()=>{try{localStorage.setItem(key,JSON.stringify({...s,version:1}));}catch{}};
   function message(text){$('#message').textContent=text;}
   function discover(n){if(!s.discoveries.includes(n)){s.discoveries.push(n);refreshNotes();save();}}
-  function refreshNotes(){$('#discovery-count').textContent=`${s.discoveries.length} / 6`;$('#discoveries').innerHTML=s.discoveries.length?s.discoveries.map(n=>`<li>${notes[n]}</li>`).join(''):'<li>Your discoveries appear here as you play.</li>';}
+  function refreshNotes(){$('#discovery-count').textContent=`${s.discoveries.length} / 8`;$('#discoveries').innerHTML=s.discoveries.length?s.discoveries.map(n=>`<li>${notes[n]}</li>`).join(''):'<li>Your discoveries appear here as you play.</li>';}
   const game=$('.ws-game'),fullscreen=$('#fullscreen');
   let sizing=false,focusScroll=0;
   function resize(){
@@ -57,8 +58,8 @@ function start(){
   if(window.ResizeObserver){const observer=new ResizeObserver(resize);for(const el of [$('#site-header'),$('.ws-title'),$('.ws-top'),$('.ws-controls')])if(el)observer.observe(el);}
   resize();refreshNotes();canvas.focus({preventScroll:true});
   function nearest(){const candidates=[{id:'elbow',...objects.elbow},{id:'valve',...objects.valve},{id:'trough',x:objects.trough.x,y:s.troughY},...interactables(s)];return candidates.map(o=>({...o,d:Math.hypot(o.x-s.player.x,o.y-s.player.y)})).filter(o=>o.d<80).sort((a,b)=>a.d-b.d)[0]||null;}
-  function actOnce(){if(paused||!$('#win').hidden)return;near=nearest();if(near?.id==='elbow'){s.elbow=(s.elbow+1)%4;message(s.elbow===3?'The stream turns toward the wheel.':'Water spills from the open end.');if(s.elbow===3)discover(0);save();}else if(near?.id==='valve'){const target=keys.has('q')||keys.has('shift')?0:s.pump===1?.5:1;s.valve+=Math.sign(target-s.valve)*Math.min(.12,Math.abs(target-s.valve));save();}else if(near?.id==='vane'){s.vane=(s.vane+1)%4;message(s.vane===1?'The sails catch the breeze.':'Turn the vane toward the wind →.');save();}else if(near?.id==='gate'){s.gate=(s.gate+1)%4;message(['Garden channels closed.','Water goes to the left bed.','Both beds receive water.','Water goes to the right bed.'][s.gate]);save();}else if(near?.id.startsWith('mirror')){const i=Number(near.id.slice(6));s.mirrors[i]=(s.mirrors[i]+1)%4;message('Mirror turned. Follow the sunbeam.');save();}else if(near?.id==='mill'&&!s.cog){message('The pump is missing a gear. Look along the far bank.');}else if(!near)message('Walk beside the channel elbow, loose channel, or valve.');}
-  function work(dt){near=nearest();if(!near)return;if(near.id==='mill'&&s.cog&&s.repair<1){s.repair=Math.min(1,s.repair+dt*.65);if(s.repair===1){burst(890,285);message('Gear fitted! Turn the vane toward the breeze.');save();}}if(near.id==='valve'){const target=keys.has('q')||keys.has('shift')?0:s.pump===1?.5:1;s.valve+=Math.sign(target-s.valve)*Math.min(dt*.42,Math.abs(target-s.valve));}if(near.id==='trough'&&s.troughY>330){if(s.player.y>s.troughY+20){const step=Math.min(dt*65,s.troughY-330);s.troughY-=step;s.player.y-=step;if(s.troughY<=330.01){s.troughY=330;message('Channel connected. The stream can reach the wheel.');discover(1);save();}}else message('Get behind the loose channel and push it toward the gap.');}}
+  function actOnce(){if(paused||!$('#win').hidden)return;near=nearest();if(near?.id==='elbow'){s.elbow=(s.elbow+1)%4;message(s.elbow===3?'The stream turns toward the wheel.':'Water spills from the open end.');if(s.elbow===3)discover(0);save();}else if(near?.id==='valve'){const target=keys.has('q')||keys.has('shift')?0:s.pump===1?.5:1;s.valve+=Math.sign(target-s.valve)*Math.min(.12,Math.abs(target-s.valve));save();}else if(near?.id==='diverter'){s.diverter=(s.diverter+1)%4;message(s.diverter===2?'Water turns into the meadow stream.':'Follow the stream. Turn the channel south.');save();}else if(near?.id==='vane'){s.vane=(s.vane+1)%4;message(s.vane===1?'The sails catch the breeze.':'Turn the vane toward the wind →.');save();}else if(near?.id==='gate'){s.gate=(s.gate+1)%4;message(['Garden channels closed.','Water goes to the left bed.','Both beds receive water.','Water goes to the right bed.'][s.gate]);save();}else if(near?.id.startsWith('mirror')){const i=Number(near.id.slice(6));s.mirrors[i]=(s.mirrors[i]+1)%4;message('Mirror turned. Follow the sunbeam.');save();}else if(near?.id==='mill'&&!s.cog){message('The pump is missing a gear. Look along the far bank.');}else if(!near)message('Walk beside the channel elbow, loose channel, or valve.');}
+  function work(dt){near=nearest();if(!near)return;const hint=workMeadow(s,near.id,dt);if(hint)message(hint);if(near.id==='mill'&&s.cog&&s.repair<1){s.repair=Math.min(1,s.repair+dt*.65);if(s.repair===1){burst(890,285);message('Gear fitted! Turn the vane toward the breeze.');save();}}if(near.id==='valve'){const target=keys.has('q')||keys.has('shift')?0:s.pump===1?.5:1;s.valve+=Math.sign(target-s.valve)*Math.min(dt*.42,Math.abs(target-s.valve));}if(near.id==='trough'&&s.troughY>330){if(s.player.y>s.troughY+20){const step=Math.min(dt*65,s.troughY-330);s.troughY-=step;s.player.y-=step;if(s.troughY<=330.01){s.troughY=330;message('Channel connected. The stream can reach the wheel.');discover(1);save();}}else message('Get behind the loose channel and push it toward the gap.');}}
   function move(dx,dy,dt){const speed=(keys.has('shift')&&!actionHeld?235:155)*dt,norm=Math.hypot(dx,dy)||1;dx=dx/norm*speed;dy=dy/norm*speed;
     const tryAxis=(amount,axis)=>{if(Math.abs(amount)<0.001)return false;const p={...s.player};p[axis]+=amount;if(!canStand(p.x,p.y,s))return false;
       if(Math.abs(p.x-475)<57&&Math.abs(p.y-s.troughY)<31){if(axis==='y'&&s.troughY>330){const next=Math.max(330,Math.min(475,s.troughY+amount));if(Math.abs(next-s.troughY-amount)>0.01)return false;s.troughY=next;if(s.troughY===330){message('Channel connected.');discover(1);}}else return false;}
@@ -85,14 +86,15 @@ function start(){
   canvas.addEventListener('pointerdown',e=>{e.preventDefault();if(paused||!$('#win').hidden)return;canvas.focus();const p=point(e);canvas.setPointerCapture(e.pointerId);if(Math.hypot(p.x-objects.valve.x,p.y-objects.valve.y)<36&&Math.hypot(s.player.x-objects.valve.x,s.player.y-objects.valve.y)<80){valveDrag=true;route=null;return;}
     const extra=interactables(s).find(o=>Math.hypot(p.x-o.x,p.y-o.y)<38);
     const hit=extra?.id|| (Math.hypot(p.x-330,p.y-180)<40?'elbow':Math.hypot(p.x-475,p.y-s.troughY)<50?'trough':Math.hypot(p.x-180,p.y-180)<40?'valve':null);
-    if((['elbow','vane','gate'].includes(hit)||hit?.startsWith('mirror'))&&nearest()?.id===hit){actOnce();return;}
-    const target=extra?{x:extra.x,y:extra.y+45}:hit==='elbow'?{x:330,y:238}:hit==='trough'?{x:475,y:s.troughY+60}:hit==='valve'?{x:180,y:238}:p;
+    if((['elbow','vane','gate','diverter'].includes(hit)||hit?.startsWith('mirror'))&&nearest()?.id===hit){actOnce();return;}
+    const target=hit==='log'?{x:s.logX-55,y:760}:extra?{x:extra.x,y:extra.y+45}:hit==='elbow'?{x:330,y:238}:hit==='trough'?{x:475,y:s.troughY+60}:hit==='valve'?{x:180,y:238}:p;
     if(canStand(target.x,target.y,s)){
       let points=[target];
-      if(hit==='trough'&&s.player.y<s.troughY+31)points=[{x:395,y:s.player.y},{x:395,y:s.troughY+65},target];
-      else if(target.x>840&&s.player.x<718)points=[{x:700,y:425},{x:860,y:425},target];
-      else if(target.x<718&&s.player.x>840)points=[{x:860,y:425},{x:700,y:425},target];
-      route={...points.shift(),next:points,act:['elbow','vane','gate'].includes(hit)||hit?.startsWith('mirror')};
+      if(hit==='log'){const y=s.pond===1&&s.player.y>650?875:425;const approach=s.player.y>760?840:680;points=s.player.x>840?[{x:860,y},{x:700,y},{x:s.logX-55,y},target]:s.player.x>s.logX-30?[{x:s.player.x,y:approach},{x:s.logX-55,y:approach},target]:[{x:s.logX-55,y:s.player.y},target];}
+      else if(hit==='trough'&&s.player.y<s.troughY+31)points=[{x:395,y:s.player.y},{x:395,y:s.troughY+65},target];
+      else if(target.x>840&&s.player.x<718){const y=s.pond===1&&s.player.y>650?875:425;points=[{x:700,y},{x:860,y},target];}
+      else if(target.x<718&&s.player.x>840){const y=s.pond===1&&s.player.y>650?875:425;points=[{x:860,y},{x:700,y},target];}
+      route={...points.shift(),next:points,act:['elbow','vane','gate','diverter'].includes(hit)||hit?.startsWith('mirror')};
     }else message(s.bridge<1?'The crossing needs power first.':'Use the bridge to cross the river.');
   });
   canvas.addEventListener('pointermove',e=>{if(valveDrag){const p=point(e);s.valve=Math.max(0,Math.min(1,(240-p.y)/120));}});for(const ev of ['pointerup','pointercancel','lostpointercapture'])canvas.addEventListener(ev,()=>{if(valveDrag)save();valveDrag=false;});
@@ -113,16 +115,19 @@ function start(){
       if(event==='spark'){burst(s.player.x,s.player.y);message(`Light seed found · ${s.sparks.length} / ${sparks.length}`);}
       if(event==='pump'){discover(3);burst(890,285);message('Wind pump restored! Bring water to the dry garden.');}
       if(event==='bloom'){burst(555,150);message('A garden bed is blooming!');}
-      if(event==='garden'){discover(4);burst(555,150);message('Garden restored! Follow the trail east to Sunstone Ridge.');}
-      if(event==='finish'){discover(5);burst(1750,680);clearInput();$('#win').hidden=false;$('#play-again').focus({preventScroll:true});$('#win-score').textContent=`4 restorations · ${s.sparks.length} / ${sparks.length} light seeds`;message('The whole valley is alive again.');}
+      if(event==='garden'){discover(4);burst(555,150);message('Garden restored! Follow the south trail into the meadow.');}
+      if(event==='diversion'){burst(350,635);message('Meadow supply restored! Clear the log downstream.');}
+      if(event==='stream'){discover(6);burst(350,760);message('Stream cleared! Lift the pond gate to let water through.');}
+      if(event==='pond'){discover(7);burst(520,940);message('Pond restored! A new meadow crossing opens.');}
+      if(event==='finish'){discover(5);burst(1750,680);clearInput();$('#win').hidden=false;$('#play-again').focus({preventScroll:true});$('#win-score').textContent=`7 restorations · ${s.sparks.length} / ${sparks.length} light seeds`;message('The whole valley is alive again.');}
       save();
     }
     particles=particles.map(p=>({...p,x:p.x+p.vx*dt,y:p.y+p.vy*dt,life:p.life-dt})).filter(p=>p.life>0);
     const next=nearest();near=next;
-    const labels={elbow:['Turn channel','Tap E to rotate. Watch the stream.'],trough:[s.troughY<=330?'Connected':'Push channel',s.troughY<=330?'Water can pass through this connection.':'Get below it and hold E to push.'],valve:[s.pump===1?'Balance flow':'Open valve',s.pump===1?'Hold E to balance · Hold Q to lower · Shift + E also lowers.':'Hold E to open · Hold Q or Shift + E to lower.'],vane:['Turn vane','Tap E to face the breeze →.'],mill:[s.repair===1?'Gear fitted':'Fit gear',s.cog?'Hold E to fit the gear.':'Find the missing gear along the far bank.'],gate:['Split water','Tap E: closed / left / both / right.']};
+    const labels={elbow:['Turn channel','Tap E to rotate. Watch the stream.'],trough:[s.troughY<=330?'Connected':'Push channel',s.troughY<=330?'Water can pass through this connection.':'Get below it and hold E to push.'],valve:[s.pump===1?'Balance flow':'Open valve',s.pump===1?'Hold E to balance · Hold Q to lower · Shift + E also lowers.':'Hold E to open · Hold Q or Shift + E to lower.'],vane:['Turn vane','Tap E to face the breeze →.'],mill:[s.repair===1?'Gear fitted':'Fit gear',s.cog?'Hold E to fit the gear.':'Find the missing gear along the far bank.'],gate:['Split water','Tap E: closed / left / both / right.'],diverter:['Turn channel','Tap E to send the stream south toward the pond.'],log:[s.logX>=450?'Stream cleared':'Push log','Stand left of the log. Hold E to push right.'],sluice:[s.sluice===1?'Gate open':'Lift gate','Hold E to lift the pond gate.']};
     const label=next?.id.startsWith('mirror')?['Turn mirror','Tap E to redirect the sunbeam.']:next?labels[next.id]:null;
     $('#action').textContent=next?label[0]:'Explore';$('#context').textContent=next?label[1]:objective(s);
-    $('#goal').textContent=objective(s);$('#chapter').textContent=`${s.finished?'Valley restored':!s.crossed?'1 · The crossing':s.pump<1?'2 · Wind pump':s.gardenRestored?'4 · Sunstone Ridge':'3 · The garden'} · ✦ ${s.sparks.length}/${sparks.length}`;
+    $('#goal').textContent=objective(s);$('#chapter').textContent=`${s.finished?'Valley restored':!s.crossed?'1 · The crossing':s.pump<1?'2 · Wind pump':s.gardenRestored?(s.pond<1?'4 · Wildflower Meadow':'5 · Sunstone Ridge'):'3 · The garden'} · ✦ ${s.sparks.length}/${sparks.length}`;
     saveClock+=dt;if(saveClock>2){saveClock=0;save();}
   }
   function burst(x,y){for(let n=0;n<24;n++){const angle=n*Math.PI/12;particles.push({x,y,vx:Math.cos(angle)*45,vy:Math.sin(angle)*45-15,life:1.2});}}
@@ -138,7 +143,7 @@ function start(){
     // Fixed world texture avoids shimmering as the camera moves.
     for(let n=0;n<360;n++){const x=(n*137+33)%WORLD.width,y=(n*71+60)%WORLD.height;if(x>720&&x<840)continue;ctx.fillStyle=n%3?'#71a77635':'#d4c78344';ctx.fillRect(x,y,3,2);}
     path([[70,470],[290,470],[340,420],[910,425]],'#193f3555',72);path([[70,466],[290,466],[340,416],[910,421]],'#bcaf7d',54);path([[70,466],[290,466],[340,416],[910,421]],'#d3c197',38);
-    const river=ctx.createLinearGradient(720,0,840,0);river.addColorStop(0,'#256e86');river.addColorStop(0.5,'#338fa7');river.addColorStop(1,'#225f76');ctx.fillStyle=river;ctx.fillRect(720,0,120,WORLD.height);ctx.fillStyle='#99d5cc66';ctx.fillRect(718,0,4,WORLD.height);ctx.fillRect(839,0,4,WORLD.height);for(let n=0;n<65;n++){const y=(n*31+time*0.045)%(WORLD.height+10);path([[734+n%3*32,y],[748+n%3*32,y]],'#90dce56b',2);}
+    const river=ctx.createLinearGradient(720,0,840,0);river.addColorStop(0,'#256e86');river.addColorStop(0.5,'#338fa7');river.addColorStop(1,'#225f76');ctx.fillStyle=river;ctx.fillRect(720,0,120,WORLD.height);ctx.fillStyle='#99d5cc66';ctx.fillRect(718,0,4,WORLD.height);ctx.fillRect(839,0,4,WORLD.height);for(let n=0;n<85;n++){const y=(n*31+time*0.045)%(WORLD.height+10);path([[734+n%3*32,y],[748+n%3*32,y]],'#90dce56b',2);}
     for(const [x,y,z] of [[55,100,25],[105,87,31],[420,90,26],[545,83,31],[652,95,30],[50,280,29],[90,345,24],[600,530,29],[670,552,24],[890,540,29],[140,561,23],[310,562,27]])tree(x,y,z);
     // Channel bed has a visible missing section between the elbow and wheel.
     path([[70,180],[330,180],[330,330],[421,330]],'#4a5042',34);path([[70,180],[330,180],[330,330],[421,330]],'#b5aa82',25);path([[529,330],[650,330]],'#4a5042',34);path([[529,330],[650,330]],'#b5aa82',25);
@@ -156,12 +161,13 @@ function start(){
     ctx.fillStyle='#51482f';ctx.fillRect(710,393,11,63);ctx.fillRect(840,393,11,63);const span=120*s.bridge;ctx.fillStyle='#b48c51';ctx.fillRect(720,401,span,48);for(let x=724;x<720+span;x+=13){path([[x,402],[x,448]],'#785b35',2);}path([[720,400],[720+span,400]],'#eed095',4);path([[720,450],[720+span,450]],'#eed095',4);
     if(s.bridge<1){path([[718,395],[722,390-span*0.8]],'#bea06c',7);}
     ctx.save();ctx.translate(686,403);ctx.rotate(s.wheelAngle*0.5);ctx.fillStyle='#e2ba77';ctx.fillRect(-13,-13,26,26);path([[-13,0],[13,0]],'#6f5837',3);ctx.restore();path([[694,403],[719,396]],'#bfc7a4',2);
+    drawMeadow(ctx,s,time,{path,water,glow});
     drawAdventure(time);
     // Destination banner on the far bank.
     ctx.fillStyle='#6e593a';ctx.fillRect(901,368,5,54);ctx.fillStyle=s.won?'#fed57f':'#a4d3a1';ctx.beginPath();ctx.moveTo(906,370);ctx.lineTo(936,378);ctx.lineTo(906,389);ctx.closePath();ctx.fill();
     for(const [id,x,y] of [['elbow',330,180],['valve',180,180],['trough',475,s.troughY]])glow(x,y,near?.id===id,time);
     ctx.font='bold 17px system-ui';ctx.textAlign='center';ctx.fillStyle='#e4eed0';ctx.fillText('VALVE',180,133);ctx.fillText('CHANNEL',330,133);if(s.troughY>330)ctx.fillText('PUSH',475,s.troughY-47);
-    if(near){ctx.fillStyle='#ffdda2';ctx.font='bold 15px system-ui';ctx.fillText((['elbow','vane','gate'].includes(near.id)||near.id.startsWith('mirror'))?'E · TURN':near.id==='valve'?(s.pump===1?'E · BALANCE / Q · LOWER':'E · OPEN / Q · LOWER'):near.id==='mill'?'HOLD E · FIT':'HOLD E · PUSH',near.x,near.y+57);}
+    if(near){ctx.fillStyle='#ffdda2';ctx.font='bold 15px system-ui';ctx.fillText((['elbow','vane','gate','diverter'].includes(near.id)||near.id.startsWith('mirror'))?'E · TURN':near.id==='valve'?(s.pump===1?'E · BALANCE / Q · LOWER':'E · OPEN / Q · LOWER'):near.id==='mill'?'HOLD E · FIT':near.id==='sluice'?'HOLD E · LIFT':'HOLD E · PUSH',near.x,near.y+57);}
     if(route){ctx.strokeStyle='#fce4a0';ctx.lineWidth=2;ctx.beginPath();ctx.arc(route.x,route.y,6,0,Math.PI*2);ctx.stroke();}
     const {x,y}=s.player,bob=keys.size||route?Math.sin(walkTime*17)*1.5:0;ctx.fillStyle='#15352977';ctx.beginPath();ctx.ellipse(x,y+13,13,5,0,0,Math.PI*2);ctx.fill();ctx.fillStyle='#233841';ctx.fillRect(x-8,y+6,6,10);ctx.fillRect(x+2,y+6,6,10);ctx.fillStyle='#ef9850';ctx.fillRect(x-10,y-10+bob,20,19);ctx.fillStyle='#f5d5aa';ctx.fillRect(x-8,y-23+bob,16,14);ctx.fillStyle='#193e46';ctx.fillRect(x-10,y-28+bob,20,8);ctx.fillStyle='#e7b35b';ctx.fillRect(x-12,y-21+bob,24,3);ctx.fillStyle='#765335';ctx.fillRect(x+7,y-9+bob,7,13);
     ctx.restore();drawOverview();if(paused){ctx.fillStyle='#102e3acb';ctx.fillRect(0,0,vw,vh);ctx.fillStyle='#fff';ctx.font='bold 32px system-ui';ctx.textAlign='center';ctx.fillText('Paused',vw/2,vh/2);}
@@ -171,6 +177,7 @@ function start(){
     ctx.fillStyle='#102e3cdd';ctx.fillRect(x-5,y-5,w+10,h+10);
     ctx.fillStyle='#527858';ctx.fillRect(x,y,w,h);ctx.fillStyle='#778574';ctx.fillRect(x+1030/WORLD.width*w,y,w*(WORLD.width-1030)/WORLD.width,h);
     ctx.fillStyle='#70b9ca';ctx.fillRect(x+718/WORLD.width*w,y,122/WORLD.width*w,h);
+    if(s.pond===1){ctx.fillStyle='#e8c791';ctx.fillRect(x+718/WORLD.width*w,y+853/WORLD.height*h,122/WORLD.width*w,4);}
     ctx.fillStyle='#e8c791';ctx.fillRect(x+718/WORLD.width*w,y+399/WORLD.height*h,122/WORLD.width*w,5);
     for(const p of [{x:555,y:150},{x:890,y:285},{x:1750,y:620}]){ctx.fillStyle='#ffe4a1';ctx.fillRect(x+p.x/WORLD.width*w-2,y+p.y/WORLD.height*h-2,4,4);}
     ctx.strokeStyle='#d6e6d4';ctx.lineWidth=1;ctx.strokeRect(x+camera.x/WORLD.width*w,y+camera.y/WORLD.height*h,vw/WORLD.width*w,vh/WORLD.height*h);
@@ -216,7 +223,7 @@ function start(){
     for(let bed=0;bed<2;bed++){
       const x=bed===0?510:620,growth=s.garden[bed];
       ctx.fillStyle='#684c37';ctx.fillRect(x-37,115,74,77);
-      for(let n=0;n<6;n++){const px=x-23+n%3*23,py=133+Math.floor(n/3)*38;path([[px,py+17],[px,py+17-growth*25]],'#74ad69',3);if(growth>.2){path([[px,py+12],[px-9,py+6],[px,py+12],[px+9,py+3]],'#9ac779',3);}if(growth>.8){ctx.fillStyle=bed?'#f5b783':'#eec9e1';ctx.beginPath();ctx.arc(px,py-5,6,0,Math.PI*2);ctx.fill();}}
+      for(let n=0;n<8;n++){const px=x-23+n%3*23,py=133+Math.floor(n/3)*38;path([[px,py+17],[px,py+17-growth*25]],'#74ad69',3);if(growth>.2){path([[px,py+12],[px-9,py+6],[px,py+12],[px+9,py+3]],'#9ac779',3);}if(growth>.8){ctx.fillStyle=bed?'#f5b783':'#eec9e1';ctx.beginPath();ctx.arc(px,py-5,6,0,Math.PI*2);ctx.fill();}}
       const fed=s.gate===2||s.gate===(bed===0?1:3);
       path([[555,245],[x,218],[x,193]],'#747b61',9);
       if(s.pump===1&&s.vane===1&&connected(s)&&fed&&s.valve>.02)water([[555,245],[x,218],[x,193]],time*s.valve);
@@ -229,10 +236,10 @@ function start(){
     for(let i=0;i<sparks.length;i++)if(!s.sparks.includes(i)){const p=sparks[i];ctx.fillStyle='#ffe299';ctx.beginPath();ctx.arc(p.x,p.y+Math.sin(time/350+i)*4,5,0,Math.PI*2);ctx.fill();ctx.strokeStyle='#fff3c366';ctx.beginPath();ctx.arc(p.x,p.y,11,0,Math.PI*2);ctx.stroke();}
     // Birds return when the crossing is restored; butterflies follow the blooms.
     if(s.crossed)for(let n=0;n<3;n++){const x=(time*.025+n*230)%680,y=65+Math.sin(time/1000+n)*12;path([[x-7,y-3],[x,y],[x+7,y-3]],'#cfdfce',2);}
-    if(s.garden.some(n=>n===1))for(let n=0;n<6;n++){const x=565+Math.sin(time/1600+n)*65,y=150+Math.cos(time/1100+n)*35;ctx.fillStyle=n%2?'#f6c590':'#dfbde2';ctx.beginPath();ctx.ellipse(x,y,5,2+Math.abs(Math.sin(time/100))*3,0,0,Math.PI*2);ctx.fill();}
+    if(s.garden.some(n=>n===1))for(let n=0;n<8;n++){const x=565+Math.sin(time/1600+n)*65,y=150+Math.cos(time/1100+n)*35;ctx.fillStyle=n%2?'#f6c590':'#dfbde2';ctx.beginPath();ctx.ellipse(x,y,5,2+Math.abs(Math.sin(time/100))*3,0,0,Math.PI*2);ctx.fill();}
     for(const p of particles){ctx.globalAlpha=Math.min(1,p.life);ctx.fillStyle='#ffe1a0';ctx.fillRect(p.x,p.y,4,4);}ctx.globalAlpha=1;
     if(s.cog&&s.repair<1){ctx.fillStyle='#efcf87';ctx.beginPath();ctx.arc(s.player.x+17,s.player.y-6,6,0,Math.PI*2);ctx.fill();}
   }
   function frame(time){const dt=Math.min(0.04,Math.max(0,(time-last)/1000));last=time;update(dt);draw(time,dt);requestAnimationFrame(frame);}
-  if(s.gardenRestored&&!s.finished)message('Your garden is saved. Follow the east trail to Sunstone Ridge.');else if(s.finished)message('Welcome back. Hunt for the remaining light seeds.');else if(s.crossed)message('Your crossing is saved. The adventure continues on the far bank.');requestAnimationFrame(frame);
+  if(s.gardenRestored&&!s.finished)message('Your garden is saved. Explore the meadow and ridge to finish the valley.');else if(s.finished)message('Welcome back. Hunt for the remaining light seeds.');else if(s.crossed)message('Your crossing is saved. The adventure continues on the far bank.');requestAnimationFrame(frame);
 }

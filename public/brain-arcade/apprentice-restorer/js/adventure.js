@@ -1,9 +1,10 @@
+import {meadowState,meadowInteractables,stepMeadow,meadowObjective} from './meadow.js';
 export const sparks=[{x:95,y:250},{x:385,y:95},{x:655,y:490},{x:890,y:80},{x:900,y:550},{x:280,y:820},{x:1160,y:840},{x:1650,y:170},{x:1800,y:960}];
 export const extras={vane:{x:890,y:160},mill:{x:890,y:285},gate:{x:555,y:245},cog:{x:890,y:510}};
 export const mirrors=[{x:1150,y:330,target:0},{x:1440,y:330,target:2},{x:1440,y:680,target:0}];
 const clamp=(v,lo,hi)=>Math.max(lo,Math.min(hi,v));
 export function adventureState(old={}){
-  return {crossed:old.crossed===true,vane:Number.isInteger(old.vane)?clamp(old.vane,0,3):0,
+  return {...meadowState(old),crossed:old.crossed===true,vane:Number.isInteger(old.vane)?clamp(old.vane,0,3):0,
     cog:old.cog===true,repair:Number.isFinite(old.repair)?clamp(old.repair,0,1):0,
     pump:Number.isFinite(old.pump)?clamp(old.pump,0,1):0,windAngle:0,
     gate:Number.isInteger(old.gate)?clamp(old.gate,0,3):0,
@@ -12,11 +13,11 @@ export function adventureState(old={}){
     elapsed:0,gardenRestored:Array.isArray(old.garden)&&old.garden.length===2&&old.garden.every(n=>n===1)&&old.pump===1,
     mirrors:mirrors.map((m,i)=>Number.isInteger(old.mirrors?.[i])?clamp(old.mirrors[i],0,3):[1,0,3][i]),
     beacon:Number.isFinite(old.beacon)?clamp(old.beacon,0,1):0,
-    finished:old.finished===true&&old.beacon===1};
+    finished:old.finished===true&&old.beacon===1&&old.pond===1};
 }
 export function interactables(s){
   return [...(s.crossed?[{id:'vane',...extras.vane},{id:'mill',...extras.mill}]:[]),
-    ...(s.pump===1?[{id:'gate',...extras.gate}]:[]),...mirrors.map((m,i)=>({...m,id:`mirror${i}`}))];
+    ...(s.pump===1?[{id:'gate',...extras.gate}]:[]),...mirrors.map((m,i)=>({...m,id:`mirror${i}`})),...meadowInteractables(s)];
 }
 export function stepAdventure(s,dt){
   const events=[];s.elapsed+=dt;
@@ -35,11 +36,13 @@ export function stepAdventure(s,dt){
   }
   if(s.garden.every(n=>n===1)&&!s.gardenRestored){s.gardenRestored=true;events.push('garden');}
   if(s.gardenRestored&&mirrors.every((m,i)=>s.mirrors[i]===m.target)&&s.beacon<1){s.beacon=Math.min(1,s.beacon+dt/5);}
-  if(s.beacon===1&&!s.finished){s.finished=true;s.won=true;events.push('finish');}
+  events.push(...stepMeadow(s,dt));
+  if(s.beacon===1&&s.pond===1&&!s.finished){s.finished=true;s.won=true;events.push('finish');}
   return events;
 }
 export function objective(s){
   if(s.finished)return 'Valley restored · Find the remaining light seeds.';
+  if(s.gardenRestored&&s.pond<1)return meadowObjective(s);
   if(s.gardenRestored)return mirrors.every((m,i)=>s.mirrors[i]===m.target)?'The sun beacon is charging…':'Follow the east trail. Reflect sunlight into the ridge beacon.';
   if(!s.crossed)return s.bridge===1?'Cross the bridge.':s.elbow!==3?'Redirect the stream.':Math.abs(s.troughY-330)>=4?'Reconnect the loose channel.':'Power the bridge with moving water.';
   if(!s.cog)return 'Explore the far bank. Find the missing gear.';
