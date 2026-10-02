@@ -82,3 +82,6 @@
 .snow-ability-feedback[data-kind="incoming"]{background:#354775;border:1px solid #adbfe9}.snow-ability-feedback[data-kind="fort"]{background:#92552b;border:1px solid #ffcca0}
 
 .snow-bottom .snow-incoming{color:#37567f;font-weight:750}.snow-incoming[hidden]{display:none}.snow-bottom[data-warning="true"] #status{display:none}
+
+.snow-effects{display:flex;align-items:center;gap:6px;font-size:11px;color:#37516a;white-space:nowrap}.snow-effects input{accent-color:#254d76;width:15px;height:15px}.snow-hud progress[data-hit="true"]{filter:brightness(1.6);outline:2px solid #ffc888;outline-offset:2px}
+@media(max-height:500px){.snow-heading{display:flex}.snow-heading h1{font-size:16px}.snow-heading .snow-label{display:none}.snow-shell{grid-template-rows:auto minmax(0,1fr) auto}}
