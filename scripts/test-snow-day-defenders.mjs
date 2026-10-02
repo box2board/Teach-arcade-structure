@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 import * as THREE from '../public/assets/vendor/three-0.162.0/three.module.js';
+import {fitSnowCamera} from '../public/dev/snow-day-defenders/camera.js';
 import {segmentSphereHit} from '../public/dev/snow-day-defenders/collision.js';
 import {UPGRADE_RULES,freshUpgrades,grantTokens,canBuy,buyUpgrade} from '../public/dev/snow-day-defenders/upgrades.js';
 import {DIFFICULTIES,WAVE_PATTERNS,buildWave} from '../public/dev/snow-day-defenders/waves.js';
@@ -19,16 +20,17 @@ class Element {
  setPointerCapture(){}
  getBoundingClientRect(){return {left:0,top:0,width:1100,height:620};}
 }
-function harness(){
+function harness({fullscreen=false}={}){
  const window=new Element(),document=new Element();document.activeElement=null;
  const elements=new Map(),get=id=>{if(!elements.has(id))elements.set(id,Object.assign(new Element(),{ownerDocument:document}));return elements.get(id);};
  Object.assign(get('stage'),{clientWidth:1100,clientHeight:620});
  document.getElementById=get;document.hidden=false;
+ if(fullscreen){get('game-panel').requestFullscreen=async()=>{document.fullscreenElement=get('game-panel');document.fire('fullscreenchange');};document.exitFullscreen=async()=>{document.fullscreenElement=null;document.fire('fullscreenchange');};}
  const inputs=['easy','medium','hard'].map(value=>Object.assign(new Element(),{value,checked:value==='easy'}));document.querySelectorAll=()=>inputs;
  let callback,scene,clock=0,seed=42;
  const math=Object.create(Math);math.random=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296;};
  class Renderer {constructor(){this.shadowMap={};}setPixelRatio(){}setSize(){}render(s){scene=s;}}
- const ctx={THREE:{...THREE,WebGLRenderer:Renderer},UPGRADE_RULES,freshUpgrades,grantTokens,canBuy,buyUpgrade,DIFFICULTIES,WAVE_PATTERNS,buildWave:(d,w)=>buildWave(d,w,math.random),segmentSphereHit,window,document,Math:math,devicePixelRatio:1,ResizeObserver:class{observe(){}},performance:{now:()=>clock},requestAnimationFrame:f=>callback=f,console};
+ const ctx={fitSnowCamera,THREE:{...THREE,WebGLRenderer:Renderer},UPGRADE_RULES,freshUpgrades,grantTokens,canBuy,buyUpgrade,DIFFICULTIES,WAVE_PATTERNS,buildWave:(d,w)=>buildWave(d,w,math.random),segmentSphereHit,window,document,Math:math,devicePixelRatio:1,ResizeObserver:class{observe(){}},performance:{now:()=>clock},requestAnimationFrame:f=>callback=f,console};
  vm.createContext(ctx);vm.runInContext(fs.readFileSync(new URL('../public/dev/snow-day-defenders/game.js',import.meta.url),'utf8').replace(/^import .*?;\n/gm,''),ctx);
  const step=(n=1)=>{for(let i=0;i<n;i++){clock+=50;callback(clock);}};
  const state=()=>window.snowDayState();
@@ -130,3 +132,28 @@ assert.equal(feedback.state().burstCharges,1);assert.equal(feedback.get('ability
 feedback.key('b');assert.match(feedback.get('ability-feedback').textContent,/cooling/);feedback.step(25);feedback.fixture('burstCharges=0;');feedback.key(' ');assert.match(feedback.get('ability-feedback').textContent,/No Snow Burst charges/);
 feedback.click('restart');assert(feedback.get('ability-feedback').hidden);assert.equal(feedback.state().shockwaves,0);
 console.log('PASS: left/right double-tap dash, timing window, held-key guard, cooldown, pause reset, burst notifications, range effect, ready indicator, effect cleanup');
+
+for(const [width,height] of [[1100,433],[1250,570],[1920,880],[380,590],[730,260],[320,380]]){
+ const camera=new THREE.PerspectiveCamera(43,1,.1,100);fitSnowCamera(camera,width,height);
+ for(const z of [-33,10])for(const x of [-7,7])for(const y of [0,3.8]){
+  const p=new THREE.Vector3(x,y,z).project(camera);
+  assert(Math.abs(p.x)<=.90001&&Math.abs(p.y)<=.90001&&p.z<1,`play area must stay visible at ${width}x${height}`);
+ }
+ const ray=new THREE.Raycaster(),playerPosition=new THREE.Vector3(0,0,5.6),screen=playerPosition.clone().project(camera),hit=new THREE.Vector3();
+ ray.setFromCamera(new THREE.Vector2(screen.x,screen.y),camera);
+ ray.ray.intersectPlane(new THREE.Plane(new THREE.Vector3(0,1,0),0),hit);
+ assert(hit.distanceTo(playerPosition)<.00001,'new camera preserves drag-to-ground mapping');
+ if(width===1250){
+  const old=new THREE.PerspectiveCamera(43,width/height,.1,100);old.position.set(0,19,25);old.lookAt(0,0,-10);old.updateMatrixWorld();
+  const projectedHeight=c=>new THREE.Vector3(0,2.3,5.6).project(c).y-playerPosition.clone().project(c).y;
+  assert(projectedHeight(camera)>projectedHeight(old)*1.3,'desktop framing noticeably enlarges player');
+ }
+}
+console.log('PASS: wide/portrait/landscape camera bounds, larger desktop player, pointer ray mapping');
+
+assert(harness().get('fullscreen').hidden,'unsupported browsers hide fullscreen button');
+const full=harness({fullscreen:true});full.click('start');assert(!full.get('fullscreen').hidden);
+full.click('fullscreen');await Promise.resolve();assert.equal(full.get('fullscreen').textContent,'Exit fullscreen');assert.equal(full.get('fullscreen').attributes['aria-pressed'],'true');assert.equal(full.focused(),'scene');
+full.click('fullscreen');await Promise.resolve();assert.equal(full.get('fullscreen').textContent,'Fullscreen');assert.equal(full.get('fullscreen').attributes['aria-pressed'],'false');
+full.fixture("gamePanel.requestFullscreen=async()=>{throw new Error('denied');};");full.click('fullscreen');await Promise.resolve();assert.match(full.get('ability-feedback').textContent,/Fullscreen could not start/);assert.equal(full.state().mode,'playing');
+console.log('PASS: fullscreen enter/exit, keyboard focus, unsupported browser, rejected request');

@@ -1,4 +1,5 @@
 import * as THREE from '/assets/vendor/three-0.162.0/three.module.js';
+import { fitSnowCamera } from './camera.js?v=9';
 import { segmentSphereHit } from './collision.js?v=2';
 import { UPGRADE_RULES, freshUpgrades, grantTokens, canBuy, buyUpgrade } from './upgrades.js?v=3';
 import { DIFFICULTIES, WAVE_PATTERNS, buildWave } from './waves.js?v=4';
@@ -20,11 +21,11 @@ renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 const scene = new THREE.Scene();
 scene.background = new THREE.Color('#bfdcec');
-scene.fog = new THREE.Fog('#bfdcec', 28, 66);
+scene.fog = new THREE.Fog('#bfdcec', 42, 82);
 const camera = new THREE.PerspectiveCamera(43,1,.1,100);
-camera.position.set(0,19,25);camera.lookAt(0,0,-10);
-scene.add(new THREE.HemisphereLight(0xe8f7ff,0x7894b1,2.5));
-const sun = new THREE.DirectionalLight(0xfff5e6,3.1);sun.position.set(-12,24,8);sun.castShadow=true;
+fitSnowCamera(camera,stage.clientWidth,stage.clientHeight);
+scene.add(new THREE.HemisphereLight(0xe8f7ff,0x7894b1,1.8));
+const sun = new THREE.DirectionalLight(0xfff5e6,2.2);sun.position.set(-12,24,8);sun.castShadow=true;
 sun.shadow.mapSize.set(1024,1024);Object.assign(sun.shadow.camera,{left:-17,right:17,top:25,bottom:-25,far:70});sun.shadow.bias=-.001;scene.add(sun);
 const materials = {};
 function mat(color){return materials[color] ||= new THREE.MeshStandardMaterial({color,roughness:.85});}
@@ -33,7 +34,7 @@ const slowRingGeo=new THREE.TorusGeometry(.8,.045,5,20);
 const cone = new THREE.ConeGeometry(1,1,8);
 function mesh(geo,color,x,y,z,sx=1,sy=sx,sz=sx,parent=scene){const m=new THREE.Mesh(geo,mat(color));m.position.set(x,y,z);m.scale.set(sx,sy,sz);m.castShadow=true;m.receiveShadow=true;parent.add(m);return m;}
 mesh(box,'#e9f3fa',0,-.35,-18,120,.6,110);
-mesh(box,'#d6e9f7',0,-.01,-16,13,.06,58);
+mesh(box,'#afcbdc',0,-.01,-16,13,.06,58);
 for(let z=-40;z<10;z+=2.5){mesh(sphere,'#f8fcff',-7,.25,z,1,.45,1.5);mesh(sphere,'#f8fcff',7,.25,z,1,.45,1.5);}
 function tree(x,z,s){const g=new THREE.Group();g.position.set(x,0,z);scene.add(g);mesh(box,'#98765d',0,.8,0,.35,1.6,.35,g);for(let i=0;i<3;i++){mesh(cone,'#527f83',0,1.5+i*.8,0,1.8-i*.35,1.8,1.8-i*.35,g);mesh(cone,'#f3faff',0,1.84+i*.8,0,1.37-i*.26,1.15,1.37-i*.26,g);}g.scale.setScalar(s);}
 for(let i=0;i<14;i++){tree(-10-(i%3)*2,-37+i*3.5,.85+(i%4)*.15);tree(10+(i%3)*2,-39+i*3.5,1+(i%3)*.2);}
@@ -224,7 +225,22 @@ for(const [id,set] of [['left',v=>moveLeft=v],['right',v=>moveRight=v]]){const b
 const raycaster=new THREE.Raycaster(),ground=new THREE.Plane(new THREE.Vector3(0,1,0),0),hit=new THREE.Vector3();
 function pointer(e){const r=canvas.getBoundingClientRect();raycaster.setFromCamera(new THREE.Vector2((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1),camera);if(raycaster.ray.intersectPlane(ground,hit))targetX=THREE.MathUtils.clamp(hit.x,-5.7,5.7);}
 canvas.addEventListener('pointerdown',e=>{if(mode!=='playing')return;drag=true;canvas.setPointerCapture(e.pointerId);pointer(e);});canvas.addEventListener('pointermove',e=>{if(drag)pointer(e);});for(const event of ['pointerup','pointercancel','lostpointercapture'])canvas.addEventListener(event,()=>{drag=false;targetX=null;});
-function resize(){const w=stage.clientWidth,h=stage.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.position.set(0,w/h<.85?24:19,w/h<.85?31:25);camera.lookAt(0,0,-10);camera.updateProjectionMatrix();}new ResizeObserver(resize).observe(stage);resize();
+function resize(){const w=Math.max(1,stage.clientWidth),h=Math.max(1,stage.clientHeight);renderer.setSize(w,h,false);fitSnowCamera(camera,w,h);}new ResizeObserver(resize).observe(stage);resize();
+const gamePanel=$('game-panel');
+function fullscreenHud(){
+ const active=document.fullscreenElement===gamePanel||document.webkitFullscreenElement===gamePanel;
+ $('fullscreen').textContent=active?'Exit fullscreen':'Fullscreen';$('fullscreen').setAttribute('aria-pressed',String(active));resize();
+}
+$('fullscreen').hidden=!(gamePanel.requestFullscreen||gamePanel.webkitRequestFullscreen);
+$('fullscreen').addEventListener('click',async()=>{
+ try{
+  const active=document.fullscreenElement===gamePanel||document.webkitFullscreenElement===gamePanel;
+  if(active){const exit=document.exitFullscreen||document.webkitExitFullscreen;await exit.call(document);}
+  else{const enter=gamePanel.requestFullscreen||gamePanel.webkitRequestFullscreen;await enter.call(gamePanel);}
+  if(mode==='playing')canvas.focus({preventScroll:true});
+ }catch{abilityNotice('Fullscreen could not start. You can keep playing in this window.');}
+});
+document.addEventListener('fullscreenchange',fullscreenHud);document.addEventListener('webkitfullscreenchange',fullscreenHud);
 function tick(dt){elapsed+=dt;
 if(mode==='playing'){
  waveTime+=dt;spawnClock+=dt;tossClock+=dt;

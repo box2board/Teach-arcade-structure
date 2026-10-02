@@ -39,3 +39,42 @@
 @media(max-height:420px) and (min-width:500px){.snow-overlay[data-mode="between"] .snow-upgrade-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.snow-overlay[data-mode="between"] .snow-card{width:min(100%,760px);max-width:760px}}
 
 .snow-ability-feedback{position:absolute;top:16px;left:50%;transform:translateX(-50%);max-width:90%;width:max-content;padding:12px 18px;border-radius:12px;background:#15334de8;color:#fff;font-size:14px;font-weight:750;text-align:center;pointer-events:none;box-shadow:0 4px 18px #142a4233}.snow-ability-feedback[hidden]{display:none}.snow-ability-feedback[data-kind="burst"]{background:#08739a;border:2px solid #e4fcff}.snow-abilities #snow-burst[data-ready="true"]{background:#98e6da;border-color:#299a89;box-shadow:inset 0 0 0 1px #299a89}
+
+/* The game is a viewport-sized workspace with one consolidated control row. */
+.snow-page{height:100vh;height:100dvh;overflow:hidden}
+.snow-shell{width:100%;max-width:none;height:100%;padding:10px 16px;display:grid;grid-template-rows:auto minmax(0,1fr) auto;gap:8px}
+.snow-heading{margin:0;gap:12px}
+.snow-heading h1{font-size:24px;letter-spacing:-.7px;margin:2px 0}
+.snow-heading p,.snow-badge,.snow-note,.snow-footer{display:none}
+.snow-heading .snow-label{font-size:9px;letter-spacing:1.4px}
+.snow-label a{color:inherit;text-decoration:none}.snow-label a:hover{text-decoration:underline}
+.snow-game{min-height:0;min-width:0;display:grid;grid-template-rows:auto minmax(0,1fr) auto auto;border-radius:16px}
+.snow-hud{padding:9px 16px;gap:28px}
+.snow-hud strong{font-size:18px}
+.snow-hud>.snow-hud-actions{display:flex;gap:6px;margin-left:auto}
+.snow-hud-actions button{margin:0;padding:8px 12px;font-size:12px;min-height:36px}
+.snow-stage{height:auto;min-height:0;min-width:0;max-height:none}.snow-stage canvas{position:absolute;inset:0}
+.snow-toolbar{display:flex;align-items:center;justify-content:center;gap:20px;padding:8px 12px;background:#edf6fb;border-bottom:1px solid #e0eaf2}
+.snow-abilities{padding:0;border:0;background:none;gap:6px}
+.snow-abilities p{font-size:10px;margin:0}
+.snow-toolbar .snow-controls button{min-width:76px;padding:11px 12px}
+.snow-bottom{padding:4px 12px;min-height:24px;display:block}
+.snow-bottom p{text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:11px;line-height:16px}
+.snow-summary{display:flex;justify-content:center;gap:18px;min-width:0}
+.snow-summary p{margin:0;font-size:11px;line-height:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.snow-card{padding:18px;max-width:470px}.snow-card h2{font-size:25px;margin:7px 0}.snow-card p{font-size:13px;line-height:1.4;margin:8px 0}
+.snow-overlay:not([hidden]){position:fixed;inset:0;z-index:10000;padding:12px;background:#142a4275}
+.snow-game:fullscreen{width:100%;height:100%;border:0;border-radius:0;background:#fff}
+.snow-game:-webkit-full-screen{width:100%;height:100%;border:0;border-radius:0;background:#fff}
+@media(max-width:650px){
+ .snow-shell{padding:6px;gap:5px}.snow-heading{display:flex}.snow-heading h1{font-size:20px}.snow-heading .snow-label{font-size:8px}
+ .snow-hud{padding:7px 9px;gap:12px}.snow-hud strong{font-size:16px}.snow-hud span{font-size:8px;letter-spacing:1px}.snow-hud progress{width:75px}
+ .snow-hud-actions button{padding:7px 8px;font-size:11px}.snow-hud>.snow-hud-actions{gap:4px}
+ .snow-toolbar{gap:8px;padding:6px}.snow-toolbar .snow-controls{gap:4px}.snow-toolbar .snow-controls button{min-width:44px;padding:11px 7px;font-size:11px}
+ .snow-abilities button{min-width:0;font-size:11px;padding:11px 7px}.snow-abilities{flex:1;flex-wrap:nowrap;gap:4px}.snow-abilities p{display:none}.snow-abilities #snow-burst{flex:1}
+ .snow-summary{gap:8px}.snow-summary p{font-size:10px}.snow-ability-feedback{font-size:12px;padding:9px 12px;top:10px}
+}
+@media(max-width:400px){.snow-hud-actions button{font-size:10px;padding:7px 6px}.snow-hud-actions #fullscreen{font-size:0}.snow-hud-actions #fullscreen::after{content:"Full";font-size:10px}.snow-hud progress{width:60px}.snow-hud{gap:8px}.snow-summary #gear{display:none}}
+@media(max-height:500px){
+ .snow-heading{display:none}.snow-shell{grid-template-rows:minmax(0,1fr) auto;padding:5px;gap:3px}.snow-hud{padding:5px 10px}.snow-hud strong{font-size:15px}.snow-hud>div{gap:1px}.snow-toolbar{padding:5px}.snow-abilities p{display:none}.snow-bottom{padding:2px 10px;min-height:20px}.snow-tip{bottom:8px;padding:5px 10px}
+}
