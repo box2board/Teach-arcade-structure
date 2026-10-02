@@ -5,6 +5,7 @@ import * as THREE from '../public/assets/vendor/three-0.162.0/three.module.js';
 import {fitSnowCamera} from '../public/dev/snow-day-defenders/camera.js';
 import {segmentSphereHit} from '../public/dev/snow-day-defenders/collision.js';
 import {UPGRADE_RULES,freshUpgrades,grantTokens,canBuy,buyUpgrade} from '../public/dev/snow-day-defenders/upgrades.js';
+import {CREATURE_TYPES,advanceCreature} from '../public/dev/snow-day-defenders/creatures.js';
 import {DIFFICULTIES,WAVE_PATTERNS,buildWave} from '../public/dev/snow-day-defenders/waves.js';
 
 // Run actual gameplay against real Three.js scene objects. Only WebGL rendering
@@ -30,7 +31,7 @@ function harness({fullscreen=false}={}){
  let callback,scene,clock=0,seed=42;
  const math=Object.create(Math);math.random=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296;};
  class Renderer {constructor(){this.shadowMap={};}setPixelRatio(){}setSize(){}render(s){scene=s;}}
- const ctx={fitSnowCamera,THREE:{...THREE,WebGLRenderer:Renderer},UPGRADE_RULES,freshUpgrades,grantTokens,canBuy,buyUpgrade,DIFFICULTIES,WAVE_PATTERNS,buildWave:(d,w)=>buildWave(d,w,math.random),segmentSphereHit,window,document,Math:math,devicePixelRatio:1,ResizeObserver:class{observe(){}},performance:{now:()=>clock},requestAnimationFrame:f=>callback=f,console};
+ const ctx={CREATURE_TYPES,advanceCreature,fitSnowCamera,THREE:{...THREE,WebGLRenderer:Renderer},UPGRADE_RULES,freshUpgrades,grantTokens,canBuy,buyUpgrade,DIFFICULTIES,WAVE_PATTERNS,buildWave:(d,w)=>buildWave(d,w,math.random),segmentSphereHit,window,document,Math:math,devicePixelRatio:1,ResizeObserver:class{observe(){}},performance:{now:()=>clock},requestAnimationFrame:f=>callback=f,console};
  vm.createContext(ctx);vm.runInContext(fs.readFileSync(new URL('../public/dev/snow-day-defenders/game.js',import.meta.url),'utf8').replace(/^import .*?;\n/gm,''),ctx);
  const step=(n=1)=>{for(let i=0;i<n;i++){clock+=50;callback(clock);}};
  const state=()=>window.snowDayState();
@@ -43,7 +44,7 @@ function harness({fullscreen=false}={}){
 for(const level of Object.keys(DIFFICULTIES))for(let wave=0;wave<3;wave++){
  const plan=buildWave(level,wave,()=>.5);
  assert.equal(plan.events.length,DIFFICULTIES[level].counts[wave]);
- assert(plan.events.every((e,i)=>e.x>=-5.1&&e.x<=5.1&&e.type>=0&&e.type<=2&&(!i||e.at>=plan.events[i-1].at)));
+ assert(plan.events.every((e,i)=>e.x>=-5.1&&e.x<=5.1&&e.type>=0&&e.type<CREATURE_TYPES.length&&(!i||e.at>=plan.events[i-1].at)));
  if(wave===1)assert(plan.events.some((e,i,a)=>i&&e.at===a[i-1].at&&e.x*a[i-1].x<0),'split rush must arrive on both sides simultaneously');
 }
 const start={x:0,y:2,z:3},end={x:0,y:2,z:-3};
@@ -124,7 +125,7 @@ taps.click('restart');taps.key('ArrowLeft');taps.step();taps.key('ArrowLeft','ke
 taps.click('restart');taps.key('ArrowLeft');taps.key('ArrowLeft','keydown',{repeat:true});taps.key('ArrowLeft');assert.equal(taps.state().dashTime,0,'held key or duplicate keydown does not trigger dash');
 taps.key('ArrowLeft','keyup');taps.key('ArrowRight');assert.equal(taps.state().dashTime,0,'opposite arrows are not a double tap');
 taps.click('restart');taps.key('ArrowLeft');taps.key('ArrowLeft','keyup');taps.click('pause');taps.click('start');taps.key('ArrowLeft');assert.equal(taps.state().dashTime,0,'pause clears tap history');taps.key('ArrowLeft','keyup');taps.step();taps.key('ArrowLeft');assert(taps.state().dashTime>0,'left-arrow double tap works');
-const feedback=harness();feedback.click('start');feedback.key(' ');
+const feedback=harness();feedback.click('start');feedback.fixture('wavePlan.warnings=[];');feedback.key(' ');
 assert.equal(feedback.state().burstCharges,2);assert(!feedback.get('ability-feedback').hidden);assert.match(feedback.get('ability-feedback').textContent,/charge saved/);assert.equal(feedback.state().shockwaves,1,'empty burst shows its range');
 feedback.step(21);assert.equal(feedback.state().shockwaves,0,'range effect cleans up');feedback.step(30);assert(feedback.get('ability-feedback').hidden,'notification expires');
 feedback.fixture("enemies=[creature(0,0,0)];");feedback.step();assert.equal(feedback.get('snow-burst').dataset.ready,'true');feedback.key(' ');
@@ -135,7 +136,7 @@ console.log('PASS: left/right double-tap dash, timing window, held-key guard, co
 
 for(const [width,height] of [[1100,433],[1250,570],[1920,880],[380,590],[730,260],[320,380]]){
  const camera=new THREE.PerspectiveCamera(43,1,.1,100);fitSnowCamera(camera,width,height);
- for(const z of [-33,10])for(const x of [-7,7])for(const y of [0,3.8]){
+ for(const z of [-33,10])for(const x of [-7,7])for(const y of [0,4.2]){
   const p=new THREE.Vector3(x,y,z).project(camera);
   assert(Math.abs(p.x)<=.90001&&Math.abs(p.y)<=.90001&&p.z<1,`play area must stay visible at ${width}x${height}`);
  }
@@ -157,3 +158,26 @@ full.click('fullscreen');await Promise.resolve();assert.equal(full.get('fullscre
 full.click('fullscreen');await Promise.resolve();assert.equal(full.get('fullscreen').textContent,'Fullscreen');assert.equal(full.get('fullscreen').attributes['aria-pressed'],'false');
 full.fixture("gamePanel.requestFullscreen=async()=>{throw new Error('denied');};");full.click('fullscreen');await Promise.resolve();assert.match(full.get('ability-feedback').textContent,/Fullscreen could not start/);assert.equal(full.state().mode,'playing');
 console.log('PASS: fullscreen enter/exit, keyboard focus, unsupported browser, rejected request');
+
+const wiggler={type:3,x:4.8,baseX:4.8,z:-25,spawnZ:-30,age:0,roll:0,slowTime:0,speed:CREATURE_TYPES[3].speed,size:.9,phase:0};
+const positions=[];for(let i=0;i<160;i++){advanceCreature(wiggler,.05,1);positions.push(wiggler.x);assert(wiggler.x>=-5.1&&wiggler.x<=5.1);}
+assert(Math.max(...positions)-Math.min(...positions)>1,'wiggler visibly changes lanes');
+const roller=(z,slowTime=0)=>({type:4,x:0,baseX:0,z,spawnZ:-30,age:0,roll:0,slowTime,speed:CREATURE_TYPES[4].speed,size:1,phase:0});
+const far=roller(-30),near=roller(-4),slow=roller(-4,2.4);advanceCreature(far,.1,1);advanceCreature(near,.1,1);advanceCreature(slow,.1,1);
+assert(near.z+4>(far.z+30)*1.8,'roller accelerates as it approaches');assert(Math.abs((slow.z+4)/(near.z+4)-.55)<.00001,'sticky snow slows roller travel');assert(near.roll>0,'roller rotation follows traveled distance');
+for(const difficulty of Object.keys(DIFFICULTIES)){
+ assert.equal(DIFFICULTIES[difficulty].hp.length,CREATURE_TYPES.length);assert.equal(DIFFICULTIES[difficulty].damage.length,CREATURE_TYPES.length);
+ const types=new Set();
+ for(let i=0;i<3;i++){
+  const plan=buildWave(difficulty,i,()=>.5);plan.events.forEach(e=>types.add(e.type));
+  assert(plan.warnings.every((w,j)=>w.at>=0&&(!j||w.at>=plan.warnings[j-1].at)),'warnings are ordered');
+  const gaps=plan.events.slice(1).map((e,j)=>e.at-plan.events[j].at);
+  assert(Math.max(...gaps)>DIFFICULTIES[difficulty].cadence*4,'waves include breathing gaps');
+ }
+ assert.equal(types.size,CREATURE_TYPES.length,'every difficulty includes every creature type');
+}
+const models=harness();models.click('start');models.fixture('enemies=CREATURE_TYPES.map((_,i)=>creature(i,0,-10));wavePlan.warnings=[];');
+assert.equal(new Set(models.fixture('enemies.map(e=>e.root.userData.creatureType)')).size,5,'models have distinct identities');
+models.step(10);const moving=JSON.stringify(models.fixture('enemies.map(e=>[e.x,e.z,e.age,e.roll])'));models.click('pause');models.step(20);assert.equal(JSON.stringify(models.fixture('enemies.map(e=>[e.x,e.z,e.age,e.roll])')),moving,'pause freezes every creature movement rule');
+models.click('restart');models.step(8);assert.equal(models.get('ability-feedback').dataset.kind,'incoming','new run resets and displays wave warning');
+console.log('PASS: five creature identities, weaving bounds, roller acceleration/rotation/slow, mixed wave coverage, pacing gaps, warnings, pause');

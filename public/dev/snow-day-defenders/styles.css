@@ -78,3 +78,5 @@
 @media(max-height:500px){
  .snow-heading{display:none}.snow-shell{grid-template-rows:minmax(0,1fr) auto;padding:5px;gap:3px}.snow-hud{padding:5px 10px}.snow-hud strong{font-size:15px}.snow-hud>div{gap:1px}.snow-toolbar{padding:5px}.snow-abilities p{display:none}.snow-bottom{padding:2px 10px;min-height:20px}.snow-tip{bottom:8px;padding:5px 10px}
 }
+
+.snow-ability-feedback[data-kind="incoming"]{background:#354775;border:1px solid #adbfe9}.snow-ability-feedback[data-kind="fort"]{background:#92552b;border:1px solid #ffcca0}

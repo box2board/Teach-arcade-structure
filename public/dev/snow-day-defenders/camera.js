@@ -10,7 +10,7 @@ export function fitSnowCamera(camera,width,height){
  const right=new THREE.Vector3(1,0,0),up=new THREE.Vector3().crossVectors(right,forward);
  const tanY=Math.tan(THREE.MathUtils.degToRad(camera.fov/2)),tanX=tanY*aspect;
  let distance=0;
- for(const z of [-33,10])for(const x of [-7,7])for(const y of [0,3.8]){
+ for(const z of [-33,10])for(const x of [-7,7])for(const y of [0,4.2]){
   const offset=new THREE.Vector3(x,y,z).sub(target),depth=offset.dot(forward);
   distance=Math.max(distance,Math.abs(offset.dot(right))/(tanX*.9)-depth,Math.abs(offset.dot(up))/(tanY*.9)-depth);
  }
