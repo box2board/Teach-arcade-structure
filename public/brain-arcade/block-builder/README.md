@@ -2,6 +2,7 @@
 A free-build brick sandbox using the site's self-hosted Three.js and OrbitControls.
 
 - 16 pieces across bricks, plates and tall walls, plus 12 paint colors.
+- Original smooth, rounded blocks with a single subtle connection outline and a flat grid board; no raised studs. Existing piece IDs and logical dimensions remain unchanged so saved builds keep their layout.
 - 32 × 32 baseplate; grid-snapped placement, stacking, collision and support checks.
 - Tap/click builds; dragging or multi-touch gestures never place pieces. Camera controls remain available in every tool.
 - Build, paint, erase, rotate; undo/redo; home/top camera views; fullscreen with CSS fallback.

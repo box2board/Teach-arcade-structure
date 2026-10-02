@@ -1,6 +1,7 @@
 import * as THREE from '/assets/vendor/three-0.162.0/three.module.js';
 import { OrbitControls } from '/assets/vendor/three-0.162.0/OrbitControls.js';
 import { legacyTypes, legacyGeometry } from './legacy.js';
+import { roundedBlockGeometry, connectionOutline } from './block-geometry.js';
 const $ = id => document.getElementById(id);
 const KEY='teacharcade_blockbuilder_v2', OLD='teacharcade_blockbuilder_v1', LIMIT=1500;
 const pieces=[];
@@ -16,7 +17,7 @@ const controls=new OrbitControls(camera,renderer.domElement);controls.enableDamp
 scene.add(new THREE.HemisphereLight(0xffffff,0x8b9caf,2.4));const sun=new THREE.DirectionalLight(0xffffff,3);sun.position.set(15,30,12);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);Object.assign(sun.shadow.camera,{left:-24,right:24,top:24,bottom:-24});sun.shadow.bias=-.0004;scene.add(sun);
 const ground=new THREE.Mesh(new THREE.BoxGeometry(32,.28,32),new THREE.MeshStandardMaterial({color:'#90aaad',roughness:.8}));ground.position.y=-.15;ground.receiveShadow=true;scene.add(ground);
 const grid=new THREE.GridHelper(32,32,0x627e83,0x79979b);grid.position.y=.002;scene.add(grid);
-const studs=new THREE.InstancedMesh(new THREE.CylinderGeometry(.24,.24,.07,12),ground.material,1024);const matrix=new THREE.Matrix4();for(let x=0;x<32;x++)for(let z=0;z<32;z++){matrix.makeTranslation(x-15.5,.028,z-15.5);studs.setMatrixAt(x*32+z,matrix);}scene.add(studs);
+// Flat drafting board: the grid indicates snap positions without raised studs.
 const ray=new THREE.Raycaster(),pointer=new THREE.Vector2();const ghostMaterial=new THREE.MeshStandardMaterial({color:'#2a9d69',transparent:true,opacity:.48,depthWrite:false});const ghost=new THREE.Mesh(new THREE.BoxGeometry(1,1,1),ghostMaterial);ghost.visible=false;scene.add(ghost);
 const highlight=new THREE.BoxHelper(new THREE.Mesh(),0xf97316);highlight.visible=false;scene.add(highlight);
 function def(b){return pieces.find(p=>p.type===b.type)||legacyTypes.find(p=>p.type===b.type);}
@@ -24,10 +25,11 @@ function dimensions(b){const s=def(b).size;return Math.round(b.rotationY/(Math.P
 function bounds(b){const s=dimensions(b);return s.map((v,i)=>[b.position[i]-v/2,b.position[i]+v/2]);}
 function overlap(a,b,axis){return a[axis][0]<b[axis][1]-.01&&a[axis][1]>b[axis][0]+.01;}
 function valid(b){const a=bounds(b);if(a[0][0]<-16||a[0][1]>16||a[2][0]<-16||a[2][1]>16||a[1][0]<-.01||a[1][1]>48)return false;let supported=a[1][0]<.01;for(const other of blocks){const c=bounds(other);if(overlap(a,c,0)&&overlap(a,c,2)){if(overlap(a,c,1))return false;if(Math.abs(a[1][0]-c[1][1])<.02)supported=true;}}return supported;}
-function mat(c){if(!materials.has(c))materials.set(c,new THREE.MeshStandardMaterial({color:c,roughness:.3,metalness:.02}));return materials.get(c);}
-function bodyGeometry(d){if(!geometry.has(d.type)){let g;if(pieces.includes(d)){g=new THREE.BoxGeometry(d.size[0]-.035,d.size[1]-.025,d.size[2]-.035);}else g=legacyGeometry(d);geometry.set(d.type,g);}return geometry.get(d.type);}
-const studGeometry=new THREE.CylinderGeometry(.28,.28,.16,16);
-function makeMesh(b){const d=def(b),group=new THREE.Group(),material=mat(b.color||'#38bdf8');const body=new THREE.Mesh(bodyGeometry(d),material);body.castShadow=true;body.receiveShadow=true;group.add(body);if(pieces.includes(d)){const [w,h,l]=d.size;const s=new THREE.InstancedMesh(studGeometry,material,w*l);for(let x=0;x<w;x++)for(let z=0;z<l;z++){matrix.makeTranslation(x-(w-1)/2,h/2+.055,z-(l-1)/2);s.setMatrixAt(x*l+z,matrix);}s.castShadow=true;group.add(s);}group.position.set(...b.position);group.rotation.y=b.rotationY;group.traverse(o=>o.userData.id=b.id);return group;}
+function mat(c){if(!materials.has(c))materials.set(c,new THREE.MeshStandardMaterial({color:c,roughness:.42,metalness:0}));return materials.get(c);}
+function bodyGeometry(d){if(!geometry.has(d.type)){const g=pieces.includes(d)?roundedBlockGeometry(d.size):legacyGeometry(d);geometry.set(d.type,g);}return geometry.get(d.type);}
+const outlineGeometry=new Map();
+const outlineMaterial=new THREE.LineBasicMaterial({color:0x14243b,transparent:true,opacity:.22,depthWrite:false});
+function makeMesh(b){const d=def(b),group=new THREE.Group(),material=mat(b.color||'#38bdf8');const body=new THREE.Mesh(bodyGeometry(d),material);body.castShadow=true;body.receiveShadow=true;group.add(body);if(pieces.includes(d)){if(!outlineGeometry.has(d.type))outlineGeometry.set(d.type,connectionOutline(d.size));const line=new THREE.LineLoop(outlineGeometry.get(d.type),outlineMaterial);line.raycast=()=>{};group.add(line);}group.position.set(...b.position);group.rotation.y=b.rotationY;group.traverse(o=>o.userData.id=b.id);return group;}
 function sync(){for(const [id,m] of meshes)if(!blocks.some(b=>b.id===id)){scene.remove(m);meshes.delete(id);}for(const b of blocks){let m=meshes.get(b.id);if(!m){m=makeMesh(b);scene.add(m);meshes.set(b.id,m);}m.traverse(o=>{if(o.isMesh)o.material=mat(b.color||'#38bdf8');});}highlight.visible=false;ghost.visible=false;$('brickCount').textContent=`${blocks.length} ${blocks.length===1?'brick':'bricks'}`;$('undoAction').disabled=!past.length;$('redoAction').disabled=!future.length;}
 function remember(){past.push(JSON.stringify(blocks));if(past.length>60)past.shift();future=[];}
 function changed(message){sync();$('saveStatus').textContent='Unsaved changes';say(message);}
