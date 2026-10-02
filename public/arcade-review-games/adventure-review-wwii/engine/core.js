@@ -148,7 +148,8 @@ export function createGame({ mapData, questionBank, renderer, input, ui, audio }
     const interactable = isChestInteractable(nearbyChest);
     updateInteractionHint(nearbyChest, interactable);
 
-    if ((mode === "playing" || mode === "bonus") && interactable && input.consumeInteract()) {
+    const wantsInteract = input.consumeInteract();
+    if ((mode === "playing" || mode === "bonus") && interactable && wantsInteract) {
       handleChest(nearbyChest);
     }
 
@@ -299,13 +300,12 @@ export function createGame({ mapData, questionBank, renderer, input, ui, audio }
   }
 
   function closeQuestionAfterDelay(callback) {
-    setTimeout(() => {
+    ui.awaitContinue(() => {
       ui.closeQuestion();
+      input.reset();
       if (callback) callback();
-      if (!callback) {
-        mode = previousMode === "bonus" ? "bonus" : "playing";
-      }
-    }, 700);
+      else mode = previousMode === "bonus" ? "bonus" : "playing";
+    });
   }
 
   function enterBonusMode() {
