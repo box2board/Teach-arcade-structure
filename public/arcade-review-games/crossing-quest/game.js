@@ -35,11 +35,13 @@ function summary(){
 }
 function pauseDialog(){show(`<span class="pill">Take a breather</span><h2 id="panel-title">Crossing paused</h2><p>Traffic and river platforms are stopped.</p>${button('resume','Resume crossing')}${button('new','Start a new run',false)}`);$('resume').onclick=()=>{world.resume();sync();};$('new').onclick=()=>newRun();}
 function sync(){
-  $('stage').textContent=`${world.stage+1} / ${ROUTES.length} · ${world.route.name}`;
-  $('lives').textContent='♥ '.repeat(world.lives).trim();$('lives').setAttribute('aria-label',`${world.lives} hearts remaining`);
-  $('shield').textContent=world.shield?'Ready':'Empty';
-  $('accuracy').textContent=`${world.records.length} / ${world.deck.length}`;
-  $('charges').textContent=world.slowTime>0?`${Math.ceil(world.slowTime)}s active`:`${world.charges} charge${world.charges===1?'':'s'} · Space`;
+  const setText=(id,text)=>{if($(id).textContent!==text)$(id).textContent=text;};
+  setText('stage',`${world.stage+1} / ${ROUTES.length} · ${world.route.name}`);
+  setText('lives','♥ '.repeat(world.lives).trim());
+  const lifeLabel=`${world.lives} hearts remaining`;if($('lives').getAttribute('aria-label')!==lifeLabel)$('lives').setAttribute('aria-label',lifeLabel);
+  setText('shield',world.shield?'Ready':'Empty');
+  setText('accuracy',`${world.records.length} / ${world.deck.length}`);
+  setText('charges',world.slowTime>0?`${Math.ceil(world.slowTime)}s active`:`${world.charges} charge${world.charges===1?'':'s'} · Space`);
   $('slow').disabled=world.state!=='playing'||!world.charges||world.slowTime>0;
   $('pause').disabled=world.state!=='playing';$('restart').disabled=world.state==='ready';
   if(world.notice){announce(world.notice);world.notice='';}
