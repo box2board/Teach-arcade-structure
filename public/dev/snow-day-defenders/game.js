@@ -82,6 +82,26 @@ function snowPile(e){
  mesh(box,['#8f7fc0','#52a995','#ec9e55'][e.type],-.15,.25,0,.5*e.size,.1,.4*e.size,g);
  piles.push({root:g,life:5});
 }
+const shopIds=['upgrade-double','upgrade-sticky','upgrade-powder','upgrade-repair','start'];
+function shopButtons(){return shopIds.map($).filter(b=>!b.disabled);}
+function focusShopButton(button){(button||shopButtons()[0]).focus({preventScroll:true});}
+function shopKeyboard(e){
+ if(mode!=='between'||!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Enter',' ','Tab'].includes(e.key))return false;
+ e.preventDefault();
+ const available=shopButtons(),current=document.activeElement;
+ if(e.key==='Enter'||e.key===' '){if(!e.repeat&&available.includes(current))current.click();return true;}
+ if(e.key==='Tab'||e.key==='ArrowLeft'||e.key==='ArrowRight'){
+  const direction=(e.key==='ArrowLeft'||(e.key==='Tab'&&e.shiftKey))?-1:1;
+  const index=available.indexOf(current);
+  focusShopButton(available[index<0?0:(index+direction+available.length)%available.length]);
+ }else{
+  // Two upgrade columns lead down to the full-width next-wave button.
+  const paths=e.key==='ArrowDown'?[[2,4],[3,4],[4],[4],[0,1,2,3]]:[[4],[4],[0,4],[1,4],[2,3,0,1]];
+  const index=shopIds.findIndex(id=>$(id)===current);
+  focusShopButton(index<0?available[0]:paths[index].map(i=>$(shopIds[i])).find(b=>!b.disabled));
+ }
+ return true;
+}
 function updateShop(){
  $('tokens').textContent=upgrades.tokens;
  for(const id of Object.keys(UPGRADE_RULES)){
@@ -96,7 +116,8 @@ for(const id of Object.keys(UPGRADE_RULES))$(`upgrade-${id}`).addEventListener('
  if(mode!=='between')return;
  const result=buyUpgrade(upgrades,id,fort);if(!result.purchased)return;
  fort=result.fort;fortGroup.scale.y=.4+.6*fort/100;hud();updateShop();
- $('shop-feedback').textContent=id==='repair'?`Fort repaired to ${fort}%.`:`${UPGRADE_RULES[id].label} equipped for the rest of this run.`;
+ $('shop-feedback').textContent=id==='repair'?`Fort repaired to ${fort}%.`:`${UPGRADE_RULES[id].label} equipped for this run.`;
+ focusShopButton(canBuy(upgrades,id,fort)?$(`upgrade-${id}`):shopButtons()[0]);
 });
 function damageCreature(e){
  if(!enemies.includes(e))return;
@@ -140,10 +161,16 @@ function snowBurst(){
 }
 for(const [id,action] of [['dash-left',()=>dash(-1)],['dash-right',()=>dash(1)],['snow-burst',snowBurst]])$(id).addEventListener('click',()=>{action();if(mode==='playing')canvas.focus({preventScroll:true});});
 function hud(){ $('fort-text').textContent=`${fort}%`;$('fort').value=fort;$('wave').textContent=`${wave} / 3`;$('cleared').textContent=cleared; }
-function overlay(title,message,label,eyebrow){$('shop').hidden=mode!=='between';$('difficulty-picker').hidden=!['ready','won','lost'].includes(mode);$('overlay').hidden=false;$('title').textContent=title;$('message').textContent=message;$('start').textContent=label;$('eyebrow').textContent=eyebrow;}
+function overlay(title,message,label,eyebrow){
+ $('shop').hidden=mode!=='between';$('difficulty-picker').hidden=!['ready','won','lost'].includes(mode);
+ $('overlay').dataset.mode=mode;$('overlay').setAttribute('aria-modal',String(mode==='between'));$('overlay').hidden=false;
+ $('title').textContent=title;$('message').textContent=message;$('start').textContent=label;$('eyebrow').textContent=eyebrow;
+ $('menu-help').textContent=mode==='between'?'Arrows: choose · Enter: buy / start next wave':'Move: arrows / A & D / drag · Dash: Q / E · Snow Burst: Space / B';
+ if(mode==='between'){$('tip').hidden=true;focusShopButton();}
+}
 function clearInputs(){moveLeft=moveRight=drag=false;targetX=null;}
 function reset(){[...enemies,...balls,...flakes,...piles,...tumbles,...splashes].forEach(disposeEntity);enemies=[];balls=[];flakes=[];piles=[];tumbles=[];splashes=[];upgrades=freshUpgrades();difficulty=selectedDifficulty;wavePlan=buildWave(difficulty,0);dashTime=dashCooldown=burstCooldown=burstUses=burstHits=0;dashDirection=0;burstCharges=2;volley=splashHits=stickyHits=0;hits=0;defeatedByType=[0,0,0];fort=100;cleared=0;wave=1;spawned=0;waveTime=spawnClock=tossClock=0;$('tip').hidden=false;player.position.x=0;clearInputs();fortGroup.scale.y=1;hud();updateShop();}
-function begin(){mode='playing';$('overlay').hidden=true;$('shop').hidden=true;$('difficulty-picker').hidden=true;$('pattern').textContent=`${DIFFICULTIES[difficulty].label} · Wave ${wave}: ${wavePlan.name}`;$('pause').disabled=false;$('pause').textContent='Pause';$('status').textContent=wavePlan.hint;abilityHud();canvas.focus({preventScroll:true});}
+function begin(){mode='playing';$('overlay').dataset.mode=mode;$('overlay').hidden=true;$('shop').hidden=true;$('difficulty-picker').hidden=true;$('pattern').textContent=`${DIFFICULTIES[difficulty].label} · Wave ${wave}: ${wavePlan.name}`;$('pause').disabled=false;$('pause').textContent='Pause';$('status').textContent=wavePlan.hint;abilityHud();canvas.focus({preventScroll:true});}
 function finish(won){mode=won?'won':'lost';clearInputs();$('pause').disabled=true;overlay(won?'Snow day saved!':'Time to rebuild!',`You turned ${cleared} creatures into snow piles. ${won?`Your fort finished at ${fort}% strength.`:'Try lining up with the leading creatures before they reach the fort.'}`,'Play again',won?'FORT PROTECTED':'A FRESH START');$('status').textContent=won?'All three waves complete.':'The snow fort tumbled. Try again!';abilityHud();}
 $('start').addEventListener('click',()=>{if(mode==='paused')begin();else if(mode==='between'){wave++;wavePlan=buildWave(difficulty,wave-1);spawned=0;spawnClock=waveTime=0;hud();begin();}else{reset();begin();}});
 $('restart').addEventListener('click',()=>{reset();begin();});
@@ -151,6 +178,7 @@ function pause(){if(mode!=='playing')return;mode='paused';clearInputs();$('pause
 $('pause').addEventListener('click',()=>mode==='paused'?begin():pause());
 window.addEventListener('blur',()=>{clearInputs();pause();});document.addEventListener('visibilitychange',()=>{if(document.hidden)pause();});
 window.addEventListener('keydown',e=>{
+ if(shopKeyboard(e))return;
  if(!['ArrowLeft','ArrowRight','a','A','d','D','q','Q','e','E',' ','b','B','Escape'].includes(e.key)||mode!=='playing')return;
  // Keep focused buttons usable with Space; canvas focus owns gameplay shortcuts.
  if(e.target?.tagName==='BUTTON'||e.target?.tagName==='INPUT')return;
@@ -207,7 +235,7 @@ if(mode==='playing'){
   }else{b.mesh.position.copy(end);if(end.z<-40||b.life>2){disposeEntity(b);balls.splice(i,1);}}
  }
  for(let i=enemies.length-1;i>=0;i--){const e=enemies[i];e.slowTime=Math.max(0,e.slowTime-dt);e.slowRing.visible=e.slowTime>0;e.hitTime=Math.max(0,e.hitTime-dt);e.body.scale.set(.66*(e.hitTime?1.18:1),.72*(e.hitTime?.86:1),.62);e.z+=e.speed*settings.speed*dt*(1+(wave-1)*.12)*(e.slowTime>0?.55:1);e.root.position.set(e.x,Math.abs(Math.sin(elapsed*4+e.phase))*.12,e.z);e.root.rotation.z=Math.sin(elapsed*3+e.phase)*.055;e.hands.forEach((h,j)=>h.position.y=.93+Math.sin(elapsed*5+e.phase+j*Math.PI)*.13);if(e.z>7.9){burst(e.x,8);disposeEntity(e);enemies.splice(i,1);fort=Math.max(0,fort-settings.damage[e.type]);fortGroup.scale.y=.4+.6*fort/100;hud();if(fort===0){finish(false);break;}}}
- if(mode==='playing'&&spawned===wavePlan.events.length&&enemies.length===0){balls.forEach(disposeEntity);balls=[];if(wave===3)finish(true);else{mode='between';dashTime=0;burstCharges=Math.min(3,burstCharges+1);grantTokens(upgrades,3);updateShop();$('shop-feedback').textContent='Pick an upgrade or save your tokens for the next break.';clearInputs();$('pause').disabled=true;overlay(`Wave ${wave} cleared!`,`Fort strength: ${fort}%. Next: ${WAVE_PATTERNS[wave].name}. ${WAVE_PATTERNS[wave].hint}`,'Start next wave','UPGRADE BREAK');$('status').textContent='Take a breather. Start the next wave when ready.';}}
+ if(mode==='playing'&&spawned===wavePlan.events.length&&enemies.length===0){balls.forEach(disposeEntity);balls=[];if(wave===3)finish(true);else{mode='between';dashTime=0;burstCharges=Math.min(3,burstCharges+1);grantTokens(upgrades,3);updateShop();$('shop-feedback').textContent='Choose an upgrade or save your tokens.';clearInputs();$('pause').disabled=true;overlay(`Wave ${wave} cleared!`,`Fort: ${fort}% · Next: ${WAVE_PATTERNS[wave].name}`,'Start next wave','UPGRADE BREAK');$('status').textContent='Take a breather. Start the next wave when ready.';}}
  abilityHud();$('tip').hidden=waveTime>8;
 }
 if(mode!=='paused'){

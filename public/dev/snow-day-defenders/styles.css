@@ -5,3 +5,33 @@
 .snow-difficulty[hidden]{display:none}.snow-difficulty{padding:0;border:0;margin:18px 0;text-align:left}.snow-difficulty legend{font-size:14px;font-weight:800}.snow-difficulty-options{display:flex;gap:8px;margin:8px 0}.snow-difficulty-options label{flex:1;background:#edf5fa;border:1px solid #c5dbe8;border-radius:10px;padding:11px 7px;font-size:13px;font-weight:700;cursor:pointer;text-align:center}.snow-difficulty-options label:has(input:checked){background:#fff0dd;border-color:#ef9e51}.snow-difficulty-options input{accent-color:#d17a2f}.snow-difficulty #difficulty-hint{font-size:12px;line-height:1.45;margin:8px 0}.snow-pattern{color:#426779;font-size:13px;text-align:center;margin:14px 0 0;font-weight:700}
 
 .snow-abilities{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;padding:12px 12px 8px;border-bottom:1px solid #e0eaf2;background:#edf6fb}.snow-abilities button{min-height:44px;min-width:110px}.snow-abilities #snow-burst{background:#d5f2ee;border-color:#8ccfc4}.snow-abilities p{flex-basis:100%;text-align:center;font-size:11px;color:#52677b;margin:2px 0 0}@media(max-width:400px){.snow-abilities button{min-width:0;padding:11px 9px;font-size:12px}.snow-abilities #snow-burst{flex:1}}
+
+/* The upgrade break uses the viewport rather than the canvas height. */
+.snow-page:has(.snow-overlay[data-mode="between"]:not([hidden])){overflow:hidden}
+.snow-overlay[data-mode="between"]{position:fixed;inset:0;z-index:10000;padding:12px;background:#142a428f;min-height:0}
+.snow-overlay[data-mode="between"] .snow-card{width:min(100%,620px);max-width:620px;max-height:none;overflow:visible;padding:20px 24px}
+.snow-overlay[data-mode="between"] h2{font-size:26px;margin:6px 0}
+.snow-overlay[data-mode="between"] #message{margin:4px 0;font-size:13px;line-height:1.4}
+.snow-overlay[data-mode="between"] .snow-shop{margin:12px 0}
+.snow-overlay[data-mode="between"] .snow-wallet{margin:5px 0!important}
+.snow-overlay[data-mode="between"] #shop-feedback{min-height:1.4em;line-height:1.4;margin:8px 0 0}
+.snow-overlay[data-mode="between"] .snow-small{margin:8px 0 0;line-height:1.4}
+.snow-overlay[data-mode="between"] button:focus{outline:3px solid #ed8f3c;outline-offset:2px}
+@media(max-width:400px){
+ .snow-overlay[data-mode="between"] .snow-card{padding:16px}
+ .snow-overlay[data-mode="between"] h2{font-size:24px}
+ .snow-overlay[data-mode="between"] .snow-wallet span{display:inline}
+}
+@media(max-height:480px){
+ .snow-overlay[data-mode="between"]{padding:8px}
+ .snow-overlay[data-mode="between"] .snow-card{padding:10px 16px}
+ .snow-overlay[data-mode="between"] #eyebrow{display:none}
+ .snow-overlay[data-mode="between"] h2{font-size:20px;margin:0 0 3px}
+ .snow-overlay[data-mode="between"] .snow-shop{margin:6px 0}
+ .snow-overlay[data-mode="between"] .snow-upgrade-grid{gap:6px}
+ .snow-overlay[data-mode="between"] .snow-upgrade-grid button{padding:7px 9px}
+ .snow-overlay[data-mode="between"] .snow-upgrade-grid span{margin-top:2px;font-size:10px;line-height:1.25}
+ .snow-overlay[data-mode="between"] .snow-primary{padding:10px}
+ .snow-overlay[data-mode="between"] #shop-feedback{font-size:11px;margin-top:5px}
+ .snow-overlay[data-mode="between"] .snow-small{font-size:10px;margin-top:5px}
+}

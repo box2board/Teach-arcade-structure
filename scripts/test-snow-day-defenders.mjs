@@ -13,13 +13,17 @@ class Element {
  addEventListener(k,f){(this.handlers[k]||=[]).push(f);}
  fire(k,e={}){for(const f of this.handlers[k]||[])f(e);}
  querySelector(){return this.child||=new Element();}
- focus(){} setPointerCapture(){}
+ focus(){if(this.ownerDocument)this.ownerDocument.activeElement=this;}
+ setAttribute(name,value){(this.attributes||={})[name]=value;}
+ click(){if(!this.disabled)this.fire('click');}
+ setPointerCapture(){}
  getBoundingClientRect(){return {left:0,top:0,width:1100,height:620};}
 }
 function harness(){
- const elements=new Map(),get=id=>{if(!elements.has(id))elements.set(id,new Element());return elements.get(id);};
+ const window=new Element(),document=new Element();document.activeElement=null;
+ const elements=new Map(),get=id=>{if(!elements.has(id))elements.set(id,Object.assign(new Element(),{ownerDocument:document}));return elements.get(id);};
  Object.assign(get('stage'),{clientWidth:1100,clientHeight:620});
- const window=new Element(),document=new Element();document.getElementById=get;document.hidden=false;
+ document.getElementById=get;document.hidden=false;
  const inputs=['easy','medium','hard'].map(value=>Object.assign(new Element(),{value,checked:value==='easy'}));document.querySelectorAll=()=>inputs;
  let callback,scene,clock=0,seed=42;
  const math=Object.create(Math);math.random=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296;};
@@ -32,7 +36,7 @@ function harness(){
  const select=value=>{for(const i of inputs)i.checked=i.value===value;inputs.find(i=>i.value===value).fire('change');};
  const click=id=>get(id).fire('click');
  const aim=()=>{const creatures=scene.children.filter(g=>g.userData.snowCreature&&g.scale.x>.6&&g.position.z<7.9).sort((a,b)=>b.position.z-a.position.z);key('ArrowLeft','keyup');key('ArrowRight','keyup');if(creatures[0]){const delta=creatures[0].position.x-state().playerX;if(Math.abs(delta)>.18)key(delta>0?'ArrowRight':'ArrowLeft');}};
- return {get,step,state,key,select,click,aim,fixture:source=>vm.runInContext(source,ctx)};
+ return {get,step,state,key,select,click,aim,focused:()=>[...elements].find(([,e])=>e===document.activeElement)?.[0],fixture:source=>vm.runInContext(source,ctx)};
 }
 for(const level of Object.keys(DIFFICULTIES))for(let wave=0;wave<3;wave++){
  const plan=buildWave(level,wave,()=>.5);
@@ -93,3 +97,19 @@ abilities.click('restart');assert.equal(abilities.state().burstCharges,2);assert
 abilities.fixture("mode='between';");const between=JSON.stringify(abilities.state());abilities.click('dash-left');abilities.click('snow-burst');assert.equal(JSON.stringify(abilities.state()),between,'upgrade breaks block abilities');
 abilities.fixture("mode='playing';burstCharges=0;spawned=wavePlan.events.length;enemies.forEach(disposeEntity);enemies=[];");abilities.step();assert.equal(abilities.state().mode,'between');assert.equal(abilities.state().burstCharges,1,'wave break replenishes a spent charge');
 console.log('PASS: keyboard/touch dash, fixed distance, edge limits, cooldowns, repeat guard, pause, burst area damage, charge limits, restart');
+
+const menu=harness();menu.click('start');
+menu.fixture("spawned=wavePlan.events.length;enemies.forEach(disposeEntity);enemies=[];fort=90;");menu.step();
+assert.equal(menu.state().mode,'between');assert.equal(menu.focused(),'upgrade-double','upgrade screen receives keyboard focus');
+assert.equal(menu.get('overlay').dataset.mode,'between');assert.equal(menu.get('overlay').attributes['aria-modal'],'true');
+menu.key('ArrowRight');assert.equal(menu.focused(),'upgrade-sticky');menu.key('ArrowDown');assert.equal(menu.focused(),'upgrade-repair');
+menu.key('Enter');assert.equal(menu.state().fort,100);assert.equal(menu.state().upgrades.tokens,2);assert.equal(menu.focused(),'upgrade-double','disabled repair loses selection after purchase');
+menu.key('ArrowDown');assert.equal(menu.focused(),'upgrade-powder');menu.key('Enter','keydown',{repeat:true});assert(!menu.state().upgrades.powder,'held Enter cannot purchase');
+menu.key('Enter');assert(menu.state().upgrades.powder);assert.equal(menu.state().upgrades.tokens,0);assert.equal(menu.focused(),'start','next-wave button receives focus when upgrades are unavailable');
+for(const key of ['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Tab']){menu.key(key);assert.equal(menu.focused(),'start','navigation skips disabled upgrades');}
+menu.key('Enter');assert.equal(menu.state().wave,2);assert.equal(menu.state().mode,'playing');assert(menu.get('overlay').hidden);assert.equal(menu.focused(),'scene','starting next wave restores game controls');
+menu.fixture("spawned=wavePlan.events.length;enemies.forEach(disposeEntity);enemies=[];");menu.step();
+assert.equal(menu.focused(),'upgrade-double');menu.key('Tab','keydown',{shiftKey:true});assert.equal(menu.focused(),'start','Shift-Tab wraps within the menu');
+menu.key('ArrowUp');assert.equal(menu.focused(),'upgrade-double','up skips equipped and unavailable bottom-row upgrades');
+menu.key('ArrowRight');assert.equal(menu.focused(),'upgrade-sticky');menu.key(' ');assert(menu.state().upgrades.sticky);assert.equal(menu.focused(),'start');
+console.log('PASS: upgrade arrow navigation, keyboard purchases, repeat guard, disabled options, focus containment, keyboard next wave');
