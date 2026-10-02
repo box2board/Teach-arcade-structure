@@ -56,6 +56,17 @@
 .word-rescue-page__scene-art .wr-snow{fill:#e2e8f0}
 .word-rescue-page__scene-art .wr-sand{fill:#fde7bd}
 .word-rescue-page__scene-art .wr-dark-fill{fill:#64748b}
+.word-rescue-page__scene[data-scene="island"]{background:#dff3ff}
+.word-rescue-page__scene[data-scene="island"] .word-rescue-page__scene-art{min-height:278px;padding:6px 0 0}
+.word-rescue-page__scene[data-scene="island"] .word-rescue-page__signal-panel{display:none}
+.word-rescue-page__scene[data-scene="island"] .word-rescue-page__stage-layer{display:none}
+.word-rescue-page__scene[data-scene="island"] .wr-island-boat{transition:transform .48s cubic-bezier(.2,.8,.2,1)}
+.word-rescue-page__scene[data-scene="island"] #island-water-rise{transition:y .38s ease,height .38s ease}
+.word-rescue-page__scene[data-scene="island"] #island-water-line{transition:d .38s ease}
+.word-rescue-page__scene[data-scene="island"] .wr-island-palm,
+.word-rescue-page__scene[data-scene="island"] #island-survivor{transition:transform .38s ease}
+.word-rescue-page__scene.is-rescued[data-scene="island"]{box-shadow:inset 0 0 0 4px rgba(22,163,74,.24)}
+.word-rescue-page__scene.is-offline[data-scene="island"]{box-shadow:inset 0 0 0 4px rgba(185,28,28,.28)}
 .word-rescue-page__scene-art .wr-action{transform-box:fill-box;transform-origin:center;transition:transform .65s ease,opacity .35s ease}
 .word-rescue-page__stage-layer{position:absolute;inset:0;z-index:3;pointer-events:none}
 .word-rescue-page__stage-mark{
