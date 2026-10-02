@@ -1,8 +1,10 @@
 # 3D Block Builder
 A free-build brick sandbox using the site's self-hosted Three.js and OrbitControls.
 
-- 16 pieces across bricks, plates and tall walls, plus 12 paint colors.
-- Original smooth, rounded blocks with a single subtle connection outline and a flat grid board; no raised studs. Existing piece IDs and logical dimensions remain unchanged so saved builds keep their layout.
+- 40 pieces across Bricks (6), Plates (6), Walls (4), Slopes (6), Structures (9), Round (5), and Tiles (4), plus 12 paint colors.
+- Rounded blocks with raised, hollow rounded-square connection pads. Smooth tiles, ramps and roof sections have no pads. Existing piece IDs and logical dimensions remain unchanged so saved builds keep their layout.
+- Actual 3D thumbnails and a persistent selected-piece preview reflecting color and rotation.
+- Compound collision bounds preserve usable arch, doorway and window openings. Slopes and round pieces currently reserve their rectangular envelope for collision; sloped faces are not mounting surfaces.
 - 32 × 32 baseplate; grid-snapped placement, stacking, collision and support checks.
 - Tap/click builds; dragging or multi-touch gestures never place pieces. Camera controls remain available in every tool.
 - Build, paint, erase, rotate; undo/redo; home/top camera views; fullscreen with CSS fallback.
