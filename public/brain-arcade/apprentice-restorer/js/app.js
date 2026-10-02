@@ -1,3 +1,4 @@
+import {fitViewport} from './viewport.js';
 import {WORLD,objects,initialState,connected,simulate,canStand} from './flow-model.js';
 const root=document.querySelector('#worldsmith');
 if(root)start();
@@ -10,8 +11,48 @@ function start(){
   function message(text){$('#message').textContent=text;}
   function discover(n){if(!s.discoveries.includes(n)){s.discoveries.push(n);refreshNotes();save();}}
   function refreshNotes(){$('#discovery-count').textContent=`${s.discoveries.length} / 3`;$('#discoveries').innerHTML=s.discoveries.length?s.discoveries.map(n=>`<li>${notes[n]}</li>`).join(''):'<li>Your discoveries appear here as you play.</li>';}
-  function resize(){const mobile=(canvas.clientWidth||960)<620;vw=mobile?600:960;vh=600;const dpr=Math.min(window.devicePixelRatio||1,2);canvas.width=vw*dpr;canvas.height=vh*dpr;canvas.style.aspectRatio=`${vw} / ${vh}`;ctx.setTransform(dpr,0,0,dpr,0,0);}
-  window.addEventListener('resize',resize);resize();refreshNotes();
+  const game=$('.ws-game'),fullscreen=$('#fullscreen');
+  let sizing=false,focusScroll=0;
+  function resize(){
+    if(sizing)return;sizing=true;
+    // Use the device viewport, rather than the fitted canvas, to select the camera.
+    vw=window.innerWidth<=600?600:960;vh=600;
+    const dpr=Math.min(window.devicePixelRatio||1,2);
+    canvas.width=vw*dpr;canvas.height=vh*dpr;canvas.style.aspectRatio=`${vw} / ${vh}`;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    const focused=root.classList.contains('ws-focus')||document.fullscreenElement===root;
+    const height=window.visualViewport?.height||window.innerHeight;
+    const style=getComputedStyle(root);
+    const width=root.clientWidth-parseFloat(style.paddingLeft)-parseFloat(style.paddingRight);
+    // A second pass accounts for toolbar text wrapping at the fitted width.
+    for(let pass=0;pass<2;pass++){
+      const top=game.getBoundingClientRect().top+(focused?0:window.scrollY);
+      const chrome=$('.ws-top').getBoundingClientRect().height+$('.ws-controls').getBoundingClientRect().height+2;
+      const fit=fitViewport({width,height,top,chrome,ratio:vw/vh});
+      game.style.width=`${fit.width}px`;
+    }
+    sizing=false;
+  }
+  function syncFullscreen(){
+    const active=root.classList.contains('ws-focus')||document.fullscreenElement===root;
+    fullscreen.textContent=active?'Exit fullscreen':'Fullscreen';
+    fullscreen.setAttribute('aria-pressed',String(active));
+    resize();canvas.focus({preventScroll:true});
+  }
+  fullscreen.addEventListener('click',async()=>{
+    clearInput();
+    if(document.fullscreenElement===root){await document.exitFullscreen();return;}
+    if(root.classList.contains('ws-focus')){
+      root.classList.remove('ws-focus');window.scrollTo(0,focusScroll);syncFullscreen();return;
+    }
+    try{if(!root.requestFullscreen)throw new Error('Fullscreen unavailable');await root.requestFullscreen();}
+    catch{focusScroll=window.scrollY;root.classList.add('ws-focus');syncFullscreen();}
+  });
+  document.addEventListener('fullscreenchange',syncFullscreen);
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&root.classList.contains('ws-focus')){root.classList.remove('ws-focus');window.scrollTo(0,focusScroll);syncFullscreen();}});
+  window.addEventListener('resize',resize);window.visualViewport?.addEventListener('resize',resize);
+  if(window.ResizeObserver){const observer=new ResizeObserver(resize);for(const el of [$('#site-header'),$('.ws-title'),$('.ws-controls')])if(el)observer.observe(el);}
+  resize();refreshNotes();
   function nearest(){const candidates=[{id:'elbow',...objects.elbow},{id:'valve',...objects.valve},{id:'trough',x:objects.trough.x,y:s.troughY}];return candidates.map(o=>({...o,d:Math.hypot(o.x-s.player.x,o.y-s.player.y)})).filter(o=>o.d<80).sort((a,b)=>a.d-b.d)[0]||null;}
   function actOnce(){if(paused||!$('#win').hidden)return;near=nearest();if(near?.id==='elbow'){s.elbow=(s.elbow+1)%4;message(s.elbow===3?'The stream turns toward the wheel.':'Water spills from the open end.');if(s.elbow===3)discover(0);save();}else if(near?.id==='valve'){s.valve=Math.max(0,Math.min(1,s.valve+(keys.has('shift')?-0.12:0.12)));save();}else if(!near)message('Walk beside the channel elbow, loose channel, or valve.');}
   function work(dt){near=nearest();if(!near)return;if(near.id==='valve'){s.valve=Math.max(0,Math.min(1,s.valve+(keys.has('shift')?-1:1)*dt*0.42));}if(near.id==='trough'&&s.troughY>330){if(s.player.y>s.troughY+20){const step=Math.min(dt*65,s.troughY-330);s.troughY-=step;s.player.y-=step;if(s.troughY<=330.01){s.troughY=330;message('Channel connected. The stream can reach the wheel.');discover(1);save();}}else message('Get behind the loose channel and push it toward the gap.');}}
