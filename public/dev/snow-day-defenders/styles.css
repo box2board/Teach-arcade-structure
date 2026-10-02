@@ -22,7 +22,7 @@
  .snow-overlay[data-mode="between"] h2{font-size:24px}
  .snow-overlay[data-mode="between"] .snow-wallet span{display:inline}
 }
-@media(max-height:480px){
+@media(max-height:600px){
  .snow-overlay[data-mode="between"]{padding:8px}
  .snow-overlay[data-mode="between"] .snow-card{padding:10px 16px}
  .snow-overlay[data-mode="between"] #eyebrow{display:none}
@@ -35,3 +35,5 @@
  .snow-overlay[data-mode="between"] #shop-feedback{font-size:11px;margin-top:5px}
  .snow-overlay[data-mode="between"] .snow-small{font-size:10px;margin-top:5px}
 }
+
+@media(max-height:420px) and (min-width:500px){.snow-overlay[data-mode="between"] .snow-upgrade-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.snow-overlay[data-mode="between"] .snow-card{width:min(100%,760px);max-width:760px}}
