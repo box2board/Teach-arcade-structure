@@ -14,11 +14,13 @@ function installSharedUI(){
  .ta-difficulty:hover,.ta-difficulty:focus-visible{border-color:#475569;outline:3px solid #facc15;outline-offset:2px}
  .ta-difficulty strong{display:block;font-size:1.05rem;margin-bottom:6px}.ta-difficulty span{display:block;font-size:.78rem;line-height:1.4;color:#526077}
  .ta-difficulty[data-difficulty="hard"]{background:#fff7f7}.ta-difficulty[data-difficulty="medium"]{background:#fffbeb}
+ .ta-audio-controls{display:flex;justify-content:flex-end;gap:6px;margin:0 0 8px}.ta-audio-controls button{font:inherit;font-size:.72rem;font-weight:850;border:1px solid #94a3b8;border-radius:999px;padding:6px 10px;background:#f8fafc;color:#334155;cursor:pointer}.ta-audio-controls button[aria-pressed="false"]{opacity:.62}
  @media(max-width:699px){.ta-question-keyboard-hint{display:none}.ta-difficulty-grid{grid-template-columns:1fr}}
 \n `;
  document.head.appendChild(style);
- installQuestionKeyboard();
+ installQuestionKeyboard();installAudioControls();
 }
+function installAudioControls(){if(document.getElementById('ta-audio-controls'))return;const wrap=document.createElement('div');wrap.id='ta-audio-controls';wrap.className='ta-audio-controls';wrap.setAttribute('aria-label','Audio controls');wrap.innerHTML='<button type="button" data-audio-toggle="sfx" aria-pressed="true">SFX: On</button><button type="button" data-audio-toggle="music" aria-pressed="false" title="Music is available for game themes that provide it">Music: Off</button>';const canvas=document.getElementById('game');canvas?.before(wrap);wrap.addEventListener('click',async e=>{const b=e.target.closest('[data-audio-toggle]');if(!b||!TA.sound)return;await TA.sound.unlock();const k=b.dataset.audioToggle;TA.sound.set(k,!TA.sound.prefs[k]);TA.sound.play('select')});TA.sound?.syncUI()}
 function installQuestionKeyboard(){
  if(TA.questionKeyboardInstalled)return;TA.questionKeyboardInstalled=true;
  const modal=document.getElementById('question-modal'),choices=document.getElementById('question-choices');if(!modal||!choices)return;
@@ -37,7 +39,7 @@ function chooseDifficulty(game,onChoose){
 }
 function boot(){
  installSharedUI();
- const game=window.TA_GAME;if(!game)throw new Error('TA_GAME package is missing.');
+ const game=window.TA_GAME;if(!game)throw new Error('TA_GAME package is missing.');if(TA.installSoundManager)TA.installSoundManager(game.sound||game.theme?.sound||{});TA.sound?.syncUI();
  const canvas=document.getElementById('game'),status=document.getElementById('status'),debugEl=document.getElementById('level-debug');
  if(!canvas)throw new Error('Production shell requires #game canvas.');
  const physics=(window.TA_PHYSICS_PRESETS||{})[game.physicsPreset||game.level.physicsPreset||'earth'];if(!physics)throw new Error('Unknown physics preset.');

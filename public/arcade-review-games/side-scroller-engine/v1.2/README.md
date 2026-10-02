@@ -89,3 +89,12 @@ First production game: **Slope Street Sprint**.
 Production validation includes true slope traversal and flat/slope seams, world-anchored rendering, stompable and non-stompable enemies, breakables, bounce surfaces, climbables, difficulty presets, randomized questions and choices, keyboard/touch input, gameplay QA, visual QA, and Level Identity QA.
 
 Existing V1.1 games remain on V1.1 intentionally. Engine generations may coexist to preserve gameplay variety and avoid unnecessary migrations.
+
+
+## V1.2.1 sound events
+
+V1.2 includes a reusable Web Audio Sound Manager. It synthesizes lightweight original effects in the browser, so games do not depend on copyrighted or externally hosted audio files. Audio context creation/resume happens only after pointer or keyboard interaction to comply with browser autoplay restrictions.
+
+Engine events currently include: `jump`, `land` (reserved), `stomp`, `hit`, `bounce`, `break`, `collect`, `question`, `correct`, `incorrect`, `checkpoint`, `zone`, `finish`, and `select`. Themes may override synthesized event definitions through game sound configuration without changing core gameplay.
+
+SFX and Music preferences are separate and persist locally. SFX defaults on at a classroom-friendly volume. Music defaults off; V1.2.1 does not add background music to Slope Street Sprint.
