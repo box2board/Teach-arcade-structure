@@ -1,15 +1,12 @@
-# Teach Arcade 3D Block Builder (MVP)
+# 3D Block Builder
+A free-build brick sandbox using the site's self-hosted Three.js and OrbitControls.
 
-This interactive is a browser-based classroom sandbox for building 3D concept models.
+- 16 pieces across bricks, plates and tall walls, plus 12 paint colors.
+- 32 × 32 baseplate; grid-snapped placement, stacking, collision and support checks.
+- Tap/click builds; dragging or multi-touch gestures never place pieces. Camera controls remain available in every tool.
+- Build, paint, erase, rotate; undo/redo; home/top camera views; fullscreen with CSS fallback.
+- Explicit device save/load, JSON file import/export, clean PNG export.
+- Builds use `teacharcade_blockbuilder_v2`; load falls back to the untouched v1 save. `legacy.js` preserves original piece geometry for older builds.
+- Up to 1,500 pieces and 48 units high for new placements. Erasing supports deliberately leaves upper pieces in place for free editing.
 
-## Files
-- `index.html` – page shell, SEO, structured data, and content sections.
-- `styles.css` – layout and responsive styling for palette/canvas/inspector.
-- `app.js` – Three.js scene, placement interactions, undo/redo, save/load, export/import, screenshot.
-- `icons.js` – icon map used in UI and block sprites.
-
-## Local storage
-Builds save to `teacharcade_blockbuilder_v1`.
-
-## Optional icon PNG generation
-Run `node scripts/export-block-builder-icons.mjs` after installing `sharp` to generate 32px/48px icon PNG exports.
+Manual verification: place and stack each piece family, rotate rectangular pieces, reject overlaps/out-of-bounds placements, paint/erase/undo/redo, drag without building, pinch/pan on touch, export/import and load a legacy save, inspect phone/fullscreen layouts.
