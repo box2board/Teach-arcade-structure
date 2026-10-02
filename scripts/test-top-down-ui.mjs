@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 class Node {
- constructor(){this.children=[];this.dataset={};this.style={setProperty:(k,v)=>this.style[k]=v};this.classList={add(){},remove(){}};this.listeners={};this.open=false;this.clientWidth=800;this.clientHeight=600;this.scrollHeight=0;}
+ constructor(){this.children=[];this.dataset={};this.style={setProperty:(k,v)=>this.style[k]=v};const classes=new Set();this.classList={add(...names){names.forEach(n=>classes.add(n))},remove(...names){names.forEach(n=>classes.delete(n))},contains(name){return classes.has(name)}};this.listeners={};this.open=false;this.clientWidth=800;this.clientHeight=600;this.scrollHeight=0;}
  append(...nodes){this.children.push(...nodes)} prepend(...nodes){this.children.unshift(...nodes)} replaceChildren(...nodes){this.children=[...nodes]} before(){} after(){} setAttribute(k,v){this[k]=v} addEventListener(k,v){this.listeners[k]=v} querySelector(){return this.innerHTML?.includes('svg')?{}:null} focus(){document.activeElement=this} click(){if(!this.disabled)this.listeners.click?.()} showModal(){this.open=true} close(){this.open=false} remove(){} }
-const nodes=new Map();globalThis.document={getElementById(id){if(!nodes.has(id))nodes.set(id,new Node());return nodes.get(id)},body:new Node(),querySelector(selector){if(selector!=='script[data-map]'){if(selector==='#message')return this.getElementById('message');if(!nodes.has(selector))nodes.set(selector,new Node());return nodes.get(selector);}return {dataset:{map:'./map.js',questionSet:'./constitution.js'}}},querySelectorAll(){return []},createElement(){return new Node()},addEventListener(){},hidden:false};const windowListeners={};globalThis.window={addEventListener(name,fn){windowListeners[name]=fn}};let animationFrame,clock=100;globalThis.requestAnimationFrame=fn=>{if(fn.name==='frame')animationFrame=fn};
+const nodes=new Map(),documentListeners={};globalThis.document={getElementById(id){if(!nodes.has(id))nodes.set(id,new Node());return nodes.get(id)},body:new Node(),querySelector(selector){if(selector!=='script[data-map]'){if(selector==='#message')return this.getElementById('message');if(!nodes.has(selector))nodes.set(selector,new Node());return nodes.get(selector);}return {dataset:{map:'./map.js',questionSet:'./constitution.js'}}},querySelectorAll(){return []},createElement(){return new Node()},addEventListener(name,fn){documentListeners[name]=fn},hidden:false};const windowListeners={};globalThis.window={addEventListener(name,fn){windowListeners[name]=fn}};let animationFrame,clock=100;globalThis.requestAnimationFrame=fn=>{if(fn.name==='frame')animationFrame=fn};
 await import('../public/arcade-review-games/shared/top-down/game.js');
 const get=id=>nodes.get(id);
 assert.equal(get('tiles').children.length,273);assert.equal(get('dialog-actions').children.length,3);
@@ -53,7 +53,11 @@ function earn(id){
  for(let i=0;i<count;i++){
   const text=get('dialog-body').children[1].textContent,q=content.questions.find(q=>q.text===text);assert.ok(q);
   const answers=get('answers').children,correct=answers.find(b=>b.textContent===q.answer);assert.ok(correct);
-  assert.equal(document.activeElement,answers[0]);
+  assert.equal(document.activeElement,answers[0]);assert.ok(answers[0].classList.contains('keyboard-selected'));
+  document.activeElement=get('board');
+  let prevented=false;documentListeners.keydown({key:'ArrowDown',repeat:false,preventDefault(){prevented=true;}});
+  assert.ok(prevented);assert.equal(document.activeElement,answers[1]);assert.ok(answers[1].classList.contains('keyboard-selected'));assert.ok(!answers[0].classList.contains('keyboard-selected'));
+  dialogKey('ArrowUp');assert.equal(document.activeElement,answers[0]);
   dialogKey('ArrowUp');assert.equal(document.activeElement,get('dialog-actions').children[0]);
   dialogKey('ArrowDown');assert.equal(document.activeElement,answers[0]);
   const wrong=answers.find(b=>b!==correct);
@@ -64,7 +68,7 @@ function earn(id){
   for(let j=0;j<answers.length+1;j++){dialogKey('ArrowDown');assert.notEqual(document.activeElement,wrong);}
   while(document.activeElement!==correct)dialogKey('ArrowLeft');
   dialogKey('Enter');assert.match(get('feedback').textContent,/Correct!/);
-  assert.equal(document.activeElement,get('dialog-actions').children[0]);dialogKey('Enter');
+  assert.equal(document.activeElement,get('dialog-actions').children[0]);assert.ok(document.activeElement.classList.contains('keyboard-selected'));document.activeElement=get('board');documentListeners.keydown({key:'Enter',repeat:false,preventDefault(){}});
   const encounter=s.review.encounters[id];answerReview(s.review,id,encounter.questions[encounter.index].question.answer);
  }
  assert.equal(completeChallenge(map,s,id),true);assert.equal(get('dialog').open,false);
