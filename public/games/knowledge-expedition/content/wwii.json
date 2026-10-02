@@ -1,0 +1,307 @@
+{
+  "schemaVersion": 1,
+  "id": "wwii-expedition",
+  "title": "World War II Expedition",
+  "tagline": "Recover the story. Connect the events.",
+  "scope": "An interactive archive of selected military turning points, not a complete account of WWII. The map is schematic, not geographic.",
+  "goals": [
+    "Sequence selected events from 1939\u20131945.",
+    "Distinguish European and Pacific events.",
+    "Explain how events changed the course of the war."
+  ],
+  "areas": [
+    {
+      "id": "europe",
+      "title": "Europe: war expands",
+      "subtitle": "1939\u20131941",
+      "palette": [
+        "#173f45",
+        "#52837d",
+        "#efc577"
+      ],
+      "terrain": "garden",
+      "discoveries": [
+        {
+          "id": "poland",
+          "title": "Invasion of Poland",
+          "date": "September 1, 1939",
+          "order": 19390901,
+          "theater": "Europe",
+          "summary": "Germany invaded Poland. Britain and France declared war two days later, widening the European conflict.",
+          "source": "https://encyclopedia.ushmm.org/content/en/article/world-war-ii-key-dates",
+          "question": {
+            "prompt": "Which response widened the war after Germany invaded Poland?",
+            "choices": [
+              "Britain and France declared war",
+              "The United States declared war on Japan",
+              "Japan surrendered",
+              "The Normandy landings began"
+            ],
+            "correctIndex": 0,
+            "explanation": "Britain and France honored their guarantee to Poland."
+          },
+          "x": 270,
+          "y": 230
+        },
+        {
+          "id": "britain",
+          "title": "Battle of Britain",
+          "date": "July\u2013October 1940",
+          "order": 19400710,
+          "theater": "Europe",
+          "summary": "Britain resisted Germany\u2019s air offensive. Germany did not gain the air superiority needed for its planned invasion.",
+          "source": "https://encyclopedia.ushmm.org/content/en/article/world-war-ii-in-europe",
+          "question": {
+            "prompt": "What did Britain\u2019s resistance help prevent?",
+            "choices": [
+              "A German invasion of Britain",
+              "Germany\u2019s invasion of Poland",
+              "The attack on Pearl Harbor",
+              "The Soviet capture of Berlin"
+            ],
+            "correctIndex": 0,
+            "explanation": "Britain remained in the war rather than falling to a German invasion."
+          },
+          "x": 930,
+          "y": 230
+        },
+        {
+          "id": "barbarossa",
+          "title": "Invasion of the Soviet Union",
+          "date": "June 22, 1941",
+          "order": 19410622,
+          "theater": "Europe",
+          "summary": "Germany attacked the Soviet Union, beginning a vast Eastern Front that demanded forces and supplies.",
+          "source": "https://encyclopedia.ushmm.org/content/en/article/world-war-ii-in-europe",
+          "question": {
+            "prompt": "How did this invasion change Germany\u2019s war?",
+            "choices": [
+              "It opened a major Eastern Front",
+              "It ended the war in Europe",
+              "It brought Japan into NATO",
+              "It removed the need for supplies"
+            ],
+            "correctIndex": 0,
+            "explanation": "Germany now faced a prolonged struggle in the east as well as its other commitments."
+          },
+          "x": 610,
+          "y": 610
+        }
+      ],
+      "connection": {
+        "prompt": "Connect the discoveries: why did the invasion of the Soviet Union expand the conflict?",
+        "choices": [
+          "Germany opened a vast new front while Britain remained undefeated",
+          "Britain and Germany became allies",
+          "All European fighting moved to the Pacific",
+          "The Soviet Union had already surrendered"
+        ],
+        "correctIndex": 0,
+        "explanation": "A new front expanded the territory, resources, and opponents involved."
+      }
+    },
+    {
+      "id": "pacific",
+      "title": "Pacific: the tide shifts",
+      "subtitle": "1941\u20131943",
+      "palette": [
+        "#173f60",
+        "#397d95",
+        "#eac681"
+      ],
+      "terrain": "water",
+      "discoveries": [
+        {
+          "id": "pearl",
+          "title": "Pearl Harbor",
+          "date": "December 7, 1941",
+          "order": 19411207,
+          "theater": "Pacific",
+          "summary": "Japan attacked Pearl Harbor. The United States declared war on Japan the following day.",
+          "source": "https://www.nationalww2museum.org/students-teachers/student-resources/research-starters/america-goes-war-take-closer-look",
+          "question": {
+            "prompt": "What followed the attack on Pearl Harbor?",
+            "choices": [
+              "The United States declared war on Japan",
+              "The war in Europe ended",
+              "Germany invaded Poland",
+              "Japan formally surrendered"
+            ],
+            "correctIndex": 0,
+            "explanation": "The attack brought the United States into open war with Japan."
+          },
+          "x": 270,
+          "y": 230
+        },
+        {
+          "id": "midway",
+          "title": "Battle of Midway",
+          "date": "June 1942",
+          "order": 19420604,
+          "theater": "Pacific",
+          "summary": "U.S. forces destroyed four Japanese aircraft carriers, weakening Japan\u2019s ability to conduct carrier operations.",
+          "source": "https://www.nationalww2museum.org/war/articles/pacific-strategy-1941-1944",
+          "question": {
+            "prompt": "Why was Midway a turning point?",
+            "choices": [
+              "Japan lost four aircraft carriers",
+              "It ended all Pacific fighting immediately",
+              "It caused Germany\u2019s surrender",
+              "It began the war in Europe"
+            ],
+            "correctIndex": 0,
+            "explanation": "Carrier losses weakened Japanese naval power; the war continued."
+          },
+          "x": 930,
+          "y": 230
+        },
+        {
+          "id": "guadalcanal",
+          "title": "Guadalcanal campaign",
+          "date": "August 1942\u2013February 1943",
+          "order": 19420807,
+          "theater": "Pacific",
+          "summary": "Allied forces fought to hold Guadalcanal\u2019s airfield. Their success helped protect supply routes and begin a sustained advance.",
+          "source": "https://www.nationalww2museum.org/war/articles/pacific-strategy-1941-1944",
+          "question": {
+            "prompt": "What did Allied success at Guadalcanal support?",
+            "choices": [
+              "Protected supply routes and further advances",
+              "Immediate peace with Japan",
+              "A German invasion of Britain",
+              "The start of the Polish campaign"
+            ],
+            "correctIndex": 0,
+            "explanation": "Control of the airfield helped secure routes toward Australia and New Zealand."
+          },
+          "x": 610,
+          "y": 610
+        }
+      ],
+      "connection": {
+        "prompt": "What connects Midway and Guadalcanal?",
+        "choices": [
+          "The Allies moved from checking Japanese expansion toward taking the initiative",
+          "Both battles immediately ended the war",
+          "Both took place on the Eastern Front",
+          "Both occurred before Pearl Harbor"
+        ],
+        "correctIndex": 0,
+        "explanation": "Midway weakened Japanese carrier power; Guadalcanal helped the Allies advance."
+      }
+    },
+    {
+      "id": "turning",
+      "title": "Europe: Allied advances",
+      "subtitle": "1943\u20131945",
+      "palette": [
+        "#3f344a",
+        "#867a85",
+        "#f4cc82"
+      ],
+      "terrain": "garden",
+      "discoveries": [
+        {
+          "id": "stalingrad",
+          "title": "Stalingrad surrender",
+          "date": "February 2, 1943",
+          "order": 19430202,
+          "theater": "Europe",
+          "summary": "Encircled German forces surrendered at Stalingrad, marking a major defeat on the Eastern Front.",
+          "source": "https://encyclopedia.ushmm.org/content/en/article/world-war-ii-key-dates",
+          "question": {
+            "prompt": "Which theater did the defeat at Stalingrad affect?",
+            "choices": [
+              "The European Eastern Front",
+              "The central Pacific",
+              "The Atlantic coast of North America",
+              "The Normandy beaches"
+            ],
+            "correctIndex": 0,
+            "explanation": "Stalingrad was a major defeat for Germany in the Soviet Union."
+          },
+          "x": 270,
+          "y": 230
+        },
+        {
+          "id": "dday",
+          "title": "Normandy landings",
+          "date": "June 6, 1944",
+          "order": 19440606,
+          "theater": "Europe",
+          "summary": "Allied landings in France established a foothold for the liberation of Western Europe. Months of fighting followed.",
+          "source": "https://www.nationalww2museum.org/students-teachers/student-resources/research-starters/research-starters-d-day",
+          "question": {
+            "prompt": "How did D-Day contribute to Germany\u2019s defeat?",
+            "choices": [
+              "It established a western foothold while fighting continued in the east",
+              "It ended all fighting that day",
+              "It started the war in Europe",
+              "It brought Germany and Britain into an alliance"
+            ],
+            "correctIndex": 0,
+            "explanation": "The landings supported a westward-to-eastward Allied advance across occupied Western Europe."
+          },
+          "x": 930,
+          "y": 230
+        },
+        {
+          "id": "veday",
+          "title": "V-E Day",
+          "date": "May 8, 1945",
+          "order": 19450508,
+          "theater": "Europe",
+          "summary": "Germany\u2019s surrender took effect in Europe. The Pacific war continued until Japan\u2019s surrender later in 1945.",
+          "source": "https://encyclopedia.ushmm.org/content/en/article/world-war-ii-key-dates",
+          "question": {
+            "prompt": "What distinction matters when describing V-E Day?",
+            "choices": [
+              "The European war ended; the Pacific war continued",
+              "All worldwide fighting ended that day",
+              "Japan surrendered before Pearl Harbor",
+              "The European war had not begun"
+            ],
+            "correctIndex": 0,
+            "explanation": "Victory in Europe did not mark the end of the Pacific war."
+          },
+          "x": 610,
+          "y": 610
+        }
+      ],
+      "connection": {
+        "prompt": "How did Allied advances in the east and west relate to Germany\u2019s defeat?",
+        "choices": [
+          "Germany faced pressure from multiple directions",
+          "Every Allied army used the same route",
+          "The Pacific war ended before Germany surrendered",
+          "D-Day removed the Eastern Front"
+        ],
+        "correctIndex": 0,
+        "explanation": "Soviet advances and the western Allied campaign both contributed to Germany\u2019s defeat."
+      }
+    }
+  ],
+  "finalPrompt": "Choose two connected discoveries. Explain how they show a change in the course of the war. Use a specific detail from each.",
+  "sources": [
+    {
+      "label": "U.S. Holocaust Memorial Museum: WWII timeline",
+      "url": "https://encyclopedia.ushmm.org/content/en/article/world-war-ii-key-dates"
+    },
+    {
+      "label": "U.S. Holocaust Memorial Museum: War in Europe",
+      "url": "https://encyclopedia.ushmm.org/content/en/article/world-war-ii-in-europe"
+    },
+    {
+      "label": "National WWII Museum: Pacific strategy",
+      "url": "https://www.nationalww2museum.org/war/articles/pacific-strategy-1941-1944"
+    },
+    {
+      "label": "National WWII Museum: America enters the war",
+      "url": "https://www.nationalww2museum.org/students-teachers/student-resources/research-starters/america-goes-war-take-closer-look"
+    },
+    {
+      "label": "National WWII Museum: Normandy",
+      "url": "https://www.nationalww2museum.org/students-teachers/student-resources/research-starters/research-starters-d-day"
+    }
+  ]
+}
