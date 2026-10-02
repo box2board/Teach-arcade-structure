@@ -43,7 +43,7 @@
       <div>
         <p class="word-rescue-page__eyebrow">Brain Arcade</p>
         <h1>Word Rescue</h1>
-        <p>Reveal the hidden word before the rescue signal loses all six power cells.</p>
+        <p>Every mission brings a different rescue. Reveal the hidden word before all six rescue resources are gone.</p>
       </div>
       <div class="word-rescue-page__streaks" aria-label="Winning streak">
         <div><span>Current streak</span><strong id="current-streak">0</strong></div>
@@ -68,51 +68,20 @@
 
     <section class="word-rescue-page__game" aria-label="Word Rescue game">
       <div class="word-rescue-page__rescue-card">
-        <div class="word-rescue-page__scene" id="rescue-scene" aria-label="Rescue signal status">
-          <div class="word-rescue-page__sky-mark" aria-hidden="true">✦</div>
-          <svg class="word-rescue-page__illustration" viewBox="0 0 320 250" role="img" aria-labelledby="rescue-title rescue-desc">
-            <title id="rescue-title">Rescue signal station</title>
-            <desc id="rescue-desc">Six signal power cells turn off after incorrect guesses. Solve the word before all six are gone.</desc>
+        <div class="word-rescue-page__scene" id="rescue-scene" aria-label="Rescue mission status">
+          <div class="word-rescue-page__scene-label">
+            <span id="scene-kicker">Rescue Mission</span>
+            <strong id="scene-name">Signal Station</strong>
+          </div>
 
-            <g class="word-rescue-page__terrain">
-              <path d="M0 208 Q55 190 108 206 T218 204 T320 205 V250 H0 Z" />
-            </g>
-
-            <g class="word-rescue-page__tower">
-              <line x1="86" y1="193" x2="119" y2="92" />
-              <line x1="152" y1="193" x2="119" y2="92" />
-              <line x1="96" y1="161" x2="142" y2="161" />
-              <line x1="104" y1="134" x2="134" y2="134" />
-              <circle cx="119" cy="82" r="10" />
-            </g>
-
-            <g class="word-rescue-page__signal-waves">
-              <path d="M96 67 Q119 44 142 67" />
-              <path d="M82 53 Q119 17 156 53" />
-            </g>
-
-            <g class="word-rescue-page__rescuer">
-              <circle cx="242" cy="158" r="14" />
-              <line x1="242" y1="172" x2="242" y2="207" />
-              <line x1="242" y1="181" x2="222" y2="194" />
-              <line x1="242" y1="181" x2="262" y2="194" />
-              <line x1="242" y1="207" x2="228" y2="228" />
-              <line x1="242" y1="207" x2="256" y2="228" />
-            </g>
-
-            <g class="word-rescue-page__craft" id="rescue-craft">
-              <ellipse cx="270" cy="58" rx="32" ry="12" />
-              <rect x="252" y="45" width="36" height="14" rx="7" />
-              <line x1="270" y1="70" x2="270" y2="93" />
-            </g>
-          </svg>
+          <div class="word-rescue-page__scene-art" id="scene-art" aria-live="off"></div>
 
           <div class="word-rescue-page__signal-panel">
             <div class="word-rescue-page__signal-heading">
-              <span>Rescue signal</span>
+              <span id="resource-label">Rescue signal</span>
               <strong id="signal-status">6 / 6</strong>
             </div>
-            <div class="word-rescue-page__cells" id="signal-cells" aria-label="Six rescue signal power cells">
+            <div class="word-rescue-page__cells" id="signal-cells" aria-label="Six rescue power cells">
               <span class="word-rescue-page__cell" data-cell="1"></span>
               <span class="word-rescue-page__cell" data-cell="2"></span>
               <span class="word-rescue-page__cell" data-cell="3"></span>
@@ -154,7 +123,7 @@
 
     <section class="word-rescue-page__how">
       <h2>How to play</h2>
-      <p>Guess one letter at a time. Correct guesses reveal the word. Each incorrect guess drains one of the six rescue-signal power cells. Solve the word before the signal goes offline to complete the rescue and extend your streak.</p>
+      <p>Guess one letter at a time. Correct guesses reveal the word. Each mission randomly loads one of ten rescue scenes. Every incorrect guess removes one of six rescue resources. Solve the word before they are gone to complete the rescue and extend your streak.</p>
     </section>
   </main>
 
