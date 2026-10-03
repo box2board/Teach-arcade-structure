@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {PinballPhysics,BALL_PACE} from '../public/arcade-review-games/review-pinball/physics.js';
+import {PinballPhysics,BALL_PHYSICS} from '../public/arcade-review-games/review-pinball/physics.js';
 for(const assist of [false,true]){
  let drains=0,hits=0;const engine=new PinballPhysics({assist,onDrain:()=>drains++,onHit:()=>hits++});engine.launch();let reachedPlayfield=false;
  for(let i=0;i<240*35&&engine.ball;i++){engine.step(1/240);const b=engine.ball;if(b){assert.ok([b.x,b.y,b.vx,b.vy].every(Number.isFinite));if(b.x<438&&b.y<500)reachedPlayfield=true;}}
@@ -38,10 +38,24 @@ assert.equal(rubber.segment(100,0,300,0,0,.88,{x:0,y:0},90),false,'Separating co
 console.log('Bumper tuning: direct, grazing, separating, repeated-contact, and slingshot momentum checks passed.');
 
 const paced=new PinballPhysics();paced.launch();
-assert.equal(paced.ball.vy,-1080*.85,'Launch speed is reduced by 15%');
+assert.equal(paced.ball.vy,-1080,'Launch restores the original fast shooter-lane speed');
 paced.ball={x:254,y:500,vx:2000,vy:0,r:10};paced.step(1/240);
-assert.ok(Math.hypot(paced.ball.vx,paced.ball.vy)<=1350*BALL_PACE+.001,'Powered shots respect the reduced speed ceiling');
+assert.ok(Math.hypot(paced.ball.vx,paced.ball.vy)<=BALL_PHYSICS.maxSpeed+.001,'Runaway speed is bounded for collision stability');
 paced.keys.left=true;const angle=paced.flippers[0].angle;paced.step(1/240);
 assert.ok(Math.abs(paced.flippers[0].angle-angle+15/240)<.00001,'Flipper response is not slowed with the ball');
 assert.equal(paced.time,2/240,'Ball pace must not stretch session clocks');
-console.log('Ball pace: reduced launch and speed ceiling, responsive flippers, and real-time clocks passed.');
+console.log('Launch: fast shooter lane, runaway guard, responsive flippers, and real-time clocks passed.');
+
+const empty={rails:[],bumpers:[],targets:[],flippers:[]};
+const rising=new PinballPhysics({table:empty});rising.ball={x:254,y:450,vx:0,vy:-400,r:10};
+let previousSpeed=400;
+for(let i=0;i<60;i++){rising.step(1/240);const speed=Math.abs(rising.ball.vy);assert.ok(speed<previousSpeed,'Upward travel slows continuously');previousSpeed=speed;}
+const falling=new PinballPhysics({table:empty});falling.ball={x:254,y:450,vx:0,vy:100,r:10};previousSpeed=100;
+for(let i=0;i<60;i++){falling.step(1/240);assert.ok(falling.ball.vy>previousSpeed,'Downhill travel accelerates continuously');previousSpeed=falling.ball.vy;}
+const rebound=new PinballPhysics({table:empty});rebound.ball={x:254,y:109,vx:80,vy:-400,r:10};
+rebound.segment(150,100,350,100,0,.72);
+assert.equal(rebound.ball.vx,80,'Passive rebound preserves tangent momentum');
+assert.ok(rebound.ball.vy>0 && rebound.ball.vy<400,'Passive rebound loses energy');
+const free=new PinballPhysics({table:empty});free.ball={x:254,y:450,vx:1300,vy:0,r:10};free.step(1/240);
+assert.ok(free.ball.vx>1290,'Ordinary fast travel is not flattened to the previous 1,147-unit cap');
+console.log('Momentum: upward slowdown, downhill acceleration, passive rebound losses, and variable speed passed.');
