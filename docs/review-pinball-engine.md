@@ -20,3 +20,7 @@ Classic uses a seven-second launch saver. Assisted widens the flippers and uses 
 `node scripts/test-pinball.mjs` verifies shooter-lane exit, finite motion, unattended drains in both modes, upward impulses from both flippers, and contact scoring debounce. Browser checks cover start, launch, natural drain, pause/resume, incorrect feedback, two-correct replacement ball, score persistence, session results, both existing banks, and narrow-phone overflow. No browser runtime errors observed.
 
 This is a first playtest candidate. Human playtesting should judge shot control, difficulty, target reachability, and whether ball movement feels entertaining before more tables are designed. Ramps and multiball are not part of this first table.
+
+## Rebound tuning
+
+Bumper rebounds preserve tangent momentum, use 0.88 restitution, and add at most 75 units/second of outward speed, scaled down to 30% of incoming normal speed for light contacts. Overlap correction no longer triggers a powered impulse or scoring when the ball is already separating. Slingshot kicks follow their surface normal rather than adding arbitrary horizontal/upward velocity. Regression checks cover direct hits, glancing hits, separating overlaps, repeated contact, and slingshot tangent momentum.

@@ -10,3 +10,29 @@ for(const [side,x] of [['left',195],['right',315]]){
 }
 let hits=0;const engine=new PinballPhysics({onHit:()=>hits++});engine.hit('bumper0',100);engine.hit('bumper0',100);assert.equal(hits,1,'One contact must not award points repeatedly in a physics tick');
 console.log('Pinball physics: launch, scoring, drains, both flippers, and duplicate-contact checks passed.');
+
+// Isolate a bumper to distinguish rebound physics from the rest of the table.
+const isolated={rails:[],bumpers:[{x:250,y:250,r:30}],targets:[],flippers:[]};
+function bumperContact(vx,vy){
+ let contacts=0;const p=new PinballPhysics({table:isolated,onHit:()=>contacts++});
+ p.ball={x:289.9,y:250,vx,vy,r:10};p.step(.001);
+ return {p,contacts};
+}
+const direct=bumperContact(-400,0);
+assert.ok(direct.p.ball.vx>350 && direct.p.ball.vx<450,'Direct bumper hit has a bounded powered rebound');
+assert.equal(direct.contacts,1);
+const graze=bumperContact(-20,180);
+assert.ok(graze.p.ball.vx>0 && graze.p.ball.vx<30,'Grazing contact must not become a strong sideways launch');
+assert.ok(Math.abs(graze.p.ball.vy-180)<2,'Grazing contact preserves tangent momentum');
+const separating=bumperContact(150,0);
+assert.ok(separating.p.ball.vx<151,'A ball already leaving a bumper must not get kicked again');
+assert.equal(separating.contacts,0,'Separating overlap is not a new scoring impact');
+const before=direct.p.ball.vx;direct.p.step(.001);
+assert.ok(direct.p.ball.vx<=before,'An outgoing ball must not accumulate additional bumper impulses');
+const rubber=new PinballPhysics({table:isolated});
+rubber.ball={x:200,y:9,vx:350,vy:-5,r:10};
+assert.equal(rubber.segment(100,0,300,0,0,.88,{x:0,y:0},90),true);
+assert.equal(rubber.ball.vx,350,'Slingshot force must not invent tangential velocity');
+assert.ok(rubber.ball.vy>0 && rubber.ball.vy<6,'Slingshot kick scales down for a gentle contact');
+assert.equal(rubber.segment(100,0,300,0,0,.88,{x:0,y:0},90),false,'Separating contact is not another slingshot impact');
+console.log('Bumper tuning: direct, grazing, separating, repeated-contact, and slingshot momentum checks passed.');
