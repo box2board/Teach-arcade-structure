@@ -10,6 +10,7 @@ Neon Circuit is a topic-neutral table. Select Classic or Assisted, then select a
 - `physics.js`: fixed-step ball simulation, moving flipper contact, restitution, bumpers, slingshots, speed limits, scoring contacts, and drain callbacks. No curriculum content or DOM dependencies.
 - `game.js`: session flow, review adapter, input, rendering, sound, ball saver, and scoring objectives. Existing question-bank files are loaded read-only; this prototype does not establish or migrate the future shared-bank format.
 - `styles.css` / `index.html`: responsive cabinet and accessible controls.
+- `renderer.js`: independent depth-styled canvas presentation with cached playfield, metallic rails, raised bumper caps, recessed inserts, ramp supports and shadows, and beveled flippers. Rendering reads game state but never changes collision geometry or physics. High-DPI drawing is capped at 2× resolution.
 
 Keyboard: arrows or A/D for flippers, Space to launch, P to pause. Questions support arrows and Enter or number keys. Touch supports simultaneous flippers with pointer capture. Losing browser focus pauses active play.
 

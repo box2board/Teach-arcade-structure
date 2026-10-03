@@ -1,5 +1,7 @@
-import {TABLE,PinballPhysics} from './physics.js';
+import {PinballPhysics} from './physics.js';
+import {renderTable} from './renderer.js';
 const $=id=>document.getElementById(id),canvas=$('table'),ctx=canvas.getContext('2d');
+const renderScale=Math.min(2,window.devicePixelRatio||1);canvas.width=520*renderScale;canvas.height=820*renderScale;
 const sets=[{id:'science',name:'Scientific Method',url:'../territory-takedown/questions.js'},{id:'french',name:'French Revolution',url:'../territory-takedown/french-revolution/questions.js'}];
 let engine,state='setup',score=0,ballCount=1,lit=new Set(),multiplier=1,savedUntil=0,mode='classic',questions=[],queue=[],qIndex=0,correct=0,attempts=0,earned=0,current=null,answered=false,sound=false,audio=null,flash=[],last=0,acc=0,pausedFrom='playing',selectedSet='';
 const overlay=$('overlay'),panel=$('panel');
@@ -41,36 +43,6 @@ $('sound').onclick=()=>{sound=!sound;$('sound').textContent=sound?'Sound on':'So
 for(const [id,key] of [['left','left'],['right','right']]){const b=$(id);b.onpointerdown=e=>{e.preventDefault();if(state==='playing'){b.setPointerCapture(e.pointerId);engine.keys[key]=true;beep(220,.025);}};b.onpointerup=b.onpointercancel=b.onlostpointercapture=()=>engine.keys[key]=false;}
 window.addEventListener('keydown',e=>{const key=e.key.toLowerCase();if(state==='review'){if(answered)return;if(['arrowdown','arrowright','arrowup','arrowleft'].includes(key)){e.preventDefault();const buttons=[...$('answers').children],i=buttons.indexOf(document.activeElement);buttons[(Math.max(0,i)+(['arrowdown','arrowright'].includes(key)?1:buttons.length-1))%buttons.length].focus();}else if(/^[1-4]$/.test(key)){e.preventDefault();answer(Number(key)-1);}return;}if(!['playing','ready','paused'].includes(state))return;if(['arrowleft','arrowright','a','d',' ','p'].includes(key))e.preventDefault();if(key==='p'&&!e.repeat){pause();return;}if(key===' '&&!e.repeat)launch();if(state==='playing'){if(['arrowleft','a'].includes(key))engine.keys.left=true;if(['arrowright','d'].includes(key))engine.keys.right=true;}});
 window.addEventListener('keyup',e=>{if(['arrowleft','a'].includes(e.key.toLowerCase()))engine.keys.left=false;if(['arrowright','d'].includes(e.key.toLowerCase()))engine.keys.right=false;});window.addEventListener('blur',()=>{engine.keys.left=engine.keys.right=false;if(state==='playing')pause();});document.addEventListener('visibilitychange',()=>{if(document.hidden&&state==='playing')pause();});
-function line(x1,y1,x2,y2,color,width=5){ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);ctx.strokeStyle=color;ctx.lineWidth=width;ctx.lineCap='round';ctx.stroke();}
-function circle(x,y,r,color){ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fillStyle=color;ctx.fill();}
-function label(text,x,y,size=18,color='#b6c5e0'){ctx.font=`800 ${size}px system-ui`;ctx.textAlign='center';ctx.fillStyle=color;ctx.fillText(text,x,y);}
-function drawBall(){if(!engine.ball)return;const b=engine.ball;ctx.shadowColor='#d7f3ff';ctx.shadowBlur=12;const bg=ctx.createRadialGradient(b.x-3,b.y-4,1,b.x,b.y,10);bg.addColorStop(0,'#fff');bg.addColorStop(.45,'#cad9ed');bg.addColorStop(1,'#657a9c');circle(b.x,b.y,b.r,bg);ctx.shadowBlur=0;}
-function draw(){const g=ctx.createLinearGradient(0,0,0,820);g.addColorStop(0,'#132244');g.addColorStop(1,'#080f22');ctx.fillStyle=g;ctx.fillRect(0,0,520,820);
- ctx.strokeStyle='#223557';ctx.lineWidth=1;for(let y=60;y<800;y+=40)line(45,y,433,y,'#1c2a45',1);for(let x=60;x<440;x+=40)line(x,50,x,800,'#1c2a45',1);
- // The loop is open at the bottom so shots can enter and leave.
- ctx.beginPath();ctx.ellipse(254,185,156,105,0,Math.PI,Math.PI*2);ctx.strokeStyle='#5c6b9b';ctx.lineWidth=4;ctx.stroke();
- label('NEON',254,115,37,'#63edcf');label('C I R C U I T',254,143,17,'#f6dc73');label('LOOP',70,248,12,'#63edcf');label('LOOP',414,248,12,'#63edcf');
- for(const r of engine.table.rails){line(...r,'#122137',13);line(...r,'#8799ba',4);}
- for(const [i,p] of engine.table.bumpers.entries()){const hot=flash.some(f=>f.id==='bumper'+i&&engine.time-f.t<.14);ctx.shadowColor='#63edcf';ctx.shadowBlur=hot?30:12;circle(p.x,p.y,p.r+5,hot?'#f6dc73':'#63edcf');ctx.shadowBlur=0;circle(p.x,p.y,p.r-3,'#1c3b51');circle(p.x,p.y,p.r-10,hot?'#ffe56b':'#2c6774');label('100',p.x,p.y+5,14,'#eafff9');}
- for(const [i,t] of engine.table.targets.entries()){line(t.x-7,t.y-12,t.x+7,t.y+12,lit.has(i)?'#63edcf':'#fa799d',12);label(String(i+1),t.x+(i<2?24:-24),t.y+5,14);}
- if(!engine.ride)drawBall(); // Ground-level ball passes under the elevated crossover.
- for(const ramp of engine.table.ramps??[]){
-  const path=()=>{ctx.beginPath();ramp.path.forEach((p,i)=>i?ctx.lineTo(...p):ctx.moveTo(...p));ctx.lineJoin='round';ctx.lineCap='round';};
-  path();ctx.strokeStyle='#050a16';ctx.lineWidth=38;ctx.stroke();
-  path();ctx.strokeStyle='#b36eff';ctx.lineWidth=30;ctx.stroke();
-  path();ctx.strokeStyle='#23324c';ctx.lineWidth=23;ctx.stroke();
-  path();ctx.strokeStyle='#6688ac';ctx.lineWidth=1;ctx.setLineDash([5,12]);ctx.stroke();ctx.setLineDash([]);
-  label('RAMP 750',ramp.mouth.x,ramp.mouth.y+33,13,'#d5b6ff');
-  line(ramp.mouth.x-18,ramp.mouth.y,ramp.mouth.x+18,ramp.mouth.y,'#ffe56b',5);
-  label('↑',ramp.mouth.x,ramp.mouth.y-13,23,'#ffe56b');
- }
- label(lit.size===4?'JACKPOT LIT':'LIGHT ALL FOUR',254,480,18,lit.size===4?'#ffe56b':'#8b9cbd');label('2,500 JACKPOT',254,505,13,'#7188ad');
- for(const s of [[93,620,147,690],[418,620,365,690]]){line(...s,'#b75296',18);line(...s,'#ff8ec1',5);}
- label('×'+multiplier,254,620,38,'#ffe56b');
- for(const f of engine.flippers){const length=f.length+(engine.assist?8:0),x=f.x+Math.cos(f.angle)*length,y=f.y+Math.sin(f.angle)*length;line(f.x,f.y,x,y,'#203047',24);line(f.x,f.y,x,y,'#f6dc73',16);line(f.x,f.y,x,y,'#fff2a4',4);circle(f.x,f.y,9,'#8e7139');}
- label('DRAIN',254,806,12,'#425675');if(state==='playing'&&engine.time<savedUntil)label('BALL SAVER',254,565,14,'#63edcf');if(state==='ready')label('PRESS SPACE TO LAUNCH',254,566,14,'#ffe56b');
- if(engine.ride)drawBall();
- flash=flash.filter(f=>engine.time-f.t<.4);
-}
+function draw(){renderTable(ctx,engine,{state,lit,multiplier,savedUntil,flash});flash=flash.filter(f=>engine.time-f.t<.4);}
 function frame(now){const dt=Math.min((now-last)/1000,.04);last=now;if(state==='playing'){acc+=dt;while(acc>=1/240){engine.step(1/240);acc-=1/240;if(state!=='playing')break;}}else acc=0;draw();requestAnimationFrame(frame);}
 setup();requestAnimationFrame(frame);
