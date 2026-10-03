@@ -33,6 +33,8 @@ export class PinballPhysics {
  if(relative<-.5){const impulse=-(1+restitution)*relative+Math.min(kick,-relative*.3);b.vx+=impulse*nx;b.vy+=impulse*ny;return true;}return false;
  }
  step(dt){this.time+=dt;
+ this.spinnerAngle=((this.spinnerAngle??0)+(this.spinnerSpeed??0)*dt)%(Math.PI*2);
+ this.spinnerSpeed=(this.spinnerSpeed??0)*Math.exp(-3*dt);
  for(const f of this.flippers){const held=this.keys[f.side===1?'left':'right'],goal=f.side===1?(held?-.52:.35):(held?Math.PI+.52:Math.PI-.35),old=f.angle;f.angle+=clamp(goal-f.angle,-15*dt,15*dt);f.omega=(f.angle-old)/dt;}
  if(this.ball && this.ride){this.advanceRamp(dt);return;}
  // Gravity changes momentum continuously; drag and passive impacts dissipate energy.
@@ -43,6 +45,12 @@ export class PinballPhysics {
    const p=this.rampPoint(ramp,0),speed=b.vx*p.tx+b.vy*p.ty;
    if(speed>250){this.ride={ramp,distance:Math.max(0,(m.y-b.y)/-p.ty),speed};const entry=this.rampPoint(ramp,this.ride.distance);b.x=entry.x;b.y=entry.y;return;}
   }
+ }
+ // A free-swinging gate registers the swept crossing without redirecting the ball.
+ const spinner=this.table.spinner;
+ if(spinner && ((previous.y<spinner.y && b.y>=spinner.y)||(previous.y>spinner.y && b.y<=spinner.y))){
+  const t=(spinner.y-previous.y)/(b.y-previous.y),x=previous.x+(b.x-previous.x)*t;
+  if(Math.abs(x-spinner.x)<=spinner.width/2){this.spinnerSpeed=clamp(b.vy*.04,-35,35);this.hit('spinner',spinner.value);}
  }
  for(const rail of this.table.rails)this.segment(...rail);
  for(const [i,p] of this.table.bumpers.entries()){

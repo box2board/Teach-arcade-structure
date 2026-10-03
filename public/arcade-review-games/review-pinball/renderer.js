@@ -1,5 +1,6 @@
 // Visual skin only. All geometry comes from the physics table; no game-state mutations.
 const backgrounds=new WeakMap();
+const rampLayers=new WeakMap();
 const circle=(c,x,y,r,fill)=>{c.beginPath();c.arc(x,y,r,0,Math.PI*2);c.fillStyle=fill;c.fill();};
 const stroke=(c,a,b,color,width)=>{c.beginPath();c.moveTo(...a);c.lineTo(...b);c.lineCap='round';c.strokeStyle=color;c.lineWidth=width;c.stroke();};
 function text(c,value,x,y,size=15,color='#b5d5e5'){c.font=`800 ${size}px system-ui`;c.textAlign='center';c.fillStyle=color;c.fillText(value,x,y);}
@@ -50,7 +51,13 @@ function ramp(c,r){
  const m=r.mouth;stroke(c,[m.x-19,m.y+4],[m.x+19,m.y+4],'#251b0c',9);stroke(c,[m.x-19,m.y],[m.x+19,m.y],metal(c,m.x,m.y-3,6,['#ffedaa','#caa443','#fff1bb']),5);
  text(c,'RAMP 750',m.x,m.y+33,13,'#d9baff');text(c,'↑',m.x,m.y-13,22,'#ffe6a0');
 }
-export function renderTable(c,engine,{state,lit,multiplier,savedUntil,flash}){
+function rampLayer(table){
+ if(rampLayers.has(table))return rampLayers.get(table);
+ const surface=document.createElement('canvas');surface.width=1040;surface.height=1640;
+ const c=surface.getContext('2d');c.scale(2,2);for(const r of table.ramps??[])ramp(c,r);
+ rampLayers.set(table,surface);return surface;
+}
+export function renderTable(c,engine,{state,lit,multiplier,savedUntil,flash,rush}){
  const scale=c.canvas.width/520;c.setTransform(scale,0,0,scale,0,0);c.clearRect(0,0,520,820);c.drawImage(base(engine.table),0,0,520,820);
  for(const [i,p] of engine.table.bumpers.entries()){
   const hot=flash.some(f=>f.id==='bumper'+i&&engine.time-f.t<.16);
@@ -69,8 +76,20 @@ export function renderTable(c,engine,{state,lit,multiplier,savedUntil,flash}){
  text(c,on?'JACKPOT LIT':'LIGHT ALL FOUR',254,535,15,on?'#ffe4a1':'#8eaabd');
  text(c,'2,500 JACKPOT',254,553,12,'#698899');
  text(c,'×'+multiplier,254,620,34,'#f5d282');
+ const spinner=engine.table.spinner;
+ if(spinner){
+  const {x,y,width}=spinner;stroke(c,[x-width/2-5,y+12],[x-width/2-5,y-8],'#acbfcc',4);stroke(c,[x+width/2+5,y+12],[x+width/2+5,y-8],'#acbfcc',4);
+  const h=Math.max(2,Math.abs(Math.cos(engine.spinnerAngle??0))*14);
+  c.fillStyle=metal(c,x,y-h/2,h,['#f3f5ff','#8d75c0','#473561']);c.fillRect(x-width/2,y-h/2,width,h);
+  stroke(c,[x-width/2,y],[x+width/2,y],'#e5d4ff',2);text(c,'SPIN 150',x,y+26,11,'#b9a7df');
+ }
+ if(rush){
+  const remaining=rush.remaining(engine.time);
+  for(const [i,id] of ['ramp','orbit','spinner'].entries()){const x=217+i*37;circle(c,x,661,6,remaining>0||rush.shots.has(id)?'#7cf4cf':'#233d49');text(c,['RAMP','LOOP','SPIN'][i],x,679,9,'#a5c6cf');}
+  if(remaining>0)text(c,`RUSH ×2 · ${Math.ceil(remaining)}s`,254,702,13,'#91ffdc');
+ }
  if(!engine.ride)ball(c,engine.ball,false);
- for(const r of engine.table.ramps??[])ramp(c,r);
+ c.drawImage(rampLayer(engine.table),0,0,520,820);
  for(const f of engine.flippers){const length=f.length+(engine.assist?8:0),end=[f.x+Math.cos(f.angle)*length,f.y+Math.sin(f.angle)*length];
   stroke(c,[f.x+3,f.y+7],[end[0]+3,end[1]+7],'#000a',20);stroke(c,[f.x,f.y],end,'#6c501e',19);stroke(c,[f.x,f.y],end,metal(c,f.x,Math.min(f.y,end[1])-8,22,['#fff5cc','#ffe29a','#c59a41','#806222']),16);stroke(c,[f.x-1,f.y-3],[end[0]-1,end[1]-3],'#fff9dfb5',3);circle(c,f.x,f.y,7,gradient(c,f.x,f.y,7,['#eff6f8','#6c8594','#263b46']));
  }

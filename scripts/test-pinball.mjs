@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import {PinballPhysics,BALL_PHYSICS} from '../public/arcade-review-games/review-pinball/physics.js';
+import {CircuitRush} from '../public/arcade-review-games/review-pinball/scoring.js';
 for(const assist of [false,true]){
  let drains=0,hits=0;const engine=new PinballPhysics({assist,onDrain:()=>drains++,onHit:()=>hits++});engine.launch();let reachedPlayfield=false;
  for(let i=0;i<240*35&&engine.ball;i++){engine.step(1/240);const b=engine.ball;if(b){assert.ok([b.x,b.y,b.vx,b.vy].every(Number.isFinite));if(b.x<438&&b.y<500)reachedPlayfield=true;}}
@@ -87,3 +88,27 @@ loop.ball={x:410,y:229,vx:0,vy:500,r:10};loop.step(1/240);
 assert.equal(loops,1,'Loop scores only after crossing the top and exiting the opposite lane');
 loop.step(1/240);assert.equal(loops,1,'Loop completion does not score again on the next tick');
 console.log('Loop: entrance, top crossing, opposite exit, and single completion score passed.');
+
+const spinnerTable={...empty,spinner:{x:254,y:420,width:48,value:150}};
+for(const direction of [-1,1]){
+ const events=[],p=new PinballPhysics({table:spinnerTable,onHit:(id,value)=>events.push([id,value])});
+ const control=new PinballPhysics({table:empty});
+ p.ball={x:254,y:420-direction,vx:20,vy:direction*700,r:10};control.ball={...p.ball};
+ p.step(1/240);control.step(1/240);
+ assert.deepEqual(events,[['spinner',150]],'Both gate directions score a swept crossing');
+ assert.deepEqual(p.ball,control.ball,'Spinner does not inject momentum or redirect the ball');
+ const speed=Math.abs(p.spinnerSpeed);p.step(1/240);assert.ok(Math.abs(p.spinnerSpeed)<speed,'Gate rotation decays');
+ assert.equal(events.length,1,'No duplicate crossing on the following tick');
+}
+const missedGate=new PinballPhysics({table:spinnerTable,onHit:()=>assert.fail('Missed gate must not score')});
+missedGate.ball={x:310,y:419,vx:0,vy:700,r:10};missedGate.step(1/240);
+const rush=new CircuitRush();assert.equal(rush.factor(0),1);
+assert.equal(rush.record('bumper0',0),false);assert.equal(rush.shots.size,0);
+rush.record('ramp',1);rush.record('ramp',2);assert.equal(rush.shots.size,1);
+rush.record('orbit',3);assert.equal(rush.record('spinner',4),true);
+assert.equal(rush.factor(4),2);assert.equal(rush.remaining(4),15);
+assert.equal(rush.record('ramp',5),false);assert.equal(rush.shots.size,0,'No stacking during a rush');
+assert.equal(rush.factor(19),1,'Rush expires exactly at fifteen seconds');
+rush.record('ramp',20);rush.drain();assert.ok(rush.shots.has('ramp'),'Unfinished shot progress persists across balls');
+rush.record('orbit',21);rush.record('spinner',22);rush.drain();assert.equal(rush.factor(22),1,'A drained ball ends its live rush');
+console.log('Spinner and Circuit Rush: both directions, misses, unchanged momentum, decay, unique shots, expiry, and drain passed.');
