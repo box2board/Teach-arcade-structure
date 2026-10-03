@@ -59,3 +59,31 @@ assert.ok(rebound.ball.vy>0 && rebound.ball.vy<400,'Passive rebound loses energy
 const free=new PinballPhysics({table:empty});free.ball={x:254,y:450,vx:1300,vy:0,r:10};free.step(1/240);
 assert.ok(free.ball.vx>1290,'Ordinary fast travel is not flattened to the previous 1,147-unit cap');
 console.log('Momentum: upward slowdown, downhill acceleration, passive rebound losses, and variable speed passed.');
+
+function rampShot(speed){
+ const events=[],p=new PinballPhysics({onHit:id=>events.push(id)});p.ball={x:147,y:475.5,vx:0,vy:-speed,r:10};
+ p.step(1/240);assert.ok(p.ride,'Upward shot crosses the actual ramp mouth');
+ const entrySpeed=p.ride.speed;let minSpeed=entrySpeed,steps=0;
+ while(p.ride && steps++<240*8){p.step(1/240);if(p.ride)minSpeed=Math.min(minSpeed,p.ride.speed);}
+ assert.ok(!p.ride,'Ramp traversal must finish or roll back');
+ return {p,events,entrySpeed,minSpeed};
+}
+const complete=rampShot(900);
+assert.equal(complete.events.filter(id=>id==='ramp').length,1,'Completed ramp scores exactly once');
+assert.ok(complete.minSpeed<complete.entrySpeed-150,'Ramp climb slows under gravity');
+assert.ok(complete.p.ball.vy>0,'Completed ramp returns downhill near the right flipper');
+const weak=rampShot(350);
+assert.ok(!weak.events.includes('ramp'),'A weak shot that rolls back earns no completion points');
+assert.ok(weak.p.ball.vy>0 && Math.abs(weak.p.ball.x-147)<2,'Weak ramp shot rolls back out of its entrance');
+const miss=new PinballPhysics();miss.ball={x:230,y:477,vx:0,vy:-900,r:10};miss.step(1/240);
+assert.ok(!miss.ride,'A shot that misses the mouth must not be captured by the ramp');
+complete.p.launch();assert.ok(!complete.p.ride && !complete.p.orbitEntry,'A fresh ball clears lane state');
+console.log('Ramp: entrance accuracy, variable momentum, completed scoring, weak-shot rollback, and state reset passed.');
+let loops=0;const loop=new PinballPhysics({onHit:id=>{if(id==='orbit')loops++;}});
+loop.ball={x:85,y:231,vx:0,vy:-500,r:10};loop.step(1/240);
+assert.equal(loop.orbitEntry?.side,'left','Loop starts at an upward lane entrance');
+loop.ball={x:250,y:125,vx:300,vy:0,r:10};loop.step(1/240);
+loop.ball={x:410,y:229,vx:0,vy:500,r:10};loop.step(1/240);
+assert.equal(loops,1,'Loop scores only after crossing the top and exiting the opposite lane');
+loop.step(1/240);assert.equal(loops,1,'Loop completion does not score again on the next tick');
+console.log('Loop: entrance, top crossing, opposite exit, and single completion score passed.');

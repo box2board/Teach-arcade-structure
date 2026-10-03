@@ -19,7 +19,11 @@ Classic uses a seven-second launch saver. Assisted widens the flippers and uses 
 
 `node scripts/test-pinball.mjs` verifies shooter-lane exit, finite motion, unattended drains in both modes, upward impulses from both flippers, and contact scoring debounce. Browser checks cover start, launch, natural drain, pause/resume, incorrect feedback, two-correct replacement ball, score persistence, session results, both existing banks, and narrow-phone overflow. No browser runtime errors observed.
 
-This is a first playtest candidate. Human playtesting should judge shot control, difficulty, target reachability, and whether ball movement feels entertaining before more tables are designed. Ramps and multiball are not part of this first table.
+This is a playtest candidate. Human playtesting should judge shot control, difficulty, target reachability, and whether ball movement feels entertaining before more tables are designed. Multiball is not part of this table.
+
+## Expanded Neon Circuit
+
+Skyline Ramp adds an elevated polyline channel entered through an actual upward shot at its left mouth. Gravity along the channel changes speed; weak shots roll back, while completed shots return above the right flipper and score 750. Every third completed ramp earns a 2,000 bonus. A ramp and full loop in either order within eight seconds earn a 1,000 combo bonus. Bonuses use the current multiplier. Ramp count persists across replacement balls; the combo window resets on a drain. The loop now requires an upward entrance, top crossing, and downward exit in the opposite lane within three seconds. Geometry and approved free-ball constants remain separate. Browser verification covers both question banks, feedback, replacement-ball score persistence, desktop layout, narrow-phone overflow, and absence of runtime errors.
 
 ## Rebound tuning
 

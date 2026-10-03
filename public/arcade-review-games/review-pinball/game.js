@@ -3,6 +3,18 @@ const $=id=>document.getElementById(id),canvas=$('table'),ctx=canvas.getContext(
 const sets=[{id:'science',name:'Scientific Method',url:'../territory-takedown/questions.js'},{id:'french',name:'French Revolution',url:'../territory-takedown/french-revolution/questions.js'}];
 let engine,state='setup',score=0,ballCount=1,lit=new Set(),multiplier=1,savedUntil=0,mode='classic',questions=[],queue=[],qIndex=0,correct=0,attempts=0,earned=0,current=null,answered=false,sound=false,audio=null,flash=[],last=0,acc=0,pausedFrom='playing',selectedSet='';
 const overlay=$('overlay'),panel=$('panel');
+let rampShots=0,lastShot=null;
+const shotInfo=document.createElement('p');shotInfo.className='shot-info';$('mission').after(shotInfo);
+function shotHud(){shotInfo.textContent=`Skyline ramps: ${rampShots%3}/3. Third ramp: 2,000 bonus. Ramp + loop within 8 seconds: 1,000 combo.`;}
+function tableHit(id,value){
+ hit(id,value);
+ if(id==='ramp'||id==='orbit'){
+  let bonus=0,message=id==='ramp'?'Skyline ramp! +750':'Loop complete! +500';
+  if(id==='ramp'){rampShots++;if(rampShots%3===0){bonus+=2000;message='SKYLINE BONUS! +2,000';}}
+  if(lastShot && lastShot.id!==id && engine.time-lastShot.time<=8){bonus+=1000;message+=' · COMBO +1,000';lastShot=null;}else lastShot={id,time:engine.time};
+  score+=bonus*multiplier;$('status').textContent=message;shotHud();hud();beep(900,.15);
+ }
+}
 function show(html){overlay.hidden=false;panel.innerHTML=html;panel.querySelector('button,select')?.focus();}
 function hide(){overlay.hidden=true;document.activeElement?.blur();}
 function beep(freq=500,duration=.06){if(!sound)return;audio??=new (window.AudioContext||window.webkitAudioContext)();if(audio.state==='suspended')audio.resume();const o=audio.createOscillator(),g=audio.createGain();o.type='sine';o.frequency.value=freq;g.gain.setValueAtTime(.09,audio.currentTime);g.gain.exponentialRampToValueAtTime(.001,audio.currentTime+duration);o.connect(g);g.connect(audio.destination);o.start();o.stop(audio.currentTime+duration);}
@@ -13,12 +25,12 @@ async function start(){const btn=$('start');btn.disabled=true;btn.textContent='L
  // Existing sets use normalized objects; tuple support keeps the adapter reusable.
  if(!questions[0]?.prompt)questions=bank.questions.map(q=>({id:q[0],prompt:q[1],choices:q[2],answer:q[3],explanation:''}));
  if(!questions.length||questions.some(q=>!q.prompt||!Array.isArray(q.choices)||!Number.isInteger(q.answer)))throw new Error('Invalid question set.');
- score=0;ballCount=1;lit.clear();multiplier=1;correct=0;attempts=0;queue=[];qIndex=0;flash=[];engine=new PinballPhysics({assist:mode==='assist',onHit:hit,onDrain:drain});hud();hide();ready();
+ score=0;ballCount=1;lit.clear();multiplier=1;rampShots=0;lastShot=null;correct=0;attempts=0;queue=[];qIndex=0;flash=[];engine=new PinballPhysics({assist:mode==='assist',onHit:tableHit,onDrain:drain});shotHud();hud();hide();ready();
  }catch(err){btn.disabled=false;btn.textContent='Try again';const p=document.createElement('p');p.textContent=err.message;panel.append(p);}}
 function ready(){state='ready';engine.ball={x:460,y:748,vx:0,vy:0,r:10};$('status').textContent='Ready! Press Space or Launch.';$('launch').disabled=false;}
 function launch(){if(state!=='ready')return;hide();state='playing';engine.launch();savedUntil=engine.time+(mode==='assist'?12:7);$('status').textContent='Ball saver active';beep(360,.15);}
 function hit(id,value){score+=value*multiplier;if(id.startsWith('target'))lit.add(Number(id.slice(6)));if(lit.size===4&&id.startsWith('bumper')){const jackpot=2500*multiplier;score+=jackpot;lit.clear();multiplier=Math.min(5,multiplier+1);$('status').textContent='JACKPOT! +'+jackpot.toLocaleString();beep(1000,.2);}else if(id==='orbit'){$('status').textContent='Loop shot! +'+500*multiplier;}else if(id.startsWith('target')){$('status').textContent='Target lit — '+lit.size+' / 4';}beep(id.startsWith('bumper')?650:420);flash.push({id,t:engine.time});hud();}
-function drain(){if(engine.time<savedUntil){engine.launch();$('status').textContent='Ball saved! Keep playing.';return;}state='review';earned=0;$('status').textContent='Earn another ball: two correct answers.';nextQuestion();}
+function drain(){lastShot=null;engine.keys.left=engine.keys.right=false;if(engine.time<savedUntil){engine.launch();$('status').textContent='Ball saved! Keep playing.';return;}state='review';earned=0;$('status').textContent='Earn another ball: two correct answers.';nextQuestion();}
 function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
 function nextQuestion(){if(qIndex>=queue.length){queue=shuffle([...questions]);qIndex=0;}current=queue[qIndex++];answered=false;show(`<div class="eyebrow">EARN YOUR NEXT BALL · ${earned}/2 CORRECT</div><h2 id="question"></h2><div class="answers" id="answers"></div><div id="feedback" role="status"></div><button id="continue" class="primary" hidden>Next question</button>`);$('question').textContent=current.prompt;current.choices.forEach((text,i)=>{const b=document.createElement('button');b.textContent=`${i+1}. ${text}`;b.onclick=()=>answer(i);$('answers').append(b);});$('continue').onclick=()=>{if(earned>=2){ballCount++;hud();hide();ready();launch();}else nextQuestion();};$('answers').firstChild.focus();}
 function answer(i){if(state!=='review'||answered)return;answered=true;attempts++;const right=i===current.answer;if(right){correct++;earned++;beep(850,.15);}else beep(190,.15);[...$('answers').children].forEach((b,n)=>{b.disabled=true;if(n===current.answer)b.classList.add('correct');else if(n===i)b.classList.add('wrong');});$('feedback').textContent=(right?'Correct!':`Correct answer: ${current.choices[current.answer]}.`)+(current.explanation?' '+current.explanation:'');$('continue').hidden=false;$('continue').textContent=earned>=2?'Ball earned — launch!':'Next question';$('continue').focus();}
@@ -32,20 +44,32 @@ window.addEventListener('keyup',e=>{if(['arrowleft','a'].includes(e.key.toLowerC
 function line(x1,y1,x2,y2,color,width=5){ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);ctx.strokeStyle=color;ctx.lineWidth=width;ctx.lineCap='round';ctx.stroke();}
 function circle(x,y,r,color){ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fillStyle=color;ctx.fill();}
 function label(text,x,y,size=18,color='#b6c5e0'){ctx.font=`800 ${size}px system-ui`;ctx.textAlign='center';ctx.fillStyle=color;ctx.fillText(text,x,y);}
+function drawBall(){if(!engine.ball)return;const b=engine.ball;ctx.shadowColor='#d7f3ff';ctx.shadowBlur=12;const bg=ctx.createRadialGradient(b.x-3,b.y-4,1,b.x,b.y,10);bg.addColorStop(0,'#fff');bg.addColorStop(.45,'#cad9ed');bg.addColorStop(1,'#657a9c');circle(b.x,b.y,b.r,bg);ctx.shadowBlur=0;}
 function draw(){const g=ctx.createLinearGradient(0,0,0,820);g.addColorStop(0,'#132244');g.addColorStop(1,'#080f22');ctx.fillStyle=g;ctx.fillRect(0,0,520,820);
  ctx.strokeStyle='#223557';ctx.lineWidth=1;for(let y=60;y<800;y+=40)line(45,y,433,y,'#1c2a45',1);for(let x=60;x<440;x+=40)line(x,50,x,800,'#1c2a45',1);
  // The loop is open at the bottom so shots can enter and leave.
  ctx.beginPath();ctx.ellipse(254,185,156,105,0,Math.PI,Math.PI*2);ctx.strokeStyle='#5c6b9b';ctx.lineWidth=4;ctx.stroke();
- label('NEON',254,138,37,'#63edcf');label('C I R C U I T',254,167,17,'#f6dc73');label('LOOP 500',116,206,12,'#849cbf');
+ label('NEON',254,115,37,'#63edcf');label('C I R C U I T',254,143,17,'#f6dc73');label('LOOP',70,248,12,'#63edcf');label('LOOP',414,248,12,'#63edcf');
  for(const r of engine.table.rails){line(...r,'#122137',13);line(...r,'#8799ba',4);}
  for(const [i,p] of engine.table.bumpers.entries()){const hot=flash.some(f=>f.id==='bumper'+i&&engine.time-f.t<.14);ctx.shadowColor='#63edcf';ctx.shadowBlur=hot?30:12;circle(p.x,p.y,p.r+5,hot?'#f6dc73':'#63edcf');ctx.shadowBlur=0;circle(p.x,p.y,p.r-3,'#1c3b51');circle(p.x,p.y,p.r-10,hot?'#ffe56b':'#2c6774');label('100',p.x,p.y+5,14,'#eafff9');}
  for(const [i,t] of engine.table.targets.entries()){line(t.x-7,t.y-12,t.x+7,t.y+12,lit.has(i)?'#63edcf':'#fa799d',12);label(String(i+1),t.x+(i<2?24:-24),t.y+5,14);}
+ if(!engine.ride)drawBall(); // Ground-level ball passes under the elevated crossover.
+ for(const ramp of engine.table.ramps??[]){
+  const path=()=>{ctx.beginPath();ramp.path.forEach((p,i)=>i?ctx.lineTo(...p):ctx.moveTo(...p));ctx.lineJoin='round';ctx.lineCap='round';};
+  path();ctx.strokeStyle='#050a16';ctx.lineWidth=38;ctx.stroke();
+  path();ctx.strokeStyle='#b36eff';ctx.lineWidth=30;ctx.stroke();
+  path();ctx.strokeStyle='#23324c';ctx.lineWidth=23;ctx.stroke();
+  path();ctx.strokeStyle='#6688ac';ctx.lineWidth=1;ctx.setLineDash([5,12]);ctx.stroke();ctx.setLineDash([]);
+  label('RAMP 750',ramp.mouth.x,ramp.mouth.y+33,13,'#d5b6ff');
+  line(ramp.mouth.x-18,ramp.mouth.y,ramp.mouth.x+18,ramp.mouth.y,'#ffe56b',5);
+  label('↑',ramp.mouth.x,ramp.mouth.y-13,23,'#ffe56b');
+ }
  label(lit.size===4?'JACKPOT LIT':'LIGHT ALL FOUR',254,480,18,lit.size===4?'#ffe56b':'#8b9cbd');label('2,500 JACKPOT',254,505,13,'#7188ad');
  for(const s of [[93,620,147,690],[418,620,365,690]]){line(...s,'#b75296',18);line(...s,'#ff8ec1',5);}
  label('×'+multiplier,254,620,38,'#ffe56b');
  for(const f of engine.flippers){const length=f.length+(engine.assist?8:0),x=f.x+Math.cos(f.angle)*length,y=f.y+Math.sin(f.angle)*length;line(f.x,f.y,x,y,'#203047',24);line(f.x,f.y,x,y,'#f6dc73',16);line(f.x,f.y,x,y,'#fff2a4',4);circle(f.x,f.y,9,'#8e7139');}
  label('DRAIN',254,806,12,'#425675');if(state==='playing'&&engine.time<savedUntil)label('BALL SAVER',254,565,14,'#63edcf');if(state==='ready')label('PRESS SPACE TO LAUNCH',254,566,14,'#ffe56b');
- if(engine.ball){const b=engine.ball;ctx.shadowColor='#d7f3ff';ctx.shadowBlur=12;const bg=ctx.createRadialGradient(b.x-3,b.y-4,1,b.x,b.y,10);bg.addColorStop(0,'#fff');bg.addColorStop(.45,'#cad9ed');bg.addColorStop(1,'#657a9c');circle(b.x,b.y,b.r,bg);ctx.shadowBlur=0;}
+ if(engine.ride)drawBall();
  flash=flash.filter(f=>engine.time-f.t<.4);
 }
 function frame(now){const dt=Math.min((now-last)/1000,.04);last=now;if(state==='playing'){acc+=dt;while(acc>=1/240){engine.step(1/240);acc-=1/240;if(state!=='playing')break;}}else acc=0;draw();requestAnimationFrame(frame);}
