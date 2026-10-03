@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {PinballPhysics} from '../public/arcade-review-games/review-pinball/physics.js';
+import {PinballPhysics,BALL_PACE} from '../public/arcade-review-games/review-pinball/physics.js';
 for(const assist of [false,true]){
  let drains=0,hits=0;const engine=new PinballPhysics({assist,onDrain:()=>drains++,onHit:()=>hits++});engine.launch();let reachedPlayfield=false;
  for(let i=0;i<240*35&&engine.ball;i++){engine.step(1/240);const b=engine.ball;if(b){assert.ok([b.x,b.y,b.vx,b.vy].every(Number.isFinite));if(b.x<438&&b.y<500)reachedPlayfield=true;}}
@@ -36,3 +36,12 @@ assert.equal(rubber.ball.vx,350,'Slingshot force must not invent tangential velo
 assert.ok(rubber.ball.vy>0 && rubber.ball.vy<6,'Slingshot kick scales down for a gentle contact');
 assert.equal(rubber.segment(100,0,300,0,0,.88,{x:0,y:0},90),false,'Separating contact is not another slingshot impact');
 console.log('Bumper tuning: direct, grazing, separating, repeated-contact, and slingshot momentum checks passed.');
+
+const paced=new PinballPhysics();paced.launch();
+assert.equal(paced.ball.vy,-1080*.85,'Launch speed is reduced by 15%');
+paced.ball={x:254,y:500,vx:2000,vy:0,r:10};paced.step(1/240);
+assert.ok(Math.hypot(paced.ball.vx,paced.ball.vy)<=1350*BALL_PACE+.001,'Powered shots respect the reduced speed ceiling');
+paced.keys.left=true;const angle=paced.flippers[0].angle;paced.step(1/240);
+assert.ok(Math.abs(paced.flippers[0].angle-angle+15/240)<.00001,'Flipper response is not slowed with the ball');
+assert.equal(paced.time,2/240,'Ball pace must not stretch session clocks');
+console.log('Ball pace: reduced launch and speed ceiling, responsive flippers, and real-time clocks passed.');

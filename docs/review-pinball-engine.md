@@ -24,3 +24,5 @@ This is a first playtest candidate. Human playtesting should judge shot control,
 ## Rebound tuning
 
 Bumper rebounds preserve tangent momentum, use 0.88 restitution, and add at most 75 units/second of outward speed, scaled down to 30% of incoming normal speed for light contacts. Overlap correction no longer triggers a powered impulse or scoring when the ball is already separating. Slingshot kicks follow their surface normal rather than adding arbitrary horizontal/upward velocity. Regression checks cover direct hits, glancing hits, separating overlaps, repeated contact, and slingshot tangent momentum.
+
+The current ball pace is 85% of the original. Launch speed, speed ceiling, powered impulses, and gravity are scaled together to retain similar shot heights at a calmer pace. Flipper animation, review flow, and ball-saver timers remain in real time. The base 75-unit bumper boost is also multiplied by this pace factor.
