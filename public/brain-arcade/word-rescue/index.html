@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f9fafb" />
+  <title>Word Rescue | Brain Arcade | Teach Arcade</title>
+  <meta name="description" content="Play Word Rescue in your browser. Guess the hidden word before the trap closes around a randomly selected critter." />
+  <link rel="canonical" href="https://teacharcade.com/brain-arcade/word-rescue/" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <link rel="stylesheet" href="/brain-arcade/word-rescue/style.css?v=5" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Teach Arcade" />
+  <meta property="og:title" content="Word Rescue | Brain Arcade | Teach Arcade" />
+  <meta property="og:description" content="Reveal the word before the trap is completed around the critter." />
+  <meta property="og:url" content="https://teacharcade.com/brain-arcade/word-rescue/" />
+  <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"Word Rescue",
+    "applicationCategory":"Game",
+    "operatingSystem":"All",
+    "url":"https://teacharcade.com/brain-arcade/word-rescue/",
+    "description":"A free word-guessing game with three difficulty levels, clues, keyboard controls, random critters, and local streak tracking.",
+    "publisher":{"@type":"Organization","name":"Teach Arcade"}
+  }
+  </script>
+</head>
+<body>
+  <div id="site-header"></div>
+  <script src="/assets/scripts/nav.js?v=5" defer></script>
+
+  <main class="word-rescue-page" id="word-rescue-app">
+    <nav class="word-rescue-page__breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a><span aria-hidden="true">›</span>
+      <a href="/brain-arcade/">Brain Arcade</a><span aria-hidden="true">›</span>
+      <span aria-current="page">Word Rescue</span>
+    </nav>
+
+    <section class="word-rescue-page__hero">
+      <div>
+        <p class="word-rescue-page__eyebrow">Brain Arcade</p>
+        <h1>Word Rescue</h1>
+        <p>Reveal the hidden word before the trap is completed around the critter.</p>
+      </div>
+      <div class="word-rescue-page__streaks" aria-label="Winning streak">
+        <div><span>Current streak</span><strong id="current-streak">0</strong></div>
+        <div><span>Best streak</span><strong id="best-streak">0</strong></div>
+      </div>
+    </section>
+
+    <section class="word-rescue-page__setup" aria-label="Game setup">
+      <div class="word-rescue-page__field">
+        <label for="category-select">Category</label>
+        <select id="category-select">
+          <option value="animals">Animals</option>
+          <option value="geography">Geography</option>
+          <option value="science">Science</option>
+          <option value="school">School</option>
+          <option value="food">Food</option>
+        </select>
+      </div>
+
+      <div class="word-rescue-page__field">
+        <label for="difficulty-select">Difficulty</label>
+        <select id="difficulty-select">
+          <option value="easy">Easy · 10 misses</option>
+          <option value="medium" selected>Medium · 6 misses</option>
+          <option value="hard">Hard · 4 misses</option>
+        </select>
+      </div>
+
+      <button type="button" class="word-rescue-page__button word-rescue-page__button--secondary" id="surprise-category">Surprise Me</button>
+      <button type="button" class="word-rescue-page__button word-rescue-page__button--primary" id="new-word">New Mission</button>
+    </section>
+
+    <section class="word-rescue-page__game" aria-label="Word Rescue game">
+      <div class="word-rescue-page__rescue-card">
+        <div class="word-rescue-page__scene" id="rescue-scene" aria-label="Critter rescue scene">
+          <div class="word-rescue-page__scene-label">
+            <span>Rescue Mission</span>
+            <strong id="critter-name">Squirrel</strong>
+          </div>
+          <div class="word-rescue-page__scene-art" id="scene-art" aria-live="off"></div>
+        </div>
+
+        <div class="word-rescue-page__wrong">
+          <span>Incorrect guesses</span>
+          <strong><span id="wrong-count">0</span> / <span id="wrong-max">6</span></strong>
+        </div>
+        <div class="word-rescue-page__wrong-letters" id="wrong-letters" aria-live="polite">None yet</div>
+      </div>
+
+      <div class="word-rescue-page__play-card">
+        <div class="word-rescue-page__round-meta">
+          <span class="word-rescue-page__category-pill" id="category-label">Animals</span>
+          <span class="word-rescue-page__difficulty-pill" id="difficulty-label">Medium · 6 misses</span>
+          <button type="button" class="word-rescue-page__clue-button" id="clue-button">Show Clue</button>
+        </div>
+
+        <p class="word-rescue-page__clue" id="clue-text" hidden></p>
+        <div class="word-rescue-page__word" id="word-display" aria-label="Hidden word"></div>
+
+        <p class="word-rescue-page__feedback" id="feedback" role="status" aria-live="polite">
+          Pick a letter or type on your keyboard.
+        </p>
+
+        <div class="word-rescue-page__keyboard" id="keyboard" aria-label="Letter keyboard"></div>
+
+        <div class="word-rescue-page__end-actions" id="end-actions" hidden>
+          <button type="button" class="word-rescue-page__button word-rescue-page__button--primary" id="play-again">Next Mission</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="word-rescue-page__how">
+      <h2>How to play</h2>
+      <p>Guess one letter at a time. Correct guesses reveal the word. Every incorrect guess adds part of the trap. Easy gives you 10 misses, Medium gives you 6, and Hard gives you 4. Solve the word before the trap is complete to rescue the critter.</p>
+    </section>
+  </main>
+
+  <footer></footer>
+  <script src="/brain-arcade/word-rescue/game.js?v=5" defer></script>
+</body>
+</html>
