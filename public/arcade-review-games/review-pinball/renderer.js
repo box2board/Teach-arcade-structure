@@ -18,6 +18,23 @@ function base(table){
  for(let y=55;y<790;y+=7)stroke(c,[48,y],[430,y],'#d5f5ff04',1);
  for(let y=65;y<580;y+=70){stroke(c,[180,y],[280,y+55],'#69dcd712',2);stroke(c,[280,y+55],[335,y+55],'#69dcd712',2);circle(c,335,y+55,3,'#51c9c025');}
  const light=c.createRadialGradient(250,270,20,250,270,370);light.addColorStop(0,'#43babd12');light.addColorStop(1,'#02071400');c.fillStyle=light;c.fillRect(0,0,520,820);
+ // Original reactor-station artwork printed beneath the hardware, not new obstacles.
+ for(const [side,color] of [[1,'#29cdbb'],[-1,'#c181f0']]){
+  c.save();if(side===-1){c.translate(508,0);c.scale(-1,1);}
+  c.beginPath();c.moveTo(65,295);c.lineTo(113,320);c.lineTo(169,565);c.lineTo(126,610);c.lineTo(67,560);c.closePath();c.fillStyle=color+'16';c.fill();c.strokeStyle=color+'65';c.lineWidth=2;c.stroke();
+  for(let y=320;y<570;y+=27){stroke(c,[69,y],[87,y+9],color+'70',3);}
+  c.restore();
+ }
+ for(let y=190;y<580;y+=38)for(let x=155;x<360;x+=38){c.beginPath();for(let i=0;i<6;i++){const a=i*Math.PI/3;c.lineTo(x+19*Math.cos(a),y+19*Math.sin(a));}c.closePath();c.strokeStyle='#9fcaff0c';c.lineWidth=1;c.stroke();}
+ // Printed circuit traces visually connect the bank targets to the reactor core.
+ for(const [i,t] of table.targets.entries()){
+  const side=i<2?1:-1,endX=254-side*38;
+  c.beginPath();c.moveTo(t.x+side*14,t.y);c.lineTo(t.x+side*45,t.y);c.lineTo(endX,475+(i%2)*22);c.strokeStyle=i<2?'#49e9cd38':'#bc8cfb38';c.lineWidth=4;c.stroke();
+  circle(c,endX,475+(i%2)*22,4,'#a4dfdc50');
+ }
+ // Bold floor graphics give the lower playfield a cohesive machine identity.
+ c.save();c.translate(254,580);c.rotate(-Math.PI/2);text(c,'ENERGY STATION',0,0,48,'#57b5bf0e');c.restore();
+ for(const x of [175,333]){for(let y=580;y<680;y+=22){stroke(c,[x-7,y+5],[x,y],'#e7cc6345',3);stroke(c,[x,y],[x+7,y+5],'#e7cc6345',3);}}
  // Recessed shooter channel and apron.
  c.fillStyle='#020912';c.fillRect(440,226,40,554);stroke(c,[452,240],[452,757],'#6b839128',2);
  c.fillStyle=metal(c,0,779,41,['#314655','#15232e','#07111b']);c.fillRect(40,779,442,41);
@@ -72,16 +89,29 @@ export function renderTable(c,engine,{state,lit,multiplier,savedUntil,flash,rush
   c.save();c.shadowColor=lit.has(i)?'#6affd0':'#f69ebf';c.shadowBlur=lit.has(i)?14:2;stroke(c,[t.x-7,t.y-12],[t.x+7,t.y+12],lit.has(i)?'#75f2c5':'#c56997',10);c.restore();text(c,String(i+1),t.x+(i<2?24:-24),t.y+5,14);
  }
  // Recessed score inserts read as lights mounted in the playfield, not floating text.
- const on=lit.size===4;socket(c,254,483,24);circle(c,254,483,18,gradient(c,254,483,18,on?['#fff3bf','#d8b048','#594722']:['#657482','#293d4c','#101c27']));
- text(c,on?'JACKPOT LIT':'LIGHT ALL FOUR',254,535,15,on?'#ffe4a1':'#8eaabd');
- text(c,'2,500 JACKPOT',254,553,12,'#698899');
+ const on=lit.size===4;socket(c,254,486,37);
+ circle(c,254,486,32,gradient(c,254,486,32,['#a9bfcd','#354e60','#101e2b']));
+ for(let i=0;i<4;i++){
+  c.beginPath();c.arc(254,486,27,-Math.PI/2+i*Math.PI/2+.12,-Math.PI/2+(i+1)*Math.PI/2-.12);
+  c.save();c.strokeStyle=lit.has(i)?'#82ffcf':'#203c4b';c.lineWidth=6;c.shadowColor='#53ffd1';c.shadowBlur=lit.has(i)?12:0;c.stroke();c.restore();
+ }
+ circle(c,254,486,20,gradient(c,254,486,20,on?['#fffcd7','#ffda67','#976524']:['#8ce8ed','#2b889d','#153446']));
+ c.save();c.translate(254,486);if(on)c.rotate(engine.time*.5);for(let i=0;i<6;i++){c.rotate(Math.PI/3);stroke(c,[5,0],[14,0],on?'#fff5b5':'#b5ffff',2);}c.restore();
+ text(c,'CORE',254,490,9,on?'#624919':'#173541');
+ text(c,on?'REACTOR READY!':'POWER THE REACTOR',254,540,14,on?'#ffe4a1':'#9bc6d3');
+ text(c,on?'HIT A BUMPER · 2,500':'FOUR TARGETS → JACKPOT',254,557,11,'#8daebb');
  text(c,'×'+multiplier,254,620,34,'#f5d282');
  const spinner=engine.table.spinner;
  if(spinner){
   const {x,y,width}=spinner;stroke(c,[x-width/2-5,y+12],[x-width/2-5,y-8],'#acbfcc',4);stroke(c,[x+width/2+5,y+12],[x+width/2+5,y-8],'#acbfcc',4);
-  const h=Math.max(2,Math.abs(Math.cos(engine.spinnerAngle??0))*14);
-  c.fillStyle=metal(c,x,y-h/2,h,['#f3f5ff','#8d75c0','#473561']);c.fillRect(x-width/2,y-h/2,width,h);
-  stroke(c,[x-width/2,y],[x+width/2,y],'#e5d4ff',2);text(c,'SPIN 150',x,y+26,11,'#b9a7df');
+  const event=[...flash].reverse().find(f=>f.id==='spinner'),age=event?engine.time-event.t:99,hot=age<.65;
+  c.save();c.translate(x,y);c.shadowColor='#83ffdc';c.shadowBlur=hot?24:4;
+  circle(c,0,0,24,gradient(c,0,0,24,['#8398b7','#273d53','#111d2b']));
+  c.rotate(engine.spinnerAngle??0);
+  for(let i=0;i<6;i++){c.rotate(Math.PI/3);c.beginPath();c.moveTo(4,-3);c.lineTo(19,-8);c.lineTo(22,0);c.lineTo(8,5);c.closePath();c.fillStyle=hot?'#b3ffe5':i%2?'#a897d7':'#77c9cd';c.fill();}
+  circle(c,0,0,6,gradient(c,0,0,6,['#fff9de','#bdad67','#665d36']));c.restore();
+  text(c,'TURBINE · 150',x,y-31,11,hot?'#acffdf':'#b9c6df');
+  if(age<1.2){c.save();c.globalAlpha=Math.max(0,1-age/1.2);text(c,'+'+(event.points??150),x,y-48-age*22,22,'#b1ffe3');c.restore();}
  }
  if(rush){
   const remaining=rush.remaining(engine.time);

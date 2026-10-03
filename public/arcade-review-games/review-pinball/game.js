@@ -23,7 +23,7 @@ function tableHit(id,value){
   if(lastShot && lastShot.id!==id && engine.time-lastShot.time<=8){bonus+=1000;message+=' · COMBO +1,000';lastShot=null;}else lastShot={id,time:engine.time};
   score+=bonus*multiplier;$('status').textContent=message;shotHud();hud();beep(900,.15);
  }
- if(id==='spinner')$('status').textContent='Spinner! +'+value*multiplier*shotFactor;
+ if(id==='spinner'){$('status').textContent='Turbine hit! +'+value*multiplier*shotFactor;flash[flash.length-1].points=value*multiplier*shotFactor;}
  if(activated){$('status').textContent='CIRCUIT RUSH! Double shot points for 15 seconds.';beep(1100,.2);}
  shotHud();
 }
@@ -53,7 +53,7 @@ $('sound').onclick=()=>{sound=!sound;$('sound').textContent=sound?'Sound on':'So
 for(const [id,key] of [['left','left'],['right','right']]){const b=$(id);b.onpointerdown=e=>{e.preventDefault();if(state==='playing'){b.setPointerCapture(e.pointerId);touchHeld.add(key);syncKeys();beep(220,.025);}};b.onpointerup=b.onpointercancel=b.onlostpointercapture=()=>{touchHeld.delete(key);syncKeys();};}
 window.addEventListener('keydown',e=>{const key=e.key.toLowerCase();if(state==='review'){if(answered)return;if(['arrowdown','arrowright','arrowup','arrowleft'].includes(key)){e.preventDefault();const buttons=[...$('answers').children],i=buttons.indexOf(document.activeElement);buttons[(Math.max(0,i)+(['arrowdown','arrowright'].includes(key)?1:buttons.length-1))%buttons.length].focus();}else if(/^[1-4]$/.test(key)){e.preventDefault();answer(Number(key)-1);}return;}if(!['playing','ready','paused'].includes(state))return;if(['arrowleft','arrowright','a','d',' ','p'].includes(key))e.preventDefault();if(key==='p'&&!e.repeat){pause();return;}if(key===' '&&!e.repeat)launch();if(state==='playing'){if(['arrowleft','arrowright','a','d'].includes(key)){heldKeys.add(key);syncKeys();}}});
 window.addEventListener('keyup',e=>{heldKeys.delete(e.key.toLowerCase());syncKeys();});window.addEventListener('blur',()=>{clearKeys();if(state==='playing')pause();});document.addEventListener('visibilitychange',()=>{if(document.hidden&&state==='playing')pause();});
-function draw(){renderTable(ctx,engine,{state,lit,multiplier,savedUntil,flash,rush});flash=flash.filter(f=>engine.time-f.t<.4);}
+function draw(){renderTable(ctx,engine,{state,lit,multiplier,savedUntil,flash,rush});flash=flash.filter(f=>engine.time-f.t<1.2);}
 let stillFrame='';
 function frame(now){const dt=Math.min((now-last)/1000,.04);last=now;if(state==='playing'){acc+=dt;while(acc>=1/240){engine.step(1/240);acc-=1/240;if(state!=='playing')break;}if(Math.ceil(rush.remaining(engine.time))!==rushSecond)shotHud();}else acc=0;
  const signature=`${state}:${score}:${ballCount}:${multiplier}`;if(state==='playing'||signature!==stillFrame){draw();stillFrame=signature;}requestAnimationFrame(frame);}

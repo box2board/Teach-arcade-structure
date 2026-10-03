@@ -112,3 +112,23 @@ assert.equal(rush.factor(19),1,'Rush expires exactly at fifteen seconds');
 rush.record('ramp',20);rush.drain();assert.ok(rush.shots.has('ramp'),'Unfinished shot progress persists across balls');
 rush.record('orbit',21);rush.record('spinner',22);rush.drain();assert.equal(rush.factor(22),1,'A drained ball ends its live rush');
 console.log('Spinner and Circuit Rush: both directions, misses, unchanged momentum, decay, unique shots, expiry, and drain passed.');
+
+for(const [x,y,vx,vy] of [[282,419,0,700],[254,390,0,700],[290,420,-700,0],[254,420,0,500]]){
+ let contacts=0;const p=new PinballPhysics({table:spinnerTable,onHit:()=>contacts++}),control=new PinballPhysics({table:empty});
+ p.ball={x,y,vx,vy,r:10};control.ball={...p.ball};p.step(1/240);control.step(1/240);
+ assert.equal(contacts,1,'Visible edge, top, side, and exact-center contacts register');
+ assert.deepEqual(p.ball,control.ball,'Radius-aware contact never changes ball momentum');
+ for(let i=0;i<5;i++)p.step(1/240);assert.equal(contacts,1,'Continuous contact scores only once');
+}
+let recontacts=0;const turbine=new PinballPhysics({table:spinnerTable,onHit:()=>recontacts++});
+turbine.ball={x:254,y:420,vx:0,vy:0,r:10};turbine.step(1/240);
+for(let i=0;i<100;i++){turbine.ball={x:254,y:420,vx:0,vy:0,r:10};turbine.step(1/240);}
+assert.equal(recontacts,1,'Lingering inside the turbine cannot farm points');
+turbine.ball={x:340,y:420,vx:0,vy:0,r:10};turbine.step(1/240);
+turbine.ball={x:282,y:419,vx:0,vy:700,r:10};turbine.step(1/240);
+assert.equal(recontacts,2,'Leaving and returning registers another hit');
+turbine.launch();assert.equal(turbine.spinnerContact,false,'Launch clears the contact latch');
+console.log('Turbine regression: visible edges, horizontal hits, center hits, overlap latching, re-entry, reset, and unchanged momentum passed.');
+let fastHits=0;const fastTurbine=new PinballPhysics({table:spinnerTable,onHit:()=>fastHits++});
+fastTurbine.ball={x:254,y:380,vx:0,vy:1700,r:10};fastTurbine.step(.05);
+assert.equal(fastHits,1,'Swept contact catches a fast ball even when both endpoints miss the face');

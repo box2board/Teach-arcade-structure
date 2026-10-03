@@ -2,9 +2,10 @@ import {TABLE} from './tables.js';
 export {TABLE} from './tables.js';
 export const BALL_PHYSICS={launchSpeed:1080,gravity:620,drag:.10,maxSpeed:1800,powerScale:.85};
 const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
+const pointSegmentDistance=(p,a,z)=>{const dx=z.x-a.x,dy=z.y-a.y,length=dx*dx+dy*dy,t=length?clamp(((p.x-a.x)*dx+(p.y-a.y)*dy)/length,0,1):0;return Math.hypot(p.x-a.x-t*dx,p.y-a.y-t*dy);};
 export class PinballPhysics {
  constructor({table=TABLE,assist=false,onHit=()=>{},onDrain=()=>{}}={}){this.table=table;this.orbitArmed=false;this.assist=assist;this.onHit=onHit;this.onDrain=onDrain;this.time=0;this.ball=null;this.flippers=this.table.flippers.map(f=>({...f,angle:f.side===1?.35:Math.PI-.35,omega:0}));this.cooldown={};this.keys={left:false,right:false};}
- launch(){this.ride=null;this.orbitEntry=null;this.ball={x:460,y:748,vx:-25,vy:-BALL_PHYSICS.launchSpeed,r:10};}
+ launch(){this.ride=null;this.orbitEntry=null;this.spinnerContact=false;this.ball={x:460,y:748,vx:-25,vy:-BALL_PHYSICS.launchSpeed,r:10};}
  rampPoint(ramp,distance){
   let total=0;
   for(let i=1;i<ramp.path.length;i++){const a=ramp.path[i-1],z=ramp.path[i],dx=z[0]-a[0],dy=z[1]-a[1],length=Math.hypot(dx,dy);
@@ -34,7 +35,7 @@ export class PinballPhysics {
  }
  step(dt){this.time+=dt;
  this.spinnerAngle=((this.spinnerAngle??0)+(this.spinnerSpeed??0)*dt)%(Math.PI*2);
- this.spinnerSpeed=(this.spinnerSpeed??0)*Math.exp(-3*dt);
+ this.spinnerSpeed=(this.spinnerSpeed??0)*Math.exp(-1.4*dt);
  for(const f of this.flippers){const held=this.keys[f.side===1?'left':'right'],goal=f.side===1?(held?-.52:.35):(held?Math.PI+.52:Math.PI-.35),old=f.angle;f.angle+=clamp(goal-f.angle,-15*dt,15*dt);f.omega=(f.angle-old)/dt;}
  if(this.ball && this.ride){this.advanceRamp(dt);return;}
  // Gravity changes momentum continuously; drag and passive impacts dissipate energy.
@@ -46,11 +47,14 @@ export class PinballPhysics {
    if(speed>250){this.ride={ramp,distance:Math.max(0,(m.y-b.y)/-p.ty),speed};const entry=this.rampPoint(ramp,this.ride.distance);b.x=entry.x;b.y=entry.y;return;}
   }
  }
- // A free-swinging gate registers the swept crossing without redirecting the ball.
+ // Swept circle against the turbine's circular face includes the ball's full radius.
+ // Contact latching prevents overlap from scoring each tick. No ball impulse is added.
  const spinner=this.table.spinner;
- if(spinner && ((previous.y<spinner.y && b.y>=spinner.y)||(previous.y>spinner.y && b.y<=spinner.y))){
-  const t=(spinner.y-previous.y)/(b.y-previous.y),x=previous.x+(b.x-previous.x)*t;
-  if(Math.abs(x-spinner.x)<=spinner.width/2){this.spinnerSpeed=clamp(b.vy*.04,-35,35);this.hit('spinner',spinner.value);}
+ if(spinner){
+  const distance=pointSegmentDistance(spinner,previous,b);
+  const touching=distance<=b.r+spinner.width/2;
+  if(touching&&!this.spinnerContact){this.spinnerSpeed=(b.vy<0?-1:1)*clamp(Math.hypot(b.vx,b.vy)*.05,12,40);this.hit('spinner',spinner.value);}
+  this.spinnerContact=touching;
  }
  for(const rail of this.table.rails)this.segment(...rail);
  for(const [i,p] of this.table.bumpers.entries()){
