@@ -7,7 +7,8 @@ function normalizeSlope(s,i){if(!Number.isFinite(s.x1)||!Number.isFinite(s.y1)||
 function normalizeRect(o,i,prefix,defaults){if(!Number.isFinite(o.x)||!Number.isFinite(o.y))throw new Error(prefix+' '+(o.id||i+1)+' requires numeric x and y.');return{...defaults,...o,id:o.id||prefix+'-'+(i+1)}}
 function build(b){const rows=b.rows||15,cols=Math.ceil(b.world.width/(b.tileSize||32));return{...b,
 slopes:(b.slopes||[]).map(normalizeSlope),
-breakables:(b.breakables||[]).map((o,i)=>normalizeRect(o,i,'breakable',{w:32,h:32,breakMode:'headbutt'})),
+breakables:(b.breakables||[]).map((o,i)=>normalizeRect(o,i,'breakable',{w:32,h:32,breakMode:'headbutt',purpose:'barrier'})),
+surfaceZones:(b.surfaceZones||[]).map((o,i)=>normalizeRect(o,i,'surface-zone',{w:160,h:1,material:'normal'})),
 bounceSurfaces:(b.bounceSurfaces||[]).map((o,i)=>normalizeRect(o,i,'bounce',{w:48,h:14,bounce:820})),
 climbables:(b.climbables||[]).map((o,i)=>normalizeRect(o,i,'climbable',{w:32,h:128})),
 layers:{terrain:terrain(rows,cols,b.terrainSegments),hazards:marks(rows,cols,b.hazardTiles),checkpoints:marks(rows,cols,b.checkpointTiles)}}}

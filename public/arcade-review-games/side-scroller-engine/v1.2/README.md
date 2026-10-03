@@ -98,3 +98,20 @@ V1.2 includes a reusable Web Audio Sound Manager. It synthesizes lightweight ori
 Engine events currently include: `jump`, `land` (reserved), `stomp`, `hit`, `bounce`, `break`, `collect`, `question`, `correct`, `incorrect`, `checkpoint`, `zone`, `finish`, and `select`. Themes may override synthesized event definitions through game sound configuration without changing core gameplay.
 
 SFX and Music preferences are separate and persist locally. SFX defaults on at a classroom-friendly volume. Music defaults off; V1.2.1 does not add background music to Slope Street Sprint.
+
+
+## V1.2.2 surface materials and purposeful breakables
+
+V1.2.2 adds reusable surface-material behavior. Levels may define `surfaceZones` over any supported terrain. A `slippery` zone reduces acceleration, braking, and reverse traction while preserving momentum; it also strengthens grade influence on slopes. Themes decide what the material represents (ice, oil, wet stone, mud, etc.).
+
+Example:
+
+```js
+surfaceZones: [
+  { id:'ice-a', x:900, w:520, material:'slippery' }
+]
+```
+
+Breakables now declare a gameplay `purpose`: `barrier`, `shortcut`, `cache`, or `secret`. Supported physical break modes are `headbutt`, `stomp`, and `impact`. Cache/secret objects may define `drops`, currently supporting collectible and score drops.
+
+Design rule: **do not place a breakable unless breaking it changes the route, reveals something, or awards something meaningful.** Visual themes should communicate the break mode and purpose rather than relying on unexplained generic blocks.
