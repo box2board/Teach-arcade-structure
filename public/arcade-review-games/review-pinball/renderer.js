@@ -74,7 +74,7 @@ function rampLayer(table){
  const c=surface.getContext('2d');c.scale(2,2);for(const r of table.ramps??[])ramp(c,r);
  rampLayers.set(table,surface);return surface;
 }
-export function renderTable(c,engine,{state,lit,multiplier,savedUntil,flash,rush}){
+export function renderTable(c,engine,{state,lit,multiplier,savedUntil,flash,rush,plungerPower=0}){
  const scale=c.canvas.width/520;c.setTransform(scale,0,0,scale,0,0);c.clearRect(0,0,520,820);c.drawImage(base(engine.table),0,0,520,820);
  for(const [i,p] of engine.table.bumpers.entries()){
   const hot=flash.some(f=>f.id==='bumper'+i&&engine.time-f.t<.16);
@@ -124,9 +124,25 @@ export function renderTable(c,engine,{state,lit,multiplier,savedUntil,flash,rush
   stroke(c,[f.x+3,f.y+7],[end[0]+3,end[1]+7],'#000a',20);stroke(c,[f.x,f.y],end,'#6c501e',19);stroke(c,[f.x,f.y],end,metal(c,f.x,Math.min(f.y,end[1])-8,22,['#fff5cc','#ffe29a','#c59a41','#806222']),16);stroke(c,[f.x-1,f.y-3],[end[0]-1,end[1]-3],'#fff9dfb5',3);circle(c,f.x,f.y,7,gradient(c,f.x,f.y,7,['#eff6f8','#6c8594','#263b46']));
  }
  if(engine.ride)ball(c,engine.ball,true);
+ const gate=engine.table.launchGate;
+ if(gate&&engine.launchGateClosed){
+  stroke(c,[gate.x1,gate.y+5],[gate.x2,gate.y+5],'#020811',12);
+  stroke(c,[gate.x1,gate.y],[gate.x2,gate.y],metal(c,gate.x1,gate.y-5,10),8);
+  stroke(c,[gate.x1+3,gate.y-2],[gate.x2-3,gate.y-2],'#d6ffe9',2);
+  text(c,'CLOSED',460,gate.y+20,8,'#80dabc');
+ }
+ if(state==='ready'){
+  // The visible shaft pulls back while the ball stays seated above the spring.
+  const end=777+plungerPower*26;
+  stroke(c,[460,756],[460,end],'#182b38',12);
+  for(let y=758;y<end-3;y+=5)stroke(c,[454,y],[466,y+3],'#aec6d4',2);
+  stroke(c,[460,end],[460,812],'#9cafba',4);circle(c,460,end,7,gradient(c,460,end,7,['#fff1b0','#c89b47','#6a461a']));
+  c.fillStyle='#243f50';c.fillRect(454,665,12,63);c.fillStyle=plungerPower>.8?'#ffe68c':'#7ef4ce';c.fillRect(454,728-plungerPower*63,12,plungerPower*63);
+  text(c,`${Math.round(plungerPower*100)}%`,460,654,11,'#bbffe4');
+ }
  text(c,'NEON CIRCUIT  /  TEACH ARCADE',254,807,12,'#66818f');
  if(state==='playing'&&engine.time<savedUntil)text(c,'BALL SAVER',254,576,13,'#8deed1');
- if(state==='ready')text(c,'PRESS SPACE TO LAUNCH',254,576,13,'#ffe6a0');
+ if(state==='ready'){text(c,'HOLD SPACE / PLUNGER',254,576,12,'#ffe6a0');text(c,'RELEASE TO LAUNCH',254,592,11,'#a4c6d5');}
  // Subtle glass reflection, with no glare across the central ball path.
  const glass=c.createLinearGradient(42,0,190,820);glass.addColorStop(0,'#f0fcff0b');glass.addColorStop(.4,'#f0fcff00');c.fillStyle=glass;c.fillRect(44,43,387,718);
 }

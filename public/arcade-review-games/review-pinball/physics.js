@@ -1,11 +1,15 @@
 import {TABLE} from './tables.js';
 export {TABLE} from './tables.js';
 export const BALL_PHYSICS={launchSpeed:1080,gravity:620,drag:.10,maxSpeed:1800,powerScale:.85};
+export const PLUNGER={minSpeed:950,maxSpeed:1250,chargeSeconds:1.4};
 const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
 const pointSegmentDistance=(p,a,z)=>{const dx=z.x-a.x,dy=z.y-a.y,length=dx*dx+dy*dy,t=length?clamp(((p.x-a.x)*dx+(p.y-a.y)*dy)/length,0,1):0;return Math.hypot(p.x-a.x-t*dx,p.y-a.y-t*dy);};
 export class PinballPhysics {
  constructor({table=TABLE,assist=false,onHit=()=>{},onDrain=()=>{}}={}){this.table=table;this.orbitArmed=false;this.assist=assist;this.onHit=onHit;this.onDrain=onDrain;this.time=0;this.ball=null;this.flippers=this.table.flippers.map(f=>({...f,angle:f.side===1?.35:Math.PI-.35,omega:0}));this.cooldown={};this.keys={left:false,right:false};}
- launch(){this.ride=null;this.orbitEntry=null;this.spinnerContact=false;this.ball={x:460,y:748,vx:-25,vy:-BALL_PHYSICS.launchSpeed,r:10};}
+ prepareBall(){this.ride=null;this.orbitEntry=null;this.spinnerContact=false;this.launchGateClosed=false;this.ball={x:460,y:748,vx:0,vy:0,r:10};}
+ launch(strength=(BALL_PHYSICS.launchSpeed-PLUNGER.minSpeed)/(PLUNGER.maxSpeed-PLUNGER.minSpeed)){
+  this.prepareBall();const speed=PLUNGER.minSpeed+(PLUNGER.maxSpeed-PLUNGER.minSpeed)*clamp(strength,0,1);this.ball.vx=-25;this.ball.vy=-speed;
+ }
  rampPoint(ramp,distance){
   let total=0;
   for(let i=1;i<ramp.path.length;i++){const a=ramp.path[i-1],z=ramp.path[i],dx=z[0]-a[0],dy=z[1]-a[1],length=Math.hypot(dx,dy);
@@ -57,6 +61,12 @@ export class PinballPhysics {
   this.spinnerContact=touching;
  }
  for(const rail of this.table.rails)this.segment(...rail);
+ const gate=this.table.launchGate;
+ if(gate){
+  // Close only when the whole launched ball clears the mouth; never block its ascent.
+  if(!this.launchGateClosed && b.y+b.r+4<gate.y)this.launchGateClosed=true;
+  if(this.launchGateClosed)this.segment(gate.x1,gate.y,gate.x2,gate.y,4,.78);
+ }
  for(const [i,p] of this.table.bumpers.entries()){
   let nx=b.x-p.x,ny=b.y-p.y,d=Math.hypot(nx,ny);
   if(d>=b.r+p.r)continue;
