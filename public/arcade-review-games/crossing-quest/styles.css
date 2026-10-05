@@ -9,3 +9,12 @@
 .intro-mark::before{content:"";position:absolute;left:3px;top:8px;width:25px;height:29px;border-radius:8px 8px 16px 16px;background:#e5b16a}
 .intro-mark::after{content:"";position:absolute;left:0;top:5px;width:31px;height:12px;border-radius:8px 8px 4px 4px;background:#755032;box-shadow:0 -5px 0 -3px #bf9157}
 @media(min-width:601px) and (min-height:501px) and (pointer:fine){canvas{max-height:calc(100dvh - 370px)}}
+.mission{display:grid;gap:4px;padding:9px 16px;background:#20392e;border:1px solid #557750;color:#e4f4cd;min-height:62px}
+.mission span{font-size:.7rem;letter-spacing:.08em;color:#c4ef80;font-weight:800}
+.mission strong{font-size:.875rem;line-height:1.4}
+.mission.returning{background:#183e49;border-color:#69bfc2}
+.mission.returning span{color:#9de7ec}
+@media(min-width:601px) and (min-height:501px) and (pointer:fine){canvas{max-height:calc(100dvh - 432px)}}
+@media(pointer:coarse) and (min-width:601px){canvas{max-height:calc(100dvh - 426px)}}
+#game-shell:fullscreen canvas{max-height:calc(100dvh - 365px)}
+@media(max-width:600px){.mission{padding:8px 12px}.mission strong{font-size:.8rem}#game-shell:fullscreen canvas{max-height:none}}

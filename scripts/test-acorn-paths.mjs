@@ -11,9 +11,11 @@ function copy(w) {
   });
 }
 function settleQuestions(w) {
+  if(w.state==='goal-help')w.continueHunt();
   while(w.state==='question') {
     w.answer((w.question.answer+1)%4);w.continueAnswer();
   }
+  if(w.state==='return-ready')w.beginReturn();
 }
 function search(start,goal,score) {
   let frontier=[{world:start,path:[]}];const seen=new Set();

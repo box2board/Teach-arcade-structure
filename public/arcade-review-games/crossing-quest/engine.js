@@ -1,5 +1,22 @@
 import { CELL, WIDTH, ROUTES, DIFFICULTIES } from './config.js';
 
+// Collision and drawing share these wheel/ball/frame positions. Rider heads,
+// the squirrel's decorative tail, and shadows do not enlarge the hit area.
+export function roadShapes(lane,o){
+  const y=lane.row*CELL,x=o.x+o.width/2;
+  if(lane.row===6)return {circles:[{x:o.x+25,y:y+33,r:21},{x:o.x+o.width-25,y:y+33,r:21}],segments:[]};
+  const points=[{x:o.x+17,y:y+42},{x,y:y+25},{x:o.x+o.width-17,y:y+42},{x:x+12,y:y+18}];
+  return {circles:[{...points[0],r:14},{...points[2],r:14}],segments:points.slice(1).map((p,i)=>({a:points[i],b:p,r:2.5}))};
+}
+export function roadHit(player,lane,o){
+  const body={x:player.x-2,y:player.row*CELL+36,r:11},shapes=roadShapes(lane,o);
+  if(shapes.circles.some(c=>Math.hypot(body.x-c.x,body.y-c.y)<body.r+c.r))return true;
+  return shapes.segments.some(({a,b,r})=>{
+    const dx=b.x-a.x,dy=b.y-a.y,t=Math.max(0,Math.min(1,((body.x-a.x)*dx+(body.y-a.y)*dy)/(dx*dx+dy*dy)));
+    return Math.hypot(body.x-a.x-t*dx,body.y-a.y-t*dy)<body.r+r;
+  });
+}
+
 export function validateBank(bank, minimum = ROUTES.length * 4) {
   if (!bank || !Array.isArray(bank.questions) || bank.questions.length < minimum) throw new Error(`Question packs need at least ${minimum} questions.`);
   const ids = new Set();
@@ -59,7 +76,7 @@ export class CrossingWorld {
     if(this.hop>0)return;
     const lane=this.route.lanes.find(l=>l.row===this.player.row);
     if(lane?.type==='road'&&this.invulnerable<=0){
-      if(this.objects(lane).some(o=>lane.row===6?[o.x+25,o.x+o.width-25].some(x=>Math.abs(this.player.x-x)<34):this.player.x+17>o.x+6&&this.player.x-17<o.x+o.width-6)){this.hit('Park path bump');return;}
+      if(this.objects(lane).some(o=>roadHit(this.player,lane,o))){this.hit('Park path bump');return;}
     }
     if(lane?.type==='sprinkler'&&this.invulnerable<=0){
       if(this.sprinklers(lane).some(o=>o.active&&Math.abs(this.player.x-o.x)<o.radius+14)){this.hit('Sprinkler splash');return;}
@@ -69,11 +86,13 @@ export class CrossingWorld {
     }
     if(!this.returning&&this.player.row===4&&this.checkpoint===8)this.openCheckpoint('island');
     else if(!this.returning&&this.player.row===0){
-      if(this.acorns<3){if(!this.needNuts){this.notice='Collect at least 3 acorns before visiting the oak';this.needNuts=true;}}
+      if(this.acorns<3){if(!this.needNuts){this.needNuts=true;this.state='goal-help';}}
       else{this.needNuts=false;this.openCheckpoint('finish');}
     }else this.needNuts=false;
-    if(this.returning&&this.player.row===8){this.stashed+=this.acorns;this.acorns=0;this.state=this.stage===ROUTES.length-1?'won':'transition';}
+    if(this.returning&&this.player.row===8){this.tripStashed=this.acorns;this.stashed+=this.acorns;this.acorns=0;this.state=this.stage===ROUTES.length-1?'won':'transition';}
   }
+  continueHunt(){if(this.state==='goal-help')this.state='playing';}
+  beginReturn(){if(this.state==='return-ready')this.state='playing';}
   nuts(){return [{row:7,x:160},{row:6,x:608},{row:5,x:288},{row:4,x:224},{row:4,x:672},{row:3,x:416},{row:2,x:736},{row:1,x:160},{row:0,x:416}].map((n,i)=>({...n,id:i,collected:this.collected.has(i)}));}
   sprinklers(lane){
     return [160,416,736].map((x,i)=>{const cycle=(this.time*this.route.speed*this.difficulty.speed+lane.row*.9+i*1.6)%7;return {x,radius:56,active:cycle>=2.5&&cycle<4.8,warning:cycle>=1.2&&cycle<2.5};});
@@ -96,7 +115,7 @@ export class CrossingWorld {
     if(this.state!=='feedback')return;
     this.questionIndex++;this.checkpointAnswers++;
     if(this.checkpointAnswers<2){this.state='question';return;}
-    if(this.stop==='finish'){this.returning=true;this.checkpoint=0;this.state='playing';this.invulnerable=1.5;this.notice='Pouch ready · return DOWN to your home tree to stash the acorns';}
+    if(this.stop==='finish'){this.returning=true;this.checkpoint=0;this.state='return-ready';this.invulnerable=1.5;}
     else{this.state='playing';this.invulnerable=1.5;this.notice='Stump saved · gather acorns and reach the old oak';}
   }
   nextStage(){

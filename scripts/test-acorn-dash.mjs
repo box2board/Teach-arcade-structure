@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {CrossingWorld} from '../public/arcade-review-games/crossing-quest/engine.js';
+import {CrossingWorld,roadHit,roadShapes} from '../public/arcade-review-games/crossing-quest/engine.js';
 import bank from '../public/arcade-review-games/crossing-quest/questions.js';
 import { QUESTION_SETS, loadQuestionSet } from '../public/arcade-review-games/crossing-quest/question-sets.js';
 assert.equal(QUESTION_SETS.length,1);
@@ -7,16 +7,23 @@ assert.equal((await loadQuestionSet('scientific-method')).id,bank.id);
 await assert.rejects(loadQuestionSet('not-a-set'));
 for(const difficulty of ['relaxed','classic','challenge']){
  const w=new CrossingWorld(bank,difficulty);w.start();
- w.player={row:0,x:416};w.update(.01);assert.equal(w.state,'playing');assert.equal(w.acorns,1);w.update(.01);assert.equal(w.acorns,1);
+ w.player={row:0,x:416};w.update(.01);assert.equal(w.state,'goal-help');assert.equal(w.acorns,1);
+ const frozen=w.time;w.update(.05);assert.equal(w.time,frozen);w.continueHunt();w.update(.01);assert.equal(w.state,'playing');assert.equal(w.acorns,1);
  for(let stage=0;stage<3;stage++){
   w.acorns=3;
   for(const stop of ['island','finish']){w.openCheckpoint(stop);for(let i=0;i<2;i++){w.answer(w.question.answer);w.continueAnswer();}}
-  assert.equal(w.state,'playing');assert(w.returning);assert.equal(w.checkpoint,0);
+  assert.equal(w.state,'return-ready');assert(w.returning);assert.equal(w.checkpoint,0);w.beginReturn();assert.equal(w.state,'playing');
   w.hit('Test');assert.equal(w.player.row,0);assert(w.move('down'));
   w.hop=0;w.player.row=8;w.update(.01);assert.equal(w.stashed,3*(stage+1));assert.equal(w.acorns,0);
   if(stage<2){assert.equal(w.state,'transition');w.nextStage();assert(!w.returning);assert.equal(w.collected.size,0);}
  }
  assert.equal(w.state,'won');assert.equal(w.records.length,12);
+}
+for(const row of [5,7]){
+ const lane={row},o={x:100,width:88};
+ assert(!roadHit({x:90,row},lane,o),'Empty space ahead of bicycle must not collide');
+ assert(!roadHit({x:199,row},lane,o),'Empty space behind bicycle must not collide');
+ for(const wheel of roadShapes(lane,o).circles)assert(roadHit({x:wheel.x+2,row},lane,o),'Visible wheel overlap must collide');
 }
 const w=new CrossingWorld(bank);w.start();w.invulnerable=0;w.shield=0;
 const lane=w.route.lanes.find(l=>l.type==='sprinkler');w.time=2.8-lane.row*.9;w.player={row:lane.row,x:160};assert(w.sprinklers(lane)[0].active);w.update(.01);assert.equal(w.lives,3);assert.equal(w.player.row,8);

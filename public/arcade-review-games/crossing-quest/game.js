@@ -1,6 +1,6 @@
 import bank from './questions.js';
 import { QUESTION_SETS, loadQuestionSet } from './question-sets.js';
-import { CrossingWorld } from './engine.js';
+import { CrossingWorld, roadShapes } from './engine.js';
 import { CELL, WIDTH, HEIGHT, ROUTES, DIFFICULTIES } from './config.js';
 
 const $=id=>document.getElementById(id),canvas=$('board'),ctx=canvas.getContext('2d');
@@ -60,6 +60,9 @@ function sync(){
   setText('acorns',`${world.acorns}${world.returning?' carried':' / 3 needed'} · ${world.stashed} stashed`);
   setText('review-set',`Review set: ${activeBank.title}`);
   setText('route',world.returning?'Return DOWN to your home tree. Extra acorns are optional.':'Gather 3+ acorns. Review at the stump and old oak.');
+  setText('mission-step',world.returning?'3 / 3 · BRING THEM HOME':world.acorns>=3?'2 / 3 · VISIT THE OLD OAK':'1 / 3 · FILL YOUR POUCH');
+  setText('mission-goal',world.returning?'↓ Reach the bottom home area to finish this level.':world.acorns>=3?'↑ Reach the top safe area and finish its review.':`Collect ${Math.max(0,3-world.acorns)} more acorn${world.acorns===2?'':'s'}. The stump has two safe pickups.`);
+  $('mission').classList.toggle('returning',world.returning);
   setText('lives','♥ '.repeat(world.lives).trim());
   const lifeLabel=`${world.lives} hearts remaining`;if($('lives').getAttribute('aria-label')!==lifeLabel)$('lives').setAttribute('aria-label',lifeLabel);
   setText('shield',world.shield?'Ready':'Empty');
@@ -74,9 +77,17 @@ function sync(){
   else if(world.state==='question')question();
   else if(world.state==='feedback')feedback();
   else if(world.state==='paused')pauseDialog();
+  else if(world.state==='goal-help'){
+    show(`<span class="pill">Old oak reached · ${world.acorns} / 3 acorns</span><h2 id="panel-title">Your pouch needs ${3-world.acorns} more.</h2><p>Go back down to collect the remaining acorns, then return to this top safe area. The middle stump has two safe pickups.</p><p>The park is paused while you read.</p>${button('hunt','Keep collecting ↓')}`);
+    $('hunt').onclick=()=>{world.continueHunt();sync();};$('hunt').focus();
+  }
+  else if(world.state==='return-ready'){
+    show(`<span class="pill">Old oak review complete</span><h2 id="panel-title">Now bring the acorns home.</h2><p>You have <strong>${world.acorns} acorns</strong>. Move <strong>DOWN to the bottom home area</strong> to stash them and finish level ${world.stage+1}.</p><p>Extra acorns are optional. No more questions on the trip home.</p>${button('home','Head home ↓')}`);
+    $('home').onclick=()=>{world.beginReturn();sync();announce('↓ Return to the bottom home area to finish the level');};$('home').focus();
+  }
   else if(world.state==='won'||world.state==='lost')summary();
   else if(world.state==='transition'){
-    show(`<span class="pill">Crossing ${world.stage+1} complete</span><h2 id="panel-title">Next stop: ${escapeHTML(ROUTES[world.stage+1].name)}</h2><p>Your hearts, shield, and slow-time charges carry forward.</p>${button('next','Next crossing')}`);
+    show(`<span class="pill">Level ${world.stage+1} complete · ${world.tripStashed} acorns stashed</span><h2 id="panel-title">Next stop: ${escapeHTML(ROUTES[world.stage+1].name)}</h2><p>${world.stashed} acorns safely stored so far. Your hearts, shield, and slow-time charges carry forward.</p>${button('next',`Start level ${world.stage+2}`)}`);
     $('next').onclick=()=>{world.nextStage();sync();};
   }
 }
@@ -87,13 +98,14 @@ function round(x,y,w,h,r,color){ctx.fillStyle=color;ctx.beginPath();ctx.roundRec
 function circle(x,y,r,color){ctx.fillStyle=color;ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fill();}
 function label(text,x,y,color='#e1eed7',size=13){ctx.fillStyle=color;ctx.font=`700 ${size}px system-ui,sans-serif`;ctx.textAlign='center';ctx.fillText(text,x,y);}
 function parkObstacle(o,y,lane){
+  const shapes=roadShapes(lane,o);
   if(lane.row===6){
-    for(const dx of [25,o.width-25]){circle(o.x+dx,y+33,21,'#d49b57');ctx.strokeStyle='#ffe1a6';ctx.lineWidth=3;ctx.beginPath();ctx.arc(o.x+dx,y+33,15,-.8,1.8);ctx.stroke();}
+    for(const c of shapes.circles){circle(c.x,c.y,c.r,'#d49b57');ctx.strokeStyle='#ffe1a6';ctx.lineWidth=3;ctx.beginPath();ctx.arc(c.x,c.y,15,-.8,1.8);ctx.stroke();}
     return;
   }
   const x=o.x+o.width/2;
-  circle(o.x+17,y+42,14,'#23343a');circle(o.x+o.width-17,y+42,14,'#23343a');
-  ctx.strokeStyle='#e7d47a';ctx.lineWidth=5;ctx.beginPath();ctx.moveTo(o.x+17,y+42);ctx.lineTo(x,y+25);ctx.lineTo(o.x+o.width-17,y+42);ctx.lineTo(x+12,y+18);ctx.stroke();
+  shapes.circles.forEach(c=>circle(c.x,c.y,c.r,'#23343a'));
+  ctx.strokeStyle='#e7d47a';ctx.lineWidth=5;ctx.beginPath();shapes.segments.forEach(({a,b})=>{ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);});ctx.stroke();
   round(x-9,y+8,19,25,7,'#6fc9c2');circle(x+3,y+4,9,'#ffd4a0');round(x-8,y-3,22,8,4,'#f08269');
 }
 function squirrel(x,y){
@@ -122,6 +134,10 @@ function bankRow(row,title,active){
   for(let i=0;i<14;i++){const x=i*CELL+15;ctx.fillStyle='#b0d48b45';ctx.fillRect(x,y+14,3,8);ctx.fillRect(x+6,y+11,3,10);if(i%3===0){circle(x+18,y+42,3,world.route.accent);circle(x+23,y+39,2,'#edf1b9');}}
   const w=title.length*8.5+28;round(20,y+18,w,29,14,active?'#173c32':'#233e37');label(title,20+w/2,y+38,active?'#d3efa5':'#bfd2c8',13);
   if(row===0||row===8){const x=WIDTH-85;round(x-12,y+20,24,42,5,'#845735');circle(x,y+15,28,'#244b34');circle(x-21,y+22,21,'#376342');circle(x+21,y+23,21,'#42764b');round(x-8,y+42,16,20,8,'#392b22');}
+  if((world.returning&&row===8)||(!world.returning&&world.acorns>=3&&row===0)){
+    ctx.strokeStyle=world.returning?'#9de7ec':'#d4ef89';ctx.lineWidth=3;ctx.strokeRect(2,y+2,WIDTH-4,CELL-4);
+    label(world.returning?'↓ HOME':'↑ REVIEW',WIDTH-215,y+38,ctx.strokeStyle,16);
+  }
 }
 function draw(){
   if(!world)return;ctx.clearRect(0,0,WIDTH,HEIGHT);

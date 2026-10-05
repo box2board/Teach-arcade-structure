@@ -6,7 +6,11 @@ Developed on `feature/crossing-quest-engine` from verified production commit `95
 
 A squirrel gathers acorns in three parks. Collect at least three acorns per trip, answer two questions at the safe stump and two at the old oak, then travel back DOWN to home to stash the haul. Extra acorns are optional. Collected acorns remain in the pouch after a collision and cannot be collected twice on the same trip. The return trip saves the old oak as the respawn point. Stashing completes a trip and resets pickups for the next park.
 
+The mission strip above the board shows the current step: fill the pouch, visit the old oak, or bring acorns home. Reaching the oak with insufficient acorns opens paused guidance with the exact number still needed; continuing does not reopen it until the player leaves and revisits. Completing the oak review opens a paused return-home briefing. The destination safe row gains an outline and direction label. Stashing displays the haul and an explicit Start level button. `goal-help` and `return-ready` are paused states; `continueHunt()` and `beginReturn()` resume play.
+
 Moving cyclists and rolling balls occupy park paths. Lawn sprinklers cycle through off, amber warning, and spray phases. Questions and feedback pause all hazards. Correct answers grant a shield, slowdown charge, or extra heart. Incorrect answers explain the answer without costing a heart. Collisions consume a shield or heart and return the squirrel to the saved safe row. Gentle, Classic, and Challenge control obstacle speed and starting hearts. Movement is free.
+
+`roadShapes()` supplies both renderer and collision geometry: wheel/ball circles and bicycle frame segments. `roadHit()` tests a forgiving 11-pixel squirrel body footprint against those shapes rather than a full bicycle rectangle. Decorative tails, rider heads, and shadows do not increase collision bounds. Regression checks cover the previously invisible front/rear hits, visible wheel contact, and paused progression guidance.
 
 Keyboard: arrows/WASD; Space slowdown; P/Escape pause. Questions: 1–4 or arrows and Enter. Held touch buttons support movement. Blur and page hiding pause play. Announcements occupy a reserved strip below the canvas. Board labels sit to the left of the character’s starting position.
 
