@@ -21,6 +21,7 @@ export class CrossingWorld {
       const answers = shuffle(q.choices.map((text,index)=>({text,index})),random);
       return {...q,choices:answers.map(a=>a.text),answer:answers.findIndex(a=>a.index===q.answer)};
     });
+    this.returning=false;this.acorns=0;this.stashed=0;this.collected=new Set();
     this.state='ready';this.stage=0;this.lives=this.difficulty.lives;this.shield=1;this.charges=0;
     this.time=0;this.slowTime=0;this.invulnerable=1.5;this.hop=0;this.checkpoint=8;
     this.player={x:WIDTH/2-CELL/2,row:8};this.from={...this.player};this.records=[];this.questionIndex=0;
@@ -38,8 +39,8 @@ export class CrossingWorld {
     if(this.state!=='playing'||this.hop>0)return false;
     const delta={up:[0,-1],down:[0,1],left:[-CELL,0],right:[CELL,0]}[direction];if(!delta)return false;
     const x=this.player.x+delta[0],row=this.player.row+delta[1];
-    // Crossing back below a saved island is unnecessary and cannot reopen questions.
-    if(x<CELL*.35||x>WIDTH-CELL*.35||row<0||row>this.checkpoint)return false;
+    // Both directions remain available for pickups and the trip home.
+    if(x<CELL*.35||x>WIDTH-CELL*.35||row<0||row>8)return false;
     this.from={...this.player};this.player={x,row};this.hop=.11;
     return true;
   }
@@ -58,16 +59,24 @@ export class CrossingWorld {
     if(this.hop>0)return;
     const lane=this.route.lanes.find(l=>l.row===this.player.row);
     if(lane?.type==='road'&&this.invulnerable<=0){
-      if(this.objects(lane).some(o=>this.player.x+17>o.x+6&&this.player.x-17<o.x+o.width-6)){this.hit('Traffic');return;}
+      if(this.objects(lane).some(o=>lane.row===6?[o.x+25,o.x+o.width-25].some(x=>Math.abs(this.player.x-x)<34):this.player.x+17>o.x+6&&this.player.x-17<o.x+o.width-6)){this.hit('Park path bump');return;}
     }
-    if(lane?.type==='river'){
-      this.player.x+=lane.speed*this.difficulty.speed*this.route.speed*dt*factor;
-      const log=this.objects(lane).find(o=>this.player.x>=o.x+8&&this.player.x<=o.x+o.width-8);
-      if(!log){this.hit('Water');return;}
-      if(this.player.x<17||this.player.x>WIDTH-17){this.hit('River edge');return;}
+    if(lane?.type==='sprinkler'&&this.invulnerable<=0){
+      if(this.sprinklers(lane).some(o=>o.active&&Math.abs(this.player.x-o.x)<o.radius+14)){this.hit('Sprinkler splash');return;}
     }
-    if(this.player.row===4&&this.checkpoint===8)this.openCheckpoint('island');
-    else if(this.player.row===0)this.openCheckpoint('finish');
+    for(const nut of this.nuts())if(!nut.collected&&nut.row===this.player.row&&Math.abs(nut.x-this.player.x)<27){
+      this.collected.add(nut.id);this.acorns++;this.notice='Acorn collected · '+this.acorns+' in your pouch';
+    }
+    if(!this.returning&&this.player.row===4&&this.checkpoint===8)this.openCheckpoint('island');
+    else if(!this.returning&&this.player.row===0){
+      if(this.acorns<3){if(!this.needNuts){this.notice='Collect at least 3 acorns before visiting the oak';this.needNuts=true;}}
+      else{this.needNuts=false;this.openCheckpoint('finish');}
+    }else this.needNuts=false;
+    if(this.returning&&this.player.row===8){this.stashed+=this.acorns;this.acorns=0;this.state=this.stage===ROUTES.length-1?'won':'transition';}
+  }
+  nuts(){return [{row:7,x:160},{row:6,x:608},{row:5,x:288},{row:4,x:224},{row:4,x:672},{row:3,x:416},{row:2,x:736},{row:1,x:160},{row:0,x:416}].map((n,i)=>({...n,id:i,collected:this.collected.has(i)}));}
+  sprinklers(lane){
+    return [160,416,736].map((x,i)=>{const cycle=(this.time*this.route.speed*this.difficulty.speed+lane.row*.9+i*1.6)%7;return {x,radius:56,active:cycle>=2.5&&cycle<4.8,warning:cycle>=1.2&&cycle<2.5};});
   }
   hit(cause){
     if(this.shield){this.shield=0;this.notice=`${cause} · your shield saved a heart`;}else{this.lives--;this.notice=`${cause} · back to the checkpoint`;}
@@ -87,12 +96,12 @@ export class CrossingWorld {
     if(this.state!=='feedback')return;
     this.questionIndex++;this.checkpointAnswers++;
     if(this.checkpointAnswers<2){this.state='question';return;}
-    if(this.stop==='finish'){this.state=this.stage===ROUTES.length-1?'won':'transition';}
-    else{this.state='playing';this.invulnerable=1.5;this.notice='Island saved · ride the platforms to the finish';}
+    if(this.stop==='finish'){this.returning=true;this.checkpoint=0;this.state='playing';this.invulnerable=1.5;this.notice='Pouch ready · return DOWN to your home tree to stash the acorns';}
+    else{this.state='playing';this.invulnerable=1.5;this.notice='Stump saved · gather acorns and reach the old oak';}
   }
   nextStage(){
     if(this.state!=='transition')return;
-    this.stage++;this.checkpoint=8;this.time=0;this.slowTime=0;this.invulnerable=1.5;this.hop=0;
+    this.stage++;this.returning=false;this.collected=new Set();this.checkpoint=8;this.time=0;this.slowTime=0;this.invulnerable=1.5;this.hop=0;
     this.player={x:WIDTH/2-CELL/2,row:8};this.from={...this.player};this.state='playing';this.notice=`Crossing ${this.stage+1} · ${this.route.name}`;
   }
 }

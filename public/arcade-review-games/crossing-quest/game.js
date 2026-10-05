@@ -1,10 +1,11 @@
 import bank from './questions.js';
+import { QUESTION_SETS, loadQuestionSet } from './question-sets.js';
 import { CrossingWorld } from './engine.js';
 import { CELL, WIDTH, HEIGHT, ROUTES, DIFFICULTIES } from './config.js';
 
 const $=id=>document.getElementById(id),canvas=$('board'),ctx=canvas.getContext('2d');
 const panel=$('panel'),content=$('panel-content');
-let world,mode='relaxed',lastState='',lastFrame=0,held=null,repeatAt=0,noticeUntil=0,noticeText='';
+let world,activeBank=bank,mode='relaxed',selectedSet=bank.id,lastState='',lastFrame=0,held=null,repeatAt=0,noticeUntil=0,noticeText='';
 const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const directions={ArrowUp:'up',ArrowDown:'down',ArrowLeft:'left',ArrowRight:'right',w:'up',s:'down',a:'left',d:'right'};
 const escapeHTML=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -12,31 +13,53 @@ const escapeHTML=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&
 function show(html){held=null;content.innerHTML=html;if(!panel.open)panel.showModal();}
 function close(){if(panel.open)panel.close();canvas.focus({preventScroll:true});held=null;}
 function button(id,label,primary=true){return `<button id="${id}" class="${primary?'primary':'secondary'}">${label}</button>`;}
-function newRun(){world=new CrossingWorld(bank,mode);lastState='';sync();draw();}
+function newRun(){noticeText='';$('announcement').classList.remove('visible');world=new CrossingWorld(activeBank,mode);lastState='';sync();draw();}
 function ready(){
-  show(`<div class="intro-mark" aria-hidden="true">🐸</div><span class="pill">${escapeHTML(bank.title)} · 12 questions</span><h2 id="panel-title">A little hop.<br>A big crossing.</h2><ul class="intro-rules"><li><b>1</b>Hop past traffic and ride the river platforms.</li><li><b>2</b>Answer two questions at each safe checkpoint.</li><li><b>3</b>Earn shields and slow time. Finish all three crossings.</li></ul><label for="difficulty">Crossing difficulty</label><select id="difficulty">${Object.entries(DIFFICULTIES).map(([value,d])=>`<option value="${value}" ${value===mode?'selected':''}>${d.label}${value==='relaxed'?' · slower hazards':value==='challenge'?' · faster hazards, fewer hearts':''}</option>`).join('')}</select><p>You start with a shield. Questions pause everything.</p>${button('start','Start crossing')}<p class="access-note">Arrow keys or WASD · touch controls on phones and tablets</p>`);
-  $('start').onclick=()=>{mode=$('difficulty').value;world=new CrossingWorld(bank,mode);world.start();lastState='';close();sync();announce('Reach the island · your first shield is ready');};
+  show(`<div class="intro-mark" aria-hidden="true">🐿️</div><span class="pill">Acorn Dash · step 1 of 2</span><h2 id="panel-title">Small paws.<br>Big acorn adventure.</h2><ul class="intro-rules"><li><b>1</b>Dodge cyclists, rolling balls, and timed sprinklers.</li><li><b>2</b>Gather at least 3 acorns. Review at the stump and old oak.</li><li><b>3</b>Return DOWN to your home tree to stash your acorns.</li></ul><label for="difficulty">Park difficulty</label><select id="difficulty">${Object.entries(DIFFICULTIES).map(([value,d])=>`<option value="${value}" ${value===mode?'selected':''}>${d.label}${value==='relaxed'?' · slower hazards':value==='challenge'?' · faster hazards, fewer hearts':''}</option>`).join('')}</select><p>You start with a shield. Questions pause everything.</p>${button('choose-set','Choose question set')}<p class="access-note">Arrow keys or WASD · touch controls on phones and tablets</p>`);
+  $('choose-set').onclick=()=>{mode=$('difficulty').value;chooseSet();};
+}
+function chooseSet(){
+  show(`<span class="pill">Acorn Dash · step 2 of 2</span><h2 id="panel-title">Choose your review</h2><p>${escapeHTML(DIFFICULTIES[mode].label)} park difficulty · 12 questions per run</p><label for="question-set">Question set</label><select id="question-set">${QUESTION_SETS.map(set=>`<option value="${escapeHTML(set.id)}" ${set.id===selectedSet?'selected':''}>${escapeHTML(set.title)} · ${escapeHTML(set.subject)}</option>`).join('')}</select><p id="set-description"></p><p class="access-note">Only the Scientific Method test pack is available in this preview. Future topics use this same game.</p><p id="pack-error" class="fatal" role="alert"></p>${button('start','Start acorn run')}${button('back','Back to difficulty',false)}`);
+  const describe=()=>{const set=QUESTION_SETS.find(set=>set.id===$('question-set').value);$('set-description').textContent=set?.description||'';};
+  $('question-set').onchange=describe;describe();
+  $('back').onclick=()=>{selectedSet=$('question-set').value;ready();};
+  $('start').onclick=async()=>{
+    const start=$('start'),back=$('back'),select=$('question-set');
+    start.disabled=back.disabled=select.disabled=true;start.textContent='Loading questions…';$('pack-error').textContent='';
+    try{
+      const loaded=await loadQuestionSet(select.value);
+      const nextWorld=new CrossingWorld(loaded,mode);
+      activeBank=loaded;selectedSet=loaded.id;world=nextWorld;world.start();lastState='';close();sync();announce('Collect 3+ acorns · your first shield is ready');
+    }catch(error){
+      console.error(error);$('pack-error').textContent='This set could not load. Try again or go back.';
+      start.disabled=back.disabled=select.disabled=false;start.textContent='Try loading again';start.focus();
+    }
+  };
 }
 function question(){
   const q=world.question;
-  show(`<span class="pill">${world.stop==='island'?'Island checkpoint':'Finish checkpoint'} · question ${world.questionIndex+1} / ${world.deck.length}</span><h2 id="panel-title">${escapeHTML(q.question)}</h2><p>The crossing is paused. Take your time.</p><div class="answers">${q.choices.map((choice,i)=>`<button class="answer" data-answer="${i}"><b>${i+1}</b><span>${escapeHTML(choice)}</span></button>`).join('')}</div><p class="access-note">1–4 to answer · arrow keys to choose · Enter to confirm</p>`);
+  show(`<span class="pill">${world.stop==='island'?'Tree stump':'Old oak'} · question ${world.questionIndex+1} / ${world.deck.length}</span><h2 id="panel-title">${escapeHTML(q.question)}</h2><p>The crossing is paused. Take your time.</p><div class="answers">${q.choices.map((choice,i)=>`<button class="answer" data-answer="${i}"><b>${i+1}</b><span>${escapeHTML(choice)}</span></button>`).join('')}</div><p class="access-note">1–4 to answer · arrow keys to choose · Enter to confirm</p>`);
   content.querySelectorAll('[data-answer]').forEach(b=>b.onclick=()=>{world.answer(Number(b.dataset.answer));sync();});
   content.querySelector('[data-answer]').focus();
 }
 function feedback(){
   const q=world.question,{correct,reward}=world.feedback;
-  show(`<span class="pill">Question ${world.questionIndex+1} / ${world.deck.length}</span><h2 id="panel-title" class="${correct?'feedback-correct':'feedback-missed'}">${correct?'That’s right!':'Let’s review this one.'}</h2><p><strong>Correct answer:</strong> ${escapeHTML(q.choices[q.answer])}</p><p>${escapeHTML(q.explanation)}</p>${reward?`<p class="reward">${escapeHTML(reward)}</p>`:'<p>You keep your hearts. Use the explanation on your next review.</p>'}${button('continue',world.checkpointAnswers===0?'Next question':world.stop==='finish'?'Finish checkpoint':'Continue crossing')}`);
+  show(`<span class="pill">Question ${world.questionIndex+1} / ${world.deck.length}</span><h2 id="panel-title" class="${correct?'feedback-correct':'feedback-missed'}">${correct?'That’s right!':'Let’s review this one.'}</h2><p><strong>Correct answer:</strong> ${escapeHTML(q.choices[q.answer])}</p><p>${escapeHTML(q.explanation)}</p>${reward?`<p class="reward">${escapeHTML(reward)}</p>`:'<p>You keep your hearts. Use the explanation on your next review.</p>'}${button('continue',world.checkpointAnswers===0?'Next question':world.stop==='finish'?'Return home ↓':'Continue acorn hunt')}`);
   $('continue').onclick=()=>{world.continueAnswer();sync();};$('continue').focus();
 }
 function summary(){
+  const bank=activeBank;
   const won=world.state==='won',answered=world.records.length,accuracy=answered?Math.round(world.correct/answered*100):0;
-  show(`<span class="pill">${escapeHTML(bank.title)} · run summary</span><h2 id="panel-title">${won?'All three crossings cleared!':'Your next crossing awaits.'}</h2><p>${won?'Nice crossing. Here’s what you reviewed.':'You ran out of hearts. Try Gentle difficulty or use slow time before a tricky stretch.'}</p><div class="summary-stats"><div><strong>${world.correct} / ${answered}</strong><span>Correct answers</span></div><div><strong>${accuracy}%</strong><span>Review accuracy</span></div></div><p>Questions answered: ${answered} / ${world.deck.length} · Crossings finished: ${won?3:world.stage} / 3</p>${answered?`<details><summary>Review your answers (${answered})</summary>${world.records.map(r=>`<div class="review-item"><span class="${r.correct?'feedback-correct':'feedback-missed'}">${r.correct?'Correct':'Review again'}</span><h3>${escapeHTML(r.question)}</h3><p>Your answer: ${escapeHTML(r.choices[r.selected])}</p>${r.correct?'':`<p>Correct answer: ${escapeHTML(r.choices[r.answer])}</p>`}<p>${escapeHTML(r.explanation)}</p></div>`).join('')}</details>`:''}${button('again','Play a new run')}<p class="access-note">This summary stays on this screen. Results are not sent to a teacher.</p>`);
+  show(`<span class="pill">${escapeHTML(bank.title)} · run summary</span><h2 id="panel-title">${won?'All three acorn trips complete!':'Your next crossing awaits.'}</h2><p>${won?'Acorns safely stashed. Here’s what you reviewed.':'You ran out of hearts. Try Gentle difficulty or use slow time before a tricky stretch.'}</p><div class="summary-stats"><div><strong>${world.correct} / ${answered}</strong><span>Correct answers</span></div><div><strong>${accuracy}%</strong><span>Review accuracy</span></div></div><p>Acorns stashed: ${world.stashed} · Questions answered: ${answered} / ${world.deck.length} · Crossings finished: ${won?3:world.stage} / 3</p>${answered?`<details><summary>Review your answers (${answered})</summary>${world.records.map(r=>`<div class="review-item"><span class="${r.correct?'feedback-correct':'feedback-missed'}">${r.correct?'Correct':'Review again'}</span><h3>${escapeHTML(r.question)}</h3><p>Your answer: ${escapeHTML(r.choices[r.selected])}</p>${r.correct?'':`<p>Correct answer: ${escapeHTML(r.choices[r.answer])}</p>`}<p>${escapeHTML(r.explanation)}</p></div>`).join('')}</details>`:''}${button('again','Play a new run')}<p class="access-note">This summary stays on this screen. Results are not sent to a teacher.</p>`);
   $('again').onclick=()=>{lastState='';newRun();};$('again').focus();
 }
-function pauseDialog(){show(`<span class="pill">Take a breather</span><h2 id="panel-title">Crossing paused</h2><p>Traffic and river platforms are stopped.</p>${button('resume','Resume crossing')}${button('new','Start a new run',false)}`);$('resume').onclick=()=>{world.resume();sync();};$('new').onclick=()=>newRun();}
+function pauseDialog(){show(`<span class="pill">Take a breather</span><h2 id="panel-title">Crossing paused</h2><p>Park obstacles and sprinklers are stopped.</p>${button('resume','Resume crossing')}${button('new','Start a new run',false)}`);$('resume').onclick=()=>{world.resume();sync();};$('new').onclick=()=>newRun();}
 function sync(){
   const setText=(id,text)=>{if($(id).textContent!==text)$(id).textContent=text;};
   setText('stage',`${world.stage+1} / ${ROUTES.length} · ${world.route.name}`);
+  setText('acorns',`${world.acorns}${world.returning?' carried':' / 3 needed'} · ${world.stashed} stashed`);
+  setText('review-set',`Review set: ${activeBank.title}`);
+  setText('route',world.returning?'Return DOWN to your home tree. Extra acorns are optional.':'Gather 3+ acorns. Review at the stump and old oak.');
   setText('lives','♥ '.repeat(world.lives).trim());
   const lifeLabel=`${world.lives} hearts remaining`;if($('lives').getAttribute('aria-label')!==lifeLabel)$('lives').setAttribute('aria-label',lifeLabel);
   setText('shield',world.shield?'Ready':'Empty');
@@ -63,64 +86,65 @@ function announce(text){noticeText=text;noticeUntil=performance.now()+3200;$('an
 function round(x,y,w,h,r,color){ctx.fillStyle=color;ctx.beginPath();ctx.roundRect(x,y,w,h,r);ctx.fill();}
 function circle(x,y,r,color){ctx.fillStyle=color;ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fill();}
 function label(text,x,y,color='#e1eed7',size=13){ctx.fillStyle=color;ctx.font=`700 ${size}px system-ui,sans-serif`;ctx.textAlign='center';ctx.fillText(text,x,y);}
-function car(o,y,lane){
-  const colors=['#e8a66f','#78bfd1','#f0d185','#a6b7dd'];
-  const color=colors[(o.index+lane.row+world.stage)%colors.length];
-  round(o.x+3,y+12,o.width-2,44,9,'#101e2980');
-  round(o.x+15,y+8,18,8,3,'#0b171d');round(o.x+15,y+49,18,8,3,'#0b171d');round(o.x+o.width-33,y+8,18,8,3,'#0b171d');round(o.x+o.width-33,y+49,18,8,3,'#0b171d');
-  round(o.x,y+11,o.width,42,9,color);
-  const front=lane.speed>0?o.x+o.width-25:o.x+10;
-  round(front,y+16,15,32,3,'#173345');round(lane.speed>0?o.x+13:o.x+o.width-27,y+17,14,30,3,'#355464');
-  round(o.x+34,y+17,Math.max(15,o.width-68),30,4,color);
-  round(lane.speed>0?o.x+o.width-5:o.x+1,y+17,4,9,1,'#fff0b3');round(lane.speed>0?o.x+o.width-5:o.x+1,y+38,4,9,1,'#fff0b3');
+function parkObstacle(o,y,lane){
+  if(lane.row===6){
+    for(const dx of [25,o.width-25]){circle(o.x+dx,y+33,21,'#d49b57');ctx.strokeStyle='#ffe1a6';ctx.lineWidth=3;ctx.beginPath();ctx.arc(o.x+dx,y+33,15,-.8,1.8);ctx.stroke();}
+    return;
+  }
+  const x=o.x+o.width/2;
+  circle(o.x+17,y+42,14,'#23343a');circle(o.x+o.width-17,y+42,14,'#23343a');
+  ctx.strokeStyle='#e7d47a';ctx.lineWidth=5;ctx.beginPath();ctx.moveTo(o.x+17,y+42);ctx.lineTo(x,y+25);ctx.lineTo(o.x+o.width-17,y+42);ctx.lineTo(x+12,y+18);ctx.stroke();
+  round(x-9,y+8,19,25,7,'#6fc9c2');circle(x+3,y+4,9,'#ffd4a0');round(x-8,y-3,22,8,4,'#f08269');
 }
-function platform(o,y){
-  round(o.x+1,y+12,o.width,44,12,'#0e2b3980');round(o.x,y+8,o.width,45,11,'#8b603e');round(o.x+4,y+9,o.width-8,8,4,'#c49561');
-  for(let i=16;i<o.width-10;i+=26){round(o.x+i,y+18,2,25,1,'#553e2d');}
-  ctx.strokeStyle='#d0a575';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(o.x+12,y+29);ctx.lineTo(o.x+o.width-14,y+29);ctx.stroke();
-  circle(o.x+13,y+31,7,'#ab7c50');circle(o.x+13,y+31,3,'#725033');
-}
-function frog(x,y){
-  let hop=world.hop/.11;if(reduced)hop=0;
-  const lift=Math.sin(hop*Math.PI)*8;
-  y-=lift;
+function squirrel(x,y){
+  const lift=reduced?0:Math.sin(world.hop/.11*Math.PI)*7;y-=lift;
   ctx.save();ctx.translate(x,y);
-  ctx.globalAlpha=.3;ctx.fillStyle='#071714';ctx.beginPath();ctx.ellipse(0,17+lift,21,7,0,0,Math.PI*2);ctx.fill();ctx.globalAlpha=1;
-  if(world.shield){ctx.strokeStyle='#c4fb8a';ctx.lineWidth=2.5;ctx.beginPath();ctx.arc(0,0,27,0,Math.PI*2);ctx.stroke();}
-  circle(-17,13,8,'#6da452');circle(17,13,8,'#6da452');circle(-17,-6,6,'#91c761');circle(17,-6,6,'#91c761');
-  ctx.fillStyle='#b5e578';ctx.beginPath();ctx.ellipse(0,4,17,20,0,0,Math.PI*2);ctx.fill();
-  ctx.fillStyle='#d6ee93';ctx.beginPath();ctx.ellipse(0,9,10,12,0,0,Math.PI*2);ctx.fill();
-  circle(-10,-14,9,'#b5e578');circle(10,-14,9,'#b5e578');circle(-10,-16,6,'#eff4de');circle(10,-16,6,'#eff4de');circle(-9,-18,3,'#172d25');circle(11,-18,3,'#172d25');
-  ctx.strokeStyle='#416137';ctx.lineWidth=2;ctx.beginPath();ctx.arc(0,-7,8,.2,Math.PI-.2);ctx.stroke();ctx.restore();
+  ctx.fillStyle='#12241b55';ctx.beginPath();ctx.ellipse(0,21+lift,23,7,0,0,Math.PI*2);ctx.fill();
+  if(world.shield){ctx.strokeStyle='#c4fb8a';ctx.lineWidth=2.5;ctx.beginPath();ctx.arc(0,0,29,0,Math.PI*2);ctx.stroke();}
+  ctx.fillStyle='#ad6c3c';ctx.beginPath();ctx.ellipse(16,-5,12,25,.5,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle='#d99552';ctx.beginPath();ctx.ellipse(19,-10,7,18,.5,0,Math.PI*2);ctx.fill();
+  circle(-8,18,7,'#945c35');circle(8,18,7,'#945c35');
+  ctx.fillStyle='#ba7b46';ctx.beginPath();ctx.ellipse(-2,5,14,18,0,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle='#ffe2b0';ctx.beginPath();ctx.ellipse(-3,8,8,12,0,0,Math.PI*2);ctx.fill();
+  circle(-12,-22,7,'#a5683c');circle(5,-22,7,'#a5683c');circle(-12,-22,3,'#edba89');circle(5,-22,3,'#edba89');circle(-4,-11,15,'#c7884e');
+  circle(-10,-14,3,'#211e19');circle(2,-14,3,'#211e19');circle(-4,-5,3,'#4c3324');
+  round(-15,2,6,10,3,'#a76838');round(6,2,6,10,3,'#a76838');ctx.restore();
+}
+function acorn(x,y){circle(x,y+3,9,'#e5b16a');round(x-11,y-8,22,9,4,'#755032');round(x-1,y-13,3,7,1,'#bf9157');}
+function sprinkler(o,y){
+  circle(o.x,y+32,7,'#80b5aa');
+  if(o.active||o.warning){ctx.fillStyle=o.active?'#82d9ee65':'#ffc76130';ctx.beginPath();ctx.ellipse(o.x,y+32,o.radius,29,0,0,Math.PI*2);ctx.fill();ctx.strokeStyle=o.active?'#abe9f5':'#ffcb77';ctx.lineWidth=2;ctx.setLineDash(o.warning?[5,5]:[]);ctx.stroke();ctx.setLineDash([]);}
+  if(o.active){for(let i=-2;i<=2;i++){ctx.strokeStyle='#c0f1fa';ctx.beginPath();ctx.moveTo(o.x,y+32);ctx.quadraticCurveTo(o.x+i*17,y+3,o.x+i*24,y+38);ctx.stroke();}}
 }
 function bankRow(row,title,active){
   const y=row*CELL;ctx.fillStyle=world.stage===2?'#345361':'#3d634d';ctx.fillRect(0,y,WIDTH,CELL);
   ctx.fillStyle='#ffffff08';ctx.fillRect(0,y,WIDTH,4);ctx.fillStyle='#061d2440';ctx.fillRect(0,y+60,WIDTH,4);
   for(let i=0;i<14;i++){const x=i*CELL+15;ctx.fillStyle='#b0d48b45';ctx.fillRect(x,y+14,3,8);ctx.fillRect(x+6,y+11,3,10);if(i%3===0){circle(x+18,y+42,3,world.route.accent);circle(x+23,y+39,2,'#edf1b9');}}
-  const w=title.length*8.5+28;round(WIDTH/2-w/2,y+18,w,29,14,active?'#173c32':'#233e37');label(title,WIDTH/2,y+38,active?'#d3efa5':'#bfd2c8',13);
-  if(row===0){for(const x of [WIDTH/2-165,WIDTH/2+165]){round(x,y+14,4,34,1,'#cee0df');ctx.fillStyle=world.route.accent;ctx.beginPath();ctx.moveTo(x+4,y+14);ctx.lineTo(x+27,y+22);ctx.lineTo(x+4,y+29);ctx.fill();}}
+  const w=title.length*8.5+28;round(20,y+18,w,29,14,active?'#173c32':'#233e37');label(title,20+w/2,y+38,active?'#d3efa5':'#bfd2c8',13);
+  if(row===0||row===8){const x=WIDTH-85;round(x-12,y+20,24,42,5,'#845735');circle(x,y+15,28,'#244b34');circle(x-21,y+22,21,'#376342');circle(x+21,y+23,21,'#42764b');round(x-8,y+42,16,20,8,'#392b22');}
 }
 function draw(){
   if(!world)return;ctx.clearRect(0,0,WIDTH,HEIGHT);
   for(let row=0;row<9;row++){
     const y=row*CELL,lane=world.route.lanes.find(l=>l.row===row);
-    if(!lane){bankRow(row,row===8?'START':row===4?(world.checkpoint===4?'CHECKPOINT SAVED':'ISLAND · 2 QUESTIONS'):'FINISH · 2 QUESTIONS',row===4&&world.checkpoint===4);continue;}
-    ctx.fillStyle=lane.type==='road'?world.route.road:world.route.water;ctx.fillRect(0,y,WIDTH,CELL);
+    if(!lane){bankRow(row,row===8?'HOME · STASH ACORNS':row===4?(world.checkpoint===4?'STUMP SAVED':'STUMP · REVIEW'):'OLD OAK · REVIEW',row===4&&world.checkpoint===4);continue;}
+    ctx.fillStyle=lane.type==='road'?'#9a8b70':'#4a754c';ctx.fillRect(0,y,WIDTH,CELL);
     if(lane.type==='road'){
-      ctx.fillStyle='#b6c0c430';for(let x=15;x<WIDTH;x+=82)ctx.fillRect(x,y+1,38,2);
-      label(lane.speed>0?'›':'‹',20,y+37,'#aebec457',24);
-      world.objects(lane).forEach(o=>car(o,y,lane));
+      ctx.fillStyle='#d9c9a52b';for(let x=15;x<WIDTH;x+=82)ctx.fillRect(x,y+2,38,2);
+      label(lane.speed>0?'›':'‹',20,y+37,'#f1e7ca77',24);
+      world.objects(lane).forEach(o=>parkObstacle(o,y,lane));
     }else{
-      ctx.strokeStyle='#a8e5e51c';ctx.lineWidth=2;const drift=reduced?0:(world.time*lane.speed*.35)%100;
-      for(let j=0;j<2;j++)for(let x=-100;x<WIDTH+100;x+=100){ctx.beginPath();ctx.moveTo(x+drift,y+14+j*32);ctx.quadraticCurveTo(x+17+drift,y+8+j*32,x+38+drift,y+14+j*32);ctx.stroke();}
-      world.objects(lane).forEach(o=>platform(o,y));
+      for(let x=18;x<WIDTH;x+=47){round(x,y+15,2,9,1,'#94b56e44');}
+      world.sprinklers(lane).forEach(o=>sprinkler(o,y));
     }
   }
+  for(const nut of world.nuts())if(!nut.collected)acorn(nut.x,nut.row*CELL+CELL/2);
+
   if(world.slowTime>0){ctx.fillStyle='#b6f4ff0b';ctx.fillRect(0,0,WIDTH,HEIGHT);ctx.strokeStyle='#a0e8f3';ctx.lineWidth=4;ctx.strokeRect(2,2,WIDTH-4,HEIGHT-4);}
   let x=world.player.x,y=world.player.row*CELL+CELL/2;
   if(world.hop>0&&!reduced){const t=1-world.hop/.11;const ease=1-(1-t)**2;x=world.from.x+(x-world.from.x)*ease;y=world.from.row*CELL+CELL/2+(y-world.from.row*CELL-CELL/2)*ease;}
   if(world.invulnerable>0&&world.state==='playing'&&!reduced){ctx.globalAlpha=.6+Math.sin(world.invulnerable*20)*.25;}
-  frog(x,y);ctx.globalAlpha=1;
+  squirrel(x,y);ctx.globalAlpha=1;
 }
 
 $('pause').onclick=()=>{world.pause();sync();};
