@@ -44,7 +44,7 @@ function base(table){
  for(const r of table.rails){const [x1,y1,x2,y2]=r;stroke(c,[x1+3,y1+7],[x2+3,y2+7],'#0009',14);stroke(c,[x1,y1],[x2,y2],'#0a1721',12);stroke(c,[x1,y1],[x2,y2],metal(c,x1,Math.min(y1,y2)-4,12),8);stroke(c,[x1-1,y1-2],[x2-1,y2-2],'#e6f5ffb5',1.6);}
  for(const p of table.bumpers)socket(c,p.x,p.y+4,p.r+10);
  // Physical slingshot housings; contact edges match the simulation exactly.
- for(const points of [[[93,620],[147,690],[88,685]],[[418,620],[365,690],[423,685]]]){
+ for(const s of table.slings??[]){const points=[...s.edge,s.back];
   c.save();c.shadowColor='#000b';c.shadowBlur=10;c.shadowOffsetY=6;c.beginPath();points.forEach((p,i)=>i?c.lineTo(...p):c.moveTo(...p));c.closePath();c.fillStyle=metal(c,0,620,70,['#526777','#253541','#0c1721']);c.fill();c.restore();
   stroke(c,points[0],points[1],'#3a122e',15);stroke(c,points[0],points[1],'#e482b7',8);stroke(c,[points[0][0]-1,points[0][1]-2],[points[1][0]-1,points[1][1]-2],'#ffd8ec',2);
  }

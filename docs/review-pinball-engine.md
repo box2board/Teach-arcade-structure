@@ -16,6 +16,8 @@ Keyboard: arrows or A/D for flippers, Space to launch, P to pause. Questions sup
 
 ## Player-controlled plunger and launch-lane cap
 
+The lower slingshot tips are shortened to open the feed above each flipper, repairing the stable pocket seen near (128, 690). Slingshot geometry now lives in `tables.js`; both physics and artwork read the same edges. This repair changes table geometry only, with no artificial unsticking impulse, ball teleport, or motion-constant changes. Regression checks cover 720 nearby starting positions/velocities across both sides and modes, plus natural feeding from the photographed trap onto the flippers.
+
 Hold Space or the PLUNGER button, then release to launch. Pull builds over 1.4 seconds and saturates at full strength, with a visible spring, power meter, and percentage. A short pull launches at 950 units/second and a full pull at 1,250; all strengths are deterministic and tested to enter the playfield. The default physics API launch still uses the approved 1,080-unit speed. Enter on the focused button offers a short-pull launch. Pause, blur, hidden tabs, pointer cancellation, and ending a session cancel a pending pull without firing.
 
 The cap spans the shooter-lane mouth and closes only after the whole ball clears it. It prevents re-entry from above, reopening when a new ball is seated. Review-earned balls return to a stationary ready state rather than launching automatically. Saver returns also require player launch and preserve the existing saver deadline, so they do not grant a fresh saver window. Idle plunger time does not consume simulation timers; the saver starts on the first actual launch. All free-ball motion constants remain unchanged.

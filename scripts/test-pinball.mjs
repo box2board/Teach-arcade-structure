@@ -147,3 +147,18 @@ assert.ok(capped.ball.y<=216&&capped.ball.vy<0,'Closed cap rejects a descending 
 const passing=new PinballPhysics();passing.ball={x:460,y:246,vx:0,vy:-700,r:10};passing.step(1/240);assert.equal(passing.launchGateClosed,undefined,'Gate remains open before upward ball clears it');assert.ok(passing.ball.vy<0);
 const bounded=new PinballPhysics();bounded.launch(-1);assert.equal(-bounded.ball.vy,PLUNGER.minSpeed);bounded.launch(2);assert.equal(-bounded.ball.vy,PLUNGER.maxSpeed);
 console.log('Plunger and cap: variable strength, all powers in both modes, lane exit, no trapping, return blocking, open ascent, bounds, and reset passed.');
+
+// Regression for the photographed trap at x≈128, y≈690 and the opposite pocket.
+let pocketCases=0;
+for(const assist of [false,true])for(const side of [1,-1])for(const x of [118,125,130,135,140,146])for(const y of [678,684,690,696,702])for(const vx of [-120,0,120])for(const vy of [0,180]){
+ const p=new PinballPhysics({assist});p.ball={x:side===1?x:510-x,y,vx:side*vx,vy,r:10};
+ for(let i=0;i<240*12&&p.ball;i++)p.step(1/240);
+ assert.equal(p.ball,null,`Pocket must clear: ${JSON.stringify({assist,side,x,y,vx,vy})}`);pocketCases++;
+}
+for(const side of [1,-1]){
+ const p=new PinballPhysics();p.ball={x:side===1?130:380,y:690,vx:0,vy:0,r:10};let fed=false;
+ const f=p.flippers.find(f=>f.side===side);
+ for(let i=0;i<240*4&&p.ball;i++){p.step(1/240);const b=p.ball;if(b&&b.y>700&&b.y<760&&side*(b.x-f.x)>0&&side*(b.x-f.x)<f.length)fed=true;}
+ assert.ok(fed,'A ball from the old trap must reach the flipper surface naturally');
+}
+console.log(`Slingshot pockets: ${pocketCases} starts across both sides and modes cleared; photographed trap feeds naturally onto both flippers.`);

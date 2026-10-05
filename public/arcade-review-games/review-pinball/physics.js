@@ -82,7 +82,7 @@ export class PinballPhysics {
  }
  for(const [i,t] of this.table.targets.entries())if(this.segment(t.x-7,t.y-12,t.x+7,t.y+12,5,.72))this.hit('target'+i,250);
  // Rubber slingshots above the flippers.
- for(const [i,s] of [[93,620,147,690],[418,620,365,690]].entries())if(this.segment(...s,5,.88,{x:0,y:0},90*BALL_PHYSICS.powerScale))this.hit('sling'+i,50);
+ for(const [i,s] of (this.table.slings??[]).entries())if(this.segment(...s.edge[0],...s.edge[1],5,.88,{x:0,y:0},90*BALL_PHYSICS.powerScale))this.hit('sling'+i,50);
  for(const f of this.flippers){const length=f.length+(this.assist?8:0),ex=f.x+Math.cos(f.angle)*length,ey=f.y+Math.sin(f.angle)*length,dx=b.x-f.x,dy=b.y-f.y;
  this.segment(f.x,f.y,ex,ey,8,.68,{x:-f.omega*dy*BALL_PHYSICS.powerScale,y:f.omega*dx*BALL_PHYSICS.powerScale});}
  const orbit=this.table.orbit;
