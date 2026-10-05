@@ -133,19 +133,20 @@ let fastHits=0;const fastTurbine=new PinballPhysics({table:spinnerTable,onHit:()
 fastTurbine.ball={x:254,y:380,vx:0,vy:1700,r:10};fastTurbine.step(.05);
 assert.equal(fastHits,1,'Swept contact catches a fast ball even when both endpoints miss the face');
 
-for(const assist of [false,true])for(const power of [0,.25,.5,.75,1]){
- const p=new PinballPhysics({assist});p.launch(power);
- assert.equal(-p.ball.vy,PLUNGER.minSpeed+(PLUNGER.maxSpeed-PLUNGER.minSpeed)*power);
+for(const assist of [false,true])for(const power of [0,.1,.25,.5,.65,.7,.75,1]){
+ let returned=0,entries=0,drains=0;const p=new PinballPhysics({assist,onLaneReturn:()=>returned++,onPlayfield:()=>entries++,onDrain:()=>drains++});p.launch(power);
+ assert.equal(-p.ball.vy,PLUNGER.maxSpeed*power);
  assert.equal(p.launchGateClosed,false,'Gate starts open for every launch');
  let entered=false,closed=false;
- for(let i=0;i<240*45&&p.ball;i++){p.step(1/240);closed ||=p.launchGateClosed;entered ||=p.ball&&p.ball.x<424&&p.ball.y<500;}
- assert.ok(entered,'Every plunger strength reaches the playfield');assert.ok(closed,'Gate closes after the ball clears it');assert.equal(p.ball,null,'Launch must not leave the ball trapped in the shooter lane');
+ for(let i=0;i<240*45&&p.ball&&!returned;i++){p.step(1/240);closed ||=p.launchGateClosed;entered ||=p.ball&&p.ball.x<424&&p.ball.y<500;}
+ if(power<=.7){assert.equal(returned,1,'Insufficient pull rolls back to its seat');assert.equal(entries,0);assert.equal(drains,0,'Weak pull is not a lost ball');assert.equal(closed,false,'Gate stays open even for a weak shot that rises above its mouth');assert.equal(p.ball.vy,0);}
+ else{assert.ok(entered);assert.ok(closed);assert.equal(entries,1,'Playfield entry signals only once');assert.equal(p.ball,null,'Successful launch must not trap the ball in the shooter lane');}
  p.prepareBall();assert.equal(p.launchGateClosed,false);assert.deepEqual(p.ball,{x:460,y:748,vx:0,vy:0,r:10});
 }
 const capped=new PinballPhysics();capped.launchGateClosed=true;capped.ball={x:460,y:215,vx:0,vy:700,r:10};capped.step(1/240);
 assert.ok(capped.ball.y<=216&&capped.ball.vy<0,'Closed cap rejects a descending ball above the launch lane');
 const passing=new PinballPhysics();passing.ball={x:460,y:246,vx:0,vy:-700,r:10};passing.step(1/240);assert.equal(passing.launchGateClosed,undefined,'Gate remains open before upward ball clears it');assert.ok(passing.ball.vy<0);
-const bounded=new PinballPhysics();bounded.launch(-1);assert.equal(-bounded.ball.vy,PLUNGER.minSpeed);bounded.launch(2);assert.equal(-bounded.ball.vy,PLUNGER.maxSpeed);
+const bounded=new PinballPhysics();bounded.launch(-1);assert.equal(Math.abs(bounded.ball.vy),0);bounded.launch(2);assert.equal(-bounded.ball.vy,PLUNGER.maxSpeed);
 console.log('Plunger and cap: variable strength, all powers in both modes, lane exit, no trapping, return blocking, open ascent, bounds, and reset passed.');
 
 // Regression for the photographed trap at x≈128, y≈690 and the opposite pocket.

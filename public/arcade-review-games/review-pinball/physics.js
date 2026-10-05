@@ -1,14 +1,15 @@
 import {TABLE} from './tables.js';
 export {TABLE} from './tables.js';
 export const BALL_PHYSICS={launchSpeed:1080,gravity:620,drag:.10,maxSpeed:1800,powerScale:.85};
-export const PLUNGER={minSpeed:950,maxSpeed:1250,chargeSeconds:1.4};
+// Spring energy scales with pull², so ideal launch speed scales with pull distance.
+export const PLUNGER={maxSpeed:1250,chargeSeconds:1.4};
 const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
 const pointSegmentDistance=(p,a,z)=>{const dx=z.x-a.x,dy=z.y-a.y,length=dx*dx+dy*dy,t=length?clamp(((p.x-a.x)*dx+(p.y-a.y)*dy)/length,0,1):0;return Math.hypot(p.x-a.x-t*dx,p.y-a.y-t*dy);};
 export class PinballPhysics {
- constructor({table=TABLE,assist=false,onHit=()=>{},onDrain=()=>{}}={}){this.table=table;this.orbitArmed=false;this.assist=assist;this.onHit=onHit;this.onDrain=onDrain;this.time=0;this.ball=null;this.flippers=this.table.flippers.map(f=>({...f,angle:f.side===1?.35:Math.PI-.35,omega:0}));this.cooldown={};this.keys={left:false,right:false};}
- prepareBall(){this.ride=null;this.orbitEntry=null;this.spinnerContact=false;this.launchGateClosed=false;this.ball={x:460,y:748,vx:0,vy:0,r:10};}
- launch(strength=(BALL_PHYSICS.launchSpeed-PLUNGER.minSpeed)/(PLUNGER.maxSpeed-PLUNGER.minSpeed)){
-  this.prepareBall();const speed=PLUNGER.minSpeed+(PLUNGER.maxSpeed-PLUNGER.minSpeed)*clamp(strength,0,1);this.ball.vx=-25;this.ball.vy=-speed;
+ constructor({table=TABLE,assist=false,onHit=()=>{},onDrain=()=>{},onLaneReturn=()=>{},onPlayfield=()=>{}}={}){this.table=table;this.orbitArmed=false;this.assist=assist;this.onHit=onHit;this.onDrain=onDrain;this.onLaneReturn=onLaneReturn;this.onPlayfield=onPlayfield;this.time=0;this.ball=null;this.flippers=this.table.flippers.map(f=>({...f,angle:f.side===1?.35:Math.PI-.35,omega:0}));this.cooldown={};this.keys={left:false,right:false};}
+ prepareBall(){this.ride=null;this.orbitEntry=null;this.spinnerContact=false;this.launchPending=false;this.launchGateClosed=false;this.ball={x:460,y:748,vx:0,vy:0,r:10};}
+ launch(strength=BALL_PHYSICS.launchSpeed/PLUNGER.maxSpeed){
+  this.prepareBall();const speed=PLUNGER.maxSpeed*clamp(strength,0,1);this.launchPending=true;this.ball.vx=-25*speed/BALL_PHYSICS.launchSpeed;this.ball.vy=-speed;
  }
  rampPoint(ramp,distance){
   let total=0;
@@ -63,9 +64,11 @@ export class PinballPhysics {
  for(const rail of this.table.rails)this.segment(...rail);
  const gate=this.table.launchGate;
  if(gate){
-  // Close only when the whole launched ball clears the mouth; never block its ascent.
-  if(!this.launchGateClosed && b.y+b.r+4<gate.y)this.launchGateClosed=true;
+  // A weak shot can clear the mouth vertically yet still roll back down the tube.
+  // Close only after the entire ball exits sideways into the actual playfield.
+  if(this.launchPending && b.x+b.r+4<gate.x1 && b.y+b.r<gate.y){this.launchPending=false;this.launchGateClosed=true;this.onPlayfield();}
   if(this.launchGateClosed)this.segment(gate.x1,gate.y,gate.x2,gate.y,4,.78);
+  if(this.launchPending && b.x>gate.x1 && b.y>=748 && b.vy>=0){this.prepareBall();this.onLaneReturn();return;}
  }
  for(const [i,p] of this.table.bumpers.entries()){
   let nx=b.x-p.x,ny=b.y-p.y,d=Math.hypot(nx,ny);
