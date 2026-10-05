@@ -5,6 +5,13 @@ class Node {
 const nodes=new Map();globalThis.document={getElementById(id){if(!nodes.has(id))nodes.set(id,new Node());return nodes.get(id)},body:new Node(),querySelector(selector){if(selector!=='script[data-map]'){if(selector==='#message')return this.getElementById('message');if(!nodes.has(selector))nodes.set(selector,new Node());return nodes.get(selector);}return {dataset:{map:'./outpost.js',questionSet:'./scientific-method.js'}}},querySelectorAll(){return []},createElement(){return new Node()},addEventListener(){},hidden:false};const windowListeners={};globalThis.window={addEventListener(name,fn){windowListeners[name]=fn}};let animationFrame,clock=100;globalThis.requestAnimationFrame=fn=>{if(fn.name==='frame')animationFrame=fn};
 await import('../public/arcade-review-games/shared/top-down/game.js');
 const get=id=>nodes.get(id);
+// Enable the browser camera path in this simulated DOM.
+const cameraFlights=[];
+get('world').getBoundingClientRect=()=>{
+ const width=parseFloat(get('board').style.width),height=parseFloat(get('board').style.height),style=get('world').style;
+ return {left:parseFloat(style.left)*width/100,top:parseFloat(style.top)*height/100,width:parseFloat(style.width)*width/100,height:parseFloat(style.height)*height/100};
+};
+get('world').animate=(frames,options)=>{const flight={frames,options,cancel(){this.canceled=true;}};cameraFlights.push(flight);return flight;};
 assert.equal(get('tiles').children.length,425);assert.equal(get('dialog-actions').children.length,1);
 get('dialog-actions').children[0].listeners.click();
 assert.equal(get('tiles').children.length,425);assert.equal(get('difficulty').textContent,'Explore · 6 questions');
@@ -73,14 +80,18 @@ function earn(id){
  assert.equal(completeChallenge(map,s,id),true);assert.equal(get('dialog').open,false);
 }
 const walkingEntities=get('entities').children,walkingInventory=get('inventory').children;
+const flightsBeforeWalking=cameraFlights.length;
 step('up');assert.equal(get('entities').children,walkingEntities);assert.equal(get('inventory').children,walkingInventory);
+assert.equal(cameraFlights.length,flightsBeforeWalking,'Ordinary walking does not animate the camera');
 assert.match(get('player').style.transform,/translate3d/);step('down');
 go(9,12);face('up');earn('survey-chest');go(4,9);step('up');
 assert.equal(get('room').textContent,'02 · Optics');assert.equal(get('world').style.top,'0%');
+assert.ok(cameraFlights.some(f=>/^translate\(0px,-/.test(f.frames[0].transform)),'North boundary glides vertically');
 go(3,3);step('right');assert.match(action().text,/CROSS/);
 go(10,4);face('down');assert.match(action().text,/Bridge raised/);
 go(9,6);face('right');earn('lens-chest');go(20,2);face('right');earn('cell-chest');
 assert.equal(get('room').textContent,'03 · Relay');assert.equal(get('world').style.left,`${-12/13*100}%`);
+assert.ok(cameraFlights.some(f=>/^translate\([^0][^,]*px,0px\)/.test(f.frames[0].transform)),'East boundary glides horizontally');
 go(14,6);for(let i=0;i<4;i++)step('right');go(16,7);step('down');step('down');
 assert.equal(get('room').textContent,'04 · Beacon');assert.equal(get('world').style.top,`${-8/9*100}%`);
 assert.equal(get('board').style.aspectRatio,'13/9');

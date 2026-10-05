@@ -37,6 +37,7 @@ node scripts/test-top-down-ui.mjs
 node scripts/test-top-down-outpost-ui.mjs
 node --test scripts/test-top-down-viewport.mjs
 node --test scripts/test-top-down-motion.mjs
+node --test scripts/test-top-down-camera.mjs
 ```
 
 The UI scripts use a simulated DOM, not a browser. Browser/mobile visual and interaction verification remains necessary. Save/resume across refreshes and classroom report export are not implemented yet.
@@ -48,3 +49,5 @@ Mosslight Outpost demonstrates 13-by-9 room cameras on a 25-by-17 world. Its rew
 `motion.js` drives a continuous player position at four tiles per second with normalized diagonal input, a small circular collision footprint, short collision substeps, and sliding along walls. The nearest occupied tile remains the model's logical position for review interactions, pickups, and room ownership. Grid model moves commit cell crossings and centered block pushes; inventory doors open on approach. Rendering updates the explorer through a composited transform every frame. Ordinary cell crossings preserve entity and inventory DOM; full updates occur when puzzle state changes or the camera enters another room. Undo and reset synchronize the continuous position back to the restored tile. Dialogs, blur, and hidden tabs release held input.
 
 Interaction targeting uses the continuous position, facing, nearby distance, lateral tolerance and a clear path to the object. The nearest available target is outlined and named on the Interact button. Exits require standing on their tile. Slightly off-center straight pushes gradually align the explorer with the block; diagonal approaches and distant side approaches do not trigger pushes.
+
+Room changes use a 260 ms composited camera glide without blocking movement or review controls. Interrupted transitions start from the visible position; same-room puzzle redraws do not restart the glide. Resizing cancels the flight, and new adventures start immediately. Reduced-motion preferences and browsers without Web Animations use instant camera changes.

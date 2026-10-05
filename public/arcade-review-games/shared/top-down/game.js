@@ -6,6 +6,7 @@ import {validateAdventure} from './validate.js';
 import {roomAt as findRoom,objectiveFor,progressFor,rewardFor} from './presentation.js';
 import {roomSize,mountLayout} from './viewport.js';
 import {createMotion,syncMotion,advanceMotion,interactionTarget} from './motion.js';
+import {updateCamera,cancelCamera} from './camera.js';
 let map=validateAdventure(createAdventure());
 import { createState, undo, interact, doorOpen, completeChallenge, resetPuzzle, exitReady, cluesReady, lightPaths, inventoryEntries, adventureResults } from './model.js';
 const $=id=>document.getElementById(id);
@@ -23,8 +24,9 @@ function fitRoom(){
   const size=roomSize(stage.clientWidth,stage.clientHeight,roomColumns,roomRows);
   if(size){board.style.width=size.width+'px';board.style.height=size.height+'px';board.style.setProperty('--tile-size',size.cell+'px');}
 }
-if(stage&&typeof ResizeObserver==='function')new ResizeObserver(fitRoom).observe(stage);
-window.addEventListener('resize',fitRoom);
+function resizeRoom(){cancelCamera($('world'));fitRoom();}
+if(stage&&typeof ResizeObserver==='function')new ResizeObserver(resizeRoom).observe(stage);
+window.addEventListener('resize',resizeRoom);
 function element(tag,text,className){const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(className)e.className=className;return e;}
 function sprite(kind,facing){const host=element('span',undefined,'art');host.innerHTML=artwork(kind,facing);return host;}
 let fullMessage='';
@@ -70,17 +72,23 @@ function render(){
   }
   renderPlayer();
   const room=roomAt(state.player.x,state.player.y)||map.rooms[0];
+  const roomChanged=renderedRoom!==null&&renderedRoom!==room;
   renderedRoom=room;
   board.dataset.theme=room.theme||'hall';
   const viewMin=room.viewMin??0, viewMax=room.viewMax??(map.tiles[0].length-1);
   const viewWidth=viewMax-viewMin+1;
   const viewMinY=room.viewMinY??0,viewHeight=(room.viewMaxY??map.tiles.length-1)-viewMinY+1;
-  roomColumns=viewWidth;roomRows=viewHeight;fitRoom();
-  board.style.aspectRatio=`${viewWidth}/${viewHeight}`;
-  $('world').style.height=`${map.tiles.length/viewHeight*100}%`;
-  $('world').style.top=`${-viewMinY/viewHeight*100}%`;
-  $('world').style.width=`${map.tiles[0].length/viewWidth*100}%`;
-  $('world').style.left=`${-viewMin/viewWidth*100}%`;
+  // Same-room redraws leave any in-flight camera alone.
+  const positionCamera=()=>{
+    roomColumns=viewWidth;roomRows=viewHeight;fitRoom();
+    board.style.aspectRatio=`${viewWidth}/${viewHeight}`;
+    $('world').style.height=`${map.tiles.length/viewHeight*100}%`;
+    $('world').style.top=`${-viewMinY/viewHeight*100}%`;
+    $('world').style.width=`${map.tiles[0].length/viewWidth*100}%`;
+    $('world').style.left=`${-viewMin/viewWidth*100}%`;
+  };
+  if(roomChanged)updateCamera($('world'),positionCamera,{glide:started,reducedMotion:window.matchMedia?.('(prefers-reduced-motion: reduce)').matches});
+  else positionCamera();
   $('map-labels').textContent=room.name;
   let objective=objectiveFor(map,state,room);
   const exit=map.objects.find(o=>o.type==='exit'&&o.sequencePuzzle);
@@ -120,6 +128,7 @@ const decor=element('div',undefined,'room-decor');
 decor.setAttribute('aria-hidden','true');$('world').prepend(decor);
 const lightLayer=element('div',undefined,'light-paths');$('world').append(lightLayer);
 function buildWorld(){
+  cancelCamera($('world'));renderedRoom=null;
   const width=map.tiles[0].length,height=map.tiles.length;
   $('world').style.setProperty('--cell',`${100/width}%`);$('world').style.setProperty('--row',`${100/height}%`);
   $('tiles').style.setProperty('--columns',width);$('tiles').style.setProperty('--rows',height);
