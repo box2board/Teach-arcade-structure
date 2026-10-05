@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#f9fafb" />
   <title>Word Rescue | Brain Arcade | Teach Arcade</title>
-  <meta name="description" content="Play Word Rescue in your browser. Guess the hidden word before the trap closes around a randomly selected critter." />
+  <meta name="description" content="Play Word Rescue with 300 words across 15 categories. Guess the hidden word before the trap closes around a randomly selected critter." />
   <link rel="canonical" href="https://teacharcade.com/brain-arcade/word-rescue/" />
   <link rel="stylesheet" href="/assets/styles.css" />
   <link rel="stylesheet" href="/brain-arcade/word-rescue/style.css?v=5" />
@@ -23,7 +23,7 @@
     "applicationCategory":"Game",
     "operatingSystem":"All",
     "url":"https://teacharcade.com/brain-arcade/word-rescue/",
-    "description":"A free word-guessing game with three difficulty levels, clues, keyboard controls, random critters, and local streak tracking.",
+    "description":"A free word-guessing game with 300 words across 15 categories, three difficulty levels, clues, keyboard controls, random critters, and local streak tracking.",
     "publisher":{"@type":"Organization","name":"Teach Arcade"}
   }
   </script>
@@ -60,6 +60,16 @@
           <option value="science">Science</option>
           <option value="school">School</option>
           <option value="food">Food</option>
+          <option value="sports">Sports</option>
+          <option value="nature">Nature</option>
+          <option value="space">Space</option>
+          <option value="technology">Technology</option>
+          <option value="music">Music</option>
+          <option value="transportation">Transportation</option>
+          <option value="weather">Weather</option>
+          <option value="careers">Careers</option>
+          <option value="household">Household</option>
+          <option value="history">History</option>
         </select>
       </div>
 
@@ -117,11 +127,12 @@
 
     <section class="word-rescue-page__how">
       <h2>How to play</h2>
-      <p>Guess one letter at a time. Correct guesses reveal the word. Every incorrect guess adds part of the trap. Easy gives you 10 misses, Medium gives you 6, and Hard gives you 4. Solve the word before the trap is complete to rescue the critter.</p>
+      <p>Choose from 15 categories with 20 words each. Guess one letter at a time. Correct guesses reveal the word. Every incorrect guess adds part of the trap. Easy gives you 10 misses, Medium gives you 6, and Hard gives you 4. Solve the word before the trap is complete to rescue the critter.</p>
     </section>
   </main>
 
   <footer></footer>
-  <script src="/brain-arcade/word-rescue/game.js?v=5" defer></script>
+  <script src="/brain-arcade/word-rescue/word-bank.js?v=1" defer></script>
+  <script src="/brain-arcade/word-rescue/game-expanded.js?v=1" defer></script>
 </body>
 </html>
