@@ -18,7 +18,7 @@ s.diverter=2;assert(run(s,1).includes('diversion'));assert.equal(s.pond,0,'Block
 s.player={x:400,y:760};const blocked=s.logX;assert(workMeadow(s,'log',1));assert.equal(s.logX,blocked,'Wrong side cannot push');
 s.player={x:295,y:760};workMeadow(s,'log',2);assert(run(s,1).includes('stream'));assert.equal(s.pond,0,'Closed sluice stops water');
 workMeadow(s,'sluice',2);s.valve=0;run(s,10);assert.equal(s.pond,0,'No pond growth without water source');
-s.valve=.5;assert(run(s,9).includes('finish'));assert.equal(s.pond,1);assert(s.won);
+s.giantAwake=true;s.giantPower=1;s.valve=.5;assert(run(s,9).includes('finish'));assert.equal(s.pond,1);assert(s.won);
 assert(canStand(780,875,s),'Restored pond opens shortcut');assert(!canStand(780,950,s),'Shortcut does not open the whole river');assert(!run(s,1).includes('finish'),'Completion occurs once');
 for(const p of sparks){s.player={...p};run(s,.1);}assert.equal(s.sparks.length,sparks.length);run(s,1);assert.equal(s.sparks.length,sparks.length);
 const restored=adventureState(JSON.parse(JSON.stringify(s)));assert(restored.finished);assert.deepEqual(restored.garden,[1,1]);assert.equal(restored.sparks.length,sparks.length);

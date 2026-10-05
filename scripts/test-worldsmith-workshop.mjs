@@ -1,0 +1,21 @@
+import assert from 'node:assert/strict';
+import {initialState,canStand} from '../public/brain-arcade/apprentice-restorer/js/flow-model.js';
+import {adventureState,stepAdventure} from '../public/brain-arcade/apprentice-restorer/js/adventure.js';
+import {actWorkshop,workWorkshop,stepWorkshop,workshopState} from '../public/brain-arcade/apprentice-restorer/js/workshop.js';
+const s={...initialState(),...adventureState(),mode:'explorer',beacon:1,pond:1,bridge:1};
+const run=n=>{for(let i=0;i<n*60;i++)stepWorkshop(s,1/60,canStand);};
+assert.match(actWorkshop(s,'drivegear'),/too heavy/);assert(!s.driveCargo);
+actWorkshop(s,'cartwheel');s.player={x:1030,y:715};workWorkshop(s,'cart',2);assert.equal(s.cartRepair,1);
+s.cartPosition={...s.player};actWorkshop(s,'drivegear');actWorkshop(s,'chime');assert(s.driveCargo&&s.chimeCargo);
+assert.match(actWorkshop(s,'giantdrive'),/out of reach/);assert(!s.driveInstalled);
+actWorkshop(s,'beaver');actWorkshop(s,'scaffold');run(12);assert.equal(s.scaffoldProgress,1);
+s.cartPosition={...s.player};actWorkshop(s,'giantdrive');actWorkshop(s,'giantsignal');assert(s.driveInstalled&&s.chimeInstalled);assert(!s.driveCargo&&!s.chimeCargo);
+run(20);assert(s.giantHeat>=.7&&s.giantPower<1,'Fast drive overheats and cannot wake giant by itself');
+actWorkshop(s,'giantdrive');assert.equal(s.driveRatio,1);run(45);assert.equal(s.giantPower,1);assert(!s.giantAwake,'Power needs an intentional signal');
+actWorkshop(s,'giantsignal');assert(s.giantAwake);assert(stepAdventure(s,1/60).includes('finish'));
+actWorkshop(s,'ride');assert.equal(s.player.x,640);assert.equal(s.cartPosition.x,610);actWorkshop(s,'ridehome');assert.equal(s.player.x,1590);assert.equal(s.cartPosition.x,1560);
+const restored=workshopState(JSON.parse(JSON.stringify(s)));assert(restored.giantAwake);assert.equal(restored.cartRepair,1);assert(restored.beaverFriend);
+assert.equal(adventureState({finished:true,beacon:1,pond:1}).finished,false,'Older completions continue into workshop adventure');
+// A towed cart traces a player route through a crossing rather than cutting across the river.
+s.cartPosition={x:690,y:425};s.player={x:920,y:425};s.cartTrail=[{x:700,y:425},{x:750,y:425},{x:805,y:425},{x:860,y:425},{x:920,y:425}];run(3);assert(s.cartPosition.x>840&&Math.abs(s.cartPosition.y-425)<1);
+console.log('PASS: workshop repair, heavy cargo, beaver scaffold, installation gates, overheating, gear change, intentional waking, rides, cart path, save migration.');
