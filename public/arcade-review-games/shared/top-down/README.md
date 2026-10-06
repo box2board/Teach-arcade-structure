@@ -2,6 +2,8 @@
 
 The Three Seals and Mosslight Outpost load the same `game.js`, `model.js`, artwork, styles and review manager. Their pages select a map module and a question module using `data-map` and `data-question-set`. Neither adventure needs a branch in the shared gameplay code.
 
+Mosslight Outpost also supplies `data-topics`, a local module exporting `topics` entries with `id`, `label`, `description`, `questionSet` and `content`. Students choose a topic before difficulty; the map, chest rewards and puzzles stay independent of curriculum. Each topic has its own unfinished save keyed by map and question-module path. Pause offers topic switching, and results identify the selected topic. A catalog bank must support the largest mode (currently twelve unique questions). Pages without a catalog retain their original startup flow.
+
 ## Creating an adventure
 
 Export `createAdventure(mode)` from a map module. Return fresh data each call. Export `{content: {questions: [...]}}` from the curriculum module. Each question has a unique `id`, `text`, unique `choices`, an `answer` matching a choice, and an `explanation`.

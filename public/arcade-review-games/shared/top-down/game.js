@@ -1,6 +1,8 @@
 import { artwork } from './artwork.js';
 const configuration=document.querySelector('script[data-map]');
-const [{createAdventure},{content}]=await Promise.all([import(configuration.dataset.map),import(configuration.dataset.questionSet)]);
+const [{createAdventure},initialQuestions,topicCatalog]=await Promise.all([import(configuration.dataset.map),import(configuration.dataset.questionSet),configuration.dataset.topics?import(configuration.dataset.topics):null]);
+let content=initialQuestions.content,questionSet=configuration.dataset.questionSet;
+const topics=topicCatalog?.topics||[];
 import {createReview,answerReview,reviewSummary} from './review.js';
 import {validateAdventure} from './validate.js';
 import {roomAt as findRoom,objectiveFor,progressFor,rewardFor} from './presentation.js';
@@ -16,7 +18,7 @@ let state=createState(map), started=false, elapsed=0, last=0;
 const heldKeys=new Set(),heldPointers=new Map();
 let motion=createMotion(state);
 state.review=createReview(map,content.questions);
-const saves=createSaveStore('quest-arcade:'+configuration.dataset.map+':'+configuration.dataset.questionSet);
+let saves=createSaveStore('quest-arcade:'+configuration.dataset.map+':'+questionSet);
 let lastSaveTime=0,saveUnavailable=false;
 function saveProgress(){
   if(!started)return;
@@ -113,7 +115,7 @@ function render(){
     objective=!known?(puzzle.clueHint||'Find the clues for this sequence.'):ready?'Walk to the glowing exit and interact.':progress===puzzle.sequence.length?'Earn the missing supplies from their chests, then return to the exit.':'Face a labeled switch and interact. Each correct step powers one door light.';
   }
   const count=reviewSummary(state.review).total,modeLabel=map.modes?.find(m=>m.id===map.mode)?.label||map.mode||'Explore';
-  $('difficulty').textContent=`${modeLabel} · ${count} ${count===1?'question':'questions'}`;
+  $('difficulty').textContent=`${modeLabel} · ${count} ${count===1?'question':'questions'}${topics.length?' · '+content.title:''}`;
   $('room').textContent=room.name;$('objective').textContent=state.won?'Adventure complete!':objective;
   const previousItems=new Set(Array.from($('inventory').children,item=>item.dataset.item));
   const badges=inventoryEntries(map,state);
@@ -289,7 +291,7 @@ function openQuestion(id){
   selectDialogButton([...$('answers').children].find(answer=>!answer.disabled));
 }
 function restart(){reportStudent='';state=createState(map);motion=createMotion(state);state.review=createReview(map,content.questions);activeQuestion=null;elapsed=0;started=true;$('pause').disabled=false;render();resume();saveProgress();message(map.startMessage||'Explore the map and read the nearby signs.');}
-function pause(){if(!started||dialog.open||state.won)return;saveProgress();popup('ADVENTURE PAUSED','Take your time',[saveUnavailable?'Saving is unavailable in this browser. Keep this tab open to retain your progress.':'Progress saved automatically in this browser. You can close the tab and continue later.'],[{text:'Resume adventure',run:resume,primary:true},{text:'Restart adventure',run:()=>popup('RESTART','Start a new adventure?',['This clears your keys, switches, and progress.'],[{text:'Start over',run:restart,primary:true},{text:'Keep playing',run:resume}])},{text:'View progress report',run:showReport}]);}
+function pause(){if(!started||dialog.open||state.won)return;saveProgress();popup('ADVENTURE PAUSED','Take your time',[saveUnavailable?'Saving is unavailable in this browser. Keep this tab open to retain your progress.':'Progress saved automatically in this browser. You can close the tab and continue later.'],[{text:'Resume adventure',run:resume,primary:true},{text:'Restart adventure',run:()=>popup('RESTART','Start a new adventure?',['This clears your keys, switches, and progress.'],[{text:'Start over',run:restart,primary:true},{text:'Keep playing',run:resume}])},{text:'View progress report',run:showReport},...(topics.length?[{text:'Change review topic',run:chooseTopic}]:[])]);}
 const keyDirs={ArrowUp:'up',ArrowDown:'down',ArrowLeft:'left',ArrowRight:'right',w:'up',s:'down',a:'left',d:'right'};
 const normalizedKeyDirs=Object.fromEntries(Object.entries(keyDirs).map(([key,dir])=>[key.toLowerCase(),dir]));
 function handleDialogKey(e){
@@ -342,9 +344,24 @@ function frame(now){
 function chooseMode(){
   const modes=map.modes||[{id:map.mode,label:'Explore',description:'Explore this adventure.'}];
   popup('QUEST ARCADE · '+map.title,'Choose your adventure',[
+    ...(topics.length?['Review topic: '+content.title]:[]),
     ...modes.map(mode=>mode.label+': '+mode.description),
     'Question order and choices change each play. Missed answers allow retries. Progress saves automatically in this browser so you can continue later.'
-  ],modes.map((mode,index)=>({text:mode.label,run:()=>startMode(mode.id),primary:index===0})));
+  ],[...modes.map((mode,index)=>({text:mode.label,run:()=>startMode(mode.id),primary:index===0})),...(topics.length?[{text:'Change review topic',run:chooseTopic}]:[])]);
+}
+function chooseTopic(){
+  saveProgress();
+  popup('QUEST ARCADE · '+map.title,'Choose your review topic',[
+    'The adventure and its rewards stay the same. Choose which questions you will answer, then choose your difficulty.',
+    ...topics.map(topic=>topic.label+': '+topic.description),
+    'Each topic keeps its own unfinished adventure in this browser.'
+  ],topics.map((topic,index)=>({text:topic.label,primary:index===0,run:()=>{
+    content=topic.content;questionSet=topic.questionSet;
+    saves=createSaveStore('quest-arcade:'+configuration.dataset.map+':'+questionSet);
+    started=false;elapsed=0;lastSaveTime=0;saveUnavailable=false;reportStudent='';activeQuestion=null;
+    map=validateAdventure(createAdventure());state=createState(map);motion=createMotion(state);state.review=createReview(map,content.questions);
+    buildWorld();render();offerSavedAdventure();
+  }})));
 }
 function startMode(mode){map=validateAdventure(createAdventure(mode));buildWorld();restart();}
 const titleRow=document.querySelector('.title-row');
@@ -367,17 +384,20 @@ if(titleRow){
   }
   titleRow.append(actions);
 }
-render();
+function offerSavedAdventure(){
 const saved=decodeSave(saves.read(),createAdventure,content.questions);
 if(saved){
   const learning=reviewSummary(saved.state.review);
   popup('SAVED ADVENTURE','Continue your adventure?',[
-    `${saved.map.title} · ${saved.map.modes?.find(m=>m.id===saved.mode)?.label||saved.mode}`,
+    `${saved.map.title} · ${saved.map.modes?.find(m=>m.id===saved.mode)?.label||saved.mode} · ${content.title}`,
     `${learning.completed} / ${learning.total} questions completed. Items and puzzle progress are saved in this browser.`
   ],[{text:'Continue adventure',primary:true,run:()=>{
     map=validateAdventure(saved.map);state=saved.state;motion=createMotion(state);motion.x=saved.position.x;motion.y=saved.position.y;
     elapsed=saved.elapsed;lastSaveTime=elapsed;activeQuestion=null;started=true;$('pause').disabled=false;
     buildWorld();render();resume();message('Adventure restored. Return to a chest to continue its questions.');
-  }},{text:'New adventure',run:chooseMode}]);
+  }},{text:'New adventure',run:chooseMode},...(topics.length?[{text:'Change review topic',run:chooseTopic}]:[])]);
 }else chooseMode();
+}
+render();
+if(topics.length)chooseTopic();else offerSavedAdventure();
 requestAnimationFrame(frame);

@@ -3,15 +3,23 @@ class Node {
  constructor(){this.children=[];this.dataset={};this.style={setProperty:(k,v)=>this.style[k]=v};this.classList={add(){},remove(){}};this.listeners={};this.open=false;this.clientWidth=800;this.clientHeight=600;this.scrollHeight=0;}
  append(...nodes){this.children.push(...nodes)} prepend(...nodes){this.children.unshift(...nodes)} replaceChildren(...nodes){this.children=[...nodes]} before(){} after(){} setAttribute(k,v){this[k]=v} addEventListener(k,v){this.listeners[k]=v} querySelector(){return this.innerHTML?.includes('svg')?{}:null} focus(){} showModal(){this.open=true} close(){this.open=false} remove(){} click(){if(this.download)downloads.push(this);else this.listeners.click?.();} }
 const downloads=[],downloadBlobs=new Map();
+const topicIndex=process.env.QUEST_OUTPOST_TOPIC==='constitution'?1:0,useTopics=Boolean(process.env.QUEST_OUTPOST_TOPIC);
 URL.createObjectURL=blob=>{const id='blob:test-'+downloadBlobs.size;downloadBlobs.set(id,blob);return id;};
 URL.revokeObjectURL=id=>downloadBlobs.delete(id);
-const nodes=new Map();globalThis.document={getElementById(id){if(!nodes.has(id))nodes.set(id,new Node());return nodes.get(id)},body:new Node(),querySelector(selector){if(selector!=='script[data-map]'){if(selector==='#message')return this.getElementById('message');if(!nodes.has(selector))nodes.set(selector,new Node());return nodes.get(selector);}return {dataset:{map:'./outpost.js',questionSet:'./scientific-method.js'}}},querySelectorAll(){return []},createElement(){return new Node()},addEventListener(){},hidden:false};const windowListeners={};globalThis.window={addEventListener(name,fn){windowListeners[name]=fn}};let animationFrame,clock=100;globalThis.requestAnimationFrame=fn=>{if(fn.name==='frame')animationFrame=fn};
+const nodes=new Map();globalThis.document={getElementById(id){if(!nodes.has(id))nodes.set(id,new Node());return nodes.get(id)},body:new Node(),querySelector(selector){if(selector!=='script[data-map]'){if(selector==='#message')return this.getElementById('message');if(!nodes.has(selector))nodes.set(selector,new Node());return nodes.get(selector);}return {dataset:{map:'./outpost.js',questionSet:'./scientific-method.js',...(useTopics?{topics:'./topics.js'}:{})}}},querySelectorAll(){return []},createElement(){return new Node()},addEventListener(){},hidden:false};const windowListeners={};globalThis.window={addEventListener(name,fn){windowListeners[name]=fn}};let animationFrame,clock=100;globalThis.requestAnimationFrame=fn=>{if(fn.name==='frame')animationFrame=fn};
 const stored=new Map();
 const testingMode=process.env.QUEST_OUTPOST_MODE||'explore',modeIndex=['explore','medium','hard'].indexOf(testingMode);
 const questionTotal=testingMode==='hard'?12:testingMode==='medium'?8:6;
 globalThis.localStorage={getItem:k=>stored.get(k),setItem:(k,v)=>stored.set(k,v),removeItem:k=>stored.delete(k)};
 await import('../public/arcade-review-games/shared/top-down/game.js');
 const get=id=>nodes.get(id);
+const topicTitle=topicIndex?'U.S. Constitution':'Scientific Method';
+function chooseTopic(){
+ assert.equal(get('dialog-title').textContent,'Choose your review topic');
+ if(topicIndex)get('dialog').listeners.keydown({key:'ArrowDown',target:{tagName:'BUTTON'},preventDefault(){}});
+ get('dialog').listeners.keydown({key:'Enter',target:{tagName:'BUTTON'},repeat:false,preventDefault(){}});
+}
+if(useTopics)chooseTopic();
 // Enable the browser camera path in this simulated DOM.
 const cameraFlights=[];
 get('world').getBoundingClientRect=()=>{
@@ -19,9 +27,9 @@ get('world').getBoundingClientRect=()=>{
  return {left:parseFloat(style.left)*width/100,top:parseFloat(style.top)*height/100,width:parseFloat(style.width)*width/100,height:parseFloat(style.height)*height/100};
 };
 get('world').animate=(frames,options)=>{const flight={frames,options,cancel(){this.canceled=true;}};cameraFlights.push(flight);return flight;};
-assert.equal(get('tiles').children.length,425);assert.equal(get('dialog-actions').children.length,3);
+assert.equal(get('tiles').children.length,425);assert.equal(get('dialog-actions').children.length,useTopics?4:3);
 get('dialog-actions').children[modeIndex].listeners.click();
-assert.equal(get('tiles').children.length,425);assert.equal(get('difficulty').textContent,`${['Easy','Medium','Hard'][modeIndex]} · ${questionTotal} questions`);
+assert.equal(get('tiles').children.length,425);assert.equal(get('difficulty').textContent,`${['Easy','Medium','Hard'][modeIndex]} · ${questionTotal} questions${useTopics?' · '+topicTitle:''}`);
 assert.equal(get('world').style.height,`${17/9*100}%`);assert.equal(get('world').style['--row'],`${100/17}%`);
 assert.equal(get('world').style.width,`${25/13*100}%`);
 assert.equal(get('board').style.aspectRatio,'13/9');
@@ -30,7 +38,7 @@ assert.equal(get('tiles').style['--rows'],17);assert.equal(get('dialog').open,fa
 assert.ok(get('entities').children.length>15);
 console.log('DOM smoke: Outpost selection rebuilds the tiles, entity scale and room camera without runtime errors.');
 const {createAdventure}=await import('../public/arcade-review-games/shared/top-down/outpost.js');
-const {content}=await import('../public/arcade-review-games/shared/top-down/scientific-method.js');
+const {content}=await import(topicIndex?'../public/arcade-review-games/shared/top-down/constitution.js':'../public/arcade-review-games/shared/top-down/scientific-method.js');
 const {createState,move,obstacle,interact,completeChallenge}=await import('../public/arcade-review-games/shared/top-down/model.js');
 const {createReview,answerReview}=await import('../public/arcade-review-games/shared/top-down/review.js');
 const map=createAdventure(testingMode),s=createState(map);s.review=createReview(map,content.questions);
@@ -125,10 +133,12 @@ get('dialog').listeners.keydown({key:'Enter',target:{tagName:'BUTTON'},repeat:fa
 assert.equal(downloads.length,1);assert.equal(downloads[0].download,'quest-arcade-mosslight-outpost-results.txt');
 const downloaded=await downloadBlobs.get(downloads[0].href).text();
 assert.match(downloaded,/Student: Alex/);assert.ok(downloaded.includes(`Questions completed: ${questionTotal} / ${questionTotal}`));assert.match(downloaded,/Adventure: Complete/);
+if(useTopics)assert.ok(downloaded.includes(topicTitle),'Downloaded report identifies the selected topic');
 get('dialog-actions').children[1].click();assert.equal(get('dialog-title').textContent,'Adventure complete');
 assert.equal(stored.size,0,'Winning clears the unfinished save');
 stored.set(saveKey,resumeSnapshot);nodes.clear();
 await import('../public/arcade-review-games/shared/top-down/game.js?resume-test');
+if(useTopics)chooseTopic();
 assert.equal(get('dialog-actions').children[0].textContent,'Continue adventure');
 get('dialog-actions').children[0].listeners.click();
 assert.equal(get('dialog').open,false);assert.equal(get('room').textContent,'02 · Optics');
@@ -143,4 +153,15 @@ assert.match(await downloadBlobs.get(downloads.at(-1).href).text(),/Adventure: I
 get('dialog-actions').children[1].click();get('pause').listeners.click();
 get('dialog-actions').children[1].listeners.click();get('dialog-actions').children[0].listeners.click();
 assert.equal(get('room').textContent,'01 · Dock');assert.equal(get('seals').textContent,testingMode==='explore'?'Stations: 0 / 4':'Stations: 0 / 5');
+if(useTopics){
+ windowListeners.pagehide();const originalSave=stored.get(saveKey);
+ get('pause').click();get('dialog-actions').children.find(b=>b.textContent==='Change review topic').click();
+ get('dialog-actions').children[1-topicIndex].click();
+ assert.equal(get('dialog-title').textContent,'Choose your adventure','Other topic cannot resume this topic’s save');
+ get('dialog-actions').children[0].click();windowListeners.pagehide();
+ assert.equal(stored.size,2,'Topics keep separate unfinished saves');assert.equal(stored.get(saveKey),originalSave);
+ get('pause').click();get('dialog-actions').children.find(b=>b.textContent==='Change review topic').click();
+ chooseTopic();assert.equal(get('dialog-title').textContent,'Continue your adventure?');
+ get('dialog-actions').children[0].click();assert.ok(get('difficulty').textContent.endsWith(topicTitle));
+}
 console.log('DOM save flow: refresh offers Continue, restores position, used key and chest progress; restart replaces the save.');
