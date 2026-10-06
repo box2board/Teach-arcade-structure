@@ -7,6 +7,7 @@ import {roomAt as findRoom,objectiveFor,progressFor,rewardFor} from './presentat
 import {roomSize,mountLayout} from './viewport.js';
 import {createMotion,syncMotion,advanceMotion,interactionTarget} from './motion.js';
 import {updateCamera,cancelCamera} from './camera.js';
+import {encodeSave,decodeSave,createSaveStore} from './save.js';
 let map=validateAdventure(createAdventure());
 import { createState, undo, interact, doorOpen, completeChallenge, resetPuzzle, exitReady, cluesReady, lightPaths, inventoryEntries, adventureResults } from './model.js';
 const $=id=>document.getElementById(id);
@@ -14,6 +15,14 @@ let state=createState(map), started=false, elapsed=0, last=0;
 const heldKeys=new Set(),heldPointers=new Map();
 let motion=createMotion(state);
 state.review=createReview(map,content.questions);
+const saves=createSaveStore('quest-arcade:'+configuration.dataset.map+':'+configuration.dataset.questionSet);
+let lastSaveTime=0,saveUnavailable=false;
+function saveProgress(){
+  if(!started)return;
+  if(state.won){saves.clear();return;}
+  saveUnavailable=!saves.write(encodeSave(map,content.questions,state,motion,elapsed));
+  lastSaveTime=elapsed;
+}
 let activeQuestion=null;
 const board=$('board'), dialog=$('dialog');
 $('board').setAttribute('aria-label','Adventure map. Move freely with arrow keys or WASD; hold two directions for diagonals. Interact with E or Space.');
@@ -207,7 +216,7 @@ function performInteraction(){
   if(!started||dialog.open||state.won)return;
   release();$('player').classList.add('interacting');clearTimeout(interactionTimer);interactionTimer=setTimeout(()=>$('player').classList.remove('interacting'),240);
   const target=interactionTarget(map,state,motion);
-  const result=target?interact(map,state,target):{type:'message',text:'Move closer and face a chest, sign, switch, or gate. The highlighted object is ready to interact.'};render();
+  const result=target?interact(map,state,target):{type:'message',text:'Move closer and face a chest, sign, switch, or gate. The highlighted object is ready to interact.'};render();saveProgress();
   if(result.type==='message')message(result.text,result.tone);
   if(result.type==='challenge')openQuestion(result.id);
   if(result.type==='win'){
@@ -221,7 +230,7 @@ function openQuestion(id){
   activeQuestion={id};
   const reward=rewardFor(map,chest);
   if(encounter.index===encounter.questions.length){
-    completeChallenge(map,state,id);render();activeQuestion=null;resume();message(reward.message||reward.label+' earned!','correct');return;
+    completeChallenge(map,state,id);saveProgress();render();activeQuestion=null;resume();message(reward.message||reward.label+' earned!','correct');return;
   }
   const entry=encounter.questions[encounter.index], question=entry.question;
   popup('REVIEW REWARD',chest.label||'Reward chest',[
@@ -238,6 +247,7 @@ function openQuestion(id){
       const result=answerReview(state.review,id,choice);
       if(result.type==='ignored')return;
       state.attempts[id]=(state.attempts[id]||0)+1;
+      saveProgress();
       if(result.type==='wrong'){
         b.classList.add('wrong');b.disabled=true;
         $('feedback').textContent='Try again. '+result.explanation;
@@ -251,7 +261,7 @@ function openQuestion(id){
       const next=element('button',result.complete?'Collect '+reward.label:'Next question','primary');
       next.addEventListener('click',()=>{
         if(result.complete){
-          completeChallenge(map,state,id);activeQuestion=null;resume();message(reward.message||reward.label+' earned!','correct');render();
+          completeChallenge(map,state,id);saveProgress();activeQuestion=null;resume();message(reward.message||reward.label+' earned!','correct');render();
         }else openQuestion(id);
       });
       bindDialogFocus(next);$('dialog-actions').append(next);selectDialogButton(next);render();
@@ -259,8 +269,8 @@ function openQuestion(id){
   }
   selectDialogButton([...$('answers').children].find(answer=>!answer.disabled));
 }
-function restart(){state=createState(map);motion=createMotion(state);state.review=createReview(map,content.questions);activeQuestion=null;elapsed=0;started=true;$('pause').disabled=false;render();resume();message(map.startMessage||'Explore the map and read the nearby signs.');}
-function pause(){if(!started||dialog.open||state.won)return;popup('ADVENTURE PAUSED','Take your time',['Your position and progress are safe.'],[{text:'Resume adventure',run:resume,primary:true},{text:'Restart adventure',run:()=>popup('RESTART','Start a new adventure?',['This clears your keys, switches, and progress.'],[{text:'Start over',run:restart,primary:true},{text:'Keep playing',run:resume}])}]);}
+function restart(){state=createState(map);motion=createMotion(state);state.review=createReview(map,content.questions);activeQuestion=null;elapsed=0;started=true;$('pause').disabled=false;render();resume();saveProgress();message(map.startMessage||'Explore the map and read the nearby signs.');}
+function pause(){if(!started||dialog.open||state.won)return;saveProgress();popup('ADVENTURE PAUSED','Take your time',[saveUnavailable?'Saving is unavailable in this browser. Keep this tab open to retain your progress.':'Progress saved automatically in this browser. You can close the tab and continue later.'],[{text:'Resume adventure',run:resume,primary:true},{text:'Restart adventure',run:()=>popup('RESTART','Start a new adventure?',['This clears your keys, switches, and progress.'],[{text:'Start over',run:restart,primary:true},{text:'Keep playing',run:resume}])}]);}
 const keyDirs={ArrowUp:'up',ArrowDown:'down',ArrowLeft:'left',ArrowRight:'right',w:'up',s:'down',a:'left',d:'right'};
 const normalizedKeyDirs=Object.fromEntries(Object.entries(keyDirs).map(([key,dir])=>[key.toLowerCase(),dir]));
 function handleDialogKey(e){
@@ -285,16 +295,17 @@ board.addEventListener('keydown',e=>{
   if(e.key==='Escape'){e.preventDefault();pause();}
 });
 window.addEventListener('keyup',e=>{heldKeys.delete(e.key.toLowerCase());if(!heldKeys.size&&!heldPointers.size)$('player').classList.remove('walking');});
-window.addEventListener('blur',release);board.addEventListener('blur',release);
-document.addEventListener('visibilitychange',()=>{release();last=0;if(document.hidden)pause();});
+window.addEventListener('blur',()=>{release();saveProgress();});board.addEventListener('blur',release);
+window.addEventListener('pagehide',saveProgress);
+document.addEventListener('visibilitychange',()=>{release();last=0;if(document.hidden){saveProgress();pause();}});
 for(const b of document.querySelectorAll('[data-dir]')){
   b.addEventListener('pointerdown',e=>{if(b.disabled)return;e.preventDefault();b.setPointerCapture(e.pointerId);heldPointers.set(e.pointerId,b.dataset.dir);});
   for(const event of ['pointerup','pointercancel','lostpointercapture'])b.addEventListener(event,e=>{heldPointers.delete(e.pointerId);if(!heldPointers.size&&!heldKeys.size)$('player').classList.remove('walking');board.focus();});
   b.addEventListener('click',e=>{if(e.detail===0){const vectors={up:{x:0,y:-1},down:{x:0,y:1},left:{x:-1,y:0},right:{x:1,y:0}};performMotion(vectors[b.dataset.dir],.05);board.focus();}});
 }
 $('interact').addEventListener('click',()=>{performInteraction();if(!dialog.open)board.focus();});
-$('undo').addEventListener('click',()=>{release();undo(state);syncMotion(motion,state);render();message('Last move undone.');board.focus();});
-$('reset-puzzle').addEventListener('click',()=>popup('RESET PUZZLE','Restore the movable objects?',['You will return to the entrance. Earned keys, tools, collectibles, opened paths, and completed questions stay saved for this play.'],[{text:'Reset puzzle',run:()=>{resetPuzzle(map,state);syncMotion(motion,state);render();resume();message('Movable objects restored. Your earned progress and raised bridges are kept.');},primary:true},{text:'Keep exploring',run:resume}]));
+$('undo').addEventListener('click',()=>{release();undo(state);syncMotion(motion,state);saveProgress();render();message('Last move undone.');board.focus();});
+$('reset-puzzle').addEventListener('click',()=>popup('RESET PUZZLE','Restore the movable objects?',['You will return to the entrance. Earned keys, tools, collectibles, opened paths, and completed questions stay saved for this play.'],[{text:'Reset puzzle',run:()=>{resetPuzzle(map,state);syncMotion(motion,state);saveProgress();render();resume();message('Movable objects restored. Your earned progress and raised bridges are kept.');},primary:true},{text:'Keep exploring',run:resume}]));
 $('pause').addEventListener('click',pause);
 dialog.addEventListener('cancel',e=>{e.preventDefault();if(started&&!state.won){activeQuestion=null;resume();}});
 function frame(now){
@@ -304,6 +315,7 @@ function frame(now){
     for(const dir of heldPointers.values())dirs.add(dir);
     const input={x:Number(dirs.has('right'))-Number(dirs.has('left')),y:Number(dirs.has('down'))-Number(dirs.has('up'))};
     if(input.x||input.y)performMotion(input,dt);else $('player').classList.remove('walking');
+    if(elapsed-lastSaveTime>=1)saveProgress();
   }
   last=now;requestAnimationFrame(frame);
 }
@@ -311,7 +323,7 @@ function chooseMode(){
   const modes=map.modes||[{id:map.mode,label:'Explore',description:'Explore this adventure.'}];
   popup('QUEST ARCADE · '+map.title,'Choose your adventure',[
     ...modes.map(mode=>mode.label+': '+mode.description),
-    'Question order and choices change each play. Missed answers allow retries. Chest progress stays saved when you return to the map.'
+    'Question order and choices change each play. Missed answers allow retries. Progress saves automatically in this browser so you can continue later.'
   ],modes.map((mode,index)=>({text:mode.label,run:()=>startMode(mode.id),primary:index===0})));
 }
 function startMode(mode){map=validateAdventure(createAdventure(mode));buildWorld();restart();}
@@ -335,5 +347,17 @@ if(titleRow){
   }
   titleRow.append(actions);
 }
-render();chooseMode();
+render();
+const saved=decodeSave(saves.read(),createAdventure,content.questions);
+if(saved){
+  const learning=reviewSummary(saved.state.review);
+  popup('SAVED ADVENTURE','Continue your adventure?',[
+    `${saved.map.title} · ${saved.map.modes?.find(m=>m.id===saved.mode)?.label||saved.mode}`,
+    `${learning.completed} / ${learning.total} questions completed. Items and puzzle progress are saved in this browser.`
+  ],[{text:'Continue adventure',primary:true,run:()=>{
+    map=validateAdventure(saved.map);state=saved.state;motion=createMotion(state);motion.x=saved.position.x;motion.y=saved.position.y;
+    elapsed=saved.elapsed;lastSaveTime=elapsed;activeQuestion=null;started=true;$('pause').disabled=false;
+    buildWorld();render();resume();message('Adventure restored. Return to a chest to continue its questions.');
+  }},{text:'New adventure',run:chooseMode}]);
+}else chooseMode();
 requestAnimationFrame(frame);

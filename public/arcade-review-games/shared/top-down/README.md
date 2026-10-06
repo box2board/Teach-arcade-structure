@@ -38,9 +38,12 @@ node scripts/test-top-down-outpost-ui.mjs
 node --test scripts/test-top-down-viewport.mjs
 node --test scripts/test-top-down-motion.mjs
 node --test scripts/test-top-down-camera.mjs
+node --test scripts/test-top-down-save.mjs
 ```
 
-The UI scripts use a simulated DOM, not a browser. Browser/mobile visual and interaction verification remains necessary. Save/resume across refreshes and classroom report export are not implemented yet.
+The UI scripts use a simulated DOM, not a browser. Browser/mobile visual and interaction verification remains necessary. Classroom report export is not implemented yet.
+
+`save.js` stores one unfinished adventure per map/question module pair in localStorage. Position, difficulty, puzzle state, inventory, shuffled review questions, attempts, undo history and elapsed play time persist. Gameplay saves at most once per second plus immediate answer/interaction/recovery writes and page-hide writes. Continue restores the map with no held inputs or open question dialog; reopen a chest to continue. Winning removes the unfinished save. Restart replaces it. Version, content signature, integrity checksum and shape checks reject incompatible or damaged saves. Storage failures do not interrupt play; Pause reports saving availability. Saves stay in the same browser and site origin and do not transfer between preview URLs, devices or accounts.
 
 The shared viewport layout fits the active room into the available stage with square tiles, recalculating on resize. Laptops place controls and objectives beside the map; portrait phones place compact controls below it. Bag & clues, Help, and full-message dialogs keep longer information accessible without extending the gameplay page. Tall rooms still use a tall footprint: design wider camera bounds and room geometry for adventures intended to fill a laptop horizontally.
 

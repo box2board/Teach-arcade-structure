@@ -3,6 +3,8 @@ class Node {
  constructor(){this.children=[];this.dataset={};this.style={setProperty:(k,v)=>this.style[k]=v};this.classList={add(){},remove(){}};this.listeners={};this.open=false;this.clientWidth=800;this.clientHeight=600;this.scrollHeight=0;}
  append(...nodes){this.children.push(...nodes)} prepend(...nodes){this.children.unshift(...nodes)} replaceChildren(...nodes){this.children=[...nodes]} before(){} after(){} setAttribute(k,v){this[k]=v} addEventListener(k,v){this.listeners[k]=v} querySelector(){return this.innerHTML?.includes('svg')?{}:null} focus(){} showModal(){this.open=true} close(){this.open=false} remove(){} }
 const nodes=new Map();globalThis.document={getElementById(id){if(!nodes.has(id))nodes.set(id,new Node());return nodes.get(id)},body:new Node(),querySelector(selector){if(selector!=='script[data-map]'){if(selector==='#message')return this.getElementById('message');if(!nodes.has(selector))nodes.set(selector,new Node());return nodes.get(selector);}return {dataset:{map:'./outpost.js',questionSet:'./scientific-method.js'}}},querySelectorAll(){return []},createElement(){return new Node()},addEventListener(){},hidden:false};const windowListeners={};globalThis.window={addEventListener(name,fn){windowListeners[name]=fn}};let animationFrame,clock=100;globalThis.requestAnimationFrame=fn=>{if(fn.name==='frame')animationFrame=fn};
+const stored=new Map();
+globalThis.localStorage={getItem:k=>stored.get(k),setItem:(k,v)=>stored.set(k,v),removeItem:k=>stored.delete(k)};
 await import('../public/arcade-review-games/shared/top-down/game.js');
 const get=id=>nodes.get(id);
 // Enable the browser camera path in this simulated DOM.
@@ -86,6 +88,9 @@ assert.equal(cameraFlights.length,flightsBeforeWalking,'Ordinary walking does no
 assert.match(get('player').style.transform,/translate3d/);step('down');
 go(9,12);face('up');earn('survey-chest');go(4,9);step('up');
 assert.equal(get('room').textContent,'02 · Optics');assert.equal(get('world').style.top,'0%');
+windowListeners.pagehide();
+const saveKey=[...stored.keys()][0],resumeSnapshot=stored.get(saveKey),resumePoint=point();
+assert.ok(resumeSnapshot,'Leaving the tab writes progress');
 assert.ok(cameraFlights.some(f=>/^translate\(0px,-/.test(f.frames[0].transform)),'North boundary glides vertically');
 go(3,3);step('right');assert.match(action().text,/CROSS/);
 go(10,4);face('down');assert.match(action().text,/Bridge raised/);
@@ -101,3 +106,16 @@ assert.equal(get('dialog-title').textContent,'Adventure complete');
 assert.ok(get('dialog-body').children.some(p=>p.textContent.includes('Review completed: 6 / 6')));
 assert.ok(get('dialog-body').children.every(p=>!p.textContent.includes('Archive')&&!p.textContent.includes('seal crystal')));
 console.log('DOM flow: Outpost completes all review chests, both camera directions, mirror crossing, block gate and beacon completion using the same game module.');
+assert.equal(stored.size,0,'Winning clears the unfinished save');
+stored.set(saveKey,resumeSnapshot);nodes.clear();
+await import('../public/arcade-review-games/shared/top-down/game.js?resume-test');
+assert.equal(get('dialog-actions').children[0].textContent,'Continue adventure');
+get('dialog-actions').children[0].listeners.click();
+assert.equal(get('dialog').open,false);assert.equal(get('room').textContent,'02 · Optics');
+assert.deepEqual(point(),resumePoint);
+assert.ok(get('inventory').children.some(b=>b.children.some(c=>c.textContent==='Used')));
+assert.equal(get('seals').textContent,'Stations: 1 / 4');
+get('pause').listeners.click();assert.ok(get('dialog-body').children.some(p=>p.textContent.includes('saved automatically')));
+get('dialog-actions').children[1].listeners.click();get('dialog-actions').children[0].listeners.click();
+assert.equal(get('room').textContent,'01 · Dock');assert.equal(get('seals').textContent,'Stations: 0 / 4');
+console.log('DOM save flow: refresh offers Continue, restores position, used key and chest progress; restart replaces the save.');
