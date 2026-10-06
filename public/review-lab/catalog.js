@@ -14,8 +14,8 @@ export const GAMES=Object.freeze([Object.freeze({
   mode:'Solo',questionCount:12,levels:3,questionSetIds:Object.freeze(['scientific-method'])
 }),Object.freeze({
   id:'raceway-rivals',title:'Raceway Rivals',url:'/review-lab/raceway-rivals/',
-  description:'Race with 2–4 teams. Correct answers earn turbo boosts, attacks, and mystery boxes.',
-  mode:'Teams',facts:Object.freeze(['2–4 teams','1–3 laps','Turbo, attacks & mystery boxes']),
+  description:'Drive Canyon Circuit against three rivals. Dodge obstacles, collect boosts, and recharge your juice at question stops.',
+  mode:'Solo',facts:Object.freeze(['Drive against 3 rivals','2-lap canyon race','Questions recharge juice']),
   questionSetIds:Object.freeze(QUESTION_SETS.map(set=>set.id))
 })]);
 export function gamesForSet(id){return GAMES.filter(game=>game.questionSetIds.includes(id));}
