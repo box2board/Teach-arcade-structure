@@ -9,6 +9,9 @@
       ]
     }
   ],
+  "redirects": [
+    { "source": "/arcade-review-games/category-clash/:path*", "destination": "/review-lab/category-clash/:path*", "permanent": true }
+  ],
   "outputDirectory": "public",
   "functions": {
     "api/resources.js": { "maxDuration": 10 }

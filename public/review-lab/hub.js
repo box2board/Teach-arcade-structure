@@ -14,7 +14,9 @@ function navigate(nextView,setId){
 }
 function gameCard(game){
   const sets=setsForGame(game.id),topics=sets.map(set=>set.title).join(', ');
-  return `<article class="game-card"><img class="game-art" src="${escapeHTML(game.image)}" alt="${escapeHTML(game.imageAlt)}" width="640" height="411"><div class="game-details"><p class="eyebrow">${escapeHTML(game.mode)} ARCADE REVIEW</p><h2>${escapeHTML(game.title)}</h2><p>${escapeHTML(game.description)}</p><ul class="facts"><li>${game.levels} levels</li><li>${game.questionCount} questions per run</li><li>3 gameplay difficulties</li></ul><p class="topic-label">${selectedSet?'Review topic':'Available topic'+(sets.length===1?'':'s')}: <strong>${escapeHTML(selectedSet?.title||topics)}</strong></p><a class="primary" href="${gameUrl(game.id,selectedSet?.id)}">${selectedSet?'Play '+escapeHTML(game.title):'Choose a topic &amp; play'}</a></div></article>`;
+  const facts=game.facts||[`${game.levels} levels`,`${game.questionCount} questions per run`,'3 gameplay difficulties'];
+  const topic=selectedSet?.title||topics||game.topicLabel;
+  return `<article class="game-card"><img class="game-art" src="${escapeHTML(game.image)}" alt="${escapeHTML(game.imageAlt)}" width="640" height="411"><div class="game-details"><p class="eyebrow">${escapeHTML(game.mode)} ARCADE REVIEW</p><h2>${escapeHTML(game.title)}</h2><p>${escapeHTML(game.description)}</p><ul class="facts">${facts.map(fact=>`<li>${escapeHTML(fact)}</li>`).join('')}</ul><p class="topic-label">${selectedSet?'Review topic':sets.length?'Available topic'+(sets.length===1?'':'s'):'Available now'}: <strong>${escapeHTML(topic)}</strong></p><a class="primary" href="${gameUrl(game.id,selectedSet?.id)}">${selectedSet?'Play '+escapeHTML(game.title):game.launchLabel?escapeHTML(game.launchLabel):'Choose a topic &amp; play'}</a></div></article>`;
 }
 function render(){
   $('browse-games').setAttribute('aria-pressed',String(view==='games'));
