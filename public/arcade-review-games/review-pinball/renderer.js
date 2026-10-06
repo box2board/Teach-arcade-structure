@@ -72,21 +72,46 @@ function ball(c,b,elevated){
  circle(c,b.x,b.y,b.r,gradient(c,b.x,b.y,b.r,['#ffffff','#d9ebf6','#657d8e','#23323d']));c.restore();circle(c,b.x-3,b.y-4,2,'#fff');
 }
 function ramp(c,r){
+ const pirate=c.canvas.pinballTheme==='pirate';
  const path=()=>{c.beginPath();r.path.forEach((p,i)=>i?c.lineTo(...p):c.moveTo(...p));c.lineJoin='round';c.lineCap='round';};
  // Support feet and cast shadow reveal the crossover's raised layer.
  for(const index of [3,6,9,11,13].filter(i=>i<r.path.length)){const p=r.path[index];socket(c,p[0]+8,p[1]+20,7);stroke(c,[p[0]+8,p[1]+20],[p[0],p[1]],metal(c,p[0],p[1],23),6);}
  c.save();c.translate(5,12);path();c.strokeStyle='#0008';c.lineWidth=35;c.shadowColor='#0009';c.shadowBlur=8;c.stroke();c.restore();
+ if(pirate){
+  // A recessed wooden trough between two raised brass rails, without road markings.
+  path();c.strokeStyle='#322113';c.lineWidth=34;c.stroke();
+  path();c.strokeStyle=metal(c,0,160,480,['#c09862','#815732','#492c1a','#b37c44']);c.lineWidth=26;c.stroke();
+  path();c.strokeStyle='#29180c70';c.lineWidth=19;c.stroke();
+  const edges=[[],[]];
+  for(let i=0;i<r.path.length;i++){
+   const p=r.path[i],a=r.path[Math.max(0,i-1)],z=r.path[Math.min(r.path.length-1,i+1)],length=Math.hypot(z[0]-a[0],z[1]-a[1]),nx=-(z[1]-a[1])/length,ny=(z[0]-a[0])/length;
+   edges[0].push([p[0]+nx*13,p[1]+ny*13]);edges[1].push([p[0]-nx*13,p[1]-ny*13]);
+  }
+  for(let i=1;i<r.path.length;i++){
+   const a=r.path[i-1],z=r.path[i],dx=z[0]-a[0],dy=z[1]-a[1],length=Math.hypot(dx,dy),nx=-dy/length,ny=dx/length;
+   for(let d=14;d<length;d+=18){const x=a[0]+dx*d/length,y=a[1]+dy*d/length;stroke(c,[x-nx*10,y-ny*10],[x+nx*10,y+ny*10],'#24150b80',1.8);stroke(c,[x-nx*9+1,y-ny*9-1],[x+nx*9+1,y+ny*9-1],'#e6bb7735',1);}
+  }
+  for(const edge of edges){
+   const trace=(ox=0,oy=0)=>{c.beginPath();edge.forEach((p,i)=>i?c.lineTo(p[0]+ox,p[1]+oy):c.moveTo(p[0]+ox,p[1]+oy));c.lineJoin='round';c.lineCap='round';};
+   trace(2,4);c.strokeStyle='#140c09aa';c.lineWidth=7;c.stroke();
+   trace();c.strokeStyle=metal(c,0,150,490,['#fff0bc','#bf913f','#6f4c22','#e7c983']);c.lineWidth=5;c.stroke();
+   trace(-1,-1);c.strokeStyle='#fff0b6b0';c.lineWidth=1.3;c.stroke();
+   for(let i=1;i<edge.length;i+=2){circle(c,edge[i][0],edge[i][1],2,'#604118');circle(c,edge[i][0]-.5,edge[i][1]-.5,.8,'#fff1ba');}
+  }
+ }else{
  path();c.strokeStyle='#241334';c.lineWidth=34;c.stroke();
  path();c.strokeStyle=metal(c,0,150,480,['#eee0ff','#9360c7','#483263','#c0a5db']);c.lineWidth=30;c.stroke();
  path();c.strokeStyle='#0b1721';c.lineWidth=23;c.stroke();
  path();c.strokeStyle=metal(c,0,163,475,['#66798b','#314b60','#738aa0','#314755']);c.lineWidth=20;c.stroke();
  path();c.strokeStyle='#d6eefc55';c.lineWidth=1.2;c.setLineDash([5,10]);c.stroke();c.setLineDash([]);
+ }
  const m=r.mouth;stroke(c,[m.x-19,m.y+4],[m.x+19,m.y+4],'#251b0c',9);stroke(c,[m.x-19,m.y],[m.x+19,m.y],metal(c,m.x,m.y-3,6,['#ffedaa','#caa443','#fff1bb']),5);
  if(c.canvas.pinballTheme==='pirate'){
-  socket(c,m.x,m.y+12,26);
-  stroke(c,[m.x-14,m.y+8],[m.x-14,m.y-28],metal(c,m.x,m.y-28,38,['#ffe4a3','#aa7c38','#39291c']),7);
-  stroke(c,[m.x+14,m.y+8],[m.x+14,m.y-28],metal(c,m.x,m.y-28,38,['#ffe4a3','#aa7c38','#39291c']),7);
-  stroke(c,[m.x-17,m.y-28],[m.x+17,m.y-28],'#d7b575',4);
+  for(const side of [-1,1]){socket(c,m.x+side*24,m.y+7,7);circle(c,m.x+side*24,m.y+6,5,'#9e743d');}
+  c.save();c.shadowColor='#000a';c.shadowBlur=7;c.shadowOffsetY=5;
+  c.beginPath();c.moveTo(m.x-18,m.y+10);c.lineTo(m.x-13,m.y-30);c.lineTo(m.x+13,m.y-30);c.lineTo(m.x+18,m.y+10);c.closePath();c.fillStyle=metal(c,m.x-18,m.y-30,40,['#d9b16b','#7c592c','#342619']);c.fill();c.restore();
+  stroke(c,[m.x,m.y+6],[m.x,m.y-29],'#130e09',20);
+  for(const y of [m.y-24,m.y+8]){c.beginPath();c.ellipse(m.x,y,18,5,0,0,Math.PI*2);c.strokeStyle='#e5bd70';c.lineWidth=3;c.stroke();}
  }
  stroke(c,[m.x,m.y-12],[m.x,m.y-27],'#ffe6a0',3);stroke(c,[m.x-5,m.y-22],[m.x,m.y-27],'#ffe6a0',3);stroke(c,[m.x,m.y-27],[m.x+5,m.y-22],'#ffe6a0',3);
 }
