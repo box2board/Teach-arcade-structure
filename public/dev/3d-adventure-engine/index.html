@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Teach Arcade 3D Adventure Prototype</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main id="gameShell" aria-label="3D Adventure prototype">
+    <div id="gameMount" aria-label="3D game world"></div>
+
+    <section id="hud" aria-live="polite">
+      <div class="hud-card brand-card">
+        <span class="eyebrow">TEACH ARCADE LAB</span>
+        <strong>3D Adventure Engine</strong>
+        <span class="prototype">Prototype v0</span>
+      </div>
+
+      <div class="hud-card objective-card">
+        <span class="eyebrow">CURRENT OBJECTIVE</span>
+        <strong id="objectiveText">Find the energy cell.</strong>
+        <span id="objectiveSubtext">Explore the courtyard and look for a glowing object.</span>
+      </div>
+
+      <div class="hud-card status-card">
+        <span><b>Cell</b> <span id="cellStatus">Not found</span></span>
+        <span><b>Terminal</b> <span id="terminalStatus">Offline</span></span>
+        <span><b>Gate</b> <span id="gateStatus">Locked</span></span>
+      </div>
+    </section>
+
+    <div id="crosshair" aria-hidden="true">•</div>
+
+    <div id="interactionPrompt" class="interaction-prompt" hidden>
+      <kbd>E</kbd>
+      <span id="interactionText">Interact</span>
+    </div>
+
+    <div id="controlsHint" class="controls-hint">
+      <span><kbd>WASD</kbd> Move</span>
+      <span><kbd>Shift</kbd> Run</span>
+      <span><kbd>Space</kbd> Jump</span>
+      <span><kbd>E</kbd> Interact</span>
+      <span><kbd>Drag</kbd> Camera</span>
+      <button id="hideControls" type="button">Hide</button>
+    </div>
+
+    <dialog id="questionDialog" class="game-dialog">
+      <form method="dialog" id="questionForm">
+        <span class="eyebrow">KNOWLEDGE TERMINAL</span>
+        <h2>Restore terminal power</h2>
+        <p id="questionText">Which layer of Earth is liquid and surrounds the inner core?</p>
+        <div id="answerList" class="answer-list" role="radiogroup" aria-label="Answer choices"></div>
+        <p id="questionFeedback" class="feedback" aria-live="polite"></p>
+        <div class="dialog-footer">
+          <span>Use <kbd>↑</kbd><kbd>↓</kbd> + <kbd>Enter</kbd>, or click an answer.</span>
+          <button id="closeQuestion" type="button" class="secondary">Return to world</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="completeDialog" class="game-dialog complete-dialog">
+      <div>
+        <span class="eyebrow">PROTOTYPE COMPLETE</span>
+        <h2>You restored the facility.</h2>
+        <p>The first engine loop is working: explore → collect → answer → activate → unlock → finish.</p>
+        <button id="restartGame" type="button">Play again</button>
+      </div>
+    </dialog>
+
+    <div id="loadingScreen" class="loading-screen">
+      <div class="loader"></div>
+      <strong>Loading 3D Adventure Prototype…</strong>
+      <span id="loadingMessage">Building the world</span>
+    </div>
+
+    <div id="fallback" class="fallback" hidden>
+      <h1>3D mode could not start</h1>
+      <p>This browser or device did not initialize WebGL. Try reloading or using a modern browser.</p>
+    </div>
+  </main>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
