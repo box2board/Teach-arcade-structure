@@ -2,7 +2,7 @@
 (function(root){
 const W=48,H=32;
 const types={
- road:{name:'Road',cost:15,color:'#8493a4',w:1,h:1,help:'Paint roads. Connected roads carry power from solar stations.'},
+ road:{name:'Road',cost:15,color:'#8493a4',w:1,h:1,help:'Paint roads. Connected roads carry power from solar plants.'},
  home:{name:'Homes',cost:40,color:'#5bd09d',w:1,h:1,help:'Zone one-tile homes beside roads. Residents need power, water, and jobs.'},
  shop:{name:'Commerce',cost:55,color:'#63bdec',w:1,h:1,help:'Zone one-tile shops. Their storefronts expand as more residents arrive.'},
  industry:{name:'Industry',cost:65,color:'#efb75a',w:1,h:1,help:'Zone one-tile workshops. Keep their smoke stacks away from homes.'},
