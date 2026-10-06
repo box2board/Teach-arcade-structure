@@ -3,314 +3,457 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
 
-  <!-- ✅ SEO Title (keyword-forward, still brand-safe) -->
-  <title>Wheel Spinner for Classroom Random Picker | Teach Arcade</title>
-
-  <!-- ✅ Canonical + Meta Description (more teacher/search intent) -->
-  <link rel="canonical" href="https://teacharcade.com/tools/wheel.html" />
-  <meta
-    name="description"
-    content="Free classroom wheel spinner (random name picker) for teachers. Add names, groups, questions, stations, or tasks—spin to choose fairly, remove winners, shuffle, and share."
-  />
-
-  <!-- ✅ Open Graph / Twitter (match SEO description) -->
-  <meta property="og:title" content="Wheel Spinner for Classroom Random Picker | Teach Arcade" />
-  <meta
-    property="og:description"
-    content="Free classroom wheel spinner (random name picker) for teachers. Add names, groups, questions, stations, or tasks—spin to choose fairly, remove winners, shuffle, and share."
-  />
-  <meta property="og:url" content="https://teacharcade.com/tools/wheel.html" />
-  <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Wheel Spinner for Classroom Random Picker | Teach Arcade" />
-  <meta
-    name="twitter:description"
-    content="Free classroom wheel spinner (random name picker) for teachers. Add names, groups, questions, stations, or tasks—spin to choose fairly, remove winners, shuffle, and share."
-  />
-  <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
-
-  <!-- ✅ Optional: Helps SEO understand site identity -->
+  <title>Free Random Name Picker for Teachers | Classroom Wheel</title>
+  <meta name="description" content="Paste your class list and spin a free classroom wheel to randomly pick students, questions, activities, and more. Fast, simple, and no login required." />
   <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.teacharcade.com/tools/wheel.html" />
 
-  <!-- ✅ Structured Data (SoftwareApplication) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Teach Arcade" />
+  <meta property="og:title" content="Free Random Name Picker for Teachers | Classroom Wheel" />
+  <meta property="og:description" content="Paste your class list, spin the wheel, and randomly choose a student or classroom item in seconds." />
+  <meta property="og:url" content="https://www.teacharcade.com/tools/wheel.html" />
+  <meta property="og:image" content="https://www.teacharcade.com/assets/images/social/ta-social-card.png" />
+  <meta property="og:image:alt" content="Teach Arcade classroom tools" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Free Random Name Picker for Teachers | Classroom Wheel" />
+  <meta name="twitter:description" content="Paste your class list, spin the wheel, and randomly choose a student or classroom item in seconds." />
+  <meta name="twitter:image" content="https://www.teacharcade.com/assets/images/social/ta-social-card.png" />
+  <meta name="twitter:image:alt" content="Teach Arcade classroom tools" />
+
   <script type="application/ld+json">
   {
-    "@context":"https://schema.org",
-    "@type":"SoftwareApplication",
-    "name":"Wheel Spinner (Random Picker)",
-    "applicationCategory":"EducationalApplication",
-    "operatingSystem":"Web",
-    "url":"https://teacharcade.com/tools/wheel.html",
-    "description":"A free classroom wheel spinner (random name picker) for teachers. Add names, groups, questions, stations, or tasks—spin to choose fairly, remove winners, shuffle, save, restore, and share.",
-    "publisher":{
-      "@type":"Organization",
-      "name":"Teach Arcade",
-      "url":"https://teacharcade.com"
-    }
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Free Classroom Random Name Picker",
+        "alternateName": "Classroom Wheel",
+        "url": "https://www.teacharcade.com/tools/wheel.html",
+        "description": "A free classroom wheel for randomly choosing student names, groups, questions, activities, and other text entries.",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires a modern web browser with JavaScript enabled.",
+        "isAccessibleForFree": true,
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Teach Arcade",
+          "url": "https://www.teacharcade.com/"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.teacharcade.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Teacher Tools",
+            "item": "https://www.teacharcade.com/tools/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Classroom Random Name Picker",
+            "item": "https://www.teacharcade.com/tools/wheel.html"
+          }
+        ]
+      }
+    ]
   }
   </script>
 
-  <link rel="preload" href="/assets/styles.css?v=1" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="/assets/styles.css?v=1"></noscript>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet" />
+  <!-- Remove legacy roster-bearing query parameters before site analytics load. -->
+  <script>
+    (() => {
+      try {
+        const url = new URL(window.location.href);
+        if (url.searchParams.has('items')) {
+          ['items', 'rm', 'confetti', 'palette'].forEach((key) => url.searchParams.delete(key));
+          const clean = url.pathname + (url.search ? url.search : '') + url.hash;
+          history.replaceState(null, '', clean);
+        }
+      } catch (_) {}
+    })();
+  </script>
+
+  <link rel="preload" href="/assets/styles.css?v=1" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="/assets/styles.css?v=1" /></noscript>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
 
   <style>
     :root{
-      --bg:#f1f5f9;
-      --card:#ffffff;
-      --text:#0f172a;
-      --sub:#475569;
-      --muted:#64748b;
-      --border:#cbd5e1;
-      --brand:#2563eb;
+      --wheel-bg:#f1f5f9;
+      --wheel-card:#ffffff;
+      --wheel-text:#0f172a;
+      --wheel-sub:#475569;
+      --wheel-muted:#64748b;
+      --wheel-border:#cbd5e1;
+      --wheel-brand:#1d4ed8;
+      --wheel-brand-dark:#1e40af;
+      --wheel-soft:#eff6ff;
+      --wheel-danger:#b91c1c;
+      --wheel-shadow:0 12px 28px rgba(15,23,42,.08);
     }
     .dark{
-      --bg:#0b1220;
-      --card:#0f172a;
-      --text:#e5e7eb;
-      --sub:#cbd5e1;
-      --muted:#94a3b8;
-      --border:#1f2a44;
-      --brand:#60a5fa;
+      --wheel-bg:#0b1220;
+      --wheel-card:#111c2f;
+      --wheel-text:#f8fafc;
+      --wheel-sub:#d3dcea;
+      --wheel-muted:#a8b5c8;
+      --wheel-border:#334155;
+      --wheel-brand:#60a5fa;
+      --wheel-brand-dark:#93c5fd;
+      --wheel-soft:#16243b;
+      --wheel-danger:#f87171;
+      --wheel-shadow:0 12px 28px rgba(0,0,0,.24);
     }
 
-    body{ background:var(--bg); color:var(--text); }
-    main.container{ max-width:960px; margin:0 auto; padding:16px; }
-    .breadcrumbs a{ color:var(--brand); }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{background:var(--wheel-bg);color:var(--wheel-text);overflow-x:hidden}
+    main.container{max-width:1180px;margin:0 auto;padding:14px 18px 48px}
+    .breadcrumbs{font:600 13px/1.4 Nunito,sans-serif;margin:4px 0 0}
+    .breadcrumbs a{color:var(--wheel-brand)}
 
-    .hero { text-align:center; padding:30px 0 12px; }
-    .hero h1 { font:700 30px/1.2 Poppins, sans-serif; margin:0 0 8px; }
-    .hero p { color:var(--sub); }
+    .hero{text-align:center;padding:22px 0 14px}
+    .hero h1{font:700 clamp(28px,4vw,42px)/1.15 Poppins,sans-serif;margin:0 0 7px;letter-spacing:-.02em}
+    .hero p{max-width:720px;margin:0 auto;color:var(--wheel-sub);font:600 clamp(15px,2vw,18px)/1.5 Nunito,sans-serif}
 
-    textarea {
-      width:100%; height:180px;
-      border:1px solid var(--border); border-radius:10px;
-      padding:12px; background:var(--card); color:var(--text);
-      font:400 15px Nunito,sans-serif;
-    }
-    .panel{
-      background:var(--card); border:1px solid var(--border);
-      border-radius:12px; padding:14px; margin-bottom:12px;
+    .workspace{display:grid;grid-template-columns:minmax(300px,.82fr) minmax(420px,1.18fr);gap:16px;align-items:stretch}
+    .panel,.stage-card{background:var(--wheel-card);border:1px solid var(--wheel-border);border-radius:18px;box-shadow:var(--wheel-shadow)}
+    .panel{padding:18px}
+    .panel h2,.stage-card h2{font:700 18px/1.25 Poppins,sans-serif;margin:0}
+    .section-lead{margin:5px 0 12px;color:var(--wheel-sub);font:600 14px/1.45 Nunito,sans-serif}
+
+    .list-meta{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:7px;color:var(--wheel-muted);font:700 12px/1.3 Nunito,sans-serif}
+    textarea{width:100%;min-height:235px;resize:vertical;border:1px solid var(--wheel-border);border-radius:12px;padding:12px 13px;background:var(--wheel-card);color:var(--wheel-text);font:600 15px/1.45 Nunito,sans-serif;box-shadow:inset 0 1px 2px rgba(15,23,42,.04)}
+    textarea::placeholder{color:var(--wheel-muted);opacity:.78}
+
+    .controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
+    .btn{min-height:42px;border:1px solid var(--wheel-border);border-radius:11px;padding:9px 12px;background:var(--wheel-card);color:var(--wheel-text);font:700 13px/1 Poppins,sans-serif;cursor:pointer;transition:transform .12s ease,box-shadow .12s ease,background .12s ease,border-color .12s ease}
+    .btn:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 5px 12px rgba(15,23,42,.10)}
+    .btn:disabled{opacity:.5;cursor:not-allowed}
+    .btn.primary{background:var(--wheel-brand);border-color:var(--wheel-brand);color:#fff}
+    .btn.primary:hover:not(:disabled){background:var(--wheel-brand-dark);border-color:var(--wheel-brand-dark)}
+    .btn.danger{color:var(--wheel-danger)}
+    .btn.large{min-height:52px;padding:13px 28px;font-size:17px;border-radius:14px}
+    .btn.small{min-height:36px;padding:7px 10px;font-size:12px}
+
+    button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid #f59e0b;outline-offset:3px}
+
+    .options{display:grid;gap:9px;margin-top:14px;padding-top:13px;border-top:1px solid var(--wheel-border)}
+    .check-row{display:flex;align-items:center;gap:9px;color:var(--wheel-sub);font:700 14px/1.35 Nunito,sans-serif}
+    .check-row input{width:18px;height:18px;accent-color:var(--wheel-brand)}
+    .privacy-note{margin:10px 0 0;color:var(--wheel-muted);font:600 12px/1.45 Nunito,sans-serif}
+
+    details.settings{margin-top:12px;border-top:1px solid var(--wheel-border);padding-top:10px}
+    details.settings summary{cursor:pointer;color:var(--wheel-brand);font:700 13px/1.4 Poppins,sans-serif}
+    .settings-body{padding-top:10px}
+    .field-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:8px}
+    .field-row input,.field-row select{min-height:40px;border:1px solid var(--wheel-border);border-radius:10px;padding:8px 10px;background:var(--wheel-card);color:var(--wheel-text);font:600 13px Nunito,sans-serif}
+    .field-row input,.field-row select{flex:1 1 180px;min-width:0}
+    .field-label{display:block;margin-top:8px;color:var(--wheel-sub);font:700 13px/1.3 Nunito,sans-serif}
+
+    .stage-card{position:relative;padding:14px 16px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:0}
+    .stage-top{width:100%;display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:2px}
+    .stage-status{color:var(--wheel-muted);font:700 12px/1.3 Nunito,sans-serif}
+    .wheel-wrap{position:relative;width:min(100%,540px);aspect-ratio:1;margin:2px auto 4px;display:grid;place-items:center}
+    #wheelCanvas{display:block;width:100%;height:auto;max-width:540px;aspect-ratio:1;filter:drop-shadow(0 10px 16px rgba(15,23,42,.12))}
+    .wheel-pointer{position:absolute;top:0;left:50%;z-index:3;transform:translateX(-50%);width:0;height:0;border-left:18px solid transparent;border-right:18px solid transparent;border-top:34px solid #dc2626;filter:drop-shadow(0 2px 2px rgba(15,23,42,.25));pointer-events:none}
+    .wheel-center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:58px;height:58px;border-radius:50%;background:var(--wheel-card);border:6px solid var(--wheel-text);box-shadow:0 3px 10px rgba(15,23,42,.18);pointer-events:none}
+    .spin-zone{text-align:center;width:100%}
+    #result{min-height:27px;margin:8px 0 2px;color:var(--wheel-brand);font:700 clamp(18px,2.4vw,25px)/1.25 Poppins,sans-serif;overflow-wrap:anywhere}
+    .keyboard-hint{margin:4px 0 0;color:var(--wheel-muted);font:600 12px/1.4 Nunito,sans-serif}
+
+    .supporting{max-width:980px;margin:26px auto 0}
+    .supporting section{margin-top:24px}
+    .supporting h2{font:700 24px/1.25 Poppins,sans-serif;margin:0 0 8px}
+    .supporting h3{font:700 17px/1.3 Poppins,sans-serif;margin:0 0 5px}
+    .supporting p,.supporting li{color:var(--wheel-sub);font:600 15px/1.65 Nunito,sans-serif}
+    .supporting ul,.supporting ol{padding-left:22px}
+    .use-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+    .use-card{border:1px solid var(--wheel-border);border-radius:14px;background:var(--wheel-card);padding:14px}
+    .use-card p{margin:0;font-size:14px}
+    .faq details{border-top:1px solid var(--wheel-border);padding:12px 0}
+    .faq details:last-child{border-bottom:1px solid var(--wheel-border)}
+    .faq summary{cursor:pointer;font:700 15px/1.4 Poppins,sans-serif}
+    .faq p{margin:7px 0 0}
+    .tool-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+    .tool-links a{display:inline-flex;align-items:center;min-height:42px;padding:9px 12px;border:1px solid var(--wheel-border);border-radius:11px;background:var(--wheel-card);color:var(--wheel-brand);text-decoration:none;font:700 13px/1.2 Poppins,sans-serif}
+
+    .overlay{position:fixed;inset:0;background:rgba(2,6,23,.68);display:none;align-items:center;justify-content:center;padding:20px;z-index:10000}
+    .overlay.show{display:flex}
+    .win-card{width:min(520px,94vw);background:var(--wheel-card);color:var(--wheel-text);border:2px solid var(--wheel-brand);border-radius:20px;padding:24px;text-align:center;box-shadow:0 24px 70px rgba(0,0,0,.35);animation:pop .18s ease-out}
+    .win-card h2{font:700 18px/1.3 Poppins,sans-serif;margin:0 0 8px;color:var(--wheel-sub)}
+    .winner{font:700 clamp(34px,7vw,62px)/1.08 Poppins,sans-serif;color:var(--wheel-brand);overflow-wrap:anywhere}
+    .overlay-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:9px;margin-top:18px}
+    @keyframes pop{from{transform:scale(.97);opacity:0}to{transform:scale(1);opacity:1}}
+
+    .confetti{position:absolute;inset:0;pointer-events:none;overflow:hidden;border-radius:50%}
+    .confetti>span{position:absolute;width:7px;height:11px;border-radius:2px;animation:fall 950ms ease-out forwards}
+    @keyframes fall{0%{transform:translateY(-18px) rotate(0);opacity:1}100%{transform:translateY(430px) rotate(540deg);opacity:0}}
+
+    .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+    [hidden]{display:none!important}
+    #site-header{min-height:56px}
+
+    body.projector-mode{background:var(--wheel-bg)}
+    body.projector-mode #site-header,
+    body.projector-mode .breadcrumbs,
+    body.projector-mode .hero,
+    body.projector-mode .supporting,
+    body.projector-mode footer{display:none!important}
+    body.projector-mode main.container{max-width:none;padding:16px;min-height:100vh;display:flex;align-items:center}
+    body.projector-mode .workspace{width:100%;grid-template-columns:minmax(270px,360px) 1fr;align-items:center}
+    body.projector-mode details.settings{display:none}
+    body.projector-mode .stage-card{min-height:calc(100vh - 32px)}
+    body.projector-mode .wheel-wrap{width:min(72vh,720px);max-width:100%}
+    body.projector-mode #wheelCanvas{max-width:none}
+
+    @media (max-width:860px){
+      main.container{padding:12px 14px 40px}
+      .hero{padding-top:16px}
+      .workspace{grid-template-columns:1fr}
+      textarea{min-height:180px}
+      .stage-card{padding-top:10px}
+      .wheel-wrap{width:min(100%,500px)}
+      .use-grid{grid-template-columns:1fr 1fr}
+      body.projector-mode main.container{display:block;padding:10px}
+      body.projector-mode .workspace{grid-template-columns:1fr}
+      body.projector-mode .panel{display:none}
+      body.projector-mode .stage-card{min-height:calc(100vh - 20px)}
+      body.projector-mode .wheel-wrap{width:min(78vh,94vw)}
     }
 
-    .controls { margin-top:10px; display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
-    .btn {
-      font:600 14px Poppins,sans-serif; padding:9px 14px; border-radius:10px; cursor:pointer; border:1px solid transparent;
-      background:var(--card); color:var(--text); border-color:var(--border);
-    }
-    .btn.primary { background:var(--brand); color:#fff; border-color:var(--brand); }
-    .btn.danger { background:#ef4444; color:#fff; border-color:#ef4444; }
-    .btn:disabled{ opacity:.6; cursor:not-allowed; }
-
-    .opts { margin-top:8px; display:flex; gap:16px; align-items:center; flex-wrap:wrap; color:var(--sub); font:600 14px Nunito,sans-serif; }
-    .opts select { padding:7px 10px; border:1px solid var(--border); border-radius:8px; background:var(--card); color:var(--text); }
-
-    .canvas-wrap {
-      margin:20px auto;
-      width:420px; max-width:100%;
-      min-height:420px;
-      border:1px solid var(--border);
-      background:var(--card);
-      display:flex; align-items:center; justify-content:center;
-      border-radius:12px;
-      position:relative;
-      overflow:visible;
-      box-shadow:0 8px 20px rgba(0,0,0,.06);
-    }
-    #wheelCanvas { width:400px; height:400px; }
-    #status { text-align:center; font:600 12px/1 Nunito,sans-serif; color:var(--muted); margin-top:8px; }
-    #result { text-align:center; font:700 20px Poppins,sans-serif; color:var(--brand); margin:10px 0 0; }
-
-    /* Winner overlay */
-    .overlay{
-      position:fixed; inset:0; background:rgba(0,0,0,.55);
-      display:none; align-items:center; justify-content:center; z-index:50;
-    }
-    .overlay.show{ display:flex; }
-    .win-card{
-      background:var(--card); color:var(--text);
-      border:2px solid var(--brand); border-radius:16px; padding:20px 24px; text-align:center;
-      box-shadow:0 16px 36px rgba(0,0,0,.25); max-width:90%; min-width:280px;
-      animation:pop .22s ease-out;
-    }
-    .win-card h2{ font:700 30px Poppins, sans-serif; margin:6px 0; }
-    .win-card p{ color:var(--sub); margin:0 0 12px; }
-    .win-card .winner{
-      font:800 40px Poppins, sans-serif; letter-spacing:.5px; color:var(--brand);
-    }
-    @keyframes pop{from{transform:scale(.95);opacity:0}to{transform:scale(1);opacity:1}}
-
-    /* Confetti */
-    .confetti { position:absolute; inset:0; pointer-events:none; overflow:visible; }
-    @keyframes fall {
-      0%{ transform:translateY(-20px) rotate(0); opacity:1 }
-      100%{ transform:translateY(420px) rotate(600deg); opacity:0 }
-    }
-    .confetti > span{
-      position:absolute; width:8px; height:12px; border-radius:2px;
-      animation: fall 1200ms ease-out forwards;
+    @media (max-width:520px){
+      main.container{padding-inline:10px}
+      .hero h1{font-size:28px}
+      .panel{padding:14px}
+      .stage-card{padding:10px}
+      textarea{min-height:165px}
+      .btn{flex:1 1 auto}
+      .btn.large{width:100%}
+      .use-grid{grid-template-columns:1fr}
+      .wheel-pointer{border-left-width:14px;border-right-width:14px;border-top-width:27px}
+      .wheel-center{width:48px;height:48px;border-width:5px}
     }
 
-    /* ✅ Small accessibility helper text */
-    .sr-only{
-      position:absolute; width:1px; height:1px; padding:0; margin:-1px;
-      overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+    @media (prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
     }
-
-    /* Fix hero title visibility in dark mode (polished) */
-    .dark .hero h1 {
-      color: #ffffff;
-      text-shadow: 0 2px 8px rgba(0,0,0,.4);
-    }
-    .dark .hero p {
-      color: #d1d5db;
-    }
-    #site-header { min-height: 72px; }
-    @media (max-width: 640px){ #site-header { min-height: 64px; } }
   </style>
 </head>
-
 <body>
   <div id="site-header"></div>
   <script src="/assets/scripts/nav.js?v=5" defer></script>
 
   <main class="container">
     <nav class="breadcrumbs" aria-label="Breadcrumb">
-      <a href="/">Home</a> › <a href="https://teacharcade.com/tools/">Teacher Tools</a> › Wheel Spinner
+      <a href="/">Home</a> › <a href="/tools/">Teacher Tools</a> › Random Name Picker
     </nav>
 
-    <section class="hero">
-      <h1>🎯 Classroom Wheel Spinner (Random Picker)</h1>
-      <p>
-        Paste a list of names, groups, questions, or tasks—then spin to pick fairly at random.
-      </p>
-    </section>
+    <header class="hero">
+      <h1>Free Classroom Random Name Picker</h1>
+      <p>Paste your class list, spin the wheel, and choose a student—or any classroom item—in seconds.</p>
+    </header>
 
-    <section class="panel" aria-label="Wheel spinner controls">
-      <label for="items"><strong>Your List</strong></label>
+    <div class="workspace" id="wheelWorkspace">
+      <section class="panel roster-panel" aria-labelledby="listHeading">
+        <h2 id="listHeading">1. Add your list</h2>
+        <p class="section-lead">Paste a full roster or type one entry per line. Blank lines are ignored.</p>
 
-      <!-- ✅ Randomized, teacher-ish placeholder examples (see script at bottom) -->
-      <textarea id="items" placeholder=""></textarea>
-      <p class="sr-only" id="itemsHelp">
-        Enter one item per line. Example: student names, discussion prompts, stations, or review questions.
-      </p>
+        <div class="list-meta" aria-live="polite">
+          <span id="entryCount">0 entries</span>
+          <span id="removedCount" hidden>0 removed this round</span>
+        </div>
+        <label class="sr-only" for="items">Names or classroom items</label>
+        <textarea id="items" aria-describedby="itemsHelp" autocomplete="off" spellcheck="false" placeholder="Jordan&#10;Taylor&#10;Morgan&#10;Casey&#10;Riley"></textarea>
+        <p id="itemsHelp" class="sr-only">Enter one student name or classroom item per line. Duplicate entries are kept as separate entries.</p>
 
-      <div class="controls" role="group" aria-label="Wheel actions">
-        <button id="spin" class="btn primary">Spin</button>
-        <button id="clear" class="btn danger">Clear</button>
-        <button id="shuffle" class="btn">Shuffle</button>
-        <button id="save" class="btn">Save</button>
-        <button id="restore" class="btn">Restore</button>
-        <button id="share" class="btn">Copy Share Link</button>
-        <button id="darkToggle" class="btn" title="Dark mode">Dark Mode</button>
-      </div>
+        <div class="controls" aria-label="List actions">
+          <button id="shuffle" class="btn" type="button">Shuffle</button>
+          <button id="resetRemoved" class="btn" type="button" disabled>Reset removed</button>
+          <button id="clear" class="btn danger" type="button">Clear</button>
+        </div>
 
-      <div class="opts" aria-label="Wheel options">
-        <label><input type="checkbox" id="removeAfter" /> Remove winner after spin</label>
-        <label><input type="checkbox" id="confetti" checked /> Confetti</label>
+        <div class="options" aria-label="Wheel options">
+          <label class="check-row"><input type="checkbox" id="removeAfter" /> Remove selected name after each spin</label>
+          <label class="check-row"><input type="checkbox" id="sound" /> Sound</label>
+          <label class="check-row"><input type="checkbox" id="confetti" checked /> Confetti</label>
+        </div>
 
-        <label>Palette:
-          <select id="palette">
-            <option value="vibrant">Vibrant</option>
-            <option value="pastel">Pastel</option>
-            <option value="mono">Mono</option>
-            <option value="classroom">Classroom</option>
-          </select>
-        </label>
-      </div>
-    </section>
+        <details class="settings saved-lists" id="savedListsPanel">
+          <summary>Saved class lists</summary>
+          <div class="settings-body">
+            <p class="privacy-note">Saved lists stay in this browser on this device. They are not cloud-synced.</p>
+            <div class="field-row">
+              <label class="sr-only" for="listName">Name for this saved list</label>
+              <input id="listName" type="text" maxlength="60" placeholder="List name, e.g. Period 1" autocomplete="off" />
+              <button id="saveList" class="btn small" type="button">Save current list</button>
+            </div>
+            <div class="field-row">
+              <label class="sr-only" for="savedLists">Saved class lists</label>
+              <select id="savedLists">
+                <option value="">Choose a saved list…</option>
+              </select>
+              <button id="loadList" class="btn small" type="button">Load</button>
+              <button id="deleteList" class="btn small danger" type="button">Delete</button>
+            </div>
+          </div>
+        </details>
 
-    <div class="canvas-wrap" role="region" aria-label="Wheel spinner canvas">
-      <canvas id="wheelCanvas" width="400" height="400" aria-label="Random choice wheel"></canvas>
-      <div class="confetti" id="confettiLayer" aria-hidden="true"></div>
+        <details class="settings advanced" id="displayOptions">
+          <summary>Display options</summary>
+          <div class="settings-body">
+            <label class="field-label" for="palette">Wheel colors</label>
+            <div class="field-row">
+              <select id="palette">
+                <option value="vibrant">Vibrant</option>
+                <option value="classroom">Classroom</option>
+                <option value="pastel">Pastel</option>
+                <option value="mono">Blue</option>
+              </select>
+              <button id="darkToggle" class="btn small" type="button" aria-pressed="false">Dark mode</button>
+            </div>
+          </div>
+        </details>
+
+        <p class="privacy-note">Your entries are processed by the wheel in your browser. This tool does not put your list into a share URL.</p>
+      </section>
+
+      <section class="stage-card" aria-labelledby="wheelHeading">
+        <div class="stage-top">
+          <h2 id="wheelHeading">2. Spin the wheel</h2>
+          <button id="projectorMode" class="btn small" type="button" aria-pressed="false">Projector mode</button>
+        </div>
+
+        <div class="wheel-wrap" role="img" aria-label="Random selection wheel. The current entries are listed in the roster field beside the wheel.">
+          <canvas id="wheelCanvas" width="600" height="600" aria-hidden="true"></canvas>
+          <div class="wheel-pointer" aria-hidden="true"></div>
+          <div class="wheel-center" aria-hidden="true"></div>
+          <div class="confetti" id="confettiLayer" aria-hidden="true"></div>
+        </div>
+
+        <div class="spin-zone">
+          <button id="spin" class="btn primary large" type="button" aria-keyshortcuts="Space">Spin the Wheel</button>
+          <p id="result" aria-live="polite" aria-atomic="true"></p>
+          <p class="keyboard-hint">Tip: press Space to spin when you are not typing in a field.</p>
+          <p id="status" class="stage-status" aria-live="polite">Ready</p>
+        </div>
+      </section>
     </div>
 
-    <p id="status">Status: Ready</p>
-    <p id="result" aria-live="polite"></p>
+    <div class="supporting">
+      <section aria-labelledby="quickHeading">
+        <h2 id="quickHeading">Randomly Pick Students in Seconds</h2>
+        <p>Use the classroom wheel when you need a quick, visible way to choose one student or item from a list. Paste names, press Spin, and the selected entry appears clearly on screen. Turn on “Remove selected name” when you want everyone to have a turn before anyone repeats.</p>
+      </section>
 
-    <!-- ✅ Teacher-voice SEO block (keeps your keywords, reads like a real classroom tip section) -->
-    <section class="seo-block" aria-label="Wheel spinner classroom uses and lesson ideas">
-      <h2>Spin the Wheel: A Teacher-Friendly Random Picker for Fair Classroom Choices</h2>
-      <p>
-        If you’ve ever tried to “randomly” call on students and immediately heard, “You always pick the same people,” this
-        wheel spinner solves that problem fast. The visual spin makes your selection feel transparent, and the excitement
-        keeps attention up—especially during review, stations, or discussion days.
-      </p>
-      <p>
-        To use the wheel, type or paste one item per line: student names, team numbers, discussion prompts, vocabulary
-        words, lab roles, or even quick formative check questions. Pick a color palette, hit <em>Spin</em>, and let the
-        wheel choose. Turn on <strong>Remove winner after spin</strong> when you want everyone to get a turn before repeats.
-      </p>
-      <p>
-        Here are a few classroom-ready ways I’d use it:
-        pick a <strong>discussion leader</strong>, assign <strong>station rotations</strong>, choose a <strong>random problem type</strong>,
-        or select which group shares first. In ELA, spin for a claim/evidence sentence starter. In math, spin for a strategy
-        a student must explain. In science, spin for lab roles or variables to test. In social studies, spin for a perspective,
-        region, or primary source to analyze.
-      </p>
-      <p>
-        Want to keep the pace tight? Pair the wheel with the <a href="/tools/timer.html">Classroom Timer</a> so students have a
-        clear response window. If you prefer list-only randomization, try the <a href="/tools/text-randomizer.html">Text Randomizer</a>,
-        but the wheel’s “big moment” energy is great for boosting participation—especially with classes that need a little extra spark.
-      </p>
-      <p>
-        For differentiation, I’ll often keep multiple wheels: a “foundations” wheel and a “challenge” wheel. Students can earn a spin
-        on the challenge wheel after demonstrating mastery, which makes differentiation feel like a reward instead of a label.
-      </p>
-      <p>
-        Bottom line: this classroom wheel spinner is an easy, low-prep way to make everyday choices feel fair, fun, and consistent—
-        while keeping you moving through the lesson without wasting time.
-      </p>
-    </section>
-  <section class="ta-value">
-  <h2>How to Use This in Class</h2>
-  <p><strong>What this tool does:</strong> The Wheel Spinner for Classroom Random Picker experience combines simple controls with clear goals so students focus on the learning, not the interface. It provides a focused space for students to engage with Wheel Spinner for Classroom Random Picker tasks, make choices, and see immediate feedback. Students interact with the Wheel Spinner for Classroom Random Picker content through short prompts, decisions, and checkpoints that keep momentum high. The design works in whole-group modeling or in small groups, letting you differentiate with pace and support.</p>
-  <p>Use Wheel Spinner for Classroom Random Picker as a review station: set a timer, pair students, and rotate groups for short bursts of practice. As students work, circulate with a clipboard to capture misconceptions and highlight effective strategies. You can also project the activity and run it as a guided whole-class challenge to build shared vocabulary.</p>
-  <h3>Quick Classroom Ideas</h3>
-  <ul>
-    <li>Exit ticket tie-in after the session</li><li>Warm-up challenge to activate prior knowledge</li><li>Small-group rotation station</li><li>Partner practice with discussion pauses</li><li>Whole-class projection for guided practice</li>
-  </ul>
-  <h3>Skills Students Practice</h3>
-  <ul>
-    <li>Reflecting on mistakes and adjustments</li><li>Academic language usage</li><li>Goal setting and self-monitoring</li><li>Evidence-based explanations</li><li>Time management during practice</li><li>Content vocabulary and key terms</li><li>Critical thinking and reasoning</li><li>Reading and interpreting prompts</li>
-  </ul>
-  <h3>Suggested Grade Levels &amp; Timing</h3>
-  <p>Wheel Spinner for Classroom Random Picker fits grades 4–10 with easy adjustments. Plan 10–25 minutes of active use plus a 5–10 minute reflection. Differentiate by pairing students, providing sentence starters, or letting advanced learners set a challenge goal.</p>
-  <h3>FAQ</h3>
-  <details>
-    <summary>Do students need accounts?</summary>
-    <p>No. The Wheel Spinner for Classroom Random Picker activity runs directly in the browser with no logins required.</p>
-  </details>
-  <details>
-    <summary>How long should a session last?</summary>
-    <p>Most classes use Wheel Spinner for Classroom Random Picker for 10–20 minutes, with a quick debrief afterward.</p>
-  </details>
-  <details>
-    <summary>Can I use this with limited devices?</summary>
-    <p>Yes. Wheel Spinner for Classroom Random Picker works well in stations, partner play, or whole-class projection.</p>
-  </details>
-  <details>
-    <summary>Is it aligned to standards?</summary>
-    <p>The Wheel Spinner for Classroom Random Picker focus supports common skills such as analysis, reasoning, and content recall.</p>
-  </details>
-  <details>
-    <summary>What if students finish early?</summary>
-    <p>Have early finishers replay Wheel Spinner for Classroom Random Picker with a new goal or write a short summary of strategies used.</p>
-  </details>
-</section>
-</main>
+      <section aria-labelledby="usesHeading">
+        <h2 id="usesHeading">Ways to Use the Classroom Wheel</h2>
+        <div class="use-grid">
+          <div class="use-card"><h3>Participation</h3><p>Choose a student to answer, share, read, or lead a discussion.</p></div>
+          <div class="use-card"><h3>Presentation Order</h3><p>Randomize which student or group presents next.</p></div>
+          <div class="use-card"><h3>Classroom Jobs</h3><p>Pick helpers, materials managers, leaders, or other rotating roles.</p></div>
+          <div class="use-card"><h3>Review Topics</h3><p>Spin for vocabulary, questions, problems, or topics to review.</p></div>
+          <div class="use-card"><h3>Activities</h3><p>Choose a brain break, station, writing prompt, or classroom activity.</p></div>
+          <div class="use-card"><h3>Teams &amp; Leaders</h3><p>Pick a team, spokesperson, captain, or first group to begin.</p></div>
+        </div>
+      </section>
 
-  <!-- Winner overlay -->
-  <div class="overlay" id="overlay">
+      <section aria-labelledby="howHeading">
+        <h2 id="howHeading">How to Use the Random Name Picker</h2>
+        <ol>
+          <li>Paste or type one student name or item per line.</li>
+          <li>Press <strong>Spin the Wheel</strong>.</li>
+          <li>Use the selected result, then close the winner card or spin again.</li>
+          <li>For no repeats, turn on <strong>Remove selected name after each spin</strong>. Use <strong>Reset removed</strong> to start a fresh round.</li>
+        </ol>
+      </section>
+
+      <section aria-labelledby="whyHeading">
+        <h2 id="whyHeading">Why Use a Random Student Picker?</h2>
+        <p>A random selector can make everyday classroom choices faster and more transparent. It can reduce the tendency to call on the same volunteers, give more students a chance to participate, and add a small moment of anticipation without turning a simple routine into a complicated setup.</p>
+      </section>
+
+      <section class="faq" aria-labelledby="faqHeading">
+        <h2 id="faqHeading">Classroom Random Picker FAQ</h2>
+        <details>
+          <summary>Is the classroom random name picker free?</summary>
+          <p>Yes. The wheel is free to use and does not require a Teach Arcade account.</p>
+        </details>
+        <details>
+          <summary>Can I paste an entire class list?</summary>
+          <p>Yes. Paste one name per line. Blank lines are automatically ignored, and you can edit the list at any time.</p>
+        </details>
+        <details>
+          <summary>Can I remove students after they are selected?</summary>
+          <p>Yes. Turn on “Remove selected name after each spin.” The Reset removed button restores the full list for a new round.</p>
+        </details>
+        <details>
+          <summary>Can I use the wheel for things other than student names?</summary>
+          <p>Yes. Each line can be a question, vocabulary term, activity, classroom job, group, presentation topic, or any other text entry.</p>
+        </details>
+        <details>
+          <summary>Can I use the random picker on a classroom projector?</summary>
+          <p>Yes. Projector mode enlarges the wheel and removes secondary page content so the active classroom controls stay easy to see.</p>
+        </details>
+        <details>
+          <summary>Are student names uploaded or stored online?</summary>
+          <p>The wheel code processes entries in your browser. Saved class lists use your browser’s local storage on that device, and the wheel does not place roster entries into its URLs.</p>
+        </details>
+        <details>
+          <summary>Can I save more than one class list?</summary>
+          <p>Yes. Open Saved class lists, give the current list a name such as “Period 1,” and save it locally in this browser. You can load or delete saved lists later.</p>
+        </details>
+        <details>
+          <summary>What happens if the same name appears twice?</summary>
+          <p>Duplicate lines are treated as separate entries. If a name appears twice, it has two equal entries on the wheel.</p>
+        </details>
+        <details>
+          <summary>Does the wheel work on phones and tablets?</summary>
+          <p>Yes. The wheel and controls resize for smaller screens while keeping the larger desktop and projector layout for classroom use.</p>
+        </details>
+      </section>
+
+      <section aria-labelledby="moreToolsHeading">
+        <h2 id="moreToolsHeading">More Free Teacher Tools</h2>
+        <p>Need a different classroom helper? These tools solve related jobs without adding extra setup to the wheel.</p>
+        <div class="tool-links">
+          <a href="/tools/group-maker.html">Random Group Maker</a>
+          <a href="/tools/timer.html">Classroom Timer</a>
+          <a href="/tools/buzzer.html">Quiz Buzzer</a>
+          <a href="/tools/">All Teacher Tools</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="winnerHeading" aria-describedby="winnerInstruction">
     <div class="win-card">
-      <p>Winner</p>
+      <h2 id="winnerHeading">Selected</h2>
       <div class="winner" id="overlayWinner">—</div>
-      <div style="margin-top:12px">
-        <button class="btn primary" id="overlayClose">OK</button>
+      <p id="winnerInstruction" class="keyboard-hint">The wheel has selected this entry at random.</p>
+      <div class="overlay-actions">
+        <button class="btn primary" id="overlaySpinAgain" type="button">Spin Again</button>
+        <button class="btn" id="overlayClose" type="button">Close</button>
       </div>
     </div>
   </div>
@@ -320,75 +463,6 @@
     <a href="/privacy.html">Privacy</a> • <a href="/terms.html">Terms</a>
   </footer>
 
-  <script src="/assets/scripts/wheel.js?v=6" defer></script>
-
-  <!-- ✅ Random teacher-style placeholder samples (no dependency on wheel.js) -->
-  <script>
-    (function () {
-      const ta = document.getElementById("items");
-      if (!ta) return;
-
-      const sets = [
-        [
-          "Ava M.",
-          "Malik R.",
-          "Sofia K.",
-          "Jaden T.",
-          "Harper L.",
-          "Gary D.",
-          "Nora S.",
-          "Diego P.",
-          "Zoe W.",
-          "Ethan C.",
-          "Mia G."
-        ],
-        [
-          "Table 1",
-          "Table 2",
-          "Table 3",
-          "Table 4",
-          "Read-aloud helper",
-          "Materials manager",
-          "Timekeeper",
-          "Speaker",
-          "Recorder",
-          "Tech helper"
-        ],
-        [
-          "Warm-up: 2-minute quick write",
-          "Turn-and-talk prompt",
-          "Exit ticket question",
-          "Vocabulary review",
-          "Challenge problem",
-          "Think-Pair-Share",
-          "Quick check: thumbs up/down",
-          "Mini whiteboard response",
-          "Station rotation",
-          "Bonus question"
-        ],
-        [
-          "Discuss: Claim vs. evidence",
-          "Solve: multi-step equation",
-          "Analyze: cause & effect",
-          "Explain: your strategy",
-          "Compare: two perspectives",
-          "Summarize: today’s learning",
-          "Predict: what happens next?",
-          "Define: key term",
-          "Connect: to real life",
-          "Reflect: one takeaway"
-        ]
-      ];
-
-      // Pick a random set + randomize order a bit
-      const pick = sets[Math.floor(Math.random() * sets.length)].slice();
-      for (let i = pick.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [pick[i], pick[j]] = [pick[j], pick[i]];
-      }
-
-      ta.placeholder = pick.join("\n");
-    })();
-  </script>
+  <script src="/assets/scripts/wheel.js?v=7" defer></script>
 </body>
 </html>
