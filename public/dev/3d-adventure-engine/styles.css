@@ -5,12 +5,13 @@
 }
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
-html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: #07111f; }
+html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; overscroll-behavior: none; background: #07111f; }
 button, input { font: inherit; }
 button { cursor: pointer; }
-#gameShell { position: relative; width: 100vw; height: 100dvh; min-height: 100vh; overflow: hidden; background: linear-gradient(#12213a, #07111f); }
+#gameShell { position: relative; width: 100vw; height: 100dvh; min-height: 100%; overflow: hidden; background: linear-gradient(#12213a, #07111f); }
 #gameMount, #gameMount canvas { width: 100%; height: 100%; display: block; }
-#hud { position: absolute; inset: 16px 16px auto 16px; display: grid; grid-template-columns: auto minmax(260px, 520px) auto; gap: 12px; pointer-events: none; z-index: 5; }
+#gameMount canvas { touch-action: none; }
+#hud { position: absolute; inset: max(16px, env(safe-area-inset-top)) 16px auto 16px; display: grid; grid-template-columns: auto minmax(260px, 520px) auto; gap: 12px; pointer-events: none; z-index: 5; }
 .hud-card { background: rgba(7, 17, 31, .80); border: 1px solid rgba(148, 163, 184, .28); box-shadow: 0 14px 35px rgba(0,0,0,.24); backdrop-filter: blur(12px); border-radius: 16px; padding: 12px 14px; }
 .brand-card, .objective-card { display: flex; flex-direction: column; gap: 3px; }
 .brand-card strong { font-size: 1rem; }
@@ -45,13 +46,32 @@ kbd { display: inline-flex; min-width: 24px; min-height: 24px; align-items: cent
 @keyframes spin { to { transform: rotate(360deg); } }
 .fallback { padding: 28px; }
 .fallback h1 { margin-bottom: 0; }
+
+.touch-controls { position: absolute; inset: 0; z-index: 7; pointer-events: none; touch-action: none; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+.touch-left { position: absolute; left: max(22px, env(safe-area-inset-left)); bottom: max(22px, env(safe-area-inset-bottom)); width: 138px; height: 158px; display: grid; justify-items: center; align-content: end; gap: 5px; pointer-events: auto; }
+.touch-joystick { position: relative; width: 126px; height: 126px; border-radius: 50%; touch-action: none; }
+.touch-joystick-ring { position: absolute; inset: 12px; border-radius: 50%; border: 2px solid rgba(226, 232, 240, .32); background: rgba(7, 17, 31, .32); box-shadow: inset 0 0 24px rgba(0,0,0,.22), 0 8px 28px rgba(0,0,0,.18); backdrop-filter: blur(5px); transition: border-color .12s ease, background .12s ease; }
+.touch-joystick.active .touch-joystick-ring { border-color: rgba(125, 211, 252, .72); background: rgba(14, 47, 72, .48); }
+.touch-joystick-stick { position: absolute; left: 50%; top: 50%; width: 58px; height: 58px; margin: -29px 0 0 -29px; border-radius: 50%; border: 2px solid rgba(255,255,255,.52); background: rgba(56, 189, 248, .58); box-shadow: 0 8px 20px rgba(0,0,0,.25); pointer-events: none; will-change: transform; }
+.touch-caption { font-size: .62rem; font-weight: 850; letter-spacing: .14em; color: rgba(226,232,240,.74); text-shadow: 0 1px 3px rgba(0,0,0,.6); }
+.touch-actions { position: absolute; right: max(22px, env(safe-area-inset-right)); bottom: max(26px, env(safe-area-inset-bottom)); display: grid; grid-template-columns: 72px 84px; grid-template-areas: "run jump" "run action"; gap: 10px; align-items: end; pointer-events: auto; }
+.touch-button { min-width: 76px; min-height: 58px; border: 1px solid rgba(255,255,255,.34); border-radius: 18px; background: rgba(15, 23, 42, .68); color: #f8fafc; font-size: .72rem; font-weight: 900; letter-spacing: .06em; box-shadow: 0 8px 24px rgba(0,0,0,.24), inset 0 1px 0 rgba(255,255,255,.08); backdrop-filter: blur(8px); touch-action: none; -webkit-tap-highlight-color: transparent; }
+.touch-button.pressed { transform: scale(.95); background: rgba(30, 64, 89, .9); }
+.touch-primary { grid-area: action; min-width: 84px; background: rgba(14, 116, 144, .78); border-color: rgba(125, 211, 252, .7); }
+#touchJump { grid-area: jump; }
+.touch-run { grid-area: run; min-width: 72px; min-height: 74px; align-self: center; }
+.touch-run.active { background: rgba(5, 150, 105, .78); border-color: rgba(110, 231, 183, .74); box-shadow: 0 0 0 2px rgba(52,211,153,.12), 0 8px 24px rgba(0,0,0,.24); }
+.touch-camera-hint { position: absolute; left: 50%; bottom: max(22px, env(safe-area-inset-bottom)); transform: translateX(-50%); padding: 7px 10px; border-radius: 12px; background: rgba(7,17,31,.46); color: rgba(226,232,240,.75); font-size: .66rem; font-weight: 700; letter-spacing: .02em; pointer-events: none; backdrop-filter: blur(5px); }
+.touch-device .interaction-prompt { bottom: max(118px, calc(env(safe-area-inset-bottom) + 104px)); }
+.touch-device #crosshair { opacity: .65; }
+
 @media (max-width: 900px) {
   #hud { grid-template-columns: 1fr 1fr; }
   .objective-card { grid-column: 1 / -1; grid-row: 2; }
   .status-card { justify-self: end; }
 }
 @media (max-width: 620px) {
-  #hud { inset: 8px 8px auto 8px; gap: 7px; }
+  #hud { inset: max(8px, env(safe-area-inset-top)) 8px auto 8px; gap: 7px; }
   .hud-card { padding: 9px 10px; border-radius: 12px; }
   .brand-card strong { font-size: .84rem; }
   .status-card { font-size: .68rem; min-width: 128px; }
@@ -60,4 +80,18 @@ kbd { display: inline-flex; min-width: 24px; min-height: 24px; align-items: cent
   .controls-hint { left: 8px; bottom: 8px; font-size: .64rem; gap: 6px 8px; }
   .interaction-prompt { bottom: 68px; }
   .dialog-footer { align-items: flex-start; flex-direction: column; }
+  .touch-left { left: max(10px, env(safe-area-inset-left)); bottom: max(10px, env(safe-area-inset-bottom)); transform: scale(.86); transform-origin: bottom left; }
+  .touch-actions { right: max(10px, env(safe-area-inset-right)); bottom: max(14px, env(safe-area-inset-bottom)); transform: scale(.88); transform-origin: bottom right; }
+  .touch-camera-hint { display: none; }
+  .touch-device .interaction-prompt { bottom: max(100px, calc(env(safe-area-inset-bottom) + 88px)); }
+}
+@media (pointer: coarse) and (orientation: landscape) and (max-height: 620px) {
+  #hud { inset: max(8px, env(safe-area-inset-top)) 10px auto 10px; grid-template-columns: auto minmax(230px, 1fr) auto; gap: 7px; }
+  .hud-card { padding: 8px 10px; border-radius: 12px; }
+  .objective-card { grid-column: auto; grid-row: auto; }
+  .objective-card #objectiveSubtext { display: none; }
+  .brand-card .prototype { display: none; }
+  .touch-left { transform: scale(.82); transform-origin: bottom left; }
+  .touch-actions { transform: scale(.85); transform-origin: bottom right; }
+  .touch-camera-hint { bottom: max(12px, env(safe-area-inset-bottom)); }
 }
