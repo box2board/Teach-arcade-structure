@@ -7,6 +7,8 @@ URL.createObjectURL=blob=>{const id='blob:test-'+downloadBlobs.size;downloadBlob
 URL.revokeObjectURL=id=>downloadBlobs.delete(id);
 const nodes=new Map();globalThis.document={getElementById(id){if(!nodes.has(id))nodes.set(id,new Node());return nodes.get(id)},body:new Node(),querySelector(selector){if(selector!=='script[data-map]'){if(selector==='#message')return this.getElementById('message');if(!nodes.has(selector))nodes.set(selector,new Node());return nodes.get(selector);}return {dataset:{map:'./outpost.js',questionSet:'./scientific-method.js'}}},querySelectorAll(){return []},createElement(){return new Node()},addEventListener(){},hidden:false};const windowListeners={};globalThis.window={addEventListener(name,fn){windowListeners[name]=fn}};let animationFrame,clock=100;globalThis.requestAnimationFrame=fn=>{if(fn.name==='frame')animationFrame=fn};
 const stored=new Map();
+const testingMode=process.env.QUEST_OUTPOST_MODE||'explore',modeIndex=['explore','medium','hard'].indexOf(testingMode);
+const questionTotal=testingMode==='hard'?12:testingMode==='medium'?8:6;
 globalThis.localStorage={getItem:k=>stored.get(k),setItem:(k,v)=>stored.set(k,v),removeItem:k=>stored.delete(k)};
 await import('../public/arcade-review-games/shared/top-down/game.js');
 const get=id=>nodes.get(id);
@@ -17,9 +19,9 @@ get('world').getBoundingClientRect=()=>{
  return {left:parseFloat(style.left)*width/100,top:parseFloat(style.top)*height/100,width:parseFloat(style.width)*width/100,height:parseFloat(style.height)*height/100};
 };
 get('world').animate=(frames,options)=>{const flight={frames,options,cancel(){this.canceled=true;}};cameraFlights.push(flight);return flight;};
-assert.equal(get('tiles').children.length,425);assert.equal(get('dialog-actions').children.length,1);
-get('dialog-actions').children[0].listeners.click();
-assert.equal(get('tiles').children.length,425);assert.equal(get('difficulty').textContent,'Explore · 6 questions');
+assert.equal(get('tiles').children.length,425);assert.equal(get('dialog-actions').children.length,3);
+get('dialog-actions').children[modeIndex].listeners.click();
+assert.equal(get('tiles').children.length,425);assert.equal(get('difficulty').textContent,`${['Easy','Medium','Hard'][modeIndex]} · ${questionTotal} questions`);
 assert.equal(get('world').style.height,`${17/9*100}%`);assert.equal(get('world').style['--row'],`${100/17}%`);
 assert.equal(get('world').style.width,`${25/13*100}%`);
 assert.equal(get('board').style.aspectRatio,'13/9');
@@ -31,7 +33,7 @@ const {createAdventure}=await import('../public/arcade-review-games/shared/top-d
 const {content}=await import('../public/arcade-review-games/shared/top-down/scientific-method.js');
 const {createState,move,obstacle,interact,completeChallenge}=await import('../public/arcade-review-games/shared/top-down/model.js');
 const {createReview,answerReview}=await import('../public/arcade-review-games/shared/top-down/review.js');
-const map=createAdventure(),s=createState(map);s.review=createReview(map,content.questions);
+const map=createAdventure(testingMode),s=createState(map);s.review=createReview(map,content.questions);
 // Exercise real held-key composition before following the puzzle route.
 const press=key=>get('board').listeners.keydown({key,repeat:false,preventDefault(){}});
 const tick=()=>{clock+=25;animationFrame(clock);};
@@ -95,18 +97,24 @@ windowListeners.pagehide();
 const saveKey=[...stored.keys()][0],resumeSnapshot=stored.get(saveKey),resumePoint=point();
 assert.ok(resumeSnapshot,'Leaving the tab writes progress');
 assert.ok(cameraFlights.some(f=>/^translate\(0px,-/.test(f.frames[0].transform)),'North boundary glides vertically');
+if(testingMode==='hard'){go(4,6);step('up');step('up');}
 go(3,3);step('right');assert.match(action().text,/CROSS/);
 go(10,4);face('down');assert.match(action().text,/Bridge raised/);
 go(9,6);face('right');earn('lens-chest');go(20,2);face('right');earn('cell-chest');
 assert.equal(get('room').textContent,'03 · Relay');assert.equal(get('world').style.left,`${-12/13*100}%`);
 assert.ok(cameraFlights.some(f=>/^translate\([^0][^,]*px,0px\)/.test(f.frames[0].transform)),'East boundary glides horizontally');
-go(14,6);for(let i=0;i<4;i++)step('right');go(16,7);step('down');step('down');
+if(testingMode!=='explore'){go(16,3);face('up');earn('crank-chest');}
+go(14,6);for(let i=0;i<4;i++)step('right');
+if(testingMode!=='explore'){go(16,4);for(let i=0;i<4;i++)step('right');}
+if(testingMode==='hard'){go(14,3);for(let i=0;i<4;i++)step('right');}
+go(16,7);step('down');step('down');
 assert.equal(get('room').textContent,'04 · Beacon');assert.equal(get('world').style.top,`${-8/9*100}%`);
 assert.equal(get('board').style.aspectRatio,'13/9');
-assert.equal(get('seals').textContent,'Stations: 4 / 4');
+if(testingMode!=='explore'){go(19,9);face('down');assert.match(action().text,/Drawbridge/);}
+assert.equal(get('seals').textContent,testingMode==='explore'?'Stations: 4 / 4':'Stations: 5 / 5');
 go(20,12);assert.equal(action().type,'win');assert.equal(get('dialog-label').textContent,'BEACON RESTORED');
 assert.equal(get('dialog-title').textContent,'Adventure complete');
-assert.ok(get('dialog-body').children.some(p=>p.textContent.includes('Review completed: 6 / 6')));
+assert.ok(get('dialog-body').children.some(p=>p.textContent.includes(`Review completed: ${questionTotal} / ${questionTotal}`)));
 assert.ok(get('dialog-body').children.every(p=>!p.textContent.includes('Archive')&&!p.textContent.includes('seal crystal')));
 console.log('DOM flow: Outpost completes all review chests, both camera directions, mirror crossing, block gate and beacon completion using the same game module.');
 get('dialog-actions').children.find(b=>b.textContent==='View results report').click();
@@ -116,7 +124,7 @@ let prevented=false;get('dialog').listeners.keydown({key:'ArrowLeft',target:{tag
 get('dialog').listeners.keydown({key:'Enter',target:{tagName:'BUTTON'},repeat:false,preventDefault(){}});
 assert.equal(downloads.length,1);assert.equal(downloads[0].download,'quest-arcade-mosslight-outpost-results.txt');
 const downloaded=await downloadBlobs.get(downloads[0].href).text();
-assert.match(downloaded,/Student: Alex/);assert.match(downloaded,/Questions completed: 6 \/ 6/);assert.match(downloaded,/Adventure: Complete/);
+assert.match(downloaded,/Student: Alex/);assert.ok(downloaded.includes(`Questions completed: ${questionTotal} / ${questionTotal}`));assert.match(downloaded,/Adventure: Complete/);
 get('dialog-actions').children[1].click();assert.equal(get('dialog-title').textContent,'Adventure complete');
 assert.equal(stored.size,0,'Winning clears the unfinished save');
 stored.set(saveKey,resumeSnapshot);nodes.clear();
@@ -126,7 +134,7 @@ get('dialog-actions').children[0].listeners.click();
 assert.equal(get('dialog').open,false);assert.equal(get('room').textContent,'02 · Optics');
 assert.deepEqual(point(),resumePoint);
 assert.ok(get('inventory').children.some(b=>b.children.some(c=>c.textContent==='Used')));
-assert.equal(get('seals').textContent,'Stations: 1 / 4');
+assert.equal(get('seals').textContent,testingMode==='explore'?'Stations: 1 / 4':'Stations: 1 / 5');
 get('pause').listeners.click();assert.ok(get('dialog-body').children.some(p=>p.textContent.includes('saved automatically')));
 get('dialog-actions').children.find(b=>b.textContent==='View progress report').click();
 assert.equal(get('dialog-title').textContent,'Adventure progress');
@@ -134,5 +142,5 @@ get('dialog-actions').children[0].click();
 assert.match(await downloadBlobs.get(downloads.at(-1).href).text(),/Adventure: In progress/);
 get('dialog-actions').children[1].click();get('pause').listeners.click();
 get('dialog-actions').children[1].listeners.click();get('dialog-actions').children[0].listeners.click();
-assert.equal(get('room').textContent,'01 · Dock');assert.equal(get('seals').textContent,'Stations: 0 / 4');
+assert.equal(get('room').textContent,'01 · Dock');assert.equal(get('seals').textContent,testingMode==='explore'?'Stations: 0 / 4':'Stations: 0 / 5');
 console.log('DOM save flow: refresh offers Continue, restores position, used key and chest progress; restart replaces the save.');

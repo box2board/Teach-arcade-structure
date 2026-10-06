@@ -40,6 +40,7 @@ node --test scripts/test-top-down-motion.mjs
 node --test scripts/test-top-down-camera.mjs
 node --test scripts/test-top-down-save.mjs
 node --test scripts/test-top-down-report.mjs
+node --test scripts/test-top-down-outpost-modes.mjs
 ```
 
 The UI scripts use a simulated DOM, not a browser. Browser/mobile visual and interaction verification remains necessary.
@@ -51,6 +52,10 @@ The UI scripts use a simulated DOM, not a browser. Browser/mobile visual and int
 The shared viewport layout fits the active room into the available stage with square tiles, recalculating on resize. Laptops place controls and objectives beside the map; portrait phones place compact controls below it. Bag & clues, Help, and full-message dialogs keep longer information accessible without extending the gameplay page. Tall rooms still use a tall footprint: design wider camera bounds and room geometry for adventures intended to fill a laptop horizontally.
 
 Mosslight Outpost demonstrates 13-by-9 room cameras on a 25-by-17 world. Its reward chests span the wider rooms, the crossing is on the east boundary, and the relay crate travels four tiles to its floor switch. All four room views keep the same aspect ratio at transitions.
+
+Outpost Easy (`explore`, the default) retains the original one-crate route and six questions. Medium has eight questions, two crate counterweights, and a crank chest. Hard has twelve questions, three counterweights, and a mirror requiring northward and eastward pushes. Medium/Hard split Beacon with an impassable canal and one drawbridge. The crank remains a reusable tool after LIFT opens that route. Reset retains the tool, rewards, and opened bridges but returns counterweights to their original positions; gates close until their switches are occupied again. The mode route tests exercise continuous controls, all review rewards, crossing activation, report downloads and save/resume.
+
+A `bridgeSwitch` can require `receiver`, `requiresTool`, or both. Validation requires at least one of those prerequisites and a valid `bridge`. Activation checks each configured prerequisite and latches the bridge open without consuming the tool. `lockedText`, `raiseText`, and `openText` explain a specific mechanism. A `bridge` can set `lockedText` and an `appearance` with matching active and `-down` artwork. Doors with a `plates` array require every plate to be occupied; they remain sensitive to block movement rather than latching open.
 
 `motion.js` drives a continuous player position at four tiles per second with normalized diagonal input, a small circular collision footprint, short collision substeps, and sliding along walls. The nearest occupied tile remains the model's logical position for review interactions, pickups, and room ownership. Grid model moves commit cell crossings and centered block pushes; inventory doors open on approach. Rendering updates the explorer through a composited transform every frame. Ordinary cell crossings preserve entity and inventory DOM; full updates occur when puzzle state changes or the camera enters another room. Undo and reset synchronize the continuous position back to the restored tile. Dialogs, blur, and hidden tabs release held input.
 

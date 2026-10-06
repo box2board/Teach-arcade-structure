@@ -68,7 +68,7 @@ function render(){
     if(state.collected.includes(item.id))continue;
     let active=item.type==='door'?doorOpen(map,state,item):item.type==='plate'?state.blocks.some(b=>b.x===item.x&&b.y===item.y):item.type==='exit'?exitReady(map,state,item):item.type==='receiver'?light.powered.includes(item.id):item.type==='bridge'?state.opened.includes(item.id):state.activated.includes(item.id);
     const e=element('div',undefined,`entity sprite ${item.type}${item.appearance?' '+item.appearance:''}${active?' active':''}${item.type==='door'&&active?' open':''}${state.solved.includes(item.id)?' done':''}`);
-    e.style.left=`${item.x/map.tiles[0].length*100}%`;e.style.top=`${item.y/map.tiles.length*100}%`;const kind=item.type==='door'?(active?'open':item.appearance==='cracked'?'cracked':'door'):item.type==='mirror'?(item.orientation==='/'?'mirror':'mirror-back'):item.type==='bridge'?(active?'bridge':'bridge-down'):item.type==='bridgeSwitch'?'lever':item.appearance||item.type;
+    e.style.left=`${item.x/map.tiles[0].length*100}%`;e.style.top=`${item.y/map.tiles.length*100}%`;const kind=item.type==='door'?(active?'open':item.appearance==='cracked'?'cracked':'door'):item.type==='mirror'?(item.orientation==='/'?'mirror':'mirror-back'):item.type==='bridge'?(active?item.appearance||'bridge':(item.appearance||'bridge')+'-down'):item.type==='bridgeSwitch'?item.appearance||'lever':item.appearance||item.type;
     e.append(sprite(kind));
     if(['lever','bridgeSwitch'].includes(item.type)&&item.label)e.append(element('small',item.label,'switch-label'));
     if(item.type==='exit'&&item.sequencePuzzle){

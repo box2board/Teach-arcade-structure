@@ -1,12 +1,13 @@
 // A second adventure uses only map data and the shared engine.
-export function createAdventure(){
+export function createAdventure(mode='explore'){
+  if(!['explore','medium','hard'].includes(mode))throw Error('Unknown Outpost mode: '+mode);
   const tiles=Array.from({length:17},()=>Array(25).fill('#'));
   for(const [x0,y0] of [[1,1],[13,1],[1,9],[13,9]])for(let y=y0;y<y0+7;y++)for(let x=x0;x<x0+11;x++)tiles[y][x]='.';
   for(const [x,y] of [[4,8],[12,4],[16,8]])tiles[y][x]='.';
   tiles[3][12]='~';tiles[5][12]='~';
-  return {
-    id:'mosslight-outpost',title:'Mosslight Outpost',mode:'explore',
-    modes:[{id:'explore',label:'Explore',description:'Four rooms around a courtyard, six science review questions, a mirror-powered crossing, and a block gate. Restore the beacon.'}],
+  const map={
+    id:'mosslight-outpost',title:'Mosslight Outpost',mode,
+    modes:[{id:'explore',label:'Easy',description:'Six review questions, a mirror crossing, and a single-crate gate.'},{id:'medium',label:'Medium',description:'Eight review questions, a two-crate gate, and a review-earned crank to raise the beacon drawbridge.'},{id:'hard',label:'Hard',description:'Twelve review questions, a mirror that needs several pushes, a three-crate gate, and a crank drawbridge.'}],
     start:{x:3,y:13},startMessage:'Read the Dock sign, then earn the Moss key from the survey chest.',
     tiles:tiles.map(row=>row.join('')),
     blocks:[{id:'prism-cart',kind:'mirror',x:4,y:3,orientation:'/'},{id:'relay-crate',x:15,y:6}],
@@ -52,4 +53,33 @@ export function createAdventure(){
       {name:'04 · Beacon',theme:'garden',min:13,max:23,minY:9,maxY:15,viewMin:12,viewMax:24,viewMinY:8,viewMaxY:16,objective:'The beacon needs the lens from Optics and the cell from Relay.',objectiveRules:[{when:{exitReady:'beacon'},text:'Stand on the beacon and interact to restore it.'}]}
     ]
   };
+  if(mode==='explore')return map;
+  map.inventory.push({id:'bridge-crank',type:'tool',value:'crank',label:'Bridge crank',appearance:'crank'});
+  map.objects.push(
+    {id:'crank-chest',type:'challenge',x:16,y:2,label:'Mechanic chest',questionCount:2,reward:{type:'tool',value:'crank',label:'Bridge crank',message:'Bridge crank earned! Use it at the LIFT socket in the Beacon station.'}},
+    {id:'beacon-lift',type:'bridgeSwitch',appearance:'crank-switch',x:19,y:10,label:'LIFT',requiresTool:'crank',bridge:'beacon-drawbridge',lockedText:'Bridge crank required. Earn it from the Mechanic chest in Relay.',raiseText:'Drawbridge lowered into place! Your crank stays in your bag. Cross south to restore the beacon.',openText:'The drawbridge is in place and safe to cross.'},
+    {id:'beacon-drawbridge',type:'bridge',appearance:'drawbridge',x:20,y:11,lockedText:'The drawbridge is folded away. Earn the bridge crank in Relay, then use the LIFT socket.'},
+    {id:'beacon-sign',type:'sign',x:14,y:9,text:'The canal divides this station. Earn a bridge crank from the Mechanic chest in Relay, then face LIFT and interact to unfold the drawbridge. Carry the lens and cell across to the beacon.'}
+  );
+  const canal=Array.from(map.tiles[11]);for(let x=13;x<=23;x++)canal[x]=x===20?'.':'~';map.tiles[11]=canal.join('');
+  map.blocks.push({id:'relay-crate-east',x:17,y:4});map.plates.push({id:'relay-plate-east',x:21,y:4});
+  const gate=map.doors.find(d=>d.id==='beacon-gate');delete gate.plate;gate.plates=['relay-plate','relay-plate-east'];
+  gate.lockedText='Keep a crate on every amber floor switch to open the south gate.';
+  gate.openText='All counterweights are in place. The south gate is open!';
+  if(mode==='hard'){
+    map.blocks.push({id:'relay-crate-north',x:15,y:3});map.plates.push({id:'relay-plate-north',x:19,y:3});gate.plates.push('relay-plate-north');
+    const mirror=map.blocks.find(b=>b.kind==='mirror');mirror.y=5;
+    map.objects.find(o=>o.id==='optics-sign').text='Move the silver mirror onto the marked socket at the end of the eastbound light. It starts two rows south and one column west of the socket. Push it north twice, then east once; interact to rotate it south. Use CROSS when the receiver glows.';
+    for(const chest of map.objects.filter(o=>o.type==='challenge'))chest.questionCount=3;
+  }
+  const crates=mode==='hard'?'three':'two';
+  map.objects.find(o=>o.id==='relay-sign').text=`Park ${crates} crates on the ${crates} amber floor switches. Every switch must stay occupied to open the south gate. Earn the beacon cell and bridge crank here before leaving.`;
+  const exit=map.objects.find(o=>o.id==='beacon');exit.requires=['beacon-lift'];exit.lockedText='Raise the beacon drawbridge using the LIFT socket first.';
+  map.milestones.splice(3,0,{when:{opened:['beacon-drawbridge']}});
+  map.rooms[2].objective=`Earn the cell and crank; park all ${crates} crates on the floor switches.`;
+  map.rooms[2].objectiveRules=[{when:{doorOpen:'beacon-gate',items:['cell'],tools:['crank']},text:'Carry your supplies and crank through the south gate.'},{when:{doorOpen:'beacon-gate'},text:'The gate is open. Earn the beacon cell and crank before leaving.'}];
+  map.rooms[3].objective='Earn the bridge crank in Relay, then use LIFT to cross the canal.';
+  map.rooms[3].objectiveRules=[{when:{exitReady:'beacon'},text:'Cross the drawbridge, stand on the beacon, and interact to restore it.'},{when:{tools:['crank'],not:{opened:['beacon-drawbridge']}},text:'Face the LIFT socket and interact to unfold the drawbridge.'},{when:{opened:['beacon-drawbridge']},text:'The bridge is safe. Bring the lens and cell to the beacon.'}];
+  map.completion.summary=`You restored the beacon by directing light, balancing ${crates} counterweights, and using a review-earned crank to cross the canal.`;
+  return map;
 }

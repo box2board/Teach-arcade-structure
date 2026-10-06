@@ -25,7 +25,7 @@ export function validateAdventure(map){
     }
     if(o.clue&&!clues.has(o.clue))fail(o.id+' references an unknown clue.');
     if(o.requiresTool&&!hasReward('tool',o.requiresTool))fail(o.id+' references an unknown tool.');
-    if(o.type==='bridgeSwitch'&&(objects.get(o.receiver)?.type!=='receiver'||objects.get(o.bridge)?.type!=='bridge'))fail(o.id+' needs a receiver and bridge.');
+    if(o.type==='bridgeSwitch'&&(objects.get(o.bridge)?.type!=='bridge'||o.receiver&&objects.get(o.receiver)?.type!=='receiver'||!o.receiver&&!o.requiresTool))fail(o.id+' needs a receiver and bridge, or a tool and bridge.');
     for(const id of o.requiredItems||[])if(!hasReward('item',id))fail(o.id+' references an unknown required item.');
     if(o.sequencePuzzle&&!puzzles.has(o.sequencePuzzle))fail(o.id+' references an unknown sequence puzzle.');
     for(const id of o.requires||[])if(!objects.has(id))fail(o.id+' references an unknown switch.');

@@ -137,11 +137,12 @@ export function interact(map,state,target=null) {
   if (!object) return {type:'message',text:'Face a sign, chest, switch, or gate and interact.'};
   if(object.type==='bridgeSwitch'){
     if(state.opened.includes(object.bridge))return {type:'message',text:object.openText||'The bridge is already raised. It is safe to cross.'};
-    if(!lightPaths(map,state).powered.includes(object.receiver))return {type:'message',text:'The bridge needs light power. Move and rotate the mirror until the receiver glows.'};
+    if(object.requiresTool&&!state.tools.includes(object.requiresTool))return {type:'message',text:object.lockedText||`${inventoryLabel(map,'tool',object.requiresTool)} required. Earn it from a reward chest.`};
+    if(object.receiver&&!lightPaths(map,state).powered.includes(object.receiver))return {type:'message',text:'The bridge needs light power. Move and rotate the mirror until the receiver glows.'};
     state.opened.push(object.bridge);state.activated.push(object.id);
     return {type:'message',tone:'correct',text:object.raiseText||'Bridge raised! The crossing stays open even if the beam moves.'};
   }
-  if(object.type==='bridge')return {type:'message',text:state.opened.includes(object.id)?'The bridge is safe to cross.':'The bridge is lowered. Power the receiver, then use the BRIDGE switch.'};
+  if(object.type==='bridge')return {type:'message',text:state.opened.includes(object.id)?'The bridge is safe to cross.':object.lockedText||'The bridge is lowered. Power the receiver, then use the BRIDGE switch.'};
   if(object.type==='receiver'||object.type==='emitter')return {type:'message',text:'Move and rotate the silver mirror to direct the light into the receiver.'};
   if (isPickup(object)) return {type:'message',text:`Walk over ${object.label||'the item'} to collect it.`};
   if (object.type==='sign') {
@@ -171,7 +172,7 @@ export function interact(map,state,target=null) {
   }
   if (object.type==='exit') {
     if (exitReady(map,state,object)) { state.won=true; return {type:'win'}; }
-    return {type:'message',text:(object.requiredItems||[]).some(id=>!state.items.includes(id))?'Exit locked: earn the missing supplies. Check your inventory and the reward chests.':'Exit locked: find the signal code and power every door light. Read the inscription or check your journal.'};
+    return {type:'message',text:(object.requiredItems||[]).some(id=>!state.items.includes(id))?'Exit locked: earn the missing supplies. Check your inventory and the reward chests.':object.lockedText||'Exit locked: find the signal code and power every door light. Read the inscription or check your journal.'};
   }
   return {type:'none'};
 }
