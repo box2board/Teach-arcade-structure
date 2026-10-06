@@ -2,3 +2,5 @@
 @media(max-width:720px){main{padding:24px 18px 36px}.intro{align-items:flex-start;flex-direction:column;gap:14px;margin-top:18px}.collection-note{padding:6px 10px}.browse-bar{align-items:flex-start;flex-direction:column;gap:12px}.browse-controls{width:100%}.browse-controls button{flex:1;padding:11px 12px}.game-card{grid-template-columns:1fr}.game-art{height:auto;aspect-ratio:14/9;min-height:0}.game-details{padding:24px}.topic-grid{grid-template-columns:1fr}.topic-card{padding:22px}footer{margin:0 18px;flex-direction:column;padding:20px 0;gap:8px}#selection:not([hidden]){align-items:flex-start;flex-direction:column}}
 /* Keep the shared navigation's closed drawer outside the scrollable page. */
 .ta-panel[aria-hidden="true"]{display:none}
+
+.game-card+.game-card{margin-top:22px}

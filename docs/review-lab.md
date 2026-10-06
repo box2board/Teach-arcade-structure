@@ -11,3 +11,9 @@ Acorn Dash's public page is `/review-lab/acorn-dash/`. Its approved engine remai
 No account, teacher assignment, multiplayer, or saved classroom reporting is implemented. Run summaries remain on the player's screen. Homepage changes add only the requested tile; other collections stay in place.
 
 Validation: `node scripts/test-review-lab.mjs`, `node scripts/test-acorn-dash.mjs`, `node scripts/test-acorn-paths.mjs`, `npm run build`, and browser checks covering homepage discovery, game-first/topic-first launch, invalid presets, redirects, setup failure/retry, back navigation, and mobile fit.
+
+## Category Clash migration
+
+Category Clash now lives at `/review-lab/category-clash/`, including its existing custom-board studio, shared engine/styles/sample pack, and French Revolution edition at `french-revolution/`. Its engine and question files are unchanged, including local draft storage keys. Vercel permanently redirects the old Category Clash path and all descendants (pages and assets), preserving bookmarks and asset references. The Arcade Review Games hub no longer lists these two entries.
+
+The Review Lab game card launches the existing studio; its French Revolution link launches the prepared edition. This migration does not connect Category Clash to the shared multiple-choice bank catalog yet. Its `questionSetIds` stays empty so topic-first browsing does not promise unsupported bank selection. Acorn Dash remains connected to Scientific Method. Future topic integration should adapt shared banks to Category Clash’s category-board format as separate work.

@@ -12,6 +12,12 @@ export const GAMES=Object.freeze([Object.freeze({
   description:'Guide a squirrel through three parks. Gather acorns, review at safe stops, and bring your pouch home.',
   image:'/review-lab/acorn-dash-preview.webp',imageAlt:'Acorn Dash’s woodland park with bicycle paths, sprinklers, and a squirrel at home.',
   mode:'Solo',questionCount:12,levels:3,questionSetIds:Object.freeze(['scientific-method'])
+}),Object.freeze({
+  id:'category-clash',title:'Category Clash',url:'/review-lab/category-clash/',
+  description:'Pick questions from a category board. Play with classroom teams or review independently, using the French Revolution edition or your own custom board.',
+  image:'/review-lab/category-clash-preview.webp',imageAlt:'Category Clash’s French Revolution board with five categories and five rows of point-value tiles.',
+  mode:'Classroom + Individual',facts:Object.freeze(['Classroom teams','Individual review','Custom boards']),
+  topicLabel:'French Revolution edition + custom boards',launchLabel:'Open Category Clash',questionSetIds:Object.freeze([])
 })]);
 export function gamesForSet(id){return GAMES.filter(game=>game.questionSetIds.includes(id));}
 export function setsForGame(id){const game=GAMES.find(game=>game.id===id);return QUESTION_SETS.filter(set=>game?.questionSetIds.includes(set.id));}
