@@ -1,5 +1,5 @@
-(()=>{'use strict';const {City,types,W,H}=CityCanvasSim,$=id=>document.getElementById(id),canvas=$('map'),ctx=canvas.getContext('2d');let city=new City(),tool='road',paused=false,speed=1,zoom=1,pan={x:0,y:0},size=20,hover={x:6,y:10},drag=null,lastTile='',clock=0,last=0,selected=null,history=[],stroke=null,panMode=false,pendingLoad=null,layer='none',needsFocus=true;const SAVE_KEY='teacharcade-citycanvas-v1',MANUAL_KEY=SAVE_KEY+'-manual';
-for(const [key,t]of Object.entries(types)){let b=document.createElement('button');b.className='tool';b.style.setProperty('--color',t.color);b.dataset.tool=key;b.innerHTML=`<canvas class="tool-icon" width="36" height="28" aria-hidden="true"></canvas><span class="tool-label">${t.name}<small>${key==='inspect'?'View needs':key==='erase'?'Whole building':t.w+' × '+t.h+' tile'+(t.w*t.h>1?'s':'')}</small></span><small>${t.cost?'$'+t.cost:'View'}</small>`;drawBuilding(b.querySelector('canvas').getContext('2d'),{type:key,w:t.w,h:t.h,level:1,x:0,y:0},1,1,Math.min(34/t.w,26/t.h),0);b.onclick=()=>{tool=key;selected=null;panMode=false;$('pan').setAttribute('aria-pressed','false');selectTool();};$('tools').append(b);}function selectTool(){document.querySelectorAll('.tool').forEach(b=>b.setAttribute('aria-pressed',b.dataset.tool===tool));$('toolHelp').textContent=types[tool].help;}selectTool();
+(()=>{'use strict';const {City,types,W,H,isRoad,terrainAt}=CityCanvasSim,$=id=>document.getElementById(id),canvas=$('map'),ctx=canvas.getContext('2d');let city=new City(),tool='road',rotated=false,paused=false,speed=1,zoom=1,pan={x:0,y:0},size=20,hover={x:6,y:10},drag=null,lastTile='',clock=0,last=0,selected=null,history=[],stroke=null,panMode=false,pendingLoad=null,layer='none',needsFocus=true;const SAVE_KEY='teacharcade-citycanvas-v1',MANUAL_KEY=SAVE_KEY+'-manual';
+for(const [key,t]of Object.entries(types)){let b=document.createElement('button');b.className='tool';b.style.setProperty('--color',t.color);b.dataset.tool=key;b.innerHTML=`<canvas class="tool-icon" width="36" height="28" aria-hidden="true"></canvas><span class="tool-label">${t.name}<small>${key==='inspect'?'View needs':key==='erase'?'Whole building':t.w+' × '+t.h+' tile'+(t.w*t.h>1?'s':'')}</small></span><small>${t.cost?'$'+t.cost:'View'}</small>`;drawBuilding(b.querySelector('canvas').getContext('2d'),{type:key,w:t.w,h:t.h,level:1,x:0,y:0},1,1,Math.min(34/t.w,26/t.h),0);b.onclick=()=>{tool=key;rotated=false;selected=null;panMode=false;$('pan').setAttribute('aria-pressed','false');selectTool();};$('tools').append(b);}function dims(){const d=types[tool];return {w:rotated?d.h:d.w,h:rotated?d.w:d.h};}function rotate(){if(types[tool].w!==types[tool].h){finishStroke();rotated=!rotated;lastTile='';selectTool();}}$('rotate').onclick=rotate;document.addEventListener('keydown',e=>{if(e.key.toLowerCase()==='r'&&!['INPUT','SELECT','TEXTAREA'].includes(e.target.tagName)){e.preventDefault();rotate();}});function selectTool(){document.querySelectorAll('.tool').forEach(b=>b.setAttribute('aria-pressed',b.dataset.tool===tool));const d=dims();$('toolHelp').textContent=types[tool].help+(d.w!==d.h?' Current footprint: '+d.w+' × '+d.h+'. Press R to rotate.':'');$('rotate').disabled=d.w===d.h;$('rotate').textContent='Rotate'+(d.w!==d.h?' · '+d.w+'×'+d.h:'');}selectTool();
 function stats(){for(const [id,value]of Object.entries({funds:city.mode==='free'?'Unlimited':'$'+city.funds.toLocaleString(),population:city.population,jobs:city.jobs,happiness:city.population?city.happiness+'%':'—',balance:(city.balance<0?'−$':'+$')+Math.abs(city.balance),date:'Month '+city.month}))$(id).textContent=value;const lots=city.tiles.filter(t=>['home','shop','industry'].includes(t.type));$('pulse').textContent=!lots.length?'Lay out roads and zones, then connect a solar plant and add water.':lots.some(t=>!t.access)?'Some zones need an adjacent road.':lots.some(t=>!t.powered)?'Some zones need road-connected power.':lots.some(t=>!t.watered)?'Some zones are beyond water coverage. Add a powered water tower.':city.jobs<city.population*.4?'More workplaces will help attract residents.':city.happiness<60&&city.population?'Improve neighborhoods with parks and services; separate homes from industry.':'Your city has room to grow. Expand carefully and watch your monthly balance.';management();inspect();}
 function inspect(){
 const t=city.anchor(city.at((selected||hover).x,(selected||hover).y));if(!t)return;
@@ -9,10 +9,10 @@ if(zone){
  rows.push(t.progress?'Construction in progress · 1 month remaining':t.level===3?'Fully developed':`Development stage ${t.level}/3`);
  rows.push(`${t.access?'✓':'✕'} Road · ${t.powered?'✓':'✕'} Power · ${t.watered?'✓':'✕'} Water`);
  const reasons=city.growth(t);rows.push(...(reasons.length?reasons:t.level<3?['Ready to grow. Construction takes two months per stage.']:['This lot has reached its maximum size.']));
- if(t.type==='home'){rows.push(`Well-being ${t.wellbeing}% · ${t.level*8} residents`);rows.push(`Park ${t.park?'✓':'✕'} · School ${t.school?'✓':'✕'} · Fire coverage ${t.fire?'✓':'✕'}`);if(t.polluted)rows.push('Nearby industry reduces well-being by 22 points.');}
+ if(t.type==='home'){rows.push(`Well-being ${t.wellbeing}% · ${t.level*8} residents`);rows.push(`Park ${t.park?'✓':'✕'} · School ${t.school?'✓':'✕'} · Fire coverage ${t.fire?'✓':'✕'}`);rows.push(`Healthcare ${t.health?'✓':'✕'} · Library ${t.library?'✓':'✕'}`);if(t.polluted)rows.push('Nearby industry reduces well-being by 22 points.');}
  else rows.push(`${t.level*(t.type==='industry'?10:6)} jobs`);
-}else if(['power','water','school','fire'].includes(t.type))rows.push(t.access?(t.powered?'Road connected and powered.':'No power: connect this road network to a solar plant.'):'Needs an adjacent road.');
-else if(t.type==='road')rows.push(t.powered?'Connected to a solar plant.':'Connect this road network to a solar plant.');
+}else if(['power','water','school','fire','hospital','library'].includes(t.type))rows.push(t.access?(t.powered?'Road connected and powered.':'No power: connect this road network to a solar plant.'):'Needs an adjacent road.');
+else if(isRoad(t))rows.push(t.powered?'Connected to a solar plant.':'Connect this road network to a solar plant.');
 $('inspect').replaceChildren(...rows.map((value,i)=>{const el=document.createElement(i===0?'strong':'p');el.textContent=value;return el;}));
 }
 function management(){
@@ -26,7 +26,7 @@ $('budgetTotals').replaceChildren(...[['Tax revenue',city.income],['Operating co
 $('budgetAdvice').textContent=city.balance<0?'Grow connected homes and workplaces to increase revenue. Services cost money every month; add them where they help. High taxes reduce neighborhood well-being.':'Keep an eye on operating costs as you expand. Tax revenue depends on residents, jobs, and your tax rate.';
 }
 $('budgetOpen').onclick=()=>{showBudget();$('budgetDialog').showModal();};$('budgetClose').onclick=()=>$('budgetDialog').close();
-const legends={none:'Drag to build · Shift/right-drag to pan.',power:'Power: teal = powered roads and buildings; red = buildings without power.',water:'Water: blue = within 12 tiles of a powered tower’s grounds.',park:'Parks: green = recreation coverage within six tiles.',school:'Schools: violet = education coverage within eight tiles of a powered school’s grounds.',fire:'Fire: orange = protection within eight tiles of a powered station’s grounds.',pollution:'Pollution: red = within four tiles of developed industry.',wellbeing:'Homes: green 70–100% · amber 40–69% · red below 40%.'};
+const legends={none:'Drag to build · Shift/right-drag to pan.',power:'Power: teal = powered roads and buildings; red = buildings without power.',water:'Water: blue = within 12 tiles of a powered tower’s grounds.',park:'Parks: green = recreation coverage within six tiles.',school:'Schools: violet = education coverage within eight tiles of a powered school’s grounds.',fire:'Fire: orange = protection within eight tiles of a powered station’s grounds.',health:'Healthcare: cream = within nine tiles of a powered hospital.',library:'Libraries: gold = learning coverage within seven tiles.',pollution:'Pollution: red = within four tiles of developed industry.',wellbeing:'Homes: green 70–100% · amber 40–69% · red below 40%.'};
 function updateLegend(){$('layerLegend').textContent=legends[layer]+(layer==='power'?` Supply used: ${city.powerUsed}/${city.powerCapacity} lots.`:'');}
 $('layer').onchange=e=>{layer=e.target.value;updateLegend();};
 function saveCity(manual=false){try{const json=JSON.stringify(city.save());localStorage.setItem(SAVE_KEY,json);if(manual)localStorage.setItem(MANUAL_KEY,json);$('saveInfo').textContent=(manual?'Saved':'Autosaved')+' · month '+city.month;return true;}catch{$('saveInfo').textContent='Browser save unavailable. Export a file to keep your city.';return false;}}
@@ -65,8 +65,8 @@ function apply(){
 const key=hover.x+','+hover.y;if(key===lastTile)return;lastTile=key;
 if(tool==='inspect'){selected={...hover};inspect();return;}
 selected=null;const tile=city.at(hover.x,hover.y);if(!tile)return;
-const plan=city.plan(hover.x,hover.y,tool),before=plan.cells.map(t=>({index:t.y*W+t.x,state:city.state(t)})),funds=city.funds;
-let error=city.build(hover.x,hover.y,tool);
+const plan=city.plan(hover.x,hover.y,tool,rotated),before=plan.cells.map(t=>({index:t.y*W+t.x,state:city.state(t)})),funds=city.funds;
+let error=city.build(hover.x,hover.y,tool,rotated);
 if(!error&&before.length){beginStroke();for(const item of before)if(!stroke.tiles.has(item.index))stroke.tiles.set(item.index,item.state);stroke.cost+=funds-city.funds;}
 $('status').textContent=error||`${types[tool].name} · ${city.mode==='manager'?'$'+types[tool].cost+(types[tool].w*types[tool].h>1?' per facility':' per tile'):'Free Build'} · ${types[tool].w*types[tool].h>1?'Click to place one facility.':'Drag to paint.'} Undo reverses this action.`;stats();
 }
@@ -84,8 +84,8 @@ function drawBuilding(g,t,x,y,s,time=0){
  const box=(a,b,c,d,color)=>{g.fillStyle=color;g.fillRect(x+a*w,y+b*h,c*w,d*h);};
  const poly=(points,color)=>{g.fillStyle=color;g.beginPath();points.forEach(([a,b],i)=>i?g.lineTo(x+a*w,y+b*h):g.moveTo(x+a*w,y+b*h));g.closePath();g.fill();};
  const oval=(a,b,rx,ry,color)=>{g.fillStyle=color;g.beginPath();g.ellipse(x+a*w,y+b*h,rx*w,ry*h,0,0,Math.PI*2);g.fill();};
- if(['road','erase','inspect'].includes(type)){
-  if(type==='road'){box(.08,.34,.84,.36,'#405365');for(let i=0;i<3;i++)box(.17+i*.24,.49,.13,.04,'#eee3ba');}
+ if(['road','bridge','erase','inspect'].includes(type)){
+  if(type==='road'||type==='bridge'){if(type==='bridge'){box(0,.19,1,.08,'#d6c598');box(0,.73,1,.08,'#d6c598');}box(.08,.34,.84,.36,'#405365');for(let i=0;i<3;i++)box(.17+i*.24,.49,.13,.04,'#eee3ba');}
   else{g.fillStyle=type==='erase'?'#eea597':'#c4d5e6';g.font=`bold ${Math.floor(h*.9)}px system-ui`;g.textAlign='center';g.fillText(type==='erase'?'×':'?',x+w*.5,y+h*.85);}return;
  }
  const zone=['home','shop','industry'].includes(type);
@@ -127,6 +127,14 @@ function drawBuilding(g,t,x,y,s,time=0){
   for(const a of [.15,.26,.66,.77])box(a,.32,.075,.14,'#79aabf');box(.46,.47,.1,.18,'#5e6671');box(.46,.64,.1,.31,'#ddd4b7');
   box(.64,.66,.25,.22,'#739abc');g.strokeStyle='#f3e7c6';g.lineWidth=Math.max(1,s*.035);g.strokeRect(x+w*.67,y+h*.69,w*.19,h*.16);
   box(.13,.72,.2,.05,'#deba50');box(.16,.68,.025,.2,'#84959c');box(.27,.68,.025,.2,'#84959c');box(.94,.19,.015,.39,'#e3e9e1');poly([[.955,.2],[1,.24],[.955,.29]],'#e26f65');
+ }else if(type==='hospital'){
+  box(.03,.06,.94,.9,'#b7c8b2');box(.08,.18,.84,.48,'#e5e9e1');box(.37,.12,.27,.61,'#f4f1df');box(.35,.1,.31,.08,'#679f9e');
+  for(const a of [.14,.24,.71,.81]){box(a,.28,.06,.09,'#73a7be');box(a,.46,.06,.09,'#73a7be');}
+  box(.47,.23,.07,.22,'#d65d65');box(.42,.3,.17,.07,'#d65d65');box(.46,.56,.1,.17,'#526d7e');box(.65,.75,.24,.13,'#f4f1df');box(.69,.76,.08,.07,'#73a7be');box(.8,.76,.03,.1,'#d65d65');box(.77,.79,.09,.03,'#d65d65');
+ }else if(type==='library'){
+  box(.04,.06,.92,.89,'#bbbfa0');box(.14,.25,.72,.49,'#e4d2af');poly([[.08,.26],[.5,.07],[.92,.26]],'#7e6462');
+  for(const a of [.23,.67]){box(a,.38,.11,.22,'#769ab2');box(a+.05,.38,.02,.22,'#e8d7b7');}box(.43,.42,.15,.33,'#665445');
+  box(.35,.75,.32,.06,'#dbd4bb');box(.3,.82,.42,.06,'#dbd4bb');box(.68,.78,.16,.04,'#806344');poly([[.43,.2],[.5,.23],[.57,.2],[.57,.32],[.5,.35],[.43,.32]],'#f5ebca');
  }else if(type==='fire'){
   box(.05,.07,.9,.87,'#c8c5ad');box(.12,.18,.76,.51,'#dbcec0');box(.09,.11,.82,.13,'#a24e46');
   for(const a of [.18,.56]){box(a,.31,.27,.36,'#354854');box(a+.04,.5,.19,.22,'#d85349');box(a+.06,.52,.15,.07,'#c1e5e4');box(a+.03,.49,.21,.035,'#f7d67c');}
@@ -139,7 +147,7 @@ function render(time){
  // Terrain first: follower tiles must not paint over a large building's artwork.
  for(const t of city.tiles){
   const x=o.x+t.x*size,y=o.y+t.y*size,s=size;if(x+s<0||y+s<0||x>r.width||y>r.height)continue;
-  rect(x,y,s,s,t.type==='river'?'#438daf':(t.x*7+t.y*11)%5===0?'#76ae70':'#7db477');ctx.strokeStyle='#ffffff12';ctx.strokeRect(x,y,s,s);
+  rect(x,y,s,s,terrainAt(t.x,t.y)==='river'?'#438daf':(t.x*7+t.y*11)%5===0?'#76ae70':'#7db477');ctx.strokeStyle='#ffffff12';ctx.strokeRect(x,y,s,s);
   if(t.type==='land'&&(t.x*13+t.y*7)%19===0){rect(x+s*.47,y+s*.57,s*.08,s*.19,'#665b44');ctx.fillStyle='#467b48';ctx.beginPath();ctx.arc(x+s*.5,y+s*.4,s*.2,0,7);ctx.fill();}
   if(t.type==='river')rect(x+s*.2,y+s*.5,s*.45,s*.06,'#80c6d5');
  }
@@ -147,18 +155,19 @@ function render(time){
   if(['land','river'].includes(t.type))continue;
   const x=o.x+t.x*size,y=o.y+t.y*size,s=size;
   if(x+t.w*s<0||y+t.h*s<0||x>r.width||y>r.height)continue;
-  if(t.type==='road'){
-   rect(x+s*.28,y+s*.28,s*.44,s*.44,'#405365');for(const [dx,dy]of [[1,0],[-1,0],[0,1],[0,-1]])if(city.at(t.x+dx,t.y+dy)?.type==='road'){
+  if(isRoad(t)){
+   rect(x+s*.28,y+s*.28,s*.44,s*.44,'#405365');for(const [dx,dy]of [[1,0],[-1,0],[0,1],[0,-1]])if(isRoad(city.at(t.x+dx,t.y+dy))){
     rect(x+s*(dx<0?0:.28),y+s*(dy<0?0:.28),s*(dx?.72:.44),s*(dy?.72:.44),'#405365');rect(x+s*(dx<0?.08:dx>0?.76:.48),y+s*(dy<0?.08:dy>0?.76:.48),s*(dx?.16:.04),s*(dy?.16:.04),'#e3d7a0');
    }
+   if(t.type==='bridge'){rect(x,y+s*.19,s,s*.07,'#d6c598');rect(x,y+s*.74,s,s*.07,'#d6c598');rect(x+s*.12,y+s*.18,s*.06,s*.64,'#d6c598');rect(x+s*.83,y+s*.18,s*.06,s*.64,'#d6c598');}
   }else drawBuilding(ctx,t,x,y,s,time);
   if(['home','shop','industry'].includes(t.type)&&(!t.access||!t.powered||!t.watered)){ctx.fillStyle=!t.powered?'#ffe37d':'#ecf7ff';ctx.beginPath();ctx.arc(x+s*.86,y+s*.12,s*.095,0,7);ctx.fill();}
  }
  renderOverlay(o,r);renderCoveragePreview(o);renderTraffic(o,time);
  const tile=city.at((selected||hover).x,(selected||hover).y);if(!tile)return;
- const def=types[tool],existing=tool==='inspect'||tool==='erase',a=existing?city.anchor(tile):tile,w=existing?a.w:def.w,h=existing?a.h:def.h,plan=city.plan(tile.x,tile.y,tool),valid=!plan.error&&(city.mode==='free'||tool==='inspect'||city.funds>=def.cost);
+ const def=types[tool],existing=tool==='inspect'||tool==='erase',a=existing?city.anchor(tile):tile,w=existing?a.w:dims().w,h=existing?a.h:dims().h,plan=city.plan(tile.x,tile.y,tool,rotated),valid=!plan.error&&(city.mode==='free'||tool==='inspect'||city.funds>=def.cost);
  const x=o.x+a.x*size,y=o.y+a.y*size;
- if(!existing&&!panMode){rect(x,y,w*size,h*size,valid?'#4ee4b43d':'#ff606060');if(valid&&tile.type==='land'){ctx.save();ctx.globalAlpha=.5;drawBuilding(ctx,{...tile,w,h,type:tool,level:1},x,y,size,time);ctx.restore();}}
+ if(!existing&&!panMode){rect(x,y,w*size,h*size,valid?'#4ee4b43d':'#ff606060');if(valid&&(tile.type==='land'||tool==='bridge')){ctx.save();ctx.globalAlpha=.5;drawBuilding(ctx,{...tile,w,h,type:tool,level:1},x,y,size,time);ctx.restore();}}
  if(!panMode){ctx.strokeStyle=valid?'#fff':'#ff7777';ctx.lineWidth=2;ctx.strokeRect(x+1,y+1,w*size-2,h*size-2);ctx.lineWidth=1;}
 }
 function renderOverlay(o,r){
@@ -170,21 +179,23 @@ else if(layer==='water'&&t.watered)color='#28bef778';
 else if(layer==='park'&&t.park)color='#73e95670';
 else if(layer==='school'&&t.school)color='#b689ff78';
 else if(layer==='fire'&&t.fire)color='#ffad5978';
+else if(layer==='health'&&t.health)color='#f4f0de80';
+else if(layer==='library'&&t.library)color='#d9af7580';
 else if(layer==='pollution'&&t.polluted)color='#ff66668c';
 else if(layer==='wellbeing'&&t.type==='home')color=t.wellbeing>=70?'#39e0b08c':t.wellbeing>=40?'#ffce538c':'#ff66669c';
 if(color)rect(x,y,size,size,color);
 }
 }
 function renderCoveragePreview(o){
- const radius={water:12,park:6,school:8,fire:8}[tool],t=city.at(hover.x,hover.y),def=types[tool];if(!radius||panMode||!t||t.type!=='land')return;
- const x=o.x+(t.x+.5)*size,y=o.y+(t.y+.5)*size,right=x+(def.w-1)*size,bottom=y+(def.h-1)*size,r=radius*size;
+ const radius={water:12,park:6,school:8,fire:8,hospital:9,library:7}[tool],t=city.at(hover.x,hover.y),def=types[tool];if(!radius||panMode||!t||t.type!=='land')return;
+ const x=o.x+(t.x+.5)*size,y=o.y+(t.y+.5)*size,right=x+(dims().w-1)*size,bottom=y+(dims().h-1)*size,r=radius*size;
  ctx.save();ctx.strokeStyle=def.color;ctx.lineWidth=2;ctx.setLineDash([5,4]);ctx.beginPath();ctx.moveTo(x,y-r);ctx.lineTo(right,y-r);ctx.lineTo(right+r,y);ctx.lineTo(right+r,bottom);ctx.lineTo(right,bottom+r);ctx.lineTo(x,bottom+r);ctx.lineTo(x-r,bottom);ctx.lineTo(x-r,y);ctx.closePath();ctx.stroke();ctx.restore();
 }
 let traffic=[],trafficStamp=0;
 function renderTraffic(o,time){
-if(time-trafficStamp>1400){trafficStamp=time;const roads=city.tiles.filter(t=>t.type==='road'&&city.neighbors(t).some(n=>n.type==='road'));traffic=traffic.filter(car=>city.at(car.x,car.y)?.type==='road');if(roads.length&&traffic.length<Math.min(32,Math.ceil(city.population/8))){const start=roads[Math.floor(Math.random()*roads.length)];traffic.push({x:start.x,y:start.y,next:null,p:0,color:['#ffe08b','#ef8a91','#d7f1fa'][traffic.length%3]});}}
-for(const car of traffic){if(!car.next){const options=city.neighbors(city.at(car.x,car.y)).filter(n=>n.type==='road');if(!options.length)continue;car.next=options[Math.floor(Math.random()*options.length)];car.p=0;}
-if(city.at(car.next.x,car.next.y)?.type!=='road'){car.next=null;continue;}
+if(time-trafficStamp>1400){trafficStamp=time;const roads=city.tiles.filter(t=>isRoad(t)&&city.neighbors(t).some(isRoad));traffic=traffic.filter(car=>isRoad(city.at(car.x,car.y)));if(roads.length&&traffic.length<Math.min(32,Math.ceil(city.population/8))){const start=roads[Math.floor(Math.random()*roads.length)];traffic.push({x:start.x,y:start.y,next:null,p:0,color:['#ffe08b','#ef8a91','#d7f1fa'][traffic.length%3]});}}
+for(const car of traffic){if(!car.next){const options=city.neighbors(city.at(car.x,car.y)).filter(isRoad);if(!options.length)continue;car.next=options[Math.floor(Math.random()*options.length)];car.p=0;}
+if(!isRoad(city.at(car.next.x,car.next.y))){car.next=null;continue;}
 if(!paused&&!drag&&!$('reset').open&&!$('loadDialog').open&&!$('budgetDialog').open)car.p+=frameDelta/1100;
 if(car.p>=1){car.x=car.next.x;car.y=car.next.y;car.next=null;continue;}
 const dx=car.next.x-car.x,dy=car.next.y-car.y,x=o.x+(car.x+.5+dx*car.p)*size,y=o.y+(car.y+.5+dy*car.p)*size;rect(x-size*(dx?.12:.07),y-size*(dy?.12:.07),size*(dx?.24:.14),size*(dy?.24:.14),car.color);}
