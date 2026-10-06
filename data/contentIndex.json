@@ -1794,6 +1794,34 @@
     "icon": ""
   },
   {
+    "id": "knotwork",
+    "title": "Knotwork | Free Untangle Puzzle Game | Teach Arcade",
+    "contentType": "game",
+    "canonicalUrl": "/brain-arcade/knotwork/",
+    "subjects": [],
+    "topics": [],
+    "keywords": [
+      "knotwork",
+      "free",
+      "untangle",
+      "puzzle",
+      "game",
+      "teach",
+      "arcade",
+      "play",
+      "visual",
+      "drag",
+      "knots",
+      "crossing",
+      "spatial",
+      "no trivia"
+    ],
+    "blurb": "Play Knotwork, a free visual puzzle game. Drag the knots until every crossing disappears, then take on a more tangled level.",
+    "duration": "",
+    "deviceNotes": "",
+    "icon": ""
+  },
+  {
     "id": "memory-heist",
     "title": "Memory Heist | Brain Arcade Memory Game | Teach Arcade",
     "contentType": "game",
