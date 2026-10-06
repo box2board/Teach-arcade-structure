@@ -1,0 +1,1 @@
+window.TA_GAME={id:'v13-ability-lab',physicsPreset:'earth',level:window.TA_V13_LEVEL,questions:[],theme:window.TA_V13_THEME};
