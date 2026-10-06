@@ -1,0 +1,1 @@
+window.TA_V13_THEME={name:'V1.3 Player Ability Lab',labels:{goal:'finish beacon'}};
