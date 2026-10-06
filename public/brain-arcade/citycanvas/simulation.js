@@ -21,11 +21,19 @@ const upkeep={road:1,bridge:3,hospital:40,library:18,power:35,water:25,park:3,sc
 const isRoad=t=>!!t&&['road','bridge'].includes(t.type);
 const terrainAt=(x,y)=>Math.abs(x-(36+Math.round(Math.sin(y/5)*2)))<2?'river':'land';
 const zones=['home','shop','industry'];
+const milestones=[
+ {name:'Settlement',population:0,unlocks:[]},
+ {name:'Village',population:64,unlocks:['school','fire']},
+ {name:'Town',population:160,unlocks:['library']},
+ {name:'City',population:320,unlocks:['hospital']},
+ {name:'Thriving city',population:640,unlocks:[]}
+];
+const unlockAt=type=>milestones.find(m=>m.unlocks.includes(type))?.population||0;
 // Coverage is measured from the nearest edge of the facility's occupied grounds.
 const near=(a,b,r)=>Math.max(b.x-a.x,0,a.x-(b.x+(b.w||1)-1))+Math.max(b.y-a.y,0,a.y-(b.y+(b.h||1)-1))<=r;
 class City{
  constructor(mode='free'){
-  this.mode=mode;this.funds=15000;this.month=1;this.tax=9;this.tiles=[];
+  this.peakPopulation=0;this.mode=mode;this.funds=15000;this.month=1;this.tax=9;this.tiles=[];
   for(let y=0;y<H;y++)for(let x=0;x<W;x++){
    const river=36+Math.round(Math.sin(y/5)*2);
    this.tiles.push({x,y,type:terrainAt(x,y),level:0,progress:0,anchor:y*W+x,w:1,h:1,powered:false,watered:false,access:false});
@@ -38,9 +46,11 @@ class City{
  footprint(t){const a=this.anchor(t),cells=[];if(!a)return cells;for(let y=a.y;y<a.y+a.h;y++)for(let x=a.x;x<a.x+a.w;x++)cells.push(this.at(x,y));return cells.filter(Boolean);}
  perimeter(t){const a=this.anchor(t),edges=new Set();for(const cell of this.footprint(a))for(const n of this.neighbors(cell))if(n.anchor!==a.anchor)edges.add(n);return [...edges];}
  state(t){return {type:t.type,level:t.level,progress:t.progress||0,anchor:t.anchor,w:t.w,h:t.h};}
+ unlocked(type){return this.mode==='free'||this.peakPopulation>=unlockAt(type);}
  plan(x,y,type,rotated=false){
   const t=this.at(x,y),def=types[type];
   if(!t||!def)return {cells:[],error:'Choose a tile on the map.'};
+  if(!this.unlocked(type))return {cells:[],error:`${def.name} unlocks at ${unlockAt(type)} residents. Grow connected homes and workplaces.`};
   if(type==='inspect')return {cells:[],error:''};
   if(type==='bridge'){if(t.type==='bridge')return {cells:[],error:''};return t.type==='river'?{cells:[t],error:'',w:1,h:1}:{cells:[],error:'Bridges must be placed on river tiles.'};}
   if(t.type==='river')return {cells:[],error:'Keep the river clear. Build on land.'};
@@ -84,6 +94,9 @@ class City{
   }
   for(const t of lots)t.wellbeing=Math.max(10,Math.min(100,58+(t.park?14:0)+(t.school?12:0)+(t.fire?8:0)+(t.health?10:0)+(t.library?8:0)-(t.polluted?22:0)-(t.powered?0:28)-(t.watered?0:22)-Math.max(0,this.tax-10)*3));
   this.population=lots.filter(t=>t.type==='home').reduce((s,t)=>s+t.level*8,0);
+  this.peakPopulation=Math.max(this.peakPopulation,this.population);
+  this.milestone=milestones.filter(m=>this.peakPopulation>=m.population).at(-1);
+  this.nextMilestone=milestones.find(m=>this.peakPopulation<m.population)||null;
   this.jobs=lots.filter(t=>t.type!=='home').reduce((s,t)=>s+t.level*(t.type==='industry'?10:6),0);
   const homes=lots.filter(t=>t.type==='home'&&t.level);
   this.happiness=homes.length?Math.round(homes.reduce((s,t)=>s+t.wellbeing,0)/homes.length):0;
@@ -93,7 +106,21 @@ class City{
   this.powerCapacity=stations.filter(t=>t.access).length*160;
   this.powerUsed=buildings.filter(t=>t.powered&&!['road','bridge','power'].includes(t.type)).length;
   this.readiness=zones.map(type=>{const candidates=lots.filter(t=>t.type===type&&t.level<3);return {type,ready:candidates.filter(t=>!this.growth(t).length).length,waiting:candidates.filter(t=>this.growth(t).length).length};});
+  this.requests=this.citizenRequests(lots);
   return this;
+ }
+ citizenRequests(lots){
+  const requests=[],homes=lots.filter(t=>t.type==='home');
+  const add=(id,title,detail,target,layer='none')=>requests.push({id,title,detail,target:target?{x:target.x,y:target.y}:null,layer});
+  if(!lots.length)add('start','A place to call home','Paint homes and workplaces beside a road. Add a solar plant and water tower to welcome your first residents.');
+  for(const [id,title,detail,layer]of [['access','Connect our neighborhood','This lot needs a road along its edge.','none'],['powered','Turn the lights on','Connect this road network to a solar plant. Check remaining power capacity.','power'],['watered','We need running water','Place a powered water tower within 12 tiles of this lot.','water']]){const t=lots.find(t=>!t[id]);if(t)add(id,title,detail,t,layer);}
+  if(homes.length&&this.jobs<this.population*.4)add('jobs','More places to work','Zone commerce or industry beside connected roads to attract more residents.',homes[0]);
+  if(!homes.length&&lots.length)add('homes','Room for new neighbors','Zone homes near connected roads and water coverage.');
+  const polluted=homes.find(t=>t.level&&t.polluted);if(polluted)add('pollution','Cleaner air, please','Move homes beyond four tiles of developed industry, or relocate the workshops.',polluted,'pollution');
+  for(const [id,type,title,detail,layer]of [['park','park','A little green space','Add a park within six tiles of these homes.','park'],['school','A school for our neighborhood','Place a powered school within eight tiles of these homes.','school'],['fire','Help us feel safe','Add a powered fire station within eight tiles of these homes.','fire'],['library','A place to read and learn','Add a powered library within seven tiles of these homes.','library'],['health','Healthcare close to home','Add a powered hospital within nine tiles of these homes.','health']]){const t=homes.find(t=>t.level&&!t[id]);if(t&&this.unlocked(type))add(id,title,detail,t,layer);}
+  if(this.mode==='manager'&&this.population&&this.balance<0)add('budget','Keep our city affordable','Grow tax-paying homes and workplaces, and review operating costs in the monthly budget.');
+  if(!requests.length)add('grow',this.nextMilestone?'Welcome more neighbors':'Our city is thriving',this.nextMilestone?`Grow toward ${this.nextMilestone.population} residents to become a ${this.nextMilestone.name.toLowerCase()}.`:'Keep expanding healthy neighborhoods and connected workplaces.');
+  return requests.slice(0,2);
  }
  growth(t){
   const reasons=[];
@@ -116,9 +143,10 @@ class City{
   }
   this.update();if(this.mode==='manager')this.funds+=this.balance;this.month++;return this;
  }
- save(){return {version:3,mode:this.mode,funds:this.funds,month:this.month,tax:this.tax,tiles:this.tiles.map(t=>this.state(t))};}
+ save(){return {version:4,peakPopulation:this.peakPopulation,mode:this.mode,funds:this.funds,month:this.month,tax:this.tax,tiles:this.tiles.map(t=>this.state(t))};}
  static load(data){
-  if(!data||![1,2,3].includes(data.version)||!['free','manager'].includes(data.mode)||!Number.isFinite(data.funds)||Math.abs(data.funds)>1e12||!Number.isInteger(data.month)||data.month<1||data.month>1e9||!Number.isInteger(data.tax)||data.tax<0||data.tax>20||!Array.isArray(data.tiles)||data.tiles.length!==W*H)throw Error('This is not a valid CityCanvas save.');
+  if(!data||![1,2,3,4].includes(data.version)||!['free','manager'].includes(data.mode)||!Number.isFinite(data.funds)||Math.abs(data.funds)>1e12||!Number.isInteger(data.month)||data.month<1||data.month>1e9||!Number.isInteger(data.tax)||data.tax<0||data.tax>20||!Array.isArray(data.tiles)||data.tiles.length!==W*H)throw Error('This is not a valid CityCanvas save.');
+  if(data.version===4&&(!Number.isInteger(data.peakPopulation)||data.peakPopulation<0||data.peakPopulation>W*H*24))throw Error('Invalid city milestone history.');
   const city=new City(data.mode),allowed=['land','river',...Object.keys(types).filter(t=>!['erase','inspect'].includes(t))];
   data.tiles.forEach((saved,i)=>{
    const original=city.tiles[i];
@@ -134,8 +162,8 @@ class City{
    if(['land','river','road','bridge','home','shop','industry','park'].includes(t.type)&&(!single||t!==a))throw Error('Invalid occupied terrain.');
    if(t===a)for(const c of city.footprint(a))if(c.anchor!==a.anchor)throw Error('Incomplete building footprint.');
   }
-  city.funds=data.funds;city.month=data.month;city.tax=data.tax;return city.update();
+  city.peakPopulation=data.version===4?data.peakPopulation:Math.max(0,...city.anchors().map(t=>unlockAt(t.type)));city.funds=data.funds;city.month=data.month;city.tax=data.tax;return city.update();
  }
 }
-root.CityCanvasSim={City,types,W,H,isRoad,terrainAt};if(typeof module!=='undefined')module.exports=root.CityCanvasSim;
+root.CityCanvasSim={City,types,W,H,isRoad,terrainAt,milestones,unlockAt};if(typeof module!=='undefined')module.exports=root.CityCanvasSim;
 })(typeof window!=='undefined'?window:globalThis);
