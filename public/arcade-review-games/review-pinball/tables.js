@@ -23,4 +23,16 @@ export const PIRATE_TABLE = {
  spinner:{x:205,y:400,width:48,value:150},
  ramps:[{id:'ramp',name:'CANNON RAMP',value:750,mouth:{x:353,y:490,width:38},path:[[353,490],[367,430],[380,360],[385,285],[376,218],[353,177],[310,157],[258,160],[207,184],[164,228],[136,282],[123,350],[124,422],[135,493],[151,563],[166,629]]}]
 };
-export const TABLES=[TABLE,PIRATE_TABLE];
+export const COSMIC_TABLE={
+ ...TABLE,id:'cosmic',name:'Cosmic Launch',theme:'cosmic',title:['COSMIC','L A U N C H'],rampLabel:'Orbital ramp',spinnerLabel:'Solar rotor',rushLabel:'Star Rush',jackpotLabel:'Space station',description:'Explore twin ramps, a moon-crater scoop and an upper right flipper.',
+ bumpers:[{x:195,y:240,r:22},{x:278,y:235,r:22},{x:176,y:310,r:22},{x:282,y:310,r:22}],
+ targets:[{x:91,y:430},{x:95,y:490},{x:382,y:535},{x:378,y:584}],
+ spinner:{x:250,y:350,width:40,value:150},
+ scoop:{x:250,y:420,r:18,value:500,hold:.75,eject:{vx:-180,vy:350}},
+ flippers:[...TABLE.flippers,{x:392,y:420,length:55,side:-1,upper:true}],
+ ramps:[
+  {id:'ramp',name:'LUNAR RAMP',value:750,mouth:{x:142,y:530,width:38},path:[[142,530],[122,465],[113,400],[124,335],[153,295],[185,323],[204,391],[206,468],[193,535],[180,600]]},
+  {id:'ramp',name:'ORBITAL RAMP',value:750,mouth:{x:330,y:530,width:38},path:[[330,530],[343,460],[360,380],[367,300],[345,246],[315,260],[310,333],[324,412],[345,496],[360,620]]}
+ ]
+};
+export const TABLES=[TABLE,PIRATE_TABLE,COSMIC_TABLE];

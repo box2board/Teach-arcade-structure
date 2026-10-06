@@ -19,7 +19,7 @@ function syncKeys(){engine.keys.left=state==='playing'&&(touchHeld.has('left')||
 function clearKeys(){heldKeys.clear();touchHeld.clear();engine.keys.left=engine.keys.right=false;}
 const shotInfo=document.createElement('p');shotInfo.className='shot-info';$('mission').after(shotInfo);
 const rushInfo=document.createElement('p');rushInfo.className='shot-info';shotInfo.after(rushInfo);
-function applyTable(){document.body.dataset.theme=selectedTable.theme;document.querySelector('aside .eyebrow').textContent=selectedTable.name.toUpperCase();canvas.setAttribute('aria-label',selectedTable.name+' pinball playfield');document.querySelector('.mission>span').textContent=selectedTable.theme==='pirate'?'TREASURE CHEST':'JACKPOT CIRCUIT';if($('table-description'))$('table-description').textContent=selectedTable.description;$('help-jackpot').textContent=selectedTable.theme==='pirate'?'Light the four treasure targets, then hit a bumper. The four lights below the chest show your progress.':'Light the four bank targets, then hit a bumper. The reactor’s four light segments show your progress.';$('help-rush').textContent=`Hit the ramp, loop and ${selectedTable.spinnerLabel.toLowerCase()} to earn 15 seconds of double shot points. The three small inserts track these shots.`;}
+function applyTable(){document.body.dataset.theme=selectedTable.theme;document.querySelector('aside .eyebrow').textContent=selectedTable.name.toUpperCase();canvas.setAttribute('aria-label',selectedTable.name+' pinball playfield');document.querySelector('.mission>span').textContent=selectedTable.theme==='neon'?'JACKPOT CIRCUIT':selectedTable.jackpotLabel.toUpperCase();if($('table-description'))$('table-description').textContent=selectedTable.description;$('help-jackpot').textContent=selectedTable.theme==='pirate'?'Light the four treasure targets, then hit a bumper. The four lights below the chest show your progress.':selectedTable.theme==='cosmic'?'Light the four satellite targets, then hit a bumper. The four lights below the station track your progress.':'Light the four bank targets, then hit a bumper. The reactor’s four light segments show your progress.';$('help-rush').textContent=`Hit the ramp, loop and ${selectedTable.spinnerLabel.toLowerCase()} to earn 15 seconds of double shot points. The three small inserts track these shots.`;$('help-extra').hidden=selectedTable.theme!=='cosmic';}
 function shotHud(){shotInfo.textContent=`Ramp bonus ${rampShots%3}/3`;const seconds=Math.ceil(rush.remaining(engine.time));rushSecond=seconds; rushInfo.textContent=seconds>0?`${selectedTable.rushLabel} ×2 · ${seconds}s`:`${selectedTable.rushLabel} ${rush.shots.size}/3`;}
 function tableHit(id,value){
  const shotFactor=rush.factor(engine.time);
@@ -32,6 +32,7 @@ function tableHit(id,value){
   score+=bonus*multiplier;$('status').textContent=message;shotHud();hud();beep(900,.15);
  }
  if(id==='spinner'){$('status').textContent=selectedTable.spinnerLabel+' hit! +'+value*multiplier*shotFactor;flash[flash.length-1].points=value*multiplier*shotFactor;}
+ if(id==='scoop'){$('status').textContent='Moon crater! +'+value*multiplier*shotFactor+' · Ejecting…';flash[flash.length-1].points=value*multiplier*shotFactor;}
  if(activated){$('status').textContent=selectedTable.rushLabel+'! Double shot points for 15 seconds.';beep(1100,.2);}
  shotHud();
 }

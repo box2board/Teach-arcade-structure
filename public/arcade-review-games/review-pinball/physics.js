@@ -7,7 +7,7 @@ const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
 const pointSegmentDistance=(p,a,z)=>{const dx=z.x-a.x,dy=z.y-a.y,length=dx*dx+dy*dy,t=length?clamp(((p.x-a.x)*dx+(p.y-a.y)*dy)/length,0,1):0;return Math.hypot(p.x-a.x-t*dx,p.y-a.y-t*dy);};
 export class PinballPhysics {
  constructor({table=TABLE,assist=false,onHit=()=>{},onDrain=()=>{},onLaneReturn=()=>{},onPlayfield=()=>{}}={}){this.table=table;this.orbitArmed=false;this.assist=assist;this.onHit=onHit;this.onDrain=onDrain;this.onLaneReturn=onLaneReturn;this.onPlayfield=onPlayfield;this.time=0;this.ball=null;this.flippers=this.table.flippers.map(f=>({...f,angle:f.side===1?.35:Math.PI-.35,omega:0}));this.cooldown={};this.keys={left:false,right:false};}
- prepareBall(){this.ride=null;this.orbitEntry=null;this.spinnerContact=false;this.launchPending=false;this.launchGateClosed=false;this.ball={x:460,y:748,vx:0,vy:0,r:10};}
+ prepareBall(){this.ride=null;this.scoopRide=null;this.scoopCooldown=0;this.orbitEntry=null;this.spinnerContact=false;this.launchPending=false;this.launchGateClosed=false;this.ball={x:460,y:748,vx:0,vy:0,r:10};}
  launch(strength=BALL_PHYSICS.launchSpeed/PLUNGER.maxSpeed){
   this.prepareBall();const speed=PLUNGER.maxSpeed*clamp(strength,0,1);this.launchPending=true;this.ball.vx=-25*speed/BALL_PHYSICS.launchSpeed;this.ball.vy=-speed;
  }
@@ -43,9 +43,18 @@ export class PinballPhysics {
  this.spinnerSpeed=(this.spinnerSpeed??0)*Math.exp(-1.4*dt);
  for(const f of this.flippers){const held=this.keys[f.side===1?'left':'right'],goal=f.side===1?(held?-.52:.35):(held?Math.PI+.52:Math.PI-.35),old=f.angle;f.angle+=clamp(goal-f.angle,-15*dt,15*dt);f.omega=(f.angle-old)/dt;}
  if(this.ball && this.ride){this.advanceRamp(dt);return;}
+ if(this.ball&&this.scoopRide){
+  const s=this.scoopRide.scoop;this.scoopRide.remaining-=dt;
+  if(this.scoopRide.remaining<=0){this.ball.x=s.x;this.ball.y=s.y+s.r+this.ball.r+2;this.ball.vx=s.eject.vx;this.ball.vy=s.eject.vy;this.scoopRide=null;this.scoopCooldown=this.time+1.5;}
+  return;
+ }
  // Gravity changes momentum continuously; drag and passive impacts dissipate energy.
  // There is no target travel speed or blanket slowdown of launch and gravity.
  if(!this.ball)return;const b=this.ball,previous={x:b.x,y:b.y};b.vy+=BALL_PHYSICS.gravity*dt;b.vx*=Math.exp(-BALL_PHYSICS.drag*dt);b.vy*=Math.exp(-BALL_PHYSICS.drag*dt);b.x+=b.vx*dt;b.y+=b.vy*dt;
+ const scoop=this.table.scoop;
+ if(scoop&&this.time>(this.scoopCooldown??0)&&pointSegmentDistance(scoop,previous,b)<scoop.r-4){
+  this.scoopRide={scoop,remaining:scoop.hold};b.x=scoop.x;b.y=scoop.y;b.vx=b.vy=0;this.hit('scoop',scoop.value);return;
+ }
  for(const ramp of this.table.ramps??[]){const m=ramp.mouth;
   if(previous.y>=m.y && b.y<m.y && Math.abs(b.x-m.x)<m.width/2 && b.vy< -250){
    const p=this.rampPoint(ramp,0),speed=b.vx*p.tx+b.vy*p.ty;
