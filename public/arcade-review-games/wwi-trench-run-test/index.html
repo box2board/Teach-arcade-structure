@@ -1,0 +1,1634 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <!-- ===========================
+       SEO-Optimized Title
+  ============================ -->
+  <title>WWI Trench Run TEST · Visual Prototype | Teach Arcade Classroom Games</title>
+
+  <!-- ===========================
+       Meta Description for SEO
+  ============================ -->
+  <meta name="description" 
+        content="WWI Trench Run is a free World War I review game from Teach Arcade. Run through the trenches, avoid obstacles, and answer 20 randomized WWI questions. Perfect for classroom review, bell-ringers, or history stations.">
+
+  <!-- ===========================
+       SEO Keywords
+  ============================ -->
+  <meta name="keywords" 
+        content="WWI review game, World War I classroom activity, WWI interactive game, MAIN causes of WWI game, trench warfare review, Teach Arcade games, social studies review game, history review game">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ===========================
+       Open Graph (Social Sharing)
+  ============================ -->
+  <meta property="og:title" content="WWI Trench Run · Interactive WWI Review Game">
+  <meta property="og:description" content="Run through the trenches and answer 20 interactive WWI review questions. A free classroom-ready history game from Teach Arcade.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/assets/teach-arcade-wwi.png">
+  <meta property="og:url" content="https://teacharcade.com/arcade-review-games/wwi-trench-run-test/">
+
+  <!-- ===========================
+       Schema.org Structured Data
+  ============================ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalGame",
+    "name": "WWI Trench Run",
+    "genre": "History, World War I, Classroom Review Game",
+    "audience": {
+      "@type": "EducationalAudience",
+      "educationalLevel": "Middle School, High School"
+    },
+    "learningResourceType": "Review Game",
+    "description": "An interactive World War I review game where students run through trenches and answer 20 randomized WWI questions, perfect for social studies classroom reinforcement.",
+    "educationalAlignment": {
+      "@type": "AlignmentObject",
+      "alignmentType": "teaches",
+      "educationalFramework": "World History",
+      "targetName": "Causes of WWI, Trench Warfare, MAIN Acronym, U.S. Entry into WWI"
+    },
+    "creator": {
+      "@type": "Organization",
+      "name": "Teach Arcade"
+    }
+  }
+  </script>
+
+
+  <style>
+    /* (UNMODIFIED — all your original CSS goes here exactly as-is) */
+  </style>
+  <link rel="canonical" href="https://teacharcade.com/arcade-review-games/wwi-trench-run-test/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="WWI Trench Run · WWI Review Game | Teach Arcade Classroom Games" />
+  <meta name="twitter:description" content="WWI Trench Run is a free World War I review game from Teach Arcade. Run through the trenches, avoid obstacles, and answer 20 randomized WWI questions. Perfect for classroom review, bell-ringers, or history stations." />
+  <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+
+</head>
+
+<body>
+
+<!-- ===========================
+     SEMANTIC + ACCESSIBILITY
+=========================== -->
+<header>
+  <h1>Teach Arcade · WWI Trench Run TEST</h1>
+  <p class="subtitle">
+    Visual test build: explore the trenches, dodge pits and rats, reach 20 question markers, and review major WWI concepts.
+    Uses the same gameplay tuning as the live version. Use ◀ ▶ / ▲ to move and jump. Touch ? blocks to answer.
+  </p>
+</header>
+
+<main>
+  <!-- (THE REST OF YOUR EXACT HTML CODE FOLLOWS HERE — 
+       gameContainer, HUD, overlays, canvas, scripts, etc.) -->
+
+  <style>
+    :root {
+      --sky: #354b74;
+      --horizon: #1c2430;
+      --trench-dirt: #4a3122;
+      --trench-wood: #8a6035;
+      --barbed: #c3c9cd;
+      --player: #d7b36a;
+      --player-accent: #7f8d44;
+      --ui-bg: rgba(9, 12, 18, 0.78);
+      --accent: #f7c948;
+      --accent-hot: #ff7a3d;
+      --text: #fff7dc;
+      --pit-shadow: #120d10;
+      --mud-dark: #2d1f19;
+      --smoke: rgba(164, 169, 166, 0.18);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(103, 86, 56, 0.28) 0%, transparent 28%),
+        linear-gradient(180deg, #111827 0%, #050608 68%, #020203 100%);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding: 12px;
+      gap: 10px;
+    }
+
+    h1 {
+      font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+      font-size: 1rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-shadow: 0 2px 0 #000;
+      text-align: center;
+    }
+
+    .subtitle {
+      font-size: 0.75rem;
+      opacity: 0.9;
+      text-align: center;
+      max-width: 900px;
+    }
+
+    #modeBar {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      font-size: 0.75rem;
+    }
+
+    .pill-btn {
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 4px 10px;
+      background: rgba(0,0,0,0.55);
+      color: var(--text);
+      cursor: pointer;
+      font-size: 0.7rem;
+      font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+      text-transform: uppercase;
+    }
+
+    .pill-btn.active {
+      background: var(--accent);
+      color: #111;
+    }
+
+    #gameContainer {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 18px 48px rgba(0,0,0,0.88), 0 0 0 6px rgba(82, 51, 28, 0.35);
+      border: 3px solid rgba(247,201,72,0.55);
+      background: #070707;
+    }
+
+    canvas {
+      display: block;
+      background: var(--sky);
+      image-rendering: pixelated;
+    }
+
+    #hud {
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      right: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.65rem;
+      background: linear-gradient(180deg, rgba(19, 23, 31, 0.92), rgba(7, 9, 13, 0.86));
+      padding: 7px 12px;
+      border-radius: 12px;
+      backdrop-filter: blur(6px);
+      border: 2px solid rgba(247,201,72,0.58);
+      box-shadow: 0 4px 0 rgba(0,0,0,0.55), inset 0 0 16px rgba(247,201,72,0.10);
+      font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+      z-index: 5;
+    }
+
+    #hud span {
+      white-space: nowrap;
+    }
+
+    #questionOverlay,
+    #endOverlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at top, rgba(0,0,0,0.94), rgba(0,0,0,0.98));
+      z-index: 10;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .panel {
+      background: linear-gradient(180deg, #25212a 0%, #12151e 100%);
+      border-radius: 16px;
+      padding: 18px 18px 14px;
+      max-width: 480px;
+      width: 92%;
+      border: 2px solid rgba(247,201,72,0.55);
+      box-shadow: 0 16px 42px rgba(0,0,0,0.94), inset 0 0 24px rgba(255,122,61,0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 0.85rem;
+    }
+
+    .panel h2 {
+      font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .choices {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .choice-btn {
+      border: 0;
+      border-radius: 999px;
+      padding: 7px 10px;
+      font-size: 0.8rem;
+      text-align: left;
+      cursor: pointer;
+      background: linear-gradient(180deg, #36415d, #202638);
+      color: var(--text);
+      transition: background 0.08s, transform 0.08s, box-shadow 0.1s;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    .choice-btn:hover {
+      background: #2f3557;
+      transform: translateY(-1px);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.6);
+    }
+
+    .choice-btn.correct {
+      background: #2e7d32 !important;
+    }
+
+    .choice-btn.wrong {
+      background: #c62828 !important;
+    }
+
+    .panel-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.7rem;
+      opacity: 0.9;
+      margin-top: 4px;
+    }
+
+    .primary-btn {
+      border-radius: 999px;
+      border: none;
+      padding: 6px 12px;
+      background: var(--accent);
+      color: #111;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.75rem;
+      font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+      text-transform: uppercase;
+    }
+
+    .primary-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+
+    #touchControls {
+      position: absolute;
+      bottom: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 12px;
+      padding: 4px 10px;
+      background: var(--ui-bg);
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.25);
+      backdrop-filter: blur(8px);
+      z-index: 6;
+    }
+
+    .ctrl-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.35);
+      background: linear-gradient(180deg, #2d3447, #151923);
+      color: var(--text);
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+      transition: transform 0.08s, box-shadow 0.08s, background 0.08s;
+    }
+
+    .ctrl-btn:active {
+      transform: translateY(1px);
+      background: #222641;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.6) inset;
+    }
+
+    .seo-block {
+      max-width: 980px;
+      margin: 22px auto 40px;
+      background: rgba(13, 16, 22, 0.92);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      border-radius: 12px;
+      padding: 22px 26px;
+      line-height: 1.7;
+      color: #e2e8f0;
+      text-align: left;
+    }
+
+    .seo-block h2,
+    .seo-block h3 {
+      margin-top: 0;
+      font-size: 0.95rem;
+      color: #fbbf24;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .seo-block a {
+      color: #38bdf8;
+    }
+
+    @media (min-width: 900px) {
+      #touchControls {
+        display: none;
+      }
+    }
+
+    @media (max-width: 900px) {
+      canvas {
+        width: 100vw;
+        height: auto;
+      }
+      h1 {
+        font-size: 0.8rem;
+      }
+      .subtitle {
+        font-size: 0.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="modeBar">
+    <span>Question Mode:</span>
+    <button id="modePreloaded" class="pill-btn active">Preloaded WWI Bank</button>
+    <button id="modeCustom" class="pill-btn">Custom (if configured)</button>
+  </div>
+
+  <div id="gameContainer">
+    <canvas id="gameCanvas" width="960" height="360"></canvas>
+
+    <div id="hud">
+      <span id="hudScore">Score: 0</span>
+      <span id="hudQuestions">Questions: 0 / 20</span>
+      <span id="hudStatus">Status: Running</span>
+    </div>
+
+    <div id="touchControls">
+      <button id="btnLeft" class="ctrl-btn" aria-label="Move left">◀</button>
+      <button id="btnJump" class="ctrl-btn" aria-label="Jump">▲</button>
+      <button id="btnRight" class="ctrl-btn" aria-label="Move right">▶</button>
+    </div>
+
+    <div id="questionOverlay" class="hidden">
+      <div class="panel">
+        <h2 id="qTitle">Question</h2>
+        <p id="qText"></p>
+        <div class="choices" id="choicesContainer"></div>
+        <div class="panel-footer">
+          <span id="qFeedback"></span>
+          <button id="qCloseBtn" class="primary-btn">Resume</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="endOverlay" class="hidden">
+      <div class="panel">
+        <h2>Level Complete!</h2>
+        <p id="endSummary"></p>
+        <div class="panel-footer">
+          <button id="replayBtn" class="primary-btn">Replay WWI</button>
+          <button id="topicBtn" class="primary-btn">Choose Another Topic</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="seo-block" aria-label="WWI Trench Run classroom uses and lesson ideas">
+    <h2>WWI Trench Run: World War I Review for Social Studies</h2>
+    <p>
+      WWI Trench Run is an arcade-style review game that helps students practice key World War I concepts while navigating
+      a trench course. Students answer questions on causes of the war, trench warfare, alliances, and major events, which
+      makes the game an effective tool for unit review or test prep. The running format keeps energy high, while the
+      questions reinforce historical knowledge and vocabulary like militarism, alliances, nationalism, and imperialism.
+    </p>
+    <p>
+      In whole-class mode, project the game and let the class solve each question together. Ask students to provide
+      evidence or a brief explanation before selecting an answer. This keeps the focus on historical reasoning rather
+      than speed. In small groups, rotate the controller role so students take turns running the trench while peers
+      justify the answer. This structure builds collaboration and ensures that students are thinking about the content.
+    </p>
+    <p>
+      Differentiation can be built in by offering a quick reference chart of the MAIN causes of WWI or a timeline of key
+      events. For advanced learners, ask them to connect each question to a broader theme or to compare WWI with another
+      conflict. You can also pair the game with the <a href="/tools/flashcards.html">Flashcard Studio</a> to reinforce
+      essential terms before play, or use the <a href="/tools/prompt-generator.html">Prompt Generator</a> to create a short
+      writing response about a specific battle or diplomatic event.
+    </p>
+    <p>
+      The game provides quick formative assessment. Track which questions cause confusion—if students consistently miss
+      items about trench warfare or the U.S. entry into the war, plan a mini-lesson or a targeted review station. Because
+      the game is short, you can replay after reteaching to check for improvement. It also works well as a station within
+      a larger review rotation that includes maps, primary source analysis, and timeline tasks.
+    </p>
+    <p>
+      For classroom management, set expectations that students must discuss answers before selecting them. Use the
+      <a href="/tools/timer.html">Classroom Timer</a> to maintain a steady pace and keep transitions smooth. This ensures
+      that the game remains a structured, academic review rather than a free-for-all. Pairing the game with the broader
+      <a href="/arcade-review-games/">Arcade Review Games</a> collection can create a full day of engaging, standards-based
+      practice.
+    </p>
+    <p>
+      WWI Trench Run helps students retain essential content while making review feel active and memorable. It blends
+      history knowledge with a fun, game-like structure that keeps students engaged and ready for deeper analysis.
+    </p>
+  </section>
+
+  <script>
+    // ======================================================
+    // CONFIG: CUSTOM QUESTIONS (back burner but wired)
+    // ======================================================
+    const CUSTOM_QUESTIONS = [];
+    let useCustomQuestions = false;
+
+    // ======================================================
+    // PRELOADED WWI QUESTION BANK (50 QUESTIONS)
+    // ======================================================
+    const WWI_QUESTION_BANK = [
+      { id: 1, text: "Which event sparked the beginning of World War I?", choices: [
+        "Sinking of the Lusitania",
+        "Assassination of Archduke Franz Ferdinand",
+        "Invasion of Poland",
+        "Bombing of Pearl Harbor"
+      ], correctIndex: 1 },
+      { id: 2, text: "What does the 'M' in MAIN causes of WWI stand for?", choices: [
+        "Militarism", "Monarchies", "Marxism", "Materialism"
+      ], correctIndex: 0 },
+      { id: 3, text: "Which two major alliance groups fought each other in WWI?", choices: [
+        "NATO and Warsaw Pact",
+        "Axis and Allies",
+        "Triple Entente and Central Powers",
+        "League of Nations and United Nations"
+      ], correctIndex: 2 },
+      { id: 4, text: "Which countries were part of the Triple Entente at the start of WWI?", choices: [
+        "Germany, Austria-Hungary, Italy",
+        "Britain, France, Russia",
+        "United States, Italy, Russia",
+        "France, Germany, Ottoman Empire"
+      ], correctIndex: 1 },
+      { id: 5, text: "Which countries were part of the Central Powers?", choices: [
+        "Britain, France, Russia",
+        "Germany, Austria-Hungary, Ottoman Empire",
+        "United States, Russia, Italy",
+        "Spain, Portugal, Netherlands"
+      ], correctIndex: 1 },
+      { id: 6, text: "Nationalism is best described as:", choices: [
+        "A desire for world peace",
+        "Strong pride and loyalty to one’s nation or ethnic group",
+        "A system of colonies",
+        "A type of government"
+      ], correctIndex: 1 },
+      { id: 7, text: "Imperialism contributed to WWI because European countries:", choices: [
+        "Shared colonies peacefully",
+        "Allowed colonies to become independent",
+        "Competeted fiercely for colonies and resources",
+        "Gave up their colonies"
+      ], correctIndex: 2 },
+      { id: 8, text: "Militarism means:", choices: [
+        "Reducing a nation’s army",
+        "Glorifying military power and keeping large standing armies ready for war",
+        "Banning all weapons",
+        "Only using armies for defense"
+      ], correctIndex: 1 },
+      { id: 9, text: "The region of Europe known as the 'powder keg' because of tension was:", choices: [
+        "Western Europe", "Eastern Europe", "The Balkans", "Scandinavia"
+      ], correctIndex: 2 },
+      { id: 10, text: "What was the Schlieffen Plan?", choices: [
+        "Germany’s plan to avoid building a navy",
+        "A Russian plan to invade Germany",
+        "Germany’s plan to quickly defeat France, then fight Russia",
+        "Britain’s plan to defend Belgium"
+      ], correctIndex: 2 },
+      { id: 11, text: "Which country did Germany invade that caused Britain to enter the war?", choices: [
+        "Italy", "Belgium", "Switzerland", "Spain"
+      ], correctIndex: 1 },
+      { id: 12, text: "What best describes trench warfare?", choices: [
+        "Fast-moving battles with tanks",
+        "Naval warfare on the oceans",
+        "Fighting from long, narrow ditches facing each other",
+        "Air battles between pilots"
+      ], correctIndex: 2 },
+      { id: 13, text: "The area between opposing trenches was called:", choices: [
+        "The Front Line", "No Man’s Land", "The Home Front", "The Buffer Zone"
+      ], correctIndex: 1 },
+      { id: 14, text: "A major problem with trench warfare was:", choices: [
+        "Soldiers had too much food",
+        "Battles always ended quickly",
+        "High casualties and little ground gained",
+        "It protected civilians from war"
+      ], correctIndex: 2 },
+      { id: 15, text: "Which of these was a new weapon used in WWI?", choices: [
+        "Nuclear bombs", "Crossbows", "Poison gas", "Iron swords"
+      ], correctIndex: 2 },
+      { id: 16, text: "Which weapon made crossing No Man’s Land especially deadly?", choices: [
+        "Bayonets", "Machine guns", "Zeppelins", "Shields"
+      ], correctIndex: 1 },
+      { id: 17, text: "Why is WWI often called the first 'modern war'?", choices: [
+        "It was the first war with uniforms",
+        "It used industrial technology and new weapons on a massive scale",
+        "It was the shortest war in history",
+        "It was fought only in cities"
+      ], correctIndex: 1 },
+      { id: 18, text: "Which country left WWI early because of a revolution at home?", choices: [
+        "Germany", "Italy", "Russia", "France"
+      ], correctIndex: 2 },
+      { id: 19, text: "What was the name of the treaty that ended Russia’s involvement in WWI?", choices: [
+        "Treaty of Versailles", "Treaty of Brest-Litovsk", "Treaty of Paris", "Treaty of London"
+      ], correctIndex: 1 },
+      { id: 20, text: "What was unrestricted submarine warfare?", choices: [
+        "Submarines that only attacked warships",
+        "Submarines that had no weapons",
+        "Submarines that attacked any ship without warning",
+        "Submarines that stayed in ports"
+      ], correctIndex: 2 },
+      { id: 21, text: "Which British passenger ship was sunk by a German U-boat in 1915?", choices: [
+        "Titanic", "Britannic", "Lusitania", "Queen Mary"
+      ], correctIndex: 2 },
+      { id: 22, text: "Which country did the Zimmermann Telegram try to involve in war against the U.S.?", choices: [
+        "Canada", "Mexico", "Brazil", "Cuba"
+      ], correctIndex: 1 },
+      { id: 23, text: "Who was the U.S. president during World War I?", choices: [
+        "Theodore Roosevelt", "Woodrow Wilson", "Franklin D. Roosevelt", "Harry Truman"
+      ], correctIndex: 1 },
+      { id: 24, text: "Before entering the war, the United States’ official position was:", choices: [
+        "Immediate war with Germany",
+        "Neutrality",
+        "Alliance with the Central Powers",
+        "Fighting only in Asia"
+      ], correctIndex: 1 },
+      { id: 25, text: "The American troops sent to fight in Europe were called:", choices: [
+        "Green Berets",
+        "Continental Army",
+        "American Expeditionary Force (AEF)",
+        "Marines Corps Force"
+      ], correctIndex: 2 },
+      { id: 26, text: "Who led the American Expeditionary Force?", choices: [
+        "General Eisenhower", "General Patton", "General Pershing", "General MacArthur"
+      ], correctIndex: 2 },
+      { id: 27, text: "Which side did the United States join in WWI?", choices: [
+        "Central Powers", "Allies / Triple Entente", "Neutral Nations", "Triple Alliance"
+      ], correctIndex: 1 },
+      { id: 28, text: "What was the effect of American entry into WWI?", choices: [
+        "It had no real impact",
+        "It strengthened the Central Powers",
+        "It boosted Allied morale and helped turn the tide",
+        "It ended the war immediately"
+      ], correctIndex: 2 },
+      { id: 29, text: "What was the term for a cease-fire that ended the fighting in WWI?", choices: [
+        "Treaty", "Armistice", "Pact", "Alliance"
+      ], correctIndex: 1 },
+      { id: 30, text: "On what date did the WWI armistice take effect?", choices: [
+        "July 4, 1917", "November 11, 1918", "December 25, 1919", "January 1, 1918"
+      ], correctIndex: 1 },
+      { id: 31, text: "Which meeting created the main peace terms after WWI?", choices: [
+        "Yalta Conference", "Paris Peace Conference", "Potsdam Conference", "Congress of Vienna"
+      ], correctIndex: 1 },
+      { id: 32, text: "Which three major Allied leaders were part of the 'Big Four'?", choices: [
+        "Wilson, Lloyd George, Clemenceau (and Orlando)",
+        "Hitler, Mussolini, Tojo",
+        "Lenin, Stalin, Trotsky",
+        "Kaiser Wilhelm, Franz Joseph, Nicholas II"
+      ], correctIndex: 0 },
+      { id: 33, text: "Which treaty officially ended the war between Germany and the Allies?", choices: [
+        "Treaty of Ghent", "Treaty of Versailles", "Treaty of Paris (1783)", "Munich Agreement"
+      ], correctIndex: 1 },
+      { id: 34, text: "Which country was forced to accept 'war guilt' in the Treaty of Versailles?", choices: [
+        "Britain", "France", "Russia", "Germany"
+      ], correctIndex: 3 },
+      { id: 35, text: "What did Germany have to pay after WWI, according to the Treaty of Versailles?", choices: [
+        "Reconstruction bonds", "Reparations", "Voting rights", "Gold tariffs"
+      ], correctIndex: 1 },
+      { id: 36, text: "Which organization was created after WWI to help prevent future wars?", choices: [
+        "United Nations", "NATO", "League of Nations", "European Union"
+      ], correctIndex: 2 },
+      { id: 37, text: "Why did many Germans resent the Treaty of Versailles?", choices: [
+        "It rewarded them too much",
+        "It forced them to fight again",
+        "They felt it was unfair and humiliating",
+        "It gave them more colonies"
+      ], correctIndex: 2 },
+      { id: 38, text: "Which empire collapsed as a result of WWI?", choices: [
+        "Japanese Empire", "Ottoman Empire", "British Empire", "United States"
+      ], correctIndex: 1 },
+      { id: 39, text: "Which of the following was a new nation created after WWI?", choices: [
+        "Spain", "Portugal", "Poland", "Sweden"
+      ], correctIndex: 2 },
+      { id: 40, text: "What is one major human cost of WWI?", choices: [
+        "Very few soldiers died",
+        "Millions of soldiers and civilians were killed or wounded",
+        "Only generals were affected",
+        "Only naval battles caused casualties"
+      ], correctIndex: 1 },
+      { id: 41, text: "What is meant by the 'Lost Generation'?", choices: [
+        "Children who were evacuated",
+        "Young people disillusioned by the war’s destruction",
+        "Soldiers who never trained",
+        "Leaders who lost elections"
+      ], correctIndex: 1 },
+      { id: 42, text: "How did WWI affect women in many countries?", choices: [
+        "They lost all rights",
+        "They stayed completely out of the war effort",
+        "Many entered the workforce and took on new roles",
+        "They were banned from factories"
+      ], correctIndex: 2 },
+      { id: 43, text: "What is 'total war'?", choices: [
+        "A war fought by only soldiers",
+        "A war limited to one region",
+        "A war where nations devote all resources, including civilians and industry, to the war effort",
+        "A war fought only at sea"
+      ], correctIndex: 2 },
+      { id: 44, text: "Which of the following best describes propaganda?", choices: [
+        "Neutral information",
+        "Biased information used to influence public opinion",
+        "Scientific research",
+        "Secret military codes"
+      ], correctIndex: 1 },
+      { id: 45, text: "Which front in WWI was known mainly for trench warfare and stalemate?", choices: [
+        "Eastern Front", "Western Front", "Pacific Front", "Desert Front"
+      ], correctIndex: 1 },
+      { id: 46, text: "Which front was generally more mobile and less trench-based?", choices: [
+        "Western Front", "Eastern Front", "Atlantic Front", "Arctic Front"
+      ], correctIndex: 1 },
+      { id: 47, text: "Which group of countries made up the main Central Powers?", choices: [
+        "Germany, Austria-Hungary, Ottoman Empire, Bulgaria",
+        "Britain, France, Russia, U.S.",
+        "Spain, Portugal, Italy",
+        "U.S., Italy, Japan"
+      ], correctIndex: 0 },
+      { id: 48, text: "WWI helped set the stage for WWII mainly because:", choices: [
+        "The war made everyone peaceful",
+        "The Treaty of Versailles left Germany bitter and unstable",
+        "No countries had any debt after the war",
+        "The League of Nations was extremely powerful"
+      ], correctIndex: 1 },
+      { id: 49, text: "What was one economic effect of WWI on Europe?", choices: [
+        "All countries became wealthy",
+        "Many nations faced huge debts and rebuilding costs",
+        "Colonies gained independence immediately",
+        "Trade completely stopped forever"
+      ], correctIndex: 1 },
+      { id: 50, text: "Which country emerged as a stronger world power after WWI?", choices: [
+        "United States", "Austria-Hungary", "Ottoman Empire", "Belgium"
+      ], correctIndex: 0 }
+    ];
+
+    function pickRandomQuestions(bank, count = 20) {
+      const shuffled = [...bank].sort(() => Math.random() - 0.5);
+      return shuffled.slice(0, count);
+    }
+
+    // ======================================================
+    // CORE GAME STATE
+    // ======================================================
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+
+    const TILE_SIZE = 48;
+    const WORLD_TILES = 80;
+    const WORLD_WIDTH = WORLD_TILES * TILE_SIZE;
+
+    const player = {
+      x: 80,
+      y: 180,
+      w: 28,
+      h: 40,
+      vx: 0,
+      vy: 0,
+      onGround: false
+    };
+
+    // Tuned feel
+    const GRAVITY = 1200;
+    const PLAYER_SPEED = 260;
+    const JUMP_STRENGTH = 520;
+    const GROUND_Y = 280;
+
+    let cameraX = 0;
+    let lastTime = 0;
+    let gamePaused = false;
+    let inQuestion = false;
+    let levelComplete = false;
+
+    let score = 0;
+    let firstTryCorrectCount = 0;
+    let questionsAnsweredCount = 0;
+
+    let currentQuestions = [];
+    let questionBlocks = [];
+    let activeQuestionBlock = null;
+
+    // Pits = gaps in the trench floor (all jumpable now)
+    const pits = [
+      { x: 900,  width: 90 },
+      { x: 1400, width: 110 },
+      { x: 1950, width: 110 },
+      { x: 2550, width: 130 },
+      { x: 3200, width: 110 }
+    ];
+
+    // Platforms with actual vertical flow
+    const platforms = [
+      { x: 600,  y: 230, width: 130, height: 12 },
+      { x: 1000, y: 205, width: 140, height: 12 },
+      { x: 1350, y: 190, width: 120, height: 12 },
+      { x: 1750, y: 210, width: 130, height: 12 },
+      { x: 2100, y: 180, width: 140, height: 12 },
+      { x: 2300, y: 150, width: 130, height: 12 }, // higher step
+      { x: 2700, y: 190, width: 160, height: 12 },
+      { x: 3100, y: 175, width: 140, height: 12 }
+    ];
+
+    // Patrolling "rat" enemies on the trench floor
+    const enemies = [
+      { x: 820,  y: GROUND_Y - 16, w: 26, h: 16, dir: 1,  speed: 70, minX: 820,  maxX: 950 },
+      { x: 1500, y: GROUND_Y - 16, w: 26, h: 16, dir: -1, speed: 80, minX: 1450, maxX: 1600 },
+      { x: 2150, y: GROUND_Y - 16, w: 26, h: 16, dir: 1,  speed: 75, minX: 2100, maxX: 2250 },
+      { x: 2900, y: GROUND_Y - 16, w: 26, h: 16, dir: -1, speed: 85, minX: 2850, maxX: 3000 }
+    ];
+
+    // Simple stomp puff effects
+    const effects = [];
+
+    // Keep track of last safe ground position for respawn
+    let lastSafeX = player.x;
+    let lastSafeY = player.y;
+
+    // End flag
+    const endFlagX = WORLD_WIDTH - 160;
+
+    // Movement keys (jump handled separately as a one-shot)
+    const keys = { left: false, right: false };
+
+    // Player damage cooldown (seconds)
+    let hitCooldown = 0;
+
+    // Simple toasts + banners
+    let toastText = "";
+    let toastTimer = 0;
+    let bannerText = "";
+    let bannerTimer = 0;
+
+    // ======================================================
+    // UI ELEMENTS
+    // ======================================================
+    const hudScore = document.getElementById('hudScore');
+    const hudQuestions = document.getElementById('hudQuestions');
+    const hudStatus = document.getElementById('hudStatus');
+
+    const qOverlay = document.getElementById('questionOverlay');
+    const qTitle = document.getElementById('qTitle');
+    const qText = document.getElementById('qText');
+    const qChoices = document.getElementById('choicesContainer');
+    const qFeedback = document.getElementById('qFeedback');
+    const qCloseBtn = document.getElementById('qCloseBtn');
+
+    const endOverlay = document.getElementById('endOverlay');
+    const endSummary = document.getElementById('endSummary');
+    const replayBtn = document.getElementById('replayBtn');
+    const topicBtn = document.getElementById('topicBtn');
+
+    const modePreloadedBtn = document.getElementById('modePreloaded');
+    const modeCustomBtn = document.getElementById('modeCustom');
+
+    const leftBtn  = document.getElementById('btnLeft');
+    const rightBtn = document.getElementById('btnRight');
+    const jumpBtn  = document.getElementById('btnJump');
+
+    // ======================================================
+    // FEEDBACK HELPERS
+    // ======================================================
+    function showToast(text, duration = 1.1) {
+      toastText = text;
+      toastTimer = duration;
+    }
+
+    function showBanner(text, duration = 1.2) {
+      bannerText = text;
+      bannerTimer = duration;
+    }
+
+    // ======================================================
+    // JUMP HELPER
+    // ======================================================
+    function tryJump() {
+      if (player.onGround && !gamePaused && !inQuestion && !levelComplete) {
+        player.vy = -JUMP_STRENGTH;
+        player.onGround = false;
+      }
+    }
+
+    // ======================================================
+    // INPUT HANDLING
+    // ======================================================
+    document.addEventListener('keydown', (e) => {
+      if (e.code === 'ArrowLeft' || e.code === 'KeyA') {
+        keys.left = true;
+      }
+      if (e.code === 'ArrowRight' || e.code === 'KeyD') {
+        keys.right = true;
+      }
+      if (e.code === 'ArrowUp' || e.code === 'Space' || e.code === 'KeyW') {
+        e.preventDefault();
+        tryJump();
+      }
+    });
+
+    document.addEventListener('keyup', (e) => {
+      if (e.code === 'ArrowLeft' || e.code === 'KeyA') {
+        keys.left = false;
+      }
+      if (e.code === 'ArrowRight' || e.code === 'KeyD') {
+        keys.right = false;
+      }
+    });
+
+    function bindControl(btn, onDown, onUp) {
+      if (!btn) return;
+      const start = (e) => { e.preventDefault(); onDown(); };
+      const end = (e) => { e.preventDefault(); onUp(); };
+      btn.addEventListener('touchstart', start, { passive: false });
+      btn.addEventListener('touchend', end, { passive: false });
+      btn.addEventListener('touchcancel', end, { passive: false });
+      btn.addEventListener('mousedown', start);
+      btn.addEventListener('mouseup', end);
+      btn.addEventListener('mouseleave', end);
+    }
+
+    bindControl(leftBtn, () => { keys.left = true; },  () => { keys.left = false; });
+    bindControl(rightBtn, () => { keys.right = true; }, () => { keys.right = false; });
+
+    // Jump button is one-shot, not a held state
+    if (jumpBtn) {
+      const pressJump = (e) => {
+        e.preventDefault();
+        tryJump();
+      };
+      jumpBtn.addEventListener('touchstart', pressJump, { passive: false });
+      jumpBtn.addEventListener('mousedown', pressJump);
+    }
+
+    // Mode buttons
+    modePreloadedBtn.addEventListener('click', () => {
+      useCustomQuestions = false;
+      modePreloadedBtn.classList.add('active');
+      modeCustomBtn.classList.remove('active');
+      startNewRun();
+    });
+
+    modeCustomBtn.addEventListener('click', () => {
+      useCustomQuestions = CUSTOM_QUESTIONS && CUSTOM_QUESTIONS.length > 0;
+      modeCustomBtn.classList.add('active');
+      modePreloadedBtn.classList.remove('active');
+      startNewRun();
+    });
+
+    // ======================================================
+    // QUESTION LOGIC
+    // ======================================================
+    function startNewRun() {
+      // Reset player & stats
+      player.x = 80;
+      player.y = 180;
+      player.vx = 0;
+      player.vy = 0;
+      player.onGround = false;
+      cameraX = 0;
+      score = 0;
+      questionsAnsweredCount = 0;
+      firstTryCorrectCount = 0;
+      levelComplete = false;
+      gamePaused = false;
+      inQuestion = false;
+      hitCooldown = 0;
+      lastSafeX = player.x;
+      lastSafeY = player.y;
+      toastText = "";
+      toastTimer = 0;
+      bannerText = "";
+      bannerTimer = 0;
+
+      qOverlay.classList.add('hidden');
+      endOverlay.classList.add('hidden');
+      hudStatus.textContent = "Status: Running";
+
+      // Select questions
+      if (useCustomQuestions && CUSTOM_QUESTIONS.length > 0) {
+        currentQuestions = CUSTOM_QUESTIONS.slice(0, 20);
+      } else {
+        currentQuestions = pickRandomQuestions(WWI_QUESTION_BANK, 20);
+      }
+
+      // Place 20 question blocks with vertical variety
+      questionBlocks = [];
+      const spacing = (WORLD_WIDTH - 800) / 20;
+      const baseX = 260;
+
+      for (let i = 0; i < 20; i++) {
+        const worldX = baseX + spacing * i;
+        let y;
+
+        // Some blocks anchored to nearby platforms (climbing)
+        const plat = platforms.find(p => worldX >= p.x - 40 && worldX <= p.x + p.width + 40);
+
+        if (plat && i % 4 === 0) {
+          y = plat.y - 40; // floating above platform
+        } else {
+          // Above-head / midair patterns so you can't just walk into them
+          const pattern = i % 3;
+          if (pattern === 0)      y = GROUND_Y - 90;
+          else if (pattern === 1) y = 210;
+          else                    y = 170;
+        }
+
+        const qb = {
+          id: i + 1,
+          qIndex: i,
+          x: worldX,
+          y,
+          completed: false,
+          firstTry: true
+        };
+        questionBlocks.push(qb);
+      }
+
+      updateHud();
+    }
+
+    function openQuestion(block) {
+      if (inQuestion || levelComplete) return;
+      inQuestion = true;
+      gamePaused = true;
+      activeQuestionBlock = block;
+
+      const q = currentQuestions[block.qIndex];
+      qTitle.textContent = "Question " + block.id;
+      qText.textContent = q.text;
+      qFeedback.textContent = "";
+      qChoices.innerHTML = "";
+
+      q.choices.forEach((choice, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'choice-btn';
+        btn.textContent = String.fromCharCode(65 + idx) + ") " + choice;
+        btn.addEventListener('click', () => handleAnswer(block, q, idx, btn));
+        qChoices.appendChild(btn);
+      });
+
+      qOverlay.classList.remove('hidden');
+      hudStatus.textContent = "Status: Answering";
+    }
+
+    function handleAnswer(block, question, selectedIndex, btnEl) {
+      const isCorrect = selectedIndex === question.correctIndex;
+      if (isCorrect) {
+        btnEl.classList.add('correct');
+        qFeedback.textContent = "Correct!";
+        if (block.firstTry) {
+          score += 25;
+          firstTryCorrectCount++;
+          showToast("+25 | First try!");
+        } else {
+          score += 10;
+          showToast("+10 | Got it!");
+        }
+        block.completed = true;
+        questionsAnsweredCount = questionBlocks.filter(b => b.completed).length;
+        updateHud();
+        showBanner(`Question ${questionsAnsweredCount} / 20 complete`);
+
+        setTimeout(() => {
+          closeQuestion();
+          checkLevelComplete();
+        }, 500);
+      } else {
+        btnEl.classList.add('wrong');
+        qFeedback.textContent = "Incorrect. Try again.";
+        score -= 10;
+        showToast("-10 | Recheck your notes");
+        block.firstTry = false;
+        updateHud();
+      }
+    }
+
+    function closeQuestion() {
+      qOverlay.classList.add('hidden');
+      inQuestion = false;
+      gamePaused = false;
+      activeQuestionBlock = null;
+      hudStatus.textContent = "Status: Running";
+    }
+
+    qCloseBtn.addEventListener('click', () => {
+      if (activeQuestionBlock && activeQuestionBlock.completed) {
+        closeQuestion();
+      } else {
+        qFeedback.textContent = "Answer correctly to continue.";
+      }
+    });
+
+    function checkLevelComplete() {
+      if (!levelComplete &&
+          questionsAnsweredCount === 20 &&
+          player.x + player.w > endFlagX) {
+        triggerEndScreen();
+      }
+    }
+
+    function triggerEndScreen() {
+      levelComplete = true;
+      gamePaused = true;
+      inQuestion = false;
+      hudStatus.textContent = "Status: Complete";
+
+      const accuracy = (firstTryCorrectCount / 20) * 100;
+      endSummary.textContent =
+        `Score: ${score} points | Accuracy: ${firstTryCorrectCount}/20 (${accuracy.toFixed(0)}%)`;
+      endOverlay.classList.remove('hidden');
+    }
+
+    replayBtn.addEventListener('click', () => {
+      startNewRun();
+    });
+
+    topicBtn.addEventListener('click', () => {
+      // Point this at your Teach Arcade topic hub when ready
+      window.location.href = "/";
+    });
+
+    function updateHud() {
+      hudScore.textContent = "Score: " + score;
+      hudQuestions.textContent = "Questions: " + questionsAnsweredCount + " / 20";
+    }
+
+    function enemyFutureOverPit(nextX, enemy) {
+      const future = { x: nextX, y: enemy.y, w: enemy.w, h: enemy.h };
+      return pits.some(p => future.x + future.w > p.x && future.x < p.x + p.width);
+    }
+
+    // ======================================================
+    // GAME LOOP & PHYSICS
+    // ======================================================
+    function update(dt) {
+      if (gamePaused) return;
+
+      if (hitCooldown > 0) {
+        hitCooldown -= dt;
+        if (hitCooldown < 0) hitCooldown = 0;
+      }
+
+      if (toastTimer > 0) {
+        toastTimer -= dt;
+        if (toastTimer < 0) toastTimer = 0;
+      }
+      if (bannerTimer > 0) {
+        bannerTimer -= dt;
+        if (bannerTimer < 0) bannerTimer = 0;
+      }
+
+      // Horizontal control
+      if (keys.left)      player.vx = -PLAYER_SPEED;
+      else if (keys.right) player.vx = PLAYER_SPEED;
+      else                player.vx = 0;
+
+      // Gravity
+      player.vy += GRAVITY * dt;
+
+      const prevY = player.y;
+
+      // Move horizontally
+      player.x += player.vx * dt;
+      if (player.x < 0) player.x = 0;
+      if (player.x + player.w > WORLD_WIDTH) player.x = WORLD_WIDTH - player.w;
+
+      // Move vertically
+      player.y += player.vy * dt;
+      player.onGround = false;
+
+      // Platform collisions (top only)
+      for (const p of platforms) {
+        const withinX = player.x + player.w > p.x && player.x < p.x + p.width;
+        const wasAbove = prevY + player.h <= p.y;
+        const nowBelowTop = player.y + player.h >= p.y;
+        if (withinX && wasAbove && nowBelowTop && player.vy >= 0) {
+          player.y = p.y - player.h;
+          player.vy = 0;
+          player.onGround = true;
+          lastSafeX = player.x;
+          lastSafeY = player.y;
+        }
+      }
+
+      // Ground (but not over pits)
+      const overPit = pits.some(p => player.x + player.w > p.x && player.x < p.x + p.width);
+      if (!overPit && player.y + player.h >= GROUND_Y) {
+        player.y = GROUND_Y - player.h;
+        player.vy = 0;
+        player.onGround = true;
+        lastSafeX = player.x;
+        lastSafeY = player.y;
+      }
+
+      // Fell into a pit / void
+      if (player.y > canvas.height + 40) {
+        player.x = lastSafeX;
+        player.y = lastSafeY;
+        player.vx = 0;
+        player.vy = 0;
+        score -= 20;
+        hudStatus.textContent = "Status: Fell in a shell hole (-20)";
+        showToast("-20 | Fell in a shell hole");
+        updateHud();
+      } else if (!overPit) {
+        // Only show running when not clearly respawning
+        if (!inQuestion && !levelComplete) {
+          hudStatus.textContent = "Status: Running";
+        }
+      }
+
+      // Enemy movement (respect pits)
+      for (const e of enemies) {
+        const nextX = e.x + e.dir * e.speed * dt;
+        if (enemyFutureOverPit(nextX, e)) {
+          e.dir *= -1;
+        } else {
+          e.x = nextX;
+        }
+
+        if (e.x < e.minX) {
+          e.x = e.minX;
+          e.dir = 1;
+        } else if (e.x + e.w > e.maxX) {
+          e.x = e.maxX - e.w;
+          e.dir = -1;
+        }
+      }
+
+      // Enemy collisions (stomp vs side hit)
+      for (let i = enemies.length - 1; i >= 0; i--) {
+        const e = enemies[i];
+        if (rectIntersect(player, e)) {
+          const stomping = prevY + player.h <= e.y && player.vy >= 0;
+          if (stomping) {
+            // Stomp: kill rat, bounce, reward
+            enemies.splice(i, 1);
+            player.vy = -JUMP_STRENGTH * 0.5;
+            player.onGround = false;
+            score += 10;
+            showToast("+10 | Stomped a trench rat");
+            updateHud();
+            // Puff effect
+            effects.push({
+              x: e.x + e.w / 2,
+              y: e.y + e.h / 2,
+              radius: 4,
+              maxRadius: 18,
+              life: 0.25
+            });
+          } else if (hitCooldown === 0) {
+            score -= 15;
+            hitCooldown = 1.0; // 1 second invincibility frames
+            hudStatus.textContent = "Status: Bitten by trench rats (-15)";
+            player.x += (e.dir > 0 ? -20 : 20);
+            showToast("-15 | Bitten by trench rats");
+            updateHud();
+          }
+        }
+      }
+
+      // Effects update
+      for (let i = effects.length - 1; i >= 0; i--) {
+        const fx = effects[i];
+        fx.life -= dt;
+        if (fx.life <= 0) {
+          effects.splice(i, 1);
+        }
+      }
+
+      // Question block collisions
+      for (const block of questionBlocks) {
+        if (block.completed) continue;
+        const box = { x: block.x, y: block.y, w: 32, h: 32 };
+        if (rectIntersect(player, box)) {
+          openQuestion(block);
+          break;
+        }
+      }
+
+      // Check if at end
+      if (!levelComplete && player.x + player.w > endFlagX) {
+        checkLevelComplete();
+      }
+
+      // Camera follows player smoothly
+      const halfCanvas = canvas.width / 2;
+      const targetCameraX = player.x + player.w / 2 - halfCanvas;
+      const maxCam = WORLD_WIDTH - canvas.width;
+      const clampedTarget = Math.max(0, Math.min(targetCameraX, maxCam));
+      const SMOOTH = 0.12;
+      cameraX += (clampedTarget - cameraX) * SMOOTH;
+    }
+
+    function rectIntersect(a, b) {
+      return !(
+        a.x + a.w <= b.x ||
+        a.x >= b.x + b.w ||
+        a.y + a.h <= b.y ||
+        a.y >= b.y + b.h
+      );
+    }
+
+    // ======================================================
+    // DRAWING
+    // ======================================================
+    // ======================================================
+    // VISUAL HELPERS (TEST VERSION ONLY - no gameplay dimensions)
+    // ======================================================
+    function drawPixelCircle(x, y, radius, color) {
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.arc(x, y, radius, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    function drawSandbagStack(x, y, count = 4) {
+      for (let i = 0; i < count; i++) {
+        const row = i % 2;
+        const bx = x + row * 9;
+        const by = y - i * 7;
+        ctx.fillStyle = i % 2 ? "#8f7750" : "#a1865a";
+        ctx.fillRect(bx, by, 18, 7);
+        ctx.fillStyle = "rgba(45,31,25,0.35)";
+        ctx.fillRect(bx, by + 5, 18, 2);
+      }
+    }
+
+    function drawBackground() {
+      // Layered dawn battlefield sky and smoke haze.
+      const sky = ctx.createLinearGradient(0, 0, 0, canvas.height);
+      sky.addColorStop(0, "#101827");
+      sky.addColorStop(0.34, "#354b74");
+      sky.addColorStop(0.68, "#7a5a3c");
+      sky.addColorStop(1, "#221a1b");
+      ctx.fillStyle = sky;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Parallax smoke plumes and clouds.
+      for (let i = 0; i < 10; i++) {
+        const sx = ((i * 173) - (cameraX * 0.12 % 1730)) % (canvas.width + 220) - 90;
+        const sy = 38 + (i % 5) * 23;
+        drawPixelCircle(sx, sy, 22 + (i % 3) * 6, "rgba(121,126,124,0.14)");
+        drawPixelCircle(sx + 22, sy + 8, 16 + (i % 2) * 5, "rgba(185,179,158,0.10)");
+      }
+
+      // Distant ridge and battlefield silhouettes.
+      ctx.fillStyle = "#182033";
+      ctx.beginPath();
+      ctx.moveTo(0, 174);
+      for (let x = 0; x <= canvas.width + 80; x += 80) {
+        const y = 165 + Math.sin((x + cameraX * 0.18) * 0.015) * 10;
+        ctx.lineTo(x, y);
+      }
+      ctx.lineTo(canvas.width, 260);
+      ctx.lineTo(0, 260);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.fillStyle = "#0f1420";
+      for (let x = -220; x < WORLD_WIDTH + 220; x += 260) {
+        const sx = x - cameraX * 0.35;
+        if (sx > canvas.width || sx < -220) continue;
+        ctx.fillRect(sx + 42, 182, 42, 42);
+        ctx.fillRect(sx + 20, 218, 90, 9);
+        ctx.fillRect(sx + 10, 226, 6, 24);
+        ctx.fillRect(sx + 120, 218, 5, 28);
+      }
+
+      // Barbed wire line with small twisted knots.
+      ctx.strokeStyle = "#c3c9cd";
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      for (let x = -100; x < canvas.width + 110; x += 16) {
+        const wiggle = Math.sin((x + cameraX) * 0.025) * 4;
+        if (x === -100) ctx.moveTo(x, 229 + wiggle);
+        else ctx.lineTo(x, 229 + wiggle);
+      }
+      ctx.stroke();
+      ctx.strokeStyle = "rgba(225,230,232,0.75)";
+      ctx.lineWidth = 1;
+      for (let x = -80; x < canvas.width + 80; x += 32) {
+        const y = 229 + Math.sin((x + cameraX) * 0.025) * 4;
+        ctx.beginPath();
+        ctx.moveTo(x - 4, y - 4);
+        ctx.lineTo(x + 4, y + 4);
+        ctx.moveTo(x + 4, y - 4);
+        ctx.lineTo(x - 4, y + 4);
+        ctx.stroke();
+      }
+    }
+
+    function drawTrenchesAndPits() {
+      const ground = ctx.createLinearGradient(0, GROUND_Y - 18, 0, canvas.height);
+      ground.addColorStop(0, "#8a6035");
+      ground.addColorStop(0.18, "#4a3122");
+      ground.addColorStop(1, "#241814");
+      ctx.fillStyle = ground;
+      ctx.fillRect(0, GROUND_Y - 12, canvas.width, canvas.height - GROUND_Y + 12);
+
+      const startWorldX = cameraX;
+      const endWorldX = cameraX + canvas.width;
+      const tileStart = Math.floor(startWorldX / TILE_SIZE);
+      const tileEnd = Math.ceil(endWorldX / TILE_SIZE);
+
+      for (let t = tileStart; t < tileEnd; t++) {
+        const tileX = t * TILE_SIZE;
+        const screenX = tileX - cameraX;
+        const inPit = pits.some(p => tileX + TILE_SIZE > p.x && tileX < p.x + p.width);
+
+        if (!inPit) {
+          ctx.fillStyle = t % 2 ? "#543826" : "#4a3122";
+          ctx.fillRect(screenX, GROUND_Y, TILE_SIZE, canvas.height - GROUND_Y);
+          ctx.fillStyle = "#9b6d3b";
+          ctx.fillRect(screenX, GROUND_Y - 12, TILE_SIZE, 12);
+          ctx.fillStyle = "#5c3b23";
+          ctx.fillRect(screenX, GROUND_Y - 3, TILE_SIZE, 3);
+          ctx.fillStyle = "rgba(31,20,15,0.45)";
+          ctx.fillRect(screenX + 4, GROUND_Y + 12, TILE_SIZE - 8, 5);
+          if (t % 5 === 0) drawSandbagStack(screenX + 8, GROUND_Y - 16, 3);
+        } else {
+          const pit = ctx.createLinearGradient(0, GROUND_Y, 0, canvas.height);
+          pit.addColorStop(0, "#1b1215");
+          pit.addColorStop(1, "#050405");
+          ctx.fillStyle = pit;
+          ctx.fillRect(screenX, GROUND_Y, TILE_SIZE, canvas.height - GROUND_Y);
+          ctx.fillStyle = "rgba(0,0,0,0.55)";
+          ctx.fillRect(screenX, GROUND_Y, TILE_SIZE, 10);
+        }
+      }
+    }
+
+    function drawPlatforms() {
+      platforms.forEach(p => {
+        const sx = p.x - cameraX;
+        ctx.fillStyle = "#4c3421";
+        ctx.fillRect(sx - 2, p.y + 2, p.width + 4, p.height + 4);
+        ctx.fillStyle = "#9b6d3b";
+        ctx.fillRect(sx, p.y, p.width, p.height);
+        ctx.fillStyle = "#d0a15a";
+        ctx.fillRect(sx, p.y, p.width, 3);
+        ctx.fillStyle = "#5c3b23";
+        for (let x = 12; x < p.width; x += 28) ctx.fillRect(sx + x, p.y, 3, p.height);
+      });
+    }
+
+    function drawQuestionBlocks() {
+      ctx.font = "10px ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "top";
+
+      questionBlocks.forEach(block => {
+        const sx = block.x - cameraX;
+        const sy = block.y;
+        const base = block.completed ? "#58643f" : "#d6a73c";
+        const edge = block.completed ? "#26311f" : "#8f5a1f";
+
+        ctx.fillStyle = "rgba(0,0,0,0.35)";
+        ctx.fillRect(sx + 3, sy + 4, 32, 32);
+        ctx.fillStyle = edge;
+        ctx.fillRect(sx, sy, 32, 32);
+        ctx.fillStyle = base;
+        ctx.fillRect(sx + 3, sy + 3, 26, 26);
+        ctx.fillStyle = "rgba(255,255,255,0.22)";
+        ctx.fillRect(sx + 5, sy + 5, 22, 3);
+        ctx.strokeStyle = "rgba(35,24,12,0.75)";
+        ctx.strokeRect(sx + 0.5, sy + 0.5, 31, 31);
+
+        ctx.fillStyle = block.completed ? "#dff2a0" : "#2b210f";
+        ctx.fillText("?", sx + 16, sy + 10);
+
+        ctx.fillStyle = "#fff7dc";
+        ctx.fillText(block.id, sx + 16, sy - 10);
+
+        if (block.completed) {
+          ctx.fillStyle = "#9be07b";
+          ctx.fillText("✓", sx + 26, sy - 10);
+        }
+      });
+    }
+
+    function drawEnemies() {
+      enemies.forEach(e => {
+        const sx = e.x - cameraX;
+        const sy = e.y;
+        ctx.fillStyle = "rgba(0,0,0,0.35)";
+        ctx.fillRect(sx + 1, sy + e.h - 2, e.w + 3, 3);
+        ctx.fillStyle = "#191922";
+        ctx.fillRect(sx, sy + 5, e.w, e.h - 5);
+        ctx.fillStyle = "#2f2e39";
+        ctx.fillRect(sx + 4, sy + 1, e.w - 8, 8);
+        ctx.fillStyle = "#101017";
+        ctx.fillRect(sx + (e.dir > 0 ? e.w - 5 : 0), sy + 6, 5, 5);
+        ctx.fillRect(sx + (e.dir > 0 ? -4 : e.w + 1), sy + 11, 4, 2);
+        ctx.fillStyle = "#ff5555";
+        ctx.fillRect(sx + (e.dir > 0 ? e.w - 7 : 2), sy + 7, 2, 2);
+      });
+    }
+
+    function drawEffects() {
+      effects.forEach(fx => {
+        const progress = fx.life / 0.25;
+        const radius = fx.maxRadius * (1 - progress);
+        const sx = fx.x - cameraX;
+        const sy = fx.y;
+        ctx.fillStyle = `rgba(214,202,170,${progress})`;
+        ctx.beginPath();
+        ctx.arc(sx, sy, radius, 0, Math.PI * 2);
+        ctx.fill();
+      });
+    }
+
+    function drawEndFlag() {
+      const sx = endFlagX - cameraX;
+      const baseY = GROUND_Y;
+      ctx.strokeStyle = "#e8ded0";
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(sx, baseY);
+      ctx.lineTo(sx, baseY - 84);
+      ctx.stroke();
+
+      ctx.fillStyle = "#f4ead6";
+      ctx.fillRect(sx, baseY - 84, 36, 18);
+      ctx.fillStyle = "#c23a2b";
+      ctx.fillRect(sx + 18, baseY - 84, 18, 18);
+      ctx.fillStyle = "rgba(0,0,0,0.28)";
+      ctx.fillRect(sx, baseY - 66, 36, 3);
+
+      ctx.font = "8px ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace";
+      ctx.fillStyle = "#fff7dc";
+      ctx.textAlign = "center";
+      ctx.fillText("HQ", sx + 20, baseY - 60);
+      drawSandbagStack(sx - 24, baseY - 4, 4);
+    }
+
+    function drawPlayer() {
+      const sx = player.x - cameraX;
+      const sy = player.y;
+
+      // Keep every rectangle inside the original 28x40 player footprint.
+      ctx.fillStyle = "rgba(0,0,0,0.28)";
+      ctx.fillRect(sx + 2, sy + player.h - 3, player.w - 4, 3);
+      ctx.fillStyle = "#2b2419";
+      ctx.fillRect(sx + 4, sy + player.h - 10, 8, 10);
+      ctx.fillRect(sx + player.w - 12, sy + player.h - 10, 8, 10);
+      ctx.fillStyle = "#6f7d3a";
+      ctx.fillRect(sx + 4, sy + 11, player.w - 8, 21);
+      ctx.fillStyle = "#4d5a2e";
+      ctx.fillRect(sx + 7, sy + 14, player.w - 14, 15);
+      ctx.fillStyle = "#8d7040";
+      ctx.fillRect(sx + player.w - 7, sy + 13, 5, 16);
+      ctx.fillStyle = "#7f8d44";
+      ctx.fillRect(sx + 3, sy + 2, player.w - 6, 8);
+      ctx.fillStyle = "#4b542d";
+      ctx.fillRect(sx + 1, sy + 7, player.w - 2, 4);
+      ctx.fillStyle = "#e0b77b";
+      ctx.fillRect(sx + 8, sy + 11, 12, 6);
+      ctx.fillStyle = "#2f251b";
+      ctx.fillRect(sx + 12, sy + 13, 2, 2);
+      ctx.fillRect(sx + 18, sy + 13, 2, 2);
+      ctx.fillStyle = "#788346";
+      ctx.fillRect(sx, sy + 15, 4, 11);
+      ctx.fillRect(sx + player.w - 4, sy + 15, 4, 11);
+    }
+
+    function drawOverlays() {
+      if (bannerTimer > 0 && bannerText) {
+        ctx.font = "10px ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace";
+        ctx.textAlign = "center";
+        const w = 280;
+        const h = 24;
+        const x = canvas.width / 2 - w / 2;
+        const y = 34;
+        ctx.fillStyle = "rgba(0,0,0,0.7)";
+        ctx.fillRect(x, y, w, h);
+        ctx.fillStyle = "#ffb300";
+        ctx.fillText(bannerText, canvas.width / 2, y + 8);
+      }
+
+      if (toastTimer > 0 && toastText) {
+        ctx.font = "10px ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace";
+        ctx.textAlign = "center";
+        const w = 260;
+        const h = 24;
+        const x = canvas.width / 2 - w / 2;
+        const y = canvas.height - 34;
+        ctx.fillStyle = "rgba(0,0,0,0.7)";
+        ctx.fillRect(x, y, w, h);
+        ctx.fillStyle = "#ffb300";
+        ctx.fillText(toastText, canvas.width / 2, y + 8);
+      }
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawBackground();
+      drawTrenchesAndPits();
+      drawPlatforms();
+      drawQuestionBlocks();
+      drawEnemies();
+      drawEffects();
+      drawEndFlag();
+      drawPlayer();
+      drawOverlays();
+    }
+
+    function loop(timestamp) {
+      const dt = (timestamp - lastTime) / 1000;
+      lastTime = timestamp;
+
+      update(dt);
+      draw();
+
+      requestAnimationFrame(loop);
+    }
+
+    // Start
+    startNewRun();
+    requestAnimationFrame(loop);
+  </script>
+<section class="ta-value">
+  <h2>How to Use This in Class</h2>
+  <p><strong>What this tool does:</strong> WWI Trench Run · WWI Review Game is built as a classroom-ready interactive so teachers can launch learning quickly without extra setup. Students interact with the WWI Trench Run · WWI Review Game content through short prompts, decisions, and checkpoints that keep momentum high. The layout keeps directions visible and reduces distraction so students can concentrate on the WWI Trench Run · WWI Review Game objective. It is lightweight and browser-based, so it loads fast and fits into tight class periods.</p>
+  <p>Start with a brief mini-lesson, then model the first round of WWI Trench Run · WWI Review Game using think-alouds so students understand expectations. Invite students to pause after checkpoints to explain their reasoning to a partner or record quick reflections. Consider assigning the activity as a low-stakes practice option and follow up with targeted small-group reteach.</p>
+  <h3>Quick Classroom Ideas</h3>
+  <ul>
+    <li>Small-group rotation station</li><li>Partner practice with discussion pauses</li><li>Whole-class projection for guided practice</li><li>Independent practice during workshop time</li><li>Review day competition with team scoring</li>
+  </ul>
+  <h3>Skills Students Practice</h3>
+  <ul>
+    <li>Goal setting and self-monitoring</li><li>Evidence-based explanations</li><li>Time management during practice</li><li>Content vocabulary and key terms</li><li>Critical thinking and reasoning</li><li>Reading and interpreting prompts</li><li>Strategic decision-making</li><li>Collaboration and peer discussion</li>
+  </ul>
+  <h3>Suggested Grade Levels &amp; Timing</h3>
+  <p>WWI Trench Run · WWI Review Game fits grades 4–10 with easy adjustments. Plan 10–25 minutes of active use plus a 5–10 minute reflection. Differentiate by pairing students, providing sentence starters, or letting advanced learners set a challenge goal.</p>
+  <h3>FAQ</h3>
+  <details>
+    <summary>Do students need accounts?</summary>
+    <p>No. The WWI Trench Run · WWI Review Game activity runs directly in the browser with no logins required.</p>
+  </details>
+  <details>
+    <summary>How long should a session last?</summary>
+    <p>Most classes use WWI Trench Run · WWI Review Game for 10–20 minutes, with a quick debrief afterward.</p>
+  </details>
+  <details>
+    <summary>Can I use this with limited devices?</summary>
+    <p>Yes. WWI Trench Run · WWI Review Game works well in stations, partner play, or whole-class projection.</p>
+  </details>
+  <details>
+    <summary>Is it aligned to standards?</summary>
+    <p>The WWI Trench Run · WWI Review Game focus supports common skills such as analysis, reasoning, and content recall.</p>
+  </details>
+  <details>
+    <summary>What if students finish early?</summary>
+    <p>Have early finishers replay WWI Trench Run · WWI Review Game with a new goal or write a short summary of strategies used.</p>
+  </details>
+</section>
+</body>
+</html>
