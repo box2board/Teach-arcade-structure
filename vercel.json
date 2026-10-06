@@ -10,6 +10,8 @@
     }
   ],
   "redirects": [
+    { "source": "/arcade-review-games/category-clash/", "destination": "/review-lab/category-clash/", "permanent": true },
+    { "source": "/arcade-review-games/category-clash/french-revolution/", "destination": "/review-lab/category-clash/french-revolution/", "permanent": true },
     { "source": "/arcade-review-games/category-clash/:path*", "destination": "/review-lab/category-clash/:path*", "permanent": true }
   ],
   "outputDirectory": "public",
