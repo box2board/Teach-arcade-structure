@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Free Classroom Group Maker | Random Student Groups</title>
-  <meta name="description" content="Create random student groups, teams, and partners in seconds with this free classroom group maker for teachers. No login required." />
+  <meta name="description" content="Create random student groups, partners, and teams in seconds with this free classroom group maker for teachers. No login required." />
   <link rel="canonical" href="https://www.teacharcade.com/tools/group-maker.html" />
 
   <link rel="stylesheet" href="/assets/styles.css?v=1" />
@@ -16,13 +16,13 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Teach Arcade" />
   <meta property="og:title" content="Free Classroom Group Maker | Random Student Groups" />
-  <meta property="og:description" content="Create random student groups, teams, and partners in seconds. Free for teachers and no login required." />
+  <meta property="og:description" content="Create random student groups, partners, and teams in seconds. Free for teachers and no login required." />
   <meta property="og:url" content="https://www.teacharcade.com/tools/group-maker.html" />
-  <meta property="og:image" content="https://www.teacharcade.com/assets/images/social/ta-social-card.png" />
-  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="og:image" content="https://www.teacharcade.com/assets/images/teach-arcade-logo.png" />
+  <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Free Classroom Group Maker | Random Student Groups" />
-  <meta name="twitter:description" content="Create random student groups, teams, and partners in seconds. Free for teachers and no login required." />
-  <meta name="twitter:image" content="https://www.teacharcade.com/assets/images/social/ta-social-card.png" />
+  <meta name="twitter:description" content="Create random student groups, partners, and teams in seconds. Free for teachers and no login required." />
+  <meta name="twitter:image" content="https://www.teacharcade.com/assets/images/teach-arcade-logo.png" />
 
   <script type="application/ld+json">
   {
@@ -60,18 +60,10 @@
           },
           {
             "@type": "Question",
-            "name": "Can I create random student groups?",
+            "name": "Can I make random partners?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes. Paste a class list, choose your grouping settings, and generate randomized student groups in seconds."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Can I use it to make partners?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes. Use the Make Pairs button or set the group size to 2."
+              "text": "Yes. Use Make Pairs or set students per group to 2."
             }
           },
           {
@@ -79,7 +71,15 @@
             "name": "Can I choose the number of groups?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes. Change Create groups by to Number of groups, then enter how many groups you want."
+              "text": "Yes. Choose Number of groups and enter how many groups you want."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I regenerate the groups?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Generate again anytime to reshuffle the same class list."
             }
           },
           {
@@ -87,7 +87,7 @@
             "name": "Does Teach Arcade save student names?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "The Group Maker processes names in your browser. The optional Save feature stores the list in local browser storage on that device. Copy Share Link includes the entered names in the link you copy."
+              "text": "Names are processed in your browser. The optional Save feature stores the list in local browser storage on that device. A copied share link includes the entered names in the link."
             }
           }
         ]
@@ -97,117 +97,115 @@
   </script>
 
   <style>
-    .tool-hero {
-      background: linear-gradient(90deg, #eef2ff, #f8fafc);
-      border: 1px solid #dbeafe;
-      border-radius: 14px;
-      padding: 18px 18px 16px;
-      margin: 10px 0 14px;
-    }
-    .tool-hero h1 { margin: 4px 0 6px; font-size: clamp(28px, 4vw, 38px); }
+    .group-maker-wrap { max-width: 1180px; margin: 0 auto; }
+    .tool-hero { text-align: center; padding: 18px 12px 14px; }
+    .tool-hero h1 { margin: 0 0 6px; font-size: clamp(30px, 4vw, 42px); }
     .tool-hero .lead { margin: 0; font: 700 18px/1.45 Nunito, system-ui, sans-serif; color: #334155; }
-    .tool-hero .support { margin: 6px 0 0; color: #64748b; font: 400 14px/1.5 Nunito, system-ui, sans-serif; }
-    .trust-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
-    .trust-badge { display: inline-flex; align-items: center; border-radius: 999px; padding: 5px 9px; background: #fff; border: 1px solid #cbd5e1; color: #334155; font: 700 12px/1 Nunito, system-ui, sans-serif; }
+    .tool-hero .support { margin: 6px auto 0; max-width: 720px; color: #64748b; font: 400 14px/1.5 Nunito, system-ui, sans-serif; }
+    .trust-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .trust-badge { display: inline-flex; border: 1px solid #dbe3ee; border-radius: 999px; padding: 5px 9px; background: #fff; color: #475569; font: 700 12px/1 Nunito, system-ui, sans-serif; }
 
-    .tool-shell { border: 1px solid #e2e8f0; border-radius: 14px; padding: 16px; background: #fff; box-shadow: 0 6px 18px rgba(15, 23, 42, .05); }
+    .tool-shell { border: 1px solid #e2e8f0; border-radius: 16px; padding: 16px; background: #fff; box-shadow: 0 8px 24px rgba(15, 23, 42, .06); }
     .tool-grid { display: grid; gap: 18px; }
     @media (min-width: 900px) { .tool-grid { grid-template-columns: minmax(300px, 380px) 1fr; align-items: start; } }
-    textarea { width: 100%; min-height: 220px; resize: vertical; }
+
+    textarea { width: 100%; min-height: 230px; resize: vertical; }
     .controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 12px; }
-    .controls .field { display: flex; flex-direction: column; gap: 6px; }
-    .controls .field.full { grid-column: 1 / -1; }
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field.full { grid-column: 1 / -1; }
     .controls select, .controls input { width: 100%; }
     .options-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
     .button-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
     .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; padding: 10px 14px; border-radius: 10px; border: 1px solid #2563eb; background: #2563eb; color: #fff; text-decoration: none; font: 700 14px/1 Poppins, sans-serif; cursor: pointer; }
     .btn.secondary { background: #fff; color: #1f2937; border-color: #cbd5e1; }
     .btn.subtle-danger { background: #fff; color: #b91c1c; border-color: #fecaca; }
-    .btn:hover { filter: brightness(.98); }
-    .btn:focus-visible, textarea:focus-visible, select:focus-visible, input:focus-visible, summary:focus-visible, a:focus-visible { outline: 3px solid #93c5fd; outline-offset: 2px; }
     .small { font: 600 13px/1.45 Nunito, system-ui, sans-serif; color: #475569; }
-    .note { font: 400 12px/1.5 Nunito, system-ui, sans-serif; color: #64748b; margin: 8px 0 0; }
-    .status { font: 700 13px/1.45 Nunito, system-ui, sans-serif; margin: 10px 0 0; color: #475569; }
+    .note { margin: 8px 0 0; font: 400 12px/1.5 Nunito, system-ui, sans-serif; color: #64748b; }
+    .status { margin: 10px 0 0; font: 700 13px/1.4 Nunito, system-ui, sans-serif; color: #475569; }
+    .secondary-actions { margin-top: 12px; border-top: 1px solid #e2e8f0; padding-top: 10px; }
+    .secondary-actions summary { cursor: pointer; font-weight: 700; }
+
+    .output-head { display: flex; justify-content: space-between; gap: 12px; align-items: center; flex-wrap: wrap; }
+    .output-head h2 { margin: 0; font-size: 22px; }
     .groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; margin-top: 12px; }
     .group { border: 1px solid #dbe3ee; border-radius: 12px; padding: 13px; background: #f8fafc; min-width: 0; }
     .group h3 { margin: 0 0 8px; display: flex; align-items: center; gap: 7px; }
     .group ol { margin: 0 0 2px 20px; padding: 0; }
     .group li { overflow-wrap: anywhere; margin-bottom: 3px; }
     .pill { display: inline-block; padding: 4px 8px; border-radius: 999px; font: 700 12px/1 Nunito, system-ui, sans-serif; background: #e0e7ff; color: #3730a3; }
-    .output-head { display: flex; justify-content: space-between; gap: 12px; align-items: center; flex-wrap: wrap; }
-    .output-head h2 { margin: 0; font-size: 20px; }
-    .empty-state { border: 1px dashed #cbd5e1; border-radius: 12px; padding: 28px 18px; text-align: center; color: #64748b; margin-top: 12px; }
-    .secondary-actions { margin-top: 12px; border-top: 1px solid #e2e8f0; padding-top: 10px; }
-    .secondary-actions summary { cursor: pointer; font: 700 13px/1.4 Nunito, system-ui, sans-serif; color: #334155; }
+    .empty-state { border: 1px dashed #cbd5e1; border-radius: 12px; padding: 36px 18px; text-align: center; color: #64748b; margin-top: 12px; }
+
+    .supporting-content { max-width: 860px; margin: 30px auto 18px; }
+    .supporting-content h2 { margin: 24px 0 8px; font-size: 22px; }
+    .supporting-content p { margin: 0; color: #475569; }
+    .use-list { display: flex; flex-wrap: wrap; gap: 8px 16px; margin: 10px 0 0; padding-left: 20px; }
+    .use-list li { min-width: 180px; }
+    .how-steps { margin-bottom: 0; padding-left: 22px; }
+    .how-steps li { margin-bottom: 4px; }
+    .faq-list { display: grid; gap: 8px; margin-top: 10px; }
+    .faq-list details { border: 1px solid #e2e8f0; border-radius: 10px; padding: 10px 12px; background: #fff; }
+    .faq-list summary { cursor: pointer; font-weight: 700; }
+    .faq-list p { margin-top: 7px; }
+    .related-tools { margin-top: 20px; padding-top: 16px; border-top: 1px solid #e2e8f0; text-align: center; }
+    .related-tools a { margin: 0 8px; }
+
     .projector-panel:fullscreen { background: #fff; padding: 28px; overflow: auto; }
     .projector-panel:fullscreen .groups { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
     .projector-panel:fullscreen .group { font-size: 1.25rem; padding: 18px; }
 
-    .supporting-content { max-width: 900px; margin: 34px auto 20px; }
-    .supporting-content h2 { margin: 28px 0 8px; }
-    .supporting-content p { color: #475569; }
-    .use-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 8px 18px; padding-left: 20px; }
-    .how-steps { padding-left: 22px; }
-    .how-steps li { margin-bottom: 5px; }
-    .faq-list { display: grid; gap: 8px; }
-    .faq-list details { border: 1px solid #e2e8f0; border-radius: 10px; padding: 10px 12px; background: #fff; }
-    .faq-list summary { cursor: pointer; font-weight: 700; }
-    .faq-list p { margin: 8px 0 0; }
-    .related-tools { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 10px; }
-
+    .btn:focus-visible, textarea:focus-visible, select:focus-visible, input:focus-visible, summary:focus-visible, a:focus-visible { outline: 3px solid #93c5fd; outline-offset: 2px; }
     .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 
     @media (max-width: 560px) {
       .tool-shell { padding: 12px; }
       .controls { grid-template-columns: 1fr; }
-      .controls .field.full { grid-column: auto; }
+      .field.full { grid-column: auto; }
       .button-row .btn { flex: 1 1 140px; }
+      .tool-hero { padding-left: 0; padding-right: 0; }
     }
 
     @media print {
       header, footer, .tool-hero, .input-panel, .output-actions, .print-note, .status, .secondary-actions, .supporting-content, .breadcrumbs { display: none !important; }
       .tool-shell { border: 0; box-shadow: none; padding: 0; }
       .tool-grid { display: block; }
-      .projector-panel { display: block; }
       .groups { grid-template-columns: repeat(2, 1fr); gap: 12px; }
       .group { break-inside: avoid; background: #fff; }
       body { background: #fff; }
     }
 
     :root.dark .tool-shell, :root.dark .faq-list details, :root.dark .projector-panel:fullscreen { background: #0b1220; border-color: #1f2a44; }
-    :root.dark .tool-hero { background: linear-gradient(90deg, #0b1220, #0f172a); border-color: #1f2a44; }
     :root.dark .tool-hero .lead, :root.dark .output-head h2 { color: #e2e8f0; }
     :root.dark .tool-hero .support, :root.dark .supporting-content p, :root.dark .small, :root.dark .note, :root.dark .status { color: #cbd5e1; }
     :root.dark .group { background: #111827; border-color: #334155; }
     :root.dark .trust-badge, :root.dark .btn.secondary, :root.dark .btn.subtle-danger { background: #111827; border-color: #334155; color: #e2e8f0; }
   </style>
 </head>
-
 <body>
   <div id="site-header"></div>
   <script src="/assets/scripts/nav.js?v=5" defer></script>
 
-  <main class="container">
+  <main class="container group-maker-wrap">
     <nav class="breadcrumbs" aria-label="Breadcrumb">
-      <a href="/">Home</a> › <a href="/tools/">Teacher Tools</a> › Classroom Group Maker
+      <a href="/">Home</a> › <a href="/tools/">Teacher Tools</a> › Group Maker
     </nav>
 
     <section class="tool-hero" aria-labelledby="page-title">
+      <h1 id="page-title">Free Classroom Group Maker</h1>
+      <p class="lead">Create random student groups, partners, or teams in seconds.</p>
+      <p class="support">Paste your class list, choose a group size or number of groups, and generate a new mix instantly.</p>
       <div class="trust-row" aria-label="Tool highlights">
         <span class="trust-badge">Free</span>
         <span class="trust-badge">No login</span>
-        <span class="trust-badge">Runs in your browser</span>
+        <span class="trust-badge">Fast classroom setup</span>
       </div>
-      <h1 id="page-title">Free Classroom Group Maker</h1>
-      <p class="lead">Create random student groups, partners, or teams in seconds.</p>
-      <p class="support">Paste a class list, choose group size or number of groups, and generate a classroom-ready grouping instantly.</p>
     </section>
 
     <section class="tool-shell" aria-label="Classroom Group Maker tool">
       <div class="tool-grid">
         <section class="input-panel" aria-labelledby="input-heading">
           <h2 id="input-heading" class="sr-only">Enter students and choose group settings</h2>
-          <label class="small" for="names">Student names <span aria-hidden="true">—</span> one per line</label>
+
+          <label class="small" for="names">Student names — one per line</label>
           <textarea id="names" autocomplete="off" spellcheck="false" placeholder="Alex&#10;Jordan&#10;Taylor&#10;Morgan&#10;Casey&#10;Riley"></textarea>
 
           <div class="controls">
@@ -230,21 +228,18 @@
             </div>
 
             <div class="field full">
-              <label class="small" for="balance">Grouping style</label>
+              <label class="small" for="balance">Group distribution</label>
               <select id="balance">
                 <option value="roundrobin">Even groups</option>
-                <option value="chunk">Keep list order</option>
+                <option value="chunk">Fill groups in order</option>
                 <option value="pure">Random group sizes</option>
               </select>
             </div>
 
-            <fieldset class="field full" style="border:0;padding:0;margin:0;">
-              <legend class="small">Options</legend>
-              <div class="options-row small">
-                <label><input type="checkbox" id="shuffleFirst" checked /> Shuffle names first</label>
-                <label><input type="checkbox" id="avoidRepeats" /> Avoid prior pairings</label>
-              </div>
-            </fieldset>
+            <div class="field full options-row">
+              <label><input id="shuffleFirst" type="checkbox" checked /> Shuffle names first</label>
+              <label><input id="avoidRepeats" type="checkbox" /> Avoid prior pairings</label>
+            </div>
           </div>
 
           <div class="button-row">
@@ -254,12 +249,12 @@
           </div>
 
           <details class="secondary-actions">
-            <summary>Saved lists &amp; pairing history</summary>
+            <summary>Saved lists & pairing tools</summary>
             <div class="button-row">
-              <button id="save" class="btn secondary" type="button">Save List on This Device</button>
+              <button id="save" class="btn secondary" type="button">Save List</button>
               <button id="restore" class="btn secondary" type="button">Restore Saved List</button>
               <button id="share" class="btn secondary" type="button">Copy Share Link</button>
-              <button id="recordPairs" class="btn secondary" type="button">Record These Pairings</button>
+              <button id="recordPairs" class="btn secondary" type="button">Record Pairings</button>
               <button id="resetHistory" class="btn subtle-danger" type="button">Reset Pairing History</button>
             </div>
             <p class="note">Saved lists and pairing history stay in this browser. A copied share link includes the names currently entered.</p>
@@ -275,89 +270,65 @@
               <div id="summary" class="small"></div>
             </div>
             <div class="button-row output-actions" style="margin-top:0;">
-              <button id="copyGroups" class="btn secondary" type="button">Copy Groups</button>
+              <button id="copyGroups" class="btn secondary" type="button">Copy</button>
               <button id="fullscreen" class="btn secondary" type="button">Projector View</button>
               <button id="print" class="btn secondary" type="button">Print</button>
             </div>
           </div>
           <div id="emptyState" class="empty-state">Your groups will appear here.</div>
           <div id="groups" class="groups" aria-live="polite" aria-atomic="false"></div>
-          <p class="small print-note">Generate again anytime to reshuffle. Use Projector View to display groups to the class.</p>
+          <p class="small print-note">Generate again anytime to reshuffle.</p>
         </section>
       </div>
     </section>
 
-    <section class="supporting-content" aria-label="Classroom Group Maker help and FAQ">
-      <h2>Make Classroom Groups in Seconds</h2>
-      <p>This free group maker helps teachers split a class into random groups without sorting names by hand. Use it for quick partners, balanced teams, project groups, labs, discussions, review games, or classroom rotations.</p>
-
-      <h2>Ways Teachers Can Use the Group Maker</h2>
-      <ul class="use-grid">
+    <section class="supporting-content" aria-label="Group Maker help">
+      <h2>Ways to Use the Group Maker</h2>
+      <ul class="use-list">
         <li>Random student groups</li>
         <li>Partners and pairs</li>
         <li>Project teams</li>
         <li>Discussion groups</li>
         <li>Lab groups</li>
         <li>Review-game teams</li>
-        <li>Cooperative learning groups</li>
-        <li>Classroom rotations</li>
       </ul>
 
-      <h2>Why Use a Random Group Generator?</h2>
-      <p>Random grouping saves time, makes the process feel fair, and gives students chances to work with different classmates. When you want more variety across multiple days, the optional pairing-history feature can reduce repeated partnerships.</p>
-
-      <h2>How to Use the Classroom Group Maker</h2>
+      <h2>How to Use It</h2>
       <ol class="how-steps">
-        <li>Enter or paste student names, one per line.</li>
-        <li>Choose students per group or the number of groups.</li>
-        <li>Select <strong>Generate Groups</strong>, or choose <strong>Make Pairs</strong>.</li>
-        <li>Copy, print, project, or generate again if you want a new mix.</li>
+        <li>Paste student names, one per line.</li>
+        <li>Choose students per group or number of groups.</li>
+        <li>Select <strong>Generate Groups</strong> or <strong>Make Pairs</strong>.</li>
+        <li>Copy, print, project, or generate again.</li>
       </ol>
 
-      <h2>Classroom Group Maker FAQ</h2>
+      <h2>FAQ</h2>
       <div class="faq-list">
         <details>
           <summary>Is this classroom group maker free?</summary>
-          <p>Yes. The Teach Arcade Classroom Group Maker is free to use and does not require an account or login.</p>
+          <p>Yes. It is free to use and does not require an account or login.</p>
         </details>
         <details>
-          <summary>Can I create random student groups?</summary>
-          <p>Yes. Paste your class list, choose your grouping settings, and generate randomized student groups in seconds.</p>
-        </details>
-        <details>
-          <summary>Can I use it to make partners?</summary>
-          <p>Yes. Select <strong>Make Pairs</strong>, or set Students per group to 2.</p>
+          <summary>Can I make random partners?</summary>
+          <p>Yes. Use <strong>Make Pairs</strong> or set Students per group to 2.</p>
         </details>
         <details>
           <summary>Can I choose the number of groups?</summary>
-          <p>Yes. Change Create groups by to <strong>Number of groups</strong>, then enter how many groups you want.</p>
-        </details>
-        <details>
-          <summary>Can I create groups by group size?</summary>
-          <p>Yes. Choose <strong>Students per group</strong> and enter the group size you want.</p>
-        </details>
-        <details>
-          <summary>Can I use the group maker on a classroom projector?</summary>
-          <p>Yes. After generating groups, use <strong>Projector View</strong> to enlarge the results on supported browsers.</p>
-        </details>
-        <details>
-          <summary>Does Teach Arcade save student names?</summary>
-          <p>The Group Maker processes names in your browser. The optional Save feature stores the list in local browser storage on that device. <strong>Copy Share Link</strong> includes the entered names in the link you copy, so do not share a link containing information you consider sensitive.</p>
+          <p>Yes. Choose <strong>Number of groups</strong> and enter how many groups you want.</p>
         </details>
         <details>
           <summary>Can I regenerate the groups?</summary>
-          <p>Yes. Select <strong>Generate Groups</strong> again to create a new mix using the same class list and settings.</p>
+          <p>Yes. Generate again anytime to reshuffle the same class list.</p>
+        </details>
+        <details>
+          <summary>Does Teach Arcade save student names?</summary>
+          <p>Names are processed in your browser. The optional Save feature stores the list on that device. A copied share link includes the names currently entered.</p>
         </details>
       </div>
 
-      <h2>More Free Teacher Tools</h2>
-      <p>Need another quick classroom helper? Explore more tools without leaving Teach Arcade.</p>
       <div class="related-tools">
-        <a href="/tools/">Teacher Tools</a>
+        <a href="/tools/">More Teacher Tools</a>
         <a href="/tools/name-picker.html">Random Name Picker</a>
         <a href="/tools/timer.html">Classroom Timer</a>
-        <a href="/tools/buzzer.html">Quiz Buzzer</a>
-        <a href="/arcade-review-games/">Arcade Review Games</a>
       </div>
     </section>
   </main>
@@ -367,6 +338,6 @@
     <a href="/privacy.html">Privacy</a> • <a href="/terms.html">Terms</a>
   </footer>
 
-  <script src="/assets/scripts/group-maker.v2.js?v=1" defer></script>
+  <script src="/assets/scripts/group-maker.v2.js?v=2" defer></script>
 </body>
 </html>
