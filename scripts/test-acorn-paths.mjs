@@ -45,9 +45,9 @@ for(const difficulty of ['relaxed','classic','challenge']) {
     let steps=0;
     for(const [row,x,goal] of [
       [4,416,v=>v.checkpoint===4],
-      [4,224,v=>v.collected.has(3)],
-      [4,672,v=>v.collected.has(4)],
-      [0,416,v=>v.returning],
+      [4,w.route.nuts[3].x,v=>v.collected.has(3)],
+      [4,w.route.nuts[4].x,v=>v.collected.has(4)],
+      [0,w.route.nuts[8].x,v=>v.returning],
       [8,416,v=>v.state==='transition'||v.state==='won']
     ]) {
       const result=search(w,goal,v=>Math.abs(v.player.row-row)*3+Math.abs(v.player.x-x)/64);

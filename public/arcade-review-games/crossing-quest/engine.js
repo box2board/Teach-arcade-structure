@@ -4,7 +4,7 @@ import { CELL, WIDTH, ROUTES, DIFFICULTIES } from './config.js';
 // the squirrel's decorative tail, and shadows do not enlarge the hit area.
 export function roadShapes(lane,o){
   const y=lane.row*CELL,x=o.x+o.width/2;
-  if(lane.row===6)return {circles:[{x:o.x+25,y:y+33,r:21},{x:o.x+o.width-25,y:y+33,r:21}],segments:[]};
+  if(lane.kind==='ball')return {circles:[{x:o.x+25,y:y+33,r:21},{x:o.x+o.width-25,y:y+33,r:21}],segments:[]};
   const points=[{x:o.x+17,y:y+42},{x,y:y+25},{x:o.x+o.width-17,y:y+42},{x:x+12,y:y+18}];
   return {circles:[{...points[0],r:14},{...points[2],r:14}],segments:points.slice(1).map((p,i)=>({a:points[i],b:p,r:2.5}))};
 }
@@ -93,9 +93,9 @@ export class CrossingWorld {
   }
   continueHunt(){if(this.state==='goal-help')this.state='playing';}
   beginReturn(){if(this.state==='return-ready')this.state='playing';}
-  nuts(){return [{row:7,x:160},{row:6,x:608},{row:5,x:288},{row:4,x:224},{row:4,x:672},{row:3,x:416},{row:2,x:736},{row:1,x:160},{row:0,x:416}].map((n,i)=>({...n,id:i,collected:this.collected.has(i)}));}
+  nuts(){return this.route.nuts.map((n,i)=>({...n,id:i,collected:this.collected.has(i)}));}
   sprinklers(lane){
-    return [160,416,736].map((x,i)=>{const cycle=(this.time*this.route.speed*this.difficulty.speed+lane.row*.9+i*1.6)%7;return {x,radius:56,active:cycle>=2.5&&cycle<4.8,warning:cycle>=1.2&&cycle<2.5};});
+    return lane.heads.map((x,i)=>{const cycle=(this.time*this.route.speed*this.difficulty.speed+lane.row*.9+i*1.6+(lane.phase||0))%7;return {x,radius:56,active:cycle>=2.5&&cycle<4.8,warning:cycle>=1.2&&cycle<2.5};});
   }
   hit(cause){
     if(this.shield){this.shield=0;this.notice=`${cause} · your shield saved a heart`;}else{this.lives--;this.notice=`${cause} · back to the checkpoint`;}

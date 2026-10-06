@@ -63,6 +63,8 @@ function sync(){
   setText('mission-step',world.returning?'3 / 3 · BRING THEM HOME':world.acorns>=3?'2 / 3 · VISIT THE OLD OAK':'1 / 3 · FILL YOUR POUCH');
   setText('mission-goal',world.returning?'↓ Reach the bottom home area to finish this level.':world.acorns>=3?'↑ Reach the top safe area and finish its review.':`Collect ${Math.max(0,3-world.acorns)} more acorn${world.acorns===2?'':'s'}. The stump has two safe pickups.`);
   $('mission').classList.toggle('returning',world.returning);
+  document.body.dataset.scene=world.route.scene;
+  document.body.style.setProperty('--park-glow',world.route.skin.glow);
   setText('lives','♥ '.repeat(world.lives).trim());
   const lifeLabel=`${world.lives} hearts remaining`;if($('lives').getAttribute('aria-label')!==lifeLabel)$('lives').setAttribute('aria-label',lifeLabel);
   setText('shield',world.shield?'Ready':'Empty');
@@ -87,7 +89,7 @@ function sync(){
   }
   else if(world.state==='won'||world.state==='lost')summary();
   else if(world.state==='transition'){
-    show(`<span class="pill">Level ${world.stage+1} complete · ${world.tripStashed} acorns stashed</span><h2 id="panel-title">Next stop: ${escapeHTML(ROUTES[world.stage+1].name)}</h2><p>${world.stashed} acorns safely stored so far. Your hearts, shield, and slow-time charges carry forward.</p>${button('next',`Start level ${world.stage+2}`)}`);
+    show(`<span class="pill">Level ${world.stage+1} complete · ${world.tripStashed} acorns stashed</span><h2 id="panel-title">Next stop: ${escapeHTML(ROUTES[world.stage+1].name)}</h2><p>${escapeHTML(ROUTES[world.stage+1].description)}</p><p>${world.stashed} acorns safely stored so far. Your hearts, shield, and slow-time charges carry forward.</p>${button('next',`Start level ${world.stage+2}`)}`);
     $('next').onclick=()=>{world.nextStage();sync();};
   }
 }
@@ -99,14 +101,14 @@ function circle(x,y,r,color){ctx.fillStyle=color;ctx.beginPath();ctx.arc(x,y,r,0
 function label(text,x,y,color='#e1eed7',size=13){ctx.fillStyle=color;ctx.font=`700 ${size}px system-ui,sans-serif`;ctx.textAlign='center';ctx.fillText(text,x,y);}
 function parkObstacle(o,y,lane){
   const shapes=roadShapes(lane,o);
-  if(lane.row===6){
-    for(const c of shapes.circles){circle(c.x,c.y,c.r,'#d49b57');ctx.strokeStyle='#ffe1a6';ctx.lineWidth=3;ctx.beginPath();ctx.arc(c.x,c.y,15,-.8,1.8);ctx.stroke();}
+  if(lane.kind==='ball'){
+    for(const c of shapes.circles){circle(c.x,c.y,c.r,world.route.skin.ball);ctx.strokeStyle='#ffe1a6';ctx.lineWidth=3;ctx.beginPath();ctx.arc(c.x,c.y,15,-.8,1.8);ctx.stroke();}
     return;
   }
   const x=o.x+o.width/2;
   shapes.circles.forEach(c=>circle(c.x,c.y,c.r,'#23343a'));
   ctx.strokeStyle='#e7d47a';ctx.lineWidth=5;ctx.beginPath();shapes.segments.forEach(({a,b})=>{ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);});ctx.stroke();
-  round(x-9,y+8,19,25,7,'#6fc9c2');circle(x+3,y+4,9,'#ffd4a0');round(x-8,y-3,22,8,4,'#f08269');
+  round(x-9,y+8,19,25,7,world.route.skin.shirt);circle(x+3,y+4,9,'#ffd4a0');round(x-8,y-3,22,8,4,'#f08269');
 }
 function squirrel(x,y){
   const lift=reduced?0:Math.sin(world.hop/.11*Math.PI)*7;y-=lift;
@@ -128,15 +130,76 @@ function sprinkler(o,y){
   if(o.active||o.warning){ctx.fillStyle=o.active?'#82d9ee65':'#ffc76130';ctx.beginPath();ctx.ellipse(o.x,y+32,o.radius,29,0,0,Math.PI*2);ctx.fill();ctx.strokeStyle=o.active?'#abe9f5':'#ffcb77';ctx.lineWidth=2;ctx.setLineDash(o.warning?[5,5]:[]);ctx.stroke();ctx.setLineDash([]);}
   if(o.active){for(let i=-2;i<=2;i++){ctx.strokeStyle='#c0f1fa';ctx.beginPath();ctx.moveTo(o.x,y+32);ctx.quadraticCurveTo(o.x+i*17,y+3,o.x+i*24,y+38);ctx.stroke();}}
 }
+function parkScenery(row,lawn=false){
+  const y=row*CELL,skin=world.route.skin,scene=world.route.scene;
+  if(scene==='grove'){
+    for(let i=0;i<11;i++){
+      const x=60+i*73;
+      ctx.fillStyle=skin.leaf;ctx.beginPath();ctx.ellipse(x,y+12+(i%2)*39,5,2.5,i*.7,0,Math.PI*2);ctx.fill();
+    }
+    if(row!==4){
+      round(797,y+18,17,44,4,'#80552e');
+      circle(805,y+14,27,skin.foliage);circle(783,y+23,20,skin.leaf);circle(828,y+22,22,skin.foliage);
+    }else{
+      round(774,y+31,54,23,8,'#916438');round(771,y+25,60,13,5,'#ba8b54');
+      ctx.strokeStyle='#79542d';ctx.lineWidth=2;ctx.beginPath();ctx.ellipse(801,y+31,19,4,0,0,Math.PI*2);ctx.stroke();
+    }
+  }else if(scene==='picnic'){
+    const bx=lawn?570:750,by=y+15;
+    round(bx,by,100,37,4,'#f4e4c0');
+    ctx.save();ctx.beginPath();ctx.rect(bx,by,100,37);ctx.clip();
+    ctx.fillStyle='#d4776677';
+    for(let c=0;c<8;c++)for(let r=0;r<3;r++)if((c+r)%2===0)ctx.fillRect(bx+c*13,by+r*13,13,13);
+    ctx.restore();round(bx+36,by+7,25,18,3,'#997143');round(bx+42,by+3,13,8,4,'#c89b5e');
+    if(lawn){
+      round(800,y+27,5,31,2,'#745737');
+      ctx.fillStyle='#f2c16e';ctx.beginPath();ctx.moveTo(774,y+29);ctx.quadraticCurveTo(803,y-10,833,y+29);ctx.closePath();ctx.fill();
+      label('OPEN LAWN',118,y+39,'#f5f1d4',14);
+    }
+  }else{
+    // Garden paving, low flower borders, and a warm lantern are decoration.
+    ctx.strokeStyle='#8990b033';ctx.lineWidth=1;
+    for(let x=0;x<WIDTH;x+=56){ctx.strokeRect(x,y+7,54,23);ctx.strokeRect(x+28,y+33,54,23);}
+    for(let i=0;i<18;i++){
+      const x=30+i*47;
+      circle(x,y+9,2.5,i%2?'#d5b0e9':'#adcee2');circle(x+4,y+12,2,'#e6d89e');
+    }
+    round(800,y+14,4,43,2,'#263149');
+    ctx.save();const light=ctx.createRadialGradient(802,y+21,2,802,y+21,36);
+    light.addColorStop(0,'#ffe7a955');light.addColorStop(1,'#ffe7a900');circle(802,y+21,36,light);ctx.restore();
+    round(794,y+12,16,18,3,'#ffe3a1');round(790,y+9,24,5,2,'#263149');
+  }
+}
 function bankRow(row,title,active){
-  const y=row*CELL;ctx.fillStyle=world.stage===2?'#345361':'#3d634d';ctx.fillRect(0,y,WIDTH,CELL);
+  const y=row*CELL,skin=world.route.skin;ctx.fillStyle=skin.safe;ctx.fillRect(0,y,WIDTH,CELL);
   ctx.fillStyle='#ffffff08';ctx.fillRect(0,y,WIDTH,4);ctx.fillStyle='#061d2440';ctx.fillRect(0,y+60,WIDTH,4);
-  for(let i=0;i<14;i++){const x=i*CELL+15;ctx.fillStyle='#b0d48b45';ctx.fillRect(x,y+14,3,8);ctx.fillRect(x+6,y+11,3,10);if(i%3===0){circle(x+18,y+42,3,world.route.accent);circle(x+23,y+39,2,'#edf1b9');}}
+  parkScenery(row);
   const w=title.length*8.5+28;round(20,y+18,w,29,14,active?'#173c32':'#233e37');label(title,20+w/2,y+38,active?'#d3efa5':'#bfd2c8',13);
-  if(row===0||row===8){const x=WIDTH-85;round(x-12,y+20,24,42,5,'#845735');circle(x,y+15,28,'#244b34');circle(x-21,y+22,21,'#376342');circle(x+21,y+23,21,'#42764b');round(x-8,y+42,16,20,8,'#392b22');}
+  if(row===0||row===8){
+    round(WIDTH-39,y+34,28,25,5,'#845735');round(WIDTH-43,y+29,36,9,4,'#ae814e');
+    circle(WIDTH-25,y+45,5,'#392b22');
+  }
   if((world.returning&&row===8)||(!world.returning&&world.acorns>=3&&row===0)){
     ctx.strokeStyle=world.returning?'#9de7ec':'#d4ef89';ctx.lineWidth=3;ctx.strokeRect(2,y+2,WIDTH-4,CELL-4);
     label(world.returning?'↓ HOME':'↑ REVIEW',WIDTH-215,y+38,ctx.strokeStyle,16);
+  }
+}
+function laneGround(lane,y){
+  const skin=world.route.skin,scene=world.route.scene;
+  ctx.fillStyle=lane.type==='road'?skin.path:skin.grass;ctx.fillRect(0,y,WIDTH,CELL);
+  if(lane.type==='road'){
+    ctx.fillStyle=skin.edge;ctx.fillRect(0,y,WIDTH,3);ctx.fillRect(0,y+61,WIDTH,3);
+    if(scene==='garden'){
+      ctx.strokeStyle='#e3d5ee25';ctx.lineWidth=1;
+      for(let x=0;x<WIDTH;x+=48){ctx.strokeRect(x,y+5,46,25);ctx.strokeRect(x+24,y+33,46,25);}
+    }else if(scene==='picnic'){
+      ctx.fillStyle='#f9e7bd66';for(let x=0;x<WIDTH;x+=70)ctx.fillRect(x,y+31,26,2);
+    }else{
+      ctx.fillStyle='#74583b44';for(let x=12;x<WIDTH;x+=43){circle(x,y+15+(x%31),1.5,ctx.fillStyle);}
+    }
+  }else{
+    for(let x=18;x<WIDTH;x+=47)round(x,y+15,2,9,1,'#d5e4ad33');
+    if(scene==='garden')for(let x=40;x<WIDTH;x+=73){circle(x,y+7,2,'#ccb4e4');circle(x+5,y+9,2,'#eac4d2');}
   }
 }
 function draw(){
@@ -144,15 +207,13 @@ function draw(){
   for(let row=0;row<9;row++){
     const y=row*CELL,lane=world.route.lanes.find(l=>l.row===row);
     if(!lane){bankRow(row,row===8?'HOME · STASH ACORNS':row===4?(world.checkpoint===4?'STUMP SAVED':'STUMP · REVIEW'):'OLD OAK · REVIEW',row===4&&world.checkpoint===4);continue;}
-    ctx.fillStyle=lane.type==='road'?'#9a8b70':'#4a754c';ctx.fillRect(0,y,WIDTH,CELL);
+    laneGround(lane,y);
     if(lane.type==='road'){
-      ctx.fillStyle='#d9c9a52b';for(let x=15;x<WIDTH;x+=82)ctx.fillRect(x,y+2,38,2);
       label(lane.speed>0?'›':'‹',20,y+37,'#f1e7ca77',24);
       world.objects(lane).forEach(o=>parkObstacle(o,y,lane));
-    }else{
-      for(let x=18;x<WIDTH;x+=47){round(x,y+15,2,9,1,'#94b56e44');}
+    }else if(lane.type==='sprinkler'){
       world.sprinklers(lane).forEach(o=>sprinkler(o,y));
-    }
+    }else parkScenery(row,true);
   }
   for(const nut of world.nuts())if(!nut.collected)acorn(nut.x,nut.row*CELL+CELL/2);
 
