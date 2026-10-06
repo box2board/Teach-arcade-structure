@@ -14,7 +14,7 @@
       <div class="hud-card brand-card">
         <span class="eyebrow">TEACH ARCADE LAB</span>
         <strong>3D Adventure Engine</strong>
-        <span class="prototype">Prototype v0</span>
+        <span class="prototype">Prototype v0.1</span>
       </div>
 
       <div class="hud-card objective-card">
@@ -45,6 +45,24 @@
       <span><kbd>Drag</kbd> Camera</span>
       <button id="hideControls" type="button">Hide</button>
     </div>
+
+    <section id="touchControls" class="touch-controls" aria-label="Touch game controls" hidden>
+      <div class="touch-left">
+        <div id="touchJoystickZone" class="touch-joystick" aria-label="Movement joystick">
+          <div class="touch-joystick-ring"></div>
+          <div id="touchJoystickStick" class="touch-joystick-stick"></div>
+        </div>
+        <span class="touch-caption">MOVE</span>
+      </div>
+
+      <div class="touch-camera-hint" aria-hidden="true">Drag open space to look</div>
+
+      <div class="touch-actions" aria-label="Action controls">
+        <button id="touchRun" class="touch-button touch-run" type="button" aria-pressed="false">RUN</button>
+        <button id="touchJump" class="touch-button" type="button">JUMP</button>
+        <button id="touchInteract" class="touch-button touch-primary" type="button">ACTION</button>
+      </div>
+    </section>
 
     <dialog id="questionDialog" class="game-dialog">
       <form method="dialog" id="questionForm">
@@ -82,5 +100,6 @@
   </main>
 
   <script type="module" src="./main.js"></script>
+  <script type="module" src="./touch-controls.js"></script>
 </body>
 </html>
