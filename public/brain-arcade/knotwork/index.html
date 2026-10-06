@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#101323" />
+  <title>Knotwork | Free Untangle Puzzle Game | Teach Arcade</title>
+  <meta name="description" content="Play Knotwork, a free visual puzzle game. Drag the knots until every crossing disappears, then take on a more tangled level." />
+  <link rel="canonical" href="https://teacharcade.com/brain-arcade/knotwork/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Teach Arcade" />
+  <meta property="og:title" content="Knotwork | Brain Arcade | Teach Arcade" />
+  <meta property="og:description" content="Drag the knots apart and clear every crossing in this free visual puzzle." />
+  <meta property="og:url" content="https://teacharcade.com/brain-arcade/knotwork/" />
+  <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Knotwork | Brain Arcade | Teach Arcade" />
+  <meta name="twitter:description" content="A quick visual puzzle: drag the knots until no ropes cross." />
+  <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+  <link rel="stylesheet" href="/assets/styles.css?v=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
+  <style>
+    :root{color-scheme:dark;--kw-ink:#f5f5ff;--kw-muted:#a4a8c2;--kw-cyan:#59e2db;--kw-pink:#ff668e;--kw-gold:#ffd166;--kw-purple:#a987ff}
+    *{box-sizing:border-box}
+    html,body{min-height:100%;margin:0}
+    body{background:radial-gradient(ellipse at 50% -22%,#30345f 0,transparent 55%),#0c0d18;color:var(--kw-ink);font-family:Nunito,system-ui,sans-serif}
+    .kw-shell{width:min(1040px,calc(100% - 28px));margin:0 auto;padding:15px 0 24px}
+    .kw-top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0 0 12px}
+    .kw-back{color:#d8daf0;text-decoration:none;font-weight:800;font-size:14px}
+    .kw-back:hover{color:var(--kw-gold)}
+    .kw-titleline{display:flex;align-items:center;gap:10px}
+    .kw-mark{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:var(--kw-gold);color:#17182a;font-size:23px;font-weight:900;transform:rotate(-7deg)}
+    h1{font:800 22px/1.1 Poppins,system-ui,sans-serif;margin:0;letter-spacing:-.5px}
+    .kw-tagline{margin:2px 0 0;color:var(--kw-muted);font-size:13px}
+    .kw-game{border:1px solid #454967;border-radius:20px;overflow:hidden;background:linear-gradient(150deg,#20233d,#121321 72%);box-shadow:0 24px 70px #0007;transition:box-shadow .35s,border-color .35s}
+    .kw-game.is-solved{border-color:#67e2d8;box-shadow:0 0 0 1px #59e2db33,0 0 48px #59e2db29,0 24px 70px #0007}
+    .kw-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;border-bottom:1px solid #ffffff14}
+    .kw-stats{display:flex;gap:8px}
+    .kw-stat{min-width:78px;padding:6px 11px;border:1px solid #ffffff16;border-radius:11px;background:#ffffff08;text-align:center}
+    .kw-stat b{display:block;font:800 17px/1.2 Poppins,system-ui,sans-serif}
+    .kw-stat span{color:var(--kw-muted);font-size:10px;font-weight:800;letter-spacing:.8px;text-transform:uppercase}
+    .kw-actions{display:flex;gap:8px;align-items:center}
+    .kw-button{border:1px solid #ffffff22;border-radius:10px;padding:8px 12px;color:var(--kw-ink);background:#ffffff0c;font:800 13px Nunito,system-ui,sans-serif;cursor:pointer;transition:background .15s,transform .15s}
+    .kw-button:hover{background:#ffffff1d}.kw-button:active{transform:scale(.97)}
+    .kw-button:focus-visible,.kw-back:focus-visible{outline:3px solid var(--kw-gold);outline-offset:3px}
+    .kw-button.primary{display:none;background:var(--kw-gold);border-color:var(--kw-gold);color:#17182a}
+    .kw-button.pause{display:none;border-color:#8b80be;background:#383455;color:#fff}
+    .kw-instruction{min-height:36px;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 18px;color:#d9daeb;font-size:14px}
+    .kw-board{position:relative;margin:0 14px;border:1px solid #ffffff1d;border-radius:16px;overflow:hidden;background:radial-gradient(circle at 50% 48%,#303355 0,#1d2038 45%,#151625 100%);height:min(56vw,calc(100vh - 275px),560px);min-height:340px;box-shadow:inset 0 0 55px #07091688}
+    .kw-board svg{display:block;width:100%;height:100%;touch-action:none;user-select:none}
+    .kw-grid{opacity:.3}
+    .kw-orbit{fill:none;stroke:#aab2ee;stroke-width:1;stroke-dasharray:2 9;opacity:.12}
+    .kw-rope-shadow{stroke:#080a17;stroke-width:12;stroke-linecap:round;opacity:.68}
+    .kw-rope{stroke:url(#kw-rope-gradient);stroke-width:6;stroke-linecap:round;filter:drop-shadow(0 0 5px #ff668e77);transition:stroke .22s,filter .22s}
+    .kw-rope.clear{stroke:url(#kw-clear-gradient);filter:drop-shadow(0 0 8px #59e2dbbb)}
+    .kw-crossing-marker circle{fill:#17182a;stroke:#fff0c3;stroke-width:2;filter:drop-shadow(0 0 8px #ffd166cc)}
+    .kw-crossing-marker text{fill:var(--kw-gold);font:900 12px Nunito,system-ui,sans-serif;text-anchor:middle;dominant-baseline:central;pointer-events:none}
+    .kw-node{cursor:grab;touch-action:none;transform-box:fill-box;transform-origin:center;transition:filter .16s}
+    .kw-node:hover{filter:drop-shadow(0 0 9px #a987ffbb)}.kw-node:active{cursor:grabbing}
+    .kw-node circle{fill:url(#kw-node-gradient);stroke:#f4f2ff;stroke-width:3;filter:drop-shadow(0 4px 7px #0009)}
+    .kw-node:focus-visible circle{stroke:var(--kw-gold);stroke-width:5}
+    .kw-node text{fill:white;font:900 13px Nunito,system-ui,sans-serif;text-anchor:middle;dominant-baseline:central;pointer-events:none}
+    .kw-node.hub circle{fill:url(#kw-hub-gradient);stroke:#fff1b8}.kw-node.hub text{fill:#17182a;font-size:16px}
+    .kw-win-banner{position:absolute;top:15px;left:50%;z-index:2;display:none;align-items:center;gap:9px;padding:10px 17px;border:1px solid #fff0b4;border-radius:999px;color:#17182a;background:linear-gradient(135deg,#ffe28a,#ffd166);box-shadow:0 8px 26px #ffd16655;transform:translateX(-50%);font:900 14px/1 Poppins,system-ui,sans-serif;letter-spacing:.5px;white-space:nowrap}
+    .kw-win-banner span{font-size:18px}.kw-game.is-solved .kw-win-banner{display:flex;animation:kw-pop .32s cubic-bezier(.2,1.4,.4,1) both}
+    @keyframes kw-pop{from{opacity:0;transform:translate(-50%,-9px) scale(.82)}to{opacity:1;transform:translate(-50%,0) scale(1)}}
+    .kw-status{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 18px 14px;color:var(--kw-muted);font-size:13px}
+    .kw-crossings{display:flex;align-items:center;gap:8px;color:var(--kw-pink);font-weight:900}
+    .kw-crossings.clear{color:var(--kw-cyan)}
+    .kw-dot{width:9px;height:9px;border-radius:50%;background:currentColor;box-shadow:0 0 12px currentColor}
+    .kw-hint{color:var(--kw-muted);text-align:right}
+    @media(max-width:700px){
+      .kw-shell{width:min(100% - 16px,600px);padding:9px 0 16px}
+      .kw-game{border-radius:16px}.kw-toolbar{padding:11px 12px}.kw-stat{min-width:60px;padding:6px 7px}
+      .kw-stat b{font-size:15px}.kw-stat span{font-size:9px}.kw-button{padding:8px 9px;font-size:12px}
+      .kw-instruction{padding:8px 12px;font-size:13px}.kw-board{margin:0 8px;height:min(58vh,calc(100vh - 235px));min-height:280px}
+      .kw-status{padding:10px 12px;font-size:12px}.kw-tagline{font-size:12px}
+    }
+    @media(max-width:430px){
+      .kw-top{align-items:flex-start}.kw-titleline{gap:8px}.kw-mark{width:33px;height:33px;font-size:20px}
+      h1{font-size:19px}.kw-back{font-size:12px;padding-top:8px}
+      .kw-toolbar{align-items:flex-start;flex-direction:column}.kw-actions{width:100%;justify-content:flex-end}
+      .kw-board{height:min(55vh,calc(100vh - 270px));min-height:245px}
+      .kw-hint{max-width:48%}
+    }
+    @media(max-height:650px) and (min-width:701px){.kw-shell{padding-top:8px}.kw-board{height:calc(100vh - 235px);min-height:280px}.kw-toolbar{padding-top:9px;padding-bottom:9px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
+  </style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebPage","name":"Knotwork","url":"https://teacharcade.com/brain-arcade/knotwork/","description":"A free visual puzzle game. Drag the knots until every crossing disappears."}
+  </script>
+</head>
+<body>
+  <div id="site-header"></div>
+  <script src="/assets/scripts/nav.js?v=5" defer></script>
+  <main class="kw-shell">
+    <div class="kw-top">
+      <div class="kw-titleline"><span class="kw-mark" aria-hidden="true">↗</span><div><h1>Knotwork</h1><p class="kw-tagline">Untangle the ropes. Clear every crossing.</p></div></div>
+      <a class="kw-back" href="/brain-arcade/">← Brain Arcade</a>
+    </div>
+    <section class="kw-game" aria-label="Knotwork game">
+      <div class="kw-toolbar">
+        <div class="kw-stats" aria-label="Game progress">
+          <div class="kw-stat"><b id="kw-level">1</b><span>Level</span></div>
+          <div class="kw-stat"><b id="kw-moves">0</b><span>Moves</span></div>
+          <div class="kw-stat"><b id="kw-time">0:00</b><span>Time</span></div>
+        </div>
+        <div class="kw-actions">
+          <button class="kw-button" id="kw-reset" type="button">Reset</button>
+          <button class="kw-button" id="kw-new" type="button">New tangle</button>
+          <button class="kw-button pause" id="kw-stay" type="button">Stay here</button>
+          <button class="kw-button primary" id="kw-next" type="button">Next level</button>
+        </div>
+      </div>
+      <div class="kw-instruction"><span id="kw-message" aria-live="polite">Drag the knots apart until no ropes cross.</span><span>Every knot can move.</span></div>
+      <div class="kw-board">
+        <svg id="kw-svg" viewBox="0 0 900 540" role="img" aria-label="A tangled web of ropes. Drag the lettered knots to remove crossings." preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <pattern id="kw-dots" width="25" height="25" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#a8acd5" /></pattern>
+            <linearGradient id="kw-rope-gradient" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ff759e"/><stop offset=".52" stop-color="#c17fff"/><stop offset="1" stop-color="#ffb36b"/></linearGradient>
+            <linearGradient id="kw-clear-gradient" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a0fff0"/><stop offset="1" stop-color="#43c7ed"/></linearGradient>
+            <linearGradient id="kw-node-gradient" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#6d72a9"/><stop offset="1" stop-color="#272b4d"/></linearGradient>
+            <linearGradient id="kw-hub-gradient" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff0a5"/><stop offset="1" stop-color="#ffb547"/></linearGradient>
+          </defs>
+          <circle class="kw-orbit" cx="450" cy="270" r="136"/><circle class="kw-orbit" cx="450" cy="270" r="194"/>
+          <rect class="kw-grid" width="900" height="540" fill="url(#kw-dots)" />
+          <g id="kw-rope-shadows"></g><g id="kw-ropes"></g><g id="kw-markers"></g><g id="kw-nodes"></g>
+        </svg>
+        <div class="kw-win-banner" aria-hidden="true"><span>✦</span> KNOTS CLEARED <span>✦</span></div>
+      </div>
+      <div class="kw-status">
+        <div class="kw-crossings" id="kw-crossing-status"><span class="kw-dot" aria-hidden="true"></span><span id="kw-crossings" aria-live="polite">Preparing tangle…</span></div>
+        <div class="kw-hint">Drag a knot, or focus one and use the arrow keys.</div>
+      </div>
+    </section>
+  </main>
+  <script>
+  (() => {
+    const NS = "http://www.w3.org/2000/svg";
+    const svg = document.querySelector("#kw-svg");
+    const gameCard = document.querySelector(".kw-game");
+    const shadowsGroup = document.querySelector("#kw-rope-shadows");
+    const ropesGroup = document.querySelector("#kw-ropes");
+    const markersGroup = document.querySelector("#kw-markers");
+    const nodesGroup = document.querySelector("#kw-nodes");
+    const levelOut = document.querySelector("#kw-level");
+    const movesOut = document.querySelector("#kw-moves");
+    const timeOut = document.querySelector("#kw-time");
+    const message = document.querySelector("#kw-message");
+    const crossingOut = document.querySelector("#kw-crossings");
+    const crossingStatus = document.querySelector("#kw-crossing-status");
+    const resetButton = document.querySelector("#kw-reset");
+    const newButton = document.querySelector("#kw-new");
+    const stayButton = document.querySelector("#kw-stay");
+    const nextButton = document.querySelector("#kw-next");
+    const W = 900, H = 540, cx = W / 2, cy = H / 2;
+    let level = 1, moves = 0, nodes = [], edges = [], initial = [];
+    let activeNode = null, dragStart = null, solved = false, startedAt = performance.now(), clockId, autoAdvanceId = null;
+    let lineElements = [], shadowElements = [], nodeElements = [];
+
+    const cross = (a, b, c) => (b.x-a.x)*(c.y-a.y)-(b.y-a.y)*(c.x-a.x);
+    function intersectionPoint(first, second) {
+      if (first.a === second.a || first.a === second.b || first.b === second.a || first.b === second.b) return false;
+      const a = nodes[first.a], b = nodes[first.b], c = nodes[second.a], d = nodes[second.b];
+      const rx=b.x-a.x, ry=b.y-a.y, sx=d.x-c.x, sy=d.y-c.y;
+      const denominator=rx*sy-ry*sx;
+      if (Math.abs(denominator)<0.001) return null;
+      const qx=c.x-a.x, qy=c.y-a.y;
+      const t=(qx*sy-qy*sx)/denominator, u=(qx*ry-qy*rx)/denominator;
+      if (t<=0.001 || t>=0.999 || u<=0.001 || u>=0.999) return null;
+      return {x:a.x+t*rx,y:a.y+t*ry};
+    }
+    function getCrossings() {
+      const points=[];
+      for (let i=0;i<edges.length;i++) for (let j=i+1;j<edges.length;j++) {
+        const point=intersectionPoint(edges[i],edges[j]);
+        if (point) points.push(point);
+      }
+      return points;
+    }
+    function countCrossings() { return getCrossings().length; }
+    function fmtTime(ms) {
+      const seconds = Math.floor(ms/1000);
+      return `${Math.floor(seconds/60)}:${String(seconds%60).padStart(2,"0")}`;
+    }
+    function updateClock() { timeOut.textContent = fmtTime(performance.now()-startedAt); }
+    function cancelAutoAdvance() {
+      if (autoAdvanceId!==null) { clearTimeout(autoAdvanceId); autoAdvanceId=null; }
+    }
+    function createPuzzle() {
+      cancelAutoAdvance(); gameCard.classList.remove("is-solved");
+      solved = false; moves = 0; movesOut.textContent = "0";
+      levelOut.textContent = String(level); nextButton.style.display = "none"; stayButton.style.display = "none";
+      message.textContent = "Drag the knots apart until no ropes cross.";
+      const ringCount = Math.min(6 + level, 13);
+      const radius = Math.min(192, 140 + level*4);
+      nodes = [{ id:0, label:"✦", hub:true, x:cx, y:cy }];
+      for (let i=0;i<ringCount;i++) {
+        const angle = (Math.PI*2*i/ringCount)-Math.PI/2;
+        nodes.push({ id:i+1, label:String.fromCharCode(65+i), x:cx+Math.cos(angle)*radius, y:cy+Math.sin(angle)*radius });
+      }
+      edges = [];
+      for (let i=1;i<=ringCount;i++) {
+        edges.push({a:0,b:i});
+        edges.push({a:i,b:i===ringCount?1:i+1});
+      }
+      // Scramble the ring order until the opening board has visible crossings.
+      for (let attempt=0;attempt<60;attempt++) {
+        const order = Array.from({length:ringCount},(_,i)=>i+1);
+        for (let i=order.length-1;i>0;i--) { const j=Math.floor(Math.random()*(i+1)); [order[i],order[j]]=[order[j],order[i]]; }
+        order.forEach((nodeId,slot)=>{
+          const angle=(Math.PI*2*slot/ringCount)-Math.PI/2;
+          nodes[nodeId].x=cx+Math.cos(angle)*radius;
+          nodes[nodeId].y=cy+Math.sin(angle)*radius;
+        });
+        if (countCrossings()>=Math.max(3,Math.floor(ringCount/2))) break;
+      }
+      initial=nodes.map(n=>({x:n.x,y:n.y}));
+      startedAt=performance.now(); updateClock(); clearInterval(clockId); clockId=setInterval(updateClock,250);
+      buildSvg(); refresh();
+    }
+    function buildSvg() {
+      shadowsGroup.replaceChildren(); ropesGroup.replaceChildren(); markersGroup.replaceChildren(); nodesGroup.replaceChildren();
+      lineElements=[]; shadowElements=[]; nodeElements=[];
+      edges.forEach(()=>{
+        const shadow=document.createElementNS(NS,"line"); shadow.setAttribute("class","kw-rope-shadow"); shadowsGroup.appendChild(shadow); shadowElements.push(shadow);
+        const line=document.createElementNS(NS,"line"); line.setAttribute("class","kw-rope"); ropesGroup.appendChild(line); lineElements.push(line);
+      });
+      nodes.forEach((node,index)=>{
+        const group=document.createElementNS(NS,"g");
+        group.setAttribute("class","kw-node"+(node.hub?" hub":""));
+        group.dataset.index=String(index);
+        group.setAttribute("tabindex","0"); group.setAttribute("role","button");
+        group.setAttribute("aria-label",node.hub?"Move center knot":"Move knot "+node.label);
+        const circle=document.createElementNS(NS,"circle"); circle.setAttribute("r",node.hub?19:17);
+        const text=document.createElementNS(NS,"text"); text.textContent=node.label;
+        group.append(circle,text);
+        group.addEventListener("pointerdown",beginDrag);
+        group.addEventListener("keydown",moveWithKeyboard);
+        nodesGroup.appendChild(group); nodeElements.push(group);
+      });
+    }
+    function refresh() {
+      const crossingPoints=getCrossings(), crossings=crossingPoints.length;
+      edges.forEach((edge,index)=>{
+        const a=nodes[edge.a],b=nodes[edge.b],line=lineElements[index],shadow=shadowElements[index];
+        [line,shadow].forEach(element=>{
+          element.setAttribute("x1",a.x); element.setAttribute("y1",a.y);
+          element.setAttribute("x2",b.x); element.setAttribute("y2",b.y);
+        });
+        line.classList.toggle("clear",crossings===0);
+      });
+      markersGroup.replaceChildren();
+      crossingPoints.forEach(point=>{
+        const marker=document.createElementNS(NS,"g"); marker.setAttribute("class","kw-crossing-marker");
+        marker.setAttribute("transform",`translate(${point.x} ${point.y})`);
+        const circle=document.createElementNS(NS,"circle"); circle.setAttribute("r","7");
+        const x=document.createElementNS(NS,"text"); x.textContent="×";
+        marker.append(circle,x); markersGroup.appendChild(marker);
+      });
+      nodes.forEach((node,index)=>nodeElements[index].setAttribute("transform",`translate(${node.x} ${node.y})`));
+      crossingOut.textContent=crossings===1?"1 crossing left":`${crossings} crossings left`;
+      crossingStatus.classList.toggle("clear",crossings===0);
+      if (crossings===0 && !solved) {
+        solved=true; gameCard.classList.add("is-solved");
+        message.textContent=`Level ${level} cleared! Next level loading…`;
+        stayButton.style.display="inline-block"; clearInterval(clockId);
+        autoAdvanceId=setTimeout(()=>{level++;createPuzzle();},2300);
+      } else if (crossings>0 && solved) {
+        cancelAutoAdvance(); solved=false; gameCard.classList.remove("is-solved");
+        message.textContent="Drag the knots apart until no ropes cross."; nextButton.style.display="none"; stayButton.style.display="none";
+      }
+    }
+    function toSvgPoint(event) {
+      const point=svg.createSVGPoint(); point.x=event.clientX; point.y=event.clientY;
+      return point.matrixTransform(svg.getScreenCTM().inverse());
+    }
+    function beginDrag(event) {
+      if (solved) return;
+      event.preventDefault();
+      activeNode=Number(event.currentTarget.dataset.index);
+      dragStart={x:nodes[activeNode].x,y:nodes[activeNode].y};
+      svg.setPointerCapture(event.pointerId);
+      svg.addEventListener("pointermove",drag);
+      svg.addEventListener("pointerup",endDrag,{once:true});
+      svg.addEventListener("pointercancel",endDrag,{once:true});
+    }
+    function drag(event) {
+      if (activeNode===null) return;
+      const point=toSvgPoint(event), node=nodes[activeNode];
+      node.x=Math.max(24,Math.min(W-24,point.x)); node.y=Math.max(24,Math.min(H-24,point.y));
+      refresh();
+    }
+    function endDrag() {
+      if (activeNode!==null) {
+        const node=nodes[activeNode];
+        if (dragStart && Math.hypot(dragStart.x-node.x,dragStart.y-node.y)>7) { moves++; movesOut.textContent=String(moves); }
+      }
+      dragStart=null;
+      activeNode=null; svg.removeEventListener("pointermove",drag);
+      svg.removeEventListener("pointerup",endDrag); svg.removeEventListener("pointercancel",endDrag);
+    }
+    function moveWithKeyboard(event) {
+      const deltas={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]};
+      const delta=deltas[event.key]; if (!delta || solved) return;
+      event.preventDefault();
+      const node=nodes[Number(event.currentTarget.dataset.index)], step=event.shiftKey?28:12;
+      node.x=Math.max(24,Math.min(W-24,node.x+delta[0]*step));
+      node.y=Math.max(24,Math.min(H-24,node.y+delta[1]*step));
+      moves++;movesOut.textContent=String(moves);refresh();
+    }
+    resetButton.addEventListener("click",()=>{
+      cancelAutoAdvance(); gameCard.classList.remove("is-solved"); stayButton.style.display="none";
+      nodes.forEach((node,index)=>{node.x=initial[index].x;node.y=initial[index].y;});
+      moves=0;movesOut.textContent="0";solved=false;message.textContent="Drag the knots apart until no ropes cross.";
+      nextButton.style.display="none";startedAt=performance.now();refresh();updateClock();
+    });
+    newButton.addEventListener("click",createPuzzle);
+    stayButton.addEventListener("click",()=>{
+      cancelAutoAdvance(); stayButton.style.display="none"; nextButton.style.display="inline-block";
+      message.textContent=`Level ${level} cleared. Continue when you are ready.`;
+    });
+    nextButton.addEventListener("click",()=>{level++;createPuzzle();});
+    createPuzzle();
+  })();
+  </script>
+</body>
+</html>
