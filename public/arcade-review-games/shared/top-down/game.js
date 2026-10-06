@@ -8,6 +8,7 @@ import {roomSize,mountLayout} from './viewport.js';
 import {createMotion,syncMotion,advanceMotion,interactionTarget} from './motion.js';
 import {updateCamera,cancelCamera} from './camera.js';
 import {encodeSave,decodeSave,createSaveStore} from './save.js';
+import {buildReport,reportSummary,downloadReport} from './report.js';
 let map=validateAdventure(createAdventure());
 import { createState, undo, interact, doorOpen, completeChallenge, resetPuzzle, exitReady, cluesReady, lightPaths, inventoryEntries, adventureResults } from './model.js';
 const $=id=>document.getElementById(id);
@@ -178,6 +179,25 @@ function popup(label,title,paragraphs,actions){
   selectDialogButton($('dialog-actions').children[0]);
 }
 function resume(){dialog.close();release();last=0;board.focus();}
+let reportStudent='';
+function showReport(){
+  saveProgress();
+  const snapshot=buildReport(map,content,state,elapsed);
+  popup('STUDENT RESULTS',state.won?'Adventure results':'Adventure progress',reportSummary(snapshot),[
+    {text:'Download report',primary:true,run:()=>{
+      try{downloadReport({...snapshot,student:reportStudent.trim().slice(0,80)});$('feedback').textContent='Report downloaded. You can submit it to your teacher.';}
+      catch{$('feedback').textContent='Download unavailable. You can take a screenshot of these results.';}
+    }},
+    {text:state.won?'Back to results':'Back to adventure',run:state.won?showCompletion:resume}
+  ]);
+  const label=element('label','Student name (optional)','report-name'),input=element('input');
+  input.type='text';input.maxLength=80;input.value=reportStudent;input.autocomplete='off';
+  input.addEventListener('input',()=>{reportStudent=input.value;});label.append(input);$('dialog-body').prepend(label);
+}
+function showCompletion(){
+  const results=adventureResults(map,state),learning=reviewSummary(state.review);
+  popup(map.completion?.label||'QUEST COMPLETE',map.completion?.title||'Adventure complete',[map.completion?.summary||'You completed the adventure.',`Treasure found: ${results.treasureFound} / ${results.treasureTotal} · Treasure bonus: +${results.bonusPoints} points.`,`Review points: ${results.reviewPoints} · Total points: ${results.totalPoints}.`,`Review completed: ${learning.completed} / ${learning.total} · Correct on first try: ${learning.firstTry} · Answer attempts: ${learning.attempts}.`,`Exploration time: ${Math.floor(elapsed/60)}m ${Math.floor(elapsed%60)}s · Moves: ${state.moves}.`],[{text:'Play again',run:restart,primary:true},{text:'View results report',run:showReport},{text:'Back to Arcade',run:()=>{window.location.href='/arcade-review-games/';}}]);
+}
 let pickupFlashTimer;
 function pickupFeedback(items){
   for(const item of items){
@@ -221,8 +241,7 @@ function performInteraction(){
   if(result.type==='challenge')openQuestion(result.id);
   if(result.type==='win'){
     $('pause').disabled=true;
-    const results=adventureResults(map,state), learning=reviewSummary(state.review);
-    popup(map.completion?.label||'QUEST COMPLETE',map.completion?.title||'Adventure complete',[map.completion?.summary||'You completed the adventure.',`Treasure found: ${results.treasureFound} / ${results.treasureTotal} · Treasure bonus: +${results.bonusPoints} points.`,`Review points: ${results.reviewPoints} · Total points: ${results.totalPoints}.`,`Review completed: ${learning.completed} / ${learning.total} · Correct on first try: ${learning.firstTry} · Answer attempts: ${learning.attempts}.`,`Exploration time: ${Math.floor(elapsed/60)}m ${Math.floor(elapsed%60)}s · Moves: ${state.moves}.`],[{text:'Play again',run:restart,primary:true},{text:'Back to Arcade',run:()=>{window.location.href='/arcade-review-games/';}}]);
+    showCompletion();
   }
 }
 function openQuestion(id){
@@ -269,11 +288,12 @@ function openQuestion(id){
   }
   selectDialogButton([...$('answers').children].find(answer=>!answer.disabled));
 }
-function restart(){state=createState(map);motion=createMotion(state);state.review=createReview(map,content.questions);activeQuestion=null;elapsed=0;started=true;$('pause').disabled=false;render();resume();saveProgress();message(map.startMessage||'Explore the map and read the nearby signs.');}
-function pause(){if(!started||dialog.open||state.won)return;saveProgress();popup('ADVENTURE PAUSED','Take your time',[saveUnavailable?'Saving is unavailable in this browser. Keep this tab open to retain your progress.':'Progress saved automatically in this browser. You can close the tab and continue later.'],[{text:'Resume adventure',run:resume,primary:true},{text:'Restart adventure',run:()=>popup('RESTART','Start a new adventure?',['This clears your keys, switches, and progress.'],[{text:'Start over',run:restart,primary:true},{text:'Keep playing',run:resume}])}]);}
+function restart(){reportStudent='';state=createState(map);motion=createMotion(state);state.review=createReview(map,content.questions);activeQuestion=null;elapsed=0;started=true;$('pause').disabled=false;render();resume();saveProgress();message(map.startMessage||'Explore the map and read the nearby signs.');}
+function pause(){if(!started||dialog.open||state.won)return;saveProgress();popup('ADVENTURE PAUSED','Take your time',[saveUnavailable?'Saving is unavailable in this browser. Keep this tab open to retain your progress.':'Progress saved automatically in this browser. You can close the tab and continue later.'],[{text:'Resume adventure',run:resume,primary:true},{text:'Restart adventure',run:()=>popup('RESTART','Start a new adventure?',['This clears your keys, switches, and progress.'],[{text:'Start over',run:restart,primary:true},{text:'Keep playing',run:resume}])},{text:'View progress report',run:showReport}]);}
 const keyDirs={ArrowUp:'up',ArrowDown:'down',ArrowLeft:'left',ArrowRight:'right',w:'up',s:'down',a:'left',d:'right'};
 const normalizedKeyDirs=Object.fromEntries(Object.entries(keyDirs).map(([key,dir])=>[key.toLowerCase(),dir]));
 function handleDialogKey(e){
+  if(['INPUT','TEXTAREA','SELECT'].includes(e.target?.tagName)||e.target?.isContentEditable)return;
   const buttons=[...$('answers').children,...$('dialog-actions').children].filter(button=>!button.disabled);
   if(!buttons.length)return;
   if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key)){

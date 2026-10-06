@@ -98,6 +98,9 @@ body{background:radial-gradient(ellipse at 50% 0,#294953,#0a1925 70%)}
 
 /* The active game owns the viewport; controls are available through Help. */
 #world #player{left:0;top:0;transition:none;will-change:transform;filter:none}
+.report-name{display:grid;gap:8px;margin-bottom:16px;color:var(--ink);font-weight:600}
+.report-name input{box-sizing:border-box;width:100%;padding:10px 12px;border:1px solid #6483a4;border-radius:8px;background:#0d1c2f;color:var(--ink);font:inherit}
+.report-name input:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
 #world .entity.interactable::after{content:'';position:absolute;inset:3%;border:2px solid #ffe5a1;border-radius:9px;pointer-events:none}
 #answers button.keyboard-selected:not(:disabled){background:#3b4f53;border-color:#ffe5a1;outline:3px solid #ffe5a1;outline-offset:2px}
 #dialog-actions button.keyboard-selected{outline:3px solid #ffe5a1;outline-offset:2px}

@@ -39,9 +39,12 @@ node --test scripts/test-top-down-viewport.mjs
 node --test scripts/test-top-down-motion.mjs
 node --test scripts/test-top-down-camera.mjs
 node --test scripts/test-top-down-save.mjs
+node --test scripts/test-top-down-report.mjs
 ```
 
-The UI scripts use a simulated DOM, not a browser. Browser/mobile visual and interaction verification remains necessary. Classroom report export is not implemented yet.
+The UI scripts use a simulated DOM, not a browser. Browser/mobile visual and interaction verification remains necessary.
+
+`report.js` builds a student report from the current adventure and review state. Pause offers an in-progress report; completion offers a final report. Students can add an optional name and download a plain text file for submission. First-try accuracy divides questions correct on the first try by questions attempted; unanswered questions are listed separately. Retries count responses beyond the first response for each attempted question. The report includes question prompts and the student's response history without an answer key. Review and treasure points remain separate. Report creation pauses play and does not change progress. Student names are neither saved nor sent to a server, and restart clears the name field. Reports are downloaded by the student; they are not automatically submitted to teachers.
 
 `save.js` stores one unfinished adventure per map/question module pair in localStorage. Position, difficulty, puzzle state, inventory, shuffled review questions, attempts, undo history and elapsed play time persist. Gameplay saves at most once per second plus immediate answer/interaction/recovery writes and page-hide writes. Continue restores the map with no held inputs or open question dialog; reopen a chest to continue. Winning removes the unfinished save. Restart replaces it. Version, content signature, integrity checksum and shape checks reject incompatible or damaged saves. Storage failures do not interrupt play; Pause reports saving availability. Saves stay in the same browser and site origin and do not transfer between preview URLs, devices or accounts.
 

@@ -1,7 +1,10 @@
 import assert from 'node:assert/strict';
 class Node {
  constructor(){this.children=[];this.dataset={};this.style={setProperty:(k,v)=>this.style[k]=v};this.classList={add(){},remove(){}};this.listeners={};this.open=false;this.clientWidth=800;this.clientHeight=600;this.scrollHeight=0;}
- append(...nodes){this.children.push(...nodes)} prepend(...nodes){this.children.unshift(...nodes)} replaceChildren(...nodes){this.children=[...nodes]} before(){} after(){} setAttribute(k,v){this[k]=v} addEventListener(k,v){this.listeners[k]=v} querySelector(){return this.innerHTML?.includes('svg')?{}:null} focus(){} showModal(){this.open=true} close(){this.open=false} remove(){} }
+ append(...nodes){this.children.push(...nodes)} prepend(...nodes){this.children.unshift(...nodes)} replaceChildren(...nodes){this.children=[...nodes]} before(){} after(){} setAttribute(k,v){this[k]=v} addEventListener(k,v){this.listeners[k]=v} querySelector(){return this.innerHTML?.includes('svg')?{}:null} focus(){} showModal(){this.open=true} close(){this.open=false} remove(){} click(){if(this.download)downloads.push(this);else this.listeners.click?.();} }
+const downloads=[],downloadBlobs=new Map();
+URL.createObjectURL=blob=>{const id='blob:test-'+downloadBlobs.size;downloadBlobs.set(id,blob);return id;};
+URL.revokeObjectURL=id=>downloadBlobs.delete(id);
 const nodes=new Map();globalThis.document={getElementById(id){if(!nodes.has(id))nodes.set(id,new Node());return nodes.get(id)},body:new Node(),querySelector(selector){if(selector!=='script[data-map]'){if(selector==='#message')return this.getElementById('message');if(!nodes.has(selector))nodes.set(selector,new Node());return nodes.get(selector);}return {dataset:{map:'./outpost.js',questionSet:'./scientific-method.js'}}},querySelectorAll(){return []},createElement(){return new Node()},addEventListener(){},hidden:false};const windowListeners={};globalThis.window={addEventListener(name,fn){windowListeners[name]=fn}};let animationFrame,clock=100;globalThis.requestAnimationFrame=fn=>{if(fn.name==='frame')animationFrame=fn};
 const stored=new Map();
 globalThis.localStorage={getItem:k=>stored.get(k),setItem:(k,v)=>stored.set(k,v),removeItem:k=>stored.delete(k)};
@@ -106,6 +109,15 @@ assert.equal(get('dialog-title').textContent,'Adventure complete');
 assert.ok(get('dialog-body').children.some(p=>p.textContent.includes('Review completed: 6 / 6')));
 assert.ok(get('dialog-body').children.every(p=>!p.textContent.includes('Archive')&&!p.textContent.includes('seal crystal')));
 console.log('DOM flow: Outpost completes all review chests, both camera directions, mirror crossing, block gate and beacon completion using the same game module.');
+get('dialog-actions').children.find(b=>b.textContent==='View results report').click();
+assert.equal(get('dialog-title').textContent,'Adventure results');
+const nameInput=get('dialog-body').children[0].children[0];nameInput.value='Alex';nameInput.listeners.input();
+let prevented=false;get('dialog').listeners.keydown({key:'ArrowLeft',target:{tagName:'INPUT'},preventDefault(){prevented=true;}});assert.equal(prevented,false,'Name editing retains native arrow keys');
+get('dialog').listeners.keydown({key:'Enter',target:{tagName:'BUTTON'},repeat:false,preventDefault(){}});
+assert.equal(downloads.length,1);assert.equal(downloads[0].download,'quest-arcade-mosslight-outpost-results.txt');
+const downloaded=await downloadBlobs.get(downloads[0].href).text();
+assert.match(downloaded,/Student: Alex/);assert.match(downloaded,/Questions completed: 6 \/ 6/);assert.match(downloaded,/Adventure: Complete/);
+get('dialog-actions').children[1].click();assert.equal(get('dialog-title').textContent,'Adventure complete');
 assert.equal(stored.size,0,'Winning clears the unfinished save');
 stored.set(saveKey,resumeSnapshot);nodes.clear();
 await import('../public/arcade-review-games/shared/top-down/game.js?resume-test');
@@ -116,6 +128,11 @@ assert.deepEqual(point(),resumePoint);
 assert.ok(get('inventory').children.some(b=>b.children.some(c=>c.textContent==='Used')));
 assert.equal(get('seals').textContent,'Stations: 1 / 4');
 get('pause').listeners.click();assert.ok(get('dialog-body').children.some(p=>p.textContent.includes('saved automatically')));
+get('dialog-actions').children.find(b=>b.textContent==='View progress report').click();
+assert.equal(get('dialog-title').textContent,'Adventure progress');
+get('dialog-actions').children[0].click();
+assert.match(await downloadBlobs.get(downloads.at(-1).href).text(),/Adventure: In progress/);
+get('dialog-actions').children[1].click();get('pause').listeners.click();
 get('dialog-actions').children[1].listeners.click();get('dialog-actions').children[0].listeners.click();
 assert.equal(get('room').textContent,'01 · Dock');assert.equal(get('seals').textContent,'Stations: 0 / 4');
 console.log('DOM save flow: refresh offers Continue, restores position, used key and chest progress; restart replaces the save.');
