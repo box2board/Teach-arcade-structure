@@ -10,12 +10,13 @@ s.cartPosition={...s.player};actWorkshop(s,'drivegear');actWorkshop(s,'chime');a
 assert.match(actWorkshop(s,'giantdrive'),/out of reach/);assert(!s.driveInstalled);
 actWorkshop(s,'beaver');actWorkshop(s,'scaffold');run(12);assert.equal(s.scaffoldProgress,1);
 s.cartPosition={...s.player};actWorkshop(s,'giantdrive');actWorkshop(s,'giantsignal');assert(s.driveInstalled&&s.chimeInstalled);assert(!s.driveCargo&&!s.chimeCargo);
-run(20);assert(s.giantHeat>=.7&&s.giantPower<1,'Fast drive overheats and cannot wake giant by itself');
-actWorkshop(s,'giantdrive');assert.equal(s.driveRatio,1);run(45);assert.equal(s.giantPower,1);assert(!s.giantAwake,'Power needs an intentional signal');
+let heatEvents=0;for(let i=0;i<20*60;i++)heatEvents+=stepWorkshop(s,1/60,canStand).filter(e=>e==='giant-hot').length;assert.equal(heatEvents,1,'Overheat signal fires once');assert(s.giantHeat>=.7&&s.giantPower<1,'Fast drive overheats and cannot wake giant by itself');
+actWorkshop(s,'giantdrive');assert.equal(s.driveRatio,1);let readyEvents=0;for(let i=0;i<45*60;i++)readyEvents+=stepWorkshop(s,1/60,canStand).filter(e=>e==='giant-ready').length;assert.equal(readyEvents,1,'Ready signal fires once');assert.equal(s.giantPower,1);assert(!s.giantAwake,'Power needs an intentional signal');
 actWorkshop(s,'giantsignal');assert(s.giantAwake);assert(stepAdventure(s,1/60).includes('finish'));
-actWorkshop(s,'ride');assert.equal(s.player.x,640);assert.equal(s.cartPosition.x,610);actWorkshop(s,'ridehome');assert.equal(s.player.x,1590);assert.equal(s.cartPosition.x,1560);
+s.player={x:1590,y:945};actWorkshop(s,'ride');assert(s.giantRide);assert.equal(s.player.x,1590,'Boarding does not teleport');run(2);assert(s.player.x<1590&&s.player.x>640,'Journey travels across the map');assert.equal(actWorkshop(s,'giantdrive'),null,'Actions cannot interrupt a ride');run(3);assert.equal(s.player.x,640);assert.equal(s.cartPosition.x,610);assert.equal(s.giantRide,null);actWorkshop(s,'ridehome');run(5);assert.equal(s.player.x,1590);assert.equal(s.cartPosition.x,1560);
 const restored=workshopState(JSON.parse(JSON.stringify(s)));assert(restored.giantAwake);assert.equal(restored.cartRepair,1);assert(restored.beaverFriend);
 assert.equal(adventureState({finished:true,beacon:1,pond:1}).finished,false,'Older completions continue into workshop adventure');
 // A towed cart traces a player route through a crossing rather than cutting across the river.
 s.cartPosition={x:690,y:425};s.player={x:920,y:425};s.cartTrail=[{x:700,y:425},{x:750,y:425},{x:805,y:425},{x:860,y:425},{x:920,y:425}];run(3);assert(s.cartPosition.x>840&&Math.abs(s.cartPosition.y-425)<1);
+assert.equal(workshopState({giantRide:{elapsed:2}}).giantRide,null,'Reload ends transient rides safely');
 console.log('PASS: workshop repair, heavy cargo, beaver scaffold, installation gates, overheating, gear change, intentional waking, rides, cart path, save migration.');
