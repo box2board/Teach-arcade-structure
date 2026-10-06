@@ -1,10 +1,12 @@
 import {PinballPhysics,PLUNGER} from './physics.js';
 import {renderTable} from './renderer.js';
+import {TABLES} from './tables.js';
 import {CircuitRush} from './scoring.js';
 const $=id=>document.getElementById(id),canvas=$('table'),ctx=canvas.getContext('2d');
 const renderScale=Math.min(2,window.devicePixelRatio||1);canvas.width=520*renderScale;canvas.height=820*renderScale;
 const sets=[{id:'science',name:'Scientific Method',url:'../territory-takedown/questions.js'},{id:'french',name:'French Revolution',url:'../territory-takedown/french-revolution/questions.js'}];
 let engine,state='setup',score=0,ballCount=1,lit=new Set(),multiplier=1,savedUntil=0,mode='classic',questions=[],queue=[],qIndex=0,correct=0,attempts=0,earned=0,current=null,answered=false,sound=false,audio=null,flash=[],last=0,acc=0,pausedFrom='playing',selectedSet='';
+let selectedTable=TABLES[0];
 const overlay=$('overlay'),panel=$('panel');
 let rampShots=0,lastShot=null,rush=new CircuitRush(),rushSecond=-1;
 let plungerSource=null,plungerPower=0,preserveSaver=false,saverRemaining=0;
@@ -17,32 +19,33 @@ function syncKeys(){engine.keys.left=state==='playing'&&(touchHeld.has('left')||
 function clearKeys(){heldKeys.clear();touchHeld.clear();engine.keys.left=engine.keys.right=false;}
 const shotInfo=document.createElement('p');shotInfo.className='shot-info';$('mission').after(shotInfo);
 const rushInfo=document.createElement('p');rushInfo.className='shot-info';shotInfo.after(rushInfo);
-function shotHud(){shotInfo.textContent=`Ramp bonus ${rampShots%3}/3`;const seconds=Math.ceil(rush.remaining(engine.time));rushSecond=seconds; rushInfo.textContent=seconds>0?`Rush ×2 · ${seconds}s`:`Rush ${rush.shots.size}/3`;}
+function applyTable(){document.body.dataset.theme=selectedTable.theme;document.querySelector('aside .eyebrow').textContent=selectedTable.name.toUpperCase();canvas.setAttribute('aria-label',selectedTable.name+' pinball playfield');document.querySelector('.mission>span').textContent=selectedTable.theme==='pirate'?'TREASURE CHEST':'JACKPOT CIRCUIT';if($('table-description'))$('table-description').textContent=selectedTable.description;$('help-jackpot').textContent=selectedTable.theme==='pirate'?'Light the four treasure targets, then hit a bumper. The four lights below the chest show your progress.':'Light the four bank targets, then hit a bumper. The reactor’s four light segments show your progress.';$('help-rush').textContent=`Hit the ramp, loop and ${selectedTable.spinnerLabel.toLowerCase()} to earn 15 seconds of double shot points. The three small inserts track these shots.`;}
+function shotHud(){shotInfo.textContent=`Ramp bonus ${rampShots%3}/3`;const seconds=Math.ceil(rush.remaining(engine.time));rushSecond=seconds; rushInfo.textContent=seconds>0?`${selectedTable.rushLabel} ×2 · ${seconds}s`:`${selectedTable.rushLabel} ${rush.shots.size}/3`;}
 function tableHit(id,value){
  const shotFactor=rush.factor(engine.time);
  hit(id,value);
  const activated=rush.record(id,engine.time);
  if(id==='ramp'||id==='orbit'){
-  let bonus=0,message=id==='ramp'?'Skyline ramp! +750':'Loop complete! +500';
-  if(id==='ramp'){rampShots++;if(rampShots%3===0){bonus+=2000;message='SKYLINE BONUS! +2,000';}}
+  let bonus=0,message=id==='ramp'?`${selectedTable.rampLabel}! +750`:'Loop complete! +500';
+  if(id==='ramp'){rampShots++;if(rampShots%3===0){bonus+=2000;message='RAMP BONUS! +2,000';}}
   if(lastShot && lastShot.id!==id && engine.time-lastShot.time<=8){bonus+=1000;message+=' · COMBO +1,000';lastShot=null;}else lastShot={id,time:engine.time};
   score+=bonus*multiplier;$('status').textContent=message;shotHud();hud();beep(900,.15);
  }
- if(id==='spinner'){$('status').textContent='Turbine hit! +'+value*multiplier*shotFactor;flash[flash.length-1].points=value*multiplier*shotFactor;}
- if(activated){$('status').textContent='CIRCUIT RUSH! Double shot points for 15 seconds.';beep(1100,.2);}
+ if(id==='spinner'){$('status').textContent=selectedTable.spinnerLabel+' hit! +'+value*multiplier*shotFactor;flash[flash.length-1].points=value*multiplier*shotFactor;}
+ if(activated){$('status').textContent=selectedTable.rushLabel+'! Double shot points for 15 seconds.';beep(1100,.2);}
  shotHud();
 }
 function show(html){overlay.hidden=false;panel.innerHTML=html;panel.querySelector('button,select')?.focus();}
 function hide(){overlay.hidden=true;document.activeElement?.blur();}
 function beep(freq=500,duration=.06){if(!sound)return;audio??=new (window.AudioContext||window.webkitAudioContext)();if(audio.state==='suspended')audio.resume();const o=audio.createOscillator(),g=audio.createGain();o.type='sine';o.frequency.value=freq;g.gain.setValueAtTime(.09,audio.currentTime);g.gain.exponentialRampToValueAtTime(.001,audio.currentTime+duration);o.connect(g);g.connect(audio.destination);o.start();o.stop(audio.currentTime+duration);}
 function hud(){ $('score').textContent=score.toLocaleString();$('ball-count').textContent=ballCount;$('multiplier').textContent='×'+multiplier;[...$('target-lights').children].forEach((el,i)=>el.classList.toggle('lit',lit.has(i)));$('mission').textContent=lit.size===4?'Jackpot lit! Hit a bumper to collect.':'Hit all four bank targets.';}
-function setup(){state='setup';engine=new PinballPhysics();cancelPlunger();show(`<div class="eyebrow">NEON CIRCUIT</div><h2>Review Pinball</h2><p>Your first ball is free. After it drains, answer two questions correctly to earn another.</p><label for="mode">1. Choose a mode</label><select id="mode"><option value="classic">Classic — standard flippers</option><option value="assist">Assisted — wider flippers, longer ball saver</option></select><label for="question-set">2. Choose a question set</label><select id="question-set">${sets.map(s=>`<option value="${s.id}">${s.name}</option>`).join('')}</select><button class="primary" id="start">Play pinball</button>`);$('start').onclick=start;}
+function setup(){state='setup';engine=new PinballPhysics({table:selectedTable});applyTable();cancelPlunger();stillFrame='';show(`<div class="eyebrow">CHOOSE YOUR TABLE</div><h2>Review Pinball</h2><p>Your first ball is free. After it drains, answer two questions correctly to earn another.</p><label for="table-choice">Table</label><select id="table-choice">${TABLES.map(t=>`<option value="${t.id}" ${t===selectedTable?'selected':''}>${t.name}</option>`).join('')}</select><p id="table-description">${selectedTable.description}</p><label for="mode">1. Choose a mode</label><select id="mode"><option value="classic">Classic — standard flippers</option><option value="assist">Assisted — wider flippers, longer ball saver</option></select><label for="question-set">2. Choose a question set</label><select id="question-set">${sets.map(s=>`<option value="${s.id}">${s.name}</option>`).join('')}</select><button class="primary" id="start">Play pinball</button>`);$('table-choice').onchange=()=>{selectedTable=TABLES.find(t=>t.id===$('table-choice').value);engine=new PinballPhysics({table:selectedTable});applyTable();stillFrame='';};$('start').onclick=start;}
 async function start(){const btn=$('start');btn.disabled=true;btn.textContent='Loading questions…';mode=$('mode').value;const set=sets.find(s=>s.id===$('question-set').value);selectedSet=set.name;
  try{const bank=await new Promise((resolve,reject)=>{const script=document.createElement('script');script.src=set.url;script.onload=()=>{resolve(window.TT_QUESTION_SET);script.remove();};script.onerror=()=>{script.remove();reject(new Error('Question set could not be loaded.'));};document.head.append(script);});questions=bank.questions.map(q=>({id:q.id,prompt:q.prompt ?? q.question,choices:q.choices,answer:q.answerIndex ?? q.answer,explanation:q.explanation}));
  // Existing sets use normalized objects; tuple support keeps the adapter reusable.
  if(!questions[0]?.prompt)questions=bank.questions.map(q=>({id:q[0],prompt:q[1],choices:q[2],answer:q[3],explanation:''}));
  if(!questions.length||questions.some(q=>!q.prompt||!Array.isArray(q.choices)||!Number.isInteger(q.answer)))throw new Error('Invalid question set.');
- score=0;ballCount=1;lit.clear();multiplier=1;rampShots=0;lastShot=null;rush=new CircuitRush();correct=0;attempts=0;queue=[];qIndex=0;flash=[];engine=new PinballPhysics({assist:mode==='assist',onHit:tableHit,onDrain:drain,onPlayfield:enterPlayfield,onLaneReturn:laneReturn});shotHud();hud();hide();ready();
+ score=0;ballCount=1;lit.clear();multiplier=1;rampShots=0;lastShot=null;rush=new CircuitRush();correct=0;attempts=0;queue=[];qIndex=0;flash=[];engine=new PinballPhysics({table:selectedTable,assist:mode==='assist',onHit:tableHit,onDrain:drain,onPlayfield:enterPlayfield,onLaneReturn:laneReturn});shotHud();hud();hide();ready();
  }catch(err){btn.disabled=false;btn.textContent='Try again';const p=document.createElement('p');p.textContent=err.message;panel.append(p);}}
 function ready(saved=false){state='ready';preserveSaver=saved;engine.prepareBall();cancelPlunger();$('status').textContent=saved?'Ball saved. Pull and release to launch.':'Hold Space / plunger, then release.';}
 function launch(power=0){if(state!=='ready')return;hide();state='playing';engine.launch(power);savedUntil=0;plungerSource=null;updatePlunger();$('status').textContent=`Launched at ${Math.round(power*100)}% pull · Launching…`;beep(360,.15);}
@@ -54,7 +57,7 @@ function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random
 function nextQuestion(){if(qIndex>=queue.length){queue=shuffle([...questions]);qIndex=0;}current=queue[qIndex++];answered=false;show(`<div class="eyebrow">EARN YOUR NEXT BALL · ${earned}/2 CORRECT</div><h2 id="question"></h2><div class="answers" id="answers"></div><div id="feedback" role="status"></div><button id="continue" class="primary" hidden>Next question</button>`);$('question').textContent=current.prompt;current.choices.forEach((text,i)=>{const b=document.createElement('button');b.textContent=`${i+1}. ${text}`;b.onclick=()=>answer(i);$('answers').append(b);});$('continue').onclick=()=>{if(earned>=2){ballCount++;hud();hide();ready();}else nextQuestion();};$('answers').firstChild.focus();}
 function answer(i){if(state!=='review'||answered)return;answered=true;attempts++;const right=i===current.answer;if(right){correct++;earned++;beep(850,.15);}else beep(190,.15);[...$('answers').children].forEach((b,n)=>{b.disabled=true;if(n===current.answer)b.classList.add('correct');else if(n===i)b.classList.add('wrong');});$('feedback').textContent=(right?'Correct!':`Correct answer: ${current.choices[current.answer]}.`)+(current.explanation?' '+current.explanation:'');$('continue').hidden=false;$('continue').textContent=earned>=2?'Ball earned — return to table':'Next question';$('continue').focus();}
 function pause(){if(!['playing','ready','paused'].includes(state))return;if(state==='paused'){state=pausedFrom;hide();updatePlunger();$('pause').textContent='Pause';last=performance.now();acc=0;return;}pausedFrom=state;state='paused';cancelPlunger();clearKeys();$('pause').textContent='Resume';show('<h2>Paused</h2><p>Your ball is waiting.</p><button id="resume" class="primary">Resume game</button>');$('resume').onclick=pause;}
-function end(){if(state==='setup'||state==='ended')return;state='ended';cancelPlunger();clearKeys();$('pause').textContent='Pause';show(`<div class="eyebrow">SESSION COMPLETE</div><h2>${score.toLocaleString()} points</h2><p>${ballCount} ball${ballCount===1?'':'s'} played<br>${correct} of ${attempts} review answers correct${attempts?' · '+Math.round(correct/attempts*100)+'%':''}</p><p id="session-set"></p><button class="primary" id="again">Choose a new game</button>`);$('session-set').textContent=selectedSet;$('again').onclick=setup;}
+function end(){if(state==='setup'||state==='ended')return;state='ended';cancelPlunger();clearKeys();$('pause').textContent='Pause';show(`<div class="eyebrow">SESSION COMPLETE</div><h2>${score.toLocaleString()} points</h2><p>${ballCount} ball${ballCount===1?'':'s'} played<br>${correct} of ${attempts} review answers correct${attempts?' · '+Math.round(correct/attempts*100)+'%':''}</p><p id="session-set"></p><button class="primary" id="again">Choose a new game</button>`);$('session-set').textContent=selectedTable.name+' · '+selectedSet;$('again').onclick=setup;}
 let helpResumes=false;
 $('help').onclick=()=>{helpResumes=['playing','ready'].includes(state);if(helpResumes)pause();$('help-dialog').showModal();};
 $('help-dialog').addEventListener('close',()=>{if(helpResumes&&state==='paused')pause();helpResumes=false;});

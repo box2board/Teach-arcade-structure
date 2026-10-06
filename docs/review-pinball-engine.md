@@ -28,7 +28,15 @@ Classic uses a seven-second launch saver. Assisted widens the flippers and uses 
 
 `node scripts/test-pinball.mjs` verifies shooter-lane exit, finite motion, unattended drains in both modes, upward impulses from both flippers, and contact scoring debounce. Browser checks cover start, launch, natural drain, pause/resume, incorrect feedback, two-correct replacement ball, score persistence, session results, both existing banks, and narrow-phone overflow. No browser runtime errors observed.
 
-This is a playtest candidate. Human playtesting should judge shot control, difficulty, target reachability, and whether ball movement feels entertaining before more tables are designed. Multiball is not part of this table.
+This is a playtest candidate. Human playtesting should judge shot control, difficulty, target reachability, and whether ball movement feels entertaining. Multiball is not part of these tables.
+
+## Table collection
+
+The setup selector offers Neon Circuit and Pirate’s Cove. Table choice is independent of mode and question set, and a new session is required to switch tables. `TABLES` contains configurations with geometry, titles, shot names, and visual theme metadata. Physics remains shared and unchanged; rendering caches are keyed by table identity.
+
+Pirate’s Cove has staggered anchor bumpers, repositioned treasure targets, a ship’s wheel spinner, and a cannon ramp entered from the right that returns above the left flipper. Its ocean artwork, wooden deck, compass, brass trim, and lit treasure chest use canvas paths and cached backgrounds. Treasure Rush uses the same three-shot bonus rules as Circuit Rush; the four chest lights represent the existing jackpot objective. All question sets and both control modes work on either table. Help pauses play and provides the selected table’s objective descriptions; the playfield keeps permanent wording to the title and a ready-only plunger percentage.
+
+`node scripts/test-pinball-tables.mjs` covers both tables and modes, weak and full launches, cap entry, unattended drains, completed and weak ramp shots, and all four targets. Browser checks cover table selection, both existing question banks on Pirate’s Cove, manual replacement balls, pause/Help, switching back to Neon Circuit, phone fit, and runtime errors. Cosmic Launch, Dinosaur Valley, and Midnight Carnival are approved themes for later tables; they are not selectable placeholders.
 
 ## Expanded Neon Circuit
 
