@@ -1,3 +1,4 @@
+import {highlandsCanStand} from './highlands.js';
 // A small continuous model: channel continuity transfers flow; flow transfers
 // energy to the wheel; the driven winch gradually lowers a ratcheted bridge.
 export const WORLD={width:1920,height:1080};
@@ -13,6 +14,7 @@ export function simulate(s,dt){
   return {flow,turning:s.wheelSpeed>0.1,bridgeOpen:s.bridge>=1};
 }
 export function canStand(x,y,s){
+  if(s.region==='highlands')return highlandsCanStand(x,y,s);
   if(x<30||x>WORLD.width-30||y<50||y>WORLD.height-30)return false;
   if(x>718&&x<840){const crossing=s.bridge>=1&&y>=399&&y<=451;const shortcut=(s.pond===1||s.pondRestored)&&y>=853&&y<=899;if(!crossing&&!shortcut)return false;}
   if(s.logX<450&&Math.abs(x-s.logX)<30&&y>703&&y<817)return false;

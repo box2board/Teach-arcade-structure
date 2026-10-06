@@ -1,3 +1,4 @@
+import {highlandsState,highlandsInteractables,highlandsObjective} from './highlands.js';
 import {workshopState,workshopInteractables,stepWorkshop,workshopObjective} from './workshop.js';
 import {canStand} from './flow-model.js';
 import {meadowState,meadowInteractables,stepMeadow,meadowObjective} from './meadow.js';
@@ -6,7 +7,7 @@ export const extras={vane:{x:890,y:160},mill:{x:890,y:285},gate:{x:555,y:245},co
 export const mirrors=[{x:1150,y:330,target:0},{x:1440,y:330,target:2},{x:1440,y:680,target:0}];
 const clamp=(v,lo,hi)=>Math.max(lo,Math.min(hi,v));
 export function adventureState(old={}){
-  return {...meadowState(old),...workshopState(old),crossed:old.crossed===true,vane:Number.isInteger(old.vane)?clamp(old.vane,0,3):0,
+  return {...highlandsState(old),...meadowState(old),...workshopState(old),crossed:old.crossed===true,vane:Number.isInteger(old.vane)?clamp(old.vane,0,3):0,
     cog:old.cog===true,repair:Number.isFinite(old.repair)?clamp(old.repair,0,1):0,
     pump:Number.isFinite(old.pump)?clamp(old.pump,0,1):0,windAngle:0,
     gate:Number.isInteger(old.gate)?clamp(old.gate,0,3):0,
@@ -18,7 +19,7 @@ export function adventureState(old={}){
     finished:old.finished===true&&old.beacon===1&&old.pond===1&&old.giantAwake===true};
 }
 export function interactables(s){
-  return [...(s.crossed?[{id:'vane',...extras.vane},{id:'mill',...extras.mill}]:[]),
+  return [...highlandsInteractables(s),...(s.crossed?[{id:'vane',...extras.vane},{id:'mill',...extras.mill}]:[]),
     ...(s.pump===1?[{id:'gate',...extras.gate}]:[]),...mirrors.map((m,i)=>({...m,id:`mirror${i}`})),...meadowInteractables(s),...workshopInteractables(s)];
 }
 export function stepAdventure(s,dt){
@@ -44,7 +45,8 @@ export function stepAdventure(s,dt){
   return events;
 }
 export function objective(s){
-  if(s.finished)return 'Valley restored · Find the remaining light seeds.';
+  if(s.region==='highlands')return highlandsObjective(s);
+  if(s.finished)return 'Valley restored · Ride the giant to Stormbreak Highlands on the southeast trail.';
   if(s.beacon===1&&s.pond===1)return workshopObjective(s);
   if(s.gardenRestored&&s.pond<1)return meadowObjective(s);
   if(s.gardenRestored)return mirrors.every((m,i)=>s.mirrors[i]===m.target)?'The sun beacon is charging…':'Follow the east trail. Reflect sunlight into the ridge beacon.';

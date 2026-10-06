@@ -22,3 +22,5 @@ body.restorer-page{margin:0;background:#f0f5f9;color:#152c42;font-family:system-
 .ws-tools{flex-wrap:wrap;align-items:center}.ws-mode{font-size:.75rem;display:flex;flex-direction:column;gap:3px}.ws-mode select{font:inherit;font-size:.85rem;min-height:36px;border:1px solid #bcceda;border-radius:8px;padding:5px;background:#fff;color:#16354b;max-width:180px}.ws-engineer{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 12px;background:#203f48;color:#e3efdf;font-size:.75rem;flex-wrap:wrap}.ws-engineer label{display:flex;flex-direction:column;gap:3px}.ws-engineer meter{width:105px;height:12px}.ws-engineer small{color:#c2d7cd}.ws-engineer #stable{font-weight:700}.ws-engineer button{min-height:32px;padding:5px 9px;font-size:.75rem}
 .ws-engineer label{color:#ffd9a3}.ws-engineer label.good{color:#bce3af}.ws-engineer output{font-weight:700;margin-left:4px}
 .ws #world{margin-inline:auto}
+
+.ws-engineer select{font:inherit;min-height:36px;max-width:200px;padding:5px;border:1px solid #bcceda;border-radius:8px;background:#fff;color:#16354b}
