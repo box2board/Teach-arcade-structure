@@ -18,6 +18,12 @@ export const GAMES=Object.freeze([Object.freeze({
   image:'/review-lab/category-clash-preview.webp',imageAlt:'Category Clash’s French Revolution board with five categories and five rows of point-value tiles.',
   mode:'Classroom + Individual',facts:Object.freeze(['Classroom teams','Individual review','Custom boards']),
   topicLabel:'French Revolution edition + custom boards',launchLabel:'Open Category Clash',questionSetIds:Object.freeze([])
+}),Object.freeze({
+  id:'review-pinball',title:'Review Pinball',url:'/review-lab/review-pinball/',
+  description:'Choose Neon Circuit, Pirate’s Cove, or Cosmic Launch. Work the flippers, chase bonuses, and answer review questions to earn your next ball.',
+  image:'/review-lab/review-pinball-preview.webp',imageAlt:'Neon Circuit pinball table with glowing bumpers, a raised ramp, and two flippers.',
+  mode:'Solo',facts:Object.freeze(['3 themed tables','Classic + Assisted modes','Manual plunger']),
+  topicLabel:'Scientific Method + French Revolution',launchLabel:'Choose a table & play',questionSetIds:Object.freeze([])
 })]);
 export function gamesForSet(id){return GAMES.filter(game=>game.questionSetIds.includes(id));}
 export function setsForGame(id){const game=GAMES.find(game=>game.id===id);return QUESTION_SETS.filter(set=>game?.questionSetIds.includes(set.id));}
