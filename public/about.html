@@ -8,16 +8,15 @@
        SEO
   ============================ -->
   <title>About Teach Arcade | Free Classroom Games & Teacher Resources</title>
-  <meta name="description" content="Learn what Teach Arcade is: a free, organized hub of teacher-made and open educational resources, classroom-ready games, and student-friendly activities." />
-  <meta name="keywords" content="Teach Arcade, teacher resources, classroom games, review games, free teaching resources, open educational resources, OER" />
-  <meta name="robots" content="index,follow" />
+  <meta name="description" content="Meet the teacher behind Teach Arcade and explore free classroom review games, interactive learning experiences, brain breaks, and practical teacher tools." />
+    <meta name="robots" content="index,follow" />
   <meta name="theme-color" content="#0f172a" />
 
   <link rel="canonical" href="https://teacharcade.com/about.html" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="About Teach Arcade | Free Classroom Games & Teacher Resources" />
-  <meta property="og:description" content="Teach Arcade is a free hub of teacher-made classroom games and curated educational resources." />
+  <meta property="og:description" content="Meet the teacher behind Teach Arcade and explore free classroom review games, interactive learning experiences, brain breaks, and practical teacher tools." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://teacharcade.com/about.html" />
   <meta property="og:site_name" content="Teach Arcade" />
@@ -39,7 +38,7 @@
     "@type": "AboutPage",
     "name": "About Teach Arcade",
     "url": "https://teacharcade.com/about.html",
-    "description": "Teach Arcade is a free, organized hub of teacher-made and open educational resources and classroom-ready games.",
+    "description": "Meet the teacher behind Teach Arcade and explore free classroom review games, interactive learning experiences, brain breaks, and practical teacher tools.",
     "isPartOf": {
       "@type": "WebSite",
       "name": "Teach Arcade",
@@ -61,7 +60,7 @@
     "name": "Teach Arcade",
     "url": "https://teacharcade.com/",
     "logo": "https://teacharcade.com/assets/images/teach-arcade-logo.png",
-    "description": "Teach Arcade provides teacher-built learning games, tools, and curated resources for classroom use.",
+    "description": "Teach Arcade provides teacher-created classroom review games, interactive learning experiences, brain breaks, and practical teaching tools.",
     "sameAs": [
       "https://teacharcade.com/"
     ]
@@ -94,7 +93,7 @@
       background: rgba(15,23,42,0.04);
     }
 
-    .about-card h2 {
+    .about-card h2, .about-card h3 {
       font-family: Poppins, system-ui, sans-serif;
       font-size: 1.05rem;
       margin-bottom: 6px;
@@ -129,6 +128,16 @@
       color: inherit;
     }
 
+    .about-story, .about-offerings, .about-support { margin: 28px 0; }
+    #main p { font-size: 1rem; line-height: 1.7; max-width: 75ch; }
+    #main .about-lead { font-size: 1.1rem; }
+    #main h2 { font-family: Poppins, system-ui, sans-serif; font-size: 1.25rem; }
+    .about-card h3 { font-size: 1.05rem; margin-top: 0; }
+    .about-card p { margin-bottom: 0; }
+    .about-story h2:not(:first-child) { margin-top: 24px; }
+    .about-support { border-top: 1px solid rgba(148,163,184,0.25); padding-top: 20px; }
+    .cta-btn { display: inline-flex; align-items: center; min-height: 44px; box-sizing: border-box; }
+    .cta-btn:focus-visible { outline: 3px solid #2563eb; outline-offset: 3px; }
     @media (min-width: 900px) {
       .about-grid {
         grid-template-columns: 1fr 1fr;
@@ -138,7 +147,7 @@
   <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="About Teach Arcade | Free Classroom Games & Teacher Resources" />
-  <meta name="twitter:description" content="Learn what Teach Arcade is: a free, organized hub of teacher-made and open educational resources, classroom-ready games, and student-friendly activities." />
+  <meta name="twitter:description" content="Meet the teacher behind Teach Arcade and explore free classroom review games, interactive learning experiences, brain breaks, and practical teacher tools." />
   <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
 
 </head>
@@ -150,118 +159,64 @@
   <script src="/assets/scripts/nav.js?v=5" defer></script>
 
   <main class="container" id="main" role="main">
-
     <nav class="breadcrumbs" aria-label="Breadcrumb">
-      <a href="/">Home</a> › <span>About</span>
+      <a href="/">Home</a> › <span aria-current="page">About</span>
     </nav>
 
-    <section class="about-hero">
-      <h1>About Teach Arcade</h1>
-      <p class="about-lead">
-        Teach Arcade is a free, organized hub for teacher-made and open educational resources—built to
-        make classroom planning faster and student practice more engaging.
-      </p>
-
+    <section class="about-hero" aria-labelledby="about-title">
+      <h1 id="about-title">About Teach Arcade</h1>
+      <p class="about-lead">Teach Arcade brings free classroom review games, interactive learning experiences, and practical teacher tools together in one place. Created by a classroom teacher, it helps educators turn practice into something students want to participate in.</p>
       <div class="cta-row">
-        <a href="/subjects/index.html" class="cta-btn cta-primary">Browse Subjects</a>
-        <a href="/arcade-review-games/" class="cta-btn cta-secondary">Play Review Games</a>
-        <a href="/submit/" class="cta-btn cta-secondary">Submit a Resource</a>
+        <a href="/arcade-review-games/" class="cta-btn cta-primary">Explore Review Games</a>
+        <a href="/tools/" class="cta-btn cta-secondary">Find Teacher Tools</a>
+        <a href="/brain-arcade/" class="cta-btn cta-secondary">Visit Brain Arcade</a>
       </div>
     </section>
 
-    <section class="about-grid">
-
-      <article class="about-card">
-        <h2>What Teach Arcade provides</h2>
-        <ul>
-          <li>Classroom-ready review games and interactive practice</li>
-          <li>Curated teacher resources and open educational materials (OER)</li>
-          <li>Organized subject pages to reduce searching and clicking</li>
-          <li>Student-friendly activities for stations and bell-ringers</li>
-        </ul>
-      </article>
-
-      <article class="about-card">
-        <h2>How to use it</h2>
-        <ul>
-          <li><strong>Teachers:</strong> browse by subject and run activities instantly</li>
-          <li><strong>Students:</strong> practice in class or at home</li>
-          <li><strong>Contributors:</strong> submit high-quality classroom resources</li>
-        </ul>
-      </article>
-
-      <article class="about-card">
-        <h2>Quality & organization</h2>
-        <p>
-          Teach Arcade prioritizes clear labeling and organization so you can quickly find
-          activities that fit your grade level, topic, and time constraints.
-        </p>
-      </article>
-
-      <article class="about-card">
-        <h2>Transparency</h2>
-        <p>
-          Teach Arcade links to teacher-made and open resources. Some pages may include ads
-          to support hosting and development. Submissions must be classroom-appropriate.
-        </p>
-      </article>
-
+    <section class="about-story" aria-labelledby="teacher-title">
+      <h2 id="teacher-title">Built by a teacher</h2>
+      <p>Behind Teach Arcade is a classroom teacher with more than 15 years of teaching experience and a master’s degree in educational technology. Experience teaching middle and high school students shapes the focus: useful activities, clear directions, and less preparation for teachers.</p>
+      <h2>Why Teach Arcade exists</h2>
+      <p>Teachers put a lot of time into finding ways to help students practice. Repeating the same review routine can make it difficult to keep students involved. Teach Arcade grew from the desire to give teachers more options—games that invite participation, experiences that encourage problem solving, and tools that make everyday classroom tasks easier.</p>
     </section>
 
-    <section class="about-card">
-      <h2>Contact & feedback</h2>
-      <p>
-        Want a new subject, game type, or need to report an issue?
-        Use the <a href="/contact.html">Contact</a> page or the <a href="/submit/">Submit</a> form to reach out.
-      </p>
+    <section class="about-offerings" aria-labelledby="find-title">
+      <h2 id="find-title">What you’ll find here</h2>
+      <div class="about-grid">
+        <article class="about-card">
+          <h3>Arcade Review Games</h3>
+          <p>Practice academic content through games that combine questions with challenges, competition, and progression.</p>
+        </article>
+        <article class="about-card">
+          <h3>Interactive Learning Experiences</h3>
+          <p>Explore escape rooms and decision-based activities that ask students to use what they know, work through clues, and make choices.</p>
+        </article>
+        <article class="about-card">
+          <h3>Teacher Tools</h3>
+          <p>Support everyday instruction with timers, group makers, quiz buzzers, graphic organizers, and other practical classroom tools.</p>
+        </article>
+        <article class="about-card">
+          <h3>Brain Arcade</h3>
+          <p>Enjoy puzzles, creative building, and recreational games for brain breaks and early-finisher time. These activities focus on play rather than subject-specific review.</p>
+        </article>
+      </div>
     </section>
 
-    <section class="about-card">
-      <h2>Our teaching philosophy</h2>
-      <p>
-        Teach Arcade was created to make learning feel active and memorable. We believe students
-        learn best when they can practice a skill in multiple ways: guided instruction, collaborative
-        discussion, independent problem solving, and immediate feedback. Our tools are intentionally
-        lightweight so they work on shared devices, load quickly, and keep the focus on learning
-        objectives instead of flashy distractions.
-      </p>
-      <p>
-        The site prioritizes teacher time. Every game or tool is designed to be used in a real
-        classroom with minimal setup, clear directions, and flexible pacing. You can launch a
-        resource in minutes, differentiate with partners or stations, and wrap up with reflection
-        prompts or exit tickets that connect back to standards.
-      </p>
+    <section class="about-story" aria-labelledby="classroom-title">
+      <h2 id="classroom-title">Make it fit your classroom</h2>
+      <p>Use a review game with the whole class, build an activity into a station, or choose a topic for independent practice. Brain Arcade offers another option for a short break or early finishers. Pick the experience that fits your students, your lesson, and the time you have.</p>
     </section>
 
-    <section class="about-card">
-      <h2>How we curate content</h2>
-      <p>
-        Teach Arcade combines original activities with vetted, teacher-created resources. We review
-        submissions for classroom-appropriate language, accuracy, and ease of use. When we link to
-        external materials, we choose sources that are reliable, age-appropriate, and useful for
-        lesson planning. If a resource no longer fits our quality guidelines, we update or remove it.
-      </p>
-      <p>
-        We also gather feedback from educators to improve navigation and add missing topics. This
-        keeps the collection aligned with real classroom needs, not just search trends. Teachers can
-        recommend topics through the contact form, and we use those requests to guide upcoming
-        additions.
-      </p>
+    <section class="about-card about-feedback" aria-labelledby="feedback-title">
+      <h2 id="feedback-title">Help shape what comes next</h2>
+      <p>Teach Arcade continues to grow. Have an idea for a topic or activity, or found something that needs fixing? Teacher and student feedback helps guide improvements and new additions.</p>
+      <div class="cta-row"><a href="/contact.html" class="cta-btn cta-primary">Contact Teach Arcade</a></div>
     </section>
 
-    <section class="about-card">
-      <h2>Advertising & sustainability</h2>
-      <p>
-        Teach Arcade is free to use. We keep costs down with efficient code and lightweight design,
-        and we may display non-intrusive ads to cover hosting and development. We do not use popups
-        or interstitial ads that disrupt learning, and we avoid collecting sensitive student data.
-      </p>
-      <p>
-        If you notice an ad placement that interferes with instruction, please let us know so we can
-        adjust the experience for classroom use.
-      </p>
+    <section class="about-support" aria-labelledby="support-title">
+      <h2 id="support-title">Free to explore</h2>
+      <p>Teach Arcade is free to use. Some pages may display ads to help support hosting and development. For details about using the site and how information is handled, see our <a href="/terms.html">Terms of Use</a> and <a href="/privacy.html">Privacy Policy</a>.</p>
     </section>
-
   </main>
 
   <footer>
