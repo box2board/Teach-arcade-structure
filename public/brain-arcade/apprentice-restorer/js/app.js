@@ -1,465 +1,303 @@
-import {
-  gamePillars,
-  coreSystems,
-  regions,
-  notebookTemplate,
-  npcLines,
-  classroomModes
-} from "./game-data.js";
-
-const renderList = (items, renderItem) => items.map(renderItem).join("");
-
-const pillarsTarget = document.querySelector("[data-pillars]");
-const systemsTarget = document.querySelector("[data-systems]");
-const regionsTarget = document.querySelector("[data-regions]");
-const notebookTarget = document.querySelector("[data-notebook]");
-const npcTarget = document.querySelector("[data-npc]");
-const classroomTarget = document.querySelector("[data-classroom]");
-const classroomNotice = document.querySelector("[data-classroom-note]");
-const restorationRoot = document.querySelector("[data-restoration]");
-
-if (pillarsTarget) {
-  pillarsTarget.innerHTML = renderList(gamePillars, (pillar) => {
-    return `
-      <div class="card">
-        <h3>${pillar.title}</h3>
-        <p>${pillar.detail}</p>
-      </div>
-    `;
-  });
-}
-
-if (systemsTarget) {
-  systemsTarget.innerHTML = renderList(coreSystems, (system) => {
-    return `
-      <div class="card">
-        <h3>${system.title}</h3>
-        <ul>
-          ${system.points.map((point) => `<li>${point}</li>`).join("")}
-        </ul>
-      </div>
-    `;
-  });
-}
-
-if (regionsTarget) {
-  regionsTarget.innerHTML = renderList(regions, (region) => {
-    return `
-      <article class="card">
-        <h3>${region.name}</h3>
-        <p><strong>Theme:</strong> ${region.theme}</p>
-        <p><strong>Concepts:</strong> ${region.concepts.join(", ")}</p>
-        <p><strong>Tools:</strong> ${region.tools.join(", ")}</p>
-        <p><strong>Encounter:</strong> ${region.enemy}</p>
-        <p><strong>Experience loop:</strong></p>
-        <ul>
-          ${region.experiences.map((item) => `<li>${item}</li>`).join("")}
-        </ul>
-        <p><strong>Reflection:</strong> ${region.reflection}</p>
-      </article>
-    `;
-  });
-}
-
-if (notebookTarget) {
-  notebookTarget.innerHTML = renderList(notebookTemplate, (section) => {
-    return `
-      <div class="card">
-        <h3>${section.section}</h3>
-        <ul>
-          ${section.entries.map((entry) => `<li>${entry}</li>`).join("")}
-        </ul>
-      </div>
-    `;
-  });
-}
-
-if (npcTarget) {
-  npcTarget.innerHTML = renderList(npcLines, (line) => {
-    return `<span>${line}</span>`;
-  });
-}
-
-if (classroomTarget) {
-  classroomTarget.innerHTML = renderList(classroomModes, (mode, index) => {
-    const id = `mode-${mode.title.toLowerCase()}`;
-    return `
-      <div class="toggle">
-        <label for="${id}">
-          <input type="radio" name="classroom-mode" id="${id}" value="${mode.title}"
-            ${index === 1 ? "checked" : ""}>
-          ${mode.title}
-        </label>
-        <small>${mode.description}</small>
-      </div>
-    `;
-  });
-}
-
-const updateClassroomNotice = (mode) => {
-  if (!classroomNotice) return;
-  classroomNotice.textContent = `Classroom Mode: ${mode} — students see the same UI, but hints and vocabulary timing shift in the background.`;
-};
-
-const modeInputs = document.querySelectorAll("input[name='classroom-mode']");
-modeInputs.forEach((input) => {
-  input.addEventListener("change", (event) => {
-    updateClassroomNotice(event.target.value);
-  });
-});
-
-updateClassroomNotice("Standard");
-
-if (restorationRoot) {
-  const toolButtons = restorationRoot.querySelectorAll("[data-tool]");
-  const statusText = restorationRoot.querySelector("[data-status]");
-  const resetButton = restorationRoot.querySelector("[data-reset]");
-  const toolReadout = restorationRoot.querySelector("[data-tool-readout]");
-  const progressReadout = restorationRoot.querySelector("[data-progress]");
-  const canvas = restorationRoot.querySelector("[data-canvas]");
-
-  if (!canvas) return;
-
-  const ctx = canvas.getContext("2d");
-  const tileSize = 32;
-  const mapWidth = 30;
-  const mapHeight = 16;
-  const mapOffset = {
-    x: Math.floor((canvas.width - mapWidth * tileSize) / 2),
-    y: Math.floor((canvas.height - mapHeight * tileSize) / 2)
-  };
-
-  const mapRows = [
-    "##############################",
-    "#S....#.......#.......#......#",
-    "#.##..#..W....#..###..#..w...#",
-    "#.....#.......#..#....#......#",
-    "###.#####.########.#####.#####",
-    "#.....#.....#......#....#....#",
-    "#..L..#..###.#..E..#..###..e.#",
-    "#.....#......#.....#.........#",
-    "#####.#####.########.#####.###",
-    "#.....#....#.....#....#......#",
-    "#..###.#.##.#..###.##.#.##...#",
-    "#.....#.....#........#..#....#",
-    "#..l..#..###.#####..#..#..D..#",
-    "#.....#.....#......#.....#...#",
-    "#.....#..E..#..###.#..###.##.#",
-    "##############################"
-  ];
-
-  const tileTypes = {
-    wall: "#",
-    floor: ".",
-    start: "S",
-    windStation: "W",
-    lightStation: "L",
-    energyStation: "E",
-    windSystem: "w",
-    lightSystem: "l",
-    energySystem: "e",
-    checkpoint: "D"
-  };
-
-  const systems = [
-    { type: "wind", key: tileTypes.windSystem, restored: false },
-    { type: "prism", key: tileTypes.lightSystem, restored: false },
-    { type: "dynamo", key: tileTypes.energySystem, restored: false }
-  ];
-
-  const toolStations = [
-    { type: "wind", key: tileTypes.windStation },
-    { type: "prism", key: tileTypes.lightStation },
-    { type: "dynamo", key: tileTypes.energyStation }
-  ];
-
-  const player = {
-    x: 0,
-    y: 0,
-    size: 18,
-    speed: 2.1
-  };
-
-  const checkpoint = { x: 0, y: 0 };
-  let selectedTool = "";
-  let lastStatus = "";
-
-  const echoes = [
-    {
-      path: [
-        { x: 5, y: 9 },
-        { x: 12, y: 9 },
-        { x: 12, y: 12 },
-        { x: 5, y: 12 }
-      ],
-      index: 0,
-      progress: 0,
-      speed: 0.012
-    },
-    {
-      path: [
-        { x: 19, y: 3 },
-        { x: 26, y: 3 },
-        { x: 26, y: 7 },
-        { x: 19, y: 7 }
-      ],
-      index: 0,
-      progress: 0,
-      speed: 0.01
-    }
-  ];
-
-  const keys = new Set();
-
-  const getTile = (x, y) => {
-    if (x < 0 || y < 0 || x >= mapWidth || y >= mapHeight) return tileTypes.wall;
-    return mapRows[y][x];
-  };
-
-  const setStatus = (message) => {
-    if (!statusText) return;
-    if (message !== lastStatus) {
-      statusText.textContent = message;
-      lastStatus = message;
-    }
-  };
-
-  const updateHud = () => {
-    if (toolReadout) {
-      toolReadout.textContent = selectedTool ? selectedTool : "None";
-    }
-    if (progressReadout) {
-      const restoredCount = systems.filter((system) => system.restored).length;
-      progressReadout.textContent = restoredCount;
-    }
-  };
-
-  const resetGame = () => {
-    systems.forEach((system) => {
-      system.restored = false;
-    });
-    selectedTool = "";
-    toolButtons.forEach((tool) => tool.classList.remove("active"));
-    player.x = checkpoint.x * tileSize + tileSize / 2;
-    player.y = checkpoint.y * tileSize + tileSize / 2;
-    setStatus("Find a tool station, then stabilize each system.");
-    updateHud();
-  };
-
-  const findStart = () => {
-    mapRows.forEach((row, rowIndex) => {
-      [...row].forEach((tile, colIndex) => {
-        if (tile === tileTypes.start) {
-          player.x = colIndex * tileSize + tileSize / 2;
-          player.y = rowIndex * tileSize + tileSize / 2;
-          checkpoint.x = colIndex;
-          checkpoint.y = rowIndex;
-        }
-        if (tile === tileTypes.checkpoint) {
-          checkpoint.x = colIndex;
-          checkpoint.y = rowIndex;
-        }
-      });
-    });
-  };
-
-  const worldToTile = (value) => Math.floor(value / tileSize);
-  const worldToTileY = (value) => Math.floor(value / tileSize);
-
-  const canMoveTo = (x, y) => {
-    const tileX = worldToTile(x);
-    const tileY = worldToTileY(y);
-    const tile = getTile(tileX, tileY);
-    return tile !== tileTypes.wall;
-  };
-
-  const movePlayer = () => {
-    let dx = 0;
-    let dy = 0;
-    if (keys.has("ArrowUp") || keys.has("w")) dy -= 1;
-    if (keys.has("ArrowDown") || keys.has("s")) dy += 1;
-    if (keys.has("ArrowLeft") || keys.has("a")) dx -= 1;
-    if (keys.has("ArrowRight") || keys.has("d")) dx += 1;
-
-    if (dx !== 0 && dy !== 0) {
-      dx *= Math.SQRT1_2;
-      dy *= Math.SQRT1_2;
-    }
-
-    const nextX = player.x + dx * player.speed;
-    const nextY = player.y + dy * player.speed;
-
-    if (canMoveTo(nextX, player.y)) {
-      player.x = nextX;
-    }
-    if (canMoveTo(player.x, nextY)) {
-      player.y = nextY;
-    }
-  };
-
-  const interact = () => {
-    const tileX = worldToTile(player.x);
-    const tileY = worldToTileY(player.y);
-    const tile = getTile(tileX, tileY);
-
-    const station = toolStations.find((entry) => entry.key === tile);
-    if (station) {
-      selectedTool = station.type;
-      toolButtons.forEach((tool) => {
-        const isActive = tool.dataset.tool === station.type;
-        tool.classList.toggle("active", isActive);
-      });
-      setStatus(`${station.type} tool calibrated. Find its system.`);
-      updateHud();
-      return;
-    }
-
-    const system = systems.find((entry) => entry.key === tile);
-    if (system && !system.restored) {
-      if (!selectedTool) {
-        setStatus("You need a tool from a nearby station first.");
-        return;
-      }
-      if (system.type !== selectedTool) {
-        setStatus("Wrong tool. Tune the right instrument before restoring.");
-        return;
-      }
-      system.restored = true;
-      const remaining = systems.filter((entry) => !entry.restored).length;
-      setStatus(
-        remaining === 0
-          ? "All systems stabilized! The Archive of Balance is complete."
-          : `System restored. ${remaining} remaining.`
-      );
-      updateHud();
-      return;
-    }
-
-    setStatus("Nothing to restore here. Explore the map.");
-  };
-
-  const updateEchoes = () => {
-    echoes.forEach((echo) => {
-      const current = echo.path[echo.index];
-      const nextIndex = (echo.index + 1) % echo.path.length;
-      const next = echo.path[nextIndex];
-      echo.progress += echo.speed;
-      if (echo.progress >= 1) {
-        echo.progress = 0;
-        echo.index = nextIndex;
-      }
-      echo.x = current.x + (next.x - current.x) * echo.progress;
-      echo.y = current.y + (next.y - current.y) * echo.progress;
-    });
-  };
-
-  const checkEchoCollision = () => {
-    const playerTileX = worldToTile(player.x);
-    const playerTileY = worldToTileY(player.y);
-    const hit = echoes.some((echo) => {
-      return Math.round(echo.x) === playerTileX && Math.round(echo.y) === playerTileY;
-    });
-    if (hit) {
-      player.x = checkpoint.x * tileSize + tileSize / 2;
-      player.y = checkpoint.y * tileSize + tileSize / 2;
-      setStatus("An instability echo jolted you back to the checkpoint.");
-    }
-  };
-
-  const drawMap = () => {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "#0f172a";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    for (let y = 0; y < mapHeight; y += 1) {
-      for (let x = 0; x < mapWidth; x += 1) {
-        const tile = getTile(x, y);
-        const screenX = mapOffset.x + x * tileSize;
-        const screenY = mapOffset.y + y * tileSize;
-
-        if (tile === tileTypes.wall) {
-          ctx.fillStyle = "#1e293b";
-        } else {
-          ctx.fillStyle = "#e2e8f0";
-        }
-        ctx.fillRect(screenX, screenY, tileSize, tileSize);
-
-        if (tile === tileTypes.start || tile === tileTypes.checkpoint) {
-          ctx.fillStyle = "#38bdf8";
-          ctx.fillRect(screenX + 8, screenY + 8, 16, 16);
-        }
-
-        const station = toolStations.find((entry) => entry.key === tile);
-        if (station) {
-          ctx.fillStyle = station.type === "wind" ? "#0ea5e9" : station.type === "prism" ? "#a855f7" : "#22c55e";
-          ctx.fillRect(screenX + 6, screenY + 6, 20, 20);
-        }
-
-        const system = systems.find((entry) => entry.key === tile);
-        if (system) {
-          ctx.fillStyle = system.restored ? "#4ade80" : "#f97316";
-          ctx.fillRect(screenX + 6, screenY + 6, 20, 20);
-        }
-      }
-    }
-
-    echoes.forEach((echo) => {
-      const screenX = mapOffset.x + echo.x * tileSize + tileSize / 2;
-      const screenY = mapOffset.y + echo.y * tileSize + tileSize / 2;
-      ctx.beginPath();
-      ctx.fillStyle = "#facc15";
-      ctx.arc(screenX, screenY, 6, 0, Math.PI * 2);
-      ctx.fill();
-    });
-
-    const playerX = mapOffset.x + player.x;
-    const playerY = mapOffset.y + player.y;
-    ctx.beginPath();
-    ctx.fillStyle = "#2563eb";
-    ctx.arc(playerX, playerY, player.size / 2, 0, Math.PI * 2);
-    ctx.fill();
-  };
-
-  const gameLoop = () => {
-    movePlayer();
-    updateEchoes();
-    checkEchoCollision();
-    drawMap();
-    requestAnimationFrame(gameLoop);
-  };
-
-  toolButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      selectedTool = button.dataset.tool;
-      toolButtons.forEach((tool) => tool.classList.remove("active"));
-      button.classList.add("active");
-      setStatus(`Tool ready: ${button.textContent}. Seek its system.`);
-      updateHud();
-    });
-  });
-
-  window.addEventListener("keydown", (event) => {
-    const key = event.key.toLowerCase();
-    keys.add(key);
-    if (event.key === " " || event.code === "Space") {
-      event.preventDefault();
-      interact();
-    }
-    if (key === "1") toolButtons[0]?.click();
-    if (key === "2") toolButtons[1]?.click();
-    if (key === "3") toolButtons[2]?.click();
-  });
-
-  window.addEventListener("keyup", (event) => {
-    keys.delete(event.key.toLowerCase());
-  });
-
-  if (resetButton) {
-    resetButton.addEventListener("click", resetGame);
+import {actHighlands,workHighlands,stepHighlands,highlandsInteractables,highlandsLabel,highlandsReadings,drawHighlands} from './highlands.js';
+import {actWorkshop,workWorkshop,drawWorkshop,workshopObjects} from './workshop.js';
+import {engineerState,systemReadings,stepEngineer,engineerHint,distributor,drawDistributor} from './engineer.js';
+import {workMeadow,drawMeadow} from './meadow.js';
+import {followCamera} from './camera.js';
+import {adventureState,interactables,stepAdventure,objective,sparks,extras,mirrors} from './adventure.js';
+import {fitViewport} from './viewport.js';
+import {WORLD,objects,initialState,connected,simulate,canStand} from './flow-model.js';
+const root=document.querySelector('#worldsmith');
+if(root)start();
+function start(){
+  const $=q=>document.querySelector(q),canvas=$('#world'),ctx=canvas.getContext('2d');
+  let key='teacharcade-worldsmith-crossing-v1';
+  let s=initialState(),keys=new Set(),actionHeld=false,paused=false,route=null,near=null,last=0,camera={x:0,y:0},vw=960,vh=600,resetArmed=false,saveClock=0,valveDrag=false,walkTime=0,particles=[];
+  const notes=['Connected channels redirect moving water.','A break in the channel stops energy reaching the wheel.','Moving water turns the wheel, which drives the winch and lowers the bridge.','Wind transfers energy to a pump through connected gears.','A working system needs controlled flow, not simply maximum flow.','Mirrors redirect light along a connected path to a receiver.','A blocked route interrupts water flow even when the source works.','Restoring a continuous water supply refills a pond and supports its habitat.','Gearing changes the speed of energy transfer and the heat produced.','A complete machine needs connected power, transmission and a working signal.'];
+  function fresh(mode='explorer'){
+    const base={...initialState(),...adventureState(),...engineerState(),mode};
+    if(mode==='engineer')Object.assign(base,{player:{x:350,y:575},elbow:3,troughY:330,valve:.6,bridge:1,crossed:true,cog:true,repair:1,pump:1,vane:1,gate:2,garden:[.65,.65],pond:.45,discoveries:[0,1,2,3]});
+    return base;
   }
+  function load(mode){
+    key=mode==='engineer'?'teacharcade-worldsmith-engineer-v1':'teacharcade-worldsmith-crossing-v1';
+    s=fresh(mode);
+    try{const old=JSON.parse(localStorage.getItem(key));if(old?.version===1){
+      s.elbow=Number.isInteger(old.elbow)?Math.max(0,Math.min(3,old.elbow)):s.elbow;
+      for(const [name,min,max] of [['troughY',330,475],['valve',0,1],['bridge',0,1]])if(Number.isFinite(old[name]))s[name]=Math.max(min,Math.min(max,old[name]));
+      Object.assign(s,adventureState(old),engineerState(old));s.mode=mode;
+      s.finished=mode==='engineer'?s.trialComplete:s.finished;s.won=s.finished;
+      s.discoveries=Array.isArray(old.discoveries)?old.discoveries.filter(n=>Number.isInteger(n)&&n>=0&&n<10):[];
+      if(Number.isFinite(old.player?.x)&&Number.isFinite(old.player?.y)&&canStand(old.player.x,old.player.y,s))s.player={...old.player};
+    }}catch{}
+  }
+  load('explorer');
+  const save=()=>{try{localStorage.setItem(key,JSON.stringify({...s,player:s.highlands?.travel?.to||s.giantRide?.destination||s.player,giantPosition:s.giantRide?.destination||s.giantPosition,cartPosition:s.giantRide?{x:s.giantRide.destination.x-30,y:945}:s.cartPosition,version:1}));}catch{}};
+  function message(text){$('#message').textContent=text;}
+  function discover(n){if(!s.discoveries.includes(n)){s.discoveries.push(n);refreshNotes();save();}}
+  function refreshNotes(){$('#discovery-count').textContent=`${s.discoveries.length} / 10`;$('#discoveries').innerHTML=s.discoveries.length?s.discoveries.map(n=>`<li>${notes[n]}</li>`).join(''):'<li>Your discoveries appear here as you play.</li>';}
+  const game=$('.ws-game'),fullscreen=$('#fullscreen'),explorerHelp=$('.ws-help').textContent;
+  let sizing=false,focusScroll=0;
+  function resize(){
+    if(sizing)return;sizing=true;
+    // Use the device viewport, rather than the fitted canvas, to select the camera.
+    vw=window.innerWidth<=600?600:960;vh=600;
+    const dpr=Math.min(window.devicePixelRatio||1,2);
+    canvas.width=vw*dpr;canvas.height=vh*dpr;canvas.style.aspectRatio=`${vw} / ${vh}`;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    const focused=root.classList.contains('ws-focus')||document.fullscreenElement===root;
+    const height=window.visualViewport?.height||window.innerHeight;
+    const style=getComputedStyle(root);
+    const width=root.clientWidth-parseFloat(style.paddingLeft)-parseFloat(style.paddingRight);
+    if(s.mode==='engineer')game.style.width=`${width}px`;
+    canvas.style.width=s.mode==='engineer'?'':'100%';
+    // A second pass accounts for toolbar text wrapping at the fitted width.
+    for(let pass=0;pass<2;pass++){
+      const top=game.getBoundingClientRect().top+(focused?0:window.scrollY);
+      const chrome=$('.ws-top').getBoundingClientRect().height+$('.ws-controls').getBoundingClientRect().height+$('#engineer-panel').getBoundingClientRect().height+$('#highlands-panel').getBoundingClientRect().height+2;
+      const fit=fitViewport({width,height,top,chrome,ratio:vw/vh});
+      if(s.mode==='engineer')canvas.style.width=`${fit.width}px`;else game.style.width=`${fit.width}px`;
+    }
+    sizing=false;
+  }
+  function syncFullscreen(){
+    const active=root.classList.contains('ws-focus')||document.fullscreenElement===root;
+    fullscreen.textContent=active?'Exit fullscreen':'Fullscreen';
+    fullscreen.setAttribute('aria-pressed',String(active));
+    resize();canvas.focus({preventScroll:true});
+  }
+  fullscreen.addEventListener('click',async()=>{
+    clearInput();
+    if(document.fullscreenElement===root){await document.exitFullscreen();return;}
+    if(root.classList.contains('ws-focus')){
+      root.classList.remove('ws-focus');window.scrollTo(0,focusScroll);syncFullscreen();return;
+    }
+    try{if(!root.requestFullscreen)throw new Error('Fullscreen unavailable');await root.requestFullscreen();}
+    catch{focusScroll=window.scrollY;root.classList.add('ws-focus');syncFullscreen();}
+  });
+  document.addEventListener('fullscreenchange',syncFullscreen);
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&root.classList.contains('ws-focus')){root.classList.remove('ws-focus');window.scrollTo(0,focusScroll);syncFullscreen();}});
+  window.addEventListener('resize',resize);window.visualViewport?.addEventListener('resize',resize);
+  if(window.ResizeObserver){const observer=new ResizeObserver(resize);for(const el of [$('#site-header'),$('.ws-title'),$('.ws-top'),$('.ws-controls'),$('#engineer-panel')])if(el)observer.observe(el);}
+  function syncRegion(){const active=s.region==='highlands';$('#highlands-panel').hidden=!active;$('#wind-difficulty').value=s.highlands.engineer?'engineer':'explorer';resize();}
+  $('#wind-difficulty').addEventListener('change',()=>{s.highlands.engineer=$('#wind-difficulty').value==='engineer';s.highlands.stable=0;s.highlands.complete=false;message(s.highlands.engineer?'Engineer wind: changing gusts test the shared supply.':'Explorer wind: a steady breeze makes the power split visible.');save();canvas.focus({preventScroll:true});});
+  syncRegion();resize();refreshNotes();canvas.focus({preventScroll:true});
+  function nearest(){const candidates=s.region==='highlands'?highlandsInteractables(s):[{id:'elbow',...objects.elbow},{id:'valve',...objects.valve},{id:'trough',x:objects.trough.x,y:s.troughY},...interactables(s),...(s.mode==='engineer'?[distributor]:[])];return candidates.map(o=>({...o,d:Math.hypot(o.x-s.player.x,o.y-s.player.y)})).filter(o=>o.d<80).sort((a,b)=>a.d-b.d)[0]||null;}
+  function actOnce(){if(paused||s.giantRide||s.highlands?.travel||!$('#win').hidden)return;near=nearest();const previousRegion=s.region;const highlandResult=near?actHighlands(s,near.id,keys.has('q')||keys.has('shift')):null;if(highlandResult){message(highlandResult);if(s.region!==previousRegion){clearInput();camera={x:0,y:0};syncRegion();}save();return;}const result=near?actWorkshop(s,near.id):null;if(result){message(result);save();return;}if(near?.id==='elbow'){s.elbow=(s.elbow+1)%4;message(s.elbow===3?'The stream turns toward the wheel.':'Water spills from the open end.');if(s.elbow===3)discover(0);save();}else if(near?.id==='valve'){const target=keys.has('q')||keys.has('shift')?0:s.mode!=='engineer'&&s.pump===1?.5:1;s.valve+=Math.sign(target-s.valve)*Math.min(.12,Math.abs(target-s.valve));save();}else if(near?.id==='distributor'){const direction=keys.has('q')||keys.has('shift')?-1:1;s.gardenShare=Math.max(.1,Math.min(.9,s.gardenShare+direction*.05));save();}else if(near?.id==='diverter'){s.diverter=(s.diverter+1)%4;message(s.diverter===2?'Water turns into the meadow stream.':'Follow the stream. Turn the channel south.');save();}else if(near?.id==='vane'){s.vane=(s.vane+1)%4;message(s.vane===1?'The sails catch the breeze.':'Turn the vane toward the wind →.');save();}else if(near?.id==='gate'){s.gate=(s.gate+1)%4;message(['Garden channels closed.','Water goes to the left bed.','Both beds receive water.','Water goes to the right bed.'][s.gate]);save();}else if(near?.id.startsWith('mirror')){const i=Number(near.id.slice(6));s.mirrors[i]=(s.mirrors[i]+1)%4;message('Mirror turned. Follow the sunbeam.');save();}else if(near?.id==='mill'&&!s.cog){message('The pump is missing a gear. Look along the far bank.');}else if(!near)message('Walk beside the channel elbow, loose channel, or valve.');}
+  function work(dt){near=nearest();if(!near)return;if(s.region==='highlands'){const result=workHighlands(s,near.id,dt);if(result){message(result);save();}return;}const workshopMessage=workWorkshop(s,near.id,dt);if(workshopMessage){message(workshopMessage);save();}const direction=keys.has('q')||keys.has('shift')?-1:1;
+    if(s.mode==='engineer'&&near.id==='distributor')s.gardenShare=Math.max(.1,Math.min(.9,s.gardenShare+direction*dt*.22));
+    if(s.mode==='engineer'&&near.id==='sluice')s.sluice=Math.max(0,Math.min(1,s.sluice+direction*dt*.3));
+    const hint=s.mode==='engineer'&&near.id==='sluice'?null:workMeadow(s,near.id,dt);if(hint)message(hint);if(near.id==='mill'&&s.cog&&s.repair<1){s.repair=Math.min(1,s.repair+dt*.65);if(s.repair===1){burst(890,285);message('Gear fitted! Turn the vane toward the breeze.');save();}}if(near.id==='valve'){const target=keys.has('q')||keys.has('shift')?0:s.mode!=='engineer'&&s.pump===1?.5:1;s.valve+=Math.sign(target-s.valve)*Math.min(dt*.42,Math.abs(target-s.valve));}if(near.id==='trough'&&s.troughY>330){if(s.player.y>s.troughY+20){const step=Math.min(dt*65,s.troughY-330);s.troughY-=step;s.player.y-=step;if(s.troughY<=330.01){s.troughY=330;message('Channel connected. The stream can reach the wheel.');discover(1);save();}}else message('Get behind the loose channel and push it toward the gap.');}}
+  function move(dx,dy,dt){if(s.giantRide||s.highlands?.travel)return false;const speed=(keys.has('shift')&&!actionHeld?235:155)*dt,norm=Math.hypot(dx,dy)||1;dx=dx/norm*speed;dy=dy/norm*speed;
+    const tryAxis=(amount,axis)=>{if(Math.abs(amount)<0.001)return false;const p={...s.player};p[axis]+=amount;if(!canStand(p.x,p.y,s))return false;
+      if(s.region!=='highlands'&&Math.abs(p.x-475)<57&&Math.abs(p.y-s.troughY)<31){if(axis==='y'&&s.troughY>330){const next=Math.max(330,Math.min(475,s.troughY+amount));if(Math.abs(next-s.troughY-amount)>0.01)return false;s.troughY=next;if(s.troughY===330){message('Channel connected.');discover(1);}}else return false;}
+      s.player=p;return true;};const x=tryAxis(dx,'x'),y=tryAxis(dy,'y');if(Math.abs(dx)+Math.abs(dy)>0.01&&(x||y))walkTime+=dt;return x||y;
+  }
+  const dirs={arrowup:[0,-1],w:[0,-1],up:[0,-1],arrowdown:[0,1],s:[0,1],down:[0,1],arrowleft:[-1,0],a:[-1,0],left:[-1,0],arrowright:[1,0],d:[1,0],right:[1,0]};
+  function clearInput(){keys.clear();actionHeld=false;route=null;valveDrag=false;}
+  root.addEventListener('keydown',e=>{
+    const k=e.key.toLowerCase();
+    if(e.target.matches('a,summary,input,textarea,select')||!$('#win').hidden)return;
+    // Keep native Space/Enter button activation, but allow game keys after toolbar use.
+    if(e.target.matches('button')&&[' ','enter'].includes(k))return;
+    if(dirs[k]||[' ','e','q','shift'].includes(k)){
+      e.preventDefault();keys.add(k);canvas.focus({preventScroll:true});
+      if(dirs[k])route=null;
+      if(['e',' ','q'].includes(k)&&!e.repeat){if(k==='q'&&!(s.region==='highlands'?['router']:s.mode==='engineer'?['valve','distributor','sluice']:['valve']).includes(nearest()?.id))return;actionHeld=true;actOnce();}
+    }
+  });
+  window.addEventListener('keyup',e=>{const k=e.key.toLowerCase();keys.delete(k);if(['e',' ','q'].includes(k))actionHeld=keys.has('e')||keys.has(' ')||keys.has('q');});
+  window.addEventListener('blur',()=>{clearInput();save();});document.addEventListener('visibilitychange',()=>{clearInput();save();});
+  document.querySelectorAll('[data-move]').forEach(b=>{b.addEventListener('pointerdown',e=>{e.preventDefault();if(paused)return;b.setPointerCapture(e.pointerId);keys.add(b.dataset.move);route=null;canvas.focus();});for(const ev of ['pointerup','pointercancel','lostpointercapture'])b.addEventListener(ev,()=>keys.delete(b.dataset.move));b.addEventListener('click',e=>{if(e.detail===0&&!paused){move(...dirs[b.dataset.move],0.22);save();}});});
+  $('#action').addEventListener('pointerdown',e=>{e.preventDefault();if(paused)return;$('#action').setPointerCapture(e.pointerId);canvas.focus();actionHeld=true;actOnce();});for(const ev of ['pointerup','pointercancel','lostpointercapture'])$('#action').addEventListener(ev,()=>{actionHeld=false;save();});$('#action').addEventListener('click',e=>{if(e.detail===0){actOnce();work(0.3);save();}});
+  function point(e){const r=canvas.getBoundingClientRect();return {x:(e.clientX-r.left)/r.width*vw+camera.x,y:(e.clientY-r.top)/r.height*vh+camera.y};}
+  canvas.addEventListener('pointerdown',e=>{e.preventDefault();if(paused||s.giantRide||s.highlands?.travel||!$('#win').hidden)return;canvas.focus();const p=point(e);canvas.setPointerCapture(e.pointerId);if(s.region==='highlands'){const hit=highlandsInteractables(s).find(o=>Math.hypot(p.x-o.x,p.y-o.y)<38);if(hit&&nearest()?.id===hit.id){actOnce();return;}const target=hit?{x:hit.x,y:hit.y+45}:p;if(canStand(target.x,target.y,s)){let points=[target];points=[];if(target.x>s.player.x){if(s.player.x<=520&&target.x>=700)points.push({x:490,y:490},{x:730,y:490});if(s.player.x<=1180&&target.x>=1360)points.push({x:1150,y:325},{x:1390,y:325});}else{if(s.player.x>=1360&&target.x<=1180)points.push({x:1390,y:325},{x:1150,y:325});if(s.player.x>=700&&target.x<=520)points.push({x:730,y:490},{x:490,y:490});}points.push(target);route={...points.shift(),next:points,act:!!hit};}else message('Use the restored bridge, cable lift, or goat shortcut.');return;}if(Math.hypot(p.x-objects.valve.x,p.y-objects.valve.y)<36&&Math.hypot(s.player.x-objects.valve.x,s.player.y-objects.valve.y)<80){valveDrag=true;route=null;return;}
+    const extra=[...interactables(s),...(s.mode==='engineer'?[distributor]:[])].find(o=>Math.hypot(p.x-o.x,p.y-o.y)<38);
+    const hit=extra?.id|| (Math.hypot(p.x-330,p.y-180)<40?'elbow':Math.hypot(p.x-475,p.y-s.troughY)<50?'trough':Math.hypot(p.x-180,p.y-180)<40?'valve':null);
+    if((['elbow','vane','gate','diverter',...Object.keys(workshopObjects)].includes(hit)||hit?.startsWith('mirror'))&&nearest()?.id===hit){actOnce();return;}
+    const target=hit==='log'?{x:s.logX-55,y:760}:extra?{x:extra.x,y:extra.y+45}:hit==='elbow'?{x:330,y:238}:hit==='trough'?{x:475,y:s.troughY+60}:hit==='valve'?{x:180,y:238}:p;
+    if(canStand(target.x,target.y,s)){
+      let points=[target];
+      if(hit==='log'){const y=s.pond===1&&s.player.y>650?875:425;const approach=s.player.y>760?840:680;points=s.player.x>840?[{x:860,y},{x:700,y},{x:s.logX-55,y},target]:s.player.x>s.logX-30?[{x:s.player.x,y:approach},{x:s.logX-55,y:approach},target]:[{x:s.logX-55,y:s.player.y},target];}
+      else if(hit==='trough'&&s.player.y<s.troughY+31)points=[{x:395,y:s.player.y},{x:395,y:s.troughY+65},target];
+      else if(target.x>840&&s.player.x<718){const y=s.pond===1&&s.player.y>650?875:425;points=[{x:700,y},{x:860,y},target];}
+      else if(target.x<718&&s.player.x>840){const y=s.pond===1&&s.player.y>650?875:425;points=[{x:860,y},{x:700,y},target];}
+      route={...points.shift(),next:points,act:['elbow','vane','gate','diverter',...Object.keys(workshopObjects)].includes(hit)||hit?.startsWith('mirror')};
+    }else message(s.bridge<1?'The crossing needs power first.':'Use the bridge to cross the river.');
+  });
+  canvas.addEventListener('pointermove',e=>{if(valveDrag){const p=point(e);s.valve=Math.max(0,Math.min(1,(240-p.y)/120));}});for(const ev of ['pointerup','pointercancel','lostpointercapture'])canvas.addEventListener(ev,()=>{if(valveDrag)save();valveDrag=false;});
+  $('#pause').addEventListener('click',()=>{paused=!paused;clearInput();$('#pause').textContent=paused?'Resume':'Pause';$('#pause').setAttribute('aria-pressed',String(paused));save();});
+  function reset(){s=fresh(s.mode);syncRegion();particles=[];camera={x:0,y:0};clearInput();paused=false;resetArmed=false;$('#pause').textContent='Pause';$('#pause').setAttribute('aria-pressed','false');$('#restart').textContent='Restart';$('#win').hidden=true;message(s.mode==='engineer'?'Balance the wheel, garden and pond. Hold all conditions for 12 seconds.':'Find a way to get water to the wheel.');refreshNotes();save();canvas.focus();}
+  $('#difficulty').addEventListener('change',()=>{
+    save();clearInput();load($('#difficulty').value);syncRegion();particles=[];camera={x:0,y:0};paused=false;resetArmed=false;
+    $('#pause').textContent='Pause';$('#pause').setAttribute('aria-pressed','false');$('#restart').textContent='Restart';$('#win').hidden=true;
+    $('#engineer-panel').hidden=s.mode!=='engineer';$('.ws-help').textContent=s.mode==='engineer'?'Move: WASD / arrows · Run: Shift · Work: E / Space · Adjust supply, distributor and pond gate: hold E to increase, Q to decrease · Tap the ground to walk.':explorerHelp;refreshNotes();resize();canvas.focus({preventScroll:true});
+    message(s.mode==='engineer'?'Engineer trial: keep the wheel turning, both beds healthy and the pond level steady.':'Explorer progress restored.');
+  });
+  $('#hint').addEventListener('click',()=>{message(engineerHint(s));canvas.focus({preventScroll:true});});
+  $('#restart').addEventListener('click',()=>{if(resetArmed)reset();else{resetArmed=true;$('#restart').textContent='Confirm restart';message('Press Confirm restart to start over.');}});
+  $('#play-again').addEventListener('click',reset);$('#keep-exploring').addEventListener('click',()=>{$('#win').hidden=true;canvas.focus();});
+  function update(dt){if(paused||document.hidden||!$('#win').hidden)return;
+    let dx=0,dy=0;for(const k of keys){if(dirs[k]){dx+=dirs[k][0];dy+=dirs[k][1];}}
+    if(s.giantRide||s.highlands?.travel){clearInput();}else if(dx||dy)move(dx,dy,dt);else if(route){const x=route.x-s.player.x,y=route.y-s.player.y;if(Math.hypot(x,y)<7){if(route.next?.length){const next=route.next.shift();route={...route,...next};}else{const act=route.act;route=null;if(act)actOnce();}}else if(!move(x,y,dt)){route=null;message(s.region==='highlands'?'This ravine needs its bridge, lift, or goat shortcut.':'Walk around the loose channel, or push it from below.');}}
+    if(actionHeld&&!s.giantRide&&!s.highlands?.travel)work(dt);
+    const result=s.region==='highlands'?{}:s.mode==='engineer'?{bridgeOpen:true}:simulate(s,dt);if(s.region!=='highlands'&&connected(s)&&s.valve>0.1)discover(1);
+    if(result.bridgeOpen)discover(2);
+    const events=s.region==='highlands'?stepHighlands(s,dt):s.mode==='engineer'?stepEngineer(s,dt):stepAdventure(s,dt);
+    for(const event of events){
+      if(event==='highland-bridge')message('Bridge lowered! Cross onto the middle plateau.');
+      if(event==='highland-goat')message('Wind brake released! A northern shortcut and extra intake are open.');
+      if(event==='highland-arrival'){clearInput();message('Lift arrived. Explore the summit trail.');}
+      if(event==='highland-charge')message('Workshop charged! Align the dish and keep both machines powered.');
+      if(event==='highland-complete'){clearInput();burst(1740,180);$('#win span').textContent='Stormbreak restored';$('#win h2').textContent='The highlands are connected.';$('#win-score').textContent='Wind shared · Lift powered · Workshop restored · Signal sent';$('#win').hidden=false;$('#play-again').focus({preventScroll:true});message('The summit signal reaches the valley. Stormbreak is alive!');}
+      if(event==='crossing'){burst(890,425);message('Crossing restored! A wind pump waits on the far bank.');}
+      if(event==='cog'){burst(890,510);message('Gear found! Carry it to the wind pump.');}
+      if(event==='spark'){burst(s.player.x,s.player.y);message(`Light seed found · ${s.sparks.length} / ${sparks.length}`);}
+      if(event==='pump'){discover(3);burst(890,285);message('Wind pump restored! Bring water to the dry garden.');}
+      if(event==='bloom'){burst(555,150);message('A garden bed is blooming!');}
+      if(event==='garden'){discover(4);burst(555,150);message('Garden restored! Follow the south trail into the meadow.');}
+      if(event==='diversion'){burst(350,635);message('Meadow supply restored! Clear the log downstream.');}
+      if(event==='stream'){discover(6);burst(350,760);message('Stream cleared! Lift the pond gate to let water through.');}
+      if(event==='pond'){discover(7);burst(520,940);message('Pond restored! A new meadow crossing opens.');}
+      if(event==='beacon'){discover(5);burst(1750,680);message('Sun beacon restored! Its power can awaken the sleeping giant.');}
+      if(event==='giant-hot')message('Drive overheated! Change gearing at the drive panel to cool it.');
+      if(event==='giant-ready'){burst(1680,890);message('Power ready! Ring the chime to wake the giant.');}
+      if(event==='ride-arrived'){clearInput();message('Journey complete. Step off and explore!');}
+      if(event==='scaffold'){burst(1430,960);message('Scaffold built! The giant’s repair panels are within reach.');}
+      if(event==='engineered'){discover(4);discover(6);discover(7);burst(s.player.x,s.player.y);clearInput();$('#win span').textContent='Engineer trial complete';$('#win h2').textContent='You balanced a working system.';$('#win-score').textContent='Wheel, garden and pond stayed stable for 12 seconds.';$('#win').hidden=false;$('#play-again').focus({preventScroll:true});message('Engineer trial mastered.');}
+      if(event==='finish'){$('#win span').textContent='Valley restored';$('#win h2').textContent='You brought the valley to life.';discover(5);discover(8);discover(9);burst(1600,920);clearInput();$('#win').hidden=false;$('#play-again').focus({preventScroll:true});$('#win-score').textContent=`Giant awakened · ${s.sparks.length} / ${sparks.length} light seeds`;message('The giant awakens! A new expedition to Stormbreak Highlands is unlocked.');}
+      save();
+    }
+    particles=particles.map(p=>({...p,x:p.x+p.vx*dt,y:p.y+p.vy*dt,life:p.life-dt})).filter(p=>p.life>0);
+    const next=nearest();near=next;
+    const labels={elbow:['Turn channel','Tap E to rotate. Watch the stream.'],trough:[s.troughY<=330?'Connected':'Push channel',s.troughY<=330?'Water can pass through this connection.':'Get below it and hold E to push.'],valve:[s.pump===1?'Balance flow':'Open valve',s.pump===1?'Hold E to balance · Hold Q to lower · Shift + E also lowers.':'Hold E to open · Hold Q or Shift + E to lower.'],vane:['Turn vane','Tap E to face the breeze →.'],mill:[s.repair===1?'Gear fitted':'Fit gear',s.cog?'Hold E to fit the gear.':'Find the missing gear along the far bank.'],gate:['Split water','Tap E: closed / left / both / right.'],diverter:['Turn channel','Tap E to send the stream south toward the pond.'],log:[s.logX>=450?'Stream cleared':'Push log','Stand left of the log. Hold E to push right.'],sluice:[s.sluice===1?'Gate open':'Lift gate','Hold E to lift the pond gate.']};
+    Object.assign(labels,{cart:[s.cartWheel?'Repair workshop':'Inspect workshop',s.cartWheel?'Hold E to fit the wheel.':'Find a wheel in the south meadow.'],cartwheel:['Recover wheel','Tap E to carry this wheel.'],beaver:['Meet beaver','Tap E to earn a builder companion.'],scaffold:[s.scaffoldProgress===1?'Scaffold ready':s.scaffoldOrdered?'Beaver building':'Ask beaver',s.scaffoldProgress===1?'The repair panels are within reach.':s.scaffoldOrdered?'Gather parts while your companion works.':'Tap E to request a scaffold.'],drivegear:['Load drive gear','Tap E with the workshop nearby.'],chime:['Load chime','Tap E with the workshop nearby.'],giantdrive:[s.driveInstalled?'Change gearing':'Install drive','Tap E to install or change gear ratio. Watch heat.'],giantsignal:[s.chimeInstalled?'Ring chime':'Install chime','Tap E to install, then ring when power is ready.'],ride:['Ride giant','Tap E to travel to the meadow with your workshop.'],ridehome:['Call giant','Tap E to travel to the ridge with your workshop.']});
+    if(s.mode==='engineer'){labels.valve=['Adjust supply','Hold E to increase · Q to decrease. Watch all three gauges.'];labels.sluice=['Adjust pond gate','Hold E to open · Q to close. Partial openings work.'];labels.distributor=['Adjust split','Hold E for more garden water · Q for more pond water.'];}
+    const highlandLabel=next?highlandsLabel(s,next.id):null;const label=highlandLabel|| (next?.id.startsWith('mirror')?['Turn mirror','Tap E to redirect the sunbeam.']:next?labels[next.id]:null);
+    $('#action').textContent=s.highlands?.travel?'Riding lift…':s.giantRide?'Riding…':next?label[0]:'Explore';$('#context').textContent=s.highlands?.travel?'The cable lift is carrying you across the ravine.':s.giantRide?'The giant is carrying you across the valley.':next?label[1]:s.mode==='engineer'?'Inspect the gauges. Adjust the supply, distributor and pond gate.':objective(s);
+    $('#goal').textContent=s.mode==='engineer'?'Keep wheel, garden and pond stable for 12 seconds.':objective(s);$('#chapter').textContent=s.mode==='engineer'?`Engineer · ${s.trialComplete?'Mastered':s.stability.toFixed(1)+' / 12 s stable'}`:`${s.finished?'Valley restored':!s.crossed?'1 · The crossing':s.pump<1?'2 · Wind pump':s.gardenRestored?(s.pond<1?'4 · Wildflower Meadow':s.beacon===1?'6 · The sleeping giant':'5 · Sunstone Ridge'):'3 · The garden'} · ✦ ${s.sparks.length}/${sparks.length}`;
+    if(s.mode==='engineer'){const r=systemReadings(s);for(const [id,value,ok] of [['wheel',r.wheel,r.wheelOK],['garden',r.garden,r.gardenOK],['pond',s.pond,r.levelOK&&r.pondOK]]){const el=$('#gauge-'+id);el.value=value;el.classList.toggle('good',ok);el.parentElement.classList.toggle('good',ok);$('#value-'+id).textContent=`${Math.round(value*100)}%`;el.textContent=`${Math.round(value*100)}%`;el.setAttribute('aria-label',`${id}: ${Math.round(value*100)} percent, ${ok?'within range':'outside range'}`);}$('#pond-inlet').textContent=`Intake ${Math.round(r.pond*100)}% (12–23%)`;$('#bed-health').textContent=`Beds ${Math.round(Math.min(...s.garden)*100)}% (≥80%)`;$('#stable').textContent=s.trialComplete?'Mastered':`${s.stability.toFixed(1)} / 12s stable`;}
+    if(s.region==='highlands'){const h=s.highlands,r=highlandsReadings(s);$('#chapter').textContent=h.complete?'Stormbreak restored':'7 · Stormbreak Highlands';$('#wind-status').textContent=`Wind ${Math.round(r.supply*100)}% · Lift ${Math.round(r.lift*100)}% · Workshop ${Math.round(r.forge*100)}%`;$('#wind-stability').textContent=h.complete?'Signal sent':`Signal ${h.stable.toFixed(1)} / 12s`;$('#wind-charge').value=h.charge;$('#wind-charge').setAttribute('aria-label',`Workshop charge ${Math.round(h.charge*100)} percent`);}
+    saveClock+=dt;if(saveClock>2){saveClock=0;save();}
+  }
+  function burst(x,y){for(let n=0;n<24;n++){const angle=n*Math.PI/12;particles.push({x,y,vx:Math.cos(angle)*45,vy:Math.sin(angle)*45-15,life:1.2});}}
+  function path(points,color,width){ctx.strokeStyle=color;ctx.lineWidth=width;ctx.lineCap='round';ctx.lineJoin='round';ctx.beginPath();points.forEach((p,i)=>i?ctx.lineTo(...p):ctx.moveTo(...p));ctx.stroke();}
+  function water(points,time){path(points,'#2594b2',15);path(points,'#75dce8',7);for(let i=1;i<points.length;i++){const a=points[i-1],b=points[i],len=Math.hypot(b[0]-a[0],b[1]-a[1]);for(let d=(time*0.07)%32;d<len;d+=32){const f=d/len;ctx.fillStyle='#c9f8ec';ctx.beginPath();ctx.arc(a[0]+(b[0]-a[0])*f,a[1]+(b[1]-a[1])*f,2,0,Math.PI*2);ctx.fill();}}}
+  function tree(x,y,size){ctx.fillStyle='#153e3a55';ctx.beginPath();ctx.ellipse(x+8,y+9,size*0.8,size*0.28,0,0,Math.PI*2);ctx.fill();ctx.fillStyle='#986d43';ctx.fillRect(x-4,y-20,8,25);ctx.fillStyle='#164c3e';ctx.beginPath();ctx.arc(x,y-32,size,0,Math.PI*2);ctx.fill();ctx.fillStyle='#287456';ctx.beginPath();ctx.arc(x-6,y-38,size*0.75,0,Math.PI*2);ctx.fill();ctx.fillStyle='#479269';ctx.beginPath();ctx.arc(x-10,y-43,size*0.4,0,Math.PI*2);ctx.fill();}
+  function glow(x,y,active,time){ctx.strokeStyle=active?'#ffe2a1':'#95c3a066';ctx.lineWidth=active?3:2;ctx.beginPath();ctx.arc(x,y,35+(active?Math.sin(time/250)*2:0),0,Math.PI*2);ctx.stroke();}
+  function draw(time,dt){
+    camera=followCamera(camera,s.player,{width:vw,height:vh},WORLD,dt);
+    ctx.clearRect(0,0,vw,vh);ctx.save();ctx.translate(-camera.x,-camera.y);
+    if(s.region==='highlands'){drawHighlands(ctx,s,time,{path,glow});drawPlayer();if(near){ctx.fillStyle='#ffe2a0';ctx.font='bold 14px system-ui';ctx.textAlign='center';ctx.fillText(['turbine','forge'].includes(near.id)||near.id==='lift'&&s.highlands.lift<1?'HOLD E · REPAIR':'E · INTERACT',near.x,near.y+60);}ctx.restore();drawOverview();drawPause();return;}
+    const bg=ctx.createLinearGradient(0,0,0,600);bg.addColorStop(0,'#184c43');bg.addColorStop(1,'#377b5b');ctx.fillStyle=bg;ctx.fillRect(0,0,WORLD.width,WORLD.height);
+    drawOutskirts(time);
+    // Fixed world texture avoids shimmering as the camera moves.
+    for(let n=0;n<360;n++){const x=(n*137+33)%WORLD.width,y=(n*71+60)%WORLD.height;if(x>720&&x<840)continue;ctx.fillStyle=n%3?'#71a77635':'#d4c78344';ctx.fillRect(x,y,3,2);}
+    path([[70,470],[290,470],[340,420],[910,425]],'#193f3555',72);path([[70,466],[290,466],[340,416],[910,421]],'#bcaf7d',54);path([[70,466],[290,466],[340,416],[910,421]],'#d3c197',38);
+    const river=ctx.createLinearGradient(720,0,840,0);river.addColorStop(0,'#256e86');river.addColorStop(0.5,'#338fa7');river.addColorStop(1,'#225f76');ctx.fillStyle=river;ctx.fillRect(720,0,120,WORLD.height);ctx.fillStyle='#99d5cc66';ctx.fillRect(718,0,4,WORLD.height);ctx.fillRect(839,0,4,WORLD.height);for(let n=0;n<85;n++){const y=(n*31+time*0.045)%(WORLD.height+10);path([[734+n%3*32,y],[748+n%3*32,y]],'#90dce56b',2);}
+    for(const [x,y,z] of [[55,100,25],[105,87,31],[420,90,26],[545,83,31],[652,95,30],[50,280,29],[90,345,24],[600,530,29],[670,552,24],[890,540,29],[140,561,23],[310,562,27]])tree(x,y,z);
+    // Channel bed has a visible missing section between the elbow and wheel.
+    path([[70,180],[330,180],[330,330],[421,330]],'#4a5042',34);path([[70,180],[330,180],[330,330],[421,330]],'#b5aa82',25);path([[529,330],[650,330]],'#4a5042',34);path([[529,330],[650,330]],'#b5aa82',25);
+    ctx.strokeStyle='#d9d69a88';ctx.lineWidth=2;ctx.setLineDash([6,6]);ctx.strokeRect(429,309,92,42);ctx.setLineDash([]);
+    path([[475,330],[475,477]],'#9fae8460',4);
+    ctx.fillStyle='#163d3450';ctx.fillRect(430,s.troughY-13,92,38);ctx.fillStyle=s.troughY===330?'#c2b586':'#d7c392';ctx.fillRect(429,s.troughY-20,92,35);ctx.fillStyle='#655e45';ctx.fillRect(430,s.troughY-10,90,15);ctx.fillStyle='#f2dba9';ctx.fillRect(429,s.troughY-20,92,5);ctx.fillRect(429,s.troughY+10,92,5);for(const x of [435,513]){ctx.fillStyle='#706646';ctx.fillRect(x,s.troughY-19,4,34);}
+    if(s.valve>0.02){water([[70,180],[330,180]],time*s.valve);if(s.elbow===3){water([[330,180],[330,330],[421,330]],time*s.valve);if(connected(s))water([[421,330],[650,330]],time*s.valve);else{for(let n=0;n<8;n++){ctx.fillStyle='#76d2dc';ctx.fillRect(424+n%3*7,330+(time/8+n*9)%38,3,5);}}}else{const endpoints=[[330,150],[361,180],[330,211],[299,180]];const tip=endpoints[s.elbow];water([[330,180],tip],time*s.valve);ctx.fillStyle='#71cdd980';ctx.beginPath();ctx.ellipse(tip[0],tip[1]+8,16,8,0,0,Math.PI*2);ctx.fill();}}
+    // Rotating elbow: its open ports are visible in the world.
+    const ports=[[-1,0],[0,-1],[1,0],[0,1]];const pairs=[[0,1],[1,2],[2,3],[3,0]];const pair=pairs[s.elbow];ctx.fillStyle='#c5b17b';ctx.beginPath();ctx.arc(330,180,25,0,Math.PI*2);ctx.fill();path([[330+ports[pair[0]][0]*25,180+ports[pair[0]][1]*25],[330,180],[330+ports[pair[1]][0]*25,180+ports[pair[1]][1]*25]],'#536757',12);
+    // Valve handle and opening arc.
+    ctx.fillStyle='#163d43';ctx.beginPath();ctx.arc(180,180,23,0,Math.PI*2);ctx.fill();ctx.strokeStyle='#f3bb70';ctx.lineWidth=4;ctx.beginPath();ctx.arc(180,180,18,-Math.PI/2,-Math.PI/2+Math.PI*2*s.valve);ctx.stroke();ctx.save();ctx.translate(180,180);ctx.rotate(s.valve*Math.PI*1.5);path([[-17,0],[17,0]],'#efad57',5);path([[0,-17],[0,17]],'#efad57',5);ctx.restore();
+    // Wheel shaft visibly connects to the winch at the bridge.
+    path([[650,330],[686,330],[686,403]],'#182e32',12);path([[650,326],[682,326],[682,403]],'#a4ac84',4);ctx.fillStyle='#254247';ctx.fillRect(620,300,60,68);ctx.save();ctx.translate(650,330);ctx.rotate(s.wheelAngle);ctx.strokeStyle='#d3ac65';ctx.lineWidth=9;ctx.beginPath();ctx.arc(0,0,41,0,Math.PI*2);ctx.stroke();for(let n=0;n<10;n++){ctx.rotate(Math.PI/5);path([[0,0],[40,0]],'#c99d58',5);ctx.fillStyle='#e6bd74';ctx.fillRect(33,-11,10,22);}ctx.restore();ctx.fillStyle='#4b5144';ctx.beginPath();ctx.arc(650,330,10,0,Math.PI*2);ctx.fill();
+    // Bridge lowers continuously; collision opens only when fully deployed.
+    ctx.fillStyle='#51482f';ctx.fillRect(710,393,11,63);ctx.fillRect(840,393,11,63);const span=120*s.bridge;ctx.fillStyle='#b48c51';ctx.fillRect(720,401,span,48);for(let x=724;x<720+span;x+=13){path([[x,402],[x,448]],'#785b35',2);}path([[720,400],[720+span,400]],'#eed095',4);path([[720,450],[720+span,450]],'#eed095',4);
+    if(s.bridge<1){path([[718,395],[722,390-span*0.8]],'#bea06c',7);}
+    ctx.save();ctx.translate(686,403);ctx.rotate(s.wheelAngle*0.5);ctx.fillStyle='#e2ba77';ctx.fillRect(-13,-13,26,26);path([[-13,0],[13,0]],'#6f5837',3);ctx.restore();path([[694,403],[719,396]],'#bfc7a4',2);
+    drawMeadow(ctx,s,time,{path,water,glow});
+    if(s.mode==='engineer')drawDistributor(ctx,s,{path,glow},time);
+    drawAdventure(time);
+    drawWorkshop(ctx,s,time,{path,glow});
+    if(s.giantAwake){glow(1810,1000,near?.id==='expedition',time);path([[1810,1005],[1810,966]],'#e6c285',6);path([[1810,968],[1845,978],[1810,990]],'#a9d6c0',8);ctx.font='bold 14px system-ui';ctx.textAlign='center';ctx.fillStyle='#ffe0a0';ctx.fillText('STORMBREAK · E',1810,1046);}
+    // Destination banner on the far bank.
+    ctx.fillStyle='#6e593a';ctx.fillRect(901,368,5,54);ctx.fillStyle=s.won?'#fed57f':'#a4d3a1';ctx.beginPath();ctx.moveTo(906,370);ctx.lineTo(936,378);ctx.lineTo(906,389);ctx.closePath();ctx.fill();
+    for(const [id,x,y] of [['elbow',330,180],['valve',180,180],['trough',475,s.troughY]])glow(x,y,near?.id===id,time);
+    ctx.font='bold 17px system-ui';ctx.textAlign='center';ctx.fillStyle='#e4eed0';ctx.fillText('VALVE',180,133);ctx.fillText('CHANNEL',330,133);if(s.troughY>330)ctx.fillText('PUSH',475,s.troughY-47);
+    if(near){ctx.fillStyle='#ffdda2';ctx.font='bold 15px system-ui';ctx.fillText(near.id==='expedition'?'E · NEW EXPEDITION':Object.keys(workshopObjects).includes(near.id)?(near.id==='cart'?'HOLD E · REPAIR':'E · '+(near.id==='giantdrive'?'GEARING':near.id==='giantsignal'?'CHIME':'INTERACT')):s.mode==='engineer'&&['valve','distributor','sluice'].includes(near.id)?'E / Q · ADJUST':(['elbow','vane','gate','diverter'].includes(near.id)||near.id.startsWith('mirror'))?'E · TURN':near.id==='valve'?(s.mode!=='engineer'&&s.pump===1?'E · BALANCE / Q · LOWER':'E · OPEN / Q · LOWER'):near.id==='mill'?'HOLD E · FIT':near.id==='sluice'?'HOLD E · LIFT':'HOLD E · PUSH',near.x,near.y+57);}
+    if(route){ctx.strokeStyle='#fce4a0';ctx.lineWidth=2;ctx.beginPath();ctx.arc(route.x,route.y,6,0,Math.PI*2);ctx.stroke();}
+    drawPlayer();ctx.restore();drawOverview();drawPause();
+  }
+  function drawPlayer(){
+    const {x,y}=s.player,bob=keys.size||route?Math.sin(walkTime*17)*1.5:0;ctx.fillStyle='#15352977';ctx.beginPath();ctx.ellipse(x,y+13,13,5,0,0,Math.PI*2);ctx.fill();ctx.fillStyle='#233841';ctx.fillRect(x-8,y+6,6,10);ctx.fillRect(x+2,y+6,6,10);ctx.fillStyle='#ef9850';ctx.fillRect(x-10,y-10+bob,20,19);ctx.fillStyle='#f5d5aa';ctx.fillRect(x-8,y-23+bob,16,14);ctx.fillStyle='#193e46';ctx.fillRect(x-10,y-28+bob,20,8);ctx.fillStyle='#e7b35b';ctx.fillRect(x-12,y-21+bob,24,3);ctx.fillStyle='#765335';ctx.fillRect(x+7,y-9+bob,7,13);
+  }
+  function drawPause(){if(paused){ctx.fillStyle='#102e3acb';ctx.fillRect(0,0,vw,vh);ctx.fillStyle='#fff';ctx.font='bold 32px system-ui';ctx.textAlign='center';ctx.fillText('Paused',vw/2,vh/2);}}
 
-  findStart();
-  resetGame();
-  updateHud();
-  requestAnimationFrame(gameLoop);
+  function drawOverview(){
+    const x=vw-140,y=14,w=126,h=72;
+    ctx.fillStyle='#102e3cdd';ctx.fillRect(x-5,y-5,w+10,h+10);
+    if(s.region==='highlands'){ctx.fillStyle='#203c59';ctx.fillRect(x,y,w,h);for(const [left,size] of [[30,490],[700,480],[1360,530]]){ctx.fillStyle='#abc2bd';ctx.fillRect(x+left/WORLD.width*w,y+4,size/WORLD.width*w,h-8);}ctx.fillStyle='#ff9655';ctx.beginPath();ctx.arc(x+s.player.x/WORLD.width*w,y+s.player.y/WORLD.height*h,3,0,Math.PI*2);ctx.fill();return;}
+    ctx.fillStyle='#527858';ctx.fillRect(x,y,w,h);ctx.fillStyle='#778574';ctx.fillRect(x+1030/WORLD.width*w,y,w*(WORLD.width-1030)/WORLD.width,h);
+    ctx.fillStyle='#70b9ca';ctx.fillRect(x+718/WORLD.width*w,y,122/WORLD.width*w,h);
+    if(s.pond===1){ctx.fillStyle='#e8c791';ctx.fillRect(x+718/WORLD.width*w,y+853/WORLD.height*h,122/WORLD.width*w,4);}
+    ctx.fillStyle='#e8c791';ctx.fillRect(x+718/WORLD.width*w,y+399/WORLD.height*h,122/WORLD.width*w,5);
+    for(const p of [{x:555,y:150},{x:890,y:285},{x:1750,y:620}]){ctx.fillStyle='#ffe4a1';ctx.fillRect(x+p.x/WORLD.width*w-2,y+p.y/WORLD.height*h-2,4,4);}
+    ctx.strokeStyle='#d6e6d4';ctx.lineWidth=1;ctx.strokeRect(x+camera.x/WORLD.width*w,y+camera.y/WORLD.height*h,vw/WORLD.width*w,vh/WORLD.height*h);
+    ctx.fillStyle='#ff9655';ctx.beginPath();ctx.arc(x+s.player.x/WORLD.width*w,y+s.player.y/WORLD.height*h,3,0,Math.PI*2);ctx.fill();
+  }
+  function drawOutskirts(time){
+    ctx.fillStyle='#718371';ctx.fillRect(1030,0,890,WORLD.height);
+    const ridge=ctx.createLinearGradient(1000,0,1150,0);ridge.addColorStop(0,'#377b5b');ridge.addColorStop(1,'#718371');ctx.fillStyle=ridge;ctx.fillRect(960,0,180,WORLD.height);
+    path([[910,425],[1070,425],[1150,520],[1280,520],[1390,780],[1770,780]],'#b7b292',45);
+    path([[280,470],[280,850],[650,850]],'#adbb82',30);
+    path([[890,425],[890,850],[1170,850]],'#b7b292',30);
+    for(const [x,y,z] of [[80,710,31],[130,880,28],[390,740,35],[570,960,28],[655,730,32],[920,980,29],[1010,700,26],[1220,160,30],[1610,120,30],[1770,300,28],[1820,540,34],[1570,930,30]])tree(x,y,z);
+    for(let i=0;i<18;i++){const x=70+(i*83)%620,y=640+(i*53)%380;ctx.fillStyle=['#f4d891','#d7bfe0','#b4d8a1'][i%3];ctx.beginPath();ctx.arc(x,y,4,0,Math.PI*2);ctx.fill();}
+    ctx.font='bold 20px system-ui';ctx.textAlign='center';ctx.fillStyle='#e0e8cd';ctx.fillText('WILDFLOWER MEADOW',380,680);ctx.fillText('SUNSTONE RIDGE',1470,80);
+    // Light advances only through mirrors that connect the current beam.
+    const beam=[[[1150,100],[1150,330]],[[1150,330],[1440,330]],[[1440,330],[1440,680]],[[1440,680],[1750,680]]];
+    let lit=true;
+    for(let i=0;i<beam.length;i++){path(beam[i],lit?'#ffe7a4':'#959c83',lit?5:2);if(i<mirrors.length)lit=lit&&s.mirrors[i]===mirrors[i].target;}
+    for(let i=0;i<mirrors.length;i++){
+      const m=mirrors[i];ctx.fillStyle='#4c5d54';ctx.beginPath();ctx.arc(m.x,m.y,29,0,Math.PI*2);ctx.fill();ctx.save();ctx.translate(m.x,m.y);ctx.rotate(s.mirrors[i]*Math.PI/2);
+      path([[-16,-16],[16,16]],'#cae8e4',8);
+      const turns=[[[0,-28],[28,0]],[[28,0],[0,28]],[[0,28],[-28,0]],[[-28,0],[0,-28]]];
+      for(const port of turns[s.mirrors[i]]){ctx.fillStyle='#ffe0a1';ctx.beginPath();ctx.arc(...port,4,0,Math.PI*2);ctx.fill();}ctx.restore();
+      glow(m.x,m.y,near?.id===`mirror${i}`,time);ctx.fillStyle='#e7edda';ctx.font='bold 14px system-ui';ctx.fillText('MIRROR',m.x,m.y-44);
+    }
+    ctx.fillStyle='#435649';ctx.fillRect(1727,627,46,81);ctx.fillStyle=s.beacon===1?'#ffe6a1':'#869b8b';ctx.beginPath();ctx.arc(1750,620,23,0,Math.PI*2);ctx.fill();
+    if(s.beacon>0){ctx.strokeStyle='#ffe8a7';ctx.lineWidth=5;ctx.beginPath();ctx.arc(1750,620,30,-Math.PI/2,-Math.PI/2+s.beacon*Math.PI*2);ctx.stroke();}
+    ctx.fillStyle='#e7edda';ctx.font='bold 14px system-ui';ctx.fillText('SUN BEACON',1750,745);
+    if(s.beacon===1)for(let n=0;n<6;n++){const angle=n*Math.PI/3+time/3000;path([[1750+Math.cos(angle)*36,620+Math.sin(angle)*36],[1750+Math.cos(angle)*49,620+Math.sin(angle)*49]],'#ffe0a1',3);}
+    ctx.fillStyle='#e1d0a0';ctx.fillRect(983,363,5,63);ctx.fillRect(947,360,79,29);ctx.fillStyle='#274735';ctx.font='bold 12px system-ui';ctx.fillText('RIDGE →',986,379);
+  }
+  function drawAdventure(time){
+    // Wind, gearing and irrigation are visible parts of one connected valley.
+    path([[890,310],[870,350],[860,425],[700,425],[700,245],[555,245]],s.pump===1?'#76b7b6':'#405952',7);
+    ctx.fillStyle='#c8b588';ctx.fillRect(872,240,36,60);ctx.fillStyle='#31494a';ctx.fillRect(882,270,16,28);
+    ctx.save();ctx.translate(890,250);ctx.rotate(s.windAngle);
+    for(let i=0;i<4;i++){ctx.rotate(Math.PI/2);ctx.fillStyle=s.vane===1?'#efe0aa':'#839a8d';ctx.fillRect(4,-6,31,12);}ctx.restore();
+    glow(890,285,near?.id==='mill',time);
+    ctx.fillStyle='#152f36';ctx.fillRect(866,309,48,6);ctx.fillStyle='#ffc36f';ctx.fillRect(866,309,48*(s.repair<1?s.repair:s.pump),6);
+    ctx.save();ctx.translate(890,160);ctx.rotate(s.vane*Math.PI/2);path([[0,22],[0,-22]],'#f0c879',5);path([[-9,-12],[0,-22],[9,-12]],'#f0c879',4);ctx.restore();
+    ctx.font='bold 14px system-ui';ctx.textAlign='center';ctx.fillStyle='#e7edd7';ctx.fillText('WIND →',890,117);ctx.fillText('PUMP',890,337);
+    if(!s.cog){ctx.save();ctx.translate(890,510);ctx.rotate(time/1800);for(let n=0;n<8;n++){ctx.rotate(Math.PI/4);ctx.fillStyle='#ebbc73';ctx.fillRect(-4,-18,8,8);}ctx.strokeStyle='#ffe2a1';ctx.lineWidth=7;ctx.beginPath();ctx.arc(0,0,11,0,Math.PI*2);ctx.stroke();ctx.restore();}
+    for(let bed=0;bed<2;bed++){
+      const x=bed===0?510:620,growth=s.garden[bed];
+      ctx.fillStyle='#684c37';ctx.fillRect(x-37,115,74,77);
+      for(let n=0;n<8;n++){const px=x-23+n%3*23,py=133+Math.floor(n/3)*38;path([[px,py+17],[px,py+17-growth*25]],'#74ad69',3);if(growth>.2){path([[px,py+12],[px-9,py+6],[px,py+12],[px+9,py+3]],'#9ac779',3);}if(growth>.8){ctx.fillStyle=bed?'#f5b783':'#eec9e1';ctx.beginPath();ctx.arc(px,py-5,6,0,Math.PI*2);ctx.fill();}}
+      const fed=s.gate===2||s.gate===(bed===0?1:3);
+      path([[555,245],[x,218],[x,193]],'#747b61',9);
+      if(s.pump===1&&s.vane===1&&connected(s)&&fed&&s.valve>.02)water([[555,245],[x,218],[x,193]],time*s.valve);
+    }
+    ctx.fillStyle='#ceb986';ctx.beginPath();ctx.arc(555,245,20,0,Math.PI*2);ctx.fill();ctx.fillStyle='#183e47';ctx.font='bold 13px system-ui';ctx.fillText(['×','←','↔','→'][s.gate],555,250);
+    if(s.pump===1)glow(555,245,near?.id==='gate',time);
+    ctx.fillStyle='#e4eed0';ctx.font='bold 14px system-ui';ctx.fillText('GARDEN',565,100);
+    // The valve gauge teaches the balance through immediate visual feedback.
+    if(s.pump===1){ctx.fillStyle='#172e38';ctx.fillRect(142,220,76,10);ctx.fillStyle=s.mode==='engineer'?'#719eab':'#80bd79';ctx.fillRect(142+76*(s.mode==='engineer'?0:.3),220,76*(s.mode==='engineer'?.85:.35),10);ctx.fillStyle='#ffe3aa';ctx.fillRect(142+74*s.valve,217,3,16);}
+    for(let i=0;i<sparks.length;i++)if(!s.sparks.includes(i)){const p=sparks[i];ctx.fillStyle='#ffe299';ctx.beginPath();ctx.arc(p.x,p.y+Math.sin(time/350+i)*4,5,0,Math.PI*2);ctx.fill();ctx.strokeStyle='#fff3c366';ctx.beginPath();ctx.arc(p.x,p.y,11,0,Math.PI*2);ctx.stroke();}
+    // Birds return when the crossing is restored; butterflies follow the blooms.
+    if(s.crossed)for(let n=0;n<3;n++){const x=(time*.025+n*230)%680,y=65+Math.sin(time/1000+n)*12;path([[x-7,y-3],[x,y],[x+7,y-3]],'#cfdfce',2);}
+    if(s.garden.some(n=>n===1))for(let n=0;n<8;n++){const x=565+Math.sin(time/1600+n)*65,y=150+Math.cos(time/1100+n)*35;ctx.fillStyle=n%2?'#f6c590':'#dfbde2';ctx.beginPath();ctx.ellipse(x,y,5,2+Math.abs(Math.sin(time/100))*3,0,0,Math.PI*2);ctx.fill();}
+    for(const p of particles){ctx.globalAlpha=Math.min(1,p.life);ctx.fillStyle='#ffe1a0';ctx.fillRect(p.x,p.y,4,4);}ctx.globalAlpha=1;
+    if(s.cog&&s.repair<1){ctx.fillStyle='#efcf87';ctx.beginPath();ctx.arc(s.player.x+17,s.player.y-6,6,0,Math.PI*2);ctx.fill();}
+  }
+  function frame(time){const dt=Math.min(0.04,Math.max(0,(time-last)/1000));last=time;update(dt);draw(time,dt);requestAnimationFrame(frame);}
+  if(s.region==='highlands')message('Your Stormbreak expedition is saved. Follow the wind cables.');else if(s.gardenRestored&&!s.finished)message('Your garden is saved. Explore the meadow and ridge to finish the valley.');else if(s.finished)message('Welcome back. The giant can take you to Stormbreak Highlands on the southeast trail.');else if(s.crossed)message('Your crossing is saved. The adventure continues on the far bank.');requestAnimationFrame(frame);
 }

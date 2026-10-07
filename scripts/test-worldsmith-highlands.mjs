@@ -1,0 +1,22 @@
+import assert from 'node:assert/strict';
+import {initialState,canStand} from '../public/brain-arcade/apprentice-restorer/js/flow-model.js';
+import {adventureState} from '../public/brain-arcade/apprentice-restorer/js/adventure.js';
+import {actHighlands,workHighlands,stepHighlands,highlandsReadings,highlandsState} from '../public/brain-arcade/apprentice-restorer/js/highlands.js';
+const s={...initialState(),...adventureState(),mode:'explorer'};
+assert.equal(actHighlands(s,'expedition'),null,'The giant must unlock the expedition');
+s.giantAwake=true;s.giantPower=1;actHighlands(s,'expedition');assert.equal(s.region,'highlands');
+const h=s.highlands;
+const run=n=>{const events=[];for(let i=0;i<n*60;i++)events.push(...stepHighlands(s,1/60));return events;};
+assert(!canStand(610,490,s));assert(!canStand(1260,325,s));run(8);assert.equal(h.bridge,0);
+actHighlands(s,'sail');workHighlands(s,'turbine',2);assert.equal(h.turbine,1);actHighlands(s,'windvane');assert(run(7).includes('highland-bridge'));assert(canStand(610,490,s));assert(!canStand(610,600,s));
+assert.match(actHighlands(s,'perch'),/Meet the goat/);actHighlands(s,'goat');actHighlands(s,'perch');assert(run(5).includes('highland-goat'));assert(canStand(1260,325,s));
+assert.match(actHighlands(s,'lift'),/counterweight/);actHighlands(s,'weight');workHighlands(s,'lift',2);assert.equal(h.lift,1);assert.match(actHighlands(s,'lift'),/needs wind power/);
+actHighlands(s,'router');s.player={x:1100,y:740};actHighlands(s,'lift');assert(h.travel);run(1);assert(s.player.x>1100&&s.player.x<1430);run(2);assert.equal(s.player.x,1430);assert.equal(h.travel,null);
+actHighlands(s,'spare');workHighlands(s,'forge',2);actHighlands(s,'signal');actHighlands(s,'signal');assert.equal(h.signal,2);
+actHighlands(s,'router');run(20);assert.equal(h.charge,1);assert(!h.complete,'Powering only the workshop cannot finish');
+for(let route=0;route<4;route++){h.routing=route;const r=highlandsReadings(s);assert(Math.abs(r.bridge+r.lift+r.forge-r.supply)<1e-9,'The shared supply is conserved');}
+h.routing=3;run(4);assert(h.stable>3);h.vane=0;run(.1);assert.equal(h.stable,0,'Interrupted wind resets continuous stability');h.vane=1;assert(run(13).includes('highland-complete'));assert(h.complete);
+h.complete=false;h.stable=0;h.engineer=true;assert(run(14).includes('highland-complete'),'Released intake buffers changing gusts');
+const restored=highlandsState(JSON.parse(JSON.stringify(s)));assert.equal(restored.region,'highlands');assert(restored.highlands.complete);assert.equal(restored.highlands.travel,null);assert.equal(restored.highlands.time,0);
+actHighlands(s,'home');assert.equal(s.region,'valley');assert.equal(s.player.x,1810);actHighlands(s,'expedition');assert(s.highlands.complete,'Return trips retain restoration');
+console.log('PASS: giant unlock, cliff collisions, turbine repair, bridge, goat shortcut/intake, lift gates and travel, conserved routing, simultaneous power, continuous stability, changing gusts and save/return.');
