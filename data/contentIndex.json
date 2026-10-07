@@ -154,6 +154,37 @@
     "icon": ""
   },
   {
+    "id": "trivia-hack",
+    "title": "Trivia Hack | Brain Arcade | Teach Arcade",
+    "contentType": "game",
+    "canonicalUrl": "/brain-arcade/trivia-hack/",
+    "subjects": [],
+    "topics": [
+      "general-trivia"
+    ],
+    "keywords": [
+      "trivia",
+      "brain",
+      "arcade",
+      "game",
+      "history",
+      "science",
+      "geography",
+      "sports",
+      "art",
+      "music",
+      "entertainment",
+      "multiple-choice",
+      "power-ups",
+      "quick-play",
+      "categories"
+    ],
+    "blurb": "Play Trivia Hack in Brain Arcade. Answer quick questions across six categories, collect power-ups, and complete every category hack.",
+    "duration": "5–10 minutes",
+    "deviceNotes": "Mouse, touch, and keyboard controls",
+    "icon": "⚡"
+  },
+  {
     "id": "undertext-rifts-mood-tone.html",
     "title": "Mood & Tone: Undertext Flip · ELA Arcade Game | Teach Arcade",
     "contentType": "game",
