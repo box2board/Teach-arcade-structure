@@ -88,7 +88,7 @@ export function createAdventure(mode='explore',layout='classic'){
 }
 function applyLayout(map,layout){
   map.layout=layout;map.layoutLabel=layouts.find(l=>l.id===layout).label;
-  if(layout==='classic')return map;
+  if(layout==='classic')return withHints(map);
   const object=id=>map.objects.find(o=>o.id===id),mirror=map.blocks.find(b=>b.kind==='mirror');
   const west=layout==='westward',hard=map.mode==='hard';
   Object.assign(mirror,west?{x:8,y:hard?5:3}:{x:5,y:hard?3:4});
@@ -113,5 +113,42 @@ function applyLayout(map,layout){
     const canal=Array.from(map.tiles[11]);for(let x=13;x<=23;x++)canal[x]=x===crossing?'.':'~';map.tiles[11]=canal.join('');
     if(west)Object.assign(object('beacon-column-north'),{x:14,y:10});
   }
+  return withHints(map);
+}
+function withHints(map){
+  const rules=[],rooms=map.rooms;
+  const add=(id,room,when,title,steps,extra={})=>rules.push({id,room:rooms[room].name,when,title,steps,...extra});
+  const chest=(id,room,when,objectId)=>{
+    const object=map.objects.find(o=>o.id===objectId);
+    add(id,room,when,object.label,[`A review chest in this station holds your next reward.`,`Look for the ${object.label}. Its reward is ${object.reward.label}.`,`Stand next to the ${object.label}, face it and press E or Space. Select answers with arrows and Enter. Finish every question in that chest to collect ${object.reward.label}.`]);
+  };
+  chest('dock-key',0,{not:{any:[{keys:['moss']},{usedKeys:['moss']}]}},'survey-chest');
+  add('dock-gate',0,{not:{opened:['dock-gate']}},'Open the north passage',['Your key belongs to a nearby locked passage.','Find the north gate at the top of Dock.','Walk into the north gate while carrying the Moss key. It opens automatically and records the key as Used.']);
+  add('dock-route',0,{},'Visit the other stations',['The next supplies are beyond Dock.','Go north to Optics, then cross east to Relay.','Earn the focusing lens in Optics and the beacon cell in Relay. Follow each room’s signs to open the route.']);
+  const mirror=map.blocks.find(b=>b.kind==='mirror'),socket=map.decorations.find(d=>d.appearance==='mirror-target');
+  const moves=[];
+  if(mirror.y!==socket.y)moves.push(`push ${mirror.y>socket.y?'north':'south'} ${Math.abs(mirror.y-socket.y)} tile(s)`);
+  if(mirror.x!==socket.x)moves.push(`push ${mirror.x>socket.x?'west':'east'} ${Math.abs(mirror.x-socket.x)} tile(s)`);
+  add('optics-cross',1,{not:{opened:['east-crossing']}},'Raise the crossing',['The receiver is powered. Find its crossing control.','Look for the CROSS switch on the east side of Optics.','Stand next to CROSS, face it and press E or Space. The raised crossing stays open even if you later move the mirror.'],{receiver:'optics-receiver',powered:true});
+  add('optics-mirror',1,{not:{opened:['east-crossing']}},'Direct the light',['Trace the light beam and look for the marked mirror socket.','Push the silver mirror onto the socket, then interact with it to rotate the light south toward the receiver.',`From this layout’s starting arrangement: ${moves.join(', then ')}. Face the mirror and rotate it once; use CROSS when the receiver glows. If you have moved it elsewhere, Undo or Reset puzzle can recover the starting arrangement without removing earned rewards.`],{receiver:'optics-receiver',powered:false});
+  chest('optics-lens',1,{not:{items:['lens']}},'lens-chest');
+  add('optics-route',1,{},'Continue to Relay',['Your next stop is east.','Take the raised crossing to Relay.','Leave Optics through the east crossing. Earn the beacon cell there; Medium and Hard also need the Mechanic chest’s crank.']);
+  chest('relay-cell',2,{not:{items:['cell']}},'cell-chest');
+  if(map.mode!=='explore')chest('relay-crank',2,{not:{tools:['crank']}},'crank-chest');
+  const crates=map.blocks.filter(b=>b.kind!=='mirror');
+  const route=crates.map((b,i)=>{const p=map.plates[i];return `The crate starting at column ${b.x}, row ${b.y}: push ${p.x!==b.x?(p.x>b.x?'east':'west'):(p.y>b.y?'south':'north')} ${Math.abs(p.x-b.x)+Math.abs(p.y-b.y)} tile(s).`;}).join(' ');
+  add('relay-weights',2,{not:{doorOpen:'beacon-gate'}},'Balance the counterweights',['The south gate is linked to the amber floor switches.','A crate must remain on every amber switch at the same time. Approach the crate from the side opposite its switch.',`From the starting arrangement: ${route} If a crate is trapped, use Undo or Reset puzzle. Earned cell and crank rewards remain in your bag.`]);
+  add('relay-route',2,{},'Go to the beacon',['The south route is ready.','Leave the crates on their switches and take the south gate.','Walk through the south gate into Beacon. Bring the lens and cell; Medium and Hard also need your crank.']);
+  chest('beacon-lens',3,{not:{items:['lens']}},'lens-chest');
+  rules.at(-1).steps=['The beacon is missing its focusing lens.','Return to Optics to find the lens chest.','Finish the lens chest’s questions in Optics, collect the focusing lens, then return to Beacon.'];
+  chest('beacon-cell',3,{not:{items:['cell']}},'cell-chest');
+  rules.at(-1).steps=['The beacon is missing its power cell.','Return to Relay to find the beacon cell chest.','Finish that chest’s questions, collect the beacon cell, then return through the south gate.'];
+  if(map.mode!=='explore'){
+    chest('beacon-crank',3,{not:{tools:['crank']}},'crank-chest');
+    rules.at(-1).steps=['The canal needs a tool-earned crossing.','The Mechanic chest in Relay awards the bridge crank.','Return to Relay, finish the Mechanic chest’s questions and collect the crank. Bring it to LIFT in Beacon.'];
+    add('beacon-lift',3,{not:{opened:['beacon-drawbridge']}},'Unfold the drawbridge',['Look for a socket beside the canal.','The LIFT socket uses your bridge crank.','Stand beside LIFT on the north side of the canal, face it and press E or Space. The drawbridge unfolds, and the crank stays in your bag.']);
+  }
+  add('beacon-finish',3,{},'Restore the beacon',['Your supplies are ready for the beacon.','Find the beacon on the south side of this station.','Stand on the beacon itself and press E or Space to finish the adventure.']);
+  map.hintRules=rules;
   return map;
 }

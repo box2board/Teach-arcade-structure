@@ -1,6 +1,8 @@
+import {validHintUsage} from './hints.js';
 const version=1;
 function hash(text){let n=2166136261;for(let i=0;i<text.length;i++){n^=text.charCodeAt(i);n=Math.imul(n,16777619);}return (n>>>0).toString(16);}
-const signature=(map,questions)=>hash(JSON.stringify({map,questions}));
+// Help copy can evolve without invalidating an otherwise identical saved puzzle.
+const signature=(map,questions)=>{const puzzle={...map};delete puzzle.hintRules;return hash(JSON.stringify({map:puzzle,questions}));};
 export function encodeSave(map,questions,state,motion,elapsed){
   const payload=JSON.stringify({mode:map.mode,layout:map.layout,signature:signature(map,questions),state,position:{x:motion.x,y:motion.y},elapsed});
   return JSON.stringify({version,payload,checksum:hash(payload)});
@@ -21,6 +23,7 @@ export function decodeSave(raw,createAdventure,questions){
     }
     if(data.mode!==map.mode||!matches||data.state.won)return null;
     const {state,position,elapsed}=data;
+    if(!validHintUsage(state.hints))return null;
     if(!Number.isFinite(elapsed)||elapsed<0||!Number.isFinite(position.x)||!Number.isFinite(position.y))return null;
     if(!Number.isInteger(state.player.x)||!Number.isInteger(state.player.y)||Math.round(position.x)!==state.player.x||Math.round(position.y)!==state.player.y)return null;
     if(!map.tiles[state.player.y]?.[state.player.x]||map.tiles[state.player.y][state.player.x]==='#')return null;

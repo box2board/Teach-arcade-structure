@@ -15,6 +15,8 @@ const questionTotal=testingMode==='hard'?12:testingMode==='medium'?8:6;
 globalThis.localStorage={getItem:k=>stored.get(k),setItem:(k,v)=>stored.set(k,v),removeItem:k=>stored.delete(k)};
 await import('../public/arcade-review-games/shared/top-down/game.js');
 const get=id=>nodes.get(id);
+const hintButton=()=>get('.title-row').children.at(-1).children.find(b=>b.textContent==='Hint');
+assert.equal(hintButton().disabled,true,'Hints are disabled before a game starts');
 const topicTitle=topicIndex?'U.S. Constitution':'Scientific Method';
 function chooseTopic(){
  assert.equal(get('dialog-title').textContent,'Choose your review topic');
@@ -38,6 +40,14 @@ assert.equal(get('board').style.aspectRatio,'13/9');
 assert.ok(parseFloat(get('board').style.width)>parseFloat(get('board').style.height));
 assert.equal(get('tiles').style['--rows'],17);assert.equal(get('dialog').open,false);
 assert.ok(get('entities').children.length>15);
+assert.equal(hintButton().disabled,false);
+hintButton().click();assert.equal(get('dialog-label').textContent,'PUZZLE HINT · 1 / 3');
+get('dialog').listeners.keydown({key:'ArrowRight',target:{tagName:'BUTTON'},preventDefault(){}});
+get('dialog').listeners.keydown({key:'Enter',target:{tagName:'BUTTON'},repeat:false,preventDefault(){}});
+assert.equal(get('dialog-label').textContent,'PUZZLE HINT · 2 / 3');
+get('dialog-actions').children.find(b=>b.textContent==='More guidance').click();assert.equal(get('dialog-label').textContent,'PUZZLE HINT · 3 / 3');
+assert.equal(get('dialog-actions').children.length,1);get('dialog-actions').children[0].click();
+hintButton().click();assert.equal(get('dialog-label').textContent,'PUZZLE HINT · 3 / 3');get('dialog-actions').children[0].click();
 console.log('DOM smoke: Outpost selection rebuilds the tiles, entity scale and room camera without runtime errors.');
 const {createAdventure}=await import('../public/arcade-review-games/shared/top-down/outpost.js');
 const {content}=await import(topicIndex?'../public/arcade-review-games/shared/top-down/constitution.js':'../public/arcade-review-games/shared/top-down/scientific-method.js');
@@ -138,6 +148,7 @@ let prevented=false;get('dialog').listeners.keydown({key:'ArrowLeft',target:{tag
 get('dialog').listeners.keydown({key:'Enter',target:{tagName:'BUTTON'},repeat:false,preventDefault(){}});
 assert.equal(downloads.length,1);assert.equal(downloads[0].download,'quest-arcade-mosslight-outpost-results.txt');
 const downloaded=await downloadBlobs.get(downloads[0].href).text();
+assert.match(downloaded,/Puzzle hints revealed: 3 · Puzzle tasks assisted: 1/);assert.equal(hintButton().disabled,true);
 assert.ok(downloaded.includes('Puzzle layout: '+map.layoutLabel));assert.match(downloaded,/Student: Alex/);assert.ok(downloaded.includes(`Questions completed: ${questionTotal} / ${questionTotal}`));assert.match(downloaded,/Adventure: Complete/);
 if(useTopics)assert.ok(downloaded.includes(topicTitle),'Downloaded report identifies the selected topic');
 get('dialog-actions').children[1].click();assert.equal(get('dialog-title').textContent,'Adventure complete');
@@ -156,6 +167,7 @@ assert.equal(get('dialog-actions').children[0].textContent,'Continue adventure')
 get('dialog-actions').children[0].listeners.click();
 assert.equal(get('dialog').open,false);assert.equal(get('room').textContent,'02 · Optics');
 assert.deepEqual(point(),resumePoint);assert.ok(get('map-labels').textContent.includes(map.layoutLabel),'Resume preserves the puzzle layout');
+hintButton().click();assert.equal(get('dialog-label').textContent,'PUZZLE HINT · 1 / 3','New task starts with a nudge');get('dialog-actions').children[0].click();
 assert.ok(get('inventory').children.some(b=>b.children.some(c=>c.textContent==='Used')));
 assert.equal(get('seals').textContent,testingMode==='explore'?'Stations: 1 / 4':'Stations: 1 / 5');
 get('pause').listeners.click();assert.ok(get('dialog-body').children.some(p=>p.textContent.includes('saved automatically')));
@@ -163,9 +175,11 @@ get('dialog-actions').children.find(b=>b.textContent==='View progress report').c
 assert.equal(get('dialog-title').textContent,'Adventure progress');
 get('dialog-actions').children[0].click();
 assert.match(await downloadBlobs.get(downloads.at(-1).href).text(),/Adventure: In progress/);
+assert.match(await downloadBlobs.get(downloads.at(-1).href).text(),/Puzzle hints revealed: 4 · Puzzle tasks assisted: 2/,'Report combines restored hint use with the new task');
 get('dialog-actions').children[1].click();get('pause').listeners.click();
 get('dialog-actions').children[1].listeners.click();get('dialog-actions').children[0].listeners.click();
 assert.equal(get('room').textContent,'01 · Dock');assert.equal(get('seals').textContent,testingMode==='explore'?'Stations: 0 / 4':'Stations: 0 / 5');
+assert.equal(JSON.parse(JSON.parse(stored.get(saveKey)).payload).state.hints,undefined,'Restart clears hint history');
 if(useTopics){
  windowListeners.pagehide();const originalSave=stored.get(saveKey);
  get('pause').click();get('dialog-actions').children.find(b=>b.textContent==='Change review topic').click();

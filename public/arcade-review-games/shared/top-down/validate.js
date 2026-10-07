@@ -13,6 +13,13 @@ export function validateAdventure(map){
   const inventory=map.inventory||[],hasReward=(type,value)=>inventory.some(i=>i.type===type&&i.value===value);
   const objects=new Map(map.objects.map(o=>[o.id,o])),plates=new Set(map.plates.map(p=>p.id)),puzzles=new Map((map.puzzles||[]).map(p=>[p.id,p]));
   const clues=new Set((map.clues||[]).map(c=>c.id));
+  const hintIds=new Set();
+  if(map.hintRules!==undefined&&!Array.isArray(map.hintRules))fail('hintRules must be an array.');
+  for(const hint of map.hintRules||[]){
+    if(typeof hint.id!=='string'||!hint.id||hint.id.length>500||hintIds.has(hint.id))fail('hint IDs must be unique.');hintIds.add(hint.id);
+    if(!map.rooms.some(r=>r.name===hint.room)||typeof hint.title!=='string'||!Array.isArray(hint.steps)||!hint.steps.length||hint.steps.length>3||hint.steps.some(s=>typeof s!=='string'||!s.trim()))fail('hints need a room, title and one to three guidance steps.');
+    if(hint.receiver&&(objects.get(hint.receiver)?.type!=='receiver'||typeof hint.powered!=='boolean'))fail('hint receiver must reference a receiver and specify powered state.');
+  }
   for(const door of map.doors){
     for(const id of door.plates||(door.plate?[door.plate]:[]))if(!plates.has(id))fail(door.id+' references unknown plate '+id);
     if(door.key&&!hasReward('key',door.key))fail(door.id+' references an unknown key.');

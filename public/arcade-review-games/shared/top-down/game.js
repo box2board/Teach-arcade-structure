@@ -11,6 +11,7 @@ import {createMotion,syncMotion,advanceMotion,interactionTarget} from './motion.
 import {updateCamera,cancelCamera} from './camera.js';
 import {encodeSave,decodeSave,createSaveStore} from './save.js';
 import {buildReport,reportSummary,downloadReport} from './report.js';
+import {hintFor,revealHint} from './hints.js';
 let map=validateAdventure(createAdventure());
 import { createState, undo, interact, doorOpen, completeChallenge, resetPuzzle, exitReady, cluesReady, lightPaths, inventoryEntries, adventureResults } from './model.js';
 const $=id=>document.getElementById(id);
@@ -28,6 +29,7 @@ function saveProgress(){
 }
 let activeQuestion=null;
 const board=$('board'), dialog=$('dialog');
+let hintButton=null;
 $('board').setAttribute('aria-label','Adventure map. Move freely with arrow keys or WASD; hold two directions for diagonals. Interact with E or Space.');
 const {stage,sidebar}=mountLayout();
 let roomColumns=1,roomRows=1;
@@ -134,6 +136,7 @@ function render(){
   $('undo').disabled=!started||state.won||!state.history.length;
   $('reset-puzzle').disabled=!started||state.won;
   $('interact').disabled=!started||state.won;
+  if(hintButton)hintButton.disabled=!started||state.won;
   for(const b of document.querySelectorAll('[data-dir]'))b.disabled=!started||state.won;
 }
 const decor=element('div',undefined,'room-decor');
@@ -182,6 +185,14 @@ function popup(label,title,paragraphs,actions){
 }
 function resume(){dialog.close();release();last=0;board.focus();}
 let reportStudent='';
+function showHint(more=false){
+  const hint=hintFor(map,state),shown=revealHint(state,hint,{more});
+  saveProgress();
+  popup('PUZZLE HINT · '+shown.level+' / '+hint.steps.length,hint.title,[shown.text,'Puzzle hints do not reveal review answers or change question accuracy or points.'],[
+    {text:'Back to adventure',run:resume,primary:true},
+    ...(shown.hasMore?[{text:'More guidance',run:()=>showHint(true)}]:[])
+  ]);
+}
 function showReport(){
   saveProgress();
   const snapshot=buildReport(map,content,state,elapsed);
@@ -368,6 +379,8 @@ function startMode(mode){map=validateAdventure(chooseAdventure?chooseAdventure(m
 const titleRow=document.querySelector('.title-row');
 if(titleRow){
   const actions=element('div',undefined,'title-actions');actions.append($('pause'));
+  hintButton=element('button','Hint');hintButton.id='puzzle-hint';hintButton.disabled=true;
+  hintButton.addEventListener('click',()=>{if(started&&!state.won&&!dialog.open)showHint();});actions.append(hintButton);
   const supplies=element('button','Bag & clues','supplies-button');
   supplies.addEventListener('click',()=>{
     if(dialog.open)return;

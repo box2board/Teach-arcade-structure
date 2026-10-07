@@ -6,6 +6,10 @@ Mosslight Outpost also supplies `data-topics`, a local module exporting `topics`
 
 ## Creating an adventure
 
+The Hint button pauses play and offers progressively clearer puzzle guidance. Maps can supply `hintRules` with unique `id`, `room`, `title`, `when` conditions and one to three `steps`; an optional `receiver`/`powered` pair distinguishes powered light circuits. The first matching rule in the current room wins. Without authored rules, the engine gives the current objective and general control/recovery advice, never undiscovered clues or review answer keys. Mosslight rules account for each layout’s starting pushes, earned rewards, counterweights and crossings. Strong push guidance explicitly names the starting arrangement and suggests Undo/Reset when objects have moved elsewhere.
+
+Hint usage records the highest revealed tier per puzzle task. Reopening a hint does not increase that count; More guidance reveals another tier. Usage survives Continue and Reset but clears on Restart/new games. Reports list revealed tiers and assisted tasks separately from question accuracy and points. Hint wording is excluded from the save’s puzzle signature so help-copy edits do not invalidate compatible progress.
+
 Export `createAdventure(mode)` from a map module. Return fresh data each call. Export `{content: {questions: [...]}}` from the curriculum module. Each question has a unique `id`, `text`, unique `choices`, an `answer` matching a choice, and an `explanation`.
 
 Maps may export `chooseAdventure(mode, random)` to select a curated layout for a new adventure. `createAdventure(mode, layout)` must recreate a layout deterministically for saves. Mosslight Outpost offers Eastbound Light, Westward Relay and Southbound Signal in all three difficulties. New adventure and Play again choose a layout; Restart, Undo and Reset keep the current layout. The save records the layout ID and verifies its map signature; reports show the layout name. Pre-layout Outpost saves retain the classic geometry. Each offered layout has a complete gameplay-route test.

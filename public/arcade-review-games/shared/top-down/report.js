@@ -1,5 +1,6 @@
 import {reviewSummary} from './review.js';
 import {adventureResults} from './model.js';
+import {hintSummary} from './hints.js';
 export function buildReport(map,content,state,elapsed,{student='',created=new Date().toISOString()}={}){
   const review=reviewSummary(state.review),entries=Object.values(state.review.encounters).flatMap(e=>e.questions);
   const attempted=entries.filter(e=>e.attempts>0).length;
@@ -9,7 +10,7 @@ export function buildReport(map,content,state,elapsed,{student='',created=new Da
     complete:state.won,seconds:Math.floor(elapsed),moves:state.moves,
     ...review,attempted,retries:review.attempts-attempted,
     firstTryAccuracy:attempted?Math.round(review.firstTry/attempted*100):null,
-    points:adventureResults(map,state),
+    points:adventureResults(map,state),hints:hintSummary(state),
     questions:map.objects.filter(o=>o.type==='challenge').flatMap(chest=>state.review.encounters[chest.id].questions.map(entry=>({
       chest:chest.label||chest.id,prompt:entry.question.text,attempts:entry.attempts,
       responses:[...entry.tried],correct:entry.correct
@@ -23,6 +24,7 @@ export function reportSummary(r){return [
   `Questions completed: ${r.completed} / ${r.total} · Questions attempted: ${r.attempted}`,
   `First-try accuracy: ${r.firstTryAccuracy===null?'Not yet available':r.firstTryAccuracy+'%'} (${r.firstTry} correct on the first try / ${r.attempted} attempted).`,
   `Answer attempts: ${r.attempts} · Retries: ${r.retries}`,
+  `Puzzle hints revealed: ${r.hints?.revealed||0} · Puzzle tasks assisted: ${r.hints?.puzzles||0} (separate from question accuracy and points)`,
   `Active play time: ${Math.floor(r.seconds/60)}m ${r.seconds%60}s · Moves: ${r.moves}`,
   `Review points: ${r.points.reviewPoints} · Treasure bonus: ${r.points.bonusPoints} · Total points: ${r.points.totalPoints}`
 ];}

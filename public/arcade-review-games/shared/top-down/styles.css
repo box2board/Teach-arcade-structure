@@ -110,7 +110,8 @@ body.play-shell{height:100vh;height:100dvh;min-height:0;overflow:hidden}
 .play-shell .title-row{flex:none;min-height:44px;margin:0;gap:12px}
 .play-shell .title-row h1{font-size:clamp(18px,2vw,27px);margin:0;line-height:1.15}
 .play-shell .title-row p{display:none}
-.title-actions{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.title-actions{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:6px;flex-shrink:1}
+.title-row>div:first-child{min-width:0}
 .title-actions button{padding:6px 12px}
 .supplies-button{display:none}
 .play-shell .adventure{flex:1;min-height:0;display:flex;flex-direction:column;border-radius:12px}
