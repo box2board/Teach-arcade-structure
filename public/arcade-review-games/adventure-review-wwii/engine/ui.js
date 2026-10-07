@@ -66,6 +66,10 @@ export function createUI({
     first.focus();
     focusTrapHandler = (event) => {
       if (event.key !== "Tab") return;
+      const available = [...container.querySelectorAll("button, [href], input, select, textarea")].filter(el => !el.disabled);
+      const first = available[0];
+      const last = available[available.length - 1];
+      if (!first) return;
       if (event.shiftKey && document.activeElement === first) {
         event.preventDefault();
         last.focus();
@@ -92,6 +96,15 @@ export function createUI({
       btn.className = "choice-btn";
       btn.textContent = choice;
       btn.addEventListener("click", () => onSelect(index, btn));
+      btn.addEventListener("keydown", (event) => {
+        const buttons = [...questionChoices.querySelectorAll("button:not(:disabled)")];
+        const current = buttons.indexOf(btn);
+        const direction = {ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1}[event.key];
+        if (direction) {
+          event.preventDefault();
+          buttons[(current + direction + buttons.length) % buttons.length]?.focus();
+        }
+      });
       questionChoices.appendChild(btn);
     });
   }
@@ -116,11 +129,14 @@ export function createUI({
 
   function markChoice(btn, isCorrect) {
     btn.classList.add(isCorrect ? "correct" : "wrong");
+    btn.disabled = true;
+    questionChoices.querySelector("button:not(:disabled)")?.focus();
   }
 
   function closeQuestion() {
     setOverlayActive(questionModal, false);
     releaseFocus(questionModal);
+    document.getElementById("game-canvas").focus({preventScroll: true});
   }
 
   function showCompletion({ time, correct, score }) {
@@ -208,49 +224,8 @@ export function createUI({
     }
   }
 
-  function bindStartButton() {
-    if (startButton) {
-      startButton.addEventListener("click", startOnce);
-      startButton.addEventListener("pointerup", startOnce, { passive: true });
-      startButton.addEventListener("touchstart", startOnce, { passive: true });
-    }
+  startButton.addEventListener("click", startOnce);
 
-    document.addEventListener(
-      "click",
-      (event) => {
-        if (event.target.closest("#start-button")) {
-          startOnce(event);
-        }
-      },
-      { passive: true }
-    );
-
-    document.addEventListener(
-      "pointerup",
-      (event) => {
-        if (event.target.closest("#start-button")) {
-          startOnce(event);
-        }
-      },
-      { passive: true }
-    );
-
-    document.addEventListener(
-      "touchstart",
-      (event) => {
-        if (event.target.closest("#start-button")) {
-          startOnce(event);
-        }
-      },
-      { passive: true }
-    );
-  }
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", bindStartButton, { once: true });
-  } else {
-    bindStartButton();
-  }
   completion.finishBtn.addEventListener("click", () => {
     hideCompletion();
     onFinish();
@@ -279,6 +254,16 @@ export function createUI({
     closeQuestion,
     updateQuestionFeedback,
     showExplanation,
+    awaitContinue(callback) {
+      questionChoices.querySelectorAll("button").forEach(button => { button.disabled = true; });
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "primary";
+      button.textContent = "Continue exploring";
+      button.addEventListener("click", callback, { once: true });
+      questionChoices.appendChild(button);
+      button.focus();
+    },
     markChoice,
     showCompletion,
     updateHud,

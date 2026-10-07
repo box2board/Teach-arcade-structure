@@ -78,6 +78,41 @@ export function createRenderer({ canvas, mapData, theme }) {
     drawWalls();
     drawChests(chests);
     drawPlayer(player);
+    drawNavigator(player, chests);
+  }
+
+  function drawNavigator(player, chests) {
+    const width = Math.min(150, canvas.clientWidth * .32);
+    const height = width * mapData.height / mapData.width;
+    const left = canvas.clientWidth - width - 12;
+    const top = 12;
+    const scale = width / mapData.width;
+    ctx.fillStyle = "rgba(4,6,15,.85)";
+    ctx.fillRect(left - 4, top - 4, width + 8, height + 8);
+    mapData.walls.forEach(wall => {
+      ctx.fillStyle = "#53636d";
+      ctx.fillRect(left + wall.x * scale, top + wall.y * scale, wall.width * scale, wall.height * scale);
+    });
+    chests.filter(chest => !chest.opened && !chest.inactive && !chest.locked).forEach(chest => {
+      ctx.fillStyle = "#f4b23f";
+      ctx.fillRect(left + chest.x * scale - 2, top + chest.y * scale - 2, 4, 4);
+    });
+    ctx.fillStyle = "#fff";
+    ctx.beginPath();
+    ctx.arc(left + player.x * scale, top + player.y * scale, 3, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = "#ffffff66";
+    ctx.strokeRect(left + camera.x * scale, top + camera.y * scale, canvas.clientWidth * scale, canvas.clientHeight * scale);
+    const nearest = chests.filter(chest => !chest.opened && !chest.inactive && !chest.locked)
+      .sort((a,b) => Math.hypot(a.x-player.x,a.y-player.y)-Math.hypot(b.x-player.x,b.y-player.y))[0];
+    if (nearest) {
+      const direction = Math.atan2(nearest.y-player.y,nearest.x-player.x);
+      const labels = ["E", "SE", "S", "SW", "W", "NW", "N", "NE"];
+      const label = labels[(Math.round(direction / (Math.PI / 4)) + 8) % 8];
+      ctx.font = "bold 12px system-ui";
+      ctx.fillStyle = "#fff";
+      ctx.fillText(`Next chest: ${label}`, 12, 24);
+    }
   }
 
   function updateCamera(player) {
