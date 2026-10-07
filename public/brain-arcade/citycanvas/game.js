@@ -1,6 +1,6 @@
 (()=>{'use strict';const {City,types,W,H,isRoad,terrainAt,milestones,unlockAt}=CityCanvasSim,$=id=>document.getElementById(id),canvas=$('map'),ctx=canvas.getContext('2d');let city=new City(),tool='road',rotated=false,paused=false,speed=1,zoom=1,pan={x:0,y:0},size=20,hover={x:6,y:10},drag=null,lastTile='',clock=0,last=0,selected=null,history=[],stroke=null,panMode=false,pendingLoad=null,layer='none',needsFocus=true,shownRank=null;const activity=new CityCanvasActivity();let visualTime=0,animated=!matchMedia('(prefers-reduced-motion: reduce)').matches;const SAVE_KEY='teacharcade-citycanvas-v1',MANUAL_KEY=SAVE_KEY+'-manual';
 for(const [key,t]of Object.entries(types)){let b=document.createElement('button');b.className='tool';b.style.setProperty('--color',t.color);b.dataset.tool=key;b.innerHTML=`<canvas class="tool-icon" width="36" height="28" aria-hidden="true"></canvas><span class="tool-label">${t.name}<small>${key==='inspect'?'View needs':key==='erase'?'Whole building':t.w+' × '+t.h+' tile'+(t.w*t.h>1?'s':'')}</small></span><small>${t.cost?'$'+t.cost:'View'}</small>`;drawBuilding(b.querySelector('canvas').getContext('2d'),{type:key,w:t.w,h:t.h,level:1,x:0,y:0},1,1,Math.min(34/t.w,26/t.h),0);b.onclick=()=>{tool=key;rotated=false;selected=null;panMode=false;$('pan').setAttribute('aria-pressed','false');selectTool();};$('tools').append(b);}function dims(){const d=types[tool];return {w:rotated?d.h:d.w,h:rotated?d.w:d.h};}function rotate(){if(types[tool].w!==types[tool].h){finishStroke();rotated=!rotated;lastTile='';selectTool();}}$('rotate').onclick=rotate;document.addEventListener('keydown',e=>{if(e.key.toLowerCase()==='r'&&!['INPUT','SELECT','TEXTAREA'].includes(e.target.tagName)){e.preventDefault();rotate();}});function selectTool(){document.querySelectorAll('.tool').forEach(b=>b.setAttribute('aria-pressed',b.dataset.tool===tool));const d=dims();$('toolHelp').textContent=(!city.unlocked(tool)?`Unlocks at ${unlockAt(tool)} residents. `:'')+types[tool].help+(d.w!==d.h?' Current footprint: '+d.w+' × '+d.h+'. Press R to rotate.':'');$('rotate').disabled=d.w===d.h;$('rotate').textContent='Rotate'+(d.w!==d.h?' · '+d.w+'×'+d.h:'');}selectTool();
-function stats(){for(const [id,value]of Object.entries({funds:city.mode==='free'?'Unlimited':'$'+city.funds.toLocaleString(),population:city.population,jobs:city.jobs,happiness:city.population?city.happiness+'%':'—',balance:(city.balance<0?'−$':'+$')+Math.abs(city.balance),date:'Month '+city.month}))$(id).textContent=value;const lots=city.tiles.filter(t=>['home','shop','industry'].includes(t.type));$('pulse').textContent=!lots.length?'Lay out roads and zones, then connect a solar plant and add water.':lots.some(t=>!t.access)?'Some zones need an adjacent road.':lots.some(t=>!t.powered)?'Some zones need road-connected power.':lots.some(t=>!t.watered)?'Some zones are beyond water coverage. Add a powered water tower.':city.jobs<city.population*.4?'More workplaces will help attract residents.':city.happiness<60&&city.population?'Improve neighborhoods with parks and services; separate homes from industry.':'Your city has room to grow. Expand carefully and watch your monthly balance.';management();inspect();}
+function stats(){sceneRevision++;for(const [id,value]of Object.entries({funds:city.mode==='free'?'Unlimited':'$'+city.funds.toLocaleString(),population:city.population,jobs:city.jobs,happiness:city.population?city.happiness+'%':'—',balance:(city.balance<0?'−$':'+$')+Math.abs(city.balance),date:'Month '+city.month}))$(id).textContent=value;const lots=city.tiles.filter(t=>['home','shop','industry'].includes(t.type));$('pulse').textContent=!lots.length?'Lay out roads and zones, then connect a solar plant and add water.':lots.some(t=>!t.access)?'Some zones need an adjacent road.':lots.some(t=>!t.powered)?'Some zones need road-connected power.':lots.some(t=>!t.watered)?'Some zones are beyond water coverage. Add a powered water tower.':city.jobs<city.population*.4?'More workplaces will help attract residents.':city.happiness<60&&city.population?'Improve neighborhoods with parks and services; separate homes from industry.':'Your city has room to grow. Expand carefully and watch your monthly balance.';management();inspect();}
 function inspect(){
 const t=city.anchor(city.at((selected||hover).x,(selected||hover).y));if(!t)return;
 const zone=['home','shop','industry'].includes(t.type),name=types[t.type]?.name||(t.type==='river'?'River':'Open land');
@@ -212,7 +212,8 @@ function drawConstruction(g,t,x,y,s,time){
  const hook=.2+Math.sin(time/650)*.05;g.beginPath();g.moveTo(x+s*hook,y+s*.1);g.lineTo(x+s*hook,y+s*.34);g.stroke();g.fillStyle='#d8b06b';g.fillRect(x+s*(hook-.07),y+s*.34,s*.14,s*.09);
  for(const a of [.15,.72]){g.fillStyle='#ef9855';g.beginPath();g.moveTo(x+s*a,y+s*.93);g.lineTo(x+s*(a+.04),y+s*.82);g.lineTo(x+s*(a+.08),y+s*.93);g.fill();}g.restore();
 }
-function drawTerrain(t,x,y,s){
+function drawTerrain(t,x,y,s,ctx=canvas.getContext('2d')){
+ const rect=(x,y,w,h,c)=>{ctx.fillStyle=c;ctx.fillRect(x,y,w,h);};
  const water=terrainAt(t.x,t.y)==='river',seed=t.x*13+t.y*7;
  rect(x,y,s,s,water?'#397f9d':'#80a96b');
  if(water){
@@ -234,7 +235,8 @@ function drawTerrain(t,x,y,s){
   }}
  }
 }
-function drawRoad(t,x,y,s){
+function drawRoad(t,x,y,s,ctx=canvas.getContext('2d')){
+ const rect=(x,y,w,h,c)=>{ctx.fillStyle=c;ctx.fillRect(x,y,w,h);};
  const directions=[[1,0],[-1,0],[0,1],[0,-1]].filter(([dx,dy])=>isRoad(city.at(t.x+dx,t.y+dy)));
  const arm=(dx,dy,width,color)=>{const inset=(1-width)/2;rect(x+s*(dx<0?0:inset),y+s*(dy<0?0:inset),s*(dx?(1+width)/2:width),s*(dy?(1+width)/2:width),color);};
  // Continuous sidewalks follow the street network, including bends and intersections.
@@ -265,21 +267,25 @@ function drawNeeds(t,x,y,s){
  if(needs.length>1){ctx.fillStyle='#fff4d7';ctx.fillRect(.66,.62,.34,.38);ctx.fillStyle='#654b37';ctx.fillRect(.73,.76,.22,.07);ctx.fillRect(.81,.68,.07,.23);}
  ctx.restore();
 }
+let sceneRevision=0,sceneCache=null;
+function prepareScene(o,r){
+ const d=canvas.width/r.width,key=[sceneRevision,canvas.width,canvas.height,size,o.x,o.y].join('|');
+ if(sceneCache?.key===key)return sceneCache;
+ const surface=sceneCache?.surface||document.createElement('canvas');surface.width=canvas.width;surface.height=canvas.height;
+ const g=surface.getContext('2d');g.setTransform(d,0,0,d,0,0);g.fillStyle='#294b3d';g.fillRect(0,0,r.width,r.height);
+ const minX=Math.max(0,Math.floor(-o.x/size)),maxX=Math.min(W-1,Math.floor((r.width-o.x)/size)),minY=Math.max(0,Math.floor(-o.y/size)),maxY=Math.min(H-1,Math.floor((r.height-o.y)/size));
+ for(let y=minY;y<=maxY;y++)for(let x=minX;x<=maxX;x++)drawTerrain(city.at(x,y),o.x+x*size,o.y+y*size,size,g);
+ const visible=city.anchors().filter(t=>!['land','river'].includes(t.type)&&o.x+(t.x+t.w)*size>=0&&o.y+(t.y+t.h)*size>=0&&o.x+t.x*size<=r.width&&o.y+t.y*size<=r.height),dynamic=[];
+ for(const t of visible){const x=o.x+t.x*size,y=o.y+t.y*size;if(t.progress||(t.type==='industry'&&t.level)){dynamic.push(t);continue;}if(isRoad(t))drawRoad(t,x,y,size,g);else drawBuilding(g,t,x,y,size);}
+ sceneCache={key,surface,visible,dynamic};return sceneCache;
+}
 function render(time){
- const r=canvas.getBoundingClientRect(),o=origin();ctx.clearRect(0,0,r.width,r.height);rect(0,0,r.width,r.height,'#294b3d');
- // Terrain first: follower tiles must not paint over a large building's artwork.
- for(const t of city.tiles){
-  const x=o.x+t.x*size,y=o.y+t.y*size,s=size;if(x+s<0||y+s<0||x>r.width||y>r.height)continue;
-  drawTerrain(t,x,y,s);
- }
- for(const t of city.anchors()){
-  if(['land','river'].includes(t.type))continue;
-  const x=o.x+t.x*size,y=o.y+t.y*size,s=size;
-  if(x+t.w*s<0||y+t.h*s<0||x>r.width||y>r.height)continue;
-  if(isRoad(t))drawRoad(t,x,y,s);else drawBuilding(ctx,t,x,y,s,time);
- }
+ const r=canvas.getBoundingClientRect(),o=origin();
+ if(!r.width||!r.height||!size)return;
+ const scene=prepareScene(o,r);ctx.drawImage(scene.surface,0,0,r.width,r.height);
+ for(const t of scene.dynamic)drawBuilding(ctx,t,o.x+t.x*size,o.y+t.y*size,size,time);
  renderOverlay(o,r);renderCoveragePreview(o);renderTraffic(o,time);
- for(const t of city.anchors()){const x=o.x+t.x*size,y=o.y+t.y*size;if(x+t.w*size>=0&&y+t.h*size>=0&&x<=r.width&&y<=r.height)drawNeeds(t,x,y,size);}
+ for(const t of scene.visible)drawNeeds(t,o.x+t.x*size,o.y+t.y*size,size);
  const tile=city.at((selected||hover).x,(selected||hover).y);if(!tile)return;
  const def=types[tool],existing=tool==='inspect'||tool==='erase',a=existing?city.anchor(tile):tile,w=existing?a.w:dims().w,h=existing?a.h:dims().h,plan=city.plan(tile.x,tile.y,tool,rotated),valid=!plan.error&&(city.mode==='free'||tool==='inspect'||city.funds>=def.cost);
  const x=o.x+a.x*size,y=o.y+a.y*size;
