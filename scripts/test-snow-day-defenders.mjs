@@ -252,3 +252,16 @@ for(const difficulty of Object.keys(DIFFICULTIES)){
  assert.equal(earned.state().mode,'won',`${difficulty}: academic gear loadout completes all waves with simple movement`);assert(earned.state().academic.correct>0);console.log(`PASS: ${difficulty} full academic run, earned gear, automatic helper, simple movement, between-wave questions`);
 }
 const bankCache=harness({equipment:true});bankCache.fixture("reset();mode='playing';gearState.levels.bank=1;gearState.equipped.support='bank';rebuildSupport();supportObjects[0].hp=0;gearState.equipped.support='buddy';rebuildSupport();gearState.equipped.support='bank';rebuildSupport();");assert.equal(bankCache.fixture('supportObjects[0].hp'),0,'free gear switching cannot refill spent barriers');
+
+const visualGear=harness({equipment:true});visualGear.fixture('reset();mode="playing";wavePlan.events=[];wavePlan.warnings=[];enemies=[creature(2,0,-10)];');
+for(const id of ['scoop','spinner','popper','sprayer','roller']){
+ visualGear.fixture(`gearState.equipped.toss='${id}';gearState.levels['${id}']=3;syncToolVisual();`);
+ assert.equal(visualGear.fixture('Object.values(toolModels).filter(m=>m.visible).length'),1,'exactly one held tool is visible');assert.equal(visualGear.fixture(`toolModels['${id}'].userData.trim.children.filter(m=>m.visible).length`),3);assert(visualGear.fixture(`toolModels['${id}'].scale.x`)>1);
+}
+visualGear.fixture("gearState.equipped.support='buddy';gearState.levels.buddy=3;rebuildSupport();");assert.equal(visualGear.fixture('supportObjects.length'),2);assert(visualGear.fixture('supportObjects.every(o=>o.root.userData.hands.length===2)'));
+visualGear.fixture('supportObjects[0].root.userData.throwTime=.3;');visualGear.step();assert(visualGear.fixture('supportObjects[0].root.userData.hands[1].position.y')>.76);
+visualGear.click('snow-gear');const pose=visualGear.fixture('JSON.stringify([supportObjects[0].root.userData.hands[1].position.toArray(),toolModels.spinner.userData.rotor.rotation.z])');visualGear.step(20);assert.equal(visualGear.fixture('JSON.stringify([supportObjects[0].root.userData.hands[1].position.toArray(),toolModels.spinner.userData.rotor.rotation.z])'),pose,'workshop freezes cosmetic animations');visualGear.click('gear-resume');
+visualGear.fixture("gearState.equipped.special='fan';gearState.levels.fan=1;burstCharges=2;enemies[0].z=0;");visualGear.click('snow-burst');assert(visualGear.fixture('fanVisual.visible'));visualGear.step(20);assert(!visualGear.fixture('fanVisual.visible'),'fan effect clears quickly');
+visualGear.fixture("gearState.equipped.support='patch';gearState.levels.patch=2;rebuildSupport();fort=50;supportClock=8;mode='playing';wavePlan.events=[{at:999,type:0,x:0,z:-30}];spawned=0;");visualGear.step();assert(visualGear.fixture('supportObjects[0].pulseTime>0'),'repair has on-field feedback');visualGear.step(20);assert(!visualGear.fixture('supportObjects[0].root.userData.pulse.visible'));
+visualGear.fixture('launchGearBall(0,4.7,null,{rolling:true,radius:1});');assert.equal(visualGear.fixture('balls[balls.length-1].mesh.userData.projectileStyle'),'roller');assert.equal(visualGear.fixture('balls[balls.length-1].mesh.children.length'),6);
+console.log('PASS: distinct held gear, visible tiers, helper throwing animation, paused cosmetics, fan cleanup, repair pulse, packed rolling snow');

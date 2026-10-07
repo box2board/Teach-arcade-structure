@@ -318,11 +318,14 @@ let earnedQuestions=new Set(),reviewAttempts=[],reviewOpen=false,reviewRoundCorr
 const supportCache=new Map();
 let supportObjects=[],supportClock=0,helperClock=0,domeTime=0,rallyTime=0;
 const domeVisual=new THREE.Mesh(new THREE.SphereGeometry(1,16,8),new THREE.MeshBasicMaterial({color:0x83d9ed,transparent:true,opacity:.17,depthWrite:false}));domeVisual.position.set(0,0,9);domeVisual.scale.set(7,4,2);domeVisual.visible=false;scene.add(domeVisual);
+const domeRim=mesh(slowRingGeo,'#83d9ed',0,.12,9,8.2,2.5,8.2);domeRim.rotation.x=-Math.PI/2;domeRim.visible=false;
+const fanVisual=new THREE.Group();scene.add(fanVisual);fanVisual.visible=false;let fanVisualTime=0;
+for(const x of [-1.3,0,1.3]){const swirl=mesh(slowRingGeo,'#b5f4ff',x,.2,0,.4,.4,.4,fanVisual);swirl.rotation.x=-Math.PI/2;const tip=mesh(cone,'#83d9ed',x,.22,-.5,.12,.45,.12,fanVisual);tip.rotation.x=-Math.PI/2;}
 const rallyVisuals=[];
-for(const x of [-3.8,3.8]){const root=new THREE.Group();root.position.set(x,0,5);mesh(sphere,'#fffaff',0,.5,0,.42,.5,.4,root);mesh(sphere,'#fffaff',0,1.2,0,.32,.32,.32,root);mesh(box,'#f29343',0,1.55,0,.58,.2,.55,root);root.visible=false;scene.add(root);rallyVisuals.push(root);}
+for(const x of [-3.8,3.8]){const root=new THREE.Group();root.position.set(x,0,5);mesh(sphere,'#fffaff',0,.5,0,.42,.5,.4,root);mesh(sphere,'#fffaff',0,1.2,0,.32,.32,.32,root);mesh(box,'#f29343',0,1.55,0,.58,.2,.55,root);decorateHelper(root,'#f29343',1);root.visible=false;scene.add(root);rallyVisuals.push(root);}
 try{questionSet=validateQuestions(window.SNOW_QUESTION_SET||DEMO_QUESTIONS);}catch(error){questionError=error.message;}
 function gearLevel(slot){return equipmentEnabled?(gearState.levels[gearState.equipped[slot]]||1):1;}
-function gearReset(){supportCache.clear();domeVisual.visible=false;rallyVisuals.forEach(r=>r.visible=false);fortGroup.rotation.z=0;supportObjects.forEach(disposeEntity);supportObjects=[];supportClock=helperClock=domeTime=rallyTime=0;gearState=freshGear();gearOpen=reviewOpen=false;$('gear-overlay').hidden=true;earnedQuestions.clear();reviewAttempts=[];questionCursor=0;}
+function gearReset(){supportCache.clear();domeRim.visible=false;fanVisual.visible=false;fanVisualTime=0;domeVisual.visible=false;rallyVisuals.forEach(r=>r.visible=false);fortGroup.rotation.z=0;supportObjects.forEach(disposeEntity);supportObjects=[];supportClock=helperClock=domeTime=rallyTime=0;gearState=freshGear();gearOpen=reviewOpen=false;$('gear-overlay').hidden=true;earnedQuestions.clear();reviewAttempts=[];questionCursor=0;syncToolVisual();}
 function gearSummary(){return Object.values(gearState.equipped).map(id=>`${GEAR[id].name} ${gearState.levels[id]}`).join(' · ');}
 function gearRender(){
  $('gear-wallet').textContent=`${upgrades.tokens} Snow Stars`;$('gear-loadout').textContent=gearSummary();$('gear-set-label').textContent=questionSet?`${window.SNOW_QUESTION_SET?'Review set':'Playtest sample'}: ${questionSet.title}`:`Questions unavailable: ${questionError}`;
@@ -354,7 +357,7 @@ function resumeGear(){
  if(!gearOpen||reviewOpen)return;
  gearOpen=false;$('gear-overlay').hidden=true;
  if(gearReturn==='between'){supportCache.clear();supportObjects.forEach(disposeEntity);supportObjects=[];wave++;wavePlan=buildWave(difficulty,wave-1);spawned=warningIndex=0;spawnClock=waveTime=0;supportClock=0;hud();}
- rebuildSupport();begin();
+ syncToolVisual();rebuildSupport();begin();
 }
 function startReview(){
  if(!gearOpen||!questionSet)return;
@@ -400,6 +403,67 @@ function gearKeyboard(e){
  const direction=(['ArrowLeft','ArrowUp'].includes(e.key)||(e.key==='Tab'&&e.shiftKey))?-1:1;
  const next=buttons[index<0?0:(index+direction+buttons.length)%buttons.length];next?.focus({preventScroll:true});next?.scrollIntoView?.({block:'nearest'});return true;
 }
+// Persistent cosmetic models use shared geometry/materials and do not affect hits.
+const toolModels={},toolColor={scoop:'#f29343',spinner:'#52a995',popper:'#b08acb',sprayer:'#458fca',roller:'#cf709a'};
+for(const id of ['scoop','spinner','popper','sprayer','roller']){
+ const root=new THREE.Group();root.position.set(.05,-.35,-.3);root.userData.gearModel=id;arms[1].add(root);const color=toolColor[id];
+ mesh(box,'#856951',0,.05,0,.09,.5,.09,root);
+ if(id==='scoop'){mesh(sphere,color,0,-.2,-.1,.37,.12,.35,root);mesh(sphere,'#ffffff',0,-.13,-.17,.25,.09,.22,root);mesh(box,color,0,.31,0,.27,.08,.09,root);}
+ if(id==='spinner'){const wheel=mesh(slowRingGeo,color,0,-.12,-.06,.45,.45,.45,root);root.userData.rotor=wheel;for(let i=0;i<4;i++){const a=i*Math.PI/2;mesh(sphere,'#ffffff',Math.cos(a)*.42,Math.sin(a)*.42,0,.17,.17,.17,wheel);}mesh(box,color,0,-.12,0,.13,.65,.14,root);}
+ if(id==='popper'){mesh(box,color,0,-.12,0,.48,.45,.4,root);mesh(sphere,'#fffaff',0,.15,0,.29,.14,.26,root);for(const x of [-.15,.15])mesh(sphere,'#83d9ed',x,.22,-.06,.1,.1,.1,root);mesh(box,'#ffe5b8',0,-.12,-.22,.23,.12,.035,root);}
+ if(id==='sprayer'){mesh(sphere,color,0,-.08,0,.26,.4,.23,root);mesh(box,'#83d9ed',0,-.05,-.24,.3,.35,.035,root);mesh(box,'#ffe5b8',0,.3,-.05,.36,.1,.3,root);mesh(box,color,.25,.09,0,.1,.3,.1,root);}
+ if(id==='roller'){mesh(box,color,0,-.15,0,.55,.16,.45,root);for(const x of [-.28,.28]){const wheel=mesh(sphere,'#254d76',x,-.28,0,.08,.18,.18,root);wheel.userData.wheel=true;}mesh(sphere,'#ffffff',0,.02,-.02,.26,.26,.26,root);}
+ const trim=new THREE.Group();root.add(trim);root.userData.trim=trim;
+ for(let i=0;i<3;i++)mesh(sphere,'#ffd78d',-.13+i*.13,-.11,-.28,.045,.045,.045,trim);
+ root.visible=false;toolModels[id]=root;
+}
+function syncToolVisual(){
+ for(const [id,root] of Object.entries(toolModels)){root.visible=equipmentEnabled&&gearState.equipped.toss===id;const level=gearState.levels[id]||1;root.scale.setScalar(1+(level-1)*.12);root.userData.trim.children.forEach((m,i)=>m.visible=i<level);root.userData.level=level;}
+}
+function decorateHelper(root,color,level=1){
+ const hands=[];
+ for(const side of [-1,1])hands.push(mesh(sphere,color,side*.46,.76,-.16,.15,.18,.15,root));
+ mesh(box,color,0,1.02,0,.68,.12,.55,root);mesh(box,color,.18,.83,-.38,.12,.3,.08,root);
+ mesh(sphere,'#fffaff',0,1.78,0,.12,.12,.12,root);
+ const nose=mesh(cone,'#f29343',0,1.15,-.37,.07,.24,.07,root);nose.rotation.x=-Math.PI/2;
+ for(let i=0;i<level;i++)mesh(sphere,'#ffd78d',-.12+i*.12,.63,-.42,.045,.045,.035,root);
+ root.userData.hands=hands;root.userData.throwTime=0;root.userData.level=level;
+}
+function helperAnimation(root,dt){
+ root.userData.throwTime=Math.max(0,(root.userData.throwTime||0)-dt);
+ const lift=reducedEffects?0:Math.sin(root.userData.throwTime/.3*Math.PI)*.23;
+ root.userData.hands?.forEach((hand,i)=>{hand.position.y=.76+(i?lift:0);hand.position.z=-.16-(i?lift:0);});
+}
+function supportPulse(o){o.pulseTime=.65;}
+function decorateSupport(root,id,level){
+ root.userData.supportModel=id;root.userData.level=level;
+ if(id==='buddy')decorateHelper(root,'#52a995',level);
+ if(id==='bank'){
+  for(let i=0;i<level;i++)mesh(box,i===2?'#83d9ed':'#fffaff',-.55+i*.55,.91,0,.45,.2,.47,root);
+  mesh(box,'#856951',.65,1.02,0,.035,.55,.035,root);mesh(box,'#f29343',.82,1.2,0,.3,.18,.025,root);
+ }
+ if(id==='puddle'){
+  for(let i=0;i<8;i++){const a=i*Math.PI/4;mesh(sphere,'#effaff',Math.cos(a)*1.17,.045,Math.sin(a)*1.05,.2,.05,.2,root);}
+  for(let i=0;i<level;i++)mesh(box,'#c8f2ff',-.5+i*.4,.09,-.25,.22,.015,.055,root);
+ }
+ if(id==='magnet'){
+  for(const x of [-.17,.17])mesh(sphere,'#254d76',x,.96,.48,.06,.06,.045,root);
+  mesh(box,'#fffaff',0,.68,.49,.32,.08,.04,root);
+  const pinwheel=new THREE.Group();pinwheel.position.set(.65,1.5,0);root.add(pinwheel);root.userData.rotor=pinwheel;
+  for(let i=0;i<4;i++){const blade=mesh(box,i%2?'#83d9ed':'#f29343',0,0,0,.13,.65,.045,pinwheel);blade.rotation.z=i*Math.PI/2;}
+ }
+ if(id==='patch'){
+  mesh(box,'#f29343',0,.82,0,.85,.12,.6,root);mesh(box,'#856951',0,.96,0,.35,.08,.08,root);
+  for(const x of [-.15,.15])mesh(box,'#856951',x,.88,0,.06,.14,.08,root);
+  const plaster=mesh(box,'#ffe5b8',0,.46,.32,.62,.16,.035,root);plaster.rotation.z=.35;
+  mesh(box,'#fffaff',0,.46,.35,.14,.16,.025,root);
+ }
+ if(id==='mittens'){
+  for(const x of [-.28,.28]){mesh(sphere,'#f29343',x,1.07,0,.18,.25,.15,root);mesh(sphere,'#f29343',x+(x>0?-.16:.16),1.07,0,.1,.12,.1,root);mesh(box,'#fffaff',x,.88,0,.28,.12,.25,root);}
+ }
+ const ring=mesh(slowRingGeo,id==='patch'?'#52a995':id==='mittens'?'#ffd78d':'#83d9ed',0,.08,0,1.3,1.3,1.3,root);ring.rotation.x=-Math.PI/2;ring.visible=false;ring.castShadow=false;root.userData.pulse=ring;
+}
+
 function rebuildSupport(){
  // Preserve deployed defenses when merely opening the menu; switching gear replaces them.
  const id=gearState.equipped.support,level=gearLevel('support'),signature=`${id}:${level}`;
@@ -413,30 +477,37 @@ function rebuildSupport(){
   if(id==='puddle')mesh(sphere,'#83d9ed',0,.04,0,1.3,.035,1.2,root);
   if(id==='magnet'){mesh(sphere,'#ffe5b8',0,.8,0,.5,.7,.5,root);mesh(cone,'#f29343',0,1.7,0,.6,.6,.6,root);}
   if(id==='patch'||id==='mittens'){mesh(box,'#52a995',0,.45,0,1,.65,.6,root);mesh(box,'#ffffff',0,.8,0,.35,.15,.4,root);}
-  const hp=supportCache.get(signature)?.[supportObjects.length]??2+level*2;root.visible=id!=='bank'||hp>0;supportObjects.push({root,x,z,hp,signature});
+  decorateSupport(root,id,level);
+  const hp=supportCache.get(signature)?.[supportObjects.length]??2+level*2;root.visible=id!=='bank'||hp>0;supportObjects.push({root,x,z,hp,signature,pulseTime:0});
  }
  helperClock=0;
 }
 function launchGearBall(x,z,target,{radius=.23,powder=false,rolling=false,power=1,slow=false}={}){
  const m=mesh(ballGeo,powder||slow?'#83d9ed':upgrades.sticky?'#b2eddd':'#ffffff',x,rolling?radius:1.1,z);m.scale.setScalar(radius/.23);
+ m.userData.projectileStyle=rolling?'roller':powder?'powder':slow?'slush':'snow';
+ if(rolling)for(let i=0;i<6;i++){const a=i*Math.PI/3;mesh(sphere,i%2?'#dcebf4':'#fffaff',.05,Math.sin(a)*.21,Math.cos(a)*.21,.045,.04,.04,m);}
+ if(powder){const ring=mesh(slowRingGeo,'#b08acb',0,0,0,.24,.24,.24,m);ring.rotation.x=Math.PI/2;}
+ if(slow)m.scale.set(radius/.23,.7*radius/.23,1.35*radius/.23);
  const velocity=new THREE.Vector3(0,0,-1);if(target&&!rolling)velocity.set(target.x-x,target.root.position.y+.7*target.size-1.1,target.z-z).normalize();
  balls.push({mesh:m,target,velocity,powder,rolling,power,slow,radius,life:0,hitIds:new Set()});
 }
 function supportTick(dt){
  if(!equipmentEnabled)return;const id=gearState.equipped.support,level=gearLevel('support');supportClock+=dt;helperClock+=dt;
- domeTime=Math.max(0,domeTime-dt);rallyTime=Math.max(0,rallyTime-dt);domeVisual.visible=domeTime>0;rallyVisuals.forEach(r=>r.visible=rallyTime>0);
+ domeTime=Math.max(0,domeTime-dt);rallyTime=Math.max(0,rallyTime-dt);domeVisual.visible=domeTime>0;domeRim.visible=domeTime>0;fanVisualTime=Math.max(0,fanVisualTime-dt);fanVisual.visible=fanVisualTime>0;if(fanVisualTime>0&&!reducedEffects)fanVisual.position.z-=dt*9;rallyVisuals.forEach(r=>r.visible=rallyTime>0);
  if(id==='buddy'||rallyTime>0){if(helperClock>=Math.max(.26,.7-level*.12)){
   helperClock=0;const xs=rallyTime>0?[-3.8,3.8]:supportObjects.map(o=>o.x);
-  for(const x of xs){const target=enemies.filter(e=>Math.abs(e.x-x)<2.2&&e.z<4.7).sort((a,b)=>b.z-a.z)[0];if(target)launchGearBall(x,4.7,target,{slow:level===3});}
+  for(const x of xs){const target=enemies.filter(e=>Math.abs(e.x-x)<2.2&&e.z<4.7).sort((a,b)=>b.z-a.z)[0];if(target){launchGearBall(x,4.7,target,{slow:level===3});const root=rallyTime>0?rallyVisuals.find(r=>r.position.x===x):supportObjects.find(o=>o.x===x)?.root;if(root)root.userData.throwTime=.3;}}
  }}
+ for(const r of rallyVisuals)helperAnimation(r,dt);
  for(const o of supportObjects){
-  if(id==='bank'){if(o.hp<=0){o.root.visible=false;if(supportClock>=Math.max(5,12-level*2)){o.hp=2+level*2;o.root.visible=true;}}else for(const e of [...enemies])if(Math.abs(e.x-o.x)<1&&e.z>=o.z-1&&e.z<o.z+1){e.z-=2.3;e.slowTime=Math.max(e.slowTime,1);o.hp--;burst(o.x,o.z);if(o.hp<=0)break;}}
+  helperAnimation(o.root,dt);o.pulseTime=Math.max(0,o.pulseTime-dt);const pulse=o.root.userData.pulse;pulse.visible=o.pulseTime>0;pulse.scale.setScalar(reducedEffects?1.3:1.3+(1-o.pulseTime/.65)*.7);if(o.root.userData.rotor&&!reducedEffects)o.root.userData.rotor.rotation.z+=dt;
+  if(id==='bank'){o.root.children.filter(m=>m.geometry===box&&m.position.y===.4).forEach((m,i)=>m.visible=i<Math.ceil(3*o.hp/(2+level*2)));if(o.hp<=0){o.root.visible=false;if(supportClock>=Math.max(5,12-level*2)){o.hp=2+level*2;o.root.visible=true;}}else for(const e of [...enemies])if(Math.abs(e.x-o.x)<1&&e.z>=o.z-1&&e.z<o.z+1){e.z-=2.3;e.slowTime=Math.max(e.slowTime,1);o.hp--;supportPulse(o);burst(o.x,o.z);if(o.hp<=0)break;}}
   if(id==='puddle')for(const e of enemies)if(Math.hypot(e.x-o.x,e.z-o.z)<1.3+level*.2)e.slowTime=Math.max(e.slowTime,.6+level*.2);
   if(id==='magnet')for(const e of enemies)if(Math.abs(e.z-o.z)<3+level&&Math.abs(e.x)<4){const shift=THREE.MathUtils.clamp(-e.x,-dt*(1+level*.3),dt*(1+level*.3));e.x+=shift;e.baseX+=shift;}
  }
  if(supportClock>=Math.max(5,12-level*2)){
-  supportClock=0;if(id==='patch'){fort=Math.min(100,fort+3+level*3);syncFort();hud();}
-  if(id==='mittens')burstCharges=Math.min(5,burstCharges+1);
+  supportClock=0;if(id==='patch'){fort=Math.min(100,fort+3+level*3);supportObjects.forEach(supportPulse);syncFort();hud();}
+  if(id==='mittens'){burstCharges=Math.min(5,burstCharges+1);supportObjects.forEach(supportPulse);}
  }
  fortGroup.rotation.z=domeTime>0?Math.sin(elapsed*4)*.008:0;
 }
@@ -447,6 +518,7 @@ function equippedSpecial(){
  const close=enemies.filter(e=>Math.hypot(e.x-player.position.x,e.z-5.6)<BURST_RADIUS+level);
  if((['fan','bigball'].includes(id)&&!close.length)||(id==='whiteout'&&!enemies.length)){abilityNotice('Let creatures come closer — charge saved.');return;}
  burstCharges--;burstCooldown=2;burstUses++;
+ if(id==='fan'){fanVisualTime=.75;fanVisual.position.set(player.position.x,0,4.7);fanVisual.visible=true;}
  if(id==='fan')for(const e of close){e.z-=4+level;e.slowTime=Math.max(e.slowTime,2+level);burst(e.x,e.z);}
  if(id==='bigball')launchGearBall(player.position.x,4.7,null,{rolling:true,radius:1+level*.2,power:2+level});
  if(id==='whiteout')for(const e of enemies)e.slowTime=Math.max(e.slowTime,3+level*2);
@@ -485,11 +557,12 @@ if(mode==='playing'&&!gearOpen){
  }
  const throwPhase=tossClock/tossInterval;
  arms[1].rotation.x=Math.sin(throwPhase*Math.PI)*1.2;
- heldBall.visible=throwPhase>.55;
+ heldBall.visible=!equipmentEnabled&&throwPhase>.55;
+ if(equipmentEnabled&&!reducedEffects&&toolModels.spinner.visible)toolModels.spinner.userData.rotor.rotation.z+=dt*9;
  for(let i=balls.length-1;i>=0;i--){
   const b=balls[i],start=b.mesh.position.clone();b.life+=dt;
   if(!b.rolling&&settings.tracking&&b.target&&enemies.includes(b.target))b.velocity.set(b.target.x-start.x,b.target.root.position.y+.7*b.target.size-start.y,b.target.z-start.z).normalize();
-  const end=start.clone().addScaledVector(b.velocity,27*dt);
+  const end=start.clone().addScaledVector(b.velocity,27*dt);if(b.rolling&&!reducedEffects)b.mesh.rotation.x-=27*dt/(b.radius||.7);
   let victim=null,first=Infinity;
   for(const e of enemies){
    if(b.hitIds?.has(e))continue;
