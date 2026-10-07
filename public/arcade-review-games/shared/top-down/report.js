@@ -5,7 +5,7 @@ export function buildReport(map,content,state,elapsed,{student='',created=new Da
   const attempted=entries.filter(e=>e.attempts>0).length;
   return {
     student:student.trim().slice(0,80),created,adventure:map.title,topic:content.title||map.title,
-    difficulty:map.modes?.find(m=>m.id===map.mode)?.label||map.mode,
+    difficulty:map.modes?.find(m=>m.id===map.mode)?.label||map.mode,layout:map.layoutLabel||null,
     complete:state.won,seconds:Math.floor(elapsed),moves:state.moves,
     ...review,attempted,retries:review.attempts-attempted,
     firstTryAccuracy:attempted?Math.round(review.firstTry/attempted*100):null,
@@ -19,6 +19,7 @@ export function buildReport(map,content,state,elapsed,{student='',created=new Da
 export function reportSummary(r){return [
   `${r.adventure}${r.topic!==r.adventure?' · '+r.topic:''}`,
   `Adventure: ${r.complete?'Complete':'In progress'} · ${r.difficulty}`,
+  ...(r.layout?[`Puzzle layout: ${r.layout}`]:[]),
   `Questions completed: ${r.completed} / ${r.total} · Questions attempted: ${r.attempted}`,
   `First-try accuracy: ${r.firstTryAccuracy===null?'Not yet available':r.firstTryAccuracy+'%'} (${r.firstTry} correct on the first try / ${r.attempted} attempted).`,
   `Answer attempts: ${r.attempts} · Retries: ${r.retries}`,

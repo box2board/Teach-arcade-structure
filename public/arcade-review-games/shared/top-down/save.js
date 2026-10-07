@@ -2,15 +2,24 @@ const version=1;
 function hash(text){let n=2166136261;for(let i=0;i<text.length;i++){n^=text.charCodeAt(i);n=Math.imul(n,16777619);}return (n>>>0).toString(16);}
 const signature=(map,questions)=>hash(JSON.stringify({map,questions}));
 export function encodeSave(map,questions,state,motion,elapsed){
-  const payload=JSON.stringify({mode:map.mode,signature:signature(map,questions),state,position:{x:motion.x,y:motion.y},elapsed});
+  const payload=JSON.stringify({mode:map.mode,layout:map.layout,signature:signature(map,questions),state,position:{x:motion.x,y:motion.y},elapsed});
   return JSON.stringify({version,payload,checksum:hash(payload)});
 }
 export function decodeSave(raw,createAdventure,questions){
   try{
     const envelope=JSON.parse(raw);
     if(envelope.version!==version||typeof envelope.payload!=='string'||envelope.checksum!==hash(envelope.payload))return null;
-    const data=JSON.parse(envelope.payload),map=createAdventure(data.mode);
-    if(data.mode!==map.mode||data.signature!==signature(map,questions)||data.state.won)return null;
+    const data=JSON.parse(envelope.payload);
+    if(data.layout!==undefined&&typeof data.layout!=='string')return null;
+    const map=createAdventure(data.mode,data.layout);
+    if(data.layout!==undefined&&data.layout!==map.layout)return null;
+    let matches=data.signature===signature(map,questions);
+    // Older Outpost saves predate named layouts; their geometry is the classic layout.
+    if(!matches&&data.layout===undefined&&map.layout==='classic'){
+      const legacy={...map};delete legacy.layout;delete legacy.layoutLabel;
+      matches=data.signature===signature(legacy,questions);
+    }
+    if(data.mode!==map.mode||!matches||data.state.won)return null;
     const {state,position,elapsed}=data;
     if(!Number.isFinite(elapsed)||elapsed<0||!Number.isFinite(position.x)||!Number.isFinite(position.y))return null;
     if(!Number.isInteger(state.player.x)||!Number.isInteger(state.player.y)||Math.round(position.x)!==state.player.x||Math.round(position.y)!==state.player.y)return null;

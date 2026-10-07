@@ -8,6 +8,8 @@ Mosslight Outpost also supplies `data-topics`, a local module exporting `topics`
 
 Export `createAdventure(mode)` from a map module. Return fresh data each call. Export `{content: {questions: [...]}}` from the curriculum module. Each question has a unique `id`, `text`, unique `choices`, an `answer` matching a choice, and an `explanation`.
 
+Maps may export `chooseAdventure(mode, random)` to select a curated layout for a new adventure. `createAdventure(mode, layout)` must recreate a layout deterministically for saves. Mosslight Outpost offers Eastbound Light, Westward Relay and Southbound Signal in all three difficulties. New adventure and Play again choose a layout; Restart, Undo and Reset keep the current layout. The save records the layout ID and verifies its map signature; reports show the layout name. Pre-layout Outpost saves retain the classic geometry. Each offered layout has a complete gameplay-route test.
+
 Maps define:
 
 - `tiles`: equal-width rows; `#` walls, `.` floor, `~` water.

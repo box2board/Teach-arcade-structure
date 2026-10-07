@@ -1,6 +1,6 @@
 import { artwork } from './artwork.js';
 const configuration=document.querySelector('script[data-map]');
-const [{createAdventure},initialQuestions,topicCatalog]=await Promise.all([import(configuration.dataset.map),import(configuration.dataset.questionSet),configuration.dataset.topics?import(configuration.dataset.topics):null]);
+const [{createAdventure,chooseAdventure},initialQuestions,topicCatalog]=await Promise.all([import(configuration.dataset.map),import(configuration.dataset.questionSet),configuration.dataset.topics?import(configuration.dataset.topics):null]);
 let content=initialQuestions.content,questionSet=configuration.dataset.questionSet;
 const topics=topicCatalog?.topics||[];
 import {createReview,answerReview,reviewSummary} from './review.js';
@@ -101,7 +101,7 @@ function render(){
   };
   if(roomChanged)updateCamera($('world'),positionCamera,{glide:started,reducedMotion:window.matchMedia?.('(prefers-reduced-motion: reduce)').matches});
   else positionCamera();
-  $('map-labels').textContent=room.name;
+  $('map-labels').textContent=room.name+(map.layoutLabel?' · '+map.layoutLabel:'');
   let objective=objectiveFor(map,state,room);
   const exit=map.objects.find(o=>o.type==='exit'&&o.sequencePuzzle);
   const puzzle=(map.puzzles||[]).find(p=>p.id===exit?.sequencePuzzle);
@@ -198,7 +198,7 @@ function showReport(){
 }
 function showCompletion(){
   const results=adventureResults(map,state),learning=reviewSummary(state.review);
-  popup(map.completion?.label||'QUEST COMPLETE',map.completion?.title||'Adventure complete',[map.completion?.summary||'You completed the adventure.',`Treasure found: ${results.treasureFound} / ${results.treasureTotal} · Treasure bonus: +${results.bonusPoints} points.`,`Review points: ${results.reviewPoints} · Total points: ${results.totalPoints}.`,`Review completed: ${learning.completed} / ${learning.total} · Correct on first try: ${learning.firstTry} · Answer attempts: ${learning.attempts}.`,`Exploration time: ${Math.floor(elapsed/60)}m ${Math.floor(elapsed%60)}s · Moves: ${state.moves}.`],[{text:'Play again',run:restart,primary:true},{text:'View results report',run:showReport},{text:'Back to Arcade',run:()=>{window.location.href='/arcade-review-games/';}}]);
+  popup(map.completion?.label||'QUEST COMPLETE',map.completion?.title||'Adventure complete',[map.completion?.summary||'You completed the adventure.',`Treasure found: ${results.treasureFound} / ${results.treasureTotal} · Treasure bonus: +${results.bonusPoints} points.`,`Review points: ${results.reviewPoints} · Total points: ${results.totalPoints}.`,`Review completed: ${learning.completed} / ${learning.total} · Correct on first try: ${learning.firstTry} · Answer attempts: ${learning.attempts}.`,`Exploration time: ${Math.floor(elapsed/60)}m ${Math.floor(elapsed%60)}s · Moves: ${state.moves}.`],[{text:'Play again',run:()=>startMode(map.mode),primary:true},{text:'View results report',run:showReport},{text:'Back to Arcade',run:()=>{window.location.href='/arcade-review-games/';}}]);
 }
 let pickupFlashTimer;
 function pickupFeedback(items){
@@ -346,7 +346,8 @@ function chooseMode(){
   popup('QUEST ARCADE · '+map.title,'Choose your adventure',[
     ...(topics.length?['Review topic: '+content.title]:[]),
     ...modes.map(mode=>mode.label+': '+mode.description),
-    'Question order and choices change each play. Missed answers allow retries. Progress saves automatically in this browser so you can continue later.'
+    'Question order and choices change each play. Missed answers allow retries. Progress saves automatically in this browser so you can continue later.',
+    ...(chooseAdventure?['New adventures choose one of three tested puzzle layouts. Continue, Undo, and Reset keep your current layout.']:[])
   ],[...modes.map((mode,index)=>({text:mode.label,run:()=>startMode(mode.id),primary:index===0})),...(topics.length?[{text:'Change review topic',run:chooseTopic}]:[])]);
 }
 function chooseTopic(){
@@ -363,7 +364,7 @@ function chooseTopic(){
     buildWorld();render();offerSavedAdventure();
   }})));
 }
-function startMode(mode){map=validateAdventure(createAdventure(mode));buildWorld();restart();}
+function startMode(mode){map=validateAdventure(chooseAdventure?chooseAdventure(mode):createAdventure(mode));buildWorld();restart();}
 const titleRow=document.querySelector('.title-row');
 if(titleRow){
   const actions=element('div',undefined,'title-actions');actions.append($('pause'));
@@ -389,7 +390,7 @@ const saved=decodeSave(saves.read(),createAdventure,content.questions);
 if(saved){
   const learning=reviewSummary(saved.state.review);
   popup('SAVED ADVENTURE','Continue your adventure?',[
-    `${saved.map.title} · ${saved.map.modes?.find(m=>m.id===saved.mode)?.label||saved.mode} · ${content.title}`,
+    `${saved.map.title} · ${saved.map.modes?.find(m=>m.id===saved.mode)?.label||saved.mode} · ${content.title}${saved.map.layoutLabel?' · '+saved.map.layoutLabel:''}`,
     `${learning.completed} / ${learning.total} questions completed. Items and puzzle progress are saved in this browser.`
   ],[{text:'Continue adventure',primary:true,run:()=>{
     map=validateAdventure(saved.map);state=saved.state;motion=createMotion(state);motion.x=saved.position.x;motion.y=saved.position.y;

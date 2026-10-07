@@ -3,6 +3,8 @@ class Node {
  constructor(){this.children=[];this.dataset={};this.style={setProperty:(k,v)=>this.style[k]=v};this.classList={add(){},remove(){}};this.listeners={};this.open=false;this.clientWidth=800;this.clientHeight=600;this.scrollHeight=0;}
  append(...nodes){this.children.push(...nodes)} prepend(...nodes){this.children.unshift(...nodes)} replaceChildren(...nodes){this.children=[...nodes]} before(){} after(){} setAttribute(k,v){this[k]=v} addEventListener(k,v){this.listeners[k]=v} querySelector(){return this.innerHTML?.includes('svg')?{}:null} focus(){} showModal(){this.open=true} close(){this.open=false} remove(){} click(){if(this.download)downloads.push(this);else this.listeners.click?.();} }
 const downloads=[],downloadBlobs=new Map();
+const testingLayout=process.env.QUEST_OUTPOST_LAYOUT||'classic';
+Math.random=()=>({classic:0,westward:.4,southbound:.8}[testingLayout]);
 const topicIndex=process.env.QUEST_OUTPOST_TOPIC==='constitution'?1:0,useTopics=Boolean(process.env.QUEST_OUTPOST_TOPIC);
 URL.createObjectURL=blob=>{const id='blob:test-'+downloadBlobs.size;downloadBlobs.set(id,blob);return id;};
 URL.revokeObjectURL=id=>downloadBlobs.delete(id);
@@ -41,7 +43,7 @@ const {createAdventure}=await import('../public/arcade-review-games/shared/top-d
 const {content}=await import(topicIndex?'../public/arcade-review-games/shared/top-down/constitution.js':'../public/arcade-review-games/shared/top-down/scientific-method.js');
 const {createState,move,obstacle,interact,completeChallenge}=await import('../public/arcade-review-games/shared/top-down/model.js');
 const {createReview,answerReview}=await import('../public/arcade-review-games/shared/top-down/review.js');
-const map=createAdventure(testingMode),s=createState(map);s.review=createReview(map,content.questions);
+const map=createAdventure(testingMode,testingLayout),s=createState(map);s.review=createReview(map,content.questions);
 // Exercise real held-key composition before following the puzzle route.
 const press=key=>get('board').listeners.keydown({key,repeat:false,preventDefault(){}});
 const tick=()=>{clock+=25;animationFrame(clock);};
@@ -105,20 +107,24 @@ windowListeners.pagehide();
 const saveKey=[...stored.keys()][0],resumeSnapshot=stored.get(saveKey),resumePoint=point();
 assert.ok(resumeSnapshot,'Leaving the tab writes progress');
 assert.ok(cameraFlights.some(f=>/^translate\(0px,-/.test(f.frames[0].transform)),'North boundary glides vertically');
-if(testingMode==='hard'){go(4,6);step('up');step('up');}
-go(3,3);step('right');assert.match(action().text,/CROSS/);
+const mirror=s.blocks.find(b=>b.kind==='mirror'),socket=map.decorations.find(d=>d.appearance==='mirror-target');
+if(mirror.y!==socket.y){const dir=mirror.y>socket.y?'up':'down',dy=dir==='up'?1:-1;go(mirror.x,mirror.y+dy);while(mirror.y!==socket.y)step(dir);}
+if(mirror.x!==socket.x){const dir=mirror.x>socket.x?'left':'right',dx=dir==='left'?1:-1;go(mirror.x+dx,mirror.y);while(mirror.x!==socket.x)step(dir);}
+assert.match(action().text,/CROSS/);
 go(10,4);face('down');assert.match(action().text,/Bridge raised/);
 go(9,6);face('right');earn('lens-chest');go(20,2);face('right');earn('cell-chest');
 assert.equal(get('room').textContent,'03 · Relay');assert.equal(get('world').style.left,`${-12/13*100}%`);
 assert.ok(cameraFlights.some(f=>/^translate\([^0][^,]*px,0px\)/.test(f.frames[0].transform)),'East boundary glides horizontally');
-if(testingMode!=='explore'){go(16,3);face('up');earn('crank-chest');}
-go(14,6);for(let i=0;i<4;i++)step('right');
-if(testingMode!=='explore'){go(16,4);for(let i=0;i<4;i++)step('right');}
-if(testingMode==='hard'){go(14,3);for(let i=0;i<4;i++)step('right');}
+if(testingMode!=='explore'){const chest=map.objects.find(o=>o.id==='crank-chest');go(chest.x-1,chest.y);face('right');earn('crank-chest');}
+for(const [i,crate] of s.blocks.filter(b=>b.kind!=='mirror').entries()){
+ const plate=map.plates[i],dir=crate.x===plate.x?'down':crate.x>plate.x?'left':'right';
+ go(crate.x+(dir==='left'?1:dir==='right'?-1:0),crate.y+(dir==='down'?-1:0));
+ while(crate.x!==plate.x||crate.y!==plate.y)step(dir);
+}
 go(16,7);step('down');step('down');
 assert.equal(get('room').textContent,'04 · Beacon');assert.equal(get('world').style.top,`${-8/9*100}%`);
 assert.equal(get('board').style.aspectRatio,'13/9');
-if(testingMode!=='explore'){go(19,9);face('down');assert.match(action().text,/Drawbridge/);}
+if(testingMode!=='explore'){const lift=map.objects.find(o=>o.id==='beacon-lift');go(lift.x,lift.y-1);face('down');assert.match(action().text,/Drawbridge/);}
 assert.equal(get('seals').textContent,testingMode==='explore'?'Stations: 4 / 4':'Stations: 5 / 5');
 go(20,12);assert.equal(action().type,'win');assert.equal(get('dialog-label').textContent,'BEACON RESTORED');
 assert.equal(get('dialog-title').textContent,'Adventure complete');
@@ -132,17 +138,24 @@ let prevented=false;get('dialog').listeners.keydown({key:'ArrowLeft',target:{tag
 get('dialog').listeners.keydown({key:'Enter',target:{tagName:'BUTTON'},repeat:false,preventDefault(){}});
 assert.equal(downloads.length,1);assert.equal(downloads[0].download,'quest-arcade-mosslight-outpost-results.txt');
 const downloaded=await downloadBlobs.get(downloads[0].href).text();
-assert.match(downloaded,/Student: Alex/);assert.ok(downloaded.includes(`Questions completed: ${questionTotal} / ${questionTotal}`));assert.match(downloaded,/Adventure: Complete/);
+assert.ok(downloaded.includes('Puzzle layout: '+map.layoutLabel));assert.match(downloaded,/Student: Alex/);assert.ok(downloaded.includes(`Questions completed: ${questionTotal} / ${questionTotal}`));assert.match(downloaded,/Adventure: Complete/);
 if(useTopics)assert.ok(downloaded.includes(topicTitle),'Downloaded report identifies the selected topic');
 get('dialog-actions').children[1].click();assert.equal(get('dialog-title').textContent,'Adventure complete');
 assert.equal(stored.size,0,'Winning clears the unfinished save');
+const nextLayout=testingLayout==='classic'?'westward':'classic';
+Math.random=()=>nextLayout==='classic'?0:.4;
+get('dialog-actions').children.find(b=>b.textContent==='Play again').click();
+assert.equal(get('dialog').open,false);assert.equal(get('room').textContent,'01 · Dock');
+assert.ok(get('map-labels').textContent.includes(createAdventure(testingMode,nextLayout).layoutLabel),'Play again selects a fresh layout');
+assert.equal(JSON.parse(JSON.parse(stored.get(saveKey)).payload).layout,nextLayout);
+stored.clear();Math.random=()=>({classic:0,westward:.4,southbound:.8}[testingLayout]);
 stored.set(saveKey,resumeSnapshot);nodes.clear();
 await import('../public/arcade-review-games/shared/top-down/game.js?resume-test');
 if(useTopics)chooseTopic();
 assert.equal(get('dialog-actions').children[0].textContent,'Continue adventure');
 get('dialog-actions').children[0].listeners.click();
 assert.equal(get('dialog').open,false);assert.equal(get('room').textContent,'02 · Optics');
-assert.deepEqual(point(),resumePoint);
+assert.deepEqual(point(),resumePoint);assert.ok(get('map-labels').textContent.includes(map.layoutLabel),'Resume preserves the puzzle layout');
 assert.ok(get('inventory').children.some(b=>b.children.some(c=>c.textContent==='Used')));
 assert.equal(get('seals').textContent,testingMode==='explore'?'Stations: 1 / 4':'Stations: 1 / 5');
 get('pause').listeners.click();assert.ok(get('dialog-body').children.some(p=>p.textContent.includes('saved automatically')));

@@ -1,6 +1,9 @@
 // A second adventure uses only map data and the shared engine.
-export function createAdventure(mode='explore'){
+export const layouts=[{id:'classic',label:'Eastbound Light'},{id:'westward',label:'Westward Relay'},{id:'southbound',label:'Southbound Signal'}];
+export function chooseAdventure(mode,random=Math.random){return createAdventure(mode,layouts[Math.min(2,Math.floor(random()*layouts.length))].id);}
+export function createAdventure(mode='explore',layout='classic'){
   if(!['explore','medium','hard'].includes(mode))throw Error('Unknown Outpost mode: '+mode);
+  if(!layouts.some(l=>l.id===layout))throw Error('Unknown Outpost layout: '+layout);
   const tiles=Array.from({length:17},()=>Array(25).fill('#'));
   for(const [x0,y0] of [[1,1],[13,1],[1,9],[13,9]])for(let y=y0;y<y0+7;y++)for(let x=x0;x<x0+11;x++)tiles[y][x]='.';
   for(const [x,y] of [[4,8],[12,4],[16,8]])tiles[y][x]='.';
@@ -53,7 +56,7 @@ export function createAdventure(mode='explore'){
       {name:'04 · Beacon',theme:'garden',min:13,max:23,minY:9,maxY:15,viewMin:12,viewMax:24,viewMinY:8,viewMaxY:16,objective:'The beacon needs the lens from Optics and the cell from Relay.',objectiveRules:[{when:{exitReady:'beacon'},text:'Stand on the beacon and interact to restore it.'}]}
     ]
   };
-  if(mode==='explore')return map;
+  if(mode==='explore')return applyLayout(map,layout);
   map.inventory.push({id:'bridge-crank',type:'tool',value:'crank',label:'Bridge crank',appearance:'crank'});
   map.objects.push(
     {id:'crank-chest',type:'challenge',x:16,y:2,label:'Mechanic chest',questionCount:2,reward:{type:'tool',value:'crank',label:'Bridge crank',message:'Bridge crank earned! Use it at the LIFT socket in the Beacon station.'}},
@@ -81,5 +84,34 @@ export function createAdventure(mode='explore'){
   map.rooms[3].objective='Earn the bridge crank in Relay, then use LIFT to cross the canal.';
   map.rooms[3].objectiveRules=[{when:{exitReady:'beacon'},text:'Cross the drawbridge, stand on the beacon, and interact to restore it.'},{when:{tools:['crank'],not:{opened:['beacon-drawbridge']}},text:'Face the LIFT socket and interact to unfold the drawbridge.'},{when:{opened:['beacon-drawbridge']},text:'The bridge is safe. Bring the lens and cell to the beacon.'}];
   map.completion.summary=`You restored the beacon by directing light, balancing ${crates} counterweights, and using a review-earned crank to cross the canal.`;
+  return applyLayout(map,layout);
+}
+function applyLayout(map,layout){
+  map.layout=layout;map.layoutLabel=layouts.find(l=>l.id===layout).label;
+  if(layout==='classic')return map;
+  const object=id=>map.objects.find(o=>o.id===id),mirror=map.blocks.find(b=>b.kind==='mirror');
+  const west=layout==='westward',hard=map.mode==='hard';
+  Object.assign(mirror,west?{x:8,y:hard?5:3}:{x:5,y:hard?3:4});
+  Object.assign(object('optics-source'),{y:west?3:5});
+  Object.assign(object('optics-receiver'),west?{x:7,y:6}:{x:5,y:7});
+  Object.assign(map.decorations.find(d=>d.appearance==='mirror-target'),west?{x:7,y:3}:{x:5,y:5});
+  object('optics-sign').text=west?
+    `Move the mirror onto the marked socket: ${hard?'push north twice, then west once':'push west once'}. Rotate it to send the light south, then use CROSS and earn the lens.`:
+    `Push the mirror south ${hard?'twice':'once'} onto the marked socket. Rotate it to send the light south, then use CROSS and earn the lens.`;
+  const crates=map.blocks.filter(b=>b.kind!=='mirror');
+  crates.forEach((b,i)=>{
+    Object.assign(b,west?{x:21,y:[6,4,3][i]}:{x:[15,19,17][i],y:3});
+    Object.assign(map.plates[i],west?{x:17,y:[6,4,3][i]}:{x:[15,19,17][i],y:6});
+  });
+  if(west)Object.assign(object('relay-column'),{x:23,y:5});
+  object('relay-sign').text=`Push ${crates.length===1?'the crate':'each crate'} ${west?'west':'south'} onto an amber floor switch. Every switch must stay occupied. Earn the beacon cell${map.mode==='explore'?'':' and bridge crank'} before leaving.`;
+  if(map.mode!=='explore'){
+    Object.assign(object('crank-chest'),west?{x:21,y:5}:{x:14,y:2});
+    const crossing=west?18:22;
+    Object.assign(object('beacon-drawbridge'),{x:crossing});
+    Object.assign(object('beacon-lift'),{x:crossing-1});
+    const canal=Array.from(map.tiles[11]);for(let x=13;x<=23;x++)canal[x]=x===crossing?'.':'~';map.tiles[11]=canal.join('');
+    if(west)Object.assign(object('beacon-column-north'),{x:14,y:10});
+  }
   return map;
 }
