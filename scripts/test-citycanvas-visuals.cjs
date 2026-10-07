@@ -19,3 +19,18 @@ assert.deepEqual(needs({type:'water',access:false,powered:false}),['road','power
 for(const type of ['road','bridge','park','river','land'])assert.deepEqual(needs({type}),[]);
 sandbox.ctx=g;for(const type of ['home','water','school']){calls=[];sandbox.drawNeeds({type,w:2,access:false,powered:false},0,0,28);assert(calls.some(c=>c[0]==='save'));assert(calls.some(c=>c[0]==='restore'));}
 console.log('PASS: distinct zone development stages, accurate utility/access needs, service signs, decorative tile exclusion, canvas state isolation');
+// Cache invalidation and viewport edges: large facilities can extend in from offscreen.
+const city=new CityCanvasSim.City();city.build(2,2,'school');city.build(7,2,'home');city.at(7,2).progress=1;city.build(8,2,'industry');city.at(8,2).level=1;
+let terrainCalls=0,roadCalls=0,buildingCalls=0;
+Object.assign(sandbox,{city,W:48,H:32,size:20,canvas:{width:200,height:120},document:{createElement:()=>({getContext:()=>g})},isRoad:CityCanvasSim.isRoad});
+sandbox.drawTerrain=()=>terrainCalls++;sandbox.drawRoad=()=>roadCalls++;sandbox.drawBuilding=()=>buildingCalls++;
+const o={x:-60,y:0},r={width:200,height:120},first=sandbox.prepareScene(o,r);
+assert(first.visible.some(t=>t.type==='school'),'Offscreen anchor must retain its visible facility footprint');
+assert.equal(first.dynamic.length,2,'Construction and factory smoke remain animated');
+assert(terrainCalls<=77,'Only viewport terrain should be drawn');
+const counts=[terrainCalls,roadCalls,buildingCalls];assert.equal(sandbox.prepareScene(o,r),first);assert.deepEqual([terrainCalls,roadCalls,buildingCalls],counts,'Unchanged frames reuse the scene');
+vm.runInContext('sceneRevision++',sandbox);assert.notEqual(sandbox.prepareScene(o,r),first,'City edits invalidate cache');
+const afterEdit=sandbox.prepareScene(o,r);assert.notEqual(sandbox.prepareScene({x:-61,y:0},r),afterEdit,'Pan invalidates cache');
+const afterPan=sandbox.prepareScene(o,r);sandbox.size=25;assert.notEqual(sandbox.prepareScene(o,r),afterPan,'Zoom invalidates cache');
+const afterZoom=sandbox.prepareScene(o,r);sandbox.canvas.width=400;assert.notEqual(sandbox.prepareScene(o,r),afterZoom,'Pixel-density and resize changes invalidate cache');
+console.log('PASS: scene reuse, city/pan/zoom/resize invalidation, viewport culling, partial facility visibility, animated scene separation');
