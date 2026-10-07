@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10182c">
+  <title>Power Clash · Teach Arcade</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="content/topics.js" defer></script>
+  <script src="game.js" defer></script>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="/arcade-review-games/">Teach Arcade <span>ARCADE</span></a>
+      <div class="eyebrow">KNOWLEDGE POWERS THE FIGHT</div>
+      <button class="icon-button" id="sound-toggle" type="button" aria-pressed="false" title="Toggle sound">Sound off</button>
+    </header>
+
+    <section class="game-shell" aria-label="Power Clash game">
+      <div class="hud" id="hud" hidden>
+        <div class="fighter-hud fighter-hud--one">
+          <div class="hud-title"><span class="player-dot dot-one"></span><span id="p1-name">PLAYER 1</span><b id="p1-health-label">100 HP</b></div>
+          <div class="meter health-meter"><span id="p1-health"></span></div>
+          <div class="hud-title energy-title"><span>JUICE</span><b id="p1-energy-label">0 / 100</b></div>
+          <div class="meter energy-meter"><span id="p1-energy"></span></div>
+        </div>
+        <div class="round-badge"><span>TOPIC</span><b id="topic-label">WWI</b><small id="round-state">GET READY</small></div>
+        <div class="fighter-hud fighter-hud--two">
+          <div class="hud-title"><b id="p2-health-label">100 HP</b><span id="p2-name">PLAYER 2</span><span class="player-dot dot-two"></span></div>
+          <div class="meter health-meter"><span id="p2-health"></span></div>
+          <div class="hud-title energy-title"><b id="p2-energy-label">0 / 100</b><span>JUICE</span></div>
+          <div class="meter energy-meter"><span id="p2-energy"></span></div>
+        </div>
+      </div>
+
+      <div class="stage-wrap" id="stage-wrap">
+        <canvas id="arena" width="960" height="540" aria-label="Power Clash arena"></canvas>
+
+        <section class="screen screen--welcome" id="welcome-screen">
+          <div class="welcome-card">
+            <div class="game-mark">⚡</div>
+            <p class="eyebrow">TEACH ARCADE · FIGHTER ENGINE PROTOTYPE</p>
+            <h1>POWER <span>CLASH</span></h1>
+            <p class="lead">Answer questions. Build your juice. Enter the arena.</p>
+            <label class="topic-label" for="topic-select">Choose a topic</label>
+            <select id="topic-select" aria-label="Choose a topic"></select>
+            <label class="topic-label" for="game-mode-select">Choose a mode</label>
+            <select id="game-mode-select" aria-label="Choose a game mode">
+              <option value="cpu">One Player vs. CPU</option>
+              <option value="local">Two Players · Same Keyboard</option>
+            </select>
+            <button class="primary-button" id="start-button" type="button">START THE CHALLENGE <span>→</span></button>
+            <p class="fine-print">Earn juice with topic questions, then use it in the arena.</p>
+          </div>
+        </section>
+
+        <section class="screen screen--question" id="question-screen" hidden aria-live="polite">
+          <div class="question-card">
+            <div class="question-kicker"><span class="question-chip" id="question-phase">POWER ROUND</span><span id="question-count">QUESTION 1 OF 10</span></div>
+            <h2 id="question-player">PLAYER 1, ANSWER TO EARN JUICE</h2>
+            <p class="question-prompt" id="question-prompt"></p>
+            <div class="answer-grid" id="answer-grid"></div>
+            <p class="question-feedback" id="question-feedback" aria-live="assertive"></p>
+          </div>
+        </section>
+
+        <section class="screen screen--end" id="end-screen" hidden>
+          <div class="end-card">
+            <div class="game-mark">🏆</div>
+            <p class="eyebrow">MATCH COMPLETE</p>
+            <h2 id="winner-heading">PLAYER 1 WINS!</h2>
+            <p id="winner-copy">Knowledge powered the win.</p>
+            <button class="primary-button" id="rematch-button" type="button">PLAY AGAIN <span>↻</span></button>
+            <button class="text-button" id="change-topic-button" type="button">Choose another topic</button>
+          </div>
+        </section>
+
+        <div class="toast" id="toast" role="status" aria-live="polite"></div>
+      </div>
+
+      <footer class="controls-bar" id="controls-bar" hidden>
+        <div class="control-set"><strong>PLAYER 1</strong><span><kbd>A</kbd><kbd>D</kbd> move <kbd>W</kbd> jump</span><span><kbd>F</kbd> punch <kbd>G</kbd> kick <kbd>Q</kbd> dash</span></div>
+        <div class="control-center"><span class="control-note" id="mode-note">Move, jump, and dash freely. Punches and kicks use juice.</span></div>
+        <div class="control-set control-set--right" id="p2-controls"><strong>PLAYER 2</strong><span><kbd>←</kbd><kbd>→</kbd> move <kbd>↑</kbd> jump</span><span><kbd>/</kbd> punch <kbd>.</kbd> kick <kbd>Shift</kbd> dash</span></div>
+      </footer>
+    </section>
+
+    <p class="prototype-note">One-player vs. CPU and local two-player prototype. Classroom room codes and separate-device play are planned for a later platform phase.</p>
+  </main>
+</body>
+</html>
