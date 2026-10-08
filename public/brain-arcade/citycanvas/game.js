@@ -19,6 +19,7 @@ else if(isRoad(t))rows.push(t.powered?'Connected to a solar plant.':'Connect thi
 $('inspect').replaceChildren(...rows.map((value,i)=>{const el=document.createElement(i===0?'strong':'p');el.textContent=value;return el;}));
 }
 function management(){
+document.querySelector('.mapbar>strong').textContent=CityCanvasSim.maps[city.map].name;
 updateGrowth();
 $('readiness').replaceChildren(...city.readiness.map(row=>{const p=document.createElement('p');p.textContent=`${types[row.type].name}: ${row.ready} ready to grow · ${row.waiting} waiting`;return p;}));
 if($('budgetDialog').open)showBudget();updateLegend();updateGoals();
@@ -93,6 +94,9 @@ $('importFile').onchange=async e=>{const file=e.target.files[0];if(!file)return;
 $('undo').onclick=undo;
 $('pan').onclick=()=>{cursorMode=false;selectTool();panMode=!panMode;$('pan').setAttribute('aria-pressed',String(panMode));$('status').textContent=panMode?'Drag the map to pan. Turn Pan off to build.':types[tool].help;};
 let hasStarted=false,pendingStart=null,playChoice='manager';
+const mapLabel=document.createElement('label'),mapSelect=document.createElement('select'),mapDescription=document.createElement('p');mapLabel.htmlFor='startMap';mapLabel.textContent='Map layout';mapSelect.id='startMap';mapDescription.id='mapDescription';
+for(const [id,def]of Object.entries(CityCanvasSim.maps)){const option=document.createElement('option');option.value=id;option.textContent=def.name;mapSelect.append(option);}$('startSummary').before(mapLabel,mapSelect,mapDescription);
+for(const [id,name]of [['crossing','Bring the banks together · reconnect a divided town'],['boom','A growing lakeside town · expand without losing quality of life']]){const option=document.createElement('option');option.value=id;option.textContent=name;$('startScenario').append(option);}
 try{const stored=localStorage.getItem(SAVE_KEY);if(stored){city=City.load(JSON.parse(stored));hasStarted=true;$('saveInfo').textContent='Restored saved city · month '+city.month;}}catch{$('saveInfo').textContent='Saved city unavailable. Export a file to keep your city.';}syncControls();
 window.addEventListener('pagehide',()=>saveCity());
 document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'&&!['INPUT','SELECT','TEXTAREA'].includes(e.target.tagName)){e.preventDefault();undo();}});
@@ -111,11 +115,11 @@ $('guideDismiss').onclick=()=>{city.experience.guided=false;stats();saveCity();}
 function openPlayMenu(){ $('continueCity').hidden=!hasStarted;$('startChoices').hidden=true;document.querySelectorAll('[data-play]').forEach(b=>b.setAttribute('aria-pressed','false'));$('playMenu').showModal(); }
 $('playMenu').addEventListener('cancel',e=>{if(!hasStarted)e.preventDefault();});
 $('continueCity').onclick=()=>$('playMenu').close();
-function startSummary(){const scenario=$('startScenario').value;$('startSummary').textContent=playChoice==='scenarios'?({village:'An empty map, $15,000 and a goal: 64 residents with a nonnegative monthly balance.',utilities:'An established town with no water towers. Repair its services with a $4,000 recovery budget before residents leave.', 'clean-air':'A town with homes too close to industry. You have $4,500 to relocate buildings and improve well-being.'}[scenario]):$('startLayout').value==='starter'?'Start with 128 residents, connected utilities, homes and workplaces. In Build a City, construction costs come out of your $15,000 budget.':'Start with an empty river map. Build a City includes optional guidance.';}
+function startSummary(){const scenario=$('startScenario').value,fixed=playChoice==='scenarios';mapLabel.hidden=fixed;mapSelect.hidden=fixed;const chosen=fixed?(scenario==='crossing'?'divide':scenario==='boom'?'lake':'riverbend'):mapSelect.value;mapDescription.textContent=CityCanvasSim.maps[chosen].name+' · '+CityCanvasSim.maps[chosen].detail;$('startSummary').textContent=fixed?({village:'An empty map, $15,000 and a goal: 64 residents with a nonnegative monthly balance.',utilities:'An established town with no water towers. Repair its services with a $4,000 recovery budget before residents leave.', 'clean-air':'A town with homes too close to industry. You have $4,500 to relocate buildings and improve well-being.',crossing:'A divided town has homes on one bank and workshops on the other. Connect the road ends across the river and restore services with $3,500.',boom:'Start with 128 residents beside a lake. Reach 256 while maintaining jobs, well-being and a healthy budget.'}[scenario]):$('startLayout').value==='starter'?'Start with 128 residents, connected utilities, homes and workplaces. In Build a City, construction costs come out of your $15,000 budget.':'Start with an empty map. Build a City includes optional guidance.';}
 document.querySelectorAll('[data-play]').forEach(b=>b.onclick=()=>{playChoice=b.dataset.play;document.querySelectorAll('[data-play]').forEach(c=>c.setAttribute('aria-pressed',String(c===b)));$('startChoices').hidden=false;$('startTitle').textContent=b.querySelector('strong').textContent;const scenario=playChoice==='scenarios';$('startLayout').hidden=scenario;document.querySelector('label[for="startLayout"]').hidden=scenario;$('scenarioLabel').hidden=!scenario;$('startScenario').hidden=!scenario;startSummary();});
-$('startLayout').onchange=startSummary;$('startScenario').onchange=startSummary;
-$('startPlay').onclick=()=>{pendingStart={mode:playChoice==='sandbox'?'free':'manager',layout:playChoice==='scenarios'?'blank':$('startLayout').value,scenario:playChoice==='scenarios'?$('startScenario').value:null};if(hasStarted)$('reset').showModal();else startExperience();};
-function startExperience(){const next=City.start(pendingStart.mode,pendingStart.layout,pendingStart.scenario);pendingStart=null;pan={x:0,y:0};zoom=1;paused=false;$('pause').textContent='Pause';tool='road';rotated=false;cursorMode=false;panMode=false;$('pan').setAttribute('aria-pressed','false');$('cityDetails').open=false;restore(next);selectTool();$('playMenu').close();$('status').textContent=next.experience.scenario?'Challenge ready. Check your objective in the sidebar.':'City ready. Build freely or follow the optional guide.';}
+$('startLayout').onchange=startSummary;$('startScenario').onchange=startSummary;mapSelect.onchange=startSummary;
+$('startPlay').onclick=()=>{pendingStart={mode:playChoice==='sandbox'?'free':'manager',layout:playChoice==='scenarios'?'blank':$('startLayout').value,scenario:playChoice==='scenarios'?$('startScenario').value:null,map:mapSelect.value};if(hasStarted)$('reset').showModal();else startExperience();};
+function startExperience(){const next=City.start(pendingStart.mode,pendingStart.layout,pendingStart.scenario,pendingStart.map);pendingStart=null;pan={x:0,y:0};zoom=1;paused=false;$('pause').textContent='Pause';tool='road';rotated=false;cursorMode=false;panMode=false;$('pan').setAttribute('aria-pressed','false');$('cityDetails').open=false;restore(next);selectTool();$('playMenu').close();$('status').textContent=next.experience.scenario?'Challenge ready. Check your objective in the sidebar.':'City ready. Build freely or follow the optional guide.';}
 function resize(){let r=canvas.getBoundingClientRect(),d=window.devicePixelRatio||1;canvas.width=r.width*d;canvas.height=r.height*d;ctx.setTransform(d,0,0,d,0,0);size=Math.min(r.width/W,r.height/H)*zoom;if(needsFocus&&r.width&&r.height){needsFocus=false;focusCity();}else clampPan();}new ResizeObserver(resize).observe(canvas);
 function origin(){let r=canvas.getBoundingClientRect();return{x:(r.width-W*size)/2+pan.x,y:(r.height-H*size)/2+pan.y};}
 function focusCity(){
@@ -288,10 +292,10 @@ function drawConstruction(g,t,x,y,s,time){
 }
 function drawTerrain(t,x,y,s,ctx=canvas.getContext('2d')){
  const rect=(x,y,w,h,c)=>{ctx.fillStyle=c;ctx.fillRect(x,y,w,h);};
- const water=terrainAt(t.x,t.y)==='river',seed=t.x*13+t.y*7;
+ const water=city.terrainAt(t.x,t.y)==='river',seed=t.x*13+t.y*7;
  rect(x,y,s,s,water?'#397f9d':'#80a96b');
  if(water){
-  const edge=city.neighbors(t).some(n=>terrainAt(n.x,n.y)!=='river');
+  const edge=city.neighbors(t).some(n=>city.terrainAt(n.x,n.y)!=='river');
   if(edge)rect(x,y,s,s,'#4c9baa');
   for(let i=0;i<2;i++){const a=((seed+i*17)%29)/36,b=((seed*3+i*11)%31)/38;rect(x+s*a,y+s*b,s*.2,s*.02,'#a3d4d346');}
  }else{
@@ -302,7 +306,7 @@ function drawTerrain(t,x,y,s,ctx=canvas.getContext('2d')){
    if(seed%17===0){ctx.fillStyle='#66796c';ctx.beginPath();ctx.ellipse(x+s*.24,y+s*.69,s*.09,s*.055,-.3,0,7);ctx.fill();rect(x+s*.2,y+s*.65,s*.065,s*.015,'#a5afa0');}
    if(seed%19===0){rect(x+s*.47,y+s*.57,s*.07,s*.21,'#665b44');ctx.fillStyle='#284c3540';ctx.beginPath();ctx.ellipse(x+s*.6,y+s*.61,s*.22,s*.12,.3,0,7);ctx.fill();for(const [a,b,r,c]of [[.5,.42,.23,'#477848'],[.44,.34,.16,'#639251'],[.56,.4,.13,'#76a65c']]){ctx.fillStyle=c;ctx.beginPath();ctx.arc(x+s*a,y+s*b,s*r,0,7);ctx.fill();}}
   }
-  for(const [dx,dy]of [[1,0],[-1,0],[0,1],[0,-1]]){const n=city.at(t.x+dx,t.y+dy);if(n&&terrainAt(n.x,n.y)==='river'){
+  for(const [dx,dy]of [[1,0],[-1,0],[0,1],[0,-1]]){const n=city.at(t.x+dx,t.y+dy);if(n&&city.terrainAt(n.x,n.y)==='river'){
    rect(x+s*(dx===1?.84:0),y+s*(dy===1?.84:0),s*(dx?.16:1),s*(dy?.16:1),'#c4bd87');
    rect(x+s*(dx===1?.95:0),y+s*(dy===1?.95:0),s*(dx?.05:1),s*(dy?.05:1),'#8ea999');
    if(t.type==='land'&&seed%3===0){rect(x+s*(dx===1?.78:.13),y+s*(dy===1?.78:.18),s*.035,s*.15,'#557b4e');}
