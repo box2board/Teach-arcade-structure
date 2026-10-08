@@ -86,7 +86,7 @@
     hintLevel = 0; save(); render();
   }
   function renderReasoning(scene, panel) {
-    if (!scene.reflect || scene.kind === 'intro') return;
+    if (data.reasoningNotes === false || !scene.reflect || scene.kind === 'intro') return;
     const box = document.createElement('section'); box.className = 'reflection';
     const prompt = document.createElement('p'); prompt.className = 'reflection-prompt'; prompt.textContent = scene.reflect;
     const label = document.createElement('label'); label.className = 'reflection-label'; label.textContent = 'Add your reasoning to the evidence board';
@@ -114,9 +114,21 @@
     if (accepted(input.value, answers)) solve(scene);
     else feedback(scene.wrong || 'That does not fit the evidence yet. Recheck the clues and try again.', 'error');
   }
+  function applyRoomPresentation() {
+    document.title = `${data.title} | Teach Arcade`;
+    const description = $('#roomDescription');
+    if (description && data.description) description.content = data.description;
+    const meta = $('#roomMeta');
+    if (meta) meta.textContent = [data.topic, data.subject, data.gradeBand].filter(Boolean).join(' · ');
+    document.body.dataset.room = data.id || roomId;
+    const reasoningList = $('#reasoningList');
+    if (reasoningList) reasoningList.hidden = data.reasoningNotes === false;
+    const lockerNote = $('#lockerNote');
+    if (lockerNote && data.reasoningNotes === false) lockerNote.textContent = 'Recovered clues stay here as you investigate.';
+  }
   function renderPuzzle(scene, panel) {
     if (scene.kind === 'intro') {
-      panel.innerHTML += `<div class="mission"><div class="mission-stamp">FIELD DISPATCH · 1918</div><p>${escapeHtml(scene.body)}</p>${data.missionQuestion ? `<div class="mission-question"><span>HQ'S QUESTION</span><p>${escapeHtml(data.missionQuestion)}</p></div>` : ''}<p class="quiet">Work together: read the evidence, agree on what it supports, then unlock the next room. Your progress saves on this device.</p>${scene.objectives?.length ? `<div class="objective-list"><strong>In this mission, you will</strong><ul>${scene.objectives.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul></div>` : ''}</div>`;
+      panel.innerHTML += `<div class="mission"><div class="mission-stamp">${escapeHtml(data.missionStamp || 'MISSION BRIEFING')}</div><p>${escapeHtml(scene.body)}</p>${data.missionQuestion ? `<div class="mission-question"><span>${escapeHtml(data.missionQuestionLabel || 'MISSION QUESTION')}</span><p>${escapeHtml(data.missionQuestion)}</p></div>` : ''}<p class="quiet">Work together: read the evidence, agree on what it supports, then unlock the next room. Your progress saves on this device.</p>${scene.objectives?.length ? `<div class="objective-list"><strong>In this mission, you will</strong><ul>${scene.objectives.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul></div>` : ''}</div>`;
       panel.append(button('Accept the mission', continueMission, 'primary')); return;
     }
     if (scene.kind === 'choice') {
@@ -177,7 +189,7 @@
         else feedback('One part of the combination needs another look.', 'error'); }); panel.append(form); return;
     }
     if (scene.kind === 'finish') {
-      panel.innerHTML += `<div class="victory"><div class="victory-icon" aria-hidden="true">✦</div><h3>Transmission received</h3><p>${escapeHtml(scene.body)}</p></div>`;
+      panel.innerHTML += `<div class="victory"><div class="victory-icon" aria-hidden="true">✦</div><h3>${escapeHtml(data.victoryTitle || 'Mission complete')}</h3><p>${escapeHtml(scene.body)}</p></div>`;
       panel.append(button('Play again', reset, 'primary')); return;
     }
     panel.innerHTML += '<p>This room is unavailable.</p>';
@@ -193,7 +205,7 @@
     const panel = document.createElement('div'); panel.className = 'puzzle-panel';
     if (!state.complete) {
       if (state.solved[state.scene]) {
-        panel.innerHTML = `<div class="insight-card"><span class="insight-label">CASE NOTE · WHAT THE EVIDENCE SHOWS</span><h3>${escapeHtml(scene.takeawayTitle || 'What you figured out')}</h3><p>${escapeHtml(scene.learn || 'You solved the room by using the evidence. Connect this clue to the larger story as you continue.')}</p>${scene.clueReward ? `<div class="clue-found"><span>NEW CLUE · ADDED TO YOUR EVIDENCE BOARD</span><strong>${escapeHtml(scene.clueReward.label)}</strong><p>${escapeHtml(scene.clueReward.detail)}</p></div>` : ''}</div>`;
+        panel.innerHTML = `<div class="insight-card"><span class="insight-label">${escapeHtml(scene.takeawayLabel || data.insightLabel || 'WHAT YOU FIGURED OUT')}</span><h3>${escapeHtml(scene.takeawayTitle || 'What you figured out')}</h3><p>${escapeHtml(scene.learn || 'You solved the room by using the evidence. Connect this clue to the larger story as you continue.')}</p>${scene.clueReward ? `<div class="clue-found"><span>NEW CLUE · ADDED TO YOUR EVIDENCE BOARD</span><strong>${escapeHtml(scene.clueReward.label)}</strong><p>${escapeHtml(scene.clueReward.detail)}</p></div>` : ''}</div>`;
         renderReasoning(scene, panel);
         const next = button(state.scene === scenes.length - 1 ? 'Send the final report' : 'Continue to next room', continueMission, 'primary');
         const savedNote = state.reasoning?.[scene.id]?.trim() || '';
@@ -236,9 +248,10 @@
       const reportClueIds = [...new Set([...(report.clueIds || []), ...state.clues.map(clue => clue.id)])];
       const citedClues = reportClueIds.map(id => clueById.get(id)).filter(Boolean);
       const savedReasoning = Object.entries(state.reasoning || {}).filter(([, note]) => note?.trim());
-      const reasoningReview = savedReasoning.length ? `<section class="final-reasoning"><h3>Your reasoning from the evidence board</h3>${savedReasoning.map(([sceneId, note]) => { const scene = activeScenes().find(item => item.id === sceneId) || data.scenes.find(item => item.id === sceneId); return `<article><strong>${escapeHtml(scene?.title || scene?.takeawayTitle || 'Field reasoning')}</strong>${scene?.reflect ? `<span class="reasoning-question">${escapeHtml(scene.reflect)}</span>` : ''}<span>${escapeHtml(note)}</span></article>`; }).join('')}</section>` : profile().requireReasoning ? '<section class="final-reasoning"><h3>Your reasoning from the evidence board</h3><p>No saved reasoning notes were found for this mission.</p></section>' : '';
+      const reasoningReview = data.reasoningNotes === false ? '' : savedReasoning.length ? `<section class="final-reasoning"><h3>Your reasoning from the evidence board</h3>${savedReasoning.map(([sceneId, note]) => { const scene = activeScenes().find(item => item.id === sceneId) || data.scenes.find(item => item.id === sceneId); return `<article><strong>${escapeHtml(scene?.title || scene?.takeawayTitle || 'Field reasoning')}</strong>${scene?.reflect ? `<span class="reasoning-question">${escapeHtml(scene.reflect)}</span>` : ''}<span>${escapeHtml(note)}</span></article>`; }).join('')}</section>` : profile().requireReasoning ? '<section class="final-reasoning"><h3>Your reasoning from the evidence board</h3><p>No saved reasoning notes were found for this mission.</p></section>' : '';
       const chosenLevel = data.difficultyLevels?.find(level => level.id === state.difficulty)?.label || state.difficulty;
-      panel.innerHTML = `<div class="victory"><div class="victory-icon" aria-hidden="true">✦</div><h3>Transmission received</h3><p>${escapeHtml(data.completion)}</p><span class="report-level">${escapeHtml(chosenLevel)} challenge · ${savedReasoning.length} reasoning note${savedReasoning.length === 1 ? '' : 's'}</span></div>${report.answer ? `<section class="final-report"><span class="insight-label">RECOVERED HQ DISPATCH · THE ANSWER</span><h3>${escapeHtml(report.question || data.missionQuestion || 'What do the clues show?')}</h3><p class="report-answer">${escapeHtml(report.answer)}</p><h4>Evidence in the report</h4><ul>${citedClues.map(clue => `<li><strong>${escapeHtml(clue.label)}</strong><span>${escapeHtml(clue.detail)}</span></li>`).join('')}</ul></section>` : ''}${reasoningReview}<div class="debrief"><h3>Debrief · connect the clues</h3>${(data.debrief || []).map(item => `<p><strong>${escapeHtml(item.label)}</strong> ${escapeHtml(item.text)}</p>`).join('')}</div>`;
+      const reportLevel = data.reasoningNotes === false ? `${chosenLevel} challenge` : `${chosenLevel} challenge · ${savedReasoning.length} reasoning note${savedReasoning.length === 1 ? '' : 's'}`;
+      panel.innerHTML = `<div class="victory"><div class="victory-icon" aria-hidden="true">✦</div><h3>${escapeHtml(data.victoryTitle || 'Mission complete')}</h3><p>${escapeHtml(data.completion)}</p><span class="report-level">${escapeHtml(reportLevel)}</span></div>${report.answer ? `<section class="final-report"><span class="insight-label">${escapeHtml(report.label || 'FINAL REPORT · WHAT THE CLUES SHOW')}</span><h3>${escapeHtml(report.question || data.missionQuestion || 'What do the clues show?')}</h3><p class="report-answer">${escapeHtml(report.answer)}</p><h4>Evidence in the report</h4><ul>${citedClues.map(clue => `<li><strong>${escapeHtml(clue.label)}</strong><span>${escapeHtml(clue.detail)}</span></li>`).join('')}</ul></section>` : ''}${reasoningReview}<div class="debrief"><h3>Debrief · connect the clues</h3>${(data.debrief || []).map(item => `<p><strong>${escapeHtml(item.label)}</strong> ${escapeHtml(item.text)}</p>`).join('')}</div>`;
       panel.append(button('Play again', reset, 'primary'));
     }
     root.append(panel);
@@ -251,7 +264,7 @@
     root.replaceChildren(); root.dataset.scene = 'difficulty';
     const panel = document.createElement('div'); panel.className = 'puzzle-panel difficulty-picker';
     const intro = document.createElement('p'); intro.className = 'scene-copy';
-    intro.textContent = 'Choose a challenge level. Higher levels add more rooms, more complex evidence problems, and required written reasoning.';
+    intro.textContent = data.difficultyIntro || 'Choose a challenge level. Higher levels add more rooms, more complex evidence problems, and required written reasoning.';
     const grid = document.createElement('div'); grid.className = 'difficulty-grid';
     (data.difficultyLevels || [{id:'easy',label:'Easy',description:'A shorter mission with guided evidence checks.'}]).forEach(level => {
       const card = document.createElement('article'); card.className = 'difficulty-card';
@@ -271,6 +284,7 @@
   function init() {
     data = window.ROOM_DATA;
     if (!data || !Array.isArray(data.scenes)) { root.textContent = 'This escape room could not be loaded.'; return; }
+    applyRoomPresentation();
     try { state = JSON.parse(localStorage.getItem(storageKey)) || null; } catch { state = null; }
     if (!state || !Number.isInteger(state.scene) || state.scene > data.scenes.length || !Array.isArray(state.clues)) reset();
     else { state.reasoning ||= {}; state.shuffleOrders ||= {}; state.difficulty ||= null; }

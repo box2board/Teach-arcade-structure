@@ -2,6 +2,14 @@
 window.ROOM_DATA = {
   id: 'wwi',
   title: 'Escape from the Trenches',
+  topic: 'World War I',
+  subject: 'History',
+  gradeBand: 'Grades 7–10',
+  description: 'A classroom World War I escape room from Teach Arcade.',
+  missionStamp: 'FIELD DISPATCH · 1918',
+  missionQuestionLabel: "HQ'S QUESTION",
+  insightLabel: 'CASE NOTE · WHAT THE EVIDENCE SHOWS',
+  victoryTitle: 'Transmission received',
   missionQuestion: 'How did a crisis in Sarajevo widen into a world war, and why did the United States enter later?',
   completion: 'You reconstructed the dispatch by weighing evidence, tracing cause and effect, and connecting events across time. The signal reaches HQ; the unit is safe.',
   difficultyLevels: [
@@ -31,6 +39,7 @@ window.ROOM_DATA = {
     }
   },
   finalReport: {
+    label: 'RECOVERED HQ DISPATCH · THE ANSWER',
     question: 'How did a crisis in Sarajevo widen into a world war, and why did the United States enter later?',
     answer: 'Europe was already tense from militarism, alliances, imperial competition, and nationalism. The assassination of Archduke Franz Ferdinand in Sarajevo triggered the July Crisis; declarations of war, mobilization, and Germany’s invasion of Belgium widened the conflict. The Lusitania sinking influenced U.S. opinion but did not bring immediate entry. Renewed unrestricted submarine warfare and the Zimmermann Telegram contributed to U.S. entry in 1917. The Armistice ended the fighting on November 11, 1918.',
     clueIds: ['main-map', 'sarajevo-date', 'lusitania-date', 'telegram-year', 'armistice-year']
