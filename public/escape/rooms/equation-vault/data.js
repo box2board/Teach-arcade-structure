@@ -172,7 +172,7 @@ window.ROOM_DATA = {
       learn: 'The final code is 2(8) + 6 = 22. It depends on two values earned and checked in earlier rooms.',
       reflect: 'How did you use both recovered values to calculate the code?',
       clueReward: { id: 'power-restored', label: 'Power restored', detail: 'The final code combined twice Relay A with the repaired-test value: 2a + c.' },
-      journal: 'The final code used both calibrated relays to restore power.'
+      journal: 'The final code combined the Relay A clue with the repaired-test value.'
     },
     {
       id: 'medium-final', type: 'Final relay', kind: 'multi', kicker: 'FINAL CONSOLE · RESTORE POWER', title: 'Prove the relay code',
