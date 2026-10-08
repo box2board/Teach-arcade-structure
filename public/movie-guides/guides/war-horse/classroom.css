@@ -1,7 +1,7 @@
 .wh-page { background:#f6f7fa; color:#17233b; }
 .wh-page main.container { max-width:1000px; padding-bottom:36px; }
-.wh-intro { padding:28px 0 14px; }
-.wh-intro h1 { font:700 clamp(28px,5vw,40px)/1.2 Poppins,system-ui,sans-serif; margin:8px 0 12px; }
+.wh-page .wh-intro { display:block; background:#eaf0f8; color:#17233b; padding:26px 30px; margin:20px 0; border-radius:12px; }
+.wh-intro h1 { color:#17233b; font:700 clamp(28px,5vw,40px)/1.2 Poppins,system-ui,sans-serif; margin:8px 0 12px; }
 .wh-intro p { color:#475569; font:400 17px/1.6 Nunito,system-ui,sans-serif; max-width:680px; margin:0 0 12px; }
 .wh-kicker { color:#1d4ed8; font:700 12px/1.4 Poppins,system-ui,sans-serif; letter-spacing:.08em; text-transform:uppercase; }
 .wh-meta { color:#475569; font:600 14px/1.6 Nunito,system-ui,sans-serif; }
@@ -34,5 +34,5 @@ button.mg-btn { cursor:pointer; line-height:1.4; }
 .wh-export { padding:20px; border:1px solid #dce2eb; border-radius:12px; background:#fff; margin-top:20px; }
 .wh-page a:focus-visible,.wh-page button:focus-visible,.wh-page summary:focus-visible { outline:3px solid #f59e0b; outline-offset:3px; }
 .wh-page [hidden] { display:none!important; }
-@media(max-width:650px) { .wh-options,.wh-student-info { grid-template-columns:1fr; } .wh-intro { padding-top:20px; } .wh-option { padding:18px; } }
+@media(max-width:650px) { .wh-options,.wh-student-info { grid-template-columns:1fr; } .wh-page .wh-intro { padding:22px 20px; } .wh-option { padding:18px; } }
 @media print { body.wh-page { background:white; } .wh-page #site-header,.wh-page .breadcrumbs,.wh-page .wh-screen,.wh-page footer { display:none!important; } .wh-page .wh-export { border:0; padding:0; display:block!important; } .wh-page main.container { max-width:none; } .wh-export-content { color:black; font:11pt/1.5 Arial,sans-serif; } }
