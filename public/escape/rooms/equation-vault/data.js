@@ -141,9 +141,9 @@ window.ROOM_DATA = {
         { label: 'Board equation', text: '2(3x − 4) = 4x + 10', source: 'Prototype calibration board' },
         { label: 'Lock protocol', text: 'The console requires the distributed equation and the final value of x.', source: 'Two-part safety keypad' }
       ],
-      prompt: 'Distribute first, then solve. The lock accepts the simplified left side and the value of x as separate entries.',
+      prompt: 'Distribute first, then solve. The lock accepts the coefficient on x after distribution and the value of x as separate entries.',
       parts: [
-        { label: 'After distributing 2', placeholder: 'Simplified left side, such as 6x − 8', answers: ['6x - 8', '6x−8'] },
+        { label: 'Coefficient on x after distribution', placeholder: 'Enter the coefficient', answers: ['6'] },
         { label: 'Solution for x', placeholder: 'Enter the value of x', answers: ['9'] }
       ],
       hints: ['Multiply 2 by each term inside the parentheses.', 'After distributing, collect variable terms on one side and constants on the other.', '6x − 8 = 4x + 10; subtract 4x, add 8, then divide by 2.'],
