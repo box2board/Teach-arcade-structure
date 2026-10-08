@@ -9,12 +9,14 @@ window.ROOM_DATA = {
   missionQuestionLabel: 'SYSTEM OBJECTIVE',
   insightLabel: 'ALGEBRA INSIGHT · WHAT THE EQUATION SHOWS',
   victoryTitle: 'Lab restored',
+  reasoningNotes: false,
+  difficultyIntro: 'Choose a challenge level. Higher levels add more rooms and more complex algebra problems.',
   missionQuestion: 'Can your team restore the lab’s power by solving equations, checking a faulty solution, and using the results to calculate the final access code?',
   completion: 'The vault is open. You balanced equations, diagnosed an error, and combined the values from your evidence cards to restore the lab safely.',
   difficultyLevels: [
-    { id: 'easy', label: 'Easy', description: 'A guided route through inverse operations and one-step reasoning. Notes are optional.' },
-    { id: 'medium', label: 'Medium', description: 'Solve multi-step equations, diagnose a mistake, and support each decision with a reasoning note.' },
-    { id: 'hard', label: 'Hard', description: 'Work with distribution, variables on both sides, and a multi-part code. Reasoning notes are required.' }
+    { id: 'easy', label: 'Easy', description: 'A guided route through inverse operations and one-step reasoning.' },
+    { id: 'medium', label: 'Medium', description: 'Solve multi-step equations, diagnose a mistake, and use earlier clues to open the final lock.' },
+    { id: 'hard', label: 'Hard', description: 'Work with distribution, variables on both sides, and a multi-part code.' }
   ],
   difficultyProfiles: {
     easy: {
@@ -22,11 +24,11 @@ window.ROOM_DATA = {
       sceneOrder: ['dispatch', 'inverse-map', 'balance-sequence', 'error-check', 'easy-final']
     },
     medium: {
-      label: 'Medium', requireReasoning: true, minReasoningLength: 25,
+      label: 'Medium', requireReasoning: false,
       sceneOrder: ['dispatch', 'inverse-map', 'balance-sequence', 'error-check', 'variable-lock', 'model-match', 'medium-final']
     },
     hard: {
-      label: 'Hard', requireReasoning: true, minReasoningLength: 50,
+      label: 'Hard', requireReasoning: false,
       sceneOrder: ['dispatch', 'inverse-map', 'error-check', 'distribution-lock', 'balance-sequence', 'variable-lock', 'model-match', 'hard-final']
     }
   },
