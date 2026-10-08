@@ -41,7 +41,7 @@ const unlockAt=type=>milestones.find(m=>m.unlocks.includes(type))?.population||0
 const near=(a,b,r)=>Math.max(b.x-a.x,0,a.x-(b.x+(b.w||1)-1))+Math.max(b.y-a.y,0,a.y-(b.y+(b.h||1)-1))<=r;
 class City{
  constructor(mode='free'){
-  this.earnedGoals=[];this.peakPopulation=0;this.mode=mode;this.funds=15000;this.month=1;this.tax=9;this.tiles=[];
+  this.experience={scenario:null,complete:false,guided:false};this.earnedGoals=[];this.peakPopulation=0;this.mode=mode;this.funds=15000;this.month=1;this.tax=9;this.tiles=[];
   for(let y=0;y<H;y++)for(let x=0;x<W;x++){
    const river=36+Math.round(Math.sin(y/5)*2);
    this.tiles.push({x,y,type:terrainAt(x,y),level:0,progress:0,anchor:y*W+x,w:1,h:1,powered:false,watered:false,access:false});
@@ -164,9 +164,31 @@ class City{
    else if(!reasons.length&&t.level<3){t.progress++;if(t.progress>=2){t.level++;t.progress=0;}}
    else t.progress=0;
   }
-  this.update();if(this.mode==='manager')this.funds+=this.balance;this.awardGoals();this.month++;return this;
+  this.update();if(this.mode==='manager')this.funds+=this.balance;this.awardGoals();if(this.mode==='manager'&&this.scenarioProgress()?.done)this.experience.complete=true;this.month++;return this;
  }
- save(){return {version:5,earnedGoals:[...this.earnedGoals],peakPopulation:this.peakPopulation,mode:this.mode,funds:this.funds,month:this.month,tax:this.tax,tiles:this.tiles.map(t=>this.state(t))};}
+ scenarioProgress(){
+  const id=this.experience.scenario;if(!id)return null;
+  const occupied=this.anchors().filter(t=>zones.includes(t.type)&&t.level>0),homes=occupied.filter(t=>t.type==='home');
+  const missing=occupied.filter(t=>!t.access||!t.powered||!t.watered).length,polluted=homes.filter(t=>t.polluted).length;
+  const definitions={
+   village:{title:'From the ground up',detail:`Reach 64 residents and a nonnegative monthly balance. Residents: ${this.population}/64 · Balance: $${this.balance}`,done:this.population>=64&&this.balance>=0},
+   utilities:{title:'Lights back on',detail:`Restore road, power and water to every occupied lot; keep at least 64 residents. Unserved lots: ${missing} · Residents: ${this.population}/64`,done:occupied.length>0&&missing===0&&this.population>=64},
+   'clean-air':{title:'Room to breathe',detail:`Keep 64 residents, remove pollution from all occupied homes and reach 70% well-being. Polluted homes: ${polluted} · Well-being: ${this.happiness}% · Residents: ${this.population}/64`,done:homes.length>0&&polluted===0&&this.happiness>=70&&this.population>=64}
+  };return {...definitions[id],complete:this.experience.complete};
+ }
+ static start(mode='free',layout='blank',scenario=null){
+  const c=new City(mode);c.experience={scenario,complete:false,guided:mode==='manager'&&!scenario};
+  if(layout==='starter'||scenario==='utilities'||scenario==='clean-air'){
+   // Build at normal prices, then populate an established starter neighborhood.
+   for(let x=2;x<=29;x++)c.build(x,16,'road');
+   for(const [x,y,type]of [[2,14,'power'],[6,14,'water'],[23,14,'water'],[10,18,'park']])c.build(x,y,type);
+   for(const [a,b,type]of [[9,16,'home'],[18,21,'shop'],[26,28,'industry']])for(let x=a;x<=b;x++){c.build(x,15,type);c.at(x,15).level=2;}
+   if(scenario==='utilities'){c.build(6,14,'erase');c.build(23,14,'erase');c.funds=4000;}
+   if(scenario==='clean-air'){c.build(18,15,'erase');c.build(18,15,'industry');c.at(18,15).level=2;c.funds=4500;}
+   c.update();
+  }return c;
+ }
+ save(){return {version:5,experience:{...this.experience},earnedGoals:[...this.earnedGoals],peakPopulation:this.peakPopulation,mode:this.mode,funds:this.funds,month:this.month,tax:this.tax,tiles:this.tiles.map(t=>this.state(t))};}
  static load(data){
   if(!data||![1,2,3,4,5].includes(data.version)||!['free','manager'].includes(data.mode)||!Number.isFinite(data.funds)||Math.abs(data.funds)>1e12||!Number.isInteger(data.month)||data.month<1||data.month>1e9||!Number.isInteger(data.tax)||data.tax<0||data.tax>20||!Array.isArray(data.tiles)||data.tiles.length!==W*H)throw Error('This is not a valid CityCanvas save.');
   if(data.version>=4&&(!Number.isInteger(data.peakPopulation)||data.peakPopulation<0||data.peakPopulation>W*H*24))throw Error('Invalid city milestone history.');
@@ -186,6 +208,7 @@ class City{
    if(['land','river','road','bridge','home','shop','industry','park'].includes(t.type)&&(!single||t!==a))throw Error('Invalid occupied terrain.');
    if(t===a)for(const c of city.footprint(a))if(c.anchor!==a.anchor)throw Error('Incomplete building footprint.');
   }
+  if(data.experience){const e=data.experience;if(![null,'village','utilities','clean-air'].includes(e.scenario)||typeof e.complete!=='boolean'||typeof e.guided!=='boolean')throw Error('Invalid play experience.');city.experience={scenario:e.scenario,complete:e.complete,guided:e.guided};}
   city.earnedGoals=data.version===5?[...data.earnedGoals]:[];city.peakPopulation=data.version>=4?data.peakPopulation:Math.max(0,...city.anchors().map(t=>unlockAt(t.type)));city.funds=data.funds;city.month=data.month;city.tax=data.tax;return city.update();
  }
 }
