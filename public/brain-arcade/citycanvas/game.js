@@ -20,6 +20,11 @@ $('inspect').replaceChildren(...rows.map((value,i)=>{const el=document.createEle
 function management(){
 $('readiness').replaceChildren(...city.readiness.map(row=>{const p=document.createElement('p');p.textContent=`${types[row.type].name}: ${row.ready} ready to grow · ${row.waiting} waiting`;return p;}));
 if($('budgetDialog').open)showBudget();updateLegend();updateGoals();
+ const next=city.neighborhoodProgress.find(g=>!g.earned);
+ $('neighborhoodCard').hidden=city.mode!=='manager';
+ $('neighborhoodTitle').textContent=next?next.title:'Neighborhood goals complete!';
+ $('neighborhoodDetail').textContent=next?`${next.count}/${next.target} qualifying buildings · $${next.reward.toLocaleString()} reward`:'All three rewards earned. Keep growing your city.';
+ $('neighborhoodProgress').max=next?.target||3;$('neighborhoodProgress').value=next?.count||(!next?3:0);
 }
 function updateGoals(){
  const next=city.nextMilestone,rank=city.milestone;
@@ -35,7 +40,11 @@ function updateGoals(){
  if($('goalsDialog').open)showGoals();
 }
 let noticeTimer,requestSignature='';
-function showGoals(){$('goalList').replaceChildren(...milestones.map(m=>{const li=document.createElement('li');li.className=city.peakPopulation>=m.population?'earned':'';li.textContent=`${city.peakPopulation>=m.population?'✓':'○'} ${m.name} · ${m.population} residents`+(m.unlocks.length?' · '+m.unlocks.map(t=>types[t].name).join(' + '):m.population===640?' · Thriving city badge':'');return li;}));}
+function showGoals(){$('goalList').replaceChildren(...milestones.map(m=>{const li=document.createElement('li');li.className=city.peakPopulation>=m.population?'earned':'';li.textContent=`${city.peakPopulation>=m.population?'✓':'○'} ${m.name} · ${m.population} residents`+(m.unlocks.length?' · '+m.unlocks.map(t=>types[t].name).join(' + '):m.population===640?' · Thriving city badge':'');return li;}));
+ $('neighborhoodRules').textContent=city.mode==='manager'?'Rewards are paid automatically at month-end, once per goal. Earned goals stay completed, even if neighborhoods later change.':'Optional in Free Build: no rewards or restrictions. Switch to City Manager to earn cash rewards at month-end.';
+ $('neighborhoodList').replaceChildren(...city.neighborhoodProgress.map(goal=>{const li=document.createElement('li');li.className=goal.earned?'earned':'';const title=document.createElement('strong');title.textContent=(goal.earned?'✓ ':'○ ')+goal.title;const detail=document.createElement('p');detail.textContent=goal.detail;const progress=document.createElement('p');progress.textContent=goal.earned?`Completed · $${goal.reward.toLocaleString()} reward earned`:`${goal.count}/${goal.target} qualifying buildings · $${goal.reward.toLocaleString()} reward`;li.append(title,detail,progress);return li;}));
+}
+$('neighborhoodOpen').onclick=()=>{showGoals();$('goalsDialog').showModal();};
 $('goalsOpen').onclick=()=>{showGoals();$('goalsDialog').showModal();};$('goalsClose').onclick=()=>$('goalsDialog').close();
 function showBudget(){
 $('budgetMode').textContent=city.mode==='free'?'Free Build: these costs are estimates; your funds are unlimited.':'City Manager: this balance is added to your funds each month.';
