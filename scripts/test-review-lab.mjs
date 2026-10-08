@@ -8,10 +8,11 @@ for(const set of QUESTION_SETS){
  for(const game of gamesForSet(set.id)){
   assert(setsForGame(game.id).some(s=>s.id===set.id));
   const url=new URL(gameUrl(game.id,set.id),'https://teacharcade.com');assert.equal(url.searchParams.get('set'),set.id);
+  if(game.id!=='acorn-dash')continue;
   const w=new CrossingWorld(bank);assert.equal(w.deck.length,game.questionCount);assert.equal(new Set(w.deck.map(q=>q.id)).size,game.questionCount);
  }
 }
-assert.equal(GAMES.length,3);assert.equal(QUESTION_SETS.length,1);
+assert.equal(GAMES.length,4);assert.equal(QUESTION_SETS.length,3);
 assert.throws(()=>gameUrl('acorn-dash','unapproved-topic'));assert.throws(()=>gameUrl('missing-game'));assert.equal(gameUrl('category-clash'),'/review-lab/category-clash/');assert.throws(()=>gameUrl('category-clash','scientific-method'));
 await assert.rejects(loadQuestionSet('unapproved-topic'));
 const index=await buildContentIndex();assert.equal(index.filter(item=>item.canonicalUrl==='/review-lab/acorn-dash/').length,1);
@@ -24,3 +25,7 @@ console.log('PASS: shared approved catalog, topic/game compatibility, deep links
 assert.equal(gameUrl('review-pinball'),'/review-lab/review-pinball/');
 assert.equal(index.filter(item=>item.canonicalUrl==='/review-lab/review-pinball/').length,1);
 assert(!index.some(item=>item.canonicalUrl.startsWith('/arcade-review-games/review-pinball/')));
+
+assert.equal(gameUrl('snow-day-defenders','constitution-basics'),'/review-lab/snow-day-defenders/?set=constitution-basics');
+assert.equal(index.filter(item=>item.canonicalUrl==='/review-lab/snow-day-defenders/').length,1);
+assert(!index.some(item=>item.canonicalUrl.startsWith('/dev/snow-day-defenders/')));

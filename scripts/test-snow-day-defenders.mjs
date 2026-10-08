@@ -1,0 +1,303 @@
+import {GEAR,REWARD_RULES,answerReward,freshGear,gearPrice,purchaseGear,equipGear,validateQuestions} from '../public/review-lab/snow-day-defenders/gear.js';
+import {DEMO_QUESTIONS} from '../public/review-lab/snow-day-defenders/questions.js';
+import {loadQuestionSet,setsForGame} from '../public/review-lab/catalog.js';
+import {prepareSnowQuestions} from '../public/review-lab/snow-day-defenders/question-adapter.js';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import vm from 'node:vm';
+import * as THREE from '../public/assets/vendor/three-0.162.0/three.module.js';
+import {fitSnowCamera} from '../public/review-lab/snow-day-defenders/camera.js';
+import {segmentSphereHit} from '../public/review-lab/snow-day-defenders/collision.js';
+import {UPGRADE_RULES,freshUpgrades,grantTokens,canBuy,buyUpgrade} from '../public/review-lab/snow-day-defenders/upgrades.js';
+import {CREATURE_TYPES,advanceCreature} from '../public/review-lab/snow-day-defenders/creatures.js';
+import {DIFFICULTIES,WAVE_PATTERNS,buildWave} from '../public/review-lab/snow-day-defenders/waves.js';
+
+// Run actual gameplay against real Three.js scene objects. Only WebGL rendering
+// and DOM elements are stubbed; this does not verify pixels or device performance.
+class Element {
+ constructor(){this.handlers={};this.dataset={};this.hidden=false;this.disabled=false;this.textContent='';}
+ addEventListener(k,f){(this.handlers[k]||=[]).push(f);}
+ fire(k,e={}){for(const f of this.handlers[k]||[])f(e);}
+ querySelector(){return this.child||=new Element();}
+ focus(){if(this.ownerDocument)this.ownerDocument.activeElement=this;}
+ setAttribute(name,value){(this.attributes||={})[name]=value;}
+ click(){if(!this.disabled)this.fire('click');}
+ setPointerCapture(){}
+ getBoundingClientRect(){return {left:0,top:0,width:1100,height:620};}
+}
+function harness({fullscreen=false,equipment=false,questionSet}={}){
+ const window=new Element(),document=new Element();window.SNOW_QUESTION_SET=questionSet;document.activeElement=null;
+ const elements=new Map(),get=id=>{if(!elements.has(id))elements.set(id,Object.assign(new Element(),{ownerDocument:document}));return elements.get(id);};
+ Object.assign(get('stage'),{clientWidth:1100,clientHeight:620});
+ document.getElementById=get;document.hidden=false;
+ if(fullscreen){get('game-panel').requestFullscreen=async()=>{document.fullscreenElement=get('game-panel');document.fire('fullscreenchange');};document.exitFullscreen=async()=>{document.fullscreenElement=null;document.fire('fullscreenchange');};}
+ const inputs=['easy','medium','hard'].map(value=>Object.assign(new Element(),{value,checked:value==='easy'}));document.querySelectorAll=()=>inputs;
+ let callback,scene,clock=0,seed=42;
+ const math=Object.create(Math);math.random=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296;};
+ class Renderer {constructor(){this.shadowMap={};}setPixelRatio(){}setSize(){}render(s){scene=s;}}
+ const ctx={GEAR,REWARD_RULES,answerReward,freshGear,gearPrice,purchaseGear,equipGear,validateQuestions,DEMO_QUESTIONS,CREATURE_TYPES,advanceCreature,fitSnowCamera,THREE:{...THREE,WebGLRenderer:Renderer},UPGRADE_RULES,freshUpgrades,grantTokens,canBuy,buyUpgrade,DIFFICULTIES,WAVE_PATTERNS,buildWave:(d,w)=>buildWave(d,w,math.random),segmentSphereHit,window,document,Math:math,devicePixelRatio:1,ResizeObserver:class{observe(){}},performance:{now:()=>clock},requestAnimationFrame:f=>callback=f,console};
+ vm.createContext(ctx);vm.runInContext(fs.readFileSync(new URL('../public/review-lab/snow-day-defenders/game.js',import.meta.url),'utf8').replace(/^import .*?;\n/gm,'').replace(/^export /gm,''),ctx);
+ if(!equipment)vm.runInContext('equipmentEnabled=false;',ctx);
+ const step=(n=1)=>{for(let i=0;i<n;i++){clock+=50;callback(clock);}};
+ const state=()=>window.snowDayState();
+ const key=(key,type='keydown',options={})=>window.fire(type,{key,preventDefault(){},...options});
+ const select=value=>{for(const i of inputs)i.checked=i.value===value;inputs.find(i=>i.value===value).fire('change');};
+ const click=id=>get(id).fire('click');
+ const aim=()=>{const creatures=scene.children.filter(g=>g.userData.snowCreature&&g.scale.x>.6&&g.position.z<7.9).sort((a,b)=>b.position.z-a.position.z);key('a','keyup');key('d','keyup');if(creatures[0]){const delta=creatures[0].position.x-state().playerX;if(Math.abs(delta)>.18)key(delta>0?'d':'a');}};
+ return {get,step,state,key,select,click,aim,focused:()=>[...elements].find(([,e])=>e===document.activeElement)?.[0],fixture:source=>vm.runInContext(source,ctx)};
+}
+for(const level of Object.keys(DIFFICULTIES))for(let wave=0;wave<3;wave++){
+ const plan=buildWave(level,wave,()=>.5);
+ assert.equal(plan.events.length,DIFFICULTIES[level].counts[wave]);
+ assert(plan.events.every((e,i)=>e.x>=-5.1&&e.x<=5.1&&e.type>=0&&e.type<CREATURE_TYPES.length&&(!i||e.at>=plan.events[i-1].at)));
+ if(wave===1)assert(plan.events.some((e,i,a)=>i&&e.at===a[i-1].at&&e.x*a[i-1].x<0),'split rush must arrive on both sides simultaneously');
+}
+const start={x:0,y:2,z:3},end={x:0,y:2,z:-3};
+assert.equal(segmentSphereHit(start,end,{x:0,y:0,z:0},.7),null);
+assert.notEqual(segmentSphereHit({...start,y:0},{...end,y:0},{x:0,y:0,z:0},.7),null);
+let economy=freshUpgrades();assert(!canBuy(economy,'double',100));grantTokens(economy,3);assert(!canBuy(economy,'repair',100));assert.equal(buyUpgrade(economy,'repair',90).fort,100);assert(buyUpgrade(economy,'double',100).purchased);assert(!buyUpgrade(economy,'double',100).purchased);
+
+for(const level of Object.keys(DIFFICULTIES)){
+ const h=harness();h.select(level);h.click('start');assert.equal(h.state().difficulty,level);
+ h.key('ArrowRight');h.step(10);h.key('ArrowRight','keyup');assert(h.state().playerX>3);
+ h.click('pause');const paused=JSON.stringify(h.state());h.step(20);assert.equal(JSON.stringify(h.state()),paused);h.click('start');h.click('restart');
+ let frames=0,breaks=0;
+ while(!['won','lost'].includes(h.state().mode)&&frames++<15000){
+  if(h.state().mode==='between'){
+   const before=h.state();assert(!h.get('shop').hidden);h.step(20);assert.equal(h.state().spawned,before.spawned);assert.equal(h.state().upgrades.tokens,before.upgrades.tokens);
+   assert(before.burstCharges>=1&&before.burstCharges<=3,'wave breaks replenish charges up to the cap');
+   const id=breaks++===0?'double':'powder';h.click(`upgrade-${id}`);assert(h.state().upgrades[id]);assert.equal(h.state().upgrades.tokens,before.upgrades.tokens-2);
+   h.click(`upgrade-${id}`);assert.equal(h.state().upgrades.tokens,before.upgrades.tokens-2);
+   if(level==='hard'&&h.state().fort<100)h.click('upgrade-repair');
+   h.select(level==='hard'?'easy':'hard');h.click('start');assert.equal(h.state().difficulty,level,'cannot change difficulty mid-run');continue;
+  }
+  if(level==='hard'){
+   const lead=h.fixture('enemies.slice().sort((a,b)=>b.z-a.z)[0]?.x');
+   if(lead!==undefined&&Math.abs(lead-h.state().playerX)>3&&h.state().dashCooldown===0)h.key(lead>h.state().playerX?'e':'q');
+   const close=h.fixture('enemies.filter(e=>Math.hypot(e.x-player.position.x,e.z-player.position.z)<=BURST_RADIUS).length');
+   if(close>=2&&h.state().burstCooldown===0&&h.state().burstCharges>0)h.key('b');
+  }
+  h.aim();h.step();
+ }
+ if(level==='hard'){assert(h.state().burstUses>0,'Hard playtest uses close-range bursts');assert(h.state().fort<100,'Hard playtest creates meaningful fort pressure');}
+ assert.equal(h.state().mode,'won',`${level} should be beatable with upgrades`);assert.equal(h.state().wave,3);assert(h.state().defeatedByType.every(n=>n>0));assert.equal(breaks,2);assert(h.state().splashHits>0,'powder burst must hit neighboring creatures');
+ h.click('restart');assert.equal(h.state().upgrades.tokens,0);assert(!h.state().upgrades.double&&!h.state().upgrades.powder);assert.equal(h.state().wave,1);assert.equal(h.state().burstCharges,2);assert.equal(h.state().burstUses,0);
+ console.log(`PASS: ${level} full run, upgrade breaks, collisions, all creature types, pause, difficulty lock, restart`);
+}
+const loss=harness();loss.select('hard');loss.click('start');loss.key('ArrowRight');loss.step(20);loss.key('ArrowRight','keyup');
+for(let i=0;i<10000&&loss.state().mode!=='lost';i++){if(loss.state().mode==='between')loss.click('start');loss.step();}
+assert.equal(loss.state().mode,'lost');assert.equal(loss.state().fort,0);
+console.log('PASS: wave schedules, split rush, 3D collision, upgrade economy, fort loss');
+
+const abilities=harness();
+abilities.click('dash-right');abilities.key(' ');assert.equal(abilities.state().playerX,0);assert.equal(abilities.state().burstUses,0);
+abilities.click('start');abilities.key(' ');assert.equal(abilities.state().burstCharges,2,'empty burst must preserve charge');
+abilities.key('e');abilities.step();assert(abilities.state().playerX>1);assert(abilities.state().dashCooldown>2);
+abilities.click('pause');const frozen=JSON.stringify(abilities.state());abilities.step(40);assert.equal(JSON.stringify(abilities.state()),frozen,'pause freezes active dash and cooldown');
+abilities.key('q');abilities.click('snow-burst');assert.equal(JSON.stringify(abilities.state()),frozen,'paused abilities must be inert');
+abilities.click('start');abilities.step(3);assert(Math.abs(abilities.state().playerX-3.52)<.001,'dash has a fixed distance');
+abilities.key('q');abilities.step();assert(Math.abs(abilities.state().playerX-3.52)<.001,'dash cooldown blocks reuse');
+abilities.step(60);abilities.key('q','keydown',{repeat:true});assert.equal(abilities.state().dashCooldown,0,'held key must not auto-trigger dash');
+abilities.click('dash-left');abilities.step(4);assert(Math.abs(abilities.state().playerX)<.001,'touch dash uses same movement');
+abilities.step(60);abilities.key('ArrowRight');abilities.step(30);abilities.key('ArrowRight','keyup');abilities.key('e');abilities.step(4);assert.equal(abilities.state().playerX,5.7);assert.equal(abilities.state().dashCooldown,0,'edge dash preserves cooldown');
+abilities.click('restart');assert.equal(abilities.state().dashCooldown,0);
+// Controlled crowd fixture checks actual area damage and exclusion at the boundary.
+abilities.fixture("enemies.forEach(disposeEntity);enemies=[creature(0,0,0),creature(1,1,0),creature(2,-1,0),creature(0,0,-20)];");
+abilities.key(' ');assert.equal(abilities.state().burstCharges,1);assert.equal(abilities.state().burstHits,5);assert.equal(abilities.state().cleared,2);assert.equal(abilities.state().enemies,2);
+assert.equal(abilities.fixture('enemies[0].hp'),3,'giant takes two hits');assert.equal(abilities.fixture('enemies[1].hp'),2,'distant creature is untouched');
+assert(abilities.fixture('enemies[0].z')<-2,'survivors are pushed away from the fort');
+abilities.click('snow-burst');assert.equal(abilities.state().burstCharges,1,'burst cooldown prevents double spend');
+abilities.step(25);abilities.fixture('enemies[0].z=0;enemies[0].root.position.z=0;');abilities.key('b');assert.equal(abilities.state().burstCharges,0);assert.equal(abilities.state().burstUses,2);
+abilities.step(25);const spent=abilities.state().burstHits;abilities.click('snow-burst');assert.equal(abilities.state().burstHits,spent,'empty charges block burst');
+abilities.click('restart');assert.equal(abilities.state().burstCharges,2);assert.equal(abilities.state().burstHits,0);assert.equal(abilities.state().burstCooldown,0);
+abilities.fixture("mode='between';");const between=JSON.stringify(abilities.state());abilities.click('dash-left');abilities.click('snow-burst');assert.equal(JSON.stringify(abilities.state()),between,'upgrade breaks block abilities');
+abilities.fixture("mode='playing';burstCharges=0;spawned=wavePlan.events.length;enemies.forEach(disposeEntity);enemies=[];");abilities.step();assert.equal(abilities.state().mode,'between');assert.equal(abilities.state().burstCharges,1,'wave break replenishes a spent charge');
+console.log('PASS: keyboard/touch dash, fixed distance, edge limits, cooldowns, repeat guard, pause, burst area damage, charge limits, restart');
+
+const menu=harness();menu.click('start');
+menu.fixture("spawned=wavePlan.events.length;enemies.forEach(disposeEntity);enemies=[];fort=90;");menu.step();
+assert.equal(menu.state().mode,'between');assert.equal(menu.focused(),'upgrade-double','upgrade screen receives keyboard focus');
+assert.equal(menu.get('overlay').dataset.mode,'between');assert.equal(menu.get('overlay').attributes['aria-modal'],'true');
+menu.key('ArrowRight');assert.equal(menu.focused(),'upgrade-sticky');menu.key('ArrowDown');assert.equal(menu.focused(),'upgrade-repair');
+menu.key('Enter');assert.equal(menu.state().fort,100);assert.equal(menu.state().upgrades.tokens,2);assert.equal(menu.focused(),'upgrade-double','disabled repair loses selection after purchase');
+menu.key('ArrowDown');assert.equal(menu.focused(),'upgrade-powder');menu.key('Enter','keydown',{repeat:true});assert(!menu.state().upgrades.powder,'held Enter cannot purchase');
+menu.key('Enter');assert(menu.state().upgrades.powder);assert.equal(menu.state().upgrades.tokens,0);assert.equal(menu.focused(),'start','next-wave button receives focus when upgrades are unavailable');
+for(const key of ['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Tab']){menu.key(key);assert.equal(menu.focused(),'start','navigation skips disabled upgrades');}
+menu.key('Enter');assert.equal(menu.state().wave,2);assert.equal(menu.state().mode,'playing');assert(menu.get('overlay').hidden);assert.equal(menu.focused(),'scene','starting next wave restores game controls');
+menu.fixture("spawned=wavePlan.events.length;enemies.forEach(disposeEntity);enemies=[];");menu.step();
+assert.equal(menu.focused(),'upgrade-double');menu.key('Tab','keydown',{shiftKey:true});assert.equal(menu.focused(),'start','Shift-Tab wraps within the menu');
+menu.key('ArrowUp');assert.equal(menu.focused(),'upgrade-double','up skips equipped and unavailable bottom-row upgrades');
+menu.key('ArrowRight');assert.equal(menu.focused(),'upgrade-sticky');menu.key(' ');assert(menu.state().upgrades.sticky);assert.equal(menu.focused(),'start');
+console.log('PASS: upgrade arrow navigation, keyboard purchases, repeat guard, disabled options, focus containment, keyboard next wave');
+
+const taps=harness();taps.click('start');
+taps.key('ArrowRight');taps.step();taps.key('ArrowRight','keyup');taps.step(2);taps.key('ArrowRight');
+assert(taps.state().dashTime>0,'quick second right-arrow tap triggers dash');taps.key('ArrowRight','keyup');taps.step(4);assert(taps.state().playerX>3.5);
+taps.key('ArrowLeft');taps.key('ArrowLeft','keyup');taps.key('ArrowLeft');assert.equal(taps.fixture('dashDirection'),1,'double-tap respects dash cooldown');
+taps.click('restart');taps.key('ArrowLeft');taps.step();taps.key('ArrowLeft','keyup');taps.step(6);taps.key('ArrowLeft');assert.equal(taps.state().dashTime,0,'slow second tap remains ordinary movement');
+taps.click('restart');taps.key('ArrowLeft');taps.key('ArrowLeft','keydown',{repeat:true});taps.key('ArrowLeft');assert.equal(taps.state().dashTime,0,'held key or duplicate keydown does not trigger dash');
+taps.key('ArrowLeft','keyup');taps.key('ArrowRight');assert.equal(taps.state().dashTime,0,'opposite arrows are not a double tap');
+taps.click('restart');taps.key('ArrowLeft');taps.key('ArrowLeft','keyup');taps.click('pause');taps.click('start');taps.key('ArrowLeft');assert.equal(taps.state().dashTime,0,'pause clears tap history');taps.key('ArrowLeft','keyup');taps.step();taps.key('ArrowLeft');assert(taps.state().dashTime>0,'left-arrow double tap works');
+const feedback=harness();feedback.click('start');feedback.fixture('wavePlan.warnings=[];');feedback.key(' ');
+assert.equal(feedback.state().burstCharges,2);assert(!feedback.get('ability-feedback').hidden);assert.match(feedback.get('ability-feedback').textContent,/charge saved/);assert.equal(feedback.state().shockwaves,1,'empty burst shows its range');
+feedback.step(21);assert.equal(feedback.state().shockwaves,0,'range effect cleans up');feedback.step(30);assert(feedback.get('ability-feedback').hidden,'notification expires');
+feedback.fixture("enemies=[creature(0,0,0)];");feedback.step();assert.equal(feedback.get('snow-burst').dataset.ready,'true');feedback.key(' ');
+assert.equal(feedback.state().burstCharges,1);assert.equal(feedback.get('ability-feedback').dataset.kind,'burst');assert.match(feedback.get('ability-feedback').textContent,/1 creature hit/);assert.equal(feedback.state().shockwaves,1);
+feedback.key('b');assert.match(feedback.get('ability-feedback').textContent,/cooling/);feedback.step(25);feedback.fixture('burstCharges=0;');feedback.key(' ');assert.match(feedback.get('ability-feedback').textContent,/No Snow Burst charges/);
+feedback.click('restart');assert(feedback.get('ability-feedback').hidden);assert.equal(feedback.state().shockwaves,0);
+console.log('PASS: left/right double-tap dash, timing window, held-key guard, cooldown, pause reset, burst notifications, range effect, ready indicator, effect cleanup');
+
+for(const [width,height] of [[1100,433],[1250,570],[1920,880],[380,590],[730,260],[320,380]]){
+ const camera=new THREE.PerspectiveCamera(43,1,.1,100);fitSnowCamera(camera,width,height);
+ for(const z of [-33,10])for(const x of [-7,7])for(const y of [0,4.2]){
+  const p=new THREE.Vector3(x,y,z).project(camera);
+  assert(Math.abs(p.x)<=.90001&&Math.abs(p.y)<=.90001&&p.z<1,`play area must stay visible at ${width}x${height}`);
+ }
+ const ray=new THREE.Raycaster(),playerPosition=new THREE.Vector3(0,0,5.6),screen=playerPosition.clone().project(camera),hit=new THREE.Vector3();
+ ray.setFromCamera(new THREE.Vector2(screen.x,screen.y),camera);
+ ray.ray.intersectPlane(new THREE.Plane(new THREE.Vector3(0,1,0),0),hit);
+ assert(hit.distanceTo(playerPosition)<.00001,'new camera preserves drag-to-ground mapping');
+ if(width===1250){
+  const old=new THREE.PerspectiveCamera(43,width/height,.1,100);old.position.set(0,19,25);old.lookAt(0,0,-10);old.updateMatrixWorld();
+  const projectedHeight=c=>new THREE.Vector3(0,2.3,5.6).project(c).y-playerPosition.clone().project(c).y;
+  assert(projectedHeight(camera)>projectedHeight(old)*1.3,'desktop framing noticeably enlarges player');
+ }
+}
+console.log('PASS: wide/portrait/landscape camera bounds, larger desktop player, pointer ray mapping');
+
+assert(harness().get('fullscreen').hidden,'unsupported browsers hide fullscreen button');
+const full=harness({fullscreen:true});full.click('start');assert(!full.get('fullscreen').hidden);
+full.click('fullscreen');await Promise.resolve();assert.equal(full.get('fullscreen').textContent,'Exit fullscreen');assert.equal(full.get('fullscreen').attributes['aria-pressed'],'true');assert.equal(full.focused(),'scene');
+full.click('fullscreen');await Promise.resolve();assert.equal(full.get('fullscreen').textContent,'Fullscreen');assert.equal(full.get('fullscreen').attributes['aria-pressed'],'false');
+full.fixture("gamePanel.requestFullscreen=async()=>{throw new Error('denied');};");full.click('fullscreen');await Promise.resolve();assert.match(full.get('ability-feedback').textContent,/Fullscreen could not start/);assert.equal(full.state().mode,'playing');
+console.log('PASS: fullscreen enter/exit, keyboard focus, unsupported browser, rejected request');
+
+const wiggler={type:3,x:4.8,baseX:4.8,z:-25,spawnZ:-30,age:0,roll:0,slowTime:0,speed:CREATURE_TYPES[3].speed,size:.9,phase:0};
+const positions=[];for(let i=0;i<160;i++){advanceCreature(wiggler,.05,1);positions.push(wiggler.x);assert(wiggler.x>=-5.1&&wiggler.x<=5.1);}
+assert(Math.max(...positions)-Math.min(...positions)>1,'wiggler visibly changes lanes');
+const roller=(z,slowTime=0)=>({type:4,x:0,baseX:0,z,spawnZ:-30,age:0,roll:0,slowTime,speed:CREATURE_TYPES[4].speed,size:1,phase:0});
+const far=roller(-30),near=roller(-4),slow=roller(-4,2.4);advanceCreature(far,.1,1);advanceCreature(near,.1,1);advanceCreature(slow,.1,1);
+assert(near.z+4>(far.z+30)*1.8,'roller accelerates as it approaches');assert(Math.abs((slow.z+4)/(near.z+4)-.55)<.00001,'sticky snow slows roller travel');assert(near.roll>0,'roller rotation follows traveled distance');
+for(const difficulty of Object.keys(DIFFICULTIES)){
+ assert.equal(DIFFICULTIES[difficulty].hp.length,CREATURE_TYPES.length);assert.equal(DIFFICULTIES[difficulty].damage.length,CREATURE_TYPES.length);
+ const types=new Set();
+ for(let i=0;i<3;i++){
+  const plan=buildWave(difficulty,i,()=>.5);plan.events.forEach(e=>types.add(e.type));
+  assert(plan.warnings.every((w,j)=>w.at>=0&&(!j||w.at>=plan.warnings[j-1].at)),'warnings are ordered');
+  const gaps=plan.events.slice(1).map((e,j)=>e.at-plan.events[j].at);
+  assert(Math.max(...gaps)>DIFFICULTIES[difficulty].cadence*4,'waves include breathing gaps');
+ }
+ assert.equal(types.size,CREATURE_TYPES.length,'every difficulty includes every creature type');
+}
+const models=harness();models.click('start');models.fixture('enemies=CREATURE_TYPES.map((_,i)=>creature(i,0,-10));wavePlan.warnings=[];');
+assert.equal(new Set(models.fixture('enemies.map(e=>e.root.userData.creatureType)')).size,5,'models have distinct identities');
+models.step(10);const moving=JSON.stringify(models.fixture('enemies.map(e=>[e.x,e.z,e.age,e.roll])'));models.click('pause');models.step(20);assert.equal(JSON.stringify(models.fixture('enemies.map(e=>[e.x,e.z,e.age,e.roll])')),moving,'pause freezes every creature movement rule');
+models.click('restart');models.step(80);assert(!models.get('incoming-warning').hidden,'new run displays a creature introduction outside the stage');assert.equal(models.get('status-row').dataset.warning,'true');assert(models.get('ability-feedback').hidden,'incoming warnings do not occupy the play area');
+console.log('PASS: five creature identities, weaving bounds, roller acceleration/rotation/slow, mixed wave coverage, pacing gaps, warnings, pause');
+
+const quiet=harness();quiet.click('start');quiet.fixture("wavePlan.warnings=[{at:.05,type:4,message:'New: Snow Rollers · build speed'},{at:.15,type:4,message:'Duplicate'}];");quiet.key(' ');const burstMessage=quiet.get('ability-feedback').textContent;quiet.step(4);
+assert.equal(quiet.get('incoming-warning').textContent,'New: Snow Rollers · build speed','creature introductions appear once per run');assert.equal(quiet.get('ability-feedback').textContent,burstMessage,'incoming messages cannot replace burst feedback');
+quiet.step(60);assert(quiet.get('incoming-warning').hidden);assert.equal(quiet.get('status-row').dataset.warning,'false','normal status returns after introduction');
+quiet.fixture("warningIndex=0;waveTime=0;wavePlan.warnings=[{at:.05,type:4,message:'Already introduced'}];");quiet.step(2);assert(quiet.get('incoming-warning').hidden,'previously introduced creatures stay quiet in later waves');
+quiet.click('restart');assert.equal(quiet.fixture('introducedTypes.size'),0);assert(quiet.get('incoming-warning').hidden);
+console.log('PASS: unobtrusive warning strip, one introduction per type per run, burst feedback isolation, timeout and restart');
+
+const polish=harness();polish.click('start');polish.fixture('wavePlan.events=[];wavePlan.warnings=[];enemies=[creature(2,0,-10)];');
+const beforeChunks=polish.fixture('enemies[0].snowChunks.filter(c=>c.visible).length');polish.fixture('damageCreature(enemies[0]);');assert(polish.fixture('enemies[0].snowChunks.filter(c=>c.visible).length')<beforeChunks,'hits remove visible snow chunks');assert(polish.fixture('enemies[0].pips.filter(p=>p.visible).length')===polish.fixture('enemies[0].hp'));
+polish.fixture('enemies[0].z=8;');polish.step();assert(polish.state().fort<100);assert.equal(polish.get('fort').dataset.hit,'true');assert(polish.fixture('fortMerlons.some(m=>!m.visible)'),'fort damage removes blocks');assert(polish.fixture('celebrationTime>0'),'wave clear starts a short celebration');
+polish.step(30);assert.equal(polish.get('fort').dataset.hit,'false');assert.equal(polish.fixture('celebrationTime'),0);assert.equal(polish.fixture('player.position.y'),0);
+polish.get('reduced-effects').checked=true;polish.get('reduced-effects').fire('change');assert(polish.fixture('!snowfall.visible&&!renderer.shadowMap.enabled'),'reduced effects removes snowfall and shadows');polish.fixture('celebrate();');assert.equal(polish.fixture('celebrationTime'),0);polish.click('restart');assert(polish.fixture('fortMerlons.every(m=>m.visible)'),'restart restores fort blocks');assert.equal(polish.get('fort').dataset.hit,'false');
+polish.get('reduced-effects').checked=false;polish.get('reduced-effects').fire('change');polish.click('pause');const snowBefore=polish.fixture('JSON.stringify(Array.from(snowPositions))');polish.step(20);assert.equal(polish.fixture('JSON.stringify(Array.from(snowPositions))'),snowBefore,'pause freezes ambient snow');polish.click('start');polish.step();assert.notEqual(polish.fixture('JSON.stringify(Array.from(snowPositions))'),snowBefore);assert.equal(polish.fixture('snowGeometry.attributes.position.count'),80,'snowfall stays bounded');
+console.log('PASS: visible creature wear, fort crumbling/flash/reset, brief celebration cleanup, reduced effects, bounded snowfall and pause');
+
+const passiveHard=harness();passiveHard.select('hard');passiveHard.click('start');passiveHard.step();let passiveFrames=0;
+while(!['won','lost'].includes(passiveHard.state().mode)&&passiveFrames++<15000){
+ if(passiveHard.state().mode==='between'){passiveHard.click(passiveHard.state().wave===1?'upgrade-double':'upgrade-powder');passiveHard.click('upgrade-repair');passiveHard.click('start');}
+ passiveHard.aim();passiveHard.step();
+}
+assert.equal(passiveHard.state().mode,'lost','simple follow-and-fire play cannot coast through Hard');
+assert(DIFFICULTIES.hard.aimWidth<DIFFICULTIES.medium.aimWidth&&DIFFICULTIES.medium.aimWidth<DIFFICULTIES.easy.aimWidth);assert(!DIFFICULTIES.hard.tracking&&DIFFICULTIES.easy.tracking);
+const straight=harness();straight.select('hard');straight.click('start');straight.fixture('wavePlan.events=[];wavePlan.warnings=[];enemies=[creature(0,0,-15)];');straight.step(6);const fired=straight.fixture('balls[0].velocity.clone()');straight.fixture('enemies[0].x=4;enemies[0].baseX=4;');straight.step();assert(Math.abs(straight.fixture('balls[0].velocity.x')-fired.x)<.00001,'Hard snowballs keep their launch trajectory');
+console.log('PASS: Hard requires active play, narrower aim, straight projectile trajectories; abilities/upgrades can complete all three waves');
+
+assert.equal(Object.keys(GEAR).length,17);assert.throws(()=>validateQuestions({...DEMO_QUESTIONS,questions:[DEMO_QUESTIONS.questions[0],DEMO_QUESTIONS.questions[0]]}));assert.throws(()=>validateQuestions({title:'Bad',questions:[{id:'x',prompt:'x',choices:['a'],answer:2,explanation:''}]}));
+const wallet={tokens:30},catalog=freshGear();assert(purchaseGear(catalog,wallet,'roller'));assert.equal(catalog.equipped.toss,'roller');assert(equipGear(catalog,'scoop'));assert(!equipGear(catalog,'dome'));assert(purchaseGear(catalog,wallet,'scoop'));assert(purchaseGear(catalog,wallet,'scoop'));assert.equal(gearPrice(catalog,'scoop'),Infinity);assert(!purchaseGear(catalog,wallet,'scoop'));
+const school=harness({equipment:true});school.select('hard');school.click('start');assert(school.state().gearOpen&&school.state().reviewOpen);assert.equal(school.state().spawned,0);assert.equal(school.state().stars,2);const prep=JSON.stringify(school.state());school.step(200);assert.equal(JSON.stringify(school.state()),prep,'preparation freezes every simulation counter');
+assert.equal(school.focused(),'answer-0');school.key('Enter');assert.equal(school.state().stars,4);school.key('Enter','keydown',{repeat:true});assert.equal(school.state().stars,4);school.click('answer-0');assert.equal(school.state().academic.attempts,1,'double answer cannot award twice');school.click('review-next');school.click('answer-0');assert.equal(school.state().stars,4,'wrong answer earns no star');assert.match(school.get('review-feedback').textContent,/testable hypothesis/);school.click('review-next');school.click('answer-2');school.click('review-next');assert(!school.state().reviewOpen);assert.equal(school.state().stars,6);
+school.click('gear-scoop');assert.equal(school.state().equipment.levels.scoop,2);assert.equal(school.state().stars,3);school.click('tab-support');school.click('gear-bank');assert.equal(school.state().equipment.equipped.support,'bank');assert.equal(school.state().stars,1);school.click('gear-resume');assert.equal(school.state().mode,'playing');assert.equal(school.focused(),'scene');school.step(10);
+school.click('snow-gear');const frozenSchool=JSON.stringify(school.state()),frozenField=school.fixture('JSON.stringify([waveTime,tossClock,supportClock,helperClock,...enemies.map(e=>[e.x,e.z,e.age]),...balls.map(b=>b.mesh.position.toArray()),Array.from(snowPositions)])');school.step(100);assert.equal(JSON.stringify(school.state()),frozenSchool);assert.equal(school.fixture('JSON.stringify([waveTime,tossClock,supportClock,helperClock,...enemies.map(e=>[e.x,e.z,e.age]),...balls.map(b=>b.mesh.position.toArray()),Array.from(snowPositions)])'),frozenField,'gear menu freezes projectiles, creatures, snowfall, and support timers');
+school.key('ArrowRight');assert.equal(school.focused(),'tab-support');school.key('Escape');assert.equal(school.state().mode,'playing');assert.equal(school.state().wave,1);school.key('ArrowRight');school.step(5);school.click('snow-gear');school.click('gear-resume');const stoppedX=school.state().playerX;school.step();assert.equal(school.state().playerX,stoppedX,'opening gear clears held movement');
+// Finish the remaining unearned questions. Previously rewarded IDs cannot pay again.
+school.click('snow-gear');for(let rounds=0;rounds<4&&!school.get('gear-study').disabled;rounds++){school.click('gear-study');while(school.state().reviewOpen){const answer=school.fixture('reviewQueue[reviewIndex].answer');school.click(`answer-${answer}`);school.click('review-next');}}
+assert.equal(school.state().academic.correct,9);assert.equal(school.state().stars,14);assert(school.get('gear-study').disabled);school.click('gear-study');assert(!school.state().reviewOpen);school.click('gear-resume');school.fixture('spawned=wavePlan.events.length;enemies.forEach(disposeEntity);enemies=[];');school.step();assert(school.state().gearOpen);assert.equal(school.state().wave,1);school.click('gear-resume');assert.equal(school.state().wave,2,'between-wave gear advances exactly once');school.click('snow-gear');school.click('gear-resume');assert.equal(school.state().wave,2,'mid-wave gear does not advance the wave');school.click('restart');assert.equal(school.state().academic.correct,0);assert.equal(school.state().stars,2);assert(school.state().reviewOpen);assert.equal(school.state().equipment.levels.scoop,1);
+const custom=harness({equipment:true,questionSet:{title:'Math test',questions:[{id:'math',prompt:'2 + 2?',choices:['3','4'],answer:1,explanation:'Two pairs make four.'}]}});custom.click('start');assert(custom.get('answer-2').hidden);custom.click('answer-1');custom.click('review-next');assert.equal(custom.state().stars,4);assert(custom.get('gear-study').disabled);assert.match(custom.get('gear-set-label').textContent,/Review set: Math test/);
+const invalid=harness({equipment:true,questionSet:{title:'Broken',questions:[]}});invalid.click('start');assert(invalid.get('gear-study').disabled);assert(!invalid.state().reviewOpen);invalid.click('gear-resume');assert.equal(invalid.state().mode,'playing','malformed questions do not strand the player');
+console.log('PASS: opening rewards, sample/custom sets, wrong-answer feedback, once-per-question earnings, keyboard gear, pause safety, switching, purchases, wave flow, reset, invalid sets');
+
+for(const id of Object.keys(GEAR)){
+ const tool=harness({equipment:true});tool.fixture("reset();equipmentEnabled=true;mode='playing';wavePlan.events=[];wavePlan.warnings=[];spawned=0;upgrades.tokens=100;");tool.fixture(`gearState.levels['${id}']=3;gearState.equipped[GEAR['${id}'].slot]='${id}';rebuildSupport();enemies=[creature(2,0,0),creature(2,-3.8,0),creature(2,3.8,0)];`);
+ if(GEAR[id].slot==='special'){tool.click('snow-burst');assert.equal(tool.state().burstCharges,1,`${id} consumes a charge`);if(id==='dome'){tool.fixture('enemies[0].z=8;');tool.step();assert.equal(tool.state().fort,100);assert(tool.fixture('domeVisual.visible'));}if(id==='whiteout')assert(tool.fixture('enemies.every(e=>e.slowTime>0)'));if(id==='rally'){tool.step();assert(tool.fixture('rallyVisuals.every(r=>r.visible)'));}}
+ if(id==='patch')tool.fixture('fort=50;');if(id==='mittens')tool.fixture('burstCharges=0;');
+ tool.step(30);if(id==='patch'){tool.step(100);assert(tool.state().fort>50);}if(id==='mittens'){tool.step(100);assert(tool.state().burstCharges>0);}if(id==='bank')assert(tool.fixture('supportObjects.length===3'));if(id==='puddle')assert(tool.fixture('enemies.some(e=>e.slowTime>0)'));if(id==='magnet')assert(tool.fixture('enemies.some(e=>Math.abs(e.baseX)>0&&Math.abs(e.baseX)<3.8)'));if(GEAR[id].slot==='toss')assert(tool.state().hits>0||id==='sprayer',`${id} hits creatures`);
+ tool.click('snow-gear');const toolPause=JSON.stringify(tool.state());tool.step(40);assert.equal(JSON.stringify(tool.state()),toolPause,`${id} freezes in gear menu`);
+}
+console.log('PASS: all 17 gear items, special charges/shield/rally, automatic support, repairs/recharges, pause');
+
+for(const difficulty of Object.keys(DIFFICULTIES)){
+ const earned=harness({equipment:true});earned.select(difficulty);earned.click('start');earned.step();let frames=0;
+ const finishReview=()=>{while(earned.state().reviewOpen){earned.click(`answer-${earned.fixture('reviewQueue[reviewIndex].answer')}`);earned.click('review-next');}};
+ finishReview();earned.click('tab-toss');earned.click('gear-scoop');earned.click('tab-support');earned.click('gear-buddy');earned.click('gear-resume');
+ while(!['won','lost'].includes(earned.state().mode)&&frames++<15000){
+  if(earned.state().gearOpen){if(!earned.get('gear-study').disabled){earned.click('gear-study');finishReview();}earned.click('tab-toss');earned.click('gear-scoop');earned.click('tab-support');earned.click('gear-buddy');earned.click('gear-repair');earned.click('gear-resume');}
+  earned.aim();earned.step();
+ }
+ assert.equal(earned.state().mode,'won',`${difficulty}: academic gear loadout completes all waves with simple movement`);assert(earned.state().academic.correct>0);console.log(`PASS: ${difficulty} full academic run, earned gear, automatic helper, simple movement, between-wave questions`);
+}
+const bankCache=harness({equipment:true});bankCache.fixture("reset();mode='playing';gearState.levels.bank=1;gearState.equipped.support='bank';rebuildSupport();supportObjects[0].hp=0;gearState.equipped.support='buddy';rebuildSupport();gearState.equipped.support='bank';rebuildSupport();");assert.equal(bankCache.fixture('supportObjects[0].hp'),0,'free gear switching cannot refill spent barriers');
+
+const visualGear=harness({equipment:true});visualGear.fixture('reset();mode="playing";wavePlan.events=[];wavePlan.warnings=[];enemies=[creature(2,0,-10)];');
+for(const id of ['scoop','spinner','popper','sprayer','roller']){
+ visualGear.fixture(`gearState.equipped.toss='${id}';gearState.levels['${id}']=3;syncToolVisual();`);
+ assert.equal(visualGear.fixture('Object.values(toolModels).filter(m=>m.visible).length'),1,'exactly one held tool is visible');assert.equal(visualGear.fixture(`toolModels['${id}'].userData.trim.children.filter(m=>m.visible).length`),3);assert(visualGear.fixture(`toolModels['${id}'].scale.x`)>1);
+}
+visualGear.fixture("gearState.equipped.support='buddy';gearState.levels.buddy=3;rebuildSupport();");assert.equal(visualGear.fixture('supportObjects.length'),2);assert(visualGear.fixture('supportObjects.every(o=>o.root.userData.hands.length===2)'));
+visualGear.fixture('supportObjects[0].root.userData.throwTime=.3;');visualGear.step();assert(visualGear.fixture('supportObjects[0].root.userData.hands[1].position.y')>.76);
+visualGear.click('snow-gear');const pose=visualGear.fixture('JSON.stringify([supportObjects[0].root.userData.hands[1].position.toArray(),toolModels.spinner.userData.rotor.rotation.z])');visualGear.step(20);assert.equal(visualGear.fixture('JSON.stringify([supportObjects[0].root.userData.hands[1].position.toArray(),toolModels.spinner.userData.rotor.rotation.z])'),pose,'workshop freezes cosmetic animations');visualGear.click('gear-resume');
+visualGear.fixture("gearState.equipped.special='fan';gearState.levels.fan=1;burstCharges=2;enemies[0].z=0;");visualGear.click('snow-burst');assert(visualGear.fixture('fanVisual.visible'));visualGear.step(20);assert(!visualGear.fixture('fanVisual.visible'),'fan effect clears quickly');
+visualGear.fixture("gearState.equipped.support='patch';gearState.levels.patch=2;rebuildSupport();fort=50;supportClock=8;mode='playing';wavePlan.events=[{at:999,type:0,x:0,z:-30}];spawned=0;");visualGear.step();assert(visualGear.fixture('supportObjects[0].pulseTime>0'),'repair has on-field feedback');visualGear.step(20);assert(!visualGear.fixture('supportObjects[0].root.userData.pulse.visible'));
+visualGear.fixture('launchGearBall(0,4.7,null,{rolling:true,radius:1});');assert.equal(visualGear.fixture('balls[balls.length-1].mesh.userData.projectileStyle'),'roller');assert.equal(visualGear.fixture('balls[balls.length-1].mesh.children.length'),6);
+console.log('PASS: distinct held gear, visible tiers, helper throwing animation, paused cosmetics, fan cleanup, repair pulse, packed rolling snow');
+
+assert.equal(answerReward('q',true,new Set(),[]),2);assert.equal(answerReward('q',true,new Set(),[{id:'q',correct:false}]),1);assert.equal(answerReward('q',false,new Set(),[]),0);assert.equal(answerReward('q',true,new Set(['q']),[]),0);
+const rescue=harness({equipment:true});rescue.click('start');const answerRound=()=>{while(rescue.state().reviewOpen){rescue.click(`answer-${rescue.fixture('reviewQueue[reviewIndex].answer')}`);rescue.click('review-next');}};answerRound();rescue.click('gear-resume');rescue.fixture('fort=30;burstCharges=0;');rescue.click('snow-gear');rescue.click('gear-study');answerRound();assert.equal(rescue.state().fort,50);assert.equal(rescue.state().burstCharges,1);assert.match(rescue.get('gear-feedback').textContent,/Study boost/);rescue.fixture('fort=30;burstCharges=0;');rescue.click('gear-study');answerRound();assert.equal(rescue.state().fort,30,'study boost cannot be farmed in the same wave');assert.equal(rescue.state().burstCharges,0);rescue.click('restart');assert.equal(rescue.fixture('studyBoostWaves.size'),0);
+console.log('PASS: first-try/recovery earnings, no repeat payouts, useful mid-wave study boost, once-per-wave cap and reset');
+
+for(const [toss,support] of [['scoop','buddy'],['popper','bank'],['roller','puddle'],['spinner','magnet'],['sprayer','buddy']]){
+ const combo=harness({equipment:true});combo.select('medium');combo.click('start');combo.step();const study=()=>{while(combo.state().reviewOpen){combo.click(`answer-${combo.fixture('reviewQueue[reviewIndex].answer')}`);combo.click('review-next');}};study();
+ const shop=()=>{combo.click('tab-toss');combo.click(`gear-${toss}`);combo.click('tab-support');combo.click(`gear-${support}`);combo.click('gear-repair');combo.click('gear-resume');};shop();let frames=0;
+ while(!['won','lost'].includes(combo.state().mode)&&frames++<15000){if(combo.state().gearOpen){if(!combo.get('gear-study').disabled){combo.click('gear-study');study();}shop();}combo.aim();combo.step();}
+ console.log(`PASS: earned ${toss} / ${support} loadout completes Medium`);
+ assert.equal(combo.state().mode,'won',`${toss}/${support} should be a viable Medium strategy`);
+}
+
+const openingResults=[];
+for(const correct of [false,true]){
+ const p=harness({equipment:true});p.select('hard');p.click('start');p.step();while(p.state().reviewOpen){const answer=p.fixture('reviewQueue[reviewIndex].answer');p.click(`answer-${correct?answer:(answer+1)%4}`);p.click('review-next');}p.click('tab-toss');p.click('gear-scoop');p.click('tab-support');p.click('gear-buddy');p.click('gear-resume');let frames=0;
+ while(p.state().mode==='playing'&&frames++<3000){p.step(5);}openingResults.push({correct,mode:p.state().mode,fort:p.state().fort,cleared:p.state().cleared});
+}
+console.log('PASS: earned second helper improves stationary first-wave survival');assert(openingResults[1].fort>openingResults[0].fort,'earned starter upgrades improve survival with the same stationary beginner strategy');
+
+for(const set of setsForGame('snow-day-defenders')){
+ const bank=await loadQuestionSet(set.id),original=JSON.stringify(bank),prepared=prepareSnowQuestions(bank,()=>.25);
+ assert.equal(JSON.stringify(bank),original,'adapter must not mutate shared banks');
+ assert.equal(prepared.questions.length,set.questionCount);
+ assert.equal(new Set(prepared.questions.map(q=>q.id)).size,set.questionCount);
+ for(const q of prepared.questions){const source=bank.questions.find(item=>item.id===q.id);assert.equal(q.choices[q.answer],source.choices[source.answer]);assert.equal(q.prompt,source.question);}
+ const h=harness({equipment:true,questionSet:prepared});h.click('start');
+ for(const q of prepared.questions.slice(0,3)){assert.equal(h.get('review-prompt').textContent,q.prompt);h.click('answer-'+q.answer);h.click('review-next');}
+ assert.equal(h.state().stars,8);assert.equal(h.state().academic.correct,3);
+ assert.throws(()=>h.fixture('configureQuestionSet(questionSet)'),/Finish the current run/);
+ h.fixture('mode="won";configureQuestionSet(questionSet);');
+ assert.equal(h.state().mode,'ready');assert.equal(h.state().academic.correct,0);assert.equal(h.state().stars,2);
+ console.log('PASS: shared '+set.id+' bank launches, preserves shuffled correct answers, earns starting gear, and resets on topic change');
+}
