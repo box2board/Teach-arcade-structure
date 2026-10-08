@@ -36,3 +36,11 @@ button.mg-btn { cursor:pointer; line-height:1.4; }
 .wh-page [hidden] { display:none!important; }
 @media(max-width:650px) { .wh-options,.wh-student-info { grid-template-columns:1fr; } .wh-page .wh-intro { padding:22px 20px; } .wh-option { padding:18px; } }
 @media print { body.wh-page { background:white; } .wh-page #site-header,.wh-page .breadcrumbs,.wh-page .wh-screen,.wh-page footer { display:none!important; } .wh-page .wh-export { border:0; padding:0; display:block!important; } .wh-page main.container { max-width:none; } .wh-export-content { color:black; font:11pt/1.5 Arial,sans-serif; } }
+
+/* Original War Horse artwork with a text-safe overlay. */
+.wh-page .wh-intro { background:#17283e; background-image:linear-gradient(90deg,rgba(13,25,44,.87) 0%,rgba(13,25,44,.72) 44%,rgba(13,25,44,.08) 75%),url('/movie-guides/guides/war-horse/images/war-horse-banner.webp'); background-size:cover; background-position:center; padding:34px; min-height:280px; color:#fff; }
+.wh-intro h1 { color:#fff; max-width:54%; }
+.wh-intro p { color:#edf2fa; max-width:54%; }
+.wh-intro .wh-kicker { color:#c7daff; }
+.wh-intro .wh-meta { color:#e4edfa; max-width:54%; }
+@media(max-width:650px) { .wh-page .wh-intro { min-height:290px; padding:24px; background-position:65% center; background-image:linear-gradient(90deg,rgba(13,25,44,.92),rgba(13,25,44,.68)),url('/movie-guides/guides/war-horse/images/war-horse-banner.webp'); } .wh-intro h1,.wh-intro p,.wh-intro .wh-meta { max-width:100%; } }
