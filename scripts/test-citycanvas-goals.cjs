@@ -33,3 +33,12 @@ assert.equal(restored.build(32,22,'erase'),'');assert.equal(restored.at(32,20).t
 assert.equal(restored.budget.find(r=>r.type==='square').count,1);assert.equal(restored.budget.find(r=>r.type==='sports').count,1);
 console.log('PASS: landmark goal locks, persistent/free-mode unlocks, rotated footprints, road-dependent recreation, edge-distance coverage, waterfront restriction, save/load and whole-landmark demolition');
 const schoolRequest=city.requests.find(r=>r.id==='school');assert.equal(schoolRequest.title,'A school for our neighborhood');assert.match(schoolRequest.detail,/powered school/);assert.equal(schoolRequest.layer,'school');
+{
+const starter=City.start('manager','starter');assert.equal(starter.population,128);assert.equal(starter.funds,11525);assert(starter.balance>0);assert(starter.anchors().filter(t=>['home','shop','industry'].includes(t.type)).every(t=>t.access&&t.powered&&t.watered));
+assert.equal(City.start('free','starter').funds,15000);assert.equal(City.start('manager','blank','village').population,0);
+const repair=City.start('manager','blank','utilities');assert(!repair.scenarioProgress().done);assert.equal(repair.build(6,14,'water'),'');assert.equal(repair.build(23,14,'water'),'');repair.step();assert(repair.experience.complete);assert(City.load(repair.save()).experience.complete);
+const clean=City.start('manager','blank','clean-air');assert(!clean.scenarioProgress().done);assert.equal(clean.build(18,15,'erase'),'');assert.equal(clean.build(16,18,'park'),'');clean.step();assert(clean.experience.complete,'Pollution challenge can be solved within its budget');
+const legacy=starter.save();delete legacy.experience;assert.equal(City.load(legacy).experience.scenario,null);const invalid=starter.save();invalid.experience.scenario='unknown';assert.throws(()=>City.load(invalid));
+console.log('PASS: priced starter town, connected services, scenario starting problems, achievable objectives, completion persistence, legacy experience migration');
+
+}
