@@ -1,4 +1,4 @@
-import { GEAR, freshGear, gearPrice, purchaseGear, equipGear, validateQuestions } from './gear.js?v=14';
+import { GEAR, REWARD_RULES, answerReward, freshGear, gearPrice, purchaseGear, equipGear, validateQuestions } from './gear.js?v=16';
 import { DEMO_QUESTIONS } from './questions.js?v=14';
 import * as THREE from '/assets/vendor/three-0.162.0/three.module.js';
 import { fitSnowCamera } from './camera.js?v=10';
@@ -251,7 +251,7 @@ function snowBurst(){
  $('status').textContent=message;abilityNotice(message,'burst');abilityHud();
 }
 for(const [id,action] of [['dash-left',()=>dash(-1)],['dash-right',()=>dash(1)],['snow-burst',equippedSpecial]])$(id).addEventListener('click',()=>{action();if(mode==='playing')canvas.focus({preventScroll:true});});
-function hud(){ $('fort-text').textContent=`${fort}%`;$('fort').value=fort;$('wave').textContent=`${wave} / 3`;$('cleared').textContent=cleared; }
+function hud(){ $('fort-text').textContent=`${fort}%`;$('fort').value=fort;$('snow-gear').dataset.help=String(equipmentEnabled&&fort<=40);$('wave').textContent=`${wave} / 3`;$('cleared').textContent=cleared; }
 function overlay(title,message,label,eyebrow){
  $('shop').hidden=mode!=='between';$('difficulty-picker').hidden=!['ready','won','lost'].includes(mode);
  $('overlay').dataset.mode=mode;$('overlay').setAttribute('aria-modal',String(mode==='between'));$('overlay').hidden=false;
@@ -261,7 +261,7 @@ function overlay(title,message,label,eyebrow){
  if(mode==='between'){$('tip').hidden=true;focusShopButton();}
 }
 function clearInputs(){moveLeft=moveRight=drag=false;targetX=null;heldArrows.clear();lastArrowTap=null;lastArrowTapAt=-Infinity;}
-function reset(){gearReset();fortFlash=celebrationTime=0;$('fort').dataset.hit='false';player.position.y=0;player.rotation.set(0,0,0);arms[1].rotation.x=0;heldBall.visible=true;introducedTypes.clear();clearIncoming();[...enemies,...balls,...flakes,...piles,...tumbles,...splashes,...shockwaves].forEach(disposeEntity);enemies=[];balls=[];flakes=[];piles=[];tumbles=[];splashes=[];shockwaves=[];noticeTime=0;$('ability-feedback').hidden=true;upgrades=freshUpgrades();if(equipmentEnabled)grantTokens(upgrades,2);difficulty=selectedDifficulty;wavePlan=buildWave(difficulty,0);dashTime=dashCooldown=burstCooldown=burstUses=burstHits=0;dashDirection=0;burstCharges=2;volley=splashHits=stickyHits=0;hits=0;defeatedByType=CREATURE_TYPES.map(()=>0);fort=100;cleared=0;wave=1;spawned=0;warningIndex=0;waveTime=spawnClock=tossClock=0;$('tip').hidden=false;player.position.x=0;clearInputs();syncFort();hud();updateShop();}
+function reset(){gearReset();fortFlash=celebrationTime=0;$('fort').dataset.hit='false';player.position.y=0;player.rotation.set(0,0,0);arms[1].rotation.x=0;heldBall.visible=true;introducedTypes.clear();clearIncoming();[...enemies,...balls,...flakes,...piles,...tumbles,...splashes,...shockwaves].forEach(disposeEntity);enemies=[];balls=[];flakes=[];piles=[];tumbles=[];splashes=[];shockwaves=[];noticeTime=0;$('ability-feedback').hidden=true;upgrades=freshUpgrades();if(equipmentEnabled)grantTokens(upgrades,REWARD_RULES.startingStars);difficulty=selectedDifficulty;wavePlan=buildWave(difficulty,0);dashTime=dashCooldown=burstCooldown=burstUses=burstHits=0;dashDirection=0;burstCharges=2;volley=splashHits=stickyHits=0;hits=0;defeatedByType=CREATURE_TYPES.map(()=>0);fort=100;cleared=0;wave=1;spawned=0;warningIndex=0;waveTime=spawnClock=tossClock=0;$('tip').hidden=false;player.position.x=0;clearInputs();syncFort();hud();updateShop();}
 function begin(){gearOpen=false;reviewOpen=false;$('gear-overlay').hidden=true;clearIncoming();mode='playing';$('overlay').dataset.mode=mode;$('overlay').hidden=true;$('shop').hidden=true;$('difficulty-picker').hidden=true;$('pattern').textContent=`${DIFFICULTIES[difficulty].label} · Wave ${wave}: ${wavePlan.name}`;$('tip').textContent=equipmentEnabled?'Move left/right · Snow Gear pauses to earn and upgrade':difficulty==='hard'?'Line up closely · dash between sides · burst close groups':'Move toward creatures · dots show remaining hits';$('pause').disabled=false;$('pause').textContent='Pause';$('status').textContent=wavePlan.hint;abilityHud();canvas.focus({preventScroll:true});}
 function finish(won){if(won)celebrate();mode=won?'won':'lost';clearInputs();$('pause').disabled=true;overlay(won?'Snow day saved!':'Time to rebuild!',`You turned ${cleared} creatures into snow piles. ${won?`Your fort finished at ${fort}% strength.`:'Open Snow Gear during a wave to earn help before your fort falls.'}${equipmentEnabled?` Review: ${reviewAttempts.filter(a=>a.correct).length} correct across ${reviewAttempts.length} attempts.`:''}`,'Play again',won?'FORT PROTECTED':'A FRESH START');$('status').textContent=won?'All three waves complete.':'The snow fort tumbled. Try again!';abilityHud();}
 $('start').addEventListener('click',()=>{if(mode==='paused')begin();else if(mode==='between'){wave++;wavePlan=buildWave(difficulty,wave-1);spawned=0;warningIndex=0;spawnClock=waveTime=0;hud();begin();}else{reset();if(equipmentEnabled){mode='paused';openGear('start');startReview();}else begin();}});
@@ -314,7 +314,7 @@ document.addEventListener('fullscreenchange',fullscreenHud);document.addEventLis
 // Snow Gear freezes the simulation; earnings never depend on surviving a wave.
 let equipmentEnabled=true,gearState=freshGear(),gearOpen=false,gearTab='toss',gearReturn='start';
 let questionSet=null,questionError='',reviewQueue=[],reviewIndex=0,reviewAnswered=false,questionCursor=0;
-let earnedQuestions=new Set(),reviewAttempts=[],reviewOpen=false,reviewRoundCorrect=0;
+let earnedQuestions=new Set(),reviewAttempts=[],reviewOpen=false,reviewRoundCorrect=0,reviewRoundStars=0;const studyBoostWaves=new Set();
 const supportCache=new Map();
 let supportObjects=[],supportClock=0,helperClock=0,domeTime=0,rallyTime=0;
 const domeVisual=new THREE.Mesh(new THREE.SphereGeometry(1,16,8),new THREE.MeshBasicMaterial({color:0x83d9ed,transparent:true,opacity:.17,depthWrite:false}));domeVisual.position.set(0,0,9);domeVisual.scale.set(7,4,2);domeVisual.visible=false;scene.add(domeVisual);
@@ -325,16 +325,16 @@ const rallyVisuals=[];
 for(const x of [-3.8,3.8]){const root=new THREE.Group();root.position.set(x,0,5);mesh(sphere,'#fffaff',0,.5,0,.42,.5,.4,root);mesh(sphere,'#fffaff',0,1.2,0,.32,.32,.32,root);mesh(box,'#f29343',0,1.55,0,.58,.2,.55,root);decorateHelper(root,'#f29343',1);root.visible=false;scene.add(root);rallyVisuals.push(root);}
 try{questionSet=validateQuestions(window.SNOW_QUESTION_SET||DEMO_QUESTIONS);}catch(error){questionError=error.message;}
 function gearLevel(slot){return equipmentEnabled?(gearState.levels[gearState.equipped[slot]]||1):1;}
-function gearReset(){supportCache.clear();domeRim.visible=false;fanVisual.visible=false;fanVisualTime=0;domeVisual.visible=false;rallyVisuals.forEach(r=>r.visible=false);fortGroup.rotation.z=0;supportObjects.forEach(disposeEntity);supportObjects=[];supportClock=helperClock=domeTime=rallyTime=0;gearState=freshGear();gearOpen=reviewOpen=false;$('gear-overlay').hidden=true;earnedQuestions.clear();reviewAttempts=[];questionCursor=0;syncToolVisual();}
+function gearReset(){supportCache.clear();domeRim.visible=false;fanVisual.visible=false;fanVisualTime=0;domeVisual.visible=false;rallyVisuals.forEach(r=>r.visible=false);fortGroup.rotation.z=0;supportObjects.forEach(disposeEntity);supportObjects=[];supportClock=helperClock=domeTime=rallyTime=0;gearState=freshGear();gearOpen=reviewOpen=false;$('gear-overlay').hidden=true;earnedQuestions.clear();studyBoostWaves.clear();reviewAttempts=[];questionCursor=0;syncToolVisual();}
 function gearSummary(){return Object.values(gearState.equipped).map(id=>`${GEAR[id].name} ${gearState.levels[id]}`).join(' · ');}
 function gearRender(){
- $('gear-wallet').textContent=`${upgrades.tokens} Snow Stars`;$('gear-loadout').textContent=gearSummary();$('gear-set-label').textContent=questionSet?`${window.SNOW_QUESTION_SET?'Review set':'Playtest sample'}: ${questionSet.title}`:`Questions unavailable: ${questionError}`;
+ $('gear-wallet').textContent=`${upgrades.tokens} Snow Stars`;$('gear-rewards').textContent='First try: 2 stars · Corrected mistake: 1 star · Unlock: 2 stars · Upgrade: 3 / 5 stars';$('gear-loadout').textContent=gearSummary();$('gear-set-label').textContent=questionSet?`${window.SNOW_QUESTION_SET?'Review set':'Playtest sample'}: ${questionSet.title}`:`Questions unavailable: ${questionError}`;
  for(const slot of ['toss','support','special'])$(`tab-${slot}`).setAttribute('aria-pressed',String(slot===gearTab));
  for(const [id,rule] of Object.entries(GEAR)){
   const b=$(`gear-${id}`),level=gearState.levels[id]||0,equipped=gearState.equipped[rule.slot]===id;
-  b.hidden=rule.slot!==gearTab;b.disabled=!level&&upgrades.tokens<2;b.dataset.equipped=String(equipped);
+  b.hidden=rule.slot!==gearTab;b.disabled=!level&&upgrades.tokens<REWARD_RULES.unlockCost;b.dataset.equipped=String(equipped);
   b.querySelector('strong').textContent=`${rule.name}${level?` · ${level}/3`:''}${equipped?' · Equipped':''}`;
-  b.querySelector('span').textContent=`${rule.description} ${level?(equipped?(level===3?'Maximum level':`Improve · ${gearPrice(gearState,id)} stars`):'Equip free'):'Unlock · 2 stars'}`;
+  b.querySelector('span').textContent=`${rule.description} ${level?(equipped?(level===3?'Maximum level':`Improve · ${gearPrice(gearState,id)} stars`):'Equip free'):`Unlock · ${REWARD_RULES.unlockCost} stars`}`;
   if(equipped)b.disabled=upgrades.tokens<gearPrice(gearState,id)||level===3;
  }
  $('gear-repair').disabled=upgrades.tokens<1||fort===100;$('gear-charge').disabled=upgrades.tokens<1||burstCharges>=5;
@@ -351,7 +351,7 @@ function gearFocus(){const b=gearButtons()[0]||$('gear-resume');b.focus({prevent
 function openGear(origin='resume'){
  if(!['playing','paused','between'].includes(mode))return;
  gearReturn=origin;mode='paused';clearInputs();gearOpen=true;reviewOpen=false;$('overlay').hidden=true;$('gear-overlay').hidden=false;$('gear-equipment').hidden=false;$('gear-review').hidden=true;
- $('gear-feedback').textContent='Owned gear can be equipped for free. Equip an item, then select it again to improve it.';gearRender();gearFocus();abilityHud();
+ $('gear-feedback').textContent='Equip owned gear for free. A successful study round can repair up to 20% fort and refill a depleted special, once per wave.';gearRender();gearFocus();abilityHud();
 }
 function resumeGear(){
  if(!gearOpen||reviewOpen)return;
@@ -362,24 +362,27 @@ function resumeGear(){
 function startReview(){
  if(!gearOpen||!questionSet)return;
  const eligible=[];for(let i=0;i<questionSet.questions.length;i++){const q=questionSet.questions[(questionCursor+i)%questionSet.questions.length];if(!earnedQuestions.has(q.id))eligible.push(q);}
- reviewQueue=eligible.slice(0,3);if(!reviewQueue.length)return;reviewIndex=reviewRoundCorrect=0;reviewOpen=true;$('gear-equipment').hidden=true;$('gear-review').hidden=false;showQuestion();
+ reviewQueue=eligible.slice(0,3);if(!reviewQueue.length)return;reviewIndex=reviewRoundCorrect=reviewRoundStars=0;reviewOpen=true;$('gear-equipment').hidden=true;$('gear-review').hidden=false;showQuestion();
 }
 function showQuestion(){
- const q=reviewQueue[reviewIndex];reviewAnswered=false;$('review-progress').textContent=`Question ${reviewIndex+1} of ${reviewQueue.length} · Correct answers earn 1 Snow Star`;$('review-prompt').textContent=q.prompt;$('review-feedback').textContent='Take your time. The field is paused.';$('review-next').hidden=true;
+ const q=reviewQueue[reviewIndex];reviewAnswered=false;$('review-progress').textContent=`Question ${reviewIndex+1} of ${reviewQueue.length} · First try: 2 stars · Correct a missed question: 1 star`;$('review-prompt').textContent=q.prompt;$('review-feedback').textContent='Take your time. The field is paused.';$('review-next').hidden=true;
  for(let i=0;i<4;i++){const b=$(`answer-${i}`);b.hidden=i>=q.choices.length;b.disabled=false;b.textContent=q.choices[i]||'';b.dataset.result='';}gearFocus();
 }
 function answerQuestion(index){
  if(!gearOpen||!reviewOpen||reviewAnswered)return;
  const q=reviewQueue[reviewIndex];if(index>=q.choices.length)return;reviewAnswered=true;const correct=index===q.answer;
+ const reward=answerReward(q.id,correct,earnedQuestions,reviewAttempts);
  reviewAttempts.push({id:q.id,correct,selected:index,wave});
- if(correct&&!earnedQuestions.has(q.id)){earnedQuestions.add(q.id);grantTokens(upgrades,1);reviewRoundCorrect++;}
+ if(correct&&!earnedQuestions.has(q.id)){earnedQuestions.add(q.id);grantTokens(upgrades,reward);reviewRoundCorrect++;reviewRoundStars+=reward;}
  for(let i=0;i<q.choices.length;i++){const b=$(`answer-${i}`);b.disabled=true;b.dataset.result=i===q.answer?'correct':i===index?'wrong':'';}
- $('review-feedback').textContent=`${correct?'Correct! +1 Snow Star.':`The answer is: ${q.choices[q.answer]}.`} ${q.explanation}`;$('gear-wallet').textContent=`${upgrades.tokens} Snow Stars`;$('review-next').hidden=false;$('review-next').textContent=reviewIndex+1===reviewQueue.length?'Choose your gear':'Next question';gearFocus();
+ $('review-feedback').textContent=`${correct?`Correct! +${reward} Snow ${reward===1?'Star':'Stars'}.`:`The answer is: ${q.choices[q.answer]}.`} ${q.explanation}`;$('gear-wallet').textContent=`${upgrades.tokens} Snow Stars`;$('review-next').hidden=false;$('review-next').textContent=reviewIndex+1===reviewQueue.length?'Choose your gear':'Next question';gearFocus();
 }
 $('review-next').addEventListener('click',()=>{
  if(!gearOpen||!reviewOpen||!reviewAnswered)return;
  questionCursor=(questionSet.questions.findIndex(q=>q.id===reviewQueue[reviewIndex].id)+1)%questionSet.questions.length;
- if(++reviewIndex<reviewQueue.length)showQuestion();else{reviewOpen=false;$('gear-equipment').hidden=false;$('gear-review').hidden=true;gearRender();$('gear-feedback').textContent=`You earned ${reviewRoundCorrect} Snow Stars. Missed questions can be revisited later.`;gearFocus();}
+ if(++reviewIndex<reviewQueue.length)showQuestion();else{reviewOpen=false;$('gear-equipment').hidden=false;$('gear-review').hidden=true;gearRender();let boost='';
+ if(reviewRoundCorrect>0&&gearReturn!=='start'&&!studyBoostWaves.has(wave)&&(fort<100||burstCharges<2)){const oldFort=fort;fort=Math.min(100,fort+REWARD_RULES.studyRepair);const oldCharges=burstCharges;if(burstCharges<2)burstCharges++;studyBoostWaves.add(wave);syncFort();hud();boost=` Study boost: +${fort-oldFort}% fort${burstCharges>oldCharges?' and +1 special charge':''}. Once per wave.`;}
+ gearRender();$('gear-feedback').textContent=`You earned ${reviewRoundStars} Snow Stars.${boost} Missed questions can be revisited later.`;gearFocus();}
 });
 for(let i=0;i<4;i++)$(`answer-${i}`).addEventListener('click',()=>answerQuestion(i));
 for(const slot of ['toss','support','special'])$(`tab-${slot}`).addEventListener('click',()=>{gearTab=slot;gearRender();$(`tab-${slot}`).focus({preventScroll:true});});
@@ -470,7 +473,7 @@ function rebuildSupport(){
  if(supportObjects[0]?.signature===signature)return;
  if(supportObjects.length)supportCache.set(supportObjects[0].signature,supportObjects.map(o=>o.hp));
  supportObjects.forEach(disposeEntity);supportObjects=[];if(!equipmentEnabled)return;
- const xs=id==='buddy'?(level===3?[-3.8,3.8]:[player.position.x>=0?-3.8:3.8]):['bank','puddle'].includes(id)?[-3.8,0,3.8]:[0];
+ const xs=id==='buddy'?(level>=2?[-3.8,3.8]:[player.position.x>=0?-3.8:3.8]):['bank','puddle'].includes(id)?[-3.8,0,3.8]:[0];
  for(const x of xs){const root=new THREE.Group();scene.add(root);const z=id==='buddy'?5:id==='magnet'?-1:id==='patch'||id==='mittens'?8:2;root.position.set(x,0,z);
   if(id==='buddy'){mesh(sphere,'#f4fbff',0,.5,0,.42,.5,.4,root);mesh(sphere,'#ffffff',0,1.2,0,.32,.32,.32,root);mesh(box,'#52a995',0,1.55,0,.58,.2,.55,root);mesh(sphere,'#254d76',-.12,1.25,-.29,.05,.05,.05,root);mesh(sphere,'#254d76',.12,1.25,-.29,.05,.05,.05,root);}
   if(id==='bank')for(let i=0;i<3;i++)mesh(box,'#edf8ff',-.55+i*.55,.4,0,.52,.8,.5,root);
