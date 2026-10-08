@@ -10,6 +10,9 @@ const types={
  power:{name:'Solar plant',cost:900,color:'#9e90ed',w:3,h:2,help:'Click to place a 3 × 2 solar plant beside roads. Supplies 160 buildings through connected roads.'},
  water:{name:'Water tower',cost:650,color:'#65d5dd',w:2,h:2,help:'Click to place a 2 × 2 tower. Needs road-connected power; supplies water within 12 tiles of its grounds.'},
  park:{name:'Park',cost:120,color:'#83dd66',w:1,h:1,help:'Parks improve well-being in homes within six tiles.'},
+ square:{name:'Town square',cost:450,color:'#d8c59a',w:3,h:3,goal:'green-homes',recreation:8,help:'A 3 × 3 fountain plaza. Road access provides recreation coverage within eight tiles.'},
+ sports:{name:'Sports field',cost:700,color:'#7eb8a0',w:4,h:3,goal:'shopping-street',recreation:10,help:'A 4 × 3 sports ground with a running track. Road access provides recreation coverage within ten tiles. Rotate to fit.'},
+ promenade:{name:'Waterfront promenade',cost:600,color:'#90c6cd',w:1,h:3,goal:'clean-industry',recreation:6,help:'A 1 × 3 riverside walk. Place on land beside the river; road access provides recreation coverage within six tiles. Rotate to fit.'},
  school:{name:'School',cost:750,color:'#ec97bc',w:3,h:2,help:'Click to place a 3 × 2 school campus. A powered school improves well-being within eight tiles of its grounds.'},
  fire:{name:'Fire station',cost:650,color:'#ed8e70',w:2,h:2,help:'Click to place a 2 × 2 fire station. Road-connected power enables safety coverage within eight tiles.'},
  hospital:{name:'Hospital',cost:1100,color:'#f4f0de',w:3,h:2,help:'A powered hospital adds 10 well-being points within nine tiles of its grounds.'},
@@ -17,7 +20,7 @@ const types={
  erase:{name:'Bulldoze',cost:10,color:'#cc9d9d',w:1,h:1,help:'Click any part of a facility to remove the entire building. Water cannot be removed.'},
  inspect:{name:'Inspect',cost:0,color:'#c4d5e6',w:1,h:1,help:'Click any part of a building to inspect its footprint, services, and growth.'}
 };
-const upkeep={road:1,bridge:3,hospital:40,library:18,power:35,water:25,park:3,school:28,fire:22};
+const upkeep={road:1,bridge:3,hospital:40,library:18,power:35,water:25,park:3,square:6,sports:8,promenade:6,school:28,fire:22};
 const isRoad=t=>!!t&&['road','bridge'].includes(t.type);
 const terrainAt=(x,y)=>Math.abs(x-(36+Math.round(Math.sin(y/5)*2)))<2?'river':'land';
 const zones=['home','shop','industry'];
@@ -51,11 +54,12 @@ class City{
  footprint(t){const a=this.anchor(t),cells=[];if(!a)return cells;for(let y=a.y;y<a.y+a.h;y++)for(let x=a.x;x<a.x+a.w;x++)cells.push(this.at(x,y));return cells.filter(Boolean);}
  perimeter(t){const a=this.anchor(t),edges=new Set();for(const cell of this.footprint(a))for(const n of this.neighbors(cell))if(n.anchor!==a.anchor)edges.add(n);return [...edges];}
  state(t){return {type:t.type,level:t.level,progress:t.progress||0,anchor:t.anchor,w:t.w,h:t.h};}
- unlocked(type){return this.mode==='free'||this.peakPopulation>=unlockAt(type);}
+ unlocked(type){return this.mode==='free'||(types[type]?.goal?this.earnedGoals.includes(types[type].goal):this.peakPopulation>=unlockAt(type));}
+ unlockMessage(type){return types[type]?.goal?`Complete “${neighborhoodGoals.find(g=>g.id===types[type].goal).title}” in City Manager.`:`Unlocks at ${unlockAt(type)} residents.`;}
  plan(x,y,type,rotated=false){
   const t=this.at(x,y),def=types[type];
   if(!t||!def)return {cells:[],error:'Choose a tile on the map.'};
-  if(!this.unlocked(type))return {cells:[],error:`${def.name} unlocks at ${unlockAt(type)} residents. Grow connected homes and workplaces.`};
+  if(!this.unlocked(type))return {cells:[],error:this.unlockMessage(type)};
   if(type==='inspect')return {cells:[],error:''};
   if(type==='bridge'){if(t.type==='bridge')return {cells:[],error:''};return t.type==='river'?{cells:[t],error:'',w:1,h:1}:{cells:[],error:'Bridges must be placed on river tiles.'};}
   if(t.type==='river')return {cells:[],error:'Keep the river clear. Build on land.'};
@@ -68,6 +72,7 @@ class City{
    if(cell.type!=='land')return {cells:[],error:cell.type==='river'?'The entire footprint must stay on land.':`Clear all ${w} × ${h} tiles before placing this building.`};
    cells.push(cell);
   }
+  if(type==='promenade'&&!cells.some(c=>this.neighbors(c).some(n=>terrainAt(n.x,n.y)==='river')))return {cells:[],error:'Place the promenade on land beside the river.'};
   return {cells,error:'',w,h};
  }
  build(x,y,type,rotated=false){
@@ -92,9 +97,9 @@ class City{
    const connected=isRoad(t)?roads.has(t):this.perimeter(t).some(n=>roads.has(n));
    t.powered=connected&&(isRoad(t)||capacity-->0);
   }
-  const towers=buildings.filter(t=>t.type==='water'&&t.powered),parks=buildings.filter(t=>t.type==='park'),schools=buildings.filter(t=>t.type==='school'&&t.powered),fires=buildings.filter(t=>t.type==='fire'&&t.powered),hospitals=buildings.filter(t=>t.type==='hospital'&&t.powered),libraries=buildings.filter(t=>t.type==='library'&&t.powered),factories=lots.filter(t=>t.type==='industry'&&t.level>0);
+  const towers=buildings.filter(t=>t.type==='water'&&t.powered),parks=buildings.filter(t=>t.type==='park'||(types[t.type]?.recreation&&t.access)),schools=buildings.filter(t=>t.type==='school'&&t.powered),fires=buildings.filter(t=>t.type==='fire'&&t.powered),hospitals=buildings.filter(t=>t.type==='hospital'&&t.powered),libraries=buildings.filter(t=>t.type==='library'&&t.powered),factories=lots.filter(t=>t.type==='industry'&&t.level>0);
   for(const t of this.tiles){
-   t.watered=towers.some(n=>near(t,n,12));t.park=parks.some(n=>near(t,n,6));t.school=schools.some(n=>near(t,n,8));t.fire=fires.some(n=>near(t,n,8));t.health=hospitals.some(n=>near(t,n,9));t.library=libraries.some(n=>near(t,n,7));t.polluted=factories.some(n=>near(t,n,4));
+   t.watered=towers.some(n=>near(t,n,12));t.park=parks.some(n=>near(t,n,types[n.type].recreation||6));t.school=schools.some(n=>near(t,n,8));t.fire=fires.some(n=>near(t,n,8));t.health=hospitals.some(n=>near(t,n,9));t.library=libraries.some(n=>near(t,n,7));t.polluted=factories.some(n=>near(t,n,4));
    if(t.anchor!==t.y*W+t.x){const a=this.anchor(t);t.access=a.access;t.powered=a.powered;}
   }
   for(const t of lots)t.wellbeing=Math.max(10,Math.min(100,58+(t.park?14:0)+(t.school?12:0)+(t.fire?8:0)+(t.health?10:0)+(t.library?8:0)-(t.polluted?22:0)-(t.powered?0:28)-(t.watered?0:22)-Math.max(0,this.tax-10)*3));
@@ -135,7 +140,7 @@ class City{
   if(homes.length&&this.jobs<this.population*.4)add('jobs','More places to work','Zone commerce or industry beside connected roads to attract more residents.',homes[0]);
   if(!homes.length&&lots.length)add('homes','Room for new neighbors','Zone homes near connected roads and water coverage.');
   const polluted=homes.find(t=>t.level&&t.polluted);if(polluted)add('pollution','Cleaner air, please','Move homes beyond four tiles of developed industry, or relocate the workshops.',polluted,'pollution');
-  for(const [id,type,title,detail,layer]of [['park','park','A little green space','Add a park within six tiles of these homes.','park'],['school','A school for our neighborhood','Place a powered school within eight tiles of these homes.','school'],['fire','Help us feel safe','Add a powered fire station within eight tiles of these homes.','fire'],['library','A place to read and learn','Add a powered library within seven tiles of these homes.','library'],['health','Healthcare close to home','Add a powered hospital within nine tiles of these homes.','health']]){const t=homes.find(t=>t.level&&!t[id]);if(t&&this.unlocked(type))add(id,title,detail,t,layer);}
+  for(const [id,type,title,detail,layer]of [['park','park','A little green space','Add a park within six tiles of these homes.','park'],['school','school','A school for our neighborhood','Place a powered school within eight tiles of these homes.','school'],['fire','fire','Help us feel safe','Add a powered fire station within eight tiles of these homes.','fire'],['library','library','A place to read and learn','Add a powered library within seven tiles of these homes.','library'],['health','hospital','Healthcare close to home','Add a powered hospital within nine tiles of these homes.','health']]){const t=homes.find(t=>t.level&&!t[id]);if(t&&this.unlocked(type))add(id,title,detail,t,layer);}
   if(this.mode==='manager'&&this.population&&this.balance<0)add('budget','Keep our city affordable','Grow tax-paying homes and workplaces, and review operating costs in the monthly budget.');
   if(!requests.length)add('grow',this.nextMilestone?'Welcome more neighbors':'Our city is thriving',this.nextMilestone?`Grow toward ${this.nextMilestone.population} residents to become a ${this.nextMilestone.name.toLowerCase()}.`:'Keep expanding healthy neighborhoods and connected workplaces.');
   return requests.slice(0,2);
