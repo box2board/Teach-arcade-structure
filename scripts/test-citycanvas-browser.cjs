@@ -17,6 +17,9 @@ const server=http.createServer((req,res)=>{
  try{
  const page=await browser.newPage({viewport:{width:1280,height:720}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.goto(url);await page.click('#pause');
+ await page.waitForTimeout(100);const initial=await page.locator('#map').boundingBox();assert(initial.height>=720*.6,'Default map should use at least 60% of laptop height');
+ await page.click('#expandMap');await page.waitForTimeout(100);const expanded=await page.locator('#map').boundingBox();assert(expanded.width>initial.width&&expanded.height>initial.height,'Expanded map grows in both dimensions');assert.equal(await page.locator('aside').isVisible(),false);await page.click('#expandMap');
+ await page.click('[data-tool="inspect"]');assert(await page.locator('#cityDetails').getAttribute('open')!==null,'Inspect opens details');await page.locator('#cityDetails summary').click();
  const at=async(x,y)=>page.evaluate(([x,y])=>qa.point(x,y),[x,y]);
  const build=async(type,x,y)=>{await page.click(`[data-tool="${type}"]`);const p=await at(x,y);await page.mouse.click(p.x,p.y);};
  await build('road',12,16);assert.equal(await page.evaluate(()=>qa.city.at(12,16).type),'road');await page.click('#undo');assert.equal(await page.evaluate(()=>qa.city.at(12,16).type),'land');
