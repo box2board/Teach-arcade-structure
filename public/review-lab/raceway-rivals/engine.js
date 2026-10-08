@@ -7,17 +7,45 @@ export class Race {
  constructor({questionCount=8,laps=1}={}){
   if(![8,12,16].includes(questionCount)||!Number.isInteger(laps)||laps<1||laps>5)throw new Error('Invalid race settings');
   this.questionCount=questionCount;this.laps=laps;this.segmentsPerLap=questionCount/4;this.totalSegments=this.segmentsPerLap*laps;this.lapLength=this.segmentsPerLap*SEGMENT_LENGTH;this.totalDistance=this.lapLength*laps;this.countdown=3;this.countdownKind='start';this.greenTime=0;this.recoveryTime=0;this.falls=0;this.fallSide=1;this.returnSpeed=0;
-  this.distance=0;this.previousDistance=0;this.x=0;this.speed=0;this.juice=75;this.time=0;this.boost=0;this.shield=0;this.cooldown=0;this.state='race';this.rivals=[{distance:45,x:-.5,speed:345,color:'#ff667b'},{distance:95,x:.5,speed:365,color:'#ffcf62'},{distance:145,x:0,speed:385,color:'#a99cff'}];this.pickups=new Set();this.hits=new Set();}
- advanceRivals(dt){this.rivals.forEach((r,i)=>{r.distance+=r.speed*dt*(1+.08*Math.sin(this.time+i));r.x=Math.sin(this.time*.22+i*2)*.6})}
+  this.distance=0;this.previousDistance=0;this.x=0;this.steering=0;this.contactTime=0;this.contacts=0;this.speed=0;this.juice=75;this.time=0;this.boost=0;this.shield=0;this.cooldown=0;this.state='race';this.rivals=[{distance:45,x:-.6,speed:0,pace:420,color:'#ff667b'},{distance:95,x:.6,speed:0,pace:436,color:'#ffcf62'},{distance:145,x:.3,speed:0,pace:448,color:'#a99cff'}];this.pickups=new Set();this.hits=new Set();}
+ advanceRivals(dt){this.rivals.forEach((r,i)=>{
+  r.previousDistance=r.distance;
+  // Each driver has a pace of their own: no teleporting or player-speed matching.
+  const target=r.pace*(1+.045*Math.sin(this.time*.7+i*2));
+  r.speed+=clamp(target-r.speed,-70*dt,440*dt);
+  let lane=Math.sin(this.time*.18+i*2)*.58;
+  const traffic=[...this.rivals.filter(other=>other!==r),...(this.state==='race'?[{distance:this.distance,x:this.x}]:[])];
+  const ahead=traffic.find(other=>other.distance>=r.distance&&other.distance-r.distance<170&&Math.abs(other.x-r.x)<.32);
+  if(ahead)lane=ahead.x>0?-.65:.65;
+  r.x+=clamp(lane-r.x,-.65*dt,.65*dt);
+  r.distance=Math.min(this.totalDistance,r.distance+r.speed*dt);
+ })}
+ contactRivals(){
+  if(this.cooldown||this.contactTime)return;
+  for(const r of this.rivals){
+   const before=r.previousDistance-this.previousDistance,after=r.distance-this.distance;
+   const crossed=before*after<=0;
+   if((Math.abs(after)<48||crossed)&&Math.abs(r.x-this.x)<.25){
+    this.contacts++;this.contactTime=.65;this.cooldown=1;
+    if(this.shield<=0)this.speed*=.92;
+    r.speed*=.94;
+    // Separate gently; contact alone cannot push a driver over the edge.
+    const side=this.x===r.x?(r.x>0?-1:1):Math.sign(this.x-r.x);
+    this.x=clamp(this.x+side*.045,-1.1,1.1);
+    r.x=clamp(r.x-side*.07,-.8,.8);
+    break;
+   }
+  }
+ }
  update(dt,input={}){
  dt=clamp(dt,0,.05);
  if(this.state==='countdown'){this.countdown=Math.max(0,this.countdown-dt);if(this.countdown<1e-8){this.countdown=0;this.greenTime=1;this.state='race'}return}
  if(this.state==='recovering'){
   this.time+=dt;this.advanceRivals(dt);this.recoveryTime=Math.max(0,this.recoveryTime-dt);
-  if(this.recoveryTime<1e-8){this.x=0;this.speed=this.returnSpeed;this.cooldown=2;this.state='race'}return;
+  if(this.recoveryTime<1e-8){this.x=0;this.steering=0;this.speed=this.returnSpeed;this.cooldown=2;this.state='race'}return;
  }
  if(this.state!=='race')return;
- this.time+=dt;this.greenTime=Math.max(0,this.greenTime-dt);this.boost=Math.max(0,this.boost-dt);this.shield=Math.max(0,this.shield-dt);this.cooldown=Math.max(0,this.cooldown-dt);
+ this.time+=dt;this.contactTime=Math.max(0,this.contactTime-dt);this.greenTime=Math.max(0,this.greenTime-dt);this.boost=Math.max(0,this.boost-dt);this.shield=Math.max(0,this.shield-dt);this.cooldown=Math.max(0,this.cooldown-dt);
  const powered=this.juice>0,top=this.boost>0?620:460;
  // Fast arcade acceleration, deliberate braking, and momentum when gas is released.
  const target=input.brake?0:input.gas?(powered?top:280):100;
@@ -27,10 +55,14 @@ export class Race {
  if(input.gas&&!input.brake&&powered)this.juice=Math.max(0,this.juice-dt*JUICE_DRAIN);
  const steer=(input.right?1:0)-(input.left?1:0);
  const drift=-roadCurvature(this.distance)*this.speed*this.speed*1.6;
- this.x=clamp(this.x+(steer*(.6+1.8*Math.min(1,this.speed/260))+drift)*dt,-1.4,1.4);
+ // Ease into steering quickly, then center faster when the key is released.
+ this.steering+=(steer-this.steering)*(1-Math.exp(-(steer?14:20)*dt));
+ const grip=Math.min(1,this.speed/180);
+ this.x=clamp(this.x+(this.steering*2.4*grip+drift)*dt,-1.4,1.4);
  this.advanceRivals(dt);
- if(Math.abs(this.x)>1.16){this.falls++;this.fallSide=Math.sign(this.x);this.returnSpeed=Math.max(140,this.speed*.75);this.recoveryTime=1.4;this.state='recovering';return}
+ if(Math.abs(this.x)>1.16){this.falls++;this.fallSide=Math.sign(this.x);this.returnSpeed=this.speed*.8;this.steering=0;this.recoveryTime=1.4;this.state='recovering';return}
  this.previousDistance=this.distance;this.distance+=this.speed*dt;
+ this.contactRivals();
  const gate=(this.stopsCompleted+1)*SEGMENT_LENGTH;
  if(this.stopsCompleted<this.totalSegments-1&&this.distance>=gate){this.distance=gate;this.state='pit';return}
  if(this.distance>=this.totalDistance){this.distance=this.totalDistance;this.state='finished';return}
