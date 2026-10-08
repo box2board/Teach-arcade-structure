@@ -20,8 +20,8 @@ for(const questionCount of [8,12,16])for(const laps of [1,2,3,5]){
   for(let q=0;q<4;q++){const ok=review.answer((review.question.answer+1)%4);race.juice+=ok?25:10}
   if(batch)race.stopsCompleted++;
   race.state='race';let depleted=false;
-  for(let ticks=0;ticks<5000&&race.state==='race';ticks++){
-   race.update(.05,{gas:true});if(race.juice===0){depleted=true;if(race.distance<race.nextGate)assert.equal(race.state,'race')}
+  for(let ticks=0;ticks<5000&&['race','recovering'].includes(race.state);ticks++){
+   race.update(.05,{gas:true,left:race.x>.08,right:race.x<-.08});if(race.juice===0){depleted=true;if(race.distance<race.nextGate)assert.equal(race.state,'race')}
   }
   assert(depleted);assert.equal(race.state,batch===race.totalSegments-1?'finished':'pit');
   assert.equal(race.distance,(batch+1)*SEGMENT_LENGTH);
@@ -30,10 +30,9 @@ for(const questionCount of [8,12,16])for(const laps of [1,2,3,5]){
  assert(review.complete);assert.equal(review.correct,0);assert.equal(review.missed.length,questionCount);assert.equal(race.distance,race.totalDistance);
 }
 const perfect=new Race();perfect.juice=100;
-while(perfect.state==='race')perfect.update(.05,{gas:true});
+while(perfect.state==='race')perfect.update(.05,{gas:true,left:perfect.x>.08,right:perfect.x<-.08});
 assert(perfect.time>38&&perfect.time<41);assert(perfect.juice<5,'perfect charge nearly depleted at checkpoint');
-const empty=new Race();empty.juice=0;for(let i=0;i<100;i++)empty.update(.05,{gas:true});assert.equal(empty.speed,140);assert.equal(empty.state,'race');
-empty.x=1.2;for(let i=0;i<100;i++)empty.update(.05,{gas:true});assert.equal(empty.speed,40,'off-road car still crawls with empty juice');
+const empty=new Race();empty.juice=0;for(let i=0;i<100;i++)empty.update(.05,{gas:true});assert.equal(empty.speed,280);assert.equal(empty.state,'race');
 const sprint=new Race();sprint.juice=100;for(let i=0;i<16;i++)sprint.update(.05,{gas:true});assert.equal(sprint.speed,460);
 const fuel=sprint.juice;for(let i=0;i<10;i++)sprint.update(.05,{gas:true,brake:true});assert.equal(sprint.speed,0);assert.equal(sprint.juice,fuel);
 sprint.boost=3;for(let i=0;i<22;i++)sprint.update(.05,{gas:true});assert.equal(sprint.speed,620);
@@ -41,3 +40,16 @@ assert.equal(JUICE_DRAIN,2.5);
 assert.throws(()=>new ReviewSession({...bank,questions:bank.questions.slice(0,10)},{questionCount:16}));
 const allCorrect=new ReviewSession(bank,{questionCount:8,laps:3});while(!allCorrect.complete)allCorrect.answer(allCorrect.question.answer);assert.equal(allCorrect.firstCorrect,8);assert.equal(allCorrect.correct,24);
 console.log('PASS: 8/12/16 questions × 1/2/3/5 laps, same unique questions shuffled each lap, four-question batches, fixed gates, all-wrong completion, countdown freezes grid, perfect-charge checkpoint timing, empty-fuel driving, brake priority and repetition scores.');
+
+const momentum=new Race();momentum.speed=620;momentum.juice=0;
+for(let i=0;i<20;i++)momentum.update(.05,{gas:true,left:momentum.x>.08,right:momentum.x<-.08});
+assert(momentum.speed>590,'fuel loss retains high-speed momentum');
+for(let i=0;i<280;i++)momentum.update(.05,{gas:true,left:momentum.x>.08,right:momentum.x<-.08});assert(momentum.speed>=280);
+const fall=new Race();fall.speed=460;fall.x=1.2;fall.update(.05,{gas:true});assert.equal(fall.state,'recovering');assert.equal(fall.falls,1);
+const rivals=fall.rivals[0].distance,distance=fall.distance,charge=fall.juice;
+for(let i=0;i<28;i++)fall.update(.05,{gas:true});assert.equal(fall.state,'race');assert.equal(fall.x,0);assert.equal(fall.distance,distance);assert.equal(fall.juice,charge);assert(fall.rivals[0].distance>rivals);assert.equal(fall.speed,345);
+fall.state='countdown';fall.countdown=2;const grid=JSON.stringify(fall);
+for(let i=0;i<39;i++)fall.update(.05,{gas:true});assert.equal(fall.state,'countdown');assert.equal(fall.speed,345);assert.equal(fall.distance,distance);assert.equal(fall.juice,charge);
+fall.update(.05,{gas:true});assert.equal(fall.state,'race');assert.equal(fall.speed,345);
+const unattended=new Race();unattended.juice=100;for(let i=0;i<800&&unattended.state==='race';i++)unattended.update(.05,{gas:true});assert.equal(unattended.state,'recovering','bends require steering');
+console.log('PASS: gradual fuel-empty momentum, road fall with brief recovery and rival progress, steering required in bends, two-second restart preserves speed and fuel.');
