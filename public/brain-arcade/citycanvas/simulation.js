@@ -166,6 +166,21 @@ class City{
   }
   this.update();if(this.mode==='manager')this.funds+=this.balance;this.awardGoals();if(this.mode==='manager'&&this.scenarioProgress()?.done)this.experience.complete=true;this.month++;return this;
  }
+ growthReport(){
+  const lots=this.anchors().filter(t=>zones.includes(t.type));
+  return zones.map(type=>{
+   const group=lots.filter(t=>t.type===type),growing=group.filter(t=>t.level<3&&!this.growth(t).length),waiting=group.filter(t=>t.level<3&&this.growth(t).length),full=group.filter(t=>t.level===3);
+   const reasons=new Map();
+   for(const t of waiting)for(const reason of this.growth(t)){
+    const entry=reasons.get(reason)||{reason,count:0,target:{x:t.x,y:t.y}};entry.count++;reasons.set(reason,entry);
+   }
+   // These are the simulation's real expansion thresholds, not a separate demand score.
+   const room=type==='home'?this.jobs>=this.population*.4:type==='shop'?this.population>=24:this.jobs<Math.max(25,this.population*.9);
+   const advice=type==='home'?(this.population===0&&this.jobs===0?'Start homes alongside workplaces, with connected utilities.':room?'Jobs can support more residents. Add served homes.':'Add workplaces before expanding homes.'):type==='shop'?(room?'Residents can support shops through their final growth stage.':'Small shops can grow now; larger shops need 12–24 residents.'):room?'There is room for more industrial jobs. Keep factories away from homes.':'Existing jobs meet industrial demand. Grow homes first.';
+   const state=waiting.length?'Needs attention':growing.length?'Ready to grow':full.length===group.length&&group.length?'Fully developed':room?'Room to expand':type==='home'?'Add workplaces':'Grow homes first';
+   return {type,state,advice,ready:growing.length,waiting:waiting.length,full:full.length,total:group.length,reasons:[...reasons.values()].sort((a,b)=>b.count-a.count)};
+  });
+ }
  scenarioProgress(){
   const id=this.experience.scenario;if(!id)return null;
   const occupied=this.anchors().filter(t=>zones.includes(t.type)&&t.level>0),homes=occupied.filter(t=>t.type==='home');
