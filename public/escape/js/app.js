@@ -86,7 +86,7 @@
     hintLevel = 0; save(); render();
   }
   function renderReasoning(scene, panel) {
-    if (!scene.reflect || scene.kind === 'intro') return;
+    if (data.reasoningNotes === false || !scene.reflect || scene.kind === 'intro') return;
     const box = document.createElement('section'); box.className = 'reflection';
     const prompt = document.createElement('p'); prompt.className = 'reflection-prompt'; prompt.textContent = scene.reflect;
     const label = document.createElement('label'); label.className = 'reflection-label'; label.textContent = 'Add your reasoning to the evidence board';
@@ -121,6 +121,10 @@
     const meta = $('#roomMeta');
     if (meta) meta.textContent = [data.topic, data.subject, data.gradeBand].filter(Boolean).join(' · ');
     document.body.dataset.room = data.id || roomId;
+    const reasoningList = $('#reasoningList');
+    if (reasoningList) reasoningList.hidden = data.reasoningNotes === false;
+    const lockerNote = $('#lockerNote');
+    if (lockerNote && data.reasoningNotes === false) lockerNote.textContent = 'Recovered clues stay here as you investigate.';
   }
   function renderPuzzle(scene, panel) {
     if (scene.kind === 'intro') {
@@ -244,9 +248,10 @@
       const reportClueIds = [...new Set([...(report.clueIds || []), ...state.clues.map(clue => clue.id)])];
       const citedClues = reportClueIds.map(id => clueById.get(id)).filter(Boolean);
       const savedReasoning = Object.entries(state.reasoning || {}).filter(([, note]) => note?.trim());
-      const reasoningReview = savedReasoning.length ? `<section class="final-reasoning"><h3>Your reasoning from the evidence board</h3>${savedReasoning.map(([sceneId, note]) => { const scene = activeScenes().find(item => item.id === sceneId) || data.scenes.find(item => item.id === sceneId); return `<article><strong>${escapeHtml(scene?.title || scene?.takeawayTitle || 'Field reasoning')}</strong>${scene?.reflect ? `<span class="reasoning-question">${escapeHtml(scene.reflect)}</span>` : ''}<span>${escapeHtml(note)}</span></article>`; }).join('')}</section>` : profile().requireReasoning ? '<section class="final-reasoning"><h3>Your reasoning from the evidence board</h3><p>No saved reasoning notes were found for this mission.</p></section>' : '';
+      const reasoningReview = data.reasoningNotes === false ? '' : savedReasoning.length ? `<section class="final-reasoning"><h3>Your reasoning from the evidence board</h3>${savedReasoning.map(([sceneId, note]) => { const scene = activeScenes().find(item => item.id === sceneId) || data.scenes.find(item => item.id === sceneId); return `<article><strong>${escapeHtml(scene?.title || scene?.takeawayTitle || 'Field reasoning')}</strong>${scene?.reflect ? `<span class="reasoning-question">${escapeHtml(scene.reflect)}</span>` : ''}<span>${escapeHtml(note)}</span></article>`; }).join('')}</section>` : profile().requireReasoning ? '<section class="final-reasoning"><h3>Your reasoning from the evidence board</h3><p>No saved reasoning notes were found for this mission.</p></section>' : '';
       const chosenLevel = data.difficultyLevels?.find(level => level.id === state.difficulty)?.label || state.difficulty;
-      panel.innerHTML = `<div class="victory"><div class="victory-icon" aria-hidden="true">✦</div><h3>${escapeHtml(data.victoryTitle || 'Mission complete')}</h3><p>${escapeHtml(data.completion)}</p><span class="report-level">${escapeHtml(chosenLevel)} challenge · ${savedReasoning.length} reasoning note${savedReasoning.length === 1 ? '' : 's'}</span></div>${report.answer ? `<section class="final-report"><span class="insight-label">${escapeHtml(report.label || 'FINAL REPORT · WHAT THE CLUES SHOW')}</span><h3>${escapeHtml(report.question || data.missionQuestion || 'What do the clues show?')}</h3><p class="report-answer">${escapeHtml(report.answer)}</p><h4>Evidence in the report</h4><ul>${citedClues.map(clue => `<li><strong>${escapeHtml(clue.label)}</strong><span>${escapeHtml(clue.detail)}</span></li>`).join('')}</ul></section>` : ''}${reasoningReview}<div class="debrief"><h3>Debrief · connect the clues</h3>${(data.debrief || []).map(item => `<p><strong>${escapeHtml(item.label)}</strong> ${escapeHtml(item.text)}</p>`).join('')}</div>`;
+      const reportLevel = data.reasoningNotes === false ? `${chosenLevel} challenge` : `${chosenLevel} challenge · ${savedReasoning.length} reasoning note${savedReasoning.length === 1 ? '' : 's'}`;
+      panel.innerHTML = `<div class="victory"><div class="victory-icon" aria-hidden="true">✦</div><h3>${escapeHtml(data.victoryTitle || 'Mission complete')}</h3><p>${escapeHtml(data.completion)}</p><span class="report-level">${escapeHtml(reportLevel)}</span></div>${report.answer ? `<section class="final-report"><span class="insight-label">${escapeHtml(report.label || 'FINAL REPORT · WHAT THE CLUES SHOW')}</span><h3>${escapeHtml(report.question || data.missionQuestion || 'What do the clues show?')}</h3><p class="report-answer">${escapeHtml(report.answer)}</p><h4>Evidence in the report</h4><ul>${citedClues.map(clue => `<li><strong>${escapeHtml(clue.label)}</strong><span>${escapeHtml(clue.detail)}</span></li>`).join('')}</ul></section>` : ''}${reasoningReview}<div class="debrief"><h3>Debrief · connect the clues</h3>${(data.debrief || []).map(item => `<p><strong>${escapeHtml(item.label)}</strong> ${escapeHtml(item.text)}</p>`).join('')}</div>`;
       panel.append(button('Play again', reset, 'primary'));
     }
     root.append(panel);
@@ -259,7 +264,7 @@
     root.replaceChildren(); root.dataset.scene = 'difficulty';
     const panel = document.createElement('div'); panel.className = 'puzzle-panel difficulty-picker';
     const intro = document.createElement('p'); intro.className = 'scene-copy';
-    intro.textContent = 'Choose a challenge level. Higher levels add more rooms, more complex evidence problems, and required written reasoning.';
+    intro.textContent = data.difficultyIntro || 'Choose a challenge level. Higher levels add more rooms, more complex evidence problems, and required written reasoning.';
     const grid = document.createElement('div'); grid.className = 'difficulty-grid';
     (data.difficultyLevels || [{id:'easy',label:'Easy',description:'A shorter mission with guided evidence checks.'}]).forEach(level => {
       const card = document.createElement('article'); card.className = 'difficulty-card';
