@@ -5,6 +5,14 @@ const packs=[{
   id:'scientific-method',title:'Scientific Method',subject:'Science',
   description:'Variables, experiments, evidence, and scientific reasoning.',
   questionCount:24,load:()=>import('./question-sets/scientific-method.js')
+},{
+  id:'constitution-basics',title:'U.S. Constitution Basics',subject:'Social Studies',
+  description:'Branches, checks and balances, federalism, and constitutional rights.',
+  questionCount:20,load:()=>import('./question-sets/constitution-basics.js')
+},{
+  id:'linear-equations',title:'One-Variable Linear Equations',subject:'Math',
+  description:'Inverse operations, two-step equations, and solutions on both sides.',
+  questionCount:20,load:()=>import('./question-sets/linear-equations.js')
 }];
 export const QUESTION_SETS=Object.freeze(packs.map(({load,...metadata})=>Object.freeze(metadata)));
 export const GAMES=Object.freeze([Object.freeze({
@@ -24,6 +32,12 @@ export const GAMES=Object.freeze([Object.freeze({
   image:'/review-lab/review-pinball-preview.webp',imageAlt:'Neon Circuit pinball table with glowing bumpers, a raised ramp, and two flippers.',
   mode:'Solo',facts:Object.freeze(['3 themed tables','Classic + Assisted modes','Manual plunger']),
   topicLabel:'Scientific Method + French Revolution',launchLabel:'Choose a table & play',questionSetIds:Object.freeze([])
+}),Object.freeze({
+  id:'snow-day-defenders',title:'Snow Day Defenders',url:'/review-lab/snow-day-defenders/',
+  description:'Answer review questions to earn snow gear, recruit helpers, and protect your fort.',
+  image:'/review-lab/snow-day-defenders-preview.svg',imageAlt:'Illustration of a snow fort, two scarf-wearing helpers, and playful snow creatures.',
+  mode:'Solo',facts:Object.freeze(['3 waves','Automatic snowball tossing','Pause to study & upgrade']),
+  questionSetIds:Object.freeze(['scientific-method','constitution-basics','linear-equations'])
 })]);
 export function gamesForSet(id){return GAMES.filter(game=>game.questionSetIds.includes(id));}
 export function setsForGame(id){const game=GAMES.find(game=>game.id===id);return QUESTION_SETS.filter(set=>game?.questionSetIds.includes(set.id));}
