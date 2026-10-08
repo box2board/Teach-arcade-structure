@@ -21,3 +21,15 @@ const factory={type:'industry',level:2,access:true,powered:true,watered:true};as
 assert.equal(city.goalProgress(Array(3).fill({...factory,level:1}))[2].count,0);
 assert.equal(neighborhoodGoals.reduce((n,g)=>n+g.reward,0),2700);
 console.log('PASS: goal requirements, month-end payout, free-mode isolation, one-time rewards, save/load persistence, legacy migration, invalid goal-history rejection');
+const manager=new City('manager');for(const type of ['square','sports','promenade'])assert.equal(manager.unlocked(type),false);
+manager.earnedGoals.push('green-homes');assert(manager.unlocked('square'));assert.equal(manager.unlocked('sports'),false);assert.match(manager.plan(10,10,'sports').error,/shopping street/);
+assert(City.load(manager.save()).unlocked('square'),'Earned landmark survives loading');
+const free=new City();for(const type of ['square','sports','promenade'])assert(free.unlocked(type));
+assert.equal(free.build(10,10,'square'),'');assert.equal(free.at(20,11).park,false,'Disconnected landmark has no coverage');assert.equal(free.build(9,11,'road'),'');assert.equal(free.at(20,11).park,true,'Coverage measured from footprint edge');assert.equal(free.at(21,11).park,false);
+assert.equal(free.build(17,20,'sports',true),'');assert.equal(free.at(17,20).w,3);assert.equal(free.at(17,20).h,4);
+assert.match(free.plan(2,2,'promenade').error,/beside the river/);assert.equal(free.build(32,20,'promenade'),'');
+const restored=City.load(free.save());assert.equal(restored.at(32,22).type,'promenade');assert.equal(restored.anchor(restored.at(32,22)).h,3);
+assert.equal(restored.build(32,22,'erase'),'');assert.equal(restored.at(32,20).type,'land');assert.equal(restored.at(32,22).type,'land');
+assert.equal(restored.budget.find(r=>r.type==='square').count,1);assert.equal(restored.budget.find(r=>r.type==='sports').count,1);
+console.log('PASS: landmark goal locks, persistent/free-mode unlocks, rotated footprints, road-dependent recreation, edge-distance coverage, waterfront restriction, save/load and whole-landmark demolition');
+const schoolRequest=city.requests.find(r=>r.id==='school');assert.equal(schoolRequest.title,'A school for our neighborhood');assert.match(schoolRequest.detail,/powered school/);assert.equal(schoolRequest.layer,'school');
