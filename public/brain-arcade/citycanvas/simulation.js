@@ -22,7 +22,12 @@ const types={
 };
 const upkeep={road:1,bridge:3,hospital:40,library:18,power:35,water:25,park:3,square:6,sports:8,promenade:6,school:28,fire:22};
 const isRoad=t=>!!t&&['road','bridge'].includes(t.type);
-const terrainAt=(x,y)=>Math.abs(x-(36+Math.round(Math.sin(y/5)*2)))<2?'river':'land';
+const maps={riverbend:{name:'Riverbend',detail:'A broad building area beside a gentle river.'},meander:{name:'Meandering river',detail:'A winding river makes bridge placement and waterfront planning more varied.'},lake:{name:'Lakeside',detail:'A large lake and narrow outlet create a long, curved waterfront.'},divide:{name:'Two banks',detail:'A central river separates two substantial building areas.'}};
+const terrainAt=(x,y,map='riverbend')=>{
+ if(map==='divide')return Math.abs(x-24)<2?'river':'land';
+ if(map==='lake')return ((x-39)**2/81+(y-16)**2/100<1||Math.abs(x-39)<2)?'river':'land';
+ return Math.abs(x-(36+Math.round(Math.sin(y/5)*(map==='meander'?5:2))))<2?'river':'land';
+};
 const zones=['home','shop','industry'];
 const neighborhoodGoals=[
  {id:'green-homes',title:'A greener neighborhood',detail:'Grow 4 occupied homes with road, power, water, park coverage, at least 70% well-being, and no industrial pollution.',target:4,reward:600},
@@ -40,13 +45,14 @@ const unlockAt=type=>milestones.find(m=>m.unlocks.includes(type))?.population||0
 // Coverage is measured from the nearest edge of the facility's occupied grounds.
 const near=(a,b,r)=>Math.max(b.x-a.x,0,a.x-(b.x+(b.w||1)-1))+Math.max(b.y-a.y,0,a.y-(b.y+(b.h||1)-1))<=r;
 class City{
- constructor(mode='free'){
+ constructor(mode='free',map='riverbend'){
+  if(!Object.hasOwn(maps,map))throw Error('Unknown map layout.');this.map=map;
   this.experience={scenario:null,complete:false,guided:false};this.earnedGoals=[];this.peakPopulation=0;this.mode=mode;this.funds=15000;this.month=1;this.tax=9;this.tiles=[];
   for(let y=0;y<H;y++)for(let x=0;x<W;x++){
-   const river=36+Math.round(Math.sin(y/5)*2);
-   this.tiles.push({x,y,type:terrainAt(x,y),level:0,progress:0,anchor:y*W+x,w:1,h:1,powered:false,watered:false,access:false});
+   this.tiles.push({x,y,type:this.terrainAt(x,y),level:0,progress:0,anchor:y*W+x,w:1,h:1,powered:false,watered:false,access:false});
   }this.update();
  }
+ terrainAt(x,y){return terrainAt(x,y,this.map);}
  at(x,y){return Number.isInteger(x)&&Number.isInteger(y)&&x>=0&&y>=0&&x<W&&y<H?this.tiles[y*W+x]:null;}
  anchor(t){return t?this.tiles[t.anchor]:null;}
  anchors(){return this.tiles.filter((t,i)=>t.anchor===i);}
@@ -72,7 +78,7 @@ class City{
    if(cell.type!=='land')return {cells:[],error:cell.type==='river'?'The entire footprint must stay on land.':`Clear all ${w} × ${h} tiles before placing this building.`};
    cells.push(cell);
   }
-  if(type==='promenade'&&!cells.some(c=>this.neighbors(c).some(n=>terrainAt(n.x,n.y)==='river')))return {cells:[],error:'Place the promenade on land beside the river.'};
+  if(type==='promenade'&&!cells.some(c=>this.neighbors(c).some(n=>this.terrainAt(n.x,n.y)==='river')))return {cells:[],error:'Place the promenade on land beside the river.'};
   return {cells,error:'',w,h};
  }
  build(x,y,type,rotated=false){
@@ -82,7 +88,7 @@ class City{
   if(this.mode==='manager')this.funds-=def.cost;
   for(const cell of plan.cells){
    const own=cell.y*W+cell.x,isAnchor=cell.x===x&&cell.y===y;
-   Object.assign(cell,{type:type==='erase'?terrainAt(cell.x,cell.y):type,level:0,progress:0,anchor:type==='erase'?own:y*W+x,w:type==='erase'?1:isAnchor?plan.w:0,h:type==='erase'?1:isAnchor?plan.h:0});
+   Object.assign(cell,{type:type==='erase'?this.terrainAt(cell.x,cell.y):type,level:0,progress:0,anchor:type==='erase'?own:y*W+x,w:type==='erase'?1:isAnchor?plan.w:0,h:type==='erase'?1:isAnchor?plan.h:0});
   }
   this.update();return '';
  }
@@ -188,27 +194,35 @@ class City{
   const definitions={
    village:{title:'From the ground up',detail:`Reach 64 residents and a nonnegative monthly balance. Residents: ${this.population}/64 · Balance: $${this.balance}`,done:this.population>=64&&this.balance>=0},
    utilities:{title:'Lights back on',detail:`Restore road, power and water to every occupied lot; keep at least 64 residents. Unserved lots: ${missing} · Residents: ${this.population}/64`,done:occupied.length>0&&missing===0&&this.population>=64},
-   'clean-air':{title:'Room to breathe',detail:`Keep 64 residents, remove pollution from all occupied homes and reach 70% well-being. Polluted homes: ${polluted} · Well-being: ${this.happiness}% · Residents: ${this.population}/64`,done:homes.length>0&&polluted===0&&this.happiness>=70&&this.population>=64}
+   'clean-air':{title:'Room to breathe',detail:`Keep 64 residents, remove pollution from all occupied homes and reach 70% well-being. Polluted homes: ${polluted} · Well-being: ${this.happiness}% · Residents: ${this.population}/64`,done:homes.length>0&&polluted===0&&this.happiness>=70&&this.population>=64},
+   crossing:{title:'Bring the banks together',detail:`Finish the three-tile bridge between the road ends at row 17. Restore services to every occupied lot and keep 64 residents. Bridge: ${[23,24,25].filter(x=>this.at(x,16).type==='bridge').length}/3 · Unserved lots: ${missing} · Residents: ${this.population}/64`,done:[23,24,25].every(x=>this.at(x,16).type==='bridge')&&missing===0&&this.population>=64},
+   boom:{title:'A growing lakeside town',detail:`Grow to 256 residents with jobs for at least 40% of them, 70% well-being and a nonnegative balance. Residents: ${this.population}/256 · Jobs: ${this.jobs}/${Math.ceil(this.population*.4)} · Well-being: ${this.happiness}% · Balance: $${this.balance}`,done:this.population>=256&&this.jobs>=this.population*.4&&this.happiness>=70&&this.balance>=0}
   };return {...definitions[id],complete:this.experience.complete};
  }
- static start(mode='free',layout='blank',scenario=null){
-  const c=new City(mode);c.experience={scenario,complete:false,guided:mode==='manager'&&!scenario};
-  if(layout==='starter'||scenario==='utilities'||scenario==='clean-air'){
+ static start(mode='free',layout='blank',scenario=null,map='riverbend'){
+  if(scenario)map=scenario==='crossing'?'divide':scenario==='boom'?'lake':'riverbend';
+  const c=new City(mode,map);c.experience={scenario,complete:false,guided:mode==='manager'&&!scenario};
+  if(scenario==='crossing'){
+   for(const [a,b]of [[2,22],[26,34]])for(let x=a;x<=b;x++)c.build(x,16,'road');
+   for(const [x,y,type]of [[2,14,'power'],[6,14,'water'],[29,17,'water'],[10,18,'park']])c.build(x,y,type);
+   for(const [a,b,type]of [[9,16,'home'],[30,32,'industry']])for(let x=a;x<=b;x++){c.build(x,15,type);c.at(x,15).level=2;}c.funds=3500;c.update();return c;
+  }
+  if(layout==='starter'||['utilities','clean-air','boom'].includes(scenario)){
    // Build at normal prices, then populate an established starter neighborhood.
-   for(let x=2;x<=29;x++)c.build(x,16,'road');
-   for(const [x,y,type]of [[2,14,'power'],[6,14,'water'],[23,14,'water'],[10,18,'park']])c.build(x,y,type);
+   for(let x=2;x<=29;x++)c.build(x,16,c.terrainAt(x,16)==='river'?'bridge':'road');
+   for(const [x,y,type]of [[2,14,'power'],[6,14,'water'],[map==='divide'?29:23,14,'water'],[10,18,'park']])c.build(x,y,type);
    for(const [a,b,type]of [[9,16,'home'],[18,21,'shop'],[26,28,'industry']])for(let x=a;x<=b;x++){c.build(x,15,type);c.at(x,15).level=2;}
    if(scenario==='utilities'){c.build(6,14,'erase');c.build(23,14,'erase');c.funds=4000;}
    if(scenario==='clean-air'){c.build(18,15,'erase');c.build(18,15,'industry');c.at(18,15).level=2;c.funds=4500;}
    c.update();
   }return c;
  }
- save(){return {version:5,experience:{...this.experience},earnedGoals:[...this.earnedGoals],peakPopulation:this.peakPopulation,mode:this.mode,funds:this.funds,month:this.month,tax:this.tax,tiles:this.tiles.map(t=>this.state(t))};}
+ save(){return {version:5,map:this.map,experience:{...this.experience},earnedGoals:[...this.earnedGoals],peakPopulation:this.peakPopulation,mode:this.mode,funds:this.funds,month:this.month,tax:this.tax,tiles:this.tiles.map(t=>this.state(t))};}
  static load(data){
   if(!data||![1,2,3,4,5].includes(data.version)||!['free','manager'].includes(data.mode)||!Number.isFinite(data.funds)||Math.abs(data.funds)>1e12||!Number.isInteger(data.month)||data.month<1||data.month>1e9||!Number.isInteger(data.tax)||data.tax<0||data.tax>20||!Array.isArray(data.tiles)||data.tiles.length!==W*H)throw Error('This is not a valid CityCanvas save.');
   if(data.version>=4&&(!Number.isInteger(data.peakPopulation)||data.peakPopulation<0||data.peakPopulation>W*H*24))throw Error('Invalid city milestone history.');
   if(data.version===5&&(!Array.isArray(data.earnedGoals)||data.earnedGoals.length>neighborhoodGoals.length||new Set(data.earnedGoals).size!==data.earnedGoals.length||data.earnedGoals.some(id=>!neighborhoodGoals.some(g=>g.id===id))))throw Error('Invalid neighborhood goal history.');
-  const city=new City(data.mode),allowed=['land','river',...Object.keys(types).filter(t=>!['erase','inspect'].includes(t))];
+  const city=new City(data.mode,data.map===undefined?'riverbend':data.map),allowed=['land','river',...Object.keys(types).filter(t=>!['erase','inspect'].includes(t))];
   data.tiles.forEach((saved,i)=>{
    const original=city.tiles[i];
    if(!saved||!allowed.includes(saved.type)||!Number.isInteger(saved.level)||saved.level<0||saved.level>3||!Number.isInteger(saved.progress)||saved.progress<0||saved.progress>1||(original.type==='river')!==(['river','bridge'].includes(saved.type))||(!zones.includes(saved.type)&&(saved.level!==0||saved.progress!==0)))throw Error('This save contains invalid map tiles.');
@@ -223,9 +237,9 @@ class City{
    if(['land','river','road','bridge','home','shop','industry','park'].includes(t.type)&&(!single||t!==a))throw Error('Invalid occupied terrain.');
    if(t===a)for(const c of city.footprint(a))if(c.anchor!==a.anchor)throw Error('Incomplete building footprint.');
   }
-  if(data.experience){const e=data.experience;if(![null,'village','utilities','clean-air'].includes(e.scenario)||typeof e.complete!=='boolean'||typeof e.guided!=='boolean')throw Error('Invalid play experience.');city.experience={scenario:e.scenario,complete:e.complete,guided:e.guided};}
+  if(data.experience){const e=data.experience;if(![null,'village','utilities','clean-air','crossing','boom'].includes(e.scenario)||typeof e.complete!=='boolean'||typeof e.guided!=='boolean')throw Error('Invalid play experience.');city.experience={scenario:e.scenario,complete:e.complete,guided:e.guided};}
   city.earnedGoals=data.version===5?[...data.earnedGoals]:[];city.peakPopulation=data.version>=4?data.peakPopulation:Math.max(0,...city.anchors().map(t=>unlockAt(t.type)));city.funds=data.funds;city.month=data.month;city.tax=data.tax;return city.update();
  }
 }
-root.CityCanvasSim={City,types,W,H,isRoad,terrainAt,milestones,unlockAt,neighborhoodGoals};if(typeof module!=='undefined')module.exports=root.CityCanvasSim;
+root.CityCanvasSim={City,types,W,H,isRoad,terrainAt,maps,milestones,unlockAt,neighborhoodGoals};if(typeof module!=='undefined')module.exports=root.CityCanvasSim;
 })(typeof window!=='undefined'?window:globalThis);
