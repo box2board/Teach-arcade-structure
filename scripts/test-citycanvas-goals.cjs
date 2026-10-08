@@ -1,0 +1,23 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
+vm.runInThisContext(fs.readFileSync(path.resolve(__dirname,'../public/brain-arcade/citycanvas/simulation.js'),'utf8'));
+const {City,neighborhoodGoals}=CityCanvasSim;
+const city=new City();
+for(let x=2;x<=32;x++)assert.equal(city.build(x,16,'road'),'');
+for(const [x,y,type]of [[2,14,'power'],[6,14,'water'],[23,14,'water'],[10,18,'park']])assert.equal(city.build(x,y,type),'');
+for(const [start,end,type]of [[9,12,'home'],[15,17,'shop'],[26,28,'industry']])for(let x=start;x<=end;x++){assert.equal(city.build(x,15,type),'');city.at(x,15).level=2;}
+city.update();assert.deepEqual(city.neighborhoodProgress.map(g=>g.count),[4,3,3]);
+let funds=city.funds;city.step();assert.equal(city.funds,funds,'Free Build never awards cash');assert.deepEqual(city.earnedGoals,[]);
+city.mode='manager';funds=city.funds;city.step();assert.equal(city.funds-funds-city.balance,2700);assert.equal(city.earnedGoals.length,3);
+funds=city.funds;city.step();assert.equal(city.funds-funds,city.balance,'No duplicate reward next month');
+const saved=city.save(),loaded=City.load(saved);assert.deepEqual(loaded.earnedGoals,city.earnedGoals);assert.equal(loaded.funds,city.funds,'Loading never awards cash');
+funds=loaded.funds;loaded.step();assert.equal(loaded.funds-funds,loaded.balance,'No duplicate reward after loading');
+const legacy={...saved,version:4};delete legacy.earnedGoals;assert.deepEqual(City.load(legacy).earnedGoals,[]);
+for(const earnedGoals of [['unknown'],['green-homes','green-homes'],null])assert.throws(()=>City.load({...saved,earnedGoals}),/goal history/);
+const clean={type:'home',level:1,access:true,powered:true,watered:true,park:true,wellbeing:72,polluted:false};
+assert.equal(city.goalProgress(Array(4).fill(clean))[0].count,4);
+for(const missing of ['access','powered','watered','park'])assert.equal(city.goalProgress(Array(4).fill({...clean,[missing]:false}))[0].count,0);
+assert.equal(city.goalProgress(Array(4).fill({...clean,wellbeing:69}))[0].count,0);
+const factory={type:'industry',level:2,access:true,powered:true,watered:true};assert.equal(city.goalProgress([...Array(3).fill(factory),{...clean,polluted:true}])[2].count,0);
+assert.equal(city.goalProgress(Array(3).fill({...factory,level:1}))[2].count,0);
+assert.equal(neighborhoodGoals.reduce((n,g)=>n+g.reward,0),2700);
+console.log('PASS: goal requirements, month-end payout, free-mode isolation, one-time rewards, save/load persistence, legacy migration, invalid goal-history rejection');
