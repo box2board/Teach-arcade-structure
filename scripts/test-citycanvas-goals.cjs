@@ -47,5 +47,14 @@ assert.equal(report.find(r=>r.type==='home').waiting,8);assert(report.find(r=>r.
 stalled.build(6,14,'water');stalled.build(23,14,'water');assert.equal(stalled.growthReport().find(r=>r.type==='home').waiting,0);
 const mature=City.start('free','starter');for(const t of mature.anchors().filter(t=>t.type==='home'))t.level=3;mature.update();assert.equal(mature.growthReport().find(r=>r.type==='home').state,'Fully developed');
 console.log('PASS: exact growth blockers, target coordinates, ready/waiting/full counts, repair updates, maximum development, read-only reports');
+for(const map of Object.keys(CityCanvasSim.maps)){
+ const c=City.start('manager','starter',null,map),lots=c.anchors().filter(t=>['home','shop','industry'].includes(t.type));assert.equal(c.population,128);assert(lots.every(t=>t.access&&t.powered&&t.watered),map+' starter must be fully served');assert(c.funds>0);assert.deepEqual(City.load(c.save()).save(),c.save());
+ const river=c.tiles.find(t=>t.type==='river');assert.equal(c.build(river.x,river.y,'bridge'),'');assert.equal(c.build(river.x,river.y,'erase'),'');assert.equal(c.at(river.x,river.y).type,'river',map+' demolished bridge restores native water');
+ c.mode='free';const shore=c.tiles.find(t=>t.type==='land'&&c.plan(t.x,t.y,'promenade').cells.length);assert(shore,map+' has a valid promenade site');
+}
+const oldMap=City.start().save();delete oldMap.map;assert.equal(City.load(oldMap).map,'riverbend');const badMap=City.start().save();badMap.map='unknown';assert.throws(()=>City.load(badMap));
+const crossing=City.start('manager','blank','crossing');assert.equal(crossing.map,'divide');assert(!crossing.scenarioProgress().done);for(const x of [23,24,25])assert.equal(crossing.build(x,16,'bridge'),'');crossing.step();assert(crossing.experience.complete);assert(City.load(crossing.save()).experience.complete);
+const boom=City.start('manager','blank','boom');assert.equal(boom.map,'lake');assert(!boom.scenarioProgress().done);for(let x=13;x<=20;x++)assert.equal(boom.build(x,17,'home'),'');assert.equal(boom.build(16,18,'park'),'');for(let i=0;i<40&&!boom.experience.complete;i++)boom.step();assert(boom.experience.complete,'Lakeside objective achievable through normal growth');assert(boom.funds>0);
+console.log('PASS: four map starters, map/save migration and rejection, native water restoration, shoreline siting, bridge and lakeside scenario solutions');
 
 }
