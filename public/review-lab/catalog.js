@@ -15,7 +15,7 @@ export const GAMES=Object.freeze([Object.freeze({
 }),Object.freeze({
   id:'raceway-rivals',title:'Raceway Rivals',url:'/review-lab/raceway-rivals/',
   description:'Drive Canyon Circuit against three rivals. Dodge obstacles, collect boosts, and recharge your juice at question stops.',
-  mode:'Solo',facts:Object.freeze(['Drive against 3 rivals','2-lap canyon race','Questions recharge juice']),
+  mode:'Solo',facts:Object.freeze(['Drive against 3 rivals','Choose questions & laps','Recharge at checkpoints']),
   questionSetIds:Object.freeze(QUESTION_SETS.map(set=>set.id))
 })]);
 export function gamesForSet(id){return GAMES.filter(game=>game.questionSetIds.includes(id));}
