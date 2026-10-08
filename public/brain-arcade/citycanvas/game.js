@@ -19,6 +19,7 @@ else if(isRoad(t))rows.push(t.powered?'Connected to a solar plant.':'Connect thi
 $('inspect').replaceChildren(...rows.map((value,i)=>{const el=document.createElement(i===0?'strong':'p');el.textContent=value;return el;}));
 }
 function management(){
+updateGrowth();
 $('readiness').replaceChildren(...city.readiness.map(row=>{const p=document.createElement('p');p.textContent=`${types[row.type].name}: ${row.ready} ready to grow · ${row.waiting} waiting`;return p;}));
 if($('budgetDialog').open)showBudget();updateLegend();updateGoals();
  const next=city.neighborhoodProgress.find(g=>!g.earned);
@@ -26,6 +27,23 @@ if($('budgetDialog').open)showBudget();updateLegend();updateGoals();
  $('neighborhoodTitle').textContent=next?next.title:'Neighborhood goals complete!';
  $('neighborhoodDetail').textContent=next?`${next.count}/${next.target} qualifying buildings · $${next.reward.toLocaleString()} reward`:'All three rewards earned. Keep growing your city.';
  $('neighborhoodProgress').max=next?.target||3;$('neighborhoodProgress').value=next?.count||(!next?3:0);
+}
+function updateGrowth(){
+ const report=city.growthReport();
+ $('growthSummary').textContent=`Growth details · ${report.reduce((n,r)=>n+r.waiting,0)} waiting`;
+ $('growthOutlook').replaceChildren(...report.map(row=>{const p=document.createElement('p');p.textContent=types[row.type].name+' · '+row.state;return p;}));
+ $('growthRows').replaceChildren(...report.map(row=>{
+  const section=document.createElement('section'),heading=document.createElement('strong'),counts=document.createElement('p'),advice=document.createElement('p');
+  heading.textContent=types[row.type].name+' · '+row.state;
+  counts.textContent=`${row.ready} ready · ${row.waiting} waiting · ${row.full} fully developed`;
+  advice.textContent=row.advice;section.append(heading,counts,advice);
+  for(const issue of row.reasons){const button=document.createElement('button');button.textContent=`${issue.count} ${issue.count===1?'lot':'lots'}: ${issue.reason}`;button.onclick=()=>{
+   finishStroke();cursorMode=true;panMode=false;$('pan').setAttribute('aria-pressed','false');tool='inspect';rotated=false;selected={...issue.target};hover={...issue.target};showCityDetails();selectTool();
+   layer=issue.reason.includes('water tower')?'water':issue.reason.includes('solar plant')?'power':issue.reason.includes('well-being')?'wellbeing':'none';$('layer').value=layer;
+   pan={x:(W/2-selected.x-.5)*size,y:(H/2-selected.y-.5)*size};clampPan();inspect();updateLegend();canvas.focus();
+  };section.append(button);}
+  return section;
+ }));
 }
 function updateGoals(){
  const next=city.nextMilestone,rank=city.milestone;
@@ -41,6 +59,7 @@ function updateGoals(){
  if($('goalsDialog').open)showGoals();
 }
 let noticeTimer,requestSignature='';
+const growthCard=document.createElement('section');growthCard.className='milestone-card growth-card';growthCard.setAttribute('aria-label','City growth outlook');growthCard.innerHTML='<strong>Growth outlook</strong><div id="growthOutlook"></div><details id="growthDetails"><summary id="growthSummary">Growth details</summary><div id="growthRows"></div></details>';$('tools').before(growthCard);
 function showGoals(){$('goalList').replaceChildren(...milestones.map(m=>{const li=document.createElement('li');li.className=city.peakPopulation>=m.population?'earned':'';li.textContent=`${city.peakPopulation>=m.population?'✓':'○'} ${m.name} · ${m.population} residents`+(m.unlocks.length?' · '+m.unlocks.map(t=>types[t].name).join(' + '):m.population===640?' · Thriving city badge':'');return li;}));
  $('neighborhoodRules').textContent=city.mode==='manager'?'Rewards are paid automatically at month-end, once per goal. Earned goals stay completed, even if neighborhoods later change.':'Optional in Free Build: no rewards or restrictions. Switch to City Manager to earn cash rewards at month-end.';
  $('neighborhoodList').replaceChildren(...city.neighborhoodProgress.map(goal=>{const li=document.createElement('li');li.className=goal.earned?'earned':'';const title=document.createElement('strong');title.textContent=(goal.earned?'✓ ':'○ ')+goal.title;const detail=document.createElement('p');detail.textContent=goal.detail;const progress=document.createElement('p');progress.textContent=goal.earned?`Completed · $${goal.reward.toLocaleString()} reward earned`:`${goal.count}/${goal.target} qualifying buildings · $${goal.reward.toLocaleString()} reward`;const unlock=document.createElement('p');const landmark=Object.values(types).find(t=>t.goal===goal.id);unlock.textContent=(goal.earned?'Unlocked: ':'Unlocks: ')+landmark.name;li.append(title,detail,progress,unlock);return li;}));
