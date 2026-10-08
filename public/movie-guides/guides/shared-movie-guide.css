@@ -132,12 +132,15 @@
   margin-bottom: 12px;
 }
 
+@media print {
 .mg-print-quiet .ad-slot,
 .mg-print-quiet #site-header,
 .mg-print-quiet .breadcrumbs,
 .mg-print-quiet .mg-action-panel,
 .mg-print-quiet .mg-cta-box {
   display: none !important;
+}
+
 }
 
 .mg-print-quiet .container {
