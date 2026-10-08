@@ -21,6 +21,11 @@ const upkeep={road:1,bridge:3,hospital:40,library:18,power:35,water:25,park:3,sc
 const isRoad=t=>!!t&&['road','bridge'].includes(t.type);
 const terrainAt=(x,y)=>Math.abs(x-(36+Math.round(Math.sin(y/5)*2)))<2?'river':'land';
 const zones=['home','shop','industry'];
+const neighborhoodGoals=[
+ {id:'green-homes',title:'A greener neighborhood',detail:'Grow 4 occupied homes with road, power, water, park coverage, at least 70% well-being, and no industrial pollution.',target:4,reward:600},
+ {id:'shopping-street',title:'A busy shopping street',detail:'Grow 3 shops to stage 2 or higher, with road, power, and water.',target:3,reward:900},
+ {id:'clean-industry',title:'Industry with room to breathe',detail:'Grow 3 factories to stage 2 or higher, with road, power, and water. Keep all occupied homes outside industrial pollution coverage.',target:3,reward:1200}
+];
 const milestones=[
  {name:'Settlement',population:0,unlocks:[]},
  {name:'Village',population:64,unlocks:['school','fire']},
@@ -33,7 +38,7 @@ const unlockAt=type=>milestones.find(m=>m.unlocks.includes(type))?.population||0
 const near=(a,b,r)=>Math.max(b.x-a.x,0,a.x-(b.x+(b.w||1)-1))+Math.max(b.y-a.y,0,a.y-(b.y+(b.h||1)-1))<=r;
 class City{
  constructor(mode='free'){
-  this.peakPopulation=0;this.mode=mode;this.funds=15000;this.month=1;this.tax=9;this.tiles=[];
+  this.earnedGoals=[];this.peakPopulation=0;this.mode=mode;this.funds=15000;this.month=1;this.tax=9;this.tiles=[];
   for(let y=0;y<H;y++)for(let x=0;x<W;x++){
    const river=36+Math.round(Math.sin(y/5)*2);
    this.tiles.push({x,y,type:terrainAt(x,y),level:0,progress:0,anchor:y*W+x,w:1,h:1,powered:false,watered:false,access:false});
@@ -107,7 +112,20 @@ class City{
   this.powerUsed=buildings.filter(t=>t.powered&&!['road','bridge','power'].includes(t.type)).length;
   this.readiness=zones.map(type=>{const candidates=lots.filter(t=>t.type===type&&t.level<3);return {type,ready:candidates.filter(t=>!this.growth(t).length).length,waiting:candidates.filter(t=>this.growth(t).length).length};});
   this.requests=this.citizenRequests(lots);
+  this.neighborhoodProgress=this.goalProgress(lots);
   return this;
+ }
+ goalProgress(lots){
+  const connected=t=>t.access&&t.powered&&t.watered;
+  const pollutedHome=lots.some(t=>t.type==='home'&&t.level>0&&t.polluted);
+  const counts=[lots.filter(t=>t.type==='home'&&t.level>0&&connected(t)&&t.park&&t.wellbeing>=70&&!t.polluted).length,lots.filter(t=>t.type==='shop'&&t.level>=2&&connected(t)).length,pollutedHome?0:lots.filter(t=>t.type==='industry'&&t.level>=2&&connected(t)).length];
+  return neighborhoodGoals.map((goal,i)=>({...goal,count:Math.min(goal.target,counts[i]),earned:this.earnedGoals.includes(goal.id)}));
+ }
+ awardGoals(){
+  if(this.mode!=='manager')return [];
+  const completed=this.neighborhoodProgress.filter(g=>!g.earned&&g.count>=g.target);
+  for(const goal of completed){this.earnedGoals.push(goal.id);this.funds+=goal.reward;}
+  this.neighborhoodProgress=this.goalProgress(this.anchors().filter(t=>zones.includes(t.type)));return completed;
  }
  citizenRequests(lots){
   const requests=[],homes=lots.filter(t=>t.type==='home');
@@ -141,12 +159,13 @@ class City{
    else if(!reasons.length&&t.level<3){t.progress++;if(t.progress>=2){t.level++;t.progress=0;}}
    else t.progress=0;
   }
-  this.update();if(this.mode==='manager')this.funds+=this.balance;this.month++;return this;
+  this.update();if(this.mode==='manager')this.funds+=this.balance;this.awardGoals();this.month++;return this;
  }
- save(){return {version:4,peakPopulation:this.peakPopulation,mode:this.mode,funds:this.funds,month:this.month,tax:this.tax,tiles:this.tiles.map(t=>this.state(t))};}
+ save(){return {version:5,earnedGoals:[...this.earnedGoals],peakPopulation:this.peakPopulation,mode:this.mode,funds:this.funds,month:this.month,tax:this.tax,tiles:this.tiles.map(t=>this.state(t))};}
  static load(data){
-  if(!data||![1,2,3,4].includes(data.version)||!['free','manager'].includes(data.mode)||!Number.isFinite(data.funds)||Math.abs(data.funds)>1e12||!Number.isInteger(data.month)||data.month<1||data.month>1e9||!Number.isInteger(data.tax)||data.tax<0||data.tax>20||!Array.isArray(data.tiles)||data.tiles.length!==W*H)throw Error('This is not a valid CityCanvas save.');
-  if(data.version===4&&(!Number.isInteger(data.peakPopulation)||data.peakPopulation<0||data.peakPopulation>W*H*24))throw Error('Invalid city milestone history.');
+  if(!data||![1,2,3,4,5].includes(data.version)||!['free','manager'].includes(data.mode)||!Number.isFinite(data.funds)||Math.abs(data.funds)>1e12||!Number.isInteger(data.month)||data.month<1||data.month>1e9||!Number.isInteger(data.tax)||data.tax<0||data.tax>20||!Array.isArray(data.tiles)||data.tiles.length!==W*H)throw Error('This is not a valid CityCanvas save.');
+  if(data.version>=4&&(!Number.isInteger(data.peakPopulation)||data.peakPopulation<0||data.peakPopulation>W*H*24))throw Error('Invalid city milestone history.');
+  if(data.version===5&&(!Array.isArray(data.earnedGoals)||data.earnedGoals.length>neighborhoodGoals.length||new Set(data.earnedGoals).size!==data.earnedGoals.length||data.earnedGoals.some(id=>!neighborhoodGoals.some(g=>g.id===id))))throw Error('Invalid neighborhood goal history.');
   const city=new City(data.mode),allowed=['land','river',...Object.keys(types).filter(t=>!['erase','inspect'].includes(t))];
   data.tiles.forEach((saved,i)=>{
    const original=city.tiles[i];
@@ -162,8 +181,8 @@ class City{
    if(['land','river','road','bridge','home','shop','industry','park'].includes(t.type)&&(!single||t!==a))throw Error('Invalid occupied terrain.');
    if(t===a)for(const c of city.footprint(a))if(c.anchor!==a.anchor)throw Error('Incomplete building footprint.');
   }
-  city.peakPopulation=data.version===4?data.peakPopulation:Math.max(0,...city.anchors().map(t=>unlockAt(t.type)));city.funds=data.funds;city.month=data.month;city.tax=data.tax;return city.update();
+  city.earnedGoals=data.version===5?[...data.earnedGoals]:[];city.peakPopulation=data.version>=4?data.peakPopulation:Math.max(0,...city.anchors().map(t=>unlockAt(t.type)));city.funds=data.funds;city.month=data.month;city.tax=data.tax;return city.update();
  }
 }
-root.CityCanvasSim={City,types,W,H,isRoad,terrainAt,milestones,unlockAt};if(typeof module!=='undefined')module.exports=root.CityCanvasSim;
+root.CityCanvasSim={City,types,W,H,isRoad,terrainAt,milestones,unlockAt,neighborhoodGoals};if(typeof module!=='undefined')module.exports=root.CityCanvasSim;
 })(typeof window!=='undefined'?window:globalThis);
