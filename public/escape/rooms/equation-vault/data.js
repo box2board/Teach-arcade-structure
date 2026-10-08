@@ -1,6 +1,14 @@
 window.ROOM_DATA = {
   id: 'equation-vault',
   title: 'The Equation Vault',
+  topic: 'Algebra · Equations',
+  subject: 'Mathematics',
+  gradeBand: 'Grades 7–9',
+  description: 'Restore a robotics lab by solving and checking algebra equations in this classroom escape room.',
+  missionStamp: 'LAB DISPATCH · POWER FAILURE',
+  missionQuestionLabel: 'SYSTEM OBJECTIVE',
+  insightLabel: 'ALGEBRA INSIGHT · WHAT THE EQUATION SHOWS',
+  victoryTitle: 'Lab restored',
   missionQuestion: 'Can your team restore the lab’s power by solving equations, checking a faulty solution, and using the results to calculate the final access code?',
   completion: 'The vault is open. You balanced equations, diagnosed an error, and combined the values from your evidence cards to restore the lab safely.',
   difficultyLevels: [
@@ -23,6 +31,7 @@ window.ROOM_DATA = {
     }
   },
   finalReport: {
+    label: 'LAB RESTORATION REPORT · THE ALGEBRA',
     question: 'How did the team know the final code was reliable?',
     answer: 'Each code value came from a solved equation. The team used inverse operations to preserve equality, checked each result by substitution, and combined the verified values only after collecting the clues.',
     clueIds: ['relay-a', 'relay-b']
@@ -162,7 +171,7 @@ window.ROOM_DATA = {
       hints: ['Relay A and the repaired-test value are both recorded on your evidence board.', 'Substitute a = 8 and c = 6 into 2a + c.', 'Calculate 2 × 8 + 6.'],
       learn: 'The final code is 2(8) + 6 = 22. It depends on two values earned and checked in earlier rooms.',
       reflect: 'How did you use both recovered values to calculate the code?',
-      clueReward: { id: 'power-restored', label: 'Power restored', detail: 'Both relay values were combined in the console’s expression, 2a + b.' },
+      clueReward: { id: 'power-restored', label: 'Power restored', detail: 'The final code combined twice Relay A with the repaired-test value: 2a + c.' },
       journal: 'The final code used both calibrated relays to restore power.'
     },
     {
