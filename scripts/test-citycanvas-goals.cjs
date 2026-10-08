@@ -40,5 +40,12 @@ const repair=City.start('manager','blank','utilities');assert(!repair.scenarioPr
 const clean=City.start('manager','blank','clean-air');assert(!clean.scenarioProgress().done);assert.equal(clean.build(18,15,'erase'),'');assert.equal(clean.build(16,18,'park'),'');clean.step();assert(clean.experience.complete,'Pollution challenge can be solved within its budget');
 const legacy=starter.save();delete legacy.experience;assert.equal(City.load(legacy).experience.scenario,null);const invalid=starter.save();invalid.experience.scenario='unknown';assert.throws(()=>City.load(invalid));
 console.log('PASS: priced starter town, connected services, scenario starting problems, achievable objectives, completion persistence, legacy experience migration');
+const stalled=City.start('manager','blank','utilities'),before=JSON.stringify(stalled.save());
+const report=stalled.growthReport();assert.equal(JSON.stringify(stalled.save()),before,'Growth report is read-only');
+for(const row of report){assert.equal(row.ready+row.waiting+row.full,row.total);for(const issue of row.reasons)assert(stalled.growth(stalled.at(issue.target.x,issue.target.y)).includes(issue.reason));}
+assert.equal(report.find(r=>r.type==='home').waiting,8);assert(report.find(r=>r.type==='home').reasons.some(r=>r.reason.includes('water tower')&&r.count===8));
+stalled.build(6,14,'water');stalled.build(23,14,'water');assert.equal(stalled.growthReport().find(r=>r.type==='home').waiting,0);
+const mature=City.start('free','starter');for(const t of mature.anchors().filter(t=>t.type==='home'))t.level=3;mature.update();assert.equal(mature.growthReport().find(r=>r.type==='home').state,'Fully developed');
+console.log('PASS: exact growth blockers, target coordinates, ready/waiting/full counts, repair updates, maximum development, read-only reports');
 
 }
