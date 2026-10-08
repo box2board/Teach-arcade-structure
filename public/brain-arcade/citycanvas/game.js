@@ -1,5 +1,5 @@
 (()=>{'use strict';const {City,types,W,H,isRoad,terrainAt,milestones,unlockAt}=CityCanvasSim,$=id=>document.getElementById(id),canvas=$('map'),ctx=canvas.getContext('2d');let city=new City(),tool='road',rotated=false,paused=false,speed=1,zoom=1,pan={x:0,y:0},size=20,hover={x:6,y:10},drag=null,lastTile='',clock=0,last=0,selected=null,history=[],stroke=null,panMode=false,pendingLoad=null,layer='none',needsFocus=true,shownRank=null;const activity=new CityCanvasActivity();let visualTime=0,animated=!matchMedia('(prefers-reduced-motion: reduce)').matches;const SAVE_KEY='teacharcade-citycanvas-v1',MANUAL_KEY=SAVE_KEY+'-manual';
-for(const [key,t]of Object.entries(types)){let b=document.createElement('button');b.className='tool';b.style.setProperty('--color',t.color);b.dataset.tool=key;b.innerHTML=`<canvas class="tool-icon" width="36" height="28" aria-hidden="true"></canvas><span class="tool-label">${t.name}<small>${key==='inspect'?'View needs':key==='erase'?'Whole building':t.w+' × '+t.h+' tile'+(t.w*t.h>1?'s':'')}</small></span><small>${t.cost?'$'+t.cost:'View'}</small>`;drawBuilding(b.querySelector('canvas').getContext('2d'),{type:key,w:t.w,h:t.h,level:1,x:0,y:0},1,1,Math.min(34/t.w,26/t.h),0);b.onclick=()=>{tool=key;rotated=false;selected=null;panMode=false;$('pan').setAttribute('aria-pressed','false');selectTool();};$('tools').append(b);}function dims(){const d=types[tool];return {w:rotated?d.h:d.w,h:rotated?d.w:d.h};}function rotate(){if(types[tool].w!==types[tool].h){finishStroke();rotated=!rotated;lastTile='';selectTool();}}$('rotate').onclick=rotate;document.addEventListener('keydown',e=>{if(e.key.toLowerCase()==='r'&&!['INPUT','SELECT','TEXTAREA'].includes(e.target.tagName)){e.preventDefault();rotate();}});function selectTool(){document.querySelectorAll('.tool').forEach(b=>b.setAttribute('aria-pressed',b.dataset.tool===tool));const d=dims();$('toolHelp').textContent=(!city.unlocked(tool)?`Unlocks at ${unlockAt(tool)} residents. `:'')+types[tool].help+(d.w!==d.h?' Current footprint: '+d.w+' × '+d.h+'. Press R to rotate.':'');$('rotate').disabled=d.w===d.h;$('rotate').textContent='Rotate'+(d.w!==d.h?' · '+d.w+'×'+d.h:'');}selectTool();
+for(const [key,t]of Object.entries(types)){let b=document.createElement('button');b.className='tool';b.style.setProperty('--color',t.color);b.dataset.tool=key;b.innerHTML=`<canvas class="tool-icon" width="36" height="28" aria-hidden="true"></canvas><span class="tool-label">${t.name}<small>${key==='inspect'?'View needs':key==='erase'?'Whole building':t.w+' × '+t.h+' tile'+(t.w*t.h>1?'s':'')}</small></span><small>${t.cost?'$'+t.cost:'View'}</small>`;drawBuilding(b.querySelector('canvas').getContext('2d'),{type:key,w:t.w,h:t.h,level:1,x:0,y:0},1,1,Math.min(34/t.w,26/t.h),0);b.onclick=()=>{tool=key;rotated=false;selected=null;panMode=false;$('pan').setAttribute('aria-pressed','false');selectTool();};$('tools').append(b);}function dims(){const d=types[tool];return {w:rotated?d.h:d.w,h:rotated?d.w:d.h};}function rotate(){if(types[tool].w!==types[tool].h){finishStroke();rotated=!rotated;lastTile='';selectTool();}}$('rotate').onclick=rotate;document.addEventListener('keydown',e=>{if(e.key.toLowerCase()==='r'&&!['INPUT','SELECT','TEXTAREA'].includes(e.target.tagName)){e.preventDefault();rotate();}});function selectTool(){document.querySelectorAll('.tool').forEach(b=>b.setAttribute('aria-pressed',b.dataset.tool===tool));const d=dims();$('toolHelp').textContent=(!city.unlocked(tool)?city.unlockMessage(tool)+' ':'')+types[tool].help+(d.w!==d.h?' Current footprint: '+d.w+' × '+d.h+'. Press R to rotate.':'');$('rotate').disabled=d.w===d.h;$('rotate').textContent='Rotate'+(d.w!==d.h?' · '+d.w+'×'+d.h:'');}selectTool();
 function stats(){sceneRevision++;for(const [id,value]of Object.entries({funds:city.mode==='free'?'Unlimited':'$'+city.funds.toLocaleString(),population:city.population,jobs:city.jobs,happiness:city.population?city.happiness+'%':'—',balance:(city.balance<0?'−$':'+$')+Math.abs(city.balance),date:'Month '+city.month}))$(id).textContent=value;const lots=city.tiles.filter(t=>['home','shop','industry'].includes(t.type));$('pulse').textContent=!lots.length?'Lay out roads and zones, then connect a solar plant and add water.':lots.some(t=>!t.access)?'Some zones need an adjacent road.':lots.some(t=>!t.powered)?'Some zones need road-connected power.':lots.some(t=>!t.watered)?'Some zones are beyond water coverage. Add a powered water tower.':city.jobs<city.population*.4?'More workplaces will help attract residents.':city.happiness<60&&city.population?'Improve neighborhoods with parks and services; separate homes from industry.':'Your city has room to grow. Expand carefully and watch your monthly balance.';management();inspect();}
 function inspect(){
 const t=city.anchor(city.at((selected||hover).x,(selected||hover).y));if(!t)return;
@@ -14,6 +14,7 @@ if(zone){
  if(t.type==='home'){rows.push(`Well-being ${t.wellbeing}% · ${t.level*8} residents`);rows.push(`Park ${t.park?'✓':'✕'} · School ${t.school?'✓':'✕'} · Fire coverage ${t.fire?'✓':'✕'}`);rows.push(`Healthcare ${t.health?'✓':'✕'} · Library ${t.library?'✓':'✕'}`);if(t.polluted)rows.push('Nearby industry reduces well-being by 22 points.');}
  else rows.push(`${t.level*(t.type==='industry'?10:6)} jobs`);
 }else if(['power','water','school','fire','hospital','library'].includes(t.type))rows.push(t.access?(t.powered?'Road connected and powered.':'No power: connect this road network to a solar plant.'):'Needs an adjacent road.');
+else if(types[t.type]?.recreation)rows.push(t.access?`Recreation active within ${types[t.type].recreation} tiles · ${t.type==='sports'?8:6}/month`:'Needs an adjacent road to provide recreation.');
 else if(isRoad(t))rows.push(t.powered?'Connected to a solar plant.':'Connect this road network to a solar plant.');
 $('inspect').replaceChildren(...rows.map((value,i)=>{const el=document.createElement(i===0?'strong':'p');el.textContent=value;return el;}));
 }
@@ -34,7 +35,7 @@ function updateGoals(){
  $('milestoneUnlock').textContent=city.mode==='free'?(next?'Next: '+next.name+' · All buildings available':'All buildings available'):next?(next.unlocks.length?'Next: '+next.unlocks.map(t=>types[t].name).join(' + '):'Next: Thriving city badge'):'Keep building your city.';
  if(shownRank!==null&&rank.population>shownRank){$('milestoneNotice').hidden=false;$('milestoneNotice').textContent=`★ ${rank.name} reached! `+(rank.unlocks.length?'Unlocked: '+rank.unlocks.map(t=>types[t].name).join(' + '):'Your city is thriving.');clearTimeout(noticeTimer);noticeTimer=setTimeout(()=>$('milestoneNotice').hidden=true,6500);}
  shownRank=rank.population;
- for(const b of document.querySelectorAll('.tool')){const locked=!city.unlocked(b.dataset.tool);b.classList.toggle('locked',locked);b.title=locked?`Unlocks at ${unlockAt(b.dataset.tool)} residents`:types[b.dataset.tool].name;const label=b.querySelector('.tool-label small');const t=types[b.dataset.tool];label.textContent=locked?`🔒 ${unlockAt(b.dataset.tool)} residents`:b.dataset.tool==='inspect'?'View needs':b.dataset.tool==='erase'?'Whole building':t.w+' × '+t.h+' tile'+(t.w*t.h>1?'s':'');}
+ for(const b of document.querySelectorAll('.tool')){const locked=!city.unlocked(b.dataset.tool);b.classList.toggle('locked',locked);b.title=locked?city.unlockMessage(b.dataset.tool):types[b.dataset.tool].name;const label=b.querySelector('.tool-label small');const t=types[b.dataset.tool];label.textContent=locked?(t.goal?'🔒 Neighborhood goal':`🔒 ${unlockAt(b.dataset.tool)} residents`):b.dataset.tool==='inspect'?'View needs':b.dataset.tool==='erase'?'Whole building':t.w+' × '+t.h+' tile'+(t.w*t.h>1?'s':'');}
  const signature=JSON.stringify(city.requests);
  if(signature!==requestSignature){requestSignature=signature;$('citizenRequests').replaceChildren(...city.requests.map(request=>{const card=document.createElement('div');card.className='citizen-card';const strong=document.createElement('strong');strong.textContent='“'+request.title+'”';const text=document.createElement('p');text.textContent=request.detail;card.append(strong,text);if(request.target){const b=document.createElement('button');b.textContent='Show me';b.onclick=()=>{tool='inspect';rotated=false;panMode=false;$('pan').setAttribute('aria-pressed','false');selected={...request.target};hover={...request.target};selectTool();layer=request.layer;$('layer').value=layer;const r=canvas.getBoundingClientRect();pan={x:(W/2-request.target.x-.5)*size,y:(H/2-request.target.y-.5)*size};clampPan();inspect();updateLegend();canvas.focus();};card.append(b);}return card;}));}
  if($('goalsDialog').open)showGoals();
@@ -42,7 +43,7 @@ function updateGoals(){
 let noticeTimer,requestSignature='';
 function showGoals(){$('goalList').replaceChildren(...milestones.map(m=>{const li=document.createElement('li');li.className=city.peakPopulation>=m.population?'earned':'';li.textContent=`${city.peakPopulation>=m.population?'✓':'○'} ${m.name} · ${m.population} residents`+(m.unlocks.length?' · '+m.unlocks.map(t=>types[t].name).join(' + '):m.population===640?' · Thriving city badge':'');return li;}));
  $('neighborhoodRules').textContent=city.mode==='manager'?'Rewards are paid automatically at month-end, once per goal. Earned goals stay completed, even if neighborhoods later change.':'Optional in Free Build: no rewards or restrictions. Switch to City Manager to earn cash rewards at month-end.';
- $('neighborhoodList').replaceChildren(...city.neighborhoodProgress.map(goal=>{const li=document.createElement('li');li.className=goal.earned?'earned':'';const title=document.createElement('strong');title.textContent=(goal.earned?'✓ ':'○ ')+goal.title;const detail=document.createElement('p');detail.textContent=goal.detail;const progress=document.createElement('p');progress.textContent=goal.earned?`Completed · $${goal.reward.toLocaleString()} reward earned`:`${goal.count}/${goal.target} qualifying buildings · $${goal.reward.toLocaleString()} reward`;li.append(title,detail,progress);return li;}));
+ $('neighborhoodList').replaceChildren(...city.neighborhoodProgress.map(goal=>{const li=document.createElement('li');li.className=goal.earned?'earned':'';const title=document.createElement('strong');title.textContent=(goal.earned?'✓ ':'○ ')+goal.title;const detail=document.createElement('p');detail.textContent=goal.detail;const progress=document.createElement('p');progress.textContent=goal.earned?`Completed · $${goal.reward.toLocaleString()} reward earned`:`${goal.count}/${goal.target} qualifying buildings · $${goal.reward.toLocaleString()} reward`;const unlock=document.createElement('p');const landmark=Object.values(types).find(t=>t.goal===goal.id);unlock.textContent=(goal.earned?'Unlocked: ':'Unlocks: ')+landmark.name;li.append(title,detail,progress,unlock);return li;}));
 }
 $('neighborhoodOpen').onclick=()=>{showGoals();$('goalsDialog').showModal();};
 $('goalsOpen').onclick=()=>{showGoals();$('goalsDialog').showModal();};$('goalsClose').onclick=()=>$('goalsDialog').close();
@@ -53,7 +54,7 @@ $('budgetTotals').replaceChildren(...[['Tax revenue',city.income],['Operating co
 $('budgetAdvice').textContent=city.balance<0?'Grow connected homes and workplaces to increase revenue. Services cost money every month; add them where they help. High taxes reduce neighborhood well-being.':'Keep an eye on operating costs as you expand. Tax revenue depends on residents, jobs, and your tax rate.';
 }
 $('budgetOpen').onclick=()=>{showBudget();$('budgetDialog').showModal();};$('budgetClose').onclick=()=>$('budgetDialog').close();
-const legends={none:'Drag to build · Shift/right-drag to pan.',power:'Power: teal = powered roads and buildings; red = buildings without power.',water:'Water: blue = within 12 tiles of a powered tower’s grounds.',park:'Parks: green = recreation coverage within six tiles.',school:'Schools: violet = education coverage within eight tiles of a powered school’s grounds.',fire:'Fire: orange = protection within eight tiles of a powered station’s grounds.',health:'Healthcare: cream = within nine tiles of a powered hospital.',library:'Libraries: gold = learning coverage within seven tiles.',pollution:'Pollution: red = within four tiles of developed industry.',wellbeing:'Homes: green 70–100% · amber 40–69% · red below 40%.'};
+const legends={none:'Drag to build · Shift/right-drag to pan.',power:'Power: teal = powered roads and buildings; red = buildings without power.',water:'Water: blue = within 12 tiles of a powered tower’s grounds.',park:'Recreation: green = park coverage (6 tiles), connected town squares (8), sports fields (10), or promenades (6).',school:'Schools: violet = education coverage within eight tiles of a powered school’s grounds.',fire:'Fire: orange = protection within eight tiles of a powered station’s grounds.',health:'Healthcare: cream = within nine tiles of a powered hospital.',library:'Libraries: gold = learning coverage within seven tiles.',pollution:'Pollution: red = within four tiles of developed industry.',wellbeing:'Homes: green 70–100% · amber 40–69% · red below 40%.'};
 function updateLegend(){$('layerLegend').textContent=legends[layer]+(layer==='power'?` Supply used: ${city.powerUsed}/${city.powerCapacity} lots.`:layer==='none'?' Map signs: road = no access · bolt = no power · drop = no water. + means more needs; inspect for details.':'');}
 $('layer').onchange=e=>{layer=e.target.value;updateLegend();};
 function saveCity(manual=false){try{const json=JSON.stringify(city.save());localStorage.setItem(SAVE_KEY,json);if(manual)localStorage.setItem(MANUAL_KEY,json);$('saveInfo').textContent=(manual?'Saved':'Autosaved')+' · month '+city.month;return true;}catch{$('saveInfo').textContent='Browser save unavailable. Export a file to keep your city.';return false;}}
@@ -142,6 +143,25 @@ function drawBuilding(g,t,x,y,s,time=0){
   poly([[.88,.91],[.91,.79],[.96,.91]],'#df995a');box(.875,.9,.095,.025,'#f1e4bf');
   if(t.progress)drawConstruction(g,t,x,y,s,time);
   return;
+ }
+ if(type==='square'){
+  box(.03,.03,.94,.94,'#a6b28a');box(.13,.13,.74,.74,'#d9caa5');box(.45,.02,.1,.96,'#e8dcba');box(.02,.45,.96,.1,'#e8dcba');
+  for(const a of [.2,.8])for(const b of [.2,.8]){oval(a,b,.1,.1,'#447b54');oval(a-.025,b-.025,.055,.055,'#78ad69');}
+  oval(.52,.54,.2,.18,'#7d8d8244');oval(.5,.5,.19,.19,'#adaba0');oval(.5,.5,.15,.15,'#5cacc1');oval(.5,.5,.105,.1,'#83c9d0');oval(.5,.5,.045,.045,'#d9e3d2');
+  for(const a of [.22,.65]){box(a,.34,.13,.025,'#805d45');box(a,.64,.13,.025,'#805d45');}box(.85,.46,.025,.12,'#695d45');oval(.862,.45,.025,.025,'#f1dd98');return;
+ }
+ if(type==='sports'){
+  box(.025,.03,.95,.94,'#b8bc99');oval(.5,.49,.44,.4,'#b37765');oval(.5,.49,.395,.35,'#d7b398');oval(.5,.49,.375,.33,'#b37765');box(.2,.22,.6,.54,'#4f985e');
+  for(let i=0;i<5;i++)box(.2+i*.12,.22,.06,.54,'#68a56a');
+  g.strokeStyle='#f2e8d1';g.lineWidth=Math.max(1,s*.025);g.strokeRect(x+w*.23,y+h*.26,w*.54,h*.46);g.beginPath();g.moveTo(x+w*.5,y+h*.26);g.lineTo(x+w*.5,y+h*.72);g.stroke();
+  oval(.5,.49,.073,.12,'#e4e7c7');oval(.5,.49,.06,.1,'#579a61');box(.22,.41,.035,.16,'#edf0d3');box(.745,.41,.035,.16,'#edf0d3');
+  for(const b of [.07,.86]){box(.32,b,.36,.045,'#8b9690');box(.34,b+.01,.32,.015,'#d7ddd1');}return;
+ }
+ if(type==='promenade'){
+  box(.05,.03,.9,.94,'#b8caa2');box(.22,.03,.57,.94,'#c7b589');for(let b=.08;b<.94;b+=.08)box(.23,b,.55,.013,'#a79571');
+  for(const a of [.22,.78]){box(a,.04,.025,.91,'#e6dac0');for(const b of [.07,.47,.88])box(a-.015,b,.055,.04,'#817762');}
+  for(const b of [.2,.68]){box(.07,b,.13,.07,'#795e48');box(.08,b+.015,.11,.012,'#c69c6d');oval(.88,b,.07,.055,'#4d875c');oval(.86,b-.012,.04,.03,'#81ae69');}
+  box(.48,.42,.08,.07,'#617b85');oval(.52,.41,.07,.025,'#dbcda3');return;
  }
  if(type==='park'){
   box(.06,.06,.88,.88,'#387b49');box(.44,.06,.12,.88,'#d6c996');box(.06,.45,.88,.12,'#d6c996');
@@ -261,7 +281,8 @@ function drawRoad(t,x,y,s,ctx=canvas.getContext('2d')){
 }
 function buildingNeeds(t){
  const zone=['home','shop','industry'].includes(t.type),service=['power','water','school','fire','hospital','library'].includes(t.type);
- if(!zone&&!service)return [];
+ if(!zone&&!service&&!types[t.type]?.recreation)return [];
+ if(types[t.type]?.recreation)return t.access?[]:['road'];
  const needs=[];if(!t.access)needs.push('road');if(!t.powered)needs.push('power');if(zone&&!t.watered)needs.push('water');return needs;
 }
 function drawNeeds(t,x,y,s){
@@ -318,7 +339,7 @@ if(color)rect(x,y,size,size,color);
 }
 }
 function renderCoveragePreview(o){
- const radius={water:12,park:6,school:8,fire:8,hospital:9,library:7}[tool],t=city.at(hover.x,hover.y),def=types[tool];if(!radius||panMode||!t||t.type!=='land')return;
+ const radius={water:12,park:6,square:8,sports:10,promenade:6,school:8,fire:8,hospital:9,library:7}[tool],t=city.at(hover.x,hover.y),def=types[tool];if(!radius||panMode||!t||t.type!=='land')return;
  const x=o.x+(t.x+.5)*size,y=o.y+(t.y+.5)*size,right=x+(dims().w-1)*size,bottom=y+(dims().h-1)*size,r=radius*size;
  ctx.save();ctx.strokeStyle=def.color;ctx.lineWidth=2;ctx.setLineDash([5,4]);ctx.beginPath();ctx.moveTo(x,y-r);ctx.lineTo(right,y-r);ctx.lineTo(right+r,y);ctx.lineTo(right+r,bottom);ctx.lineTo(right,bottom+r);ctx.lineTo(x,bottom+r);ctx.lineTo(x-r,bottom);ctx.lineTo(x-r,y);ctx.closePath();ctx.stroke();ctx.restore();
 }
