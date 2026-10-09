@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--earth-space-science--galaxies-and-the-universe",
+  "title": "Galaxies and the Universe",
+  "subject": "Science",
+  "category": "Earth & Space Science",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a galaxy?",
+      "choices": [
+        "A single planet and its atmosphere",
+        "A gravitationally bound system of stars, gas, dust, and dark matter",
+        "One isolated comet",
+        "A constellation drawn on a sky chart"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What type of galaxy is the Milky Way?",
+      "choices": [
+        "A single giant star",
+        "A globular cluster only",
+        "A barred spiral galaxy",
+        "An elliptical galaxy without a disk"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What does a light-year measure?",
+      "choices": [
+        "Time alone",
+        "Luminosity",
+        "Mass",
+        "Distance"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is a galaxy cluster?",
+      "choices": [
+        "A group of galaxies bound by gravity",
+        "A set of planets around one star",
+        "A region containing only one atom",
+        "A pattern of bright stars near Earth"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is cosmological redshift?",
+      "choices": [
+        "Shortening of wavelengths due to large-scale expansion",
+        "Stretching of light wavelengths associated with the expansion of space",
+        "A change in brightness with no change in wavelength",
+        "Absorption of only red wavelengths by intergalactic material"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is the cosmic microwave background?",
+      "choices": [
+        "Radio signals sent by planets",
+        "Heat emitted only by Earth's oceans",
+        "Relic radiation from the early universe",
+        "Light from one nearby supernova"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is dark matter?",
+      "choices": [
+        "A name for any black-colored rock",
+        "Matter that has no gravitational effect",
+        "Ordinary dust hidden only behind the Moon",
+        "Matter inferred mainly from gravitational effects rather than its light"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why do observations of distant galaxies show them as they were in the past?",
+      "choices": [
+        "Their light takes time to reach Earth",
+        "Distant light arrives instantaneously despite its distance",
+        "Telescopes alter the age of the source",
+        "Every galaxy has stopped emitting new light"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What does the Big Bang model describe?",
+      "choices": [
+        "Only the formation of our Solar System",
+        "Evolution from an early hot, dense universe that has expanded",
+        "A recent chemical explosion at the universe's center",
+        "A universe that has always had the same temperature and density"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why is the microwave background important evidence for the Big Bang model?",
+      "choices": [
+        "It proves all galaxies have identical stellar populations",
+        "It is produced entirely by Earth's atmosphere",
+        "It matches expectations for cooled radiation from an early hot universe",
+        "It shows that all space has always been cold"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What pattern supports large-scale expansion of the universe?",
+      "choices": [
+        "Every galaxy has the same measured redshift",
+        "All galaxies become brighter in proportion to their distance",
+        "Every galaxy orbits the Sun at the same speed",
+        "More distant galaxies generally show greater cosmological redshift"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why is a constellation different from a galaxy?",
+      "choices": [
+        "It is a sky pattern of stars that may be far apart",
+        "It is a gravitationally bound cluster of many galaxies",
+        "It is one stellar system containing planets around a single star",
+        "It is a rotating cloud of gas that has no stars"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why do astronomers infer dark matter in many galaxies?",
+      "choices": [
+        "Visible stars alone always account for all observed motion",
+        "Visible matter alone cannot explain some observed gravitational motions",
+        "Dark matter is identified only by a galaxy's dark photograph",
+        "Any faint region must contain no mass"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What is dark energy associated with in current cosmological models?",
+      "choices": [
+        "The gravitational slowing of expansion as its only effect",
+        "The energy emitted only by white dwarfs",
+        "The accelerated expansion of the universe",
+        "The motion of planets within our Solar System"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why can galaxies collide even though the universe expands on large scales?",
+      "choices": [
+        "Expansion forces all gravitationally bound objects to separate",
+        "Galaxies cannot attract each other gravitationally",
+        "Galaxy collisions require Earth to lie between them",
+        "Local gravitational attraction can overcome the large-scale expansion"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Light from a galaxy has traveled for 5 million years. What does the observation show?",
+      "choices": [
+        "The galaxy as it was about 5 million years ago",
+        "The galaxy exactly as it is now",
+        "The galaxy 5 million years in the future",
+        "The galaxy before any light existed"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A spectral line emitted at 500 nm is observed at 550 nm. How is this shift described?",
+      "choices": [
+        "Blueshift",
+        "Redshift",
+        "No wavelength change",
+        "A change into a sound wave"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Two galaxies lie far outside our local gravitational group. The farther one has greater redshift. Which model is this consistent with?",
+      "choices": [
+        "A static universe with no change in light wavelength",
+        "All galaxies orbiting the Milky Way at identical speeds",
+        "Large-scale expansion of space",
+        "Light wavelengths shortening as space expands"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A galaxy's outer stars move faster than expected from its visible matter alone. What should scientists investigate?",
+      "choices": [
+        "Whether the observed velocities must equal zero",
+        "Whether the visible mass alone has already explained all motion",
+        "Whether star brightness directly measures speed without a model",
+        "Additional gravitating matter and alternative explanations of the motion"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A student claims a light-year is the age of a star. What is the appropriate correction?",
+      "choices": [
+        "It is the distance light travels in a year",
+        "It is a unit of a star's temperature",
+        "It is a unit of a star's mass",
+        "It is the time between two supernovae"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}

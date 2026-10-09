@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--physical-science-chemistry--gas-laws",
+  "title": "Gas Laws",
+  "subject": "Science",
+  "category": "Physical Science & Chemistry",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which temperature scale must be used in the ideal gas law?",
+      "choices": [
+        "Celsius",
+        "Kelvin",
+        "Fahrenheit",
+        "A scale starting at water's freezing point"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What does Boyle's law relate for a fixed amount of gas at constant temperature?",
+      "choices": [
+        "Volume and molar mass",
+        "Pressure and chemical identity",
+        "Pressure and volume",
+        "Temperature and particle charge"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What does Charles's law relate at constant pressure and fixed gas amount?",
+      "choices": [
+        "Pressure and kelvin temperature",
+        "Volume and pressure",
+        "Moles and pressure",
+        "Volume and kelvin temperature"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What does the symbol n represent in PV = nRT?",
+      "choices": [
+        "Amount of gas in moles",
+        "Number of neutrons per atom",
+        "Volume of the container",
+        "Speed of each gas particle"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What mainly produces gas pressure on a container wall?",
+      "choices": [
+        "The particles becoming liquid at the wall",
+        "Collisions of gas particles with the wall",
+        "Chemical bonds between all particles",
+        "Gravitational attraction between the walls"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What does Avogadro's law predict at fixed temperature and pressure?",
+      "choices": [
+        "Volume is inversely proportional to the number of moles",
+        "Pressure increases when volume increases",
+        "Volume is proportional to the number of moles",
+        "Every gas has the same particle mass"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is a gas's partial pressure?",
+      "choices": [
+        "Half of a gas's total pressure by definition",
+        "The pressure only after the gas condenses",
+        "The pressure outside its container",
+        "The pressure contribution from that gas in a mixture"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why does heating gas in a rigid sealed container generally increase its pressure?",
+      "choices": [
+        "Particles collide with the walls more energetically",
+        "Particles lose average kinetic energy",
+        "Heating necessarily adds particles to the sealed container",
+        "Particle collisions stop at higher temperature"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why does compressing a gas at constant temperature increase pressure?",
+      "choices": [
+        "The sample gains particles without any added gas",
+        "Particles strike a smaller available volume's walls more frequently",
+        "Particle speed must double despite constant temperature",
+        "Pressure falls because the walls are closer together"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "When is an ideal-gas model generally most accurate?",
+      "choices": [
+        "Near condensation at very high pressure",
+        "Only when the gas has become a solid",
+        "At relatively low pressure and high temperature",
+        "Only when particles cannot move"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why must Celsius readings be converted before using temperature ratios in gas laws?",
+      "choices": [
+        "Gas-law ratios require a zero set at water's freezing point",
+        "The kelvin interval is much larger than the Celsius interval",
+        "Celsius temperatures measure only liquids",
+        "Celsius zero is not absolute zero"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What happens to gas volume when kelvin temperature doubles at constant pressure and gas amount?",
+      "choices": [
+        "It doubles",
+        "It halves",
+        "It stays the same",
+        "It becomes four times larger"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "A sealed gas sample expands at constant temperature. What happens to its pressure?",
+      "choices": [
+        "It increases",
+        "It decreases",
+        "It must remain unchanged",
+        "It becomes unrelated to volume"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why does adding gas to a rigid container at constant temperature increase pressure?",
+      "choices": [
+        "Adding particles lowers the collision frequency",
+        "Added gas must increase the container's volume",
+        "More particles produce more wall collisions",
+        "Adding gas lowers pressure by distributing the same particles"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "How is total pressure found for an ideal, nonreacting gas mixture?",
+      "choices": [
+        "Multiply all partial pressures",
+        "Use only the largest partial pressure",
+        "Divide by the number of gas species",
+        "Add the partial pressures"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A gas occupies 4 L at 100 kPa. At constant temperature and gas amount, what is its pressure at 2 L?",
+      "choices": [
+        "200 kPa",
+        "50 kPa",
+        "100 kPa",
+        "400 kPa"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A gas occupies 3 L at 300 K. At fixed pressure and gas amount, what volume will it occupy at 400 K?",
+      "choices": [
+        "2.25 L",
+        "4 L",
+        "3 L",
+        "7 L"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Two nonreacting gases exert partial pressures of 30 kPa and 70 kPa in one container. What is the total pressure?",
+      "choices": [
+        "40 kPa",
+        "70 kPa",
+        "100 kPa",
+        "2,100 kPa"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A rigid sealed container has gas at 200 kPa and 300 K. What pressure does the ideal-gas model predict at 450 K?",
+      "choices": [
+        "133 kPa",
+        "200 kPa",
+        "450 kPa",
+        "300 kPa"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Two ideal gases occupy equal volumes at the same pressure and temperature. Which quantities must be equal?",
+      "choices": [
+        "Their numbers of gas particles",
+        "Their molecular masses",
+        "Their chemical formulas",
+        "Their densities"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}

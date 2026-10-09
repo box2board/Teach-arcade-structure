@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "economics--economic-systems",
+  "title": "Economic Systems",
+  "subject": "Social Studies",
+  "category": "Economics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What three basic questions does every economic system address?",
+      "choices": [
+        "How to save, how to borrow, and when to repay loans",
+        "What to import, what to export, and when to exchange currencies",
+        "What to produce, how to produce, and for whom to produce",
+        "How to advertise, how to sell, and when to report profits"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What most strongly guides production in a traditional economy?",
+      "choices": [
+        "Customs and established practices",
+        "Central production quotas alone",
+        "Stock prices alone",
+        "Competitive advertising alone"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is a command economy?",
+      "choices": [
+        "An economy with no collective production decisions",
+        "An economy with major production decisions directed by central authorities",
+        "An economy organized only by household traditions",
+        "An economy without ownership of resources"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is a market economy?",
+      "choices": [
+        "An economy where all output is assigned through inherited duties",
+        "An economy in which every price is set by one planning office",
+        "An economy with no exchange among producers",
+        "An economy relying heavily on decentralized exchange and price signals"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is a mixed economy?",
+      "choices": [
+        "An economy combining market activity with government involvement",
+        "An economy using only barter",
+        "An economy producing only imported goods",
+        "An economy with no public institutions"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What are property rights?",
+      "choices": [
+        "The physical location of every factory",
+        "The total value of a country's imports",
+        "Rules concerning ownership, use, and transfer of assets",
+        "Only a firm's annual advertising expenses"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is profit in a business context?",
+      "choices": [
+        "The total amount borrowed from a bank",
+        "Revenue remaining after relevant costs are paid",
+        "The number of workers a business employs",
+        "The total value of goods before any costs"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "How do market prices help coordinate decisions?",
+      "choices": [
+        "They directly reveal every consumer's full preferences",
+        "They guarantee equal income for all households",
+        "They prevent any changes in production",
+        "They communicate information about relative scarcity and demand"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why might a government provide public services in a mixed economy?",
+      "choices": [
+        "Some shared needs may not be adequately met through private markets alone",
+        "Private exchange is legally impossible in mixed economies",
+        "All public services must earn the same profit as private firms",
+        "Mixed economies prohibit taxation"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What is a challenge of central planning?",
+      "choices": [
+        "Avoiding any need to decide how resources are used",
+        "Ensuring every consumer has identical preferences",
+        "Collecting detailed information and adjusting decisions across a complex economy",
+        "Eliminating the need for production incentives"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why do incentives matter in different economic systems?",
+      "choices": [
+        "Incentives operate only in traditional economies",
+        "Rewards and penalties influence how people use resources",
+        "People never respond to expected benefits",
+        "Ownership makes incentives irrelevant"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "How can competition affect a market economy?",
+      "choices": [
+        "It requires every producer to charge an identical price",
+        "It eliminates all business failures",
+        "It prevents firms from improving products",
+        "It can encourage efficiency, innovation, and responsiveness to consumers"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why do most modern economies not fit pure textbook models?",
+      "choices": [
+        "They combine institutions, markets, regulation, and public activity",
+        "Every modern economy prohibits private trade",
+        "Textbook models describe only geography",
+        "All countries use identical ownership rules"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "How does public ownership differ from private ownership?",
+      "choices": [
+        "Public ownership always means no management exists",
+        "Private ownership means assets cannot be sold",
+        "Public assets are owned by government; private assets by individuals or nongovernment organizations",
+        "Public ownership applies only to household furniture"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why is evaluating an economic system more than measuring output alone?",
+      "choices": [
+        "Output has no relationship to economic activity",
+        "Distribution, choice, stability, and other outcomes also matter",
+        "Every system produces identical outcomes",
+        "Only the names of institutions determine performance"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A national planning office assigns output targets to state factories. Which model does this most resemble?",
+      "choices": [
+        "Traditional household economy",
+        "Pure market economy",
+        "Subsistence barter network",
+        "Command economy"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Households exchange goods while government funds schools and regulates safety. Which description fits best?",
+      "choices": [
+        "Mixed economy",
+        "Pure command economy",
+        "Pure traditional economy",
+        "Economy without public institutions"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A community allocates tasks according to inherited customary roles. Which system is most directly reflected?",
+      "choices": [
+        "Pure market economy",
+        "Financial exchange market",
+        "Traditional economy",
+        "Centrally planned industrial economy"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A firm changes production after prices and consumer demand change. Which coordinating mechanism is operating?",
+      "choices": [
+        "Hereditary assignment",
+        "Market signals",
+        "Military conscription",
+        "Central production quotas"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which comparison avoids a misleading absolute claim?",
+      "choices": [
+        "Market economies never have government institutions",
+        "Command economies never use any prices",
+        "Traditional economies face no resource constraints",
+        "Market and command models differ in decision-making, but actual economies may combine features"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

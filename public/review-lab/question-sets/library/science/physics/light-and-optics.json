@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--physics--light-and-optics",
+  "title": "Light and Optics",
+  "subject": "Science",
+  "category": "Physics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What kind of wave is visible light?",
+      "choices": [
+        "Mechanical longitudinal",
+        "Electromagnetic",
+        "A sound wave",
+        "A water-surface wave"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What does reflection do to light at a boundary?",
+      "choices": [
+        "Always destroys its energy",
+        "Always doubles its frequency",
+        "Converts every photon into a molecule",
+        "Returns some light into the original medium"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is the law of reflection for a smooth surface?",
+      "choices": [
+        "Angle of incidence is always twice the reflection angle",
+        "Both angles must be zero",
+        "Angle of incidence equals angle of reflection, measured from the normal",
+        "Angles are measured from different reference lines"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is refraction?",
+      "choices": [
+        "A change in propagation direction associated with a change in wave speed",
+        "Light traveling backward in time",
+        "Complete absorption at a boundary",
+        "Creation of a new light source"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which lens generally converges parallel rays in air?",
+      "choices": [
+        "A concave lens",
+        "A plane glass sheet",
+        "An opaque screen",
+        "A convex lens"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is a focal point for a converging lens in a simple ray model?",
+      "choices": [
+        "The position of every possible object",
+        "Where initially parallel rays meet after passing through the lens",
+        "The point where all light is absorbed",
+        "The center of the light source only"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is a real image?",
+      "choices": [
+        "An image visible only in a plane mirror",
+        "An image formed where light rays actually converge",
+        "Any image with an upright orientation",
+        "An image that cannot fall on a screen"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why can light travel through empty space while sound cannot?",
+      "choices": [
+        "Light is a pressure wave in air",
+        "Sound moves faster than all light",
+        "A vacuum contains solid particles for light",
+        "Light does not require a material medium"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why does a pencil look bent where it enters water?",
+      "choices": [
+        "Light changes direction at the water-air boundary",
+        "The pencil's atoms change identity",
+        "Water reflects no visible light",
+        "The submerged pencil must actually break"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What happens to light's frequency as it crosses a stationary air-glass boundary?",
+      "choices": [
+        "It always doubles",
+        "It always becomes zero",
+        "It stays the same while speed and wavelength can change",
+        "It changes to match the glass's density in kilograms"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why can a prism separate white light into colors?",
+      "choices": [
+        "Every color has a different electric charge",
+        "The prism makes colors from new atoms",
+        "All wavelengths must follow identical paths",
+        "Different wavelengths are refracted by different amounts"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why does a red object often appear red in white light?",
+      "choices": [
+        "It necessarily emits red light by nuclear fusion",
+        "It reflects all colors equally",
+        "It reflects more red light than many other visible wavelengths",
+        "It absorbs red but reflects only blue"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What distinguishes a virtual image from a real image?",
+      "choices": [
+        "Rays appear to come from its location without actually converging there",
+        "It can never be seen by an observer",
+        "It always contains more energy",
+        "It must be larger than its object"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why do rough surfaces produce diffuse reflection?",
+      "choices": [
+        "They stop obeying reflection at every point",
+        "Different surface orientations redirect rays in different directions",
+        "They transmit all incoming light",
+        "They reflect only one wavelength"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What causes a basic shadow behind an opaque object?",
+      "choices": [
+        "The object removes gravity",
+        "Light bends around all obstacles completely",
+        "Air behind the object produces darkness chemically",
+        "The object blocks light paths from the source"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A ray strikes a plane mirror at 30° from the normal. What is its reflection angle from the normal?",
+      "choices": [
+        "60°",
+        "30°",
+        "90°",
+        "15°"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Light enters glass from air at a slanted angle and slows. Which change generally occurs?",
+      "choices": [
+        "It bends away from the normal",
+        "It must reflect completely",
+        "It bends toward the normal",
+        "Its frequency becomes zero"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "An object is placed well beyond twice a converging lens's focal distance. What image generally forms?",
+      "choices": [
+        "A smaller, inverted real image",
+        "A larger, upright virtual image",
+        "An upright image identical to the object",
+        "No image under any conditions"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "An ideal red surface is illuminated only by blue light, which it absorbs. How would it appear?",
+      "choices": [
+        "Dark",
+        "Bright red",
+        "Bright white",
+        "Bright blue"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A plane mirror forms an image of an object 2 m in front of it. Where does the image appear?",
+      "choices": [
+        "1 m behind the mirror",
+        "At the mirror surface",
+        "2 m behind the mirror",
+        "4 m in front of the mirror"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ]
+}

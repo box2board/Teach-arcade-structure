@@ -25,6 +25,8 @@
   <script src="/assets/scripts/nav.js?v=5" defer></script>
   <script src="questions.js?v=20260926-1" defer></script>
   <script src="game.js?v=20260926-3" defer></script>
+<link rel="stylesheet" href="/review-lab/topic-picker.css">
+<script type="module" src="launch.js"></script>
 </head>
 <body>
   <div id="site-header"></div>
@@ -40,7 +42,7 @@
 
     <div id="notice" class="notice" role="status" aria-live="polite"></div>
 
-    <section id="setupView" class="view" aria-labelledby="setupTitle">
+    <section id="setupView" class="view" aria-labelledby="setupTitle"><section class="bank-topic-panel" aria-labelledby="bank-title"><h3 id="bank-title">Choose a question-bank topic</h3><label for="bank-topic">Topic</label><select id="bank-topic"></select><p id="bank-status" role="status">Load a saved topic or keep your custom board.</p><button id="bank-load" type="button" class="btn primary">Load selected topic</button> <button id="bank-custom" type="button" class="btn secondary">Use my custom draft</button></section>
       <div class="section-heading"><div><p class="step">Game studio</p><h2 id="setupTitle">Create your clash</h2></div><p>Your draft saves automatically on this device.</p></div>
       <section class="panel mode-panel" aria-labelledby="modeTitle"><div class="panel-title"><div><h3 id="modeTitle">How are you playing?</h3><span>Choose the experience for this session</span></div></div><div class="mode-grid"><label class="mode-card"><input type="radio" name="playMode" value="classroom" checked><span><strong>🏫 Classroom Teams</strong><small>Project the full board, keep team scores, and let the teacher judge answers.</small></span></label><label class="mode-card"><input type="radio" name="playMode" value="individual"><span><strong>🎮 Individual Review</strong><small>Students play independently with automatic answer checking and progress.</small></span></label></div></section><div id="classroomBasics" class="panel setup-basics classroom-only">
         <label class="field grow"><span>Game title</span><input id="titleInput" maxlength="80" autocomplete="off"></label>

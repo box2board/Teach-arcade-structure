@@ -1,0 +1,254 @@
+{
+  "schemaVersion": 1,
+  "id": "economics--budgeting",
+  "title": "Budgeting",
+  "subject": "Social Studies",
+  "category": "Economics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a personal budget?",
+      "choices": [
+        "A record of a company's stock price only",
+        "A guarantee that expenses will never change",
+        "A plan for income, spending, and saving",
+        "A statement showing only money borrowed"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is gross pay?",
+      "choices": [
+        "Earnings before taxes and other deductions",
+        "Take-home earnings after all deductions",
+        "Only money placed in savings",
+        "Only an employer's benefit expenses"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is net pay?",
+      "choices": [
+        "Pay before deductions",
+        "Pay remaining after deductions",
+        "The total value of a household's property",
+        "The amount borrowed on a credit card"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which expense is commonly fixed over a short budgeting period?",
+      "choices": [
+        "Grocery purchases that vary each week",
+        "Fuel purchases that change with travel",
+        "Restaurant spending that depends on choices",
+        "A lease's stated monthly rent"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which expense is typically variable?",
+      "choices": [
+        "Grocery spending",
+        "A fixed lease payment",
+        "A fixed monthly loan installment",
+        "A subscription with an unchanged monthly price"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is a budget deficit for a household over a period?",
+      "choices": [
+        "Income exceeds all planned outflows",
+        "Income and outflows are equal",
+        "Planned outflows exceed income",
+        "Every expense is classified as fixed"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is an emergency fund intended to support?",
+      "choices": [
+        "Only planned luxury purchases",
+        "Unexpected necessary expenses or interruptions in income",
+        "Speculation on daily stock movements",
+        "Payments that can never vary"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why should a budget usually be based on take-home pay?",
+      "choices": [
+        "Gross pay always equals available cash",
+        "Deductions are paid back automatically each month",
+        "Taxes affect only businesses",
+        "That is the income available after payroll deductions"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why should irregular expenses be included in planning?",
+      "choices": [
+        "Costs may be due later even without a payment this month",
+        "Annual bills should count only if they occur every month",
+        "Only fixed monthly expenses affect the household's available income",
+        "Future expenses can be ignored until the exact due date"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "How can tracking actual spending improve a budget?",
+      "choices": [
+        "It guarantees that every future expense disappears",
+        "It changes all variable expenses into fixed ones",
+        "It reveals differences between the plan and real transactions",
+        "It replaces the need to record income"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why should a savings goal include an amount and deadline?",
+      "choices": [
+        "They guarantee a higher interest rate",
+        "They help determine how much must be set aside over time",
+        "They eliminate the need to consider income",
+        "They make all spending choices identical"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "How does cash-flow timing differ from a monthly total?",
+      "choices": [
+        "Timing measures only a household's total net worth",
+        "A positive monthly total guarantees enough cash every day",
+        "Timing is unrelated to pay dates",
+        "Timing concerns when money arrives and bills must be paid"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why can a realistic budget change over time?",
+      "choices": [
+        "Income, prices, obligations, and goals may change",
+        "Every budget must remain unchanged permanently",
+        "Only people with no income can revise budgets",
+        "Past spending determines all future expenses exactly"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "How can identifying needs and wants support budgeting?",
+      "choices": [
+        "It proves that every preference is legally required",
+        "It makes all households' priorities identical",
+        "It helps prioritize spending when resources are limited",
+        "It removes every trade-off from spending"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why should debt payments appear in a budget?",
+      "choices": [
+        "Repayment never affects cash flow",
+        "They are obligations that use available cash",
+        "Only new purchases require budgeting",
+        "Debt payments automatically count as wages"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A student takes home $1,200 and plans $950 in expenses and $150 in savings. What remains unallocated?",
+      "choices": [
+        "$250",
+        "$200",
+        "$350",
+        "$100"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A household plans for a $600 annual bill by saving equal amounts monthly. What monthly amount is needed?",
+      "choices": [
+        "$50",
+        "$60",
+        "$100",
+        "$500"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A goal requires $900 in six months with no interest. What equal monthly saving meets it?",
+      "choices": [
+        "$90",
+        "$180",
+        "$150",
+        "$300"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Income arrives on the 15th, but a bill is due on the 10th. What issue must the budget address?",
+      "choices": [
+        "Only the annual income total",
+        "Cash-flow timing and funds carried from earlier periods",
+        "Only the household's home value",
+        "Only the interest rate on unrelated investments"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A household's spending exceeds income by $80 monthly. Which change closes that gap, with other amounts unchanged?",
+      "choices": [
+        "Reduce spending by $20 while leaving income unchanged",
+        "Move the same expenses to different categories",
+        "Record the deficit as earned income",
+        "Reduce spending or increase net income by $80"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ],
+  "referenceUrls": [
+    "https://www.consumerfinance.gov/consumer-tools/educator-tools/youth-financial-education/teach/activities/"
+  ]
+}

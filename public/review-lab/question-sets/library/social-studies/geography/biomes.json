@@ -1,0 +1,256 @@
+{
+  "schemaVersion": 1,
+  "id": "geography--biomes",
+  "title": "Biomes",
+  "subject": "Social Studies",
+  "category": "Geography",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "referenceUrls": [
+    "https://education.nationalgeographic.org/resource/biomes/",
+    "https://education.nationalgeographic.org/resource/tundra-biome/",
+    "https://education.nationalgeographic.org/resource/grassland-biome/"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a biome?",
+      "choices": [
+        "A boundary marking one country's laws",
+        "A broad ecological region with characteristic climate and living communities",
+        "A map showing only road distances",
+        "A single species found in every habitat"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which biome is generally warm and wet throughout the year?",
+      "choices": [
+        "Tropical rainforest",
+        "Arctic tundra",
+        "Temperate desert",
+        "Boreal forest"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which term is another name for boreal forest?",
+      "choices": [
+        "Savanna",
+        "Chaparral",
+        "Steppe",
+        "Taiga"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which biome is defined primarily by very low precipitation rather than by heat alone?",
+      "choices": [
+        "Temperate forest",
+        "Tropical rainforest",
+        "Desert",
+        "Freshwater wetland"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which biome commonly contains grasses with scattered trees and distinct wet and dry seasons?",
+      "choices": [
+        "Tropical savanna",
+        "Arctic tundra",
+        "Boreal forest",
+        "Temperate rainforest"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which forest type commonly includes broadleaf trees that shed leaves seasonally?",
+      "choices": [
+        "Tropical evergreen forest",
+        "Temperate deciduous forest",
+        "Mangrove forest",
+        "Boreal coniferous forest"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is permafrost?",
+      "choices": [
+        "A glacier that floats on seawater",
+        "Snow that melts every afternoon",
+        "Ground that remains frozen for at least two consecutive years",
+        "Rain that freezes only while falling"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why do temperature and precipitation matter when identifying terrestrial biomes?",
+      "choices": [
+        "They determine every political boundary",
+        "They make soils identical in every location",
+        "They eliminate the effects of elevation",
+        "They influence which plants can grow and survive"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why are trees generally scarce in Arctic tundra?",
+      "choices": [
+        "Cold conditions, a short growing season, and frozen ground limit tree growth",
+        "The region receives strong tropical sunlight year-round",
+        "Its soils are always deeper than those in forests",
+        "All plants require temperatures below freezing to grow"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why can grasslands support grazing and some forms of farming?",
+      "choices": [
+        "Grasslands have no seasonal water limits",
+        "Grasses provide forage, and some grassland soils are fertile",
+        "Every grassland has identical soil depth and rainfall",
+        "Grassland vegetation prevents all agricultural activity"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How can deep roots help plants survive in seasonal grasslands?",
+      "choices": [
+        "They prevent every possible drought",
+        "They eliminate the need for soil nutrients",
+        "They make all plants immune to fire",
+        "They help plants reach water and regrow after disturbances"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why can clearing a tropical forest affect communities beyond the cleared site?",
+      "choices": [
+        "Forest change cannot influence rivers",
+        "Only the color of the landscape changes",
+        "It can alter water movement, habitats, and stored carbon",
+        "It guarantees higher rainfall in every nearby region"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "How does a biome differ from a small local habitat?",
+      "choices": [
+        "A biome covers a broad region containing many habitats",
+        "A biome must contain exactly one species",
+        "A habitat is always larger than a continent",
+        "A biome is defined only by its political government"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why can mountain vegetation change with elevation?",
+      "choices": [
+        "Higher slopes always receive more sunlight and heat",
+        "Temperature and growing conditions change as elevation rises",
+        "Elevation determines the legal status of every plant",
+        "Mountain soils remain identical at every height"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why might biome boundaries appear gradual rather than sharply divided?",
+      "choices": [
+        "Plants cannot grow near national borders",
+        "Every biome must be surrounded by a road",
+        "Climate and vegetation change only at ocean coastlines",
+        "Environmental conditions can shift gradually across transition zones"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A place is cold, treeless, and has a short growing season with widespread permafrost. Which biome best fits?",
+      "choices": [
+        "Tropical savanna",
+        "Temperate deciduous forest",
+        "Arctic tundra",
+        "Tropical rainforest"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A student says all deserts are hot. Which example would most directly challenge the claim?",
+      "choices": [
+        "A cold region receiving very little precipitation",
+        "A warm forest receiving daily heavy rain",
+        "A tropical wetland with permanent standing water",
+        "A humid coastal forest with mild temperatures"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Two nearby slopes receive different amounts of rain because a mountain blocks moist air. What result is plausible?",
+      "choices": [
+        "Both must have identical vegetation",
+        "Different vegetation communities can develop on the two slopes",
+        "The mountain removes every local climate difference",
+        "Both slopes must belong to different countries"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A community wants to compare land uses in a dry grassland. Which evidence is most relevant?",
+      "choices": [
+        "Average household income without environmental data",
+        "Population totals without information on proposed land uses",
+        "Rainfall, soils, vegetation, and the demands of proposed activities",
+        "Road distances without information on water or soils"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which conclusion best connects biome study with human geography?",
+      "choices": [
+        "Biomes determine one inevitable culture in each region",
+        "Technology makes every environmental condition irrelevant",
+        "Political borders always follow biome boundaries exactly",
+        "Environmental conditions shape opportunities and limits without fully determining human choices"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

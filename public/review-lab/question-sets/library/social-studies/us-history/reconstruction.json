@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "us-history--reconstruction",
+  "title": "Reconstruction",
+  "subject": "Social Studies",
+  "category": "U.S. History",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What period followed the Civil War and addressed the return of former Confederate states?",
+      "choices": [
+        "Progressive Era",
+        "Gilded Age",
+        "Reconstruction",
+        "New Deal"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which agency assisted formerly enslaved people and other war refugees?",
+      "choices": [
+        "Freedmen's Bureau",
+        "Federal Reserve",
+        "Interstate Commerce Commission",
+        "Works Progress Administration"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which amendment established birthright citizenship with specified exceptions and equal protection?",
+      "choices": [
+        "Twelfth Amendment",
+        "Fourteenth Amendment",
+        "Fifteenth Amendment",
+        "Seventeenth Amendment"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which amendment prohibited voting discrimination based on race, color, or previous servitude?",
+      "choices": [
+        "Thirteenth Amendment",
+        "Nineteenth Amendment",
+        "Twenty-fourth Amendment",
+        "Fifteenth Amendment"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Who became president after Lincoln's assassination?",
+      "choices": [
+        "Andrew Johnson",
+        "Ulysses S. Grant",
+        "Rutherford B. Hayes",
+        "James Buchanan"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What were Black Codes?",
+      "choices": [
+        "Federal laws granting universal voting rights",
+        "Union military orders abolishing racial discrimination",
+        "Southern laws restricting the freedom of African Americans",
+        "Treaties redistributing plantation land nationwide"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What labor arrangement required farmers to give landowners part of their crop?",
+      "choices": [
+        "Homesteading",
+        "Sharecropping",
+        "Wage manufacturing",
+        "Collective bargaining"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why did education become a major priority for freedpeople?",
+      "choices": [
+        "Schools were required to prevent freedpeople from holding property",
+        "Education replaced all efforts to obtain political rights",
+        "Federal law prohibited churches from organizing schools",
+        "Literacy and schooling expanded opportunities long denied under slavery"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why did Congress conflict with President Johnson?",
+      "choices": [
+        "Many lawmakers considered his Reconstruction policies too lenient",
+        "Johnson demanded permanent military government in every state",
+        "Congress opposed restoring any Southern state to the Union",
+        "Johnson supported granting land to every formerly enslaved family"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What did the Reconstruction Acts of 1867 do?",
+      "choices": [
+        "Removed every Southern state government from federal jurisdiction",
+        "Repealed the Thirteenth Amendment",
+        "Placed much of the former Confederacy under military districts",
+        "Ended congressional conditions for readmission"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why did the Ku Klux Klan use violence during Reconstruction?",
+      "choices": [
+        "To support equal voting rights for freedpeople",
+        "To intimidate Black citizens and undermine Republican political activity",
+        "To enforce federal protections against racial discrimination",
+        "To create public schools for former slaves"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why could sharecropping trap farmers in debt?",
+      "choices": [
+        "Landowners always sold land to tenants below market prices",
+        "Every tenant received a guaranteed federal salary",
+        "Farmers were prohibited from buying supplies on credit",
+        "Credit costs and crop obligations could exceed their earnings"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What changed when African American men gained voting rights during Reconstruction?",
+      "choices": [
+        "They could participate in elections and hold public office",
+        "They automatically obtained equal wealth across the South",
+        "Racial violence immediately disappeared nationwide",
+        "Every Black adult received the right to vote"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What was the outcome of Andrew Johnson's Senate impeachment trial?",
+      "choices": [
+        "He was removed and succeeded by Grant immediately",
+        "The Supreme Court overturned the impeachment vote",
+        "He was acquitted and remained president",
+        "He was convicted and imprisoned by the Senate"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why did Reconstruction's protections become harder to enforce after 1877?",
+      "choices": [
+        "The Fourteenth Amendment was formally repealed",
+        "Federal commitment to protecting Southern Black political rights weakened",
+        "Former Confederate states became independent countries",
+        "All Black voters voluntarily stopped participating"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Which sequence places these Reconstruction events in chronological order?",
+      "choices": [
+        "Civil War ends, Fourteenth Amendment ratified, withdrawal of remaining federal troops in 1877",
+        "Fourteenth Amendment ratified, Civil War ends, withdrawal of troops in 1877",
+        "Withdrawal of troops in 1877, Civil War ends, Fourteenth Amendment ratified",
+        "Civil War ends, withdrawal of troops in 1877, Fourteenth Amendment ratified"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A state denies equal legal protection because of race. Which Reconstruction amendment is most directly relevant?",
+      "choices": [
+        "Twelfth Amendment",
+        "Seventeenth Amendment",
+        "Twenty-second Amendment",
+        "Fourteenth Amendment"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Which evidence best challenges the claim that emancipation immediately produced equality?",
+      "choices": [
+        "The Union won the Civil War",
+        "The Confederacy surrendered in 1865",
+        "Black Codes and racial violence limited freedom after slavery ended",
+        "Congress created the Freedmen's Bureau"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "How did the Thirteenth and Fifteenth Amendments differ?",
+      "choices": [
+        "One established income taxes; the other ended poll taxes",
+        "One abolished slavery; the other addressed race-based voting discrimination",
+        "One created citizenship; the other created the Supreme Court",
+        "One limited presidential terms; the other established direct Senate elections"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which conclusion best describes Reconstruction's legacy?",
+      "choices": [
+        "It created constitutional protections whose enforcement remained contested",
+        "It permanently guaranteed equal access to voting in every state",
+        "It restored slavery through a new constitutional amendment",
+        "It eliminated federal responsibility for civil rights"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--physical-science-chemistry--oxidation-and-reduction",
+  "title": "Oxidation and Reduction",
+  "subject": "Science",
+  "category": "Physical Science & Chemistry",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "In terms of electrons, what is oxidation?",
+      "choices": [
+        "Gain of electrons",
+        "Loss of electrons",
+        "Loss of neutrons",
+        "Gain of protons in the nucleus"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "In terms of electrons, what is reduction?",
+      "choices": [
+        "Loss of electrons",
+        "Gain of neutrons",
+        "Gain of electrons",
+        "Loss of protons in the nucleus"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What happens to oxidation number when an atom is oxidized?",
+      "choices": [
+        "It decreases",
+        "It must become zero",
+        "It always remains unchanged",
+        "It increases"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is an oxidizing agent?",
+      "choices": [
+        "A substance that accepts electrons and is reduced",
+        "A substance that donates electrons and is oxidized",
+        "A substance that prevents every electron transfer",
+        "A substance that changes all nuclei"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is a reducing agent?",
+      "choices": [
+        "A substance that accepts electrons and is reduced",
+        "A substance that donates electrons and is oxidized",
+        "A substance with no electrons",
+        "A substance that must contain oxygen"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is the oxidation number of an element in its uncombined elemental form?",
+      "choices": [
+        "+1",
+        "−1",
+        "0",
+        "+2"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Where does oxidation occur in an electrochemical cell?",
+      "choices": [
+        "At the cathode",
+        "Only in the connecting wire",
+        "Only at the salt bridge",
+        "At the anode"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why do oxidation and reduction occur together in an electron-transfer reaction?",
+      "choices": [
+        "Electrons lost by one species are gained by another",
+        "Electrons disappear without any recipient",
+        "Every atom gains electrons at once",
+        "Only oxygen atoms can exchange electrons"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Does every oxidation-reduction reaction require oxygen gas?",
+      "choices": [
+        "Yes; every electron transfer requires oxygen gas",
+        "No; electron transfer can occur without oxygen gas",
+        "Yes; only oxygen can accept electrons",
+        "No; redox reactions involve proton transfer without electron changes"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why is rusting iron a redox process?",
+      "choices": [
+        "Iron dissolves physically without a change in oxidation state",
+        "Iron gains electrons while all oxygen atoms lose them",
+        "Iron loses electrons as oxygen-containing species gain them",
+        "Iron and oxygen remain chemically unchanged"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How does a galvanic cell produce electric current?",
+      "choices": [
+        "An outside power source must force every galvanic reaction",
+        "Ions carry the external current through a metal wire instead of electrons",
+        "The cell stores electricity without chemical change",
+        "A spontaneous redox reaction drives electron flow through a circuit"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why must an ionic path accompany an external electron path in a working galvanic cell?",
+      "choices": [
+        "Ion movement prevents charge buildup that would stop the reaction",
+        "The salt bridge supplies all the electrons in the external wire",
+        "Ion movement keeps each solution's concentration exactly unchanged",
+        "The ionic path prevents oxidation from taking place"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "How does electrolysis differ from a spontaneous galvanic cell?",
+      "choices": [
+        "It has no electron transfer",
+        "It uses electrical energy to drive a nonspontaneous reaction",
+        "It changes only the size of particles",
+        "It can occur only without an electrolyte"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What happens to a copper ion when it becomes copper metal by gaining electrons?",
+      "choices": [
+        "It is oxidized",
+        "Its nucleus splits",
+        "It is reduced",
+        "It becomes a different element"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why do balanced redox equations include equal numbers of electrons lost and gained?",
+      "choices": [
+        "Every reacting atom must become neutral",
+        "All reactants have equal mass individually",
+        "The products must contain oxygen gas",
+        "Electric charge must be conserved"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "In Zn → Zn2+ + 2e−, what happens to zinc?",
+      "choices": [
+        "It is oxidized",
+        "It is reduced",
+        "It gains two protons",
+        "Its atomic number decreases"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "In Cu2+ + 2e− → Cu, what happens to copper's oxidation number?",
+      "choices": [
+        "It increases from 0 to +2",
+        "It decreases from +2 to 0",
+        "It stays at +2",
+        "It decreases from +2 to −2"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "In Zn + Cu2+ → Zn2+ + Cu, which species is the oxidizing agent?",
+      "choices": [
+        "Zn",
+        "Zn2+",
+        "Cu2+",
+        "Cu"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "An atom's oxidation number changes from −1 to +1. How is this change classified?",
+      "choices": [
+        "Reduction",
+        "No redox change",
+        "A change in neutron number",
+        "Oxidation"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "In NaCl, sodium has oxidation number +1. What is chlorine's oxidation number if the compound is neutral?",
+      "choices": [
+        "−1",
+        "0",
+        "+1",
+        "+2"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}

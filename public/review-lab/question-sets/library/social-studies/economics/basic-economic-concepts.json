@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "economics--basic-economic-concepts",
+  "title": "Basic Economic Concepts",
+  "subject": "Social Studies",
+  "category": "Economics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is scarcity?",
+      "choices": [
+        "A temporary drop in one product's price",
+        "Limited resources relative to people's wants",
+        "The absence of any available technology",
+        "A government's annual budget deficit"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What does economics primarily study?",
+      "choices": [
+        "The allocation of scarce resources",
+        "Only the design of government buildings",
+        "Only the sequence of historical wars",
+        "The naming of physical landforms"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which is an example of a productive resource?",
+      "choices": [
+        "A worker's labor",
+        "A consumer's preference",
+        "A retailer's sale price",
+        "A customer's demand"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What does capital mean as a factor of production?",
+      "choices": [
+        "All income received by consumers",
+        "Every natural resource below ground",
+        "Tools, equipment, and buildings used to produce goods",
+        "Only currency held in a wallet"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is an incentive?",
+      "choices": [
+        "A resource that has no alternative use",
+        "A potential reward or penalty that influences choices",
+        "A product available without any cost",
+        "An accounting total of past purchases"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is a service?",
+      "choices": [
+        "An activity performed to meet a want or need",
+        "A physical item held in inventory",
+        "A raw material extracted from land",
+        "A machine used in production"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is specialization?",
+      "choices": [
+        "Producing everything one consumes independently",
+        "Dividing resources equally regardless of skills",
+        "Avoiding exchange with other producers",
+        "Focusing production on particular tasks or products"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why do households make trade-offs?",
+      "choices": [
+        "Every choice offers identical benefits",
+        "Money eliminates all resource limits",
+        "Time, income, and resources have alternative uses",
+        "Only businesses face constraints"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why can voluntary exchange benefit both participants?",
+      "choices": [
+        "Each expects to gain something valued more than what is given up",
+        "Both must receive the same physical item",
+        "Trade always eliminates production costs",
+        "Prices always remain unchanged after trade"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why can specialization raise productivity?",
+      "choices": [
+        "It requires every worker to perform every task",
+        "Practice and division of tasks can improve efficiency",
+        "It prevents the use of tools",
+        "It removes the need for coordination"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What does a production possibilities frontier illustrate?",
+      "choices": [
+        "Only the prices consumers pay in stores",
+        "The dates when national budgets are passed",
+        "The distribution of voting rights across a population",
+        "Trade-offs in producing two goods with given resources and technology"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What does a point inside a production possibilities frontier indicate?",
+      "choices": [
+        "The economy has exceeded its productive capacity",
+        "Opportunity cost has disappeared",
+        "Resources are unemployed or used inefficiently",
+        "Every worker is producing at maximum efficiency"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "How does technological improvement affect productive capacity?",
+      "choices": [
+        "It can allow more output from available resources",
+        "It necessarily reduces every worker's income",
+        "It removes all scarcity permanently",
+        "It leaves all production possibilities unchanged"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why should decision-makers consider marginal benefits and costs?",
+      "choices": [
+        "Every choice must be evaluated only as all-or-nothing",
+        "Choices often involve whether to do a little more or less",
+        "Past costs can always be recovered",
+        "Average costs always equal additional costs"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why is entrepreneurship considered a factor of production?",
+      "choices": [
+        "It measures the total price of every product",
+        "It guarantees that every business earns a profit",
+        "It eliminates the need for labor and materials",
+        "It organizes resources and involves taking business risks"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A student uses an hour for studying instead of paid work. What is part of the opportunity cost?",
+      "choices": [
+        "Every dollar the student has ever earned",
+        "The wages of all classmates",
+        "The forgone earnings from that hour of work",
+        "Only the price of the student's textbook"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A baker buys an oven for bread production. Which factor is the oven?",
+      "choices": [
+        "Capital",
+        "Labor",
+        "Land",
+        "Entrepreneurship"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A firm trains workers and output per hour rises. What changed?",
+      "choices": [
+        "The inflation rate necessarily",
+        "Productivity",
+        "The exchange rate necessarily",
+        "The unemployment definition"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "One more hour of practice offers a benefit worth $15 and a cost worth $8. What does marginal analysis suggest?",
+      "choices": [
+        "The extra hour necessarily has no benefit",
+        "Only previous practice costs matter",
+        "The cost must equal the benefit",
+        "The extra hour has a positive net benefit"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which statement is a positive economic claim that could be tested?",
+      "choices": [
+        "The government ought to tax luxury goods more",
+        "Every worker deserves the same wage",
+        "A price increase was followed by lower sales",
+        "The fairest economy distributes income equally"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ]
+}

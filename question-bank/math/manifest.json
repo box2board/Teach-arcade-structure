@@ -1,0 +1,535 @@
+{
+  "schemaVersion": 1,
+  "subject": "Math",
+  "status": "draft-for-review",
+  "gradeBand": "7–12",
+  "setCount": 75,
+  "questionCount": 1500,
+  "sets": [
+    {
+      "id": "math--pre-algebra--integers-and-rational-numbers",
+      "title": "Integers and Rational Numbers",
+      "category": "Pre-Algebra & Number Sense",
+      "questionCount": 20,
+      "file": "pre-algebra/integers-and-rational-numbers.json"
+    },
+    {
+      "id": "math--pre-algebra--fractions-and-decimals",
+      "title": "Fractions and Decimals",
+      "category": "Pre-Algebra & Number Sense",
+      "questionCount": 20,
+      "file": "pre-algebra/fractions-and-decimals.json"
+    },
+    {
+      "id": "math--pre-algebra--ratios-and-proportions",
+      "title": "Ratios and Proportions",
+      "category": "Pre-Algebra & Number Sense",
+      "questionCount": 20,
+      "file": "pre-algebra/ratios-and-proportions.json"
+    },
+    {
+      "id": "math--pre-algebra--percent-applications",
+      "title": "Percent Applications",
+      "category": "Pre-Algebra & Number Sense",
+      "questionCount": 20,
+      "file": "pre-algebra/percent-applications.json"
+    },
+    {
+      "id": "math--pre-algebra--exponents-and-order-of-operations",
+      "title": "Exponents and Order of Operations",
+      "category": "Pre-Algebra & Number Sense",
+      "questionCount": 20,
+      "file": "pre-algebra/exponents-and-order-of-operations.json"
+    },
+    {
+      "id": "math--algebra-1--expressions-and-distributive-property",
+      "title": "Expressions and Distributive Property",
+      "category": "Algebra I",
+      "questionCount": 20,
+      "file": "algebra-1/expressions-and-distributive-property.json"
+    },
+    {
+      "id": "math--algebra-1--linear-equations",
+      "title": "Linear Equations",
+      "category": "Algebra I",
+      "questionCount": 20,
+      "file": "algebra-1/linear-equations.json"
+    },
+    {
+      "id": "math--algebra-1--linear-inequalities",
+      "title": "Linear Inequalities",
+      "category": "Algebra I",
+      "questionCount": 20,
+      "file": "algebra-1/linear-inequalities.json"
+    },
+    {
+      "id": "math--algebra-1--slope-and-linear-relationships",
+      "title": "Slope and Linear Relationships",
+      "category": "Algebra I",
+      "questionCount": 20,
+      "file": "algebra-1/slope-and-linear-relationships.json"
+    },
+    {
+      "id": "math--algebra-1--systems-of-linear-equations",
+      "title": "Systems of Linear Equations",
+      "category": "Algebra I",
+      "questionCount": 20,
+      "file": "algebra-1/systems-of-linear-equations.json"
+    },
+    {
+      "id": "math--geometry--angles-and-parallel-lines",
+      "title": "Angles and Parallel Lines",
+      "category": "Geometry",
+      "questionCount": 20,
+      "file": "geometry/angles-and-parallel-lines.json"
+    },
+    {
+      "id": "math--geometry--triangles-and-angle-relationships",
+      "title": "Triangles and Angle Relationships",
+      "category": "Geometry",
+      "questionCount": 20,
+      "file": "geometry/triangles-and-angle-relationships.json"
+    },
+    {
+      "id": "math--geometry--pythagorean-theorem",
+      "title": "Pythagorean Theorem",
+      "category": "Geometry",
+      "questionCount": 20,
+      "file": "geometry/pythagorean-theorem.json"
+    },
+    {
+      "id": "math--geometry--area-and-perimeter",
+      "title": "Area and Perimeter",
+      "category": "Geometry",
+      "questionCount": 20,
+      "file": "geometry/area-and-perimeter.json"
+    },
+    {
+      "id": "math--geometry--volume-and-surface-area",
+      "title": "Volume and Surface Area",
+      "category": "Geometry",
+      "questionCount": 20,
+      "file": "geometry/volume-and-surface-area.json"
+    },
+    {
+      "id": "math--algebra-2-functions--polynomials-and-operations",
+      "title": "Polynomials and Operations",
+      "category": "Algebra II & Functions",
+      "questionCount": 20,
+      "file": "algebra-2-functions/polynomials-and-operations.json"
+    },
+    {
+      "id": "math--algebra-2-functions--factoring-polynomials",
+      "title": "Factoring Polynomials",
+      "category": "Algebra II & Functions",
+      "questionCount": 20,
+      "file": "algebra-2-functions/factoring-polynomials.json"
+    },
+    {
+      "id": "math--algebra-2-functions--quadratic-equations",
+      "title": "Quadratic Equations",
+      "category": "Algebra II & Functions",
+      "questionCount": 20,
+      "file": "algebra-2-functions/quadratic-equations.json"
+    },
+    {
+      "id": "math--algebra-2-functions--functions-domain-and-range",
+      "title": "Functions Domain and Range",
+      "category": "Algebra II & Functions",
+      "questionCount": 20,
+      "file": "algebra-2-functions/functions-domain-and-range.json"
+    },
+    {
+      "id": "math--algebra-2-functions--exponential-functions",
+      "title": "Exponential Functions",
+      "category": "Algebra II & Functions",
+      "questionCount": 20,
+      "file": "algebra-2-functions/exponential-functions.json"
+    },
+    {
+      "id": "math--statistics-probability--measures-of-center-and-spread",
+      "title": "Measures of Center and Spread",
+      "category": "Statistics & Probability",
+      "questionCount": 20,
+      "file": "statistics-probability/measures-of-center-and-spread.json"
+    },
+    {
+      "id": "math--statistics-probability--data-displays-and-interpretation",
+      "title": "Data Displays and Interpretation",
+      "category": "Statistics & Probability",
+      "questionCount": 20,
+      "file": "statistics-probability/data-displays-and-interpretation.json"
+    },
+    {
+      "id": "math--statistics-probability--basic-probability",
+      "title": "Basic Probability",
+      "category": "Statistics & Probability",
+      "questionCount": 20,
+      "file": "statistics-probability/basic-probability.json"
+    },
+    {
+      "id": "math--statistics-probability--compound-probability",
+      "title": "Compound Probability",
+      "category": "Statistics & Probability",
+      "questionCount": 20,
+      "file": "statistics-probability/compound-probability.json"
+    },
+    {
+      "id": "math--statistics-probability--sampling-and-statistical-inference",
+      "title": "Sampling and Statistical Inference",
+      "category": "Statistics & Probability",
+      "questionCount": 20,
+      "file": "statistics-probability/sampling-and-statistical-inference.json"
+    },
+    {
+      "id": "math--pre-algebra--real-number-system",
+      "title": "Real Number System",
+      "category": "Pre-Algebra & Number Sense",
+      "file": "pre-algebra/real-number-system.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--pre-algebra--absolute-value-and-number-lines",
+      "title": "Absolute Value and Number Lines",
+      "category": "Pre-Algebra & Number Sense",
+      "file": "pre-algebra/absolute-value-and-number-lines.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--pre-algebra--scientific-notation",
+      "title": "Scientific Notation",
+      "category": "Pre-Algebra & Number Sense",
+      "file": "pre-algebra/scientific-notation.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--pre-algebra--square-roots-and-irrational-numbers",
+      "title": "Square Roots and Irrational Numbers",
+      "category": "Pre-Algebra & Number Sense",
+      "file": "pre-algebra/square-roots-and-irrational-numbers.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--pre-algebra--unit-rates-and-dimensional-analysis",
+      "title": "Unit Rates and Dimensional Analysis",
+      "category": "Pre-Algebra & Number Sense",
+      "file": "pre-algebra/unit-rates-and-dimensional-analysis.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--algebra-1--linear-function-graphs",
+      "title": "Linear Function Graphs",
+      "category": "Algebra I",
+      "file": "algebra-1/linear-function-graphs.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--algebra-1--writing-linear-models",
+      "title": "Writing Linear Models",
+      "category": "Algebra I",
+      "file": "algebra-1/writing-linear-models.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--algebra-1--systems-of-linear-inequalities",
+      "title": "Systems of Linear Inequalities",
+      "category": "Algebra I",
+      "file": "algebra-1/systems-of-linear-inequalities.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--algebra-1--absolute-value-equations-and-inequalities",
+      "title": "Absolute Value Equations and Inequalities",
+      "category": "Algebra I",
+      "file": "algebra-1/absolute-value-equations-and-inequalities.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--algebra-1--algebraic-exponent-rules",
+      "title": "Algebraic Exponent Rules",
+      "category": "Algebra I",
+      "file": "algebra-1/algebraic-exponent-rules.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--geometry--triangle-congruence",
+      "title": "Triangle Congruence",
+      "category": "Geometry",
+      "file": "geometry/triangle-congruence.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--geometry--similarity-and-scale-factors",
+      "title": "Similarity and Scale Factors",
+      "category": "Geometry",
+      "file": "geometry/similarity-and-scale-factors.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--geometry--right-triangle-trigonometry",
+      "title": "Right Triangle Trigonometry",
+      "category": "Geometry",
+      "file": "geometry/right-triangle-trigonometry.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--geometry--circles-and-their-properties",
+      "title": "Circles and Their Properties",
+      "category": "Geometry",
+      "file": "geometry/circles-and-their-properties.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--geometry--coordinate-geometry",
+      "title": "Coordinate Geometry",
+      "category": "Geometry",
+      "file": "geometry/coordinate-geometry.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--algebra-2-functions--quadratic-graphs-and-transformations",
+      "title": "Quadratic Graphs and Transformations",
+      "category": "Algebra II & Functions",
+      "file": "algebra-2-functions/quadratic-graphs-and-transformations.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--algebra-2-functions--complex-numbers",
+      "title": "Complex Numbers",
+      "category": "Algebra II & Functions",
+      "file": "algebra-2-functions/complex-numbers.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--algebra-2-functions--rational-expressions-and-equations",
+      "title": "Rational Expressions and Equations",
+      "category": "Algebra II & Functions",
+      "file": "algebra-2-functions/rational-expressions-and-equations.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--algebra-2-functions--radical-equations-and-rational-exponents",
+      "title": "Radical Equations and Rational Exponents",
+      "category": "Algebra II & Functions",
+      "file": "algebra-2-functions/radical-equations-and-rational-exponents.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--algebra-2-functions--logarithmic-functions",
+      "title": "Logarithmic Functions",
+      "category": "Algebra II & Functions",
+      "file": "algebra-2-functions/logarithmic-functions.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--statistics-probability--two-way-tables-and-conditional-probability",
+      "title": "Two-Way Tables and Conditional Probability",
+      "category": "Statistics & Probability",
+      "file": "statistics-probability/two-way-tables-and-conditional-probability.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--statistics-probability--independent-and-dependent-events",
+      "title": "Independent and Dependent Events",
+      "category": "Statistics & Probability",
+      "file": "statistics-probability/independent-and-dependent-events.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--statistics-probability--permutations-and-combinations",
+      "title": "Permutations and Combinations",
+      "category": "Statistics & Probability",
+      "file": "statistics-probability/permutations-and-combinations.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--statistics-probability--experimental-and-theoretical-probability",
+      "title": "Experimental and Theoretical Probability",
+      "category": "Statistics & Probability",
+      "file": "statistics-probability/experimental-and-theoretical-probability.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--statistics-probability--random-variables-and-expected-value",
+      "title": "Random Variables and Expected Value",
+      "category": "Statistics & Probability",
+      "file": "statistics-probability/random-variables-and-expected-value.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--pre-algebra--proportional-relationships",
+      "title": "Proportional Relationships",
+      "category": "Pre-Algebra & Number Sense",
+      "file": "pre-algebra/proportional-relationships.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--pre-algebra--percent-change-and-simple-interest",
+      "title": "Percent Change and Simple Interest",
+      "category": "Pre-Algebra & Number Sense",
+      "file": "pre-algebra/percent-change-and-simple-interest.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--pre-algebra--scale-drawings",
+      "title": "Scale Drawings",
+      "category": "Pre-Algebra & Number Sense",
+      "file": "pre-algebra/scale-drawings.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--pre-algebra--measurement-and-unit-conversions",
+      "title": "Measurement and Unit Conversions",
+      "category": "Pre-Algebra & Number Sense",
+      "file": "pre-algebra/measurement-and-unit-conversions.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--pre-algebra--factors-multiples-and-divisibility",
+      "title": "Factors Multiples and Divisibility",
+      "category": "Pre-Algebra & Number Sense",
+      "file": "pre-algebra/factors-multiples-and-divisibility.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--algebra-1--radical-expressions",
+      "title": "Radical Expressions",
+      "category": "Algebra I",
+      "file": "algebra-1/radical-expressions.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--algebra-1--introduction-to-quadratic-functions",
+      "title": "Introduction to Quadratic Functions",
+      "category": "Algebra I",
+      "file": "algebra-1/introduction-to-quadratic-functions.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--algebra-1--arithmetic-sequences",
+      "title": "Arithmetic Sequences",
+      "category": "Algebra I",
+      "file": "algebra-1/arithmetic-sequences.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--algebra-1--literal-equations-and-formulas",
+      "title": "Literal Equations and Formulas",
+      "category": "Algebra I",
+      "file": "algebra-1/literal-equations-and-formulas.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--algebra-1--direct-and-inverse-variation",
+      "title": "Direct and Inverse Variation",
+      "category": "Algebra I",
+      "file": "algebra-1/direct-and-inverse-variation.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--geometry--transformations-and-symmetry",
+      "title": "Transformations and Symmetry",
+      "category": "Geometry",
+      "file": "geometry/transformations-and-symmetry.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--geometry--geometric-proof-and-reasoning",
+      "title": "Geometric Proof and Reasoning",
+      "category": "Geometry",
+      "file": "geometry/geometric-proof-and-reasoning.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--geometry--quadrilaterals-and-polygons",
+      "title": "Quadrilaterals and Polygons",
+      "category": "Geometry",
+      "file": "geometry/quadrilaterals-and-polygons.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--geometry--congruence-and-rigid-motions",
+      "title": "Congruence and Rigid Motions",
+      "category": "Geometry",
+      "file": "geometry/congruence-and-rigid-motions.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--geometry--inscribed-angles-and-arcs",
+      "title": "Inscribed Angles and Arcs",
+      "category": "Geometry",
+      "file": "geometry/inscribed-angles-and-arcs.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--algebra-2-functions--exponential-and-logarithmic-equations",
+      "title": "Exponential and Logarithmic Equations",
+      "category": "Algebra II & Functions",
+      "file": "algebra-2-functions/exponential-and-logarithmic-equations.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--algebra-2-functions--function-composition-and-inverses",
+      "title": "Function Composition and Inverses",
+      "category": "Algebra II & Functions",
+      "file": "algebra-2-functions/function-composition-and-inverses.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--algebra-2-functions--polynomial-zeros-and-graphs",
+      "title": "Polynomial Zeros and Graphs",
+      "category": "Algebra II & Functions",
+      "file": "algebra-2-functions/polynomial-zeros-and-graphs.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--algebra-2-functions--rational-function-graphs",
+      "title": "Rational Function Graphs",
+      "category": "Algebra II & Functions",
+      "file": "algebra-2-functions/rational-function-graphs.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--algebra-2-functions--sequences-and-series",
+      "title": "Sequences and Series",
+      "category": "Algebra II & Functions",
+      "file": "algebra-2-functions/sequences-and-series.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--statistics-probability--normal-distributions",
+      "title": "Normal Distributions",
+      "category": "Statistics & Probability",
+      "file": "statistics-probability/normal-distributions.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--statistics-probability--standard-deviation-and-z-scores",
+      "title": "Standard Deviation and Z-Scores",
+      "category": "Statistics & Probability",
+      "file": "statistics-probability/standard-deviation-and-z-scores.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--statistics-probability--correlation-and-regression",
+      "title": "Correlation and Regression",
+      "category": "Statistics & Probability",
+      "file": "statistics-probability/correlation-and-regression.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--statistics-probability--residuals-and-model-fit",
+      "title": "Residuals and Model Fit",
+      "category": "Statistics & Probability",
+      "file": "statistics-probability/residuals-and-model-fit.json",
+      "questionCount": 20
+    },
+    {
+      "id": "math--statistics-probability--experimental-design-and-causation",
+      "title": "Experimental Design and Causation",
+      "category": "Statistics & Probability",
+      "file": "statistics-probability/experimental-design-and-causation.json",
+      "questionCount": 20
+    }
+  ]
+}

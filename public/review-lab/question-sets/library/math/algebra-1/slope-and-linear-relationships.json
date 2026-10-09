@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--algebra-1--slope-and-linear-relationships",
+  "title": "Slope and Linear Relationships",
+  "subject": "Math",
+  "category": "Algebra I",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is the slope formula between two points with different x-coordinates?",
+      "choices": [
+        "(x2 − x1)/(y2 − y1)",
+        "(y2 + y1)/(x2 + x1)",
+        "y2 − x2",
+        "(y2 − y1)/(x2 − x1)"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is the slope of y = 3x + 5?",
+      "choices": [
+        "5",
+        "−3",
+        "1/3",
+        "3"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is the y-intercept of y = −2x + 7?",
+      "choices": [
+        "−2",
+        "7",
+        "−7",
+        "2"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is the slope of a horizontal line?",
+      "choices": [
+        "1",
+        "−1",
+        "0",
+        "Undefined"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is the slope of a vertical line?",
+      "choices": [
+        "Undefined",
+        "0",
+        "1",
+        "−1"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which equation is in slope-intercept form?",
+      "choices": [
+        "x = 4",
+        "y = 4x − 2",
+        "y − 2 = 4(x − 1)",
+        "4x + 2y = 8"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is the slope through (1, 2) and (3, 8)?",
+      "choices": [
+        "1/3",
+        "6",
+        "2",
+        "3"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "What does a negative slope indicate as x increases?",
+      "choices": [
+        "y decreases",
+        "y increases",
+        "y always equals zero",
+        "x cannot change"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "A line rises 6 units while moving right 3 units. What is its slope?",
+      "choices": [
+        "3",
+        "1/2",
+        "2",
+        "−2"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Which point lies on y = 2x + 1?",
+      "choices": [
+        "(3, 6)",
+        "(1, 2)",
+        "(3, 7)",
+        "(0, 0)"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What does the y-intercept represent on a graph?",
+      "choices": [
+        "The value of y when x = 0",
+        "The value of x when y = 0",
+        "The slope between every pair of points",
+        "The largest possible y-value"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Two nonvertical lines have the same slope but different y-intercepts. How are they related?",
+      "choices": [
+        "They are perpendicular",
+        "They are the same line",
+        "They intersect twice",
+        "They are parallel"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What is the slope through (−2, 5) and (2, −3)?",
+      "choices": [
+        "2",
+        "−2",
+        "−1/2",
+        "1/2"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "A table has y increasing by 9 when x increases by 3 at each step. What is the constant slope?",
+      "choices": [
+        "3",
+        "9",
+        "1/3",
+        "27"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why is slope undefined for a vertical line?",
+      "choices": [
+        "Its rise is always zero",
+        "The slope formula would divide by zero",
+        "Its y-values never change",
+        "Its x-coordinates are all different"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A service costs $15 initially plus $6 per hour. What does the slope of its cost graph represent?",
+      "choices": [
+        "The $15 initial charge",
+        "The total charge after one hour",
+        "The maximum number of hours",
+        "The $6 cost per additional hour"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A line passes through (0, 4) and (2, 10). Which equation fits?",
+      "choices": [
+        "y = 4x + 3",
+        "y = 5x + 4",
+        "y = 3x + 4",
+        "y = 3x + 10"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A tank starts with 50 L and loses 4 L per minute at a constant rate. Which equation models volume V after t minutes before emptying?",
+      "choices": [
+        "V = 50 − 4t",
+        "V = 4t − 50",
+        "V = 50 + 4t",
+        "V = 46t"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Two points on a line are (2, 5) and (6, 13). What is y when x = 8?",
+      "choices": [
+        "15",
+        "19",
+        "17",
+        "21"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A student uses rise/run but switches the point order only in the denominator. What error can result?",
+      "choices": [
+        "The y-intercept must become zero",
+        "The calculated slope has the wrong sign",
+        "The line becomes vertical",
+        "The slope always doubles"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}

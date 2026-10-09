@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--earth-space-science--ocean-currents-and-tides",
+  "title": "Ocean Currents and Tides",
+  "subject": "Science",
+  "category": "Earth & Space Science",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is an ocean current?",
+      "choices": [
+        "Only the vertical rise and fall of sea level",
+        "Only a wave's surface shape moving without a water-flow pattern",
+        "The amount of salt dissolved in seawater",
+        "A directed movement of seawater"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What causes ocean tides primarily?",
+      "choices": [
+        "Gravitational interactions involving Earth, Moon, and Sun",
+        "Only wind blowing across coastal water",
+        "Only changes in atmospheric pressure",
+        "Only daily heating of the ocean surface"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is tidal range?",
+      "choices": [
+        "The distance between two continents",
+        "The speed of a breaking wave",
+        "The vertical difference between high and low tide",
+        "The salt concentration at high tide"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What are spring tides?",
+      "choices": [
+        "Tides occurring only during the spring season",
+        "Tides with the smallest ranges at quarter Moon",
+        "Tides with relatively large ranges when Sun, Earth, and Moon align",
+        "Tides produced only by changing wind"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What are neap tides?",
+      "choices": [
+        "Tides with relatively small ranges near quarter-moon phases",
+        "Tides with greatest ranges near new and full Moon",
+        "Tides occurring only during the winter season",
+        "Tides caused only by a change in ocean temperature"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is upwelling?",
+      "choices": [
+        "The sinking of dense surface water",
+        "The downward movement of sediment alone",
+        "The increase in local sea level during high tide",
+        "The rise of deeper water toward the surface"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What does thermohaline circulation depend on?",
+      "choices": [
+        "Only surface waves caused by nearby boats",
+        "Water-density differences related to temperature and salinity",
+        "Only coastal tide height",
+        "Only wind speed, without water-density effects"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why do winds drive many surface ocean currents?",
+      "choices": [
+        "They transfer momentum to surface water",
+        "Wind directly changes every water molecule's density",
+        "Currents can occur only where waves break",
+        "Wind prevents ocean water from being influenced by rotation"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How does Earth's rotation influence large-scale ocean currents?",
+      "choices": [
+        "It forces every current directly north",
+        "It deflects their paths through the Coriolis effect",
+        "It makes winds irrelevant to surface currents",
+        "It determines identical speeds for all currents"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "How do currents affect climate near some coasts?",
+      "choices": [
+        "They make coastal climate independent of ocean temperature",
+        "They remove all seasonal changes from nearby land",
+        "They affect only salinity and never heat transfer",
+        "They transport heat between regions"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why is upwelled water often important for marine food webs?",
+      "choices": [
+        "It removes most nutrients from sunlit water",
+        "It makes phytoplankton independent of light",
+        "It can supply nutrients to sunlit surface waters",
+        "It always reduces all primary production"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "How does increasing salinity generally affect seawater density at the same temperature?",
+      "choices": [
+        "Density increases",
+        "Density decreases",
+        "Density becomes zero",
+        "Density stays identical at every salinity"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "How does cooling generally affect seawater density above its freezing point at a fixed salinity?",
+      "choices": [
+        "Density becomes zero",
+        "Salinity must decrease to zero",
+        "Density increases",
+        "Density always decreases whenever seawater cools"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why do spring tides occur near both new and full Moon?",
+      "choices": [
+        "Lunar effects vanish at both phases",
+        "Solar and lunar tidal effects reinforce along a similar line",
+        "Solar and lunar effects always cancel at both phases",
+        "The Moon stops exerting gravity at full Moon"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why can coastal tide patterns differ between places?",
+      "choices": [
+        "Every coast must have identical daily tide timing",
+        "Only the local water color affects tidal patterns",
+        "Tidal patterns are independent of basin shape",
+        "Coastline shape, basin geometry, and local conditions modify tidal response"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "High tide is 3.5 m and low tide is 0.8 m above the same reference. What is the tidal range?",
+      "choices": [
+        "4.3 m",
+        "3.5 m",
+        "0.8 m",
+        "2.7 m"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Which pair of water conditions most favors high density, compared with warmer, fresher water?",
+      "choices": [
+        "Warm and fresh",
+        "Cold and salty",
+        "Warm and less salty",
+        "Water temperature and salinity do not affect density"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A coastal site receives a warm current. Compared with an otherwise similar site receiving a cold current, what is a likely influence?",
+      "choices": [
+        "A guarantee of zero rainfall",
+        "A guarantee that the region has no winter",
+        "Higher coastal air temperatures",
+        "No influence on local air temperature"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A current carries water horizontally while local sea level rises. Which distinction is correct?",
+      "choices": [
+        "Current describes flow; tide describes the periodic water-level change",
+        "Both terms describe only salinity",
+        "Tides can never generate currents",
+        "Currents describe only waves on beaches"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Nutrient-rich deep water reaches a sunny surface region. What response is plausible if other conditions are suitable?",
+      "choices": [
+        "Immediate disappearance of every food web",
+        "Increased phytoplankton growth",
+        "A necessary decrease in photosynthesis",
+        "No possible effect on primary production"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}

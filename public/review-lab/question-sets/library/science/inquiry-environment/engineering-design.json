@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--inquiry-environment--engineering-design",
+  "title": "Engineering Design",
+  "subject": "Science",
+  "category": "Scientific Inquiry & Environmental Science",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a design criterion?",
+      "choices": [
+        "A restriction on available resources only",
+        "An unmeasured personal prediction",
+        "A feature or level of performance a solution should achieve",
+        "A required material in every design"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is a design constraint?",
+      "choices": [
+        "A limit such as cost, time, materials, or safety requirements",
+        "Any measured improvement",
+        "A result that must always increase",
+        "A scientific law with no practical role"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is a prototype?",
+      "choices": [
+        "A guarantee of final success",
+        "The complete finished product in every case",
+        "A list of unrelated problems",
+        "A preliminary version built to test a design"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is iteration in design?",
+      "choices": [
+        "Building one version without testing",
+        "Repeating a test-and-revision cycle",
+        "Choosing a solution only by appearance",
+        "Replacing all criteria with new units"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is a design tradeoff?",
+      "choices": [
+        "Improving one feature while accepting a disadvantage in another",
+        "A situation where every feature improves without limits",
+        "A test performed without measurements",
+        "A way to avoid all constraints"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is optimization?",
+      "choices": [
+        "Maximizing cost regardless of need",
+        "Improving performance within stated criteria and constraints",
+        "Removing every requirement",
+        "Assuming one design is best in all settings"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is a failure point in a prototype test?",
+      "choices": [
+        "A measurement that always supports the design",
+        "A reason never to test again",
+        "The name of the final product",
+        "A part or condition where performance stops meeting requirements"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why should a problem be defined before choosing materials?",
+      "choices": [
+        "Materials should be chosen before the intended use is considered",
+        "Every design problem has identical material requirements",
+        "The intended need and requirements guide useful choices",
+        "Available materials determine success without defined criteria"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why compare several possible solutions?",
+      "choices": [
+        "Different designs may meet requirements with different strengths and weaknesses",
+        "Only one solution can ever be imagined",
+        "Comparison guarantees no future failures",
+        "Every possible design has identical performance"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why should prototypes be tested under relevant conditions?",
+      "choices": [
+        "Only appearance affects real-world performance",
+        "Prototypes cannot be measured",
+        "Performance may differ from ideal conditions assumed during planning",
+        "Realistic testing removes all need for safety planning"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How can a decision matrix help compare designs?",
+      "choices": [
+        "It proves all criteria are equally important",
+        "It organizes performance against agreed criteria",
+        "It replaces evidence with random choices",
+        "It guarantees every prototype passes"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why can a lightweight bridge design require a strength tradeoff?",
+      "choices": [
+        "Lower mass always guarantees greater strength",
+        "Mass and structure are unrelated to loads",
+        "All bridges have identical strength",
+        "Reducing material can change load capacity"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why should safety be included in design evaluation?",
+      "choices": [
+        "Safety matters only after a product fails",
+        "Testing eliminates all hazards permanently",
+        "Safety can be measured only by product color",
+        "A high-performing solution may still create unacceptable risks"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why is repeated testing useful when results vary?",
+      "choices": [
+        "It guarantees all trials become identical",
+        "It helps estimate reliability rather than relying on one successful trial",
+        "It makes documented methods unnecessary",
+        "It allows failed trials to be ignored"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "How does engineering design differ in emphasis from scientific explanation?",
+      "choices": [
+        "Engineering never uses scientific evidence",
+        "Science never uses models",
+        "Design develops solutions to needs; science investigates explanations of phenomena",
+        "Engineering avoids testing"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A device must fit in a 10 cm space and cost under $20. Which descriptions fit these requirements?",
+      "choices": [
+        "Constraints on size and cost",
+        "Evidence that the prototype already works",
+        "Measurements of actual output power",
+        "Unrelated experimental results"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A filter must remove at least 90% of a test particle type. What is this requirement?",
+      "choices": [
+        "A publication date",
+        "A measurable performance criterion",
+        "An uncontrolled variable",
+        "A scientific name"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Two designs meet strength requirements. One costs $15 and one $25; the budget limit is $20. Which fits the stated conditions?",
+      "choices": [
+        "The $25 design",
+        "Neither design because strength is irrelevant",
+        "Both designs regardless of cost",
+        "The $15 design"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A prototype fails mainly at one joint during loading. What is a useful next step?",
+      "choices": [
+        "Revise the joint and retest under comparable conditions",
+        "Ignore the joint and report only successful trials",
+        "Change the load units to make the result look larger",
+        "Declare all possible designs impossible"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "One shelter design is warmer but heavier; another is lighter but colder. What should guide selection?",
+      "choices": [
+        "Always choose the lighter design without considering warmth",
+        "Always choose the warmer design without considering mass",
+        "Prioritized criteria, use conditions, and acceptable tradeoffs",
+        "Assume all criteria have the same priority in every setting"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--geometry--transformations-and-symmetry",
+  "title": "Transformations and Symmetry",
+  "subject": "Math",
+  "category": "Geometry",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What does a translation do to a figure?",
+      "choices": [
+        "Turns it around a fixed point",
+        "Flips it across a line",
+        "Moves every point by the same vector",
+        "Multiplies every length by a scale factor"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What does a reflection do?",
+      "choices": [
+        "Moves every point only upward",
+        "Maps points across a line at equal perpendicular distances",
+        "Always doubles side lengths",
+        "Always turns the figure 180°"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What describes a rotation?",
+      "choices": [
+        "A turn around a fixed center",
+        "A slide by a fixed vector",
+        "A stretch along one axis",
+        "A flip across a line"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Reflect (3, −2) across the x-axis. What is its image?",
+      "choices": [
+        "(−3, −2)",
+        "(−3, 2)",
+        "(2, 3)",
+        "(3, 2)"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Reflect (4, 1) across the y-axis. What is its image?",
+      "choices": [
+        "(4, −1)",
+        "(−4, −1)",
+        "(−4, 1)",
+        "(1, 4)"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Translate (−1, 5) by (x, y) → (x + 3, y − 2). What is its image?",
+      "choices": [
+        "(−4, 7)",
+        "(2, 3)",
+        "(2, 7)",
+        "(−4, 3)"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is a line of symmetry?",
+      "choices": [
+        "A line across which reflection maps a figure onto itself",
+        "Any line through a vertex",
+        "A line that divides a figure into equal areas only",
+        "Any diagonal of a polygon"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why does a scalene triangle have no line of symmetry?",
+      "choices": [
+        "Every triangle has three symmetry lines",
+        "A triangle must have a right angle to be symmetric",
+        "Symmetry requires curved sides",
+        "No reflection line matches its unequal sides and vertices"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How many lines of symmetry does a square have?",
+      "choices": [
+        "2",
+        "1",
+        "4",
+        "8"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Rotate (2, 5) by 180° about the origin. What is its image?",
+      "choices": [
+        "(5, 2)",
+        "(−2, −5)",
+        "(−5, 2)",
+        "(2, −5)"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Which rule reflects points across y = x?",
+      "choices": [
+        "(x, y) → (y, x)",
+        "(x, y) → (−x, y)",
+        "(x, y) → (x, −y)",
+        "(x, y) → (−y, −x)"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "A dilation centered at the origin has scale factor 3. Where does (2, −1) move?",
+      "choices": [
+        "(5, 2)",
+        "(2/3, −1/3)",
+        "(−6, 3)",
+        "(6, −3)"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why is a dilation with scale factor 2 not a rigid motion?",
+      "choices": [
+        "It changes all angle measures",
+        "It removes vertices",
+        "It doubles distances between distinct points",
+        "It always reflects the figure"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What is the smallest positive rotation that maps a regular hexagon onto itself about its center?",
+      "choices": [
+        "30°",
+        "60°",
+        "90°",
+        "120°"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "How many lines of symmetry does a nonsquare rectangle have?",
+      "choices": [
+        "2",
+        "4",
+        "1",
+        "0"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A point is reflected across the y-axis twice. Where does it end?",
+      "choices": [
+        "At its opposite across the x-axis",
+        "At the origin",
+        "At twice its original distance from the axis",
+        "At its original location"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Rotate (3, 1) by 90° counterclockwise about the origin. What is its image?",
+      "choices": [
+        "(1, −3)",
+        "(−3, −1)",
+        "(−1, 3)",
+        "(1, 3)"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A design matches itself after a 120° turn, and 120° is its smallest positive matching turn. What is its rotational symmetry order?",
+      "choices": [
+        "2",
+        "3",
+        "4",
+        "6"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Translate (2, 3) right 4 and up 1, then reflect across the x-axis. What is the final point?",
+      "choices": [
+        "(6, −4)",
+        "(−6, 4)",
+        "(6, 4)",
+        "(−2, −4)"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which operation turns a square into a nonsquare rectangle?",
+      "choices": [
+        "Reflecting across a diagonal",
+        "Rotating 45° about its center",
+        "Translating it 5 units right",
+        "Stretching only its horizontal dimension"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

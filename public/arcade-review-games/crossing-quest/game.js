@@ -1,3 +1,4 @@
+import {enhanceTopicPicker} from '../../review-lab/topic-picker.js';
 import bank from './questions.js';
 import { QUESTION_SETS, loadQuestionSet } from './question-sets.js';
 import { CrossingWorld, roadShapes } from './engine.js';
@@ -22,7 +23,8 @@ function ready(){
   $('choose-set').onclick=()=>{mode=$('difficulty').value;if(presetSet)startSelectedSet(presetSet.id,$('choose-set'));else chooseSet();};
 }
 function chooseSet(){
-  show(`<span class="pill">Acorn Dash · step 2 of 2</span><h2 id="panel-title">Choose your review</h2><p>${escapeHTML(DIFFICULTIES[mode].label)} park difficulty · 12 questions per run</p><label for="question-set">Question set</label><select id="question-set">${QUESTION_SETS.map(set=>`<option value="${escapeHTML(set.id)}" ${set.id===selectedSet?'selected':''}>${escapeHTML(set.title)} · ${escapeHTML(set.subject)}</option>`).join('')}</select><p id="set-description"></p><p class="access-note">Choose a topic for this run. More Review Lab topics will be added here.</p><p id="pack-error" class="fatal" role="alert"></p>${button('start','Start acorn run')}${button('back','Back to difficulty',false)}`);
+  show(`<span class="pill">Acorn Dash · step 2 of 2</span><h2 id="panel-title">Choose your review</h2><p>${escapeHTML(DIFFICULTIES[mode].label)} park difficulty · 12 questions per run</p><label for="question-set">Question set</label><select id="question-set">${QUESTION_SETS.map(set=>`<option value="${escapeHTML(set.id)}" ${set.id===selectedSet?'selected':''}>${escapeHTML(set.title)} · ${escapeHTML(set.subject)}</option>`).join('')}</select><p id="set-description"></p><p class="access-note">Choose a topic for this run. Filter by subject or category to find a topic.</p><p id="pack-error" class="fatal" role="alert"></p>${button('start','Start acorn run')}${button('back','Back to difficulty',false)}`);
+  enhanceTopicPicker($('question-set'),QUESTION_SETS);
   const describe=()=>{const set=QUESTION_SETS.find(set=>set.id===$('question-set').value);$('set-description').textContent=set?.description||'';};
   $('question-set').onchange=describe;describe();
   $('back').onclick=()=>{selectedSet=$('question-set').value;ready();};
@@ -49,7 +51,7 @@ function question(){
 }
 function feedback(){
   const q=world.question,{correct,reward}=world.feedback;
-  show(`<span class="pill">Question ${world.questionIndex+1} / ${world.deck.length}</span><h2 id="panel-title" class="${correct?'feedback-correct':'feedback-missed'}">${correct?'That’s right!':'Let’s review this one.'}</h2><p><strong>Correct answer:</strong> ${escapeHTML(q.choices[q.answer])}</p><p>${escapeHTML(q.explanation)}</p>${reward?`<p class="reward">${escapeHTML(reward)}</p>`:'<p>You keep your hearts. Use the explanation on your next review.</p>'}${button('continue',world.checkpointAnswers===0?'Next question':world.stop==='finish'?'Return home ↓':'Continue acorn hunt')}`);
+  show(`<span class="pill">Question ${world.questionIndex+1} / ${world.deck.length}</span><h2 id="panel-title" class="${correct?'feedback-correct':'feedback-missed'}">${correct?'That’s right!':'Let’s review this one.'}</h2><p><strong>Correct answer:</strong> ${escapeHTML(q.choices[q.answer])}</p><p>${escapeHTML(q.explanation)}</p>${reward?`<p class="reward">${escapeHTML(reward)}</p>`:'<p>You keep your hearts. Review the correct answer before continuing.</p>'}${button('continue',world.checkpointAnswers===0?'Next question':world.stop==='finish'?'Return home ↓':'Continue acorn hunt')}`);
   $('continue').onclick=()=>{world.continueAnswer();sync();};$('continue').focus();
 }
 function summary(){

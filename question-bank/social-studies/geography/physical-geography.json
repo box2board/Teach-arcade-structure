@@ -1,0 +1,255 @@
+{
+  "schemaVersion": 1,
+  "id": "geography--physical-geography",
+  "title": "Physical Geography",
+  "subject": "Social Studies",
+  "category": "Geography",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What does physical geography study?",
+      "choices": [
+        "Only election districts",
+        "Only language distribution",
+        "Natural features and processes of Earth",
+        "Only international trade prices"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is weathering?",
+      "choices": [
+        "Breakdown of rock at or near Earth's surface",
+        "Transport of sediment from one place to another",
+        "Accumulation of sediment in a new location",
+        "Movement of people into a city"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is erosion?",
+      "choices": [
+        "Breakdown of rock without transport",
+        "Removal and transport of rock or sediment",
+        "Cooling of molten rock underground",
+        "The creation of a political boundary"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is deposition?",
+      "choices": [
+        "The movement of plates without surface effects",
+        "The removal of all sediment from a region",
+        "The breakdown of rock in place only",
+        "The settling or accumulation of transported material"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is a watershed?",
+      "choices": [
+        "An area draining water to a common outlet",
+        "A boundary separating languages",
+        "An area receiving no precipitation",
+        "A national district used only for elections"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is a delta?",
+      "choices": [
+        "A steep cliff formed only by earthquakes",
+        "A mountain peak shaped only by wind",
+        "A sediment-built landform near a river's mouth",
+        "A dry basin with no river connection"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is a plateau?",
+      "choices": [
+        "A narrow sea inlet between steep cliffs",
+        "An elevated area with a relatively level surface",
+        "A low coastal marsh at sea level",
+        "A deep trench on the ocean floor"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "How can moving tectonic plates shape landscapes?",
+      "choices": [
+        "They change only the amount of rainfall",
+        "They determine every cultural boundary",
+        "They prevent earthquakes from occurring",
+        "They can build mountains, produce faults, and generate volcanic activity"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What happens at a convergent plate boundary?",
+      "choices": [
+        "Plates move toward one another",
+        "Plates move apart",
+        "Plates slide past one another only",
+        "No relative movement occurs"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "How can glaciers reshape land?",
+      "choices": [
+        "Ice has no effect on rock beneath it",
+        "Glaciers operate only in tropical lowlands",
+        "Moving ice erodes rock and transports sediment",
+        "Glaciers form all rivers through volcanic activity"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why do rivers often deposit sediment when flow slows?",
+      "choices": [
+        "Slower water always carries larger particles than fast water",
+        "Slower water has less ability to carry some sediment",
+        "Sediment can settle only on mountain summits",
+        "Rivers transport only dissolved gases"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "How does groundwater relate to surface water?",
+      "choices": [
+        "The two systems are always completely disconnected",
+        "Groundwater exists only beneath oceans",
+        "All groundwater remains permanently frozen",
+        "Water can move between underground storage and streams or springs"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What processes connect stages of the water cycle?",
+      "choices": [
+        "Evaporation, condensation, precipitation, and movement through land and water",
+        "Only volcanic eruptions and earthquakes",
+        "Only political changes and urban migration",
+        "Only tides and changes in currency values"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why do floodplains often have fertile soils?",
+      "choices": [
+        "Floodplains never receive sediment",
+        "Every floodplain consists only of bare rock",
+        "Flooding can deposit nutrient-bearing sediment",
+        "Flooding permanently prevents plant growth"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why can landforms change at different rates?",
+      "choices": [
+        "All landforms change at exactly the same speed",
+        "Slow processes and sudden events can both reshape terrain",
+        "Only human construction changes landscapes",
+        "Every mountain forms in a single storm"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A rock cracks as water repeatedly freezes in its openings. Which process is illustrated?",
+      "choices": [
+        "River deposition",
+        "Ocean circulation",
+        "Population migration",
+        "Physical weathering"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A stream carries sand downstream and drops it where the current slows. Which sequence occurs?",
+      "choices": [
+        "Erosion followed by deposition",
+        "Deposition followed by weathering only",
+        "Condensation followed by volcanic eruption",
+        "Mountain building followed by immigration"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A map traces streams flowing into one lake. What area can be identified?",
+      "choices": [
+        "A language region",
+        "An electoral district",
+        "The lake's watershed",
+        "A trade currency zone"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Two plates move apart and new crust forms between them. Which boundary is involved?",
+      "choices": [
+        "Convergent boundary",
+        "Divergent boundary",
+        "Transform boundary",
+        "A boundary without plate motion"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A coastal community studies elevation and nearby river channels before planning development. What physical-geography concern is central?",
+      "choices": [
+        "The national election calendar",
+        "The legal ownership of foreign currencies",
+        "The historical spelling of the town's name",
+        "Exposure to flooding and related land-water conditions"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ],
+  "referenceUrls": [
+    "https://pubs.usgs.gov/gip/dynamic/dynamic.html"
+  ]
+}
+

@@ -13,14 +13,14 @@ async function setup(preset,fail=false){
  };
  const loaded=[],window={},history={replaceState(...args){this.url=args[2];}};
  const engineModule={configureQuestionSet(set){loaded.push(set.title);}};
- const ctx={document:{getElementById:get,createElement:()=>({})},window,location:{href:'https://teacharcade.com/review-lab/snow-day-defenders/'+preset,search:preset},history,URL,URLSearchParams,Promise,setsForGame,prepareSnowQuestions,engineModule,
+ const ctx={document:{getElementById:get,createElement:()=>({})},window,location:{href:'https://teacharcade.com/review-lab/snow-day-defenders/'+preset,search:preset},history,URL,URLSearchParams,Promise,enhanceTopicPicker:()=>({setDisabled(disabled){get('topic-choice').disabled=disabled;}}),setsForGame,prepareSnowQuestions,engineModule,
   loadQuestionSet:async id=>{if(fail){fail=false;throw new Error('Simulated question load failure');}return loadQuestionSet(id);}};
  vm.createContext(ctx);vm.runInContext(source,ctx);
  const settle=async()=>{for(let i=0;i<50&&vm.runInContext('loading',ctx);i++)await new Promise(resolve=>setTimeout(resolve,10));assert.equal(vm.runInContext('loading',ctx),false);};
  await settle();return {get,loaded,window,history,settle};
 }
 const preset=await setup('?set=constitution-basics');
-assert.equal(preset.get('topic-choice').value,'constitution-basics');assert.equal(preset.window.SNOW_QUESTION_SET.questions.length,20);assert.equal(preset.get('start').disabled,false);assert.equal(preset.get('topic-choice').children.length,3);
+assert.equal(preset.get('topic-choice').value,'constitution-basics');assert.equal(preset.window.SNOW_QUESTION_SET.questions.length,20);assert.equal(preset.get('start').disabled,false);assert.equal(preset.get('topic-choice').children.length,253);
 preset.get('topic-choice').value='linear-equations';await preset.get('topic-choice').handlers.change();
 assert.equal(preset.loaded.at(-1),'One-Variable Linear Equations');assert.equal(preset.history.url.searchParams.get('set'),'linear-equations');
 const fallback=await setup('?set=missing-topic');assert.equal(fallback.get('topic-choice').value,'scientific-method');assert.equal(fallback.window.SNOW_QUESTION_SET.questions.length,24);

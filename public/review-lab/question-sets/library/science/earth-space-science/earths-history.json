@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--earth-space-science--earths-history",
+  "title": "Earth's History",
+  "subject": "Science",
+  "category": "Earth & Space Science",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Approximately how old is Earth?",
+      "choices": [
+        "4.6 million years",
+        "460 thousand years",
+        "46 billion years",
+        "4.6 billion years"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What process built the early Earth from smaller solid bodies?",
+      "choices": [
+        "Accretion",
+        "Photosynthesis",
+        "Evapotranspiration",
+        "Chemical digestion"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is planetary differentiation?",
+      "choices": [
+        "Mixing all planetary materials into one uniform layer",
+        "Separation of planetary material into layers according to properties such as density",
+        "Cooling only the surface without any internal redistribution",
+        "Breaking a planet into separate orbiting pieces"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which early organisms contributed greatly to rising atmospheric oxygen through photosynthesis?",
+      "choices": [
+        "Flowering plants",
+        "Dinosaurs",
+        "Cyanobacteria",
+        "Early mammals"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which era follows the Mesozoic and includes the present?",
+      "choices": [
+        "Paleozoic Era",
+        "Archean Eon",
+        "Hadean Eon",
+        "Cenozoic Era"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which major interval is especially associated with the dominance of non-avian dinosaurs?",
+      "choices": [
+        "Mesozoic Era",
+        "Cenozoic Era",
+        "Hadean Eon",
+        "Archean Eon"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is a mass extinction?",
+      "choices": [
+        "The death of one individual organism",
+        "A geologically rapid loss of many species across the world",
+        "A seasonal decrease in one local population",
+        "The movement of all species into one habitat"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why did dense iron-rich material move toward Earth's center during early differentiation?",
+      "choices": [
+        "It rose because greater density always produces buoyancy",
+        "It remained entirely at the surface because of its mass",
+        "It sank relative to less dense material when conditions allowed flow",
+        "It mixed uniformly because gravity cannot separate materials"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why was rising oxygen a major change for early life?",
+      "choices": [
+        "It immediately created all modern animal groups",
+        "It prevented organisms from using energy in cells",
+        "It affected only rocks, with no consequences for life",
+        "It enabled new metabolic possibilities while harming some oxygen-intolerant organisms"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "How did an ozone layer affect opportunities for life on land?",
+      "choices": [
+        "It reduced exposure to harmful ultraviolet radiation",
+        "It supplied all the nutrients needed in soil",
+        "It caused land to form for the first time",
+        "It eliminated the need for water in living cells"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why do matching ancient rocks across separated continents support past continental connection?",
+      "choices": [
+        "Every rock everywhere has the same age",
+        "Their ages and structures can record a shared geological history",
+        "Oceans cannot form between continents",
+        "Rock color alone identifies an identical history"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What evidence strongly supports a major asteroid impact at the end of the Cretaceous?",
+      "choices": [
+        "The regular occurrence of ocean tides",
+        "The presence of modern mountain glaciers alone",
+        "A large dated impact crater and a widespread iridium-rich boundary layer",
+        "The shape of modern rivers unrelated to that boundary"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "How can a mass extinction affect later evolution?",
+      "choices": [
+        "All survivors must retain the same ecological roles forever",
+        "It makes surviving populations lose all inherited variation",
+        "It guarantees immediate return of the extinct species",
+        "Surviving groups may diversify into newly available ecological roles"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why are the earliest parts of Earth's history harder to reconstruct from surface rocks?",
+      "choices": [
+        "Many early rocks were altered, destroyed, or recycled",
+        "Early Earth rocks formed without minerals",
+        "Every early surface remained undisturbed",
+        "All surface rocks record the same interval equally well"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "How have ice ages affected landscapes?",
+      "choices": [
+        "Ice ages prevented all erosion",
+        "Glaciers eroded and deposited material as ice advanced and retreated",
+        "Glaciers made every continent flat",
+        "Ice ages changed rock atoms into air"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Which sequence places these events from earliest to latest?",
+      "choices": [
+        "Dinosaurs appear, Earth forms, humans appear, oxygen rises",
+        "Humans appear, oxygen rises, Earth forms, dinosaurs appear",
+        "Earth forms, atmospheric oxygen rises, dinosaurs appear, humans appear",
+        "Oxygen rises, humans appear, dinosaurs appear, Earth forms"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "An ancient marine fossil is found in rock now high in a mountain range. What history is supported?",
+      "choices": [
+        "The ocean must have covered the mountain at its present height",
+        "The fossil was made by modern snowfall",
+        "The mountain has remained unchanged since Earth's formation",
+        "The material formed in a marine setting and was later uplifted"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Earth existed for billions of years before abundant animal fossils appeared. What does this imply?",
+      "choices": [
+        "Much of Earth's history predates familiar animal life",
+        "Earth and animals formed at exactly the same time",
+        "All early life was a modern mammal",
+        "Rocks can form only after animals appear"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Two regions now far apart share matching rocks from when Pangaea existed. Which explanation fits plate tectonics?",
+      "choices": [
+        "Both regions remained fixed while only seawater moved",
+        "The regions were once closer and later moved apart",
+        "Identical ages alone prove every rock formed in one place",
+        "The rocks formed only after the continents reached their current positions"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A boundary layer records abrupt species losses, followed by new groups in younger layers. What pattern does this support?",
+      "choices": [
+        "No biological change through time",
+        "Simultaneous origin of every fossil species",
+        "An extinction event followed by diversification",
+        "A complete absence of environmental change"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ]
+}

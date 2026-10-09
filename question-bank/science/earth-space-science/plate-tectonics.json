@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--earth-space-science--plate-tectonics",
+  "title": "Plate Tectonics",
+  "subject": "Science",
+  "category": "Earth & Space Science",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which layer includes Earth's crust and the rigid uppermost mantle?",
+      "choices": [
+        "Lithosphere",
+        "Outer core",
+        "Asthenosphere",
+        "Inner core"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "At which boundary do plates move apart?",
+      "choices": [
+        "Transform",
+        "Subduction",
+        "Continental collision",
+        "Divergent"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is Pangaea?",
+      "choices": [
+        "An ancient ocean current",
+        "A former supercontinent",
+        "A type of volcanic rock",
+        "A layer of Earth's core"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "At a transform boundary, plates mainly move in which way?",
+      "choices": [
+        "Toward each other",
+        "Past each other",
+        "One consistently beneath the other",
+        "Away from each other"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is subduction?",
+      "choices": [
+        "Magma cooling at the surface",
+        "Sediment settling in a lake",
+        "One plate descending beneath another",
+        "Continents moving without their plates"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Where does new oceanic crust commonly form?",
+      "choices": [
+        "Mid-ocean ridges",
+        "Continental collision zones",
+        "Deep ocean trenches",
+        "Transform faults"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "How fast do most tectonic plates move?",
+      "choices": [
+        "Several kilometers each day",
+        "Several meters each hour",
+        "Hundreds of kilometers each year",
+        "A few centimeters each year"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why are many earthquakes concentrated along plate boundaries?",
+      "choices": [
+        "Plate movement builds stress that can be released suddenly",
+        "All boundaries contain active volcanoes",
+        "The crust is equally stressed everywhere",
+        "Ocean tides stop plate movement"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What commonly forms when two continental plates collide?",
+      "choices": [
+        "Chains of deep-sea trenches",
+        "New ocean basins immediately",
+        "Large mountain ranges",
+        "Broad areas of young oceanic crust"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why can oceanic lithosphere sink beneath another plate?",
+      "choices": [
+        "It contains no solid rock",
+        "It always has a thicker crust than continents",
+        "It is pulled upward by the Moon",
+        "It can be denser than the material beneath it"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What does the age pattern of ocean-floor rocks show?",
+      "choices": [
+        "The oldest rocks occur at every ridge",
+        "Rocks generally get older farther from a mid-ocean ridge",
+        "All ocean-floor rocks have the same age",
+        "Ocean-floor rocks become younger near every coastline"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "How do matching fossils on widely separated continents support continental drift?",
+      "choices": [
+        "They prove all animals could cross any ocean",
+        "They suggest those land areas were once connected",
+        "They establish the exact speed of every plate",
+        "They show continents never changed position"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Which description of the mantle is most accurate?",
+      "choices": [
+        "A layer made entirely of metal",
+        "A global ocean of liquid magma",
+        "A hollow region beneath the crust",
+        "Mostly solid rock that can deform and flow slowly"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why can volcanoes form above a subduction zone?",
+      "choices": [
+        "Water released from the sinking plate helps mantle rock melt",
+        "All sinking rock instantly becomes lava",
+        "Earthquakes convert all nearby sediment into magma",
+        "The ocean boils through the continental crust"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "How do symmetrical magnetic patterns beside a ridge support seafloor spreading?",
+      "choices": [
+        "They show ocean currents reverse daily",
+        "They show magnetic minerals exist only on continents",
+        "New crust records magnetic reversals as it moves away on both sides",
+        "They show the ridge formed before Earth had a magnetic field"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A boundary has shallow earthquakes and plates sliding sideways, but little volcanism. Which type best fits?",
+      "choices": [
+        "Transform",
+        "Oceanic subduction",
+        "Continental collision",
+        "Oceanic divergent"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Two oceanic plates converge, and one subducts. Which feature is likely nearby?",
+      "choices": [
+        "A continental rift valley",
+        "A volcanic island arc",
+        "A mid-ocean ridge",
+        "An extensive flat sedimentary plain"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A GPS station moves 3 centimeters west each year. What does this measurement support?",
+      "choices": [
+        "The station's continent is motionless",
+        "Earth's rotation is slowing by 3 centimeters yearly",
+        "The plate beneath the station is moving",
+        "The mantle beneath the station is entirely liquid"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Continental crust begins stretching and breaking along a divergent boundary. Which feature may develop?",
+      "choices": [
+        "A deep subduction trench",
+        "A folded collision mountain belt",
+        "A transform boundary with no separation",
+        "A rift valley"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which explanation best connects plate movement with Earth's internal energy?",
+      "choices": [
+        "Surface winds supply the main force for plate motion",
+        "Solar heating makes whole plates slide toward the equator",
+        "Internal heat supports mantle motion, while gravity helps drive processes such as slab pull",
+        "Tidal forces alone account for all long-term plate motion"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ]
+}

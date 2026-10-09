@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--life-science-biology--dna-rna-and-protein-synthesis",
+  "title": "DNA RNA and Protein Synthesis",
+  "subject": "Science",
+  "category": "Life Science & Biology",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which bases normally pair in DNA?",
+      "choices": [
+        "A with C, and T with G",
+        "A with G, and C with T",
+        "A with T, and C with G",
+        "A with U, and T with C"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which sugar occurs in RNA?",
+      "choices": [
+        "Ribose",
+        "Deoxyribose",
+        "Glucose",
+        "Sucrose"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which base usually replaces thymine in RNA?",
+      "choices": [
+        "Adenine",
+        "Guanine",
+        "Cytosine",
+        "Uracil"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is transcription?",
+      "choices": [
+        "Joining amino acids at a ribosome",
+        "Making RNA from a DNA template",
+        "Copying a whole cell",
+        "Separating proteins by size"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is translation in molecular biology?",
+      "choices": [
+        "Copying DNA before division",
+        "Using an RNA message to build a polypeptide",
+        "Moving chromosomes between cells",
+        "Making RNA from DNA"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is an mRNA codon?",
+      "choices": [
+        "An entire chromosome",
+        "A DNA-backbone sugar",
+        "An enzyme that breaks proteins",
+        "A three-base sequence"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which RNA carries amino acids during translation?",
+      "choices": [
+        "tRNA",
+        "mRNA",
+        "A DNA template",
+        "A chromosome"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "How does base pairing support DNA replication?",
+      "choices": [
+        "Both original strands must be discarded",
+        "Every copy requires a different sequence",
+        "Each strand guides construction of a matching strand",
+        "Base pairing directly produces a protein"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How does mRNA connect nuclear genes to protein synthesis?",
+      "choices": [
+        "It moves whole chromosomes through the cell membrane",
+        "It supplies all amino acids from the nucleus",
+        "It replaces ribosomes",
+        "It carries sequence information to ribosomes"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What do ribosomes do during translation?",
+      "choices": [
+        "Build chromosomes from amino acids",
+        "Help read mRNA and join amino acids",
+        "Carry out all nuclear DNA replication",
+        "Store every gene"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why can a DNA substitution alter a protein?",
+      "choices": [
+        "It must double chromosome number",
+        "It always stops all RNA production",
+        "It may change a codon and its encoded amino acid",
+        "It changes every gene"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why can some substitutions leave the amino acid sequence unchanged?",
+      "choices": [
+        "Different codons can encode the same amino acid",
+        "Every base specifies the same amino acid",
+        "Ribosomes ignore every changed codon",
+        "Proteins consist of DNA bases"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What does a stop codon signal?",
+      "choices": [
+        "The end of translation",
+        "Removal of a chromosome",
+        "The start of DNA replication",
+        "Delivery of an additional amino acid"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why can cells with essentially the same DNA produce different proteins?",
+      "choices": [
+        "Every cell has unrelated chromosomes",
+        "Protein identity depends only on cell size",
+        "They express different sets of genes",
+        "Every gene is equally active in all cells"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Which statement describes a basic gene-expression pathway?",
+      "choices": [
+        "Proteins are always copied directly into DNA",
+        "DNA is transcribed into RNA, which can be translated into protein",
+        "RNA forms only after translation ends",
+        "DNA bases become amino acids"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "One DNA strand reads ACGT. Which bases pair directly across from it?",
+      "choices": [
+        "ACGT",
+        "UGCA",
+        "CAGT",
+        "TGCA"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A supplied key says GCU and GCC both encode alanine. What follows from changing GCU to GCC?",
+      "choices": [
+        "A different amino acid must be encoded",
+        "The RNA becomes DNA",
+        "The encoded amino acid remains alanine",
+        "Translation must stop"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Why can inserting one base change many later codons?",
+      "choices": [
+        "It deletes every original base",
+        "Codons begin containing one base each",
+        "It doubles chromosome number",
+        "It can shift the grouping of bases into triplets"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A gene is present, but no mRNA from it is detected under tested conditions. What is plausible?",
+      "choices": [
+        "It contains no DNA bases",
+        "It is not being transcribed under those conditions",
+        "Translation has copied the gene",
+        "Every protein came from that gene"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A substance prevents tRNA from delivering amino acids. What is directly disrupted?",
+      "choices": [
+        "Translation",
+        "DNA replication",
+        "Chromosome assortment",
+        "RNA transcription from DNA"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}

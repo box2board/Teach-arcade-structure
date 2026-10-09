@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--geometry--area-and-perimeter",
+  "title": "Area and Perimeter",
+  "subject": "Math",
+  "category": "Geometry",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What does perimeter measure?",
+      "choices": [
+        "The space inside a flat figure",
+        "The space inside a solid",
+        "Distance around a figure's boundary",
+        "The height of a figure only"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What does area measure?",
+      "choices": [
+        "The amount of two-dimensional surface covered",
+        "The length around a boundary",
+        "The number of vertices",
+        "The depth of a solid"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is the area of a rectangle 7 cm long and 4 cm wide?",
+      "choices": [
+        "22 cm²",
+        "28 cm²",
+        "11 cm²",
+        "14 cm²"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is the perimeter of a rectangle 7 cm long and 4 cm wide?",
+      "choices": [
+        "28 cm",
+        "11 cm",
+        "14 cm",
+        "22 cm"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is the area of a triangle with base 10 m and perpendicular height 6 m?",
+      "choices": [
+        "30 m²",
+        "60 m²",
+        "16 m²",
+        "32 m²"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is the area formula for a circle of radius r?",
+      "choices": [
+        "2πr",
+        "πr",
+        "πr²",
+        "2r²"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is the circumference formula for a circle of radius r?",
+      "choices": [
+        "πr²",
+        "πr",
+        "2πr",
+        "2r"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why must a triangle's height be perpendicular to its chosen base in the area formula?",
+      "choices": [
+        "The formula uses the perpendicular distance from the base to the opposite vertex",
+        "Any side length can always replace the height",
+        "Height means the longest side",
+        "The base must always be horizontal on the page"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "A parallelogram has base 8 cm and perpendicular height 5 cm. What is its area?",
+      "choices": [
+        "20 cm²",
+        "26 cm²",
+        "13 cm²",
+        "40 cm²"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "A trapezoid has parallel bases 6 and 10 cm and height 4 cm. What is its area?",
+      "choices": [
+        "64 cm²",
+        "32 cm²",
+        "24 cm²",
+        "40 cm²"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "A circle has radius 3 cm. What is its exact area?",
+      "choices": [
+        "9π cm²",
+        "6π cm²",
+        "3π cm²",
+        "18π cm²"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "A circle's diameter is 10 cm. What is its exact circumference?",
+      "choices": [
+        "20π cm",
+        "10π cm",
+        "25π cm",
+        "100π cm"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "A square's side length doubles. How does its area change?",
+      "choices": [
+        "It doubles",
+        "It stays unchanged",
+        "It becomes eight times as large",
+        "It becomes four times as large"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Can two rectangles have the same perimeter but different areas?",
+      "choices": [
+        "No, perimeter always determines area uniquely",
+        "Only if one rectangle has zero width",
+        "Yes, different side-length combinations can do this",
+        "Only if both rectangles are squares"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Which units are appropriate for area?",
+      "choices": [
+        "Square meters",
+        "Meters",
+        "Cubic meters",
+        "Meters per second"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A 10 m by 8 m floor contains a 3 m by 2 m unpainted rectangle. What area is painted?",
+      "choices": [
+        "80 m²",
+        "86 m²",
+        "74 m²",
+        "68 m²"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A garden is 12 m by 5 m. Fencing costs $4 per meter for the entire perimeter. What is the fencing cost?",
+      "choices": [
+        "$240",
+        "$136",
+        "$68",
+        "$34"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A circle's radius triples. How does its circumference change?",
+      "choices": [
+        "It becomes nine times as large",
+        "It doubles",
+        "It stays unchanged",
+        "It triples"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Two rectangles are 3 by 7 and 4 by 6 units. Which statement is true?",
+      "choices": [
+        "They have equal areas but different perimeters",
+        "Both area and perimeter are equal",
+        "Neither area nor perimeter is equal",
+        "They have equal perimeters but different areas"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A student uses a triangle's slanted side of 9 cm as its height, though the perpendicular height is 6 cm and base is 8 cm. What is the correct area?",
+      "choices": [
+        "36 cm²",
+        "24 cm²",
+        "48 cm²",
+        "72 cm²"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}

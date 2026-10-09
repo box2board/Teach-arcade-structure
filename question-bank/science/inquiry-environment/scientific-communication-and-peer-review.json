@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--inquiry-environment--scientific-communication-and-peer-review",
+  "title": "Scientific Communication and Peer Review",
+  "subject": "Science",
+  "category": "Scientific Inquiry & Environmental Science",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is the purpose of a scientific report's abstract?",
+      "choices": [
+        "List every raw data value",
+        "Replace the complete methods section",
+        "Summarize the question, approach, main findings, and conclusion",
+        "Present only the author's biography"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which section usually explains how data were collected?",
+      "choices": [
+        "References",
+        "Methods",
+        "Title",
+        "Acknowledgments"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which section primarily presents observations and measurements?",
+      "choices": [
+        "Discussion",
+        "References",
+        "Acknowledgments",
+        "Results"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which section commonly interprets findings and their limitations?",
+      "choices": [
+        "Discussion",
+        "Abstract only",
+        "Methods only",
+        "Results without interpretation"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is the purpose of citing a source?",
+      "choices": [
+        "Credit prior work and help readers locate supporting information",
+        "Guarantee the cited claim is correct",
+        "Replace all original evidence",
+        "Hide the origin of an idea"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is a figure caption?",
+      "choices": [
+        "A list of all authors' qualifications",
+        "A replacement for the graph's data",
+        "Text explaining a figure's content, symbols, and relevant conditions",
+        "A statement that figures need no units"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is plagiarism?",
+      "choices": [
+        "Reporting results that challenge an earlier explanation",
+        "Using another person's work or ideas without appropriate acknowledgment",
+        "Repeating a published procedure while crediting its source",
+        "Using a standard term such as mass or velocity"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why should methods describe sampling and measurement procedures?",
+      "choices": [
+        "Methods should guarantee that all conclusions are correct",
+        "Readers do not need to understand comparisons",
+        "Procedures are relevant only if results agree",
+        "Readers need to evaluate how the evidence was obtained"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why should scientific reports distinguish results from interpretations?",
+      "choices": [
+        "Only interpretations can be numerical",
+        "Measurements and explanations play different roles in assessing a claim",
+        "Results are always personal opinions",
+        "Both sections must contain identical sentences"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why are units and labeled axes necessary in a scientific figure?",
+      "choices": [
+        "They help readers interpret the represented quantities",
+        "They make the sample automatically unbiased",
+        "They guarantee a causal relationship",
+        "They replace the need to describe data collection"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why does peer review not guarantee that a paper contains no errors?",
+      "choices": [
+        "Reviewers never examine methods",
+        "Published data cannot be questioned",
+        "Review can identify issues but is limited by available evidence and scrutiny",
+        "Every paper is tested under every possible condition"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why is sharing appropriate data and analysis details useful?",
+      "choices": [
+        "It guarantees every reanalysis reaches the same result",
+        "It eliminates all privacy and consent obligations",
+        "It makes interpretation unnecessary",
+        "It allows others to inspect and build on the findings"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why should limitations be included in a report?",
+      "choices": [
+        "They clarify the conditions and strength of the conclusions",
+        "They prove the entire study has no value",
+        "They belong only in unpublished work",
+        "They permit researchers to invent missing data"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why must a paraphrase still acknowledge its source?",
+      "choices": [
+        "Only exact quotations need credit",
+        "Paraphrases automatically become experimental data",
+        "Citations are needed only for images",
+        "Changing wording does not remove the origin of the borrowed idea"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "How should a correction to a published result be communicated?",
+      "choices": [
+        "Replace data silently without explanation",
+        "Clearly identify the change and its effect on the conclusions",
+        "Delete all mention of the original methods",
+        "Report only that the title changed"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A graph shows temperature but its vertical axis is labeled only 'Value.' What improves communication?",
+      "choices": [
+        "Remove the numerical scale without adding units",
+        "Replace measured values with unlabeled category names",
+        "Add the quantity and temperature unit",
+        "Use only an author's name as the axis label"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A report says an experiment was repeated but gives no trial count. What information should be added?",
+      "choices": [
+        "Only the highest recorded result",
+        "Only the overall average without the trial count",
+        "Only the word repeated without numerical details",
+        "The number of trials and relevant procedure details"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A reviewer identifies a possible uncontrolled variable. What is a constructive response?",
+      "choices": [
+        "Reject the concern because a reviewer disagreed",
+        "Hide the relevant methods",
+        "Evaluate the concern and clarify, limit, or revise the study as needed",
+        "Assume peer review makes new testing unnecessary"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A presentation claims a result applies to all students, but only one class was studied. What wording is more defensible?",
+      "choices": [
+        "Describe the studied class and state limits on generalization",
+        "Keep the universal claim without qualification",
+        "Claim that every school was sampled",
+        "Omit how participants were selected"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A student uses another researcher's graph in a presentation. What is appropriate?",
+      "choices": [
+        "Remove the author's name and claim original measurements",
+        "Provide attribution and follow any applicable permission or license requirements",
+        "Change the colors so attribution is unnecessary",
+        "Treat every online graph as unrestricted original work"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}

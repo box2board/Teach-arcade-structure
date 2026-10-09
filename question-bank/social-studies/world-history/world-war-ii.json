@@ -1,0 +1,254 @@
+{
+  "schemaVersion": 1,
+  "id": "world-history--world-war-ii",
+  "title": "World War II",
+  "subject": "Social Studies",
+  "category": "World History",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which invasion led Britain and France to declare war on Germany in 1939?",
+      "choices": [
+        "Invasion of Poland",
+        "Invasion of the Soviet Union",
+        "Invasion of Norway",
+        "Invasion of Greece"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which three countries were the principal Axis powers?",
+      "choices": [
+        "Britain, France, and Poland",
+        "United States, Canada, and Australia",
+        "Germany, Italy, and Japan",
+        "Soviet Union, China, and Brazil"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which battle involved German air attacks against Britain in 1940?",
+      "choices": [
+        "Battle of Midway",
+        "Battle of Britain",
+        "Battle of Kursk",
+        "Battle of El Alamein"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What was Operation Barbarossa?",
+      "choices": [
+        "The Allied landing in Normandy",
+        "Japan's attack on Pearl Harbor",
+        "The British evacuation from Dunkirk",
+        "Germany's invasion of the Soviet Union"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Where did Allied forces land on D-Day in June 1944?",
+      "choices": [
+        "Normandy",
+        "Sicily",
+        "Crete",
+        "Norway"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which battle was a major turning point against Japan in 1942?",
+      "choices": [
+        "Verdun",
+        "Waterloo",
+        "Midway",
+        "Gallipoli"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What was the Holocaust?",
+      "choices": [
+        "The German occupation of France alone",
+        "The Nazi-led persecution and murder of six million Jews",
+        "The Allied bombing of military targets alone",
+        "The Soviet invasion of Finland alone"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "What did appeasement seek to accomplish in the late 1930s?",
+      "choices": [
+        "Establish a joint Allied invasion of Germany",
+        "Immediately overthrow every European dictatorship",
+        "Replace the League of Nations with NATO",
+        "Avoid war by making concessions to aggressor states"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How did Germany's invasion of the Soviet Union change the war?",
+      "choices": [
+        "It opened a vast eastern front",
+        "It caused Britain to join the Axis",
+        "It ended fighting in Eastern Europe",
+        "It made Germany and the Soviet Union permanent allies"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why was the Battle of Stalingrad significant?",
+      "choices": [
+        "It resulted in the immediate surrender of Japan",
+        "It prevented Allied landings in North Africa",
+        "It ended with a major German defeat on the eastern front",
+        "It ended German occupation of France"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why did the Allies seek to secure Atlantic shipping routes?",
+      "choices": [
+        "Only civilian tourism depended on Atlantic shipping",
+        "Ships carried troops and supplies needed for the war",
+        "Germany had no ability to attack merchant ships",
+        "Atlantic routes connected only neutral countries"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What was a major purpose of Japan's expansion in Asia?",
+      "choices": [
+        "To restore European colonial rule throughout Asia",
+        "To create equal voting rights in every occupied territory",
+        "To withdraw from all mainland conflicts",
+        "To gain territory, resources, and regional power"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "How did war production affect civilians in many countries?",
+      "choices": [
+        "Governments mobilized labor and rationed scarce goods",
+        "Military needs eliminated all civilian work",
+        "Rationing guaranteed unlimited supplies to every household",
+        "Factories stopped producing military equipment"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why did the Normandy invasion matter strategically?",
+      "choices": [
+        "It ended all fighting on the eastern front immediately",
+        "It secured Japan's surrender before Germany's",
+        "It opened a major Allied front in Western Europe",
+        "It returned North Africa to Axis control"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What institution was established in 1945 to promote international cooperation?",
+      "choices": [
+        "European Union",
+        "United Nations",
+        "Warsaw Pact",
+        "North Atlantic Treaty Organization"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Which sequence places these World War II events in chronological order?",
+      "choices": [
+        "Normandy landings, invasion of Poland, invasion of Soviet Union",
+        "Invasion of Soviet Union, Normandy landings, invasion of Poland",
+        "Invasion of Poland, Normandy landings, invasion of Soviet Union",
+        "Invasion of Poland, invasion of Soviet Union, Normandy landings"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Which comparison of the European and Pacific wars is accurate?",
+      "choices": [
+        "Both involved military campaigns and extensive civilian suffering",
+        "Only Europe experienced occupation",
+        "Only the Pacific required industrial mobilization",
+        "Neither theater involved naval warfare"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Which evidence best challenges the claim that the war affected only soldiers?",
+      "choices": [
+        "Countries signed military alliances",
+        "Armies developed battlefield tactics",
+        "Bombing, genocide, forced labor, and displacement harmed civilians",
+        "Commanders planned offensives"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Why is Germany's surrender in May 1945 not the end of World War II worldwide?",
+      "choices": [
+        "Germany had not actually surrendered",
+        "The war against Japan continued",
+        "The war in Europe began in June 1945",
+        "Britain continued fighting against France"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which conclusion about the war's consequences is well supported?",
+      "choices": [
+        "It immediately ended every colonial empire",
+        "It removed every source of international conflict",
+        "It restored the prewar political map without change",
+        "It weakened many European powers and strengthened U.S. and Soviet influence"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ],
+  "referenceUrls": [
+    "https://encyclopedia.ushmm.org/content/en/article/world-war-ii-in-depth"
+  ]
+}

@@ -1,0 +1,255 @@
+{
+  "schemaVersion": 1,
+  "id": "economics--investing",
+  "title": "Investing",
+  "subject": "Social Studies",
+  "category": "Economics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "referenceUrls": [
+    "https://www.investor.gov/introduction-investing/investing-basics/investment-products/stocks",
+    "https://www.investor.gov/introduction-investing/investing-basics/investment-products/bonds-or-fixed-income-products/bonds"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "What does a share of stock generally represent?",
+      "choices": [
+        "A loan made by the shareholder to the government",
+        "An ownership interest in a company",
+        "A guaranteed deposit at a commercial bank",
+        "A fixed insurance payment"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What does an investor generally do when purchasing a newly issued bond?",
+      "choices": [
+        "Lend money to the issuer",
+        "Buy voting control of every company",
+        "Purchase a checking account",
+        "Pay an insurance deductible"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is a dividend?",
+      "choices": [
+        "A fee charged for opening a deposit account",
+        "An automatic refund of a stock's purchase price",
+        "A required loan payment to a bank",
+        "A company's distribution of money or other value to shareholders"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is diversification?",
+      "choices": [
+        "Keeping all funds in one company",
+        "Borrowing to buy the most volatile asset",
+        "Spreading investments among different holdings",
+        "Selling every investment after one price change"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is an investment portfolio?",
+      "choices": [
+        "The collection of investments a person or organization holds",
+        "A guarantee against every market loss",
+        "A government list of approved purchase prices",
+        "A loan used only for buying insurance"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is a capital gain?",
+      "choices": [
+        "A charge for maintaining an investment account",
+        "A profit from selling an asset for more than its purchase cost",
+        "A required payment on a mortgage",
+        "A refund of previously paid insurance premiums"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What does an index fund generally seek to do?",
+      "choices": [
+        "Guarantee a fixed return in every year",
+        "Hold only the manager's favorite single stock",
+        "Track the performance of a specified market index",
+        "Avoid holding any financial assets"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why does diversification help manage investment risk?",
+      "choices": [
+        "It prevents every investment from losing value",
+        "It guarantees that all holdings rise together",
+        "It removes the need to consider fees",
+        "It reduces dependence on the performance of a single holding"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How are expected return and risk generally related?",
+      "choices": [
+        "Higher expected returns usually come with greater uncertainty or risk",
+        "Higher expected returns always mean guaranteed profits",
+        "The lowest-risk assets always earn the highest returns",
+        "Risk disappears when an asset becomes popular"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why does an investor's time horizon matter?",
+      "choices": [
+        "It guarantees that market prices rise before a deadline",
+        "It affects how much time is available to handle market fluctuations",
+        "It determines whether the investor must buy a single company",
+        "It makes all investment fees tax-free"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why can investment fees have a large long-term effect?",
+      "choices": [
+        "Fees automatically improve an investment's performance",
+        "Fees are charged only when an investor has no assets",
+        "Fees remove all risk of market losses",
+        "They reduce funds available to remain invested and grow"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why is a company's past stock performance not a guarantee of future returns?",
+      "choices": [
+        "Past prices are never recorded accurately",
+        "Stocks cannot change value after purchase",
+        "Business conditions and investor expectations can change",
+        "Every company is required to pay the same dividend"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What risk does a bondholder face if an issuer cannot meet its payment obligations?",
+      "choices": [
+        "Default risk",
+        "Currency printing risk",
+        "Sales-tax risk",
+        "Deposit-withdrawal risk"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "How does reinvesting earnings affect potential long-term growth?",
+      "choices": [
+        "It guarantees that an investment never loses value",
+        "It allows earnings to contribute to future earnings",
+        "It removes the original principal from the account",
+        "It prevents investors from owning multiple assets"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why should an investor be cautious about a promise of high returns with no risk?",
+      "choices": [
+        "All legitimate investments must have identical prices",
+        "High returns are legally required on every investment",
+        "A guarantee of high returns proves the seller is licensed",
+        "Such a promise may hide risk or indicate fraud"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A stock bought for $40 is sold for $50, with no fees. What is the capital gain per share?",
+      "choices": [
+        "$5",
+        "$40",
+        "$10",
+        "$90"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Which portfolio is less concentrated in one company?",
+      "choices": [
+        "Holdings spread across many unrelated companies",
+        "Every dollar invested in one employer's stock",
+        "Several purchases of the same company's stock",
+        "One company's stock purchased through two brokers"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A person must pay tuition in two weeks using their saved money. What concern is especially relevant before putting it in a volatile stock?",
+      "choices": [
+        "The company's past return determines the sale price in two weeks",
+        "Its market value could fall before the money is needed",
+        "A longer investment horizon removes the need to pay tuition on time",
+        "Owning a share provides the same withdrawal guarantee as an insured deposit"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "An investment rises from $100 to $110, with no additional deposits, fees, or distributions. What is the percentage return?",
+      "choices": [
+        "1%",
+        "5%",
+        "10%",
+        "110%"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which action best supports evaluating an unfamiliar investment offer?",
+      "choices": [
+        "Rely solely on testimonials in the advertisement",
+        "Assume a celebrity endorsement removes the risk",
+        "Send money before reading any disclosures",
+        "Examine credible disclosures, costs, risks, and the seller's credentials"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

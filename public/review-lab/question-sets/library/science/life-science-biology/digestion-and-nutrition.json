@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--life-science-biology--digestion-and-nutrition",
+  "title": "Digestion and Nutrition",
+  "subject": "Science",
+  "category": "Life Science & Biology",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which digestive structure moves swallowed food toward the stomach?",
+      "choices": [
+        "Esophagus",
+        "Trachea",
+        "Large intestine",
+        "Pancreas"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Where does most nutrient absorption occur in humans?",
+      "choices": [
+        "Esophagus",
+        "Small intestine",
+        "Stomach",
+        "Large intestine"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which organ produces bile?",
+      "choices": [
+        "Gallbladder",
+        "Stomach",
+        "Liver",
+        "Appendix"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which nutrient provides amino acids used to build body proteins?",
+      "choices": [
+        "Starch",
+        "Dietary fiber",
+        "Triglyceride",
+        "Protein"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which action is mechanical digestion?",
+      "choices": [
+        "Chewing food into smaller pieces",
+        "Breaking starch with amylase",
+        "Breaking protein with pepsin",
+        "Breaking fat with lipase"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is peristalsis?",
+      "choices": [
+        "Diffusion of nutrients into capillaries",
+        "Waves of muscle contraction along the digestive tract",
+        "Enzyme release into the mouth",
+        "Filtration of blood by the kidneys"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What are intestinal villi?",
+      "choices": [
+        "Valves that block blood flow",
+        "Glands that store bile",
+        "Small projections that increase absorption area",
+        "Muscles that close the airway"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why does chewing help digestive enzymes work?",
+      "choices": [
+        "It converts every nutrient into glucose",
+        "It neutralizes all stomach acid",
+        "It absorbs nutrients into tooth enamel",
+        "It exposes more food surface to enzymes"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How does bile assist fat digestion?",
+      "choices": [
+        "It disperses fat into smaller droplets",
+        "It chemically breaks fat into amino acids",
+        "It absorbs fat directly into the stomach wall",
+        "It raises the size of fat droplets"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why can humans not digest cellulose with their own digestive enzymes?",
+      "choices": [
+        "Cellulose is broken down completely in the stomach",
+        "They lack enzymes that break its relevant bonds",
+        "Their enzymes act only on liquid foods",
+        "Cellulose is absorbed intact through the villi"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How does the stomach lining help protect stomach tissue?",
+      "choices": [
+        "It absorbs all acid before any digestion occurs",
+        "It keeps stomach contents permanently neutral",
+        "A mucus barrier reduces exposure to acid and enzymes",
+        "It makes stomach proteins resistant to every enzyme"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What happens during chemical digestion of starch?",
+      "choices": [
+        "Large carbohydrate molecules become fatty acids",
+        "Large carbohydrate molecules become amino acids",
+        "Starch mixes with water without any molecular change",
+        "Large carbohydrate molecules become smaller sugars"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why must vitamins and minerals be part of nutrition even though they supply no food energy?",
+      "choices": [
+        "They support essential body processes",
+        "They provide the same fuel energy as fats",
+        "They are needed only when no protein is available",
+        "They act mainly as bulk that cannot be absorbed"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "How are digestion and absorption different?",
+      "choices": [
+        "Digestion stores food; absorption breaks its bonds",
+        "Digestion breaks food down; absorption moves nutrients into the body",
+        "Digestion occurs only in the mouth; absorption only in the stomach",
+        "Digestion uses blood vessels; absorption uses teeth"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What is a major role of the human large intestine?",
+      "choices": [
+        "Producing bile for the small intestine",
+        "Performing most protein digestion",
+        "Absorbing remaining water and forming feces",
+        "Absorbing most amino acids from food"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A damaged small intestine has fewer villi. What is a likely consequence?",
+      "choices": [
+        "More nutrient absorption because food moves faster",
+        "Complete loss of stomach acid production",
+        "Increased chewing because teeth become shorter",
+        "Reduced nutrient absorption because surface area is lower"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A meal contains 10 g of carbohydrate and 5 g of protein. Using 4 food Calories per gram for each, how much energy do these nutrients supply?",
+      "choices": [
+        "60 Calories",
+        "15 Calories",
+        "40 Calories",
+        "80 Calories"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Food moves from the stomach into which structure next?",
+      "choices": [
+        "Esophagus",
+        "Small intestine",
+        "Large intestine",
+        "Rectum"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Two samples contain the same mass of food. One is crushed and one is intact. With identical enzyme conditions, why may the crushed sample digest faster?",
+      "choices": [
+        "It necessarily contains more chemical energy",
+        "Crushing changes all fats into proteins",
+        "More surface is available for enzyme contact",
+        "The crushed sample needs no water"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "An enzyme breaks lactose into smaller sugars. Which change directly shows chemical digestion?",
+      "choices": [
+        "The milk is stirred until evenly mixed",
+        "The milk passes through a fine filter",
+        "The milk is separated into smaller droplets",
+        "Formation of different sugar molecules"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

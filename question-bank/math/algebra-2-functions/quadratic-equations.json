@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--algebra-2-functions--quadratic-equations",
+  "title": "Quadratic Equations",
+  "subject": "Math",
+  "category": "Algebra II & Functions",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What makes an equation quadratic in one variable?",
+      "choices": [
+        "Its highest variable power is 2 after simplification",
+        "It contains exactly two terms",
+        "It always has two different real solutions",
+        "It has a positive constant term"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What are the real solutions of x² = 25?",
+      "choices": [
+        "x = 5 only",
+        "x = −5 only",
+        "x = 25",
+        "x = −5 or x = 5"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which property is used to solve (x − 2)(x + 3) = 0?",
+      "choices": [
+        "Commutative property of addition only",
+        "Zero-product property",
+        "Distributive property of division",
+        "Triangle inequality"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What are the solutions of x² − 4x = 0?",
+      "choices": [
+        "x = 4 only",
+        "x = 0 or x = 4",
+        "x = 0 only",
+        "x = −4 or x = 4"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "For ax² + bx + c = 0, what is the discriminant?",
+      "choices": [
+        "b − 4ac",
+        "a² − 4bc",
+        "b² + 4ac",
+        "b² − 4ac"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What does a negative discriminant indicate for a real-coefficient quadratic?",
+      "choices": [
+        "No real solutions",
+        "Two distinct real solutions",
+        "Exactly one real solution",
+        "Infinitely many real solutions"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What are the solutions of x² − 9 = 0?",
+      "choices": [
+        "x = 9 only",
+        "x = −9 or x = 9",
+        "x = −3 or x = 3",
+        "x = 3 only"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why can dividing x² = 4x by x lose a solution?",
+      "choices": [
+        "It always changes every nonzero solution",
+        "Division by x always makes the equation quadratic",
+        "It introduces a new solution x = −4",
+        "It excludes the possible solution x = 0"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What are the solutions of (x − 1)(x − 5) = 0?",
+      "choices": [
+        "x = −1 or x = −5",
+        "x = 0 or x = 5",
+        "x = 1 or x = 5",
+        "x = 1 only"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What does a zero discriminant indicate?",
+      "choices": [
+        "One distinct real solution, a repeated root",
+        "No real solutions",
+        "Two distinct real solutions",
+        "Infinitely many real solutions"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What are the real solutions of x² + 1 = 0?",
+      "choices": [
+        "x = 1 only",
+        "There are no real solutions",
+        "x = −1 only",
+        "x = −1 or x = 1"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Which formula solves ax² + bx + c = 0 when a ≠ 0?",
+      "choices": [
+        "x = (b ± √(b² − 4ac))/(2a)",
+        "x = (−b ± √(b² + 4ac))/(2a)",
+        "x = (−b ± √(b² − 4ac))/a",
+        "x = (−b ± √(b² − 4ac))/(2a)"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What are the solutions of x² + 5x + 6 = 0?",
+      "choices": [
+        "x = 2 or x = 3",
+        "x = −2 or x = −3",
+        "x = −1 or x = −6",
+        "x = −2 only"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why should the original equation be set equal to zero before applying the zero-product property?",
+      "choices": [
+        "Every quadratic has zero as its solution",
+        "The constant must be removed permanently",
+        "The property applies when a product equals zero",
+        "A product equal to any number makes each factor zero"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What are the solutions of (x − 2)² = 9?",
+      "choices": [
+        "x = −1 or x = 5",
+        "x = 5 only",
+        "x = −5 or x = 5",
+        "x = 1 or x = 5"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A rectangle has width x and length x + 3, with area 40. What is its positive width?",
+      "choices": [
+        "5",
+        "−8",
+        "8",
+        "10"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A ball's height is h = −t² + 4t + 5. At what positive time does the model reach h = 0?",
+      "choices": [
+        "1",
+        "4",
+        "5",
+        "−1"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A student solves x² = 16 and reports only x = 4. What is missing?",
+      "choices": [
+        "The solution x = 16",
+        "The solution x = −4",
+        "The solution x = 0",
+        "The solution x = −16"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "For x² − 6x + 9 = 0, what is the distinct real solution?",
+      "choices": [
+        "x = −3",
+        "x = 9",
+        "x = 6",
+        "x = 3"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A quadratic has discriminant 49. How many distinct real solutions does it have?",
+      "choices": [
+        "One",
+        "None",
+        "Two",
+        "Infinitely many"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ]
+}

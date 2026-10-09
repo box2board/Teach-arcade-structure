@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--life-science-biology--ecology-and-food-webs",
+  "title": "Ecology and Food Webs",
+  "subject": "Science",
+  "category": "Life Science & Biology",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What makes up an ecosystem?",
+      "choices": [
+        "An organism community and its physical environment",
+        "Only one species",
+        "Only nonliving factors",
+        "One organism's inherited traits"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is a producer in ecology?",
+      "choices": [
+        "An organism that eats only animals",
+        "The largest consumer",
+        "An organism that makes organic food from nonliving sources",
+        "An organism that needs no energy"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "How does a consumer obtain organic nutrients?",
+      "choices": [
+        "By making all food directly from sunlight",
+        "By eating organisms or their products",
+        "By using minerals as its only food",
+        "By receiving no external matter"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "How do decomposers support ecosystems?",
+      "choices": [
+        "They turn all used energy into sunlight",
+        "They stop nutrient cycling",
+        "They provide sunlight to producers",
+        "They break down dead matter and help recycle nutrients"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "In the usual food-web convention, arrows point toward which organism?",
+      "choices": [
+        "The largest organism",
+        "The source of sunlight",
+        "The organism eaten",
+        "The receiver of energy through feeding"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which is an abiotic factor?",
+      "choices": [
+        "A predator population",
+        "Temperature",
+        "A parasite-host relationship",
+        "A plant's inherited color"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is an ecological niche?",
+      "choices": [
+        "Only its sleeping location",
+        "Its scientific name",
+        "A species' role and environmental requirements",
+        "The total ecosystem mass"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why is less energy available at higher trophic levels?",
+      "choices": [
+        "Organisms use energy and disperse much of it as heat",
+        "Consumers return all energy to sunlight",
+        "Feeding destroys energy completely",
+        "Producers contain no stored energy"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How is a food web broader than a food chain?",
+      "choices": [
+        "It has only one transfer path",
+        "It includes interconnected feeding paths",
+        "It excludes producers",
+        "It records species ages"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "How do matter cycling and energy flow differ?",
+      "choices": [
+        "Both cycle completely back into sunlight",
+        "Only energy cycles; atoms cannot be reused",
+        "Heat creates new nutrient atoms",
+        "Matter cycles; energy flows and disperses as heat"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What causes ecological competition?",
+      "choices": [
+        "Demand for the same limited resource",
+        "A relationship that benefits both species",
+        "Interactions only between unrelated species",
+        "Any interaction requiring physical fighting"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What is mutualism?",
+      "choices": [
+        "One benefits and the other is harmed",
+        "Both are harmed",
+        "Both interacting species benefit",
+        "Neither is affected"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Which description fits typical parasitism?",
+      "choices": [
+        "Both partners benefit equally",
+        "The host eats the parasite for food",
+        "A parasite benefits while harming a host, often without immediately killing it",
+        "The parasite must be larger than its host"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why can losing one species affect several others?",
+      "choices": [
+        "Food webs link populations directly and indirectly",
+        "Each species has an unrelated food source",
+        "Different feeding levels never interact",
+        "Competition cannot occur within a food web"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What distinguishes a keystone species?",
+      "choices": [
+        "It always has the most individuals",
+        "It is always the only producer",
+        "Its importance depends only on body size",
+        "Its community influence is large relative to its abundance"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Grass → grasshopper → frog → snake. Which organism is a secondary consumer?",
+      "choices": [
+        "Grass",
+        "Frog",
+        "Grasshopper",
+        "Snake"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Fish eat insects that depend on algae. Insects decline, with other conditions unchanged. What is plausible?",
+      "choices": [
+        "The fish have less available food",
+        "Fish food necessarily increases",
+        "The fish become producers",
+        "The fish stop requiring energy"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A bee receives nectar and helps a plant reproduce. Which interaction fits?",
+      "choices": [
+        "Parasitism",
+        "Mutualism",
+        "Predation",
+        "Competition"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Deer and rabbits depend on limited plant food. Which interaction can follow?",
+      "choices": [
+        "Mutualism",
+        "Decomposition",
+        "Parasitism",
+        "Competition"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A persistent chemical becomes more concentrated at successive trophic levels. What is this called?",
+      "choices": [
+        "Photosynthesis",
+        "Primary succession",
+        "Biomagnification",
+        "Nitrogen fixation"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ]
+}

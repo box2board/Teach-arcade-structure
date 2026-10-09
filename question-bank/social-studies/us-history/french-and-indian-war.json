@@ -1,0 +1,255 @@
+{
+  "schemaVersion": 1,
+  "id": "us-history--french-and-indian-war",
+  "title": "French and Indian War",
+  "subject": "Social Studies",
+  "category": "U.S. History",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "referenceUrls": [
+    "https://history.state.gov/milestones/1750-1775/french-indian-war",
+    "https://history.state.gov/milestones/1750-1775/proclamation-line-1763"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which two European powers were the main rivals in the French and Indian War?",
+      "choices": [
+        "Spain and Portugal",
+        "Great Britain and France",
+        "France and Russia",
+        "Great Britain and Spain"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which disputed region helped spark the French and Indian War in 1754?",
+      "choices": [
+        "The Ohio River valley",
+        "The Mississippi Delta",
+        "The Great Basin",
+        "The Hudson Bay coast"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which larger conflict included the French and Indian War?",
+      "choices": [
+        "The War of Spanish Succession",
+        "The Thirty Years' War",
+        "The Napoleonic Wars",
+        "The Seven Years' War"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which young Virginia officer commanded at Fort Necessity in 1754?",
+      "choices": [
+        "Thomas Jefferson",
+        "Benjamin Franklin",
+        "George Washington",
+        "John Adams"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What did Benjamin Franklin's Albany Plan of Union propose in 1754?",
+      "choices": [
+        "Joint colonial cooperation under a common council",
+        "Independence from the British monarchy",
+        "The transfer of Canada to Spain",
+        "The abolition of colonial assemblies"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which treaty formally ended the French and Indian War in 1763?",
+      "choices": [
+        "Treaty of Ghent",
+        "Treaty of Paris",
+        "Treaty of Versailles",
+        "Treaty of Tordesillas"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which city did British forces capture after the Battle of the Plains of Abraham in 1759?",
+      "choices": [
+        "Boston",
+        "New Orleans",
+        "Quebec",
+        "Charleston"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why did France build forts in the Ohio River valley before the war?",
+      "choices": [
+        "To establish plantation farming as Canada's main industry",
+        "To shift Atlantic shipping away from coastal ports",
+        "To control the British colonial assemblies",
+        "To strengthen its territorial claims and trade routes"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why did different Indigenous nations choose different alliances during the war?",
+      "choices": [
+        "They had different trade relationships and territorial interests",
+        "They all followed orders from a single continental ruler",
+        "Their alliances were determined by British voting districts",
+        "Their leaders had identical goals for European settlement"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why was control of waterways valuable in this conflict?",
+      "choices": [
+        "Rivers marked every colonial border",
+        "Waterways supported transportation, supply, and trade",
+        "Ships could travel across all mountain ranges",
+        "River access removed the need for forts"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How did Britain's wartime debt contribute to later colonial tensions?",
+      "choices": [
+        "It led Britain to abandon tax collection",
+        "It gave colonial assemblies control over Parliament",
+        "It ended British interest in North America",
+        "It encouraged Parliament to raise revenue from the colonies"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What was a major North American result of the 1763 peace settlement?",
+      "choices": [
+        "France gained Virginia",
+        "Britain surrendered Canada",
+        "Britain acquired Canada from France",
+        "Spain acquired the thirteen British colonies"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why did the Proclamation of 1763 anger many British colonists?",
+      "choices": [
+        "It restricted settlement west of the Appalachian Mountains",
+        "It required all colonists to move to Canada",
+        "It ended colonial participation in Atlantic trade",
+        "It made French the language of colonial courts"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why did British leaders establish the Proclamation Line after the war?",
+      "choices": [
+        "To prepare to return Canada to France",
+        "To limit frontier conflict and regulate expansion",
+        "To eliminate the need for colonial governors",
+        "To stop shipping between Britain and America"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "How did the war change Britain's position in eastern North America?",
+      "choices": [
+        "It made Britain dependent on French military protection",
+        "It reduced Britain's land claims to coastal cities",
+        "It ended Britain's ability to regulate colonial commerce",
+        "It removed France as a major imperial territorial rival there"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Which sequence correctly places these French and Indian War events?",
+      "choices": [
+        "Albany Plan → Treaty of Paris → Quebec captured",
+        "Treaty of Paris → Quebec captured → Albany Plan",
+        "Albany Plan → Quebec captured → Treaty of Paris",
+        "Quebec captured → Albany Plan → Treaty of Paris"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A map shows French forts linking Canada with the Mississippi River. What purpose does that pattern suggest?",
+      "choices": [
+        "Connecting French claims through the interior",
+        "Surrounding the Spanish capital in Mexico",
+        "Protecting British plantation exports",
+        "Separating Canada from inland trade"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A colonial merchant celebrates British victory but later protests new taxes. Which explanation best connects those reactions?",
+      "choices": [
+        "Victory allowed colonial assemblies to set British tax policy",
+        "Britain's expanded empire also brought new financial demands",
+        "Victory transferred tax collection from Parliament to France",
+        "The treaty limited British taxation to merchants in Canada"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Why is it inaccurate to describe the war as all Europeans fighting all Indigenous peoples?",
+      "choices": [
+        "Most fighting involved only civilian settlers rather than armies",
+        "Indigenous nations joined the fighting only after the peace treaty",
+        "Both European sides formed alliances with Indigenous nations",
+        "The conflict centered on European religious reforms rather than territorial claims"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which source would most directly show how an Indigenous leader understood an alliance during this war?",
+      "choices": [
+        "A colonial map showing locations of British forts",
+        "A French trader's inventory of goods sent to several villages",
+        "A British officer's report estimating troop strength",
+        "A recorded speech by that leader about the alliance"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--physics--fluids-and-pressure",
+  "title": "Fluids and Pressure",
+  "subject": "Science",
+  "category": "Physics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "How is pressure calculated for a uniform force perpendicular to a surface?",
+      "choices": [
+        "Force multiplied by area",
+        "Area divided by force",
+        "Mass divided by speed",
+        "Force divided by area"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which is the SI unit of pressure?",
+      "choices": [
+        "Joule",
+        "Pascal",
+        "Watt",
+        "Kilogram"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which materials are classified as fluids?",
+      "choices": [
+        "Liquids and gases",
+        "Only liquids",
+        "Only gases",
+        "Solids and liquids, but not gases"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is buoyant force?",
+      "choices": [
+        "The object's downward gravitational force",
+        "The force of friction opposing only horizontal motion",
+        "An upward force exerted by a fluid on an immersed object",
+        "The pressure at one point without an area"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What does Archimedes' principle relate buoyant force to?",
+      "choices": [
+        "The weight of the object in every case",
+        "The weight of displaced fluid",
+        "The mass of displaced fluid without gravity",
+        "The total weight of all fluid in the container"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What does Pascal's principle describe?",
+      "choices": [
+        "Pressure decreases transmitted only toward the surface",
+        "The relationship between displaced fluid and buoyancy",
+        "The relationship between fluid density and temperature only",
+        "Pressure changes transmitted through an enclosed fluid"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What does density measure?",
+      "choices": [
+        "Weight per unit area",
+        "Volume per unit mass",
+        "Force per unit volume",
+        "Mass per unit volume"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why does fluid pressure increase with depth in a still lake?",
+      "choices": [
+        "Water density always doubles at each meter of depth",
+        "More overlying water contributes weight",
+        "The surface pressure has no effect anywhere below the surface",
+        "Deeper water contains fewer particles above each area"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why do broad snowshoes reduce sinking into soft snow?",
+      "choices": [
+        "They reduce the person's total weight",
+        "They increase the pressure on the snow",
+        "They spread weight over a larger area, reducing pressure",
+        "They decrease the area supporting the person"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why can a steel ship float while a solid steel block sinks?",
+      "choices": [
+        "The ship's hollow shape gives it a lower average density",
+        "Large objects always float regardless of density",
+        "Shaping steel removes its gravitational force",
+        "A floating ship must displace less water than its own volume underwater"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "For an object floating at rest, how does buoyant force compare with its weight?",
+      "choices": [
+        "Buoyant force is always greater",
+        "They are equal in magnitude",
+        "Weight is always greater",
+        "Both forces must be zero"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why can a hydraulic lift exert a larger output force?",
+      "choices": [
+        "Equal pressure acts on a larger output piston area",
+        "The fluid transfers a larger pressure to only the output side",
+        "The lift produces more output work than input work",
+        "The piston areas must be equal for any force transfer"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "How does ideal hydraulic force multiplication affect piston travel?",
+      "choices": [
+        "Both pistons always move equal distances",
+        "The larger-force piston moves farther",
+        "The larger-force piston moves a shorter distance",
+        "Neither piston needs to move"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "For steady horizontal flow of an ideal fluid, how are speed and pressure related along a streamline?",
+      "choices": [
+        "Faster flow corresponds to higher static pressure",
+        "Speed and pressure must both be zero",
+        "Pressure depends only on fluid color",
+        "Faster flow corresponds to lower static pressure"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why does an object weigh less on a spring scale when submerged without touching the bottom?",
+      "choices": [
+        "Its mass decreases when underwater",
+        "Buoyancy supports part of its weight",
+        "Its gravitational weight becomes zero underwater",
+        "The scale measures buoyancy alone rather than tension"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A 100 N force acts uniformly on 0.5 m². What is the pressure?",
+      "choices": [
+        "50 Pa",
+        "0.005 Pa",
+        "100.5 Pa",
+        "200 Pa"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Two objects displace equal volumes while fully submerged in the same liquid. How do their buoyant forces compare?",
+      "choices": [
+        "They are equal",
+        "The heavier object always has greater buoyancy",
+        "The lighter object always has greater buoyancy",
+        "Both forces are zero"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "An object has average density 600 kg/m³ and floats in water of density 1000 kg/m³. What fraction of its volume is submerged?",
+      "choices": [
+        "0.4",
+        "1.0",
+        "0.6",
+        "1.6"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A hydraulic output piston has four times the input area. An ideal input force of 20 N produces what output force?",
+      "choices": [
+        "5 N",
+        "24 N",
+        "80 N",
+        "40 N"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Two points are at equal depth in connected, still water open to the same air pressure. How do their pressures compare?",
+      "choices": [
+        "They are equal",
+        "The point in the wider section has greater pressure",
+        "The point in the narrower section has greater pressure",
+        "Pressure depends only on the container's total volume"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}

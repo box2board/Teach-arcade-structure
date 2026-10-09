@@ -1,0 +1,255 @@
+{
+  "schemaVersion": 1,
+  "id": "world-history--russian-revolution",
+  "title": "Russian Revolution",
+  "subject": "Social Studies",
+  "category": "World History",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Who was Russia's tsar at the start of the 1917 revolutions?",
+      "choices": [
+        "Alexander II",
+        "Peter the Great",
+        "Nicholas II",
+        "Ivan IV"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which revolution led to the tsar's abdication in 1917?",
+      "choices": [
+        "February Revolution",
+        "October Revolution",
+        "Revolution of 1905",
+        "Decembrist Revolt"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which political group seized power in the October Revolution?",
+      "choices": [
+        "Constitutional Democrats",
+        "Bolsheviks",
+        "Monarchists",
+        "Mensheviks"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Who led the Bolsheviks during their seizure of power?",
+      "choices": [
+        "Joseph Stalin",
+        "Alexander Kerensky",
+        "Nicholas II",
+        "Vladimir Lenin"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What were soviets in revolutionary Russia?",
+      "choices": [
+        "Councils of workers and soldiers",
+        "Hereditary noble courts",
+        "Foreign military embassies",
+        "Private banking associations"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which treaty ended Soviet Russia's participation in World War I?",
+      "choices": [
+        "Treaty of Versailles",
+        "Treaty of Ghent",
+        "Treaty of Brest-Litovsk",
+        "Treaty of Paris of 1783"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "In which year was the Soviet Union established?",
+      "choices": [
+        "1905",
+        "1922",
+        "1914",
+        "1945"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "How did World War I weaken the tsarist government?",
+      "choices": [
+        "It provided uninterrupted prosperity for all Russian households",
+        "It ended disputes over land ownership",
+        "It established universal confidence in the monarchy",
+        "Military losses and shortages intensified existing discontent"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why did the Provisional Government face criticism over the war?",
+      "choices": [
+        "It continued fighting despite widespread demands for peace",
+        "It had never taken a position on the conflict",
+        "It transferred all Russian troops to the United States",
+        "It joined the Central Powers immediately"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What did the slogan peace, land, and bread promise?",
+      "choices": [
+        "A stronger hereditary monarchy and larger estates",
+        "Permanent rule by foreign armies",
+        "An end to war, land redistribution, and relief from shortages",
+        "A return to serfdom and noble privilege"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What did dual power describe after the February Revolution?",
+      "choices": [
+        "Joint rule by the British and French monarchs",
+        "Competing authority of the Provisional Government and soviets",
+        "An alliance between two Russian tsars",
+        "Equal control by Germany and the United States"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why did land demands matter to many peasants?",
+      "choices": [
+        "They wanted to abandon all agricultural production",
+        "They primarily sought control of overseas colonies",
+        "They favored restoring legal serfdom",
+        "They sought access to land held by large estate owners"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What characterized the Russian Civil War's opposing camps?",
+      "choices": [
+        "The Red Army fought diverse anti-Bolshevik forces often called Whites",
+        "Every opponent shared one identical political program",
+        "Only foreign armies fought on either side",
+        "The monarchy remained neutral and unchanged"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What was War Communism associated with?",
+      "choices": [
+        "Unrestricted private trade in every industry",
+        "Permanent withdrawal of government from the economy",
+        "State controls and grain requisitioning during the Civil War",
+        "A policy ending all military recruitment"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why did Lenin introduce the New Economic Policy in 1921?",
+      "choices": [
+        "To restore the tsar to power",
+        "To revive the economy by allowing limited private activity",
+        "To abolish all government ownership immediately",
+        "To resume World War I against Germany"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Which sequence is correct?",
+      "choices": [
+        "Soviet Union established, tsar abdicates, Bolsheviks seize power",
+        "Bolsheviks seize power, Soviet Union established, tsar abdicates",
+        "Tsar abdicates, Soviet Union established, Bolsheviks seize power",
+        "Tsar abdicates, Bolsheviks seize power, Soviet Union established"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Why do the February and October Revolution names differ from dates on the modern Gregorian calendar?",
+      "choices": [
+        "Russia used the Julian calendar when the events occurred",
+        "The revolutions lasted exactly twelve months each",
+        "Historians changed the names to match election dates",
+        "Both revolutions occurred before calendars were used"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A government permits small businesses but retains major industries under state control. Which policy does this resemble?",
+      "choices": [
+        "War Communism",
+        "Tsarist serfdom",
+        "New Economic Policy",
+        "Collectivization under Stalin"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Which comparison between the 1917 revolutions is accurate?",
+      "choices": [
+        "Both restored the tsar's authority",
+        "February ended monarchy; October displaced the Provisional Government",
+        "October occurred before February",
+        "February established NATO; October created the League of Nations"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which conclusion avoids oversimplifying the Revolution?",
+      "choices": [
+        "One slogan alone explains every revolutionary outcome",
+        "All Russians supported the same political faction",
+        "The monarchy fell without economic or military pressures",
+        "War pressures, social grievances, and political choices shaped its course"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ],
+  "referenceUrls": [
+    "https://encyclopedia.ushmm.org/content/en/article/the-russian-revolution-1917"
+  ]
+}
+

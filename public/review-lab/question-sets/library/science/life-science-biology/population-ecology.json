@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--life-science-biology--population-ecology",
+  "title": "Population Ecology",
+  "subject": "Science",
+  "category": "Life Science & Biology",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is an ecological population?",
+      "choices": [
+        "All species in a biome",
+        "One species' members in a defined area",
+        "A watershed's nonliving factors",
+        "An individual's organs"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What does population density measure?",
+      "choices": [
+        "Individuals per unit area or volume",
+        "Species per community",
+        "Average individual body mass",
+        "Frequency of a mutation"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is immigration in ecology?",
+      "choices": [
+        "Movement out of a population",
+        "Births within a population",
+        "Movement into a population",
+        "Deaths within a population"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is emigration in ecology?",
+      "choices": [
+        "Population increase through births",
+        "Movement into a population",
+        "A change in habitat type",
+        "Movement out of a population"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What does carrying capacity describe?",
+      "choices": [
+        "Population size supported over time under given conditions",
+        "The greatest count ever observed anywhere",
+        "The number of community species",
+        "A value unaffected by environmental change"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which ideal growth curve is J-shaped?",
+      "choices": [
+        "Logistic near carrying capacity",
+        "Constant-size",
+        "Steady decline",
+        "Exponential"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is a density-dependent factor?",
+      "choices": [
+        "A factor affecting only soil",
+        "A factor whose effects vary with crowding",
+        "A factor equally strong at every density",
+        "A factor determined only by latitude"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why does logistic growth slow near carrying capacity?",
+      "choices": [
+        "Individuals stop needing resources",
+        "All genetic variation disappears",
+        "Resources become more limited per individual",
+        "Habitat area automatically expands"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Which processes increase population size when acting alone?",
+      "choices": [
+        "Deaths and emigration",
+        "Births and emigration",
+        "Deaths and immigration",
+        "Births and immigration"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why can drought change carrying capacity?",
+      "choices": [
+        "It changes the definition of species",
+        "It forces every individual to migrate",
+        "It changes water and food availability",
+        "It prevents any population count"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How can crowding increase disease transmission?",
+      "choices": [
+        "It can create more contact opportunities",
+        "It prevents pathogens moving",
+        "It always strengthens immunity",
+        "It guarantees all individuals are infected"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What can age structure help predict?",
+      "choices": [
+        "The exact date of each death",
+        "How many individuals are reaching or leaving reproductive ages",
+        "Only genetic mutation rates",
+        "A permanently fixed carrying capacity"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why conduct population surveys repeatedly?",
+      "choices": [
+        "To guarantee identical annual counts",
+        "To avoid using consistent methods",
+        "To distinguish short-term variation from longer-term trends",
+        "To prove migration never occurs"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "How can a population briefly exceed carrying capacity?",
+      "choices": [
+        "Carrying capacity forbids any overshoot",
+        "Reproduction can continue before shortages fully affect survival",
+        "An overshoot guarantees unlimited future resources",
+        "Populations can change only through migration"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What limits a simple growth model's predictions?",
+      "choices": [
+        "It cannot represent numerical values",
+        "It describes every population perfectly",
+        "It makes observations unnecessary",
+        "Assumptions may omit resource changes, movement, or age structure"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A population starts at 100, has 20 births and 10 deaths, with no migration. What is its final size?",
+      "choices": [
+        "110",
+        "90",
+        "120",
+        "130"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "There are 200 fish in 50 hectares. What is their density?",
+      "choices": [
+        "4 fish per hectare",
+        "250 fish per hectare",
+        "10,000 fish per hectare",
+        "0.25 fish per hectare"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Fifteen individuals immigrate and 25 emigrate, with no births or deaths. What is the net change?",
+      "choices": [
+        "An increase of 10",
+        "An increase of 40",
+        "A decrease of 10",
+        "No change"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Which event's direct effect is usually density-independent?",
+      "choices": [
+        "Competition for nesting sites",
+        "A severe freeze",
+        "Disease transmitted by close contact",
+        "Crowding-related food shortage"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "One habitat has less usable food and space than another for the same species. What is reasonable, all else equal?",
+      "choices": [
+        "Its carrying capacity must be higher",
+        "Resources do not affect carrying capacity",
+        "Its population cannot reproduce",
+        "Its carrying capacity is lower"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

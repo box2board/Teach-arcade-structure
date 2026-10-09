@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--statistics-probability--compound-probability",
+  "title": "Compound Probability",
+  "subject": "Math",
+  "category": "Statistics & Probability",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What does independence of two events mean?",
+      "choices": [
+        "The events cannot occur together",
+        "The events have identical outcomes",
+        "One event's occurrence does not change the other's probability",
+        "Both events must have probability 1/2"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "For independent events A and B, what is P(A and B)?",
+      "choices": [
+        "P(A)P(B)",
+        "P(A) + P(B)",
+        "P(A) − P(B)",
+        "P(A)/P(B)"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "For mutually exclusive events A and B, what is P(A or B)?",
+      "choices": [
+        "P(A)P(B)",
+        "P(A) − P(B)",
+        "P(A)/P(B)",
+        "P(A) + P(B)"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Two fair coins are tossed independently. What is P(two heads)?",
+      "choices": [
+        "1/2",
+        "1/4",
+        "3/4",
+        "1"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "A fair die and fair coin are used independently. How many equally likely paired outcomes exist?",
+      "choices": [
+        "12",
+        "8",
+        "6",
+        "3"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What are mutually exclusive events?",
+      "choices": [
+        "Events whose probabilities never change",
+        "Events that cannot occur together",
+        "Events that must have equal probabilities",
+        "Events that always occur together"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is P(rolling 1 or 2 on one fair six-sided die)?",
+      "choices": [
+        "1/6",
+        "1/2",
+        "2/3",
+        "1/3"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why can drawing without replacement make successive draws dependent?",
+      "choices": [
+        "The first draw changes the size of each object",
+        "All without-replacement draws become impossible",
+        "The first draw changes the remaining contents",
+        "The original sample space must have no outcomes"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "A bag has 3 red and 2 blue balls. After drawing red without replacement, what is P(red on the next draw)?",
+      "choices": [
+        "1/2",
+        "3/5",
+        "2/5",
+        "3/4"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "The same bag has 3 red and 2 blue balls. If the first ball is replaced and remixed, what is P(red next)?",
+      "choices": [
+        "1/2",
+        "2/5",
+        "3/5",
+        "1/5"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What is the general addition rule for two events?",
+      "choices": [
+        "P(A or B) = P(A) + P(B) + P(A and B)",
+        "P(A or B) = P(A) + P(B) − P(A and B)",
+        "P(A or B) = P(A)P(B)",
+        "P(A or B) = P(A) − P(B)"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why is overlap subtracted in the general addition rule?",
+      "choices": [
+        "It represents impossible outcomes in every case",
+        "It must equal zero for every pair",
+        "It changes all event probabilities to equal values",
+        "It was counted in both P(A) and P(B)"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Two independent events have probabilities 0.4 and 0.5. What is the probability both occur?",
+      "choices": [
+        "0.9",
+        "0.1",
+        "0.8",
+        "0.2"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Two fair coins are tossed. What is P(at least one head)?",
+      "choices": [
+        "1/4",
+        "3/4",
+        "1/2",
+        "1"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What is P(A given B) when P(B) > 0?",
+      "choices": [
+        "P(A)/P(B) regardless of overlap",
+        "P(A) + P(B)",
+        "P(A and B)/P(B)",
+        "P(B)/P(A and B)"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Two fair six-sided dice are rolled independently. What is P(a total of 7)?",
+      "choices": [
+        "1/6",
+        "1/12",
+        "7/36",
+        "1/36"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A bag has 4 red and 1 blue ball. Two balls are drawn without replacement. What is P(both red)?",
+      "choices": [
+        "16/25",
+        "3/5",
+        "4/5",
+        "1/5"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Events A and B have probabilities 0.6 and 0.5, with overlap 0.2. What is P(A or B)?",
+      "choices": [
+        "1.1",
+        "0.3",
+        "0.2",
+        "0.9"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A fair coin is tossed three times independently. What is P(exactly two heads)?",
+      "choices": [
+        "3/8",
+        "1/8",
+        "1/2",
+        "3/4"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Two nonzero-probability events are mutually exclusive. Why are they not independent?",
+      "choices": [
+        "They necessarily have equal probabilities",
+        "They must share every outcome",
+        "Knowing one occurred makes the other's probability zero",
+        "Their probabilities cannot be added"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ]
+}

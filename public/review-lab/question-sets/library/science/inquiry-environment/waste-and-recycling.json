@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--inquiry-environment--waste-and-recycling",
+  "title": "Waste and Recycling",
+  "subject": "Science",
+  "category": "Scientific Inquiry & Environmental Science",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is source reduction?",
+      "choices": [
+        "Preventing waste before it is created",
+        "Burning every discarded material",
+        "Mixing all waste into one container",
+        "Moving waste to a different landfill"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is pre-consumer waste?",
+      "choices": [
+        "Products discarded by households after use",
+        "Material discarded during production before a product reaches its consumer",
+        "Only litter collected from streets",
+        "Only materials discarded after many years of use"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is a main role of a materials recovery facility?",
+      "choices": [
+        "Extracting new metal ores from mines",
+        "Manufacturing every finished product sold to consumers",
+        "Sorting collected recyclable materials for further processing",
+        "Treating all hazardous waste as ordinary compost"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is composting?",
+      "choices": [
+        "Melting plastic into metal",
+        "Separating salts through nuclear decay",
+        "Turning every waste into glass",
+        "Managed biological decomposition of suitable organic material"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is leachate in a landfill?",
+      "choices": [
+        "Liquid that has passed through waste and carries dissolved or suspended material",
+        "Only dry gas released from waste",
+        "Solid metal sorted from refuse",
+        "Clean rainwater before contact with waste"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which gas can be produced by anaerobic decomposition of organic waste?",
+      "choices": [
+        "Helium",
+        "Methane",
+        "Neon",
+        "Argon"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What does a product life-cycle assessment examine?",
+      "choices": [
+        "Only the product's sale price",
+        "Only the color of its packaging",
+        "Impacts across stages from resource extraction through end of use",
+        "Only the day the product is purchased"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why is preventing unnecessary waste often prioritized over recycling it?",
+      "choices": [
+        "Recycling avoids all energy use at every stage",
+        "Every discarded material can be recycled indefinitely without losses",
+        "Preventing waste always requires more raw material than producing it",
+        "It can avoid material and energy use before waste exists"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why can food residue in a recycling stream cause problems?",
+      "choices": [
+        "It can contaminate materials and complicate processing",
+        "It always improves the strength of recycled paper",
+        "It makes sorting unnecessary",
+        "It turns every mixed material into usable compost"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why do accepted recycling materials vary between programs?",
+      "choices": [
+        "Every recycling symbol guarantees local acceptance",
+        "Facilities and markets differ in what they can process",
+        "All facilities have identical processing equipment",
+        "Local acceptance depends only on package color"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why can repairing a product reduce resource use?",
+      "choices": [
+        "It guarantees the item will never wear out again",
+        "It removes the need to produce replacement components",
+        "It can extend service life and delay replacement",
+        "It always changes the item's material into a recyclable plastic"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why is e-waste commonly handled through specialized collection?",
+      "choices": [
+        "All electronics can enter every household recycling stream",
+        "Every electronic component safely decomposes in ordinary soil",
+        "Electronic waste contains no recoverable materials",
+        "It can contain recoverable materials and substances needing controlled handling"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "How is aerobic composting different from anaerobic decay?",
+      "choices": [
+        "It occurs with oxygen available to decomposers",
+        "It prevents any biological activity",
+        "It requires no organic material",
+        "It only occurs inside metal batteries"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why can recycling metals conserve resources?",
+      "choices": [
+        "It eliminates all energy needed for processing",
+        "It can reduce demand for extracting and processing new ore",
+        "It guarantees every recycled alloy has identical properties",
+        "It prevents corrosion in all future products"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why should disposal comparisons consider the whole life cycle?",
+      "choices": [
+        "Only transport has environmental effects",
+        "Only packaging has environmental effects",
+        "An improvement at one stage can shift impacts to another",
+        "Impacts disappear after purchase"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A school replaces disposable cups with washable cups used repeatedly. Which strategy is illustrated?",
+      "choices": [
+        "Landfilling",
+        "Incineration",
+        "Composting",
+        "Reuse"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A factory changes packaging design to use less material for the same function. Which strategy is illustrated?",
+      "choices": [
+        "Source reduction",
+        "Waste export",
+        "Landfill expansion",
+        "Final disposal"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A recycling batch has many items the local facility cannot process. What is a likely consequence?",
+      "choices": [
+        "Automatic conversion of every item into compost",
+        "Extra sorting or rejection of contaminated material",
+        "No effect on processing",
+        "Creation of new atoms from rejected material"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A community compares two packages. One uses less material but requires much more transport. What evidence is needed?",
+      "choices": [
+        "Only the impacts after the consumer throws it away",
+        "Only the amount of material in the package",
+        "Impacts of production, transport, use, and disposal",
+        "Only the energy used in manufacturing, excluding transport"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A store discards 100 kg of food weekly and reduces that to 60 kg. What percentage reduction has occurred?",
+      "choices": [
+        "60%",
+        "25%",
+        "160%",
+        "40%"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--statistics-probability--experimental-design-and-causation",
+  "title": "Experimental Design and Causation",
+  "subject": "Math",
+  "category": "Statistics & Probability",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What distinguishes an experiment from an observational study?",
+      "choices": [
+        "An experiment must survey an entire population",
+        "An experiment cannot record numerical outcomes",
+        "An experiment assigns a treatment or condition",
+        "An experiment always occurs outdoors"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is the purpose of random assignment in an experiment?",
+      "choices": [
+        "To guarantee a representative population sample",
+        "To reduce systematic group differences before treatments",
+        "To make all outcomes identical",
+        "To choose the treatment with the highest score"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is a control group?",
+      "choices": [
+        "A comparison group used to assess the treatment's effect",
+        "A group whose results are discarded",
+        "A group consisting only of researchers",
+        "The group with the largest outcome by definition"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "A diet study compares only teenagers on diet A with only adults on diet B. Which factor is confounded with diet assignment?",
+      "choices": [
+        "The shared measurement unit",
+        "The recorded health outcome",
+        "The common observation date",
+        "Age group"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is a placebo?",
+      "choices": [
+        "The strongest active treatment",
+        "A measure of sample size",
+        "An inactive treatment used for comparison",
+        "A random sampling method"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What does replication mean in an experimental design?",
+      "choices": [
+        "Using only one unit per treatment",
+        "Applying conditions to multiple experimental units or repeating trials appropriately",
+        "Changing the response definition after seeing results",
+        "Copying the same recorded value into every row"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is the response variable?",
+      "choices": [
+        "The outcome measured to assess treatment effects",
+        "The label used to randomize assignments",
+        "The fixed number of researchers",
+        "Every background characteristic"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why can volunteers in an observational study limit generalization?",
+      "choices": [
+        "Volunteers cannot produce numerical data",
+        "Volunteer groups always contain the whole population",
+        "Generalization never depends on selection",
+        "They may differ systematically from people who did not volunteer"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Students are randomly assigned to two study methods before taking the same test. What is the treatment variable?",
+      "choices": [
+        "The test score",
+        "The students' names",
+        "The assigned study method",
+        "The number of test questions"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "In an experiment comparing two study methods, why should both groups take the same test under similar conditions?",
+      "choices": [
+        "To ensure every student earns the same score",
+        "To avoid differences in testing conditions confounding the comparison",
+        "To eliminate the need for assignment",
+        "To guarantee the new method works"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What is the purpose of blinding participants to treatment labels when practical?",
+      "choices": [
+        "To reduce expectation-related changes in behavior or reporting",
+        "To prevent researchers from measuring outcomes",
+        "To eliminate all random variation",
+        "To make the sample larger"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What is a randomized block design?",
+      "choices": [
+        "Assigning every member of a group the same treatment without randomization",
+        "Selecting only units with identical outcomes",
+        "Discarding groups that disagree with the hypothesis",
+        "Grouping similar units first, then randomizing treatments within each group"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why can matched-pairs designs be useful?",
+      "choices": [
+        "They guarantee that every pair has the same response",
+        "They avoid all random assignment",
+        "They compare treatments within the same unit or closely matched pairs",
+        "They require twice as many distinct treatments as units"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Which design most directly supports causal inference when well conducted?",
+      "choices": [
+        "A voluntary opinion poll",
+        "A randomized controlled experiment",
+        "A comparison of unrelated historical averages",
+        "A single observed success story"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why should a study's response measure be defined before results are examined?",
+      "choices": [
+        "It reduces selective choice of outcomes after seeing data",
+        "It forces every hypothesis to be accepted",
+        "It makes measurement error impossible",
+        "It removes the need for a comparison group"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A school gives a new program only to already high-achieving students, then compares them with others. What is the key concern?",
+      "choices": [
+        "Random assignment made the groups too similar",
+        "The response variable cannot be measured",
+        "The sample is too large to analyze",
+        "Prior achievement is confounded with program assignment"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A coin flip assigns each participant to one of two treatments. Which issue does this address most directly?",
+      "choices": [
+        "Population coverage bias",
+        "Every measurement error",
+        "Treatment allocation bias",
+        "The need for an outcome variable"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A study randomly samples residents but lets each choose a treatment. Which claim needs caution?",
+      "choices": [
+        "A description of the sampled residents' choices",
+        "A causal claim, because treatment was not randomly assigned",
+        "A count of the residents in the sample",
+        "A statement that a random sample was used"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "In a crossover study, every participant receives both conditions. Why might their order be randomized?",
+      "choices": [
+        "Order or carryover effects could influence results",
+        "Random order makes the two conditions identical",
+        "Every participant must receive only one condition",
+        "Random order removes the need to measure responses"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A well-conducted randomized experiment finds different average outcomes between treatments. What should be assessed before concluding the treatment has an effect?",
+      "choices": [
+        "Whether the larger average automatically proves causation without uncertainty",
+        "Whether every participant showed an identical response",
+        "Whether the treatment-group mean equals the population mean",
+        "Whether the difference is larger than expected from chance variation"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

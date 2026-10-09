@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--algebra-2-functions--sequences-and-series",
+  "title": "Sequences and Series",
+  "subject": "Math",
+  "category": "Algebra II & Functions",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "How does a series differ from a sequence?",
+      "choices": [
+        "A series lists terms without adding them",
+        "A series always has exactly two terms",
+        "A series adds terms of a sequence",
+        "A series must contain only fractions"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What defines a geometric sequence?",
+      "choices": [
+        "A constant additive difference",
+        "A constant ratio between consecutive nonzero terms",
+        "Only increasing whole numbers",
+        "A constant sum of adjacent terms"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is the common ratio of 3, 6, 12, 24, …?",
+      "choices": [
+        "2",
+        "3",
+        "6",
+        "4"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which formula gives the nth term of a geometric sequence?",
+      "choices": [
+        "aₙ = a₁ + (n − 1)r",
+        "aₙ = a₁rⁿ",
+        "aₙ = nr + a₁",
+        "aₙ = a₁rⁿ⁻¹"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is the next term of 81, 27, 9, 3, …?",
+      "choices": [
+        "0",
+        "−3",
+        "1",
+        "1/3"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is the sum of the first four terms of 2, 4, 6, 8, …?",
+      "choices": [
+        "8",
+        "20",
+        "24",
+        "16"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What does sigma notation indicate?",
+      "choices": [
+        "Summation of specified terms",
+        "Multiplication of all terms",
+        "The largest term only",
+        "The common ratio"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why does 2, 6, 18, 54 represent geometric rather than arithmetic change?",
+      "choices": [
+        "Its first term is even",
+        "All its terms are integers",
+        "It has only four displayed terms",
+        "Its ratios are constant while its differences vary"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What is the fifth term of a geometric sequence with a₁ = 4 and r = 2?",
+      "choices": [
+        "128",
+        "32",
+        "64",
+        "20"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "A geometric sequence begins 10, −20, 40, … . What is the common ratio?",
+      "choices": [
+        "2",
+        "−2",
+        "−10",
+        "−1/2"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Which formula gives the sum of the first n arithmetic-sequence terms?",
+      "choices": [
+        "Sₙ = n(a₁ + aₙ)/2",
+        "Sₙ = na₁aₙ",
+        "Sₙ = (aₙ − a₁)/n",
+        "Sₙ = a₁rⁿ"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What is the sum of integers 1 through 10?",
+      "choices": [
+        "50",
+        "100",
+        "45",
+        "55"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why do geometric terms alternate in sign when a₁ ≠ 0 and r < 0?",
+      "choices": [
+        "Every negative ratio equals −1",
+        "The common difference is negative",
+        "Each multiplication by the negative ratio reverses the sign",
+        "The sequence has no defined rule"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "For which common ratio does an infinite geometric series with nonzero first term converge?",
+      "choices": [
+        "r = 1",
+        "r = 1/2",
+        "r = 2",
+        "r = −2"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What is the sum of the first three terms of 5, 10, 20, …?",
+      "choices": [
+        "35",
+        "40",
+        "25",
+        "30"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A theater has 10 rows with 12 seats in the first row and 2 more seats in each next row. How many seats are there altogether?",
+      "choices": [
+        "300",
+        "120",
+        "190",
+        "210"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A geometric sequence has a₁ = 3 and r = 2. What is the sum of its first five terms?",
+      "choices": [
+        "48",
+        "96",
+        "93",
+        "45"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "An infinite geometric series is 8 + 4 + 2 + 1 + … . What is its sum?",
+      "choices": [
+        "15",
+        "16",
+        "8",
+        "12"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A sequence has first term 100 and common ratio 0.9. What is its third term?",
+      "choices": [
+        "81",
+        "90",
+        "80",
+        "72"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A student uses aₙ = a₁rⁿ for n starting at 1. What correction is needed?",
+      "choices": [
+        "Use exponent n + 1",
+        "Replace multiplication with addition in every sequence",
+        "Set every first term equal to r",
+        "Use exponent n − 1 so the first term equals a₁"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

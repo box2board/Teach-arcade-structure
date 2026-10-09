@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "geography--population",
+  "title": "Population",
+  "subject": "Social Studies",
+  "category": "Geography",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is population density?",
+      "choices": [
+        "Population divided by land area",
+        "Land area divided by total exports",
+        "Births divided by deaths",
+        "Total population divided by average income"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is a census?",
+      "choices": [
+        "A survey of weather patterns only",
+        "A map of national elevation",
+        "An official count and collection of population information",
+        "An estimate of mineral reserves only"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is natural population increase?",
+      "choices": [
+        "Immigration minus emigration",
+        "Births minus deaths",
+        "Total population minus land area",
+        "Exports minus imports"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is net migration?",
+      "choices": [
+        "Births minus deaths",
+        "Population divided by area",
+        "The number of children per household",
+        "Immigration minus emigration"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What does a population pyramid show?",
+      "choices": [
+        "Population by age and sex categories",
+        "The height of buildings by district",
+        "Only migration routes",
+        "Only national income levels"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is life expectancy?",
+      "choices": [
+        "The age of the oldest living person",
+        "The number of births in one year",
+        "Expected years of life based on mortality conditions",
+        "The average age at first migration"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is fertility rate commonly used to measure?",
+      "choices": [
+        "The number of deaths per square kilometer",
+        "Average births per woman under specified demographic conditions",
+        "The annual number of emigrants",
+        "The share of income spent on food"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why does population density alone not show how people are distributed?",
+      "choices": [
+        "Every region has uniform settlement",
+        "Density measures only total births",
+        "Land area has no effect on density",
+        "People may cluster unevenly within a region"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why can a population grow even when its birth rate falls?",
+      "choices": [
+        "Births may still exceed deaths, and migration may add residents",
+        "Falling birth rates always mean immediate population decline",
+        "Death rates cannot change",
+        "Migration never affects population size"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What change often accompanies early stages of the demographic transition?",
+      "choices": [
+        "Birth and death rates both become zero",
+        "Migration stops permanently",
+        "Death rates decline before birth rates decline substantially",
+        "Every person moves to a city immediately"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why can improved sanitation increase population growth initially?",
+      "choices": [
+        "Sanitation necessarily raises birth rates by the same amount",
+        "Lower mortality can widen the gap between births and deaths",
+        "Sanitation makes emigration impossible",
+        "Lower mortality reduces the number of surviving children"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What does a broad base on a population pyramid often indicate?",
+      "choices": [
+        "An absence of young residents",
+        "A population composed mainly of retirees",
+        "Identical population counts in every age group",
+        "A large share of children and recent high birth rates"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why can an aging population create policy challenges?",
+      "choices": [
+        "Demand for pensions and health services may rise relative to the working-age population",
+        "Older residents never contribute to society",
+        "Aging eliminates demand for health care",
+        "The number of workers must automatically double"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why can rapid city growth pressure infrastructure?",
+      "choices": [
+        "Cities have unlimited water supplies by definition",
+        "Population growth removes the need for schools",
+        "Housing, transport, and services may not expand as quickly as population",
+        "Infrastructure adjusts instantly without investment"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why should demographic models be applied cautiously?",
+      "choices": [
+        "Models make observation unnecessary",
+        "Countries' histories and conditions do not follow one identical path",
+        "Every country's population changes at the same rate",
+        "Migration has no effect on demographic patterns"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A region has 1 million residents and 10,000 square kilometers of land. What is its population density?",
+      "choices": [
+        "10 people per square kilometer",
+        "1,000 people per square kilometer",
+        "10,000 people per square kilometer",
+        "100 people per square kilometer"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A country records 500,000 births and 300,000 deaths, with no migration. What is its natural increase?",
+      "choices": [
+        "200,000 people",
+        "800,000 people",
+        "300,000 people",
+        "500,000 people"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A city gains 20,000 immigrants and loses 12,000 emigrants. What is its net migration?",
+      "choices": [
+        "32,000 people",
+        "12,000 people",
+        "8,000 people",
+        "20,000 people"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Two countries have equal population totals but one has half the land area. How do their average densities compare?",
+      "choices": [
+        "The smaller country has half the density",
+        "The smaller country has twice the density",
+        "They necessarily have equal density",
+        "Their densities cannot be compared using these data"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A large young generation enters childbearing ages even as fertility declines. What process can sustain growth?",
+      "choices": [
+        "Complete demographic decline",
+        "Negative net migration alone",
+        "A decrease in the number of potential parents",
+        "Population momentum"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

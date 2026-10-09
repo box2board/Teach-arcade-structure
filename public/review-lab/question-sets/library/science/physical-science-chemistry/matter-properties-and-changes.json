@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--physical-science-chemistry--matter-properties-and-changes",
+  "title": "Matter Properties and Changes",
+  "subject": "Science",
+  "category": "Physical Science & Chemistry",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which statement describes matter?",
+      "choices": [
+        "It consists only of visible solids",
+        "It has energy but no mass",
+        "It has mass and occupies space",
+        "It cannot change form"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which property is independent of sample amount?",
+      "choices": [
+        "Total mass",
+        "Total volume",
+        "Density under specified conditions",
+        "Total length of a wire"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which is an example of a physical property?",
+      "choices": [
+        "Melting point",
+        "Flammability",
+        "Reactivity with acid",
+        "Tendency to rust"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which is an example of a chemical property?",
+      "choices": [
+        "Color",
+        "Volume",
+        "Electrical conductivity",
+        "Ability to react with oxygen"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which change is physical?",
+      "choices": [
+        "Burning paper",
+        "Cutting a sheet of aluminum",
+        "Rusting iron",
+        "Reacting vinegar with baking soda"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which change forms new substances?",
+      "choices": [
+        "A chemical change",
+        "A change in location only",
+        "A change in shape only",
+        "A change in sample size only"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "How is density calculated?",
+      "choices": [
+        "Volume divided by mass",
+        "Mass multiplied by volume",
+        "Mass divided by volume",
+        "Mass divided by time"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why does melting generally leave a substance's chemical identity unchanged?",
+      "choices": [
+        "Its atoms lose all electrons",
+        "Its particles rearrange without becoming a different substance",
+        "Its elements change during every melting event",
+        "Its mass must disappear"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why is reversibility alone insufficient to classify a change as physical?",
+      "choices": [
+        "Every reversible change is chemical",
+        "No physical change can be reversed",
+        "All irreversible changes form new elements",
+        "Some chemical changes can be reversed, and some physical changes are hard to reverse"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why should temperature be specified when comparing densities?",
+      "choices": [
+        "Temperature changes the definition of mass",
+        "Density measures only temperature",
+        "All materials have equal density at one temperature",
+        "Temperature can affect volume and therefore density"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What distinguishes mass from volume?",
+      "choices": [
+        "Mass measures occupied space; volume measures matter",
+        "Mass measures matter; volume measures occupied space",
+        "Both measure the same property in different units",
+        "Volume is measured only in kilograms"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why can a color change alone be inconclusive evidence of a chemical change?",
+      "choices": [
+        "Only chemical changes can affect color",
+        "Color change always means an element has changed",
+        "Physical mixing can also change apparent color",
+        "Color change always means the original material lost mass"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What usually happens to density when the mass and volume of a uniform sample are both doubled under unchanged conditions?",
+      "choices": [
+        "Density remains the same",
+        "Density doubles",
+        "Density halves",
+        "Density quadruples"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why is burning wood a chemical change?",
+      "choices": [
+        "Its pieces become smaller only",
+        "Its components react to form different substances",
+        "Its position changes",
+        "Its volume is measured differently"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why is crushing a mineral generally a physical change?",
+      "choices": [
+        "Its size changes while its chemical composition can stay the same",
+        "Its atoms must become a different element",
+        "Its mass necessarily becomes zero",
+        "Its chemical bonds must all disappear"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A sample has mass 24 g and volume 8 cm³. What is its density?",
+      "choices": [
+        "192 g/cm³",
+        "0.33 g/cm³",
+        "3 g/cm³",
+        "16 g/cm³"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A uniform material has density 2 g/cm³ and volume 5 cm³. What is its mass?",
+      "choices": [
+        "2.5 g",
+        "7 g",
+        "0.4 g",
+        "10 g"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A liquid freezes without reacting. Which classification fits?",
+      "choices": [
+        "Chemical change",
+        "Physical change",
+        "Nuclear change",
+        "Formation of a new element"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A solid reacts with a gas and forms a substance with new properties. What best supports a chemical-change classification?",
+      "choices": [
+        "A different container shape",
+        "A different observer",
+        "A change in the sample's location",
+        "Formation of a new substance"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Two samples have the same density but different masses. What can be concluded?",
+      "choices": [
+        "They may be the same material with different volumes",
+        "They must be different elements",
+        "They must occupy the same volume",
+        "The heavier one must have greater density"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}

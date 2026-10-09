@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--algebra-2-functions--rational-expressions-and-equations",
+  "title": "Rational Expressions and Equations",
+  "subject": "Math",
+  "category": "Algebra II & Functions",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a rational expression?",
+      "choices": [
+        "A polynomial whose coefficients are all integers",
+        "An expression containing only square roots",
+        "Any quotient that permits division by zero",
+        "A quotient of polynomials with a nonzero denominator"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which value is excluded from the domain of 1/(x − 5)?",
+      "choices": [
+        "−5",
+        "0",
+        "5",
+        "1"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "For x ≠ 0, which expression equals 6x/(3x)?",
+      "choices": [
+        "2x",
+        "2",
+        "3",
+        "1/2"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What values are excluded from 1/(x² − 9)?",
+      "choices": [
+        "−3 and 3",
+        "3 only",
+        "−3 only",
+        "0 and 9"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which factor can be canceled in (x + 2)(x − 1)/[(x + 2)(x + 5)], where the denominator is nonzero?",
+      "choices": [
+        "x − 1",
+        "x + 5",
+        "x",
+        "x + 2"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is 1/x + 2/x for x ≠ 0?",
+      "choices": [
+        "3/(2x)",
+        "2/x²",
+        "3/x",
+        "1/(3x)"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is the least common denominator of 1/x and 1/(x + 1)?",
+      "choices": [
+        "x + 1",
+        "x(x + 1)",
+        "2x + 1",
+        "x²"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why must domain restrictions be checked before canceling factors?",
+      "choices": [
+        "The original denominator still cannot be zero",
+        "Canceling makes every real number invalid",
+        "Only positive values may appear in denominators",
+        "A simplified numerator always gives the restriction"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "For x ≠ 2, which expression equals (x² − 4)/(x − 2)?",
+      "choices": [
+        "x − 2",
+        "x² + 2",
+        "2x",
+        "x + 2"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why can x not be canceled from (x + 3)/x?",
+      "choices": [
+        "The denominator has only one term",
+        "Cancellation requires a negative variable",
+        "The numerator is a sum, not a product with factor x",
+        "Variables never cancel"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What is the solution of 3/x = 1 for real x ≠ 0?",
+      "choices": [
+        "x = 1/3",
+        "x = 3",
+        "x = 0",
+        "x = −3"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What is the solution of 1/(x − 2) = 1/3?",
+      "choices": [
+        "x = 5",
+        "x = −1",
+        "x = 3",
+        "x = 2"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "For x ≠ 0, how do you divide by 2/x?",
+      "choices": [
+        "Multiply by 2/x",
+        "Subtract 2/x",
+        "Add x/2",
+        "Multiply by x/2"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Which value must be rejected if it appears after solving an equation with denominator x + 4?",
+      "choices": [
+        "4",
+        "0",
+        "−4",
+        "1"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What happens when both sides of 2/x = 6 are multiplied by nonzero x?",
+      "choices": [
+        "2x = 6",
+        "2 = 6x",
+        "2 = 6/x",
+        "2x = 6x"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Solve 2/(x − 1) = 1 for x ≠ 1.",
+      "choices": [
+        "x = 3",
+        "x = 1",
+        "x = −1",
+        "x = 2"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "What is the solution of 1/x + 1/x = 1/2 for x ≠ 0?",
+      "choices": [
+        "x = 1",
+        "x = 2",
+        "x = 1/4",
+        "x = 4"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A worker takes x hours to finish a job at constant rate. What expression gives the fraction of the job completed per hour?",
+      "choices": [
+        "x",
+        "x/2",
+        "1/x",
+        "1/(x + 1)"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Why does (x² − 1)/(x − 1) = 2 have no solution in its original domain?",
+      "choices": [
+        "Its numerator is always negative",
+        "It gives x = 1, which makes the original denominator zero",
+        "Its denominator is never positive",
+        "The simplified equation has no algebraic solution"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A pipe fills a tank in 4 hours and another in 6 hours. Working together at constant rates, how long do they take?",
+      "choices": [
+        "12/5 hours",
+        "10 hours",
+        "5 hours",
+        "2/5 hours"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}

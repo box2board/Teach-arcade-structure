@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--earth-space-science--space-observation-and-exploration",
+  "title": "Space Observation and Exploration",
+  "subject": "Science",
+  "category": "Earth & Space Science",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is the main purpose of a telescope's light-collecting area?",
+      "choices": [
+        "Increasing an object's actual size",
+        "Creating the object's light",
+        "Gathering light from distant objects",
+        "Changing the object's orbit"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What does a spectroscope separate incoming light into?",
+      "choices": [
+        "Individual planets",
+        "Layers of atmosphere by mass",
+        "Solid pieces of a star",
+        "Its component wavelengths"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is a robotic space probe?",
+      "choices": [
+        "An uncrewed spacecraft that collects information",
+        "A telescope lens made only of ice",
+        "A constellation used for navigation",
+        "A planet with no moons"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is a rover designed to do?",
+      "choices": [
+        "Collect only data from orbit without surface travel",
+        "Move across a surface while carrying instruments",
+        "Return every sample to Earth immediately",
+        "Serve only as a stationary relay above a planet"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is remote sensing?",
+      "choices": [
+        "Measuring only collected samples in a laboratory",
+        "Inferring properties without using any observations",
+        "Collecting information without directly contacting the target",
+        "Physically drilling into every target"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which electromagnetic waves are detected by a radio telescope?",
+      "choices": [
+        "Sound waves in space",
+        "Seismic waves",
+        "Ocean waves",
+        "Radio waves"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What does angular resolution describe?",
+      "choices": [
+        "Ability to distinguish objects close together in apparent angle",
+        "The total mass of a telescope",
+        "The speed of a planet in its orbit",
+        "The number of instruments on a rocket"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why are some telescopes placed above Earth's atmosphere?",
+      "choices": [
+        "Space prevents all instrument errors",
+        "The atmosphere absorbs some wavelengths and distorts images",
+        "Stars emit light only outside the atmosphere",
+        "Gravity is completely absent there"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why can a larger telescope reveal fainter objects under similar observing conditions?",
+      "choices": [
+        "It always magnifies more even with identical optics",
+        "It makes the target emit more energy",
+        "It collects more light",
+        "It automatically removes detector noise completely"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "How can spectroscopy help identify elements in a star?",
+      "choices": [
+        "Elements are identified only by the object's apparent size",
+        "All elements emit an identical line pattern",
+        "Distance alone determines an object's composition",
+        "Elements produce characteristic patterns of spectral lines"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why use observations at different wavelengths?",
+      "choices": [
+        "Different wavelengths reveal different physical processes and materials",
+        "Every wavelength shows exactly the same structures",
+        "Only visible light can be detected by instruments",
+        "Using one wavelength removes all uncertainty"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why can robotic missions be useful where human travel is difficult?",
+      "choices": [
+        "They never require electrical energy",
+        "They collect data without requiring human life-support systems",
+        "They communicate instantaneously across all distances",
+        "They operate without any testing or calibration"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why do spacecraft instructions sometimes need to be sent well in advance?",
+      "choices": [
+        "Radio signals always arrive instantly after transmission",
+        "Communication delay occurs only inside computers",
+        "Signals take time to travel across space",
+        "All spacecraft are permanently beyond signal range"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What does calibration help establish for a telescope detector?",
+      "choices": [
+        "The target's future orbit without observations",
+        "A guarantee of error-free results",
+        "A way to avoid taking any data",
+        "How its readings relate to known inputs"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why can repeated observations strengthen a discovery claim?",
+      "choices": [
+        "They help distinguish a real pattern from artifacts or chance",
+        "They guarantee every proposed explanation is correct",
+        "They remove the need to consider instrument errors",
+        "They make changing objects remain physically constant"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A camera records an unusual bright spot in only one exposure. What is a useful next step?",
+      "choices": [
+        "Immediately declare a new planet",
+        "Check additional exposures and detector artifacts",
+        "Assume no instrument can make errors",
+        "Change the target's name without checking"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A satellite detects infrared radiation from a cloud hidden in visible light. What does this illustrate?",
+      "choices": [
+        "The cloud emits only visible light",
+        "Infrared and visible observations must always look identical",
+        "Different wavelengths can reveal otherwise obscured features",
+        "The detector has changed the cloud's temperature by observing it"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A signal takes 10 minutes to travel from Earth to a spacecraft. Ignoring processing, what is the minimum command-and-response travel time?",
+      "choices": [
+        "5 minutes",
+        "10 minutes",
+        "100 minutes",
+        "20 minutes"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A detector gives a consistent offset when tested against known inputs. Which action directly addresses it?",
+      "choices": [
+        "Apply a justified calibration correction",
+        "Assume every sky target has changed brightness",
+        "Take fewer measurements to hide the offset",
+        "Treat the offset as a new planet"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Two telescopes collect data at different wavelengths from the same object. Why compare the results?",
+      "choices": [
+        "To guarantee that every difference is an instrument mistake",
+        "To build a fuller picture of its physical properties",
+        "To replace all measurements with one visible-light image",
+        "To make the object's properties independent of any model"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}

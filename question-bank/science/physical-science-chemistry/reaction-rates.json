@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--physical-science-chemistry--reaction-rates",
+  "title": "Reaction Rates",
+  "subject": "Science",
+  "category": "Physical Science & Chemistry",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What does a reaction rate describe?",
+      "choices": [
+        "How quickly reactants are consumed or products form",
+        "The total amount of product at equilibrium",
+        "The energy difference between reactants and products",
+        "The number of atoms in a reactant molecule"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is activation energy?",
+      "choices": [
+        "The energy barrier for a reaction pathway",
+        "The energy stored only in products",
+        "The total heat released by any reaction",
+        "The energy needed to weigh a substance"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is a reaction inhibitor?",
+      "choices": [
+        "A substance that always lowers the activation barrier",
+        "A substance that must become the main product",
+        "A substance that reduces a reaction's rate",
+        "A substance that guarantees a higher equilibrium product amount"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which unit can describe change in concentration over time?",
+      "choices": [
+        "Grams per cubic centimeter",
+        "Mol per liter per second",
+        "Joules per kelvin",
+        "Liters per mole"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "According to collision theory, what is required for a successful reactive collision?",
+      "choices": [
+        "Enough energy regardless of particle orientation",
+        "Correct orientation regardless of collision energy",
+        "High concentration without any collisions",
+        "Enough energy and suitable orientation"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is an enzyme?",
+      "choices": [
+        "A reaction's final product",
+        "A biological storage carbohydrate",
+        "A biological catalyst",
+        "A molecule that supplies all reaction energy"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What does a reaction-rate graph of product amount against time show through its slope?",
+      "choices": [
+        "The rate at which product amount changes",
+        "The total reactant mass at every instant",
+        "The reaction's equilibrium constant",
+        "The temperature difference between reactants and products"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why does higher temperature usually speed up a reaction?",
+      "choices": [
+        "All collisions become successful regardless of orientation",
+        "The reactants gain more total particles solely from heating",
+        "The reaction's activation barrier must become zero",
+        "More particles can overcome the activation-energy barrier"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why can increased reactant concentration increase reaction rate?",
+      "choices": [
+        "The number of possible collisions decreases",
+        "Reactant particles collide more frequently",
+        "Each particle must gain more kinetic energy at fixed temperature",
+        "The equilibrium amount of product necessarily doubles"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why can powdered limestone react faster than an equal mass of large limestone pieces?",
+      "choices": [
+        "The powder has greater total mass in this comparison",
+        "More solid surface contacts the reacting solution",
+        "Powdering changes the chemical composition of the limestone",
+        "The powder lowers the acid concentration before contact"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How does a catalyst provide a faster reaction pathway?",
+      "choices": [
+        "It increases the required activation energy",
+        "It raises every reactant's kinetic energy at fixed temperature",
+        "It changes the equilibrium constant at fixed temperature",
+        "It lowers the activation-energy barrier"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why does cooling often slow a reaction?",
+      "choices": [
+        "Fewer collisions have enough energy to react",
+        "The activation energy must disappear",
+        "Every reacting particle stops moving",
+        "The number of particles necessarily falls to zero"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why can reaction rate decrease as a reactant is used up?",
+      "choices": [
+        "Product concentration must stay zero",
+        "The remaining particles stop colliding",
+        "Lower reactant concentration can reduce successful collisions",
+        "Reactant concentration has no effect on collision frequency"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why might an enzyme lose activity after strong heating?",
+      "choices": [
+        "The enzyme's active site always becomes more effective",
+        "The enzyme gains more substrate-binding sites automatically",
+        "The enzyme's concentration necessarily doubles",
+        "Its shape can change, affecting its active site"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Does a catalyst necessarily increase the amount of product present at equilibrium?",
+      "choices": [
+        "Yes, it always doubles the final product amount",
+        "Yes, it removes the reverse reaction",
+        "No, it mainly speeds approach to equilibrium",
+        "No, it prevents any product from forming"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A reaction forms 12 mL of gas in 3 seconds. What is its average gas-production rate?",
+      "choices": [
+        "4 mL/s",
+        "36 mL/s",
+        "9 mL/s",
+        "0.25 mL/s"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Which experiment best tests the effect of temperature on a reaction rate?",
+      "choices": [
+        "Change temperature and concentration together",
+        "Keep concentrations and amounts the same while changing temperature",
+        "Use different reactants at each temperature",
+        "Compare only the final colors"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Two gas-volume curves reach the same final volume, but one rises more steeply at first. What does this show?",
+      "choices": [
+        "The steeper curve necessarily reaches a greater final volume",
+        "The gentler curve initially has the higher production rate",
+        "Equal final volume requires identical rates at every time",
+        "One reaction initially produces gas faster"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A student compares powder and chunks of the same solid. Which quantity should be held constant to isolate surface area?",
+      "choices": [
+        "Shape of each piece",
+        "Total mass of solid",
+        "Number of exposed surfaces",
+        "Dissolving time"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "An enzyme works best near 37°C and less well at 70°C. Which explanation fits these observations?",
+      "choices": [
+        "Increasing temperature always slows all reactions",
+        "Enzymes cannot function in liquids",
+        "High temperature can disrupt the enzyme's functional shape",
+        "The substrate necessarily becomes radioactive"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ]
+}

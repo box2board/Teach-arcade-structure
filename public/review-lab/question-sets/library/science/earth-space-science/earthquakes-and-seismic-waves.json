@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--earth-space-science--earthquakes-and-seismic-waves",
+  "title": "Earthquakes and Seismic Waves",
+  "subject": "Science",
+  "category": "Earth & Space Science",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is an earthquake's focus, or hypocenter?",
+      "choices": [
+        "The surface location directly above the rupture origin",
+        "The farthest point reached by a wave",
+        "The instrument recording the earthquake",
+        "The location where rupture begins inside Earth"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is an earthquake's epicenter?",
+      "choices": [
+        "The surface point directly above its focus",
+        "The deepest part of Earth's core",
+        "The first seismic station to detect shaking",
+        "The end of every fault"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which body waves generally arrive first at a station?",
+      "choices": [
+        "S waves",
+        "Surface waves",
+        "P waves",
+        "Ocean tides"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which body waves involve shear motion?",
+      "choices": [
+        "P waves",
+        "Sound waves in water only",
+        "S waves",
+        "Electromagnetic waves"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is a seismogram?",
+      "choices": [
+        "A recorded trace of ground motion",
+        "A map of mineral hardness",
+        "A measurement of rainfall",
+        "A model of ocean salinity"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What does earthquake magnitude summarize?",
+      "choices": [
+        "Damage to one particular building",
+        "Shaking intensity at one observation site",
+        "The event's focal depth only",
+        "The earthquake's overall size"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What does earthquake intensity describe?",
+      "choices": [
+        "The earthquake's identical size at every location",
+        "Shaking and effects at a particular location",
+        "The age of the fault",
+        "The exact time of the next earthquake"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why can rocks suddenly slip along a fault?",
+      "choices": [
+        "Accumulated stress can overcome resistance to movement",
+        "Faults contain no friction",
+        "All rock melts before every earthquake",
+        "Gravity stops briefly at the fault"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why do P waves usually arrive before S waves?",
+      "choices": [
+        "They are emitted only after S waves stop",
+        "They travel faster through the same rock",
+        "They travel only through air",
+        "They contain no energy"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why does the P–S arrival-time gap help estimate distance?",
+      "choices": [
+        "The gap gives only the earthquake's age",
+        "Both waves always arrive simultaneously",
+        "Wave speed is unrelated to travel time",
+        "The slower S wave falls increasingly behind over longer paths"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why are records from several stations needed to locate an epicenter well?",
+      "choices": [
+        "One station gives every possible direction exactly",
+        "Magnitude determines the epicenter without wave data",
+        "Different distance estimates constrain a common location",
+        "All stations must be placed on the same fault"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why can intensity vary for the same earthquake?",
+      "choices": [
+        "Distance, ground conditions, and structures affect local shaking and damage",
+        "Magnitude changes to a different event at each town",
+        "Every site contains identical rocks",
+        "Intensity is determined only by the event's name"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why can soft sediments worsen shaking relative to nearby firm ground?",
+      "choices": [
+        "They absorb every seismic wave completely",
+        "They stop surface waves from forming",
+        "They can amplify particular ground motions",
+        "They always have zero density"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What is an aftershock?",
+      "choices": [
+        "A warning that always occurs before a main earthquake",
+        "An earthquake following a larger event in the same general region",
+        "An ocean wave produced by wind",
+        "A sound unrelated to fault movement"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why are precise short-term earthquake predictions difficult?",
+      "choices": [
+        "Scientists cannot measure ground motion",
+        "Every fault moves on an identical schedule",
+        "Earthquakes have no physical causes",
+        "Fault systems are complex, and exact event timing is not reliably predictable"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Station A has a P–S gap of 10 s; station B has 30 s. With comparable paths and known wave speeds, which is generally closer?",
+      "choices": [
+        "Station B",
+        "They must be equally distant",
+        "The gaps measure only magnitude",
+        "Station A"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A quake has one magnitude but different reported intensities across towns. Is this consistent?",
+      "choices": [
+        "No; every location must have the same intensity",
+        "Yes; local effects can vary for one event",
+        "No; intensity measures only core temperature",
+        "Yes; each town creates a separate magnitude for the same event"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "S waves are absent after a path would pass through the outer core. What does this support?",
+      "choices": [
+        "The mantle is entirely liquid",
+        "The core contains no matter",
+        "The outer core is liquid",
+        "P waves cannot pass through liquids"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A magnitude increase of one unit corresponds to roughly how much more released seismic energy?",
+      "choices": [
+        "About 32 times",
+        "About 2 times",
+        "About 10 times",
+        "About 1,000 times"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Why can an undersea earthquake generate a tsunami in some cases?",
+      "choices": [
+        "Every earthquake heats the whole ocean to boiling",
+        "Sudden seafloor displacement moves a large volume of water",
+        "Earthquake sound creates ordinary wind waves",
+        "All undersea earthquakes produce equally large tsunamis"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}

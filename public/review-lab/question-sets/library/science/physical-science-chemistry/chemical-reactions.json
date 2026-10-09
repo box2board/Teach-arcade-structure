@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--physical-science-chemistry--chemical-reactions",
+  "title": "Chemical Reactions",
+  "subject": "Science",
+  "category": "Physical Science & Chemistry",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What are reactants?",
+      "choices": [
+        "Only the gases released during heating",
+        "Substances produced by a reaction only",
+        "All containers used during an experiment",
+        "Substances present before and consumed in a reaction"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What are products?",
+      "choices": [
+        "The equipment used to start a reaction",
+        "Substances formed by a chemical reaction",
+        "The original chemicals before mixing",
+        "Only chemicals that remain unchanged"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which principle requires equal numbers of each kind of atom on both sides of a balanced equation?",
+      "choices": [
+        "Conservation of atoms",
+        "Equal volume",
+        "Constant color",
+        "Constant temperature"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What does a coefficient in a chemical equation change?",
+      "choices": [
+        "The identity of an element",
+        "The subscripts within one compound formula",
+        "The number of protons in an atom",
+        "The relative number of particles or moles represented"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is a precipitate?",
+      "choices": [
+        "A gas produced only by boiling",
+        "A liquid produced only by melting",
+        "An insoluble solid formed from a solution during a reaction",
+        "A solvent that contains no dissolved material"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is an exothermic reaction?",
+      "choices": [
+        "A reaction that absorbs net energy from its surroundings",
+        "A reaction that creates new atoms from energy in an ordinary beaker",
+        "A reaction that cannot involve gases",
+        "A reaction that transfers net energy to its surroundings"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is a catalyst?",
+      "choices": [
+        "A substance that must become the final product",
+        "A substance that speeds a reaction without being consumed overall",
+        "A substance that replaces every reactant",
+        "A substance that changes atom counts in an equation"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why is rusting classified as a chemical change?",
+      "choices": [
+        "The iron changes location",
+        "The iron is only bent into a new shape",
+        "New substances form as iron reacts with its surroundings",
+        "The sample's mass must always decrease"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why must a reaction equation be balanced using coefficients rather than changing formulas?",
+      "choices": [
+        "Changing a formula can change the substance being represented",
+        "Formulas can never include numbers",
+        "Coefficients change the identity of each element",
+        "Balancing requires adding protons to the reactants"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why can a gas-producing reaction appear to lose mass in an open container?",
+      "choices": [
+        "The reaction destroys some of its atoms",
+        "Gas has no mass",
+        "Some products leave the measured system",
+        "Every open container creates new neutrons"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How does a closed system help demonstrate mass conservation in an ordinary reaction?",
+      "choices": [
+        "It prevents every chemical change",
+        "It requires equal volumes of all reactants",
+        "It makes gases weigh more than liquids",
+        "It retains the matter involved in the reaction"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why is a color change evidence to investigate rather than proof of a reaction by itself?",
+      "choices": [
+        "Mixing or other physical processes can also change appearance",
+        "Color can never change during a reaction",
+        "A chemical reaction must always make a white product",
+        "Color determines the number of atoms in every sample"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "How does increasing temperature often speed a reaction?",
+      "choices": [
+        "The atoms gain extra protons in ordinary conditions",
+        "Particles collide more frequently or with greater energy",
+        "Every catalyst is used up faster",
+        "Reactants no longer need to meet"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why can crushing a solid reactant speed its reaction with a liquid?",
+      "choices": [
+        "It increases exposed surface area",
+        "It changes the solid into a new element",
+        "It lowers the number of atoms in the sample",
+        "It eliminates contact with the liquid"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What happens to atoms in an ordinary chemical reaction?",
+      "choices": [
+        "They all become different elements",
+        "They disappear when bonds break",
+        "They are rearranged into new combinations",
+        "They remain in the same molecular arrangements"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "What coefficients balance H₂ + O₂ → H₂O using the smallest whole numbers?",
+      "choices": [
+        "1, 1, 1",
+        "2, 1, 2",
+        "1, 2, 1",
+        "2, 2, 1"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A sealed container initially holds 12 g of one reactant and 8 g of another, with no other material. No matter enters or leaves. What is the total mass inside after the reaction?",
+      "choices": [
+        "96 g",
+        "4 g",
+        "12 g",
+        "20 g"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A student changes H₂O to H₂O₂ to balance an equation. What is the main problem?",
+      "choices": [
+        "The student has changed the chemical identity of the product",
+        "The total number of oxygen atoms cannot change in a formula",
+        "The student has used a coefficient",
+        "The student has removed all hydrogen atoms"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A solution forms bubbles when chemicals are mixed. Which test best helps distinguish a chemical reaction from ordinary boiling?",
+      "choices": [
+        "Compare the liquid level without identifying the gas",
+        "Check whether the liquid is transparent",
+        "Identify a newly produced gas under conditions that do not cause boiling",
+        "Assume every bubble proves a reaction"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Two trials use equal amounts of a solid, but one uses powder and one uses a single chunk. All other conditions match. Why might the powder react faster?",
+      "choices": [
+        "It contains more protons per atom",
+        "It offers more surface area for contact",
+        "Its atoms have become a different element",
+        "Its chemical formula changes when ground"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--physics--waves-and-sound",
+  "title": "Waves and Sound",
+  "subject": "Science",
+  "category": "Physics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a wave in a basic physics description?",
+      "choices": [
+        "A transfer of material that requires every particle to travel the entire route",
+        "A force that must act only in a vacuum",
+        "A change in the mass of every particle",
+        "A disturbance that transfers energy"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is wavelength?",
+      "choices": [
+        "The maximum displacement from equilibrium",
+        "The number of cycles occurring each second",
+        "The distance between corresponding points on adjacent cycles",
+        "The time needed for one complete cycle"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is frequency?",
+      "choices": [
+        "The distance a wave travels in one cycle",
+        "The wave's maximum height",
+        "The time for one cycle",
+        "The number of cycles per unit time"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is amplitude?",
+      "choices": [
+        "The wave's frequency divided by speed",
+        "The maximum displacement from equilibrium",
+        "The distance between adjacent crests",
+        "The number of waves in a medium"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which unit is used for frequency?",
+      "choices": [
+        "Newton",
+        "Joule",
+        "Hertz",
+        "Volt"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is a transverse wave?",
+      "choices": [
+        "A wave with oscillations perpendicular to its direction of travel",
+        "A wave requiring no energy",
+        "A wave with particles moving only along its travel direction",
+        "A wave that cannot be reflected"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Sound in air is mainly which type of wave?",
+      "choices": [
+        "Electromagnetic transverse",
+        "Stationary electric",
+        "Mechanical longitudinal",
+        "Gravitational circular"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why does sound not travel through an ideal vacuum?",
+      "choices": [
+        "Sound requires sunlight",
+        "A vacuum absorbs every frequency equally",
+        "Sound can travel only through solids",
+        "Sound needs a material medium"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How does higher sound frequency generally affect perceived pitch?",
+      "choices": [
+        "It produces a higher pitch",
+        "It produces a lower pitch",
+        "It changes only the source's mass",
+        "It makes pitch independent of the wave"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "How does greater sound-wave amplitude generally affect loudness under otherwise similar conditions?",
+      "choices": [
+        "It lowers frequency to zero",
+        "It is associated with greater intensity and usually greater loudness",
+        "It guarantees a change in wavelength",
+        "It removes the need for a medium"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What happens during reflection of a wave?",
+      "choices": [
+        "The wave returns from a boundary into its original medium",
+        "The wave changes into a different kind of matter",
+        "The wave must stop moving permanently",
+        "The wave loses all its energy instantly"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What is an echo?",
+      "choices": [
+        "A sound with zero frequency",
+        "A sound produced only inside solids",
+        "A reflected sound heard after the original",
+        "A sound that has no material source"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What happens to wavelength if frequency increases while wave speed remains constant?",
+      "choices": [
+        "Wavelength increases at the same rate",
+        "Wavelength decreases",
+        "Wavelength remains constant",
+        "Wavelength becomes equal to amplitude"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why can a floating object bob as a water wave passes without traveling across the pond?",
+      "choices": [
+        "The wave carries no energy",
+        "All waves require permanent bulk transport of the medium",
+        "Water particles have no motion",
+        "The disturbance transfers energy while local material mainly oscillates"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "How can a wave change direction when entering a region where its speed changes?",
+      "choices": [
+        "Refraction can alter its travel direction",
+        "It must become stationary",
+        "It loses its frequency completely",
+        "Only its mass must increase"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A wave has frequency 2 Hz and wavelength 3 m. Using v = fλ, what is its speed?",
+      "choices": [
+        "1.5 m/s",
+        "5 m/s",
+        "6 m/s",
+        "0.67 m/s"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A wave completes 10 cycles in 5 s. What is its frequency?",
+      "choices": [
+        "5 Hz",
+        "2 Hz",
+        "10 Hz",
+        "50 Hz"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Two sounds have equal amplitude but different frequencies. Which difference is most directly expected?",
+      "choices": [
+        "Different travel speeds in the same air necessarily",
+        "Different types of wave necessarily",
+        "Different directions of particle oscillation necessarily",
+        "Different pitch"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "In air, a listener hears a siren at a higher pitch as its source approaches. Which effect explains this?",
+      "choices": [
+        "Reflection from every air molecule",
+        "The Doppler effect",
+        "Complete absorption of the sound",
+        "A decrease in the source's emitted frequency"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "An astronaut watches an explosion across empty space. Why would its sound not arrive through that empty space?",
+      "choices": [
+        "There is no material medium to transmit the sound",
+        "Light requires air but sound does not",
+        "Frequency stops matter from moving",
+        "The explosion has no energy"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}

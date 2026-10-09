@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "government--local-government",
+  "title": "Local Government",
+  "subject": "Social Studies",
+  "category": "Government & Civics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which service is commonly a local government responsibility?",
+      "choices": [
+        "Issuing national currency",
+        "Negotiating international treaties",
+        "Maintaining local streets",
+        "Commanding the national military"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is a municipal ordinance?",
+      "choices": [
+        "A law adopted by a city or town government",
+        "A treaty between sovereign countries",
+        "A ruling that amends the federal Constitution",
+        "A regulation issued only by the national military"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What does zoning primarily regulate?",
+      "choices": [
+        "Citizenship requirements",
+        "Congressional committee membership",
+        "Presidential succession",
+        "Land uses within specified areas"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is the general role of a city council?",
+      "choices": [
+        "To hear all federal criminal appeals",
+        "To serve as a local legislative body",
+        "To appoint all members of Congress",
+        "To approve every international agreement"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is a special district in local government?",
+      "choices": [
+        "A public entity created to provide a particular service in a defined area",
+        "A national military region outside state authority",
+        "A private association that automatically holds taxing power",
+        "A political party's temporary campaign headquarters"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is a local government's budget?",
+      "choices": [
+        "A list of all residents eligible to vote",
+        "A map dividing the city into neighborhoods",
+        "A plan for public revenues and spending",
+        "A record of every private business purchase"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is a public hearing?",
+      "choices": [
+        "A confidential meeting limited to campaign donors",
+        "A trial conducted only by federal judges",
+        "An election used to choose a city's name",
+        "A meeting where officials receive public input on an issue"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Where do U.S. local governments generally receive their legal authority?",
+      "choices": [
+        "From agreements with foreign embassies",
+        "From state constitutions and laws",
+        "From private corporations alone",
+        "From the United Nations Charter"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why do local governments often provide water and sewer infrastructure?",
+      "choices": [
+        "Shared systems support public health and community needs",
+        "Water supply is mainly a matter of presidential military command",
+        "Municipal water systems exist primarily to regulate foreign trade",
+        "Local control means water quality cannot be regulated by other governments"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What is a central feature of a council-manager form of government?",
+      "choices": [
+        "The manager inherits office from a family member",
+        "The governor writes all city ordinances",
+        "An elected council hires a professional manager to administer operations",
+        "The city council becomes a federal executive department"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why are property taxes important to many local governments?",
+      "choices": [
+        "They are collected only on goods imported from abroad",
+        "They guarantee identical budgets in every community",
+        "They can be spent only on national defense",
+        "They provide revenue for services such as schools and infrastructure"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why might neighboring communities cooperate on emergency services?",
+      "choices": [
+        "Cooperation removes every local government's legal authority",
+        "Shared equipment and staffing can improve coverage and efficiency",
+        "Each community is required to issue its own currency",
+        "Emergency calls cannot cross municipal boundaries"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "How does a school board differ from a classroom teacher?",
+      "choices": [
+        "It sets district-level policy rather than teaching individual classes",
+        "It replaces state legislatures in all education matters",
+        "It decides every lesson without input from educators",
+        "It controls federal foreign policy related to schools"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why can local government structures vary between states?",
+      "choices": [
+        "Every town is an independent sovereign country",
+        "The Constitution requires identical county governments",
+        "States establish different laws and authorizations for local institutions",
+        "Local offices exist outside all legal frameworks"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why do public records and open meetings matter for local accountability?",
+      "choices": [
+        "They guarantee agreement with every decision",
+        "They remove the need for elected officials",
+        "They give residents automatic access to legally confidential information",
+        "They help residents examine how public decisions are made"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Residents want a city to repair a dangerous intersection. Which first step most directly connects their concern to local action?",
+      "choices": [
+        "Ask a congressional committee to issue a city road-work order",
+        "Document the problem and contact relevant city officials",
+        "File a request with the agency responsible for passport applications",
+        "Petition the school board to change the national highway budget"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A proposed zoning change affects traffic, housing, and businesses. What would best support an informed public comment?",
+      "choices": [
+        "Evidence about likely impacts and the proposal's tradeoffs",
+        "A claim that all residents have identical needs",
+        "A list of unrelated presidential campaign slogans",
+        "A demand that officials ignore existing land-use rules"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A city must choose between two projects with a limited budget. Which question best addresses responsible decision-making?",
+      "choices": [
+        "Which project has the strongest publicity campaign?",
+        "Which proposal was submitted earlier, regardless of need?",
+        "How do the costs and public benefits of the projects compare?",
+        "Which project's supporters have attended more ribbon-cutting ceremonies?"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A resident assumes the mayor controls every school policy. What should be checked?",
+      "choices": [
+        "Whether the mayor's campaign discussed education frequently",
+        "Whether the district and city use the same fiscal year",
+        "Whether the mayor has worked in a school previously",
+        "Which body has legal authority over the school district"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A regional transit district serves several cities. What does this show about local public services?",
+      "choices": [
+        "Only national governments may operate transportation",
+        "Service boundaries can differ from municipal boundaries",
+        "Each city must have its own national constitution",
+        "Regional cooperation eliminates the need for budgets"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}

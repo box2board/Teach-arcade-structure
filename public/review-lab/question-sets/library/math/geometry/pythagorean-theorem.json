@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--geometry--pythagorean-theorem",
+  "title": "Pythagorean Theorem",
+  "subject": "Math",
+  "category": "Geometry",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "For a right triangle with legs a and b and hypotenuse c, which equation is correct?",
+      "choices": [
+        "a + b = c",
+        "a² + b² = c²",
+        "a² − b² = c²",
+        "2a + 2b = c"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Where is a right triangle's hypotenuse?",
+      "choices": [
+        "Between the two shortest sides' midpoints",
+        "Opposite the smallest angle",
+        "Along either leg",
+        "Opposite the right angle"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "A right triangle has legs 3 and 4. What is its hypotenuse length?",
+      "choices": [
+        "7",
+        "25",
+        "5",
+        "1"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "For a right triangle with legs 6 cm and 8 cm, what does 6² + 8² represent?",
+      "choices": [
+        "The square of its hypotenuse length",
+        "Its hypotenuse length without taking a square root",
+        "Its perimeter",
+        "Its area"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "A right triangle has hypotenuse 13 and one leg 5. What is the other leg?",
+      "choices": [
+        "8",
+        "18",
+        "√194",
+        "12"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which lengths form a right triangle?",
+      "choices": [
+        "5, 5, 5",
+        "5, 12, 13",
+        "4, 5, 6",
+        "3, 4, 6"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is the hypotenuse length of a right triangle with both legs 1?",
+      "choices": [
+        "2",
+        "√2",
+        "1",
+        "1/2"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why must the right angle be identified before applying the Pythagorean theorem directly?",
+      "choices": [
+        "The theorem requires an equilateral triangle",
+        "The longest side must be called a",
+        "Every triangle satisfies a² + b² = c²",
+        "The theorem's leg-hypotenuse relationship assumes a right triangle"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How do you find a missing leg when hypotenuse c and leg a are known?",
+      "choices": [
+        "Take the positive square root of c² − a²",
+        "Take the positive square root of c² + a²",
+        "Subtract a from c without squaring",
+        "Add a and c"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "A right triangle's legs double in length. How does its hypotenuse change?",
+      "choices": [
+        "It stays unchanged",
+        "It quadruples",
+        "It doubles",
+        "It is halved"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Which statement about a right triangle is true?",
+      "choices": [
+        "The hypotenuse can be shorter than both legs",
+        "The legs must be equal",
+        "The hypotenuse always equals the sum of the legs",
+        "The hypotenuse is longer than either leg"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "How does the converse of the Pythagorean theorem help classify a triangle?",
+      "choices": [
+        "Every triangle with integer sides is right",
+        "A triangle is right only if two sides are equal",
+        "If a² + b² = c² for the longest side c, the triangle is right",
+        "Any triangle with perimeter c² is right"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "A triangle has side lengths 7, 24, and 25. What does 7² + 24² = 25² establish?",
+      "choices": [
+        "It is a right triangle",
+        "It is equilateral",
+        "It has two right angles",
+        "It is not a triangle"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "A rectangle has side lengths 5 and 12. What is its diagonal length?",
+      "choices": [
+        "17",
+        "13",
+        "60",
+        "√119"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why is the positive square root used for a side length?",
+      "choices": [
+        "A negative number cannot ever be squared",
+        "Square roots always have two positive values",
+        "The hypotenuse must be a whole number",
+        "A geometric length is positive in a nondegenerate triangle"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A 10 m ladder reaches 8 m up a vertical wall on level ground. How far is its base from the wall?",
+      "choices": [
+        "2 m",
+        "6 m",
+        "18 m",
+        "√164 m"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Two points are (1, 2) and (4, 6). What is their straight-line distance?",
+      "choices": [
+        "7 units",
+        "25 units",
+        "5 units",
+        "1 unit"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A square has side length 6 cm. What is its diagonal length?",
+      "choices": [
+        "6√2 cm",
+        "12 cm",
+        "36 cm",
+        "3√2 cm"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A student finds a hypotenuse by adding legs 9 and 12 to get 21. What is the correct hypotenuse?",
+      "choices": [
+        "15",
+        "21",
+        "225",
+        "3"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A rectangular field is 30 m by 40 m. How much shorter is the diagonal than a route along two adjacent sides?",
+      "choices": [
+        "50 m",
+        "10 m",
+        "20 m",
+        "70 m"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ]
+}

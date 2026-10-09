@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--physics--motion-speed-and-acceleration",
+  "title": "Motion Speed and Acceleration",
+  "subject": "Science",
+  "category": "Physics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is distance?",
+      "choices": [
+        "The direction of motion only",
+        "A change in velocity",
+        "The total length of a traveled path",
+        "The shortest directed change in position"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is displacement?",
+      "choices": [
+        "The force required to move an object",
+        "The total path length regardless of direction",
+        "The time spent moving",
+        "The directed change from initial to final position"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What information distinguishes velocity from speed?",
+      "choices": [
+        "Mass",
+        "Temperature",
+        "Direction",
+        "Volume"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is acceleration?",
+      "choices": [
+        "Change in velocity per unit time",
+        "Distance divided by mass",
+        "Force multiplied by time",
+        "Total distance traveled"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which unit is commonly used for speed?",
+      "choices": [
+        "Joules",
+        "Meters per second squared",
+        "Newtons",
+        "Meters per second"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "How is average speed calculated?",
+      "choices": [
+        "Displacement divided by mass",
+        "Total distance divided by elapsed time",
+        "Distance multiplied by time",
+        "Elapsed time divided by total distance"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "On a position-versus-time graph, what does slope represent?",
+      "choices": [
+        "Mass",
+        "Velocity",
+        "Temperature",
+        "Force"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why can an object accelerate while keeping constant speed?",
+      "choices": [
+        "Acceleration depends only on increasing mass",
+        "Constant speed requires a changing temperature",
+        "Its direction of motion can change",
+        "Its distance must remain zero"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What does a horizontal line on a position-versus-time graph mean?",
+      "choices": [
+        "The object's position remains constant",
+        "The object moves faster each second",
+        "The object has infinite velocity",
+        "The object moves in a circle"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "How does a steeper positive slope on a position-versus-time graph compare with a shallower positive slope?",
+      "choices": [
+        "It indicates a larger mass",
+        "It indicates a longer elapsed time only",
+        "It indicates a lower speed",
+        "It indicates a greater positive velocity"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why must a reference point be specified when describing motion?",
+      "choices": [
+        "Position and motion are described relative to a reference frame",
+        "Every object has the same velocity for all observers",
+        "Reference points determine an object's mass",
+        "Motion requires a moving observer in every case"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "An object slows while moving east. In which direction is its acceleration?",
+      "choices": [
+        "East",
+        "North",
+        "West",
+        "South"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "How can average speed differ from the speed at a particular instant?",
+      "choices": [
+        "Average speed always equals the highest speed reached",
+        "Average speed cannot include stops",
+        "Instantaneous speed measures mass rather than motion",
+        "Motion can vary during the measured interval"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What does a straight line with negative slope on a position-versus-time graph indicate?",
+      "choices": [
+        "Speed increasing toward the positive direction",
+        "Constant velocity in the negative direction",
+        "A stationary object",
+        "Increasing mass at fixed position"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What does a velocity-versus-time graph's slope represent?",
+      "choices": [
+        "Distance directly",
+        "Acceleration",
+        "Position only",
+        "Mass directly"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A cyclist travels 60 m in 12 s. What is the average speed?",
+      "choices": [
+        "0.2 m/s",
+        "72 m/s",
+        "48 m/s",
+        "5 m/s"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A runner goes 100 m east and then 100 m west to the starting point. What is the displacement?",
+      "choices": [
+        "0 m",
+        "100 m east",
+        "100 m west",
+        "200 m east"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A car's velocity increases from 4 m/s east to 10 m/s east in 3 s. What is its average acceleration?",
+      "choices": [
+        "14 m/s² east",
+        "3 m/s² east",
+        "2 m/s² east",
+        "6 m/s² east"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A cart starts at 2 m/s and accelerates steadily at 3 m/s² for 4 s in the same direction. Using v = v₀ + at, what is its final speed?",
+      "choices": [
+        "14 m/s",
+        "8 m/s",
+        "12 m/s",
+        "5 m/s"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Two walkers cover the same distance. One takes half as much time. How do their average speeds compare?",
+      "choices": [
+        "The faster walker has half the average speed",
+        "The faster walker has twice the average speed",
+        "Their average speeds are equal",
+        "The speed ratio cannot be found from this information"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}

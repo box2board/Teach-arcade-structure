@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "geography--east-asia",
+  "title": "East Asia",
+  "subject": "Social Studies",
+  "category": "Geography",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which ocean borders East Asia's eastern coast?",
+      "choices": [
+        "Atlantic Ocean",
+        "Indian Ocean",
+        "Pacific Ocean",
+        "Arctic Ocean"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which East Asian country is a large archipelago east of the Korean Peninsula?",
+      "choices": [
+        "Japan",
+        "Mongolia",
+        "China",
+        "Nepal"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which desert extends across parts of Mongolia and northern China?",
+      "choices": [
+        "Sahara",
+        "Atacama",
+        "Kalahari",
+        "Gobi"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which landform contains both North Korea and South Korea?",
+      "choices": [
+        "An island chain",
+        "The Korean Peninsula",
+        "The Tibetan Plateau",
+        "An inland river delta"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which major Chinese river is also called the Chang Jiang?",
+      "choices": [
+        "Yangtze",
+        "Indus",
+        "Mekong",
+        "Amur"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which plateau lies in western China north of the Himalayas?",
+      "choices": [
+        "Deccan Plateau",
+        "Brazilian Highlands",
+        "Tibetan Plateau",
+        "Ethiopian Highlands"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which country is landlocked between Russia and China?",
+      "choices": [
+        "South Korea",
+        "Japan",
+        "Vietnam",
+        "Mongolia"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why is Japan especially exposed to earthquakes?",
+      "choices": [
+        "Its islands lack nearby ocean trenches",
+        "It lies near boundaries of moving tectonic plates",
+        "Earthquakes occur only where winters are cold",
+        "Its climate is identical to Mongolia's"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why have many large settlements developed in China's eastern river plains?",
+      "choices": [
+        "Water, fertile land, and transport routes support settlement",
+        "The region has no access to agricultural land",
+        "The plains are permanently covered by thick glaciers",
+        "Eastern China is separated from every trade route"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "How can mountainous terrain affect settlement patterns in Japan?",
+      "choices": [
+        "It requires all settlements to be on mountain summits",
+        "It eliminates the need for transportation networks",
+        "It concentrates many settlements in limited coastal plains and valleys",
+        "It makes all parts of the country equally suited to farming"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why are major coastal ports important to East Asian manufacturing centers?",
+      "choices": [
+        "They remove all transportation costs",
+        "They replace the need for skilled workers",
+        "They prevent exchange with overseas markets",
+        "They connect imported materials and exported goods to world shipping"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why can livestock herding be well suited to parts of Mongolia?",
+      "choices": [
+        "Its entire territory is tropical rainforest",
+        "Grasslands support grazing where crop farming can be difficult",
+        "Its economy depends only on coral-reef fishing",
+        "Its climate permits several rice harvests in every region"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "How does seasonal wind circulation affect parts of East Asia?",
+      "choices": [
+        "It contributes to seasonal differences in rainfall and temperature",
+        "It prevents every tropical cyclone from forming",
+        "It makes inland and coastal climates identical",
+        "It stops ocean moisture from reaching all land areas"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why is it misleading to describe all of China as having one climate?",
+      "choices": [
+        "Climate is determined only by national language",
+        "The country has no significant elevation differences",
+        "Its large area spans different latitudes, elevations, and distances from the sea",
+        "All Chinese regions receive rainfall on the same days"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What environmental tradeoff can arise from rapid urban and industrial growth?",
+      "choices": [
+        "All agricultural land becomes more productive automatically",
+        "Cities no longer need water or energy",
+        "Population growth stops affecting infrastructure",
+        "Economic growth may increase pollution and resource demand"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A factory depends heavily on imported raw materials and overseas sales. Which location offers a clear transportation advantage?",
+      "choices": [
+        "An inland site far from freight connections but with cheaper land",
+        "A site near an efficient seaport",
+        "A location selected only because electricity prices are lower",
+        "A location near the owner's home regardless of supply routes"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Which comparison best distinguishes Mongolia from Japan geographically?",
+      "choices": [
+        "Mongolia is landlocked; Japan is an island country",
+        "Both are peninsulas connected to Europe",
+        "Mongolia is tropical; Japan is entirely polar",
+        "Both lack mountain ranges and inland plains"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A map shows dense settlement along a river and sparse settlement in a dry interior basin. Which factor most directly explains part of this pattern?",
+      "choices": [
+        "Identical access to water in both regions",
+        "The absence of any geographic influence on settlement",
+        "Differences in water access and agricultural opportunities",
+        "The requirement that all cities be national capitals"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A city plans for earthquake risk. Which information is most relevant to that planning?",
+      "choices": [
+        "Distances from the city to its overseas export markets",
+        "The timing of annual tourism festivals",
+        "Average commute lengths in neighborhoods without hazard data",
+        "Fault locations, ground conditions, and building vulnerability"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Why should a regional study compare several East Asian societies rather than treat one as representative of all?",
+      "choices": [
+        "Regional neighbors never share historical connections",
+        "The region includes different environments, cultures, and political systems",
+        "All societies in the region have identical economic activities",
+        "Country boundaries eliminate every cultural difference"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--algebra-2-functions--polynomials-and-operations",
+  "title": "Polynomials and Operations",
+  "subject": "Math",
+  "category": "Algebra II & Functions",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is the degree of 5x³ − 2x + 7?",
+      "choices": [
+        "5",
+        "7",
+        "3",
+        "1"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which expression is a polynomial in x?",
+      "choices": [
+        "1/x + 2",
+        "3x² + 2x − 1",
+        "√x + 1",
+        "x⁻² + 4"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "How many terms does the trinomial x² + 3x + 2 contain?",
+      "choices": [
+        "2",
+        "1",
+        "4",
+        "3"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is (2x² + 3x) + (x² − x)?",
+      "choices": [
+        "3x² + 4x",
+        "2x⁴ + 2x",
+        "3x³",
+        "3x² + 2x"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is (5x² + 2) − (3x² − 4)?",
+      "choices": [
+        "2x² − 2",
+        "2x² + 6",
+        "8x² − 2",
+        "2x² − 6"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is (3x)(2x²)?",
+      "choices": [
+        "5x³",
+        "6x²",
+        "6x³",
+        "6x⁴"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is (x + 2)(x + 3)?",
+      "choices": [
+        "x² + 5x + 6",
+        "x² + 6",
+        "x² + 6x + 5",
+        "2x + 5"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why is x² + x not generally simplified to 2x³?",
+      "choices": [
+        "All polynomial terms must have equal coefficients",
+        "The terms have different powers and are not like terms",
+        "Powers must always be added during addition",
+        "Only constants can be combined"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What is the leading coefficient of −4x³ + 2x² − 7?",
+      "choices": [
+        "−4",
+        "3",
+        "2",
+        "−7"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What is (x + 4)²?",
+      "choices": [
+        "x² + 16",
+        "x² + 4x + 16",
+        "x² + 8x + 16",
+        "2x + 8"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What is (x + 5)(x − 5)?",
+      "choices": [
+        "x² + 25",
+        "x² − 10x + 25",
+        "x² + 10x − 25",
+        "x² − 25"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What is 2x(x² − 3x + 4)?",
+      "choices": [
+        "2x³ − 3x + 4",
+        "2x³ − 6x² + 8x",
+        "2x² − 6x + 8",
+        "2x³ − 6x + 8"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why does subtraction of a polynomial in parentheses require care?",
+      "choices": [
+        "Only the leading term changes sign",
+        "Subtraction doubles every coefficient",
+        "All exponents decrease by one",
+        "The minus sign changes the sign of every term inside"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What is the degree of a nonzero constant polynomial?",
+      "choices": [
+        "0",
+        "1",
+        "Undefined for every constant",
+        "The constant's value"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Which exponent is permitted in a polynomial term in one variable?",
+      "choices": [
+        "Any negative integer",
+        "Any fractional number",
+        "A nonnegative integer",
+        "Any irrational number"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A square has side x + 3. Which polynomial represents its area?",
+      "choices": [
+        "x² + 9",
+        "2x + 6",
+        "x² + 6x + 9",
+        "x² + 3x + 9"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A rectangle has sides x + 2 and x − 1, with x > 1. What is its area?",
+      "choices": [
+        "x² + x − 2",
+        "x² + 3x − 2",
+        "x² − x + 2",
+        "2x + 1"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A student writes (x + 2)² = x² + 4. Which term is missing?",
+      "choices": [
+        "2x",
+        "x",
+        "8x",
+        "4x"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "What is the value of x³ − 2x + 1 at x = −2?",
+      "choices": [
+        "−11",
+        "−3",
+        "13",
+        "5"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "One polynomial is 4x² + x − 6. Subtracting another gives 2x² − 3x + 1. What is the subtracted polynomial?",
+      "choices": [
+        "2x² + 4x − 7",
+        "6x² − 2x − 5",
+        "2x² − 2x − 5",
+        "2x² + 4x + 7"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}

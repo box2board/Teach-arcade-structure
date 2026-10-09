@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--geometry--quadrilaterals-and-polygons",
+  "title": "Quadrilaterals and Polygons",
+  "subject": "Math",
+  "category": "Geometry",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a polygon?",
+      "choices": [
+        "A closed plane figure formed by straight segments",
+        "Any closed curve",
+        "A three-dimensional solid",
+        "An open chain of segments"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "How many sides does a pentagon have?",
+      "choices": [
+        "4",
+        "6",
+        "8",
+        "5"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is true of every parallelogram?",
+      "choices": [
+        "All four sides are equal",
+        "All four angles are right angles",
+        "Both pairs of opposite sides are parallel",
+        "Only one pair of opposite sides is parallel"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is true of every rectangle?",
+      "choices": [
+        "All four sides are equal",
+        "All four angles are right angles",
+        "Its diagonals are always perpendicular",
+        "It has exactly one pair of parallel sides"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is true of every rhombus?",
+      "choices": [
+        "All four sides are equal",
+        "All four angles are right angles",
+        "Its diagonals have equal lengths in every case",
+        "Only one pair of opposite sides is parallel"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which description is true of a square?",
+      "choices": [
+        "It is a rectangle but never a rhombus",
+        "It is a rhombus but never a rectangle",
+        "It has only one pair of parallel sides",
+        "It is both a rectangle and a rhombus"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is a regular polygon?",
+      "choices": [
+        "A polygon with only equal sides",
+        "A polygon with only equal angles",
+        "A polygon with equal side lengths and equal angle measures",
+        "Any polygon with at least five sides"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "What is the interior-angle sum of a quadrilateral?",
+      "choices": [
+        "180°",
+        "360°",
+        "540°",
+        "720°"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why does an n-sided polygon have interior-angle sum (n − 2)180°?",
+      "choices": [
+        "A convex polygon can be divided into n − 2 triangles from one vertex",
+        "Every polygon has n right angles",
+        "Its exterior angles total n × 180°",
+        "Every side contributes exactly 180°"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What is the interior-angle sum of a hexagon?",
+      "choices": [
+        "360°",
+        "540°",
+        "1080°",
+        "720°"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What is each interior angle of a regular pentagon?",
+      "choices": [
+        "72°",
+        "120°",
+        "108°",
+        "90°"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What is the sum of one exterior turning angle at each vertex of a convex polygon?",
+      "choices": [
+        "180°",
+        "360°",
+        "720°",
+        "It depends on the number of sides"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Opposite angles of a parallelogram are 65° and which measure?",
+      "choices": [
+        "65°",
+        "115°",
+        "130°",
+        "90°"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "A parallelogram has one angle of 70°. What is an adjacent angle?",
+      "choices": [
+        "70°",
+        "140°",
+        "20°",
+        "110°"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What property of a parallelogram's diagonals holds in every case?",
+      "choices": [
+        "They are equal in length",
+        "They are perpendicular",
+        "They bisect each other",
+        "They bisect every vertex angle"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A regular polygon has exterior angles of 30°. How many sides does it have?",
+      "choices": [
+        "6",
+        "12",
+        "10",
+        "18"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A quadrilateral has three interior angles of 80°, 95°, and 105°. What is the fourth?",
+      "choices": [
+        "80°",
+        "100°",
+        "60°",
+        "180°"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A polygon has interior-angle sum 900°. How many sides does it have?",
+      "choices": [
+        "5",
+        "9",
+        "10",
+        "7"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Why is an equilateral triangle regular but a nonsquare rhombus not regular?",
+      "choices": [
+        "Regular shapes must have exactly three sides",
+        "A rhombus has curved sides",
+        "The triangle also has equal angles; the rhombus does not",
+        "Only triangles can be regular"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A student says every rhombus is a square. Which missing condition would make the statement valid?",
+      "choices": [
+        "The rhombus has four equal sides",
+        "The rhombus has a right angle",
+        "The rhombus has opposite parallel sides",
+        "The rhombus has intersecting diagonals"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}

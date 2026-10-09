@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--geometry--angles-and-parallel-lines",
+  "title": "Angles and Parallel Lines",
+  "subject": "Math",
+  "category": "Geometry",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "How many degrees are in a right angle?",
+      "choices": [
+        "45°",
+        "180°",
+        "360°",
+        "90°"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is the sum of complementary angles?",
+      "choices": [
+        "180°",
+        "90°",
+        "270°",
+        "360°"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is the sum of supplementary angles?",
+      "choices": [
+        "180°",
+        "90°",
+        "270°",
+        "360°"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "How are vertical angles formed by two intersecting straight lines related?",
+      "choices": [
+        "They always sum to 90°",
+        "They always sum to 360°",
+        "They have equal measures",
+        "They must both be right angles"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "An angle measures 35°. What is its complement?",
+      "choices": [
+        "145°",
+        "55°",
+        "65°",
+        "325°"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "An angle measures 120°. What is its supplement?",
+      "choices": [
+        "30°",
+        "120°",
+        "240°",
+        "60°"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is a transversal?",
+      "choices": [
+        "A segment joining a triangle's midpoint to a vertex",
+        "A line that never intersects another line",
+        "A ray dividing every angle into equal parts",
+        "A line crossing two or more lines at distinct points"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "When parallel lines are cut by a transversal, how do alternate interior angles compare?",
+      "choices": [
+        "They sum to 90°",
+        "They are equal",
+        "They must be unequal",
+        "They always sum to 360°"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "When parallel lines are cut by a transversal, how do same-side interior angles relate?",
+      "choices": [
+        "They are always equal",
+        "They are complementary",
+        "They are supplementary",
+        "They must both be acute"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Which angle measure is obtuse?",
+      "choices": [
+        "125°",
+        "45°",
+        "90°",
+        "180°"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Two adjacent angles form a straight line. One is 68°. What is the other?",
+      "choices": [
+        "22°",
+        "112°",
+        "68°",
+        "292°"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why are two angles forming a linear pair supplementary?",
+      "choices": [
+        "Together they form a straight angle",
+        "They are opposite angles at an intersection",
+        "They must have equal lengths",
+        "They are always right angles"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Corresponding angles measure 70° and 70° when a transversal cuts two coplanar lines. What does this imply?",
+      "choices": [
+        "The transversal is parallel to both lines",
+        "The two lines must be perpendicular",
+        "The two lines are parallel",
+        "The angles are supplementary"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "How many degrees are in one full turn?",
+      "choices": [
+        "180°",
+        "90°",
+        "270°",
+        "360°"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "If one vertical angle measures 47°, what is the opposite vertical angle?",
+      "choices": [
+        "133°",
+        "47°",
+        "43°",
+        "313°"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Two vertical angles have measures 3x + 5 and 5x − 15 degrees. What is x?",
+      "choices": [
+        "5",
+        "20",
+        "−10",
+        "10"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Two same-side interior angles between parallel lines measure x and 2x degrees. What is x?",
+      "choices": [
+        "60",
+        "90",
+        "120",
+        "45"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A student assumes corresponding angles are equal without knowing whether the lines are parallel. What is missing?",
+      "choices": [
+        "A condition that the transversal is horizontal",
+        "A requirement that every angle be acute",
+        "A condition establishing that the lines are parallel",
+        "The lengths of the drawn line segments"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Two complementary angles have measures x and x + 10 degrees. What is the smaller angle?",
+      "choices": [
+        "45°",
+        "50°",
+        "40°",
+        "85°"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A pair of corresponding angles between parallel lines measures 4x and 100 degrees. What is x?",
+      "choices": [
+        "25",
+        "40",
+        "96",
+        "400"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}

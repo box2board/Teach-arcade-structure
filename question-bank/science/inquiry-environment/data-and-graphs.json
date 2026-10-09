@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--inquiry-environment--data-and-graphs",
+  "title": "Data and Graphs",
+  "subject": "Science",
+  "category": "Scientific Inquiry & Environmental Science",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What does a graph's horizontal axis usually show in a simple experiment?",
+      "choices": [
+        "The investigator's conclusion",
+        "Only the graph's title",
+        "The independent variable",
+        "The dependent variable in every experiment"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What does a graph's vertical axis usually show in a simple experiment?",
+      "choices": [
+        "Only the instrument name",
+        "The control group's label in every experiment",
+        "Only the date of publication",
+        "The dependent variable"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which graph is generally best for comparing separate categories?",
+      "choices": [
+        "Bar graph",
+        "Unlabeled line graph",
+        "Scatterplot with no category labels",
+        "Map without a scale"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which graph is commonly useful for showing change over time?",
+      "choices": [
+        "An unordered list of symbols",
+        "A line graph",
+        "A single unlabeled bar",
+        "A diagram without values"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is the arithmetic mean of a data set?",
+      "choices": [
+        "The sum of the values divided by the number of values",
+        "The difference between the greatest and smallest values",
+        "The most frequent value only",
+        "The middle value after sorting only"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is the median?",
+      "choices": [
+        "The total of all values",
+        "The most frequent value",
+        "The middle value or mean of the two middle values in ordered data",
+        "The largest value minus the smallest value"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is an outlier?",
+      "choices": [
+        "The average of all measurements",
+        "A value unusually far from the rest of the data",
+        "The label of a control group",
+        "A value that must always be deleted"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why should graph axes include units?",
+      "choices": [
+        "Units make every relationship causal",
+        "Units guarantee the absence of errors",
+        "Units determine which conclusion must be chosen",
+        "Units help readers interpret the values correctly"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What does a positive association in a scatterplot mean?",
+      "choices": [
+        "Larger values of one variable tend to occur with larger values of the other",
+        "One variable definitely causes the other",
+        "All points must lie exactly on a straight line",
+        "The two variables always have identical units"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why can a truncated vertical axis make differences look larger?",
+      "choices": [
+        "It changes the original measurements",
+        "It makes the sample more representative",
+        "It displays only a narrow portion of the full numerical scale",
+        "It removes outliers from the data"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why should error bars be defined in a graph's caption?",
+      "choices": [
+        "They always show the same quantity in every study",
+        "They may represent different measures of spread or uncertainty",
+        "They identify which hypothesis is correct",
+        "They eliminate uncertainty from the results"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What is interpolation?",
+      "choices": [
+        "Predicting far outside the measured range",
+        "Replacing observations with expected values",
+        "Selecting only values that support a hypothesis",
+        "Estimating a value between measured data points"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why should extrapolation be used cautiously?",
+      "choices": [
+        "No graph can show a relationship",
+        "A trend may not continue outside the measured range",
+        "Measured values must all be wrong",
+        "A larger prediction always has a smaller uncertainty"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why can a biased sample lead to misleading conclusions?",
+      "choices": [
+        "It may not represent the population being studied",
+        "Every sample must include the entire population",
+        "It always contains too many measurements",
+        "It prevents calculation of an average"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What should a student do before deleting an unusual measurement?",
+      "choices": [
+        "Remove it whenever it differs from the mean",
+        "Change it to the expected value",
+        "Keep only the highest values",
+        "Investigate possible causes and document any justified exclusion"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A plant's heights are 4, 6, and 8 centimeters over three measurements. What is the mean height?",
+      "choices": [
+        "4 centimeters",
+        "8 centimeters",
+        "6 centimeters",
+        "18 centimeters"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "The ordered values are 2, 3, 4, 5, and 26. What is the median?",
+      "choices": [
+        "5",
+        "8",
+        "26",
+        "4"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "At 10 seconds, a temperature is 20°C; at 20 seconds, it is 30°C. Assuming a linear change between these points, what is the estimated temperature at 15 seconds?",
+      "choices": [
+        "15°C",
+        "25°C",
+        "35°C",
+        "50°C"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A survey about school lunches includes only members of one sports team. What is the main concern?",
+      "choices": [
+        "Survey data cannot use percentages",
+        "Athletes cannot answer survey questions",
+        "The sample may not represent the whole school",
+        "The survey must have more than one dependent variable"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Two groups have different average results, but their measurements vary widely. What additional information helps evaluate the difference?",
+      "choices": [
+        "Sample sizes and measures of variation or uncertainty",
+        "Only the largest value from each group",
+        "Only whether the averages are whole numbers",
+        "Only the experiment's title"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}

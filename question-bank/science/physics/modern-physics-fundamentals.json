@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--physics--modern-physics-fundamentals",
+  "title": "Modern Physics Fundamentals",
+  "subject": "Science",
+  "category": "Physics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a photon?",
+      "choices": [
+        "An electron emitted from a metal",
+        "A quantum of electromagnetic radiation",
+        "A quantized vibration of air molecules",
+        "An atomic nucleus after radioactive decay"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "How does photon energy depend on light frequency?",
+      "choices": [
+        "It decreases with frequency",
+        "It is independent of frequency",
+        "It increases with frequency",
+        "It equals frequency only when light is red"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is the photoelectric effect?",
+      "choices": [
+        "Absorption of electrons when a circuit is grounded",
+        "Emission of light when electrons change atomic levels",
+        "Heating of a surface without emission of electrons",
+        "Emission of electrons from a material when suitable light strikes it"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What does a discrete atomic energy level mean?",
+      "choices": [
+        "An electron can occupy certain allowed energies",
+        "An electron can have only zero energy",
+        "Every atom has one continuous energy level",
+        "Energy cannot be exchanged by atoms"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is an atomic emission spectrum?",
+      "choices": [
+        "A list of an atom's possible masses",
+        "Specific wavelengths of light emitted by excited atoms",
+        "A continuous sound produced by atoms",
+        "A photograph showing each neutron"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What does wave-particle duality describe?",
+      "choices": [
+        "A particle must become two separate objects",
+        "Only water waves can carry energy",
+        "Quantum objects can display both wave-like and particle-like behavior",
+        "Light has mass identical to a rock"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What does E = mc² express?",
+      "choices": [
+        "A relationship between acceleration and applied force",
+        "A relationship between electric field and charge",
+        "A relationship between photon energy and frequency",
+        "A relationship between mass and energy"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why does an atom emit a photon when an electron moves to a lower allowed energy level?",
+      "choices": [
+        "The photon carries the energy difference",
+        "The photon supplies the energy needed to raise the electron",
+        "The electron drops without any energy transfer",
+        "The emitted photon has energy unrelated to the levels"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why do different elements often have different spectral lines?",
+      "choices": [
+        "Every element has identical electronic energy differences",
+        "They have different arrangements of allowed electronic energies",
+        "Spectral lines depend only on the distance of the element",
+        "Elements differ in brightness but never in wavelength patterns"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "In the basic photoelectric model, why may intense low-frequency light fail to eject electrons?",
+      "choices": [
+        "Photon energy depends only on the total beam brightness",
+        "Any frequency must eject electrons if exposure lasts long enough",
+        "Each photon's energy is below the required threshold",
+        "Lower frequency always gives each photon greater energy"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What effect can higher frequency have on emitted electrons when both frequencies exceed the threshold?",
+      "choices": [
+        "Their maximum kinetic energy decreases",
+        "Their maximum kinetic energy stays fixed at every frequency",
+        "Only their number can change; their energy cannot change",
+        "Their maximum kinetic energy increases"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What does special relativity say about the speed of light in a vacuum for inertial observers?",
+      "choices": [
+        "They measure the same speed of light",
+        "Light speed is added to each observer's speed",
+        "Light speed depends on the observer's mass",
+        "Light speed depends on photon frequency in a vacuum"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "How does quantum probability differ from a simple classical track picture of an electron?",
+      "choices": [
+        "It assigns a definite classical circular track in every measurement",
+        "It predicts likelihoods of measurement outcomes",
+        "It means all positions have equal probability",
+        "It prevents statistical predictions for repeated experiments"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why can electron diffraction provide evidence of wave-like behavior?",
+      "choices": [
+        "Their beams always follow one unchanged straight path",
+        "Their kinetic energy cannot be measured",
+        "Electrons form interference patterns",
+        "They interact with detectors only as uncharged particles"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "In a semiconductor, why can adding small amounts of selected impurities change conductivity?",
+      "choices": [
+        "It changes only the sample's mass and not electron behavior",
+        "It necessarily reduces every semiconductor's conductivity to zero",
+        "It changes conductivity only by enlarging the sample",
+        "It changes the availability of charge carriers"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Two light beams have photon frequencies f and 2f. How do their individual photon energies compare?",
+      "choices": [
+        "The second photon has twice the energy",
+        "The second photon has half the energy",
+        "Their photon energies are equal",
+        "The second photon has four times the energy"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "An electron moves between energy levels separated by 3 energy units. What is the emitted photon's energy?",
+      "choices": [
+        "0 units",
+        "3 units",
+        "1.5 units",
+        "6 units"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A material's electron-emission threshold is 4 energy units. Which photon can eject an electron in the basic one-photon model?",
+      "choices": [
+        "A photon with 3 energy units",
+        "A photon with 2 energy units",
+        "A photon with 5 energy units",
+        "A photon with 1 energy unit"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A gas emits three narrow visible spectral lines. What does this most directly support?",
+      "choices": [
+        "Its electrons can have every possible energy equally",
+        "Its nuclei have no protons",
+        "Its light must be sound",
+        "Its atoms exchange energy in particular amounts"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "An experiment counts more photons of unchanged frequency striking a detector. What increases?",
+      "choices": [
+        "Total delivered energy, while energy per photon stays the same",
+        "Energy per photon, while total energy stays the same",
+        "The vacuum speed of each photon",
+        "The frequency of each photon"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}

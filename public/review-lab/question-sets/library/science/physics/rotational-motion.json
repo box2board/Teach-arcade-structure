@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--physics--rotational-motion",
+  "title": "Rotational Motion",
+  "subject": "Science",
+  "category": "Physics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is angular displacement?",
+      "choices": [
+        "Distance along a straight path regardless of rotation",
+        "Change in tangential speed",
+        "Change in the rotation axis's mass",
+        "Change in rotational position measured as an angle"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is angular velocity?",
+      "choices": [
+        "Rate of change of angular position",
+        "Rate of change of mass",
+        "Force multiplied by time",
+        "Energy divided by distance"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is torque?",
+      "choices": [
+        "The linear speed of every point on a wheel",
+        "The turning effect of a force about an axis",
+        "The mass of an object multiplied by temperature",
+        "The amount of charge stored in a battery"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What does rotational inertia describe?",
+      "choices": [
+        "The rate at which angular position changes",
+        "The turning effect of an applied force",
+        "Resistance to changes in rotational motion",
+        "The total number of turns in one second"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which SI unit is commonly used for torque?",
+      "choices": [
+        "Kilogram per meter",
+        "Watt per second",
+        "Meter per second",
+        "Newton-meter"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is angular acceleration?",
+      "choices": [
+        "Rate of change of angular velocity",
+        "Rate of change of circumference",
+        "The radius of a rotating body",
+        "The total number of rotations ever completed"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is angular momentum?",
+      "choices": [
+        "The torque required to start an object from rest",
+        "A quantity describing rotational motion that can be conserved",
+        "The distance traveled by a point in one turn",
+        "The tangential speed at the object's center"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why is it easier to open a door by pushing far from the hinges?",
+      "choices": [
+        "The same force produces less torque but greater angular speed",
+        "The door's rotational inertia changes when the push position changes",
+        "The same perpendicular force produces greater torque",
+        "Only a push close to the hinge can cause angular acceleration"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How does moving mass farther from a rotation axis affect rotational inertia?",
+      "choices": [
+        "It reduces inertia because the axis is farther away",
+        "It leaves inertia unchanged if total mass is unchanged",
+        "It changes angular velocity without any relation to inertia",
+        "It generally increases it"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Two points on a rigid spinning disk have different radii. Which quantity is the same for both?",
+      "choices": [
+        "Angular velocity",
+        "Tangential speed",
+        "Distance traveled in one turn",
+        "Centripetal acceleration"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why does an isolated skater spin faster when pulling in the arms?",
+      "choices": [
+        "Rotational inertia increases while angular momentum stays fixed",
+        "Rotational inertia decreases while angular momentum is conserved",
+        "Pulling in the arms creates a net external torque by itself",
+        "Angular momentum increases while rotational inertia stays fixed"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "When is angular momentum conserved for a chosen system?",
+      "choices": [
+        "Whenever its angular speed is zero",
+        "Whenever its mass is nonzero",
+        "When net external torque is zero",
+        "Only when it has no kinetic energy"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "How is rolling without slipping different from sliding?",
+      "choices": [
+        "The whole wheel is instantaneously at rest",
+        "The contact point slides forward at the center's speed",
+        "The wheel's center remains at rest while the rim turns",
+        "The contact point is instantaneously at rest relative to the surface"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What happens when equal opposite torques act on a rigid body about one axis?",
+      "choices": [
+        "Net torque is zero, so angular acceleration is zero",
+        "The body must immediately stop rotating",
+        "Rotational inertia becomes zero",
+        "The body must rotate faster"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why can a spinning object have constant angular speed but moving points still accelerate?",
+      "choices": [
+        "Their speed magnitude must increase every turn",
+        "Their velocity directions change as they circle",
+        "Their velocity directions remain constant",
+        "Only changes in speed magnitude count as acceleration"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A perpendicular 10 N force acts 0.4 m from a pivot. What torque does it produce?",
+      "choices": [
+        "25 N·m",
+        "10.4 N·m",
+        "4 N·m",
+        "40 N·m"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A wheel makes 6 complete rotations in 3 s. What is its rotation rate?",
+      "choices": [
+        "18 rotations/s",
+        "0.5 rotations/s",
+        "9 rotations/s",
+        "2 rotations/s"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A rigid disk spins steadily. Point B is twice as far from the axis as point A. How do their tangential speeds compare?",
+      "choices": [
+        "B is twice as fast as A",
+        "Their speeds are equal",
+        "B is half as fast as A",
+        "B is four times as fast as A"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Angular velocity increases from 2 rad/s to 10 rad/s in 4 s. What is the average angular acceleration?",
+      "choices": [
+        "3 rad/s²",
+        "2 rad/s²",
+        "8 rad/s²",
+        "32 rad/s²"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Two identical masses rotate about an axis. In one arrangement they are close to it; in the other they are farther away. With equal applied torque, which accelerates more rapidly?",
+      "choices": [
+        "The arrangement with masses farther away",
+        "Both must have identical angular acceleration",
+        "The arrangement with masses closer to the axis",
+        "Neither can accelerate"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ]
+}

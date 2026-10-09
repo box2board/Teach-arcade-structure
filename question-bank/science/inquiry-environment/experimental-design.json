@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--inquiry-environment--experimental-design",
+  "title": "Experimental Design",
+  "subject": "Science",
+  "category": "Scientific Inquiry & Environmental Science",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is an independent variable in an experiment?",
+      "choices": [
+        "A factor deliberately changed by the investigator",
+        "The outcome being measured",
+        "A factor kept constant",
+        "An error in a measuring instrument"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is a dependent variable?",
+      "choices": [
+        "A factor deliberately held constant",
+        "The outcome measured in response to a change",
+        "The name of the experimental group",
+        "A prediction written before testing"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is a controlled variable?",
+      "choices": [
+        "An outcome that must increase",
+        "A treatment given only to one group",
+        "A factor kept consistent across comparison groups",
+        "A measurement removed from the results"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is the purpose of a control group?",
+      "choices": [
+        "To receive every possible treatment at once",
+        "To guarantee the expected result",
+        "To replace measurements with predictions",
+        "To provide a comparison for evaluating a treatment"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is a repeated trial?",
+      "choices": [
+        "A summary of someone else's conclusion",
+        "A change in all experimental variables",
+        "Another run of a test under the same planned conditions",
+        "A prediction made after deleting data"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is a confounding variable?",
+      "choices": [
+        "An additional factor that makes the treatment's effect difficult to separate",
+        "A factor that is perfectly controlled",
+        "The numerical unit used in a graph",
+        "A measurement that agrees with a hypothesis"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What does random assignment mean?",
+      "choices": [
+        "Choosing only volunteers who expect success",
+        "Using chance to place participants or subjects into treatment groups",
+        "Assigning groups by alphabetical order",
+        "Giving every group the same treatment"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why should comparison groups be similar before a treatment begins?",
+      "choices": [
+        "Similar groups eliminate all measurement uncertainty",
+        "Differences should be introduced after the results are known",
+        "Only identical outcomes can be compared",
+        "Initial differences could otherwise explain the results"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why is changing one main variable at a time often helpful?",
+      "choices": [
+        "It makes repeated trials unnecessary",
+        "It prevents all variation among subjects",
+        "It makes the effect of that variable easier to interpret",
+        "It ensures the hypothesis is supported"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why can more repeated trials improve an investigation?",
+      "choices": [
+        "They help reveal variation and reduce the influence of unusual results",
+        "They remove the need for a control group",
+        "They guarantee every measurement is identical",
+        "They allow researchers to select only favorable results"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How does random sampling differ from random assignment?",
+      "choices": [
+        "Sampling applies treatments; assignment selects measuring units",
+        "They always mean exactly the same thing",
+        "Sampling eliminates all bias; assignment eliminates all uncertainty",
+        "Sampling selects subjects from a population; assignment places them in study groups"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why should investigators decide how to measure an outcome before collecting data?",
+      "choices": [
+        "It makes actual measurements optional",
+        "It promotes consistent measurements and reduces selective interpretation",
+        "It allows the outcome to be changed whenever results disagree",
+        "It ensures that no unexpected result occurs"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why can blinding an observer improve an experiment?",
+      "choices": [
+        "It allows subjects to be measured without consent",
+        "It prevents instruments from recording data",
+        "It guarantees no confounding variables exist",
+        "Knowing the treatment can unintentionally influence observations"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What is a limitation of testing a treatment on only one organism?",
+      "choices": [
+        "Organisms cannot be measured",
+        "A single organism always represents its species perfectly",
+        "Individual differences may be mistaken for a treatment effect",
+        "Control groups are useful only with large organisms"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What makes an experimental conclusion appropriately cautious?",
+      "choices": [
+        "It states that the treatment works in every possible setting",
+        "It considers the tested conditions and the study's limitations",
+        "It ignores any variation in the results",
+        "It treats the original prediction as evidence"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Plants receive different fertilizer amounts, and their final heights are measured. What is the dependent variable?",
+      "choices": [
+        "Final plant height",
+        "Plant species",
+        "Pot size",
+        "Fertilizer amount"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A student tests light's effect on plant growth. Which factor should be kept consistent?",
+      "choices": [
+        "The amount of light being tested",
+        "The amount of water supplied",
+        "The resulting plant height",
+        "The difference between the groups' results"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A fertilizer group gets more water than a comparison group. Why is the conclusion uncertain?",
+      "choices": [
+        "Water cannot affect plants",
+        "The comparison group becomes an independent variable",
+        "The fertilizer must have no effect",
+        "The effects of fertilizer and water are confounded"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A new filter is tested with muddy water. What makes a useful comparison?",
+      "choices": [
+        "Compare filtered and unfiltered samples from the same starting mixture",
+        "Use clearer water for the new filter",
+        "Test untreated water from a different source only",
+        "Measure only the filter's color"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A researcher tests a material's strength using one sample, which breaks unusually early. What improvement best checks whether this result is typical?",
+      "choices": [
+        "Report the result without recording the procedure",
+        "Change the strength unit after the test",
+        "Test multiple comparable samples with the same procedure",
+        "Assume all samples will break at the same point"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ]
+}

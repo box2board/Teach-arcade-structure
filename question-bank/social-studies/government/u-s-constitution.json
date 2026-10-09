@@ -1,0 +1,255 @@
+{
+  "schemaVersion": 1,
+  "id": "government--u-s-constitution",
+  "title": "U.S. Constitution",
+  "subject": "Social Studies",
+  "category": "Government & Civics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which introductory section states the Constitution's purposes?",
+      "choices": [
+        "Bill of Rights",
+        "Article V",
+        "Preamble",
+        "Supremacy Clause"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "In what year was the Constitution signed at the Philadelphia convention?",
+      "choices": [
+        "1787",
+        "1776",
+        "1781",
+        "1791"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "How many articles are in the original Constitution?",
+      "choices": [
+        "Ten",
+        "Seven",
+        "Thirteen",
+        "Twenty-seven"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which article describes the constitutional amendment process?",
+      "choices": [
+        "Article I",
+        "Article II",
+        "Article III",
+        "Article V"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What does popular sovereignty mean in constitutional government?",
+      "choices": [
+        "Political authority ultimately comes from the people",
+        "Authority belongs permanently to hereditary rulers",
+        "Courts alone select all elected officials",
+        "States must use identical local governments"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is a constitutional amendment?",
+      "choices": [
+        "A court's schedule for hearing appeals",
+        "A presidential campaign promise",
+        "A formally adopted change or addition to the Constitution",
+        "A committee's temporary procedural rule"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "How many states had to ratify the Constitution for it to take effect under Article VII?",
+      "choices": [
+        "Seven",
+        "Nine",
+        "Ten",
+        "Thirteen"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why did the framers replace the Articles of Confederation?",
+      "choices": [
+        "They sought to restore Parliament's rule over the states",
+        "They wanted to remove every state government's authority",
+        "They intended to end all representative institutions",
+        "They sought a stronger national framework while limiting government power"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How does the Constitution reflect limited government?",
+      "choices": [
+        "Government institutions possess powers subject to legal boundaries",
+        "Officials can exercise any power they personally prefer",
+        "Election winners are exempt from constitutional restrictions",
+        "Government decisions require no legal justification"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What did the Great Compromise resolve?",
+      "choices": [
+        "Whether to allow any national government",
+        "Whether all states would have identical populations",
+        "Representation through a population-based House and equal-state Senate",
+        "Whether the Supreme Court would command the army"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why is the Three-Fifths Compromise not a grant of voting rights?",
+      "choices": [
+        "It made every enslaved person eligible to vote",
+        "It concerned apportionment and taxation, not political rights for enslaved people",
+        "It abolished slavery in every state",
+        "It established equal citizenship for all residents"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What does republican government emphasize?",
+      "choices": [
+        "All policies decided by a single royal family",
+        "The elimination of elections and legislatures",
+        "Government limited only by military commanders",
+        "Public authority exercised through representatives rather than hereditary monarchy"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "How can Congress formally propose an amendment?",
+      "choices": [
+        "By a two-thirds vote in both chambers",
+        "By a simple majority in the House alone",
+        "By obtaining the president's signature without a vote",
+        "By asking the Supreme Court to rewrite a clause"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What proportion of states must ratify a proposed amendment?",
+      "choices": [
+        "One-half",
+        "Two-thirds",
+        "Three-fourths",
+        "All states"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why was adding a bill of rights important to ratification debates?",
+      "choices": [
+        "Critics demanded that all states be abolished",
+        "Critics wanted explicit safeguards for individual liberties",
+        "Supporters wanted to eliminate every federal court",
+        "Supporters sought a permanent national monarchy"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A government official claims election victory permits ignoring constitutional restrictions. Which principle contradicts that claim?",
+      "choices": [
+        "Hereditary succession",
+        "Military supremacy",
+        "Absolute monarchy",
+        "Limited government"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Which sequence places these constitutional milestones correctly?",
+      "choices": [
+        "Convention, state ratification, implementation of the new government",
+        "Implementation, convention, state ratification",
+        "Ratification, implementation, convention",
+        "Convention, implementation, ratification"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A proposed amendment receives support from three-fourths of the states through the designated process. What stage is being completed?",
+      "choices": [
+        "Judicial appointment",
+        "Executive veto",
+        "Ratification",
+        "Legislative impeachment"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Why does an ordinary federal statute differ from a constitutional amendment?",
+      "choices": [
+        "A statute requires approval by three-fourths of states",
+        "An amendment changes the higher legal framework through a special process",
+        "An amendment is adopted only by presidential order",
+        "A statute can erase any constitutional restriction"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which evidence best supports the claim that the Constitution balances national and state authority?",
+      "choices": [
+        "It appoints one national governor over all states",
+        "It requires every state to surrender all lawmaking authority",
+        "It gives local officials sole control over foreign policy",
+        "It delegates federal powers while preserving a role for state governments"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ],
+  "referenceUrls": [
+    "https://www.archives.gov/founding-docs/constitution-transcript"
+  ]
+}
+

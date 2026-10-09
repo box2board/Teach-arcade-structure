@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--physical-science-chemistry--elements-compounds-and-mixtures",
+  "title": "Elements Compounds and Mixtures",
+  "subject": "Science",
+  "category": "Physical Science & Chemistry",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is an element?",
+      "choices": [
+        "Any substance containing two elements",
+        "A substance whose atoms have one proton number",
+        "A mixture with uniform appearance",
+        "A material separable by filtration into elements"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is a compound?",
+      "choices": [
+        "Any two substances stirred together",
+        "A substance containing elements chemically combined in fixed proportions",
+        "A substance containing only one kind of atom",
+        "A mixture with visible layers"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is a mixture?",
+      "choices": [
+        "A single type of atom",
+        "A substance with one required molecular formula",
+        "A material with no particles",
+        "Two or more substances combined without a fixed chemical composition"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which is an example of a homogeneous mixture?",
+      "choices": [
+        "Salt dissolved uniformly in water",
+        "Sand mixed with gravel",
+        "Oil floating on water",
+        "A sample of pure copper"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which is an example of a heterogeneous mixture?",
+      "choices": [
+        "Pure oxygen",
+        "Distilled water",
+        "Sand and iron filings",
+        "Uniform sugar solution"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which formula represents a compound?",
+      "choices": [
+        "O₂",
+        "He",
+        "Fe",
+        "CO₂"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is a solution?",
+      "choices": [
+        "A substance made of only one element",
+        "A homogeneous mixture of substances",
+        "Any material with visible layers",
+        "A chemical compound that must be liquid"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why is air usually classified as a mixture?",
+      "choices": [
+        "Its gases all have the same chemical formula",
+        "It contains only one kind of atom",
+        "It contains gases in proportions that can vary",
+        "Its components are chemically bonded into one molecule"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why is pure water a compound rather than a mixture?",
+      "choices": [
+        "Hydrogen and oxygen are chemically combined in a fixed ratio",
+        "Every drop contains variable amounts of hydrogen",
+        "It can be separated into gases by simple filtering",
+        "It is liquid at room temperature"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "How does a mixture's composition differ from a compound's?",
+      "choices": [
+        "A mixture can vary in component proportions; a compound has a fixed composition",
+        "A mixture always has one fixed formula",
+        "A compound's atom ratio changes with container size",
+        "Mixtures contain no elements"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why can filtration separate sand from water?",
+      "choices": [
+        "The filter changes sand into a new compound",
+        "The filter breaks water into hydrogen and oxygen",
+        "The sand particles are retained while water passes through",
+        "The dissolved atoms all become larger"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why is filtration alone usually ineffective for removing dissolved salt?",
+      "choices": [
+        "Salt has no mass in solution",
+        "Dissolved ions pass through ordinary filter pores with the water",
+        "Filtration removes only chemically bonded compounds",
+        "Salt becomes part of every water molecule"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What property allows a magnet to help separate iron filings from sand?",
+      "choices": [
+        "Iron has no density",
+        "Sand dissolves into the magnet",
+        "All solids are equally magnetic",
+        "Iron's magnetic response differs from sand's"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why does distillation work for suitable liquid mixtures?",
+      "choices": [
+        "Every component has exactly the same boiling point",
+        "Heating necessarily creates new elements",
+        "Components have different vaporization and condensation behavior",
+        "The heavier liquid always vanishes first"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "How can a pure element be distinguished conceptually from a compound?",
+      "choices": [
+        "An element must be a gas",
+        "A compound contains only one proton number",
+        "An element must have a lower mass",
+        "An element cannot be chemically decomposed into simpler substances made of different elements"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A diagram shows only identical O₂ molecules. How should the sample be classified?",
+      "choices": [
+        "A compound",
+        "A pure element",
+        "A homogeneous mixture",
+        "A heterogeneous mixture"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A diagram shows identical molecules containing hydrogen and oxygen in the same ratio. What is represented?",
+      "choices": [
+        "A pure compound",
+        "A single element",
+        "A mixture of unrelated atoms",
+        "A suspension"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A sample contains unbonded copper and sulfur particles. What is it before reaction?",
+      "choices": [
+        "A pure compound",
+        "A new element",
+        "A mixture",
+        "A single molecule"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Salt water is heated so that water evaporates and salt remains. What does this demonstrate?",
+      "choices": [
+        "A mixture can be separated using physical differences",
+        "Salt water is one element",
+        "Evaporation must convert salt into metal",
+        "Water and salt have identical volatility"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Two clear liquids are compared: pure water and sugar solution. Which conclusion is justified by appearance alone?",
+      "choices": [
+        "Both must be pure compounds",
+        "Both must be pure elements",
+        "Neither can contain dissolved substances",
+        "Clear appearance does not establish purity"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

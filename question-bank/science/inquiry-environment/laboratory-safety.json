@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--inquiry-environment--laboratory-safety",
+  "title": "Laboratory Safety",
+  "subject": "Science",
+  "category": "Scientific Inquiry & Environmental Science",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which eye protection is appropriate for a school activity with chemical-splash risk?",
+      "choices": [
+        "Ordinary reading glasses alone",
+        "Contact lenses alone",
+        "A face shield without required goggles",
+        "Chemical splash goggles specified by the teacher"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What source describes a chemical's hazards and handling precautions?",
+      "choices": [
+        "A periodic-table position alone",
+        "A Safety Data Sheet",
+        "The bottle's color alone",
+        "A student's prediction"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What should a student do if a laboratory instruction is unclear?",
+      "choices": [
+        "Improvise a replacement procedure",
+        "Use twice the listed material",
+        "Ask the teacher before proceeding",
+        "Skip all protective equipment"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which footwear is ordinarily appropriate for a school laboratory?",
+      "choices": [
+        "Closed-toe shoes",
+        "Open-toe sandals",
+        "Bare feet",
+        "Footwear exposing the toes"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What should be done with long hair before working near laboratory equipment?",
+      "choices": [
+        "Leave it loose near moving parts",
+        "Secure it away from equipment and materials",
+        "Hold it back only while reading instructions",
+        "Cover only the tips with gloves"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Who should supervise student laboratory work?",
+      "choices": [
+        "The teacher or designated qualified instructor",
+        "Only another student",
+        "No one if written instructions exist",
+        "An observer unfamiliar with the activity"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "How should laboratory chemical waste be handled?",
+      "choices": [
+        "Always poured into a sink",
+        "Always mixed with other leftover chemicals",
+        "According to the teacher's designated disposal procedures",
+        "Always returned to stock bottles"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why should food and drink be kept out of laboratory work areas?",
+      "choices": [
+        "All food produces dangerous chemical reactions",
+        "Drinking always changes experimental temperature",
+        "Food replaces the need for cleaning",
+        "They can become contaminated or lead to accidental exposure"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why should small spills and broken equipment be reported immediately?",
+      "choices": [
+        "Only large accidents affect safety",
+        "Even small incidents can create hazards requiring appropriate action",
+        "Reporting is useful only after class ends",
+        "Students can identify every chemical by appearance"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why should unused chemicals not be returned to a stock container?",
+      "choices": [
+        "Stock chemicals always have unlimited purity",
+        "Returning chemicals makes the container lighter",
+        "All chemicals become harmless after one use",
+        "They may contaminate the shared supply"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why is a clear, uncluttered work area important?",
+      "choices": [
+        "It reduces contamination, spills, and trip hazards",
+        "It guarantees every experiment's hypothesis",
+        "It eliminates the need for supervision",
+        "It prevents all instrument uncertainty"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why should glassware be inspected before use?",
+      "choices": [
+        "Appearance establishes chemical purity",
+        "All glass is safe at every temperature",
+        "Cracks or damage can make it unsafe",
+        "Glass damage affects only the printed labels"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why should students learn emergency-equipment locations before an activity?",
+      "choices": [
+        "They should use all equipment without instruction",
+        "Equipment replaces every prevention measure",
+        "They need to follow trained emergency procedures promptly",
+        "Every emergency uses the same response"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why are gloves not a replacement for proper hygiene and handling?",
+      "choices": [
+        "They can become contaminated and must be used appropriately",
+        "Gloves eliminate all chemical hazards",
+        "Gloves make every substance safe to taste",
+        "Gloves guarantee no transfer to other surfaces"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why should only teacher-authorized investigations be performed?",
+      "choices": [
+        "Authorization makes any chemical harmless",
+        "Students cannot ask scientific questions",
+        "All alternative procedures are scientifically identical",
+        "Unreviewed changes can introduce unknown risks"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A student finds an unlabeled liquid. What should the student do?",
+      "choices": [
+        "Identify it by tasting a drop",
+        "Avoid using it and notify the teacher",
+        "Mix it with another liquid to see what happens",
+        "Assume it is water because it is clear"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A beaker is chipped near its rim. What is the appropriate action?",
+      "choices": [
+        "Report it and use teacher-approved replacement equipment",
+        "Use it because the damage is small",
+        "Hide the chip with a label",
+        "Repair it with any available adhesive"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "During an activity, a student notices a small unknown spill. What is appropriate?",
+      "choices": [
+        "Clean it immediately without identifying hazards",
+        "Leave it until the next class",
+        "Alert the teacher and follow the designated response",
+        "Dilute it with any nearby liquid"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A classmate proposes mixing leftover chemicals to avoid waste. Which response is appropriate?",
+      "choices": [
+        "Mix them because all leftovers are compatible",
+        "Keep waste in the designated system and ask the teacher",
+        "Combine them only if their colors match",
+        "Return the mixture to an unused reagent bottle"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A student's gloved hands have handled chemicals. Before touching a phone, what should the student do?",
+      "choices": [
+        "Wipe the gloves on clothing",
+        "Touch the phone because gloves prevent contamination",
+        "Add another pair of gloves without removing the contaminated ones",
+        "Follow instructed glove-removal and handwashing procedures"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

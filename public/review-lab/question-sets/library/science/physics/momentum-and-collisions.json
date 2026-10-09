@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--physics--momentum-and-collisions",
+  "title": "Momentum and Collisions",
+  "subject": "Science",
+  "category": "Physics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "How is linear momentum calculated for an object?",
+      "choices": [
+        "Mass divided by velocity",
+        "Force multiplied by distance",
+        "Energy divided by temperature",
+        "Mass multiplied by velocity"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which unit can express momentum?",
+      "choices": [
+        "kg·m/s²",
+        "kg·m/s",
+        "J/s",
+        "N/m"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is impulse?",
+      "choices": [
+        "The change in momentum caused by a force over time",
+        "The distance traveled during a collision",
+        "The total kinetic energy of every object",
+        "The mass lost in a collision"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What does an elastic collision conserve in an isolated system?",
+      "choices": [
+        "Momentum but not kinetic energy",
+        "Kinetic energy but not momentum",
+        "Momentum and total kinetic energy",
+        "Neither momentum nor kinetic energy"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What characterizes a perfectly inelastic collision?",
+      "choices": [
+        "The objects lose all momentum",
+        "The colliding objects stick together",
+        "The objects must have equal initial speeds",
+        "The objects exchange no energy"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Why is momentum a vector quantity?",
+      "choices": [
+        "It depends only on elapsed time",
+        "It is measured only in kilograms",
+        "It has no relationship to velocity",
+        "It includes direction as well as magnitude"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is recoil?",
+      "choices": [
+        "A collision without interacting forces",
+        "The permanent disappearance of momentum",
+        "Motion caused only by a change in volume",
+        "Backward motion associated with another object's forward momentum"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "When is a system's total momentum conserved?",
+      "choices": [
+        "When every object's speed is zero",
+        "When its net external impulse is zero",
+        "When all objects have the same mass",
+        "When kinetic energy must increase"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why can total momentum stay constant while kinetic energy decreases in a collision?",
+      "choices": [
+        "Momentum conservation requires constant kinetic energy",
+        "Lost kinetic energy becomes negative mass",
+        "Some kinetic energy becomes thermal energy, sound, or deformation",
+        "Momentum measures energy in different units"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why can increasing stopping time reduce average force for the same momentum change?",
+      "choices": [
+        "The same impulse is spread over a longer interval",
+        "Longer time increases the object's initial momentum",
+        "Stopping time changes mass automatically",
+        "Impulse becomes zero whenever time increases"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How do the forces between two colliding objects compare during their interaction?",
+      "choices": [
+        "The heavier object always exerts the greater force",
+        "They are equal in magnitude and opposite in direction",
+        "Only the faster object exerts a force",
+        "The forces always point in the same direction"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why can two objects have equal momentum but different kinetic energies?",
+      "choices": [
+        "Momentum depends on mv, while kinetic energy depends on ½mv²",
+        "Equal momentum requires equal masses and speeds",
+        "Kinetic energy depends only on direction",
+        "Momentum cannot describe more than one object"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "How does doubling velocity at fixed mass affect momentum?",
+      "choices": [
+        "It quadruples momentum",
+        "It halves momentum",
+        "It doubles momentum",
+        "It leaves momentum unchanged"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why must signs or directions be included when adding momenta?",
+      "choices": [
+        "Momentum cannot be added for different masses",
+        "Every moving object contributes a positive scalar only",
+        "Direction changes the object's mass",
+        "Opposite directions contribute oppositely to the vector total"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why is a collision analysis sometimes only approximately isolated?",
+      "choices": [
+        "A system is isolated whenever both objects have equal masses",
+        "External forces may act, but their collision-time impulse can be small",
+        "A system is isolated whenever kinetic energy decreases",
+        "Any collision automatically excludes external forces"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A 3 kg cart moves east at 4 m/s. What is its momentum?",
+      "choices": [
+        "7 kg·m/s east",
+        "0.75 kg·m/s east",
+        "12 kg·m/s west",
+        "12 kg·m/s east"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A constant net force of 5 N acts for 2 s. What is the impulse?",
+      "choices": [
+        "10 N·s",
+        "2.5 N·s",
+        "7 N·s",
+        "0.4 N·s"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Equal-mass carts have equal speeds in opposite directions. What is their combined momentum?",
+      "choices": [
+        "Twice either cart's eastward momentum",
+        "Twice either cart's westward momentum",
+        "Zero",
+        "A value determined only by their kinetic energies"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A 2 kg cart at 3 m/s sticks to a stationary 1 kg cart. With negligible external impulse, what is their common speed?",
+      "choices": [
+        "3 m/s",
+        "6 m/s",
+        "2 m/s",
+        "1 m/s"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A stopped ball's momentum change is unchanged, but padding doubles its stopping time. What happens to average stopping force?",
+      "choices": [
+        "It is halved",
+        "It doubles",
+        "It quadruples",
+        "It stays unchanged"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}

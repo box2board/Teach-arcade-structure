@@ -1,0 +1,255 @@
+{
+  "schemaVersion": 1,
+  "id": "world-history--ancient-rome",
+  "title": "Ancient Rome",
+  "subject": "Social Studies",
+  "category": "World History",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "On which peninsula did Rome develop?",
+      "choices": [
+        "Iberian Peninsula",
+        "Balkan Peninsula",
+        "Italian Peninsula",
+        "Arabian Peninsula"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which body played a major advisory and governing role in the Roman Republic?",
+      "choices": [
+        "Senate",
+        "Estates-General",
+        "House of Commons",
+        "Council of Trent"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What name described Rome's hereditary aristocratic class?",
+      "choices": [
+        "Plebeians",
+        "Patricians",
+        "Helots",
+        "Metics"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which officials represented plebeian interests and could exercise a veto?",
+      "choices": [
+        "Consuls",
+        "Censors",
+        "Provincial governors",
+        "Tribunes"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Against which power did Rome fight the Punic Wars?",
+      "choices": [
+        "Carthage",
+        "Athens",
+        "Persia",
+        "Macedon"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Who became Rome's first emperor, receiving the title Augustus?",
+      "choices": [
+        "Julius Caesar",
+        "Nero",
+        "Octavian",
+        "Constantine"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What does Pax Romana describe?",
+      "choices": [
+        "The treaty that ended the first Punic War",
+        "A long period of relative stability within the Roman Empire",
+        "The complete absence of fighting anywhere in the empire",
+        "A law requiring all residents to become citizens"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why did Romans publish the Twelve Tables?",
+      "choices": [
+        "To establish the emperor's succession rules",
+        "To create a common currency for Europe",
+        "To abolish every social distinction",
+        "To make important legal rules available in written form"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How did Rome's Mediterranean expansion affect its economy?",
+      "choices": [
+        "It brought new resources, trade, and enslaved labor",
+        "It ended contact with foreign markets",
+        "It restricted Rome to subsistence farming alone",
+        "It required abandoning all provincial taxation"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why could army loyalty to commanders threaten the Republic?",
+      "choices": [
+        "Soldiers had no connection to political conflicts",
+        "Commanders were prohibited from entering public life",
+        "Generals could use military support in struggles for political power",
+        "Military victories automatically dissolved the Senate"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How did Roman roads support imperial government?",
+      "choices": [
+        "They replaced all maritime transport",
+        "They facilitated movement of troops, officials, and goods",
+        "They guaranteed equal wealth among provinces",
+        "They made local administration unnecessary"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What purpose did aqueducts serve?",
+      "choices": [
+        "Fortifying ships for naval warfare",
+        "Recording laws on bronze tablets",
+        "Marking every provincial boundary",
+        "Carrying water to settlements"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "How did Roman citizenship change as Rome expanded?",
+      "choices": [
+        "It was gradually extended to more people within the empire",
+        "It remained permanently restricted to residents of one street",
+        "It was available only to people born outside Italy",
+        "It eliminated distinctions between free and enslaved people"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why is Julius Caesar not usually described as the first Roman emperor?",
+      "choices": [
+        "He ruled after the Western Empire ended",
+        "He was a Carthaginian rather than a Roman",
+        "His dictatorship preceded the imperial system associated with Augustus",
+        "He never held political authority in Rome"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What did the Edict of Milan in 313 CE provide?",
+      "choices": [
+        "A requirement that every Roman become Christian",
+        "Religious toleration that included Christianity",
+        "The division of Rome into thirteen colonies",
+        "A ban on trade with the eastern provinces"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Which sequence is accurate for Roman political development?",
+      "choices": [
+        "Augustus's rule, Republic, Caesar's dictatorship",
+        "Caesar's dictatorship, Augustus's rule, Republic",
+        "Republic, Augustus's rule, Caesar's dictatorship",
+        "Republic, Caesar's dictatorship, Augustus's rule"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Which comparison of republican and imperial Rome is best supported?",
+      "choices": [
+        "Imperial rule concentrated authority while retaining some republican institutions",
+        "The empire immediately abolished every Roman office",
+        "The Republic had no political conflicts",
+        "Imperial Rome had universal adult voting"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A provincial inscription records a road built by imperial order. What relationship does it illustrate?",
+      "choices": [
+        "The absence of government involvement in transport",
+        "The isolation of provinces from the capital",
+        "Infrastructure supporting administration and communication",
+        "The replacement of all taxes by voluntary donations"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Why is a single-cause explanation of the Western Empire's decline inadequate?",
+      "choices": [
+        "Only one battle affected its history",
+        "Political, military, economic, and other pressures interacted",
+        "The Eastern Empire fell at exactly the same moment",
+        "No change occurred before 476 CE"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which conclusion about Rome after 476 CE is accurate?",
+      "choices": [
+        "Roman culture disappeared from every region immediately",
+        "Every Roman city was abandoned in the same year",
+        "Christianity ceased to exist in former Roman territories",
+        "The Eastern Roman Empire continued even after western imperial rule ended"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ],
+  "referenceUrls": [
+    "https://www.metmuseum.org/essays/the-roman-republic"
+  ]
+}
+

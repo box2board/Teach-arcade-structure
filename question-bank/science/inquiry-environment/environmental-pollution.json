@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--inquiry-environment--environmental-pollution",
+  "title": "Environmental Pollution",
+  "subject": "Science",
+  "category": "Scientific Inquiry & Environmental Science",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is an environmental pollutant?",
+      "choices": [
+        "Any naturally occurring substance regardless of amount",
+        "A substance or energy input capable of environmental harm",
+        "Only human-made materials that are visibly colored",
+        "Any environmental change that benefits all organisms"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is a point source of pollution?",
+      "choices": [
+        "Pollution spread across many diffuse sources",
+        "Any source that is impossible to locate",
+        "Only a source on a mountain",
+        "A specific identifiable discharge location"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is nonpoint-source pollution?",
+      "choices": [
+        "Pollution arising from diffuse sources such as runoff across land",
+        "Pollution from one identifiable discharge pipe only",
+        "Only pollutants that cannot dissolve in water",
+        "Only air pollution emitted from one factory stack"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is bioaccumulation?",
+      "choices": [
+        "The increase of a pollutant across successive food-chain levels",
+        "The decrease of concentration through dilution",
+        "The buildup of a substance in an organism over time",
+        "The transport of a substance out of every organism"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is biomagnification?",
+      "choices": [
+        "An organism's pollutant buildup throughout its own lifetime",
+        "A decline in pollutant concentration at higher trophic levels",
+        "The equal distribution of every pollutant among food-chain levels",
+        "Increasing concentrations of some pollutants at higher trophic levels"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is eutrophication?",
+      "choices": [
+        "The removal of nutrients from a water body",
+        "Only a temperature increase without nutrient enrichment",
+        "Nutrient enrichment that can stimulate excessive aquatic growth",
+        "Only the buildup of salt in seawater"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is thermal pollution?",
+      "choices": [
+        "A harmful alteration of environmental temperature, often in receiving water",
+        "Only a natural seasonal change with no harmful input",
+        "The buildup of dissolved nutrients alone",
+        "The introduction of solid waste regardless of temperature"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why can excessive nutrient runoff reduce oxygen in a lake?",
+      "choices": [
+        "Nutrients directly remove all oxygen without biological processes",
+        "Decomposition of increased organic matter can consume dissolved oxygen",
+        "Algae never produce oxygen under any conditions",
+        "Decomposition cannot consume dissolved oxygen"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why can persistent pollutants remain a concern after discharge stops?",
+      "choices": [
+        "Pollutants must vanish as soon as their source closes",
+        "Persistent means the substance cannot move between places",
+        "Persistence proves there is no future exposure",
+        "They may break down slowly and remain in the environment"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why does pollution risk depend on both hazard and exposure?",
+      "choices": [
+        "Only the substance's name determines risk",
+        "Potential harm and the amount of contact both matter",
+        "All detectable amounts cause identical effects",
+        "Contact duration and amount have no effect on potential harm"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why can preventing pollution at its source be useful?",
+      "choices": [
+        "Source prevention guarantees immediate ecosystem recovery",
+        "Source prevention makes pollution monitoring unnecessary",
+        "It reduces the amount needing later treatment or cleanup",
+        "Cleanup is always more effective than reducing releases"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why can sediment runoff harm an aquatic habitat?",
+      "choices": [
+        "It can reduce light and cover sensitive habitats",
+        "Sediment always improves light penetration",
+        "Sediment affects only rivers with no organisms",
+        "Only dissolved pollutants can alter aquatic habitats"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why is noise considered pollution in some settings?",
+      "choices": [
+        "Excessive sound can disrupt organisms and communication",
+        "All sound causes identical environmental harm",
+        "Sound cannot affect animal behavior",
+        "Only chemical substances can be considered pollution"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why can pollution move beyond its source area?",
+      "choices": [
+        "Every pollutant remains permanently where it is released",
+        "Air transports pollutants but water never can",
+        "Air and water can transport pollutants",
+        "Pollutants move only inside animals"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why is a single clear-water observation insufficient to rule out pollution?",
+      "choices": [
+        "Clear water contains no dissolved substances",
+        "Some contaminants are dissolved or otherwise invisible",
+        "All contamination has a strong odor",
+        "Water color identifies every pollutant present"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Which example best represents nonpoint-source pollution?",
+      "choices": [
+        "Wastewater leaving one identified discharge pipe",
+        "Smoke leaving one factory stack",
+        "A leak from one identified storage tank",
+        "Rain washing fertilizer from many lawns into streams"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A persistent pollutant has 1 unit of concentration in prey and 10 units in their predators. What pattern does this illustrate?",
+      "choices": [
+        "Dilution",
+        "Evaporation",
+        "Biomagnification",
+        "Radioactive dating"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A lake experiences an algal bloom followed by lower dissolved oxygen as algae decay. Which mechanism fits?",
+      "choices": [
+        "Decomposers consume oxygen while breaking down organic matter",
+        "All oxygen becomes nitrogen instantly",
+        "Dead algae no longer interact with the environment",
+        "The lake must have become colder"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "An investigation compares pollution upstream and downstream of a discharge point. Why sample both?",
+      "choices": [
+        "Upstream water must contain no pollutants",
+        "Downstream water never mixes",
+        "One location automatically proves the cause",
+        "The upstream site helps provide a comparison condition"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A cleanup removes surface litter but dissolved pollutants remain. What conclusion follows?",
+      "choices": [
+        "Removing litter guarantees removal of dissolved chemicals",
+        "Different forms of pollution may require different responses",
+        "Dissolved contaminants cannot be detected",
+        "The remaining water is safe for every use"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}

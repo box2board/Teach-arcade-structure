@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--inquiry-environment--habitat-change-and-restoration",
+  "title": "Habitat Change and Restoration",
+  "subject": "Science",
+  "category": "Scientific Inquiry & Environmental Science",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is an edge effect in a habitat?",
+      "choices": [
+        "A change found equally throughout every habitat",
+        "A process that occurs only at the center of a forest",
+        "A guarantee that all boundary areas support identical species",
+        "A difference in conditions near a habitat boundary compared with its interior"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is a wildlife corridor?",
+      "choices": [
+        "A connection that can allow organisms to move between habitat patches",
+        "A wall that prevents all animal movement",
+        "A site designed only for waste disposal",
+        "A road with no ecological function"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is ecological restoration?",
+      "choices": [
+        "Replacing diverse communities with one uniform crop",
+        "Assisting recovery of a degraded ecosystem",
+        "Keeping every species at an unchanging number forever",
+        "Moving degraded material elsewhere without assisting recovery"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is a reference ecosystem used for in restoration?",
+      "choices": [
+        "A guarantee that all restored sites become identical",
+        "A replacement for measuring the restored site's progress",
+        "A comparison that helps define recovery goals",
+        "A rule that local conditions can be ignored"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is an invasive species?",
+      "choices": [
+        "Every nonnative species regardless of effects",
+        "Every native species with rapid growth",
+        "Any organism moving between two habitat patches",
+        "A nonnative species whose establishment causes or is likely to cause harm"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is a riparian zone?",
+      "choices": [
+        "Land alongside a river or stream",
+        "The open water at the center of a lake",
+        "The deep ocean floor below coastal water",
+        "Land defined only by permanent desert conditions"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is ecological succession?",
+      "choices": [
+        "Movement of one animal for one afternoon",
+        "Change in community composition over time",
+        "Permanent stability of every species",
+        "The loss of every nutrient from soil"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why can fragmentation reduce gene flow between populations?",
+      "choices": [
+        "Patch separation always increases movement between them",
+        "Gene flow does not depend on movement or reproduction",
+        "Separated patches can limit movement and mating",
+        "Every patch necessarily keeps the same allele frequencies forever"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How can restoring native plants benefit some local animals?",
+      "choices": [
+        "Every native plant supports every animal equally",
+        "Native plants never compete for soil resources",
+        "Native plants eliminate all disease in local animals",
+        "They can supply suitable food and habitat relationships"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why is removing a stressor often important before planting for restoration?",
+      "choices": [
+        "Ongoing disturbance can prevent newly planted communities from establishing",
+        "Planting guarantees recovery despite unchanged disturbance",
+        "Removing a stressor replaces the need to set any goal",
+        "Stressors affect only mature plants and never seedlings"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How can vegetation along a stream reduce sediment entering the water?",
+      "choices": [
+        "Roots guarantee that no sediment moves during any flood",
+        "Roots stabilize soil and vegetation slows runoff",
+        "Vegetation increases erosion in every soil condition",
+        "Plants stop rainfall before it reaches the stream"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why monitor a restored site over several years?",
+      "choices": [
+        "One photograph proves permanent recovery",
+        "Recovery has no time-dependent changes",
+        "Recovery and unintended effects can change over time",
+        "Monitoring alone guarantees every goal is reached"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why may reintroducing a species fail if habitat conditions remain unsuitable?",
+      "choices": [
+        "Reintroduction removes every food and shelter requirement",
+        "All species tolerate any temperature and water conditions",
+        "A released population survives regardless of habitat quality",
+        "The original limits on survival may still exist"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "How can a wildlife crossing help where a road divides habitat?",
+      "choices": [
+        "It can reduce barriers and dangerous crossings",
+        "It guarantees that no animal is ever harmed by traffic",
+        "It prevents every form of habitat fragmentation",
+        "It makes all species use exactly the same route"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why can restoration involve tradeoffs rather than one perfect outcome?",
+      "choices": [
+        "Every ecosystem has identical recovery needs",
+        "Goals, species needs, resources, and site conditions can conflict",
+        "All goals can always be met with no resource limits",
+        "Only one species uses any habitat"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "After wetland drainage, a project restores more natural water flow. Which restoration element is directly addressed?",
+      "choices": [
+        "Atomic number",
+        "Stellar brightness",
+        "Hydrology",
+        "Magnetic polarity"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A restored site has more plants but only one species. Which measurement would add useful information about recovery?",
+      "choices": [
+        "Only the total number of plants, counted again",
+        "Only the cost of the original planting",
+        "Only the project's area without any ecological observations",
+        "Native species diversity and community structure"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Two habitat patches reconnect, and individuals move between them. Which outcome becomes more possible?",
+      "choices": [
+        "Gene flow between the populations",
+        "Immediate elimination of all variation",
+        "Permanent isolation of both populations",
+        "Complete prevention of reproduction"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A restoration treatment increases plant survival, but an untreated comparison also improves equally. What conclusion is warranted?",
+      "choices": [
+        "The treatment alone must explain both improvements",
+        "The data do not isolate a benefit of the treatment",
+        "The comparison site has no scientific value",
+        "All monitoring should stop immediately"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "An invasive plant returns after initial removal. What does this suggest for management?",
+      "choices": [
+        "One removal guarantees permanent control",
+        "The returning plant automatically becomes native",
+        "Follow-up monitoring and repeated control may be needed",
+        "Recovery cannot be measured after any species returns"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ]
+}

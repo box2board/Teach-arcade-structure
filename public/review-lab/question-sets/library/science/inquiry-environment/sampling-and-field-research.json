@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--inquiry-environment--sampling-and-field-research",
+  "title": "Sampling and Field Research",
+  "subject": "Science",
+  "category": "Scientific Inquiry & Environmental Science",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a sample in a field study?",
+      "choices": [
+        "Every organism on Earth",
+        "Only the final written conclusion",
+        "An instrument used to measure wind",
+        "A subset of the population or area being studied"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is a quadrat commonly used for?",
+      "choices": [
+        "Counting all organisms over an entire region at once",
+        "Sampling organisms within a defined area",
+        "Measuring only the age of each sampled organism",
+        "Collecting observations only along a single line"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is a transect?",
+      "choices": [
+        "A randomly chosen square sampling area",
+        "The total organisms counted at one point",
+        "A line or path along which observations are collected",
+        "A tool used only to measure soil acidity"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is random sampling intended to reduce?",
+      "choices": [
+        "Bias from choosing sites based on preference",
+        "Natural differences among all organisms",
+        "The need for any repeat sampling",
+        "All uncertainty in the final population estimate"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is stratified sampling?",
+      "choices": [
+        "Sampling only the easiest location to reach",
+        "Sampling within defined subgroups or habitat sections",
+        "Sampling only the largest individuals",
+        "Recording no location information"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is a field notebook used for?",
+      "choices": [
+        "Recording observations, methods, times, and locations",
+        "Recording only results that match the prediction",
+        "Replacing the original observations with a final opinion",
+        "Listing equipment without recording observations"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is sampling bias?",
+      "choices": [
+        "Ordinary variation among organisms",
+        "The average of repeated measurements",
+        "A sampling process that systematically favors some members or conditions",
+        "A difference caused only by random rounding"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why should the same sampling method be used when comparing two sites?",
+      "choices": [
+        "It guarantees the sites are identical",
+        "It removes every environmental variable",
+        "It prevents all organisms from moving",
+        "It makes differences less likely to result from method changes"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why can studying only roadside plants misrepresent a whole forest?",
+      "choices": [
+        "Roadside plants automatically represent every habitat equally",
+        "Roadside conditions may differ from the forest interior",
+        "Forest interior conditions cannot affect plant distributions",
+        "Only plant size, never sampling location, affects estimates"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why should field researchers record weather and season?",
+      "choices": [
+        "These records replace the need to count organisms",
+        "Season affects only the observer, not organisms",
+        "Weather information proves the hypothesis without data",
+        "These conditions can influence observations and species activity"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why can repeated visits improve a wildlife survey?",
+      "choices": [
+        "Detectability and activity can vary over time",
+        "Repeated visits guarantee detection of every species",
+        "One visit always represents every time of day",
+        "Detectability is identical for all species and seasons"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why should researchers minimize disturbance during surveys?",
+      "choices": [
+        "Disturbance always improves the original habitat estimate",
+        "A survey's presence cannot affect organism behavior",
+        "Disturbance can harm organisms and alter what is being measured",
+        "The most reliable survey removes every organism"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why does a larger representative sample usually improve an estimate?",
+      "choices": [
+        "It guarantees an exact count of all individuals",
+        "It compensates completely for biased site selection",
+        "It reduces the influence of chance variation in small samples",
+        "It removes the need to record variation"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why are individual quadrat counts retained instead of recording only their total?",
+      "choices": [
+        "They reveal variation between sampled locations",
+        "Totals alone show every location's variation",
+        "A mean cannot be calculated from individual counts",
+        "Each quadrat must have the same count"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why should sampling locations be documented?",
+      "choices": [
+        "Coordinates replace all details of the sampling method",
+        "Recording locations prevents habitats from changing",
+        "Only the date matters when repeating a field study",
+        "Other researchers can assess and repeat the sampling design"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Four equal quadrats contain 2, 4, 6, and 8 plants. What is the mean count per quadrat?",
+      "choices": [
+        "4",
+        "5",
+        "6",
+        "20"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A 1 m² quadrat sample averages 3 plants, and the sampled habitat is 100 m². What is an estimated total if the sample is representative?",
+      "choices": [
+        "300 plants",
+        "30 plants",
+        "103 plants",
+        "3 plants"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A pond has vegetated and open-water sections. Which design best ensures both are represented?",
+      "choices": [
+        "Sample only near the easiest access point",
+        "Sample only where the most fish are visible",
+        "Sample randomly within each section",
+        "Sample only the open-water section"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Two observers count birds at different times using different observation lengths. What is a major comparison problem?",
+      "choices": [
+        "Observer identity is the only possible source of difference",
+        "Time and effort differ along with the observers",
+        "Different observation lengths guarantee equal effort",
+        "Time of day never affects bird detectability"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A survey finds no owls during one midday visit. What is the most defensible conclusion?",
+      "choices": [
+        "The habitat certainly contains no owls",
+        "All owls have left the region permanently",
+        "The survey proves owls are extinct",
+        "No owls were detected during that visit"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

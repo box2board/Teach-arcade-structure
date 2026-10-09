@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--physical-science-chemistry--balancing-equations",
+  "title": "Balancing Equations",
+  "subject": "Science",
+  "category": "Physical Science & Chemistry",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What must match on both sides of a balanced ordinary chemical equation?",
+      "choices": [
+        "The number of molecules in every case",
+        "The physical states of all substances",
+        "The temperature of every substance",
+        "The number of atoms of each element"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which numbers are adjusted when balancing an equation without changing substances?",
+      "choices": [
+        "Atomic numbers",
+        "Chemical-formula subscripts",
+        "Neutron numbers",
+        "Coefficients"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What does the arrow in a reaction equation show?",
+      "choices": [
+        "The direction of gravity",
+        "The direction from reactants to products",
+        "The location of the largest molecule",
+        "The substance's electric charge"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What does the symbol (aq) indicate?",
+      "choices": [
+        "A gas",
+        "A pure solid",
+        "Dissolved in water",
+        "A liquid with no solvent"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What does a coefficient of 1 usually look like in a written equation?",
+      "choices": [
+        "It is omitted",
+        "It is placed as a subscript",
+        "It is written as a negative number",
+        "It replaces the element symbol"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "How many oxygen atoms are represented by 3O₂?",
+      "choices": [
+        "3",
+        "6",
+        "2",
+        "5"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "How many hydrogen atoms are represented by 2H₂O?",
+      "choices": [
+        "2",
+        "6",
+        "1",
+        "4"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why cannot an equation be balanced by changing a product's formula?",
+      "choices": [
+        "That can change the identity of the product",
+        "Formulas cannot contain any numbers",
+        "Coefficients change proton numbers",
+        "Every product must have the same formula as a reactant"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why should final coefficients usually be reduced to smallest whole numbers?",
+      "choices": [
+        "They make atom conservation optional",
+        "They remove all excess reactants",
+        "They communicate the simplest particle ratio",
+        "They determine the reaction temperature"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why need the total number of molecules not be conserved?",
+      "choices": [
+        "Molecules have no mass",
+        "Atoms disappear whenever molecules form",
+        "Atoms can regroup into different numbers of molecules",
+        "Every reaction is a nuclear process"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What does a coefficient ratio describe?",
+      "choices": [
+        "Relative reacting or produced amounts in particles or moles",
+        "Equal masses of every substance",
+        "Only relative densities",
+        "The number of protons created"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why should every element be checked after selecting coefficients?",
+      "choices": [
+        "Only the first element matters",
+        "Products never contain more than one element",
+        "Coefficients affect just one atom each",
+        "Balancing one element may leave another unequal"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What does a balanced equation not establish by itself?",
+      "choices": [
+        "Relative mole ratios",
+        "How quickly the reaction occurs",
+        "Atom counts on each side",
+        "Which substances are represented"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why does balancing support mass conservation?",
+      "choices": [
+        "The same kinds and numbers of atoms remain represented",
+        "Every coefficient represents an equal mass in grams",
+        "The number of molecules must always remain the same",
+        "Balancing requires equal volumes of all substances"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What should a student do if all chosen coefficients share a common factor?",
+      "choices": [
+        "Multiply every subscript by the factor",
+        "Divide them by that factor",
+        "Remove the substance with the largest coefficient",
+        "Change the element symbols"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "What coefficients balance N₂ + H₂ → NH₃ in smallest whole numbers?",
+      "choices": [
+        "1, 1, 1",
+        "2, 3, 1",
+        "1, 2, 3",
+        "1, 3, 2"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "What coefficients balance Mg + O₂ → MgO?",
+      "choices": [
+        "1, 1, 1",
+        "1, 2, 2",
+        "2, 1, 2",
+        "2, 2, 1"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "What coefficients balance CH₄ + O₂ → CO₂ + H₂O?",
+      "choices": [
+        "1, 2, 1, 2",
+        "1, 1, 1, 1",
+        "2, 1, 2, 1",
+        "1, 2, 2, 1"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Which equation correctly balances calcium carbonate decomposition?",
+      "choices": [
+        "CaCO₃ → CaO + CO",
+        "2CaCO₃ → CaO + CO₂",
+        "CaCO₃ → CaO + CO₂",
+        "CaCO₃ → 2CaO + CO₂"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A student writes 4H₂ + 2O₂ → 4H₂O. Which assessment is correct?",
+      "choices": [
+        "It is unbalanced because hydrogen atoms differ",
+        "It is balanced but can be reduced to 2, 1, 2",
+        "It is unbalanced because oxygen atoms differ",
+        "It requires changing water to H₂O₂"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}

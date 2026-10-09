@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "economics--gdp",
+  "title": "GDP",
+  "subject": "Social Studies",
+  "category": "Economics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What does gross domestic product measure?",
+      "choices": [
+        "The value of all financial assets owned by citizens",
+        "The market value of final goods and services produced within a country during a period",
+        "Only wages earned by government employees",
+        "Only goods exported to other countries"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Why does GDP count final goods rather than every intermediate purchase?",
+      "choices": [
+        "To exclude all manufacturing from the economy",
+        "To measure only household wealth",
+        "To remove all business investment",
+        "To avoid counting the same production more than once"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is nominal GDP?",
+      "choices": [
+        "GDP measured using current prices",
+        "GDP adjusted to remove price changes",
+        "GDP per person after all taxes",
+        "GDP excluding all government activity"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is real GDP?",
+      "choices": [
+        "GDP measured only in current prices",
+        "The total value of household savings",
+        "GDP adjusted for changes in prices",
+        "The value of imports minus exports"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is GDP per capita?",
+      "choices": [
+        "GDP divided by the inflation rate",
+        "GDP divided by population",
+        "Population divided by total exports",
+        "Government spending divided by tax revenue"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which spending category includes household purchases of goods and services?",
+      "choices": [
+        "Consumption",
+        "Investment",
+        "Government purchases",
+        "Net exports"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which calculation gives net exports?",
+      "choices": [
+        "Imports minus exports",
+        "Exports plus imports",
+        "Consumption minus investment",
+        "Exports minus imports"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why are purchases of newly produced business equipment counted as investment in GDP?",
+      "choices": [
+        "They are transfers between existing stock owners",
+        "They are payments for previously produced goods only",
+        "They add to productive capital",
+        "They directly measure personal happiness"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why is the purchase of an existing company's stock not itself production counted in GDP?",
+      "choices": [
+        "It transfers ownership of a financial asset",
+        "It creates a new factory automatically",
+        "It is always a government purchase",
+        "It counts as a newly produced export"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why are government transfer payments not counted as government purchases in GDP?",
+      "choices": [
+        "They are always payments to foreign producers",
+        "They are not payments for current goods or services produced",
+        "They can never affect household spending",
+        "They include no monetary value"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why can nominal GDP rise even when output is unchanged?",
+      "choices": [
+        "Population must have fallen",
+        "Exports must equal imports",
+        "The country must have produced more goods",
+        "Prices may rise"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why is real GDP more useful for comparing output over time?",
+      "choices": [
+        "It includes every unpaid household activity",
+        "It measures income distribution exactly",
+        "It separates output changes from price changes",
+        "It eliminates all data estimation"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why is a used car sale generally excluded from current production in GDP?",
+      "choices": [
+        "The car was produced in an earlier period",
+        "Cars are never counted in GDP",
+        "Only imported cars are final goods",
+        "Every resale is treated as a new export"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why can GDP underestimate the value of some useful work?",
+      "choices": [
+        "GDP includes every minute of unpaid caregiving",
+        "Much unpaid household work is not measured",
+        "Only recreational services are measured",
+        "GDP excludes all paid service industries"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why is GDP not a complete measure of well-being?",
+      "choices": [
+        "It directly measures every person's satisfaction",
+        "It includes no goods or services",
+        "It counts only leisure activities",
+        "It does not fully show distribution, environmental costs, or quality of life"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "GDP rises from $1 trillion to $1.1 trillion while prices rise 10% and output composition is unchanged. What is the approximate real-output change?",
+      "choices": [
+        "No change",
+        "A 10% increase",
+        "A 20% increase",
+        "A 10% decrease"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A country's GDP is $600 billion and population is 30 million. What is GDP per capita?",
+      "choices": [
+        "$2,000",
+        "$200,000",
+        "$20,000",
+        "$180,000"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A foreign-owned factory produces goods inside a country. How does that production generally enter the country's GDP?",
+      "choices": [
+        "It is excluded because the owners are foreign",
+        "It is included because production occurred within the country",
+        "It is counted only in the owners' home country's GDP",
+        "It is counted only if no goods are sold locally"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A bakery buys flour and sells bread to households. Which value should be counted to avoid double counting?",
+      "choices": [
+        "Both the full flour value and full bread value",
+        "Only the flour's value",
+        "Neither value because food is consumed",
+        "The final bread's value rather than adding flour again"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Two countries have the same GDP but different populations. What additional measure helps compare average output per person?",
+      "choices": [
+        "GDP per capita",
+        "Total GDP alone",
+        "The number of government departments",
+        "The total length of national borders"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}
