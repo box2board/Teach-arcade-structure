@@ -7,7 +7,7 @@ import {createReview,answerReview,reviewSummary} from './review.js';
 import {validateAdventure} from './validate.js';
 import {roomAt as findRoom,objectiveFor,progressFor,rewardFor} from './presentation.js';
 import {roomSize,mountLayout} from './viewport.js';
-import {createMotion,syncMotion,advanceMotion,interactionTarget} from './motion.js';
+import {createMotion,syncMotion,advanceMotion,interactionTarget,unlockedExitAtPlayer} from './motion.js';
 import {updateCamera,cancelCamera} from './camera.js';
 import {encodeSave,decodeSave,createSaveStore} from './save.js';
 import {buildReport,reportSummary,downloadReport} from './report.js';
@@ -114,7 +114,7 @@ function render(){
     const ready=exitReady(map,state,exit), missing=(exit.requiredItems||[]).filter(id=>!state.items.includes(id));
     const known=cluesReady(puzzle,state);
     circuitPanel.replaceChildren(element('strong',ready?'EXIT UNLOCKED':'POWER THE EXIT'),element('p',!known?(puzzle.clueHint||'Find the clues for this sequence.'):puzzle.showNext===false?(puzzle.knownText||'Follow the clues in your journal.'):puzzle.sequence.map(id=>map.objects.find(o=>o.id===id)?.label||id).join(' → ')),element('p',`Door lights: ${progress} / ${puzzle.sequence.length} · Supplies: ${missing.length?missing.map(id=>map.inventory.find(i=>i.value===id)?.label||id).join(', ')+' needed':'ready'}`,'circuit-detail'));
-    objective=!known?(puzzle.clueHint||'Find the clues for this sequence.'):ready?'Walk to the glowing exit and interact.':progress===puzzle.sequence.length?'Earn the missing supplies from their chests, then return to the exit.':'Face a labeled switch and interact. Each correct step powers one door light.';
+    objective=!known?(puzzle.clueHint||'Find the clues for this sequence.'):ready?'Walk onto the glowing exit to finish, or face it and interact.':progress===puzzle.sequence.length?'Earn the missing supplies from their chests, then return to the exit.':'Face a labeled switch and interact. Each correct step powers one door light.';
   }
   const count=reviewSummary(state.review).total,modeLabel=map.modes?.find(m=>m.id===map.mode)?.label||map.mode||'Explore';
   $('difficulty').textContent=`${modeLabel} · ${count} ${count===1?'question':'questions'}${topics.length?' · '+content.title:''}`;
@@ -243,8 +243,13 @@ function performMotion(input,seconds){
   if(pickups.length)pickupFeedback(pickups);
   if(state.moveFeedback&&state.moveFeedback.text!==previousFeedback)message(state.moveFeedback.text,state.moveFeedback.tone);
   for(const id of state.opened.filter(id=>!openedBefore.has(id)))doorFeedback(map.doors.find(d=>d.id===id));
+  const exit=unlockedExitAtPlayer(map,state,motion);
+  if(exit&&interact(map,state,exit).type==='win')finishAdventure();
 }
 let interactionTimer;
+function finishAdventure(){
+  release();syncMotion(motion,state);render();saveProgress();$('pause').disabled=true;showCompletion();
+}
 function performInteraction(){
   if(!started||dialog.open||state.won)return;
   release();$('player').classList.add('interacting');clearTimeout(interactionTimer);interactionTimer=setTimeout(()=>$('player').classList.remove('interacting'),240);
@@ -252,10 +257,7 @@ function performInteraction(){
   const result=target?interact(map,state,target):{type:'message',text:'Move closer and face a chest, sign, switch, or gate. The highlighted object is ready to interact.'};render();saveProgress();
   if(result.type==='message')message(result.text,result.tone);
   if(result.type==='challenge')openQuestion(result.id);
-  if(result.type==='win'){
-    $('pause').disabled=true;
-    showCompletion();
-  }
+  if(result.type==='win')finishAdventure();
 }
 function openQuestion(id){
   const chest=map.objects.find(o=>o.id===id), encounter=state.review.encounters[id];
@@ -415,3 +417,4 @@ if(saved){
 render();
 if(topics.length)chooseTopic();else offerSavedAdventure();
 requestAnimationFrame(frame);
+
