@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no" />
+<title>Penalty Pressure | Teach Arcade Sports Arcade Prototype</title>
+<style>
+:root{--ink:#eef7ff;--muted:#9bb3c8;--panel:rgba(5,15,28,.82);--line:rgba(255,255,255,.15);--accent:#34d399;--gold:#fbbf24;--danger:#fb7185}
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:#031018;color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.app{height:100%;display:flex;flex-direction:column;background:radial-gradient(circle at 50% 0,#16324b 0,#071421 50%,#03090f 100%)}
+.topbar{height:64px;display:flex;align-items:center;gap:16px;padding:10px 16px;border-bottom:1px solid var(--line);background:rgba(2,8,15,.72);backdrop-filter:blur(12px);z-index:20}.brand{font-weight:900;letter-spacing:.06em;text-transform:uppercase}.brand span{color:var(--accent)}.score{margin-left:auto;display:flex;gap:12px;align-items:center;font-weight:800}.pill{padding:7px 12px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.06)}button{font:inherit;color:inherit}.iconBtn{border:1px solid var(--line);background:rgba(255,255,255,.06);border-radius:10px;padding:8px 11px;cursor:pointer}
+.main{position:relative;flex:1;min-height:0}.stage{position:absolute;inset:0;overflow:hidden;background:linear-gradient(#315f8c 0 26%,#1a4a2b 26% 100%)}.skyGlow{position:absolute;inset:0 0 auto;height:42%;background:radial-gradient(circle at 50% 40%,rgba(255,255,255,.35),rgba(255,255,255,0) 50%)}.stands{position:absolute;left:-3%;right:-3%;top:17%;height:25%;background:repeating-linear-gradient(0deg,#132a3d 0 8px,#19384e 8px 16px);clip-path:polygon(0 0,100% 0,94% 100%,6% 100%);border-top:5px solid #d6e7ef}.crowd{position:absolute;left:3%;right:3%;top:20%;height:18%;background-image:radial-gradient(circle,#f7d774 0 2px,transparent 2.3px),radial-gradient(circle,#93c5fd 0 2px,transparent 2.3px),radial-gradient(circle,#fda4af 0 2px,transparent 2.3px);background-size:17px 16px,19px 18px,21px 20px;background-position:0 0,6px 5px,11px 2px;opacity:.75}.pitch{position:absolute;left:-6%;right:-6%;top:39%;bottom:-8%;background:repeating-linear-gradient(90deg,#23733f 0 9%,#2d8249 9% 18%);transform:perspective(450px) rotateX(7deg);transform-origin:50% 0}.boxLine{position:absolute;left:23%;right:23%;top:46%;height:30%;border:4px solid rgba(255,255,255,.75);border-bottom:none;transform:perspective(500px) rotateX(12deg)}
+.goal{position:absolute;left:50%;top:34%;width:min(52vw,620px);height:min(28vw,310px);transform:translateX(-50%);border:9px solid #f8fafc;border-bottom-width:7px;filter:drop-shadow(0 8px 8px rgba(0,0,0,.25));z-index:5}.goal:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.28) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.28) 1px,transparent 1px);background-size:28px 28px;opacity:.8}.keeper{position:absolute;left:50%;top:62%;width:48px;height:88px;transform:translate(-50%,-100%);z-index:8;transition:transform .38s cubic-bezier(.2,.8,.2,1),left .38s cubic-bezier(.2,.8,.2,1)}.keeper .head{position:absolute;left:14px;top:0;width:20px;height:20px;border-radius:50%;background:#d6a06b}.keeper .body{position:absolute;left:10px;top:18px;width:28px;height:40px;border-radius:10px 10px 6px 6px;background:#f59e0b}.keeper .arm,.keeper .leg{position:absolute;background:#f59e0b;border-radius:9px;transform-origin:top center}.keeper .arm{top:22px;width:11px;height:38px}.keeper .arm.l{left:5px;transform:rotate(28deg)}.keeper .arm.r{right:5px;transform:rotate(-28deg)}.keeper .leg{top:53px;width:11px;height:38px;background:#111827}.keeper .leg.l{left:13px;transform:rotate(8deg)}.keeper .leg.r{right:13px;transform:rotate(-8deg)}
+.ball{position:absolute;left:50%;top:81%;width:42px;height:42px;border-radius:50%;transform:translate(-50%,-50%);z-index:11;background:radial-gradient(circle at 36% 28%,#fff 0 34%,#dbe5ea 35% 100%);box-shadow:0 10px 10px rgba(0,0,0,.3)}.ball:after{content:"◆";position:absolute;left:11px;top:6px;color:#111827;font-size:18px;transform:rotate(20deg)}.ball.shoot{transition:left .6s cubic-bezier(.18,.8,.3,1),top .6s cubic-bezier(.18,.8,.3,1),transform .6s cubic-bezier(.18,.8,.3,1);transform:translate(-50%,-50%) scale(.42) rotate(720deg)}.player{position:absolute;left:50%;top:92%;width:56px;height:102px;transform:translate(-50%,-100%);z-index:9}.player .head{position:absolute;left:17px;top:0;width:22px;height:22px;border-radius:50%;background:#bd7a4f}.player .shirt{position:absolute;left:11px;top:20px;width:34px;height:44px;border-radius:11px 11px 4px 4px;background:#2563eb}.player .leg{position:absolute;top:61px;width:12px;height:41px;background:#e5e7eb;border-radius:8px}.player .leg.l{left:14px;transform:rotate(4deg)}.player .leg.r{right:14px;transform:rotate(-4deg)}
+.reticle{position:absolute;width:54px;height:54px;border:3px solid rgba(255,255,255,.95);border-radius:50%;z-index:12;pointer-events:none;box-shadow:0 0 0 4px rgba(52,211,153,.22),0 0 18px rgba(52,211,153,.65)}.reticle:before,.reticle:after{content:"";position:absolute;background:white}.reticle:before{left:50%;top:-8px;width:2px;height:68px;transform:translateX(-50%)}.reticle:after{top:50%;left:-8px;height:2px;width:68px;transform:translateY(-50%)}
+.hud{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);width:min(760px,94vw);padding:12px;border:1px solid var(--line);border-radius:18px;background:rgba(3,12,20,.8);backdrop-filter:blur(12px);z-index:15}.meterRow{display:grid;grid-template-columns:96px 1fr auto;gap:12px;align-items:center;margin:7px 0}.meterLabel{font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;color:#c3d5e3;font-weight:900}.track{height:14px;border-radius:999px;background:#162635;overflow:hidden;border:1px solid rgba(255,255,255,.1)}.fill{height:100%;width:0;background:linear-gradient(90deg,#34d399,#fbbf24,#fb7185);transition:width .04s linear}.composure .fill{background:linear-gradient(90deg,#38bdf8,#34d399)}.hint{font-size:.78rem;color:var(--muted);white-space:nowrap}.shootBtn{display:none;width:100%;margin-top:8px;padding:11px;border:none;border-radius:11px;background:linear-gradient(180deg,#22c55e,#15803d);font-weight:900;letter-spacing:.06em;text-transform:uppercase}
+.overlay{position:absolute;inset:0;display:grid;place-items:center;padding:18px;background:rgba(1,6,12,.68);backdrop-filter:blur(9px);z-index:30}.card{width:min(760px,96vw);max-height:94%;overflow:auto;border:1px solid rgba(255,255,255,.14);border-radius:24px;padding:24px;background:linear-gradient(180deg,rgba(12,27,42,.97),rgba(4,13,23,.98));box-shadow:0 28px 80px rgba(0,0,0,.45)}.eyebrow{font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:#7dd3fc;font-weight:900}.card h1{margin:.35rem 0 .5rem;font-size:clamp(2rem,5vw,4rem);line-height:.94}.card h2{margin:.45rem 0 1rem;font-size:clamp(1.2rem,3vw,2rem)}.sub{color:var(--muted);line-height:1.5}.choices{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}.choice{min-height:58px;padding:13px 15px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.06);text-align:left;cursor:pointer;font-weight:750}.choice:hover,.choice.focus{border-color:#67e8f9;background:rgba(34,211,238,.13)}.choice.correct{border-color:#34d399;background:rgba(52,211,153,.18)}.choice.wrong{border-color:#fb7185;background:rgba(251,113,133,.18)}.primary{border:none;border-radius:14px;padding:13px 18px;background:linear-gradient(180deg,#22c55e,#15803d);font-weight:900;cursor:pointer}.secondary{border:1px solid var(--line);border-radius:14px;padding:12px 16px;background:rgba(255,255,255,.06);font-weight:800;cursor:pointer}.row{display:flex;gap:10px;flex-wrap:wrap}.resultBig{font-size:clamp(3rem,10vw,7rem);font-weight:1000;line-height:.95;text-align:center;margin:8px 0}.goalText{color:#86efac}.saveText{color:#fde68a}.missText{color:#fda4af}.hidden{display:none!important}.shotDots{display:flex;gap:6px}.dot{width:13px;height:13px;border-radius:50%;background:#334155;border:1px solid rgba(255,255,255,.25)}.dot.goal{background:#22c55e}.dot.no{background:#ef4444}.topic{font-size:.8rem;color:#bae6fd}
+@media(max-width:720px){.topbar{height:56px;padding:8px}.brand{font-size:.85rem}.score .pill:nth-child(2){display:none}.goal{top:33%;width:72vw;height:38vw}.ball{top:80%;width:36px;height:36px}.player{top:93%;transform:translate(-50%,-100%) scale(.86)}.hud{bottom:8px;padding:9px}.meterRow{grid-template-columns:75px 1fr}.hint{display:none}.shootBtn{display:block}.choices{grid-template-columns:1fr}.card{padding:18px}.reticle{width:48px;height:48px}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="topbar">
+  <div class="brand">Teach Arcade <span>Sports</span></div>
+  <div class="topic" id="topicLabel">World War II • Prototype</div>
+  <div class="score"><div class="pill">Goals <span id="goalCount">0</span>/<span id="kickCount">0</span></div><div class="pill">Streak <span id="streakCount">0</span></div><button class="iconBtn" id="fsBtn">⛶</button></div>
+</header>
+<main class="main">
+  <div class="stage" id="stage">
+    <div class="skyGlow"></div><div class="stands"></div><div class="crowd"></div><div class="pitch"></div><div class="boxLine"></div>
+    <div class="goal" id="goal"></div>
+    <div class="keeper" id="keeper"><div class="head"></div><div class="body"></div><div class="arm l"></div><div class="arm r"></div><div class="leg l"></div><div class="leg r"></div></div>
+    <div class="reticle hidden" id="reticle"></div>
+    <div class="ball" id="ball"></div>
+    <div class="player"><div class="head"></div><div class="shirt"></div><div class="leg l"></div><div class="leg r"></div></div>
+    <section class="hud hidden" id="hud">
+      <div class="meterRow composure"><div class="meterLabel">Composure</div><div class="track"><div class="fill" id="compFill"></div></div><div class="hint" id="compText">50%</div></div>
+      <div class="meterRow"><div class="meterLabel">Power</div><div class="track"><div class="fill" id="powerFill"></div></div><div class="hint">Hold / release Space</div></div>
+      <button class="shootBtn" id="shootBtn">Hold to charge • release to shoot</button>
+    </section>
+  </div>
+
+  <div class="overlay" id="intro">
+    <div class="card">
+      <div class="eyebrow">Sports Arcade Prototype</div>
+      <h1>Penalty<br>Pressure</h1>
+      <p class="sub">Answer a review question, then step to the spot. Correct answers build composure and slow the aim movement. You still have to place the shot and choose the power.</p>
+      <div class="row"><button class="primary" id="startBtn">Start Shootout</button></div>
+      <p class="sub" style="font-size:.82rem;margin-top:14px">Keyboard: 1–4 / arrows + Enter for questions • arrows or WASD aim • hold Space to charge, release to kick. Touch controls are supported.</p>
+    </div>
+  </div>
+
+  <div class="overlay hidden" id="questionOverlay">
+    <div class="card">
+      <div class="eyebrow" id="qProgress">Kick 1 of 10</div>
+      <h2 id="qText"></h2>
+      <div class="choices" id="choices"></div>
+      <p class="sub" id="feedback"></p>
+    </div>
+  </div>
+
+  <div class="overlay hidden" id="resultOverlay">
+    <div class="card" style="text-align:center">
+      <div class="eyebrow">Shot Result</div>
+      <div class="resultBig" id="resultText">GOAL!</div>
+      <p class="sub" id="resultDetail"></p>
+      <div class="shotDots" id="shotDots" style="justify-content:center;margin:14px 0 20px"></div>
+      <button class="primary" id="nextBtn">Next Question</button>
+    </div>
+  </div>
+
+  <div class="overlay hidden" id="endOverlay">
+    <div class="card" style="text-align:center">
+      <div class="eyebrow">Shootout Complete</div>
+      <div class="resultBig goalText" id="finalScore">7 / 10</div>
+      <p class="sub" id="finalDetail"></p>
+      <div class="row" style="justify-content:center"><button class="primary" id="againBtn">Play Again</button></div>
+    </div>
+  </div>
+</main>
+</div>
+<script>
+const questionSet={
+ title:'World War II',
+ questions:[
+ {question:'Which attack led to the U.S. declaration of war against Japan in December 1941?',choices:['The invasion of Poland','The bombing of London','The attack on Pearl Harbor','The invasion of the Soviet Union'],correctAnswer:2},
+ {question:'Which program supplied aid to nations whose defense was considered vital to the United States before U.S. entry into World War II?',choices:['Lend-Lease','Marshall Plan','New Deal','Point Four Program'],correctAnswer:0},
+ {question:'What was the Manhattan Project?',choices:['A plan to rebuild European cities','An agency regulating food prices','A campaign to recruit farm workers','A secret effort to develop atomic weapons'],correctAnswer:3},
+ {question:'Which president authorized the use of atomic bombs against Japan?',choices:['Franklin D. Roosevelt','Harry S. Truman','Dwight D. Eisenhower','Herbert Hoover'],correctAnswer:1},
+ {question:'What did the wartime image of Rosie the Riveter represent?',choices:["Women's industrial work for the war effort",'Women serving as Supreme Court justices',"Women's leadership of the Axis alliance",'Women ending the military draft'],correctAnswer:0},
+ {question:'What did the GI Bill of 1944 provide eligible veterans?',choices:['Automatic appointments to Congress','Guaranteed ownership of factories','Education and other readjustment benefits','Permanent exemption from all taxes'],correctAnswer:2},
+ {question:'Which group became known for flying as Black military aviators during World War II?',choices:['Rough Riders','Bonus Army','Harlem Hellfighters','Tuskegee Airmen'],correctAnswer:3},
+ {question:'Why did federal agencies encourage factories to shift to war production?',choices:['To eliminate manufacturing employment','To supply equipment needed for a large military effort','To end American trade with every Allied country','To keep civilian and military production identical'],correctAnswer:1},
+ {question:'What was a main purpose of rationing on the U.S. home front?',choices:['To distribute scarce goods while reserving resources for the war','To give every household unlimited access to gasoline','To replace all purchases with barter','To remove federal oversight of shortages'],correctAnswer:0},
+ {question:'D-Day was the Allied invasion of which region?',choices:['Normandy','Sicily','North Africa','Bavaria'],correctAnswer:0}
+ ]
+};
+const $=s=>document.querySelector(s);
+const state={index:0,goals:0,streak:0,composure:45,answeredCorrect:false,questionFocus:0,phase:'intro',aimX:.5,aimY:.48,power:0,powerDir:1,charging:false,shots:[],anim:null,last:performance.now()};
+const intro=$('#intro'),qOverlay=$('#questionOverlay'),resultOverlay=$('#resultOverlay'),endOverlay=$('#endOverlay'),hud=$('#hud'),reticle=$('#reticle'),goal=$('#goal'),keeper=$('#keeper'),ball=$('#ball');
+function shuffle(a){return [...a].sort(()=>Math.random()-.5)}
+let questions=[];
+function reset(){state.index=0;state.goals=0;state.streak=0;state.composure=45;state.shots=[];questions=shuffle(questionSet.questions).slice(0,10);updateTop();showQuestion()}
+function updateTop(){ $('#goalCount').textContent=state.goals;$('#kickCount').textContent=state.index;$('#streakCount').textContent=state.streak;$('#compFill').style.width=state.composure+'%';$('#compText').textContent=Math.round(state.composure)+'%'}
+function showQuestion(){state.phase='question';qOverlay.classList.remove('hidden');resultOverlay.classList.add('hidden');hud.classList.add('hidden');reticle.classList.add('hidden');ball.classList.remove('shoot');ball.style.left='50%';ball.style.top='81%';keeper.style.left='50%';keeper.style.transform='translate(-50%,-100%)';const q=questions[state.index];$('#qProgress').textContent=`Kick ${state.index+1} of ${questions.length}`;$('#qText').textContent=q.question;$('#feedback').textContent='';state.questionFocus=0;const c=$('#choices');c.innerHTML='';q.choices.forEach((txt,i)=>{const b=document.createElement('button');b.className='choice'+(i===0?' focus':'');b.innerHTML=`<strong>${i+1}.</strong> ${txt}`;b.onclick=()=>answer(i);c.appendChild(b)});}
+function answer(i){if(state.phase!=='question')return;const q=questions[state.index];const buttons=[...document.querySelectorAll('.choice')];const ok=i===q.correctAnswer;state.answeredCorrect=ok;if(ok){state.streak++;state.composure=Math.min(100,state.composure+16+Math.min(12,state.streak*2));buttons[i].classList.add('correct');$('#feedback').textContent='Correct — composure increased. Your aim will move more slowly.'}else{state.streak=0;state.composure=Math.max(10,state.composure-10);buttons[i].classList.add('wrong');buttons[q.correctAnswer].classList.add('correct');$('#feedback').textContent='Not quite — you can still score, but the aim will be harder to control.'}buttons.forEach(b=>b.disabled=true);updateTop();setTimeout(beginShot,800)}
+function beginShot(){qOverlay.classList.add('hidden');state.phase='aim';state.aimX=.5;state.aimY=.5;state.power=0;state.charging=false;hud.classList.remove('hidden');reticle.classList.remove('hidden');updateReticle()}
+function goalRect(){return goal.getBoundingClientRect()}
+function updateReticle(){const r=goalRect();reticle.style.left=(r.left+r.width*state.aimX-reticle.offsetWidth/2)+'px';reticle.style.top=(r.top+r.height*state.aimY-reticle.offsetHeight/2)+'px'}
+function aim(dx,dy){if(state.phase!=='aim')return;state.aimX=Math.max(.06,Math.min(.94,state.aimX+dx));state.aimY=Math.max(.08,Math.min(.90,state.aimY+dy));updateReticle()}
+function setFocus(n){const bs=[...document.querySelectorAll('.choice')];if(!bs.length)return;state.questionFocus=(n+bs.length)%bs.length;bs.forEach((b,i)=>b.classList.toggle('focus',i===state.questionFocus))}
+function charge(on){if(state.phase!=='aim')return;if(on){state.charging=true}else if(state.charging){state.charging=false;kick()}}
+function kick(){if(state.phase!=='aim')return;state.phase='flight';hud.classList.add('hidden');reticle.classList.add('hidden');const r=goalRect();const targetX=r.left+r.width*state.aimX,targetY=r.top+r.height*state.aimY;const powerQuality=1-Math.min(1,Math.abs(state.power-.74)/.74);const edge=Math.abs(state.aimX-.5)*2;const high=(.55-state.aimY);const keeperRead=.38+(100-state.composure)/220;let keeperX=.5+(Math.random()-.5)*.25;if(Math.random()<keeperRead)keeperX=state.aimX+(Math.random()-.5)*.16;keeperX=Math.max(.1,Math.min(.9,keeperX));keeper.style.left=(keeperX*100)+'%';keeper.style.transform=`translate(-50%,-100%) rotate(${keeperX<.45?-28:keeperX>.55?28:0}deg)`;const accuracyPenalty=(Math.random()-.5)*(state.answeredCorrect?.045:.13)*(1+(1-powerQuality));const actualX=Math.max(-.08,Math.min(1.08,state.aimX+accuracyPenalty));const actualY=Math.max(-.06,Math.min(1.08,state.aimY+(Math.random()-.5)*(state.answeredCorrect?.035:.1)));const inside=actualX>.025&&actualX<.975&&actualY>.02&&actualY<.98;const dist=Math.abs(actualX-keeperX);const saveReach=.16 + (1-state.power)*.07 - Math.max(0,high)*.045;const saved=inside&&dist<saveReach&&Math.random()<.86;const goalMade=inside&&!saved;ball.classList.add('shoot');ball.style.left=(r.left+r.width*actualX)+'px';ball.style.top=(r.top+r.height*actualY)+'px';setTimeout(()=>finishShot(goalMade,saved,inside,powerQuality,dist),650)}
+function finishShot(goalMade,saved,inside,powerQuality,dist){state.index++;if(goalMade)state.goals++;state.shots.push(goalMade);updateTop();resultOverlay.classList.remove('hidden');const t=$('#resultText'),d=$('#resultDetail');if(goalMade){t.textContent='GOAL!';t.className='resultBig goalText';d.textContent=state.answeredCorrect?'Knowledge created control — and you finished the chance.':'You overcame the faster aim and buried it.'}else if(saved){t.textContent='SAVED';t.className='resultBig saveText';d.textContent=dist<.08?'The keeper read it perfectly. Try a corner or change the power next time.':'The keeper got enough reach to turn it away.'}else{t.textContent='MISS';t.className='resultBig missText';d.textContent=powerQuality<.4?'The power timing pulled the shot off target.':'The placement drifted outside the frame.'}renderDots();$('#nextBtn').textContent=state.index>=questions.length?'View Results':'Next Question'}
+function renderDots(){const el=$('#shotDots');el.innerHTML='';state.shots.forEach(g=>{const d=document.createElement('span');d.className='dot '+(g?'goal':'no');el.appendChild(d)})}
+function next(){resultOverlay.classList.add('hidden');if(state.index>=questions.length){state.phase='end';$('#finalScore').textContent=`${state.goals} / ${questions.length}`;$('#finalDetail').textContent=`You answered through a full shootout and converted ${state.goals} penalties. Best results come from combining strong review performance with controlled placement and power.`;endOverlay.classList.remove('hidden')}else showQuestion()}
+function loop(now){const dt=Math.min(.04,(now-state.last)/1000);state.last=now;if(state.phase==='aim'){const speed=.33-(state.composure/100)*.20;state.aimX+=speed*dt*(state.autoDir||1);if(!state.autoDir)state.autoDir=1;if(state.aimX>.93){state.aimX=.93;state.autoDir=-1}else if(state.aimX<.07){state.aimX=.07;state.autoDir=1}if(state.charging){state.power+=dt*1.25*state.powerDir;if(state.power>=1){state.power=1;state.powerDir=-1}else if(state.power<=0){state.power=0;state.powerDir=1}$('#powerFill').style.width=(state.power*100)+'%'}updateReticle()}requestAnimationFrame(loop)}
+window.addEventListener('resize',()=>{if(state.phase==='aim')updateReticle()});
+window.addEventListener('keydown',e=>{if(state.phase==='question'){if(['ArrowDown','ArrowRight'].includes(e.key)){e.preventDefault();setFocus(state.questionFocus+1)}else if(['ArrowUp','ArrowLeft'].includes(e.key)){e.preventDefault();setFocus(state.questionFocus-1)}else if(e.key==='Enter'){e.preventDefault();answer(state.questionFocus)}else if(/[1-4]/.test(e.key))answer(+e.key-1);return}if(state.phase==='aim'){const step=.035;if(['ArrowLeft','a','A'].includes(e.key)){e.preventDefault();aim(-step,0)}if(['ArrowRight','d','D'].includes(e.key)){e.preventDefault();aim(step,0)}if(['ArrowUp','w','W'].includes(e.key)){e.preventDefault();aim(0,-step)}if(['ArrowDown','s','S'].includes(e.key)){e.preventDefault();aim(0,step)}if(e.code==='Space'&&!e.repeat){e.preventDefault();charge(true)}}});
+window.addEventListener('keyup',e=>{if(e.code==='Space'){e.preventDefault();charge(false)}});
+let touchStart=null;stage.addEventListener('pointerdown',e=>{if(state.phase!=='aim'||e.target.closest('button'))return;touchStart={x:e.clientX,y:e.clientY};aim((e.clientX-stage.clientWidth/2)/stage.clientWidth*.06,(e.clientY-stage.clientHeight*.55)/stage.clientHeight*.04)});stage.addEventListener('pointermove',e=>{if(!touchStart||state.phase!=='aim')return;const dx=(e.clientX-touchStart.x)/stage.clientWidth,dy=(e.clientY-touchStart.y)/stage.clientHeight;aim(dx*.8,dy*.8);touchStart={x:e.clientX,y:e.clientY}});stage.addEventListener('pointerup',()=>touchStart=null);
+$('#shootBtn').addEventListener('pointerdown',e=>{e.preventDefault();charge(true)});$('#shootBtn').addEventListener('pointerup',e=>{e.preventDefault();charge(false)});$('#shootBtn').addEventListener('pointercancel',()=>charge(false));
+$('#startBtn').onclick=()=>{intro.classList.add('hidden');reset()};$('#nextBtn').onclick=next;$('#againBtn').onclick=()=>{endOverlay.classList.add('hidden');reset()};$('#fsBtn').onclick=()=>{if(!document.fullscreenElement)document.documentElement.requestFullscreen?.();else document.exitFullscreen?.()};
+requestAnimationFrame(loop);
+</script>
+</body>
+</html>
