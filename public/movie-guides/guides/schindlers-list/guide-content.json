@@ -1,0 +1,259 @@
+{
+  "slug": "schindlers-list",
+  "title": "Schindler’s List",
+  "year": 1993,
+  "rating": "R",
+  "runtime": 195,
+  "grades": "11–12",
+  "director": "Steven Spielberg",
+  "writer": "Steven Zaillian",
+  "music": "John Williams",
+  "cast": "Liam Neeson, Ben Kingsley, Ralph Fiennes, Caroline Goodall & Embeth Davidtz",
+  "setting": "German-occupied Poland and Brünnlitz, 1939–1945 · A later memorial epilogue",
+  "basis": "Thomas Keneally’s historical novel Schindler’s Ark, published in the U.S. as Schindler’s List",
+  "kicker": "Holocaust History · Choices & Responsibility",
+  "overview": "The film follows Oskar Schindler’s movement from wartime profiteering toward efforts to protect Jewish workers. Study those choices alongside Jewish individuals’ agency and the wider history of Nazi persecution and genocide.",
+  "topics": [
+    "Holocaust",
+    "Antisemitism",
+    "Forced labor",
+    "Jewish agency",
+    "Rescue & responsibility",
+    "Memory & testimony"
+  ],
+  "warnings": [
+    "Graphic executions, killings, persecution of children, bodies, and sustained genocidal violence.",
+    "Nudity during dehumanizing inspections and sexual situations; sexual coercion or assault.",
+    "Strong language, antisemitic abuse, terror, separation, and trauma. Preview the entire assigned edition."
+  ],
+  "sources": [
+    [
+      "Amblin credits",
+      "https://amblin.com/movie/schindlers-list/"
+    ],
+    [
+      "Content advisory (spoilers)",
+      "https://www.commonsensemedia.org/movie-reviews/schindlers-list"
+    ],
+    [
+      "USHMM: Oskar Schindler",
+      "https://encyclopedia.ushmm.org/content/en/article/oskar-schindler"
+    ],
+    [
+      "USHMM teaching guidelines",
+      "https://www.ushmm.org/en/teach/fundamentals/guidelines-for-teaching-the-holocaust"
+    ]
+  ],
+  "essential": "How does Schindler’s List portray changes in responsibility under a system of persecution?",
+  "prep": "Establish a factual Holocaust timeline before viewing: Nazi antisemitism, invasion and occupation, ghettos, deportation, forced labor, and genocide. Clarify differences among ghettos, concentration camps, and killing centers. Introduce Kraków, Płaszów, Auschwitz, and Brünnlitz. Emphasize that rescue was exceptional and the Holocaust cannot be explained through one rescuer’s story.",
+  "context": "This dramatization is not archival footage even where it uses black and white. Read the USHMM Schindler overview and a teacher-selected survivor testimony, asking what each adds to or complicates in the film. Recognize Jewish people as individuals with histories, relationships, and agency; also consider Emilie Schindler’s contribution. Do not reduce the Holocaust to an inspiring ending or imply that those not rescued lacked courage.",
+  "pauses": "Pause after factory recruitment, after the ghetto liquidation, during the move toward the list and relocation, and after liberation and the memorial epilogue. At roughly 195 minutes this needs a multi-period plan. Check transitions in your edition and bridge omitted scenes with factual context.",
+  "discussion": [
+    "What changes in Schindler’s priorities, and what evidence supports that interpretation?",
+    "How do Stern and other Jewish characters make choices under severe constraints?",
+    "How does a rescue story illuminate history while leaving much outside its frame?"
+  ],
+  "online": [
+    {
+      "number": 1,
+      "section": "Before viewing",
+      "question": "Why must a story about one rescue effort be placed within the wider Holocaust?",
+      "answer": "It concerns exceptional circumstances and cannot represent all victims, communities, places, or the scale and mechanisms of genocide."
+    },
+    {
+      "number": 2,
+      "section": "Before viewing",
+      "question": "What makes a dramatized scene different from archival evidence?",
+      "answer": "Actors, scripted dialogue, staging, and editing reconstruct a scene; historical claims require independent sources."
+    },
+    {
+      "number": 3,
+      "section": "Part A · Business and restricted lives",
+      "question": "What initially draws Schindler to wartime business in Kraków?",
+      "answer": "He seeks profit and status through wartime opportunities and connections rather than beginning as a committed rescuer."
+    },
+    {
+      "number": 4,
+      "section": "Part A · Business and restricted lives",
+      "question": "How do Schindler’s relationships with Nazi officials benefit his factory?",
+      "answer": "Social connections, gifts, and influence secure business advantages and later become tools for protecting workers."
+    },
+    {
+      "number": 5,
+      "section": "Part A · Business and restricted lives",
+      "question": "What important roles does Itzhak Stern play?",
+      "answer": "He contributes business expertise, organizes workers, and helps preserve lives through decisions about employment and documentation."
+    },
+    {
+      "number": 6,
+      "section": "Part A · Business and restricted lives",
+      "question": "Why can being classified as an essential worker matter in the film?",
+      "answer": "Work status can offer limited protection from deportation or death, though that protection remains unstable under Nazi power."
+    },
+    {
+      "number": 7,
+      "section": "Part A · Business and restricted lives",
+      "question": "How does the film show Jewish people helping one another under restrictions?",
+      "answer": "Accept a specific example of information sharing, family support, organizing employment, or assistance, recognizing constrained agency."
+    },
+    {
+      "number": 8,
+      "section": "Part B · Persecution and precarious protection",
+      "question": "What changes for Jewish residents during the ghetto liquidation?",
+      "answer": "Forced removal and violence destroy remaining security and separate or displace people. No graphic account is needed."
+    },
+    {
+      "number": 9,
+      "section": "Part B · Persecution and precarious protection",
+      "question": "How does witnessing persecution affect Schindler’s outlook?",
+      "answer": "The suffering becomes harder for him to treat as distant business context; later protective actions suggest changing priorities."
+    },
+    {
+      "number": 10,
+      "section": "Part B · Persecution and precarious protection",
+      "question": "How does the film contrast Göth’s power with the workers’ vulnerability?",
+      "answer": "Arbitrary threats and violence show domination over people with few protections. Explain the imbalance without recounting graphic acts."
+    },
+    {
+      "number": 11,
+      "section": "Part B · Persecution and precarious protection",
+      "question": "What risks accompany Stern’s efforts to protect workers?",
+      "answer": "He acts under coercive authority where paperwork, selections, and mistakes can have deadly consequences; his choices are constrained."
+    },
+    {
+      "number": 12,
+      "section": "Part B · Persecution and precarious protection",
+      "question": "Why does protection based only on one official’s favor remain uncertain?",
+      "answer": "Orders, transfers, and arbitrary decisions can overturn it; a personal exception does not dismantle the persecuting system."
+    },
+    {
+      "number": 13,
+      "section": "Part C · The list and liberation",
+      "question": "What is the purpose of the list in the film’s rescue effort?",
+      "answer": "It identifies people for transfer to Schindler’s factory at Brünnlitz, creating a route toward protection from further persecution."
+    },
+    {
+      "number": 14,
+      "section": "Part C · The list and liberation",
+      "question": "What does Schindler give up as his priorities change?",
+      "answer": "He spends money and risks status and safety to secure and support workers rather than maximize profit."
+    },
+    {
+      "number": 15,
+      "section": "Part C · The list and liberation",
+      "question": "Why does relocation not immediately remove every danger?",
+      "answer": "People still face transport risks, separation, and Nazi control; the film shows rescue as precarious rather than automatic."
+    },
+    {
+      "number": 16,
+      "section": "Part C · The list and liberation",
+      "question": "What does the liberation sequence change for the workers?",
+      "answer": "Nazi control ends as the war concludes, but loss, displacement, and rebuilding remain. Survival is not restoration of everything lost."
+    },
+    {
+      "number": 17,
+      "section": "After viewing",
+      "question": "Choose a scene showing Jewish agency rather than only Schindler’s actions. Explain it.",
+      "answer": "Accept a specific decision by Stern or another Jewish character, with explanation of both action and constraints."
+    },
+    {
+      "number": 18,
+      "section": "After viewing",
+      "question": "How does a visual choice affect your interpretation of a scene?",
+      "answer": "Accept analysis of framing, black and white, selective color, or contrast. Symbols can support more than one reasoned interpretation."
+    },
+    {
+      "number": 19,
+      "section": "After viewing",
+      "question": "What does the memorial epilogue add to the dramatized story?",
+      "answer": "It connects portrayed events to survivors, remembrance, and real lives, while the main film remains a constructed narrative."
+    },
+    {
+      "number": 20,
+      "section": "After viewing",
+      "question": "What question would you investigate using survivor testimony or a historical document?",
+      "answer": "Choose a specific question, an appropriate source, and what it may reveal or omit; do not treat one testimony as every person’s experience."
+    }
+  ],
+  "paper": [
+    {
+      "number": 1,
+      "section": "Before viewing",
+      "question": "Why must a story about one rescue effort be placed within the wider Holocaust?",
+      "answer": "It concerns exceptional circumstances and cannot represent all victims, communities, places, or the scale and mechanisms of genocide."
+    },
+    {
+      "number": 2,
+      "section": "During viewing",
+      "question": "What initially draws Schindler to wartime business in Kraków?",
+      "answer": "He seeks profit and status through wartime opportunities and connections rather than beginning as a committed rescuer."
+    },
+    {
+      "number": 3,
+      "section": "During viewing",
+      "question": "What important roles does Itzhak Stern play?",
+      "answer": "He contributes business expertise, organizes workers, and helps preserve lives through decisions about employment and documentation."
+    },
+    {
+      "number": 4,
+      "section": "During viewing",
+      "question": "Why can being classified as an essential worker matter in the film?",
+      "answer": "Work status can offer limited protection from deportation or death, though that protection remains unstable under Nazi power."
+    },
+    {
+      "number": 5,
+      "section": "During viewing",
+      "question": "What changes for Jewish residents during the ghetto liquidation?",
+      "answer": "Forced removal and violence destroy remaining security and separate or displace people. No graphic account is needed."
+    },
+    {
+      "number": 6,
+      "section": "During viewing",
+      "question": "How does witnessing persecution affect Schindler’s outlook?",
+      "answer": "The suffering becomes harder for him to treat as distant business context; later protective actions suggest changing priorities."
+    },
+    {
+      "number": 7,
+      "section": "During viewing",
+      "question": "How does the film contrast Göth’s power with the workers’ vulnerability?",
+      "answer": "Arbitrary threats and violence show domination over people with few protections. Explain the imbalance without recounting graphic acts."
+    },
+    {
+      "number": 8,
+      "section": "During viewing",
+      "question": "What risks accompany Stern’s efforts to protect workers?",
+      "answer": "He acts under coercive authority where paperwork, selections, and mistakes can have deadly consequences; his choices are constrained."
+    },
+    {
+      "number": 9,
+      "section": "During viewing",
+      "question": "What is the purpose of the list in the film’s rescue effort?",
+      "answer": "It identifies people for transfer to Schindler’s factory at Brünnlitz, creating a route toward protection from further persecution."
+    },
+    {
+      "number": 10,
+      "section": "During viewing",
+      "question": "What does Schindler give up as his priorities change?",
+      "answer": "He spends money and risks status and safety to secure and support workers rather than maximize profit."
+    },
+    {
+      "number": 11,
+      "section": "After viewing",
+      "question": "What does the liberation sequence change for the workers?",
+      "answer": "Nazi control ends as the war concludes, but loss, displacement, and rebuilding remain. Survival is not restoration of everything lost."
+    },
+    {
+      "number": 12,
+      "section": "After viewing",
+      "question": "Choose a scene showing Jewish agency rather than only Schindler’s actions. Explain it.",
+      "answer": "Accept a specific decision by Stern or another Jewish character, with explanation of both action and constraints."
+    },
+    {
+      "number": 13,
+      "section": "After viewing",
+      "question": "What question would you investigate using survivor testimony or a historical document?",
+      "answer": "Choose a specific question, an appropriate source, and what it may reveal or omit; do not treat one testimony as every person’s experience."
+    }
+  ],
+  "final_writing": "How does Schindler’s List portray changes in responsibility under a system of persecution? Write a paragraph with a clear claim, evidence from two scenes, reasoning, and one limitation of using this film to learn history."
+}
