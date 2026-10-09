@@ -1,35 +1,28 @@
 (function(){
 const raw=[
-['North Cape','170,72 250,48 314,78 302,168 220,188 142,148',[232,116]],['Frost Coast','250,48 360,42 410,82 392,170 302,168 314,78',[352,112]],['Highland Reach','360,42 480,58 502,150 450,192 392,170 410,82',[439,118]],['Pine March','480,58 590,44 650,90 628,174 550,194 502,150',[559,116]],['Storm Coast','590,44 704,70 758,132 724,204 628,174 650,90',[668,120]],['Eastwatch','704,70 792,112 838,190 802,252 724,204 758,132',[772,166]],['Westhaven','142,148 220,188 212,270 126,300 76,238 102,180',[157,225]],['Silver Vale','220,188 302,168 330,250 286,316 212,270',[268,242]],['Crownlands','302,168 392,170 450,192 430,286 330,250',[376,222]],['Rivermeet','450,192 502,150 550,194 566,282 500,326 430,286',[497,238]],['Redwood','550,194 628,174 724,204 700,286 620,318 566,282',[629,242]],['Sun Coast','724,204 802,252 824,330 750,360 700,286',[758,278]],['Mist Bay','76,238 126,300 160,374 112,438 54,390 42,310',[101,342]],['Iron Hills','126,300 212,270 286,316 268,406 160,374',[207,337]],['Heartland','286,316 330,250 430,286 500,326 466,410 368,428 268,406',[374,350]],["King's Crossing",'500,326 566,282 620,318 604,408 530,442 466,410',[535,362]],['Amber Plains','620,318 700,286 750,360 716,430 650,452 604,408',[666,367]],['Dawnshore','750,360 824,330 844,412 792,474 716,430',[780,403]],['Southwest Reach','112,438 160,374 268,406 250,490 194,544 116,514 74,470',[172,457]],['Lake Country','268,406 368,428 350,506 286,558 250,490',[310,473]],['Greenfields','368,428 466,410 530,442 508,522 430,568 350,506',[432,480]],['Gold Ridge','530,442 604,408 650,452 626,528 552,572 508,522',[570,486]],['Southmarch','650,452 716,430 792,474 750,538 680,570 626,528',[690,500]],['Cape Ember','552,572 626,528 680,570 642,614 566,628 500,594',[583,583]],
-['Westwatch Isle','45,150 70,137 96,150 104,178 91,205 64,211 42,191 37,169',[70,174]],['Northstar Isle','821,105 846,96 870,108 879,132 868,155 843,165 820,151 811,127',[845,131]],['Ember Isle','817,523 845,510 873,524 884,550 873,578 845,589 818,575 807,548',[846,550]]
+['Frostwood','M170 170 C145 135 170 100 220 88 C265 65 315 72 350 98 C374 116 390 145 386 178 C350 190 326 207 300 230 C255 218 220 214 184 225 C176 207 172 188 170 170Z',[245,155]],
+['White Peaks','M350 98 C405 67 470 70 520 91 C557 106 578 130 590 166 C558 182 532 205 510 234 C463 217 426 211 386 178 C390 145 374 116 350 98Z',[455,145]],
+['Northmere','M520 91 C572 70 635 76 680 103 C714 124 731 151 730 183 C691 196 661 215 638 242 C594 226 552 222 510 234 C532 205 558 182 590 166 C578 130 557 106 520 91Z',[620,155]],
+['Pine Crown','M680 103 C728 82 783 89 823 114 C858 136 876 165 870 198 C834 209 802 229 778 257 C729 241 687 236 638 242 C661 215 691 196 730 183 C731 151 714 124 680 103Z',[760,175]],
+['Storm Cape','M823 114 C876 101 930 115 967 147 C995 171 1008 204 998 235 C971 257 946 280 925 309 C876 291 829 278 778 257 C802 229 834 209 870 198 C876 165 858 136 823 114Z',[920,205]],
+['Westwood','M184 225 C220 214 255 218 300 230 C324 256 342 286 344 320 C316 340 291 365 272 397 C225 382 188 370 151 374 C125 344 118 309 130 278 C140 252 156 235 184 225Z',[220,315]],
+['Silver Vale','M300 230 C326 207 350 190 386 178 C426 211 463 217 510 234 C499 269 500 301 511 334 C465 340 426 350 390 371 C373 350 359 334 344 320 C342 286 324 256 300 230Z',[410,285]],
+['Riverhold','M510 234 C552 222 594 226 638 242 C646 274 661 302 684 326 C650 351 624 378 607 410 C569 385 538 358 511 334 C500 301 499 269 510 234Z',[585,305]],
+['Green March','M638 242 C687 236 729 241 778 257 C792 288 813 315 841 338 C817 365 798 393 789 424 C742 404 701 371 684 326 C661 302 646 274 638 242Z',[735,330]],
+['Dawnshore','M778 257 C829 278 876 291 925 309 C953 326 978 348 1000 378 C1007 410 994 442 969 466 C916 455 870 441 789 424 C798 393 817 365 841 338 C813 315 792 288 778 257Z',[900,390]],
+['Mist Coast','M151 374 C188 370 225 382 272 397 C291 421 302 451 302 484 C274 507 252 535 238 566 C196 558 158 545 128 520 C101 496 88 465 96 434 C103 405 122 385 151 374Z',[190,455]],
+['Iron Hills','M272 397 C291 365 316 340 344 320 C359 334 373 350 390 371 C426 350 465 340 511 334 C526 364 548 389 578 411 C552 439 535 469 528 501 C477 487 430 480 382 486 C350 470 326 470 302 484 C302 451 291 421 272 397Z',[410,425]],
+['Crown Basin','M511 334 C538 358 569 385 607 410 C624 378 650 351 684 326 C701 371 742 404 789 424 C767 450 754 481 752 515 C699 506 651 508 607 526 C584 501 558 485 528 501 C535 469 552 439 578 411 C548 389 526 364 511 334Z',[665,455]],
+['Amber Fields','M789 424 C870 441 916 455 969 466 C987 490 988 519 975 545 C956 574 926 592 890 599 C849 570 802 543 752 515 C754 481 767 450 789 424Z',[865,520]],
+['Sunscar Desert','M128 520 C158 545 196 558 238 566 C277 575 315 590 346 614 C325 643 312 670 310 696 C264 699 221 688 186 666 C153 645 132 619 122 590 C114 564 116 540 128 520Z',[225,615]],
+['Lake Country','M238 566 C252 535 274 507 302 484 C326 470 350 470 382 486 C430 480 477 487 528 501 C534 535 549 565 573 590 C535 613 505 639 483 670 C435 651 390 634 346 614 C315 590 277 575 238 566Z',[420,585]],
+['South Crown','M528 501 C558 485 584 501 607 526 C651 508 699 506 752 515 C760 549 778 579 806 605 C778 632 755 660 741 690 C686 678 635 674 583 686 C552 679 519 675 483 670 C505 639 535 613 573 590 C549 565 534 535 528 501Z',[650,625]],
+['Ember Coast','M752 515 C802 543 849 570 890 599 C915 620 928 647 922 675 C897 702 860 715 818 711 C792 704 766 697 741 690 C755 660 778 632 806 605 C778 579 760 549 752 515Z',[845,650]],
+['Westwatch Isle','M55 225 C30 201 36 165 63 146 C91 126 128 136 143 164 C157 191 143 225 113 238 C91 247 70 241 55 225Z',[97,185]],
+['Northstar Isle','M1030 145 C1051 118 1090 112 1117 133 C1144 154 1147 193 1125 217 C1103 241 1065 239 1043 215 C1025 196 1018 164 1030 145Z',[1085,175]],
+['Seabreak Isle','M1015 570 C1044 547 1085 553 1103 582 C1121 612 1108 649 1076 664 C1044 678 1008 661 997 629 C989 606 995 586 1015 570Z',[1055,610]]
 ];
-const specials={3:'shield',6:'double',9:'challenge',14:'stronghold',17:'shield',20:'double',24:'challenge',25:'shield',26:'double'};
-const adj=[[1,6,7],[0,2,7,8],[1,3,8,9],[2,4,9,10],[3,5,10,11,25],[4,11,25],[0,7,12,24],[0,1,6,8,13],[1,2,7,9,13,14],[2,3,8,10,14,15],[3,4,9,11,15,16],[4,5,10,16,17],[6,13,18,24],[7,8,12,14,18,19],[8,9,13,15,19,20],[9,10,14,16,20,21],[10,11,15,17,21,22],[11,16,22,26],[12,13,19],[13,14,18,20],[14,15,19,21,23],[15,16,20,22,23],[16,17,21,23,26],[20,21,22,26],[6,12],[4,5],[17,22,23]];
-window.TT_BOARD={mapName:'The Crownlands',territories:raw.map((r,i)=>({id:`t${i+1}`,name:r[0],shape:r[1],label:r[2],adjacent:adj[i].map(j=>`t${j+1}`),special:specials[i]||null}))};
-
-/* Decoration only. The continent itself is no longer a second drawing: the
-   playable territory paths ARE the landmass, so hit areas and coastline cannot diverge. */
-const art=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 650">
-<rect width="900" height="650" fill="#168fc6"/>
-<g fill="none" stroke="#70cbea" stroke-width="4" opacity=".25"><path d="M15 112q55-22 110 0t110 0M680 585q55-22 120 0M10 505q45-18 90 0"/></g>
-<path d="M445 285Q480 265 515 286Q548 310 514 337Q480 358 446 338Q420 315 445 285Z" fill="#45bce0" stroke="#dff6ff" stroke-width="4"/>
-<g fill="none" stroke="#46b7df" stroke-linecap="round"><path d="M478 61Q465 130 476 205Q480 245 463 282" stroke-width="10"/><path d="M452 340Q425 380 398 420Q370 462 350 505" stroke-width="10"/><path d="M515 337Q560 360 595 398Q620 422 647 450" stroke-width="8"/></g>
-<g fill="#247642" stroke="#245b38" stroke-width="2"><path d="M150 196l16-35 16 35h-8l12 23h-40l12-23zM190 218l16-35 16 35h-8l12 23h-40l12-23zM585 206l16-35 16 35h-8l12 23h-40l12-23zM625 224l15-32 15 32h-8l12 22h-38l12-22zM380 377l16-35 16 35h-8l12 23h-40l12-23zM635 398l16-35 16 35h-8l12 23h-40l12-23z"/></g>
-<g stroke="#4c5865" stroke-width="3" fill="#7c8b98"><path d="M334 126l31-56 31 56-15-8-16 23-16-23zM392 139l27-49 28 49-14-7-14 21-14-21zM192 410l34-61 35 61-18-9-17 25-17-25zM668 326l34-61 35 61-18-9-17 25-17-25z"/></g>
-<g stroke="#6b4024" stroke-width="3" fill="#f2d27a"><path d="M548 286v-37h18v37M542 286h30v23h-30zM704 478v-29h16v29M698 478h28v21h-28zM243 305v-28h15v28M237 305h27v20h-27z"/></g>
-</svg>`;
-const artUrl=`url("data:image/svg+xml,${encodeURIComponent(art)}")`;
-const style=document.createElement('style');style.textContent=`
-.arena{background:#168fc6 ${artUrl} center/100% 100% no-repeat!important;border-color:#65c4e5;box-shadow:inset 0 0 32px #075a8b44,0 18px 40px #0007}
-.territory polygon{fill:color-mix(in srgb,#82c95c 82%,var(--team) 18%)!important;fill-opacity:1!important;stroke:#f4e4b6!important;stroke-width:2.2!important;stroke-linejoin:round;transition:.18s}
-.territory:nth-of-type(2) polygon,.territory:nth-of-type(3) polygon{fill:color-mix(in srgb,#e4f1f1 84%,var(--team) 16%)!important}
-.territory:nth-of-type(19) polygon,.territory:nth-of-type(24) polygon{fill:color-mix(in srgb,#efc65b 82%,var(--team) 18%)!important}
-.territory:nth-of-type(n+25) polygon{fill:color-mix(in srgb,#5aa34c 80%,var(--team) 20%)!important;stroke-width:4!important}
-.territory:hover polygon{filter:brightness(1.07)}
-.territory.selected polygon{stroke:#ffd45b!important;stroke-width:8!important;filter:drop-shadow(0 0 8px #ffd45b)!important}
-.territory.legal polygon{stroke:#41e7df!important;stroke-width:8!important;filter:drop-shadow(0 0 9px #41e7df)!important}
-.territory .territory-name{display:none!important}.territory .owner-mark{font-size:19px;paint-order:stroke;stroke:#08243a;stroke-width:3px}.territory .special{font-size:22px}
-.map-panel:after{content:'THE CROWNLANDS';position:absolute;right:20px;bottom:42px;color:#ffffff88;font:900 10px/1 system-ui;letter-spacing:.22em;pointer-events:none;text-shadow:0 1px 3px #07547e}
-@media(max-width:620px){.map-panel:after{display:none}.territory polygon{stroke-width:1.6!important}.territory:nth-of-type(n+25) polygon{stroke-width:3!important}}
-`;document.head.appendChild(style);
+const adj=[[1,5,18],[0,2,6],[1,3,6,7],[2,4,7,8,19],[3,8,9,19],[0,6,10,18],[0,1,5,7,11],[2,3,6,8,11,12],[3,4,7,9,12],[4,8,12,13,19],[5,11,14,18],[6,7,10,12,15],[7,8,9,11,13,15,16],[9,12,16,17,20],[10,15],[11,12,14,16],[12,13,15,17],[13,16,20],[0,5,10],[3,4,9],[13,17]];
+const specials={2:'shield',4:'double',7:'challenge',12:'stronghold',14:'shield',16:'double',18:'challenge',19:'shield',20:'double'};
+window.TT_BOARD={mapName:'The Crownlands',viewBox:'0 0 1200 760',territories:raw.map((r,i)=>({id:`t${i+1}`,name:r[0],path:r[1],shape:'0,0 0,0 0,0',label:r[2],adjacent:adj[i].map(j=>`t${j+1}`),special:specials[i]||null}))};
 })();
