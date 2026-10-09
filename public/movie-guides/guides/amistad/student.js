@@ -22,6 +22,19 @@
   } catch (_) { /* Saving feedback is handled below. */ }
   save();
   fields.forEach(field => field.addEventListener('input', save));
+  document.getElementById('wh-reset').addEventListener('click', () => {
+    if (!window.confirm('Start a new worksheet? This clears the saved name, class, date, and all responses on this browser. Download any work you want to keep first.')) return;
+    fields.forEach(field => { field.value = ''; });
+    try { localStorage.removeItem(key); } catch (_) { /* The form can still be cleared without storage. */ }
+    document.getElementById('wh-export').hidden = true;
+    document.getElementById('wh-export-text').textContent = '';
+    const fallback = document.getElementById('wh-copy-fallback');
+    fallback.hidden = true;
+    fallback.value = '';
+    exportStatus.textContent = '';
+    save();
+    form.elements.student_name.focus();
+  });
   form.addEventListener('submit', event => event.preventDefault());
   const textReport = () => {
     const lines = ['Amistad - Student Responses', `Name: ${form.elements.student_name.value || 'Not entered'}`, `Class: ${form.elements.class_period.value || 'Not entered'}`, `Date: ${form.elements.date.value || 'Not entered'}`, ''];
