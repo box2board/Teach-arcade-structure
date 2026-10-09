@@ -26,6 +26,12 @@ async function loadPortableSet(set){
 }
 export const QUESTION_SETS=Object.freeze(packs.map(({load,...metadata})=>Object.freeze(metadata)));
 export const GAMES=Object.freeze([Object.freeze({
+  id:'raceway-rivals',title:'Raceway Rivals',url:'/review-lab/raceway-rivals/',
+  description:'Race three rivals through Canyon Circuit. Steer through bends, collect boosts, and recharge at checkpoints with your chosen review topic.',
+  image:'/review-lab/raceway-rivals/canyon-v2.png',imageAlt:'Canyon Circuit desert landscape with red rock cliffs and a winding canyon.',
+  mode:'Solo',facts:Object.freeze(['Race against 3 rivals','8, 12 or 16 questions','Repeat topics across laps']),
+  supportsQuestionBank:true,questionSetIds:Object.freeze([])
+}),Object.freeze({
   id:'acorn-dash',title:'Acorn Dash',url:'/review-lab/acorn-dash/',
   description:'Guide a squirrel through three parks. Gather acorns, review at safe stops, and bring your pouch home.',
   image:'/review-lab/acorn-dash-preview.webp',imageAlt:'Acorn Dash’s woodland park with bicycle paths, sprinklers, and a squirrel at home.',

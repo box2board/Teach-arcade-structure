@@ -1,0 +1,1 @@
+window.TA_GAME={id:'pyramid-escape-v13',physicsPreset:'earth',level:window.TA_PYRAMID_V13_LEVEL,questions:window.TA_EGYPT_QUESTIONS,theme:window.TA_PYRAMID_V13_THEME};
