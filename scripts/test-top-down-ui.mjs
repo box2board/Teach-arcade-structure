@@ -86,6 +86,8 @@ go(4,20);face('down');action();go(12,22);face('right');action();
 go(13,6);step('right');go(17,2);face('right');earn('power-chest');
 for(const id of map.puzzles[0].sequence){const o=map.objects.find(o=>o.id===id);go(o.x-1,o.y);face('right');action();}
 assert.equal(get('seals').textContent,'Door lights: 6 / 6');
-go(18,10);assert.equal(action().type,'win');assert.equal(get('dialog-title').textContent,'Adventure complete');
+go(18,10);assert.equal(get('dialog').open,true);assert.equal(get('dialog-title').textContent,'Adventure complete','Walking onto the ready exit finishes without E or Space');
+assert.equal(action().type,'win');
 assert.ok(get('dialog-body').children.some(p=>p.textContent.includes('Review completed: 12 / 12')));
 console.log('DOM flow: all six reward dialogs complete with arrows and Enter, including wrong-answer recovery, disabled-choice skipping and repeat guards; both room cameras, clues and the Hard win screen pass.');
+
