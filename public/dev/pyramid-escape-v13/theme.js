@@ -1,0 +1,1 @@
+window.TA_PYRAMID_V13_THEME={name:'Pyramid Escape V1.3',labels:{goal:'tomb exit'},skyTop:'#d89b4a',skyBottom:'#f0cf78',sun:'#ffe7a0',far:'#b97835',near:'#8d582e',sound:{}};
