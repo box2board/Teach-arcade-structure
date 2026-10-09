@@ -1,0 +1,254 @@
+{
+  "schemaVersion": 1,
+  "id": "government--legislative-branch",
+  "title": "Legislative Branch",
+  "subject": "Social Studies",
+  "category": "Government & Civics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is the main lawmaking institution of the U.S. federal government?",
+      "choices": [
+        "Supreme Court",
+        "Cabinet",
+        "Congress",
+        "Federal Reserve"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What are the two chambers of Congress?",
+      "choices": [
+        "House of Representatives and Senate",
+        "Cabinet and Senate",
+        "House of Representatives and Supreme Court",
+        "Supreme Court and Cabinet"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "How long is a regular term for a U.S. representative?",
+      "choices": [
+        "Four years",
+        "Six years",
+        "Eight years",
+        "Two years"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "How long is a regular term for a U.S. senator?",
+      "choices": [
+        "Two years",
+        "Six years",
+        "Four years",
+        "Eight years"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "How many senators does each state have?",
+      "choices": [
+        "Two",
+        "One",
+        "Three",
+        "Four"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What primarily determines a state's number of House seats?",
+      "choices": [
+        "Land area",
+        "Date of statehood",
+        "Population",
+        "Number of counties"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which chamber has the sole power to impeach federal officials?",
+      "choices": [
+        "Senate",
+        "House of Representatives",
+        "Both chambers jointly",
+        "Neither chamber"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why is Congress described as bicameral?",
+      "choices": [
+        "It meets only twice a year",
+        "It elects two presidents",
+        "It approves only two kinds of legislation",
+        "It has two chambers"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What must normally happen in Congress before a bill goes to the president?",
+      "choices": [
+        "Both chambers pass the same text",
+        "Only a committee chair approves it",
+        "The Supreme Court votes on it",
+        "Every state legislature ratifies it"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why are congressional committees important?",
+      "choices": [
+        "They replace all votes by the full chambers",
+        "They can amend the Constitution on their own",
+        "They examine proposals in detail and conduct oversight",
+        "They appoint every federal judge without Senate action"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What is congressional oversight?",
+      "choices": [
+        "Commanding military units directly in combat",
+        "Reviewing how executive agencies carry out laws",
+        "Deciding appeals from state courts",
+        "Selecting governors for every state"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What vote can override a presidential veto?",
+      "choices": [
+        "A simple majority in only the House",
+        "Three-fourths of state governors",
+        "Unanimous approval of the Cabinet",
+        "Two-thirds in each chamber"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Which chamber tries impeachments?",
+      "choices": [
+        "Senate",
+        "House of Representatives",
+        "Cabinet",
+        "Federal district court"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why are Senate elections staggered?",
+      "choices": [
+        "Every senator must serve exactly one term",
+        "States change their number of senators after each census",
+        "Only about one-third of Senate seats are regularly contested every two years",
+        "The president chooses which senators face election"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Which chamber must originate bills for raising revenue?",
+      "choices": [
+        "Senate",
+        "House of Representatives",
+        "Supreme Court",
+        "Cabinet"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A president vetoes a bill, but Congress enacts it with the required supermajorities. What principle is illustrated?",
+      "choices": [
+        "Executive privilege",
+        "Judicial precedent",
+        "Local autonomy",
+        "Checks and balances"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A populous state has more House seats but the same Senate seats as a smaller state. What does this reflect?",
+      "choices": [
+        "Population-based and equal-state representation",
+        "Identical representation rules in both chambers",
+        "Representation based on state land area alone",
+        "Representation based entirely on tax revenue"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A committee questions an agency about how it used appropriated funds. What is it doing?",
+      "choices": [
+        "Exercising judicial review",
+        "Ratifying a treaty",
+        "Conducting oversight",
+        "Granting a pardon"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Which sequence describes a common path for a bill?",
+      "choices": [
+        "Presidential pardon, court trial, state ratification, committee vote",
+        "Introduction, committee consideration, chamber votes, presidential action",
+        "Court approval, presidential election, committee appointment, introduction",
+        "State referendum, treaty ratification, court appeal, presidential action"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which distinction between impeachment and removal is accurate?",
+      "choices": [
+        "Impeachment automatically removes an official without a trial",
+        "Removal requires a new presidential election in every case",
+        "Only the Supreme Court can impeach an official",
+        "Impeachment is a House accusation; Senate conviction can lead to removal"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ],
+  "referenceUrls": [
+    "https://www.archives.gov/founding-docs/constitution-transcript"
+  ]
+}

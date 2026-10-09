@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--algebra-1--algebraic-exponent-rules",
+  "title": "Algebraic Exponent Rules",
+  "subject": "Math",
+  "category": "Algebra I",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "For real a, what is a³ × a⁴?",
+      "choices": [
+        "a¹²",
+        "a⁷",
+        "a¹",
+        "2a⁷"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "For nonzero x, what is x⁸ ÷ x³?",
+      "choices": [
+        "x⁵",
+        "x¹¹",
+        "x²⁴",
+        "x⁻⁵"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is (x²)³?",
+      "choices": [
+        "x⁵",
+        "3x²",
+        "x⁸",
+        "x⁶"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "For nonzero x, which statement correctly applies the zero-exponent rule?",
+      "choices": [
+        "(7x)⁰ = 0",
+        "(7x)⁰ = 7x",
+        "(7x)⁰ = 1",
+        "(7x)⁰ = 7"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "For nonzero x, which expression equals x⁻³?",
+      "choices": [
+        "−x³",
+        "1/x³",
+        "−1/x³",
+        "3/x"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is (2x)³?",
+      "choices": [
+        "8x³",
+        "2x³",
+        "6x³",
+        "8x"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which rule applies when multiplying powers with the same base?",
+      "choices": [
+        "Multiply the exponents",
+        "Subtract the exponents",
+        "Add the bases",
+        "Add the exponents"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why does x² × x³ equal x⁵?",
+      "choices": [
+        "It multiplies 2 and 3 to get 5",
+        "It adds the two bases x",
+        "It combines two factors of x with three more factors of x",
+        "It applies only when x is positive"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "For nonzero a and b, what is (a/b)²?",
+      "choices": [
+        "a²/b",
+        "a²/b²",
+        "a/b²",
+        "2a/2b"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What is (3x²y)²?",
+      "choices": [
+        "9x⁴y²",
+        "6x⁴y²",
+        "9x²y²",
+        "3x⁴y²"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "For nonzero x, what is x⁴ × x⁻²?",
+      "choices": [
+        "x⁻⁸",
+        "x⁶",
+        "x⁻²",
+        "x²"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Which statement correctly explains a negative exponent?",
+      "choices": [
+        "It makes the value negative",
+        "It changes the base to its opposite",
+        "It indicates the reciprocal of the corresponding positive power",
+        "It subtracts the exponent from the base"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Which expression equals (x³y²)(2xy)?",
+      "choices": [
+        "2x³y²",
+        "2x⁴y³",
+        "2x³y³",
+        "2x⁴y²"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why is a ≠ 0 required in a³ ÷ a³ = a⁰ = 1?",
+      "choices": [
+        "Division by zero is undefined",
+        "Zero raised to any power equals 1",
+        "The base must be positive",
+        "All exponent rules require integer bases"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "For nonzero x, which expression equals (x⁻²)³?",
+      "choices": [
+        "1/x⁵",
+        "−x⁶",
+        "−3/x²",
+        "1/x⁶"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "For nonzero x, simplify (6x⁵) ÷ (2x²).",
+      "choices": [
+        "3x⁷",
+        "4x³",
+        "3x³",
+        "12x³"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Which expression equals (−2x²)³?",
+      "choices": [
+        "8x⁶",
+        "−8x⁶",
+        "−6x⁵",
+        "−8x⁵"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "For nonzero x, which expression is equivalent to x⁻² × x⁵?",
+      "choices": [
+        "x³",
+        "x⁻¹⁰",
+        "x⁷",
+        "1/x³"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A cube has side length 2x³ units, where x > 0. What is its volume?",
+      "choices": [
+        "6x⁶ cubic units",
+        "2x⁹ cubic units",
+        "8x⁶ cubic units",
+        "8x⁹ cubic units"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A student writes (x + y)² = x² + y². Which term is missing from the expansion?",
+      "choices": [
+        "xy",
+        "2x + 2y",
+        "2xy",
+        "x²y²"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ]
+}

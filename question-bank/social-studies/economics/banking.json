@@ -1,0 +1,255 @@
+{
+  "schemaVersion": 1,
+  "id": "economics--banking",
+  "title": "Banking",
+  "subject": "Social Studies",
+  "category": "Economics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a checking account primarily designed to support?",
+      "choices": [
+        "Ownership of a company's stock",
+        "Long-term government borrowing only",
+        "Insurance against every investment loss",
+        "Deposits and routine payments"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is a savings account generally used for?",
+      "choices": [
+        "Holding money while often earning interest",
+        "Borrowing money without repayment",
+        "Buying voting rights in a corporation",
+        "Trading only foreign currency"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is interest on a loan?",
+      "choices": [
+        "The amount of the original principal only",
+        "A refund of every banking fee",
+        "A charge for borrowing money",
+        "A payment that cancels the loan automatically"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is loan principal?",
+      "choices": [
+        "The lender's annual advertising budget",
+        "The amount borrowed before interest charges",
+        "The interest charged each month",
+        "The borrower's total lifetime income"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is a debit card generally linked to?",
+      "choices": [
+        "Funds in a deposit account",
+        "A separate investment ownership share",
+        "A guarantee of unlimited borrowing",
+        "A government retirement benefit"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is a certificate of deposit generally associated with?",
+      "choices": [
+        "Owning part of a publicly traded company",
+        "Receiving a loan with no repayment schedule",
+        "Paying for insurance against medical expenses",
+        "Depositing money for a stated term under specified conditions"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What institution insures eligible deposits at FDIC-insured banks?",
+      "choices": [
+        "Securities and Exchange Commission",
+        "Internal Revenue Service",
+        "Federal Deposit Insurance Corporation",
+        "Department of Education"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "How do banks connect savers and borrowers?",
+      "choices": [
+        "They store only coins and never lend",
+        "They accept deposits and provide loans and related services",
+        "They convert every deposit into a stock purchase for the depositor",
+        "They determine all national wages directly"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why should account holders review fees?",
+      "choices": [
+        "Charges can reduce balances or offset interest earned",
+        "Every account has identical fee rules",
+        "Fees are unrelated to banking costs",
+        "Banks must refund every fee automatically"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why might a bank charge an overdraft fee?",
+      "choices": [
+        "The account holder receives too much interest",
+        "The bank sells stock to another investor",
+        "The borrower finishes repaying a loan",
+        "A covered transaction may exceed the available balance under account terms"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How does compound interest differ from simple interest?",
+      "choices": [
+        "Compound interest applies only to the original principal",
+        "Simple interest requires changing the principal every day",
+        "Compound interest includes interest on previously earned interest",
+        "Simple interest always produces more growth at the same positive rate"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why can a CD be less flexible than a basic savings account?",
+      "choices": [
+        "CDs always permit unlimited penalty-free withdrawals",
+        "Early withdrawal may involve penalties or other restrictions",
+        "CDs are necessarily uninsured stock investments",
+        "Savings accounts must be closed after one deposit"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why is a bank statement useful?",
+      "choices": [
+        "It helps track transactions, balances, and possible errors",
+        "It guarantees that future prices cannot rise",
+        "It replaces every receipt for every purpose",
+        "It determines the customer's citizenship status"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What does deposit insurance not generally cover?",
+      "choices": [
+        "Eligible checking deposits within coverage rules",
+        "Eligible savings deposits within coverage rules",
+        "Eligible CDs within coverage rules",
+        "Losses in stock investments"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why do lenders evaluate a borrower's ability to repay?",
+      "choices": [
+        "They must give every applicant identical loan terms",
+        "A borrower's income has no relationship to repayment",
+        "They assess the risk of nonpayment",
+        "Loan applications determine election eligibility"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "An account begins with $200, receives a $75 deposit, and pays $40, with no fees. What is the ending balance?",
+      "choices": [
+        "$315",
+        "$235",
+        "$165",
+        "$275"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A $1,000 deposit earns 4% simple interest for one year with no fees. How much interest is earned?",
+      "choices": [
+        "$40",
+        "$4",
+        "$400",
+        "$1,040"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A person uses a debit card for a purchase. What generally happens?",
+      "choices": [
+        "A share of the merchant's stock is issued",
+        "The government pays the purchase as a grant",
+        "The account earns interest equal to the purchase price",
+        "Money is drawn from the linked deposit account"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Two accounts pay the same interest rate, but one has higher fees. What comparison is most relevant?",
+      "choices": [
+        "Only the bank's building size",
+        "Only the account's advertising colors",
+        "Net earnings and costs under each account's terms",
+        "Only the number of letters in the bank's name"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A customer notices a duplicate withdrawal on a statement. What financial skill does this situation call for?",
+      "choices": [
+        "Assuming all statement entries are automatically correct",
+        "Reconciling records and investigating the discrepancy",
+        "Treating a withdrawal as new income",
+        "Calculating a stock's dividend yield"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ],
+  "referenceUrls": [
+    "https://www.fdic.gov/resources/deposit-insurance/financial-products-insured"
+  ]
+}
+

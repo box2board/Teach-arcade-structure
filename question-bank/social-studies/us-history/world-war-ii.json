@@ -1,0 +1,254 @@
+{
+  "schemaVersion": 1,
+  "id": "us-history--world-war-ii",
+  "title": "World War II",
+  "subject": "Social Studies",
+  "category": "U.S. History",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "referenceUrls": [
+    "https://www.archives.gov/milestone-documents/executive-order-9066"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which attack led to the U.S. declaration of war against Japan in December 1941?",
+      "choices": [
+        "The invasion of Poland",
+        "The bombing of London",
+        "The attack on Pearl Harbor",
+        "The invasion of the Soviet Union"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which program supplied aid to nations whose defense was considered vital to the United States before U.S. entry into World War II?",
+      "choices": [
+        "Lend-Lease",
+        "Marshall Plan",
+        "New Deal",
+        "Point Four Program"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What was the Manhattan Project?",
+      "choices": [
+        "A plan to rebuild European cities",
+        "An agency regulating food prices",
+        "A campaign to recruit farm workers",
+        "A secret effort to develop atomic weapons"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which president authorized the use of atomic bombs against Japan?",
+      "choices": [
+        "Franklin D. Roosevelt",
+        "Harry S. Truman",
+        "Dwight D. Eisenhower",
+        "Herbert Hoover"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What did the wartime image of Rosie the Riveter represent?",
+      "choices": [
+        "Women's industrial work for the war effort",
+        "Women serving as Supreme Court justices",
+        "Women's leadership of the Axis alliance",
+        "Women ending the military draft"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What did the GI Bill of 1944 provide eligible veterans?",
+      "choices": [
+        "Automatic appointments to Congress",
+        "Guaranteed ownership of factories",
+        "Education and other readjustment benefits",
+        "Permanent exemption from all taxes"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which group became known for flying as Black military aviators during World War II?",
+      "choices": [
+        "Rough Riders",
+        "Bonus Army",
+        "Harlem Hellfighters",
+        "Tuskegee Airmen"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why did federal agencies encourage factories to shift to war production?",
+      "choices": [
+        "To eliminate manufacturing employment",
+        "To supply equipment needed for a large military effort",
+        "To end American trade with every Allied country",
+        "To keep civilian and military production identical"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What was a main purpose of rationing on the U.S. home front?",
+      "choices": [
+        "To distribute scarce goods while reserving resources for the war",
+        "To give every household unlimited access to gasoline",
+        "To replace all purchases with barter",
+        "To remove federal oversight of shortages"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What was a major consequence of Executive Order 9066 and its implementation?",
+      "choices": [
+        "The end of all immigration restrictions",
+        "Immediate desegregation of the armed forces",
+        "Forced removal and incarceration of Japanese Americans",
+        "The transfer of Hawaii to Japanese control"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why was the Double V campaign important to Black Americans?",
+      "choices": [
+        "It sought two votes for every military veteran",
+        "It demanded military victory over Britain and France",
+        "It proposed two separate national constitutions",
+        "It linked victory over fascism abroad with victory over racism at home"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "How did Navajo code talkers support U.S. operations in the Pacific?",
+      "choices": [
+        "They designed the atomic bombs used in 1945",
+        "They transmitted coded military messages using Navajo",
+        "They negotiated the Treaty of Versailles",
+        "They directed civilian food rationing"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why was the U.S. victory at Midway in June 1942 significant?",
+      "choices": [
+        "It inflicted major losses on Japan's aircraft carrier force",
+        "It caused Germany's immediate surrender",
+        "It opened a land route from Alaska to Japan",
+        "It ended every naval battle in the Pacific"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What was the purpose of the Allied landings in Normandy on D-Day?",
+      "choices": [
+        "To occupy neutral Switzerland",
+        "To relieve Pearl Harbor during the attack",
+        "To open a major western front against Germany",
+        "To invade the Japanese home islands"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why did U.S. forces use an island-hopping strategy in the Pacific?",
+      "choices": [
+        "To fight mainly on the European mainland",
+        "To capture every Pacific island in geographic order",
+        "To avoid constructing airfields or naval bases",
+        "To seize useful positions while bypassing some defended islands"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A household buys war bonds and saves scrap metal. Which conclusion best explains these activities?",
+      "choices": [
+        "Civilians mainly supported the war by replacing professional commanders",
+        "Civilians helped finance and supply the war effort",
+        "The military relied on foreign aid rather than domestic production",
+        "War financing depended primarily on local governments' borrowing"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Which World War II sequence involving the United States is correct?",
+      "choices": [
+        "Pearl Harbor → Midway → Normandy landings",
+        "Midway → Pearl Harbor → Normandy landings",
+        "Normandy landings → Midway → Pearl Harbor",
+        "Pearl Harbor → Normandy landings → Midway"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Why does the success of the Tuskegee Airmen challenge the racial segregation of the wartime military?",
+      "choices": [
+        "It shows that all military units were already integrated",
+        "It proves racial discrimination ended during the war",
+        "It provides evidence against claims that excluded Black service members from roles",
+        "It shows that pilot training required no specialized knowledge"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Which comparison correctly distinguishes V-E Day and V-J Day?",
+      "choices": [
+        "V-E marked U.S. entry; V-J marked Germany's invasion of Poland",
+        "V-E marked Pearl Harbor; V-J marked the Normandy landings",
+        "V-E marked the Korean armistice; V-J marked the Berlin Airlift",
+        "V-E marked victory in Europe; V-J marked victory over Japan"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which pair of sources would best reveal both opportunity and discrimination on the U.S. wartime home front?",
+      "choices": [
+        "Battlefield maps and military surrender documents",
+        "Factory hiring records and Japanese American incarceration accounts",
+        "Records of Allied conferences and naval deployment schedules",
+        "Accounts of European occupation policies and peace negotiations"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}

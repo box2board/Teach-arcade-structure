@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--physics--heat-and-thermal-energy",
+  "title": "Heat and Thermal Energy",
+  "subject": "Science",
+  "category": "Physics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is heat in physics?",
+      "choices": [
+        "A substance stored inside hot objects",
+        "Energy transferred because of a temperature difference",
+        "The mass of vibrating particles",
+        "The number of particles in an object"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What does temperature describe in a basic particle model?",
+      "choices": [
+        "The total energy of every particle combined",
+        "The object's mass only",
+        "A quantity related to average particle kinetic energy",
+        "The energy created by every collision"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is conduction?",
+      "choices": [
+        "Energy transfer only by moving whole fluids",
+        "Energy transfer only by electromagnetic waves",
+        "Transfer that requires a vacuum",
+        "Energy transfer through interactions within or between contacting materials"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is convection?",
+      "choices": [
+        "Energy transfer only through solid metal",
+        "Energy transfer only by visible light",
+        "Energy transfer associated with bulk movement of a fluid",
+        "Energy transfer without any fluid motion"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is thermal radiation?",
+      "choices": [
+        "Energy transfer by electromagnetic waves",
+        "Movement of hot fluid only",
+        "Transfer requiring direct physical contact",
+        "The expansion of every solid"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is specific heat capacity?",
+      "choices": [
+        "The total mass of a hot sample",
+        "Energy needed per unit mass for a unit temperature increase",
+        "The temperature at which every substance melts",
+        "The rate of radioactive decay"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is thermal equilibrium between objects?",
+      "choices": [
+        "A condition of equal mass",
+        "A condition in which particles stop moving",
+        "A condition of equal temperature with no net heat transfer between them",
+        "A condition of maximum possible temperature"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Which way does net heat transfer occur spontaneously between contacting objects?",
+      "choices": [
+        "From lower to higher temperature without other effects",
+        "From higher to lower temperature",
+        "Only from greater to smaller mass",
+        "Only from solids into gases"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why can a large warm object contain more thermal energy than a small hot object?",
+      "choices": [
+        "Temperature alone fixes total energy",
+        "Large objects always have lower specific heat",
+        "Hot objects contain no stored internal energy",
+        "Total thermal energy depends on amount and substance as well as temperature"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why does metal often feel colder than wood at the same room temperature?",
+      "choices": [
+        "Metal usually transfers energy away from the hand faster",
+        "Metal must have a lower temperature",
+        "Wood produces heat without an energy source",
+        "Skin measures mass rather than energy transfer"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How does insulation reduce heat transfer?",
+      "choices": [
+        "It limits one or more heat-transfer mechanisms",
+        "It creates cold energy",
+        "It guarantees no energy transfer ever occurs",
+        "It changes every material's chemical identity"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why can warm air rise relative to cooler surrounding air?",
+      "choices": [
+        "Warm air has no mass",
+        "Its atoms stop responding to gravity",
+        "Its lower density can produce buoyant motion",
+        "It always has a higher density"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why does a high specific heat help water moderate temperature changes?",
+      "choices": [
+        "Water cannot transfer thermal energy",
+        "A given energy transfer causes a smaller temperature change per unit mass",
+        "Water becomes solid whenever heated",
+        "Water creates energy whenever it cools"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why can melting require energy without raising temperature during the phase change?",
+      "choices": [
+        "Particles have no motion while melting",
+        "The supplied energy must be destroyed",
+        "The sample stops interacting with its surroundings",
+        "Energy changes particle arrangements and interactions"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why can objects exchange thermal radiation across a vacuum?",
+      "choices": [
+        "A vacuum is filled with circulating hot air",
+        "Electromagnetic waves require no material medium",
+        "Radiation occurs only by particle contact",
+        "Objects must first exchange matter"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A metal spoon warms in a hot drink. Which process transfers energy along the solid spoon?",
+      "choices": [
+        "Conduction",
+        "Convection inside the solid",
+        "Evaporation",
+        "Condensation"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Water circulates in a heated pot as warmer water rises. Which process is illustrated?",
+      "choices": [
+        "Radiation alone",
+        "Freezing",
+        "Convection",
+        "Diffusion of magnetic fields"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A 2 kg sample with specific heat 500 J/(kg·°C) warms by 3°C. Using Q = mcΔT, what energy is transferred?",
+      "choices": [
+        "750 J",
+        "1,000 J",
+        "500 J",
+        "3,000 J"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Equal masses of two materials receive equal energy with no phase changes. The first has twice the specific heat. How does its temperature rise compare?",
+      "choices": [
+        "It is half as large",
+        "It is twice as large",
+        "It is four times as large",
+        "It is the same"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A hot and a cool object contact each other in an insulated system, with no phase changes or other energy transfers. What is expected as they approach thermal equilibrium?",
+      "choices": [
+        "Both increase temperature indefinitely",
+        "Both decrease temperature indefinitely",
+        "Only the more massive object changes temperature",
+        "The hot object cools while the cool object warms"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

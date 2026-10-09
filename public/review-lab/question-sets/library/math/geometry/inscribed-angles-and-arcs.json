@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--geometry--inscribed-angles-and-arcs",
+  "title": "Inscribed Angles and Arcs",
+  "subject": "Math",
+  "category": "Geometry",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Where is the vertex of an inscribed angle?",
+      "choices": [
+        "At the circle's center",
+        "Outside the circle in every case",
+        "On the circle",
+        "At the midpoint of a radius"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What forms the sides of an inscribed angle?",
+      "choices": [
+        "Two radii with a central vertex",
+        "Two chords",
+        "Two parallel tangents",
+        "Two diameters that do not meet"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "How does an inscribed angle relate to its intercepted arc?",
+      "choices": [
+        "Its measure is half the arc measure",
+        "Its measure equals the arc measure",
+        "Its measure is twice the arc measure",
+        "Its measure is 180° minus the arc measure"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "An inscribed angle intercepts an 80° arc. What is its measure?",
+      "choices": [
+        "80°",
+        "160°",
+        "100°",
+        "40°"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "An inscribed angle measures 35°. What is the measure of its intercepted arc?",
+      "choices": [
+        "17.5°",
+        "145°",
+        "70°",
+        "35°"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is the measure of an inscribed angle that intercepts a semicircle?",
+      "choices": [
+        "180°",
+        "90°",
+        "45°",
+        "60°"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is a minor arc?",
+      "choices": [
+        "An arc whose measure is less than 180°",
+        "An arc whose measure exceeds 180°",
+        "Any arc containing a diameter",
+        "An arc that must measure 90°"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why are inscribed angles intercepting the same arc equal?",
+      "choices": [
+        "Their vertices must be identical",
+        "Every inscribed angle is 90°",
+        "Every chord has the same length",
+        "Each is half the same arc measure"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "A central angle and an inscribed angle intercept the same 120° arc. What are their measures respectively?",
+      "choices": [
+        "60° and 120°",
+        "120° and 120°",
+        "120° and 60°",
+        "60° and 60°"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Two inscribed angles intercept the same arc. One measures 52°. What does the other measure?",
+      "choices": [
+        "104°",
+        "52°",
+        "26°",
+        "128°"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why is a triangle inscribed with one side as a diameter a right triangle?",
+      "choices": [
+        "The opposite angle intercepts a 180° arc",
+        "Every triangle in a circle is a right triangle",
+        "Every diameter has length 90",
+        "The other two sides are radii"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What is true of opposite angles of a quadrilateral inscribed in a circle?",
+      "choices": [
+        "Their measures are always equal",
+        "Their measures add to 90°",
+        "Each must be a right angle",
+        "Their measures add to 180°"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "A cyclic quadrilateral has one angle of 112°. What is the opposite angle?",
+      "choices": [
+        "112°",
+        "56°",
+        "68°",
+        "248°"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Which arc is intercepted by an inscribed angle?",
+      "choices": [
+        "Any arc containing the vertex",
+        "The arc between its chord endpoints that does not contain the vertex",
+        "The shortest radius between the chords",
+        "The entire circumference in every case"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "An inscribed angle measures 100°. What kind of intercepted arc does it have?",
+      "choices": [
+        "A major arc of 200°",
+        "A minor arc of 100°",
+        "A semicircle of 180°",
+        "A minor arc of 50°"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A circle has minor arc AB of 140°. A point C lies on the major arc AB. What is angle ACB?",
+      "choices": [
+        "140°",
+        "110°",
+        "40°",
+        "70°"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A circle has minor arc AB of 140°. A point D lies on that minor arc. What is angle ADB?",
+      "choices": [
+        "70°",
+        "140°",
+        "110°",
+        "40°"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "An inscribed triangle has angles 40° and 65°. What is the measure of the arc intercepted by its third angle?",
+      "choices": [
+        "75°",
+        "150°",
+        "210°",
+        "130°"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Why can an inscribed angle intercepting a major arc be obtuse?",
+      "choices": [
+        "Half an arc greater than 180° is greater than 90°",
+        "Every major arc gives an angle greater than 180°",
+        "The vertex must be outside the circle",
+        "Its chords must be parallel"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A cyclic quadrilateral has opposite angles x + 20° and 2x + 10°. What is x?",
+      "choices": [
+        "75°",
+        "60°",
+        "90°",
+        "50°"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

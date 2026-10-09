@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--inquiry-environment--scientific-investigations",
+  "title": "Scientific Investigations",
+  "subject": "Science",
+  "category": "Scientific Inquiry & Environmental Science",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What makes a scientific hypothesis testable?",
+      "choices": [
+        "Everyone agrees with it",
+        "Evidence could support or challenge it",
+        "It cannot be changed",
+        "It includes an exact date"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is an observation?",
+      "choices": [
+        "A conclusion that cannot be tested",
+        "A prediction about every future event",
+        "Information gathered using senses or instruments",
+        "An explanation based only on preference"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is an inference?",
+      "choices": [
+        "An explanation or conclusion drawn from observations",
+        "A procedure for measuring length",
+        "A direct instrument reading only",
+        "A result that requires no evidence"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is a scientific theory?",
+      "choices": [
+        "A personal opinion about nature",
+        "A claim that has not been investigated",
+        "A rule that never needs evidence",
+        "A broad explanation supported by substantial evidence"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is a scientific model?",
+      "choices": [
+        "A representation used to study or explain a system",
+        "A final answer that cannot be revised",
+        "A measurement with no uncertainty",
+        "An experiment without variables"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What does peer review involve?",
+      "choices": [
+        "Students choosing the most popular conclusion",
+        "Replacing data with a scientist's reputation",
+        "Other qualified researchers evaluating scientific work",
+        "Publishing results without examining methods"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What does replication mean in scientific research?",
+      "choices": [
+        "Changing every result to match an expectation",
+        "Using the same graph twice in a report",
+        "Removing results that differ from a prediction",
+        "Repeating a study or its methods to check findings"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why should scientific explanations be open to revision?",
+      "choices": [
+        "Earlier evidence has no value",
+        "New evidence may show that an explanation is incomplete",
+        "Scientists must change conclusions on a schedule",
+        "Every explanation is equally well supported"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How does an observational study differ from a controlled experiment?",
+      "choices": [
+        "It cannot collect numerical data",
+        "It examines conditions without deliberately assigning a treatment",
+        "It never uses instruments",
+        "It must avoid forming any hypothesis"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why does correlation alone not establish causation?",
+      "choices": [
+        "Related variables can never affect each other",
+        "Causation is possible only in chemistry",
+        "A relationship becomes causal whenever a graph is drawn",
+        "Another factor or a different causal direction may explain the relationship"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How does a scientific law usually differ from a theory?",
+      "choices": [
+        "A law describes a pattern, while a theory explains phenomena",
+        "A theory automatically becomes a law after enough time",
+        "A law is an unsupported guess and a theory is a measurement",
+        "Laws apply only to living organisms"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why should researchers describe their methods clearly?",
+      "choices": [
+        "It guarantees that every hypothesis is correct",
+        "It removes the need for recording data",
+        "It helps others evaluate and repeat the work",
+        "It makes conflicting evidence unnecessary"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What should researchers do when results contradict their hypothesis?",
+      "choices": [
+        "Examine the methods and reconsider the hypothesis in light of the evidence",
+        "Discard all contradictory measurements automatically",
+        "Report only the measurements that fit",
+        "Treat the hypothesis as proven despite the results"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why are several independent lines of evidence useful?",
+      "choices": [
+        "They replace the need for reliable measurements",
+        "Agreement among different methods can strengthen confidence in an explanation",
+        "They guarantee there is no uncertainty",
+        "They make peer review unnecessary"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why must scientists distinguish evidence from interpretation?",
+      "choices": [
+        "Interpretations can never be useful",
+        "Evidence always explains itself completely",
+        "Readers need to see what was observed and how conclusions were drawn",
+        "Only interpretations belong in reports"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A student notices leaves bending toward a window and proposes that light affects growth direction. Which statement is a testable explanatory hypothesis?",
+      "choices": [
+        "The leaves were observed near a window",
+        "The window faces east",
+        "The plant has six leaves",
+        "Light affects the direction of plant growth"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "More ice cream is sold on days with more swimming accidents. Which explanation should be considered before claiming a direct cause?",
+      "choices": [
+        "The two measurements must be fabricated",
+        "Ice cream sales prove that food causes every accident",
+        "Hot weather may increase both swimming and ice cream sales",
+        "Correlation makes other explanations impossible"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Two studies reach different conclusions. What is the best next scientific step?",
+      "choices": [
+        "Compare their methods, data, and limitations",
+        "Accept whichever was published first",
+        "Choose the conclusion with the most memorable title",
+        "Ignore both without examining their evidence"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A model predicts a river will flood, but it excludes a newly built levee. What should researchers examine?",
+      "choices": [
+        "Whether models can ever use numbers",
+        "Whether the river has a name",
+        "Whether the prediction agrees with public opinion",
+        "How the missing feature affects the model's assumptions and prediction"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which conclusion best matches a single successful experiment?",
+      "choices": [
+        "The explanation is permanently proven for every situation",
+        "The findings support the hypothesis under the tested conditions",
+        "All alternative explanations have been eliminated",
+        "No further investigation is useful"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}

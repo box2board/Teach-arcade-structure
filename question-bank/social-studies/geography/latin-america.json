@@ -1,0 +1,255 @@
+{
+  "schemaVersion": 1,
+  "id": "geography--latin-america",
+  "title": "Latin America",
+  "subject": "Social Studies",
+  "category": "Geography",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which mountain range runs along the western side of South America?",
+      "choices": [
+        "Andes",
+        "Alps",
+        "Himalayas",
+        "Appalachians"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which country occupies the largest share of South America's land area?",
+      "choices": [
+        "Argentina",
+        "Peru",
+        "Brazil",
+        "Colombia"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which language is dominant nationally in Brazil?",
+      "choices": [
+        "Spanish",
+        "Portuguese",
+        "French",
+        "Italian"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which river system drains much of northern Brazil and neighboring countries?",
+      "choices": [
+        "Paraná",
+        "Orinoco",
+        "São Francisco",
+        "Amazon"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which country contains the isthmus crossed by a canal linking Atlantic and Pacific shipping?",
+      "choices": [
+        "Panama",
+        "Costa Rica",
+        "Nicaragua",
+        "Honduras"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which dry region lies mainly along northern Chile's Pacific coast?",
+      "choices": [
+        "Pampas",
+        "Patagonia",
+        "Atacama Desert",
+        "Amazon Basin"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What are the Pampas?",
+      "choices": [
+        "A high mountain chain in Central America",
+        "Grasslands associated especially with Argentina and Uruguay",
+        "A rainforest region in northern Brazil",
+        "A volcanic island chain in the Caribbean"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "What does Latin America commonly describe?",
+      "choices": [
+        "A continent bounded only by South America's coastline",
+        "A region containing only countries that use English",
+        "A political union with one shared national government",
+        "A cultural region with strong historical ties to Romance languages, especially Spanish and Portuguese"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why is Mexico included in Latin America despite its North American location?",
+      "choices": [
+        "The regional category reflects cultural history rather than continent alone",
+        "Mexico lies south of the equator",
+        "All North American countries are excluded by definition",
+        "Mexico has no connections to Spanish colonial history"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "How do elevation changes affect life in the Andes?",
+      "choices": [
+        "They make every valley have the same climate",
+        "They prevent agriculture at all elevations",
+        "They create differences in temperature, farming, and settlement",
+        "They eliminate the need for transport routes"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why is the Amazon rainforest important beyond its location?",
+      "choices": [
+        "It contains the same species as every desert",
+        "It supports biodiversity and influences water and carbon cycles",
+        "It prevents every form of regional drought",
+        "It has no relationship to river systems"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "How can commodity dependence create economic challenges?",
+      "choices": [
+        "Commodity prices remain fixed permanently",
+        "Export demand never affects producer income",
+        "Countries exporting commodities cannot produce services",
+        "Export income may fluctuate when world commodity prices change"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why do large Latin American cities face varied infrastructure needs?",
+      "choices": [
+        "Population growth can increase demand for housing, transport, and services",
+        "Urban growth eliminates demand for water",
+        "Every city has identical resources and budgets",
+        "Cities are unaffected by migration"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "How have Indigenous cultures influenced the region?",
+      "choices": [
+        "Indigenous history ended entirely at European contact",
+        "All Indigenous peoples shared one language and government",
+        "Languages, knowledge, traditions, and communities remain important",
+        "Only European influences shaped local foods"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why can Caribbean islands differ substantially despite regional proximity?",
+      "choices": [
+        "All islands have identical colonial and political histories",
+        "Different histories, languages, resources, and institutions shape them",
+        "Every island is part of one nation",
+        "Island location prevents cultural exchange"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A map places Mexico, Brazil, and Peru in one cultural region. Which organizing idea most likely explains it?",
+      "choices": [
+        "The Southern Hemisphere alone",
+        "The Amazon watershed alone",
+        "The European Union",
+        "Latin America"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A mountain community grows different crops at different elevations. Which factor is most relevant?",
+      "choices": [
+        "Altitudinal differences in temperature and growing conditions",
+        "Uniform climate across the mountain",
+        "A single sea-level soil type everywhere",
+        "The absence of seasonal variation"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Which comparison of Brazil and most Spanish-speaking neighbors is accurate?",
+      "choices": [
+        "Brazil lies outside South America",
+        "All neighboring countries have identical languages",
+        "Brazil's Portuguese-language history differs from their Spanish-language histories",
+        "Portuguese is a form of Indigenous American writing"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A country relies heavily on one agricultural export whose global price falls. What risk is illustrated?",
+      "choices": [
+        "Automatic growth in export earnings",
+        "Vulnerability to changes in commodity markets",
+        "Complete insulation from international trade",
+        "A guaranteed increase in every worker's wage"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Why should a regional study examine countries and communities separately?",
+      "choices": [
+        "Every community shares one economy and one climate",
+        "National differences have no geographic significance",
+        "Cultural regions always eliminate local identities",
+        "A broad regional label can hide substantial internal diversity"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ],
+  "referenceUrls": [
+    "https://education.nationalgeographic.org/resource/south-america-physical-geography/"
+  ]
+}
+

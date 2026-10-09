@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "world-history--protestant-reformation",
+  "title": "Protestant Reformation",
+  "subject": "Social Studies",
+  "category": "World History",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which figure is associated with the Ninety-Five Theses of 1517?",
+      "choices": [
+        "John Calvin",
+        "Thomas More",
+        "Martin Luther",
+        "Ignatius of Loyola"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which practice was a major target of Luther's early criticism?",
+      "choices": [
+        "The sale of indulgences",
+        "The election of city councils",
+        "The translation of Greek poetry",
+        "The collection of customs duties"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What did indulgences concern in Catholic teaching?",
+      "choices": [
+        "The appointment of hereditary monarchs",
+        "The automatic removal of all civil debts",
+        "The sale of farmland owned by towns",
+        "Remission of temporal punishment for sin"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which reformer is especially associated with predestination?",
+      "choices": [
+        "Erasmus",
+        "John Calvin",
+        "Henry VIII",
+        "Johann Gutenberg"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which English king broke with papal authority in the 1530s?",
+      "choices": [
+        "Henry VIII",
+        "Charles I",
+        "James II",
+        "William III"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which Catholic council clarified doctrine and addressed reform during the sixteenth century?",
+      "choices": [
+        "Council of Nicaea",
+        "Council of Constance",
+        "Council of Trent",
+        "Council of Chalcedon"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which religious order founded by Ignatius of Loyola supported Catholic education and missions?",
+      "choices": [
+        "Benedictines",
+        "Franciscans",
+        "Dominicans",
+        "Jesuits"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "How did printing help spread Reformation ideas?",
+      "choices": [
+        "It restricted pamphlets to a single monastery",
+        "It allowed arguments and translations to circulate more widely",
+        "It prevented religious debates from reaching towns",
+        "It made rulers unable to regulate any printed material"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What did Luther's teaching of justification by faith emphasize?",
+      "choices": [
+        "Salvation through faith rather than earning it through works",
+        "Salvation through payment of government taxes",
+        "Political loyalty as the sole basis of religious belief",
+        "Hereditary rank as the basis for forgiveness"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why did some German princes support the Reformation?",
+      "choices": [
+        "It required them to surrender their territories to Spain",
+        "It made every prince a pope",
+        "It could increase their autonomy and control over church resources",
+        "It restored a unified Roman republican government"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How did vernacular Bible translations affect religious practice?",
+      "choices": [
+        "They ended disagreements about Christian beliefs",
+        "They required every reader to learn Latin first",
+        "They removed all clergy from European society",
+        "They allowed more readers to encounter scripture in familiar languages"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What did the Peace of Augsburg of 1555 allow within the Holy Roman Empire?",
+      "choices": [
+        "Every subject to freely select any religion without restrictions",
+        "Rulers to choose Catholicism or Lutheranism for their territories",
+        "The pope to appoint all German princes",
+        "Calvinism to become the only permitted religion"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why is the English Reformation not explained solely by theology?",
+      "choices": [
+        "Dynastic concerns and royal power also shaped the break with Rome",
+        "England had no Christian churches before Henry VIII",
+        "Printing was banned throughout the entire period",
+        "All English rulers agreed with Luther on every doctrine"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What distinguishes Anabaptists from groups that practiced infant baptism?",
+      "choices": [
+        "They rejected baptism in every form",
+        "They favored baptism following a believer's profession of faith",
+        "They required baptism to be performed by a monarch",
+        "They limited baptism to hereditary nobles"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What was a major long-term effect of the Reformation in western Europe?",
+      "choices": [
+        "The disappearance of Christianity",
+        "The end of all state involvement in religion",
+        "The creation of identical churches in every region",
+        "The growth of multiple Christian denominations"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Which sequence places these Reformation developments correctly?",
+      "choices": [
+        "Peace of Augsburg → Ninety-Five Theses → English break with Rome",
+        "English break with Rome → Peace of Augsburg → Ninety-Five Theses",
+        "Ninety-Five Theses → English break with Rome → Peace of Augsburg",
+        "Ninety-Five Theses → Peace of Augsburg → English break with Rome"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A prince accepts Lutheranism and takes control of former church lands. What does this example show?",
+      "choices": [
+        "Religious change could be connected to political and economic interests",
+        "The Reformation had no effects on governing institutions",
+        "Every Protestant movement rejected secular rulers",
+        "Catholic rulers had already ended all church property ownership"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Which evidence most directly challenges the claim that Catholic leaders made no response to Protestant criticism?",
+      "choices": [
+        "The increasing circulation of classical literature in Italian cities",
+        "The reforms and doctrinal decisions of the Council of Trent",
+        "The growth of Atlantic trade during the sixteenth century",
+        "The expansion of universities devoted to secular legal study"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Why should historians compare Catholic and Protestant accounts of the same religious conflict?",
+      "choices": [
+        "Every religious author had access to the same information",
+        "Written accounts cannot be compared with physical evidence",
+        "Authors' religious positions could influence how they described events",
+        "The most widely circulated account must be the most accurate"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A student says the Reformation immediately created modern religious freedom throughout Europe. Which correction is best?",
+      "choices": [
+        "All European rulers abandoned religious policies in 1517",
+        "The Peace of Augsburg protected every possible belief equally",
+        "Religious conflict ended before the Reformation began",
+        "Many states continued to enforce an official religion and restrict dissent"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

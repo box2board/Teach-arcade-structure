@@ -1,0 +1,15 @@
+(()=>{const B=TASideScroller.LevelBuilder,review=(id,x,y,reward,stationType)=>({id:'q'+id,questionIndex:id-1,x,y,w:36,h:54,visualY:y,reward,stationType});
+window.TA_SLOPE_LEVEL=B.build({
+id:'slope-street-sprint-v2',physicsPreset:'earth',tileSize:32,world:{width:3264,height:480},spawn:{x:64,y:290},finish:{x:3120,y:206,w:62,h:146},
+design:{style:'stepped-city-street',target:'classroom',engine:'1.1.0'},
+terrainSegments:[{from:0,to:15,top:11},{from:16,to:28,top:10},{from:30,to:42,top:9},{from:43,to:55,top:9},{from:57,to:68,top:10},{from:69,to:80,top:11},{from:82,to:91,top:11},{from:92,to:101,top:10}],
+hazardTiles:[{col:10,row:10},{col:23,row:9},{col:38,row:8},{col:52,row:8},{col:64,row:9},{col:77,row:10},{col:89,row:10},{col:97,row:9}],
+checkpointTiles:[{col:31,row:8},{col:74,row:10}],
+zones:[{id:'positive-grade',from:0,to:960,label:'Positive Grade',kind:'positive'},{id:'level-block',from:960,to:1760,label:'Zero Slope',kind:'zero'},{id:'negative-grade',from:1760,to:2560,label:'Negative Grade',kind:'negative'},{id:'function-finish',from:2560,to:3264,label:'Function Finish',kind:'finish'}],
+questionPoints:[review(1,210,294,'boost','rise-run'),review(2,485,258,'clearHazard','equation'),review(3,770,252,'checkpoint','points'),review(4,1060,226,'disableMover','horizontal'),review(5,1350,226,'boost','intercept'),review(6,1640,226,'clearHazard','equation'),review(7,1950,258,'checkpoint','rate'),review(8,2240,294,'disableMover','negative'),review(9,2670,294,'boost','vertical'),review(10,2990,258,'boost','final')],
+platforms:[{id:'graph-sign-a',x:360,y:294,w:126},{id:'bus-shelter-a',x:650,y:268,w:116},{id:'pedestrian-bridge-a',x:850,y:230,w:132},{id:'survey-platform',x:1040,y:250,w:118},{id:'graph-sign-b',x:1260,y:214,w:132},{id:'awning-a',x:1480,y:260,w:116},{id:'pedestrian-bridge-b',x:1700,y:286,w:140},{id:'bus-shelter-b',x:1910,y:300,w:120},{id:'graph-sign-c',x:2140,y:282,w:128},{id:'scaffold-a',x:2370,y:246,w:124},{id:'overpass-a',x:2580,y:306,w:144},{id:'graph-sign-d',x:2790,y:268,w:124},{id:'finish-ramp',x:2960,y:236,w:150}],
+gates:[{id:'positive-gate',questionId:'q3',x:930,y:0,w:24,h:384},{id:'negative-gate',questionId:'q6',x:1830,y:0,w:24,h:384},{id:'final-gate',questionId:'q9',x:2830,y:0,w:24,h:384}],
+collectibles:[{x:430,y:256},{x:900,y:192},{x:1530,y:222},{x:2420,y:208},{x:3020,y:198}],
+movers:[{type:'rollingTire',x:575,y:300,w:26,h:20,axis:'x',range:86,speed:88,movement:'groundPatrol',behavior:'hazard'},{type:'streetSweeper',x:1180,y:268,w:30,h:20,axis:'x',range:72,speed:76,movement:'groundPatrol',behavior:'hazard'},{type:'rollingTire',x:2070,y:300,w:26,h:20,axis:'x',range:82,speed:94,movement:'groundPatrol',behavior:'hazard'},{type:'fallingCone',x:2520,y:105,w:26,h:26,movement:'falling',triggerDistance:150,gravity:1220,resetDelay:1.2,behavior:'hazard'}],
+movingPlatforms:[{id:'maintenance-lift',x:1150,y:296,w:94,h:18,axis:'y',range:72,speed:38},{id:'cross-street-platform',x:2460,y:290,w:100,h:18,axis:'x',range:82,speed:42}]
+});})();

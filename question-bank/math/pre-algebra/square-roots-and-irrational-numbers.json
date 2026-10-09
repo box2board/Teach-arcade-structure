@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--pre-algebra--square-roots-and-irrational-numbers",
+  "title": "Square Roots and Irrational Numbers",
+  "subject": "Math",
+  "category": "Pre-Algebra & Number Sense",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is the principal square root of 81?",
+      "choices": [
+        "9",
+        "−9",
+        "18",
+        "40.5"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which number is a perfect square?",
+      "choices": [
+        "45",
+        "50",
+        "54",
+        "49"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which expression equals √20 in simplest radical form?",
+      "choices": [
+        "4√5",
+        "5√2",
+        "2√5",
+        "2√10"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is the principal square root of 0.25?",
+      "choices": [
+        "0.25",
+        "0.5",
+        "0.05",
+        "2"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Between which consecutive integers does √30 lie?",
+      "choices": [
+        "5 and 6",
+        "4 and 5",
+        "6 and 7",
+        "7 and 8"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which square root is irrational?",
+      "choices": [
+        "√16",
+        "√25",
+        "√100",
+        "√11"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is √64 × √4?",
+      "choices": [
+        "8",
+        "32",
+        "16",
+        "4"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why is √12 equal to 2√3?",
+      "choices": [
+        "12 = 2 × 6, and √6 = 3",
+        "12 = 4 × 3, and √4 = 2",
+        "The square root divides every number by 2",
+        "The radical sign can be distributed over addition"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Which statement correctly distinguishes √36 from the solutions of x² = 36?",
+      "choices": [
+        "√36 is 6; the equation has solutions −6 and 6",
+        "Both have only the value 6",
+        "√36 is −6; the equation has only 6",
+        "Both have only the value −6"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What is √9 + √16?",
+      "choices": [
+        "5",
+        "8",
+        "12",
+        "7"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why does √(9 + 16) differ from √9 + √16?",
+      "choices": [
+        "Square roots are defined only for odd numbers",
+        "The addition sign changes the square roots to negatives",
+        "Square roots do not generally distribute over addition",
+        "Taking a square root always doubles a sum"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "For real x, which expression equals √(x²)?",
+      "choices": [
+        "x for every real x",
+        "The absolute value of x",
+        "−x for every real x",
+        "x² for every real x"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What is 3√2 + 5√2?",
+      "choices": [
+        "8√2",
+        "8√4",
+        "15√2",
+        "15√4"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Which expression is equivalent to √18 ÷ √2?",
+      "choices": [
+        "9",
+        "√8",
+        "√20",
+        "3"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why can 2√3 and 4√5 not be combined as like radical terms?",
+      "choices": [
+        "Their coefficients are both even",
+        "Their sum must be rational",
+        "Their simplified radicands differ",
+        "Both radicals equal integers"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A square has area 50 square centimeters. What is its side length in simplest radical form?",
+      "choices": [
+        "25 centimeters",
+        "5√2 centimeters",
+        "10√5 centimeters",
+        "2√5 centimeters"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Which number is the best estimate of √50 to the nearest tenth?",
+      "choices": [
+        "7.1",
+        "7.5",
+        "6.9",
+        "8.0"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Which pair has a rational product even though both factors are irrational?",
+      "choices": [
+        "√2 and √3",
+        "√5 and √7",
+        "√6 and √10",
+        "√3 and √12"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A student writes √8 = 4. Which check shows the error?",
+      "choices": [
+        "4 + 4 = 8",
+        "8 ÷ 2 = 4",
+        "4² = 16, not 8",
+        "4 is a positive integer"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A square has side length 3√2 meters. What is its area?",
+      "choices": [
+        "6 square meters",
+        "18 square meters",
+        "9√2 square meters",
+        "12 square meters"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}

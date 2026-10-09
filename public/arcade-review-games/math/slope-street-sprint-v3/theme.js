@@ -1,0 +1,1 @@
+window.TA_SLOPE_THEME={name:'Slope Street Sprint',skyTop:'#9ed4ee',skyBottom:'#f4d9a6',ground:'#8a6845',groundTop:'#3d4448',hazard:'#df653f',question:'#2f7180',checkpoint:'#4f8b57',finish:'#d88a2d',player:'#b44332',far:'#91a3aa',near:'#71856e',labels:{hazard:'ROAD HAZARD',collectible:'SLOPE MARKERS',goal:'Function Finish'}};

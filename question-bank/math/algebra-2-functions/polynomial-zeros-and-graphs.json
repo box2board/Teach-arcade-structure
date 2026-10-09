@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--algebra-2-functions--polynomial-zeros-and-graphs",
+  "title": "Polynomial Zeros and Graphs",
+  "subject": "Math",
+  "category": "Algebra II & Functions",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a zero of a polynomial function?",
+      "choices": [
+        "An input that makes its output zero",
+        "Any y-intercept",
+        "The greatest coefficient",
+        "Every point where the graph turns"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which statement is the factor theorem?",
+      "choices": [
+        "If f(a) = 0, then x + a is always a factor",
+        "Every polynomial has factor x",
+        "A zero must be a positive integer",
+        "If f(a) = 0, then x − a is a factor of f(x)"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What are the real zeros of f(x) = x(x − 2)(x + 3)?",
+      "choices": [
+        "3, 0, and −2",
+        "−3 and 2 only",
+        "−3, 0, and 2",
+        "0 and 5 only"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is the multiplicity of zero 4 in (x − 4)³(x + 1)?",
+      "choices": [
+        "4",
+        "3",
+        "1",
+        "2"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is the maximum number of turning points of a degree-4 polynomial graph?",
+      "choices": [
+        "3",
+        "4",
+        "5",
+        "2"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which leading term gives both ends of the graph rising?",
+      "choices": [
+        "−2x⁴",
+        "2x³",
+        "−2x³",
+        "2x⁴"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is the y-intercept value of f(x) = x³ − 2x + 5?",
+      "choices": [
+        "−2",
+        "1",
+        "5",
+        "0"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why does an odd-multiplicity real zero usually correspond to crossing the x-axis?",
+      "choices": [
+        "The zero must be at the origin",
+        "The polynomial changes sign at that zero",
+        "Its multiplicity makes the leading coefficient zero",
+        "The function is undefined there"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How does a polynomial typically behave at an even-multiplicity zero?",
+      "choices": [
+        "It touches the x-axis and turns without changing sign locally",
+        "It must cross the x-axis",
+        "It has a vertical asymptote",
+        "It has a hole"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "For f(x) = (x + 2)²(x − 1), which zero has even multiplicity?",
+      "choices": [
+        "1",
+        "2",
+        "−1",
+        "−2"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "A polynomial has factor x − 5. Which input must be a zero?",
+      "choices": [
+        "−5",
+        "0",
+        "5",
+        "1/5"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why does a polynomial graph have no holes or vertical asymptotes?",
+      "choices": [
+        "Its degree must be even",
+        "A polynomial is defined and continuous for every real input",
+        "It has no real zeros",
+        "Its leading coefficient must be positive"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "For a polynomial with leading term −x³, what happens as x becomes very large and positive?",
+      "choices": [
+        "The output decreases without bound",
+        "The output increases without bound",
+        "The output approaches zero",
+        "The output approaches −1"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "A degree-3 polynomial with real coefficients has how many complex zeros counting multiplicity?",
+      "choices": [
+        "1",
+        "2",
+        "6",
+        "3"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "If a polynomial has real coefficients and zero 2 + i, what other complex zero must occur?",
+      "choices": [
+        "−2 + i",
+        "−2 − i",
+        "2 − i",
+        "1/2 + i"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A polynomial has zeros −1 and 3. Which expression could define it?",
+      "choices": [
+        "f(x) = (x − 1)(x + 3)",
+        "f(x) = (x + 1)(x − 3)",
+        "f(x) = (x + 1)(x + 3)",
+        "f(x) = (x − 1)(x − 3)"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "For f(x) = (x − 2)²(x + 4), which behavior occurs at x = 2?",
+      "choices": [
+        "The graph touches the axis without crossing locally",
+        "The graph has a vertical asymptote",
+        "The graph has a removable hole",
+        "The graph crosses with a sign change"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A polynomial graph rises at both ends and has a nonzero leading coefficient. What must be true?",
+      "choices": [
+        "Its degree is odd and leading coefficient positive",
+        "Its degree is even and leading coefficient negative",
+        "Its degree is odd and leading coefficient negative",
+        "Its degree is even and leading coefficient positive"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Which fact disproves the claim that every degree-2 polynomial has two distinct real zeros?",
+      "choices": [
+        "x² − 1 has zeros −1 and 1",
+        "x² + x has degree 2",
+        "x² + 1 has no real zeros",
+        "2x² has positive leading coefficient"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "If f(x) = (x − 1)²(x + 2)³, what is its degree?",
+      "choices": [
+        "6",
+        "5",
+        "3",
+        "2"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}

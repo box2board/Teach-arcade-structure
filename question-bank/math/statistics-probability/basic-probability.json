@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--statistics-probability--basic-probability",
+  "title": "Basic Probability",
+  "subject": "Math",
+  "category": "Statistics & Probability",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is the probability of an impossible event?",
+      "choices": [
+        "1",
+        "0",
+        "1/2",
+        "−1"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is the probability of a certain event?",
+      "choices": [
+        "0",
+        "1/2",
+        "2",
+        "1"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is a sample space in probability?",
+      "choices": [
+        "The set of possible outcomes",
+        "Only the favorable outcomes",
+        "Only the most frequent outcome",
+        "The number of trials already completed"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "For equally likely outcomes, how is an event's probability calculated?",
+      "choices": [
+        "Total outcomes divided by favorable outcomes",
+        "Favorable outcomes added to total outcomes",
+        "Favorable outcomes divided by total outcomes",
+        "Unfavorable outcomes divided by favorable outcomes"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is the probability of heads on one toss of a fair coin?",
+      "choices": [
+        "1",
+        "1/4",
+        "0",
+        "1/2"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is the probability of rolling a 4 on a fair six-sided die?",
+      "choices": [
+        "1/4",
+        "1/2",
+        "1/6",
+        "4/6"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "A bag has 3 red and 2 blue balls. What is the probability of drawing red at random?",
+      "choices": [
+        "3/5",
+        "2/5",
+        "3/2",
+        "1/3"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Which value cannot be a probability?",
+      "choices": [
+        "0.2",
+        "1.2",
+        "0",
+        "1"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What is the complement of an event?",
+      "choices": [
+        "The same event repeated twice",
+        "Only its most likely outcome",
+        "An event with the same probability",
+        "The event that it does not occur"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "If P(A) = 0.3, what is P(not A)?",
+      "choices": [
+        "0.3",
+        "0.7",
+        "1.3",
+        "−0.3"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What is the probability of an odd result on a fair six-sided die?",
+      "choices": [
+        "1/3",
+        "1/6",
+        "1/2",
+        "5/6"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "An event occurs 18 times in 60 trials. What is its experimental probability?",
+      "choices": [
+        "0.3",
+        "0.18",
+        "0.6",
+        "3"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why can experimental probability differ from theoretical probability in a short trial run?",
+      "choices": [
+        "Random variation can affect observed frequencies",
+        "Theoretical probability requires every short run to match exactly",
+        "An experiment must change all possible outcomes",
+        "Relative frequency cannot be calculated"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "A spinner has four equal sections numbered 1, 2, 3, and 4. What is P(result greater than 2)?",
+      "choices": [
+        "1/4",
+        "3/4",
+        "1/2",
+        "1"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why is outcome counting alone insufficient if outcomes are not equally likely?",
+      "choices": [
+        "Probability always exceeds 1 in that case",
+        "Different outcomes may have different probabilities",
+        "No event can be described",
+        "Only the most likely outcome belongs in the sample space"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A fair die is rolled once. What is P(result at most 2)?",
+      "choices": [
+        "1/2",
+        "2/3",
+        "1/6",
+        "1/3"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A bag contains 4 green, 3 yellow, and 3 black marbles. What is P(not green)?",
+      "choices": [
+        "2/5",
+        "3/10",
+        "3/5",
+        "7/10"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A spinner lands on red 48 times in 120 spins. Which experimental estimate follows?",
+      "choices": [
+        "0.4",
+        "0.48",
+        "0.6",
+        "2.5"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A fair coin has landed heads five times in a row. What is P(heads on the next independent toss)?",
+      "choices": [
+        "0",
+        "1/6",
+        "1",
+        "1/2"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A class estimates P(rain tomorrow) = 0.25 from a model. Which interpretation is appropriate?",
+      "choices": [
+        "Rain will occur for exactly one-quarter of tomorrow",
+        "The model assigns a 25% chance of rain",
+        "Rain is guaranteed after four days",
+        "The model proves rain is impossible"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}

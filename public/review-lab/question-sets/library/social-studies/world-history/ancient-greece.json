@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "world-history--ancient-greece",
+  "title": "Ancient Greece",
+  "subject": "Social Studies",
+  "category": "World History",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What was a polis in ancient Greece?",
+      "choices": [
+        "A royal tomb",
+        "A trade currency",
+        "A city-state",
+        "A military ship"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which city-state is especially associated with citizen democracy?",
+      "choices": [
+        "Athens",
+        "Sparta",
+        "Corinth",
+        "Thebes"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which city-state emphasized military training for male citizens?",
+      "choices": [
+        "Athens",
+        "Sparta",
+        "Miletus",
+        "Ephesus"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What was the agora?",
+      "choices": [
+        "A hereditary royal title",
+        "A naval weapon",
+        "An Olympic event",
+        "A public gathering and market area"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which philosopher taught through questioning and discussion?",
+      "choices": [
+        "Socrates",
+        "Homer",
+        "Pericles",
+        "Herodotus"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Who established a large empire that spread Greek culture eastward?",
+      "choices": [
+        "Solon",
+        "Leonidas",
+        "Alexander the Great",
+        "Themistocles"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which conflict was fought primarily between Athens and Sparta and their allies?",
+      "choices": [
+        "Punic Wars",
+        "Peloponnesian War",
+        "Persian Civil War",
+        "Trojan War"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "How did Greece's mountains influence political development?",
+      "choices": [
+        "They made land communication easier everywhere",
+        "They created one continuous fertile river valley",
+        "They prevented all maritime trade",
+        "They helped communities develop as separate city-states"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why was sea trade important to many Greek communities?",
+      "choices": [
+        "It connected coastal settlements and supplied needed goods",
+        "It allowed every city to become completely self-sufficient",
+        "It eliminated the need for farming",
+        "It prevented cultural contact with other peoples"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What limited participation in Athenian democracy?",
+      "choices": [
+        "Every adult resident voted in the assembly",
+        "Only hereditary kings could introduce laws",
+        "Women, enslaved people, and resident foreigners lacked citizen political rights",
+        "Citizen men were legally barred from public debate"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What distinguished Athenian direct democracy from representative democracy?",
+      "choices": [
+        "Athenians never voted on public issues",
+        "Citizens voted on policy themselves rather than only through elected lawmakers",
+        "Athenian laws were written only by foreign officials",
+        "Representatives held permanent hereditary seats"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What did the Persian Wars encourage among some Greek city-states?",
+      "choices": [
+        "Permanent political unification of all Greece",
+        "The immediate abolition of slavery",
+        "The surrender of all Greek fleets to Persia",
+        "Cooperation against a common outside power"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "How did the Delian League contribute to tensions?",
+      "choices": [
+        "Athenian dominance and tribute demands angered allies",
+        "Sparta used it to govern all of Persia",
+        "It prohibited Athens from maintaining a navy",
+        "It removed every dispute between city-states"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What does Hellenistic culture refer to?",
+      "choices": [
+        "Greek culture before any city-states developed",
+        "A culture restricted entirely to Sparta",
+        "Greek culture interacting with other cultures after Alexander's conquests",
+        "Roman culture after the fall of the Western Empire"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why are Greek philosophical traditions historically significant?",
+      "choices": [
+        "They ended debate about the natural world permanently",
+        "They encouraged reasoned inquiry into knowledge, ethics, and government",
+        "They required every city to adopt the same religion",
+        "They replaced all written communication with oral legends"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A citizen votes directly on a proposed law in an assembly. Which system does this resemble?",
+      "choices": [
+        "Spartan hereditary kingship",
+        "Persian imperial administration",
+        "Roman imperial succession",
+        "Athenian direct democracy"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Which sequence places these Ancient Greece events in chronological order?",
+      "choices": [
+        "Persian Wars, Peloponnesian War, Alexander's conquests",
+        "Alexander's conquests, Persian Wars, Peloponnesian War",
+        "Peloponnesian War, Alexander's conquests, Persian Wars",
+        "Persian Wars, Alexander's conquests, Peloponnesian War"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Which comparison of Athens and Sparta is accurate?",
+      "choices": [
+        "Both granted equal political rights to every resident",
+        "Both rejected slavery throughout their histories",
+        "They differed in political institutions and civic priorities",
+        "Both depended on the same form of citizen government"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Which evidence challenges the claim that ancient Greek democracy meant universal equality?",
+      "choices": [
+        "Athens held public assemblies",
+        "Political rights were restricted to a minority of residents",
+        "Greek communities traded across the Mediterranean",
+        "Greek authors wrote plays"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A city in Alexander's former empire combines Greek architecture with local religious practices. What does this illustrate?",
+      "choices": [
+        "Complete cultural isolation",
+        "The disappearance of all local traditions",
+        "The end of long-distance exchange",
+        "Cultural blending"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

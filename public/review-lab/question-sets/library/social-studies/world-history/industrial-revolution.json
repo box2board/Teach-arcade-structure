@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "world-history--industrial-revolution",
+  "title": "Industrial Revolution",
+  "subject": "Social Studies",
+  "category": "World History",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Where did the Industrial Revolution first develop on a large scale?",
+      "choices": [
+        "Spain",
+        "Britain",
+        "Russia",
+        "Italy"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which industry was among the first to mechanize extensively?",
+      "choices": [
+        "Film production",
+        "Aircraft manufacturing",
+        "Computer assembly",
+        "Textile production"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What fuel was especially important to early industrial steam power?",
+      "choices": [
+        "Coal",
+        "Petroleum",
+        "Uranium",
+        "Natural gas"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Who is associated with major improvements to the steam engine in the eighteenth century?",
+      "choices": [
+        "Louis Pasteur",
+        "Alexander Fleming",
+        "James Watt",
+        "Guglielmo Marconi"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is urbanization?",
+      "choices": [
+        "Decline in all overseas trade",
+        "Growth in the share of people living in towns and cities",
+        "Replacement of money with barter",
+        "Transfer of farmland into hereditary titles"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is a factory system?",
+      "choices": [
+        "Production organized around workers and machinery in a central workplace",
+        "Production performed only by independent farmers",
+        "Trade conducted without manufactured goods",
+        "Work assigned exclusively through feudal obligations"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What were trade unions organized to represent?",
+      "choices": [
+        "Monarchs' hereditary claims",
+        "Colonial governors' appointments",
+        "Banks' currency reserves",
+        "Workers' interests"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "How did mechanization change textile production?",
+      "choices": [
+        "It made cloth production entirely dependent on hand spinning",
+        "It eliminated demand for raw cotton",
+        "Machines increased the amount produced in a given time",
+        "It prevented factories from using water power"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why did access to coal and iron support industrialization?",
+      "choices": [
+        "They supplied energy and materials for machines and transport",
+        "They replaced the need for investment",
+        "They guaranteed equal wages for every worker",
+        "They made farming unnecessary immediately"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why did railroads accelerate economic growth?",
+      "choices": [
+        "They ended all maritime shipping",
+        "They moved goods and people more quickly over land",
+        "They eliminated markets outside large cities",
+        "They prevented the movement of raw materials"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How did factory employment differ from much household production?",
+      "choices": [
+        "Workers always owned the factory's machinery",
+        "Production no longer required skilled labor anywhere",
+        "Families controlled every industrial workplace independently",
+        "Work was more often governed by fixed hours and managerial supervision"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why did early industrial cities face public health problems?",
+      "choices": [
+        "Factories made clean water available to every resident automatically",
+        "Cities prohibited people from moving into crowded neighborhoods",
+        "Rapid growth often outpaced sanitation and housing",
+        "Industrialization ended infectious disease immediately"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why did reformers seek restrictions on child labor?",
+      "choices": [
+        "Long hours and dangerous conditions harmed children",
+        "Factories employed children only for recreation",
+        "Children controlled wage levels in every industry",
+        "Industrial workers opposed all forms of schooling"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "How did industrialization affect social classes?",
+      "choices": [
+        "It abolished economic inequality in all cities",
+        "It expanded industrial business ownership and wage labor",
+        "It restored serfdom throughout Britain",
+        "It made every factory worker a landowner"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why did industrial powers seek overseas markets?",
+      "choices": [
+        "They needed to end all international exchange",
+        "Their factories produced only goods for local household use",
+        "Industrialization eliminated demand for cotton and metals",
+        "They wanted customers and sources of raw materials"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A manufacturer replaces hand tools with powered machinery. Which change is most likely?",
+      "choices": [
+        "Higher output per worker, if the machinery is used effectively",
+        "An automatic end to every workplace injury",
+        "No need for energy or maintenance",
+        "Equal wages in every industry"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Which sequence best describes an industrial supply chain?",
+      "choices": [
+        "Finished cloth market, raw cotton, textile factory",
+        "Textile factory, finished cloth market, raw cotton",
+        "Raw cotton, textile factory, finished cloth market",
+        "Raw cotton, finished cloth market, textile factory"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Which comparison of industrialization and urbanization is accurate?",
+      "choices": [
+        "Both terms mean the abolition of farming",
+        "Industrialization changes production; urbanization changes settlement patterns",
+        "Urbanization refers only to factory technology",
+        "Industrialization requires the disappearance of every rural community"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Which evidence best evaluates changing living conditions in an industrial city?",
+      "choices": [
+        "Only the names of reigning monarchs",
+        "Only the design of national flags",
+        "A list of ancient religious festivals",
+        "Housing, sanitation, wages, and mortality records"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which conclusion avoids oversimplifying the Industrial Revolution?",
+      "choices": [
+        "It increased productive capacity while creating serious social costs",
+        "It improved every worker's life immediately",
+        "It affected machines without changing society",
+        "It occurred everywhere at the same time"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}

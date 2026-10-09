@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--statistics-probability--random-variables-and-expected-value",
+  "title": "Random Variables and Expected Value",
+  "subject": "Math",
+  "category": "Statistics & Probability",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a random variable?",
+      "choices": [
+        "A symbol whose value must always be positive",
+        "A numerical value assigned to an outcome of a random process",
+        "A number that changes without any probability model",
+        "The most common outcome in every experiment"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which is a discrete random variable?",
+      "choices": [
+        "The number of heads in four coin tosses",
+        "The exact height of a randomly chosen tree",
+        "The exact time a runner takes to finish",
+        "The exact mass of a water sample"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is expected value?",
+      "choices": [
+        "The largest possible value",
+        "The value guaranteed on the next trial",
+        "The value with the highest probability only",
+        "The probability-weighted mean of possible values"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What must the probabilities in a discrete probability distribution sum to?",
+      "choices": [
+        "0",
+        "100",
+        "1",
+        "The number of outcomes"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which formula calculates expected value for discrete values x and probabilities P(x)?",
+      "choices": [
+        "Add the values without using probabilities",
+        "Add the products xP(x) over all possible values",
+        "Multiply all probabilities together",
+        "Choose the greatest value of x"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "A variable is 0 or 10, each with probability 1/2. What is its expected value?",
+      "choices": [
+        "5",
+        "0",
+        "10",
+        "20"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "A fair six-sided die has outcomes 1 through 6. What is the expected numerical result?",
+      "choices": [
+        "3",
+        "4",
+        "6",
+        "3.5"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why can expected value differ from every possible single-trial outcome?",
+      "choices": [
+        "It must always be rounded to an outcome",
+        "It gives the next result with certainty",
+        "It describes a long-run average",
+        "It ignores probabilities"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "A variable equals 2 with probability 0.7 and 8 with probability 0.3. What is its expected value?",
+      "choices": [
+        "5",
+        "3.8",
+        "6.2",
+        "10"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "A raffle ticket costs $2 and has probability 1/100 of winning $50, otherwise winning $0. What is the expected net gain per ticket?",
+      "choices": [
+        "−$1.50",
+        "$0.50",
+        "$48",
+        "−$2.00"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Which distribution is valid?",
+      "choices": [
+        "P(0) = 0.4, P(1) = 0.4, P(2) = 0.4",
+        "P(0) = −0.1, P(1) = 0.6, P(2) = 0.5",
+        "P(0) = 0.2, P(1) = 0.3, P(2) = 0.4",
+        "P(0) = 0.2, P(1) = 0.3, P(2) = 0.5"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What does an expected net gain of zero mean for a wager under its stated model?",
+      "choices": [
+        "Every participant breaks even on every trial",
+        "Winning is impossible",
+        "Average gains and losses balance in the long run",
+        "The next result must be zero"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "A variable takes values 1, 2, and 3 with probabilities 0.2, 0.5, and 0.3. What is its expected value?",
+      "choices": [
+        "2.0",
+        "2.1",
+        "1.8",
+        "2.3"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why should the ticket price be subtracted when finding expected net gain?",
+      "choices": [
+        "Net gain accounts for the amount paid to participate",
+        "The price changes the probability of winning",
+        "The prize already equals the net gain",
+        "Subtracting makes every expected value positive"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Which statement about negative expected net gain is correct?",
+      "choices": [
+        "Every player loses on every trial",
+        "Winning has probability zero",
+        "The payout must be negative",
+        "Repeated play produces an average loss under the model"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A machine produces 0, 1, or 2 defective parts per batch with probabilities 0.6, 0.3, and 0.1. What is the expected number of defects per batch?",
+      "choices": [
+        "1",
+        "0.1",
+        "0.5",
+        "1.5"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A choice pays $8 with probability 1/4 and $0 otherwise, and costs $1. What is its expected net gain?",
+      "choices": [
+        "$2",
+        "$1",
+        "$7",
+        "−$1"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Two prize drawings have the same expected payout. What can still differ?",
+      "choices": [
+        "The variability and chances of different payouts",
+        "Their probability totals, if both are valid",
+        "The arithmetic definition of expected value",
+        "The requirement that each payout be positive"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "An insurer estimates a 0.02 chance of paying a $1000 claim on a policy. Ignoring other costs, what is the expected claim payout per policy?",
+      "choices": [
+        "$50",
+        "$980",
+        "$1000",
+        "$20"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A project has probability 0.8 of earning $100 and probability 0.2 of losing $50. What is its expected net result?",
+      "choices": [
+        "$50 gain",
+        "$90 gain",
+        "$70 gain",
+        "$30 loss"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ]
+}

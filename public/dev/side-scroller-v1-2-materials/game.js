@@ -1,0 +1,1 @@
+window.TA_GAME={id:'v12-material-breakable-test',physicsPreset:'earth',level:window.TA_MATERIAL_TEST_LEVEL,questions:[],theme:window.TA_MATERIAL_TEST_THEME};

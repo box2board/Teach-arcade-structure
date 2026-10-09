@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--algebra-1--systems-of-linear-inequalities",
+  "title": "Systems of Linear Inequalities",
+  "subject": "Math",
+  "category": "Algebra I",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a solution of a system of inequalities?",
+      "choices": [
+        "A value that satisfies only the first inequality",
+        "The intercept of any boundary line",
+        "Any point on an unshaded region",
+        "A value or point that satisfies every inequality"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What type of boundary line represents y > 2x + 1?",
+      "choices": [
+        "A solid line",
+        "A vertical line at x = 1",
+        "A dashed line",
+        "A horizontal line at y = 2"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What type of boundary line represents y ≤ −x + 4?",
+      "choices": [
+        "A dashed line",
+        "A solid line",
+        "A vertical line at x = 4",
+        "A horizontal line at y = −1"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "For y > x, which side of the boundary y = x is shaded?",
+      "choices": [
+        "Above the line",
+        "Below the line",
+        "Only the line",
+        "Only the y-axis"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which point satisfies both x ≥ 0 and y ≥ 0?",
+      "choices": [
+        "(−2, 3)",
+        "(2, −3)",
+        "(−2, −3)",
+        "(2, 3)"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What region represents the solution of two graphed inequalities?",
+      "choices": [
+        "The entire coordinate plane",
+        "Only their boundary intersection",
+        "The overlap of their solution regions",
+        "Every point in either region, even without overlap"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which symbol includes equality?",
+      "choices": [
+        "<",
+        "≤",
+        ">",
+        "≠"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why is a dashed boundary excluded from the solution set?",
+      "choices": [
+        "The inequality is strict",
+        "The slope is negative",
+        "The line passes through zero",
+        "The variables are integers"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Which point satisfies y ≥ 2x and y ≤ x + 3?",
+      "choices": [
+        "(2, 3)",
+        "(4, 8)",
+        "(0, 4)",
+        "(1, 3)"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Does (0, 0) satisfy both y > x − 1 and y < 3?",
+      "choices": [
+        "No, because it is on both boundaries",
+        "No, because zero cannot satisfy strict inequalities",
+        "Yes, because 0 > −1 and 0 < 3",
+        "Yes, because the origin satisfies every system"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What does x ≥ 0 mean in a budget model where x counts items?",
+      "choices": [
+        "The number of items must be positive",
+        "The number of items cannot be negative",
+        "The number of items can be any negative integer",
+        "The number of items must equal zero"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Which system describes points above y = 2 and below y = 5, excluding both boundaries?",
+      "choices": [
+        "y > 2 and y < 5",
+        "y ≥ 2 and y ≤ 5",
+        "y < 2 and y > 5",
+        "y > 2 and y > 5"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why do y > 4 and y < 1 have no shared solutions?",
+      "choices": [
+        "The two boundaries have different slopes",
+        "Every y-value satisfies both conditions",
+        "A system must include x to have solutions",
+        "No y-value can satisfy both conditions"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Which point is on the included boundaries of both y ≥ x + 1 and y ≤ −x + 5?",
+      "choices": [
+        "(3, 2)",
+        "(1, 2)",
+        "(2, 3)",
+        "(2, 4)"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A bakery has at most 20 items total, with x muffins and y rolls. Which inequality represents that limit?",
+      "choices": [
+        "x + y ≥ 20",
+        "x + y ≤ 20",
+        "x − y ≤ 20",
+        "xy ≤ 20"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Tickets cost $4 for students and $7 for adults. Which inequality represents spending no more than $50 for s student tickets and a adult tickets?",
+      "choices": [
+        "4s + 7a ≤ 50",
+        "4s + 7a ≥ 50",
+        "7s + 4a ≤ 50",
+        "11(s + a) ≤ 50"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Which point satisfies x ≥ 1, y ≥ 2, and x + y ≤ 6?",
+      "choices": [
+        "(0, 3)",
+        "(3, 4)",
+        "(2, 1)",
+        "(2, 3)"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A factory needs at least 30 chairs total and can make at most 12 large chairs. Which system models small chairs s and large chairs l?",
+      "choices": [
+        "s + l ≤ 30 and l ≥ 12",
+        "s − l ≥ 30 and l ≤ 12",
+        "s + l ≥ 30 and l ≤ 12",
+        "s + l ≥ 30 and s ≤ 12"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Which conclusion follows from x + y ≤ 10, x ≥ 4, and y ≥ 0?",
+      "choices": [
+        "y must equal 6",
+        "y cannot exceed 6",
+        "x must equal 4",
+        "x cannot exceed 6"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A student shades below both y = x + 2 and y = −x + 6 using solid boundaries. Which system matches the graph?",
+      "choices": [
+        "y ≤ x + 2 and y ≤ −x + 6",
+        "y ≥ x + 2 and y ≥ −x + 6",
+        "y < x + 2 and y < −x + 6",
+        "y ≤ x + 2 and y ≥ −x + 6"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}

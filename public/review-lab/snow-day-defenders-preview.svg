@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="411" viewBox="0 0 640 411" role="img" aria-label="Snow Day Defenders illustration: a snow fort, two helpers, and playful snow creatures">
+<rect width="640" height="411" fill="#b9ddee"/><circle cx="542" cy="63" r="31" fill="#fdf1c8"/>
+<path d="M0 163 98 85 204 178 311 72 457 169 562 95 640 166V411H0" fill="#e5f3fa"/>
+<path d="m98 85 28 25-16 12-18-4-14 13-18-8zm213-13 31 28-15 5-15-8-16 14-16-6zm251 23 26 24-17 4-12-8-13 12-13-8" fill="#fff"/>
+<path d="M0 218Q161 177 322 218T640 212V411H0" fill="#fff"/>
+<path d="M260 205h120l147 206H116z" fill="#d6e9f2"/>
+<g fill="#81aea6"><path d="m61 132-34 68h19l-27 44h84l-27-44h19z"/><path d="m589 156-32 62h18l-26 42h78l-25-42h17z"/></g>
+<g fill="#f5fbff" stroke="#a0c7dc" stroke-width="3">
+<ellipse cx="320" cy="249" rx="34" ry="37"/><circle cx="320" cy="199" r="26"/>
+<ellipse cx="226" cy="217" rx="23" ry="25"/><circle cx="226" cy="182" r="18"/>
+<ellipse cx="421" cy="215" rx="23" ry="25"/><circle cx="421" cy="180" r="18"/>
+</g><g fill="#244b67"><circle cx="312" cy="195" r="3"/><circle cx="327" cy="195" r="3"/><circle cx="221" cy="179" r="2"/><circle cx="232" cy="179" r="2"/><circle cx="416" cy="177" r="2"/><circle cx="427" cy="177" r="2"/></g>
+<path d="m319 201 14 4-14 4" fill="#e99352"/><path d="M298 221h44v10h-15v20h-9v-20h-20z" fill="#ed9b50"/>
+<g fill="#f7fdff" stroke="#a4c7d9" stroke-width="3"><rect x="159" y="327" width="323" height="68" rx="8"/><path d="M159 350h323m-244-23v23m82-23v23m81-23v23m-203 0v23m82-23v23m81-23v23m-202 0h323m-244 0v22m82-22v22m81-22v22"/></g>
+<g fill="#fcfeff" stroke="#a4c7d9" stroke-width="2"><circle cx="143" cy="313" r="20"/><circle cx="143" cy="283" r="15"/><circle cx="497" cy="313" r="20"/><circle cx="497" cy="283" r="15"/><circle cx="263" cy="291" r="7"/><circle cx="372" cy="272" r="7"/></g>
+<path d="M128 276h30v-8h-25zm354 0h30v-8h-25z" fill="#ed9b50"/><path d="M124 299h38v8h-38zm354 0h38v8h-38z" fill="#238c94"/>
+<g fill="#fff" opacity=".85"><circle cx="58" cy="50" r="3"/><circle cx="163" cy="45" r="4"/><circle cx="280" cy="35" r="3"/><circle cx="427" cy="47" r="4"/><circle cx="479" cy="125" r="3"/><circle cx="169" cy="141" r="3"/><circle cx="77" cy="304" r="4"/><circle cx="573" cy="336" r="3"/></g>
+</svg>

@@ -1,0 +1,255 @@
+{
+  "schemaVersion": 1,
+  "id": "world-history--mesopotamia",
+  "title": "Mesopotamia",
+  "subject": "Social Studies",
+  "category": "World History",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which two rivers gave Mesopotamia its name as a land between rivers?",
+      "choices": [
+        "Tigris and Euphrates",
+        "Nile and Congo",
+        "Indus and Ganges",
+        "Yellow and Yangtze"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which writing system developed in ancient Mesopotamia?",
+      "choices": [
+        "Hieroglyphic writing",
+        "Linear B",
+        "Cuneiform",
+        "The Latin alphabet"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What material was commonly used for Mesopotamian written records?",
+      "choices": [
+        "Papyrus sheets",
+        "Clay tablets",
+        "Bamboo strips",
+        "Waxed paper"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What was a ziggurat?",
+      "choices": [
+        "A royal warship",
+        "An irrigation wheel",
+        "A merchant's caravan",
+        "A raised temple structure"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which ruler is associated with a famous Babylonian collection of laws?",
+      "choices": [
+        "Hammurabi",
+        "Pericles",
+        "Augustus",
+        "Ashoka"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which people developed city-states such as Ur and Uruk?",
+      "choices": [
+        "Phoenicians",
+        "Hittites",
+        "Sumerians",
+        "Minoans"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is a city-state?",
+      "choices": [
+        "A province ruled only from a distant capital",
+        "A city and surrounding territory governed as a political unit",
+        "A temporary camp without a government",
+        "A collection of cities sharing no political authority"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why was irrigation important in southern Mesopotamia?",
+      "choices": [
+        "It replaced all agricultural labor",
+        "It prevented rivers from changing course",
+        "It removed the need to store grain",
+        "It brought river water to fields in a region with limited rainfall"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How could agricultural surpluses support urban growth?",
+      "choices": [
+        "They supported people working in crafts, trade, and administration",
+        "They required all residents to work only as farmers",
+        "They eliminated all demand for storage",
+        "They prevented population concentration"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why did Mesopotamian cities trade with other regions?",
+      "choices": [
+        "They had no agricultural products to exchange",
+        "They were prohibited from producing goods",
+        "They sought materials such as timber and metals not abundant locally",
+        "They used trade only for military surrender"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What do early accounting tablets show about writing's uses?",
+      "choices": [
+        "Writing began solely to record modern-style novels",
+        "Writing helped record goods, labor, and transactions",
+        "Writing was unrelated to administration",
+        "Only rulers' personal diaries were written"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why did rivers provide both opportunities and risks?",
+      "choices": [
+        "They provided farmland without any seasonal variation",
+        "They prevented movement between settlements",
+        "They made drought impossible everywhere",
+        "They supported farming but could also flood destructively"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What does Hammurabi's law collection reveal about Babylonian society?",
+      "choices": [
+        "Penalties could vary according to social status",
+        "Every resident had identical legal rights",
+        "Written law replaced every form of religious belief",
+        "The king lacked any role in justice"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "How did polytheism shape Mesopotamian religious life?",
+      "choices": [
+        "People rejected worship and ritual entirely",
+        "Every city had only one identical deity",
+        "People worshipped multiple gods associated with different powers",
+        "Religious practices centered only on ancestor voting"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "How did empires differ from independent city-states?",
+      "choices": [
+        "Empires contained only one farming village",
+        "Empires brought multiple peoples and territories under broader rule",
+        "City-states could never have armies",
+        "Empires had no administrators or taxation"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Archaeologists find tablets listing grain deliveries. What inference is best supported?",
+      "choices": [
+        "Every resident could read and write",
+        "The city had no agricultural activity",
+        "Grain was used only for religious decoration",
+        "Officials kept organized records of resources"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A city imports timber and exports textiles. What does this suggest?",
+      "choices": [
+        "Trade connected regions with different resources and products",
+        "The city produced everything it needed locally",
+        "Imports were unrelated to resource availability",
+        "Trade prevented occupational specialization"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Which comparison of a canal and a ziggurat is accurate?",
+      "choices": [
+        "Both primarily stored military ships",
+        "A ziggurat irrigated fields; a canal housed temple ceremonies",
+        "A canal managed water; a ziggurat served religious functions",
+        "Both were writing systems used by scribes"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Why should historians avoid treating Mesopotamia as one unchanging kingdom?",
+      "choices": [
+        "The region had no permanent settlements",
+        "Different societies and empires ruled the region over time",
+        "All its inhabitants spoke one language throughout history",
+        "Its political institutions never changed"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which evidence best supports a claim about unequal legal treatment?",
+      "choices": [
+        "A map showing two rivers",
+        "A tablet listing the month's grain deliveries",
+        "A drawing of an irrigation canal",
+        "A law assigning different penalties to people of different status"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ],
+  "referenceUrls": [
+    "https://www.metmuseum.org/art/collection/search/325500"
+  ]
+}
+

@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--statistics-probability--data-displays-and-interpretation",
+  "title": "Data Displays and Interpretation",
+  "subject": "Math",
+  "category": "Statistics & Probability",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which display is usually suitable for comparing counts across categories?",
+      "choices": [
+        "Bar graph",
+        "Scatterplot",
+        "Box plot",
+        "Histogram of continuous measurements"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What does a histogram usually group into intervals?",
+      "choices": [
+        "Category names only",
+        "Individual equations",
+        "Numerical data values",
+        "Only two-variable ordered pairs"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which display emphasizes median, quartiles, and spread?",
+      "choices": [
+        "Pie chart",
+        "Box plot",
+        "Scatterplot",
+        "Pictograph"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What does a scatterplot show?",
+      "choices": [
+        "Only the total number of observations",
+        "Only category percentages",
+        "Only one variable's quartiles",
+        "Pairs of values for two quantitative variables"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is a frequency in a data table?",
+      "choices": [
+        "The largest observation",
+        "The difference between two means",
+        "The number of observations in a value or category",
+        "The width of a graph's axis"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which display commonly shows how a quantity changes over time?",
+      "choices": [
+        "Pie chart",
+        "Box plot",
+        "A single frequency count",
+        "Line graph"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "A pie-chart category covers one-fourth of the circle. What percent does it represent?",
+      "choices": [
+        "4%",
+        "25%",
+        "40%",
+        "75%"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why should a graph's axis labels include measurement units when relevant?",
+      "choices": [
+        "Units identify what the numerical scale represents",
+        "Units make every graph show causation",
+        "Units prevent all sampling bias",
+        "Units determine the number of data points"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why can a bar graph with a truncated vertical axis exaggerate differences?",
+      "choices": [
+        "It changes the original data values",
+        "It proves the categories are unrelated",
+        "It can make small differences look proportionally large",
+        "It removes the need for a scale"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "A frequency table lists 6 students walking, 9 riding buses, and 5 cycling. How many students are represented?",
+      "choices": [
+        "20",
+        "15",
+        "14",
+        "54"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "A table lists 6 students walking, 9 riding buses, and 5 cycling. What fraction ride buses?",
+      "choices": [
+        "9/15",
+        "6/20",
+        "5/20",
+        "9/20"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why does a histogram differ from a category bar graph?",
+      "choices": [
+        "Histograms cannot show frequencies",
+        "Histogram bars represent numerical intervals rather than separate named categories",
+        "Bar graphs must have connected points",
+        "Both display only continuous time"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "A scatterplot trends upward from left to right. What association is suggested?",
+      "choices": [
+        "Negative association",
+        "Positive association",
+        "No association necessarily",
+        "Proof of a causal relationship"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "A box plot has median 12. What does that mark represent?",
+      "choices": [
+        "The most frequent value necessarily",
+        "The mean necessarily",
+        "The maximum value",
+        "The middle value or middle-value average of the ordered data"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why should graph comparisons use consistent scales when judging visual differences?",
+      "choices": [
+        "Different scales can create misleading apparent differences",
+        "Matching scales make the data identical",
+        "Scales affect only the title",
+        "Consistency eliminates every measurement error"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A line graph shows values 10, 14, 13, and 18 across four consecutive days. Between which days is the greatest increase?",
+      "choices": [
+        "Days 1 and 2",
+        "Days 2 and 3",
+        "Days 3 and 4",
+        "All increases are equal"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A table has intervals 0–9 with frequency 4, 10–19 with frequency 7, and 20–29 with frequency 3. Which interval has the highest frequency?",
+      "choices": [
+        "0–9",
+        "20–29",
+        "All intervals have equal frequencies",
+        "10–19"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A chart labels two categories 40% and 70% of the same whole, with no overlap. What is wrong?",
+      "choices": [
+        "Every category must be 50%",
+        "The percentages exceed 100% together",
+        "Percentages must be whole numbers",
+        "The larger category cannot exceed 50%"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A scatterplot shows ice-cream sales and swimming attendance increasing together. What conclusion is justified?",
+      "choices": [
+        "Ice-cream purchases necessarily cause swimming",
+        "Swimming necessarily causes every ice-cream sale",
+        "They are associated, but the plot alone does not establish causation",
+        "There can be no other influencing variable"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A graph reports averages but omits sample sizes. What important information is missing?",
+      "choices": [
+        "How many observations support each average",
+        "The arithmetic definition of addition",
+        "Whether every observation equals the average",
+        "The identity of the graph's font"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}

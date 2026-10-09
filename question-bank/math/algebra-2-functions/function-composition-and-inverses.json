@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--algebra-2-functions--function-composition-and-inverses",
+  "title": "Function Composition and Inverses",
+  "subject": "Math",
+  "category": "Algebra II & Functions",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What does (f ∘ g)(x) mean?",
+      "choices": [
+        "g(f(x))",
+        "f(x)g(x)",
+        "f(x) + g(x)",
+        "f(g(x))"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which function is applied first in f(g(x))?",
+      "choices": [
+        "f",
+        "Both simultaneously",
+        "g",
+        "Neither; only multiplication occurs"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What does an inverse function do?",
+      "choices": [
+        "Always takes the reciprocal of each output",
+        "Reverses the input-output pairing of a one-to-one function",
+        "Changes every input to its negative",
+        "Squares every output"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "If f(x) = x + 5 and g(x) = 2x, what is f(g(3))?",
+      "choices": [
+        "11",
+        "16",
+        "8",
+        "6"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "If f(x) = 3x − 2, what is f⁻¹(x)?",
+      "choices": [
+        "(x − 2)/3",
+        "3x + 2",
+        "1/(3x − 2)",
+        "(x + 2)/3"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What property is needed for a function to have an inverse that is also a function on its full range?",
+      "choices": [
+        "It has only positive outputs",
+        "It has zero slope",
+        "It is one-to-one",
+        "It passes through the origin"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "How are a function's domain and range related to those of its inverse?",
+      "choices": [
+        "They always stay unchanged",
+        "They exchange roles",
+        "Both become all real numbers",
+        "Both become positive integers"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why are f(g(x)) and g(f(x)) not generally equal?",
+      "choices": [
+        "Changing the order can change the result",
+        "Composition is defined only for identical functions",
+        "Only g may contain a variable",
+        "Function outputs cannot be reused as inputs"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "If f(x) = x² and g(x) = x + 1, what is f(g(2))?",
+      "choices": [
+        "5",
+        "6",
+        "4",
+        "9"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "If f(x) = x² and g(x) = x + 1, what is g(f(2))?",
+      "choices": [
+        "9",
+        "6",
+        "5",
+        "4"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What is the inverse of f(x) = x − 7?",
+      "choices": [
+        "f⁻¹(x) = x − 7",
+        "f⁻¹(x) = x + 7",
+        "f⁻¹(x) = 7 − x",
+        "f⁻¹(x) = 1/(x − 7)"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why does f(x) = x² on all real inputs not have an inverse function?",
+      "choices": [
+        "Opposite nonzero inputs have the same output",
+        "Its outputs are never positive",
+        "It has no graph",
+        "Its domain contains zero"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Restrict f(x) = x² to x ≥ 0. What is its inverse?",
+      "choices": [
+        "f⁻¹(x) = −√x for x ≥ 0",
+        "f⁻¹(x) = 1/x² for x > 0",
+        "f⁻¹(x) = x/2 for all real x",
+        "f⁻¹(x) = √x for x ≥ 0"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Which graph relationship holds for a function and its inverse?",
+      "choices": [
+        "Their graphs reflect across the x-axis",
+        "Their graphs are always parallel",
+        "Their graphs reflect across y = x",
+        "Their graphs differ by a vertical shift of 1"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "If (4, 9) lies on a one-to-one function's graph, which point lies on its inverse graph?",
+      "choices": [
+        "(−4, −9)",
+        "(9, 4)",
+        "(4, −9)",
+        "(1/4, 1/9)"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "For f(x) = 2x + 3 and g(x) = (x − 3)/2, what is f(g(x))?",
+      "choices": [
+        "x",
+        "2x + 3",
+        "(x − 3)/2",
+        "x + 6"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "If f(x) = √x and g(x) = x − 4, what is the real domain of f(g(x))?",
+      "choices": [
+        "x > 4",
+        "x ≥ 0",
+        "All real x",
+        "x ≥ 4"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A price p is discounted by f(p) = 0.8p, then a fixed $5 fee is added by g(p) = p + 5. Which composition represents the final price?",
+      "choices": [
+        "f(g(p))",
+        "f(p) + g(p)",
+        "g(f(p))",
+        "f(p)g(p)"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "An encoder uses E(x) = 4x + 1. What decoded value corresponds to E(x) = 29?",
+      "choices": [
+        "28",
+        "7",
+        "116",
+        "6"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "If f(x) = 1/x and g(x) = x + 2, which input is excluded from f(g(x))? ",
+      "choices": [
+        "−2",
+        "0",
+        "2",
+        "−1"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}

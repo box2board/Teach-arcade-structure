@@ -1,0 +1,1 @@
+window.TA_SIDE_SCROLLER_ENGINE={version:'1.3.0-dev',status:'development',released:null,contract:3};

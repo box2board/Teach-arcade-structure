@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--pre-algebra--exponents-and-order-of-operations",
+  "title": "Exponents and Order of Operations",
+  "subject": "Math",
+  "category": "Pre-Algebra & Number Sense",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What does 3⁴ mean?",
+      "choices": [
+        "3 × 4",
+        "3 × 3 × 3 × 3",
+        "4 × 4 × 4 × 4",
+        "4 × 4 × 4"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is 2⁵?",
+      "choices": [
+        "32",
+        "10",
+        "25",
+        "64"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is 6 + 2 × 5?",
+      "choices": [
+        "40",
+        "30",
+        "16",
+        "13"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is (6 + 2) × 5?",
+      "choices": [
+        "16",
+        "30",
+        "13",
+        "40"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is 18 ÷ 3 + 4?",
+      "choices": [
+        "10",
+        "18/7",
+        "2",
+        "22"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is 5² − 9?",
+      "choices": [
+        "1",
+        "34",
+        "−4",
+        "16"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "For nonzero a, what is a⁰?",
+      "choices": [
+        "0",
+        "1",
+        "a",
+        "−1"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why do parentheses matter in an expression?",
+      "choices": [
+        "They always increase the result",
+        "They make multiplication unnecessary",
+        "They can change which operations are done first",
+        "They turn all numbers into exponents"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How are multiplication and division handled when both occur at the same level?",
+      "choices": [
+        "All multiplication before any division",
+        "All division before any multiplication",
+        "From right to left",
+        "From left to right"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What is 24 ÷ 6 × 2?",
+      "choices": [
+        "2",
+        "12",
+        "8",
+        "24"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What is −3² under the usual exponent convention?",
+      "choices": [
+        "−9",
+        "9",
+        "−6",
+        "6"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What is (−3)²?",
+      "choices": [
+        "−9",
+        "9",
+        "6",
+        "−6"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What is 2³ + 3²?",
+      "choices": [
+        "25",
+        "12",
+        "17",
+        "13"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Which is equivalent to 4³ × 4²?",
+      "choices": [
+        "4⁶",
+        "4⁵",
+        "8⁵",
+        "4¹"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What is 10⁻²?",
+      "choices": [
+        "−100",
+        "100",
+        "−1/100",
+        "1/100"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A student evaluates 7 + 3 × 2 as 20. Which step should come first?",
+      "choices": [
+        "Calculate 3 × 2",
+        "Calculate 7 + 3",
+        "Multiply 7 by 2",
+        "Add 3 and 2"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "What is 2[5 + (9 − 6)]?",
+      "choices": [
+        "16",
+        "13",
+        "22",
+        "4"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A square has side length 7 cm. Which expression gives its area?",
+      "choices": [
+        "7³ cm²",
+        "4 × 7 cm²",
+        "7² cm²",
+        "2 × 7 cm²"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Which pair has equal values?",
+      "choices": [
+        "2³ and 3²",
+        "2⁴ and 4²",
+        "5² and 2⁵",
+        "3⁴ and 4³"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "What is 30 − 12 ÷ 3 × 2?",
+      "choices": [
+        "12",
+        "28",
+        "6",
+        "22"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

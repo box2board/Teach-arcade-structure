@@ -1,0 +1,255 @@
+{
+  "schemaVersion": 1,
+  "id": "us-history--articles-of-confederation",
+  "title": "Articles of Confederation",
+  "subject": "Social Studies",
+  "category": "U.S. History",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What role did the Articles of Confederation serve?",
+      "choices": [
+        "The first constitution of the United States",
+        "The peace treaty ending the Revolution",
+        "The first ten constitutional amendments",
+        "The declaration separating the colonies from Britain"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "When did the Articles take effect after final state ratification?",
+      "choices": [
+        "1776",
+        "1787",
+        "1781",
+        "1791"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "How many votes did each state have in Congress under the Articles?",
+      "choices": [
+        "Two",
+        "One",
+        "A number based on population",
+        "A number based on land area"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What kind of national legislature did the Articles establish?",
+      "choices": [
+        "A House and Senate",
+        "An elected assembly and hereditary council",
+        "A legislature appointed by a national president",
+        "A single-chamber Congress"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "How many states had to approve an amendment to the Articles?",
+      "choices": [
+        "All thirteen",
+        "Seven",
+        "Nine",
+        "Ten"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which ordinance established a process for admitting states from the Northwest Territory?",
+      "choices": [
+        "Land Ordinance of 1785",
+        "Missouri Compromise",
+        "Northwest Ordinance of 1787",
+        "Kansas-Nebraska Act"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which gathering in 1787 replaced the Articles with a proposed new framework?",
+      "choices": [
+        "First Continental Congress",
+        "Constitutional Convention",
+        "Hartford Convention",
+        "Seneca Falls Convention"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why was national revenue difficult to collect under the Articles?",
+      "choices": [
+        "Congress collected only a national income tax",
+        "Congress controlled every state's property tax",
+        "States were prohibited from contributing money",
+        "Congress relied on state contributions rather than direct national taxation"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why did many Americans favor a weak central government initially?",
+      "choices": [
+        "They feared concentrated authority after experience with British rule",
+        "They wanted an American hereditary monarchy",
+        "They opposed cooperation among independent states",
+        "They sought to restore Parliament's control"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "How did the Articles affect national trade policy?",
+      "choices": [
+        "Congress imposed one uniform national trade system",
+        "States were forbidden to set trade policies",
+        "Congress lacked broad authority to regulate interstate and foreign commerce",
+        "Every tariff required approval from a national president"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What was one achievement of the Confederation government?",
+      "choices": [
+        "Creating a permanent national income tax",
+        "Establishing rules for western territories and new states",
+        "Establishing the modern executive Cabinet",
+        "Giving women nationwide voting rights"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What did Shays' Rebellion reveal to critics of the Articles?",
+      "choices": [
+        "The need to abolish all state governments",
+        "The failure of a strong national presidency",
+        "The success of universal voting in every state",
+        "Problems responding to unrest under a weak national framework"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "How did unanimous amendment requirements affect reform?",
+      "choices": [
+        "One state's opposition could block a change",
+        "A simple majority could impose any revision",
+        "The president could bypass Congress",
+        "Congress could amend the Articles without state approval"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why was admission of new states important to western settlement?",
+      "choices": [
+        "New states had to remain colonies of existing states",
+        "Western settlers were barred from forming governments",
+        "Territories could eventually join as states rather than permanent dependencies",
+        "Every territory automatically became a foreign country"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What did the Northwest Ordinance say about slavery in the Northwest Territory?",
+      "choices": [
+        "It required slavery in every new settlement",
+        "It prohibited slavery in the territory",
+        "It ended slavery throughout all thirteen states",
+        "It left no rule concerning slavery in that territory"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A state refuses Congress's request for revenue. Which weakness does this illustrate?",
+      "choices": [
+        "Congress's control of all state tax collections",
+        "A presidential veto of state budgets",
+        "Federal authority to replace state legislatures",
+        "Dependence on state cooperation for national funding"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Which sequence orders these developments correctly?",
+      "choices": [
+        "Articles adopted, Articles fully ratified, Constitution implemented",
+        "Constitution implemented, Articles adopted, Articles fully ratified",
+        "Articles fully ratified, Constitution implemented, Articles adopted",
+        "Articles adopted, Constitution implemented, Articles fully ratified"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Which contrast between the Articles and Constitution is accurate?",
+      "choices": [
+        "The Articles gave the president greater powers than the Constitution",
+        "The Constitution eliminated national courts entirely",
+        "The Constitution created a separate national executive and stronger federal powers",
+        "The Articles created the current House and Senate"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Why is saying the Confederation government had no authority inaccurate?",
+      "choices": [
+        "Congress controlled all state elections directly",
+        "Congress held powers such as diplomacy and declaring war",
+        "Congress imposed unlimited direct taxes",
+        "Congress appointed every state governor"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which evidence supports a balanced assessment of the Articles?",
+      "choices": [
+        "They established no national institutions at all",
+        "They solved every dispute among states permanently",
+        "They operated only after the Constitution was ratified",
+        "They provided a national framework but struggled with funding and coordination"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ],
+  "referenceUrls": [
+    "https://www.archives.gov/milestone-documents/articles-of-confederation"
+  ]
+}
+

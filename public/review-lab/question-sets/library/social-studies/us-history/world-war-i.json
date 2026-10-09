@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "us-history--world-war-i",
+  "title": "World War I",
+  "subject": "Social Studies",
+  "category": "U.S. History",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Who was U.S. president when the country entered World War I?",
+      "choices": [
+        "Theodore Roosevelt",
+        "Woodrow Wilson",
+        "William Howard Taft",
+        "Warren Harding"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "In which year did the United States enter World War I?",
+      "choices": [
+        "1917",
+        "1914",
+        "1915",
+        "1919"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What was the American Expeditionary Forces?",
+      "choices": [
+        "An agency selling war bonds",
+        "A committee negotiating tariffs",
+        "A fleet guarding only U.S. harbors",
+        "The U.S. military force sent to Europe"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Who commanded the American Expeditionary Forces?",
+      "choices": [
+        "Douglas MacArthur",
+        "Dwight Eisenhower",
+        "John J. Pershing",
+        "George S. Patton"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What did the Selective Service Act of 1917 establish?",
+      "choices": [
+        "A military draft system",
+        "A prohibition on war borrowing",
+        "A national women's voting amendment",
+        "A new international peace organization"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What name was given to Wilson's 1918 outline for a postwar peace?",
+      "choices": [
+        "The Square Deal",
+        "The Fourteen Points",
+        "The New Freedom Act",
+        "The Atlantic Charter"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which country sent the Zimmermann Telegram proposing an alliance with Mexico?",
+      "choices": [
+        "France",
+        "Russia",
+        "Germany",
+        "Italy"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why did Germany's unrestricted submarine warfare threaten U.S. interests?",
+      "choices": [
+        "It required Americans to stop producing farm goods",
+        "It placed German troops along the U.S.-Canadian border",
+        "It transferred control of U.S. ports to Britain",
+        "It endangered ships and passengers without ordinary warning procedures"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How did the Zimmermann Telegram influence U.S. opinion?",
+      "choices": [
+        "It heightened concern about a possible attack involving Mexico",
+        "It promised to end Germany's submarine campaign",
+        "It guaranteed U.S. membership in a peace organization",
+        "It announced the surrender of all German armies"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why did the U.S. government sell Liberty Bonds?",
+      "choices": [
+        "To replace all federal taxes permanently",
+        "To borrow money from the public for the war effort",
+        "To distribute farmland to returning soldiers",
+        "To pay reparations to Germany before the war ended"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How did wartime industrial demand contribute to the Great Migration?",
+      "choices": [
+        "It eliminated racial discrimination in northern cities",
+        "It required every southern farm worker to move",
+        "It made cotton farming more profitable than factory work",
+        "It created northern jobs that attracted many Black southerners"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What role did the Committee on Public Information play?",
+      "choices": [
+        "It negotiated military surrender terms with Germany",
+        "It trained all U.S. combat pilots",
+        "It promoted public support for the American war effort",
+        "It wrote state constitutions after the war"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why did the Espionage and Sedition Acts raise civil liberties concerns?",
+      "choices": [
+        "They were used to punish some antiwar speech and activities",
+        "They abolished the military draft",
+        "They expanded public access to all military plans",
+        "They required direct election of federal judges"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "How did U.S. entry affect the Allied war effort?",
+      "choices": [
+        "It immediately ended fighting on every front",
+        "It provided additional troops, supplies, and financial resources",
+        "It forced Britain and France to leave the alliance",
+        "It made the U.S. responsible for all Allied military decisions"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why did the United States not join the League of Nations after World War I?",
+      "choices": [
+        "The League prohibited participation by any republic",
+        "Wilson refused to support an international organization",
+        "Germany controlled admission and vetoed U.S. membership",
+        "The Senate did not approve the Treaty of Versailles"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Which sequence correctly places U.S. involvement in World War I?",
+      "choices": [
+        "Armistice → U.S. entry → Fourteen Points",
+        "Fourteen Points → U.S. entry → Armistice",
+        "U.S. entry → Fourteen Points → Armistice",
+        "U.S. entry → Armistice → Fourteen Points"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A 1918 poster urges families to conserve wheat for soldiers. Which aspect of the war does it illustrate?",
+      "choices": [
+        "Civilian participation in mobilizing resources",
+        "A campaign to replace voluntary conservation with military enlistment",
+        "An effort to reduce exports to every Allied country",
+        "A plan to restore the prewar balance of U.S. foreign trade"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Which statement most accurately connects the Lusitania sinking in 1915 with U.S. entry in 1917?",
+      "choices": [
+        "The United States declared war on the day of the sinking",
+        "The sinking shaped opinion, but later developments also contributed to entry",
+        "The sinking occurred after American troops reached France",
+        "The incident had no effect on diplomatic relations"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A senator worries that League membership could commit the country to future conflicts. What issue does this argument emphasize?",
+      "choices": [
+        "Whether states should conduct their own foreign policy",
+        "Whether the national bank should issue currency",
+        "The balance between international cooperation and national independence",
+        "The replacement of Congress with an international legislature"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which evidence would best support a study of World War I's effects on U.S. workers?",
+      "choices": [
+        "Diplomatic correspondence about European territorial settlements",
+        "Military maps showing trench positions on the Western Front",
+        "Congressional debates over the League of Nations treaty",
+        "Factory employment records and workers' wartime letters"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

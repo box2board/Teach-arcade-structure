@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "economics--inflation",
+  "title": "Inflation",
+  "subject": "Social Studies",
+  "category": "Economics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is inflation?",
+      "choices": [
+        "A sustained increase in the general price level",
+        "A rise in the price of only one product",
+        "A fall in every wage",
+        "A decline in total population"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What happens to a fixed amount of money's purchasing power during inflation?",
+      "choices": [
+        "It generally rises",
+        "It automatically stays unchanged",
+        "It generally falls",
+        "It becomes unrelated to prices"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is deflation?",
+      "choices": [
+        "A slower rate of price increases",
+        "A sustained decrease in the general price level",
+        "A rise in all nominal wages",
+        "A decline in government borrowing only"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is disinflation?",
+      "choices": [
+        "A fall in the general price level",
+        "The elimination of all price changes",
+        "An increase in the inflation rate",
+        "A decline in the rate of inflation"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is the Consumer Price Index designed to track?",
+      "choices": [
+        "Prices paid by consumers for a representative basket",
+        "Only stock market prices",
+        "Only the value of exports",
+        "The number of unemployed workers"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is a nominal wage?",
+      "choices": [
+        "A wage adjusted for price changes",
+        "A wage paid only in goods",
+        "A wage measured in current money units",
+        "A wage guaranteed to rise with productivity"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is a real wage?",
+      "choices": [
+        "A wage before it is stated in money",
+        "A wage adjusted for purchasing power",
+        "A wage equal to total GDP",
+        "A wage earned only in manufacturing"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why does a price rise for one product not necessarily establish general inflation?",
+      "choices": [
+        "One product always represents the entire economy",
+        "Inflation is defined only by wages",
+        "Individual prices cannot change without government approval",
+        "Other prices may not be rising broadly"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How can strong demand contribute to inflation?",
+      "choices": [
+        "Spending may grow faster than the economy's ability to supply output",
+        "Spending necessarily lowers every price",
+        "Demand affects only stock prices",
+        "Demand growth makes production constraints irrelevant"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "How can a broad increase in energy costs contribute to inflation?",
+      "choices": [
+        "Energy costs affect no other products",
+        "Higher energy costs guarantee lower transport prices",
+        "Higher costs can raise prices across many industries",
+        "Energy costs automatically increase real wages"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why are fixed-income households vulnerable to unexpected inflation?",
+      "choices": [
+        "They necessarily receive automatic price adjustments",
+        "Their income may not keep pace with rising prices",
+        "Inflation increases every household's real income",
+        "They spend no income on goods or services"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "How can unexpected inflation affect a borrower with a fixed nominal debt?",
+      "choices": [
+        "It automatically cancels the debt",
+        "It necessarily raises the loan's fixed interest rate",
+        "It always increases the debt's purchasing-power value",
+        "It can reduce the real burden of repayment"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why do central banks monitor inflation expectations?",
+      "choices": [
+        "Expectations can influence wage demands and price-setting",
+        "Expectations legally determine every price",
+        "Only expectations measure unemployment",
+        "Expectations replace all economic statistics"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why can slower inflation still leave prices rising?",
+      "choices": [
+        "Disinflation requires every price to fall",
+        "Inflation rates measure only production quantities",
+        "A positive inflation rate means prices continue increasing",
+        "A lower rate means all previous increases are reversed"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why can falling prices be harmful during a severe downturn?",
+      "choices": [
+        "Deflation necessarily raises every household's income",
+        "Deflation can increase real debt burdens and discourage spending",
+        "Lower prices eliminate all unemployment",
+        "Debt contracts always fall automatically with prices"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A basket costs $100 one year and $105 the next. What is its inflation rate?",
+      "choices": [
+        "0.5%",
+        "10%",
+        "105%",
+        "5%"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A wage rises 3% while prices rise 6%. What happens approximately to purchasing power?",
+      "choices": [
+        "It declines",
+        "It rises by 9%",
+        "It stays unchanged",
+        "It rises by 3%"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Inflation falls from 8% to 3% while remaining positive. Which description is correct?",
+      "choices": [
+        "Deflation with prices falling",
+        "Unchanged inflation",
+        "Disinflation with prices still rising",
+        "A complete reversal of past price increases"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A loan has a 7% nominal interest rate and inflation is 4%. What is the approximate real interest rate?",
+      "choices": [
+        "11%",
+        "3%",
+        "4%",
+        "7%"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Why might two households experience inflation differently?",
+      "choices": [
+        "Every household buys the exact CPI basket",
+        "Only businesses face price changes",
+        "Inflation affects only imported products",
+        "They purchase different combinations of goods and services"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

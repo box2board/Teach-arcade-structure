@@ -1,0 +1,254 @@
+{
+  "schemaVersion": 1,
+  "id": "economics--unemployment",
+  "title": "Unemployment",
+  "subject": "Social Studies",
+  "category": "Economics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "In U.S. labor statistics, who is generally classified as unemployed?",
+      "choices": [
+        "An adult without paid work, whether or not available or searching",
+        "A jobless person available for work who actively searched in the last four weeks",
+        "An adult working fewer than full-time hours, regardless of job preferences",
+        "An adult who receives less income than in the previous year"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is the labor force?",
+      "choices": [
+        "All residents including young children",
+        "Only people working full-time",
+        "Only people collecting unemployment benefits",
+        "People classified as employed plus unemployed"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "How is the unemployment rate calculated?",
+      "choices": [
+        "Unemployed people divided by the labor force",
+        "Unemployed people divided by total population",
+        "Employed people divided by total land area",
+        "Retired people divided by employed people"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is frictional unemployment?",
+      "choices": [
+        "Joblessness caused only by a national recession",
+        "Joblessness caused only by a mismatch of skills",
+        "Joblessness during transitions or searches between jobs",
+        "Joblessness caused only by seasonal weather"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is structural unemployment?",
+      "choices": [
+        "Joblessness during a brief ordinary job search only",
+        "Joblessness linked to a mismatch between workers and available jobs",
+        "Joblessness caused only by a holiday closure",
+        "Joblessness caused by leaving the workforce entirely"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is cyclical unemployment?",
+      "choices": [
+        "Joblessness associated with downturns in economic activity",
+        "Joblessness arising only from regular seasonal patterns",
+        "Joblessness during every voluntary job switch",
+        "Joblessness unrelated to changing demand"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is seasonal unemployment?",
+      "choices": [
+        "Joblessness caused only by technological replacement",
+        "Joblessness caused only by unexpected national recessions",
+        "Joblessness caused by permanent retirement",
+        "Joblessness related to predictable seasonal changes in work"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why are discouraged workers generally excluded from the headline U.S. unemployment rate?",
+      "choices": [
+        "They are automatically counted as full-time employees",
+        "They always receive wages from their former employers",
+        "They have stopped actively searching and are outside the labor force",
+        "They are counted only as business owners"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why can someone working part-time still be considered employed?",
+      "choices": [
+        "Employment status does not require full-time hours",
+        "Only jobs with health insurance count as employment",
+        "Part-time workers are always classified as unemployed",
+        "Employment requires a permanent contract"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "How can a recession raise cyclical unemployment?",
+      "choices": [
+        "Falling demand necessarily raises every wage",
+        "Falling demand can lead firms to reduce production and staffing",
+        "Businesses must expand staffing when sales decline",
+        "Recessions eliminate the need for economic statistics"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why can training help address structural unemployment?",
+      "choices": [
+        "It guarantees every worker an immediate job",
+        "It eliminates all seasonal patterns",
+        "It changes only the number of people collecting benefits",
+        "It may build skills suited to changing job requirements"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What is labor-force participation rate?",
+      "choices": [
+        "Unemployed people as a share of employed people",
+        "Retirees as a share of all children",
+        "The labor force as a share of the relevant civilian population",
+        "Full-time workers as a share of exports"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why are benefit claims not the same as the official count of unemployment?",
+      "choices": [
+        "Some unemployed people do not qualify for or claim benefits",
+        "Every unemployed person automatically receives benefits",
+        "Only benefit recipients can search for work",
+        "Benefits count all people who are outside the labor force"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why can an unemployment rate fall without more people finding jobs?",
+      "choices": [
+        "Population must have become zero",
+        "Some jobless people may stop searching and leave the labor force",
+        "Every jobless person must have become employed",
+        "Businesses must have raised all wages"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why do broader labor-market measures consider involuntary part-time work?",
+      "choices": [
+        "Part-time workers are never included in employment",
+        "Broader measures count only business profits",
+        "Workers choose their hours freely in every case",
+        "The headline rate may not capture insufficient hours among employed workers"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A labor force has 10,000 people, including 500 unemployed. What is the unemployment rate?",
+      "choices": [
+        "0.5%",
+        "10%",
+        "5%",
+        "50%"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A worker's job disappears because new production requires different skills. Which category fits best?",
+      "choices": [
+        "Structural unemployment",
+        "Frictional unemployment alone",
+        "Seasonal unemployment",
+        "Voluntary retirement"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A worker leaves one job and searches for a better match. Which category fits best?",
+      "choices": [
+        "Seasonal unemployment",
+        "Frictional unemployment",
+        "Cyclical unemployment necessarily",
+        "Permanent withdrawal from the labor force"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A ski resort reduces staff each spring under its regular schedule. Which category fits best?",
+      "choices": [
+        "Structural unemployment necessarily",
+        "Frictional unemployment alone",
+        "Retirement",
+        "Seasonal unemployment"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A person has no job, wants work, but has not searched during the recent four-week period because jobs seem unavailable. Under standard U.S. classification, where does the person generally fall?",
+      "choices": [
+        "Employed full-time",
+        "Unemployed solely because no job is held",
+        "Outside the labor force",
+        "Automatically counted as an employer"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ],
+  "referenceUrls": [
+    "https://www.bls.gov/cps/cps_htgm.htm"
+  ]
+}

@@ -1,0 +1,254 @@
+{
+  "schemaVersion": 1,
+  "id": "geography--north-america",
+  "title": "North America",
+  "subject": "Social Studies",
+  "category": "Geography",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which mountain system extends along much of western North America's interior?",
+      "choices": [
+        "Appalachian Mountains",
+        "Andes Mountains",
+        "Rocky Mountains",
+        "Alps"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which mountain system lies in eastern North America?",
+      "choices": [
+        "Appalachian Mountains",
+        "Rocky Mountains",
+        "Sierra Madre Occidental",
+        "Cascade Range"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which broad grassland region lies east of the Rocky Mountains?",
+      "choices": [
+        "Canadian Shield",
+        "Great Plains",
+        "Yucatán Peninsula",
+        "Florida Everglades"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which country occupies much of the northern North American mainland?",
+      "choices": [
+        "Mexico",
+        "Guatemala",
+        "Cuba",
+        "Canada"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which country shares the United States' southern land border?",
+      "choices": [
+        "Mexico",
+        "Belize",
+        "Honduras",
+        "Panama"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which river system drains a large part of the central United States?",
+      "choices": [
+        "Amazon system",
+        "Danube system",
+        "Mississippi-Missouri system",
+        "Nile system"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which two countries share the Great Lakes region?",
+      "choices": [
+        "United States and Mexico",
+        "United States and Canada",
+        "Canada and Greenland",
+        "Mexico and Guatemala"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why do North American climates vary widely?",
+      "choices": [
+        "Every part lies at the same latitude",
+        "Ocean conditions are identical on both coasts",
+        "Mountains have no influence on regional climates",
+        "The continent spans large latitude ranges and varied elevations and coastlines"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How do the Great Plains support major farming regions?",
+      "choices": [
+        "Broad plains and suitable soils support extensive agriculture where water is available",
+        "The region has the same rainfall everywhere",
+        "Every part supports only tropical plantation crops",
+        "Its terrain prevents the use of farm machinery"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why are waterways such as the Great Lakes and St. Lawrence important?",
+      "choices": [
+        "They connect directly to the Pacific without canals or land routes",
+        "They form a single ocean saltwater basin",
+        "They support transport and connect inland areas with Atlantic routes",
+        "They eliminate the need for ports"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How does the Canadian Shield influence land use?",
+      "choices": [
+        "Deep tropical soils favor plantation farming across the entire region",
+        "Young volcanic rock and an arid climate limit forestry across the region",
+        "Thin soils limit farming; exposed rock supports some resource industries",
+        "Extensive river-delta soils make irrigated cotton its principal land use"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why are many western areas comparatively dry?",
+      "choices": [
+        "The entire west lies beyond the reach of sunlight",
+        "All western land has identical elevation",
+        "The Pacific contains no water vapor",
+        "Mountain barriers and atmospheric patterns limit moisture in some interior regions"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why is North America broader than the United States and Canada alone?",
+      "choices": [
+        "Geographic definitions also include Mexico, Central America, the Caribbean, and Greenland",
+        "Mexico lies entirely in South America",
+        "The Caribbean is geographically part of Europe",
+        "Central America is a separate continent in the seven-continent model"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "How have migration and Indigenous histories shaped the continent?",
+      "choices": [
+        "They created one identical culture across all regions",
+        "They prevented cities from developing",
+        "They contributed to diverse languages, cultures, and settlement patterns",
+        "They removed all regional differences in land use"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why is freshwater management a regional concern?",
+      "choices": [
+        "Freshwater is equally abundant in every region",
+        "Demand, drought, pollution, and shared waters can create competing needs",
+        "Water use never crosses political boundaries",
+        "All rivers carry the same flow year-round"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A farmer in a dry western basin relies on irrigation. What geographic relationship is illustrated?",
+      "choices": [
+        "The absence of any climate influence on agriculture",
+        "Uniform rainfall across the continent",
+        "A requirement that all farming occur on coasts",
+        "Human adaptation to limited local water supplies"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Which comparison of the Rockies and Appalachians is accurate?",
+      "choices": [
+        "They are distinct western and eastern mountain systems",
+        "Both lie entirely in Mexico",
+        "Both are branches of the Andes",
+        "Both occupy the same location along the Atlantic coast"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A study examines freight traveling from inland Great Lakes ports to the Atlantic. Which system is central?",
+      "choices": [
+        "Panama's mountain plateau",
+        "Amazon drainage basin",
+        "Great Lakes–St. Lawrence waterway",
+        "Bering land bridge"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Which evidence best explains uneven population distribution?",
+      "choices": [
+        "Only the total number of national flags",
+        "Maps of settlement compared with climate, resources, transport, and economic activity",
+        "Only the names of mountain peaks",
+        "Only the dates of international sporting events"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Why should a regional map distinguish cultural regions from political borders?",
+      "choices": [
+        "Every national boundary separates completely uniform cultures",
+        "Political borders determine every local climate",
+        "Cultural regions always have legally fixed boundaries",
+        "Cultural patterns may cross borders and vary within countries"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ],
+  "referenceUrls": [
+    "https://education.nationalgeographic.org/resource/north-america-physical-geography/"
+  ]
+}

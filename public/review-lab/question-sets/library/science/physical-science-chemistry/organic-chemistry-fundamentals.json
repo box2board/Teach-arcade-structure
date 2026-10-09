@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--physical-science-chemistry--organic-chemistry-fundamentals",
+  "title": "Organic Chemistry Fundamentals",
+  "subject": "Science",
+  "category": "Physical Science & Chemistry",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which element forms the backbone of most organic molecules?",
+      "choices": [
+        "Sodium",
+        "Helium",
+        "Calcium",
+        "Carbon"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "How many covalent bonds does a neutral carbon atom usually form in introductory organic structures?",
+      "choices": [
+        "Four",
+        "One",
+        "Two",
+        "Six"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is a hydrocarbon?",
+      "choices": [
+        "A compound containing only hydrogen and oxygen",
+        "A compound containing only carbon and hydrogen",
+        "Any compound dissolved in water",
+        "Any molecule containing a metal"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What distinguishes an alkene from an alkane?",
+      "choices": [
+        "An alkene has no hydrogen",
+        "An alkane must contain oxygen",
+        "An alkene has a carbon-carbon double bond",
+        "An alkane always has a triple bond"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which functional group identifies an alcohol?",
+      "choices": [
+        "A carbon-carbon triple bond",
+        "A carboxyl group",
+        "A carbon atom bonded to four hydrogens",
+        "A hydroxyl group attached to a saturated carbon"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What are structural isomers?",
+      "choices": [
+        "Compounds with the same molecular formula but different atom connections",
+        "Compounds with different formulas and identical atom connections",
+        "Different isotopes of one element",
+        "Molecules with no covalent bonds"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is a polymer?",
+      "choices": [
+        "A single isolated proton",
+        "A large molecule made from many linked smaller units",
+        "A mixture whose particles settle",
+        "A gas with only one kind of atom"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why can carbon form many different compounds?",
+      "choices": [
+        "Carbon can form only straight chains with no branches",
+        "Carbon bonds only to hydrogen and never to itself",
+        "It can bond to itself in chains and rings and to other elements",
+        "Carbon always forms one bond regardless of its partners"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How can a functional group affect an organic molecule?",
+      "choices": [
+        "It determines only how many atoms the molecule has",
+        "It guarantees every molecule has the same solubility",
+        "It affects appearance but never chemical reactions",
+        "It influences chemical behavior and interactions"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why are many small alcohols more water-soluble than similar-sized hydrocarbons?",
+      "choices": [
+        "Their hydroxyl groups can hydrogen-bond with water",
+        "Their hydroxyl groups prevent attraction to water",
+        "Their larger carbon chains always dominate any polar effects",
+        "Hydrocarbons form stronger hydrogen bonds with water"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What does a double line between two carbons represent in a structural formula?",
+      "choices": [
+        "Two separate carbon atoms with no bond",
+        "Two shared pairs of electrons",
+        "Two neutrons moving between nuclei",
+        "Two ionic charges on each carbon"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What is an addition reaction across a carbon-carbon double bond?",
+      "choices": [
+        "Atoms are removed while the double bond becomes a triple bond",
+        "The molecule separates physically without changing any bonds",
+        "Atoms are added as the double bond becomes a single bond",
+        "A carbon-carbon single bond becomes a double bond without losing atoms"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "In complete combustion of a hydrocarbon with enough oxygen, what are the main products?",
+      "choices": [
+        "Carbon monoxide and hydrogen only",
+        "Nitrogen and oxygen",
+        "Sodium chloride and water",
+        "Carbon dioxide and water"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why can a molecular formula be insufficient to show an organic molecule's structure?",
+      "choices": [
+        "Different arrangements can share that formula",
+        "A molecular formula always specifies every bond position",
+        "Any matching formulas must represent identical connectivity",
+        "A molecular formula shows only the molecule's boiling point"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "How is a monomer related to a polymer?",
+      "choices": [
+        "Monomers are polymers joined into an even larger mixture",
+        "Monomers are smaller units that can link into a polymer",
+        "A monomer must be larger than the polymer it forms",
+        "Polymers can form only from single carbon atoms"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Which formula represents a hydrocarbon?",
+      "choices": [
+        "C2H5OH",
+        "CH3COOH",
+        "C3H8",
+        "CO2"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Two molecules both have formula C4H10 but different carbon connections. How are they related?",
+      "choices": [
+        "They are isotopes",
+        "They have different elemental compositions",
+        "They are necessarily identical structures",
+        "They are structural isomers"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A molecule contains a COOH group. Which classification fits?",
+      "choices": [
+        "Carboxylic acid",
+        "Alkane",
+        "Alcohol only",
+        "Noble gas"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A molecule has two carbons connected by a triple bond. Which family includes it?",
+      "choices": [
+        "Alkanes",
+        "Alkynes",
+        "Alcohols",
+        "Carboxylic acids"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A plastic forms when many identical small molecules join into long chains. What process does this describe?",
+      "choices": [
+        "Nuclear fusion",
+        "Simple filtration",
+        "Polymerization",
+        "Evaporation"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ]
+}

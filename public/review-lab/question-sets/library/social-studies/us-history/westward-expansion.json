@@ -1,0 +1,255 @@
+{
+  "schemaVersion": 1,
+  "id": "us-history--westward-expansion",
+  "title": "Westward Expansion",
+  "subject": "Social Studies",
+  "category": "U.S. History",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which purchase in 1803 greatly enlarged U.S. territory?",
+      "choices": [
+        "Gadsden Purchase",
+        "Alaska Purchase",
+        "Florida Purchase",
+        "Louisiana Purchase"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Who explored parts of the Louisiana Purchase and the Pacific Northwest for the U.S. government?",
+      "choices": [
+        "Lewis and Clark",
+        "Marquette and Joliet",
+        "Hernán Cortés and Francisco Pizarro",
+        "John Cabot and Henry Hudson"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What was the Oregon Trail?",
+      "choices": [
+        "A canal between the Atlantic and Great Lakes",
+        "A railway crossing only the Deep South",
+        "An overland migration route to the Pacific Northwest",
+        "A sea route connecting California and China"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which event drew large numbers of migrants to California beginning in 1849?",
+      "choices": [
+        "Completion of the Panama Canal",
+        "Gold Rush",
+        "Opening of Ellis Island",
+        "Ratification of the Monroe Doctrine"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which act offered eligible settlers public land subject to residency and improvement requirements?",
+      "choices": [
+        "Homestead Act",
+        "Dawes Act",
+        "Morrill Tariff",
+        "Pendleton Act"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Where was the first transcontinental railroad joined in 1869?",
+      "choices": [
+        "St. Louis, Missouri",
+        "Santa Fe, New Mexico",
+        "Portland, Oregon",
+        "Promontory Summit, Utah"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which treaty ended the Mexican-American War and transferred extensive territory to the United States?",
+      "choices": [
+        "Treaty of Ghent",
+        "Treaty of Paris of 1783",
+        "Treaty of Guadalupe Hidalgo",
+        "Webster-Ashburton Treaty"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why did settlers move west for reasons beyond gold?",
+      "choices": [
+        "Every migrant was required to work in a gold mine",
+        "Land, work, religious goals, and other opportunities attracted migrants",
+        "Western migration occurred only through military orders",
+        "Only wealthy merchants could legally move west"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How did federal land policies encourage settlement?",
+      "choices": [
+        "They offered ways to acquire land claimed as public domain",
+        "They prohibited farms beyond the Mississippi",
+        "They required settlers to buy land only from European monarchs",
+        "They guaranteed profitable harvests to every claimant"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why is describing western land as simply empty inaccurate?",
+      "choices": [
+        "The West contained no land suitable for settlement",
+        "All land had already been purchased privately from Spain",
+        "Only coastal regions had any human settlement",
+        "Indigenous peoples already lived on and used these lands"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How did railroads affect western economies?",
+      "choices": [
+        "They ended trade between the West and eastern cities",
+        "They made every western business locally self-sufficient",
+        "They connected farms, mines, and towns to wider markets",
+        "They removed the need to transport agricultural products"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why did the expansion of slavery become a major political issue?",
+      "choices": [
+        "Every territory had already banned slavery permanently",
+        "New territories raised disputes about slavery's legal status",
+        "The Constitution required slavery in all western states",
+        "Slavery affected only international diplomacy"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "How did the Indian Removal Act contribute to expansion?",
+      "choices": [
+        "It supported forced displacement of Indigenous communities from eastern lands",
+        "It protected every Indigenous community from relocation",
+        "It granted all tribes voting seats in Congress",
+        "It ended settler demand for farmland"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why could homesteading be difficult despite inexpensive land?",
+      "choices": [
+        "Claimants were forbidden from cultivating crops",
+        "The government provided no legal route to ownership",
+        "Every homestead was located within an existing city",
+        "Settlers still faced equipment costs, harsh conditions, and uncertain harvests"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "How did Chinese immigrants contribute to western development?",
+      "choices": [
+        "They served only as federal land surveyors",
+        "They were the sole group permitted to own western land",
+        "Many worked in mining, businesses, and railroad construction",
+        "They held every railroad executive position"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Which sequence orders these expansion events correctly?",
+      "choices": [
+        "Gold Rush, Louisiana Purchase, railroad completion",
+        "Louisiana Purchase, California Gold Rush, completion of the transcontinental railroad",
+        "Railroad completion, Gold Rush, Louisiana Purchase",
+        "Louisiana Purchase, railroad completion, Gold Rush"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A historian compares settler land claims with Indigenous treaty records. What issue is central?",
+      "choices": [
+        "Competing claims and dispossession during expansion",
+        "The independence of European colonies in Africa",
+        "The creation of the Federal Reserve",
+        "The rise of automobile suburbs after World War II"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Which evidence best evaluates railroads' economic impact?",
+      "choices": [
+        "Only the names of locomotives",
+        "Only a list of presidential birthdays",
+        "Only the design of state flags",
+        "Changes in shipping costs, market access, and settlement patterns"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Which comparison of western experiences is accurate?",
+      "choices": [
+        "Every group gained equal control of land and government",
+        "Only farmers were affected by railroad development",
+        "Settlers, Indigenous peoples, and immigrant workers often experienced expansion differently",
+        "Every migrant moved west for the same reason"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Why should a history of expansion examine both opportunities and costs?",
+      "choices": [
+        "Economic growth made all treaties unnecessary",
+        "Territorial and economic growth also involved displacement and conflict",
+        "New states formed without political disputes",
+        "Expansion affected land size but not people's lives"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ],
+  "referenceUrls": [
+    "https://www.archives.gov/milestone-documents/homestead-act"
+  ]
+}
+

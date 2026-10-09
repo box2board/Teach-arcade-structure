@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "world-history--ancient-china",
+  "title": "Ancient China",
+  "subject": "Social Studies",
+  "category": "World History",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which river is commonly called the Yellow River?",
+      "choices": [
+        "Mekong",
+        "Ganges",
+        "Huang He",
+        "Yangtze"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which dynasty is associated with oracle-bone inscriptions?",
+      "choices": [
+        "Shang",
+        "Ming",
+        "Qing",
+        "Yuan"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What was the Mandate of Heaven?",
+      "choices": [
+        "A rule requiring every ruler to be elected",
+        "A promise that dynasties could never fall",
+        "A contract ending warfare among all kingdoms",
+        "A belief that a ruler's authority depended on heavenly approval"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which thinker emphasized ethical conduct, family relationships, and responsible leadership?",
+      "choices": [
+        "Laozi",
+        "Confucius",
+        "Siddhartha Gautama",
+        "Socrates"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which dynasty first unified China into an empire in 221 BCE?",
+      "choices": [
+        "Qin",
+        "Han",
+        "Tang",
+        "Song"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which philosophy emphasized strict laws and strong state authority?",
+      "choices": [
+        "Buddhism",
+        "Daoism",
+        "Legalism",
+        "Confucianism"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What were the Silk Roads?",
+      "choices": [
+        "One paved road built by a single emperor",
+        "Defensive walls around every Chinese city",
+        "Canals used only for moving soldiers",
+        "Networks of trade routes connecting regions across Eurasia"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "How did river valleys support early Chinese settlement?",
+      "choices": [
+        "They removed the risk of destructive floods",
+        "They provided water and fertile soil for farming",
+        "They prevented exchange between neighboring communities",
+        "They supplied the same crops in every climatic zone"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How could the Mandate of Heaven be used to justify replacing a dynasty?",
+      "choices": [
+        "A failing ruler could be described as having lost heavenly approval",
+        "A dynasty automatically ended after one year",
+        "A ruler's ancestry was considered irrelevant to all politics",
+        "A foreign merchant could select any new emperor"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why did Qin rulers standardize weights, measures, and writing?",
+      "choices": [
+        "To give each region complete political independence",
+        "To end taxation throughout the empire",
+        "To make administration and exchange more consistent",
+        "To eliminate the use of written records"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What does filial piety mean in Confucian thought?",
+      "choices": [
+        "Avoiding duties to family members",
+        "Choosing officials through hereditary military rank",
+        "Treating commercial profit as the highest moral goal",
+        "Respecting and fulfilling responsibilities toward parents and elders"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "How does Daoism differ from an approach that emphasizes detailed coercive laws?",
+      "choices": [
+        "It makes conquest the central goal of every ruler",
+        "It emphasizes living in harmony with the Dao and natural patterns",
+        "It requires all households to join the same bureaucracy",
+        "It treats punishment as the sole route to social order"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why did Han governments need educated officials?",
+      "choices": [
+        "A large empire required records, administration, and policy enforcement",
+        "The emperor personally handled every village dispute",
+        "Written government records had been outlawed",
+        "Merchants had replaced all regional government offices"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "How did Silk Road commerce affect culture as well as trade?",
+      "choices": [
+        "It prevented religions from crossing borders",
+        "It eliminated regional differences in language",
+        "It carried ideas, technologies, and beliefs between societies",
+        "It required all traders to live permanently in China"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why did some Chinese rulers build or connect northern defensive walls?",
+      "choices": [
+        "To irrigate every southern rice field",
+        "To block all contact with coastal markets",
+        "To create canals between the Yellow and Yangtze rivers",
+        "To help defend frontier areas against raids and invasion"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Which sequence correctly orders these Chinese dynasties?",
+      "choices": [
+        "Han → Qin → Zhou → Shang",
+        "Shang → Zhou → Qin → Han",
+        "Zhou → Han → Shang → Qin",
+        "Qin → Shang → Han → Zhou"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "An oracle bone records a ruler's question about a coming harvest. What does it most directly reveal?",
+      "choices": [
+        "The connection between royal decision-making and divination",
+        "The use of elected assemblies to set agricultural policy",
+        "The absence of concern about farming in royal government",
+        "The practice of recording only completed events, not questions"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A teacher says that the Great Wall was built in one project by one ancient ruler. Which correction is most accurate?",
+      "choices": [
+        "The wall was built entirely during the Shang dynasty",
+        "The walls were constructed mainly as irrigation channels",
+        "Different states and dynasties built and rebuilt walls over time",
+        "All surviving walls date to the Qin unification project"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Which policy would most closely reflect Confucian ideals of government?",
+      "choices": [
+        "Ignoring education when appointing public officials",
+        "Replacing family responsibilities with military service",
+        "Encouraging rulers to rely only on secret punishments",
+        "Expecting leaders to set a moral example for others"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Roman glass found at a Chinese site would most reasonably support which conclusion?",
+      "choices": [
+        "Rome directly supervised commercial policy in Chinese cities",
+        "Goods could travel long distances through connected trade networks",
+        "Roman merchants were the only traders permitted in China",
+        "Chinese communities relied entirely on imported glass production"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}

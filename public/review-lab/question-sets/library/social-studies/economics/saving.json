@@ -1,0 +1,254 @@
+{
+  "schemaVersion": 1,
+  "id": "economics--saving",
+  "title": "Saving",
+  "subject": "Social Studies",
+  "category": "Economics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "referenceUrls": [
+    "https://www.consumerfinance.gov/archive/blog/how-save-emergencies-and-future/"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "What does saving mean in personal finance?",
+      "choices": [
+        "Borrowing to increase present consumption",
+        "Spending income before receiving it",
+        "Setting aside money rather than spending it now",
+        "Selling an asset at any price"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is an emergency fund intended to cover?",
+      "choices": [
+        "Unexpected necessary expenses or interruptions in income",
+        "Only planned vacation expenses",
+        "Regular purchases of speculative assets",
+        "Only expenses already paid by insurance"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What does liquidity describe?",
+      "choices": [
+        "The maximum possible return of an investment",
+        "The number of depositors at a bank",
+        "The length of a person's employment history",
+        "How easily an asset can be accessed or converted to cash"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is compound interest?",
+      "choices": [
+        "Interest paid only on the original deposit",
+        "Interest earned on principal and previously earned interest",
+        "A fee paid for every cash withdrawal",
+        "A tax charged only on household spending"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is a savings goal?",
+      "choices": [
+        "A planned purpose and target amount for money set aside",
+        "The maximum borrowing limit on a credit card",
+        "A guarantee that prices will stay unchanged",
+        "A lender's plan to collect overdue payments"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What does APY help a saver compare?",
+      "choices": [
+        "The number of branches a bank operates",
+        "The risk of every stock in a portfolio",
+        "Annual deposit earnings including the effect of compounding",
+        "The amount of sales tax on a purchase"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is an automatic savings transfer?",
+      "choices": [
+        "A loan automatically charged to a credit card",
+        "A tax refund issued after every purchase",
+        "A promise of a guaranteed stock return",
+        "A scheduled movement of money into a savings account"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why can a specific deadline improve a savings plan?",
+      "choices": [
+        "It removes every possible unexpected expense",
+        "It helps determine how much must be saved each period",
+        "It guarantees that income will rise before the deadline",
+        "It makes account fees irrelevant to the goal"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why is access to funds important when planning emergency savings?",
+      "choices": [
+        "Emergencies may require money before a long-term asset can be sold",
+        "Emergency funds are useful only after retirement",
+        "All unexpected expenses arrive on a predictable schedule",
+        "Liquidity guarantees the highest investment return"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "How can inflation affect money saved over time?",
+      "choices": [
+        "It increases the number of dollars in every account automatically",
+        "It prevents banks from paying any interest",
+        "It can reduce what the saved dollars can purchase",
+        "It turns every savings account into a loan"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why might a saver compare account fees before choosing an account?",
+      "choices": [
+        "Fees always raise the account's interest rate",
+        "Fees are unrelated to the balance remaining",
+        "Fees guarantee that a bank has more deposit insurance",
+        "Fees can reduce the benefit of interest earnings"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What tradeoff may come with a certificate of deposit compared with an ordinary savings account?",
+      "choices": [
+        "A CD must always allow unlimited withdrawals without penalties",
+        "A CD may offer a fixed rate but restrict early access",
+        "A CD represents ownership shares in a business",
+        "A CD automatically adjusts to every increase in prices"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why can beginning to save earlier help with a long-term goal?",
+      "choices": [
+        "It provides more time for contributions and potential compounding",
+        "It guarantees that every saver earns the same interest rate",
+        "It eliminates the need to check account conditions",
+        "It makes future contributions unnecessary in every case"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What does paying yourself first mean as a savings habit?",
+      "choices": [
+        "Skipping required loan payments to buy optional goods",
+        "Waiting until all discretionary spending is finished",
+        "Setting aside planned savings when income arrives",
+        "Withdrawing savings whenever income increases"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why might separate savings categories help a household?",
+      "choices": [
+        "They guarantee each account earns a higher rate",
+        "They eliminate the need to track balances",
+        "They automatically double the household's total savings",
+        "They make progress toward different goals easier to track"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A student needs $600 in six months and already has $120. Ignoring interest, how much must be saved monthly?",
+      "choices": [
+        "$60",
+        "$80",
+        "$100",
+        "$120"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "An account earns 5% simple interest on $200 for one year, with no fees. How much interest does it earn?",
+      "choices": [
+        "$10",
+        "$5",
+        "$20",
+        "$100"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A $100 deposit earns 10% interest annually, compounded once a year. With no transactions or fees, what is the balance after two years?",
+      "choices": [
+        "$110",
+        "$120",
+        "$121",
+        "$200"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "An account earns $12 in interest but charges $18 in fees over the same year. What is the net change from these two items?",
+      "choices": [
+        "A $30 increase",
+        "A $6 increase",
+        "An $18 decrease",
+        "A $6 decrease"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A person's goal is a necessary purchase next month. Which feature should receive particular attention when choosing where to hold the money?",
+      "choices": [
+        "Potential returns over several decades",
+        "Reliable short-term access and preservation of the funds",
+        "The popularity of an unrelated company's stock",
+        "The chance of a large gain from a volatile asset"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}

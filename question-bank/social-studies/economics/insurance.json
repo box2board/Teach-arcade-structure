@@ -1,0 +1,254 @@
+{
+  "schemaVersion": 1,
+  "id": "economics--insurance",
+  "title": "Insurance",
+  "subject": "Social Studies",
+  "category": "Economics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "referenceUrls": [
+    "https://content.naic.org/article/consumer-insight-searching-homeowners-insurance-policy-tips-get-most-value"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is the main economic purpose of insurance?",
+      "choices": [
+        "To guarantee a profit from every purchase",
+        "To replace a household's regular wages permanently",
+        "To help manage the financial consequences of covered risks",
+        "To eliminate the possibility of accidents"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is an insurance premium?",
+      "choices": [
+        "The price paid to maintain insurance coverage",
+        "The maximum possible payment for every claim",
+        "A loan made to the policyholder",
+        "A penalty paid only after an accident"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is a deductible in a typical property insurance policy?",
+      "choices": [
+        "The insurer's yearly advertising expense",
+        "The amount borrowed to buy the property",
+        "The value of every item in a house",
+        "The portion of a covered loss paid by the policyholder"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is an insurance claim?",
+      "choices": [
+        "A request to open a checking account",
+        "A request for payment or benefits under a policy",
+        "A loan application based on the policy's price",
+        "A guarantee that a policy will cover every loss"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is a coverage limit?",
+      "choices": [
+        "The maximum a policy pays for a specified covered loss or category",
+        "The minimum income required to own property",
+        "The number of companies allowed to sell insurance",
+        "The amount every customer must save monthly"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is a policy exclusion?",
+      "choices": [
+        "A benefit automatically paid without a loss",
+        "A refund of the entire annual premium",
+        "A condition or type of loss the policy does not cover",
+        "A discount required on every renewal"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What does liability insurance generally address?",
+      "choices": [
+        "Normal declines in an investment's market price",
+        "Every routine maintenance cost of a home",
+        "The cost of purchases made on credit",
+        "Covered claims for injury or damage for which the insured is responsible"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "How does risk pooling help insurance work?",
+      "choices": [
+        "Each person pays only after experiencing a loss",
+        "Payments from many policyholders help fund covered losses suffered by some",
+        "Every policyholder must suffer an identical loss",
+        "The insurer promises that losses will never occur"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why might a higher deductible be associated with a lower premium?",
+      "choices": [
+        "The policyholder takes responsibility for more of a covered loss",
+        "The insurer agrees to cover every excluded event",
+        "The policyholder stops being responsible for any loss",
+        "The policy's coverage limit automatically becomes unlimited"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why is the lowest premium not always the best basis for comparing policies?",
+      "choices": [
+        "Premiums never affect household costs",
+        "Every policy has identical coverage",
+        "Coverage, deductibles, limits, and exclusions can differ",
+        "Higher premiums guarantee no claims will be denied"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What is the main purpose of life insurance?",
+      "choices": [
+        "To cover routine vehicle repairs",
+        "To guarantee a stock portfolio's return",
+        "To pay every medical bill without conditions",
+        "To provide specified benefits to beneficiaries after an insured person's death"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What distinguishes disability insurance from ordinary property insurance?",
+      "choices": [
+        "It replaces a damaged roof after a storm",
+        "It can replace part of income when a covered disability prevents work",
+        "It protects only the value of household furniture",
+        "It guarantees repayment of every investment loss"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why is renters insurance different from a landlord's building insurance?",
+      "choices": [
+        "It can protect a renter's belongings and personal liability",
+        "It automatically gives the renter ownership of the building",
+        "It pays the landlord's property taxes directly",
+        "It guarantees that rent will never increase"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why should a person read the policy rather than assume all damage is covered?",
+      "choices": [
+        "Insurance contracts contain no coverage rules",
+        "Every policy covers the same events regardless of wording",
+        "The contract defines which losses and conditions are covered",
+        "A premium receipt replaces every term of the policy"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "How can an inventory of household belongings help after a covered loss?",
+      "choices": [
+        "It guarantees payment above the policy limit",
+        "It eliminates the deductible automatically",
+        "It changes excluded losses into covered losses",
+        "It helps document what was owned and its value"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A covered property loss is $2,000 with a $500 deductible. Assume no other limits or adjustments. How much does the insurer pay?",
+      "choices": [
+        "$500",
+        "$1,500",
+        "$2,000",
+        "$2,500"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Policy A has a $250 deductible; Policy B has a $1,000 deductible. For the same covered loss above both amounts, which requires more initial cost-sharing?",
+      "choices": [
+        "Policy B",
+        "Policy A",
+        "Both require exactly $250",
+        "Neither requires cost-sharing"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A family lives where flooding is possible. What should it check before relying on a standard homeowners policy?",
+      "choices": [
+        "Whether premiums are paid monthly or annually",
+        "Whether the policy covers theft of personal belongings",
+        "Whether flood damage is covered or needs separate coverage",
+        "Whether the insurer offers a discount for installing smoke alarms"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A policy costs $40 per month. With no price change, what is the total annual premium?",
+      "choices": [
+        "$120",
+        "$240",
+        "$400",
+        "$480"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A driver injures another person in a crash for which the driver is legally responsible. Which coverage is most directly relevant?",
+      "choices": [
+        "Life insurance on the driver",
+        "Auto bodily injury liability coverage",
+        "Home contents coverage",
+        "Disability coverage for an unrelated worker"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}

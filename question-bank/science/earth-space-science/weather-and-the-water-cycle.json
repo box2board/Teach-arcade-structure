@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--earth-space-science--weather-and-the-water-cycle",
+  "title": "Weather and the Water Cycle",
+  "subject": "Science",
+  "category": "Earth & Space Science",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What does weather describe?",
+      "choices": [
+        "The motion of Earth's tectonic plates",
+        "Average conditions over many decades",
+        "Atmospheric conditions at a particular time and place",
+        "Only the amount of annual rainfall"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which reservoir contains most of Earth's water?",
+      "choices": [
+        "Atmospheric clouds",
+        "Oceans",
+        "Rivers",
+        "Lakes"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which term describes the temperature at which cooling air reaches water-vapor saturation?",
+      "choices": [
+        "Heat index",
+        "Wind chill",
+        "Daily maximum temperature",
+        "Dew point"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which process releases water vapor from plants?",
+      "choices": [
+        "Infiltration",
+        "Runoff",
+        "Precipitation",
+        "Transpiration"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is precipitation?",
+      "choices": [
+        "Water falling from clouds as rain, snow, or other forms",
+        "Water soaking into the ground",
+        "Water vapor moving through a leaf",
+        "Liquid water changing into gas"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which instrument measures atmospheric pressure?",
+      "choices": [
+        "Rain gauge",
+        "Barometer",
+        "Anemometer",
+        "Thermometer"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is infiltration?",
+      "choices": [
+        "Water vapor turning into droplets",
+        "Water flowing across the ground",
+        "Water entering the soil from the surface",
+        "Cloud droplets forming ice crystals"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "What supplies much of the energy that drives evaporation in the water cycle?",
+      "choices": [
+        "Ocean tides",
+        "The Sun",
+        "Rock formation",
+        "Earth's magnetic field"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How does gravity contribute to the water cycle?",
+      "choices": [
+        "It prevents water from entering rivers",
+        "It converts water vapor directly into heat",
+        "It makes all groundwater rise to the surface",
+        "It moves falling precipitation and downhill-flowing water"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What are most clouds made of?",
+      "choices": [
+        "Tiny liquid droplets or ice crystals",
+        "Visible water vapor gas alone",
+        "Only dry air under high pressure",
+        "Large raindrops resting without air movement"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why can cooling moist air lead to cloud formation?",
+      "choices": [
+        "Cooling adds new water molecules to otherwise dry air",
+        "Cooling always increases the air's capacity to hold water vapor",
+        "Cooling can bring air to saturation, allowing condensation",
+        "Cooling guarantees precipitation before droplets form"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What generally causes wind?",
+      "choices": [
+        "Differences in cloud color alone",
+        "Equal atmospheric pressure at every location",
+        "Changes in ocean salinity alone",
+        "Differences in atmospheric pressure"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why can replacing soil with pavement increase storm runoff?",
+      "choices": [
+        "Pavement makes rain fall faster",
+        "Less water can soak into the ground",
+        "Pavement eliminates gravity",
+        "More water is stored inside plant roots"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why can mountains cause wetter conditions on one side?",
+      "choices": [
+        "Air descending a mountain always cools",
+        "Mountains create water from rock",
+        "Rising moist air cools and can produce precipitation",
+        "Rain can fall only above high elevations"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "How are weather and climate related?",
+      "choices": [
+        "Climate summarizes patterns of weather over long periods",
+        "Climate refers only to a single day's temperature",
+        "They describe exactly the same time scale",
+        "Weather is a measure of climate in one instant only"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A wet sidewalk dries on a sunny day. Which process chiefly removes its liquid water?",
+      "choices": [
+        "Condensation",
+        "Infiltration into clouds",
+        "Evaporation",
+        "Freezing"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A forecast gives a 40% chance of rain for a location and period. What does this express?",
+      "choices": [
+        "A prediction that rainfall will be 40 millimeters",
+        "A guarantee that rain will last 40% of the day",
+        "A claim that 40% of every raindrop will evaporate",
+        "A probability of measurable precipitation"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Two nearby fields receive equal rain. One is vegetated; the other has compacted bare soil. Which outcome is more likely?",
+      "choices": [
+        "The compacted field has more runoff and erosion",
+        "Both must have identical runoff",
+        "The vegetated field cannot absorb water",
+        "The bare field produces no runoff"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Water evaporates from an ocean, condenses, and falls on land. What does this sequence demonstrate?",
+      "choices": [
+        "Water is permanently used up during evaporation",
+        "Water moves between Earth's connected reservoirs",
+        "Only fresh water can evaporate",
+        "Clouds are separate from the water cycle"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A student compares rainfall at two locations. Which method provides the fairest comparison?",
+      "choices": [
+        "Use comparable rain gauges over the same time period",
+        "Place one gauge under a roof",
+        "Record only the wetter days at each site",
+        "Use different collection periods at each site"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}

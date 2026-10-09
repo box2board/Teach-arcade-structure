@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101820">
+  <title>Classroom Escape Room | Teach Arcade</title>
+  <meta name="description" content="A classroom escape room from Teach Arcade." id="roomDescription">
+  <link rel="canonical" href="https://teacharcade.com/escape/play.html">
+  <link rel="stylesheet" href="/escape/css/base.css">
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="/escape/" aria-label="Teach Arcade Escape Rooms">TEACH <b>ARCADE</b><span> / ESCAPE ROOMS</span></a><button id="restartBtn" class="restart">↻ Restart</button></header>
+  <main class="layout">
+    <section class="game">
+      <div class="game-backdrop" aria-hidden="true"></div>
+      <div class="game-content">
+        <div class="game-heading"><span class="eyebrow">CLASSROOM FIELD MISSION</span><h1 id="roomTitle">Loading mission…</h1><p id="roomMeta" class="room-meta"></p></div>
+        <div class="progress-wrap"><div class="progress-label"><span id="progressText">Loading mission…</span><span>PROGRESS</span></div><div class="progress-track" role="progressbar" aria-label="Mission progress"><span id="progressBar"></span></div></div>
+        <article class="scene-card" aria-live="polite"><div class="scene-head"><span id="sceneKicker" class="scene-kicker"></span><h2 id="sceneTitle"></h2></div><div id="sceneRoot"></div></article>
+      </div>
+    </section>
+    <aside class="sidebar" aria-label="Mission notes">
+      <section class="side-panel clue-panel"><div class="side-title"><span class="side-icon">▣</span><h2>Evidence board</h2></div><p id="lockerNote" class="locker-note">Recovered clues and reasoning stay here as you investigate.</p><ul id="clueList" class="clue-list"><li class="quiet">No clues recovered yet.</li></ul><div id="reasoningList" class="reasoning-list"><p class="quiet">Your reasoning notes will appear here.</p></div></section>
+      <section class="side-panel journal-panel"><div class="side-title"><span class="side-icon">≡</span><h2>Field notes</h2></div><div id="journalFeed" class="journal-feed"><p class="quiet">Your discoveries appear here.</p></div></section>
+      <p class="save-note">Progress saves automatically on this device.</p>
+    </aside>
+  </main>
+  <script src="/escape/js/app.js"></script>
+</body>
+</html>

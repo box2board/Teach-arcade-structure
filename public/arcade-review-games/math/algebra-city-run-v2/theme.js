@@ -1,0 +1,1 @@
+window.TA_ALGEBRA_THEME={name:'Algebra City Run',skyTop:'#101923',skyBottom:'#2b1d1a',ground:'#25282d',groundTop:'#f0a24a',hazard:'#e6543d',question:'#f4c15d',checkpoint:'#a9d46e',finish:'#f0a24a',player:'#e8edf2',far:'#18212a',near:'#27313a',labels:{hazard:'HIGH VOLTAGE',collectible:'TOKENS',goal:'Algebra Tower'}};

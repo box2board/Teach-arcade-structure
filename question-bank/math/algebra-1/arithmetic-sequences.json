@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--algebra-1--arithmetic-sequences",
+  "title": "Arithmetic Sequences",
+  "subject": "Math",
+  "category": "Algebra I",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What defines an arithmetic sequence?",
+      "choices": [
+        "A constant difference between consecutive terms",
+        "A constant ratio between consecutive terms",
+        "Every term being positive",
+        "Every term being a square"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is the common difference in 5, 9, 13, 17, …?",
+      "choices": [
+        "5",
+        "8",
+        "9",
+        "4"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is the next term in 20, 17, 14, 11, …?",
+      "choices": [
+        "7",
+        "6",
+        "8",
+        "14"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which sequence is arithmetic?",
+      "choices": [
+        "2, 4, 8, 16",
+        "2, 5, 8, 11",
+        "1, 4, 9, 16",
+        "1, 1, 2, 3"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is the first term of the sequence given by aₙ = 3n + 2 for n = 1, 2, 3, …?",
+      "choices": [
+        "5",
+        "2",
+        "3",
+        "8"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which formula gives the nth term of an arithmetic sequence with first term a₁ and difference d?",
+      "choices": [
+        "aₙ = a₁dⁿ",
+        "aₙ = nd − a₁",
+        "aₙ = a₁ + nd²",
+        "aₙ = a₁ + (n − 1)d"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Can an arithmetic sequence have a negative common difference?",
+      "choices": [
+        "No; every sequence must increase",
+        "Only if all terms are negative",
+        "Yes; its terms decrease by a constant amount",
+        "Only if its first term is zero"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why does the nth-term formula use n − 1 differences?",
+      "choices": [
+        "The first term is never counted",
+        "There are n − 1 steps from the first term to the nth term",
+        "Every arithmetic sequence begins at index zero",
+        "The final difference must be omitted"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What is the tenth term of 7, 10, 13, …?",
+      "choices": [
+        "34",
+        "37",
+        "30",
+        "27"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "A sequence has first term 12 and difference −2. What is its sixth term?",
+      "choices": [
+        "0",
+        "10",
+        "−2",
+        "2"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Which recursive rule generates 4, 9, 14, 19, … after a₁ = 4?",
+      "choices": [
+        "aₙ = 5aₙ₋₁",
+        "aₙ = aₙ₋₁ + 4",
+        "aₙ = aₙ₋₁ + 5",
+        "aₙ = aₙ₋₁ − 5"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "An arithmetic sequence has a₁ = 3 and a₄ = 18. What is its common difference?",
+      "choices": [
+        "6",
+        "5",
+        "15",
+        "4.5"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "How is an arithmetic sequence related to a linear function?",
+      "choices": [
+        "Its values lie on a line at integer indices",
+        "Its values always lie on a circle",
+        "It has a constant percentage growth rate",
+        "It cannot be modeled with a formula"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Which formula generates 6, 10, 14, 18, … for n starting at 1?",
+      "choices": [
+        "aₙ = 6n + 4",
+        "aₙ = 4n + 6",
+        "aₙ = 2n + 4",
+        "aₙ = 4n + 2"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A seating plan has 8 chairs in row 1 and 3 more chairs in each successive row. How many chairs are in row 7?",
+      "choices": [
+        "29",
+        "21",
+        "26",
+        "24"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "In 4, 9, 14, 19, …, which term is 49?",
+      "choices": [
+        "The ninth term",
+        "The tenth term",
+        "The eleventh term",
+        "The twelfth term"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "An arithmetic sequence has third term 11 and fifth term 19. What is its first term?",
+      "choices": [
+        "3",
+        "4",
+        "7",
+        "−1"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A sequence begins at 50 and decreases by 4. What is the first term below zero?",
+      "choices": [
+        "The thirteenth term",
+        "The twelfth term",
+        "The fifteenth term",
+        "The fourteenth term"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Two arithmetic sequences start at 2 and 20 and have differences 5 and 2 respectively. At which term index do their values first match?",
+      "choices": [
+        "6",
+        "8",
+        "7",
+        "9"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A student says 3, 6, 12, 24 is arithmetic because each term increases. Which correction is valid?",
+      "choices": [
+        "The sequence is arithmetic because all terms are even after the first",
+        "The differences vary; the sequence has a constant ratio instead",
+        "The common difference is 3",
+        "The sequence is constant because its rule does not change"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}

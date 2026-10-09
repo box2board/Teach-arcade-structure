@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--life-science-biology--cell-division-mitosis-and-meiosis",
+  "title": "Cell Division: Mitosis and Meiosis",
+  "subject": "Science",
+  "category": "Life Science & Biology",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which process usually preserves chromosome number while producing two daughter nuclei?",
+      "choices": [
+        "Meiosis I",
+        "Mitosis",
+        "Fertilization",
+        "Crossing over"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "When is DNA replicated during the cell cycle?",
+      "choices": [
+        "Metaphase",
+        "Anaphase",
+        "Cytokinesis",
+        "S phase of interphase"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What are sister chromatids?",
+      "choices": [
+        "Replicated copies of a chromosome joined before separation",
+        "Two unrelated genes",
+        "Chromosomes from different species",
+        "Separate nuclei in one tissue"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is cytokinesis?",
+      "choices": [
+        "DNA replication",
+        "Pairing of homologs",
+        "Division of the cytoplasm",
+        "Formation of a fertilized egg"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which process produces haploid cells from a diploid starting cell?",
+      "choices": [
+        "Ordinary mitosis",
+        "Replication alone",
+        "Meiosis",
+        "Fertilization"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What are homologous chromosomes?",
+      "choices": [
+        "A pair carrying the same kinds of genes at corresponding locations",
+        "Two copies joined at one centromere",
+        "Every chromosome in a gamete",
+        "Chromosomes with no genes"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "When does meiotic crossing over usually occur?",
+      "choices": [
+        "Metaphase II",
+        "Anaphase II",
+        "Telophase II",
+        "Prophase I"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why is DNA copied before chromosome separation?",
+      "choices": [
+        "Chromosomes must become different genes",
+        "Each new cell needs an appropriate genetic set",
+        "DNA supplies all cellular energy",
+        "Replication halves chromosome number"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How does mitosis support growth in multicellular organisms?",
+      "choices": [
+        "It increases cell number",
+        "It makes all body cells gametes",
+        "It produces new species in tissues",
+        "It removes inherited chromosomes"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why does meiosis help maintain chromosome number across sexual generations?",
+      "choices": [
+        "It doubles every gamete's chromosome number",
+        "It permanently removes paternal chromosomes",
+        "It halves chromosome number before fertilization restores it",
+        "It prevents fertilization"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What separates during anaphase I?",
+      "choices": [
+        "Sister chromatids in every chromosome",
+        "Homologous chromosomes",
+        "Individual DNA strands",
+        "Genes detached from chromosomes"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "How does crossing over increase variation?",
+      "choices": [
+        "Every chromosome number doubles",
+        "All recessive alleles disappear",
+        "All gametes become identical",
+        "Nonsister chromatids of homologs exchange DNA"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What results from independent assortment?",
+      "choices": [
+        "All maternal homologs always enter one gamete",
+        "Every gamete gets both copies of each homolog",
+        "Genes disappear at metaphase",
+        "Gametes can receive different combinations of maternal and paternal homologs"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "How do normal mitotic and meiotic products differ?",
+      "choices": [
+        "Mitosis reduces chromosome number; meiosis preserves it",
+        "Mitosis generally preserves chromosome number; meiosis reduces it",
+        "Both produce diploid gametes",
+        "Both require two divisions per replication"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why are cell-cycle checkpoints useful?",
+      "choices": [
+        "They eliminate every possible mutation",
+        "They keep every cell dividing continuously",
+        "They can delay division when DNA or conditions are unsuitable",
+        "They replace chromosome separation"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A body cell has 12 chromosomes. How many should each daughter have after normal mitosis?",
+      "choices": [
+        "12",
+        "6",
+        "24",
+        "3"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A species has a diploid number of 16. What is its normal gamete chromosome number?",
+      "choices": [
+        "16",
+        "8",
+        "32",
+        "4"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Chromosomes fail to separate normally during division. What may result?",
+      "choices": [
+        "Daughter cells receive unequal chromosome numbers",
+        "Every product becomes an identical gamete",
+        "DNA cannot have been replicated",
+        "All chromosomes become proteins"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Homologous pairs are lined up together at the cell's center. Which stage fits?",
+      "choices": [
+        "Mitotic metaphase",
+        "Telophase II",
+        "Metaphase I",
+        "Interphase before replication"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Four haploid products form after one replication and two divisions. Which process occurred?",
+      "choices": [
+        "Mitosis alone",
+        "Fertilization",
+        "Replication without division",
+        "Meiosis"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

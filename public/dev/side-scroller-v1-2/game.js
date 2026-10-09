@@ -1,0 +1,1 @@
+window.TA_GAME={id:'v12-mechanics-playground',physicsPreset:'earth',level:window.TA_V12_TEST_LEVEL,questions:[],theme:window.TA_V12_TEST_THEME};

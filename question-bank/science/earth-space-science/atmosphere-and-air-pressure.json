@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--earth-space-science--atmosphere-and-air-pressure",
+  "title": "Atmosphere and Air Pressure",
+  "subject": "Science",
+  "category": "Earth & Space Science",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which gas makes up the largest fraction of Earth's dry atmosphere?",
+      "choices": [
+        "Oxygen",
+        "Nitrogen",
+        "Carbon dioxide",
+        "Argon"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is atmospheric pressure primarily caused by?",
+      "choices": [
+        "The temperature of air alone, regardless of its amount",
+        "Only the pressure exerted by falling rain",
+        "The weight of overlying air",
+        "The mass of water vapor without the other gases"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which gas makes up about one-fifth of Earth's dry atmosphere?",
+      "choices": [
+        "Oxygen",
+        "Nitrogen",
+        "Carbon dioxide",
+        "Argon"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "In which atmospheric layer does most weather occur?",
+      "choices": [
+        "Troposphere",
+        "Stratosphere",
+        "Mesosphere",
+        "Thermosphere"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which atmospheric layer contains most of the ozone layer?",
+      "choices": [
+        "Troposphere",
+        "Mesosphere",
+        "Stratosphere",
+        "Exosphere"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is a pressure gradient?",
+      "choices": [
+        "A change in temperature over distance only",
+        "A change in pressure over distance",
+        "The pressure recorded at one point with no comparison",
+        "The humidity recorded over one hour"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What does humidity describe?",
+      "choices": [
+        "Only liquid droplets suspended in clouds",
+        "Only the pressure of the atmosphere",
+        "The concentration of airborne dust",
+        "Water vapor in the air"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why does air pressure generally decrease with altitude?",
+      "choices": [
+        "The mass of each air molecule decreases with elevation",
+        "Gravity becomes stronger enough to remove pressure",
+        "There is less overlying air",
+        "High-altitude air contains no molecules"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why can warmed air rise in surrounding cooler air?",
+      "choices": [
+        "Warming increases density under the same outside pressure",
+        "Warm air rises because its particles lose all mass",
+        "Temperature differences have no effect on air density",
+        "It expands and becomes less dense under suitable conditions"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What drives horizontal air motion from pressure differences?",
+      "choices": [
+        "The transfer of heat without a pressure difference",
+        "A pressure-gradient force",
+        "Only the attraction of air toward mountains",
+        "The weight of clouds as a separate horizontal force"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How does Earth's rotation affect large-scale moving air?",
+      "choices": [
+        "It deflects its path through the Coriolis effect",
+        "It removes all pressure gradients",
+        "It forces all winds to travel vertically",
+        "It makes global air motion independent of pressure differences"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why can rising moist air form clouds?",
+      "choices": [
+        "Water vapor remains gaseous at every temperature",
+        "Expansion warms air enough to form liquid droplets",
+        "Expansion cools the air, allowing water vapor to condense",
+        "Rising air always loses all its water vapor"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why do high-pressure systems often bring clearer weather?",
+      "choices": [
+        "Descending air tends to warm and inhibit cloud formation",
+        "High pressure guarantees heavy rain everywhere",
+        "Descending air always cools by expansion",
+        "Clouds can form only when pressure is high"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why is the ozone layer important?",
+      "choices": [
+        "It blocks all visible sunlight from the surface",
+        "It supplies most atmospheric oxygen through photosynthesis",
+        "It determines all surface wind directions",
+        "It absorbs much harmful ultraviolet radiation"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why does air exert pressure on all sides of an object?",
+      "choices": [
+        "Pressure acts only downward on exposed surfaces",
+        "Moving gas molecules collide with surfaces in many directions",
+        "Air molecules move in only one direction",
+        "Pressure exists only in sealed containers"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A climber measures lower pressure on a mountain than at sea level. Which explanation best fits?",
+      "choices": [
+        "The mountain creates new gas molecules",
+        "Less air lies above the higher location",
+        "The sea-level air has no weight",
+        "Higher altitude always means stronger gravity"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Two nearby areas differ in pressure. Ignoring rotation and friction, which way is air accelerated?",
+      "choices": [
+        "From lower toward higher pressure",
+        "Parallel to equal-pressure lines with no acceleration",
+        "Only toward warmer ground regardless of pressure",
+        "From higher toward lower pressure"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Warm air over land rises while cooler sea air moves inland at the surface. What circulation is described?",
+      "choices": [
+        "A daytime sea breeze",
+        "A nighttime land breeze",
+        "A jet stream above the poles",
+        "An ocean tide"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A sealed flexible balloon expands as outside pressure decreases, with temperature unchanged. What explains the expansion?",
+      "choices": [
+        "Its gas mass must increase immediately",
+        "Its temperature must rise despite the stated condition",
+        "The gas can occupy more volume under lower external pressure",
+        "Its internal pressure can never respond to external pressure"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Two air samples have the same temperature and volume, but one contains more gas particles. Which generally has greater pressure?",
+      "choices": [
+        "The sample with fewer particles",
+        "Both must have zero pressure",
+        "The darker-colored sample",
+        "The sample with more particles"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--statistics-probability--normal-distributions",
+  "title": "Normal Distributions",
+  "subject": "Math",
+  "category": "Statistics & Probability",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What shape characterizes a normal distribution?",
+      "choices": [
+        "A curve with two unequal peaks",
+        "A flat rectangle",
+        "A symmetric bell-shaped curve",
+        "A curve that always rises to the right"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Where are the mean and median in a normal distribution?",
+      "choices": [
+        "At opposite ends",
+        "At the same central value",
+        "Always at zero",
+        "Always one standard deviation apart"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is the total area under a normal probability-density curve?",
+      "choices": [
+        "1",
+        "0",
+        "100",
+        "The mean"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What does an area under part of a normal curve represent?",
+      "choices": [
+        "The maximum observed value",
+        "The number of variables",
+        "The slope of a regression line",
+        "A probability over an interval"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Under the empirical rule, approximately what percentage of normal values lies within one standard deviation of the mean?",
+      "choices": [
+        "50%",
+        "95%",
+        "68%",
+        "99.7%"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Under the empirical rule, approximately what percentage lies within two standard deviations of the mean?",
+      "choices": [
+        "68%",
+        "95%",
+        "50%",
+        "99.7%"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Under the empirical rule, approximately what percentage lies within three standard deviations of the mean?",
+      "choices": [
+        "99.7%",
+        "95%",
+        "68%",
+        "100%"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why is half the area of a normal curve below its mean?",
+      "choices": [
+        "The mean must be zero",
+        "All observations equal the mean",
+        "The total area is 2",
+        "The curve is symmetric about the mean"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "For a normal distribution with mean 50 and standard deviation 5, which interval is within one standard deviation of the mean?",
+      "choices": [
+        "40 to 60",
+        "50 to 55",
+        "45 to 55",
+        "0 to 50"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What happens to a normal curve when standard deviation increases while mean stays fixed?",
+      "choices": [
+        "It becomes narrower and taller",
+        "It becomes wider and flatter",
+        "Its center moves to the right",
+        "Its total area increases"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why should the empirical rule not automatically be applied to strongly skewed data?",
+      "choices": [
+        "It relies on an approximately normal shape",
+        "It applies only to whole numbers",
+        "Skewed data have no mean",
+        "Skewed data have zero variation"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "For normal data with mean 100 and standard deviation 10, approximately 95% of values fall in which interval?",
+      "choices": [
+        "90 to 110",
+        "70 to 130",
+        "100 to 120",
+        "80 to 120"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "If about 68% of normal values lie within one standard deviation, approximately what percentage lies outside that interval?",
+      "choices": [
+        "68%",
+        "16%",
+        "32%",
+        "95%"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Under the empirical rule, approximately what percentage of a normal distribution is above two standard deviations from the mean?",
+      "choices": [
+        "5%",
+        "2.5%",
+        "47.5%",
+        "95%"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What happens to a normal curve if its mean increases and its standard deviation remains fixed?",
+      "choices": [
+        "It shifts right without changing spread",
+        "It becomes wider",
+        "It becomes narrower",
+        "Its total area doubles"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A normally distributed test has mean 70 and standard deviation 8. Using the empirical rule, approximately 68% of scores fall in which interval?",
+      "choices": [
+        "54 to 86",
+        "46 to 94",
+        "70 to 86",
+        "62 to 78"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Under the empirical rule, approximately what percentage of normal values lies between the mean and one standard deviation above it?",
+      "choices": [
+        "68%",
+        "16%",
+        "34%",
+        "50%"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "For normal data with mean 30 and standard deviation 4, a value of 42 is how many standard deviations above the mean?",
+      "choices": [
+        "2",
+        "3",
+        "4",
+        "1"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Why is a normal curve's height at one exact value not itself a probability?",
+      "choices": [
+        "Probability is represented by area over an interval",
+        "Probability equals height only in the tails",
+        "All curve heights exceed 1",
+        "The curve has no density values"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A normal model with mean 10 and standard deviation 2 is used for heights. Which finding suggests the model should be reconsidered?",
+      "choices": [
+        "Some observations are above 10",
+        "The sample mean is close to 10",
+        "The standard deviation is positive",
+        "The observed histogram is strongly right-skewed"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

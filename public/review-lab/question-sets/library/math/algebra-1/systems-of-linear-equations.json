@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--algebra-1--systems-of-linear-equations",
+  "title": "Systems of Linear Equations",
+  "subject": "Math",
+  "category": "Algebra I",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a solution of a two-variable linear system?",
+      "choices": [
+        "Any pair satisfying either equation",
+        "Only the x-intercept of one line",
+        "The sum of the two slopes",
+        "An ordered pair satisfying both equations"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which pair solves x + y = 7 and x − y = 1?",
+      "choices": [
+        "(4, 3)",
+        "(3, 4)",
+        "(7, 1)",
+        "(1, 6)"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What graphical feature represents a unique solution of two lines?",
+      "choices": [
+        "Their separate y-intercepts",
+        "Their combined slopes",
+        "The length of either line",
+        "Their intersection point"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What does substitution involve when one equation gives y in terms of x?",
+      "choices": [
+        "Replace both variables with zero automatically",
+        "Replace y in the other equation with that expression",
+        "Add the slopes without using the equations",
+        "Change the first equation's constant only"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What does elimination aim to do?",
+      "choices": [
+        "Remove every constant before solving",
+        "Divide one equation by the other",
+        "Cancel one variable by combining equations",
+        "Replace both variables with the same number"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which pair solves y = x + 2 and y = 2x?",
+      "choices": [
+        "(4, 2)",
+        "(0, 2)",
+        "(2, 2)",
+        "(2, 4)"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Two distinct parallel lines represent a system with how many solutions?",
+      "choices": [
+        "One",
+        "Two",
+        "None",
+        "Infinitely many"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why should a proposed solution be checked in both equations?",
+      "choices": [
+        "It must satisfy the entire system",
+        "Either equation alone always determines the system's solution",
+        "The second equation is only a suggestion",
+        "Every ordered pair fits at least one equation"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What kind of system has infinitely many solutions?",
+      "choices": [
+        "Two distinct parallel lines",
+        "Two equations representing the same line",
+        "Two lines with different slopes",
+        "Two perpendicular lines"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "For x + y = 9 and x − y = 3, what happens when the equations are added?",
+      "choices": [
+        "The x terms cancel",
+        "Both variables cancel",
+        "The y terms cancel",
+        "The constants cancel"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Which operation can eliminate x from x + y = 5 and 2x − y = 4?",
+      "choices": [
+        "Add the original equations directly",
+        "Multiply the first equation by 2, then subtract the second",
+        "Divide both equations by y",
+        "Subtract 5 from only the second equation"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What does the equation 0 = 6 indicate after valid elimination?",
+      "choices": [
+        "The solution is (0, 6)",
+        "Every ordered pair is a solution",
+        "x must equal 6",
+        "The system has no solution"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What does 0 = 0 suggest when one valid linear equation is a multiple of the other?",
+      "choices": [
+        "The equations describe the same line",
+        "The equations are distinct parallel lines",
+        "The only solution is (0, 0)",
+        "Neither equation has any solution"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Which pair solves 2x + y = 8 and y = 2?",
+      "choices": [
+        "(3, 2)",
+        "(2, 3)",
+        "(4, 0)",
+        "(6, 2)"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why does multiplying an entire equation by a nonzero number preserve its solutions?",
+      "choices": [
+        "Only the variable term changes",
+        "The constant becomes zero",
+        "Both sides are scaled equally",
+        "The equation gains a new variable"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Adult tickets cost $8 and student tickets $5. Five tickets cost $34. How many adult tickets were bought?",
+      "choices": [
+        "2",
+        "3",
+        "4",
+        "1"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Two numbers sum to 20 and differ by 4. What is the larger number?",
+      "choices": [
+        "8",
+        "16",
+        "10",
+        "12"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Plan A costs 10 + 2h dollars and Plan B costs 4 + 4h dollars. At how many hours h are costs equal?",
+      "choices": [
+        "2",
+        "3",
+        "6",
+        "7"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A system's equations simplify to y = 2x + 1 and y = 2x − 4. What should a student conclude?",
+      "choices": [
+        "There is no common ordered pair",
+        "The solution is (0, 1)",
+        "There are infinitely many solutions",
+        "The lines intersect at (1, 2)"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A mixture contains 10 coins, all quarters and dimes, worth $1.90. How many quarters are there?",
+      "choices": [
+        "4",
+        "5",
+        "6",
+        "8"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ]
+}

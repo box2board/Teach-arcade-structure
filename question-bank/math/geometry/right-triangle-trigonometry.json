@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--geometry--right-triangle-trigonometry",
+  "title": "Right Triangle Trigonometry",
+  "subject": "Math",
+  "category": "Geometry",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "For an acute angle in a right triangle, what is sine?",
+      "choices": [
+        "Adjacent leg divided by hypotenuse",
+        "Opposite leg divided by adjacent leg",
+        "Hypotenuse divided by opposite leg",
+        "Opposite leg divided by hypotenuse"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "For an acute angle in a right triangle, what is cosine?",
+      "choices": [
+        "Opposite leg divided by hypotenuse",
+        "Adjacent leg divided by opposite leg",
+        "Adjacent leg divided by hypotenuse",
+        "Hypotenuse divided by adjacent leg"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "For an acute angle in a right triangle, what is tangent?",
+      "choices": [
+        "Adjacent leg divided by hypotenuse",
+        "Opposite leg divided by adjacent leg",
+        "Hypotenuse divided by opposite leg",
+        "Adjacent leg divided by opposite leg"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which side of a right triangle is the hypotenuse?",
+      "choices": [
+        "The side opposite the right angle",
+        "The side opposite every acute angle",
+        "The shortest side",
+        "Either side that forms the right angle"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "For an acute angle whose opposite leg is 3 and hypotenuse is 5, what is its sine?",
+      "choices": [
+        "4/5",
+        "3/4",
+        "5/3",
+        "3/5"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "For an acute angle whose adjacent leg is 12 and hypotenuse is 13, what is its cosine?",
+      "choices": [
+        "5/13",
+        "12/5",
+        "12/13",
+        "13/12"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is sin 30°?",
+      "choices": [
+        "√3/2",
+        "1/2",
+        "1",
+        "0"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why can the same leg be opposite one acute angle and adjacent to the other?",
+      "choices": [
+        "The labels depend on the reference angle",
+        "The hypotenuse changes length",
+        "The triangle changes shape",
+        "Opposite and adjacent always mean the same side"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Which ratio is useful when the opposite and adjacent legs are known?",
+      "choices": [
+        "Sine",
+        "Cosine",
+        "Hypotenuse divided by perimeter",
+        "Tangent"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "A right triangle has opposite leg 5 and adjacent leg 12 relative to angle A. What is tan A?",
+      "choices": [
+        "12/5",
+        "5/13",
+        "5/12",
+        "12/13"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "A ladder makes a 30° angle with the ground and is 10 meters long. How high on a wall does it reach?",
+      "choices": [
+        "10 meters",
+        "5 meters",
+        "5√3 meters",
+        "20 meters"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why is sin A less than 1 for an acute angle A in a right triangle?",
+      "choices": [
+        "The opposite leg is shorter than the hypotenuse",
+        "The adjacent leg is always shorter than the opposite leg",
+        "All acute angles have sine 1/2",
+        "Sine is measured in degrees"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Which equation finds the opposite leg o when the hypotenuse is 20 and the acute angle is 40°?",
+      "choices": [
+        "o = 20 cos 40°",
+        "o = 20 / sin 40°",
+        "o = 20 tan 40°",
+        "o = 20 sin 40°"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What is tan 45°?",
+      "choices": [
+        "1/2",
+        "√3",
+        "1",
+        "0"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Which statement relates the two acute angles A and B of a right triangle?",
+      "choices": [
+        "sin A = sin B for every right triangle",
+        "sin A = cos B",
+        "tan A = tan B for every right triangle",
+        "A + B = 180°"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "An observer stands 15 meters from a building. The angle of elevation to the top is 45°. Ignoring eye height, how tall is the building?",
+      "choices": [
+        "15 meters",
+        "7.5 meters",
+        "15√2 meters",
+        "30 meters"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A ladder is 13 feet long and its base is 5 feet from a wall. For the angle it makes with the ground, which ratio gives cosine?",
+      "choices": [
+        "12/13",
+        "5/12",
+        "13/5",
+        "5/13"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A right triangle has an acute angle A and tan A = 3/4. Which value is cos A?",
+      "choices": [
+        "3/5",
+        "4/3",
+        "4/5",
+        "3/4"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A ramp rises 1 meter over a horizontal distance of 8 meters. Which equation gives its angle θ with the ground?",
+      "choices": [
+        "sin θ = 1/8",
+        "tan θ = 1/8",
+        "cos θ = 1/8",
+        "tan θ = 8"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A student uses cosine to find height above the ground from a 60° ground angle and a 12-meter hypotenuse. Which correction is needed?",
+      "choices": [
+        "Use 12 sin 60° because height is opposite the angle",
+        "Use 12 cos 60° because height is the hypotenuse",
+        "Divide 12 by tan 60° because height is adjacent",
+        "Subtract 60 from 12 because the angle is in degrees"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}

@@ -154,6 +154,37 @@
     "icon": ""
   },
   {
+    "id": "trivia-hack",
+    "title": "Trivia Hack | Brain Arcade | Teach Arcade",
+    "contentType": "game",
+    "canonicalUrl": "/brain-arcade/trivia-hack/",
+    "subjects": [],
+    "topics": [
+      "general-trivia"
+    ],
+    "keywords": [
+      "trivia",
+      "brain",
+      "arcade",
+      "game",
+      "history",
+      "science",
+      "geography",
+      "sports",
+      "art",
+      "music",
+      "entertainment",
+      "multiple-choice",
+      "power-ups",
+      "quick-play",
+      "categories"
+    ],
+    "blurb": "Play Trivia Hack in Brain Arcade. Answer quick questions across six categories, collect power-ups, and complete every category hack.",
+    "duration": "5–10 minutes",
+    "deviceNotes": "Mouse, touch, and keyboard controls",
+    "icon": "⚡"
+  },
+  {
     "id": "undertext-rifts-mood-tone.html",
     "title": "Mood & Tone: Undertext Flip · ELA Arcade Game | Teach Arcade",
     "contentType": "game",
@@ -766,7 +797,7 @@
   },
   {
     "id": "constitution-courthouse-run.html",
-    "title": "Constitution Courthouse Run · Quest Arcade Puzzle Adventure | Teach Arcade",
+    "title": "Constitution Courthouse Run · U.S. Constitution Puzzle Review | Teach Arcade",
     "contentType": "game",
     "canonicalUrl": "/arcade-review-games/social-studies/constitution-courthouse-run.html",
     "subjects": [
@@ -779,20 +810,19 @@
     "keywords": [
       "constitution",
       "courthouse",
-      "quest",
-      "arcade",
+      "bill of rights",
+      "branches of government",
+      "checks and balances",
+      "quest arcade",
       "top-down",
       "puzzle",
-      "adventure",
-      "blocks",
-      "switches",
+      "review",
       "keys",
-      "signals",
-      "review"
+      "tools"
     ],
-    "blurb": "Explore three connected Quest Arcade rooms. Push blocks, earn a key with one randomized Constitution question, unlock gates, and solve the final signal sequence. No time limit.",
-    "duration": "",
-    "deviceNotes": "",
+    "blurb": "Explore a courthouse puzzle adventure with Constitution review rewards. Easy has six questions; Medium and Hard have twelve. Push blocks, earn keys and tools, solve room puzzles, save progress, and download results. No time limit.",
+    "duration": "Untimed",
+    "deviceNotes": "Keyboard and touch controls",
     "icon": ""
   },
   {
@@ -1754,6 +1784,34 @@
       "faq"
     ],
     "blurb": "Jigsaw Puzzle is joining Brain Arcade soon—an accessible, classroom-friendly puzzle experience that builds visual reasoning, spatial awareness, and calm focus.",
+    "duration": "",
+    "deviceNotes": "",
+    "icon": ""
+  },
+  {
+    "id": "knotwork",
+    "title": "Knotwork | Free Untangle Puzzle Game | Teach Arcade",
+    "contentType": "game",
+    "canonicalUrl": "/brain-arcade/knotwork/",
+    "subjects": [],
+    "topics": [],
+    "keywords": [
+      "knotwork",
+      "free",
+      "untangle",
+      "puzzle",
+      "game",
+      "teach",
+      "arcade",
+      "play",
+      "visual",
+      "drag",
+      "knots",
+      "crossing",
+      "spatial",
+      "no trivia"
+    ],
+    "blurb": "Play Knotwork, a free visual puzzle game. Drag the knots until every crossing disappears, then take on a more tangled level.",
     "duration": "",
     "deviceNotes": "",
     "icon": ""

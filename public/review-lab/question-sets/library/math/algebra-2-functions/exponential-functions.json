@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--algebra-2-functions--exponential-functions",
+  "title": "Exponential Functions",
+  "subject": "Math",
+  "category": "Algebra II & Functions",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which equation represents exponential growth?",
+      "choices": [
+        "y = 3x + 2",
+        "y = x²",
+        "y = 3(2ˣ)",
+        "y = 3/x"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "In y = 5(2ˣ), what is the initial value at x = 0?",
+      "choices": [
+        "5",
+        "2",
+        "10",
+        "0"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is the growth factor in y = 7(1.2ˣ)?",
+      "choices": [
+        "7",
+        "1.2",
+        "0.2",
+        "8.2"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What percent growth corresponds to a factor of 1.08?",
+      "choices": [
+        "108%",
+        "0.08%",
+        "8%",
+        "80%"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which factor represents exponential decay?",
+      "choices": [
+        "1.15",
+        "0.85",
+        "2",
+        "1.85"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is 4(2³)?",
+      "choices": [
+        "24",
+        "16",
+        "12",
+        "32"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "In a( bˣ ) with a > 0 and 0 < b < 1, what happens as x increases?",
+      "choices": [
+        "The output decreases",
+        "The output increases",
+        "The output stays constant",
+        "The output alternates signs"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "How does exponential growth differ from linear growth at equal input intervals?",
+      "choices": [
+        "Exponential growth uses a constant ratio; linear growth uses a constant difference",
+        "Both require a constant difference",
+        "Exponential growth adds the same amount each interval",
+        "Linear growth multiplies by the same factor each interval"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "A value grows by 10% each period. Which factor should be used?",
+      "choices": [
+        "0.10",
+        "0.90",
+        "1.10",
+        "10"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "A value loses 20% each period. Which factor should be used?",
+      "choices": [
+        "1.20",
+        "0.80",
+        "0.20",
+        "−0.20"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why is 2ˣ not the same as x²?",
+      "choices": [
+        "Both give the same output for every x",
+        "The two expressions differ only by notation",
+        "x² means 2 multiplied by x",
+        "The variable is an exponent in 2ˣ and a base in x²"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "A table has outputs 3, 6, 12, 24 at equally spaced inputs. What pattern supports exponential modeling?",
+      "choices": [
+        "Each output increases by 3",
+        "Each output is twice the preceding output",
+        "Each output decreases by half",
+        "The outputs have constant differences"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What is the real range of y = 2ˣ?",
+      "choices": [
+        "y > 0",
+        "All real numbers",
+        "y ≥ 0 including zero",
+        "y < 0"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What is the real domain of y = 2ˣ?",
+      "choices": [
+        "Only positive integers",
+        "Only nonnegative integers",
+        "All real numbers",
+        "All real numbers except zero"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "For y = 100(0.9ˣ), what is the value at x = 1?",
+      "choices": [
+        "10",
+        "110",
+        "900",
+        "90"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A population starts at 200 and doubles every year. What is its modeled size after three years?",
+      "choices": [
+        "1600",
+        "600",
+        "800",
+        "1200"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A $500 item loses 10% of its current value yearly. What is its modeled value after two years?",
+      "choices": [
+        "$400",
+        "$450",
+        "$550",
+        "$405"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A culture starts with 40 cells and triples each hour. Which model gives its count after t hours?",
+      "choices": [
+        "N = 40 + 3t",
+        "N = 40(3ᵗ)",
+        "N = 120t",
+        "N = 3(40ᵗ)"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A student models 5% growth with 0.05ˣ times the initial value. What correction is needed?",
+      "choices": [
+        "Use the growth factor 0.95",
+        "Add 5 to the exponent",
+        "Use the growth factor 1.05",
+        "Change the initial value to 5"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Two populations start equally. One grows 10% per year and the other gains a fixed 10 individuals per year. Which statement is justified?",
+      "choices": [
+        "Both must have identical values every year",
+        "Both are necessarily exponential",
+        "Both are necessarily linear",
+        "Their models have different growth rules"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

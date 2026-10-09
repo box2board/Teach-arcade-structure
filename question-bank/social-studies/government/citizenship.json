@@ -1,0 +1,255 @@
+{
+  "schemaVersion": 1,
+  "id": "government--citizenship",
+  "title": "Citizenship",
+  "subject": "Social Studies",
+  "category": "Government & Civics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What does citizenship describe?",
+      "choices": [
+        "Membership in a private business",
+        "Residence at a vacation destination",
+        "Employment by a government agency",
+        "Legal membership in a political community"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is naturalization?",
+      "choices": [
+        "A legal process through which an eligible noncitizen becomes a citizen",
+        "The process of appointing a state judge",
+        "A temporary permit to visit a country",
+        "The purchase of a home in another state"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which amendment establishes U.S. citizenship by birth under its specified terms?",
+      "choices": [
+        "Tenth Amendment",
+        "Twelfth Amendment",
+        "Fourteenth Amendment",
+        "Twenty-second Amendment"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which action is a form of civic participation?",
+      "choices": [
+        "Comparing prices for a personal purchase only",
+        "Attending a public meeting about a community issue",
+        "Choosing a private vacation destination",
+        "Rearranging furniture at home"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which responsibility may require an eligible citizen to participate in a court proceeding?",
+      "choices": [
+        "Jury service",
+        "Buying government bonds",
+        "Joining a political party",
+        "Running for public office"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which action is generally a voluntary civic activity rather than a legal requirement?",
+      "choices": [
+        "Obeying valid laws",
+        "Paying legally owed taxes",
+        "Responding to a lawful jury summons",
+        "Voting in an election"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is the common good?",
+      "choices": [
+        "Only one person's private financial gain",
+        "The property owned exclusively by a political party",
+        "Conditions and benefits that support a community's shared well-being",
+        "A government's total military inventory"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why are rights and responsibilities studied together?",
+      "choices": [
+        "Citizens lose their rights whenever responsibilities exist",
+        "A political community protects liberties while expecting lawful participation and conduct",
+        "Every responsibility must involve supporting the same candidate",
+        "Rights apply only to people who hold public office"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why is informed participation important?",
+      "choices": [
+        "Reliable knowledge helps people evaluate issues and decisions",
+        "Information guarantees agreement on every policy",
+        "Citizens must accept every campaign claim without checking",
+        "Only officials may compare sources"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "How can peaceful disagreement contribute to civic life?",
+      "choices": [
+        "It requires everyone to abandon constitutional rights",
+        "It prevents citizens from identifying community problems",
+        "It makes elections unnecessary",
+        "It allows competing ideas to be considered within lawful debate"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why is volunteering not the only form of civic engagement?",
+      "choices": [
+        "Only unpaid work counts as participation",
+        "Civic engagement occurs only during presidential campaigns",
+        "Engagement can also include public discussion, voting, and contacting officials",
+        "Ordinary residents cannot influence local decisions"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why should citizens distinguish verified information from rumor?",
+      "choices": [
+        "Every widely shared message is automatically accurate",
+        "Unsupported claims can mislead public judgment",
+        "Facts become irrelevant during disagreement",
+        "Only printed information can contain mistakes"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What distinguishes civic duty from civic virtue?",
+      "choices": [
+        "A duty may be legally required; a virtue is a quality supporting responsible civic behavior",
+        "A virtue is always enforced through criminal penalties",
+        "A duty always means volunteering without any legal obligation",
+        "Both terms describe only professional military service"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why can constitutional protections apply to people who are not citizens?",
+      "choices": [
+        "Noncitizens hold every citizen-specific political right automatically",
+        "Only citizens may use federal courts under any circumstances",
+        "Residence removes all legal protections",
+        "Many protections concern persons rather than citizenship alone"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "How can contacting a representative contribute to civic participation?",
+      "choices": [
+        "It automatically changes the Constitution",
+        "It replaces the need for any legislative vote",
+        "It communicates concerns to an official who can address policy",
+        "It gives one resident authority over all public spending"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Students identify unsafe crossings and present evidence to a town council. What are they practicing?",
+      "choices": [
+        "Judicial appointment",
+        "Civic problem solving",
+        "Diplomatic immunity",
+        "Executive clemency"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A voter compares candidates' proposals with budget data. What civic skill is demonstrated?",
+      "choices": [
+        "Evidence-based evaluation",
+        "Automatic agreement with the largest campaign",
+        "Delegation of all judgment to advertising",
+        "Avoidance of public issues"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A resident helps neighbors understand how to attend a public hearing. Which outcome is most directly supported?",
+      "choices": [
+        "A change in national citizenship law",
+        "Automatic enactment of a federal statute",
+        "A judicial ruling on the hearing's result",
+        "Broader civic participation"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Which comparison between a citizen and a resident is accurate?",
+      "choices": [
+        "Everyone living in a country is automatically its citizen",
+        "Citizens can reside only where they were born",
+        "Citizenship is a legal status; residence identifies where someone lives",
+        "Residence and citizenship always mean exactly the same thing"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Why should civic debate address claims rather than attack people's identities?",
+      "choices": [
+        "Personal attacks are necessary to verify facts",
+        "Evaluating reasons and evidence supports constructive discussion",
+        "Identity alone proves every policy argument correct",
+        "Constructive debate requires suppressing all disagreement"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ],
+  "referenceUrls": [
+    "https://my.uscis.gov/citizenship/information"
+  ]
+}
+

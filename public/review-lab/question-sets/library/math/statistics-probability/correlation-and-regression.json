@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--statistics-probability--correlation-and-regression",
+  "title": "Correlation and Regression",
+  "subject": "Math",
+  "category": "Statistics & Probability",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What does correlation measure in paired numerical data?",
+      "choices": [
+        "The direction and strength of a linear association",
+        "Proof of a causal effect",
+        "The difference between two means",
+        "The total number of points"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is the possible range of correlation coefficient r?",
+      "choices": [
+        "0 to 100",
+        "−100 to 100",
+        "0 to 1 only",
+        "−1 to 1"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What does positive correlation indicate?",
+      "choices": [
+        "One variable causes the other to increase",
+        "Every point has positive coordinates",
+        "Larger values of one variable tend to accompany larger values of the other",
+        "The two means are equal"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What does negative correlation indicate?",
+      "choices": [
+        "All observations are negative",
+        "Larger values of one variable tend to accompany smaller values of the other",
+        "Both variables decrease over time in every case",
+        "The variables have no association"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which r-value indicates the strongest linear association?",
+      "choices": [
+        "−0.95",
+        "0.40",
+        "−0.20",
+        "0.05"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What does a least-squares regression line minimize?",
+      "choices": [
+        "The sum of all x-values",
+        "The largest y-value",
+        "The horizontal distance between every pair of points",
+        "The sum of squared vertical residuals"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "In a regression model ŷ = a + bx, what does b represent?",
+      "choices": [
+        "The observed y-value for every point",
+        "The predicted y-value when x = 0",
+        "The predicted change in y for each unit increase in x",
+        "The correlation coefficient in every case"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why does correlation not establish causation?",
+      "choices": [
+        "Correlation can only be negative",
+        "A third variable or other explanation may account for the association",
+        "Regression lines cannot use real data",
+        "A causal relationship always has r = 1"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "For ŷ = 4 + 2x, what is the predicted y when x = 6?",
+      "choices": [
+        "16",
+        "12",
+        "10",
+        "14"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What does an r-value near zero rule out most directly?",
+      "choices": [
+        "Every possible nonlinear association",
+        "Any variation in x",
+        "Any variation in y",
+        "A strong linear association"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why can an outlier change a correlation or fitted line substantially?",
+      "choices": [
+        "Outliers are excluded automatically from every calculation",
+        "One outlier forces r to zero",
+        "It may strongly affect the pattern and calculation",
+        "Outliers always make the slope positive"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What does r² = 0.64 mean in a simple least-squares regression with an intercept?",
+      "choices": [
+        "64% of y is caused by x",
+        "64% of the variation in y is accounted for by the fitted linear relationship",
+        "64% of predictions are exactly correct",
+        "The slope is 0.64"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why is prediction outside the observed x-range called extrapolation?",
+      "choices": [
+        "It extends the model beyond the data used to fit it",
+        "It repeats an observed y-value",
+        "It replaces numerical data with categories",
+        "It always gives the exact outcome"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "A fitted line predicts price in dollars from size in square meters and has slope 120. What are the slope's units?",
+      "choices": [
+        "Square meters per dollar",
+        "Dollars squared",
+        "Square meters squared",
+        "Dollars per square meter"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "How does changing centimeters to meters for all x-values affect correlation r?",
+      "choices": [
+        "It divides r by 100",
+        "It multiplies r by 100",
+        "It leaves r unchanged",
+        "It reverses the sign of r"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Ice-cream sales and swimming activity rise together in summer. Which conclusion is justified?",
+      "choices": [
+        "Ice-cream purchases must cause swimming",
+        "Warm weather may influence both, so the association alone does not prove causation",
+        "Swimming must cause every ice-cream purchase",
+        "The association is impossible because neither variable is negative"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A model ŷ = 50 − 3x predicts remaining fuel from travel time. What does its negative slope mean?",
+      "choices": [
+        "Predicted fuel decreases by 3 units per time unit",
+        "Time decreases by 50 for each fuel unit",
+        "Fuel always starts at −3",
+        "Correlation must equal −1 exactly"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "If r = −0.8, what is r²?",
+      "choices": [
+        "−0.64",
+        "0.8",
+        "−1.6",
+        "0.64"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Why should an intercept be interpreted cautiously when x = 0 is outside the observed range?",
+      "choices": [
+        "Intercepts are never part of linear equations",
+        "A zero input makes every model undefined",
+        "It may describe an unsupported extrapolation",
+        "An intercept must always equal the smallest observed y"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A scatterplot has a strong U-shaped pattern but r is close to zero. What is the best conclusion?",
+      "choices": [
+        "The variables are necessarily unrelated",
+        "There may be a strong nonlinear association",
+        "The data must contain an error",
+        "A linear model is certainly ideal"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--life-science-biology--biological-molecules-and-enzymes",
+  "title": "Biological Molecules and Enzymes",
+  "subject": "Science",
+  "category": "Life Science & Biology",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which smaller units are linked to form proteins?",
+      "choices": [
+        "Amino acids",
+        "Monosaccharides",
+        "Fatty acids only",
+        "Nucleotides"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which molecule stores hereditary information in most cells?",
+      "choices": [
+        "Starch",
+        "DNA",
+        "Triglyceride",
+        "Cellulose"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which biological molecule group includes starch and glycogen?",
+      "choices": [
+        "Proteins",
+        "Nucleic acids",
+        "Carbohydrates",
+        "Steroids"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which molecule group includes fats and phospholipids?",
+      "choices": [
+        "Nucleic acids",
+        "Polypeptides",
+        "Simple sugars",
+        "Lipids"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is the active site of an enzyme?",
+      "choices": [
+        "The region where a substrate binds and the reaction occurs",
+        "The region containing an entire chromosome",
+        "A storage site for all cell waste",
+        "A channel through every cell wall"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is a substrate in an enzyme-controlled reaction?",
+      "choices": [
+        "The final product of every reaction",
+        "A reactant acted on by the enzyme",
+        "A gene coding for the enzyme",
+        "The temperature at which the enzyme stops"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is an enzyme cofactor?",
+      "choices": [
+        "The substrate that every enzyme turns into its product",
+        "The gene that carries every enzyme's amino-acid sequence",
+        "A nonprotein helper required for some enzymes to function",
+        "The final product of any enzyme-controlled reaction"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "How does an enzyme increase reaction rate?",
+      "choices": [
+        "It raises the energy of every product permanently",
+        "It changes the reaction's equilibrium to products only",
+        "It is consumed as the main energy source each time",
+        "It lowers the activation energy"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why can very high temperatures reduce enzyme activity?",
+      "choices": [
+        "They can disrupt the enzyme's functional shape",
+        "They always increase activity without an upper limit",
+        "They increase activity by enlarging every active site",
+        "They permanently increase enzyme concentration"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why can an enzyme work on one substrate but not another?",
+      "choices": [
+        "Every substrate binds with the same strength",
+        "Binding depends on compatible shape and chemical properties",
+        "Binding depends only on the substrate's mass",
+        "Only the enzyme's concentration determines which substrate binds"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How does hydrolysis help break down biological polymers?",
+      "choices": [
+        "Smaller units join while water is removed",
+        "Water changes the order of atoms without breaking bonds",
+        "Water participates in breaking bonds between smaller units",
+        "Water moves the intact polymer across a membrane"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What generally happens to an enzyme after it releases its products?",
+      "choices": [
+        "It becomes the main product permanently",
+        "It loses all of its atoms",
+        "It turns into a nucleotide",
+        "It can catalyze another reaction"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why do phospholipids form bilayers in water?",
+      "choices": [
+        "Their water-attracting heads face water while tails cluster away from it",
+        "Their heads and tails dissolve equally in water",
+        "They have no electrically uneven regions",
+        "They become solid mineral crystals"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why can a pH change alter enzyme activity?",
+      "choices": [
+        "It alters only the amount of substrate, never the enzyme",
+        "It can change charges and interactions important to the active site",
+        "It changes temperature without affecting molecular interactions",
+        "It makes every enzyme work equally well at any pH"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why is ATP useful in cells?",
+      "choices": [
+        "It stores an organism's complete hereditary code",
+        "It replaces every enzyme",
+        "Its reactions can be coupled to energy-requiring processes",
+        "It makes energy conservation unnecessary"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "With enzyme amount fixed, adding substrate raises the rate at first but eventually has little effect. Why?",
+      "choices": [
+        "The substrates lose all their chemical bonds before binding",
+        "The enzyme starts producing new elements",
+        "The reaction no longer needs reactants",
+        "The available active sites become occupied most of the time"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "An inhibitor competes with a substrate for the active site. Which change can often reduce its effect?",
+      "choices": [
+        "Increasing substrate concentration",
+        "Removing every substrate molecule",
+        "Destroying all enzyme proteins",
+        "Reducing the amount of enzyme to zero"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "An enzyme works best at pH 7 and poorly at pH 3. What is the best conclusion?",
+      "choices": [
+        "All enzymes work best at pH 7",
+        "Its activity depends on the chemical conditions",
+        "The enzyme has no active site",
+        "The substrate becomes a different element at pH 3"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A protein is heated until it loses its normal shape but its amino-acid sequence remains largely intact. What has occurred?",
+      "choices": [
+        "DNA replication",
+        "Photosynthesis",
+        "Denaturation",
+        "Nuclear fission"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "An enzyme speeds both directions of a reversible reaction. What happens to its equilibrium position at unchanged temperature?",
+      "choices": [
+        "It shifts entirely to the products",
+        "It shifts entirely to the reactants",
+        "It becomes independent of concentrations",
+        "It remains unchanged, though equilibrium is reached sooner"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

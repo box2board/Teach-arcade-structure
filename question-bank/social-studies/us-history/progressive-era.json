@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "us-history--progressive-era",
+  "title": "Progressive Era",
+  "subject": "Social Studies",
+  "category": "U.S. History",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What name described Progressive Era journalists who exposed corruption and social problems?",
+      "choices": [
+        "Federalists",
+        "Isolationists",
+        "Muckrakers",
+        "Loyalists"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Who wrote The Jungle, which helped draw attention to meatpacking conditions?",
+      "choices": [
+        "Upton Sinclair",
+        "Jacob Riis",
+        "Booker T. Washington",
+        "W. E. B. Du Bois"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which reformer helped establish Hull House in Chicago?",
+      "choices": [
+        "Susan B. Anthony",
+        "Ida Tarbell",
+        "Florence Kelley",
+        "Jane Addams"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which president promoted the Square Deal?",
+      "choices": [
+        "William McKinley",
+        "Theodore Roosevelt",
+        "Warren Harding",
+        "Herbert Hoover"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which amendment established direct election of U.S. senators?",
+      "choices": [
+        "Seventeenth",
+        "Sixteenth",
+        "Eighteenth",
+        "Nineteenth"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which amendment prohibited denying the vote on the basis of sex?",
+      "choices": [
+        "Fifteenth",
+        "Seventeenth",
+        "Nineteenth",
+        "Twenty-Second"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What was a settlement house?",
+      "choices": [
+        "A court reserved for business lawsuits",
+        "A factory owned by a labor union",
+        "A federal office selling western land",
+        "A neighborhood center providing community services"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why did many Progressives favor regulation of large corporations?",
+      "choices": [
+        "To restore chartered colonial monopolies",
+        "To limit abusive practices and protect the public",
+        "To end all production of manufactured goods",
+        "To transfer every business decision to foreign governments"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How could an initiative increase voters' influence over state policy?",
+      "choices": [
+        "It let citizens propose measures for a public vote",
+        "It allowed governors to appoint all voters",
+        "It replaced state legislatures with federal judges",
+        "It ended public access to election ballots"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why did reformers campaign against child labor?",
+      "choices": [
+        "Children already controlled most factory ownership",
+        "Schools were legally forbidden to admit children",
+        "Dangerous work could harm children and interfere with schooling",
+        "Factories had stopped hiring adult workers"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How did the 1911 Triangle Shirtwaist Factory fire affect reform efforts?",
+      "choices": [
+        "It ended the use of factories in New York",
+        "It made workplace inspections unconstitutional",
+        "It replaced all private fire departments with unions",
+        "It strengthened demands for workplace safety laws"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What problem did the Pure Food and Drug Act of 1906 address?",
+      "choices": [
+        "The direct election of food inspectors",
+        "Misbranded and adulterated foods and medicines",
+        "The ownership of national forest land",
+        "The organization of presidential primaries"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "How did conservation differ from simply allowing unrestricted use of public lands?",
+      "choices": [
+        "It emphasized managing resources for long-term use",
+        "It required all resources to be exported immediately",
+        "It eliminated federal responsibility for public land",
+        "It treated forests as unrelated to public policy"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why did reformers favor civil service systems over political patronage?",
+      "choices": [
+        "To reward campaign donors with permanent positions",
+        "To eliminate qualifications for public employment",
+        "To select workers by merit rather than party connections",
+        "To place every public employee in an elected office"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What does continued racial segregation during the Progressive Era show?",
+      "choices": [
+        "The Fourteenth Amendment had never been ratified",
+        "No organizations campaigned for racial equality",
+        "All reformers shared identical civil rights goals",
+        "Reform achievements coexisted with major exclusions and injustices"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Voters remove an elected official before the end of a term through a special election. Which reform are they using?",
+      "choices": [
+        "Initiative",
+        "Recall",
+        "Direct primary",
+        "Referendum"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Which evidence would best test whether a workplace safety reform had practical effects?",
+      "choices": [
+        "Accident rates before and after enforcement began",
+        "Campaign spending by candidates in the next election",
+        "The number of factory advertisements in newspapers",
+        "The dates when major companies opened their offices"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Which Progressive Era sequence places these events correctly?",
+      "choices": [
+        "Nineteenth Amendment → Triangle fire → Pure Food and Drug Act",
+        "Triangle fire → Pure Food and Drug Act → Nineteenth Amendment",
+        "Pure Food and Drug Act → Triangle fire → Nineteenth Amendment",
+        "Pure Food and Drug Act → Nineteenth Amendment → Triangle fire"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "An investigator documents unsafe tenements to encourage housing regulation. What makes this work similar to muckraking?",
+      "choices": [
+        "It seeks to resolve neighborhood problems through private charity alone",
+        "It records conditions without seeking a change in public policy",
+        "It focuses on electoral campaigning rather than investigation",
+        "It uses public exposure of conditions to encourage reform"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which conclusion best compares settlement houses and antitrust enforcement?",
+      "choices": [
+        "Both focused exclusively on foreign military policy",
+        "Both addressed problems associated with industrial society in different ways",
+        "Both required the abolition of elected legislatures",
+        "Both aimed to end immigration through military force"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}

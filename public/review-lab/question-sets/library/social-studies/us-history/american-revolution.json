@@ -1,0 +1,254 @@
+{
+  "schemaVersion": 1,
+  "id": "us-history--american-revolution",
+  "title": "American Revolution",
+  "subject": "Social Studies",
+  "category": "U.S. History",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which British law taxed printed materials in the colonies in 1765?",
+      "choices": [
+        "Tea Act",
+        "Quartering Act",
+        "Stamp Act",
+        "Intolerable Acts"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Who commanded the Continental Army?",
+      "choices": [
+        "George Washington",
+        "Thomas Jefferson",
+        "Benjamin Franklin",
+        "John Adams"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which document announced the colonies' separation from Britain in 1776?",
+      "choices": [
+        "Articles of Confederation",
+        "Bill of Rights",
+        "U.S. Constitution",
+        "Declaration of Independence"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Where did the first fighting of the Revolutionary War occur in April 1775?",
+      "choices": [
+        "Yorktown and Williamsburg",
+        "Lexington and Concord",
+        "Trenton and Princeton",
+        "Saratoga and Albany"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What name described colonists who supported independence?",
+      "choices": [
+        "Patriots",
+        "Loyalists",
+        "Federalists",
+        "Anti-Federalists"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which country became a formal American ally in 1778?",
+      "choices": [
+        "Prussia",
+        "Portugal",
+        "France",
+        "Russia"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which treaty recognized American independence in 1783?",
+      "choices": [
+        "Treaty of Ghent",
+        "Treaty of Paris",
+        "Treaty of Versailles",
+        "Treaty of Guadalupe Hidalgo"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why did many colonists object to Parliament's taxes?",
+      "choices": [
+        "They wanted Parliament to appoint colonial governors",
+        "They opposed every tax passed by colonial assemblies",
+        "They sought British taxes on colonial exports",
+        "They lacked elected representatives in Parliament"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How did the French and Indian War contribute to the imperial crisis?",
+      "choices": [
+        "France gained control of the thirteen colonies",
+        "Britain abolished all colonial legislatures",
+        "Britain sought colonial revenue to help meet war expenses",
+        "Colonists gained representation in Parliament"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What was a purpose of colonial committees of correspondence?",
+      "choices": [
+        "Sharing information and coordinating resistance",
+        "Negotiating military alliances with Spain",
+        "Choosing members of the House of Lords",
+        "Administering the British army's supply system"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why did the victory at Saratoga matter beyond the battlefield?",
+      "choices": [
+        "It ended all British military operations in America",
+        "It encouraged French support for American independence",
+        "It placed Washington in command for the first time",
+        "It caused Parliament to repeal the Stamp Act"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What did Thomas Paine argue in Common Sense?",
+      "choices": [
+        "Colonists should accept taxation without representation",
+        "Parliament should replace colonial assemblies permanently",
+        "Britain should appoint Washington as royal governor",
+        "Colonists should separate from monarchy and become independent"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why was maintaining an army difficult for the Continental Congress?",
+      "choices": [
+        "It depended heavily on states for money and supplies",
+        "It had no authority to appoint military leaders",
+        "It required every soldier to serve without pay by law",
+        "It received no assistance from foreign countries"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "How did the British blockade affect American forces?",
+      "choices": [
+        "It guaranteed American control of Atlantic shipping",
+        "It prevented fighting outside coastal towns",
+        "It restricted trade and access to supplies",
+        "It eliminated British dependence on naval power"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What role did the French navy play at Yorktown?",
+      "choices": [
+        "It carried British troops away before the siege",
+        "It blocked British relief by sea",
+        "It prevented the Americans from crossing the Delaware",
+        "It forced Spain to abandon the American alliance"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Which sequence places these American Revolution events in chronological order?",
+      "choices": [
+        "Stamp Act, Declaration of Independence, Yorktown",
+        "Yorktown, Stamp Act, Declaration of Independence",
+        "Declaration of Independence, Yorktown, Stamp Act",
+        "Stamp Act, Yorktown, Declaration of Independence"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A colonist argues that government needs the consent of the governed. Which revolutionary idea does this express?",
+      "choices": [
+        "Divine-right monarchy",
+        "Mercantilism",
+        "Hereditary privilege",
+        "Popular sovereignty"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Which evidence challenges the claim that all colonists supported independence?",
+      "choices": [
+        "France signed an alliance with the United States",
+        "Many Loyalists remained loyal to Britain",
+        "Congress adopted the Declaration of Independence",
+        "Washington commanded the Continental Army"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Which comparison between Patriots and Loyalists is accurate?",
+      "choices": [
+        "Both groups favored immediate independence",
+        "Only Loyalists objected to British taxation",
+        "They disagreed about continued British rule",
+        "Both groups rejected monarchy everywhere"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which conclusion about the Revolution and slavery is best supported?",
+      "choices": [
+        "Independence did not end slavery throughout the United States",
+        "The peace treaty abolished slavery in every state",
+        "Congress freed every enslaved person in 1776",
+        "Britain required all states to abolish slavery in 1783"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ],
+  "referenceUrls": [
+    "https://www.archives.gov/founding-docs/declaration-transcript"
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "government--types-of-government",
+  "title": "Types of Government",
+  "subject": "Social Studies",
+  "category": "Government & Civics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a direct democracy?",
+      "choices": [
+        "Rule by a hereditary sovereign",
+        "Government by military officers",
+        "A system in which citizens vote on policies themselves",
+        "A system in which appointed judges choose all laws"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is representative democracy?",
+      "choices": [
+        "A system in which voters choose officials to make public decisions",
+        "A system in which one ruler holds unrestricted authority",
+        "A system in which only religious leaders may govern",
+        "A system in which public offices pass through inheritance"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which term describes government by a small group?",
+      "choices": [
+        "Democracy",
+        "Monarchy",
+        "Anarchy",
+        "Oligarchy"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What distinguishes an absolute monarchy from a constitutional monarchy?",
+      "choices": [
+        "An absolute monarch is selected through competitive legislative elections",
+        "An absolute monarch rules without meaningful constitutional limits",
+        "An absolute monarch serves mainly as a ceremonial head of state",
+        "An absolute monarch must retain the elected parliament's confidence"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which term describes a government claiming authority through religious law or religious leadership?",
+      "choices": [
+        "Theocracy",
+        "Federation",
+        "Republic",
+        "Confederation"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is a unitary system?",
+      "choices": [
+        "A system requiring two equal national legislatures",
+        "An alliance of fully independent governments only",
+        "A system concentrating constitutional governing authority in the national government",
+        "A system dividing sovereignty equally among all cities"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What characterizes a confederation?",
+      "choices": [
+        "A monarch appoints every regional leader",
+        "All local governments are abolished",
+        "A single city governs all national affairs",
+        "Member states retain substantial authority while delegating limited common powers"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why can a constitutional monarchy also be a democracy?",
+      "choices": [
+        "Monarchs must personally approve every vote",
+        "Elected institutions may govern while the monarch has limited powers",
+        "A hereditary title automatically guarantees free elections",
+        "Democracy requires the absence of every ceremonial office"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What commonly distinguishes a parliamentary system from a presidential system?",
+      "choices": [
+        "The executive usually depends on support within the legislature",
+        "The legislature is prohibited from making laws",
+        "Courts appoint all members of parliament",
+        "The executive must inherit office from a parent"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What is a defining feature of federal government?",
+      "choices": [
+        "All regional authority can be withdrawn by any mayor",
+        "National laws are written by foreign governments",
+        "Constitutional authority is divided between national and regional governments",
+        "Local officials hold every national office simultaneously"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why is holding an election alone not enough to establish democratic government?",
+      "choices": [
+        "Elections are possible only in monarchies",
+        "Democracies cannot have political parties",
+        "Public participation is unrelated to democratic institutions",
+        "Competition, rights, and fair procedures also matter"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "How does an authoritarian government commonly limit public influence?",
+      "choices": [
+        "By guaranteeing equal access to independent media",
+        "By restricting meaningful opposition and concentrating political power",
+        "By requiring all policies to receive a direct public vote",
+        "By giving courts complete independence from political pressure"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What distinguishes a republic from a hereditary monarchy in basic classification?",
+      "choices": [
+        "The head of state does not hold office by hereditary royal right",
+        "A republic must have exactly two political parties",
+        "A republic cannot use elected representatives",
+        "A republic must divide territory into independent countries"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why might a very large country rely mainly on representative rather than direct democracy?",
+      "choices": [
+        "Representation removes the need for citizens' rights",
+        "Direct voting is legally impossible on any issue",
+        "Representatives can handle many complex decisions for a large population",
+        "Elected officials cannot be held accountable by voters"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "How does totalitarian rule differ from a government that merely limits political competition?",
+      "choices": [
+        "It requires an independent press to oversee rulers",
+        "It leaves ideology and private life outside state interest",
+        "It prevents the state from organizing public institutions",
+        "It seeks extensive control over public and private life"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A country has an elected parliament and a monarch with ceremonial duties. Which description fits best?",
+      "choices": [
+        "Absolute monarchy",
+        "Democratic constitutional monarchy",
+        "Military dictatorship",
+        "Theocratic confederation"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A national constitution protects regional governments' powers from ordinary national repeal. Which structure does this suggest?",
+      "choices": [
+        "Federal system",
+        "Unitary system",
+        "Direct democracy",
+        "Absolute monarchy"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A prime minister loses a vote of confidence and must resign or seek a new election. Which arrangement does this illustrate?",
+      "choices": [
+        "An absolute monarchy's succession rule",
+        "A presidential lifetime appointment",
+        "A parliamentary executive's dependence on legislative support",
+        "A court's power to choose all national legislators"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Why can the labels democratic and federal describe the same country?",
+      "choices": [
+        "Both describe the length of an executive's term",
+        "Both refer to the method used to select judges",
+        "Both describe the number of parties represented in a legislature",
+        "One concerns participation; the other concerns territorial authority"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A ruling party permits voting but bans opposition candidates and independent reporting. Which evidence most undermines its democratic claim?",
+      "choices": [
+        "It operates regional public schools",
+        "Voters lack meaningful political competition and information",
+        "It uses a written national constitution",
+        "It collects taxes to support public services"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}

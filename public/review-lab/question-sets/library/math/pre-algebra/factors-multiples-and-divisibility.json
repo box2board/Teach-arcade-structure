@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--pre-algebra--factors-multiples-and-divisibility",
+  "title": "Factors Multiples and Divisibility",
+  "subject": "Math",
+  "category": "Pre-Algebra & Number Sense",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a factor of a whole number?",
+      "choices": [
+        "Any whole number greater than it",
+        "Only the next multiple of it",
+        "A whole number that divides it without a remainder",
+        "Only an even divisor"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which number is prime?",
+      "choices": [
+        "27",
+        "29",
+        "21",
+        "33"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Why is 1 not prime?",
+      "choices": [
+        "It has only one positive factor",
+        "It is odd",
+        "It cannot divide another number",
+        "It is smaller than every composite number"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which prime factorization equals 60?",
+      "choices": [
+        "2 × 3² × 5",
+        "2² × 3²",
+        "2 × 5²",
+        "2² × 3 × 5"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is the greatest common factor of 18 and 24?",
+      "choices": [
+        "3",
+        "12",
+        "6",
+        "72"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is the least common multiple of 4 and 6?",
+      "choices": [
+        "2",
+        "12",
+        "24",
+        "10"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which test identifies divisibility by 3?",
+      "choices": [
+        "The sum of the digits is divisible by 3",
+        "The last digit is 3",
+        "The number is odd",
+        "The last two digits are divisible by 3"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why is 72 divisible by 9?",
+      "choices": [
+        "Its last digit is even",
+        "It has two digits",
+        "Its tens digit is 7",
+        "Its digit sum is 9"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Which number is divisible by both 2 and 5?",
+      "choices": [
+        "125",
+        "132",
+        "130",
+        "153"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What is the greatest common factor of 20 and 35?",
+      "choices": [
+        "10",
+        "5",
+        "7",
+        "140"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What is the least common multiple of 8 and 12?",
+      "choices": [
+        "24",
+        "4",
+        "96",
+        "20"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why does prime factorization help find a greatest common factor?",
+      "choices": [
+        "It uses only primes found in one number",
+        "It adds every prime factor",
+        "It always gives the larger original number",
+        "It identifies shared prime factors with the smaller exponents"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Which number is composite?",
+      "choices": [
+        "47",
+        "43",
+        "49",
+        "41"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "A positive integer is divisible by 6 when which condition holds?",
+      "choices": [
+        "It is divisible by either 2 or 3 alone",
+        "It is divisible by both 2 and 3",
+        "It ends in 6",
+        "Its digit sum is 6"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What is the least common multiple of relatively prime positive integers 5 and 7?",
+      "choices": [
+        "35",
+        "12",
+        "1",
+        "70"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Two lights flash every 6 and 8 seconds, starting together. After how many seconds do they first flash together again?",
+      "choices": [
+        "14 seconds",
+        "48 seconds",
+        "2 seconds",
+        "24 seconds"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A teacher has 24 pencils and 36 erasers. What is the greatest number of identical packs using every item?",
+      "choices": [
+        "6 packs",
+        "24 packs",
+        "12 packs",
+        "60 packs"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Which number is divisible by 4 according to its last two digits?",
+      "choices": [
+        "314",
+        "316",
+        "318",
+        "322"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "If a = 2³ × 3 and b = 2 × 3², what is their greatest common factor?",
+      "choices": [
+        "6",
+        "18",
+        "24",
+        "72"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "If a = 2³ × 3 and b = 2 × 3², what is their least common multiple?",
+      "choices": [
+        "6",
+        "24",
+        "18",
+        "72"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

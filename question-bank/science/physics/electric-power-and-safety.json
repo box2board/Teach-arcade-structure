@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--physics--electric-power-and-safety",
+  "title": "Electric Power and Safety",
+  "subject": "Science",
+  "category": "Physics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What does electric power measure?",
+      "choices": [
+        "The total electrical energy transferred during use",
+        "The amount of charge passing a point alone",
+        "The rate of electrical energy transfer",
+        "The potential difference without a time rate"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which unit measures electrical power?",
+      "choices": [
+        "Watt",
+        "Coulomb",
+        "Ohm",
+        "Volt"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "For a DC device, how is electric power related to voltage and current?",
+      "choices": [
+        "Power equals voltage divided by time",
+        "Power equals voltage multiplied by current",
+        "Power equals current divided by voltage",
+        "Power equals resistance divided by voltage"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What does a kilowatt-hour measure?",
+      "choices": [
+        "Power",
+        "Current",
+        "Resistance",
+        "Energy"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What commonly causes excessive heating in an overloaded electrical cord?",
+      "choices": [
+        "Too much current through its resistance",
+        "A current below the cord's capacity in every case",
+        "A power rating lower than every connected device's rating",
+        "A decrease in the cord's resistance to exactly zero"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What does a ground-fault circuit interrupter primarily detect?",
+      "choices": [
+        "The total operating time of an appliance",
+        "The temperature of the surrounding room only",
+        "A difference between outgoing and returning current",
+        "Every overcurrent, with no sensitivity to current imbalance"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is a short circuit?",
+      "choices": [
+        "A circuit operated for only a short time",
+        "An intended high-resistance path through the appliance",
+        "An unintended low-resistance path for current",
+        "A device using less power than its rated value"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why can using several high-power devices on one circuit be a problem?",
+      "choices": [
+        "Their combined current can overload the circuit",
+        "Each added device necessarily lowers total circuit current",
+        "Parallel devices divide the current so total current stays fixed",
+        "High power use has no relation to current draw"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why should a damaged cord be taken out of use and reported to a responsible adult?",
+      "choices": [
+        "Only the cord's appearance is affected",
+        "A damaged cord always supplies zero current",
+        "Insulation damage automatically lowers the electrical hazard",
+        "Exposed or damaged wiring can create shock and fire hazards"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why are electrical appliances kept away from water during use?",
+      "choices": [
+        "Water always blocks electric current completely",
+        "Water containing dissolved ions can provide a dangerous current path",
+        "Wet surroundings necessarily remove the supply voltage",
+        "Only boiling water can provide a current path"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why does a fuse or ordinary circuit breaker not guarantee protection from every electric shock?",
+      "choices": [
+        "Dangerous body current can be below the overcurrent trip level",
+        "Electric shocks always require current above the circuit's rating",
+        "Ordinary overcurrent protection measures body current directly",
+        "A breaker prevents every shock before any current can flow"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why does a higher-power device use more energy over the same operating time?",
+      "choices": [
+        "It transfers the same energy regardless of operating time",
+        "It transfers energy at a faster rate",
+        "A power rating measures only total stored energy",
+        "Higher power means a slower energy-transfer rate"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "How can an appliance use less total energy despite having a higher power rating?",
+      "choices": [
+        "Its power rating alone fixes energy use for every duration",
+        "It has to run for the same length of time",
+        "Voltage alone determines all energy use",
+        "It operates for a sufficiently shorter time"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why should an appliance's grounding pin remain intact?",
+      "choices": [
+        "It replaces the need for overcurrent protection",
+        "It controls only the advertised operating power",
+        "It supports the designed protective grounding connection",
+        "It stops all current during normal operation"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What is the useful distinction between power and energy on an appliance label?",
+      "choices": [
+        "Power is a transfer rate; energy depends on rate and operating time",
+        "Both always measure the same quantity",
+        "Energy measures only voltage",
+        "Power measures only battery charge"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A DC device draws 2 A at 12 V. What electrical power does it use?",
+      "choices": [
+        "6 W",
+        "14 W",
+        "24 W",
+        "0.17 W"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A 1.2 kW heater operates for 2 hours. How much energy does it use?",
+      "choices": [
+        "0.6 kWh",
+        "2.4 kWh",
+        "1.2 kWh",
+        "3.2 kWh"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A 60 W lamp runs for 5 hours. What is its electrical energy use?",
+      "choices": [
+        "12 Wh",
+        "65 Wh",
+        "300 W",
+        "300 Wh"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Two parallel DC devices draw 3 A and 4 A from one supply. What is the total current?",
+      "choices": [
+        "1 A",
+        "12 A",
+        "3.5 A",
+        "7 A"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A cord is rated for less current than several appliances require together. What is the appropriate conclusion?",
+      "choices": [
+        "The rating applies only to one appliance at a time",
+        "That combination can overload the cord and should not be used",
+        "Adding appliances reduces the cord's heating",
+        "The cord's insulation automatically increases its current rating"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}

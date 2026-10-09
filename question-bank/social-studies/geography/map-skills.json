@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "geography--map-skills",
+  "title": "Map Skills",
+  "subject": "Social Studies",
+  "category": "Geography",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What does a map legend explain?",
+      "choices": [
+        "The meaning of symbols and colors",
+        "The exact population of every city",
+        "The history of every border",
+        "The age of the paper"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What does a map scale show?",
+      "choices": [
+        "The height of every mountain",
+        "The number of countries in the world",
+        "The relationship between map distance and real-world distance",
+        "The date of every road's construction"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What does a compass rose indicate?",
+      "choices": [
+        "Population density",
+        "Directions",
+        "Rainfall totals",
+        "Political party strength"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What does a physical map emphasize?",
+      "choices": [
+        "Election results only",
+        "City voting districts only",
+        "Trade prices only",
+        "Landforms and other natural features"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What does a political map emphasize?",
+      "choices": [
+        "Boundaries and political units",
+        "Elevation contours only",
+        "Rainfall averages only",
+        "Types of bedrock only"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What do contour lines connect on a topographic map?",
+      "choices": [
+        "Places with the same population",
+        "Cities founded in the same year",
+        "Points of equal elevation",
+        "Roads with equal traffic"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is a thematic map?",
+      "choices": [
+        "A map that always shows every feature",
+        "A map focused on a particular subject or pattern",
+        "A map without symbols",
+        "A map drawn only from memory"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why do flat world maps involve distortion?",
+      "choices": [
+        "Maps must always omit all oceans",
+        "Every projection uses inaccurate measurements deliberately",
+        "Latitude and longitude cannot be represented on paper",
+        "Earth's curved surface cannot be flattened without changing some properties"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What do closely spaced contour lines generally indicate?",
+      "choices": [
+        "A steep slope",
+        "A broad flat plain",
+        "A higher population",
+        "A national border"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why might an equal-area projection be chosen?",
+      "choices": [
+        "To preserve every distance and direction at once",
+        "To remove the need for a map legend",
+        "To compare relative sizes of regions more accurately",
+        "To show all mountains at their true height"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why should a reader check a map's date?",
+      "choices": [
+        "Old maps always contain no useful evidence",
+        "Borders, roads, and other mapped information may change",
+        "Map scale changes only with calendar years",
+        "Every map expires after one month"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why should a choropleth map of population density use a rate rather than total population?",
+      "choices": [
+        "Totals and density always mean the same thing",
+        "Rates remove every need for geographic context",
+        "Total population is impossible to measure",
+        "Rates allow comparison while accounting for different area sizes"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What does a map inset often provide?",
+      "choices": [
+        "A closer view or location context for part of a map",
+        "A guarantee that no projection distortion exists",
+        "A complete written history of each settlement",
+        "A replacement for every symbol in the legend"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why is a map a selective representation?",
+      "choices": [
+        "Every map includes every possible feature",
+        "Only physical maps omit details",
+        "Its purpose and scale determine which details are included",
+        "All maps must show identical information"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why can straight-line distance differ from travel distance?",
+      "choices": [
+        "Travel distance is always shorter than straight-line distance",
+        "Routes may follow roads and terrain rather than a direct path",
+        "Map scale measures only airline tickets",
+        "Real-world distances cannot be estimated from maps"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A scale says 1 centimeter represents 10 kilometers. Two towns are 4 centimeters apart. What is the represented distance?",
+      "choices": [
+        "4 kilometers",
+        "14 kilometers",
+        "400 kilometers",
+        "40 kilometers"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Which map is best for planning a route through mountain terrain?",
+      "choices": [
+        "A detailed topographic map",
+        "A world map of language families",
+        "A national map of election results",
+        "A continent map of population totals"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A reader compares countries' apparent sizes on a world map. What should be checked?",
+      "choices": [
+        "Only the map's font",
+        "Only the order of countries in the legend",
+        "The projection and its area distortion",
+        "The number of colors used for roads"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A map colors large regions dark because they have many residents. Why might that mislead a reader studying crowding?",
+      "choices": [
+        "Every large region has the same density",
+        "High total population does not necessarily mean high population density",
+        "Color cannot represent numerical information",
+        "Population totals and land area are unrelated to density"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Two maps of a city show different detail levels. What is the most likely explanation?",
+      "choices": [
+        "One must necessarily be false",
+        "Cities have no measurable location",
+        "A legend determines the city's actual size",
+        "They use different scales or purposes"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

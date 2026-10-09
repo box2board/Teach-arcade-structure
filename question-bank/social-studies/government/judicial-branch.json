@@ -1,0 +1,254 @@
+{
+  "schemaVersion": 1,
+  "id": "government--judicial-branch",
+  "title": "Judicial Branch",
+  "subject": "Social Studies",
+  "category": "Government & Civics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which court is established directly by Article III of the U.S. Constitution?",
+      "choices": [
+        "Every federal district court",
+        "Supreme Court",
+        "Every state supreme court",
+        "Every municipal court"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is the judicial branch's central role?",
+      "choices": [
+        "Commanding the armed forces",
+        "Writing the federal budget",
+        "Negotiating treaties",
+        "Resolving legal disputes and interpreting law"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is judicial review?",
+      "choices": [
+        "Authority to determine whether government action conflicts with the Constitution",
+        "Presidential approval of a court judgment",
+        "A congressional vote to appoint state judges",
+        "A public referendum on every trial verdict"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which case is associated with establishing judicial review of federal laws?",
+      "choices": [
+        "Brown v. Board of Education",
+        "Miranda v. Arizona",
+        "Marbury v. Madison",
+        "Gideon v. Wainwright"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What are federal district courts primarily responsible for?",
+      "choices": [
+        "Final review of every state election",
+        "Trials in the federal court system",
+        "Negotiating international treaties",
+        "Approving executive department budgets"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What do federal courts of appeals primarily review?",
+      "choices": [
+        "Decisions of lower federal courts",
+        "Proposed legislation before introduction",
+        "State constitutional amendments before ratification",
+        "Presidential campaign advertisements"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "How are Article III federal judges generally appointed?",
+      "choices": [
+        "National popular election",
+        "Appointment by state governors",
+        "Selection by the House alone",
+        "Presidential nomination and Senate confirmation"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why do Article III judges hold office during good behavior?",
+      "choices": [
+        "To make judges accountable to presidential approval every year",
+        "To require every judge to retire after four years",
+        "To help protect judicial independence",
+        "To prevent Congress from creating lower courts"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why do appellate courts generally focus on the record and legal issues?",
+      "choices": [
+        "They review alleged errors rather than ordinarily conducting a new trial",
+        "They must always hear an entirely new jury trial",
+        "They do not consider law in deciding cases",
+        "They decide cases without reviewing lower-court proceedings"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What does precedent mean in legal decision-making?",
+      "choices": [
+        "A proposed statute awaiting a signature",
+        "An earlier decision used to guide later cases",
+        "A witness's personal opinion",
+        "A president's foreign policy agreement"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why can a case involve federal jurisdiction?",
+      "choices": [
+        "Every dispute must begin in federal court",
+        "Only wealthy plaintiffs can use state courts",
+        "Federal courts handle only local parking violations",
+        "It raises an issue under federal law or another constitutional basis"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What is a major difference between civil and criminal cases?",
+      "choices": [
+        "Civil cases concern private disputes only; criminal cases concern international disputes only",
+        "Civil cases involve appeals only; criminal cases involve cases without a right to appeal",
+        "Civil cases generally concern disputes; criminal cases involve alleged offenses prosecuted by government",
+        "Civil cases require government prosecutors; criminal cases are prosecuted by private plaintiffs alone"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why is an independent judiciary important to the rule of law?",
+      "choices": [
+        "Courts can apply legal standards despite political pressure",
+        "Judges can replace all elected institutions",
+        "Court decisions never need legal justification",
+        "Judges can ignore constitutional limits at will"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What does original jurisdiction mean?",
+      "choices": [
+        "Authority to review only completed appeals",
+        "Authority to hear a case first",
+        "Authority to write a new constitution",
+        "Authority to appoint every trial lawyer"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What limits the Supreme Court's ability to decide public issues?",
+      "choices": [
+        "It generally resolves actual cases within its jurisdiction rather than giving advisory opinions",
+        "It generally gives policy advice to Congress rather than resolving cases between parties",
+        "It may decide any public dispute without regard to jurisdiction or legal standing",
+        "It may decide federal cases only after receiving advance approval from the president"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A person challenges a federal law as unconstitutional. Which function may a court perform?",
+      "choices": [
+        "Treaty negotiation",
+        "Appropriation",
+        "Judicial review",
+        "Executive clemency"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A court uses an earlier ruling to analyze a similar dispute. What is it using?",
+      "choices": [
+        "Precedent",
+        "A veto",
+        "A primary election",
+        "An executive pardon"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Which sequence is a common federal court path?",
+      "choices": [
+        "Supreme Court, municipal council, district court",
+        "District court, court of appeals, possible Supreme Court review",
+        "Senate committee, court of appeals, Cabinet",
+        "Governor's office, House of Representatives, district court"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Why does losing in a lower court not guarantee Supreme Court review?",
+      "choices": [
+        "Every appeal automatically becomes a Supreme Court trial",
+        "The president must personally approve each appeal",
+        "Only the winning party may request review",
+        "The Court has discretion over much of its appellate docket"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which example best illustrates judicial independence?",
+      "choices": [
+        "A judge follows a governor's instructions instead of the law",
+        "A judge changes a verdict to help a political donor",
+        "A judge applies the Constitution despite pressure from elected officials",
+        "A judge refuses to explain any ruling through legal reasons"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ],
+  "referenceUrls": [
+    "https://www.archives.gov/founding-docs/constitution-transcript"
+  ]
+}

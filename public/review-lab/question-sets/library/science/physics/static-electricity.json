@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--physics--static-electricity",
+  "title": "Static Electricity",
+  "subject": "Science",
+  "category": "Physics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which particles usually move between objects during static charging?",
+      "choices": [
+        "Protons inside nuclei",
+        "Electrons",
+        "Neutrons inside nuclei",
+        "Entire atomic nuclei in every case"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What happens when an object gains excess electrons?",
+      "choices": [
+        "It becomes positively charged",
+        "It must become neutral",
+        "It loses all mass",
+        "It becomes negatively charged"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What happens when an initially neutral object loses electrons?",
+      "choices": [
+        "It becomes negatively charged",
+        "It must remain neutral",
+        "It becomes positively charged",
+        "It becomes a different element"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "How do two negative charges interact?",
+      "choices": [
+        "They repel",
+        "They always attract",
+        "They have no electric interaction",
+        "They merge into a neutral particle"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is an electrical insulator?",
+      "choices": [
+        "A material whose charges always move freely throughout it",
+        "A material that cannot contain charged particles",
+        "A material that must have positive net charge",
+        "A material in which charge does not move freely through the bulk"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is polarization of a neutral object?",
+      "choices": [
+        "A net transfer of electrons into the object in every case",
+        "A separation or redistribution of charges within it",
+        "A net transfer of electrons out of the object in every case",
+        "A uniform distribution of charge with no separation"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What does conservation of electric charge mean?",
+      "choices": [
+        "Every object must stay neutral",
+        "Net charge is conserved in an isolated system",
+        "Positive charge can exist only briefly",
+        "Charge always increases during friction"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why can rubbing two materials leave them oppositely charged?",
+      "choices": [
+        "Both materials must gain excess electrons",
+        "The total charge of the isolated pair increases",
+        "Positive charging requires protons to leave atomic nuclei",
+        "Electrons can transfer between the materials"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why can a charged balloon attract a neutral wall?",
+      "choices": [
+        "Charges in the wall redistribute, producing attraction",
+        "The wall must already have a large net negative charge",
+        "A neutral wall cannot interact electrically with a charged object",
+        "The balloon must transfer electrons into the wall first"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why does charge move readily through a metal?",
+      "choices": [
+        "Its atomic nuclei move freely through the metal",
+        "Every metal atom carries a negative net charge",
+        "Some electrons can move through the material",
+        "Its electrons are unable to change position"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How does electric force change when like point charges move farther apart?",
+      "choices": [
+        "The repulsive force increases",
+        "The force magnitude stays unchanged at every distance",
+        "The charges automatically become opposite in sign",
+        "The repulsive force decreases"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why can a spark occur between objects at different electric potentials?",
+      "choices": [
+        "The insulating air can never become conductive",
+        "The objects must have equal potential before discharge",
+        "Charge can discharge through an ionized path in air",
+        "The transferred charge creates energy from nothing"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What distinguishes charging by contact from polarization alone?",
+      "choices": [
+        "Contact can transfer net charge; polarization can leave net charge unchanged",
+        "Polarization always gives an object a large net charge",
+        "Contact changes only the position of charges within each object",
+        "Both processes require the object to lose protons"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why can grounding remove excess static charge from a conductor?",
+      "choices": [
+        "Earth must give every conductor a positive net charge",
+        "Charge can flow between the conductor and Earth",
+        "Grounding removes the conductor's electrical resistance",
+        "Charge cannot flow through a grounding connection"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why is static charge often retained longer on a dry insulating surface?",
+      "choices": [
+        "Dry conditions always increase charge conductivity",
+        "Humidity never influences surface leakage",
+        "Insulators cannot retain excess charge",
+        "There are fewer effective paths for charge to leak away"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Two isolated neutral objects exchange 10 electrons. If one gains them, what happens to the other?",
+      "choices": [
+        "It also gains an equal negative charge",
+        "It has an equal-magnitude positive charge",
+        "It remains exactly neutral",
+        "Its nuclei gain 10 protons"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A neutral conducting sphere near a negative rod stays isolated and untouched. Where do electrons tend to move?",
+      "choices": [
+        "Toward the side nearest the rod",
+        "Out of the sphere into Earth automatically",
+        "Toward the side farther from the rod",
+        "Into its atomic nuclei"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "The separation between two fixed point charges doubles. How does the electric force magnitude change?",
+      "choices": [
+        "It becomes one-fourth as large",
+        "It doubles",
+        "It becomes four times as large",
+        "It becomes half as large"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Two objects repel electrically. Which conclusion is justified in the simple charged-object model?",
+      "choices": [
+        "They have net charges of the same sign",
+        "Both must be neutral",
+        "They have net charges of opposite signs",
+        "One must have no electrons"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A student says rubbing creates net charge in an isolated pair of objects. What evidence challenges that claim?",
+      "choices": [
+        "Both objects become hotter",
+        "One object's surface becomes smoother",
+        "The pair's total net charge remains unchanged",
+        "The pair has a larger combined volume"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ]
+}

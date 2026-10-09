@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--physics--forces-and-newtons-laws",
+  "title": "Forces and Newton's Laws",
+  "subject": "Science",
+  "category": "Physics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is the SI unit of force?",
+      "choices": [
+        "Joule",
+        "Newton",
+        "Watt",
+        "Meter"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is net force?",
+      "choices": [
+        "The vector sum of all forces acting on an object",
+        "An object's mass divided by time",
+        "The largest single force, ignoring all others",
+        "The number of surfaces touching an object"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is inertia?",
+      "choices": [
+        "An object's change in speed",
+        "Resistance to changes in motion",
+        "The distance an object moves",
+        "A force produced only by friction"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which relationship expresses Newton's second law for constant mass?",
+      "choices": [
+        "F = m/a",
+        "F = m + a",
+        "F = a/m",
+        "F = ma"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is weight?",
+      "choices": [
+        "The gravitational force acting on an object",
+        "The amount of matter in an object",
+        "The volume an object occupies",
+        "The object's resistance to acceleration"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which force is a surface's push perpendicular to that surface?",
+      "choices": [
+        "Friction",
+        "Tension",
+        "Normal force",
+        "Air resistance"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What does Newton's third law describe?",
+      "choices": [
+        "Equal and opposite interaction forces acting on different objects",
+        "A force always pointing in the direction of motion",
+        "Acceleration without any force",
+        "Two equal forces acting on the same object only"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "What motion is possible when the net force on an object is zero?",
+      "choices": [
+        "Only increasing speed",
+        "Rest or constant velocity",
+        "Only circular motion",
+        "Only decreasing speed"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why is greater force needed to produce the same acceleration in a more massive object?",
+      "choices": [
+        "Greater mass automatically reduces the needed force",
+        "Greater mass always means lower friction",
+        "Greater mass means greater inertia",
+        "Force is independent of mass for equal acceleration"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why do third-law force pairs not cancel each other when analyzing one object's net force?",
+      "choices": [
+        "One force is always weaker",
+        "One force occurs much later",
+        "Only one member is a real force",
+        "The pair acts on different objects"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How does friction commonly affect sliding motion?",
+      "choices": [
+        "It always increases speed in the direction of sliding",
+        "It eliminates an object's mass",
+        "It opposes the relative sliding of contacting surfaces",
+        "It acts only without surface contact"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "How do mass and weight differ?",
+      "choices": [
+        "Mass describes matter and inertia; weight is a gravitational force",
+        "Mass depends only on location; weight never does",
+        "Mass is measured in newtons; weight in kilograms",
+        "They are interchangeable in every physical equation"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why does a passenger continue forward when a vehicle stops suddenly?",
+      "choices": [
+        "The vehicle creates a new forward gravitational force",
+        "The passenger's inertia resists the change in motion",
+        "The passenger's mass becomes zero",
+        "All forces disappear inside the vehicle"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What does a seat belt do during a sudden stop?",
+      "choices": [
+        "It removes the passenger's inertia",
+        "It makes the passenger's weight vanish",
+        "It prevents the vehicle from having acceleration",
+        "It exerts a force that changes the passenger's motion"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why does an object moving in a circle require a net inward force?",
+      "choices": [
+        "Its mass must increase every second",
+        "Its speed must always decrease",
+        "Its velocity direction continually changes",
+        "Its position remains fixed"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A 2 kg object has a net force of 10 N. What is its acceleration?",
+      "choices": [
+        "5 m/s²",
+        "20 m/s²",
+        "8 m/s²",
+        "0.2 m/s²"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A box experiences 8 N rightward and 3 N leftward. What is the net force?",
+      "choices": [
+        "0 N",
+        "11 N rightward",
+        "5 N leftward",
+        "5 N rightward"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A book rests on a level table. Which pair of forces on the book balances in this situation?",
+      "choices": [
+        "The book's weight and its pull on Earth",
+        "The book's weight and the table's normal force",
+        "The table's normal force and the book's push on the table",
+        "The book's inertia and Earth's inertia"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A swimmer pushes water backward. What third-law effect helps the swimmer move forward?",
+      "choices": [
+        "The swimmer's weight turns into forward speed",
+        "The water becomes less massive",
+        "The swimmer experiences no external force",
+        "The water pushes the swimmer forward"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "An astronaut moves from Earth to a place with weaker gravity. What happens to mass and weight?",
+      "choices": [
+        "Both must increase",
+        "Mass decreases while weight stays the same",
+        "Mass stays the same while weight decreases",
+        "Both necessarily become zero"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--earth-space-science--minerals-and-their-properties",
+  "title": "Minerals and Their Properties",
+  "subject": "Science",
+  "category": "Earth & Space Science",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which feature is part of a mineral's introductory geological definition?",
+      "choices": [
+        "Formation only by human manufacturing",
+        "A required metallic appearance",
+        "An ordered crystal structure",
+        "A composition consisting of several visible rocks"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What does mineral hardness measure?",
+      "choices": [
+        "Resistance to breaking in any way",
+        "Resistance to scratching",
+        "Mass per unit volume",
+        "Brightness in sunlight"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is a mineral's streak?",
+      "choices": [
+        "The color of its largest crystal",
+        "The direction of its magnetic field",
+        "The size of its grains",
+        "The color of its powder"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What does luster describe?",
+      "choices": [
+        "Its resistance to scratching",
+        "Its electrical charge",
+        "Its melting temperature",
+        "How a mineral's surface reflects light"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is cleavage?",
+      "choices": [
+        "Breaking only into curved irregular surfaces",
+        "Breaking along preferred planes of weakness",
+        "Changing into another element",
+        "Dissolving completely in every liquid"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is fracture in mineral identification?",
+      "choices": [
+        "The growth of a perfect crystal",
+        "A mineral's powder color",
+        "Breakage that does not follow cleavage planes",
+        "Its reaction with oxygen only"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is the hardest reference mineral on the Mohs scale?",
+      "choices": [
+        "Diamond",
+        "Talc",
+        "Calcite",
+        "Gypsum"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why is color alone often unreliable for mineral identification?",
+      "choices": [
+        "Every mineral has the same color",
+        "Impurities can change a mineral's color",
+        "Color determines atomic number directly",
+        "A mineral's color never varies"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why should several mineral properties be tested together?",
+      "choices": [
+        "Different minerals may share one property but differ in others",
+        "One color identifies every mineral conclusively",
+        "Hardness and streak always have identical values",
+        "All tests measure the same characteristic"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why can streak be useful when surface colors vary?",
+      "choices": [
+        "Powder has no chemical composition",
+        "Grinding creates a new element",
+        "Powder color can be more consistent than surface color",
+        "Streak always equals the crystal's shape"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How does crystal structure influence cleavage?",
+      "choices": [
+        "Only overall crystal size controls cleavage",
+        "Cleavage removes all atoms from the surface",
+        "Every mineral must cleave into cubes",
+        "Weak bonding directions can favor particular breakage planes"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What does the Mohs scale provide?",
+      "choices": [
+        "Equal numerical steps in absolute hardness",
+        "A relative ranking of scratch resistance",
+        "A ranking of all mineral masses",
+        "A count of a mineral's electrons"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "How do rocks and minerals relate?",
+      "choices": [
+        "Every mineral consists of several rock types",
+        "Every rock is one chemical element",
+        "Minerals occur only inside sedimentary rocks",
+        "A rock can consist of one or more minerals"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why can mineral density aid identification?",
+      "choices": [
+        "Different compositions and structures can produce different mass-to-volume ratios",
+        "Every mineral has the same density",
+        "Density identifies color without measurement",
+        "Larger samples necessarily have greater density"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why should a student avoid testing an unknown mineral by tasting it?",
+      "choices": [
+        "Taste is required to measure hardness",
+        "Every mineral is edible but tasteless",
+        "It may be hazardous, and safer identification methods are available",
+        "Tasting determines crystal structure precisely"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A specimen scratches gypsum but is scratched by calcite. Gypsum has Mohs hardness 2 and calcite 3. What is supported?",
+      "choices": [
+        "Its hardness is 1",
+        "Its hardness exceeds 10",
+        "Its hardness lies between about 2 and 3",
+        "Its density must be 2.5 g/cm³"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A mineral breaks repeatedly into flat surfaces at similar angles. Which property is being observed?",
+      "choices": [
+        "Cleavage",
+        "Streak",
+        "Luster",
+        "Magnetism"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A dark specimen leaves a reddish-brown powder on a streak plate. Which observation records its streak?",
+      "choices": [
+        "Dark surface color",
+        "The plate's width",
+        "The specimen's total mass",
+        "Reddish-brown"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A mineral has mass 30 g and volume 10 cm³. What is its density?",
+      "choices": [
+        "300 g/cm³",
+        "3 g/cm³",
+        "0.33 g/cm³",
+        "20 g/cm³"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Two yellow minerals look alike, but one scratches glass and the other does not under comparable tests. What does this suggest?",
+      "choices": [
+        "Their hardness differs, so appearance alone is insufficient",
+        "They must be the same mineral",
+        "Both must have identical crystal structure",
+        "The glass test determines only their color"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--statistics-probability--residuals-and-model-fit",
+  "title": "Residuals and Model Fit",
+  "subject": "Math",
+  "category": "Statistics & Probability",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a residual for an observed data point?",
+      "choices": [
+        "Predicted y minus observed y",
+        "Observed y minus predicted y",
+        "Observed x minus predicted y",
+        "The regression slope"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What does a positive residual mean?",
+      "choices": [
+        "The observed point lies above the fitted line",
+        "The point lies below the fitted line",
+        "The slope must be positive",
+        "The x-value is above its mean"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What does a negative residual mean?",
+      "choices": [
+        "The point lies above the fitted line",
+        "The correlation must be negative",
+        "The model has no intercept",
+        "The observed point lies below the fitted line"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "An observed y-value is 12 and its prediction is 10. What is the residual?",
+      "choices": [
+        "−2",
+        "22",
+        "2",
+        "1.2"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "An observed y-value is 7 and its prediction is 11. What is the residual?",
+      "choices": [
+        "4",
+        "−4",
+        "18",
+        "7/11"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What does a zero residual mean?",
+      "choices": [
+        "The prediction equals the observed value for that point",
+        "The model predicts zero",
+        "The slope is zero",
+        "The entire data set has no variation"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is plotted on the vertical axis of a residual plot?",
+      "choices": [
+        "Only predicted y-values",
+        "Only observed x-values",
+        "The original units squared in every case",
+        "Residual values"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why is a curved pattern in a residual plot a concern for a linear model?",
+      "choices": [
+        "It proves all observations are wrong",
+        "It makes every residual zero",
+        "It suggests systematic nonlinear structure remains",
+        "It guarantees perfect fit"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What residual pattern generally supports a linear model?",
+      "choices": [
+        "A clear U-shaped curve",
+        "A patternless scatter around zero",
+        "All residuals large and positive",
+        "A steadily rising residual trend"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "For ŷ = 2x + 1 and point (3, 9), what is the residual?",
+      "choices": [
+        "2",
+        "−2",
+        "7",
+        "8"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why do least-squares calculations square residuals?",
+      "choices": [
+        "To preserve their original signs",
+        "To make each residual equal to its prediction",
+        "To force the line through the origin",
+        "To penalize deviations without sign cancellation"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What does a large absolute residual identify?",
+      "choices": [
+        "A point with a necessarily large x-value",
+        "A point with correlation exactly 1",
+        "A point poorly predicted by the model",
+        "A point that must be removed"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "If residual spread grows as x increases, what does that suggest?",
+      "choices": [
+        "The slope must be zero",
+        "Prediction variability may increase with x",
+        "Every prediction is an overestimate",
+        "The model explains every outcome exactly"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why does a small residual at one point not prove a model is good overall?",
+      "choices": [
+        "Fit must be assessed across the data and context",
+        "One point always determines the best line",
+        "A residual can never equal zero",
+        "All models with intercepts are inaccurate"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "In ordinary least-squares regression with an intercept, what is the sum of the fitted residuals, apart from numerical rounding?",
+      "choices": [
+        "1",
+        "The slope",
+        "The mean of x",
+        "0"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Model A has residuals 1, −1, 2. Model B has 2, −2, 1 on the same data. Which has smaller sum of squared residuals?",
+      "choices": [
+        "Model B: 6 versus 9",
+        "Both have sum 2",
+        "Model A: 6 versus 9",
+        "Both have sum 4"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "For ŷ = 20 − 2x, an observed point is (4, 9). What is the residual?",
+      "choices": [
+        "3",
+        "−3",
+        "12",
+        "−7"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A residual is −5. How should the prediction be described for that point?",
+      "choices": [
+        "It overestimates the observed value by 5",
+        "It underestimates the observed value by 5",
+        "It exactly matches the observation",
+        "Its slope equals −5"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A residual plot has no obvious curve but contains one extreme residual. What is a reasonable next step?",
+      "choices": [
+        "Remove it without checking the observation",
+        "Judge fit using only that single residual",
+        "Ignore it because the plot has no curve",
+        "Investigate the point and its influence"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A model has residuals 3, −3, and 0. What is its sum of squared residuals?",
+      "choices": [
+        "0",
+        "6",
+        "18",
+        "9"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ]
+}

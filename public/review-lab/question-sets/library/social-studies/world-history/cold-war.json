@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "world-history--cold-war",
+  "title": "Cold War",
+  "subject": "Social Studies",
+  "category": "World History",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which two countries led the main rival blocs during the Cold War?",
+      "choices": [
+        "Britain and France",
+        "United States and Soviet Union",
+        "China and Japan",
+        "Germany and Italy"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What did the term Iron Curtain describe?",
+      "choices": [
+        "The division between Soviet-dominated eastern Europe and the West",
+        "A trade barrier around the entire Pacific Ocean",
+        "A defensive wall between Canada and the United States",
+        "The border separating India from Pakistan"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which alliance was established in 1949 for collective defense among the United States, Canada, and several European countries?",
+      "choices": [
+        "Warsaw Pact",
+        "League of Nations",
+        "European Union",
+        "NATO"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which alliance linked the Soviet Union with several eastern European states beginning in 1955?",
+      "choices": [
+        "NATO",
+        "SEATO",
+        "Warsaw Pact",
+        "OPEC"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What was the Berlin Airlift of 1948–1949?",
+      "choices": [
+        "An effort to supply West Berlin by air during a blockade",
+        "A campaign to bomb East Berlin after reunification",
+        "An evacuation of every German city",
+        "An invasion of Germany by neutral states"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which event brought the United States and Soviet Union close to nuclear conflict in 1962?",
+      "choices": [
+        "Suez Crisis",
+        "Cuban Missile Crisis",
+        "Hungarian uprising",
+        "Berlin Wall's fall"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What did détente mean in Cold War diplomacy?",
+      "choices": [
+        "The merger of rival military alliances",
+        "The surrender of all nuclear weapons",
+        "An easing of tensions between rival powers",
+        "The end of diplomatic negotiations"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why is the conflict called a cold war despite wars in Korea and Vietnam?",
+      "choices": [
+        "All conflicts occurred in cold climates",
+        "There were no combat deaths during the period",
+        "Every dispute was resolved by trade agreements",
+        "The superpowers avoided direct full-scale war against each other"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What was the central purpose of the U.S. policy of containment?",
+      "choices": [
+        "To limit the spread of Soviet influence and communism",
+        "To prohibit all contact with European governments",
+        "To place every country under direct American rule",
+        "To restore European colonies after independence"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "How did the Marshall Plan relate to Cold War competition?",
+      "choices": [
+        "It required western Europe to join the Warsaw Pact",
+        "It supported European recovery and strengthened ties with the United States",
+        "It financed the Soviet invasion of Afghanistan",
+        "It replaced every European national government"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why did East German authorities build the Berlin Wall in 1961?",
+      "choices": [
+        "To mark Germany's peaceful reunification",
+        "To stop western tourists from entering all of Europe",
+        "To defend Berlin from an ongoing French invasion",
+        "To prevent large-scale departures to the West"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "How did nuclear deterrence affect superpower behavior?",
+      "choices": [
+        "It guaranteed that neither side would develop weapons",
+        "It made conventional conflicts impossible",
+        "The prospect of devastating retaliation discouraged direct attack",
+        "It transferred military decisions to the United Nations alone"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What did nonaligned governments generally seek during the Cold War?",
+      "choices": [
+        "Independence from formal alignment with either major bloc",
+        "Membership in both NATO and the Warsaw Pact",
+        "A return to colonial rule by European powers",
+        "The abolition of their own national governments"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why are some Cold War conflicts described as proxy wars?",
+      "choices": [
+        "Only unmanned machines participated in them",
+        "Rival powers supported local sides without directly fighting each other at full scale",
+        "They involved no local political goals",
+        "They were fought solely through economic statistics"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What was a global effect of Cold War competition in science and technology?",
+      "choices": [
+        "An agreement to stop satellite development",
+        "The elimination of military research spending",
+        "The abandonment of space exploration by both sides",
+        "An intensified space race and investment in research"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Which Cold War sequence is correctly ordered?",
+      "choices": [
+        "Cuban Missile Crisis → Berlin Airlift → Berlin Wall falls",
+        "Berlin Wall falls → Berlin Airlift → Cuban Missile Crisis",
+        "Berlin Airlift → Cuban Missile Crisis → Berlin Wall falls",
+        "Berlin Airlift → Berlin Wall falls → Cuban Missile Crisis"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Why is it incomplete to explain a Cold War-era civil war only as a superpower contest?",
+      "choices": [
+        "Local histories and political goals also shaped the conflict",
+        "Local groups had no influence on the fighting",
+        "All governments followed the same economic system",
+        "The superpowers never provided assistance abroad"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Two rival powers negotiate limits on nuclear weapons while remaining political opponents. Which concept best fits?",
+      "choices": [
+        "Decolonization",
+        "Détente",
+        "Annexation",
+        "Autarky"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Which statement best distinguishes the fall of the Berlin Wall from the dissolution of the Soviet Union?",
+      "choices": [
+        "Both occurred before NATO was founded",
+        "The Soviet Union dissolved decades before the wall was built",
+        "The wall opened in 1989; the Soviet Union dissolved in 1991",
+        "The wall opened after the Soviet Union joined NATO"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which source pairing would best help compare how the rival blocs presented the same Cold War event?",
+      "choices": [
+        "Trade statistics from countries not involved in the event",
+        "A later summary based only on one government's archives",
+        "Military equipment lists without discussion of the event",
+        "Contemporary American and Soviet newspaper reports"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

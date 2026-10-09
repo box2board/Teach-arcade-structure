@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--pre-algebra--unit-rates-and-dimensional-analysis",
+  "title": "Unit Rates and Dimensional Analysis",
+  "subject": "Math",
+  "category": "Pre-Algebra & Number Sense",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a unit rate?",
+      "choices": [
+        "A comparison with equal numerator and denominator",
+        "A comparison expressed per one unit",
+        "A rate without measurement units",
+        "A rate that uses only whole numbers"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "A car travels 180 miles in 3 hours. What is its average speed?",
+      "choices": [
+        "60 miles per hour",
+        "540 miles per hour",
+        "90 miles per hour",
+        "183 miles per hour"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Five notebooks cost $15. What is the price per notebook?",
+      "choices": [
+        "$5",
+        "$10",
+        "$75",
+        "$3"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "How many centimeters are in 2.5 meters, using 100 centimeters per meter?",
+      "choices": [
+        "25 centimeters",
+        "0.025 centimeters",
+        "250 centimeters",
+        "2500 centimeters"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which ratio can convert minutes to hours by multiplication?",
+      "choices": [
+        "60 minutes / 1 hour",
+        "1 hour / 60 minutes",
+        "60 hours / 1 minute",
+        "1 minute / 60 hours"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "A faucet delivers 12 liters in 4 minutes. What is its flow rate?",
+      "choices": [
+        "3 liters per minute",
+        "48 liters per minute",
+        "8 liters per minute",
+        "16 liters per minute"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "How many inches are in 3 feet, using 12 inches per foot?",
+      "choices": [
+        "15 inches",
+        "4 inches",
+        "24 inches",
+        "36 inches"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why should units be included when finding a unit rate?",
+      "choices": [
+        "They make every answer a whole number",
+        "They replace the need for division",
+        "They identify the quantities being compared",
+        "They always cancel to leave no units"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Which calculation converts 90 kilometers to meters?",
+      "choices": [
+        "90 kilometers ÷ 1000 meters/kilometer",
+        "90 kilometers × 1000 meters/kilometer",
+        "90 kilometers × 1000 kilometers/meter",
+        "90 kilometers ÷ 100 meters/kilometer"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "A 12-ounce cereal box costs $3.60. What is the cost per ounce?",
+      "choices": [
+        "$0.30 per ounce",
+        "$3.33 per ounce",
+        "$0.03 per ounce",
+        "$4.32 per ounce"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "A recipe uses 2 cups of flour for 8 servings. How many cups are used per serving?",
+      "choices": [
+        "4 cups",
+        "1/2 cup",
+        "1/8 cup",
+        "1/4 cup"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "A machine makes 150 parts in 5 minutes at a constant rate. How many parts does it make in 12 minutes?",
+      "choices": [
+        "1800 parts",
+        "62.5 parts",
+        "360 parts",
+        "162 parts"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Which units result from multiplying meters per second by seconds?",
+      "choices": [
+        "Meters per second squared",
+        "Meters",
+        "Seconds per meter",
+        "Square meters"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Which conversion factor equals 1 because numerator and denominator describe the same length?",
+      "choices": [
+        "100 centimeters / 1 meter",
+        "10 centimeters / 1 meter",
+        "1 centimeter / 100 meters",
+        "100 meters / 1 centimeter"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A runner's speed is 6 meters per second. What is that speed in meters per minute?",
+      "choices": [
+        "0.1 meters per minute",
+        "66 meters per minute",
+        "36 meters per minute",
+        "360 meters per minute"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A 10-ounce bag costs $2.50 and a 16-ounce bag costs $3.52. Which has the lower price per ounce?",
+      "choices": [
+        "The 10-ounce bag at $0.25 per ounce",
+        "The 16-ounce bag at $0.352 per ounce",
+        "The 16-ounce bag at $0.22 per ounce",
+        "The 10-ounce bag at $0.10 per ounce"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A cyclist rides 18 miles in 1.5 hours. At that speed, how far will the cyclist travel in 2.5 hours?",
+      "choices": [
+        "45 miles",
+        "30 miles",
+        "27 miles",
+        "12 miles"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Water flows at 2.4 liters per minute. How many milliliters flow in 30 seconds, using 1000 milliliters per liter?",
+      "choices": [
+        "1200 milliliters",
+        "72000 milliliters",
+        "2400 milliliters",
+        "12 milliliters"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A rectangle is 2 meters by 50 centimeters. What is its area in square meters?",
+      "choices": [
+        "100 square meters",
+        "0.1 square meter",
+        "10 square meters",
+        "1 square meter"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A car travels at 72 kilometers per hour. What is its speed in meters per second, using 1000 meters per kilometer and 3600 seconds per hour?",
+      "choices": [
+        "259.2 meters per second",
+        "2 meters per second",
+        "20 meters per second",
+        "72000 meters per second"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ]
+}

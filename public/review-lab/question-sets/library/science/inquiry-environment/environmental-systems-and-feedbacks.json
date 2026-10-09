@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--inquiry-environment--environmental-systems-and-feedbacks",
+  "title": "Environmental Systems and Feedbacks",
+  "subject": "Science",
+  "category": "Scientific Inquiry & Environmental Science",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a system boundary?",
+      "choices": [
+        "A defined separation between a system and its surroundings",
+        "A guarantee that the system exchanges nothing",
+        "A line that must follow a national border",
+        "A physical wall required around every system"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is an input to an environmental system?",
+      "choices": [
+        "Material or energy leaving it",
+        "Material or energy entering the chosen system",
+        "The total amount already stored only",
+        "A process that cannot be measured"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is a system stock?",
+      "choices": [
+        "Only the speed of material movement",
+        "A one-time label for a species",
+        "An amount accumulated within a system",
+        "The number of possible models"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is a positive feedback?",
+      "choices": [
+        "Any change that improves an outcome for people",
+        "A process that opposes the initial disturbance",
+        "A process with no influence on later conditions",
+        "A process that amplifies an initial change"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is a negative feedback?",
+      "choices": [
+        "A process that opposes an initial change",
+        "Any change that produces an undesirable outcome",
+        "A process that amplifies the initial disturbance",
+        "A transfer that changes no other process"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is a time lag in a system response?",
+      "choices": [
+        "The maximum possible size of a response",
+        "A delay between a cause and an observable effect",
+        "A response occurring before its cause",
+        "A difference only in the units used"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is dynamic equilibrium in a reservoir's material balance?",
+      "choices": [
+        "All transfers permanently stop",
+        "Inputs rise while outputs remain zero",
+        "Inputs and outputs balance while transfers continue",
+        "Every stored particle is motionless"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why does a positive feedback not mean a desirable outcome?",
+      "choices": [
+        "Positive means all organisms benefit equally",
+        "Feedback signs are based only on opinions",
+        "Amplification always removes every risk",
+        "Positive describes amplification, not value or benefit"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How can loss of reflective snow contribute to further warming?",
+      "choices": [
+        "Darker surfaces absorb more sunlight, encouraging more snow loss",
+        "Darker surfaces reflect more sunlight than snow",
+        "Snow loss leaves energy absorption unchanged",
+        "Melting always increases surface reflectivity"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "How can increased plant uptake of carbon dioxide oppose an initial rise in carbon dioxide under suitable conditions?",
+      "choices": [
+        "It increases carbon dioxide while opposing the rise",
+        "It removes some of the added carbon dioxide",
+        "It guarantees carbon dioxide reaches zero",
+        "It stops carbon from moving through organisms"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why can a system appear stable while large flows continue?",
+      "choices": [
+        "A steady stock proves inputs and outputs are zero",
+        "All environmental systems exchange no energy",
+        "Balanced inputs and outputs can maintain a steady stock",
+        "Any material flow must increase the stock"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why can a delayed response complicate management?",
+      "choices": [
+        "Effects occur only while an action is still taking place",
+        "Delayed effects can be ignored when choosing actions",
+        "Time lags guarantee there is no causal relationship",
+        "Present actions may have effects not visible immediately"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What is an environmental threshold?",
+      "choices": [
+        "A condition beyond which a system's behavior can change substantially",
+        "A maximum instrument reading unrelated to system behavior",
+        "A condition that is identical in all ecosystems",
+        "A point beyond which measurement is impossible"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why are feedbacks important in environmental models?",
+      "choices": [
+        "They guarantee that models have no uncertainty",
+        "They connect changes to processes that modify later changes",
+        "They replace the need for observational evidence",
+        "They ensure every response is proportional and immediate"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why can changing a system boundary change an assessment?",
+      "choices": [
+        "It changes conservation of matter within the same process",
+        "It makes excluded effects cease to exist physically",
+        "It changes which transfers and effects are counted",
+        "It guarantees that a narrower boundary captures more effects"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A pond receives 50 L per minute and loses 30 L per minute, with other flows negligible. What is its storage change?",
+      "choices": [
+        "A decrease of 20 L per minute",
+        "An increase of 80 L per minute",
+        "No change",
+        "An increase of 20 L per minute"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Higher temperature causes more ice melt, and the resulting darker surface increases warming. What feedback is described?",
+      "choices": [
+        "Positive feedback",
+        "Negative feedback",
+        "No feedback",
+        "A permanently closed material cycle"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A population grows, increasing competition that lowers its growth rate. What feedback is described?",
+      "choices": [
+        "Positive feedback",
+        "Negative feedback",
+        "No interaction between population and resources",
+        "A process making resource supply unlimited"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A lake's pollutant input falls, but sediments continue releasing old pollution. What helps explain delayed improvement?",
+      "choices": [
+        "All pollution vanishes as soon as inputs decline",
+        "Stored pollution can never reenter the water",
+        "Stored material and time lags",
+        "The decline proves there are no continuing internal flows"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A model counts emissions during product use but excludes manufacturing. How should its result be interpreted?",
+      "choices": [
+        "It necessarily represents all life-cycle stages",
+        "It proves manufacturing has no impacts",
+        "It can be compared directly with any differently bounded study",
+        "It describes the chosen boundary, not the full product life cycle"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

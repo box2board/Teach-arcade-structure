@@ -1,0 +1,254 @@
+{
+  "schemaVersion": 1,
+  "id": "geography--climate",
+  "title": "Climate",
+  "subject": "Social Studies",
+  "category": "Geography",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is climate?",
+      "choices": [
+        "Conditions at one place during a single afternoon",
+        "Long-term patterns of weather in a region",
+        "Only the temperature at noon",
+        "Only the total rain in one storm"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is weather?",
+      "choices": [
+        "Long-term average conditions over decades",
+        "The location of continents",
+        "The distribution of soil types",
+        "Short-term atmospheric conditions"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which factor most directly affects the angle of sunlight reaching a region?",
+      "choices": [
+        "Latitude",
+        "Population density",
+        "Political borders",
+        "Language"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "How does temperature generally change with increasing elevation in the lower atmosphere?",
+      "choices": [
+        "It increases at the same rate everywhere",
+        "It remains identical at every elevation",
+        "It decreases",
+        "It becomes unrelated to altitude"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is precipitation?",
+      "choices": [
+        "The movement of tectonic plates",
+        "Water falling from the atmosphere as rain, snow, or other forms",
+        "The upward movement of molten rock",
+        "The erosion of coastlines by tides"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is a rain shadow?",
+      "choices": [
+        "A drier area on the leeward side of a mountain range",
+        "A wetland formed by river flooding",
+        "A region shaded by tall city buildings",
+        "A zone defined by constant ocean fog"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is the greenhouse effect?",
+      "choices": [
+        "Cooling caused by all sunlight being reflected",
+        "Heating caused only by volcanoes",
+        "Cooling caused by ocean tides",
+        "Warming caused by gases absorbing and re-emitting outgoing infrared energy"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why do coastal places often have milder temperatures than inland places at similar latitude?",
+      "choices": [
+        "Coasts always receive less sunlight",
+        "Ocean water prevents all temperature changes",
+        "Water heats and cools more slowly than land",
+        "Every coastal location has the same elevation"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How can ocean currents affect climate?",
+      "choices": [
+        "They redistribute heat and influence nearby conditions",
+        "They determine political borders",
+        "They eliminate seasonal change worldwide",
+        "They stop atmospheric circulation"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why does the windward side of a mountain often receive more precipitation?",
+      "choices": [
+        "Descending air always gains moisture from rocks",
+        "Rising moist air cools and water vapor condenses",
+        "Mountains generate water without atmospheric moisture",
+        "Windward slopes receive no solar energy"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What causes Earth's seasons primarily?",
+      "choices": [
+        "Large changes in the sun's size each month",
+        "Daily changes in Earth's rotation direction",
+        "The moon blocking sunlight each winter",
+        "Earth's axial tilt as it orbits the sun"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why are the tropics generally warmer than polar regions?",
+      "choices": [
+        "They are always closer to the sun than any other region",
+        "They contain no clouds",
+        "They receive more direct solar energy over the year",
+        "They have no nighttime hours"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "How does increased greenhouse gas concentration affect Earth's energy balance?",
+      "choices": [
+        "It reduces heat loss to space until a warmer balance develops",
+        "It blocks every form of incoming sunlight",
+        "It removes all water vapor from the atmosphere",
+        "It prevents oceans from absorbing heat"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why is one unusually cold day insufficient to disprove long-term warming?",
+      "choices": [
+        "Cold days cannot occur during winter",
+        "Weather varies over short periods while climate describes longer patterns",
+        "Climate depends only on one city's temperature",
+        "Long-term records never include daily observations"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why do climate classifications consider precipitation as well as temperature?",
+      "choices": [
+        "Temperature has no effect on ecosystems",
+        "Precipitation determines latitude",
+        "Every region has identical rainfall",
+        "Moisture patterns influence environments alongside heat"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A town east of a mountain range is dry while prevailing winds arrive from the west. Which process may explain this?",
+      "choices": [
+        "A volcanic eruption",
+        "A change in longitude alone",
+        "A rain shadow",
+        "A coastal tide"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Two cities share a latitude, but one lies at high elevation. Which is generally expected, other factors equal?",
+      "choices": [
+        "The higher city is cooler",
+        "Both cities must have identical temperatures",
+        "The higher city is always wetter",
+        "The lower city has no seasonal variation"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Which evidence is most useful for studying a long-term climate trend?",
+      "choices": [
+        "One afternoon's temperature",
+        "Consistent measurements collected over many decades",
+        "A single photograph of a snowstorm",
+        "One week's tourist reservations"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A coastal city has smaller seasonal temperature changes than an inland city at similar latitude. What is a likely explanation?",
+      "choices": [
+        "Latitude changes daily at the coast",
+        "The coast receives no winter sunlight",
+        "The inland city has no atmospheric pressure",
+        "The ocean moderates temperature"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which statement correctly distinguishes climate from weather?",
+      "choices": [
+        "Today's rain describes climate; a thirty-year average describes weather",
+        "Both terms describe only extreme storms",
+        "A thirty-year rainfall average describes climate; today's rain describes weather",
+        "Neither term includes precipitation"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ],
+  "referenceUrls": [
+    "https://www.noaa.gov/climate-education"
+  ]
+}

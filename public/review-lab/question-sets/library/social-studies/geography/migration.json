@@ -1,0 +1,255 @@
+{
+  "schemaVersion": 1,
+  "id": "geography--migration",
+  "title": "Migration",
+  "subject": "Social Studies",
+  "category": "Geography",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is migration in human geography?",
+      "choices": [
+        "Movement of people involving a change in usual residence",
+        "Any shipment of goods between ports",
+        "Only travel for a one-day holiday",
+        "Only changes in a city's street names"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is immigration?",
+      "choices": [
+        "Movement out of a country to live elsewhere",
+        "Movement of goods across a border",
+        "Movement into a country to live there",
+        "Movement between rooms in one home"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is emigration?",
+      "choices": [
+        "Movement into a country to live there",
+        "Movement out of a country to live elsewhere",
+        "A country's total number of births",
+        "A government's count of households"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is internal migration?",
+      "choices": [
+        "A move between two sovereign countries",
+        "A daily trip to work without changing residence",
+        "A shipment of products between factories",
+        "A residential move within the same country"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is a push factor?",
+      "choices": [
+        "A condition encouraging people to leave a place",
+        "A condition attracting people to a destination",
+        "A map's measure of elevation",
+        "An official count of imports"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is a pull factor?",
+      "choices": [
+        "A condition forcing every resident to emigrate",
+        "A change in a country's birth rate",
+        "A condition attracting people to a destination",
+        "The cost of printing travel documents"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What are remittances?",
+      "choices": [
+        "Taxes paid only on imported vehicles",
+        "Money migrants send to people in their place of origin",
+        "Payments governments make to foreign armies",
+        "The total cost of building a highway"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why can jobs influence migration?",
+      "choices": [
+        "Employment has no relationship to residential decisions",
+        "Only retired people can migrate for economic reasons",
+        "Every migrant is guaranteed work on arrival",
+        "People may move toward employment or away from limited opportunities"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How can family networks affect migration?",
+      "choices": [
+        "They may provide information, housing, and support for newcomers",
+        "They eliminate every legal and financial barrier",
+        "They require every family member to move at once",
+        "They prevent migrants from maintaining ties across borders"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why can conflict cause forced displacement?",
+      "choices": [
+        "Conflict automatically gives every person a new citizenship",
+        "Displacement occurs only after a formal peace treaty",
+        "Threats to safety may leave people with little practical choice about leaving",
+        "Only economic preferences can cause migration"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How does an internally displaced person differ from someone displaced across an international border?",
+      "choices": [
+        "The internally displaced person necessarily has a new nationality",
+        "The internally displaced person remains within the same country",
+        "Cross-border movement always occurs for tourism",
+        "Internal displacement involves goods rather than people"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why is it risky to assume every migrant moves for one reason?",
+      "choices": [
+        "Every migration decision has an identical cause",
+        "All migrants move voluntarily without constraints",
+        "Destination conditions are never relevant",
+        "Economic, family, safety, environmental, and other factors can interact"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "How can migration affect a destination's population?",
+      "choices": [
+        "It can change size, age structure, skills, and cultural patterns",
+        "It changes only the number of buildings",
+        "It necessarily makes every resident the same age",
+        "It has no relationship to local services"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What challenge can origin communities face when many skilled workers leave?",
+      "choices": [
+        "An automatic doubling of the trained workforce",
+        "The immediate end of all household income",
+        "Reduced availability of certain skills and services",
+        "The disappearance of every family connection"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why can distance and cost affect migration patterns?",
+      "choices": [
+        "Every destination costs the same to reach",
+        "They influence which destinations are accessible",
+        "Distance prevents all long-distance movement",
+        "Transportation costs are unrelated to decisions"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A family leaves an area because repeated crop failures threaten its livelihood. Which factor is most clearly illustrated?",
+      "choices": [
+        "A destination pull factor",
+        "An increase in export prices alone",
+        "A decline in road traffic alone",
+        "A push factor"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A worker moves to a city after receiving a job offer. Which factor is most directly involved?",
+      "choices": [
+        "A pull factor",
+        "A decline in natural increase",
+        "A change in latitude alone",
+        "A reduction in remittances"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A person leaves Country A and settles in Country B. How is the same move described?",
+      "choices": [
+        "Immigration to A and emigration from B",
+        "Internal migration in both countries",
+        "Emigration from A and immigration to B",
+        "Natural population increase in both countries"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A person moves from a rural town to a city within the same nation. What type of migration is this?",
+      "choices": [
+        "International immigration",
+        "Internal migration",
+        "International emigration",
+        "Cross-border displacement"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Why should a migration study compare origin and destination conditions?",
+      "choices": [
+        "Only destination climate can influence movement",
+        "Origin communities experience no consequences",
+        "Migration patterns can be explained without geographic context",
+        "The decision and its effects involve both places"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ],
+  "referenceUrls": [
+    "https://www.iom.int/key-migration-terms"
+  ]
+}
+

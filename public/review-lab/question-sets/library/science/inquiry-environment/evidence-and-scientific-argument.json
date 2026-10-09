@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--inquiry-environment--evidence-and-scientific-argument",
+  "title": "Evidence and Scientific Argument",
+  "subject": "Science",
+  "category": "Scientific Inquiry & Environmental Science",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a scientific claim?",
+      "choices": [
+        "A raw measurement with no interpretation",
+        "A statement proposed as an answer or explanation",
+        "An instrument's unit symbol",
+        "A bibliography entry only"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What counts as empirical evidence?",
+      "choices": [
+        "The popularity of an idea alone",
+        "An author's confidence alone",
+        "A preferred outcome",
+        "Relevant observations or measurements"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is reasoning in a claim-evidence-reasoning explanation?",
+      "choices": [
+        "The connection between evidence and claim using scientific principles",
+        "A repetition of the title",
+        "A list of equipment only",
+        "An unsupported opinion"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is a counterargument?",
+      "choices": [
+        "A requirement to reject all evidence",
+        "A second copy of the same conclusion",
+        "An alternative explanation or challenge to a claim",
+        "A measurement unit"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is a limitation of evidence?",
+      "choices": [
+        "Proof that every result is false",
+        "A reason never to collect more data",
+        "An explanation unrelated to methods",
+        "A factor restricting what the evidence can support"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is anecdotal evidence?",
+      "choices": [
+        "A carefully sampled population measurement in every case",
+        "A complete controlled experiment by definition",
+        "An individual account that may not represent a broader pattern",
+        "A mathematical proof"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is confirmation bias?",
+      "choices": [
+        "Favoring information that supports an existing belief",
+        "Recording data before forming a conclusion",
+        "Considering contradictory results fairly",
+        "Reporting uncertainty explicitly"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why should evidence be relevant to the specific claim?",
+      "choices": [
+        "Any number supports every scientific claim",
+        "A true observation may still fail to address the proposed explanation",
+        "Relevance depends only on source popularity",
+        "Measurements always have identical meanings"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why can a large sample help support a population-level conclusion?",
+      "choices": [
+        "It automatically removes every sampling bias",
+        "It guarantees causation",
+        "It makes measurement quality irrelevant",
+        "It can reduce random sampling variation when collected appropriately"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why should alternative explanations be considered?",
+      "choices": [
+        "Science requires accepting all explanations equally",
+        "More than one process may fit the same observations",
+        "Alternatives replace the need for data",
+        "A claim cannot be revised once written"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why is uncertainty part of a strong scientific argument?",
+      "choices": [
+        "It proves that no knowledge is possible",
+        "It means the evidence must be hidden",
+        "It makes the strength and limits of the inference clearer",
+        "It requires choosing the least likely conclusion"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why should a scientific argument separate observation from interpretation?",
+      "choices": [
+        "Readers need to identify what was measured and what was inferred",
+        "Interpretations are always direct measurements",
+        "Observations cannot be communicated",
+        "Only personal opinions belong in conclusions"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why is a scientist's authority alone insufficient evidence?",
+      "choices": [
+        "The claim still requires methods and data that can be evaluated",
+        "Qualified scientists never produce useful work",
+        "Credentials determine every experimental result",
+        "Scientific claims are settled by voting"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "How should conflicting reliable evidence be handled?",
+      "choices": [
+        "Choose only the preferred result",
+        "Assume the later result must be false",
+        "Compare methods, conditions, and possible explanations for the difference",
+        "Combine unrelated values without examining context"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What strengthens an argument about a causal effect?",
+      "choices": [
+        "A graph with two trending variables alone",
+        "Evidence that addresses competing explanations and isolates the proposed cause",
+        "A single testimonial alone",
+        "A conclusion chosen before collecting observations"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A claim says a fertilizer improves growth. The evidence is only the fertilizer's color. What is the main weakness?",
+      "choices": [
+        "The claim must be true because color is observable",
+        "Any observation automatically measures growth",
+        "A fertilizer's appearance determines its effect on all plants",
+        "The evidence does not measure the claimed growth effect"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "One plant grows better after treatment, but no comparison plants are measured. What conclusion is most appropriate?",
+      "choices": [
+        "The treatment is proven effective for all plants",
+        "The result proves that sunlight has no effect",
+        "The observation alone does not isolate the treatment's effect",
+        "Further measurements cannot improve the evidence"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Two materials are compared in repeated fair tests; one consistently transfers less heat. Which claim is best supported?",
+      "choices": [
+        "Under tested conditions, it is the better thermal insulator",
+        "It is the strongest material under every load",
+        "It never transfers any energy",
+        "It is better for every possible engineering purpose"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A report concludes that every bird species benefits from one feeding method after testing one species. What is the problem?",
+      "choices": [
+        "A study cannot measure feeding",
+        "One bird species represents every species perfectly",
+        "The conclusion needs no conditions",
+        "The conclusion extends beyond the sampled evidence"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "New reliable results contradict a previous explanation. Which response best reflects argument from evidence?",
+      "choices": [
+        "Exclude all new results automatically",
+        "Reassess the explanation and the new results together",
+        "Keep the explanation because it was published first",
+        "Treat disagreement as proof that no testing is useful"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}

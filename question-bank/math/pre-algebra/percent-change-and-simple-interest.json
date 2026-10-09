@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--pre-algebra--percent-change-and-simple-interest",
+  "title": "Percent Change and Simple Interest",
+  "subject": "Math",
+  "category": "Pre-Algebra & Number Sense",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What quantity is used as the denominator in percent change?",
+      "choices": [
+        "The new amount",
+        "The change plus the new amount",
+        "The larger amount in every case",
+        "The original amount"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which formula gives simple interest I for principal P, annual decimal rate r, and time t in years?",
+      "choices": [
+        "I = P(1 + r)ᵗ",
+        "I = P + r + t",
+        "I = Prt",
+        "I = P/r"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "How is 6% written as a decimal rate?",
+      "choices": [
+        "0.6",
+        "0.06",
+        "6",
+        "0.006"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What does principal mean in a simple-interest calculation?",
+      "choices": [
+        "The initial amount invested or borrowed",
+        "The interest earned each year",
+        "The final account balance",
+        "The annual percentage rate"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "A price rises from $40 to $50. What is the percent increase?",
+      "choices": [
+        "20%",
+        "10%",
+        "125%",
+        "25%"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "A value falls from 80 to 60. What is the percent decrease?",
+      "choices": [
+        "20%",
+        "33 1/3%",
+        "25%",
+        "75%"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Under simple interest, how does interest earned change over equal time intervals at a fixed rate and principal?",
+      "choices": [
+        "The amount doubles each interval",
+        "The same amount is earned each interval",
+        "The amount falls each interval",
+        "The rate increases each interval"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why does a 20% increase followed by a 20% decrease not restore the original value?",
+      "choices": [
+        "The decrease uses a different starting amount",
+        "The percentages are added before use",
+        "A decrease always exceeds any increase",
+        "Percentages apply only to whole numbers"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "An $800 deposit earns 5% simple interest for 2 years. How much interest is earned?",
+      "choices": [
+        "$40",
+        "$880",
+        "$82",
+        "$80"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "A $500 loan earns 4% simple interest for 3 years. What is the total amount owed?",
+      "choices": [
+        "$60",
+        "$520",
+        "$560",
+        "$620"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Which multiplier represents a 12% decrease?",
+      "choices": [
+        "1.12",
+        "0.88",
+        "0.12",
+        "0.98"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Which multiplier represents a 35% increase?",
+      "choices": [
+        "1.35",
+        "0.35",
+        "0.65",
+        "1.035"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why must 9 months be converted to years when using an annual simple-interest rate?",
+      "choices": [
+        "Interest is never earned for less than a year",
+        "Months cannot be represented as fractions",
+        "The principal must be divided by 9",
+        "The time unit must match the rate's time unit"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "A quantity grows from 200 to 260. What is the percent increase?",
+      "choices": [
+        "60%",
+        "23%",
+        "30%",
+        "130%"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A store discounts a $90 item by 10% and then applies 5% tax to the discounted price. What is the final cost?",
+      "choices": [
+        "$85.50",
+        "$85.05",
+        "$94.50",
+        "$81.00"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A $100 price rises 10% and then falls 10%. What is the final price?",
+      "choices": [
+        "$99",
+        "$100",
+        "$90",
+        "$101"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A $1200 investment earns $180 in simple interest over 3 years. What is its annual interest rate?",
+      "choices": [
+        "15%",
+        "0.5%",
+        "20%",
+        "5%"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "How long does $600 need to earn $90 at 5% annual simple interest?",
+      "choices": [
+        "1.5 years",
+        "5 years",
+        "3 years",
+        "2 years"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A population decreases from 500 to 400, then rises back to 500. What percent increase restores it?",
+      "choices": [
+        "20%",
+        "25%",
+        "10%",
+        "100%"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A $2000 loan charges 6% annual simple interest for 9 months. How much interest is due?",
+      "choices": [
+        "$90",
+        "$120",
+        "$1080",
+        "$180"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--geometry--geometric-proof-and-reasoning",
+  "title": "Geometric Proof and Reasoning",
+  "subject": "Math",
+  "category": "Geometry",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a geometric proof?",
+      "choices": [
+        "A drawing that looks convincing",
+        "A list of measurements from one example",
+        "A guess about a diagram",
+        "A logical argument based on accepted facts and justified steps"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is a conjecture?",
+      "choices": [
+        "A proven theorem in every case",
+        "A definition of a shape",
+        "A statement proposed from patterns that still needs justification",
+        "A calculation with no variables"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is a counterexample?",
+      "choices": [
+        "One case that agrees with the claim",
+        "One valid case that disproves a universal claim",
+        "An unrelated diagram",
+        "A theorem that uses the same words"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which property supports 'if a = b and b = c, then a = c'?",
+      "choices": [
+        "The transitive property of equality",
+        "The distributive property",
+        "The commutative property of multiplication",
+        "The identity property of addition"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is given information in a proof?",
+      "choices": [
+        "Every feature that appears visually true",
+        "Only the final conclusion",
+        "Any unmeasured length in the picture",
+        "Facts stated or marked as assumptions for the problem"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which fact justifies that a segment equals itself in length?",
+      "choices": [
+        "The zero-product property",
+        "The triangle inequality",
+        "The reflexive property",
+        "The parallel postulate"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What distinguishes a theorem from a conjecture?",
+      "choices": [
+        "A theorem always involves numbers",
+        "A theorem has a proof under its stated assumptions",
+        "A conjecture is always false",
+        "A theorem cannot have conditions"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why is measuring one drawn triangle insufficient to prove a claim about all triangles?",
+      "choices": [
+        "One example does not establish every possible case",
+        "Triangle measurements never use degrees",
+        "A drawing cannot show a triangle",
+        "Every universal claim is false"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What is the converse of 'If a figure is a square, then it is a rectangle'?",
+      "choices": [
+        "If a figure is not a square, then it is not a rectangle",
+        "If a figure is a square, then it is not a rectangle",
+        "Every rectangle has equal sides",
+        "If a figure is a rectangle, then it is a square"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Which figure disproves 'Every rectangle is a square'?",
+      "choices": [
+        "A square with side 4",
+        "A rectangle with all sides 6",
+        "A rectangle with sides 3 and 5",
+        "A circle with radius 3"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Which statement is an example of deductive reasoning?",
+      "choices": [
+        "Several measured triangles suggest an angle-sum pattern",
+        "A triangle's angles total 180°, so the third angle is 70° when the others are 50° and 60°",
+        "A shape looks symmetric, so it probably is",
+        "Three examples make every quadrilateral a rectangle"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why should a diagram not be assumed to be drawn to scale?",
+      "choices": [
+        "Visual appearance may not match the stated measurements",
+        "Every diagram has incorrect labels",
+        "Angles cannot be shown in drawings",
+        "Only circles can be drawn accurately"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "If AB = CD, what justifies replacing AB with CD in an equation?",
+      "choices": [
+        "Multiplying both sides by zero",
+        "The converse of every theorem",
+        "Rounding to the nearest integer",
+        "Substitution"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Which condition is needed before using corresponding-angle equality to prove two lines parallel?",
+      "choices": [
+        "The lines must already be labeled parallel",
+        "The angles must both be acute",
+        "The angles must be corresponding angles formed by the same transversal",
+        "The transversal must be horizontal"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Which statement uses inductive reasoning?",
+      "choices": [
+        "Applying an established theorem to a specified triangle",
+        "Observing several cases and proposing a general pattern",
+        "Using equality substitution in a proof",
+        "Deriving a conclusion from given premises"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A student proves two triangles congruent and then concludes their corresponding sides are equal. What supports that final step?",
+      "choices": [
+        "Corresponding parts of congruent triangles are equal",
+        "All triangles have equal sides",
+        "Every pair of angles is supplementary",
+        "Equal perimeter alone proves congruence"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Which example disproves 'If a quadrilateral has four equal sides, then it has four right angles'?",
+      "choices": [
+        "A square with side 5",
+        "A rectangle with sides 2 and 6",
+        "A trapezoid with unequal sides",
+        "A rhombus with a 60° angle"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "If a proof needs x = 4 but its steps show only x² = 16, what remains to be justified?",
+      "choices": [
+        "Why 16 is positive",
+        "Why x must equal 16",
+        "Why x = −4 is excluded",
+        "Why squaring changes 4 to 8"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Why is the converse of a true statement not automatically true?",
+      "choices": [
+        "A true statement has no hypothesis",
+        "Reversing the hypothesis and conclusion creates a different claim",
+        "Every converse is false",
+        "A conclusion cannot be used as a hypothesis"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A student assumes the desired conclusion to justify an earlier step. What is the main problem?",
+      "choices": [
+        "The argument is circular",
+        "The argument has too many diagrams",
+        "The argument uses exact values",
+        "The argument includes definitions"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}

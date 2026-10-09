@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--geometry--volume-and-surface-area",
+  "title": "Volume and Surface Area",
+  "subject": "Math",
+  "category": "Geometry",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What does volume measure?",
+      "choices": [
+        "Distance around a flat boundary",
+        "Three-dimensional space occupied",
+        "Area of only one face",
+        "Length of a solid's longest edge"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What does total surface area measure?",
+      "choices": [
+        "The space inside the solid",
+        "The length of all diagonals",
+        "The combined area of a solid's outer surfaces",
+        "The mass of the solid"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is the volume of a rectangular prism with dimensions 3, 4, and 5 cm?",
+      "choices": [
+        "12 cm³",
+        "47 cm³",
+        "20 cm³",
+        "60 cm³"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is the volume of a cube with side length 4 cm?",
+      "choices": [
+        "16 cm³",
+        "24 cm³",
+        "64 cm³",
+        "48 cm³"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is the total surface area of a cube with side length 3 cm?",
+      "choices": [
+        "54 cm²",
+        "27 cm²",
+        "9 cm²",
+        "36 cm²"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which formula gives cylinder volume for radius r and height h?",
+      "choices": [
+        "2πrh",
+        "πr²h",
+        "πrh",
+        "2πr² + 2πrh"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which units measure volume?",
+      "choices": [
+        "Square centimeters",
+        "Centimeters",
+        "Cubic centimeters",
+        "Centimeters per second"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why does prism volume equal base area times perpendicular height?",
+      "choices": [
+        "Only the perimeter of the base contributes",
+        "Equal cross-sectional layers build the solid's three-dimensional space",
+        "Surface area and volume are the same quantity",
+        "The base must be square in every prism"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "A cylinder has radius 2 cm and height 5 cm. What is its exact volume?",
+      "choices": [
+        "10π cm³",
+        "40π cm³",
+        "4π cm³",
+        "20π cm³"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "A pyramid and prism have the same base area and perpendicular height. How do their volumes compare?",
+      "choices": [
+        "The pyramid has one-third the prism's volume",
+        "They have equal volumes",
+        "The pyramid has twice the prism's volume",
+        "The pyramid has three times the prism's volume"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What is the volume of a cone with radius 3 cm and height 4 cm?",
+      "choices": [
+        "12π cm³",
+        "36π cm³",
+        "24π cm³",
+        "4π cm³"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "A closed cylinder has radius 2 cm and height 3 cm. What is its total surface area?",
+      "choices": [
+        "12π cm²",
+        "8π cm²",
+        "20π cm²",
+        "24π cm²"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "A rectangular prism has dimensions 2, 3, and 4 cm. What is its total surface area?",
+      "choices": [
+        "24 cm²",
+        "52 cm²",
+        "26 cm²",
+        "48 cm²"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "A cube's side length doubles. How does its volume change?",
+      "choices": [
+        "It doubles",
+        "It becomes four times as large",
+        "It stays unchanged",
+        "It becomes eight times as large"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why can equal-volume solids have different surface areas?",
+      "choices": [
+        "Volume uniquely determines every outer dimension",
+        "Their shapes and dimensions can distribute the outer surface differently",
+        "Equal volume requires equal shapes",
+        "Surface area is always six times volume"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A tank is 2 m long, 1 m wide, and 1.5 m high. What is its full volume?",
+      "choices": [
+        "3 m³",
+        "4.5 m³",
+        "2.5 m³",
+        "1.5 m³"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A prism has base area 18 cm² and volume 90 cm³. What is its perpendicular height?",
+      "choices": [
+        "72 cm",
+        "108 cm",
+        "5 cm",
+        "1620 cm"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A closed box is 5 by 4 by 3 cm. How much material covers its outside, ignoring overlaps?",
+      "choices": [
+        "60 cm²",
+        "47 cm²",
+        "120 cm²",
+        "94 cm²"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A student uses square centimeters for a prism's volume. What correction is needed?",
+      "choices": [
+        "Use cubic centimeters for volume",
+        "Use centimeters for volume",
+        "Use square centimeters for every measurement",
+        "Use grams unless the prism is hollow"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A cube's sides triple. How do total surface area and volume change?",
+      "choices": [
+        "Both multiply by 3",
+        "Area multiplies by 3 and volume by 9",
+        "Both multiply by 27",
+        "Area multiplies by 9 and volume by 27"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

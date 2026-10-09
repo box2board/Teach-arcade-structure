@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--life-science-biology--cell-structure-and-function",
+  "title": "Cell Structure and Function",
+  "subject": "Science",
+  "category": "Life Science & Biology",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which structure surrounds every living cell and regulates exchange with its surroundings?",
+      "choices": [
+        "Cell wall",
+        "Plasma membrane",
+        "Chloroplast",
+        "Nuclear envelope"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which structure assembles proteins in both prokaryotic and eukaryotic cells?",
+      "choices": [
+        "Golgi apparatus",
+        "Lysosome",
+        "Vacuole",
+        "Ribosome"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Where is most of a typical animal cell's DNA located?",
+      "choices": [
+        "Nucleus",
+        "Cell membrane",
+        "Lysosome",
+        "Golgi apparatus"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which organelle carries out photosynthesis in plant cells?",
+      "choices": [
+        "Mitochondrion",
+        "Ribosome",
+        "Chloroplast",
+        "Golgi apparatus"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which structure provides extra support outside the plasma membrane of a plant cell?",
+      "choices": [
+        "Cell wall",
+        "Nucleolus",
+        "Centrosome",
+        "Nuclear pore"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is the cytoplasm?",
+      "choices": [
+        "The DNA inside a chromosome",
+        "The cell's contents outside the nucleus, enclosed by the plasma membrane",
+        "The rigid covering outside a plant cell",
+        "The fluid outside all cells in a tissue"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which organelle modifies and sorts many proteins for transport?",
+      "choices": [
+        "Chloroplast",
+        "Central vacuole",
+        "Golgi apparatus",
+        "Nucleolus"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "What distinguishes a prokaryotic cell from a eukaryotic cell?",
+      "choices": [
+        "A prokaryotic cell has no plasma membrane",
+        "A prokaryotic cell cannot contain DNA",
+        "A prokaryotic cell has no ribosomes",
+        "A prokaryotic cell lacks a membrane-bound nucleus"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why do cells need selectively permeable membranes?",
+      "choices": [
+        "To make all internal concentrations match the surroundings",
+        "To prevent any material from ever entering",
+        "To regulate entry and exit while maintaining internal conditions",
+        "To replace the need for chemical reactions"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why are mitochondria important in many eukaryotic cells?",
+      "choices": [
+        "They help produce ATP during aerobic cellular respiration",
+        "They store the cell's only copy of genetic information",
+        "They create the cell wall from mineral crystals",
+        "They sort all proteins for export from the cell"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How does a large central vacuole help many plant cells?",
+      "choices": [
+        "It assembles every protein used by the cell",
+        "It replaces the chloroplast during photosynthesis",
+        "It directs chromosome separation during mitosis",
+        "It stores water and helps maintain pressure against the cell wall"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What is a key statement of cell theory?",
+      "choices": [
+        "Only animals are composed of cells",
+        "Living organisms consist of cells, and cells arise from existing cells",
+        "Cells arise mainly from nonliving minerals",
+        "All cells have identical shapes and organelles"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why can different cells in one organism have different shapes?",
+      "choices": [
+        "Each cell must belong to a different species",
+        "Their structures are specialized for different functions",
+        "Their shapes are unrelated to their activities",
+        "Only cells without DNA can change shape"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "How does the rough endoplasmic reticulum differ from the smooth endoplasmic reticulum?",
+      "choices": [
+        "Rough ER contains no membrane",
+        "Smooth ER contains the cell's chromosomes",
+        "Rough ER has ribosomes attached to its surface",
+        "Smooth ER performs photosynthesis"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why are many cells small rather than extremely large?",
+      "choices": [
+        "Smaller size often improves exchange relative to cell volume",
+        "Small cells avoid the need for membranes",
+        "Large cells cannot contain genetic information",
+        "Small cells do not require nutrients"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A gland cell exports large amounts of protein. Which structures would be particularly important?",
+      "choices": [
+        "Chloroplasts and cell walls",
+        "Central vacuoles and chloroplasts",
+        "Chromosomes and cell walls alone",
+        "Ribosomes, rough ER, and Golgi apparatus"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A cell has DNA, ribosomes, and a plasma membrane but no nucleus. Which classification fits?",
+      "choices": [
+        "Prokaryotic",
+        "Plant eukaryotic",
+        "Animal eukaryotic",
+        "Fungal eukaryotic"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A plant cell loses much of its stored water and becomes less firm. Which structure is most directly involved?",
+      "choices": [
+        "Nucleolus",
+        "Golgi apparatus",
+        "Central vacuole",
+        "Ribosome"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A microscope shows many similar cells working together to contract. What level of organization is being observed?",
+      "choices": [
+        "An organ system",
+        "An ecosystem",
+        "A whole organism",
+        "A tissue"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Two cells have similar volume, but one has a highly folded membrane. What advantage can the folds provide?",
+      "choices": [
+        "Less area available for exchange",
+        "More surface area for exchange or membrane processes",
+        "Removal of all transport proteins",
+        "Less need for any cellular energy"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}

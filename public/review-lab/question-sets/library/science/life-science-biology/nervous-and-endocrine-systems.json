@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--life-science-biology--nervous-and-endocrine-systems",
+  "title": "Nervous and Endocrine Systems",
+  "subject": "Science",
+  "category": "Life Science & Biology",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which structures make up the central nervous system?",
+      "choices": [
+        "Brain and spinal cord",
+        "Heart and blood vessels",
+        "All muscles and tendons",
+        "Thyroid and adrenal glands"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is a neuron?",
+      "choices": [
+        "A gland specialized for releasing hormones into blood",
+        "A cell specialized for storing mineral in bone",
+        "A cell specialized for transmitting information",
+        "A protein specialized for speeding chemical reactions"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is a synapse?",
+      "choices": [
+        "A whole endocrine gland",
+        "A communication junction between a neuron and another cell",
+        "A kidney filtering unit",
+        "A type of blood vessel"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is a neurotransmitter?",
+      "choices": [
+        "A hormone transported only through the bloodstream",
+        "A receptor located in an endocrine cell membrane",
+        "A structural protein supporting the neuron",
+        "A chemical signal used at many synapses"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is a hormone?",
+      "choices": [
+        "An impulse traveling along a motor neuron's membrane",
+        "A receptor that binds a signal outside a cell",
+        "A protein forming a synaptic communication junction",
+        "A chemical messenger released by endocrine cells"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is a receptor in cell signaling?",
+      "choices": [
+        "A messenger released into the bloodstream",
+        "A molecule that binds a particular signal",
+        "An organ that coordinates several body systems",
+        "A pathway that carries nerve impulses"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which gland produces insulin?",
+      "choices": [
+        "Thyroid",
+        "Pineal gland",
+        "Pancreas",
+        "Adrenal cortex"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why do hormones affect some cells more directly than others?",
+      "choices": [
+        "Target cells have suitable receptors",
+        "Every cell responds equally to any circulating hormone",
+        "A hormone affects only the closest cell regardless of receptors",
+        "Target cells must produce the hormone themselves"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How do nervous and endocrine signaling commonly differ?",
+      "choices": [
+        "Hormonal signals always arrive faster than nerve impulses",
+        "Nerve signals are often rapid; hormonal effects can be more widespread",
+        "Nerve signals travel mainly through the bloodstream",
+        "Hormones act only on the cells that release them"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why can a reflex response occur before conscious awareness of a stimulus?",
+      "choices": [
+        "Every reflex requires conscious interpretation first",
+        "Motor neurons send the initial signal from skin to the brain",
+        "Reflexes use hormones instead of coordinating nerve circuits",
+        "Some responses are coordinated through circuits such as those in the spinal cord"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What role do sensory neurons commonly serve?",
+      "choices": [
+        "Carry information from receptors toward the central nervous system",
+        "Carry only motor commands to muscles",
+        "Release all hormones into blood",
+        "Form every synapse's receiving muscle"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What role do motor neurons commonly serve?",
+      "choices": [
+        "Detect every blood chemical directly",
+        "Filter waste from blood",
+        "Carry commands to effectors such as muscles",
+        "Carry only information from skin toward the brain"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "How does myelin help many axons?",
+      "choices": [
+        "It slows conduction so each signal remains longer",
+        "It produces the hormones carried by the neuron",
+        "It supports faster impulse conduction",
+        "It acts as the receptor for every neurotransmitter"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "How does insulin usually affect elevated blood glucose?",
+      "choices": [
+        "It promotes processes that lower blood glucose",
+        "It stimulates processes that increase blood glucose",
+        "It prevents cells from storing glucose",
+        "It acts only on blood pressure, without glucose effects"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why is hormonal negative feedback useful?",
+      "choices": [
+        "It makes responses grow after the original change has ended",
+        "It prevents the regulated variable from being detected",
+        "It maintains hormone release regardless of target conditions",
+        "It limits responses as regulated conditions approach their target range"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A signal is present in blood but a cell lacks its receptor. What is expected in the basic model?",
+      "choices": [
+        "The cell has the same direct response as a target cell",
+        "The cell does not show that receptor-dependent response",
+        "The signal automatically supplies the missing receptor",
+        "The cell responds by releasing every available hormone"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A hand withdraws rapidly from an unpleasant stimulus. Which sequence best describes a simple reflex arc?",
+      "choices": [
+        "Receptor → sensory neuron → coordinating circuit → motor neuron → muscle",
+        "Receptor → motor neuron → coordinating circuit → sensory neuron → muscle",
+        "Muscle → sensory neuron → gland → receptor → brain",
+        "Receptor → bloodstream → digestive organ → bone → muscle"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A model shows a gland releasing a messenger into blood to affect distant target cells. Which system is emphasized?",
+      "choices": [
+        "Skeletal",
+        "Endocrine",
+        "Digestive mechanical processing",
+        "Integumentary barrier formation"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Nerve signals to a muscle increase while other conditions remain suitable. Which effect is plausible?",
+      "choices": [
+        "Muscle activity becomes independent of all motor signals",
+        "The muscle produces hormones instead of responding to neurons",
+        "The signal is interpreted only by nearby bones",
+        "A change in muscle activation"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A control loop reduces hormone release after the regulated variable returns toward normal. Which pattern is illustrated?",
+      "choices": [
+        "Positive feedback",
+        "Feedforward control without feedback",
+        "Negative feedback",
+        "An unregulated continuous response"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ]
+}

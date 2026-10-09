@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--inquiry-environment--air-quality",
+  "title": "Air Quality",
+  "subject": "Science",
+  "category": "Scientific Inquiry & Environmental Science",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is particulate matter in air?",
+      "choices": [
+        "Only gas molecules released by combustion",
+        "Water vapor remaining entirely gaseous",
+        "Suspended solid particles and liquid droplets",
+        "Only the visible color of outdoor air"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is a primary air pollutant?",
+      "choices": [
+        "A pollutant formed only after atmospheric reactions",
+        "A pollutant emitted directly from a source",
+        "A pollutant measured only indoors",
+        "A pollutant defined by being the most abundant"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is a secondary air pollutant?",
+      "choices": [
+        "A pollutant emitted unchanged directly from a source",
+        "A pollutant defined only by low concentration",
+        "A pollutant produced only at nighttime",
+        "A pollutant formed through reactions in the atmosphere"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is a temperature inversion?",
+      "choices": [
+        "A layer in which temperature increases with height, limiting some vertical mixing",
+        "A layer that always enhances vertical mixing",
+        "A condition where temperature decreases rapidly with height",
+        "A sudden change in wind direction without temperature change"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is ventilation intended to do in an indoor space?",
+      "choices": [
+        "Exchange air and help reduce contaminant buildup",
+        "Only recirculating air without any pollutant removal or exchange",
+        "Guaranteeing that all indoor surfaces are sterile",
+        "Keeping every pollutant trapped inside a room"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which gas can form from incomplete combustion of carbon-containing fuels?",
+      "choices": [
+        "Nitrogen as the only product",
+        "Helium",
+        "Carbon monoxide",
+        "Argon"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which is a common source of fine particle pollution?",
+      "choices": [
+        "The motion of clean air without particles",
+        "Combustion smoke",
+        "Only the evaporation of pure water",
+        "Only the normal oxygen content of air"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why can ground-level ozone be harmful while stratospheric ozone is protective?",
+      "choices": [
+        "The two locations contain different chemical elements",
+        "Ozone has identical effects regardless of exposure location",
+        "Upper-atmosphere ozone mainly filters visible rather than ultraviolet light",
+        "Its effects depend on location: inhaled ozone harms tissues, while upper ozone absorbs UV"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How does much ground-level ozone form?",
+      "choices": [
+        "The evaporation of pure water without any chemical reaction",
+        "Sunlight-driven reactions involving nitrogen oxides and volatile organic compounds",
+        "Emission of all ground-level ozone directly from vehicle exhausts",
+        "The direct release of ozone whenever nitrogen gas cools"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why can inversions worsen local air pollution?",
+      "choices": [
+        "They can trap pollutants near the surface by limiting mixing",
+        "They necessarily reduce every source's emissions",
+        "They always strengthen upward air mixing",
+        "They remove particles by creating cleaner oxygen"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why can air pollution travel across regional boundaries?",
+      "choices": [
+        "All pollutants stop at regional boundaries",
+        "Only sources inside a region can affect its air",
+        "Winds can transport pollutants and their precursors",
+        "Transported precursors cannot form pollutants later"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why is absence of a visible haze insufficient evidence of clean air?",
+      "choices": [
+        "Every pollutant has a visible color",
+        "Air without haze contains no particulate matter",
+        "Only visible particles influence air quality",
+        "Some pollutants are invisible"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why can indoor air quality differ from outdoor air quality?",
+      "choices": [
+        "Indoor sources and ventilation affect pollutant concentrations",
+        "Outdoor pollutants can never enter buildings",
+        "Ventilation has no effect on indoor concentrations",
+        "Indoor sources cannot affect air composition"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why should an air-monitoring station's location be documented?",
+      "choices": [
+        "All monitoring locations represent every region equally",
+        "Location records make calibration unnecessary",
+        "Nearby emissions cannot affect a monitor's readings",
+        "Nearby sources and surroundings influence measurements"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why can reducing pollutant emissions improve air quality?",
+      "choices": [
+        "Emissions reductions guarantee identical weather",
+        "Fewer pollutants or precursors enter the atmosphere",
+        "Natural sources must disappear when human emissions decrease",
+        "Pollutant concentrations depend only on temperature"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A monitor near a busy road reads higher pollution than a rural monitor. What is a cautious interpretation?",
+      "choices": [
+        "Traffic is proven to be the only possible source",
+        "The rural site contains no pollutants",
+        "Traffic-related emissions may contribute, but other differences should also be examined",
+        "The instruments must measure different units"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A sunny afternoon follows a morning with substantial ozone-precursor emissions. What pollutant formation is plausible?",
+      "choices": [
+        "Formation of ozone only in the stratosphere",
+        "Guaranteed removal of all fine particles",
+        "No atmospheric reactions because sunlight is present",
+        "Increased ground-level ozone"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A stable inversion persists over a city. What change may help disperse accumulated pollutants?",
+      "choices": [
+        "Further suppression of vertical mixing",
+        "A continued increase in local emissions",
+        "Stronger mixing that breaks the inversion",
+        "Closing every outdoor monitoring station"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Two air samples are compared using different instruments with unchecked calibration. What is a concern?",
+      "choices": [
+        "Instrument differences could contribute to the apparent concentration difference",
+        "Calibration has no effect on readings",
+        "Any difference proves a real change in air quality",
+        "Sampling methods cannot influence comparisons"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A region records fewer pollution peaks after emission controls, but weather also changes. What strengthens the evaluation?",
+      "choices": [
+        "Attribute every change to controls without comparison",
+        "Compare longer records while accounting for weather and other factors",
+        "Use only the single lowest reading",
+        "Ignore all data from before the controls"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}
