@@ -5,7 +5,7 @@ export const JEWELS=Object.freeze([{id:'amethyst',name:'Amethyst',value:10,color
 export function createSession({bank,duration=120,seed=Date.now(),avatar=0}={}){
  if(![120,300,600].includes(duration))throw Error('Choose a supported session length.');
  let rng=seed>>>0;const random=()=>{rng=(rng*1664525+1013904223)>>>0;return rng/4294967296};
- const world=createWorld(seed);const player={id:'solo',x:500,y:555,juice:0,score:0,jewels:0,dug:0,answered:0,correct:0,emptyStreak:0,lastDig:-650,collection:Object.fromEntries(JEWELS.map(j=>[j.id,0]))};
+ const world=createWorld(seed);const player={id:'solo',x:800,y:888,juice:0,score:0,jewels:0,dug:0,answered:0,correct:0,emptyStreak:0,lastDig:-650,collection:Object.fromEntries(JEWELS.map(j=>[j.id,0]))};
  const session={id:'trail-'+seed,rulesVersion:RULES.version,mode:'solo',bankId:bank.id,bankTitle:bank.title,duration:duration*1000,elapsed:0,phase:'play',avatar,world,players:{solo:player},quiz:null,events:[],sequence:0,deck:prepareQuestionDeck(bank,random),cursor:0,bank,random,attempts:[]};
  return session;
 }
@@ -13,7 +13,7 @@ function emit(s,type,data){const event={sequence:++s.sequence,at:s.elapsed,type,
 export function advance(s,ms){if(s.phase==='end'||s.phase==='paused')return;s.elapsed=Math.min(s.duration,s.elapsed+Math.max(0,ms));if(s.elapsed===s.duration){s.phase='end';s.quiz=null;emit(s,'session-ended',{});}}
 export function nearestChest(s,id='solo'){const p=s.players[id];return s.world.chests.find(c=>Math.hypot(c.x-p.x,c.y-p.y)<65)}
 export function nearestPatch(s,id='solo'){const p=s.players[id];return s.world.plots.filter(q=>Math.hypot(q.x-p.x,q.y-p.y)<43).sort((a,b)=>Math.hypot(a.x-p.x,a.y-p.y)-Math.hypot(b.x-p.x,b.y-p.y))[0]}
-function blocked(s,x,y){return s.world.trees.some(t=>Math.hypot(x-t.x,(y-t.y)*1.4)<18*t.s)||s.world.stones.some(r=>Math.hypot(x-r.x,(y-r.y)*1.3)<r.s+9)||Math.hypot((x-90)/1.3,y-445)<38;}
+function blocked(s,x,y){return s.world.trees.some(t=>Math.hypot(x-t.x,(y-t.y)*1.4)<18*t.s)||s.world.stones.some(r=>Math.hypot(x-r.x,(y-r.y)*1.3)<r.s+9)||Math.hypot((x-144)/1.3,y-712)<38;}
 export function command(s,cmd){
  const p=s.players[cmd.playerId||'solo'];if(!p)return {ok:false,reason:'Player unavailable.'};
  if(cmd.type==='pause'&&s.mode==='solo'&&['play','quiz'].includes(s.phase)){s.resumePhase=s.phase;s.phase='paused';return {ok:true}}
@@ -21,7 +21,7 @@ export function command(s,cmd){
  if(s.phase==='end'||s.phase==='paused')return {ok:false,reason:'Session is not active.'};
  if(cmd.type==='move'&&s.phase==='play'){
   const dx=Number(cmd.dx),dy=Number(cmd.dy),dt=Math.min(Math.max(Number(cmd.ms)||0,0),50);if(!Number.isFinite(dx)||!Number.isFinite(dy))return {ok:false};const len=Math.hypot(dx,dy)||1;
-  const x=Math.max(145,Math.min(860,p.x+dx/len*RULES.speed*dt/1000)),y=Math.max(110,Math.min(590,p.y+dy/len*RULES.speed*dt/1000));if(!blocked(s,x,p.y))p.x=x;if(!blocked(s,p.x,y))p.y=y;return {ok:true};
+  const x=Math.max(215,Math.min(1385,p.x+dx/len*RULES.speed*dt/1000)),y=Math.max(160,Math.min(960,p.y+dy/len*RULES.speed*dt/1000));if(!blocked(s,x,p.y))p.x=x;if(!blocked(s,p.x,y))p.y=y;return {ok:true};
  }
  if(cmd.type==='open'&&s.phase==='play'){const c=nearestChest(s,p.id);if(!c)return {ok:false,reason:'Walk closer to a chest.'};const questions=[];for(let i=0;i<RULES.chestQuestions;i++){if(s.cursor>=s.deck.length){s.deck=prepareQuestionDeck(s.bank,s.random);s.cursor=0}const next=s.deck[s.cursor++];if(questions.some(q=>q.id===next.id)){i--;continue}questions.push(next)}s.quiz={id:'chest-round-'+(s.sequence+1),chestId:c.id,playerId:p.id,questions,index:0,answered:false,right:0,earned:0};s.phase='quiz';emit(s,'chest-opened',{playerId:p.id,chestId:c.id});return {ok:true};}
  if(cmd.type==='answer'&&s.phase==='quiz'){const q=s.quiz,question=q.questions[q.index];if(q.playerId!==p.id||q.answered||cmd.questionId!==question.id||!Number.isInteger(cmd.choice)||cmd.choice<0||cmd.choice>3)return {ok:false,reason:'Answer already recorded or unavailable.'};q.answered=true;p.answered++;const correct=cmd.choice===question.answer;if(correct){p.correct++;p.juice+=RULES.juicePerCorrect;q.right++;q.earned+=RULES.juicePerCorrect}s.attempts.push({id:question.id,correct,choice:cmd.choice,question:question.question,correctAnswer:question.choices[question.answer],explanation:question.explanation||''});return {ok:true,event:emit(s,'answer-recorded',{playerId:p.id,questionId:question.id,correct,juiceEarned:correct?RULES.juicePerCorrect:0})};}
