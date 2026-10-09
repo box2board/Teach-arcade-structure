@@ -48,7 +48,7 @@ export const GAMES=Object.freeze([Object.freeze({
   image:'/review-lab/snow-day-defenders-preview.svg',imageAlt:'Illustration of a snow fort, two scarf-wearing helpers, and playful snow creatures.',
   mode:'Solo',facts:Object.freeze(['3 waves','Automatic snowball tossing','Pause to study & upgrade']),
   supportsQuestionBank:true,questionSetIds:Object.freeze(['scientific-method','constitution-basics','linear-equations'])
-})]);
+}),Object.freeze({id:'treasure-trail',title:'Treasure Trail',url:'/review-lab/treasure-trail/',description:'Explore a woodland, earn juice at question chests, and dig for rare jewels before time runs out.',image:'/review-lab/treasure-trail/preview.png',imageAlt:'Treasure Trail woodland clearing with scattered earth patches and treasure chests.',mode:'Solo',facts:Object.freeze(['2–10 minute sessions','Regenerating treasure','All review topics']),supportsQuestionBank:true,questionSetIds:Object.freeze([])})]);
 export function gamesForSet(id){return GAMES.filter(game=>QUESTION_SETS.some(set=>set.id===id)&&(game.supportsQuestionBank||game.questionSetIds.includes(id)));}
 export function setsForGame(id){const game=GAMES.find(game=>game.id===id);return QUESTION_SETS.filter(set=>game&&(game.supportsQuestionBank||game.questionSetIds.includes(set.id)));}
 export function gameUrl(gameId,setId){
@@ -62,3 +62,4 @@ export async function loadQuestionSet(id){
   if(bank.id!==id||bank.questions.length!==pack.questionCount)throw new Error('The question set does not match its catalog entry.');
   return bank;
 }
+
