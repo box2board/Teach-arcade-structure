@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mosslight Outpost · Quest Arcade Puzzle Adventure | Teach Arcade</title>
+<meta name="description" content="Explore Mosslight Outpost, a top-down review adventure with selectable topics. Earn supplies, direct light through a mirror, open a crossing, and restore the beacon.">
+<link rel="canonical" href="https://teacharcade.com/arcade-review-games/quest-arcade/mosslight-outpost.html">
+<meta property="og:title" content="Mosslight Outpost | Teach Arcade"><meta property="og:description" content="Explore connected rooms, earn review rewards, and unlock the final chamber."><meta property="og:url" content="https://teacharcade.com/arcade-review-games/quest-arcade/mosslight-outpost.html"><meta property="og:type" content="website">
+<link rel="stylesheet" href="/arcade-review-games/shared/top-down/styles.css">
+</head>
+<body>
+<main>
+<header><a href="/arcade-review-games/">Teach Arcade / Review Games</a><span class="edition">QUEST ARCADE</span></header>
+<div class="title-row"><div><h1>Mosslight Outpost</h1><p>Survey. Direct light. Restore the beacon.</p></div><button id="pause" disabled>Pause</button></div>
+<section class="adventure" aria-label="Top-down puzzle adventure">
+<div class="status-bar"><span id="room">01 · Dock</span><span id="difficulty">Easy · 6 questions</span><span id="seals">Stations: 0 / 4</span></div>
+<div class="inventory-strip" role="group" aria-label="Collected items"><span class="label">INVENTORY</span><div id="inventory"></div></div>
+<div class="map-frame"><div id="board" tabindex="0" role="group" aria-label="Adventure map. Move with arrow keys or WASD. Interact with E or Space."><div id="world"><div id="tiles" aria-hidden="true"></div><div id="entities" aria-hidden="true"></div><div id="player" aria-hidden="true"><span>▲</span></div></div></div><div id="map-labels" class="map-labels" aria-hidden="true">DOCK</div></div>
+<div class="objective"><span class="label">OBJECTIVE</span><p id="objective">Earn the Moss key from the Dock survey chest.</p></div>
+<p id="message" role="status" aria-live="polite">Start your adventure to explore the map.</p>
+<div class="controls"><div class="dpad" aria-label="Movement controls"><button data-dir="up" aria-label="Move up">▲</button><button data-dir="left" aria-label="Move left">◀</button><button data-dir="down" aria-label="Move down">▼</button><button data-dir="right" aria-label="Move right">▶</button></div><button id="interact" class="primary" disabled>Interact <kbd>E</kbd></button><button id="undo" disabled>Undo move</button><button id="reset-puzzle" disabled>Reset puzzle</button></div>
+<p class="keyboard-help">Arrow keys / WASD to move · Walk over items to collect · Walk into doors to unlock · E / Space for chests, signs &amp; switches</p>
+</section>
+<div class="legend"><span><i class="block-icon">■</i> Push crate</span><span><i class="plate-icon">◎</i> Floor switch</span><span><i class="chest-icon">▣</i> Review reward</span><span><i class="lever-icon">ϟ</i> Crossing switch</span><span><i class="exit-icon">◇</i> Beacon</span></div>
+<p class="keyboard-help">Stuck? Hint offers a nudge, then optional clearer puzzle guidance. Hint use is reported separately and does not change question accuracy or points.</p>
+<details class="classroom"><summary>Classroom use &amp; controls</summary><p>Choose Scientific Method or U.S. Constitution before difficulty. Easy has six review questions; Medium has eight; Hard has twelve. Each topic keeps its own saved adventure and appears in the results report. Explore four stations, earn supplies, direct light, and balance counterweights. Medium and Hard also require a review-earned crank to open a drawbridge. New adventures choose among three puzzle layouts. Follow each room’s signs for the current arrangement. Continue and puzzle reset keep that layout. There is no time limit.</p><p>Walk into a mirror or crate to push it. Move the mirror onto its socket, then interact to rotate it. Light is harmless. Use CROSS when the receiver glows. Keep a crate on every amber switch to hold the south gate open. In Medium and Hard, earn the crank from the Mechanic chest, then use LIFT. Opened crossings and earned rewards survive puzzle resets.</p><p><a href="/arcade-review-games/social-studies/constitution-courthouse-run.html">Play The Three Seals</a></p></details>
+</main>
+<dialog id="dialog" aria-labelledby="dialog-title"><div class="dialog-content"><span class="label" id="dialog-label">QUEST ARCADE · MOSSLIGHT OUTPOST</span><h2 id="dialog-title">Your adventure awaits</h2><div id="dialog-body"></div><div id="answers"></div><p id="feedback" role="status" aria-live="polite"></p><div id="dialog-actions"></div></div></dialog>
+<noscript><p>This adventure needs JavaScript enabled.</p></noscript>
+<script type="module" data-map="/arcade-review-games/shared/top-down/outpost.js" data-question-set="/arcade-review-games/shared/top-down/scientific-method.js" data-topics="/arcade-review-games/shared/top-down/topics.js" src="/arcade-review-games/shared/top-down/game.js"></script>
+</body></html>
