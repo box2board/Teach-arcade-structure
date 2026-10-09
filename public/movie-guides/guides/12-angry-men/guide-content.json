@@ -1,0 +1,265 @@
+{
+  "slug": "12-angry-men",
+  "title": "12 Angry Men",
+  "category": "History and Civics",
+  "year": 1957,
+  "rating": "Not rated",
+  "runtime": 96,
+  "grades": "9–12",
+  "director": "Sidney Lumet",
+  "writer": "Reginald Rose",
+  "music": "Kenyon Hopkins",
+  "cast": "Henry Fonda, Lee J. Cobb, E. G. Marshall & Jack Klugman",
+  "setting": "A fictional 1950s New York jury room",
+  "basis": "Reginald Rose’s 1954 television play",
+  "overview": "Twelve jurors weigh a murder charge while impatience, assumptions, and conflicting interpretations challenge their deliberation. Study how a group tests reasons and changes its decisions.",
+  "topics": [
+    "Jury deliberation",
+    "Reasonable doubt",
+    "Evidence & inference",
+    "Bias",
+    "Civil discussion"
+  ],
+  "kicker": "History and Civics",
+  "essential": "What makes a group decision fair when people disagree about the evidence?",
+  "goals": [
+    "Distinguish evidence from assumptions and prejudice.",
+    "Explain how jurors test an argument and revise a judgment.",
+    "Compare the film’s deliberation with actual jury instructions."
+  ],
+  "prep": "Introduce verdict, testimony, presumption of innocence, reasonable doubt, and burden of proof. This is the 1957 film, not the 1997 remake. Track jurors by number and behavior; students need not memorize every name. Study the fictional criminal case without treating the film as legal advice.",
+  "context": "The verdict is not guilty, not a factual declaration proving what happened. The movie includes outside investigation and a newly purchased knife. Compare this with current court instructions that restrict jurors to admitted evidence and prohibit independent research. The film’s all-male jury and dramatic procedures should not stand for every jury or jurisdiction.",
+  "pauses": "Pause after the first vote, after the knife and witness-timing discussion, after the prejudice speech, and after the final vote.",
+  "warnings": [
+    "Discussion of a father’s murder, knife demonstrations, threats, and angry confrontation.",
+    "Prejudiced generalizations about class and background; references to family violence.",
+    "Smoking and some mild language."
+  ],
+  "sources": [
+    [
+      "Criterion credits",
+      "https://www.criterion.com/films/27871-12-angry-men"
+    ],
+    [
+      "Content advisory (spoilers)",
+      "https://www.commonsensemedia.org/movie-reviews/12-angry-men"
+    ],
+    [
+      "U.S. Courts: jury service",
+      "https://www.uscourts.gov/court-programs/jury-service"
+    ],
+    [
+      "Court instructions: admitted evidence",
+      "https://www3.ce9.uscourts.gov/jury-instructions/node/307"
+    ]
+  ],
+  "discussion": [
+    "What makes a group decision fair when people disagree about the evidence?",
+    "Which scene best supports your interpretation, and what might another viewer notice?",
+    "What does the film leave out or simplify?"
+  ],
+  "online": [
+    {
+      "number": 1,
+      "section": "Before viewing",
+      "question": "How can a group test a claim without attacking the person making it?",
+      "answer": "Ask for reasons, examine evidence, and challenge an inference respectfully rather than making personal insults."
+    },
+    {
+      "number": 2,
+      "section": "Before viewing",
+      "question": "What is the difference between an observation and an inference?",
+      "answer": "An observation reports something perceived; an inference interprets it. Both can require checking."
+    },
+    {
+      "number": 3,
+      "section": "Part A · The first vote and the knife",
+      "question": "What is the result of the first vote?",
+      "answer": "Eleven vote guilty and Juror 8 votes not guilty."
+    },
+    {
+      "number": 4,
+      "section": "Part A · The first vote and the knife",
+      "question": "Why does Juror 8 want more discussion?",
+      "answer": "A person’s life is at stake, and he is not certain enough to decide without examining the case."
+    },
+    {
+      "number": 5,
+      "section": "Part A · The first vote and the knife",
+      "question": "How does the second knife challenge one argument?",
+      "answer": "It challenges the claim that the weapon is unique. It does not by itself establish innocence."
+    },
+    {
+      "number": 6,
+      "section": "Part A · The first vote and the knife",
+      "question": "Why does the secret ballot matter to the discussion?",
+      "answer": "It gives someone room to change a vote without immediately facing group pressure; Juror 9 supports further discussion."
+    },
+    {
+      "number": 7,
+      "section": "Part A · The first vote and the knife",
+      "question": "How does Juror 7’s impatience affect his reasoning?",
+      "answer": "His desire to leave for a ball game competes with the duty to deliberate carefully."
+    },
+    {
+      "number": 8,
+      "section": "Part B · Testing witness accounts",
+      "question": "Why do the jurors question what could be heard over the passing train?",
+      "answer": "Train noise may interfere with the witness’s claimed ability to hear the words and the body fall."
+    },
+    {
+      "number": 9,
+      "section": "Part B · Testing witness accounts",
+      "question": "What concern arises about the older witness’s walking time?",
+      "answer": "His mobility and the apartment distance make his claimed timing open to doubt."
+    },
+    {
+      "number": 10,
+      "section": "Part B · Testing witness accounts",
+      "question": "How does Juror 9 interpret the older witness’s desire to be noticed?",
+      "answer": "He suggests recognition may affect the account. This is an interpretation, not proven knowledge of motive."
+    },
+    {
+      "number": 11,
+      "section": "Part B · Testing witness accounts",
+      "question": "How does Juror 5’s knowledge challenge the knife demonstration?",
+      "answer": "His experience suggests a practiced switchblade user might use a different motion than the prosecution describes."
+    },
+    {
+      "number": 12,
+      "section": "Part B · Testing witness accounts",
+      "question": "What does the discussion of the defendant’s movie memory reveal?",
+      "answer": "Stress and ordinary imperfect recall complicate treating forgotten details as conclusive evidence of guilt."
+    },
+    {
+      "number": 13,
+      "section": "Part C · Bias and the final decision",
+      "question": "How do other jurors respond to Juror 10’s prejudiced speech?",
+      "answer": "They turn away or refuse to engage, rejecting group-based prejudice as a reason to convict."
+    },
+    {
+      "number": 14,
+      "section": "Part C · Bias and the final decision",
+      "question": "Why do the marks on the woman’s nose become important?",
+      "answer": "They suggest she wears glasses, raising doubt about her ability to see clearly in bed without them."
+    },
+    {
+      "number": 15,
+      "section": "Part C · Bias and the final decision",
+      "question": "How does Juror 3’s conflict with his son affect his judgment?",
+      "answer": "His personal hurt appears to spill into his view of the defendant, clouding evaluation of this case."
+    },
+    {
+      "number": 16,
+      "section": "Part C · Bias and the final decision",
+      "question": "What is the final verdict?",
+      "answer": "The jurors unanimously vote not guilty because reasonable doubt remains."
+    },
+    {
+      "number": 17,
+      "section": "After viewing",
+      "question": "Choose one argument that changes a vote. Why is it persuasive?",
+      "answer": "Accept a specific evidence challenge and explanation of how it weakens certainty; avoid claiming it proves the full truth."
+    },
+    {
+      "number": 18,
+      "section": "After viewing",
+      "question": "How does the confined room contribute to tension?",
+      "answer": "Heat, close quarters, faces, and changing camera angles emphasize pressure and conflict. Accept supported observations."
+    },
+    {
+      "number": 19,
+      "section": "After viewing",
+      "question": "Why is not guilty different from proving exactly what happened?",
+      "answer": "It addresses whether the charge was sufficiently proved; the film does not show a complete reconstruction of the crime."
+    },
+    {
+      "number": 20,
+      "section": "After viewing",
+      "question": "Which action in the film should be compared with actual jury rules?",
+      "answer": "The outside knife purchase is a strong example; consult court instructions about admitted evidence and independent research."
+    }
+  ],
+  "paper": [
+    {
+      "number": 1,
+      "section": "Before viewing",
+      "question": "How can a group test a claim without attacking the person making it?",
+      "answer": "Ask for reasons, examine evidence, and challenge an inference respectfully rather than making personal insults."
+    },
+    {
+      "number": 2,
+      "section": "During viewing",
+      "question": "What is the result of the first vote?",
+      "answer": "Eleven vote guilty and Juror 8 votes not guilty."
+    },
+    {
+      "number": 3,
+      "section": "During viewing",
+      "question": "Why does Juror 8 want more discussion?",
+      "answer": "A person’s life is at stake, and he is not certain enough to decide without examining the case."
+    },
+    {
+      "number": 4,
+      "section": "During viewing",
+      "question": "How does the second knife challenge one argument?",
+      "answer": "It challenges the claim that the weapon is unique. It does not by itself establish innocence."
+    },
+    {
+      "number": 5,
+      "section": "During viewing",
+      "question": "How does Juror 7’s impatience affect his reasoning?",
+      "answer": "His desire to leave for a ball game competes with the duty to deliberate carefully."
+    },
+    {
+      "number": 6,
+      "section": "During viewing",
+      "question": "Why do the jurors question what could be heard over the passing train?",
+      "answer": "Train noise may interfere with the witness’s claimed ability to hear the words and the body fall."
+    },
+    {
+      "number": 7,
+      "section": "During viewing",
+      "question": "What concern arises about the older witness’s walking time?",
+      "answer": "His mobility and the apartment distance make his claimed timing open to doubt."
+    },
+    {
+      "number": 8,
+      "section": "During viewing",
+      "question": "How does Juror 5’s knowledge challenge the knife demonstration?",
+      "answer": "His experience suggests a practiced switchblade user might use a different motion than the prosecution describes."
+    },
+    {
+      "number": 9,
+      "section": "During viewing",
+      "question": "How do other jurors respond to Juror 10’s prejudiced speech?",
+      "answer": "They turn away or refuse to engage, rejecting group-based prejudice as a reason to convict."
+    },
+    {
+      "number": 10,
+      "section": "During viewing",
+      "question": "What is the final verdict?",
+      "answer": "The jurors unanimously vote not guilty because reasonable doubt remains."
+    },
+    {
+      "number": 11,
+      "section": "After viewing",
+      "question": "Choose one argument that changes a vote. Why is it persuasive?",
+      "answer": "Accept a specific evidence challenge and explanation of how it weakens certainty; avoid claiming it proves the full truth."
+    },
+    {
+      "number": 12,
+      "section": "After viewing",
+      "question": "Why is not guilty different from proving exactly what happened?",
+      "answer": "It addresses whether the charge was sufficiently proved; the film does not show a complete reconstruction of the crime."
+    },
+    {
+      "number": 13,
+      "section": "After viewing",
+      "question": "Which action in the film should be compared with actual jury rules?",
+      "answer": "The outside knife purchase is a strong example; consult court instructions about admitted evidence and independent research."
+    }
+  ],
+  "final_writing": "What makes a group decision fair when people disagree about the evidence? Write a paragraph with a clear claim, evidence from two scenes, and reasoning. End with one limitation of the film’s portrayal or one question for further study.",
+  "genre": "Courtroom drama"
+}

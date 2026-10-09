@@ -1,0 +1,269 @@
+{
+  "slug": "hidden-figures",
+  "title": "Hidden Figures",
+  "category": "History and Civics",
+  "year": 2016,
+  "rating": "PG",
+  "runtime": 127,
+  "grades": "7–12",
+  "director": "Theodore Melfi",
+  "writer": "Allison Schroeder & Theodore Melfi",
+  "music": "Hans Zimmer, Pharrell Williams & Benjamin Wallfisch",
+  "cast": "Taraji P. Henson, Octavia Spencer, Janelle Monáe & Kevin Costner",
+  "setting": "NASA Langley, Virginia · Principally the early 1960s, with earlier events compressed",
+  "basis": "Margot Lee Shetterly’s nonfiction book and the careers of Katherine Johnson, Dorothy Vaughan & Mary Jackson",
+  "overview": "Three Black women use mathematical expertise, advocacy, and collaboration to advance the space program while confronting unequal access to work, recognition, and education.",
+  "topics": [
+    "Space Race",
+    "Civil rights",
+    "Women in STEM",
+    "Institutional barriers",
+    "Technology & careers"
+  ],
+  "kicker": "History and Civics",
+  "essential": "How do expertise, advocacy, and collaboration change access to opportunity?",
+  "goals": [
+    "Compare the different barriers and strategies facing the three women.",
+    "Explain how human expertise supports technological change.",
+    "Check the film’s compressed chronology against NASA biographies."
+  ],
+  "prep": "Introduce segregation, NACA versus NASA, human computers, trajectory, orbital flight, and FORTRAN. Distinguish John Glenn’s orbital mission from the later Moon landing. Give students a three-person tracking chart; no advanced calculus is needed.",
+  "context": "NASA’s biographies place Vaughan’s supervisory promotion in 1949 and Jackson’s engineering qualification in 1958, before the film’s main 1961–1962 setting. The film compresses chronology and uses composite characters and dramatized interventions. Compare one career milestone with a NASA biography. Individual achievement does not mean systemic barriers vanished.",
+  "pauses": "Pause after the workplace assignments, during the education and programming efforts, before Glenn’s launch, and after the mission outcome.",
+  "warnings": [
+    "Racial and gender discrimination, humiliating exclusion, tense arguments, and period terminology.",
+    "Some profanity, brief romantic scenes, and adult drinking.",
+    "Spaceflight danger and family or workplace stress."
+  ],
+  "sources": [
+    [
+      "Studio details",
+      "https://family.20thcenturystudios.com/movies/hidden-figures"
+    ],
+    [
+      "Content advisory (spoilers)",
+      "https://www.commonsensemedia.org/movie-reviews/hidden-figures"
+    ],
+    [
+      "NASA: Dorothy Vaughan",
+      "https://www.nasa.gov/people/dorothy-vaughan/"
+    ],
+    [
+      "NASA: Mary Jackson",
+      "https://www.nasa.gov/people/mary-w-jackson-biography/"
+    ],
+    [
+      "NASA: Katherine Johnson",
+      "https://science.nasa.gov/people/katherine-johnson/"
+    ]
+  ],
+  "discussion": [
+    "How do expertise, advocacy, and collaboration change access to opportunity?",
+    "Which scene best supports your interpretation, and what might another viewer notice?",
+    "What does the film leave out or simplify?"
+  ],
+  "online": [
+    {
+      "number": 1,
+      "section": "Before viewing",
+      "question": "How can a workplace rule block opportunity even when someone has the needed skill?",
+      "answer": "Rules about education, promotion, access, or facilities can exclude qualified people; ability alone does not remove a barrier."
+    },
+    {
+      "number": 2,
+      "section": "Before viewing",
+      "question": "Why might a team check a machine’s calculations with human expertise?",
+      "answer": "People can verify assumptions, detect errors, and assess whether results are reliable for a high-stakes task."
+    },
+    {
+      "number": 3,
+      "section": "Part A · Expertise and unequal access",
+      "question": "What kind of work do the women initially perform at Langley?",
+      "answer": "They perform mathematical calculations as human computers supporting aeronautical and space research."
+    },
+    {
+      "number": 4,
+      "section": "Part A · Expertise and unequal access",
+      "question": "What assignment brings Katherine into the Space Task Group?",
+      "answer": "Her mathematical skills lead to an assignment calculating and checking flight-related work for the group."
+    },
+    {
+      "number": 5,
+      "section": "Part A · Expertise and unequal access",
+      "question": "Name one barrier Katherine faces in her new workplace.",
+      "answer": "Accept restricted information, exclusion from meetings, unequal facilities, or dismissal of her expertise, with a scene."
+    },
+    {
+      "number": 6,
+      "section": "Part A · Expertise and unequal access",
+      "question": "What responsibility does Dorothy carry without corresponding recognition in the film?",
+      "answer": "She leads and supports the computing group while seeking official supervisory recognition."
+    },
+    {
+      "number": 7,
+      "section": "Part A · Expertise and unequal access",
+      "question": "Why does Mary need additional classes to pursue engineering?",
+      "answer": "The position’s qualifications require courses whose access is restricted by segregation."
+    },
+    {
+      "number": 8,
+      "section": "Part B · Learning and advocacy",
+      "question": "What does Katherine’s explanation of her long absences reveal?",
+      "answer": "Segregated bathroom access costs time and imposes an unequal burden; this scene is a dramatization."
+    },
+    {
+      "number": 9,
+      "section": "Part B · Learning and advocacy",
+      "question": "Why does Dorothy decide to learn FORTRAN?",
+      "answer": "She anticipates electronic computing and prepares herself and her coworkers for new kinds of work."
+    },
+    {
+      "number": 10,
+      "section": "Part B · Learning and advocacy",
+      "question": "How does Dorothy’s approach connect personal learning with collective support?",
+      "answer": "She shares programming knowledge and advocates for the group rather than advancing only herself."
+    },
+    {
+      "number": 11,
+      "section": "Part B · Learning and advocacy",
+      "question": "How does Mary challenge the barrier to attending the required classes?",
+      "answer": "She petitions for permission to attend, arguing for access to the education needed for her goal."
+    },
+    {
+      "number": 12,
+      "section": "Part B · Learning and advocacy",
+      "question": "Why does Katherine seek access to briefings and current information?",
+      "answer": "Accurate changing calculations require timely information and participation rather than being kept outside the process."
+    },
+    {
+      "number": 13,
+      "section": "Part C · Launch and recognition",
+      "question": "Why does John Glenn request Katherine’s verification in the film?",
+      "answer": "He trusts her expertise to check the electronic calculations before his orbital mission."
+    },
+    {
+      "number": 14,
+      "section": "Part C · Launch and recognition",
+      "question": "What does the launch sequence show about teamwork beyond the astronaut?",
+      "answer": "Calculations, engineering, communication, and coordinated checks make the mission possible."
+    },
+    {
+      "number": 15,
+      "section": "Part C · Launch and recognition",
+      "question": "How does the film show professional recognition changing?",
+      "answer": "Katherine’s work becomes more visible, Dorothy moves into programming leadership, and Mary advances toward engineering."
+    },
+    {
+      "number": 16,
+      "section": "Part C · Launch and recognition",
+      "question": "What does the film’s ending suggest about the women’s continuing careers?",
+      "answer": "Their contributions extend beyond one mission; the closing information connects the story to longer achievements."
+    },
+    {
+      "number": 17,
+      "section": "After viewing",
+      "question": "Compare one strategy used by two of the women.",
+      "answer": "Accept a supported comparison of technical work, advocacy, education, or shared preparation."
+    },
+    {
+      "number": 18,
+      "section": "After viewing",
+      "question": "Why would it be incomplete to explain their success only as hard work?",
+      "answer": "Skill and persistence matter, but access, institutional change, collaboration, and recognition also shape opportunity."
+    },
+    {
+      "number": 19,
+      "section": "After viewing",
+      "question": "What is one limitation of the film’s historical timeline?",
+      "answer": "It places career milestones together that occurred in different years; use NASA biographies to check dates."
+    },
+    {
+      "number": 20,
+      "section": "After viewing",
+      "question": "Choose one career detail to investigate. Which source would help?",
+      "answer": "A named woman’s NASA biography can check a specific date, role, or contribution; distinguish source evidence from dialogue."
+    }
+  ],
+  "paper": [
+    {
+      "number": 1,
+      "section": "Before viewing",
+      "question": "How can a workplace rule block opportunity even when someone has the needed skill?",
+      "answer": "Rules about education, promotion, access, or facilities can exclude qualified people; ability alone does not remove a barrier."
+    },
+    {
+      "number": 2,
+      "section": "During viewing",
+      "question": "What kind of work do the women initially perform at Langley?",
+      "answer": "They perform mathematical calculations as human computers supporting aeronautical and space research."
+    },
+    {
+      "number": 3,
+      "section": "During viewing",
+      "question": "What assignment brings Katherine into the Space Task Group?",
+      "answer": "Her mathematical skills lead to an assignment calculating and checking flight-related work for the group."
+    },
+    {
+      "number": 4,
+      "section": "During viewing",
+      "question": "Name one barrier Katherine faces in her new workplace.",
+      "answer": "Accept restricted information, exclusion from meetings, unequal facilities, or dismissal of her expertise, with a scene."
+    },
+    {
+      "number": 5,
+      "section": "During viewing",
+      "question": "Why does Mary need additional classes to pursue engineering?",
+      "answer": "The position’s qualifications require courses whose access is restricted by segregation."
+    },
+    {
+      "number": 6,
+      "section": "During viewing",
+      "question": "What does Katherine’s explanation of her long absences reveal?",
+      "answer": "Segregated bathroom access costs time and imposes an unequal burden; this scene is a dramatization."
+    },
+    {
+      "number": 7,
+      "section": "During viewing",
+      "question": "Why does Dorothy decide to learn FORTRAN?",
+      "answer": "She anticipates electronic computing and prepares herself and her coworkers for new kinds of work."
+    },
+    {
+      "number": 8,
+      "section": "During viewing",
+      "question": "How does Mary challenge the barrier to attending the required classes?",
+      "answer": "She petitions for permission to attend, arguing for access to the education needed for her goal."
+    },
+    {
+      "number": 9,
+      "section": "During viewing",
+      "question": "Why does John Glenn request Katherine’s verification in the film?",
+      "answer": "He trusts her expertise to check the electronic calculations before his orbital mission."
+    },
+    {
+      "number": 10,
+      "section": "During viewing",
+      "question": "What does the film’s ending suggest about the women’s continuing careers?",
+      "answer": "Their contributions extend beyond one mission; the closing information connects the story to longer achievements."
+    },
+    {
+      "number": 11,
+      "section": "After viewing",
+      "question": "Compare one strategy used by two of the women.",
+      "answer": "Accept a supported comparison of technical work, advocacy, education, or shared preparation."
+    },
+    {
+      "number": 12,
+      "section": "After viewing",
+      "question": "What is one limitation of the film’s historical timeline?",
+      "answer": "It places career milestones together that occurred in different years; use NASA biographies to check dates."
+    },
+    {
+      "number": 13,
+      "section": "After viewing",
+      "question": "Choose one career detail to investigate. Which source would help?",
+      "answer": "A named woman’s NASA biography can check a specific date, role, or contribution; distinguish source evidence from dialogue."
+    }
+  ],
+  "final_writing": "How do expertise, advocacy, and collaboration change access to opportunity? Write a paragraph with a clear claim, evidence from two scenes, and reasoning. End with one limitation of the film’s portrayal or one question for further study.",
+  "genre": "Biographical drama"
+}
