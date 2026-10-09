@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--physics--energy-work-and-power",
+  "title": "Energy Work and Power",
+  "subject": "Science",
+  "category": "Physics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is kinetic energy?",
+      "choices": [
+        "Energy associated with motion",
+        "Energy determined only by height",
+        "Energy contained only in chemical fuels",
+        "Energy lost whenever an object is stationary"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is gravitational potential energy near Earth's surface?",
+      "choices": [
+        "Energy due only to speed",
+        "Energy associated with position in a gravitational field",
+        "Energy measured only in watts",
+        "Energy unrelated to an object's mass"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is the SI unit of energy and work?",
+      "choices": [
+        "Joule",
+        "Watt",
+        "Meter per second",
+        "Newton"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is power?",
+      "choices": [
+        "Total force on an object",
+        "Mass multiplied by speed",
+        "The rate of energy transfer or work",
+        "Energy divided by distance"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which unit is used for power?",
+      "choices": [
+        "Joule",
+        "Watt",
+        "Newton",
+        "Kilogram"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is mechanical energy in a simple introductory model?",
+      "choices": [
+        "Only an object's thermal energy",
+        "Only energy stored in fuel",
+        "The sum of mass and distance",
+        "The sum of kinetic and potential energy"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What does conservation of energy state?",
+      "choices": [
+        "Energy is created whenever motion begins",
+        "Energy disappears whenever friction acts",
+        "Every object has constant kinetic energy",
+        "Energy is transferred or transformed, not created or destroyed"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "When does a force do positive work on an object?",
+      "choices": [
+        "When it has a component in the direction of displacement",
+        "When the object remains stationary",
+        "When it is perpendicular to every displacement",
+        "When displacement is opposite its direction"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why can friction reduce mechanical energy without violating energy conservation?",
+      "choices": [
+        "Friction destroys the object's atoms",
+        "Mechanical energy is converted into other forms, including thermal energy",
+        "Conservation applies only to objects without surfaces",
+        "Lost mechanical energy has no destination"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "How does doubling speed affect kinetic energy if mass stays constant?",
+      "choices": [
+        "It halves kinetic energy",
+        "It doubles kinetic energy",
+        "It quadruples kinetic energy",
+        "It leaves kinetic energy unchanged"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How does raising an object increase gravitational potential energy near Earth's surface?",
+      "choices": [
+        "It reduces the object's mass",
+        "Work against gravity transfers energy into the object-Earth system",
+        "It lowers the object's height",
+        "It creates new gravitational particles"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why can two machines perform equal work but have different power?",
+      "choices": [
+        "Equal work requires identical time",
+        "Power is the total work regardless of time",
+        "Power depends only on the force used",
+        "They can take different amounts of time"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What happens to stored elastic energy when a compressed spring launches an object?",
+      "choices": [
+        "Some can be transferred to the object's kinetic energy",
+        "It all becomes additional mass in ordinary mechanics",
+        "It remains unchanged regardless of the launch",
+        "It must become gravitational energy only"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why is a machine's useful energy output usually less than its total energy input?",
+      "choices": [
+        "Energy conservation fails inside machines",
+        "The machine creates energy only during startup",
+        "Some input energy goes to less useful forms such as heating",
+        "Output energy is always measured in different units"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What does efficiency compare?",
+      "choices": [
+        "Time with distance",
+        "Force with temperature",
+        "Mass with acceleration",
+        "Useful output energy with total input energy"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A constant 10 N force acts along a 3 m displacement. How much work does it do?",
+      "choices": [
+        "0 J",
+        "30 J",
+        "13 J",
+        "3 J"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A machine transfers 100 J in 5 s. What is its average power?",
+      "choices": [
+        "105 W",
+        "500 W",
+        "20 W",
+        "5 W"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A 2 kg object is raised 3 m. Using g = 10 m/s², what is the increase in gravitational potential energy?",
+      "choices": [
+        "60 J",
+        "20 J",
+        "6 J",
+        "30 J"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A 2 kg cart moves at 4 m/s. Using KE = ½mv², what is its kinetic energy?",
+      "choices": [
+        "4 J",
+        "8 J",
+        "16 J",
+        "32 J"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A device receives 200 J and provides 150 J of useful output. What is its efficiency?",
+      "choices": [
+        "25%",
+        "150%",
+        "50%",
+        "75%"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

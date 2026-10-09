@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--inquiry-environment--environmental-resources-and-sustainability",
+  "title": "Environmental Resources and Sustainability",
+  "subject": "Science",
+  "category": "Scientific Inquiry & Environmental Science",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a renewable resource?",
+      "choices": [
+        "A resource replenished naturally on a relevant human time scale",
+        "A resource that can never be depleted",
+        "Any resource formed deep underground",
+        "A resource used only once"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which resource is nonrenewable on human time scales?",
+      "choices": [
+        "Sunlight",
+        "Wind",
+        "Coal",
+        "Flowing water"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What does resource conservation mean?",
+      "choices": [
+        "Using a resource as quickly as possible",
+        "Ending all use of every natural material",
+        "Replacing all renewable resources with fossil fuels",
+        "Reducing unnecessary use and protecting supplies"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is reuse?",
+      "choices": [
+        "Breaking a material into raw inputs",
+        "Using an item again without first processing it into raw material",
+        "Discarding a product after one use",
+        "Burning a material to obtain energy"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is recycling?",
+      "choices": [
+        "Storing every discarded item indefinitely",
+        "Using a product again without processing",
+        "Using only newly mined resources",
+        "Processing discarded materials into materials for new products"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is a watershed?",
+      "choices": [
+        "An area of land that drains to a common water body",
+        "A layer of rock with no water movement",
+        "An isolated cloud above a forest",
+        "Only the deepest part of an ocean"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What does biodiversity refer to?",
+      "choices": [
+        "Only the number of people in a region",
+        "Only the age of a forest",
+        "The variety of life, including genetic, species, and ecosystem diversity",
+        "The amount of rainfall in one storm"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why can a renewable forest resource still be depleted?",
+      "choices": [
+        "Trees cannot regrow under any conditions",
+        "Harvesting can exceed regrowth and damage the ecosystem",
+        "All forests grow at the same rate",
+        "Renewable means that harvesting has no effect"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why can reducing consumption save more resources than recycling alone?",
+      "choices": [
+        "Recycling always uses more resources than making new products",
+        "It avoids some material extraction and production before waste is created",
+        "Consumption has no connection to waste",
+        "All materials can be recycled indefinitely without losses"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "How can excess fertilizer runoff harm a lake?",
+      "choices": [
+        "It can promote algal growth whose decomposition reduces dissolved oxygen",
+        "It directly turns fresh water into salt water",
+        "It prevents all plant growth immediately",
+        "It always cools the water below freezing"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why can vegetation along a stream help protect water quality?",
+      "choices": [
+        "It prevents all rainfall from reaching the stream",
+        "It produces unlimited clean water",
+        "It makes pollutants evaporate instantly",
+        "It can trap sediment and reduce nutrient runoff"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why should environmental decisions consider a product's entire life cycle?",
+      "choices": [
+        "Only disposal has environmental effects",
+        "Only manufacturing uses energy",
+        "Extraction, production, use, and disposal can each have impacts",
+        "Transport cannot affect resource use"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What distinguishes energy efficiency from simply using a device less often?",
+      "choices": [
+        "Efficiency means replacing all electricity with chemical fuel",
+        "Efficiency means using the same device for fewer hours only",
+        "Efficiency measures total fuel use without considering output",
+        "Efficiency provides a comparable service using less energy"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why can groundwater be depleted despite being replenished by rain?",
+      "choices": [
+        "Groundwater cannot move through rock",
+        "Withdrawal can exceed the rate of recharge",
+        "Rainwater never reaches underground aquifers",
+        "Every aquifer refills completely each day"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why can habitat fragmentation reduce biodiversity?",
+      "choices": [
+        "It can isolate populations and limit movement between habitats",
+        "It guarantees that all species adapt quickly",
+        "It always increases habitat size",
+        "It removes all competition among organisms"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A forest regrows 100 units of timber yearly but loses 150 units to harvest yearly. What does this pattern suggest if it continues?",
+      "choices": [
+        "The timber supply must increase",
+        "Harvest and regrowth are balanced",
+        "The timber supply will decline",
+        "Regrowth will automatically increase to match harvest"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Two lamps provide the same useful light, but one uses half as much electricity. Which lamp is more energy-efficient?",
+      "choices": [
+        "Both must have the same efficiency",
+        "The lamp using twice as much electricity",
+        "The lamp using half as much electricity",
+        "Efficiency cannot be compared without knowing their color"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A town wants to reduce discarded drink containers. Which action most directly prevents waste generation?",
+      "choices": [
+        "Increase production of disposable containers",
+        "Send every container to a larger landfill",
+        "Collect more containers only after disposal",
+        "Use durable refillable containers repeatedly"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A proposed energy project has low operating emissions but affects wildlife habitat. What is a sound evaluation approach?",
+      "choices": [
+        "Ignore habitat effects because emissions are low",
+        "Compare multiple impacts, benefits, and possible mitigation measures",
+        "Reject all evidence about the project's benefits",
+        "Assume every energy source has identical environmental effects"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "An aquifer receives about 10 million liters of recharge annually while pumping removes 14 million liters. Which change most directly addresses the imbalance?",
+      "choices": [
+        "Reduce withdrawals or increase feasible recharge while monitoring aquifer conditions",
+        "Measure only one well once",
+        "Assume recharge rises whenever pumping rises",
+        "Pump faster during dry periods"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}

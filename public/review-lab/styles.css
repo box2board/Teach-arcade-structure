@@ -3,4 +3,4 @@
 /* Keep the shared navigation's closed drawer outside the scrollable page. */
 .ta-panel[aria-hidden="true"]{display:none}
 
-.racing-card{display:grid;place-content:center;text-align:center;gap:20px;background:linear-gradient(135deg,#0d183a,#125d75);color:#fff;font-size:4rem}.racing-card strong{font-size:2rem}
+.game-card+.game-card{margin-top:22px}

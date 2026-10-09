@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "world-history--renaissance",
+  "title": "Renaissance",
+  "subject": "Social Studies",
+  "category": "World History",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "The term Renaissance refers to a renewed interest in which cultural heritage?",
+      "choices": [
+        "Industrial factory systems",
+        "Classical Greek and Roman learning",
+        "Modern international law",
+        "Viking maritime law"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which region was a major early center of the European Renaissance?",
+      "choices": [
+        "The Italian peninsula",
+        "The Scandinavian peninsula",
+        "The Russian steppe",
+        "The Scottish Highlands"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What was Renaissance humanism?",
+      "choices": [
+        "A rejection of every form of religion",
+        "A requirement that rulers abandon education",
+        "A movement to end the study of ancient languages",
+        "An approach emphasizing classical texts and human capabilities"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which family was especially associated with patronage in Florence?",
+      "choices": [
+        "Romanov",
+        "Habsburg",
+        "Medici",
+        "Tudor"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Who painted the Mona Lisa?",
+      "choices": [
+        "Leonardo da Vinci",
+        "Michelangelo",
+        "Raphael",
+        "Donatello"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which artist painted the ceiling of the Sistine Chapel?",
+      "choices": [
+        "Petrarch",
+        "Michelangelo",
+        "Botticelli",
+        "Erasmus"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is linear perspective in painting?",
+      "choices": [
+        "Using only written words to represent a scene",
+        "Giving every object the same apparent size",
+        "Creating an illusion of depth with converging lines",
+        "Removing all recognizable objects from an image"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why did wealthy merchants support Renaissance art?",
+      "choices": [
+        "Art patronage was available only to peasants",
+        "Artists were prohibited from accepting church commissions",
+        "Paintings replaced currency in every Italian market",
+        "Patronage could express wealth, status, faith, and civic pride"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why were Italian city-states well placed to support cultural innovation?",
+      "choices": [
+        "Trade and banking helped concentrate wealth in urban centers",
+        "They had no contact with neighboring regions",
+        "Their economies depended entirely on isolated subsistence farms",
+        "They were all governed by one elected national parliament"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "How did printing with movable type affect Renaissance learning in Europe?",
+      "choices": [
+        "It restricted books to handwritten copies",
+        "It increased the availability and circulation of texts",
+        "It removed the need for readers to understand languages",
+        "It immediately made literacy universal"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why is it misleading to say Renaissance art was entirely nonreligious?",
+      "choices": [
+        "Renaissance artists never studied human anatomy",
+        "The period had no churches commissioning art",
+        "Every Renaissance painting depicted a pagan ruler",
+        "Many works still depicted Christian subjects and served religious patrons"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "How did Northern Renaissance humanists such as Erasmus often use classical learning?",
+      "choices": [
+        "To organize industrial labor unions",
+        "To prohibit the printing of religious texts",
+        "To examine religious practice and encourage reform",
+        "To replace every European language with Greek"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What was a major concern of Machiavelli's The Prince?",
+      "choices": [
+        "How rulers acquire and maintain political power",
+        "How farmers predict annual rainfall",
+        "How artists mix pigments for murals",
+        "How sailors calculate ocean depth"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why did some writers use vernacular languages rather than Latin?",
+      "choices": [
+        "To stop people from reading their works",
+        "To reach readers in languages used in everyday life",
+        "To ensure that only ancient Romans could understand them",
+        "To avoid every form of local cultural expression"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What does Leonardo's work in both art and anatomy suggest about Renaissance inquiry?",
+      "choices": [
+        "Science and art were legally required to remain separate",
+        "Artists avoided observing the natural world",
+        "Painting had replaced all other fields of knowledge",
+        "Observation could connect artistic practice with scientific investigation"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A painting makes distant buildings appear smaller and uses a vanishing point. Which technique is being applied?",
+      "choices": [
+        "Manuscript illumination",
+        "Relief carving",
+        "Linear perspective",
+        "Woodblock text printing"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A historian studies a commission paid for by a banker. Which question best examines the patron's influence?",
+      "choices": [
+        "How did the banker's goals shape the work's subject and display?",
+        "How did the painting's later sale price compare with its original cost?",
+        "How did the artist's materials compare with those used by sculptors?",
+        "How did the painting's frame change during later restoration?"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Which comparison best describes Renaissance culture's relationship with the Middle Ages?",
+      "choices": [
+        "It arose without any earlier European learning",
+        "It introduced changes while retaining important religious and cultural continuities",
+        "It ended all religious institutions immediately",
+        "It restored the Roman Empire's original government across Europe"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A student claims humanism meant all humanists rejected Christianity. Which evidence would best challenge the claim?",
+      "choices": [
+        "A list of merchants who financed Florentine building projects",
+        "A map showing trade routes between northern Italian cities",
+        "A humanist's text using classical learning to discuss Christian ethics",
+        "An inventory of imported pigments in a painter's workshop"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Two cities have different artistic styles despite sharing classical influences. What is the strongest conclusion?",
+      "choices": [
+        "One city must not belong to the Renaissance",
+        "Classical influences required identical artwork everywhere",
+        "Trade had no influence on artistic development",
+        "Renaissance ideas were adapted to different local conditions"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--physical-science-chemistry--chemical-equilibrium",
+  "title": "Chemical Equilibrium",
+  "subject": "Science",
+  "category": "Physical Science & Chemistry",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What characterizes dynamic chemical equilibrium in a closed system?",
+      "choices": [
+        "All particles stop moving",
+        "Reactant and product amounts must be equal",
+        "Only the forward reaction continues",
+        "Forward and reverse reaction rates are equal"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is a reversible reaction?",
+      "choices": [
+        "One that proceeds only until every reactant is gone",
+        "One that can proceed only toward products",
+        "One that cannot involve a reverse reaction",
+        "One that can proceed in both directions under suitable conditions"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What remains constant macroscopically at equilibrium under fixed conditions?",
+      "choices": [
+        "The identity of individual reacting particles",
+        "Reactant and product concentrations",
+        "The direction of every collision",
+        "The number of forward reactions alone"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What does Le Châtelier's principle help predict?",
+      "choices": [
+        "The exact time every reaction takes to finish",
+        "The atomic composition of an unknown compound",
+        "How an equilibrium responds to a change in conditions",
+        "The total energy used by an instrument"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "For a fixed reaction, what change can alter its equilibrium constant?",
+      "choices": [
+        "Changing temperature",
+        "Adding a catalyst at constant temperature",
+        "Changing initial concentrations at constant temperature",
+        "Changing vessel volume at constant temperature"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "For A ⇌ B, an equilibrium mixture strongly favors B. Which description fits?",
+      "choices": [
+        "The reverse reaction is impossible",
+        "The concentration of B exceeds that of A",
+        "The forward rate exceeds the reverse rate at equilibrium",
+        "Every molecule of A has necessarily disappeared"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which system can maintain chemical equilibrium without material escaping?",
+      "choices": [
+        "An open vessel continuously losing a gaseous product",
+        "A vessel continuously supplied with reactant and drained of product",
+        "A reaction mixture continuously separated into individual components",
+        "A closed reaction vessel"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why does equilibrium not mean a reaction has stopped?",
+      "choices": [
+        "Particles continue reacting in both directions",
+        "Only the forward reaction continues",
+        "Only the reverse reaction continues",
+        "Particle collisions no longer occur"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why can reactant and product concentrations be unequal at equilibrium?",
+      "choices": [
+        "Equilibrium requires equal masses instead",
+        "Only gases can reach equilibrium",
+        "Equal rates do not require equal concentrations",
+        "Products are not part of the equilibrium system"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What usually happens when a reactant is added to an equilibrium mixture?",
+      "choices": [
+        "The equilibrium permanently disappears",
+        "All products must be removed",
+        "The system shifts toward consuming some added reactant",
+        "The reverse reaction becomes impossible"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What usually happens when a product is removed from an equilibrium mixture?",
+      "choices": [
+        "The system shifts toward forming more product",
+        "All remaining reactants disappear instantly",
+        "The forward reaction must stop",
+        "The temperature must become zero"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What does adding a catalyst do to a system already at equilibrium?",
+      "choices": [
+        "Shifts equilibrium entirely toward products",
+        "Changes the equilibrium constant at fixed temperature",
+        "Stops the reverse reaction",
+        "Speeds both directions without shifting equilibrium composition"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "For an endothermic forward reaction, how does increased temperature usually shift equilibrium?",
+      "choices": [
+        "Toward reactants",
+        "Toward products",
+        "No change because temperature never affects equilibrium",
+        "The equilibrium mixture must have equal concentrations"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "For an exothermic forward reaction, how does increased temperature usually shift equilibrium?",
+      "choices": [
+        "Toward reactants",
+        "Toward products",
+        "No change because temperature affects only rate",
+        "The equilibrium mixture must contain no products"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "When pressure increases by reducing volume at fixed temperature, which gaseous side is favored?",
+      "choices": [
+        "The side with more gas molecules in every case",
+        "The side with fewer gas molecules in the balanced equation",
+        "The side with heavier atoms in every case",
+        "The side with the catalyst"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "For N2 + 3H2 ⇌ 2NH3, what does decreasing volume at fixed temperature favor?",
+      "choices": [
+        "More N2 and H2",
+        "No change because both sides contain gas",
+        "Complete removal of all gases",
+        "More NH3"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "For H2 + I2 ⇌ 2HI, all gaseous, what does decreasing volume at fixed temperature predict?",
+      "choices": [
+        "A shift toward HI because it is a product",
+        "A shift toward H2 because it is lighter",
+        "No favored side from gas-molecule count alone",
+        "A shift toward whichever gas is darkest"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A sealed mixture has steady concentrations while molecules continue reacting both ways. What state is consistent with this?",
+      "choices": [
+        "Dynamic equilibrium",
+        "A reaction that has completely stopped",
+        "A one-way reaction with constant reactant loss",
+        "An open system losing all products"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A catalyst is added to the same reversible reaction at the same temperature. Which comparison is expected?",
+      "choices": [
+        "A different equilibrium constant is produced",
+        "Only reactants remain at equilibrium",
+        "The same equilibrium composition is reached faster",
+        "The reverse reaction no longer occurs"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Adding reactant changes the concentrations, but temperature stays fixed. What remains unchanged for that reaction?",
+      "choices": [
+        "The initial reaction rate",
+        "The equilibrium constant",
+        "Every concentration during the adjustment",
+        "The total number of reactant molecules"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}

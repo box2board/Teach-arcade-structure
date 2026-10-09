@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--inquiry-environment--renewable-and-nonrenewable-energy",
+  "title": "Renewable and Nonrenewable Energy",
+  "subject": "Science",
+  "category": "Scientific Inquiry & Environmental Science",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What makes an energy resource renewable on human timescales?",
+      "choices": [
+        "It can never have environmental effects",
+        "It is replenished naturally fast enough for continued use under suitable conditions",
+        "It produces electricity without equipment",
+        "It exists in unlimited amounts everywhere"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which energy resource's immediate availability is most directly reduced by thick daytime cloud cover?",
+      "choices": [
+        "Geothermal energy",
+        "Stored coal",
+        "Solar energy",
+        "Uranium fuel"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is geothermal energy?",
+      "choices": [
+        "Energy from daily tides alone",
+        "Energy from sunlight reflected by clouds",
+        "Energy from burning atmospheric nitrogen",
+        "Energy from Earth's internal heat"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which resource depends most directly on moving air?",
+      "choices": [
+        "Wind energy",
+        "Nuclear fuel",
+        "Coal",
+        "Petroleum"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is biomass as an energy resource?",
+      "choices": [
+        "Any rock containing metal",
+        "Organic material that can provide energy",
+        "Only flowing seawater",
+        "Only solar panels"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is an intermittent energy source?",
+      "choices": [
+        "A source that never supplies energy",
+        "A source that must be radioactive",
+        "A source whose availability varies over time",
+        "A source that has no physical equipment"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which resource supplies fuel for conventional nuclear fission power?",
+      "choices": [
+        "Wind",
+        "Sunlight",
+        "Flowing water",
+        "Uranium"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why are fossil fuels considered nonrenewable?",
+      "choices": [
+        "They form far more slowly than they are commonly used",
+        "They are fully replaced during each annual growing season",
+        "They are replenished as quickly as electricity is used",
+        "They are called nonrenewable only because they produce heat"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why can electricity storage help with wind and solar generation?",
+      "choices": [
+        "It guarantees unlimited output from a generator",
+        "It can shift delivery from times of production to times of demand",
+        "It raises conversion efficiency to exactly 100%",
+        "It prevents every difference between generation and demand"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why is renewable not the same as impact-free?",
+      "choices": [
+        "Renewability guarantees no land or material requirements",
+        "Only fuel combustion can affect ecosystems",
+        "Equipment, land use, and material extraction can have effects",
+        "Manufacturing renewable equipment has no resource inputs"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What is a potential ecological tradeoff of a large hydroelectric dam?",
+      "choices": [
+        "It always improves migration for every fish species",
+        "It leaves river sediment transport unchanged",
+        "It cannot affect habitats upstream",
+        "It can alter river flow and aquatic habitats"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why can biomass be depleted despite being called renewable?",
+      "choices": [
+        "Use can exceed regrowth or replenishment",
+        "Biomass cannot be replenished through plant growth",
+        "Burning biomass always causes regrowth at the same rate",
+        "Calling a source renewable guarantees sustainable use"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "How can energy conservation reduce resource demand?",
+      "choices": [
+        "It increases the amount of fuel needed for identical unnecessary use",
+        "Using less energy for unnecessary activities lowers required supply",
+        "It makes all generating resources unlimited",
+        "It only changes electricity prices, never consumption"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why are local conditions important when choosing renewable energy projects?",
+      "choices": [
+        "Every location has the same renewable potential",
+        "A project's size is the only factor that affects suitability",
+        "Sunlight, wind, water, geology, and ecological constraints vary",
+        "Ecological constraints matter only for fossil fuels"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "How does energy efficiency differ from simply reducing a service?",
+      "choices": [
+        "Efficiency means stopping every activity",
+        "Efficiency creates energy from nothing",
+        "Efficiency describes only fuel price",
+        "Efficiency provides a similar service with less energy"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A region has steady winds but few usable rivers. Which resource is most directly supported by these conditions?",
+      "choices": [
+        "Wind generation",
+        "Large river hydropower",
+        "Coal formation each season",
+        "New uranium created by the wind"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A forest supplies 200 units of biomass yearly while 300 units are harvested. What happens if these rates persist?",
+      "choices": [
+        "The stock necessarily grows",
+        "The biomass stock declines",
+        "Harvesting creates the missing biomass",
+        "The rates cannot affect the stock"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A solar system produces more electricity at midday than users need. Which measure can help meet evening demand?",
+      "choices": [
+        "Operate the panels unchanged without light",
+        "Discard output that is not used immediately",
+        "Store some midday energy for later use",
+        "Assume evening demand will always be zero"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Two energy projects have equal electrical output. Which comparison better assesses environmental tradeoffs?",
+      "choices": [
+        "Compare only their electrical output",
+        "Assume renewable projects have no impacts",
+        "Compare equipment color without examining the site",
+        "Compare land use, emissions, materials, and ecosystem effects"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "An improved lamp gives the same light while using 8 W instead of 10 W. What is the power-use reduction?",
+      "choices": [
+        "20%",
+        "25%",
+        "80%",
+        "2%"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}

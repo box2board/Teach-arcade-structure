@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--algebra-1--introduction-to-quadratic-functions",
+  "title": "Introduction to Quadratic Functions",
+  "subject": "Math",
+  "category": "Algebra I",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which feature makes ax² + bx + c quadratic?",
+      "choices": [
+        "b ≠ 0",
+        "c ≠ 0",
+        "a = 0",
+        "a ≠ 0"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which function is quadratic?",
+      "choices": [
+        "f(x) = 3x + 2",
+        "f(x) = 3ˣ",
+        "f(x) = 3x² + 2",
+        "f(x) = 3/x"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is the degree of a quadratic polynomial?",
+      "choices": [
+        "1",
+        "2",
+        "3",
+        "0"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is f(3) for f(x) = x² + 2x?",
+      "choices": [
+        "15",
+        "9",
+        "11",
+        "18"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which coefficient is b in y = 2x² − 5x + 7?",
+      "choices": [
+        "2",
+        "7",
+        "5",
+        "−5"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is f(−2) for f(x) = x²?",
+      "choices": [
+        "−4",
+        "2",
+        "4",
+        "−2"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "For y = x², which input produces output 0?",
+      "choices": [
+        "1",
+        "0",
+        "−1",
+        "2"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "How do equal-spaced inputs reveal a quadratic pattern in a table?",
+      "choices": [
+        "The second differences are constant and nonzero",
+        "Every first difference is constant",
+        "Every output ratio is constant",
+        "Every output is positive"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Which outputs fit y = x² for x = 0, 1, 2, 3?",
+      "choices": [
+        "0, 1, 2, 3",
+        "1, 2, 4, 8",
+        "0, 2, 4, 6",
+        "0, 1, 4, 9"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why can x = 2 and x = −2 have the same output for y = x²?",
+      "choices": [
+        "A function cannot have distinct inputs",
+        "All inputs produce the same output",
+        "Squaring opposite numbers gives equal results",
+        "Negative inputs are outside the domain"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "A rectangle has width x and length x + 3. Which expression gives its area?",
+      "choices": [
+        "2x + 3",
+        "x² + 3x",
+        "x² + 3",
+        "3x²"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "For y = x², how does y change when positive x doubles?",
+      "choices": [
+        "y becomes four times as large",
+        "y doubles",
+        "y increases by 2",
+        "y becomes eight times as large"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Which statement compares linear and quadratic patterns for equal-spaced inputs?",
+      "choices": [
+        "Both always have constant first differences",
+        "Both always have constant output ratios",
+        "Quadratic patterns always decrease",
+        "Linear patterns have constant first differences; quadratic patterns have constant nonzero second differences"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "For y = x² − 4, which input gives y = 5?",
+      "choices": [
+        "1",
+        "2",
+        "3",
+        "5"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why is y = 0x² + 4x + 1 not quadratic?",
+      "choices": [
+        "Its constant term is positive",
+        "Its squared-term coefficient is zero",
+        "Its linear coefficient is even",
+        "Its graph crosses the y-axis"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "For inputs 0, 1, 2, 3, the outputs are 2, 5, 10, 17. What is the constant second difference?",
+      "choices": [
+        "2",
+        "3",
+        "5",
+        "7"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A square's side length increases from s to s + 2. What expression gives the increase in area?",
+      "choices": [
+        "2s + 2",
+        "4s",
+        "s² + 4",
+        "4s + 4"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Which model describes the area A of a square with side length s?",
+      "choices": [
+        "A = 4s",
+        "A = 2s",
+        "A = s²",
+        "A = s + 4"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "The function h(t) = −t² + 4t + 5 models height in meters. What is the height at t = 2 seconds?",
+      "choices": [
+        "7 meters",
+        "9 meters",
+        "5 meters",
+        "13 meters"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A student calls the pattern 1, 4, 9, 16 linear because it rises each time. What evidence corrects the claim?",
+      "choices": [
+        "First differences vary: 3, 5, and 7",
+        "Whole-number outputs make the pattern linear",
+        "Positive outputs make the pattern linear",
+        "Unit-spaced inputs make the pattern linear"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}

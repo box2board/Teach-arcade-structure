@@ -1,0 +1,254 @@
+{
+  "schemaVersion": 1,
+  "id": "economics--comparative-advantage",
+  "title": "Comparative Advantage",
+  "subject": "Social Studies",
+  "category": "Economics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What determines comparative advantage?",
+      "choices": [
+        "Lower opportunity cost of producing a good",
+        "Lower total population",
+        "A larger national land area",
+        "A stronger currency by itself"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What determines absolute advantage?",
+      "choices": [
+        "Producing a good with a lower opportunity cost",
+        "Trading a good at a lower exchange rate",
+        "Producing a good with fewer inputs per unit",
+        "Exporting a good in a larger total quantity"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What are gains from trade?",
+      "choices": [
+        "Only the taxes collected at a port",
+        "Benefits made possible by exchange and specialization",
+        "All revenue earned before production costs",
+        "The physical weight of traded goods"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What are terms of trade in a two-good exchange?",
+      "choices": [
+        "The number of workers living in each country",
+        "The dates when countries hold elections",
+        "The total area of each trading partner",
+        "The rate at which one good is exchanged for another"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is an export?",
+      "choices": [
+        "A good or service sold to buyers abroad",
+        "A good or service purchased from abroad",
+        "A payment made only between domestic banks",
+        "A resource held exclusively for future production"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is an import?",
+      "choices": [
+        "A good or service sold abroad",
+        "A product exchanged only within one town",
+        "A good or service purchased from abroad",
+        "A government payment that produces no good or service"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "In the standard trade model, specialization follows which advantage?",
+      "choices": [
+        "Larger population alone",
+        "Comparative advantage",
+        "Higher prices for every product",
+        "Absolute advantage in every task"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why can a producer with absolute advantage in both goods still benefit from trade?",
+      "choices": [
+        "Absolute advantage eliminates every trade-off",
+        "Trade requires both producers to have identical productivity",
+        "A more productive producer cannot import goods",
+        "Relative opportunity costs may differ between producers"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why does comparative advantage concern relative rather than total cost?",
+      "choices": [
+        "It compares what must be forgone when resources are used for one output",
+        "It measures only the sum of all factory bills",
+        "It ignores alternative uses of resources",
+        "It depends only on the number of workers employed"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What makes an exchange rate mutually beneficial in a simple two-good model?",
+      "choices": [
+        "It must equal the higher opportunity cost plus a tax",
+        "It must exceed both partners' opportunity costs",
+        "It lies between the partners' opportunity costs",
+        "It must be unrelated to production trade-offs"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why does trade not guarantee every individual gains equally?",
+      "choices": [
+        "Trade never changes employment patterns",
+        "Some workers and firms may face adjustment costs",
+        "All income is automatically redistributed equally",
+        "Every firm produces the same product after trade"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "How can changing technology affect comparative advantage?",
+      "choices": [
+        "It permanently removes the need to compare costs",
+        "It changes only national borders",
+        "It makes every country's production identical",
+        "It can change productivity and relative opportunity costs"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why might complete specialization not occur in practice?",
+      "choices": [
+        "Increasing costs, transport, and other constraints can limit specialization",
+        "Every producer has the same opportunity cost",
+        "Trade is possible only with complete specialization",
+        "Countries cannot produce more than one good"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "How do transportation costs affect potential trade gains?",
+      "choices": [
+        "They necessarily increase gains for every participant",
+        "They eliminate all domestic production costs",
+        "They can reduce the benefits available from exchange",
+        "They have no effect on delivered prices"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why does comparative advantage not mean a country must produce only one product?",
+      "choices": [
+        "The principle applies only when no trade occurs",
+        "The principle identifies relative trade-offs, not an absolute rule for all production",
+        "Every good has an identical opportunity cost",
+        "Producing several goods makes costs impossible to compare"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Ana can make 12 posters or 6 models in the same time. With a constant trade-off, what is her opportunity cost of one model?",
+      "choices": [
+        "Half a poster",
+        "Six posters",
+        "Twelve posters",
+        "Two posters"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Ana gives up two posters per model; Ben gives up four. Who has comparative advantage in models?",
+      "choices": [
+        "Ana",
+        "Ben",
+        "Both have equal advantage",
+        "Neither can produce models"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "If one producer's cost is two posters per model and another's is four, which trading rate can benefit both?",
+      "choices": [
+        "One poster per model",
+        "Five posters per model",
+        "Three posters per model",
+        "Six posters per model"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Mina uses fewer work hours than Luis for both bread and chairs. What additional information identifies comparative advantage?",
+      "choices": [
+        "Only the color of their equipment",
+        "Their relative opportunity costs for each product",
+        "Only their total population",
+        "Only their customers' addresses"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Country A gives up 3 units of cloth per tool; Country B gives up 1. Which specialization follows comparative advantage?",
+      "choices": [
+        "A specializes relatively in tools, and B in cloth",
+        "Both must stop producing cloth",
+        "Neither can benefit from exchange",
+        "B specializes relatively in tools, and A in cloth"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ],
+  "referenceUrls": [
+    "https://www.stlouisfed.org/education/comparative-advantage"
+  ]
+}

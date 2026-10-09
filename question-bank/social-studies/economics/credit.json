@@ -1,0 +1,254 @@
+{
+  "schemaVersion": 1,
+  "id": "economics--credit",
+  "title": "Credit",
+  "subject": "Social Studies",
+  "category": "Economics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "referenceUrls": [
+    "https://www.consumerfinance.gov/ask-cfpb/what-is-a-credit-report-en-309/"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "What does using credit allow a borrower to do?",
+      "choices": [
+        "Receive ownership shares without paying",
+        "Borrow purchasing power with an obligation to repay",
+        "Avoid all future financial obligations",
+        "Convert every purchase into tax-free income"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is the principal of a loan?",
+      "choices": [
+        "The amount borrowed, excluding interest charges",
+        "The lender's annual advertising budget",
+        "The borrower's monthly savings target",
+        "The total value of the lender's buildings"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is interest on borrowed money?",
+      "choices": [
+        "A refund of the original purchase price",
+        "The maximum amount a borrower may save",
+        "A measure of the borrower's tax bracket",
+        "A charge for using the lender's money"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What does APR stand for in credit agreements?",
+      "choices": [
+        "Average Payment Requirement",
+        "Annual Profit Ratio",
+        "Annual Percentage Rate",
+        "Authorized Purchase Receipt"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is a credit report?",
+      "choices": [
+        "A record of credit activity and credit-account history",
+        "A monthly list of investment dividends only",
+        "A government guarantee that a borrower will repay",
+        "A tax form calculating a household's total income"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is collateral in a secured loan?",
+      "choices": [
+        "The lender's estimated profit",
+        "An asset pledged to back repayment",
+        "A fee charged for printing statements",
+        "A promise to increase the credit limit"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What does default mean in a loan agreement?",
+      "choices": [
+        "Repaying the loan ahead of schedule",
+        "Transferring money into a savings account",
+        "Failing to meet repayment obligations",
+        "Increasing the value of collateral"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why can making only minimum credit-card payments increase total borrowing costs?",
+      "choices": [
+        "Minimum payments automatically eliminate interest",
+        "The card balance becomes a savings deposit",
+        "The lender cancels the unpaid principal each month",
+        "A balance can remain outstanding longer and accumulate interest"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why do lenders examine repayment history?",
+      "choices": [
+        "It helps them assess the likelihood of timely repayment",
+        "It guarantees that future income will never change",
+        "It determines the borrower's citizenship automatically",
+        "It replaces the need to read loan terms"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "How does a debit-card purchase generally differ from a credit-card purchase?",
+      "choices": [
+        "Debit cards always involve long-term borrowing",
+        "Debit cards generally draw from account funds rather than a credit line",
+        "Credit cards cannot be used for online purchases",
+        "Debit cards require collateral for each transaction"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why is a lower monthly loan payment not necessarily evidence of a cheaper loan?",
+      "choices": [
+        "Monthly payments never include repayment of principal",
+        "All loans have identical repayment periods",
+        "A smaller payment always means a lower total balance",
+        "A longer repayment period can increase total interest paid"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why should a borrower compare fees as well as interest rates?",
+      "choices": [
+        "Fees can be ignored if the loan is secured",
+        "Fees are always refunded at the end of a loan",
+        "Fees can affect the loan's total cost",
+        "Interest rates measure fees in every financial product identically"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What financial responsibility can a co-signer take on?",
+      "choices": [
+        "Repayment if the primary borrower does not meet the agreement",
+        "Ownership of every item the borrower already owns",
+        "Authority to change the borrower's tax rate",
+        "Freedom from all obligations under the loan"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why can borrowing close to a credit-card limit concern lenders?",
+      "choices": [
+        "It proves the borrower has no debt",
+        "It may signal heavy reliance on available credit",
+        "It guarantees a higher savings balance",
+        "It eliminates the importance of payment history"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why is checking a credit report useful?",
+      "choices": [
+        "It guarantees approval of every future loan",
+        "It lets the borrower remove accurate debts without repayment",
+        "It prevents any future identity theft automatically",
+        "It can reveal errors or accounts the person did not authorize"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A one-year loan charges 6% simple interest on $500, with no fees and no payments until year-end. How much interest is owed?",
+      "choices": [
+        "$3",
+        "$6",
+        "$30",
+        "$300"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Two loans have the same principal and repayment term, with no fees. One has a lower fixed interest rate. Which generally costs less?",
+      "choices": [
+        "The loan with the lower fixed interest rate",
+        "The loan with the higher fixed interest rate",
+        "Both must have identical total interest",
+        "The loan with the larger initial monthly payment, regardless of rate"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A card balance is $400. A $100 payment is made, with no new charges, interest, or fees. What balance remains?",
+      "choices": [
+        "$100",
+        "$300",
+        "$400",
+        "$500"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A lender offers a small monthly payment but does not mention the loan's length. What information is most important to request next?",
+      "choices": [
+        "The lender's total national advertising budget",
+        "The number of years the lender has operated",
+        "The repayment term and total cost, including interest and fees",
+        "The number of other products offered by the lender"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A person notices an unfamiliar credit account on their report. Which response best addresses the risk?",
+      "choices": [
+        "Ignore it because account errors cannot affect credit",
+        "Borrow more money before anyone reviews the account",
+        "Send personal information to an unsolicited caller",
+        "Investigate promptly and use official dispute and fraud-reporting channels"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

@@ -1,0 +1,255 @@
+{
+  "schemaVersion": 1,
+  "id": "government--electoral-college",
+  "title": "Electoral College",
+  "subject": "Social Studies",
+  "category": "Government & Civics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What does the Electoral College process select?",
+      "choices": [
+        "Members of the Supreme Court",
+        "President and vice president",
+        "State governors",
+        "Members of the House"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "How is a state's number of presidential electors determined?",
+      "choices": [
+        "Its land area divided by counties",
+        "Its number of state legislators",
+        "Its number of registered political parties",
+        "Its total House and Senate representation"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is the minimum number of electors for a state?",
+      "choices": [
+        "Three",
+        "One",
+        "Two",
+        "Five"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which amendment provided presidential electors for the District of Columbia?",
+      "choices": [
+        "Twelfth Amendment",
+        "Seventeenth Amendment",
+        "Twenty-third Amendment",
+        "Twenty-second Amendment"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which amendment requires distinct electoral votes for president and vice president?",
+      "choices": [
+        "First Amendment",
+        "Twelfth Amendment",
+        "Fourteenth Amendment",
+        "Twenty-sixth Amendment"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What electoral-vote threshold normally elects a president?",
+      "choices": [
+        "A majority of appointed electors",
+        "The largest total even without a majority",
+        "One-third of all electors",
+        "A unanimous vote of all electors"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which chamber chooses the president if no candidate receives the required electoral majority?",
+      "choices": [
+        "Senate",
+        "Supreme Court",
+        "State governors collectively",
+        "House of Representatives"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "How do most states award electoral votes under their established practice?",
+      "choices": [
+        "In exact proportion to each candidate's national vote",
+        "By the governor's personal choice after election day",
+        "Through a winner-take-all system based on the state's popular vote",
+        "Through a vote of the Supreme Court"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why can a national popular-vote winner lose the presidency?",
+      "choices": [
+        "Electoral votes are awarded through state-based rules rather than one national tally",
+        "The national popular vote automatically overrides electors",
+        "Each state receives the same number of electors",
+        "Votes in presidential elections are counted only in the capital"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What distinguishes Maine and Nebraska's allocation method from most states?",
+      "choices": [
+        "They receive no presidential electors",
+        "They award some electors by congressional district results",
+        "They use only a nationwide popular-vote total",
+        "They choose the president through their governors"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How does the House vote in a contingent presidential election?",
+      "choices": [
+        "Each representative casts one electoral vote based on district population",
+        "Each governor casts two votes",
+        "Each state receives votes equal to its electoral allocation",
+        "Each state delegation casts one vote"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Who chooses the vice president if no candidate receives the required electoral majority?",
+      "choices": [
+        "House of Representatives",
+        "Supreme Court",
+        "Senate",
+        "National governors' association"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why can closely divided states receive heavy campaign attention?",
+      "choices": [
+        "Changing their outcome may change which candidate receives their electors",
+        "Campaigns are legally forbidden in all other states",
+        "Their voters cast ballots worth more than any state's electoral total",
+        "Their governors directly elect the president"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What do voters generally select when voting for a presidential ticket?",
+      "choices": [
+        "Supreme Court nominees listed on the same ballot",
+        "A slate of electors pledged to that ticket",
+        "A national cabinet chosen independently of candidates",
+        "The next speaker of the House"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why are electors not the same as members of Congress?",
+      "choices": [
+        "They write all federal election laws",
+        "They approve all judicial appointments",
+        "They serve as permanent members of the Senate",
+        "They perform a separate constitutional role in presidential selection"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A state has eight representatives and two senators. How many presidential electors does it have?",
+      "choices": [
+        "Eight",
+        "Two",
+        "Ten",
+        "Sixteen"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A candidate wins a winner-take-all state's popular vote by a narrow margin. What generally follows?",
+      "choices": [
+        "The candidate's slate receives that state's electoral votes",
+        "The state's electors are divided exactly by vote percentage",
+        "The governor receives the state's votes",
+        "The state loses its electoral representation"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "No presidential candidate receives an electoral majority. Which constitutional process applies?",
+      "choices": [
+        "A new national referendum required by the Constitution",
+        "A contingent election in the House",
+        "Automatic selection of the popular-vote runner-up",
+        "Selection by the Chief Justice alone"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Which comparison of popular and electoral votes is accurate?",
+      "choices": [
+        "Both are identical totals expressed in different units",
+        "Electoral votes count only ballots cast by senators",
+        "Popular votes are cast only after electors have voted",
+        "Popular votes count individual ballots; electoral votes reflect the state-based constitutional process"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Why should a student examine state allocation rules when analyzing an election?",
+      "choices": [
+        "Every state must divide electors proportionally",
+        "Allocation rules determine who serves as Chief Justice",
+        "States may award electors differently, affecting the path to an electoral majority",
+        "State rules replace the constitutional majority requirement"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ],
+  "referenceUrls": [
+    "https://www.archives.gov/electoral-college/about"
+  ]
+}
+

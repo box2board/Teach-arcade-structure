@@ -1,0 +1,255 @@
+{
+  "schemaVersion": 1,
+  "id": "geography--south-asia",
+  "title": "South Asia",
+  "subject": "Social Studies",
+  "category": "Geography",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "referenceUrls": [
+    "https://education.nationalgeographic.org/resource/asia/",
+    "https://education.nationalgeographic.org/resource/monsoon/"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which mountain range separates much of the Indian subcontinent from the Tibetan Plateau?",
+      "choices": [
+        "Atlas Mountains",
+        "Himalayas",
+        "Andes",
+        "Urals"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which ocean lies south of the Indian subcontinent?",
+      "choices": [
+        "Indian Ocean",
+        "Atlantic Ocean",
+        "Arctic Ocean",
+        "Southern Ocean"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which country occupies much of the delta formed by the Ganges and Brahmaputra rivers?",
+      "choices": [
+        "Nepal",
+        "Sri Lanka",
+        "Bhutan",
+        "Bangladesh"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which river flows through much of Pakistan before entering the Arabian Sea?",
+      "choices": [
+        "Mekong",
+        "Yangtze",
+        "Indus",
+        "Niger"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which South Asian country is an island southeast of India?",
+      "choices": [
+        "Sri Lanka",
+        "Nepal",
+        "Bhutan",
+        "Pakistan"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which plateau covers much of peninsular India?",
+      "choices": [
+        "Tibetan Plateau",
+        "Deccan Plateau",
+        "Colorado Plateau",
+        "Anatolian Plateau"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is a monsoon?",
+      "choices": [
+        "A permanent ocean current flowing westward",
+        "A daily reversal of mountain temperatures",
+        "A seasonal shift in prevailing winds",
+        "A river that flows only through deserts"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why are the timing and strength of summer monsoon rains important to South Asian farming?",
+      "choices": [
+        "All farms use seawater rather than rainfall",
+        "The monsoon determines national borders each year",
+        "Rainfall affects only coastal fishing, not crops",
+        "Many crops and water supplies depend on seasonal rainfall"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why do the Indo-Gangetic plains support extensive agriculture?",
+      "choices": [
+        "River deposits and water supplies support productive soils",
+        "The plains have no seasonal weather changes",
+        "The region is covered entirely by mountain glaciers",
+        "The plains lack connections with nearby settlements"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why is Bangladesh particularly exposed to river flooding?",
+      "choices": [
+        "Its rivers drain away from all settled areas",
+        "Low-lying delta land receives water from large upstream basins",
+        "Its entire territory lies above the Himalayan snow line",
+        "Its climate has no rainy season"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How can high mountains influence transportation in Nepal and Bhutan?",
+      "choices": [
+        "They make all routes equally direct",
+        "They remove the need for bridges",
+        "They prevent every form of regional trade",
+        "They can make routes longer and infrastructure more difficult to build"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why is South Asia better understood as culturally diverse rather than culturally uniform?",
+      "choices": [
+        "The region has no shared historical connections",
+        "Only one language is spoken throughout it",
+        "It contains many languages, religions, and regional traditions",
+        "Cultural identities follow only elevation boundaries"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What geographic risk is especially relevant to the low-lying islands of the Maldives?",
+      "choices": [
+        "Coastal flooding and sea-level rise",
+        "Avalanches from high mountain glaciers",
+        "Permafrost thaw across inland tundra",
+        "Winter blizzards on continental grasslands"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "How can Himalayan snow and glacier melt affect communities far downstream?",
+      "choices": [
+        "It determines the language spoken in every coastal city",
+        "It contributes water to rivers used by distant settlements",
+        "It prevents rivers from carrying sediment",
+        "It turns all downstream farmland into deserts"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why does a landlocked country such as Nepal depend on routes through neighboring countries for ocean trade?",
+      "choices": [
+        "Landlocked countries cannot manufacture goods",
+        "International trade requires a coastline in every trading country",
+        "Landlocked countries have no rivers or roads",
+        "It lacks direct access to seaports within its own territory"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A farmer receives much less monsoon rain than usual. Which consequence is most directly plausible?",
+      "choices": [
+        "Farmers may shift harvest dates without any change in water needs",
+        "Lower rainfall directly increases the fertility of all soils",
+        "Water shortages may reduce crop yields",
+        "Lower rainfall necessarily increases yields of water-intensive crops"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Which route moves from northern highlands toward southern peninsular India?",
+      "choices": [
+        "Himalayas → Indo-Gangetic plains → Deccan Plateau",
+        "Deccan Plateau → Himalayas → Indo-Gangetic plains",
+        "Indo-Gangetic plains → Deccan Plateau → Himalayas",
+        "Himalayas → Deccan Plateau → Indo-Gangetic plains"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A dam proposal on a shared South Asian river raises concern in a downstream country. Which issue should negotiators examine?",
+      "choices": [
+        "Only the upstream country's total land area",
+        "Effects on water timing, quantity, and downstream uses",
+        "Only the number of languages spoken along the river",
+        "Only the commercial value of roads near the dam"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Two Indian cities have different climates despite being in the same country. Which explanation best fits geographic reasoning?",
+      "choices": [
+        "Their shared national government produces the same local weather",
+        "Their different voting districts account for the climate contrast",
+        "Elevation, latitude, and distance from the sea can differ",
+        "Their differences result mainly from the languages spoken"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which maps would best help identify flood exposure in a South Asian delta?",
+      "choices": [
+        "Maps of ancient kingdoms and modern postal codes",
+        "Maps of writing systems and national flags",
+        "Maps of mineral exports and literary traditions",
+        "Maps of elevation, rivers, and settlement locations"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

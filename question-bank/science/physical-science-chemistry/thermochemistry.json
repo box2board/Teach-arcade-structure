@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--physical-science-chemistry--thermochemistry",
+  "title": "Thermochemistry",
+  "subject": "Science",
+  "category": "Physical Science & Chemistry",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What does thermochemistry study?",
+      "choices": [
+        "Reaction speed and the frequency of collisions",
+        "The distribution of electrons among atomic orbitals",
+        "The separation of mixtures by particle size",
+        "Energy changes accompanying chemical processes"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is an exothermic process?",
+      "choices": [
+        "A process that releases heat to its surroundings",
+        "A process that absorbs heat from its surroundings",
+        "A process with no heat exchange",
+        "A process with a positive enthalpy change at constant pressure"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is an endothermic process?",
+      "choices": [
+        "A process that releases heat to its surroundings",
+        "A process with no heat exchange",
+        "A process with a negative enthalpy change at constant pressure",
+        "A process that absorbs heat from its surroundings"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What instrument is used to measure heat transfer in a process?",
+      "choices": [
+        "Thermometer alone, without calorimetry measurements",
+        "Calorimeter",
+        "Barometer",
+        "Balance alone, without temperature measurements"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What does specific heat capacity describe?",
+      "choices": [
+        "The energy required to melt a unit mass at fixed temperature",
+        "The rate of heat transfer through a surface",
+        "Energy needed to raise one unit of mass by one degree",
+        "The total heat a material contains at every temperature"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "At constant pressure, what sign of enthalpy change indicates an exothermic reaction?",
+      "choices": [
+        "Positive",
+        "Always zero",
+        "Undefined for every reaction",
+        "Negative"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "In a thermochemistry experiment, what is the system?",
+      "choices": [
+        "Only the room outside the selected materials",
+        "Only the thermometer, regardless of the process",
+        "The material or process selected for study",
+        "All surroundings except the reacting materials"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why does breaking a chemical bond require energy?",
+      "choices": [
+        "Energy is needed to overcome attractions holding bonded atoms together",
+        "Breaking bonds always releases stored energy",
+        "Bond breaking occurs only without energy transfer",
+        "Bond energy depends only on the reactants' total mass"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What generally happens when new chemical bonds form?",
+      "choices": [
+        "Energy must always be absorbed",
+        "Energy is released",
+        "No energy changes accompany bond formation",
+        "The release always equals the energy used to break reactant bonds"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why can a reaction release heat even though bond breaking requires energy?",
+      "choices": [
+        "Exothermic reactions do not require any bond breaking",
+        "Breaking bonds releases more energy than forming bonds",
+        "Bond formation releases more energy than bond breaking absorbs",
+        "All reactant bonds have exactly the same energy as product bonds"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How are system and surroundings energy changes related in an isolated overall setup?",
+      "choices": [
+        "Both must gain the same amount of energy",
+        "Energy lost by one is gained by the other",
+        "Both must lose the same amount of energy",
+        "The system's heat loss is unrelated to the surroundings"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What does a warming surrounding solution suggest about a reaction, if other heat sources are absent?",
+      "choices": [
+        "The reaction absorbs heat from that solution",
+        "The reaction has no energy change",
+        "The reaction necessarily forms a gas",
+        "The reaction releases heat"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why must calorimetry calculations consider heat escaping to the room?",
+      "choices": [
+        "It can cause measured heat transfer to underestimate the reaction's heat release",
+        "It guarantees a larger measured temperature rise",
+        "It changes the reaction's balanced equation",
+        "It increases the heat remaining in the calorimeter"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What distinguishes activation energy from enthalpy change?",
+      "choices": [
+        "Activation energy is a barrier; enthalpy change compares initial and final states",
+        "Both always equal the final temperature",
+        "Enthalpy change measures only collision frequency",
+        "Activation energy determines only product mass"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why do melting and freezing have opposite heat-transfer directions?",
+      "choices": [
+        "Both processes always release energy",
+        "Both processes always absorb energy",
+        "Melting absorbs energy and freezing releases energy",
+        "Neither process involves particle arrangements"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A 100 g sample with specific heat 4 J/(g·°C) warms by 5°C. How much energy does it absorb?",
+      "choices": [
+        "500 J",
+        "2000 J",
+        "125 J",
+        "20 J"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A system releases 80 J to its surroundings. What is the system's energy change from that transfer?",
+      "choices": [
+        "+80 J",
+        "0 J",
+        "+160 J",
+        "−80 J"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A reaction's products have lower enthalpy than its reactants. Which conclusion follows?",
+      "choices": [
+        "The reaction is endothermic",
+        "The reaction is exothermic",
+        "Its activation energy must be zero",
+        "Its atoms have disappeared"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Equal masses of two substances receive equal heat with no heat loss. Which warms less?",
+      "choices": [
+        "The one with higher specific heat capacity",
+        "The one with lower specific heat capacity",
+        "Both must warm equally",
+        "The one with the lower starting volume in every case"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Reaction A releases 40 kJ per mole and reaction B absorbs 40 kJ per mole. For one mole of each, what is the net heat exchange?",
+      "choices": [
+        "80 kJ released",
+        "80 kJ absorbed",
+        "0 kJ",
+        "40 kJ released"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ]
+}

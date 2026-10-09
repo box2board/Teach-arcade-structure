@@ -1,0 +1,255 @@
+{
+  "schemaVersion": 1,
+  "id": "government--civil-liberties",
+  "title": "Civil Liberties",
+  "subject": "Social Studies",
+  "category": "Government & Civics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "referenceUrls": [
+    "https://www.archives.gov/milestone-documents/bill-of-rights",
+    "https://constitution.congress.gov/browse/essay/amdt1-7-3-1/ALDE_00013695/"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "What are civil liberties?",
+      "choices": [
+        "Benefits granted only to public officials",
+        "Responsibilities of military commanders",
+        "Protections for individual freedom against government interference",
+        "Powers reserved exclusively for political parties"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which amendment protects speech, press, assembly, petition, and religious freedom?",
+      "choices": [
+        "First",
+        "Fourth",
+        "Sixth",
+        "Tenth"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which constitutional protection concerns unreasonable government searches and seizures?",
+      "choices": [
+        "Seventh Amendment",
+        "Third Amendment",
+        "Ninth Amendment",
+        "Fourth Amendment"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which amendment includes a protection against compelled self-incrimination?",
+      "choices": [
+        "Second",
+        "Fifth",
+        "Eighth",
+        "Tenth"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which amendment protects the right to assistance of counsel in criminal prosecutions?",
+      "choices": [
+        "Sixth",
+        "Third",
+        "Seventh",
+        "Ninth"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is prior restraint in a freedom-of-expression dispute?",
+      "choices": [
+        "A penalty imposed after a publication is found unlawful",
+        "A private reader's decision not to purchase a newspaper",
+        "Government action preventing expression before it occurs",
+        "A publisher's voluntary correction of an inaccurate report"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What does the Free Exercise Clause concern?",
+      "choices": [
+        "Congress's power to regulate interstate commerce",
+        "A governor's authority to set tax rates",
+        "A court's authority to schedule trials",
+        "Protection of religious belief and practice"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "What is the basic purpose of the Establishment Clause?",
+      "choices": [
+        "To select one national religious leader",
+        "To limit government establishment of religion",
+        "To require citizens to join a religious organization",
+        "To remove religious speech from private homes"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why is criticism of public officials an important protected form of speech?",
+      "choices": [
+        "It helps people debate policy and hold government accountable",
+        "It guarantees critics will win every election",
+        "It removes the need for evidence in public discussion",
+        "It gives critics immunity from every generally applicable law"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "How has the Fourteenth Amendment affected many Bill of Rights protections?",
+      "choices": [
+        "It repealed all protections involving criminal trials",
+        "It restricted them to residents of the national capital",
+        "It has helped apply many protections to state and local governments",
+        "It made those protections optional for each state legislature"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why does the Fourth Amendment not prohibit every government search?",
+      "choices": [
+        "It applies only when a suspect admits guilt",
+        "It protects property but never people",
+        "It gives police unlimited authority inside homes",
+        "It prohibits unreasonable searches rather than all searches"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What is the purpose of due process protections?",
+      "choices": [
+        "To guarantee that every accused person is acquitted",
+        "To require fair procedures before government deprives a person of protected interests",
+        "To let officials punish people without a hearing",
+        "To transfer every criminal case to the legislature"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why is the right to peaceful assembly important in civic life?",
+      "choices": [
+        "It allows people to gather and express shared concerns",
+        "It authorizes private groups to replace elected governments",
+        "It permits participants to disregard all safety rules",
+        "It guarantees that officials must adopt every protest demand"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What does freedom of the press protect most directly?",
+      "choices": [
+        "A publisher's right to receive guaranteed government profits",
+        "An editor's authority to appoint public officials",
+        "The ability to publish information and opinions without improper government suppression",
+        "A newspaper's exemption from every civil lawsuit"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why can courts face difficult questions involving civil liberties?",
+      "choices": [
+        "Constitutional text eliminates every disagreement",
+        "Civil liberties apply only when everyone agrees",
+        "Courts cannot interpret any constitutional provision",
+        "Individual freedoms may interact with other rights and public interests"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A city denies a peaceful group's park permit solely because officials dislike its message. Which concern is most directly raised?",
+      "choices": [
+        "A change in congressional apportionment",
+        "Viewpoint discrimination against protected expression",
+        "A conflict over military command",
+        "A dispute over state boundary lines"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A government forces an accused person to testify against themselves in a criminal case. Which protection is directly implicated?",
+      "choices": [
+        "The Fifth Amendment's self-incrimination protection",
+        "The Third Amendment's quartering restriction",
+        "The Seventh Amendment's civil-jury protection",
+        "The Tenth Amendment's reservation of powers"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Which statement best distinguishes a civil liberty from a guaranteed favorable outcome?",
+      "choices": [
+        "Freedom of speech guarantees public agreement",
+        "The right to counsel guarantees acquittal",
+        "Protected participation does not guarantee that one's preferred policy will be adopted",
+        "Freedom of the press guarantees that every report is accurate"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A state prosecutes a person under its own criminal laws. Why might federal constitutional protections still matter?",
+      "choices": [
+        "State courts are exempt from every constitutional requirement",
+        "Only federal officials can investigate crimes",
+        "State legislation automatically overrides constitutional rights",
+        "Many federal rights also constrain state government through incorporation"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A private club disagrees with a member's opinion. What fact should be checked before treating the dispute as a First Amendment violation?",
+      "choices": [
+        "Whether the opinion is popular with all club members",
+        "Whether the challenged action involves government rather than only private conduct",
+        "Whether the speaker has voted in every election",
+        "Whether the club uses printed rather than digital messages"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--geometry--similarity-and-scale-factors",
+  "title": "Similarity and Scale Factors",
+  "subject": "Math",
+  "category": "Geometry",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What must be true of corresponding angles in similar triangles?",
+      "choices": [
+        "They differ by the scale factor",
+        "Their measures add to 180°",
+        "They are equal in measure",
+        "They must all be acute"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What describes corresponding side lengths in similar figures?",
+      "choices": [
+        "They must be equal",
+        "They are proportional",
+        "They differ by a fixed additive amount",
+        "They must be whole numbers"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "A side grows from 4 units to 12 units. What is the scale factor from the original to the image?",
+      "choices": [
+        "3",
+        "8",
+        "1/3",
+        "16"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which criterion can prove triangles similar using angles alone?",
+      "choices": [
+        "SSS congruence",
+        "SAS congruence",
+        "Hypotenuse-leg congruence",
+        "AA"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "A figure is enlarged by a scale factor of 2. What happens to its perimeter?",
+      "choices": [
+        "It quadruples",
+        "It stays the same",
+        "It doubles",
+        "It increases by 2 units"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "A figure is enlarged by a scale factor of 3. What happens to its area?",
+      "choices": [
+        "It is multiplied by 3",
+        "It is multiplied by 9",
+        "It is multiplied by 6",
+        "It stays the same"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "A scale factor of 1/2 produces what type of image?",
+      "choices": [
+        "A reduction with half the corresponding lengths",
+        "An enlargement with twice the lengths",
+        "A congruent copy with unchanged lengths",
+        "A reduction with half the corresponding angles"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why do similar triangles not always have equal areas?",
+      "choices": [
+        "Their corresponding angles are unequal",
+        "Similarity changes the number of sides",
+        "Similar triangles always have different shapes",
+        "Their side lengths may have a scale factor other than 1"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Similar triangles have corresponding sides 5 and 15 units. If another side of the smaller triangle is 7 units, what is its corresponding larger side?",
+      "choices": [
+        "17 units",
+        "35 units",
+        "21 units",
+        "9 units"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "A drawing uses 1 centimeter for 4 meters. What actual length does 6 centimeters represent?",
+      "choices": [
+        "1.5 meters",
+        "24 meters",
+        "10 meters",
+        "40 meters"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "A triangle with sides 3, 4, and 5 is compared with one having sides 6, 8, and 10. What is true?",
+      "choices": [
+        "The triangles are similar with scale factor 2",
+        "The triangles are congruent",
+        "The triangles have different angle measures",
+        "The triangles are similar with scale factor 3"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What happens to angle measures under a dilation with positive scale factor?",
+      "choices": [
+        "They are multiplied by the scale factor",
+        "They are divided by the scale factor",
+        "They become right angles",
+        "They stay the same"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Two similar polygons have side-length scale factor 4 from smaller to larger. What is the ratio of larger area to smaller area?",
+      "choices": [
+        "4",
+        "8",
+        "16",
+        "1/4"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why is increasing every side length by 3 units not generally a dilation?",
+      "choices": [
+        "Adding a positive number always changes angles to 90°",
+        "Corresponding side ratios may differ",
+        "Dilations allow only scale factors less than 1",
+        "A dilation must increase lengths by the same number of units"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A model is 1/20 the linear size of a building. If the model is 0.6 meters tall, how tall is the building?",
+      "choices": [
+        "12 meters",
+        "0.03 meters",
+        "20.6 meters",
+        "3 meters"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A 2-meter pole casts a 3-meter shadow. At the same time, a tree casts a 12-meter shadow on level ground. Assuming similar triangles, how tall is the tree?",
+      "choices": [
+        "18 meters",
+        "6 meters",
+        "9 meters",
+        "8 meters"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A rectangle is scaled by a factor of 1/3. If its original area is 81 square units, what is the new area?",
+      "choices": [
+        "27 square units",
+        "3 square units",
+        "9 square units",
+        "243 square units"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Two similar solids have linear scale factor 2 from smaller to larger. What is the ratio of larger volume to smaller volume?",
+      "choices": [
+        "2",
+        "8",
+        "4",
+        "6"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Two similar triangles have areas 16 and 64 square units. What is the side-length scale factor from the smaller to the larger?",
+      "choices": [
+        "2",
+        "4",
+        "8",
+        "16"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "An image is twice as wide but three times as tall as the original rectangle. Why is it not similar to the original?",
+      "choices": [
+        "Every enlargement destroys similarity",
+        "Rectangles cannot be similar",
+        "The area increased by more than 2",
+        "The width and height use different scale factors"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

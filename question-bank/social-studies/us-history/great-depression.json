@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "us-history--great-depression",
+  "title": "Great Depression",
+  "subject": "Social Studies",
+  "category": "U.S. History",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which event is associated with the beginning of the Great Depression in the United States?",
+      "choices": [
+        "Stock market crash of 1929",
+        "Oil embargo of 1973",
+        "Panic of 1819",
+        "Stock market crash of 1987"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Who was president when the 1929 stock market crash occurred?",
+      "choices": [
+        "Franklin D. Roosevelt",
+        "Woodrow Wilson",
+        "Herbert Hoover",
+        "Harry Truman"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What term describes a widespread decline in the general price level?",
+      "choices": [
+        "Inflation",
+        "Reflation",
+        "Stagflation",
+        "Deflation"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What was a bank run?",
+      "choices": [
+        "A bank expanding branches across a city",
+        "Many depositors trying to withdraw money at once",
+        "A government increasing income taxes",
+        "A bank selling only foreign currency"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which region was strongly affected by the Dust Bowl?",
+      "choices": [
+        "Great Plains",
+        "Pacific Northwest rainforests",
+        "New England coast",
+        "Great Lakes shoreline"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What were Hoovervilles?",
+      "choices": [
+        "Federally built suburban developments",
+        "New towns reserved for bank employees",
+        "Informal settlements built by people who had lost housing",
+        "Military camps for returning veterans"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What did buying stock on margin involve?",
+      "choices": [
+        "Purchasing shares only with gold coins",
+        "Borrowing part of the money used to purchase stock",
+        "Buying government bonds without interest",
+        "Receiving shares as unemployment payments"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why could bank failures deepen the Depression?",
+      "choices": [
+        "They guaranteed higher household spending",
+        "They eliminated all business debts automatically",
+        "They increased public confidence in financial institutions",
+        "They destroyed savings and restricted access to credit"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why did falling consumer spending contribute to unemployment?",
+      "choices": [
+        "Businesses reduced production and laid off workers",
+        "Businesses needed more workers to meet rising demand",
+        "Lower spending forced wages to rise nationwide",
+        "Consumers substituted borrowing for every lost purchase"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why is the stock market crash alone an incomplete explanation of the Depression?",
+      "choices": [
+        "Economic problems began only after World War II",
+        "The crash affected only foreign investors",
+        "Banking weaknesses, falling demand, and other factors also mattered",
+        "American banks remained entirely unaffected"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How did drought and soil damage contribute to Dust Bowl migration?",
+      "choices": [
+        "Farm productivity increased enough to employ every migrant",
+        "Many farming families lost livelihoods and moved elsewhere",
+        "The federal government prohibited interstate travel",
+        "All farmers received new land without cost"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What effect did high protective tariffs have on international trade during the Depression?",
+      "choices": [
+        "They eliminated retaliatory tariffs by other countries",
+        "They created a worldwide free-trade agreement",
+        "They required all nations to share a currency",
+        "They contributed to trade restrictions and reduced commerce"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why did business investment fall during the Depression?",
+      "choices": [
+        "Weak sales and uncertainty discouraged expansion",
+        "Every factory operated at full capacity",
+        "Borrowing became unnecessary for every business",
+        "Foreign governments purchased all unsold goods"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What made unemployment especially damaging before broad federal relief programs?",
+      "choices": [
+        "All workers received permanent pensions from employers",
+        "Food and housing were supplied freely nationwide",
+        "Many households lacked dependable income support",
+        "State governments guaranteed jobs to every adult"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "How did the Depression affect countries beyond the United States?",
+      "choices": [
+        "Foreign economies were entirely disconnected from U.S. markets",
+        "Declining trade and financial connections spread economic distress",
+        "Only countries using dollars could experience unemployment",
+        "Every European economy expanded continuously throughout the 1930s"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A factory loses customers, lays off workers, and then loses more customers. What does this show?",
+      "choices": [
+        "An economic downturn can reinforce itself",
+        "Unemployment necessarily increases consumer demand",
+        "Falling sales guarantee immediate wage increases",
+        "Factory closures always end recessions"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Which evidence best measures the Depression's impact on workers?",
+      "choices": [
+        "The number of presidential campaign slogans",
+        "The size of military parades",
+        "The number of state capitals",
+        "Changes in unemployment and earnings"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Which distinction between the Dust Bowl and the Depression is accurate?",
+      "choices": [
+        "The Depression affected only farmers; the Dust Bowl affected only bankers",
+        "Both were names for the same stock exchange collapse",
+        "The Dust Bowl involved environmental damage; the Depression was a broad economic crisis",
+        "The Dust Bowl occurred entirely after World War II"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Which source would best reveal a family's experience of unemployment in 1932?",
+      "choices": [
+        "A map of colonial settlement in 1750",
+        "A diary describing job searches and household expenses",
+        "A treaty signed after the War of 1812",
+        "A weather report from 1990"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which sequence places these Great Depression events in chronological order?",
+      "choices": [
+        "1929 crash, Roosevelt's 1933 inauguration, U.S. entry into World War II",
+        "Roosevelt's 1933 inauguration, 1929 crash, U.S. entry into World War II",
+        "U.S. entry into World War II, 1929 crash, Roosevelt's 1933 inauguration",
+        "1929 crash, U.S. entry into World War II, Roosevelt's 1933 inauguration"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}

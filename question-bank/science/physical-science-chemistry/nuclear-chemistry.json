@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--physical-science-chemistry--nuclear-chemistry",
+  "title": "Nuclear Chemistry",
+  "subject": "Science",
+  "category": "Physical Science & Chemistry",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which particles are found in an atomic nucleus?",
+      "choices": [
+        "Electrons and photons",
+        "Protons and electrons",
+        "Protons and neutrons",
+        "Neutrons and orbiting electrons"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "How do isotopes of one element differ?",
+      "choices": [
+        "They have different numbers of protons",
+        "They have different element symbols by definition",
+        "They have no nuclei",
+        "They have different numbers of neutrons"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is radioactive decay?",
+      "choices": [
+        "Spontaneous change of an unstable nucleus",
+        "Separation of a salt into dissolved ions",
+        "Movement of electrons through a wire",
+        "Breaking a molecule by ordinary digestion"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is an alpha particle?",
+      "choices": [
+        "One electron",
+        "Two protons and two neutrons",
+        "One photon",
+        "One proton and one electron"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is a beta-minus particle emitted in nuclear decay?",
+      "choices": [
+        "A helium nucleus",
+        "A neutron pair",
+        "An electron",
+        "An oxygen atom"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is gamma radiation?",
+      "choices": [
+        "A stream of helium nuclei",
+        "A stream of complete atoms",
+        "Low-frequency sound",
+        "High-energy electromagnetic radiation"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is a radioactive half-life?",
+      "choices": [
+        "Time for half the undecayed nuclei in a large sample to decay on average",
+        "Time for every nucleus to decay",
+        "Time for the sample's temperature to halve",
+        "Time for every atom to lose half its protons"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why does nuclear decay sometimes change one element into another?",
+      "choices": [
+        "Only the number of electrons in chemical bonds changes",
+        "The number of protons changes",
+        "Only the temperature of the sample changes",
+        "Only the arrangement of atoms in molecules changes"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How does nuclear fission differ from fusion?",
+      "choices": [
+        "Fission joins atoms chemically; fusion dissolves them",
+        "Both are only rearrangements of outer electrons",
+        "Fission splits nuclei; fusion joins light nuclei",
+        "Fusion splits nuclei; fission joins light nuclei"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why is an alpha emitter potentially hazardous if taken inside the body?",
+      "choices": [
+        "Alpha particles have no interactions with tissue",
+        "It becomes nonradioactive immediately in water",
+        "It only emits harmless visible light",
+        "It can strongly ionize nearby tissue despite limited penetration"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why can a radioactive tracer help study a process?",
+      "choices": [
+        "Its detectable emissions allow its movement to be followed",
+        "It makes every chemical substance follow the same path",
+        "Its visible color alone measures every reaction rate",
+        "It prevents the labeled substance from moving"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What remains unchanged during an ordinary chemical reaction but may change in a nuclear reaction?",
+      "choices": [
+        "The positions of molecules",
+        "The identity of atomic nuclei",
+        "The number of chemical bonds",
+        "The arrangement of outer electrons"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Can the exact decay time of one particular unstable nucleus normally be predicted?",
+      "choices": [
+        "Yes; every nucleus of one isotope decays at the same instant",
+        "Yes; the half-life specifies one exact decay time for each nucleus",
+        "No; decay is described using probabilities",
+        "No; so even the average behavior of large samples is unpredictable"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why are half-life and the original amount both useful for estimating remaining radioactive material?",
+      "choices": [
+        "The half-life directly gives the remaining mass without an initial amount",
+        "The initial amount changes the isotope's half-life proportionally",
+        "Half-life measures the decay products' chemical solubility",
+        "Half-life gives the fraction remaining; the original amount sets its size"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What is the main energy source of the Sun?",
+      "choices": [
+        "Nuclear fusion",
+        "Burning coal",
+        "Chemical oxidation of oxygen",
+        "Nuclear fission of uranium"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A sample begins with 80 mg of a radioactive isotope. After two half-lives, about how much remains undecayed?",
+      "choices": [
+        "40 mg",
+        "20 mg",
+        "60 mg",
+        "10 mg"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "An alpha decay reduces a nucleus's mass number by how much?",
+      "choices": [
+        "1",
+        "2",
+        "4",
+        "0"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "During beta-minus decay, a neutron becomes a proton. What happens to the nucleus's atomic number?",
+      "choices": [
+        "It decreases by 1",
+        "It decreases by 2",
+        "It remains unchanged",
+        "It increases by 1"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A radioactive isotope has a half-life of 6 hours. About what fraction remains after 18 hours?",
+      "choices": [
+        "1/8",
+        "1/2",
+        "1/3",
+        "1/6"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Two isotopes have the same proton number but different neutron numbers. Which conclusion follows?",
+      "choices": [
+        "They are different elements with the same mass number",
+        "They are the same element with different mass numbers",
+        "They have identical nuclei",
+        "They must have identical decay behavior"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}

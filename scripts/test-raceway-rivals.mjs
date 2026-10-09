@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import {Race,ReviewSession,SEGMENT_LENGTH,JUICE_DRAIN} from '../public/review-lab/raceway-rivals/engine.js';
-import {loadQuestionSet} from '../public/review-lab/catalog.js';
+import {loadQuestionSet,setsForGame,QUESTION_SETS,gameUrl} from '../public/review-lab/catalog.js';
 const bank=await loadQuestionSet('scientific-method');
 for(const questionCount of [8,12,16])for(const laps of [1,2,3,5]){
  const review=new ReviewSession({...bank,questions:bank.questions.slice(0,20)},{questionCount,laps},()=>.25);
@@ -77,3 +77,17 @@ for(let i=0;i<600;i++)competitive.update(.05,{gas:true,left:competitive.x>.08,ri
 assert(competitive.rivals.some(r=>Math.abs(r.distance-competitive.distance)<1500),'rivals remain in racing range at normal pace');
 assert(competitive.rivals.every(r=>r.speed>390&&r.speed<480));
 console.log('PASS: steering response and centering, stationary grip, swept light contact, cooldown, shields, fair recovery, competitive independent rival pace.');
+
+assert.equal(setsForGame('raceway-rivals').length,QUESTION_SETS.length);
+for(const set of setsForGame('raceway-rivals')){
+ const bank=await loadQuestionSet(set.id);
+ for(const questionCount of [8,12,16]){
+  const review=new ReviewSession(bank,{questionCount,laps:2});
+  assert.equal(review.selected.length,questionCount);assert.equal(new Set(review.selected.map(q=>q.id)).size,questionCount);
+  assert.equal(review.deck.length,questionCount*2);
+  while(!review.complete)review.answer(review.question.answer);
+  assert.equal(review.correct,questionCount*2);
+ }
+ assert.equal(new URL(gameUrl('raceway-rivals',set.id),'https://teacharcade.com').searchParams.get('set'),set.id);
+}
+console.log(`PASS: all ${QUESTION_SETS.length} shared topics support Raceway Rivals at 8/12/16 questions with repeated laps and deep links.`);

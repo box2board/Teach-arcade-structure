@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--physics--gravity-and-circular-motion",
+  "title": "Gravity and Circular Motion",
+  "subject": "Science",
+  "category": "Physics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which property causes objects to gravitationally attract each other in Newton's model?",
+      "choices": [
+        "Mass",
+        "Color",
+        "Electric charge only",
+        "Temperature only"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is a gravitational field?",
+      "choices": [
+        "A region where all objects have the same mass",
+        "A force produced only by magnets",
+        "A description of gravitational force per unit mass at each location",
+        "An area with no possible acceleration"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which direction does centripetal acceleration point?",
+      "choices": [
+        "Along the tangent only",
+        "Away from the center",
+        "Straight upward in every case",
+        "Toward the center of the circular path"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What does orbital period measure?",
+      "choices": [
+        "Time for one axial rotation",
+        "Time for one complete orbit",
+        "Distance from a planet's center",
+        "Mass of the orbiting object"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What does free fall mean in an ideal introductory model?",
+      "choices": [
+        "Motion with zero acceleration",
+        "Motion requiring upward thrust",
+        "Motion under gravity alone",
+        "Motion without any force"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is a tangent to a circular path at a point?",
+      "choices": [
+        "A line in the instantaneous direction of motion",
+        "A line pointing only toward the center",
+        "The diameter through all possible points",
+        "The distance around the whole circle"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which relation gives centripetal acceleration for speed v and radius r?",
+      "choices": [
+        "a = v²/r",
+        "a = vr",
+        "a = r/v²",
+        "a = v/r²"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why does uniform circular motion involve acceleration?",
+      "choices": [
+        "The object's mass continually changes",
+        "Acceleration requires an increase in speed only",
+        "The velocity direction changes continuously",
+        "The object stays at one position"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why is centripetal force not a separate new kind of interaction?",
+      "choices": [
+        "It acts only when no other forces exist",
+        "It names the inward net-force role that gravity, tension, or other forces can provide",
+        "It is always opposite the net force",
+        "It is generated solely by circular motion"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why can a satellite remain in orbit while continuously falling?",
+      "choices": [
+        "Gravity is absent at orbital height",
+        "Air pressure holds it up",
+        "Its mass becomes zero in orbit",
+        "Its forward motion carries it around Earth as gravity accelerates it inward"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How does gravitational force change if one mass doubles and separation stays fixed?",
+      "choices": [
+        "The force halves",
+        "The force quadruples",
+        "The force doubles",
+        "The force stays the same"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "How does gravitational attraction change if center-to-center distance doubles, with masses fixed?",
+      "choices": [
+        "It becomes twice as large",
+        "It becomes half as large",
+        "It becomes four times as large",
+        "It becomes one-fourth as large"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why do astronauts in a freely falling orbital station feel weightless?",
+      "choices": [
+        "Earth no longer attracts them",
+        "They and their surroundings accelerate together without ordinary support forces",
+        "Their mass has disappeared",
+        "Their bodies contain no matter"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why do objects of different masses fall with the same acceleration in a vacuum near Earth?",
+      "choices": [
+        "Gravitational force and inertia both scale with mass",
+        "The heavier object has no gravitational force",
+        "The lighter object has a larger downward net force",
+        "Vacuum removes Earth's gravitational field"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What happens to a circular-motion requirement if speed increases but radius stays fixed?",
+      "choices": [
+        "No inward force is needed",
+        "The acceleration must point outward",
+        "A larger inward acceleration is needed",
+        "The radius automatically becomes zero"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A satellite has constant speed in a circular orbit. Which quantity changes?",
+      "choices": [
+        "Its velocity direction",
+        "Its mass necessarily",
+        "Its distance from the center",
+        "Its speed necessarily"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Using a = v²/r, what is the inward acceleration at 4 m/s on a 2 m radius path?",
+      "choices": [
+        "2 m/s²",
+        "4 m/s²",
+        "32 m/s²",
+        "8 m/s²"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A ball's supporting string breaks during horizontal circular motion. Neglect other forces for the instant afterward. Which direction does it initially move?",
+      "choices": [
+        "Directly toward the circle's center",
+        "Along the tangent",
+        "Directly away from the center",
+        "Immediately along a smaller circle"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Two identical masses move from separation r to separation 3r. What fraction of the original gravitational force remains?",
+      "choices": [
+        "One-third",
+        "One-ninth",
+        "Three times",
+        "Nine times"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A car rounds a level curve at constant speed. What provides the needed horizontal inward force in the usual no-skidding model?",
+      "choices": [
+        "The car's weight alone",
+        "The road's upward normal force alone",
+        "An outward gravitational force",
+        "Static friction from the road"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

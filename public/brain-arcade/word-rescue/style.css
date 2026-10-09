@@ -83,8 +83,8 @@
 .word-rescue-page__difficulty-pill{background:#f1f5f9;color:#334155;border:1px solid #cbd5e1}
 .word-rescue-page__clue-button{min-height:38px;padding:8px 12px;background:#fff;color:var(--wr-navy);border-color:#cbd5e1}
 .word-rescue-page__clue{margin:0 0 18px;padding:12px 14px;border-left:4px solid var(--wr-orange);border-radius:8px;background:#fffaf3;color:#475569;font:600 14px/1.45 Nunito,system-ui,sans-serif}
-.word-rescue-page__word{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 8px;width:100%;min-width:0;min-height:74px;margin:18px 0 16px}
-.word-rescue-page__word-group{display:flex;gap:6px}
+.word-rescue-page__word{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 26px;width:100%;min-width:0;min-height:74px;margin:18px 0 16px}
+.word-rescue-page__word-group{display:flex;flex:0 0 auto;flex-wrap:nowrap;gap:6px}
 .word-rescue-page__slot{display:inline-flex;align-items:flex-end;justify-content:center;width:32px;height:48px;border-bottom:3px solid var(--wr-navy);color:var(--wr-navy-deep);font:700 27px/1 Poppins,sans-serif;text-transform:uppercase}
 .word-rescue-page__feedback{min-height:26px;margin:0 0 20px;text-align:center;color:#475569;font:700 15px/1.4 Nunito,system-ui,sans-serif}
 .word-rescue-page__feedback.is-win{color:#166534}
@@ -133,7 +133,7 @@
   .word-rescue-page__scene-label{left:10px;top:10px}
   .word-rescue-page__scene-label strong{font-size:12px}
   .word-rescue-page__round-meta{align-items:flex-start}
-  .word-rescue-page__word{gap:9px 5px;min-height:64px;margin:14px 0}
+  .word-rescue-page__word{gap:10px 18px;min-height:64px;margin:14px 0}
   .word-rescue-page__slot{width:25px;height:40px;font-size:22px}
   .word-rescue-page__keyboard{grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
   .word-rescue-page__letter{min-height:42px;font-size:14px}

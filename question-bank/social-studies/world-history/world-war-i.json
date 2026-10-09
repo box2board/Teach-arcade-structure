@@ -1,0 +1,255 @@
+{
+  "schemaVersion": 1,
+  "id": "world-history--world-war-i",
+  "title": "World War I",
+  "subject": "Social Studies",
+  "category": "World History",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which event triggered the July Crisis in 1914?",
+      "choices": [
+        "Assassination of Archduke Franz Ferdinand",
+        "Germany's invasion of Poland",
+        "Russia's invasion of Finland",
+        "The fall of the Berlin Wall"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which countries formed the Triple Entente before World War I?",
+      "choices": [
+        "Germany, Austria-Hungary, and Italy",
+        "Britain, Germany, and Japan",
+        "Britain, France, and Russia",
+        "France, Austria-Hungary, and Spain"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which two powers were central members of the Central Powers?",
+      "choices": [
+        "Britain and France",
+        "Germany and Austria-Hungary",
+        "Russia and Italy",
+        "United States and Japan"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What was an armistice?",
+      "choices": [
+        "A treaty guaranteeing permanent neutrality",
+        "A plan to divide a colony",
+        "An order to begin military conscription",
+        "An agreement to stop fighting"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "On what date did the major Western Front armistice take effect?",
+      "choices": [
+        "November 11, 1918",
+        "June 28, 1914",
+        "April 6, 1917",
+        "September 1, 1939"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which treaty imposed the main postwar settlement on Germany?",
+      "choices": [
+        "Treaty of Ghent",
+        "Treaty of Tordesillas",
+        "Treaty of Versailles",
+        "Treaty of Utrecht"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which organization was created after the war to promote collective security?",
+      "choices": [
+        "United Nations",
+        "League of Nations",
+        "Warsaw Pact",
+        "European Union"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "How did militarism contribute to tensions?",
+      "choices": [
+        "It required states to dissolve their armed forces",
+        "It prevented military influence on policy",
+        "It eliminated competition among European powers",
+        "Arms buildups and war planning increased readiness for conflict"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why did alliances help turn a regional crisis into a wider war?",
+      "choices": [
+        "Governments' commitments and decisions drew additional powers into the conflict",
+        "Every alliance legally required immediate war under any circumstance",
+        "All European countries belonged to one alliance",
+        "Alliances removed leaders' ability to make choices"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why did trench warfare produce stalemate on parts of the Western Front?",
+      "choices": [
+        "Neither side had access to artillery",
+        "Soldiers fought only from moving ships",
+        "Defensive weapons and fortified positions made advances costly",
+        "All armies refused to build defensive positions"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How did imperial competition contribute to prewar tensions?",
+      "choices": [
+        "European empires had no interests outside Europe",
+        "Rival powers competed over territory, influence, and resources",
+        "Colonial competition ended all nationalist movements",
+        "Colonies were excluded from wartime mobilization"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What made World War I a global conflict?",
+      "choices": [
+        "All fighting occurred within France",
+        "Only European civilians experienced disruption",
+        "Neutrality prevented every non-European power from participating",
+        "Colonial forces and campaigns extended the war beyond Europe"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why did Russia leave the war after the Bolsheviks took power?",
+      "choices": [
+        "The new government sought peace and signed Brest-Litovsk",
+        "Russia had conquered all of Germany",
+        "The United States required Russia to join the Central Powers",
+        "The League of Nations ordered a withdrawal in 1914"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "How did total war affect civilian life?",
+      "choices": [
+        "Civilian economies remained separate from military needs",
+        "Every factory stopped producing during the conflict",
+        "Governments mobilized labor, resources, and public opinion for the war",
+        "Only professional soldiers faced government restrictions"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why did U.S. entry in 1917 matter to the Allies?",
+      "choices": [
+        "It immediately ended every campaign worldwide",
+        "It added substantial financial, material, and eventually military support",
+        "It caused Britain to withdraw from the conflict",
+        "It restored the Russian monarchy"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Which order places these World War I events correctly?",
+      "choices": [
+        "U.S. entry, 1918 armistice, Sarajevo assassination",
+        "1918 armistice, Sarajevo assassination, U.S. entry",
+        "Sarajevo assassination, 1918 armistice, U.S. entry",
+        "Sarajevo assassination, U.S. entry, 1918 armistice"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A government rations food and directs factories toward military supplies. What does this illustrate?",
+      "choices": [
+        "Total-war mobilization",
+        "Complete economic neutrality",
+        "An end to civilian participation",
+        "Restoration of feudal labor"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Which comparison of the armistice and Versailles treaty is accurate?",
+      "choices": [
+        "Both were signed before the war began",
+        "The treaty stopped fighting in 1914; the armistice divided Europe in 1919",
+        "The armistice stopped major fighting; the treaty set peace terms afterward",
+        "Both were military plans for invading France"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Why should war causation distinguish long-term tensions from immediate triggers?",
+      "choices": [
+        "The assassination alone explains every military and political decision",
+        "The assassination sparked a crisis within an already tense international system",
+        "Long-term tensions mean leaders had no choices",
+        "The war began without any diplomatic crisis"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which postwar change most directly altered Europe's political map?",
+      "choices": [
+        "The formation of NATO in 1918",
+        "The unification of every European country",
+        "The restoration of all prewar empires unchanged",
+        "The collapse of empires and creation or restoration of states"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ],
+  "referenceUrls": [
+    "https://encyclopedia.ushmm.org/content/en/article/world-war-i"
+  ]
+}
+

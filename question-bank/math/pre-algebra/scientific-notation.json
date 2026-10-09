@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--pre-algebra--scientific-notation",
+  "title": "Scientific Notation",
+  "subject": "Math",
+  "category": "Pre-Algebra & Number Sense",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which form represents a positive number in scientific notation?",
+      "choices": [
+        "a × 10ⁿ, with 0 < a < 1 and integer n",
+        "a × 10ⁿ, with a always an integer",
+        "a × 10ⁿ, with n always positive",
+        "a × 10ⁿ, with 1 ≤ a < 10 and integer n"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which expression is written in standard scientific notation?",
+      "choices": [
+        "62 × 10³",
+        "0.62 × 10⁵",
+        "6.2 × 10⁴",
+        "620 × 10²"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is 4.5 × 10³ in standard form?",
+      "choices": [
+        "450",
+        "4500",
+        "45",
+        "45000"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is 0.00072 in scientific notation?",
+      "choices": [
+        "7.2 × 10⁻⁴",
+        "7.2 × 10⁴",
+        "7.2 × 10⁻³",
+        "7.2 × 10⁻⁵"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which number equals 3.1 × 10⁻²?",
+      "choices": [
+        "0.31",
+        "0.0031",
+        "310",
+        "0.031"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What exponent is used to write 8,000,000 as 8 × 10ⁿ?",
+      "choices": [
+        "7",
+        "5",
+        "6",
+        "−6"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "How is 92,000 written in scientific notation?",
+      "choices": [
+        "9.2 × 10³",
+        "9.2 × 10⁴",
+        "9.2 × 10⁵",
+        "9.2 × 10²"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why does 0.0005 have a negative exponent in scientific notation?",
+      "choices": [
+        "It is a positive number smaller than 1",
+        "It is a negative number",
+        "Its coefficient must be negative",
+        "It has five significant digits"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What happens to 2.4 × 10⁵ when it is multiplied by 10?",
+      "choices": [
+        "The exponent decreases to 4",
+        "The coefficient becomes 0.24 and the exponent stays 5",
+        "The number becomes negative",
+        "The exponent increases to 6"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Which expression gives (2 × 10³)(3 × 10⁴) in scientific notation?",
+      "choices": [
+        "5 × 10⁷",
+        "6 × 10¹²",
+        "6 × 10⁷",
+        "6 × 10⁶"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What is (8 × 10⁶) ÷ (2 × 10²)?",
+      "choices": [
+        "4 × 10⁸",
+        "4 × 10⁴",
+        "6 × 10⁴",
+        "4 × 10³"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Which is greater, 7 × 10⁵ or 2 × 10⁶?",
+      "choices": [
+        "2 × 10⁶",
+        "7 × 10⁵",
+        "They are equal",
+        "Neither can be compared without rounding"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "How should 18 × 10⁴ be rewritten in scientific notation?",
+      "choices": [
+        "1.8 × 10³",
+        "1.8 × 10⁴",
+        "1.8 × 10⁶",
+        "1.8 × 10⁵"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What is 3 × 10⁴ + 2 × 10⁴?",
+      "choices": [
+        "5 × 10⁸",
+        "6 × 10⁴",
+        "5 × 10⁴",
+        "5 × 10⁰"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Which expression equals 6 × 10⁻³ written with exponent −4?",
+      "choices": [
+        "0.6 × 10⁻⁴",
+        "60 × 10⁻⁴",
+        "6 × 10⁻⁴",
+        "600 × 10⁻⁴"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A cell is 2 × 10⁻⁵ meters wide. How wide are 100 such cells placed side by side with no gaps?",
+      "choices": [
+        "2 × 10⁻³ meters",
+        "2 × 10⁻⁷ meters",
+        "2 × 10⁻⁴ meters",
+        "2 × 10⁵ meters"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A population rises from 4 × 10⁵ to 1.2 × 10⁶. By what factor does it grow?",
+      "choices": [
+        "0.3",
+        "8",
+        "30",
+        "3"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Which sum is written correctly in scientific notation: 5 × 10³ + 2 × 10⁴?",
+      "choices": [
+        "7 × 10⁷",
+        "7 × 10⁴",
+        "2.5 × 10⁴",
+        "2.5 × 10³"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A distance is 9 × 10⁸ meters. At 3 × 10⁴ meters per second, how many seconds would it take to travel that distance at constant speed?",
+      "choices": [
+        "3 × 10¹² seconds",
+        "3 × 10⁴ seconds",
+        "3 × 10⁵ seconds",
+        "6 × 10⁴ seconds"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Two masses are 6 × 10⁻³ grams and 2 × 10⁻⁴ grams. What is the ratio of the first mass to the second?",
+      "choices": [
+        "30",
+        "3",
+        "0.3",
+        "300"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}

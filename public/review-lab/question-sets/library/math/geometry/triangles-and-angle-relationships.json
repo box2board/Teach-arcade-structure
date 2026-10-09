@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--geometry--triangles-and-angle-relationships",
+  "title": "Triangles and Angle Relationships",
+  "subject": "Math",
+  "category": "Geometry",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is the sum of interior angles in a Euclidean triangle?",
+      "choices": [
+        "180°",
+        "90°",
+        "270°",
+        "360°"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is an equilateral triangle?",
+      "choices": [
+        "A triangle with exactly one right angle",
+        "A triangle with one obtuse angle",
+        "A triangle with three equal sides",
+        "A triangle with no equal sides"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is a scalene triangle?",
+      "choices": [
+        "A triangle with three equal sides",
+        "A triangle with at least two equal sides",
+        "A triangle with three right angles",
+        "A triangle with no equal sides"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is the measure of each angle in an equilateral triangle?",
+      "choices": [
+        "45°",
+        "60°",
+        "90°",
+        "120°"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "A triangle has angles 50° and 60°. What is the third angle?",
+      "choices": [
+        "110°",
+        "60°",
+        "70°",
+        "130°"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is an acute triangle?",
+      "choices": [
+        "A triangle whose three angles are all less than 90°",
+        "A triangle with one angle greater than 90°",
+        "A triangle with one right angle",
+        "A triangle whose angles total less than 180°"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "How many right angles can a nondegenerate Euclidean triangle contain?",
+      "choices": [
+        "One at most",
+        "Exactly two",
+        "Exactly three",
+        "None in any triangle"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why can a triangle not have two obtuse angles?",
+      "choices": [
+        "A triangle must have three equal sides",
+        "Obtuse angles must always be paired with right angles",
+        "Their sum would already exceed 180°",
+        "Every triangle angle must be acute"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "In an isosceles triangle, how do the angles opposite the equal sides compare?",
+      "choices": [
+        "They are always right angles",
+        "They are equal",
+        "They always sum to 90°",
+        "They differ by 60°"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "An isosceles triangle's vertex angle is 40°. What is each base angle?",
+      "choices": [
+        "40°",
+        "140°",
+        "80°",
+        "70°"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What is the relationship between an exterior angle of a triangle and its two remote interior angles?",
+      "choices": [
+        "The exterior angle equals their difference",
+        "All three angles must be equal",
+        "The exterior angle equals their sum",
+        "The exterior angle equals half their sum"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "A triangle's remote interior angles are 35° and 65°. What is the corresponding exterior angle?",
+      "choices": [
+        "80°",
+        "30°",
+        "130°",
+        "100°"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Which set of lengths can form a nondegenerate triangle?",
+      "choices": [
+        "2, 3, 6",
+        "4, 5, 7",
+        "1, 2, 3",
+        "3, 3, 8"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why must the sum of two triangle side lengths exceed the third?",
+      "choices": [
+        "Otherwise those sides cannot meet to form a nondegenerate triangle",
+        "All triangle sides must have equal length",
+        "The longest side must be exactly twice the shortest",
+        "A triangle's perimeter must equal 180"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "In a triangle, what lies opposite the longest side?",
+      "choices": [
+        "The smallest angle",
+        "A right angle in every case",
+        "The largest angle",
+        "An angle equal to the sum of the other two in every case"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A triangle's angles are x, 2x, and 3x degrees. What is its largest angle?",
+      "choices": [
+        "90°",
+        "30°",
+        "60°",
+        "120°"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A triangle's exterior angle is 125°, and one remote interior angle is 55°. What is the other remote angle?",
+      "choices": [
+        "55°",
+        "180°",
+        "80°",
+        "70°"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Two sides measure 5 cm and 8 cm. Which is a possible third side length?",
+      "choices": [
+        "3 cm",
+        "10 cm",
+        "13 cm",
+        "14 cm"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A student labels a triangle's angles 80°, 70°, and 40°. What identifies the problem?",
+      "choices": [
+        "A triangle cannot have an 80° angle",
+        "The angles sum to 190°",
+        "All three angles must be equal",
+        "A triangle requires a right angle"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A triangle has sides 6, 6, and 9 cm. Which classification is supported by the side lengths?",
+      "choices": [
+        "Equilateral",
+        "Scalene",
+        "Right, regardless of angle measures",
+        "Isosceles"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

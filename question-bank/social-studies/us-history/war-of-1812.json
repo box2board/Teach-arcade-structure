@@ -1,0 +1,255 @@
+{
+  "schemaVersion": 1,
+  "id": "us-history--war-of-1812",
+  "title": "War of 1812",
+  "subject": "Social Studies",
+  "category": "U.S. History",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Against which country did the United States declare war in 1812?",
+      "choices": [
+        "France",
+        "Great Britain",
+        "Spain",
+        "Mexico"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Who was U.S. president when the War of 1812 began?",
+      "choices": [
+        "Thomas Jefferson",
+        "James Monroe",
+        "John Adams",
+        "James Madison"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What was impressment?",
+      "choices": [
+        "Forcing sailors into naval service",
+        "Charging taxes on imported cloth",
+        "Taking a military oath voluntarily",
+        "Seizing farmland for road construction"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What name described members of Congress who pressed for war?",
+      "choices": [
+        "Federalists at Hartford",
+        "Free Soilers",
+        "War Hawks",
+        "Know-Nothings"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which treaty ended the War of 1812?",
+      "choices": [
+        "Treaty of Paris of 1783",
+        "Treaty of Ghent",
+        "Treaty of Guadalupe Hidalgo",
+        "Adams-Onís Treaty"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which city did British forces burn major public buildings in during 1814?",
+      "choices": [
+        "Washington, D.C.",
+        "Philadelphia",
+        "New York City",
+        "Boston"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which fort's defense inspired the words of The Star-Spangled Banner?",
+      "choices": [
+        "Fort Sumter",
+        "Fort Ticonderoga",
+        "Fort Necessity",
+        "Fort McHenry"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why did British maritime policies anger Americans?",
+      "choices": [
+        "They granted American ships exclusive European trading rights",
+        "They required Britain to buy only American goods",
+        "They interfered with trade and seized sailors",
+        "They ended all restrictions on Atlantic commerce"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How did European warfare contribute to the conflict?",
+      "choices": [
+        "Britain and France restricted neutral commerce during their struggle",
+        "Europe's powers agreed to protect all neutral ships equally",
+        "The United States was legally required to enter every European war",
+        "European warfare removed Britain's need for sailors"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why did some Indigenous leaders ally with Britain?",
+      "choices": [
+        "They wanted all Indigenous land transferred to U.S. settlers",
+        "They sought support against U.S. expansion onto their lands",
+        "They were united under one nationwide Indigenous government",
+        "They sought to abolish every Indigenous political community"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What was Tecumseh's major goal?",
+      "choices": [
+        "Creating a new British colony in New England",
+        "Leading an American invasion of Spain",
+        "Ending all cooperation among Indigenous nations",
+        "Building an Indigenous alliance to resist U.S. expansion"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why were the Great Lakes important during the war?",
+      "choices": [
+        "They connected directly to the Pacific Ocean",
+        "They made land fighting unnecessary",
+        "Control of waterways affected movement and supply",
+        "They separated the United States from Florida"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What did the Treaty of Ghent largely restore?",
+      "choices": [
+        "Prewar territorial boundaries between the belligerents",
+        "American control of all British Canada",
+        "British control of the thirteen former colonies",
+        "French control of the Mississippi Valley"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why was the Battle of New Orleans fought after the treaty was signed?",
+      "choices": [
+        "The treaty ordered one final battle",
+        "News and treaty ratification had not yet ended local fighting",
+        "The treaty transferred Louisiana to Britain",
+        "Congress had rejected the treaty before the battle"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why did New England Federalists criticize the war?",
+      "choices": [
+        "They favored an immediate invasion of Mexico",
+        "They demanded that France annex Canada",
+        "They opposed all shipping between American states",
+        "Trade disruption harmed regional commercial interests"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Which sequence is correct for the War of 1812?",
+      "choices": [
+        "Washington attacked, war declared, Battle of New Orleans, treaty signed",
+        "Treaty signed, war declared, Washington attacked, Battle of New Orleans",
+        "War declared, Washington attacked, Treaty of Ghent signed, Battle of New Orleans",
+        "War declared, Battle of New Orleans, Washington attacked, treaty signed"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Which comparison of U.S. and Indigenous outcomes is most accurate?",
+      "choices": [
+        "U.S. nationalism strengthened while Indigenous resistance suffered major setbacks",
+        "Both gained permanent control of all disputed western land",
+        "Indigenous nations gained guaranteed protection under the treaty",
+        "The United States returned permanently to British rule"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A historian argues the war did not produce major boundary changes. Which evidence is most relevant?",
+      "choices": [
+        "The British burned buildings in Washington",
+        "The treaty largely restored the prewar territorial situation",
+        "Francis Scott Key wrote a poem",
+        "American forces fought on the Great Lakes"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Which conclusion distinguishes battlefield outcomes from the peace settlement?",
+      "choices": [
+        "Every American victory added a new state immediately",
+        "The Treaty of Ghent gave Britain Louisiana",
+        "No fighting occurred after 1814 began",
+        "Important American victories did not result in annexation of Canada"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Why should the war be studied from more than a U.S. perspective?",
+      "choices": [
+        "Every participant interpreted the war identically",
+        "Only American records survive",
+        "British, Canadian, and Indigenous participants had different aims and experiences",
+        "The conflict had no consequences beyond Washington"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ],
+  "referenceUrls": [
+    "https://www.nps.gov/subjects/warof1812/index.htm"
+  ]
+}
+

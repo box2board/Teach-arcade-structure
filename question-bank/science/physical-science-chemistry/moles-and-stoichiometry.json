@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--physical-science-chemistry--moles-and-stoichiometry",
+  "title": "Moles and Stoichiometry",
+  "subject": "Science",
+  "category": "Physical Science & Chemistry",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What quantity does the mole measure?",
+      "choices": [
+        "Force",
+        "Temperature",
+        "Volume only",
+        "Amount of substance"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Approximately how many specified entities are in one mole?",
+      "choices": [
+        "6.022 × 10²³",
+        "6.022 × 10³",
+        "1.000 × 10⁻²³",
+        "3.011 × 10²"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is molar mass?",
+      "choices": [
+        "Volume per second",
+        "Particles per liter only",
+        "Mass of every sample regardless of size",
+        "Mass per mole of a substance"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which unit commonly expresses molar mass?",
+      "choices": [
+        "mol/g",
+        "g/mol",
+        "g/s",
+        "mol/m"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is a limiting reactant?",
+      "choices": [
+        "The reactant with the greatest mass in every case",
+        "Any substance added last",
+        "The reactant that restricts the maximum product amount",
+        "A catalyst that slows the reaction"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is theoretical yield?",
+      "choices": [
+        "The product actually isolated in every experiment",
+        "The mass of all equipment used",
+        "The quantity of unused catalyst",
+        "The maximum product predicted from the reaction stoichiometry"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is percent yield?",
+      "choices": [
+        "Theoretical yield divided by actual yield, multiplied by 100",
+        "Actual yield multiplied by molar mass",
+        "Actual yield divided by theoretical yield, multiplied by 100",
+        "Reactant mass divided by elapsed time"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why do equal moles of different substances not generally have equal masses?",
+      "choices": [
+        "The substances can have different molar masses",
+        "Each mole contains a different Avogadro number",
+        "Moles count volume only",
+        "Equal numbers of entities require equal entity masses"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why are coefficients useful for mole conversions?",
+      "choices": [
+        "They state identical masses for all substances",
+        "Their ratios relate amounts of substances in the balanced reaction",
+        "They give reaction speed directly",
+        "They replace every chemical formula"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why must an equation be balanced before stoichiometric calculations?",
+      "choices": [
+        "Balancing changes the substance's identity",
+        "Unbalanced equations always predict zero product",
+        "The conversion ratios must correctly reflect atom conservation",
+        "Molar mass depends on the equation's layout"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How is a sample's amount in moles obtained from its mass?",
+      "choices": [
+        "Multiply mass by molar mass",
+        "Divide mass by molar mass",
+        "Divide molar mass by mass",
+        "Add mass and molar mass"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why can excess reactant remain after a reaction finishes?",
+      "choices": [
+        "All reactants must have equal starting mass",
+        "Excess reactants do not contain atoms",
+        "A balanced equation requires leftover products",
+        "Another reactant can be used up first"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why can an actual yield be below the theoretical yield?",
+      "choices": [
+        "Incomplete reaction or product loss can reduce recovered product",
+        "Atom conservation no longer applies",
+        "Theoretical yield measures equipment mass",
+        "Every catalyst becomes the product"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why should the counted entity be identified when using moles?",
+      "choices": [
+        "A mole can refer to atoms, molecules, ions, or other specified entities",
+        "A mole always refers only to whole organisms",
+        "Moles change size depending on the unit symbol",
+        "Every molecule contains exactly one atom"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What is a useful check on a stoichiometric calculation?",
+      "choices": [
+        "Ignore the balanced equation if numbers look small",
+        "Assume grams and moles are interchangeable",
+        "Track units and compare the result with available reactant amounts",
+        "Round every input to zero decimal places"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A substance has molar mass 20 g/mol. How many moles are in 40 g?",
+      "choices": [
+        "0.5 mol",
+        "2 mol",
+        "20 mol",
+        "800 mol"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "What is the mass of 3 mol of a substance with molar mass 10 g/mol?",
+      "choices": [
+        "3.33 g",
+        "13 g",
+        "0.3 g",
+        "30 g"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "For 2H₂ + O₂ → 2H₂O, how many moles of water can 4 mol H₂ produce with excess O₂?",
+      "choices": [
+        "2 mol",
+        "4 mol",
+        "8 mol",
+        "1 mol"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "For N₂ + 3H₂ → 2NH₃, a mixture contains 1 mol N₂ and 2 mol H₂. Which reactant limits the reaction?",
+      "choices": [
+        "H₂",
+        "N₂",
+        "NH₃",
+        "Neither; the mixture has the exact ratio"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "An experiment recovers 8 g of product when the theoretical yield is 10 g. What is the percent yield?",
+      "choices": [
+        "125%",
+        "20%",
+        "80%",
+        "18%"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ]
+}

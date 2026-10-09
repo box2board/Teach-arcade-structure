@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--algebra-2-functions--radical-equations-and-rational-exponents",
+  "title": "Radical Equations and Rational Exponents",
+  "subject": "Math",
+  "category": "Algebra II & Functions",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "For a positive real number a, what does a^(1/2) mean?",
+      "choices": [
+        "The principal square root of a",
+        "Half of a",
+        "The square of a",
+        "The reciprocal of a"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is 27^(1/3)?",
+      "choices": [
+        "9",
+        "81",
+        "1/3",
+        "3"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is 16^(3/4)?",
+      "choices": [
+        "12",
+        "4",
+        "8",
+        "64"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which domain is required for √(x − 2) to be real?",
+      "choices": [
+        "x ≤ 2",
+        "x ≥ 2",
+        "x ≠ 2",
+        "All real x"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is the solution of √x = 5?",
+      "choices": [
+        "x = 25",
+        "x = 5",
+        "x = −5",
+        "x = 10"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is an extraneous solution?",
+      "choices": [
+        "A solution outside the answer choices",
+        "A solution that is irrational",
+        "Every negative solution",
+        "A candidate that fails the original equation"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is the real cube root of −8?",
+      "choices": [
+        "2",
+        "−4",
+        "−2",
+        "4"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why should radical-equation solutions be checked in the original equation?",
+      "choices": [
+        "Every radical equation has two valid solutions",
+        "Squaring may introduce candidates that do not satisfy it",
+        "Radicals always have negative values",
+        "Checking replaces the need to solve"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What is the solution of √(x + 4) = 3?",
+      "choices": [
+        "x = 5",
+        "x = 13",
+        "x = −1",
+        "x = 9"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why does √x = −4 have no real solution?",
+      "choices": [
+        "Negative numbers cannot be squared",
+        "x must be a negative integer",
+        "The value of √x must exceed 4",
+        "A principal square root cannot be negative"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "For positive a, which expression equals a^(2/3)?",
+      "choices": [
+        "The cube of the square root of a",
+        "Two-thirds of a",
+        "The square of the cube root of a",
+        "a squared divided by 3"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What is 9^(−1/2)?",
+      "choices": [
+        "−3",
+        "1/3",
+        "3",
+        "−1/3"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Which first step is appropriate for √(x + 1) + 2 = 6?",
+      "choices": [
+        "Subtract 2 from both sides",
+        "Square only the radical",
+        "Subtract 1 from both sides",
+        "Divide both sides by x"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What is the solution of √(2x + 1) = 5?",
+      "choices": [
+        "x = 13",
+        "x = 24",
+        "x = 5",
+        "x = 12"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Which equation results from squaring both sides of √(x + 6) = x?",
+      "choices": [
+        "x + 6 = x",
+        "x² + 36 = x²",
+        "x + 6 = x²",
+        "x + 36 = x²"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Solving √(x + 6) = x gives candidates −2 and 3. Which is valid?",
+      "choices": [
+        "−2 only",
+        "3 only",
+        "Both −2 and 3",
+        "Neither candidate"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "What is the solution of √(x − 1) + 1 = 4?",
+      "choices": [
+        "x = 10",
+        "x = 8",
+        "x = 17",
+        "x = 3"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A square's area is A = 49 square meters. Using side length s = A^(1/2), what is s?",
+      "choices": [
+        "24.5 meters",
+        "14 meters",
+        "2401 meters",
+        "7 meters"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Which real value solves x^(1/3) = −4?",
+      "choices": [
+        "64",
+        "−12",
+        "−64",
+        "−16"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A student squares √(x − 3) = −2 and gets x = 7. What is the correct conclusion?",
+      "choices": [
+        "x = 7 is valid because 7 − 3 = 4",
+        "There is no real solution because the original right side is negative",
+        "x = −7 is valid instead",
+        "Both 7 and −7 are valid"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}

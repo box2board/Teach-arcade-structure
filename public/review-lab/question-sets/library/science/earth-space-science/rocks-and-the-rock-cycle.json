@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--earth-space-science--rocks-and-the-rock-cycle",
+  "title": "Rocks and the Rock Cycle",
+  "subject": "Science",
+  "category": "Earth & Space Science",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which rock type forms when magma or lava cools and solidifies?",
+      "choices": [
+        "Unconsolidated sediment",
+        "Sedimentary",
+        "Metamorphic",
+        "Igneous"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which process commonly turns buried sediment into sedimentary rock?",
+      "choices": [
+        "Compaction and cementation",
+        "Melting and freezing",
+        "Evaporation and condensation",
+        "Faulting and subduction"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What forms metamorphic rock?",
+      "choices": [
+        "Only surface weathering",
+        "Complete melting followed by cooling",
+        "Changes caused by heat and pressure without complete melting",
+        "Only the settling of grains in water"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is weathering?",
+      "choices": [
+        "The breakdown of rock at or near Earth's surface",
+        "Rock melting underground",
+        "The movement of sediment downstream",
+        "Sediment settling out of moving water"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is erosion?",
+      "choices": [
+        "The crystallization of magma",
+        "The transport of weathered material",
+        "The compression of buried sediment",
+        "The formation of new minerals under heat"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is deposition?",
+      "choices": [
+        "Rock changing under pressure",
+        "Magma rising through the crust",
+        "Sediment being laid down",
+        "A mineral dissolving in water"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "In which rock type are fossils most commonly preserved?",
+      "choices": [
+        "Intrusive igneous",
+        "Extrusive igneous",
+        "Highly metamorphosed",
+        "Sedimentary"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why does slowly cooling magma often produce large mineral crystals?",
+      "choices": [
+        "Large crystals form only under water",
+        "Slow cooling removes all minerals",
+        "Crystals have more time to grow",
+        "Pressure prevents crystals from growing"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why can lava cooled quickly at the surface produce fine-grained rock?",
+      "choices": [
+        "Crystals have little time to grow",
+        "The lava contains no dissolved elements",
+        "Weathering immediately removes all large crystals",
+        "Surface rocks cannot contain minerals"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why is the rock cycle described as a cycle rather than a single fixed sequence?",
+      "choices": [
+        "Each rock must pass through every step yearly",
+        "Rocks can change through several different pathways",
+        "All rocks eventually become the same mineral",
+        "Only igneous rocks can change type"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What happens to a rock if it melts completely?",
+      "choices": [
+        "It becomes sediment immediately",
+        "It remains a metamorphic rock",
+        "It becomes a fossil-bearing rock",
+        "It becomes molten material that can later form igneous rock"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "How can a sedimentary rock become metamorphic rock?",
+      "choices": [
+        "By being moved downstream without changing",
+        "By cooling from lava at the surface",
+        "By experiencing sufficient heat and pressure while remaining solid",
+        "By breaking into loose sand alone"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why do many sedimentary rocks contain layers?",
+      "choices": [
+        "Sediments accumulate in successive deposits",
+        "Each layer records a separate volcanic eruption",
+        "Layers form only when rocks melt",
+        "Every layer must contain the same grain size"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Which process can chemically weather limestone?",
+      "choices": [
+        "Dry grains being pressed together",
+        "Sediment settling on a lake floor",
+        "Lava cooling around the limestone",
+        "Weakly acidic water dissolving minerals"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What makes a mineral different from a rock?",
+      "choices": [
+        "A mineral must contain fossils",
+        "A mineral has a characteristic composition and ordered crystal structure",
+        "A rock must consist of only one element",
+        "A mineral is always larger than a rock"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A rock contains rounded pebbles cemented together. Which origin is most likely?",
+      "choices": [
+        "Magma cooling deep underground",
+        "Solid rock changing under intense heat",
+        "Lava cooling very quickly",
+        "Sediment being deposited and lithified"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A river slows as it enters a lake. What is likely to happen to some of its sediment?",
+      "choices": [
+        "It becomes metamorphic rock immediately",
+        "It turns directly into magma",
+        "It settles to the bottom",
+        "It moves faster because the water slows"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Two rocks have the same mineral composition, but one has much larger crystals. What is a reasonable explanation?",
+      "choices": [
+        "The larger-crystal rock cooled more quickly",
+        "The larger-crystal rock cooled more slowly",
+        "The smaller-crystal rock had no time to form any crystals",
+        "Crystal size alone proves the rocks contain different elements"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A sandstone is buried, heated, and transformed into quartzite without melting. Which transition occurred?",
+      "choices": [
+        "Sedimentary to metamorphic",
+        "Metamorphic to igneous",
+        "Igneous to sedimentary",
+        "Sediment directly to lava"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which sequence can produce sedimentary rock from an exposed igneous rock?",
+      "choices": [
+        "Melting, cooling, and crystallization",
+        "Weathering, erosion, deposition, and lithification",
+        "Subduction, melting, and eruption",
+        "Heating, compression, and recrystallization only"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}

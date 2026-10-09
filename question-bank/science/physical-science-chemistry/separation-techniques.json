@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--physical-science-chemistry--separation-techniques",
+  "title": "Separation Techniques",
+  "subject": "Science",
+  "category": "Physical Science & Chemistry",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which method separates an insoluble solid from a liquid using a porous barrier?",
+      "choices": [
+        "Filtration",
+        "Distillation",
+        "Chromatography",
+        "Crystallization"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which method separates substances by boiling and condensing?",
+      "choices": [
+        "Filtration",
+        "Distillation",
+        "Magnetic separation",
+        "Sieving"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What does chromatography use to separate mixture components?",
+      "choices": [
+        "Differences only in particle settling under gravity",
+        "Differences only in boiling points",
+        "Different movement caused by interactions with mobile and stationary phases",
+        "Differences only in attraction to a magnet"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is decanting?",
+      "choices": [
+        "Boiling a liquid until nothing remains",
+        "Passing vapor through a magnet",
+        "Dissolving every solid in acid",
+        "Pouring off a liquid from settled solid or another liquid layer"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which method sorts solid particles mainly by size?",
+      "choices": [
+        "Sieving",
+        "Distillation",
+        "Evaporation",
+        "Solvent extraction"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is the material left on filter paper commonly called?",
+      "choices": [
+        "Filtrate",
+        "Residue",
+        "Distillate",
+        "Solvent"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which property enables magnetic separation of iron filings from sand?",
+      "choices": [
+        "Sand and iron have identical magnetic behavior",
+        "Iron always dissolves in sand",
+        "Iron is attracted strongly to a magnet",
+        "Sand has a lower atomic number than iron"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why does ordinary filtration not remove dissolved salt from water?",
+      "choices": [
+        "Dissolved ions settle immediately on the paper",
+        "Filter paper evaporates the solvent before ions pass",
+        "Filtration converts the salt into an insoluble solid",
+        "Dissolved ions pass through the filter's pores"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why can distillation produce relatively pure water from saltwater?",
+      "choices": [
+        "Water vaporizes while dissolved salt largely remains",
+        "Salt vaporizes more readily than water in ordinary distillation",
+        "Salt and water are separated only by particle diameter",
+        "Condensation removes the salt by chemical decomposition"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "How can crystallization help recover a dissolved solid?",
+      "choices": [
+        "Solute particles are caught while still dissolved in a filter",
+        "Reduced solubility allows solid crystals to form",
+        "Solute molecules are destroyed by lowering temperature",
+        "All solvent turns into crystals while solute remains liquid"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What is a solvent's role in solvent extraction?",
+      "choices": [
+        "It magnetizes every component",
+        "It destroys all atoms in the sample",
+        "It dissolves a desired component more readily than another phase does",
+        "It necessarily has a lower density than water"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why might fractional distillation be preferred over simple distillation for liquids with close boiling points?",
+      "choices": [
+        "It sorts liquid molecules only by size through a filter",
+        "It requires both liquids to have identical vapor compositions",
+        "It works by chemically changing one liquid into another",
+        "Repeated vaporization and condensation improve separation"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why may centrifugation speed up separation of suspended particles?",
+      "choices": [
+        "Rotation accelerates settling based on particle and fluid properties",
+        "It separates dissolved ions using only a paper barrier",
+        "It increases particle solubility until all material dissolves",
+        "It makes every suspended particle the same density"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "How do separating mixtures and chemically decomposing compounds differ?",
+      "choices": [
+        "Mixture separation must create new elements",
+        "Mixture separation can preserve substances' chemical identities",
+        "Chemical decomposition only sorts particles by size",
+        "Both always require nuclear reactions"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why should a separation method be chosen using mixture properties?",
+      "choices": [
+        "One method separates every possible mixture equally",
+        "Only the mixture's color matters",
+        "Different methods rely on different physical differences",
+        "Physical properties do not affect separation"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A mixture contains sand and dissolved salt in water. Which sequence can recover the sand and then salt?",
+      "choices": [
+        "Evaporate, then magnetize the remaining material",
+        "Filter twice with the same paper",
+        "Decant, then sieve the water",
+        "Filter, then evaporate water from the filtrate"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A mixture contains iron filings and nonmagnetic plastic beads of similar size. Which method is suitable?",
+      "choices": [
+        "Use a magnet",
+        "Use a sieve with equal-size openings",
+        "Allow both solids to boil",
+        "Distill the mixture without a liquid"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Two pigments travel different distances on chromatography paper. What does this indicate?",
+      "choices": [
+        "They necessarily contain different elements",
+        "They interact differently with the solvent and paper",
+        "One pigment has no molecules",
+        "Both pigments are the same pure substance"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "An insoluble solid settles beneath water. Which simple method can remove most of the water without filtering?",
+      "choices": [
+        "Fractional distillation of the solid",
+        "Paper chromatography of the container",
+        "Careful decanting",
+        "Magnetic separation of water"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A solution contains a dissolved substance whose solubility falls greatly when cooled. Which method can recover it as a solid?",
+      "choices": [
+        "Filter the hot solution to catch dissolved particles",
+        "Use a magnet regardless of the substance",
+        "Sieve the dissolved substance directly",
+        "Cool the solution to form crystals"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

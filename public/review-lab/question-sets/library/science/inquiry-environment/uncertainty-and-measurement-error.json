@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--inquiry-environment--uncertainty-and-measurement-error",
+  "title": "Uncertainty and Measurement Error",
+  "subject": "Science",
+  "category": "Scientific Inquiry & Environmental Science",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is measurement uncertainty?",
+      "choices": [
+        "A quantified range or dispersion associated with a measurement result",
+        "An identifiable copying mistake in the results",
+        "Only the smallest digit displayed by the instrument",
+        "Proof that the measured value has no information"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is a systematic measurement error?",
+      "choices": [
+        "Random variation with no consistent direction",
+        "Only a misspelled unit",
+        "An error that shifts results consistently or predictably",
+        "Every difference between two organisms"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is a random measurement error?",
+      "choices": [
+        "A fixed offset repeated every time",
+        "Unpredictable variation among repeated measurements",
+        "A deliberate change to the data",
+        "An exact instrument calibration"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is instrument resolution?",
+      "choices": [
+        "The agreement between a reading and a reference value",
+        "The spread of repeated readings caused by every possible source",
+        "The largest value the instrument can measure",
+        "The smallest change the instrument can distinguish"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What does calibration involve?",
+      "choices": [
+        "Adding decimal places without checking against a reference",
+        "Averaging readings without considering a known offset",
+        "Comparing or adjusting an instrument using known references",
+        "Changing the sample until its reading matches a prediction"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is parallax error?",
+      "choices": [
+        "A consistent offset caused by incorrect zeroing",
+        "A temperature-dependent change in the object's actual size",
+        "The random reaction time when operating a stopwatch",
+        "A reading error caused by viewing a scale from an unsuitable angle"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What does 20.0 ± 0.5 cm communicate in a simplified uncertainty statement?",
+      "choices": [
+        "An exact length of 20.5 cm only",
+        "A value of 20.0 cm with stated uncertainty of 0.5 cm",
+        "A length that must change every second",
+        "An uncertainty of 20.0 cm"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why can repeated readings help assess random variation?",
+      "choices": [
+        "They show how measurements scatter",
+        "They guarantee removal of a fixed calibration offset",
+        "They reveal the exact true value without uncertainty",
+        "They automatically increase the instrument's resolution"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why does averaging many readings not necessarily remove systematic error?",
+      "choices": [
+        "Any average necessarily removes every kind of error",
+        "Systematic errors always switch signs between readings",
+        "A consistent offset remains in the average",
+        "A fixed offset is canceled by reporting more digits"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why are extra unsupported decimal places misleading?",
+      "choices": [
+        "They imply more measurement detail than the method supports",
+        "They always improve agreement with a reference",
+        "They eliminate limitations of the measuring instrument",
+        "The number of written digits determines true accuracy"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why should uncertainty be reported with a measurement?",
+      "choices": [
+        "It replaces the need to report a measured value",
+        "It proves every reading is an identifiable mistake",
+        "It makes every comparison between results impossible",
+        "It helps judge comparisons and the result's limitations"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why can a stopwatch measurement include observer uncertainty?",
+      "choices": [
+        "Digital stopwatches never have observer effects",
+        "Human start and stop reactions affect the recorded time",
+        "Reaction time affects only distance, not time readings",
+        "All observers react with exactly the same delay"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why should a balance be zeroed appropriately before measurement?",
+      "choices": [
+        "Zeroing guarantees all later measurements are exact",
+        "An initial offset can bias all readings",
+        "Zeroing changes the mass of the object measured",
+        "Zeroing increases the instrument's displayed resolution"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "How does relative uncertainty help compare measurements of different sizes?",
+      "choices": [
+        "It records only the absolute uncertainty in the original unit",
+        "It measures agreement with a reference instead of a ratio",
+        "It always gives identical values for all measurements",
+        "It expresses uncertainty as a fraction or percentage of the value"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why is uncertainty different from a known blunder such as copying the wrong number?",
+      "choices": [
+        "Uncertainty describes measurement limitations, while the blunder is an identifiable mistake",
+        "Both must be ignored in science",
+        "Uncertainty means no measurements were made",
+        "A blunder always improves precision"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A length is 50 cm with uncertainty ±1 cm. What is its relative uncertainty?",
+      "choices": [
+        "1%",
+        "50%",
+        "2%",
+        "100%"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A balance consistently reads 2 g too high. Which action addresses that problem?",
+      "choices": [
+        "Take more readings without correcting the offset",
+        "Report more decimal places",
+        "Use a larger sample and ignore the offset",
+        "Check and correct its calibration or offset"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A simplified result is 10.0 ± 0.2 s. Which interval corresponds to that notation?",
+      "choices": [
+        "0.2 to 10.0 s",
+        "9.8 to 10.2 s",
+        "8.0 to 12.0 s",
+        "10.0 to 20.0 s"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Two results are 5.0 ± 0.5 cm and 5.2 ± 0.5 cm using comparable uncertainty conventions. What is a cautious interpretation?",
+      "choices": [
+        "They prove different true lengths with certainty",
+        "The second object is exactly 0.2 cm longer",
+        "The results overlap within their stated uncertainty",
+        "Neither result contains a measured value"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Repeated measurements cluster tightly but a reference check shows a consistent offset. Which description fits?",
+      "choices": [
+        "High precision with systematic bias",
+        "Low precision with no systematic bias",
+        "Perfect accuracy with zero uncertainty",
+        "Random scatter around the correct reference"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}

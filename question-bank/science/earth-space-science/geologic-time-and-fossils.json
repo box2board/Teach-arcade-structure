@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--earth-space-science--geologic-time-and-fossils",
+  "title": "Geologic Time and Fossils",
+  "subject": "Science",
+  "category": "Earth & Space Science",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What does relative dating determine?",
+      "choices": [
+        "The exact numerical age of every rock",
+        "The time taken to erode an entire landscape",
+        "Whether an event is older or younger than another",
+        "The temperature at which a fossil formed"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "In an undisturbed sequence of sedimentary layers, where are the oldest layers normally found?",
+      "choices": [
+        "At the top",
+        "At the bottom",
+        "Only in the middle",
+        "Only on the western side"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is a trace fossil?",
+      "choices": [
+        "A mineral replacement of an organism's body tissue",
+        "A modern organism collected for comparison",
+        "A fossil shell preserved as an original body part",
+        "Preserved evidence of an organism's activity"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is an unconformity in a rock sequence?",
+      "choices": [
+        "A layer showing continuous deposition without a gap",
+        "A boundary between minerals within one crystal",
+        "A surface that always has younger rocks below older rocks",
+        "A surface representing missing geologic time"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What makes an index fossil useful for correlating rock layers?",
+      "choices": [
+        "Occurrence at only one site over all of Earth's history",
+        "Wide distribution and a relatively short geologic time range",
+        "A large body size regardless of age",
+        "An absence from sedimentary rocks"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What process underlies radiometric dating?",
+      "choices": [
+        "A constant rate of sediment deposition in every setting",
+        "The gradual darkening of rock with age",
+        "Predictable radioactive decay of isotopes",
+        "The rate at which every fossil increases in size"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which geologic era includes most of the time non-avian dinosaurs lived?",
+      "choices": [
+        "Mesozoic",
+        "Cenozoic",
+        "Paleozoic",
+        "Archean"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why is the fossil record incomplete?",
+      "choices": [
+        "All organisms leave equally complete fossils",
+        "Preservation requires conditions that do not occur for every organism",
+        "Only modern organisms can be fossilized",
+        "Sedimentary rocks never preserve biological remains"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why are hard body parts often preserved more readily than soft tissues?",
+      "choices": [
+        "They resist decay and destruction better under many conditions",
+        "Soft tissues cannot ever be preserved",
+        "Hard parts always fossilize without burial",
+        "Soft tissues decay only in modern organisms"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "How can a volcanic ash layer help estimate the age of fossils in nearby layers?",
+      "choices": [
+        "Ash automatically gives every nearby fossil the same exact age",
+        "Ash minerals date the living organism directly without context",
+        "Suitable ash minerals can be radiometrically dated",
+        "Ash thickness alone gives an exact age"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why is carbon-14 dating unsuitable for dinosaur fossils tens of millions of years old?",
+      "choices": [
+        "Carbon-14 dating works only for inorganic crystals",
+        "Carbon-14 has too long a half-life for ancient material",
+        "The organism's size determines the isotope's half-life",
+        "Too little original carbon-14 remains after so much time"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What do marine fossils in rocks far inland suggest about the rock's environment of formation?",
+      "choices": [
+        "The area has always had its present climate and elevation",
+        "The area was once covered by water supporting marine life",
+        "Marine fossils cannot be preserved outside today's oceans",
+        "All marine fossils were transported by modern rivers"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why does a fault cutting through several rock layers indicate the fault is younger than those layers?",
+      "choices": [
+        "Faults form before any rock exists",
+        "Older layers cannot be broken",
+        "The fault's color determines its age",
+        "The layers had to exist before they could be cut"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "How does an intrusion's age compare with the rock it cuts?",
+      "choices": [
+        "The intrusion is younger",
+        "The intrusion is always older",
+        "Both must have identical ages",
+        "Their ages depend only on their thickness"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why are fossils and radiometric dates used together?",
+      "choices": [
+        "Fossils alone provide exact calendar years",
+        "Radiometric methods directly date every fossil equally well",
+        "They provide complementary evidence for correlating and dating events",
+        "Both methods provide only the rock's mineral composition"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Layer A lies below B, and B below C, with no disturbance. Which order is oldest to youngest?",
+      "choices": [
+        "C, B, A",
+        "B, A, C",
+        "A, B, C",
+        "A, C, B"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A fossil-bearing layer lies between ash layers dated 12 and 10 million years old. What age range is consistent with the fossil layer?",
+      "choices": [
+        "Between 10 and 12 million years",
+        "Between 1 and 2 million years",
+        "Older than 20 million years",
+        "Younger than 1 million years"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Half of a radioactive parent isotope remains after one half-life. How much remains after two half-lives?",
+      "choices": [
+        "One-half",
+        "Three-fourths",
+        "None",
+        "One-fourth"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Two distant rock layers contain the same suitable index fossil. What does this support?",
+      "choices": [
+        "They must have identical thickness",
+        "They formed during a similar geologic time interval",
+        "They formed in the same exact location",
+        "They contain equal amounts of every mineral"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "An erosion surface separates two sedimentary units. What should a geologist consider?",
+      "choices": [
+        "Some time may be missing from the local rock record",
+        "Deposition was necessarily continuous",
+        "The upper unit must be older",
+        "The surface proves no organisms existed then"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}

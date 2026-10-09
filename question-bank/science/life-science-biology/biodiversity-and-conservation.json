@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--life-science-biology--biodiversity-and-conservation",
+  "title": "Biodiversity and Conservation",
+  "subject": "Science",
+  "category": "Life Science & Biology",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which level of biodiversity concerns differences within a species?",
+      "choices": [
+        "Species diversity",
+        "Genetic diversity",
+        "Ecosystem diversity",
+        "Habitat area alone"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What does species richness measure?",
+      "choices": [
+        "Total individuals present",
+        "Number of equally abundant species",
+        "Total habitat area",
+        "Number of species present"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is an endemic species?",
+      "choices": [
+        "A species native to a limited geographic area",
+        "Any introduced species",
+        "A species found worldwide",
+        "Any domesticated species"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is habitat fragmentation?",
+      "choices": [
+        "Increasing one continuous habitat's size",
+        "Restoring all original vegetation",
+        "Breaking habitat into separated patches",
+        "Mixing genes within one population"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is an invasive species in a conservation context?",
+      "choices": [
+        "Every species moving within its native range",
+        "Every newly discovered species",
+        "A nonnative species causing ecological or other harm",
+        "A native species with many individuals"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is an ecosystem service?",
+      "choices": [
+        "A benefit people obtain from ecological processes",
+        "A cost of managing protected habitats",
+        "A survey of species distributions",
+        "A species' role within its own population"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is extinction?",
+      "choices": [
+        "Seasonal movement to another region",
+        "A decline in one local population only",
+        "A temporary change in feeding behavior",
+        "Loss of all members of a species"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why can genetic diversity matter during environmental change?",
+      "choices": [
+        "Every inherited trait is equally suited to new conditions",
+        "Different inherited traits may support different responses",
+        "Genetic variation matters only when habitats stay constant",
+        "Individual organisms acquire whichever inherited traits they need"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How can a habitat corridor support conservation?",
+      "choices": [
+        "It can connect populations and allow movement",
+        "It makes every habitat patch equally suitable",
+        "It prevents movement between connected populations",
+        "It replaces the need to protect breeding habitat"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why can protecting one habitat help several species?",
+      "choices": [
+        "Protecting a habitat removes its species' different needs",
+        "Each species uses resources independently of other species",
+        "Species share resources and ecological relationships",
+        "Only the most abundant species benefits from protection"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why can a nonnative species become harmful in a new ecosystem?",
+      "choices": [
+        "Introduced species always encounter the same controls as at home",
+        "Local controls may be absent and interactions may change",
+        "Nonnative status alone guarantees severe ecological harm",
+        "Native populations cannot be affected by new competitors"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "How does overharvesting threaten populations?",
+      "choices": [
+        "Harvested populations necessarily replace all removed individuals",
+        "Harvesting affects individual organisms but not population growth",
+        "Only habitat loss can cause long-term population decline",
+        "Removal can exceed reproduction and replenishment"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why can conservation planning use both richness and abundance data?",
+      "choices": [
+        "Species richness measures the population size of each species",
+        "Abundance data show habitat quality without species information",
+        "Equal richness means two communities have equal evenness",
+        "Species counts alone omit population sizes and evenness"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why might a small isolated population face genetic risks?",
+      "choices": [
+        "Isolation creates unlimited new alleles",
+        "Limited gene flow and chance allele loss can reduce variation",
+        "Small populations never experience drift",
+        "All recessive alleles disappear automatically"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why should restoration success be monitored over time?",
+      "choices": [
+        "The first year's results establish permanent recovery",
+        "Recovery is measured only by the number of seedlings planted",
+        "Recovery can vary and require revised management",
+        "Management choices cannot influence later outcomes"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Two habitats each contain ten species, but one is dominated by one species. Which measure differs most directly?",
+      "choices": [
+        "Species evenness",
+        "Species richness",
+        "Number of named species",
+        "The definition of species"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A road separates breeding populations. Which action may directly restore movement if suitable for the species?",
+      "choices": [
+        "Fencing the entire road without passages",
+        "A properly designed wildlife crossing",
+        "Widening the road across the same habitat",
+        "Planting food sources only beside traffic lanes"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Pollinator numbers decline while dependent plants set fewer seeds. What relationship should be investigated?",
+      "choices": [
+        "Pollination supporting plant reproduction",
+        "A shift in plants' preferred soil minerals",
+        "Plant reproduction requiring no pollen transfer",
+        "Seed consumers increasing pollinator reproduction"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Harvest removes 120 individuals yearly while replacement adds 80, with other changes absent. What is expected?",
+      "choices": [
+        "An increase of 40 yearly",
+        "No change",
+        "A decline of 40 individuals yearly",
+        "An increase of 200 yearly"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A conservation proposal protects varied habitat types rather than one uniform patch. Which benefit is plausible?",
+      "choices": [
+        "Ensuring the same species occupy every habitat",
+        "Favoring only species that need uniform conditions",
+        "Making habitat management unnecessary",
+        "Supporting species with different habitat requirements"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--pre-algebra--proportional-relationships",
+  "title": "Proportional Relationships",
+  "subject": "Math",
+  "category": "Pre-Algebra & Number Sense",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which equation represents a direct proportional relationship?",
+      "choices": [
+        "y = x + k with k ≠ 0",
+        "y = x²",
+        "y = kx",
+        "y = k/x with k ≠ 0"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "In y = kx, what does k represent?",
+      "choices": [
+        "The starting value of y at x = 0",
+        "The constant ratio y/x for x ≠ 0",
+        "The difference y − x for every x",
+        "The largest possible input"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which point must lie on the graph of y = kx?",
+      "choices": [
+        "The origin",
+        "The point (1, 0)",
+        "The point (0, 1)",
+        "The point (k, 0)"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "For y = 4x, what is y when x = 6?",
+      "choices": [
+        "10",
+        "2",
+        "46",
+        "24"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "A table has pairs (2, 10), (4, 20), and (6, 30). What is its constant of proportionality y/x?",
+      "choices": [
+        "2",
+        "10",
+        "5",
+        "1/5"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which table represents proportional quantities?",
+      "choices": [
+        "x: 1, 2, 3; y: 6, 7, 8",
+        "x: 1, 2, 3; y: 6, 12, 18",
+        "x: 1, 2, 3; y: 6, 12, 20",
+        "x: 1, 2, 3; y: 5, 9, 13"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is y at x = 0 in any direct proportional relationship?",
+      "choices": [
+        "0",
+        "1",
+        "k",
+        "−k"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why is y = 3x + 2 not proportional?",
+      "choices": [
+        "Its slope is positive",
+        "It contains two variables",
+        "Its outputs can be integers",
+        "The fixed starting value prevents a constant y/x ratio"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "A graph of distance versus time is a line through (0, 0) and (2, 14). What is the constant speed?",
+      "choices": [
+        "14 distance units per time unit",
+        "2 distance units per time unit",
+        "7 distance units per time unit",
+        "28 distance units per time unit"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "How does y change if x triples in y = kx?",
+      "choices": [
+        "y increases by 3",
+        "y triples",
+        "y is divided by 3",
+        "y stays constant"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "If 8 identical pens cost $12, what is the cost of 10 pens under proportional pricing?",
+      "choices": [
+        "$15",
+        "$14",
+        "$18",
+        "$9.60"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Which feature distinguishes y = 0.5x from y = 0.5x + 3?",
+      "choices": [
+        "Only y = 0.5x has constant slope",
+        "Only y = 0.5x has positive outputs for positive x",
+        "Only y = 0.5x is linear",
+        "Only y = 0.5x passes through the origin"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "A recipe uses 3 cups of oats for 12 portions. Which equation models cups c for portions p?",
+      "choices": [
+        "c = 4p",
+        "c = p + 3",
+        "c = p/4",
+        "c = 12p"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why must corresponding ratios be compared when checking a proportional table?",
+      "choices": [
+        "Every proportional table has equal outputs",
+        "A proportional relationship has the same output-to-input ratio",
+        "The largest ratio must equal the smallest input",
+        "Only the difference between outputs matters"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A proportional relationship contains (5, 18). What is y when x = 10?",
+      "choices": [
+        "36",
+        "23",
+        "9",
+        "50"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A student checks a table using equal differences in y, but the x-intervals vary. What additional check is needed?",
+      "choices": [
+        "Check whether all y-values are positive",
+        "Check whether the x-values are integers",
+        "Compare only the first and last y-values",
+        "Compare y/x for each nonzero x"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A pump fills 45 liters in 6 minutes at a constant rate starting from zero. How long does it take to fill 75 liters?",
+      "choices": [
+        "12.5 minutes",
+        "16 minutes",
+        "10 minutes",
+        "8 minutes"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A line through the origin also contains (−3, 9). Which equation fits?",
+      "choices": [
+        "y = 3x",
+        "y = −3x",
+        "y = −x/3",
+        "y = x/3"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Two proportional models are y = 2x and y = 5x. For the same positive x, what is the ratio of the second output to the first?",
+      "choices": [
+        "5/2",
+        "2/5",
+        "3",
+        "7"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A proportional table contains (3, 7.5) and (8, y). What is the missing y-value?",
+      "choices": [
+        "12.5",
+        "60",
+        "24",
+        "20"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

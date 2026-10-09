@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--inquiry-environment--human-population-and-resource-use",
+  "title": "Human Population and Resource Use",
+  "subject": "Science",
+  "category": "Scientific Inquiry & Environmental Science",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What does population size describe?",
+      "choices": [
+        "The total land area alone",
+        "The average age alone",
+        "The number of individuals in a defined population",
+        "The amount of rainfall alone"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What does per-capita resource use mean?",
+      "choices": [
+        "Resource use per continent regardless of population",
+        "The total amount of resource left underground",
+        "The maximum amount any one factory can use",
+        "Resource use per person"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which change adds people to a region's population without a birth?",
+      "choices": [
+        "Immigration",
+        "Emigration",
+        "Mortality",
+        "A decline in birth rate"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is carrying capacity in a resource-limited context?",
+      "choices": [
+        "A permanent number unaffected by resources",
+        "The population a system can support under stated conditions",
+        "The number of people ever born",
+        "The number of buildings alone"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is resource depletion?",
+      "choices": [
+        "Permanent creation of unlimited new resources",
+        "The movement of clouds over a city",
+        "Reduction of a resource stock when use exceeds replacement",
+        "A change only in product labels"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What does a water footprint estimate?",
+      "choices": [
+        "Only the water stored in one drinking bottle",
+        "Only the number of rivers in a country",
+        "Only the rainfall reaching a building's roof",
+        "Direct and indirect water use associated with a person, product, or activity"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What does an age-structure diagram show?",
+      "choices": [
+        "Numbers or proportions of people in different age groups",
+        "The exact future population without assumptions",
+        "Only the area's temperature",
+        "The locations of every workplace"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why does population size alone not determine total resource use?",
+      "choices": [
+        "Every resident has identical consumption needs and habits",
+        "Per-person use also differs among populations",
+        "Population size alone fixes all resource use",
+        "Land area alone fixes consumption regardless of people"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How can technology change resource demand?",
+      "choices": [
+        "It always reduces every impact regardless of how it is used",
+        "It leaves every material requirement unchanged",
+        "It can change efficiency and which materials are required",
+        "It prevents consumption from rising with expanded activity"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why can carrying capacity change over time?",
+      "choices": [
+        "It is defined by one fixed global number",
+        "People never alter resource systems",
+        "Only births can affect resources",
+        "Resources, technology, and environmental conditions can change"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why can improved efficiency fail to reduce total consumption as much as expected?",
+      "choices": [
+        "Expanded use can offset some savings",
+        "Per-use savings always guarantee the same total reduction",
+        "Efficient devices cannot be operated more often",
+        "Efficiency changes resource supply but never demand"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "How can dense development reduce some per-person infrastructure needs?",
+      "choices": [
+        "Density necessarily eliminates all environmental impacts",
+        "Shared services and shorter travel can lower certain inputs",
+        "All travel and water use become zero",
+        "Sharing infrastructure always raises per-person material use"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why are population projections usually reported with assumptions?",
+      "choices": [
+        "Birth and death rates are permanently fixed everywhere",
+        "A projection gives an exact count regardless of migration",
+        "Future births, deaths, and migration are uncertain",
+        "Assumptions guarantee that only one outcome is possible"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why can equal total water use hide different pressures on supply?",
+      "choices": [
+        "Water is replenished at identical rates in all places",
+        "Equal use always means equal scarcity",
+        "Water availability depends only on population size",
+        "Local water availability and replenishment can differ"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "How does renewable-resource stock differ from its replacement rate?",
+      "choices": [
+        "Stock is an amount available; rate is replenishment per unit time",
+        "Both are amounts stored at one moment",
+        "The rate is the total amount currently available",
+        "The stock is the amount entering per unit time"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A town has 1,000 people using 100 L each per day. What is total daily use?",
+      "choices": [
+        "1,100 L",
+        "100,000 L",
+        "10,000 L",
+        "100 L"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "One town has twice as many residents but half the per-person energy use of another. How do their total uses compare?",
+      "choices": [
+        "The larger town uses twice as much",
+        "The larger town uses half as much",
+        "They are equal",
+        "The larger town uses four times as much"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A population starts at 10,000, with 200 births, 100 deaths, 50 immigrants, and 150 emigrants in a year. What is its final size?",
+      "choices": [
+        "10,200",
+        "9,800",
+        "10,500",
+        "10,000"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A reservoir receives 80 units of water per day while 100 units are withdrawn, with other flows negligible. What is the daily storage change?",
+      "choices": [
+        "A decrease of 20 units",
+        "An increase of 20 units",
+        "A decrease of 180 units",
+        "No change"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A report predicts future resource use from constant per-person consumption. What important follow-up should be considered?",
+      "choices": [
+        "Assume per-person consumption can never change",
+        "Whether per-person consumption may change",
+        "Use population totals without considering any consumption rate",
+        "Treat all future resources as unlimited"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}

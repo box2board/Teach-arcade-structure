@@ -3,8 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "node scripts/sync-interactive-content.mjs && node scripts/generate-sitemap.mjs && node scripts/generate-robots.mjs && echo 'static site'",
+    "build": "node scripts/build-question-bank.mjs && node scripts/sync-interactive-content.mjs && node scripts/generate-sitemap.mjs && node scripts/generate-robots.mjs && echo 'static site'",
     "audit": "node scripts/audit-site.mjs",
-    "test:territory": "node scripts/test-territory-takedown.mjs"
+    "test:territory": "node scripts/test-territory-takedown.mjs",
+    "test:question-bank": "node scripts/test-question-bank.mjs"
   }
 }

@@ -1,0 +1,252 @@
+{
+  "schemaVersion": 1,
+  "id": "us-history--colonial-america",
+  "title": "Colonial America",
+  "subject": "Social Studies",
+  "category": "U.S. History",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which English settlement was founded in Virginia in 1607?",
+      "choices": [
+        "Plymouth",
+        "Philadelphia",
+        "Jamestown",
+        "Savannah"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which crop became especially important to colonial Virginia's export economy?",
+      "choices": [
+        "Tobacco",
+        "Rice",
+        "Wheat",
+        "Indigo"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which group founded Pennsylvania under William Penn?",
+      "choices": [
+        "Puritans",
+        "Anglicans",
+        "Catholics",
+        "Quakers"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What was an indentured servant?",
+      "choices": [
+        "A person owning a large plantation",
+        "A worker bound to labor for a specified term",
+        "An official appointed to collect customs duties",
+        "A merchant licensed to trade with Indigenous nations"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which elected assembly began meeting in Virginia in 1619?",
+      "choices": [
+        "House of Burgesses",
+        "Continental Congress",
+        "House of Commons",
+        "Provincial Congress of Massachusetts"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What was the Mayflower Compact?",
+      "choices": [
+        "A royal order creating Pennsylvania",
+        "A treaty ending the French and Indian War",
+        "An agreement to establish a self-governing community",
+        "A law taxing printed materials"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What was mercantilism?",
+      "choices": [
+        "A policy requiring complete colonial independence",
+        "An approach linking national power to controlled trade and accumulated wealth",
+        "A system distributing land equally among all residents",
+        "An economic policy prohibiting overseas colonies"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why did many New England communities develop fishing and shipping industries?",
+      "choices": [
+        "Large rice plantations dominated their interior",
+        "Gold mining supplied most of their exports",
+        "Their climate favored year-round tropical crops",
+        "Coastal access and limited farmland encouraged maritime work"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How did colonial geography influence Southern plantation economies?",
+      "choices": [
+        "Long growing seasons supported labor-intensive export crops",
+        "Short growing seasons favored only subsistence fishing",
+        "Mountain terrain made large farms universal",
+        "Limited coastal access prevented overseas trade"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why did European colonization harm many Indigenous communities?",
+      "choices": [
+        "Trade eliminated every conflict over land",
+        "Colonization prevented European diseases from spreading",
+        "Disease, land loss, and warfare disrupted their societies",
+        "All Indigenous nations adopted the same colonial alliances"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What was the Middle Passage?",
+      "choices": [
+        "The overland route from Virginia to New England",
+        "The forced Atlantic voyage of enslaved Africans to the Americas",
+        "The sea route connecting only European ports",
+        "The migration of Puritans from England to Massachusetts"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "How did colonial assemblies contribute to political experience?",
+      "choices": [
+        "They gave every resident equal voting rights",
+        "They replaced Parliament as Britain's national legislature",
+        "They made royal governors entirely powerless",
+        "Some colonists practiced representative government at the local level"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why did colonial voting rules limit participation?",
+      "choices": [
+        "Property, sex, race, and other restrictions excluded many residents",
+        "Voting depended solely on willingness to attend meetings",
+        "Only recent immigrants could vote in assemblies",
+        "Every colony required identical universal voting rules"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "How did the Great Awakening affect colonial religious life?",
+      "choices": [
+        "It created one official church for every colony",
+        "It prohibited religious conversion in British America",
+        "It encouraged revival preaching and challenged some established authorities",
+        "It ended all disagreements among Protestant groups"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What did colonial laws increasingly do to African-descended slavery?",
+      "choices": [
+        "Guarantee a short fixed labor term for every enslaved person",
+        "Make enslavement hereditary and tie it to racial status",
+        "Require enslavers to provide equal political rights",
+        "Make slavery identical to voluntary wage employment"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A historian compares shipbuilding in Massachusetts with rice cultivation in South Carolina. What is most relevant?",
+      "choices": [
+        "A single economy shared identically by all colonies",
+        "The absence of Atlantic trade in either colony",
+        "The disappearance of agriculture throughout the colonies",
+        "Regional differences in environment and labor systems"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Which order places these settlements chronologically?",
+      "choices": [
+        "Jamestown, Plymouth, Pennsylvania",
+        "Plymouth, Pennsylvania, Jamestown",
+        "Pennsylvania, Jamestown, Plymouth",
+        "Jamestown, Pennsylvania, Plymouth"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Which comparison of slavery and indentured servitude is accurate?",
+      "choices": [
+        "Both always ended after seven years of work",
+        "Neither involved legal restrictions on workers",
+        "Indentures generally had fixed terms; racial slavery increasingly passed to descendants",
+        "Only indentured servitude supplied plantation labor"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A colonial merchant objects to rules restricting trade to approved ships and ports. Which policy is involved?",
+      "choices": [
+        "Northwest Ordinance",
+        "Navigation Acts",
+        "Homestead Act",
+        "Kansas-Nebraska Act"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which evidence challenges the claim that colonial America was uniformly religiously tolerant?",
+      "choices": [
+        "Pennsylvania included Quaker settlers",
+        "Colonists built churches in port towns",
+        "Religious groups crossed the Atlantic",
+        "Some colonies punished dissenters while others offered broader religious freedom"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}
+

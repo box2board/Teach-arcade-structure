@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--algebra-2-functions--factoring-polynomials",
+  "title": "Factoring Polynomials",
+  "subject": "Math",
+  "category": "Algebra II & Functions",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is the greatest common monomial factor of 6x² and 9x?",
+      "choices": [
+        "3x²",
+        "3x",
+        "6x",
+        "9x²"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is 8x + 12 factored by its greatest common factor?",
+      "choices": [
+        "2(4x + 12)",
+        "4(2x + 12)",
+        "4(2x + 3)",
+        "8(x + 4)"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is x² + 5x + 6 factored completely over the integers?",
+      "choices": [
+        "(x + 2)(x + 3)",
+        "(x + 1)(x + 6)",
+        "(x − 2)(x − 3)",
+        "(x + 2)²"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is x² − 9 factored over the integers?",
+      "choices": [
+        "(x − 3)(x + 3)",
+        "(x − 3)²",
+        "(x + 3)²",
+        "(x − 9)(x + 1)"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is x² + 6x + 9 factored?",
+      "choices": [
+        "(x − 3)²",
+        "(x + 9)(x + 1)",
+        "(x + 3)²",
+        "(x + 6)(x + 3)"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is x² − 7x + 12 factored?",
+      "choices": [
+        "(x + 3)(x + 4)",
+        "(x − 3)(x − 4)",
+        "(x − 2)(x − 6)",
+        "(x + 3)(x − 4)"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is 3x² + 6x factored completely?",
+      "choices": [
+        "3(x² + 6x)",
+        "x(3x + 2)",
+        "3x(x − 2)",
+        "3x(x + 2)"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "How can a proposed factorization be checked?",
+      "choices": [
+        "Add the factors and compare",
+        "Compare only their constant terms",
+        "Multiply the factors and compare with the original polynomial",
+        "Check that all factor signs are positive"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why does x² − 16 fit the difference-of-squares pattern?",
+      "choices": [
+        "It contains two variable terms",
+        "It has a middle term of 8x",
+        "Its constant is positive",
+        "It is x² − 4²"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Which numbers have sum 8 and product 15, useful for factoring x² + 8x + 15?",
+      "choices": [
+        "1 and 15",
+        "3 and 5",
+        "−3 and −5",
+        "2 and 6"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What is x² − x − 6 factored?",
+      "choices": [
+        "(x − 3)(x + 2)",
+        "(x + 3)(x − 2)",
+        "(x − 1)(x − 6)",
+        "(x + 1)(x + 6)"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What is 2x² + 7x + 3 factored?",
+      "choices": [
+        "(2x + 3)(x + 1)",
+        "(2x − 1)(x − 3)",
+        "(2x + 1)(x + 3)",
+        "(x + 1)(x + 3)"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why should a greatest common factor often be removed first?",
+      "choices": [
+        "It can simplify the remaining polynomial before other factoring methods",
+        "It guarantees every polynomial splits into linear factors",
+        "It changes the polynomial's value",
+        "It removes the need to check signs"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What is x² − 10x + 25 factored?",
+      "choices": [
+        "(x + 5)²",
+        "(x − 25)(x + 1)",
+        "(x − 10)(x + 5)",
+        "(x − 5)²"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Which expression is a sum of two squares rather than the standard difference-of-squares form?",
+      "choices": [
+        "x² − 9",
+        "x² + 9",
+        "4x² − 1",
+        "9x² − 16"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A rectangle's area is x² + 7x + 10, with x positive. Which pair can be its side lengths?",
+      "choices": [
+        "x + 1 and x + 10",
+        "x + 2 and x + 5",
+        "x − 2 and x − 5",
+        "x + 3 and x + 4"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A student factors x² − 4 as (x − 2)². What explains the error?",
+      "choices": [
+        "Squaring removes all constant terms",
+        "The factors must both be positive",
+        "x² − 4 has no real factorization",
+        "(x − 2)² includes a −4x term and a positive constant"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "What is 5x² − 20 factored completely over the integers?",
+      "choices": [
+        "5(x − 2)(x + 2)",
+        "5(x − 4)(x + 4)",
+        "5(x − 2)²",
+        "(5x − 2)(x + 2)"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Which factored expression expands to x² + 2x − 8?",
+      "choices": [
+        "(x − 4)(x + 2)",
+        "(x + 2)(x − 2)",
+        "(x + 4)(x − 2)",
+        "(x + 8)(x − 1)"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "After removing 2x from 2x³ − 8x, what remains to be factored?",
+      "choices": [
+        "x² − 8",
+        "x³ − 4",
+        "x − 4",
+        "x² − 4"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

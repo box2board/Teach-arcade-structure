@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--algebra-2-functions--functions-domain-and-range",
+  "title": "Functions Domain and Range",
+  "subject": "Math",
+  "category": "Algebra II & Functions",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is required for a relation to be a function?",
+      "choices": [
+        "Each output has exactly one input",
+        "Every input equals its output",
+        "All outputs must be positive",
+        "Each input has exactly one output"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is a function's domain?",
+      "choices": [
+        "The set of allowed input values",
+        "The set of output values",
+        "Only the largest output",
+        "Only the intercepts"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is a function's range?",
+      "choices": [
+        "The set of all input values",
+        "Only the smallest input",
+        "The set of output values produced",
+        "Only the independent variable's name"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "If f(x) = 2x + 3, what is f(4)?",
+      "choices": [
+        "8",
+        "14",
+        "11",
+        "7"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which ordered-pair relation is a function?",
+      "choices": [
+        "{(1, 2), (2, 2), (3, 4)}",
+        "{(1, 2), (1, 3), (2, 4)}",
+        "{(2, 1), (2, 3), (3, 4)}",
+        "{(0, 1), (0, 2), (1, 3)}"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What does f(2) mean?",
+      "choices": [
+        "The product of f and 2 in every case",
+        "The second root of f",
+        "The domain divided by 2",
+        "The output of f for input 2"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which graph test checks whether y is a function of x?",
+      "choices": [
+        "Horizontal-line test for one-to-one functions",
+        "Vertical-line test",
+        "Slope test requiring positive slope",
+        "Area test"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Can two different inputs have the same output in a function?",
+      "choices": [
+        "Yes, each input can still have exactly one output",
+        "No, every output must have exactly one input",
+        "Only if the inputs are equal",
+        "Only for nonnumeric functions"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What is the real domain of f(x) = 1/(x − 3)?",
+      "choices": [
+        "All real numbers except −3",
+        "All real numbers except 3",
+        "Only positive real numbers",
+        "All real numbers"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What is the real domain of f(x) = √(x − 2)?",
+      "choices": [
+        "x > 2",
+        "x ≤ 2",
+        "All real numbers",
+        "x ≥ 2"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What is the real range of f(x) = x²?",
+      "choices": [
+        "All real numbers",
+        "y > 0",
+        "y ≥ 0",
+        "y ≤ 0"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why does a vertical line meeting a graph twice show that it is not y as a function of x?",
+      "choices": [
+        "One input corresponds to two different outputs",
+        "Two inputs have one common output",
+        "The graph has a negative slope",
+        "The graph is curved"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "For f(x) = x² − 1, what is f(−3)?",
+      "choices": [
+        "−10",
+        "10",
+        "8",
+        "−8"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "A function contains exactly the pairs (1, 4), (2, 6), and (3, 8). What is its range?",
+      "choices": [
+        "{1, 2, 3}",
+        "{4, 6, 8}",
+        "{1, 3, 8}",
+        "All real numbers"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why might a real-world function's domain differ from its unrestricted formula domain?",
+      "choices": [
+        "All formulas already require whole-number inputs",
+        "Domain always equals range",
+        "The output's unit determines every input value",
+        "Context can restrict which inputs are meaningful"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A cost function C(n) = 5n models purchases of whole notebooks. Which domain fits the context?",
+      "choices": [
+        "All real numbers",
+        "Only negative integers",
+        "All real numbers greater than zero",
+        "Nonnegative integers"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "For f(x) = 3x − 2, which input gives output 10?",
+      "choices": [
+        "8/3",
+        "4",
+        "10",
+        "−4"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A relation pairs one student ID with two different assigned locker numbers. Why is it not a function from ID to locker number?",
+      "choices": [
+        "Two lockers have different numbers",
+        "The outputs are whole numbers",
+        "One input is assigned two outputs",
+        "The ID is not a measurement"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "The real-valued function g(x) = √(9 − x) is evaluated at x = 10. What is the problem?",
+      "choices": [
+        "The radicand is negative",
+        "The input must always be positive",
+        "The denominator is zero",
+        "The output would have to be larger than 9"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "For f(x) = x², which pair demonstrates that the function is not one-to-one on all real numbers?",
+      "choices": [
+        "f(0) = 0",
+        "f(−2) = f(2)",
+        "f(1) = 1",
+        "f(3) = 9"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}

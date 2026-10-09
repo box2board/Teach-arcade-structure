@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--life-science-biology--photosynthesis-and-cellular-respiration",
+  "title": "Photosynthesis and Cellular Respiration",
+  "subject": "Science",
+  "category": "Life Science & Biology",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which molecule is a major short-term energy-transfer carrier in cells?",
+      "choices": [
+        "DNA",
+        "Chlorophyll",
+        "Cellulose",
+        "ATP"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What are the main starting materials in the usual summary equation for photosynthesis?",
+      "choices": [
+        "Glucose and oxygen",
+        "Carbon dioxide and water",
+        "Nitrogen and glucose",
+        "Oxygen and water"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which gas is a reactant in photosynthesis?",
+      "choices": [
+        "Nitrogen",
+        "Water vapor",
+        "Carbon dioxide",
+        "Oxygen"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which gas is generally required for aerobic cellular respiration?",
+      "choices": [
+        "Oxygen",
+        "Nitrogen",
+        "Carbon dioxide",
+        "Hydrogen"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which sugar is commonly used to summarize the product of photosynthesis?",
+      "choices": [
+        "Fructose",
+        "Sucrose",
+        "Glucose",
+        "Lactose"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which pigment absorbs light for photosynthesis in green plants?",
+      "choices": [
+        "Hemoglobin",
+        "Keratin",
+        "Melanin",
+        "Chlorophyll"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Where does glycolysis occur?",
+      "choices": [
+        "Cytoplasm",
+        "Golgi apparatus",
+        "Nucleus",
+        "Chloroplast thylakoid space"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "How do photosynthesis and respiration differ in their overall energy roles?",
+      "choices": [
+        "Both create energy from nothing",
+        "Photosynthesis stores energy in organic molecules; respiration transfers energy from them",
+        "Photosynthesis mainly releases energy from glucose",
+        "Respiration stores sunlight directly in chlorophyll"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why do plants need cellular respiration as well as photosynthesis?",
+      "choices": [
+        "They need usable cellular energy for many activities",
+        "Respiration is needed only when plants stop being green",
+        "Plant cells lack molecules that can store energy",
+        "Photosynthesis supplies ATP permanently to every plant cell"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What happens to matter during photosynthesis?",
+      "choices": [
+        "Carbon atoms are created from sunlight",
+        "Oxygen atoms change into carbon atoms",
+        "Atoms from reactants are rearranged into products",
+        "Water disappears without contributing atoms"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why can a plant's roots respire even though they usually do not photosynthesize?",
+      "choices": [
+        "Roots have no need for ATP",
+        "Roots can use sugars transported from photosynthetic tissues",
+        "Roots cannot contain mitochondria",
+        "Roots receive sunlight through soil particles"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What is the role of fermentation when oxygen is unavailable in some cells?",
+      "choices": [
+        "It produces more ATP than aerobic respiration",
+        "It turns carbon dioxide directly into glucose",
+        "It eliminates the need for glycolysis",
+        "It helps regenerate molecules needed for glycolysis to continue"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why can light intensity limit photosynthesis?",
+      "choices": [
+        "Light is required only to release heat",
+        "Light provides all the carbon atoms in sugar",
+        "Light replaces water in every photosynthetic reaction",
+        "Light supplies energy needed for the process"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "How can carbon dioxide availability affect a plant's photosynthesis rate?",
+      "choices": [
+        "Too little carbon dioxide can limit carbon fixation",
+        "Carbon dioxide is only a waste product of photosynthesis",
+        "Carbon dioxide replaces the need for enzymes",
+        "More carbon dioxide guarantees unlimited photosynthesis"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why do many organisms depend indirectly on photosynthesis?",
+      "choices": [
+        "They all have chloroplasts in every cell",
+        "Photosynthesis supports food webs and contributes oxygen to the atmosphere",
+        "Animals obtain oxygen only by drinking water",
+        "Photosynthesis replaces all nutrient cycles"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A leaf is kept in darkness, with other conditions suitable. Which statement is most accurate?",
+      "choices": [
+        "Photosynthesis speeds up while respiration stops",
+        "Both processes must cease immediately",
+        "Light-dependent photosynthesis stops, but respiration can continue",
+        "The leaf converts all its mitochondria into chloroplasts"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A sealed chamber containing a green plant in strong light shows declining carbon dioxide. What explanation best fits?",
+      "choices": [
+        "The plant is doing no respiration",
+        "Photosynthesis is using carbon dioxide faster than respiration releases it",
+        "The chamber has begun creating carbon atoms",
+        "Only the roots are carrying out photosynthesis"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A pond receives little light for several days. Which effect is plausible for its photosynthetic organisms?",
+      "choices": [
+        "They can no longer perform any chemical reaction",
+        "Their photosynthesis becomes independent of water",
+        "Their cells no longer require nutrients",
+        "Their production of new organic material may decrease"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Which pair best summarizes a matter connection between the two processes?",
+      "choices": [
+        "Photosynthesis produces organic molecules that can be used in respiration",
+        "Both processes consume glucose and oxygen",
+        "Photosynthesis uses only nitrogen; respiration releases only helium",
+        "Respiration produces sunlight that plants absorb"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "An experiment compares a leaf's carbon dioxide uptake at two temperatures while holding light constant. What must be considered when interpreting the result?",
+      "choices": [
+        "Temperature changes only the color of the container",
+        "Photosynthesis is unrelated to enzyme activity",
+        "Temperature can affect both photosynthesis and respiration",
+        "All plants have the same optimum temperature"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ]
+}

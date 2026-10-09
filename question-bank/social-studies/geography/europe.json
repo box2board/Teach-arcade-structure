@@ -1,0 +1,255 @@
+{
+  "schemaVersion": 1,
+  "id": "geography--europe",
+  "title": "Europe",
+  "subject": "Social Studies",
+  "category": "Geography",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which ocean lies west of mainland Europe?",
+      "choices": [
+        "Pacific Ocean",
+        "Atlantic Ocean",
+        "Indian Ocean",
+        "Southern Ocean"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which sea lies between southern Europe and northern Africa?",
+      "choices": [
+        "Baltic Sea",
+        "North Sea",
+        "Caribbean Sea",
+        "Mediterranean Sea"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which peninsula contains Spain and Portugal?",
+      "choices": [
+        "Iberian Peninsula",
+        "Italian Peninsula",
+        "Scandinavian Peninsula",
+        "Balkan Peninsula"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which mountain range lies across parts of Switzerland, Austria, France, and Italy?",
+      "choices": [
+        "Urals",
+        "Pyrenees",
+        "Alps",
+        "Apennines"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which mountain range is commonly used as part of the Europe-Asia boundary?",
+      "choices": [
+        "Andes Mountains",
+        "Ural Mountains",
+        "Atlas Mountains",
+        "Rocky Mountains"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which major river flows through or along several countries toward the Black Sea?",
+      "choices": [
+        "Danube",
+        "Rhine",
+        "Seine",
+        "Thames"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is a fjord?",
+      "choices": [
+        "A flat river island created by sediment",
+        "A volcanic crater filled with lava",
+        "A dry inland salt basin",
+        "A long, narrow sea inlet shaped by glacial erosion"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why is Europe often described as a peninsula of peninsulas?",
+      "choices": [
+        "Every European country is an island",
+        "It has no connection to Asia",
+        "Its coastline includes many large land projections into surrounding waters",
+        "Its coastlines contain no bays or inlets"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How can navigable rivers support European economies?",
+      "choices": [
+        "They provide transport routes and connect inland markets",
+        "They prevent goods from moving between countries",
+        "They make roads and railways illegal",
+        "They determine every national border"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why does the North European Plain support significant settlement and farming?",
+      "choices": [
+        "The plain consists entirely of high mountain glaciers",
+        "Relatively level land and suitable conditions favor transport and agriculture",
+        "It receives identical rainfall in every location",
+        "All farming is prohibited on the plain"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How have oceans influenced parts of western Europe's climate?",
+      "choices": [
+        "The Atlantic eliminates all seasonal change",
+        "Ocean currents determine only political boundaries",
+        "All western areas have desert climates",
+        "Maritime conditions moderate temperatures and supply moisture"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "How did glaciers shape parts of northern Europe?",
+      "choices": [
+        "They formed every political border directly",
+        "They prevented all later settlement",
+        "They carved valleys and left lakes and other landforms",
+        "They created tropical rainforest across Scandinavia"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What distinguishes Europe from the European Union?",
+      "choices": [
+        "Europe is a geographic region; the EU is an organization including some European countries",
+        "Europe and the EU are identical names for one country",
+        "Every European country must be an EU member",
+        "The EU includes all countries on every continent"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why can definitions of Europe's eastern boundary vary?",
+      "choices": [
+        "Europe and Asia are separated everywhere by an ocean",
+        "Continental divisions include historical and conventional choices",
+        "Mountains move national borders each year",
+        "All regional boundaries are fixed by one universal law"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why can population and economic activity differ within Europe?",
+      "choices": [
+        "Every region has the same climate and industries",
+        "Political boundaries erase all physical differences",
+        "Settlement depends only on national flag design",
+        "Terrain, history, resources, and transport networks vary"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A ship travels from an inland industrial area along the Rhine to a port. What geographic function is illustrated?",
+      "choices": [
+        "A mountain barrier preventing navigation",
+        "A desert route supporting camel transport",
+        "A river corridor supporting transport and trade",
+        "A glacial valley without human activity"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Which comparison of the Iberian and Scandinavian peninsulas is accurate?",
+      "choices": [
+        "They occupy southwestern and northern parts of Europe respectively",
+        "Both lie entirely within the Mediterranean",
+        "Both are islands separated from Eurasia",
+        "They occupy the same northern latitude range"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A valley has a broad U-shaped cross section and nearby glacial deposits. Which process likely shaped it?",
+      "choices": [
+        "Coral reef growth",
+        "Glacial erosion",
+        "Wind deposition alone",
+        "Urban construction alone"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A student maps EU membership and treats it as Europe's exact boundary. What needs correction?",
+      "choices": [
+        "All European boundaries must follow the Rhine",
+        "Europe contains no countries outside the EU",
+        "Political organizations cannot be shown on maps",
+        "Organizational membership and continental geography are different concepts"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Why should a comparison of European regions use several kinds of evidence?",
+      "choices": [
+        "One national average describes every community exactly",
+        "Climate alone determines all institutions",
+        "Physical, cultural, political, and economic patterns do not always coincide",
+        "Every regional category has identical boundaries"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ],
+  "referenceUrls": [
+    "https://education.nationalgeographic.org/resource/europe-physical-geography/"
+  ]
+}
+

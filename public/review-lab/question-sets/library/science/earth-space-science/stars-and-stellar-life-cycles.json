@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--earth-space-science--stars-and-stellar-life-cycles",
+  "title": "Stars and Stellar Life Cycles",
+  "subject": "Science",
+  "category": "Earth & Space Science",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a protostar?",
+      "choices": [
+        "A contracting concentration of gas and dust forming a star",
+        "A cooled planet orbiting two stars",
+        "A fully formed white dwarf",
+        "An isolated comet nucleus"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What process powers a star during its main-sequence stage?",
+      "choices": [
+        "Chemical combustion of hydrogen with oxygen",
+        "Fusion of hydrogen into helium in its core",
+        "Nuclear fission of uranium",
+        "Gravitational heating as the only continuing source"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What primarily determines a star's main-sequence lifetime and later evolution?",
+      "choices": [
+        "Its distance from Earth",
+        "Its apparent position in a constellation",
+        "Its initial mass",
+        "The number of planets seen nearby"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which star color generally indicates the highest surface temperature?",
+      "choices": [
+        "Red",
+        "Orange",
+        "Yellow",
+        "Blue"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is luminosity?",
+      "choices": [
+        "A star's total energy output per unit time",
+        "Its brightness only as seen from Earth",
+        "Its distance from a telescope",
+        "The mass of its planets"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is a white dwarf?",
+      "choices": [
+        "A cool giant powered by hydrogen fusion in its core",
+        "A dense stellar remnant that gradually cools",
+        "A gas cloud before a star begins forming",
+        "A massive star before its core collapses"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is a core-collapse supernova?",
+      "choices": [
+        "The ordinary daily rotation of a star",
+        "A planet reflecting sunlight",
+        "An explosion associated with collapse of a massive star's core",
+        "The slow cooling of every white dwarf"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why does a forming protostar heat as it contracts?",
+      "choices": [
+        "The gas cools because compression always removes internal energy",
+        "Its light comes only from nearby stars and no internal heating occurs",
+        "Contracting gas loses energy without any rise in temperature",
+        "Gravitational energy is converted into thermal energy"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What supports a main-sequence star against gravitational collapse?",
+      "choices": [
+        "Outward pressure associated with its hot interior",
+        "A solid outer shell holds the hot gas in place",
+        "Nearby planets pull the star outward strongly enough to support it",
+        "Rotation alone supplies all support in every star"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why do very massive stars generally have shorter main-sequence lifetimes than lower-mass stars?",
+      "choices": [
+        "They use fuel more slowly despite their higher luminosity",
+        "They use their nuclear fuel at much higher rates",
+        "They contain no usable hydrogen at birth",
+        "They exhaust fuel because distance from Earth is greater"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why may two equally luminous stars appear different in brightness?",
+      "choices": [
+        "Luminosity is identical to apparent brightness",
+        "The farther one must have less mass",
+        "They may be at different distances",
+        "Both must have different surface temperatures"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What happens when a Sun-like star leaves the main sequence?",
+      "choices": [
+        "It immediately becomes a black hole regardless of its mass",
+        "It remains exactly unchanged because hydrogen depletion has no effect",
+        "It turns all of its material into a planet",
+        "It expands toward a red-giant stage after core hydrogen is depleted"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What is a planetary nebula in stellar evolution?",
+      "choices": [
+        "Gas shed by a dying lower-mass star surrounding its remnant",
+        "A cloud made only by colliding planets",
+        "A new solar system made entirely of planets",
+        "The solid surface of a white dwarf"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why can supernovae contribute to the chemical enrichment of later star systems?",
+      "choices": [
+        "They remove every heavy element from space",
+        "They eject material containing elements made in stars and explosions",
+        "They turn every element into hydrogen only",
+        "They prevent future clouds from forming"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "How is a neutron star different from an ordinary main-sequence star?",
+      "choices": [
+        "It continues ordinary hydrogen fusion in a large gas envelope",
+        "It is less dense than an ordinary main-sequence star",
+        "It is a compact remnant rather than a hydrogen-fusing star",
+        "It is an expanding shell of gas with no central remnant"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A blue star and a red star have similar observed sizes. Which generally has the hotter surface?",
+      "choices": [
+        "The red star",
+        "Both must have exactly equal temperatures",
+        "Color gives no information about temperature",
+        "The blue star"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A star loses its outer gas layers and leaves a white dwarf. Which type of progenitor is most consistent?",
+      "choices": [
+        "A star with initial mass similar to the Sun",
+        "Any star regardless of initial mass",
+        "A rocky planet with no fusion history",
+        "A cold interstellar grain"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Two stars have equal luminosity, but one is twice as far away. Ignoring dust, how bright does it appear relative to the nearer one?",
+      "choices": [
+        "Half as bright",
+        "One-fourth as bright",
+        "Equally bright",
+        "Four times as bright"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A massive stellar core collapses and leaves a very dense compact object. Which pair lists possible remnants?",
+      "choices": [
+        "A white dwarf or a normal hydrogen-burning star",
+        "A red giant or a protostar",
+        "A neutron star or a black hole",
+        "A planetary nebula or a new molecular cloud"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Why is a star cluster useful for comparing stellar life cycles?",
+      "choices": [
+        "Every cluster star begins with the same mass",
+        "Cluster stars never leave the main sequence",
+        "All cluster stars must have identical luminosity",
+        "Its stars often formed at roughly the same time but have different masses"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

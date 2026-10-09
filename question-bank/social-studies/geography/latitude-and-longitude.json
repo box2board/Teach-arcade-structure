@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "geography--latitude-and-longitude",
+  "title": "Latitude and Longitude",
+  "subject": "Social Studies",
+  "category": "Geography",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What does latitude measure?",
+      "choices": [
+        "Angular distance east or west of the prime meridian",
+        "Height above sea level",
+        "Angular distance north or south of the equator",
+        "Distance traveled along a road"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What does longitude measure?",
+      "choices": [
+        "Angular distance east or west of the prime meridian",
+        "Angular distance north or south of the equator",
+        "Average yearly rainfall",
+        "Height above sea level"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is the latitude of the equator?",
+      "choices": [
+        "90 degrees north",
+        "0 degrees",
+        "90 degrees south",
+        "180 degrees"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is the longitude of the prime meridian?",
+      "choices": [
+        "90 degrees east",
+        "90 degrees west",
+        "180 degrees",
+        "0 degrees"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What latitude marks the North Pole?",
+      "choices": [
+        "90 degrees north",
+        "0 degrees",
+        "45 degrees north",
+        "180 degrees north"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What are lines of latitude commonly called?",
+      "choices": [
+        "Meridians",
+        "Contours",
+        "Parallels",
+        "Isobars"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What are lines of longitude commonly called?",
+      "choices": [
+        "Parallels",
+        "Meridians",
+        "Contours",
+        "Isotherms"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why are two coordinates needed to specify a position?",
+      "choices": [
+        "Latitude alone identifies every location uniquely",
+        "Longitude measures both elevation and rainfall",
+        "Coordinates describe climate rather than position",
+        "Latitude and longitude identify north-south and east-west position together"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How do lines of longitude differ from latitude parallels?",
+      "choices": [
+        "Meridians meet at the poles; parallels do not",
+        "Parallels meet at both poles; meridians do not",
+        "Both sets remain equally spaced in all directions",
+        "Longitude lines run only around the equator"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why do locations with the same latitude not necessarily share the same climate?",
+      "choices": [
+        "Latitude has no influence on sunlight",
+        "Longitude alone determines every climate",
+        "Elevation, oceans, winds, and other factors also affect climate",
+        "All places on a parallel have identical rainfall"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why does longitude relate to time zones?",
+      "choices": [
+        "Longitude measures the length of seasons directly",
+        "Earth's rotation changes local solar time across east-west positions",
+        "The equator divides all time zones",
+        "Time zones are determined only by altitude"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why do official time-zone boundaries not always follow exact meridians?",
+      "choices": [
+        "Earth rotates at a different speed in each country",
+        "Meridians change position every year",
+        "Every time zone follows a river",
+        "Political and practical decisions adjust them"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What does 30 degrees south indicate?",
+      "choices": [
+        "A position south of the equator",
+        "A position south of the prime meridian",
+        "A position east of the International Date Line",
+        "A height of 30 meters"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What does 75 degrees west indicate?",
+      "choices": [
+        "A position west of the equator",
+        "A position north of the Arctic Circle",
+        "A position west of the prime meridian",
+        "A distance of 75 kilometers from the coast"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why is the International Date Line associated with roughly 180 degrees longitude?",
+      "choices": [
+        "It marks the only place where the sun rises",
+        "It separates calendar dates across neighboring time zones",
+        "It divides summer from winter in every country",
+        "It is the boundary between the Northern and Southern Hemispheres"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A point is at 20 degrees north, 60 degrees east. In which hemispheres is it?",
+      "choices": [
+        "Northern and Western",
+        "Southern and Eastern",
+        "Southern and Western",
+        "Northern and Eastern"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A point is at 15 degrees south, 45 degrees west. In which hemispheres is it?",
+      "choices": [
+        "Southern and Western",
+        "Northern and Western",
+        "Southern and Eastern",
+        "Northern and Eastern"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Two points share 40 degrees north latitude but have different longitudes. What is certain?",
+      "choices": [
+        "They have the same local clock time",
+        "They have identical climates",
+        "They lie on the same parallel",
+        "They are the same distance from every ocean"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A traveler moves from 10 degrees north to 30 degrees north along one meridian. Which coordinate changes?",
+      "choices": [
+        "Longitude",
+        "Latitude",
+        "Both coordinates equally",
+        "Neither coordinate"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which coordinate pair is valid?",
+      "choices": [
+        "120 degrees north, 45 degrees west",
+        "95 degrees south, 180 degrees east",
+        "100 degrees south, 200 degrees west",
+        "45 degrees north, 120 degrees west"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "world-history--ancient-india",
+  "title": "Ancient India",
+  "subject": "Social Studies",
+  "category": "World History",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which river system gave its name to the civilization associated with Harappa and Mohenjo-daro?",
+      "choices": [
+        "Tigris-Euphrates",
+        "Indus",
+        "Nile",
+        "Huang He"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which feature is especially associated with major Indus civilization cities?",
+      "choices": [
+        "Planned streets and drainage systems",
+        "Colosseums for gladiatorial contests",
+        "Gothic cathedrals in town centers",
+        "Feudal castles surrounded by moats"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which collection of texts is associated with the early Vedic religious tradition?",
+      "choices": [
+        "The Analects",
+        "The Twelve Tables",
+        "The Torah",
+        "The Vedas"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which ruler helped establish the Mauryan Empire?",
+      "choices": [
+        "Akbar",
+        "Ashoka",
+        "Chandragupta Maurya",
+        "Kublai Khan"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which Mauryan ruler is known for inscriptions promoting ethical conduct after the Kalinga war?",
+      "choices": [
+        "Ashoka",
+        "Darius I",
+        "Augustus",
+        "Chandragupta II"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which tradition traces its beginnings to the teachings of Siddhartha Gautama?",
+      "choices": [
+        "Jainism",
+        "Buddhism",
+        "Confucianism",
+        "Zoroastrianism"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which mountain range forms a major natural barrier along the northern Indian subcontinent?",
+      "choices": [
+        "Andes",
+        "Alps",
+        "Himalayas",
+        "Atlas Mountains"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "How did seasonal monsoon rains influence ancient South Asian agriculture?",
+      "choices": [
+        "They made irrigation unnecessary in every region",
+        "They kept the entire subcontinent permanently frozen",
+        "They prevented the cultivation of grain crops",
+        "Their timing and amount affected water supplies and harvests"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why do historians remain cautious about identifying the political system of the Indus civilization?",
+      "choices": [
+        "Its writing has not been securely deciphered",
+        "Its cities appear only in accounts written by Mauryan rulers",
+        "Its cities developed after the introduction of printed books",
+        "Its artifacts provide only evidence about warfare"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "How did Ashoka's edicts help him govern a large empire?",
+      "choices": [
+        "They removed every regional official",
+        "They communicated royal policies across many locations",
+        "They replaced all spoken languages with one script",
+        "They ended communication between provinces"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Which statement accurately describes ancient India's social hierarchy?",
+      "choices": [
+        "Social divisions began only after British colonization",
+        "Every person had equal access to every occupation",
+        "All regions used identical categories without change",
+        "Varna ideals and more specific social groups shaped unequal roles"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why were South Asian coastal ports important to ancient trade?",
+      "choices": [
+        "They prevented merchants from exchanging religious ideas",
+        "They replaced farming as the sole source of food",
+        "They connected regional products with Indian Ocean markets",
+        "They isolated India from surrounding civilizations"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What relationship between Hinduism and Buddhism is historically accurate?",
+      "choices": [
+        "Both developed in South Asia but differ in important teachings",
+        "Both were created by Mauryan officials as identical state laws",
+        "Neither influenced societies outside South Asia",
+        "Both required membership in the same hereditary priesthood"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why is the Gupta period often associated with cultural achievements?",
+      "choices": [
+        "It introduced steam-powered textile factories",
+        "It saw important developments in literature, mathematics, and science",
+        "It marked the first arrival of humans in South Asia",
+        "It eliminated religious and linguistic diversity"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "How did merchants and traveling teachers contribute to Buddhism's spread?",
+      "choices": [
+        "They kept religious texts confined to one city",
+        "They required every ruler to join the Mauryan Empire",
+        "They replaced trade with permanent military conquest",
+        "They carried beliefs along routes connecting distant communities"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Archaeologists find similar standardized weights in several Indus cities. What inference is most reasonable?",
+      "choices": [
+        "The cities used modern decimal currencies",
+        "The cities had no contact with one another",
+        "They shared some commercial practices or measurement standards",
+        "All people in those cities had the same occupation"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Which ancient Indian sequence is correctly ordered?",
+      "choices": [
+        "Indus cities → Mauryan Empire → Gupta Empire",
+        "Gupta Empire → Indus cities → Mauryan Empire",
+        "Mauryan Empire → Gupta Empire → Indus cities",
+        "Indus cities → Gupta Empire → Mauryan Empire"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Why should a historian avoid calling Ashoka's inscriptions an unbiased description of his rule?",
+      "choices": [
+        "Inscriptions cannot provide historical evidence",
+        "They present messages chosen by the ruler and his government",
+        "They were written before any South Asian states existed",
+        "All information written on stone is necessarily false"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A port has imported beads and locally made textiles. What does this evidence most directly suggest?",
+      "choices": [
+        "The port produced only goods for local household use",
+        "The community depended primarily on tribute rather than exchange",
+        "The port participated in trade involving different regions",
+        "The imported goods show that local textile production had stopped"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which claim about the decline of Indus urban centers is most careful?",
+      "choices": [
+        "A single deciphered text gives the accepted cause of the decline",
+        "Evidence supports conquest as the sole explanation for every site",
+        "The decline of cities means that rural communities disappeared too",
+        "Environmental and social changes are studied as possible contributing factors"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

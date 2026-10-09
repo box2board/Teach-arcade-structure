@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--life-science-biology--genetics-and-inheritance",
+  "title": "Genetics and Inheritance",
+  "subject": "Science",
+  "category": "Life Science & Biology",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a gene?",
+      "choices": [
+        "A DNA sequence contributing to a functional product",
+        "A cell structure that stores water",
+        "A protein that always determines one visible trait",
+        "A complete set of organs"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is an allele?",
+      "choices": [
+        "A collection of unrelated chromosomes",
+        "A type of ribosome",
+        "A version of a gene",
+        "A cell's source of light energy"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which term describes an organism with two different alleles at a gene location?",
+      "choices": [
+        "Homozygous",
+        "Heterozygous",
+        "Dominant",
+        "Recessive"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is a genotype?",
+      "choices": [
+        "The conditions surrounding an organism",
+        "An organism's visible appearance only",
+        "The number of cells in an organism",
+        "An organism's genetic makeup at one or more locations"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is a phenotype?",
+      "choices": [
+        "A chromosome copied before cell division",
+        "An observable characteristic resulting from genes and environment",
+        "A gamete's entire energy supply",
+        "A single type of nitrogen base"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "In a simple complete-dominance model, when is a recessive phenotype expressed?",
+      "choices": [
+        "When both copies of the gene carry the recessive allele",
+        "Whenever one dominant allele is present",
+        "Only when the organism is male",
+        "Whenever the environment changes"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which cells carry hereditary information from parents through sexual reproduction?",
+      "choices": [
+        "Muscle cells",
+        "Skin cells",
+        "Nerve cells",
+        "Gametes"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why do offspring in sexual reproduction receive alleles from two parents?",
+      "choices": [
+        "All their genes arise only after birth",
+        "Parents pass on only their acquired habits",
+        "Gametes from the parents combine at fertilization",
+        "Each parent contributes every chromosome twice"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What does a Punnett square show?",
+      "choices": [
+        "The order of all bases in a chromosome",
+        "The exact traits of every future child",
+        "How quickly a population grows",
+        "Possible allele combinations and their expected probabilities"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why does dominant not mean more common in a population?",
+      "choices": [
+        "Dominant alleles cannot be inherited",
+        "Dominance describes expression in heterozygotes, not allele frequency",
+        "Dominant traits must always improve survival",
+        "Dominance measures the size of a chromosome"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What is incomplete dominance?",
+      "choices": [
+        "An allele cannot pass to offspring",
+        "Only one parent contributes hereditary information",
+        "A heterozygote has an intermediate phenotype in the stated model",
+        "Two different alleles are always expressed as separate traits"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "How can environment influence phenotype?",
+      "choices": [
+        "Conditions such as nutrition can affect how a trait develops",
+        "Genes stop affecting traits whenever conditions change",
+        "Environment necessarily changes every gene's DNA sequence",
+        "All individuals in one environment have identical traits"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why are many traits not predicted well by a one-gene Punnett square?",
+      "choices": [
+        "Punnett squares cannot describe gamete combinations",
+        "They are never inherited in any way",
+        "They involve multiple genes, environmental effects, or both",
+        "Every trait follows complete dominance"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What does segregation mean in basic Mendelian inheritance?",
+      "choices": [
+        "All alleles stay together in every gamete",
+        "The dominant allele prevents recessive gametes from forming",
+        "Alleles disappear whenever cells divide",
+        "The two alleles at a locus separate during gamete formation"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why can siblings from the same parents have different inherited traits?",
+      "choices": [
+        "Different combinations of parental alleles can be inherited",
+        "Parents' alleles are replaced after each birth",
+        "Each sibling belongs to a different biological species",
+        "Only the oldest child inherits chromosomes"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Assume complete dominance: T is dominant to t. What phenotype is expected for Tt?",
+      "choices": [
+        "The recessive phenotype",
+        "The dominant phenotype",
+        "A phenotype determined only by age",
+        "No trait expression"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "In a cross Aa × Aa with complete dominance, what fraction of offspring is expected to be aa?",
+      "choices": [
+        "One-fourth",
+        "One-half",
+        "Three-fourths",
+        "All"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "In a cross Aa × aa, what fraction of offspring is expected to be heterozygous?",
+      "choices": [
+        "One-fourth",
+        "Three-fourths",
+        "One-half",
+        "None"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Two heterozygous parents have three children with a dominant phenotype. What is the correct conclusion about a fourth child in a simple Mendelian model?",
+      "choices": [
+        "The fourth must have the recessive phenotype",
+        "Each fertilization still has its own inheritance probabilities",
+        "The fourth cannot inherit a recessive allele",
+        "The parents' genotypes have changed to homozygous dominant"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A trait changes with diet even among organisms sharing the same relevant genotype. What does this support?",
+      "choices": [
+        "The trait cannot have any genetic component",
+        "The diet has necessarily changed every DNA sequence",
+        "The organisms must have different parents",
+        "Environmental conditions can affect phenotype"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

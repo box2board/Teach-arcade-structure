@@ -1,0 +1,255 @@
+{
+  "schemaVersion": 1,
+  "id": "government--state-government",
+  "title": "State Government",
+  "subject": "Social Studies",
+  "category": "Government & Civics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What document establishes a state's basic governmental framework?",
+      "choices": [
+        "State constitution",
+        "Federal campaign platform",
+        "County tax receipt",
+        "International trade agreement"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Who generally heads a state's executive branch?",
+      "choices": [
+        "Mayor",
+        "Chief Justice of the United States",
+        "Governor",
+        "Speaker of the U.S. House"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is a state legislature primarily responsible for?",
+      "choices": [
+        "Negotiating national defense treaties",
+        "Enacting state laws",
+        "Appointing all federal judges",
+        "Issuing U.S. currency"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is a common responsibility of state courts?",
+      "choices": [
+        "Commanding the national armed forces",
+        "Approving every congressional bill",
+        "Setting the national currency supply",
+        "Resolving cases involving state law"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which state has a unicameral legislature?",
+      "choices": [
+        "Nebraska",
+        "Ohio",
+        "California",
+        "Virginia"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What does a state's budget specify?",
+      "choices": [
+        "Only the federal military's purchases",
+        "Only private businesses' profits",
+        "Planned revenue and spending for state responsibilities",
+        "The number of presidential electors nationwide"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is a ballot initiative in states that allow it?",
+      "choices": [
+        "A governor's appointment of a federal judge",
+        "A process for voters to propose certain measures directly",
+        "A Senate vote confirming a treaty",
+        "A court order selecting a political party leader"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why can state constitutions differ from one another?",
+      "choices": [
+        "States are required to copy every federal article word for word",
+        "Governors may disregard all constitutional provisions",
+        "State courts write foreign constitutions for neighboring countries",
+        "States establish their own frameworks within federal constitutional limits"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why is public education often a major state policy area?",
+      "choices": [
+        "States have substantial authority over school systems and funding",
+        "The federal Constitution requires one national school curriculum",
+        "Only private businesses can operate schools legally",
+        "Education is constitutionally excluded from every level of government"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "How do governors and legislatures commonly interact over budgets?",
+      "choices": [
+        "Governors decide all taxes without any legal process",
+        "Legislatures have no role in state spending",
+        "Governors propose priorities and legislatures consider spending legislation",
+        "Courts automatically approve every proposed budget item"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why can a state law be challenged under the U.S. Constitution?",
+      "choices": [
+        "State governments are outside the constitutional system",
+        "State authority remains subject to federal constitutional protections",
+        "State law always overrides federal rights",
+        "Only governors may interpret the U.S. Constitution"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What is a referendum in the context of state policymaking?",
+      "choices": [
+        "A diplomatic negotiation with another country",
+        "A permanent appointment to a court",
+        "A governor's command to federal troops",
+        "A vote by the electorate on a measure"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "How do state governments obtain much of their operating revenue?",
+      "choices": [
+        "Through taxes, fees, and other lawful revenue sources",
+        "Through issuing their own national currencies",
+        "Through mandatory payments from foreign governments",
+        "Through collecting all federal income taxes for themselves"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why do local governments depend partly on state law?",
+      "choices": [
+        "Local governments ordinarily make national foreign policy",
+        "The U.S. Senate writes every municipal ordinance",
+        "States establish or authorize many local governmental powers",
+        "Cities are independent countries under the Constitution"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why might state policies differ on the same public issue?",
+      "choices": [
+        "Every state has identical legal rules on all subjects",
+        "States face different conditions and make different lawful policy choices",
+        "State elections cannot affect policy priorities",
+        "National law forbids any regional variation"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A legislature enacts licensing standards for teachers. Which level is acting?",
+      "choices": [
+        "An international organization",
+        "The federal judiciary",
+        "A foreign embassy",
+        "State government"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A court considers whether a state statute violates that state's constitution. What is being applied?",
+      "choices": [
+        "State constitutional review",
+        "Federal treaty ratification",
+        "Presidential succession",
+        "National military command"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Which comparison of governors and the U.S. president is accurate?",
+      "choices": [
+        "Governors command all U.S. forces overseas",
+        "The president appoints every governor after each election",
+        "Both head executive branches, but their jurisdictions and constitutional powers differ",
+        "Both have identical authority over every state statute"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Residents vote directly on a proposed state measure. What process is illustrated?",
+      "choices": [
+        "A judicial appeal",
+        "A referendum",
+        "A cabinet appointment",
+        "A presidential pardon"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which evidence would best evaluate a state's education funding policy?",
+      "choices": [
+        "Only the governor's campaign slogan",
+        "Only the design of the state's seal",
+        "Only the dates of national holidays",
+        "Budget allocations, enrollment, and measures of student access"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ],
+  "referenceUrls": [
+    "https://www.usa.gov/state-local-governments"
+  ]
+}
+

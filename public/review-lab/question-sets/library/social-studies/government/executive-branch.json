@@ -1,0 +1,254 @@
+{
+  "schemaVersion": 1,
+  "id": "government--executive-branch",
+  "title": "Executive Branch",
+  "subject": "Social Studies",
+  "category": "Government & Civics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Who heads the executive branch of the U.S. federal government?",
+      "choices": [
+        "President",
+        "Chief Justice",
+        "Speaker of the House",
+        "Senate majority leader"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is the executive branch's central responsibility?",
+      "choices": [
+        "Writing constitutional amendments alone",
+        "Deciding every court appeal",
+        "Carrying out and enforcing laws",
+        "Approving laws without Congress"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "How long is a presidential term?",
+      "choices": [
+        "Two years",
+        "Four years",
+        "Six years",
+        "Eight years"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What body consists of the heads of executive departments and other designated advisers?",
+      "choices": [
+        "Electoral College",
+        "Senate Judiciary Committee",
+        "Supreme Court",
+        "Cabinet"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Who becomes president if the president dies in office?",
+      "choices": [
+        "Vice president",
+        "Chief Justice",
+        "Secretary of State automatically",
+        "Senate majority leader automatically"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What constitutional title identifies the president's military role?",
+      "choices": [
+        "Chief justice",
+        "President pro tempore",
+        "Commander in chief",
+        "Majority whip"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is a presidential veto?",
+      "choices": [
+        "A court's reversal of a conviction",
+        "Rejection of a bill presented by Congress",
+        "Ratification of a treaty",
+        "An amendment to the Constitution"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why does the executive branch include specialized departments?",
+      "choices": [
+        "Departments replace Congress as the sole lawmaker",
+        "Each department operates as an independent country",
+        "Departments make judicial appeals unnecessary",
+        "Different agencies administer different areas of public responsibility"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What role does the Senate have in many major presidential appointments?",
+      "choices": [
+        "Providing advice and consent",
+        "Choosing all appointees without presidential nominations",
+        "Approving appointments only after a national referendum",
+        "Having no constitutional role in appointments"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What is an executive order?",
+      "choices": [
+        "A constitutional amendment issued by the president",
+        "A Supreme Court decision about agency powers",
+        "A presidential directive concerning executive operations within legal authority",
+        "A state legislature's instruction to Congress"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why is the president's treaty power shared with the Senate?",
+      "choices": [
+        "The Senate negotiates every treaty without the executive",
+        "The Constitution requires Senate consent by a two-thirds vote of senators present",
+        "The president may ratify treaties only after governors vote",
+        "Treaties can never become binding international agreements"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What limits the president's pardon power under the Constitution?",
+      "choices": [
+        "It applies only to state traffic offenses",
+        "It requires unanimous House approval in every case",
+        "It allows the president to repeal criminal statutes",
+        "It applies to federal offenses and does not cover impeachment"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why does an executive agency issue regulations?",
+      "choices": [
+        "To implement laws within authority granted by law",
+        "To replace the Constitution with agency rules",
+        "To eliminate judicial review of government action",
+        "To impose rules unrelated to its legal authority"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "How can Congress influence executive agencies?",
+      "choices": [
+        "By deciding every federal criminal trial",
+        "By issuing presidential pardons",
+        "Through legislation, funding, and oversight",
+        "By appointing every state governor"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What is a purpose of the State of the Union address?",
+      "choices": [
+        "Ratifying every treaty automatically",
+        "Reporting on national conditions and recommending measures to Congress",
+        "Selecting Supreme Court justices by public vote",
+        "Replacing the federal budget with a personal decree"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "An agency implements a law Congress passed. Which relationship does this show?",
+      "choices": [
+        "Judicial policymaking and state secession",
+        "Abolition of checks and balances",
+        "Exclusive lawmaking by the Cabinet",
+        "Legislative policymaking and executive administration"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A court finds an executive action unlawful. What does this demonstrate?",
+      "choices": [
+        "Executive action can be subject to judicial review",
+        "Executive orders always supersede the Constitution",
+        "Courts command the military in every case",
+        "Presidential actions are never legally limited"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A president nominates an ambassador and the Senate confirms the nominee. Which principle is illustrated?",
+      "choices": [
+        "Direct democracy",
+        "State nullification",
+        "Shared appointment authority",
+        "Hereditary succession"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Which comparison of a statute and an executive order is accurate?",
+      "choices": [
+        "Both are enacted by Congress and must be ratified by state legislatures",
+        "A statute goes through lawmaking; an executive order directs action under legal authority",
+        "An executive order overrides any statute; a statute applies only to state governments",
+        "A statute directs only military action; an executive order governs only civil courts"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Why is the commander-in-chief role not unlimited control over all war policy?",
+      "choices": [
+        "Congress has no military-related powers",
+        "The president can amend the Constitution during any conflict",
+        "Federal courts alone recruit and supply the armed forces",
+        "Congress has powers over declarations of war and military funding"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ],
+  "referenceUrls": [
+    "https://www.archives.gov/founding-docs/constitution-transcript"
+  ]
+}

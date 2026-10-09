@@ -1,4 +1,5 @@
 import {setsForGame,loadQuestionSet} from '../catalog.js';
+import {enhanceTopicPicker} from '../topic-picker.js';
 import {Race,ReviewSession,roadCurve,clamp} from './engine.js';
 const $=id=>document.getElementById(id),ctx=$('road').getContext('2d'),input={};let race=new Race(),bank,review,batch=0,batchStart=0,batchEnd=0,stage=0,retryDeck=[],retryIndex=0,retrying=false,pitActive=false,locked=false,started=false,last=performance.now(),pausedState='race';
 const carAtlas=new Image();carAtlas.src='cars-v2.png';
@@ -13,7 +14,7 @@ function updatePlan(){const {questionCount,laps}=settings();$('racePlan').textCo
 $('questionCount').onchange=$('laps').onchange=updatePlan;updatePlan();
 let loadVersion=0;
 async function load(){const version=++loadVersion;bank=null;$('start').disabled=true;try{const loaded=await loadQuestionSet($('topic').value);if(version!==loadVersion)return;bank=loaded;for(const o of $('questionCount').options)o.disabled=+o.value>bank.questions.length;if($('questionCount').selectedOptions[0].disabled)$('questionCount').value='8';$('start').disabled=bank.questions.length<8;updatePlan();$('description').textContent='Race three rivals through Canyon Circuit. Questions recharge your juice.'}catch{if(version!==loadVersion)return;$('description').textContent='Could not load this topic. Change the selection to retry.'}}
-$('topic').innerHTML=setsForGame('raceway-rivals').map(t=>`<option value="${t.id}">${t.title}</option>`).join('');const preset=new URLSearchParams(location.search).get('set');if([...$('topic').options].some(o=>o.value===preset))$('topic').value=preset;$('topic').onchange=load;load();
+$('topic').innerHTML=setsForGame('raceway-rivals').map(t=>`<option value="${t.id}">${t.title}</option>`).join('');const preset=new URLSearchParams(location.search).get('set');if([...$('topic').options].some(o=>o.value===preset))$('topic').value=preset;enhanceTopicPicker($('topic'),setsForGame('raceway-rivals'));$('topic').onchange=load;load();
 function start(){if(!bank)return;race=new Race(settings());review=new ReviewSession(bank,settings());stage=0;retrying=false;pitActive=false;started=true;race.juice=0;resetInput();pit();const url=new URL(location.href);url.searchParams.set('set',bank.id);try{history.replaceState(null,'',url)}catch{}}
 $('start').onclick=start;$('restart').onclick=start;
 $('changeSetup').onclick=()=>{started=false;pitActive=false;retrying=false;review=null;race=new Race(settings());race.juice=0;$('countdown').hidden=true;overlay('Take the wheel','Choose your question count and laps.');$('setup').hidden=false;updatePlan()};

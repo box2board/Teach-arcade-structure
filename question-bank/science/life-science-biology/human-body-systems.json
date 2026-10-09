@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--life-science-biology--human-body-systems",
+  "title": "Human Body Systems",
+  "subject": "Science",
+  "category": "Life Science & Biology",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which system includes bones and provides structural support?",
+      "choices": [
+        "Digestive",
+        "Endocrine",
+        "Urinary",
+        "Skeletal"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which system includes muscles that move the skeleton?",
+      "choices": [
+        "Respiratory",
+        "Muscular",
+        "Lymphatic",
+        "Integumentary"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which organ is a major part of the integumentary system?",
+      "choices": [
+        "Stomach",
+        "Kidney",
+        "Skin",
+        "Pancreas"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is the main role of the digestive system?",
+      "choices": [
+        "Break down food and absorb nutrients",
+        "Move nutrients through vessels without breaking down food",
+        "Regulate movement mainly through electrical signaling",
+        "Filter waste from blood and regulate salt balance"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which organs filter blood and help regulate water and salts?",
+      "choices": [
+        "Kidneys",
+        "Lungs",
+        "Small intestines",
+        "Salivary glands"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is a tissue?",
+      "choices": [
+        "Several organs coordinating a body function",
+        "An individual cell's internal membrane network",
+        "A group of cells and associated material performing related functions",
+        "All organisms of one species in an area"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is an organ?",
+      "choices": [
+        "A single specialized cell performing all body functions",
+        "A structure composed of multiple tissues working together",
+        "A group of similar cells without multiple tissue types",
+        "Several body systems grouped as one structure"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why do body systems function together rather than independently?",
+      "choices": [
+        "Each system supplies every resource it requires by itself",
+        "Transport systems can work without regulation from other systems",
+        "Cooperation is required only during illness",
+        "Cells need coordinated transport, regulation, and resource supply"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How do the digestive and circulatory systems interact?",
+      "choices": [
+        "Food travels intact through arteries to each body cell",
+        "Absorbed nutrients remain in the digestive tract",
+        "Absorbed nutrients enter transport pathways supplying tissues",
+        "Blood vessels release most digestive enzymes into the stomach"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "How do muscles and bones cooperate in movement?",
+      "choices": [
+        "Muscle contractions pull on bones through attachments",
+        "Bones contract while muscles remain rigid",
+        "Muscles push bones without attachments",
+        "Bones move without forces"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why is the small intestine's large internal surface useful?",
+      "choices": [
+        "It increases the volume available for storing undigested food",
+        "It filters blood in place of the kidneys",
+        "It transfers oxygen directly from inhaled air",
+        "It supports efficient nutrient absorption"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "How does skin contribute to maintaining internal conditions?",
+      "choices": [
+        "It controls body temperature mainly by filtering blood",
+        "It provides a barrier and participates in temperature regulation",
+        "It supplies most absorbed nutrients to body cells",
+        "It produces the body's digestive enzymes"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why must the urinary system regulate water and dissolved salts?",
+      "choices": [
+        "Body fluids should contain no salts",
+        "Cell function depends on suitable internal concentrations",
+        "Water balance affects only the urinary organs",
+        "Any internal salt concentration supports equal cell function"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What does negative feedback do in many body-control systems?",
+      "choices": [
+        "Amplifies every departure indefinitely",
+        "Prevents detection of changes",
+        "Keeps every quantity exactly constant",
+        "Counteracts a departure from a suitable range"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "How does the lymphatic system help body fluid balance?",
+      "choices": [
+        "It returns excess tissue fluid to circulation",
+        "It removes water from the body through the lungs",
+        "It produces the main enzymes used in digestion",
+        "It transports impulses from skin receptors to the brain"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A student arranges cells, tissues, organs, and systems. Which order goes from simpler to more complex?",
+      "choices": [
+        "Organs → cells → systems → tissues",
+        "Systems → tissues → cells → organs",
+        "Cells → tissues → organs → systems",
+        "Tissues → organs → cells → systems"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A muscle contracts but its tendon cannot transmit force normally. Which function is directly affected?",
+      "choices": [
+        "Absorbing food in the intestine",
+        "Filtering blood in a kidney",
+        "Producing skin pigment",
+        "Moving the attached bone"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "After nutrients are absorbed, how can they reach cells far from the digestive tract?",
+      "choices": [
+        "Movement mainly through sensory neurons",
+        "Direct diffusion across the entire body without transport",
+        "Transport by circulation",
+        "Passage only through the interiors of bones"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A model includes protection, sensation, and sweat release. Which system does it chiefly represent?",
+      "choices": [
+        "Integumentary",
+        "Digestive",
+        "Skeletal",
+        "Reproductive"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "An organ has epithelial, connective, muscular, and nervous tissues. What does this demonstrate?",
+      "choices": [
+        "Each tissue functions as a separate complete organ",
+        "An organ can combine several tissue types",
+        "An organ always contains only one cell type",
+        "Tissue type determines an organ's entire role independently"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}

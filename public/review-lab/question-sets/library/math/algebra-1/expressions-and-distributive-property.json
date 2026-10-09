@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--algebra-1--expressions-and-distributive-property",
+  "title": "Expressions and Distributive Property",
+  "subject": "Math",
+  "category": "Algebra I",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "In 7x + 3, what is the coefficient of x?",
+      "choices": [
+        "3",
+        "x",
+        "7",
+        "10"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which term is constant in 4y − 9?",
+      "choices": [
+        "4",
+        "y",
+        "−9",
+        "4y"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is 3x + 5x?",
+      "choices": [
+        "8x",
+        "8x²",
+        "15x",
+        "2x"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is 4(x + 2)?",
+      "choices": [
+        "4x + 2",
+        "x + 8",
+        "8x",
+        "4x + 8"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is 5a − 2a + 6?",
+      "choices": [
+        "3a + 4",
+        "3a + 6",
+        "7a + 6",
+        "3a² + 6"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which pair consists of like terms?",
+      "choices": [
+        "3x and −2x",
+        "3x and 3y",
+        "x and x²",
+        "4 and 4x"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is 2x + 5 when x = 3?",
+      "choices": [
+        "10",
+        "16",
+        "11",
+        "6"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why can 2x and 3x be combined?",
+      "choices": [
+        "Their coefficients must be equal",
+        "Both terms have the same variable raised to the same power",
+        "Every term containing any letter is alike",
+        "Multiplication must be done before addition"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Which expression is equivalent to −2(x − 4)?",
+      "choices": [
+        "−2x − 8",
+        "2x + 8",
+        "−2x + 4",
+        "−2x + 8"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What is 3(x + 2) + x?",
+      "choices": [
+        "4x + 2",
+        "3x² + 6",
+        "3x + 2",
+        "4x + 6"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Which expression represents five less than twice n?",
+      "choices": [
+        "5 − 2n",
+        "2n − 5",
+        "2(n − 5)",
+        "n/2 − 5"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Which expression represents three times the sum of x and 4?",
+      "choices": [
+        "3x + 4",
+        "x + 12",
+        "3(x + 4)",
+        "3x − 4"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What distinguishes an expression from an equation?",
+      "choices": [
+        "An equation states that two expressions are equal",
+        "An expression must contain a variable",
+        "An equation cannot contain constants",
+        "An expression always has a single solution"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What is 6x + 2 − 4x + 7?",
+      "choices": [
+        "2x − 5",
+        "2x + 9",
+        "10x + 9",
+        "2x + 5"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why is x + x not equal to x² for every real x?",
+      "choices": [
+        "Adding two x terms gives 2x, while x² multiplies x by itself",
+        "Adding terms always changes their exponent",
+        "x² means x + 2",
+        "The letter x can represent only positive values"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A ticket costs $8 and each snack costs $3. Which expression gives the cost of a ticket and s snacks?",
+      "choices": [
+        "11s",
+        "8s + 3",
+        "8 + 3s",
+        "3 + s"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A rectangle's length is x + 5 and width is x. Which expression gives its perimeter?",
+      "choices": [
+        "2x + 5",
+        "x² + 5x",
+        "4x + 5",
+        "4x + 10"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A student writes 3(x − 2) = 3x − 2. What correction is needed?",
+      "choices": [
+        "Change 3x to x³",
+        "Multiply −2 by 3 as well",
+        "Add 3 to both terms",
+        "Replace subtraction with addition"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Two plans cost 4n + 6 and 2(2n + 3). What is true?",
+      "choices": [
+        "The first is always cheaper",
+        "The second is always cheaper",
+        "They agree only when n = 0",
+        "They give equal costs for every n"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "What is the value of 2a² − b when a = −3 and b = 4?",
+      "choices": [
+        "14",
+        "−22",
+        "32",
+        "2"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}

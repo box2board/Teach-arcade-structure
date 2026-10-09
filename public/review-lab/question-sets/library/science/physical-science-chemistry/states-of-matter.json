@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--physical-science-chemistry--states-of-matter",
+  "title": "States of Matter",
+  "subject": "Science",
+  "category": "Physical Science & Chemistry",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which state generally has a fixed volume and a fixed shape?",
+      "choices": [
+        "Gas",
+        "Liquid",
+        "Solid",
+        "Vapor"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which state generally has a fixed volume but takes the shape of its container?",
+      "choices": [
+        "Gas",
+        "Plasma",
+        "Solid",
+        "Liquid"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is melting?",
+      "choices": [
+        "Gas changing to liquid",
+        "Solid changing to liquid",
+        "Gas changing directly to solid",
+        "Liquid changing to gas"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is condensation?",
+      "choices": [
+        "Gas changing to liquid",
+        "Liquid changing to solid",
+        "Solid changing directly to gas",
+        "Liquid mixing with another liquid"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is sublimation?",
+      "choices": [
+        "Liquid changing to solid",
+        "Gas changing directly to liquid",
+        "Solid changing directly to gas",
+        "Solid breaking into smaller pieces"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is evaporation?",
+      "choices": [
+        "Freezing throughout a liquid",
+        "Condensation on a cool surface",
+        "Liquid particles escaping into the gas phase from a surface",
+        "A chemical reaction that creates water"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is plasma?",
+      "choices": [
+        "Any liquid hotter than room temperature",
+        "A solid made only from metals",
+        "A gas containing no charged particles",
+        "A state with substantial ionization and mobile charged particles"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why can gases be compressed more readily than typical liquids?",
+      "choices": [
+        "Gas particles have no mass",
+        "Gas particles are generally much farther apart",
+        "Liquid particles never move",
+        "Gas particles become smaller when pressed"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How do particles in a solid behave?",
+      "choices": [
+        "They vibrate around relatively fixed positions",
+        "They are completely motionless",
+        "They are usually farther apart than in a gas",
+        "They move freely through the entire container"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What generally happens to average particle kinetic energy as a substance's temperature rises?",
+      "choices": [
+        "It increases",
+        "It changes only if the substance changes color",
+        "It always becomes zero",
+        "It is unrelated to temperature"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why can a pure substance's temperature remain constant while melting at constant pressure?",
+      "choices": [
+        "No energy enters the substance",
+        "Its atoms lose all motion",
+        "Energy helps change the phase rather than raising temperature",
+        "The thermometer must be broken"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "How does boiling differ from evaporation?",
+      "choices": [
+        "Boiling occurs only at a surface",
+        "Boiling is necessarily a chemical reaction",
+        "Evaporation requires a liquid to reach its boiling point",
+        "Boiling forms vapor bubbles throughout the liquid under suitable conditions"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why can water boil at a lower temperature on a high mountain?",
+      "choices": [
+        "Higher elevation removes water's hydrogen atoms",
+        "Lower atmospheric pressure lowers its boiling temperature",
+        "Boiling temperature is always identical at every pressure",
+        "Lower pressure stops water molecules from moving"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What happens to water molecules when ice melts?",
+      "choices": [
+        "They become oxygen and hydrogen atoms",
+        "They become molecules of a new compound",
+        "Their nuclei lose protons",
+        "They rearrange while remaining water molecules"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why can evaporation cool the remaining liquid?",
+      "choices": [
+        "More energetic particles preferentially escape, lowering average energy of those remaining",
+        "The remaining particles all stop moving",
+        "Evaporation adds net heat from nowhere",
+        "Every escaping particle has zero energy"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A material flows, keeps nearly constant volume, and forms a level surface in its container. Which state best fits?",
+      "choices": [
+        "Solid",
+        "Gas",
+        "Liquid",
+        "Plasma"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Dry ice disappears without leaving a liquid puddle under ordinary room conditions. Which change occurs?",
+      "choices": [
+        "Condensation",
+        "Sublimation",
+        "Freezing",
+        "Deposition"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Water vapor forms liquid droplets on a cold glass. Which process explains the droplets?",
+      "choices": [
+        "Melting",
+        "Condensation",
+        "Evaporation",
+        "Sublimation"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A closed syringe contains air. Pushing the plunger reduces its volume. Which particle explanation fits?",
+      "choices": [
+        "The particles are forced closer together",
+        "The number of particles necessarily decreases",
+        "The air changes directly into a solid",
+        "The air particles become smaller atoms"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "At constant temperature, a sealed gas sample is compressed into half its original volume. What does the particle model predict about its pressure?",
+      "choices": [
+        "It is approximately halved",
+        "It falls to zero",
+        "It remains unchanged",
+        "It is approximately doubled"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

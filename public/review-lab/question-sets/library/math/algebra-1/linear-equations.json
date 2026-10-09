@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--algebra-1--linear-equations",
+  "title": "Linear Equations",
+  "subject": "Math",
+  "category": "Algebra I",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What value solves x + 7 = 12?",
+      "choices": [
+        "19",
+        "5",
+        "−5",
+        "84"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What value solves 4x = 28?",
+      "choices": [
+        "24",
+        "7",
+        "112",
+        "−7"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What value solves x − 9 = −2?",
+      "choices": [
+        "−11",
+        "11",
+        "−7",
+        "7"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What value solves x/3 = 5?",
+      "choices": [
+        "15",
+        "5/3",
+        "8",
+        "2"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What value solves 2x + 3 = 11?",
+      "choices": [
+        "7",
+        "5.5",
+        "4",
+        "−4"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What value solves 5x − 6 = 9?",
+      "choices": [
+        "15",
+        "0.6",
+        "−3",
+        "3"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is a solution of an equation?",
+      "choices": [
+        "Any number occurring in the equation",
+        "A value that makes the equation true when substituted",
+        "Only the coefficient of the variable",
+        "A value that makes both sides zero in every case"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why is the same number added to both sides of an equation?",
+      "choices": [
+        "It makes the variable disappear in every case",
+        "It changes the original solution",
+        "It preserves equality",
+        "Only the larger side needs adjustment"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What value solves 3(x − 2) = 15?",
+      "choices": [
+        "7",
+        "3",
+        "5",
+        "11"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What value solves 4x + 1 = 2x + 9?",
+      "choices": [
+        "4",
+        "5",
+        "2",
+        "−4"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How many real solutions does 2x + 3 = 2x + 8 have?",
+      "choices": [
+        "One",
+        "Two",
+        "None",
+        "Infinitely many"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "How many real solutions does 3(x + 2) = 3x + 6 have?",
+      "choices": [
+        "None",
+        "Infinitely many",
+        "One",
+        "Exactly two"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What value solves −2x = 10?",
+      "choices": [
+        "5",
+        "−20",
+        "8",
+        "−5"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What value solves 0.5x + 2 = 7?",
+      "choices": [
+        "2.5",
+        "18",
+        "10",
+        "5"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why is substitution useful after solving an equation?",
+      "choices": [
+        "It guarantees every equation has one solution",
+        "It removes all constants from the equation",
+        "It replaces the need for equality",
+        "It checks whether the proposed value satisfies the original equation"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A club collects a $12 fee plus $4 per visit. A member pays $36. How many visits were purchased?",
+      "choices": [
+        "9",
+        "6",
+        "12",
+        "8"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A rectangle has width 5 cm and perimeter 26 cm. What is its length?",
+      "choices": [
+        "8 cm",
+        "13 cm",
+        "16 cm",
+        "21 cm"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Three consecutive integers sum to 48. What is the middle integer?",
+      "choices": [
+        "15",
+        "17",
+        "16",
+        "24"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A student solves 2x + 8 = 18 by dividing 18 by 2 first and reporting x = 9. What was omitted?",
+      "choices": [
+        "Subtracting 8 before dividing the remaining value by 2",
+        "Multiplying both sides by 8",
+        "Changing the coefficient from 2 to 8",
+        "Adding 18 to both sides"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Two numbers have a sum of 30, and one is twice the other. What is the smaller number?",
+      "choices": [
+        "15",
+        "20",
+        "12",
+        "10"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "geography--australia-and-oceania",
+  "title": "Australia and Oceania",
+  "subject": "Social Studies",
+  "category": "Geography",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which ocean contains most of Oceania's island groups?",
+      "choices": [
+        "Atlantic Ocean",
+        "Arctic Ocean",
+        "Pacific Ocean",
+        "Southern Ocean"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which mountain system extends along much of eastern Australia?",
+      "choices": [
+        "Great Dividing Range",
+        "Andes",
+        "Alps",
+        "Himalayas"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Where is the Great Barrier Reef located?",
+      "choices": [
+        "Off Australia's southwestern coast",
+        "South of New Zealand's South Island",
+        "Along Australia's central desert rivers",
+        "Off northeastern Australia"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is an archipelago?",
+      "choices": [
+        "A narrow inland river valley",
+        "A group or chain of islands",
+        "A dry plateau surrounded by mountains",
+        "A deep trench beneath a continent"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which Indigenous people are associated with New Zealand?",
+      "choices": [
+        "Māori",
+        "Inuit",
+        "Quechua",
+        "Sámi"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which large island lies immediately north of Australia's northeastern mainland?",
+      "choices": [
+        "Madagascar",
+        "Greenland",
+        "New Guinea",
+        "Sri Lanka"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which names describe three broad Pacific island regions?",
+      "choices": [
+        "Baltics, Balkans, and Caucasus",
+        "Sahel, Maghreb, and Horn",
+        "Andes, Pampas, and Patagonia",
+        "Melanesia, Micronesia, and Polynesia"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why are large areas of Australia's interior sparsely settled?",
+      "choices": [
+        "The interior is covered entirely by permanent ice",
+        "Aridity and limited water supplies constrain many activities",
+        "The interior has no mineral resources",
+        "Every Australian city must legally be on an island"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why do many Australians live near the coast?",
+      "choices": [
+        "Coastal areas offer major cities, jobs, transport, and often more favorable conditions",
+        "The interior lies outside Australia's national territory",
+        "Coastal settlements have no need for fresh water",
+        "All coastal areas have identical tropical climates"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why are earthquakes and volcanoes important hazards in New Zealand?",
+      "choices": [
+        "The country has no mountain ranges",
+        "All islands formed only from coral reefs",
+        "It lies near a boundary between tectonic plates",
+        "Volcanoes occur only in countries without rainfall"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why can low-lying Pacific atolls be vulnerable to sea-level rise?",
+      "choices": [
+        "They all contain high mountain barriers",
+        "Their freshwater sources are unrelated to seawater",
+        "They have no coastal settlements",
+        "Flooding, erosion, and saltwater intrusion can threaten limited land and water"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "How can great distances affect trade for remote Pacific islands?",
+      "choices": [
+        "They eliminate the need for imported goods",
+        "They can increase shipping costs and complicate access to markets",
+        "They make every island self-sufficient in all resources",
+        "They prevent all air transportation"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why is Oceania culturally diverse?",
+      "choices": [
+        "Different communities have distinct languages, histories, and traditions",
+        "Every island was settled by the same family in modern times",
+        "Physical isolation prevents any cultural change",
+        "One national government controls all islands in the region"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What environmental pressure can poorly managed coastal tourism create?",
+      "choices": [
+        "It removes every source of local income",
+        "It prevents visitors from using transportation",
+        "It can increase waste, water use, and damage to habitats",
+        "It automatically restores all damaged coral reefs"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why are coral reefs important to many island communities?",
+      "choices": [
+        "They provide unlimited freshwater for inland farms",
+        "They eliminate all exposure to coastal storms",
+        "They prevent any change in marine populations",
+        "They support marine life, livelihoods, and some coastal protection"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Two islands have equal land area, but one is mountainous and one is a low coral atoll. Which difference is most relevant to coastal flooding?",
+      "choices": [
+        "Their official languages and national constitutions",
+        "Their elevation and availability of higher ground",
+        "Their distances from the nearest mainland university",
+        "Their historical membership in trading organizations"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "An island imports fuel and depends on one shipping route. Which risk should planners consider?",
+      "choices": [
+        "Supply disruptions could affect transport and electricity",
+        "Imported fuel guarantees stable prices forever",
+        "The island cannot develop any alternative energy source",
+        "Shipping schedules determine its latitude"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Which statement best compares Australia and New Zealand?",
+      "choices": [
+        "Both are entirely low-lying coral atolls",
+        "Both have identical climate zones and landforms",
+        "Australia has extensive arid interiors; New Zealand has prominent mountain landscapes and maritime climates",
+        "Australia is landlocked; New Zealand borders the Atlantic"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Why should a study of Indigenous Australia include more than one community's history?",
+      "choices": [
+        "All Indigenous traditions are identical",
+        "Indigenous histories began only with European arrival",
+        "Geography never affects community relationships",
+        "Aboriginal and Torres Strait Islander peoples include many distinct communities"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A reef protection proposal limits fishing in some areas. What evidence would support a balanced evaluation?",
+      "choices": [
+        "Hotel occupancy and airline ticket prices alone",
+        "Reef health, fish populations, and effects on local fishing livelihoods",
+        "Government spending on inland roads alone",
+        "Total national imports without data about the reef"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "world-history--french-revolution",
+  "title": "French Revolution",
+  "subject": "Social Studies",
+  "category": "World History",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which group formed the First Estate in pre-revolutionary France?",
+      "choices": [
+        "Nobility",
+        "Clergy",
+        "Peasants",
+        "Urban artisans"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which estate included most of France's population?",
+      "choices": [
+        "First Estate",
+        "Second Estate",
+        "Royal household",
+        "Third Estate"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Who was king of France when the Revolution began in 1789?",
+      "choices": [
+        "Louis XVI",
+        "Louis XIV",
+        "Charles X",
+        "Louis XVIII"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What representative body did Louis XVI summon in 1789?",
+      "choices": [
+        "Directory",
+        "Committee of Public Safety",
+        "Estates-General",
+        "Council of Five Hundred"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What did the Tennis Court Oath promise?",
+      "choices": [
+        "To restore all feudal dues",
+        "To remain assembled until a constitution was established",
+        "To crown Napoleon emperor",
+        "To dissolve the National Assembly immediately"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which event occurred in Paris on July 14, 1789?",
+      "choices": [
+        "Storming of the Bastille",
+        "Execution of Louis XVI",
+        "Napoleon's coronation",
+        "Fall of Robespierre"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which leader is closely associated with the Reign of Terror?",
+      "choices": [
+        "Louis XVIII",
+        "Charles de Gaulle",
+        "Otto von Bismarck",
+        "Maximilien Robespierre"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "How did poor harvests contribute to revolutionary unrest?",
+      "choices": [
+        "They eliminated government debt",
+        "They made bread widely available at lower prices",
+        "Food shortages and higher bread prices increased hardship",
+        "They reduced demands for political reform"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why did voting by estate disadvantage the Third Estate?",
+      "choices": [
+        "The two privileged estates could combine to outvote it",
+        "Third Estate delegates had more votes than both other estates",
+        "The king was legally required to follow the Third Estate",
+        "Every French adult could vote directly in the assembly"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Which principle appeared in the Declaration of the Rights of Man and of the Citizen?",
+      "choices": [
+        "Hereditary exemption from every tax",
+        "Equality before the law",
+        "Unlimited royal authority",
+        "Exclusive political rights for clergy"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What political system did the Constitution of 1791 establish?",
+      "choices": [
+        "Absolute monarchy",
+        "Military dictatorship",
+        "Federal republic",
+        "Constitutional monarchy"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why did the king's attempted flight in 1791 damage his position?",
+      "choices": [
+        "It proved that he supported abolishing monarchy",
+        "It made foreign rulers recognize French independence",
+        "It increased doubts about his loyalty to the Revolution",
+        "It eliminated the National Assembly's authority"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why did revolutionary leaders create the Committee of Public Safety?",
+      "choices": [
+        "To defend the republic against internal and external threats",
+        "To negotiate Napoleon's exile",
+        "To restore the Estates-General's old voting system",
+        "To appoint Louis XVI as constitutional monarch"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What happened to the French monarchy in 1792?",
+      "choices": [
+        "It became more absolute than before 1789",
+        "It was abolished and a republic was proclaimed",
+        "It was transferred to the British royal family",
+        "It was restored after Napoleon's defeat"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What was the Directory?",
+      "choices": [
+        "The assembly that wrote the Tennis Court Oath",
+        "The hereditary council that advised Louis XIV",
+        "The army that invaded France in 1815",
+        "The government that ruled France before Napoleon's 1799 coup"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Which sequence places these French Revolution events in chronological order?",
+      "choices": [
+        "Bastille stormed, monarchy abolished, Estates-General meets",
+        "Monarchy abolished, Estates-General meets, Bastille stormed",
+        "Estates-General meets, Bastille stormed, monarchy abolished",
+        "Estates-General meets, monarchy abolished, Bastille stormed"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Which example illustrates the abolition of feudal privilege?",
+      "choices": [
+        "Ending special obligations peasants owed to nobles",
+        "Granting nobles exclusive access to public office",
+        "Allowing clergy alone to collect national taxes",
+        "Restoring voting by estate"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Which comparison describes a contradiction of the Terror?",
+      "choices": [
+        "Leaders ended warfare while eliminating the military",
+        "Leaders defended monarchy while abolishing elections everywhere",
+        "Leaders restored feudal dues while banning taxes",
+        "Leaders defended liberty while using political repression"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Which evidence challenges the claim that revolutionary equality immediately included everyone?",
+      "choices": [
+        "The Bastille was stormed in 1789",
+        "Women and enslaved people did not receive equal rights consistently",
+        "The Estates-General met at Versailles",
+        "The Directory had five executive directors"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which conclusion about the Revolution's broader influence is defensible?",
+      "choices": [
+        "It permanently ended all European monarchies",
+        "It prevented nationalist movements from developing",
+        "It spread ideas of rights and popular sovereignty beyond France",
+        "It created immediate political stability throughout Europe"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ]
+}

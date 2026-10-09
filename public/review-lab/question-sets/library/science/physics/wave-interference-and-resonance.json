@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--physics--wave-interference-and-resonance",
+  "title": "Wave Interference and Resonance",
+  "subject": "Science",
+  "category": "Physics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is wave interference?",
+      "choices": [
+        "A wave changing direction at a boundary",
+        "The combination of overlapping wave displacements",
+        "A wave changing speed between media",
+        "The regular change in a source's frequency"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is constructive interference?",
+      "choices": [
+        "Opposite displacements cancel at overlap",
+        "A wave bends when entering a different medium",
+        "Overlapping displacements reinforce each other",
+        "A wave's frequency increases at every overlap"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is destructive interference?",
+      "choices": [
+        "Two displacements reinforce at overlap",
+        "A wave reflects from a fixed boundary",
+        "A wave's speed decreases during every overlap",
+        "Opposite displacements partly or completely cancel at overlap"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is a node in a standing wave?",
+      "choices": [
+        "A point with maximum displacement amplitude",
+        "The highest-frequency wave in a group",
+        "A point with zero displacement amplitude",
+        "The source of every reflected wave"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is an antinode in a standing wave?",
+      "choices": [
+        "A point with maximum displacement amplitude",
+        "A point that never oscillates",
+        "A point outside the wave's medium",
+        "A point with zero wavelength"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is resonance?",
+      "choices": [
+        "The absence of all oscillation",
+        "A strong response when driving frequency is near a system's natural frequency",
+        "A permanent decrease in mass",
+        "A change from sound into electric charge"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What does damping do to a freely oscillating system?",
+      "choices": [
+        "Increases amplitude continuously without energy input",
+        "Necessarily raises the natural frequency to infinity",
+        "Reduces oscillation amplitude over time",
+        "Keeps amplitude fixed regardless of energy loss"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why can two overlapping pulses cancel briefly without being permanently destroyed?",
+      "choices": [
+        "The pulses reflect from each other instead of passing through",
+        "Each pulse continues propagating after the overlap",
+        "The medium loses the energy of both pulses permanently",
+        "The two pulses must stop at the overlap"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why can identical sound waves produce different loudness at different locations?",
+      "choices": [
+        "Sound amplitude must be equal at every location",
+        "Every point receives the same phase relationship",
+        "Sound frequency alone determines the interference pattern",
+        "Their relative phase can vary with path length"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "How does increasing damping usually affect a resonant response?",
+      "choices": [
+        "It reduces the sharpness and amplitude of the response",
+        "It increases the resonant amplitude without additional input",
+        "It eliminates all possible motion of the system",
+        "It makes the driving force create energy"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What produces a standing wave on a string?",
+      "choices": [
+        "Interference between waves traveling in opposite directions",
+        "Interference between equal waves moving only in one direction",
+        "Movement of the string as a whole without oscillation",
+        "A source whose frequency changes randomly each instant"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why can an oscillating system respond strongly to a small periodic force?",
+      "choices": [
+        "Small periodic forces supply no energy to the system",
+        "Natural frequency depends only on the applied force's magnitude",
+        "Repeated pushes at a suitable frequency add energy effectively",
+        "Every push gives an equally strong response at every timing"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why is complete destructive interference possible at a point for two waves?",
+      "choices": [
+        "Their speeds must both be zero",
+        "Their displacements can be equal in magnitude and opposite in direction",
+        "Their wavelengths must be zero",
+        "Their media must be different"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why does a node remain still while nearby parts of a standing-wave string move?",
+      "choices": [
+        "The string material is absent at each node",
+        "The string moves at maximum amplitude at a node",
+        "Both traveling waves have zero amplitude everywhere",
+        "Oppositely traveling wave displacements cancel there"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What causes beats when two similar sound frequencies overlap?",
+      "choices": [
+        "A steady change in the speed of sound",
+        "Alternating reinforcement and cancellation",
+        "Permanent elimination of one of the two tones",
+        "Equal reinforcement at every instant"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "At an instant, two upward pulses have displacements of 2 cm and 3 cm at the same point. What is the combined displacement?",
+      "choices": [
+        "5 cm upward",
+        "1 cm upward",
+        "6 cm upward",
+        "0 cm"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "At an instant, a +3 cm displacement overlaps a −3 cm displacement. What is the resultant displacement?",
+      "choices": [
+        "+6 cm",
+        "−6 cm",
+        "0 cm",
+        "+3 cm"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Two tones have frequencies of 250 Hz and 254 Hz. What is the beat frequency?",
+      "choices": [
+        "504 Hz",
+        "252 Hz",
+        "1000 Hz",
+        "4 Hz"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A swing has a natural period of 2 seconds. Which regular push timing best supports resonance?",
+      "choices": [
+        "One suitably timed push every 2 seconds",
+        "One push every 0.1 second regardless of position",
+        "Randomly timed pushes",
+        "One push followed by no further pushes"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A string fixed at both ends forms its fundamental standing wave. Where is its displacement antinode?",
+      "choices": [
+        "At either fixed end",
+        "At every point equally",
+        "Only beyond the string",
+        "At the midpoint"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

@@ -1,0 +1,254 @@
+{
+  "schemaVersion": 1,
+  "id": "us-history--new-deal",
+  "title": "New Deal",
+  "subject": "Social Studies",
+  "category": "U.S. History",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which president introduced the New Deal?",
+      "choices": [
+        "Herbert Hoover",
+        "Harry S. Truman",
+        "Franklin D. Roosevelt",
+        "Calvin Coolidge"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "In which year did the first major New Deal measures begin?",
+      "choices": [
+        "1933",
+        "1929",
+        "1939",
+        "1945"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What did the Civilian Conservation Corps primarily provide?",
+      "choices": [
+        "Military service overseas",
+        "Employment on conservation projects",
+        "Loans for stock speculation",
+        "Administration of old-age pensions"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What agency insured eligible bank deposits?",
+      "choices": [
+        "Securities and Exchange Commission",
+        "Works Progress Administration",
+        "Tennessee Valley Authority",
+        "Federal Deposit Insurance Corporation"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What did the Works Progress Administration primarily create?",
+      "choices": [
+        "Public employment projects",
+        "A national military draft",
+        "A system of foreign military alliances",
+        "A replacement for all private banks"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which 1935 law established a federal old-age insurance system?",
+      "choices": [
+        "Sherman Antitrust Act",
+        "Interstate Commerce Act",
+        "Social Security Act",
+        "Morrill Act"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What was the Tennessee Valley Authority?",
+      "choices": [
+        "A national office supervising elections",
+        "A regional development program including dams and electricity",
+        "A court reviewing all banking disputes",
+        "An agency negotiating European treaties"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why did Roosevelt declare a bank holiday in 1933?",
+      "choices": [
+        "To permanently prohibit Americans from opening bank accounts",
+        "To shift all deposits into the stock market",
+        "To end all federal involvement in banking",
+        "To pause banking operations while restoring stability and confidence"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What did the New Deal's relief programs seek to provide?",
+      "choices": [
+        "Immediate assistance to people facing hardship",
+        "Only long-term changes to election procedures",
+        "Only overseas development loans",
+        "Only military purchases from private companies"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "How did reform differ from relief in New Deal terminology?",
+      "choices": [
+        "Reform provided only emergency meals",
+        "Reform meant ending all federal financial regulation",
+        "Reform sought lasting changes to reduce future instability",
+        "Reform focused only on temporary weather disasters"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why did public works projects serve more than one purpose?",
+      "choices": [
+        "They required unemployed workers to pay the government",
+        "They provided jobs while building useful infrastructure",
+        "They replaced all private-sector production",
+        "They reduced demand for roads and bridges"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What was a purpose of the Securities and Exchange Commission?",
+      "choices": [
+        "Operating farms in the Great Plains",
+        "Paying benefits to retired soldiers only",
+        "Setting every retail price nationwide",
+        "Regulating securities markets and protecting investors against abuses"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "How did the Wagner Act affect labor relations?",
+      "choices": [
+        "It protected collective bargaining and created the National Labor Relations Board",
+        "It prohibited all labor unions",
+        "It set the first nationwide income tax",
+        "It eliminated employer participation in negotiations"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why did agricultural production-reduction policies generate controversy?",
+      "choices": [
+        "They required every farmer to abandon land permanently",
+        "They increased output without affecting prices",
+        "They restricted output while many people lacked adequate food",
+        "They applied only to imported manufactured goods"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why is it inaccurate to say New Deal benefits reached everyone equally?",
+      "choices": [
+        "Every worker received an identical pension immediately",
+        "Exclusions and discriminatory practices limited access for some groups",
+        "All forms of racial discrimination ended in 1933",
+        "Only elected officials could receive any assistance"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "An unemployed worker receives a job building a bridge. Which New Deal approach is illustrated?",
+      "choices": [
+        "Securities-market regulation",
+        "Diplomatic recognition",
+        "Presidential succession",
+        "Public works employment"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Which comparison of the CCC and Social Security is accurate?",
+      "choices": [
+        "The CCC offered conservation jobs; Social Security established income-support programs",
+        "Both primarily regulated stock exchanges",
+        "The CCC paid only retirement pensions; Social Security built only dams",
+        "Both were military recruitment agencies"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "What does Supreme Court rejection of some New Deal laws demonstrate?",
+      "choices": [
+        "Presidential programs could not be challenged in court",
+        "All New Deal programs were ruled unconstitutional",
+        "Economic emergency measures remained subject to constitutional review",
+        "Congress had no role in New Deal legislation"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Which conclusion avoids overstating the New Deal's effect?",
+      "choices": [
+        "It expanded federal roles but did not alone fully end the Depression",
+        "It ended the Depression before any employment programs began",
+        "It moved all banking and manufacturing into permanent federal ownership",
+        "It replaced broad federal economic responsibility with exclusive state control"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Why did Roosevelt's proposed court expansion in 1937 provoke opposition?",
+      "choices": [
+        "It would have abolished all state legislatures",
+        "It required ending every federal court",
+        "It proposed replacing the Constitution with the Articles",
+        "Critics viewed it as a threat to judicial independence"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ],
+  "referenceUrls": [
+    "https://www.archives.gov/milestone-documents/social-security-act"
+  ]
+}

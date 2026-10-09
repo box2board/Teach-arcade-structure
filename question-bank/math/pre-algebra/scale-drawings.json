@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--pre-algebra--scale-drawings",
+  "title": "Scale Drawings",
+  "subject": "Math",
+  "category": "Pre-Algebra & Number Sense",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What does a scale drawing preserve when it accurately represents a flat figure?",
+      "choices": [
+        "The ratios of corresponding lengths",
+        "The original lengths in every unit",
+        "The original area in every unit",
+        "Only the number of corners"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "A map scale is 1 centimeter to 5 kilometers. What distance does 3 centimeters represent?",
+      "choices": [
+        "8 kilometers",
+        "1.67 kilometers",
+        "30 kilometers",
+        "15 kilometers"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What does a scale of 1:100 mean when both lengths use the same unit?",
+      "choices": [
+        "The drawing is 100 times longer than the actual object",
+        "Each drawing length is 100 units greater",
+        "The drawing length is 1/100 of the actual length",
+        "Drawing and actual lengths are equal"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which scale produces a larger drawing of the same object?",
+      "choices": [
+        "1:50",
+        "1:20",
+        "1:100",
+        "1:200"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "A drawing uses 2 inches for 8 feet. How many feet does 1 inch represent?",
+      "choices": [
+        "4 feet",
+        "16 feet",
+        "6 feet",
+        "1/4 foot"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What must be checked before using a same-unit scale ratio?",
+      "choices": [
+        "Both lengths are whole numbers",
+        "Both lengths are measured horizontally",
+        "The drawing's area equals its perimeter",
+        "Both compared lengths use the same unit"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "A 1:10 model is 7 centimeters long. How long is the actual object?",
+      "choices": [
+        "0.7 centimeters",
+        "17 centimeters",
+        "70 centimeters",
+        "700 centimeters"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why should a copied floor plan's scale be checked after resizing the image?",
+      "choices": [
+        "Resizing always changes the actual building",
+        "Resizing changes the ratio of printed length to actual length",
+        "Every copy loses all angle information",
+        "Scale drawings cannot be printed"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "On a map, 4 centimeters represents 12 kilometers. What does 9 centimeters represent?",
+      "choices": [
+        "27 kilometers",
+        "21 kilometers",
+        "36 kilometers",
+        "3 kilometers"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "A room is 6 meters long. A plan uses 1 centimeter per 2 meters. How long is the room on the plan?",
+      "choices": [
+        "12 centimeters",
+        "8 centimeters",
+        "2 centimeters",
+        "3 centimeters"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How does doubling both dimensions of a rectangular drawing affect its area?",
+      "choices": [
+        "Its area doubles",
+        "Its area is unchanged",
+        "Its area becomes four times as large",
+        "Its area becomes eight times as large"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "A 1:50 drawing shows a wall as 8 centimeters long. What is the actual length in meters?",
+      "choices": [
+        "400 meters",
+        "4 meters",
+        "0.16 meters",
+        "40 meters"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why should a map's straight-line distance not automatically be called travel distance?",
+      "choices": [
+        "A route may curve or follow roads",
+        "Straight-line scales never use kilometers",
+        "Every route equals twice the straight-line distance",
+        "Maps cannot represent length"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "A blueprint uses 1/4 inch for 1 foot. How long is a 12-foot wall on the blueprint?",
+      "choices": [
+        "48 inches",
+        "12.25 inches",
+        "6 inches",
+        "3 inches"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Two plans show the same 10-meter wall. One uses 1 centimeter per meter; the other uses 1 centimeter per 2 meters. Which drawing is twice as long?",
+      "choices": [
+        "The second plan's wall",
+        "Both have equal lengths",
+        "The first plan's wall",
+        "Neither can be compared"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A rectangular garden measures 5 by 8 centimeters on a plan using 1 centimeter per 3 meters. What is its actual area?",
+      "choices": [
+        "120 square meters",
+        "360 square meters",
+        "40 square meters",
+        "117 square meters"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A 1:200 model of a bridge is 0.75 meters long. What is the real bridge's length?",
+      "choices": [
+        "150 meters",
+        "200.75 meters",
+        "15 meters",
+        "0.00375 meters"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A map has scale 1:25000. What actual distance does 2 centimeters represent in meters?",
+      "choices": [
+        "50000 meters",
+        "125 meters",
+        "50 meters",
+        "500 meters"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A drawing is reduced to 50% of its printed width and height. If its old scale was 1 centimeter to 2 meters, what is its new scale?",
+      "choices": [
+        "1 centimeter to 1 meter",
+        "1 centimeter to 2 meters",
+        "1 centimeter to 4 meters",
+        "1 centimeter to 8 meters"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A model car is built at 1:24 scale. If its length is 18 centimeters, how long is the actual car in meters?",
+      "choices": [
+        "0.75 meters",
+        "4.32 meters",
+        "43.2 meters",
+        "0.432 meters"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}

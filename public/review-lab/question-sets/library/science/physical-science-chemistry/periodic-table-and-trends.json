@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--physical-science-chemistry--periodic-table-and-trends",
+  "title": "Periodic Table and Trends",
+  "subject": "Science",
+  "category": "Physical Science & Chemistry",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "How is the modern periodic table primarily ordered?",
+      "choices": [
+        "Increasing neutron number only",
+        "Increasing atomic number",
+        "Alphabetically by element name",
+        "Increasing density"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is a vertical column of the periodic table called?",
+      "choices": [
+        "Period",
+        "Isotope",
+        "Molecule",
+        "Group"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is a horizontal row of the periodic table called?",
+      "choices": [
+        "Group",
+        "Family",
+        "Period",
+        "Ion"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which group includes fluorine, chlorine, and bromine?",
+      "choices": [
+        "Noble gases",
+        "Halogens",
+        "Alkali metals",
+        "Alkaline earth metals"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which group includes helium, neon, and argon?",
+      "choices": [
+        "Noble gases",
+        "Halogens",
+        "Alkali metals",
+        "Transition metals"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Where are most metals located on the periodic table?",
+      "choices": [
+        "Only in the upper-right corner",
+        "On the left and in the center",
+        "Only in the first row",
+        "Only along the rightmost column"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which symbol represents sodium?",
+      "choices": [
+        "S",
+        "N",
+        "Sn",
+        "Na"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why do main-group elements in the same group often have similar chemical behavior?",
+      "choices": [
+        "They have similar valence-electron patterns",
+        "They have identical proton counts",
+        "They have identical isotope abundances",
+        "They have the same atomic mass"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How does atomic radius generally change down a main-group column?",
+      "choices": [
+        "It remains identical for all members",
+        "It decreases because atoms lose their nuclei",
+        "It increases as additional occupied electron shells are added",
+        "It changes only when the element becomes a gas"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "How does electronegativity generally change from left to right across a period, excluding noble-gas complications?",
+      "choices": [
+        "It generally increases",
+        "It depends only on density",
+        "It steadily decreases",
+        "It is identical for every element"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why are noble gases relatively unreactive under many ordinary conditions?",
+      "choices": [
+        "They contain no charged particles",
+        "Their outer electron shells are filled",
+        "Their nuclei cannot attract electrons",
+        "They have no electron shells"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What is ionization energy?",
+      "choices": [
+        "The energy released when water freezes",
+        "Energy needed to remove a neutron from every isotope",
+        "Energy required to remove an electron from a gaseous atom or ion",
+        "Energy stored only in a metal's crystal shape"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why do alkali metals commonly form +1 ions?",
+      "choices": [
+        "They gain two electrons in ordinary compounds",
+        "They gain one proton during bonding",
+        "They lose one neutron during every reaction",
+        "They can lose one outer electron"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What does the periodic table reveal beyond a list of element names?",
+      "choices": [
+        "Exact weather conditions during every reaction",
+        "The number of molecules in every sample",
+        "Patterns in atomic structure and properties",
+        "The temperature of all substances at room pressure"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "How do metalloids differ from typical metals and typical nonmetals?",
+      "choices": [
+        "They have some properties associated with each group",
+        "They have no atomic number",
+        "They occur only as radioactive gases",
+        "They are mixtures of two elements"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "An element is in the same group as chlorine. Which property is most reasonably expected?",
+      "choices": [
+        "It has exactly 17 protons",
+        "It has chemical similarities associated with the group's valence pattern",
+        "It has the same mass as chlorine",
+        "It must be a gas at room temperature"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Which pair is most likely to have similar main-group chemical properties?",
+      "choices": [
+        "Magnesium and argon",
+        "Sodium and chlorine",
+        "Carbon and neon",
+        "Lithium and sodium"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Across a period, atomic number rises by one at each step. What increases by one?",
+      "choices": [
+        "The number of isotopes in nature",
+        "The number of neutrons in every atom",
+        "The number of protons in the nucleus",
+        "The number of occupied shells"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "An unfamiliar element readily conducts electricity and can be hammered into a sheet. Which classification best fits?",
+      "choices": [
+        "Metal",
+        "Typical nonmetal",
+        "Halogen",
+        "Noble gas"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A student says every element in one group has the same atomic mass. What is the best correction?",
+      "choices": [
+        "Group members have identical nuclei",
+        "Only periods contain elements with mass",
+        "Atomic mass has no relationship to atoms",
+        "Group members share property patterns but have different proton counts and masses"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

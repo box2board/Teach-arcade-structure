@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "us-history--civil-war",
+  "title": "Civil War",
+  "subject": "Social Studies",
+  "category": "U.S. History",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which state was first to secede after Lincoln's election?",
+      "choices": [
+        "Virginia",
+        "South Carolina",
+        "Georgia",
+        "Texas"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Where did the Civil War begin in April 1861?",
+      "choices": [
+        "Gettysburg",
+        "Vicksburg",
+        "Appomattox Court House",
+        "Fort Sumter"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Who was president of the Confederacy?",
+      "choices": [
+        "Jefferson Davis",
+        "Robert E. Lee",
+        "Andrew Johnson",
+        "Ulysses S. Grant"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What was the Union's initial central war aim?",
+      "choices": [
+        "Annexing Mexico",
+        "Ending European colonialism",
+        "Preserving the United States",
+        "Restoring the Articles of Confederation"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which proclamation took effect on January 1, 1863?",
+      "choices": [
+        "Monroe Doctrine",
+        "Emancipation Proclamation",
+        "Wilmot Proviso",
+        "Kansas-Nebraska Act"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which amendment abolished slavery except as punishment for a crime after conviction?",
+      "choices": [
+        "Thirteenth Amendment",
+        "Tenth Amendment",
+        "Fourteenth Amendment",
+        "Fifteenth Amendment"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Where did Robert E. Lee surrender to Ulysses S. Grant in April 1865?",
+      "choices": [
+        "Antietam",
+        "Charleston Harbor",
+        "New Orleans",
+        "Appomattox Court House"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why was slavery central to secession?",
+      "choices": [
+        "Every Southern state had already abolished slavery",
+        "Federal law required immediate nationwide emancipation in 1860",
+        "Secessionists sought to protect slavery and its expansion",
+        "Northern states sought to restore the Atlantic slave trade"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What advantage did the Union's greater industrial capacity provide?",
+      "choices": [
+        "More ability to produce weapons and supplies",
+        "Complete protection from battlefield defeats",
+        "Immediate control of every Southern port",
+        "Less need for transport and communication"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why did Union forces blockade Southern ports?",
+      "choices": [
+        "To protect Confederate cotton exports",
+        "To reduce Confederate trade and supply access",
+        "To stop all immigration into Northern cities",
+        "To prevent Union troops from using rivers"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why was Vicksburg strategically important?",
+      "choices": [
+        "Its fall gave the Confederacy control of Washington",
+        "Its capture ended the Atlantic naval blockade",
+        "Its capture brought France into the war",
+        "Its fall helped the Union control the Mississippi River"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What was a limitation of the Emancipation Proclamation?",
+      "choices": [
+        "It applied only to free states in the North",
+        "It restored slavery in Union-controlled territories",
+        "It did not free enslaved people in loyal slave states",
+        "It prohibited Black men from joining the Union army"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "How did African American soldiers contribute to Union victory?",
+      "choices": [
+        "They served in combat and other military roles",
+        "They served only as foreign naval advisers",
+        "They were legally barred from all military service",
+        "They fought exclusively for border-state militias"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why did railroad networks matter during the war?",
+      "choices": [
+        "They removed the need for river transport everywhere",
+        "They moved troops and supplies over long distances",
+        "They prevented either side from attacking cities",
+        "They replaced all communication by telegraph"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why did Sherman's campaign target railroads and supplies?",
+      "choices": [
+        "To preserve Confederate factories for immediate export",
+        "To prevent Union forces from reaching the coast",
+        "To restore neutral trade with Britain",
+        "To weaken the Confederacy's capacity to continue fighting"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Which sequence places these Civil War events in chronological order?",
+      "choices": [
+        "Fort Sumter, Emancipation Proclamation, Lee's surrender",
+        "Lee's surrender, Fort Sumter, Emancipation Proclamation",
+        "Emancipation Proclamation, Lee's surrender, Fort Sumter",
+        "Fort Sumter, Lee's surrender, Emancipation Proclamation"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A historian compares cotton production with enslaved population data. What relationship is most relevant?",
+      "choices": [
+        "The connection between naval bases and immigration",
+        "The connection between Northern voting rules and tariffs",
+        "The connection between slavery and the Southern economy",
+        "The connection between Western mines and diplomacy"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Which statement best distinguishes Antietam from Gettysburg?",
+      "choices": [
+        "Gettysburg preceded the attack on Fort Sumter",
+        "Antietam occurred in 1862; Gettysburg occurred in 1863",
+        "Antietam ended the war; Gettysburg began it",
+        "Both battles occurred after Lee's surrender"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Which evidence shows that Union war aims expanded during the conflict?",
+      "choices": [
+        "Emancipation became a stated goal alongside preservation of the Union",
+        "Congress restored slavery throughout free states",
+        "Lincoln recognized permanent Confederate independence",
+        "Union leaders abandoned all federal authority"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which conclusion about Lee's surrender is accurate?",
+      "choices": [
+        "It immediately ended every Confederate army's operations that day",
+        "It occurred before the Emancipation Proclamation",
+        "It resulted in Confederate independence",
+        "It was decisive, although other Confederate forces surrendered later"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

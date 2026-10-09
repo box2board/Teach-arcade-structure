@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--physical-science-chemistry--acids-bases-and-ph",
+  "title": "Acids Bases and pH",
+  "subject": "Science",
+  "category": "Physical Science & Chemistry",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "In the Brønsted–Lowry model, what does an acid do?",
+      "choices": [
+        "Accepts a proton",
+        "Donates a proton",
+        "Donates an electron pair without transferring H+",
+        "Releases hydroxide as its defining role"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "In the Brønsted–Lowry model, what does a base do?",
+      "choices": [
+        "Donates a proton",
+        "Accepts a proton",
+        "Must contain hydrogen but cannot accept H+",
+        "Increases hydronium concentration by proton donation"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "For an aqueous solution at 25°C, which pH is neutral?",
+      "choices": [
+        "3",
+        "10",
+        "14",
+        "7"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which ion is used to describe acidity in aqueous solutions?",
+      "choices": [
+        "Hydronium, H3O+",
+        "Sodium, Na+",
+        "Chloride, Cl−",
+        "Calcium, Ca2+"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What does an acid–base indicator do?",
+      "choices": [
+        "Directly identifies every dissolved chemical",
+        "Makes every solution reach pH 7",
+        "Changes color over a particular pH range",
+        "Measures only the solution's total volume"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which term describes an acid that ionizes almost completely in dilute water solution?",
+      "choices": [
+        "Concentrated acid",
+        "Weak base",
+        "Neutral salt",
+        "Strong acid"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is a buffer designed to do?",
+      "choices": [
+        "Make every solution neutral regardless of what is added",
+        "Resist changes in pH after small acid or base additions",
+        "Remove all dissolved ions from aqueous solutions",
+        "Maintain a fixed temperature during every reaction"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "What does a lower pH indicate when comparing aqueous solutions?",
+      "choices": [
+        "Smaller hydronium concentration",
+        "Greater total solution volume",
+        "Greater hydronium concentration",
+        "Smaller solvent mass"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why are strong and concentrated different descriptions of an acid?",
+      "choices": [
+        "Strength concerns ionization; concentration concerns amount per volume",
+        "Both describe only solution temperature",
+        "Strength concerns color; concentration concerns ionization",
+        "Every strong acid must be concentrated"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What commonly happens when an acid reacts with a hydroxide base in suitable amounts?",
+      "choices": [
+        "Water and a salt can form",
+        "Only oxygen gas forms",
+        "The atoms disappear",
+        "A new element forms"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why is tasting an unknown laboratory solution an unsuitable way to identify an acid?",
+      "choices": [
+        "Taste provides a precise numerical pH",
+        "Every dilute acid is safe to taste",
+        "It creates an unnecessary exposure risk",
+        "Only bases can be hazardous to taste"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "How does diluting an unbuffered acidic solution with water generally change its pH?",
+      "choices": [
+        "It becomes more acidic",
+        "It moves toward neutral pH",
+        "It must become strongly basic",
+        "It becomes independent of hydronium concentration"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why can a weak acid solution still have a low pH?",
+      "choices": [
+        "Weak acids cannot donate any protons",
+        "Low pH is determined only by solution volume",
+        "Weak acid means low concentration by definition",
+        "Weak describes partial ionization, not necessarily a small acid concentration"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What happens to a conjugate acid when it donates a proton?",
+      "choices": [
+        "It becomes its conjugate acid with an additional proton",
+        "It must become a neutral solvent molecule",
+        "It becomes its conjugate base",
+        "Its conjugate base gains the donated proton"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why should temperature be specified when stating that neutral water has pH 7?",
+      "choices": [
+        "Water is always basic above room temperature",
+        "Neutrality requires no hydronium or hydroxide ions",
+        "A neutral solution has pH 7 at every temperature",
+        "The neutral pH depends on temperature"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "How much greater is hydronium concentration at pH 3 than at pH 5?",
+      "choices": [
+        "2 times",
+        "100 times",
+        "5 times",
+        "10 times"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "At 25°C, which pair contains one acidic and one basic aqueous solution?",
+      "choices": [
+        "pH 4 and pH 9",
+        "pH 3 and pH 5",
+        "pH 8 and pH 10",
+        "pH 7 and pH 7"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "An indicator has the same color at pH 8 and pH 9. What is the best conclusion?",
+      "choices": [
+        "The solutions must have identical compositions",
+        "The solutions must both be neutral",
+        "That indicator alone cannot distinguish those two pH values",
+        "One solution contains no water"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A reaction transfers H+ from molecule X to molecule Y. Which role does Y play?",
+      "choices": [
+        "Base",
+        "Acid",
+        "Conjugate acid of X before transfer",
+        "Spectator that does not participate in proton transfer"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Two solutions have the same pH but different total acid concentrations. What can explain this?",
+      "choices": [
+        "The pH must measure total acid mass directly",
+        "Both acids must ionize completely",
+        "The solutions must have equal volumes",
+        "Their acids differ in how much they ionize"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

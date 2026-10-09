@@ -1,0 +1,255 @@
+{
+  "schemaVersion": 1,
+  "id": "world-history--enlightenment",
+  "title": "Enlightenment",
+  "subject": "Social Studies",
+  "category": "World History",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which thinker argued that people possess natural rights to life, liberty, and property?",
+      "choices": [
+        "Thomas Hobbes",
+        "John Locke",
+        "Niccolò Machiavelli",
+        "Jean-Baptiste Colbert"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which thinker is especially associated with separation of governmental powers?",
+      "choices": [
+        "Voltaire",
+        "Denis Diderot",
+        "Adam Smith",
+        "Montesquieu"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which writer strongly defended religious toleration and freedom of expression?",
+      "choices": [
+        "Voltaire",
+        "Louis XIV",
+        "Philip II",
+        "Metternich"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Who helped edit the Encyclopédie, a major Enlightenment reference work?",
+      "choices": [
+        "Isaac Newton",
+        "Napoleon Bonaparte",
+        "Denis Diderot",
+        "Martin Luther"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What does social contract theory examine?",
+      "choices": [
+        "The prices charged in overseas trade",
+        "The basis of political authority and obligations between people and government",
+        "The rules for hereditary noble marriages",
+        "The methods for constructing cathedral vaults"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which writer argued for women's education and equality in A Vindication of the Rights of Woman?",
+      "choices": [
+        "Mary Wollstonecraft",
+        "Olympe de Gouges",
+        "Mary Shelley",
+        "Jane Austen"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which thinker is closely associated with the general will?",
+      "choices": [
+        "John Locke",
+        "Montesquieu",
+        "Adam Smith",
+        "Jean-Jacques Rousseau"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "How did Enlightenment thought challenge divine-right monarchy?",
+      "choices": [
+        "It required every ruler to inherit unlimited power",
+        "It rejected all discussion of political institutions",
+        "It questioned whether birth and religion alone justified political authority",
+        "It made church approval the sole basis of government"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How did the Scientific Revolution influence Enlightenment thinkers?",
+      "choices": [
+        "It encouraged applying reason and inquiry to social and political questions",
+        "It proved every existing political system was ideal",
+        "It ended interest in evidence and observation",
+        "It prevented scholars from questioning authority"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why were salons and coffeehouses important?",
+      "choices": [
+        "They served only as royal courts of law",
+        "They created spaces for discussing and circulating ideas",
+        "They replaced all printed publications",
+        "They excluded discussion of public questions by definition"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What did Locke argue about governments that violated natural rights?",
+      "choices": [
+        "People must accept every ruler's actions permanently",
+        "Only foreign kings could judge their actions",
+        "Such governments automatically became democratic",
+        "People could have grounds to resist or replace them"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "How did Hobbes's view differ from Locke's?",
+      "choices": [
+        "Hobbes rejected government; Locke favored hereditary absolutism",
+        "Both required universal direct voting on every law",
+        "Hobbes emphasized strong authority to secure order; Locke stressed limited government protecting rights",
+        "Locke denied natural rights while Hobbes promoted them"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What was enlightened absolutism?",
+      "choices": [
+        "Monarchs adopting selected reforms while retaining strong royal authority",
+        "The complete replacement of monarchies with republics",
+        "A system with no government or legal institutions",
+        "A policy prohibiting education outside royal households"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why did printed works help spread Enlightenment ideas?",
+      "choices": [
+        "They guaranteed that every reader agreed",
+        "They allowed arguments to circulate beyond face-to-face discussion",
+        "They prevented governments from practicing censorship",
+        "They eliminated differences in access to education"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why is describing the Enlightenment as uniformly egalitarian inaccurate?",
+      "choices": [
+        "Every thinker advocated identical political participation",
+        "All European societies ended slavery immediately",
+        "No writer questioned inherited privilege",
+        "Some thinkers endorsed rights while excluding women, enslaved people, or other groups"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A constitution assigns lawmaking, administration, and judging to separate institutions. Which idea influenced this design?",
+      "choices": [
+        "Divine-right monarchy",
+        "Mercantilist trade regulation",
+        "Montesquieu's separation of powers",
+        "Hereditary social rank"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A ruler expands schooling but keeps final control over government. Which concept best fits?",
+      "choices": [
+        "Enlightened absolutism",
+        "Direct democracy",
+        "Anarchism",
+        "Feudal decentralization"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Which argument most closely reflects Locke's political theory?",
+      "choices": [
+        "Royal birth gives a ruler authority without limits",
+        "Government exists to protect rights and rests on consent",
+        "Religious uniformity is the sole purpose of government",
+        "Citizens lose all rights when government forms"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Which evidence would best reveal debate within the Enlightenment?",
+      "choices": [
+        "Listing only the titles of royal palaces",
+        "Counting battles from the medieval Crusades",
+        "Mapping ancient irrigation systems",
+        "Comparing thinkers' differing views of authority, equality, and liberty"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Why did Enlightenment ideas matter to later revolutions?",
+      "choices": [
+        "They prescribed one identical outcome for every revolution",
+        "They ended political disputes throughout Europe",
+        "They supplied arguments about rights, consent, and legitimate authority",
+        "They required every society to use the same constitution"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ],
+  "referenceUrls": [
+    "https://www.loc.gov/exhibits/creating-the-united-states/creating-the-declaration-of-independence.html"
+  ]
+}
+

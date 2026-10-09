@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--physical-science-chemistry--chemical-bonding",
+  "title": "Chemical Bonding",
+  "subject": "Science",
+  "category": "Physical Science & Chemistry",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What holds oppositely charged ions together in an ionic solid?",
+      "choices": [
+        "Attraction between electric charges",
+        "Attraction between neutrons only",
+        "The absence of electron motion",
+        "Equal masses of the ions"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What characterizes a covalent bond?",
+      "choices": [
+        "Transfer of protons between nuclei",
+        "Splitting a nucleus into fragments",
+        "Sharing of electron pairs between atoms",
+        "Loss of all electrons from both atoms"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which electrons are most directly involved in ordinary chemical bonding?",
+      "choices": [
+        "Only electrons closest to every nucleus",
+        "Only electrons in neutrons",
+        "Every electron equally in every bond",
+        "Valence electrons"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which substance is a common example of an ionic compound?",
+      "choices": [
+        "Sodium chloride, NaCl",
+        "Oxygen gas, O₂",
+        "Methane, CH₄",
+        "Carbon dioxide, CO₂"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is a molecule?",
+      "choices": [
+        "A single electron separated from an atom",
+        "A discrete group of atoms held together by covalent bonds",
+        "A mixture of unrelated particles in a container",
+        "A crystal that must contain metal atoms"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What does a polar covalent bond involve?",
+      "choices": [
+        "Unequal sharing of bonding electrons",
+        "Transfer of a neutron from one atom",
+        "Equal sharing in every case",
+        "No electrons between the bonded atoms"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is a major feature of metallic bonding?",
+      "choices": [
+        "One separate pair of electrons locked between each ion only",
+        "Covalent molecules floating between metal atoms",
+        "Delocalized electrons associated with many metal atoms",
+        "Oppositely charged nonmetal molecules alternating in layers"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why do many ionic solids conduct electricity when molten but not as solids?",
+      "choices": [
+        "Melting removes all their charged particles",
+        "Their ions can move when molten but are fixed in the solid lattice",
+        "Their electrons disappear during melting",
+        "The solid has no electric charges"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why do many metals conduct electricity well?",
+      "choices": [
+        "Their atoms cannot interact with other atoms",
+        "Every metal atom has no nucleus",
+        "Metals contain only negatively charged ions",
+        "Some electrons can move through the material"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why are the bonds in an H₂ molecule nonpolar covalent?",
+      "choices": [
+        "The hydrogen atoms have different electronegativities",
+        "One atom gives its only proton to the other",
+        "The atoms do not share any electrons",
+        "Identical atoms attract the shared electrons equally"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What is the difference between bonds within a molecule and attractions between molecules?",
+      "choices": [
+        "They act at different structural levels and can differ in strength",
+        "Between-molecule attractions form every atom's nucleus",
+        "Within-molecule bonds are identical to gravity",
+        "Both always involve nuclear reactions"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why can a covalent molecule be electrically neutral even if some bonds are polar?",
+      "choices": [
+        "Polar bonds remove all protons",
+        "Its total positive and negative charges can still balance",
+        "A molecule cannot contain charged subatomic particles",
+        "Polar bonds require a permanent net +1 charge"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What does a Lewis dot symbol show most directly?",
+      "choices": [
+        "The exact three-dimensional paths of electrons",
+        "The number of neutrons in every isotope",
+        "An atom's valence electrons",
+        "The physical size of the nucleus"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why does changing neutron number usually not change an atom's basic bonding pattern greatly?",
+      "choices": [
+        "Neutrons are the particles shared in ordinary bonds",
+        "Bonding depends mainly on electron structure, which can remain the same",
+        "Neutron number determines every ion's charge",
+        "Isotopes have no electrons available for bonding"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What commonly happens when sodium reacts with chlorine to form sodium chloride?",
+      "choices": [
+        "Sodium gains a proton from chlorine",
+        "Chlorine loses a neutron to sodium",
+        "Both atoms lose their entire nuclei",
+        "Electron transfer forms positive sodium and negative chloride ions"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "An atom loses one electron and another gains it. What charges result, assuming both began neutral?",
+      "choices": [
+        "One positive and one negative",
+        "Both positive",
+        "Both negative",
+        "Both still neutral"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A sample has charged particles fixed in a repeating lattice and is brittle. Which bonding model best fits?",
+      "choices": [
+        "Metallic bonding",
+        "Nonpolar molecular bonding",
+        "Ionic bonding",
+        "Unbound atoms only"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A material conducts electricity as a solid and can be bent without shattering. Which model most likely explains these properties?",
+      "choices": [
+        "A lattice of fixed positive and negative ions",
+        "Separate gas molecules with no attractions",
+        "A collection of atoms with no valence electrons",
+        "Metallic bonding with mobile electrons"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A student calls melting ice a process that breaks water molecules into hydrogen and oxygen. Which correction is best?",
+      "choices": [
+        "Melting converts oxygen atoms into hydrogen atoms",
+        "Melting mainly changes arrangements and attractions between water molecules",
+        "Melting removes the covalent bonds in every molecule",
+        "Melting changes every water molecule into an ion"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Two atoms have different electronegativities and share electrons. What is the most likely bond description?",
+      "choices": [
+        "Metallic",
+        "Nuclear",
+        "Polar covalent",
+        "Nonpolar between identical atoms"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ]
+}

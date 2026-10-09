@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--geometry--triangle-congruence",
+  "title": "Triangle Congruence",
+  "subject": "Math",
+  "category": "Geometry",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What does it mean for two triangles to be congruent?",
+      "choices": [
+        "Only their areas are equal",
+        "Corresponding sides and angles have equal measures",
+        "Only their angles are equal",
+        "Their side lengths share any scale factor"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which condition is the SSS congruence criterion?",
+      "choices": [
+        "Three pairs of corresponding sides are equal",
+        "Three pairs of corresponding angles are equal",
+        "Two sides and any angle are equal",
+        "One side and one angle are equal"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which condition is the SAS congruence criterion?",
+      "choices": [
+        "Two corresponding angles and any side are equal",
+        "Three corresponding angles are equal",
+        "Two corresponding sides and a nonincluded angle are equal",
+        "Two corresponding sides and their included angle are equal"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What does ASA require?",
+      "choices": [
+        "Three corresponding angles",
+        "Two corresponding sides and the included angle",
+        "Two corresponding angles and the included side",
+        "One corresponding angle and one side"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Why is AAA alone insufficient to prove congruence?",
+      "choices": [
+        "It never establishes similarity",
+        "It establishes shape but not size",
+        "It requires a right angle",
+        "It forces all sides to be equal"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which special criterion applies to right triangles?",
+      "choices": [
+        "Hypotenuse and one corresponding leg are equal",
+        "Any two corresponding angles are equal",
+        "Only the hypotenuses are equal",
+        "Only the areas are equal"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "In triangle ABC congruent to triangle DEF, which side corresponds to AB?",
+      "choices": [
+        "EF",
+        "DF",
+        "FE",
+        "DE"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "What is an included angle between two sides?",
+      "choices": [
+        "Any angle outside the triangle",
+        "The angle opposite both sides",
+        "The angle formed where those sides meet",
+        "An angle that must measure 90 degrees"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Two triangles have side lengths 4, 5, and 6 units. Why must they be congruent?",
+      "choices": [
+        "The AAA criterion proves congruence",
+        "The SSS criterion applies",
+        "Equal perimeters always prove congruence",
+        "Any two triangles with a 4-unit side are congruent"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Two triangles have angles 40°, 60°, and 80° but different side lengths. What follows?",
+      "choices": [
+        "They are similar but not congruent",
+        "They must be congruent",
+        "They cannot be similar",
+        "They must be right triangles"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Triangle ABC is congruent to triangle RST. If angle B is 55°, what is angle S?",
+      "choices": [
+        "35°",
+        "125°",
+        "110°",
+        "55°"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Which information is generally insufficient to prove two triangles congruent?",
+      "choices": [
+        "Three corresponding sides",
+        "Two angles and their included side",
+        "Two sides and a nonincluded angle",
+        "Two sides and their included angle"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Two right triangles have hypotenuses of 13 units and one leg of 5 units. Which conclusion is justified?",
+      "choices": [
+        "They are only similar because their sizes may differ",
+        "They are congruent by the hypotenuse-leg criterion",
+        "They are congruent by AAA alone",
+        "Their other legs may have different lengths"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "If triangles are congruent, what can be concluded about their perimeters?",
+      "choices": [
+        "Their perimeters are equal",
+        "Their perimeters differ by a factor of 2",
+        "Only their longest sides affect their perimeters",
+        "Their perimeters must be whole numbers"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why does AAS prove congruence even though the known side is not between the two known angles?",
+      "choices": [
+        "The known side becomes a hypotenuse",
+        "All three sides must be given first",
+        "AAS applies only to equilateral triangles",
+        "The third angle is fixed by the triangle angle sum"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Triangles ABC and ADC share side AC. If AB = AD and BC = DC, which criterion proves their congruence?",
+      "choices": [
+        "ASA",
+        "AAA",
+        "SSS",
+        "Hypotenuse-leg only"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Triangles PQR and XYZ have PQ = XY, PR = XZ, and angle P = angle X. Which criterion applies?",
+      "choices": [
+        "ASA",
+        "SAS",
+        "AAS",
+        "AAA"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Triangle ABC is congruent to triangle DEF with AB = 7, BC = 9, and AC = 11. What is the perimeter of triangle DEF?",
+      "choices": [
+        "27 units",
+        "18 units",
+        "22 units",
+        "20 units"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Two triangles each have sides of 6 and 8 units. One has an included angle of 40°, and the other has 70°. What can be concluded?",
+      "choices": [
+        "They are congruent by SAS",
+        "They are congruent because two sides match",
+        "They are congruent by AAA",
+        "They are not congruent because the third side differs"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A diagonal splits a rectangle into two triangles. Which evidence proves their congruence by SSS?",
+      "choices": [
+        "Both triangles have one right angle only",
+        "The diagonal has a positive length",
+        "Opposite rectangle sides are equal, and the diagonal is shared",
+        "The rectangle has four vertices"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ]
+}

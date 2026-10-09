@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--algebra-2-functions--exponential-and-logarithmic-equations",
+  "title": "Exponential and Logarithmic Equations",
+  "subject": "Math",
+  "category": "Algebra II & Functions",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is the solution of 2ˣ = 32?",
+      "choices": [
+        "16",
+        "4",
+        "5",
+        "3"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is the solution of 3ˣ = 1?",
+      "choices": [
+        "1",
+        "0",
+        "3",
+        "−1"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which equation is equivalent to 5ˣ = 12?",
+      "choices": [
+        "x = log base 5 of 12",
+        "x = 12/5",
+        "x = 5/12",
+        "x = log base 12 of 5"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What restriction applies before solving log base 2 of (x − 4) = 3 over real numbers?",
+      "choices": [
+        "x ≥ 4",
+        "x < 4",
+        "All real x",
+        "x > 4"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is the solution of 10ˣ = 0.01?",
+      "choices": [
+        "2",
+        "−1",
+        "−2",
+        "0.01"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which property permits setting exponents equal in 4ᵃ = 4ᵇ?",
+      "choices": [
+        "Every fourth power equals 1",
+        "A valid exponential function with base 4 is one-to-one",
+        "Exponents are always positive",
+        "The bases can be subtracted"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which operation helps isolate x in eˣ = 7?",
+      "choices": [
+        "Take the natural logarithm of both sides",
+        "Subtract e from both sides",
+        "Multiply both sides by e",
+        "Square both sides"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Solve 2ˣ⁺¹ = 16.",
+      "choices": [
+        "x = 4",
+        "x = 5",
+        "x = 8",
+        "x = 3"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Solve 3²ˣ = 81.",
+      "choices": [
+        "x = 4",
+        "x = 3",
+        "x = 2",
+        "x = 8"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why does 2ˣ = −8 have no real solution?",
+      "choices": [
+        "Real exponents must be integers",
+        "A positive base raised to a real power remains positive",
+        "Negative numbers have no logarithm in any setting",
+        "Every exponential output is greater than 1"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Solve log base 3 of (x + 2) = 2.",
+      "choices": [
+        "x = 7",
+        "x = 4",
+        "x = 11",
+        "x = 9"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Solve ln(x) = 0 over positive real x.",
+      "choices": [
+        "x = 0",
+        "x = e",
+        "x = −1",
+        "x = 1"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "When solving logarithmic equations, why must candidates be checked in the original logarithms?",
+      "choices": [
+        "Every answer must be a whole number",
+        "The base must become 1",
+        "Each original argument must remain positive",
+        "A logarithm always returns a positive output"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Solve 4 × 2ˣ = 64.",
+      "choices": [
+        "x = 6",
+        "x = 4",
+        "x = 8",
+        "x = 16"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Which expression exactly solves 5ˣ = 18?",
+      "choices": [
+        "ln(18)/ln(5)",
+        "ln(5)/ln(18)",
+        "ln(18) − ln(5)",
+        "18/5"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A quantity begins at 80 and doubles each hour. After how many hours does it reach 640?",
+      "choices": [
+        "4 hours",
+        "8 hours",
+        "7 hours",
+        "3 hours"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A balance follows A = 1000(1.1)ᵗ. Which equation finds t when A = 1500?",
+      "choices": [
+        "t = ln(1.1)/ln(1.5)",
+        "t = 1500/1000",
+        "t = ln(1.5)/ln(1.1)",
+        "t = ln(1500) − ln(1.1)"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Solve log base 2 of x + log base 2 of (x − 2) = 3. Which candidate is valid?",
+      "choices": [
+        "x = −2 only",
+        "x = 4 only",
+        "Both −2 and 4",
+        "x = 2 only"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A substance follows M = 40(1/2)ᵗ for time t in hours. When does M equal 5?",
+      "choices": [
+        "3 hours",
+        "8 hours",
+        "2 hours",
+        "4 hours"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Solve 9ˣ = 27 by writing both sides with base 3.",
+      "choices": [
+        "x = 2/3",
+        "x = 3",
+        "x = 2",
+        "x = 3/2"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--earth-space-science--groundwater-and-watersheds",
+  "title": "Groundwater and Watersheds",
+  "subject": "Science",
+  "category": "Earth & Space Science",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is groundwater?",
+      "choices": [
+        "Only water flowing in surface rivers",
+        "Water that exists only in caves",
+        "Water within connected pores and fractures below the water table",
+        "Water stored only inside living organisms"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is the water table?",
+      "choices": [
+        "The upper surface of the saturated groundwater zone",
+        "The bottom of every lake",
+        "The boundary between ocean water and ice",
+        "The surface of a rain cloud"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is an aquifer?",
+      "choices": [
+        "A rock unit that stores water but cannot transmit useful amounts",
+        "A geologic unit that stores and transmits usable amounts of groundwater",
+        "Only a large underground open cavern",
+        "Any dry layer above the water table"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is groundwater recharge?",
+      "choices": [
+        "The removal of groundwater by pumping",
+        "The flow of groundwater out through a spring",
+        "The replenishment of groundwater by water entering an aquifer",
+        "The evaporation of water directly from a stream"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is permeability?",
+      "choices": [
+        "The fraction of a rock's volume made of pores alone",
+        "How readily a material allows fluid to flow through connected spaces",
+        "The total mass of water above a rock layer",
+        "The rate of evaporation from a surface"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is base flow in a stream?",
+      "choices": [
+        "Only rapid surface runoff during a storm",
+        "Only water evaporating from the stream",
+        "The uphill movement of water toward a drainage divide",
+        "Flow supported by groundwater discharge between storms"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is a drainage divide?",
+      "choices": [
+        "Higher terrain separating neighboring drainage basins",
+        "A point where two tributaries join",
+        "The lowest point in one drainage basin",
+        "The upper boundary of saturated groundwater"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why can pumping groundwater faster than recharge create problems?",
+      "choices": [
+        "Stored groundwater and local water levels can decline",
+        "An aquifer always refills as quickly as it is pumped",
+        "Groundwater storage cannot change with withdrawal",
+        "Recharge necessarily increases enough to match pumping"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why can pavement increase surface runoff?",
+      "choices": [
+        "It always adds connected pore space to the ground",
+        "It makes all precipitation enter the aquifer directly",
+        "It often reduces infiltration into the ground",
+        "It reduces streamflow after every storm"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why is porous rock not necessarily highly permeable?",
+      "choices": [
+        "Porosity and permeability always measure the same property",
+        "Pores may be poorly connected",
+        "Every porous rock allows equally rapid flow",
+        "Only pore volume matters, not connections between pores"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How can pollution at the ground surface affect groundwater?",
+      "choices": [
+        "Soil removes every contaminant completely",
+        "Groundwater never connects with surface infiltration",
+        "Only contaminants visible to the eye can move downward",
+        "Contaminants can move downward with infiltrating water"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why do activities upstream matter to people downstream?",
+      "choices": [
+        "Only rainfall at the river mouth influences downstream water",
+        "Flowing water can carry sediment and pollutants through the watershed",
+        "River flow prevents contaminants from traveling",
+        "Upstream and downstream sections never exchange water"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What can happen to a well when the water table falls below its intake?",
+      "choices": [
+        "The well may no longer supply water",
+        "The well automatically deepens to meet the new water table",
+        "The pump creates enough new water to restore the table",
+        "All groundwater above the intake becomes surface runoff"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "How can wetlands influence water moving through a watershed?",
+      "choices": [
+        "They prevent every flood regardless of rainfall",
+        "They remove every dissolved contaminant completely",
+        "They can store water and slow its release",
+        "They always speed all runoff directly to the outlet"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why are recharge areas important for groundwater protection?",
+      "choices": [
+        "Recharge areas prevent water from reaching aquifers",
+        "Recharge areas are always the deepest part of an aquifer",
+        "Only pumping locations affect groundwater quality",
+        "Water entering there can replenish an aquifer and carry contaminants"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Two materials have similar porosity, but one has connected pores. Which should transmit groundwater more readily?",
+      "choices": [
+        "The material with connected pores",
+        "The material with disconnected pores",
+        "Both must transmit no water",
+        "The darker material regardless of pore connections"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A watershed loses vegetation and gains extensive pavement. What change is generally expected after a storm?",
+      "choices": [
+        "All infiltration necessarily increases",
+        "Streams receive no stormwater at all",
+        "The watershed's topographic divides disappear",
+        "More rapid surface runoff"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "An aquifer receives 100 units of recharge and loses 140 units through pumping and other discharge. What is its storage change?",
+      "choices": [
+        "An increase of 40 units",
+        "A decrease of 40 units",
+        "An increase of 240 units",
+        "No change"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A contaminant enters a tributary above a river's drinking-water intake. What should monitoring consider?",
+      "choices": [
+        "Tributaries never connect to larger rivers",
+        "Flow guarantees instant removal of contaminants",
+        "The contaminant may move downstream toward the intake",
+        "Only water temperature can change downstream"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A map shows ridges around streams flowing to one lake. What do those ridges help identify?",
+      "choices": [
+        "The exact age of the lake",
+        "The chemical formula of groundwater",
+        "The number of fish in the lake",
+        "The lake's watershed boundary"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

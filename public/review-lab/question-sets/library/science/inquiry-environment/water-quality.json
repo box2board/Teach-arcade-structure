@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--inquiry-environment--water-quality",
+  "title": "Water Quality",
+  "subject": "Science",
+  "category": "Scientific Inquiry & Environmental Science",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is dissolved oxygen in water?",
+      "choices": [
+        "The oxygen atoms chemically bonded within every water molecule",
+        "Only oxygen inside floating leaves",
+        "Oxygen gas present in the water and available to aquatic organisms",
+        "The salt content of seawater"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is turbidity?",
+      "choices": [
+        "Cloudiness caused by suspended particles",
+        "The acidity of water alone",
+        "The total amount of dissolved oxygen",
+        "The temperature of a stream"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What can conductivity measurements indicate about water?",
+      "choices": [
+        "The exact identity of every dissolved substance",
+        "The complete absence of microbes",
+        "The concentration of suspended solids alone",
+        "The presence and amount of electrically conducting dissolved ions"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which measurement tells whether a water sample is acidic or basic?",
+      "choices": [
+        "Turbidity",
+        "pH",
+        "Dissolved oxygen",
+        "Flow speed"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is a fecal-indicator organism used to assess?",
+      "choices": [
+        "Possible contamination associated with fecal material",
+        "The exact concentration of every chemical pollutant",
+        "The temperature history of a stream",
+        "The total amount of dissolved oxygen"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What does biochemical oxygen demand estimate?",
+      "choices": [
+        "The oxygen atoms bonded within water molecules",
+        "Oxygen used by organisms breaking down organic matter under specified conditions",
+        "The amount of oxygen released by all plants per hour",
+        "The total gas pressure above the water"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is a baseline measurement in a water study?",
+      "choices": [
+        "A guaranteed safe condition for all future comparisons",
+        "A measurement that must be taken only after a spill",
+        "A limit that automatically applies to every water use",
+        "A reference condition used for comparison"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why does colder freshwater generally hold more dissolved oxygen at equilibrium than warmer freshwater under comparable conditions?",
+      "choices": [
+        "Cold water cannot support organisms that use oxygen",
+        "Warm water contains no oxygen atoms",
+        "Gas solubility generally increases as temperature decreases",
+        "Temperature affects only turbidity, not gas solubility"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why can high turbidity reduce aquatic plant growth?",
+      "choices": [
+        "Suspended particles reduce light penetration",
+        "Higher turbidity always improves light penetration",
+        "Plants obtain all their growth energy from suspended sediment",
+        "Turbidity affects only the water's acidity"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why can excess nitrate and phosphate be concerns in surface water?",
+      "choices": [
+        "They always eliminate microbial activity",
+        "They remove all plant nutrients from the water",
+        "They can promote excessive algae and plant growth",
+        "Nutrients cannot be transported in surface runoff"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why does clear water not prove it is safe to drink?",
+      "choices": [
+        "All harmful contaminants must be visibly cloudy",
+        "Harmful microbes or dissolved substances may be present",
+        "Water clarity identifies all dissolved substances",
+        "Only the water's color determines drinking safety"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why should sampling containers and procedures be standardized?",
+      "choices": [
+        "Standardized containers remove every pollutant automatically",
+        "Different procedures cannot affect measured values",
+        "Using one procedure makes all water sources identical",
+        "Contamination or method differences can distort comparisons"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why should a water-quality investigation record sampling time and location?",
+      "choices": [
+        "One sample represents every future condition",
+        "Recording location replaces the need for water tests",
+        "Sampling time cannot affect an observed concentration",
+        "Conditions can vary across places and times"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "How can very high organic waste input affect dissolved oxygen?",
+      "choices": [
+        "Organic waste always raises oxygen concentrations",
+        "Microbial decomposition can consume more oxygen",
+        "Organic matter prevents microorganisms from growing",
+        "Oxygen is consumed only by fish, never by microbes"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why are several water-quality parameters measured rather than only one?",
+      "choices": [
+        "Every parameter describes exactly the same property",
+        "A pH reading identifies every possible contaminant",
+        "Different measurements reveal different aspects of water condition",
+        "More tests make measurement uncertainty vanish"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Two samples have equal temperature, but one has much higher conductivity. What is a reasonable inference?",
+      "choices": [
+        "It likely has more or more conductive dissolved ions",
+        "It necessarily supports more aquatic animals",
+        "It is automatically safe to drink",
+        "It contains no dissolved ions"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A stream's dissolved oxygen falls after organic wastewater enters. Which explanation should be investigated?",
+      "choices": [
+        "An increase in gas solubility caused by higher temperature",
+        "Microbial oxygen use during decomposition",
+        "The absence of all microbial oxygen use",
+        "Organic waste removing water's chemically bonded oxygen"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A river is muddy after heavy rain. Which measurement most directly describes its suspended-particle cloudiness?",
+      "choices": [
+        "pH",
+        "Dissolved oxygen",
+        "Temperature",
+        "Turbidity"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A water sample meets one classroom pH target. Which conclusion is justified?",
+      "choices": [
+        "Its pH meets that target, but other safety and quality questions remain",
+        "It is safe to drink without further testing",
+        "It contains no microorganisms",
+        "It contains no dissolved metals"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Repeated samples show a downstream nutrient increase during rainy periods. What hypothesis fits?",
+      "choices": [
+        "Rain necessarily removes all nutrients",
+        "The samples prove one specific property owner caused it",
+        "Runoff may be carrying nutrients into the stream",
+        "Nutrients cannot move through a watershed"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--earth-space-science--earths-interior",
+  "title": "Earth's Interior",
+  "subject": "Science",
+  "category": "Earth & Space Science",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which compositional layer forms Earth's outermost solid surface?",
+      "choices": [
+        "Crust",
+        "Outer core",
+        "Inner core",
+        "Lower mantle"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which compositional layer lies between the crust and core?",
+      "choices": [
+        "Atmosphere",
+        "Inner core",
+        "Hydrosphere",
+        "Mantle"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is the physical state of Earth's outer core?",
+      "choices": [
+        "Solid",
+        "Liquid",
+        "Gas",
+        "Vacuum"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is the physical state of Earth's inner core?",
+      "choices": [
+        "Liquid",
+        "Solid",
+        "Gas",
+        "Vacuum"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which metals are major components of Earth's core?",
+      "choices": [
+        "Calcium and sodium only",
+        "Aluminum and magnesium only",
+        "Copper and zinc only",
+        "Iron and nickel"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is the asthenosphere?",
+      "choices": [
+        "A comparatively weak, slowly deforming region of the upper mantle",
+        "Earth's liquid outer core",
+        "The entire rigid crust",
+        "A layer above the atmosphere"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which evidence is central to investigating inaccessible deep Earth layers?",
+      "choices": [
+        "Only surface cloud color",
+        "Daily plant growth",
+        "Seismic-wave behavior",
+        "Ocean salinity alone"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why can the inner core remain solid despite its high temperature?",
+      "choices": [
+        "The inner core receives no heat",
+        "Its temperature is below room temperature",
+        "Iron cannot ever melt",
+        "High pressure affects the melting conditions of its material"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why is calling the entire mantle a liquid misleading?",
+      "choices": [
+        "The mantle consists entirely of gas",
+        "The mantle has no material",
+        "Most mantle material is solid but can deform slowly over long times",
+        "All mantle rock is colder than surface ice"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "How do temperature and pressure generally change with depth inside Earth?",
+      "choices": [
+        "Both generally increase",
+        "Both generally decrease to zero",
+        "Temperature decreases while pressure stays zero",
+        "Both are identical at every depth"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What does the difference between continental and oceanic crust generally involve?",
+      "choices": [
+        "Oceanic crust is always thicker",
+        "Continental crust is thicker and less dense on average",
+        "Continental crust contains no minerals",
+        "Both have identical average composition and density"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "How does the lithosphere differ from the crust?",
+      "choices": [
+        "It consists only of liquid outer core",
+        "It is the same as the atmosphere",
+        "It excludes all crustal material",
+        "It includes the crust and rigid uppermost mantle"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why do changes in seismic-wave speed suggest internal boundaries?",
+      "choices": [
+        "Seismic waves cannot change speed",
+        "Wave speed depends on material properties that change across layers",
+        "Boundary layers create new earthquakes automatically",
+        "Only distance controls wave speed"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What process in the outer core helps generate Earth's magnetic field?",
+      "choices": [
+        "Sunlight striking the crust",
+        "Rock weathering at the surface",
+        "Motion of electrically conducting liquid metal",
+        "Ocean waves turning into permanent magnets"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What provides a major continuing source of Earth's internal heat?",
+      "choices": [
+        "Radioactive decay of elements",
+        "Photosynthesis underground",
+        "Daily condensation of clouds",
+        "Burning oxygen throughout the mantle"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A layer does not transmit S waves but transmits P waves. Which interpretation fits a deep Earth layer?",
+      "choices": [
+        "It is liquid",
+        "It is a vacuum",
+        "It must be the solid crust",
+        "It contains no matter"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A diagram labels the center as solid and the surrounding metallic layer as liquid. Which labels fit?",
+      "choices": [
+        "Crust and mantle",
+        "Atmosphere and crust",
+        "Inner core and outer core",
+        "Mantle and lithosphere"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A student says tectonic plates consist of crust alone. Which correction is appropriate?",
+      "choices": [
+        "They are made only of the outer core",
+        "They include rigid uppermost mantle as well as crust",
+        "They contain atmosphere but no rock",
+        "They are all completely molten"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Two crust samples are compared: basalt-rich oceanic crust and granite-rich continental crust. Which density relationship is generally expected?",
+      "choices": [
+        "The continental sample is always denser",
+        "Both have exactly equal density",
+        "Density cannot differ among rocks",
+        "The oceanic sample is denser"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Why are laboratory measurements at high pressure useful for Earth-interior research?",
+      "choices": [
+        "They let researchers directly visit the core",
+        "They replace all need for seismic observations",
+        "They help test how materials behave under deep-Earth conditions",
+        "They prove surface pressure equals core pressure"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ]
+}

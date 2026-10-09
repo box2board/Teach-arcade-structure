@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--life-science-biology--biotechnology",
+  "title": "Biotechnology",
+  "subject": "Science",
+  "category": "Life Science & Biology",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is biotechnology?",
+      "choices": [
+        "Study of biological classification without practical applications",
+        "Observation of ecosystems without changing or using biological processes",
+        "Study of chemical elements without living systems",
+        "Use of organisms or biological processes to make useful products"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is a plasmid?",
+      "choices": [
+        "A small DNA molecule separate from a bacterium's main chromosome",
+        "A protein that makes up a cell membrane",
+        "A sugar stored in plant roots",
+        "A structure that carries oxygen in blood"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What do restriction enzymes do?",
+      "choices": [
+        "Copy every protein in a cell",
+        "Cut DNA at particular sequences",
+        "Join amino acids into carbohydrates",
+        "Sort chromosomes by mass"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is the main purpose of PCR?",
+      "choices": [
+        "Sorting DNA fragments by their movement through a gel",
+        "Cutting DNA at selected recognition sites",
+        "Making many copies of a selected DNA region",
+        "Joining fragments of DNA into one molecule"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What does gel electrophoresis commonly separate?",
+      "choices": [
+        "DNA fragments only by their original organism",
+        "Whole chromosomes only by gene function",
+        "Cells only by their rate of reproduction",
+        "DNA fragments by size"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is recombinant DNA?",
+      "choices": [
+        "DNA assembled from different sources",
+        "Any DNA without chemical bonds",
+        "DNA found only in extinct organisms",
+        "A protein made of joined chromosomes"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is a genetically modified organism?",
+      "choices": [
+        "Any organism that grows larger than its parent",
+        "An organism whose DNA has been deliberately changed using genetic technology",
+        "An organism with no genetic material",
+        "Any organism produced by ordinary fertilization"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why can bacteria be used to produce human insulin?",
+      "choices": [
+        "Bacteria absorb insulin directly from the surrounding air",
+        "Bacteria always produce insulin without an inserted gene",
+        "An introduced gene can direct production of the insulin protein",
+        "Insulin production requires bacteria to develop human organs"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why does a PCR procedure need primers?",
+      "choices": [
+        "They cut away the target region before copying",
+        "They prevent the target sequence from being copied",
+        "They separate fragments according to size after copying",
+        "They specify starting points for copying the target region"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "In a DNA gel, why do shorter fragments generally travel farther under the same conditions?",
+      "choices": [
+        "They move more easily through the gel's pores",
+        "They carry no electrical charge",
+        "They contain more total DNA than longer fragments",
+        "They turn into proteins during separation"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why are controls important in a DNA detection experiment?",
+      "choices": [
+        "They guarantee every sample contains the target",
+        "They help reveal contamination or a failed procedure",
+        "They establish an organism's identity without testing DNA",
+        "They prevent every mutation during DNA copying"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "How is selective breeding different from direct gene editing?",
+      "choices": [
+        "It changes a chosen DNA sequence directly in every offspring",
+        "It requires inserting a new gene with a molecular tool",
+        "It chooses parents rather than directly changing a selected DNA sequence",
+        "It chooses parents without affecting inherited trait frequencies"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What does a DNA sequence comparison between two samples directly show?",
+      "choices": [
+        "Complete proof of every trait they express",
+        "The exact age of their owners",
+        "Whether either sample has never mutated",
+        "Similarities and differences in their tested sequences"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why does changing a gene not guarantee one simple visible outcome?",
+      "choices": [
+        "Traits may depend on gene interactions and environment",
+        "Genes have no effect on proteins",
+        "Every trait depends on one gene alone",
+        "The environment replaces all DNA"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What is an important difference between cloning a DNA fragment and cloning an organism?",
+      "choices": [
+        "Both always create a new species",
+        "One copies a sequence; the other produces a whole organism",
+        "One removes all genes; the other removes all cells",
+        "Both require fertilization of an egg by two sperm"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A DNA gel shows a sample band at the same position as a known 300-base-pair marker. What does this suggest?",
+      "choices": [
+        "The sample has exactly 300 genes",
+        "The organism is 300 years old",
+        "The fragment is approximately 300 base pairs long",
+        "The fragment encodes 300 proteins"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A negative PCR control containing no sample DNA produces the target band. What should researchers suspect?",
+      "choices": [
+        "Every sample is proven free of contamination",
+        "The negative control confirms that the target is absent",
+        "The sample bands can be accepted without further checks",
+        "Contamination of reagents or the procedure"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A bacterium receives a gene but produces no detectable protein. Which follow-up addresses a relevant possibility?",
+      "choices": [
+        "Check whether the gene is expressed under the culture conditions",
+        "Assume all inserted DNA always produces protein",
+        "Measure only the color of the incubator",
+        "Conclude that bacteria never make proteins"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A proposed crop modification reduces insect damage. Which evidence would best assess a possible ecological tradeoff?",
+      "choices": [
+        "Only the yield of plants under one growing condition",
+        "Effects on both target pests and nearby non-target organisms",
+        "Only whether the inserted sequence can be copied",
+        "Only the modified crop's appearance at harvest"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Two DNA samples match at one tested region. Which conclusion is justified?",
+      "choices": [
+        "They must come from the same individual",
+        "They must have identical complete genomes",
+        "They match at that region, but more evidence is needed to establish identity",
+        "They cannot come from related individuals"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ]
+}
