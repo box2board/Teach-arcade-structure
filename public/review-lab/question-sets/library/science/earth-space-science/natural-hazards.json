@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--earth-space-science--natural-hazards",
+  "title": "Natural Hazards",
+  "subject": "Science",
+  "category": "Earth & Space Science",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a natural hazard?",
+      "choices": [
+        "Any outdoor activity regardless of danger",
+        "Only a process caused by humans",
+        "A measurement of population size",
+        "A natural process capable of causing harm"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is exposure in hazard assessment?",
+      "choices": [
+        "Presence of people or assets where a hazard may occur",
+        "Weakness of structures when affected",
+        "Probability that an event will occur",
+        "The total energy released by the event"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is vulnerability?",
+      "choices": [
+        "Presence of buildings in the affected area",
+        "Susceptibility to harm when exposed to a hazard",
+        "Probability of the hazard occurring",
+        "The strength of the event alone"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What commonly triggers a tsunami?",
+      "choices": [
+        "The ordinary rise and fall of daily tides",
+        "A steady breeze across a lake",
+        "Sudden displacement of a large volume of water",
+        "Slow evaporation from the ocean"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is a landslide?",
+      "choices": [
+        "Upward growth of a mountain by plants",
+        "Formation of sea ice",
+        "Movement of air around a high-pressure center",
+        "Downslope movement of rock, soil, or debris"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is storm surge?",
+      "choices": [
+        "A storm-driven rise of seawater above the predicted tide",
+        "A sudden decrease in ocean salinity only",
+        "An underground river's normal flow",
+        "The maximum height of every wave"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is hazard mitigation?",
+      "choices": [
+        "A guarantee that no natural event can occur",
+        "Action that reduces potential harm from a hazard",
+        "Prediction of every event's exact time",
+        "Replacement of evidence with guesswork"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why can the same earthquake cause different damage in two communities?",
+      "choices": [
+        "Its magnitude changes separately for each street",
+        "Earthquakes exert no force on buildings",
+        "Exposure, construction, and ground conditions can differ",
+        "Every community has identical vulnerability"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why can heavy rainfall increase landslide likelihood on some slopes?",
+      "choices": [
+        "Rain always glues every slope securely",
+        "Water eliminates gravity",
+        "Rain prevents any soil movement",
+        "Water can add weight and reduce soil strength"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why can paving a large area increase nearby flash-flood risk?",
+      "choices": [
+        "Less infiltration can produce faster surface runoff",
+        "Pavement increases infiltration everywhere",
+        "Paving always slows runoff regardless of slope",
+        "Pavement changes rainfall into groundwater immediately"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why is a hazard map useful even without an exact prediction?",
+      "choices": [
+        "It prevents all hazards physically",
+        "It identifies areas with differing potential exposure",
+        "It gives every event's exact date",
+        "It shows that all locations are equally safe"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "How do preparedness and emergency response differ?",
+      "choices": [
+        "Preparedness predicts exact events; response prevents all future events",
+        "Both occur only after every danger ends",
+        "Preparedness plans before an event; response acts during or after it",
+        "Response is only a long-term rock study"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why do warning systems not eliminate all hazard risk?",
+      "choices": [
+        "A warning guarantees unlimited time to evacuate",
+        "Knowing a hazard eliminates structural vulnerability",
+        "All exposed people automatically receive and act on every warning",
+        "People still need time, access, and effective ways to act"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What is a lahar associated with a volcano?",
+      "choices": [
+        "A flowing mixture of water and volcanic debris",
+        "A cloud containing only harmless steam",
+        "A slow rise in ordinary daily tides",
+        "A solid iron meteorite"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why can drought increase wildfire risk in some landscapes?",
+      "choices": [
+        "Drought increases moisture in dead vegetation",
+        "Dry vegetation can ignite and burn more readily",
+        "Dry fuels are always less likely to ignite",
+        "Fuel moisture has no influence on fire behavior"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Two towns face similar flood probability, but one has many homes on the floodplain. Which risk factor is greater there?",
+      "choices": [
+        "Vulnerability of each building",
+        "Magnitude of the river's flow by definition",
+        "Exposure",
+        "Probability of the flood by definition"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A building upgrade makes structures better able to withstand expected shaking. Which risk factor is directly reduced?",
+      "choices": [
+        "Earthquake magnitude",
+        "Tectonic plate speed",
+        "The depth of every future earthquake",
+        "Vulnerability"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A hazard occurs in an uninhabited region with no assets affected. Why may its losses be lower than a smaller event in a city?",
+      "choices": [
+        "Exposure is much lower",
+        "Natural events cannot release energy without people nearby",
+        "The smaller city event must have more physical energy",
+        "Event size alone determines all losses"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A warning reaches residents but accessible evacuation routes are absent. What does this show?",
+      "choices": [
+        "Warnings alone always eliminate structural damage",
+        "Warnings need practical response capacity to reduce harm",
+        "Evacuation routes have no relation to response options",
+        "Only the hazard's magnitude affects people's ability to act"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Records show floods of varying sizes over many decades. What use of these data is appropriate?",
+      "choices": [
+        "Name the exact minute of the next flood",
+        "Conclude that past floods cannot recur",
+        "Estimate patterns and probabilities while acknowledging uncertainty",
+        "Assume every future flood will match the largest recorded event"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ]
+}

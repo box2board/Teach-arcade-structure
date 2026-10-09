@@ -1,0 +1,255 @@
+{
+  "schemaVersion": 1,
+  "id": "government--checks-and-balances",
+  "title": "Checks and Balances",
+  "subject": "Social Studies",
+  "category": "Government & Civics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What do checks and balances allow government branches to do?",
+      "choices": [
+        "Limit and influence one another's exercise of power",
+        "Exercise every power without outside review",
+        "Replace state governments after each election",
+        "Choose all voters before an election"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which branch can veto legislation passed by Congress?",
+      "choices": [
+        "Judicial branch",
+        "State legislative branch",
+        "Executive branch",
+        "Local judicial branch"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which institution can review the constitutionality of government action in a case?",
+      "choices": [
+        "A political party's campaign office",
+        "A court with jurisdiction",
+        "A private lobbying association",
+        "An electoral campaign committee"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which chamber confirms many major presidential nominees?",
+      "choices": [
+        "House of Representatives",
+        "Both chambers in a joint popular vote",
+        "A conference of state governors",
+        "Senate"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Who nominates justices to the U.S. Supreme Court?",
+      "choices": [
+        "President",
+        "Chief Justice",
+        "Speaker of the House",
+        "State governors collectively"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which institution controls federal appropriations?",
+      "choices": [
+        "Supreme Court",
+        "Electoral College",
+        "Congress",
+        "Presidential campaign committee"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Who presides over a Senate impeachment trial of a sitting president?",
+      "choices": [
+        "Vice president",
+        "Chief Justice",
+        "Secretary of State",
+        "Speaker of the House"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why does the veto create a legislative-executive check?",
+      "choices": [
+        "The president can permanently prohibit Congress from meeting",
+        "Congress must obtain court approval before introducing any bill",
+        "A veto makes the president the only national lawmaker",
+        "The president can require Congress to reconsider a bill"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why can Congress override a veto?",
+      "choices": [
+        "The Constitution preserves a path for strong legislative support to prevail",
+        "A veto automatically expires after the next election",
+        "The courts must approve every rejected bill",
+        "The president has no role in lawmaking"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "How does Senate confirmation check appointment power?",
+      "choices": [
+        "The Senate selects nominees without presidential involvement",
+        "Confirmation gives nominees a veto over Congress",
+        "Nominees may need support beyond the president alone",
+        "Confirmation replaces elections for every federal office"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How does judicial review check other branches?",
+      "choices": [
+        "Courts can select a new president whenever policy changes",
+        "Courts can invalidate actions that violate the Constitution",
+        "Judges can pass budgets without Congress",
+        "Judges automatically approve executive directives"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why is separation of powers not identical to checks and balances?",
+      "choices": [
+        "Both terms describe only state and national power",
+        "Checks and balances require one branch to hold all authority",
+        "Separation of powers means that branches never interact",
+        "Separating responsibilities differs from giving institutions ways to limit each other"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "How can appropriations affect executive policy?",
+      "choices": [
+        "Congress can fund, limit, or decline funding for authorized programs",
+        "Congress can pardon federal crimes through a funding vote",
+        "Funding votes determine every court verdict",
+        "Appropriations eliminate the need for executive administration"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why does shared treaty authority illustrate a check?",
+      "choices": [
+        "State governors alone may ratify national treaties",
+        "The president may revise any constitutional clause through a treaty",
+        "Presidential treaty-making requires the specified Senate consent",
+        "The Senate must accept every negotiated treaty"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why do checks sometimes slow government action?",
+      "choices": [
+        "The Constitution requires officials never to cooperate",
+        "Agreement among institutions may be needed before action proceeds",
+        "Every proposal needs a nationwide referendum",
+        "All branches must perform exactly the same task"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "The Senate rejects a president's nominee. Which check is operating?",
+      "choices": [
+        "Executive clemency",
+        "Judicial precedent",
+        "Popular referendum",
+        "Advice and consent"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Congress overrides a veto with the required votes. Which relationship is demonstrated?",
+      "choices": [
+        "A legislative check on executive rejection",
+        "An executive check on judicial appointments",
+        "A state check on federal criminal trials",
+        "A judicial check on treaty negotiations"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A judge rules that an agency exceeded authority granted by statute. Which check is involved?",
+      "choices": [
+        "Executive review of judicial elections",
+        "Legislative ratification of state treaties",
+        "Judicial review of executive action",
+        "Local approval of federal appropriations"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Which example shows coordination despite separate powers?",
+      "choices": [
+        "A president ignores every enacted statute",
+        "Congress enacts a law that an executive agency implements",
+        "A court commands legislators to support one party",
+        "The Senate abolishes all presidential elections"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "What question best tests whether a proposed power threatens constitutional checks?",
+      "choices": [
+        "Does the proposal use the most popular campaign slogan?",
+        "Does the official personally prefer the policy?",
+        "Would the action avoid every public disagreement?",
+        "Can another institution lawfully review, limit, or resist its use?"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ],
+  "referenceUrls": [
+    "https://www.archives.gov/founding-docs/constitution-transcript"
+  ]
+}
+

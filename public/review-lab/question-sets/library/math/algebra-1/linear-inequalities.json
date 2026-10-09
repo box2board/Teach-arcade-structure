@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--algebra-1--linear-inequalities",
+  "title": "Linear Inequalities",
+  "subject": "Math",
+  "category": "Algebra I",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which symbol means greater than or equal to?",
+      "choices": [
+        "≥",
+        ">",
+        "≤",
+        "<"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which number satisfies x < 4?",
+      "choices": [
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is the solution of x + 5 > 9?",
+      "choices": [
+        "x < 4",
+        "x > 14",
+        "x > 4",
+        "x < 14"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is the solution of 2x ≤ 10?",
+      "choices": [
+        "x ≥ 5",
+        "x ≤ 5",
+        "x ≤ 20",
+        "x < 5"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is the solution of x − 3 ≥ 2?",
+      "choices": [
+        "x ≥ −1",
+        "x ≤ 5",
+        "x > 5",
+        "x ≥ 5"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which endpoint marker represents x ≤ 7 on a number line?",
+      "choices": [
+        "An open point at 7",
+        "A closed point at −7",
+        "A closed point at 7",
+        "An open point at −7"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which value does not satisfy x ≥ −2?",
+      "choices": [
+        "−3",
+        "−2",
+        "0",
+        "4"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "What happens to an inequality sign when both sides are multiplied by a negative number?",
+      "choices": [
+        "It stays unchanged in every case",
+        "It becomes an equality sign",
+        "It is removed",
+        "Its direction reverses"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What is the solution of −3x > 12?",
+      "choices": [
+        "x > −4",
+        "x < −4",
+        "x < 4",
+        "x > 4"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What is the solution of 4x − 1 < 11?",
+      "choices": [
+        "x > 3",
+        "x < 3",
+        "x < 2.5",
+        "x ≤ 3"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What is the solution of 5 − x ≥ 8?",
+      "choices": [
+        "x ≥ −3",
+        "x ≤ 3",
+        "x ≥ 3",
+        "x ≤ −3"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Which description represents −1 < x ≤ 3?",
+      "choices": [
+        "Greater than −1 and at most 3",
+        "At least −1 and less than 3",
+        "Less than −1 or greater than 3",
+        "At most −1 and at least 3"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why is the point open for x > 2?",
+      "choices": [
+        "Every positive number is excluded",
+        "Only whole numbers are included",
+        "The value 2 is excluded",
+        "The inequality has no solutions"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What is the solution of 2x + 4 ≤ x + 9?",
+      "choices": [
+        "x ≥ 5",
+        "x ≤ 13",
+        "x ≥ 13",
+        "x ≤ 5"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Which statement about adding 6 to both sides of x < 2 is true?",
+      "choices": [
+        "The direction must reverse",
+        "The inequality becomes x = 2",
+        "The inequality direction stays the same",
+        "Only the right side changes"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A student has $25 and notebooks cost $4 each. What is the greatest whole number affordable?",
+      "choices": [
+        "6",
+        "7",
+        "5",
+        "8"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "An elevator load must be at most 800 kg. Which inequality represents permitted load L?",
+      "choices": [
+        "L < 800",
+        "L ≤ 800",
+        "L ≥ 800",
+        "L > 800"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A job pays $12 per hour. How many hours are needed to earn at least $90, allowing fractional hours?",
+      "choices": [
+        "More than 7.5 hours only",
+        "At most 7.5 hours",
+        "Exactly 12 hours",
+        "At least 7.5 hours"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A student solves −2x ≤ 6 as x ≤ −3. Which correction is needed?",
+      "choices": [
+        "Keep the sign and change −3 to 3",
+        "Reverse the sign to obtain x ≥ −3",
+        "Replace the inequality with x = −3",
+        "Subtract 2 from each side"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which integer satisfies both x > −2 and x < 1?",
+      "choices": [
+        "−2",
+        "1",
+        "0",
+        "2"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ]
+}

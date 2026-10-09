@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--physics--magnetism-and-electromagnetism",
+  "title": "Magnetism and Electromagnetism",
+  "subject": "Science",
+  "category": "Physics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "How do like magnetic poles interact?",
+      "choices": [
+        "They attract",
+        "They merge into one pole",
+        "They repel",
+        "They exert no force in any case"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "How do unlike magnetic poles interact?",
+      "choices": [
+        "They attract",
+        "They repel",
+        "They lose all magnetism",
+        "They exchange electric charges"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What creates a magnetic field around a wire?",
+      "choices": [
+        "The wire's color",
+        "Electric current",
+        "A stationary uncharged dust particle",
+        "The absence of charge movement"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is an electromagnet?",
+      "choices": [
+        "A magnet that needs no field",
+        "Any object containing static water",
+        "A conductor with no current or field",
+        "A device whose magnetism is produced by electric current"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is electromagnetic induction?",
+      "choices": [
+        "Producing an electric effect through changing magnetic flux",
+        "Making a permanent magnet by freezing water",
+        "Removing every electron from a wire",
+        "Turning electricity directly into matter"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is the main energy conversion in an electric motor?",
+      "choices": [
+        "Mechanical to electrical",
+        "Chemical to nuclear",
+        "Electrical to mechanical",
+        "Thermal to gravitational only"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is the main energy conversion in a generator?",
+      "choices": [
+        "Electrical to mechanical",
+        "Nuclear to chemical",
+        "Mechanical to electrical",
+        "Gravitational to magnetic mass"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why can a compass help indicate direction?",
+      "choices": [
+        "Its magnetic needle aligns with the local magnetic field",
+        "Its needle is pushed only by sunlight",
+        "It measures Earth's rotational speed directly",
+        "Its needle always points toward the nearest metal object"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How can increasing current in an otherwise unchanged coil affect its magnetic field?",
+      "choices": [
+        "It generally weakens the field",
+        "It changes only the coil's electrical resistance, not its field",
+        "It reverses polarity regardless of current direction",
+        "It generally strengthens the field"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What happens to a coil's magnetic polarity when its current direction reverses?",
+      "choices": [
+        "The coil loses all electrons",
+        "The magnetic polarity reverses",
+        "Both ends become the same pole",
+        "Its number of turns doubles"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why can a moving magnet induce current in a nearby closed conducting loop?",
+      "choices": [
+        "The magnetic flux through the loop changes",
+        "The loop must become a permanent battery",
+        "The magnet supplies new electrons from its core",
+        "The loop's mass must decrease"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why does a stationary magnet beside a stationary loop not continuously induce current in the simple model?",
+      "choices": [
+        "The magnet has no field",
+        "The magnetic flux through the loop is not changing",
+        "The loop contains no electrons",
+        "Induction requires chemical fuel"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What happens when a bar magnet is cut into two ordinary pieces?",
+      "choices": [
+        "One piece has only north and the other only south",
+        "Both pieces contain no magnetic field",
+        "The pieces become electric charges",
+        "Each piece has a north and a south pole"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why can an iron core strengthen an electromagnet?",
+      "choices": [
+        "It prevents all current from flowing",
+        "It creates electrons from nothing",
+        "Its magnetic domains can align with the coil's field",
+        "It eliminates the coil's magnetic field"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "How does a transformer work in the usual introductory model?",
+      "choices": [
+        "Changing current in one coil induces voltage in another coil through changing magnetic flux",
+        "It converts every AC supply into constant DC automatically",
+        "It uses stationary magnets without changing flux",
+        "It creates electrical energy without an input"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A north pole is placed near another north pole. Which motion is favored if the magnets can move?",
+      "choices": [
+        "They move together",
+        "Their poles automatically switch",
+        "They move apart",
+        "They both lose mass"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A coil's current is turned off. What usually happens to its current-produced magnetic field?",
+      "choices": [
+        "It becomes stronger indefinitely",
+        "It collapses",
+        "It changes into an electric charge",
+        "It remains identical regardless of core material"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A magnet is moved repeatedly into and out of a conducting loop. What supports an induction explanation?",
+      "choices": [
+        "Current depends only on the magnet's paint color",
+        "No current can occur without a chemical battery",
+        "The loop must produce constant current even while motion stops",
+        "Current changes as the magnetic flux changes"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A turbine spins a generator during electricity production. What supplies the mechanical energy?",
+      "choices": [
+        "The generator's nameplate",
+        "The magnetic field alone without any energy input",
+        "The wire's static mass",
+        "The turbine's rotational motion"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Two long coils have the same length and cross-sectional area and carry equal current. One has more turns. Which field is generally stronger near the center?",
+      "choices": [
+        "The field of the coil with fewer turns",
+        "The field of the coil with more turns",
+        "Both fields must be identical regardless of turns",
+        "Both fields must be zero"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}

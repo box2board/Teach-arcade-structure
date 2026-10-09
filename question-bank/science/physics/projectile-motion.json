@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--physics--projectile-motion",
+  "title": "Projectile Motion",
+  "subject": "Science",
+  "category": "Physics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "In the ideal near-Earth projectile model, which force acts after launch when air resistance is neglected?",
+      "choices": [
+        "A continuing launch force",
+        "A horizontal force equal to the speed",
+        "Gravity",
+        "A force directed along the path"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What shape is an ideal projectile's path under constant downward gravity?",
+      "choices": [
+        "A circle",
+        "A straight horizontal line",
+        "A spiral",
+        "A parabola"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is the ideal horizontal acceleration of a projectile with no air resistance?",
+      "choices": [
+        "0 m/s²",
+        "9.8 m/s² downward",
+        "9.8 m/s² forward",
+        "An acceleration equal to its horizontal speed"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "How is a projectile's velocity analyzed in two dimensions?",
+      "choices": [
+        "Using mass and density components",
+        "Using horizontal and vertical components",
+        "Using temperature and pressure components",
+        "Using height alone"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "At the highest point of an upward launch, which velocity component is zero?",
+      "choices": [
+        "Horizontal in every case",
+        "Both in every case",
+        "Vertical",
+        "Neither in any case"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What does a projectile's range measure?",
+      "choices": [
+        "Its maximum vertical acceleration",
+        "Its total mass after landing",
+        "Its maximum upward speed",
+        "Its horizontal distance from launch to landing"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which approximate value is commonly used for gravitational acceleration near Earth's surface?",
+      "choices": [
+        "9.8 m/s² downward",
+        "9.8 m/s upward",
+        "0 m/s² for falling objects",
+        "1 m/s² horizontally"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why does horizontal speed remain constant in the ideal model?",
+      "choices": [
+        "Gravity balances a continuing horizontal launch force",
+        "There is no horizontal net force",
+        "The projectile loses all mass",
+        "Its vertical speed remains zero"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why does a projectile's vertical velocity change even at its highest point?",
+      "choices": [
+        "Gravity stops only at the highest point",
+        "Its horizontal speed creates upward force",
+        "Gravity continues to accelerate it downward",
+        "The projectile begins gaining mass"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Two balls are released from the same height at the same time, one dropped and one launched horizontally. Without air resistance, how do landing times compare?",
+      "choices": [
+        "The horizontally launched ball always lands first",
+        "The dropped ball always lands first",
+        "They depend only on horizontal speed",
+        "They are equal"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What determines the ideal fall time of a horizontally launched projectile from a given height?",
+      "choices": [
+        "Its vertical motion under gravity",
+        "Its horizontal speed alone",
+        "Its color",
+        "Its density alone"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "For a projectile landing at launch height without drag, how does its landing speed compare with launch speed?",
+      "choices": [
+        "Landing speed must be zero",
+        "They are equal in magnitude",
+        "Landing speed must be twice launch speed",
+        "Landing speed depends only on mass"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why can actual projectile motion differ from the ideal model?",
+      "choices": [
+        "Gravity always becomes zero outside a laboratory",
+        "Actual launches always have no vertical velocity",
+        "Air resistance can change both components of motion",
+        "Air resistance changes mass but cannot affect velocity"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "At equal launch and landing heights with no drag and fixed launch speed, which angle gives maximum range?",
+      "choices": [
+        "15° above horizontal",
+        "75° above horizontal",
+        "90° above horizontal",
+        "45° above horizontal"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What happens to vertical acceleration as an ideal projectile rises, reaches the top, and falls?",
+      "choices": [
+        "It remains downward and approximately constant",
+        "It changes from upward to zero to downward",
+        "It points along the direction of travel",
+        "It becomes horizontal at the top"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A projectile travels horizontally at 12 m/s for 3 s without drag. How far does it travel horizontally?",
+      "choices": [
+        "4 m",
+        "36 m",
+        "15 m",
+        "108 m"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A ball is launched horizontally and falls for 2 s. Using g = 10 m/s², how far does it fall vertically?",
+      "choices": [
+        "10 m",
+        "40 m",
+        "20 m",
+        "5 m"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A projectile starts with vertical velocity 20 m/s upward. Using g = 10 m/s², when does it reach its highest point?",
+      "choices": [
+        "1 s",
+        "4 s",
+        "20 s",
+        "2 s"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Two balls launch horizontally from the same height at 5 m/s and 10 m/s. Without drag, how do their ranges compare?",
+      "choices": [
+        "The faster ball travels twice as far",
+        "They travel the same horizontal distance",
+        "The faster ball travels half as far",
+        "The faster ball travels four times as far"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "An ideal projectile has horizontal velocity 3 m/s and vertical velocity 4 m/s. What is its speed?",
+      "choices": [
+        "7 m/s",
+        "5 m/s",
+        "1 m/s",
+        "12 m/s"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}

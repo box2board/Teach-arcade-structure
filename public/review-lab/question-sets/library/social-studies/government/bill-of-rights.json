@@ -1,0 +1,255 @@
+{
+  "schemaVersion": 1,
+  "id": "government--bill-of-rights",
+  "title": "Bill of Rights",
+  "subject": "Social Studies",
+  "category": "Government & Civics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is the Bill of Rights?",
+      "choices": [
+        "The first ten amendments to the U.S. Constitution",
+        "The first ten articles of the Constitution",
+        "The preamble to the Declaration of Independence",
+        "The final ten amendments to the Constitution"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "When was the Bill of Rights ratified?",
+      "choices": [
+        "1776",
+        "1787",
+        "1791",
+        "1868"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which amendment protects freedom of speech and the press?",
+      "choices": [
+        "Second Amendment",
+        "First Amendment",
+        "Fourth Amendment",
+        "Sixth Amendment"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which amendment addresses unreasonable searches and seizures?",
+      "choices": [
+        "Third Amendment",
+        "Seventh Amendment",
+        "Tenth Amendment",
+        "Fourth Amendment"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which amendment protects against compelled self-incrimination?",
+      "choices": [
+        "Fifth Amendment",
+        "First Amendment",
+        "Third Amendment",
+        "Eighth Amendment"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which amendment protects the right to counsel in criminal prosecutions?",
+      "choices": [
+        "Second Amendment",
+        "Seventh Amendment",
+        "Sixth Amendment",
+        "Ninth Amendment"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which amendment prohibits cruel and unusual punishments?",
+      "choices": [
+        "Fourth Amendment",
+        "Eighth Amendment",
+        "Sixth Amendment",
+        "Tenth Amendment"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why did supporters seek a bill of rights?",
+      "choices": [
+        "To grant the president unlimited authority",
+        "To replace every state constitution",
+        "To eliminate all criminal courts",
+        "To provide explicit protections against abuses of government power"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What does the First Amendment's Establishment Clause address?",
+      "choices": [
+        "Government establishment of religion",
+        "The creation of banks",
+        "The establishment of state borders",
+        "The founding of political parties"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What does the right to petition allow people to do?",
+      "choices": [
+        "Require courts to approve every personal request",
+        "Ignore laws they disagree with",
+        "Ask government to address grievances",
+        "Remove officials without legal procedures"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why does the Fifth Amendment's due process protection matter?",
+      "choices": [
+        "All government action requires unanimous public consent",
+        "Government must follow lawful procedures before depriving a person of life, liberty, or property",
+        "Every legal dispute must be settled by Congress",
+        "Defendants may choose to disregard court orders"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What does the Ninth Amendment recognize?",
+      "choices": [
+        "Only explicitly listed rights may exist",
+        "All powers belong exclusively to the president",
+        "States may cancel any federal election",
+        "People retain rights beyond those specifically listed"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What does the Tenth Amendment address?",
+      "choices": [
+        "Powers reserved to the states or the people",
+        "Presidential term limits",
+        "Voting rights for women",
+        "Direct election of senators"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "How did the Bill of Rights originally apply?",
+      "choices": [
+        "It directly governed every foreign nation",
+        "It replaced all state criminal law",
+        "It primarily restricted the federal government",
+        "It established universal adult voting"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "How have many Bill of Rights protections come to apply to states?",
+      "choices": [
+        "Through automatic repeal of all state constitutions",
+        "Through Supreme Court interpretations of the Fourteenth Amendment",
+        "Through treaties with state governors",
+        "Through the Twelfth Amendment's election procedures"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Police seek a warrant to search a home. Which protection is most directly relevant?",
+      "choices": [
+        "Second Amendment",
+        "Seventh Amendment",
+        "Ninth Amendment",
+        "Fourth Amendment"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A criminal defendant is forced to testify against herself. Which protection is implicated?",
+      "choices": [
+        "Privilege against compelled self-incrimination",
+        "The right to keep troops in private homes",
+        "The prohibition on titles of nobility",
+        "The power to regulate interstate trade"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A person criticizes government policy peacefully. Which right is most directly involved?",
+      "choices": [
+        "Right to a civil jury trial",
+        "Protection against excessive bail",
+        "Freedom of speech",
+        "Right to bear arms"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Why is saying that free speech has no legal limits inaccurate?",
+      "choices": [
+        "The First Amendment protects only elected officials",
+        "Some categories of speech and conduct can be lawfully regulated",
+        "Any criticism of government is illegal",
+        "States may ban every political opinion"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which comparison distinguishes the First and Sixth Amendments?",
+      "choices": [
+        "Both establish presidential election procedures",
+        "The First creates Congress; the Sixth creates the Cabinet",
+        "Both reserve all federal powers to states",
+        "The First protects expression; the Sixth protects rights in criminal prosecutions"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ],
+  "referenceUrls": [
+    "https://www.archives.gov/founding-docs/bill-of-rights-transcript",
+    "https://www.archives.gov/founding-docs/amendments-11-27"
+  ]
+}

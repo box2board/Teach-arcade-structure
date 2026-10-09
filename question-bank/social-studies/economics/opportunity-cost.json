@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "economics--opportunity-cost",
+  "title": "Opportunity Cost",
+  "subject": "Social Studies",
+  "category": "Economics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is opportunity cost?",
+      "choices": [
+        "The value of the best alternative given up",
+        "The total value of every rejected alternative",
+        "Only the cash price of a purchase",
+        "The value of the option chosen"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is a trade-off?",
+      "choices": [
+        "Receiving unlimited resources without sacrifice",
+        "A payment collected only by banks",
+        "Giving up something to obtain something else",
+        "A cost incurred only in foreign trade"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which resource creates opportunity costs even when no money is spent?",
+      "choices": [
+        "Price labels",
+        "Time",
+        "A receipt number",
+        "A store's logo"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is an explicit cost?",
+      "choices": [
+        "A forgone alternative without payment",
+        "A benefit gained from specialization",
+        "A past cost that can be recovered",
+        "A direct monetary payment"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is an implicit cost?",
+      "choices": [
+        "The value of a resource's forgone alternative use",
+        "Only a payment shown on an invoice",
+        "A price that every seller must charge",
+        "A tax imposed on imports"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is marginal cost?",
+      "choices": [
+        "The total cost of every previous action",
+        "The revenue from all units sold",
+        "The additional cost of an extra unit or action",
+        "The average benefit of past choices"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is a sunk cost?",
+      "choices": [
+        "A cost that changes with the next decision",
+        "A cost already incurred that cannot be recovered",
+        "A resource available without alternatives",
+        "An expected future benefit"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why can free admission to an event still involve an opportunity cost?",
+      "choices": [
+        "A zero ticket price means there is no trade-off",
+        "Only the organizer can face costs",
+        "Time has economic value only when tickets are sold",
+        "Attending uses time that could be spent elsewhere"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why is opportunity cost not the sum of every rejected choice?",
+      "choices": [
+        "Mutually exclusive alternatives cannot all be chosen instead",
+        "Only paid activities have value",
+        "All alternatives always have identical benefits",
+        "A choice has no value until money changes hands"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why should a business consider the owner's forgone salary?",
+      "choices": [
+        "The salary is automatically paid by customers",
+        "Only employee wages count as resource costs",
+        "The owner could use labor in another job",
+        "Forgone income is always a sunk cost"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How can a wage increase affect the opportunity cost of leisure?",
+      "choices": [
+        "Leisure becomes impossible to choose",
+        "An hour of leisure may involve more forgone earnings",
+        "The cost of every consumer good must fall",
+        "Past work hours become recoverable"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why do production possibilities curves show opportunity costs?",
+      "choices": [
+        "Every point guarantees the same level of consumer satisfaction",
+        "Only monetary prices determine the curve",
+        "The curve measures unemployment without showing output",
+        "More of one output can require giving up another"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What usually happens to opportunity cost when a resource's best alternative becomes more valuable?",
+      "choices": [
+        "It increases",
+        "It necessarily becomes zero",
+        "It becomes a sunk cost",
+        "It disappears from future decisions"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why should an unrecoverable past payment generally not determine whether to continue an activity?",
+      "choices": [
+        "Past payments always increase future benefits",
+        "Refunds are guaranteed for any discontinued activity",
+        "The current decision depends on future benefits and costs",
+        "Future alternatives have no economic value"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why might two people face different opportunity costs for the same activity?",
+      "choices": [
+        "Opportunity cost is fixed by national law",
+        "They have different alternatives and preferences",
+        "Only the activity's sticker price matters",
+        "Everyone has identical uses for time"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A student chooses a concert over a work shift that would pay $60. What is the forgone monetary alternative?",
+      "choices": [
+        "The cost of every concert that year",
+        "The student's total annual earnings",
+        "The wages of everyone at the concert",
+        "The $60 in wages"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A town uses land for a park instead of its next-best option, housing. What is part of the park's opportunity cost?",
+      "choices": [
+        "The benefits of the forgone housing",
+        "The benefits of every possible land use combined",
+        "Only money already spent on unrelated roads",
+        "Only the park's future maintenance bill"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A factory can make 100 chairs or 50 tables with the same resources. What is the opportunity cost of one table under a constant trade-off?",
+      "choices": [
+        "Half a chair",
+        "Fifty chairs",
+        "Two chairs",
+        "One hundred chairs"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A nonrefundable ticket has been purchased. Which factor should guide whether to attend now?",
+      "choices": [
+        "The need to recover the ticket through attendance",
+        "The expected benefits and additional costs of attending",
+        "The ticket price alone regardless of alternatives",
+        "The rule that a paid ticket must always be used"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which comparison is correct?",
+      "choices": [
+        "Opportunity cost applies only to businesses",
+        "Sunk costs are always the best forgone alternative",
+        "A free good can never require giving up time",
+        "A cash payment and forgone time can both be relevant costs"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

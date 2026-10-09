@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--statistics-probability--measures-of-center-and-spread",
+  "title": "Measures of Center and Spread",
+  "subject": "Math",
+  "category": "Statistics & Probability",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "How is the arithmetic mean calculated?",
+      "choices": [
+        "Subtract the smallest value from the largest",
+        "Choose the most frequent value",
+        "Choose the middle value without sorting",
+        "Add the values and divide by their count"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is the median of the ordered values −7, −2, and 4?",
+      "choices": [
+        "−7",
+        "−2",
+        "4",
+        "−5"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is the mode?",
+      "choices": [
+        "The middle ordered value",
+        "The difference between extremes",
+        "The most frequent value or values",
+        "The total divided by the count"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is the range of 3, 5, 8, and 11?",
+      "choices": [
+        "8",
+        "11",
+        "3",
+        "27"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is the mean of 2, 4, and 6?",
+      "choices": [
+        "3",
+        "4",
+        "6",
+        "12"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is the median of 1, 3, 7, 8, and 10?",
+      "choices": [
+        "7",
+        "3",
+        "8",
+        "5.8"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is the mode of 2, 2, 3, 5, and 5?",
+      "choices": [
+        "3",
+        "5 only",
+        "2 and 5",
+        "2 only"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why is the median often useful when data include an extreme outlier?",
+      "choices": [
+        "It uses every value's magnitude equally",
+        "It is always equal to the mean",
+        "It guarantees every data value is typical",
+        "It is less affected by extreme values than the mean"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What is the median of 2, 4, 8, and 10?",
+      "choices": [
+        "4",
+        "6",
+        "8",
+        "5"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Which set has the greater range: A = {4, 5, 6} or B = {1, 5, 9}?",
+      "choices": [
+        "A",
+        "They have equal ranges",
+        "Range cannot be calculated for three values",
+        "B"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What does the interquartile range measure?",
+      "choices": [
+        "The spread of the middle half of the data",
+        "The full maximum-minus-minimum spread",
+        "The average of all values",
+        "The most frequent value"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "If Q1 = 4 and Q3 = 12, what is the interquartile range?",
+      "choices": [
+        "16",
+        "4",
+        "8",
+        "3"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What does standard deviation describe?",
+      "choices": [
+        "The total number of observations",
+        "The most frequent category",
+        "Typical spread around the mean",
+        "The difference between mean and median only"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What happens to the mean when 3 is added to every observation?",
+      "choices": [
+        "It increases by 3",
+        "It is multiplied by 3",
+        "It stays unchanged",
+        "It decreases by 3"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What happens to the range when 3 is added to every observation?",
+      "choices": [
+        "It increases by 3",
+        "It is multiplied by 3",
+        "It decreases by 3",
+        "It stays unchanged"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Four scores have mean 8. What is their total?",
+      "choices": [
+        "12",
+        "32",
+        "2",
+        "24"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "The values 2, 3, 4, 5, and 6 become 2, 3, 4, 5, and 100. Which summary stays unchanged?",
+      "choices": [
+        "Median",
+        "Mean",
+        "Range",
+        "Maximum"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Two classes have the same mean score but different standard deviations. What differs?",
+      "choices": [
+        "The total number of students necessarily",
+        "The mean score",
+        "The spread of scores around the mean",
+        "The score units"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Using medians of the lower and upper halves, excluding the overall median, what is the IQR of 1, 2, 3, 4, 5, 6, 7?",
+      "choices": [
+        "3",
+        "4",
+        "6",
+        "2"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Five numbers have mean 10. A sixth number, 16, is added. What is the new mean?",
+      "choices": [
+        "12",
+        "13",
+        "10",
+        "11"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

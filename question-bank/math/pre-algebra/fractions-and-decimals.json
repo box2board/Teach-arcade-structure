@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--pre-algebra--fractions-and-decimals",
+  "title": "Fractions and Decimals",
+  "subject": "Math",
+  "category": "Pre-Algebra & Number Sense",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is 3/4 as a decimal?",
+      "choices": [
+        "0.34",
+        "0.25",
+        "0.75",
+        "0.43"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is 0.125 as a fraction in simplest form?",
+      "choices": [
+        "1/8",
+        "1/4",
+        "1/5",
+        "1/12"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is 1/2 + 1/4?",
+      "choices": [
+        "2/6",
+        "1/6",
+        "1/8",
+        "3/4"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is 5/6 − 1/3?",
+      "choices": [
+        "4/3",
+        "1/2",
+        "2/3",
+        "1/3"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is (2/3)(3/5)?",
+      "choices": [
+        "5/8",
+        "2/5",
+        "2/15",
+        "6/5"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is 3/4 ÷ 1/2?",
+      "choices": [
+        "3/8",
+        "2/3",
+        "1/4",
+        "3/2"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is 2.4 + 0.37?",
+      "choices": [
+        "2.77",
+        "2.437",
+        "6.1",
+        "2.03"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why are common denominators useful when adding fractions?",
+      "choices": [
+        "They make both numerators identical",
+        "They change each fraction's value",
+        "They express parts of the same size",
+        "They turn every sum into a whole number"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Which fraction is equivalent to 4/6?",
+      "choices": [
+        "1/3",
+        "3/2",
+        "4/3",
+        "2/3"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Which is greatest?",
+      "choices": [
+        "3/4",
+        "0.8",
+        "0.7",
+        "2/3"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What is 0.4 × 0.2?",
+      "choices": [
+        "0.8",
+        "0.6",
+        "0.08",
+        "0.02"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What is 4.5 ÷ 0.5?",
+      "choices": [
+        "9",
+        "0.9",
+        "2.25",
+        "4"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Which describes the repeating decimal 0.333…?",
+      "choices": [
+        "It equals 1/3",
+        "It equals exactly 0.33",
+        "It is greater than 1/2",
+        "It is irrational"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why does 2 ÷ 1/4 equal 8?",
+      "choices": [
+        "Dividing always makes numbers smaller",
+        "The denominator is added to the whole number",
+        "There are eight quarter-sized groups in two wholes",
+        "Two quarters contain eight wholes"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What is 7/8 − 3/8?",
+      "choices": [
+        "1/4",
+        "1/2",
+        "5/8",
+        "1/8"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A recipe needs 3/4 cup of flour per batch. How much is needed for two batches?",
+      "choices": [
+        "3/8 cup",
+        "1 cup",
+        "2 3/4 cups",
+        "1 1/2 cups"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A 5 m ribbon is cut into pieces each 0.25 m long, with no waste. How many pieces result?",
+      "choices": [
+        "1.25",
+        "10",
+        "20",
+        "4"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A tank is 2/5 full. Water fills another 1/4 of its total capacity. What fraction is now full?",
+      "choices": [
+        "3/9",
+        "3/20",
+        "1/5",
+        "13/20"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A student adds 1/3 + 1/3 and gets 2/6. Which explanation identifies the error?",
+      "choices": [
+        "Both denominators should be multiplied to give 9",
+        "The denominator stays 3 because the parts are still thirds",
+        "The numerators should remain 1",
+        "A sum of positive fractions must be smaller than either fraction"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A price of $3.60 is divided equally among three people. How much does each pay?",
+      "choices": [
+        "$1.20",
+        "$0.12",
+        "$10.80",
+        "$1.80"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}

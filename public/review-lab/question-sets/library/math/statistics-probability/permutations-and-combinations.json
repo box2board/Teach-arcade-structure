@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--statistics-probability--permutations-and-combinations",
+  "title": "Permutations and Combinations",
+  "subject": "Math",
+  "category": "Statistics & Probability",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "When should a permutation be used?",
+      "choices": [
+        "When only the selected group matters",
+        "When no items are selected",
+        "When all items must be identical",
+        "When the order of selected items matters"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "When should a combination be used?",
+      "choices": [
+        "When order must be recorded",
+        "When repetition is always required",
+        "When order does not matter",
+        "When each outcome has probability 1"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What does 4! equal?",
+      "choices": [
+        "16",
+        "24",
+        "4",
+        "10"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "How many ways can 3 distinct books be arranged on a shelf?",
+      "choices": [
+        "6",
+        "3",
+        "9",
+        "27"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "How many ways can a president and vice president be chosen from 5 students if no student holds both offices?",
+      "choices": [
+        "10",
+        "25",
+        "5",
+        "20"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "How many two-person committees can be chosen from 5 students?",
+      "choices": [
+        "20",
+        "25",
+        "10",
+        "5"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What does 0! equal?",
+      "choices": [
+        "0",
+        "1",
+        "−1",
+        "10"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why does choosing a president and vice president use permutations?",
+      "choices": [
+        "Switching the same two people changes who holds each office",
+        "Only the number of people matters",
+        "Every student may hold both offices",
+        "There is no order or role distinction"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why are AB and BA the same selection for a two-person committee?",
+      "choices": [
+        "Both selections contain only one person",
+        "The letters represent equal probabilities",
+        "Committees must be alphabetical",
+        "Committee membership does not depend on order"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "A code has two letters followed by one digit. With 26 letters and 10 digits and repetition allowed, how many codes are possible?",
+      "choices": [
+        "520",
+        "676",
+        "6760",
+        "62"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How many ways can first, second, and third place be assigned among 6 runners with no ties?",
+      "choices": [
+        "20",
+        "120",
+        "36",
+        "216"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "How many three-person teams can be chosen from 6 students?",
+      "choices": [
+        "20",
+        "120",
+        "18",
+        "216"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What changes when repetition is allowed in a three-digit code?",
+      "choices": [
+        "The first digit must be zero",
+        "The order stops mattering",
+        "Every position must use the same digit",
+        "Each position may use a digit used earlier"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "How many four-digit codes can be formed from digits 0–9 if repetition is allowed and a leading zero is permitted?",
+      "choices": [
+        "1000",
+        "5040",
+        "10000",
+        "40"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why is the number of two-person committees from 8 students half the number of ordered two-person selections?",
+      "choices": [
+        "Half the students cannot serve",
+        "Each committee is counted in two orders",
+        "Only four students are eligible",
+        "Every ordered selection contains four people"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "How many ways can 4 distinct posters be placed in a row?",
+      "choices": [
+        "24",
+        "16",
+        "8",
+        "256"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A club chooses 2 representatives from 7 members with no distinct roles. How many choices are possible?",
+      "choices": [
+        "42",
+        "14",
+        "49",
+        "21"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A three-digit code uses digits 1–5 with no repetition. How many codes are possible?",
+      "choices": [
+        "125",
+        "10",
+        "60",
+        "15"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A student chooses 3 of 5 elective courses, with order irrelevant. How many different course groups are possible?",
+      "choices": [
+        "60",
+        "10",
+        "15",
+        "125"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A restaurant offers 3 soups, 4 main dishes, and 2 desserts. Choosing one of each, how many meals are possible?",
+      "choices": [
+        "24",
+        "9",
+        "12",
+        "18"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--life-science-biology--evolution-and-natural-selection",
+  "title": "Evolution and Natural Selection",
+  "subject": "Science",
+  "category": "Life Science & Biology",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is biological evolution?",
+      "choices": [
+        "A change in one organism's habits during life",
+        "A change in inherited population characteristics across generations",
+        "An increase in an individual's body size",
+        "A daily change in local weather"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is natural selection?",
+      "choices": [
+        "Differential reproductive success associated with heritable traits",
+        "The deliberate choice of mates by scientists only",
+        "A process in which organisms request useful mutations",
+        "The inheritance of every acquired behavior"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is an adaptation in evolutionary biology?",
+      "choices": [
+        "Any injury sustained during an organism's life",
+        "Any temporary change in an organism's mood",
+        "A trait guaranteed to help in every environment",
+        "A heritable feature that improves success in a particular environment"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What can produce new alleles in a population?",
+      "choices": [
+        "Exercise",
+        "Seasonal migration",
+        "Mutation",
+        "Competition alone"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What does fitness refer to in evolutionary biology?",
+      "choices": [
+        "Freedom from all disease",
+        "Physical strength in every setting",
+        "An individual's maximum running speed",
+        "Reproductive contribution to later generations"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which process involves humans choosing organisms with desired traits to reproduce?",
+      "choices": [
+        "Genetic drift",
+        "Artificial selection",
+        "Natural selection",
+        "Gene flow"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is a fossil?",
+      "choices": [
+        "Preserved remains or traces of past life",
+        "A modern reconstruction based on ancient remains",
+        "Any living organism that is very old",
+        "A rock containing no evidence of an organism"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why must a trait be heritable for selection on that trait to drive evolutionary change?",
+      "choices": [
+        "All inherited traits are equally beneficial",
+        "Acquired injuries always alter gamete DNA",
+        "The trait's effects must be passed into later generations",
+        "Selection acts only on traits absent from parents"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why do populations, rather than individual organisms, evolve through natural selection?",
+      "choices": [
+        "Evolution requires every individual to change in the same way",
+        "Each organism deliberately rewrites its genes as needed",
+        "Inherited trait frequencies change as generations replace one another",
+        "Individuals never vary in inherited traits"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "How can similar underlying limb structures in different vertebrates support evolution?",
+      "choices": [
+        "They prove the animals have identical diets",
+        "They exclude any role for inheritance",
+        "They show every vertebrate evolved at the same time",
+        "They can provide evidence of common ancestry"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why can a trait beneficial in one habitat be less useful in another?",
+      "choices": [
+        "Mutation stops whenever habitats differ",
+        "The trait's effects depend on environmental conditions",
+        "All habitats impose identical survival demands",
+        "A beneficial trait must always increase body size"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What is genetic drift?",
+      "choices": [
+        "Random changes in allele frequencies, especially influential in small populations",
+        "The formation of alleles because organisms need them",
+        "The planned movement of animals between parks",
+        "The directed copying of only dominant genes"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "How does gene flow affect populations?",
+      "choices": [
+        "Movement and reproduction can transfer alleles between populations",
+        "It requires every individual to have the same genotype",
+        "It changes rocks into fossils",
+        "It prevents all inherited variation"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why does antibiotic use select for resistant bacteria?",
+      "choices": [
+        "Antibiotics intentionally produce the same helpful mutation in every bacterium",
+        "Bacteria stop reproducing when resistance develops",
+        "Resistant bacteria may survive treatment and reproduce more successfully",
+        "Resistance is always caused by a patient's behavior"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why is scientific evidence for evolution drawn from multiple fields?",
+      "choices": [
+        "Only fossils can provide useful evidence",
+        "Different fields must always produce unrelated conclusions",
+        "DNA comparisons are unrelated to ancestry",
+        "Fossils, anatomy, genetics, and other evidence can test related explanations"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Dark beetles are harder for predators to see on dark bark, and color is inherited. What may happen over generations?",
+      "choices": [
+        "Every beetle immediately changes color",
+        "Dark coloration may become more frequent",
+        "Light beetles stop passing any alleles to offspring",
+        "Predators cause a directed mutation in every beetle"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A storm randomly kills most members of a small population, regardless of their traits. Which process most directly fits a resulting allele-frequency change?",
+      "choices": [
+        "Acquired inheritance",
+        "Artificial selection",
+        "Directed mutation",
+        "Genetic drift"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A student says giraffes inherited longer necks because their parents stretched to reach leaves. What is the better natural-selection explanation?",
+      "choices": [
+        "Inherited neck-length variation affected survival and reproduction over generations",
+        "Stretching changed every parent's gamete DNA",
+        "Every giraffe developed the same neck length in one generation",
+        "Food availability prevented hereditary differences"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A population's environment changes. Which information best helps predict selection?",
+      "choices": [
+        "The average age of individuals without considering reproduction",
+        "Which traits occur only because of individual practice",
+        "How existing heritable variation affects reproductive success in the new conditions",
+        "Whether all inherited differences disappear when conditions change"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Two related populations become reproductively isolated over many generations. What evolutionary outcome may follow?",
+      "choices": [
+        "Every mutation disappears",
+        "Formation of distinct species",
+        "All genetic differences are automatically reversed",
+        "Both populations must become identical"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}

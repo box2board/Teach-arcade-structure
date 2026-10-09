@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--earth-space-science--climate-and-climate-change",
+  "title": "Climate and Climate Change",
+  "subject": "Science",
+  "category": "Earth & Space Science",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What describes climate rather than weather?",
+      "choices": [
+        "Long-term patterns and averages of atmospheric conditions",
+        "The rainfall during one afternoon",
+        "The wind speed at one instant",
+        "The temperature on one morning"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is the natural greenhouse effect?",
+      "choices": [
+        "Atmospheric gases reflect every form of sunlight back to space",
+        "The atmosphere prevents all outgoing radiation",
+        "Clouds generate the solar energy reaching Earth",
+        "Atmospheric gases absorb and emit infrared radiation, warming the surface and lower atmosphere"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which gas is a greenhouse gas?",
+      "choices": [
+        "Nitrogen",
+        "Carbon dioxide",
+        "Oxygen",
+        "Argon"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is albedo?",
+      "choices": [
+        "The fraction of radiation a surface absorbs only",
+        "The fraction of incoming radiation a surface reflects",
+        "The speed at which a surface loses heat by conduction",
+        "The total infrared radiation emitted by the atmosphere"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is a climate proxy?",
+      "choices": [
+        "A forecast of one day's future weather",
+        "A direct reading from every ancient thermometer",
+        "A model that changes the measured climate",
+        "Indirect evidence of past climate"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which source can provide evidence of ancient atmospheric composition?",
+      "choices": [
+        "Air bubbles trapped in ice cores",
+        "A modern weather forecast for the same location",
+        "The current thickness of one cloud",
+        "A single afternoon's wind-speed reading"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is climate mitigation?",
+      "choices": [
+        "Adjusting only to climate effects after they occur",
+        "Recording short-term weather without acting on causes",
+        "Reducing the causes or magnitude of climate change",
+        "Preparing buildings only for impacts that cannot be reduced"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why does burning fossil fuels contribute to recent warming?",
+      "choices": [
+        "It permanently removes carbon dioxide from the atmosphere",
+        "It prevents greenhouse gases from absorbing infrared radiation",
+        "It affects temperature only where the fuel is burned",
+        "It adds carbon dioxide that changes Earth's energy balance"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why does one cold day not disprove a long-term warming trend?",
+      "choices": [
+        "Climate is determined by the most recent temperature alone",
+        "A warming trend requires every day to be warmer than all earlier days",
+        "Daily weather varies within long-term climate trends",
+        "Local temperatures always equal the global average"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "How can melting reflective ice amplify warming?",
+      "choices": [
+        "Darker exposed surfaces absorb more solar energy",
+        "Darker exposed surfaces reflect more radiation",
+        "Less ice necessarily makes Earth emit no infrared radiation",
+        "Melting lowers solar absorption regardless of surface reflectivity"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why can warming oceans contribute to sea-level rise?",
+      "choices": [
+        "Warm seawater always occupies less volume",
+        "Warmer seawater expands",
+        "The water's mass must increase solely from warming",
+        "Ocean temperature has no effect on water volume"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "How does melting land-based ice affect sea level?",
+      "choices": [
+        "It removes ocean water through freezing",
+        "It has the same direct effect as melting floating sea ice",
+        "Land ice never exchanges water with the ocean",
+        "It adds water to the ocean"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why do scientists use several independent climate measurements?",
+      "choices": [
+        "One local thermometer fully represents every region",
+        "Agreement among different evidence sources strengthens conclusions",
+        "Only measurements supporting the initial prediction should be used",
+        "Agreement proves that no uncertainty remains"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What is climate adaptation?",
+      "choices": [
+        "Reducing greenhouse-gas emissions as its main definition",
+        "Measuring the natural greenhouse effect without changing practices",
+        "Adjusting systems to reduce harm from climate impacts",
+        "Preventing all natural variations in climate"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why are climate projections often given for different emissions scenarios?",
+      "choices": [
+        "Future human activities affect the magnitude of change",
+        "The physical laws are different in each scenario",
+        "All future emissions pathways have the same outcome",
+        "A scenario is a guarantee of one exact future temperature"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A city's yearly mean temperatures fluctuate but rise over 40 years. Which interpretation is reasonable?",
+      "choices": [
+        "Year-to-year variability can coexist with long-term warming",
+        "Every year must be warmer than the one before it",
+        "The coldest year invalidates the entire trend",
+        "Annual variability means no averages can be calculated"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Which action is an example of adaptation?",
+      "choices": [
+        "Reducing fossil-fuel use to lower emissions",
+        "Capturing carbon dioxide before release",
+        "Improving drainage to cope with heavier rainfall",
+        "Replacing coal generation to reduce emissions"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Which observation is stronger evidence of global warming than one hot day?",
+      "choices": [
+        "A high temperature in one classroom",
+        "A sustained rise in global average temperature across decades",
+        "One afternoon of low humidity",
+        "A single local thunderstorm"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A warming surface melts snow, lowering reflectivity and increasing heat absorption. What kind of feedback is described?",
+      "choices": [
+        "Negative feedback that opposes the initial warming",
+        "No feedback because snow is involved",
+        "Feedback that creates energy from nothing",
+        "Positive feedback that amplifies the initial warming"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A projection gives a range rather than one exact temperature. What is the appropriate interpretation?",
+      "choices": [
+        "It proves all temperatures are equally likely",
+        "It means measurements have no value",
+        "It reflects uncertainty and differing possible conditions",
+        "It guarantees the lowest value will occur"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ]
+}

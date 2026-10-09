@@ -1,0 +1,255 @@
+{
+  "schemaVersion": 1,
+  "id": "government--constitutional-amendments",
+  "title": "Constitutional Amendments",
+  "subject": "Social Studies",
+  "category": "Government & Civics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "referenceUrls": [
+    "https://www.archives.gov/founding-docs/amendments-11-27",
+    "https://www.archives.gov/federal-register/constitution/article-v.html"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which part of the Constitution establishes the formal amendment process?",
+      "choices": [
+        "Article II",
+        "Article V",
+        "Article I",
+        "Article VII"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What fraction of both houses of Congress is required to propose a constitutional amendment?",
+      "choices": [
+        "Two-thirds",
+        "One-half",
+        "Three-fourths",
+        "Four-fifths"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What fraction of states must ratify a proposed constitutional amendment?",
+      "choices": [
+        "One-half",
+        "Two-thirds",
+        "Four-fifths",
+        "Three-fourths"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which amendment delays changes in congressional pay until after an election for the House of Representatives?",
+      "choices": [
+        "Twentieth",
+        "Twenty-Second",
+        "Twenty-Seventh",
+        "Twenty-Fifth"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which amendment includes the Equal Protection Clause applying to states?",
+      "choices": [
+        "Fourteenth",
+        "Tenth",
+        "Sixteenth",
+        "Twenty-First"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which amendment prohibits denial of voting rights because of race, color, or previous condition of servitude?",
+      "choices": [
+        "Nineteenth",
+        "Fifteenth",
+        "Twenty-Fourth",
+        "Twenty-Sixth"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which amendment prohibits denying the vote to citizens age 18 or older because of age?",
+      "choices": [
+        "Twenty-Second",
+        "Twenty-Third",
+        "Twenty-Sixth",
+        "Twenty-Fifth"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why does the amendment process require broad support?",
+      "choices": [
+        "To make constitutional changes identical to ordinary bills",
+        "To give the president sole authority to alter the document",
+        "To allow one state to replace the entire Constitution",
+        "To balance the possibility of change with constitutional stability"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What is the president's formal role in approving an amendment proposed by Congress?",
+      "choices": [
+        "Presidential signature or veto is not part of that process",
+        "The president must sign it before states can consider it",
+        "The president alone decides which states may ratify it",
+        "A presidential veto requires unanimous state ratification"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "How did the Twelfth Amendment change the Electoral College process?",
+      "choices": [
+        "It replaced electors with a national popular vote",
+        "It required separate electoral votes for president and vice president",
+        "It gave each state exactly one electoral vote",
+        "It transferred all presidential selection to the Supreme Court"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What is the general purpose of the Twenty-Second Amendment?",
+      "choices": [
+        "To replace the vice presidency with a cabinet council",
+        "To give the president an unlimited number of terms",
+        "To require annual presidential elections",
+        "To limit how many times a person may be elected president"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What issue does the Twenty-Fifth Amendment address?",
+      "choices": [
+        "Direct election of senators",
+        "Congressional income tax authority",
+        "Presidential succession, vice-presidential vacancies, and inability",
+        "Voting rights in state school-board elections"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "How did the Twenty-First Amendment relate to the Eighteenth Amendment?",
+      "choices": [
+        "It repealed the earlier prohibition amendment",
+        "It extended prohibition to additional products",
+        "It made prohibition a permanent unamendable rule",
+        "It transferred prohibition enforcement to foreign courts"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What did the Twenty-Fourth Amendment prohibit in federal elections?",
+      "choices": [
+        "The use of secret ballots",
+        "Poll taxes as a condition of voting",
+        "The election of candidates without party membership",
+        "Registration procedures for eligible voters"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What did the Twenty-Third Amendment provide for the District of Columbia?",
+      "choices": [
+        "Full statehood under the Constitution",
+        "Two voting senators and no electors",
+        "The power to ratify amendments as a state",
+        "Participation in presidential elections through appointed electors"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A proposal passes both houses of Congress by two-thirds, but only half the states ratify it. What is its status?",
+      "choices": [
+        "It becomes law after presidential approval",
+        "It takes effect only in the ratifying states",
+        "It has not become a constitutional amendment",
+        "It automatically goes to the Supreme Court for adoption"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Which alternative to congressional proposal is authorized by Article V?",
+      "choices": [
+        "A convention called after applications from two-thirds of state legislatures",
+        "A national petition signed by one million voters",
+        "A presidential proclamation approved by cabinet members",
+        "A unanimous decision of the federal courts of appeals"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Which distinction between an ordinary federal law and a constitutional amendment is correct?",
+      "choices": [
+        "Ordinary laws require ratification by three-fourths of states",
+        "Amendments alter the constitutional framework through a separate process",
+        "Ordinary laws cannot be repealed after presidential signature",
+        "Amendments require the same simple-majority procedure as bills"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Which sequence correctly orders these voting-rights amendments by ratification?",
+      "choices": [
+        "Twenty-Sixth → Nineteenth → Fifteenth",
+        "Nineteenth → Fifteenth → Twenty-Sixth",
+        "Fifteenth → Nineteenth → Twenty-Sixth",
+        "Fifteenth → Twenty-Sixth → Nineteenth"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A student says ratifying the Fifteenth Amendment immediately ended racial voting barriers. Which evidence best challenges this claim?",
+      "choices": [
+        "The amendment's number comes after fourteen",
+        "Presidential elections continued after ratification",
+        "States retained elected legislatures",
+        "Discriminatory practices continued despite the constitutional prohibition"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

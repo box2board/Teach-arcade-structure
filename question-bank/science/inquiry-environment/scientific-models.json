@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--inquiry-environment--scientific-models",
+  "title": "Scientific Models",
+  "subject": "Science",
+  "category": "Scientific Inquiry & Environmental Science",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which example is a physical scientific model?",
+      "choices": [
+        "A scale representation of a watershed",
+        "A list of unrecorded guesses",
+        "An unrelated decorative object",
+        "A conclusion with no supporting explanation"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is a mathematical model?",
+      "choices": [
+        "A claim that mathematics removes all uncertainty",
+        "A physical replica that must be full-sized",
+        "A representation using mathematical relationships",
+        "A list containing only instrument names"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is a conceptual model?",
+      "choices": [
+        "A measurement of an object's exact mass",
+        "A representation of how components and processes relate",
+        "A claim that cannot be compared with evidence",
+        "A model containing every detail of reality"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is a model assumption?",
+      "choices": [
+        "An observed fact that can never change",
+        "The final answer in every investigation",
+        "An instrument's serial number",
+        "A condition or simplification accepted for constructing the model"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is a model prediction?",
+      "choices": [
+        "A measurement already collected in every case",
+        "The model's publication date",
+        "An expected outcome derived from the model",
+        "A personal preference about a result"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What does model validation involve?",
+      "choices": [
+        "Making every input equal to zero",
+        "Judging only how attractive the model looks",
+        "Assuming agreement without testing",
+        "Comparing model performance with relevant independent observations"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is a simulation?",
+      "choices": [
+        "A guarantee that no measurement error exists",
+        "A representation that imitates a system's behavior over time or under conditions",
+        "A complete replacement for all observations",
+        "A classification rank"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why do models simplify real systems?",
+      "choices": [
+        "They emphasize useful features while making analysis manageable",
+        "They must omit every important process",
+        "They eliminate the need for evidence",
+        "They prove systems have only one component"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why can two models of the same system both be useful?",
+      "choices": [
+        "They must make identical assumptions",
+        "Only the older model can be scientific",
+        "They may address different questions or levels of detail",
+        "Neither can be compared with observations"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why should a model's applicable range be stated?",
+      "choices": [
+        "Its assumptions may work under some conditions but fail under others",
+        "Models work perfectly at every scale",
+        "A range specifies only the author's age",
+        "Applicable ranges make tests unnecessary"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How can a model be improved after repeated mismatches with observations?",
+      "choices": [
+        "Remove all observations that disagree",
+        "Declare every mismatch irrelevant",
+        "Add detail without evaluating its effects",
+        "Revise assumptions or relationships and test the revised model"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why is a scale-model river not necessarily a perfect replica of real flow?",
+      "choices": [
+        "Water behaves identically at all sizes",
+        "Scaling can change relationships among forces and dimensions",
+        "Only color matters in fluid motion",
+        "Physical models cannot use real water"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why can sensitivity analysis help evaluate a model?",
+      "choices": [
+        "It proves all inputs are measured exactly",
+        "It reveals how outputs change when inputs or assumptions vary",
+        "It forces every prediction to stay constant",
+        "It measures only the model's physical weight"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why is testing on independent data useful after fitting a model?",
+      "choices": [
+        "It guarantees that the model works forever",
+        "It makes the fitting data unnecessary to report",
+        "It prevents any further revision",
+        "It helps assess performance beyond the data used to tune it"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "How should uncertainty in model inputs be treated?",
+      "choices": [
+        "Consider how it may affect predictions",
+        "Assume every input is exact",
+        "Replace every uncertain value with zero",
+        "Ignore it if the model uses equations"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A globe preserves Earth's overall shape but omits individual buildings. What is the best assessment?",
+      "choices": [
+        "It cannot be a model because it omits detail",
+        "It predicts every building's location exactly",
+        "It is useful for some geographic questions but not every question",
+        "It is useful only if made at Earth's full size"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A model assumes constant birth rates, but rates change during a drought. What should be examined?",
+      "choices": [
+        "Whether numbers should be removed entirely",
+        "Whether all earlier observations were false",
+        "Whether drought can be ignored by definition",
+        "Whether the assumption affects the model's predictions"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Two climate simulations differ when one input changes. What can this comparison help reveal?",
+      "choices": [
+        "The exact future climate without uncertainty",
+        "The prediction's sensitivity to that input",
+        "Which model is universally correct without testing either one",
+        "That observations are unnecessary"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A model predicts 20 units under tested conditions, while repeated reliable measurements are near 35. What is an appropriate response?",
+      "choices": [
+        "Change measurements to 20",
+        "Accept 20 solely because it came from a model",
+        "Investigate the mismatch and revise or limit the model as needed",
+        "Conclude that all scientific models are useless"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A traffic model accurately predicts morning congestion but fails during road closures. What conclusion is justified?",
+      "choices": [
+        "Its usefulness depends on whether closure conditions are represented",
+        "It must predict every possible traffic condition",
+        "All morning predictions must therefore be wrong",
+        "It has no assumptions"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}

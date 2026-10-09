@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--physics--electric-circuits",
+  "title": "Electric Circuits",
+  "subject": "Science",
+  "category": "Physics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is electric current?",
+      "choices": [
+        "The rate of electric charge flow",
+        "The amount of energy stored in every battery",
+        "The mass of moving electrons",
+        "The resistance of a wire divided by time"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is voltage?",
+      "choices": [
+        "Charge flow per second",
+        "The number of electrons in an atom",
+        "Electric potential difference between two points",
+        "The temperature of a conductor"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is electrical resistance?",
+      "choices": [
+        "Energy created by a battery",
+        "The total mass of a circuit",
+        "Opposition to electric current",
+        "The distance between a switch and a lamp"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which unit measures current?",
+      "choices": [
+        "Volt",
+        "Watt",
+        "Ohm",
+        "Ampere"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which unit measures resistance?",
+      "choices": [
+        "Volt",
+        "Ohm",
+        "Ampere",
+        "Coulomb"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is a series circuit?",
+      "choices": [
+        "A circuit with one path through its components",
+        "A circuit that has no power source",
+        "A circuit with several independent branches",
+        "A circuit in which current never flows"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is a parallel circuit?",
+      "choices": [
+        "A circuit containing more than one branch for current",
+        "A circuit with all components on one path",
+        "A circuit without potential differences",
+        "A circuit containing only insulators"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why does opening a simple series switch stop current?",
+      "choices": [
+        "The battery loses all stored charge instantly",
+        "Every wire becomes a magnet permanently",
+        "The conducting path is interrupted",
+        "Resistance becomes zero everywhere"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why are metals often used as conducting wires?",
+      "choices": [
+        "Their nuclei travel around the whole circuit",
+        "They have no atoms",
+        "Their electrons all remain fixed in place",
+        "They contain charges that can move through the material"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "For an ohmic resistor at constant temperature, what happens to current if voltage doubles?",
+      "choices": [
+        "It halves",
+        "It doubles",
+        "It stays unchanged",
+        "It becomes zero"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "For a fixed voltage, what happens to current when resistance increases?",
+      "choices": [
+        "It increases in the same proportion",
+        "It becomes independent of the source",
+        "It reverses direction automatically",
+        "It decreases"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why can one lamp go out while another stays lit in separate parallel branches?",
+      "choices": [
+        "An intact branch can retain its own complete path",
+        "Both branches must have identical current at every moment",
+        "Parallel circuits contain no resistance",
+        "A broken lamp creates a new battery"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What role does a battery play in a simple circuit?",
+      "choices": [
+        "It removes all resistance from the wires",
+        "It creates electrons from nothing whenever needed",
+        "It uses chemical processes to maintain a potential difference",
+        "It stores only gravitational energy"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "How should an ammeter be connected to measure current through a component?",
+      "choices": [
+        "Across the component without entering its path",
+        "In series with the component",
+        "Across the battery terminals as a short circuit",
+        "Only outside the conducting loop"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "How should a voltmeter be connected to measure a component's potential difference?",
+      "choices": [
+        "Instead of the battery in the only current path",
+        "In parallel across the component",
+        "In series as the only conducting route",
+        "Only at one point without another connection"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A 6 V source is connected to a 3 Ω ohmic resistor. Using I = V/R, what current flows?",
+      "choices": [
+        "2 A",
+        "18 A",
+        "0.5 A",
+        "9 A"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Two resistors of 2 Ω and 4 Ω are connected in series. What is their total resistance?",
+      "choices": [
+        "1 Ω",
+        "2 Ω",
+        "8 Ω",
+        "6 Ω"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A lamp draws 2 A at 12 V. Using P = VI, what power does it use?",
+      "choices": [
+        "6 W",
+        "14 W",
+        "24 W",
+        "10 W"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Two identical resistors are connected in parallel instead of using one alone. What happens to the equivalent resistance?",
+      "choices": [
+        "It doubles",
+        "It stays equal to one resistor",
+        "It becomes the sum of both resistances",
+        "It becomes half the resistance of one"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A circuit draws more current than its rated protective fuse permits. What is the fuse designed to do?",
+      "choices": [
+        "Increase current through the wire",
+        "Break the circuit to reduce the risk of overheating",
+        "Store the extra charge indefinitely",
+        "Lower the wire's resistance to zero"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}

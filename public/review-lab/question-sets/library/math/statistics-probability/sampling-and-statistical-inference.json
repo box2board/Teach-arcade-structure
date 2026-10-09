@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--statistics-probability--sampling-and-statistical-inference",
+  "title": "Sampling and Statistical Inference",
+  "subject": "Math",
+  "category": "Statistics & Probability",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a population in a statistical study?",
+      "choices": [
+        "Only those who respond to a survey",
+        "Only the largest subgroup",
+        "The entire group about which conclusions are sought",
+        "Only the observations discarded from the study"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is a sample in statistics?",
+      "choices": [
+        "The final conclusion of a study",
+        "A subset of the population used to collect data",
+        "The entire population in every case",
+        "Only the average of the data"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is a statistic?",
+      "choices": [
+        "A numerical summary of an entire population only",
+        "A survey question",
+        "A graph's title",
+        "A numerical summary computed from sample data"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is a parameter?",
+      "choices": [
+        "A numerical characteristic of a population",
+        "Only a sample's mean",
+        "An individual survey answer",
+        "A random selection method"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is a simple random sample of a fixed size?",
+      "choices": [
+        "A sample selected so every possible group of that size has equal chance",
+        "A sample selected only from volunteers",
+        "A sample chosen from the nearest people",
+        "A sample chosen only from one favored subgroup"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which method randomly selects students within each grade level before combining the selections?",
+      "choices": [
+        "Convenience sampling",
+        "A voluntary response poll",
+        "Stratified random sampling",
+        "A census of all students"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is statistical inference?",
+      "choices": [
+        "Listing every number without interpretation",
+        "Using sample evidence to draw conclusions about a population",
+        "Guaranteeing each sample equals the population exactly",
+        "Replacing data with a personal prediction"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why might a voluntary online poll have selection bias?",
+      "choices": [
+        "Every volunteer must answer dishonestly",
+        "Online polls cannot contain numerical data",
+        "A large response count guarantees a random sample",
+        "People choosing to respond may differ from the target population"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why does a larger well-designed random sample generally help?",
+      "choices": [
+        "It eliminates every kind of bias",
+        "It reduces typical sampling variability",
+        "It guarantees an exact population value",
+        "It makes random selection unnecessary"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What is nonresponse bias?",
+      "choices": [
+        "Bias when nonrespondents differ relevantly from respondents",
+        "Variation caused only by rounding",
+        "An error from counting the same value twice",
+        "The natural spread of individual measurements"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why should a sample represent important groups in the population?",
+      "choices": [
+        "Every subgroup must have identical opinions",
+        "Representativeness requires equal answers",
+        "Otherwise conclusions may overrepresent some groups",
+        "Only the largest subgroup matters"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "A survey asks only basketball players about all students' preferred sports. What is the main concern?",
+      "choices": [
+        "The survey has too many possible answers",
+        "The population cannot be defined",
+        "Sport preferences cannot be recorded",
+        "The sample favors one subgroup"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why does random assignment help in a controlled experiment?",
+      "choices": [
+        "It tends to balance other influences across treatment groups",
+        "It guarantees all participants are identical",
+        "It ensures the treatment has an effect",
+        "It replaces the need for a comparison group"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why does an observational association alone not establish causation?",
+      "choices": [
+        "Association means the variables never relate",
+        "Causation can never be investigated",
+        "Only the sample size determines causation",
+        "Other variables may help explain the association"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What does sampling variability mean?",
+      "choices": [
+        "A population must change whenever it is sampled",
+        "Different random samples can produce different statistics",
+        "All sampling methods are equally biased",
+        "Each respondent changes every previous response"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A random sample of 100 students includes 40 who use the bus. What population proportion estimate does this give?",
+      "choices": [
+        "100%",
+        "4%",
+        "40%",
+        "60%"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A school surveys only students in advanced math classes about all students' homework time. What improves the sampling design?",
+      "choices": [
+        "Survey more students only in the same advanced classes",
+        "Select only the students with the highest grades",
+        "Use only students who volunteer extra work",
+        "Randomly sample across the full student population"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Two random samples estimate a proportion at 48% and 52%. What is a reasonable interpretation?",
+      "choices": [
+        "One sample must contain deliberately false data",
+        "The population necessarily changed by four percentage points",
+        "Sampling variability can produce different estimates",
+        "Random samples always give identical estimates"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A researcher randomly assigns participants to tutoring and comparison groups. What distinguishes this from merely observing existing groups?",
+      "choices": [
+        "The researcher assigns the treatment rather than only recording it",
+        "The study cannot include numerical data",
+        "The assigned groups must have equal final results",
+        "A comparison group becomes unnecessary"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A large convenience sample consistently excludes absent students. What limitation remains?",
+      "choices": [
+        "Its size guarantees complete representativeness",
+        "Its size does not remove the coverage bias",
+        "Only small samples can be biased",
+        "Absent students automatically have the same responses"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}

@@ -3,7 +3,7 @@ import {CrossingWorld,roadHit,roadShapes} from '../public/arcade-review-games/cr
 import {ROUTES,CELL,WIDTH} from '../public/arcade-review-games/crossing-quest/config.js';
 import bank from '../public/arcade-review-games/crossing-quest/questions.js';
 import { QUESTION_SETS, loadQuestionSet } from '../public/arcade-review-games/crossing-quest/question-sets.js';
-assert.equal(QUESTION_SETS.length,1);
+assert.equal(QUESTION_SETS.length,253);
 assert.equal((await loadQuestionSet('scientific-method')).id,bank.id);
 await assert.rejects(loadQuestionSet('not-a-set'));
 for(const difficulty of ['relaxed','classic','challenge']){

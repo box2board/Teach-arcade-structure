@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "economics--supply-and-demand",
+  "title": "Supply and Demand",
+  "subject": "Social Studies",
+  "category": "Economics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What does demand describe?",
+      "choices": [
+        "Only the amount consumers wish existed",
+        "Quantities sellers can produce without buyers",
+        "Quantities buyers are willing and able to buy at different prices",
+        "Only a product's production expenses"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What does supply describe?",
+      "choices": [
+        "Quantities sellers are willing and able to offer at different prices",
+        "Only the goods already purchased by consumers",
+        "The income of households after taxes",
+        "The amount government must buy by law"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What does the law of demand generally predict, other things equal?",
+      "choices": [
+        "A higher price always increases quantity demanded",
+        "A higher price leads to a lower quantity demanded",
+        "A price change leaves quantity demanded unchanged",
+        "A lower price always reduces quantity demanded"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What does the law of supply generally predict, other things equal?",
+      "choices": [
+        "A higher price always reduces quantity supplied",
+        "A price change automatically shifts the entire supply curve",
+        "A lower price always increases quantity supplied",
+        "A higher price leads to a higher quantity supplied"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is equilibrium in a market?",
+      "choices": [
+        "A price where quantity supplied equals quantity demanded",
+        "A price where no trade occurs",
+        "A price chosen only by the largest buyer",
+        "A price where demand is always zero"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is a shortage at a given price?",
+      "choices": [
+        "Quantity supplied exceeds quantity demanded",
+        "Every buyer has purchased the desired quantity",
+        "Quantity demanded exceeds quantity supplied",
+        "Supply and demand curves are identical"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is a surplus at a given price?",
+      "choices": [
+        "Quantity demanded exceeds quantity supplied",
+        "Quantity supplied exceeds quantity demanded",
+        "The market has no sellers",
+        "The market has no available goods"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "What causes movement along a demand curve?",
+      "choices": [
+        "A change in buyers' tastes",
+        "A change in buyers' income",
+        "A change in the number of buyers",
+        "A change in the good's own price"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How does an increase in production costs usually affect supply?",
+      "choices": [
+        "It decreases supply at a given price",
+        "It increases supply at every price",
+        "It increases demand directly",
+        "It leaves supply unchanged by definition"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "For a normal good, how does a rise in consumer income usually affect demand?",
+      "choices": [
+        "Demand decreases",
+        "Supply increases directly",
+        "Demand increases",
+        "Quantity supplied becomes zero"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "If the price of a substitute rises, what generally happens to demand for the original good?",
+      "choices": [
+        "Demand decreases",
+        "Demand increases",
+        "The original good's supply curve must shift left",
+        "The original good becomes a public good"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "If a complement becomes more expensive, what generally happens to demand for the original good?",
+      "choices": [
+        "Demand increases",
+        "Supply always doubles",
+        "The market's production costs disappear",
+        "Demand decreases"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What does a technological improvement usually do to supply?",
+      "choices": [
+        "It increases supply if production becomes less costly",
+        "It decreases demand by definition",
+        "It fixes prices permanently",
+        "It removes all production constraints"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What tends to happen to price when a shortage persists in an otherwise competitive market without price controls?",
+      "choices": [
+        "Downward pressure develops",
+        "Price must remain unchanged by definition",
+        "Upward pressure develops",
+        "The demand curve must become horizontal"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why must other factors be held constant when applying the law of demand?",
+      "choices": [
+        "Consumers never change their tastes",
+        "Other changes can also affect purchases",
+        "All products have identical demand",
+        "Only government purchases matter"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Demand increases while supply stays unchanged. What is the usual equilibrium effect?",
+      "choices": [
+        "Lower price and lower quantity",
+        "Higher price and lower quantity",
+        "Lower price and higher quantity",
+        "Higher price and higher quantity"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Supply increases while demand stays unchanged. What is the usual equilibrium effect?",
+      "choices": [
+        "Lower price and higher quantity",
+        "Higher price and higher quantity",
+        "Lower price and lower quantity",
+        "Higher price and lower quantity"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A drought reduces the apple harvest. Which change best represents this?",
+      "choices": [
+        "A rightward shift of apple demand caused directly by drought",
+        "Movement along unchanged supply caused only by a lower price",
+        "A leftward shift of apple supply",
+        "An increase in the number of apple sellers"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A product's price falls and buyers purchase more, with other factors unchanged. What occurred?",
+      "choices": [
+        "An increase in demand shifting the curve",
+        "An increase in quantity demanded along the curve",
+        "A decrease in supply shifting the curve",
+        "A decrease in quantity demanded along the curve"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Both demand and supply increase. What can be concluded without knowing their relative sizes?",
+      "choices": [
+        "Equilibrium price necessarily rises",
+        "Equilibrium quantity necessarily falls",
+        "Equilibrium price necessarily falls",
+        "Equilibrium quantity rises, but the price change is uncertain"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

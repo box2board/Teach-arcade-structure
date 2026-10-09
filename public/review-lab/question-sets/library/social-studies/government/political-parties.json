@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "government--political-parties",
+  "title": "Political Parties",
+  "subject": "Social Studies",
+  "category": "Government & Civics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a political party?",
+      "choices": [
+        "A court that reviews election disputes",
+        "An organization seeking to win elections and influence government",
+        "A government office issuing driver's licenses",
+        "A business that prints all official ballots"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is a party platform?",
+      "choices": [
+        "A statement of the party's policy positions and goals",
+        "A list of every voter in the country",
+        "A constitutional rule for counting electoral votes",
+        "A court order establishing legislative districts"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is a party nominee?",
+      "choices": [
+        "A judge appointed to oversee elections",
+        "An official who manages voter registration",
+        "A voter who refuses all party affiliation",
+        "A candidate selected to run with a party's support"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which two parties have dominated U.S. national elections for much of modern history?",
+      "choices": [
+        "Federalists and Whigs",
+        "Populists and Progressives",
+        "Democrats and Republicans",
+        "Democratic-Republicans and Know-Nothings"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is a political coalition?",
+      "choices": [
+        "Groups working together toward shared political goals",
+        "A court's final interpretation of election law",
+        "A single unchangeable set of voter opinions",
+        "A rule banning cooperation between organizations"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What does bipartisan cooperation involve?",
+      "choices": [
+        "Only one party writing policy in secret",
+        "Members of two parties working together",
+        "Judges replacing elected lawmakers",
+        "Voters eliminating every party label"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is a third party in U.S. politics?",
+      "choices": [
+        "A third branch of the federal government",
+        "A court serving three states",
+        "A party outside the two dominant major parties",
+        "An agency supervising three elections"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "How can parties simplify choices for voters?",
+      "choices": [
+        "They guarantee that candidates hold identical views",
+        "They eliminate the need to evaluate evidence",
+        "They prevent voters from choosing independent candidates",
+        "Their labels and platforms provide information about general policy goals"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why do parties recruit and train candidates?",
+      "choices": [
+        "To develop people who can campaign and serve in office",
+        "To give candidates authority to cancel elections",
+        "To replace voter registration with party membership",
+        "To ensure every candidate serves in the judiciary"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What is a key difference between a political party and an interest group?",
+      "choices": [
+        "Interest groups administer elections; parties count the votes",
+        "Parties field candidates for office; interest groups primarily seek policy influence",
+        "Parties focus on one issue; interest groups must address every issue",
+        "Interest groups write official ballots; parties enforce election laws"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How can third parties influence policy even when they do not win many offices?",
+      "choices": [
+        "They can automatically appoint members of Congress",
+        "They can rewrite the Constitution without ratification",
+        "They can cancel the platforms of major parties",
+        "They can bring attention to issues adopted by other parties"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why do broad parties often contain internal disagreements?",
+      "choices": [
+        "Their voters all share the same background",
+        "Their platforms are written only by courts",
+        "They bring together people with different interests and priorities",
+        "They are prohibited from holding policy discussions"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "How can single-member plurality elections encourage a two-party system?",
+      "choices": [
+        "Voters and candidates may coordinate around larger parties to avoid splitting support",
+        "Every ballot legally requires exactly two names",
+        "The Constitution requires one party per legislative chamber",
+        "Small parties are automatically assigned equal seats"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What does party realignment describe?",
+      "choices": [
+        "An annual change in the location of polling places",
+        "A substantial, lasting shift in party coalitions and voting patterns",
+        "A court's revision of one candidate's filing date",
+        "A temporary change in a campaign's slogan"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why is an opposition party important in a competitive democracy?",
+      "choices": [
+        "It can reject every valid election result",
+        "It can replace judicial decisions with campaign promises",
+        "It removes the need for voters to evaluate incumbents",
+        "It offers alternatives and scrutinizes the governing party"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A party platform promises a policy, but some elected members oppose it. Which conclusion is most accurate?",
+      "choices": [
+        "Party platforms automatically become law",
+        "All members must have identical policy views",
+        "Platforms describe general goals without guaranteeing uniform action",
+        "The party can no longer participate in elections"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A new party emphasizes an overlooked issue, and major parties later address it. What role has the new party played?",
+      "choices": [
+        "Expanding the public policy agenda",
+        "Serving as a constitutional court",
+        "Ratifying a national amendment",
+        "Administering federal tax collection"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Two parties negotiate a shared transportation bill. Which term best describes this cooperation?",
+      "choices": [
+        "Judicial review",
+        "Bipartisanship",
+        "Federal supremacy",
+        "Party realignment"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Which evidence would best support a claim that a long-term party realignment occurred?",
+      "choices": [
+        "One party changes the wording of a convention resolution",
+        "A candidate chooses a new campaign communications team",
+        "Several elections show a durable shift in support among major voter groups",
+        "A polling-place schedule changes for one local election"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Why should a voter examine candidates as well as their party labels?",
+      "choices": [
+        "Party labels have no relationship to public policy",
+        "Candidates never differ from their party leaders",
+        "Individual qualifications are legally identical within a party",
+        "Candidates can differ in experience, priorities, and specific positions"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

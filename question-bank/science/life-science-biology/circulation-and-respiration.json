@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--life-science-biology--circulation-and-respiration",
+  "title": "Circulation and Respiration",
+  "subject": "Science",
+  "category": "Life Science & Biology",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which vessels carry blood away from the heart?",
+      "choices": [
+        "Veins",
+        "Arteries",
+        "Capillaries",
+        "Venules"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which vessels return blood toward the heart?",
+      "choices": [
+        "Veins",
+        "Arteries",
+        "Arterioles",
+        "Capillaries"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Where does much exchange between blood and body tissues occur?",
+      "choices": [
+        "Large arteries",
+        "Heart valves",
+        "Capillaries",
+        "Large veins"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What are alveoli?",
+      "choices": [
+        "Heart chambers",
+        "Kidney tubules",
+        "Blood-clotting cells",
+        "Small lung air sacs involved in gas exchange"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which blood cells primarily carry oxygen?",
+      "choices": [
+        "Red blood cells",
+        "Platelets",
+        "Most white blood cells",
+        "Skin cells"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is hemoglobin?",
+      "choices": [
+        "A blood protein mainly involved in clotting",
+        "An enzyme released into the digestive tract",
+        "A hormone regulating blood glucose",
+        "An oxygen-binding protein in red blood cells"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which heart chamber pumps blood into systemic circulation?",
+      "choices": [
+        "Right atrium",
+        "Left ventricle",
+        "Right ventricle",
+        "Left atrium"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why is an artery not defined simply as an oxygen-rich vessel?",
+      "choices": [
+        "Arteries are defined mainly by the presence of valves",
+        "Arteries are classified only by vessel diameter",
+        "Vessel classification concerns direction relative to the heart",
+        "The word artery refers only to vessels in the lungs"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How does the pulmonary circuit connect heart and lungs?",
+      "choices": [
+        "It delivers oxygen to tissues without passing through the lungs",
+        "It carries inhaled air directly into body tissues",
+        "It sends blood to the kidneys before returning to the heart",
+        "It carries blood to lungs for gas exchange and back to the heart"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why do thin alveolar and capillary walls aid gas exchange?",
+      "choices": [
+        "They increase the distance gases must cross",
+        "They transport gases only through active pumping",
+        "They shorten diffusion distance",
+        "They replace the need for gas partial-pressure differences"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why does oxygen move from alveoli into blood under normal conditions?",
+      "choices": [
+        "A partial-pressure difference favors diffusion",
+        "Red blood cells produce oxygen inside the capillaries",
+        "Lung pressure moves oxygen against every partial-pressure gradient",
+        "Oxygen exchange occurs only through active cellular transport"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "How does diaphragm contraction normally promote inhalation?",
+      "choices": [
+        "It reduces chest volume, raising lung pressure",
+        "It increases chest volume and lowers pressure in the lungs",
+        "It decreases chest volume while lowering lung pressure",
+        "It keeps chest volume fixed while closing the airways"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What do heart valves help accomplish?",
+      "choices": [
+        "Produce new oxygen-binding blood cells",
+        "Exchange blood gases with inhaled air",
+        "Maintain one-way blood flow",
+        "Control the digestion of circulating nutrients"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why does working muscle often require greater blood flow?",
+      "choices": [
+        "Active muscle needs less nutrient delivery than resting muscle",
+        "It needs more oxygen and nutrients and removal of metabolic products",
+        "Blood flow supplies energy without cellular metabolism",
+        "Muscles obtain all additional oxygen directly through the skin"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "How does carbon dioxide reach the lungs from body tissues?",
+      "choices": [
+        "It travels mainly through nerve fibers to the lungs",
+        "It moves mainly through airways from body tissues",
+        "It is stored in tissues until cells divide",
+        "It is transported in blood in several forms"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Blood leaves the right ventricle. Where does it normally go next?",
+      "choices": [
+        "Toward the lungs through pulmonary arteries",
+        "Into the aorta toward body tissues",
+        "Into the left atrium through systemic veins",
+        "Into the left ventricle through the aorta"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Oxygen-rich blood returns from the lungs. Which chamber receives it first?",
+      "choices": [
+        "Left atrium",
+        "Right ventricle",
+        "Right atrium",
+        "Left ventricle"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A diagram shows an expanded chest cavity and lower internal air pressure. Which phase fits?",
+      "choices": [
+        "Exhalation with a reduced chest cavity",
+        "Exhalation with increased lung pressure",
+        "Inhalation",
+        "A pause with equal lung and outside pressure"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A student says veins always carry oxygen-poor blood. Which example challenges that claim?",
+      "choices": [
+        "The trachea carrying inhaled air",
+        "Pulmonary veins returning blood from lungs",
+        "The aorta carrying systemic blood",
+        "The right ventricle pumping to lungs"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "During activity, breathing and circulation both increase. What coordinated purpose is served?",
+      "choices": [
+        "Reducing all nutrient use in active muscle",
+        "Keeping carbon dioxide permanently inside body tissues",
+        "Replacing cellular respiration with lung ventilation",
+        "Supporting gas exchange and transport for increased metabolism"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

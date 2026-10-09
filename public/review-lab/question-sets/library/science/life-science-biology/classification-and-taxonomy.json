@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--life-science-biology--classification-and-taxonomy",
+  "title": "Classification and Taxonomy",
+  "subject": "Science",
+  "category": "Life Science & Biology",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is taxonomy?",
+      "choices": [
+        "Studying earthquake waves",
+        "Measuring rainfall",
+        "Calculating reaction rates",
+        "Naming and classifying organisms"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What are the two parts of a binomial scientific name?",
+      "choices": [
+        "Domain and kingdom",
+        "Genus and specific epithet",
+        "Family and order",
+        "Common name and habitat"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which rank lies between order and genus?",
+      "choices": [
+        "Species",
+        "Kingdom",
+        "Family",
+        "Domain"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which rank is broadest in the common three-domain system?",
+      "choices": [
+        "Domain",
+        "Class",
+        "Genus",
+        "Species"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which two domains contain prokaryotes?",
+      "choices": [
+        "Bacteria and Archaea",
+        "Archaea and Eukarya",
+        "Bacteria and Eukarya",
+        "Eukarya and Animalia"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What does a phylogenetic branch point represent?",
+      "choices": [
+        "An increase in organism size",
+        "An organism's exact age",
+        "A common ancestor",
+        "A required habitat change"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is a dichotomous key?",
+      "choices": [
+        "A population-growth graph",
+        "An identification tool with paired choices",
+        "A list ordered by body mass",
+        "A migration map"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why are scientific names useful internationally?",
+      "choices": [
+        "They describe complete genomes",
+        "They prevent revised classifications",
+        "They show exact population size",
+        "They provide shared names despite different common names"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How can DNA comparisons improve classification?",
+      "choices": [
+        "DNA alone determines every habitat",
+        "Shared habitats guarantee identical DNA",
+        "Inherited similarities help reveal relationships",
+        "Only large animals have informative DNA"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why might distantly related organisms have similar features?",
+      "choices": [
+        "Similar conditions can favor convergent evolution",
+        "They must have the same genus",
+        "Their chromosomes must be identical",
+        "Appearance proves recent common ancestry"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What does sharing a genus usually indicate?",
+      "choices": [
+        "An identical diet in every habitat",
+        "The same individual life span",
+        "Completely identical DNA",
+        "A relatively close evolutionary relationship"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why may a classification be revised?",
+      "choices": [
+        "Names must change annually",
+        "New evidence changes inferred relationships",
+        "Organisms lose inherited traits",
+        "Classification follows public popularity"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "How should a cladogram's branches be interpreted?",
+      "choices": [
+        "As an intelligence ranking",
+        "As ancestry relationships, not a ranking of progress",
+        "As stages all leading toward humans",
+        "As offspring counts for each species"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why can a shared derived feature help define a group?",
+      "choices": [
+        "It proves all members are one species",
+        "It can never be lost",
+        "It makes other evidence unnecessary",
+        "It can mark descendants of an ancestor that acquired it"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "How should a student use an identification key?",
+      "choices": [
+        "Follow each indicated path using observed traits",
+        "Skip to a familiar common name",
+        "Select the largest organism each time",
+        "Use size instead of the listed features"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "In the scientific name Canis lupus, which part identifies the genus?",
+      "choices": [
+        "lupus",
+        "Canis lupus",
+        "Canis",
+        "Animalia"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Animals share a family but have different genera. Which rank must they also share?",
+      "choices": [
+        "Species",
+        "Genus",
+        "Specific epithet",
+        "Order"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A and B share a more recent branch point than either shares with C. Which pair is closest on that tree?",
+      "choices": [
+        "A and C",
+        "B and C",
+        "A and B",
+        "All pairs are equally close"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A key directs feathered specimens to a bird branch. A specimen has feathers. What should the student do?",
+      "choices": [
+        "Follow the bird branch",
+        "Ignore the feathers",
+        "Use body temperature alone",
+        "Choose using body size alone"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Different genera share one common name. What does this illustrate?",
+      "choices": [
+        "Common names guarantee identical ancestry",
+        "Common names can be ambiguous",
+        "Genus is unrelated to scientific naming",
+        "One organism cannot be living"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}

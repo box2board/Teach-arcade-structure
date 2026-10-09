@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--algebra-1--linear-function-graphs",
+  "title": "Linear Function Graphs",
+  "subject": "Math",
+  "category": "Algebra I",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Where does a graph's y-intercept lie?",
+      "choices": [
+        "On the x-axis away from the origin",
+        "On the y-axis",
+        "Only in the first quadrant",
+        "Only where y equals x"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is the y-intercept of y = 3x − 4?",
+      "choices": [
+        "−4",
+        "3",
+        "4",
+        "−3"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which equation has a horizontal graph?",
+      "choices": [
+        "x = 5",
+        "y = 5x",
+        "y = x + 5",
+        "y = 5"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which equation has a vertical graph?",
+      "choices": [
+        "y = −2",
+        "y = −2x",
+        "x = −2",
+        "y = x − 2"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which point would be plotted when x = 1 in y = −3x + 2?",
+      "choices": [
+        "(1, 5)",
+        "(1, −1)",
+        "(−1, 1)",
+        "(1, 2)"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is the slope of y = −3x + 2?",
+      "choices": [
+        "−3",
+        "2",
+        "3",
+        "−2"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "In an ordered pair (x, y), which coordinate gives horizontal position?",
+      "choices": [
+        "y",
+        "x + y",
+        "x × y",
+        "x"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "How does the graph of y = x + 4 compare with y = x?",
+      "choices": [
+        "It is shifted right 4 units",
+        "It is four times as steep",
+        "It is shifted up 4 units",
+        "It is reflected across the y-axis"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Which statement describes the graph of y = −2x + 6?",
+      "choices": [
+        "It rises 2 units for each 1-unit move right",
+        "It falls 2 units for each 1-unit move right",
+        "It is horizontal at y = 6",
+        "It is vertical at x = −2"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What is the x-intercept of y = 2x − 8?",
+      "choices": [
+        "4",
+        "−8",
+        "−4",
+        "8"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why is x = 3 not the graph of y as a function of x?",
+      "choices": [
+        "Its graph never touches the x-axis",
+        "Its slope is zero",
+        "Its y-intercept is positive",
+        "One x-value is paired with many y-values"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Which lines have the same steepness and direction but different y-intercepts?",
+      "choices": [
+        "y = 2x + 1 and y = −2x + 1",
+        "y = x + 1 and y = 2x + 1",
+        "y = 2x + 1 and y = 2x − 5",
+        "y = 2 and x = 2"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "The line y = 4x passes through the origin. Which point is also on it?",
+      "choices": [
+        "(4, 3)",
+        "(3, 12)",
+        "(3, 7)",
+        "(12, 3)"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "A graph crosses the y-axis at 7 and rises 2 units for each unit right. Which equation describes it?",
+      "choices": [
+        "y = 2x + 7",
+        "y = 7x + 2",
+        "y = −2x + 7",
+        "y = 2x − 7"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Which point belongs to the graph of y = −x + 4?",
+      "choices": [
+        "(6, 2)",
+        "(−2, −6)",
+        "(4, 4)",
+        "(6, −2)"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Which equation has x-intercept 3 and y-intercept 6?",
+      "choices": [
+        "y = 2x + 6",
+        "y = −3x + 6",
+        "y = −2x + 6",
+        "y = −2x + 3"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A line contains (−1, 4) and (1, 0). Which description is correct?",
+      "choices": [
+        "Its slope is 2 and its y-intercept is 2",
+        "Its slope is −2 and its y-intercept is 2",
+        "Its slope is −2 and its y-intercept is 4",
+        "Its slope is −4 and its y-intercept is 0"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "For y = 5 − x, what happens to y when x increases from 2 to 6?",
+      "choices": [
+        "y decreases by 4",
+        "y increases by 4",
+        "y decreases by 8",
+        "y stays constant"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A graph shows a line through (0, 10) and (5, 0). Which point must also be on that line?",
+      "choices": [
+        "(2, 8)",
+        "(3, 6)",
+        "(4, 4)",
+        "(2, 6)"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which equation describes the line through (2, 3) that is parallel to y = 4x − 1?",
+      "choices": [
+        "y = 4x + 3",
+        "y = −4x + 11",
+        "y = 4x − 5",
+        "y = x + 1"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ]
+}

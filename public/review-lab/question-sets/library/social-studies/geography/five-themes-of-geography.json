@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "geography--five-themes-of-geography",
+  "title": "Five Themes of Geography",
+  "subject": "Social Studies",
+  "category": "Geography",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which theme asks where a place is located?",
+      "choices": [
+        "Movement",
+        "Region",
+        "Location",
+        "Human-environment interaction"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which theme describes the physical and human characteristics of a location?",
+      "choices": [
+        "Place",
+        "Movement",
+        "Region",
+        "Location alone"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which theme examines how people adapt to and change their surroundings?",
+      "choices": [
+        "Absolute location",
+        "Human-environment interaction",
+        "Region alone",
+        "Relative location"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which theme examines flows of people, goods, and ideas?",
+      "choices": [
+        "Place",
+        "Location",
+        "Region",
+        "Movement"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which theme groups places by shared characteristics?",
+      "choices": [
+        "Region",
+        "Movement",
+        "Absolute location",
+        "Human-environment interaction"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is absolute location?",
+      "choices": [
+        "A description using nearby landmarks only",
+        "A grouping of places by language",
+        "A precise position such as coordinates",
+        "A pattern of goods moving between cities"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is relative location?",
+      "choices": [
+        "A position expressed only by exact coordinates",
+        "A position described in relation to other places",
+        "A region with a shared climate",
+        "A place's population total"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why are latitude and longitude useful for location?",
+      "choices": [
+        "They describe every cultural feature of a place",
+        "They reveal every movement of goods",
+        "They classify all regions by language",
+        "They identify precise positions on Earth's surface"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why do climate and architecture both belong to the theme of place?",
+      "choices": [
+        "Place includes physical and human characteristics",
+        "Place concerns only political borders",
+        "Architecture is a coordinate system",
+        "Climate measures transportation alone"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "How does a dam illustrate human-environment interaction?",
+      "choices": [
+        "It provides a city's exact coordinates",
+        "It describes language diffusion only",
+        "People modify a river to serve human purposes",
+        "It identifies a region solely by shared voting patterns"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why does migration fit the theme of movement?",
+      "choices": [
+        "Migration identifies a mountain's elevation",
+        "People relocate between places",
+        "Migration defines absolute location",
+        "Migration describes rainfall without human activity"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What makes a language region a formal region?",
+      "choices": [
+        "It is defined only by travel time to one central point",
+        "It must have legally identical political boundaries",
+        "It consists only of individual opinions about a place",
+        "It is defined by a shared measurable characteristic"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What makes a metropolitan commuting area a functional region?",
+      "choices": [
+        "Activities connect surrounding places to a central city",
+        "Every place within it has the same climate",
+        "It is defined only by a shared continent",
+        "It has no transportation connections"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why can a perceptual region have disputed boundaries?",
+      "choices": [
+        "Its coordinates are always fixed by international treaty",
+        "It has no cultural meaning",
+        "It depends on people's ideas and impressions of an area",
+        "It is defined only by a river drainage basin"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why can the five themes overlap in a geographic study?",
+      "choices": [
+        "Each theme must be studied without reference to others",
+        "One issue can involve location, characteristics, interactions, flows, and regions",
+        "Every place has only one geographic characteristic",
+        "Regions cannot contain movement"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A student describes a town as 20 miles east of another town. Which concept is used?",
+      "choices": [
+        "Absolute location",
+        "Functional region",
+        "Cultural diffusion",
+        "Relative location"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A map gives a school's latitude and longitude. Which concept is used?",
+      "choices": [
+        "Absolute location",
+        "Relative location",
+        "Perceptual region",
+        "Human-environment interaction"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A farmer uses terraces to grow crops on slopes. Which theme is most directly illustrated?",
+      "choices": [
+        "Absolute location",
+        "Movement of ideas",
+        "Human-environment interaction",
+        "Political region"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A researcher tracks clothing shipped from factories to stores overseas. Which theme is central?",
+      "choices": [
+        "Absolute location",
+        "Movement",
+        "Place alone",
+        "Perceptual region"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which study most directly applies the theme of region?",
+      "choices": [
+        "Finding one house by street address",
+        "Measuring one shipment's travel time",
+        "Describing a single farmer's irrigation choice",
+        "Comparing areas that share a Mediterranean climate"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

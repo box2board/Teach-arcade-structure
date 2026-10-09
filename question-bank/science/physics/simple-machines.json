@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--physics--simple-machines",
+  "title": "Simple Machines",
+  "subject": "Science",
+  "category": "Physics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is the main purpose of a simple machine?",
+      "choices": [
+        "Change the size or direction of a force",
+        "Increase total output energy above input energy",
+        "Reduce both force and distance without a tradeoff",
+        "Eliminate the need for input work"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which simple machine uses a rigid bar that turns around a pivot?",
+      "choices": [
+        "Wedge",
+        "Screw",
+        "Lever",
+        "Inclined plane"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is the pivot point of a lever called?",
+      "choices": [
+        "Load",
+        "Effort",
+        "Axle in every case",
+        "Fulcrum"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which simple machine is a sloped surface used to raise a load?",
+      "choices": [
+        "Wheel and axle",
+        "Inclined plane",
+        "Pulley",
+        "Lever"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which simple machine is an inclined plane wrapped around a cylinder?",
+      "choices": [
+        "Wedge",
+        "Pulley",
+        "Screw",
+        "Lever"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which simple machine consists of a grooved wheel guiding a rope?",
+      "choices": [
+        "Pulley",
+        "Wedge",
+        "Screw",
+        "Ramp"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "How is mechanical advantage calculated from forces?",
+      "choices": [
+        "Output force divided by input force",
+        "Input force divided by distance",
+        "Output distance divided by time",
+        "Input force multiplied by output force"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why does an ideal ramp reduce the force needed to lift a load?",
+      "choices": [
+        "The load's gravitational weight decreases on the ramp",
+        "Output work becomes smaller than the height gain requires",
+        "The effort acts through a longer distance",
+        "The machine increases available energy without input"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why can a single fixed pulley be useful even without multiplying force?",
+      "choices": [
+        "It doubles the effort force automatically",
+        "It changes the direction of the applied force",
+        "It doubles the load's mass",
+        "It reduces the ideal input work to zero"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why is actual machine efficiency below 100% when friction is present?",
+      "choices": [
+        "Energy is destroyed inside the machine",
+        "Output work must exceed input work",
+        "Useful work includes every bit of frictional heating",
+        "Some input energy becomes thermal energy"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How can a longer effort arm help a lever lift the same load?",
+      "choices": [
+        "The load's mass must decrease",
+        "The longer arm reduces torque for the same effort",
+        "Less effort force can provide the needed torque",
+        "The load arm must be longer than the effort arm"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What makes a knife blade an example of a wedge?",
+      "choices": [
+        "Its handle rotates a rope",
+        "Its blade is a threaded cylinder",
+        "Its mass increases during cutting",
+        "Its sloping surfaces redirect a force to separate material"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why does a wheel and axle offer force multiplication in some arrangements?",
+      "choices": [
+        "The axle always removes the load's resistance",
+        "Forces act at different distances from a common rotation axis",
+        "All forces act at equal radii",
+        "The wheel creates more output work than input work"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What tradeoff accompanies ideal force multiplication?",
+      "choices": [
+        "Greater effort distance for a smaller effort force",
+        "Greater output work than input work",
+        "A shorter effort distance for the same output work",
+        "Identical effort and load distances in every arrangement"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "How does reducing friction affect a real machine's efficiency?",
+      "choices": [
+        "It makes output work greater than input work",
+        "It changes the load's gravitational weight to zero",
+        "It generally increases the fraction of input work delivered usefully",
+        "It reduces useful output while input stays fixed"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A machine has input force 25 N and output force 100 N. What is its mechanical advantage?",
+      "choices": [
+        "4",
+        "0.25",
+        "75",
+        "125"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "An ideal ramp raises a 100 N load by 1 m over a 5 m slope. What effort force is needed parallel to the ramp?",
+      "choices": [
+        "100 N",
+        "500 N",
+        "5 N",
+        "20 N"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A machine receives 200 J of work and delivers 150 J of useful work. What is its efficiency?",
+      "choices": [
+        "133%",
+        "75%",
+        "50%",
+        "25%"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A lever's effort arm is 3 m and load arm is 1 m. What effort balances a 60 N load, ignoring lever weight?",
+      "choices": [
+        "180 N",
+        "20 N",
+        "60 N",
+        "30 N"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A compound machine contains a lever and a pulley. Which statement remains true for an ideal version?",
+      "choices": [
+        "Total output work must exceed input work",
+        "More components eliminate all frictional losses",
+        "Mechanical advantages add extra energy to the system",
+        "Total output work cannot exceed input work"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

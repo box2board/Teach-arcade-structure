@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--physical-science-chemistry--chemical-formulas-and-naming",
+  "title": "Chemical Formulas and Naming",
+  "subject": "Science",
+  "category": "Physical Science & Chemistry",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What does the subscript 2 in H₂O indicate?",
+      "choices": [
+        "Two hydrogen atoms per molecule",
+        "Two oxygen atoms per molecule",
+        "Two water molecules",
+        "Two positive charges"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What does the coefficient 3 in 3CO₂ indicate?",
+      "choices": [
+        "Three carbon dioxide molecules or three moles, depending on scale",
+        "Three oxygen atoms in each molecule",
+        "Three carbon atoms in each molecule",
+        "A +3 charge on carbon"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is the formula for sodium chloride?",
+      "choices": [
+        "Na₂Cl",
+        "NaCl₂",
+        "NaCl",
+        "SCl"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which name corresponds to CO₂?",
+      "choices": [
+        "Carbon monoxide",
+        "Carbon dioxide",
+        "Calcium oxide",
+        "Cobalt oxide"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is a polyatomic ion?",
+      "choices": [
+        "A single neutral atom",
+        "A mixture of unrelated ions",
+        "A molecule that has no electrons",
+        "A bonded group of atoms with a net charge"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What does a Roman numeral in iron(III) chloride specify?",
+      "choices": [
+        "The number of chlorine isotopes",
+        "The sample's mass",
+        "The iron ion's charge",
+        "The number of iron atoms in every molecule"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which ion is represented by OH⁻?",
+      "choices": [
+        "Hydroxide",
+        "Oxide",
+        "Hydrogen",
+        "Hydronium"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why must an ionic compound's formula balance ionic charges?",
+      "choices": [
+        "Every ion must lose its nucleus",
+        "The formula must contain equal numbers of all atoms",
+        "Only the negative ions contribute charge",
+        "The compound's overall positive and negative charges balance"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why do molecular names use prefixes such as di- and tri-?",
+      "choices": [
+        "They give the substance's density",
+        "They identify numbers of atoms of particular elements",
+        "They specify neutron numbers",
+        "They measure reaction speed"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why is MgCl₂ the simplest formula for magnesium chloride?",
+      "choices": [
+        "Magnesium must have two nuclei",
+        "One Mg²⁺ balances two Cl⁻ ions",
+        "Each chloride ion has charge +2",
+        "The compound must contain equal atom counts"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How does FeCl₂ differ from FeCl₃ in the usual ionic model?",
+      "choices": [
+        "They contain different elements named iron",
+        "Only FeCl₂ contains chlorine",
+        "They must have identical iron oxidation states",
+        "They contain iron ions with different charges"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What does placing parentheses around a polyatomic ion mean when a subscript follows?",
+      "choices": [
+        "The subscript applies to the entire enclosed group",
+        "The group contains no atoms",
+        "The ion becomes neutral automatically",
+        "The subscript applies only to the first symbol"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why does changing H₂O to H₂O₂ change the substance?",
+      "choices": [
+        "It merely changes how many water molecules are present",
+        "It changes only the sample size",
+        "It changes the ratio of hydrogen to oxygen atoms",
+        "Subscripts have no chemical meaning"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why do ionic formulas commonly show simplest ratios rather than discrete molecules?",
+      "choices": [
+        "Ionic compounds contain no atoms",
+        "Every ionic solid is a gas",
+        "Ionic formulas describe electron paths only",
+        "Ionic solids form extended lattices of ions"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why is the symbol Co different from CO?",
+      "choices": [
+        "Both always mean carbon monoxide",
+        "Co means two carbon atoms",
+        "Co names cobalt; CO represents carbon monoxide",
+        "Capitalization does not affect chemical symbols"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "What is the total number of oxygen atoms represented by 2CO₂?",
+      "choices": [
+        "4",
+        "2",
+        "3",
+        "6"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "How many hydrogen atoms are in one formula unit of Ca(OH)₂?",
+      "choices": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Which formula balances Ca²⁺ with NO₃⁻ ions?",
+      "choices": [
+        "CaNO₃",
+        "Ca₂NO₃",
+        "Ca(NO₃)₃",
+        "Ca(NO₃)₂"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Which name correctly describes N₂O₅?",
+      "choices": [
+        "Nitrogen dioxide",
+        "Dinitrogen pentoxide",
+        "Nitrogen pentachloride",
+        "Dinitrogen monoxide"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which formula represents aluminum oxide from Al³⁺ and O²⁻?",
+      "choices": [
+        "AlO",
+        "Al₃O₂",
+        "Al₂O₃",
+        "AlO₃"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ]
+}

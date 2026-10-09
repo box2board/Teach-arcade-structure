@@ -1,8 +1,8 @@
 (() => {
   'use strict';
   const $ = (id) => document.getElementById(id);
-  const PACK_ID = String(window.CC_QUESTION_SET?.id || 'custom-v1').replace(/[^a-z0-9_-]/gi,'-');
-  const STORAGE_KEY = `teachArcade.categoryClash.${PACK_ID}`;
+  let PACK_ID = String(window.CC_QUESTION_SET?.id || 'custom-v1').replace(/[^a-z0-9_-]/gi,'-');
+  let STORAGE_KEY = `teachArcade.categoryClash.${PACK_ID}`;
   const palette = ['#4de3d1','#ffd45c','#ff6b7a','#9c7cff','#55a7ff','#ff9d4d','#78dd75','#ef82d5'];
   const fallbackSample = {
     version:1,title:'Category Clash',timerEnabled:true,timerSeconds:30,finalEnabled:true,
@@ -22,7 +22,7 @@
       version:1, title:String(safe.title||'Untitled Clash').slice(0,80), timerEnabled:safe.timerEnabled!==false,
       timerSeconds:Math.min(300,Math.max(5,Number(safe.timerSeconds)||30)), finalEnabled:safe.finalEnabled!==false,
       teams:(Array.isArray(safe.teams)?safe.teams:sample.teams).slice(0,8).map((t,i)=>({name:String(t.name||`Team ${i+1}`).slice(0,30),color:/^#[0-9a-f]{6}$/i.test(t.color)?t.color:palette[i]})).concat([]).slice(0,8),
-      categories:(Array.isArray(safe.categories)?safe.categories:sample.categories).slice(0,6).map((c,ci)=>({name:String(c.name||`Category ${ci+1}`).slice(0,50),questions:(Array.isArray(c.questions)?c.questions:[]).slice(0,5).map((q,qi)=>({question:String(q.question||''),answer:String(q.answer||''),points:Math.max(0,Number(q.points)||((qi+1)*100)),power:Boolean(q.power),choices:Array.isArray(q.choices)?q.choices.slice(0,6).map(String):[],acceptedAnswers:(Array.isArray(q.acceptedAnswers)?q.acceptedAnswers:[q.answer]).filter(Boolean).map(String),explanation:String(q.explanation||'')}))})),
+      categories:(Array.isArray(safe.categories)?safe.categories:sample.categories).slice(0,6).map((c,ci)=>({name:String(c.name||`Category ${ci+1}`).slice(0,50),questions:(Array.isArray(c.questions)?c.questions:[]).slice(0,5).map((q,qi)=>({question:String(q.question||''),answer:String(q.answer||''),points:Math.max(0,Number(q.points)||((qi+1)*100)),power:Boolean(q.power),choices:Array.isArray(q.choices)?q.choices.slice(0,6).map(String):[],acceptedAnswers:(Array.isArray(q.acceptedAnswers)?q.acceptedAnswers:[q.answer]).filter(Boolean).map(String),answerIndex:Number.isInteger(q.answerIndex)&&q.choices?.[q.answerIndex]===q.answer?q.answerIndex:undefined,sourceId:q.sourceId,explanation:String(q.explanation||'')}))})),
       final:{category:String(safe.final?.category||'Final Face-off').slice(0,50),question:String(safe.final?.question||''),answer:String(safe.final?.answer||'')}
     };
   }
@@ -288,12 +288,12 @@
     const wrap=$('individualControls');
     wrap.innerHTML='';
     if(q.choices?.length){
-      q.choices.forEach(choice=>{
+      q.choices.forEach((choice,index)=>{
         const button=document.createElement('button');
         button.type='button';
         button.className='btn secondary individual-choice';
         button.textContent=choice;
-        button.onclick=()=>submitIndividual(choice);
+        button.onclick=()=>submitIndividual(choice,index);
         wrap.appendChild(button);
       });
     }else{
@@ -304,11 +304,16 @@
     }
   }
 
-  function submitIndividual(value){
+  function submitIndividual(value,index){
     if(!state.current)return;
     const q=data.categories[state.current.ci].questions[state.current.qi];
     const accepted=[q.answer,...(q.acceptedAnswers||[])].map(cleanAnswer);
-    const correct=accepted.includes(cleanAnswer(value));
+    const exact=value=>String(value||'').normalize('NFKC').trim().toLowerCase();
+    const correct=Number.isInteger(index)
+      ? (Number.isInteger(q.answerIndex)&&q.choices[q.answerIndex]===q.answer
+        ? index===q.answerIndex
+        : [q.answer,...(q.acceptedAnswers||[])].map(exact).includes(exact(value)))
+      : accepted.includes(cleanAnswer(value));
     $('answerArea').hidden=false;
     $('individualControls').innerHTML=`<div class="feedback ${correct?'correct-feedback':'incorrect-feedback'}"><strong>${correct?'✓ Correct!':'✕ Not quite'}</strong><p>${escapeHtml(q.answer)}</p>${q.explanation?`<p class="answer-explanation">${escapeHtml(q.explanation)}</p>`:''}<button id="continueIndividual" class="btn primary" type="button">Back to board →</button></div>`;
     $('continueIndividual').onclick=()=>judge(correct);
@@ -450,5 +455,7 @@
       }
     });
   }
+  const originalPackId=PACK_ID,originalStorageKey=STORAGE_KEY;
+  window.CategoryClash={loadQuestionSet(pack){PACK_ID=pack.id;STORAGE_KEY=`teachArcade.categoryClash.bank.${PACK_ID}`;data=normalize(pack);ensureTeams();renderSetup();syncSetupMode();$('multipleChoiceEnabled').checked=true;announce('Review topic loaded.');},useCustomDraft(){PACK_ID=originalPackId;STORAGE_KEY=originalStorageKey;data=loadLocal();ensureTeams();renderSetup();syncSetupMode();}};
   data=loadLocal();state={soundOn:true};renderSetup();wire();syncSetupMode();
 })();

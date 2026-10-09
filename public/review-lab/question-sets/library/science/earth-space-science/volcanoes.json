@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--earth-space-science--volcanoes",
+  "title": "Volcanoes",
+  "subject": "Science",
+  "category": "Earth & Space Science",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is magma?",
+      "choices": [
+        "Molten rock only after eruption",
+        "All groundwater near a fault",
+        "Molten or partly molten rock below the surface",
+        "Any mineral with a metallic luster"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is lava?",
+      "choices": [
+        "Magma that reaches Earth's surface",
+        "Only solid rock inside the mantle",
+        "A gas released from the outer core",
+        "All ash in the atmosphere"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is volcanic ash?",
+      "choices": [
+        "Ordinary wood-combustion ash only",
+        "Small fragments of volcanic rock, minerals, and glass",
+        "Only droplets of liquid water",
+        "Pure oxygen from an eruption"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is a volcanic vent?",
+      "choices": [
+        "A sedimentary layer far from any eruption",
+        "A river channel made only by erosion",
+        "An opening through which volcanic material is released",
+        "The solid inner core"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which shape is typical of a shield volcano?",
+      "choices": [
+        "A narrow vertical tube only",
+        "Broad with gently sloping sides",
+        "A flat sheet with no raised surface",
+        "An inverted cone underground only"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is a lahar?",
+      "choices": [
+        "A permanent ocean current",
+        "A block of pure molten iron",
+        "A cloud made only of water vapor",
+        "A flowing mixture of water and volcanic debris"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is a pyroclastic flow?",
+      "choices": [
+        "A rapidly moving hot mixture of volcanic gases and particles",
+        "A slow stream of cold groundwater",
+        "An ordinary wind-blown sand dune",
+        "A liquid iron flow from the core"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "How does high magma viscosity influence eruption potential?",
+      "choices": [
+        "It can hinder gas escape and contribute to explosive behavior",
+        "It guarantees completely gentle eruptions",
+        "It removes all gases from magma",
+        "It prevents magma from reaching the surface in every case"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How does greater silica content generally affect magma viscosity, other conditions similar?",
+      "choices": [
+        "It always eliminates viscosity",
+        "It decreases viscosity to zero",
+        "It increases viscosity",
+        "It changes only the magma's color"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why can dissolved gases expand as magma rises?",
+      "choices": [
+        "Pressure always increases toward the surface",
+        "Pressure decreases near the surface",
+        "Gas molecules lose all mass",
+        "The magma's gravity becomes zero"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why can some volcanoes occur away from plate boundaries?",
+      "choices": [
+        "Plate interiors contain no mantle",
+        "All volcanoes are located at transform faults",
+        "Wind can melt continents into magma",
+        "Localized mantle upwelling can produce hotspot volcanism"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why can volcanic activity be associated with mid-ocean ridges?",
+      "choices": [
+        "Every ridge lies above a continental collision",
+        "Rising mantle can melt as pressure decreases",
+        "Ocean water supplies all the heat for melting",
+        "New crust forms only from settled ash"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "How do repeated low-viscosity lava flows help build a shield volcano?",
+      "choices": [
+        "They spread widely before solidifying",
+        "They form only vertical walls",
+        "They prevent any rock accumulation",
+        "They always contain more silica than all explosive magmas"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why can ash affect places far from a volcano?",
+      "choices": [
+        "Ash can travel only along lava channels",
+        "Every particle immediately falls back into the vent",
+        "Winds can carry airborne particles over long distances",
+        "Ash has no mass and remains stationary"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why do volcano scientists combine deformation, gas, and seismic measurements?",
+      "choices": [
+        "One measurement gives an exact eruption time in every case",
+        "All indicators measure identical processes",
+        "These data eliminate every uncertainty",
+        "Multiple indicators can reveal changes in the volcanic system"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A volcano produces widely spreading, relatively fluid basaltic lava. Which form is commonly associated with repeated such eruptions?",
+      "choices": [
+        "A shield volcano",
+        "A narrow sedimentary ridge",
+        "A glacial drumlin",
+        "A limestone cave"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Rain mixes with loose ash on a volcano's slopes and flows downhill. Which hazard best fits?",
+      "choices": [
+        "Tsunami caused only by wind",
+        "Ice wedging",
+        "Seafloor spreading",
+        "Lahar"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A gas-rich, highly viscous magma rises toward lower pressure. Which possibility deserves attention?",
+      "choices": [
+        "A guarantee that no eruption can occur",
+        "An explosive eruption if gas cannot escape readily",
+        "Permanent disappearance of all gases",
+        "Conversion of magma directly into seawater"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A chain of hotspot islands becomes older away from its active end. What does this pattern suggest?",
+      "choices": [
+        "All islands formed simultaneously",
+        "The ocean has no tectonic motion",
+        "A plate moved over a relatively persistent magma source",
+        "Older islands must contain no volcanic rock"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A hazard map shows past lava paths and low-lying channels. What is an appropriate use?",
+      "choices": [
+        "Determining the exact eruption date",
+        "Guaranteeing that unshaded areas have no hazards",
+        "Replacing every monitoring instrument",
+        "Assessing likely affected areas while recognizing uncertainty"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

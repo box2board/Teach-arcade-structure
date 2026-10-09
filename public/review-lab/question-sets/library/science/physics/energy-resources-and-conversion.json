@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--physics--energy-resources-and-conversion",
+  "title": "Energy Resources and Conversion",
+  "subject": "Science",
+  "category": "Physics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which conversion occurs primarily in an electric generator?",
+      "choices": [
+        "Mechanical energy to electrical energy",
+        "Electrical energy to chemical energy",
+        "Light energy to gravitational energy",
+        "Thermal energy to nuclear energy"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which conversion occurs primarily in an electric motor?",
+      "choices": [
+        "Mechanical energy to nuclear energy",
+        "Electrical energy to mechanical energy",
+        "Chemical energy to light only",
+        "Gravitational energy to chemical energy"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which device directly converts light energy into electrical energy?",
+      "choices": [
+        "Steam turbine",
+        "Rechargeable battery while charging",
+        "Photovoltaic cell",
+        "Gasoline engine"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is useful efficiency of an energy converter?",
+      "choices": [
+        "Input energy divided by time only",
+        "Total mass divided by volume",
+        "Output temperature divided by input temperature",
+        "Useful output energy divided by input energy"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What powers a hydroelectric turbine directly?",
+      "choices": [
+        "Energy transferred from moving water",
+        "Chemical energy released by burning water",
+        "Electrical energy supplied from the river to the turbine directly",
+        "Heat from sunlight reaching the turbine blades directly"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What form of energy is stored in a charged battery?",
+      "choices": [
+        "Only sound energy",
+        "Chemical energy",
+        "Only gravitational energy",
+        "Nuclear energy from fusion"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is a common nonuseful output of real energy conversions?",
+      "choices": [
+        "Newly created massless matter",
+        "Disappearing electric charge",
+        "Thermal energy spread into the surroundings",
+        "Destroyed atomic nuclei in every device"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why can an energy conversion be less than 100% useful without violating conservation?",
+      "choices": [
+        "Some input energy is destroyed inside the converter",
+        "Energy conservation applies only to perfectly efficient devices",
+        "Input energy must be calculated from useful output alone",
+        "Some energy goes into outputs other than the intended one"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "In a steam power plant, what does steam do to a turbine?",
+      "choices": [
+        "Transfers energy that turns the turbine",
+        "Creates electrical current without turbine or generator motion",
+        "Converts the fuel directly into stored battery energy",
+        "Condenses the fuel without transferring mechanical energy"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why does friction lower the useful mechanical output of a machine?",
+      "choices": [
+        "It removes energy from the total energy balance",
+        "It transfers some energy into heating",
+        "It increases all of the energy available for useful work",
+        "It transfers every input into gravitational potential energy"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How does a fuel cell differ from a battery during sustained operation?",
+      "choices": [
+        "It has no chemical reactions while delivering electricity",
+        "It stores all required reactants inside like a sealed battery",
+        "It receives reactants from outside to continue supplying energy",
+        "It converts fuel only by combustion and a turbine"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What happens when a rechargeable battery is charged?",
+      "choices": [
+        "Chemical energy is released entirely as useful mechanical work",
+        "All electric charge remains stored as free electrons without chemical change",
+        "The same reactions proceed only in the discharge direction",
+        "Electrical energy is stored through chemical changes"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why are multiple conversion stages relevant to overall efficiency?",
+      "choices": [
+        "Losses at each stage reduce the final useful fraction",
+        "Stage efficiencies can be added to find overall efficiency",
+        "Later stages automatically recover every earlier loss",
+        "Only the last stage affects useful final output"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What is the main distinction between power and energy in a generating system?",
+      "choices": [
+        "Power is the total energy stored forever",
+        "Power is the rate of energy transfer",
+        "Energy is measured only in watts",
+        "Energy and power always have identical units"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why can insulation improve an energy system's useful performance?",
+      "choices": [
+        "It increases the energy input without consuming fuel",
+        "It guarantees 100% useful conversion",
+        "It reduces unwanted thermal energy transfer",
+        "It stops all energy transfer inside the system"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A heat engine receives 1,000 J and releases 700 J to its surroundings while delivering useful work. With no stored energy change, what is its useful efficiency?",
+      "choices": [
+        "70%",
+        "43%",
+        "300%",
+        "30%"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A generator produces 600 J of electrical energy each second. What is its output power?",
+      "choices": [
+        "600 W",
+        "60 W",
+        "0.6 W",
+        "3,600 W"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A turbine transfers 1,000 J to a generator that is 80% efficient. How much electrical energy is produced?",
+      "choices": [
+        "200 J",
+        "800 J",
+        "1,250 J",
+        "1,800 J"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Two conversion stages are each 50% efficient. What fraction of the original input becomes useful final output?",
+      "choices": [
+        "50%",
+        "75%",
+        "25%",
+        "100%"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A machine receives 500 J, delivers 350 J of useful work, and stores no energy. How much energy goes to other outputs?",
+      "choices": [
+        "350 J",
+        "500 J",
+        "850 J",
+        "150 J"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

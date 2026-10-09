@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--life-science-biology--plant-structure-and-reproduction",
+  "title": "Plant Structure and Reproduction",
+  "subject": "Science",
+  "category": "Life Science & Biology",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which plant tissue carries water and dissolved minerals mainly from roots upward?",
+      "choices": [
+        "Phloem",
+        "Epidermis",
+        "Xylem",
+        "Pollen"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which tissue transports sugars from sources to sinks in a plant?",
+      "choices": [
+        "Xylem",
+        "Root hairs",
+        "Stomata",
+        "Phloem"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What controls the opening of a leaf stoma?",
+      "choices": [
+        "Guard cells",
+        "Pollen grains",
+        "Root cap cells",
+        "Seed coats"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is pollination in flowering plants?",
+      "choices": [
+        "Fusion of sperm and egg",
+        "Transfer of pollen to a stigma",
+        "Growth of a seedling from a seed",
+        "Movement of water into roots"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which flower structure contains ovules?",
+      "choices": [
+        "Anther",
+        "Petal",
+        "Ovary",
+        "Filament"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What usually develops from an ovule after fertilization?",
+      "choices": [
+        "A pollen grain",
+        "A petal",
+        "A root hair",
+        "A seed"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is a fruit in botanical terms?",
+      "choices": [
+        "A mature ovary, sometimes with associated tissues",
+        "Any edible root",
+        "A young pollen-producing structure",
+        "A leaf that stores starch"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why do root hairs benefit a plant?",
+      "choices": [
+        "They enlarge the stomata on each leaf",
+        "They increase surface area for water and mineral uptake",
+        "They transport most sugar from leaves to fruit",
+        "They store pollen until fertilization"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How can closing stomata help during dry conditions?",
+      "choices": [
+        "It increases carbon dioxide uptake while preventing any water loss",
+        "It increases water loss because leaves become warmer",
+        "It reduces water loss but can also limit carbon dioxide uptake",
+        "It increases root absorption enough to stop photosynthesis"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What is transpiration?",
+      "choices": [
+        "Movement of pollen between flowers",
+        "Release of seeds from fruits",
+        "Conversion of sugar into starch",
+        "Loss of water vapor from plant surfaces"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why does a seed contain stored nutrients?",
+      "choices": [
+        "They support early growth before the seedling can make enough food",
+        "They provide the embryo's only source of water",
+        "They replace the need for oxygen during germination",
+        "They keep the embryo dormant until all nutrients are gone"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "How does vegetative reproduction differ from sexual reproduction?",
+      "choices": [
+        "It always creates more genetic variation",
+        "It produces new plants without fusion of gametes",
+        "It occurs only through flowers",
+        "It requires pollen from two different species"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why can seed dispersal away from a parent plant be useful?",
+      "choices": [
+        "It makes every offspring genetically different from its parent",
+        "It guarantees arrival in a suitable habitat",
+        "It can reduce competition for light, water, and nutrients",
+        "It prevents offspring from needing sunlight"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What distinguishes fertilization from pollination?",
+      "choices": [
+        "Fertilization releases seeds; pollination grows roots",
+        "Fertilization makes leaves; pollination transports sugars",
+        "Fertilization absorbs water; pollination opens stomata",
+        "Fertilization joins gametes; pollination transfers pollen"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "How does a root's response to gravity generally help a seedling?",
+      "choices": [
+        "It guides roots toward soil resources",
+        "It directs roots toward pollen-producing flowers",
+        "It stops growth whenever soil is dark",
+        "It supplies sunlight below ground"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A flowering plant has many leaves but no pollen reaches its stigmas. Which process is directly limited?",
+      "choices": [
+        "Sugar transport in phloem",
+        "Sexual reproduction leading to seeds",
+        "Water movement through xylem",
+        "Root mineral absorption"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A stem cutting forms a new plant without fertilization. How is it classified?",
+      "choices": [
+        "Cross-pollination",
+        "Seed germination",
+        "Asexual reproduction",
+        "Gamete fusion"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A ring of bark containing phloem is removed from a tree trunk. Which transport is most directly disrupted?",
+      "choices": [
+        "Water movement through intact inner xylem",
+        "Pollen movement through the air",
+        "Carbon dioxide entry through stomata",
+        "Sugar movement between leaves and roots"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Seeds germinate in moist conditions but not in otherwise identical dry conditions. What is the best supported conclusion?",
+      "choices": [
+        "Water was necessary for germination under these conditions",
+        "Water alone is sufficient for every seed to germinate",
+        "Moisture prevents the embryo from using stored food",
+        "Dry conditions supply all requirements for germination"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Two same-species plants reproduce sexually. Compared with making cuttings of one plant, what is generally expected?",
+      "choices": [
+        "Offspring identical to the cutting parent in every case",
+        "More combinations of inherited alleles in offspring",
+        "Fewer allele combinations because gametes never differ",
+        "Offspring with alleles from only one parent in every case"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}

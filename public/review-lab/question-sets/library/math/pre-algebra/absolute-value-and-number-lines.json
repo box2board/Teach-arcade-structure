@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--pre-algebra--absolute-value-and-number-lines",
+  "title": "Absolute Value and Number Lines",
+  "subject": "Math",
+  "category": "Pre-Algebra & Number Sense",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What does the absolute value of a real number measure?",
+      "choices": [
+        "Its distance from one",
+        "Its sign",
+        "Its distance from zero",
+        "Its reciprocal"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is the absolute value of −14?",
+      "choices": [
+        "−14",
+        "14",
+        "0",
+        "1/14"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which value is the opposite of 9?",
+      "choices": [
+        "−9",
+        "9",
+        "1/9",
+        "0"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which statement is true for every real number x?",
+      "choices": [
+        "The absolute value of x is negative",
+        "The absolute value of x equals x",
+        "The absolute value of x equals −x",
+        "The absolute value of x is nonnegative"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which pair of numbers is the same distance from zero?",
+      "choices": [
+        "−6 and −3",
+        "2 and 6",
+        "−6 and 6",
+        "0 and 6"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is the distance from −3 to 0 on a number line?",
+      "choices": [
+        "−3 units",
+        "3 units",
+        "0 units",
+        "6 units"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which inequality correctly orders these numbers?",
+      "choices": [
+        "−8 < −2",
+        "−8 > −2",
+        "−8 = −2",
+        "−2 < −8"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why is −1 greater than −5?",
+      "choices": [
+        "−1 is farther from zero",
+        "−1 has a larger absolute value",
+        "−1 is positive",
+        "−1 lies to the right of −5"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How far apart are −4 and 7 on a number line?",
+      "choices": [
+        "3 units",
+        "−11 units",
+        "11 units",
+        "7 units"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Which equation has the solutions x = −5 and x = 5?",
+      "choices": [
+        "x + 5 = 0",
+        "The absolute value of x equals 5",
+        "x − 5 = 0",
+        "x² = 5"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Which description matches numbers whose absolute value is less than 3?",
+      "choices": [
+        "Numbers between −3 and 3, excluding the endpoints",
+        "Numbers less than −3 only",
+        "Numbers greater than 3 only",
+        "Numbers outside the interval from −3 to 3"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What does the absolute value of x − 4 represent?",
+      "choices": [
+        "The distance between x and −4",
+        "The opposite of x − 4",
+        "The distance between x and zero",
+        "The distance between x and 4"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Which statement explains why the absolute value of −2 equals the absolute value of 2?",
+      "choices": [
+        "Both numbers lie to the right of zero",
+        "Both numbers have the same sign",
+        "Both numbers are 2 units from zero",
+        "Both numbers equal their opposites"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "A temperature changes from −6°C to 2°C. By how much does it increase?",
+      "choices": [
+        "4°C",
+        "8°C",
+        "−8°C",
+        "2°C"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Which value makes the absolute value of x equal zero?",
+      "choices": [
+        "0",
+        "1",
+        "−1",
+        "Any negative number"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A point is 4 units from 3 on a number line. Which pair lists its possible coordinates?",
+      "choices": [
+        "−4 and 4",
+        "1 and 7",
+        "−7 and 1",
+        "−1 and 7"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Which number has the greatest absolute value?",
+      "choices": [
+        "9",
+        "−7",
+        "−12",
+        "0"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A hiker is at elevation −20 meters and climbs to 15 meters. What vertical distance does the hiker travel?",
+      "choices": [
+        "5 meters",
+        "35 meters",
+        "20 meters",
+        "−35 meters"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Which number is closer to −3: −7 or 2?",
+      "choices": [
+        "−7, because its distance from −3 is 4",
+        "2, because its distance from −3 is 2",
+        "−7, because its absolute value is smaller",
+        "2, because positive numbers are always closer"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A number is halfway between −8 and 4. What is it?",
+      "choices": [
+        "2",
+        "−6",
+        "6",
+        "−2"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

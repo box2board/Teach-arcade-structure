@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--algebra-1--writing-linear-models",
+  "title": "Writing Linear Models",
+  "subject": "Math",
+  "category": "Algebra I",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "In y = mx + b, which quantity represents the starting value when x = 0?",
+      "choices": [
+        "m",
+        "x",
+        "b",
+        "mx"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "A taxi charges $4 plus $2 per mile. Which model gives cost C for m miles?",
+      "choices": [
+        "C = 4m + 2",
+        "C = 2m + 4",
+        "C = 6m",
+        "C = 2m − 4"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What type of change is represented by a linear model?",
+      "choices": [
+        "A constant amount per unit of input",
+        "A constant percentage per unit of input",
+        "An alternating change with no pattern",
+        "A rate that doubles every step"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "A tank starts with 50 liters and loses 3 liters per minute. Which equation models volume V after t minutes before it empties?",
+      "choices": [
+        "V = 50 + 3t",
+        "V = 3 − 50t",
+        "V = 47t",
+        "V = 50 − 3t"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "In C = 12 + 5n, a club's cost is modeled in dollars. What does 5 represent?",
+      "choices": [
+        "The initial fixed cost",
+        "The total number of members",
+        "The added cost per member",
+        "The final total cost"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which table shows constant additive change as x increases by 1?",
+      "choices": [
+        "x: 0, 1, 2; y: 3, 6, 12",
+        "x: 0, 1, 2; y: 3, 7, 11",
+        "x: 0, 1, 2; y: 3, 4, 9",
+        "x: 0, 1, 2; y: 3, 3, 5"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "A worker earns $18 per hour with no fixed bonus. What is the y-intercept of an earnings-versus-hours model?",
+      "choices": [
+        "0",
+        "18",
+        "1",
+        "−18"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "A gym charges $25 to join and $10 per month. What does the intercept mean?",
+      "choices": [
+        "The number of months",
+        "The monthly fee",
+        "The annual cost",
+        "The one-time joining fee"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "A phone plan costs $20 plus $0.05 per text. What is the bill for 100 texts?",
+      "choices": [
+        "$120",
+        "$5",
+        "$25",
+        "$20.05"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "A candle is 16 centimeters tall and burns down 2 centimeters per hour at a constant rate. After how many hours does its height reach zero?",
+      "choices": [
+        "14 hours",
+        "8 hours",
+        "18 hours",
+        "32 hours"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Which situation is best modeled by a linear function over the stated interval?",
+      "choices": [
+        "A machine produces 30 parts each minute",
+        "A population doubles each year",
+        "A ball's height rises and then falls",
+        "A balance earns the same percentage each year"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "For d = 65t, where distance is in miles and time is in hours, what units does 65 have?",
+      "choices": [
+        "Hours per mile",
+        "Miles squared",
+        "Hours",
+        "Miles per hour"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "A store sells notebooks for $3 each. Which domain is appropriate for quantity n in a sales model?",
+      "choices": [
+        "All real numbers",
+        "Negative integers",
+        "Nonnegative integers",
+        "All positive fractions"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why can a line fitted to a short-term temperature trend be unreliable far into the future?",
+      "choices": [
+        "Linear equations cannot use negative values",
+        "The pattern may change outside the observed interval",
+        "Every line must eventually curve",
+        "The slope always becomes zero"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A tank holds 80 liters at minute 0 and 50 liters at minute 10. If the change is linear, how many liters are lost per minute?",
+      "choices": [
+        "3 liters per minute",
+        "5 liters per minute",
+        "8 liters per minute",
+        "30 liters per minute"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Plan A costs $10 plus $3 per visit. Plan B costs $25 plus $2 per visit. At how many visits are their costs equal?",
+      "choices": [
+        "5 visits",
+        "35 visits",
+        "10 visits",
+        "15 visits"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A fundraiser has raised $120 and adds $15 for each ticket sold. How many more tickets are needed to reach $300?",
+      "choices": [
+        "20 tickets",
+        "28 tickets",
+        "12 tickets",
+        "8 tickets"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A line models temperature T = 24 − 0.5h for height h in hundreds of meters. What does the slope mean?",
+      "choices": [
+        "Temperature rises 24 degrees per hundred meters",
+        "Temperature falls 0.5 degrees per hundred meters",
+        "Height falls 0.5 hundred meters per degree",
+        "Temperature falls 24 degrees per meter"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A delivery costs $14 for 2 miles and $23 for 5 miles under a linear pricing rule. What is the fixed charge?",
+      "choices": [
+        "$8",
+        "$3",
+        "$6",
+        "$11"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A bus starts 40 miles from a town and moves toward it at 8 miles per hour. Which model and domain fit until arrival?",
+      "choices": [
+        "d = 40 + 8t, with 0 ≤ t ≤ 5",
+        "d = 8t − 40, with t ≥ 0",
+        "d = 40 − 8t, with t ≥ 5",
+        "d = 40 − 8t, with 0 ≤ t ≤ 5"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

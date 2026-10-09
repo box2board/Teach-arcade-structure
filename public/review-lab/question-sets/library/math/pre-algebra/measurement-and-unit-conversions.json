@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--pre-algebra--measurement-and-unit-conversions",
+  "title": "Measurement and Unit Conversions",
+  "subject": "Math",
+  "category": "Pre-Algebra & Number Sense",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which metric prefix means one thousandth?",
+      "choices": [
+        "Centi-",
+        "Milli-",
+        "Kilo-",
+        "Deca-"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "How many millimeters equal 1 centimeter?",
+      "choices": [
+        "10",
+        "100",
+        "1000",
+        "0.1"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which unit measures volume rather than length?",
+      "choices": [
+        "Meter",
+        "Centimeter",
+        "Kilometer",
+        "Liter"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "How many grams equal 1 kilogram?",
+      "choices": [
+        "100",
+        "10",
+        "1000",
+        "0.001"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Using 60 seconds per minute, how many seconds equal 2.5 minutes?",
+      "choices": [
+        "25 seconds",
+        "150 seconds",
+        "250 seconds",
+        "120 seconds"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Using 1000 milliliters per liter, how many liters equal 750 milliliters?",
+      "choices": [
+        "0.75 liters",
+        "7.5 liters",
+        "75 liters",
+        "750000 liters"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which unit is appropriate for the area of a classroom floor?",
+      "choices": [
+        "Meters",
+        "Cubic meters",
+        "Liters",
+        "Square meters"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why does converting square meters to square centimeters use a factor of 10000?",
+      "choices": [
+        "Only one side gains a factor of 100",
+        "The factor for length is added twice",
+        "Each of two length dimensions gains a factor of 100",
+        "The area is multiplied by π"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Using 100 centimeters per meter, what is 0.08 meters in centimeters?",
+      "choices": [
+        "0.8 centimeters",
+        "8 centimeters",
+        "80 centimeters",
+        "0.0008 centimeters"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Using 1000 grams per kilogram, what is 3.2 kilograms in grams?",
+      "choices": [
+        "3200 grams",
+        "320 grams",
+        "32 grams",
+        "0.0032 grams"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Using 12 inches per foot, how many feet equal 54 inches?",
+      "choices": [
+        "42 feet",
+        "648 feet",
+        "5.4 feet",
+        "4.5 feet"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Which statement correctly distinguishes mass and volume?",
+      "choices": [
+        "Both measure length",
+        "Volume measures amount of matter; mass measures space occupied",
+        "Mass measures amount of matter; volume measures space occupied",
+        "Both are measured only in kilograms"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Using 100 centimeters per meter, what is 2 square meters in square centimeters?",
+      "choices": [
+        "200 square centimeters",
+        "20000 square centimeters",
+        "2000 square centimeters",
+        "20 square centimeters"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "A box has volume 1 cubic meter. Using 100 centimeters per meter, what is its volume in cubic centimeters?",
+      "choices": [
+        "1000000 cubic centimeters",
+        "100 cubic centimeters",
+        "10000 cubic centimeters",
+        "1000 cubic centimeters"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why must units agree before lengths are added?",
+      "choices": [
+        "Different units always make the sum zero",
+        "Measurements cannot include decimals",
+        "The larger unit must always be discarded",
+        "Only like measurement units can be added directly"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Using F = (9/5)C + 32, what Fahrenheit temperature equals 20°C?",
+      "choices": [
+        "36°F",
+        "52°F",
+        "68°F",
+        "104°F"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Using C = (5/9)(F − 32), what Celsius temperature equals 50°F?",
+      "choices": [
+        "18°C",
+        "10°C",
+        "27.8°C",
+        "82°C"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A ribbon is 1.2 meters long. After cutting off 35 centimeters, how many centimeters remain?",
+      "choices": [
+        "85 centimeters",
+        "117 centimeters",
+        "0.85 centimeters",
+        "155 centimeters"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A container holds 2 liters. Each serving is 250 milliliters. How many full servings fit?",
+      "choices": [
+        "4",
+        "5",
+        "80",
+        "8"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A wall is 3 meters long and 240 centimeters high. What is its area in square meters?",
+      "choices": [
+        "720 square meters",
+        "72 square meters",
+        "7.2 square meters",
+        "5.4 square meters"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ]
+}

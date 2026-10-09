@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--statistics-probability--two-way-tables-and-conditional-probability",
+  "title": "Two-Way Tables and Conditional Probability",
+  "subject": "Math",
+  "category": "Statistics & Probability",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What does a two-way frequency table organize?",
+      "choices": [
+        "Only the mean of one numerical variable",
+        "Counts for two categorical variables",
+        "The slope of two linear functions",
+        "Only the largest observation in a data set"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is a marginal total in a two-way table?",
+      "choices": [
+        "A row or column total",
+        "The product of two cell counts",
+        "The difference between the largest and smallest cell",
+        "The median of all cell counts"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What does P(A given B) describe?",
+      "choices": [
+        "The probability of B among outcomes satisfying A",
+        "The probability that neither A nor B occurs",
+        "The sum of the probabilities of A and B",
+        "The probability of A among outcomes satisfying B"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which denominator is used to find the proportion of bus riders among ninth graders?",
+      "choices": [
+        "The total number of bus riders in the school",
+        "The total number of tenth graders",
+        "The total number of ninth graders",
+        "The number of ninth-grade bus riders"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is a joint frequency?",
+      "choices": [
+        "The total count in the entire table",
+        "The count in a cell representing two categories together",
+        "The larger of two row totals",
+        "The sum of every column total"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Among 40 students who play an instrument, 12 also sing in choir. What is the probability a randomly chosen instrument player sings in choir?",
+      "choices": [
+        "3/10",
+        "12/100",
+        "2/5",
+        "7/10"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "In a survey of 100 students, 18 are both ninth graders and bus riders. What is their joint relative frequency?",
+      "choices": [
+        "0.82",
+        "0.50",
+        "0.09",
+        "0.18"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why can P(A given B) differ from P(B given A)?",
+      "choices": [
+        "Both must use the entire sample as denominator",
+        "Conditional probabilities are always complementary",
+        "The conditions may select groups of different sizes",
+        "The order of the labels never changes the denominator"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "A table shows 30 bus riders and 20 walkers in grade 9. Among randomly selected ninth graders, what is the probability of walking?",
+      "choices": [
+        "3/5",
+        "2/5",
+        "2/3",
+        "1/5"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "A table lists 24 club members who volunteer and 16 club members who do not. What fraction of club members volunteer?",
+      "choices": [
+        "3/5",
+        "2/5",
+        "3/2",
+        "1/4"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "A school has 60 ninth graders and 40 tenth graders. Of its 30 athletes, 18 are ninth graders. What is P(ninth grader given athlete)?",
+      "choices": [
+        "3/10",
+        "9/50",
+        "2/5",
+        "3/5"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "A school has 60 ninth graders and 40 tenth graders. Of its 30 athletes, 18 are ninth graders. What is P(athlete given ninth grader)?",
+      "choices": [
+        "3/5",
+        "9/50",
+        "3/10",
+        "1/2"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Which comparison helps identify an association between grade level and club membership?",
+      "choices": [
+        "Compare only the raw grade totals",
+        "Compare club-membership proportions within each grade",
+        "Compare the highest and lowest student ages",
+        "Compare the sum of every marginal total"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "A table shows that 75% of one group and 25% of another prefer online reading. What does this suggest?",
+      "choices": [
+        "An association between group and reading preference",
+        "Proof that group membership causes the preference",
+        "Identical conditional distributions",
+        "A calculation error because percentages must be equal"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A row contains 14 students who play sports and 21 who do not. What is the row total?",
+      "choices": [
+        "7",
+        "294",
+        "21",
+        "35"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A survey has 80 students. Of 50 students with pets, 20 prefer hiking. Of 30 without pets, 15 prefer hiking. Which group has a higher hiking-preference rate?",
+      "choices": [
+        "Students with pets: 40% versus 50%",
+        "Both groups: 25%",
+        "Students without pets: 50% versus 40%",
+        "Students with pets: 20% versus 15%"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Among 30 students who take art, 12 take music. Among 70 who do not take art, 28 take music. Which conclusion is supported by these data?",
+      "choices": [
+        "Art students are twice as likely to take music",
+        "The music-taking rate is the same in both groups",
+        "Not taking art causes students to take music",
+        "The two groups contain the same number of students"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A survey lists 25 readers who exercise and 15 readers who do not. It also lists 10 nonreaders who exercise and 10 who do not. What is P(reader given exercises)?",
+      "choices": [
+        "5/7",
+        "2/3",
+        "5/12",
+        "3/8"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "At a school, 20 of 50 students in a morning class and 10 of 25 in an afternoon class bring lunch. What can be concluded?",
+      "choices": [
+        "The morning rate is twice the afternoon rate",
+        "The afternoon rate is twice the morning rate",
+        "The rates are 20% and 10%",
+        "Both classes have a 40% lunch-bringing rate"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A table has cells 8 and 12 in its first row and 15 and 5 in its second row. What is the grand total?",
+      "choices": [
+        "20",
+        "23",
+        "40",
+        "17"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ]
+}

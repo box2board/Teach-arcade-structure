@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--life-science-biology--cell-transport-and-homeostasis",
+  "title": "Cell Transport and Homeostasis",
+  "subject": "Science",
+  "category": "Life Science & Biology",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is diffusion?",
+      "choices": [
+        "Movement of particles only against a concentration gradient",
+        "Movement of water only through a protein pump",
+        "Net movement of particles from higher to lower concentration",
+        "Transport of large particles by membrane vesicles"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is osmosis?",
+      "choices": [
+        "Net movement of water across a selectively permeable membrane",
+        "Protein production inside a ribosome",
+        "Movement of oxygen through a cell wall",
+        "Movement of ions using ATP"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which process requires cellular energy to move a substance against its concentration gradient?",
+      "choices": [
+        "Simple diffusion",
+        "Osmosis",
+        "Facilitated diffusion",
+        "Active transport"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What does homeostasis mean?",
+      "choices": [
+        "Keeping all internal quantities permanently unchanged",
+        "Maintaining internal conditions within suitable ranges",
+        "Stopping exchange with the environment",
+        "Eliminating responses to external change"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which process uses membrane proteins without directly requiring cellular energy to move substances down a gradient?",
+      "choices": [
+        "Active transport",
+        "Endocytosis",
+        "Protein synthesis",
+        "Facilitated diffusion"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is endocytosis?",
+      "choices": [
+        "Release of material when a vesicle joins the membrane",
+        "Diffusion of water through a membrane",
+        "Intake of material by enclosing it in a membrane vesicle",
+        "Movement of DNA into a ribosome"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is exocytosis?",
+      "choices": [
+        "Splitting one cell into two cells",
+        "Release of vesicle contents when the vesicle fuses with the membrane",
+        "Transport of ions through a channel",
+        "Movement of water into a vacuole"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why can oxygen enter a cell by diffusion when its concentration is higher outside?",
+      "choices": [
+        "Random movement produces net movement down the concentration gradient",
+        "The cell must actively pump all oxygen inward",
+        "Oxygen is too large to cross any membrane",
+        "Diffusion occurs only when concentrations are equal"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What happens at dynamic equilibrium during diffusion?",
+      "choices": [
+        "Every particle stops moving",
+        "Particles keep moving, but there is no net concentration change",
+        "All particles collect on one side",
+        "The membrane begins pumping every particle uphill"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why can transport proteins be important for charged ions?",
+      "choices": [
+        "Ions dissolve easily in the membrane's oily interior",
+        "All ions are larger than entire cells",
+        "Ions cannot move in water",
+        "The membrane's lipid interior limits their direct passage"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "An animal cell is placed in a solution with a higher concentration of nonpenetrating solutes than its cytoplasm. What is expected?",
+      "choices": [
+        "Water leaves and the cell shrinks",
+        "No water moves through the membrane",
+        "The cell immediately makes a cell wall",
+        "Water enters and the cell swells"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why does a plant cell usually resist bursting when water enters?",
+      "choices": [
+        "Its membrane does not permit water movement",
+        "Its nucleus pumps all water back out",
+        "Its cell wall limits expansion",
+        "Its chloroplasts remove the water"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "How does negative feedback help maintain homeostasis?",
+      "choices": [
+        "A response counteracts a departure from a suitable range",
+        "A response amplifies every departure from normal",
+        "It prevents an organism from detecting changes",
+        "It requires internal conditions to match the environment"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why does sweating help cool the body?",
+      "choices": [
+        "Sweat prevents any transfer of energy",
+        "Evaporation transfers energy away from the skin",
+        "Sweat increases the body's production of heat",
+        "Sweat turns body heat into stored nutrients"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why might a cell use active transport even when diffusion is possible for other substances?",
+      "choices": [
+        "Every substance moves naturally toward higher concentration",
+        "Active transport never uses proteins",
+        "The cell may need to maintain a concentration difference",
+        "Diffusion and active transport serve identical directions in every case"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Two sides of a membrane have equal initial pressure. Water can cross, but sugar cannot. One side has more dissolved sugar. Where is the initial net water movement?",
+      "choices": [
+        "Toward the side with less sugar",
+        "Toward the side with less water regardless of its sugar concentration",
+        "No net movement because sugar cannot cross",
+        "Toward the side with more sugar"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A cell's ion pump stops when its ATP supply is depleted. What does this suggest about the pump?",
+      "choices": [
+        "It is part of the cell wall",
+        "It performs only simple diffusion",
+        "It performs energy-dependent transport",
+        "It functions without a concentration gradient"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Body temperature rises, and a control system increases sweating. Which process does this illustrate?",
+      "choices": [
+        "Negative feedback responding to a temperature change",
+        "A feedforward response before any temperature change",
+        "Positive feedback amplifying a temperature change",
+        "A fixed response unrelated to temperature"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A potato strip loses mass in a concentrated salt solution. What is the best explanation?",
+      "choices": [
+        "Salt drew water into the cells until they burst",
+        "Water moved out of its cells by osmosis",
+        "Water entered the cells by active transport",
+        "Salt prevented all water movement across membranes"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A substance crosses through a membrane channel from high to low concentration without ATP. Which label fits best?",
+      "choices": [
+        "Endocytosis",
+        "Exocytosis",
+        "Active transport",
+        "Facilitated diffusion"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

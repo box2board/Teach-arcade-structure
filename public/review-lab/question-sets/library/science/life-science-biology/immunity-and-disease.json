@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--life-science-biology--immunity-and-disease",
+  "title": "Immunity and Disease",
+  "subject": "Science",
+  "category": "Life Science & Biology",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "In infectious disease transmission, what is a vector?",
+      "choices": [
+        "An immune cell that produces antibodies",
+        "An organism that carries a pathogen between hosts",
+        "A molecule recognized by an antibody",
+        "A genetic change that protects every host"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which structure is part of the body's first barrier against infection?",
+      "choices": [
+        "Bone marrow",
+        "Pancreas",
+        "Skin",
+        "Thyroid gland"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which cells are central to many immune defenses?",
+      "choices": [
+        "Red blood cells",
+        "Fat cells",
+        "Muscle cells",
+        "White blood cells"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is an antigen?",
+      "choices": [
+        "A molecular feature recognized by immune receptors",
+        "An enzyme that digests all microbes",
+        "A sugar used only by red blood cells",
+        "A hormone that controls body height"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What do antibodies bind to?",
+      "choices": [
+        "Any nutrient equally",
+        "Specific antigens",
+        "Only oxygen molecules",
+        "Every body cell indiscriminately"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which response is part of innate immunity?",
+      "choices": [
+        "Production of memory cells after a specific infection",
+        "A faster response to a previously encountered antigen",
+        "Inflammation near damaged tissue",
+        "A response tailored to one vaccine antigen"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which immune cells can develop into antibody-secreting cells?",
+      "choices": [
+        "Red blood cells",
+        "Platelets",
+        "Skin cells",
+        "B cells"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "How does adaptive immunity differ from innate immunity?",
+      "choices": [
+        "It can develop antigen-specific memory",
+        "It relies only on the outer skin",
+        "It responds identically to every substance",
+        "It cannot distinguish molecular features"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why can a second exposure to the same antigen produce a faster immune response?",
+      "choices": [
+        "The pathogen always becomes harmless with age",
+        "Memory cells formed during the first response remain",
+        "All body cells turn into antibodies",
+        "The skin permanently blocks that antigen"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "How do vaccines generally prepare adaptive immunity?",
+      "choices": [
+        "They permanently replace white blood cells",
+        "They supply antibiotics against every virus",
+        "They expose the immune system to a harmless form or component of a pathogen",
+        "They remove all microbes from the body"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why are antibiotics not generally effective against viral infections?",
+      "choices": [
+        "Viruses are simply smaller bacterial species",
+        "Viruses reproduce only outside cells",
+        "Antibiotics strengthen viral cell walls",
+        "They target bacterial features that viruses do not have"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What is the main concern with antibiotic resistance?",
+      "choices": [
+        "Bacteria with resistance can survive treatment and reproduce",
+        "Resistance makes all bacteria more sensitive to treatment",
+        "Resistance stops bacteria from reproducing",
+        "Resistance arises only after all bacteria are killed"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What occurs in an autoimmune disorder?",
+      "choices": [
+        "Immune defenses respond only to harmless outside substances",
+        "Immune defenses attack the body's own tissues",
+        "The body fails to make any red blood cells",
+        "Bacterial toxins digest the skin before immune activation"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why does washing hands help reduce some infections?",
+      "choices": [
+        "It builds antigen-specific memory against every microbe",
+        "It kills every microbe on the skin permanently",
+        "It removes microbes that could be transferred to others",
+        "It replaces the skin's need for immune cells"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "How does an infectious disease differ from a noninfectious disease?",
+      "choices": [
+        "An infectious disease must cause a fever",
+        "A noninfectious disease cannot involve genes",
+        "A noninfectious disease always affects only one organ",
+        "An infectious disease results from a transmissible biological agent"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "In a bacterial population, a few cells already resist an antibiotic. What does treatment tend to do?",
+      "choices": [
+        "Favor survival and reproduction of resistant cells",
+        "Eliminate resistance from the surviving population",
+        "Favor sensitive cells over resistant cells",
+        "Make resistance equally common regardless of survival"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "An antibody binds antigen X but not antigen Y. What does this demonstrate?",
+      "choices": [
+        "Equal binding to all antigens",
+        "Specific molecular recognition",
+        "Loss of immune memory",
+        "Conversion of antigens into white blood cells"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Two groups encounter the same pathogen; one group has relevant immune memory. What response is generally expected in that group?",
+      "choices": [
+        "No possibility of infection under any conditions",
+        "A complete absence of innate responses",
+        "A quicker antigen-specific defense",
+        "Immediate production of new red blood cell types"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A community has fewer susceptible hosts after vaccination. How can this help others?",
+      "choices": [
+        "It ensures every person has identical antibodies",
+        "It makes pathogens stop evolving",
+        "It turns all infections into noninfectious diseases",
+        "It can reduce opportunities for pathogen transmission"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A scientist compares antibodies before and after antigen exposure. Which result supports an adaptive response?",
+      "choices": [
+        "An increase in antibodies that recognize that antigen",
+        "An increase in antibodies recognizing only unrelated antigens",
+        "A change in blood volume without antigen-specific recognition",
+        "A fall in relevant antibody levels with no other response"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}

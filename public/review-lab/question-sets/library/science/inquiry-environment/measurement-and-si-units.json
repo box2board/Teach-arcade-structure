@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--inquiry-environment--measurement-and-si-units",
+  "title": "Measurement and SI Units",
+  "subject": "Science",
+  "category": "Scientific Inquiry & Environmental Science",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which SI base unit measures length?",
+      "choices": [
+        "Newton",
+        "Liter",
+        "Gram",
+        "Meter"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which SI base unit measures mass?",
+      "choices": [
+        "Kilogram",
+        "Meter",
+        "Second",
+        "Pascal"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which SI base unit measures time?",
+      "choices": [
+        "Kelvin",
+        "Second",
+        "Ampere",
+        "Joule"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which SI base unit measures temperature?",
+      "choices": [
+        "Degree Celsius",
+        "Watt",
+        "Kelvin",
+        "Newton"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What does the prefix kilo- indicate?",
+      "choices": [
+        "One hundredth of the base unit",
+        "One thousand times the base unit",
+        "One millionth of the base unit",
+        "One tenth of the base unit"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What does the prefix milli- indicate?",
+      "choices": [
+        "One hundred times the base unit",
+        "One hundredth of the base unit",
+        "One thousand times the base unit",
+        "One thousandth of the base unit"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which instrument is commonly used to measure liquid volume in a laboratory?",
+      "choices": [
+        "Graduated cylinder",
+        "Stopwatch",
+        "Spring scale",
+        "Meterstick"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why must a numerical measurement include its unit?",
+      "choices": [
+        "Units guarantee that the value is correct",
+        "Units replace the need for an instrument",
+        "Units identify the quantity's scale and meaning",
+        "Every quantity uses the same unit"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What is precision in repeated measurements?",
+      "choices": [
+        "How many different units are used",
+        "How close a measurement is to the accepted value",
+        "How large the measuring instrument is",
+        "How closely the measurements agree with each other"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What is accuracy?",
+      "choices": [
+        "The number of repeated trials alone",
+        "How close a measured value is to the accepted value",
+        "How similar incorrect measurements are to one another",
+        "The number of digits displayed regardless of instrument quality"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why should a scale be zeroed before measuring an object's mass?",
+      "choices": [
+        "To make the object lighter",
+        "To change kilograms into meters",
+        "To avoid including an unwanted offset in the reading",
+        "To remove all possible uncertainty"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "How should the bottom of a concave water meniscus usually be read?",
+      "choices": [
+        "At eye level with the liquid surface",
+        "At the highest edge while tilting the cylinder",
+        "From below the cylinder's base",
+        "From far above the cylinder"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why do measurements have uncertainty?",
+      "choices": [
+        "Units change randomly during a test",
+        "All scientific measurements are guesses",
+        "Instruments and procedures have limited resolution and other sources of variation",
+        "Repeated measurements cannot be compared"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why is a digital display with many digits not sufficient evidence of accuracy?",
+      "choices": [
+        "Digital instruments never work correctly",
+        "Extra digits eliminate the need for units",
+        "A display can measure only time",
+        "An instrument can display many digits while having calibration errors"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why should a scientist use an appropriate instrument range?",
+      "choices": [
+        "The instrument must accommodate the quantity and provide useful resolution",
+        "Instrument range does not affect usefulness",
+        "Any ruler can resolve microscopic structures",
+        "The largest instrument is always the most precise"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A distance is 2.5 kilometers. What is it in meters?",
+      "choices": [
+        "25 meters",
+        "2,500 meters",
+        "25,000 meters",
+        "250 meters"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A sample has a volume of 3.25 liters. What is it in milliliters?",
+      "choices": [
+        "3,250 milliliters",
+        "325 milliliters",
+        "32.5 milliliters",
+        "0.00325 milliliters"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Repeated readings are 102.0 g for a 100.0 g standard; the stated measurement uncertainty is ±0.1 g. How should these results be described?",
+      "choices": [
+        "Accurate but not precise",
+        "Neither accurate nor precise",
+        "Precise but not accurate",
+        "Both accurate and precise"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A ruler has marks every millimeter. Which recorded value most clearly overstates what this ruler alone can support?",
+      "choices": [
+        "18 millimeters",
+        "18.234567 millimeters",
+        "18.2 millimeters",
+        "18 centimeters"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A container's mass is 40 grams, and the container plus sand has a mass of 135 grams. What is the sand's mass?",
+      "choices": [
+        "175 grams",
+        "135 grams",
+        "40 grams",
+        "95 grams"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

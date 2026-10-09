@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--algebra-2-functions--logarithmic-functions",
+  "title": "Logarithmic Functions",
+  "subject": "Math",
+  "category": "Algebra II & Functions",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What does log base 2 of 8 represent?",
+      "choices": [
+        "The product of 2 and 8",
+        "The exponent to which 2 is raised to get 8",
+        "The square root of 8",
+        "The number obtained by dividing 8 by 2"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is log base 10 of 100?",
+      "choices": [
+        "2",
+        "10",
+        "100",
+        "1"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which exponential equation is equivalent to log base 3 of 27 = 3?",
+      "choices": [
+        "27³ = 3",
+        "3 × 3 = 27",
+        "3² = 27",
+        "3³ = 27"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "For a real logarithm with valid base, what must be true of its argument?",
+      "choices": [
+        "It must be negative",
+        "It must be an integer",
+        "It must be positive",
+        "It must be greater than the base"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which is a valid base for a real logarithmic function?",
+      "choices": [
+        "1",
+        "2",
+        "0",
+        "−2"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is log base 5 of 1?",
+      "choices": [
+        "0",
+        "1",
+        "5",
+        "−1"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What base is used by the natural logarithm ln?",
+      "choices": [
+        "10",
+        "2",
+        "1",
+        "e"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why are logarithmic and exponential functions related?",
+      "choices": [
+        "Their graphs are identical for every base",
+        "They both have only integer outputs",
+        "They are inverse functions for the same valid base",
+        "They both pass through (0, 1)"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What is log base 2 of 1/4?",
+      "choices": [
+        "2",
+        "−2",
+        "−4",
+        "1/2"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What is the domain of y = log base 3 of x over the real numbers?",
+      "choices": [
+        "x > 0",
+        "x ≥ 0",
+        "All real x",
+        "x < 0"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "For positive M and N and valid base b, which rule is correct?",
+      "choices": [
+        "log_b(MN) = log_b(M) × log_b(N)",
+        "log_b(M + N) = log_b(M) + log_b(N)",
+        "log_b(M/N) = log_b(M) + log_b(N)",
+        "log_b(MN) = log_b(M) + log_b(N)"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "For positive x and valid base b, which expression equals log_b(x³)?",
+      "choices": [
+        "log_b(x) + 3",
+        "[log_b(x)]³",
+        "3log_b(x)",
+        "log_b(3x)"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What is the solution of log base 10 of x = 3?",
+      "choices": [
+        "x = 30",
+        "x = 1000",
+        "x = 300",
+        "x = 1/1000"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "How does y = log base 2 of x change as x increases?",
+      "choices": [
+        "It increases",
+        "It decreases",
+        "It stays constant",
+        "It alternates between increasing and decreasing"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Which point is on y = log base 4 of x?",
+      "choices": [
+        "(0, 1)",
+        "(4, 0)",
+        "(1, 4)",
+        "(1, 0)"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "What is the solution of log base 2 of (x − 1) = 3?",
+      "choices": [
+        "x = 7",
+        "x = 5",
+        "x = 9",
+        "x = 3"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Why is x = −4 not in the real domain of log base 10 of x?",
+      "choices": [
+        "Logarithms can only return positive outputs",
+        "Positive powers and negative powers of 10 both give positive values",
+        "The base 10 is not valid",
+        "Every negative number is irrational"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "If log base 10 of a = 2 and log base 10 of b = 3, what is log base 10 of ab?",
+      "choices": [
+        "5",
+        "6",
+        "1",
+        "8"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Which formula is a valid change-of-base expression for log base 3 of 7?",
+      "choices": [
+        "ln(3)/ln(7)",
+        "ln(7) − ln(3)",
+        "ln(7) + ln(3)",
+        "ln(7)/ln(3)"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A positive quantity grows by factors of 10: 1, 10, 100, 1000. What are its base-10 logarithms?",
+      "choices": [
+        "1, 2, 3, 4",
+        "1, 10, 100, 1000",
+        "0, 1, 2, 3",
+        "0, 10, 20, 30"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ]
+}

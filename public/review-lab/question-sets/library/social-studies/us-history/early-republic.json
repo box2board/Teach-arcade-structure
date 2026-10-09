@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "us-history--early-republic",
+  "title": "Early Republic",
+  "subject": "Social Studies",
+  "category": "U.S. History",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Who became the first president under the U.S. Constitution in 1789?",
+      "choices": [
+        "John Adams",
+        "Thomas Jefferson",
+        "George Washington",
+        "James Madison"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which official developed the early federal government's major financial program?",
+      "choices": [
+        "Alexander Hamilton",
+        "John Marshall",
+        "James Monroe",
+        "Patrick Henry"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which two political groups became major rivals in the 1790s?",
+      "choices": [
+        "Whigs and Republicans",
+        "Democrats and Progressives",
+        "Know-Nothings and Populists",
+        "Federalists and Democratic-Republicans"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which protest challenged a federal excise tax on distilled spirits in 1794?",
+      "choices": [
+        "Shays' Rebellion",
+        "Whiskey Rebellion",
+        "Bacon's Rebellion",
+        "Dorr Rebellion"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What position did Washington announce toward war between Britain and France in 1793?",
+      "choices": [
+        "Neutrality",
+        "An alliance with France",
+        "An alliance with Britain",
+        "A declaration of war on both powers"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What was the XYZ Affair?",
+      "choices": [
+        "A court dispute over western land",
+        "A rebellion against state income taxes",
+        "A diplomatic controversy involving French demands for payments",
+        "A treaty purchasing Florida from Spain"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which laws passed in 1798 included restrictions on criticism of the federal government?",
+      "choices": [
+        "Navigation Acts",
+        "Intolerable Acts",
+        "Townshend Acts",
+        "Alien and Sedition Acts"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why did Hamilton favor federal assumption of state Revolutionary War debts?",
+      "choices": [
+        "To transfer federal powers to colonial governors",
+        "To strengthen national credit and support for the new government",
+        "To cancel every debt without repayment",
+        "To prohibit future borrowing by private businesses"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why did Jefferson and Hamilton disagree about a national bank?",
+      "choices": [
+        "They differed over constitutional interpretation and federal power",
+        "They disagreed over whether Britain had won independence",
+        "They supported different dates for Washington's inauguration",
+        "They wanted the same institution placed in different colonies"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What did Washington's response to the Whiskey Rebellion demonstrate?",
+      "choices": [
+        "Congress could no longer pass taxes",
+        "States could ignore any federal law",
+        "The federal government could enforce its laws",
+        "The president had abolished civilian courts"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why was Washington's decision to leave office after two terms significant?",
+      "choices": [
+        "It created a constitutional two-term limit immediately",
+        "It removed the need for future presidential elections",
+        "It gave Congress permanent authority to select presidents",
+        "It set a precedent for voluntarily relinquishing executive power"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why did many Democratic-Republicans oppose the Sedition Act?",
+      "choices": [
+        "It lowered tariffs on imported manufactured goods",
+        "They saw it as a threat to speech and political opposition",
+        "It expanded voting rights to new groups",
+        "They believed it weakened federal courts by closing them"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why was the transfer of power after the election of 1800 important?",
+      "choices": [
+        "A rival political group took power through an election",
+        "The presidency became hereditary",
+        "The Constitution was replaced by a monarchy",
+        "State governments stopped holding elections"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "How did the Judiciary Act of 1789 help the new government function?",
+      "choices": [
+        "It transferred all trials to state legislatures",
+        "It selected presidential electors",
+        "It organized the lower federal court system",
+        "It created a new constitutional convention"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What did the cabinet practice begun under Washington provide?",
+      "choices": [
+        "A second national legislature",
+        "A permanent council of state governors",
+        "A group that replaced the Supreme Court",
+        "Department leaders who advised the president"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A merchant favors a national bank and a strong federal government in the 1790s. Which group most closely matches these views?",
+      "choices": [
+        "Democratic-Republicans",
+        "Federalists",
+        "Anti-Masonic Party",
+        "Free Soil Party"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Which comparison best distinguishes the Whiskey Rebellion from Shays' Rebellion?",
+      "choices": [
+        "Whiskey challenged a federal tax; Shays' involved state debt and tax pressures",
+        "Whiskey took place before independence; Shays' occurred after the Civil War",
+        "Whiskey supported British troops; Shays' supported French troops",
+        "Whiskey ended the presidency; Shays' created the national bank"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Which early-republic sequence is in chronological order?",
+      "choices": [
+        "Election of 1800 → Whiskey Rebellion → Washington's inauguration",
+        "Whiskey Rebellion → Election of 1800 → Washington's inauguration",
+        "Washington's inauguration → Whiskey Rebellion → Election of 1800",
+        "Washington's inauguration → Election of 1800 → Whiskey Rebellion"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A critic says the Constitution does not explicitly authorize a national bank. Which response reflects Hamilton's reasoning?",
+      "choices": [
+        "A national bank requires no connection to Congress's listed powers",
+        "Only powers named word for word in the Constitution may be exercised",
+        "State approval is required before Congress can organize national finances",
+        "Implied powers can support means of carrying out listed federal powers"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "What broader challenge links disputes about the bank, federal taxes, and the Sedition Act?",
+      "choices": [
+        "Determining the western boundaries of the Louisiana Purchase",
+        "Defining the new national government's authority and limits",
+        "Negotiating military alliances with Britain's European rivals",
+        "Expanding political participation through changes in state voting laws"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}

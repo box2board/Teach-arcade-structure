@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "world-history--ancient-egypt",
+  "title": "Ancient Egypt",
+  "subject": "Social Studies",
+  "category": "World History",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which river was central to ancient Egyptian agriculture?",
+      "choices": [
+        "Nile",
+        "Tigris",
+        "Indus",
+        "Yellow River"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What title was used for ancient Egyptian rulers?",
+      "choices": [
+        "Consul",
+        "Shogun",
+        "Pharaoh",
+        "Caliph"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What writing system used signs representing sounds and ideas in ancient Egypt?",
+      "choices": [
+        "Cuneiform",
+        "Hieroglyphs",
+        "Linear B",
+        "Runes"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What material did Egyptians commonly use to make writing sheets?",
+      "choices": [
+        "Silk",
+        "Bamboo",
+        "Parchment",
+        "Papyrus"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What were the large pyramids at Giza primarily built to serve as?",
+      "choices": [
+        "Royal tombs",
+        "Public marketplaces",
+        "Military fortresses",
+        "Irrigation reservoirs"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What process preserved bodies for burial in ancient Egypt?",
+      "choices": [
+        "Cremation",
+        "Smelting",
+        "Mummification",
+        "Glazing"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which two broad regions were united to form ancient Egypt?",
+      "choices": [
+        "Assyria and Babylonia",
+        "Upper Egypt and Lower Egypt",
+        "Athens and Sparta",
+        "Punjab and Bengal"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why were Nile floods important to farming?",
+      "choices": [
+        "They prevented any need for farming labor",
+        "They made the surrounding desert disappear",
+        "They guaranteed identical harvests every year",
+        "They supplied water and deposited fertile sediment"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why is Upper Egypt located south of Lower Egypt?",
+      "choices": [
+        "The Nile flows north toward its delta",
+        "Egyptian maps always placed south at the top",
+        "The Mediterranean lies south of the Nile valley",
+        "The delta has the highest elevation in Egypt"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "How did the surrounding deserts affect ancient Egypt?",
+      "choices": [
+        "They prevented all trade with neighboring regions",
+        "They provided abundant rainfall for fields",
+        "They limited some invasions while making farming depend on the river valley",
+        "They made river transportation unnecessary"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why did Egyptian rulers organize irrigation projects?",
+      "choices": [
+        "To replace all grain production with mining",
+        "To manage water for agriculture",
+        "To block access to the Mediterranean",
+        "To eliminate villages along the Nile"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "How did religious beliefs shape Egyptian burial practices?",
+      "choices": [
+        "Egyptians believed death ended every form of existence",
+        "All social classes received identical royal pyramids",
+        "Religious law prohibited placing objects in tombs",
+        "Belief in an afterlife encouraged preserving bodies and burial goods"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What role did scribes play in Egyptian government?",
+      "choices": [
+        "They kept records and handled written administration",
+        "They elected pharaohs by nationwide vote",
+        "They served only as foreign merchants",
+        "They controlled all farming independently of rulers"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "How could agricultural surpluses support civilization?",
+      "choices": [
+        "They required every resident to farm full-time",
+        "They eliminated the need for food storage",
+        "They allowed some people to work in crafts and administration",
+        "They prevented permanent settlements"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why was the Rosetta Stone important for studying Egypt?",
+      "choices": [
+        "It listed every Egyptian ruler in chronological order",
+        "Its parallel texts helped scholars decipher hieroglyphic writing",
+        "It contained the only surviving Egyptian artwork",
+        "It revealed a previously unknown location of the Nile"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A map shows settlements clustered along the Nile. What is the best explanation?",
+      "choices": [
+        "The desert provided more farmland than the river valley",
+        "The Nile prevented travel between settlements",
+        "Egyptian cities avoided access to fresh water",
+        "Water and fertile land supported settlement"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Which source most directly reveals ancient Egyptian beliefs about death?",
+      "choices": [
+        "A burial text placed in a tomb",
+        "A modern airline map",
+        "A Roman law about citizenship",
+        "A medieval European farming manual"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Which comparison of Egypt and Mesopotamia is accurate?",
+      "choices": [
+        "Both depended primarily on Atlantic fishing",
+        "Both used the same language and alphabet",
+        "Both developed major farming societies around rivers",
+        "Both had identical political institutions throughout their histories"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "An official records grain taxes after harvest. Which connection does this show?",
+      "choices": [
+        "Government had no relationship with farming",
+        "Agriculture helped support government administration",
+        "Writing was used only for religious hymns",
+        "Taxation required coin money from the beginning"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which conclusion about Egyptian civilization is most accurate?",
+      "choices": [
+        "Its institutions remained identical throughout its entire history",
+        "It developed without contact with neighboring peoples",
+        "Its economy relied entirely on pyramid construction",
+        "It changed over many centuries despite enduring traditions"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

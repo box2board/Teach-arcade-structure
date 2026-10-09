@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--algebra-2-functions--complex-numbers",
+  "title": "Complex Numbers",
+  "subject": "Math",
+  "category": "Algebra II & Functions",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "How is the imaginary unit i defined?",
+      "choices": [
+        "i² = 1",
+        "i = −1",
+        "i² = −1",
+        "i = 0"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is the real part of 7 − 4i?",
+      "choices": [
+        "−4",
+        "7",
+        "4",
+        "−7"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is the imaginary part of 3 + 5i?",
+      "choices": [
+        "5",
+        "3",
+        "8",
+        "−5"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which expression is in standard complex-number form a + bi?",
+      "choices": [
+        "6 + 2i²",
+        "2/(1 + i)",
+        "3i(2 + i)",
+        "−2 + 6i"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is i³?",
+      "choices": [
+        "i",
+        "1",
+        "−i",
+        "−1"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is i⁴?",
+      "choices": [
+        "−1",
+        "1",
+        "i",
+        "−i"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is the complex conjugate of 4 + 3i?",
+      "choices": [
+        "4 − 3i",
+        "−4 + 3i",
+        "−4 − 3i",
+        "3 + 4i"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why are real numbers also complex numbers?",
+      "choices": [
+        "Every real number is a multiple of i",
+        "Real numbers have no real part",
+        "The imaginary unit equals zero",
+        "A real number can be written as a + 0i"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What is (2 + 3i) + (5 − i)?",
+      "choices": [
+        "7 + 4i",
+        "3 + 2i",
+        "7 + 2i",
+        "7 − 2i"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What is (6 + 2i) − (1 + 5i)?",
+      "choices": [
+        "5 + 7i",
+        "5 − 3i",
+        "7 − 3i",
+        "5 + 3i"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What is (2i)(3i)?",
+      "choices": [
+        "−6",
+        "6",
+        "6i",
+        "−6i"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What is (1 + i)(1 − i)?",
+      "choices": [
+        "0",
+        "2i",
+        "−2",
+        "2"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why is multiplying by a denominator's conjugate useful in complex division?",
+      "choices": [
+        "It makes the numerator zero",
+        "It eliminates the real part of the numerator",
+        "It produces a real denominator",
+        "It changes i² to 1"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What are the complex solutions of x² = −16?",
+      "choices": [
+        "4 and −4",
+        "4i and −4i",
+        "16i and −16i",
+        "−4 only"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "On the complex plane, what point represents −3 + 2i?",
+      "choices": [
+        "(−3, 2)",
+        "(2, −3)",
+        "(−3, −2)",
+        "(3, 2)"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "What is (3 + 2i)(1 + 4i)?",
+      "choices": [
+        "11 + 14i",
+        "−5 + 10i",
+        "3 + 8i",
+        "−5 + 14i"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Which value equals i¹⁰?",
+      "choices": [
+        "1",
+        "i",
+        "−1",
+        "−i"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "What is 6/(1 + i) in standard form?",
+      "choices": [
+        "3 + 3i",
+        "3 − 3i",
+        "6 − 6i",
+        "−3 + 3i"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "What is the distance from the origin to 3 + 4i on the complex plane?",
+      "choices": [
+        "5",
+        "7",
+        "1",
+        "25"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A student replaces i² with 1 in a product. Which result correctly simplifies (2 + i)²?",
+      "choices": [
+        "5 + 4i",
+        "3 + 2i",
+        "4 + i",
+        "3 + 4i"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

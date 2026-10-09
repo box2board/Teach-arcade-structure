@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--physics--measurement-in-physics",
+  "title": "Measurement in Physics",
+  "subject": "Science",
+  "category": "Physics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which physical quantity requires both magnitude and direction?",
+      "choices": [
+        "Distance",
+        "Mass",
+        "Displacement",
+        "Elapsed time"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which quantity is a scalar?",
+      "choices": [
+        "Velocity",
+        "Acceleration",
+        "Force",
+        "Speed"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is a component of a vector?",
+      "choices": [
+        "Its projection along a chosen axis",
+        "Its total mass",
+        "Its chemical composition",
+        "Its measurement uncertainty alone"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is dimensional analysis?",
+      "choices": [
+        "Counting only the digits in an instrument reading",
+        "Checking relationships using the dimensions of physical quantities",
+        "Measuring an object's chemical bonds",
+        "Replacing measurements with guesses"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which dimension is represented by speed?",
+      "choices": [
+        "Length multiplied by time",
+        "Mass divided by length",
+        "Length divided by time",
+        "Time divided by mass"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which unit combination represents acceleration?",
+      "choices": [
+        "Meters per second",
+        "Newton-meters",
+        "Kilograms per cubic meter",
+        "Meters per second squared"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "In a velocity-time graph, what does signed area represent?",
+      "choices": [
+        "Displacement",
+        "Acceleration",
+        "Mass",
+        "Pressure"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why must a direction convention be stated when reporting signed velocity?",
+      "choices": [
+        "Negative velocities are always impossible",
+        "A positive or negative sign refers to the chosen axis",
+        "Signs determine the object's mass",
+        "Velocity can be measured without any reference"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why can total distance differ from displacement magnitude?",
+      "choices": [
+        "Distance ignores movement along curves",
+        "Displacement counts every step without direction",
+        "A path can include motion in different directions",
+        "They always use different length units"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What does a line's intercept represent in a position-time model x = x0 + vt?",
+      "choices": [
+        "The change in position per unit time",
+        "The time when velocity first reaches zero",
+        "The maximum distance traveled",
+        "Position when t = 0"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why is a formula with meters on one side and seconds on the other suspect?",
+      "choices": [
+        "The dimensions do not match",
+        "The symbols must be spelled identically on both sides",
+        "The numbers alone establish correctness even with mismatched dimensions",
+        "Both sides must always represent a vector"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why should repeated measurements be reported with their spread as well as their average?",
+      "choices": [
+        "The average becomes meaningless in every case",
+        "The spread shows variability not visible in the average",
+        "Spread gives the exact true value",
+        "Repeated readings remove every systematic error"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why should a measured value include units?",
+      "choices": [
+        "Units remove every measurement uncertainty",
+        "Units determine the correct result without a measurement",
+        "The number alone does not specify its physical scale",
+        "Every unit measures length"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "How can changing from meters to centimeters affect a reported length?",
+      "choices": [
+        "The physical object becomes longer",
+        "The length's uncertainty disappears",
+        "The quantity becomes time",
+        "The numerical value changes but the physical length does not"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What does a curved position-time graph indicate about motion?",
+      "choices": [
+        "The velocity changes as the slope changes",
+        "The velocity is constant because time keeps increasing",
+        "The position is the same at every time",
+        "The slope always represents acceleration instead of velocity"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A student walks 3 m east and then 3 m west. What are distance and displacement?",
+      "choices": [
+        "0 m and 6 m",
+        "6 m and 0 m",
+        "3 m and 3 m east",
+        "6 m and 6 m east"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Two perpendicular displacement components are 6 m and 8 m. What is the displacement magnitude?",
+      "choices": [
+        "14 m",
+        "2 m",
+        "10 m",
+        "48 m"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A straight position-time graph rises from 2 m to 14 m in 4 s. What is its slope?",
+      "choices": [
+        "4 m/s",
+        "12 m/s",
+        "48 m/s",
+        "3 m/s"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Which expression can have the dimensions of distance if v is speed and t is time?",
+      "choices": [
+        "v × t",
+        "v ÷ t",
+        "t ÷ v",
+        "v + t"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "An object moves at a constant +5 m/s for 4 s. What displacement is represented by the velocity-time graph's signed area?",
+      "choices": [
+        "+1.25 m",
+        "+20 m",
+        "−20 m",
+        "+9 m"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ]
+}

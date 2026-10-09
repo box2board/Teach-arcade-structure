@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--algebra-2-functions--rational-function-graphs",
+  "title": "Rational Function Graphs",
+  "subject": "Math",
+  "category": "Algebra II & Functions",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a rational function?",
+      "choices": [
+        "Any function containing a square root",
+        "A quotient of polynomials with denominator not identically zero",
+        "Any polynomial of degree 1 only",
+        "A function with only whole-number outputs"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What input is excluded from f(x) = 1/(x + 3)?",
+      "choices": [
+        "−3",
+        "3",
+        "0",
+        "1"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which line is the vertical asymptote of f(x) = 1/(x − 2)?",
+      "choices": [
+        "x = −2",
+        "y = 2",
+        "y = 0",
+        "x = 2"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which line is the horizontal asymptote of f(x) = 1/x?",
+      "choices": [
+        "x = 0",
+        "y = 1",
+        "y = 0",
+        "x = 1"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is a hole in a rational graph?",
+      "choices": [
+        "A zero that every graph must include",
+        "A missing point caused by a canceled denominator factor",
+        "A point where the graph reaches its maximum",
+        "Every y-intercept"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which denominator determines the domain restriction of a rational expression?",
+      "choices": [
+        "The original denominator before cancellation",
+        "Only the simplified numerator",
+        "Only the constant coefficient",
+        "Only the denominator after cancellation"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is f(2) for f(x) = 3/x?",
+      "choices": [
+        "6",
+        "2/3",
+        "1",
+        "3/2"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "For f(x) = (x² − 1)/(x − 1), why is x = 1 still excluded after simplification?",
+      "choices": [
+        "The simplified expression x + 1 is zero there",
+        "Every canceled factor creates a new domain value",
+        "The original denominator is zero there",
+        "The numerator is negative there"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What is the hole location in f(x) = (x² − 1)/(x − 1)?",
+      "choices": [
+        "(1, 0)",
+        "(1, 2)",
+        "(−1, 0)",
+        "(−1, 2)"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What is the horizontal asymptote of f(x) = (2x + 1)/(x − 4)?",
+      "choices": [
+        "y = 2",
+        "y = 1",
+        "x = 4",
+        "y = 0"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why does f(x) = 1/(x − 2) have a vertical asymptote at 2 rather than a hole?",
+      "choices": [
+        "Its numerator equals zero at 2",
+        "All denominator zeros are holes",
+        "Its horizontal asymptote is not zero",
+        "Its denominator factor does not cancel with the numerator"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What is the x-intercept of f(x) = (x − 3)/(x + 1)?",
+      "choices": [
+        "(−1, 0)",
+        "(0, −3)",
+        "(3, 0)",
+        "(−3, 0)"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What is the y-intercept value of f(x) = (x − 3)/(x + 1)?",
+      "choices": [
+        "3",
+        "−3",
+        "−1",
+        "1"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Which statement about horizontal asymptotes is correct?",
+      "choices": [
+        "A rational graph can cross a horizontal asymptote",
+        "A graph can never cross any horizontal asymptote",
+        "Every rational function has y = 0 as its asymptote",
+        "A horizontal asymptote excludes its y-value from every graph"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "If a rational function's numerator degree is smaller than its denominator degree, what is its horizontal asymptote?",
+      "choices": [
+        "y = 1",
+        "x = 0",
+        "It always has no horizontal asymptote",
+        "y = 0"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "The function f(x) = x/(x² + 1) has horizontal asymptote y = 0. Which point shows that it crosses that line?",
+      "choices": [
+        "(1, 1)",
+        "(−1, 1)",
+        "(0, 0)",
+        "(0, 1)"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "For f(x) = (x − 2)/[(x − 2)(x + 3)], what occurs at x = 2 and x = −3 respectively?",
+      "choices": [
+        "Two vertical asymptotes",
+        "A hole and a vertical asymptote",
+        "Two holes",
+        "A vertical asymptote and a hole"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Which line is the horizontal asymptote of f(x) = 5 + 2/x?",
+      "choices": [
+        "y = 5",
+        "x = 5",
+        "y = 2",
+        "x = 0"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "As x approaches 0 from the positive side in f(x) = 1/x, what happens to f(x)?",
+      "choices": [
+        "It decreases without bound",
+        "It approaches zero",
+        "It approaches 1",
+        "It increases without bound"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A student cancels x from (x + 1)/x and claims the graph is y = 2. What is the valid correction?",
+      "choices": [
+        "The function is x + 1 for all real x",
+        "The function is 2 for x ≠ 0",
+        "The function is 1 + 1/x with x ≠ 0",
+        "The function is 1/x² for x ≠ 0"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ]
+}

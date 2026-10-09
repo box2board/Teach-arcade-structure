@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--earth-space-science--earth-moon-and-sun",
+  "title": "Earth Moon and Sun",
+  "subject": "Science",
+  "category": "Earth & Space Science",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What causes the regular cycle of day and night on Earth?",
+      "choices": [
+        "Changes in the Sun's size",
+        "Earth's annual revolution",
+        "The Moon's shadow each day",
+        "Earth's rotation"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "About how long does Earth take to orbit the Sun once?",
+      "choices": [
+        "One day",
+        "One year",
+        "One month",
+        "One week"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is the main cause of Earth's seasons?",
+      "choices": [
+        "Earth's axial tilt as it orbits the Sun",
+        "Changes in the Moon's brightness",
+        "Changes in Earth's mass",
+        "The Sun orbiting Earth every year"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "During a solar eclipse, which object lies between Earth and the Sun?",
+      "choices": [
+        "The Moon",
+        "Venus",
+        "Mercury",
+        "Mars"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "During a lunar eclipse, which object lies between the Sun and the Moon?",
+      "choices": [
+        "Jupiter",
+        "Venus",
+        "Earth",
+        "The Moon itself"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What causes the Moon's visible phases?",
+      "choices": [
+        "The Moon changing its actual shape",
+        "The Moon producing different amounts of light",
+        "Earth casting a shadow on it every night",
+        "Changes in how much of its sunlit half we see"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "At which phase is the Moon's near side fully illuminated as viewed from Earth?",
+      "choices": [
+        "New moon",
+        "Full moon",
+        "First quarter",
+        "Third quarter"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why is it summer in the Northern Hemisphere when it is winter in the Southern Hemisphere?",
+      "choices": [
+        "Each hemisphere receives summer when Earth is closest to the Sun",
+        "The hemisphere with more oceans always has winter",
+        "The Sun's energy output alternates between hemispheres",
+        "The hemispheres tilt toward and away from the Sun in opposite ways"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why does a hemisphere tilted toward the Sun receive more heating?",
+      "choices": [
+        "It generally has longer days and more direct sunlight",
+        "It moves much closer to the Sun than the other hemisphere",
+        "Its atmosphere loses all clouds",
+        "Its surface gravity increases"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why do eclipses not occur at every new and full moon?",
+      "choices": [
+        "The Moon does not orbit Earth regularly",
+        "Earth's shadow exists only once a year",
+        "The Moon's orbital plane is tilted relative to Earth's orbital plane",
+        "The Sun changes position inside the solar system"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why does the Moon generally show the same face to Earth?",
+      "choices": [
+        "It never rotates",
+        "Its rotation period matches its orbital period around Earth",
+        "Earth's atmosphere prevents its rotation",
+        "Its far side receives no sunlight"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What is the main astronomical cause of ocean tides?",
+      "choices": [
+        "Daily changes in ocean temperature",
+        "Differences in the Moon's and Sun's gravitational pulls across Earth",
+        "Winds always blowing toward the equator",
+        "Earth moving closer to the Sun each evening"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "When do spring tides generally occur?",
+      "choices": [
+        "Around new and full moons, when Sun, Earth, and Moon align",
+        "Only during the spring season",
+        "Only when the Moon is at first quarter",
+        "Whenever the ocean surface becomes warmer"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "How do neap tides compare with spring tides?",
+      "choices": [
+        "They always have a greater tidal range",
+        "They occur only once per year",
+        "They involve no gravitational influence",
+        "They have a smaller tidal range"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why is a new moon usually difficult to see from Earth?",
+      "choices": [
+        "The Moon reflects less light because its surface changes color",
+        "Earth's shadow covers the whole Moon",
+        "The Moon's sunlit side mainly faces away from Earth",
+        "The Moon is fully lit on its near side but too distant to see"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Which sequence gives the correct order of these phases after a new moon?",
+      "choices": [
+        "Full, first quarter, third quarter",
+        "Third quarter, full, first quarter",
+        "First quarter, third quarter, full",
+        "First quarter, full, third quarter"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "In June, the Northern Hemisphere is tilted toward the Sun. What season generally occurs in southern Australia?",
+      "choices": [
+        "Summer",
+        "Winter",
+        "Spring",
+        "Autumn"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A student claims seasons happen because Earth is much closer to the Sun in northern summer. Which fact best challenges this explanation?",
+      "choices": [
+        "The two hemispheres have opposite seasons at the same time",
+        "Earth has one natural moon",
+        "Earth rotates from west to east",
+        "The Moon reflects sunlight"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A diagram shows Sun, Earth, and Moon in that order, nearly aligned. Which event could occur?",
+      "choices": [
+        "A solar eclipse",
+        "A first-quarter moon only",
+        "A lunar eclipse",
+        "An eclipse of the Sun by Mars"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A coastal location has unusually large differences between high and low tide near a full moon. Which explanation fits?",
+      "choices": [
+        "The Moon's visible brightness directly raises ocean water",
+        "The Moon's gravitational influence disappears at full moon",
+        "The Sun's and Moon's tidal effects reinforce each other during alignment",
+        "The Sun's and Moon's tidal effects oppose each other most strongly"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ]
+}

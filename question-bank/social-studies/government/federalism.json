@@ -1,0 +1,254 @@
+{
+  "schemaVersion": 1,
+  "id": "government--federalism",
+  "title": "Federalism",
+  "subject": "Social Studies",
+  "category": "Government & Civics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is federalism?",
+      "choices": [
+        "Division of Congress into two chambers",
+        "Direct voting on every national law",
+        "Rule by a single unelected leader",
+        "Division of power between national and state governments"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What are delegated powers?",
+      "choices": [
+        "Powers granted to the federal government",
+        "Powers retained only by private businesses",
+        "Powers used only by city councils",
+        "Powers prohibited to every government"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What are reserved powers?",
+      "choices": [
+        "Powers assigned only to federal courts",
+        "Powers delegated exclusively to foreign governments",
+        "Powers retained by states or the people under the constitutional framework",
+        "Powers exercised only during presidential campaigns"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What are concurrent powers?",
+      "choices": [
+        "Powers that no government may exercise",
+        "Powers exercised by both national and state governments",
+        "Powers held only by Congress",
+        "Powers belonging only to the president"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which amendment addresses powers not delegated to the United States nor prohibited to states?",
+      "choices": [
+        "Tenth Amendment",
+        "First Amendment",
+        "Fifth Amendment",
+        "Nineteenth Amendment"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which clause makes the Constitution and valid federal law supreme over conflicting state law?",
+      "choices": [
+        "Establishment Clause",
+        "Free Exercise Clause",
+        "Appointments Clause",
+        "Supremacy Clause"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which institution ordinarily has authority to coin U.S. money?",
+      "choices": [
+        "Each state government separately",
+        "Every county government",
+        "Federal government",
+        "Every school district"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why does federalism differ from separation of powers?",
+      "choices": [
+        "Federalism divides authority by level; separation of powers divides it by branch",
+        "Federalism divides authority by branch; separation of powers divides it by level",
+        "Federalism divides authority by region; separation of powers divides it by population",
+        "Federalism divides authority by population; separation of powers divides it by region"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why can education policies vary among states?",
+      "choices": [
+        "States have substantial authority over education",
+        "The Constitution requires identical curricula nationwide",
+        "Local schools operate outside all law",
+        "Federal courts write every school textbook"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "How can federal grants affect state policy?",
+      "choices": [
+        "Grants automatically abolish state legislatures",
+        "Every grant transfers all state powers to Congress",
+        "Grants prohibit states from collecting taxes",
+        "Funding conditions can encourage states to pursue federal goals within legal limits"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why can both states and the federal government collect taxes?",
+      "choices": [
+        "Only states possess constitutional taxing authority",
+        "Only the president may authorize state taxes",
+        "Taxation is a concurrent power",
+        "Local governments cannot collect any revenue"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What does the Full Faith and Credit Clause generally require?",
+      "choices": [
+        "States to use identical criminal codes",
+        "States to recognize other states' public acts, records, and judicial proceedings under applicable rules",
+        "States to surrender all court authority to Congress",
+        "States to hold every election on the same day"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why does federalism allow policy experimentation?",
+      "choices": [
+        "Different states can try different approaches within constitutional limits",
+        "States can ignore all constitutional rights",
+        "Every state must adopt every other state's policy",
+        "Only national officials can propose local policies"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What constrains state authority in the federal system?",
+      "choices": [
+        "Only the personal preferences of governors",
+        "Only the laws of neighboring states",
+        "No legal limits once a state joins the Union",
+        "The U.S. Constitution and valid federal law"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why are interstate disputes sometimes heard by federal courts?",
+      "choices": [
+        "State governments have no courts",
+        "Congress cannot regulate any interstate activity",
+        "The federal system provides a forum beyond either disputing state's courts",
+        "Every interstate dispute must be decided by referendum"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A state and the federal government both tax income. What kind of power is illustrated?",
+      "choices": [
+        "Reserved power exclusively",
+        "Concurrent power",
+        "Delegated power exclusively",
+        "A prohibited power"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A state law conflicts with a constitutionally valid federal law. Which principle generally controls?",
+      "choices": [
+        "Federal supremacy",
+        "State sovereignty without limits",
+        "Municipal home rule",
+        "Executive privilege"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A state establishes licensing rules for teachers. Which authority does this most closely illustrate?",
+      "choices": [
+        "Federal treaty power",
+        "Presidential pardon power",
+        "Congressional coinage power",
+        "State responsibility over education"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Which comparison is accurate?",
+      "choices": [
+        "A federal system shares authority by level; a unitary system concentrates ultimate authority nationally",
+        "A federal system concentrates ultimate authority nationally; a unitary system shares authority constitutionally by level",
+        "A federal system makes local officials hereditary; a unitary system requires their direct election",
+        "A federal system permits only national courts; a unitary system permits only regional courts"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Why should a student examine both national and state law when researching a policy?",
+      "choices": [
+        "State law always overrides the Constitution",
+        "Authority may be shared and the laws may interact",
+        "Federal law regulates only foreign affairs",
+        "Local issues never involve federal rights"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    }
+  ],
+  "referenceUrls": [
+    "https://www.archives.gov/founding-docs/constitution-transcript"
+  ]
+}

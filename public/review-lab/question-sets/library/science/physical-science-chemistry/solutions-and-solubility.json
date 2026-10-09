@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--physical-science-chemistry--solutions-and-solubility",
+  "title": "Solutions and Solubility",
+  "subject": "Science",
+  "category": "Physical Science & Chemistry",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "In a saltwater solution, what is the dissolved salt called?",
+      "choices": [
+        "Solvent",
+        "Suspension",
+        "Solute",
+        "Precipitate"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is the solvent in a solution made by dissolving sugar in water?",
+      "choices": [
+        "Sugar",
+        "Both equally",
+        "Water",
+        "Neither substance"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which description defines a solution?",
+      "choices": [
+        "A mixture uniform at the particle level",
+        "A mixture with visibly separate layers",
+        "A pure compound with a fixed formula",
+        "A substance containing only one element"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What does solubility describe?",
+      "choices": [
+        "The amount of solute added regardless of whether it dissolves",
+        "The time taken for a fixed mass to dissolve",
+        "The mass of solution left after every solvent evaporates",
+        "The maximum amount that can dissolve under specified conditions"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is a saturated solution at a given temperature?",
+      "choices": [
+        "A solution with equal masses of solute and solvent",
+        "A solution holding its equilibrium maximum of dissolved solute",
+        "A solution that can still dissolve more of the same solute",
+        "A solution in which no solute particles remain dissolved"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which unit can express mass concentration?",
+      "choices": [
+        "Grams of solute per liter of solution",
+        "Liters of solvent per second",
+        "Meters of solute per gram",
+        "Degrees per liter of solvent"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is an unsaturated solution?",
+      "choices": [
+        "One containing more solute than its equilibrium limit",
+        "One containing no solvent",
+        "One that can dissolve additional solute under the same conditions",
+        "One that cannot conduct electricity"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why does stirring often help sugar dissolve faster?",
+      "choices": [
+        "It makes the solvent hotter in every case",
+        "It brings fresh solvent into contact with the sugar",
+        "It increases the equilibrium solubility at unchanged temperature",
+        "It reduces the mass of solute added"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why can crushing a solid speed up its dissolving?",
+      "choices": [
+        "Its equilibrium solubility necessarily increases",
+        "Its total mass becomes greater",
+        "Its solvent concentration decreases before contact",
+        "More surface is exposed to the solvent"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "How does adding more solvent usually affect concentration if solute mass stays fixed?",
+      "choices": [
+        "Concentration increases",
+        "Solute mass doubles",
+        "The solute becomes a pure substance",
+        "Concentration decreases"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why should solubility data include temperature?",
+      "choices": [
+        "Temperature influences dissolving speed but never solubility",
+        "Solubility can change with temperature",
+        "Every solute becomes equally soluble at one temperature",
+        "Solubility depends only on the amount of stirring"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "How does warming water generally affect the solubility of gases in it?",
+      "choices": [
+        "More gas always remains dissolved at equilibrium",
+        "The dissolved amount stays constant regardless of temperature",
+        "Less gas can remain dissolved at equilibrium",
+        "Gas solubility changes only with container size"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why does opening a carbonated drink allow gas to escape?",
+      "choices": [
+        "Lower gas pressure above the liquid reduces dissolved gas solubility",
+        "The gas pressure above the liquid increases",
+        "The dissolved gas becomes more soluble at lower pressure",
+        "Opening changes only the liquid's color, with no gas effect"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What distinguishes dissolving rate from solubility?",
+      "choices": [
+        "Rate describes mass; solubility describes color",
+        "Rate describes speed; solubility describes an equilibrium limit",
+        "Both always describe the same quantity",
+        "Solubility measures only the size of particles"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why does a clear liquid not necessarily indicate a pure substance?",
+      "choices": [
+        "Dissolved substances may be invisible",
+        "Every dissolved substance must change a liquid's color",
+        "A solution's clarity shows that it contains only solvent",
+        "Dissolved substances always form visible layers"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A solution contains 10 g of solute in 2 L of solution. What is its mass concentration?",
+      "choices": [
+        "20 g/L",
+        "12 g/L",
+        "5 g/L",
+        "0.2 g/L"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "At a certain temperature, 30 g of salt can dissolve in 100 g of water. What happens when 40 g is added and equilibrium is reached?",
+      "choices": [
+        "All 40 g dissolves",
+        "Exactly 30 g remains undissolved",
+        "All 40 g remains undissolved",
+        "About 10 g remains undissolved"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A solubility graph shows 20 g per 100 g water at 20°C and 40 g at 60°C. What does it support?",
+      "choices": [
+        "All solids follow the same temperature trend",
+        "This solute is more soluble at 60°C",
+        "The solute necessarily dissolves twice as fast at 60°C",
+        "Solubility is independent of temperature"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A student stirs two identical saturated solutions at the same temperature. Does faster stirring increase the equilibrium amount dissolved?",
+      "choices": [
+        "Yes, faster stirring always doubles the equilibrium solubility",
+        "Yes, any stirring prevents saturation",
+        "No, because stirring stops dissolved particles from moving",
+        "No, stirring mainly changes how quickly equilibrium is reached"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A solution is diluted from 1 L to 2 L without losing solute. How does its concentration change?",
+      "choices": [
+        "It becomes half the original concentration",
+        "It becomes twice the original concentration",
+        "It stays unchanged",
+        "It becomes four times the original concentration"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}

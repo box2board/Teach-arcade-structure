@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--physical-science-chemistry--atomic-structure",
+  "title": "Atomic Structure",
+  "subject": "Science",
+  "category": "Physical Science & Chemistry",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which subatomic particle carries a positive electric charge?",
+      "choices": [
+        "Electron",
+        "Neutron",
+        "Proton",
+        "Photon"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which subatomic particle has no electric charge?",
+      "choices": [
+        "Neutron",
+        "Proton",
+        "Electron",
+        "Positive ion"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Where are protons and neutrons located in an atom?",
+      "choices": [
+        "In bonds between atoms",
+        "In the nucleus",
+        "Outside all parts of the atom",
+        "In the electron cloud"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What does an element's atomic number count?",
+      "choices": [
+        "Neutrons",
+        "Protons plus neutrons",
+        "Protons",
+        "Electrons plus neutrons"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is the mass number of an isotope?",
+      "choices": [
+        "Its number of occupied energy levels",
+        "Its number of electrons only",
+        "Its average atomic mass across all isotopes",
+        "Its total number of protons and neutrons"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What are isotopes of the same element?",
+      "choices": [
+        "Atoms with different proton numbers",
+        "Atoms with identical mass numbers and different elements",
+        "Atoms with the same proton number but different neutron numbers",
+        "Atoms with no neutrons or electrons"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is an ion?",
+      "choices": [
+        "An atom or group of atoms with a net electric charge",
+        "A particle with no nucleus",
+        "An atom that must contain no electrons",
+        "An atom with a different number of protons than all others"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why is an atom electrically neutral when proton and electron counts match?",
+      "choices": [
+        "Neutrons remove both charges",
+        "Protons change into neutrons",
+        "Electrons have no charge inside atoms",
+        "The positive and negative charges balance"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why does losing an electron make an initially neutral atom positive?",
+      "choices": [
+        "Its neutron count decreases",
+        "It then has more protons than electrons",
+        "Its nucleus gains another proton",
+        "The remaining electrons become positively charged"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why do carbon-12 and carbon-14 remain the same element?",
+      "choices": [
+        "They have identical numbers of neutrons",
+        "They have the same number of protons",
+        "They have identical mass numbers",
+        "They have no electrons in neutral form"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why is an element's periodic-table atomic mass often not a whole number?",
+      "choices": [
+        "It counts only valence electrons",
+        "It is the mass number of every individual atom",
+        "It reflects an average weighted by isotope abundance",
+        "It measures the number of chemical bonds"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What is more accurate than imagining electrons as tiny planets on fixed tracks?",
+      "choices": [
+        "Electron locations are described by regions of probability",
+        "Electrons are motionless on the nucleus",
+        "Electrons are larger than the nucleus",
+        "Electrons have no relationship to atomic structure"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why are valence electrons important to chemistry?",
+      "choices": [
+        "They always have positive charge",
+        "They determine the element's proton count",
+        "They supply the nucleus with all neutrons",
+        "They are strongly involved in bonding and reactions"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What changes when a chemical reaction creates a simple ion from an atom?",
+      "choices": [
+        "Its electron count changes while its element identity stays the same",
+        "The nucleus splits into two elements",
+        "The atom's proton count changes",
+        "Every neutron leaves the atom"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "How does the nucleus compare with the atom as a whole?",
+      "choices": [
+        "It takes up most of the atom's volume but little mass",
+        "It contains only electrons",
+        "It contains most of the mass in a very small region",
+        "It is spread evenly throughout the electron cloud"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A neutral atom has 8 protons. How many electrons does it have?",
+      "choices": [
+        "4",
+        "0",
+        "16",
+        "8"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "An isotope has 6 protons and 8 neutrons. What is its mass number?",
+      "choices": [
+        "6",
+        "14",
+        "8",
+        "2"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A particle has 11 protons and 10 electrons. What is its net charge?",
+      "choices": [
+        "−1",
+        "+1",
+        "0",
+        "+11"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "An atom has 17 protons, 18 neutrons, and 17 electrons. Which value identifies its element?",
+      "choices": [
+        "18",
+        "35",
+        "52",
+        "17"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Two atoms each have 10 protons, but one has 10 neutrons and the other 12. What is their relationship?",
+      "choices": [
+        "They are isotopes of the same element",
+        "They are different elements",
+        "They must have opposite electric charges",
+        "They have the same mass number"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}

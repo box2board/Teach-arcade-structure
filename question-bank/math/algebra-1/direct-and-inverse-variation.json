@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--algebra-1--direct-and-inverse-variation",
+  "title": "Direct and Inverse Variation",
+  "subject": "Math",
+  "category": "Algebra I",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which equation expresses direct variation?",
+      "choices": [
+        "y = x + k for k ≠ 0",
+        "y = k/x for k ≠ 0",
+        "y = kx",
+        "y = x² + k"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which equation expresses inverse variation for x ≠ 0?",
+      "choices": [
+        "y = kx",
+        "y = k/x",
+        "y = x + k",
+        "y = kx²"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What stays constant in inverse variation?",
+      "choices": [
+        "The product xy",
+        "The difference y − x",
+        "The sum x + y",
+        "The ratio y/x"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "If y varies directly with x and y = 15 when x = 3, what is k?",
+      "choices": [
+        "45",
+        "12",
+        "1/5",
+        "5"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "If y varies inversely with x and y = 4 when x = 6, what is k?",
+      "choices": [
+        "2/3",
+        "10",
+        "24",
+        "2"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "If positive x doubles in an inverse variation, what happens to y?",
+      "choices": [
+        "It doubles",
+        "It is halved",
+        "It stays the same",
+        "It is quadrupled"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which table shows inverse variation?",
+      "choices": [
+        "x: 1, 2, 4; y: 12, 6, 3",
+        "x: 1, 2, 4; y: 3, 6, 12",
+        "x: 1, 2, 4; y: 12, 11, 9",
+        "x: 1, 2, 4; y: 5, 5, 5"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why does y = 5x + 1 not represent direct variation?",
+      "choices": [
+        "Its slope is 5",
+        "Its variables use different letters",
+        "Its outputs are positive for positive x",
+        "It includes a nonzero additive starting value"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "For y = 18/x, what is y when x = 3?",
+      "choices": [
+        "54",
+        "15",
+        "6",
+        "1/6"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "For y = 2.5x, what is y when x = 8?",
+      "choices": [
+        "10.5",
+        "20",
+        "3.2",
+        "32"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why is x = 0 excluded from y = 12/x?",
+      "choices": [
+        "Its denominator would be zero",
+        "Zero is not a real number",
+        "Inverse variation uses only integers",
+        "The product must become zero"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "A fixed 120-mile trip takes t = 120/v hours at speed v. What type of variation relates positive t and v?",
+      "choices": [
+        "Direct variation",
+        "A constant additive relationship",
+        "Quadratic variation",
+        "Inverse variation"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "A circle's circumference is C = 2πr. How does C vary with r?",
+      "choices": [
+        "Inversely with constant 2π",
+        "Directly with constant πr",
+        "Directly with constant 2π",
+        "Inversely with constant r²"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "If y varies directly with x and y = −12 when x = 4, what is y when x = 7?",
+      "choices": [
+        "21",
+        "−21",
+        "−15",
+        "−28"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "If y varies inversely with x and y = 9 when x = 2, what is y when x = 6?",
+      "choices": [
+        "3",
+        "27",
+        "18",
+        "6"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Six identical workers complete a fixed job in 10 hours. Under ideal inverse variation, how long do 15 workers take?",
+      "choices": [
+        "25 hours",
+        "9 hours",
+        "6 hours",
+        "4 hours"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A table contains (2, 8), (4, 4), and (8, 2). Which equation fits?",
+      "choices": [
+        "y = 4x",
+        "y = x + 6",
+        "y = 16/x",
+        "y = 8/x"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "If y varies directly with x and the ratio y/x is 3/4, what x gives y = 9?",
+      "choices": [
+        "6.75",
+        "12",
+        "27",
+        "3"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "An inverse variation passes through (5, −6). What y-value corresponds to x = −3?",
+      "choices": [
+        "10",
+        "−10",
+        "2",
+        "−18"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A student confuses constant ratio with constant product. Which comparison is correct?",
+      "choices": [
+        "Both have constant y/x",
+        "Both have constant xy",
+        "Direct variation has constant x + y; inverse variation has constant y − x",
+        "Direct variation has constant y/x; inverse variation has constant xy"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

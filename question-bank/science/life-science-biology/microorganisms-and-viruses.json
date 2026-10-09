@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--life-science-biology--microorganisms-and-viruses",
+  "title": "Microorganisms and Viruses",
+  "subject": "Science",
+  "category": "Life Science & Biology",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which organisms lack a membrane-bound nucleus?",
+      "choices": [
+        "Fungi",
+        "Protists with nuclei",
+        "Bacteria",
+        "Animals"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which group includes yeast?",
+      "choices": [
+        "Fungi",
+        "Viruses",
+        "Bacteria",
+        "Archaea"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which description best fits a virus?",
+      "choices": [
+        "A prokaryotic cell that divides by binary fission",
+        "A eukaryotic cell that carries out independent metabolism",
+        "A multicellular organism that reproduces through spores",
+        "A noncellular agent that reproduces using host machinery"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which feature is characteristic of a bacteriophage?",
+      "choices": [
+        "It is a bacterial organelle",
+        "It infects bacteria",
+        "It reproduces only in plants",
+        "It contains no genetic material"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is binary fission?",
+      "choices": [
+        "Fusion of two gametes",
+        "Division of one prokaryotic cell into two cells",
+        "Assembly of a virus outside all cells",
+        "Formation of a fungal fruiting body"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is a pathogen?",
+      "choices": [
+        "An organism that always improves host health",
+        "A community of microbes in one habitat",
+        "A chemical messenger produced by nerve cells",
+        "An agent capable of causing disease"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is a microbiome?",
+      "choices": [
+        "A community of microorganisms in a particular environment",
+        "The genetic material of one microorganism",
+        "A particular habitat's nonliving conditions",
+        "A group containing only disease-causing viruses"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why are not all microorganisms harmful?",
+      "choices": [
+        "Disease-causing and beneficial microbes have identical ecological roles",
+        "Only multicellular organisms recycle nutrients",
+        "Many support processes such as decomposition or nutrient cycling",
+        "All microbial interactions reduce other organisms' survival"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why can bacteria reproduce without a host cell while viruses cannot reproduce independently?",
+      "choices": [
+        "Viruses contain the same complete cellular machinery as bacteria",
+        "Bacteria reproduce only inside the same hosts as viruses",
+        "Viruses obtain all energy through independent photosynthesis",
+        "Bacteria have cellular machinery; viruses rely on host machinery"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "How can microbes contribute to nitrogen cycling?",
+      "choices": [
+        "All microbes perform the same nitrogen transformation",
+        "Some transform nitrogen into forms other organisms can use",
+        "Only plant roots can transform atmospheric nitrogen",
+        "Microbes use nitrogen but cannot change its chemical form"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why does yeast cause bread dough to rise?",
+      "choices": [
+        "It produces oxygen while consuming carbon dioxide",
+        "It releases nitrogen by breaking down flour proteins",
+        "It releases carbon dioxide during sugar metabolism",
+        "It traps air without any contribution from metabolism"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why can decomposer microorganisms affect soil fertility?",
+      "choices": [
+        "They break down material and return nutrients to usable pools",
+        "They store all released nutrients where plants cannot use them",
+        "They slow every chemical process in soil",
+        "They consume organic matter without returning any nutrients"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What helps explain why viruses are often described as noncellular?",
+      "choices": [
+        "They lack a complete cellular organization and independent metabolism",
+        "They have no physical structure",
+        "They always contain a nucleus",
+        "They reproduce through ordinary mitosis"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "How do bacterial spores differ from typical reproductive spores of many fungi?",
+      "choices": [
+        "Both always double bacterial population size",
+        "Fungal spores cannot germinate",
+        "Many bacterial endospores are survival structures rather than new offspring",
+        "Bacterial endospores are viruses"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why must a culture experiment use approved containment and procedures?",
+      "choices": [
+        "Containment is needed only for visibly large organisms",
+        "Unknown microorganisms can present risks",
+        "An unknown culture can be treated as harmless until illness occurs",
+        "Handling procedures cannot influence exposure to microbes"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "An observed cell has a nucleus and chloroplasts and lives independently in water. Which classification is plausible?",
+      "choices": [
+        "A bacteriophage",
+        "A bacterial endospore",
+        "A virus",
+        "A photosynthetic protist"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A sample's agent multiplies only inside host cells and lacks ribosomes. Which group best fits?",
+      "choices": [
+        "Bacteria",
+        "Yeasts",
+        "Viruses",
+        "Single-celled protists"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "In a teacher-controlled investigation, a sealed sterile medium shows no growth while an otherwise comparable exposed medium shows growth. What is supported?",
+      "choices": [
+        "Every organism in the exposed sample causes disease",
+        "The sterile sample proves all air contains no microbes",
+        "The comparison identifies the exact species present",
+        "Exposure introduced organisms capable of growing in the medium"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A community contains decomposing fungi and nitrogen-fixing bacteria. What do these roles illustrate?",
+      "choices": [
+        "Microbes performing only one ecological function",
+        "Microbial participation in nutrient cycling",
+        "Every microorganism acting as a producer",
+        "Nutrient cycling occurring independently of organisms"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A bacterium divides every 30 minutes under ideal conditions. Starting with one, how many occur after 60 minutes with no losses?",
+      "choices": [
+        "4",
+        "2",
+        "3",
+        "8"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}

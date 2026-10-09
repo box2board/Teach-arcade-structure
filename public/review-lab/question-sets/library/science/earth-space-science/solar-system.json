@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--earth-space-science--solar-system",
+  "title": "Solar System",
+  "subject": "Science",
+  "category": "Earth & Space Science",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What type of object is the Sun?",
+      "choices": [
+        "A rocky planet",
+        "A star",
+        "A natural satellite",
+        "A comet"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which planet is largest in the solar system?",
+      "choices": [
+        "Earth",
+        "Mars",
+        "Jupiter",
+        "Venus"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which force keeps planets in their orbits around the Sun?",
+      "choices": [
+        "Gravity",
+        "Magnetism alone",
+        "Friction",
+        "Air pressure"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which group consists entirely of the four inner planets?",
+      "choices": [
+        "Jupiter, Saturn, Uranus, Neptune",
+        "Earth, Mars, Jupiter, Saturn",
+        "Mercury, Venus, Earth, Mars",
+        "Mercury, Earth, Saturn, Neptune"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Where is the main asteroid belt?",
+      "choices": [
+        "Inside the Sun",
+        "Between Earth and Venus",
+        "Beyond every known planet",
+        "Between Mars and Jupiter"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What does a planet's rotation mean?",
+      "choices": [
+        "Its spinning about its axis",
+        "Its journey around the Sun",
+        "Its changing distance from the Sun",
+        "Its orbiting of the center of the galaxy"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What does a planet's revolution mean?",
+      "choices": [
+        "The formation of its atmosphere",
+        "Its orbital motion around another object",
+        "Its daily spin",
+        "Its surface warming during a day"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why do most planets shine in visible-light images?",
+      "choices": [
+        "They reflect sunlight",
+        "They reflect only light from their moons",
+        "Their atmospheres create all incoming light",
+        "They produce sunlight by fusion in their cores"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How does a comet often develop a visible tail near the Sun?",
+      "choices": [
+        "Its rocky surface produces a tail by nuclear fusion",
+        "Its icy material freezes more rapidly near the Sun",
+        "Solar heating releases gas and dust from its icy material",
+        "Its tail is an atmosphere captured from a nearby planet"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why is the Sun central to the solar system's motion?",
+      "choices": [
+        "It is the only object that rotates",
+        "It contains most of the system's mass and strongly influences orbits",
+        "It produces all gravity in the universe",
+        "Its visible light pushes planets into circular paths"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How do the inner planets differ from Jupiter and Saturn?",
+      "choices": [
+        "The inner planets have no solid material",
+        "The inner planets are all larger",
+        "The inner planets orbit outside the gas giants",
+        "The inner planets are rocky, while Jupiter and Saturn are gas giants"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What mainly powers the Sun's energy output?",
+      "choices": [
+        "Nuclear fusion in its core",
+        "Chemical reactions between rocks",
+        "Friction with orbiting planets",
+        "Combustion of oxygen at its surface"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why does an orbiting planet not simply fall straight into the Sun?",
+      "choices": [
+        "Its atmosphere blocks solar gravity",
+        "It lies beyond the reach of gravity",
+        "Its sideways motion combines with gravitational acceleration",
+        "It is held up by the solar wind alone"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What is a natural satellite?",
+      "choices": [
+        "A small star outside the galaxy",
+        "An object such as a moon that orbits a larger body",
+        "A planet that has no atmosphere",
+        "Any object that reflects light"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What does one astronomical unit approximately represent?",
+      "choices": [
+        "The diameter of the Sun",
+        "The distance from Earth to the Moon",
+        "The distance light travels in one year",
+        "The average Earth–Sun distance"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Two planets orbit the Sun; one is much farther away. What generally follows?",
+      "choices": [
+        "The farther planet has a shorter year",
+        "The farther planet has a longer orbital period",
+        "The farther planet must rotate more slowly",
+        "Both must have identical orbital periods"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "An object orbits Jupiter and does not produce energy by sustained stellar fusion. How is it most likely classified?",
+      "choices": [
+        "A moon",
+        "A star",
+        "A constellation",
+        "An inner planet"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A student says that all planets have solid surfaces like Earth. Which observation challenges this claim?",
+      "choices": [
+        "Mars has a rocky surface",
+        "Venus reflects sunlight",
+        "Mercury orbits the Sun",
+        "Jupiter's outer layers are predominantly gases"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Which comparison correctly separates an asteroid from a comet in typical composition?",
+      "choices": [
+        "Asteroids contain mostly ice; comets contain only metal",
+        "Asteroids are mainly liquid; comets are mainly gas",
+        "Asteroids are mostly rocky or metallic; comets contain substantial ice as well as dust and rock",
+        "Asteroids are larger than planets; comets are their moons"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A planet completes one rotation much faster than Earth. What can be inferred about its rotation period?",
+      "choices": [
+        "Its year must also be shorter",
+        "Its orbit must lie closer to the Sun",
+        "Its mass must be greater than Earth's",
+        "Its rotation period is shorter than Earth's"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

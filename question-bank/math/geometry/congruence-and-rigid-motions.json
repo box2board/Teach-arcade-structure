@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--geometry--congruence-and-rigid-motions",
+  "title": "Congruence and Rigid Motions",
+  "subject": "Math",
+  "category": "Geometry",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a rigid motion?",
+      "choices": [
+        "A transformation that multiplies every length by 2",
+        "A transformation that preserves distances between points",
+        "A transformation that stretches only one dimension",
+        "A transformation that changes each angle by 10°"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which transformation is a rigid motion?",
+      "choices": [
+        "A rotation",
+        "A dilation with scale factor 3",
+        "A horizontal stretch by 2",
+        "A vertical compression by 1/2"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "How can congruent figures be related through transformations?",
+      "choices": [
+        "Any enlargement maps one onto the other",
+        "Only a change in area can match them",
+        "Their corresponding angles must change",
+        "A sequence of rigid motions maps one exactly onto the other"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What does a rigid motion preserve besides length?",
+      "choices": [
+        "The location of every point",
+        "The sign of every coordinate",
+        "Angle measure",
+        "The direction each vertex faces"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which dilation preserves all distances?",
+      "choices": [
+        "Scale factor 2",
+        "Scale factor 1",
+        "Scale factor 1/2",
+        "Scale factor 3"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is orientation in the context of a labeled polygon?",
+      "choices": [
+        "The clockwise or counterclockwise order of its vertices",
+        "Its total perimeter",
+        "Its distance from the origin",
+        "Its number of diagonal segments"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which single rigid motion reverses orientation?",
+      "choices": [
+        "A translation",
+        "A rotation by 90°",
+        "A rotation by 180°",
+        "A reflection"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why can two congruent figures have different coordinates?",
+      "choices": [
+        "Coordinates determine only area",
+        "Congruence requires identical coordinates",
+        "Rigid motions may change position while preserving size and shape",
+        "Congruence permits different side lengths"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "If a 7-unit segment is rotated by 135°, what is its image length?",
+      "choices": [
+        "14 units",
+        "7 units",
+        "135 units",
+        "3.5 units"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What happens to a triangle's area under a translation?",
+      "choices": [
+        "It stays equal",
+        "It doubles",
+        "It becomes zero",
+        "It changes by the translation distance"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Two reflections across the same line are performed in succession. What is the resulting transformation?",
+      "choices": [
+        "A dilation by 2",
+        "A reflection across a perpendicular line",
+        "A rotation by 90°",
+        "The identity transformation"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why is matching only area insufficient to prove congruence?",
+      "choices": [
+        "Congruent figures always have unequal areas",
+        "Area is undefined for polygons",
+        "Different shapes can have equal areas",
+        "Equal areas force equal side lengths"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Which comparison best supports congruence after a transformation?",
+      "choices": [
+        "Only the figures' centers are equally high",
+        "Corresponding lengths and angles are unchanged",
+        "The figures have the same number of vertices",
+        "Both figures lie in the same quadrant"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "A figure is reflected and then translated. Is the final image congruent to the original?",
+      "choices": [
+        "Yes, both steps preserve distances and angles",
+        "No, any two-step transformation changes size",
+        "Only if the translation distance is zero",
+        "Only if the figure is a circle"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What happens to perimeter under any sequence of rigid motions?",
+      "choices": [
+        "It changes by the number of steps",
+        "It doubles after a reflection",
+        "It depends on the rotation angle",
+        "It is unchanged"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Two triangles have equal corresponding sides but opposite vertex orientation. Which type of motion may be needed to match their labeled vertices?",
+      "choices": [
+        "A dilation by 2",
+        "A stretch in one direction",
+        "A reflection as part of the matching sequence",
+        "A change to one side length"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A rectangle of dimensions 3 by 8 is compared with one of dimensions 4 by 6. Both have area 24. Are they congruent?",
+      "choices": [
+        "Yes, equal area is sufficient",
+        "No, their corresponding side lengths differ",
+        "Yes, both are rectangles",
+        "No, congruent figures must have different areas"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A transformation maps every point by (x, y) → (x + 5, y + 2). Why is it rigid?",
+      "choices": [
+        "The same vector shift leaves pairwise distances unchanged",
+        "Its coordinates always increase in absolute value",
+        "It doubles every coordinate",
+        "It keeps all points fixed"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A polygon is reflected twice across intersecting lines. Which conclusion about size is guaranteed?",
+      "choices": [
+        "Its side lengths double",
+        "Its area is halved",
+        "Its perimeter depends on the angle between the lines",
+        "Its size remains unchanged"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A student scales a triangle by 1/2, then translates it. Why is the final triangle generally not congruent to the original?",
+      "choices": [
+        "The translation changed corresponding angles",
+        "The translation reversed orientation",
+        "The scaling changed corresponding lengths",
+        "The triangle lost a vertex"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--earth-space-science--weathering-erosion-and-deposition",
+  "title": "Weathering Erosion and Deposition",
+  "subject": "Science",
+  "category": "Earth & Space Science",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which process breaks rock into smaller pieces without changing its composition?",
+      "choices": [
+        "Chemical weathering",
+        "Mechanical weathering",
+        "Crystallization from magma",
+        "Regional metamorphism"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which example is chemical weathering?",
+      "choices": [
+        "A rock split by ice expansion",
+        "Rock broken by a falling tree",
+        "Minerals dissolving in mildly acidic water",
+        "Sand scratching a rock surface"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is abrasion?",
+      "choices": [
+        "Wearing surfaces through scraping by moving particles",
+        "Formation of mineral crystals underground",
+        "Water vapor changing into liquid",
+        "Compression of buried rock"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is mass wasting?",
+      "choices": [
+        "Downslope movement of rock or soil under gravity",
+        "A river carrying dissolved ions uphill",
+        "Formation of magma at depth",
+        "The loss of atomic mass during weathering"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is a river delta?",
+      "choices": [
+        "A crack formed by plate collision",
+        "A mountain formed only by lava",
+        "A sediment deposit where a river enters quieter water",
+        "A channel carved entirely by a glacier"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which process deposits wind-carried sand into dunes?",
+      "choices": [
+        "Chemical bonding",
+        "Deposition",
+        "Subduction",
+        "Melting"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is soil?",
+      "choices": [
+        "Only solid bedrock",
+        "Only decomposed leaves",
+        "A pure mineral with one formula",
+        "A mixture of mineral material, organic matter, water, air, and organisms"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "How can freezing water contribute to rock breakdown?",
+      "choices": [
+        "Freezing turns every rock into limestone",
+        "Ice removes all minerals chemically",
+        "Water in cracks expands as it freezes and can widen them",
+        "Water becomes denser and contracts in every freezing crack"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why can plant roots contribute to mechanical weathering?",
+      "choices": [
+        "Roots melt all surrounding rock",
+        "Plants remove gravity from the soil",
+        "Roots convert minerals into metal",
+        "Growing roots can exert pressure within cracks"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why does faster-flowing water generally transport larger sediment particles?",
+      "choices": [
+        "It eliminates particle mass",
+        "It can exert greater force on particles",
+        "It stops all small particles moving",
+        "It converts gravel into dissolved gas"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why is sediment often deposited when a river slows?",
+      "choices": [
+        "Reduced transport capacity allows particles to settle",
+        "Slower water creates new sediment atoms",
+        "Gravity stops acting on moving water",
+        "The particles become more soluble automatically"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "How can vegetation reduce soil erosion?",
+      "choices": [
+        "Plants guarantee no water movement",
+        "Roots make every soil particle heavier than bedrock",
+        "Roots hold soil, and plant cover reduces surface impacts and runoff",
+        "Vegetation prevents all chemical weathering"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why does chemical weathering often proceed faster in warm, moist climates?",
+      "choices": [
+        "Water availability and temperature favor many weathering reactions",
+        "Cold, dry air always supplies more liquid water",
+        "Warm climates prevent chemical reactions",
+        "Rain removes every weathering agent"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What is one reason angular rock fragments may become rounded during river transport?",
+      "choices": [
+        "Their elements change into lighter elements",
+        "All grains melt in river water",
+        "Rounded particles contain no minerals",
+        "Collisions and abrasion wear their edges"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "How does human removal of plant cover often affect erosion risk?",
+      "choices": [
+        "It necessarily stops all runoff",
+        "It exposes soil to greater wind and water transport",
+        "It creates permanent bedrock immediately",
+        "It removes the influence of slope"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A rock develops cracks after repeated wetting and freezing. Which mechanism best fits?",
+      "choices": [
+        "Sediment cementation",
+        "Ice wedging",
+        "Magma crystallization",
+        "Plate subduction"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Coarse grains settle before finer suspended grains when a stream slows. What explains this sorting?",
+      "choices": [
+        "All grains have identical settling behavior",
+        "The stream creates new mineral species",
+        "Fine grains must always have greater mass",
+        "Particle size affects settling and transport behavior"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A steep saturated slope moves downhill after heavy rain. Which process is most directly illustrated?",
+      "choices": [
+        "Mass wasting",
+        "Seafloor spreading",
+        "Crystal growth",
+        "Evaporation"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A river enters a lake and builds a fan-shaped deposit near its mouth. Which feature is developing?",
+      "choices": [
+        "A fault",
+        "A volcanic cone",
+        "A delta",
+        "A glacial cirque"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Two similar fields lie on equal slopes. One retains crop cover; one is left bare. Which generally has greater erosion risk during heavy rain?",
+      "choices": [
+        "The covered field",
+        "Neither; cover cannot affect erosion",
+        "Both must lose exactly equal soil",
+        "The bare field"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

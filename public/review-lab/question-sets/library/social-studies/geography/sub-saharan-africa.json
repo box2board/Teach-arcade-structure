@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "geography--sub-saharan-africa",
+  "title": "Sub-Saharan Africa",
+  "subject": "Social Studies",
+  "category": "Geography",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "In broad geographic usage, Sub-Saharan Africa refers mainly to areas south of which desert?",
+      "choices": [
+        "Gobi",
+        "Sahara",
+        "Atacama",
+        "Thar"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is the Sahel?",
+      "choices": [
+        "A semiarid transition zone along the Sahara's southern edge",
+        "A permanent ice sheet covering central Africa",
+        "A coral island chain east of Madagascar",
+        "A mountain range along the southern Cape"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which large river basin is associated with central African tropical rainforest?",
+      "choices": [
+        "Niger Basin",
+        "Orange Basin",
+        "Zambezi Basin",
+        "Congo Basin"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which island lies off Africa's southeastern coast in the Indian Ocean?",
+      "choices": [
+        "Sri Lanka",
+        "Cuba",
+        "Madagascar",
+        "Iceland"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which feature is associated with eastern Africa's tectonic activity?",
+      "choices": [
+        "East African Rift",
+        "Great Dividing Range",
+        "Appalachian Mountains",
+        "Amazon Basin"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which river forms a major inland delta in Botswana?",
+      "choices": [
+        "Congo",
+        "Okavango",
+        "Niger",
+        "Nile"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What vegetation pattern is typical of a tropical savanna?",
+      "choices": [
+        "Dense evergreen forest with no seasonal dry period",
+        "Low Arctic vegetation over widespread permafrost",
+        "Grassland with scattered trees",
+        "Permanent snowfields with no growing season"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why can rainfall variability strongly affect Sahelian farming and herding?",
+      "choices": [
+        "The region receives abundant rainfall every day",
+        "All farming uses unlimited underground water",
+        "The region is entirely covered by glaciers",
+        "Water availability is limited and can change substantially between years"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How can higher elevation affect climate in the Ethiopian Highlands?",
+      "choices": [
+        "It can produce cooler conditions than nearby lowlands",
+        "It makes all rainfall disappear throughout the year",
+        "It removes seasonal differences in sunlight",
+        "It guarantees the same climate as the Arctic coast"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why can transport links be especially important to landlocked African economies?",
+      "choices": [
+        "Landlocked countries cannot sell manufactured goods",
+        "Access to overseas trade often depends on routes through neighboring states",
+        "Every landlocked country has the same climate",
+        "National borders prevent all cross-border road construction"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How have some colonial-era borders affected African political geography?",
+      "choices": [
+        "They made all societies culturally identical",
+        "They followed every existing language boundary precisely",
+        "They ended all local political organization",
+        "They sometimes divided communities or grouped distinct populations within one state"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why is a single description of Sub-Saharan Africa's economy inadequate?",
+      "choices": [
+        "All countries depend on the same export",
+        "Economic activities are unaffected by geography",
+        "The region includes varied farming, manufacturing, mining, and service economies",
+        "Only one urban center exists in the region"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why can reliance on one major commodity export create economic risk?",
+      "choices": [
+        "Changes in its world price can strongly affect national earnings",
+        "A commodity's price remains fixed forever",
+        "Commodity exporters cannot engage in any domestic trade",
+        "Export income is unrelated to international demand"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What challenge can rapid city growth create?",
+      "choices": [
+        "The permanent disappearance of rural settlement",
+        "Greater demand for housing, transport, water, and jobs",
+        "The automatic elimination of all public-service costs",
+        "The end of economic connections between city and countryside"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "How can soil degradation affect agricultural livelihoods?",
+      "choices": [
+        "It increases every crop's yield permanently",
+        "It makes rainfall timing irrelevant",
+        "It prevents any need for land management",
+        "It can reduce productivity and increase pressure on usable land"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Which climate comparison is most accurate for the Congo Basin and much of the Sahel?",
+      "choices": [
+        "Both have identical year-round Arctic climates",
+        "The Sahel is generally wetter than the Congo Basin",
+        "The Congo Basin is generally more humid; the Sahel is generally drier",
+        "Both regions lack seasonal variation in water availability"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A regional rainfall map shows a broad dry-to-wet transition south of the Sahara. Which conclusion is most reasonable?",
+      "choices": [
+        "Environmental zones cross political borders and change gradually",
+        "Each national border causes an abrupt climate change",
+        "Every country south of the Sahara is a desert",
+        "Rainfall is unrelated to regional farming patterns"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A mining town grows while metal prices are high, then loses jobs when prices fall. Which relationship does this illustrate?",
+      "choices": [
+        "Latitude directly determines wages",
+        "Global commodity markets can affect local livelihoods",
+        "Mining towns are independent of outside demand",
+        "Urban growth guarantees permanent employment"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Which evidence would best challenge the stereotype that Sub-Saharan Africa is entirely rural?",
+      "choices": [
+        "A map showing the locations of major mineral deposits",
+        "A table of annual rainfall for several farming districts",
+        "Maps and population data for cities such as Lagos and Nairobi",
+        "A description of crop production in a rural district"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A conservation plan protects habitat but affects nearby farming communities. What should planners examine?",
+      "choices": [
+        "Only income expected from visiting tourists",
+        "Only changes in national export totals",
+        "Only the size of the protected area's administrative staff",
+        "Both ecological benefits and effects on local livelihoods"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

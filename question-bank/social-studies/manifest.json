@@ -1,0 +1,534 @@
+{
+  "schemaVersion": 1,
+  "subject": "Social Studies",
+  "integrationStatus": "isolated-unintegrated",
+  "setCount": 75,
+  "totalQuestions": 1500,
+  "sets": [
+    {
+      "id": "us-history--colonial-america",
+      "title": "Colonial America",
+      "category": "U.S. History",
+      "questionCount": 20,
+      "file": "social-studies/us-history/colonial-america.json"
+    },
+    {
+      "id": "us-history--french-and-indian-war",
+      "title": "French and Indian War",
+      "category": "U.S. History",
+      "questionCount": 20,
+      "file": "social-studies/us-history/french-and-indian-war.json"
+    },
+    {
+      "id": "us-history--american-revolution",
+      "title": "American Revolution",
+      "category": "U.S. History",
+      "questionCount": 20,
+      "file": "social-studies/us-history/american-revolution.json"
+    },
+    {
+      "id": "us-history--articles-of-confederation",
+      "title": "Articles of Confederation",
+      "category": "U.S. History",
+      "questionCount": 20,
+      "file": "social-studies/us-history/articles-of-confederation.json"
+    },
+    {
+      "id": "us-history--early-republic",
+      "title": "Early Republic",
+      "category": "U.S. History",
+      "questionCount": 20,
+      "file": "social-studies/us-history/early-republic.json"
+    },
+    {
+      "id": "us-history--war-of-1812",
+      "title": "War of 1812",
+      "category": "U.S. History",
+      "questionCount": 20,
+      "file": "social-studies/us-history/war-of-1812.json"
+    },
+    {
+      "id": "us-history--westward-expansion",
+      "title": "Westward Expansion",
+      "category": "U.S. History",
+      "questionCount": 20,
+      "file": "social-studies/us-history/westward-expansion.json"
+    },
+    {
+      "id": "us-history--civil-war",
+      "title": "Civil War",
+      "category": "U.S. History",
+      "questionCount": 20,
+      "file": "social-studies/us-history/civil-war.json"
+    },
+    {
+      "id": "us-history--reconstruction",
+      "title": "Reconstruction",
+      "category": "U.S. History",
+      "questionCount": 20,
+      "file": "social-studies/us-history/reconstruction.json"
+    },
+    {
+      "id": "us-history--progressive-era",
+      "title": "Progressive Era",
+      "category": "U.S. History",
+      "questionCount": 20,
+      "file": "social-studies/us-history/progressive-era.json"
+    },
+    {
+      "id": "us-history--world-war-i",
+      "title": "World War I",
+      "category": "U.S. History",
+      "questionCount": 20,
+      "file": "social-studies/us-history/world-war-i.json"
+    },
+    {
+      "id": "us-history--great-depression",
+      "title": "Great Depression",
+      "category": "U.S. History",
+      "questionCount": 20,
+      "file": "social-studies/us-history/great-depression.json"
+    },
+    {
+      "id": "us-history--new-deal",
+      "title": "New Deal",
+      "category": "U.S. History",
+      "questionCount": 20,
+      "file": "social-studies/us-history/new-deal.json"
+    },
+    {
+      "id": "us-history--world-war-ii",
+      "title": "World War II",
+      "category": "U.S. History",
+      "questionCount": 20,
+      "file": "social-studies/us-history/world-war-ii.json"
+    },
+    {
+      "id": "us-history--civil-rights-movement",
+      "title": "Civil Rights Movement",
+      "category": "U.S. History",
+      "questionCount": 20,
+      "file": "social-studies/us-history/civil-rights-movement.json"
+    },
+    {
+      "id": "world-history--mesopotamia",
+      "title": "Mesopotamia",
+      "category": "World History",
+      "questionCount": 20,
+      "file": "social-studies/world-history/mesopotamia.json"
+    },
+    {
+      "id": "world-history--ancient-egypt",
+      "title": "Ancient Egypt",
+      "category": "World History",
+      "questionCount": 20,
+      "file": "social-studies/world-history/ancient-egypt.json"
+    },
+    {
+      "id": "world-history--ancient-india",
+      "title": "Ancient India",
+      "category": "World History",
+      "questionCount": 20,
+      "file": "social-studies/world-history/ancient-india.json"
+    },
+    {
+      "id": "world-history--ancient-china",
+      "title": "Ancient China",
+      "category": "World History",
+      "questionCount": 20,
+      "file": "social-studies/world-history/ancient-china.json"
+    },
+    {
+      "id": "world-history--ancient-greece",
+      "title": "Ancient Greece",
+      "category": "World History",
+      "questionCount": 20,
+      "file": "social-studies/world-history/ancient-greece.json"
+    },
+    {
+      "id": "world-history--ancient-rome",
+      "title": "Ancient Rome",
+      "category": "World History",
+      "questionCount": 20,
+      "file": "social-studies/world-history/ancient-rome.json"
+    },
+    {
+      "id": "world-history--renaissance",
+      "title": "Renaissance",
+      "category": "World History",
+      "questionCount": 20,
+      "file": "social-studies/world-history/renaissance.json"
+    },
+    {
+      "id": "world-history--protestant-reformation",
+      "title": "Protestant Reformation",
+      "category": "World History",
+      "questionCount": 20,
+      "file": "social-studies/world-history/protestant-reformation.json"
+    },
+    {
+      "id": "world-history--enlightenment",
+      "title": "Enlightenment",
+      "category": "World History",
+      "questionCount": 20,
+      "file": "social-studies/world-history/enlightenment.json"
+    },
+    {
+      "id": "world-history--french-revolution",
+      "title": "French Revolution",
+      "category": "World History",
+      "questionCount": 20,
+      "file": "social-studies/world-history/french-revolution.json"
+    },
+    {
+      "id": "world-history--industrial-revolution",
+      "title": "Industrial Revolution",
+      "category": "World History",
+      "questionCount": 20,
+      "file": "social-studies/world-history/industrial-revolution.json"
+    },
+    {
+      "id": "world-history--world-war-i",
+      "title": "World War I",
+      "category": "World History",
+      "questionCount": 20,
+      "file": "social-studies/world-history/world-war-i.json"
+    },
+    {
+      "id": "world-history--russian-revolution",
+      "title": "Russian Revolution",
+      "category": "World History",
+      "questionCount": 20,
+      "file": "social-studies/world-history/russian-revolution.json"
+    },
+    {
+      "id": "world-history--world-war-ii",
+      "title": "World War II",
+      "category": "World History",
+      "questionCount": 20,
+      "file": "social-studies/world-history/world-war-ii.json"
+    },
+    {
+      "id": "world-history--cold-war",
+      "title": "Cold War",
+      "category": "World History",
+      "questionCount": 20,
+      "file": "social-studies/world-history/cold-war.json"
+    },
+    {
+      "id": "government--types-of-government",
+      "title": "Types of Government",
+      "category": "Government & Civics",
+      "questionCount": 20,
+      "file": "social-studies/government/types-of-government.json"
+    },
+    {
+      "id": "government--u-s-constitution",
+      "title": "U.S. Constitution",
+      "category": "Government & Civics",
+      "questionCount": 20,
+      "file": "social-studies/government/u-s-constitution.json"
+    },
+    {
+      "id": "government--federalism",
+      "title": "Federalism",
+      "category": "Government & Civics",
+      "questionCount": 20,
+      "file": "social-studies/government/federalism.json"
+    },
+    {
+      "id": "government--checks-and-balances",
+      "title": "Checks and Balances",
+      "category": "Government & Civics",
+      "questionCount": 20,
+      "file": "social-studies/government/checks-and-balances.json"
+    },
+    {
+      "id": "government--legislative-branch",
+      "title": "Legislative Branch",
+      "category": "Government & Civics",
+      "questionCount": 20,
+      "file": "social-studies/government/legislative-branch.json"
+    },
+    {
+      "id": "government--executive-branch",
+      "title": "Executive Branch",
+      "category": "Government & Civics",
+      "questionCount": 20,
+      "file": "social-studies/government/executive-branch.json"
+    },
+    {
+      "id": "government--judicial-branch",
+      "title": "Judicial Branch",
+      "category": "Government & Civics",
+      "questionCount": 20,
+      "file": "social-studies/government/judicial-branch.json"
+    },
+    {
+      "id": "government--bill-of-rights",
+      "title": "Bill of Rights",
+      "category": "Government & Civics",
+      "questionCount": 20,
+      "file": "social-studies/government/bill-of-rights.json"
+    },
+    {
+      "id": "government--constitutional-amendments",
+      "title": "Constitutional Amendments",
+      "category": "Government & Civics",
+      "questionCount": 20,
+      "file": "social-studies/government/constitutional-amendments.json"
+    },
+    {
+      "id": "government--civil-liberties",
+      "title": "Civil Liberties",
+      "category": "Government & Civics",
+      "questionCount": 20,
+      "file": "social-studies/government/civil-liberties.json"
+    },
+    {
+      "id": "government--political-parties",
+      "title": "Political Parties",
+      "category": "Government & Civics",
+      "questionCount": 20,
+      "file": "social-studies/government/political-parties.json"
+    },
+    {
+      "id": "government--electoral-college",
+      "title": "Electoral College",
+      "category": "Government & Civics",
+      "questionCount": 20,
+      "file": "social-studies/government/electoral-college.json"
+    },
+    {
+      "id": "government--state-government",
+      "title": "State Government",
+      "category": "Government & Civics",
+      "questionCount": 20,
+      "file": "social-studies/government/state-government.json"
+    },
+    {
+      "id": "government--local-government",
+      "title": "Local Government",
+      "category": "Government & Civics",
+      "questionCount": 20,
+      "file": "social-studies/government/local-government.json"
+    },
+    {
+      "id": "government--citizenship",
+      "title": "Citizenship",
+      "category": "Government & Civics",
+      "questionCount": 20,
+      "file": "social-studies/government/citizenship.json"
+    },
+    {
+      "id": "economics--basic-economic-concepts",
+      "title": "Basic Economic Concepts",
+      "category": "Economics",
+      "questionCount": 20,
+      "file": "social-studies/economics/basic-economic-concepts.json"
+    },
+    {
+      "id": "economics--opportunity-cost",
+      "title": "Opportunity Cost",
+      "category": "Economics",
+      "questionCount": 20,
+      "file": "social-studies/economics/opportunity-cost.json"
+    },
+    {
+      "id": "economics--economic-systems",
+      "title": "Economic Systems",
+      "category": "Economics",
+      "questionCount": 20,
+      "file": "social-studies/economics/economic-systems.json"
+    },
+    {
+      "id": "economics--supply-and-demand",
+      "title": "Supply and Demand",
+      "category": "Economics",
+      "questionCount": 20,
+      "file": "social-studies/economics/supply-and-demand.json"
+    },
+    {
+      "id": "economics--gdp",
+      "title": "GDP",
+      "category": "Economics",
+      "questionCount": 20,
+      "file": "social-studies/economics/gdp.json"
+    },
+    {
+      "id": "economics--inflation",
+      "title": "Inflation",
+      "category": "Economics",
+      "questionCount": 20,
+      "file": "social-studies/economics/inflation.json"
+    },
+    {
+      "id": "economics--unemployment",
+      "title": "Unemployment",
+      "category": "Economics",
+      "questionCount": 20,
+      "file": "social-studies/economics/unemployment.json"
+    },
+    {
+      "id": "economics--taxes",
+      "title": "Taxes",
+      "category": "Economics",
+      "questionCount": 20,
+      "file": "social-studies/economics/taxes.json"
+    },
+    {
+      "id": "economics--comparative-advantage",
+      "title": "Comparative Advantage",
+      "category": "Economics",
+      "questionCount": 20,
+      "file": "social-studies/economics/comparative-advantage.json"
+    },
+    {
+      "id": "economics--banking",
+      "title": "Banking",
+      "category": "Economics",
+      "questionCount": 20,
+      "file": "social-studies/economics/banking.json"
+    },
+    {
+      "id": "economics--credit",
+      "title": "Credit",
+      "category": "Economics",
+      "questionCount": 20,
+      "file": "social-studies/economics/credit.json"
+    },
+    {
+      "id": "economics--saving",
+      "title": "Saving",
+      "category": "Economics",
+      "questionCount": 20,
+      "file": "social-studies/economics/saving.json"
+    },
+    {
+      "id": "economics--investing",
+      "title": "Investing",
+      "category": "Economics",
+      "questionCount": 20,
+      "file": "social-studies/economics/investing.json"
+    },
+    {
+      "id": "economics--budgeting",
+      "title": "Budgeting",
+      "category": "Economics",
+      "questionCount": 20,
+      "file": "social-studies/economics/budgeting.json"
+    },
+    {
+      "id": "economics--insurance",
+      "title": "Insurance",
+      "category": "Economics",
+      "questionCount": 20,
+      "file": "social-studies/economics/insurance.json"
+    },
+    {
+      "id": "geography--five-themes-of-geography",
+      "title": "Five Themes of Geography",
+      "category": "Geography",
+      "questionCount": 20,
+      "file": "social-studies/geography/five-themes-of-geography.json"
+    },
+    {
+      "id": "geography--map-skills",
+      "title": "Map Skills",
+      "category": "Geography",
+      "questionCount": 20,
+      "file": "social-studies/geography/map-skills.json"
+    },
+    {
+      "id": "geography--latitude-and-longitude",
+      "title": "Latitude and Longitude",
+      "category": "Geography",
+      "questionCount": 20,
+      "file": "social-studies/geography/latitude-and-longitude.json"
+    },
+    {
+      "id": "geography--physical-geography",
+      "title": "Physical Geography",
+      "category": "Geography",
+      "questionCount": 20,
+      "file": "social-studies/geography/physical-geography.json"
+    },
+    {
+      "id": "geography--population",
+      "title": "Population",
+      "category": "Geography",
+      "questionCount": 20,
+      "file": "social-studies/geography/population.json"
+    },
+    {
+      "id": "geography--migration",
+      "title": "Migration",
+      "category": "Geography",
+      "questionCount": 20,
+      "file": "social-studies/geography/migration.json"
+    },
+    {
+      "id": "geography--climate",
+      "title": "Climate",
+      "category": "Geography",
+      "questionCount": 20,
+      "file": "social-studies/geography/climate.json"
+    },
+    {
+      "id": "geography--biomes",
+      "title": "Biomes",
+      "category": "Geography",
+      "questionCount": 20,
+      "file": "social-studies/geography/biomes.json"
+    },
+    {
+      "id": "geography--north-america",
+      "title": "North America",
+      "category": "Geography",
+      "questionCount": 20,
+      "file": "social-studies/geography/north-america.json"
+    },
+    {
+      "id": "geography--latin-america",
+      "title": "Latin America",
+      "category": "Geography",
+      "questionCount": 20,
+      "file": "social-studies/geography/latin-america.json"
+    },
+    {
+      "id": "geography--europe",
+      "title": "Europe",
+      "category": "Geography",
+      "questionCount": 20,
+      "file": "social-studies/geography/europe.json"
+    },
+    {
+      "id": "geography--sub-saharan-africa",
+      "title": "Sub-Saharan Africa",
+      "category": "Geography",
+      "questionCount": 20,
+      "file": "social-studies/geography/sub-saharan-africa.json"
+    },
+    {
+      "id": "geography--south-asia",
+      "title": "South Asia",
+      "category": "Geography",
+      "questionCount": 20,
+      "file": "social-studies/geography/south-asia.json"
+    },
+    {
+      "id": "geography--east-asia",
+      "title": "East Asia",
+      "category": "Geography",
+      "questionCount": 20,
+      "file": "social-studies/geography/east-asia.json"
+    },
+    {
+      "id": "geography--australia-and-oceania",
+      "title": "Australia and Oceania",
+      "category": "Geography",
+      "questionCount": 20,
+      "file": "social-studies/geography/australia-and-oceania.json"
+    }
+  ]
+}

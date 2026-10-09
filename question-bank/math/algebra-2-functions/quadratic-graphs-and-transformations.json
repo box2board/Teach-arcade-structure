@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--algebra-2-functions--quadratic-graphs-and-transformations",
+  "title": "Quadratic Graphs and Transformations",
+  "subject": "Math",
+  "category": "Algebra II & Functions",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What shape is the graph of a quadratic function y = ax² + bx + c with a ≠ 0?",
+      "choices": [
+        "A straight line",
+        "A parabola",
+        "A circle",
+        "A hyperbola"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is the vertex of y = (x − 3)² + 2?",
+      "choices": [
+        "(3, 2)",
+        "(−3, 2)",
+        "(3, −2)",
+        "(−3, −2)"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which direction does y = −2x² open?",
+      "choices": [
+        "Upward",
+        "To the right",
+        "To the left",
+        "Downward"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is the axis of symmetry of y = (x + 4)² − 1?",
+      "choices": [
+        "x = 4",
+        "y = −1",
+        "x = −4",
+        "y = 4"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "In y = a(x − h)² + k, what is the vertex?",
+      "choices": [
+        "(−h, k)",
+        "(h, k)",
+        "(h, −k)",
+        "(a, k)"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which graph is wider than y = x²?",
+      "choices": [
+        "y = 0.5x²",
+        "y = 2x²",
+        "y = 3x²",
+        "y = 4x²"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is the y-intercept of y = x² − 6x + 8?",
+      "choices": [
+        "−6",
+        "2",
+        "4",
+        "8"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "How does y = (x − 5)² compare with y = x²?",
+      "choices": [
+        "It shifts 5 units left",
+        "It shifts 5 units up",
+        "It shifts 5 units right",
+        "It shifts 5 units down"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How does y = x² + 7 compare with y = x²?",
+      "choices": [
+        "It shifts 7 units right",
+        "It shifts 7 units up",
+        "It becomes seven times wider",
+        "It reflects across the x-axis"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why is the vertex of y = 2(x + 1)² − 3 a minimum?",
+      "choices": [
+        "The coefficient of the squared term is positive",
+        "The constant term is negative",
+        "The vertex lies left of the y-axis",
+        "The expression contains parentheses"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What is the range of y = (x − 2)² + 4 over real x?",
+      "choices": [
+        "y ≤ 4",
+        "y ≥ 2",
+        "All real y",
+        "y ≥ 4"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What is the maximum value of y = −(x + 3)² + 9?",
+      "choices": [
+        "−3",
+        "3",
+        "9",
+        "0"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What are the x-intercepts of y = (x − 1)(x − 5)?",
+      "choices": [
+        "(−1, 0) and (−5, 0)",
+        "(1, 0) and (5, 0)",
+        "(0, 1) and (0, 5)",
+        "(3, 0) only"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Which equation has vertex (2, −4) and opens downward?",
+      "choices": [
+        "y = −(x − 2)² − 4",
+        "y = (x − 2)² − 4",
+        "y = −(x + 2)² − 4",
+        "y = −(x − 2)² + 4"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A parabola has x-intercepts at −2 and 6. What is its axis of symmetry?",
+      "choices": [
+        "x = 4",
+        "x = −4",
+        "x = 6",
+        "x = 2"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A ball's height is modeled by h = −t² + 6t + 1. At what time does it reach maximum height?",
+      "choices": [
+        "6 seconds",
+        "1 second",
+        "3 seconds",
+        "2 seconds"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A rectangle has width x and length 10 − x. Its area is A = −x² + 10x for 0 < x < 10. What width gives the largest area?",
+      "choices": [
+        "10 units",
+        "5 units",
+        "2 units",
+        "8 units"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "What is the vertex of y = x² − 4x + 7?",
+      "choices": [
+        "(2, 3)",
+        "(−2, 3)",
+        "(2, 7)",
+        "(4, 7)"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A student says y = −3(x − 1)² + 2 has minimum value 2. What correction is needed?",
+      "choices": [
+        "It has minimum value −3 because that is the leading coefficient",
+        "It has maximum value 1 because that is the horizontal shift",
+        "It has no vertex because its leading coefficient is negative",
+        "It has maximum value 2 because it opens downward"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A quadratic has vertex (4, −2) and passes through (5, 1). Which equation fits?",
+      "choices": [
+        "y = (x − 4)² − 2",
+        "y = −3(x − 4)² − 2",
+        "y = 3(x − 4)² − 2",
+        "y = 3(x + 4)² − 2"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    }
+  ]
+}
