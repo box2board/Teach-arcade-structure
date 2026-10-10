@@ -1,0 +1,258 @@
+{
+  "slug": "the-fellowship-of-the-ring",
+  "title": "The Lord of the Rings: The Fellowship of the Ring",
+  "category": "English Language Arts and Literature",
+  "year": 2001,
+  "rating": "PG-13",
+  "runtime": 178,
+  "grades": "7–12",
+  "director": "Peter Jackson",
+  "writer": "Fran Walsh, Philippa Boyens & Peter Jackson",
+  "music": "Howard Shore",
+  "cast": "Elijah Wood, Ian McKellen, Viggo Mortensen & Sean Astin",
+  "setting": "The fictional world of Middle-earth",
+  "basis": "J. R. R. Tolkien’s The Fellowship of the Ring, with material rearranged from the wider story",
+  "overview": "A small traveler accepts a dangerous burden as companions confront fear, temptation, and divided loyalties. Study quest structure, characterization, and the limits of individual power.",
+  "topics": [
+    "Power & temptation",
+    "Quest structure",
+    "Loyalty",
+    "Characterization",
+    "Adaptation"
+  ],
+  "kicker": "English Language Arts and Literature",
+  "essential": "What makes a person trustworthy when power offers an easier path?",
+  "goals": [
+    "Explain how power & temptation shapes character choices.",
+    "Support an interpretation with two accurately described scenes.",
+    "Compare the portrayal with a selected passage from its source or another relevant text."
+  ],
+  "prep": "Use the approximately 178-minute theatrical edition; the extended edition is about 208 minutes and adds scenes. Introduce quest, motif, exposition, and temptation. This is the first film in a larger story, so its ending intentionally leaves the main quest unfinished.",
+  "context": "Compare a teacher-selected Tolkien passage with its film scene. The adaptation omits episodes such as Tom Bombadil and moves some events across book boundaries; Boromir’s death appears in the next book. Discuss fantasy symbols as interpretations rather than forcing a single allegory.",
+  "pauses": "Pause after the departure from the Shire, after the Council of Elrond, after Moria, and when the Fellowship separates.",
+  "warnings": [
+    "Frequent fantasy combat, arrows, stabbing, decapitation or injury detail, and deaths.",
+    "Frightening monsters, pursuit, dark environments, and intense peril.",
+    "Smoking and drinking; disturbing transformation and temptation scenes."
+  ],
+  "sources": [
+    [
+      "Studio film information",
+      "https://www.warnerbros.com/movies/lord-rings-fellowship-ring"
+    ],
+    [
+      "Content advisory (spoilers)",
+      "https://www.commonsensemedia.org/movie-reviews/the-lord-of-the-rings-the-fellowship-of-the-ring"
+    ]
+  ],
+  "discussion": [
+    "What makes a person trustworthy when power offers an easier path?",
+    "Which scene best supports your interpretation, and what might another viewer notice?",
+    "What does the film leave out or simplify?"
+  ],
+  "online": [
+    {
+      "number": 1,
+      "section": "Before viewing",
+      "question": "Why might power tempt someone who intends to do good?",
+      "answer": "It can promise quick solutions while changing how that person treats others."
+    },
+    {
+      "number": 2,
+      "section": "Before viewing",
+      "question": "What makes a quest different from a simple journey?",
+      "answer": "A difficult purpose, obstacles, and changing responsibilities shape the traveler."
+    },
+    {
+      "number": 3,
+      "section": "Part A · Leaving the Shire",
+      "question": "Why does Gandalf investigate Bilbo’s ring?",
+      "answer": "He suspects that it is the dangerous One Ring rather than an ordinary possession."
+    },
+    {
+      "number": 4,
+      "section": "Part A · Leaving the Shire",
+      "question": "Why must Frodo leave the Shire?",
+      "answer": "Remaining there would expose him and the community to those seeking the Ring."
+    },
+    {
+      "number": 5,
+      "section": "Part A · Leaving the Shire",
+      "question": "How does Sam’s decision to accompany Frodo establish loyalty?",
+      "answer": "He accepts risk and supports a friend beyond familiar surroundings."
+    },
+    {
+      "number": 6,
+      "section": "Part A · Leaving the Shire",
+      "question": "What makes the Black Riders threatening?",
+      "answer": "They pursue the Ring and create danger even when the hobbits try to hide."
+    },
+    {
+      "number": 7,
+      "section": "Part A · Leaving the Shire",
+      "question": "How does Aragorn help the travelers before Rivendell?",
+      "answer": "He guides and protects them while they learn to judge his character."
+    },
+    {
+      "number": 8,
+      "section": "Part B · Forming and testing the Fellowship",
+      "question": "What does Frodo’s injury reveal about the quest’s danger?",
+      "answer": "The threat can harm him directly and requires help beyond his own abilities."
+    },
+    {
+      "number": 9,
+      "section": "Part B · Forming and testing the Fellowship",
+      "question": "Why can the Ring not simply be kept or used safely by the group?",
+      "answer": "Its corrupting power makes possession and intended use dangerous."
+    },
+    {
+      "number": 10,
+      "section": "Part B · Forming and testing the Fellowship",
+      "question": "Why does Frodo volunteer at the council?",
+      "answer": "He accepts responsibility when others disagree about how to carry the burden."
+    },
+    {
+      "number": 11,
+      "section": "Part B · Forming and testing the Fellowship",
+      "question": "What does the Fellowship’s mixed membership make possible?",
+      "answer": "Different skills and perspectives support a task no member can complete alone."
+    },
+    {
+      "number": 12,
+      "section": "Part B · Forming and testing the Fellowship",
+      "question": "Why do the companions enter Moria?",
+      "answer": "Their route options narrow, leading them to a dangerous passage through the mountains."
+    },
+    {
+      "number": 13,
+      "section": "Part C · Temptation and separation",
+      "question": "How does Gandalf’s fall affect the group?",
+      "answer": "They lose a guide and must continue through grief and uncertainty."
+    },
+    {
+      "number": 14,
+      "section": "Part C · Temptation and separation",
+      "question": "How does Galadriel’s response illustrate temptation?",
+      "answer": "She recognizes the promise of power and ultimately refuses to take the Ring."
+    },
+    {
+      "number": 15,
+      "section": "Part C · Temptation and separation",
+      "question": "Why does Boromir try to take the Ring?",
+      "answer": "He believes it could help his people, but desire for its power overwhelms his restraint."
+    },
+    {
+      "number": 16,
+      "section": "Part C · Temptation and separation",
+      "question": "Why does Frodo leave, and why does Sam follow?",
+      "answer": "Frodo fears further corruption of companions; Sam refuses to let him carry the burden alone."
+    },
+    {
+      "number": 17,
+      "section": "After viewing",
+      "question": "Choose a moment when restraint shows strength.",
+      "answer": "Accept refusal of the Ring or another supported example of resisting an easy use of power."
+    },
+    {
+      "number": 18,
+      "section": "After viewing",
+      "question": "How does the film make a small protagonist seem important?",
+      "answer": "Accept contrasts of scale, framing, attention to choices, or companions’ responses."
+    },
+    {
+      "number": 19,
+      "section": "After viewing",
+      "question": "Why is the ending not a complete resolution of the larger conflict?",
+      "answer": "The quest continues after the Fellowship separates; this film is one part of the story."
+    },
+    {
+      "number": 20,
+      "section": "After viewing",
+      "question": "What effect might removing a novel episode have on the adaptation?",
+      "answer": "It can change pace, world-building, or themes; explain with a teacher-selected comparison."
+    }
+  ],
+  "paper": [
+    {
+      "number": 1,
+      "section": "Before viewing",
+      "question": "Why might power tempt someone who intends to do good?",
+      "answer": "It can promise quick solutions while changing how that person treats others."
+    },
+    {
+      "number": 2,
+      "section": "During viewing",
+      "question": "Why does Gandalf investigate Bilbo’s ring?",
+      "answer": "He suspects that it is the dangerous One Ring rather than an ordinary possession."
+    },
+    {
+      "number": 3,
+      "section": "During viewing",
+      "question": "Why must Frodo leave the Shire?",
+      "answer": "Remaining there would expose him and the community to those seeking the Ring."
+    },
+    {
+      "number": 4,
+      "section": "During viewing",
+      "question": "How does Sam’s decision to accompany Frodo establish loyalty?",
+      "answer": "He accepts risk and supports a friend beyond familiar surroundings."
+    },
+    {
+      "number": 5,
+      "section": "During viewing",
+      "question": "How does Aragorn help the travelers before Rivendell?",
+      "answer": "He guides and protects them while they learn to judge his character."
+    },
+    {
+      "number": 6,
+      "section": "During viewing",
+      "question": "What does Frodo’s injury reveal about the quest’s danger?",
+      "answer": "The threat can harm him directly and requires help beyond his own abilities."
+    },
+    {
+      "number": 7,
+      "section": "During viewing",
+      "question": "Why can the Ring not simply be kept or used safely by the group?",
+      "answer": "Its corrupting power makes possession and intended use dangerous."
+    },
+    {
+      "number": 8,
+      "section": "During viewing",
+      "question": "What does the Fellowship’s mixed membership make possible?",
+      "answer": "Different skills and perspectives support a task no member can complete alone."
+    },
+    {
+      "number": 9,
+      "section": "During viewing",
+      "question": "How does Gandalf’s fall affect the group?",
+      "answer": "They lose a guide and must continue through grief and uncertainty."
+    },
+    {
+      "number": 10,
+      "section": "During viewing",
+      "question": "Why does Frodo leave, and why does Sam follow?",
+      "answer": "Frodo fears further corruption of companions; Sam refuses to let him carry the burden alone."
+    },
+    {
+      "number": 11,
+      "section": "After viewing",
+      "question": "Choose a moment when restraint shows strength.",
+      "answer": "Accept refusal of the Ring or another supported example of resisting an easy use of power."
+    },
+    {
+      "number": 12,
+      "section": "After viewing",
+      "question": "Why is the ending not a complete resolution of the larger conflict?",
+      "answer": "The quest continues after the Fellowship separates; this film is one part of the story."
+    },
+    {
+      "number": 13,
+      "section": "After viewing",
+      "question": "What effect might removing a novel episode have on the adaptation?",
+      "answer": "It can change pace, world-building, or themes; explain with a teacher-selected comparison."
+    }
+  ],
+  "final_writing": "What makes a person trustworthy when power offers an easier path? Write a paragraph with a clear claim, evidence from two scenes, and reasoning. End with one limitation of the film’s portrayal or one question for further study.",
+  "genre": "Literary fantasy adventure",
+  "paper_title": "The Fellowship of the Ring (2001)"
+}

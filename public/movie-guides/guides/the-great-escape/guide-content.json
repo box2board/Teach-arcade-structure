@@ -1,0 +1,261 @@
+{
+  "slug": "the-great-escape",
+  "title": "The Great Escape",
+  "category": "History and Civics",
+  "year": 1963,
+  "rating": "Not rated (original release)",
+  "runtime": 172,
+  "grades": "8–12",
+  "director": "John Sturges",
+  "writer": "James Clavell & W. R. Burnett",
+  "music": "Elmer Bernstein",
+  "cast": "Steve McQueen, James Garner, Richard Attenborough & Charles Bronson",
+  "setting": "A dramatized German POW camp during World War II · principally 1944",
+  "basis": "Paul Brickhill’s nonfiction account of the Stalag Luft III escape",
+  "overview": "Allied prisoners organize a coordinated escape under surveillance. Examine planning, interdependence, and the gap between a suspenseful film and the documented escape.",
+  "topics": [
+    "Collective resistance",
+    "Planning & resources",
+    "POWs",
+    "Risk & responsibility",
+    "Historical dramatization"
+  ],
+  "kicker": "History and Civics",
+  "essential": "How does cooperation make resistance possible, and what costs can a dramatic story leave out?",
+  "goals": [
+    "Explain how collective resistance shapes character choices.",
+    "Support an interpretation with two accurately described scenes.",
+    "Compare the portrayal with an appropriate external source and identify what remains uncertain."
+  ],
+  "prep": "Introduce POW, rationing, surveillance, forgery, and composite character. Explain that the camp shown is not a concentration camp. Provide an accessible teacher-selected account of the March 1944 Stalag Luft III escape.",
+  "context": "The film combines and invents characters and action. The real escape involved 76 men leaving the camp; 50 recaptured escapees were murdered. The famous motorcycle chase is a dramatic invention, and the film’s American escape roles differ from the historical operation. Compare one scene with Imperial War Museums context. Avoid treating a lively adventure tone as evidence that captivity or reprisals were harmless.",
+  "pauses": "Pause after the coordinated plan, when the tunnel is discovered, on escape night, and after the aftermath.",
+  "warnings": [
+    "Captivity, gunfire, fatal violence, and the murder of recaptured prisoners.",
+    "Claustrophobic tunnels, injury, threats, and sustained pursuit.",
+    "Smoking, drinking, and some language; emotionally difficult ending."
+  ],
+  "sources": [
+    [
+      "AFI credits and history",
+      "https://catalog.afi.com/Catalog/moviedetails/23871"
+    ],
+    [
+      "Content advisory (spoilers)",
+      "https://www.commonsensemedia.org/movie-reviews/the-great-escape"
+    ],
+    [
+      "Historical context: RAF Museum",
+      "https://www.rafmuseum.org.uk/blog/remarkable-raf-men-in-our-new-london-exhibition/"
+    ]
+  ],
+  "discussion": [
+    "How does cooperation make resistance possible, and what costs can a dramatic story leave out?",
+    "Which scene best supports your interpretation, and what might another viewer notice?",
+    "What does the film leave out or simplify?"
+  ],
+  "online": [
+    {
+      "number": 1,
+      "section": "Before viewing",
+      "question": "Why might a shared project need different kinds of expertise?",
+      "answer": "Planning, construction, supplies, and communication require complementary skills."
+    },
+    {
+      "number": 2,
+      "section": "Before viewing",
+      "question": "What should historians check when a film says it is based on real events?",
+      "answer": "Characters, chronology, specific actions, and outcomes against reliable records."
+    },
+    {
+      "number": 3,
+      "section": "Part A · Organizing under surveillance",
+      "question": "Why are the prisoners gathered in one camp?",
+      "answer": "The authorities hope a controlled camp will contain persistent escape attempts."
+    },
+    {
+      "number": 4,
+      "section": "Part A · Organizing under surveillance",
+      "question": "What role does Bartlett take in the group?",
+      "answer": "He coordinates a large escape operation and assigns responsibilities."
+    },
+    {
+      "number": 5,
+      "section": "Part A · Organizing under surveillance",
+      "question": "Why are several tunnels planned?",
+      "answer": "Multiple routes spread risk and create alternatives if one is discovered."
+    },
+    {
+      "number": 6,
+      "section": "Part A · Organizing under surveillance",
+      "question": "How does Hendley contribute to the operation?",
+      "answer": "He obtains scarce materials and supports other prisoners through resourcefulness."
+    },
+    {
+      "number": 7,
+      "section": "Part A · Organizing under surveillance",
+      "question": "What does Blythe’s work make possible?",
+      "answer": "His forged documents help escapees attempt to pass as civilians."
+    },
+    {
+      "number": 8,
+      "section": "Part B · Building the escape",
+      "question": "Why does disposing of excavated soil require coordination?",
+      "answer": "Visible soil could reveal tunneling, so prisoners develop concealed distribution methods."
+    },
+    {
+      "number": 9,
+      "section": "Part B · Building the escape",
+      "question": "How do the men address ventilation and movement underground?",
+      "answer": "They construct improvised equipment and a transport system to support the tunnel."
+    },
+    {
+      "number": 10,
+      "section": "Part B · Building the escape",
+      "question": "What happens when one tunnel is discovered?",
+      "answer": "They lose an important route and must adjust the plan around the remaining work."
+    },
+    {
+      "number": 11,
+      "section": "Part B · Building the escape",
+      "question": "How do Hilts’s actions connect individual defiance with the group’s plan?",
+      "answer": "His independent resistance becomes useful when he gathers information for the escape."
+    },
+    {
+      "number": 12,
+      "section": "Part B · Building the escape",
+      "question": "Why does Blythe’s declining eyesight create a difficult decision?",
+      "answer": "It threatens his ability to travel safely; Hendley chooses to help him."
+    },
+    {
+      "number": 13,
+      "section": "Part C · Escape and aftermath",
+      "question": "What unexpected problem appears at the tunnel exit?",
+      "answer": "It falls short of the expected cover, exposing escapees to greater danger."
+    },
+    {
+      "number": 14,
+      "section": "Part C · Escape and aftermath",
+      "question": "Why does the escape take longer than hoped?",
+      "answer": "The exit problem, signaling, and movement through the tunnel slow the operation."
+    },
+    {
+      "number": 15,
+      "section": "Part C · Escape and aftermath",
+      "question": "How do different travel routes reveal different risks?",
+      "answer": "Language, documents, transport, and patrols affect attempts by train, road, boat, or air."
+    },
+    {
+      "number": 16,
+      "section": "Part C · Escape and aftermath",
+      "question": "What does the aftermath reveal about the cost of the escape?",
+      "answer": "Many are recaptured and murdered; only a few reach safety."
+    },
+    {
+      "number": 17,
+      "section": "After viewing",
+      "question": "Choose a scene showing that success depends on more than one person.",
+      "answer": "Accept tunnel work, soil disposal, forgery, or assistance with accurate explanation."
+    },
+    {
+      "number": 18,
+      "section": "After viewing",
+      "question": "How does music or editing create an adventure tone?",
+      "answer": "Accept supported observations about energy, suspense, or the contrast with later losses."
+    },
+    {
+      "number": 19,
+      "section": "After viewing",
+      "question": "Which dramatic event should be checked against historical sources?",
+      "answer": "The motorcycle chase or American escape roles are useful examples; do not assume every scene is documented."
+    },
+    {
+      "number": 20,
+      "section": "After viewing",
+      "question": "Why should escape counts and reprisals be verified separately from character stories?",
+      "answer": "The film’s composites may differ from documented people while real outcomes require accurate accounting."
+    }
+  ],
+  "paper": [
+    {
+      "number": 1,
+      "section": "Before viewing",
+      "question": "Why might a shared project need different kinds of expertise?",
+      "answer": "Planning, construction, supplies, and communication require complementary skills."
+    },
+    {
+      "number": 2,
+      "section": "During viewing",
+      "question": "Why are the prisoners gathered in one camp?",
+      "answer": "The authorities hope a controlled camp will contain persistent escape attempts."
+    },
+    {
+      "number": 3,
+      "section": "During viewing",
+      "question": "What role does Bartlett take in the group?",
+      "answer": "He coordinates a large escape operation and assigns responsibilities."
+    },
+    {
+      "number": 4,
+      "section": "During viewing",
+      "question": "Why are several tunnels planned?",
+      "answer": "Multiple routes spread risk and create alternatives if one is discovered."
+    },
+    {
+      "number": 5,
+      "section": "During viewing",
+      "question": "What does Blythe’s work make possible?",
+      "answer": "His forged documents help escapees attempt to pass as civilians."
+    },
+    {
+      "number": 6,
+      "section": "During viewing",
+      "question": "Why does disposing of excavated soil require coordination?",
+      "answer": "Visible soil could reveal tunneling, so prisoners develop concealed distribution methods."
+    },
+    {
+      "number": 7,
+      "section": "During viewing",
+      "question": "How do the men address ventilation and movement underground?",
+      "answer": "They construct improvised equipment and a transport system to support the tunnel."
+    },
+    {
+      "number": 8,
+      "section": "During viewing",
+      "question": "How do Hilts’s actions connect individual defiance with the group’s plan?",
+      "answer": "His independent resistance becomes useful when he gathers information for the escape."
+    },
+    {
+      "number": 9,
+      "section": "During viewing",
+      "question": "What unexpected problem appears at the tunnel exit?",
+      "answer": "It falls short of the expected cover, exposing escapees to greater danger."
+    },
+    {
+      "number": 10,
+      "section": "During viewing",
+      "question": "What does the aftermath reveal about the cost of the escape?",
+      "answer": "Many are recaptured and murdered; only a few reach safety."
+    },
+    {
+      "number": 11,
+      "section": "After viewing",
+      "question": "Choose a scene showing that success depends on more than one person.",
+      "answer": "Accept tunnel work, soil disposal, forgery, or assistance with accurate explanation."
+    },
+    {
+      "number": 12,
+      "section": "After viewing",
+      "question": "Which dramatic event should be checked against historical sources?",
+      "answer": "The motorcycle chase or American escape roles are useful examples; do not assume every scene is documented."
+    },
+    {
+      "number": 13,
+      "section": "After viewing",
+      "question": "Why should escape counts and reprisals be verified separately from character stories?",
+      "answer": "The film’s composites may differ from documented people while real outcomes require accurate accounting."
+    }
+  ],
+  "final_writing": "How does cooperation make resistance possible, and what costs can a dramatic story leave out? Write a paragraph with a clear claim, evidence from two scenes, and reasoning. End with one limitation of the film’s portrayal or one question for further study.",
+  "genre": "Historical adventure drama"
+}
