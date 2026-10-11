@@ -80,9 +80,21 @@
       </div>
 
       <footer class="controls-bar" id="controls-bar" hidden>
-        <div class="control-set"><strong>PLAYER 1</strong><span><kbd>A</kbd><kbd>D</kbd> move <kbd>W</kbd> jump</span><span><kbd>F</kbd> punch <kbd>G</kbd> kick <kbd>Q</kbd> dash</span></div>
+        <div class="control-set keyboard-controls"><strong>PLAYER 1</strong><span><kbd>A</kbd><kbd>D</kbd> move <kbd>W</kbd> jump</span><span><kbd>F</kbd> punch <kbd>G</kbd> kick <kbd>Q</kbd> dash</span></div>
         <div class="control-center"><span class="control-note" id="mode-note">Move, jump, and dash freely. Punches and kicks use juice.</span></div>
-        <div class="control-set control-set--right" id="p2-controls"><strong>PLAYER 2</strong><span><kbd>←</kbd><kbd>→</kbd> move <kbd>↑</kbd> jump</span><span><kbd>/</kbd> punch <kbd>.</kbd> kick <kbd>Shift</kbd> dash</span></div>
+        <div class="control-set control-set--right keyboard-controls" id="p2-controls"><strong>PLAYER 2</strong><span><kbd>←</kbd><kbd>→</kbd> move <kbd>↑</kbd> jump</span><span><kbd>/</kbd> punch <kbd>.</kbd> kick <kbd>Shift</kbd> dash</span></div>
+        <div class="touch-controls" id="touch-controls" aria-label="Touch controls for Player 1">
+          <div class="touch-group touch-movement" aria-label="Movement">
+            <button type="button" class="touch-button touch-direction" data-action="left" aria-label="Move left">◀</button>
+            <button type="button" class="touch-button touch-direction" data-action="right" aria-label="Move right">▶</button>
+            <button type="button" class="touch-button touch-jump" data-action="jump" aria-label="Jump">JUMP</button>
+          </div>
+          <div class="touch-group touch-attacks" aria-label="Attacks">
+            <button type="button" class="touch-button touch-punch" data-action="punch" aria-label="Punch">PUNCH</button>
+            <button type="button" class="touch-button touch-kick" data-action="kick" aria-label="Kick">KICK</button>
+            <button type="button" class="touch-button touch-dash" data-action="dash" aria-label="Dash">DASH</button>
+          </div>
+        </div>
       </footer>
     </section>
 
