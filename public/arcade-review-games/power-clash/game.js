@@ -38,6 +38,10 @@
     window.addEventListener("keydown", onKeyDown);
     window.addEventListener("keyup", (event) => keys.delete(event.code));
     window.addEventListener("blur", () => keys.clear());
+    document.querySelectorAll(".touch-button").forEach((button) => {
+      button.addEventListener("pointerdown", (event) => startTouchAction(event, button));
+      ["pointerup", "pointercancel", "lostpointercapture"].forEach((type) => button.addEventListener(type, () => endTouchAction(button)));
+    });
     requestAnimationFrame(frame);
   }
 
@@ -77,6 +81,7 @@
 
   function showScreen(id) {
     for (const screen of ["welcome-screen", "question-screen", "end-screen"]) $(screen).hidden = screen !== id;
+    $("touch-controls").hidden = state.mode !== "fight";
     if (id === "welcome-screen") { $("hud").hidden = true; $("controls-bar").hidden = true; state.mode = "welcome"; }
   }
 
@@ -172,9 +177,28 @@
     }, 1050);
   }
 
+  function startTouchAction(event, button) {
+    if (state.mode !== "fight") return;
+    event.preventDefault();
+    try { button.setPointerCapture(event.pointerId); } catch (_) { /* Pointer capture is optional. */ }
+    button.classList.add("is-pressed");
+    const action = button.dataset.action;
+    const player = fighters[1];
+    if (action === "left" || action === "right") keys.add(action === "left" ? "KeyA" : "KeyD");
+    if (action === "jump" && player.grounded) { player.vy = -690; player.grounded = false; }
+    if (action === "punch" || action === "kick") attack(player, action);
+    if (action === "dash") dash(player);
+  }
+
+  function endTouchAction(button) {
+    button.classList.remove("is-pressed");
+    if (button.dataset.action === "left") keys.delete("KeyA");
+    if (button.dataset.action === "right") keys.delete("KeyD");
+  }
+
   function onKeyDown(event) {
     const code = event.code;
-    if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Space"].includes(code)) event.preventDefault();
+    if (state.mode === "fight" && ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(code)) event.preventDefault();
     if (state.mode !== "fight") return;
     if (keys.has(code)) return;
     keys.add(code);
