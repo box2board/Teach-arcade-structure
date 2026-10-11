@@ -18,6 +18,7 @@ Add a topic object to `content/topics.js` with an `id`, `title`, `shortTitle`, a
 
 - Player 1: A/D move, W jump, F punch, G kick, Q dash
 - Player 2: Left/Right move, Up jump, / punch, . kick, Shift dash
+- Touchscreen: on-screen left/right, jump, punch, kick, and dash buttons appear during the fight.
 
 ## Juice costs
 
