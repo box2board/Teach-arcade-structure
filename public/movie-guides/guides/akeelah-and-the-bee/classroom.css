@@ -1,0 +1,51 @@
+.wh-page { background:#f6f7fa; color:#17233b; }
+.wh-page main.container { max-width:1000px; padding-bottom:36px; }
+.wh-page .wh-intro { display:block; background:#eaf0f8; color:#17233b; padding:26px 30px; margin:20px 0; border-radius:12px; }
+.wh-intro h1 { color:#17233b; font:700 clamp(28px,5vw,40px)/1.2 Poppins,system-ui,sans-serif; margin:8px 0 12px; }
+.wh-intro p { color:#475569; font:400 17px/1.6 Nunito,system-ui,sans-serif; max-width:680px; margin:0 0 12px; }
+.wh-kicker { color:#1d4ed8; font:700 12px/1.4 Poppins,system-ui,sans-serif; letter-spacing:.08em; text-transform:uppercase; }
+.wh-meta { color:#475569; font:600 14px/1.6 Nunito,system-ui,sans-serif; }
+.wh-options { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; margin:20px 0 30px; }
+.wh-option { border:1px solid #dce2eb; border-radius:12px; background:#fff; padding:22px; display:flex; flex-direction:column; gap:12px; }
+.wh-option h2 { font:700 18px/1.35 Poppins,system-ui,sans-serif; margin:0; }
+.wh-option p { font:400 15px/1.6 Nunito,system-ui,sans-serif; color:#475569; margin:0; }
+.wh-option .mg-btn { margin-top:auto; text-align:center; line-height:1.45; }
+.wh-option small { font:400 13px/1.5 Nunito,system-ui,sans-serif; color:#475569; }
+.wh-teacher summary,.wh-part summary { font:700 16px/1.5 Poppins,system-ui,sans-serif; cursor:pointer; padding:17px 0; }
+.wh-teacher details { border-top:1px solid #dce2eb; }
+.wh-teacher h2 { font:700 21px/1.4 Poppins,system-ui,sans-serif; margin:0 0 10px; }
+.wh-teacher p,.wh-teacher li { font:400 15px/1.65 Nunito,system-ui,sans-serif; color:#334155; }
+.wh-teacher li { margin:8px 0; }
+.wh-student-bar { display:flex; gap:16px; flex-wrap:wrap; align-items:center; justify-content:space-between; padding:14px 0; }
+.wh-actions { display:flex; flex-wrap:wrap; gap:10px; }
+button.mg-btn { cursor:pointer; line-height:1.4; }
+.wh-help { font:400 14px/1.6 Nunito,system-ui,sans-serif; color:#475569; margin:8px 0 16px; }
+.wh-student-info { display:grid; grid-template-columns:2fr 1fr 1fr; gap:14px; background:#fff; border:1px solid #dce2eb; border-radius:10px; padding:18px; }
+.wh-student-info label,.wh-question label { display:block; font:600 15px/1.6 Nunito,system-ui,sans-serif; color:#17233b; }
+.wh-student-info input,.wh-question textarea { width:100%; box-sizing:border-box; font:400 16px/1.55 Nunito,system-ui,sans-serif; border:1px solid #bcc8d9; border-radius:7px; padding:10px; background:#fff; color:#17233b; margin-top:6px; }
+.wh-part { border-bottom:1px solid #dce2eb; }
+.wh-part summary { display:list-item; }
+.wh-question { margin:12px 0 22px; }
+.wh-question textarea { min-height:95px; resize:vertical; }
+.wh-question textarea.wh-long { min-height:170px; }
+.wh-bottom { margin-top:24px; padding:22px; border-radius:12px; border:1px solid #dce2eb; background:#fff; }
+.wh-bottom h2 { font:700 19px/1.4 Poppins,system-ui,sans-serif; margin:0 0 10px; }
+.wh-export-content { white-space:pre-wrap; overflow-wrap:anywhere; font:400 15px/1.6 Nunito,system-ui,sans-serif; }
+.wh-export { padding:20px; border:1px solid #dce2eb; border-radius:12px; background:#fff; margin-top:20px; }
+.wh-page a:focus-visible,.wh-page button:focus-visible,.wh-page summary:focus-visible { outline:3px solid #f59e0b; outline-offset:3px; }
+.wh-page [hidden] { display:none!important; }
+@media(max-width:650px) { .wh-options,.wh-student-info { grid-template-columns:1fr; } .wh-page .wh-intro { padding:22px 20px; } .wh-option { padding:18px; } }
+@media print { body.wh-page { background:white; } .wh-page #site-header,.wh-page .breadcrumbs,.wh-page .wh-screen,.wh-page footer { display:none!important; } .wh-page .wh-export { border:0; padding:0; display:block!important; } .wh-page main.container { max-width:none; } .wh-export-content { color:black; font:11pt/1.5 Arial,sans-serif; } }
+
+/* Original movie-guide artwork with a text-safe overlay. */
+.wh-page .wh-intro { background:#eef2f8; background-image:linear-gradient(90deg,rgba(245,248,252,.96) 0%,rgba(245,248,252,.88) 44%,rgba(245,248,252,.45) 75%),url('/movie-guides/guides/akeelah-and-the-bee/images/akeelah-and-the-bee-banner.webp'); background-size:cover; background-position:center; padding:34px; min-height:280px; color:#17233b; }
+.wh-intro h1 { color:#17233b; max-width:54%; }
+.wh-intro p { color:#334155; max-width:54%; }
+.wh-intro .wh-kicker { color:#1d4ed8; }
+.wh-intro .wh-meta { color:#334155; max-width:54%; }
+@media(max-width:650px) { .wh-page .wh-intro { min-height:290px; padding:24px; background-position:65% center; background-image:linear-gradient(90deg,rgba(245,248,252,.96),rgba(245,248,252,.82)),url('/movie-guides/guides/akeelah-and-the-bee/images/akeelah-and-the-bee-banner.webp'); } .wh-intro h1,.wh-intro p,.wh-intro .wh-meta { max-width:100%; } }
+
+/* Film overview and separate teacher resources. */
+.wh-film-overview{margin-top:34px}.wh-film-overview>p{max-width:850px;color:#475569;line-height:1.7}.wh-film-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:20px;margin:22px 0}.wh-info-card{background:#fff;border:1px solid #dce4ef;border-radius:16px;padding:24px}.wh-info-card h3,.wh-topics h3{margin:0 0 16px;color:#17233b}.wh-film-facts{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:0}.wh-film-facts dt{font-size:.8rem;color:#64748b;font-weight:700}.wh-film-facts dd{margin:4px 0 0;color:#17233b;line-height:1.5}.wh-fact-wide{grid-column:1/-1}.wh-content-card{background:#f8fafc}.wh-content-card p,.wh-content-card li{line-height:1.65}.wh-content-card li{margin-bottom:12px}.wh-content-card ul{padding-left:20px}.wh-topics{padding:8px 0}.wh-topic-tags{display:flex;flex-wrap:wrap;gap:8px}.wh-topic-tags span{background:#edf3fa;border:1px solid #dce4ef;border-radius:20px;padding:7px 12px;font-size:.88rem;color:#334155}.wh-resource-links{display:flex;flex-wrap:wrap;gap:12px 24px;margin:24px 0}.wh-info-card .wh-help{margin-top:18px}
+@media(max-width:750px){.wh-film-grid{grid-template-columns:1fr}.wh-info-card{padding:20px}}
+@media(max-width:400px){.wh-film-facts{grid-template-columns:1fr}}

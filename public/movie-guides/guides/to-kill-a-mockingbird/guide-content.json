@@ -1,0 +1,257 @@
+{
+  "slug": "to-kill-a-mockingbird",
+  "title": "To Kill a Mockingbird",
+  "category": "History and Civics",
+  "year": 1962,
+  "rating": "Not rated",
+  "runtime": 129,
+  "grades": "9–12",
+  "director": "Robert Mulligan",
+  "writer": "Horton Foote",
+  "music": "Elmer Bernstein",
+  "cast": "Gregory Peck, Mary Badham, Phillip Alford, Brock Peters & Robert Duvall",
+  "setting": "Fictional Maycomb, Alabama · 1930s",
+  "basis": "Harper Lee’s 1960 novel",
+  "overview": "Scout’s childhood observations connect neighborhood assumptions with a trial shaped by racism. Analyze evidence, perspective, and the difference between an individual act of courage and a just system.",
+  "topics": [
+    "Racial injustice",
+    "Evidence & testimony",
+    "Narrative perspective",
+    "Empathy",
+    "Novel adaptation"
+  ],
+  "kicker": "History and Civics",
+  "essential": "How does Scout’s perspective reveal the gap between fairness as an ideal and fairness in practice?",
+  "goals": [
+    "Evaluate how prejudice affects interpretation of trial evidence.",
+    "Analyze Scout’s changing view of Boo Radley.",
+    "Examine what a child-centered perspective reveals and leaves out."
+  ],
+  "prep": "Introduce the Depression-era setting, segregation, narrator, inference, and adaptation. Name Tom Robinson and distinguish his experience from Atticus’s role. Discuss racial language without having students repeat slurs. The film is fictional and is not a complete account of Black life or the justice system.",
+  "context": "Pair a selected passage of the novel with the same film scene, comparing narration, omissions, and whose perspective is centered. The story provides limited access to Tom’s and other Black characters’ inner lives. Avoid framing the trial as a neutral classroom debate about racial equality or treating one lawyer’s courage as a solution to structural injustice.",
+  "pauses": "Pause after the neighborhood episodes, after the jail confrontation, after trial testimony and verdict, and after the attack and Boo’s appearance.",
+  "warnings": [
+    "Racial slurs, racist intimidation, and a threatened lynching.",
+    "Detailed discussion of an alleged rape and implications of family abuse.",
+    "An attack on children, death, and a dog being shot; distressing injustice."
+  ],
+  "sources": [
+    [
+      "Universal film details",
+      "https://www.universalpicturesathome.com/movies/to-kill-a-mockingbird"
+    ],
+    [
+      "Content advisory (spoilers)",
+      "https://www.commonsensemedia.org/movie-reviews/to-kill-a-mockingbird"
+    ]
+  ],
+  "discussion": [
+    "How does Scout’s perspective reveal the gap between fairness as an ideal and fairness in practice?",
+    "Which scene best supports your interpretation, and what might another viewer notice?",
+    "What does the film leave out or simplify?"
+  ],
+  "online": [
+    {
+      "number": 1,
+      "section": "Before viewing",
+      "question": "How might a child narrator notice something adults accept as normal?",
+      "answer": "An unfamiliar or questioning perspective can expose contradictions; it may also lack information and context."
+    },
+    {
+      "number": 2,
+      "section": "Before viewing",
+      "question": "What is the difference between a rumor about someone and evidence about that person?",
+      "answer": "Rumor repeats an unverified claim; evidence needs an identifiable basis and careful interpretation."
+    },
+    {
+      "number": 3,
+      "section": "Part A · Childhood assumptions",
+      "question": "How do Scout, Jem, and Dill initially imagine Boo Radley?",
+      "answer": "They turn limited information and neighborhood rumors into a frightening story about a recluse."
+    },
+    {
+      "number": 4,
+      "section": "Part A · Childhood assumptions",
+      "question": "What do the gifts in the tree suggest about that first impression?",
+      "answer": "Someone is reaching out kindly, complicating their assumption that Boo is only threatening."
+    },
+    {
+      "number": 5,
+      "section": "Part A · Childhood assumptions",
+      "question": "How does Atticus respond to the children’s treatment of Boo?",
+      "answer": "He encourages respect for Boo’s privacy and challenges their assumptions and intrusions."
+    },
+    {
+      "number": 6,
+      "section": "Part A · Childhood assumptions",
+      "question": "What does the mad-dog episode reveal about Atticus?",
+      "answer": "The children discover a skill and responsibility they had not associated with their quiet father."
+    },
+    {
+      "number": 7,
+      "section": "Part A · Childhood assumptions",
+      "question": "Why does Atticus’s defense of Tom Robinson create hostility?",
+      "answer": "Racist townspeople resent a serious defense of a Black man accused by a White woman."
+    },
+    {
+      "number": 8,
+      "section": "Part B · The jail and the trial",
+      "question": "What danger does the group at the jail pose?",
+      "answer": "It threatens Tom’s safety and pressures Atticus; the scene evokes racist mob violence."
+    },
+    {
+      "number": 9,
+      "section": "Part B · The jail and the trial",
+      "question": "How does Scout’s conversation affect the confrontation?",
+      "answer": "Her personal recognition of Mr. Cunningham interrupts the mob’s anonymity and helps defuse the immediate threat."
+    },
+    {
+      "number": 10,
+      "section": "Part B · The jail and the trial",
+      "question": "What does the trial reveal about Tom’s left arm?",
+      "answer": "It is disabled, challenging the claim that he caused injuries attributed to a left-handed attacker."
+    },
+    {
+      "number": 11,
+      "section": "Part B · The jail and the trial",
+      "question": "Why does Bob Ewell’s handedness matter to Atticus’s argument?",
+      "answer": "His left-handedness provides an alternative explanation for the injuries; it does not alone tell the entire story."
+    },
+    {
+      "number": 12,
+      "section": "Part B · The jail and the trial",
+      "question": "How does Tom explain his visits to Mayella’s home?",
+      "answer": "He says he helped with tasks and denies assaulting her; his account must be considered alongside the testimony."
+    },
+    {
+      "number": 13,
+      "section": "Part C · Verdict and changing perspective",
+      "question": "Why does Tom’s expression of pity provoke a hostile response?",
+      "answer": "Racial hierarchy makes his sympathy toward a White woman unacceptable to the prosecutor’s framing."
+    },
+    {
+      "number": 14,
+      "section": "Part C · Verdict and changing perspective",
+      "question": "What verdict does the jury reach?",
+      "answer": "It finds Tom guilty despite the defense’s challenges, showing the power of racial prejudice in the story."
+    },
+    {
+      "number": 15,
+      "section": "Part C · Verdict and changing perspective",
+      "question": "How does Jem react to the verdict?",
+      "answer": "He is distressed and struggles to reconcile the outcome with his expectation of fairness."
+    },
+    {
+      "number": 16,
+      "section": "Part C · Verdict and changing perspective",
+      "question": "What changes when Boo protects the children after the attack?",
+      "answer": "Scout encounters him as a person whose actions contradict the frightening image built from rumor."
+    },
+    {
+      "number": 17,
+      "section": "After viewing",
+      "question": "Choose one moment when prejudice affects how evidence is judged.",
+      "answer": "Accept a precise trial or community scene with reasoning about the bias at work."
+    },
+    {
+      "number": 18,
+      "section": "After viewing",
+      "question": "How does Scout’s view of Boo change by the ending?",
+      "answer": "She moves from fear and curiosity toward recognition, empathy, and respect for his vulnerability."
+    },
+    {
+      "number": 19,
+      "section": "After viewing",
+      "question": "Whose perspective receives less attention than Scout’s or Atticus’s?",
+      "answer": "Tom’s and other Black characters’ inner lives are limited; explain how that shapes viewers’ understanding."
+    },
+    {
+      "number": 20,
+      "section": "After viewing",
+      "question": "What would you compare between a novel passage and its film scene?",
+      "answer": "Narration, dialogue, framing, omissions, or emphasis; identify a specific scene and a meaningful comparison."
+    }
+  ],
+  "paper": [
+    {
+      "number": 1,
+      "section": "Before viewing",
+      "question": "How might a child narrator notice something adults accept as normal?",
+      "answer": "An unfamiliar or questioning perspective can expose contradictions; it may also lack information and context."
+    },
+    {
+      "number": 2,
+      "section": "During viewing",
+      "question": "How do Scout, Jem, and Dill initially imagine Boo Radley?",
+      "answer": "They turn limited information and neighborhood rumors into a frightening story about a recluse."
+    },
+    {
+      "number": 3,
+      "section": "During viewing",
+      "question": "What do the gifts in the tree suggest about that first impression?",
+      "answer": "Someone is reaching out kindly, complicating their assumption that Boo is only threatening."
+    },
+    {
+      "number": 4,
+      "section": "During viewing",
+      "question": "How does Atticus respond to the children’s treatment of Boo?",
+      "answer": "He encourages respect for Boo’s privacy and challenges their assumptions and intrusions."
+    },
+    {
+      "number": 5,
+      "section": "During viewing",
+      "question": "Why does Atticus’s defense of Tom Robinson create hostility?",
+      "answer": "Racist townspeople resent a serious defense of a Black man accused by a White woman."
+    },
+    {
+      "number": 6,
+      "section": "During viewing",
+      "question": "What danger does the group at the jail pose?",
+      "answer": "It threatens Tom’s safety and pressures Atticus; the scene evokes racist mob violence."
+    },
+    {
+      "number": 7,
+      "section": "During viewing",
+      "question": "How does Scout’s conversation affect the confrontation?",
+      "answer": "Her personal recognition of Mr. Cunningham interrupts the mob’s anonymity and helps defuse the immediate threat."
+    },
+    {
+      "number": 8,
+      "section": "During viewing",
+      "question": "Why does Bob Ewell’s handedness matter to Atticus’s argument?",
+      "answer": "His left-handedness provides an alternative explanation for the injuries; it does not alone tell the entire story."
+    },
+    {
+      "number": 9,
+      "section": "During viewing",
+      "question": "Why does Tom’s expression of pity provoke a hostile response?",
+      "answer": "Racial hierarchy makes his sympathy toward a White woman unacceptable to the prosecutor’s framing."
+    },
+    {
+      "number": 10,
+      "section": "During viewing",
+      "question": "What changes when Boo protects the children after the attack?",
+      "answer": "Scout encounters him as a person whose actions contradict the frightening image built from rumor."
+    },
+    {
+      "number": 11,
+      "section": "After viewing",
+      "question": "Choose one moment when prejudice affects how evidence is judged.",
+      "answer": "Accept a precise trial or community scene with reasoning about the bias at work."
+    },
+    {
+      "number": 12,
+      "section": "After viewing",
+      "question": "Whose perspective receives less attention than Scout’s or Atticus’s?",
+      "answer": "Tom’s and other Black characters’ inner lives are limited; explain how that shapes viewers’ understanding."
+    },
+    {
+      "number": 13,
+      "section": "After viewing",
+      "question": "What would you compare between a novel passage and its film scene?",
+      "answer": "Narration, dialogue, framing, omissions, or emphasis; identify a specific scene and a meaningful comparison."
+    }
+  ],
+  "final_writing": "How does Scout’s perspective reveal the gap between fairness as an ideal and fairness in practice? Write a paragraph with a clear claim, evidence from two scenes, and reasoning. End with one limitation of the film’s portrayal or one question for further study.",
+  "genre": "Courtroom / coming-of-age drama"
+}
