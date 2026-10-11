@@ -6,3 +6,30 @@
 @media(max-width:430px){.app-shell{padding:8px}.stage-wrap{min-height:380px}.game-shell{border-radius:12px}.brand{font-size:15px}.hud{grid-template-columns:1fr 64px 1fr;gap:5px;padding:8px}.hud-title{font-size:7px}.hud-title b{font-size:8px}.meter{height:7px}.energy-meter{height:6px}.answer-grid{grid-template-columns:1fr}.answer-button{min-height:42px}.question-card h2{font-size:14px}.question-prompt{font-size:18px}.controls-bar{padding:8px}.control-set{font-size:7px}kbd{min-width:17px;padding:2px 4px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
 .controls-bar--cpu{grid-template-columns:1fr 1.5fr}
+
+/* Touch controls keep the same gameplay actions available on tablets and phones. */
+.touch-controls{display:none}
+.touch-controls[hidden]{display:none!important}
+.touch-group{display:flex;align-items:center;gap:8px}
+.touch-button{min-width:56px;min-height:52px;padding:10px;border:1px solid rgba(255,255,255,.2);border-radius:13px;background:#25334d;color:#f5f7ff;font:800 10px Inter,sans-serif;letter-spacing:.04em;box-shadow:0 4px 0 rgba(0,0,0,.24);touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+.touch-button:active,.touch-button.is-pressed{transform:translateY(2px);box-shadow:0 2px 0 rgba(0,0,0,.24);filter:brightness(1.18)}
+.touch-direction{min-width:54px;font-size:19px;color:var(--blue)}
+.touch-jump{color:#b7f6df}
+.touch-punch{color:var(--blue)}
+.touch-kick{color:var(--pink)}
+.touch-dash{color:var(--gold)}
+@media (pointer:coarse),(max-width:900px){
+  .controls-bar{grid-template-columns:1fr;padding:10px 12px}
+  .keyboard-controls,.control-center{display:none}
+  .touch-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%}
+  .touch-group{gap:7px}
+  .touch-button{min-width:50px;min-height:50px;padding:8px;font-size:9px}
+  .touch-direction{min-width:48px;font-size:17px}
+  .touch-jump{min-width:54px}
+  .touch-punch,.touch-kick,.touch-dash{min-width:54px}
+}
+.screen--question{overflow-y:auto}
+@media(max-width:430px){
+  .screen--question{align-items:start;padding:8px}
+  .question-card{margin:auto 0;padding:16px}
+}
