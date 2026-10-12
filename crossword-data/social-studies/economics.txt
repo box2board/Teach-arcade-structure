@@ -1,0 +1,315 @@
+[economics--basic-economic-concepts]
+Scarcity|Limited resources relative to people's wants.
+Economics|Study of allocating scarce resources.
+Labor|Human effort used in production.
+Capital|Tools, equipment, and buildings used to produce goods.
+Land|Factor of production including natural resources.
+Incentive|Potential reward or penalty influencing a choice.
+Service|Activity performed to meet a want or need.
+Goods|Tangible products made to satisfy wants or needs.
+Specialization|Focusing production on particular tasks or products.
+Trade Off|Giving up something to obtain something else.
+Opportunity Cost|Value of the best alternative forgone.
+Productivity|Output per unit of input, such as per worker-hour.
+Entrepreneurship|Organizing resources while taking business risks.
+Marginal|Describes benefits or costs of one additional unit or action.
+Exchange|Transfer of goods or services between participants.
+PPF|Initials for the frontier showing two-output production trade-offs.
+Technology|Methods and knowledge that can improve productive capacity.
+Efficiency|Using resources without avoidable waste.
+Positive|Describes an economic claim that can be tested using evidence.
+Allocation|Distribution of available resources among alternative uses.
+[economics--opportunity-cost]
+Opportunity Cost|Value of the best alternative given up.
+Trade Off|Sacrifice made to obtain something else.
+Time|Resource used even when an activity requires no money.
+Explicit Cost|Direct monetary payment for an activity.
+Implicit Cost|Value of a resource's forgone alternative use.
+Marginal Cost|Additional cost of one extra unit or action.
+Sunk Cost|Unrecoverable expense already incurred.
+Wages|Earnings forgone when a student chooses leisure instead of paid work.
+Alternative|Another available choice rejected when a decision is made.
+Scarcity|Limited resources making choices necessary.
+Marginal Benefit|Additional gain from one more unit or action.
+Leisure|Nonwork time whose opportunity cost can rise when wages increase.
+Production|Making goods or services using resources.
+PPF|Initials of the graph showing possible output combinations and trade-offs.
+Nonrefundable|Describes a past payment that cannot be returned.
+Preferences|Individual priorities helping explain different valuations of alternatives.
+Resources|Inputs that can be assigned to competing uses.
+Housing|Next-best land use forgone when a town chooses a park in the stated example.
+Future|Time period whose benefits and costs should guide a current decision.
+Mutually Exclusive|Describes alternatives that cannot all be chosen together.
+[economics--economic-systems]
+Traditional|Describes an economy relying heavily on customs.
+Command|Describes an economy whose major decisions are directed centrally.
+Market|Describes an economy relying heavily on decentralized exchange.
+Mixed|Describes an economy combining private exchange and government involvement.
+Profit|Business revenue remaining after relevant costs.
+Property Rights|Rules concerning ownership, use, and transfer of assets.
+Prices|Signals communicating relative scarcity and demand.
+Competition|Rivalry that can encourage efficiency and innovation.
+Incentives|Rewards and penalties affecting economic choices.
+Consumers|People purchasing goods and services for use.
+Central Planning|Coordinating production through a national or other central authority.
+Public Ownership|Holding assets through government rather than private organizations.
+Private Ownership|Holding assets through individuals or nongovernment organizations.
+Regulation|Government rules shaping business activity.
+Innovation|Development of new products or production methods.
+Distribution|Pattern of who receives an economy's goods or income.
+Efficiency|Producing or allocating resources with minimal avoidable waste.
+Customs|Inherited practices influencing tasks in a traditional economy.
+Output|Quantity of goods and services produced.
+Allocation|Assignment of resources to competing purposes.
+[economics--supply-and-demand]
+Demand|Quantities buyers are willing and able to purchase at different prices.
+Supply|Quantities sellers are willing and able to offer at different prices.
+Equilibrium|Condition where quantity supplied equals quantity demanded.
+Shortage|Quantity demanded exceeding quantity supplied at a given price.
+Surplus|Quantity supplied exceeding quantity demanded at a given price.
+Price|Amount charged for a product that moves buyers along a demand curve.
+Substitute|Good that can replace another in consumption.
+Complement|Good used together with another.
+Income|Household earnings whose rise usually increases demand for normal goods.
+Technology|Improved production methods that can increase supply.
+Normal Good|Product whose demand generally rises as consumer income rises.
+Quantity Demanded|Amount buyers purchase at one particular price.
+Quantity Supplied|Amount sellers offer at one particular price.
+Production Costs|Expenses whose increase usually reduces supply at a given price.
+Shift|Movement of an entire curve after a factor other than own price changes.
+Law of Demand|Principle that higher prices generally reduce purchases, other things equal.
+Law of Supply|Principle that higher prices generally increase offerings, other things equal.
+Drought|Weather event that can reduce apple harvests and shift their supply left.
+Market|System through which buyers and sellers exchange a product.
+Ceteris Paribus|Latin phrase meaning other things equal.
+[economics--gdp]
+GDP|Initials of the measure of domestic final production's market value.
+Nominal|Describes output value measured using current prices.
+Real|Describes output value adjusted for price changes.
+Consumption|GDP spending category including household purchases.
+Investment|GDP category including newly produced business equipment.
+Exports|Goods and services sold to buyers abroad.
+Imports|Goods and services purchased from abroad.
+Net Exports|Value calculated by subtracting foreign purchases from foreign sales.
+Final Goods|Products counted at their end-use value to avoid double counting.
+Per Capita|Phrase meaning per person, used when dividing GDP by population.
+Intermediate|Describes inputs such as flour purchased to produce bread.
+Double Counting|Error of adding input values again after counting a final product.
+Transfer Payments|Government benefits excluded from purchases of current production.
+Domestic|Describes production within a country's boundaries.
+Inflation|Rising prices that can increase nominal GDP without more output.
+Population|Number of people used to calculate average output per person.
+Unpaid Work|Useful household labor often omitted from market production measures.
+Financial Asset|Ownership claim whose transfer is not itself new production.
+Output|Goods and services actually produced during a period.
+Well Being|Broad quality of life that GDP does not fully measure.
+[economics--inflation]
+Inflation|Sustained increase in the general price level.
+Deflation|Sustained decrease in the general price level.
+Disinflation|Decline in the inflation rate while prices may still rise.
+Purchasing Power|Quantity of goods and services a sum of money can buy.
+CPI|Initials of the consumer price measure based on a representative basket.
+Nominal Wage|Pay measured in current money units.
+Real Wage|Pay adjusted for purchasing power.
+Price Level|Broad measure of prices across an economy.
+Basket|Representative combination of consumer purchases used in a price index.
+Fixed Income|Income that may fail to keep up with unexpected price increases.
+Expectations|Beliefs about future prices that influence wage and price setting.
+Demand Pull|Describes inflation driven by spending growing faster than available output.
+Cost Push|Describes inflation arising from broad increases in production expenses.
+Central Bank|Institution monitoring inflation and managing monetary policy.
+Real Interest Rate|Approximate borrowing rate after subtracting inflation from the nominal rate.
+Borrower|Person whose fixed nominal debt can become less burdensome with unexpected inflation.
+Debt|Obligation whose real burden can increase during deflation.
+Energy|Input whose higher cost can raise expenses across many industries.
+Index|Statistical measure comparing price changes with a reference period.
+Percentage|Form in which an inflation rate is commonly expressed.
+[economics--unemployment]
+Unemployed|Classification of people without jobs who are available and actively searching under standard rules.
+Labor Force|People classified as employed plus unemployed.
+Frictional|Describes unemployment during job transitions and searches.
+Structural|Describes unemployment caused by mismatched skills and available jobs.
+Cyclical|Describes unemployment associated with economic downturns.
+Seasonal|Describes joblessness from predictable annual changes in work.
+Recession|Broad economic downturn that can reduce staffing.
+Training|Learning new skills that may address a job mismatch.
+Employed|Classification that includes people working part-time.
+Job Search|Active effort generally required for official unemployment classification.
+Discouraged Workers|People who want work but stop searching because jobs seem unavailable.
+Participation Rate|Labor force as a share of the relevant population.
+Unemployment Rate|Unemployed people as a percentage of the labor force.
+Underemployment|Situation in which work provides fewer hours or uses fewer skills than desired.
+Layoffs|Job losses resulting from employers reducing staff.
+Demand|Purchasing that can fall during downturns and lead to job losses.
+Skills|Abilities that may no longer match new job requirements.
+Part Time|Describes work with fewer hours than a typical full-time schedule.
+Benefit Claims|Requests for assistance that do not equal the official unemployment count.
+Outside|Position relative to the labor force of many people who stop actively searching.
+[economics--taxes]
+Tax|Legally required payment to government.
+Income Tax|Assessment based on taxable earnings or income.
+Sales Tax|Assessment generally based on a taxable purchase's value.
+Property Tax|Assessment commonly based on real estate's value.
+Progressive|Describes a structure taking a rising share as the tax base increases.
+Withholding|Money deducted from pay toward tax obligations.
+Excise|Tax imposed on a specified product or activity.
+Deduction|Amount reducing taxable income.
+Credit|Amount reducing tax owed rather than taxable income.
+Refund|Return of payments exceeding final tax liability, subject to applicable credits.
+Marginal Rate|Percentage applying to the next dollar within the relevant bracket.
+Tax Base|Economic value or activity on which an assessment is imposed.
+Regressive|Describes a tax taking a larger income share from lower-income taxpayers.
+Evasion|Illegal avoidance of tax obligations.
+Avoidance|Lawful use of provisions to reduce tax obligations.
+Revenue|Income governments collect to fund public responsibilities.
+Bracket|Income range subject to a specified marginal rate.
+Liability|Final amount legally owed in taxes.
+Assessed Value|Official property valuation used for many local taxes.
+Public Services|Government activities such as schools and roads financed through revenue.
+[economics--comparative-advantage]
+Comparative Advantage|Ability to produce at a lower opportunity cost.
+Absolute Advantage|Ability to produce using fewer inputs per unit.
+Opportunity Cost|Value of the best alternative output forgone.
+Specialization|Focusing production on activities with a relative advantage.
+Trade|Exchange between producers or countries.
+Export|Good or service sold to buyers abroad.
+Import|Good or service purchased from abroad.
+Productivity|Output per unit of input, which technology can change.
+Labor|Human work input, measured in some production comparisons as hours.
+Transport|Physical movement of goods between producers or countries.
+Terms of Trade|Rate at which one product is exchanged for another.
+Gains from Trade|Benefits made possible through exchange and specialization.
+Relative|Describes the comparison of opportunity costs rather than total cost alone.
+Transport Costs|Shipping expenses that can reduce exchange benefits.
+Adjustment Costs|Expenses or losses incurred as workers and firms respond to trade changes.
+Technology|Production knowledge that can change relative opportunity costs.
+Increasing Costs|Pattern limiting complete specialization as more output becomes harder to produce.
+Inputs|Resources such as labor used to make output.
+Output|Products resulting from a production process.
+Mutual Benefit|Gain for both partners possible when trading terms fall between their opportunity costs.
+[economics--banking]
+Checking|Account type primarily supporting routine payments.
+Savings|Account type commonly used to hold money and earn interest.
+Interest|Charge paid for borrowing or earnings paid on deposits.
+Principal|Original amount of a loan or deposit before interest.
+Debit Card|Payment card generally drawing money from a linked deposit account.
+Deposit|Money placed into a bank account.
+Withdrawal|Money removed from a bank account.
+Loan|Funds advanced with an obligation to repay.
+FDIC|Initials of the federal insurer of eligible bank deposits.
+Fees|Account charges that can reduce earnings or balances.
+Certificate of Deposit|Term-based deposit product that may penalize early access.
+Compound Interest|Earnings calculated on principal and previously accumulated interest.
+Simple Interest|Earnings calculated only on the original principal.
+Overdraft|Situation in which a covered transaction exceeds available funds.
+Statement|Periodic account record listing transactions and balances.
+Balance|Amount currently held in or owed on an account.
+Reconciliation|Comparing personal records with account records to investigate differences.
+Deposit Insurance|Protection for eligible bank funds that generally does not cover stock losses.
+Borrower|Person receiving funds who must repay under loan terms.
+Lender|Institution or person providing funds under a repayment agreement.
+[economics--credit]
+Credit|Borrowed purchasing power with an obligation to repay.
+Principal|Loan amount before interest charges.
+Interest|Charge for using a lender's money.
+APR|Initials of Annual Percentage Rate.
+Collateral|Asset pledged to secure repayment.
+Default|Failure to meet repayment obligations.
+Credit Report|Record of borrowing activity and account history.
+Borrower|Person obligated to repay a loan.
+Lender|Person or institution providing a loan.
+Fees|Charges beyond interest that can affect total borrowing cost.
+Cosigner|Person agreeing to repay if the primary borrower does not.
+Minimum Payment|Smallest required card payment that may leave debt outstanding longer.
+Credit Limit|Maximum borrowing amount available on a card or credit line.
+Repayment Term|Length of time scheduled for paying back a loan.
+Secured Loan|Borrowing backed by a pledged asset.
+Debit Card|Payment method generally drawing existing account funds rather than borrowing.
+Fixed Rate|Interest percentage that stays constant under the stated loan terms.
+Balance|Amount outstanding after payments and charges.
+Fraud|Deception that may include opening an unauthorized credit account.
+Dispute|Formal challenge to an error in a credit record.
+[economics--saving]
+Saving|Setting aside money instead of spending it now.
+Emergency Fund|Money reserved for unexpected necessities or income interruptions.
+Liquidity|Ease of accessing an asset or converting it to cash.
+Principal|Original deposit amount before interest.
+Compound Interest|Earnings on both deposits and earlier accumulated earnings.
+Savings Goal|Planned purpose and target amount for money set aside.
+APY|Initials of the annual deposit yield including compounding.
+Deadline|Date by which a savings target must be reached.
+Inflation|General price increases that can reduce saved money's buying power.
+Fees|Account charges that can offset interest earnings.
+Automatic Transfer|Scheduled movement of funds to a savings account.
+Certificate of Deposit|Term deposit that can restrict early withdrawals.
+Pay Yourself First|Habit of setting aside planned savings when income arrives.
+Purchasing Power|Amount of goods and services saved dollars can buy.
+Simple Interest|Earnings calculated on principal without adding earlier earnings to the base.
+Contributions|Additional amounts regularly added toward a savings target.
+Balance|Total amount held in an account at a given time.
+Access|Ability to obtain funds when short-term needs arise.
+Categories|Separate savings groupings that help track different goals.
+Preservation|Maintaining the value of funds needed soon rather than risking large losses.
+[economics--investing]
+Stock|Ownership share in a company.
+Bond|Security generally representing a loan to its issuer.
+Dividend|Company distribution to shareholders.
+Diversification|Spreading investments across different holdings.
+Portfolio|Collection of investments a person holds.
+Capital Gain|Profit from selling an asset above its purchase cost.
+Index Fund|Investment vehicle seeking to track a specified market measure.
+Risk|Possibility that actual results differ from expectations, including loss.
+Return|Gain or loss from an investment relative to its cost.
+Fees|Charges reducing funds available to remain invested.
+Time Horizon|Length of time before invested money is expected to be needed.
+Default Risk|Possibility a bond issuer cannot meet payment obligations.
+Reinvestment|Using earnings to purchase or retain additional investments.
+Volatility|Extent to which an investment's market value fluctuates.
+Shareholder|Person owning an interest in a company.
+Issuer|Organization selling a new bond and promising repayment.
+Disclosures|Documents explaining an investment's terms, costs, and risks.
+Fraud|Deception that may hide behind promises of high returns without risk.
+Concentration|Heavy dependence on one company or narrow group of holdings.
+Compounding|Growth as earnings contribute to further earnings over time.
+[economics--budgeting]
+Budget|Plan for income, spending, and saving.
+Gross Pay|Earnings before taxes and deductions.
+Net Pay|Earnings remaining after deductions.
+Fixed Expense|Cost that commonly stays constant over a short planning period.
+Variable Expense|Cost such as groceries that changes with use or circumstances.
+Deficit|Amount by which planned outflows exceed income.
+Emergency Fund|Reserve for unexpected necessary costs or income interruptions.
+Income|Money received that supports household spending and saving.
+Savings|Funds set aside for future goals or needs.
+Rent|Lease payment commonly fixed over a short planning period.
+Cash Flow|Timing and movement of money arriving and leaving.
+Deductions|Amounts removed from gross pay before take-home pay.
+Irregular Expenses|Costs due occasionally rather than every month.
+Needs|Essential expenses prioritized when resources are limited.
+Wants|Desired purchases that can be less essential than necessities.
+Debt Payments|Repayment obligations that belong among planned outflows.
+Deadline|Target date helping determine periodic savings requirements.
+Tracking|Recording actual spending to compare it with a plan.
+Surplus|Income remaining after planned outflows for a period.
+Unallocated|Describes money remaining without an assigned use in a budget.
+[economics--insurance]
+Insurance|Arrangement managing financial consequences of covered risks.
+Premium|Price paid to maintain coverage.
+Deductible|Portion of a covered property loss paid by the policyholder.
+Claim|Request for payment or benefits under a policy.
+Coverage Limit|Maximum amount payable for a specified category of loss.
+Exclusion|Condition or type of loss a policy does not cover.
+Liability|Coverage concerning injury or damage for which the insured is responsible.
+Policy|Contract defining insurance terms and covered losses.
+Risk Pooling|Combining payments from many participants to fund some participants' losses.
+Beneficiary|Person designated to receive life-insurance benefits.
+Life Insurance|Coverage paying specified benefits after an insured person's death.
+Disability|Coverage type that can replace part of income when a covered condition prevents work.
+Renters|Insurance type covering tenants' belongings and personal liability.
+Inventory|Record of belongings that can help document a loss.
+Insurer|Company responsible for paying covered benefits under a policy.
+Policyholder|Person or entity holding an insurance contract.
+Flood|Hazard whose damage may require separate coverage from a standard homeowners policy.
+Cost Sharing|Division of covered expenses between insurer and insured.
+Covered Loss|Event or damage qualifying for payment under policy terms.
+Property|Coverage category addressing damage to buildings or belongings.
