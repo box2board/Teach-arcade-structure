@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "ela--research-argument-media-literacy--quoting-paraphrasing-and-attribution",
+  "title": "Quoting, Paraphrasing, and Attribution",
+  "subject": "English Language Arts",
+  "category": "Research, Argument & Media Literacy",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "A quotation uses a source’s words in what form?",
+      "choices": [
+        "a new sentence with the same idea",
+        "a summary of a whole chapter",
+        "the exact wording, marked as borrowed",
+        "an uncited statement"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "A paraphrase restates a source’s idea using what?",
+      "choices": [
+        "the writer’s own wording and sentence structure",
+        "the source’s exact sentence",
+        "only a few swapped synonyms",
+        "an unattributed quotation"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "A summary presents what?",
+      "choices": [
+        "every source detail in order",
+        "an exact sentence",
+        "the writer’s opinion only",
+        "the main points in a shorter form"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Attribution tells readers what?",
+      "choices": [
+        "how long the essay is",
+        "whose idea or words are being used",
+        "which paragraph is longest",
+        "where the writer sat"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Why should a direct quotation be placed in quotation marks?",
+      "choices": [
+        "to make the source claim more reliable",
+        "to show the exact words come from another source",
+        "to replace a citation",
+        "to indicate the writer disagrees"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "A student copies a sentence and changes two words without quotation marks. What is the problem?",
+      "choices": [
+        "the student has written a summary",
+        "the citation is automatically complete",
+        "the sentence is a paraphrase",
+        "the wording remains too close to the source and is unattributed"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which paraphrase is strongest?",
+      "choices": [
+        "it accurately restates the idea in new wording and cites the source",
+        "it replaces a few words with synonyms",
+        "it keeps the source’s sentence structure and removes quotation marks",
+        "it changes the source’s meaning"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "A writer quotes one sentence but leaves out a phrase that changes its meaning. What is the ethical concern?",
+      "choices": [
+        "the quotation is too short",
+        "the source is secondary",
+        "the quotation misrepresents the source",
+        "quotation marks are unnecessary"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "A paraphrase still requires what?",
+      "choices": [
+        "attribution to the original source",
+        "quotation marks around every word",
+        "no citation because wording changed",
+        "a new author name"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "A writer introduces a quotation with the source’s name and context. What does this help readers understand?",
+      "choices": [
+        "that the quote needs no explanation",
+        "that the source is always correct",
+        "who said it and why it is relevant",
+        "that the writer agrees with every detail"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Which sentence integrates a quotation and attribution clearly?",
+      "choices": [
+        "“Public spaces invite shared responsibility.”",
+        "Lee argues, “Public spaces invite shared responsibility.”",
+        "Lee says, “public spaces invite shared responsibility,” and that is true.",
+        "The source says public spaces, shared responsibility."
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "A student’s paragraph contains a long quotation but little explanation. What should revision add?",
+      "choices": [
+        "more copied sentences",
+        "fewer citations",
+        "an unrelated summary",
+        "analysis connecting the quoted evidence to the claim"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "A writer needs a brief factual detail from a source. What approach is often best?",
+      "choices": [
+        "copy the sentence without quotation marks",
+        "omit attribution",
+        "present it as personal knowledge",
+        "paraphrase the detail and cite it"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "A source uses an unusual phrase that is central to the analysis. What is an appropriate way to preserve it?",
+      "choices": [
+        "change one word and omit attribution",
+        "quote the exact phrase and attribute it",
+        "copy the full paragraph",
+        "place it in italics without a citation"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A student paraphrases a source but changes “may increase” to “always causes.” What is the issue?",
+      "choices": [
+        "the paraphrase is too concise",
+        "the source becomes primary",
+        "the paraphrase exaggerates the source’s claim",
+        "the writer has added a citation"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A citation appears after a paragraph with ideas from two sources, but readers cannot tell which idea came from whom. What is needed?",
+      "choices": [
+        "clearer attribution near each borrowed idea",
+        "a longer title",
+        "fewer transitions",
+        "more quotation marks around original writing"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "When is a direct quotation especially useful?",
+      "choices": [
+        "whenever a source has a sentence",
+        "when the exact wording matters to the analysis",
+        "when the writer has no claim",
+        "when a source is difficult to understand"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A writer uses a source’s idea and adds their own interpretation. What should the writer do?",
+      "choices": [
+        "present both as the source’s exact words",
+        "remove the citation",
+        "distinguish the source’s contribution from their analysis",
+        "cite only the writer’s own idea"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A student cites a source in a bibliography but copies a sentence in the essay without quotation marks. What is still missing?",
+      "choices": [
+        "a signal in the text marking the exact borrowed words",
+        "a second bibliography",
+        "the source’s title in every sentence",
+        "a summary of the citation style"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which practice best avoids plagiarism while using research?",
+      "choices": [
+        "copy passages into a draft and add citations later from memory",
+        "change a few words in every sentence",
+        "cite only sources that are quoted directly",
+        "take notes that distinguish exact quotations from paraphrases and record source details"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

@@ -3,7 +3,9 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 const root=new URL('../',import.meta.url), entries=[],ids=new Set(), hashes=JSON.parse(await fs.readFile(new URL('question-bank/source-hashes.json',root)));
 const output=new URL('public/review-lab/question-sets/library/',root);
-for(const subject of ['social-studies','science','math']){
+const subjectDirs=(await fs.readdir(new URL('question-bank/',root),{withFileTypes:true}))
+ .filter(entry=>entry.isDirectory()).map(entry=>entry.name).sort();
+for(const subject of subjectDirs){
  const dir=new URL(`question-bank/${subject}/`,root),manifest=JSON.parse(await fs.readFile(new URL('manifest.json',dir)));
  if(manifest.sets.length!==manifest.setCount)throw Error('Manifest count mismatch');
  for(const set of manifest.sets){
@@ -11,11 +13,11 @@ for(const subject of ['social-studies','science','math']){
   if(relative.includes('..')||path.isAbsolute(relative)||!relative.endsWith('.json'))throw Error('Unsafe bank path');
   const source=`question-bank/${subject}/${relative}`,bytes=await fs.readFile(new URL(source,root)),bank=JSON.parse(bytes);
   if(crypto.createHash('sha256').update(bytes).digest('hex')!==hashes[source])throw Error(`Source changed: ${source}`);
-  if(ids.has(bank.id)||bank.id!==set.id||bank.title!==set.title||bank.category!==set.category||bank.subject!==manifest.subject||bank.questionCount!==20||bank.questions?.length!==20)throw Error(`Invalid bank: ${source}`);
+  if(ids.has(bank.id)||bank.id!==set.id||bank.title!==set.title||bank.category!==set.category||bank.subject!==manifest.subject||bank.schemaVersion!==1||bank.gradeBand!=='7–12'||bank.questionCount!==20||bank.questions?.length!==20)throw Error(`Invalid bank: ${source}`);
   ids.add(bank.id);const qids=new Set(),prompts=new Set();
   for(const q of bank.questions){
    const normalize=s=>s.normalize('NFKC').toLowerCase().trim().replace(/\s+/g,' ');
-   if(!Number.isInteger(q.id)||qids.has(q.id)||!q.question?.trim()||prompts.has(normalize(q.question))||q.choices?.length!==4||q.choices.some(c=>typeof c!=='string'||!c.trim())||new Set(q.choices.map(normalize)).size!==4||!Number.isInteger(q.correctAnswer)||q.correctAnswer<0||q.correctAnswer>3)throw Error(`Invalid question: ${source} #${q.id}`);
+   if(!Number.isInteger(q.id)||qids.has(q.id)||!q.question?.trim()||prompts.has(normalize(q.question))||q.choices?.length!==4||q.choices.some(c=>typeof c!=='string'||!c.trim())||new Set(q.choices.map(normalize)).size!==4||!Number.isInteger(q.correctAnswer)||q.correctAnswer<0||q.correctAnswer>3||!['recall','understanding','reasoning'].includes(q.skill))throw Error(`Invalid question: ${source} #${q.id}`);
    qids.add(q.id);prompts.add(normalize(q.question));
   }
   const file=`${subject}/${relative}`,target=new URL(file,output);await fs.mkdir(new URL('./',target),{recursive:true});await fs.writeFile(target,bytes);

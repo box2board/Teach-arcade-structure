@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "ela--literature-literary-analysis--literary-conflict",
+  "title": "Literary Conflict",
+  "subject": "English Language Arts",
+  "category": "Literature & Literary Analysis",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is conflict in a narrative?",
+      "choices": [
+        "the place where events occur",
+        "the narrator’s word choice",
+        "a struggle that creates tension around a goal or value",
+        "the final sentence"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "A student argues with a friend about keeping a promise. What kind of conflict is central?",
+      "choices": [
+        "character versus character",
+        "character versus nature",
+        "character versus technology",
+        "character versus society"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "A hiker must cross a flooded trail before nightfall. What conflict is emphasized?",
+      "choices": [
+        "character versus self",
+        "character versus society",
+        "character versus character",
+        "character versus nature"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "A student wants to confess a mistake but fears embarrassment. Which conflict is this?",
+      "choices": [
+        "character versus nature",
+        "character versus self",
+        "character versus technology",
+        "character versus society"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "A community challenges a rule that excludes some residents. What conflict is shown?",
+      "choices": [
+        "character versus nature",
+        "character versus society",
+        "character versus self",
+        "character versus technology"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "A repair worker tries to stop an automated system from shutting down a hospital. Which conflict fits?",
+      "choices": [
+        "character versus nature",
+        "character versus self",
+        "character versus character",
+        "character versus technology"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Two siblings compete to lead a project and disagree about its direction. What conflict is this?",
+      "choices": [
+        "character versus character",
+        "character versus society",
+        "character versus nature",
+        "character versus technology"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "A character debates whether to reveal a friend’s secret to prevent harm. What makes the struggle internal?",
+      "choices": [
+        "a storm blocks the road",
+        "a rival takes the key",
+        "competing values and choices within one character",
+        "a law changes"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "A character wants to preserve a family tradition while the town pressures everyone to abandon it. Which conflict is strongest?",
+      "choices": [
+        "character versus society",
+        "character versus self only",
+        "character versus nature",
+        "character versus technology"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "A wildfire threatens a town, and neighbors disagree about evacuation. What is the main external force?",
+      "choices": [
+        "an internal fear",
+        "a machine",
+        "nature",
+        "a single rival"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "A story includes an argument between teammates and the captain’s private guilt. What does this show?",
+      "choices": [
+        "every story has only one conflict",
+        "a narrative can develop more than one conflict",
+        "internal conflict is always the main plot",
+        "external conflict cannot affect character"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "A character defeats a rival but still feels uncertain about a choice. What can readers infer?",
+      "choices": [
+        "the story has no conflict",
+        "the rival was the narrator",
+        "the setting caused the uncertainty",
+        "resolving an external conflict may leave an internal conflict"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "A protagonist challenges an unfair school policy through a student council. Which conflict is most central?",
+      "choices": [
+        "character versus nature",
+        "character versus technology",
+        "character versus self",
+        "character versus society"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "A character struggles with guilt after falsely accusing someone. What type of conflict is most directly shown?",
+      "choices": [
+        "character versus nature",
+        "character versus self",
+        "character versus technology",
+        "character versus society"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A bridge collapse forces two rivals to cooperate against a rising river. How does the setting affect conflict?",
+      "choices": [
+        "it removes the conflict",
+        "it turns the narrator into an antagonist",
+        "an environmental threat changes how characters respond to each other",
+        "it resolves every disagreement"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A story begins with tension between a person and a rule, then shifts toward the person’s doubts. What changed?",
+      "choices": [
+        "the emphasis moves from external to internal conflict",
+        "the point of view becomes second person",
+        "the setting becomes a theme",
+        "the plot loses its central problem"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "An antagonist is not always a person. Which example best demonstrates this?",
+      "choices": [
+        "a character debates whether to apologize",
+        "a character tries to survive a blizzard",
+        "two cousins disagree",
+        "a student challenges a dress code"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A student calls every disagreement “character versus society.” Which example best supports a more precise label of character versus character?",
+      "choices": [
+        "a town resists a law",
+        "a climber faces a storm",
+        "two neighbors argue over a shared garden",
+        "a pianist overcomes stage fright"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A character cannot control a drought but can choose whether to share water. What interaction is present?",
+      "choices": [
+        "conflict with nature shapes a moral choice",
+        "technology replaces the central conflict",
+        "a subplot removes the main goal",
+        "narration creates the drought"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A story’s main problem ends when the protagonist forgives a rival. Which conclusion is most supported?",
+      "choices": [
+        "the setting has become the antagonist",
+        "the narrator is unreliable",
+        "the story has no internal change",
+        "the resolution addresses the relationship conflict"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

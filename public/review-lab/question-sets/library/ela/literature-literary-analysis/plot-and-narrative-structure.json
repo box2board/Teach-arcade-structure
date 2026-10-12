@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "ela--literature-literary-analysis--plot-and-narrative-structure",
+  "title": "Plot and Narrative Structure",
+  "subject": "English Language Arts",
+  "category": "Literature & Literary Analysis",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "In a story, which part usually introduces the characters and situation before the main problem?",
+      "choices": [
+        "climax",
+        "resolution",
+        "exposition",
+        "falling action"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "A brief event disrupts the main character’s routine and starts the central problem. What is it?",
+      "choices": [
+        "inciting incident",
+        "denouement",
+        "subplot",
+        "exposition"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Several obstacles make the protagonist’s goal harder to reach. Which plot phase is this?",
+      "choices": [
+        "exposition",
+        "resolution",
+        "flashback",
+        "rising action"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "At the story’s decisive turning point, the protagonist confronts the central problem. What is this moment?",
+      "choices": [
+        "falling action",
+        "climax",
+        "exposition",
+        "frame narrative"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "After the climax, the story shows consequences and moves toward an ending. Which phase is this?",
+      "choices": [
+        "inciting incident",
+        "falling action",
+        "rising action",
+        "exposition"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which term names the events that bring the central conflict to a close?",
+      "choices": [
+        "exposition",
+        "foreshadowing",
+        "subplot",
+        "resolution"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "A story begins with an event from years earlier, then returns to the present. Which device is used?",
+      "choices": [
+        "flashback",
+        "foreshadowing",
+        "climax",
+        "in medias res"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Before the archive is entered, the narrator hints that an old key fits its lock. Which device hints at a later event?",
+      "choices": [
+        "exposition",
+        "resolution",
+        "foreshadowing",
+        "pacing"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "A novel opens in the middle of a storm and explains the earlier journey afterward. What opening technique is used?",
+      "choices": [
+        "in medias res",
+        "linear chronology",
+        "denouement",
+        "frame narrative"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "A story about a family’s move includes a smaller conflict about a sibling’s audition. What is the smaller storyline?",
+      "choices": [
+        "climax",
+        "exposition",
+        "subplot",
+        "resolution"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "A traveler tells a present-day listener a story that contains another character’s diary. What structure is this?",
+      "choices": [
+        "linear plot",
+        "frame narrative",
+        "rising action",
+        "cliffhanger"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "A novel follows separate episodes in a character’s life, each with a mostly self-contained problem. Which structure fits?",
+      "choices": [
+        "single climax",
+        "frame narrative",
+        "flashback",
+        "episodic structure"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Events are presented in the order they happened, from first to last. What structure is used?",
+      "choices": [
+        "nonlinear narrative",
+        "frame narrative",
+        "in medias res",
+        "linear narrative"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "A story moves between past and present scenes rather than following time order. Which structure is this?",
+      "choices": [
+        "linear narrative",
+        "nonlinear narrative",
+        "episodic structure",
+        "resolution"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "The author slows down a brief moment with detailed description. Which craft choice is most directly affected?",
+      "choices": [
+        "setting",
+        "point of view",
+        "pacing",
+        "theme"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "The final scene briefly shows how the characters live after the main conflict ends. What is this closing section often called?",
+      "choices": [
+        "denouement",
+        "inciting incident",
+        "exposition",
+        "subplot"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A chapter ends just as a character opens a mysterious letter, leaving the result unknown. What device is this?",
+      "choices": [
+        "resolution",
+        "cliffhanger",
+        "flashback",
+        "exposition"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Two storylines follow different characters and intersect at the climax. What best describes their relationship?",
+      "choices": [
+        "frame narrative",
+        "episodic structure",
+        "parallel plots",
+        "linear chronology"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A scene shows a character packing a suitcase before readers learn why the trip matters. What function can that early detail serve?",
+      "choices": [
+        "setup",
+        "resolution",
+        "falling action",
+        "denouement"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "After learning a friend has left, a cautious character decides to travel alone. What plot moment is the decision most likely to mark?",
+      "choices": [
+        "exposition",
+        "subplot",
+        "frame narrative",
+        "turning point"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

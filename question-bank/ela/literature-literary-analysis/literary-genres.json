@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "ela--literature-literary-analysis--literary-genres",
+  "title": "Literary Genres",
+  "subject": "English Language Arts",
+  "category": "Literature & Literary Analysis",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "A genre is a category of texts that share what?",
+      "choices": [
+        "the same author",
+        "the same number of pages",
+        "conventions or features",
+        "a single setting"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "A story includes invented characters and events. Which broad category is it?",
+      "choices": [
+        "fiction",
+        "biography",
+        "primary source",
+        "technical manual"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "A narrative presents factual events from a person’s life, written by someone else. What genre is this?",
+      "choices": [
+        "autobiography",
+        "fantasy",
+        "drama",
+        "biography"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "A person writes an account of their own life. What genre is this?",
+      "choices": [
+        "biography",
+        "autobiography",
+        "folktale",
+        "editorial"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "A story includes magic in a world unlike the real one. Which genre is likely?",
+      "choices": [
+        "memoir",
+        "fantasy",
+        "realistic fiction",
+        "news report"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "A narrative uses scientific possibilities and imagined future technology. Which genre may fit?",
+      "choices": [
+        "historical fiction",
+        "biography",
+        "fable",
+        "science fiction"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "A fictional story is set during a documented historical period. What genre is this?",
+      "choices": [
+        "historical fiction",
+        "fantasy",
+        "memoir",
+        "satire"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "A brief story teaches a lesson through animal characters who speak. Which form is likely?",
+      "choices": [
+        "biography",
+        "mystery",
+        "fable",
+        "essay"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "A story centers on clues and the solution to a crime. What genre is most likely?",
+      "choices": [
+        "mystery",
+        "lyric poetry",
+        "memoir",
+        "fantasy"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "A short personal account focuses on a meaningful experience rather than a whole life. What is it?",
+      "choices": [
+        "biography",
+        "myth",
+        "memoir",
+        "drama"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "A play uses humor and mistaken identities to entertain. Which genre is most likely?",
+      "choices": [
+        "tragedy",
+        "comedy",
+        "epic",
+        "elegy"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "A play traces a serious downfall caused partly by a protagonist’s choices. Which genre may fit?",
+      "choices": [
+        "comedy",
+        "fable",
+        "satire",
+        "tragedy"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "A long narrative poem tells of a hero’s major journey. What form is this?",
+      "choices": [
+        "sonnet",
+        "memoir",
+        "editorial",
+        "epic"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "A text uses exaggeration and humor to criticize a social practice. What genre or mode is this?",
+      "choices": [
+        "biography",
+        "satire",
+        "realistic fiction",
+        "elegy"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A story describes ordinary people and events that could occur in the present world. Which genre fits?",
+      "choices": [
+        "fantasy",
+        "myth",
+        "realistic fiction",
+        "science fiction"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A text presents characters’ speech and actions through scenes meant for performance. What genre is it?",
+      "choices": [
+        "drama",
+        "biography",
+        "informational article",
+        "memoir"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A student labels a text “fantasy” because one character has an unusual name. What evidence would better support the label?",
+      "choices": [
+        "the title is short",
+        "impossible or magical elements shape the story",
+        "the text has chapters",
+        "a character has a name"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A novel set in the past includes invented characters alongside real historical events. What distinction matters?",
+      "choices": [
+        "it is autobiography",
+        "it must be a primary source",
+        "it is historical fiction, not a factual account in every detail",
+        "it cannot include evidence"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A first-person account describes a person’s own memories and reflections. Which label is most precise?",
+      "choices": [
+        "memoir or autobiography, depending on scope",
+        "biography written by a stranger",
+        "fantasy",
+        "drama"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A text shares traits of mystery and science fiction. What is a sound conclusion?",
+      "choices": [
+        "every text belongs to exactly one genre",
+        "genre is based only on length",
+        "genre depends only on the author",
+        "genres can overlap when a work uses conventions of more than one"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

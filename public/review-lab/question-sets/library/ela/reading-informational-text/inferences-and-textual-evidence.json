@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "ela--reading-informational-text--inferences-and-textual-evidence",
+  "title": "Inferences and Textual Evidence",
+  "subject": "English Language Arts",
+  "category": "Reading & Informational Text",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "An inference is a conclusion reached by combining clues with what?",
+      "choices": [
+        "a random guess",
+        "a book’s page count",
+        "prior knowledge or reasoning",
+        "the author’s biography"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Textual evidence is information taken from where?",
+      "choices": [
+        "the text itself",
+        "a reader’s unrelated memory",
+        "a title alone",
+        "an opinion poll not mentioned"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "“Wet footprints crossed the kitchen, and an open umbrella leaned by the door.” What is a reasonable inference?",
+      "choices": [
+        "the floor was just cleaned",
+        "the umbrella is broken",
+        "the kitchen is outdoors",
+        "someone came inside from the rain"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "A character rereads a letter, folds it carefully, and puts it away. What can readers reasonably infer?",
+      "choices": [
+        "the letter is definitely a bill",
+        "the letter may be important to the character",
+        "the character cannot read",
+        "the story is nonfiction"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which statement is best supported by a text showing a town adding benches and shade to a public plaza?",
+      "choices": [
+        "the town will become a major city",
+        "the town is making the plaza more comfortable for visitors",
+        "every resident requested benches",
+        "the plaza is open all night"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "A passage says a researcher repeated a test and got similar results. What inference is supported?",
+      "choices": [
+        "the result is certainly true in every case",
+        "the researcher made no measurements",
+        "the test had no variables",
+        "the result may be more consistent than a single trial"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "A student claims a character is generous. Which evidence is strongest?",
+      "choices": [
+        "the character shares supplies with a new student",
+        "the character owns a large backpack",
+        "the character walks to school",
+        "another character has a different name"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Which is an inference rather than a directly stated fact?",
+      "choices": [
+        "The train arrives at 8:15.",
+        "The sign is green.",
+        "The character may be worried because she checks the clock repeatedly.",
+        "The room has three windows."
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "A text reports that a shop’s sales rose after it extended its hours. What can readers infer cautiously?",
+      "choices": [
+        "longer hours may have contributed to the increase",
+        "longer hours were the only cause",
+        "every customer prefers night shopping",
+        "sales will keep rising forever"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "A character says “I’m fine,” avoids eye contact, and leaves quickly after criticism. What is a reasonable inference?",
+      "choices": [
+        "the character is certainly delighted",
+        "the criticism was helpful",
+        "the character may feel upset",
+        "the scene occurs in winter"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "A passage states a bridge closed after inspectors found cracks. Which conclusion is supported?",
+      "choices": [
+        "the bridge will never reopen",
+        "safety concerns led to the closure",
+        "the bridge was built last year",
+        "no cars used it"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "A reader cites a sentence that does not address the claim. What is the issue?",
+      "choices": [
+        "the inference uses too many words",
+        "all evidence is subjective",
+        "the text has no details",
+        "the evidence is not relevant to the inference"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "A student says “the speaker is angry” because the speaker uses a raised voice once. What additional evidence would strengthen the inference?",
+      "choices": [
+        "the passage’s page number",
+        "a description of the weather",
+        "the speaker’s age",
+        "repeated hostile words or actions across the passage"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "A passage says attendance improved after a bus route changed, but does not mention other factors. What inference is appropriately cautious?",
+      "choices": [
+        "the route change caused every improvement",
+        "the route change may have helped attendance",
+        "the school has perfect attendance",
+        "the bus is always late"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A character returns a borrowed tool clean and repaired. Which trait is best supported?",
+      "choices": [
+        "impatience",
+        "dishonesty",
+        "responsibility",
+        "carelessness"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A text describes a garden with dry soil, drooping leaves, and a broken irrigation hose. Which inference is best supported?",
+      "choices": [
+        "the plants may not be receiving enough water",
+        "the garden is overwatered",
+        "winter has arrived",
+        "the plants are artificial"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A reader notices a claim has two supporting details and one exception. What should a strong interpretation do?",
+      "choices": [
+        "ignore the exception",
+        "account for both the support and the exception",
+        "treat one detail as proof of everything",
+        "replace evidence with opinion"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Which pairing best connects inference and evidence?",
+      "choices": [
+        "“She is famous” supported by her blue coat",
+        "“He is kind” supported by his name",
+        "“She may be nervous” supported by her shaking hands",
+        "“They are lost” supported by a sunny day"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A passage says a student practiced each afternoon and gradually improved on timed reading. What conclusion is best supported?",
+      "choices": [
+        "regular practice may have contributed to improvement",
+        "practice guarantees top scores for everyone",
+        "reading speed is fixed at birth",
+        "the student stopped practicing"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "An inference conflicts with a clear sentence in the passage. What should a reader do?",
+      "choices": [
+        "keep it because all interpretations are equal",
+        "ignore the sentence",
+        "cite an unrelated detail",
+        "revise the inference to fit the text"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

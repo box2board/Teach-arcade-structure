@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "ela--literature-literary-analysis--irony",
+  "title": "Irony",
+  "subject": "English Language Arts",
+  "category": "Literature & Literary Analysis",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Verbal irony occurs when a speaker’s words differ from what the speaker what?",
+      "choices": [
+        "hears",
+        "remembers",
+        "means",
+        "writes down"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Situational irony involves an outcome that is meaningfully different from what is what?",
+      "choices": [
+        "expected",
+        "described literally",
+        "spoken aloud",
+        "written in first person"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Dramatic irony occurs when readers know something important that a character does what?",
+      "choices": [
+        "refuses to say",
+        "already explained",
+        "invents",
+        "not know"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "After getting soaked in a downpour, a character says, “Perfect weather for a picnic.” What is likely used?",
+      "choices": [
+        "dramatic irony",
+        "verbal irony",
+        "situational irony",
+        "foreshadowing"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "A fire station burns down because its alarm system was disconnected for testing. What device may describe the unexpected outcome?",
+      "choices": [
+        "verbal irony",
+        "situational irony",
+        "dramatic irony",
+        "allusion"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Readers know a disguised visitor is the missing heir, but the characters do not. What is this?",
+      "choices": [
+        "verbal irony",
+        "situational irony",
+        "hyperbole",
+        "dramatic irony"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "A student studies all night for the wrong exam. Which detail makes the outcome ironic?",
+      "choices": [
+        "preparation is aimed at a test that will not occur",
+        "the student reads a book",
+        "the exam takes place at school",
+        "the student feels tired"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "A character says “I love waiting” while tapping a foot and checking the clock. What is the likely meaning?",
+      "choices": [
+        "the character enjoys the delay",
+        "the character has forgotten the time",
+        "the character is impatient",
+        "the character is speaking literally"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "A town installs a huge clock to improve punctuality, but the clock stops during the opening ceremony. What is the ironic contrast?",
+      "choices": [
+        "a timekeeping project immediately fails to keep time",
+        "the clock is large",
+        "people gather in town",
+        "the ceremony has speeches"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Which situation is dramatic irony?",
+      "choices": [
+        "a speaker says “great job” after a mistake",
+        "a careful plan fails unexpectedly",
+        "readers see a warning sign before a character enters the unsafe room",
+        "a character explains a surprise"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "A lifeguard forgets swim lessons and needs rescuing at the pool. What is the strongest ironic element?",
+      "choices": [
+        "the pool contains water",
+        "the person expected to rescue others needs rescue",
+        "other people are nearby",
+        "the lifeguard wears a uniform"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "A character says “Nothing can go wrong,” while the stage directions show a candle falling toward papers. What do viewers know?",
+      "choices": [
+        "the candle is a narrator",
+        "the character is speaking to the audience in second person",
+        "the plot has ended",
+        "the character’s confidence may be misplaced"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "A student calls every surprising event “irony.” What distinction is important?",
+      "choices": [
+        "every surprise is automatically irony",
+        "irony only occurs in comedy",
+        "irony means an event is impossible",
+        "irony involves a meaningful gap between expectation and outcome or meaning"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "A restaurant advertises “fast service,” but one customer waits hours because the kitchen misplaced the order. Which claim is best supported?",
+      "choices": [
+        "the waiter uses a metaphor",
+        "the outcome contrasts with the advertised expectation",
+        "the customer is the narrator",
+        "the setting is a restaurant"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A narrator praises a “wonderfully organized” desk while describing papers covering the floor. What clue signals verbal irony?",
+      "choices": [
+        "the narrator uses past tense",
+        "the desk is indoors",
+        "the praise conflicts with the described mess",
+        "the papers are visible"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A character hides from a harmless cat, while readers know the cat is looking for its owner. What creates dramatic irony?",
+      "choices": [
+        "readers know the cat’s purpose before the character does",
+        "the character speaks sarcastically",
+        "the cat is unexpectedly large",
+        "the setting is a home"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Which is the clearest example of situational irony?",
+      "choices": [
+        "A speaker says “Lovely day” during a storm.",
+        "A mail carrier receives a letter addressed to the wrong person.",
+        "Readers know a secret that the hero does not.",
+        "A character describes a blue coat."
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A school’s “quiet reading contest” is interrupted by a loud announcement from the contest organizers. Why might this be ironic?",
+      "choices": [
+        "reading happens indoors",
+        "announcements use speakers",
+        "the organizers disrupt the quiet they are promoting",
+        "students have books"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "In a story, a character fears a harmless shadow while overlooking a real danger behind them. What could this contrast create?",
+      "choices": [
+        "dramatic irony if readers recognize the danger first",
+        "verbal irony because shadows speak",
+        "situational irony whenever fear occurs",
+        "no irony because the shadow exists"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A promised “surprise ending” is obvious from the opening clues. What has the author weakened?",
+      "choices": [
+        "the setting’s physical detail",
+        "the narrator’s use of first person",
+        "the story’s sentence structure",
+        "the gap between reader expectation and the ending"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

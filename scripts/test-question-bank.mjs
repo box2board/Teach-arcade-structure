@@ -22,5 +22,5 @@ for(const metadata of BANK_SETS){
  assert.equal(JSON.stringify(bank),snapshot);totals[bank.subject]=(totals[bank.subject]||0)+1;
  for(const game of GAMES)assert(setsForGame(game.id).some(set=>set.id===bank.id));
 }
-assert.deepEqual(totals,{'Social Studies':75,Science:100,Math:75});
-console.log('PASS: 250 source hashes, static copies, 5,000 questions, all-game compatibility, answer remapping across five shuffled decks, immutable sources, and complete Category Clash boards.');
+assert.deepEqual(totals,{'Social Studies':75,Science:100,Math:75,'English Language Arts':25});
+console.log('PASS: 275 source hashes, static copies, 5,500 questions, all-game compatibility, answer remapping across five shuffled decks, immutable sources, and complete Category Clash boards.');

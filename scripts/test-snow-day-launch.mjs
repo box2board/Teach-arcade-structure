@@ -20,7 +20,7 @@ async function setup(preset,fail=false){
  await settle();return {get,loaded,window,history,settle};
 }
 const preset=await setup('?set=constitution-basics');
-assert.equal(preset.get('topic-choice').value,'constitution-basics');assert.equal(preset.window.SNOW_QUESTION_SET.questions.length,20);assert.equal(preset.get('start').disabled,false);assert.equal(preset.get('topic-choice').children.length,253);
+assert.equal(preset.get('topic-choice').value,'constitution-basics');assert.equal(preset.window.SNOW_QUESTION_SET.questions.length,20);assert.equal(preset.get('start').disabled,false);assert.equal(preset.get('topic-choice').children.length,278);
 preset.get('topic-choice').value='linear-equations';await preset.get('topic-choice').handlers.change();
 assert.equal(preset.loaded.at(-1),'One-Variable Linear Equations');assert.equal(preset.history.url.searchParams.get('set'),'linear-equations');
 const fallback=await setup('?set=missing-topic');assert.equal(fallback.get('topic-choice').value,'scientific-method');assert.equal(fallback.window.SNOW_QUESTION_SET.questions.length,24);

@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "ela--literature-literary-analysis--drama-and-dramatic-structure",
+  "title": "Drama and Dramatic Structure",
+  "subject": "English Language Arts",
+  "category": "Literature & Literary Analysis",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "A play’s written text is called what?",
+      "choices": [
+        "stanza",
+        "narrator",
+        "script",
+        "exposition"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Words spoken by a character are what?",
+      "choices": [
+        "dialogue",
+        "stage directions",
+        "setting",
+        "theme"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Instructions about movement, tone, or scenery are what?",
+      "choices": [
+        "dialogue",
+        "a soliloquy",
+        "a subplot",
+        "stage directions"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "A long speech delivered by one character to other characters is what?",
+      "choices": [
+        "aside",
+        "monologue",
+        "stage direction",
+        "chorus"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "A character speaks thoughts aloud while alone onstage. What is this speech?",
+      "choices": [
+        "dialogue",
+        "soliloquy",
+        "aside",
+        "exposition"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "A brief remark is spoken so the audience hears it but other characters do not. What is it?",
+      "choices": [
+        "monologue",
+        "stage direction",
+        "resolution",
+        "aside"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "The written lines are grouped by who is speaking. What is each grouping commonly called?",
+      "choices": [
+        "speech",
+        "scene",
+        "act",
+        "cue"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "A major division of a play containing one or more scenes is what?",
+      "choices": [
+        "cue",
+        "aside",
+        "act",
+        "dialogue"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "A section of a play that takes place in one location or continuous action is often a what?",
+      "choices": [
+        "scene",
+        "act",
+        "monologue",
+        "script"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "A character tells the audience, “I have hidden the letter,” while others onstage appear not to hear. What device is used?",
+      "choices": [
+        "soliloquy",
+        "stage direction",
+        "aside",
+        "chorus"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "A play begins with a family argument, builds toward a revelation, and ends with reconciliation. Which structure does this show?",
+      "choices": [
+        "a poem’s stanza pattern",
+        "dramatic conflict moving toward resolution",
+        "an informational text’s headings",
+        "a narrator’s reliability"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "A stage direction reads “[She pauses, then lowers her voice].” What does it guide?",
+      "choices": [
+        "the audience’s opinion",
+        "the play’s publication date",
+        "the character’s biography",
+        "performance choices"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "The audience knows a letter is forged, but the character trusts it. What effect can this create?",
+      "choices": [
+        "exposition",
+        "a scene change",
+        "a rhyme scheme",
+        "dramatic irony"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Two actors interrupt each other during an argument. What does the dialogue most directly reveal?",
+      "choices": [
+        "the play’s setting alone",
+        "tension between characters",
+        "a narrator’s point of view",
+        "the author’s biography"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A character speaks for several minutes while alone, revealing a private dilemma. Which form best fits?",
+      "choices": [
+        "aside",
+        "stage direction",
+        "soliloquy",
+        "dialogue between characters"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A play uses a chorus to comment on the action. What is the chorus’s function?",
+      "choices": [
+        "to provide collective reflection or commentary",
+        "to replace all stage directions",
+        "to identify the author",
+        "to end every conflict"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A scene shifts from a courtroom to a family kitchen. What stage element must change?",
+      "choices": [
+        "the author’s tone",
+        "setting or scenery",
+        "the reader’s point of view",
+        "the genre of every character"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A character’s words promise confidence, but stage directions show trembling hands. What can the audience infer?",
+      "choices": [
+        "stage directions are dialogue",
+        "the character is the narrator",
+        "the directions complicate the spoken claim",
+        "the conflict is resolved"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A student reads a play without considering stage directions. What important information might be missed?",
+      "choices": [
+        "movement, delivery, and visual cues",
+        "the spelling of character names",
+        "the number of acts",
+        "all spoken dialogue"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "An ending leaves a character’s choice unresolved as the curtain falls. What effect does this structure create?",
+      "choices": [
+        "a complete resolution",
+        "a flashback",
+        "a change in narrator",
+        "an open ending that invites uncertainty"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

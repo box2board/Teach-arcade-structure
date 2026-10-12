@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "ela--reading-informational-text--informational-text-structures",
+  "title": "Informational Text Structures",
+  "subject": "English Language Arts",
+  "category": "Reading & Informational Text",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "A text structure is the way information and ideas are what?",
+      "choices": [
+        "illustrated",
+        "spoken aloud",
+        "organized",
+        "alphabetized"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "A passage explains a problem and then presents possible solutions. Which structure is used?",
+      "choices": [
+        "problem and solution",
+        "chronological order",
+        "compare and contrast",
+        "description"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "A text explains how two renewable energy sources are alike and different. Which structure fits?",
+      "choices": [
+        "cause and effect",
+        "sequence",
+        "problem and solution",
+        "compare and contrast"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "A passage traces the steps for safely using a microscope. What structure is most likely?",
+      "choices": [
+        "compare and contrast",
+        "sequence or process",
+        "cause and effect",
+        "problem and solution"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "An article explains that heavy rain caused a stream to overflow. Which structure is shown?",
+      "choices": [
+        "description",
+        "cause and effect",
+        "chronological order only",
+        "compare and contrast"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "A paragraph lists the parts and features of a coral reef. Which structure is most likely?",
+      "choices": [
+        "problem and solution",
+        "cause and effect",
+        "sequence",
+        "description"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Words such as “first,” “next,” and “finally” often signal what?",
+      "choices": [
+        "sequence",
+        "compare and contrast",
+        "cause and effect",
+        "definition"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Words such as “because,” “therefore,” and “as a result” often signal what?",
+      "choices": [
+        "description",
+        "compare and contrast",
+        "cause and effect",
+        "sequence"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "A passage uses “both,” “however,” and “unlike” to discuss two animals. Which structure is likely?",
+      "choices": [
+        "compare and contrast",
+        "sequence",
+        "problem and solution",
+        "cause and effect"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "A heading reads “Challenges of Urban Gardening” followed by “Ways to Improve Soil.” What organization is suggested?",
+      "choices": [
+        "chronology",
+        "compare and contrast",
+        "problem and solution",
+        "cause and effect"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "A biography describes events from childhood through adulthood. Which structure is primarily used?",
+      "choices": [
+        "compare and contrast",
+        "chronological order",
+        "description",
+        "problem and solution"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "A passage describes a drought, then lists its effects on farms and reservoirs. What structure is emphasized?",
+      "choices": [
+        "compare and contrast",
+        "sequence",
+        "definition",
+        "cause and effect"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "A chapter explains “ecosystem,” then gives its components and examples. Which structure is likely?",
+      "choices": [
+        "problem and solution",
+        "chronology",
+        "cause and effect",
+        "definition and description"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "An article alternates between the benefits and drawbacks of two transportation options. What structure supports that purpose?",
+      "choices": [
+        "sequence",
+        "compare and contrast",
+        "cause and effect",
+        "problem and solution"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A writer describes a community’s recycling problem and evaluates collection programs. How is the information organized?",
+      "choices": [
+        "chronological order",
+        "description",
+        "problem and solution",
+        "compare and contrast"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A student sees the words “after” and “later” and assumes a cause-and-effect structure. What should the student check?",
+      "choices": [
+        "whether the text explains causation or only time order",
+        "whether the passage has a title",
+        "whether the writer uses first person",
+        "whether the topic is familiar"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A passage has a list of steps but also explains what happens if one is skipped. What can a reader conclude?",
+      "choices": [
+        "it cannot have a structure",
+        "sequence may be combined with cause and effect",
+        "it is necessarily compare and contrast",
+        "it is only description"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "An article first describes two regions separately, then compares their climates. Which statement is precise?",
+      "choices": [
+        "the text is only chronological",
+        "the article has no organization",
+        "the text combines description and comparison",
+        "the comparison is a solution"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A student summarizes a process text by listing background facts but omitting the steps. What did the summary miss?",
+      "choices": [
+        "the sequence central to the author’s explanation",
+        "a character’s point of view",
+        "the poem’s rhyme",
+        "the text’s setting"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A passage states that a new schedule reduced wait times, then explains how. Which organization is most apparent?",
+      "choices": [
+        "compare and contrast",
+        "description",
+        "sequence only",
+        "cause and effect"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "ela--writing-composition--writing-process-and-revision",
+  "title": "Writing Process and Revision",
+  "subject": "English Language Arts",
+  "category": "Writing & Composition",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which stage often comes before drafting?",
+      "choices": [
+        "proofreading every comma",
+        "publishing the final copy",
+        "planning ideas and purpose",
+        "formatting the title page"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "A draft is the writer’s what?",
+      "choices": [
+        "early version of a piece",
+        "final source list",
+        "peer reviewer",
+        "punctuation rule"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "When revising an essay, which changes should a writer consider first?",
+      "choices": [
+        "correcting every spelling error only",
+        "choosing a font",
+        "counting pages",
+        "improving ideas, organization, and clarity"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which task belongs to editing after the ideas and organization are settled?",
+      "choices": [
+        "inventing a new topic",
+        "correcting grammar, usage, and mechanics",
+        "selecting evidence for a claim",
+        "changing the audience"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Proofreading is a final check for what?",
+      "choices": [
+        "the first idea",
+        "remaining surface errors",
+        "a new research question",
+        "the text’s genre only"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "A writer lists possible topics before choosing one. What process stage is this?",
+      "choices": [
+        "publishing",
+        "proofreading",
+        "final editing",
+        "prewriting"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "A writer moves a paragraph so reasons appear in a more logical order. What kind of work is this?",
+      "choices": [
+        "revision",
+        "proofreading",
+        "citation",
+        "publishing"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "A peer says the essay’s claim is unclear and asks for a more specific one. What feedback addresses?",
+      "choices": [
+        "font choice",
+        "spelling only",
+        "focus and meaning",
+        "page numbering"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "A student finds a repeated word and replaces one instance with a precise synonym. What revision goal is served?",
+      "choices": [
+        "improving word choice",
+        "changing the audience",
+        "adding a source",
+        "correcting a comma splice"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "A writer reads a paragraph aloud and notices a sentence is hard to follow. What is a useful next step?",
+      "choices": [
+        "publish without changes",
+        "add a new unrelated paragraph",
+        "revise the sentence for clarity and flow",
+        "remove the main claim"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Which revision best improves a weak introduction that lists facts but gives no focus?",
+      "choices": [
+        "add more unrelated statistics",
+        "add a clear context and controlling idea",
+        "repeat the title three times",
+        "remove the topic"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "A draft includes evidence but does not explain how it supports the claim. What should revision add?",
+      "choices": [
+        "more decorative language",
+        "a different font",
+        "a longer conclusion only",
+        "reasoning that connects evidence and claim"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "A writer’s conclusion introduces a brand-new argument. What revision is most appropriate?",
+      "choices": [
+        "add another unrelated claim",
+        "remove all supporting details",
+        "change the essay to a poem",
+        "connect the ending to the established claim and implications"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "A writer asks a peer to check whether the steps in an explanation are understandable. What kind of review is this?",
+      "choices": [
+        "proofreading alone",
+        "feedback on organization and clarity",
+        "citation formatting",
+        "publication"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A student corrects “recieve” to “receive” after revising the essay’s organization. Which stage is this?",
+      "choices": [
+        "prewriting",
+        "brainstorming",
+        "editing or proofreading",
+        "research"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Why should writers consider audience during revision?",
+      "choices": [
+        "choices in detail and tone should fit readers’ needs",
+        "every audience requires the same vocabulary",
+        "audience determines the facts",
+        "audience replaces the purpose"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A student receives feedback that a paragraph repeats the same reason twice. What revision is strongest?",
+      "choices": [
+        "add the repeated reason again",
+        "combine or remove repetition and develop a distinct point",
+        "move the paragraph to the title",
+        "change every verb tense"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A writer revises a claim after finding stronger evidence that narrows its scope. What does this demonstrate?",
+      "choices": [
+        "revision only fixes spelling",
+        "evidence should never affect a claim",
+        "revision can change ideas as well as wording",
+        "the draft should stay unchanged"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A writer finishes a draft, checks the assignment purpose, reorganizes two sections, then corrects punctuation. Which sequence is most effective?",
+      "choices": [
+        "revise larger ideas before final editing",
+        "proofread before deciding the topic",
+        "publish before revising",
+        "edit punctuation instead of checking meaning"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A peer says “make it better” without identifying a concern. What feedback would be more useful?",
+      "choices": [
+        "praise the writer without details",
+        "rewrite the whole piece without discussion",
+        "correct only the title’s font",
+        "point to a specific unclear paragraph and explain why"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

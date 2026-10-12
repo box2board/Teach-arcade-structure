@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "ela--literature-literary-analysis--theme-and-central-meaning",
+  "title": "Theme and Central Meaning",
+  "subject": "English Language Arts",
+  "category": "Literature & Literary Analysis",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "In literary analysis, what is a theme?",
+      "choices": [
+        "the subject named in one word",
+        "the sequence of events",
+        "a message or insight about life developed by a text",
+        "the location of the story"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "“Friendship” names a broad subject. What would turn it into a theme statement?",
+      "choices": [
+        "Trust grows when people support one another through difficulty.",
+        "Friendship",
+        "Two friends walk home.",
+        "The story has two characters."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "A theme should be supported by what?",
+      "choices": [
+        "a reader’s unrelated opinion",
+        "the author’s birthday",
+        "the number of pages",
+        "patterns and events in the text"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "A character refuses help, fails, then succeeds after accepting advice. Which theme is best supported?",
+      "choices": [
+        "every mistake is permanent",
+        "cooperation can help people meet difficult goals",
+        "advice always comes from strangers",
+        "success depends on luck alone"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "A story shows a student returning a lost wallet even though no one saw the choice. Which idea is best supported?",
+      "choices": [
+        "wealth guarantees happiness",
+        "integrity is shown through choices made without an audience",
+        "rules are impossible to follow",
+        "privacy causes conflict"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Two characters disagree but listen and revise their views. What theme could this develop?",
+      "choices": [
+        "disagreement always ends relationships",
+        "confidence prevents learning",
+        "silence is the only path to peace",
+        "respectful dialogue can change understanding"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "A traveler reaches a goal but realizes the journey changed what matters to them. What theme might fit?",
+      "choices": [
+        "experiences can reshape a person’s priorities",
+        "travel always solves problems",
+        "goals are never worthwhile",
+        "change only affects places"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "A story’s topic is “ambition.” Which is a theme rather than a topic?",
+      "choices": [
+        "Ambition",
+        "A student enters a contest.",
+        "Ambition without regard for others can cause harm.",
+        "The story takes place at school."
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "A student reads a short story about one contest winner and writes, “Everyone should always follow every dream.” What is the main weakness?",
+      "choices": [
+        "It generalizes beyond what the story establishes.",
+        "It names only a broad subject, not an insight.",
+        "It summarizes a single plot event.",
+        "It describes setting instead of meaning."
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "A character gains recognition but loses close friendships through dishonesty. Which theme is most supported?",
+      "choices": [
+        "fame always creates friendship",
+        "honesty prevents all conflict",
+        "achievement may carry a cost when pursued without integrity",
+        "recognition is the same as happiness"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "A story ends with a community restoring a damaged park together. Which theme best fits the repeated actions?",
+      "choices": [
+        "nature cannot recover",
+        "shared responsibility can improve a community",
+        "leaders should work alone",
+        "public spaces have no value"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "A character learns that asking questions is a strength, not a weakness. Which theme statement expresses the insight?",
+      "choices": [
+        "Questions",
+        "A classroom discussion",
+        "A student reads a book",
+        "Curiosity can support learning and confidence."
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "To identify a theme, readers should connect what elements?",
+      "choices": [
+        "page numbers, chapter titles, and font",
+        "author biography and publication date only",
+        "setting names and dialogue tags only",
+        "character choices, consequences, and recurring ideas"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "A story repeats images of locked doors, while its character slowly learns to speak honestly. Which theme is best supported?",
+      "choices": [
+        "doors are difficult to build",
+        "honesty can open paths to connection",
+        "secrets always protect people",
+        "change is impossible"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A narrator says “be brave,” but the plot rewards a character who carefully asks for help. What should a theme claim rely on most?",
+      "choices": [
+        "a single instruction in isolation",
+        "the reader’s favorite character",
+        "the text’s full pattern of choices and consequences",
+        "the story’s genre label"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A character gives up a prize to keep a promise. What theme does that decision most directly support?",
+      "choices": [
+        "loyalty may require personal sacrifice",
+        "rewards are always unfair",
+        "promises have no consequences",
+        "competition is harmful in every case"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A story presents success after several failures, with reflection after each attempt. Which theme is best supported?",
+      "choices": [
+        "failure is always caused by others",
+        "learning from setbacks can lead to progress",
+        "reflection prevents success",
+        "goals should never change"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A text includes both a generous mentor and a selfish leader. How can their contrasting outcomes develop theme?",
+      "choices": [
+        "contrasting them reveals the exact setting",
+        "their roles determine the narrator",
+        "comparing their choices shows how values affect relationships",
+        "differences remove the need for evidence"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A student claims the theme is “technology.” What revision makes it an arguable insight?",
+      "choices": [
+        "Technology can connect people while also changing how they communicate.",
+        "Technology",
+        "A phone rings.",
+        "The story includes a device."
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A story’s ending leaves a conflict partly unresolved but shows the character accepting responsibility. Which theme is most defensible?",
+      "choices": [
+        "every conflict must have a perfect ending",
+        "responsibility guarantees success",
+        "unresolved plots have no meaning",
+        "taking responsibility can matter even when problems remain"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

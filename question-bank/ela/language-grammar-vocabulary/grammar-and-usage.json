@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "ela--language-grammar-vocabulary--grammar-and-usage",
+  "title": "Grammar and Usage",
+  "subject": "English Language Arts",
+  "category": "Language, Grammar & Vocabulary",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "In standard edited English, a singular present-tense subject usually takes which verb form?",
+      "choices": [
+        "a plural verb form",
+        "an infinitive only",
+        "a singular verb form",
+        "no verb"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which sentence has subject-verb agreement?",
+      "choices": [
+        "The list of supplies is on the desk.",
+        "The list of supplies are on the desk.",
+        "The list of supplies be on the desk.",
+        "The list of supplies were on the desk today."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which sentence uses the correct pronoun case?",
+      "choices": [
+        "Maya and me finished the report.",
+        "Me and Maya finished the report.",
+        "Maya and myself finished the report.",
+        "Maya and I finished the report."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which sentence uses a possessive pronoun correctly?",
+      "choices": [
+        "The blue folder is their’s.",
+        "The blue folder is theirs.",
+        "The blue folder is them.",
+        "The blue folder is they."
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which verb tense is consistent?",
+      "choices": [
+        "Yesterday we walk to the store and bought fruit.",
+        "Yesterday we walked to the store and bought fruit.",
+        "Yesterday we walked to the store and buy fruit.",
+        "Yesterday we walking to the store and bought fruit."
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which sentence uses the comparative form correctly?",
+      "choices": [
+        "This route is more shorter than the old one.",
+        "This route is shortest than the old one.",
+        "This route is short than the old one.",
+        "This route is shorter than the old one."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which sentence uses an adverb to modify a verb?",
+      "choices": [
+        "The runner moved quickly.",
+        "The quick runner won.",
+        "The runner’s quickness surprised us.",
+        "The runner was quick."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Which sentence uses an adjective to describe a noun?",
+      "choices": [
+        "The comet moved brightly.",
+        "The comet shines brightly.",
+        "We saw a bright comet.",
+        "Brightly, the comet appeared."
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Which sentence has a clear pronoun reference?",
+      "choices": [
+        "When Jo met Kim, Jo shared the notes.",
+        "When Jo met Kim, she shared the notes.",
+        "They told them that they were late.",
+        "It said that it was ready."
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Which sentence uses the correct verb form?",
+      "choices": [
+        "The class have finished its project.",
+        "The class are finished its project.",
+        "The class has finished its project.",
+        "The class finishing its project."
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "A writer changes from past tense to present tense without a reason. What should an editor check?",
+      "choices": [
+        "spelling of proper nouns only",
+        "tense consistency",
+        "point of view",
+        "paragraph length"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Which revision removes a misplaced modifier? “Walking to school, the rain soaked Amir.”",
+      "choices": [
+        "Walking to school, the rain soaked Amir.",
+        "The rain, walking to school, soaked Amir.",
+        "Amir soaked walking to school the rain.",
+        "Walking to school, Amir was soaked by the rain."
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Which sentence uses parallel structure?",
+      "choices": [
+        "She likes hiking, to bike, and swimming.",
+        "She likes to hike, biking, and to swim.",
+        "She likes hikes, biking, and to swim.",
+        "She likes hiking, biking, and swimming."
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Which sentence correctly uses “fewer” in standard edited English?",
+      "choices": [
+        "Less students missed the bus this week.",
+        "Fewer students missed the bus this week.",
+        "Fewest students missed less buses.",
+        "Fewer water remained in the bottle."
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Which sentence uses “who” as the subject of a clause?",
+      "choices": [
+        "The student whom called left a message.",
+        "The student whose called left a message.",
+        "The student who called left a message.",
+        "The student which called left a message."
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A student writes, “Each of the players have a locker.” Which verb agrees with the subject in standard edited English?",
+      "choices": [
+        "has",
+        "have",
+        "are",
+        "were"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Which revision makes the comparison logical? “Our team scored more points than the other team.”",
+      "choices": [
+        "Our team scored more points than the other team’s.",
+        "Our team scored more points than the other team scored.",
+        "Our team scored more points than the other team is.",
+        "Our team scored more points than them."
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Which sentence avoids an unclear pronoun?",
+      "choices": [
+        "She placed it beside it.",
+        "They put it near that.",
+        "Lena placed the map beside the compass.",
+        "It was beside the one."
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A sentence begins, “The principal, along with the counselors, ___ attending.” Which verb fits standard edited English?",
+      "choices": [
+        "is",
+        "are",
+        "were",
+        "have"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which revision best corrects “The reason is because the bus was late”?",
+      "choices": [
+        "The reason is because was late bus.",
+        "The reason because the bus was late is.",
+        "The reason are that the bus was late.",
+        "The reason is that the bus was late."
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

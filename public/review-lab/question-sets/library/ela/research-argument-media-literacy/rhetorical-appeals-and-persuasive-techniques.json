@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "ela--research-argument-media-literacy--rhetorical-appeals-and-persuasive-techniques",
+  "title": "Rhetorical Appeals and Persuasive Techniques",
+  "subject": "English Language Arts",
+  "category": "Research, Argument & Media Literacy",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "An appeal to ethos focuses on a speaker’s what?",
+      "choices": [
+        "emotional response",
+        "logical structure",
+        "credibility or character",
+        "word origins"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "An appeal to pathos seeks to influence the audience’s what?",
+      "choices": [
+        "emotions",
+        "source credibility",
+        "sentence length",
+        "factual accuracy alone"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "An appeal to logos relies primarily on what?",
+      "choices": [
+        "the speaker’s clothing",
+        "emotional imagery only",
+        "repetition without reasons",
+        "reasoning and evidence"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "A doctor explains relevant training before discussing a health issue. Which appeal is emphasized?",
+      "choices": [
+        "pathos",
+        "ethos",
+        "logos",
+        "irony"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "A speaker describes families affected by a flood to encourage donations. Which appeal is prominent?",
+      "choices": [
+        "ethos",
+        "pathos",
+        "logos",
+        "definition"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "A writer uses a comparison of costs and savings to support a proposal. Which appeal is used?",
+      "choices": [
+        "pathos",
+        "ethos",
+        "allusion",
+        "logos"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "A campaign says, “Nine out of ten riders use helmets,” and provides its survey method. Which appeal is strongest?",
+      "choices": [
+        "logos",
+        "pathos",
+        "ethos",
+        "hyperbole"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "A local coach describes personal experience with youth sports before recommending safer equipment. What may strengthen the appeal?",
+      "choices": [
+        "a dramatic soundtrack",
+        "a long unrelated biography",
+        "relevant experience that supports credibility",
+        "an insult toward critics"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "A charity ad shows a lost pet and asks viewers to help shelters. Which response is it designed to evoke?",
+      "choices": [
+        "empathy or concern",
+        "trust in a statistician",
+        "agreement through a syllogism",
+        "awareness of a definition"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "A speaker cites a well-designed study and explains its limits. Which combination is most evident?",
+      "choices": [
+        "pathos without evidence",
+        "irony and symbolism",
+        "logos with careful credibility",
+        "repetition alone"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "A writer says, “Everyone is buying this phone, so you should too.” Which technique is used?",
+      "choices": [
+        "expert testimony",
+        "bandwagon appeal",
+        "cause-and-effect proof",
+        "counterclaim"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "A product ad says it is “the choice of champions” but gives no supporting data. What should a critical reader ask?",
+      "choices": [
+        "how many colors the ad uses",
+        "whether champions exist",
+        "whether the slogan rhymes",
+        "what evidence supports the implied endorsement"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "A speaker repeats “We can make the river clean” at the start of several sentences. What technique is this?",
+      "choices": [
+        "counterclaim",
+        "statistical sampling",
+        "definition",
+        "repetition for emphasis"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "A writer calls a small fee “a mountain of debt.” What technique may be at work?",
+      "choices": [
+        "precise measurement",
+        "hyperbole",
+        "neutral definition",
+        "expert testimony"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A presenter names a real expert whose research directly concerns the topic. What can this support?",
+      "choices": [
+        "pathos only",
+        "a straw man",
+        "ethos",
+        "bandwagon"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A speech uses vivid descriptions of a damaged forest alongside data on water quality. Which pairing is used?",
+      "choices": [
+        "pathos and logos",
+        "ethos and irony",
+        "bandwagon and allusion",
+        "hyperbole and definition"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A writer attacks an opponent’s character instead of addressing the opponent’s evidence. What fallacy is this?",
+      "choices": [
+        "hasty generalization",
+        "ad hominem",
+        "false dilemma",
+        "appeal to authority"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A speaker presents only two choices when several reasonable options exist. What reasoning flaw may this be?",
+      "choices": [
+        "bandwagon",
+        "expert testimony",
+        "false dilemma",
+        "rhetorical question"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A persuasive question is asked to make a point rather than receive an answer. What is it?",
+      "choices": [
+        "rhetorical question",
+        "counterclaim",
+        "citation",
+        "analogy"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A reader feels moved by a story but sees no evidence for the ad’s claim. What is the most balanced response?",
+      "choices": [
+        "accept the claim because it is moving",
+        "dismiss all emotional language",
+        "treat emotion as proof",
+        "recognize the emotional appeal and still check the evidence"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

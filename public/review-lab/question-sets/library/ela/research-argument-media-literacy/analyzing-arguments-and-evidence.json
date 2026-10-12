@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "ela--research-argument-media-literacy--analyzing-arguments-and-evidence",
+  "title": "Analyzing Arguments and Evidence",
+  "subject": "English Language Arts",
+  "category": "Research, Argument & Media Literacy",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "An argument is a claim supported by what?",
+      "choices": [
+        "a title and illustration",
+        "a list of unrelated facts",
+        "reasons and evidence",
+        "a personal preference alone"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "A claim is best described as what?",
+      "choices": [
+        "a position that can be supported with reasons",
+        "an example that proves every point",
+        "a source citation",
+        "a question with no answer"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Evidence is relevant when it does what?",
+      "choices": [
+        "comes from the longest source",
+        "repeats the claim word for word",
+        "uses technical language",
+        "directly supports the claim or reason"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "A school newsletter claims later start times help students and cites a local attendance study. What is the study’s role?",
+      "choices": [
+        "the conclusion",
+        "evidence supporting the claim",
+        "a counterclaim",
+        "the topic sentence only"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "A writer says, “The park should add lights because visitors leave early when it gets dark.” Which part is the claim?",
+      "choices": [
+        "visitors leave early",
+        "The park should add lights.",
+        "when it gets dark",
+        "because"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "A counterclaim is what?",
+      "choices": [
+        "a second example supporting the same reason",
+        "the author’s final sentence",
+        "a fact that cannot be checked",
+        "a different position that an argument addresses"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "A rebuttal responds to a counterclaim by doing what?",
+      "choices": [
+        "explaining why it is limited or less convincing",
+        "repeating it without comment",
+        "changing the topic",
+        "listing unrelated facts"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Which is the strongest evidence for a claim about local bus delays?",
+      "choices": [
+        "one person’s memory of a ride years ago",
+        "a slogan about transportation",
+        "a recent log of arrival times from the bus system",
+        "a photograph of a bus"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "A writer claims daily reading improves vocabulary, then cites a study tracking students over a semester. What makes the evidence useful?",
+      "choices": [
+        "it directly relates to the claim and gives observed information",
+        "it is emotionally powerful",
+        "it is the writer’s favorite study",
+        "it proves every student learns identically"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "A survey of ten friends is used to claim that all teenagers prefer online books. What is the main weakness?",
+      "choices": [
+        "the claim is written in a sentence",
+        "the survey includes teenagers",
+        "the sample may be too small and unrepresentative",
+        "the topic concerns books"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "A source reports that students who join a club also earn higher grades. What should an argument avoid assuming without more evidence?",
+      "choices": [
+        "the two measures are related in the sample",
+        "club participation alone caused the higher grades",
+        "the report includes students",
+        "grades can be measured"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "A claim is supported only by examples from one unusual case. What should a reader question?",
+      "choices": [
+        "whether the writer used a title",
+        "whether examples are always allowed",
+        "whether the claim is a sentence",
+        "whether the evidence is sufficient and representative"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Which statement is a counterclaim to “The town should build a new bike path”?",
+      "choices": [
+        "A new path could connect two neighborhoods.",
+        "More residents ride bikes in summer.",
+        "The path would be near the library.",
+        "Existing streets already have safe bike lanes on most routes."
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "A writer responds to the counterclaim by citing crash reports from streets without bike lanes. What is this response?",
+      "choices": [
+        "an unrelated anecdote",
+        "a rebuttal supported with evidence",
+        "a topic sentence only",
+        "an appeal to popularity"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A report uses a graph showing fewer injuries after a safety rule began. What question helps assess the argument?",
+      "choices": [
+        "Is the graph printed in color?",
+        "Does the report have a long title?",
+        "Could other changes also explain the decline?",
+        "Is the rule easy to spell?"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "An argument includes accurate facts that do not address its claim. How should the evidence be judged?",
+      "choices": [
+        "factual but irrelevant",
+        "relevant and sufficient",
+        "emotional and false",
+        "conclusive by itself"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A writer presents only examples that support a position and omits known contrary findings. What concern arises?",
+      "choices": [
+        "balanced reasoning",
+        "selective use of evidence",
+        "precise citation",
+        "clear organization"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A claim says “every student benefits,” but evidence comes from one classroom. What adjustment would make the claim more responsible?",
+      "choices": [
+        "keep the claim and remove the evidence",
+        "add an unrelated quotation",
+        "narrow the claim or provide broader evidence",
+        "replace evidence with a slogan"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Which argument is best supported?",
+      "choices": [
+        "“The library should extend hours; visitor counts show demand during the final hour.”",
+        "“The library should extend hours because libraries are nice.”",
+        "“Everyone agrees, so it must be right.”",
+        "“More books exist than yesterday, therefore hours should change.”"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A source finds a correlation between screen time and sleep, but cannot show which caused the other. What is a careful conclusion?",
+      "choices": [
+        "screen time always causes poor sleep",
+        "sleep causes all screen use",
+        "the study is useless",
+        "the variables are associated, but causation is not established"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

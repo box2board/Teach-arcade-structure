@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "ela--research-argument-media-literacy--research-and-source-evaluation",
+  "title": "Research and Source Evaluation",
+  "subject": "English Language Arts",
+  "category": "Research, Argument & Media Literacy",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "A credible source is one whose information is what?",
+      "choices": [
+        "always popular",
+        "always recent regardless of topic",
+        "trustworthy for the question being researched",
+        "written in complicated language"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What does an author’s expertise help readers assess?",
+      "choices": [
+        "whether the author is qualified to address the topic",
+        "whether every claim is true",
+        "whether the page has pictures",
+        "whether the source is short"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Why should a researcher check a source’s publication date?",
+      "choices": [
+        "old sources are never useful",
+        "new sources are automatically accurate",
+        "dates identify the author’s opinion",
+        "information may change over time"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "A source cites studies and links to the original reports. What does this help a reader do?",
+      "choices": [
+        "assume every claim is unbiased",
+        "trace and verify its evidence",
+        "avoid reading the source",
+        "identify its intended font"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "A website selling a product makes claims about that product. What should readers consider?",
+      "choices": [
+        "the website’s color only",
+        "the site’s purpose and possible financial interest",
+        "the product’s popularity alone",
+        "whether the title is short"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Two sources give different dates for an event. What should a researcher do?",
+      "choices": [
+        "choose the date that appears first",
+        "average the two dates",
+        "ignore both sources",
+        "compare reliable sources and investigate the discrepancy"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "A source is a primary account created by someone directly involved at the time. What can it provide?",
+      "choices": [
+        "firsthand evidence shaped by the creator’s perspective",
+        "a completely neutral account",
+        "a full explanation of every cause",
+        "proof that later analysis is wrong"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "A secondary source analyzes or interprets what?",
+      "choices": [
+        "only the author’s personal memories",
+        "no source material",
+        "information or events using other evidence",
+        "fictional events exclusively"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "A researcher finds a claim repeated on several sites, all quoting the same original article. What should they recognize?",
+      "choices": [
+        "repetition does not equal independent confirmation",
+        "each copy is a separate source",
+        "the claim is automatically false",
+        "the original source is irrelevant"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "A page has no named author, date, or references. What is a prudent response?",
+      "choices": [
+        "treat it as authoritative because it is online",
+        "share it as a fact",
+        "seek better-supported sources before relying on it",
+        "assume anonymity proves bias"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "A government report provides current local water measurements and explains its methods. Which strength is most relevant?",
+      "choices": [
+        "the source is necessarily free of limits",
+        "transparent data and a clear method",
+        "every measurement applies everywhere",
+        "the report’s length"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "A researcher studies a historical event using a participant’s diary and a modern scholarly article. How can these sources differ?",
+      "choices": [
+        "both are necessarily primary",
+        "the diary is always accurate",
+        "the article is not a source",
+        "the diary is firsthand while the article interprets evidence later"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "A source presents one side of a contested issue and omits contrary evidence. What should readers assess?",
+      "choices": [
+        "only the number of paragraphs",
+        "the author’s writing speed",
+        "the paper size",
+        "its selection of evidence and perspective"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "A researcher uses an online encyclopedia to learn key terms, then follows its citations to original studies. What is a sound practice?",
+      "choices": [
+        "cite it without checking anything",
+        "use it as a starting point and verify important claims in stronger sources",
+        "assume citations are decorative",
+        "avoid all reference works"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A source’s author works for an organization affected by the topic. What should a reader examine?",
+      "choices": [
+        "the author’s personal life unrelated to the topic",
+        "the page’s background color",
+        "the author’s possible perspective and the evidence provided",
+        "whether the source has a table"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A researcher needs current population figures. Which source is most appropriate?",
+      "choices": [
+        "a recent official statistical report with methods explained",
+        "an undated personal blog",
+        "an old novel",
+        "a social media comment"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A page includes a chart but does not identify where the numbers came from. What is missing?",
+      "choices": [
+        "a conclusion",
+        "traceable sourcing for the data",
+        "a title",
+        "a visual element"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A source is accurate but covers a broad topic only briefly. What does that suggest?",
+      "choices": [
+        "it is unusable for any purpose",
+        "it is automatically biased",
+        "it may provide background but not enough support for a narrow claim",
+        "it proves every detail"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Which research question is most manageable and researchable?",
+      "choices": [
+        "How did the city’s 2024 bus-route change affect weekday wait times?",
+        "Is transportation good?",
+        "Why is everything changing?",
+        "Which city is best?"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A researcher finds an impressive statistic without context or a link to its origin. What is the best next move?",
+      "choices": [
+        "use it because it is specific",
+        "round it to a familiar number",
+        "remove its source information",
+        "locate the original data and check its definition and method"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "ela--language-grammar-vocabulary--roots-prefixes-and-suffixes",
+  "title": "Roots, Prefixes, and Suffixes",
+  "subject": "English Language Arts",
+  "category": "Language, Grammar & Vocabulary",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Where does a prefix attach in relation to its root?",
+      "choices": [
+        "the middle only",
+        "the end",
+        "the beginning",
+        "the space between words"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "In the word “careful,” where is the suffix “-ful” attached?",
+      "choices": [
+        "the end",
+        "the beginning",
+        "the punctuation",
+        "the stressed syllable only"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "A package is sent to a new place. Which meaning of “transport” fits the root “port”?",
+      "choices": [
+        "carry within",
+        "carry again",
+        "carry against",
+        "carry from one place to another"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "The prefix “re-” often means what?",
+      "choices": [
+        "not",
+        "again",
+        "before",
+        "under"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "The prefix “un-” often changes a word to mean what?",
+      "choices": [
+        "before",
+        "not or the opposite",
+        "across",
+        "many"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which meaning does “-less” add in “careless”?",
+      "choices": [
+        "full of",
+        "able to",
+        "one who",
+        "without"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "In “hopeful,” what meaning does the suffix “-ful” contribute?",
+      "choices": [
+        "full of",
+        "without",
+        "before",
+        "against"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "The root “bio” means life. What is a “biography”?",
+      "choices": [
+        "a study of rocks",
+        "a record of sound",
+        "a written account of a person’s life",
+        "a map of a region"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What does “inspect” suggest someone does to an object?",
+      "choices": [
+        "look at closely",
+        "speak against",
+        "carry away",
+        "write again"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "A forecast predicts rain before it arrives. What does “predict” mean?",
+      "choices": [
+        "say the same thing again",
+        "say something without words",
+        "say beforehand what may happen",
+        "speak to a crowd"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What does the prefix “pre-” mean in “preview”?",
+      "choices": [
+        "after",
+        "before",
+        "across",
+        "not"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What does “mis-” often signal in “misread”?",
+      "choices": [
+        "again",
+        "under",
+        "together",
+        "wrongly or incorrectly"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "The suffix “-er” in “teacher” identifies what?",
+      "choices": [
+        "the act of teaching",
+        "the quality of being teachable",
+        "a place for teaching",
+        "a person who teaches"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "The suffix “-ment” often forms what kind of word?",
+      "choices": [
+        "a prefix meaning not",
+        "a noun naming a result or process",
+        "a verb tense",
+        "a plural marker only"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "If “visible” means able to be seen, what does “invisible” mean?",
+      "choices": [
+        "able to be heard",
+        "seen again",
+        "not able to be seen",
+        "seen beforehand"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Knowing “cycle” means a recurring sequence, what does “recycle” most likely mean?",
+      "choices": [
+        "process or use again",
+        "stop a sequence",
+        "move across a sequence",
+        "study a sequence"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A student knows “audible” means able to be heard. What does “inaudible” mean?",
+      "choices": [
+        "heard again",
+        "not able to be heard",
+        "heard before",
+        "one who hears"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "The root “geo” means earth. Which word most likely relates to describing Earth’s surface?",
+      "choices": [
+        "biography",
+        "autograph",
+        "geography",
+        "telescope"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "How can recognizing a familiar root help with an unfamiliar word?",
+      "choices": [
+        "it can suggest a meaning to check against context",
+        "it always reveals the entire definition",
+        "it removes the need to read the sentence",
+        "it guarantees the word’s pronunciation"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A student sees “submarine” and knows “sub-” can mean under. What is a reasonable inference?",
+      "choices": [
+        "the word means above water",
+        "the word is a person who studies stars",
+        "the word means to carry again",
+        "the word relates to something beneath the sea"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

@@ -12,7 +12,7 @@ for(const set of QUESTION_SETS){
   const w=new CrossingWorld(bank);assert.equal(w.deck.length,game.questionCount);assert.equal(new Set(w.deck.map(q=>q.id)).size,game.questionCount);
  }
 }
-assert.equal(GAMES.length,5);assert.equal(QUESTION_SETS.length,253);
+assert.equal(GAMES.length,5);assert.equal(QUESTION_SETS.length,278);
 assert.throws(()=>gameUrl('acorn-dash','unapproved-topic'));assert.throws(()=>gameUrl('missing-game'));assert.equal(gameUrl('category-clash'),'/review-lab/category-clash/');assert.equal(gameUrl('category-clash','scientific-method'),'/review-lab/category-clash/?set=scientific-method');
 await assert.rejects(loadQuestionSet('unapproved-topic'));
 const index=await buildContentIndex();assert.equal(index.filter(item=>item.canonicalUrl==='/review-lab/acorn-dash/').length,1);

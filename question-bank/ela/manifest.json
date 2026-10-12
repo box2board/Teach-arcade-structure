@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 1,
+  "subject": "English Language Arts",
+  "status": "draft-for-review",
+  "gradeBand": "7–12",
+  "setCount": 25,
+  "questionCount": 500,
+  "sets": [
+    {
+      "id": "ela--literature-literary-analysis--plot-and-narrative-structure",
+      "title": "Plot and Narrative Structure",
+      "category": "Literature & Literary Analysis",
+      "questionCount": 20,
+      "file": "literature-literary-analysis/plot-and-narrative-structure.json"
+    },
+    {
+      "id": "ela--literature-literary-analysis--characterization-and-character-development",
+      "title": "Characterization and Character Development",
+      "category": "Literature & Literary Analysis",
+      "questionCount": 20,
+      "file": "literature-literary-analysis/characterization-and-character-development.json"
+    },
+    {
+      "id": "ela--literature-literary-analysis--theme-and-central-meaning",
+      "title": "Theme and Central Meaning",
+      "category": "Literature & Literary Analysis",
+      "questionCount": 20,
+      "file": "literature-literary-analysis/theme-and-central-meaning.json"
+    },
+    {
+      "id": "ela--literature-literary-analysis--point-of-view-and-narration",
+      "title": "Point of View and Narration",
+      "category": "Literature & Literary Analysis",
+      "questionCount": 20,
+      "file": "literature-literary-analysis/point-of-view-and-narration.json"
+    },
+    {
+      "id": "ela--literature-literary-analysis--literary-conflict",
+      "title": "Literary Conflict",
+      "category": "Literature & Literary Analysis",
+      "questionCount": 20,
+      "file": "literature-literary-analysis/literary-conflict.json"
+    },
+    {
+      "id": "ela--literature-literary-analysis--setting-tone-and-mood",
+      "title": "Setting, Tone, and Mood",
+      "category": "Literature & Literary Analysis",
+      "questionCount": 20,
+      "file": "literature-literary-analysis/setting-tone-and-mood.json"
+    },
+    {
+      "id": "ela--literature-literary-analysis--figurative-language",
+      "title": "Figurative Language",
+      "category": "Literature & Literary Analysis",
+      "questionCount": 20,
+      "file": "literature-literary-analysis/figurative-language.json"
+    },
+    {
+      "id": "ela--literature-literary-analysis--irony",
+      "title": "Irony",
+      "category": "Literature & Literary Analysis",
+      "questionCount": 20,
+      "file": "literature-literary-analysis/irony.json"
+    },
+    {
+      "id": "ela--literature-literary-analysis--symbolism-and-motifs",
+      "title": "Symbolism and Motifs",
+      "category": "Literature & Literary Analysis",
+      "questionCount": 20,
+      "file": "literature-literary-analysis/symbolism-and-motifs.json"
+    },
+    {
+      "id": "ela--literature-literary-analysis--poetry-analysis",
+      "title": "Poetry Analysis",
+      "category": "Literature & Literary Analysis",
+      "questionCount": 20,
+      "file": "literature-literary-analysis/poetry-analysis.json"
+    },
+    {
+      "id": "ela--literature-literary-analysis--drama-and-dramatic-structure",
+      "title": "Drama and Dramatic Structure",
+      "category": "Literature & Literary Analysis",
+      "questionCount": 20,
+      "file": "literature-literary-analysis/drama-and-dramatic-structure.json"
+    },
+    {
+      "id": "ela--literature-literary-analysis--literary-genres",
+      "title": "Literary Genres",
+      "category": "Literature & Literary Analysis",
+      "questionCount": 20,
+      "file": "literature-literary-analysis/literary-genres.json"
+    },
+    {
+      "id": "ela--reading-informational-text--main-idea-and-supporting-details",
+      "title": "Main Idea and Supporting Details",
+      "category": "Reading & Informational Text",
+      "questionCount": 20,
+      "file": "reading-informational-text/main-idea-and-supporting-details.json"
+    },
+    {
+      "id": "ela--reading-informational-text--inferences-and-textual-evidence",
+      "title": "Inferences and Textual Evidence",
+      "category": "Reading & Informational Text",
+      "questionCount": 20,
+      "file": "reading-informational-text/inferences-and-textual-evidence.json"
+    },
+    {
+      "id": "ela--reading-informational-text--informational-text-structures",
+      "title": "Informational Text Structures",
+      "category": "Reading & Informational Text",
+      "questionCount": 20,
+      "file": "reading-informational-text/informational-text-structures.json"
+    },
+    {
+      "id": "ela--research-argument-media-literacy--analyzing-arguments-and-evidence",
+      "title": "Analyzing Arguments and Evidence",
+      "category": "Research, Argument & Media Literacy",
+      "questionCount": 20,
+      "file": "research-argument-media-literacy/analyzing-arguments-and-evidence.json"
+    },
+    {
+      "id": "ela--research-argument-media-literacy--rhetorical-appeals-and-persuasive-techniques",
+      "title": "Rhetorical Appeals and Persuasive Techniques",
+      "category": "Research, Argument & Media Literacy",
+      "questionCount": 20,
+      "file": "research-argument-media-literacy/rhetorical-appeals-and-persuasive-techniques.json"
+    },
+    {
+      "id": "ela--language-grammar-vocabulary--sentence-structure",
+      "title": "Sentence Structure",
+      "category": "Language, Grammar & Vocabulary",
+      "questionCount": 20,
+      "file": "language-grammar-vocabulary/sentence-structure.json"
+    },
+    {
+      "id": "ela--language-grammar-vocabulary--grammar-and-usage",
+      "title": "Grammar and Usage",
+      "category": "Language, Grammar & Vocabulary",
+      "questionCount": 20,
+      "file": "language-grammar-vocabulary/grammar-and-usage.json"
+    },
+    {
+      "id": "ela--language-grammar-vocabulary--punctuation-and-capitalization",
+      "title": "Punctuation and Capitalization",
+      "category": "Language, Grammar & Vocabulary",
+      "questionCount": 20,
+      "file": "language-grammar-vocabulary/punctuation-and-capitalization.json"
+    },
+    {
+      "id": "ela--language-grammar-vocabulary--vocabulary-in-context",
+      "title": "Vocabulary in Context",
+      "category": "Language, Grammar & Vocabulary",
+      "questionCount": 20,
+      "file": "language-grammar-vocabulary/vocabulary-in-context.json"
+    },
+    {
+      "id": "ela--language-grammar-vocabulary--roots-prefixes-and-suffixes",
+      "title": "Roots, Prefixes, and Suffixes",
+      "category": "Language, Grammar & Vocabulary",
+      "questionCount": 20,
+      "file": "language-grammar-vocabulary/roots-prefixes-and-suffixes.json"
+    },
+    {
+      "id": "ela--writing-composition--writing-process-and-revision",
+      "title": "Writing Process and Revision",
+      "category": "Writing & Composition",
+      "questionCount": 20,
+      "file": "writing-composition/writing-process-and-revision.json"
+    },
+    {
+      "id": "ela--research-argument-media-literacy--research-and-source-evaluation",
+      "title": "Research and Source Evaluation",
+      "category": "Research, Argument & Media Literacy",
+      "questionCount": 20,
+      "file": "research-argument-media-literacy/research-and-source-evaluation.json"
+    },
+    {
+      "id": "ela--research-argument-media-literacy--quoting-paraphrasing-and-attribution",
+      "title": "Quoting, Paraphrasing, and Attribution",
+      "category": "Research, Argument & Media Literacy",
+      "questionCount": 20,
+      "file": "research-argument-media-literacy/quoting-paraphrasing-and-attribution.json"
+    }
+  ]
+}

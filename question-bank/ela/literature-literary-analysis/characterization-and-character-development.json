@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "ela--literature-literary-analysis--characterization-and-character-development",
+  "title": "Characterization and Character Development",
+  "subject": "English Language Arts",
+  "category": "Literature & Literary Analysis",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is characterization?",
+      "choices": [
+        "the order of story events",
+        "the time and place of a story",
+        "the ways a writer presents a character",
+        "the lesson a story suggests"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "A narrator states, “Mara was patient and observant.” Which method presents the trait directly?",
+      "choices": [
+        "direct characterization",
+        "indirect characterization",
+        "dramatic irony",
+        "setting"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Readers infer a character’s traits from choices, speech, thoughts, and effects on others. What method is this?",
+      "choices": [
+        "direct characterization",
+        "exposition",
+        "point of view",
+        "indirect characterization"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "A character’s goals, values, and habits remain mostly consistent throughout the story. What is a useful description?",
+      "choices": [
+        "dynamic character",
+        "static character",
+        "foil",
+        "unreliable narrator"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "A character changes a belief after facing evidence that challenges it. What kind of character is this?",
+      "choices": [
+        "static character",
+        "dynamic character",
+        "stock character",
+        "narrator"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "A character’s careful planning contrasts with a sibling’s impulsiveness, highlighting both traits. What role does the sibling serve?",
+      "choices": [
+        "antagonist",
+        "narrator",
+        "confidant",
+        "foil"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "The main character pursues the central goal and faces the story’s main conflict. What role is this?",
+      "choices": [
+        "protagonist",
+        "antagonist",
+        "foil",
+        "background character"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "A character or force blocks the protagonist’s goal. Which role does it fill?",
+      "choices": [
+        "protagonist",
+        "confidant",
+        "antagonist",
+        "narrator"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "A trusted friend listens as the protagonist explains a difficult choice. What role may this character serve?",
+      "choices": [
+        "confidant",
+        "antagonist",
+        "foil",
+        "protagonist"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "A character’s actions repeatedly show generosity even when no one is watching. Which evidence most strongly supports that trait?",
+      "choices": [
+        "the color of the character’s coat",
+        "the story’s location",
+        "repeated choices to help others",
+        "the order of chapters"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "“Eli said he was calm, but his hands shook as he reached for the microphone.” What trait is best supported?",
+      "choices": [
+        "arrogance",
+        "nervousness",
+        "boredom",
+        "generosity"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "A student argues that Nia is resourceful. Which evidence best supports the claim?",
+      "choices": [
+        "She lives near a river.",
+        "She appears in chapter three.",
+        "Her name is Nia.",
+        "She repairs the broken radio with parts from an old lamp."
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "A character apologizes after first blaming everyone else. What does this change most likely reveal?",
+      "choices": [
+        "a change in setting",
+        "a shift in narrator",
+        "a new subplot",
+        "growing accountability"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "A character repeatedly promises to help but avoids taking action. Which conclusion is best supported?",
+      "choices": [
+        "the character is reliable because of the promise",
+        "the character’s behavior conflicts with the promise",
+        "the character has changed completely",
+        "the narrator is necessarily unreliable"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A proud athlete accepts coaching after a loss and changes practice habits. What best shows development?",
+      "choices": [
+        "the setting changes from gym to field",
+        "another character tells the story",
+        "a response to experience changes behavior",
+        "the conflict is resolved offstage"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A character who values privacy begins sharing plans with a trusted friend. What has most clearly changed?",
+      "choices": [
+        "the character’s willingness to trust",
+        "the story’s point of view",
+        "the time period",
+        "the main setting"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "The protagonist’s careful questions reveal more than the narrator’s label “curious.” Which evidence should readers weigh most?",
+      "choices": [
+        "the narrator’s chapter length",
+        "the character’s actions and dialogue",
+        "the story’s title alone",
+        "the number of characters"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A shy character leads a group during an emergency, then returns to being reserved afterward. Which reading is most precise?",
+      "choices": [
+        "the character is a foil to the group",
+        "the character must be the narrator",
+        "the character shows situational growth without necessarily changing every trait",
+        "the character has no consistent traits"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A boastful character quietly gives credit to a teammate after a loss. What does this action suggest?",
+      "choices": [
+        "the character may be reconsidering self-importance",
+        "the setting has changed",
+        "the conflict is resolved before the story begins",
+        "the narrator cannot be trusted"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A character’s words sound confident, but private thoughts reveal fear. What contrast helps readers understand the character?",
+      "choices": [
+        "setting and plot order",
+        "theme and genre",
+        "exposition and resolution",
+        "dialogue and internal thoughts"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

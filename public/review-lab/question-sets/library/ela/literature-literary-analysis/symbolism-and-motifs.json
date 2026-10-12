@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "ela--literature-literary-analysis--symbolism-and-motifs",
+  "title": "Symbolism and Motifs",
+  "subject": "English Language Arts",
+  "category": "Literature & Literary Analysis",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "A symbol is a concrete object, image, or action that also represents what?",
+      "choices": [
+        "the exact setting only",
+        "the plot’s chronological order",
+        "an additional idea or meaning",
+        "a character’s dialogue tag"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "A motif is a recurring element that helps develop what?",
+      "choices": [
+        "patterns of meaning in a text",
+        "the author’s biography",
+        "the number of chapters",
+        "the point of view alone"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "A story repeatedly shows locked doors when its character avoids difficult conversations. What may the doors symbolize?",
+      "choices": [
+        "the story’s time period",
+        "the narrator’s name",
+        "the literal weather",
+        "barriers to communication"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "A white flag appears as opponents agree to stop fighting. What does it commonly symbolize in this context?",
+      "choices": [
+        "a new character",
+        "a request for peace or surrender",
+        "a change in season",
+        "an unreliable narrator"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "A cracked family photograph appears whenever relatives argue. What might its repetition create?",
+      "choices": [
+        "a change in point of view",
+        "a motif connected to strained relationships",
+        "a plot summary",
+        "a literal setting description"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "A character carries an old key but never finds a matching lock. Which interpretation is most cautious?",
+      "choices": [
+        "it definitely symbolizes freedom in every story",
+        "it must be the climax",
+        "it cannot be symbolic",
+        "its meaning may depend on how the story develops"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Rain appears during both a character’s loss and later renewal. How should readers interpret it?",
+      "choices": [
+        "consider how its meaning shifts with context",
+        "assume it always means sadness",
+        "ignore its recurrence",
+        "treat it as a character"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "A story repeatedly mentions birds leaving a cage as a character gains independence. What meaning is most supported?",
+      "choices": [
+        "fear of change",
+        "the arrival of winter",
+        "freedom from restriction",
+        "the narrator’s memory"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "A red scarf appears at key moments when two characters choose to trust each other. How can the scarf function?",
+      "choices": [
+        "as a symbol linked to trust",
+        "as the setting",
+        "as the narrator",
+        "as a plot conflict by itself"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "A phrase about “closed windows” appears in several chapters during moments of isolation. What makes it a motif?",
+      "choices": [
+        "it describes one location once",
+        "it reveals the author’s age",
+        "its recurrence links separate scenes",
+        "it is always a metaphor"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "A character plants a tree after moving to a new town; years later, the tree shades a community gathering. What may the tree suggest?",
+      "choices": [
+        "the exact date of every event",
+        "roots and belonging developing over time",
+        "the narrator’s point of view",
+        "a conflict that cannot change"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "An object appears once and has no clear connection to larger ideas. What should a reader avoid assuming?",
+      "choices": [
+        "that it exists in the plot",
+        "that it is described by the author",
+        "that it can have literal meaning",
+        "that it is definitely a symbol"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "A lighthouse appears when a character is unsure which path to take. Which interpretation is best supported by context?",
+      "choices": [
+        "it always represents danger",
+        "it proves the story is nonfiction",
+        "it changes the point of view",
+        "it may represent guidance or hope"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "A broken clock recurs while a character refuses to discuss a past decision. What pattern might the clock reinforce?",
+      "choices": [
+        "a cheerful future",
+        "being stuck in unresolved time",
+        "a new setting each time",
+        "a change in narrator"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A character gives away a medal earned in a competition. What might the action symbolize if the character now values teamwork?",
+      "choices": [
+        "the end of the setting",
+        "the beginning of a flashback",
+        "a shift in priorities",
+        "a literal weather change"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A repeated image of dust appears on objects a family has left untouched. How can this motif support a theme?",
+      "choices": [
+        "it can suggest neglect or the passage of time",
+        "it proves every character is careless",
+        "it identifies the narrator",
+        "it replaces the plot"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A river divides two neighborhoods, and characters cross it as they begin to cooperate. What could the river represent?",
+      "choices": [
+        "an exact number of chapters",
+        "a separation that can be crossed",
+        "a fixed personality trait",
+        "the author’s opinion outside the text"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A character’s notebook appears first as a place for complaints and later for plans. What is a strong interpretation?",
+      "choices": [
+        "it has one universal meaning regardless of context",
+        "it is a setting, not an object",
+        "its meaning develops as the character changes",
+        "it proves the story is in first person"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A student claims that a storm symbolizes anger because it appears once during a stormy night. What evidence would strengthen the claim?",
+      "choices": [
+        "recurring links between storm imagery and anger in the text",
+        "the author’s favorite weather",
+        "a definition of the word storm",
+        "the number of pages"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "The same bell rings before both a warning and a celebration. What should readers do?",
+      "choices": [
+        "assign it one meaning forever",
+        "treat it as a narrator",
+        "assume it is not a motif",
+        "interpret the bell’s meaning using each scene’s context"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "ela--literature-literary-analysis--point-of-view-and-narration",
+  "title": "Point of View and Narration",
+  "subject": "English Language Arts",
+  "category": "Literature & Literary Analysis",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Who is the narrator?",
+      "choices": [
+        "the real author in every case",
+        "the main conflict",
+        "the voice that tells the story",
+        "the intended audience"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which pronouns commonly signal first-person narration?",
+      "choices": [
+        "I and we",
+        "he and she",
+        "you and they",
+        "it and those"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "A narrator refers to the protagonist as “she” and reports only what she notices. Which point of view is this?",
+      "choices": [
+        "first person",
+        "second person",
+        "third-person omniscient",
+        "third-person limited"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "A narrator reports the thoughts of several characters in different scenes. Which point of view is most likely used?",
+      "choices": [
+        "first-person participant",
+        "third-person omniscient",
+        "second-person",
+        "third-person limited"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "A recipe says, “You stir the mixture until smooth.” Which point of view is used?",
+      "choices": [
+        "first person",
+        "second person",
+        "third-person limited",
+        "third-person omniscient"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "A narrator tells events as “I,” but is a witness rather than the central character. What is this narrator?",
+      "choices": [
+        "third-person omniscient",
+        "second-person narrator",
+        "external camera",
+        "first-person observer"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "A narrator knows only one character’s private thoughts. What limits the reader’s access?",
+      "choices": [
+        "third-person limited perspective",
+        "omniscient perspective",
+        "second-person address",
+        "objective stage directions"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "A narrator describes several characters’ private thoughts and pasts. What kind of access does the narrator have?",
+      "choices": [
+        "limited",
+        "first person",
+        "omniscient",
+        "objective"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "The narrator says, “I knew the bridge was unsafe, but I crossed anyway.” Which detail signals first person?",
+      "choices": [
+        "the narrator uses “I”",
+        "the narrator names a setting",
+        "the event happens in the past",
+        "a character makes a choice"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Readers learn only what a frightened child sees in a dark hallway. How does this viewpoint shape suspense?",
+      "choices": [
+        "it reveals every character’s thoughts",
+        "it removes the story’s narrator",
+        "limited information keeps readers uncertain",
+        "it proves the author is frightened"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "A narrator claims “nothing unusual happened,” while describing a door opening by itself. What might readers question?",
+      "choices": [
+        "the story’s tense",
+        "the narrator’s reliability",
+        "the setting’s location",
+        "the number of characters"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "A first-person narrator describes another character’s actions but cannot know that character’s unspoken thoughts. Why?",
+      "choices": [
+        "first-person narrators know everything",
+        "dialogue reveals all private thoughts",
+        "the author is the narrator",
+        "the narrator’s knowledge is limited to what can be observed or inferred"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Two narrators describe the same argument differently. What can comparing them reveal?",
+      "choices": [
+        "which narrator is automatically correct",
+        "the exact author’s opinion",
+        "that the event did not happen",
+        "how perspective shapes the account"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "A narrator calls a rival “careless,” but the rival’s actions show careful planning. What should readers consider?",
+      "choices": [
+        "whether the setting is first person",
+        "whether the narrator’s judgment is biased",
+        "whether the plot has a climax",
+        "whether the rival is the author"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A text addresses the reader as “you” and places the reader in a sequence of choices. What effect can this have?",
+      "choices": [
+        "it guarantees an objective account",
+        "it hides all actions",
+        "it can make the reader feel directly involved",
+        "it changes the text to first person"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "An outside narrator reports visible actions without stating anyone’s thoughts. What is the narration closest to?",
+      "choices": [
+        "objective third person",
+        "omniscient third person",
+        "first-person observer",
+        "second person"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "The narrator knows the coach’s plan but not the player’s thoughts. What can readers infer about narrative access?",
+      "choices": [
+        "the narrator must be first person",
+        "the narrator’s access may be selective or shifting",
+        "the story has no point of view",
+        "all characters are narrators"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A student says “the narrator is the author” because both use “I.” What is the best correction?",
+      "choices": [
+        "every first-person story is autobiography",
+        "authors cannot write in first person",
+        "a first-person narrator is a created voice and may differ from the author",
+        "narrators have no role in fiction"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A narrator describes a friend as “honest,” though the friend repeatedly hides important facts. What creates doubt?",
+      "choices": [
+        "the gap between the narrator’s claim and the evidence",
+        "the use of past tense",
+        "the story’s genre",
+        "the number of scenes"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A third-person narrator follows one character closely, then reveals another’s hidden thought in a later chapter. What is a careful conclusion?",
+      "choices": [
+        "the text becomes second person",
+        "the author becomes a character",
+        "the setting changes point of view",
+        "the narrative access expands or shifts"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

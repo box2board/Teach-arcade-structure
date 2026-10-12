@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "ela--language-grammar-vocabulary--sentence-structure",
+  "title": "Sentence Structure",
+  "subject": "English Language Arts",
+  "category": "Language, Grammar & Vocabulary",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "A simple sentence contains what?",
+      "choices": [
+        "two dependent clauses",
+        "no subject",
+        "one independent clause",
+        "two independent clauses joined by a conjunction"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "A compound sentence joins what?",
+      "choices": [
+        "two independent clauses",
+        "a subject and a verb only",
+        "one phrase and a fragment",
+        "a dependent clause alone"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "A complex sentence contains an independent clause and what?",
+      "choices": [
+        "a second subject only",
+        "two complete sentences without a connector",
+        "no verb",
+        "at least one dependent clause"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which is a complete independent clause?",
+      "choices": [
+        "Because the article was brief",
+        "The students reviewed the article.",
+        "While waiting for the bus",
+        "After the final question"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which word often joins independent clauses in a compound sentence?",
+      "choices": [
+        "although",
+        "and",
+        "because",
+        "when"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "“Although the rain stopped, the field remained wet.” What kind of sentence is this?",
+      "choices": [
+        "simple",
+        "compound",
+        "fragment",
+        "complex"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "“The bell rang, and students entered.” What structure is used?",
+      "choices": [
+        "compound",
+        "simple",
+        "complex",
+        "fragment"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "“The bell rang.” What structure is used?",
+      "choices": [
+        "compound",
+        "complex",
+        "simple",
+        "run-on"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "“Because the team practiced, its timing improved.” Which part is dependent?",
+      "choices": [
+        "Because the team practiced",
+        "its timing improved",
+        "the entire sentence is independent",
+        "neither clause is dependent"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "A sentence has two complete clauses joined only by a comma. What error is this?",
+      "choices": [
+        "fragment",
+        "misplaced modifier",
+        "comma splice",
+        "subject-verb disagreement"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "A writer joins two independent clauses with no punctuation or conjunction. What error is this?",
+      "choices": [
+        "sentence fragment",
+        "run-on sentence",
+        "dangling modifier",
+        "faulty parallelism"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "“After the meeting ended.” Why is this usually a fragment in standard edited English?",
+      "choices": [
+        "it contains too many verbs",
+        "it has a preposition",
+        "it is compound",
+        "it is a dependent clause without an independent clause"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Which revision correctly joins the clauses? “The trail was muddy. We wore boots.”",
+      "choices": [
+        "The trail was muddy, we wore boots.",
+        "The trail was muddy because. We wore boots.",
+        "Muddy the trail, we wore boots.",
+        "The trail was muddy, so we wore boots."
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Which sentence uses coordination to show two equally important actions?",
+      "choices": [
+        "When I checked the map, Lina packed the water.",
+        "I checked the map, and Lina packed the water.",
+        "Checking the map. Lina packed the water.",
+        "I checked the map Lina packed water."
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Which is a complex sentence?",
+      "choices": [
+        "We left, and the rain began.",
+        "The rain began.",
+        "We left when the rain began.",
+        "Leaving in the rain."
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Which revision fixes the comma splice? “The road was closed, we took another route.”",
+      "choices": [
+        "The road was closed, so we took another route.",
+        "The road was closed, we took another route.",
+        "The road was closed because. We took another route.",
+        "The road closed, another route."
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A sentence begins with “After finishing the lab,” but never states who finished it. What should the writer add?",
+      "choices": [
+        "another comma only",
+        "an independent clause that completes the thought",
+        "a second dependent clause",
+        "a quotation mark"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A writer uses three dependent clauses but no independent clause. What is the result?",
+      "choices": [
+        "a compound sentence",
+        "a comma splice",
+        "a sentence fragment",
+        "a complete simple sentence"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Which choice best combines these ideas without changing their relationship? “The museum opened late. Visitors waited outside.”",
+      "choices": [
+        "Because the museum opened late, visitors waited outside.",
+        "The museum opened late, visitors waited outside.",
+        "Visitors waited outside the museum opened late.",
+        "Late museum, visitors waited."
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "An editor finds a sentence that is grammatically complete but difficult to follow because several ideas are packed into it. What is the best revision strategy?",
+      "choices": [
+        "add adjectives to every noun",
+        "remove all punctuation",
+        "replace the subject with “it”",
+        "divide or reorder the ideas while preserving their logical relationships"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

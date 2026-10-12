@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "ela--language-grammar-vocabulary--punctuation-and-capitalization",
+  "title": "Punctuation and Capitalization",
+  "subject": "English Language Arts",
+  "category": "Language, Grammar & Vocabulary",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which mark normally ends a direct question?",
+      "choices": [
+        "comma",
+        "colon",
+        "question mark",
+        "semicolon"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which punctuation mark separates items in a simple series?",
+      "choices": [
+        "comma",
+        "apostrophe",
+        "colon",
+        "dash"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which mark can join two closely related independent clauses without a coordinating conjunction?",
+      "choices": [
+        "apostrophe",
+        "question mark",
+        "quotation mark",
+        "semicolon"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which punctuation mark introduces a list after a complete independent clause?",
+      "choices": [
+        "comma",
+        "colon",
+        "apostrophe",
+        "hyphen"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which sentence uses an apostrophe for possession?",
+      "choices": [
+        "The teachers desk is near the window.",
+        "The teacher’s desk is near the window.",
+        "The teachers’ desk is near the window. (one teacher)",
+        "The teacher,s desk is near the window."
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which spelling correctly contracts “it is”?",
+      "choices": [
+        "its’",
+        "its",
+        "it,s",
+        "it’s"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which sentence correctly uses quotation marks for direct speech?",
+      "choices": [
+        "“I found the key,” said Noor.",
+        "I found the key, “said Noor.”",
+        "“I found the key, said Noor.”",
+        "I “found the key,” said Noor."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Which word should be capitalized?",
+      "choices": [
+        "pencil",
+        "hallway",
+        "Tuesday",
+        "river (generic use)"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "In “we visited lake erie in july,” which names need capitals?",
+      "choices": [
+        "Lake Erie and July",
+        "we and visited",
+        "lake and in",
+        "visited and lake"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Which sentence correctly uses commas around a nonessential phrase?",
+      "choices": [
+        "My aunt who lives nearby, grows tomatoes.",
+        "My aunt, who lives nearby grows tomatoes.",
+        "My aunt, who lives nearby, grows tomatoes.",
+        "My aunt who, lives nearby grows tomatoes."
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Which sentence correctly uses a semicolon?",
+      "choices": [
+        "The forecast changed; because we packed a raincoat.",
+        "The forecast changed; we packed a raincoat.",
+        "The forecast; changed we packed a raincoat.",
+        "The forecast changed,; we packed a raincoat."
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Which sentence uses a colon correctly?",
+      "choices": [
+        "Bring: three items a notebook, a pen, and a folder.",
+        "Bring three: items, a notebook, a pen, and a folder.",
+        "Bring three items a notebook: a pen, and a folder.",
+        "Bring three items: a notebook, a pen, and a folder."
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Which punctuation is needed to show that the students’ lounge belongs to multiple students?",
+      "choices": [
+        "student’s lounge",
+        "students lounge",
+        "student,s lounge",
+        "students’ lounge"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Which sentence correctly punctuates a compound sentence?",
+      "choices": [
+        "The sky darkened so, we headed indoors.",
+        "The sky darkened, so we headed indoors.",
+        "The sky, darkened so we headed indoors.",
+        "The sky darkened; so, we headed indoors."
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Which sentence correctly places punctuation with a quoted question?",
+      "choices": [
+        "“Are we ready”? asked Mina.",
+        "Are “we ready?” asked Mina.",
+        "“Are we ready?” asked Mina.",
+        "“Are we ready,”? asked Mina."
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A writer places a comma between a subject and its verb. What should the editor usually do?",
+      "choices": [
+        "remove the unnecessary comma",
+        "add an apostrophe",
+        "replace it with a colon",
+        "capitalize the verb"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "An editor corrects “the hikers crossed the pacific ocean in april.” Which terms need capitals?",
+      "choices": [
+        "hikers and crossed",
+        "Pacific Ocean and April",
+        "the and in",
+        "ocean and in"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Which version uses an apostrophe correctly for a plural possessive?",
+      "choices": [
+        "the player’s uniforms (many players)",
+        "the players uniforms’",
+        "the players’ uniforms",
+        "the players’s uniforms"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A sentence has two independent clauses joined by “but.” Which punctuation is usually needed before “but”?",
+      "choices": [
+        "a comma",
+        "an apostrophe",
+        "a colon",
+        "no punctuation in any case"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which sentence uses punctuation to make the meaning clear?",
+      "choices": [
+        "Let’s eat Grandma.",
+        "Lets eat, Grandma.",
+        "Let’s, eat Grandma.",
+        "Let’s eat, Grandma."
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

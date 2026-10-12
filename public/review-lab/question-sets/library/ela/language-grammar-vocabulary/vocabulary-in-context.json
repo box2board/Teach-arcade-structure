@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "ela--language-grammar-vocabulary--vocabulary-in-context",
+  "title": "Vocabulary in Context",
+  "subject": "English Language Arts",
+  "category": "Language, Grammar & Vocabulary",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "When using context clues, what should a reader examine?",
+      "choices": [
+        "the word’s length only",
+        "the author’s age",
+        "nearby words and ideas that help explain an unfamiliar word",
+        "the number of paragraphs"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "In “The trail was arduous; after miles of climbing, we were exhausted,” what does “arduous” most likely mean?",
+      "choices": [
+        "difficult",
+        "brief",
+        "familiar",
+        "entertaining"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "“The glass was fragile, so Luis wrapped it in cloth.” What does “fragile” most likely mean?",
+      "choices": [
+        "unusually heavy",
+        "very valuable",
+        "completely empty",
+        "easily broken"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "“Unlike her outgoing brother, Maya was reserved at the gathering.” What does “reserved” most likely mean?",
+      "choices": [
+        "energetic",
+        "quiet or restrained",
+        "careless",
+        "confused"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "“The forecast predicted a deluge, and streets quickly flooded.” What does “deluge” most likely mean?",
+      "choices": [
+        "a dry spell",
+        "a very heavy downpour",
+        "a mild breeze",
+        "a temperature change"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "The author calls the old bridge “sturdy” and says it remained firm in strong winds. What does “sturdy” mean here?",
+      "choices": [
+        "narrow and crowded",
+        "old and unsafe",
+        "light and flexible",
+        "strong and stable"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "“After the team’s victory, the coach praised their tenacity during setbacks.” What does “tenacity” most likely mean?",
+      "choices": [
+        "persistence",
+        "confusion",
+        "speed",
+        "celebration"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "“The directions were concise: four short steps explained the task.” What does “concise” mean?",
+      "choices": [
+        "difficult to verify",
+        "overly detailed",
+        "brief but clear",
+        "written in a formal tone"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "The scientist’s claim was “tentative”; she said more trials were needed. What does “tentative” mean?",
+      "choices": [
+        "not yet certain",
+        "widely accepted",
+        "deliberately false",
+        "impossible to test"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "“Although the hallway looked chaotic, the teacher’s notes showed an orderly plan.” What does “chaotic” most likely mean?",
+      "choices": [
+        "quiet",
+        "empty",
+        "disorganized",
+        "well planned"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "A reader encounters “The author’s tone was somber; the passage focused on loss and used restrained language.” What does “somber” suggest?",
+      "choices": [
+        "playful and lively",
+        "serious and subdued",
+        "impatient and urgent",
+        "proud and boastful"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "A character is described as “meticulous,” checking each measurement twice before cutting. What does this context imply?",
+      "choices": [
+        "hurried and careless",
+        "creative but confused",
+        "physically strong",
+        "careful and precise"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "“Her explanation was ambiguous, so listeners disagreed about what she meant.” What does “ambiguous” mean?",
+      "choices": [
+        "supported by clear evidence",
+        "easy to remember",
+        "unrelated to the topic",
+        "open to more than one interpretation"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "“The old map was obsolete after new roads were built.” What does “obsolete” mean?",
+      "choices": [
+        "carefully preserved",
+        "no longer useful or current",
+        "difficult to read",
+        "unusually accurate"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "“Despite the setback, the group remained optimistic and planned another attempt.” What does “optimistic” mean?",
+      "choices": [
+        "doubtful of every idea",
+        "angry about a result",
+        "hopeful about the future",
+        "unaware of the problem"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Which clue most strongly helps explain “parched” in “After hours without water, the hikers felt parched”?",
+      "choices": [
+        "the hikers had gone without water",
+        "the trip lasted hours",
+        "the hikers were outdoors",
+        "the group had a map"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A word’s connotation is its what?",
+      "choices": [
+        "dictionary spelling",
+        "suggested feeling or association",
+        "number of syllables",
+        "grammatical function only"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "“Lean” and “skinny” can refer to a similar body shape but differ in what?",
+      "choices": [
+        "pronunciation in every dialect",
+        "part of speech",
+        "connotation",
+        "number of letters"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A student guesses a word’s meaning from one nearby adjective, ignoring the rest of the paragraph. What should the student do?",
+      "choices": [
+        "use the whole sentence and surrounding ideas to check the guess",
+        "choose the first possible meaning",
+        "avoid rereading",
+        "use word length as proof"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A passage uses “vital” for an action needed to prevent failure. Which meaning fits best?",
+      "choices": [
+        "ordinary",
+        "optional",
+        "outdated",
+        "essential"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

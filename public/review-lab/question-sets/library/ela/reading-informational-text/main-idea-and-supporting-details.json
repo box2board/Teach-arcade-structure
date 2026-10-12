@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "ela--reading-informational-text--main-idea-and-supporting-details",
+  "title": "Main Idea and Supporting Details",
+  "subject": "English Language Arts",
+  "category": "Reading & Informational Text",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is the main idea of a paragraph?",
+      "choices": [
+        "one interesting example",
+        "the first word",
+        "its central point or message",
+        "the author’s name"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Supporting details mainly do what?",
+      "choices": [
+        "explain, illustrate, or support the main idea",
+        "introduce unrelated topics",
+        "replace the central point",
+        "identify the narrator"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "A paragraph explains that shade trees cool streets, reduce runoff, and provide habitat. What main idea unites the details?",
+      "choices": [
+        "streets need more signs",
+        "birds live in forests only",
+        "rain is unpredictable",
+        "urban trees benefit communities in several ways"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "A passage lists three reasons a library expanded its hours. What should a summary include?",
+      "choices": [
+        "every minor example in order",
+        "the central reason and key supporting points",
+        "the writer’s personal opinion only",
+        "details unrelated to the change"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which sentence is most likely a supporting detail for “Regular sleep supports learning”?",
+      "choices": [
+        "Learning matters to many people.",
+        "Students who sleep well often find it easier to focus in class.",
+        "Sleep is a word with four letters.",
+        "Some schools have blue doors."
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "A paragraph begins with examples of bees pollinating crops and ends by explaining their role in food systems. What can readers infer is central?",
+      "choices": [
+        "crops grow only in spring",
+        "bees live in every region",
+        "food systems are simple",
+        "pollinators are important to agriculture"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "A text gives facts about several renewable energy sources but never states one main claim. How can a reader identify its central idea?",
+      "choices": [
+        "synthesize repeated information across the sections",
+        "choose the longest sentence",
+        "use the title alone",
+        "count the examples"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "A detail appears once but does not connect to the paragraph’s central claim. What should a concise summary do with it?",
+      "choices": [
+        "make it the main idea",
+        "repeat it several times",
+        "usually leave it out",
+        "treat it as evidence for every claim"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "A paragraph says a town added bike lanes, recorded more bicycle trips, and reduced short car journeys. Which is a reasonable main idea?",
+      "choices": [
+        "bike lanes can encourage cycling for local trips",
+        "all residents now ride bikes",
+        "cars are never useful",
+        "the town has no traffic"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Which question helps distinguish a main idea from a detail?",
+      "choices": [
+        "Which noun is longest?",
+        "How many sentences are in the paragraph?",
+        "What larger point do several details support?",
+        "What is the final punctuation mark?"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "A passage describes a problem, then explains two possible solutions. What main structure and idea should a summary preserve?",
+      "choices": [
+        "every adjective in the passage",
+        "the problem and the proposed responses",
+        "the author’s unrelated biography",
+        "only the final example"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "A student’s summary includes every statistic but omits the text’s central claim. What is the main weakness?",
+      "choices": [
+        "it is too brief",
+        "it includes evidence",
+        "it is written in the student’s words",
+        "it lists details without capturing the main idea"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "A passage explains that wetlands absorb floodwater, filter pollutants, and support wildlife. Which detail best supports the idea that wetlands protect communities?",
+      "choices": [
+        "they are found in many regions",
+        "some plants grow there",
+        "wildlife uses the habitat",
+        "they absorb excess floodwater"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "A heading reads “Why Local Markets Matter.” The article discusses nearby farms, seasonal food, and community jobs. What is the likely central idea?",
+      "choices": [
+        "all markets sell identical goods",
+        "local markets can connect food, producers, and communities",
+        "farms are always small",
+        "food has no economic role"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A paragraph gives one example of a student learning guitar, then explains how repeated practice improves skills. Which statement is broader?",
+      "choices": [
+        "the student owns a guitar",
+        "one song was difficult",
+        "practice can help people develop a skill",
+        "the lesson was after school"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A reader finds a detail that contradicts the paragraph’s central claim. What is a careful next step?",
+      "choices": [
+        "check how the detail is used and whether it qualifies the claim",
+        "ignore every other sentence",
+        "assume the author made an error",
+        "change the topic"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Two paragraphs describe different benefits of public parks. What can a reader do to form a larger central idea?",
+      "choices": [
+        "copy one detail only",
+        "combine the related points into a broader statement",
+        "treat the paragraphs as unrelated",
+        "use the title as the sole evidence"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A passage’s opening sentence is a statistic, but later sentences explain its significance. What should a reader avoid?",
+      "choices": [
+        "looking for repeated concepts",
+        "connecting details",
+        "assuming the statistic alone is the main idea",
+        "summarizing the central point"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Which summary best preserves a passage about a school garden used for science lessons, fresh produce, and teamwork?",
+      "choices": [
+        "The garden supports learning, food growing, and collaboration.",
+        "The garden has soil and several tools.",
+        "Students planted tomatoes on Tuesday.",
+        "Gardens are outside."
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A text includes many examples but returns repeatedly to the value of preserving local languages. What is probably central?",
+      "choices": [
+        "every language has the same number of speakers",
+        "examples are always the main idea",
+        "only written languages matter",
+        "preserving local languages matters to communities and culture"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

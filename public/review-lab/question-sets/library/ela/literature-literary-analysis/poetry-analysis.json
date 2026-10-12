@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "ela--literature-literary-analysis--poetry-analysis",
+  "title": "Poetry Analysis",
+  "subject": "English Language Arts",
+  "category": "Literature & Literary Analysis",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "A line of poetry is most often a single what?",
+      "choices": [
+        "paragraph in a novel",
+        "stage direction",
+        "row of words in a poem",
+        "chapter section"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "A stanza is a grouped unit of lines, often separated by what?",
+      "choices": [
+        "a space or indentation",
+        "a quotation mark only",
+        "a change of narrator",
+        "a chapter title"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Rhyme is the repetition of similar what?",
+      "choices": [
+        "opening images",
+        "sentence lengths",
+        "plot events",
+        "ending sounds"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Meter refers to a pattern of what in a poem?",
+      "choices": [
+        "characters and conflicts",
+        "stressed and unstressed syllables",
+        "settings and symbols",
+        "punctuation marks only"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "The speaker of a poem is best understood as what?",
+      "choices": [
+        "always the poet as a private person",
+        "the voice speaking in the poem",
+        "the reader",
+        "the title"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "“Bright birds beat their wings” repeats the initial b sound. What device is this?",
+      "choices": [
+        "end rhyme",
+        "meter",
+        "enjambment",
+        "alliteration"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "A sentence continues across a line break without a pause or punctuation. What is this called?",
+      "choices": [
+        "enjambment",
+        "end-stopped line",
+        "refrain",
+        "stanza"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "A line ends with punctuation that creates a pause before the next line. What structure is used?",
+      "choices": [
+        "enjambment",
+        "free verse",
+        "end-stopped line",
+        "internal rhyme"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "A phrase repeats at the end of each stanza. What is this repeated line or phrase called?",
+      "choices": [
+        "refrain",
+        "metaphor",
+        "meter",
+        "couplet"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Two consecutive lines rhyme and form a pair. What is this unit called?",
+      "choices": [
+        "stanza",
+        "refrain",
+        "couplet",
+        "caesura"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "A poem has no regular rhyme or meter but still uses deliberate line breaks. What form may it use?",
+      "choices": [
+        "sonnet",
+        "free verse",
+        "limerick",
+        "couplet"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "A pause occurs in the middle of a poetic line. What is that pause called?",
+      "choices": [
+        "refrain",
+        "enjambment",
+        "end rhyme",
+        "caesura"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "“Time is a thief” compares time to a thief without “like” or “as.” What device is used?",
+      "choices": [
+        "simile",
+        "alliteration",
+        "rhyme",
+        "metaphor"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "A poem repeats “I will return” at the start of several lines. What does the repetition most directly create?",
+      "choices": [
+        "a new narrator",
+        "emphasis and rhythm",
+        "a change in setting",
+        "a plot resolution"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "The speaker describes a small seed pushing through concrete. What idea could this image support?",
+      "choices": [
+        "fear of travel",
+        "the history of a city",
+        "persistence under difficult conditions",
+        "a change in time period"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A poem uses short, abrupt lines during a moment of panic. What can the line breaks contribute?",
+      "choices": [
+        "a quick, tense rhythm",
+        "a fixed rhyme scheme",
+        "a literal setting",
+        "an author biography"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A speaker praises a storm while the imagery describes damage and loss. What should a reader examine?",
+      "choices": [
+        "only the number of stanzas",
+        "whether the tone is ironic or complex",
+        "whether the poem has a narrator",
+        "the poet’s personal beliefs"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A poem’s speaker says “we,” but never identifies the group. What should readers do?",
+      "choices": [
+        "assume it means every reader",
+        "decide it is the poet’s family",
+        "use the poem’s details to infer who “we” includes",
+        "treat it as third-person narration"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A repeated image of a fading candle accompanies the speaker’s memories. Which interpretation is best supported if the poem also emphasizes time passing?",
+      "choices": [
+        "the candle may connect to change or limited time",
+        "the candle must be a literal character",
+        "it proves the poem is a drama",
+        "it has no meaning beyond its color"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A student says a poem’s theme is “the ocean.” What revision is stronger?",
+      "choices": [
+        "The ocean",
+        "Waves move toward shore.",
+        "The poem has four stanzas.",
+        "The ocean can represent both danger and renewal in the speaker’s life."
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

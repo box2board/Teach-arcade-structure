@@ -11,8 +11,8 @@ function bind(dom){const w=dom.window;w.scrollTo=()=>{};w.HTMLCanvasElement.prot
 }
 async function page(route,query=''){const html=await fs.readFile(root+'public/review-lab/'+route+'index.html','utf8');return new JSDOM(html,{url:'http://127.0.0.1:8765/review-lab/'+route+query,runScripts:'outside-only',pretendToBeVisual:true});}
 let dom=await page('');let w=bind(dom);
-await import(root+'public/review-lab/hub.js');assert.equal(w.document.querySelectorAll('.game-card').length,4);w.document.getElementById('browse-topics').click();assert.equal(w.document.querySelectorAll('[data-set]').length,253);
-const subject=w.document.getElementById('topic-subject');subject.value='Math';subject.dispatchEvent(new w.Event('change'));assert.equal(w.document.querySelectorAll('[data-set]').length,76);w.document.querySelector('[data-set]').click();assert.equal(w.document.querySelectorAll('.game-card').length,4);assert([...w.document.querySelectorAll('#catalog a.primary')].every(a=>a.href.includes('?set=')));
+await import(root+'public/review-lab/hub.js');assert.equal(w.document.querySelectorAll('.game-card').length,4);w.document.getElementById('browse-topics').click();assert.equal(w.document.querySelectorAll('[data-set]').length,278);
+const subject=w.document.getElementById('topic-subject');subject.value='English Language Arts';subject.dispatchEvent(new w.Event('change'));assert.equal(w.document.querySelectorAll('[data-set]').length,25);subject.value='Math';subject.dispatchEvent(new w.Event('change'));assert.equal(w.document.querySelectorAll('[data-set]').length,76);w.document.querySelector('[data-set]').click();assert.equal(w.document.querySelectorAll('.game-card').length,4);assert([...w.document.querySelectorAll('#catalog a.primary')].every(a=>a.href.includes('?set=')));
 console.log('PASS DOM: hub topic filtering and all four deep links.');
 dom=await page('category-clash/','?set='+math.id);w=bind(dom);
 w.eval(await fs.readFile(root+'public/review-lab/category-clash/questions.js','utf8'));
@@ -34,9 +34,9 @@ w.document.getElementById('continueIndividual').click();w.document.getElementByI
 assert.equal(w.document.getElementById('titleInput').value,'My saved custom board');assert.equal(w.localStorage.getItem(customKey),savedDraft);
 console.log('PASS DOM: math signs grade correctly and original custom draft survives bank play.');
 dom=await page('review-pinball/','?set='+science.id);w=bind(dom);await import(root+'public/review-lab/review-pinball/game.js');
-assert.equal(w.document.getElementById('question-set').value,science.id);assert.equal(w.document.querySelectorAll('#question-set option').length,253);w.document.getElementById('start').click();for(let i=0;i<30&&!w.document.getElementById('overlay').hidden;i++)await new Promise(r=>setTimeout(r,10));
+assert.equal(w.document.getElementById('question-set').value,science.id);assert.equal(w.document.querySelectorAll('#question-set option').length,278);w.document.getElementById('start').click();for(let i=0;i<30&&!w.document.getElementById('overlay').hidden;i++)await new Promise(r=>setTimeout(r,10));
 assert.equal(w.document.getElementById('overlay').hidden,true);console.log('PASS DOM: Pinball shared science preset and validated launch.');
-dom=await page('acorn-dash/');w=bind(dom);await import(root+'public/arcade-review-games/crossing-quest/game.js');w.document.getElementById('choose-set').click();assert.equal(w.document.querySelectorAll('#question-set option').length,253);w.document.getElementById('question-set').value=math.id;w.document.getElementById('start').click();for(let i=0;i<30&&w.document.getElementById('panel').open;i++)await new Promise(r=>setTimeout(r,10));
+dom=await page('acorn-dash/');w=bind(dom);await import(root+'public/arcade-review-games/crossing-quest/game.js');w.document.getElementById('choose-set').click();assert.equal(w.document.querySelectorAll('#question-set option').length,278);w.document.getElementById('question-set').value=math.id;w.document.getElementById('start').click();for(let i=0;i<30&&w.document.getElementById('panel').open;i++)await new Promise(r=>setTimeout(r,10));
 assert.equal(w.document.getElementById('panel').open,false);console.log('PASS DOM: Acorn shared math selection and validated launch.');
 process.exit(0);
 

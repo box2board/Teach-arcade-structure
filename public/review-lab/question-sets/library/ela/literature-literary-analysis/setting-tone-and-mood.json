@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "ela--literature-literary-analysis--setting-tone-and-mood",
+  "title": "Setting, Tone, and Mood",
+  "subject": "English Language Arts",
+  "category": "Literature & Literary Analysis",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What does setting include?",
+      "choices": [
+        "the writer’s central message",
+        "the narrator’s trustworthiness",
+        "the time and place of a story",
+        "the sequence of conflicts"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Tone is best defined as the author’s or narrator’s what toward the subject?",
+      "choices": [
+        "attitude",
+        "audience’s reaction",
+        "plot order",
+        "physical location"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Mood refers most directly to the feeling a text creates in the what?",
+      "choices": [
+        "author alone",
+        "antagonist",
+        "setting",
+        "reader"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "“By dawn, the empty station smelled of rain and cold metal.” Which element is most directly established?",
+      "choices": [
+        "theme",
+        "setting",
+        "conflict",
+        "point of view"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "“The mayor’s ‘brilliant plan’ left the town without water,” the narrator says. What tone is suggested?",
+      "choices": [
+        "celebratory",
+        "sarcastic",
+        "fearful",
+        "neutral"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "A quiet path, fading light, and distant footsteps create an uneasy feeling. What is being built?",
+      "choices": [
+        "plot resolution",
+        "direct characterization",
+        "genre",
+        "mood"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "A story shifts from a crowded city street to an isolated cabin. What changes most directly?",
+      "choices": [
+        "setting",
+        "point of view",
+        "theme",
+        "narrator reliability"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "A narrator describes a storm as “a welcome guest that rinsed the dusty fields.” What tone is suggested?",
+      "choices": [
+        "bitter",
+        "indifferent",
+        "appreciative",
+        "panicked"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "An author uses clipped sentences and harsh words to describe a failed plan. Which inference is strongest?",
+      "choices": [
+        "the tone may be critical",
+        "the mood must be cheerful",
+        "the setting is a city",
+        "the theme is friendship"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "“Lanterns glowed in the windows while music drifted across the square.” What mood is most strongly created?",
+      "choices": [
+        "threatening and tense",
+        "bleak and lonely",
+        "warm and festive",
+        "hurried and chaotic"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "A scene occurs during a drought, but characters speak with humor and hope. Which statement distinguishes the elements?",
+      "choices": [
+        "tone and setting mean the same thing",
+        "setting is harsh while tone may remain hopeful",
+        "mood must match the weather",
+        "setting is determined by dialogue only"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "A writer wants a suspenseful mood. Which detail best supports that purpose?",
+      "choices": [
+        "birds sing above a sunny garden",
+        "neighbors share warm bread",
+        "a child laughs at a familiar joke",
+        "a latch clicks behind the character in an otherwise silent hall"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "A narrator calls a difficult journey “a pleasant little stroll” while describing blisters and exhaustion. What tone is most likely?",
+      "choices": [
+        "solemnly admiring",
+        "purely objective",
+        "celebratory",
+        "ironic or sarcastic"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Readers feel sympathy during a scene, though the narrator’s language stays factual. Which idea explains this?",
+      "choices": [
+        "setting is the same as mood",
+        "mood can differ from tone",
+        "tone is always an emotion in the reader",
+        "facts prevent mood"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A story set in a school during a blackout uses flickering lights and empty corridors. What combination chiefly creates unease?",
+      "choices": [
+        "the title and author biography",
+        "the number of chapters",
+        "setting details and descriptive language",
+        "the genre label alone"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "An author describes a character’s home warmly but the surrounding town critically. What can change within one scene?",
+      "choices": [
+        "tone can shift with the narrator’s focus",
+        "setting must change too",
+        "mood cannot change",
+        "point of view must become first person"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A bleak landscape is described in playful, exaggerated language. Which conclusion is defensible?",
+      "choices": [
+        "tone and setting cannot contrast",
+        "the setting may be bleak while the tone is playful",
+        "the mood is certainly bleak for every reader",
+        "the author has no attitude"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A character returns to a familiar room after many years; the room is smaller than remembered. What can the setting detail suggest?",
+      "choices": [
+        "the story has no time period",
+        "the narrator is omniscient",
+        "the character’s perspective has changed",
+        "the conflict is resolved"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Which revision would create a more hopeful mood in a scene about a storm?",
+      "choices": [
+        "neighbors bring lanterns and food to the shelter",
+        "the roof groans under another gust",
+        "water rises past the doorway",
+        "the lights fail one by one"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Two readers feel differently about the same passage. What is the best explanation?",
+      "choices": [
+        "tone is chosen by each reader",
+        "setting changes for each reader",
+        "a text cannot create mood",
+        "mood can be influenced by readers’ experiences, while textual details still guide interpretation"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

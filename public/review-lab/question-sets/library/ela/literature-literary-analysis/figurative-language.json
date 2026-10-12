@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "ela--literature-literary-analysis--figurative-language",
+  "title": "Figurative Language",
+  "subject": "English Language Arts",
+  "category": "Literature & Literary Analysis",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "A simile compares two unlike things using which words?",
+      "choices": [
+        "because or although",
+        "who or which",
+        "like or as",
+        "either or"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "A metaphor describes one thing as another without using “like” or “as.” Which sentence is a metaphor?",
+      "choices": [
+        "The classroom was a beehive of activity.",
+        "The classroom was as busy as a beehive.",
+        "Bees flew past the window.",
+        "The classroom had many desks."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Giving human actions or feelings to a nonhuman thing is called what?",
+      "choices": [
+        "alliteration",
+        "understatement",
+        "rhyme",
+        "personification"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "An intentional exaggeration for emphasis is what?",
+      "choices": [
+        "literal language",
+        "hyperbole",
+        "onomatopoeia",
+        "allusion"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Repeated initial consonant sounds in nearby words create what device?",
+      "choices": [
+        "assonance",
+        "alliteration",
+        "metaphor",
+        "irony"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "“Buzz” imitates a sound. Which device is used?",
+      "choices": [
+        "personification",
+        "simile",
+        "symbolism",
+        "onomatopoeia"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "A comparison that uses “like” appears in which sentence?",
+      "choices": [
+        "Her idea spread like wildfire.",
+        "Her idea was wildfire.",
+        "The idea spread quickly.",
+        "The idea was popular."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "“The wind whispered through the grass” gives the wind a human action. What is this?",
+      "choices": [
+        "hyperbole",
+        "alliteration",
+        "personification",
+        "literal description"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "“I have waited a thousand years” is most likely what?",
+      "choices": [
+        "hyperbole",
+        "simile",
+        "onomatopoeia",
+        "understatement"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "“Silver sunlight slid across the sea” repeats an initial sound. Which device is prominent?",
+      "choices": [
+        "metaphor",
+        "personification",
+        "alliteration",
+        "idiom"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "A poem says, “His words were icy.” What does the metaphor most likely suggest?",
+      "choices": [
+        "his words were made of ice",
+        "his words felt cold or unkind",
+        "he spoke outdoors",
+        "the speaker was thirsty"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "“Her backpack weighed a ton” is not meant as a literal measurement. Why?",
+      "choices": [
+        "it is a simile comparing two objects",
+        "it is onomatopoeia",
+        "it is a technical fact",
+        "it is hyperbole emphasizing heaviness"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "“Time crawled during the long wait.” Which interpretation best fits?",
+      "choices": [
+        "time moved on hands and feet",
+        "the speaker was studying biology",
+        "the sentence is a literal report",
+        "the wait felt slow"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Which sentence uses personification rather than a metaphor?",
+      "choices": [
+        "The house was a ship.",
+        "The old house sighed in the wind.",
+        "The house was like a ship.",
+        "The house had a blue door."
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A writer describes an idea as “a seed that took root.” What does the comparison suggest?",
+      "choices": [
+        "the idea was planted in soil",
+        "the speaker forgot the idea",
+        "the idea began to grow and develop",
+        "the idea ended immediately"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "“Clack, clack, clack” appears as a train crosses a bridge. What is the sound effect doing?",
+      "choices": [
+        "imitating the train’s noise",
+        "comparing the train to a person",
+        "exaggerating the bridge’s length",
+        "describing a symbol"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "“The stars were pinholes in the dark curtain of night.” Which feature makes this figurative?",
+      "choices": [
+        "it gives the stars human speech",
+        "stars and sky are compared to holes and fabric",
+        "it repeats a consonant only",
+        "it reports a scientific measurement"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A student interprets “a mountain of work” as a literal landform. What should the student consider?",
+      "choices": [
+        "every metaphor names a setting",
+        "figurative language is always literal",
+        "the phrase is likely hyperbole for a large amount",
+        "mountains symbolize conflict in every text"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Which revision uses a simile to describe a quick runner?",
+      "choices": [
+        "The runner darted like an arrow.",
+        "The runner was an arrow.",
+        "The runner ran quickly.",
+        "The runner’s shoes were red."
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A poem calls a promise “a bridge between neighbors.” Which interpretation is best supported?",
+      "choices": [
+        "the promise is made of wood",
+        "the neighbors live near a river",
+        "the promise is a person",
+        "the promise connects the neighbors"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}
