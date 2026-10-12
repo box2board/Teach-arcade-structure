@@ -33,3 +33,10 @@
   .screen--question{align-items:start;padding:8px}
   .question-card{margin:auto 0;padding:16px}
 }
+
+/* The shared topic filters can make the welcome card taller on a tablet. */
+.screen--welcome{overflow-y:auto}
+@media(max-width:430px){
+  .screen--welcome{align-items:start;padding:8px}
+  .welcome-card{margin:auto 0}
+}
