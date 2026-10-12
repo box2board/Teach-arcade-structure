@@ -49,6 +49,12 @@ export const GAMES=Object.freeze([Object.freeze({
   mode:'Solo',facts:Object.freeze(['3 themed tables','Classic + Assisted modes','Manual plunger']),
   topicLabel:'Scientific Method + French Revolution',launchLabel:'Choose a table & play',supportsQuestionBank:true,questionSetIds:Object.freeze([])
 }),Object.freeze({
+  id:'power-clash',title:'Power Clash',url:'/review-lab/power-clash/',
+  description:'Build juice with questions, then battle a computer opponent or challenge a second player on the same keyboard.',
+  image:'/review-lab/power-clash-preview.svg',imageAlt:'Two original training-bot fighters face off in the Power Clash arena.',
+  mode:'Solo + Local 2-player',facts:Object.freeze(['Choose any shared topic','One-player vs. CPU','Two players on one keyboard']),
+  supportsQuestionBank:true,questionSetIds:Object.freeze([])
+}),Object.freeze({
   id:'snow-day-defenders',title:'Snow Day Defenders',url:'/review-lab/snow-day-defenders/',
   description:'Answer review questions to earn snow gear, recruit helpers, and protect your fort.',
   image:'/review-lab/snow-day-defenders-preview.svg',imageAlt:'Illustration of a snow fort, two scarf-wearing helpers, and playful snow creatures.',
