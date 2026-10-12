@@ -1,0 +1,315 @@
+[geography--five-themes-of-geography]
+Location|Theme asking where a place is.
+Place|Theme describing physical and human characteristics of a site.
+Movement|Theme examining flows of people, goods, and ideas.
+Region|Theme grouping places by shared characteristics.
+Interaction|Word completing the theme human-environment ___ .
+Absolute|Describes a precise location such as coordinates.
+Relative|Describes location in relation to other places.
+Latitude|Coordinate measuring position north or south of the equator.
+Longitude|Coordinate measuring position east or west of the prime meridian.
+Migration|Residential movement of people between places.
+Formal Region|Area defined by a shared measurable characteristic.
+Functional Region|Area linked by activities around a central point.
+Perceptual Region|Area defined by people's ideas and impressions.
+Climate|Physical characteristic describing long-term weather patterns.
+Architecture|Human characteristic concerning the design of buildings.
+Terraces|Stepped fields built on slopes to make farming possible.
+Dam|Structure modifying a river to serve human purposes.
+Commuting|Regular travel connecting surrounding communities to a central workplace area.
+Coordinates|Paired measurements specifying a precise position.
+Trade|Flow of products between places, studied under movement.
+[geography--map-skills]
+Legend|Explanation of map symbols and colors.
+Scale|Relationship between map distance and actual distance.
+Compass Rose|Map feature indicating directions.
+Physical Map|Representation emphasizing landforms and natural features.
+Political Map|Representation emphasizing borders and political units.
+Contour Lines|Lines connecting points of equal elevation.
+Thematic Map|Representation focused on a particular topic or pattern.
+Elevation|Height above a reference level such as sea level.
+Projection|Method of representing Earth's curved surface on a flat map.
+Inset|Smaller map offering detail or location context.
+Distortion|Change in area, shape, distance, or direction caused by flattening Earth.
+Topographic|Describes a map showing terrain and elevation.
+Choropleth|Map type using shaded areas to show a statistical pattern.
+Population Density|People per unit of area, useful for comparing crowding.
+Equal Area|Describes a projection preserving relative sizes of regions.
+Steep|Describes a slope shown by closely spaced contour lines.
+Symbols|Graphic marks representing features on a map.
+Date|Map information to check because borders or roads may have changed.
+Route|Path traveled that may differ from a straight line.
+Cardinal Directions|North, south, east, and west as a group.
+[geography--latitude-and-longitude]
+Latitude|Angular distance north or south of the equator.
+Longitude|Angular distance east or west of the prime meridian.
+Equator|Reference line at zero degrees north-south position.
+Prime Meridian|Reference line at zero degrees east-west position.
+Parallels|Common name for lines of latitude.
+Meridians|Common name for lines of longitude.
+Coordinates|Paired measurements identifying a position.
+Hemisphere|Half of Earth, such as northern or eastern.
+Poles|Two points where all meridians meet.
+Degrees|Angular units used for global coordinates.
+Time Zones|Areas sharing standard clock time, related partly to east-west position.
+Date Line|Boundary near 180 degrees longitude separating calendar dates.
+Northern|Hemisphere containing a point at 20 degrees north.
+Southern|Hemisphere containing a point at 15 degrees south.
+Eastern|Hemisphere containing a point at 60 degrees east.
+Western|Hemisphere containing a point at 45 degrees west.
+Rotation|Earth's daily turning that changes local solar time.
+North Pole|Point at 90 degrees north latitude.
+South Pole|Point at 90 degrees south latitude.
+Greenwich|London district associated with the reference meridian.
+[geography--physical-geography]
+Weathering|Breakdown of rock at or near Earth's surface.
+Erosion|Removal and transport of rock or sediment.
+Deposition|Settling of transported material.
+Watershed|Area draining water to a common outlet.
+Delta|Sediment-built landform near a river mouth.
+Plateau|Elevated area with a relatively level surface.
+Glacier|Moving mass of ice that erodes rock and transports sediment.
+Groundwater|Water stored beneath Earth's surface.
+Floodplain|Low river-side land receiving sediment during overflow.
+Sediment|Particles carried by water, wind, or ice.
+Tectonic Plates|Moving sections of Earth's outer shell.
+Convergent|Describes a boundary where plates move toward each other.
+Divergent|Describes a boundary where plates move apart.
+Evaporation|Liquid water changing into vapor.
+Condensation|Water vapor changing into liquid droplets.
+Precipitation|Water falling from clouds as rain, snow, or other forms.
+Fault|Fracture along which blocks of Earth's crust move.
+Water Cycle|Continuous movement of water through air, land, and bodies of water.
+Freeze Thaw|Weathering process where repeated ice expansion cracks rock.
+Volcanism|Processes involving molten material reaching Earth's surface.
+[geography--population]
+Census|Official count and collection of demographic information.
+Population Density|Number of people divided by land area.
+Births|New people added through reproduction.
+Deaths|Losses subtracted when calculating natural population increase.
+Immigration|Movement into a country to live there.
+Emigration|Movement out of a country to live elsewhere.
+Life Expectancy|Expected years of life based on mortality conditions.
+Fertility Rate|Measure commonly expressing average births per woman.
+Population Pyramid|Graph showing population by age and sex categories.
+Urbanization|Growth in the share of people living in cities.
+Natural Increase|Difference between births and deaths.
+Net Migration|Difference between arrivals and departures.
+Demographic Transition|Model of changing birth and death rates during social and economic development.
+Population Momentum|Continued growth as a large young generation enters childbearing ages.
+Mortality|Frequency of deaths within a population.
+Sanitation|Public health systems whose improvement can reduce death rates.
+Aging|Increase in the share of older people within a population.
+Infrastructure|Housing, transport, and service systems pressured by rapid growth.
+Distribution|Pattern of where people live within an area.
+Dependency Ratio|Comparison of typically dependent age groups with working-age groups.
+[geography--migration]
+Migration|Movement involving a change of usual residence.
+Immigration|Entry into a country to live there.
+Emigration|Departure from a country to live elsewhere.
+Internal|Describes migration within the same country.
+Push Factor|Condition encouraging people to leave their origin.
+Pull Factor|Condition attracting people to a destination.
+Remittances|Money migrants send to people in their place of origin.
+Origin|Place from which a migrant departs.
+Destination|Place to which a migrant moves.
+Displacement|Forced departure from one's home.
+Family Networks|Relationships that provide newcomers information, housing, or support.
+Brain Drain|Common term for loss of skilled workers from an origin community.
+Employment|Availability of paid work influencing many residential moves.
+Conflict|Violent struggle that can force people to flee.
+Distance|Spatial separation affecting the accessibility of a destination.
+Costs|Financial burdens that can restrict possible migration routes.
+Internally Displaced|Describes people forced from home who remain within their own country.
+Rural|Describes countryside origins in a move toward a city.
+Urban|Describes a city destination in a move from the countryside.
+Residence|Usual place where a person lives, changed through migration.
+[geography--climate]
+Climate|Long-term regional patterns of atmospheric conditions.
+Weather|Short-term atmospheric conditions.
+Latitude|Position north or south influencing sunlight's angle.
+Elevation|Height that generally reduces lower-atmosphere temperatures as it increases.
+Precipitation|Water falling as rain, snow, or other forms.
+Rain Shadow|Dry area on the sheltered side of a mountain barrier.
+Greenhouse Effect|Warming from gases absorbing and re-emitting outgoing infrared energy.
+Ocean Currents|Flows of seawater redistributing heat.
+Seasons|Annual changes caused primarily by Earth's axial tilt during its orbit.
+Tropics|Low-latitude regions generally receiving more direct solar energy.
+Windward|Side of a mountain facing incoming wind.
+Leeward|Side of a mountain sheltered from incoming wind.
+Condensation|Cooling water vapor changing into liquid droplets.
+Axial Tilt|Earth's slanted orientation responsible primarily for seasonal changes.
+Maritime|Describes climate influenced by proximity to the sea.
+Continental|Describes climate strongly affected by inland location.
+Infrared|Type of outgoing radiation absorbed by greenhouse gases.
+Carbon Dioxide|Heat-trapping gas increased by burning fossil fuels.
+Moderation|Reduction of temperature extremes caused by nearby ocean water.
+Trend|Long-term pattern identified from consistent measurements over decades.
+[geography--biomes]
+Biome|Broad ecological region with characteristic climate and living communities.
+Rainforest|Warm, wet forest type found in tropical regions.
+Taiga|Another name for boreal forest.
+Desert|Biome defined by very low precipitation.
+Savanna|Grassland with scattered trees and distinct wet and dry seasons.
+Tundra|Cold, largely treeless biome with a short growing season.
+Permafrost|Ground remaining frozen for at least two consecutive years.
+Grassland|Biome dominated by grasses rather than forest trees.
+Deciduous|Describes trees that shed their leaves seasonally.
+Habitat|Local environment where an organism lives.
+Temperature|Measure of heat that helps determine regional vegetation.
+Precipitation|Moisture falling from the atmosphere that helps define terrestrial biomes.
+Elevation|Height whose change can shift mountain vegetation.
+Biodiversity|Variety of living organisms within an environment.
+Deforestation|Removal of forests that can alter habitats and water movement.
+Adaptation|Trait or response improving survival under local conditions.
+Deep Roots|Plant structures reaching water and supporting regrowth in grasslands.
+Grazing|Feeding on grasses by livestock or wild herbivores.
+Transition Zone|Area where one environmental community gradually changes into another.
+Carbon|Element stored in forest biomass and affected by clearing.
+[geography--north-america]
+Rockies|Common short name for the western interior mountain system.
+Appalachians|Mountain system in eastern North America.
+Great Plains|Broad grassland region east of the Rocky Mountains.
+Canada|Country occupying much of the northern mainland.
+Mexico|Country sharing the United States' southern land border.
+Great Lakes|Large freshwater bodies shared by the United States and Canada.
+Mississippi|Major river draining much of the central United States.
+Atlantic|Ocean linked to inland shipping by the St. Lawrence waterway.
+Pacific|Ocean along the continent's western coast.
+Irrigation|Artificial water supply used in dry farming areas.
+St Lawrence|River linking the Great Lakes region to the Atlantic.
+Canadian Shield|Extensive region of ancient exposed rock in northern North America.
+Greenland|Large island included geographically in North America.
+Central America|Region connecting Mexico with South America.
+Caribbean|Island and sea region included in broad definitions of North America.
+Rain Shadow|Dry zone that can develop behind mountain barriers.
+Indigenous|Describes peoples with long-established ancestral connections to the continent.
+Freshwater|Water resource whose demand, drought exposure, and pollution require management.
+Migration|Movement of people shaping languages and settlement patterns.
+Cultural Region|Area defined by shared human patterns rather than necessarily political borders.
+[geography--latin-america]
+Andes|Mountain chain along western South America.
+Brazil|Country occupying the largest share of South America's land area.
+Portuguese|Dominant national language of Brazil.
+Amazon|River system draining much of northern Brazil and neighboring lands.
+Panama|Country crossed by the canal connecting Atlantic and Pacific shipping.
+Atacama|Extremely dry desert along northern Chile's Pacific coast.
+Pampas|Grasslands associated especially with Argentina and Uruguay.
+Spanish|Language dominant in many Latin American countries outside Brazil.
+Mexico|North American country commonly included in Latin America.
+Caribbean|Island region containing varied languages and colonial histories.
+Latin America|Cultural region strongly linked historically to Romance languages.
+Elevation|Height producing different farming and settlement conditions in the Andes.
+Rainforest|Major Amazon ecosystem supporting biodiversity and water cycles.
+Commodity|Basic traded product whose changing price can affect export-dependent economies.
+Infrastructure|Housing, transport, and service systems needed by growing cities.
+Indigenous|Describes ancestral communities whose languages and knowledge remain important.
+Argentina|Country containing extensive Pampas grasslands.
+Uruguay|Smaller country sharing the Pampas region with Argentina.
+Biodiversity|Variety of living organisms supported by the Amazon ecosystem.
+Urbanization|Growth of city populations creating changing demands for services.
+[geography--europe]
+Atlantic|Ocean west of mainland Europe.
+Mediterranean|Sea between southern Europe and northern Africa.
+Iberian|Name of the peninsula containing Spain and Portugal.
+Alps|Mountain range extending through countries including Switzerland and Austria.
+Urals|Mountains conventionally forming part of the Europe-Asia boundary.
+Danube|Major international river flowing toward the Black Sea.
+Fjord|Long, narrow inlet carved by glacial erosion.
+Rhine|River corridor linking inland industrial areas with North Sea shipping.
+Peninsula|Land projecting into water and nearly surrounded by it.
+European Union|Organization whose membership does not define Europe's full geographic extent.
+Scandinavian|Name of the northern peninsula largely containing Norway and Sweden.
+North European Plain|Broad lowland supporting agriculture and settlement.
+Maritime|Describes the ocean-influenced climate of parts of western Europe.
+Glaciation|Past ice-sheet activity that carved valleys and left lakes.
+Navigable|Describes waterways usable by vessels for transportation.
+Black Sea|Body of water receiving the Danube's flow.
+Erosion|Removal of material that allows glaciers to carve valleys.
+Continental Boundary|Conventional division between Europe and Asia.
+Transport|Movement of people and goods supported by river corridors.
+Settlement|Pattern of human habitation influenced by terrain and economic activity.
+[geography--sub-saharan-africa]
+Sahara|Vast desert separating much of northern Africa from regions to its south.
+Sahel|Semiarid transition zone along the Sahara's southern edge.
+Congo Basin|Central African drainage region associated with tropical rainforest.
+Madagascar|Large island off Africa's southeastern coast.
+Okavango|River forming a major inland delta in Botswana.
+Savanna|Grassland with scattered trees, common in tropical parts of Africa.
+East African Rift|Tectonically active system in the continent's east.
+Ethiopian Highlands|Elevated region with cooler conditions than nearby lowlands.
+Landlocked|Describes a country lacking a direct ocean coastline.
+Rainfall|Variable water input affecting Sahelian farming and herding.
+Lagos|Major Nigerian city illustrating the region's substantial urban population.
+Nairobi|Kenyan capital illustrating urban development in the region.
+Commodity|Primary export whose global price changes can affect local livelihoods.
+Soil Degradation|Decline in land quality that can reduce agricultural productivity.
+Colonial Borders|Boundaries inherited from imperial rule that sometimes divided communities.
+Botswana|Country containing the Okavango's major inland delta.
+Herding|Management of livestock as an important livelihood in semiarid areas.
+Conservation|Protection of ecological resources requiring attention to nearby livelihoods.
+Infrastructure|Water, housing, and transport systems pressured by rapid city growth.
+Indian Ocean|Body of water surrounding Madagascar.
+[geography--south-asia]
+Himalayas|Mountain range separating much of the subcontinent from Tibet.
+Indian Ocean|Body of water south of the Indian subcontinent.
+Bangladesh|Country occupying much of the Ganges-Brahmaputra delta.
+Indus|River crossing much of Pakistan before reaching the Arabian Sea.
+Sri Lanka|Island country southeast of India.
+Deccan|Plateau covering much of peninsular India.
+Monsoon|Seasonal shift in prevailing winds.
+Nepal|Landlocked Himalayan country between India and China.
+India|Country occupying most of the central South Asian subcontinent.
+Pakistan|Country through which the Indus flows toward the Arabian Sea.
+Bhutan|Himalayan kingdom whose high mountains complicate transport routes.
+Maldives|Low-lying island country exposed to sea-level rise.
+Ganges|Major river joining the Brahmaputra's delta region.
+Brahmaputra|Major river contributing to Bangladesh's delta alongside the Ganges.
+Indo Gangetic Plain|Fertile lowland supporting extensive farming across northern South Asia.
+Delta|Low river-mouth landform especially exposed to flooding in Bangladesh.
+Glacier Melt|Mountain ice loss contributing water to downstream rivers.
+Downstream|Describes locations receiving flow after an upstream dam or diversion.
+Flooding|Hazard when rivers overflow onto low-lying land.
+Elevation|Height that helps explain different climates within the same country.
+[geography--east-asia]
+Pacific|Ocean bordering the region's eastern coast.
+Japan|Large archipelago east of the Korean Peninsula.
+Gobi|Desert extending across Mongolia and northern China.
+Korean Peninsula|Landform containing both North Korea and South Korea.
+Yangtze|Major Chinese river also called Chang Jiang.
+Tibetan Plateau|Highland region in western China north of the Himalayas.
+Mongolia|Landlocked country between Russia and China.
+China|Large East Asian country with diverse climates and dense eastern settlement.
+Earthquakes|Hazards associated with nearby tectonic boundaries in Japan.
+Ports|Coastal facilities linking manufacturing centers with world shipping.
+Archipelago|Group or chain of islands, such as Japan.
+Tectonic Plates|Moving crustal sections whose boundaries create seismic hazards.
+Coastal Plains|Lowland areas concentrating many Japanese settlements.
+Grasslands|Vegetation regions supporting livestock grazing in Mongolia.
+Monsoon|Seasonal wind system influencing rainfall and temperatures.
+Manufacturing|Production sector relying on imported materials and exported goods.
+Pollution|Environmental contamination that can increase with industrial growth.
+Faults|Crustal fractures whose locations help assess earthquake risk.
+Landlocked|Lacking direct access to an ocean coast, as Mongolia does.
+River Plains|Fertile lowlands supporting many large settlements in eastern China.
+[geography--australia-and-oceania]
+Pacific|Ocean containing most of Oceania's island groups.
+Great Dividing Range|Mountain system extending along eastern Australia.
+Great Barrier Reef|Large coral ecosystem off northeastern Australia.
+Archipelago|Group or chain of islands.
+Maori|Indigenous people associated with New Zealand.
+New Guinea|Large island immediately north of northeastern Australia.
+Australia|Country with extensive arid interior regions.
+New Zealand|Island country near a tectonic boundary with major mountain landscapes.
+Atoll|Low coral-ring island especially vulnerable to sea-level rise.
+Coral|Marine organism whose colonies build reefs.
+Melanesia|Pacific island region including Fiji and Vanuatu.
+Micronesia|Pacific regional name meaning small islands.
+Polynesia|Pacific regional name meaning many islands.
+Aridity|Dryness limiting water availability in much of Australia's interior.
+Saltwater Intrusion|Entry of seawater into freshwater supplies or land.
+Tourism|Visitor industry that can increase waste and water demand if poorly managed.
+Aboriginal|Describes diverse Indigenous peoples of mainland Australia and Tasmania.
+Torres Strait|Island region between northern Australia and New Guinea with distinct Indigenous peoples.
+Shipping|Sea transport whose cost can increase with great distances.
+Livelihoods|Means of supporting life, including reef-related fishing and work.
