@@ -175,4 +175,12 @@ The detailed inventory includes every individual PDF/preview path and source fin
 
 ## Git delivery record
 
-Main was checked again immediately before upload. Logical commits separate inventory, factual corrections, tooling, each category, interface, and validation evidence. This branch is not merged and no deployment was performed. The final delivery commit is identified by the pull request's head SHA; the exact implementation commit and PR link are appended after remote upload verification.
+Main was checked again immediately before upload. Logical commits separate inventory, factual corrections, tooling, each category, interface, and validation evidence. This branch is not merged and no deployment was performed. The final delivery commit is the PR head; its exact SHA is recorded in the PR body after the delivery-metadata commit. A commit cannot embed its own SHA in its tracked contents. The exact tested implementation snapshot and review link follow.
+
+- Pull request: [#179](https://github.com/box2board/Teach-arcade-structure/pull/179), open and unmerged.
+- Final tested implementation commit: `0b5410099b528dbc32f00ee4325828fa5fa299c5`.
+- Final implementation tree: `b24c3c11252809ead8a873a008952a656ec70ca6`, identical remotely and locally.
+- Final delivery commit reference: `refs/heads/print-play/social-studies-crossword-library`; exact final SHA in PR #179 delivery record.
+- Current main at upload: `e2ad27e7f219b373e6c9f405ee9327822dd59422`.
+- Remote upload: all 657 changed files verified by Git blob SHA; one transient thumbnail error was retried successfully.
+- No merge or deployment performed.
