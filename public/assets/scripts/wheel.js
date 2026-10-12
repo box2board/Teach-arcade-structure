@@ -26,9 +26,23 @@
 
   if (!canvas || !ctx || !textarea || !spinBtn) return;
 
+  const SAMPLE_NAMES = ['Steve','Bruce','Peter','Tony','Natasha','Carol','Wanda','Jean'];
+
   const setStatus = (message) => {
     if (statusEl) statusEl.textContent = `Status: ${message}`;
   };
+
+  // Keep celebration effects above the dimmed winner overlay, including fullscreen mode.
+  if (confettiLayer && wheelApp) {
+    wheelApp.appendChild(confettiLayer);
+    Object.assign(confettiLayer.style, {
+      position: 'fixed',
+      inset: '0',
+      zIndex: '140',
+      pointerEvents: 'none',
+      overflow: 'hidden'
+    });
+  }
 
   // ---------- THEME ----------
   const THEME_KEY = 'ta-wheel-theme';
@@ -116,12 +130,12 @@
     const oscillator = a.createOscillator();
     const gain = a.createGain();
     oscillator.type = 'square';
-    oscillator.frequency.setValueAtTime(2050, t);
-    gain.gain.setValueAtTime(0.065, t);
-    gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.035);
+    oscillator.frequency.setValueAtTime(1850, t);
+    gain.gain.setValueAtTime(0.18, t);
+    gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.055);
     oscillator.connect(gain).connect(a.destination);
     oscillator.start(t);
-    oscillator.stop(t + 0.045);
+    oscillator.stop(t + 0.065);
   }
 
   function celebrateSound() {
@@ -134,11 +148,11 @@
       oscillator.type = 'triangle';
       oscillator.frequency.setValueAtTime(frequency, t0 + index * 0.02);
       gain.gain.setValueAtTime(0.0001, t0 + index * 0.02);
-      gain.gain.linearRampToValueAtTime(0.14, t0 + 0.07 + index * 0.02);
-      gain.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.42);
+      gain.gain.linearRampToValueAtTime(0.24, t0 + 0.07 + index * 0.02);
+      gain.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.48);
       oscillator.connect(gain).connect(a.destination);
       oscillator.start(t0 + index * 0.02);
-      oscillator.stop(t0 + 0.48);
+      oscillator.stop(t0 + 0.54);
     });
   }
 
@@ -358,28 +372,41 @@
   function fireConfetti() {
     if (!confettiLayer || prefersReducedMotion.matches) return;
     confettiLayer.innerHTML = '';
-    const colors = ['#ef4444','#22c55e','#3b82f6','#f59e0b','#a855f7','#06b6d4','#eab308','#10b981'];
-    const count = logicalSize > 520 ? 120 : 80;
+    const colors = ['#ff1744','#00e676','#2979ff','#ffea00','#d500f9','#00e5ff','#ff9100','#76ff03','#ffffff'];
+    const count = logicalSize > 520 ? 170 : 120;
+    const viewportHeight = Math.max(window.innerHeight, logicalSize);
+    const viewportWidth = Math.max(window.innerWidth, logicalSize);
 
     for (let index = 0; index < count; index += 1) {
       const piece = document.createElement('span');
+      const size = 9 + Math.random() * 7;
       piece.style.left = `${Math.random() * 100}%`;
-      piece.style.top = `${Math.random() * 8}%`;
+      piece.style.top = `${-3 - Math.random() * 8}%`;
+      piece.style.width = `${size}px`;
+      piece.style.height = `${size * (0.85 + Math.random() * 0.8)}px`;
+      piece.style.borderRadius = index % 4 === 0 ? '50%' : '2px';
       piece.style.background = colors[index % colors.length];
+      piece.style.border = '1px solid rgba(255,255,255,.85)';
+      piece.style.boxShadow = '0 1px 4px rgba(0,0,0,.35)';
       piece.style.animation = 'none';
       confettiLayer.appendChild(piece);
 
-      const horizontal = (Math.random() - 0.5) * logicalSize * 0.35;
-      const rotation = 360 + Math.random() * 720;
+      const horizontal = (Math.random() - 0.5) * viewportWidth * 0.32;
+      const rotation = 540 + Math.random() * 900;
       piece.animate(
         [
-          { transform: 'translate(0, -10px) rotate(0deg)', opacity: 1 },
-          { transform: `translate(${horizontal}px, ${logicalSize * 0.95}px) rotate(${rotation}deg)`, opacity: 0 }
+          { transform: 'translate(0, -20px) rotate(0deg) scale(1)', opacity: 1 },
+          { transform: `translate(${horizontal}px, ${viewportHeight * 1.12}px) rotate(${rotation}deg) scale(.85)`, opacity: 0.96 }
         ],
-        { duration: 950 + Math.random() * 650, delay: Math.random() * 220, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'forwards' }
+        {
+          duration: 1450 + Math.random() * 900,
+          delay: Math.random() * 320,
+          easing: 'cubic-bezier(.16,.72,.25,1)',
+          fill: 'forwards'
+        }
       );
     }
-    window.setTimeout(() => { confettiLayer.innerHTML = ''; }, 1900);
+    window.setTimeout(() => { confettiLayer.innerHTML = ''; }, 3000);
   }
 
   // ---------- SPIN ----------
@@ -613,13 +640,16 @@
   const savedPalette = localStorage.getItem(PALETTE_KEY);
   if (paletteSel) paletteSel.value = queryPalette || savedPalette || 'vibrant';
 
+  // Keep the classroom sample consistent even after the list is cleared.
+  textarea.placeholder = SAMPLE_NAMES.join('\n');
+
   const itemsParam = qs.get('items');
   if (itemsParam) {
     textarea.value = itemsParam.split('|').map(decodeURIComponent).join('\n');
     if (removeAfter) removeAfter.checked = qs.get('rm') === '1';
     if (confettiToggle) confettiToggle.checked = qs.get('confetti') === '1' || confettiToggle.checked;
   } else if (!textarea.value.trim()) {
-    textarea.value = ['Ash','Jaime','Teddy','Ami','Dave','Charlie','Gary','Naomi'].join('\n');
+    textarea.value = SAMPLE_NAMES.join('\n');
   }
 
   readTextarea();
