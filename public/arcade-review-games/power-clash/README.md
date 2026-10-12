@@ -12,7 +12,7 @@ Power Clash is a reusable, browser-based classroom review fighter prototype. It 
 
 ## Reuse the engine for another topic
 
-Add a topic object to `content/topics.js` with an `id`, `title`, `shortTitle`, arena colors, and at least 20 question records in the same format as the WWI pack. The opening round draws ten different questions for each player without repeating questions between them. The engine reads the selected pack and does not contain topic-specific question logic. Future work can move packs into individual files once the collection grows.
+Add a topic object to `content/topics.js` with an `id`, `title`, `shortTitle`, arena colors, and at least 20 question records in the same format as the included packs. The current packs are World War I and the French Revolution. The opening round draws ten different questions for each player without repeating questions between them. The engine reads the selected pack and does not contain topic-specific question logic. Future work can move packs into individual files once the collection grows.
 
 ## Controls
 
