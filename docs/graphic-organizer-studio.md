@@ -27,3 +27,11 @@ Browser visual QA and actual print pagination still require review. DOM tests do
 5. Choose Your Path Studio.
 
 Reusable save/import/export patterns can inform later tools, but each tool will have its own project type and content model.
+
+## Optimization pass
+
+Core KWL, Venn, Frayer, character, plot, and vocabulary sections retain their positions; branch templates retain their first main box. Added sections and table/sequence entries remain editable and rearrangeable. This prevents vocabulary archive fields from being remapped by accidental section movement.
+
+Venn uses overlapping outlines on wide screens and a diagram above stacked comparison fields on smaller screens. Comparison tables use aligned paired cells, KWL offers more writing space, and core sections omit unnecessary controls. Focus mode hides surrounding page content; Escape exits it. Ctrl/Cmd+S downloads a project. Ctrl/Cmd+Z works for editor actions outside text fields; text fields retain browser editing shortcuts. Undo becomes available immediately while typing.
+
+Print blank hides answer text only in the print layout, preserving project data. Printed headings and topic remain. A normal print clears blank mode, and afterprint clears it after a blank print. Tests cover semantic controls, immediate undo, focus/Escape, and blank-print data preservation. Browser visual QA remains outstanding.

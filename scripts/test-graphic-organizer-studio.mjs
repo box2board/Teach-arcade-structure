@@ -43,3 +43,12 @@ const previous=project(w);Object.defineProperty(file,'files',{configurable:true,
 for(const corrupt of [{}, {...malicious,version:99},{...malicious,cards:[]},{...malicious,headers:'bad'},{...malicious,cards:[{label:'x',text:1,cells:[]}]}])assert.throws(()=>w.GOModel.validate(corrupt));w.close();
 w=page('frayer-model',{},true);input(w,'Name','Private browsing');clicks(w,'Download project');assert(w.downloadName);assert(w.document.querySelector('.go-status').textContent.includes('downloaded'));w.close();
 console.log('PASS: reorder, removal, immediate template switch, safe import, invalid-file rejection, and download with browser storage blocked.');
+for(const slug of ['kwl-chart','venn-diagram','frayer-model','character-map','story-plot-diagram','vocabulary-organizer','main-idea-details','cause-effect']){
+ const w=page(slug), cores=w.document.querySelectorAll('.go-core-section');assert(cores.length>0);assert([...cores].every(c=>!c.querySelector('.go-section-actions')),'Semantic sections should not be rearrangeable');
+ clicks(w,'+ Add section');const added=w.document.querySelector('.go-section:last-child');assert(added.querySelector('.go-section-actions'));
+ input(w,'Notes · section 1','Keep these answers');const undoButton=[...w.document.querySelectorAll('button')].find(b=>b.textContent==='Undo');assert.equal(undoButton.disabled,false);clicks(w,'Undo');assert.equal(w.document.querySelector('[aria-label="Notes · section 1"]').value,'');clicks(w,'Redo');assert.equal(w.document.querySelector('[aria-label="Notes · section 1"]').value,'Keep these answers');
+ clicks(w,'Focus mode');assert(w.document.body.classList.contains('go-focus-mode'));w.dispatchEvent(new w.KeyboardEvent('keydown',{key:'Escape'}));assert(!w.document.body.classList.contains('go-focus-mode'));
+ clicks(w,'Print blank');assert(w.document.body.classList.contains('go-print-blank'));assert.equal(project(w).cards[0].text,'Keep these answers');w.dispatchEvent(new w.Event('afterprint'));assert(!w.document.body.classList.contains('go-print-blank'));
+ w.close();
+}
+console.log('PASS: semantic section positions, immediate typing undo, focus/Escape, and blank printing without changing answers.');
