@@ -12,7 +12,7 @@ const button=(text,fn,cls='')=>{const b=el('button',cls,text);b.type='button';b.
 const toolbar=el('div','go-toolbar'), actions=el('div','go-actions'), options=el('div','go-options');
 const status=el('p','go-status',initialMessage);status.setAttribute('role','status');status.setAttribute('aria-live','polite');
 const paper=el('section','go-paper');paper.setAttribute('aria-label','Editable organizer');
-const note=el('p','go-help','Saved drafts stay on this device and browser. Download a project to reopen it elsewhere. Print / PDF opens your browser’s print dialog.');
+const note=el('p','go-help','Saved drafts stay on this device and browser. Download a project to reopen it elsewhere. Download PDF saves a ready-to-use worksheet directly.');
 root.append(toolbar,note,status,paper);toolbar.append(actions,options);
 const announce=message=>status.textContent=message;
 function save(){try{localStorage.setItem(storageKey(project.template),JSON.stringify(project));announce('Saved in this browser.');}catch{announce('Could not save in this browser. Download a project to keep your work.');}}
@@ -31,13 +31,15 @@ function updateHistory(){undoBtn.disabled=undo.length===0&&!pendingSnapshot;redo
 function download(){flush();save();const blob=new Blob([JSON.stringify(project,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob),a=el('a');a.href=url;a.download=(project.title||M.templates[project.template].name).replace(/[^a-z0-9_-]/gi,'-').slice(0,70)+'.teacharcade.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);announce('Project downloaded. Use Open project to continue on another device.');}
 const file=el('input');file.type='file';file.accept='.json,application/json';file.hidden=true;root.append(file);
 file.addEventListener('change',async()=>{const selected=file.files[0];if(!selected)return;try{if(selected.size>3*1024*1024)throw new Error('Choose a project smaller than 3 MB.');const next=M.validate(JSON.parse(await selected.text()));if(!confirm('Replace this editor with the selected project? Download your current work first if you need a separate copy.'))return;remember();save();project=next;render();save();announce('Project opened. '+M.templates[project.template].name);}catch(error){announce(error instanceof SyntaxError?'This file is not valid JSON. Your work has not changed.':error.message);}finally{file.value='';}});
-actions.append(button('Download project',download,'go-primary'),button('Open project',()=>file.click()),button('Print / PDF',()=>printProject(false)),undoBtn,redoBtn,button('New blank',()=>{if(confirm('Start a new blank organizer? Download the current project first to keep a copy.'))mutate(()=>project=M.fresh(project.template));}));
+actions.append(button('Download project',download,'go-primary'),button('Open project',()=>file.click()),button('Download PDF',()=>downloadPdf(false)),undoBtn,redoBtn,button('New blank',()=>{if(confirm('Start a new blank organizer? Download the current project first to keep a copy.'))mutate(()=>project=M.fresh(project.template));}));
 function setFocus(value){focusMode=value;document.body.classList.toggle('go-focus-mode',value);focusBtn.textContent=value?'Exit focus':'Focus mode';focusBtn.setAttribute('aria-pressed',String(value));}
 const focusBtn=button('Focus mode',()=>setFocus(!focusMode));focusBtn.setAttribute('aria-pressed','false');actions.append(focusBtn);
-function printProject(blank=false){flush();save();document.body.classList.toggle('go-print-blank',blank);window.print();}
-// A blank worksheet is a presentation mode, never a change to the saved project.
-actions.append(button('Print blank',()=>printProject(true)));
-window.addEventListener('afterprint',()=>document.body.classList.remove('go-print-blank'));
+async function downloadPdf(blank=false){
+ flush();save();const buttons=[...actions.querySelectorAll('button')].filter(b=>b.textContent.includes('PDF'));buttons.forEach(b=>b.disabled=true);announce('Preparing PDF…');
+ try{await window.GOPdf.download(M.copy(project),blank);announce('PDF downloaded. Your saved answers are unchanged.');}catch(error){announce('Could not download PDF: '+error.message);}finally{buttons.forEach(b=>b.disabled=false);}
+}
+// Blank export changes only the PDF, never the saved organizer.
+actions.append(button('Download Blank PDF',()=>downloadPdf(true)));
 window.addEventListener('keydown',event=>{
  if(event.key==='Escape'&&focusMode){setFocus(false);focusBtn.focus();}
  if(!(event.ctrlKey||event.metaKey)||event.altKey)return;

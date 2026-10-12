@@ -8,7 +8,7 @@ function page(slug,seed={},blocked=false){
  const dom=new JSDOM('<section data-organizer-studio="'+slug+'"></section>',{url:'https://teacharcade.com/tools/graphic-organizers/'+slug+'/',runScripts:'outside-only'}),w=dom.window;
  for(const [k,v] of Object.entries(seed))w.localStorage.setItem(k,JSON.stringify(v));
  if(blocked)Object.defineProperty(w,'localStorage',{get(){throw new Error('Blocked');}});
- w.confirm=()=>true;w.print=()=>w.printed=true;w.URL.createObjectURL=()=> 'blob:test';w.URL.revokeObjectURL=()=>{};w.HTMLAnchorElement.prototype.click=function(){w.downloadName=this.download;};
+ w.confirm=()=>true;w.print=()=>{throw new Error('Print dialogs must not open');};w.GOPdf={download:async(p,blank)=>{w.pdfDownloaded={project:p,blank};}};w.URL.createObjectURL=()=> 'blob:test';w.URL.revokeObjectURL=()=>{};w.HTMLAnchorElement.prototype.click=function(){w.downloadName=this.download;};
  w.eval(model);w.eval(engine);return w;
 }
 const clicks=(w,text)=>{const b=[...w.document.querySelectorAll('button')].find(b=>b.textContent===text);assert(b,'Missing button '+text);b.click();};
@@ -26,10 +26,10 @@ for(const slug of slugs){
  assert.equal(w.document.querySelectorAll('script').length,0);assert(w.document.querySelector('.go-print-value').textContent.length>0);
  const round=w.GOModel.validate(JSON.parse(JSON.stringify(saved)));assert.deepEqual(JSON.parse(JSON.stringify(round)),saved);
  const before=w.document.querySelectorAll('.go-section').length;clicks(w,slug==='t-chart'||slug==='pros-cons'?'+ Add row':'+ Add section');assert.equal(w.document.querySelectorAll('.go-section').length,before+1);clicks(w,'Undo');assert.equal(w.document.querySelectorAll('.go-section').length,before);clicks(w,'Redo');assert.equal(w.document.querySelectorAll('.go-section').length,before+1);
- clicks(w,'Print / PDF');assert(w.printed);
+ clicks(w,'Download PDF');assert.equal(w.pdfDownloaded.blank,false);
  const restored=page(slug,{['teacharcade_organizer_studio_v1_'+slug]:project(w)});assert.equal(restored.document.querySelector('[aria-label="Project title / topic"]').value,'My <project>');restored.close();w.close();
 }
-console.log('PASS: all 12 routes mount, edit, export, restore, undo/redo, add sections, and invoke printing.');
+console.log('PASS: all 12 routes mount, edit, export, restore, undo/redo, add sections, and request direct PDF downloads.');
 let w=page('t-chart',{teacharcade_t_chart_v1:{studentName:'Legacy student',headerA:'Claim',headerB:'Evidence',rows:[{a:'Original claim',b:'Original evidence'}]}});assert.equal(w.document.querySelector('textarea').value,'Original claim');assert.equal(w.document.querySelector('[aria-label="Name"]').value,'Legacy student');clicks(w,'Download project');assert.equal(project(w).headers[1],'Evidence');assert(w.localStorage.getItem('teacharcade_t_chart_v1'));w.close();
 w=page('kwl-chart',{teacharcade_kwl_chart_v1:{title:'Ancient Egypt',labelKnow:'Know',notesKnow:'Nile'}});assert.equal(w.document.querySelector('textarea').value,'Nile');assert.equal(w.document.querySelector('[aria-label="Project title / topic"]').value,'Ancient Egypt');w.close();
 w=page('vocabulary-organizer',{teacharcade_vocabulary_organizer_v1:{current:{term:'Democracy',definition:'Rule by the people'},saved:[{term:'Republic',definition:'Representatives'}]}});assert.equal(w.document.querySelector('[aria-label="Vocabulary term"]').value,'Democracy');assert.equal(w.document.querySelector('[aria-label="Saved vocabulary words"]').options.length,2);clicks(w,'Save word & start next');assert.equal(project(w).archive.length,2);w.close();
@@ -48,7 +48,7 @@ for(const slug of ['kwl-chart','venn-diagram','frayer-model','character-map','st
  clicks(w,'+ Add section');const added=w.document.querySelector('.go-section:last-child');assert(added.querySelector('.go-section-actions'));
  input(w,'Notes · section 1','Keep these answers');const undoButton=[...w.document.querySelectorAll('button')].find(b=>b.textContent==='Undo');assert.equal(undoButton.disabled,false);clicks(w,'Undo');assert.equal(w.document.querySelector('[aria-label="Notes · section 1"]').value,'');clicks(w,'Redo');assert.equal(w.document.querySelector('[aria-label="Notes · section 1"]').value,'Keep these answers');
  clicks(w,'Focus mode');assert(w.document.body.classList.contains('go-focus-mode'));w.dispatchEvent(new w.KeyboardEvent('keydown',{key:'Escape'}));assert(!w.document.body.classList.contains('go-focus-mode'));
- clicks(w,'Print blank');assert(w.document.body.classList.contains('go-print-blank'));assert.equal(project(w).cards[0].text,'Keep these answers');w.dispatchEvent(new w.Event('afterprint'));assert(!w.document.body.classList.contains('go-print-blank'));
+ clicks(w,'Download Blank PDF');assert.equal(w.pdfDownloaded.blank,true);assert.equal(project(w).cards[0].text,'Keep these answers');
  w.close();
 }
-console.log('PASS: semantic section positions, immediate typing undo, focus/Escape, and blank printing without changing answers.');
+console.log('PASS: semantic section positions, immediate typing undo, focus/Escape, and blank PDF export without changing answers.');
