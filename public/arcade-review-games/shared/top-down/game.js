@@ -13,7 +13,7 @@ import {encodeSave,decodeSave,createSaveStore} from './save.js';
 import {buildReport,reportSummary,downloadReport} from './report.js';
 import {hintFor,revealHint} from './hints.js';
 let map=validateAdventure(createAdventure());
-import { createState, undo, interact, doorOpen, completeChallenge, resetPuzzle, exitReady, cluesReady, lightPaths, inventoryEntries, adventureResults } from './model.js';
+import { createState, undo, interact, doorOpen, completeChallenge, resetPuzzle, exitReady, exitSupplyHint, cluesReady, lightPaths, inventoryEntries, adventureResults } from './model.js';
 const $=id=>document.getElementById(id);
 let state=createState(map), started=false, elapsed=0, last=0;
 const heldKeys=new Set(),heldPointers=new Map();
@@ -113,8 +113,8 @@ function render(){
     const progress=state.sequences[puzzle.id]||0;
     const ready=exitReady(map,state,exit), missing=(exit.requiredItems||[]).filter(id=>!state.items.includes(id));
     const known=cluesReady(puzzle,state);
-    circuitPanel.replaceChildren(element('strong',ready?'EXIT UNLOCKED':'POWER THE EXIT'),element('p',!known?(puzzle.clueHint||'Find the clues for this sequence.'):puzzle.showNext===false?(puzzle.knownText||'Follow the clues in your journal.'):puzzle.sequence.map(id=>map.objects.find(o=>o.id===id)?.label||id).join(' → ')),element('p',`Door lights: ${progress} / ${puzzle.sequence.length} · Supplies: ${missing.length?missing.map(id=>map.inventory.find(i=>i.value===id)?.label||id).join(', ')+' needed':'ready'}`,'circuit-detail'));
-    objective=!known?(puzzle.clueHint||'Find the clues for this sequence.'):ready?'Walk onto the glowing exit to finish, or face it and interact.':progress===puzzle.sequence.length?'Earn the missing supplies from their chests, then return to the exit.':'Face a labeled switch and interact. Each correct step powers one door light.';
+    circuitPanel.replaceChildren(element('strong',ready?'EXIT UNLOCKED':progress===puzzle.sequence.length?'CODE COMPLETE · SUPPLIES NEEDED':'POWER THE EXIT'),element('p',!known?(puzzle.clueHint||'Find the clues for this sequence.'):puzzle.showNext===false?(puzzle.knownText||'Follow the clues in your journal.'):puzzle.sequence.map(id=>map.objects.find(o=>o.id===id)?.label||id).join(' → ')),element('p',`Door lights: ${progress} / ${puzzle.sequence.length} · Supplies: ${missing.length?missing.map(id=>map.inventory.find(i=>i.value===id)?.label||id).join(', ')+' needed':'ready'}`,'circuit-detail'));
+    objective=!known?(puzzle.clueHint||'Find the clues for this sequence.'):ready?'Walk onto the glowing exit to finish, or face it and interact.':progress===puzzle.sequence.length?exitSupplyHint(map,state,exit)+' Your light sequence stays solved.':(puzzle.showNext===false?'Face a labeled switch and follow the code in your journal.':`Next: ${map.objects.find(o=>o.id===puzzle.sequence[progress])?.label||'read the code'}. Face that switch and interact. Repeated labels mean press the same switch again.`);
   }
   const count=reviewSummary(state.review).total,modeLabel=map.modes?.find(m=>m.id===map.mode)?.label||map.mode||'Explore';
   $('difficulty').textContent=`${modeLabel} · ${count} ${count===1?'question':'questions'}${topics.length?' · '+content.title:''}`;

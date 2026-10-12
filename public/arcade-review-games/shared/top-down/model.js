@@ -106,6 +106,13 @@ export function undo(state) {
   const previous=state.history.pop();
   if (previous) { state.player=previous.player; state.blocks=previous.blocks; }
 }
+export function exitSupplyHint(map,state,exit) {
+  return (exit.requiredItems||[]).filter(id=>!state.items.includes(id)).map(id=>{
+    const label=inventoryLabel(map,'item',id);
+    const chest=map.objects.find(o=>o.type==='challenge'&&o.reward?.type==='item'&&o.reward.value===id);
+    return chest?`Open the ${chest.label||'reward chest'} to earn the ${label}.`:`Collect the ${label}.`;
+  }).join(' ');
+}
 export function exitReady(map,state,exit) {
   const puzzle=(map.puzzles||[]).find(p=>p.id===exit.sequencePuzzle);
   return (exit.requiredItems||[]).every(id=>state.items.includes(id)) && (exit.requires||[]).every(id=>state.activated.includes(id)) &&
@@ -165,14 +172,14 @@ export function interact(map,state,target=null) {
       state.sequences[puzzle.id]=progress+1;
       if(!state.activated.includes(object.id))state.activated.push(object.id);
       const sequenceExit=map.objects.find(o=>o.type==='exit'&&o.sequencePuzzle===puzzle.id);
-      return {type:'message',tone:'correct',text:progress+1===puzzle.sequence.length?(sequenceExit&&exitReady(map,state,sequenceExit)?'All door lights are on! The exit is unlocked. Walk to it and interact.':'All door lights are on! Earn the missing supplies before using the exit.'):`Door light ${progress+1} of ${puzzle.sequence.length} powered.${puzzle.showNext===false?' Follow the clues in your journal.':` Next: ${map.objects.find(o=>o.id===puzzle.sequence[progress+1])?.label||'read the inscription'}.`}`};
+      return {type:'message',tone:'correct',text:progress+1===puzzle.sequence.length?(sequenceExit&&exitReady(map,state,sequenceExit)?'All door lights are on! The exit is unlocked. Walk to it and interact.':'All door lights are on! Earn the missing supplies before using the exit. '+exitSupplyHint(map,state,sequenceExit)):`Door light ${progress+1} of ${puzzle.sequence.length} powered.${puzzle.showNext===false?' Follow the clues in your journal.':` Next: ${map.objects.find(o=>o.id===puzzle.sequence[progress+1])?.label||'read the inscription'}.`}`};
     }
     if (!state.activated.includes(object.id)) state.activated.push(object.id);
     return {type:'message',text:object.text||'Switch activated.'};
   }
   if (object.type==='exit') {
     if (exitReady(map,state,object)) { state.won=true; return {type:'win'}; }
-    return {type:'message',text:(object.requiredItems||[]).some(id=>!state.items.includes(id))?'Exit locked: earn the missing supplies. Check your inventory and the reward chests.':object.lockedText||'Exit locked: find the signal code and power every door light. Read the inscription or check your journal.'};
+    return {type:'message',text:(object.requiredItems||[]).some(id=>!state.items.includes(id))?'Exit locked: earn the missing supplies. '+exitSupplyHint(map,state,object):object.lockedText||'Exit locked: find the signal code and power every door light. Read the inscription or check your journal.'};
   }
   return {type:'none'};
 }
