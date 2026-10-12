@@ -45,6 +45,18 @@ window.TA3DAdventureConfig = Object.freeze({
     red: 0xef4444,
   }),
 
+  exterior: Object.freeze({
+    start: Object.freeze({ x: 0, z: 12.5 }),
+    energyCell: Object.freeze({ x: -6.3, z: 5.2 }),
+    terminal: Object.freeze({ x: 6.35, z: -3.6 }),
+    terminalWait: Object.freeze({ x: 5.2, z: -1.8 }),
+    switch: Object.freeze({ x: 2.8, z: -6.35 }),
+    switchWait: Object.freeze({ x: 2.8, z: -4.7 }),
+    gateCheckpoint: Object.freeze({ x: 0, z: -6.45 }),
+    missionEntry: Object.freeze({ x: 0, z: -9.65 }),
+    entryTrigger: Object.freeze({ maxAbsX: 6.8, zLessThan: -9.0 }),
+  }),
+
   relayPuzzle: Object.freeze({
     panelLabel: "AUX POWER ROUTE",
     order: Object.freeze(["cyan", "amber", "green"]),
@@ -63,6 +75,8 @@ window.TA3DAdventureConfig = Object.freeze({
   mission: Object.freeze({
     startPosition: Object.freeze({ x: 0, y: 0, z: -10.15, yaw: Math.PI }),
     zone: Object.freeze({ x: 0, z: -14, activeDistance: 36 }),
+    archiveCheckpoint: Object.freeze({ x: 0, z: -15.55 }),
+    coreCheckpoint: Object.freeze({ x: 0.5, z: -16.25 }),
 
     archiveConsole: Object.freeze({
       x: -4.7,
