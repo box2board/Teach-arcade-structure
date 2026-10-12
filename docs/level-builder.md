@@ -1,42 +1,54 @@
-# Side-scroller Level Builder: first working milestone
+# Teach Arcade Level Builder (V1.4 development)
 
-Development entry: `/dev/level-editor/`. No navigation or production game changes.
+Editor: `/dev/level-editor/`. Showcase file running through the website loader: `/dev/level-editor/play.html?level=creator-showcase.json`.
 
-## Audit
+## Authoring workflow
 
-The latest checked-in runtime is V1.3, layered over V1.2 core, physics and LevelBuilder. The development Pyramid Escape candidate uses that runtime. V1.3 adds dash/stomp, protection, gear, mounts, gated breakables and secrets. Existing V1.0–V1.2 editions and the original WWI Trench Run remain untouched.
+Choose an object category → choose appearance/type in Placement options → place it → select it to adjust settings. The inspector offers appearance, size, position, rewards and behavior without JSON editing. The editor and playable creator renderer use the same original canvas artwork library. Advanced JSON remains available for less common engine properties.
 
-LevelBuilder currently turns terrainSegments/hazardTiles/checkpointTiles into expanded tile layers. Runtime consumes expanded layers plus entity arrays; it does not rebuild procedural segments. The editor therefore preserves and exports expanded runtime data in an envelope:
+- Platforms and moving platforms: stone, wood, roof, sand and metal materials.
+- Enemies: walking scarab, flying bat, crawler, drone, falling stone presets. Movement and stompable/hazard/bounce interactions are runtime properties; preset selection fills in sensible defaults.
+- Breakables: crate, cracked wall, cracked floor. Dash, stomp, heavy gear or headbutt; empty, collectible or bonus-point contents.
+- Collectibles: scarab, gem, star, book, gear. Configurable score plus points/protection/gear reward. Ability pickups offer protection or climbing/heavy gear separately from appearance.
+- Question objects: tablet, sign, terminal, scroll. Correct-answer rewards: boost, checkpoint, disable next trap/enemy. Question gates link to an existing question point and open after it is answered. Finish still requires all question points to be answered.
+- Traps: spikes, dart trap, energy; ropes/ladders/vines and spring/pad bounce surfaces.
+- Scenery: tree, palm, house, column, cloud, rock; background or foreground layer. Scenery has no collision.
+- Scene themes: tomb, forest, rooftops. Search and select from the existing Review Lab question-bank catalogue; references are saved in the JSON and fetched for playtesting.
 
-`{format: 'teach-arcade-level', version: 1, engine: 'side-scroller-v1.3', theme: 'pyramid-v13', level: {...}}`
+Blank level, original Pyramid sample, and new creator showcase are available. Width is 960–32000px; world height remains 480px/earth physics. Growing extends the terrain edge. Shortening trims terrain beyond the new edge but refuses to discard objects, marker tiles, or path nodes. The finish moves to fit. Undo restores changes.
 
-Expanded `level.layers` are authoritative. Do **not** run an edited exported level back through LevelBuilder.build: old source segments are retained for provenance, but would overwrite edited tiles. Version and engine mismatch reject explicitly.
+Select/drag, paint terrain/checkpoints, erase, duplicate/delete, zoom, optional snap, Pan, position slider, Start/Finish navigation, browser drafts, JSON import/export. Canvas backing width is bounded for long levels on tablets.
 
-## Supported workflow
+## Movement routes
 
-- Starts from the Pyramid Escape V1.3 candidate. Browser draft restores on opening.
-- Start from the Pyramid sample or a blank, flat level. Adjust width from 960 to 32000 pixels. Growing extends the terrain edge; shortening trims terrain beyond the new end but rejects objects/marker tiles that would be lost. The finish moves to fit. Undo restores the previous layout.
-- Select and drag objects; paint terrain/checkpoints; erase tiles or objects. Pan tool, position slider, and Start/Finish navigation support touch use. Canvas backing width is capped at 12000 pixels while CSS retains the requested zoom, limiting memory for long levels.
-- Add platforms, scarabs, question points, traps, breakables, bounce surfaces, ropes, power items, slopes, moving platforms, enemies and secret areas.
-- Numeric inspector and dropdowns configure pickup type, break behavior, rope access, question rewards, enemy motion, and movement axis. Advanced JSON preserves other properties. Invalid numeric changes are rejected before changing history; Undo/Redo can recover intermediate layouts.
-- Undo/redo, duplicate/delete, zoom, optional grid snapping, local draft, JSON import/export.
-- Playtest uses an iframe with existing V1.2 + V1.3 engine, physics, Pyramid artwork and Egypt questions, including shared difficulty selection and keyboard question controls. Separate iframe lifecycle prevents accumulated engine listeners and animation loops.
-- Draft passes through the same file parser as imported/exported JSON. No engine source is forked.
+Select moving platform/enemy → Draw/edit route → tap map points → drag numbered handles or edit their coordinates → Done. Choose speed, pause duration and loop/back-and-forth mode. Preview motion uses the same `PathMotion` implementation as the runtime. Use simple movement to clear the path and restore axis/range controls. Moving the whole object translates its entire path. Duplication preserves the path.
 
-## Import an export into a website game
+The path marks the object's **top-left** position. Custom paths bypass ground/falling behaviors, so keep them clear of terrain. Loop closure travels back to the first point; it does not teleport. Path motion is an opt-in V1.4 extension. No existing production engine or game is modified.
 
-1. Store the JSON beside the new game's files.
-2. Load `/dev/level-editor/level-format.js` and `/dev/level-editor/loader.js` before the game's initialization script. These modules should move to a shared stable engine path when the format is approved.
-3. Await `const level = await TALoadLevel('./my-level.json')` and set `window.TA_GAME = {id, physicsPreset:'earth', level, theme, questions}` using that game's theme/question pack.
-4. Only **after** that promise resolves, load the V1.2 shell or call its boot function once. Do not include an automatically booting shell before the download completes.
-5. Test the game preview before merging. For a multi-stage game, a stage manager still needs to select and load successive files; this milestone exports individual stages.
+## Level format and website import
 
-The engine finishes only after all active question points are answered. The preview currently uses Egypt questions, not the Review Lab topic picker. Only 480px-high worlds / earth physics are supported in this first editor. New entity placement beyond the map is rejected on validation/export; route reachability still needs playtesting. Artwork for extra editor objects is a simple editor-only drawing extension; full theme libraries, section templates, mount placement UI, multi-stage management and publishing remain future work.
+Envelope: `{format:'teach-arcade-level', version:1, engine:'side-scroller-v1.4', scene, questionSet, level:{...}}`. The parser also accepts earlier V1.3 exports. Editing upgrades the engine field to V1.4. Unknown versions reject explicitly.
 
-## Verification
+Expanded `level.layers` are authoritative. Source terrainSegments are retained from the original sample for provenance, but do **not** rebuild an edited file with LevelBuilder.build: it would overwrite painted tiles.
 
-`node scripts/test-level-editor.mjs`
+To put an exported level on the website:
 
-`node scripts/test-level-editor-controls.mjs`
+1. Store its JSON with a game's files.
+2. Load the existing V1.2 core/physics and V1.3 abilities/core, then V1.4 path-motion and creator-runtime.
+3. Load object-library.js, the creator renderer, level-format.js, loader.js and question-bank.js (currently under `/dev/level-editor/`). These shared creator modules can move to stable engine paths when the builder is approved.
+4. Await `const doc = await TALoadCreatorDocument('./my-level.json')` and `const questions = await TALoadCreatorQuestions(doc.questionSet, fallbackQuestions)`.
+5. Set `TA_GAME` from `doc.level`, the selected questions and a theme carrying `scene:doc.scene`. Load/boot the shell only after that data is ready. The loader rejects V1.4 exports if the creator runtime is missing.
 
-Covers lossless sample round trip, platform/collectible edits, invalid file rejection, actual V1.3 runtime instantiation, collectible interaction, question-gated completion, and HTML asset paths. The control checks simulate DOM/pointer handlers for blank creation, resize, clamping, dragging, invalid input, undo/redo, pan, canvas bounds, and zoom coordinates. They are not browser tests. JavaScript syntax checked separately. Browser interaction and touch QA not performed: the managed environment lacks the required control-browser skill. These are required before treating this as production ready.
+The existing creator play page performs that whole flow already, including direct JSON URL loading. `?draft=...` runs an editor session; `?level=filename.json` demonstrates a deployed static level file. Refer to play.html/play.js as the working page template. No direct publishing or production game replacement occurs from the builder.
+
+## Verification and boundaries
+
+Run:
+
+- `node scripts/test-level-editor.mjs`
+- `node scripts/test-level-editor-controls.mjs`
+- `node scripts/test-creator-paths.mjs`
+
+Checks cover lossless JSON, editing, asset paths, runtime loading, collectible/finish behavior, blank creation, resizing, pointer handlers, invalid input, undo/redo, pan, bounded canvas, zoom, style selection, drawn routes, pause/loop reversal, frame-rate invariance, rider carry, enemy routes, rewards, and question gates. DOM controls are simulated; no real-browser/touch QA claim is made. The managed environment lacks the required control-browser skill. Playtest every route before release; data validation does not prove reachability.
+
+This release implements object/style/behavior authoring and waypoint routes. It is not yet a universal editor for every V1.3 property: mount placement, full starting-ability configuration, multiple stages, reusable section templates, custom art uploads, and richer theme packs remain future work. Existing levels preserve those properties on round trip. Unsupported behaviors are not advertised as editable options. Current terrain platforms are solid; one-way platforms are not exposed because the runtime does not support them yet.

@@ -1,10 +1,10 @@
 /* Versioned, lossless envelope for the V1.3 runtime's expanded level data. */
 (()=>{
- const arrays=['platforms','questionPoints','collectibles','breakables','bounceSurfaces','climbables','abilityItems','abilityHazards','mounts','secrets','movers','movingPlatforms','gates','surfaceZones','slopes','zones'];
+ const arrays=['decorations','platforms','questionPoints','collectibles','breakables','bounceSurfaces','climbables','abilityItems','abilityHazards','mounts','secrets','movers','movingPlatforms','gates','surfaceZones','slopes','zones'];
  const clone=o=>JSON.parse(JSON.stringify(o));
  function validate(doc){
   const errors=[],warn=[];
-  if(!doc||doc.format!=='teach-arcade-level'||doc.version!==1||doc.engine!=='side-scroller-v1.3')return {errors:['Unsupported level format, version, or engine.'],warnings:[]};
+  if(!doc||doc.format!=='teach-arcade-level'||doc.version!==1||!['side-scroller-v1.3','side-scroller-v1.4'].includes(doc.engine))return {errors:['Unsupported level format, version, or engine.'],warnings:[]};
   const l=doc.level;
   if(!l||typeof l!=='object'||Array.isArray(l))return {errors:['Missing level data.'],warnings:[]};
   const finite=(n,min,max)=>typeof n==='number'&&Number.isFinite(n)&&n>=min&&n<=max;
@@ -28,8 +28,18 @@
     for(const k of ['w','h'])if(o[k]!==undefined&&!finite(o[k],1,32000))errors.push('Invalid '+key+' '+k+'.');
     if((o.w||26)+o.x>width)errors.push(key+' extends beyond world width.');
     if(key!=='surfaceZones'&&(o.h||38)+o.y>height)errors.push(key+' extends below the world.');
+    if(key==='gates'&&!(l.questionPoints||[]).some(q=>q.id===o.questionId))errors.push('Question gate must link to an existing question point.');
     if(key==='abilityItems'&&!['power','gear'].includes(o.type))errors.push('Pickup type must be power or gear.');
     if(o.abilities!==undefined&&(!Array.isArray(o.abilities)||o.abilities.some(a=>typeof a!=='string')))errors.push('Abilities must be a list of names.');
+    if(o.path!==undefined){
+     if(!['movingPlatforms','movers'].includes(key)||!Array.isArray(o.path)||o.path.length<2||o.path.length>64)errors.push('Movement path needs 2–64 points.');
+     else{for(const [j,p] of o.path.entries()){if(!p||!finite(p.x,0,width-(o.w||32))||!finite(p.y,0,height-(o.h||22)))errors.push('Path point is outside the world.');if(j&&p?.x===o.path[j-1]?.x&&p?.y===o.path[j-1]?.y)errors.push('Consecutive path points must differ.');if(p?.pause!==undefined&&!finite(p.pause,0,30))errors.push('Path pause must be 0–30 seconds.');}if(o.path[0]?.x!==o.x||o.path[0]?.y!==o.y)errors.push('Path must start at the object position.');}
+     if(!['loop','pingpong'].includes(o.pathMode))errors.push('Choose loop or pingpong path mode.');
+     if(!finite(o.speed,1,1000))errors.push('Path speed must be 1–1000 pixels per second.');
+    }
+    if(o.pathPause!==undefined&&!finite(o.pathPause,0,30))errors.push('Path pause must be 0–30 seconds.');
+    if(o.style!==undefined&&typeof o.style!=='string')errors.push('Style must be a name.');
+    if(key==='decorations'&&!['background','foreground'].includes(o.layer))errors.push('Choose a scenery layer.');
     if(key==='questionPoints'&&!Number.isInteger(o.questionIndex))errors.push('Question tile needs an integer questionIndex.');
     if(key==='questionPoints'&&o.questionIndex<0)errors.push('Question index cannot be negative.');
     if(['movers','movingPlatforms'].includes(key)&&o.axis!==undefined&&!['x','y'].includes(o.axis))errors.push('Movement axis must be x or y.');
@@ -41,7 +51,7 @@
   warn.push('Playtest every required jump and route. Validation does not prove the level is winnable.');
   return {errors:[...new Set(errors)],warnings:warn};
  }
- function pack(level){return {format:'teach-arcade-level',version:1,engine:'side-scroller-v1.3',theme:'pyramid-v13',level:clone(level)};}
+ function pack(level){return {format:'teach-arcade-level',version:1,engine:'side-scroller-v1.4',theme:'pyramid-v13',level:clone(level)};}
  function parse(text){if(text.length>2000000)throw Error('Level file exceeds 2 MB.');const d=JSON.parse(text);const r=validate(d);if(r.errors.length)throw Error(r.errors.join('\n'));return d;}
  window.TALevelFile={pack,parse,validate,clone,arrays};
 })();
