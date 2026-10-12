@@ -211,6 +211,51 @@
       flex-wrap:wrap;
     }
 
+    /* Homepage sections fill the browser; prose keeps a readable line length. */
+    .home-main {
+      --home-gutter: clamp(20px, 4vw, 80px);
+      width: 100%;
+      margin: 0;
+    }
+    .home-main > section:not(.hero) {
+      width: calc(100% - 2 * var(--home-gutter));
+      max-width: 1600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .home-main > .hero {
+      width: 100%;
+      padding: clamp(56px, 7vw, 100px) var(--home-gutter) 64px;
+      margin: 0 0 44px;
+      background: linear-gradient(120deg, #e9f1ff 0%, #f1f5ff 55%, #fff2e1 100%);
+    }
+    .home-main .hero h1 {
+      max-width: 1200px;
+      margin: 0 auto 20px;
+      font-size: clamp(32px, 3.8vw, 64px);
+      line-height: 1.12;
+      text-wrap: balance;
+    }
+    .home-main .hero > p:first-of-type {
+      max-width: 850px;
+      font-size: clamp(17px, 1.4vw, 21px);
+      margin-bottom: 24px;
+    }
+    .home-main .hero .btn {
+      padding: 14px 20px;
+      line-height: 1.25;
+    }
+    .home-main .home-intro p { max-width: 900px; }
+    .home-main .subjects-grid {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    .home-main .more-originals { padding-bottom: 40px; }
+    @media (max-width: 600px) {
+      .home-main > .hero { padding-top: 44px; padding-bottom: 40px; }
+      .home-main .subjects-grid { grid-template-columns: 1fr; gap: 16px; }
+      .home-main #home-search { flex-direction: column; }
+      .home-main #home-search input { min-width: 0 !important; width: 100%; }
+    }
   </style>
 
 </head>
@@ -238,7 +283,7 @@
     </header>
   </noscript>
 
-  <main class="container">
+  <main class="home-main">
 
     <!-- Top Ad Placeholder -->
     <div class="ad-slot ad-top" aria-label="Advertisement"></div>
