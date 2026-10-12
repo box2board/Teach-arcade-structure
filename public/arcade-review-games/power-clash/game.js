@@ -283,7 +283,7 @@
         if (c.left.some((key) => keys.has(key))) direction -= 1;
         if (c.right.some((key) => keys.has(key))) direction += 1;
       }
-      if (direction) p.vx = direction * 245;
+      if (direction) p.vx = direction * (p.id === 2 && state.gameMode === "cpu" ? 215 : 245);
       else if (p.grounded) p.vx *= Math.pow(.0008, dt);
       p.x += p.vx * dt;
       p.y += p.vy * dt;
@@ -311,11 +311,12 @@
     const distance = (human.x + human.w / 2) - (cpu.x + cpu.w / 2);
     const gap = Math.abs(distance);
     cpu.cpuDirection = gap > 78 ? Math.sign(distance) : 0;
-    if (gap <= 98 && cpu.attackCooldown <= 0) {
-      const attackKind = cpu.juice >= 8 && Math.random() < .3 ? "kick" : "punch";
+    // Leave the player short openings to react, especially when using touch controls.
+    if (gap <= 98 && cpu.attackCooldown <= 0 && Math.random() < .68) {
+      const attackKind = cpu.juice >= 8 && Math.random() < .24 ? "kick" : "punch";
       attack(cpu, attackKind);
     }
-    cpu.cpuThink = .22 + Math.random() * .22;
+    cpu.cpuThink = .3 + Math.random() * .24;
   }
 
   function frame(time) {
