@@ -1,12 +1,34 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createState,undo,resetPuzzle,interact} from '../public/arcade-review-games/shared/top-down/model.js';
-import {createMotion,advanceMotion,syncMotion,interactionTarget} from '../public/arcade-review-games/shared/top-down/motion.js';
+import {createMotion,advanceMotion,syncMotion,interactionTarget,unlockedExitAtPlayer} from '../public/arcade-review-games/shared/top-down/motion.js';
 function fixture(){
  const map={start:{x:2,y:2},tiles:Array.from({length:10},(_,y)=>y===0||y===9?'##########':'#........#'),blocks:[],doors:[],objects:[],plates:[],inventory:[]};
  const state=createState(map);return {map,state,motion:createMotion(state)};
 }
 function travel(f,input,time){for(let t=0;t<time-1e-9;t+=.01)advanceMotion(f.map,f.state,f.motion,input,Math.min(.01,time-t));}
+test('nearby exit interaction tolerates offsets and still requires rewards',()=>{
+ const f=fixture();f.map.objects=[{id:'exit',type:'exit',x:3,y:2,requiredItems:['cell']}];
+ f.state.facing='right';f.motion.y=2.35;
+ const target=interactionTarget(f.map,f.state,f.motion);
+ assert.equal(target?.id,'exit');
+ assert.equal(interact(f.map,f.state,target).type,'message');assert.equal(f.state.won,false);
+ f.state.items.push('cell');assert.equal(interact(f.map,f.state,target).type,'win');
+ const blocked=fixture();blocked.state.facing='right';blocked.motion.x=2.4;blocked.motion.y=2.4;
+ blocked.map.objects=[{id:'exit',type:'exit',x:3,y:3}];blocked.map.tiles[2]='#..#.....#';
+ assert.equal(interactionTarget(blocked.map,blocked.state,blocked.motion),null);
+});
+test('exit contact requires physical proximity, supplies, switches and clues',()=>{
+ const f=fixture(),exit={id:'exit',type:'exit',x:3,y:2,requiredItems:['cell'],requires:['switch'],sequencePuzzle:'code'};
+ f.map.objects=[exit];f.map.puzzles=[{id:'code',sequence:['switch'],requiredClue:'clue'}];
+ travel(f,{x:1,y:0},.25);
+ assert.equal(unlockedExitAtPlayer(f.map,f.state,f.motion),null);
+ f.state.items.push('cell');f.state.activated.push('switch');f.state.sequences.code=1;
+ assert.equal(unlockedExitAtPlayer(f.map,f.state,f.motion),null);
+ f.state.discovered.push('clue');assert.equal(unlockedExitAtPlayer(f.map,f.state,f.motion),exit);
+ assert.equal(interact(f.map,f.state,exit).type,'win');
+ f.motion.x=2;assert.equal(unlockedExitAtPlayer(f.map,f.state,f.motion),null);
+});
 test('movement is fractional, diagonals have equal speed, and opposite directions stop',()=>{
  const straight=fixture(),diagonal=fixture();travel(straight,{x:1,y:0},.1);travel(diagonal,{x:1,y:1},.1);
  assert.ok(straight.motion.x>2&&straight.motion.x<3);assert.equal(straight.state.player.x,2);
@@ -76,3 +98,4 @@ test('ordinary cell crossings do not request a scene rebuild; pickups do',()=>{
  for(let i=0;i<30;i++){const result=advanceMotion(f.map,f.state,f.motion,{x:1,y:0},.01);if(result.worldChanged)pickupChanged=true;}
  assert.ok(pickupChanged);assert.deepEqual(f.state.items,['lens']);
 });
+

@@ -1,4 +1,4 @@
-import {move,obstacle,directions} from './model.js';
+import {move,obstacle,directions,exitReady} from './model.js';
 
 // World coordinates describe the player's feet. Puzzle objects remain on the grid.
 export function createMotion(state){return {x:state.player.x,y:state.player.y,time:0,pushAt:-Infinity};}
@@ -8,7 +8,8 @@ export function interactionTarget(map,state,motion){
   const [fx,fy]=directions[state.facing],candidates=[...map.doors,...state.blocks.filter(b=>b.kind==='mirror'),...map.objects.filter(o=>['sign','challenge','lever','bridgeSwitch','bridge','receiver','emitter','exit'].includes(o.type)&&!state.collected.includes(o.id))];
   return candidates.map(target=>{
     const dx=target.x-motion.x,dy=target.y-motion.y,distance=Math.hypot(dx,dy),forward=dx*fx+dy*fy,lateral=Math.abs(dx*fy-dy*fx);
-    const near=target.type==='exit'?distance<=.65&&state.player.x===target.x&&state.player.y===target.y:distance<=1.4&&forward>.1&&lateral<=.75;
+    const nearby=distance<=1.4&&forward>.1&&lateral<=.75;
+    const near=nearby||(target.type==='exit'&&distance<=.65&&state.player.x===target.x&&state.player.y===target.y);
     if(!near)return null;
     // Check the whole approach, including narrow diagonal corners.
     const steps=Math.ceil(distance/.06);
@@ -19,6 +20,10 @@ export function interactionTarget(map,state,motion){
     }
     return {target,score:target.type==='exit'?-1:distance+lateral*.25};
   }).filter(Boolean).sort((a,b)=>a.score-b.score)[0]?.target||null;
+}
+// Contact completion uses the physical position as well as the logical cell.
+export function unlockedExitAtPlayer(map,state,motion){
+  return map.objects.find(o=>o.type==='exit'&&state.player.x===o.x&&state.player.y===o.y&&Math.hypot(motion.x-o.x,motion.y-o.y)<=.65&&exitReady(map,state,o))||null;
 }
 function hits(map,state,x,y){
   const cx=x+.5,cy=y+.5,result=[];
@@ -80,3 +85,4 @@ export function advanceMotion(map,state,motion,input,seconds){
   for(let i=0;i<steps;i++){axis('x',dx/steps);axis('y',dy/steps);}
   return {moved:Math.hypot(motion.x-before.x,motion.y-before.y)>1e-6,changed,worldChanged};
 }
+
