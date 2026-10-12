@@ -2,6 +2,7 @@ window.ComicArt=(()=>{
 const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c]));
 const ink='#243148';
 function background(kind){
+ const expanded=window.ComicLibraryArt.background(kind);if(expanded)return expanded;
  const base='<rect width="600" height="360" fill="#fbf4e5"/>';
  if(kind==='blank')return base;
  if(kind==='classroom')return base+'<rect y="252" width="600" height="108" fill="#d7b48c"/><path d="M0 286H600M0 330H600M90 252L30 360M230 252L210 360M410 252L470 360" stroke="#c39c73" stroke-width="2"/><rect x="45" y="48" width="290" height="150" rx="5" fill="#314e4a" stroke="#a07751" stroke-width="12"/><path d="M77 95h180M77 120h120M77 145h150" stroke="#e9f0d6" stroke-width="5" stroke-linecap="round"/><rect x="402" y="35" width="150" height="145" rx="4" fill="#a7ddeb" stroke="'+ink+'" stroke-width="5"/><path d="M477 35v145M402 106h150" stroke="#fff8e9" stroke-width="10"/><rect x="385" y="211" width="184" height="18" rx="4" fill="#87563b"/><path d="M399 229v58M550 229v58" stroke="'+ink+'" stroke-width="10"/>';
@@ -10,13 +11,9 @@ function background(kind){
  if(kind==='space')return '<rect width="600" height="360" fill="#24324e"/><g fill="#fff2bc"><circle cx="60" cy="55" r="3"/><circle cx="264" cy="35" r="3"/><circle cx="344" cy="155" r="4"/><circle cx="535" cy="205" r="3"/><path d="M170 122v16m-8-8h16M520 45v16m-8-8h16" stroke="#fff2bc" stroke-width="2"/></g><ellipse cx="453" cy="86" rx="80" ry="17" fill="none" stroke="#efaa91" stroke-width="8" transform="rotate(-20 453 86)"/><circle cx="453" cy="86" r="39" fill="#bca3ce"/><path d="M0 300Q300 215 600 300V360H0" fill="#9a9ab1"/><ellipse cx="82" cy="321" rx="44" ry="12" fill="#7d7e97"/><ellipse cx="508" cy="311" rx="29" ry="8" fill="#7d7e97"/>';
  return base;
 }
-function character(asset,expression,pose){
- const styles={alex:['#e0ae87','#405774','#638ab2'],maya:['#995d40','#2f2630','#d77a67'],sam:['#d4a77b','#82633b','#e5b35a'],jules:['#b47a5a','#322d34','#88a890']};const [skin,hair,shirt]=styles[asset]||styles.alex;
- const mouth=expression==='surprised'?'<ellipse cx="60" cy="60" rx="5" ry="8" fill="'+ink+'"/>':expression==='neutral'?'<path d="M50 61h20"/>':'<path d="M47 58q13 16 26 0" fill="white"/>';
- const arm=pose==='wave'?'<path d="M89 102q20-4 20-36" stroke="'+skin+'" stroke-width="15"/><circle cx="109" cy="57" r="11" fill="'+skin+'"/>':'<path d="M89 102l13 47" stroke="'+skin+'" stroke-width="15"/>';
- return '<g stroke="'+ink+'" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"><ellipse cx="60" cy="220" rx="47" ry="7" fill="#243148" opacity=".18" stroke="none"/><path d="M34 159l-5 50h25l6-46 9 46h24l-6-50" fill="#475571"/><path d="M30 208h25v12H19q-4-8 11-12M69 208h23l11 12H69" fill="#283246"/><path d="M32 101l-13 48" stroke="'+skin+'" stroke-width="15"/>'+arm+'<path d="M28 98q31-22 65 0l-5 65H31z" fill="'+shirt+'"/><path d="M49 82v19q11 9 23 0V82" fill="'+skin+'"/><ellipse cx="60" cy="49" rx="33" ry="40" fill="'+skin+'"/><path d="M28 38Q18-5 60 1q41-4 37 42L84 26Q68 40 43 22L28 45" fill="'+hair+'"/><path d="M43 45v3m32-3v3" stroke-width="5"/>'+mouth+'<path d="M59 45l-3 10h6" fill="none" opacity=".5"/></g>';
-}
+function character(asset,expression,pose){return window.ComicLibraryArt.character(asset,expression,pose);}
 function prop(asset){
+ const expanded=window.ComicLibraryArt.prop(asset);if(expanded)return expanded;
  const forms={book:'<path d="M5 12q27-13 53 2 26-15 53-2v72q-27-13-53 0-26-13-53 0z" fill="#f4dcad"/><path d="M58 14v70"/><path d="M15 29h30M15 43h30M70 29h30M70 43h30" stroke="#ac855b"/>',tree:'<path d="M49 70v68h20V70" fill="#96704c"/><path d="M10 95L60 3l50 92z" fill="#679881"/>',desk:'<rect x="4" y="30" width="112" height="15" rx="4" fill="#d09967"/><path d="M15 45v70M105 45v70" stroke-width="9"/>',star:'<path d="M60 3L77 43l43 3-33 28 10 42-37-23-37 23 10-42L0 46l43-3z" fill="#f4cb67"/>'};return '<g stroke="'+ink+'" stroke-width="3" stroke-linejoin="round">'+(forms[asset]||forms.book)+'</g>';
 }
 function wrap(text,max=24){const result=[];for(const paragraph of text.split('\n')){let line='';for(const word of paragraph.split(/\s+/)){if((line+' '+word).trim().length>max&&line){result.push(line);line='';}if(word.length>max){if(line){result.push(line);line='';}for(let i=0;i<word.length;i+=max)result.push(word.slice(i,i+max));}else line+=(line?' ':'')+word;}result.push(line);}return result;}
