@@ -1,0 +1,336 @@
+[constitution-basics]
+Constitution|Document establishing the framework of U.S. federal government.
+Congress|National institution making federal laws.
+President|Official heading the federal executive branch.
+Senate|Congressional chamber giving every state equal representation.
+House|Congressional chamber whose seats are apportioned by population.
+Preamble|Introduction stating the Constitution's purposes.
+Amendment|Formal change or addition to the Constitution.
+Federalism|Division of power between national and state governments.
+Veto|President's rejection of a bill passed by Congress.
+Bill of Rights|Name for the first ten constitutional amendments.
+Legislative|Branch primarily responsible for making laws.
+Executive|Branch primarily responsible for carrying out laws.
+Judicial|Branch interpreting law and resolving legal disputes.
+Popular Sovereignty|Principle that government authority comes from the people.
+Limited Government|Principle requiring officials to operate within legal restrictions.
+Separation of Powers|Division of responsibilities among governmental branches.
+Checks and Balances|Ways government branches limit one another's authority.
+Supremacy Clause|Provision giving the Constitution and valid federal law priority over conflicting state law.
+Republic|System where public authority is exercised through representatives rather than hereditary rulers.
+Speech|Form of expression protected by the First Amendment.
+[government--types-of-government]
+Democracy|Government in which citizens exercise political power.
+Monarchy|Government headed by a king or queen.
+Oligarchy|Government by a small group.
+Theocracy|Government claiming authority through religious leadership or law.
+Republic|State whose head does not rule by hereditary royal right.
+Federal|Describes constitutionally divided national and regional governing authority.
+Unitary|Describes a system concentrating constitutional governing authority nationally.
+Confederation|Union whose members retain substantial authority and delegate limited common powers.
+Authoritarian|Describes government concentrating power and restricting meaningful opposition.
+Totalitarian|Describes rule seeking extensive control over public and private life.
+Direct Democracy|System in which citizens vote on policies themselves.
+Representative|Describes democracy where voters choose officials to make decisions.
+Constitutional Monarchy|System with a monarch whose powers are limited by a governing framework.
+Absolute Monarchy|System with a monarch lacking meaningful constitutional limits.
+Parliamentary|Describes a system where the executive generally depends on legislative support.
+Presidential|Describes a system with a separately constituted executive headed by a president.
+Confidence|Support tested by a legislative vote that can bring down a prime minister.
+Opposition|Political competitors whose meaningful participation helps sustain democracy.
+Hereditary|Passed by inheritance, as in succession to a royal throne.
+Competition|Meaningful contest among candidates needed beyond merely holding elections.
+[government--u-s-constitution]
+Preamble|Introductory section stating the document's purposes.
+Articles|Seven main sections of the original constitutional text.
+Amendment|Formal change to the constitutional framework.
+Ratification|Formal approval by the required states.
+Federalism|Division of governing power between national and state levels.
+Congress|Federal lawmaking institution with two chambers.
+Senate|Chamber giving each state equal representation.
+House|Chamber whose representation is based primarily on population.
+Republic|System exercising public authority through representatives.
+Liberties|Individual freedoms critics wanted explicitly protected.
+Great Compromise|Convention agreement combining population-based and equal-state representation.
+Popular Sovereignty|Principle that ultimate political authority rests with the people.
+Limited Government|Principle that officials must respect legal limits on their powers.
+Bill of Rights|First ten amendments adding explicit safeguards for individuals.
+Convention|Philadelphia gathering that drafted the new framework in 1787.
+Article V|Section establishing the formal amendment process.
+Apportionment|Allocation of representative seats among states.
+Three Fifths|Fraction used in the compromise counting enslaved people for representation and taxation.
+Statute|Ordinary enacted law distinguished from a constitutional change.
+Delegated|Describes powers granted to the federal government.
+[government--federalism]
+Federalism|Division of constitutional authority between national and state governments.
+Delegated|Describes powers granted to the national government.
+Reserved|Describes powers retained by states or the people.
+Concurrent|Describes powers exercised by both national and state governments.
+Tenth|Amendment addressing powers not delegated federally or prohibited to states.
+Supremacy|Principle giving valid federal law priority over conflicting state law.
+Taxation|Power to collect compulsory payments shared by national and state governments.
+Education|Policy area in which states have substantial authority.
+Grants|Federal funds that may encourage states to pursue national goals.
+Constitution|Highest U.S. legal framework constraining both state and national authority.
+Full Faith and Credit|Clause concerning recognition of other states' public records and proceedings.
+Interstate|Describes disputes or commerce crossing state boundaries.
+Coinage|Production of money constitutionally assigned to national authority.
+Licensing|Setting professional qualifications, such as state rules for teachers.
+Experimentation|Trying different policy approaches in different states.
+Conditions|Requirements that can accompany federal funding within legal limits.
+Jurisdiction|An institution's legal scope of authority.
+National|Level of government serving the entire country.
+States|Political units retaining constitutionally protected roles below the national level.
+Separation of Powers|Division by branch, distinct from division by governmental level.
+[government--checks-and-balances]
+Veto|Presidential rejection of a congressional bill.
+Override|Congressional action overcoming a veto with the required votes.
+Senate|Chamber confirming many major presidential nominees.
+President|Official nominating Supreme Court justices.
+Congress|Institution controlling federal appropriations.
+Courts|Institutions that can examine the legality of government action in cases.
+Nomination|President's selection of a candidate for an appointed office.
+Confirmation|Senate approval of a nominee.
+Impeachment|Formal House accusation against a federal official.
+Judicial Review|Examination of government action for legal or constitutional validity.
+Appropriations|Laws authorizing spending of federal money.
+Advice and Consent|Constitutional Senate role in appointments and treaties.
+Chief Justice|Official presiding over impeachment trials of a sitting president.
+Treaty|International agreement requiring specified Senate consent.
+Two Thirds|Required fraction in each chamber for overriding a veto.
+Separation of Powers|Allocation of distinct responsibilities to government branches.
+Executive|Branch administering laws and subject to congressional funding limits.
+Legislative|Branch making laws and exercising oversight of agencies.
+Coordination|Cooperation among separate institutions to accomplish government action.
+Accountability|Responsibility for actions supported by institutional review and limits.
+[government--legislative-branch]
+Congress|Main federal lawmaking institution.
+Senate|Congressional chamber with six-year terms.
+House|Congressional chamber with two-year terms.
+Bill|Proposed law considered by lawmakers.
+Committee|Smaller legislative group examining proposals in detail.
+Bicameral|Having two legislative chambers.
+Population|Main basis for allocating House seats among states.
+Oversight|Congressional review of how agencies carry out laws.
+Impeachment|Formal accusation brought by the House against a federal official.
+Veto|President's rejection of a bill sent by Congress.
+Override|Congressional action enacting a bill despite presidential rejection.
+Revenue|Government income; bills raising it must originate in the House.
+Representation|Acting politically for the people or states a lawmaker serves.
+Staggered|Describes Senate elections arranged so not all seats are contested at once.
+Introduction|First formal presentation of a proposed bill in a chamber.
+Conviction|Senate judgment in an impeachment trial that can result in removal.
+Appropriations|Legislative authorization to spend federal money.
+Supermajority|Voting threshold greater than a simple majority, used for veto overrides.
+Chamber|One of Congress's two legislative bodies.
+Constituents|People represented by an elected lawmaker.
+[government--executive-branch]
+President|Head of the federal executive branch.
+Cabinet|Department heads and other designated presidential advisers.
+Vice President|Official who succeeds if the president dies in office.
+Veto|Presidential rejection of a congressional bill.
+Executive Order|Presidential directive concerning executive operations within legal authority.
+Departments|Major specialized units administering areas of federal responsibility.
+Regulations|Agency rules implementing laws under delegated authority.
+Pardon|Presidential clemency for federal offenses, excluding impeachment.
+Senate|Chamber providing consent for many major presidential appointments.
+Enforcement|Putting laws into effect, a central executive responsibility.
+Commander in Chief|Constitutional title identifying the president's military role.
+Treaty|International agreement requiring specified Senate consent.
+State of the Union|Presidential report on national conditions and recommended measures.
+Ambassador|Diplomatic representative whom the president nominates.
+Succession|Process by which another official assumes a vacant presidency.
+Administration|Management and implementation of laws and public programs.
+Oversight|Congressional review that can examine agency conduct.
+Funding|Financial support Congress can use to influence agencies.
+Statute|Law enacted through the legislative process rather than a presidential directive.
+Judicial Review|Court scrutiny that can find executive action unlawful.
+[government--judicial-branch]
+Supreme Court|Federal court established directly by Article III.
+Judicial Review|Authority to assess government action against the Constitution.
+Precedent|Earlier decision guiding analysis of later cases.
+District Courts|Primary trial courts of the federal system.
+Appeals|Requests for a higher court to review lower-court decisions.
+Jurisdiction|Legal authority to hear a case.
+Civil|Describes cases generally concerning disputes rather than prosecutions.
+Criminal|Describes cases involving alleged offenses prosecuted by government.
+Nomination|Presidential selection starting an Article III judge's appointment.
+Confirmation|Senate approval completing the usual appointment process.
+Marbury|Case name paired with Madison in the landmark judicial-review ruling.
+Original|Describes jurisdiction to hear a case first.
+Appellate|Describes jurisdiction reviewing lower-court decisions.
+Independence|Freedom to apply legal standards despite political pressure.
+Good Behavior|Constitutional condition for continued service by Article III judges.
+Constitution|Higher legal framework against which statutes may be reviewed.
+Record|Materials from earlier proceedings considered on appeal.
+Interpretation|Determining the meaning of legal texts in deciding disputes.
+Rule of Law|Principle that officials and individuals are governed by legal standards.
+Discretion|Choice the Supreme Court has over much of its appellate docket.
+[government--bill-of-rights]
+Speech|Expression protected by the First Amendment.
+Press|Publication of information and opinion protected by the First Amendment.
+Religion|Belief and practice addressed by the First Amendment's two religious clauses.
+Assembly|Peaceful gathering protected by the First Amendment.
+Petition|Requesting that government address grievances.
+Warrant|Judicial authorization relevant to many government searches.
+Counsel|Legal assistance protected in criminal prosecutions by the Sixth Amendment.
+Due Process|Lawful procedures required before deprivation of protected interests.
+Amendments|Formal additions, of which the Bill of Rights contains the first ten.
+Liberties|Individual freedoms these constitutional provisions protect.
+First|Amendment protecting expression and religious freedom.
+Fourth|Amendment addressing unreasonable searches and seizures.
+Fifth|Amendment protecting against compelled self-incrimination.
+Sixth|Amendment protecting counsel and other criminal-trial rights.
+Eighth|Amendment prohibiting cruel and unusual punishments.
+Ninth|Amendment recognizing retained rights beyond those listed.
+Tenth|Amendment concerning powers reserved to states or the people.
+Establishment|Name of the clause addressing government sponsorship of religion.
+Incorporation|Process applying many federal rights to states through the Fourteenth Amendment.
+Self Incrimination|Providing evidence against oneself, which the Fifth Amendment guards against compelling.
+[government--constitutional-amendments]
+Article V|Section establishing the formal amendment process.
+Proposal|Stage in which a constitutional change is formally put forward.
+Ratification|Stage requiring approval by three-fourths of states.
+Two Thirds|Fraction of both congressional chambers needed to propose an amendment.
+Three Fourths|Fraction of states required to approve an amendment.
+Fourteenth|Amendment including equal protection and birthright citizenship under its terms.
+Fifteenth|Amendment barring racial discrimination in voting rights.
+Nineteenth|Amendment barring denial of voting rights on the basis of sex.
+Twenty Sixth|Amendment protecting citizens eighteen or older from age-based voting denial.
+Repeal|Removal of an earlier provision, as the Twenty-first did to Prohibition.
+Twelfth|Amendment requiring separate electoral votes for president and vice president.
+Twenty Second|Amendment limiting how often a person may be elected president.
+Twenty Fifth|Amendment addressing presidential succession and inability.
+Twenty Fourth|Amendment prohibiting poll taxes in federal elections.
+Twenty Third|Amendment providing presidential electors for the District of Columbia.
+Twenty Seventh|Amendment delaying congressional pay changes until after a House election.
+Eighteenth|Amendment establishing national alcohol prohibition.
+Convention|Alternative body Article V permits for proposing amendments.
+Equal Protection|Fourteenth Amendment guarantee concerning treatment under law.
+Stability|Continuity of the constitutional framework balanced against the ability to change it.
+[government--civil-liberties]
+Speech|Protected expression allowing criticism of public officials.
+Press|Publication of news and opinions protected against improper suppression.
+Assembly|Peaceful gathering to express shared concerns.
+Petition|Asking government to address grievances.
+Religion|Belief and practice protected by First Amendment clauses.
+Due Process|Fair legal procedures before deprivation of protected interests.
+Counsel|Assistance of a lawyer in criminal prosecutions.
+Warrant|Judicial authorization relevant to many searches.
+First|Amendment protecting expression and religious freedom.
+Fourth|Amendment protecting against unreasonable searches and seizures.
+Prior Restraint|Government prevention of expression before it occurs.
+Free Exercise|Religious clause protecting belief and practice.
+Establishment|Religious clause limiting government sponsorship of religion.
+Incorporation|Application of many Bill of Rights protections to state governments.
+Fifth|Amendment guarding against compelled self-incrimination.
+Sixth|Amendment protecting legal assistance in criminal prosecutions.
+Viewpoint|Perspective officials may not discriminate against solely because they dislike it.
+Government Action|Conduct that must be present for a typical First Amendment claim against suppression.
+Accountability|Responsibility of officials supported by public criticism and debate.
+Civil Liberties|Individual freedoms protected against government interference.
+[government--political-parties]
+Platform|Statement of a party's policy positions and goals.
+Nominee|Candidate chosen to run with a party's support.
+Coalition|Groups working together for shared political goals.
+Democrats|Major U.S. party paired with Republicans in modern national elections.
+Republicans|Major U.S. party paired with Democrats in modern national elections.
+Third Party|Political organization outside the two dominant U.S. parties.
+Bipartisanship|Cooperation between members of two parties.
+Candidates|People seeking elected office whom parties recruit and train.
+Opposition|Party or parties scrutinizing the governing party and offering alternatives.
+Election|Process through which voters choose officeholders.
+Realignment|Lasting shift in party coalitions and voting patterns.
+Interest Group|Organization primarily seeking policy influence rather than fielding candidates.
+Plurality|Winning more votes than any rival without necessarily winning a majority.
+Single Member|Describes a district electing only one representative.
+Agenda|Set of public issues a new party can help broaden.
+Campaign|Organized effort to win an election.
+Recruitment|Process of finding people to run as candidates.
+Two Party System|Pattern of electoral competition dominated by two major organizations.
+Policy|Public course of action advocated in party platforms.
+Voters|People casting ballots who can assess both labels and individual candidates.
+[government--electoral-college]
+Electors|People formally casting electoral votes for president and vice president.
+President|Office chosen by the House if no candidate receives the required electoral majority.
+Senate|Chamber choosing the vice president in a contingent election.
+House|Chamber choosing the president by state delegations in a contingent election.
+Majority|More than half, the normal winning threshold of appointed electors.
+Maine|New England state allocating some electors by congressional district.
+Nebraska|Great Plains state allocating some electors by congressional district.
+Popular Vote|Tally of individual ballots rather than electoral votes.
+Twelfth|Amendment requiring distinct electoral votes for the two executive offices.
+Twenty Third|Amendment giving the District of Columbia presidential electors.
+Winner Take All|Allocation method awarding a state's electors to its popular-vote winning slate.
+Contingent Election|Constitutional fallback when no candidate gains the necessary electoral majority.
+State Delegation|Group casting one vote per state in a House presidential selection.
+Congressional District|Area whose results determine some electors in Maine and Nebraska.
+Slate|Group of electors pledged to a presidential ticket.
+Ticket|Paired presidential and vice-presidential candidates.
+Swing State|Common term for a state with a closely competitive presidential contest.
+Apportionment|Distribution of House seats that helps determine state elector totals.
+Allocation|Method a state uses to award electoral votes.
+Ballot|Instrument through which a voter records a choice.
+[government--state-government]
+Governor|Usual head of a state's executive branch.
+Legislature|Body enacting state laws.
+State Constitution|Document establishing a state's basic government framework.
+Nebraska|State with a unicameral legislature.
+Budget|Plan specifying public revenues and expenditures.
+Referendum|Popular vote on a public measure.
+Initiative|Process allowing voters to propose measures in states permitting it.
+Courts|Institutions resolving cases involving state law.
+Education|Major policy area involving schools and their funding.
+Taxes|Required payments supplying much state revenue.
+Licensing|Establishment of professional qualifications, such as standards for teachers.
+Unicameral|Having a single legislative chamber.
+Revenue|Income available to finance government operations.
+Statute|Law enacted by a legislature.
+Federalism|Division of authority explaining substantial state powers.
+Fees|Charges for services or permits that can supply government income.
+Jurisdiction|Territory or subject area within an institution's legal authority.
+Local Government|Level whose powers are often established or authorized by states.
+Judicial Review|Court assessment of whether a statute violates a governing constitution.
+Enrollment|Number of students, useful evidence for evaluating school funding.
+[government--local-government]
+Ordinance|Law adopted by a city or town.
+Zoning|Regulation of land uses within designated areas.
+City Council|Local legislative body.
+Mayor|Common title of an elected municipal leader.
+Budget|Plan for public revenues and expenditures.
+Public Hearing|Meeting where officials receive residents' input.
+Property Tax|Assessment on real estate supplying revenue for many local services.
+School Board|Body setting district-level education policy.
+Streets|Roads commonly maintained by local government.
+Water|Utility supplied through shared systems supporting public health.
+Special District|Public entity created to provide a particular service within an area.
+City Manager|Professional administrator hired by an elected council.
+Infrastructure|Shared facilities such as sewers and roads.
+Open Meetings|Publicly accessible proceedings supporting local accountability.
+Public Records|Government documents residents can examine to understand decisions.
+Municipality|Legally organized city or town.
+State Law|Source authorizing many local governmental powers.
+Emergency Services|Public safety functions neighboring communities may provide cooperatively.
+Transit|Public transportation that can serve several cities through a regional district.
+Accountability|Officials' responsibility to explain decisions to the public.
+[government--citizenship]
+Citizenship|Legal membership in a political community.
+Naturalization|Legal process by which an eligible noncitizen becomes a citizen.
+Voting|Voluntary civic action choosing representatives or deciding measures.
+Jury Service|Court participation that eligible citizens may be legally required to perform.
+Volunteering|Freely giving time to community work.
+Rights|Protected freedoms or entitlements within a political community.
+Responsibilities|Obligations accompanying participation in civic life.
+Common Good|Shared conditions supporting a community's well-being.
+Evidence|Verifiable information used to evaluate public claims.
+Resident|Person whose status identifies where they live rather than citizenship alone.
+Fourteenth|Amendment establishing citizenship by birth under its stated terms.
+Civic Duty|Obligation that may be legally required.
+Civic Virtue|Quality supporting responsible participation in public life.
+Representative|Official citizens may contact to communicate policy concerns.
+Public Hearing|Meeting where community members can comment on a proposed decision.
+Engagement|Active involvement in civic or community affairs.
+Verification|Checking whether a claim is supported by reliable information.
+Debate|Exchange of arguments about competing public ideas.
+Problem Solving|Process students practice by documenting hazards and proposing civic remedies.
+Participation|Taking part in public discussion, meetings, or other civic activities.

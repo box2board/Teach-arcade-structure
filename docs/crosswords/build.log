@@ -1,0 +1,12 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> build
+> node scripts/build-question-bank.mjs && node scripts/check-crossword-assets.mjs && node scripts/sync-interactive-content.mjs && node scripts/generate-sitemap.mjs && node scripts/generate-robots.mjs && echo 'static site'
+
+Validated and published 275 source sets / 5500 questions to static assets.
+Crossword assets passed: 76 topics, 304 PDFs, 228 previews; current source coverage verified.
+Synced content index to /workspace/scratch/5499a59291e2/teach-arcade/public/data/contentIndex.json
+Synced page text map to /workspace/scratch/5499a59291e2/teach-arcade/public/data/pageTextMap.json
+Generated sitemap.xml with 376 URLs at /workspace/scratch/5499a59291e2/teach-arcade/public/sitemap.xml
+Generated robots.txt
+static site

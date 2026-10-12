@@ -100,7 +100,7 @@
         "Federalism divides authority by region; separation of powers divides it by population",
         "Federalism divides authority by population; separation of powers divides it by region"
       ],
-      "correctAnswer": 1,
+      "correctAnswer": 0,
       "skill": "understanding"
     },
     {
@@ -232,7 +232,7 @@
         "A federal system makes local officials hereditary; a unitary system requires their direct election",
         "A federal system permits only national courts; a unitary system permits only regional courts"
       ],
-      "correctAnswer": 2,
+      "correctAnswer": 0,
       "skill": "reasoning"
     },
     {
