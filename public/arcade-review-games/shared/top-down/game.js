@@ -35,7 +35,7 @@ const {stage,sidebar}=mountLayout();
 let roomColumns=1,roomRows=1;
 function fitRoom(){
   if(!stage)return;
-  const size=roomSize(stage.clientWidth,stage.clientHeight,roomColumns,roomRows);
+  const size=roomSize(stage.clientWidth,stage.clientHeight-(circuitPanel.hidden?0:(circuitPanel.offsetHeight||0)+8),roomColumns,roomRows);
   if(size){board.style.width=size.width+'px';board.style.height=size.height+'px';board.style.setProperty('--tile-size',size.cell+'px');}
 }
 function resizeRoom(){cancelCamera($('world'));fitRoom();}
@@ -43,7 +43,7 @@ if(stage&&typeof ResizeObserver==='function')new ResizeObserver(resizeRoom).obse
 window.addEventListener('resize',resizeRoom);
 function element(tag,text,className){const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(className)e.className=className;return e;}
 function sprite(kind,facing){const host=element('span',undefined,'art');host.innerHTML=artwork(kind,facing);return host;}
-let fullMessage='';
+let fullMessage='',messageTimer;
 const messageDetails=element('button','Read full message','message-details');messageDetails.hidden=true;
 $('message').after(messageDetails);
 function updateMessageDetails(){
@@ -51,7 +51,7 @@ function updateMessageDetails(){
 }
 messageDetails.addEventListener('click',()=>{if(!dialog.open)popup('MESSAGE','Adventure message',[fullMessage],[{text:'Back to adventure',run:resume,primary:true}]);});
 if(sidebar&&typeof ResizeObserver==='function')new ResizeObserver(updateMessageDetails).observe($('message'));
-function message(text,tone='neutral'){fullMessage=text;$('message').textContent=text;$('message').dataset.tone=tone;requestAnimationFrame(updateMessageDetails);}
+function message(text,tone='neutral'){clearTimeout(messageTimer);fullMessage=text;$('message').textContent=text;$('message').dataset.tone=tone;$('message').hidden=false;requestAnimationFrame(updateMessageDetails);messageTimer=setTimeout(()=>{$('message').hidden=true;messageDetails.hidden=true;},6500);}
 for(const icon of document.querySelectorAll('.legend i')){
   const kind={'■':'block','◎':'plate','▣':'challenge','ϟ':'lever','⚒':'tool','◆':'item','◇':'exit'}[icon.textContent];
   if(kind){icon.innerHTML=artwork(kind);icon.classList.add('legend-art');icon.setAttribute('aria-hidden','true');}
@@ -61,7 +61,21 @@ function roomAt(x,y){return findRoom(map,x,y);}
 const circuitPanel=element('div',undefined,'circuit-panel');
 let renderedRoom=null,heroFacing=null;
 const entityNodes=new Map();let highlightedNode=null,interactionLabel='';
-circuitPanel.hidden=true;if(sidebar)sidebar.prepend(circuitPanel);else board.before(circuitPanel);
+circuitPanel.hidden=true;board.before(circuitPanel);
+const contextPrompt=element('div',undefined,'context-prompt');contextPrompt.hidden=true;contextPrompt.setAttribute('aria-hidden','true');board.append(contextPrompt);
+function clueGuidance(puzzle){
+  const missing=(puzzle.requiredClues||(puzzle.requiredClue?[puzzle.requiredClue]:[])).find(id=>!state.discovered.includes(id));
+  const inscription=map.objects.find(o=>o.clue===missing);
+  if(!inscription)return puzzle.clueHint||'Find the clues for this sequence.';
+  const room=findRoom(map,inscription.x,inscription.y),name=room?.name.replace(/^\d+\s*·\s*/,'')||'the indicated room';
+  if(inscription.requiresTool&&!state.tools.includes(inscription.requiresTool)){
+    const chest=map.objects.find(o=>o.reward?.type==='tool'&&o.reward.value===inscription.requiresTool);
+    return chest?`Earn the ${rewardFor(map,chest).label} from the ${chest.label||'reward chest'} in ${findRoom(map,chest.x,chest.y)?.name.replace(/^\d+\s*·\s*/,'')||name}.`:inscription.lockedText||puzzle.clueHint;
+  }
+  const south=inscription.y>((room?.minY??0)+(room?.maxY??map.tiles.length-1))/2;
+  const east=inscription.x>(room?.min+room?.max)/2;
+  return `Read the ${south?(east?'southeast':'south')+' ':''}inscription in ${name}: face it and press E / Space.`;
+}
 function render(){
   const light=lightPaths(map,state);
   lightLayer.innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${map.tiles[0].length} ${map.tiles.length}" preserveAspectRatio="none" aria-hidden="true">${light.segments.map(s=>`<path d="M${s.from.x+.5} ${s.from.y+.5}L${s.to.x+.5} ${s.to.y+.5}"/>`).join('')}</svg>`;
@@ -113,9 +127,10 @@ function render(){
     const progress=state.sequences[puzzle.id]||0;
     const ready=exitReady(map,state,exit), missing=(exit.requiredItems||[]).filter(id=>!state.items.includes(id));
     const known=cluesReady(puzzle,state);
-    circuitPanel.replaceChildren(element('strong',ready?'EXIT UNLOCKED':progress===puzzle.sequence.length?'CODE COMPLETE · SUPPLIES NEEDED':'POWER THE EXIT'),element('p',!known?(puzzle.clueHint||'Find the clues for this sequence.'):puzzle.showNext===false?(puzzle.knownText||'Follow the clues in your journal.'):puzzle.sequence.map(id=>map.objects.find(o=>o.id===id)?.label||id).join(' → ')),element('p',`Door lights: ${progress} / ${puzzle.sequence.length} · Supplies: ${missing.length?missing.map(id=>map.inventory.find(i=>i.value===id)?.label||id).join(', ')+' needed':'ready'}`,'circuit-detail'));
-    objective=!known?(puzzle.clueHint||'Find the clues for this sequence.'):ready?'Walk onto the glowing exit to finish, or face it and interact.':progress===puzzle.sequence.length?exitSupplyHint(map,state,exit)+' Your light sequence stays solved.':(puzzle.showNext===false?'Face a labeled switch and follow the code in your journal.':`Next: ${map.objects.find(o=>o.id===puzzle.sequence[progress])?.label||'read the code'}. Face that switch and interact. Repeated labels mean press the same switch again.`);
+    circuitPanel.replaceChildren(element('strong',ready?'EXIT UNLOCKED':progress===puzzle.sequence.length?'CODE COMPLETE · SUPPLIES NEEDED':'POWER THE EXIT'),element('p',!known?clueGuidance(puzzle):puzzle.showNext===false?(puzzle.knownText||'Follow the clues in your journal.'):puzzle.sequence.map(id=>map.objects.find(o=>o.id===id)?.label||id).join(' → ')),element('p',`Door lights: ${progress} / ${puzzle.sequence.length} · Supplies: ${missing.length?missing.map(id=>map.inventory.find(i=>i.value===id)?.label||id).join(', ')+' needed':'ready'}`,'circuit-detail'));
+    objective=!known?clueGuidance(puzzle):ready?'Walk onto the glowing exit to finish, or face it and interact.':progress===puzzle.sequence.length?exitSupplyHint(map,state,exit)+' Your light sequence stays solved.':(puzzle.showNext===false?'Face a labeled switch and follow the code in your journal.':`Next: ${map.objects.find(o=>o.id===puzzle.sequence[progress])?.label||'read the code'}. Face that switch and interact. Repeated labels mean press the same switch again.`);
   }
+  fitRoom();
   const count=reviewSummary(state.review).total,modeLabel=map.modes?.find(m=>m.id===map.mode)?.label||map.mode||'Explore';
   $('difficulty').textContent=`${modeLabel} · ${count} ${count===1?'question':'questions'}${topics.length?' · '+content.title:''}`;
   $('room').textContent=room.name;$('objective').textContent=state.won?'Adventure complete!':objective;
@@ -123,15 +138,15 @@ function render(){
   const badges=inventoryEntries(map,state);
   $('inventory').replaceChildren(...badges.map(item=>{
     const badge=element('div',undefined,`inventory-badge${item.status==='Used'?' used':''}`);
-    badge.dataset.item=item.id;
+    badge.dataset.item=item.id;badge.title=`${item.label} · ${item.status}`;badge.setAttribute('aria-label',badge.title);
     if(!previousItems.has(item.id)){badge.classList.add('pickup-flash');setTimeout(()=>badge.classList.remove('pickup-flash'),700);}
     const icon=sprite(item.appearance||(item.optional?'treasure':item.type));icon.classList.add('inventory-icon');icon.setAttribute('aria-hidden','true');
     const reward=map.objects.find(o=>o.optional&&o.item===item.value)?.bonusPoints||0;
     badge.append(icon,element('span',item.label),element('small',item.optional?`Bonus +${reward}`:item.status));
     return badge;
   }));
-  if(!badges.length)$('inventory').append(element('span','No items yet — walk over loose items to collect them.','inventory-empty'));$('seals').textContent=inChamber?`Door lights: ${state.sequences[puzzle.id]||0} / ${puzzle.sequence.length}`:`${progressFor(map,state).label}: ${progressFor(map,state).completed} / ${progressFor(map,state).total}`;
-  const clues=(map.clues||[]).filter(c=>state.discovered.includes(c.id));journal.hidden=!clues.length;journal.textContent=clues.map(c=>`${c.label}: ${c.text}`).join(' · ');
+  if(!badges.length)$('inventory').append(element('span','Bag empty','inventory-empty'));$('seals').textContent=inChamber?`Door lights: ${state.sequences[puzzle.id]||0} / ${puzzle.sequence.length}`:`${progressFor(map,state).label}: ${progressFor(map,state).completed} / ${progressFor(map,state).total}`;
+  const clues=(map.clues||[]).filter(c=>state.discovered.includes(c.id));journal.hidden=true;journal.textContent=clues.map(c=>`${c.label}: ${c.text}`).join(' · ');
   board.setAttribute('aria-label',`${room.name}. Position column ${state.player.x}, row ${state.player.y}. ${objective} Move with arrows or WASD; interact with E or Space.`);
   $('undo').disabled=!started||state.won||!state.history.length;
   $('reset-puzzle').disabled=!started||state.won;
@@ -166,6 +181,11 @@ function renderPlayer(){
   if(node!==highlightedNode){highlightedNode?.classList.remove('interactable');node?.classList.add('interactable');highlightedNode=node;}
   const label=!target?'Interact':target.kind==='mirror'?'Rotate mirror':target.type==='challenge'?'Open chest':target.type==='sign'?'Read sign':target.type==='exit'?'Use exit':target.type==='lever'||target.type==='bridgeSwitch'?'Use switch':'Inspect';
   if(label!==interactionLabel){$('interact').textContent=label;interactionLabel=label;}
+  contextPrompt.hidden=!target||!started||state.won;
+  contextPrompt.textContent=`E / Space · ${label}`;
+  const room=roomAt(state.player.x,state.player.y)||map.rooms[0],vx=room.viewMin??0,vy=room.viewMinY??0,vw=(room.viewMax??map.tiles[0].length-1)-vx+1,vh=(room.viewMaxY??map.tiles.length-1)-vy+1;
+  contextPrompt.style.left=`${Math.max(12,Math.min(88,(motion.x-vx+.5)/vw*100))}%`;
+  contextPrompt.style.top=`${Math.max(7,Math.min(91,(motion.y-vy-.15)/vh*100))}%`;
 }
 function release(){heldKeys.clear();heldPointers.clear();$('player').classList.remove('walking');}
 let dialogChoice=null;
@@ -255,7 +275,10 @@ function performInteraction(){
   release();$('player').classList.add('interacting');clearTimeout(interactionTimer);interactionTimer=setTimeout(()=>$('player').classList.remove('interacting'),240);
   const target=interactionTarget(map,state,motion);
   const result=target?interact(map,state,target):{type:'message',text:'Move closer and face a chest, sign, switch, or gate. The highlighted object is ready to interact.'};render();saveProgress();
-  if(result.type==='message')message(result.text,result.tone);
+  if(result.type==='message'){
+    if(target?.type==='sign')popup('JOURNAL',target.label||'Inscription & room guidance',[result.text],[{text:'Back to adventure',run:resume,primary:true}]);
+    else message(result.text,result.tone);
+  }
   if(result.type==='challenge')openQuestion(result.id);
   if(result.type==='win')finishAdventure();
 }
@@ -383,7 +406,7 @@ if(titleRow){
   const actions=element('div',undefined,'title-actions');actions.append($('pause'));
   hintButton=element('button','Hint');hintButton.id='puzzle-hint';hintButton.disabled=true;
   hintButton.addEventListener('click',()=>{if(started&&!state.won&&!dialog.open)showHint();});actions.append(hintButton);
-  const supplies=element('button','Bag & clues','supplies-button');
+  const supplies=element('button','Bag / Journal','supplies-button');
   supplies.addEventListener('click',()=>{
     if(dialog.open)return;
     const items=inventoryEntries(map,state).map(i=>`${i.label} · ${i.status}`),clues=(map.clues||[]).filter(c=>state.discovered.includes(c.id)).map(c=>`${c.label}: ${c.text}`);
@@ -417,4 +440,3 @@ if(saved){
 render();
 if(topics.length)chooseTopic();else offerSavedAdventure();
 requestAnimationFrame(frame);
-

@@ -45,7 +45,15 @@ function go(x,y){
  }throw Error('Unreachable UI target '+x+','+y);
 }
 function face(dir){s.facing=dir;key(keys[dir]);assert.equal(move(map,s,dir),false);}
-function action(){const result=interact(map,s);key('e');return result;}
+function action(){
+ const result=interact(map,s);key('e');
+ if(get('dialog').open&&get('dialog-label').textContent==='JOURNAL'){
+  assert.equal(get('dialog-body').children[0].textContent,result.text,'Room text is readable in a paused dialog');
+  get('dialog').listeners.keydown({key:'Enter',repeat:false,preventDefault(){}});
+  assert.equal(get('dialog').open,false,'Enter returns to the room');
+ }
+ return result;
+}
 function earn(id){
  assert.equal(action().id,id);
  const dialogKey=(key,repeat=false)=>{let prevented=false;get('dialog').listeners.keydown({key,repeat,preventDefault(){prevented=true;}});assert.equal(prevented,true);};
@@ -90,4 +98,3 @@ go(18,10);assert.equal(get('dialog').open,true);assert.equal(get('dialog-title')
 assert.equal(action().type,'win');
 assert.ok(get('dialog-body').children.some(p=>p.textContent.includes('Review completed: 12 / 12')));
 console.log('DOM flow: all six reward dialogs complete with arrows and Enter, including wrong-answer recovery, disabled-choice skipping and repeat guards; both room cameras, clues and the Hard win screen pass.');
-
