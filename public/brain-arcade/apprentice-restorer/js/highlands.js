@@ -4,13 +4,14 @@ export const highlandsObjects={
   turbine:{id:'turbine',x:180,y:280},windvane:{id:'windvane',x:350,y:280},router:{id:'router',x:430,y:460},
   goat:{id:'goat',x:900,y:400},perch:{id:'perch',x:1090,y:300},weight:{id:'weight',x:780,y:870},
   lift:{id:'lift',x:1100,y:740},liftback:{id:'liftback',x:1430,y:740},spare:{id:'spare',x:1480,y:930},
-  forge:{id:'forge',x:1690,y:460},signal:{id:'signal',x:1740,y:180}
+  balance:{id:'balance',x:1520,y:460},forge:{id:'forge',x:1690,y:460},signal:{id:'signal',x:1740,y:180}
 };
 const unit=n=>Number.isFinite(n)?Math.max(0,Math.min(1,n)):0;
 export function highlandsState(old={}){
   const h=old.highlands||{};
   return {region:old.region==='highlands'&&old.giantAwake===true&&old.giantPower===1?'highlands':'valley',highlands:{
     sail:h.sail===true,turbine:unit(h.turbine),vane:Number.isInteger(h.vane)?Math.max(0,Math.min(3,h.vane)):0,
+    share:Number.isFinite(h.share)?Math.max(.1,Math.min(.9,h.share)):h.complete===true?.55:.8,
     routing:Number.isInteger(h.routing)?Math.max(0,Math.min(3,h.routing)):0,bridge:unit(h.bridge),goat:h.goat===true,
     goatWork:unit(h.goatWork),goatOrdered:h.goatOrdered===true,weight:h.weight===true,lift:unit(h.lift),
     spare:h.spare===true,forge:unit(h.forge),signal:Number.isInteger(h.signal)?Math.max(0,Math.min(3,h.signal)):0,
@@ -21,7 +22,7 @@ export function highlandsReadings(s){
   const h=s.highlands;
   const wind=h.engineer?.85+.15*Math.sin(h.time*.75):1;
   const supply=h.turbine===1&&h.vane===1?Math.min(1.1,wind+(h.goatWork===1?.18:0)):0;
-  const shares=[[1,0,0],[0,1,0],[0,0,1],[0,.55,.45]][h.routing];
+  const shares=[[1,0,0],[0,1,0],[0,0,1],[0,h.share,1-h.share]][h.routing];
   const [bridge,lift,forge]=shares.map(n=>n*supply);
   return {supply,bridge,lift,forge,healthy:lift>=.45&&lift<=.75&&forge>=.32&&forge<=.65};
 }
@@ -46,7 +47,8 @@ export function actHighlands(s,id,reverse=false){
   if(id==='sail'){h.sail=true;return 'Sailcloth recovered. Hold E at the turbine to mend its blades.';}
   if(id==='turbine')return h.turbine===1?'Turbine repaired. Turn the wind vane to catch the easterly wind.':h.sail?'Hold E to mend the turbine blades.':'Find sailcloth along the southern trail.';
   if(id==='windvane'){h.vane=(h.vane+1)%4;return h.vane===1?'Wind caught! The turbine is sending power down its cable.':'Vane turned. Face it toward the wind →.';}
-  if(id==='router'){h.routing=(h.routing+(reverse?3:1))%4;return ['All power to the bridge winch.','All power to the cable lift.','All power to the summit workshop.','Power shared: 55% lift · 45% workshop.'][h.routing];}
+  if(id==='router'){h.routing=(h.routing+(reverse?3:1))%4;return ['All power to the bridge winch.','All power to the cable lift.','All power to the summit workshop.','Power shared. Adjust its split at the summit regulator.'][h.routing];}
+  if(id==='balance'){h.routing=3;h.share=Math.max(.1,Math.min(.9,h.share+(reverse?-.02:.02)));return `Lift share ${Math.round(h.share*100)}%. Hold E for more lift power, Q for more workshop power.`;}
   if(id==='goat'){h.goat=true;return 'A mountain goat joins you! It can reach the high wind brake.';}
   if(id==='perch'){if(!h.goat)return 'This brake is too high. Meet the goat on the middle plateau.';if(h.goatWork===1)return 'Brake released. A shortcut and an extra wind intake are open.';h.goatOrdered=true;return 'Your goat climbs to release the wind brake. Watch the northern crossing.';}
   if(id==='weight'){h.weight=true;return 'Counterweight found! Fit it at the cable lift by holding E.';}
@@ -61,9 +63,10 @@ export function actHighlands(s,id,reverse=false){
   if(id==='signal'){h.signal=(h.signal+1)%4;return h.signal===2?'Signal aligned. Keep the lift and workshop powered together.':'Signal turned. Align its dish with the distant valley receiver ↓.';}
   return null;
 }
-export function workHighlands(s,id,dt){
+export function workHighlands(s,id,dt,reverse=false){
   if(s.region!=='highlands'||s.highlands.travel)return null;
   const h=s.highlands;
+  if(id==='balance'){h.routing=3;h.share=Math.max(.1,Math.min(.9,h.share+(reverse?-1:1)*dt*.12));return null;}
   const name=id==='turbine'&&h.sail?'turbine':id==='lift'&&h.weight?'lift':id==='forge'&&h.spare?'forge':null;
   if(name&&h[name]<1){h[name]=Math.min(1,h[name]+dt*.5);if(h[name]===1)return name==='turbine'?'Turbine mended! Turn its vane to catch the wind.':name==='lift'?'Counterweight fitted! Route wind to the lift, then tap E to ride.':'Summit workshop repaired! Restore its shared power and signal.';}
   return null;
@@ -91,14 +94,16 @@ export function highlandsObjective(s){
   if(h.goatWork<1)return h.goatOrdered?'The goat is climbing. Prepare the cable lift while it works.':'Ask the goat to reach the high brake on the north ledge.';
   if(!h.spare)return 'Ride the lift or cross the north shortcut. Find the summit gear.';
   if(h.forge<1)return 'Hold E to repair the summit workshop.';
-  if(h.routing!==3)return 'Share power between lift and workshop at the western junction.';
+  if(h.routing!==3)return 'Use the summit regulator to share wind between both machines.';
   if(h.signal!==2)return 'Align the summit dish with the valley receiver ↓.';
+  const r=highlandsReadings(s);
+  if(!r.healthy)return r.forge<.32?'The workshop is starved. Give it a larger share at the regulator.':r.lift<.45?'The lift is too weak. Give it a larger share at the regulator.':'A machine is overloaded. Adjust the split until both gauges are healthy.';
   if(h.charge<1)return 'The workshop is charging from its share of wind power.';
   return `Keep both machines healthy · ${h.stable.toFixed(1)} / 12 seconds.`;
 }
 export function highlandsLabel(s,id){
   const h=s.highlands;
-  const labels={expedition:['Travel to Stormbreak','Tap E to ride the giant to a new region.'],home:['Return to valley','Tap E to ride home. Progress is saved.'],sail:['Recover sailcloth','Tap E to collect.'],turbine:[h.turbine===1?'Turbine repaired':'Mend turbine','Hold E with recovered sailcloth.'],windvane:['Turn wind vane','Tap E to face the easterly wind →.'],router:['Route wind','Tap E to cycle power routes · Q cycles back.'],goat:['Meet goat','Tap E to recruit a climbing companion.'],perch:[h.goatWork===1?'Wind brake released':'Send goat','Tap E to send your goat to the high brake.'],weight:['Recover counterweight','Tap E to collect.'],lift:[h.lift===1?'Ride cable lift':'Fit counterweight',h.lift===1?'Tap E when wind powers the lift.':'Hold E to repair.'],liftback:['Ride back','Tap E when wind powers the lift.'],spare:['Recover workshop gear','Tap E to collect.'],forge:[h.forge===1?'Workshop repaired':'Repair workshop','Hold E with the spare gear.'],signal:['Align summit dish','Tap E to aim at the valley receiver ↓.']};
+  const labels={expedition:['Travel to Stormbreak','Tap E to ride the giant to a new region.'],home:['Return to valley','Tap E to ride home. Progress is saved.'],sail:['Recover sailcloth','Tap E to collect.'],turbine:[h.turbine===1?'Turbine repaired':'Mend turbine','Hold E with recovered sailcloth.'],windvane:['Turn wind vane','Tap E to face the easterly wind →.'],balance:['Balance wind','Hold E: more lift · Q: more workshop. Both machines need healthy flow.'],router:['Route wind','Tap E to cycle power routes · Q cycles back.'],goat:['Meet goat','Tap E to recruit a climbing companion.'],perch:[h.goatWork===1?'Wind brake released':'Send goat','Tap E to send your goat to the high brake.'],weight:['Recover counterweight','Tap E to collect.'],lift:[h.lift===1?'Ride cable lift':'Fit counterweight',h.lift===1?'Tap E when wind powers the lift.':'Hold E to repair.'],liftback:['Ride back','Tap E when wind powers the lift.'],spare:['Recover workshop gear','Tap E to collect.'],forge:[h.forge===1?'Workshop repaired':'Repair workshop','Hold E with the spare gear.'],signal:['Align summit dish','Tap E to aim at the valley receiver ↓.']};
   return labels[id];
 }
 export function drawHighlands(ctx,s,time,{path,glow}){
@@ -126,6 +131,8 @@ export function drawHighlands(ctx,s,time,{path,glow}){
   const gp=h.goatOrdered?{x:1090,y:370-h.goatWork*70}:{x:h.goat?s.player.x+30:900,y:h.goat?s.player.y+20:400};
   ctx.fillStyle='#ecdfc0';ctx.beginPath();ctx.ellipse(gp.x,gp.y,20,12,0,0,Math.PI*2);ctx.fill();rect(gp.x-14,gp.y+8,5,15,'#d7c59f');rect(gp.x+9,gp.y+8,5,15,'#d7c59f');rect(gp.x+12,gp.y-18,16,18,'#ecdfc0');path([[gp.x+17,gp.y-18],[gp.x+10,gp.y-30]],'#9ea9a2',4);rect(gp.x+24,gp.y-13,3,3,'#1b3b4d');
   for(const [id,value] of [['turbine',h.turbine],['lift',h.lift],['forge',h.forge]]){const p=highlandsObjects[id];if(value>0&&value<1){rect(p.x-30,p.y+43,60,6,'#243e52');rect(p.x-30,p.y+43,60*value,6,'#ffdd95');}}
+  rect(1495,435,50,50,'#1d3d53');ctx.save();ctx.translate(1520,460);ctx.rotate(h.share*Math.PI*1.5);path([[-18,0],[18,0]],'#ffda91',5);ctx.restore();ctx.font='bold 13px system-ui';ctx.fillStyle='#ffe4b0';ctx.fillText('POWER SPLIT',1520,414);
+  const gauge=(x,y,value,low,high)=>{rect(x,y,100,9,'#183346');rect(x+low*100,y,(high-low)*100,9,'#75b88d');rect(x+Math.min(1,value)*97,y-3,3,15,'#ffe1a0');};gauge(1468,570,r.lift,.45,.75);gauge(1468,594,r.forge,.32,.65);ctx.font='12px system-ui';ctx.fillText('LIFT',1428,580);ctx.fillText('WORKSHOP',1419,604);
   for(const o of highlandsInteractables(s))glow(o.x,o.y,false,time);
   ctx.fillStyle='#e8eee3';ctx.font='bold 19px system-ui';ctx.fillText('STORMBREAK HIGHLANDS',970,80);
   ctx.font='bold 14px system-ui';ctx.fillText('WESTERN TURBINE',180,170);ctx.fillText('HIGH WIND BRAKE',1090,250);ctx.fillText('SUMMIT WORKSHOP',1690,550);

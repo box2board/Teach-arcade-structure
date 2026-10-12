@@ -24,3 +24,7 @@ body.restorer-page{margin:0;background:#f0f5f9;color:#152c42;font-family:system-
 .ws #world{margin-inline:auto}
 
 .ws-engineer select{font:inherit;min-height:36px;max-width:200px;padding:5px;border:1px solid #bcceda;border-radius:8px;background:#fff;color:#16354b}
+
+.ws-subtitle{margin:0;color:#547185;font-size:.85rem}.ws-intro{z-index:3}.ws-engineer #wind-status.good{color:#bce3af}.ws-intro p{margin:10px 0}.ws button#next-expedition{background:#ef9344;border-color:#faae65}
+
+.ws-intro{max-height:95%;overflow:auto;padding:16px}.ws-intro h2{font-size:1.3rem;margin:10px 0}.ws-intro p{font-size:.9rem;line-height:1.4;margin:8px 0}

@@ -15,8 +15,10 @@ actHighlands(s,'router');s.player={x:1100,y:740};actHighlands(s,'lift');assert(h
 actHighlands(s,'spare');workHighlands(s,'forge',2);actHighlands(s,'signal');actHighlands(s,'signal');assert.equal(h.signal,2);
 actHighlands(s,'router');run(20);assert.equal(h.charge,1);assert(!h.complete,'Powering only the workshop cannot finish');
 for(let route=0;route<4;route++){h.routing=route;const r=highlandsReadings(s);assert(Math.abs(r.bridge+r.lift+r.forge-r.supply)<1e-9,'The shared supply is conserved');}
-h.routing=3;run(4);assert(h.stable>3);h.vane=0;run(.1);assert.equal(h.stable,0,'Interrupted wind resets continuous stability');h.vane=1;assert(run(13).includes('highland-complete'));assert(h.complete);
+h.routing=3;run(4);assert.equal(h.stable,0,'Shared route starts with an unhealthy split');s.player={x:1520,y:505};workHighlands(s,'balance',2,true);assert(h.share<.6&&h.share>.5);run(4);assert(h.stable>3);h.vane=0;run(.1);assert.equal(h.stable,0,'Interrupted wind resets continuous stability');h.vane=1;assert(run(13).includes('highland-complete'));assert(h.complete);
 h.complete=false;h.stable=0;h.engineer=true;assert(run(14).includes('highland-complete'),'Released intake buffers changing gusts');
+for(const share of [.52,.58,.63]){h.engineer=false;h.complete=false;h.stable=0;h.share=share;assert(run(13).includes('highland-complete'),'Different valid splits can solve the puzzle');}
+h.engineer=true;h.share=.8;h.complete=false;h.stable=0;run(20);assert(!h.complete,'Overfeeding lift starves workshop under gusts');h.share=.55;assert(run(14).includes('highland-complete'));
 const restored=highlandsState(JSON.parse(JSON.stringify(s)));assert.equal(restored.region,'highlands');assert(restored.highlands.complete);assert.equal(restored.highlands.travel,null);assert.equal(restored.highlands.time,0);
 actHighlands(s,'home');assert.equal(s.region,'valley');assert.equal(s.player.x,1810);actHighlands(s,'expedition');assert(s.highlands.complete,'Return trips retain restoration');
 console.log('PASS: giant unlock, cliff collisions, turbine repair, bridge, goat shortcut/intake, lift gates and travel, conserved routing, simultaneous power, continuous stability, changing gusts and save/return.');
