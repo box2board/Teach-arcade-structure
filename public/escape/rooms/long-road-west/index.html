@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101820">
+  <title>The Long Road West | Teach Arcade</title>
+  <meta name="description" content="Help the Miller family make difficult choices on a Dust Bowl journey west in this story-driven Great Depression escape room.">
+  <link rel="canonical" href="https://teacharcade.com/escape/rooms/long-road-west/">
+  <link rel="stylesheet" href="/escape/css/base.css">
+  <link rel="stylesheet" href="/escape/rooms/long-road-west/game.css">
+  <script defer src="/escape/rooms/long-road-west/game.js"></script>
+</head>
+<body class="long-road-west">
+  <header class="topbar lrw-topbar">
+    <a class="brand" href="/escape/" aria-label="Teach Arcade Escape Rooms">TEACH <b>ARCADE</b><span> / ESCAPE ROOMS</span></a>
+    <button id="restartBtn" class="restart" type="button">↻ Restart journey</button>
+  </header>
+  <main class="lrw-shell">
+    <header class="lrw-heading">
+      <div><span class="eyebrow">A STORY-DRIVEN HISTORY MISSION · 1936</span><h1>The Long Road West</h1>
+        <p>Help the Miller family travel from drought-stricken western Oklahoma toward California. Every choice has a cost; arrival is only the beginning.</p></div>
+      <a class="lrw-back" href="/escape/">← All escape room missions</a>
+    </header>
+    <section class="lrw-progress" aria-label="Journey progress">
+      <div class="lrw-progress-label"><span id="progressText" aria-live="polite">Chapter 1 of 5 · The farm</span><span id="progressCount">0 / 4 chapters</span></div>
+      <div class="lrw-progress-track" role="progressbar" aria-label="Journey progress" aria-valuemin="0" aria-valuemax="4" aria-valuenow="0"><span id="progressBar"></span></div>
+    </section>
+    <div class="lrw-layout">
+      <section class="lrw-main" aria-label="Story scene">
+        <div id="sceneArt" class="lrw-art art-farm" role="img" aria-label="A dry Oklahoma farm beneath a dust-filled sky">
+          <div class="art-sun"></div><div class="art-haze"></div><div class="art-ridge"></div><div class="art-house"><i></i></div><div class="art-field"></div><div class="art-caption">WESTERN OKLAHOMA · 1936</div>
+        </div>
+        <article class="lrw-scene">
+          <div class="lrw-scene-head"><span id="sceneKicker" class="lrw-kicker">CHAPTER 1 · THE FARM</span><h2 id="sceneTitle">What can the family carry?</h2></div>
+          <div class="lrw-scene-content">
+            <div id="sceneCopy" class="lrw-copy" aria-live="polite"></div>
+            <div id="sceneActions" class="lrw-actions"></div>
+            <div id="feedback" class="lrw-feedback" role="status" aria-live="polite" hidden></div>
+          </div>
+        </article>
+      </section>
+      <aside class="lrw-sidebar" aria-label="Family journey record">
+        <section class="lrw-panel"><div class="lrw-panel-heading"><span aria-hidden="true">▣</span><h2>Family supplies</h2></div><ul id="supplyList" class="lrw-supplies"></ul></section>
+        <section class="lrw-panel"><div class="lrw-panel-heading"><span aria-hidden="true">≡</span><h2>Road journal</h2></div><ol id="journal" class="lrw-journal"><li>The Millers leave their farm with what fits in the truck.</li></ol></section>
+        <section class="lrw-history"><span class="lrw-history-label">HISTORICAL CONTEXT</span><p id="historyNote">The Dust Bowl was shaped by drought, wind erosion, and farming practices that left soil exposed. The Great Depression deepened the family’s financial strain.</p></section>
+        <p class="lrw-save-note">Your journey saves on this device.</p>
+      </aside>
+    </div>
+    <footer class="lrw-footer"><span>Fictional family · historically grounded setting</span><a href="/escape/">Return to Escape Rooms</a></footer>
+  </main>
+</body>
+</html>
