@@ -1,0 +1,38 @@
+@import url('/escape/css/hub-base.css');
+
+/* Teach Arcade escape-room hub visibility pass — classroom/projector readability. */
+.escape-hub{background:radial-gradient(ellipse at 76% 2%,rgba(123,161,140,.24),transparent 37%),#0b1419 !important}
+.escape-hub .topbar{
+  background:rgba(9,18,24,.97) !important;
+  border-bottom:1px solid rgba(155,200,174,.3) !important;
+  box-shadow:0 8px 28px rgba(0,0,0,.3);
+}
+.escape-hub .brand{color:#f8fbf9 !important;text-shadow:0 1px 10px rgba(0,0,0,.35)}
+.escape-hub .brand b{color:#b7e5c9 !important}
+.escape-hub .hub-home{color:#d7e1da !important;font-weight:700}
+.hub-hero{
+  border-color:rgba(155,200,174,.5) !important;
+  background:linear-gradient(110deg,rgba(8,16,21,.98) 3%,rgba(13,25,31,.9) 62%,rgba(13,25,31,.56)),linear-gradient(0deg,rgba(6,12,16,.35),rgba(6,12,16,.35)),url('/escape/rooms/wwi/assets/wwi-intro-hero.png') center 42%/cover !important;
+  box-shadow:0 24px 68px rgba(0,0,0,.42) !important;
+}
+.hub-hero h1{color:#fff !important;text-shadow:0 3px 20px rgba(0,0,0,.55)}
+.hub-hero p{color:#eef5f0 !important;font-weight:500 !important;text-shadow:0 2px 12px rgba(0,0,0,.42)}
+.hub-hero .eyebrow,.library-heading .eyebrow{color:#f4c98f !important;font-weight:700 !important}
+.signal-mark{background:rgba(7,15,19,.68) !important;border-color:rgba(240,197,144,.64) !important;color:#ffd9a8 !important}
+.library-heading h2{color:#f8fbf9 !important}
+.mission-count{color:#d5dfd8 !important;font-weight:700 !important}
+.mission-card{
+  border-color:rgba(155,200,174,.31) !important;
+  background:linear-gradient(145deg,#203238,#17252b) !important;
+  box-shadow:0 20px 52px rgba(0,0,0,.35) !important;
+}
+.mission-card:hover{border-color:rgba(172,226,193,.72) !important}
+.mission-tags span{color:#b9eccd !important;border-color:rgba(172,226,193,.35) !important;background:rgba(87,146,108,.1)}
+.mission-info h3{color:#fff !important;text-shadow:0 2px 12px rgba(0,0,0,.26)}
+.mission-summary{color:#e2ebe5 !important;font-size:14.5px !important}
+.mission-facts{color:#eef4f0 !important;border-top-color:rgba(213,226,215,.2) !important}
+.mission-facts strong{color:#c7d3cb !important}
+.archive-note{color:#c6d0ca !important}
+.hub-footer{color:#d1dbd4 !important;border-top-color:rgba(213,226,215,.18) !important;background:#091216 !important}
+.hub-footer a{color:#b9eccd !important}
+@media(max-width:700px){.hub-hero{min-height:230px !important}.mission-summary{font-size:14px !important}}
