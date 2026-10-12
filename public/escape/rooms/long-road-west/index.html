@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#101820">
+  <meta name="theme-color" content="#161a19">
   <title>The Long Road West | Teach Arcade</title>
-  <meta name="description" content="Help the Miller family make difficult choices on a Dust Bowl journey west in this story-driven Great Depression escape room.">
+  <meta name="description" content="Explore, handle evidence, and help a Dust Bowl family navigate a Great Depression journey west in this interactive history escape room.">
   <link rel="canonical" href="https://teacharcade.com/escape/rooms/long-road-west/">
   <link rel="stylesheet" href="/escape/css/base.css">
   <link rel="stylesheet" href="/escape/rooms/long-road-west/game.css">
@@ -14,40 +14,41 @@
 <body class="long-road-west">
   <header class="topbar lrw-topbar">
     <a class="brand" href="/escape/" aria-label="Teach Arcade Escape Rooms">TEACH <b>ARCADE</b><span> / ESCAPE ROOMS</span></a>
-    <button id="restartBtn" class="restart" type="button">↻ Restart journey</button>
+    <div class="lrw-top-actions"><span class="lrw-period">FIELD JOURNAL · 1936</span><button id="restartBtn" class="restart" type="button">↻ Restart</button></div>
   </header>
   <main class="lrw-shell">
     <header class="lrw-heading">
-      <div><span class="eyebrow">A STORY-DRIVEN HISTORY MISSION · 1936</span><h1>The Long Road West</h1>
-        <p>Help the Miller family travel from drought-stricken western Oklahoma toward California. Every choice has a cost; arrival is only the beginning.</p></div>
-      <a class="lrw-back" href="/escape/">← All escape room missions</a>
+      <div><span class="eyebrow">A STORY-DRIVEN HISTORY MISSION</span><h1>The Long Road West</h1>
+        <p>Work with the Miller family through the Dust Bowl. The clues are in the scene—pick them up, examine them, and put them to use.</p></div>
+      <a class="lrw-back" href="/escape/">← All missions</a>
     </header>
     <section class="lrw-progress" aria-label="Journey progress">
-      <div class="lrw-progress-label"><span id="progressText" aria-live="polite">Chapter 1 of 5 · The farm</span><span id="progressCount">0 / 4 chapters</span></div>
-      <div class="lrw-progress-track" role="progressbar" aria-label="Journey progress" aria-valuemin="0" aria-valuemax="4" aria-valuenow="0"><span id="progressBar"></span></div>
+      <div class="lrw-progress-label"><span id="progressText" aria-live="polite">Chapter 1 of 5 · The farm</span><span id="progressCount">0 / 5 chapters</span></div>
+      <div class="lrw-progress-track" role="progressbar" aria-label="Journey progress" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0"><span id="progressBar"></span></div>
     </section>
     <div class="lrw-layout">
-      <section class="lrw-main" aria-label="Story scene">
-        <div id="sceneArt" class="lrw-art art-farm" role="img" aria-label="A dry Oklahoma farm beneath a dust-filled sky">
-          <div class="art-sun"></div><div class="art-haze"></div><div class="art-ridge"></div><div class="art-house"><i></i></div><div class="art-field"></div><div class="art-caption">WESTERN OKLAHOMA · 1936</div>
+      <section class="lrw-main" aria-label="Interactive story scene">
+        <div id="scene" class="lrw-scene-view art-farm">
+          <img id="sceneImage" class="lrw-scene-image" alt="" draggable="false">
+          <div class="lrw-scene-vignette" aria-hidden="true"></div>
+          <div class="lrw-scene-topline"><span id="sceneLocation">WESTERN OKLAHOMA · 1936</span><span id="sceneObjective">Choose one item to pack</span></div>
+          <div id="hotspots" class="lrw-hotspots" aria-label="Objects in the scene"></div>
+          <div id="dragGhost" class="lrw-drag-ghost" aria-hidden="true"></div>
+          <div class="lrw-scene-caption"><span id="sceneHint">Select an object, then move it to the truck.</span><span class="lrw-interact-help">Click + drag · or select, then click a target</span></div>
         </div>
-        <article class="lrw-scene">
-          <div class="lrw-scene-head"><span id="sceneKicker" class="lrw-kicker">CHAPTER 1 · THE FARM</span><h2 id="sceneTitle">What can the family carry?</h2></div>
-          <div class="lrw-scene-content">
-            <div id="sceneCopy" class="lrw-copy" aria-live="polite"></div>
-            <div id="sceneActions" class="lrw-actions"></div>
-            <div id="feedback" class="lrw-feedback" role="status" aria-live="polite" hidden></div>
-          </div>
+        <article class="lrw-story-panel">
+          <div class="lrw-story-heading"><div><span id="sceneKicker" class="lrw-kicker">CHAPTER 1 · THE FARM</span><h2 id="sceneTitle">A place for one more thing</h2></div><span id="sceneChapterMark" class="lrw-chapter-mark">01 / 05</span></div>
+          <div class="lrw-story-content"><div id="sceneCopy" class="lrw-copy" aria-live="polite"></div><div id="feedback" class="lrw-feedback" role="status" aria-live="polite" hidden></div><div class="lrw-story-actions"><button id="continueBtn" class="lrw-primary" type="button" hidden>Continue west <span aria-hidden="true">→</span></button></div></div>
         </article>
+        <section class="lrw-pocket" aria-label="Items carried by the family"><div class="lrw-pocket-head"><span class="lrw-kicker">IN HAND / IN THE TRUCK</span><span id="pocketCount">0 items</span></div><div id="inventory" class="lrw-inventory"><span class="lrw-empty-pocket">Nothing picked up yet</span></div></section>
       </section>
-      <aside class="lrw-sidebar" aria-label="Family journey record">
-        <section class="lrw-panel"><div class="lrw-panel-heading"><span aria-hidden="true">▣</span><h2>Family supplies</h2></div><ul id="supplyList" class="lrw-supplies"></ul></section>
-        <section class="lrw-panel"><div class="lrw-panel-heading"><span aria-hidden="true">≡</span><h2>Road journal</h2></div><ol id="journal" class="lrw-journal"><li>The Millers leave their farm with what fits in the truck.</li></ol></section>
-        <section class="lrw-history"><span class="lrw-history-label">HISTORICAL CONTEXT</span><p id="historyNote">The Dust Bowl was shaped by drought, wind erosion, and farming practices that left soil exposed. The Great Depression deepened the family’s financial strain.</p></section>
-        <p class="lrw-save-note">Your journey saves on this device.</p>
+      <aside class="lrw-sidebar" aria-label="Journey record">
+        <section class="lrw-record-card"><div class="lrw-panel-heading"><span aria-hidden="true">✦</span><h2>Road journal</h2></div><ol id="journal" class="lrw-journal"><li>The Millers leave their farm with what fits in the truck.</li></ol></section>
+        <section class="lrw-history"><span class="lrw-history-label">HISTORICAL CONTEXT</span><p id="historyNote">Drought, wind erosion, and farming practices that left soil exposed helped create Dust Bowl conditions. The Great Depression deepened the family’s financial strain.</p></section>
+        <div class="lrw-record-footer"><span>Fictional family · historically grounded setting</span><span>Your journey saves on this device.</span></div>
       </aside>
     </div>
-    <footer class="lrw-footer"><span>Fictional family · historically grounded setting</span><a href="/escape/">Return to Escape Rooms</a></footer>
+    <footer class="lrw-footer"><a href="/escape/">Return to Escape Rooms</a><span>Look closely. Every object can tell part of the story.</span></footer>
   </main>
 </body>
 </html>
