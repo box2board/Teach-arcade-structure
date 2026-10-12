@@ -28,3 +28,5 @@ body.restorer-page{margin:0;background:#f0f5f9;color:#152c42;font-family:system-
 .ws-subtitle{margin:0;color:#547185;font-size:.85rem}.ws-intro{z-index:3}.ws-engineer #wind-status.good{color:#bce3af}.ws-intro p{margin:10px 0}.ws button#next-expedition{background:#ef9344;border-color:#faae65}
 
 .ws-intro{max-height:95%;overflow:auto;padding:16px}.ws-intro h2{font-size:1.3rem;margin:10px 0}.ws-intro p{font-size:.9rem;line-height:1.4;margin:8px 0}
+
+@media(max-width:600px){.ws-message{padding:6px 10px;border-radius:10px;font-size:.75rem;line-height:1.35;bottom:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;max-width:90%;width:auto}}

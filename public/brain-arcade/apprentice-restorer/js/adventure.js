@@ -56,7 +56,7 @@ export function objective(s){
   if(s.vane!==1)return 'Turn the wind vane toward the breeze →.';
   if(s.pump<1)return 'The wind pump is charging…';
   if(s.gate!==2)return 'Open both garden channels with the splitter.';
-  if(s.valve<.3)return 'The garden needs more water. Open the valve.';
-  if(s.valve>.65)return 'Too much water! At the valve, hold E to balance or Q to lower.';
+  if(s.valve<.3)return 'The garden needs water. Return to the source valve in the northwest.';
+  if(s.valve>.65)return 'Too much water! Return to the northwest source valve. Hold E to balance.';
   return 'Watch the garden bloom. Both beds need water.';
 }
