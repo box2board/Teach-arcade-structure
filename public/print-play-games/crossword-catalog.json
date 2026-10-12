@@ -1,0 +1,1980 @@
+{
+  "schemaVersion": 1,
+  "resources": [
+    {
+      "id": "constitution-basics",
+      "title": "U.S. Constitution Basics",
+      "subject": "Social Studies",
+      "description": "Branches, checks and balances, federalism, and constitutional rights.",
+      "questionCount": 20,
+      "slug": "constitution-basics",
+      "source": "public/review-lab/question-sets/constitution-basics.js",
+      "category": "Government & Civics",
+      "gradeBand": "7–12",
+      "sourceSha256": "8018ed3ea56b8ae4a5380f757a33b277a6abf320d1e9d2486581a358d86cb4ea",
+      "sourceTitle": "U.S. Constitution Basics",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/constitution-basics/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/constitution-basics/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/constitution-basics/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/constitution-basics/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/constitution-basics/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/constitution-basics/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/constitution-basics/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/constitution-basics/puzzles.json"
+    },
+    {
+      "id": "us-history--colonial-america",
+      "title": "Colonial America",
+      "subject": "Social Studies",
+      "category": "U.S. History",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "U.S. History · 7–12",
+      "file": "social-studies/us-history/colonial-america.json",
+      "slug": "us-history--colonial-america",
+      "source": "question-bank/social-studies/us-history/colonial-america.json",
+      "sourceSha256": "fc769564a84de0caa82d286fe078e1d43d57547340d0250d108f9bd2e4c67167",
+      "sourceTitle": "Colonial America",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/us-history--colonial-america/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/us-history--colonial-america/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/us-history--colonial-america/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/us-history--colonial-america/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/us-history--colonial-america/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/us-history--colonial-america/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/us-history--colonial-america/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/us-history--colonial-america/puzzles.json"
+    },
+    {
+      "id": "us-history--french-and-indian-war",
+      "title": "French and Indian War",
+      "subject": "Social Studies",
+      "category": "U.S. History",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "U.S. History · 7–12",
+      "file": "social-studies/us-history/french-and-indian-war.json",
+      "slug": "us-history--french-and-indian-war",
+      "source": "question-bank/social-studies/us-history/french-and-indian-war.json",
+      "sourceSha256": "e1b16e993cf61d80e48993b2061a6aff3320213ead53effe6fefc57e86e8467e",
+      "sourceTitle": "French and Indian War",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/us-history--french-and-indian-war/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/us-history--french-and-indian-war/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/us-history--french-and-indian-war/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/us-history--french-and-indian-war/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/us-history--french-and-indian-war/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/us-history--french-and-indian-war/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/us-history--french-and-indian-war/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/us-history--french-and-indian-war/puzzles.json"
+    },
+    {
+      "id": "us-history--american-revolution",
+      "title": "American Revolution",
+      "subject": "Social Studies",
+      "category": "U.S. History",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "U.S. History · 7–12",
+      "file": "social-studies/us-history/american-revolution.json",
+      "slug": "us-history--american-revolution",
+      "source": "question-bank/social-studies/us-history/american-revolution.json",
+      "sourceSha256": "cfa32494daebaa2b25ef361ec6bcb3c0e57583d6315262a8f1064fc92ce4d47e",
+      "sourceTitle": "American Revolution",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/us-history--american-revolution/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/us-history--american-revolution/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/us-history--american-revolution/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/us-history--american-revolution/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/us-history--american-revolution/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/us-history--american-revolution/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/us-history--american-revolution/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/us-history--american-revolution/puzzles.json"
+    },
+    {
+      "id": "us-history--articles-of-confederation",
+      "title": "Articles of Confederation",
+      "subject": "Social Studies",
+      "category": "U.S. History",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "U.S. History · 7–12",
+      "file": "social-studies/us-history/articles-of-confederation.json",
+      "slug": "us-history--articles-of-confederation",
+      "source": "question-bank/social-studies/us-history/articles-of-confederation.json",
+      "sourceSha256": "7d49f651c776474b09044db4c29a9d41e212941db8fb39c540e0f6338431679f",
+      "sourceTitle": "Articles of Confederation",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/us-history--articles-of-confederation/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/us-history--articles-of-confederation/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/us-history--articles-of-confederation/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/us-history--articles-of-confederation/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/us-history--articles-of-confederation/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/us-history--articles-of-confederation/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/us-history--articles-of-confederation/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/us-history--articles-of-confederation/puzzles.json"
+    },
+    {
+      "id": "us-history--early-republic",
+      "title": "Early Republic",
+      "subject": "Social Studies",
+      "category": "U.S. History",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "U.S. History · 7–12",
+      "file": "social-studies/us-history/early-republic.json",
+      "slug": "us-history--early-republic",
+      "source": "question-bank/social-studies/us-history/early-republic.json",
+      "sourceSha256": "f9800bae3e08c4770b6eda0d62beb16e1cda550f8b35441dfd3944df8db25903",
+      "sourceTitle": "Early Republic",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/us-history--early-republic/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/us-history--early-republic/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/us-history--early-republic/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/us-history--early-republic/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/us-history--early-republic/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/us-history--early-republic/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/us-history--early-republic/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/us-history--early-republic/puzzles.json"
+    },
+    {
+      "id": "us-history--war-of-1812",
+      "title": "War of 1812",
+      "subject": "Social Studies",
+      "category": "U.S. History",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "U.S. History · 7–12",
+      "file": "social-studies/us-history/war-of-1812.json",
+      "slug": "us-history--war-of-1812",
+      "source": "question-bank/social-studies/us-history/war-of-1812.json",
+      "sourceSha256": "598d05dc8eac52b9bdda3ecf5914b331001c1ef1130530d6a88ca382887a2a9b",
+      "sourceTitle": "War of 1812",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/us-history--war-of-1812/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/us-history--war-of-1812/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/us-history--war-of-1812/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/us-history--war-of-1812/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/us-history--war-of-1812/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/us-history--war-of-1812/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/us-history--war-of-1812/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/us-history--war-of-1812/puzzles.json"
+    },
+    {
+      "id": "us-history--westward-expansion",
+      "title": "Westward Expansion",
+      "subject": "Social Studies",
+      "category": "U.S. History",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "U.S. History · 7–12",
+      "file": "social-studies/us-history/westward-expansion.json",
+      "slug": "us-history--westward-expansion",
+      "source": "question-bank/social-studies/us-history/westward-expansion.json",
+      "sourceSha256": "ae4333aa60908be6bc88cc599d40423d6ea8f2529aa115155069b9126d598c4b",
+      "sourceTitle": "Westward Expansion",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/us-history--westward-expansion/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/us-history--westward-expansion/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/us-history--westward-expansion/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/us-history--westward-expansion/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/us-history--westward-expansion/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/us-history--westward-expansion/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/us-history--westward-expansion/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/us-history--westward-expansion/puzzles.json"
+    },
+    {
+      "id": "us-history--civil-war",
+      "title": "Civil War",
+      "subject": "Social Studies",
+      "category": "U.S. History",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "U.S. History · 7–12",
+      "file": "social-studies/us-history/civil-war.json",
+      "slug": "us-history--civil-war",
+      "source": "question-bank/social-studies/us-history/civil-war.json",
+      "sourceSha256": "0f62e12ac0cbd332b0c95443dae62ad97b74be4791dab905969e7fceb8098eef",
+      "sourceTitle": "Civil War",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/us-history--civil-war/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/us-history--civil-war/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/us-history--civil-war/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/us-history--civil-war/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/us-history--civil-war/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/us-history--civil-war/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/us-history--civil-war/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/us-history--civil-war/puzzles.json"
+    },
+    {
+      "id": "us-history--reconstruction",
+      "title": "Reconstruction",
+      "subject": "Social Studies",
+      "category": "U.S. History",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "U.S. History · 7–12",
+      "file": "social-studies/us-history/reconstruction.json",
+      "slug": "us-history--reconstruction",
+      "source": "question-bank/social-studies/us-history/reconstruction.json",
+      "sourceSha256": "16fc9a53ed1059cb6722b4f19bc2879eccef63daf8f8b790fccd8f925902af13",
+      "sourceTitle": "Reconstruction",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/us-history--reconstruction/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/us-history--reconstruction/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/us-history--reconstruction/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/us-history--reconstruction/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/us-history--reconstruction/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/us-history--reconstruction/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/us-history--reconstruction/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/us-history--reconstruction/puzzles.json"
+    },
+    {
+      "id": "us-history--progressive-era",
+      "title": "Progressive Era",
+      "subject": "Social Studies",
+      "category": "U.S. History",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "U.S. History · 7–12",
+      "file": "social-studies/us-history/progressive-era.json",
+      "slug": "us-history--progressive-era",
+      "source": "question-bank/social-studies/us-history/progressive-era.json",
+      "sourceSha256": "56ef503df547e8565ce527ed0b4b35fa438d01b5f59a1db06448bb29b9a88fe1",
+      "sourceTitle": "Progressive Era",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/us-history--progressive-era/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/us-history--progressive-era/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/us-history--progressive-era/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/us-history--progressive-era/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/us-history--progressive-era/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/us-history--progressive-era/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/us-history--progressive-era/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/us-history--progressive-era/puzzles.json"
+    },
+    {
+      "id": "us-history--world-war-i",
+      "title": "World War I - U.S. Involvement",
+      "subject": "Social Studies",
+      "category": "U.S. History",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "U.S. History · 7–12",
+      "file": "social-studies/us-history/world-war-i.json",
+      "slug": "us-history--world-war-i",
+      "source": "question-bank/social-studies/us-history/world-war-i.json",
+      "sourceSha256": "167ed05eb6797bfe817f8d04d12a1034f230d0dacb6e56fc1f782783655ef888",
+      "sourceTitle": "World War I",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/us-history--world-war-i/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/us-history--world-war-i/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/us-history--world-war-i/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/us-history--world-war-i/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/us-history--world-war-i/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/us-history--world-war-i/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/us-history--world-war-i/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/us-history--world-war-i/puzzles.json"
+    },
+    {
+      "id": "us-history--great-depression",
+      "title": "Great Depression",
+      "subject": "Social Studies",
+      "category": "U.S. History",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "U.S. History · 7–12",
+      "file": "social-studies/us-history/great-depression.json",
+      "slug": "us-history--great-depression",
+      "source": "question-bank/social-studies/us-history/great-depression.json",
+      "sourceSha256": "5701b50f3b4bb483fbc30e14f01f4c0cda682f0519e0c566e760172e00474b5c",
+      "sourceTitle": "Great Depression",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/us-history--great-depression/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/us-history--great-depression/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/us-history--great-depression/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/us-history--great-depression/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/us-history--great-depression/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/us-history--great-depression/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/us-history--great-depression/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/us-history--great-depression/puzzles.json"
+    },
+    {
+      "id": "us-history--new-deal",
+      "title": "New Deal",
+      "subject": "Social Studies",
+      "category": "U.S. History",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "U.S. History · 7–12",
+      "file": "social-studies/us-history/new-deal.json",
+      "slug": "us-history--new-deal",
+      "source": "question-bank/social-studies/us-history/new-deal.json",
+      "sourceSha256": "da08b60cf906897f68035dff609de5965785b11cd11b558ef25e7ce800b36eed",
+      "sourceTitle": "New Deal",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/us-history--new-deal/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/us-history--new-deal/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/us-history--new-deal/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/us-history--new-deal/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/us-history--new-deal/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/us-history--new-deal/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/us-history--new-deal/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/us-history--new-deal/puzzles.json"
+    },
+    {
+      "id": "us-history--world-war-ii",
+      "title": "World War II",
+      "subject": "Social Studies",
+      "category": "U.S. History",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "U.S. History · 7–12",
+      "file": "social-studies/us-history/world-war-ii.json",
+      "slug": "us-history--world-war-ii",
+      "source": "question-bank/social-studies/us-history/world-war-ii.json",
+      "sourceSha256": "3ec50f4727439728c4b31f4165ff464ae4c270562938c7494e8f808a5d9e1aa8",
+      "sourceTitle": "World War II",
+      "pdfs": {
+        "easy": "/print-play-games/files/Teach_Arcade_WWII_Crossword_Easy.pdf",
+        "medium": "/print-play-games/files/Teach_Arcade_WWII_Crossword_Medium.pdf",
+        "hard": "/print-play-games/files/Teach_Arcade_WWII_Crossword_Hard.pdf",
+        "full": "/print-play-games/files/Teach_Arcade_WWII_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/us-history--world-war-ii/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/us-history--world-war-ii/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/us-history--world-war-ii/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/us-history--world-war-ii/puzzles.json"
+    },
+    {
+      "id": "us-history--civil-rights-movement",
+      "title": "Civil Rights Movement",
+      "subject": "Social Studies",
+      "category": "U.S. History",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "U.S. History · 7–12",
+      "file": "social-studies/us-history/civil-rights-movement.json",
+      "slug": "us-history--civil-rights-movement",
+      "source": "question-bank/social-studies/us-history/civil-rights-movement.json",
+      "sourceSha256": "a56547fc517768c548b0e5b45b546f01d585d16b7121e70bc76ca2f616bfb307",
+      "sourceTitle": "Civil Rights Movement",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/us-history--civil-rights-movement/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/us-history--civil-rights-movement/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/us-history--civil-rights-movement/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/us-history--civil-rights-movement/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/us-history--civil-rights-movement/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/us-history--civil-rights-movement/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/us-history--civil-rights-movement/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/us-history--civil-rights-movement/puzzles.json"
+    },
+    {
+      "id": "world-history--mesopotamia",
+      "title": "Mesopotamia",
+      "subject": "Social Studies",
+      "category": "World History",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "World History · 7–12",
+      "file": "social-studies/world-history/mesopotamia.json",
+      "slug": "world-history--mesopotamia",
+      "source": "question-bank/social-studies/world-history/mesopotamia.json",
+      "sourceSha256": "b4b7a93a8ae46774aebf6a85720e90f909b0bd4fd3ca07c45d87922e87315f8b",
+      "sourceTitle": "Mesopotamia",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/world-history--mesopotamia/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/world-history--mesopotamia/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/world-history--mesopotamia/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/world-history--mesopotamia/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/world-history--mesopotamia/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/world-history--mesopotamia/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/world-history--mesopotamia/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/world-history--mesopotamia/puzzles.json"
+    },
+    {
+      "id": "world-history--ancient-egypt",
+      "title": "Ancient Egypt",
+      "subject": "Social Studies",
+      "category": "World History",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "World History · 7–12",
+      "file": "social-studies/world-history/ancient-egypt.json",
+      "slug": "world-history--ancient-egypt",
+      "source": "question-bank/social-studies/world-history/ancient-egypt.json",
+      "sourceSha256": "d0ca6396b95c3e98e7d5266073773f7a9ebb018f47315845ba4f380a7d0e94e0",
+      "sourceTitle": "Ancient Egypt",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/world-history--ancient-egypt/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/world-history--ancient-egypt/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/world-history--ancient-egypt/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/world-history--ancient-egypt/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/world-history--ancient-egypt/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/world-history--ancient-egypt/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/world-history--ancient-egypt/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/world-history--ancient-egypt/puzzles.json"
+    },
+    {
+      "id": "world-history--ancient-india",
+      "title": "Ancient India",
+      "subject": "Social Studies",
+      "category": "World History",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "World History · 7–12",
+      "file": "social-studies/world-history/ancient-india.json",
+      "slug": "world-history--ancient-india",
+      "source": "question-bank/social-studies/world-history/ancient-india.json",
+      "sourceSha256": "b1d48029bc464ca550927f3db2ef426451760fa38b6850cae700e12bae47b373",
+      "sourceTitle": "Ancient India",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/world-history--ancient-india/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/world-history--ancient-india/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/world-history--ancient-india/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/world-history--ancient-india/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/world-history--ancient-india/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/world-history--ancient-india/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/world-history--ancient-india/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/world-history--ancient-india/puzzles.json"
+    },
+    {
+      "id": "world-history--ancient-china",
+      "title": "Ancient China",
+      "subject": "Social Studies",
+      "category": "World History",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "World History · 7–12",
+      "file": "social-studies/world-history/ancient-china.json",
+      "slug": "world-history--ancient-china",
+      "source": "question-bank/social-studies/world-history/ancient-china.json",
+      "sourceSha256": "71d25f4656e0dc33a7c52527ea9556526a00ad5687d033e263c5a9b9f7caaae7",
+      "sourceTitle": "Ancient China",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/world-history--ancient-china/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/world-history--ancient-china/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/world-history--ancient-china/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/world-history--ancient-china/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/world-history--ancient-china/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/world-history--ancient-china/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/world-history--ancient-china/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/world-history--ancient-china/puzzles.json"
+    },
+    {
+      "id": "world-history--ancient-greece",
+      "title": "Ancient Greece",
+      "subject": "Social Studies",
+      "category": "World History",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "World History · 7–12",
+      "file": "social-studies/world-history/ancient-greece.json",
+      "slug": "world-history--ancient-greece",
+      "source": "question-bank/social-studies/world-history/ancient-greece.json",
+      "sourceSha256": "398b040119037d7ce9595d783db5e3df99932b0b726aef87bbb152cf90365452",
+      "sourceTitle": "Ancient Greece",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/world-history--ancient-greece/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/world-history--ancient-greece/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/world-history--ancient-greece/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/world-history--ancient-greece/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/world-history--ancient-greece/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/world-history--ancient-greece/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/world-history--ancient-greece/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/world-history--ancient-greece/puzzles.json"
+    },
+    {
+      "id": "world-history--ancient-rome",
+      "title": "Ancient Rome",
+      "subject": "Social Studies",
+      "category": "World History",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "World History · 7–12",
+      "file": "social-studies/world-history/ancient-rome.json",
+      "slug": "world-history--ancient-rome",
+      "source": "question-bank/social-studies/world-history/ancient-rome.json",
+      "sourceSha256": "ad27a3e46dfcea13223cbad7f4aefd2a0acf1fe0297c064112955c9a00e4849a",
+      "sourceTitle": "Ancient Rome",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/world-history--ancient-rome/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/world-history--ancient-rome/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/world-history--ancient-rome/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/world-history--ancient-rome/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/world-history--ancient-rome/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/world-history--ancient-rome/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/world-history--ancient-rome/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/world-history--ancient-rome/puzzles.json"
+    },
+    {
+      "id": "world-history--renaissance",
+      "title": "Renaissance",
+      "subject": "Social Studies",
+      "category": "World History",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "World History · 7–12",
+      "file": "social-studies/world-history/renaissance.json",
+      "slug": "world-history--renaissance",
+      "source": "question-bank/social-studies/world-history/renaissance.json",
+      "sourceSha256": "531df655c0d68cc962edf7114340caab11f6d8c0f2bfc77b7b1b5aa79c7f670f",
+      "sourceTitle": "Renaissance",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/world-history--renaissance/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/world-history--renaissance/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/world-history--renaissance/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/world-history--renaissance/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/world-history--renaissance/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/world-history--renaissance/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/world-history--renaissance/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/world-history--renaissance/puzzles.json"
+    },
+    {
+      "id": "world-history--protestant-reformation",
+      "title": "Protestant Reformation",
+      "subject": "Social Studies",
+      "category": "World History",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "World History · 7–12",
+      "file": "social-studies/world-history/protestant-reformation.json",
+      "slug": "world-history--protestant-reformation",
+      "source": "question-bank/social-studies/world-history/protestant-reformation.json",
+      "sourceSha256": "8bd41e2050bf22bcabf5a966a576572570cebf3d34724ada3ebd1016918bffd5",
+      "sourceTitle": "Protestant Reformation",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/world-history--protestant-reformation/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/world-history--protestant-reformation/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/world-history--protestant-reformation/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/world-history--protestant-reformation/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/world-history--protestant-reformation/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/world-history--protestant-reformation/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/world-history--protestant-reformation/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/world-history--protestant-reformation/puzzles.json"
+    },
+    {
+      "id": "world-history--enlightenment",
+      "title": "Enlightenment",
+      "subject": "Social Studies",
+      "category": "World History",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "World History · 7–12",
+      "file": "social-studies/world-history/enlightenment.json",
+      "slug": "world-history--enlightenment",
+      "source": "question-bank/social-studies/world-history/enlightenment.json",
+      "sourceSha256": "61813f0813394ea77e4ce6d08b048c81ffd1d0f44be0c767ef106aa7fb10d5e9",
+      "sourceTitle": "Enlightenment",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/world-history--enlightenment/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/world-history--enlightenment/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/world-history--enlightenment/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/world-history--enlightenment/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/world-history--enlightenment/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/world-history--enlightenment/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/world-history--enlightenment/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/world-history--enlightenment/puzzles.json"
+    },
+    {
+      "id": "world-history--french-revolution",
+      "title": "French Revolution",
+      "subject": "Social Studies",
+      "category": "World History",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "World History · 7–12",
+      "file": "social-studies/world-history/french-revolution.json",
+      "slug": "world-history--french-revolution",
+      "source": "question-bank/social-studies/world-history/french-revolution.json",
+      "sourceSha256": "e8595fae58f76455599cbb70d8c0d365b7c5c14a9738c901f894bb444cbe221c",
+      "sourceTitle": "French Revolution",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/world-history--french-revolution/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/world-history--french-revolution/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/world-history--french-revolution/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/world-history--french-revolution/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/world-history--french-revolution/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/world-history--french-revolution/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/world-history--french-revolution/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/world-history--french-revolution/puzzles.json"
+    },
+    {
+      "id": "world-history--industrial-revolution",
+      "title": "Industrial Revolution",
+      "subject": "Social Studies",
+      "category": "World History",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "World History · 7–12",
+      "file": "social-studies/world-history/industrial-revolution.json",
+      "slug": "world-history--industrial-revolution",
+      "source": "question-bank/social-studies/world-history/industrial-revolution.json",
+      "sourceSha256": "8cb2088728e1e622716426e803459ed5652c6ac2ee973abe5d1564841fc3d530",
+      "sourceTitle": "Industrial Revolution",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/world-history--industrial-revolution/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/world-history--industrial-revolution/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/world-history--industrial-revolution/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/world-history--industrial-revolution/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/world-history--industrial-revolution/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/world-history--industrial-revolution/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/world-history--industrial-revolution/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/world-history--industrial-revolution/puzzles.json"
+    },
+    {
+      "id": "world-history--world-war-i",
+      "title": "World War I - Global Perspectives",
+      "subject": "Social Studies",
+      "category": "World History",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "World History · 7–12",
+      "file": "social-studies/world-history/world-war-i.json",
+      "slug": "world-history--world-war-i",
+      "source": "question-bank/social-studies/world-history/world-war-i.json",
+      "sourceSha256": "204679303a89ee960051f7f8ad2e75b56f69fdf9c8298956dc8ff5ef2163184a",
+      "sourceTitle": "World War I",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/world-history--world-war-i/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/world-history--world-war-i/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/world-history--world-war-i/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/world-history--world-war-i/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/world-history--world-war-i/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/world-history--world-war-i/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/world-history--world-war-i/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/world-history--world-war-i/puzzles.json"
+    },
+    {
+      "id": "world-history--russian-revolution",
+      "title": "Russian Revolution",
+      "subject": "Social Studies",
+      "category": "World History",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "World History · 7–12",
+      "file": "social-studies/world-history/russian-revolution.json",
+      "slug": "world-history--russian-revolution",
+      "source": "question-bank/social-studies/world-history/russian-revolution.json",
+      "sourceSha256": "7c14e74877a3ffa3c0e5cfded69f2e0952a49ebef1081a1f50c79ae084657fde",
+      "sourceTitle": "Russian Revolution",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/world-history--russian-revolution/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/world-history--russian-revolution/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/world-history--russian-revolution/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/world-history--russian-revolution/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/world-history--russian-revolution/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/world-history--russian-revolution/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/world-history--russian-revolution/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/world-history--russian-revolution/puzzles.json"
+    },
+    {
+      "id": "world-history--world-war-ii",
+      "title": "World War II - Global Perspectives",
+      "subject": "Social Studies",
+      "category": "World History",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "World History · 7–12",
+      "file": "social-studies/world-history/world-war-ii.json",
+      "slug": "world-history--world-war-ii",
+      "source": "question-bank/social-studies/world-history/world-war-ii.json",
+      "sourceSha256": "c318c6753d5bc7e3d0399970ac6a7b842a06a974c81497154f67829444e89614",
+      "sourceTitle": "World War II",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/world-history--world-war-ii/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/world-history--world-war-ii/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/world-history--world-war-ii/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/world-history--world-war-ii/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/world-history--world-war-ii/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/world-history--world-war-ii/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/world-history--world-war-ii/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/world-history--world-war-ii/puzzles.json"
+    },
+    {
+      "id": "world-history--cold-war",
+      "title": "Cold War",
+      "subject": "Social Studies",
+      "category": "World History",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "World History · 7–12",
+      "file": "social-studies/world-history/cold-war.json",
+      "slug": "world-history--cold-war",
+      "source": "question-bank/social-studies/world-history/cold-war.json",
+      "sourceSha256": "afe8e207dbee7c5c4bb6b29bb0c03e054c5ec4aa9ddc3c7424d6a8357ca888ee",
+      "sourceTitle": "Cold War",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/world-history--cold-war/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/world-history--cold-war/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/world-history--cold-war/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/world-history--cold-war/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/world-history--cold-war/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/world-history--cold-war/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/world-history--cold-war/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/world-history--cold-war/puzzles.json"
+    },
+    {
+      "id": "government--types-of-government",
+      "title": "Types of Government",
+      "subject": "Social Studies",
+      "category": "Government & Civics",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "Government & Civics · 7–12",
+      "file": "social-studies/government/types-of-government.json",
+      "slug": "government--types-of-government",
+      "source": "question-bank/social-studies/government/types-of-government.json",
+      "sourceSha256": "d290e1222527e179a88db87fd51d4c21c69b159e9a87680cd184b0fde59c9450",
+      "sourceTitle": "Types of Government",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/government--types-of-government/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/government--types-of-government/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/government--types-of-government/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/government--types-of-government/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/government--types-of-government/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/government--types-of-government/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/government--types-of-government/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/government--types-of-government/puzzles.json"
+    },
+    {
+      "id": "government--u-s-constitution",
+      "title": "U.S. Constitution",
+      "subject": "Social Studies",
+      "category": "Government & Civics",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "Government & Civics · 7–12",
+      "file": "social-studies/government/u-s-constitution.json",
+      "slug": "government--u-s-constitution",
+      "source": "question-bank/social-studies/government/u-s-constitution.json",
+      "sourceSha256": "0ba5649c0827752ab2475f7b06adfa1e9869f2d7b4ac71994b196a27927724fa",
+      "sourceTitle": "U.S. Constitution",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/government--u-s-constitution/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/government--u-s-constitution/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/government--u-s-constitution/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/government--u-s-constitution/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/government--u-s-constitution/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/government--u-s-constitution/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/government--u-s-constitution/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/government--u-s-constitution/puzzles.json"
+    },
+    {
+      "id": "government--federalism",
+      "title": "Federalism",
+      "subject": "Social Studies",
+      "category": "Government & Civics",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "Government & Civics · 7–12",
+      "file": "social-studies/government/federalism.json",
+      "slug": "government--federalism",
+      "source": "question-bank/social-studies/government/federalism.json",
+      "sourceSha256": "62f3a7e35f8ec1694b51cd6414787ba806de501b89d08f6122ee4fead0e6e7bc",
+      "sourceTitle": "Federalism",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/government--federalism/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/government--federalism/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/government--federalism/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/government--federalism/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/government--federalism/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/government--federalism/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/government--federalism/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/government--federalism/puzzles.json"
+    },
+    {
+      "id": "government--checks-and-balances",
+      "title": "Checks and Balances",
+      "subject": "Social Studies",
+      "category": "Government & Civics",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "Government & Civics · 7–12",
+      "file": "social-studies/government/checks-and-balances.json",
+      "slug": "government--checks-and-balances",
+      "source": "question-bank/social-studies/government/checks-and-balances.json",
+      "sourceSha256": "60add2e18a739cca97a7d1cacc7a03fd802915ba22993a893775f2e1557a14b1",
+      "sourceTitle": "Checks and Balances",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/government--checks-and-balances/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/government--checks-and-balances/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/government--checks-and-balances/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/government--checks-and-balances/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/government--checks-and-balances/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/government--checks-and-balances/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/government--checks-and-balances/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/government--checks-and-balances/puzzles.json"
+    },
+    {
+      "id": "government--legislative-branch",
+      "title": "Legislative Branch",
+      "subject": "Social Studies",
+      "category": "Government & Civics",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "Government & Civics · 7–12",
+      "file": "social-studies/government/legislative-branch.json",
+      "slug": "government--legislative-branch",
+      "source": "question-bank/social-studies/government/legislative-branch.json",
+      "sourceSha256": "57be322f2aadd3b78d3c9fbd1527a06fad105bcede3dedefd6619062105cc158",
+      "sourceTitle": "Legislative Branch",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/government--legislative-branch/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/government--legislative-branch/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/government--legislative-branch/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/government--legislative-branch/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/government--legislative-branch/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/government--legislative-branch/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/government--legislative-branch/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/government--legislative-branch/puzzles.json"
+    },
+    {
+      "id": "government--executive-branch",
+      "title": "Executive Branch",
+      "subject": "Social Studies",
+      "category": "Government & Civics",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "Government & Civics · 7–12",
+      "file": "social-studies/government/executive-branch.json",
+      "slug": "government--executive-branch",
+      "source": "question-bank/social-studies/government/executive-branch.json",
+      "sourceSha256": "47bb74cf9317a6b0494e4115bfdbd7b42df67822ccf6ae95cf897e0c3f2a9b25",
+      "sourceTitle": "Executive Branch",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/government--executive-branch/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/government--executive-branch/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/government--executive-branch/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/government--executive-branch/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/government--executive-branch/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/government--executive-branch/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/government--executive-branch/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/government--executive-branch/puzzles.json"
+    },
+    {
+      "id": "government--judicial-branch",
+      "title": "Judicial Branch",
+      "subject": "Social Studies",
+      "category": "Government & Civics",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "Government & Civics · 7–12",
+      "file": "social-studies/government/judicial-branch.json",
+      "slug": "government--judicial-branch",
+      "source": "question-bank/social-studies/government/judicial-branch.json",
+      "sourceSha256": "24b0dae0187eebf044a284d6e5dc633eb3095bcc2bf7668c127f8a6de34129ac",
+      "sourceTitle": "Judicial Branch",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/government--judicial-branch/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/government--judicial-branch/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/government--judicial-branch/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/government--judicial-branch/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/government--judicial-branch/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/government--judicial-branch/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/government--judicial-branch/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/government--judicial-branch/puzzles.json"
+    },
+    {
+      "id": "government--bill-of-rights",
+      "title": "Bill of Rights",
+      "subject": "Social Studies",
+      "category": "Government & Civics",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "Government & Civics · 7–12",
+      "file": "social-studies/government/bill-of-rights.json",
+      "slug": "government--bill-of-rights",
+      "source": "question-bank/social-studies/government/bill-of-rights.json",
+      "sourceSha256": "d4fec6bf547373207f4c1b8a15dd75e38847baa5b06b3d5db36947e3656062e4",
+      "sourceTitle": "Bill of Rights",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/government--bill-of-rights/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/government--bill-of-rights/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/government--bill-of-rights/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/government--bill-of-rights/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/government--bill-of-rights/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/government--bill-of-rights/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/government--bill-of-rights/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/government--bill-of-rights/puzzles.json"
+    },
+    {
+      "id": "government--constitutional-amendments",
+      "title": "Constitutional Amendments",
+      "subject": "Social Studies",
+      "category": "Government & Civics",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "Government & Civics · 7–12",
+      "file": "social-studies/government/constitutional-amendments.json",
+      "slug": "government--constitutional-amendments",
+      "source": "question-bank/social-studies/government/constitutional-amendments.json",
+      "sourceSha256": "f24de06d6896e2bc84c62d4efbbe18b48b20e0f97240449280d802f5903ac506",
+      "sourceTitle": "Constitutional Amendments",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/government--constitutional-amendments/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/government--constitutional-amendments/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/government--constitutional-amendments/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/government--constitutional-amendments/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/government--constitutional-amendments/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/government--constitutional-amendments/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/government--constitutional-amendments/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/government--constitutional-amendments/puzzles.json"
+    },
+    {
+      "id": "government--civil-liberties",
+      "title": "Civil Liberties",
+      "subject": "Social Studies",
+      "category": "Government & Civics",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "Government & Civics · 7–12",
+      "file": "social-studies/government/civil-liberties.json",
+      "slug": "government--civil-liberties",
+      "source": "question-bank/social-studies/government/civil-liberties.json",
+      "sourceSha256": "a5e3d5ae57bb9798f05eb4add65853b6c2685f4578281b09a91a69d6f32f1c02",
+      "sourceTitle": "Civil Liberties",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/government--civil-liberties/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/government--civil-liberties/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/government--civil-liberties/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/government--civil-liberties/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/government--civil-liberties/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/government--civil-liberties/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/government--civil-liberties/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/government--civil-liberties/puzzles.json"
+    },
+    {
+      "id": "government--political-parties",
+      "title": "Political Parties",
+      "subject": "Social Studies",
+      "category": "Government & Civics",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "Government & Civics · 7–12",
+      "file": "social-studies/government/political-parties.json",
+      "slug": "government--political-parties",
+      "source": "question-bank/social-studies/government/political-parties.json",
+      "sourceSha256": "9f7c0e2b15993ed32ea4d707ddfc17b0cb4bea13292b19e613b6c69b1bbeb8a3",
+      "sourceTitle": "Political Parties",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/government--political-parties/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/government--political-parties/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/government--political-parties/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/government--political-parties/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/government--political-parties/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/government--political-parties/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/government--political-parties/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/government--political-parties/puzzles.json"
+    },
+    {
+      "id": "government--electoral-college",
+      "title": "Electoral College",
+      "subject": "Social Studies",
+      "category": "Government & Civics",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "Government & Civics · 7–12",
+      "file": "social-studies/government/electoral-college.json",
+      "slug": "government--electoral-college",
+      "source": "question-bank/social-studies/government/electoral-college.json",
+      "sourceSha256": "7dae219113d63b653193810032d8915925620b2350426418e1ae67fa6baf4ca3",
+      "sourceTitle": "Electoral College",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/government--electoral-college/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/government--electoral-college/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/government--electoral-college/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/government--electoral-college/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/government--electoral-college/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/government--electoral-college/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/government--electoral-college/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/government--electoral-college/puzzles.json"
+    },
+    {
+      "id": "government--state-government",
+      "title": "State Government",
+      "subject": "Social Studies",
+      "category": "Government & Civics",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "Government & Civics · 7–12",
+      "file": "social-studies/government/state-government.json",
+      "slug": "government--state-government",
+      "source": "question-bank/social-studies/government/state-government.json",
+      "sourceSha256": "984964ed7c693e99d6bbbac5ab0391662f7bd9c1085d2665c149e281057c6a02",
+      "sourceTitle": "State Government",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/government--state-government/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/government--state-government/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/government--state-government/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/government--state-government/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/government--state-government/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/government--state-government/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/government--state-government/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/government--state-government/puzzles.json"
+    },
+    {
+      "id": "government--local-government",
+      "title": "Local Government",
+      "subject": "Social Studies",
+      "category": "Government & Civics",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "Government & Civics · 7–12",
+      "file": "social-studies/government/local-government.json",
+      "slug": "government--local-government",
+      "source": "question-bank/social-studies/government/local-government.json",
+      "sourceSha256": "f86a58455cf5c7253005d16c16501f99212120d3562cc3dd21776fe51c3c316a",
+      "sourceTitle": "Local Government",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/government--local-government/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/government--local-government/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/government--local-government/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/government--local-government/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/government--local-government/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/government--local-government/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/government--local-government/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/government--local-government/puzzles.json"
+    },
+    {
+      "id": "government--citizenship",
+      "title": "Citizenship",
+      "subject": "Social Studies",
+      "category": "Government & Civics",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "Government & Civics · 7–12",
+      "file": "social-studies/government/citizenship.json",
+      "slug": "government--citizenship",
+      "source": "question-bank/social-studies/government/citizenship.json",
+      "sourceSha256": "763e28fe941db36c1c81239f02b7417e3cc5904856d3b1031893bb50d247ef0c",
+      "sourceTitle": "Citizenship",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/government--citizenship/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/government--citizenship/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/government--citizenship/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/government--citizenship/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/government--citizenship/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/government--citizenship/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/government--citizenship/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/government--citizenship/puzzles.json"
+    },
+    {
+      "id": "economics--basic-economic-concepts",
+      "title": "Basic Economic Concepts",
+      "subject": "Social Studies",
+      "category": "Economics",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "Economics · 7–12",
+      "file": "social-studies/economics/basic-economic-concepts.json",
+      "slug": "economics--basic-economic-concepts",
+      "source": "question-bank/social-studies/economics/basic-economic-concepts.json",
+      "sourceSha256": "0717a02b53901fcd86599fc0b1fb14d6534a43ed3705fed166e0f8155be8853c",
+      "sourceTitle": "Basic Economic Concepts",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/economics--basic-economic-concepts/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/economics--basic-economic-concepts/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/economics--basic-economic-concepts/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/economics--basic-economic-concepts/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/economics--basic-economic-concepts/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/economics--basic-economic-concepts/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/economics--basic-economic-concepts/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/economics--basic-economic-concepts/puzzles.json"
+    },
+    {
+      "id": "economics--opportunity-cost",
+      "title": "Opportunity Cost",
+      "subject": "Social Studies",
+      "category": "Economics",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "Economics · 7–12",
+      "file": "social-studies/economics/opportunity-cost.json",
+      "slug": "economics--opportunity-cost",
+      "source": "question-bank/social-studies/economics/opportunity-cost.json",
+      "sourceSha256": "3761235a4634377dc2e8d6be9ee2ac94f24a2c7e5ffe5825b900b2dc6d67f281",
+      "sourceTitle": "Opportunity Cost",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/economics--opportunity-cost/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/economics--opportunity-cost/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/economics--opportunity-cost/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/economics--opportunity-cost/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/economics--opportunity-cost/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/economics--opportunity-cost/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/economics--opportunity-cost/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/economics--opportunity-cost/puzzles.json"
+    },
+    {
+      "id": "economics--economic-systems",
+      "title": "Economic Systems",
+      "subject": "Social Studies",
+      "category": "Economics",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "Economics · 7–12",
+      "file": "social-studies/economics/economic-systems.json",
+      "slug": "economics--economic-systems",
+      "source": "question-bank/social-studies/economics/economic-systems.json",
+      "sourceSha256": "62bcabe6f23811a45a8a13394e0f252f9249b66257c9468c9e24d3f0070768b9",
+      "sourceTitle": "Economic Systems",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/economics--economic-systems/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/economics--economic-systems/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/economics--economic-systems/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/economics--economic-systems/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/economics--economic-systems/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/economics--economic-systems/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/economics--economic-systems/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/economics--economic-systems/puzzles.json"
+    },
+    {
+      "id": "economics--supply-and-demand",
+      "title": "Supply and Demand",
+      "subject": "Social Studies",
+      "category": "Economics",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "Economics · 7–12",
+      "file": "social-studies/economics/supply-and-demand.json",
+      "slug": "economics--supply-and-demand",
+      "source": "question-bank/social-studies/economics/supply-and-demand.json",
+      "sourceSha256": "f4b2484a4df92e3e2859dd016975563d09b0b58667cef859eadbc1972845648b",
+      "sourceTitle": "Supply and Demand",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/economics--supply-and-demand/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/economics--supply-and-demand/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/economics--supply-and-demand/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/economics--supply-and-demand/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/economics--supply-and-demand/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/economics--supply-and-demand/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/economics--supply-and-demand/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/economics--supply-and-demand/puzzles.json"
+    },
+    {
+      "id": "economics--gdp",
+      "title": "GDP",
+      "subject": "Social Studies",
+      "category": "Economics",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "Economics · 7–12",
+      "file": "social-studies/economics/gdp.json",
+      "slug": "economics--gdp",
+      "source": "question-bank/social-studies/economics/gdp.json",
+      "sourceSha256": "e58fe851d58287ef39b3849c215226575438f525304562e6b8505b4800915e2a",
+      "sourceTitle": "GDP",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/economics--gdp/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/economics--gdp/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/economics--gdp/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/economics--gdp/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/economics--gdp/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/economics--gdp/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/economics--gdp/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/economics--gdp/puzzles.json"
+    },
+    {
+      "id": "economics--inflation",
+      "title": "Inflation",
+      "subject": "Social Studies",
+      "category": "Economics",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "Economics · 7–12",
+      "file": "social-studies/economics/inflation.json",
+      "slug": "economics--inflation",
+      "source": "question-bank/social-studies/economics/inflation.json",
+      "sourceSha256": "16c4a31a0272700b731bffb45c3a26b8ae88157d1f3a73f174bde6c89f4484ac",
+      "sourceTitle": "Inflation",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/economics--inflation/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/economics--inflation/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/economics--inflation/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/economics--inflation/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/economics--inflation/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/economics--inflation/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/economics--inflation/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/economics--inflation/puzzles.json"
+    },
+    {
+      "id": "economics--unemployment",
+      "title": "Unemployment",
+      "subject": "Social Studies",
+      "category": "Economics",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "Economics · 7–12",
+      "file": "social-studies/economics/unemployment.json",
+      "slug": "economics--unemployment",
+      "source": "question-bank/social-studies/economics/unemployment.json",
+      "sourceSha256": "2620eba2f401b88a330d544e19d7e4fd2d0013c5dd4b8e6a076d6777eb66c957",
+      "sourceTitle": "Unemployment",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/economics--unemployment/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/economics--unemployment/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/economics--unemployment/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/economics--unemployment/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/economics--unemployment/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/economics--unemployment/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/economics--unemployment/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/economics--unemployment/puzzles.json"
+    },
+    {
+      "id": "economics--taxes",
+      "title": "Taxes",
+      "subject": "Social Studies",
+      "category": "Economics",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "Economics · 7–12",
+      "file": "social-studies/economics/taxes.json",
+      "slug": "economics--taxes",
+      "source": "question-bank/social-studies/economics/taxes.json",
+      "sourceSha256": "3303bc78c9a5a846ebf90d500ce7c72ae62282d6797d132aa75b9c909ae96f95",
+      "sourceTitle": "Taxes",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/economics--taxes/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/economics--taxes/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/economics--taxes/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/economics--taxes/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/economics--taxes/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/economics--taxes/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/economics--taxes/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/economics--taxes/puzzles.json"
+    },
+    {
+      "id": "economics--comparative-advantage",
+      "title": "Comparative Advantage",
+      "subject": "Social Studies",
+      "category": "Economics",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "Economics · 7–12",
+      "file": "social-studies/economics/comparative-advantage.json",
+      "slug": "economics--comparative-advantage",
+      "source": "question-bank/social-studies/economics/comparative-advantage.json",
+      "sourceSha256": "869e758e90df0e1e4df3339b25a2c36e9eeb3b5903f01ee40ea220a72a60c2e0",
+      "sourceTitle": "Comparative Advantage",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/economics--comparative-advantage/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/economics--comparative-advantage/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/economics--comparative-advantage/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/economics--comparative-advantage/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/economics--comparative-advantage/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/economics--comparative-advantage/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/economics--comparative-advantage/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/economics--comparative-advantage/puzzles.json"
+    },
+    {
+      "id": "economics--banking",
+      "title": "Banking",
+      "subject": "Social Studies",
+      "category": "Economics",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "Economics · 7–12",
+      "file": "social-studies/economics/banking.json",
+      "slug": "economics--banking",
+      "source": "question-bank/social-studies/economics/banking.json",
+      "sourceSha256": "e8866849acfa8c95598560627f42404e35fa43de2c4ec474e26438fadb3ac373",
+      "sourceTitle": "Banking",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/economics--banking/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/economics--banking/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/economics--banking/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/economics--banking/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/economics--banking/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/economics--banking/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/economics--banking/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/economics--banking/puzzles.json"
+    },
+    {
+      "id": "economics--credit",
+      "title": "Credit",
+      "subject": "Social Studies",
+      "category": "Economics",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "Economics · 7–12",
+      "file": "social-studies/economics/credit.json",
+      "slug": "economics--credit",
+      "source": "question-bank/social-studies/economics/credit.json",
+      "sourceSha256": "d6d904e82f7396a304fce14836e6fcf477c36ee56fbbad94b7b7420d9831d8f9",
+      "sourceTitle": "Credit",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/economics--credit/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/economics--credit/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/economics--credit/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/economics--credit/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/economics--credit/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/economics--credit/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/economics--credit/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/economics--credit/puzzles.json"
+    },
+    {
+      "id": "economics--saving",
+      "title": "Saving",
+      "subject": "Social Studies",
+      "category": "Economics",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "Economics · 7–12",
+      "file": "social-studies/economics/saving.json",
+      "slug": "economics--saving",
+      "source": "question-bank/social-studies/economics/saving.json",
+      "sourceSha256": "23fd88d1d333cdf2792e617252096561ed4f4f759d01ecf38fedb644adc336a1",
+      "sourceTitle": "Saving",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/economics--saving/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/economics--saving/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/economics--saving/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/economics--saving/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/economics--saving/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/economics--saving/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/economics--saving/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/economics--saving/puzzles.json"
+    },
+    {
+      "id": "economics--investing",
+      "title": "Investing",
+      "subject": "Social Studies",
+      "category": "Economics",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "Economics · 7–12",
+      "file": "social-studies/economics/investing.json",
+      "slug": "economics--investing",
+      "source": "question-bank/social-studies/economics/investing.json",
+      "sourceSha256": "dd2677e4a47b09cab39aae3632bf54dfe74cde53770116b28c3bf42a6f165a2a",
+      "sourceTitle": "Investing",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/economics--investing/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/economics--investing/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/economics--investing/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/economics--investing/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/economics--investing/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/economics--investing/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/economics--investing/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/economics--investing/puzzles.json"
+    },
+    {
+      "id": "economics--budgeting",
+      "title": "Budgeting",
+      "subject": "Social Studies",
+      "category": "Economics",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "Economics · 7–12",
+      "file": "social-studies/economics/budgeting.json",
+      "slug": "economics--budgeting",
+      "source": "question-bank/social-studies/economics/budgeting.json",
+      "sourceSha256": "a21d175198207223c4265aee8e7262605645015841f87944b79ae7cc9e2e1baf",
+      "sourceTitle": "Budgeting",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/economics--budgeting/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/economics--budgeting/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/economics--budgeting/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/economics--budgeting/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/economics--budgeting/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/economics--budgeting/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/economics--budgeting/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/economics--budgeting/puzzles.json"
+    },
+    {
+      "id": "economics--insurance",
+      "title": "Insurance",
+      "subject": "Social Studies",
+      "category": "Economics",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "Economics · 7–12",
+      "file": "social-studies/economics/insurance.json",
+      "slug": "economics--insurance",
+      "source": "question-bank/social-studies/economics/insurance.json",
+      "sourceSha256": "a3e1868749169b5ff570da3cefa9e013335fc57dcfa416500cc8e79bc5228257",
+      "sourceTitle": "Insurance",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/economics--insurance/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/economics--insurance/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/economics--insurance/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/economics--insurance/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/economics--insurance/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/economics--insurance/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/economics--insurance/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/economics--insurance/puzzles.json"
+    },
+    {
+      "id": "geography--five-themes-of-geography",
+      "title": "Five Themes of Geography",
+      "subject": "Social Studies",
+      "category": "Geography",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "Geography · 7–12",
+      "file": "social-studies/geography/five-themes-of-geography.json",
+      "slug": "geography--five-themes-of-geography",
+      "source": "question-bank/social-studies/geography/five-themes-of-geography.json",
+      "sourceSha256": "d071c3a890055f0976ff193706f6d06a3aedec181b29c80642fbe7e44a1899c8",
+      "sourceTitle": "Five Themes of Geography",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/geography--five-themes-of-geography/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/geography--five-themes-of-geography/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/geography--five-themes-of-geography/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/geography--five-themes-of-geography/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/geography--five-themes-of-geography/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/geography--five-themes-of-geography/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/geography--five-themes-of-geography/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/geography--five-themes-of-geography/puzzles.json"
+    },
+    {
+      "id": "geography--map-skills",
+      "title": "Map Skills",
+      "subject": "Social Studies",
+      "category": "Geography",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "Geography · 7–12",
+      "file": "social-studies/geography/map-skills.json",
+      "slug": "geography--map-skills",
+      "source": "question-bank/social-studies/geography/map-skills.json",
+      "sourceSha256": "83281481ac97b9676c2e231ffe3c0a72e22f3162c756240e8c7fd7d153c268c8",
+      "sourceTitle": "Map Skills",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/geography--map-skills/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/geography--map-skills/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/geography--map-skills/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/geography--map-skills/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/geography--map-skills/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/geography--map-skills/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/geography--map-skills/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/geography--map-skills/puzzles.json"
+    },
+    {
+      "id": "geography--latitude-and-longitude",
+      "title": "Latitude and Longitude",
+      "subject": "Social Studies",
+      "category": "Geography",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "Geography · 7–12",
+      "file": "social-studies/geography/latitude-and-longitude.json",
+      "slug": "geography--latitude-and-longitude",
+      "source": "question-bank/social-studies/geography/latitude-and-longitude.json",
+      "sourceSha256": "6f904b3a7891535ccaf75d65edba6ea4c9f98b8b4e644c17ea2a5f6a5474b36d",
+      "sourceTitle": "Latitude and Longitude",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/geography--latitude-and-longitude/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/geography--latitude-and-longitude/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/geography--latitude-and-longitude/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/geography--latitude-and-longitude/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/geography--latitude-and-longitude/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/geography--latitude-and-longitude/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/geography--latitude-and-longitude/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/geography--latitude-and-longitude/puzzles.json"
+    },
+    {
+      "id": "geography--physical-geography",
+      "title": "Physical Geography",
+      "subject": "Social Studies",
+      "category": "Geography",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "Geography · 7–12",
+      "file": "social-studies/geography/physical-geography.json",
+      "slug": "geography--physical-geography",
+      "source": "question-bank/social-studies/geography/physical-geography.json",
+      "sourceSha256": "3835546d624e70f3573af3525cb032460d5e5ad716e922091df7b2c43985fd4a",
+      "sourceTitle": "Physical Geography",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/geography--physical-geography/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/geography--physical-geography/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/geography--physical-geography/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/geography--physical-geography/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/geography--physical-geography/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/geography--physical-geography/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/geography--physical-geography/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/geography--physical-geography/puzzles.json"
+    },
+    {
+      "id": "geography--population",
+      "title": "Population",
+      "subject": "Social Studies",
+      "category": "Geography",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "Geography · 7–12",
+      "file": "social-studies/geography/population.json",
+      "slug": "geography--population",
+      "source": "question-bank/social-studies/geography/population.json",
+      "sourceSha256": "eb9a35e544848daee2451942fa49a4eb7f893358c9bd009aab2addc648e52eaa",
+      "sourceTitle": "Population",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/geography--population/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/geography--population/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/geography--population/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/geography--population/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/geography--population/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/geography--population/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/geography--population/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/geography--population/puzzles.json"
+    },
+    {
+      "id": "geography--migration",
+      "title": "Migration",
+      "subject": "Social Studies",
+      "category": "Geography",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "Geography · 7–12",
+      "file": "social-studies/geography/migration.json",
+      "slug": "geography--migration",
+      "source": "question-bank/social-studies/geography/migration.json",
+      "sourceSha256": "e0d34be61ecd0a30c7e8295e4b2c23db03b11aa233f0cfcee18a318ae173f554",
+      "sourceTitle": "Migration",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/geography--migration/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/geography--migration/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/geography--migration/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/geography--migration/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/geography--migration/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/geography--migration/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/geography--migration/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/geography--migration/puzzles.json"
+    },
+    {
+      "id": "geography--climate",
+      "title": "Climate",
+      "subject": "Social Studies",
+      "category": "Geography",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "Geography · 7–12",
+      "file": "social-studies/geography/climate.json",
+      "slug": "geography--climate",
+      "source": "question-bank/social-studies/geography/climate.json",
+      "sourceSha256": "af441554764515045e9112bea8a0c3bf4cd2a352ef5ceff0de8957d09463941c",
+      "sourceTitle": "Climate",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/geography--climate/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/geography--climate/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/geography--climate/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/geography--climate/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/geography--climate/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/geography--climate/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/geography--climate/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/geography--climate/puzzles.json"
+    },
+    {
+      "id": "geography--biomes",
+      "title": "Biomes",
+      "subject": "Social Studies",
+      "category": "Geography",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "Geography · 7–12",
+      "file": "social-studies/geography/biomes.json",
+      "slug": "geography--biomes",
+      "source": "question-bank/social-studies/geography/biomes.json",
+      "sourceSha256": "7469285491262d9c7d0dfac4607e56a3ed61a376357a7d86d1dcea70810a5fff",
+      "sourceTitle": "Biomes",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/geography--biomes/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/geography--biomes/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/geography--biomes/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/geography--biomes/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/geography--biomes/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/geography--biomes/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/geography--biomes/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/geography--biomes/puzzles.json"
+    },
+    {
+      "id": "geography--north-america",
+      "title": "North America",
+      "subject": "Social Studies",
+      "category": "Geography",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "Geography · 7–12",
+      "file": "social-studies/geography/north-america.json",
+      "slug": "geography--north-america",
+      "source": "question-bank/social-studies/geography/north-america.json",
+      "sourceSha256": "b25cbc8993f176be55d08439b9e9094052b9f601c04bf74e0e1263a567cc5c10",
+      "sourceTitle": "North America",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/geography--north-america/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/geography--north-america/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/geography--north-america/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/geography--north-america/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/geography--north-america/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/geography--north-america/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/geography--north-america/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/geography--north-america/puzzles.json"
+    },
+    {
+      "id": "geography--latin-america",
+      "title": "Latin America",
+      "subject": "Social Studies",
+      "category": "Geography",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "Geography · 7–12",
+      "file": "social-studies/geography/latin-america.json",
+      "slug": "geography--latin-america",
+      "source": "question-bank/social-studies/geography/latin-america.json",
+      "sourceSha256": "5ff5e3f6742915fffa5259069e3f0d0f60164a1fb248215fc35e9ec702ba028f",
+      "sourceTitle": "Latin America",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/geography--latin-america/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/geography--latin-america/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/geography--latin-america/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/geography--latin-america/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/geography--latin-america/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/geography--latin-america/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/geography--latin-america/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/geography--latin-america/puzzles.json"
+    },
+    {
+      "id": "geography--europe",
+      "title": "Europe",
+      "subject": "Social Studies",
+      "category": "Geography",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "Geography · 7–12",
+      "file": "social-studies/geography/europe.json",
+      "slug": "geography--europe",
+      "source": "question-bank/social-studies/geography/europe.json",
+      "sourceSha256": "8e5038a36adc635c00e8786cef4eff72906a02a62230b3b24f6adb7ad4e46cad",
+      "sourceTitle": "Europe",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/geography--europe/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/geography--europe/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/geography--europe/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/geography--europe/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/geography--europe/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/geography--europe/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/geography--europe/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/geography--europe/puzzles.json"
+    },
+    {
+      "id": "geography--sub-saharan-africa",
+      "title": "Sub-Saharan Africa",
+      "subject": "Social Studies",
+      "category": "Geography",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "Geography · 7–12",
+      "file": "social-studies/geography/sub-saharan-africa.json",
+      "slug": "geography--sub-saharan-africa",
+      "source": "question-bank/social-studies/geography/sub-saharan-africa.json",
+      "sourceSha256": "a5c160305f9f64b174ec3f60ec870ef8956a80d5062314e21d36f7263dee7af4",
+      "sourceTitle": "Sub-Saharan Africa",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/geography--sub-saharan-africa/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/geography--sub-saharan-africa/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/geography--sub-saharan-africa/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/geography--sub-saharan-africa/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/geography--sub-saharan-africa/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/geography--sub-saharan-africa/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/geography--sub-saharan-africa/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/geography--sub-saharan-africa/puzzles.json"
+    },
+    {
+      "id": "geography--south-asia",
+      "title": "South Asia",
+      "subject": "Social Studies",
+      "category": "Geography",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "Geography · 7–12",
+      "file": "social-studies/geography/south-asia.json",
+      "slug": "geography--south-asia",
+      "source": "question-bank/social-studies/geography/south-asia.json",
+      "sourceSha256": "077b493880674f5e61a5cb430949589a80e2588b50aee4e3c7b697d50c0da55f",
+      "sourceTitle": "South Asia",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/geography--south-asia/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/geography--south-asia/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/geography--south-asia/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/geography--south-asia/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/geography--south-asia/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/geography--south-asia/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/geography--south-asia/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/geography--south-asia/puzzles.json"
+    },
+    {
+      "id": "geography--east-asia",
+      "title": "East Asia",
+      "subject": "Social Studies",
+      "category": "Geography",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "Geography · 7–12",
+      "file": "social-studies/geography/east-asia.json",
+      "slug": "geography--east-asia",
+      "source": "question-bank/social-studies/geography/east-asia.json",
+      "sourceSha256": "d19303ee9cfb88bf1ba488d3fd936893cfe6bcd4881bb2739268470fbcccf21e",
+      "sourceTitle": "East Asia",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/geography--east-asia/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/geography--east-asia/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/geography--east-asia/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/geography--east-asia/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/geography--east-asia/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/geography--east-asia/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/geography--east-asia/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/geography--east-asia/puzzles.json"
+    },
+    {
+      "id": "geography--australia-and-oceania",
+      "title": "Australia and Oceania",
+      "subject": "Social Studies",
+      "category": "Geography",
+      "gradeBand": "7–12",
+      "questionCount": 20,
+      "description": "Geography · 7–12",
+      "file": "social-studies/geography/australia-and-oceania.json",
+      "slug": "geography--australia-and-oceania",
+      "source": "question-bank/social-studies/geography/australia-and-oceania.json",
+      "sourceSha256": "a9db11e3a343bdb4530220a2d62fa5c1580a3f546f8c8a2c70277fefa7e65214",
+      "sourceTitle": "Australia and Oceania",
+      "pdfs": {
+        "easy": "/print-play-games/crosswords/social-studies/geography--australia-and-oceania/Teach_Arcade_Crossword_Easy.pdf",
+        "medium": "/print-play-games/crosswords/social-studies/geography--australia-and-oceania/Teach_Arcade_Crossword_Medium.pdf",
+        "hard": "/print-play-games/crosswords/social-studies/geography--australia-and-oceania/Teach_Arcade_Crossword_Hard.pdf",
+        "full": "/print-play-games/crosswords/social-studies/geography--australia-and-oceania/Teach_Arcade_Crossword_Print_and_Play.pdf"
+      },
+      "previews": {
+        "easy": "/print-play-games/crosswords/social-studies/geography--australia-and-oceania/easy.webp",
+        "medium": "/print-play-games/crosswords/social-studies/geography--australia-and-oceania/medium.webp",
+        "hard": "/print-play-games/crosswords/social-studies/geography--australia-and-oceania/hard.webp"
+      },
+      "puzzles": "/print-play-games/crosswords/social-studies/geography--australia-and-oceania/puzzles.json"
+    }
+  ]
+}
