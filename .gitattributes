@@ -1,0 +1,3 @@
+# Generated PDF cross-reference tables contain significant whitespace.
+*.pdf binary
+*.webp binary
