@@ -9,12 +9,13 @@
   if(!l||typeof l!=='object'||Array.isArray(l))return {errors:['Missing level data.'],warnings:[]};
   const finite=(n,min,max)=>typeof n==='number'&&Number.isFinite(n)&&n>=min&&n<=max;
   const width=l.world?.width,height=l.world?.height,t=l.tileSize;
-  if(!finite(width,960,32000)||height!==480||!finite(t,8,64))errors.push('World must be 960–32000 pixels wide, 480 pixels high, with an 8–64 pixel tile size.');
+  if(!finite(width,960,32000)||!finite(height,480,7680)||!finite(t,8,64))errors.push('World must be 960–32000 pixels wide, 480–7680 pixels high, with an 8–64 pixel tile size.');
   for(const key of ['spawn','finish']){const o=l[key];if(!o||!finite(o.x,0,width)||!finite(o.y,0,height))errors.push(key+' must be inside the world.');}
   if(l.spawn&&((l.spawn.x+26)>width||(l.spawn.y+38)>height))errors.push('Start must fit inside the world.');
   if(l.finish&&((l.finish.x+l.finish.w)>width||(l.finish.y+l.finish.h)>height))errors.push('Finish must fit inside the world.');
   if(!finite(l.finish?.w,1,1000)||!finite(l.finish?.h,1,height))errors.push('Finish needs positive width and height.');
   if(!l.layers||!Array.isArray(l.layers.terrain))errors.push('Terrain grid is required.');
+  if(Object.values(l.layers||{}).reduce((n,g)=>n+(Array.isArray(g)?g.length*Math.ceil(width/t):0),0)>750000)errors.push('Level exceeds the tile budget.');
   for(const [key,g] of Object.entries(l.layers||{})){
    if(!['terrain','hazards','checkpoints','questions'].includes(key)){errors.push('Unknown tile layer: '+key);continue;}
    if(!Array.isArray(g)||g.length!==Math.ceil(height/t)||g.some(row=>!Array.isArray(row)||row.length!==Math.ceil(width/t)||row.some(v=>!Number.isInteger(v)||v<0||v>1000)))errors.push('Invalid '+key+' grid.');

@@ -4,7 +4,7 @@ Editor: `/dev/level-editor/`. Showcase file running through the website loader: 
 
 ## Authoring workflow
 
-Choose an object category → choose appearance/type in Placement options → place it → select it to adjust settings. The inspector offers appearance, size, position, rewards and behavior without JSON editing. The editor and playable creator renderer use the same original canvas artwork library. Advanced JSON remains available for less common engine properties.
+Choose an object category → choose appearance/type in Placement options → place it → select it to adjust settings. A prominent options bar above the map offers platform material/style, dimensions and moving-platform speed/direction/range/path controls. It updates for the object you select. The inspector offers additional appearance, position, rewards and behavior settings without JSON editing. The editor and playable creator renderer use the same original canvas artwork library. Advanced JSON remains available for less common engine properties.
 
 - Platforms and moving platforms: stone, wood, roof, sand and metal materials.
 - Enemies: walking scarab, flying bat, crawler, drone, falling stone presets. Movement and stompable/hazard/bounce interactions are runtime properties; preset selection fills in sensible defaults.
@@ -15,9 +15,9 @@ Choose an object category → choose appearance/type in Placement options → pl
 - Scenery: tree, palm, house, column, cloud, rock; background or foreground layer. Scenery has no collision.
 - Scene themes: tomb, forest, rooftops. Search and select from the existing Review Lab question-bank catalogue; references are saved in the JSON and fetched for playtesting.
 
-Blank level, original Pyramid sample, and new creator showcase are available. Width is 960–32000px; world height remains 480px/earth physics. Growing extends the terrain edge. Shortening trims terrain beyond the new edge but refuses to discard objects, marker tiles, or path nodes. The finish moves to fit. Undo restores changes.
+Blank level, original Pyramid sample, creator showcase, and a four-screen-high vertical climb are available. Width is 960–32000px; height is 480–7680px with earth physics. Add 480px above or enter a height. Expansion adds empty rows at the top and shifts objects, tile markers, question art and path points together; shrinking refuses to discard upper content. Growing extends the terrain edge. Shortening trims terrain beyond the new edge but refuses to discard objects, marker tiles, or path nodes. The finish moves to fit. Undo restores changes.
 
-Select/drag, paint terrain/checkpoints, erase, duplicate/delete, zoom, optional snap, Pan, position slider, Start/Finish navigation, browser drafts, JSON import/export. Canvas backing width is bounded for long levels on tablets.
+Select/drag, paint terrain/checkpoints, erase, duplicate/delete, zoom, optional snap, Pan, position slider, Start/Finish navigation, browser drafts, JSON import/export. Canvas backing dimensions and total pixel area are bounded for long/tall levels on tablets. Top/Bottom sliders and Pan navigate tall layouts. The playtest remains a 960×480 viewport; the camera follows the player in both axes and resets vertically at checkpoints.
 
 ## Movement routes
 
@@ -48,7 +48,8 @@ Run:
 - `node scripts/test-level-editor.mjs`
 - `node scripts/test-level-editor-controls.mjs`
 - `node scripts/test-creator-paths.mjs`
+- `node scripts/test-creator-vertical.mjs`
 
-Checks cover lossless JSON, editing, asset paths, runtime loading, collectible/finish behavior, blank creation, resizing, pointer handlers, invalid input, undo/redo, pan, bounded canvas, zoom, style selection, drawn routes, pause/loop reversal, frame-rate invariance, rider carry, enemy routes, rewards, and question gates. DOM controls are simulated; no real-browser/touch QA claim is made. The managed environment lacks the required control-browser skill. Playtest every route before release; data validation does not prove reachability.
+Checks cover lossless JSON, editing, asset paths, runtime loading, collectible/finish behavior, blank creation, resizing, pointer handlers, invalid input, undo/redo, pan, bounded canvas, zoom, style selection, drawn routes, pause/loop reversal, frame-rate invariance, rider carry, enemy routes, rewards, question gates, vertical expansion/shrinking, two-axis camera tracking/reset, high placement, canvas area bounds, and a physics jump between ascending shelves. DOM controls are simulated; no real-browser/touch QA claim is made. The managed environment lacks the required control-browser skill. Playtest every route before release; data validation does not prove reachability.
 
 This release implements object/style/behavior authoring and waypoint routes. It is not yet a universal editor for every V1.3 property: mount placement, full starting-ability configuration, multiple stages, reusable section templates, custom art uploads, and richer theme packs remain future work. Existing levels preserve those properties on round trip. Unsupported behaviors are not advertised as editable options. Current terrain platforms are solid; one-way platforms are not exposed because the runtime does not support them yet.

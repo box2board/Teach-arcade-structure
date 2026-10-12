@@ -6,10 +6,10 @@
  function bounds(key,o){if(key==='slopes')return{x:o.x1,y:Math.min(o.y1,o.y2),w:o.x2-o.x1,h:Math.max(12,Math.abs(o.y2-o.y1))};return{x:o.x,y:o.y??320,w:o.w||defaults[key]?.w||26,h:o.h||defaults[key]?.h||38};}
  function blank(width=3840){const t=32,rows=15,cols=Math.ceil(width/t),grid=()=>Array.from({length:rows},()=>Array(cols).fill(0)),terrain=grid();for(let r=11;r<rows;r++)terrain[r].fill(1);return F.pack({id:'my-level',physicsPreset:'earth',tileSize:t,world:{width,height:480},spawn:{x:64,y:300},finish:{x:width-128,y:246,w:58,h:106},layers:{terrain,hazards:grid(),checkpoints:grid()},abilities:{dash:{doubleTapMs:280,durationMs:190,speedMultiplier:1.85},stomp:{enabled:true},power:{maxHits:1}},zones:[{id:'entry',from:0,to:width,label:'My Level'}],questionPoints:[]});}
  function assert(doc){const r=F.validate(doc);if(r.errors.length)throw Error(r.errors.join('\n'));return doc;}
- function create(doc,key,x,y){const l=doc.level;if(key==='spawn'||key==='finish'){const b=bounds(key,l[key]);Object.assign(l[key],{x:Math.max(0,Math.min(x,l.world.width-b.w)),y:Math.max(0,Math.min(y,480-b.h))});return l[key];}
+ function create(doc,key,x,y){const l=doc.level;if(key==='spawn'||key==='finish'){const b=bounds(key,l[key]);Object.assign(l[key],{x:Math.max(0,Math.min(x,l.world.width-b.w)),y:Math.max(0,Math.min(y,l.world.height-b.h))});return l[key];}
   const o={id:'editor-'+Date.now()+'-'+(++sequence),...defaults[key],x,y};
-  if(key==='slopes'){delete o.x;delete o.y;Object.assign(o,{x1:Math.max(0,Math.min(x,l.world.width-128)),y1:Math.max(64,Math.min(y,480)),x2:Math.max(0,Math.min(x,l.world.width-128))+128,y2:Math.max(64,Math.min(y,480))-64});}
-  else{const b=bounds(key,o);o.x=Math.max(0,Math.min(x,l.world.width-b.w));o.y=Math.max(0,Math.min(y,480-b.h));}
+  if(key==='slopes'){delete o.x;delete o.y;Object.assign(o,{x1:Math.max(0,Math.min(x,l.world.width-128)),y1:Math.max(64,Math.min(y,l.world.height)),x2:Math.max(0,Math.min(x,l.world.width-128))+128,y2:Math.max(64,Math.min(y,l.world.height))-64});}
+  else{const b=bounds(key,o);o.x=Math.max(0,Math.min(x,l.world.width-b.w));o.y=Math.max(0,Math.min(y,l.world.height-b.h));}
   o.style=window.TAObjectLibrary?.defaultStyle(key)||o.style;
   if(key==='gates')o.questionId=l.questionPoints?.[0]?.id||'';
   if(key==='questionPoints'){o.visualY=o.y;o.questionIndex=(l.questionPoints||[]).length;}
@@ -25,5 +25,11 @@
   l.zones=(l.zones||[]).filter(z=>z.from<width).map(z=>({...z,to:z.to===old?width:Math.min(z.to,width)}));
   return assert(next);
  }
- window.TALevelEditorModel={defaults,bounds,blank,create,resize,assert};
+ function resizeHeight(doc,height){const next=F.clone(doc),l=next.level,old=l.world.height,t=l.tileSize,delta=height-old;if(!Number.isInteger(height)||height<480||height>7680||delta%t!==0)throw Error('Height must be 480–7680 pixels, changing in '+t+'px steps.');const rows=delta/t,cols=Math.ceil(l.world.width/t);if(Math.ceil(height/t)*cols*Object.keys(l.layers).length>750000)throw Error('This width and height make too many tiles. Reduce the width or height.');
+  if(delta<0){const cut=-delta;for(const key of F.arrays){if(['zones','surfaceZones'].includes(key))continue;for(const o of l[key]||[]){const b=bounds(key,o);if(b.y<cut||o.path?.some(n=>n.y<cut))throw Error('Move or remove objects and path points in the upper area before reducing height.');}}for(const key of ['spawn','finish'])if(l[key].y<cut)throw Error('Move the '+key+' below the area being removed first.');for(const [key,g] of Object.entries(l.layers))if(g.slice(0,-rows).some(row=>row.some(Boolean)))throw Error('Erase '+key+' tiles in the upper area before reducing height.');}
+  for(const [key,g] of Object.entries(l.layers)){if(rows>0)l.layers[key]=[...Array.from({length:rows},()=>Array(cols).fill(0)),...g];else l.layers[key]=g.slice(-rows);}
+  for(const key of F.arrays){if(['zones','surfaceZones'].includes(key))continue;for(const o of l[key]||[]){if(key==='slopes'){o.y1+=delta;o.y2+=delta;}else o.y+=delta;if(o.visualY!==undefined)o.visualY+=delta;if(o.path)o.path.forEach(n=>n.y+=delta);}}
+  l.spawn.y+=delta;l.finish.y+=delta;l.world.height=height;return assert(next);
+ }
+ window.TALevelEditorModel={defaults,bounds,blank,create,resize,resizeHeight,assert};
 })();

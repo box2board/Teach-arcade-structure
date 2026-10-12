@@ -16,3 +16,5 @@ Paths are absolute **top-left** coordinates, beginning at the object's `x,y`. Us
 Collectible options: `score` amount (default 100), `reward: 'score'|'power'|'gear'`, `hits` for power, `abilities` for gear (default climb/heavy). Power/gear still use the V1.3 ability system. This extension also preserves platform style data discarded by the base parser. Styles affect artwork, not collision geometry.
 
 Tests: `node scripts/test-creator-paths.mjs`. Browser and touch QA remain outstanding.
+
+Vertical worlds: the creator camera follows x and y within world bounds, resets to the spawn/checkpoint on restart, and retains y=0 for 480px-high legacy levels. The renderer translates world objects and player art by both axes while HUD stays fixed. Upward expansion is performed by the editor model before export; the runtime simply consumes the expanded coordinates/layers.
