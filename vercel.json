@@ -14,6 +14,10 @@
     { "source": "/arcade-review-games/category-clash/french-revolution/", "destination": "/review-lab/category-clash/french-revolution/", "permanent": true },
     { "source": "/arcade-review-games/category-clash/:path*", "destination": "/review-lab/category-clash/:path*", "permanent": true }
   ],
+  "rewrites": [
+    { "source": "/assets/styles.css", "destination": "/assets/styles-visibility-pass.css" },
+    { "source": "/escape/css/hub.css", "destination": "/escape/css/hub-visibility-pass.css" }
+  ],
   "outputDirectory": "public",
   "functions": {
     "api/resources.js": { "maxDuration": 10 }

@@ -1,0 +1,319 @@
+@import url('/assets/styles-base.css');
+
+/*
+  Teach Arcade visibility pass — 2026-10-12
+  Purpose: improve real-world classroom readability on projectors, older monitors,
+  and lower-brightness displays without changing any game logic or page content.
+*/
+
+/* ---------- Global navigation ---------- */
+.ta-header{
+  background:linear-gradient(90deg,rgba(12,20,70,.98),rgba(24,31,104,.98)) !important;
+  border-bottom:1px solid rgba(129,140,248,.48) !important;
+  box-shadow:0 8px 30px rgba(3,7,28,.34) !important;
+}
+.ta-nav{
+  min-height:68px !important;
+  height:68px !important;
+  padding-left:clamp(14px,3vw,34px) !important;
+  padding-right:clamp(14px,3vw,34px) !important;
+}
+.ta-brand{gap:11px !important;color:#fff !important}
+.ta-brand img{width:46px !important;height:46px !important;border-radius:11px !important}
+.ta-brand span{font-size:16px !important;line-height:.96 !important;color:#fff !important;text-shadow:0 2px 12px rgba(0,0,0,.28)}
+.ta-links{gap:clamp(14px,2.1vw,30px) !important}
+.ta-links a{
+  color:#f7f8ff !important;
+  font-size:13px !important;
+  font-weight:800 !important;
+  padding:10px 9px !important;
+  text-shadow:0 1px 8px rgba(0,0,0,.25);
+}
+.ta-links a:hover,.ta-links a:focus-visible{
+  color:#fff !important;
+  background:rgba(255,255,255,.12) !important;
+}
+.ta-burger{border-color:rgba(255,255,255,.32) !important;background:rgba(255,255,255,.1) !important}
+
+/* ---------- Arcade Review Games: approved high-contrast direction ---------- */
+body:has(.subject-nav){
+  background:
+    radial-gradient(circle at 82% -8%,rgba(72,89,255,.32),transparent 31rem),
+    radial-gradient(circle at 8% 9%,rgba(67,205,255,.13),transparent 25rem),
+    linear-gradient(180deg,#11184f 0%,#0b1443 42%,#080e2b 100%) !important;
+}
+body:has(.subject-nav) .page{
+  width:min(1240px,calc(100% - 32px)) !important;
+  padding:34px 0 64px !important;
+}
+body:has(.subject-nav) .crumbs{
+  color:#d9def4 !important;
+  font-size:.82rem !important;
+  font-weight:600 !important;
+  margin-bottom:16px !important;
+}
+body:has(.subject-nav) .crumbs a{color:#fff !important}
+body:has(.subject-nav) .hero{
+  display:grid !important;
+  grid-template-columns:minmax(178px,.58fr) minmax(0,1.62fr) minmax(235px,.74fr) !important;
+  grid-template-areas:"kicker title stats" "kicker subtitle stats" !important;
+  align-items:center !important;
+  gap:10px 30px !important;
+  min-height:258px !important;
+  padding:28px 30px !important;
+  border:1px solid rgba(91,112,255,.96) !important;
+  border-radius:22px !important;
+  background:
+    radial-gradient(circle at 72% 16%,rgba(91,231,255,.13),transparent 18rem),
+    linear-gradient(118deg,rgba(36,33,145,.99),rgba(19,39,117,.99) 52%,rgba(14,25,79,.99)) !important;
+  box-shadow:0 24px 65px rgba(2,5,25,.42),inset 0 1px 0 rgba(255,255,255,.08) !important;
+}
+body:has(.subject-nav) .hero:before{
+  width:520px !important;height:520px !important;right:-180px !important;top:-235px !important;
+  background:radial-gradient(circle,rgba(91,231,255,.14),transparent 64%) !important;
+}
+body:has(.subject-nav) .hero:after{
+  content:"ARCADE" !important;
+  right:18px !important;bottom:-8px !important;
+  color:rgba(255,255,255,.045) !important;
+  font-size:clamp(3rem,9vw,7rem) !important;
+}
+body:has(.subject-nav) .kicker{
+  grid-area:kicker !important;
+  align-self:stretch !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:14px !important;
+  min-width:0 !important;
+  padding:22px 16px !important;
+  border:1px solid rgba(120,116,255,.42) !important;
+  border-radius:16px !important;
+  background:linear-gradient(180deg,rgba(74,52,214,.56),rgba(31,46,138,.5)) !important;
+  color:#ffe36c !important;
+  font-size:.78rem !important;
+  line-height:1.28 !important;
+  letter-spacing:.08em !important;
+  text-align:center !important;
+  text-wrap:balance;
+  text-shadow:0 2px 12px rgba(0,0,0,.32);
+}
+body:has(.subject-nav) .kicker:before{
+  width:38px !important;height:3px !important;background:#ffe36c !important;border-radius:999px;
+}
+body:has(.subject-nav) .kicker:after{
+  content:"Learn it.  Play it.  Beat it.";
+  display:block;
+  max-width:155px;
+  color:#67efff;
+  font:700 .69rem/1.55 "Press Start 2P",monospace;
+  letter-spacing:0;
+  text-transform:none;
+  text-shadow:0 2px 10px rgba(0,0,0,.34);
+}
+body:has(.subject-nav) .hero h1{
+  grid-area:title !important;
+  align-self:end !important;
+  margin:0 !important;
+  max-width:none !important;
+  color:#fff !important;
+  font-size:clamp(2.45rem,4.55vw,4.2rem) !important;
+  line-height:.98 !important;
+  letter-spacing:-.045em !important;
+  text-shadow:0 3px 22px rgba(0,0,0,.3);
+}
+body:has(.subject-nav) .hero h1 span{display:none !important}
+body:has(.subject-nav) .subtitle{
+  grid-area:subtitle !important;
+  align-self:start !important;
+  max-width:700px !important;
+  margin:0 !important;
+  color:#f0f3ff !important;
+  font-size:clamp(.98rem,1.45vw,1.08rem) !important;
+  font-weight:500 !important;
+  line-height:1.55 !important;
+}
+body:has(.subject-nav) .stats{
+  grid-area:stats !important;
+  display:flex !important;
+  flex-direction:column !important;
+  flex-wrap:nowrap !important;
+  gap:10px !important;
+  margin:0 !important;
+}
+body:has(.subject-nav) .stat{
+  position:relative;
+  width:100% !important;
+  min-height:43px;
+  display:flex !important;
+  align-items:center !important;
+  gap:9px;
+  padding:10px 13px !important;
+  border:1px solid rgba(101,123,255,.88) !important;
+  border-radius:999px !important;
+  background:rgba(18,31,99,.72) !important;
+  color:#f5f7ff !important;
+  font-size:.78rem !important;
+  font-weight:700 !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+}
+body:has(.subject-nav) .stat:before{
+  content:"";
+  width:7px;height:7px;flex:0 0 7px;border-radius:50%;
+  background:#7cecff;
+  box-shadow:0 0 12px rgba(124,236,255,.62);
+}
+body:has(.subject-nav) .stat strong{color:#fff !important;font-size:.95em !important}
+body:has(.subject-nav) .subject-nav{
+  top:8px !important;
+  gap:0 !important;
+  margin:16px 0 30px !important;
+  padding:0 !important;
+  border:1px solid rgba(104,122,255,.78) !important;
+  border-radius:14px !important;
+  background:rgba(12,23,74,.94) !important;
+  box-shadow:0 12px 30px rgba(2,5,25,.3) !important;
+  overflow:auto !important;
+}
+body:has(.subject-nav) .subject-nav a{
+  flex:1 0 auto !important;
+  min-height:48px;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  margin:0 !important;
+  padding:11px 18px !important;
+  border-radius:0 !important;
+  border-right:1px solid rgba(104,122,255,.42);
+  color:#f2f4ff !important;
+  font-size:.79rem !important;
+  font-weight:800 !important;
+}
+body:has(.subject-nav) .subject-nav a:first-child{
+  border-radius:13px 0 0 13px !important;
+  background:linear-gradient(135deg,#6d4cff,#7d5cff) !important;
+  color:#fff !important;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.22);
+}
+body:has(.subject-nav) .subject-nav a:last-child{border-right:0 !important;border-radius:0 13px 13px 0 !important}
+body:has(.subject-nav) .subject-nav a:hover,
+body:has(.subject-nav) .subject-nav a:focus-visible{
+  color:#fff !important;
+  background:#3544a7 !important;
+}
+body:has(.subject-nav) .section-kicker{color:#ffd765 !important;font-size:.72rem !important}
+body:has(.subject-nav) .section-heading h2{
+  color:#fff !important;
+  font-size:clamp(1.9rem,3vw,2.55rem) !important;
+  text-shadow:0 2px 14px rgba(0,0,0,.25);
+}
+body:has(.subject-nav) .count{
+  color:#eef1ff !important;
+  border-color:rgba(129,140,248,.52) !important;
+  background:rgba(20,31,89,.72) !important;
+}
+body:has(.subject-nav) .card{
+  border-color:rgba(125,139,255,.28) !important;
+  background:linear-gradient(180deg,rgba(24,36,83,.98),rgba(12,20,53,.99)) !important;
+  box-shadow:0 18px 44px rgba(1,4,24,.28) !important;
+}
+body:has(.subject-nav) .card:hover{border-color:rgba(130,148,255,.7) !important;box-shadow:0 24px 58px rgba(1,4,24,.42) !important}
+body:has(.subject-nav) .title{color:#fff !important;font-size:1.08rem !important}
+body:has(.subject-nav) .desc{color:#d5dcf1 !important;font-size:.84rem !important}
+body:has(.subject-nav) .badge{color:#cdd5ec !important;border-color:rgba(255,255,255,.17) !important;background:rgba(4,9,34,.25) !important}
+body:has(.subject-nav) .badge.subject{color:#ffe089 !important;border-color:rgba(255,209,93,.4) !important;background:rgba(255,196,77,.1) !important}
+body:has(.subject-nav) .meta span{color:#c2cbe2 !important;background:rgba(255,255,255,.075) !important}
+body:has(.subject-nav) .time{color:#b7c1da !important}
+body:has(.subject-nav) .teacher{
+  border-color:rgba(125,139,255,.3) !important;
+  background:linear-gradient(135deg,rgba(24,36,83,.98),rgba(12,20,53,.98)) !important;
+}
+body:has(.subject-nav) .teacher h2{color:#fff !important}
+body:has(.subject-nav) .teacher p,body:has(.subject-nav) .idea span{color:#d0d8ed !important}
+body:has(.subject-nav) .idea{background:rgba(255,255,255,.065) !important;border-color:rgba(255,255,255,.12) !important}
+
+/* ---------- Home ---------- */
+body:has(.home-intro) .hero{
+  margin:24px 0 26px !important;
+  padding:50px 28px 44px !important;
+  border:1px solid #5c70ff !important;
+  border-radius:22px !important;
+  background:radial-gradient(circle at 84% 12%,rgba(94,234,255,.14),transparent 16rem),linear-gradient(135deg,#161c66,#183c83) !important;
+  box-shadow:0 20px 50px rgba(15,23,42,.18) !important;
+}
+body:has(.home-intro) .hero h1{color:#fff !important;font-size:clamp(2.2rem,4.5vw,3.6rem) !important;text-shadow:0 2px 18px rgba(0,0,0,.25)}
+body:has(.home-intro) .hero p{color:#eef2ff !important;font-size:1.12rem !important;font-weight:600 !important}
+body:has(.home-intro) .hero .btn{border-color:#ffd35e !important;background:#ffd35e !important;color:#111735 !important}
+body:has(.home-intro) .hero .btn.secondary{background:rgba(255,255,255,.1) !important;color:#fff !important;border-color:rgba(255,255,255,.55) !important}
+body:has(.home-intro) .subject-tile,body:has(.home-intro) .more-tile{border-color:#cbd5e1 !important;box-shadow:0 8px 24px rgba(15,23,42,.08) !important}
+
+/* ---------- Subjects ---------- */
+body:has(.subjects-hub-hero) .subjects-hub-hero{
+  border:1px solid #5c70ff !important;
+  border-radius:22px !important;
+  padding:48px 30px 34px !important;
+  background:radial-gradient(circle at 88% 16%,rgba(255,207,91,.15),transparent 15rem),linear-gradient(135deg,#141b62,#183e84) !important;
+  box-shadow:0 18px 48px rgba(15,23,42,.17) !important;
+}
+body:has(.subjects-hub-hero) .subjects-hub-hero h1{color:#fff !important;font-size:clamp(2.1rem,4.4vw,3.25rem) !important}
+body:has(.subjects-hub-hero) .subjects-hub-hero p{color:#eef2ff !important;font-weight:600 !important;font-size:1.08rem !important}
+body:has(.subjects-hub-hero) .subject-card,body:has(.subjects-hub-hero) .intro-card{border-color:#cbd5e1 !important;box-shadow:0 8px 24px rgba(15,23,42,.07) !important}
+
+/* ---------- Teacher Tools ---------- */
+body:has(.card-link) main.container > .hero{
+  margin:18px 0 24px !important;
+  padding:44px 28px !important;
+  border:1px solid #5c70ff !important;
+  border-radius:22px !important;
+  background:radial-gradient(circle at 86% 15%,rgba(94,234,255,.13),transparent 14rem),linear-gradient(135deg,#151c64,#183b82) !important;
+  box-shadow:0 18px 48px rgba(15,23,42,.17) !important;
+}
+body:has(.card-link) main.container > .hero h1{color:#fff !important;font-size:clamp(2rem,4vw,3rem) !important}
+body:has(.card-link) main.container > .hero p{color:#eef2ff !important;font-weight:600 !important;font-size:1.08rem !important}
+body:has(.card-link) .card-link{border-color:#cbd5e1 !important;box-shadow:0 8px 24px rgba(15,23,42,.075) !important}
+body:has(.card-link) .card-link h3{color:#172554 !important}
+body:has(.card-link) .card-link p{color:#334155 !important}
+
+/* ---------- About ---------- */
+body:has(.about-hero) .about-hero{
+  border:1px solid #5c70ff !important;
+  border-radius:22px !important;
+  background:radial-gradient(circle at 84% 18%,rgba(255,210,91,.14),transparent 15rem),linear-gradient(135deg,#151c64,#183b82) !important;
+  box-shadow:0 18px 48px rgba(15,23,42,.17) !important;
+}
+body:has(.about-hero) .about-hero h1{color:#fff !important;font-size:clamp(2.15rem,4.5vw,3.45rem) !important}
+body:has(.about-hero) .about-hero .about-lead{color:#eef2ff !important;font-weight:600 !important}
+body:has(.about-hero) .about-label{color:#201945 !important;background:#ffe17a !important;border-color:#ffe17a !important}
+body:has(.about-hero) .about-btn.secondary{background:rgba(255,255,255,.1) !important;color:#fff !important;border-color:rgba(255,255,255,.55) !important}
+body:has(.about-hero) .about-profile,body:has(.about-hero) .about-mission,body:has(.about-hero) .about-tile{border-color:#cbd5e1 !important;box-shadow:0 8px 24px rgba(15,23,42,.07) !important}
+
+@media(max-width:980px){
+  body:has(.subject-nav) .hero{
+    grid-template-columns:170px minmax(0,1fr) !important;
+    grid-template-areas:"kicker title" "kicker subtitle" "stats stats" !important;
+    gap:12px 24px !important;
+  }
+  body:has(.subject-nav) .stats{flex-direction:row !important;flex-wrap:wrap !important;margin-top:10px !important}
+  body:has(.subject-nav) .stat{width:auto !important;flex:1 1 210px !important}
+}
+@media(max-width:700px){
+  .ta-nav{height:62px !important;min-height:62px !important}
+  .ta-brand img{width:42px !important;height:42px !important}
+  body:has(.subject-nav) .page{width:min(100% - 20px,1240px) !important;padding-top:24px !important}
+  body:has(.subject-nav) .hero{
+    grid-template-columns:1fr !important;
+    grid-template-areas:"kicker" "title" "subtitle" "stats" !important;
+    padding:20px !important;
+  }
+  body:has(.subject-nav) .kicker{align-self:auto !important;min-height:108px !important}
+  body:has(.subject-nav) .hero h1{font-size:clamp(2.15rem,10vw,3rem) !important;text-align:center}
+  body:has(.subject-nav) .subtitle{text-align:center !important;margin-inline:auto !important}
+  body:has(.subject-nav) .stats{display:grid !important;grid-template-columns:1fr 1fr !important}
+  body:has(.subject-nav) .stat{width:100% !important;min-width:0 !important}
+}
+@media(max-width:520px){
+  body:has(.subject-nav) .stats{grid-template-columns:1fr !important}
+  body:has(.subject-nav) .subject-nav a{min-width:max-content !important;padding-inline:16px !important}
+  body:has(.home-intro) .hero,body:has(.subjects-hub-hero) .subjects-hub-hero,body:has(.card-link) main.container > .hero,body:has(.about-hero) .about-hero{padding:30px 20px !important;border-radius:18px !important}
+}
