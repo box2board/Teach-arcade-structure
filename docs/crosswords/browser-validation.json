@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "categoryCounts": {
+    "Government & Civics": 16,
+    "U.S. History": 15,
+    "World History": 15,
+    "Economics": 15,
+    "Geography": 15
+  },
+  "focusChecks": 304,
+  "hoverChecks": 76,
+  "downloadChecks": 304,
+  "initialPreviewOrPdfRequests": 0,
+  "mobilePreviewOrPdfRequests": 0,
+  "mobileHorizontalOverflow": false,
+  "noJavaScriptDownloads": 304,
+  "browserErrors": []
+}

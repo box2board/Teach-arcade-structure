@@ -1,0 +1,6 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> test:question-bank
+> node scripts/test-question-bank.mjs
+
+PASS: 275 source hashes, static copies, 5,500 questions, all-game compatibility, answer remapping across five shuffled decks, immutable sources, and complete Category Clash boards.

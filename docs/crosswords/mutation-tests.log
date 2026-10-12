@@ -1,0 +1,6 @@
+PASS rejects missing entry
+PASS rejects wrong crossing letter
+PASS rejects duplicate clue number
+PASS rejects incorrect clue direction
+PASS rejects accidental extra cell
+PASS rejects unplaced orphan

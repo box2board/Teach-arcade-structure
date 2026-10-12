@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "topics": 76,
+  "packages": 76,
+  "pdfs": 304,
+  "previews": 228,
+  "pdfPages": 912,
+  "minimumCellPoints": 13.71,
+  "maximumThumbnailBytes": 34628,
+  "checks": [
+    "cumulative 10/15/20 vocabulary",
+    "unique answers and nonblank clues",
+    "all entries placed",
+    "independent maximal-run comparison",
+    "connected crossings",
+    "printed glyph and numbering checks",
+    "no student answer glyphs",
+    "complete key glyphs",
+    "Letter page size and text bounds",
+    "2/2/2/6 page counts",
+    "exact combined rendering/order",
+    "exact thumbnail/PDF match",
+    "all hub href/src assets resolve",
+    "unique resource IDs",
+    "source SHA-256 freshness"
+  ]
+}
