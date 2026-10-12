@@ -78,6 +78,9 @@ import {enhanceTopicPicker} from "../topic-picker.js";
       };
       topics.splice(0, topics.length, state.topic);
       $("topic-label").textContent = bank.title;
+      const url = new URL(location.href);
+      url.searchParams.set("set", bank.id);
+      history.replaceState(null, "", url);
       startButton.disabled = false;
     } catch (_) {
       if (version !== state.topicLoadVersion) return;
