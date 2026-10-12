@@ -13,28 +13,55 @@ function draw(){$('stage').innerHTML=A.scene(panel(),selected);for(const thumb o
 function render(){const count=M.layouts[p.layout].count;index=Math.min(index,count-1);if(!object())selected='';$('title').value=p.title;$('author').value=p.author;$('layout').value=p.layout;library();$('background').value=panel().background;$('panel-heading').textContent='Panel '+(index+1);$('copy-panel').disabled=index===count-1;
  $('panel-tabs').replaceChildren();for(let i=0;i<count;i++){const b=document.createElement('button');b.type='button';b.setAttribute('aria-pressed',String(i===index));b.setAttribute('aria-label','Edit panel '+(i+1));const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox','0 0 600 360');svg.dataset.panel=i;svg.setAttribute('aria-hidden','true');b.append(svg,document.createTextNode('Panel '+(i+1)));b.addEventListener('click',()=>{history();save();index=i;selected='';render();});$('panel-tabs').append(b);}
  const o=object();$('settings').hidden=!o;$('selection-help').hidden=!!o;if(o){$('text-label').hidden=!['speech','thought','caption'].includes(o.type);$('character-settings').hidden=o.type!=='character';$('flip').hidden=!['character','prop'].includes(o.type);$('object-text').value=o.text;$('object-x').value=Math.round(o.x);$('object-y').value=Math.round(o.y);$('object-size').value=o.scale;$('expression').value=o.expression;$('pose').value=o.pose;for(const option of $('pose').options)option.disabled=o.type==='character'&&['cat','dog','robot'].includes(o.asset)&&!['stand','wave'].includes(option.value);}draw();updateHistory();}
-function add(type,asset=''){if(panel().objects.length>=40){say('This panel has 40 objects. Remove one before adding another.');return;}change(()=>{const o=M.create(type,asset);o.x=type==='character'?(panel().objects.filter(o=>o.type==='character').length%3)*145+100:o.x;panel().objects.push(o);selected=o.id;});}
-const C=window.ComicCatalog;
+function add(type,asset=''){if(panel().objects.length>=40){say('This panel has 40 objects. Remove one before adding another.');return;}track(type,asset);change(()=>{const o=M.create(type,asset);o.x=type==='character'?(panel().objects.filter(o=>o.type==='character').length%3)*145+100:o.x;panel().objects.push(o);selected=o.id;});}
+const C=window.ComicCatalog,preferenceKey='teacharcade_comic_library_v1';
+let favorites=[],recent=[],activeTab='character',librarySignature='';
+const known=new Set([...C.characters.map(a=>'character:'+a.id),...C.backgrounds.map(a=>'background:'+a.id),...C.props.map(a=>'prop:'+a.id)]);
+try{const saved=JSON.parse(localStorage.getItem(preferenceKey)||'{}');for(const [list,set] of [['favorites',v=>favorites=v],['recent',v=>recent=v]])if(Array.isArray(saved[list]))set([...new Set(saved[list].filter(id=>typeof id==='string'&&known.has(id)))].slice(0,list==='recent'?16:96));}catch{}
+function persistPreferences(){try{localStorage.setItem(preferenceKey,JSON.stringify({favorites,recent}));}catch{}}
+function track(type,id){const key=type+':'+id;if(!known.has(key))return;recent=[key,...recent.filter(v=>v!==key)].slice(0,16);persistPreferences();}
+function tabs(){for(const type of ['character','background','prop']){const active=type===activeTab;$('tab-'+type).setAttribute('aria-selected',String(active));$('tab-'+type).tabIndex=active?0:-1;$('pane-'+type).hidden=!active;}}
+for(const [i,type] of ['character','background','prop'].entries()){
+ const tab=$('tab-'+type);tab.addEventListener('click',()=>{activeTab=type;tabs();});
+ tab.addEventListener('keydown',event=>{const keys={ArrowLeft:-1,ArrowRight:1,Home:-i,End:2-i};if(!(event.key in keys))return;event.preventDefault();activeTab=['character','background','prop'][(i+keys[event.key]+3)%3];tabs();$('tab-'+activeTab).focus();});
+}
 function categorySelect(id,assets){const select=$(id);select.replaceChildren();for(const value of ['All categories',...new Set(assets.map(a=>a.category))]){const option=document.createElement('option');option.value=value;option.textContent=value;select.append(option);}select.addEventListener('change',library);}
-categorySelect('character-category',C.characters);categorySelect('prop-category',C.props);
+categorySelect('character-category',C.characters);categorySelect('prop-category',C.props);categorySelect('background-category',C.backgrounds);
 for(const [id,values] of [['expression',M.expressions],['pose',M.poses]]){const select=$(id);select.replaceChildren();for(const value of values){const o=document.createElement('option');o.value=value;o.textContent=({stand:'Standing',wave:'Waving',point:'Pointing',think:'Thinking',crossed:'Arms crossed',cheer:'Cheering',walk:'Walking',sit:'Sitting'})[value]||value[0].toUpperCase()+value.slice(1);select.append(o);}}
 function library(){
- const query=$('asset-search').value.trim().toLowerCase();let shown=0;
- for(const [id,assets,type,filter] of [['characters',C.characters,'character','character-category'],['props',C.props,'prop','prop-category']]){
+ const query=$('asset-search').value.trim().toLowerCase(),view=$('library-view').value,current=panel().background;
+ const signature=JSON.stringify([query,view,current,favorites,recent,$('character-category').value,$('background-category').value,$('prop-category').value]);
+ if(signature===librarySignature){tabs();return;}librarySignature=signature;let shown=0;
+ const counts={};
+ for(const [id,assets,type,filter] of [['characters',C.characters,'character','character-category'],['backgrounds',C.backgrounds,'background','background-category'],['props',C.props,'prop','prop-category']]){
   $(id).replaceChildren();const category=$(filter).value;
-  const matches=assets.filter(a=>(category==='All categories'||a.category===category)&&(a.label+' '+a.category).toLowerCase().includes(query));shown+=matches.length;
-  for(const asset of matches){const b=document.createElement('button');b.type='button';b.innerHTML='<svg viewBox="-12 -26 150 '+(type==='character'?255:175)+'" aria-hidden="true">'+(type==='character'?A.character(asset.id,'happy','stand'):A.prop(asset.id))+'</svg>';b.append(document.createTextNode(asset.label));b.setAttribute('aria-label','Add '+asset.id);b.addEventListener('click',()=>add(type,asset.id));$(id).append(b);}
-  if(!matches.length){const empty=document.createElement('p');empty.className='asset-empty';empty.textContent='No matches. Try another search or category.';$(id).append(empty);}
+  let matches=assets.filter(a=>(category==='All categories'||a.category===category)&&(a.label+' '+a.category).toLowerCase().includes(query)&&(view==='all'||(view==='favorites'?favorites:recent).includes(type+':'+a.id)));
+  if(view==='recent')matches.sort((a,b)=>recent.indexOf(type+':'+a.id)-recent.indexOf(type+':'+b.id));
+  shown+=matches.length;counts[type]=matches.length;
+  for(const asset of matches){
+   const card=document.createElement('div');card.className='asset-card';const b=document.createElement('button');b.type='button';b.dataset.libraryAsset=type+':'+asset.id;
+   const shape=type==='character'?A.character(asset.id,'happy','stand'):type==='prop'?A.prop(asset.id):A.scene({background:asset.id,objects:[]});
+   const vb=type==='background'?'0 0 600 360':'-12 -26 150 '+(type==='character'?255:175);
+   b.innerHTML='<svg viewBox="'+vb+'" aria-hidden="true">'+shape+'</svg>';b.append(document.createTextNode(asset.label));b.setAttribute('aria-label',(type==='background'?'Use scene ':'Add ')+asset.id);
+   if(type==='background')b.setAttribute('aria-pressed',String(current===asset.id));
+   b.addEventListener('click',()=>{if(type==='background'){track(type,asset.id);change(()=>panel().background=asset.id);}else add(type,asset.id);});
+   const star=document.createElement('button');star.type='button';star.className='favorite-button';star.textContent=favorites.includes(type+':'+asset.id)?'★':'☆';star.dataset.favorite=type+':'+asset.id;star.setAttribute('aria-label','Favorite '+asset.label);star.setAttribute('aria-pressed',String(favorites.includes(type+':'+asset.id)));
+   star.addEventListener('click',()=>{const key=type+':'+asset.id;favorites=favorites.includes(key)?favorites.filter(v=>v!==key):[...favorites,key];persistPreferences();library();const next=[...rootLibrary.querySelectorAll('[data-favorite]')].find(b=>b.dataset.favorite===key);if(next)next.focus();else $('library-view').focus();});
+   card.append(b,star);$(id).append(card);
+  }
+  if(!matches.length){const empty=document.createElement('p');empty.className='asset-empty';empty.textContent=view==='favorites'?'No favorites match. Star an item in All artwork.':view==='recent'?'No recent items match. Add artwork to a panel first.':'No matches. Try another search or category.';$(id).append(empty);}
  }
- // Always retain the selected background even when it falls outside the search.
- const current=panel().background,select=$('background');select.replaceChildren();let options=C.backgrounds.filter(a=>(a.label+' '+a.category).toLowerCase().includes(query));shown+=options.length;
- if(!options.some(a=>a.id===current))options=[C.backgrounds.find(a=>a.id===current),...options];
- for(const category of new Set(options.map(a=>a.category))){const group=document.createElement('optgroup');group.label=category;for(const bg of options.filter(a=>a.category===category)){const option=document.createElement('option');option.value=bg.id;option.textContent=bg.label;group.append(option);}select.append(group);}select.value=current;
- $('library-count').textContent=shown+' matching items · '+(C.characters.length+C.backgrounds.length+C.props.length)+' total';
+ // Quick background selection stays complete; scene thumbnails carry search/category filters.
+ const select=$('background');select.replaceChildren();
+ for(const category of new Set(C.backgrounds.map(a=>a.category))){const group=document.createElement('optgroup');group.label=category;for(const bg of C.backgrounds.filter(a=>a.category===category)){const option=document.createElement('option');option.value=bg.id;option.textContent=bg.label;group.append(option);}select.append(group);}select.value=current;
+ $('library-count').textContent=shown+' matching items · '+known.size+' total';
+ for(const [type,label] of [['character','People'],['background','Scenes'],['prop','Props']])$('tab-'+type).textContent=label+' ('+counts[type]+')';tabs();
 }
-$('asset-search').addEventListener('input',library);library();
+const rootLibrary=document.querySelector('.comic-library');
+$('asset-search').addEventListener('input',()=>{library();const counts=['character','background','prop'].map(type=>({type,count:$('pane-'+type).querySelectorAll('[data-library-asset]').length}));if(!counts.find(c=>c.type===activeTab).count){const match=counts.find(c=>c.count);if(match){activeTab=match.type;tabs();}}});
+$('library-view').addEventListener('change',library);library();
 for(const b of document.querySelectorAll('[data-add]'))b.addEventListener('click',()=>add(b.dataset.add));
-$('title').addEventListener('input',()=>typing(()=>p.title=$('title').value));$('author').addEventListener('input',()=>typing(()=>p.author=$('author').value));$('layout').addEventListener('change',()=>change(()=>{p.layout=$('layout').value;selected='';}));$('background').addEventListener('change',()=>change(()=>panel().background=$('background').value));
+$('title').addEventListener('input',()=>typing(()=>p.title=$('title').value));$('author').addEventListener('input',()=>typing(()=>p.author=$('author').value));$('layout').addEventListener('change',()=>change(()=>{p.layout=$('layout').value;selected='';}));$('background').addEventListener('change',()=>{const value=$('background').value;track('background',value);change(()=>panel().background=value);});
 $('object-text').addEventListener('input',()=>{if(object())typing(()=>object().text=$('object-text').value);});for(const [id,prop,min,max] of [['object-x','x',0,580],['object-y','y',0,340],['object-size','scale',.5,2]])$(id).addEventListener('input',()=>{const value=Number($(id).value);if(object()&&Number.isFinite(value))typing(()=>object()[prop]=Math.max(min,Math.min(max,value)));});
 for(const prop of ['expression','pose'])$(prop).addEventListener('change',()=>{if(object())change(()=>object()[prop]=$(prop).value);});
 $('flip').addEventListener('click',()=>{if(object())change(()=>object().flip=!object().flip);});$('delete-object').addEventListener('click',()=>{if(object())change(()=>{panel().objects=panel().objects.filter(o=>o.id!==selected);selected='';});});

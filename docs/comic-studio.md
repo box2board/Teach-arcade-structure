@@ -32,3 +32,11 @@ Graphic Organizer Studio remains independent. Comic Studio precedes Map Maker, M
 Character categories: People, Jobs, Adventure, History & fantasy, Animals. Background groups: School, Outdoors, Places, History & fantasy, Adventure, Basics. Prop groups: School, Science, Everyday, Nature, History & adventure, Transport & symbols. Search matches names and categories; character and prop category filters narrow results. The selected background remains available during searches. Scrollable asset grids keep the larger library manageable.
 
 Every new asset was rendered and import-validated. Catalog contact sheets were inspected. Tests cover the full 96-item inventory, search/filter behavior, new expression/pose settings, and persistence of new characters/props/backgrounds. Existing asset IDs and project format remain compatible.
+
+## Library browsing refinement
+
+People, Scenes, and Props tabs show filtered counts. Scenes offer thumbnail previews and a selected-state indicator; the quick background dropdown stays complete while thumbnail filters apply. Search reveals the first matching artwork tab when the current tab has no results. Tabs support Left/Right/Home/End navigation.
+
+Each artwork tile has a separate favorite button, avoiding nested interactive controls. Favorites and the 16 most recently used items are stored under a separate library-preferences key and do not change project files or undo history. Preference identifiers are checked against the known catalog. When storage is blocked, favorites and recents continue to work for the session. These preferences do not sync across devices.
+
+Library thumbnail DOM is reused when only comic-object selection changes. Tests cover thumbnails, tabs/keyboard navigation, favorites, recent ordering, search discovery, DOM reuse, and blocked-storage behavior. Native browser visual and iPad verification remain outstanding.

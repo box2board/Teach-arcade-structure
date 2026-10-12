@@ -5,3 +5,9 @@
 .comic-library #characters,.comic-library #props{max-height:330px;overflow-y:auto;overscroll-behavior:contain;margin-top:10px;padding:3px}
 .comic-library>label{margin-bottom:12px}.library-count{font-size:11px;line-height:1.5;color:#61708a}.asset-empty{grid-column:1/-1;font-size:12px;line-height:1.5;color:#61708a;margin:8px}.asset-grid button{min-width:0;font-size:11px}.asset-grid button svg{flex-shrink:0}
 @media(max-width:650px){.comic-library #characters,.comic-library #props{max-height:240px}.asset-grid button{padding:7px 4px}}
+.library-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin:14px 0}.comic-main .library-tabs button{font-size:10px;padding:8px 3px;border-radius:7px}.library-tabs [aria-selected=true]{background:#243148;color:white;border-color:#243148}
+.asset-card{position:relative;min-width:0}.asset-card>[data-library-asset]{width:100%;height:100%;padding-top:24px}.comic-main .favorite-button{position:absolute;right:2px;top:2px;min-height:32px;min-width:32px;padding:3px;border:0;background:transparent;color:#7d5b18;font-size:21px;line-height:1}.comic-main .favorite-button:hover{background:#fff1ce}.favorite-help{font-size:11px;line-height:1.6;color:#61708a;margin:12px 0}
+.comic-library #backgrounds{max-height:330px;overflow-y:auto;overscroll-behavior:contain;margin-top:10px;padding:3px}.scene-grid{grid-template-columns:1fr}.scene-grid svg{width:100%;height:auto;aspect-ratio:5/3}.scene-grid [data-library-asset][aria-pressed=true]{border:2px solid #2563eb;background:#edf3ff}
+@media(max-width:650px){.comic-library .scene-grid{grid-template-columns:repeat(2,1fr)}.comic-library #backgrounds{max-height:280px}.comic-main .library-tabs button{font-size:12px}.comic-library .scene-grid svg{height:auto}}
+/* Favorites remain easy to tap alongside the artwork tile. */
+.comic-main .favorite-button{min-height:44px;min-width:44px;top:0;right:0}.asset-card>[data-library-asset]{padding-top:42px}
