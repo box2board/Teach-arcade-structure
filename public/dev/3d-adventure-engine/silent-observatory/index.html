@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>The Silent Observatory — Teach Arcade 3D Adventure</title>
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+  <main id="gameShell" aria-label="The Silent Observatory 3D adventure">
+    <div id="gameMount" aria-label="3D game world"></div>
+
+    <section id="hud" aria-live="polite">
+      <div class="hud-card brand-card">
+        <span class="eyebrow">TEACH ARCADE 3D ADVENTURE</span>
+        <strong>The Silent Observatory</strong>
+        <span class="prototype">Engine Reuse Test</span>
+      </div>
+
+      <div class="hud-card objective-card">
+        <span class="eyebrow">CURRENT OBJECTIVE</span>
+        <strong id="objectiveText">Recover the star prism.</strong>
+        <span id="objectiveSubtext">Search the desert courtyard for the glowing observatory prism.</span>
+      </div>
+
+      <div class="hud-card status-card">
+        <span><b>Prism</b> <span id="cellStatus">Not found</span></span>
+        <span><b>Console</b> <span id="terminalStatus">Offline</span></span>
+        <span><b>Seal</b> <span id="gateStatus">Locked</span></span>
+      </div>
+    </section>
+
+    <div id="crosshair" aria-hidden="true">•</div>
+
+    <div id="interactionPrompt" class="interaction-prompt" hidden>
+      <kbd>E</kbd>
+      <span id="interactionText">Interact</span>
+    </div>
+
+    <div id="controlsHint" class="controls-hint">
+      <span><kbd>WASD</kbd> Move</span>
+      <span><kbd>Shift</kbd> Run</span>
+      <span><kbd>Space</kbd> Jump</span>
+      <span><kbd>E</kbd> Interact</span>
+      <span><kbd>Drag</kbd> Camera</span>
+      <button id="hideControls" type="button">Hide</button>
+    </div>
+
+    <section id="touchControls" class="touch-controls" aria-label="Touch game controls" hidden>
+      <div class="touch-left">
+        <div id="touchJoystickZone" class="touch-joystick" aria-label="Movement joystick">
+          <div class="touch-joystick-ring"></div>
+          <div id="touchJoystickStick" class="touch-joystick-stick"></div>
+        </div>
+        <span class="touch-caption">MOVE</span>
+      </div>
+      <div class="touch-camera-hint" aria-hidden="true">Drag open space to look</div>
+      <div class="touch-actions" aria-label="Action controls">
+        <button id="touchRun" class="touch-button touch-run" type="button" aria-pressed="false">RUN</button>
+        <button id="touchJump" class="touch-button" type="button">JUMP</button>
+        <button id="touchInteract" class="touch-button touch-primary" type="button">ACTION</button>
+      </div>
+    </section>
+
+    <dialog id="questionDialog" class="game-dialog">
+      <form method="dialog" id="questionForm">
+        <span class="eyebrow">OBSERVATORY ARCHIVE</span>
+        <h2>Verify tracking data</h2>
+        <p id="questionText">Loading question…</p>
+        <div id="answerList" class="answer-list" role="radiogroup" aria-label="Answer choices"></div>
+        <p id="questionFeedback" class="feedback" aria-live="polite"></p>
+        <div class="dialog-footer">
+          <span>Use <kbd>↑</kbd><kbd>↓</kbd> + <kbd>Enter</kbd>, or click an answer.</span>
+          <button id="closeQuestion" type="button" class="secondary">Return to world</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="completeDialog" class="game-dialog complete-dialog">
+      <div>
+        <span class="eyebrow">MISSION COMPLETE</span>
+        <h2>The Silent Observatory is online.</h2>
+        <p>The shared 3D adventure engine successfully loaded a second content package.</p>
+        <button id="restartGame" type="button">Play again</button>
+      </div>
+    </dialog>
+
+    <div id="loadingScreen" class="loading-screen">
+      <div class="loader"></div>
+      <strong>Loading The Silent Observatory…</strong>
+      <span id="loadingMessage">Building the desert observatory</span>
+    </div>
+
+    <div id="fallback" class="fallback" hidden>
+      <h1>3D mode could not start</h1>
+      <p>This browser or device did not initialize WebGL. Try reloading or using a modern browser.</p>
+    </div>
+  </main>
+
+  <script type="module" src="./bootstrap.js"></script>
+</body>
+</html>
