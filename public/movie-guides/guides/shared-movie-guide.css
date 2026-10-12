@@ -177,24 +177,45 @@
   }
 }
 
-/* Consistent original learning mark in every guide title banner. */
+
+/* Clickable worksheet badge in every movie-guide title banner. */
 .wh-page .wh-intro .wh-kicker {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  min-height: 40px;
+  gap: 12px;
+  min-height: 50px;
 }
-.wh-page .wh-intro .wh-kicker::before {
-  content: "";
-  display: block;
-  flex: 0 0 38px;
-  width: 38px;
-  height: 38px;
+.wh-page .wh-banner-worksheet {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 48px;
+  width: 48px;
+  height: 48px;
+  box-sizing: border-box;
+  border: 1px solid rgba(23,35,59,.2);
   border-radius: 50%;
-  background-color: rgba(255,255,255,.84);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28' fill='none' stroke='%2317233b' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3.5 6.5c4-1.4 7.4-.7 10.5 1.8v14c-3.1-2.5-6.5-3.2-10.5-1.8z'/%3E%3Cpath d='M14 8.3c3.1-2.5 6.5-3.2 10.5-1.8v14c-4-1.4-7.4-.7-10.5 1.8z'/%3E%3Cpath d='m17 11 4 2.3-4 2.4z' fill='%2317233b' stroke='none'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 25px 25px;
-  box-shadow: 0 2px 8px rgba(15,23,42,.14);
+  background: rgba(255,250,238,.96);
+  color: #17233b;
+  box-shadow: 0 2px 8px rgba(15,23,42,.16);
+  text-decoration: none;
+  transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease;
+}
+.wh-page .wh-banner-worksheet:hover {
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(15,23,42,.2);
+  transform: translateY(-1px);
+}
+.wh-page .wh-banner-worksheet:focus-visible {
+  outline: 3px solid #2563eb;
+  outline-offset: 3px;
+}
+.wh-page .wh-banner-worksheet svg {
+  display: block;
+  width: 25px;
+  height: 25px;
+}
+@media (max-width:650px) {
+  .wh-page .wh-intro .wh-kicker { gap: 10px; min-height: 44px; }
+  .wh-page .wh-banner-worksheet { flex-basis: 42px; width: 42px; height: 42px; }
+  .wh-page .wh-banner-worksheet svg { width: 22px; height: 22px; }
 }
