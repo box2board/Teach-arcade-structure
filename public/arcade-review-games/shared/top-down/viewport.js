@@ -10,12 +10,13 @@ export function mountLayout(){
   if(!frame||!adventure)return {stage:null,sidebar:null};
   document.body.classList.add('play-shell');
   const layout=document.createElement('div'),stage=document.createElement('div'),sidebar=document.createElement('aside');
-  layout.className='play-layout';stage.className='board-stage';sidebar.className='play-sidebar';sidebar.setAttribute('aria-label','Adventure information and controls');
+  layout.className='play-layout';stage.className='board-stage';sidebar.className='play-sidebar compact-hud';sidebar.setAttribute('aria-label','Inventory and adventure controls');
   stage.append(document.getElementById('board'));frame.prepend(stage);
   layout.append(frame,sidebar);adventure.append(layout);
   for(const selector of ['.inventory-strip','.objective','#message','.controls','.keyboard-help']){
     const node=document.querySelector(selector);if(!node)continue;
-    if(selector==='#message'){const feedback=document.createElement('div');feedback.className='feedback-box';feedback.append(node);sidebar.append(feedback);}
+    if(selector==='#message'){const feedback=document.createElement('div');feedback.className='feedback-box';feedback.append(node);frame.append(feedback);}
+    else if(selector==='.objective')layout.before(node);
     else sidebar.append(node);
   }
   return {stage,sidebar};

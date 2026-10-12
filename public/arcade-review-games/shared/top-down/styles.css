@@ -192,3 +192,61 @@ body.play-shell{height:100vh;height:100dvh;min-height:0;overflow:hidden}
  .play-shell .circuit-panel{padding:6px}.play-shell .circuit-panel strong{font-size:.65rem}
  .play-shell .circuit-panel p{font-size:.7rem}.play-shell .circuit-panel .circuit-detail{font-size:.65rem}
 }
+
+/* Compact HUD: one objective, a full-width stage, and a separate control dock. */
+.play-shell .play-layout{display:flex;flex-direction:column;gap:0}
+.play-shell .map-frame{flex:1;min-height:0;position:relative;flex-direction:column;padding:10px}
+.play-shell .board-stage{flex:1;min-height:0;position:relative;flex-direction:column;gap:8px}
+.play-shell .adventure>.objective{padding:8px 14px;background:#172e38;border-bottom:1px solid #78918b33;display:flex;align-items:center;gap:8px}
+.play-shell .adventure>.objective>.label{margin:0;font-size:10px;white-space:nowrap}
+.play-shell .adventure>.objective p{margin:0;line-height:1.35;font-size:13px}
+.play-shell .compact-hud{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;border-left:0;border-top:1px solid #70817655;padding:8px 12px;overflow:visible}
+.play-shell .compact-hud .inventory-strip{display:block;padding:0;min-width:0}
+.play-shell .compact-hud .inventory-strip>.label{display:none}
+.play-shell .compact-hud #inventory{display:flex;gap:5px;flex-wrap:wrap}
+.play-shell .compact-hud .inventory-badge{flex-wrap:nowrap;font-size:11px;padding:4px 7px;gap:5px}
+.play-shell .compact-hud .inventory-badge>span:not(.art){min-width:0;flex:none}
+.play-shell .compact-hud .inventory-badge small{display:none}
+.play-shell .compact-hud .inventory-badge.used{opacity:.55}
+.play-shell .compact-hud .inventory-empty{font-size:11px;color:var(--muted)}
+.play-shell .journal{display:none}
+.play-shell .supplies-button{display:block}
+.play-shell .compact-hud .controls{display:flex;gap:5px;flex-wrap:nowrap;align-items:center}
+.play-shell .compact-hud .controls>button{font-size:11px;min-height:36px;padding:6px 10px}
+.play-shell .compact-hud .dpad{display:grid;grid-template-columns:repeat(3,32px);grid-template-rows:repeat(2,28px);gap:3px}
+.play-shell .compact-hud .dpad button{min-height:28px;height:28px;font-size:12px}
+.play-shell .compact-hud .keyboard-help{display:none}
+.play-shell .feedback-box{position:absolute;z-index:8;left:50%;top:10px;transform:translateX(-50%);width:min(540px,calc(100% - 30px));min-height:0;pointer-events:none;align-items:center}
+.play-shell #message{flex:none;margin:0;padding:9px 14px;border-radius:9px;background:#0b1d2af2;border:1px solid #7892a366;box-shadow:0 4px 20px #0005;font-size:12px;line-height:1.4;max-height:4.2em;-webkit-line-clamp:3}
+.play-shell #message[hidden]{display:none}
+.play-shell .message-details{pointer-events:auto;background:#183545;padding:5px 9px;min-height:26px;border-radius:6px}
+.play-shell .circuit-panel{flex:none;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:4px 12px;width:100%;padding:5px 10px;background:#172e38;border:1px solid #57788566;border-radius:8px;max-width:640px}
+.play-shell .circuit-panel[hidden]{display:none}
+.play-shell .circuit-panel strong{font-size:10px;letter-spacing:.06em}
+.play-shell .circuit-panel p{margin:0;font-size:12px;line-height:1.3}
+.play-shell .circuit-panel .circuit-detail{font-size:10px;color:var(--muted)}
+.context-prompt{position:absolute;z-index:9;transform:translate(-50%,-100%);padding:5px 8px;background:#0d2236f0;color:#fff3cd;border:1px solid #e7c88988;border-radius:6px;font-size:clamp(10px,1vw,12px);font-weight:700;white-space:nowrap;pointer-events:none;box-shadow:0 3px 12px #0006}
+.context-prompt[hidden]{display:none}
+@media(max-width:759px){
+ .play-shell .compact-hud{grid-template-columns:minmax(0,1fr);padding:6px 8px;gap:4px}
+ .play-shell .compact-hud .inventory-strip{display:block}
+ .play-shell .compact-hud .controls{justify-content:center}
+ .play-shell .compact-hud .inventory-badge{padding:3px 5px;font-size:10px}
+ .play-shell .compact-hud .inventory-icon.art{width:16px;height:16px;flex-basis:16px}
+ .play-shell .adventure>.objective{padding:6px 9px}
+ .play-shell .adventure>.objective>.label{display:none}
+ .play-shell .adventure>.objective p{font-size:11px}
+ .play-shell .map-frame{padding:5px}
+ .play-shell .circuit-panel{padding:4px 6px;gap:3px 8px}
+ .play-shell .circuit-panel p{font-size:10px}
+ .play-shell .circuit-panel .circuit-detail{display:none}
+ .play-shell .feedback-box{top:6px}
+ .play-shell #message{font-size:11px;padding:6px 10px}
+}
+@media(max-height:480px) and (orientation:landscape){
+ .play-shell .compact-hud{grid-template-columns:minmax(0,1fr) auto}
+ .play-shell .compact-hud .dpad{grid-template-rows:22px 22px}
+ .play-shell .compact-hud .dpad button{height:22px;min-height:22px}
+ .play-shell .adventure>.objective{padding:4px 10px}
+ .play-shell .adventure>.objective p{font-size:10px}
+}

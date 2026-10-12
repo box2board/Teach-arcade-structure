@@ -93,7 +93,15 @@ function go(x,y){
  }throw Error('Unreachable UI target '+x+','+y);
 }
 function face(dir){s.facing=dir;key(keys[dir]);assert.equal(move(map,s,dir),false);}
-function action(){const result=interact(map,s);key('e');return result;}
+function action(){
+ const result=interact(map,s);key('e');
+ if(get('dialog').open&&get('dialog-label').textContent==='JOURNAL'){
+  assert.equal(get('dialog-body').children[0].textContent,result.text,'Room text is readable in a paused dialog');
+  get('dialog').listeners.keydown({key:'Enter',repeat:false,preventDefault(){}});
+  assert.equal(get('dialog').open,false,'Enter returns to the room');
+ }
+ return result;
+}
 function earn(id){
  assert.equal(get('interact').textContent,'Open chest');
  assert.equal(action().id,id);
