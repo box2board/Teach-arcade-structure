@@ -1,0 +1,11 @@
+import "./adventure-config-v9.js";
+import "./adventure-runtime-v9.js";
+import "./performance-v4.js";
+import "./world-v3.js";
+import "./interactions-v5.js";
+import "./difficulty-v9.js";
+import "./mission-v9.js";
+import "./mission-entry-v9.js";
+import "./checkpoints-v9.js";
+import "./main-v2.js";
+import "./touch-controls.js";
