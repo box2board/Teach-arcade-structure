@@ -1,0 +1,315 @@
+[us-history--colonial-america]
+Jamestown|English settlement founded in Virginia in 1607.
+Tobacco|Major export crop of colonial Virginia.
+Quakers|Religious group associated with William Penn's colony.
+Plymouth|Colony established by the Pilgrims in 1620.
+Slavery|System that legally treated people as property and forced their labor.
+Mercantilism|Economic policy linking imperial power to controlled trade and wealth.
+Middle Passage|Forced Atlantic voyage of enslaved Africans to the Americas.
+Plantation|Large agricultural estate producing crops with a substantial labor force.
+Assembly|Elected colonial lawmaking body.
+Indenture|Contract binding a worker to labor for a fixed term.
+Burgesses|Members of Virginia's elected colonial house.
+Mayflower Compact|Agreement for self-government signed by Plymouth's settlers.
+Great Awakening|Colonial religious revival movement of the eighteenth century.
+Navigation Acts|English laws restricting colonial shipping and trade.
+Pennsylvania|Colony founded under William Penn.
+Shipbuilding|Industry producing vessels in coastal colonial communities.
+Dissent|Disagreement with established religious or political authority.
+Hereditary|Passed from parent to child, as colonial laws increasingly made enslaved status.
+Rice|Major plantation crop of colonial South Carolina.
+Representation|Participation through delegates chosen to act for others.
+[us-history--french-and-indian-war]
+France|European power that lost Canada in the 1763 settlement.
+Britain|European power that gained Canada in the 1763 settlement.
+Ohio Valley|Disputed river region central to the war's outbreak.
+Washington|Virginia officer who commanded at Fort Necessity.
+Quebec|City captured after the Plains of Abraham battle.
+Canada|Northern territory transferred from France to Britain in 1763.
+Alliance|Agreement to cooperate, often for military support.
+Debt|Money owed, increased by Britain's war expenses.
+Forts|Defensive outposts used to secure territorial claims.
+Treaty of Paris|Agreement that ended this North American war in 1763.
+Seven Years War|Global conflict that included this North American war.
+Franklin|Colonial thinker who proposed the Albany Plan.
+Albany Plan|Proposal for a common colonial council in 1754.
+Appalachians|Mountain chain along the boundary restricting westward settlement.
+Proclamation Line|Boundary Britain established in 1763 to regulate colonial expansion.
+Waterways|River and lake routes valuable for moving supplies.
+Empire|Group of territories ruled by one imperial power.
+Revenue|Government income sought through new colonial taxes.
+Trade|Exchange of goods influencing Indigenous and European alliances.
+Diplomacy|Negotiation among governments or political communities.
+[us-history--american-revolution]
+Stamp Act|1765 British law taxing printed colonial materials.
+Washington|Commander of the Continental Army.
+Patriots|Colonists who supported independence.
+Loyalists|Colonists who supported continued British rule.
+France|Nation that formally allied with the Americans in 1778.
+Lexington|Massachusetts town where fighting began before the battle at Concord.
+Saratoga|1777 American victory that encouraged French support.
+Yorktown|Site of the 1781 British surrender after a combined siege.
+Independence|Political separation from another country's rule.
+Congress|Continental body that coordinated the colonial war effort.
+Common Sense|Thomas Paine's pamphlet arguing for separation from monarchy.
+Paine|Author of the famous 1776 pamphlet supporting independence.
+Blockade|Military restriction of trade and supplies through ports.
+Consent|Permission of the governed, central to revolutionary political theory.
+Treaty of Paris|1783 agreement recognizing American independence.
+Parliament|British legislature in which colonists lacked elected representatives.
+Correspondence|Communication exchanged by colonial coordinating committees.
+Sovereignty|Ultimate political authority, described as popular when based on the people.
+Monarchy|Government headed by a king or queen.
+Declaration|Document type used to announce independence in 1776.
+[us-history--articles-of-confederation]
+Congress|Single national lawmaking body under the first U.S. framework.
+States|Political units retaining considerable authority under the Articles.
+Confederation|Union whose member governments retain substantial power.
+Ratification|Formal approval needed before the Articles took effect.
+Unanimity|Agreement of every state, required for amendments.
+Revenue|Government income Congress struggled to obtain.
+Commerce|Trade that Congress lacked broad power to regulate.
+Diplomacy|Relations with foreign powers, a congressional responsibility.
+Territory|Region that could later qualify for statehood.
+Constitution|Basic governing document that replaced the Articles.
+Northwest Ordinance|1787 measure providing a process for admitting western states.
+Shays Rebellion|Massachusetts uprising that highlighted weaknesses in national coordination.
+Convention|1787 gathering in Philadelphia that proposed a new framework.
+Amendment|Formal change to a governing document.
+Taxation|Power to collect mandatory payments that Congress lacked directly.
+Contributions|Payments Congress requested from state governments.
+Executive|Separate national branch created under the Constitution but absent under the Articles.
+Sovereignty|Authority retained largely by states under the first framework.
+Statehood|Status territories could eventually receive within the union.
+Slavery|Labor system prohibited in the Northwest Territory by the 1787 ordinance.
+[us-history--early-republic]
+Washington|First president under the U.S. Constitution.
+Hamilton|Treasury secretary who designed the early federal financial program.
+Jefferson|Leader associated with opposition to Hamilton's national bank.
+Federalists|1790s political group favoring stronger national authority.
+Cabinet|Department leaders who advise the president.
+Neutrality|Washington's announced position toward the 1793 European war.
+National Bank|Financial institution whose constitutionality divided early leaders.
+Whiskey Rebellion|1794 protest against a federal tax on distilled spirits.
+Adams|President during passage of the Alien and Sedition Acts.
+Debt|Financial obligation Hamilton proposed the federal government assume from states.
+XYZ Affair|Diplomatic controversy over French demands for payments.
+Sedition Act|1798 law punishing certain criticism of the federal government.
+Judiciary Act|1789 law organizing the lower federal courts.
+Implied Powers|Authority inferred from carrying out expressly listed constitutional responsibilities.
+Precedent|Example established by Washington's voluntary departure after two terms.
+Excise|Type of tax placed on distilled spirits.
+Assumption|Federal takeover of state Revolutionary War debts.
+Inauguration|Ceremony beginning a president's term of office.
+Credit|Reputation for repaying debts that Hamilton sought to strengthen.
+Opposition|Political resistance that critics feared the 1798 speech law would suppress.
+[us-history--war-of-1812]
+Britain|Country against which the United States declared war in 1812.
+Madison|U.S. president when the war began.
+Impressment|Forcing sailors into naval service.
+War Hawks|Congressional advocates pressing for war.
+Ghent|Belgian city giving its name to the peace treaty.
+Fort McHenry|Baltimore defense that inspired the national anthem's lyrics.
+Tecumseh|Shawnee leader seeking an Indigenous alliance against U.S. expansion.
+New Orleans|Battle site where major fighting occurred after the treaty was signed.
+Canada|Northern territory the United States failed to annex during the war.
+Great Lakes|Waterway region crucial for wartime transport and supply.
+Washington|City where British troops burned major public buildings in 1814.
+Trade|Economic activity disrupted by British maritime restrictions.
+Federalists|Political group in New England that strongly criticized the war.
+Nationalism|Attachment to the nation strengthened among many Americans after the war.
+Expansion|Growth of U.S. territory opposed by Tecumseh's alliance.
+Maritime|Relating to the sea, as in policies affecting ships and sailors.
+Ratification|Formal treaty approval that had not yet ended local fighting at New Orleans.
+Boundaries|Territorial lines largely restored to their prewar position by the treaty.
+Neutral|Status claimed by American commerce during Britain's war with France.
+Supply|Provision of equipment and food supported by control of waterways.
+[us-history--westward-expansion]
+Louisiana Purchase|1803 acquisition that greatly enlarged the United States.
+Oregon Trail|Overland migration route to the Pacific Northwest.
+Gold Rush|California migration boom beginning in 1849.
+Homestead Act|Law offering eligible settlers land after residency and improvement.
+Railroad|Transport system connecting western production to wider markets.
+Lewis|Explorer partnered with Clark on the government expedition.
+Clark|Explorer partnered with Lewis on the government expedition.
+Displacement|Forced relocation of people from their usual place of residence.
+California|State associated with the 1849 rush for gold.
+Slavery|Institution whose possible expansion divided Americans over new territories.
+Promontory Summit|Utah location where the transcontinental railway joined in 1869.
+Guadalupe Hidalgo|Treaty name ending the Mexican-American War.
+Indian Removal Act|1830 law supporting forced relocation of Indigenous communities.
+Chinese|Immigrant group whose workers helped build the western transcontinental railway.
+Markets|Places or systems for exchanging goods reached more easily by rail.
+Public Domain|Land claimed and managed by the federal government.
+Dispossession|Depriving people of land or property during expansion.
+Migration|Movement of people to new places of residence.
+Irrigation|Artificial delivery of water used to cultivate dry western land.
+Treaties|Formal agreements relevant to competing Indigenous and settler land claims.
+[us-history--civil-war]
+Lincoln|U.S. president whose election preceded Southern secession.
+Union|Side fighting to preserve the United States.
+Confederacy|Government formed by seceding Southern states.
+Slavery|Institution central to secessionists' goals.
+Fort Sumter|Charleston harbor site where the war began in 1861.
+Davis|Surname of the Confederate president.
+Grant|Union commander who accepted Lee's surrender.
+Lee|Confederate commander who surrendered at Appomattox.
+Blockade|Union naval effort to restrict Southern trade.
+Emancipation|Liberation from enslavement, added to Union war aims.
+Vicksburg|Mississippi city whose fall helped the Union control the river.
+Gettysburg|Pennsylvania battle fought in July 1863.
+Antietam|Maryland battle fought in September 1862.
+Appomattox|Virginia location of Lee's April 1865 surrender.
+Thirteenth|Amendment abolishing slavery except as punishment after criminal conviction.
+South Carolina|First state to secede after Lincoln's election.
+Sherman|Union general whose campaign attacked Southern railways and supplies.
+Industry|Economic sector giving the Union greater weapons-production capacity.
+Railroads|Networks moving troops and supplies over long distances.
+Cotton|Major Southern crop closely connected to enslaved labor.
+[us-history--reconstruction]
+Freedmens Bureau|Federal agency assisting formerly enslaved people and war refugees.
+Black Codes|Southern laws restricting African Americans' freedom after the war.
+Sharecropping|Farming arrangement paying landowners with a portion of the harvest.
+Johnson|President who succeeded Lincoln after his assassination.
+Fourteenth|Amendment establishing citizenship and equal protection under its terms.
+Fifteenth|Amendment prohibiting racial discrimination in voting rights.
+Citizenship|Legal membership protected by the Fourteenth Amendment.
+Education|Opportunity expanded by schools founded for freedpeople.
+Congress|National body that opposed Johnson's approach to restoring Southern states.
+Violence|Method used by white supremacist groups to intimidate Black voters.
+Military Districts|Areas of federal army administration established under the 1867 acts.
+Impeachment|Formal accusation brought by the House against Johnson.
+Reconstruction Acts|1867 laws establishing congressional requirements for Southern readmission.
+Equal Protection|Fourteenth Amendment guarantee concerning treatment under law.
+Literacy|Ability to read and write, sought through freedpeople's schooling.
+Debt|Obligation that could trap tenant farmers through unfavorable contracts.
+Enforcement|Putting civil and voting protections into effect.
+Readmission|Return of former Confederate states to congressional representation.
+Freedpeople|People who had formerly been enslaved.
+Federal Troops|Forces whose Southern presence supported some Reconstruction protections.
+[us-history--progressive-era]
+Reform|Effort to change institutions and address social problems.
+Muckrakers|Journalists exposing corruption and harmful conditions.
+Roosevelt|President associated with trust regulation and conservation in the early 1900s.
+Suffrage|Right to vote sought by women's movements.
+Addams|Reformer who helped establish Hull House in Chicago.
+Conservation|Protection and careful management of natural resources.
+Initiative|Process allowing voters to propose measures directly.
+Referendum|Direct popular vote on a public measure.
+Recall|Process allowing voters to remove an elected official before a term ends.
+Nineteenth|Amendment prohibiting denial of voting rights on the basis of sex.
+Sinclair|Author whose novel exposed meatpacking conditions.
+The Jungle|Novel that intensified concern about meat processing.
+Antitrust|Term for laws and actions restricting harmful business combinations.
+Seventeenth|Amendment establishing direct election of U.S. senators.
+Progressivism|Reform movement responding to problems of industrial society.
+Child Labor|Employment practice reformers sought to restrict to protect young people.
+Square Deal|Name of Theodore Roosevelt's reform program.
+Hull House|Chicago settlement center associated with Jane Addams.
+Regulation|Government rules overseeing business practices.
+Segregation|Racial separation that many Progressive reforms failed to end.
+[us-history--world-war-i]
+Wilson|U.S. president when the nation entered the war.
+Neutrality|Initial U.S. position toward the European conflict.
+Lusitania|Passenger liner sunk by a German submarine in 1915.
+Zimmermann Telegram|German message proposing an alliance with Mexico against the United States.
+Submarines|Underwater warships central to German attacks on shipping.
+Armistice|Agreement stopping major fighting in November 1918.
+Draft|Required military service used to expand the army.
+Propaganda|Messages designed to influence public opinion during the war.
+Liberty Bonds|U.S. securities sold to finance wartime spending.
+Fourteen Points|Wilson's proposed principles for the peace settlement.
+League of Nations|International organization Wilson supported but the United States did not join.
+Versailles|Treaty name associated with the postwar settlement imposed on Germany.
+Selective Service|System established by a 1917 act to register and recruit military manpower.
+Espionage Act|1917 law restricting interference with the war effort.
+Sedition Act|1918 measure expanding wartime restrictions on expression.
+Great Migration|Movement of many Black Americans from the South to northern cities.
+Pershing|Commander of the American Expeditionary Forces in Europe.
+Mobilization|Organizing people and resources for wartime needs.
+Senate|U.S. chamber that rejected approval of the Versailles treaty.
+Unrestricted|Describes submarine warfare attacking shipping without traditional warning rules.
+[us-history--great-depression]
+Unemployment|Joblessness that sharply increased during the economic crisis.
+Hoover|U.S. president when the 1929 stock market crash occurred.
+Roosevelt|President inaugurated in 1933 who launched the New Deal.
+Dust Bowl|Environmental disaster involving drought and soil erosion on the Plains.
+Hoovervilles|Informal settlements named critically for the president.
+Bank Failures|Collapses of financial institutions that destroyed savings and reduced credit.
+Margin|Borrowed portion of the funds used to buy stocks.
+Demand|Willing and able purchasing that fell as incomes declined.
+Drought|Prolonged shortage of precipitation harming farms.
+Migration|Movement of families seeking livelihoods after losing farms or jobs.
+Tariffs|Import taxes whose increases helped restrict international trade.
+Investment|Business spending on productive expansion that fell amid uncertainty.
+Relief|Immediate assistance for people facing severe hardship.
+Credit|Access to borrowed funds reduced by banking collapse.
+Erosion|Loss of topsoil intensified by wind and poor land practices.
+Stock Market|System for trading company shares whose 1929 collapse became a crisis symbol.
+Deflation|General fall in prices that increased the real burden of debt.
+Income|Money received by households that declined with job losses.
+Trade|Cross-border exchange whose contraction spread economic distress.
+Diary|Personal source that can document a family's daily experience of the crisis.
+[us-history--new-deal]
+Roosevelt|President who introduced the New Deal.
+Relief|Immediate help for people in hardship.
+Recovery|Efforts intended to restore economic activity.
+Reform|Longer-term changes intended to prevent future instability.
+CCC|Initials of the conservation jobs program for young men.
+WPA|Initials of the major public-employment agency established in 1935.
+FDIC|Initials of the federal agency insuring eligible bank deposits.
+Social Security|1935 program establishing old-age insurance and other support.
+TVA|Initials of the regional development authority providing dams and electricity.
+Bank Holiday|Temporary banking shutdown declared in 1933 to help restore stability.
+SEC|Initials of the agency regulating securities markets.
+Wagner Act|1935 law protecting collective bargaining rights.
+Public Works|Government construction projects that provided jobs and infrastructure.
+Collective Bargaining|Negotiation of employment terms through workers' representatives.
+Judicial Review|Court examination of laws for consistency with the Constitution.
+NLRB|Initials of the board created to administer federal labor relations law.
+Agriculture|Economic sector targeted by controversial production-reduction policies.
+Discrimination|Unequal treatment limiting some groups' access to program benefits.
+Infrastructure|Public facilities such as roads, bridges, and dams built by employment programs.
+Court Packing|Common name for Roosevelt's controversial proposed judicial expansion.
+[us-history--world-war-ii]
+Pearl Harbor|U.S. naval base attacked by Japan in December 1941.
+Lend Lease|Program supplying war aid before direct U.S. entry.
+Rationing|System limiting civilian purchases of scarce wartime goods.
+Truman|President who authorized atomic bomb use against Japan.
+Roosevelt|U.S. president for most of World War II.
+Midway|1942 Pacific battle inflicting major losses on Japan's carrier force.
+D-Day|June 1944 Allied invasion opening a major western front.
+War Bonds|Securities purchased by civilians to finance the war.
+GI Bill|1944 law providing eligible veterans education and readjustment benefits.
+Rosie the Riveter|Wartime image representing women's industrial labor.
+Manhattan Project|Secret U.S.-led effort to develop atomic weapons.
+Tuskegee Airmen|Black military aviators whose service challenged racist assumptions.
+Code Talkers|Personnel transmitting coded messages using languages including Navajo.
+Island Hopping|Pacific strategy capturing selected positions and bypassing others.
+Double V|Campaign linking victory abroad with victory over racism at home.
+Normandy|French region where the June 1944 Allied landings occurred.
+Incarceration|Confinement imposed on Japanese Americans through wartime removal policies.
+V-E Day|Observance marking Allied victory in Europe.
+V-J Day|Observance marking victory over Japan.
+Scrap Metal|Discarded material civilians collected for reuse in war production.
+[us-history--civil-rights-movement]
+Rosa Parks|Activist whose arrest helped spark the Montgomery bus boycott.
+King|Surname of the minister associated with the Southern Christian Leadership Conference.
+Boycott|Organized refusal to use a service as protest.
+Sit Ins|Protests occupying segregated service spaces, including lunch counters.
+Freedom Rides|Campaign challenging segregation in interstate bus travel.
+Civil Rights Act|1964 law banning racial discrimination in public accommodations.
+Voting Rights Act|1965 law targeting barriers to voting.
+Segregation|Enforced separation of people by race.
+Little Rock|Arkansas city where federal forces enforced school integration in 1957.
+Nonviolence|Protest approach rejecting physical attacks while confronting injustice.
+Brown|Case name beginning the 1954 school-segregation decision against a board of education.
+Montgomery|Alabama city where a major bus boycott began in 1955.
+Literacy Tests|Reading examinations applied unfairly to block Black voter registration.
+Poll Taxes|Voting charges prohibited in federal elections by the Twenty-fourth Amendment.
+SNCC|Initials of the student committee organizing grassroots civil rights campaigns.
+March on Washington|1963 demonstration demanding jobs and freedom.
+Freedom Summer|1964 campaign including voter registration efforts in Mississippi.
+Desegregation|Ending legally enforced racial separation.
+Direct Action|Public protest confronting discriminatory practices without waiting only for courts.
+Enforcement|Implementation needed to make legal civil rights protections effective.
