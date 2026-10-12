@@ -1,0 +1,315 @@
+[world-history--mesopotamia]
+Tigris|Eastern river of the pair giving Mesopotamia its name.
+Euphrates|Western river of the pair giving Mesopotamia its name.
+Cuneiform|Writing system using wedge-shaped marks.
+Ziggurat|Raised temple structure in a Mesopotamian city.
+Hammurabi|Babylonian ruler associated with a famous collection of laws.
+Sumerians|People who developed city-states including Ur and Uruk.
+Irrigation|Artificial delivery of river water to fields.
+City State|City and surrounding land governed as one political unit.
+Polytheism|Belief in or worship of multiple gods.
+Clay|Material commonly used for written tablets.
+Surplus|Production beyond immediate needs that supported urban specialists.
+Canal|Constructed waterway used to supply farm fields.
+Empire|Large territory containing multiple peoples under a common ruler.
+Trade|Exchange connecting cities with needed timber and metals.
+Scribe|Trained person who recorded information in writing.
+Grain|Cereal crop listed in many early accounting records.
+Textiles|Woven products cities could exchange for imported materials.
+Flooding|River overflow that could threaten settlements and crops.
+Status|Social rank that could affect penalties under Babylonian laws.
+Archaeology|Study of past societies through material remains such as tablets.
+[world-history--ancient-egypt]
+Nile|River central to Egyptian farming and settlement.
+Pharaoh|Title of ancient Egypt's rulers.
+Hieroglyphs|Egyptian signs representing sounds and ideas.
+Papyrus|Plant-based material used for writing sheets.
+Pyramids|Large Giza structures built primarily as royal tombs.
+Mummification|Process used to preserve bodies for burial.
+Scribes|Trained writers who kept government records.
+Afterlife|Existence after death important in Egyptian burial beliefs.
+Delta|River-mouth region associated with Lower Egypt.
+Desert|Dry landscape surrounding much of the fertile river valley.
+Upper Egypt|Southern region named for its position upstream.
+Lower Egypt|Northern region including the Nile's river mouth.
+Rosetta Stone|Inscribed object whose parallel texts helped decipher Egyptian writing.
+Irrigation|Management of water delivery to agricultural fields.
+Sediment|Material deposited by river floods that renewed farmland.
+Giza|Location of major royal pyramids near modern Cairo.
+Surplus|Extra agricultural output supporting specialized occupations.
+Tombs|Burial structures containing bodies and goods for the dead.
+Taxes|Required contributions, sometimes recorded in grain, supporting government.
+Decipher|Determine the meaning of an unfamiliar writing system.
+[world-history--ancient-india]
+Indus|River giving its name to the civilization of Harappa and Mohenjo-daro.
+Harappa|Ancient city giving an alternate name to the Indus civilization.
+Vedas|Early sacred texts associated with Vedic traditions.
+Ashoka|Mauryan ruler known for ethical inscriptions after the Kalinga war.
+Buddhism|Tradition tracing its beginnings to Siddhartha Gautama.
+Himalayas|Mountain barrier along the northern subcontinent.
+Monsoon|Seasonal shift of winds affecting rainfall and farming.
+Maurya|Dynastic name associated with Chandragupta's empire.
+Gupta|Dynastic name associated with major literary and mathematical achievements.
+Hinduism|South Asian religious tradition connected to Vedic heritage.
+Mohenjo Daro|Indus city famous for planned streets and drainage.
+Edicts|Official pronouncements Ashoka inscribed across his empire.
+Varna|Idealized social classification in ancient Indian traditions.
+Drainage|Urban system removing water through channels and drains.
+Trade|Exchange linking coastal South Asia with Indian Ocean markets.
+Chandragupta|Given name of the ruler who helped establish the Mauryan Empire.
+Kalinga|Region whose conquest preceded Ashoka's public ethical declarations.
+Inscriptions|Texts carved onto durable surfaces such as rocks and pillars.
+Weights|Standardized measurement objects found across Indus trading centers.
+Undeciphered|Describes Indus writing whose meaning has not been securely established.
+[world-history--ancient-china]
+Huang He|Chinese name of the Yellow River.
+Shang|Dynasty associated with early oracle-bone inscriptions.
+Qin|Dynasty that unified China in 221 BCE.
+Han|Dynasty that followed Qin and governed a large empire.
+Confucius|Thinker emphasizing ethical leadership and family responsibilities.
+Legalism|Philosophy emphasizing strict laws and strong state authority.
+Daoism|Tradition emphasizing harmony with natural patterns and the Dao.
+Silk Roads|Networks of Eurasian trade routes carrying goods and ideas.
+Dynasty|Sequence of rulers from the same family or ruling house.
+Mandate of Heaven|Belief linking a ruler's legitimacy to heavenly approval.
+Filial Piety|Respect and responsibilities toward parents and elders.
+Oracle Bones|Inscribed objects used in divination under Shang rulers.
+Zhou|Dynasty between Shang and Qin.
+Standardization|Making measures and writing more consistent across an empire.
+Great Wall|Name for northern defenses built and rebuilt by different rulers.
+Divination|Seeking knowledge through interpreting signs believed to be supernatural.
+Bureaucracy|System of officials administering government responsibilities.
+Eurasia|Combined continental landmass crossed by major ancient trading routes.
+Frontier|Border region where rulers constructed defensive walls.
+Agriculture|Cultivation supported by water and fertile river-valley soils.
+[world-history--ancient-greece]
+Polis|Greek term for a city-state.
+Athens|City-state associated with citizen democracy.
+Sparta|City-state emphasizing military training for male citizens.
+Agora|Public gathering and market area.
+Socrates|Philosopher known for teaching through questions.
+Alexander|Macedonian conqueror who spread Greek culture eastward.
+Democracy|Government involving rule by citizens.
+Mountains|Landforms helping Greek communities develop separately.
+Assembly|Gathering where Athenian citizens voted on policies.
+Sea Trade|Exchange by ship connecting coastal Greek settlements.
+Peloponnesian War|Conflict primarily between Athens, Sparta, and their allies.
+Persian Wars|Conflicts that encouraged Greek cooperation against an eastern empire.
+Delian League|Alliance increasingly dominated by Athens.
+Hellenistic|Describes cultural interaction following Alexander's conquests.
+Philosophy|Reasoned inquiry into knowledge, ethics, and other fundamental questions.
+Tribute|Payments Athens demanded from its allies.
+Direct|Describes democracy where citizens vote on policies themselves.
+Citizenship|Legal status giving a minority of Athenian residents political rights.
+Macedonia|Kingdom from which Alexander launched his conquests.
+Cultural Blending|Mixing of Greek and local traditions in Alexander's former empire.
+[world-history--ancient-rome]
+Senate|Major advisory and governing body in the Roman Republic.
+Patricians|Hereditary aristocratic class of Roman society.
+Plebeians|Roman social class outside the hereditary aristocracy.
+Tribunes|Officials representing plebeian interests.
+Republic|System of government Rome had before imperial rule.
+Augustus|Title given to Octavian, Rome's first emperor.
+Julius Caesar|General and dictator assassinated in 44 BCE.
+Aqueducts|Structures carrying water to towns and cities.
+Italian|Describes the peninsula where Rome developed.
+Empire|Political system governing Rome's extensive conquered territories under emperors.
+Twelve Tables|Early written collection of Roman laws.
+Punic Wars|Series of conflicts between Rome and Carthage.
+Carthage|North African city that became Rome's major Mediterranean rival.
+Pax Romana|Term for an extended period of relative imperial peace.
+Octavian|Name used by the ruler who became the first emperor as Augustus.
+Citizenship|Legal membership Rome extended to different populations over time.
+Mediterranean|Sea at the center of Rome's trade and conquests.
+Infrastructure|Roads and water systems supporting imperial administration.
+Slavery|Labor system widespread in Roman households and production.
+Edict of Milan|313 CE proclamation providing religious toleration including Christianity.
+[world-history--renaissance]
+Italy|Peninsula where the European Renaissance first flourished.
+Humanism|Intellectual movement emphasizing classical learning and human capacities.
+Patron|Person or institution providing financial support for an artist.
+Leonardo|Given name of the artist and investigator from Vinci.
+Michelangelo|Artist associated with the Sistine Chapel ceiling.
+Perspective|Technique creating an illusion of depth on a flat surface.
+Gutenberg|Printer associated with movable-type printing in fifteenth-century Europe.
+Florence|Italian city especially associated with Medici patronage.
+Classical|Describes ancient Greek and Roman learning studied by humanists.
+Vernacular|Everyday local language used instead of a scholarly language such as Latin.
+Medici|Family known for supporting art and scholarship in Florence.
+Printing Press|Technology that increased circulation of books and ideas.
+Machiavelli|Author of The Prince, examining political power.
+Erasmus|Northern humanist known for scholarship and criticism of abuses.
+Renaissance|Name meaning rebirth used for this era of cultural renewal.
+Anatomy|Study of the body's structure influencing artists' representations.
+City States|Independent urban political units prominent in Renaissance Italy.
+Manuscript|Text written by hand rather than printed.
+Commerce|Trade whose wealth helped finance urban cultural projects.
+Scholarship|Systematic learning supported by renewed study of ancient texts.
+[world-history--protestant-reformation]
+Luther|Reformer who publicized the Ninety-Five Theses.
+Indulgences|Church grants associated with reduced temporal punishment for sin.
+Protestant|Term for Christian traditions emerging from breaks with Rome.
+Calvin|Reformer associated with Geneva and predestination.
+Henry VIII|English king who broke with papal authority.
+Pope|Head of the Roman Catholic Church.
+Bible|Scripture reformers emphasized and translated into local languages.
+Printing|Technology helping circulate religious criticism rapidly.
+Trent|City giving its name to the major Catholic reform council.
+Denominations|Distinct organized branches of Christianity.
+Ninety Five Theses|Luther's 1517 statements challenging indulgence practices.
+Predestination|Teaching concerning God's prior determination of salvation.
+Augsburg|City giving its name to the 1555 settlement allowing Lutheran or Catholic rulers.
+Anabaptists|Reform groups associated with baptism following a believer's profession of faith.
+Catholic Reformation|Movement renewing Catholic institutions and reaffirming doctrine.
+Jesuits|Religious order founded by Ignatius of Loyola.
+Geneva|Swiss city associated with Calvin's reform leadership.
+Scripture|Sacred writings used as a basis for religious teaching.
+Doctrines|Official religious teachings addressed by reform debates.
+Dissent|Disagreement with a state's established religion, often restricted in this era.
+[world-history--enlightenment]
+Locke|Thinker associated with rights to life, liberty, and property.
+Montesquieu|Thinker associated with dividing governmental powers among branches.
+Voltaire|Writer defending religious toleration and freedom of expression.
+Rousseau|Thinker associated with the general will.
+Reason|Use of logical thought emphasized in evaluating ideas and institutions.
+Natural Rights|Freedoms understood as inherent rather than granted by rulers.
+Social Contract|Theory examining agreements underlying political authority.
+Consent|Permission of the governed supporting legitimate political rule.
+Salons|Gatherings where hosts facilitated discussion of ideas.
+Hobbes|Thinker emphasizing strong authority to secure order.
+Diderot|Editor associated with the Encyclopedie.
+Wollstonecraft|Writer advocating women's education and equality.
+Toleration|Acceptance of differing religious beliefs without persecution.
+General Will|Rousseau's concept concerning the common interest of a political community.
+Encyclopedie|Major French reference work spreading Enlightenment knowledge.
+Separation of Powers|Division of governing responsibilities associated with Montesquieu.
+Enlightened Absolutism|Selected reforms adopted by monarchs retaining strong royal authority.
+Liberty|Freedom valued in debates over rights and government.
+Coffeehouses|Public meeting places where printed news and political ideas circulated.
+Divine Right|Claim that monarchs derive their authority from God.
+[world-history--french-revolution]
+Clergy|Members of the First Estate.
+Nobility|Social group making up the Second Estate.
+Third Estate|Order containing most of France's population.
+Louis XVI|King of France when the Revolution began.
+Bastille|Paris fortress stormed on July 14, 1789.
+Republic|Government proclaimed after abolishing the monarchy in 1792.
+Robespierre|Leader closely associated with the Reign of Terror.
+Bread|Staple food whose rising price intensified popular hardship.
+Constitution|Governing framework sought through the Tennis Court Oath.
+Estates General|Representative body summoned in 1789.
+Tennis Court Oath|Promise to remain assembled until a new governing framework was established.
+Directory|Government ruling France before Napoleon's 1799 coup.
+Reign of Terror|Period of revolutionary repression and executions.
+National Assembly|Body formed by Third Estate deputies claiming to represent the nation.
+Equality|Principle of equal status before the law expressed in the rights declaration.
+Public Safety|Name completing the committee created to defend the revolutionary republic.
+Feudal Privilege|Special rights and dues benefiting nobles that revolutionaries abolished.
+Constitutional Monarchy|System established by France's 1791 constitution.
+Napoleon|General who took power through a coup in 1799.
+Popular Sovereignty|Principle that political authority comes from the people.
+[world-history--industrial-revolution]
+Britain|Country where large-scale industrialization first developed.
+Coal|Fuel central to early industrial steam power.
+Iron|Metal essential for machinery and rail transport.
+Textiles|Industry producing cloth that mechanized early.
+Watt|Engineer associated with major steam-engine improvements.
+Factory|Central workplace concentrating machines and employees.
+Urbanization|Growth in the share of people living in cities.
+Railroads|Transport networks speeding overland movement of people and goods.
+Trade Unions|Organizations representing workers' interests.
+Child Labor|Employment of young people that reformers sought to restrict.
+Mechanization|Replacing hand production with powered machinery.
+Steam Engine|Machine converting heated water's vapor energy into mechanical work.
+Sanitation|Waste and cleanliness systems often inadequate in rapidly growing cities.
+Wages|Payments to employees for their labor.
+Productivity|Output per unit of input, often increased by effective machines.
+Raw Materials|Unprocessed inputs such as cotton used in manufacturing.
+Cotton|Plant fiber supplied to many early industrial cloth mills.
+Mass Production|Manufacturing large quantities of standardized goods.
+Labor|Human work used in the production process.
+Markets|Customers and exchange systems industrial powers sought overseas.
+[world-history--world-war-i]
+Franz Ferdinand|Archduke whose assassination triggered the July Crisis.
+Militarism|Emphasis on armed strength and war planning.
+Alliances|Commitments among powers that helped widen the conflict.
+Imperialism|Competition to control territories, resources, and influence abroad.
+Trenches|Fortified battlefield channels associated with Western Front stalemate.
+Armistice|Agreement to stop fighting.
+Versailles|Treaty name associated with the main German peace settlement.
+Central Powers|Wartime coalition led by Germany and Austria-Hungary.
+Entente|Name completing the prewar grouping of Britain, France, and Russia.
+Total War|Mobilization of civilian resources and labor for military needs.
+Sarajevo|City where the archduke was assassinated.
+League of Nations|Postwar organization intended to promote collective security.
+Western Front|Theater of fighting including entrenched positions in France and Belgium.
+Brest Litovsk|Treaty ending Soviet Russia's participation in the war.
+Nationalism|Strong identification with a nation that contributed to prewar tensions.
+Rationing|Limiting civilian consumption of scarce wartime goods.
+Mobilization|Preparing armed forces and resources for conflict.
+Stalemate|Situation in which neither side achieves a decisive advance.
+Colonial Forces|Troops recruited from overseas imperial territories.
+Collective Security|Principle of nations cooperating against threats to peace.
+[world-history--russian-revolution]
+Nicholas II|Tsar who abdicated during the 1917 upheavals.
+Lenin|Bolshevik leader during the seizure of power.
+Bolsheviks|Political group that took power in the October Revolution.
+Soviets|Councils of workers and soldiers.
+Peasants|Rural cultivators whose land demands shaped the Revolution.
+Abdication|A ruler's formal surrender of the throne.
+Red Army|Military force fighting for the Bolshevik government.
+Civil War|Conflict between Bolshevik forces and their diverse opponents.
+Bread|Food named with peace and land in a revolutionary slogan.
+Soviet Union|State established in 1922 from multiple republics.
+February Revolution|1917 upheaval that brought down the monarchy.
+October Revolution|1917 seizure of power displacing the Provisional Government.
+Provisional Government|Temporary administration that continued Russia's participation in the war.
+Dual Power|Competing authority of the temporary government and soviets.
+Brest Litovsk|Treaty by which Soviet Russia left World War I.
+War Communism|Civil War policy associated with state controls and grain requisitioning.
+NEP|Initials of Lenin's 1921 policy permitting limited private activity.
+Whites|Common name for diverse anti-Bolshevik civil-war forces.
+Julian Calendar|Dating system Russia used when the revolutions occurred.
+Requisitioning|State seizure of grain or supplies during the Civil War.
+[world-history--world-war-ii]
+Poland|Country Germany invaded in 1939, prompting British and French declarations of war.
+Axis|Alliance led by Germany, Italy, and Japan.
+Allies|Coalition opposing the Axis powers.
+Normandy|French region of the June 1944 landings.
+Midway|1942 Pacific battle that became a turning point against Japan.
+Holocaust|Nazi-led genocide that murdered six million Jews.
+Appeasement|Policy making concessions to aggressors in hopes of avoiding war.
+Stalingrad|Soviet city where Germany suffered a major eastern-front defeat.
+Rationing|Limiting civilian purchases of scarce wartime goods.
+United Nations|Institution established in 1945 to promote international cooperation.
+Barbarossa|Operation name for Germany's invasion of the Soviet Union.
+Battle of Britain|1940 air campaign in which Britain resisted German attacks.
+Eastern Front|Vast theater opened by Germany's invasion of the Soviet Union.
+Atlantic|Ocean whose shipping routes the Allies sought to secure.
+D-Day|Common name for the June 6, 1944 Normandy invasion.
+Genocide|Intentional destruction, in whole or part, of a protected human group.
+Displacement|Forced movement of civilians from their homes during war.
+Pacific|Ocean theater where the war against Japan continued after Germany surrendered.
+Forced Labor|Work imposed on people through coercion rather than free agreement.
+Mobilization|Organizing civilians, factories, and resources for war production.
+[world-history--cold-war]
+NATO|Initials of the Western collective-defense alliance founded in 1949.
+Warsaw Pact|Soviet-led military alliance established in 1955.
+Iron Curtain|Phrase describing the division between Soviet-dominated Europe and the West.
+Containment|U.S. policy intended to limit Soviet influence and communism.
+Berlin Wall|Barrier built in 1961 to stop large-scale departures to the West.
+Detente|Easing of tensions between rival powers.
+Arms Race|Competition to expand and improve weapons capabilities.
+Soviet Union|State leading the eastern rival bloc.
+United States|Country leading the western rival bloc.
+Space Race|Competition for achievements beyond Earth's atmosphere.
+Berlin Airlift|Supply operation supporting West Berlin during the 1948-49 blockade.
+Marshall Plan|U.S. program supporting European economic recovery.
+Cuban Missile Crisis|1962 confrontation that brought the superpowers near nuclear war.
+Deterrence|Discouraging attack through the threat of retaliation.
+Proxy Wars|Conflicts in which rival powers supported local sides.
+Nonalignment|Policy seeking independence from formal membership in either major bloc.
+Retaliation|Response attack whose threat helped discourage nuclear war.
+Blockade|Restriction of transport routes that led to the Berlin supply operation.
+Superpowers|Term for the two states with dominant global military and political influence.
+Dissolution|Breakup of the Soviet Union in 1991.
