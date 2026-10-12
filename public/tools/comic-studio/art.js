@@ -2,6 +2,7 @@ window.ComicArt=(()=>{
 const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c]));
 const ink='#243148';
 function background(kind){
+ const image=window.ComicCatalog.backgrounds.find(a=>a.id===kind)?.image;if(image)return '<image href="'+image+'" width="600" height="360" preserveAspectRatio="xMidYMid slice"/>';
  const expanded=window.ComicLibraryArt.background(kind);if(expanded)return expanded;
  const base='<rect width="600" height="360" fill="#fbf4e5"/>';
  if(kind==='blank')return base;
@@ -11,7 +12,7 @@ function background(kind){
  if(kind==='space')return '<rect width="600" height="360" fill="#24324e"/><g fill="#fff2bc"><circle cx="60" cy="55" r="3"/><circle cx="264" cy="35" r="3"/><circle cx="344" cy="155" r="4"/><circle cx="535" cy="205" r="3"/><path d="M170 122v16m-8-8h16M520 45v16m-8-8h16" stroke="#fff2bc" stroke-width="2"/></g><ellipse cx="453" cy="86" rx="80" ry="17" fill="none" stroke="#efaa91" stroke-width="8" transform="rotate(-20 453 86)"/><circle cx="453" cy="86" r="39" fill="#bca3ce"/><path d="M0 300Q300 215 600 300V360H0" fill="#9a9ab1"/><ellipse cx="82" cy="321" rx="44" ry="12" fill="#7d7e97"/><ellipse cx="508" cy="311" rx="29" ry="8" fill="#7d7e97"/>';
  return base;
 }
-function character(asset,expression,pose){return window.ComicLibraryArt.character(asset,expression,pose);}
+function character(asset,expression,pose,colors={}){return window.ComicLibraryArt.character(asset,expression,pose,colors);}
 function prop(asset){
  const expanded=window.ComicLibraryArt.prop(asset);if(expanded)return expanded;
  const forms={book:'<path d="M5 12q27-13 53 2 26-15 53-2v72q-27-13-53 0-26-13-53 0z" fill="#f4dcad"/><path d="M58 14v70"/><path d="M15 29h30M15 43h30M70 29h30M70 43h30" stroke="#ac855b"/>',tree:'<path d="M49 70v68h20V70" fill="#96704c"/><path d="M10 95L60 3l50 92z" fill="#679881"/>',desk:'<rect x="4" y="30" width="112" height="15" rx="4" fill="#d09967"/><path d="M15 45v70M105 45v70" stroke-width="9"/>',star:'<path d="M60 3L77 43l43 3-33 28 10 42-37-23-37 23 10-42L0 46l43-3z" fill="#f4cb67"/>'};return '<g stroke="'+ink+'" stroke-width="3" stroke-linejoin="round">'+(forms[asset]||forms.book)+'</g>';
@@ -19,22 +20,37 @@ function prop(asset){
 function wrap(text,max=24){const result=[];for(const paragraph of text.split('\n')){let line='';for(const word of paragraph.split(/\s+/)){if((line+' '+word).trim().length>max&&line){result.push(line);line='';}if(word.length>max){if(line){result.push(line);line='';}for(let i=0;i<word.length;i+=max)result.push(word.slice(i,i+max));}else line+=(line?' ':'')+word;}result.push(line);}return result;}
 function object(o,selected=false){
  let drawing,width=120,height=225;
- if(o.type==='character')drawing=character(o.asset,o.expression,o.pose);
- else if(o.type==='prop'){drawing=prop(o.asset);height=140;}
+ if(o.type==='character'){drawing=character(o.asset,o.expression,o.pose,o.colors);if(o.colors?.primary){for(const color of ({cat:['#d8a06c','#e2b487'],dog:['#c2a17d','#d4b48c'],robot:['#82a8b1']})[o.asset]||[])drawing=drawing.split(color).join(o.colors.primary);}}
+ else if(o.type==='prop'){drawing=prop(o.asset);height=140;if(o.colors?.primary)drawing=drawing.replace(/fill="(?!none|#243148)[^"]+"/, 'fill="'+o.colors.primary+'"');}
+ else if(o.type==='drawing'){
+  const xs=o.points.map(p=>p[0]),ys=o.points.map(p=>p[1]);width=Math.max(5,...xs);height=Math.max(5,...ys);
+  const start=o.points[0],end=o.points[o.points.length-1],x=Math.min(start[0],end[0]),y=Math.min(start[1],end[1]),w=Math.max(1,Math.abs(end[0]-start[0])),h=Math.max(1,Math.abs(end[1]-start[1]));
+  const style=' fill="'+o.fill+'" stroke="'+o.stroke+'" stroke-width="'+o.strokeWidth+'" stroke-linecap="round" stroke-linejoin="round"';
+  drawing=o.drawKind==='rectangle'?'<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'"'+style+'/>':o.drawKind==='ellipse'?'<ellipse cx="'+(x+w/2)+'" cy="'+(y+h/2)+'" rx="'+w/2+'" ry="'+h/2+'"'+style+'/>':'<polyline points="'+o.points.map(p=>p.join(',')).join(' ')+'"'+style+'/>';
+ }
  else {
   width=240;const lines=wrap(o.text,24);height=Math.max(o.type==='caption'?50:80,lines.length*19+30);
   drawing=o.type==='caption'?'<rect width="240" height="'+height+'" rx="3" fill="#ffe3a1" stroke="'+ink+'" stroke-width="3"/>':o.type==='thought'?'<rect width="240" height="'+height+'" rx="35" fill="#fffdf8" stroke="'+ink+'" stroke-width="3"/><circle cx="38" cy="'+(height+13)+'" r="8" fill="#fffdf8" stroke="'+ink+'" stroke-width="3"/><circle cx="24" cy="'+(height+28)+'" r="4" fill="#fffdf8" stroke="'+ink+'" stroke-width="2"/>':'<path d="M22 0H218Q240 0 240 22V'+(height-22)+'Q240 '+height+' 218 '+height+'H80L43 '+(height+24)+'l7-24H22Q0 '+height+' 0 '+(height-22)+'V22Q0 0 22 0Z" fill="#fffdf8" stroke="'+ink+'" stroke-width="3"/>';
+  if(o.colors?.primary)drawing=drawing.replace(/fill="(?:#ffe3a1|#fffdf8)"/g,'fill="'+o.colors.primary+'"');
   drawing+='<text x="16" y="26" font-family="Arial,sans-serif" font-size="16" fill="'+ink+'">'+lines.map((line,i)=>'<tspan x="16" dy="'+(i?19:0)+'">'+escape(line)+'</tspan>').join('')+'</text>';
  }
- const selection=selected?'<rect x="-6" y="-6" width="'+(width+12)+'" height="'+(height+12)+'" rx="5" fill="none" stroke="#2563eb" stroke-width="2" stroke-dasharray="6 4"/>':'';
+ const handleX=Math.max(0,Math.min(width-7,(592-o.x)/o.scale-18)),handleY=Math.max(0,Math.min(height-7,(352-o.y)/o.scale-18));
+ const selection=selected?'<rect x="-6" y="-6" width="'+(width+12)+'" height="'+(height+12)+'" rx="5" fill="none" stroke="#2563eb" stroke-width="2" stroke-dasharray="6 4"/><rect data-resize="true" x="'+handleX+'" y="'+handleY+'" width="18" height="18" rx="3" fill="#2563eb" stroke="white" stroke-width="2"/>':'';
  return '<g data-object="'+escape(o.id)+'" transform="translate('+o.x+' '+o.y+') scale('+o.scale+')">'+(o.flip?'<g transform="translate('+width+' 0) scale(-1 1)">'+drawing+'</g>':drawing)+selection+'</g>';
 }
-function scene(panel,selected=''){return background(panel.background)+panel.objects.map(o=>object(o,o.id===selected)).join('');}
+function dimensions(o){if(o.type==='character')return {width:120,height:225};if(o.type==='prop')return {width:120,height:140};if(o.type==='drawing')return {width:Math.max(5,...o.points.map(p=>p[0])),height:Math.max(5,...o.points.map(p=>p[1]))};return {width:240,height:Math.max(o.type==='caption'?50:80,wrap(o.text,24).length*19+30)};}
+function scene(panel,selected=''){
+ const v=panel.backgroundView||{zoom:1,x:0,y:0},color=panel.paperColor||'#fffaf1';
+ const bg=panel.background==='blank'?'<rect width="600" height="360" fill="'+color+'"/>':background(panel.background);
+ return '<rect width="600" height="360" fill="'+color+'"/><g transform="translate('+(300*(1-v.zoom)+v.x)+' '+(180*(1-v.zoom)+v.y)+') scale('+v.zoom+')">'+bg+'</g>'+panel.objects.map(o=>object(o,o.id===selected)).join('');
+}
 function page(p){
- const layout=window.ComicModel.layouts[p.layout],gap=20,w=1200,cell=(w-80-gap*(layout.cols-1))/layout.cols,h=cell*.6,rows=Math.ceil(layout.count/layout.cols),titleLines=wrap(p.title,62),authorY=48+titleLines.length*36,top=authorY+30,height=top+rows*(h+gap)+35;
+ const layout=window.ComicModel.layouts[p.layout],gap=20,w=1200,cell=(w-80-gap*(layout.cols-1))/layout.cols,h=cell*.6,titleLines=wrap(p.title,62),authorY=48+titleLines.length*36,top=authorY+30;
+ let cursor=0;const boxes=[];for(let i=0;i<layout.count;i++){const span=layout.spans?.[i]||1;if(cursor%layout.cols+span>layout.cols)cursor+=layout.cols-cursor%layout.cols;boxes.push({x:40+(cursor%layout.cols)*(cell+gap),y:top+Math.floor(cursor/layout.cols)*(h+gap),width:cell*span+gap*(span-1),height:h});cursor+=span;}
+ const rowHeights=[];boxes.forEach(box=>{const row=Math.round((box.y-top)/(h+gap));box.row=row;box.height=box.width*.6;rowHeights[row]=Math.max(rowHeights[row]||0,box.height);});boxes.forEach(box=>box.y=top+rowHeights.slice(0,box.row).reduce((sum,height)=>sum+height+gap,0));const height=top+rowHeights.reduce((sum,height)=>sum+height+gap,0)+35;
  let content='<rect width="'+w+'" height="'+height+'" fill="#fffaf1"/><text x="40" y="48" font-family="Arial,sans-serif" font-weight="bold" font-size="30">'+titleLines.map((line,i)=>'<tspan x="40" dy="'+(i?36:0)+'">'+escape(line)+'</tspan>').join('')+'</text><text x="40" y="'+authorY+'" font-family="Arial,sans-serif" font-size="17" fill="#516079">'+escape(p.author)+'</text>';
- for(let i=0;i<layout.count;i++){const x=40+(i%layout.cols)*(cell+gap),y=top+Math.floor(i/layout.cols)*(h+gap);content+='<svg x="'+x+'" y="'+y+'" width="'+cell+'" height="'+h+'" viewBox="0 0 600 360" overflow="hidden">'+scene(p.panels[i])+'</svg><rect x="'+x+'" y="'+y+'" width="'+cell+'" height="'+h+'" fill="none" stroke="'+ink+'" stroke-width="4"/>';}
+ boxes.forEach((box,i)=>{content+='<svg x="'+box.x+'" y="'+box.y+'" width="'+box.width+'" height="'+box.height+'" viewBox="0 0 600 360" preserveAspectRatio="xMidYMid slice" overflow="hidden">'+scene(p.panels[i])+'</svg><rect x="'+box.x+'" y="'+box.y+'" width="'+box.width+'" height="'+box.height+'" fill="none" stroke="'+ink+'" stroke-width="4"/>';});
  content+='<text x="40" y="'+(height-16)+'" font-family="Arial,sans-serif" font-size="12" fill="#637086">Created with Teach Arcade</text>';return {width:w,height,svg:'<svg xmlns="http://www.w3.org/2000/svg" width="'+w+'" height="'+height+'" viewBox="0 0 '+w+' '+height+'">'+content+'</svg>'};
 }
-return {escape,scene,page,character,prop};
+return {escape,scene,page,character,prop,dimensions};
 })();

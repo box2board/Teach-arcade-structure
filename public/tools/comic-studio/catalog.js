@@ -263,6 +263,50 @@ window.ComicCatalog = {
       "shirt": "#4e9a9d",
       "role": "dog",
       "glasses": false
+    },
+    {
+      "id": "bird",
+      "label": "Bird",
+      "category": "Animals",
+      "hairStyle": "short",
+      "skin": "#cfae82",
+      "hair": "#765946",
+      "shirt": "#89a99a",
+      "role": "bird",
+      "glasses": false
+    },
+    {
+      "id": "rabbit",
+      "label": "Rabbit",
+      "category": "Animals",
+      "hairStyle": "short",
+      "skin": "#cfae82",
+      "hair": "#765946",
+      "shirt": "#89a99a",
+      "role": "rabbit",
+      "glasses": false
+    },
+    {
+      "id": "owl",
+      "label": "Owl",
+      "category": "Animals",
+      "hairStyle": "short",
+      "skin": "#cfae82",
+      "hair": "#765946",
+      "shirt": "#89a99a",
+      "role": "owl",
+      "glasses": false
+    },
+    {
+      "id": "bear",
+      "label": "Bear",
+      "category": "Animals",
+      "hairStyle": "short",
+      "skin": "#cfae82",
+      "hair": "#765946",
+      "shirt": "#89a99a",
+      "role": "bear",
+      "glasses": false
     }
   ],
   "backgrounds": [
@@ -385,6 +429,18 @@ window.ComicCatalog = {
       "id": "blank",
       "label": "Blank paper",
       "category": "Basics"
+    },
+    {
+      "id": "ancient-market",
+      "label": "Ancient marketplace (illustrated)",
+      "category": "Illustrated scenes",
+      "image": "/tools/comic-studio/assets/ancient-market.jpg"
+    },
+    {
+      "id": "future-lab",
+      "label": "Future research lab (illustrated)",
+      "category": "Illustrated scenes",
+      "image": "/tools/comic-studio/assets/future-lab.jpg"
     }
   ],
   "props": [
@@ -626,6 +682,86 @@ window.ComicCatalog = {
     {
       "id": "lightbulb",
       "label": "Idea bulb",
+      "category": "Transport & symbols"
+    },
+    {
+      "id": "guitar",
+      "label": "Guitar",
+      "category": "Arts & sports"
+    },
+    {
+      "id": "drum",
+      "label": "Drum",
+      "category": "Arts & sports"
+    },
+    {
+      "id": "palette",
+      "label": "Paint palette",
+      "category": "Arts & sports"
+    },
+    {
+      "id": "brush",
+      "label": "Paintbrush",
+      "category": "Arts & sports"
+    },
+    {
+      "id": "soccer",
+      "label": "Soccer ball",
+      "category": "Arts & sports"
+    },
+    {
+      "id": "football",
+      "label": "Football",
+      "category": "Arts & sports"
+    },
+    {
+      "id": "trophy",
+      "label": "Trophy",
+      "category": "Arts & sports"
+    },
+    {
+      "id": "basket",
+      "label": "Basket",
+      "category": "Everyday"
+    },
+    {
+      "id": "microphone",
+      "label": "Microphone",
+      "category": "Arts & sports"
+    },
+    {
+      "id": "umbrella",
+      "label": "Umbrella",
+      "category": "Everyday"
+    },
+    {
+      "id": "fish",
+      "label": "Fish",
+      "category": "Nature"
+    },
+    {
+      "id": "butterfly",
+      "label": "Butterfly",
+      "category": "Nature"
+    },
+    {
+      "id": "acorn",
+      "label": "Acorn",
+      "category": "Nature"
+    },
+    {
+      "id": "key",
+      "label": "Key",
+      "category": "History & adventure"
+    },
+    {
+      "id": "suitcase",
+      "label": "Suitcase",
+      "category": "Transport & symbols"
+    },
+    {
+      "id": "boat",
+      "label": "Boat",
       "category": "Transport & symbols"
     }
   ],
