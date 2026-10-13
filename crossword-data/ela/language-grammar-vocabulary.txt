@@ -1,0 +1,105 @@
+[ela--language-grammar-vocabulary--sentence-structure]
+Independent Clause|Group of words containing a subject and predicate that can stand as a sentence.
+Dependent Clause|Group of words containing a subject and predicate but not a complete standalone thought.
+Simple|Describes a sentence with one independent clause.
+Compound|Describes a sentence joining at least two independent clauses without dependent clauses.
+Complex|Describes a sentence with one independent clause and at least one dependent clause.
+Fragment|Incomplete group of words punctuated as though it were a full sentence.
+Comma Splice|Error joining two independent clauses only with a comma.
+Run On|Sentence error in which independent clauses are not properly joined or separated.
+Conjunction|Word connecting words, phrases, or clauses.
+Coordination|Joining grammatical units of equal rank.
+Subordination|Making one clause dependent on another.
+Subject|Part of a clause identifying who or what it concerns.
+Predicate|Part of a clause expressing what the subject does or is.
+Phrase|Group of related words without a complete subject-predicate combination.
+Semicolon|Punctuation joining closely related independent clauses without a conjunction.
+Coordinating|Describes conjunctions such as and, but, and so.
+Subordinating|Describes conjunctions such as because, although, and when.
+Clause|Grammatical unit containing both a subject and predicate.
+Clarity|Ease of understanding improved by dividing overloaded sentences.
+Compound Complex|Describes a sentence with multiple independent clauses and at least one dependent clause.
+[ela--language-grammar-vocabulary--grammar-and-usage]
+Subject|Part of a clause that must agree with its verb.
+Verb|Word expressing an action, occurrence, or state.
+Pronoun|Word replacing or referring to a noun or noun phrase.
+Adjective|Word describing a noun or pronoun.
+Adverb|Word such as quickly describing how an action occurs.
+Agreement|Grammatical matching, such as singular subjects with singular verbs.
+Tense|Verb feature locating an action in time.
+Possessive|Describes forms expressing ownership, such as theirs.
+Comparative|Form such as shorter that compares two things.
+Parallelism|Use of matching grammatical structures for related items.
+Antecedent|Noun or phrase to which a pronoun refers.
+Pronoun Case|Grammatical form determined by a pronoun's role, such as I versus me.
+Modifier|Word or phrase adding descriptive information to another unit.
+Dangling Modifier|Description whose intended subject is missing or wrongly implied.
+Misplaced Modifier|Description positioned so that it seems to apply to the wrong word.
+Consistency|Maintenance of an appropriate verb time frame unless a change is justified.
+Fewer|Comparative word used with countable plural items in standard edited English.
+Singular|Describes grammatical number referring to one.
+Plural|Describes grammatical number referring to more than one.
+Reference|Connection identifying whom or what a pronoun means.
+[ela--language-grammar-vocabulary--punctuation-and-capitalization]
+Question Mark|Punctuation normally ending a direct inquiry.
+Comma|Mark separating items in a simple series.
+Semicolon|Mark joining related independent clauses without a coordinating conjunction.
+Colon|Mark introducing a list after a complete independent clause.
+Apostrophe|Mark showing possession or omitted letters in a contraction.
+Quotation Marks|Paired punctuation enclosing direct speech.
+Capitalization|Use of uppercase letters where standard conventions require them.
+Possession|Ownership expressed by forms such as the teacher's desk.
+Contraction|Shortened form combining words and indicating omitted letters.
+Proper Noun|Name of a particular person, place, or institution requiring an initial capital.
+Nonessential|Describes a removable phrase often set off with paired commas.
+Series|List of related items usually separated with commas.
+Direct Speech|Exact spoken words marked with paired quotation punctuation.
+Plural Possessive|Form showing that multiple people own or share something.
+Independent Clause|Complete grammatical unit that can stand alone as a sentence.
+Coordinating Conjunction|Word such as but joining equal grammatical units.
+Punctuation|System of marks that helps organize written meaning.
+Title Case|Capitalization convention often applied to headings and work names.
+Uppercase|Letter form used at the start of a sentence or proper name.
+Mechanics|Writing conventions covering spelling, capitalization, and punctuation.
+[ela--language-grammar-vocabulary--vocabulary-in-context]
+Arduous|Requiring great effort, as a difficult uphill hike would.
+Fragile|Easily broken or damaged.
+Reserved|Quiet or restrained in social situations.
+Deluge|Very heavy downpour or flood.
+Sturdy|Strong and stable under pressure.
+Tenacity|Persistence in pursuing a goal despite setbacks.
+Concise|Brief but clear and complete enough for its purpose.
+Tentative|Not yet certain or final.
+Chaotic|Disorganized and lacking an orderly pattern.
+Somber|Serious, subdued, or gloomy in tone.
+Meticulous|Extremely careful and precise about details.
+Ambiguous|Open to more than one reasonable interpretation.
+Obsolete|No longer current or useful because circumstances have changed.
+Optimistic|Hopeful about what the future may bring.
+Parched|Extremely thirsty or dried out.
+Vital|Essential for success or survival.
+Connotation|Feeling or association a word suggests beyond its basic definition.
+Context Clues|Nearby words and ideas helping explain an unfamiliar term.
+Denotation|Word's direct dictionary meaning rather than its associations.
+Inference|Reasoned conclusion about meaning based on surrounding information.
+[ela--language-grammar-vocabulary--roots-prefixes-and-suffixes]
+Root|Word part carrying a core meaning and combining with other parts.
+Prefix|Meaningful part attached before a root or base.
+Suffix|Meaningful part attached after a root or base.
+Transport|Carry something from one place to another.
+Recycle|Process discarded material so its substance can be used again.
+Biography|Account of a person's life written by someone else; its first root means life.
+Geography|Study of Earth's places and environments; its first root means earth.
+Preview|See something before its main presentation.
+Submarine|Vessel operating beneath the sea.
+Careless|Not giving enough attention to avoid mistakes.
+Careful|Attentive to details in order to avoid mistakes.
+Hopeful|Expressing confidence in a desired future result.
+Invisible|Not able to be seen.
+Inaudible|Not able to be heard.
+Teacher|Person who instructs students; its ending names the doer of an action.
+Inspect|Look at something closely to examine its condition.
+Predict|Say beforehand what may happen.
+Misread|Interpret written words incorrectly.
+Development|Process of growth or change; a noun formed by adding a suffix to develop.
+Audible|Able to be heard.

@@ -1,0 +1,16 @@
+{
+  "social-studies": {
+    "subject": "Social Studies",
+    "displayName": "Social Studies",
+    "worksheetLabel": "SOCIAL STUDIES",
+    "inventory": "docs/crosswords/inventory.json",
+    "anchor": "social-studies-crosswords"
+  },
+  "ela": {
+    "subject": "English Language Arts",
+    "displayName": "ELA",
+    "worksheetLabel": "ELA",
+    "inventory": "docs/crosswords/ela/inventory.json",
+    "anchor": "ela-crosswords"
+  }
+}

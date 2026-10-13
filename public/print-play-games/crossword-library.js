@@ -1,6 +1,5 @@
 // Static cards keep downloads available without JavaScript. No PDF or preview loads on startup.
-const library=document.querySelector('.crossword-library');
-if(library){
+document.querySelectorAll('.crossword-library').forEach(library=>{
  const cards=[...library.querySelectorAll('.crossword-card')],input=library.querySelector('input[type=search]');
  const filters=[...library.querySelectorAll('[data-category]')],status=library.querySelector('.library-status');
  const pagination=library.querySelector('.library-pagination'),prev=pagination.querySelector('[data-prev]'),next=pagination.querySelector('[data-next]'),pageText=pagination.querySelector('span');
@@ -9,7 +8,7 @@ if(library){
   const query=input.value.trim().toLocaleLowerCase(),matches=cards.filter(card=>(!category||card.dataset.course===category)&&card.dataset.search.includes(query));
   const pages=Math.max(1,Math.ceil(matches.length/size));page=Math.min(page,pages-1);
   const shown=new Set(matches.slice(page*size,(page+1)*size));cards.forEach(card=>{card.hidden=!shown.has(card);});
-  status.textContent=matches.length?`${matches.length} topics${category?' in '+category:''} · Showing ${page*size+1}–${Math.min((page+1)*size,matches.length)}`:'No topics match. Try a shorter search or another course.';
+  status.textContent=matches.length?`${matches.length} ${matches.length===1?'topic':'topics'}${category?' in '+category:''} · Showing ${page*size+1}–${Math.min((page+1)*size,matches.length)}`:'No topics match. Try a shorter search or another course.';
   pagination.hidden=matches.length<=size;prev.disabled=page===0;next.disabled=page===pages-1;pageText.textContent=`Page ${page+1} of ${pages}`;
  }
  input.addEventListener('input',()=>{page=0;update();});
@@ -38,4 +37,4 @@ if(library){
   link.addEventListener('focus',()=>{clearTimeout(timer);pending=null;show(link);});link.addEventListener('blur',()=>{if(current===link)hide();});
  });
  document.addEventListener('keydown',event=>{if(event.key==='Escape')hide();});window.addEventListener('scroll',()=>{if(current)position(current);},{passive:true});window.addEventListener('resize',hide);
-}
+});

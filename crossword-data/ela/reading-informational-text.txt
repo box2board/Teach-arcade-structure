@@ -1,0 +1,63 @@
+[ela--reading-informational-text--main-idea-and-supporting-details]
+Main Idea|Central point that a paragraph's details explain or support.
+Supporting Details|Facts and examples developing a paragraph's central point.
+Summary|Short account preserving the most important information.
+Topic|General subject a passage discusses.
+Paragraph|Group of sentences developing a connected point.
+Examples|Specific instances used to illustrate a larger statement.
+Facts|Statements that can be checked against evidence.
+Heading|Title identifying the subject of a section.
+Synthesize|Combine related information into a larger understanding.
+Relevant|Describes a detail connected to the central point.
+Statistic|Numerical information that may support a broader claim.
+Claim|Position or assertion a writer develops with support.
+Explicit|Describes an idea stated directly in the passage.
+Implicit|Describes an idea suggested rather than directly stated.
+Concise|Brief while still expressing the necessary meaning.
+Qualification|Detail that limits or adds conditions to a broad statement.
+Contradiction|Information that conflicts with a claim and requires closer examination.
+Significance|Importance of a detail beyond simply reporting it.
+Repeated|Describes information returning across sections and helping signal central importance.
+Minor Detail|Less important information usually omitted from a short account.
+[ela--reading-informational-text--inferences-and-textual-evidence]
+Inference|Conclusion combining clues with reasoning or prior knowledge.
+Textual Evidence|Information from the passage supporting a conclusion.
+Prior Knowledge|Relevant understanding a reader brings from previous experience.
+Reasoning|Thinking that connects available facts to a conclusion.
+Claim|Assertion about a text that needs support.
+Relevant|Describes evidence directly connected to the conclusion being tested.
+Explicit|Describes information directly stated by the text.
+Implicit|Describes information suggested without being directly stated.
+Observation|Detail a reader can identify before deciding what it means.
+Support|Information that strengthens an interpretation rather than undermining it.
+Context|Surrounding information helping readers understand a clue.
+Consistency|Agreement between an interpretation and the text's clear statements.
+Exception|Case that differs from a general pattern and must still be considered.
+Revise|Change a conclusion when evidence does not fit it.
+Cautious|Describes a conclusion that acknowledges uncertainty instead of claiming too much.
+Correlation|Association between changes that does not by itself prove cause.
+Causation|Relationship in which one event produces or contributes to another.
+Pattern|Repeated actions or details that strengthen an interpretation.
+Contradiction|Conflict between an inference and a clear textual statement.
+Quotation|Exact source words a reader can cite as support.
+[ela--reading-informational-text--informational-text-structures]
+Text Structure|Way a writer organizes information and ideas.
+Problem and Solution|Organization presenting a difficulty and possible responses.
+Compare and Contrast|Organization examining similarities and differences.
+Cause and Effect|Organization explaining why something happened and its results.
+Sequence|Ordered series of steps or stages.
+Description|Organization presenting a subject's parts, qualities, or features.
+Chronological|Describes order from earlier events to later events.
+Signal Words|Terms such as however or therefore that suggest relationships.
+Process|Series of actions explaining how something is done.
+Definition|Explanation of what a term means.
+Cause|Event or condition producing a result.
+Effect|Result produced by an event or condition.
+Similarity|Feature two subjects share.
+Difference|Feature distinguishing one subject from another.
+Heading|Section title that can indicate how ideas are organized.
+Transition|Word or phrase connecting ideas or sections.
+Causation|Relationship a reader must distinguish from mere time order.
+Mixed Structure|Organization combining two or more patterns in one text.
+Components|Parts listed when explaining the features of a subject.
+Summary|Brief account that should preserve the central organizational relationships.

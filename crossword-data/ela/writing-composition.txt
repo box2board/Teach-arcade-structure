@@ -1,0 +1,21 @@
+[ela--writing-composition--writing-process-and-revision]
+Prewriting|Exploring ideas and purpose before creating a first version.
+Draft|Early version of a piece of writing.
+Revision|Reworking ideas, organization, and meaning after a first version.
+Editing|Correcting grammar, usage, and mechanics after larger changes.
+Proofreading|Final check for remaining surface errors.
+Audience|People whose needs shape a writer's choices.
+Purpose|Reason for writing, such as to explain or persuade.
+Organization|Arrangement of ideas and sections in a piece.
+Feedback|Specific response identifying strengths or concerns in a draft.
+Clarity|Ease with which a reader can understand the writing.
+Word Choice|Selection of precise vocabulary for the intended meaning.
+Introduction|Opening section establishing context and a controlling idea.
+Conclusion|Closing section connecting back to the established point and its implications.
+Claim|Position a writer may narrow after finding stronger evidence.
+Reasoning|Explanation connecting supporting information to the central position.
+Peer Review|Response from another student about a draft's effectiveness.
+Redundancy|Unnecessary repetition of the same point.
+Flow|Smooth movement of ideas and sentences through a passage.
+Scope|Breadth of a claim that revision may narrow.
+Tone|Writer's attitude that should fit the intended readers and purpose.

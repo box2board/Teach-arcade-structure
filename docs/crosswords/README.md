@@ -1,10 +1,10 @@
 # Crossword production system
 
-The authoritative inventory is the Social Studies selection from `QUESTION_SETS` in `public/review-lab/catalog.js`, including portable manifest banks and the independent Constitution Basics starter bank. The current inventory contains 76 unique bank IDs. Different U.S. and global war banks are not aliases: their question content and learning scope differ.
+The authoritative inventories select supported subjects from `QUESTION_SETS` in `public/review-lab/catalog.js`, The shared subject registry, `crossword-data/subjects.json`, maps subject labels, worksheet branding, paths, and inventories. There are 76 Social Studies banks (including the independent Constitution Basics starter) and 25 ELA banks: 101 unique topic sets. Different U.S. and global war banks are not aliases: their question content and learning scope differ.
 
 ## Editorial content
 
-`crossword-data/social-studies/*.txt` contains twenty ordered `Answer|Clue` records per topic. The first ten are Easy; the first fifteen are Medium; all twenty are Hard. This order is curricular, not a placement optimization. Normalization strips spacing, punctuation, and diacritics for the grid while retaining readable answer-key spelling. Each inventory record identifies the actual source and its SHA-256 fingerprint.
+`crossword-data/{social-studies,ela}/*.txt` contains twenty ordered `Answer|Clue` records per topic. The first ten are Easy; the first fifteen are Medium; all twenty are Hard. This order is curricular, not a placement optimization. Normalization strips spacing, punctuation, and diacritics for the grid while retaining readable answer-key spelling. Each inventory record identifies the actual source and its SHA-256 fingerprint.
 
 ## Rebuild
 
@@ -31,9 +31,13 @@ Each topic produces three two-page Letter PDFs, one six-page combined PDF, three
 
 Install Playwright and its Chromium browser in a development environment. Run `node scripts/test-crossword-browser.mjs`; it starts and stops a local Python HTTP server automatically. Set `CROSSWORD_TEST_ORIGIN` to test an already-running local origin instead. Set `CROSSWORD_CHROMIUM_PATH` to use a nondefault installed Chromium executable. The test checks every download and focus preview, real pointer hover for every topic, all course counts, pagination, search, Escape, mobile width, no preload requests, and no-JavaScript downloads.
 
-## Future subjects
+## Subject-specific production
 
-Create editorial lists and an inventory from the future subject's authoritative runtime catalog. Reuse the placement/PDF/validation routines and static card renderer. Extend the output subject path and labels before generating another subject; do not pretend other subjects have been implemented already.
+To regenerate only ELA, run `python3 scripts/build-crosswords.py --subject ela`, then `python3 scripts/render-crossword-library.py`. To revise one topic, pass `--subject ela --only <exact-topic-id>`. Subject generation preserves other subjects' catalog records and assets. The default build regenerates all registered subjects.
+
+Run `python3 scripts/validate-crosswords.py --subject ela` for an ELA-only report. Default validation checks both inventories and the whole hub. Browser tests accept `CROSSWORD_SUBJECT=ela` for a focused run; default tests cover every supported subject. Each library has independent search, filters and pagination.
+
+To add a future subject, register it in `crossword-data/subjects.json`, derive its inventory from the runtime catalog, and author twenty ordered terms per valid unique topic. The shared generator and renderer use the registered paths and branding. Do not register incomplete placeholder content.
 
 ## Existing repository limitations
 

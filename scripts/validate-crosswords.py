@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Independent PDF glyph, catalog, connectivity, page-order and asset validation."""
-import hashlib,importlib,json,re,sys
+import argparse,hashlib,importlib,json,re,sys
 from pathlib import Path
 import fitz
 from PIL import Image
@@ -26,11 +26,16 @@ def validate_pdf_grid(page,puzzle,key):
     assert numbers=={(p['row'],p['col']):str(p['number']) for p in puzzle['entries']},'Printed grid numbering mismatch'
 
 def main():
-    content=m.read_content();inv=json.loads((root/'docs/crosswords/inventory.json').read_text())
-    catalog=json.loads((m.BASE/'crossword-catalog.json').read_text())['resources']
-    assert len(catalog)==len(inv['topics'])==len(content)
+    parser=argparse.ArgumentParser();parser.add_argument('--subject',choices=list(m.SUBJECTS));args=parser.parse_args()
+    content=m.read_content();all_catalog=json.loads((m.BASE/'crossword-catalog.json').read_text())['resources']
+    subjects=[args.subject] if args.subject else list(m.SUBJECTS)
+    inventory_topics=[t for slug in subjects for t in json.loads((root/m.SUBJECTS[slug]['inventory']).read_text())['topics']]
+    ids={t['id'] for t in inventory_topics};content={k:v for k,v in content.items() if k in ids}
+    catalog=[r for r in all_catalog if r['id'] in ids]
+    assert len(catalog)==len(inventory_topics)==len(content)
     assert {r['id'] for r in catalog}==set(content)
-    assert len({r['id'] for r in catalog})==len(catalog)
+    assert len({r['id'] for r in all_catalog})==len(all_catalog)
+    assert {r['id'] for r in all_catalog}==set(m.read_content())
     html=(m.BASE/'index.html').read_text();assert '<iframe' not in html
     checked=[];totalpages=0;mincell=100;maxthumb=0
     for r in catalog:
@@ -62,5 +67,7 @@ def main():
         if url.startswith('/'):
             path=m.path_url(url.split('?')[0].split('#')[0]);assert path.is_file() or (path/'index.html').is_file(),url
     report={'status':'passed','topics':len(checked),'packages':len(checked),'pdfs':len(checked)*4,'previews':len(checked)*3,'pdfPages':totalpages,'minimumCellPoints':round(mincell,2),'maximumThumbnailBytes':maxthumb,'checks':['cumulative 10/15/20 vocabulary','unique answers and nonblank clues','all entries placed','independent maximal-run comparison','connected crossings','printed glyph and numbering checks','no student answer glyphs','complete key glyphs','Letter page size and text bounds','2/2/2/6 page counts','exact combined rendering/order','exact thumbnail/PDF match','all hub href/src assets resolve','unique resource IDs','source SHA-256 freshness']}
-    (root/'docs/crosswords/validation.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2))
+    report['subjects']=[m.SUBJECTS[slug]['subject'] for slug in subjects]
+    destination=(root/m.SUBJECTS[args.subject]['inventory']).parent/'validation.json' if args.subject else root/'docs/crosswords/all-subjects-validation.json'
+    destination.parent.mkdir(parents=True,exist_ok=True);destination.write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2))
 if __name__=='__main__':main()
