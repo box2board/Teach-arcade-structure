@@ -1,0 +1,439 @@
+[science--physics--motion-speed-and-acceleration]
+Distance|The total length of a traveled path
+Displacement|The directed change from initial to final position
+Direction|Orientation of motion, needed to describe a velocity vector
+Acceleration|Change in velocity per unit time
+Meters Per Second|SI-derived unit commonly used to measure speed or velocity
+Rest|State in which position does not change relative to a chosen reference point
+Speed|Quantity that is a scalar
+Net Force|The vector sum of all forces acting on an object
+Inertia|Resistance to changes in motion
+F = ma|Relationship that expresses Newton's second law for constant mass
+Weight|The gravitational force acting on an object
+Normal Force|Force that is a surface's push perpendicular to that surface
+Newton’s third law|Forces between interacting objects are equal in magnitude and opposite in direction.
+Friction|Force that opposes relative motion between surfaces in contact.
+Mass|Measure of the amount of matter in an object.
+Seat Belt|Exerts a force that changes the passenger's motion
+Kinetic energy|Energy of motion; for a fixed mass it varies with the square of speed.
+Potential Energy|Energy associated with position in a gravitational field
+Joule|Definition of the SI unit of energy and work
+Power|The rate of energy transfer or work
+
+[science--physics--forces-and-newtons-laws]
+Net Force|The vector sum of all forces acting on an object
+Inertia|Resistance to changes in motion
+F = ma|Relationship that expresses Newton's second law for constant mass
+Weight|The gravitational force acting on an object
+Normal Force|Force that is a surface's push perpendicular to that surface
+Newton's Third Law|Equal and opposite interaction forces acting on different objects
+Friction|Opposes the relative sliding of contacting surfaces
+Mass|Measure of the amount of matter in an object
+Seat Belt|Exerts a force that changes the passenger's motion
+Direction|Orientation of motion, needed to describe a velocity vector.
+Acceleration|Change in velocity per unit time.
+Rest|State in which position does not change relative to a chosen reference point.
+Gravity|In the ideal near-Earth projectile model, which force acts after launch when air resistance is neglected
+Distance|The total length of a traveled path
+Displacement|The directed change from initial to final position
+Meters per second|SI-derived unit commonly used to measure speed or velocity.
+Speed|Quantity that is a scalar
+Kinetic energy|Energy of motion; for a fixed mass it varies with the square of speed.
+Potential Energy|Energy associated with position in a gravitational field
+Joule|Definition of the SI unit of energy and work
+
+[science--physics--energy-work-and-power]
+Kinetic Energy|Energy associated with motion
+Potential Energy|Energy associated with position in a gravitational field
+Joule|Definition of the SI unit of energy and work
+Power|The rate of energy transfer or work
+Watt|Unit that is used for power
+Mechanical Energy|The sum of kinetic and potential energy
+Conservation Of Energy|Energy is transferred or transformed, not created or destroyed
+Thermal Energy|Mechanical energy is converted into other forms, including process
+Gravitational Potential Energy|Work against gravity transfers energy into the object-Earth system
+Efficiency|Useful output energy with total input energy
+Displacement|The directed change from initial to final position
+Direction|Orientation of motion, needed to describe a velocity vector.
+Speed|Quantity that is a scalar
+Friction|Force that opposes relative motion between surfaces in contact.
+Mass|Measure of the amount of matter in an object.
+Gravity|In the ideal near-Earth projectile model, which force acts after launch when air resistance is neglected
+Distance|The total length of a traveled path
+Acceleration|Change in velocity per unit time.
+Meters per second|SI-derived unit commonly used to measure speed or velocity.
+Rest|State in which position does not change relative to a chosen reference point.
+
+[science--physics--waves-and-sound]
+Wavelength|The distance between corresponding points on adjacent cycles
+Frequency|The number of cycles per unit time
+Amplitude|The maximum displacement from equilibrium
+Hertz|Unit that is used for frequency
+Transverse Wave|A wave with oscillations perpendicular to its direction of travel
+Echo|A reflected sound heard after the original
+Doppler Effect|In air, a listener hears a siren at a higher pitch as its source approaches. Which effect explains this
+Mechanical wave|Wave that requires a material medium to travel.
+Longitudinal wave|Wave whose oscillations are parallel to its direction of travel.
+Sound wave|Mechanical pressure disturbance that travels through a material medium.
+Pitch|Perception associated mainly with sound frequency.
+Loudness|Perception associated with sound intensity and hearing conditions.
+Wave speed|Distance a wave disturbance travels per unit time.
+Medium|Material through which a mechanical wave travels.
+Crest|Highest point of a transverse wave relative to equilibrium.
+Trough|Lowest point of a transverse wave relative to equilibrium.
+Compression|Region of a longitudinal wave where particles are close together.
+Rarefaction|Region of a longitudinal wave where particles are farther apart.
+Reflection|Returns some light into the original medium
+Refraction|A change in propagation direction associated with a change in wave speed
+
+[science--physics--electric-circuits]
+Electric Current|The rate of electric charge flow
+Voltage|Electric potential difference between two points
+Electrical Resistance|Property that opposes electric current in a material or component
+Ampere|Unit that measures current
+Ohm|Unit that measures resistance
+Series Circuit|A circuit with one path through its components
+Parallel Circuit|A circuit containing more than one branch for current
+Resistor|Circuit component designed to provide electrical resistance.
+Battery|Source that maintains a potential difference using chemical reactions.
+Conducting wire|Material path that allows charge to flow through a circuit.
+Switch|Component that opens or closes a circuit path.
+Ammeter|Instrument connected in series to measure current.
+Voltmeter|Instrument connected in parallel to measure potential difference.
+Fuse|Protective device that opens a circuit when current is too high.
+Ohm law|Relationship among voltage, current, and resistance for an ohmic component.
+Electric circuit|Connected path through which electric charge can flow.
+Overload|Condition in which current exceeds a circuit or cord rating.
+Circuit branch|One of multiple paths through a parallel circuit.
+Electric charge|Physical property that causes electric interactions.
+Electrical energy|Energy transferred by electric charges in a circuit.
+
+[science--physics--momentum-and-collisions]
+Momentum|Mass multiplied by velocity
+Kg·m/s|Unit that can express momentum
+Impulse|The change in momentum caused by a force over time
+Colliding Objects Stick Together|Characterizes a perfectly inelastic collision
+Recoil|Backward motion associated with another object's forward momentum
+Direction|Orientation of motion, needed to describe a velocity vector.
+Speed|Quantity that is a scalar
+Mass|Measure of the amount of matter in an object.
+Distance|The total length of a traveled path
+Displacement|The directed change from initial to final position
+Acceleration|Change in velocity per unit time.
+Meters per second|SI-derived unit commonly used to measure speed or velocity.
+Rest|State in which position does not change relative to a chosen reference point.
+Net Force|The vector sum of all forces acting on an object
+Inertia|Resistance to changes in motion
+F = ma|Relationship that expresses Newton's second law for constant mass
+Weight|The gravitational force acting on an object
+Normal Force|Force that is a surface's push perpendicular to that surface
+Newton’s third law|Forces between interacting objects are equal in magnitude and opposite in direction.
+Friction|Force that opposes relative motion between surfaces in contact.
+
+[science--physics--gravity-and-circular-motion]
+Mass|Measure of the amount of matter in an object
+Gravitational Field|A description of gravitational force per unit mass at each location
+Orbital Period|Time required for one complete orbit
+Free Fall|Motion in which gravity is the only force acting
+Force Doubles|Process by which gravitational force change if one mass doubles and separation stays fixed
+Gravitational Attraction|Becomes one-fourth as large
+Along The Tangent|A ball's supporting string breaks during horizontal circular motion. Neglect other forces for the instant afterward. Which direction does it initially move
+One-ninth|Two identical masses move from separation r to separation 3r. What fraction of the original gravitational force remains
+Centripetal Force|Inward net force that keeps an object moving along a circular path
+Distance|The total length of a traveled path
+Direction|Orientation of motion, needed to describe a velocity vector.
+Acceleration|Change in velocity per unit time.
+Speed|Quantity that is a scalar
+Inertia|Resistance to changes in motion
+Friction|Force that opposes relative motion between surfaces in contact.
+Gravity|In the ideal near-Earth projectile model, which force acts after launch when air resistance is neglected
+Displacement|The directed change from initial to final position
+Meters per second|SI-derived unit commonly used to measure speed or velocity.
+Rest|State in which position does not change relative to a chosen reference point.
+Net Force|The vector sum of all forces acting on an object
+
+[science--physics--light-and-optics]
+Electromagnetic Wave|Wave of changing electric and magnetic fields that can travel through a vacuum
+Reflection|Returns some light into the original medium
+Refraction|A change in propagation direction associated with a change in wave speed
+Convex Lens|Lens generally converges parallel rays in air
+Real Image|An image formed where light rays actually converge
+Law of reflection|Rule that the incident and reflected angles are equal when measured from the normal.
+Focal point|Point where parallel rays converge after passing through a converging lens.
+Virtual image|Image at a location from which light rays appear to originate.
+Normal line|Line perpendicular to a surface at the point where a ray strikes.
+Visible spectrum|Range of electromagnetic wavelengths detectable by human vision.
+Prism|Transparent optical object that can separate light by wavelength-dependent refraction.
+Diffuse reflection|Reflection in many directions from a rough surface.
+Opaque object|Object that blocks light from passing through it.
+Shadow|Region where light is blocked by an object.
+Image distance|Distance from an optical element to the image it forms.
+Converging lens|Lens that brings parallel incoming rays together in the usual ray model.
+Wavelength|Distance between corresponding points on adjacent wave cycles.
+Angle of incidence|Angle between an incoming ray and the normal to a surface.
+Optical axis|Reference line through the center of a lens or mirror.
+Frequency|The number of cycles per unit time
+
+[science--physics--magnetism-and-electromagnetism]
+Electric Current|Creates a magnetic field around a wire
+Electromagnet|A device whose magnetism is produced by electric current
+Electromagnetic Induction|Producing an electric effect through changing magnetic flux
+Electric Motor|Device that converts electrical energy into mechanical energy
+Electric Generator|Device that converts mechanical energy into electrical energy
+Magnetic Polarity Reverses|Happens to a coil's magnetic polarity when its current direction reverses
+Transformer|Changing current in one coil induces voltage in another coil through changing magnetic flux
+Turbine's Rotational Motion|A turbine spins a generator during electricity production. What supplies the mechanical energy
+Magnetic pole|Region near an end of a magnet where its magnetic effect is strongest.
+Magnetic field|Region where magnetic forces can act on magnets or moving charges.
+Magnetic flux|Measure of magnetic field passing through a specified area.
+Compass|Instrument whose magnetic needle aligns with a local magnetic field.
+Magnetic domain|Region in a material where many atomic magnetic moments align.
+Induced current|Current produced when magnetic flux through a conducting loop changes.
+Magnetization|Alignment of magnetic domains that gives a material a net magnetic effect.
+Magnetic polarity|Designation of a magnet’s north-seeking and south-seeking ends.
+Magnetic interaction|Attraction or repulsion between magnets or magnetic materials.
+Coil|Wire wound into loops to strengthen the magnetic field produced by current.
+Changing magnetic flux|Variation in magnetic field through a loop that can induce voltage.
+Field strength|Measure of the intensity of a magnetic field.
+
+[science--physics--heat-and-thermal-energy]
+Heat In Physics|Energy transferred because of a temperature difference
+Temperature|Measure related to the average kinetic energy of particles
+Conduction|Energy transfer through interactions within or between contacting materials
+Convection|Energy transfer associated with bulk movement of a fluid
+Thermal Radiation|Energy transfer by electromagnetic waves
+Specific Heat Capacity|Energy required to raise the temperature of a unit mass by one degree
+Thermal Equilibrium Between Objects|A condition of equal temperature with no net heat transfer between them
+Higher To Lower Temperature|Way does net heat transfer occur spontaneously between contacting objects
+Heat|Energy transferred between objects because of a temperature difference.
+Thermal equilibrium|Condition in which objects have equal temperature and there is no net heat transfer.
+Insulation|Material or design that reduces the rate of heat transfer.
+Buoyant force|Upward force a fluid exerts on an object within it.
+Specific heat|Energy needed per unit mass to raise a substance one degree.
+Phase change|Physical change from one state of matter to another.
+Thermal energy|Energy associated with the motion and interactions of particles in a substance.
+Energy transfer|Movement of energy from one object or region to another.
+Thermal conductivity|Measure of how readily a material transfers thermal energy.
+Latent heat|Energy transferred during a phase change without changing temperature.
+Heat capacity|Energy required to raise the temperature of an entire object by one degree.
+Temperature gradient|Change in temperature across a distance that can drive heat transfer.
+
+[science--physics--fluids-and-pressure]
+Pressure|Force divided by area
+Buoyant Force|An upward force exerted by a fluid on an immersed object
+Pascal's Principle|Pressure changes transmitted through an enclosed fluid
+Distance|The total length of a traveled path
+Rest|State in which position does not change relative to a chosen reference point.
+Speed|Quantity that is a scalar
+Weight|The gravitational force acting on an object
+Mass|Measure of the amount of matter in an object.
+Displacement|The directed change from initial to final position
+Direction|Orientation of motion, needed to describe a velocity vector.
+Acceleration|Change in velocity per unit time.
+Meters per second|SI-derived unit commonly used to measure speed or velocity.
+Net Force|The vector sum of all forces acting on an object
+Inertia|Resistance to changes in motion
+F = ma|Relationship that expresses Newton's second law for constant mass
+Normal Force|Force that is a surface's push perpendicular to that surface
+Newton’s third law|Forces between interacting objects are equal in magnitude and opposite in direction.
+Friction|Force that opposes relative motion between surfaces in contact.
+Seat Belt|Exerts a force that changes the passenger's motion
+Kinetic energy|Energy of motion; for a fixed mass it varies with the square of speed.
+
+[science--physics--simple-machines]
+Lever|Simple machine uses a rigid bar that turns around a pivot
+Fulcrum|Definition of the pivot point of a lever called
+Inclined Plane|Simple machine is a sloped surface used to raise a load
+Screw|Simple machine is an inclined plane wrapped around a cylinder
+Pulley|Simple machine consists of a grooved wheel guiding a rope
+Reducing Friction|Generally increases the fraction of input work delivered usefully
+Distance|The total length of a traveled path
+Direction|Orientation of motion, needed to describe a velocity vector.
+Weight|The gravitational force acting on an object
+Friction|Force that opposes relative motion between surfaces in contact.
+Efficiency|Useful output energy with total input energy
+Torque|Turning effect of a force about an axis.
+Displacement|The directed change from initial to final position
+Acceleration|Change in velocity per unit time.
+Meters per second|SI-derived unit commonly used to measure speed or velocity.
+Rest|State in which position does not change relative to a chosen reference point.
+Speed|Quantity that is a scalar
+Net Force|The vector sum of all forces acting on an object
+Inertia|Resistance to changes in motion
+F = ma|Relationship that expresses Newton's second law for constant mass
+
+[science--physics--static-electricity]
+Electrons|Particles usually move between objects during static charging
+Electrical Insulator|A material in which charge does not move freely through the bulk
+Conservation Of Electric Charge|Net charge is conserved in an isolated system
+Electric Force|The repulsive force decreases
+Coulomb’s Law|Becomes one-fourth as large
+Positive charge|Net electric charge resulting when an object has fewer electrons than protons.
+Negative charge|Net electric charge resulting when an object has more electrons than protons.
+Polarization|Redistribution of charge within an object without necessarily changing its net charge.
+Grounding|Connection that lets charge move between an object and Earth.
+Insulator|Material in which electric charge does not move freely through the bulk.
+Electrostatic force|Attractive or repulsive force between electric charges.
+Coulomb law|Relationship describing electric force as dependent on charge and separation.
+Charge conservation|Principle that total electric charge in an isolated system remains constant.
+Electric potential|Stored energy per unit charge at a location in an electric field.
+Electric potential difference|Change in stored energy per unit charge between two locations.
+Conductor|Material in which electric charges can move relatively freely.
+Electric field|Region in which a charged object experiences electric force.
+Contact charging|Transfer of electric charge through direct contact.
+Charging by induction|Charge redistribution caused by a nearby charged object without direct contact.
+Electron|Negatively charged subatomic particle.
+
+[science--physics--electric-power-and-safety]
+Electric Power|The rate of electrical energy transfer
+Watt|Unit that measures electrical power
+Short Circuit|An unintended low-resistance path for current
+Kilowatt-hour|Unit of energy equal to one kilowatt used for one hour.
+Ground-fault interrupter|Safety device that detects an imbalance between outgoing and returning current.
+Circuit breaker|Protective switch that opens a circuit when current exceeds a safe level.
+Electrical overload|Condition in which connected devices demand more current than a circuit rating.
+Electrical hazard|Condition that can cause electric shock, burns, or fire.
+Protective grounding|Safety connection that provides a low-resistance path for fault current.
+Energy consumption|Amount of electrical energy used over a period of operation.
+Fuse|Protective device that melts and opens a circuit when current is excessive.
+Electric energy use|Amount of electrical energy consumed during operation.
+Ground fault|Unintended electrical connection between a circuit and ground.
+Overload protection|Fuse or breaker action that interrupts excessive current.
+Electrical grounding|Connection to Earth designed to reduce shock risk.
+Energy transfer rate|Amount of energy transferred per unit time.
+Current rating|Maximum current a wire or device is designed to carry.
+Electrical fire|Fire that can result from overheating, arcing, or faulty wiring.
+Voltage|Electric potential difference between two points
+Overload|Condition in which current exceeds a circuit or cord rating.
+
+[science--physics--wave-interference-and-resonance]
+Wave Interference|The combination of overlapping wave displacements
+Constructive Interference|Overlapping displacements reinforce each other
+Destructive Interference|Opposite displacements partly or completely cancel at overlap
+Node|A point with zero displacement amplitude
+Resonance|A strong response when driving frequency is near a system's natural frequency
+Damping|Reduces oscillation amplitude over time
+Antinode|Point of maximum displacement in a standing wave.
+Standing wave|Pattern formed by overlapping waves traveling in opposite directions.
+Natural frequency|Frequency at which a system tends to oscillate when disturbed.
+Beat frequency|Rate of loudness variation produced by two nearby sound frequencies.
+Phase|Position within a repeating wave cycle.
+Pulse|Single, localized disturbance that travels through a medium.
+Wave speed|Distance traveled by a wave per unit time.
+Harmonic|Frequency that is an integer multiple of a system’s fundamental frequency.
+Cancellation|Reduction in displacement when waves overlap with opposite phases.
+Reinforcement|Increase in displacement when overlapping waves have the same phase.
+Oscillation|Repeated motion or change around an equilibrium state.
+Frequency|The number of cycles per unit time
+Amplitude|The maximum displacement from equilibrium
+Loudness|Perception associated with sound intensity and hearing conditions.
+
+[science--physics--projectile-motion]
+Gravity|In the ideal near-Earth projectile model, which force acts after launch when air resistance is neglected
+Parabola|Shape is an ideal projectile's path under constant downward gravity
+Vertical|At the highest point of an upward launch, which velocity component is zero
+9.8 M/s² Downward|Approximate value is commonly used for gravitational acceleration near Earth's surface
+45° Above Horizontal|At equal launch and landing heights with no drag and fixed launch speed, which angle gives maximum range
+Distance|The total length of a traveled path
+Acceleration|Change in velocity per unit time.
+Speed|Quantity that is a scalar
+Displacement|The directed change from initial to final position
+Direction|Orientation of motion, needed to describe a velocity vector.
+Meters per second|SI-derived unit commonly used to measure speed or velocity.
+Rest|State in which position does not change relative to a chosen reference point.
+Net Force|The vector sum of all forces acting on an object
+Inertia|Resistance to changes in motion
+F = ma|Relationship that expresses Newton's second law for constant mass
+Weight|The gravitational force acting on an object
+Normal Force|Force that is a surface's push perpendicular to that surface
+Newton’s third law|Forces between interacting objects are equal in magnitude and opposite in direction.
+Friction|Force that opposes relative motion between surfaces in contact.
+Mass|Measure of the amount of matter in an object.
+
+[science--physics--rotational-motion]
+Angular Displacement|Change in angular position
+Angular Velocity|Rate of change of angular position
+Torque|Turning effect of a force about an axis
+Rotational Inertia|Measure of resistance to changes in rotational motion
+Newton-meter|SI unit is commonly used for torque
+Angular Acceleration|Rate of change of angular velocity
+Angular Momentum|A quantity describing rotational motion that can be conserved
+Displacement|The directed change from initial to final position
+Acceleration|Change in velocity per unit time.
+Rest|State in which position does not change relative to a chosen reference point.
+Speed|Quantity that is a scalar
+Inertia|Resistance to changes in motion
+Mass|Measure of the amount of matter in an object.
+Momentum|Mass multiplied by velocity
+Distance|The total length of a traveled path
+Direction|Orientation of motion, needed to describe a velocity vector.
+Meters per second|SI-derived unit commonly used to measure speed or velocity.
+Net Force|The vector sum of all forces acting on an object
+F = ma|Relationship that expresses Newton's second law for constant mass
+Weight|The gravitational force acting on an object
+
+[science--physics--energy-resources-and-conversion]
+Photovoltaic Cell|Device that converts light energy directly into electrical energy
+Chemical Energy|Form of energy is stored in a charged battery
+Fuel Cell|Device that converts chemical energy into electrical energy through a reaction
+Main Distinction Between Power|Power is the rate of energy transfer
+Friction|Force that opposes relative motion between surfaces in contact.
+Power|The rate of energy transfer or work
+Efficiency|Useful output energy with total input energy
+Distance|The total length of a traveled path
+Displacement|The directed change from initial to final position
+Direction|Orientation of motion, needed to describe a velocity vector.
+Acceleration|Change in velocity per unit time.
+Meters per second|SI-derived unit commonly used to measure speed or velocity.
+Rest|State in which position does not change relative to a chosen reference point.
+Speed|Quantity that is a scalar
+Net Force|The vector sum of all forces acting on an object
+Inertia|Resistance to changes in motion
+F = ma|Relationship that expresses Newton's second law for constant mass
+Weight|The gravitational force acting on an object
+Normal Force|Force that is a surface's push perpendicular to that surface
+Newton’s third law|Forces between interacting objects are equal in magnitude and opposite in direction.
+
+[science--physics--modern-physics-fundamentals]
+Photon|Quantum, or discrete packet, of electromagnetic energy
+Photoelectric Effect|Emission of electrons from a material after light transfers sufficient energy
+Energy Level|An electron can occupy certain allowed energies
+Emission Spectrum|Specific wavelengths of light emitted by excited atoms
+Wave-particle Duality|Quantum objects can display both wave-like and particle-like behavior
+Quantum Probability|Predicts likelihoods of measurement outcomes
+Speed|Quantity that is a scalar
+Mass|Measure of the amount of matter in an object.
+Distance|The total length of a traveled path
+Displacement|The directed change from initial to final position
+Direction|Orientation of motion, needed to describe a velocity vector.
+Acceleration|Change in velocity per unit time.
+Meters per second|SI-derived unit commonly used to measure speed or velocity.
+Rest|State in which position does not change relative to a chosen reference point.
+Net Force|The vector sum of all forces acting on an object
+Inertia|Resistance to changes in motion
+F = ma|Relationship that expresses Newton's second law for constant mass
+Weight|The gravitational force acting on an object
+Normal Force|Force that is a surface's push perpendicular to that surface
+Newton’s third law|Forces between interacting objects are equal in magnitude and opposite in direction.
+
+[science--physics--measurement-in-physics]
+Displacement|Physical quantity requires both magnitude and direction
+Speed|Quantity that is a scalar
+Dimensional Analysis|Use of units to check or derive relationships in calculations
+Meters Per Second Squared|Unit that combination represents acceleration
+Curved Position-time Graph|The velocity changes as the slope changes
+Distance|The total length of a traveled path
+Direction|Orientation of motion, needed to describe a velocity vector.
+Acceleration|Change in velocity per unit time.
+Meters per second|SI-derived unit commonly used to measure speed or velocity.
+Rest|State in which position does not change relative to a chosen reference point.
+Net Force|The vector sum of all forces acting on an object
+Inertia|Resistance to changes in motion
+F = ma|Relationship that expresses Newton's second law for constant mass
+Weight|The gravitational force acting on an object
+Normal Force|Force that is a surface's push perpendicular to that surface
+Newton’s third law|Forces between interacting objects are equal in magnitude and opposite in direction.
+Friction|Force that opposes relative motion between surfaces in contact.
+Mass|Measure of the amount of matter in an object.
+Seat Belt|Exerts a force that changes the passenger's motion
+Kinetic energy|Energy of motion; for a fixed mass it varies with the square of speed.

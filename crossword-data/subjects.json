@@ -12,5 +12,12 @@
     "worksheetLabel": "ELA",
     "inventory": "docs/crosswords/ela/inventory.json",
     "anchor": "ela-crosswords"
+  },
+  "science": {
+    "subject": "Science",
+    "displayName": "Science",
+    "worksheetLabel": "SCIENCE",
+    "inventory": "docs/crosswords/science/inventory.json",
+    "anchor": "science-crosswords"
   }
 }

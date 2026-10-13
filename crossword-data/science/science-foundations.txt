@@ -1,0 +1,21 @@
+[scientific-method]
+Observation|Information gathered directly with senses or scientific instruments.
+Question|Focused inquiry that can guide a testable investigation.
+Hypothesis|Testable proposed explanation or prediction.
+Independent Variable|Factor deliberately changed by the investigator.
+Dependent Variable|Outcome measured in response to a change.
+Control Group|Comparison group that does not receive the tested treatment.
+Constant|Condition kept the same across comparison groups.
+Trial|One repetition of an experimental procedure.
+Data|Recorded observations and measurements from an investigation.
+Quantitative|Describes data expressed as numbers or measurements.
+Qualitative|Describes observations about qualities rather than numerical amounts.
+Procedure|Ordered steps used to carry out an investigation.
+Sample Size|Number of subjects or observations included in a study.
+Replication|Repeating an investigation to check whether results are consistent.
+Measurement Error|Difference between a measured value and the quantity’s true value.
+Outlier|Result unusually far from the rest of a data set.
+Correlation|Relationship in which variables change together; alone it does not prove cause.
+Causation|Relationship in which a change in one factor produces a change in another.
+Controlled Experiment|Test that changes one factor while holding other relevant conditions steady.
+Reproducibility|Ability of other investigators to repeat a study using its reported methods.

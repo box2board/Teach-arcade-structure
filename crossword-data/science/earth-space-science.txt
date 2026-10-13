@@ -1,0 +1,439 @@
+[science--earth-space-science--plate-tectonics]
+Lithosphere|Rigid outer layer of Earth made of the crust and uppermost mantle
+Divergent|At which boundary do plates move apart
+Pangaea|Ancient supercontinent that included nearly all of Earth’s land
+Past Each Other|At a transform boundary, plates mainly move in which way
+Subduction|One plate descending beneath another
+Few Centimeters Each Year|Way in which fast do most tectonic plates move
+Large Mountain Ranges|Commonly forms when two continental plates collide
+Volcanic Island Arc|Two oceanic plates converge, and one subducts. Which feature is likely nearby
+Rift Valley|Continental crust begins stretching and breaking along a divergent boundary. Which feature may develop
+Rocks|A rock can consist of one or more minerals
+Crust|Thin, outermost solid layer of Earth.
+Mantle|Thick layer of hot rock between Earth’s crust and core.
+Solid|Definition of the physical state of Earth's inner core
+Igneous|Rock that type forms when magma or lava cools and solidifies
+Weathering|The breakdown of rock at or near Earth's surface
+Transport Of Weathered Material|Definition of erosion
+Deposition|Sediment being laid down
+Sedimentary|In which rock type are fossils most commonly preserved
+Crystal Structure|A mineral has a characteristic composition and ordered process
+Sedimentary To Metamorphic|A sandstone is buried, heated, and transformed into quartzite without melting. Which transition occurred
+
+[science--earth-space-science--rocks-and-the-rock-cycle]
+Igneous|Rock that type forms when magma or lava cools and solidifies
+Weathering|The breakdown of rock at or near Earth's surface
+Transport Of Weathered Material|Definition of erosion
+Deposition|Sediment being laid down
+Sedimentary|In which rock type are fossils most commonly preserved
+Crystal Structure|A mineral has a characteristic composition and ordered process
+Sedimentary To Metamorphic|A sandstone is buried, heated, and transformed into quartzite without melting. Which transition occurred
+Rocks|A rock can consist of one or more minerals
+Solid|Definition of the physical state of Earth's inner core
+Magma|Molten or partly molten rock beneath Earth’s surface.
+Lava|Magma that reaches Earth’s surface.
+Lithosphere|Rigid outer layer of Earth made of the crust and uppermost mantle.
+Divergent|At which boundary do plates move apart
+Pangaea|Ancient supercontinent that included nearly all of Earth’s land.
+Past Each Other|At a transform boundary, plates mainly move in which way
+Subduction|One plate descending beneath another
+Few Centimeters Each Year|Way in which fast do most tectonic plates move
+Large Mountain Ranges|Commonly forms when two continental plates collide
+Volcanic Island Arc|Two oceanic plates converge, and one subducts. Which feature is likely nearby
+Rift Valley|Continental crust begins stretching and breaking along a divergent boundary. Which feature may develop
+
+[science--earth-space-science--weather-and-the-water-cycle]
+Weather|Atmospheric conditions at a particular time and place
+Oceans|Reservoir contains most of Earth's water
+Dew Point|Term that describes the temperature at which cooling air reaches water-vapor saturation
+Transpiration|Loss of water vapor from plant surfaces, especially leaves
+Precipitation|Water falling from clouds as rain, snow, or other forms
+Barometer|Instrument that measures atmospheric pressure
+Infiltration|Water entering the soil from the surface
+Sun|Supplies much of the energy that drives evaporation in the water cycle
+Gravity|Moves falling precipitation and downhill-flowing water
+Differences In Atmospheric Pressure|Generally causes wind
+Evaporation|Change from liquid water to water vapor at a surface
+Soil|A mixture of mineral material, organic matter, water, air, and organisms
+Climate|Long-term patterns and averages of atmospheric conditions.
+Mechanical Weathering|Process that breaks rock into smaller pieces without changing its composition
+Abrasion|Wearing surfaces through scraping by moving particles
+Mass Wasting|Downslope movement of rock or soil under gravity
+River Delta|A sediment deposit where a river enters quieter water
+Deposition|Process that deposits wind-carried sand into dunes
+Ice Wedging|A rock develops cracks after repeated wetting and freezing. Which mechanism best fits
+Delta|A river enters a lake and builds a fan-shaped deposit near its mouth. Which feature is developing
+
+[science--earth-space-science--solar-system]
+Star|Type of object is the Sun
+Jupiter|Planet that is largest in the solar system
+Gravity|Force that keeps planets in their orbits around the Sun
+Inner Planets|Four rocky planets closest to the Sun: Mercury, Venus, Earth, and Mars
+Asteroid belt|Region of many small rocky bodies located mainly between Mars and Jupiter.
+Rotation|Spin of an object around its axis.
+Revolution|Orbital motion of one object around another.
+Comet|Small solar-system body containing ice, dust, and rock that can form a tail near the Sun.
+Nuclear fusion|Process in which light atomic nuclei combine and release energy in stars.
+Orbit|Path of an object as it moves around another object under gravity.
+Natural satellite|Naturally occurring object that orbits a planet or other larger body.
+Astronomical unit|Distance unit based approximately on the average distance between Earth and the Sun.
+Orbital period|Time an orbiting object takes to complete one orbit.
+Moon|During a solar eclipse, which object lies between Earth and the Sun
+Earth|During a lunar eclipse, which object lies between the Sun and the Moon
+Earth's Rotation|Causes the regular cycle of day and night on Earth
+Full Moon|At which phase is the Moon's near side fully illuminated as viewed from Earth
+Neap tide|Tide with a small tidal range near first- or third-quarter moon.
+Winter|In June, the Northern Hemisphere is tilted toward the Sun. What season generally occurs in southern Australia
+Earth rotation|Earth’s spin around its axis, producing the daily cycle of day and night.
+
+[science--earth-space-science--earth-moon-and-sun]
+Earth's Rotation|Causes the regular cycle of day and night on Earth
+Revolution|One complete orbit of Earth around the Sun
+Moon|During a solar eclipse, which object lies between Earth and the Sun
+Earth|During a lunar eclipse, which object lies between the Sun and the Moon
+Full Moon|At which phase is the Moon's near side fully illuminated as viewed from Earth
+Neap Tide|Tide with a small tidal range near first- or third-quarter moon
+Winter|In June, the Northern Hemisphere is tilted toward the Sun. What season generally occurs in southern Australia
+Earth rotation|Earth’s spin around its axis, producing the daily cycle of day and night.
+Axial tilt|Angle between a planet’s rotation axis and a line perpendicular to its orbital plane.
+Solar eclipse|Event in which the Moon passes between Earth and the Sun and blocks some sunlight.
+Lunar eclipse|Event in which Earth’s shadow falls on the Moon.
+Lunar phase|Apparent shape of the Moon’s sunlit portion as viewed from Earth.
+New moon|Lunar phase when the Moon is near the direction of the Sun in the sky.
+Orbital plane|Plane containing the path of an orbiting object.
+Synchronous rotation|Rotation in which an object’s spin period matches its orbital period.
+Spring tide|Tide with a large tidal range near new or full moon, when solar and lunar effects align.
+Tidal force|Difference in gravitational pull across an extended object, contributing to ocean tides.
+Rotation|Spin of an object around its axis.
+Orbit|Path of an object as it moves around another object under gravity.
+Star|Type of object is the Sun
+
+[science--earth-space-science--minerals-and-their-properties]
+Ordered Crystal Structure|Feature that is part of a mineral's introductory geological definition
+Resistance To Scratching|Measure of mineral hardness
+Mineral's Streak|The color of its powder
+Luster|Way light reflects from a mineral’s surface
+Cleavage|Tendency of a mineral to break along flat planes
+Fracture In Mineral Identification|Breakage that does not follow cleavage planes
+Diamond|Definition of the hardest reference mineral on the Mohs scale
+Rocks|A rock can consist of one or more minerals
+Lithosphere|Rigid outer layer of Earth made of the crust and uppermost mantle.
+Divergent|At which boundary do plates move apart
+Pangaea|Ancient supercontinent that included nearly all of Earth’s land.
+Past Each Other|At a transform boundary, plates mainly move in which way
+Subduction|One plate descending beneath another
+Few Centimeters Each Year|Way in which fast do most tectonic plates move
+Large Mountain Ranges|Commonly forms when two continental plates collide
+Volcanic Island Arc|Two oceanic plates converge, and one subducts. Which feature is likely nearby
+Rift Valley|Continental crust begins stretching and breaking along a divergent boundary. Which feature may develop
+Crust|Thin, outermost solid layer of Earth.
+Mantle|Thick layer of hot rock between Earth’s crust and core.
+Solid|Definition of the physical state of Earth's inner core
+
+[science--earth-space-science--weathering-erosion-and-deposition]
+Mechanical Weathering|Process that breaks rock into smaller pieces without changing its composition
+Abrasion|Wearing surfaces through scraping by moving particles
+Mass Wasting|Downslope movement of rock or soil under gravity
+River Delta|A sediment deposit where a river enters quieter water
+Deposition|Process that deposits wind-carried sand into dunes
+Soil|A mixture of mineral material, organic matter, water, air, and organisms
+Ice Wedging|A rock develops cracks after repeated wetting and freezing. Which mechanism best fits
+Delta|A river enters a lake and builds a fan-shaped deposit near its mouth. Which feature is developing
+Bare Field|Two similar fields lie on equal slopes. One retains crop cover; one is left bare. Which generally has greater erosion risk during heavy rain
+Gravity|Moves falling precipitation and downhill-flowing water
+Weather|Atmospheric conditions at a particular time and place
+Oceans|Reservoir contains most of Earth's water
+Dew Point|Term that describes the temperature at which cooling air reaches water-vapor saturation
+Transpiration|Loss of water vapor from plant surfaces, especially leaves.
+Precipitation|Water falling from clouds as rain, snow, or other forms
+Barometer|Instrument that measures atmospheric pressure
+Infiltration|Water entering the soil from the surface
+Sun|Supplies much of the energy that drives evaporation in the water cycle
+Differences In Atmospheric Pressure|Generally causes wind
+Evaporation|Change from liquid water to water vapor at a surface.
+
+[science--earth-space-science--earths-interior]
+Crust|Thin, outermost solid layer of Earth
+Mantle|Thick layer of hot rock between Earth’s crust and core
+Liquid|Definition of the physical state of Earth's outer core
+Solid|Definition of the physical state of Earth's inner core
+Asthenosphere|Weak, slowly flowing region of the upper mantle beneath the lithosphere
+Seismic-wave Behavior|Evidence that is central to investigating inaccessible deep Earth layers
+Lithosphere|Rigid outer layer of Earth made of the crust and uppermost mantle
+Radioactive Decay Of Elements|Provides a major continuing source of Earth's internal heat
+Divergent|At which boundary do plates move apart
+Pangaea|Ancient supercontinent that included nearly all of Earth’s land.
+Past Each Other|At a transform boundary, plates mainly move in which way
+Subduction|One plate descending beneath another
+Few Centimeters Each Year|Way in which fast do most tectonic plates move
+Large Mountain Ranges|Commonly forms when two continental plates collide
+Volcanic Island Arc|Two oceanic plates converge, and one subducts. Which feature is likely nearby
+Rift Valley|Continental crust begins stretching and breaking along a divergent boundary. Which feature may develop
+Rocks|A rock can consist of one or more minerals
+Igneous|Rock that type forms when magma or lava cools and solidifies
+Weathering|The breakdown of rock at or near Earth's surface
+Transport Of Weathered Material|Definition of erosion
+
+[science--earth-space-science--earthquakes-and-seismic-waves]
+Focus|The location where rupture begins inside Earth
+Earthquake's Epicenter|The surface point directly above its focus
+P Waves|Fast seismic waves that travel through solids and liquids
+S Waves|Seismic waves that travel through solids but not liquids
+Seismogram|A recorded trace of ground motion
+Earthquake Intensity|Shaking and effects at a particular location
+About 32 Times|A magnitude increase of one unit corresponds to roughly how much more released seismic energy
+Rocks|A rock can consist of one or more minerals
+Liquid|Definition of the physical state of Earth's outer core
+Lithosphere|Rigid outer layer of Earth made of the crust and uppermost mantle.
+Divergent|At which boundary do plates move apart
+Pangaea|Ancient supercontinent that included nearly all of Earth’s land.
+Past Each Other|At a transform boundary, plates mainly move in which way
+Subduction|One plate descending beneath another
+Few Centimeters Each Year|Way in which fast do most tectonic plates move
+Large Mountain Ranges|Commonly forms when two continental plates collide
+Volcanic Island Arc|Two oceanic plates converge, and one subducts. Which feature is likely nearby
+Rift Valley|Continental crust begins stretching and breaking along a divergent boundary. Which feature may develop
+Crust|Thin, outermost solid layer of Earth.
+Mantle|Thick layer of hot rock between Earth’s crust and core.
+
+[science--earth-space-science--volcanoes]
+Magma|Molten or partly molten rock beneath Earth’s surface
+Lava|Magma that reaches Earth’s surface
+Volcanic Ash|Small fragments of volcanic rock, minerals, and glass
+Volcanic Vent|An opening through which volcanic material is released
+Lahar|Fast-moving volcanic mudflow made of water and volcanic debris
+Pyroclastic Flow|Fast, hot flow of gas and volcanic fragments down a volcano
+Shield Volcano|A volcano produces widely spreading, relatively fluid basaltic lava. Which form is commonly associated with repeated such eruptions
+Mantle|Thick layer of hot rock between Earth’s crust and core.
+Lithosphere|Rigid outer layer of Earth made of the crust and uppermost mantle.
+Divergent|At which boundary do plates move apart
+Pangaea|Ancient supercontinent that included nearly all of Earth’s land.
+Past Each Other|At a transform boundary, plates mainly move in which way
+Subduction|One plate descending beneath another
+Few Centimeters Each Year|Way in which fast do most tectonic plates move
+Large Mountain Ranges|Commonly forms when two continental plates collide
+Volcanic Island Arc|Two oceanic plates converge, and one subducts. Which feature is likely nearby
+Rift Valley|Continental crust begins stretching and breaking along a divergent boundary. Which feature may develop
+Rocks|A rock can consist of one or more minerals
+Crust|Thin, outermost solid layer of Earth.
+Solid|Definition of the physical state of Earth's inner core
+
+[science--earth-space-science--geologic-time-and-fossils]
+Relative Dating|Method that determines whether rocks or events are older or younger
+Trace Fossil|Preserved evidence of an organism’s activity
+Unconformity|A surface representing missing geologic time
+Mesozoic|Geologic era includes most of the time non-avian dinosaurs lived
+Intrusion's Age|The intrusion is younger
+Rocks|A rock can consist of one or more minerals
+Sedimentary|In which rock type are fossils most commonly preserved
+Lithosphere|Rigid outer layer of Earth made of the crust and uppermost mantle.
+Divergent|At which boundary do plates move apart
+Pangaea|Ancient supercontinent that included nearly all of Earth’s land.
+Past Each Other|At a transform boundary, plates mainly move in which way
+Subduction|One plate descending beneath another
+Few Centimeters Each Year|Way in which fast do most tectonic plates move
+Large Mountain Ranges|Commonly forms when two continental plates collide
+Volcanic Island Arc|Two oceanic plates converge, and one subducts. Which feature is likely nearby
+Rift Valley|Continental crust begins stretching and breaking along a divergent boundary. Which feature may develop
+Crust|Thin, outermost solid layer of Earth.
+Mantle|Thick layer of hot rock between Earth’s crust and core.
+Solid|Definition of the physical state of Earth's inner core
+Igneous|Rock that type forms when magma or lava cools and solidifies
+
+[science--earth-space-science--atmosphere-and-air-pressure]
+Nitrogen|Gas that makes up the largest fraction of Earth's dry atmosphere
+Weight Of Overlying Air|Definition of atmospheric pressure primarily caused by
+Oxygen|Element whose gas is used in aerobic cellular respiration
+Troposphere|Lowest atmospheric layer, where most weather occurs
+Stratosphere|Atmospheric layer above the troposphere that contains the ozone layer
+Pressure Gradient|Change in pressure over a distance
+Humidity|Water vapor in the air
+Pressure-gradient Force|Drives horizontal air motion from pressure differences
+Earth's Rotation|Deflects its path through the Coriolis effect
+Higher Toward Lower Pressure|Two nearby areas differ in pressure. Ignoring rotation and friction, which way is air accelerated
+Daytime Sea Breeze|Warm air over land rises while cooler sea air moves inland at the surface. What circulation is described
+Sample With More Particles|Two air samples have the same temperature and volume, but one contains more gas particles. Which generally has greater pressure
+Weather|Atmospheric conditions at a particular time and place
+Oceans|Reservoir contains most of Earth's water
+Dew Point|Term that describes the temperature at which cooling air reaches water-vapor saturation
+Transpiration|Loss of water vapor from plant surfaces, especially leaves.
+Precipitation|Water falling from clouds as rain, snow, or other forms
+Barometer|Instrument that measures atmospheric pressure
+Infiltration|Water entering the soil from the surface
+Sun|Supplies much of the energy that drives evaporation in the water cycle
+
+[science--earth-space-science--climate-and-climate-change]
+Climate|Long-term patterns and averages of atmospheric conditions
+Natural Greenhouse Effect|Atmospheric gases absorb and emit infrared radiation, warming the surface and lower atmosphere
+Carbon Dioxide|Gas that is a greenhouse gas
+Albedo|Fraction of incoming radiation reflected by a surface
+Climate Proxy|Indirect evidence of past climate
+Climate Mitigation|Actions that reduce greenhouse-gas emissions or increase their removal
+Melting Land-based Ice|Adds water to the ocean
+Climate Adaptation|Actions that reduce harm from actual or expected climate effects
+Weather|Atmospheric conditions at a particular time and place
+Oceans|Reservoir contains most of Earth's water
+Dew Point|Term that describes the temperature at which cooling air reaches water-vapor saturation
+Transpiration|Loss of water vapor from plant surfaces, especially leaves.
+Precipitation|Water falling from clouds as rain, snow, or other forms
+Barometer|Instrument that measures atmospheric pressure
+Infiltration|Water entering the soil from the surface
+Sun|Supplies much of the energy that drives evaporation in the water cycle
+Gravity|Moves falling precipitation and downhill-flowing water
+Differences In Atmospheric Pressure|Generally causes wind
+Evaporation|Change from liquid water to water vapor at a surface.
+Soil|A mixture of mineral material, organic matter, water, air, and organisms
+
+[science--earth-space-science--ocean-currents-and-tides]
+Directed Movement Of Seawater|Definition of an ocean current
+Tidal Range|Difference in height between high tide and low tide
+Spring Tide|Tides with relatively large ranges when Sun, Earth, and Moon align
+Neap Tide|Tide with a small tidal range near first- or third-quarter moon
+Upwelling|Rise of deeper, nutrient-rich water toward the ocean surface
+Increased Phytoplankton Growth|Nutrient-rich deep water reaches a sunny surface region. What response is plausible if other conditions are suitable
+Coriolis effect|Apparent deflection of moving air or water due to Earth’s rotation.
+Salinity|Measure of the amount of dissolved salts in water.
+Thermohaline circulation|Large-scale ocean circulation driven by water-density differences related to temperature and salinity.
+Surface current|Ocean flow mainly in the upper layer, often driven by winds.
+Deep current|Ocean flow below the surface associated with density differences.
+Groundwater|Water within connected pores and fractures below the water table
+Water table|Upper surface of the saturated groundwater zone.
+Aquifer|Permeable geologic unit that stores and transmits groundwater.
+Groundwater recharge|Water entering and replenishing an aquifer.
+Permeability|Ability of a material to allow fluids to pass through connected spaces.
+Drainage divide|High land that separates neighboring watersheds.
+More Rapid Surface Runoff|A watershed loses vegetation and gains extensive pavement. What change is generally expected after a storm
+Porosity|Fraction of a material’s volume made up of open spaces.
+Watershed|Area of land that drains water to a common outlet.
+
+[science--earth-space-science--groundwater-and-watersheds]
+Groundwater|Water within connected pores and fractures below the water table
+Water Table|Upper surface of the saturated groundwater zone
+Aquifer|Permeable geologic unit that stores and transmits groundwater
+Groundwater Recharge|Water entering and replenishing an aquifer
+Permeability|Ability of a material to allow fluids to pass through connected spaces
+Drainage Divide|High land that separates neighboring watersheds
+More Rapid Surface Runoff|A watershed loses vegetation and gains extensive pavement. What change is generally expected after a storm
+Porosity|Fraction of a material’s volume made up of open spaces.
+Watershed|Area of land that drains water to a common outlet.
+Infiltration|Movement of water from the ground surface into soil or rock.
+Runoff|Water that flows over land toward streams or other drainage.
+Base flow|Streamflow supplied mainly by groundwater between precipitation events.
+Groundwater discharge|Movement of groundwater into streams, springs, or other surface waters.
+Directed Movement Of Seawater|Definition of an ocean current
+Tidal range|Difference in height between high tide and low tide.
+Spring tide|Tide with a large tidal range near new or full moon.
+Neap tide|Tide with a small tidal range near first- or third-quarter moon.
+Upwelling|Rise of deeper, nutrient-rich water toward the ocean surface.
+Increased Phytoplankton Growth|Nutrient-rich deep water reaches a sunny surface region. What response is plausible if other conditions are suitable
+Coriolis effect|Apparent deflection of moving air or water due to Earth’s rotation.
+
+[science--earth-space-science--earths-history]
+Earth’s Age|Approximate age of Earth based on radiometric dating
+Accretion|Growth of a body as smaller particles collide and combine
+Planetary Differentiation|Separation of planetary material into layers with different properties
+Cyanobacteria|Photosynthetic bacteria that contributed to oxygen in Earth’s early atmosphere
+Cenozoic Era|Geologic era following the Mesozoic and continuing to the present
+Mesozoic Era|Geologic era associated with the dominance of non-avian dinosaurs
+Mass Extinction|Geologically rapid loss of many species across the world
+Pangaea|Ancient supercontinent that included nearly all of Earth’s land.
+Rocks|A rock can consist of one or more minerals
+Solid|Definition of the physical state of Earth's inner core
+Mesozoic|Geologic era includes most of the time non-avian dinosaurs lived
+Exposure|Presence of people or assets where a hazard could occur.
+Lithosphere|Rigid outer layer of Earth made of the crust and uppermost mantle.
+Divergent|At which boundary do plates move apart
+Past Each Other|At a transform boundary, plates mainly move in which way
+Subduction|One plate descending beneath another
+Few Centimeters Each Year|Way in which fast do most tectonic plates move
+Large Mountain Ranges|Commonly forms when two continental plates collide
+Volcanic Island Arc|Two oceanic plates converge, and one subducts. Which feature is likely nearby
+Rift Valley|Continental crust begins stretching and breaking along a divergent boundary. Which feature may develop
+
+[science--earth-space-science--stars-and-stellar-life-cycles]
+Protostar|Early stage in star formation before sustained hydrogen fusion begins
+Luminosity|Total energy emitted by a star per unit time
+White Dwarf|A dense stellar remnant that gradually cools
+Core-collapse Supernova|An explosion associated with collapse of a massive star's core
+Main sequence|Long-lived stellar stage when a star fuses hydrogen in its core.
+Hydrogen fusion|Nuclear process that combines hydrogen nuclei to form helium and release energy.
+Stellar mass|Amount of matter in a star, a major factor in its evolution.
+Red giant|Expanded late stage of a lower- or intermediate-mass star.
+Planetary nebula|Expelled gas surrounding the remnant of a lower-mass star.
+Neutron star|Extremely dense remnant that can form after a massive stellar core collapses.
+Black hole|Region where gravity is so strong that light cannot escape from within its event horizon.
+Stellar remnant|Compact object left after a star sheds or collapses its outer layers.
+Gravitational collapse|Contraction of matter under its own gravitational attraction.
+Nuclear fuel|Material in a star that can release energy through nuclear reactions.
+Red supergiant|Very large, cool late stage of a massive star.
+Star cluster|Group of stars held near one another by gravity.
+Core collapse|Rapid inward contraction of a massive star’s core.
+Hydrostatic equilibrium|Balance between inward gravity and outward pressure in a stable star.
+Stellar evolution|Changes in a star’s structure and energy production over its lifetime.
+Stellar nucleosynthesis|Formation of atomic nuclei within stars through nuclear reactions.
+
+[science--earth-space-science--galaxies-and-the-universe]
+Galaxy|A gravitationally bound system of stars, gas, dust, and dark matter
+Barred Spiral Galaxy|Spiral galaxy whose arms extend from a central bar-shaped region
+Distance|Measure of a light-year
+Galaxy Cluster|A group of galaxies bound by gravity
+Cosmological Redshift|Increase in observed wavelength associated with the expansion of space
+Cosmic Microwave Background|Radiation left from the early universe and observed across the sky
+Dark Matter|Matter inferred from gravitational effects but not observed through emitted light
+Big Bang Model|Evolution from an early hot, dense universe that has expanded
+Observation|Information gathered with senses or scientific instruments
+Large-scale Expansion Of Space|Two galaxies lie far outside our local gravitational group. The farther one has greater redshift. Which model is this consistent with
+Light-year|Distance light travels in one year.
+Dark energy|Name for the component associated with the observed accelerated expansion of the universe.
+Cosmic expansion|Increase in large-scale distances between unbound regions of the universe.
+Redshift|Shift of spectral features toward longer wavelengths.
+Constellation|Recognized pattern of stars on the sky; its stars need not be near each other.
+Gravitational lensing|Bending of light by gravity that can reveal mass along its path.
+Galaxy rotation curve|Graph of orbital speed versus distance from a galaxy’s center.
+Observable universe|Region of the universe from which light has had time to reach an observer.
+Spectral line|Wavelength-specific feature used to study an object’s composition and motion.
+Expansion of space|Increase in distances among far-separated regions of the universe.
+
+[science--earth-space-science--space-observation-and-exploration]
+Space Probe|An uncrewed spacecraft that collects information
+Remote Sensing|Collecting information about an object without direct contact
+Radio Waves|Electromagnetic waves are detected by a radio telescope
+Angular Resolution|Ability to distinguish objects close together in apparent angle
+Telescope|Instrument that collects electromagnetic radiation from distant objects.
+Collecting area|Area that gathers incoming light for an optical telescope.
+Spectroscope|Instrument that separates light into its component wavelengths.
+Spectral line|Feature at a particular wavelength that can reveal an element or motion.
+Rover|Robotic vehicle designed to move across a planetary surface.
+Radio telescope|Instrument that detects radio waves from astronomical objects.
+Infrared radiation|Electromagnetic radiation with wavelengths longer than visible light.
+Atmospheric absorption|Removal of some wavelengths of radiation as they pass through an atmosphere.
+Calibration|Comparison with known inputs to interpret an instrument’s readings.
+Space communication delay|Time required for a signal to travel between Earth and a spacecraft.
+Detector artifact|Instrument-produced feature that can be mistaken for a real observation.
+Repeated observation|Additional measurement used to test whether a result is consistent.
+Spacecraft|Vehicle designed to travel or operate in space.
+Orbiter|Spacecraft that travels around a planet or other celestial body.
+Mission control|Team and facility that plan and monitor spacecraft operations.
+Wavelength band|Range of electromagnetic wavelengths measured by an instrument.
+
+[science--earth-space-science--natural-hazards]
+Natural Hazard|Natural process that has the potential to cause harm
+Exposure|Presence of people or assets where a hazard could occur
+Vulnerability|Susceptibility to harm when exposed to a hazard
+Landslide|Downslope movement of rock, soil, or debris
+Storm Surge|A storm-driven rise of seawater above the predicted tide
+Hazard Mitigation|Action that reduces potential harm from a hazard
+Preparedness|process plans before an event; response acts during or after it
+Lahar|Fast-moving volcanic mudflow made of water and volcanic debris.
+Lithosphere|Rigid outer layer of Earth made of the crust and uppermost mantle.
+Divergent|At which boundary do plates move apart
+Pangaea|Ancient supercontinent that included nearly all of Earth’s land.
+Past Each Other|At a transform boundary, plates mainly move in which way
+Subduction|One plate descending beneath another
+Few Centimeters Each Year|Way in which fast do most tectonic plates move
+Large Mountain Ranges|Commonly forms when two continental plates collide
+Volcanic Island Arc|Two oceanic plates converge, and one subducts. Which feature is likely nearby
+Rift Valley|Continental crust begins stretching and breaking along a divergent boundary. Which feature may develop
+Rocks|A rock can consist of one or more minerals
+Crust|Thin, outermost solid layer of Earth.
+Mantle|Thick layer of hot rock between Earth’s crust and core.

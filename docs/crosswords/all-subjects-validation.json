@@ -1,12 +1,12 @@
 {
   "status": "passed",
-  "topics": 101,
-  "packages": 101,
-  "pdfs": 404,
-  "previews": 303,
-  "pdfPages": 1212,
-  "minimumCellPoints": 13.71,
-  "maximumThumbnailBytes": 34628,
+  "topics": 202,
+  "packages": 202,
+  "pdfs": 808,
+  "previews": 606,
+  "pdfPages": 2424,
+  "minimumCellPoints": 12.0,
+  "maximumThumbnailBytes": 36494,
   "checks": [
     "cumulative 10/15/20 vocabulary",
     "unique answers and nonblank clues",
@@ -26,6 +26,7 @@
   ],
   "subjects": [
     "Social Studies",
-    "English Language Arts"
+    "English Language Arts",
+    "Science"
   ]
 }

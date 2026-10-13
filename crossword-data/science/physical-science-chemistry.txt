@@ -1,0 +1,439 @@
+[science--physical-science-chemistry--atomic-structure]
+Proton|Subatomic particle that carries a positive electric charge
+Neutron|Subatomic particle that has no electric charge
+Nucleus|Membrane-bound organelle that contains most eukaryotic DNA.
+Ion|Atom or group of atoms with a net electric charge
+Electrical Neutrality|The positive and negative charges balance
+Electron Cloud|Electron locations are described by regions of probability
+Group|Definition of a vertical column of the periodic table called
+Element|Pure substance made of only one type of atom.
+Electron|Definition of a beta-minus particle emitted in nuclear decay
+Carbon|Element that forms the backbone of most organic molecules
+Atomic number|Number of protons in an atom’s nucleus.
+Halogens|Group that includes fluorine, chlorine, and bromine
+Noble Gases|Group that includes helium, neon, and argon
+Atomic radius|Measure related to the size of an atom.
+Ionization Energy|Energy required to remove an electron from a gaseous atom or ion
+Metalloids|Have some properties associated with each group
+Metal|An unfamiliar element readily conducts electricity and can be hammered into a sheet. Which classification best fits
+Attraction Between Electric Charges|Holds oppositely charged ions together in an ionic solid
+Covalent Bond|Sharing of electron pairs between atoms
+Molecule|A discrete group of atoms held together by covalent bonds
+
+[science--physical-science-chemistry--periodic-table-and-trends]
+Atomic Number|Number of protons in an atom’s nucleus
+Group|Definition of a vertical column of the periodic table called
+Halogens|Group that includes fluorine, chlorine, and bromine
+Noble Gases|Group that includes helium, neon, and argon
+Atomic Radius|Increases as additional occupied electron shells are added
+Ionization Energy|Energy required to remove an electron from a gaseous atom or ion
+Metalloids|Have some properties associated with each group
+Metal|An unfamiliar element readily conducts electricity and can be hammered into a sheet. Which classification best fits
+Proton|Subatomic particle that carries a positive electric charge
+Nucleus|Membrane-bound organelle that contains most eukaryotic DNA.
+Ion|Atom or group of atoms with a net electric charge.
+Element|Pure substance made of only one type of atom.
+Electron|Definition of a beta-minus particle emitted in nuclear decay
+Neutron|Subatomic particle that has no electric charge
+Electrical neutrality|Condition in which positive and negative charges balance.
+Electron Cloud|Electron locations are described by regions of probability
+Carbon|Element that forms the backbone of most organic molecules
+Attraction Between Electric Charges|Holds oppositely charged ions together in an ionic solid
+Covalent Bond|Sharing of electron pairs between atoms
+Molecule|A discrete group of atoms held together by covalent bonds
+
+[science--physical-science-chemistry--chemical-bonding]
+Attraction Between Electric Charges|Holds oppositely charged ions together in an ionic solid
+Covalent Bond|Sharing of electron pairs between atoms
+Molecule|A discrete group of atoms held together by covalent bonds
+Metallic Bond|Delocalized electrons associated with many metal atoms
+Neutron|Subatomic particle that has no electric charge
+Group|Definition of a vertical column of the periodic table called
+Electron|Definition of a beta-minus particle emitted in nuclear decay
+Metal|An unfamiliar element readily conducts electricity and can be hammered into a sheet. Which classification best fits
+Solid|State generally has a fixed volume and a fixed shape
+Melting|Phase change in which a solid becomes a liquid.
+Compound|Pure substance made of two or more elements chemically combined.
+NaCl|Definition of the formula for sodium chloride
+Proton|Subatomic particle that carries a positive electric charge
+Nucleus|Membrane-bound organelle that contains most eukaryotic DNA.
+Ion|Atom or group of atoms with a net electric charge.
+Electrical neutrality|Condition in which positive and negative charges balance.
+Electron Cloud|Electron locations are described by regions of probability
+Element|Pure substance made of only one type of atom.
+Carbon|Element that forms the backbone of most organic molecules
+Atomic number|Number of protons in an atom’s nucleus.
+
+[science--physical-science-chemistry--chemical-reactions]
+Reactants|Substances present before and consumed in a reaction
+Products|Substances formed by a chemical reaction
+Conservation Of Atoms|Chemical reactions rearrange atoms without creating or destroying them
+Coefficient|The relative number of particles or moles represented
+Precipitate|An insoluble solid formed from a solution during a reaction
+Exothermic Reaction|A reaction that transfers net energy to its surroundings
+Catalyst|A substance that speeds a reaction without being consumed overall
+Closed System|Retains the matter involved in the reaction
+Main Problem|The student has changed the chemical identity of the product
+Solid|State generally has a fixed volume and a fixed shape
+Liquid|State generally has a fixed volume but takes the shape of its container
+Boiling|process forms vapor bubbles throughout the liquid under suitable conditions
+Solution|Homogeneous mixture in which a solute is dispersed in a solvent.
+Coefficients|Numbers are adjusted when balancing an equation without changing substances
+Proton|Subatomic particle that carries a positive electric charge
+Neutron|Subatomic particle that has no electric charge
+Nucleus|Membrane-bound organelle that contains most eukaryotic DNA.
+Ion|Atom or group of atoms with a net electric charge.
+Electrical neutrality|Condition in which positive and negative charges balance.
+Electron Cloud|Electron locations are described by regions of probability
+
+[science--physical-science-chemistry--states-of-matter]
+Solid|State generally has a fixed volume and a fixed shape
+Liquid|State generally has a fixed volume but takes the shape of its container
+Melting|Phase change in which a solid becomes a liquid
+Condensation|Phase change in which a gas becomes a liquid
+Sublimation|Phase change in which a solid becomes a gas without becoming liquid first
+Evaporation|Change from liquid water to water vapor at a surface
+Plasma|A state with substantial ionization and mobile charged particles
+Boiling|process forms vapor bubbles throughout the liquid under suitable conditions
+Proton|Subatomic particle that carries a positive electric charge
+Neutron|Subatomic particle that has no electric charge
+Nucleus|Membrane-bound organelle that contains most eukaryotic DNA.
+Ion|Atom or group of atoms with a net electric charge.
+Electrical neutrality|Condition in which positive and negative charges balance.
+Electron Cloud|Electron locations are described by regions of probability
+Group|Definition of a vertical column of the periodic table called
+Element|Pure substance made of only one type of atom.
+Electron|Definition of a beta-minus particle emitted in nuclear decay
+Carbon|Element that forms the backbone of most organic molecules
+Atomic number|Number of protons in an atom’s nucleus.
+Halogens|Group that includes fluorine, chlorine, and bromine
+
+[science--physical-science-chemistry--matter-properties-and-changes]
+Density|Property that is independent of sample amount
+Intensive Property|Property that does not depend on the amount of a sample
+Solid|State generally has a fixed volume and a fixed shape
+Melting|Phase change in which a solid becomes a liquid.
+Liquid|State generally has a fixed volume but takes the shape of its container
+Proton|Subatomic particle that carries a positive electric charge
+Neutron|Subatomic particle that has no electric charge
+Nucleus|Membrane-bound organelle that contains most eukaryotic DNA.
+Ion|Atom or group of atoms with a net electric charge.
+Electrical neutrality|Condition in which positive and negative charges balance.
+Electron Cloud|Electron locations are described by regions of probability
+Group|Definition of a vertical column of the periodic table called
+Element|Pure substance made of only one type of atom.
+Electron|Definition of a beta-minus particle emitted in nuclear decay
+Carbon|Element that forms the backbone of most organic molecules
+Atomic number|Number of protons in an atom’s nucleus.
+Halogens|Group that includes fluorine, chlorine, and bromine
+Noble Gases|Group that includes helium, neon, and argon
+Atomic radius|Measure related to the size of an atom.
+Ionization Energy|Energy required to remove an electron from a gaseous atom or ion
+
+[science--physical-science-chemistry--elements-compounds-and-mixtures]
+Element|A substance whose atoms have one proton number
+Compound|A substance containing elements chemically combined in fixed proportions
+Mixture|Two or more substances combined without a fixed chemical composition
+Solution|Homogeneous mixture in which a solute is dispersed in a solvent
+Mixture's Composition|A mixture can vary in component proportions; a compound has a fixed composition
+Proton|Subatomic particle that carries a positive electric charge
+Liquid|State generally has a fixed volume but takes the shape of its container
+Condensation|Change from water vapor to liquid droplets.
+Filtration|Method that separates solid particles from a fluid using a barrier.
+Distillation|Separation method based on differences in boiling points.
+Neutron|Subatomic particle that has no electric charge
+Nucleus|Membrane-bound organelle that contains most eukaryotic DNA.
+Ion|Atom or group of atoms with a net electric charge.
+Electrical neutrality|Condition in which positive and negative charges balance.
+Electron Cloud|Electron locations are described by regions of probability
+Group|Definition of a vertical column of the periodic table called
+Electron|Definition of a beta-minus particle emitted in nuclear decay
+Carbon|Element that forms the backbone of most organic molecules
+Atomic number|Number of protons in an atom’s nucleus.
+Halogens|Group that includes fluorine, chlorine, and bromine
+
+[science--physical-science-chemistry--chemical-formulas-and-naming]
+Subscript 2 In H₂O|Two hydrogen atoms per molecule
+Coefficient|Three carbon dioxide molecules or three moles, depending on scale
+NaCl|Definition of the formula for sodium chloride
+Carbon Dioxide|Name corresponds to CO₂
+Polyatomic Ion|A bonded group of atoms with a net charge
+Hydroxide|Ion that is represented by OH⁻
+Electrical Neutrality|The compound's overall positive and negative charges balance
+FeCl₂|Contain iron ions with different charges
+Ca(NO₃)₂|Formula balances Ca²⁺ with NO₃⁻ ions
+Dinitrogen Pentoxide|Name correctly describes N₂O₅
+Al₂O₃|Formula represents aluminum oxide from Al³⁺ and O²⁻
+Ion|Atom or group of atoms with a net electric charge.
+Group|Definition of a vertical column of the periodic table called
+Carbon|Element that forms the backbone of most organic molecules
+Molecule|A discrete group of atoms held together by covalent bonds
+Compound|Pure substance made of two or more elements chemically combined.
+Proton|Subatomic particle that carries a positive electric charge
+Neutron|Subatomic particle that has no electric charge
+Nucleus|Membrane-bound organelle that contains most eukaryotic DNA.
+Electron Cloud|Electron locations are described by regions of probability
+
+[science--physical-science-chemistry--balancing-equations]
+Atom Count|The number of atoms of each element
+Coefficients|Numbers are adjusted when balancing an equation without changing substances
+Coefficient Ratio|Relative reacting or produced amounts in particles or moles
+Element|Pure substance made of only one type of atom.
+Reactants|Substances present before and consumed in a reaction
+Products|Substances formed by a chemical reaction
+Coefficient|Number placed before a formula to show the amount of a substance.
+Proton|Subatomic particle that carries a positive electric charge
+Neutron|Subatomic particle that has no electric charge
+Nucleus|Membrane-bound organelle that contains most eukaryotic DNA.
+Ion|Atom or group of atoms with a net electric charge.
+Electrical neutrality|Condition in which positive and negative charges balance.
+Electron Cloud|Electron locations are described by regions of probability
+Group|Definition of a vertical column of the periodic table called
+Electron|Definition of a beta-minus particle emitted in nuclear decay
+Carbon|Element that forms the backbone of most organic molecules
+Atomic number|Number of protons in an atom’s nucleus.
+Halogens|Group that includes fluorine, chlorine, and bromine
+Noble Gases|Group that includes helium, neon, and argon
+Atomic radius|Measure related to the size of an atom.
+
+[science--physical-science-chemistry--moles-and-stoichiometry]
+Molar Mass|Mass per mole of a substance
+G/mol|Unit that commonly expresses molar mass
+Limiting Reactant|The reactant that restricts the maximum product amount
+Theoretical Yield|The maximum product predicted from the reaction stoichiometry
+Percent Yield|Actual yield divided by theoretical yield, multiplied by 100
+Mole Calculation|Amount of substance found by dividing mass by molar mass
+Coefficients|Numbers are adjusted when balancing an equation without changing substances
+Mixture|Two or more substances combined without a fixed chemical composition
+Proton|Subatomic particle that carries a positive electric charge
+Neutron|Subatomic particle that has no electric charge
+Nucleus|Membrane-bound organelle that contains most eukaryotic DNA.
+Ion|Atom or group of atoms with a net electric charge.
+Electrical neutrality|Condition in which positive and negative charges balance.
+Electron Cloud|Electron locations are described by regions of probability
+Group|Definition of a vertical column of the periodic table called
+Element|Pure substance made of only one type of atom.
+Electron|Definition of a beta-minus particle emitted in nuclear decay
+Carbon|Element that forms the backbone of most organic molecules
+Atomic number|Number of protons in an atom’s nucleus.
+Halogens|Group that includes fluorine, chlorine, and bromine
+
+[science--physical-science-chemistry--solutions-and-solubility]
+Solution|A mixture uniform at the particle level
+Solubility|The maximum amount that can dissolve under specified conditions
+Unsaturated Solution|One that can dissolve additional solute under the same conditions
+Adding More Solvent|Concentration decreases
+Solid|State generally has a fixed volume and a fixed shape
+Liquid|State generally has a fixed volume but takes the shape of its container
+Mixture|Two or more substances combined without a fixed chemical composition
+Proton|Subatomic particle that carries a positive electric charge
+Neutron|Subatomic particle that has no electric charge
+Nucleus|Membrane-bound organelle that contains most eukaryotic DNA.
+Ion|Atom or group of atoms with a net electric charge.
+Electrical neutrality|Condition in which positive and negative charges balance.
+Electron Cloud|Electron locations are described by regions of probability
+Group|Definition of a vertical column of the periodic table called
+Element|Pure substance made of only one type of atom.
+Electron|Definition of a beta-minus particle emitted in nuclear decay
+Carbon|Element that forms the backbone of most organic molecules
+Atomic number|Number of protons in an atom’s nucleus.
+Halogens|Group that includes fluorine, chlorine, and bromine
+Noble Gases|Group that includes helium, neon, and argon
+
+[science--physical-science-chemistry--acids-bases-and-ph]
+Brønsted–Lowry Acid|Particle that donates a proton in an acid–base reaction
+Brønsted–Lowry Base|Particle that accepts a proton in an acid–base reaction
+Acid–base Indicator|Changes color over a particular pH range
+Base|A reaction transfers H+ from molecule X to molecule Y. Which role does Y play
+Proton|Subatomic particle that carries a positive electric charge
+Ion|Atom or group of atoms with a net electric charge.
+Molecule|A discrete group of atoms held together by covalent bonds
+Solution|Homogeneous mixture in which a solute is dispersed in a solvent.
+Hydroxide|Ion that is represented by OH⁻
+Neutron|Subatomic particle that has no electric charge
+Nucleus|Membrane-bound organelle that contains most eukaryotic DNA.
+Electrical neutrality|Condition in which positive and negative charges balance.
+Electron Cloud|Electron locations are described by regions of probability
+Group|Definition of a vertical column of the periodic table called
+Element|Pure substance made of only one type of atom.
+Electron|Definition of a beta-minus particle emitted in nuclear decay
+Carbon|Element that forms the backbone of most organic molecules
+Atomic number|Number of protons in an atom’s nucleus.
+Halogens|Group that includes fluorine, chlorine, and bromine
+Noble Gases|Group that includes helium, neon, and argon
+
+[science--physical-science-chemistry--reaction-rates]
+Activation Energy|The energy barrier for a reaction pathway
+Reaction Inhibitor|A substance that reduces a reaction's rate
+Reaction Rate|Change in concentration per unit time
+Solid|State generally has a fixed volume and a fixed shape
+Reactants|Substances present before and consumed in a reaction
+Products|Substances formed by a chemical reaction
+Catalyst|A substance that speeds a reaction without being consumed overall
+Solution|Homogeneous mixture in which a solute is dispersed in a solvent.
+Proton|Subatomic particle that carries a positive electric charge
+Neutron|Subatomic particle that has no electric charge
+Nucleus|Membrane-bound organelle that contains most eukaryotic DNA.
+Ion|Atom or group of atoms with a net electric charge.
+Electrical neutrality|Condition in which positive and negative charges balance.
+Electron Cloud|Electron locations are described by regions of probability
+Group|Definition of a vertical column of the periodic table called
+Element|Pure substance made of only one type of atom.
+Electron|Definition of a beta-minus particle emitted in nuclear decay
+Carbon|Element that forms the backbone of most organic molecules
+Atomic number|Number of protons in an atom’s nucleus.
+Halogens|Group that includes fluorine, chlorine, and bromine
+
+[science--physical-science-chemistry--chemical-equilibrium]
+Dynamic Equilibrium|Forward and reverse reaction rates are equal
+Reversible Reaction|One that can proceed in both directions under suitable conditions
+Changing Temperature|For a fixed reaction, what change can alter its equilibrium constant
+Closed Reaction Vessel|System that can maintain chemical equilibrium without material escaping
+Adding A Catalyst|Speeds both directions without shifting equilibrium composition
+Equilibrium Constant|Adding reactant changes the concentrations, but temperature stays fixed. What remains unchanged for that reaction
+Molecule|A discrete group of atoms held together by covalent bonds
+Reactants|Substances present before and consumed in a reaction
+Products|Substances formed by a chemical reaction
+Catalyst|A substance that speeds a reaction without being consumed overall
+Mixture|Two or more substances combined without a fixed chemical composition
+Proton|Subatomic particle that carries a positive electric charge
+Neutron|Subatomic particle that has no electric charge
+Nucleus|Membrane-bound organelle that contains most eukaryotic DNA.
+Ion|Atom or group of atoms with a net electric charge.
+Electrical neutrality|Condition in which positive and negative charges balance.
+Electron Cloud|Electron locations are described by regions of probability
+Group|Definition of a vertical column of the periodic table called
+Element|Pure substance made of only one type of atom.
+Electron|Definition of a beta-minus particle emitted in nuclear decay
+
+[science--physical-science-chemistry--thermochemistry]
+Thermochemistry|Energy changes accompanying chemical processes
+Exothermic Process|A process that releases heat to its surroundings
+Endothermic Process|A process that absorbs heat from its surroundings
+Calorimeter|Instrument is used to measure heat transfer in a process
+Specific Heat Capacity|Energy required to raise the temperature of a unit mass by one degree
+Melting|Phase change in which a solid becomes a liquid.
+Reactants|Substances present before and consumed in a reaction
+Products|Substances formed by a chemical reaction
+Solution|Homogeneous mixture in which a solute is dispersed in a solvent.
+Proton|Subatomic particle that carries a positive electric charge
+Neutron|Subatomic particle that has no electric charge
+Nucleus|Membrane-bound organelle that contains most eukaryotic DNA.
+Ion|Atom or group of atoms with a net electric charge.
+Electrical neutrality|Condition in which positive and negative charges balance.
+Electron Cloud|Electron locations are described by regions of probability
+Group|Definition of a vertical column of the periodic table called
+Element|Pure substance made of only one type of atom.
+Electron|Definition of a beta-minus particle emitted in nuclear decay
+Carbon|Element that forms the backbone of most organic molecules
+Atomic number|Number of protons in an atom’s nucleus.
+
+[science--physical-science-chemistry--gas-laws]
+Kelvin|SI base unit for thermodynamic temperature
+Boyle.s Law|For a fixed amount of gas at constant temperature, pressure and volume vary inversely.
+Charles.s Law|Volume and kelvin temperature
+Symbol N|Amount of gas in moles
+Gas's Partial Pressure|The pressure contribution from that gas in a mixture
+Mixture|Two or more substances combined without a fixed chemical composition
+Proton|Subatomic particle that carries a positive electric charge
+Neutron|Subatomic particle that has no electric charge
+Nucleus|Membrane-bound organelle that contains most eukaryotic DNA.
+Ion|Atom or group of atoms with a net electric charge.
+Electrical neutrality|Condition in which positive and negative charges balance.
+Electron Cloud|Electron locations are described by regions of probability
+Group|Definition of a vertical column of the periodic table called
+Element|Pure substance made of only one type of atom.
+Electron|Definition of a beta-minus particle emitted in nuclear decay
+Carbon|Element that forms the backbone of most organic molecules
+Atomic number|Number of protons in an atom’s nucleus.
+Halogens|Group that includes fluorine, chlorine, and bromine
+Noble Gases|Group that includes helium, neon, and argon
+Atomic radius|Measure related to the size of an atom.
+
+[science--physical-science-chemistry--nuclear-chemistry]
+Nucleus|Protons and neutrons
+Isotopes Of One Element|Have different numbers of neutrons
+Radioactive Decay|Spontaneous change of an unstable nucleus
+Alpha Particle|Nuclear emission containing two protons and two neutrons
+Electron|Definition of a beta-minus particle emitted in nuclear decay
+Gamma Radiation|High-energy electromagnetic radiation emitted during some nuclear changes
+Half-life|Time for half the undecayed nuclei in a large sample to decay on average
+Nuclear Fission|Splitting of a large nucleus into smaller nuclei
+Identity Of Atomic Nuclei|Remains unchanged during an ordinary chemical reaction but may change in a nuclear reaction
+Nuclear Fusion|Joining of small nuclei to form a larger nucleus
+Proton|Subatomic particle that carries a positive electric charge
+Neutron|Subatomic particle that has no electric charge
+Element|Pure substance made of only one type of atom.
+Ion|Atom or group of atoms with a net electric charge.
+Electrical neutrality|Condition in which positive and negative charges balance.
+Electron Cloud|Electron locations are described by regions of probability
+Group|Definition of a vertical column of the periodic table called
+Carbon|Element that forms the backbone of most organic molecules
+Atomic number|Number of protons in an atom’s nucleus.
+Halogens|Group that includes fluorine, chlorine, and bromine
+
+[science--physical-science-chemistry--organic-chemistry-fundamentals]
+Carbon|Element that forms the backbone of most organic molecules
+Four|Way in which many covalent bonds does a neutral carbon atom usually form in introductory organic structures
+Hydrocarbon|Organic compound containing only carbon and hydrogen
+Alkene|An process has a carbon-carbon double bond
+Structural Isomers|Compounds with the same molecular formula but different atom connections
+Polymer|A large molecule made from many linked smaller units
+Carboxylic Acid|Organic compound containing a carboxyl functional group
+Alkynes|A molecule has two carbons connected by a triple bond. Which family includes it
+Group|Definition of a vertical column of the periodic table called
+Element|Pure substance made of only one type of atom.
+Molecule|A discrete group of atoms held together by covalent bonds
+Compound|Pure substance made of two or more elements chemically combined.
+Products|Substances formed by a chemical reaction
+Proton|Subatomic particle that carries a positive electric charge
+Neutron|Subatomic particle that has no electric charge
+Nucleus|Membrane-bound organelle that contains most eukaryotic DNA.
+Ion|Atom or group of atoms with a net electric charge.
+Electrical neutrality|Condition in which positive and negative charges balance.
+Electron Cloud|Electron locations are described by regions of probability
+Electron|Definition of a beta-minus particle emitted in nuclear decay
+
+[science--physical-science-chemistry--separation-techniques]
+Filtration|Method that separates solid particles from a fluid using a barrier
+Distillation|Separation method based on differences in boiling points
+Decanting|Separation method that pours liquid away from settled solids
+Sieving|Separation method that sorts solid particles by size
+Residue|Definition of the material left on filter paper commonly called
+Separating Mixtures|Mixture separation can preserve substances' chemical identities
+Careful Decanting|An insoluble solid settles beneath water. Which simple method can remove most of the water without filtering
+Solid|State generally has a fixed volume and a fixed shape
+Liquid|State generally has a fixed volume but takes the shape of its container
+Boiling|process forms vapor bubbles throughout the liquid under suitable conditions
+Solution|Homogeneous mixture in which a solute is dispersed in a solvent.
+Condensation|Change from water vapor to liquid droplets.
+Mixture|Two or more substances combined without a fixed chemical composition
+Solubility|The maximum amount that can dissolve under specified conditions
+Proton|Subatomic particle that carries a positive electric charge
+Neutron|Subatomic particle that has no electric charge
+Nucleus|Membrane-bound organelle that contains most eukaryotic DNA.
+Ion|Atom or group of atoms with a net electric charge.
+Electrical neutrality|Condition in which positive and negative charges balance.
+Electron Cloud|Electron locations are described by regions of probability
+
+[science--physical-science-chemistry--oxidation-and-reduction]
+Oxidizing Agent|Reactant that accepts electrons and causes another reactant to be oxidized
+Reducing Agent|Reactant that donates electrons and causes another reactant to be reduced
+Galvanic Cell|A spontaneous redox reaction drives electron flow through a circuit
+Electrolysis|Uses electrical energy to drive a nonspontaneous reaction
+Ion|Atom or group of atoms with a net electric charge.
+Element|Pure substance made of only one type of atom.
+Electron|Definition of a beta-minus particle emitted in nuclear decay
+Metal|An unfamiliar element readily conducts electricity and can be hammered into a sheet. Which classification best fits
+Compound|Pure substance made of two or more elements chemically combined.
+NaCl|Definition of the formula for sodium chloride
+Proton|Subatomic particle that carries a positive electric charge
+Neutron|Subatomic particle that has no electric charge
+Nucleus|Membrane-bound organelle that contains most eukaryotic DNA.
+Electrical neutrality|Condition in which positive and negative charges balance.
+Electron Cloud|Electron locations are described by regions of probability
+Group|Definition of a vertical column of the periodic table called
+Carbon|Element that forms the backbone of most organic molecules
+Atomic number|Number of protons in an atom’s nucleus.
+Halogens|Group that includes fluorine, chlorine, and bromine
+Noble Gases|Group that includes helium, neon, and argon

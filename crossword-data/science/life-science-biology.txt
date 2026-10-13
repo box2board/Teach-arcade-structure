@@ -1,0 +1,439 @@
+[science--life-science-biology--cell-structure-and-function]
+Plasma Membrane|Boundary that regulates exchange between a cell and its surroundings
+Ribosome|Cell structure that assembles proteins
+Nucleus|Membrane-bound organelle that contains most eukaryotic DNA
+Chloroplast|Organelle where photosynthesis occurs in plants and algae
+Cell Wall|Rigid outer layer that supports many plant, fungal, and bacterial cells
+Cytoplasm|Cell contents outside the nucleus and inside the plasma membrane
+Golgi Apparatus|Organelle that modifies, sorts, and packages many proteins
+Prokaryote|A prokaryotic cell lacks a membrane-bound nucleus
+Central Vacuole|Plant-cell compartment that stores water and helps maintain pressure
+Cell Theory|Living organisms consist of cells, and cells arise from existing cells
+Cell Specialization|Process by which cells develop structures suited to particular functions.
+Rough Endoplasmic Reticulum|Membrane network with attached ribosomes that helps process proteins
+Surface Area-to-Volume Ratio|Relationship between a cell’s exchange surface and its internal volume.
+Tissue|Group of similar cells and associated material performing related functions
+Surface Area|Measure of the total outer area available for exchange.
+ATP|Molecule that is a major short-term energy-transfer carrier in cells
+Photosynthesis|Process that uses light energy to build sugars from carbon dioxide and water.
+DNA|Molecule that stores hereditary information in most cells
+Diffusion|Net movement of particles from higher to lower concentration.
+Osmosis|Net movement of water across a selectively permeable membrane.
+
+[science--life-science-biology--cell-transport-and-homeostasis]
+Diffusion|Net movement of particles from higher to lower concentration
+Osmosis|Net movement of water across a selectively permeable membrane
+Active Transport|Movement of substances against a concentration gradient using cellular energy
+Homeostasis|Maintaining internal conditions within suitable ranges
+Facilitated Diffusion|Movement down a concentration gradient through membrane proteins
+Endocytosis|Cellular intake of material by enclosing it in a membrane vesicle
+Exocytosis|Release of vesicle contents when a vesicle fuses with the cell membrane
+Cytoplasm|Cell contents outside the nucleus and inside the plasma membrane.
+ATP|Molecule that is a major short-term energy-transfer carrier in cells
+Oxygen|Element whose gas is used in aerobic cellular respiration.
+Plasma membrane|Boundary that regulates exchange between a cell and its surroundings.
+Ribosome|Cell structure that assembles proteins.
+Nucleus|Membrane-bound organelle that contains most eukaryotic DNA.
+Chloroplast|Organelle where photosynthesis occurs in plants and algae.
+Cell wall|Rigid outer layer that supports many plant, fungal, and bacterial cells.
+Golgi apparatus|Organelle that modifies, sorts, and packages many proteins.
+Prokaryote|Cell type that lacks a membrane-bound nucleus.
+Central vacuole|Plant-cell compartment that stores water and helps maintain pressure.
+Cell theory|States that living things are made of cells and that cells come from existing cells.
+Cell specialization|Process by which cells develop structures suited to particular functions.
+
+[science--life-science-biology--photosynthesis-and-cellular-respiration]
+ATP|Molecule that is a major short-term energy-transfer carrier in cells
+Carbon Dioxide|Gas that is a reactant in photosynthesis
+Oxygen|Element whose gas is used in aerobic cellular respiration
+Glucose|Sugar is commonly used to summarize the product of photosynthesis
+Chlorophyll|Pigment absorbs light for photosynthesis in green plants
+Cytoplasm|Cell contents outside the nucleus and inside the plasma membrane
+Photosynthesis|Process that uses light energy to build sugars from carbon dioxide and water
+Fermentation|Helps regenerate molecules needed for glycolysis to continue
+Plasma membrane|Boundary that regulates exchange between a cell and its surroundings.
+Ribosome|Cell structure that assembles proteins.
+Nucleus|Membrane-bound organelle that contains most eukaryotic DNA.
+Chloroplast|Organelle where photosynthesis occurs in plants and algae.
+Cell wall|Rigid outer layer that supports many plant, fungal, and bacterial cells.
+Golgi apparatus|Organelle that modifies, sorts, and packages many proteins.
+Prokaryote|Cell type that lacks a membrane-bound nucleus.
+Central vacuole|Plant-cell compartment that stores water and helps maintain pressure.
+Cell theory|States that living things are made of cells and that cells come from existing cells.
+Cell specialization|Process by which cells develop structures suited to particular functions.
+Rough endoplasmic reticulum|Membrane network with attached ribosomes that helps process proteins.
+Surface area-to-volume ratio|Relationship between a cell’s exchange surface and its internal volume.
+
+[science--life-science-biology--genetics-and-inheritance]
+Gene|DNA sequence that contributes to a functional product
+Allele|One of two or more forms of a gene
+Heterozygous|Having two different alleles at a particular gene location
+Genotype|Genetic makeup of an organism at one or more gene locations
+Phenotype|Observable characteristics resulting from genes and environmental effects
+Gametes|Cells carry hereditary information from parents through sexual reproduction
+Punnett Square|Diagram used to show possible allele combinations in offspring
+Incomplete Dominance|Inheritance pattern in which a heterozygote has an intermediate phenotype
+Segregation|Separation of paired alleles during gamete formation
+Dominant Phenotype|Trait expressed in a heterozygote under a complete-dominance model
+Recessive allele|Allele whose associated phenotype is masked in a heterozygote under complete dominance.
+Complete dominance|Inheritance pattern in which one allele determines the heterozygote phenotype.
+Locus|Position of a gene or DNA sequence on a chromosome.
+Fertilization|Fusion of gametes that combines genetic material from two parents.
+Mutation|Change in a DNA sequence that can create a new allele.
+Allele frequency|Proportion of gene copies in a population that carry a particular allele.
+Polygenic trait|Characteristic influenced by alleles at multiple genes.
+Environmental influence|Effect of conditions such as nutrition on how a trait develops.
+Homozygous|Having two copies of the same allele at a gene location.
+Population|Members of one species living in the same area at the same time.
+
+[science--life-science-biology--evolution-and-natural-selection]
+Biological Evolution|A change in inherited population characteristics across generations
+Natural Selection|Process in which heritable traits affecting reproduction change in frequency
+Adaptation|A heritable feature that improves success in a particular environment
+Artificial Selection|Process that involves humans choosing organisms with desired traits to reproduce
+Fossil|Preserved remains or traces of past life
+Genetic Drift|Random change in allele frequencies, strongest in small populations
+Gene Flow|Movement of alleles between populations
+Speciation|Evolutionary process in which populations become separate species
+Mutation|Change in DNA that can introduce heritable variation.
+Fitness|Relative contribution of an organism’s offspring to later generations.
+Heritable variation|Inherited differences among individuals in a population.
+Common ancestry|Shared ancestry inferred from similarities among organisms.
+Homologous structure|Feature with a similar underlying organization inherited from a common ancestor.
+Reproductive isolation|Barriers that limit gene exchange between populations.
+Allele frequency|Proportion of a population’s gene copies represented by an allele.
+Population|Members of one species living in the same area at the same time.
+Antibiotic resistance|Inherited ability of some bacteria to survive exposure to an antibiotic.
+Selective pressure|Environmental factor that affects reproductive success.
+Fossil record|Collection of preserved remains and traces documenting past life.
+Gene|DNA sequence that contributes to a functional product.
+
+[science--life-science-biology--cell-division-mitosis-and-meiosis]
+Mitosis|Nuclear division that usually preserves chromosome number
+Sister Chromatids|Identical chromosome copies joined before they separate
+Cytokinesis|Division of the cytoplasm into daughter cells
+Meiosis|Cell division that produces haploid cells from a diploid cell
+Homologous Chromosomes|Chromosome pair with the same genes at corresponding locations
+Prophase I|Meiotic stage when homologous chromosomes pair and crossing over can occur
+Crossing Over|Exchange of DNA between nonsister chromatids of homologous chromosomes
+Metaphase I|Meiotic stage when homologous chromosome pairs align at the cell center
+Cytoplasm|Cell contents outside the nucleus and inside the plasma membrane.
+DNA|Molecule that stores hereditary information in most cells
+Plasma membrane|Boundary that regulates exchange between a cell and its surroundings.
+Ribosome|Cell structure that assembles proteins.
+Nucleus|Membrane-bound organelle that contains most eukaryotic DNA.
+Chloroplast|Organelle where photosynthesis occurs in plants and algae.
+Cell wall|Rigid outer layer that supports many plant, fungal, and bacterial cells.
+Golgi apparatus|Organelle that modifies, sorts, and packages many proteins.
+Prokaryote|Cell type that lacks a membrane-bound nucleus.
+Central vacuole|Plant-cell compartment that stores water and helps maintain pressure.
+Cell theory|States that living things are made of cells and that cells come from existing cells.
+Cell specialization|Process by which cells develop structures suited to particular functions.
+
+[science--life-science-biology--dna-rna-and-protein-synthesis]
+Ribose|Five-carbon sugar found in RNA
+Uracil|RNA base that generally replaces thymine
+Transcription|Synthesis of RNA from a DNA template
+Translation|Use of an RNA message to assemble a polypeptide
+Codon|Three-nucleotide sequence in messenger RNA that specifies an amino acid or stop
+tRNA|RNA molecule that carries an amino acid to a ribosome
+TGCA|One DNA strand reads ACGT. Which bases pair directly across from it
+Silent Mutation|A supplied key says GCU and GCC both encode alanine. What follows from changing GCU to GCC
+DNA|Molecule that stores hereditary information in most cells
+Plasma membrane|Boundary that regulates exchange between a cell and its surroundings.
+Ribosome|Cell structure that assembles proteins.
+Nucleus|Membrane-bound organelle that contains most eukaryotic DNA.
+Chloroplast|Organelle where photosynthesis occurs in plants and algae.
+Cell wall|Rigid outer layer that supports many plant, fungal, and bacterial cells.
+Cytoplasm|Cell contents outside the nucleus and inside the plasma membrane.
+Golgi apparatus|Organelle that modifies, sorts, and packages many proteins.
+Prokaryote|Cell type that lacks a membrane-bound nucleus.
+Central vacuole|Plant-cell compartment that stores water and helps maintain pressure.
+Cell theory|States that living things are made of cells and that cells come from existing cells.
+Cell specialization|Process by which cells develop structures suited to particular functions.
+
+[science--life-science-biology--classification-and-taxonomy]
+Taxonomy|Naming and classifying organisms
+Family|Rank lies between order and genus
+Dichotomous Key|An identification tool with paired choices
+Genus|Taxonomic rank grouping closely related species
+Order|Animals share a family but have different genera. Which rank must they also share
+Binomial nomenclature|System that gives each species a two-part scientific name.
+Scientific name|Standardized name used to identify a species.
+Specific epithet|Second part of a species’ binomial name.
+Domain|Broadest rank among the three levels in the common classification system.
+Bacteria|One of two domains containing prokaryotic organisms.
+Archaea|Domain of prokaryotes distinct from bacteria.
+Phylogeny|Evolutionary history and relationships of organisms.
+Common ancestor|Ancestral population shared by two or more groups.
+Cladogram|Diagram showing proposed branching relationships among groups.
+Branch point|Location on a phylogenetic diagram representing a common ancestor.
+Derived trait|Feature that evolved in a lineage and can help identify its descendants.
+Convergent evolution|Independent evolution of similar features in unrelated lineages.
+Classification|Organization of organisms into groups based on shared evidence.
+Identification key|Tool that identifies organisms through a series of paired choices.
+Species|Group of organisms defined by a classification system; many can interbreed and produce fertile offspring.
+
+[science--life-science-biology--ecology-and-food-webs]
+Consumer|In the usual food-web convention, arrows point toward which organism
+Temperature|Measure related to the average kinetic energy of particles
+Ecological Niche|A species' role and environmental requirements
+Matter Cycling|Movement of matter through living things and the environment
+Mutualism|Both interacting species benefit
+Competition|Deer and rabbits depend on limited plant food. Which interaction can follow
+Biomagnification|Increase in contaminant concentration at higher trophic levels
+Ecological Population|One species' members in a defined area
+Population Density|Individuals per unit area or volume
+Immigration|Movement of individuals into a population.
+Emigration|Movement of individuals out of a population.
+Carrying capacity|Population size an environment can support over time.
+Exponential growth|Population growth in which the rate increases as the population grows.
+Density-dependent Factor|A factor whose effects vary with crowding
+Severe Freeze|Event's direct effect is usually density-independent
+Genetic diversity|Variation in inherited traits within a species.
+Species richness|Number of species present in a community.
+Endemic species|Species native to a limited geographic area.
+Habitat fragmentation|Division of habitat into smaller, separated patches.
+Ecosystem service|Benefit people receive from ecological processes.
+
+[science--life-science-biology--population-ecology]
+Ecological Population|One species' members in a defined area
+Population Density|Individuals per unit area or volume
+Immigration|Movement of individuals into a population
+Emigration|Movement of individuals out of a population
+Carrying Capacity|Population size an environment can support over time
+Exponential Growth|Population growth in which the rate increases as the population grows
+Density-dependent Factor|A factor whose effects vary with crowding
+Severe Freeze|Event's direct effect is usually density-independent
+Consumer|Organism that obtains energy by eating other organisms.
+Temperature|Measure related to the average kinetic energy of particles.
+Ecological Niche|A species' role and environmental requirements
+Matter cycling|Movement of matter through living things and the environment.
+Mutualism|Both interacting species benefit
+Competition|Deer and rabbits depend on limited plant food. Which interaction can follow
+Biomagnification|Increase in contaminant concentration at higher trophic levels.
+Genetic diversity|Variation in inherited traits within a species.
+Species richness|Number of species present in a community.
+Endemic species|Species native to a limited geographic area.
+Habitat fragmentation|Division of habitat into smaller, separated patches.
+Ecosystem service|Benefit people receive from ecological processes.
+
+[science--life-science-biology--biodiversity-and-conservation]
+Genetic Diversity|Variation in inherited traits within a species
+Species Richness|Number of species present in a community
+Endemic Species|Species native to a limited geographic area
+Habitat Fragmentation|Division of habitat into smaller, separated patches
+Ecosystem Service|Benefit people receive from ecological processes
+Extinction|Loss of all members of a species
+Species Evenness|Two habitats each contain ten species, but one is dominated by one species. Which measure differs most directly
+Properly Designed Wildlife Crossing|A road separates breeding populations. Which action may directly restore movement if suitable for the species
+Consumer|Organism that obtains energy by eating other organisms.
+Temperature|Measure related to the average kinetic energy of particles.
+Ecological Niche|A species' role and environmental requirements
+Matter cycling|Movement of matter through living things and the environment.
+Mutualism|Both interacting species benefit
+Competition|Deer and rabbits depend on limited plant food. Which interaction can follow
+Biomagnification|Increase in contaminant concentration at higher trophic levels.
+Ecological Population|One species' members in a defined area
+Population Density|Individuals per unit area or volume
+Immigration|Movement of individuals into a population.
+Emigration|Movement of individuals out of a population.
+Carrying capacity|Population size an environment can support over time.
+
+[science--life-science-biology--microorganisms-and-viruses]
+Bacteria|Single-celled prokaryotes that lack a membrane-bound nucleus
+Fungus|Eukaryotic organism group that includes yeasts and molds
+Virus|A noncellular agent that reproduces using host machinery
+Binary Fission|Asexual division in which one prokaryotic cell becomes two cells
+Pathogen|Biological agent capable of causing disease
+Microbiome|Community of microorganisms living in a particular environment
+Bacterial Spores|Many bacterial endospores are survival structures rather than new offspring
+Protist|An observed cell has a nucleus and chloroplasts and lives independently in water. Which classification is plausible
+Consumer|Organism that obtains energy by eating other organisms.
+Temperature|Measure related to the average kinetic energy of particles.
+Ecological Niche|A species' role and environmental requirements
+Matter cycling|Movement of matter through living things and the environment.
+Mutualism|Both interacting species benefit
+Competition|Deer and rabbits depend on limited plant food. Which interaction can follow
+Biomagnification|Increase in contaminant concentration at higher trophic levels.
+Ecological Population|One species' members in a defined area
+Population Density|Individuals per unit area or volume
+Immigration|Movement of individuals into a population.
+Emigration|Movement of individuals out of a population.
+Carrying capacity|Population size an environment can support over time.
+
+[science--life-science-biology--human-body-systems]
+Skeletal|System that includes bones and provides structural support
+Muscular|System that includes muscles that move the skeleton
+Skin|Organ and protective barrier that forms much of the integumentary system
+Digestion|Break down food and absorb nutrients
+Kidneys|Organs filter blood and help regulate water and salts
+Tissue|Group of similar cells and associated material performing related functions
+Organ|Structure composed of multiple tissues working together
+Digestive|Absorbed nutrients enter transport pathways supplying tissues
+Lymphatic System|Returns excess tissue fluid to circulation
+Muscle Contraction|Shortening or tension development that can move a bone at a joint
+Circulatory System|Body system that transports blood, gases, nutrients, and wastes
+Integumentary|A model includes protection, sensation, and sweat release. Which system does it chiefly represent
+Nervous|Nerve signals are often rapid; hormonal effects can be more widespread
+Synapse|A communication junction between a neuron and another cell
+Neurotransmitter|A chemical signal used at many synapses
+Hormone|A chemical messenger released by endocrine cells
+Receptor|Molecule that binds a specific signal and can trigger a cellular response.
+Pancreas|Gland produces insulin
+Myelin|Supports faster impulse conduction
+Insulin|Promotes processes that lower blood glucose
+
+[science--life-science-biology--nervous-and-endocrine-systems]
+Synapse|A communication junction between a neuron and another cell
+Neurotransmitter|A chemical signal used at many synapses
+Hormone|A chemical messenger released by endocrine cells
+Receptor|A molecule that binds a particular signal
+Pancreas|Gland produces insulin
+Nervous|Nerve signals are often rapid; hormonal effects can be more widespread
+Myelin|Supports faster impulse conduction
+Insulin|Promotes processes that lower blood glucose
+Endocrine|A model shows a gland releasing a messenger into blood to affect distant target cells. Which system is emphasized
+Skeletal|System that includes bones and provides structural support
+Muscular|System that includes muscles that move the skeleton
+Skin|Organ and protective barrier that forms much of the integumentary system.
+Digestion|Break down food and absorb nutrients
+Kidneys|Organs filter blood and help regulate water and salts
+Tissue|Group of similar cells and associated material performing related functions.
+Organ|Structure composed of multiple tissues working together.
+Digestive|Absorbed nutrients enter transport pathways supplying tissues
+Lymphatic System|Returns excess tissue fluid to circulation
+Muscle contraction|Shortening or tension development that can move a bone at a joint.
+Circulatory system|Body system that transports blood, gases, nutrients, and wastes.
+
+[science--life-science-biology--circulation-and-respiration]
+Arteries|Blood vessels that carry blood away from the heart
+Veins|Blood vessels that carry blood toward the heart
+Capillaries|Small blood vessels where exchange with tissues occurs
+Alveoli|Small lung air sacs where oxygen and carbon dioxide are exchanged
+Red Blood Cells|Blood cells primarily carry oxygen
+Hemoglobin|Oxygen-binding protein in red blood cells
+Left Ventricle|Heart chamber that pumps oxygen-rich blood into systemic circulation
+Left Atrium|Heart chamber that receives oxygen-rich blood from the lungs
+Skeletal|System that includes bones and provides structural support
+Muscular|System that includes muscles that move the skeleton
+Skin|Organ and protective barrier that forms much of the integumentary system.
+Digestion|Break down food and absorb nutrients
+Kidneys|Organs filter blood and help regulate water and salts
+Tissue|Group of similar cells and associated material performing related functions.
+Organ|Structure composed of multiple tissues working together.
+Digestive|Absorbed nutrients enter transport pathways supplying tissues
+Lymphatic System|Returns excess tissue fluid to circulation
+Muscle contraction|Shortening or tension development that can move a bone at a joint.
+Circulatory system|Body system that transports blood, gases, nutrients, and wastes.
+Integumentary|A model includes protection, sensation, and sweat release. Which system does it chiefly represent
+
+[science--life-science-biology--digestion-and-nutrition]
+Esophagus|Digestive tube that moves swallowed food toward the stomach
+Small Intestine|Digestive organ where most nutrient absorption occurs
+Liver|Organ that produces bile and carries out many metabolic functions
+Peristalsis|Waves of muscle contraction that move material along the digestive tract
+Villi|Small projections that increase absorption area
+Stomach Lining|A mucus barrier reduces exposure to acid and enzymes
+Digestion|Break down food and absorb nutrients
+Tissue|Group of similar cells and associated material performing related functions.
+Organ|Structure composed of multiple tissues working together.
+Digestive|Absorbed nutrients enter transport pathways supplying tissues
+Skeletal|System that includes bones and provides structural support
+Muscular|System that includes muscles that move the skeleton
+Skin|Organ and protective barrier that forms much of the integumentary system.
+Kidneys|Organs filter blood and help regulate water and salts
+Lymphatic System|Returns excess tissue fluid to circulation
+Muscle contraction|Shortening or tension development that can move a bone at a joint.
+Circulatory system|Body system that transports blood, gases, nutrients, and wastes.
+Integumentary|A model includes protection, sensation, and sweat release. Which system does it chiefly represent
+Nervous|Nerve signals are often rapid; hormonal effects can be more widespread
+Synapse|A communication junction between a neuron and another cell
+
+[science--life-science-biology--immunity-and-disease]
+Vector|Organism that carries a pathogen between hosts.
+Skin|Organ and protective barrier that forms much of the integumentary system
+White Blood Cells|Cells are central to many immune defenses
+Antigen|Molecular feature recognized by immune receptors
+Inflammation Near Damaged Tissue|Response that is part of innate immunity
+B Cells|Immune cells can develop into antibody-secreting cells
+Infectious Disease|An process results from a transmissible biological agent
+Quicker Antigen-specific Defense|Two groups encounter the same pathogen; one group has relevant immune memory. What response is generally expected in that group
+Tissue|Group of similar cells and associated material performing related functions.
+Skeletal|System that includes bones and provides structural support
+Muscular|System that includes muscles that move the skeleton
+Digestion|Break down food and absorb nutrients
+Kidneys|Organs filter blood and help regulate water and salts
+Organ|Structure composed of multiple tissues working together.
+Digestive|Absorbed nutrients enter transport pathways supplying tissues
+Lymphatic System|Returns excess tissue fluid to circulation
+Muscle contraction|Shortening or tension development that can move a bone at a joint.
+Circulatory system|Body system that transports blood, gases, nutrients, and wastes.
+Integumentary|A model includes protection, sensation, and sweat release. Which system does it chiefly represent
+Nervous|Nerve signals are often rapid; hormonal effects can be more widespread
+
+[science--life-science-biology--plant-structure-and-reproduction]
+Xylem|Plant tissue that transports water and dissolved minerals
+Phloem|Plant tissue that transports sugars from sources to sinks
+Guard Cells|Cells that control opening and closing of a leaf stoma
+Pollination|Transfer of pollen to a stigma
+Ovary|Flower structure that contains ovules and may develop into a fruit
+Seed|Structure containing a plant embryo and stored resources
+Fruit|A mature ovary, sometimes with associated tissues
+Transpiration|Loss of water vapor from plant surfaces, especially leaves
+Vegetative Reproduction|Asexual production of new plants from stems, roots, or leaves
+Tissue|Group of similar cells and associated material performing related functions.
+Plasma membrane|Boundary that regulates exchange between a cell and its surroundings.
+Ribosome|Cell structure that assembles proteins.
+Nucleus|Membrane-bound organelle that contains most eukaryotic DNA.
+Chloroplast|Organelle where photosynthesis occurs in plants and algae.
+Cell wall|Rigid outer layer that supports many plant, fungal, and bacterial cells.
+Cytoplasm|Cell contents outside the nucleus and inside the plasma membrane.
+Golgi apparatus|Organelle that modifies, sorts, and packages many proteins.
+Prokaryote|Cell type that lacks a membrane-bound nucleus.
+Central vacuole|Plant-cell compartment that stores water and helps maintain pressure.
+Cell theory|States that living things are made of cells and that cells come from existing cells.
+
+[science--life-science-biology--biotechnology]
+Biotechnology|Use of organisms or biological processes to make useful products
+Plasmid|Small DNA molecule separate from a bacterium’s main chromosome
+Polymerase Chain Reaction|Making many copies of a selected DNA region
+Gel Electrophoresis|Method that separates DNA fragments by size using an electric field
+Recombinant DNA|DNA molecule assembled from genetic material from different sources
+DNA|Molecule that stores hereditary information in most cells
+Plasma membrane|Boundary that regulates exchange between a cell and its surroundings.
+Ribosome|Cell structure that assembles proteins.
+Nucleus|Membrane-bound organelle that contains most eukaryotic DNA.
+Chloroplast|Organelle where photosynthesis occurs in plants and algae.
+Cell wall|Rigid outer layer that supports many plant, fungal, and bacterial cells.
+Cytoplasm|Cell contents outside the nucleus and inside the plasma membrane.
+Golgi apparatus|Organelle that modifies, sorts, and packages many proteins.
+Prokaryote|Cell type that lacks a membrane-bound nucleus.
+Central vacuole|Plant-cell compartment that stores water and helps maintain pressure.
+Cell theory|States that living things are made of cells and that cells come from existing cells.
+Cell specialization|Process by which cells develop structures suited to particular functions.
+Rough endoplasmic reticulum|Membrane network with attached ribosomes that helps process proteins.
+Surface area-to-volume ratio|Relationship between a cell’s exchange surface and its internal volume.
+Tissue|Group of similar cells and associated material performing related functions.
+
+[science--life-science-biology--biological-molecules-and-enzymes]
+Amino Acid|Molecule that links with others to form proteins
+DNA|Molecule that stores hereditary information in most cells
+Carbohydrate|Biological molecule group that includes starch and glycogen
+Active Site|The region where a substrate binds and the reaction occurs
+Cofactor|A nonprotein helper required for some enzymes to function
+Enzyme|Lowers the activation energy
+Hydrolysis|Reaction in which water helps break a chemical bond
+Increasing Substrate Concentration|An inhibitor competes with a substrate for the active site. Which change can often reduce its effect
+Denaturation|Loss of a protein’s functional shape due to altered conditions
+ATP|Molecule that is a major short-term energy-transfer carrier in cells
+Plasma membrane|Boundary that regulates exchange between a cell and its surroundings.
+Ribosome|Cell structure that assembles proteins.
+Nucleus|Membrane-bound organelle that contains most eukaryotic DNA.
+Chloroplast|Organelle where photosynthesis occurs in plants and algae.
+Cell wall|Rigid outer layer that supports many plant, fungal, and bacterial cells.
+Cytoplasm|Cell contents outside the nucleus and inside the plasma membrane.
+Golgi apparatus|Organelle that modifies, sorts, and packages many proteins.
+Prokaryote|Cell type that lacks a membrane-bound nucleus.
+Central vacuole|Plant-cell compartment that stores water and helps maintain pressure.
+Cell theory|States that living things are made of cells and that cells come from existing cells.
