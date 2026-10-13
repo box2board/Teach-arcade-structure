@@ -1,148 +1,177 @@
 (() => {
-  const KEY = 'ta-escape:long-road-west:v1';
-  const chapters = ['The farm', 'The storm shed', 'Miles that cost something', 'Work is not a promise', 'A place to begin'];
+  const KEY = 'ta-escape:long-road-west:v2';
+  const chapterNames = ['The farm', 'The storm shed', 'Miles that cost something', 'Work is not a promise', 'A place to begin'];
   const historyNotes = [
-    'The Dust Bowl was shaped by drought, wind erosion, and farming practices that left soil exposed. The Great Depression deepened the family’s financial strain.',
-    'The shed, the East Fork bridge, and the bulletin are fictional. The family must compare current road information instead of assuming the shorter route is usable.',
-    'Travelers could face breakdowns, scarce supplies, and difficult choices about helping others. A careful plan could help, but it could not control every hardship.',
-    'Harvest work could be seasonal and uncertain. Advertisements and rumors were not guarantees of steady wages or safe living conditions.',
-    'Migration could bring new opportunities, but reaching California did not guarantee work, housing, acceptance, or an easy recovery.'
+    'The Dust Bowl grew from drought, wind erosion, and farming practices that left soil exposed. The Great Depression deepened the Millers’ financial strain.',
+    'The shed, East Fork bridge, and bulletin are fictional. The family compares a road map with a current notice before choosing a passable route.',
+    'Breakdowns, scarce water, and uncertain travel made migration difficult. Neighbors and strangers sometimes depended on one another.',
+    'Harvest jobs could be seasonal. A handbill could advertise work without guaranteeing steady wages, hours, or safe housing.',
+    'Migrants’ experiences varied. Reaching California could open possibilities, but it did not guarantee work, housing, or an easy recovery.'
   ];
-  const fresh = () => ({ chapter: 0, packed: '', wire: false, water: false, map: false, bulletin: false, shutter: false, route: '', aid: '', handbill: false, worker: false, jobChoice: '', journal: ['The Millers leave their farm with what fits in the truck.'], complete: false, message: '', messageKind: 'info' });
-  const read = () => { try { const saved = JSON.parse(localStorage.getItem(KEY)); return saved && Number.isInteger(saved.chapter) ? { ...fresh(), ...saved } : fresh(); } catch { return fresh(); } };
-  let state = read();
-  const $ = s => document.querySelector(s);
-  const art = $('#sceneArt'), kicker = $('#sceneKicker'), title = $('#sceneTitle'), copy = $('#sceneCopy'), actions = $('#sceneActions'), feedback = $('#feedback'), history = $('#historyNote');
-  const escapeHtml = value => String(value).replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
-  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch {} };
-  const note = value => { if (value && !state.journal.includes(value)) state.journal.push(value); save(); renderSide(); };
-  function renderSide() {
-    const rows = [
-      ['packing', state.packed ? `Packed: ${state.packed}` : 'One family item to choose'],
-      ['wire', 'Baling wire for the shutter'], ['water', 'Water canteen'], ['map', 'Road map'],
-      ['bulletin', 'Current road bulletin'], ['shutter', 'Storm shutter secured'],
-      ['route', state.route ? `Route selected: ${state.route}` : 'Passable route west']
-    ];
-    $('#supplyList').replaceChildren(...rows.map(([key, label]) => {
-      const li = document.createElement('li');
-      const done = key === 'packing' ? Boolean(state.packed) : key === 'route' ? Boolean(state.route) : Boolean(state[key]);
-      if (done) li.classList.add('found'); li.textContent = label; return li;
-    }));
-    const journal = $('#journal');
-    journal.replaceChildren(...state.journal.slice(-8).map(text => { const li = document.createElement('li'); li.textContent = text; return li; }));
-    const bar = $('#progressBar'), progress = Math.min(4, state.complete ? 4 : Math.max(0, state.chapter - 1));
-    bar.style.width = `${progress * 25}%`;
-    const track = $('.lrw-progress-track'); track.setAttribute('aria-valuenow', String(progress));
-    $('#progressText').textContent = state.complete ? 'Journey complete · A place to begin' : `Chapter ${state.chapter + 1} of 5 · ${chapters[state.chapter]}`;
-    $('#progressCount').textContent = `${progress} / 4 chapters`;
-    history.textContent = historyNotes[state.complete ? 4 : state.chapter];
+  const fresh = () => ({chapter:0,packed:'',wire:false,water:false,map:false,bulletin:false,compared:false,shutter:false,route:'',aid:'',handbill:false,worker:false,jobChoice:'',complete:false,journal:['The Millers leave their farm with what fits in the truck.'],message:'',messageKind:'info'});
+  const read = () => { try { const v=JSON.parse(localStorage.getItem(KEY)); return v&&Number.isInteger(v.chapter)?{...fresh(),...v}:fresh(); } catch { return fresh(); } };
+  let state=read(), selected='';
+  const $=s=>document.querySelector(s), scene=$('#scene'), layer=$('#hotspots'), feedback=$('#feedback'), ghost=$('#dragGhost');
+  const escapeHtml=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(state));}catch{}};
+  const note=text=>{if(text&&!state.journal.includes(text))state.journal.push(text);save();renderSide();};
+  const message=(text,kind='info')=>{state.message=text;state.messageKind=kind;save();renderFeedback();};
+  function renderFeedback(){feedback.textContent=state.message||'';feedback.dataset.kind=state.messageKind||'info';feedback.hidden=!state.message;}
+  function renderSide(){
+    $('#journal').replaceChildren(...state.journal.slice(-7).map(text=>{const li=document.createElement('li');li.textContent=text;return li;}));
+    const progress=state.complete?5:state.chapter;
+    $('#progressBar').style.width=`${progress*20}%`;
+    const track=$('.lrw-progress-track');track.setAttribute('aria-valuenow',String(progress));
+    $('#progressText').textContent=state.complete?'Journey complete · A place to begin':`Chapter ${state.chapter+1} of 5 · ${chapterNames[state.chapter]}`;
+    $('#progressCount').textContent=`${progress} / 5 chapters`;
+    $('#historyNote').textContent=historyNotes[state.complete?4:state.chapter];
+    $('#sceneChapterMark').textContent=`${String(Math.min(state.chapter+1,5)).padStart(2,'0')} / 05`;
+    const items=[];
+    if(state.packed){const labels={tools:['🧰','Thomas’s tools'],blanket:['▰','Sam’s blanket'],keepsake:['▣','Family photograph']};items.push([state.packed,...labels[state.packed]]);}
+    if(state.wire)items.push(['wire','⌁','Baling wire']);if(state.water)items.push(['water','◉','Water canteen']);if(state.map)items.push(['map','▤','Road map']);if(state.bulletin)items.push(['bulletin','▧','Road bulletin']);
+    $('#pocketCount').textContent=`${items.length} ${items.length===1?'item':'items'}`;
+    const inventory=$('#inventory');inventory.replaceChildren();
+    if(!items.length){const empty=document.createElement('span');empty.className='lrw-empty-pocket';empty.textContent='Nothing picked up yet';inventory.append(empty);}
+    for(const [id,icon,label] of items){const b=document.createElement('button');b.type='button';b.className='lrw-item';b.dataset.item=id;b.setAttribute('aria-pressed',String(selected===id));b.innerHTML=`<span aria-hidden="true">${icon}</span><span>${escapeHtml(label)}</span>`;b.addEventListener('click',()=>{selected=selected===id?'':id;message(selected?`Selected ${itemById(id)}. Place it on a highlighted part of the scene.`:'');render();});b.addEventListener('pointerdown',beginDrag);inventory.append(b);}
   }
-  function setScene(id, label, heading, paragraphs) {
-    art.className = `lrw-art art-${id}`;
-    const artLabels = { farm:'A dry western Oklahoma farm under a dust-filled sky', shed:'Inside a roadside shed as a dust storm approaches', road:'A long, empty road across a dry landscape', camp:'A temporary migrant camp near a California work area', dawn:'A dusty sunrise over a new place to begin' };
-    art.setAttribute('aria-label', artLabels[id] || 'A scene from the Miller family’s journey');
-    art.innerHTML = '<div class="art-sun"></div><div class="art-haze"></div><div class="art-ridge"></div><div class="art-house"><i></i></div><div class="art-field"></div><div class="art-caption">' + escapeHtml(label) + '</div>';
-    kicker.textContent = `CHAPTER ${state.chapter + 1} · ${label}`;
-    title.textContent = heading;
-    copy.replaceChildren(...paragraphs.map(text => { const p = document.createElement('p'); p.textContent = text; return p; }));
-    actions.replaceChildren();
-    feedback.textContent = state.message || '';
-    feedback.dataset.kind = state.messageKind || 'info';
-    feedback.hidden = !state.message;
+  function setupScene(id,location,objective,kicker,title,paragraphs,hint){
+    scene.className=`lrw-scene-view art-${id}`;
+    scene.style.setProperty('--scene-image',`url("/escape/rooms/long-road-west/assets/${id}.webp")`);
+    $('#sceneLocation').textContent=location;$('#sceneObjective').textContent=objective;
+    $('#sceneKicker').textContent=`CHAPTER ${state.chapter+1} · ${location.split(' · ')[0]}`;
+    $('#sceneTitle').textContent=title;$('#sceneHint').textContent=hint;
+    $('#sceneCopy').replaceChildren(...paragraphs.map(t=>{const p=document.createElement('p');p.textContent=t;return p;}));
+    layer.replaceChildren();$('#continueBtn').hidden=true;renderFeedback();
   }
-  function btn(label, action, options = {}) {
-    const button = document.createElement('button'); button.type = 'button'; button.className = options.primary ? 'lrw-primary' : 'lrw-choice';
-    button.textContent = label;
-    if (options.pressed !== undefined) button.setAttribute('aria-pressed', String(options.pressed));
-    button.addEventListener('click', action); actions.append(button); return button;
-  }
-  function grid() { const element = document.createElement('div'); element.className = 'lrw-action-grid'; actions.append(element); return element; }
-  function feedbackText(text, kind = 'info') { state.message = text; state.messageKind = kind; feedback.textContent = text; feedback.dataset.kind = kind; feedback.hidden = false; save(); }
-  function advance(text) { if (text) note(text); state.chapter++; state.message = ''; state.messageKind = 'info'; save(); render(); }
-  function renderFarm() {
-    setScene('farm','WESTERN OKLAHOMA · 1936','What can the family carry?',[
-      'Ruth has packed food and water. The dry fields have brought little income, and another dust storm is building. The Millers are leaving for California to look for work.',
-      'Thomas asks what they should load in the last open space. Choose one item the family will remember or rely on during the trip. There is no perfect answer.'
-    ]);
-    const options = grid();
-    [['tools','Thomas’s tool roll'],['blanket','Sam’s extra blanket'],['keepsake','A framed family photograph']].forEach(([id,label]) => {
-      const b=document.createElement('button'); b.type='button'; b.className='lrw-choice'; b.setAttribute('aria-pressed',String(state.packed===id));
-      const t=document.createElement('span'); t.textContent=label; const mark=document.createElement('span'); mark.className='choice-mark'; mark.textContent=state.packed===id?'SELECTED':'CHOOSE'; b.append(t,mark);
-      b.addEventListener('click',()=>{state.packed=id;save();render();}); options.append(b);
+  function hotspot({id,x,y,icon,label,target=false,alsoItem=false,done=false,hidden=false,action,useSelected=false,draggable=false}){
+    const b=document.createElement('button');b.type='button';b.className=`lrw-hotspot${target?' is-target':''}${done?' is-done':''}${hidden?' is-hidden':''}${selected===id?' is-selected':''}`;
+    b.style.setProperty('--x',`${x}%`);b.style.setProperty('--y',`${y}%`);b.setAttribute('aria-label',label);b.setAttribute('title',label);
+    if(target)b.dataset.target=id;if(!target||alsoItem)b.dataset.item=id;
+    b.innerHTML=`<span class="hotspot-core" aria-hidden="true">${icon}</span><span class="hotspot-label" aria-hidden="true">${escapeHtml(label)}</span>`;
+    if(action)b.addEventListener('click',()=>{if(target&&selected&&useSelected)apply(selected,id);else action();});else b.addEventListener('click',()=>{
+      if(target){if(selected)apply(selected,id);else message(`Choose an object to use with “${label}.”`);return;}
+      if(state.chapter===0){selected=selected===id?'':id;message(selected?`Move ${label.toLowerCase()} to the open truck bed.`:'Choose a family item.');render();return;}
+      collect(id);
     });
-    if(state.packed) btn('Leave the farm',()=>advance(`The family packs ${state.packed==='tools'?'Thomas’s tool roll':state.packed==='blanket'?'Sam’s extra blanket':'a family photograph'} and turns west.`),{primary:true});
+    if((draggable||!target||alsoItem)&&!(target&&selected))b.addEventListener('pointerdown',beginDrag);
+    layer.append(b);return b;
   }
-  function renderShed() {
-    setScene('shed','ROADSIDE SHED · DUST STORM','Prepare before the storm arrives',[
-      'The Millers take shelter at a roadside shed. A loose shutter is rattling in the wind. They need water, a route map, and a current road notice before they can leave safely.',
-      'Inspect each object below. The map and bulletin must be compared before choosing a road.'
-    ]);
-    const options=grid();
-    const items=[
-      ['tool bench',state.wire?'Wire collected':'Find baling wire',()=>{state.wire=true;note('Evie found usable baling wire beneath the tool bench.');feedbackText('The wire can brace the loose shutter.','success');save();renderSide();renderShed();}],
-      ['supply shelf',state.water?'Canteen packed':'Take the water canteen',()=>{state.water=true;note('Ruth packs a canteen of water for the next stretch.');feedbackText('The canteen gives the family water for the road.','success');save();renderSide();renderShed();}],
-      ['road map',state.map?'Map checked':'Inspect and take the map',()=>{state.map=true;note('The map marks a shorter county-road cut near the East Fork.');feedbackText('The map shows a shortcut, but it cannot confirm that the bridge is open. Check the bulletin.','success');save();renderSide();renderShed();}],
-      ['road bulletin',state.bulletin?'Bulletin checked':'Read the road bulletin',()=>{state.bulletin=true;note('The bulletin reports the East Fork bridge closed; Route 66 remains open.');feedbackText('The East Fork bridge is closed. Route 66 westbound remains open, though it adds distance.','success');save();renderSide();renderShed();}],
-      ['loose shutter',state.shutter?'Shutter secured':state.wire?'Brace the shutter':'Inspect the loose shutter',()=>{if(!state.wire){feedbackText('The shutter needs something strong to hold it. Search the tool bench.');return;}state.shutter=true;note('Thomas secures the shutter with baling wire so the family can wait out the worst of the storm.');feedbackText('The wire holds. The family can shelter here until the worst gusts pass.','success');save();renderSide();renderShed();}]
-    ];
-    items.forEach(([name,label,action])=>{const b=document.createElement('button');b.type='button';b.className='lrw-choice';b.innerHTML=`<span>${escapeHtml(name)}</span><span class="choice-mark">${escapeHtml(label)}</span>`;b.addEventListener('click',action);options.append(b);});
-    if(state.map&&state.bulletin){
-      const routeTitle=document.createElement('p');routeTitle.className='lrw-inline-label';routeTitle.textContent='Choose a westbound route';actions.append(routeTitle);
-      btn('Take the county-road shortcut',()=>{state.route='';save();feedbackText('The bulletin says the East Fork bridge is closed. The shortcut cannot cross. No time is lost—review the evidence and choose a passable road.','error');renderSide();renderShed();});
-      btn('Follow Route 66 · open, but longer',()=>{state.route='Route 66';note('The family chooses the longer open highway after checking the current road bulletin.');save();feedbackText('Route 66 is open. The family can continue when the shutter is secure and the supplies are packed.','success');renderSide();renderShed();});
-    }
-    if(state.wire&&state.water&&state.map&&state.bulletin&&state.shutter&&state.route){btn('Wait for the storm to pass',()=>advance('The Millers wait out the worst of the storm, then return to their truck and follow Route 66 west.'),{primary:true});}
+  function continueWhen(ok){if(!ok)return;const b=$('#continueBtn');b.hidden=false;b.onclick=()=>{state.chapter++;state.message='';state.messageKind='info';selected='';save();render();};}
+  function collect(id){
+    if(id==='wire'&&!state.wire){state.wire=true;selected='wire';note('Evie finds baling wire beneath the shed’s workbench.');message('The wire is light enough to carry. Drag it to the loose shutter.', 'success');}
+    else if(id==='water'&&!state.water){state.water=true;selected='water';note('Ruth fills the canteen for the next stretch of road.');message('The family has water to carry west.','success');}
+    else if(id==='map'&&!state.map){state.map=true;selected='map';note('The map shows a short county-road cut near the East Fork.');message('The map shows a shortcut. It cannot tell whether the bridge is open.','success');}
+    else if(id==='bulletin'&&!state.bulletin){state.bulletin=true;selected='bulletin';note('The bulletin reports the East Fork bridge closed; Route 66 remains open.');message('Read the bulletin, then drag the map onto it to compare the two clues.','success');}
+    else {selected=id;message('That object is already in the family’s record. Select it below to use it.');}
+    render();
   }
-  function renderRoad() {
-    const opening=state.packed==='tools'?'Thomas uses the tool roll to tighten a loose clamp.':state.packed==='blanket'?'Sam wraps up in the extra blanket while they wait for the road to clear.':state.packed==='keepsake'?'Evie keeps the family photograph safe in Ruth’s ledger.':'The family keeps moving carefully along the highway.';
-    setScene('road','ROUTE 66 · WESTBOUND','Miles that cost something',[
-      `${opening} Fuel, daylight, and water are limited. On the road, the Millers meet another traveler whose tire has failed.`,
-      'Ruth wants to help, but the family cannot know when it will find its next water stop. Decide whether to share a cup or keep the canteen full for the children.'
-    ]);
-    btn('Share a cup and offer a hand',()=>{state.aid='shared';note('The family shares a cup of water and helps a stranded traveler. In return, they hear where a reliable service stop may be found.');feedbackText('They lose a little water but gain useful directions—and a reminder that travelers sometimes rely on one another.','success');renderSide();renderRoad();});
-    btn('Keep the water for the family',()=>{state.aid='kept';note('The family keeps its water. Ruth records the next service stop from the road map and plans to refill there.');feedbackText('The canteen stays with the children. The family continues with less information, but the choice protects a scarce supply.','success');renderSide();renderRoad();});
-    if(state.aid) btn('Continue toward the work camps',()=>advance('The family follows the road west. The choice to share—or conserve—water becomes part of Ruth’s record.'),{primary:true});
+  function renderFarm(){
+    setupScene('farm','WESTERN OKLAHOMA · 1936','Choose one item to pack','THE FARM','A place for one more thing',[
+      'The dry fields have brought little income. Another dust storm is building, and the Millers are leaving for California to look for work.',
+      'Only one item fits in the truck’s open bed. Drag a family object to the truck. Each choice says something different about what the family needs or wants to remember.'
+    ],selected?'Now place your choice in the truck bed.':'Drag an object to the open truck bed.');
+    hotspot({id:'tools',x:16,y:69,icon:'⚒',label:'Thomas’s tool roll',done:state.packed==='tools'});
+    hotspot({id:'blanket',x:35,y:72,icon:'▰',label:'Sam’s extra blanket',done:state.packed==='blanket'});
+    hotspot({id:'keepsake',x:25,y:49,icon:'▣',label:'Framed family photograph',done:state.packed==='keepsake'});
+    hotspot({id:'truck',x:80,y:65,icon:state.packed?'✓':'＋',label:state.packed?'Item packed':'Open truck bed',target:true,done:!!state.packed});
+    continueWhen(!!state.packed);
   }
-  function renderWork() {
-    setScene('camp','CALIFORNIA · SEASONAL WORK AREA','A handbill is not a promise',[
-      'The Millers reach a work area in California. A handbill advertises harvest jobs, but it does not say how long the work will last or what the living conditions will be.',
-      'Before deciding what to do, read the handbill and speak with a worker who has been here longer.'
-    ]);
-    const options=grid();
-    const h=document.createElement('button');h.type='button';h.className='lrw-choice';h.innerHTML=`<span>Read the handbill</span><span class="choice-mark">${state.handbill?'READ':'INSPECT'}</span>`;h.addEventListener('click',()=>{state.handbill=true;note('A handbill advertises harvest work but leaves wages, duration, and living conditions unclear.');feedbackText('The notice promises a chance at work. It does not guarantee steady hours or a place to stay.','success');save();renderSide();renderWork();});options.append(h);
-    const w=document.createElement('button');w.type='button';w.className='lrw-choice';w.innerHTML=`<span>Ask a worker about the offer</span><span class="choice-mark">${state.worker?'ASKED':'TALK'}</span>`;w.addEventListener('click',()=>{state.worker=true;note('A worker explains that harvest work can be seasonal and that families should ask about pay, timing, and camp conditions.');feedbackText('The worker says crops and hiring needs change. New arrivals should ask what is actually being offered.','success');save();renderSide();renderWork();});options.append(w);
-    if(state.handbill&&state.worker){
-      const prompt=document.createElement('p');prompt.className='lrw-inline-label';prompt.textContent='What should the family do next?';actions.append(prompt);
-      btn('Treat the handbill as a guarantee and leave other options behind',()=>{state.jobChoice='trust';note('The family follows the handbill, then discovers the work is temporary and uncertain.');feedbackText('The Millers find a short-term job, but not the security the handbill seemed to promise. They will need another plan when the harvest ends.','error');save();renderSide();renderWork();});
-      btn('Ask about wages, timing, and camp conditions before relying on the offer',()=>{state.jobChoice='ask';note('The family asks about the actual offer and keeps looking for reliable information before making a longer-term plan.');feedbackText('The questions do not guarantee steady work, but they help the family understand the limits of this offer.','success');save();renderSide();renderWork();});
-    }
-    if(state.jobChoice) btn('Make a plan for the next morning',()=>advance('The Millers find a temporary place to rest and plan to ask about water, work, and repairs in the morning.'),{primary:true});
+  function renderShed(){
+    setupScene('shed','ROADSIDE SHED · DUST STORM',state.compared?'Secure the shelter and choose the open road':'Gather supplies and compare the road clues','THE STORM SHED','Read the room before the storm hits',[
+      'A roadside shed gives the family shelter, but a loose shutter rattles in the wind. Find the canteen, map, road notice, and baling wire in the room.',
+      'Use the wire on the shutter. Then drag the map onto the bulletin to compare the shortcut with current road conditions.'
+    ],'Pick up the objects in the scene. Drag the wire to the shutter and map to the bulletin.');
+    hotspot({id:'water',x:12,y:25,icon:'◉',label:'Metal water canteen',done:state.water});
+    hotspot({id:'map',x:35,y:30,icon:'▤',label:'Folded road map',done:state.map});
+    hotspot({id:'bulletin',x:37,y:20,icon:'▧',label:'Road bulletin',done:state.bulletin});
+    hotspot({id:'wire',x:87,y:70,icon:'⌁',label:'Coil of baling wire',done:state.wire});
+    hotspot({id:'shutter',x:63,y:55,icon:state.shutter?'✓':'⌑',label:state.shutter?'Shutter secured':'Loose shutter',target:true,done:state.shutter});
+    if(state.map&&state.bulletin&&!state.compared)hotspot({id:'bulletin',x:37,y:20,icon:'▧',label:'Drop map here to compare',target:true});
+    if(state.compared){hotspot({id:'shortcut',x:54,y:57,icon:'↘',label:'County-road shortcut · bridge closed',target:true,action:()=>{message('The bulletin says the East Fork bridge is closed. The shortcut cannot cross. Choose the open Route 66 marker.','error');}});hotspot({id:'route66',x:76,y:55,icon:'66',label:'Route 66 · open, longer',target:true,action:()=>{state.route='Route 66';note('The Millers choose the longer open highway after comparing the road evidence.');message('Route 66 is open. Secure the shutter and pack the supplies before leaving.','success');render();}});}
+    if(state.wire&&state.water&&state.map&&state.bulletin&&state.compared&&state.shutter&&state.route){continueWhen(true);}
   }
-  function renderFinish() {
-    setScene('dawn','CALIFORNIA · FIRST MORNING','A place to begin',[
-      'The Millers reach California together. Their truck is worn, their supplies are low, and the family still needs to find dependable work and a place to stay.',
-      'Ruth writes one last question in the family ledger: what does this journey show about migration during the Great Depression?'
-    ]);
-    const final=document.createElement('div');final.className='lrw-final';
-    const h=document.createElement('p');h.className='lrw-inline-label';h.textContent='Choose the strongest historical conclusion';final.append(h);actions.append(final);
-    const options=[
-      ['arrival','Reaching California immediately ended the family’s economic hardship.'],
-      ['nuance','Drought and economic hardship pushed families to move, but arrival did not guarantee steady work or security.'],
-      ['choice','Every family migrated for the same reason, and careful choices could control the outcome.']
-    ];
-    options.forEach(([id,label])=>{const b=document.createElement('button');b.type='button';b.className='lrw-choice';b.textContent=label;b.addEventListener('click',()=>{if(id!=='nuance'){feedbackText('Think about the worker’s warning and the uncertainty the family still faces after arriving. Try again.','error');return;}state.complete=true;note('Conclusion: migration offered a possibility, not a guarantee. Families faced hardship before, during, and after the journey.');save();render();});actions.append(b);});
+  function renderRoad(){
+    setupScene('road','ROUTE 66 · WESTBOUND','Decide where the canteen goes','MILES THAT COST SOMETHING','A choice at the roadside',[
+      'Fuel, daylight, and water are limited. The Millers meet a traveler whose bicycle tire has failed on the road shoulder.',
+      'Drag the canteen to the traveler to share water and offer help, or return it to the family’s supplies. Neither choice removes the uncertainty of the road.'
+    ],selected==='water'?'Place the canteen with the traveler or keep it with the family.':'Select the canteen below, then place it in the scene.');
+    hotspot({id:'traveler',x:77,y:61,icon:'＋',label:'Traveler with a punctured tire',target:true,done:state.aid==='shared'});
+    hotspot({id:'family',x:24,y:65,icon:'⌂',label:'Keep water with the family',target:true,done:state.aid==='kept'});
+    continueWhen(!!state.aid);
   }
-  function renderComplete() {
-    art.className='lrw-art art-dawn';art.setAttribute('aria-label','Sunrise over the family’s new camp in California');art.innerHTML='<div class="art-sun"></div><div class="art-haze"></div><div class="art-ridge"></div><div class="art-house"><i></i></div><div class="art-field"></div><div class="art-caption">THE JOURNEY CONTINUES</div>';
-    kicker.textContent='MISSION COMPLETE · FIELD JOURNAL CLOSED';title.textContent='The road brought them here. The story continues.';
-    copy.innerHTML=`<div class="lrw-final"><h3>What the evidence shows</h3><p>The Dust Bowl and Great Depression shaped the Millers’ decision to leave. The family made choices about supplies, safety, and helping others, but those choices could not remove the larger economic and environmental pressures they faced.</p><p>Reaching California created new possibilities—and new uncertainty. Work could be seasonal, housing was not guaranteed, and migrants’ experiences differed. The Millers have survived the trip; their next task is to build a life one day at a time.</p><div class="lrw-final-note"><span class="lrw-inline-label">YOUR JOURNEY RECORD</span><ul><li>Last item packed: ${escapeHtml(state.packed||'not recorded')}</li><li>Roadside choice: ${state.aid==='shared'?'shared water and helped a traveler':'kept water for the family'}</li><li>Work decision: ${state.jobChoice==='ask'?'asked questions before relying on a job offer':'trusted a handbill and learned the work was temporary'}</li></ul></div><p><strong>Historical thinking:</strong> Individual choices matter, but history is also shaped by forces families cannot control.</p></div>`;
-    actions.replaceChildren();const a=document.createElement('a');a.className='lrw-primary';a.href='/escape/';a.textContent='Explore other escape room missions';actions.append(a);
+  function renderWork(){
+    setupScene('camp','CALIFORNIA · SEASONAL WORK AREA','Inspect the offer before making a plan','WORK IS NOT A PROMISE','A handbill is not a guarantee',[
+      'The Millers reach a California work camp. A handbill advertises harvest jobs, but leaves the hours, pay, and living conditions unclear.',
+      'Read the handbill and speak with a worker. Then drag Ruth’s ledger to the worker to ask about the offer—or to the handbill to trust it as written.'
+    ],'Inspect both clues, then move the ledger to the person or the notice.');
+    hotspot({id:'handbill',x:82,y:30,icon:'▧',label:'Harvest work handbill',target:true,useSelected:true,done:state.handbill,action:()=>{if(!state.handbill){state.handbill=true;note('The handbill advertises harvest work but does not spell out wages, duration, or camp conditions.');message('The notice advertises a chance at work. It does not guarantee steady hours or housing.','success');render();}else message('The handbill is evidence. Use Ruth’s ledger to decide what to do with the offer.');}});
+    hotspot({id:'worker',x:67,y:61,icon:'◉',label:'Speak with an experienced worker',target:true,useSelected:true,done:state.worker,action:()=>{if(!state.worker){state.worker=true;note('A worker explains that harvest jobs depend on the crop and hiring needs.');message('The worker says new arrivals should ask what is actually offered. The work may be temporary.','success');render();}else message('The worker has shared what they know. Bring Ruth’s ledger here to ask about the offer.');}});
+    hotspot({id:'ledger',x:23,y:69,icon:'▤',label:'Ruth’s family ledger',hidden:!(state.handbill&&state.worker),done:!!state.jobChoice});
+    continueWhen(!!state.jobChoice);
   }
-  function render() {
+  function renderFinish(){
+    setupScene('dawn','CALIFORNIA · FIRST MORNING','Drag the ledger to the strongest conclusion','A PLACE TO BEGIN','What does the journey show?',[
+      'The Millers reach California together. Their truck is worn, supplies are low, and they still need dependable work and a place to stay.',
+      'Ruth records one final conclusion. Move the ledger to the statement best supported by the journey.'
+    ],'Place the family ledger on the conclusion that fits the evidence.');
+    hotspot({id:'claim-arrival',x:19,y:68,icon:'1',label:'Arrival ended the hardship',target:true,useSelected:true,action:()=>{if(selected!=='ledger'){message('Select Ruth’s ledger first.');return;}selected='';message('The worker’s warning and the family’s low supplies show that arrival did not end their hardship. Try another statement.','error');render();}});
+    hotspot({id:'claim-nuance',x:50,y:66,icon:'2',label:'Migration offered a chance, not a guarantee',target:true,useSelected:true,action:()=>{if(selected!=='ledger'){message('Select Ruth’s ledger first.');return;}selected='';state.complete=true;note('Conclusion: migration offered a possibility, not a guarantee. Environmental and economic forces shaped the journey, while each family made its own choices.');save();render();}});
+    hotspot({id:'claim-same',x:81,y:68,icon:'3',label:'All families migrated for the same reason',target:true,useSelected:true,action:()=>{if(selected!=='ledger'){message('Select Ruth’s ledger first.');return;}selected='';message('Migrant experiences varied. The family’s choices mattered, but could not control drought, job markets, or conditions at the camps. Try another statement.','error');render();}});
+  }
+  function renderComplete(){
+    scene.className='lrw-scene-view art-dawn';scene.style.setProperty('--scene-image','url("/escape/rooms/long-road-west/assets/dawn.webp")');$('#sceneLocation').textContent='CALIFORNIA · FIRST MORNING';$('#sceneObjective').textContent='THE JOURNEY CONTINUES';$('#sceneKicker').textContent='MISSION COMPLETE · FIELD JOURNAL CLOSED';$('#sceneTitle').textContent='The road brought them here. The story continues.';
+    $('#sceneCopy').innerHTML='<p>The Dust Bowl and Great Depression shaped the Millers’ decision to leave. The family made choices about supplies, safety, and helping others, but those choices could not remove the larger economic and environmental pressures they faced.</p><p>Reaching California created new possibilities—and new uncertainty. Work could be seasonal, housing was not guaranteed, and migrants’ experiences differed. The Millers survived the trip; their next task is to build a life one day at a time.</p>';
+    $('#sceneHint').textContent='Your evidence-based conclusion is recorded.';layer.replaceChildren();$('#continueBtn').hidden=true;
+    const copy=document.createElement('div');copy.className='lrw-complete-card';copy.innerHTML=`<span class="lrw-kicker">YOUR JOURNEY RECORD</span><p>Last item packed: <strong>${escapeHtml(state.packed||'not recorded')}</strong></p><p>Roadside choice: <strong>${state.aid==='shared'?'shared water and helped a traveler':'kept water for the family'}</strong></p><p>Work decision: <strong>${state.jobChoice==='ask'?'asked questions before relying on the offer':'trusted the handbill and found temporary work'}</strong></p><p><strong>Historical thinking:</strong> individual choices matter, and history is also shaped by forces families cannot control.</p>`;$('#sceneCopy').append(copy);
+    renderFeedback();
+  }
+  function render(){
     renderSide();
     if(state.complete){renderComplete();return;}
     if(state.chapter===0)renderFarm();else if(state.chapter===1)renderShed();else if(state.chapter===2)renderRoad();else if(state.chapter===3)renderWork();else renderFinish();
+    renderInventorySelection();
   }
-    $('#restartBtn').addEventListener('click',()=>{if(!window.confirm('Restart the Miller family’s journey from the beginning?'))return;state=fresh();save();render();});
+  function renderInventorySelection(){document.querySelectorAll('.lrw-item').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.item===selected)));}
+  function itemById(id){const items={tools:'Thomas’s tools',blanket:'Sam’s blanket',keepsake:'Family photograph',wire:'Baling wire',water:'Water canteen',map:'Road map',bulletin:'Road bulletin',ledger:'Ruth’s ledger'};return items[id]||id;}
+  function beginDrag(e){
+    if(e.button!==undefined&&e.button!==0)return;
+    e.preventDefault();
+    const el=e.currentTarget,id=el.dataset.item;if(!id)return;
+    const startX=e.clientX,startY=e.clientY;let moved=false;
+    const onMove=ev=>{if(Math.hypot(ev.clientX-startX,ev.clientY-startY)>7)moved=true;if(!moved)return;selected=id;ghost.innerHTML=`<span>${el.querySelector('.hotspot-core')?.textContent||'✦'}</span>${escapeHtml(itemById(id))}`;ghost.classList.add('visible');ghost.style.left=`${ev.clientX}px`;ghost.style.top=`${ev.clientY}px`;};
+    const onUp=ev=>{window.removeEventListener('pointermove',onMove);window.removeEventListener('pointerup',onUp);ghost.classList.remove('visible');if(!moved){el.click();return;}const dest=document.elementFromPoint(ev.clientX,ev.clientY)?.closest('.lrw-hotspot[data-target]');if(dest){apply(id,dest.dataset.target);}else{selected=id;message(`Selected ${itemById(id)}. Drop it on a highlighted object, or click a destination.`);render();}};
+    window.addEventListener('pointermove',onMove);window.addEventListener('pointerup',onUp,{once:true});
+  }
+  function apply(item,target){
+    if(state.chapter===0&&target==='truck'){
+      if(!['tools','blanket','keepsake'].includes(item)){message('Choose a family item from the farm scene first.');return;}
+      state.packed=item;selected='';note(`The family packs ${item==='tools'?'Thomas’s tool roll':item==='blanket'?'Sam’s extra blanket':'a framed family photograph'} into the truck.`);message('Packed. The truck has room for one more family item.','success');render();continueWhen(true);return;
+    }
+    if(state.chapter===1&&item==='wire'&&target==='shutter'){
+      state.shutter=true;selected='';note('Thomas braces the rattling shutter with baling wire.');message('The shutter holds against the wind.','success');render();return;
+    }
+    if(state.chapter===1&&item==='map'&&target==='bulletin'){
+      if(!state.map||!state.bulletin){message('Collect both the map and the bulletin first.');return;}state.compared=true;selected='';note('The map and bulletin reveal that the East Fork bridge is closed while Route 66 is open.');message('The clues match: the shortcut crosses a closed bridge; Route 66 is passable, but longer.','success');render();return;
+    }
+    if(state.chapter===2&&item==='water'&&(target==='traveler'||target==='family')){
+      state.aid=target==='traveler'?'shared':'kept';selected='';
+      if(state.aid==='shared'){note('The Millers share water and help a stranded traveler, who points them toward a reliable service stop.');message('A little water is gone; useful directions and a small act of help take its place.','success');}
+      else{note('The Millers keep their water for the children and mark the next service stop on their map.');message('The canteen stays with the family. Ruth marks the next service stop.','success');}
+      render();continueWhen(true);return;
+    }
+    if(state.chapter===3&&item==='ledger'&&(target==='worker'||target==='handbill')){
+      state.jobChoice=target==='worker'?'ask':'trust';selected='';
+      if(state.jobChoice==='ask'){note('The family asks about wages, timing, and camp conditions before relying on the harvest offer.');message('The worker explains that the harvest is temporary. Questions help the family judge the offer, but cannot promise steady work.','success');}
+      else{note('The family trusts the handbill and finds short-term harvest work, but no lasting security.');message('The handbill leads to a temporary job. When the harvest ends, the family will need another plan.','error');}
+      render();continueWhen(true);return;
+    }
+    if(state.chapter===4&&item==='ledger'){
+      selected='';
+      if(target==='claim-nuance'){state.complete=true;note('Conclusion: migration offered a possibility, not a guarantee. Environmental and economic forces shaped the journey, while each family made its own choices.');save();render();return;}
+      message(target==='claim-arrival'?'The worker’s warning and the family’s low supplies show that arrival did not end their hardship. Try another statement.':'Migrant experiences varied. Family choices mattered, but could not control drought, job markets, or camp conditions. Try another statement.','error');render();return;
+    }
+    message('That object does not fit there. Try another target.','error');
+  }
+  $('#restartBtn').addEventListener('click',()=>{if(!window.confirm('Restart the Miller family’s journey from the beginning?'))return;state=fresh();selected='';save();render();});
   render();
 })();
