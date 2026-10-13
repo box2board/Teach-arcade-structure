@@ -7,8 +7,8 @@
 <link rel="canonical" href="https://teacharcade.com/tools/timeline-creator/">
 <meta property="og:title" content="Visual Timeline Creator | Teach Arcade"><meta property="og:description" content="Build a story through time. Picture cards, colorful eras, and printable timelines."><meta property="og:url" content="https://teacharcade.com/tools/timeline-creator/"><meta property="og:type" content="website">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Timeline Creator","url":"https://teacharcade.com/tools/timeline-creator/","applicationCategory":"EducationalApplication","operatingSystem":"Web browser","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-<link rel="icon" href="/assets/images/teach-arcade-logo.png"><link rel="stylesheet" href="studio.css?v=20261013-apply-fix">
-<script src="/assets/vendor/jspdf-2.5.2.umd.min.js" defer></script><script src="model.js?v=20261013-apply-fix" defer></script><script src="studio.js?v=20261013-apply-fix" defer></script>
+<link rel="icon" href="/assets/images/teach-arcade-logo.png"><link rel="stylesheet" href="studio.css?v=20261013-target-fix">
+<script src="/assets/vendor/jspdf-2.5.2.umd.min.js" defer></script><script src="model.js?v=20261013-target-fix" defer></script><script src="studio.js?v=20261013-target-fix" defer></script>
 </head>
 <body>
 <header class="topbar"><a class="brand" href="/tools/"><span class="brand-mark">TA</span><span>Teach Arcade<small>TIMELINE CREATOR</small></span></a><div class="top-actions"><span id="save-state" role="status">Saved on this device</span><button id="open">Open</button><button id="save">Save project</button><button class="primary" id="export">Download ↗</button></div></header>
@@ -16,7 +16,7 @@
 <aside class="toolbox" aria-label="Add to your timeline"><div class="toolbox-title"><span class="eyebrow">YOUR CREATIVE TOOLBOX</span><h1>Tell your story.</h1><p>Pictures, moments, and a little personality.</p></div>
 <button id="add" class="primary wide">＋ Add an event</button>
 <div class="tool-grid"><button id="tool-image"><span>▧</span>Images</button><button id="tool-video"><span>▷</span>Video</button><button id="tool-meme"><span>😎</span>Memes</button><button id="tool-emoji"><span>😊</span>Emojis</button><button id="tool-text"><span>Aa</span>Text & notes</button><button id="tool-connect"><span>↗</span>Connections</button></div>
-<div class="target-note"><span class="target-dot"></span><span id="target-label">Choose a card, then add something.</span></div>
+<label id="event-select-wrap" hidden>Working on event<select id="event-select" aria-label="Choose an event for the toolbox"></select></label><div class="target-note"><span class="target-dot"></span><span id="target-label">Choose a card, then add something.</span></div>
 <div class="side-section"><span class="eyebrow">MAKE IT YOURS</span><button id="design" class="side-link">◐ Design & layout <span>›</span></button><button id="templates" class="side-link">▦ Templates <span>›</span></button><button id="instructions-button" class="side-link">✎ Teacher directions <span>›</span></button></div>
 <div class="sidebar-footer"><button id="new">＋ Blank timeline</button><button id="example">Try an example</button><p>No login. No fuss.<br>Save a project to share it with your class.</p></div>
 </aside>
