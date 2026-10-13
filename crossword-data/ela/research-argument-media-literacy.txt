@@ -1,0 +1,84 @@
+[ela--research-argument-media-literacy--analyzing-arguments-and-evidence]
+Argument|Position developed through reasons and evidence.
+Claim|Statement of the position a writer wants readers to accept.
+Reason|Explanation of why a position deserves support.
+Evidence|Facts, observations, or data supporting a position.
+Counterclaim|Different position an argument addresses.
+Rebuttal|Response explaining limitations in an opposing position.
+Relevant|Describes evidence directly connected to the issue being argued.
+Sufficient|Describes evidence adequate in amount and quality to support a position.
+Sample|Subset of people or cases used to gather information.
+Correlation|Association between variables without proof of a cause.
+Causation|Relationship in which one factor produces or contributes to an effect.
+Representative|Describes a sample reflecting the larger population it concerns.
+Selective|Describes use of favorable evidence while omitting known contrary findings.
+Scope|Breadth of a claim that must fit the available evidence.
+Data|Recorded observations or measurements used as support.
+Source|Origin of information that readers can evaluate.
+Generalization|Broad conclusion drawn from individual cases.
+Irrelevant|Describes a fact that may be accurate but does not address the claim.
+Reasoning|Explanation connecting evidence to the position it supports.
+Qualification|Limitation added to keep a claim from overstating the evidence.
+[ela--research-argument-media-literacy--rhetorical-appeals-and-persuasive-techniques]
+Ethos|Appeal based on a speaker's credibility or character.
+Pathos|Appeal aimed at an audience's emotions.
+Logos|Appeal based on reasoning and evidence.
+Credibility|Quality of being believable or trustworthy on a subject.
+Emotion|Feeling a vivid personal story may arouse.
+Evidence|Information readers should check even when an appeal feels persuasive.
+Audience|People a persuasive message is intended to influence.
+Bandwagon|Appeal urging a choice because many others supposedly make it.
+Repetition|Reuse of a phrase to emphasize a persuasive message.
+Hyperbole|Exaggeration such as describing a small fee as a mountain of debt.
+Ad Hominem|Fallacy attacking a person instead of addressing their argument.
+False Dilemma|Reasoning flaw presenting only two choices when more exist.
+Rhetorical Question|Question asked to make a point rather than obtain an answer.
+Endorsement|Expression of approval by someone associated with a product or proposal.
+Expertise|Relevant specialized knowledge that can strengthen an appeal to credibility.
+Empathy|Understanding or sharing another person's feelings.
+Vivid Description|Detailed language helping an audience imagine an experience.
+Reasoning|Logical explanation connecting support to a proposal.
+Persuasion|Attempt to influence another person's beliefs or actions.
+Fallacy|Error in reasoning that weakens an argument.
+[ela--research-argument-media-literacy--research-and-source-evaluation]
+Credibility|Trustworthiness of information for the question being studied.
+Expertise|Author's relevant qualifications or specialized knowledge.
+Publication Date|Information showing when a source was issued.
+Primary Source|Firsthand account or record created by someone directly involved.
+Secondary Source|Work analyzing or interpreting information from other evidence.
+Citation|Reference identifying where borrowed information came from.
+Verification|Checking a claim against traceable evidence.
+Bias|Preference or perspective that may shape selection of evidence.
+Purpose|Reason a source was created, such as to inform or sell.
+Research Question|Focused inquiry guiding the search for information.
+Corroboration|Confirmation through independent supporting evidence.
+Original Data|Measurements traced to their initial collection rather than repeated claims.
+Method|Procedure explaining how a study collected or analyzed information.
+Transparency|Openness about evidence, methods, and source details.
+Relevance|Connection between a source's content and the specific inquiry.
+Conflict of Interest|Personal or financial stake that may affect a source's judgment.
+Perspective|Viewpoint of a source's creator, including a firsthand witness.
+Context|Background needed to understand a statistic's meaning.
+Accuracy|Correctness of information, separate from how useful it is for a narrow question.
+References|List of works enabling readers to trace a source's supporting information.
+[ela--research-argument-media-literacy--quoting-paraphrasing-and-attribution]
+Quotation|Exact wording borrowed from a source and marked as such.
+Paraphrase|Restatement preserving an idea in new wording and sentence structure.
+Summary|Short account of a source's main points.
+Attribution|Identification of whose words or ideas are being used.
+Citation|Reference identifying the source of borrowed material.
+Quotation Marks|Punctuation enclosing directly borrowed words.
+Plagiarism|Presenting someone else's words or ideas as one's own.
+Source|Original work from which information is borrowed.
+Analysis|Writer's explanation connecting borrowed evidence to a claim.
+Context|Surrounding information needed to preserve a quoted passage's meaning.
+Signal Phrase|Introductory wording identifying a speaker or writer before borrowed material.
+Bibliography|List of sources usually appearing at the end of a work.
+Exact Wording|Language preserved without changes when it matters to the discussion.
+Misrepresentation|Distortion caused by removing a phrase that changes a source's meaning.
+Integration|Fitting a quotation smoothly into the writer's own sentence or paragraph.
+Patchwriting|Restating a source by changing only a few words while keeping its structure.
+Overstatement|Making a source's cautious claim sound more certain than it is.
+Note Taking|Recording information while separating copied wording from personal restatements.
+Interpretation|Writer's own explanation that should be distinguished from a source's contribution.
+Relevance|Connection between selected borrowed information and the point being supported.
