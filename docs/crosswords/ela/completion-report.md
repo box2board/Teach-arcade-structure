@@ -89,4 +89,4 @@ Each linked directory contains Easy, Medium, Hard and complete-set PDFs plus all
 
 Branch: `print-play/ela-crossword-library`. Base: `b508050c4a130e446f499567c1f66e93328366e8`, current main verified before submission. Inventory precedes generation in commit history; resources are committed by their five real categories. No unrelated generated index/sitemap/robots changes, Social Studies asset changes, gameplay changes or question-bank changes are included. The full diff and final assets were checked. This branch is submitted for review only; no merge or production deployment was performed.
 
-Delivery commit and pull request details are recorded below after submission. The final commit SHA is recorded in the PR description and branch ref (a report cannot embed the SHA of the commit containing itself).
+Pull request: #180, https://github.com/box2board/Teach-arcade-structure/pull/180 (open, not merged). Tested resource commit: `80345383e6587511270800241a0d2b75e9d88840`. A final report-only delivery commit follows; its SHA is available from the PR head and branch ref.
