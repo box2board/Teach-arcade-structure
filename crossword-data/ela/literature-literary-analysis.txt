@@ -1,0 +1,252 @@
+[ela--literature-literary-analysis--plot-and-narrative-structure]
+Exposition|Opening information that introduces a story's characters and situation.
+Inciting Incident|Event that disrupts routine and starts the central problem.
+Rising Action|Plot phase in which obstacles increase tension before the decisive moment.
+Climax|Decisive high point when the central struggle reaches its greatest intensity.
+Falling Action|Events showing consequences after the decisive high point.
+Resolution|Plot phase in which the central conflict is settled.
+Flashback|Scene presenting events from an earlier time.
+Foreshadowing|Hints that prepare readers for later events.
+Subplot|Smaller storyline alongside the central plot.
+Pacing|Speed at which a story unfolds for the reader.
+In Medias Res|Latin term for beginning in the middle of the action.
+Frame Narrative|Structure in which one story surrounds another story.
+Episodic|Describes a structure built from relatively self-contained incidents.
+Linear|Describes a narrative presenting events in chronological order.
+Nonlinear|Describes a narrative moving outside chronological order.
+Denouement|Closing aftermath that shows life after the central conflict has been settled.
+Cliffhanger|Ending that leaves the result of an urgent event unknown.
+Parallel Plots|Separate storylines that develop alongside each other and may intersect.
+Chronology|Order in which events occur in time.
+Turning Point|Moment that changes the direction of the story.
+[ela--literature-literary-analysis--characterization-and-character-development]
+Characterization|Methods a writer uses to present a fictional person.
+Direct|Describes characterization that explicitly states a trait.
+Indirect|Describes characterization revealed through actions, speech, and thoughts.
+Protagonist|Central character pursuing the story's main goal.
+Antagonist|Character or force opposing the central character's goal.
+Static|Describes a character who remains largely unchanged.
+Dynamic|Describes a character whose beliefs or behavior significantly change.
+Foil|Character whose contrasting qualities highlight another character's traits.
+Confidant|Trusted person to whom a character reveals private concerns.
+Motivation|Reason behind a character's decisions or actions.
+Trait|Characteristic such as patience or generosity.
+Dialogue|Characters' spoken exchanges that can reveal personality.
+Actions|Things characters do that provide evidence of their qualities.
+Thoughts|Private mental responses that can differ from confident spoken words.
+Development|Growth or change in a character across the story.
+Accountability|Willingness to accept responsibility rather than blame others.
+Resourcefulness|Ability to solve problems creatively using available materials.
+Trust|Confidence in another person that can grow through shared experience.
+Inference|Conclusion about a character drawn from clues and reasoning.
+Contrast|Difference between characters' qualities that helps readers compare them.
+[ela--literature-literary-analysis--theme-and-central-meaning]
+Theme|Insight about life developed through a literary text.
+Topic|Broad subject such as friendship, rather than a complete message.
+Evidence|Specific textual information supporting an interpretation.
+Pattern|Repeated arrangement of ideas or events that helps reveal meaning.
+Consequences|Results of characters' choices that can reveal a story's message.
+Integrity|Honesty and adherence to principles even when no one is watching.
+Cooperation|Working together to meet a shared goal.
+Loyalty|Commitment to a person or promise despite personal cost.
+Sacrifice|Giving up something valued to uphold a commitment.
+Responsibility|Duty a character accepts for a choice or its effects.
+Insight|Understanding gained from examining experience or a text.
+Ambition|Strong desire for achievement that may help or harm relationships.
+Generalization|Broad conclusion that becomes weak when it exceeds the text's support.
+Interpretation|Reasoned explanation of what a text means.
+Contrast|Difference between characters' choices and outcomes that can reveal a theme.
+Curiosity|Desire to ask questions and learn.
+Perseverance|Continued effort despite setbacks.
+Priorities|Things a character considers most important.
+Dialogue|Exchange of views that can develop a message about listening.
+Claim|Arguable statement about a text's meaning that requires support.
+[ela--literature-literary-analysis--point-of-view-and-narration]
+Narrator|Voice telling the story.
+First Person|Narration in which the teller refers to themself as I or we.
+Second Person|Narration addressing a participant or reader as you.
+Third Person Limited|Outside narration accessing one character's private thoughts.
+Third Person Omniscient|Outside narration accessing several characters' private thoughts.
+Perspective|Position from which events are seen and understood.
+Pronouns|Words such as I, you, and she that help signal viewpoint.
+Reliability|Degree to which a narrator's account can be trusted.
+Bias|Preference or prejudice that can distort a narrator's judgments.
+Observer|Narrator who witnesses events without being the central participant.
+Objective|Describes narration reporting visible actions without private thoughts.
+Author|Real person who writes the text, distinct from its created teller.
+Inference|Conclusion about an unspoken thought based on observable clues.
+Suspense|Uncertainty about what will happen, sometimes created by restricted information.
+Voice|Distinctive style or personality expressed by a storyteller.
+Selective|Describes narrative access that includes some information and leaves out other information.
+Shifting|Describes a viewpoint that moves between different characters or narrators.
+Unreliable|Describes a teller whose account gives readers reasons for doubt.
+Knowledge|Information available to a narrator or character.
+Account|Version of events that can differ when two people describe the same incident.
+[ela--literature-literary-analysis--literary-conflict]
+Conflict|Struggle involving a character's goals or values.
+Internal|Describes a struggle within a character's mind.
+External|Describes a struggle against a force outside the character.
+Character Versus Self|Conflict involving a person's competing desires or beliefs.
+Character Versus Nature|Conflict involving a storm, drought, or other environmental force.
+Character Versus Society|Conflict involving a person and a community's rules or expectations.
+Character Versus Character|Conflict between two people in a story.
+Character Versus Technology|Conflict involving a person and a machine or automated system.
+Protagonist|Central character experiencing the main struggle.
+Antagonist|Person or force blocking the central character's goal.
+Goal|Result a character tries to achieve.
+Obstacle|Barrier preventing progress toward a desired result.
+Tension|Pressure created by unresolved struggles.
+Dilemma|Choice between competing options that each present difficulties.
+Resolution|Settlement of the central struggle.
+Guilt|Feeling arising when a character believes they have done wrong.
+Values|Principles a character weighs when making a moral choice.
+Cooperation|Working together, sometimes replacing rivalry under a shared threat.
+Setting|Time and place whose conditions can influence a struggle.
+Forgiveness|Release of resentment that may settle a relationship struggle.
+[ela--literature-literary-analysis--setting-tone-and-mood]
+Setting|Time and place in which a story occurs.
+Tone|Author's or narrator's attitude toward the subject.
+Mood|Feeling a passage creates for its reader.
+Time|When a story occurs, one component of its setting.
+Reader|Person whose emotional response is influenced by a passage.
+Imagery|Descriptive language appealing to the senses.
+Sarcastic|Describes a mocking tone in praise that actually expresses criticism.
+Hopeful|Describes a tone expressing confidence that circumstances can improve.
+Critical|Describes a tone emphasizing faults or shortcomings.
+Playful|Describes a lighthearted tone that treats a subject with amusement.
+Appreciative|Describes a tone expressing gratitude or admiration.
+Suspenseful|Describes a mood of uncertainty about a possible danger or outcome.
+Festive|Describes a celebratory mood created by music and bright lanterns.
+Bleak|Describes a landscape that is bare, harsh, or unpromising.
+Diction|Writer's choice of words that helps convey attitude and atmosphere.
+Sensory Details|Descriptions of sights, smells, sounds, tastes, or textures.
+Isolation|Separation from others suggested by an empty cabin or deserted corridor.
+Sympathy|Concern for a character's suffering that readers may feel.
+Perspective|Way of seeing a place that may change as a character grows older.
+Tone Shift|Change in attitude as a narrator moves from one subject to another.
+[ela--literature-literary-analysis--figurative-language]
+Simile|Comparison of unlike things using like or as.
+Metaphor|Comparison identifying one thing as another without like or as.
+Personification|Giving human actions or qualities to something nonhuman.
+Hyperbole|Intentional exaggeration used for emphasis.
+Alliteration|Repetition of initial consonant sounds in nearby words.
+Onomatopoeia|Use of words that imitate sounds.
+Imagery|Language evoking sensory experiences.
+Literal|Describes meaning that follows the ordinary, direct sense of words.
+Figurative|Describes meaning extending beyond the ordinary, direct sense of words.
+Comparison|Examination of similarities or differences between things.
+Analogy|Explanation of an unfamiliar idea through a more familiar relationship.
+Idiom|Expression whose usual meaning differs from its words' direct meanings.
+Repetition|Deliberate reuse of words or phrases for effect.
+Extended Metaphor|Comparison developed through several related details or lines.
+Allusion|Brief reference to a familiar work, event, or person.
+Assonance|Repetition of vowel sounds in nearby words.
+Consonance|Repetition of consonant sounds, not limited to word beginnings.
+Oxymoron|Pairing of apparently contradictory terms, such as deafening silence.
+Symbol|Object or image representing an additional idea.
+Understatement|Deliberately presenting something as less important or extreme than it is.
+[ela--literature-literary-analysis--irony]
+Verbal Irony|Device in which a speaker's words differ from the intended meaning.
+Situational Irony|Meaningful contrast between an expected result and the actual result.
+Dramatic Irony|Device in which an audience knows something a character does not.
+Expectation|Belief about what is likely to happen.
+Outcome|Actual result of an event or action.
+Speaker|Person whose intended meaning may differ from their stated words.
+Audience|People watching a play who may know more than its characters.
+Character|Fictional person who may be unaware of facts known to the audience.
+Contrast|Significant difference between stated praise and a described mess.
+Intention|Purpose or meaning a speaker aims to communicate.
+Sarcasm|Mocking expression that can use praise to convey criticism.
+Context|Surrounding circumstances that help readers recognize an intended meaning.
+Literal|Describes a reading that treats the words as a direct statement.
+Knowledge|Information whose unequal distribution can create dramatic tension.
+Suspense|Uncertainty about when a character will discover an important fact.
+Reversal|Change that turns an anticipated result into its opposite.
+Assumption|Belief taken for granted, such as confidence that nothing can go wrong.
+Contradiction|Two statements or facts that cannot both be true in the same sense.
+Interpretation|Reasoned explanation of the gap between words and circumstances.
+Surprise|Unexpected event that does not necessarily contain meaningful irony.
+[ela--literature-literary-analysis--symbolism-and-motifs]
+Symbol|Concrete object or image representing an additional idea.
+Motif|Recurring element that contributes to a text's meaning.
+Context|Surrounding details needed to interpret an object's meaning.
+Recurrence|Repeated appearance that links images across scenes.
+Theme|Insight about life supported by symbolic patterns.
+Imagery|Descriptive language that evokes experiences of the senses.
+Freedom|Idea suggested by birds leaving a cage as a character gains independence.
+Trust|Idea linked to a scarf exchanged when characters learn to rely on one another.
+Guidance|Idea a lighthouse can represent when a character is unsure which path to take.
+Belonging|Connection to a community suggested by a newly planted tree growing over years.
+Barrier|Obstacle to communication suggested by locked doors in the stated story pattern.
+Isolation|Separation from others suggested by repeatedly closed windows.
+Neglect|Lack of care suggested by dust on objects left untouched.
+Separation|Division between neighborhoods suggested by a river that keeps them apart.
+Renewal|Fresh beginning that rain may suggest after loss.
+Evidence|Textual details needed to support a symbolic interpretation.
+Association|Connection between an object and an idea established through its use.
+Change|Development suggested when a notebook moves from complaints to plans.
+Surrender|Giving up a fight, commonly signaled by a white flag.
+Interpretation|Reasoned explanation of symbolic meaning rather than an unsupported guess.
+[ela--literature-literary-analysis--poetry-analysis]
+Line|Single row of words in a poem.
+Stanza|Group of poetic lines separated from surrounding groups.
+Rhyme|Repetition of similar ending sounds.
+Meter|Regular pattern of stressed and unstressed syllables.
+Speaker|Voice expressing the words of a poem.
+Alliteration|Repeated initial consonant sounds in nearby words.
+Enjambment|Continuation of a sentence across a line break without a pause.
+Refrain|Repeated line or phrase, often returning at stanza endings.
+Couplet|Pair of consecutive poetic lines that function together.
+Free Verse|Poetry without a regular rhyme or metrical pattern.
+Caesura|Pause within a poetic line.
+End Stopped|Describes a line whose ending coincides with a grammatical pause.
+Metaphor|Comparison stating that one thing is another.
+Rhythm|Pattern of movement or beats created by a poem's language.
+Repetition|General term for deliberately reusing words or phrases for emphasis.
+Imagery|Language that appeals to the senses.
+Tone|Speaker's attitude toward a subject.
+Theme|Insight about life developed through a poem.
+Syllable|Unit of pronunciation that may be stressed or unstressed.
+Symbol|Image representing a larger idea, such as a candle suggesting limited time.
+[ela--literature-literary-analysis--drama-and-dramatic-structure]
+Script|Written text of a play.
+Dialogue|Spoken exchanges between characters.
+Stage Directions|Instructions about movement, delivery, or scenery.
+Monologue|Extended speech by one character to other characters.
+Soliloquy|Speech revealing private thoughts while a character is alone onstage.
+Aside|Brief remark heard by the audience but not by other characters.
+Act|Major division of a play containing one or more scenes.
+Scene|Section of a play involving a continuous location or action.
+Chorus|Group providing collective commentary on dramatic events.
+Conflict|Struggle between goals or values that drives dramatic action.
+Resolution|Part of the structure settling the central struggle.
+Dramatic Irony|Effect created when the audience knows what a character does not.
+Scenery|Physical stage features representing the setting.
+Performance|Presentation of a play through acting and staging.
+Speech|Grouping of a character's spoken lines in a script.
+Gesture|Meaningful physical movement that can reveal feelings without words.
+Delivery|Manner in which an actor speaks a line.
+Visual Cues|Observable details, such as trembling hands, that affect interpretation.
+Open Ending|Conclusion leaving an important choice or question unresolved.
+Audience|People watching a dramatic performance.
+[ela--literature-literary-analysis--literary-genres]
+Genre|Category of texts sharing conventions or features.
+Fiction|Writing presenting invented characters or events.
+Biography|Factual life account written by someone other than its subject.
+Autobiography|Account a person writes about their own life.
+Fantasy|Genre in which impossible or magical elements shape the story.
+Science Fiction|Genre exploring imagined technology or scientific possibilities.
+Historical Fiction|Invented narrative set within a documented past period.
+Fable|Brief story often using speaking animals to teach a lesson.
+Mystery|Genre centered on clues and solving an unexplained event or crime.
+Memoir|Personal account focusing on selected meaningful experiences.
+Comedy|Dramatic genre emphasizing humor and often ending happily.
+Tragedy|Dramatic genre depicting a serious downfall.
+Epic|Long narrative poem about a hero's significant journey or deeds.
+Satire|Writing using humor or exaggeration to criticize social practices.
+Realistic Fiction|Invented story depicting events that could happen in the actual world.
+Drama|Literature written for performance through dialogue and action.
+Conventions|Typical features readers associate with a genre.
+Nonfiction|Writing presenting factual subjects rather than invented narratives.
+Hybrid|Describes a work combining features from more than one genre.
+Scope|Extent of coverage distinguishing a whole-life account from selected memories.
