@@ -1,0 +1,39 @@
+{
+  "status": "passed",
+  "subjects": {
+    "social-studies": {
+      "topics": 76,
+      "categoryCounts": {
+        "Government & Civics": 16,
+        "U.S. History": 15,
+        "World History": 15,
+        "Economics": 15,
+        "Geography": 15
+      },
+      "focusChecks": 304,
+      "hoverChecks": 76,
+      "downloadChecks": 304
+    },
+    "ela": {
+      "topics": 25,
+      "categoryCounts": {
+        "Literature & Literary Analysis": 12,
+        "Reading & Informational Text": 3,
+        "Research, Argument & Media Literacy": 4,
+        "Language, Grammar & Vocabulary": 5,
+        "Writing & Composition": 1
+      },
+      "focusChecks": 100,
+      "hoverChecks": 25,
+      "downloadChecks": 100
+    }
+  },
+  "focusChecks": 404,
+  "hoverChecks": 101,
+  "downloadChecks": 404,
+  "initialPreviewOrPdfRequests": 0,
+  "mobilePreviewOrPdfRequests": 0,
+  "mobileHorizontalOverflow": false,
+  "noJavaScriptDownloads": 404,
+  "browserErrors": []
+}

@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "topics": 25,
+  "packages": 25,
+  "pdfs": 100,
+  "previews": 75,
+  "pdfPages": 300,
+  "minimumCellPoints": 13.71,
+  "maximumThumbnailBytes": 34142,
+  "checks": [
+    "cumulative 10/15/20 vocabulary",
+    "unique answers and nonblank clues",
+    "all entries placed",
+    "independent maximal-run comparison",
+    "connected crossings",
+    "printed glyph and numbering checks",
+    "no student answer glyphs",
+    "complete key glyphs",
+    "Letter page size and text bounds",
+    "2/2/2/6 page counts",
+    "exact combined rendering/order",
+    "exact thumbnail/PDF match",
+    "all hub href/src assets resolve",
+    "unique resource IDs",
+    "source SHA-256 freshness"
+  ],
+  "subjects": [
+    "English Language Arts"
+  ]
+}
