@@ -1,0 +1,439 @@
+[science--inquiry-environment--scientific-investigations]
+Hypothesis|Evidence could support or challenge it
+Observation|Information gathered with senses or scientific instruments
+Inference|Conclusion drawn from observations and evidence
+Scientific Theory|Broad explanation supported by substantial evidence
+Scientific Model|A representation used to study or explain a system
+Replication|Repeating a study or its methods to check findings
+Observational|Examines conditions without deliberately assigning a treatment
+Scientific Law|Description of a consistently observed pattern in nature
+Data|Recorded observations and measurements from an investigation.
+Correlation|Relationship in which variables change together; alone it does not prove cause.
+Causation|Relationship in which a change in one factor produces a change in another.
+Methods|Section usually explains how data were collected
+Independent Variable|Factor deliberately changed by the investigator.
+Control Group|Comparison group that does not receive the tested treatment.
+Constant|Condition kept the same across comparison groups.
+Trial|One repetition of an experimental procedure.
+Quantitative|Describes data expressed as numbers or measurements.
+Qualitative|Describes observations about qualities rather than numerical amounts.
+Procedure|Ordered steps used to carry out an investigation.
+Sample size|Number of individuals or observations included in a study.
+
+[science--inquiry-environment--experimental-design]
+Independent Variable|A factor deliberately changed by the investigator
+Dependent Variable|The outcome measured in response to a change
+Controlled Variable|Condition kept the same when groups are compared
+Repeated Trial|Another run of a test under the same planned conditions
+Confounding Variable|Factor that changes alongside the tested factor and complicates interpretation
+Random Assignment|Method that places participants into groups by chance
+Random Sampling|Method that gives population members a chance of selection
+Trial|One repetition of an experimental procedure.
+Data|Recorded observations and measurements from an investigation.
+Procedure|Ordered steps used to carry out an investigation.
+Observation|Information gathered with senses or scientific instruments.
+Hypothesis|Testable proposed explanation or prediction.
+Control Group|Comparison group that does not receive the tested treatment.
+Constant|Condition kept the same across comparison groups.
+Quantitative|Describes data expressed as numbers or measurements.
+Qualitative|Describes observations about qualities rather than numerical amounts.
+Sample size|Number of individuals or observations included in a study.
+Replication|Repeating an investigation to check whether results are consistent.
+Measurement Error|Difference between a measured value and the quantity’s true value.
+Outlier|Data value unusually far from the rest of a set.
+
+[science--inquiry-environment--measurement-and-si-units]
+Meter|SI base unit of length
+Kilogram|SI base unit of mass
+Second|SI base unit of time
+Kelvin|SI base unit for thermodynamic temperature
+Prefix Kilo-|One thousand times the base unit
+Prefix Milli-|One thousandth of the base unit
+Graduated Cylinder|Instrument that is commonly used to measure liquid volume in a laboratory
+Precision|Closeness of agreement among repeated measurements
+Accuracy|Closeness of a measured value to an accepted reference value
+Resolution|Smallest change an instrument can distinguish.
+Observation|Information gathered with senses or scientific instruments.
+Hypothesis|Testable proposed explanation or prediction.
+Independent Variable|Factor deliberately changed by the investigator.
+Control Group|Comparison group that does not receive the tested treatment.
+Constant|Condition kept the same across comparison groups.
+Trial|One repetition of an experimental procedure.
+Data|Recorded observations and measurements from an investigation.
+Quantitative|Describes data expressed as numbers or measurements.
+Qualitative|Describes observations about qualities rather than numerical amounts.
+Procedure|Ordered steps used to carry out an investigation.
+
+[science--inquiry-environment--data-and-graphs]
+Bar Graph|Graph used to compare values across categories
+Line Graph|Graph often used to show how a quantity changes over an ordered interval
+Median|Middle value in an ordered data set
+Outlier|Data value unusually far from the rest of a set
+Interpolation|Estimating a value between measured data points
+Misleading Graph Scale|The sample may not represent the whole school
+Data|Recorded observations and measurements from an investigation.
+Observation|Information gathered with senses or scientific instruments.
+Hypothesis|Testable proposed explanation or prediction.
+Independent Variable|Factor deliberately changed by the investigator.
+Control Group|Comparison group that does not receive the tested treatment.
+Constant|Condition kept the same across comparison groups.
+Trial|One repetition of an experimental procedure.
+Quantitative|Describes data expressed as numbers or measurements.
+Qualitative|Describes observations about qualities rather than numerical amounts.
+Procedure|Ordered steps used to carry out an investigation.
+Sample size|Number of individuals or observations included in a study.
+Replication|Repeating an investigation to check whether results are consistent.
+Measurement Error|Difference between a measured value and the quantity’s true value.
+Correlation|Relationship in which variables change together; alone it does not prove cause.
+
+[science--inquiry-environment--environmental-resources-and-sustainability]
+Renewable Resource|Resource replenished naturally on a timescale relevant to its use
+Coal|Nonrenewable fossil fuel formed from ancient plant material
+Resource Conservation|Reducing unnecessary use and protecting supplies
+Reuse|Using a product again without first processing it into raw material
+Recycling|Processing used materials so they can become new products
+Watershed|An area of land that drains to a common water body
+Sound Evaluation Approach|Compare multiple impacts, benefits, and possible mitigation measures
+Source reduction|Preventing waste before it is created.
+Pre-consumer Waste|Material discarded during production before a product reaches its consumer
+Composting|Managed decomposition of suitable organic material.
+Leachate In A Landfill|Liquid that has passed through waste and carries dissolved or suspended material
+Methane|Gas that can be produced by anaerobic decomposition of organic waste
+Solar energy|Energy from sunlight.
+Geothermal energy|Energy from Earth’s internal heat.
+Wind Energy|Resource that depends most directly on moving air
+Biomass|Organic material that can provide energy
+Intermittent Energy Source|A source whose availability varies over time
+Uranium|Resource that supplies fuel for conventional nuclear fission power
+Energy Efficiency|Efficiency provides a similar service with less energy
+Wind Generation|A region has steady winds but few usable rivers. Which resource is most directly supported by these conditions
+
+[science--inquiry-environment--laboratory-safety]
+Splash Goggles|Chemical process specified by the teacher
+Safety Data Sheet|Document describing a chemical’s hazards and safe handling
+Safety Protocol|Approved steps for responding to uncertainty or hazards in a laboratory
+Closed-toe Shoes|Footwear that helps protect feet from spills and dropped objects
+Long Hair Safety|Secure it away from equipment and materials
+Chemical Waste|According to the teacher's designated disposal procedures
+Chemical Contamination|May contaminate the shared supply
+Glassware Inspection|Cracks or damage can make it unsafe
+Emergency Equipment|Need to follow trained emergency procedures promptly
+Authorized Procedure|Unreviewed changes can introduce unknown risks
+Unlabeled Chemical|Avoid using it and notify the teacher
+Laboratory Safety|Report it and use teacher-approved replacement equipment
+Spill Response|Alert the teacher and follow the designated response
+Handwashing|Follow instructed glove-removal and process procedures
+Data|Recorded observations and measurements from an investigation.
+Observation|Information gathered with senses or scientific instruments.
+Hypothesis|Testable proposed explanation or prediction.
+Independent Variable|Factor deliberately changed by the investigator.
+Control Group|Comparison group that does not receive the tested treatment.
+Constant|Condition kept the same across comparison groups.
+
+[science--inquiry-environment--scientific-models]
+Mathematical Model|A representation using mathematical relationships
+Conceptual Model|A representation of how components and processes relate
+Model Assumption|A condition or simplification accepted for constructing the model
+Model Prediction|An expected outcome derived from the model
+Simulation|A representation that imitates a system's behavior over time or under conditions
+Constant|Condition kept the same across comparison groups.
+Data|Recorded observations and measurements from an investigation.
+Observation|Information gathered with senses or scientific instruments.
+Hypothesis|Testable proposed explanation or prediction.
+Independent Variable|Factor deliberately changed by the investigator.
+Control Group|Comparison group that does not receive the tested treatment.
+Trial|One repetition of an experimental procedure.
+Quantitative|Describes data expressed as numbers or measurements.
+Qualitative|Describes observations about qualities rather than numerical amounts.
+Procedure|Ordered steps used to carry out an investigation.
+Sample size|Number of individuals or observations included in a study.
+Replication|Repeating an investigation to check whether results are consistent.
+Measurement Error|Difference between a measured value and the quantity’s true value.
+Outlier|Data value unusually far from the rest of a set.
+Correlation|Relationship in which variables change together; alone it does not prove cause.
+
+[science--inquiry-environment--evidence-and-scientific-argument]
+Counterargument|An alternative explanation or challenge to a claim
+Limitation Of Evidence|A factor restricting what the evidence can support
+Anecdotal Evidence|An individual account that may not represent a broader pattern
+Confirmation Bias|Favoring information that supports an existing belief
+Main Weakness|The evidence does not measure the claimed growth effect
+Observation|Information gathered with senses or scientific instruments.
+Data|Recorded observations and measurements from an investigation.
+Inference|Conclusion drawn from observations and evidence.
+Methods|Section usually explains how data were collected
+Hypothesis|Testable proposed explanation or prediction.
+Independent Variable|Factor deliberately changed by the investigator.
+Control Group|Comparison group that does not receive the tested treatment.
+Constant|Condition kept the same across comparison groups.
+Trial|One repetition of an experimental procedure.
+Quantitative|Describes data expressed as numbers or measurements.
+Qualitative|Describes observations about qualities rather than numerical amounts.
+Procedure|Ordered steps used to carry out an investigation.
+Sample size|Number of individuals or observations included in a study.
+Replication|Repeating an investigation to check whether results are consistent.
+Measurement Error|Difference between a measured value and the quantity’s true value.
+
+[science--inquiry-environment--engineering-design]
+Design Criterion|Feature or level of performance a solution should achieve
+Design Constraint|Limit such as cost, time, or materials that restricts a design
+Prototype|Preliminary version built to test a design
+Iteration|Repeating a test-and-revision cycle
+Design Tradeoff|Improving one feature while accepting a disadvantage in another
+Optimization|Improving performance within stated criteria and constraints
+Engineering Design|Design develops solutions to needs; science investigates explanations of phenomena
+Trial|One repetition of an experimental procedure.
+Observation|Information gathered with senses or scientific instruments.
+Hypothesis|Testable proposed explanation or prediction.
+Independent Variable|Factor deliberately changed by the investigator.
+Control Group|Comparison group that does not receive the tested treatment.
+Constant|Condition kept the same across comparison groups.
+Data|Recorded observations and measurements from an investigation.
+Quantitative|Describes data expressed as numbers or measurements.
+Qualitative|Describes observations about qualities rather than numerical amounts.
+Procedure|Ordered steps used to carry out an investigation.
+Sample size|Number of individuals or observations included in a study.
+Replication|Repeating an investigation to check whether results are consistent.
+Measurement Error|Difference between a measured value and the quantity’s true value.
+
+[science--inquiry-environment--scientific-communication-and-peer-review]
+Methods|Section usually explains how data were collected
+Discussion|Section commonly interprets findings and their limitations
+Figure Caption|Text explaining a figure's content, symbols, and relevant conditions
+Plagiarism|Presenting another person’s words or ideas without proper credit
+Constructive Response|Evaluate the concern and clarify, limit, or revise the study as needed
+Trial|One repetition of an experimental procedure.
+Data|Recorded observations and measurements from an investigation.
+Procedure|Ordered steps used to carry out an investigation.
+Observation|Information gathered with senses or scientific instruments.
+Hypothesis|Testable proposed explanation or prediction.
+Independent Variable|Factor deliberately changed by the investigator.
+Control Group|Comparison group that does not receive the tested treatment.
+Constant|Condition kept the same across comparison groups.
+Quantitative|Describes data expressed as numbers or measurements.
+Qualitative|Describes observations about qualities rather than numerical amounts.
+Sample size|Number of individuals or observations included in a study.
+Replication|Repeating an investigation to check whether results are consistent.
+Measurement Error|Difference between a measured value and the quantity’s true value.
+Outlier|Data value unusually far from the rest of a set.
+Correlation|Relationship in which variables change together; alone it does not prove cause.
+
+[science--inquiry-environment--sampling-and-field-research]
+Sample In A Field|A subset of the population or area being studied
+Quadrat|Frame used to sample organisms in a defined area
+Transect|Line or path along which observations are collected
+Random Sampling|Method that gives population members a chance of selection
+Stratified Sampling|Sampling method that selects members from each defined subgroup
+Sampling Bias|Systematic distortion caused by how a sample is selected
+Major Comparison Problem|Time and effort differ along with the observers
+Observation|Information gathered with senses or scientific instruments.
+Methods|Section usually explains how data were collected
+Hypothesis|Testable proposed explanation or prediction.
+Independent Variable|Factor deliberately changed by the investigator.
+Control Group|Comparison group that does not receive the tested treatment.
+Constant|Condition kept the same across comparison groups.
+Trial|One repetition of an experimental procedure.
+Data|Recorded observations and measurements from an investigation.
+Quantitative|Describes data expressed as numbers or measurements.
+Qualitative|Describes observations about qualities rather than numerical amounts.
+Procedure|Ordered steps used to carry out an investigation.
+Sample size|Number of individuals or observations included in a study.
+Replication|Repeating an investigation to check whether results are consistent.
+
+[science--inquiry-environment--uncertainty-and-measurement-error]
+Measurement Uncertainty|A quantified range or dispersion associated with a measurement result
+Systematic Error|An error that shifts results consistently or predictably
+Random Error|Unpredictable variation among repeated measurements
+Resolution|The smallest change the instrument can distinguish
+Parallax Error|A reading error caused by viewing a scale from an unsuitable angle
+Relative Uncertainty|Expresses uncertainty as a fraction or percentage of the value
+9.8 To 10.2 S|A simplified result is 10.0 ± 0.2 s. Which interval corresponds to that notation
+Precision|Closeness of agreement among repeated measurements.
+Observation|Information gathered with senses or scientific instruments.
+Hypothesis|Testable proposed explanation or prediction.
+Independent Variable|Factor deliberately changed by the investigator.
+Control Group|Comparison group that does not receive the tested treatment.
+Constant|Condition kept the same across comparison groups.
+Trial|One repetition of an experimental procedure.
+Data|Recorded observations and measurements from an investigation.
+Quantitative|Describes data expressed as numbers or measurements.
+Qualitative|Describes observations about qualities rather than numerical amounts.
+Procedure|Ordered steps used to carry out an investigation.
+Sample size|Number of individuals or observations included in a study.
+Replication|Repeating an investigation to check whether results are consistent.
+
+[science--inquiry-environment--environmental-pollution]
+Environmental Pollutant|A substance or energy input capable of environmental harm
+Point-source Pollution|A specific identifiable discharge location
+Nonpoint-source Pollution|Pollution entering from diffuse sources across an area
+Bioaccumulation|Buildup of a substance in an organism over time
+Biomagnification|Increase in contaminant concentration at higher trophic levels
+Eutrophication|Nutrient enrichment that can lead to excessive algae and low oxygen
+Thermal Pollution|A harmful alteration of environmental temperature, often in receiving water
+Pollution prevention|Actions that reduce or eliminate pollutants before they enter the environment.
+Persistent pollutant|Contaminant that breaks down slowly and can remain in the environment.
+Sediment runoff|Soil particles carried from land into surface water by flowing water.
+Dissolved oxygen|Oxygen gas in water that is available to aquatic organisms.
+Turbidity|Cloudiness caused by suspended particles
+Conductivity|Measure that can indicate dissolved ions in a water sample.
+Fecal indicator|Microorganism measured as evidence of possible fecal contamination in water.
+Biochemical oxygen demand|Estimate of oxygen used by microbes as they decompose organic matter.
+Baseline|Reference measurement used to compare later observations.
+Nitrate|Dissolved nutrient that can contribute to excessive aquatic plant growth.
+Phosphate|Dissolved nutrient that can contribute to eutrophication.
+Water contaminant|Substance or organism in water that may affect its quality or uses.
+Microbial indicator|Organism measured to assess possible pathogen contamination.
+
+[science--inquiry-environment--water-quality]
+Dissolved Oxygen|Oxygen gas in water that is available to aquatic organisms
+Turbidity|Cloudiness caused by suspended particles
+Conductivity|The presence and amount of electrically conducting dissolved ions
+pH|Scale that indicates how acidic or basic a solution is
+Fecal Indicator|Possible contamination associated with fecal material
+Biochemical Oxygen Demand|Estimate of oxygen used by microbes as they decompose organic matter
+Baseline|A reference condition used for comparison
+Nitrate|Dissolved nutrient that can contribute to excessive aquatic plant growth.
+Phosphate|Dissolved nutrient that can contribute to eutrophication.
+Water contaminant|Substance or organism in water that may affect its quality or uses.
+Microbial indicator|Organism measured to assess possible pathogen contamination.
+Water sampling|Collection of water in a way designed to represent a place and time.
+Water standard|Defined criterion used to assess water for a particular use.
+Environmental Pollutant|A substance or energy input capable of environmental harm
+Point-source pollution|Pollution discharged from a single identifiable location.
+Nonpoint-source pollution|Pollution entering from diffuse sources across an area.
+Bioaccumulation|Buildup of a substance in an organism over time.
+Biomagnification|Increase in contaminant concentration at higher trophic levels.
+Eutrophication|Nutrient enrichment that can lead to excessive algae and low oxygen.
+Thermal Pollution|A harmful alteration of environmental temperature, often in receiving water
+
+[science--inquiry-environment--air-quality]
+Particulate Matter|Suspended solid particles and liquid droplets
+Primary Pollutant|A pollutant emitted directly from a source
+Secondary Pollutant|A pollutant formed through reactions in the atmosphere
+Temperature Inversion|Atmospheric condition in which warmer air lies above cooler air near the surface
+Carbon Monoxide|Colorless gas produced by incomplete combustion that interferes with oxygen transport
+Increased Ground-level Ozone|A sunny afternoon follows a morning with substantial ozone-precursor emissions. What pollutant formation is plausible
+Ground-level ozone|Secondary pollutant formed when nitrogen oxides and volatile organic compounds react in sunlight.
+Nitrogen oxides|Group of gases that can contribute to smog and ozone formation.
+Volatile organic compound|Carbon-containing compound that readily enters the air as a gas.
+Ozone precursor|Pollutant that participates in reactions forming ground-level ozone.
+Smog|Air pollution mixture that can include ozone and fine particles.
+Fine particles|Small airborne particles that can be inhaled deeply into the lungs.
+Air inversion|Atmospheric condition in which warmer air overlies cooler surface air.
+Ventilation|Exchange of indoor air with outdoor air.
+Combustion emission|Pollutant released when a fuel burns.
+Air monitoring|Measurement of pollutant concentrations at a location over time.
+Emission control|Method for reducing pollutant release from a source.
+Environmental Pollutant|A substance or energy input capable of environmental harm
+Point-source pollution|Pollution discharged from a single identifiable location.
+Nonpoint-source pollution|Pollution entering from diffuse sources across an area.
+
+[science--inquiry-environment--waste-and-recycling]
+Source Reduction|Preventing waste before it is created
+Pre-consumer Waste|Material discarded during production before a product reaches its consumer
+Composting|Managed decomposition of suitable organic material
+Leachate In A Landfill|Liquid that has passed through waste and carries dissolved or suspended material
+Methane|Gas that can be produced by anaerobic decomposition of organic waste
+Reuse|Using a product again without first processing it into raw material
+Recycling|Processing used materials so they can become new products.
+Renewable resource|Resource replenished naturally on a timescale relevant to its use.
+Coal|Nonrenewable fossil fuel formed from ancient plant material.
+Resource Conservation|Reducing unnecessary use and protecting supplies
+Watershed|An area of land that drains to a common water body
+Sound Evaluation Approach|Compare multiple impacts, benefits, and possible mitigation measures
+Solar energy|Energy from sunlight.
+Geothermal energy|Energy from Earth’s internal heat.
+Wind Energy|Resource that depends most directly on moving air
+Biomass|Organic material that can provide energy
+Intermittent Energy Source|A source whose availability varies over time
+Uranium|Resource that supplies fuel for conventional nuclear fission power
+Energy Efficiency|Efficiency provides a similar service with less energy
+Wind Generation|A region has steady winds but few usable rivers. Which resource is most directly supported by these conditions
+
+[science--inquiry-environment--renewable-and-nonrenewable-energy]
+Solar Energy|Energy from sunlight
+Geothermal Energy|Energy from Earth’s internal heat
+Wind Energy|Resource that depends most directly on moving air
+Biomass|Organic material that can provide energy
+Intermittent Energy Source|A source whose availability varies over time
+Uranium|Resource that supplies fuel for conventional nuclear fission power
+Energy Efficiency|Efficiency provides a similar service with less energy
+Wind Generation|A region has steady winds but few usable rivers. Which resource is most directly supported by these conditions
+Renewable resource|Resource replenished naturally on a timescale relevant to its use.
+Coal|Nonrenewable fossil fuel formed from ancient plant material.
+Resource Conservation|Reducing unnecessary use and protecting supplies
+Reuse|Using a product again without first processing it into raw material.
+Recycling|Processing used materials so they can become new products.
+Watershed|An area of land that drains to a common water body
+Sound Evaluation Approach|Compare multiple impacts, benefits, and possible mitigation measures
+Source reduction|Preventing waste before it is created.
+Pre-consumer Waste|Material discarded during production before a product reaches its consumer
+Composting|Managed decomposition of suitable organic material.
+Leachate In A Landfill|Liquid that has passed through waste and carries dissolved or suspended material
+Methane|Gas that can be produced by anaerobic decomposition of organic waste
+
+[science--inquiry-environment--human-population-and-resource-use]
+Population Size|The number of individuals in a defined population
+Per-capita Resource|Resource use per person
+Immigration|Change that adds people to a region's population without a birth
+Resource Depletion|Reduction of a resource stock when use exceeds replacement
+Water Footprint|Direct and indirect water use associated with a person, product, or activity
+Age-structure Diagram|Graph showing the distribution of a population among age groups
+Renewable-resource Stock|Stock is an amount available; rate is replenishment per unit time
+Daily Storage|A decrease of 20 units
+Renewable resource|Resource replenished naturally on a timescale relevant to its use.
+Coal|Nonrenewable fossil fuel formed from ancient plant material.
+Resource Conservation|Reducing unnecessary use and protecting supplies
+Reuse|Using a product again without first processing it into raw material.
+Recycling|Processing used materials so they can become new products.
+Watershed|An area of land that drains to a common water body
+Sound Evaluation Approach|Compare multiple impacts, benefits, and possible mitigation measures
+Source reduction|Preventing waste before it is created.
+Pre-consumer Waste|Material discarded during production before a product reaches its consumer
+Composting|Managed decomposition of suitable organic material.
+Leachate In A Landfill|Liquid that has passed through waste and carries dissolved or suspended material
+Methane|Gas that can be produced by anaerobic decomposition of organic waste
+
+[science--inquiry-environment--habitat-change-and-restoration]
+Edge Effect|A difference in conditions near a habitat boundary compared with its interior
+Wildlife Corridor|Habitat connection that allows organisms to move between separated areas
+Ecological Restoration|Process of assisting the recovery of a degraded ecosystem
+Reference Ecosystem|A comparison that helps define recovery goals
+Invasive Species|A nonnative species whose establishment causes or is likely to cause harm
+Riparian Zone|Land area alongside a river or stream
+Ecological Succession|Change in community composition over time
+Hydrology|After wetland drainage, a project restores more natural water flow. Which restoration element is directly addressed
+Renewable resource|Resource replenished naturally on a timescale relevant to its use.
+Coal|Nonrenewable fossil fuel formed from ancient plant material.
+Resource Conservation|Reducing unnecessary use and protecting supplies
+Reuse|Using a product again without first processing it into raw material.
+Recycling|Processing used materials so they can become new products.
+Watershed|An area of land that drains to a common water body
+Sound Evaluation Approach|Compare multiple impacts, benefits, and possible mitigation measures
+Source reduction|Preventing waste before it is created.
+Pre-consumer Waste|Material discarded during production before a product reaches its consumer
+Composting|Managed decomposition of suitable organic material.
+Leachate In A Landfill|Liquid that has passed through waste and carries dissolved or suspended material
+Methane|Gas that can be produced by anaerobic decomposition of organic waste
+
+[science--inquiry-environment--environmental-systems-and-feedbacks]
+System Input|Matter or energy entering a defined system
+Environmental Threshold|Point beyond which a system may shift to a different condition
+Renewable resource|Resource replenished naturally on a timescale relevant to its use.
+Coal|Nonrenewable fossil fuel formed from ancient plant material.
+Resource Conservation|Reducing unnecessary use and protecting supplies
+Reuse|Using a product again without first processing it into raw material.
+Recycling|Processing used materials so they can become new products.
+Watershed|An area of land that drains to a common water body
+Sound Evaluation Approach|Compare multiple impacts, benefits, and possible mitigation measures
+Source reduction|Preventing waste before it is created.
+Pre-consumer Waste|Material discarded during production before a product reaches its consumer
+Composting|Managed decomposition of suitable organic material.
+Leachate In A Landfill|Liquid that has passed through waste and carries dissolved or suspended material
+Methane|Gas that can be produced by anaerobic decomposition of organic waste
+Solar energy|Energy from sunlight.
+Geothermal energy|Energy from Earth’s internal heat.
+Wind Energy|Resource that depends most directly on moving air
+Biomass|Organic material that can provide energy
+Intermittent Energy Source|A source whose availability varies over time
+Uranium|Resource that supplies fuel for conventional nuclear fission power

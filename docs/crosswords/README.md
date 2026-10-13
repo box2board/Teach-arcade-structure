@@ -1,10 +1,10 @@
 # Crossword production system
 
-The authoritative inventories select supported subjects from `QUESTION_SETS` in `public/review-lab/catalog.js`, The shared subject registry, `crossword-data/subjects.json`, maps subject labels, worksheet branding, paths, and inventories. There are 76 Social Studies banks (including the independent Constitution Basics starter) and 25 ELA banks: 101 unique topic sets. Different U.S. and global war banks are not aliases: their question content and learning scope differ.
+The authoritative inventories select supported subjects from `QUESTION_SETS` in `public/review-lab/catalog.js`. The shared subject registry, `crossword-data/subjects.json`, maps subject labels, worksheet branding, paths, and inventories. The current library covers 76 Social Studies banks (including the independent Constitution Basics starter), 25 ELA banks, and 101 Science banks: 202 unique topic sets. Different U.S. and global war banks are not aliases: their question content and learning scope differ.
 
 ## Editorial content
 
-`crossword-data/{social-studies,ela}/*.txt` contains twenty ordered `Answer|Clue` records per topic. The first ten are Easy; the first fifteen are Medium; all twenty are Hard. This order is curricular, not a placement optimization. Normalization strips spacing, punctuation, and diacritics for the grid while retaining readable answer-key spelling. Each inventory record identifies the actual source and its SHA-256 fingerprint.
+`crossword-data/{social-studies,ela,science}/*.txt` contains twenty ordered `Answer|Clue` records per topic. The first ten are Easy; the first fifteen are Medium; all twenty are Hard. This order is curricular, not a placement optimization. Normalization strips spacing, punctuation, and diacritics for the grid while retaining readable answer-key spelling. Each inventory record identifies the actual source and its SHA-256 fingerprint.
 
 ## Rebuild
 
@@ -33,12 +33,12 @@ Install Playwright and its Chromium browser in a development environment. Run `n
 
 ## Subject-specific production
 
-To regenerate only ELA, run `python3 scripts/build-crosswords.py --subject ela`, then `python3 scripts/render-crossword-library.py`. To revise one topic, pass `--subject ela --only <exact-topic-id>`. Subject generation preserves other subjects' catalog records and assets. The default build regenerates all registered subjects.
+To regenerate one subject, run `python3 scripts/build-crosswords.py --subject <social-studies|ela|science>`, then `python3 scripts/render-crossword-library.py`. To revise one topic, pass `--subject <subject> --only <exact-topic-id>`. Subject generation preserves other subjects' catalog records and assets. The default build regenerates all registered subjects.
 
-Run `python3 scripts/validate-crosswords.py --subject ela` for an ELA-only report. Default validation checks both inventories and the whole hub. Browser tests accept `CROSSWORD_SUBJECT=ela` for a focused run; default tests cover every supported subject. Each library has independent search, filters and pagination.
+Run `python3 scripts/validate-crosswords.py --subject <subject>` for a subject-only report. Default validation checks all inventories and the whole hub. Browser tests accept `CROSSWORD_SUBJECT=<subject>` for a focused run; default tests cover every supported subject. Each library has independent search, filters and pagination.
 
 To add a future subject, register it in `crossword-data/subjects.json`, derive its inventory from the runtime catalog, and author twenty ordered terms per valid unique topic. The shared generator and renderer use the registered paths and branding. Do not register incomplete placeholder content.
 
 ## Existing repository limitations
 
-The site-wide audit has seven preexisting issues on unrelated pages, recorded in the completion report. Build scripts also refresh stale global content indexes, sitemap timestamps, and hostnames. Those unrelated generated changes are deliberately excluded from this PR; they are not needed for this static download library. No deployment or merge is part of this task.
+The site-wide audit has seven known issues on unrelated pages, recorded in the project completion report. Build scripts can also refresh global content indexes and sitemap metadata; review their diffs and exclude unrelated generated changes from crossword releases.

@@ -172,7 +172,7 @@ def draw_page(c,topic,level,puzzle,key):
         last=None;h=0
         for p in items:
             if p['direction']!=last:h+=21;last=p['direction']
-            h+=len(simpleSplit(p['answer'] if key else p['clue'],'Helvetica',10,242))*11.5+2.5
+            h+=len(simpleSplit(p['answer'] if key else p['clue'],'Helvetica',10,242))*11.5+1.8
         return h
     split=min(range(1,len(ordered)),key=lambda i:max(height(ordered[:i]),height(ordered[i:])))
     for items,x in [(ordered[:split],36),(ordered[split:],315)]:
@@ -187,7 +187,7 @@ def draw_page(c,topic,level,puzzle,key):
             c.setFont('Helvetica-Bold',9);c.drawString(x,y,f"{p['number']}.")
             c.setFont('Helvetica',10)
             for line in lines:c.drawString(x+20,y,line);y-=11.5
-            y-=2.5
+            y-=1.8
         if y<47:raise ValueError(f"Clues overflow: {topic['id']} {level} bottom={y}; shorten clues or compact grid")
     c.setStrokeColor(HexColor('#9ca3af'));c.setLineWidth(.5);c.line(36,37,576,37)
     c.setFont('Helvetica',8);c.setFillColor(HexColor('#4b5563'));c.drawString(36,23,'TeachArcade.com  |  Grades 7-12');c.drawRightString(576,23,f"{level.title()}  |  {'Answer Key' if key else 'Student Copy'}")
