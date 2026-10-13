@@ -62,6 +62,7 @@
     else if(id==='water'&&!state.water){state.water=true;selected='water';note('Ruth fills the canteen for the next stretch of road.');message('The family has water to carry west.','success');}
     else if(id==='map'&&!state.map){state.map=true;selected='map';note('The map shows a short county-road cut near the East Fork.');message('The map shows a shortcut. It cannot tell whether the bridge is open.','success');}
     else if(id==='bulletin'&&!state.bulletin){state.bulletin=true;selected='bulletin';note('The bulletin reports the East Fork bridge closed; Route 66 remains open.');message('Read the bulletin, then drag the map onto it to compare the two clues.','success');}
+    else if(id==='ledger'){selected='ledger';message('Ruth’s ledger is selected. Place it on a conclusion.');}
     else {selected=id;message('That object is already in the family’s record. Select it below to use it.');}
     render();
   }
@@ -102,8 +103,8 @@
   function renderWork(){
     setupScene('camp','CALIFORNIA · SEASONAL WORK AREA','Inspect the offer before making a plan','WORK IS NOT A PROMISE','A handbill is not a guarantee',[
       'The Millers reach a California work camp. A handbill advertises harvest jobs, but leaves the hours, pay, and living conditions unclear.',
-      'Read the handbill and speak with a worker. Then drag Ruth’s ledger to the worker to ask about the offer—or to the handbill to trust it as written.'
-    ],'Inspect both clues, then move the ledger to the person or the notice.');
+      'Read the handbill and speak with a worker. Then click or drag Ruth’s ledger in the scene to the worker to ask about the offer—or the handbill to trust it as written.'
+    ],'Inspect both clues, then click or drag the ledger to the person or the notice.');
     hotspot({id:'handbill',x:82,y:30,icon:'▧',label:'Harvest work handbill',target:true,useSelected:true,done:state.handbill,action:()=>{if(!state.handbill){state.handbill=true;note('The handbill advertises harvest work but does not spell out wages, duration, or camp conditions.');message('The notice advertises a chance at work. It does not guarantee steady hours or housing.','success');render();}else message('The handbill is evidence. Use Ruth’s ledger to decide what to do with the offer.');}});
     hotspot({id:'worker',x:67,y:61,icon:'◉',label:'Speak with an experienced worker',target:true,useSelected:true,done:state.worker,action:()=>{if(!state.worker){state.worker=true;note('A worker explains that harvest jobs depend on the crop and hiring needs.');message('The worker says new arrivals should ask what is actually offered. The work may be temporary.','success');render();}else message('The worker has shared what they know. Bring Ruth’s ledger here to ask about the offer.');}});
     hotspot({id:'ledger',x:23,y:69,icon:'▤',label:'Ruth’s family ledger',hidden:!(state.handbill&&state.worker),done:!!state.jobChoice});
@@ -114,6 +115,7 @@
       'The Millers reach California together. Their truck is worn, supplies are low, and they still need dependable work and a place to stay.',
       'Ruth records one final conclusion. Move the ledger to the statement best supported by the journey.'
     ],'Place the family ledger on the conclusion that fits the evidence.');
+    hotspot({id:'ledger',x:38,y:77,icon:'▤',label:'Ruth’s family ledger',draggable:true});
     hotspot({id:'claim-arrival',x:19,y:68,icon:'1',label:'Arrival ended the hardship',target:true,useSelected:true,action:()=>{if(selected!=='ledger'){message('Select Ruth’s ledger first.');return;}selected='';message('The worker’s warning and the family’s low supplies show that arrival did not end their hardship. Try another statement.','error');render();}});
     hotspot({id:'claim-nuance',x:50,y:66,icon:'2',label:'Migration offered a chance, not a guarantee',target:true,useSelected:true,action:()=>{if(selected!=='ledger'){message('Select Ruth’s ledger first.');return;}selected='';state.complete=true;note('Conclusion: migration offered a possibility, not a guarantee. Environmental and economic forces shaped the journey, while each family made its own choices.');save();render();}});
     hotspot({id:'claim-same',x:81,y:68,icon:'3',label:'All families migrated for the same reason',target:true,useSelected:true,action:()=>{if(selected!=='ledger'){message('Select Ruth’s ledger first.');return;}selected='';message('Migrant experiences varied. The family’s choices mattered, but could not control drought, job markets, or conditions at the camps. Try another statement.','error');render();}});
