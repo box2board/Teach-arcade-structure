@@ -4,11 +4,12 @@ import crypto from 'node:crypto';
 import assert from 'node:assert/strict';
 import {QUESTION_SETS} from '../public/review-lab/catalog.js';
 const root=path.resolve('public'),catalog=JSON.parse(fs.readFileSync(path.join(root,'print-play-games/crossword-catalog.json'))).resources;
-const expected=QUESTION_SETS.filter(s=>s.subject==='Social Studies');
-assert.deepEqual(catalog.map(r=>r.id).sort(),expected.map(s=>s.id).sort(),'Crosswords must cover the current reusable Social Studies catalog');
+const supported=Object.values(JSON.parse(fs.readFileSync('crossword-data/subjects.json'))).map(s=>s.subject);
+const expected=QUESTION_SETS.filter(s=>supported.includes(s.subject));
+assert.deepEqual(catalog.map(r=>r.id).sort(),expected.map(s=>s.id).sort(),'Crosswords must cover the current supported reusable subject catalogs');
 const urls=new Set();
 for(const r of catalog){
- assert.equal(r.subject,'Social Studies');assert.ok(r.category);assert.equal(r.gradeBand,'7–12');
+ assert.ok(supported.includes(r.subject));assert.ok(r.category);assert.equal(r.gradeBand,'7–12');
  const bytes=fs.readFileSync(r.source);assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),r.sourceSha256,`Stale source reference: ${r.id}`);
  for(const url of [...Object.values(r.pdfs),...Object.values(r.previews),r.puzzles]){
   assert.ok(url.startsWith('/print-play-games/')&&!url.includes('..'));assert.ok(!urls.has(url),`Duplicate asset: ${url}`);urls.add(url);

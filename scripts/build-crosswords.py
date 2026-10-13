@@ -15,6 +15,7 @@ from reportlab.lib.colors import HexColor, Color
 ROOT=Path(__file__).resolve().parent.parent
 LEVELS={'easy':10,'medium':15,'hard':20}
 BASE=ROOT/'public/print-play-games'
+SUBJECTS=json.loads((ROOT/'crossword-data/subjects.json').read_text())
 def norm(s):
     return re.sub('[^A-Z]','',unicodedata.normalize('NFKD',s).encode('ascii','ignore').decode().upper())
 def read_content():
@@ -152,7 +153,7 @@ def draw_grid(c,puzzle,key,top=634):
 
 def draw_page(c,topic,level,puzzle,key):
     c.setFillColor(HexColor('#111827'));c.setFont('Helvetica-Bold',11);c.drawString(36,757,'TEACH ARCADE')
-    c.setFont('Helvetica',9);c.drawRightString(576,757,'PRINT & PLAY  /  SOCIAL STUDIES')
+    c.setFont('Helvetica',9);c.drawRightString(576,757,'PRINT & PLAY  /  '+SUBJECTS[topic.get('subjectSlug','social-studies')]['worksheetLabel'])
     c.setStrokeColor(HexColor('#111827'));c.setLineWidth(1);c.line(36,746,576,746)
     title=topic['title']+' Crossword';font=19
     while c.stringWidth(title,'Helvetica-Bold',font)>540 and font>14:font-=.5
@@ -198,15 +199,15 @@ def urls(topic):
         pdfs={level:'/print-play-games/'+stem+level.title()+'.pdf' for level in LEVELS}
         pdfs['full']='/print-play-games/'+stem+'Print_and_Play.pdf'
     else:
-        stem=f"crosswords/social-studies/{topic['id']}/Teach_Arcade_Crossword_"
+        stem=f"crosswords/{topic.get('subjectSlug','social-studies')}/{topic['id']}/Teach_Arcade_Crossword_"
         pdfs={level:'/print-play-games/'+stem+level.title()+'.pdf' for level in LEVELS}
         pdfs['full']='/print-play-games/'+stem+'Print_and_Play.pdf'
-    previews={level:f"/print-play-games/crosswords/social-studies/{topic['id']}/{level}.webp" for level in LEVELS}
+    previews={level:f"/print-play-games/crosswords/{topic.get('subjectSlug','social-studies')}/{topic['id']}/{level}.webp" for level in LEVELS}
     return pdfs,previews
 
 def path_url(url):return ROOT/'public'/url.lstrip('/')
 def build_topic(topic,entries,args):
-    pdfs,previews=urls(topic);folder=BASE/'crosswords/social-studies'/topic['id'];folder.mkdir(parents=True,exist_ok=True)
+    pdfs,previews=urls(topic);folder=BASE/'crosswords'/topic.get('subjectSlug','social-studies')/topic['id'];folder.mkdir(parents=True,exist_ok=True)
     puzzles={};full=PdfWriter()
     for level,count in LEVELS.items():
         seed=int.from_bytes(hashlib.sha256((topic['id']+level).encode()).digest()[:8],'big')
@@ -222,27 +223,38 @@ def build_topic(topic,entries,args):
     fp=path_url(pdfs['full']);full.add_metadata({'/Title':topic['title']+' Crossword - Complete Set','/Author':'Teach Arcade'})
     with fp.open('wb') as f:full.write(f)
     (folder/'puzzles.json').write_text(json.dumps(puzzles,ensure_ascii=False,separators=(',',':'))+'\n')
-    return {k:v for k,v in topic.items() if k not in ('status','outputs')}|{'pdfs':pdfs,'previews':previews,'puzzles':f"/print-play-games/crosswords/social-studies/{topic['id']}/puzzles.json"}
+    return {k:v for k,v in topic.items() if k not in ('status','outputs')}|{'pdfs':pdfs,'previews':previews,'puzzles':f"/print-play-games/crosswords/{topic.get('subjectSlug','social-studies')}/{topic['id']}/puzzles.json"}
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--only');parser.add_argument('--attempts',type=int,default=180);args=parser.parse_args()
-    inv=json.loads((ROOT/'docs/crosswords/inventory.json').read_text());content=read_content();topics=inv['topics']
-    assert set(content)=={t['id'] for t in topics},'Inventory and editorial source mismatch'
-    catalog=[];errors=[]
-    for topic in topics:
-        if args.only and topic['id']!=args.only:continue
-        if topic['id']=='constitution-basics':topic['category']='Government & Civics';topic['gradeBand']='7–12'
-        topic['sourceSha256']=hashlib.sha256((ROOT/topic['source']).read_bytes()).hexdigest()
-        topic['sourceTitle']=topic.get('sourceTitle',topic['title'])
-        if topic['id'].startswith('world-history--world-war-'):topic['title']=topic['sourceTitle']+' - Global Perspectives'
-        if topic['id']=='us-history--world-war-i':topic['title']='World War I - U.S. Involvement'
-        try:
-            item=build_topic(topic,content[topic['id']],args);catalog.append(item);topic['status']='completed';topic['outputs']=item['pdfs']|{k+'Preview':v for k,v in item['previews'].items()};print('Completed',topic['id'],flush=True)
-        except Exception as e:
-            errors.append((topic['id'],str(e)));topic['status']='exception';print('ERROR',topic['id'],str(e),flush=True)
-    if args.only:return 1 if errors else 0
-    (ROOT/'docs/crosswords/inventory.json').write_text(json.dumps(inv,ensure_ascii=False,indent=2)+'\n')
-    (BASE/'crossword-catalog.json').write_text(json.dumps({'schemaVersion':1,'resources':catalog},ensure_ascii=False,indent=2)+'\n')
-    print('Completed:',len(catalog),'Exceptions:',errors,flush=True)
+    parser=argparse.ArgumentParser();parser.add_argument('--only');parser.add_argument('--subject',choices=list(SUBJECTS));parser.add_argument('--attempts',type=int,default=180);args=parser.parse_args()
+    inventories={slug:json.loads((ROOT/cfg['inventory']).read_text()) for slug,cfg in SUBJECTS.items()}
+    content=read_content();all_ids={t['id'] for inv in inventories.values() for t in inv['topics']}
+    assert set(content)==all_ids,'Inventories and editorial sources disagree'
+    existing=json.loads((BASE/'crossword-catalog.json').read_text())['resources'] if (BASE/'crossword-catalog.json').exists() else []
+    selected=[args.subject] if args.subject else list(SUBJECTS)
+    catalog=[r for r in existing if r['subject'] not in {SUBJECTS[s]['subject'] for s in selected}];errors=[];completed=0
+    for slug in selected:
+        inv=inventories[slug]
+        for topic in inv['topics']:
+            if args.only and topic['id']!=args.only:continue
+            if slug!='social-studies':topic['subjectSlug']=slug
+            if topic['id']=='constitution-basics':topic['category']='Government & Civics';topic['gradeBand']='7–12'
+            assert topic['subject']==SUBJECTS[slug]['subject']
+            topic['sourceSha256']=hashlib.sha256((ROOT/topic['source']).read_bytes()).hexdigest()
+            topic['sourceTitle']=topic.get('sourceTitle',topic['title'])
+            if topic['id'].startswith('world-history--world-war-'):topic['title']=topic['sourceTitle']+' - Global Perspectives'
+            if topic['id']=='us-history--world-war-i':topic['title']='World War I - U.S. Involvement'
+            try:
+                item=build_topic(topic,content[topic['id']],args);catalog.append(item);completed+=1;topic['status']='completed';topic['outputs']=item['pdfs']|{k+'Preview':v for k,v in item['previews'].items()};print('Completed',topic['id'],flush=True)
+            except Exception as e:
+                errors.append((topic['id'],str(e)));topic['status']='exception';print('ERROR',topic['id'],str(e),flush=True)
+        if not args.only:(ROOT/SUBJECTS[slug]['inventory']).write_text(json.dumps(inv,ensure_ascii=False,indent=2)+'\n')
+    if args.only:return bool(errors)
+    # Keep previously completed subjects; a failing batch never silently publishes a partial manifest.
+    if not errors:
+        order={slug:i for i,slug in enumerate(SUBJECTS)}
+        catalog.sort(key=lambda r:order[r.get('subjectSlug','social-studies')])
+        (BASE/'crossword-catalog.json').write_text(json.dumps({'schemaVersion':1,'resources':catalog},ensure_ascii=False,indent=2)+'\n')
+    print('Completed:',completed,'Exceptions:',errors,flush=True)
     return bool(errors)
 if __name__=='__main__':sys.exit(main())
