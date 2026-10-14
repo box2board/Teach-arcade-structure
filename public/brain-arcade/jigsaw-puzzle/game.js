@@ -1,6 +1,318 @@
-console.log("Jigsaw Puzzle game coming soon");
+(() => {
+  const byId = (id) => document.getElementById(id);
+  const canvas = byId("puzzle-canvas");
+  const ctx = canvas.getContext("2d");
+  const setup = byId("setup");
+  const game = byId("game");
+  const stage = byId("stage-wrap");
+  const status = byId("game-status");
+  const pictures = {
+    sunset: { name: "Sunset Hills", src: "/brain-arcade/jigsaw-puzzle/assets/sunset-hills.svg" },
+    ocean: { name: "Ocean Life", src: "/brain-arcade/jigsaw-puzzle/assets/ocean-life.svg" },
+    garden: { name: "Garden Friends", src: "/brain-arcade/jigsaw-puzzle/assets/garden.svg" }
+  };
+  const state = { picture: "sunset", size: 3, relaxed: true, pieces: [], image: null, board: null, mobile: false, moves: 0, placed: 0, startAt: 0, elapsed: 0, timer: null, paused: false, selected: null, cycle: -1, preview: false, complete: false, width: 0, height: 0 };
 
-const statusLine = document.getElementById("status-line");
-if (statusLine) {
-  statusLine.textContent = "Status: Preparing puzzle engine…";
-}
+  function announce(message) { status.textContent = message; }
+  function rand(max) { return Math.random() * max; }
+  function shuffle(list) {
+    const out = [...list];
+    for (let i = out.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [out[i], out[j]] = [out[j], out[i]]; }
+    return out;
+  }
+  function pictureImage(key) {
+    const image = new Image();
+    image.src = pictures[key].src;
+    return new Promise((resolve, reject) => { image.onload = () => resolve(image); image.onerror = reject; });
+  }
+
+  document.querySelectorAll(".picture-choice").forEach((button) => button.addEventListener("click", () => {
+    document.querySelectorAll(".picture-choice").forEach((item) => { const on = item === button; item.classList.toggle("selected", on); item.setAttribute("aria-pressed", String(on)); });
+    state.picture = button.dataset.picture;
+  }));
+  document.querySelectorAll(".size-choice").forEach((button) => button.addEventListener("click", () => {
+    document.querySelectorAll(".size-choice").forEach((item) => { const on = item === button; item.classList.toggle("selected", on); item.setAttribute("aria-pressed", String(on)); });
+    state.size = Number(button.dataset.size);
+  }));
+  byId("timer-toggle").addEventListener("change", (event) => { state.relaxed = event.target.checked; });
+
+  function edgeTables(n) {
+    const horizontal = Array.from({ length: n }, () => Array.from({ length: n - 1 }, () => Math.random() < .5 ? 1 : -1));
+    const vertical = Array.from({ length: n - 1 }, () => Array.from({ length: n }, () => Math.random() < .5 ? 1 : -1));
+    return { horizontal, vertical };
+  }
+  function traceHorizontal(path, x, y, width, direction) {
+    const depth = Math.min(width * .22, 19) * direction;
+    path.lineTo(x + width * .31, y);
+    path.bezierCurveTo(x + width * .31, y + depth * .04, x + width * .34, y + depth * .18, x + width * .42, y + depth * .18);
+    path.bezierCurveTo(x + width * .44, y + depth * .36, x + width * .56, y + depth * .36, x + width * .58, y + depth * .18);
+    path.bezierCurveTo(x + width * .66, y + depth * .18, x + width * .69, y + depth * .04, x + width * .69, y);
+    path.lineTo(x + width, y);
+  }
+  function traceVertical(path, x, y, height, direction) {
+    const depth = Math.min(height * .22, 19) * direction;
+    path.lineTo(x, y + height * .31);
+    path.bezierCurveTo(x + depth * .04, y + height * .31, x + depth * .18, y + height * .34, x + depth * .18, y + height * .42);
+    path.bezierCurveTo(x + depth * .36, y + height * .44, x + depth * .36, y + height * .56, x + depth * .18, y + height * .58);
+    path.bezierCurveTo(x + depth * .18, y + height * .66, x + depth * .04, y + height * .69, x, y + height * .69);
+    path.lineTo(x, y + height);
+  }
+  function makePath(piece, cell) {
+    const { row, col, edges } = piece;
+    const p = new Path2D();
+    p.moveTo(0, 0);
+    // Top edges bulge upward when their seam is a tab; bottom edges use the opposite normal.
+    traceHorizontal(p, 0, 0, cell, -edges.top);
+    traceVertical(p, cell, 0, cell, edges.right);
+    // Trace the lower and left edges in reverse so their tabs line up with the same shared seam.
+    const bottom = edges.bottom;
+    p.lineTo(cell * .69, cell);
+    const depthB = Math.min(cell * .22, 19) * bottom;
+    p.bezierCurveTo(cell * .69, cell + depthB * .04, cell * .66, cell + depthB * .18, cell * .58, cell + depthB * .18);
+    p.bezierCurveTo(cell * .56, cell + depthB * .36, cell * .44, cell + depthB * .36, cell * .42, cell + depthB * .18);
+    p.bezierCurveTo(cell * .34, cell + depthB * .18, cell * .31, cell + depthB * .04, cell * .31, cell);
+    p.lineTo(0, cell);
+    const depthL = -Math.min(cell * .22, 19) * edges.left;
+    p.lineTo(0, cell * .69);
+    p.bezierCurveTo(depthL * .04, cell * .69, depthL * .18, cell * .66, depthL * .18, cell * .58);
+    p.bezierCurveTo(depthL * .36, cell * .56, depthL * .36, cell * .44, depthL * .18, cell * .42);
+    p.bezierCurveTo(depthL * .18, cell * .34, depthL * .04, cell * .31, 0, cell * .31);
+    p.closePath();
+    return p;
+  }
+  function buildPieces(n, cell) {
+    const seams = edgeTables(n);
+    const pieces = [];
+    for (let row = 0; row < n; row++) for (let col = 0; col < n; col++) {
+      pieces.push({ row, col, edges: {
+        top: row === 0 ? 0 : -seams.vertical[row - 1][col],
+        right: col === n - 1 ? 0 : seams.horizontal[row][col],
+        bottom: row === n - 1 ? 0 : seams.vertical[row][col],
+        left: col === 0 ? 0 : -seams.horizontal[row][col - 1]
+      }, x: 0, y: 0, fixed: false, path: null });
+    }
+    return pieces;
+  }
+  function getCell() { return state.board ? state.board.size / state.size : 0; }
+
+  function layoutStage() {
+    const width = Math.max(320, Math.floor(stage.clientWidth));
+    const mobile = width < 720;
+    const n = state.size;
+    const size = mobile ? Math.min(width - 34, 330) : Math.min(468, 640 - 146, width * .44);
+    const cell = size / n;
+    // Keep the tabs from neighboring pieces clear while they are in the tray.
+    const gap = Math.max(8, Math.min(18, cell * .32));
+    const cols = mobile ? Math.max(1, Math.floor((width - 20) / (cell + gap))) : Math.max(1, Math.floor((width - size - 88) / (cell + gap)));
+    const trayRows = Math.ceil(n * n / cols);
+    const height = mobile ? 24 + size + 54 + trayRows * (cell + gap) + 22 : Math.max(640, trayRows * (cell + gap) + 74);
+    const boardX = mobile ? (width - size) / 2 : 28;
+    const boardY = mobile ? 22 : (height - size) / 2;
+    const trayX = mobile ? (width - Math.min(width - 20, cols * (cell + gap) - gap)) / 2 + 5 : boardX + size + 48;
+    const trayY = mobile ? boardY + size + 56 : Math.max(24, (height - trayRows * (cell + gap)) / 2);
+    return { width, height, mobile, board: { x: boardX, y: boardY, size }, cell, gap, cols, trayX, trayY };
+  }
+  function placeLoosePieces() {
+    const { board, cell, gap, cols, trayX, trayY, width, mobile } = state.layout;
+    const order = shuffle(state.pieces.filter(piece => !piece.fixed));
+    order.forEach((piece, index) => {
+      const tx = trayX + (index % cols) * (cell + gap) + rand(Math.max(1, gap * .32));
+      const ty = trayY + Math.floor(index / cols) * (cell + gap) + rand(Math.max(1, gap * .32));
+      piece.x = mobile ? tx : Math.min(width - cell - 4, tx);
+      piece.y = ty;
+      piece.path = makePath(piece, cell);
+    });
+  }
+  function configureCanvas() {
+    const prior = state.layout;
+    const next = layoutStage();
+    if (prior && state.pieces.length && !state.complete) {
+      const sx = next.width / prior.width, sy = next.height / prior.height;
+      state.pieces.forEach(piece => { if (piece.fixed) { piece.x = next.board.x + piece.col * next.board.size / state.size; piece.y = next.board.y + piece.row * next.board.size / state.size; } else { piece.x *= sx; piece.y *= sy; } });
+    }
+    state.layout = next;
+    state.width = next.width; state.height = next.height; state.mobile = next.mobile; state.board = next.board;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.style.width = `${next.width}px`; canvas.style.height = `${next.height}px`;
+    canvas.width = Math.round(next.width * dpr); canvas.height = Math.round(next.height * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const cell = getCell();
+    state.pieces.forEach(piece => { piece.path = makePath(piece, cell); });
+    draw();
+  }
+  function draw() {
+    if (!state.layout) return;
+    const { width, height, mobile, cols, trayX, trayY, gap } = state.layout;
+    const { x: bx, y: by, size } = state.board;
+    const cell = getCell();
+    ctx.clearRect(0, 0, width, height);
+    ctx.fillStyle = "#f5f8fc"; ctx.fillRect(0, 0, width, height);
+    // Soft work surface and board frame.
+    ctx.fillStyle = "#ffffff"; roundedRect(ctx, bx - 10, by - 10, size + 20, size + 20, 17); ctx.fill();
+    ctx.fillStyle = "#e9f0f7"; ctx.fillRect(bx, by, size, size);
+    ctx.save(); ctx.beginPath(); ctx.rect(bx, by, size, size); ctx.clip();
+    if (state.preview) { ctx.globalAlpha = .17; ctx.drawImage(state.image, bx, by, size, size); ctx.globalAlpha = 1; }
+    ctx.strokeStyle = "rgba(36, 63, 91, .18)"; ctx.lineWidth = 1;
+    for (let i = 1; i < state.size; i++) { ctx.beginPath(); ctx.moveTo(bx + i * cell, by); ctx.lineTo(bx + i * cell, by + size); ctx.stroke(); ctx.beginPath(); ctx.moveTo(bx, by + i * cell); ctx.lineTo(bx + size, by + i * cell); ctx.stroke(); }
+    ctx.restore();
+    ctx.strokeStyle = "#d9e2ec"; ctx.lineWidth = 2; roundedRect(ctx, bx, by, size, size, 4); ctx.stroke();
+    if (mobile) {
+      ctx.fillStyle = "#66788f"; ctx.font = "700 12px Nunito, sans-serif"; ctx.textAlign = "left"; ctx.fillText("PIECES", 14, by + size + 39);
+    } else {
+      const trayWidth = Math.max(0, width - trayX - 20);
+      ctx.fillStyle = "#edf3f8"; roundedRect(ctx, trayX - 10, 16, trayWidth + 10, height - 32, 18); ctx.fill();
+      ctx.fillStyle = "#66788f"; ctx.font = "800 12px Nunito, sans-serif"; ctx.textAlign = "left"; ctx.fillText("PIECES", trayX, Math.max(20, trayY - 14));
+    }
+    const sorted = [...state.pieces].sort((a,b) => Number(a.fixed) - Number(b.fixed));
+    sorted.forEach(piece => drawPiece(piece, cell, bx, by, piece === state.selected));
+  }
+  function drawPiece(piece, cell, bx, by, selected) {
+    const x = piece.fixed ? bx + piece.col * cell : piece.x;
+    const y = piece.fixed ? by + piece.row * cell : piece.y;
+    const pad = cell * .24;
+    ctx.save(); ctx.translate(x, y);
+    if (!piece.fixed) { ctx.shadowColor = selected ? "rgba(38,113,201,.35)" : "rgba(28,48,70,.19)"; ctx.shadowBlur = selected ? 16 : 8; ctx.shadowOffsetY = selected ? 6 : 3; }
+    ctx.fillStyle = "#fff"; ctx.fill(piece.path);
+    ctx.shadowColor = "transparent";
+    ctx.save(); ctx.clip(piece.path);
+    ctx.drawImage(state.image, -piece.col * cell, -piece.row * cell, state.board.size, state.board.size);
+    ctx.restore();
+    ctx.strokeStyle = selected ? "#2875c7" : piece.fixed ? "rgba(255,255,255,.46)" : "rgba(28,48,70,.36)";
+    ctx.lineWidth = selected ? 3 : 1.5; ctx.stroke(piece.path);
+    if (selected) { ctx.setLineDash([4, 3]); ctx.strokeStyle = "#1d65ae"; ctx.lineWidth = 1.5; ctx.stroke(piece.path); }
+    ctx.restore();
+  }
+  function roundedRect(context, x, y, w, h, r) { context.beginPath(); context.roundRect(x, y, w, h, r); }
+  function point(event) { const box = canvas.getBoundingClientRect(); return { x: event.clientX - box.left, y: event.clientY - box.top }; }
+  function hitPiece(x, y) {
+    const cell = getCell();
+    for (let i = state.pieces.length - 1; i >= 0; i--) {
+      const piece = state.pieces[i]; if (piece.fixed) continue;
+      ctx.save(); ctx.translate(piece.x, piece.y); const hit = ctx.isPointInPath(piece.path, x - piece.x, y - piece.y); ctx.restore();
+      if (hit) return piece;
+    }
+    return null;
+  }
+  let drag = null;
+  canvas.addEventListener("pointerdown", event => {
+    if (state.paused || state.complete) return;
+    const pt = point(event), piece = hitPiece(pt.x, pt.y);
+    if (!piece) { canvas.focus(); return; }
+    state.pieces.splice(state.pieces.indexOf(piece), 1); state.pieces.push(piece);
+    state.selected = piece; drag = { piece, dx: pt.x - piece.x, dy: pt.y - piece.y, moved: false };
+    canvas.setPointerCapture(event.pointerId); draw(); event.preventDefault();
+  });
+  canvas.addEventListener("pointermove", event => {
+    if (!drag || state.paused) return;
+    const pt = point(event), cell = getCell();
+    drag.piece.x = Math.max(-cell * .2, Math.min(state.width - cell * .8, pt.x - drag.dx));
+    drag.piece.y = Math.max(-cell * .2, Math.min(state.height - cell * .8, pt.y - drag.dy));
+    drag.moved = true; draw(); event.preventDefault();
+  });
+  canvas.addEventListener("pointerup", event => {
+    if (!drag) return;
+    const piece = drag.piece, moved = drag.moved, cell = getCell(); drag = null;
+    if (moved) {
+      state.moves++; byId("move-count").textContent = state.moves;
+      const tx = state.board.x + piece.col * cell, ty = state.board.y + piece.row * cell;
+      if (Math.hypot(piece.x - tx, piece.y - ty) <= cell * .48) {
+        piece.x = tx; piece.y = ty; piece.fixed = true; state.placed++;
+        state.cycle = -1;
+        announce(`${state.placed} of ${state.pieces.length} pieces placed.`);
+        byId("placed-count").textContent = `${state.placed} / ${state.pieces.length}`;
+        if (state.placed === state.pieces.length) finish();
+      } else { state.selected = null; }
+    }
+    draw(); event.preventDefault();
+  });
+  canvas.addEventListener("pointercancel", () => { drag = null; draw(); });
+  canvas.addEventListener("keydown", event => {
+    if (state.paused || state.complete) return;
+    const loose = state.pieces.filter(piece => !piece.fixed);
+    if (event.code === "Space" && !state.selected && loose.length) {
+      state.cycle = (state.cycle + 1) % loose.length; state.selected = loose[state.cycle];
+      announce(`Selected piece ${state.cycle + 1} of ${loose.length}. Use arrow keys to move; Enter to place.`); draw(); event.preventDefault(); return;
+    }
+    if (state.selected && ["ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].includes(event.key)) {
+      const step = Math.max(8, getCell() * .18);
+      if (event.key === "ArrowUp") state.selected.y -= step;
+      if (event.key === "ArrowDown") state.selected.y += step;
+      if (event.key === "ArrowLeft") state.selected.x -= step;
+      if (event.key === "ArrowRight") state.selected.x += step;
+      draw(); event.preventDefault();
+    } else if (state.selected && (event.key === "Enter" || event.code === "Space")) {
+      const piece = state.selected, cell = getCell(), tx = state.board.x + piece.col * cell, ty = state.board.y + piece.row * cell;
+      state.moves++; byId("move-count").textContent = state.moves;
+      if (Math.hypot(piece.x - tx, piece.y - ty) <= cell * .55) {
+        piece.x = tx; piece.y = ty; piece.fixed = true; state.placed++;
+        state.cycle = -1;
+        byId("placed-count").textContent = `${state.placed} / ${state.pieces.length}`;
+        announce(`Piece placed. ${state.placed} of ${state.pieces.length} complete.`);
+        if (state.placed === state.pieces.length) finish();
+        state.selected = null;
+      } else announce("That piece is not close enough to its place yet. Keep moving it with the arrow keys.");
+      draw(); event.preventDefault();
+    } else if (event.key === "Escape" && state.selected) { state.selected = null; state.cycle = -1; draw(); event.preventDefault(); }
+  });
+
+  function updateClock() {
+    const seconds = Math.floor(state.elapsed + (state.paused ? 0 : (Date.now() - state.startAt) / 1000));
+    byId("time-count").textContent = `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, "0")}`;
+  }
+  function startClock() {
+    clearInterval(state.timer); state.elapsed = 0; state.startAt = Date.now();
+    if (!state.relaxed) { byId("time-stat").hidden = false; state.timer = setInterval(updateClock, 500); updateClock(); }
+    else { byId("time-stat").hidden = true; }
+  }
+  async function startPuzzle() {
+    byId("start-button").disabled = true;
+    try {
+      state.image = await pictureImage(state.picture);
+      state.pieces = buildPieces(state.size, 1); state.moves = 0; state.placed = 0; state.complete = false; state.paused = false; state.selected = null;
+      setup.hidden = true; game.hidden = false;
+      byId("placed-count").textContent = `0 / ${state.size * state.size}`; byId("move-count").textContent = "0";
+      byId("pause-button").textContent = "Pause"; byId("pause-button").setAttribute("aria-pressed", "false");
+      byId("preview-image").src = pictures[state.picture].src;
+      byId("preview-card").hidden = true; state.preview = false; byId("preview-button").setAttribute("aria-pressed", "false");
+      configureCanvas(); placeLoosePieces(); draw(); startClock(); announce(`${pictures[state.picture].name} puzzle started. ${state.pieces.length} pieces.`);
+      canvas.focus({ preventScroll: true });
+    } catch (error) { announce("The puzzle picture could not load. Please choose another picture and try again."); }
+    finally { byId("start-button").disabled = false; }
+  }
+  function finish() {
+    state.complete = true; clearInterval(state.timer); updateClock();
+    byId("win-summary").textContent = `${state.pieces.length} pieces · ${state.moves} moves${state.relaxed ? "" : ` · ${byId("time-count").textContent}`}`;
+    byId("win-card").hidden = false; announce("Puzzle complete. Beautifully done!");
+  }
+  function restart() {
+    state.pieces = buildPieces(state.size, 1); state.moves = 0; state.placed = 0; state.complete = false; state.paused = false; state.selected = null; state.cycle = -1;
+    byId("placed-count").textContent = `0 / ${state.size * state.size}`; byId("move-count").textContent = "0"; byId("win-card").hidden = true; byId("pause-cover").hidden = true;
+    configureCanvas(); placeLoosePieces(); draw(); startClock(); canvas.focus({ preventScroll: true }); announce("Puzzle restarted. Pieces have been shuffled.");
+  }
+  function showSetup() {
+    clearInterval(state.timer); state.timer = null; game.hidden = true; setup.hidden = false;
+    byId("win-card").hidden = true; byId("pause-cover").hidden = true; window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+  byId("start-button").addEventListener("click", startPuzzle);
+  byId("restart-button").addEventListener("click", restart);
+  byId("new-puzzle-button").addEventListener("click", showSetup);
+  byId("back-to-choices").addEventListener("click", showSetup);
+  byId("play-again-button").addEventListener("click", restart);
+  byId("preview-button").addEventListener("click", () => {
+    state.preview = !state.preview; byId("preview-button").setAttribute("aria-pressed", String(state.preview));
+    byId("preview-card").hidden = !state.preview; draw();
+  });
+  byId("pause-button").addEventListener("click", () => {
+    if (state.complete) return;
+    state.paused = !state.paused;
+    if (state.paused) { state.elapsed += (Date.now() - state.startAt) / 1000; clearInterval(state.timer); }
+    else { state.startAt = Date.now(); if (!state.relaxed) state.timer = setInterval(updateClock, 500); }
+    byId("pause-cover").hidden = !state.paused;
+    byId("pause-button").textContent = state.paused ? "Resume" : "Pause";
+    byId("pause-button").setAttribute("aria-pressed", String(state.paused));
+    if (!state.relaxed) updateClock(); announce(state.paused ? "Puzzle paused." : "Puzzle resumed.");
+  });
+  byId("resume-button").addEventListener("click", () => byId("pause-button").click());
+  let resizeFrame;
+  new ResizeObserver(() => { if (!game.hidden && !state.complete) { cancelAnimationFrame(resizeFrame); resizeFrame = requestAnimationFrame(configureCanvas); } }).observe(stage);
+})();
