@@ -1,922 +1,220 @@
 [
   {
     "id": "money-01",
-    "category": "life",
-    "title": "Life Scenario 1",
-    "prompt": "A realistic life challenge appears in year planning. You need to choose a response with tradeoffs.",
-    "tone": "realistic with light humor",
+    "category": "money",
+    "title": "The car repair",
+    "prompt": "Your car needs a $900 repair to remain reliable. You depend on it for work, but public transit is available with a longer commute.",
     "choices": [
       {
-        "label": "Ignore for now",
-        "text": "You postpone the issue and focus on current tasks.",
+        "label": "Pay for the repair",
+        "text": "Use $900 of cash to keep your usual commute.",
         "effects": {
-          "stress": -1,
-          "performance": -3,
-          "professionalism": -2
-        },
-        "feedback": "Short-term calm, long-term cleanup."
-      },
-      {
-        "label": "Play it safe",
-        "text": "You follow policy and ask for manager direction first.",
-        "effects": {
-          "performance": 3,
-          "stress": -2,
-          "professionalism": 3,
+          "cash": -900,
+          "stress": -3,
           "timeManagement": 2
         },
-        "feedback": "It was steady and responsible, even if it was not flashy."
+        "feedback": "Your immediate cash fell. Reliable transport reduced uncertainty about getting to work."
       },
       {
-        "label": "Invest in growth",
-        "text": "You pay for a short course and mentor check-ins.",
+        "label": "Use transit for now",
+        "text": "Spend $250 on short-term transit while you compare repair estimates.",
         "effects": {
-          "cash": -500,
-          "problemSolving": 3,
-          "techLiteracy": 3,
-          "performance": 3
+          "cash": -250,
+          "workLife": -4,
+          "problemSolving": 2
         },
-        "feedback": "You spent money now to avoid being confused later."
+        "feedback": "You kept more cash available but traded away commute time. The car still needs attention."
+      },
+      {
+        "label": "Finance the repair",
+        "text": "Add $1,000 to debt, including the example financing cost.",
+        "effects": {
+          "debt": 1000,
+          "stress": 3
+        },
+        "feedback": "Your cash stayed available, but borrowing increased what you owe. In this model all debt uses the same simplified interest rule."
       }
     ]
   },
   {
     "id": "money-02",
     "category": "money",
-    "title": "Money Scenario 2",
-    "prompt": "A realistic money challenge appears in year planning. You need to choose a response with tradeoffs.",
-    "tone": "realistic with light humor",
+    "title": "Your subscriptions add up",
+    "prompt": "You discover $420 in annual subscriptions you barely use. One service is how you regularly connect with friends.",
     "choices": [
       {
-        "label": "Address ethics concern",
-        "text": "You document facts and report through the right channel.",
+        "label": "Cancel the unused services",
+        "text": "Keep the social service and save $300 this year.",
         "effects": {
-          "professionalism": 4,
-          "stress": 3,
+          "cash": 300,
+          "financialLiteracy": 3
+        },
+        "feedback": "You cut spending that mattered less while keeping a valued connection."
+      },
+      {
+        "label": "Cancel all subscriptions",
+        "text": "Save the full $420.",
+        "effects": {
+          "cash": 420,
+          "happiness": -3,
+          "financialLiteracy": 2
+        },
+        "feedback": "You saved more money but lost a convenient way to connect with friends."
+      },
+      {
+        "label": "Keep everything",
+        "text": "Choose convenience and revisit the list later.",
+        "effects": {
           "happiness": 1,
-          "performance": 2
+          "timeManagement": -1
         },
-        "feedback": "Uncomfortable? yes. Necessary? also yes."
-      },
-      {
-        "label": "Take the stretch role",
-        "text": "You accept a temporary high-visibility assignment.",
-        "effects": {
-          "performance": 5,
-          "leadership": 3,
-          "stress": 5,
-          "cash": 400
-        },
-        "feedback": "Big learning curve, big spotlight, big calendar chaos."
-      },
-      {
-        "label": "Optimize your budget",
-        "text": "You trim optional spending and automate savings.",
-        "effects": {
-          "cash": 700,
-          "financialLiteracy": 4,
-          "happiness": -1,
-          "timeManagement": 1
-        },
-        "feedback": "Future-you sends a thank-you card, current-you misses takeout."
+        "feedback": "Nothing changed in your budget. Convenience used money you could have directed toward another goal."
       }
     ]
   },
   {
     "id": "money-03",
-    "category": "productivity/burnout",
-    "title": "Productivity/Burnout Scenario 3",
-    "prompt": "A realistic productivity/burnout challenge appears in year planning. You need to choose a response with tradeoffs.",
-    "tone": "realistic with light humor",
+    "category": "money",
+    "title": "Extra debt payment or cash buffer?",
+    "prompt": "You have room to redirect $700. Your normal yearly debt payment will still be calculated at year-end.",
     "choices": [
       {
-        "label": "Take initiative",
-        "text": "You volunteer to lead the fix and communicate clearly.",
+        "label": "Pay extra toward debt",
+        "text": "Use up to $700 of available cash and your remaining debt balance.",
         "effects": {
-          "performance": 6,
-          "stress": 4,
-          "leadership": 4,
-          "communication": 3,
-          "happiness": 1
+          "extraPayment": 700,
+          "financialLiteracy": 3,
+          "stress": -2
         },
-        "feedback": "Your initiative got noticed, and your inbox now has your name on every problem."
+        "feedback": "You traded some available cash for a lower debt balance. Only cash and debt actually available can be used."
       },
       {
-        "label": "Ignore for now",
-        "text": "You postpone the issue and focus on current tasks.",
+        "label": "Keep an emergency buffer",
+        "text": "Leave the money in cash for unexpected expenses.",
         "effects": {
-          "stress": -1,
-          "performance": -3,
-          "professionalism": -2
+          "stress": -2,
+          "financialLiteracy": 2
         },
-        "feedback": "Short-term calm, long-term cleanup."
+        "feedback": "Keeping cash available can prevent rushed borrowing. Your debt balance did not fall from this choice."
       },
       {
-        "label": "Optimize your budget",
-        "text": "You trim optional spending and automate savings.",
+        "label": "Spend on a weekend away",
+        "text": "Use $700 for a break.",
         "effects": {
-          "cash": 700,
-          "financialLiteracy": 4,
-          "happiness": -1,
-          "timeManagement": 1
+          "cash": -700,
+          "happiness": 6,
+          "stress": -4
         },
-        "feedback": "Future-you sends a thank-you card, current-you misses takeout."
+        "feedback": "The break helped well-being, while reducing money available for future bills or debt."
       }
     ]
   },
   {
     "id": "money-04",
-    "category": "productivity/burnout",
-    "title": "Productivity/Burnout Scenario 4",
-    "prompt": "A realistic productivity/burnout challenge appears in year planning. You need to choose a response with tradeoffs.",
-    "tone": "realistic with light humor",
+    "category": "money",
+    "title": "The cheaper commute",
+    "prompt": "A used bicycle and safety equipment cost $400. Cycling some days could save $650 in transport costs this year, but takes longer.",
     "choices": [
       {
-        "label": "Help the team",
-        "text": "You focus on teammate support and shared ownership.",
+        "label": "Try the bicycle plan",
+        "text": "Pay $400 and make the trips that produce the $650 saving.",
         "effects": {
-          "teamwork": 4,
-          "communication": 2,
-          "workLife": 2,
-          "performance": 2
+          "cash": 250,
+          "workLife": -3,
+          "happiness": 2,
+          "financialLiteracy": 2
         },
-        "feedback": "The team chemistry improved and people actually answered each other's messages."
+        "feedback": "The example net saving was $250 after equipment. The additional commute time was a separate cost."
       },
       {
-        "label": "Collaborate with mentor",
-        "text": "You seek advice before deciding.",
+        "label": "Share rides",
+        "text": "Coordinate rides and save $200 this year.",
         "effects": {
-          "adaptability": 3,
-          "communication": 2,
-          "performance": 2,
-          "stress": -1
+          "cash": 200,
+          "teamwork": 2,
+          "timeManagement": -1
         },
-        "feedback": "A five-minute mentor chat saved five hours of guessing."
+        "feedback": "Cooperation reduced costs, but you needed to coordinate schedules."
       },
       {
-        "label": "Set boundaries",
-        "text": "You protect rest time and decline extra tasks.",
+        "label": "Keep your current commute",
+        "text": "Prioritize your established travel routine.",
         "effects": {
-          "workLife": 5,
-          "stress": -4,
-          "happiness": 3,
-          "performance": -1
+          "timeManagement": 2
         },
-        "feedback": "You logged off on time and the world kept spinning."
+        "feedback": "You kept a predictable routine and gave up the potential savings."
       }
     ]
   },
   {
     "id": "money-05",
-    "category": "life",
-    "title": "Life Scenario 5",
-    "prompt": "A realistic life challenge appears in year planning. You need to choose a response with tradeoffs.",
-    "tone": "realistic with light humor",
+    "category": "money",
+    "title": "A tempting purchase",
+    "prompt": "A new device costs $1,200. Your current device still works, but the upgrade would be enjoyable.",
     "choices": [
       {
-        "label": "Play it safe",
-        "text": "You follow policy and ask for manager direction first.",
+        "label": "Buy it now",
+        "text": "Use $1,200 in cash.",
         "effects": {
-          "performance": 3,
-          "stress": -2,
-          "professionalism": 3,
-          "timeManagement": 2
+          "cash": -1200,
+          "happiness": 4
         },
-        "feedback": "It was steady and responsible, even if it was not flashy."
+        "feedback": "You enjoyed the upgrade and had less cash for other priorities."
       },
       {
-        "label": "Ignore for now",
-        "text": "You postpone the issue and focus on current tasks.",
+        "label": "Choose a refurbished model",
+        "text": "Spend $450 on a modest upgrade.",
         "effects": {
-          "stress": -1,
-          "performance": -3,
-          "professionalism": -2
+          "cash": -450,
+          "happiness": 2,
+          "financialLiteracy": 2
         },
-        "feedback": "Short-term calm, long-term cleanup."
+        "feedback": "You met part of the want at a lower cost. The $450 still had an opportunity cost."
       },
       {
-        "label": "Help the team",
-        "text": "You focus on teammate support and shared ownership.",
+        "label": "Keep what works",
+        "text": "Delay the purchase and keep your cash.",
         "effects": {
-          "teamwork": 4,
-          "communication": 2,
-          "workLife": 2,
-          "performance": 2
+          "financialLiteracy": 3,
+          "happiness": -1
         },
-        "feedback": "The team chemistry improved and people actually answered each other's messages."
+        "feedback": "You preserved financial flexibility but postponed something you wanted."
       }
     ]
   },
   {
     "id": "money-06",
-    "category": "life",
-    "title": "Life Scenario 6",
-    "prompt": "A realistic life challenge appears in year planning. You need to choose a response with tradeoffs.",
-    "tone": "realistic with light humor",
-    "choices": [
-      {
-        "label": "Take the stretch role",
-        "text": "You accept a temporary high-visibility assignment.",
-        "effects": {
-          "performance": 5,
-          "leadership": 3,
-          "stress": 5,
-          "cash": 400
-        },
-        "feedback": "Big learning curve, big spotlight, big calendar chaos."
-      },
-      {
-        "label": "Take initiative",
-        "text": "You volunteer to lead the fix and communicate clearly.",
-        "effects": {
-          "performance": 6,
-          "stress": 4,
-          "leadership": 4,
-          "communication": 3,
-          "happiness": 1
-        },
-        "feedback": "Your initiative got noticed, and your inbox now has your name on every problem."
-      },
-      {
-        "label": "Optimize your budget",
-        "text": "You trim optional spending and automate savings.",
-        "effects": {
-          "cash": 700,
-          "financialLiteracy": 4,
-          "happiness": -1,
-          "timeManagement": 1
-        },
-        "feedback": "Future-you sends a thank-you card, current-you misses takeout."
-      }
-    ]
-  },
-  {
-    "id": "money-07",
-    "category": "productivity/burnout",
-    "title": "Productivity/Burnout Scenario 7",
-    "prompt": "A realistic productivity/burnout challenge appears in year planning. You need to choose a response with tradeoffs.",
-    "tone": "realistic with light humor",
-    "choices": [
-      {
-        "label": "Optimize your budget",
-        "text": "You trim optional spending and automate savings.",
-        "effects": {
-          "cash": 700,
-          "financialLiteracy": 4,
-          "happiness": -1,
-          "timeManagement": 1
-        },
-        "feedback": "Future-you sends a thank-you card, current-you misses takeout."
-      },
-      {
-        "label": "Take initiative",
-        "text": "You volunteer to lead the fix and communicate clearly.",
-        "effects": {
-          "performance": 6,
-          "stress": 4,
-          "leadership": 4,
-          "communication": 3,
-          "happiness": 1
-        },
-        "feedback": "Your initiative got noticed, and your inbox now has your name on every problem."
-      },
-      {
-        "label": "Collaborate with mentor",
-        "text": "You seek advice before deciding.",
-        "effects": {
-          "adaptability": 3,
-          "communication": 2,
-          "performance": 2,
-          "stress": -1
-        },
-        "feedback": "A five-minute mentor chat saved five hours of guessing."
-      }
-    ]
-  },
-  {
-    "id": "money-08",
     "category": "money",
-    "title": "Money Scenario 8",
-    "prompt": "A realistic money challenge appears in year planning. You need to choose a response with tradeoffs.",
-    "tone": "realistic with light humor",
+    "title": "Share a professional membership?",
+    "prompt": "An optional professional association offers workshops and networking for $350 a year. Your employer will reimburse $200 if you document what you learn.",
     "choices": [
       {
-        "label": "Optimize your budget",
-        "text": "You trim optional spending and automate savings.",
+        "label": "Join and document the learning",
+        "text": "Pay the $150 net cost and attend workshops.",
         "effects": {
-          "cash": 700,
-          "financialLiteracy": 4,
-          "happiness": -1,
-          "timeManagement": 1
-        },
-        "feedback": "Future-you sends a thank-you card, current-you misses takeout."
-      },
-      {
-        "label": "Take the stretch role",
-        "text": "You accept a temporary high-visibility assignment.",
-        "effects": {
-          "performance": 5,
-          "leadership": 3,
-          "stress": 5,
-          "cash": 400
-        },
-        "feedback": "Big learning curve, big spotlight, big calendar chaos."
-      },
-      {
-        "label": "Address ethics concern",
-        "text": "You document facts and report through the right channel.",
-        "effects": {
-          "professionalism": 4,
-          "stress": 3,
-          "happiness": 1,
-          "performance": 2
-        },
-        "feedback": "Uncomfortable? yes. Necessary? also yes."
-      }
-    ]
-  },
-  {
-    "id": "money-09",
-    "category": "money",
-    "title": "Money Scenario 9",
-    "prompt": "A realistic money challenge appears in year planning. You need to choose a response with tradeoffs.",
-    "tone": "realistic with light humor",
-    "choices": [
-      {
-        "label": "Collaborate with mentor",
-        "text": "You seek advice before deciding.",
-        "effects": {
-          "adaptability": 3,
-          "communication": 2,
-          "performance": 2,
-          "stress": -1
-        },
-        "feedback": "A five-minute mentor chat saved five hours of guessing."
-      },
-      {
-        "label": "Take initiative",
-        "text": "You volunteer to lead the fix and communicate clearly.",
-        "effects": {
-          "performance": 6,
-          "stress": 4,
-          "leadership": 4,
-          "communication": 3,
-          "happiness": 1
-        },
-        "feedback": "Your initiative got noticed, and your inbox now has your name on every problem."
-      },
-      {
-        "label": "Take the stretch role",
-        "text": "You accept a temporary high-visibility assignment.",
-        "effects": {
-          "performance": 5,
-          "leadership": 3,
-          "stress": 5,
-          "cash": 400
-        },
-        "feedback": "Big learning curve, big spotlight, big calendar chaos."
-      }
-    ]
-  },
-  {
-    "id": "money-10",
-    "category": "money",
-    "title": "Money Scenario 10",
-    "prompt": "A realistic money challenge appears in year planning. You need to choose a response with tradeoffs.",
-    "tone": "realistic with light humor",
-    "choices": [
-      {
-        "label": "Ignore for now",
-        "text": "You postpone the issue and focus on current tasks.",
-        "effects": {
-          "stress": -1,
-          "performance": -3,
-          "professionalism": -2
-        },
-        "feedback": "Short-term calm, long-term cleanup."
-      },
-      {
-        "label": "Play it safe",
-        "text": "You follow policy and ask for manager direction first.",
-        "effects": {
-          "performance": 3,
-          "stress": -2,
+          "cash": -150,
           "professionalism": 3,
-          "timeManagement": 2
-        },
-        "feedback": "It was steady and responsible, even if it was not flashy."
-      },
-      {
-        "label": "Address ethics concern",
-        "text": "You document facts and report through the right channel.",
-        "effects": {
-          "professionalism": 4,
-          "stress": 3,
-          "happiness": 1,
-          "performance": 2
-        },
-        "feedback": "Uncomfortable? yes. Necessary? also yes."
-      }
-    ]
-  },
-  {
-    "id": "money-11",
-    "category": "money",
-    "title": "Money Scenario 11",
-    "prompt": "A realistic money challenge appears in year planning. You need to choose a response with tradeoffs.",
-    "tone": "realistic with light humor",
-    "choices": [
-      {
-        "label": "Ignore for now",
-        "text": "You postpone the issue and focus on current tasks.",
-        "effects": {
-          "stress": -1,
-          "performance": -3,
-          "professionalism": -2
-        },
-        "feedback": "Short-term calm, long-term cleanup."
-      },
-      {
-        "label": "Optimize your budget",
-        "text": "You trim optional spending and automate savings.",
-        "effects": {
-          "cash": 700,
-          "financialLiteracy": 4,
-          "happiness": -1,
-          "timeManagement": 1
-        },
-        "feedback": "Future-you sends a thank-you card, current-you misses takeout."
-      },
-      {
-        "label": "Take initiative",
-        "text": "You volunteer to lead the fix and communicate clearly.",
-        "effects": {
-          "performance": 6,
-          "stress": 4,
-          "leadership": 4,
-          "communication": 3,
-          "happiness": 1
-        },
-        "feedback": "Your initiative got noticed, and your inbox now has your name on every problem."
-      }
-    ]
-  },
-  {
-    "id": "money-12",
-    "category": "money",
-    "title": "Money Scenario 12",
-    "prompt": "A realistic money challenge appears in year planning. You need to choose a response with tradeoffs.",
-    "tone": "realistic with light humor",
-    "choices": [
-      {
-        "label": "Invest in growth",
-        "text": "You pay for a short course and mentor check-ins.",
-        "effects": {
-          "cash": -500,
-          "problemSolving": 3,
-          "techLiteracy": 3,
-          "performance": 3
-        },
-        "feedback": "You spent money now to avoid being confused later."
-      },
-      {
-        "label": "Address ethics concern",
-        "text": "You document facts and report through the right channel.",
-        "effects": {
-          "professionalism": 4,
-          "stress": 3,
-          "happiness": 1,
-          "performance": 2
-        },
-        "feedback": "Uncomfortable? yes. Necessary? also yes."
-      },
-      {
-        "label": "Collaborate with mentor",
-        "text": "You seek advice before deciding.",
-        "effects": {
-          "adaptability": 3,
           "communication": 2,
-          "performance": 2,
-          "stress": -1
+          "workLife": -2
         },
-        "feedback": "A five-minute mentor chat saved five hours of guessing."
-      }
-    ]
-  },
-  {
-    "id": "money-13",
-    "category": "productivity/burnout",
-    "title": "Productivity/Burnout Scenario 13",
-    "prompt": "A realistic productivity/burnout challenge appears in year planning. You need to choose a response with tradeoffs.",
-    "tone": "realistic with light humor",
-    "choices": [
+        "feedback": "Employer support reduced the cash cost. Participation still required your time."
+      },
       {
-        "label": "Help the team",
-        "text": "You focus on teammate support and shared ownership.",
+        "label": "Use free local events",
+        "text": "Attend a few free events instead.",
         "effects": {
-          "teamwork": 4,
           "communication": 2,
-          "workLife": 2,
-          "performance": 2
+          "timeManagement": -1
         },
-        "feedback": "The team chemistry improved and people actually answered each other's messages."
+        "feedback": "You made connections without a membership fee, with fewer structured resources."
       },
       {
-        "label": "Collaborate with mentor",
-        "text": "You seek advice before deciding.",
+        "label": "Skip networking this year",
+        "text": "Keep your current professional routine.",
         "effects": {
-          "adaptability": 3,
-          "communication": 2,
-          "performance": 2,
-          "stress": -1
+          "workLife": 2
         },
-        "feedback": "A five-minute mentor chat saved five hours of guessing."
-      },
-      {
-        "label": "Set boundaries",
-        "text": "You protect rest time and decline extra tasks.",
-        "effects": {
-          "workLife": 5,
-          "stress": -4,
-          "happiness": 3,
-          "performance": -1
-        },
-        "feedback": "You logged off on time and the world kept spinning."
-      }
-    ]
-  },
-  {
-    "id": "money-14",
-    "category": "productivity/burnout",
-    "title": "Productivity/Burnout Scenario 14",
-    "prompt": "A realistic productivity/burnout challenge appears in year planning. You need to choose a response with tradeoffs.",
-    "tone": "realistic with light humor",
-    "choices": [
-      {
-        "label": "Ignore for now",
-        "text": "You postpone the issue and focus on current tasks.",
-        "effects": {
-          "stress": -1,
-          "performance": -3,
-          "professionalism": -2
-        },
-        "feedback": "Short-term calm, long-term cleanup."
-      },
-      {
-        "label": "Take the stretch role",
-        "text": "You accept a temporary high-visibility assignment.",
-        "effects": {
-          "performance": 5,
-          "leadership": 3,
-          "stress": 5,
-          "cash": 400
-        },
-        "feedback": "Big learning curve, big spotlight, big calendar chaos."
-      },
-      {
-        "label": "Help the team",
-        "text": "You focus on teammate support and shared ownership.",
-        "effects": {
-          "teamwork": 4,
-          "communication": 2,
-          "workLife": 2,
-          "performance": 2
-        },
-        "feedback": "The team chemistry improved and people actually answered each other's messages."
-      }
-    ]
-  },
-  {
-    "id": "money-15",
-    "category": "productivity/burnout",
-    "title": "Productivity/Burnout Scenario 15",
-    "prompt": "A realistic productivity/burnout challenge appears in year planning. You need to choose a response with tradeoffs.",
-    "tone": "realistic with light humor",
-    "choices": [
-      {
-        "label": "Take the stretch role",
-        "text": "You accept a temporary high-visibility assignment.",
-        "effects": {
-          "performance": 5,
-          "leadership": 3,
-          "stress": 5,
-          "cash": 400
-        },
-        "feedback": "Big learning curve, big spotlight, big calendar chaos."
-      },
-      {
-        "label": "Optimize your budget",
-        "text": "You trim optional spending and automate savings.",
-        "effects": {
-          "cash": 700,
-          "financialLiteracy": 4,
-          "happiness": -1,
-          "timeManagement": 1
-        },
-        "feedback": "Future-you sends a thank-you card, current-you misses takeout."
-      },
-      {
-        "label": "Address ethics concern",
-        "text": "You document facts and report through the right channel.",
-        "effects": {
-          "professionalism": 4,
-          "stress": 3,
-          "happiness": 1,
-          "performance": 2
-        },
-        "feedback": "Uncomfortable? yes. Necessary? also yes."
-      }
-    ]
-  },
-  {
-    "id": "money-16",
-    "category": "opportunity",
-    "title": "Opportunity Scenario 16",
-    "prompt": "A realistic opportunity challenge appears in year planning. You need to choose a response with tradeoffs.",
-    "tone": "realistic with light humor",
-    "choices": [
-      {
-        "label": "Set boundaries",
-        "text": "You protect rest time and decline extra tasks.",
-        "effects": {
-          "workLife": 5,
-          "stress": -4,
-          "happiness": 3,
-          "performance": -1
-        },
-        "feedback": "You logged off on time and the world kept spinning."
-      },
-      {
-        "label": "Help the team",
-        "text": "You focus on teammate support and shared ownership.",
-        "effects": {
-          "teamwork": 4,
-          "communication": 2,
-          "workLife": 2,
-          "performance": 2
-        },
-        "feedback": "The team chemistry improved and people actually answered each other's messages."
-      },
-      {
-        "label": "Invest in growth",
-        "text": "You pay for a short course and mentor check-ins.",
-        "effects": {
-          "cash": -500,
-          "problemSolving": 3,
-          "techLiteracy": 3,
-          "performance": 3
-        },
-        "feedback": "You spent money now to avoid being confused later."
-      }
-    ]
-  },
-  {
-    "id": "money-17",
-    "category": "opportunity",
-    "title": "Opportunity Scenario 17",
-    "prompt": "A realistic opportunity challenge appears in year planning. You need to choose a response with tradeoffs.",
-    "tone": "realistic with light humor",
-    "choices": [
-      {
-        "label": "Help the team",
-        "text": "You focus on teammate support and shared ownership.",
-        "effects": {
-          "teamwork": 4,
-          "communication": 2,
-          "workLife": 2,
-          "performance": 2
-        },
-        "feedback": "The team chemistry improved and people actually answered each other's messages."
-      },
-      {
-        "label": "Play it safe",
-        "text": "You follow policy and ask for manager direction first.",
-        "effects": {
-          "performance": 3,
-          "stress": -2,
-          "professionalism": 3,
-          "timeManagement": 2
-        },
-        "feedback": "It was steady and responsible, even if it was not flashy."
-      },
-      {
-        "label": "Set boundaries",
-        "text": "You protect rest time and decline extra tasks.",
-        "effects": {
-          "workLife": 5,
-          "stress": -4,
-          "happiness": 3,
-          "performance": -1
-        },
-        "feedback": "You logged off on time and the world kept spinning."
-      }
-    ]
-  },
-  {
-    "id": "money-18",
-    "category": "opportunity",
-    "title": "Opportunity Scenario 18",
-    "prompt": "A realistic opportunity challenge appears in year planning. You need to choose a response with tradeoffs.",
-    "tone": "realistic with light humor",
-    "choices": [
-      {
-        "label": "Help the team",
-        "text": "You focus on teammate support and shared ownership.",
-        "effects": {
-          "teamwork": 4,
-          "communication": 2,
-          "workLife": 2,
-          "performance": 2
-        },
-        "feedback": "The team chemistry improved and people actually answered each other's messages."
-      },
-      {
-        "label": "Invest in growth",
-        "text": "You pay for a short course and mentor check-ins.",
-        "effects": {
-          "cash": -500,
-          "problemSolving": 3,
-          "techLiteracy": 3,
-          "performance": 3
-        },
-        "feedback": "You spent money now to avoid being confused later."
-      },
-      {
-        "label": "Ignore for now",
-        "text": "You postpone the issue and focus on current tasks.",
-        "effects": {
-          "stress": -1,
-          "performance": -3,
-          "professionalism": -2
-        },
-        "feedback": "Short-term calm, long-term cleanup."
-      }
-    ]
-  },
-  {
-    "id": "money-19",
-    "category": "opportunity",
-    "title": "Opportunity Scenario 19",
-    "prompt": "A realistic opportunity challenge appears in year planning. You need to choose a response with tradeoffs.",
-    "tone": "realistic with light humor",
-    "choices": [
-      {
-        "label": "Set boundaries",
-        "text": "You protect rest time and decline extra tasks.",
-        "effects": {
-          "workLife": 5,
-          "stress": -4,
-          "happiness": 3,
-          "performance": -1
-        },
-        "feedback": "You logged off on time and the world kept spinning."
-      },
-      {
-        "label": "Take the stretch role",
-        "text": "You accept a temporary high-visibility assignment.",
-        "effects": {
-          "performance": 5,
-          "leadership": 3,
-          "stress": 5,
-          "cash": 400
-        },
-        "feedback": "Big learning curve, big spotlight, big calendar chaos."
-      },
-      {
-        "label": "Invest in growth",
-        "text": "You pay for a short course and mentor check-ins.",
-        "effects": {
-          "cash": -500,
-          "problemSolving": 3,
-          "techLiteracy": 3,
-          "performance": 3
-        },
-        "feedback": "You spent money now to avoid being confused later."
-      }
-    ]
-  },
-  {
-    "id": "money-20",
-    "category": "productivity/burnout",
-    "title": "Productivity/Burnout Scenario 20",
-    "prompt": "A realistic productivity/burnout challenge appears in year planning. You need to choose a response with tradeoffs.",
-    "tone": "realistic with light humor",
-    "choices": [
-      {
-        "label": "Take initiative",
-        "text": "You volunteer to lead the fix and communicate clearly.",
-        "effects": {
-          "performance": 6,
-          "stress": 4,
-          "leadership": 4,
-          "communication": 3,
-          "happiness": 1
-        },
-        "feedback": "Your initiative got noticed, and your inbox now has your name on every problem."
-      },
-      {
-        "label": "Help the team",
-        "text": "You focus on teammate support and shared ownership.",
-        "effects": {
-          "teamwork": 4,
-          "communication": 2,
-          "workLife": 2,
-          "performance": 2
-        },
-        "feedback": "The team chemistry improved and people actually answered each other's messages."
-      },
-      {
-        "label": "Ignore for now",
-        "text": "You postpone the issue and focus on current tasks.",
-        "effects": {
-          "stress": -1,
-          "performance": -3,
-          "professionalism": -2
-        },
-        "feedback": "Short-term calm, long-term cleanup."
-      }
-    ]
-  },
-  {
-    "id": "money-21",
-    "category": "opportunity",
-    "title": "Opportunity Scenario 21",
-    "prompt": "A realistic opportunity challenge appears in year planning. You need to choose a response with tradeoffs.",
-    "tone": "realistic with light humor",
-    "choices": [
-      {
-        "label": "Optimize your budget",
-        "text": "You trim optional spending and automate savings.",
-        "effects": {
-          "cash": 700,
-          "financialLiteracy": 4,
-          "happiness": -1,
-          "timeManagement": 1
-        },
-        "feedback": "Future-you sends a thank-you card, current-you misses takeout."
-      },
-      {
-        "label": "Collaborate with mentor",
-        "text": "You seek advice before deciding.",
-        "effects": {
-          "adaptability": 3,
-          "communication": 2,
-          "performance": 2,
-          "stress": -1
-        },
-        "feedback": "A five-minute mentor chat saved five hours of guessing."
-      },
-      {
-        "label": "Play it safe",
-        "text": "You follow policy and ask for manager direction first.",
-        "effects": {
-          "performance": 3,
-          "stress": -2,
-          "professionalism": 3,
-          "timeManagement": 2
-        },
-        "feedback": "It was steady and responsible, even if it was not flashy."
-      }
-    ]
-  },
-  {
-    "id": "money-22",
-    "category": "life",
-    "title": "Life Scenario 22",
-    "prompt": "A realistic life challenge appears in year planning. You need to choose a response with tradeoffs.",
-    "tone": "realistic with light humor",
-    "choices": [
-      {
-        "label": "Ignore for now",
-        "text": "You postpone the issue and focus on current tasks.",
-        "effects": {
-          "stress": -1,
-          "performance": -3,
-          "professionalism": -2
-        },
-        "feedback": "Short-term calm, long-term cleanup."
-      },
-      {
-        "label": "Take the stretch role",
-        "text": "You accept a temporary high-visibility assignment.",
-        "effects": {
-          "performance": 5,
-          "leadership": 3,
-          "stress": 5,
-          "cash": 400
-        },
-        "feedback": "Big learning curve, big spotlight, big calendar chaos."
-      },
-      {
-        "label": "Optimize your budget",
-        "text": "You trim optional spending and automate savings.",
-        "effects": {
-          "cash": 700,
-          "financialLiteracy": 4,
-          "happiness": -1,
-          "timeManagement": 1
-        },
-        "feedback": "Future-you sends a thank-you card, current-you misses takeout."
+        "feedback": "You protected time and cash while passing up these particular learning opportunities."
       }
     ]
   }
