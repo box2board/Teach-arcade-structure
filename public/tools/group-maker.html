@@ -97,89 +97,599 @@
   </script>
 
   <style>
-    .group-maker-wrap { max-width: 1180px; margin: 0 auto; }
-    .tool-hero { text-align: center; padding: 18px 12px 14px; }
-    .tool-hero h1 { margin: 0 0 6px; font-size: clamp(30px, 4vw, 42px); }
-    .tool-hero .lead { margin: 0; font: 700 18px/1.45 Nunito, system-ui, sans-serif; color: #334155; }
-    .tool-hero .support { margin: 6px auto 0; max-width: 720px; color: #64748b; font: 400 14px/1.5 Nunito, system-ui, sans-serif; }
-    .trust-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
-    .trust-badge { display: inline-flex; border: 1px solid #dbe3ee; border-radius: 999px; padding: 5px 9px; background: #fff; color: #475569; font: 700 12px/1 Nunito, system-ui, sans-serif; }
+    .group-maker-wrap {
+      width: min(96vw, 1500px);
+      max-width: 1500px;
+      margin: 0 auto;
+      padding-inline: 0;
+    }
 
-    .tool-shell { border: 1px solid #e2e8f0; border-radius: 16px; padding: 16px; background: #fff; box-shadow: 0 8px 24px rgba(15, 23, 42, .06); }
-    .tool-grid { display: grid; gap: 18px; }
-    @media (min-width: 900px) { .tool-grid { grid-template-columns: minmax(300px, 380px) 1fr; align-items: start; } }
+    .breadcrumbs {
+      margin: 8px 0 2px;
+      font-size: 13px;
+      opacity: .78;
+    }
 
-    textarea { width: 100%; min-height: 230px; resize: vertical; }
-    .controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 12px; }
-    .field { display: flex; flex-direction: column; gap: 6px; }
+    .tool-hero {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 12px 2px 14px;
+    }
+
+    .hero-copy { min-width: 0; }
+    .tool-hero h1 {
+      margin: 0;
+      font-size: clamp(28px, 3vw, 42px);
+      line-height: 1.08;
+      letter-spacing: -.025em;
+    }
+    .tool-hero .lead {
+      margin: 6px 0 0;
+      color: #475569;
+      font: 600 15px/1.5 Nunito, system-ui, sans-serif;
+    }
+    .hero-meta {
+      flex: 0 0 auto;
+      color: #64748b;
+      font: 700 12px/1.4 Nunito, system-ui, sans-serif;
+      white-space: nowrap;
+    }
+
+    .tool-shell {
+      overflow: hidden;
+      border: 1px solid #dbe3ee;
+      border-radius: 20px;
+      background: #eef3f9;
+      box-shadow: 0 18px 48px rgba(15, 23, 42, .10);
+    }
+
+    .tool-grid {
+      display: grid;
+      grid-template-columns: minmax(330px, 410px) minmax(0, 1fr);
+      min-height: 610px;
+    }
+
+    .input-panel {
+      padding: 22px;
+      background: #fff;
+      border-right: 1px solid #dbe3ee;
+    }
+
+    .panel-kicker {
+      margin: 0 0 3px;
+      color: #2563eb;
+      font: 800 12px/1.2 Nunito, system-ui, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .panel-title {
+      margin: 0 0 4px;
+      font-size: 22px;
+      line-height: 1.2;
+    }
+
+    .panel-subtitle {
+      margin: 0 0 16px;
+      color: #64748b;
+      font: 500 13px/1.45 Nunito, system-ui, sans-serif;
+    }
+
+    .small {
+      color: #475569;
+      font: 700 13px/1.45 Nunito, system-ui, sans-serif;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 250px;
+      resize: vertical;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      padding: 12px 13px;
+      background: #f8fafc;
+      font: 600 15px/1.55 Nunito, system-ui, sans-serif;
+      transition: border-color .15s ease, box-shadow .15s ease, background .15s ease;
+    }
+
+    textarea:focus {
+      border-color: #60a5fa;
+      background: #fff;
+      box-shadow: 0 0 0 4px rgba(96, 165, 250, .14);
+    }
+
+    .sample-note {
+      margin: 7px 0 0;
+      color: #64748b;
+      font: 500 12px/1.4 Nunito, system-ui, sans-serif;
+    }
+
+    .setup-grid {
+      display: grid;
+      grid-template-columns: 1.35fr .65fr;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-width: 0;
+    }
+
     .field.full { grid-column: 1 / -1; }
-    .controls select, .controls input { width: 100%; }
-    .options-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
-    .button-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; padding: 10px 14px; border-radius: 10px; border: 1px solid #2563eb; background: #2563eb; color: #fff; text-decoration: none; font: 700 14px/1 Poppins, sans-serif; cursor: pointer; }
-    .btn.secondary { background: #fff; color: #1f2937; border-color: #cbd5e1; }
-    .btn.subtle-danger { background: #fff; color: #b91c1c; border-color: #fecaca; }
-    .small { font: 600 13px/1.45 Nunito, system-ui, sans-serif; color: #475569; }
-    .note { margin: 8px 0 0; font: 400 12px/1.5 Nunito, system-ui, sans-serif; color: #64748b; }
-    .status { margin: 10px 0 0; font: 700 13px/1.4 Nunito, system-ui, sans-serif; color: #475569; }
-    .secondary-actions { margin-top: 12px; border-top: 1px solid #e2e8f0; padding-top: 10px; }
-    .secondary-actions summary { cursor: pointer; font-weight: 700; }
 
-    .output-head { display: flex; justify-content: space-between; gap: 12px; align-items: center; flex-wrap: wrap; }
-    .output-head h2 { margin: 0; font-size: 22px; }
-    .groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; margin-top: 12px; }
-    .group { border: 1px solid #dbe3ee; border-radius: 12px; padding: 13px; background: #f8fafc; min-width: 0; }
-    .group h3 { margin: 0 0 8px; display: flex; align-items: center; gap: 7px; }
-    .group ol { margin: 0 0 2px 20px; padding: 0; }
-    .group li { overflow-wrap: anywhere; margin-bottom: 3px; }
-    .pill { display: inline-block; padding: 4px 8px; border-radius: 999px; font: 700 12px/1 Nunito, system-ui, sans-serif; background: #e0e7ff; color: #3730a3; }
-    .empty-state { border: 1px dashed #cbd5e1; border-radius: 12px; padding: 36px 18px; text-align: center; color: #64748b; margin-top: 12px; }
+    .setup-grid select,
+    .setup-grid input {
+      width: 100%;
+      min-height: 44px;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      background: #fff;
+      padding: 8px 10px;
+      color: #0f172a;
+      font: 700 14px/1 Nunito, system-ui, sans-serif;
+    }
 
-    .supporting-content { max-width: 860px; margin: 30px auto 18px; }
-    .supporting-content h2 { margin: 24px 0 8px; font-size: 22px; }
-    .supporting-content p { margin: 0; color: #475569; }
-    .use-list { display: flex; flex-wrap: wrap; gap: 8px 16px; margin: 10px 0 0; padding-left: 20px; }
-    .use-list li { min-width: 180px; }
-    .how-steps { margin-bottom: 0; padding-left: 22px; }
-    .how-steps li { margin-bottom: 4px; }
-    .faq-list { display: grid; gap: 8px; margin-top: 10px; }
-    .faq-list details { border: 1px solid #e2e8f0; border-radius: 10px; padding: 10px 12px; background: #fff; }
-    .faq-list summary { cursor: pointer; font-weight: 700; }
-    .faq-list p { margin-top: 7px; }
-    .related-tools { margin-top: 20px; padding-top: 16px; border-top: 1px solid #e2e8f0; text-align: center; }
-    .related-tools a { margin: 0 8px; }
+    .advanced-settings,
+    .secondary-actions {
+      margin-top: 12px;
+      border: 1px solid #e2e8f0;
+      border-radius: 11px;
+      background: #f8fafc;
+    }
 
-    .projector-panel:fullscreen { background: #fff; padding: 28px; overflow: auto; }
-    .projector-panel:fullscreen .groups { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
-    .projector-panel:fullscreen .group { font-size: 1.25rem; padding: 18px; }
+    .advanced-settings summary,
+    .secondary-actions summary {
+      cursor: pointer;
+      padding: 10px 12px;
+      color: #475569;
+      font: 800 13px/1.35 Nunito, system-ui, sans-serif;
+      list-style-position: inside;
+    }
 
-    .btn:focus-visible, textarea:focus-visible, select:focus-visible, input:focus-visible, summary:focus-visible, a:focus-visible { outline: 3px solid #93c5fd; outline-offset: 2px; }
-    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+    .advanced-inner,
+    .secondary-inner {
+      padding: 2px 12px 12px;
+    }
 
-    @media (max-width: 560px) {
-      .tool-shell { padding: 12px; }
-      .controls { grid-template-columns: 1fr; }
+    .advanced-inner .field { margin-top: 8px; }
+
+    .options-row {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .options-row label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #334155;
+      font: 700 13px/1.35 Nunito, system-ui, sans-serif;
+    }
+
+    .primary-action {
+      width: 100%;
+      min-height: 52px;
+      margin-top: 14px;
+      border: 0;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #2563eb, #4f46e5);
+      color: #fff;
+      box-shadow: 0 9px 20px rgba(37, 99, 235, .22);
+      font: 700 16px/1 Poppins, sans-serif;
+      cursor: pointer;
+    }
+
+    .primary-action:hover { filter: brightness(1.03); transform: translateY(-1px); }
+    .primary-action:active { transform: translateY(0); }
+
+    .quick-actions,
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .quick-actions { margin-top: 9px; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 39px;
+      padding: 9px 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 9px;
+      background: #fff;
+      color: #334155;
+      text-decoration: none;
+      font: 800 13px/1 Poppins, sans-serif;
+      cursor: pointer;
+    }
+
+    .btn:hover { background: #f8fafc; border-color: #94a3b8; }
+    .btn.subtle-danger { color: #b91c1c; border-color: #fecaca; }
+
+    .secondary-inner .button-row { margin-top: 6px; }
+
+    .note {
+      margin: 9px 0 0;
+      color: #64748b;
+      font: 500 12px/1.5 Nunito, system-ui, sans-serif;
+    }
+
+    .status {
+      min-height: 20px;
+      margin: 11px 2px 0;
+      color: #64748b;
+      font: 700 12px/1.4 Nunito, system-ui, sans-serif;
+    }
+
+    .projector-panel {
+      position: relative;
+      min-width: 0;
+      padding: 24px;
+      background:
+        radial-gradient(circle at top right, rgba(99, 102, 241, .11), transparent 30%),
+        linear-gradient(180deg, #f8fbff 0%, #eef3f9 100%);
+    }
+
+    .output-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid rgba(148, 163, 184, .35);
+    }
+
+    .output-head h2 {
+      margin: 0;
+      color: #0f172a;
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    #summary { margin-top: 3px; }
+
+    .output-actions { justify-content: flex-end; }
+    .output-actions .btn { background: rgba(255, 255, 255, .82); }
+
+    .empty-state {
+      min-height: 455px;
+      display: grid;
+      place-items: center;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .empty-inner { max-width: 600px; }
+
+    .empty-preview {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 22px;
+      opacity: .72;
+    }
+
+    .empty-card {
+      min-height: 116px;
+      border: 1px solid #dbe3ee;
+      border-radius: 14px;
+      padding: 14px;
+      background: rgba(255, 255, 255, .76);
+      box-shadow: 0 8px 20px rgba(15, 23, 42, .05);
+      text-align: left;
+    }
+
+    .empty-card strong {
+      display: block;
+      margin-bottom: 10px;
+      color: #64748b;
+      font: 800 13px/1 Poppins, sans-serif;
+    }
+
+    .ghost-line {
+      display: block;
+      height: 9px;
+      margin: 8px 0;
+      border-radius: 999px;
+      background: #dbe5f0;
+    }
+
+    .ghost-line:nth-child(2) { width: 84%; }
+    .ghost-line:nth-child(3) { width: 64%; }
+    .ghost-line:nth-child(4) { width: 73%; }
+
+    .empty-state h3 {
+      margin: 0;
+      color: #334155;
+      font-size: 21px;
+    }
+
+    .empty-state p {
+      margin: 7px auto 0;
+      max-width: 470px;
+      color: #64748b;
+      font: 600 14px/1.5 Nunito, system-ui, sans-serif;
+    }
+
+    .groups {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .group {
+      position: relative;
+      overflow: hidden;
+      min-width: 0;
+      border: 1px solid #dbe3ee;
+      border-radius: 15px;
+      padding: 16px;
+      background: rgba(255, 255, 255, .94);
+      box-shadow: 0 8px 22px rgba(15, 23, 42, .06);
+    }
+
+    .group::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 4px;
+      background: #3b82f6;
+    }
+
+    .group:nth-child(5n + 2)::before { background: #8b5cf6; }
+    .group:nth-child(5n + 3)::before { background: #14b8a6; }
+    .group:nth-child(5n + 4)::before { background: #f59e0b; }
+    .group:nth-child(5n + 5)::before { background: #ec4899; }
+
+    .group h3 {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin: 1px 0 11px;
+      color: #0f172a;
+      font-size: 18px;
+    }
+
+    .group ol {
+      margin: 0;
+      padding-left: 24px;
+      color: #334155;
+      font: 700 15px/1.65 Nunito, system-ui, sans-serif;
+    }
+
+    .group li { overflow-wrap: anywhere; }
+
+    .pill {
+      display: inline-flex;
+      min-width: 30px;
+      height: 25px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background: #eff6ff;
+      color: #1d4ed8;
+      font: 800 12px/1 Nunito, system-ui, sans-serif;
+    }
+
+    .print-note {
+      margin: 14px 2px 0;
+      color: #64748b;
+    }
+
+    .help-drawer {
+      max-width: 980px;
+      margin: 24px auto 8px;
+      border-top: 1px solid #e2e8f0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .help-drawer > summary {
+      cursor: pointer;
+      padding: 15px 4px;
+      color: #475569;
+      font: 800 14px/1.4 Poppins, sans-serif;
+      text-align: center;
+    }
+
+    .supporting-content {
+      padding: 0 8px 18px;
+    }
+
+    .support-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .supporting-content h2 {
+      margin: 14px 0 8px;
+      font-size: 19px;
+    }
+
+    .use-list,
+    .how-steps {
+      margin: 0;
+      padding-left: 22px;
+      color: #475569;
+      font: 600 14px/1.65 Nunito, system-ui, sans-serif;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 7px;
+      margin-top: 8px;
+    }
+
+    .faq-list details {
+      border: 1px solid #e2e8f0;
+      border-radius: 9px;
+      padding: 9px 11px;
+      background: #fff;
+    }
+
+    .faq-list summary {
+      cursor: pointer;
+      font-weight: 800;
+    }
+
+    .faq-list p {
+      margin: 7px 0 0;
+      color: #475569;
+      font-size: 14px;
+    }
+
+    .related-tools {
+      margin-top: 14px;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    .related-tools a { margin: 0 7px; }
+
+    .projector-panel:fullscreen {
+      padding: 34px;
+      overflow: auto;
+      background:
+        radial-gradient(circle at top right, rgba(99, 102, 241, .16), transparent 30%),
+        #f8fbff;
+    }
+
+    .projector-panel:fullscreen .output-head h2 { font-size: 34px; }
+    .projector-panel:fullscreen .groups {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .projector-panel:fullscreen .group {
+      padding: 22px;
+      font-size: 1.2rem;
+    }
+    .projector-panel:fullscreen .group h3 { font-size: 24px; }
+    .projector-panel:fullscreen .group ol { font-size: 20px; }
+
+    .primary-action:focus-visible,
+    .btn:focus-visible,
+    textarea:focus-visible,
+    select:focus-visible,
+    input:focus-visible,
+    summary:focus-visible,
+    a:focus-visible {
+      outline: 3px solid #93c5fd;
+      outline-offset: 2px;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (max-width: 980px) {
+      .group-maker-wrap { width: min(94vw, 860px); }
+      .tool-grid { grid-template-columns: 1fr; }
+      .input-panel { border-right: 0; border-bottom: 1px solid #dbe3ee; }
+      .projector-panel { min-height: 470px; }
+      .empty-state { min-height: 360px; }
+    }
+
+    @media (max-width: 620px) {
+      .group-maker-wrap { width: calc(100% - 20px); }
+      .tool-hero { align-items: flex-start; padding-top: 8px; }
+      .hero-meta { display: none; }
+      .tool-shell { border-radius: 14px; }
+      .input-panel, .projector-panel { padding: 16px; }
+      .setup-grid { grid-template-columns: 1fr; }
       .field.full { grid-column: auto; }
-      .button-row .btn { flex: 1 1 140px; }
-      .tool-hero { padding-left: 0; padding-right: 0; }
+      textarea { min-height: 215px; }
+      .output-head { align-items: flex-start; }
+      .output-actions { width: 100%; justify-content: flex-start; }
+      .empty-preview { grid-template-columns: 1fr 1fr; }
+      .empty-card:nth-child(3) { display: none; }
+      .empty-state { min-height: 315px; padding-inline: 8px; }
+      .groups { grid-template-columns: 1fr; }
+      .support-grid { grid-template-columns: 1fr; gap: 4px; }
+      .quick-actions .btn { flex: 1 1 120px; }
     }
 
     @media print {
-      header, footer, .tool-hero, .input-panel, .output-actions, .print-note, .status, .secondary-actions, .supporting-content, .breadcrumbs { display: none !important; }
-      .tool-shell { border: 0; box-shadow: none; padding: 0; }
-      .tool-grid { display: block; }
+      header, footer, .tool-hero, .input-panel, .output-actions, .print-note, .status, .secondary-actions, .advanced-settings, .help-drawer, .breadcrumbs {
+        display: none !important;
+      }
+      .group-maker-wrap { width: 100%; max-width: none; }
+      .tool-shell { border: 0; box-shadow: none; background: #fff; }
+      .tool-grid { display: block; min-height: 0; }
+      .projector-panel { padding: 0; background: #fff; }
       .groups { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-      .group { break-inside: avoid; background: #fff; }
+      .group { break-inside: avoid; background: #fff; box-shadow: none; }
       body { background: #fff; }
     }
 
-    :root.dark .tool-shell, :root.dark .faq-list details, :root.dark .projector-panel:fullscreen { background: #0b1220; border-color: #1f2a44; }
-    :root.dark .tool-hero .lead, :root.dark .output-head h2 { color: #e2e8f0; }
-    :root.dark .tool-hero .support, :root.dark .supporting-content p, :root.dark .small, :root.dark .note, :root.dark .status { color: #cbd5e1; }
-    :root.dark .group { background: #111827; border-color: #334155; }
-    :root.dark .trust-badge, :root.dark .btn.secondary, :root.dark .btn.subtle-danger { background: #111827; border-color: #334155; color: #e2e8f0; }
+    :root.dark .tool-hero .lead,
+    :root.dark .panel-subtitle,
+    :root.dark .sample-note,
+    :root.dark .small,
+    :root.dark .note,
+    :root.dark .status,
+    :root.dark .empty-state p,
+    :root.dark .use-list,
+    :root.dark .how-steps,
+    :root.dark .faq-list p {
+      color: #cbd5e1;
+    }
+
+    :root.dark .tool-shell { background: #0f172a; border-color: #26334b; }
+    :root.dark .input-panel,
+    :root.dark .faq-list details {
+      background: #0b1220;
+      border-color: #26334b;
+    }
+    :root.dark textarea,
+    :root.dark .setup-grid select,
+    :root.dark .setup-grid input,
+    :root.dark .advanced-settings,
+    :root.dark .secondary-actions,
+    :root.dark .btn {
+      background: #111827;
+      border-color: #334155;
+      color: #e2e8f0;
+    }
+    :root.dark .projector-panel,
+    :root.dark .projector-panel:fullscreen {
+      background:
+        radial-gradient(circle at top right, rgba(99, 102, 241, .12), transparent 30%),
+        #0f172a;
+    }
+    :root.dark .output-head h2,
+    :root.dark .empty-state h3,
+    :root.dark .group h3 {
+      color: #f8fafc;
+    }
+    :root.dark .empty-card,
+    :root.dark .group {
+      background: #111827;
+      border-color: #334155;
+    }
+    :root.dark .group ol { color: #e2e8f0; }
+    :root.dark .ghost-line { background: #334155; }
   </style>
 </head>
+
 <body>
   <div id="site-header"></div>
   <script src="/assets/scripts/nav.js?v=5" defer></script>
@@ -190,26 +700,33 @@
     </nav>
 
     <section class="tool-hero" aria-labelledby="page-title">
-      <h1 id="page-title">Free Classroom Group Maker</h1>
-      <p class="lead">Create random student groups, partners, or teams in seconds.</p>
-      <p class="support">Paste your class list, choose a group size or number of groups, and generate a new mix instantly.</p>
-      <div class="trust-row" aria-label="Tool highlights">
-        <span class="trust-badge">Free</span>
-        <span class="trust-badge">No login</span>
-        <span class="trust-badge">Fast classroom setup</span>
+      <div class="hero-copy">
+        <h1 id="page-title">Free Classroom Group Maker</h1>
+        <p class="lead">Paste your class list, choose a group size, and create groups instantly.</p>
       </div>
+      <div class="hero-meta">Free • No login • Browser-based</div>
     </section>
 
     <section class="tool-shell" aria-label="Classroom Group Maker tool">
       <div class="tool-grid">
         <section class="input-panel" aria-labelledby="input-heading">
-          <h2 id="input-heading" class="sr-only">Enter students and choose group settings</h2>
+          <p class="panel-kicker">Setup</p>
+          <h2 id="input-heading" class="panel-title">Build your groups</h2>
+          <p class="panel-subtitle">Replace the sample list with your students, then choose how you want the class divided.</p>
 
-          <label class="small" for="names">Student names — one per line</label>
-          <textarea id="names" autocomplete="off" spellcheck="false" placeholder="Alex&#10;Jordan&#10;Taylor&#10;Morgan&#10;Casey&#10;Riley"></textarea>
+          <label class="small" for="names">Student names</label>
+          <textarea id="names" autocomplete="off" spellcheck="false">Bruce
+Alfred
+Selina
+Oswald
+Harvey
+Pamela
+Jason
+Barbara</textarea>
+          <p class="sample-note">One name per line. The sample names are ready to test.</p>
 
-          <div class="controls">
-            <div class="field full">
+          <div class="setup-grid">
+            <div class="field">
               <label class="small" for="mode">Create groups by</label>
               <select id="mode">
                 <option value="size">Students per group</option>
@@ -218,46 +735,53 @@
             </div>
 
             <div class="field" id="sizeField">
-              <label class="small" for="groupSize">Students per group</label>
+              <label class="small" for="groupSize">Group size</label>
               <input id="groupSize" type="number" inputmode="numeric" min="2" value="3" />
             </div>
 
             <div class="field" id="countField" hidden>
-              <label class="small" for="groupCount">Number of groups</label>
+              <label class="small" for="groupCount">How many groups?</label>
               <input id="groupCount" type="number" inputmode="numeric" min="2" value="4" />
-            </div>
-
-            <div class="field full">
-              <label class="small" for="balance">Group distribution</label>
-              <select id="balance">
-                <option value="roundrobin">Even groups</option>
-                <option value="chunk">Fill groups in order</option>
-                <option value="pure">Random group sizes</option>
-              </select>
-            </div>
-
-            <div class="field full options-row">
-              <label><input id="shuffleFirst" type="checkbox" checked /> Shuffle names first</label>
-              <label><input id="avoidRepeats" type="checkbox" /> Avoid prior pairings</label>
             </div>
           </div>
 
-          <div class="button-row">
-            <button id="make" class="btn" type="button">Generate Groups</button>
-            <button id="pairs" class="btn secondary" type="button">Make Pairs</button>
-            <button id="clear" class="btn secondary" type="button">Clear</button>
+          <details class="advanced-settings">
+            <summary>Advanced options</summary>
+            <div class="advanced-inner">
+              <div class="field">
+                <label class="small" for="balance">Group distribution</label>
+                <select id="balance">
+                  <option value="roundrobin">Even groups</option>
+                  <option value="chunk">Fill groups in order</option>
+                  <option value="pure">Random group sizes</option>
+                </select>
+              </div>
+              <div class="options-row">
+                <label><input id="shuffleFirst" type="checkbox" checked /> Shuffle names first</label>
+                <label><input id="avoidRepeats" type="checkbox" /> Avoid prior pairings</label>
+              </div>
+            </div>
+          </details>
+
+          <button id="make" class="primary-action" type="button">Generate Groups</button>
+
+          <div class="quick-actions" aria-label="Quick actions">
+            <button id="pairs" class="btn" type="button">Make Pairs</button>
+            <button id="clear" class="btn" type="button">Clear List</button>
           </div>
 
           <details class="secondary-actions">
             <summary>Saved lists & pairing tools</summary>
-            <div class="button-row">
-              <button id="save" class="btn secondary" type="button">Save List</button>
-              <button id="restore" class="btn secondary" type="button">Restore Saved List</button>
-              <button id="share" class="btn secondary" type="button">Copy Share Link</button>
-              <button id="recordPairs" class="btn secondary" type="button">Record Pairings</button>
-              <button id="resetHistory" class="btn subtle-danger" type="button">Reset Pairing History</button>
+            <div class="secondary-inner">
+              <div class="button-row">
+                <button id="save" class="btn" type="button">Save List</button>
+                <button id="restore" class="btn" type="button">Restore Saved List</button>
+                <button id="share" class="btn" type="button">Copy Share Link</button>
+                <button id="recordPairs" class="btn" type="button">Record Pairings</button>
+                <button id="resetHistory" class="btn subtle-danger" type="button">Reset Pairing History</button>
+              </div>
+              <p class="note">Saved lists and pairing history stay in this browser. A copied share link includes the names currently entered.</p>
             </div>
-            <p class="note">Saved lists and pairing history stay in this browser. A copied share link includes the names currently entered.</p>
           </details>
 
           <p id="status" class="status" role="status" aria-live="polite">Status: Ready</p>
@@ -266,71 +790,99 @@
         <section id="groupOutput" class="projector-panel" aria-labelledby="groups-heading">
           <div class="output-head">
             <div>
-              <h2 id="groups-heading">Groups</h2>
+              <h2 id="groups-heading">Your Groups</h2>
               <div id="summary" class="small"></div>
             </div>
-            <div class="button-row output-actions" style="margin-top:0;">
-              <button id="copyGroups" class="btn secondary" type="button">Copy</button>
-              <button id="fullscreen" class="btn secondary" type="button">Projector View</button>
-              <button id="print" class="btn secondary" type="button">Print</button>
+            <div class="button-row output-actions">
+              <button id="copyGroups" class="btn" type="button">Copy</button>
+              <button id="fullscreen" class="btn" type="button">Projector View</button>
+              <button id="print" class="btn" type="button">Print</button>
             </div>
           </div>
-          <div id="emptyState" class="empty-state">Your groups will appear here.</div>
+
+          <div id="emptyState" class="empty-state">
+            <div class="empty-inner">
+              <div class="empty-preview" aria-hidden="true">
+                <div class="empty-card">
+                  <strong>Group 1</strong>
+                  <span class="ghost-line"></span><span class="ghost-line"></span><span class="ghost-line"></span>
+                </div>
+                <div class="empty-card">
+                  <strong>Group 2</strong>
+                  <span class="ghost-line"></span><span class="ghost-line"></span><span class="ghost-line"></span>
+                </div>
+                <div class="empty-card">
+                  <strong>Group 3</strong>
+                  <span class="ghost-line"></span><span class="ghost-line"></span><span class="ghost-line"></span>
+                </div>
+              </div>
+              <h3>Your groups will appear here</h3>
+              <p>Use the setup panel, then select Generate Groups. Generate again anytime for a new mix.</p>
+            </div>
+          </div>
+
           <div id="groups" class="groups" aria-live="polite" aria-atomic="false"></div>
           <p class="small print-note">Generate again anytime to reshuffle.</p>
         </section>
       </div>
     </section>
 
-    <section class="supporting-content" aria-label="Group Maker help">
-      <h2>Ways to Use the Group Maker</h2>
-      <ul class="use-list">
-        <li>Random student groups</li>
-        <li>Partners and pairs</li>
-        <li>Project teams</li>
-        <li>Discussion groups</li>
-        <li>Lab groups</li>
-        <li>Review-game teams</li>
-      </ul>
+    <details class="help-drawer">
+      <summary>Need help using the Group Maker?</summary>
+      <section class="supporting-content" aria-label="Group Maker help">
+        <div class="support-grid">
+          <div>
+            <h2>Ways to Use It</h2>
+            <ul class="use-list">
+              <li>Random student groups</li>
+              <li>Partners and pairs</li>
+              <li>Project or lab teams</li>
+              <li>Discussion or review groups</li>
+            </ul>
+          </div>
 
-      <h2>How to Use It</h2>
-      <ol class="how-steps">
-        <li>Paste student names, one per line.</li>
-        <li>Choose students per group or number of groups.</li>
-        <li>Select <strong>Generate Groups</strong> or <strong>Make Pairs</strong>.</li>
-        <li>Copy, print, project, or generate again.</li>
-      </ol>
+          <div>
+            <h2>How to Use It</h2>
+            <ol class="how-steps">
+              <li>Paste student names, one per line.</li>
+              <li>Choose group size or number of groups.</li>
+              <li>Select <strong>Generate Groups</strong> or <strong>Make Pairs</strong>.</li>
+              <li>Copy, print, project, or generate again.</li>
+            </ol>
+          </div>
+        </div>
 
-      <h2>FAQ</h2>
-      <div class="faq-list">
-        <details>
-          <summary>Is this classroom group maker free?</summary>
-          <p>Yes. It is free to use and does not require an account or login.</p>
-        </details>
-        <details>
-          <summary>Can I make random partners?</summary>
-          <p>Yes. Use <strong>Make Pairs</strong> or set Students per group to 2.</p>
-        </details>
-        <details>
-          <summary>Can I choose the number of groups?</summary>
-          <p>Yes. Choose <strong>Number of groups</strong> and enter how many groups you want.</p>
-        </details>
-        <details>
-          <summary>Can I regenerate the groups?</summary>
-          <p>Yes. Generate again anytime to reshuffle the same class list.</p>
-        </details>
-        <details>
-          <summary>Does Teach Arcade save student names?</summary>
-          <p>Names are processed in your browser. The optional Save feature stores the list on that device. A copied share link includes the names currently entered.</p>
-        </details>
-      </div>
+        <h2>FAQ</h2>
+        <div class="faq-list">
+          <details>
+            <summary>Is this classroom group maker free?</summary>
+            <p>Yes. It is free to use and does not require an account or login.</p>
+          </details>
+          <details>
+            <summary>Can I make random partners?</summary>
+            <p>Yes. Use <strong>Make Pairs</strong> or set students per group to 2.</p>
+          </details>
+          <details>
+            <summary>Can I choose the number of groups?</summary>
+            <p>Yes. Choose <strong>Number of groups</strong> and enter how many groups you want.</p>
+          </details>
+          <details>
+            <summary>Can I regenerate the groups?</summary>
+            <p>Yes. Generate again anytime to reshuffle the same class list.</p>
+          </details>
+          <details>
+            <summary>Does Teach Arcade save student names?</summary>
+            <p>Names are processed in your browser. The optional Save feature stores the list on that device. A copied share link includes the names currently entered.</p>
+          </details>
+        </div>
 
-      <div class="related-tools">
-        <a href="/tools/">More Teacher Tools</a>
-        <a href="/tools/name-picker.html">Random Name Picker</a>
-        <a href="/tools/timer.html">Classroom Timer</a>
-      </div>
-    </section>
+        <div class="related-tools">
+          <a href="/tools/">More Teacher Tools</a>
+          <a href="/tools/name-picker.html">Random Name Picker</a>
+          <a href="/tools/timer.html">Classroom Timer</a>
+        </div>
+      </section>
+    </details>
   </main>
 
   <footer>
@@ -338,6 +890,6 @@
     <a href="/privacy.html">Privacy</a> • <a href="/terms.html">Terms</a>
   </footer>
 
-  <script src="/assets/scripts/group-maker.v2.js?v=2" defer></script>
+  <script src="/assets/scripts/group-maker.v2.js?v=3" defer></script>
 </body>
 </html>
