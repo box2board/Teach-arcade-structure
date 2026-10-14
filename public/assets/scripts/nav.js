@@ -533,7 +533,7 @@
     if (!shouldRenderInteractiveSection()) return;
     const main = document.querySelector("main.container") || document.querySelector("main");
     if (!main || document.getElementById("interactive-learning-experiences")) return;
-    if (main.classList.contains("subject-page--social-studies")) return;
+    if (main.classList.contains("subject-page--hub")) return;
 
     const { subjectSlug, topicSlug } = getSubjectAndTopicSlugs();
     if (!subjectSlug && !topicSlug) return;
