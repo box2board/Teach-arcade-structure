@@ -44,7 +44,23 @@ function refresh(){
 }
 async function imageDocument(bytes,type){
   const doc = await PDFDocument.create();
-  const image = type === 'png' ? await doc.embedPng(bytes) : await doc.embedJpg(bytes);
+  // Browser image decoding applies JPEG EXIF orientation, including mirrored photos.
+  let imageBytes = bytes;
+  if(type !== 'png'){
+    const url = URL.createObjectURL(new Blob([bytes],{type:'image/jpeg'}));
+    try {
+      const photo = new Image();
+      await new Promise((resolve,reject) => {
+        photo.onload = resolve; photo.onerror = () => reject(new Error('could not decode this photo'));
+        photo.src = url;
+      });
+      const canvas = document.createElement('canvas');
+      canvas.width = photo.naturalWidth; canvas.height = photo.naturalHeight;
+      canvas.getContext('2d').drawImage(photo,0,0);
+      imageBytes = canvas.toDataURL('image/png');
+    } finally {URL.revokeObjectURL(url);}
+  }
+  const image = await doc.embedPng(imageBytes);
   const page = doc.addPage([612,792]);
   const fit = image.scale(Math.min(576/image.width,756/image.height));
   page.drawImage(image,{x:(612-fit.width)/2,y:(792-fit.height)/2,width:fit.width,height:fit.height});
@@ -93,11 +109,11 @@ async function buildPacket(items,numbers){
     const font = await out.embedFont(StandardFonts.Helvetica);
     out.getPages().forEach((p,i) => {
       // Use a visual-coordinate overlay so numbering stays upright on rotated pages.
-      const {width:w,height:h} = p.getSize(), angle = p.getRotation().angle;
+      const {x:cx,y:cy,width:w,height:h} = p.getCropBox(), angle = p.getRotation().angle;
       const visualWidth = angle % 180 ? h : w;
       const label = `${i+1} / ${items.length}`, tw = font.widthOfTextAtSize(label,10), vx = (visualWidth-tw)/2, vy = 14;
       const position = angle === 90 ? {x:w-vy,y:vx} : angle === 180 ? {x:w-vx,y:h-vy} : angle === 270 ? {x:vy,y:h-vx} : {x:vx,y:vy};
-      p.drawText(label,{...position,size:10,font,color:rgb(.2,.25,.35),rotate:degrees(angle)});
+      p.drawText(label,{x:cx+position.x,y:cy+position.y,size:10,font,color:rgb(.2,.25,.35),rotate:degrees(angle)});
     });
   }
   out.setTitle($('filename').value.trim() || 'Classroom packet');
