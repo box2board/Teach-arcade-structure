@@ -632,3 +632,751 @@
     break-inside: avoid;
   }
 }
+
+/* Career explorer: a colorful field guide, with research kept one click away. */
+body:has(.cq-page) {
+  background: #f3f6fc;
+  background-image: radial-gradient(ellipse at 0 0, #dfe9ff80, transparent 55%);
+}
+.cq-page {
+  --ink: #152b4b;
+  --muted: #52617b;
+  --teal: #315ed6;
+  --line: #dce4f1;
+  max-width: 1480px !important;
+}
+.cq-hero h1 {
+  color: #172d52;
+  letter-spacing: -1.7px;
+}
+.cq-page .cq-eyebrow {
+  color: #315ed6;
+}
+.cq-card {
+  box-shadow: 0 8px 28px #17305c07;
+}
+.cq-page .btn {
+  box-shadow: 0 3px 0 #183f9b22;
+}
+.cq-page .btn.quiet {
+  box-shadow: none;
+}
+.cq-progress {
+  border: 0;
+  gap: 6px;
+  background: transparent;
+}
+.cq-step {
+  border: 0;
+  background: #e7ecf6;
+  border-radius: 10px;
+  font-weight: 700;
+}
+.cq-step[aria-current="step"] {
+  background: #315ed6;
+  color: white;
+  box-shadow: 0 4px 10px #315ed626;
+}
+.cq-step.done {
+  background: #e0f2e9;
+  color: #216b52;
+}
+.cq-launch {
+  background: linear-gradient(120deg, #162d5d, #2e4f9a);
+  grid-template-columns: 1.1fr 1fr;
+  position: relative;
+  align-items: center;
+  min-height: 390px;
+}
+.cq-launch .cq-eyebrow {
+  color: #bddbff;
+}
+.cq-launch h2 {
+  color: #fff;
+}
+.cq-launch p {
+  color: #dae5fb;
+}
+.cq-launch .btn {
+  background: #f8cc64;
+  color: #19335c;
+  border-color: #f8cc64;
+}
+.cq-launch-art {
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+.cq-launch-art > svg {
+  width: 100%;
+  max-height: 340px;
+}
+.cq-art-caption {
+  position: absolute;
+  bottom: 6%;
+  left: 10%;
+  color: #ecf3ff;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+.cq-start-features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 18px;
+}
+.cq-start-feature {
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fff;
+}
+.cq-start-feature b {
+  display: block;
+  margin-bottom: 5px;
+  color: #173b73;
+}
+.cq-start-feature p {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 0;
+}
+.cq-start-feature > span {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  font-weight: 800;
+  color: #456cc1;
+}
+.cq-explore {
+  padding: 0;
+  overflow: hidden;
+}
+.cq-explore-heading {
+  padding: 30px 34px;
+  background: linear-gradient(120deg, #eaf0ff, #f0f8fa);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  border-bottom: 1px solid var(--line);
+}
+.cq-explore-heading h2 {
+  font-size: clamp(27px, 3vw, 42px);
+  letter-spacing: -1.2px;
+}
+.cq-explore-heading p {
+  max-width: 650px;
+  margin-bottom: 0;
+}
+.cq-library-count {
+  min-width: 170px;
+  text-align: center;
+  padding: 20px 28px;
+  background: #fff;
+  border: 1px solid #d6e0f5;
+  border-radius: 18px;
+  box-shadow: 0 5px 0 #cfdbf644;
+}
+.cq-library-count strong {
+  display: block;
+  color: #315ed6;
+  font:
+    800 54px/1 Poppins,
+    system-ui,
+    sans-serif;
+}
+.cq-library-count span {
+  display: block;
+  font-weight: 800;
+  font-size: 14px;
+  margin-top: 10px;
+}
+.cq-library-count small {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+}
+.cq-search-bar {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 16px;
+  margin: 26px 30px 12px;
+}
+.cq-search-bar label {
+  font-weight: 800;
+  font-size: 13px;
+}
+.cq-search-bar input,
+.cq-search-bar select {
+  display: block;
+  margin-top: 7px;
+  min-height: 50px;
+  background: #fbfcff;
+  border-color: #c8d4e7;
+}
+.cq-explore-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin: 16px 30px;
+  font-size: 13px;
+}
+.cq-match-filter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+}
+.cq-match-filter input {
+  width: 17px;
+  height: 17px;
+  accent-color: #315ed6;
+}
+.cq-suggestions {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0 30px 24px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.cq-suggestions button {
+  font-size: 12px;
+  border: 1px solid #d5def0;
+  border-radius: 20px;
+  padding: 6px 12px;
+  background: #f5f8fe;
+  color: #304d85;
+}
+.cq-suggestions button:hover {
+  border-color: #315ed6;
+  background: #eaf0ff;
+}
+.cq-explore .cq-catalog {
+  margin: 0 30px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+.cq-profile-card {
+  padding: 0;
+  overflow: hidden;
+  display: block;
+  position: relative;
+  border: 1px solid #dce4f1;
+  box-shadow: 0 4px 0 #e8edf6;
+  background: #fff;
+  border-radius: 16px;
+  transition:
+    transform 0.15s,
+    box-shadow 0.15s;
+}
+.cq-profile-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px #19335412;
+}
+.cq-career-art {
+  height: 135px;
+  background: var(--career-tint);
+  color: var(--career-accent);
+  position: relative;
+  overflow: hidden;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+}
+.cq-career-art:before,
+.cq-career-art:after {
+  content: "";
+  position: absolute;
+  border: 1px solid currentColor;
+  opacity: 0.09;
+  border-radius: 50%;
+  height: 190px;
+  width: 190px;
+  right: -50px;
+  top: -60px;
+}
+.cq-career-art:after {
+  width: 240px;
+  height: 240px;
+  right: -75px;
+  top: -85px;
+}
+.cq-career-art > svg {
+  width: 72px;
+  height: 72px;
+  flex-shrink: 0;
+  order: 2;
+  transform: rotate(-7deg);
+}
+.cq-career-art > span:not(.cq-badge) {
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.3;
+  max-width: 130px;
+  margin-right: auto;
+  align-self: flex-end;
+  z-index: 1;
+}
+.cq-career-art .cq-badge {
+  position: absolute;
+  top: 12px;
+  left: 15px;
+  background: #fff;
+  color: var(--career-accent);
+  font-size: 10px;
+  box-shadow: 0 2px 7px #13274309;
+}
+.cq-career-body {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  min-height: 285px;
+}
+.cq-career-body .cq-career-field {
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--career-accent);
+  margin: 0 0 8px;
+}
+.cq-career-body h3 {
+  font-size: 21px;
+  line-height: 1.2;
+  margin: 0 0 10px;
+  color: var(--ink);
+}
+.cq-career-description {
+  font-size: 14px !important;
+  line-height: 1.55;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0 0 16px !important;
+}
+.cq-career-route {
+  font-size: 12px;
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+  margin-top: auto;
+  margin-bottom: 17px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.cq-career-route span {
+  color: var(--muted);
+}
+.cq-career-route strong {
+  font-size: 13px;
+  color: var(--ink);
+}
+.cq-career-body .btn.secondary {
+  border-color: #d5dff0;
+  background: #f5f8fd;
+  color: var(--career-accent);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 14px;
+  box-shadow: none;
+}
+.cq-more {
+  text-align: center;
+  padding: 28px;
+}
+.cq-more:has(button[hidden]) {
+  padding: 12px;
+}
+.cq-source-note {
+  border-top: 1px solid var(--line);
+  margin: 0 30px 24px;
+  font-size: 13px;
+  color: var(--muted);
+  padding-top: 12px;
+}
+.cq-source-note summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+.cq-source-note p {
+  font-size: 12px;
+}
+.cq-empty {
+  grid-column: 1/-1;
+  text-align: center;
+  padding: 38px;
+  background: #f5f8ff;
+  border: 1px dashed #b9cae7;
+  border-radius: 14px;
+}
+.cq-empty p {
+  max-width: 560px;
+  margin: 12px auto 20px;
+}
+.cq-career-detail {
+  padding: 24px 30px;
+}
+.cq-detail-hero {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin: 20px 0 28px;
+  padding: 28px;
+  background: var(--career-tint);
+  border-radius: 18px;
+}
+.cq-detail-hero .cq-eyebrow {
+  color: var(--career-accent);
+}
+.cq-detail-hero h2 {
+  font-size: clamp(28px, 3.5vw, 44px);
+}
+.cq-detail-hero p {
+  max-width: 850px;
+  margin-bottom: 0;
+}
+.cq-detail-icon {
+  width: 100px;
+  height: 100px;
+  display: grid;
+  place-items: center;
+  border-radius: 22px;
+  flex-shrink: 0;
+  color: var(--career-accent);
+  background: #ffffffaa;
+  transform: rotate(-4deg);
+}
+.cq-detail-icon svg {
+  width: 66px;
+  height: 66px;
+}
+.cq-detail-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(280px, 1fr);
+  gap: 32px;
+}
+.cq-profile-section {
+  padding: 0 0 22px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 22px;
+}
+.cq-profile-section h3 {
+  font-size: 21px;
+  color: var(--ink);
+  margin: 0 0 12px;
+}
+.cq-profile-section p {
+  font-size: 15px;
+  line-height: 1.7;
+}
+.cq-duty-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+.cq-duty-list li {
+  position: relative;
+  padding: 12px 14px 12px 32px;
+  border-radius: 10px;
+  background: #f4f7fc;
+  font-size: 14px;
+  color: var(--muted);
+}
+.cq-duty-list li:before {
+  content: "•";
+  position: absolute;
+  left: 14px;
+  color: var(--career-accent);
+  font-weight: 900;
+}
+.cq-career-facts {
+  align-self: start;
+  background: #f5f8ff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 24px;
+}
+.cq-career-facts .cq-eyebrow {
+  font-size: 10px;
+  color: var(--career-accent);
+}
+.cq-career-facts h3 {
+  font-size: 24px;
+  margin-top: 0;
+}
+.cq-career-facts dl {
+  margin: 0;
+}
+.cq-career-facts dt {
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-top: 20px;
+  letter-spacing: 0.5px;
+}
+.cq-career-facts dd {
+  font-size: 14px;
+  line-height: 1.6;
+  font-weight: 700;
+  margin: 5px 0 0;
+}
+.cq-card .cq-small {
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.cq-research-task {
+  padding: 18px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid var(--line);
+  margin: 22px 0;
+}
+.cq-research-task h4 {
+  margin: 0 0 8px;
+  font-size: 15px;
+  color: var(--career-accent);
+}
+.cq-research-task p {
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 0;
+}
+.cq-career-facts .btn {
+  width: 100%;
+  background: var(--career-accent);
+  border-color: var(--career-accent);
+}
+.cq-profile-source {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 24px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+  color: var(--muted);
+}
+.cq-profile-source a {
+  color: #315ed6;
+  font-weight: 800;
+}
+.cq-profile-source small {
+  max-width: 750px;
+  font-size: 11px;
+}
+@media (max-width: 1050px) {
+  .cq-explore .cq-catalog {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .cq-detail-grid {
+    gap: 22px;
+  }
+  .cq-detail-hero {
+    padding: 22px;
+  }
+}
+@media (max-width: 700px) {
+  .cq-launch {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .cq-launch-art {
+    max-height: 230px;
+  }
+  .cq-launch-art > svg {
+    max-height: 240px;
+  }
+  .cq-start-features {
+    grid-template-columns: 1fr;
+  }
+  .cq-explore-heading {
+    padding: 24px;
+    align-items: flex-start;
+  }
+  .cq-explore-heading h2 br {
+    display: none;
+  }
+  .cq-library-count {
+    min-width: 84px;
+    padding: 12px 10px;
+  }
+  .cq-library-count strong {
+    font-size: 36px;
+  }
+  .cq-library-count span {
+    font-size: 10px;
+  }
+  .cq-library-count small {
+    display: none;
+  }
+  .cq-search-bar {
+    grid-template-columns: 1fr;
+    margin: 22px 20px 12px;
+    gap: 12px;
+  }
+  .cq-explore-toolbar,
+  .cq-suggestions {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  .cq-explore .cq-catalog {
+    margin: 0 20px;
+    gap: 16px;
+  }
+  .cq-profile-card {
+    border-radius: 13px;
+  }
+  .cq-career-body {
+    padding: 18px;
+    min-height: 290px;
+  }
+  .cq-career-body h3 {
+    font-size: 20px;
+  }
+  .cq-career-art {
+    height: 110px;
+    padding: 16px;
+  }
+  .cq-career-art > svg {
+    width: 54px;
+    height: 54px;
+  }
+  .cq-career-art > span:not(.cq-badge) {
+    font-size: 11px;
+  }
+  .cq-source-note {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  .cq-detail-hero {
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px;
+  }
+  .cq-detail-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+  }
+  .cq-detail-icon svg {
+    width: 42px;
+    height: 42px;
+  }
+  .cq-detail-hero h2 {
+    font-size: 28px;
+  }
+  .cq-detail-hero p {
+    font-size: 14px;
+  }
+  .cq-detail-grid {
+    grid-template-columns: 1fr;
+  }
+  .cq-career-detail {
+    padding: 20px;
+  }
+  .cq-career-facts {
+    grid-row: auto;
+  }
+  .cq-detail-hero .cq-eyebrow {
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+}
+@media (max-width: 480px) {
+  .cq-explore .cq-catalog {
+    grid-template-columns: 1fr;
+  }
+  .cq-career-body {
+    min-height: 0;
+  }
+  .cq-career-art {
+    height: 125px;
+  }
+  .cq-career-art > svg {
+    width: 66px;
+    height: 66px;
+  }
+  .cq-career-art > span:not(.cq-badge) {
+    font-size: 13px;
+  }
+  .cq-career-description {
+    -webkit-line-clamp: unset;
+  }
+  .cq-explore-heading {
+    gap: 12px;
+    padding: 22px 20px;
+  }
+  .cq-explore-heading h2 {
+    font-size: 26px;
+  }
+  .cq-explore-heading p {
+    font-size: 13px;
+  }
+  .cq-library-count {
+    min-width: 70px;
+    padding: 12px 8px;
+  }
+  .cq-library-count strong {
+    font-size: 30px;
+  }
+  .cq-detail-hero {
+    display: block;
+  }
+  .cq-detail-icon {
+    margin-bottom: 18px;
+  }
+  .cq-explore-toolbar {
+    font-size: 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cq-profile-card:hover {
+    transform: none;
+  }
+}
+@media print {
+  .cq-launch-art,
+  .cq-profile-card .btn,
+  .cq-search-bar,
+  .cq-suggestions,
+  .cq-explore-toolbar,
+  .cq-more {
+    display: none !important;
+  }
+  .cq-explore .cq-catalog {
+    grid-template-columns: 1fr 1fr;
+  }
+  .cq-profile-card {
+    break-inside: avoid;
+  }
+}
+/* Keep the site's generic header/footer rules out of embedded activity panels. */
+.cq-page .cq-hero {
+  background: transparent;
+  color: var(--ink);
+}
+.cq-page .cq-explore-heading,
+.cq-page .cq-detail-hero {
+  color: var(--ink);
+  flex-direction: row;
+}
+.cq-page .cq-profile-source {
+  text-align: left;
+  background: transparent;
+  padding: 22px 0 0;
+}

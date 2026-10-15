@@ -37,6 +37,26 @@
       "money",
       "opportunity",
       "life-balance"
+    ],
+    "sourceTitle": "Registered Nurses",
+    "sourceUrl": "https://www.bls.gov/ooh/healthcare/registered-nurses.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Registered nurses (RNs) provide and coordinate patient care and educate patients and the public about various health conditions.",
+    "workEnvironment": "Registered nurses work in hospitals, physicians\u2019 offices, home healthcare services, and nursing care facilities. Others work in outpatient clinics and schools.",
+    "entryRequirements": "Registered nurses usually take one of three education paths: a bachelor\u2019s degree in nursing, an associate\u2019s degree in nursing, or a diploma from an approved nursing program. Registered nurses must be licensed.",
+    "outlook": "Employment of registered nurses is projected to grow 6 percent from 2025 to 2035, faster than the average for all occupations.",
+    "payContext": "The median annual wage for registered nurses was $97,550 in May 2025.",
+    "typicalEducation": "Bachelor's degree",
+    "duties": [
+      "Assess patients\u2019 conditions",
+      "Record patients\u2019 medical histories and symptoms",
+      "Observe patients and record the observations",
+      "Administer patients\u2019 medicines and treatments"
+    ],
+    "aliases": [
+      "rn",
+      "nurse",
+      "nursing"
     ]
   },
   {
@@ -75,6 +95,25 @@
       "money",
       "opportunity",
       "productivity"
+    ],
+    "sourceTitle": "Physical Therapist Assistants and Aides",
+    "sourceUrl": "https://www.bls.gov/ooh/healthcare/physical-therapist-assistants-and-aides.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Physical therapist assistants and aides are supervised by physical therapists to help patients regain movement and manage pain after injuries and illnesses.",
+    "workEnvironment": "Most physical therapist assistants and aides work in physical therapists\u2019 offices or in hospitals. They are frequently on their feet as they set up equipment and help care for patients.",
+    "entryRequirements": "Physical therapist assistants entering the occupation typically need an associate\u2019s degree from an accredited program and a license or certification. Physical therapist aides usually need a high school diploma or equivalent and on-the-job training.",
+    "outlook": "Overall employment of physical therapist assistants and aides is projected to grow 17 percent from 2025 to 2035, much faster than the average for all occupations.",
+    "payContext": "The median annual wage for physical therapist aides was $35,240 in May 2025.",
+    "typicalEducation": "See How to Become One",
+    "duties": [
+      "Observe patients before, during, and after therapy, noting the patient\u2019s status and reporting it to a physical therapist",
+      "Help patients do specific exercises as part of the plan of care",
+      "Treat patients using a variety of techniques, such as massage and stretching",
+      "Use devices and equipment, such as walkers, to help patients"
+    ],
+    "aliases": [
+      "pta",
+      "physical therapy assistant"
     ]
   },
   {
@@ -114,6 +153,27 @@
       "money",
       "opportunity",
       "life-balance"
+    ],
+    "sourceTitle": "Radiologic and MRI Technologists",
+    "sourceUrl": "https://www.bls.gov/ooh/healthcare/radiologic-technologists.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Radiologic technologists perform diagnostic imaging examinations on patients. MRI technologists operate magnetic resonance imaging (MRI) scanners to create diagnostic images.",
+    "workEnvironment": "Radiologic and MRI technologists work in healthcare facilities, and more than half work in hospitals. Most radiologic and MRI technologists work full time.",
+    "entryRequirements": "Radiologic technologists and MRI technologists typically need an associate\u2019s degree. MRI technologists also typically need several years of related work experience. Most states require radiologic technologists to be licensed or certified, but few states require licensure for MRI technologists. Regardless of state requirements, employers typically require or prefer to hire technologists who are certified.",
+    "outlook": "Overall employment of radiologic and MRI technologists is projected to grow 5 percent from 2025 to 2035, faster than the average for all occupations.",
+    "payContext": "The median annual wage for magnetic resonance imaging technologists was $95,480 in May 2025.",
+    "typicalEducation": "Associate's degree",
+    "duties": [
+      "Adjust and maintain imaging equipment",
+      "Follow precise orders from physicians on what areas of the body to image",
+      "Prepare patients for procedures, including taking a medical history and shielding exposed areas that do not need to be imaged",
+      "Position the patient and the equipment in order to get the correct image"
+    ],
+    "aliases": [
+      "x ray tech",
+      "xray",
+      "radiology technician",
+      "mri"
     ]
   },
   {
@@ -154,6 +214,25 @@
       "money",
       "opportunity",
       "productivity"
+    ],
+    "sourceTitle": "Dental Hygienists",
+    "sourceUrl": "https://www.bls.gov/ooh/healthcare/dental-hygienists.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Dental hygienists examine patients for signs of oral diseases, such as gingivitis, and provide preventive care, including oral hygiene.",
+    "workEnvironment": "Nearly all dental hygienists work in dentists\u2019 offices, and many work part time.",
+    "entryRequirements": "Dental hygienists typically need an associate\u2019s degree in dental hygiene. Programs usually take 3 years to complete. All states require dental hygienists to be licensed; requirements vary by state.",
+    "outlook": "Employment of dental hygienists is projected to grow 8 percent from 2025 to 2035, much faster than the average for all occupations.",
+    "payContext": "The median annual wage for dental hygienists was $98,100 in May 2025.",
+    "typicalEducation": "Associate's degree",
+    "duties": [
+      "Remove tartar, stains, and plaque from teeth",
+      "Apply sealants and fluorides to help protect teeth",
+      "Take and develop dental x rays",
+      "Assess patients\u2019 oral health and report findings to dentists"
+    ],
+    "aliases": [
+      "teeth",
+      "dental cleaning"
     ]
   },
   {
@@ -192,6 +271,26 @@
       "money",
       "opportunity",
       "life-balance"
+    ],
+    "sourceTitle": "Clinical Laboratory Technologists and Technicians",
+    "sourceUrl": "https://www.bls.gov/ooh/healthcare/clinical-laboratory-technologists-and-technicians.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Clinical laboratory technologists and technicians perform medical laboratory tests for the diagnosis, treatment, and prevention of disease.",
+    "workEnvironment": "Most clinical laboratory technologists and technicians work in healthcare settings such as hospitals, medical and diagnostic laboratories, and doctor\u2019s offices. Most work full time.",
+    "entryRequirements": "Clinical laboratory technologists and technicians typically need a bachelor\u2019s degree to enter the occupation. Technicians sometimes qualify for jobs with an associate\u2019s degree. Some states require technologists and technicians to be licensed.",
+    "outlook": "Employment of clinical laboratory technologists and technicians is projected to grow 3 percent from 2025 to 2035, about as fast as the average for all occupations.",
+    "payContext": "The median annual wage for clinical laboratory technologists and technicians was $62,930 in May 2025.",
+    "typicalEducation": "Bachelor's degree",
+    "duties": [
+      "Test and analyze body fluids, such as blood, urine, and tissue samples",
+      "Operate laboratory equipment, such as microscopes and automated cell counters",
+      "Use automated equipment that analyzes multiple samples at the same time",
+      "Record data from medical tests and enter results into a patient\u2019s medical record"
+    ],
+    "aliases": [
+      "lab tech",
+      "medical lab",
+      "clinical lab"
     ]
   },
   {
@@ -231,6 +330,28 @@
       "money",
       "opportunity",
       "ethics"
+    ],
+    "sourceTitle": "Software Developers, Quality Assurance Analysts, and Testers",
+    "sourceUrl": "https://www.bls.gov/ooh/computer-and-information-technology/software-developers.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Software developers design computer applications or programs. Software quality assurance analysts and testers identify problems with applications or programs and report defects.",
+    "workEnvironment": "Many software developers, quality assurance analysts, and testers work in computer systems design and related services, in manufacturing, or for software publishers. They often work in offices and on teams with other software developers or quality assurance analysts and testers.",
+    "entryRequirements": "Software developers, quality assurance analysts, and testers typically need a bachelor\u2019s degree in computer and information technology or a related field. Some employers prefer to hire developers who have a master\u2019s degree.",
+    "outlook": "Overall employment of software developers, quality assurance analysts, and testers is projected to grow 10 percent from 2025 to 2035, much faster than the average for all occupations.",
+    "payContext": "The median annual wage for software developers was $135,980 in May 2025.",
+    "typicalEducation": "Bachelor's degree",
+    "duties": [
+      "Analyze users\u2019 needs and then design and develop software to meet those needs",
+      "Recommend software upgrades for customers\u2019 existing programs and systems",
+      "Design each piece of an application or system and plan how the pieces will work together",
+      "Create a variety of models and diagrams showing programmers the software code needed for an application"
+    ],
+    "aliases": [
+      "programmer",
+      "coder",
+      "software engineer",
+      "app developer",
+      "computer programming"
     ]
   },
   {
@@ -271,6 +392,26 @@
       "money",
       "opportunity",
       "ethics"
+    ],
+    "sourceTitle": "Information Security Analysts",
+    "sourceUrl": "https://www.bls.gov/ooh/computer-and-information-technology/information-security-analysts.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Information security analysts plan and carry out security measures to protect an organization\u2019s computer networks and systems.",
+    "workEnvironment": "Most information security analysts work for computer companies, consulting firms, or business and financial companies.",
+    "entryRequirements": "Information security analysts typically need a bachelor\u2019s degree in a computer science field, along with related work experience. Employers may prefer to hire analysts who have professional certification.",
+    "outlook": "Employment of information security analysts is projected to grow 21 percent from 2025 to 2035, much faster than the average for all occupations.",
+    "payContext": "The median annual wage for information security analysts was $129,180 in May 2025.",
+    "typicalEducation": "Bachelor's degree",
+    "duties": [
+      "Monitor their organization\u2019s networks for security breaches and investigate when one occurs",
+      "Use and maintain software, such as firewalls and data encryption programs, to protect sensitive information",
+      "Check for vulnerabilities in computer and network systems",
+      "Research the latest information technology (IT) security trends"
+    ],
+    "aliases": [
+      "cyber security",
+      "information security",
+      "ethical hacker"
     ]
   },
   {
@@ -311,6 +452,26 @@
       "money",
       "opportunity",
       "ethics"
+    ],
+    "sourceTitle": "Computer Support Specialists",
+    "sourceUrl": "https://www.bls.gov/ooh/computer-and-information-technology/computer-support-specialists.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Computer support specialists maintain computer networks and provide technical help to computer users.",
+    "workEnvironment": "Most computer support specialists work full time. Because computer support services may need to be available 24 hours a day, some specialists work nights or weekends.",
+    "entryRequirements": "Entry requirements vary for computer support specialists. Network support specialists typically need an associate\u2019s degree, and user support specialists typically need to complete some college courses. However, candidates may qualify with a high school diploma plus relevant information technology (IT) certifications.",
+    "outlook": "Overall employment of computer support specialists is projected to decline 3 percent from 2025 to 2035.",
+    "payContext": "The median annual wage for computer network support specialists was $76,220 in May 2025.",
+    "typicalEducation": "See How to Become One",
+    "duties": [
+      "Test and evaluate existing network systems",
+      "Perform regular maintenance to ensure that networks operate correctly",
+      "Troubleshoot local area networks (LANs), wide area networks (WANs), and Internet systems",
+      "Analyze customers\u2019 computer problem to diagnose it and determine the cause"
+    ],
+    "aliases": [
+      "it support",
+      "computer technician",
+      "network support"
     ]
   },
   {
@@ -351,6 +512,26 @@
       "money",
       "opportunity",
       "ethics"
+    ],
+    "sourceTitle": "Data Scientists",
+    "sourceUrl": "https://www.bls.gov/ooh/math/data-scientists.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Data scientists use analytical tools and techniques to extract meaningful insights from data.",
+    "workEnvironment": "Data scientists spend much of their time in an office setting. Most work full time.",
+    "entryRequirements": "Data scientists typically need at least a bachelor\u2019s degree in mathematics, statistics, computer science, or a related field to enter the occupation. Some employers require or prefer that applicants have a master\u2019s or doctoral degree.",
+    "outlook": "Employment of data scientists is projected to grow 35 percent from 2025 to 2035, much faster than the average for all occupations.",
+    "payContext": "The median annual wage for data scientists was $120,230 in May 2025.",
+    "typicalEducation": "Bachelor's degree",
+    "duties": [
+      "Determine which data are available and useful for the project",
+      "Collect, categorize, and analyze data",
+      "Create, validate, test, and update algorithms and models",
+      "Use data visualization software to present findings"
+    ],
+    "aliases": [
+      "data analytics",
+      "statistics",
+      "data science"
     ]
   },
   {
@@ -390,6 +571,26 @@
       "money",
       "opportunity",
       "productivity"
+    ],
+    "sourceTitle": "Web Developers and Digital Designers",
+    "sourceUrl": "https://www.bls.gov/ooh/computer-and-information-technology/web-developers.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Web developers create and maintain websites. Digital designers develop, create, and test website or interface layout, functions, and navigation for usability.",
+    "workEnvironment": "Some web developers and digital designers work in the computer systems design and related services industry. Others are self-employed. Still others work in industries including publishing, management consulting, and advertising.",
+    "entryRequirements": "Educational requirements for web developers and digital designers vary, ranging from a high school diploma to a bachelor\u2019s degree.",
+    "outlook": "Overall employment of web developers and digital designers is projected to grow 5 percent from 2025 to 2035, faster than the average for all occupations.",
+    "payContext": "The median annual wage for web and digital interface designers was $104,000 in May 2025.",
+    "typicalEducation": "Bachelor's degree",
+    "duties": [
+      "Meet with clients or management to discuss the needs, design, and functionality of a website or interface",
+      "Create and test applications, interfaces, and navigation menus for a website",
+      "Write code for the website, using programming languages such as HTML or XML",
+      "Work with other team members to determine what information the site will contain"
+    ],
+    "aliases": [
+      "user experience",
+      "ui designer",
+      "web designer"
     ]
   },
   {
@@ -429,6 +630,25 @@
       "money",
       "opportunity",
       "ethics"
+    ],
+    "sourceTitle": "Project Management Specialists",
+    "sourceUrl": "https://www.bls.gov/ooh/business-and-financial/project-management-specialists.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Project management specialists coordinate the budget, schedule, staffing, and other details of a project.",
+    "workEnvironment": "Project management specialists usually work in an office setting, but they occasionally travel to visit clients. Most work full time, and some work more than 40 hours per week.",
+    "entryRequirements": "Project management specialists typically need a bachelor\u2019s degree that may be in a variety of fields, including business or project management. Although not always required, certification may be beneficial.",
+    "outlook": "Employment of project management specialists is projected to grow 7 percent from 2025 to 2035, much faster than the average for all occupations.",
+    "payContext": "The median annual wage for project management specialists was $102,320 in May 2025.",
+    "typicalEducation": "Bachelor's degree",
+    "duties": [
+      "Communicate with clients to determine project requirements and objectives",
+      "Develop project plans to include information such as objectives, funding, schedules, and staff",
+      "Identify, review, and select vendors or consultants to meet project needs",
+      "Assign duties or responsibilities to project staff"
+    ],
+    "aliases": [
+      "project manager",
+      "project management"
     ]
   },
   {
@@ -468,6 +688,27 @@
       "money",
       "opportunity",
       "ethics"
+    ],
+    "sourceTitle": "Top Executives",
+    "sourceUrl": "https://www.bls.gov/ooh/management/top-executives.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Top executives plan strategies and policies to ensure that an organization meets its goals.",
+    "workEnvironment": "Top executives work in nearly every industry, for both small and large organizations. They often have irregular schedules, which may include working evenings and weekends. Travel is common, particularly for chief executives.",
+    "entryRequirements": "Top executives typically need at least a bachelor\u2019s degree and considerable work experience to enter the occupation.",
+    "outlook": "Overall employment of top executives is projected to grow 5 percent from 2025 to 2035, faster than the average for all occupations.",
+    "payContext": "The median annual wage for chief executives was $213,990 in May 2025.",
+    "typicalEducation": "Bachelor's degree",
+    "duties": [
+      "Establish and carry out departmental or organizational goals, policies, and procedures",
+      "Direct and oversee an organization\u2019s financial and budgetary activities",
+      "Manage general activities related to making products and providing services",
+      "Consult with other executives, staff, and board members about general operations"
+    ],
+    "aliases": [
+      "business manager",
+      "operations",
+      "business owner",
+      "entrepreneur"
     ]
   },
   {
@@ -508,6 +749,26 @@
       "money",
       "opportunity",
       "ethics"
+    ],
+    "sourceTitle": "Market Research Analysts",
+    "sourceUrl": "https://www.bls.gov/ooh/business-and-financial/market-research-analysts.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Market research analysts study consumer preferences, business conditions, and other factors to assess potential sales of a product or service.",
+    "workEnvironment": "Because most industries use market research, these analysts are employed throughout the economy. Most analysts work full time during regular business hours.",
+    "entryRequirements": "Market research analysts typically need a bachelor\u2019s degree. Some employers require or prefer that job candidates have a master\u2019s degree.",
+    "outlook": "Employment of market research analysts is projected to grow 7 percent from 2025 to 2035, much faster than the average for all occupations.",
+    "payContext": "The median annual wage for market research analysts was $78,760 in May 2025.",
+    "typicalEducation": "Bachelor's degree",
+    "duties": [
+      "Monitor and forecast marketing and sales trends",
+      "Measure the effectiveness of marketing programs and strategies",
+      "Devise and evaluate methods for collecting data, such as surveys, questionnaires, and opinion polls",
+      "Gather data on consumers, competitors, and market conditions"
+    ],
+    "aliases": [
+      "marketing",
+      "advertising",
+      "market research"
     ]
   },
   {
@@ -548,6 +809,26 @@
       "money",
       "opportunity",
       "ethics"
+    ],
+    "sourceTitle": "Human Resources Specialists",
+    "sourceUrl": "https://www.bls.gov/ooh/business-and-financial/human-resources-specialists.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Human resources specialists recruit, screen, and interview job applicants and place newly hired workers in jobs. They also may handle compensation and benefits, training, and employee relations.",
+    "workEnvironment": "Human resources specialists generally work in office settings. Some, particularly recruitment specialists, travel to attend job fairs, visit college campuses, and meet with applicants. Most human resources specialists work full time during regular business hours. Some work more than 40 hours per week.",
+    "entryRequirements": "To enter the occupation, human resources specialists typically need a bachelor\u2019s degree in human resources, business, or a related field.",
+    "outlook": "Employment of human resources specialists is projected to grow 6 percent from 2025 to 2035, faster than the average for all occupations.",
+    "payContext": "The median annual wage for human resources specialists was $75,940 in May 2025.",
+    "typicalEducation": "Bachelor's degree",
+    "duties": [
+      "Consult with employers to identify hiring needs",
+      "Interview job applicants about their relevant experience, education, and skills",
+      "Check applicants' references and backgrounds",
+      "Inform applicants about job details, such as duties, benefits, and working conditions"
+    ],
+    "aliases": [
+      "hr",
+      "human resources",
+      "recruiter"
     ]
   },
   {
@@ -588,6 +869,26 @@
       "money",
       "opportunity",
       "ethics"
+    ],
+    "sourceTitle": "Wholesale and Manufacturing Sales Representatives",
+    "sourceUrl": "https://www.bls.gov/ooh/sales/wholesale-and-manufacturing-sales-representatives.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Wholesale and manufacturing sales representatives sell goods for wholesalers or manufacturers to businesses, government agencies, and other organizations.",
+    "workEnvironment": "Wholesale and manufacturing sales representatives work under pressure because their income and job security depend on the amount of merchandise they sell. Some sales representatives travel frequently.",
+    "entryRequirements": "Educational requirements vary for sales representatives and depend on the type of products sold. If the products are not scientific or technical, a high school diploma is generally sufficient for entry into the occupation. If the products are scientific or technical, sales representatives typically need at least a bachelor's degree.",
+    "outlook": "Overall employment of wholesale and manufacturing sales representatives is projected to show little or no change from 2025 to 2035.",
+    "payContext": "The median annual wage for sales representatives, wholesale and manufacturing, except technical and scientific products was $72,080 in May 2025.",
+    "typicalEducation": "See How to Become One",
+    "duties": [
+      "Identify prospective customers by using business directories, following leads from existing clients, and attending trade shows and conferences",
+      "Contact new and existing customers to discuss their needs and explain how specific products and services can meet these needs",
+      "Help customers select products to meet customers\u2019 needs, product specifications, and regulations",
+      "Emphasize product features that will meet customers\u2019 needs, and exhibit the capabilities and limitations of their products"
+    ],
+    "aliases": [
+      "salesperson",
+      "sales rep",
+      "sales"
     ]
   },
   {
@@ -628,6 +929,26 @@
       "money",
       "opportunity",
       "productivity"
+    ],
+    "sourceTitle": "Accountants and Auditors",
+    "sourceUrl": "https://www.bls.gov/ooh/business-and-financial/accountants-and-auditors.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Accountants and auditors prepare and examine financial records.",
+    "workEnvironment": "Most accountants and auditors work full time. Overtime hours are typical at certain periods of the year, such as for quarterly audits or during tax season.",
+    "entryRequirements": "A bachelor\u2019s degree in accounting or a related field is typically required to become an accountant or auditor. Completing certification in a specific field of accounting, such as becoming a licensed Certified Public Accountant (CPA), may improve job prospects.",
+    "outlook": "Employment of accountants and auditors is projected to grow 5 percent from 2025 to 2035, faster than the average for all occupations.",
+    "payContext": "The median annual wage for accountants and auditors was $83,680 in May 2025.",
+    "typicalEducation": "Bachelor's degree",
+    "duties": [
+      "Examine financial statements to ensure that they are accurate and comply with laws and regulations",
+      "Compute taxes owed, prepare tax returns, and ensure that taxes are paid properly and on time",
+      "Inspect account books and accounting systems for efficiency and use of accepted accounting procedures and identify potential risks for fraud",
+      "Organize, analyze, and maintain financial records"
+    ],
+    "aliases": [
+      "cpa",
+      "auditor",
+      "accounting"
     ]
   },
   {
@@ -667,6 +988,25 @@
       "money",
       "opportunity",
       "productivity"
+    ],
+    "sourceTitle": "Financial Analysts",
+    "sourceUrl": "https://www.bls.gov/ooh/business-and-financial/financial-analysts.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Financial analysts research and evaluate financial data, forecast future trends, and prepare reports containing recommendations for businesses and investors.",
+    "workEnvironment": "Financial analysts typically work in an office setting. Most work full time, and some work more than 40 hours per week.",
+    "entryRequirements": "Financial analysts typically need a bachelor\u2019s degree to enter the occupation.",
+    "outlook": "Overall employment of financial analysts is projected to grow 7 percent from 2025 to 2035, much faster than the average for all occupations.",
+    "payContext": "The median annual wage for financial and investment analysts was $102,740 in May 2025.",
+    "typicalEducation": "Bachelor's degree",
+    "duties": [
+      "Research and recommend investments",
+      "Evaluate current and historical financial data",
+      "Study economic and business trends",
+      "Examine a company\u2019s financial statements to determine its value and growth prospects"
+    ],
+    "aliases": [
+      "finance",
+      "investment analyst"
     ]
   },
   {
@@ -707,6 +1047,26 @@
       "money",
       "opportunity",
       "productivity"
+    ],
+    "sourceTitle": "Loan Officers",
+    "sourceUrl": "https://www.bls.gov/ooh/business-and-financial/loan-officers.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Loan officers evaluate, authorize, or recommend approval of loan applications.",
+    "workEnvironment": "Most loan officers are employed by commercial banks, credit unions, mortgage companies, and other financial institutions. Most loan officers work full time, and some work more than 40 hours per week. Except for consumer loan officers, who spend most of their time in offices, these workers may travel to visit clients.",
+    "entryRequirements": "Loan officers typically need a bachelor\u2019s degree and on-the-job training. Mortgage loan officers must be licensed.",
+    "outlook": "Employment of loan officers is projected to grow 1 percent from 2025 to 2035, slower than the average for all occupations.",
+    "payContext": "The median annual wage for loan officers was $76,690 in May 2025.",
+    "typicalEducation": "Bachelor's degree",
+    "duties": [
+      "Contact businesses or people to ask if they need a loan",
+      "Talk with loan applicants to gather information and answer questions",
+      "Explain to applicants the different types of loans and the terms of each type",
+      "Obtain, verify, and analyze applicants\u2019 financial information, such as credit rating and income"
+    ],
+    "aliases": [
+      "banker",
+      "mortgage lender",
+      "loan originator"
     ]
   },
   {
@@ -746,6 +1106,26 @@
       "money",
       "opportunity",
       "ethics"
+    ],
+    "sourceTitle": "Tax Examiners and Collectors, and Revenue Agents",
+    "sourceUrl": "https://www.bls.gov/ooh/business-and-financial/tax-examiners-and-collectors-and-revenue-agents.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Tax examiners and collectors, and revenue agents determine how much is owed in taxes and collect tax from individuals and businesses on behalf of the government.",
+    "workEnvironment": "Tax examiners and collectors, and revenue agents work for federal, state, and local governments. Many work primarily in an office setting; others spend most of their time doing field audits in taxpayers\u2019 homes or places of business. Most tax examiners and collectors, and revenue agents work full time.",
+    "entryRequirements": "Tax examiners and collectors, and revenue agents typically need a bachelor\u2019s degree in accounting or a related field. However, the level of education and experience required varies with the position and employer.",
+    "outlook": "Employment of tax examiners and collectors, and revenue agents is projected to decline 1 percent from 2025 to 2035.",
+    "payContext": "The median annual wage for tax examiners and collectors, and revenue agents was $62,370 in May 2025.",
+    "typicalEducation": "Bachelor's degree",
+    "duties": [
+      "Review filed tax returns to determine whether credits and deductions claimed are allowed by law",
+      "Contact taxpayers to address problems and to request supporting documentation",
+      "Conduct field audits and investigations of income tax returns to verify information or to update tax liabilities",
+      "Evaluate financial information, using their understanding of accounting procedures and knowledge of changes to tax laws and regulations"
+    ],
+    "aliases": [
+      "taxes",
+      "tax examiner",
+      "tax collector"
     ]
   },
   {
@@ -784,6 +1164,25 @@
       "money",
       "opportunity",
       "ethics"
+    ],
+    "sourceTitle": "Insurance Underwriters",
+    "sourceUrl": "https://www.bls.gov/ooh/business-and-financial/insurance-underwriters.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Insurance underwriters evaluate insurance applications and decide whether to approve them.",
+    "workEnvironment": "Insurance underwriters work in an office setting during regular business hours. Most work full time.",
+    "entryRequirements": "Insurance underwriters typically need a bachelor\u2019s degree to enter the occupation. Certification may be beneficial.",
+    "outlook": "Employment of insurance underwriters is projected to decline 4 percent from 2025 to 2035.",
+    "payContext": "The median annual wage for insurance underwriters was $81,370 in May 2025.",
+    "typicalEducation": "Bachelor's degree",
+    "duties": [
+      "Analyze information stated on insurance applications",
+      "Determine the risk involved in insuring a client",
+      "Screen applicants based on set criteria",
+      "Use automated software to determine the risk of insuring applicants"
+    ],
+    "aliases": [
+      "insurance",
+      "risk assessment"
     ]
   },
   {
@@ -823,6 +1222,25 @@
       "money",
       "opportunity",
       "ethics"
+    ],
+    "sourceTitle": "Civil Engineering Technologists and Technicians",
+    "sourceUrl": "https://www.bls.gov/ooh/architecture-and-engineering/civil-engineering-technicians.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Civil engineering technologists and technicians help civil engineers plan, design, and build infrastructure and development projects.",
+    "workEnvironment": "Civil engineering technologists and technicians work in offices, helping civil engineers plan and design projects. They also visit construction jobsites to collect or test materials or to observe activities as a project inspector.",
+    "entryRequirements": "An associate\u2019s degree, preferably in civil engineering technology, is typically required to enter the occupation.",
+    "outlook": "Employment of civil engineering technologists and technicians is projected to grow 3 percent from 2025 to 2035, about as fast as the average for all occupations.",
+    "payContext": "The median annual wage for civil engineering technologists and technicians was $64,950 in May 2025.",
+    "typicalEducation": "Associate's degree",
+    "duties": [
+      "Read and review project drawings and plans to determine the sizes of structures",
+      "Confer with engineers to prepare plans",
+      "Develop plans and estimate costs for constructing systems and operating facilities",
+      "Use computer aided design (CAD) software to draft project drawings"
+    ],
+    "aliases": [
+      "civil tech",
+      "construction engineering technician"
     ]
   },
   {
@@ -863,6 +1281,27 @@
       "money",
       "opportunity",
       "productivity"
+    ],
+    "sourceTitle": "Drafters",
+    "sourceUrl": "https://www.bls.gov/ooh/architecture-and-engineering/drafters.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Drafters use software to convert the designs of engineers and architects into technical drawings.",
+    "workEnvironment": "Although drafters spend much of their time working on computers in an office, some may visit jobsites in order to collaborate with architects and engineers. Most drafters work full time.",
+    "entryRequirements": "Drafters typically complete education after high school, often through a program at a community college or technical school. Some programs lead to an associate of applied science in drafting or a related degree. Others result in a certificate or diploma.",
+    "outlook": "Overall employment of drafters is projected to grow 1 percent from 2025 to 2035, slower than the average for all occupations.",
+    "payContext": "The median annual wage for drafters was $68,090 in May 2025.",
+    "typicalEducation": "Associate's degree",
+    "duties": [
+      "Design plans using computer-aided design (CAD) software",
+      "Work from rough sketches and specifications created by engineers and architects",
+      "Design products with engineering and manufacturing techniques",
+      "Add details to architectural plans from their knowledge of building techniques"
+    ],
+    "aliases": [
+      "cad",
+      "drafter",
+      "drafting",
+      "mechanical drafting"
     ]
   },
   {
@@ -902,6 +1341,26 @@
       "money",
       "opportunity",
       "life-balance"
+    ],
+    "sourceTitle": "Electrical and Electronic Engineering Technologists and Technicians",
+    "sourceUrl": "https://www.bls.gov/ooh/architecture-and-engineering/electrical-and-electronics-engineering-technicians.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Electrical and electronic engineering technologists and technicians help engineers design and develop equipment that is powered by electricity or electric current.",
+    "workEnvironment": "Electrical and electronic engineering technologists and technicians work on teams with electrical engineers. They may work in offices, laboratories, or factories. Most work full time.",
+    "entryRequirements": "Electrical and electronic engineering technologists and technicians typically need an associate\u2019s degree.",
+    "outlook": "Employment of electrical and electronic engineering technologists and technicians is projected to grow 2 percent from 2025 to 2035, slower than the average for all occupations.",
+    "payContext": "The median annual wage for electrical and electronic engineering technologists and technicians was $78,190 in May 2025.",
+    "typicalEducation": "Associate's degree",
+    "duties": [
+      "Assemble electrical and electronic systems and prototypes",
+      "Build, calibrate, and repair electrical instruments or testing equipment",
+      "Visit sites where systems are made to observe conditions affecting design",
+      "Identify solutions to technical design problems that arise in making electrical systems"
+    ],
+    "aliases": [
+      "electronics tech",
+      "electrical tech",
+      "circuits"
     ]
   },
   {
@@ -942,6 +1401,26 @@
       "money",
       "opportunity",
       "life-balance"
+    ],
+    "sourceTitle": "Environmental Engineers",
+    "sourceUrl": "https://www.bls.gov/ooh/architecture-and-engineering/environmental-engineers.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Environmental engineers use engineering disciplines in developing solutions to problems of planetary health.",
+    "workEnvironment": "Environmental engineers work both in an office setting and in the field. Most work full time, and some work more than 40 hours per week.",
+    "entryRequirements": "Environmental engineers typically need a bachelor\u2019s degree in environmental engineering or a related field, such as civil, chemical, or general engineering. Some employers prefer to hire candidates who have gained practical experience in an internship or a cooperative education program.",
+    "outlook": "Employment of environmental engineers is projected to grow 6 percent from 2025 to 2035, faster than the average for all occupations.",
+    "payContext": "The median annual wage for environmental engineers was $107,110 in May 2025.",
+    "typicalEducation": "Bachelor's degree",
+    "duties": [
+      "Prepare, review, update, and present reports on issues related to the environment",
+      "Design systems that protect the environment, such as those to reclaim water or to control air pollution",
+      "Obtain, update, and maintain plans, permits, and standard operating procedures",
+      "Provide technical support for environmental remediation projects and for legal actions"
+    ],
+    "aliases": [
+      "environment",
+      "water engineer",
+      "pollution"
     ]
   },
   {
@@ -981,6 +1460,26 @@
       "money",
       "opportunity",
       "life-balance"
+    ],
+    "sourceTitle": "Industrial Engineers",
+    "sourceUrl": "https://www.bls.gov/ooh/architecture-and-engineering/industrial-engineers.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Industrial engineers design, develop, and test integrated systems for managing industrial production processes.",
+    "workEnvironment": "Industrial engineers work in a variety of settings, such as offices and manufacturing plants. Most work full time, and some work more than 40 hours per week.",
+    "entryRequirements": "Industrial engineers typically need a bachelor\u2019s degree in industrial engineering or a related field, such as mechanical or electrical engineering.",
+    "outlook": "Employment of industrial engineers is projected to grow 12 percent from 2025 to 2035, much faster than the average for all occupations.",
+    "payContext": "The median annual wage for industrial engineers was $102,440 in May 2025.",
+    "typicalEducation": "Bachelor's degree",
+    "duties": [
+      "Evaluate manufacturing, delivery, customer experience, or other systems and identify ways to improve productivity and quality",
+      "Collect data on processes and production through observations of work activities, time studies, and staff surveys",
+      "Analyze data to identify trends and areas for improvement",
+      "Design processes, systems, or enhancements to maximize productivity, efficiency, or space"
+    ],
+    "aliases": [
+      "quality assurance",
+      "qa engineer",
+      "industrial engineering"
     ]
   },
   {
@@ -1019,6 +1518,27 @@
       "money",
       "opportunity",
       "ethics"
+    ],
+    "sourceTitle": "Kindergarten and Elementary School Teachers",
+    "sourceUrl": "https://www.bls.gov/ooh/education-training-and-library/kindergarten-and-elementary-school-teachers.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Kindergarten and elementary school teachers instruct young students in basic subjects in order to prepare them for future schooling.",
+    "workEnvironment": "Kindergarten and elementary school teachers work in public and private schools. They generally work during school hours when students are present and use nights and weekends to prepare lessons and grade papers. Most kindergarten and elementary school teachers do not work during the summer.",
+    "entryRequirements": "Kindergarten and elementary school teachers usually must have at least a bachelor\u2019s degree. In addition, public school teachers must have a state-issued certification or license.",
+    "outlook": "Overall employment of kindergarten and elementary school teachers is projected to show little or no change from 2025 to 2035.",
+    "payContext": "The median annual wage for elementary school teachers, except special education was $63,970 in May 2025.",
+    "typicalEducation": "Bachelor's degree",
+    "duties": [
+      "Create lesson plans to teach students subjects, such as reading, science, and math",
+      "Teach students how to interact with others",
+      "Observe students to evaluate their abilities, strengths, and weaknesses",
+      "Instruct an entire class or smaller groups of students"
+    ],
+    "aliases": [
+      "teacher",
+      "teaching",
+      "school teacher",
+      "education"
     ]
   },
   {
@@ -1059,6 +1579,26 @@
       "money",
       "opportunity",
       "ethics"
+    ],
+    "sourceTitle": "School and Career Counselors and Advisors",
+    "sourceUrl": "https://www.bls.gov/ooh/community-and-social-service/school-and-career-counselors.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "School counselors help students develop academic and social skills. Career counselors and advisors help people choose a path to employment.",
+    "workEnvironment": "School counselors work in public and private schools. Career counselors and advisors are employed primarily in colleges and universities but also work in career centers and private practice. Both types of counselors usually work full time.",
+    "entryRequirements": "Most school counselors need a master\u2019s degree in school counseling or a related field and have a state-issued credential. Some states require licensure for career counselors and advisors.",
+    "outlook": "Employment of school and career counselors and advisors is projected to grow 3 percent from 2025 to 2035, about as fast as the average for all occupations.",
+    "payContext": "The median annual wage for school and career counselors and advisors was $64,330 in May 2025.",
+    "typicalEducation": "Master's degree",
+    "duties": [
+      "Help students understand and overcome social or behavioral challenges",
+      "Analyze data to identify factors, such as poor attendance, that negatively affect academic performance",
+      "Advise individuals and small groups based on their needs",
+      "Work with students to develop skills that support learning, such as effective time management and study habits"
+    ],
+    "aliases": [
+      "guidance counselor",
+      "guidance counsellor",
+      "school counsellor"
     ]
   },
   {
@@ -1099,6 +1639,26 @@
       "money",
       "opportunity",
       "life-balance"
+    ],
+    "sourceTitle": "Instructional Coordinators",
+    "sourceUrl": "https://www.bls.gov/ooh/education-training-and-library/instructional-coordinators.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Instructional coordinators oversee school curriculums and teaching standards. They develop instructional material, implement it, and assess its effectiveness.",
+    "workEnvironment": "Most instructional coordinators work in elementary and secondary schools, colleges, professional schools, or educational support services or for state and local governments. They typically work year round.",
+    "entryRequirements": "Instructional coordinators typically need a master\u2019s degree and related work experience, such as in teaching or school administration, to enter the occupation. Coordinators in public schools may be required to have a state-issued license.",
+    "outlook": "Employment of instructional coordinators is projected to grow 2 percent from 2025 to 2035, slower than the average for all occupations.",
+    "payContext": "The median annual wage for instructional coordinators was $77,440 in May 2025.",
+    "typicalEducation": "Master's degree",
+    "duties": [
+      "Develop and implement the curriculums",
+      "Plan, organize, and conduct teacher training, conferences, or workshops",
+      "Analyze students' test data",
+      "Assess and discuss the curriculum standards with school staff"
+    ],
+    "aliases": [
+      "curriculum",
+      "learning designer",
+      "instructional coordinator"
     ]
   },
   {
@@ -1137,6 +1697,26 @@
       "money",
       "opportunity",
       "productivity"
+    ],
+    "sourceTitle": "Special Education Teachers",
+    "sourceUrl": "https://www.bls.gov/ooh/education-training-and-library/special-education-teachers.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Special education teachers work with students who have a wide range of learning, mental, emotional, and physical disabilities.",
+    "workEnvironment": "Most special education teachers work in public schools, teaching students from preschool to high school. Many work the traditional 10-month school year, but some work year round.",
+    "entryRequirements": "Special education teachers in public schools are required to have a bachelor\u2019s degree and a state-issued certification or license. Teachers in private schools typically need a bachelor\u2019s degree but may not be required to have a state license or certification.",
+    "outlook": "Overall employment of special education teachers is projected to show little or no change from 2025 to 2035.",
+    "payContext": "The median annual wage for special education teachers was $67,170 in May 2025.",
+    "typicalEducation": "Bachelor's degree",
+    "duties": [
+      "Assess students\u2019 skills and determine their educational needs",
+      "Adapt general lessons to meet students\u2019 needs",
+      "Develop Individualized Education Programs (IEPs) for each student",
+      "Plan activities that are specific to each student\u2019s abilities"
+    ],
+    "aliases": [
+      "special ed",
+      "intervention specialist",
+      "sped"
     ]
   },
   {
@@ -1176,6 +1756,26 @@
       "money",
       "opportunity",
       "ethics"
+    ],
+    "sourceTitle": "School and Career Counselors and Advisors",
+    "sourceUrl": "https://www.bls.gov/ooh/community-and-social-service/school-and-career-counselors.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "School counselors help students develop academic and social skills. Career counselors and advisors help people choose a path to employment.",
+    "workEnvironment": "School counselors work in public and private schools. Career counselors and advisors are employed primarily in colleges and universities but also work in career centers and private practice. Both types of counselors usually work full time.",
+    "entryRequirements": "Most school counselors need a master\u2019s degree in school counseling or a related field and have a state-issued credential. Some states require licensure for career counselors and advisors.",
+    "outlook": "Employment of school and career counselors and advisors is projected to grow 3 percent from 2025 to 2035, about as fast as the average for all occupations.",
+    "payContext": "The median annual wage for school and career counselors and advisors was $64,330 in May 2025.",
+    "typicalEducation": "Master's degree",
+    "duties": [
+      "Help students understand and overcome social or behavioral challenges",
+      "Analyze data to identify factors, such as poor attendance, that negatively affect academic performance",
+      "Advise individuals and small groups based on their needs",
+      "Work with students to develop skills that support learning, such as effective time management and study habits"
+    ],
+    "aliases": [
+      "career counselor",
+      "career advisor",
+      "job coach"
     ]
   },
   {
@@ -1214,6 +1814,27 @@
       "money",
       "opportunity",
       "productivity"
+    ],
+    "sourceTitle": "Graphic Designers",
+    "sourceUrl": "https://www.bls.gov/ooh/arts-and-design/graphic-designers.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Graphic designers create visual concepts, using computer software or by hand, to communicate ideas that inspire, inform, and captivate consumers.",
+    "workEnvironment": "Many of these workers are employed in specialized design services, publishing, or advertising, public relations, and related services industries.",
+    "entryRequirements": "Graphic designers usually need a bachelor\u2019s degree in graphic design or a related field. Candidates for graphic design positions should have a portfolio that demonstrates their creativity and originality.",
+    "outlook": "Employment of graphic designers is projected to decline 2 percent from 2025 to 2035.",
+    "payContext": "The median annual wage for graphic designers was $62,960 in May 2025.",
+    "typicalEducation": "Bachelor's degree",
+    "duties": [
+      "Meet with clients or the art director to determine the scope of a project",
+      "Use digital illustration, photo editing software, and layout software to create designs",
+      "Create visual elements such as logos, original images, and illustrations to help deliver a message",
+      "Design layouts, including selection of colors, images, and typefaces"
+    ],
+    "aliases": [
+      "graphic design",
+      "logo designer",
+      "artist",
+      "illustrator"
     ]
   },
   {
@@ -1252,6 +1873,27 @@
       "money",
       "opportunity",
       "ethics"
+    ],
+    "sourceTitle": "Film and Video Editors and Camera Operators",
+    "sourceUrl": "https://www.bls.gov/ooh/media-and-communication/film-and-video-editors-and-camera-operators.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Film and video editors and camera operators manipulate moving images that entertain or inform an audience.",
+    "workEnvironment": "Film and video editors and camera operators typically work in studios or in offices. Camera operators and videographers often shoot raw footage on location.",
+    "entryRequirements": "Film and video editors and camera operators typically need a bachelor\u2019s degree in a field related to film or broadcasting.",
+    "outlook": "Overall employment of film and video editors and camera operators is projected to grow 3 percent from 2025 to 2035, about as fast as the average for all occupations.",
+    "payContext": "The median annual wage for camera operators, television, video, and film was $74,990 in May 2025.",
+    "typicalEducation": "Bachelor's degree",
+    "duties": [
+      "Shoot and record television programs, films, music videos, documentaries, or news and sporting events",
+      "Organize digital footage with video-editing software",
+      "Collaborate with a director to determine the overall vision of the production",
+      "Discuss filming and editing techniques with a director to improve a scene"
+    ],
+    "aliases": [
+      "film editor",
+      "video production",
+      "youtuber",
+      "filmmaker"
     ]
   },
   {
@@ -1292,6 +1934,27 @@
       "money",
       "opportunity",
       "productivity"
+    ],
+    "sourceTitle": "News Analysts, Reporters, and Journalists",
+    "sourceUrl": "https://www.bls.gov/ooh/media-and-communication/reporters-correspondents-and-broadcast-news-analysts.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "News analysts, reporters, and journalists keep the public updated about current events and noteworthy information.",
+    "workEnvironment": "Most news analysts, reporters, and journalists work for newspaper, website, or magazine publishers or in television or radio broadcasting. Others are self-employed. Most work full time, and their schedules vary.",
+    "entryRequirements": "News analysts, reporters, and journalists typically need a bachelor\u2019s degree to enter the occupation. Internship or work experience on a college newspaper, radio station, or television station also may be helpful.",
+    "outlook": "Employment of news analysts, reporters, and journalists is projected to decline 6 percent from 2025 to 2035.",
+    "payContext": "The median annual wage for news analysts, reporters, and journalists was $62,200 in May 2025.",
+    "typicalEducation": "Bachelor's degree",
+    "duties": [
+      "Research topics that an editor or news director has assigned to them",
+      "Develop relationships with experts and contacts who provide tips and leads on stories or articles",
+      "Interview people who have information, analysis, or opinions about a story or article",
+      "Analyze and interpret information to increase audience understanding of the news"
+    ],
+    "aliases": [
+      "reporter",
+      "news reporter",
+      "news anchor",
+      "journalism"
     ]
   },
   {
@@ -1330,6 +1993,28 @@
       "money",
       "opportunity",
       "productivity"
+    ],
+    "sourceTitle": "Public Relations Specialists",
+    "sourceUrl": "https://www.bls.gov/ooh/media-and-communication/public-relations-specialists.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Public relations specialists create and maintain a positive public image for the clients they represent.",
+    "workEnvironment": "Public relations specialists work for a variety of organizations, including schools, media buyers, and professional associations. They usually work in offices, but they also deliver speeches, attend meetings and community activities, and occasionally travel.",
+    "entryRequirements": "Public relations specialists typically need a bachelor's degree to enter the occupation.",
+    "outlook": "Employment of public relations specialists is projected to grow 2 percent from 2025 to 2035, slower than the average for all occupations.",
+    "payContext": "The median annual wage for public relations specialists was $74,750 in May 2025.",
+    "typicalEducation": "Bachelor's degree",
+    "duties": [
+      "Write press releases and prepare information for the media",
+      "Respond to information requests from the media",
+      "Help clients communicate effectively with the public",
+      "Draft speeches and arrange interviews for a client's top executives"
+    ],
+    "aliases": [
+      "social media",
+      "influencer",
+      "content creator",
+      "public relations",
+      "pr"
     ]
   },
   {
@@ -1368,6 +2053,27 @@
       "money",
       "opportunity",
       "productivity"
+    ],
+    "sourceTitle": "Special Effects Artists and Animators",
+    "sourceUrl": "https://www.bls.gov/ooh/arts-and-design/multimedia-artists-and-animators.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Special effects artists and animators create images that appear to move and visual effects for various forms of media and entertainment.",
+    "workEnvironment": "Many artists and animators work in offices; others work from home.",
+    "entryRequirements": "Special effects artists and animators typically need a bachelor\u2019s degree in computer graphics, art, or a related field to develop both a portfolio of work and the technical skills that many employers prefer.",
+    "outlook": "Employment of special effects artists and animators is projected to show little or no change from 2025 to 2035.",
+    "payContext": "The median annual wage for special effects artists and animators was $102,030 in May 2025.",
+    "typicalEducation": "Bachelor's degree",
+    "duties": [
+      "Use computer programs and illustrations to create graphics and animation (images that appear to move)",
+      "Work with a team of animators and artists to create a movie, game, or visual effect",
+      "Research upcoming projects to help create realistic designs or animation",
+      "Edit animation and effects on the basis of feedback from directors, other animators, game designers, or clients"
+    ],
+    "aliases": [
+      "animation",
+      "game artist",
+      "vfx",
+      "3d artist"
     ]
   },
   {
@@ -1406,6 +2112,26 @@
       "money",
       "opportunity",
       "life-balance"
+    ],
+    "sourceTitle": "Lodging Managers",
+    "sourceUrl": "https://www.bls.gov/ooh/management/lodging-managers.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Lodging managers ensure that guests have a pleasant experience at an accommodations facility. They also plan, direct, or coordinate activities to ensure that the facility is efficient and profitable.",
+    "workEnvironment": "Most lodging managers work full time. Work schedules may vary and often include evenings, weekends, and holidays. Because these facilities are open around the clock, some managers are on call 24 hours a day.",
+    "entryRequirements": "To enter the occupation, lodging managers typically take one of three paths: a high school diploma combined with several years of experience working in a lodging facility, a bachelor\u2019s degree in hospitality or hotel management, or an associate\u2019s degree or certificate in hotel management.",
+    "outlook": "Employment of lodging managers is projected to grow 4 percent from 2025 to 2035, about as fast as the average for all occupations.",
+    "payContext": "The median annual wage for lodging managers was $69,250 in May 2025.",
+    "typicalEducation": "High school diploma or equivalent",
+    "duties": [
+      "Inspect guest rooms, public areas, and grounds for cleanliness and appearance",
+      "Ensure that company standards for guest services, d\u00e9cor, and housekeeping are met",
+      "Answer questions from guests about the lodging facility's policies and services",
+      "Interview, hire, train, and sometimes fire staff members"
+    ],
+    "aliases": [
+      "hospitality",
+      "lodging manager",
+      "hotel"
     ]
   },
   {
@@ -1446,6 +2172,26 @@
       "money",
       "opportunity",
       "life-balance"
+    ],
+    "sourceTitle": "Meeting, Convention, and Event Planners",
+    "sourceUrl": "https://www.bls.gov/ooh/business-and-financial/meeting-convention-and-event-planners.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Meeting, convention, and event planners arrange all aspects of events and professional gatherings.",
+    "workEnvironment": "Meeting, convention, and event planners work in their offices and onsite at hotels or conference centers. They often travel to attend events and visit meeting sites. During meetings or conventions, planners may work many more hours than usual.",
+    "entryRequirements": "Meeting, convention, and event planners typically need a bachelor\u2019s degree. Some experience related to event planning may be helpful.",
+    "outlook": "Employment of meeting, convention, and event planners is projected to grow 6 percent from 2025 to 2035, faster than the average for all occupations.",
+    "payContext": "The median annual wage for meeting, convention, and event planners was $61,160 in May 2025.",
+    "typicalEducation": "Bachelor's degree",
+    "duties": [
+      "Meet with clients to understand the purpose of the event",
+      "Plan the scope of the event, including its time, location, and cost",
+      "Solicit bids from venues and service providers",
+      "Inspect venues to ensure that they meet the client\u2019s requirements"
+    ],
+    "aliases": [
+      "wedding planner",
+      "events",
+      "meeting planner"
     ]
   },
   {
@@ -1485,6 +2231,27 @@
       "money",
       "opportunity",
       "life-balance"
+    ],
+    "sourceTitle": "Chefs and Head Cooks",
+    "sourceUrl": "https://www.bls.gov/ooh/food-preparation-and-serving/chefs-and-head-cooks.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Chefs and head cooks oversee the daily food preparation at restaurants and other places where food is served.",
+    "workEnvironment": "Chefs and head cooks work in restaurants, hotels, and other food service establishments. They often work early mornings, late evenings, weekends, and holidays. The work can be hectic and fast-paced. Most chefs and head cooks work full time.",
+    "entryRequirements": "Chefs and head cooks typically need a high school diploma and work experience to enter the occupation. Some attend a culinary program at a community college, technical school, culinary arts school, or 4-year college. Others learn through apprenticeship programs.",
+    "outlook": "Employment of chefs and head cooks is projected to grow 7 percent from 2025 to 2035, much faster than the average for all occupations.",
+    "payContext": "The median annual wage for chefs and head cooks was $62,470 in May 2025.",
+    "typicalEducation": "High school diploma or equivalent",
+    "duties": [
+      "Check the freshness of food and ingredients",
+      "Supervise and coordinate activities of cooks and other food preparation workers",
+      "Develop recipes and determine how to present dishes",
+      "Plan menus and ensure the quality of meals"
+    ],
+    "aliases": [
+      "cook",
+      "cooking",
+      "culinary",
+      "baker"
     ]
   },
   {
@@ -1524,6 +2291,26 @@
       "money",
       "opportunity",
       "life-balance"
+    ],
+    "sourceTitle": "Travel Agents",
+    "sourceUrl": "https://www.bls.gov/ooh/sales/travel-agents.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Travel agents sell transportation, lodging, and entertainment activities to individuals and groups planning trips.",
+    "workEnvironment": "Travel agents typically spend much of their day sitting, working on the phone and on the computer. Most travel agents work for travel agencies; many are self-employed.",
+    "entryRequirements": "A high school diploma typically is required for someone to become a travel agent. However, employers may prefer to hire candidates who have sales experience or relevant certification or education. Good communication and customer service skills are essential.",
+    "outlook": "Employment of travel agents is projected to show little or no change from 2025 to 2035.",
+    "payContext": "The median annual wage for travel agents was $50,160 in May 2025.",
+    "typicalEducation": "High school diploma or equivalent",
+    "duties": [
+      "Arrange travel for business and vacation clients",
+      "Determine clients\u2019 needs and preferences, such as schedules and costs",
+      "Plan and arrange tour packages, excursions, and day trips",
+      "Find fare and schedule information"
+    ],
+    "aliases": [
+      "travel agent",
+      "travel",
+      "tourism"
     ]
   },
   {
@@ -1563,6 +2350,26 @@
       "money",
       "opportunity",
       "ethics"
+    ],
+    "sourceTitle": "Food Service Managers",
+    "sourceUrl": "https://www.bls.gov/ooh/management/food-service-managers.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Food service managers are responsible for the daily operation of restaurants or other establishments that prepare and serve food and beverages.",
+    "workEnvironment": "Food service managers work in restaurants, hotels, school cafeterias, and other establishments where food is prepared and served. They often work evenings, weekends, and holidays. The work is often hectic, and dealing with dissatisfied customers may be stressful.",
+    "entryRequirements": "Food service managers typically need a high school diploma and several years of work experience in the food service industry. Some receive additional training at community colleges, technical or vocational schools, culinary schools, or 4-year colleges.",
+    "outlook": "Employment of food service managers is projected to grow 6 percent from 2025 to 2035, faster than the average for all occupations.",
+    "payContext": "The median annual wage for food service managers was $69,390 in May 2025.",
+    "typicalEducation": "High school diploma or equivalent",
+    "duties": [
+      "Hire, train, discipline, and sometimes fire employees",
+      "Order food and beverages, equipment, and supplies",
+      "Oversee food preparation and other kitchen operations",
+      "Inspect supplies, equipment, and work areas"
+    ],
+    "aliases": [
+      "restaurant manager",
+      "food service",
+      "restaurant"
     ]
   },
   {
@@ -1602,6 +2409,25 @@
       "money",
       "opportunity",
       "life-balance"
+    ],
+    "sourceTitle": "Social Workers",
+    "sourceUrl": "https://www.bls.gov/ooh/community-and-social-service/social-workers.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Social workers help people prevent and cope with problems in their everyday lives.",
+    "workEnvironment": "Social workers are employed in a variety of settings, including child welfare and human service agencies, healthcare providers, and schools. Most work full time, and some work evenings, weekends, and holidays.",
+    "entryRequirements": "Social workers typically need a bachelor\u2019s or master\u2019s degree in social work. They also may need a license; specific requirements vary by state.",
+    "outlook": "Overall employment of social workers is projected to grow 6 percent from 2025 to 2035, faster than the average for all occupations.",
+    "payContext": "The median annual wage for social workers was $61,780 in May 2025.",
+    "typicalEducation": "See How to Become One",
+    "duties": [
+      "Identify people and communities in need of help",
+      "Assess clients\u2019 needs, situations, strengths, and support networks to determine their goals",
+      "Help clients adjust to changes and challenges in their lives, such as illness, divorce, or unemployment",
+      "Research, refer, and advocate for community resources, such as food stamps, childcare, and healthcare, to assist and improve a client\u2019s well-being"
+    ],
+    "aliases": [
+      "social work",
+      "community services"
     ]
   },
   {
@@ -1641,6 +2467,27 @@
       "money",
       "opportunity",
       "ethics"
+    ],
+    "sourceTitle": "Substance Abuse, Behavioral Disorder, and Mental Health Counselors",
+    "sourceUrl": "https://www.bls.gov/ooh/community-and-social-service/substance-abuse-behavioral-disorder-and-mental-health-counselors.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Substance abuse, behavioral disorder, and mental health counselors advise people on a range of issues, such as those relating to alcoholism, addictions, or depression.",
+    "workEnvironment": "Substance abuse, behavioral disorder, and mental health counselors work in a variety of settings, such as mental health centers, community health centers, and private practice. Most work full time, although part-time work is common.",
+    "entryRequirements": "Education and training requirements vary for entering these occupations. Substance abuse and behavioral disorder counselors typically need at least a bachelor\u2019s degree, whereas mental health counselors typically need a master\u2019s degree and an internship. Some counselors need a state-issued license.",
+    "outlook": "Employment of substance abuse, behavioral disorder, and mental health counselors is projected to grow 18 percent from 2025 to 2035, much faster than the average for all occupations.",
+    "payContext": "The median annual wage for substance abuse, behavioral disorder, and mental health counselors was $59,350 in May 2025.",
+    "typicalEducation": "Master's degree",
+    "duties": [
+      "Evaluate clients\u2019 mental and physical health, addiction, or problematic behavior and assess their readiness for treatment",
+      "Develop, recommend, and review treatment goals and plans with clients and their families",
+      "Assist clients in developing skills and behaviors necessary to recover from their addiction or modify their behavior",
+      "Work with clients to identify behaviors or situations that interfere with their recovery"
+    ],
+    "aliases": [
+      "mental health counselor",
+      "addiction counselor",
+      "therapist",
+      "counselling"
     ]
   },
   {
@@ -1680,6 +2527,26 @@
       "money",
       "opportunity",
       "life-balance"
+    ],
+    "sourceTitle": "Social and Human Service Assistants",
+    "sourceUrl": "https://www.bls.gov/ooh/community-and-social-service/social-and-human-service-assistants.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Social and human service assistants provide client services in a variety of fields, such as psychology, rehabilitation, and social work.",
+    "workEnvironment": "Many social and human service assistants work for nonprofit organizations, for-profit social service agencies, and state and local governments. Most work full time, and some work evenings and weekends.",
+    "entryRequirements": "Social and human service assistants typically need at least a high school diploma, although specific requirements may vary. Training is usually provided on the job.",
+    "outlook": "Employment of social and human service assistants is projected to grow 7 percent from 2025 to 2035, much faster than the average for all occupations.",
+    "payContext": "The median annual wage for social and human service assistants was $45,930 in May 2025.",
+    "typicalEducation": "High school diploma or equivalent",
+    "duties": [
+      "Help determine what type of aid their clients need",
+      "Work with clients and other professionals, such as social workers, to develop a treatment plan",
+      "Help clients find assistance with daily activities, such as eating and bathing",
+      "Research services, such as food assistance programs and Medicaid, that are available to clients"
+    ],
+    "aliases": [
+      "outreach",
+      "community worker",
+      "human services"
     ]
   },
   {
@@ -1718,6 +2585,26 @@
       "money",
       "opportunity",
       "life-balance"
+    ],
+    "sourceTitle": "Preschool and Childcare Center Directors",
+    "sourceUrl": "https://www.bls.gov/ooh/management/preschool-and-childcare-center-directors.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Preschool and childcare center directors supervise and lead their staffs, design program plans, oversee daily activities, and prepare budgets.",
+    "workEnvironment": "Preschool and childcare center directors work primarily in child daycare services. Most work full time, and some work more than 40 hours per week.",
+    "entryRequirements": "A bachelor\u2019s degree and experience in early childhood education are typically required to become a preschool and childcare center director. However, educational requirements vary. Additionally, some employers require these directors to have a nationally recognized credential.",
+    "outlook": "Employment of preschool and childcare center directors is projected to decline 3 percent from 2025 to 2035.",
+    "payContext": "The median annual wage for preschool and childcare center directors was $59,300 in May 2025.",
+    "typicalEducation": "Bachelor's degree",
+    "duties": [
+      "Supervise preschool teachers and childcare workers",
+      "Hire and train new staff members",
+      "Provide professional development opportunities for staff",
+      "Establish policies and communicate them to staff and parents"
+    ],
+    "aliases": [
+      "daycare director",
+      "preschool director",
+      "child care"
     ]
   },
   {
@@ -1756,6 +2643,25 @@
       "money",
       "opportunity",
       "life-balance"
+    ],
+    "sourceTitle": "Social Workers",
+    "sourceUrl": "https://www.bls.gov/ooh/community-and-social-service/social-workers.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Social workers help people prevent and cope with problems in their everyday lives.",
+    "workEnvironment": "Social workers are employed in a variety of settings, including child welfare and human service agencies, healthcare providers, and schools. Most work full time, and some work evenings, weekends, and holidays.",
+    "entryRequirements": "Social workers typically need a bachelor\u2019s or master\u2019s degree in social work. They also may need a license; specific requirements vary by state.",
+    "outlook": "Overall employment of social workers is projected to grow 6 percent from 2025 to 2035, faster than the average for all occupations.",
+    "payContext": "The median annual wage for social workers was $61,780 in May 2025.",
+    "typicalEducation": "See How to Become One",
+    "duties": [
+      "Identify people and communities in need of help",
+      "Assess clients\u2019 needs, situations, strengths, and support networks to determine their goals",
+      "Help clients adjust to changes and challenges in their lives, such as illness, divorce, or unemployment",
+      "Research, refer, and advocate for community resources, such as food stamps, childcare, and healthcare, to assist and improve a client\u2019s well-being"
+    ],
+    "aliases": [
+      "case management",
+      "social services"
     ]
   },
   {
@@ -1796,6 +2702,26 @@
       "money",
       "opportunity",
       "productivity"
+    ],
+    "sourceTitle": "Urban and Regional Planners",
+    "sourceUrl": "https://www.bls.gov/ooh/life-physical-and-social-science/urban-and-regional-planners.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Urban and regional planners develop comprehensive plans and programs for use of land and physical facilities in cities, counties, metropolitan areas, and other jurisdictions.",
+    "workEnvironment": "Urban and regional planners usually work in an office setting and may travel to visit proposed sites. Most work full time, and some work evenings or weekends to attend meetings.",
+    "entryRequirements": "Urban and regional planners typically need a bachelor\u2019s or master\u2019s degree from an accredited planning program to enter the occupation. Employers may prefer or require planners to be certified.",
+    "outlook": "Employment of urban and regional planners is projected to grow 4 percent from 2025 to 2035, about as fast as the average for all occupations.",
+    "payContext": "The median annual wage for urban and regional planners was $89,320 in May 2025.",
+    "typicalEducation": "Master's degree",
+    "duties": [
+      "Meet with stakeholders such as government officials, developers, and the public regarding development plans and land use",
+      "Gather and analyze data from field investigations and sources such as market research, censuses, and environmental studies",
+      "Assess the feasibility of site plans submitted by developers and identify needed changes",
+      "Recommend whether site plans should be approved or denied"
+    ],
+    "aliases": [
+      "urban planner",
+      "town planner",
+      "planning"
     ]
   },
   {
@@ -1836,6 +2762,26 @@
       "money",
       "opportunity",
       "productivity"
+    ],
+    "sourceTitle": "Occupational Health and Safety Specialists and Technicians",
+    "sourceUrl": "https://www.bls.gov/ooh/healthcare/occupational-health-and-safety-specialists-and-technicians.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Occupational health and safety specialists and technicians collect data on, analyze, and design improvements to work environments and procedures.",
+    "workEnvironment": "Occupational health and safety specialists and technicians work in a variety of indoor or outdoor settings, such as offices and factories or construction sites. Their jobs may involve considerable travel and fieldwork. Most work full time, and some work more than 40 hours per week.",
+    "entryRequirements": "Occupational health and safety specialists typically need a bachelor\u2019s degree in occupational health and safety or a related field. Occupational health and safety technicians typically need at least a high school diploma to enter the occupation, and they receive training on the job.",
+    "outlook": "Overall employment of occupational health and safety specialists and technicians is projected to grow 19 percent from 2025 to 2035, much faster than the average for all occupations.",
+    "payContext": "The median annual wage for occupational health and safety specialists was $90,150 in May 2025.",
+    "typicalEducation": "See How to Become One",
+    "duties": [
+      "Inspect, test, and evaluate workplace environments, programs, equipment, and practices to ensure that they follow government safety regulations",
+      "Design and implement workplace programs and procedures that control or prevent chemical, physical, or other risks to workers",
+      "Educate employers and workers about maintaining workplace safety",
+      "Demonstrate use of safety equipment and ensure proper use by workers"
+    ],
+    "aliases": [
+      "health inspector",
+      "safety inspector",
+      "occupational safety"
     ]
   },
   {
@@ -1876,6 +2822,27 @@
       "money",
       "opportunity",
       "productivity"
+    ],
+    "sourceTitle": "Public Safety Telecommunicators",
+    "sourceUrl": "https://www.bls.gov/ooh/office-and-administrative-support/police-fire-and-ambulance-dispatchers.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Public safety telecommunicators, including 911 operators and fire dispatchers , answer emergency and nonemergency calls and provide resources to assist those in need.",
+    "workEnvironment": "Public safety telecommunicators work in emergency communication centers called public safety answering points (PSAPs). These workers usually have shifts that include evenings, weekends, and holidays to provide round-the-clock coverage. The pressure to respond quickly and calmly in alarming situations may be stressful.",
+    "entryRequirements": "Public safety telecommunicators typically need a high school diploma to enter the occupation and then are trained on the job. Many states and localities require these workers to become certified.",
+    "outlook": "Employment of public safety telecommunicators is projected to grow 4 percent from 2025 to 2035, about as fast as the average for all occupations.",
+    "payContext": "The median annual wage for public safety telecommunicators was $53,040 in May 2025.",
+    "typicalEducation": "High school diploma or equivalent",
+    "duties": [
+      "Answer 9-1-1 emergency and nonemergency requests from different sources, such as phone calls, text messages, social media, and alarm systems",
+      "Determine the type of emergency and its location and decide the appropriate response based on agency procedures",
+      "Relay information to the appropriate first-responder agency",
+      "Coordinate the dispatch of emergency response personnel"
+    ],
+    "aliases": [
+      "911 operator",
+      "911 dispatcher",
+      "police dispatcher",
+      "dispatch"
     ]
   },
   {
@@ -1915,6 +2882,26 @@
       "money",
       "opportunity",
       "productivity"
+    ],
+    "sourceTitle": "Political Scientists",
+    "sourceUrl": "https://www.bls.gov/ooh/life-physical-and-social-science/political-scientists.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Political scientists study the origin, development, and operation of political systems.",
+    "workEnvironment": "Most political scientists work full time in an office setting. They sometimes work additional hours.",
+    "entryRequirements": "To enter the occupation, political scientists typically need a master\u2019s degree in political science, public administration, or a related field. However, some employers consider candidates who have a bachelor\u2019s degree; others may prefer a Ph.D.",
+    "outlook": "Employment of political scientists is projected to decline 2 percent from 2025 to 2035.",
+    "payContext": "The median annual wage for political scientists was $142,080 in May 2025.",
+    "typicalEducation": "Master's degree",
+    "duties": [
+      "Research political subjects, such as the U.S. political system and foreign relations",
+      "Collect and analyze data from public opinion surveys and other sources",
+      "Develop and test political theories",
+      "Evaluate the effects of policies and laws on government, businesses, and people"
+    ],
+    "aliases": [
+      "government",
+      "public policy",
+      "political science"
     ]
   },
   {
@@ -1954,6 +2941,1864 @@
       "money",
       "opportunity",
       "ethics"
+    ],
+    "sourceTitle": "Recreation Workers",
+    "sourceUrl": "https://www.bls.gov/ooh/personal-care-and-service/recreation-workers.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Recreation workers organize, conduct, and promote a variety of group activities for leisure and other purposes.",
+    "workEnvironment": "Recreation workers are employed in a variety of settings, including recreation centers, parks, and summer camps. Most work full time, but many work part-time, irregular, or seasonal hours.",
+    "entryRequirements": "Recreation workers typically need at least a high school diploma or the equivalent, although requirements may vary by type of job. Once hired, these workers typically need a short period of on-the-job training.",
+    "outlook": "Employment of recreation workers is projected to grow 4 percent from 2025 to 2035, about as fast as the average for all occupations.",
+    "payContext": "The median annual wage for recreation workers was $36,560 in May 2025.",
+    "typicalEducation": "High school diploma or equivalent",
+    "duties": [
+      "Organize, conduct, and promote recreational activities",
+      "Explain the rules of activities and instruct participants at a variety of skill levels",
+      "Modify activities to suit the needs of specific participants, such as seniors",
+      "Explain safety procedures to reduce and prevent injuries"
+    ],
+    "aliases": [
+      "parks",
+      "recreation worker",
+      "recreation coordinator"
+    ]
+  },
+  {
+    "id": "police-officer",
+    "title": "Police Officer",
+    "cluster": "Public Safety & Law",
+    "educationOptions": [
+      "trade",
+      "cc",
+      "college"
+    ],
+    "modelPaths": [
+      "trade",
+      "cc",
+      "college"
+    ],
+    "skillAffinities": {
+      "communication": 2,
+      "teamwork": 1,
+      "problemSolving": 1,
+      "leadership": 1,
+      "techLiteracy": 1,
+      "financialLiteracy": 1,
+      "timeManagement": 1,
+      "adaptability": 2,
+      "professionalism": 2,
+      "creativity": 1
+    },
+    "baselineStress": 55,
+    "baselineWorkLife": 50,
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "life-balance"
+    ],
+    "sourceTitle": "Police and Detectives",
+    "sourceUrl": "https://www.bls.gov/ooh/protective-service/police-and-detectives.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Police officers protect lives and property. Detectives and criminal investigators gather facts and collect evidence of possible crimes.",
+    "workEnvironment": "Police and detective work can be physically demanding, stressful, and dangerous. Police and sheriff's patrol officers and transit and railroad police have some of the highest rates of injuries and illnesses of all occupations. Working around the clock in shifts is common.",
+    "entryRequirements": "The education typically required to enter the occupation ranges from a high school diploma to a college degree. Most police and detectives must graduate from their agency\u2019s training academy before completing on-the-job training. Other requirements vary, but candidates usually must be at least 21 years old and able to meet rigorous physical and personal qualifications.",
+    "outlook": "Overall employment of police and detectives is projected to grow 3 percent from 2025 to 2035, about as fast as the average for all occupations.",
+    "payContext": "The median annual wage for police and detectives was $77,310 in May 2025.",
+    "typicalEducation": "See How to Become One",
+    "duties": [
+      "Respond to emergency and nonemergency calls",
+      "Patrol assigned areas, observing people and activities",
+      "Conduct traffic stops and issue citations",
+      "Search restricted-access databases for vehicle or other records and warrants"
+    ],
+    "aliases": [
+      "police",
+      "cop",
+      "law enforcement",
+      "patrol officer",
+      "sheriff",
+      "deputy",
+      "policeman",
+      "policewoman"
+    ],
+    "catalogAdded": 3,
+    "salaryStartRange": [
+      50000,
+      66000
+    ],
+    "salaryMidRange": [
+      66000,
+      85000
+    ]
+  },
+  {
+    "id": "firefighter",
+    "title": "Firefighter",
+    "cluster": "Public Safety & Law",
+    "educationOptions": [
+      "trade",
+      "cc"
+    ],
+    "modelPaths": [
+      "trade",
+      "cc"
+    ],
+    "skillAffinities": {
+      "communication": 1,
+      "teamwork": 2,
+      "problemSolving": 2,
+      "leadership": 1,
+      "techLiteracy": 1,
+      "financialLiteracy": 1,
+      "timeManagement": 1,
+      "adaptability": 2,
+      "professionalism": 1,
+      "creativity": 1
+    },
+    "baselineStress": 55,
+    "baselineWorkLife": 50,
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "life-balance"
+    ],
+    "sourceTitle": "Firefighters",
+    "sourceUrl": "https://www.bls.gov/ooh/protective-service/firefighters.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Firefighters control and put out fires and respond to emergencies involving life, property, or the environment.",
+    "workEnvironment": "On the scene of a fire or other emergency, firefighters\u2019 work may be dangerous. On call at fire stations, firefighters sleep, eat, and perform other duties during shifts that often last 24 hours. Most paid firefighters work full time.",
+    "entryRequirements": "Firefighters typically need a high school diploma and training in emergency medical services. Most firefighters receive training at a fire academy. Other credential requirements, such as emergency medical technician (EMT) certification, vary by state or locality.",
+    "outlook": "Employment of firefighters is projected to grow 4 percent from 2025 to 2035, about as fast as the average for all occupations.",
+    "payContext": "The median annual wage for firefighters was $59,280 in May 2025.",
+    "typicalEducation": "Postsecondary nondegree award",
+    "duties": [
+      "Respond to emergencies",
+      "Drive firetrucks and other emergency vehicles",
+      "Put out fires using water hoses, fire extinguishers, and water pumps",
+      "Find and rescue occupants of burning buildings or other emergency situations"
+    ],
+    "aliases": [
+      "fire fighter",
+      "fireman",
+      "firewoman",
+      "fire rescue"
+    ],
+    "catalogAdded": 3,
+    "salaryStartRange": [
+      39000,
+      50000
+    ],
+    "salaryMidRange": [
+      50000,
+      65000
+    ]
+  },
+  {
+    "id": "emt",
+    "title": "Emergency Medical Technician",
+    "cluster": "Health Science",
+    "educationOptions": [
+      "trade",
+      "cc"
+    ],
+    "modelPaths": [
+      "trade",
+      "cc"
+    ],
+    "skillAffinities": {
+      "communication": 2,
+      "teamwork": 2,
+      "problemSolving": 1,
+      "leadership": 1,
+      "techLiteracy": 1,
+      "financialLiteracy": 1,
+      "timeManagement": 1,
+      "adaptability": 2,
+      "professionalism": 1,
+      "creativity": 1
+    },
+    "baselineStress": 55,
+    "baselineWorkLife": 50,
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "life-balance"
+    ],
+    "sourceTitle": "EMTs and Paramedics",
+    "sourceUrl": "https://www.bls.gov/ooh/healthcare/emts-and-paramedics.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Emergency medical technicians (EMTs) and paramedics assess injuries and illnesses, provide emergency medical care, and may transport patients to medical facilities.",
+    "workEnvironment": "Most EMTs and paramedics work full time, and some work more than 40 hours per week. Schedules may vary to include nights, weekends, and holidays. Their work may be physically strenuous and stressful, sometimes involving life-or-death situations.",
+    "entryRequirements": "Emergency medical technicians (EMTs) and paramedics typically complete a postsecondary educational program. All states require EMTs and paramedics to be licensed in the state in which they work; requirements vary by state.",
+    "outlook": "Overall employment of EMTs and paramedics is projected to grow 6 percent from 2025 to 2035, faster than the average for all occupations.",
+    "payContext": "The median annual wage for emergency medical technicians was $44,470 in May 2025.",
+    "typicalEducation": "Postsecondary nondegree award",
+    "duties": [
+      "Respond to calls for medical assistance, such as at the scene of a car accident in which someone is injured",
+      "Assess people\u2019s condition and determine what treatment, if any, is needed",
+      "Provide treatment, such as first aid or life support care, to sick or injured patients",
+      "Prepare patients for and safely transport them to the emergency department of a hospital or other healthcare facility"
+    ],
+    "aliases": [
+      "emt",
+      "emergency medical technician",
+      "ambulance",
+      "first responder"
+    ],
+    "catalogAdded": 3,
+    "salaryStartRange": [
+      31000,
+      41000
+    ],
+    "salaryMidRange": [
+      41000,
+      53000
+    ]
+  },
+  {
+    "id": "paramedic",
+    "title": "Paramedic",
+    "cluster": "Health Science",
+    "educationOptions": [
+      "trade",
+      "cc"
+    ],
+    "modelPaths": [
+      "trade",
+      "cc"
+    ],
+    "skillAffinities": {
+      "communication": 1,
+      "teamwork": 2,
+      "problemSolving": 2,
+      "leadership": 1,
+      "techLiteracy": 1,
+      "financialLiteracy": 1,
+      "timeManagement": 1,
+      "adaptability": 2,
+      "professionalism": 1,
+      "creativity": 1
+    },
+    "baselineStress": 55,
+    "baselineWorkLife": 50,
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "life-balance"
+    ],
+    "sourceTitle": "EMTs and Paramedics",
+    "sourceUrl": "https://www.bls.gov/ooh/healthcare/emts-and-paramedics.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Emergency medical technicians (EMTs) and paramedics assess injuries and illnesses, provide emergency medical care, and may transport patients to medical facilities.",
+    "workEnvironment": "Most EMTs and paramedics work full time, and some work more than 40 hours per week. Schedules may vary to include nights, weekends, and holidays. Their work may be physically strenuous and stressful, sometimes involving life-or-death situations.",
+    "entryRequirements": "Emergency medical technicians (EMTs) and paramedics typically complete a postsecondary educational program. All states require EMTs and paramedics to be licensed in the state in which they work; requirements vary by state.",
+    "outlook": "Overall employment of EMTs and paramedics is projected to grow 6 percent from 2025 to 2035, faster than the average for all occupations.",
+    "payContext": "The median annual wage for emergency medical technicians was $44,470 in May 2025.",
+    "typicalEducation": "Postsecondary nondegree award",
+    "duties": [
+      "Respond to calls for medical assistance, such as at the scene of a car accident in which someone is injured",
+      "Assess people\u2019s condition and determine what treatment, if any, is needed",
+      "Provide treatment, such as first aid or life support care, to sick or injured patients",
+      "Prepare patients for and safely transport them to the emergency department of a hospital or other healthcare facility"
+    ],
+    "aliases": [
+      "paramedic",
+      "emergency medicine",
+      "ems"
+    ],
+    "catalogAdded": 3,
+    "salaryStartRange": [
+      31000,
+      41000
+    ],
+    "salaryMidRange": [
+      41000,
+      53000
+    ]
+  },
+  {
+    "id": "electrician",
+    "title": "Electrician",
+    "cluster": "Skilled Trades & Construction",
+    "educationOptions": [
+      "trade",
+      "cc"
+    ],
+    "modelPaths": [
+      "trade",
+      "cc"
+    ],
+    "skillAffinities": {
+      "communication": 1,
+      "teamwork": 1,
+      "problemSolving": 2,
+      "leadership": 1,
+      "techLiteracy": 2,
+      "financialLiteracy": 1,
+      "timeManagement": 1,
+      "adaptability": 1,
+      "professionalism": 2,
+      "creativity": 1
+    },
+    "baselineStress": 55,
+    "baselineWorkLife": 50,
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "life-balance"
+    ],
+    "sourceTitle": "Electricians",
+    "sourceUrl": "https://www.bls.gov/ooh/construction-and-extraction/electricians.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Electricians install, maintain, and repair electrical power, communications, lighting, and control systems.",
+    "workEnvironment": "Almost all electricians work full time. Work schedules may include evenings and weekends. Overtime is common.",
+    "entryRequirements": "Most electricians learn through an apprenticeship, but some start out by attending a technical school. Most states require electricians to be licensed.",
+    "outlook": "Employment of electricians is projected to grow 9 percent from 2025 to 2035, much faster than the average for all occupations.",
+    "payContext": "The median annual wage for electricians was $63,190 in May 2025.",
+    "typicalEducation": "High school diploma or equivalent",
+    "duties": [
+      "Read blueprints or technical diagrams",
+      "Install and maintain wiring, control, and lighting systems",
+      "Inspect electrical components, such as transformers and circuit breakers",
+      "Identify electrical problems using a variety of testing devices"
+    ],
+    "aliases": [
+      "electrician",
+      "electrical work",
+      "wiring",
+      "sparky"
+    ],
+    "catalogAdded": 3,
+    "salaryStartRange": [
+      41000,
+      54000
+    ],
+    "salaryMidRange": [
+      54000,
+      70000
+    ]
+  },
+  {
+    "id": "plumber",
+    "title": "Plumber",
+    "cluster": "Skilled Trades & Construction",
+    "educationOptions": [
+      "trade",
+      "cc"
+    ],
+    "modelPaths": [
+      "trade",
+      "cc"
+    ],
+    "skillAffinities": {
+      "communication": 1,
+      "teamwork": 1,
+      "problemSolving": 2,
+      "leadership": 1,
+      "techLiteracy": 2,
+      "financialLiteracy": 1,
+      "timeManagement": 1,
+      "adaptability": 1,
+      "professionalism": 2,
+      "creativity": 1
+    },
+    "baselineStress": 55,
+    "baselineWorkLife": 50,
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "life-balance"
+    ],
+    "sourceTitle": "Plumbers, Pipefitters, and Steamfitters",
+    "sourceUrl": "https://www.bls.gov/ooh/construction-and-extraction/plumbers-pipefitters-and-steamfitters.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Plumbers, pipefitters, and steamfitters install and repair piping fixtures and systems.",
+    "workEnvironment": "Plumbers, pipefitters, and steamfitters work in factories, homes, businesses, and other places where there are pipes and related systems. Plumbers are often on call for emergencies, so evening and weekend work is common.",
+    "entryRequirements": "Most plumbers, pipefitters, and steamfitters learn on the job through an apprenticeship. Some attend a vocational-technical school before receiving on-the-job training. Most states require plumbers to be licensed.",
+    "outlook": "Employment of plumbers, pipefitters, and steamfitters is projected to grow 7 percent from 2025 to 2035, much faster than the average for all occupations.",
+    "payContext": "The median annual wage for plumbers, pipefitters, and steamfitters was $63,800 in May 2025.",
+    "typicalEducation": "High school diploma or equivalent",
+    "duties": [
+      "Prepare cost estimates for clients",
+      "Read blueprints and follow state and local building codes",
+      "Determine the materials and equipment needed for a job",
+      "Install pipes and fixtures"
+    ],
+    "aliases": [
+      "plumber",
+      "plumbing",
+      "pipefitter",
+      "steamfitter"
+    ],
+    "catalogAdded": 3,
+    "salaryStartRange": [
+      41000,
+      54000
+    ],
+    "salaryMidRange": [
+      54000,
+      70000
+    ]
+  },
+  {
+    "id": "hvac-technician",
+    "title": "HVAC Technician",
+    "cluster": "Skilled Trades & Construction",
+    "educationOptions": [
+      "trade",
+      "cc"
+    ],
+    "modelPaths": [
+      "trade",
+      "cc"
+    ],
+    "skillAffinities": {
+      "communication": 1,
+      "teamwork": 1,
+      "problemSolving": 2,
+      "leadership": 1,
+      "techLiteracy": 2,
+      "financialLiteracy": 1,
+      "timeManagement": 2,
+      "adaptability": 1,
+      "professionalism": 1,
+      "creativity": 1
+    },
+    "baselineStress": 55,
+    "baselineWorkLife": 50,
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "life-balance"
+    ],
+    "sourceTitle": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
+    "sourceUrl": "https://www.bls.gov/ooh/installation-maintenance-and-repair/heating-air-conditioning-and-refrigeration-mechanics-and-installers.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Heating, air conditioning, and refrigeration mechanics and installers work on heating, ventilation, cooling, and refrigeration systems.",
+    "workEnvironment": "These workers install and repair systems in homes, schools, hospitals, and other buildings. They may need to work in cramped spaces, outdoors, or in extreme temperatures. Most work full time, and schedules may vary.",
+    "entryRequirements": "Heating, air conditioning, and refrigeration mechanics and installers typically need a postsecondary nondegree award, although some enter the occupation with less education. Once hired, they typically have a lengthy period of on-the-job training to attain competency. These workers may need a license or certification.",
+    "outlook": "Employment of heating, air conditioning, and refrigeration mechanics and installers is projected to grow 11 percent from 2025 to 2035, much faster than the average for all occupations.",
+    "payContext": "The median annual wage for heating, air conditioning, and refrigeration mechanics and installers was $61,010 in May 2025.",
+    "typicalEducation": "Postsecondary nondegree award",
+    "duties": [
+      "Install, maintain, and repair HVACR systems",
+      "Install electrical components and wiring",
+      "Inspect and test HVACR systems and components",
+      "Discuss system malfunctions with customers"
+    ],
+    "aliases": [
+      "hvac",
+      "heating",
+      "air conditioning",
+      "refrigeration"
+    ],
+    "catalogAdded": 3,
+    "salaryStartRange": [
+      40000,
+      52000
+    ],
+    "salaryMidRange": [
+      52000,
+      67000
+    ]
+  },
+  {
+    "id": "welder",
+    "title": "Welder",
+    "cluster": "Skilled Trades & Construction",
+    "educationOptions": [
+      "trade",
+      "cc"
+    ],
+    "modelPaths": [
+      "trade",
+      "cc"
+    ],
+    "skillAffinities": {
+      "communication": 1,
+      "teamwork": 1,
+      "problemSolving": 2,
+      "leadership": 1,
+      "techLiteracy": 2,
+      "financialLiteracy": 1,
+      "timeManagement": 1,
+      "adaptability": 1,
+      "professionalism": 2,
+      "creativity": 1
+    },
+    "baselineStress": 55,
+    "baselineWorkLife": 50,
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "life-balance"
+    ],
+    "sourceTitle": "Welders, Cutters, Solderers, and Brazers",
+    "sourceUrl": "https://www.bls.gov/ooh/production/welders-cutters-solderers-and-brazers.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Welders, cutters, solderers, and brazers use hand-held or remotely controlled equipment to join, repair, or cut metal parts and products.",
+    "workEnvironment": "Welders, cutters, solderers, and brazers may work outdoors in all types of weather, or they may work indoors, sometimes in a confined area. Most work full time, and some work more than 40 hours per week.",
+    "entryRequirements": "Welders, cutters, solderers, and brazers typically need a high school diploma or equivalent, combined with technical and on-the-job training, to enter the occupation.",
+    "outlook": "Employment of welders, cutters, solderers, and brazers is projected to grow 2 percent from 2025 to 2035, slower than the average for all occupations.",
+    "payContext": "The median annual wage for welders, cutters, solderers, and brazers was $53,750 in May 2025.",
+    "typicalEducation": "High school diploma or equivalent",
+    "duties": [
+      "Read and interpret blueprints, sketches, and specifications",
+      "Calculate and measure the dimensions of parts to be welded",
+      "Inspect structures or materials to be welded",
+      "Weld materials according to blueprint specifications"
+    ],
+    "aliases": [
+      "welder",
+      "welding",
+      "fabricator",
+      "metalwork"
+    ],
+    "catalogAdded": 3,
+    "salaryStartRange": [
+      35000,
+      46000
+    ],
+    "salaryMidRange": [
+      46000,
+      59000
+    ]
+  },
+  {
+    "id": "carpenter",
+    "title": "Carpenter",
+    "cluster": "Skilled Trades & Construction",
+    "educationOptions": [
+      "trade",
+      "cc"
+    ],
+    "modelPaths": [
+      "trade",
+      "cc"
+    ],
+    "skillAffinities": {
+      "communication": 1,
+      "teamwork": 1,
+      "problemSolving": 2,
+      "leadership": 1,
+      "techLiteracy": 1,
+      "financialLiteracy": 1,
+      "timeManagement": 1,
+      "adaptability": 1,
+      "professionalism": 2,
+      "creativity": 2
+    },
+    "baselineStress": 55,
+    "baselineWorkLife": 50,
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "life-balance"
+    ],
+    "sourceTitle": "Carpenters",
+    "sourceUrl": "https://www.bls.gov/ooh/construction-and-extraction/carpenters.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Carpenters construct, repair, and install building frameworks and structures made from wood and other materials.",
+    "workEnvironment": "Carpenters work indoors and outdoors on many types of construction projects, from installing kitchen cabinets to building highways and bridges.",
+    "entryRequirements": "Carpenters typically learn on the job and through apprenticeships.",
+    "outlook": "Employment of carpenters is projected to grow 4 percent from 2025 to 2035, about as fast as the average for all occupations.",
+    "payContext": "The median annual wage for carpenters was $60,580 in May 2025.",
+    "typicalEducation": "High school diploma or equivalent",
+    "duties": [
+      "Follow blueprints and building plans to meet the needs of clients",
+      "Install structures and fixtures, such as windows and molding",
+      "Measure, cut, and shape wood, plastic, and other materials",
+      "Construct and install building frameworks, including walls, floors, and doorframes"
+    ],
+    "aliases": [
+      "carpenter",
+      "carpentry",
+      "woodworking",
+      "builder"
+    ],
+    "catalogAdded": 3,
+    "salaryStartRange": [
+      39000,
+      51000
+    ],
+    "salaryMidRange": [
+      51000,
+      67000
+    ]
+  },
+  {
+    "id": "auto-mechanic",
+    "title": "Automotive Service Technician",
+    "cluster": "Transportation & Repair",
+    "educationOptions": [
+      "trade",
+      "cc"
+    ],
+    "modelPaths": [
+      "trade",
+      "cc"
+    ],
+    "skillAffinities": {
+      "communication": 2,
+      "teamwork": 1,
+      "problemSolving": 2,
+      "leadership": 1,
+      "techLiteracy": 2,
+      "financialLiteracy": 1,
+      "timeManagement": 1,
+      "adaptability": 1,
+      "professionalism": 1,
+      "creativity": 1
+    },
+    "baselineStress": 55,
+    "baselineWorkLife": 50,
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "life-balance"
+    ],
+    "sourceTitle": "Automotive Service Technicians and Mechanics",
+    "sourceUrl": "https://www.bls.gov/ooh/installation-maintenance-and-repair/automotive-service-technicians-and-mechanics.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Automotive service technicians and mechanics inspect, maintain, and repair cars and light trucks.",
+    "workEnvironment": "Automotive service technicians and mechanics usually work in well-ventilated and well-lit repair shops. Although technicians often identify and fix automotive problems with computers, they commonly work with greasy parts and tools, sometimes in uncomfortable positions. Most work full-time, which may include evenings or weekends.",
+    "entryRequirements": "Automotive service technicians and mechanics typically complete a program in automotive service technology or a related field. However, some workers enter the occupation with a high school diploma and learn on the job. Certification may be required.",
+    "outlook": "Employment of automotive service technicians and mechanics is projected to grow 5 percent from 2025 to 2035, faster than the average for all occupations.",
+    "payContext": "The median annual wage for automotive service technicians and mechanics was $50,620 in May 2025.",
+    "typicalEducation": "Postsecondary nondegree award",
+    "duties": [
+      "Identify problems, often by using computerized diagnostic equipment",
+      "Test parts and systems to ensure that they work properly",
+      "Perform basic care and maintenance, including changing oil, checking fluid levels, and rotating tires",
+      "Repair or replace worn parts, such as brake pads, wheel bearings, and sensors"
+    ],
+    "aliases": [
+      "mechanic",
+      "auto mechanic",
+      "car mechanic",
+      "automotive technician",
+      "car repair"
+    ],
+    "catalogAdded": 3,
+    "salaryStartRange": [
+      33000,
+      43000
+    ],
+    "salaryMidRange": [
+      43000,
+      56000
+    ]
+  },
+  {
+    "id": "diesel-mechanic",
+    "title": "Diesel Mechanic",
+    "cluster": "Transportation & Repair",
+    "educationOptions": [
+      "trade",
+      "cc"
+    ],
+    "modelPaths": [
+      "trade",
+      "cc"
+    ],
+    "skillAffinities": {
+      "communication": 1,
+      "teamwork": 1,
+      "problemSolving": 2,
+      "leadership": 1,
+      "techLiteracy": 2,
+      "financialLiteracy": 1,
+      "timeManagement": 1,
+      "adaptability": 1,
+      "professionalism": 2,
+      "creativity": 1
+    },
+    "baselineStress": 55,
+    "baselineWorkLife": 50,
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "life-balance"
+    ],
+    "sourceTitle": "Diesel Service Technicians and Mechanics",
+    "sourceUrl": "https://www.bls.gov/ooh/installation-maintenance-and-repair/diesel-service-technicians-and-mechanics.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Diesel service technicians and mechanics inspect, repair, and overhaul buses, trucks, or any vehicle with a diesel engine.",
+    "workEnvironment": "Diesel service technicians and mechanics usually work in well-ventilated and sometimes noisy repair shops. They occasionally repair vehicles on roadsides or at worksites. Most diesel technicians work full time, and some work more than 40 hours per week.",
+    "entryRequirements": "Although diesel service technicians and mechanics typically learn on the job after a high school education, employers may prefer to hire candidates who have completed postsecondary training programs in diesel engine repair. In addition, industry certification may be required.",
+    "outlook": "Employment of diesel service technicians and mechanics is projected to grow 4 percent from 2025 to 2035, about as fast as the average for all occupations.",
+    "payContext": "The median annual wage for diesel service technicians and mechanics was $61,770 in May 2025.",
+    "typicalEducation": "High school diploma or equivalent",
+    "duties": [
+      "Inspect and test brake systems, steering mechanisms, transmissions, engines, and other parts of vehicles",
+      "Read and interpret diagnostic test results to identify mechanical problems",
+      "Follow checklists to ensure that all critical parts are examined",
+      "Repair or replace malfunctioning parts and other mechanical or electrical equipment"
+    ],
+    "aliases": [
+      "diesel mechanic",
+      "diesel technician",
+      "truck mechanic"
+    ],
+    "catalogAdded": 3,
+    "salaryStartRange": [
+      40000,
+      53000
+    ],
+    "salaryMidRange": [
+      53000,
+      68000
+    ]
+  },
+  {
+    "id": "machinist",
+    "title": "Machinist",
+    "cluster": "Manufacturing",
+    "educationOptions": [
+      "trade",
+      "cc"
+    ],
+    "modelPaths": [
+      "trade",
+      "cc"
+    ],
+    "skillAffinities": {
+      "communication": 1,
+      "teamwork": 1,
+      "problemSolving": 2,
+      "leadership": 1,
+      "techLiteracy": 2,
+      "financialLiteracy": 1,
+      "timeManagement": 1,
+      "adaptability": 1,
+      "professionalism": 2,
+      "creativity": 1
+    },
+    "baselineStress": 55,
+    "baselineWorkLife": 50,
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "life-balance"
+    ],
+    "sourceTitle": "Machinists and Tool and Die Makers",
+    "sourceUrl": "https://www.bls.gov/ooh/production/machinists-and-tool-and-die-makers.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Machinists and tool and die makers set up and operate equipment to produce precision metal parts, instruments, and tools.",
+    "workEnvironment": "Machinists and tool and die makers work in machine shops and factories. Many work full time during regular business hours. However, working overtime, as well as nights and weekends, may be common.",
+    "entryRequirements": "Although machinists typically need a high school diploma to enter the occupation, tool and die makers also may need to complete postsecondary courses. Machinists and tool and die makers typically are trained on the job. Some learn through training or apprenticeship programs, vocational schools, or community and technical colleges.",
+    "outlook": "Overall employment of machinists and tool and die makers is projected to decline 1 percent from 2025 to 2035.",
+    "payContext": "The median annual wage for machinists was $58,750 in May 2025.",
+    "typicalEducation": "See How to Become One",
+    "duties": [
+      "Read detailed drawings or files, such as blueprints, sketches, and those for computer-aided design (CAD) and computer-aided manufacturing (CAM)",
+      "Set up, operate, and disassemble manual, automatic, and computer numerically controlled (CNC) machine tools",
+      "Align, secure, and adjust cutting tools and workpieces",
+      "Monitor the feed and speed of machines"
+    ],
+    "aliases": [
+      "machinist",
+      "cnc",
+      "cnc operator",
+      "tool and die",
+      "manufacturing"
+    ],
+    "catalogAdded": 3,
+    "salaryStartRange": [
+      39000,
+      51000
+    ],
+    "salaryMidRange": [
+      51000,
+      66000
+    ]
+  },
+  {
+    "id": "construction-manager",
+    "title": "Construction Manager",
+    "cluster": "Skilled Trades & Construction",
+    "educationOptions": [
+      "college"
+    ],
+    "modelPaths": [
+      "college"
+    ],
+    "skillAffinities": {
+      "communication": 1,
+      "teamwork": 1,
+      "problemSolving": 2,
+      "leadership": 2,
+      "techLiteracy": 1,
+      "financialLiteracy": 1,
+      "timeManagement": 2,
+      "adaptability": 1,
+      "professionalism": 1,
+      "creativity": 1
+    },
+    "baselineStress": 55,
+    "baselineWorkLife": 50,
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "life-balance"
+    ],
+    "sourceTitle": "Construction Managers",
+    "sourceUrl": "https://www.bls.gov/ooh/management/construction-managers.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Construction managers plan, coordinate, budget, and supervise construction projects from start to finish.",
+    "workEnvironment": "Construction managers may have a main office but spend most of their time in a field office onsite, where they monitor projects and make decisions about construction activities. Their schedules may vary.",
+    "entryRequirements": "Construction managers typically need a bachelor\u2019s degree, and they learn management techniques through on-the-job training. Large construction firms may prefer to hire candidates who have both construction experience and a bachelor\u2019s degree in a construction-related field.",
+    "outlook": "Employment of construction managers is projected to grow 9 percent from 2025 to 2035, much faster than the average for all occupations.",
+    "payContext": "The median annual wage for construction managers was $114,990 in May 2025.",
+    "typicalEducation": "Bachelor's degree",
+    "duties": [
+      "Prepare cost estimates, budgets, and work timetables",
+      "Interpret and explain contracts and technical information to other professionals",
+      "Collaborate with architects, engineers, and other construction specialists",
+      "Select subcontractors and schedule and coordinate their activities"
+    ],
+    "aliases": [
+      "construction manager",
+      "contractor",
+      "site manager",
+      "construction"
+    ],
+    "catalogAdded": 3,
+    "salaryStartRange": [
+      75000,
+      98000
+    ],
+    "salaryMidRange": [
+      98000,
+      126000
+    ]
+  },
+  {
+    "id": "architect",
+    "title": "Architect",
+    "cluster": "Engineering",
+    "educationOptions": [
+      "college",
+      "grad"
+    ],
+    "modelPaths": [
+      "college",
+      "grad"
+    ],
+    "skillAffinities": {
+      "communication": 2,
+      "teamwork": 1,
+      "problemSolving": 2,
+      "leadership": 1,
+      "techLiteracy": 1,
+      "financialLiteracy": 1,
+      "timeManagement": 1,
+      "adaptability": 1,
+      "professionalism": 1,
+      "creativity": 2
+    },
+    "baselineStress": 55,
+    "baselineWorkLife": 50,
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "life-balance"
+    ],
+    "sourceTitle": "Architects",
+    "sourceUrl": "https://www.bls.gov/ooh/architecture-and-engineering/architects.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Architects plan and design houses, factories, office buildings, and other structures.",
+    "workEnvironment": "Architects spend much of their time in offices, where they develop plans, meet with clients, and consult with engineers and other architects. They also visit construction sites to prepare initial drawings and review the progress of projects to ensure that clients\u2019 objectives are met.",
+    "entryRequirements": "There are typically three main steps to becoming a licensed architect: completing a bachelor\u2019s degree in architecture, gaining relevant experience through a paid internship, and passing an exam.",
+    "outlook": "Employment of architects is projected to grow 4 percent from 2025 to 2035, about as fast as the average for all occupations.",
+    "payContext": "The median annual wage for architects was $99,280 in May 2025.",
+    "typicalEducation": "Bachelor's degree",
+    "duties": [
+      "Meet with clients to determine objectives and requirements for structures",
+      "Give preliminary estimates on cost and construction time",
+      "Prepare structure specifications",
+      "Direct workers who prepare drawings and documents"
+    ],
+    "aliases": [
+      "architect",
+      "architecture",
+      "building design"
+    ],
+    "catalogAdded": 3,
+    "salaryStartRange": [
+      65000,
+      84000
+    ],
+    "salaryMidRange": [
+      84000,
+      109000
+    ]
+  },
+  {
+    "id": "physician",
+    "title": "Physician",
+    "cluster": "Health Science",
+    "educationOptions": [
+      "grad"
+    ],
+    "modelPaths": [
+      "grad"
+    ],
+    "skillAffinities": {
+      "communication": 2,
+      "teamwork": 1,
+      "problemSolving": 2,
+      "leadership": 1,
+      "techLiteracy": 1,
+      "financialLiteracy": 1,
+      "timeManagement": 1,
+      "adaptability": 1,
+      "professionalism": 2,
+      "creativity": 1
+    },
+    "baselineStress": 55,
+    "baselineWorkLife": 50,
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "life-balance"
+    ],
+    "sourceTitle": "Physicians and Surgeons",
+    "sourceUrl": "https://www.bls.gov/ooh/healthcare/physicians-and-surgeons.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Physicians and surgeons diagnose and treat injuries or illnesses and address health maintenance.",
+    "workEnvironment": "Physicians and surgeons work in both clinical and nonclinical settings. Clinical settings include physicians' offices and hospitals; nonclinical settings include government agencies, nonprofit organizations, and insurance companies.",
+    "entryRequirements": "Physicians and surgeons typically need a bachelor\u2019s degree as well as a medical degree, which takes an additional 4 years to complete. Depending on their specialty, they also need 3 to 9 years in internship and residency programs. Subspecialization includes additional training in a fellowship of 1 to 3 years.",
+    "outlook": "Overall employment of physicians and surgeons is projected to grow 4 percent from 2025 to 2035, about as fast as the average for all occupations.",
+    "payContext": "The median annual wage for physicians and surgeons was $275,930 in May 2025.",
+    "typicalEducation": "Doctoral or professional degree",
+    "duties": [
+      "Take a patient\u2019s medical history and perform a physical exam",
+      "Document and update charts and patient information to show findings and treatments",
+      "Order tests and consultations for other physicians or healthcare staff to perform",
+      "Review test results to identify abnormal findings"
+    ],
+    "aliases": [
+      "doctor",
+      "physician",
+      "medical doctor",
+      "surgeon",
+      "pediatrician"
+    ],
+    "catalogAdded": 3,
+    "salaryStartRange": [
+      179000,
+      235000
+    ],
+    "salaryMidRange": [
+      235000,
+      304000
+    ]
+  },
+  {
+    "id": "dentist",
+    "title": "Dentist",
+    "cluster": "Health Science",
+    "educationOptions": [
+      "grad"
+    ],
+    "modelPaths": [
+      "grad"
+    ],
+    "skillAffinities": {
+      "communication": 2,
+      "teamwork": 1,
+      "problemSolving": 2,
+      "leadership": 1,
+      "techLiteracy": 1,
+      "financialLiteracy": 1,
+      "timeManagement": 1,
+      "adaptability": 1,
+      "professionalism": 2,
+      "creativity": 1
+    },
+    "baselineStress": 55,
+    "baselineWorkLife": 50,
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "life-balance"
+    ],
+    "sourceTitle": "Dentists",
+    "sourceUrl": "https://www.bls.gov/ooh/healthcare/dentists.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Dentists diagnose and treat problems with patients\u2019 teeth, gums, and related parts of the mouth.",
+    "workEnvironment": "Some dentists have their own business and work alone or with a small staff. Other dentists have partners in their practice. Still others work as associate dentists for established dental practices.",
+    "entryRequirements": "Dentists must be licensed in the state in which they work. Licensure requirements vary by state, although candidates usually must graduate from an accredited dental program and pass written and clinical exams.",
+    "outlook": "Overall employment of dentists is projected to grow 6 percent from 2025 to 2035, faster than the average for all occupations.",
+    "payContext": "The median annual wage for dentists was $176,110 in May 2025.",
+    "typicalEducation": "Doctoral or professional degree",
+    "duties": [
+      "Remove decay from teeth and fill cavities",
+      "Repair or remove damaged teeth",
+      "Place sealants or whitening agents on teeth",
+      "Administer anesthetics to keep patients from feeling pain during procedures"
+    ],
+    "aliases": [
+      "dentist",
+      "dental doctor",
+      "dentistry"
+    ],
+    "catalogAdded": 3,
+    "salaryStartRange": [
+      114000,
+      150000
+    ],
+    "salaryMidRange": [
+      150000,
+      194000
+    ]
+  },
+  {
+    "id": "pharmacist",
+    "title": "Pharmacist",
+    "cluster": "Health Science",
+    "educationOptions": [
+      "grad"
+    ],
+    "modelPaths": [
+      "grad"
+    ],
+    "skillAffinities": {
+      "communication": 2,
+      "teamwork": 1,
+      "problemSolving": 2,
+      "leadership": 1,
+      "techLiteracy": 1,
+      "financialLiteracy": 1,
+      "timeManagement": 1,
+      "adaptability": 1,
+      "professionalism": 2,
+      "creativity": 1
+    },
+    "baselineStress": 55,
+    "baselineWorkLife": 50,
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "life-balance"
+    ],
+    "sourceTitle": "Pharmacists",
+    "sourceUrl": "https://www.bls.gov/ooh/healthcare/pharmacists.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Pharmacists dispense prescription medications and provide information to patients about the drugs and their use.",
+    "workEnvironment": "Pharmacists work in pharmacies, including those in drug, general merchandise, and grocery stores. They also work in hospitals and other healthcare facilities that are open 24 hours. Most pharmacists work full time, and some work nights, weekends, and holidays.",
+    "entryRequirements": "Pharmacists typically need a Doctor of Pharmacy (Pharm.D.) degree. Every state requires pharmacists to be licensed.",
+    "outlook": "Employment of pharmacists is projected to grow 5 percent from 2025 to 2035, faster than the average for all occupations.",
+    "payContext": "The median annual wage for pharmacists was $140,910 in May 2025.",
+    "typicalEducation": "Doctoral or professional degree",
+    "duties": [
+      "Fill prescriptions to the proper amount based on physicians\u2019 instructions",
+      "Check patients\u2019 allergies, medical conditions, and other drugs they are taking to ensure that the newly prescribed medication does not cause adverse reaction",
+      "Instruct patients on proper use, side effects, and storage of prescribed medicine",
+      "Administer vaccinations, such as flu shots"
+    ],
+    "aliases": [
+      "pharmacist",
+      "pharmacy",
+      "medications"
+    ],
+    "catalogAdded": 3,
+    "salaryStartRange": [
+      92000,
+      120000
+    ],
+    "salaryMidRange": [
+      120000,
+      155000
+    ]
+  },
+  {
+    "id": "physical-therapist",
+    "title": "Physical Therapist",
+    "cluster": "Health Science",
+    "educationOptions": [
+      "grad"
+    ],
+    "modelPaths": [
+      "grad"
+    ],
+    "skillAffinities": {
+      "communication": 2,
+      "teamwork": 2,
+      "problemSolving": 2,
+      "leadership": 1,
+      "techLiteracy": 1,
+      "financialLiteracy": 1,
+      "timeManagement": 1,
+      "adaptability": 1,
+      "professionalism": 1,
+      "creativity": 1
+    },
+    "baselineStress": 55,
+    "baselineWorkLife": 50,
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "life-balance"
+    ],
+    "sourceTitle": "Physical Therapists",
+    "sourceUrl": "https://www.bls.gov/ooh/healthcare/physical-therapists.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Physical therapists help injured or ill people improve movement and manage pain.",
+    "workEnvironment": "Physical therapists typically work in private offices and clinics, hospitals, patients\u2019 homes, and nursing homes. They spend much of their time on their feet, actively working with patients.",
+    "entryRequirements": "Physical therapists entering the occupation need a Doctor of Physical Therapy (DPT) degree. All states require physical therapists to be licensed.",
+    "outlook": "Employment of physical therapists is projected to grow 12 percent from 2025 to 2035, much faster than the average for all occupations.",
+    "payContext": "The median annual wage for physical therapists was $102,760 in May 2025.",
+    "typicalEducation": "Doctoral or professional degree",
+    "duties": [
+      "Review patients\u2019 medical history and referrals or notes from doctors, surgeons, or other healthcare workers",
+      "Diagnose patients\u2019 functions and movements by observing them stand or walk and by listening to their concerns",
+      "Develop individualized plans of care for patients, outlining the patients\u2019 goals and the expected outcomes of the plans",
+      "Use exercises, stretching maneuvers, hands-on therapy, and equipment to ease patients\u2019 pain, help them increase their mobility, prevent further pain or injury, and facilitate health and wellness"
+    ],
+    "aliases": [
+      "physical therapist",
+      "physical therapy",
+      "pt",
+      "rehabilitation"
+    ],
+    "catalogAdded": 3,
+    "salaryStartRange": [
+      67000,
+      87000
+    ],
+    "salaryMidRange": [
+      87000,
+      113000
+    ]
+  },
+  {
+    "id": "veterinarian",
+    "title": "Veterinarian",
+    "cluster": "Agriculture & Animals",
+    "educationOptions": [
+      "grad"
+    ],
+    "modelPaths": [
+      "grad"
+    ],
+    "skillAffinities": {
+      "communication": 2,
+      "teamwork": 1,
+      "problemSolving": 2,
+      "leadership": 1,
+      "techLiteracy": 1,
+      "financialLiteracy": 1,
+      "timeManagement": 1,
+      "adaptability": 1,
+      "professionalism": 2,
+      "creativity": 1
+    },
+    "baselineStress": 55,
+    "baselineWorkLife": 50,
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "life-balance"
+    ],
+    "sourceTitle": "Veterinarians",
+    "sourceUrl": "https://www.bls.gov/ooh/healthcare/veterinarians.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Veterinarians care for the health of animals and work to protect public health.",
+    "workEnvironment": "Most veterinarians work in private clinics and hospitals. Others travel to farms or work in settings such as laboratories, classrooms, or zoos.",
+    "entryRequirements": "Veterinarians must have a Doctor of Veterinary Medicine degree from an accredited veterinary college, as well as a state license.",
+    "outlook": "Employment of veterinarians is projected to grow 9 percent from 2025 to 2035, much faster than the average for all occupations.",
+    "payContext": "The median annual wage for veterinarians was $130,100 in May 2025.",
+    "typicalEducation": "Doctoral or professional degree",
+    "duties": [
+      "Examine animals to assess their health and diagnose problems",
+      "Treat and dress wounds",
+      "Perform surgery on animals",
+      "Test for and vaccinate against diseases"
+    ],
+    "aliases": [
+      "vet",
+      "veterinarian",
+      "animal doctor",
+      "veterinary medicine"
+    ],
+    "catalogAdded": 3,
+    "salaryStartRange": [
+      85000,
+      111000
+    ],
+    "salaryMidRange": [
+      111000,
+      143000
+    ]
+  },
+  {
+    "id": "veterinary-technician",
+    "title": "Veterinary Technician",
+    "cluster": "Agriculture & Animals",
+    "educationOptions": [
+      "cc"
+    ],
+    "modelPaths": [
+      "cc"
+    ],
+    "skillAffinities": {
+      "communication": 1,
+      "teamwork": 2,
+      "problemSolving": 1,
+      "leadership": 1,
+      "techLiteracy": 2,
+      "financialLiteracy": 1,
+      "timeManagement": 1,
+      "adaptability": 1,
+      "professionalism": 2,
+      "creativity": 1
+    },
+    "baselineStress": 55,
+    "baselineWorkLife": 50,
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "life-balance"
+    ],
+    "sourceTitle": "Veterinary Technologists and Technicians",
+    "sourceUrl": "https://www.bls.gov/ooh/healthcare/veterinary-technologists-and-technicians.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Veterinary technologists and technicians do medical tests that help diagnose animals\u2019 injuries and illnesses.",
+    "workEnvironment": "Veterinary technologists and technicians work in private clinics, laboratories, and animal hospitals. Their jobs may be physically or emotionally demanding. Many work evenings, weekends, or holidays.",
+    "entryRequirements": "Veterinary technologists and technicians must complete a postsecondary program in veterinary technology. Technologists usually need a 4-year bachelor\u2019s degree, and technicians need a 2-year associate\u2019s degree. Typically, both technologists and technicians must take a credentialing exam and become registered, licensed, or certified, depending on the requirements of the state in which they work.",
+    "outlook": "Employment of veterinary technologists and technicians is projected to grow 9 percent from 2025 to 2035, much faster than the average for all occupations.",
+    "payContext": "The median annual wage for veterinary technologists and technicians was $47,380 in May 2025.",
+    "typicalEducation": "Associate's degree",
+    "duties": [
+      "Observe the behavior and condition of animals",
+      "Provide nursing care or emergency first aid to recovering or injured animals",
+      "Bathe animals, clip nails or claws, and brush or cut animals\u2019 hair",
+      "Restrain animals during exams or procedures"
+    ],
+    "aliases": [
+      "vet tech",
+      "veterinary technician",
+      "animal nurse"
+    ],
+    "catalogAdded": 3,
+    "salaryStartRange": [
+      31000,
+      40000
+    ],
+    "salaryMidRange": [
+      40000,
+      52000
+    ]
+  },
+  {
+    "id": "farmer",
+    "title": "Farmer / Agricultural Manager",
+    "cluster": "Agriculture & Animals",
+    "educationOptions": [
+      "workforce",
+      "cc",
+      "college"
+    ],
+    "modelPaths": [
+      "workforce",
+      "cc",
+      "college"
+    ],
+    "skillAffinities": {
+      "communication": 1,
+      "teamwork": 1,
+      "problemSolving": 2,
+      "leadership": 1,
+      "techLiteracy": 1,
+      "financialLiteracy": 2,
+      "timeManagement": 1,
+      "adaptability": 2,
+      "professionalism": 1,
+      "creativity": 1
+    },
+    "baselineStress": 55,
+    "baselineWorkLife": 50,
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "life-balance"
+    ],
+    "sourceTitle": "Farmers, Ranchers, and Other Agricultural Managers",
+    "sourceUrl": "https://www.bls.gov/ooh/management/farmers-ranchers-and-other-agricultural-managers.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Farmers, ranchers, and other agricultural managers run establishments that produce crops, livestock, and dairy products.",
+    "workEnvironment": "Farmers, ranchers, and other agricultural managers typically work outdoors but also may spend time in an office. Their work is often physically demanding.",
+    "entryRequirements": "Farmers, ranchers, and other agricultural managers typically need at least a high school diploma and work experience in a related occupation.",
+    "outlook": "Employment of farmers, ranchers, and other agricultural managers is projected to decline 3 percent from 2025 to 2035.",
+    "payContext": "The median annual wage for farmers, ranchers, and other agricultural managers was $89,900 in May 2025.",
+    "typicalEducation": "High school diploma or equivalent",
+    "duties": [
+      "Supervise all steps of crop production or ranging, including planting, fertilizing, harvesting, and herding",
+      "Make decisions about crops or livestock by evaluating factors such as market conditions, disease, soil conditions, and the availability of federal programs",
+      "Choose and buy supplies, such as seed, fertilizer, and farm machinery",
+      "Maintain farming equipment"
+    ],
+    "aliases": [
+      "farmer",
+      "farming",
+      "agriculture",
+      "rancher",
+      "crops",
+      "livestock"
+    ],
+    "catalogAdded": 3,
+    "salaryStartRange": [
+      58000,
+      76000
+    ],
+    "salaryMidRange": [
+      76000,
+      99000
+    ]
+  },
+  {
+    "id": "pilot",
+    "title": "Commercial Pilot",
+    "cluster": "Transportation & Repair",
+    "educationOptions": [
+      "trade",
+      "college"
+    ],
+    "modelPaths": [
+      "trade",
+      "college"
+    ],
+    "skillAffinities": {
+      "communication": 1,
+      "teamwork": 1,
+      "problemSolving": 1,
+      "leadership": 1,
+      "techLiteracy": 2,
+      "financialLiteracy": 1,
+      "timeManagement": 1,
+      "adaptability": 2,
+      "professionalism": 2,
+      "creativity": 1
+    },
+    "baselineStress": 55,
+    "baselineWorkLife": 50,
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "life-balance"
+    ],
+    "sourceTitle": "Airline and Commercial Pilots",
+    "sourceUrl": "https://www.bls.gov/ooh/transportation-and-material-moving/airline-and-commercial-pilots.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Airline and commercial pilots fly and navigate airplanes, helicopters, and other aircraft.",
+    "workEnvironment": "Pilots usually have variable work schedules, with overnight layovers that are more common for airline pilots.",
+    "entryRequirements": "Airline pilots typically need a bachelor\u2019s degree and experience as a commercial or military pilot. Commercial pilots typically need flight training. Both also must meet Federal Aviation Administration (FAA) requirements.",
+    "outlook": "Overall employment of airline and commercial pilots is projected to grow 7 percent from 2025 to 2035, much faster than the average for all occupations.",
+    "payContext": "The median annual wage for airline pilots, copilots, and flight engineers was $232,140 in May 2025.",
+    "typicalEducation": "See How to Become One",
+    "duties": [
+      "Check the overall condition of the aircraft before and after every flight",
+      "Ensure that the aircraft is balanced and below its weight limit",
+      "Verify that the fuel supply is adequate and that weather conditions are acceptable",
+      "Prepare and submit flight plans to air traffic control"
+    ],
+    "aliases": [
+      "pilot",
+      "aviation",
+      "airplane pilot",
+      "commercial pilot"
+    ],
+    "catalogAdded": 3,
+    "salaryStartRange": [
+      137000,
+      179000
+    ],
+    "salaryMidRange": [
+      179000,
+      231000
+    ]
+  },
+  {
+    "id": "truck-driver",
+    "title": "Heavy Truck Driver",
+    "cluster": "Transportation & Repair",
+    "educationOptions": [
+      "trade"
+    ],
+    "modelPaths": [
+      "trade"
+    ],
+    "skillAffinities": {
+      "communication": 1,
+      "teamwork": 1,
+      "problemSolving": 1,
+      "leadership": 1,
+      "techLiteracy": 1,
+      "financialLiteracy": 1,
+      "timeManagement": 2,
+      "adaptability": 2,
+      "professionalism": 2,
+      "creativity": 1
+    },
+    "baselineStress": 55,
+    "baselineWorkLife": 50,
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "life-balance"
+    ],
+    "sourceTitle": "Heavy and Tractor-Trailer Truck Drivers",
+    "sourceUrl": "https://www.bls.gov/ooh/transportation-and-material-moving/heavy-and-tractor-trailer-truck-drivers.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Heavy and tractor-trailer truck drivers transport goods from one location to another.",
+    "workEnvironment": "Working as a long-haul truck driver is a lifestyle choice because these drivers can be away from home for days or weeks at a time.",
+    "entryRequirements": "Heavy and tractor-trailer truck drivers usually have a high school diploma and attend a professional truck driving school. They must have a commercial driver\u2019s license (CDL).",
+    "outlook": "Employment of heavy and tractor-trailer truck drivers is projected to grow 4 percent from 2025 to 2035, about as fast as the average for all occupations.",
+    "payContext": "The median annual wage for heavy and tractor-trailer truck drivers was $58,640 in May 2025.",
+    "typicalEducation": "Postsecondary nondegree award",
+    "duties": [
+      "Drive long distances",
+      "Report any incidents encountered on the road to a dispatcher",
+      "Follow all applicable traffic laws",
+      "Secure cargo for transport, using ropes, blocks, chains, or covers"
+    ],
+    "aliases": [
+      "truck driver",
+      "trucker",
+      "cdl",
+      "semi driver",
+      "transportation"
+    ],
+    "catalogAdded": 3,
+    "salaryStartRange": [
+      38000,
+      50000
+    ],
+    "salaryMidRange": [
+      50000,
+      65000
+    ]
+  },
+  {
+    "id": "cosmetologist",
+    "title": "Cosmetologist",
+    "cluster": "Personal Care",
+    "educationOptions": [
+      "trade"
+    ],
+    "modelPaths": [
+      "trade"
+    ],
+    "skillAffinities": {
+      "communication": 2,
+      "teamwork": 1,
+      "problemSolving": 1,
+      "leadership": 1,
+      "techLiteracy": 1,
+      "financialLiteracy": 1,
+      "timeManagement": 1,
+      "adaptability": 1,
+      "professionalism": 2,
+      "creativity": 2
+    },
+    "baselineStress": 55,
+    "baselineWorkLife": 50,
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "life-balance"
+    ],
+    "sourceTitle": "Barbers, Hairstylists, and Cosmetologists",
+    "sourceUrl": "https://www.bls.gov/ooh/personal-care-and-service/barbers-hairstylists-and-cosmetologists.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Barbers, hairstylists, and cosmetologists provide haircutting, hairstyling, and other services related to personal appearance.",
+    "workEnvironment": "Barbers, hairstylists, and cosmetologists work mostly in barbershops or salons. Most are full time, although part-time work is common. Work schedules may vary and often include evenings and weekends.",
+    "entryRequirements": "All states require barbers, hairstylists, and cosmetologists to be licensed. To qualify for a license, candidates typically must graduate from a state-approved barber or cosmetology program and pass an exam.",
+    "outlook": "Overall employment of barbers, hairstylists, and cosmetologists is projected to grow 7 percent from 2025 to 2035, much faster than the average for all occupations.",
+    "payContext": "The median hourly wage for barbers was $18.37 in May 2025.",
+    "typicalEducation": "Postsecondary nondegree award",
+    "duties": [
+      "Inspect and analyze hair, scalp, and skin to recommend services or treatment",
+      "Discuss hairstyle options",
+      "Shampoo, color, lighten, and condition hair",
+      "Chemically change hair texture"
+    ],
+    "aliases": [
+      "cosmetologist",
+      "hairdresser",
+      "hair stylist",
+      "beautician",
+      "barber",
+      "cosmetology"
+    ],
+    "catalogAdded": 3,
+    "salaryStartRange": [
+      23000,
+      30000
+    ],
+    "salaryMidRange": [
+      30000,
+      39000
+    ]
+  },
+  {
+    "id": "lawyer",
+    "title": "Lawyer",
+    "cluster": "Public Safety & Law",
+    "educationOptions": [
+      "grad"
+    ],
+    "modelPaths": [
+      "grad"
+    ],
+    "skillAffinities": {
+      "communication": 2,
+      "teamwork": 1,
+      "problemSolving": 2,
+      "leadership": 1,
+      "techLiteracy": 1,
+      "financialLiteracy": 1,
+      "timeManagement": 1,
+      "adaptability": 1,
+      "professionalism": 2,
+      "creativity": 1
+    },
+    "baselineStress": 55,
+    "baselineWorkLife": 50,
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "life-balance"
+    ],
+    "sourceTitle": "Lawyers",
+    "sourceUrl": "https://www.bls.gov/ooh/legal/lawyers.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Lawyers advise and represent clients on legal proceedings or transactions.",
+    "workEnvironment": "Lawyers work for a variety of organizations, usually in office settings. Some work for federal, local, or state governments. Most work full time, and some work more than 40 hours per week.",
+    "entryRequirements": "Lawyers typically need a law degree and a state license, which usually requires passing a bar examination.",
+    "outlook": "Employment of lawyers is projected to grow 5 percent from 2025 to 2035, faster than the average for all occupations.",
+    "payContext": "The median annual wage for lawyers was $159,670 in May 2025.",
+    "typicalEducation": "Doctoral or professional degree",
+    "duties": [
+      "Advise and represent clients in criminal or civil proceedings and in other legal matters",
+      "Communicate with clients, colleagues, judges, and others involved in a case",
+      "Conduct research and analysis of legal issues",
+      "Interpret laws, rulings, and regulations for individuals and businesses"
+    ],
+    "aliases": [
+      "lawyer",
+      "attorney",
+      "law",
+      "legal"
+    ],
+    "catalogAdded": 3,
+    "salaryStartRange": [
+      104000,
+      136000
+    ],
+    "salaryMidRange": [
+      136000,
+      176000
+    ]
+  },
+  {
+    "id": "civil-engineer",
+    "title": "Civil Engineer",
+    "cluster": "Engineering",
+    "educationOptions": [
+      "college"
+    ],
+    "modelPaths": [
+      "college"
+    ],
+    "skillAffinities": {
+      "communication": 2,
+      "teamwork": 1,
+      "problemSolving": 2,
+      "leadership": 1,
+      "techLiteracy": 2,
+      "financialLiteracy": 1,
+      "timeManagement": 1,
+      "adaptability": 1,
+      "professionalism": 1,
+      "creativity": 1
+    },
+    "baselineStress": 55,
+    "baselineWorkLife": 50,
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "life-balance"
+    ],
+    "sourceTitle": "Civil Engineers",
+    "sourceUrl": "https://www.bls.gov/ooh/architecture-and-engineering/civil-engineers.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Civil engineers plan, design, and supervise the construction and maintenance of building and infrastructure projects.",
+    "workEnvironment": "Civil engineers work in a variety of locations and conditions, commonly splitting their time between an office setting and construction sites. Most civil engineers work full time, and some work more than 40 hours per week.",
+    "entryRequirements": "Civil engineers typically need a bachelor\u2019s degree in civil engineering or a related field to enter the occupation. They typically need a state-issued license if they provide services directly to the public.",
+    "outlook": "Employment of civil engineers is projected to grow 6 percent from 2025 to 2035, faster than the average for all occupations.",
+    "payContext": "The median annual wage for civil engineers was $100,840 in May 2025.",
+    "typicalEducation": "Bachelor's degree",
+    "duties": [
+      "Analyze plans, survey reports, maps, and other data related to project design",
+      "Consider regulations, site selection, and other factors relevant to a project",
+      "Analyze the results of tests on soil and building materials to determine strength for foundations and other support",
+      "Prepare cost estimates for equipment, materials, and labor to determine a project\u2019s economic feasibility"
+    ],
+    "aliases": [
+      "civil engineer",
+      "infrastructure",
+      "bridge engineer"
+    ],
+    "catalogAdded": 3,
+    "salaryStartRange": [
+      66000,
+      86000
+    ],
+    "salaryMidRange": [
+      86000,
+      111000
+    ]
+  },
+  {
+    "id": "mechanical-engineer",
+    "title": "Mechanical Engineer",
+    "cluster": "Engineering",
+    "educationOptions": [
+      "college"
+    ],
+    "modelPaths": [
+      "college"
+    ],
+    "skillAffinities": {
+      "communication": 1,
+      "teamwork": 1,
+      "problemSolving": 2,
+      "leadership": 1,
+      "techLiteracy": 2,
+      "financialLiteracy": 1,
+      "timeManagement": 1,
+      "adaptability": 1,
+      "professionalism": 1,
+      "creativity": 2
+    },
+    "baselineStress": 55,
+    "baselineWorkLife": 50,
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "life-balance"
+    ],
+    "sourceTitle": "Mechanical Engineers",
+    "sourceUrl": "https://www.bls.gov/ooh/architecture-and-engineering/mechanical-engineers.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Mechanical engineers design, develop, build, and test mechanical and thermal sensors and devices.",
+    "workEnvironment": "Mechanical engineers generally work in offices. They may occasionally visit worksites where a problem or piece of equipment needs their personal attention. Mechanical engineers work mostly in engineering services, research and development, and manufacturing.",
+    "entryRequirements": "Mechanical engineers typically need a bachelor\u2019s degree in mechanical engineering or mechanical engineering technology. All states and the District of Columbia require mechanical engineers who sell services to the public to be licensed.",
+    "outlook": "Employment of mechanical engineers is projected to grow 11 percent from 2025 to 2035, much faster than the average for all occupations.",
+    "payContext": "The median annual wage for mechanical engineers was $104,110 in May 2025.",
+    "typicalEducation": "Bachelor's degree",
+    "duties": [
+      "Analyze problems to see how mechanical and thermal devices might help solve a particular problem",
+      "Design or redesign mechanical and thermal devices or subsystems, using analysis and computer-aided design",
+      "Investigate equipment failures or difficulties to diagnose faulty operation and to recommend remedies",
+      "Develop and test prototypes of devices they design"
+    ],
+    "aliases": [
+      "mechanical engineer",
+      "engineering",
+      "machines",
+      "robotics"
+    ],
+    "catalogAdded": 3,
+    "salaryStartRange": [
+      68000,
+      88000
+    ],
+    "salaryMidRange": [
+      88000,
+      115000
+    ]
+  },
+  {
+    "id": "psychologist",
+    "title": "Psychologist",
+    "cluster": "Human Services",
+    "educationOptions": [
+      "grad"
+    ],
+    "modelPaths": [
+      "grad"
+    ],
+    "skillAffinities": {
+      "communication": 2,
+      "teamwork": 1,
+      "problemSolving": 2,
+      "leadership": 1,
+      "techLiteracy": 1,
+      "financialLiteracy": 1,
+      "timeManagement": 1,
+      "adaptability": 1,
+      "professionalism": 2,
+      "creativity": 1
+    },
+    "baselineStress": 55,
+    "baselineWorkLife": 50,
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "life-balance"
+    ],
+    "sourceTitle": "Psychologists",
+    "sourceUrl": "https://www.bls.gov/ooh/life-physical-and-social-science/psychologists.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Psychologists study cognitive, emotional, and social processes and behavior by observing, interpreting, and recording how people relate to one another and to their environments.",
+    "workEnvironment": "Psychologists work in a variety of settings, such as schools, hospitals, and private practice. Most are full time, but part-time work is common. Some work evenings or weekends to accommodate their clients' schedules.",
+    "entryRequirements": "Psychologists typically need an advanced degree, such as a master\u2019s or doctoral degree, in psychology. Licensing requirements vary by state and position.",
+    "outlook": "Overall employment of psychologists is projected to grow 6 percent from 2025 to 2035, faster than the average for all occupations.",
+    "payContext": "The median annual wage for psychologists was $99,110 in May 2025.",
+    "typicalEducation": "See How to Become One",
+    "duties": [
+      "Study behavior and brain function by observing, interviewing, and surveying individuals",
+      "Identify psychological, emotional, behavioral, or organizational issues and diagnose disorders",
+      "Research and identify behavioral or emotional issues, such as anxiety and depression",
+      "Test for patterns that will help them better understand and predict behavior"
+    ],
+    "aliases": [
+      "psychologist",
+      "psychology",
+      "clinical psychologist"
+    ],
+    "catalogAdded": 3,
+    "salaryStartRange": [
+      64000,
+      84000
+    ],
+    "salaryMidRange": [
+      84000,
+      109000
+    ]
+  },
+  {
+    "id": "high-school-teacher",
+    "title": "High School Teacher",
+    "cluster": "Education & Training",
+    "educationOptions": [
+      "college"
+    ],
+    "modelPaths": [
+      "college"
+    ],
+    "skillAffinities": {
+      "communication": 2,
+      "teamwork": 1,
+      "problemSolving": 1,
+      "leadership": 2,
+      "techLiteracy": 1,
+      "financialLiteracy": 1,
+      "timeManagement": 1,
+      "adaptability": 2,
+      "professionalism": 1,
+      "creativity": 1
+    },
+    "baselineStress": 55,
+    "baselineWorkLife": 50,
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "life-balance"
+    ],
+    "sourceTitle": "High School Teachers",
+    "sourceUrl": "https://www.bls.gov/ooh/education-training-and-library/high-school-teachers.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "High school teachers teach academic lessons and various skills that students will need to attend college and to enter the job market.",
+    "workEnvironment": "High school teachers work in schools. They work during school hours but may also work evenings and weekends to prepare lessons and grade papers. Most do not teach during the summer.",
+    "entryRequirements": "High school teachers typically have at least a bachelor\u2019s degree. In addition, public school teachers must have a state-issued certification or license, which may require an academic background in the subject(s) they will be certified to teach.",
+    "outlook": "Employment of high school teachers is projected to show little or no change from 2025 to 2035.",
+    "payContext": "The median annual wage for high school teachers was $72,040 in May 2025.",
+    "typicalEducation": "Bachelor's degree",
+    "duties": [
+      "Plan lessons and instruct their students in the subject they teach",
+      "Assess students\u2019 abilities, strengths, and weaknesses",
+      "Adapt lessons to changes in class size",
+      "Grade students\u2019 assignments and exams"
+    ],
+    "aliases": [
+      "high school teacher",
+      "secondary teacher",
+      "history teacher",
+      "math teacher",
+      "science teacher"
+    ],
+    "catalogAdded": 3,
+    "salaryStartRange": [
+      47000,
+      61000
+    ],
+    "salaryMidRange": [
+      61000,
+      79000
+    ]
+  },
+  {
+    "id": "athletic-trainer",
+    "title": "Athletic Trainer",
+    "cluster": "Health Science",
+    "educationOptions": [
+      "grad"
+    ],
+    "modelPaths": [
+      "grad"
+    ],
+    "skillAffinities": {
+      "communication": 2,
+      "teamwork": 2,
+      "problemSolving": 2,
+      "leadership": 1,
+      "techLiteracy": 1,
+      "financialLiteracy": 1,
+      "timeManagement": 1,
+      "adaptability": 1,
+      "professionalism": 1,
+      "creativity": 1
+    },
+    "baselineStress": 55,
+    "baselineWorkLife": 50,
+    "scenarioTags": [
+      "workplace",
+      "money",
+      "life-balance"
+    ],
+    "sourceTitle": "Athletic Trainers",
+    "sourceUrl": "https://www.bls.gov/ooh/healthcare/athletic-trainers.htm",
+    "sourceReviewed": "2026-10-15",
+    "summary": "Athletic trainers specialize in preventing, diagnosing, and treating muscle and bone injuries and illnesses.",
+    "workEnvironment": "Many athletic trainers work in educational settings, such as colleges, universities, elementary schools, and secondary schools. Others work in hospitals, fitness centers, or physicians\u2019 offices, or for professional sports teams.",
+    "entryRequirements": "Athletic trainers typically need a master\u2019s degree to enter the occupation. Nearly all states require athletic trainers to have a license or certification; requirements vary by state.",
+    "outlook": "Employment of athletic trainers is projected to grow 13 percent from 2025 to 2035, much faster than the average for all occupations.",
+    "payContext": "The median annual wage for athletic trainers was $62,520 in May 2025.",
+    "typicalEducation": "Master's degree",
+    "duties": [
+      "Apply protective or injury-preventive devices, such as tape, bandages, and braces",
+      "Recognize and evaluate injuries",
+      "Provide first aid or emergency care",
+      "Develop and carry out rehabilitation programs for injured athletes"
+    ],
+    "aliases": [
+      "athletic trainer",
+      "sports medicine",
+      "sports injury"
+    ],
+    "catalogAdded": 3,
+    "salaryStartRange": [
+      41000,
+      53000
+    ],
+    "salaryMidRange": [
+      53000,
+      69000
     ]
   }
 ]

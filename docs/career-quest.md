@@ -38,3 +38,15 @@ git diff --check
 Covers complete five-year runs with 10 and 15 decisions, resume without scenario replacement, one settlement per year, snapshot settings, transfer limits, fixed monetary amounts, no quiz-to-skill leakage, reflection persistence and escaped markup, replay restrictions, empty filters, legacy/corrupt saves, storage fallback, and 18 scenario schemas.
 
 These checks do not establish visual browser rendering or download/print behavior. Browser layout, responsive sizing, native download, and print QA remain necessary before production release.
+
+## Career explorer expansion — October 15, 2026
+
+The catalog now includes 80 selectable careers across 16 fields. Thirty additions cover public safety/law, trades, repair, manufacturing, agriculture/animals, personal care, and further healthcare/engineering options. Police Officer is a selectable career with aliases including cop, law enforcement, sheriff, and patrol officer.
+
+Each record includes BLS Occupational Outlook Handbook excerpts for a description, duties, work environment, entry requirements, pay context, and outlook, with its source title, URL, and review date. Seventy-seven distinct official pages were retrieved and checked for required summary sections. Some titles map to a broader or related occupation; the detail page identifies the BLS research profile rather than presenting all group figures as exact figures for the selected specialty. BLS government text is attributed in every profile. UI illustrations and field icons are original SVG interface artwork.
+
+Card → full profile → choose career → training gives students information before they commit. National pay context remains separate from illustrative game income; a national median is not an entry-level offer. The new careers' model income ranges use 65–85% of the related profile's median, rounded to thousands, solely as game balancing assumptions. Existing game ranges remain intact. New skill weights and baseline status are gameplay parameters, not empirical aptitude measures.
+
+Search matches titles, fields, and common aliases, handles punctuation/case, and tolerates plural query terms. Field and interest-match filters combine; empty states explain teacher restrictions without bypassing them. The grid initially renders 12 records and loads 12 more per action. Back navigation preserves search and filters. Old unrestricted settings and saved-run settings expand to include new careers/fields; intentionally restricted selections remain restricted.
+
+Additional DOM regressions cover police/alias queries, all 80 complete records, source links and entry requirements, detail resume, preserved search, empty-state recovery, pagination, field filters, old all-careers settings migration, and custom teacher restrictions. Both full five-year runs continue to pass. Visual browser verification is still limited by protected preview access.

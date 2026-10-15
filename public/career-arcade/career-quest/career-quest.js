@@ -211,6 +211,8 @@ async function init() {
     ];
   if (!Array.isArray(saved.enabledCareers))
     state.settings.enabledCareers = state.careers.map((c) => c.id);
+  migrateCatalogSettings(state.settings);
+  storage.set(SETTINGS_KEY, state.settings);
   renderSettings();
   document
     .getElementById("start-run")
@@ -269,6 +271,8 @@ function updateControls() {
     run?.version === 2 && run.phase === "report" && !run.settings.allowReplay;
   document.getElementById("start-run").disabled =
     blocked || !filteredCareers(state.settings).length;
+  const launch = document.getElementById("launch-start");
+  if (launch) launch.disabled = document.getElementById("start-run").disabled;
   const status = document.getElementById("settings-status");
   if (status)
     status.textContent = filteredCareers(state.settings).length
@@ -337,6 +341,8 @@ function continueRun() {
     return;
   }
   state.run = saved;
+  migrateCatalogSettings(state.run.settings);
+  persistRun();
   document.getElementById("teacher-settings").open = false;
   renderByPhase();
 }
@@ -363,15 +369,20 @@ function setScreen(html, stage) {
   }
 }
 function renderIntro() {
+  const cityArt = `<div class="cq-launch-art" aria-hidden="true"><svg viewBox="0 0 520 340" fill="none"><circle cx="278" cy="160" r="145" fill="#436bc1" opacity=".45"/><circle cx="278" cy="160" r="112" stroke="#a2baf3" stroke-dasharray="5 9" opacity=".4"/><path d="M40 287C120 254 169 325 250 278s150-29 224 8" stroke="#9dc5f5" stroke-width="30" opacity=".18"/><path d="M43 287C120 254 169 325 250 278s150-29 224 8" stroke="#e3edff" stroke-width="2" stroke-dasharray="8 10"/><rect x="91" y="151" width="86" height="114" rx="8" fill="#71cbc0"/><path d="M108 164h12v17h-12zm30 0h12v17h-12zm-30 30h12v17h-12zm30 0h12v17h-12z" fill="#d6f5eb"/><rect x="119" y="230" width="29" height="35" rx="4" fill="#215c75"/><rect x="196" y="103" width="108" height="164" rx="8" fill="#e9efff"/><path d="M217 126h17v22h-17zm36 0h17v22h-17zm-36 40h17v22h-17zm36 0h17v22h-17z" fill="#7495dd"/><rect x="234" y="223" width="34" height="44" rx="4" fill="#315baf"/><path d="M250 77l24 15h-48z" fill="#f8cc64"/><path d="M250 78V49l29 9-29 9" stroke="#f8cc64" stroke-width="4" stroke-linejoin="round"/><rect x="329" y="169" width="100" height="96" rx="8" fill="#f2b870"/><path d="M337 169l42-32 42 32z" fill="#ed8e63"/><rect x="348" y="195" width="23" height="23" rx="3" fill="#fff2d1"/><rect x="387" y="195" width="23" height="23" rx="3" fill="#fff2d1"/><path d="M92 267h348" stroke="#172e61" stroke-width="6" stroke-linecap="round"/><rect x="50" y="67" width="131" height="57" rx="13" fill="#fff" transform="rotate(-7 50 67)"/><path d="M68 80h20v20H68zM78 75v30m-15-15h30" stroke="#167d70" stroke-width="3"/><text x="102" y="93" fill="#203963" font-family="system-ui,sans-serif" font-size="12" font-weight="700" transform="rotate(-7 102 93)">HEALTHCARE</text><rect x="338" y="72" width="142" height="55" rx="13" fill="#fff" transform="rotate(8 338 72)"/><path d="M356 89l10-4 10 4v10c0 7-10 12-10 12s-10-5-10-12z" stroke="#315ed6" stroke-width="2.5" transform="rotate(8 366 98)"/><text x="386" y="107" fill="#203963" font-family="system-ui,sans-serif" font-size="11" font-weight="700" transform="rotate(8 386 107)">PUBLIC SAFETY</text><circle cx="465" cy="217" r="21" fill="#a2dfbe"/><path d="M465 215v49" stroke="#294c69" stroke-width="4"/><circle cx="63" cy="229" r="25" fill="#7cc5b7"/><path d="M63 224v43" stroke="#294c69" stroke-width="4"/><circle cx="315" cy="42" r="5" fill="#f8cc64"/><path d="M450 143v12m-6-6h12M88 137v10m-5-5h10" stroke="#c4d9ff" stroke-width="2"/></svg><span class="cq-art-caption">A WORLD OF POSSIBILITIES</span></div>`;
   setScreen(
-    `<div class="cq-card cq-launch"><div><p class="cq-eyebrow">FIVE YEARS. YOUR DECISIONS.</p><h2>What kind of future will you build?</h2><p>Discover careers worth exploring. Choose your training and budget, then navigate the tradeoffs of work and everyday life.</p><p><strong>About 20–30 minutes · No account needed</strong></p><p>Choose Start new journey above to begin.</p></div><ol><li><div><strong>Discover your interests</strong><small>Ten quick prompts. No right or wrong answers.</small></div></li><li><div><strong>Build your starting plan</strong><small>Compare careers, training, and living costs.</small></div></li><li><div><strong>Navigate five working years</strong><small>Make decisions and see what changed.</small></div></li><li><div><strong>Tell your story</strong><small>Use your decision history to explain your results.</small></div></li></ol></div>`,
+    `<div class="cq-card cq-launch"><div><p class="cq-eyebrow">FIVE YEARS. YOUR DECISIONS.</p><h2>Your future starts<br>with a possibility.</h2><p>From public safety to skilled trades, healthcare to creative work. Explore ${state.careers.length} careers, choose a direction, and discover where your decisions lead.</p><div class="cq-inline-actions"><button class="btn" id="launch-start" ${document.getElementById("start-run").disabled ? "disabled" : ""}>Start my journey →</button></div><p class="cq-small" style="color:#d1def7">About 20–30 minutes · No account needed</p></div>${cityArt}</div><div class="cq-start-features"><div class="cq-start-feature"><span>01 / DISCOVER</span><b>Find a direction</b><p>Ten quick interest prompts and ${state.careers.length} detailed career profiles to explore.</p></div><div class="cq-start-feature"><span>02 / EXPERIENCE</span><b>See the tradeoffs</b><p>Choose your training and budget. Make work, money, and life decisions over five years.</p></div><div class="cq-start-feature"><span>03 / REFLECT</span><b>Explain your story</b><p>Use your decisions and annual budgets to explain what mattered to you.</p></div></div>`,
     "discover",
   );
+  document
+    .getElementById("launch-start")
+    .addEventListener("click", () => startRun());
 }
 function renderByPhase() {
   const renderers = {
     quiz: renderQuiz,
     career: renderCareerSelection,
+    careerDetail: renderCareerDetail,
     education: renderEducationSelection,
     budget: renderBudget,
     scenario: renderScenario,
@@ -428,6 +439,157 @@ function topSkillsReason(c) {
     .map(([k]) => labels[k])
     .join(", ");
 }
+const careerThemes = {
+  "Health Science": ["health", "#0e7668", "#e2f7ef", "Care & recovery"],
+  "Information Technology": [
+    "tech",
+    "#5046b9",
+    "#eeeaff",
+    "Build the digital world",
+  ],
+  Business: ["business", "#20549b", "#e7f0ff", "Make things happen"],
+  Finance: ["finance", "#995e16", "#fff1d7", "Make numbers matter"],
+  Engineering: [
+    "engineering",
+    "#32628d",
+    "#e5f3fc",
+    "Design a better solution",
+  ],
+  "Education & Training": [
+    "education",
+    "#ab572b",
+    "#fff0df",
+    "Help someone grow",
+  ],
+  "Arts, A/V Technology & Communications": [
+    "arts",
+    "#a33d75",
+    "#ffe9f4",
+    "Create something new",
+  ],
+  "Hospitality & Tourism": [
+    "hospitality",
+    "#b25d18",
+    "#fff0db",
+    "Create great experiences",
+  ],
+  "Human Services": ["people", "#6c4b98", "#f0e9fb", "Support your community"],
+  "Government & Public Administration": [
+    "government",
+    "#3e5e82",
+    "#e8eff8",
+    "Shape your community",
+  ],
+  "Public Safety & Law": ["safety", "#245cc0", "#e6eeff", "Serve & protect"],
+  "Skilled Trades & Construction": [
+    "tools",
+    "#a14f16",
+    "#ffeddb",
+    "Build with your hands",
+  ],
+  "Transportation & Repair": [
+    "transport",
+    "#345cb1",
+    "#e8efff",
+    "Keep the world moving",
+  ],
+  Manufacturing: [
+    "engineering",
+    "#4c6877",
+    "#e8f1f5",
+    "Turn ideas into objects",
+  ],
+  "Agriculture & Animals": [
+    "nature",
+    "#487c38",
+    "#edf5df",
+    "Care for living things",
+  ],
+  "Personal Care": [
+    "arts",
+    "#a13e62",
+    "#ffe8ef",
+    "Help people feel their best",
+  ],
+};
+const iconPaths = {
+  health: '<path d="M24 12h16v12h12v16H40v12H24V40H12V24h12z"/>',
+  tech: '<rect x="10" y="12" width="44" height="32" rx="4"/><path d="M24 53h16M32 44v9M26 22l-7 6 7 6m12-12 7 6-7 6"/>',
+  business:
+    '<rect x="10" y="21" width="44" height="31" rx="4"/><path d="M23 21v-8h18v8M10 32q22 14 44 0M29 34h6v7h-6z"/>',
+  finance:
+    '<path d="M12 53h42M17 44V32h8v12m7 0V23h8v21m7 0V12h8v32M14 23l15-10 9 2 14-10"/>',
+  engineering:
+    '<path d="M12 49l38-38 7 7-38 38zM31 31l6 6M23 39l6 6M39 23l6 6M12 13l10 10M48 47l7 8M14 11l7 2-8 8-2-7z"/>',
+  education:
+    '<path d="M32 16q-12-9-24-3v36q12-6 24 3 12-9 24-3V13q-12-6-24 3v36M15 23l10 1m-10 9 10 1m14-10 10-1m-10 11 10-1"/>',
+  arts: '<path d="M33 9C18 9 8 20 8 33s10 23 23 23c8 0 9-6 4-10-4-4-1-8 5-8h7c13 0 12-20-1-26-4-2-8-3-13-3z"/><circle cx="20" cy="27" r="3"/><circle cx="31" cy="19" r="3"/><circle cx="43" cy="23" r="3"/><path d="M17 39h1"/>',
+  hospitality:
+    '<path d="M10 40h44M15 38a17 17 0 0134 0M32 17v4M8 48h48M22 55h20"/>',
+  people:
+    '<circle cx="32" cy="21" r="8"/><path d="M16 52v-5a16 16 0 0132 0v5M10 23a6 6 0 010 12m44-12a6 6 0 010 12M5 50v-5a9 9 0 0110-9m44 14v-5a9 9 0 00-10-9"/>',
+  government:
+    '<path d="M8 24L32 9l24 15zM12 53h40M8 58h48M17 29v18m15-18v18m15-18v18"/>',
+  safety:
+    '<path d="M32 7l22 8v17c0 13-22 25-22 25S10 45 10 32V15zM22 31l7 7 15-16"/>',
+  tools:
+    '<path d="M39 11a13 13 0 00-16 16L9 41a8 8 0 0012 12l15-15a13 13 0 0016-16l-9 9-10-10z"/><path d="M15 46h1"/>',
+  transport:
+    '<path d="M9 35l5-17h31l6 17M8 35h46v14h-6m-30 0H8M18 49h24M16 35h30M18 25h21"/><circle cx="17" cy="48" r="5"/><circle cx="45" cy="48" r="5"/>',
+  nature:
+    '<path d="M16 48c-9-23 6-37 36-38 0 28-13 45-36 38zM10 56l31-31M21 44V29m0 9h14"/>',
+};
+function careerIcon(cluster) {
+  const key = (careerThemes[cluster] || careerThemes.Business)[0];
+  return `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${iconPaths[key]}</svg>`;
+}
+function themeStyle(c) {
+  const [, accent, tint] = careerThemes[c.cluster] || careerThemes.Business;
+  return `--career-accent:${accent};--career-tint:${tint}`;
+}
+function normalizeSearch(value) {
+  return String(value)
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+function careerSearchScore(c, query) {
+  const q = normalizeSearch(query);
+  if (!q) return 1;
+  const title = normalizeSearch(c.title),
+    aliases = (c.aliases || []).map(normalizeSearch),
+    tokens = normalizeSearch(
+      [c.title, c.cluster, ...(c.aliases || [])].join(" "),
+    ).split(" ");
+  if (title === q) return 100;
+  if (aliases.includes(q)) return 90;
+  if (title.startsWith(q)) return 80;
+  return q
+    .split(" ")
+    .every((t) =>
+      tokens.some(
+        (word) =>
+          word === t ||
+          word.startsWith(t) ||
+          (t.endsWith("s") && word === t.slice(0, -1)),
+      ),
+    )
+    ? 50
+    : 0;
+}
+function migrateCatalogSettings(s) {
+  if (s.catalogVersion === 3) return s;
+  const legacy = state.careers.filter((c) => !c.catalogAdded),
+    oldClusters = [...new Set(legacy.map((c) => c.cluster))];
+  if (legacy.every((c) => s.enabledCareers.includes(c.id)))
+    s.enabledCareers = state.careers.map((c) => c.id);
+  if (oldClusters.every((c) => s.careerClusters.includes(c)))
+    s.careerClusters = [...new Set(state.careers.map((c) => c.cluster))];
+  s.catalogVersion = 3;
+  return s;
+}
 function renderCareerSelection() {
   const ranked = [...filteredCareers()].sort(
     (a, b) =>
@@ -436,38 +598,126 @@ function renderCareerSelection() {
   );
   const recommended = ranked.slice(0, 5),
     pool = settings().allowOverride ? ranked : recommended;
+  const view =
+    state.run.explorer ||
+    (state.run.explorer = {
+      query: "",
+      cluster: "all",
+      recommended: false,
+      limit: 12,
+    });
   setScreen(
-    `<div class="cq-card"><p class="cq-eyebrow">EXPLORE · FIND A STARTING POINT</p><h2>A career is a possibility, not a prediction.</h2><p>Your interest responses highlight the first five careers below. Compare options and choose one to explore.</p><div class="cq-filter"><label>Search careers<input id="career-search" type="search" placeholder="Try technology, teacher, health…"></label><span id="career-count"></span></div><p class="cq-note">Income ranges are illustrative simulation inputs, not verified current wages. Education requirements and licensing vary; research official requirements before making real plans.</p><div id="career-catalog" class="cq-catalog"></div></div>`,
+    `<div class="cq-card cq-explore"><header class="cq-explore-heading"><div><p class="cq-eyebrow">EXPLORE YOUR POSSIBILITIES</p><h2>Find work that means<br>something to you.</h2><p>Go beyond the job title. Discover the work, the route in, and the life that comes with it.</p></div><div class="cq-library-count"><strong>${pool.length}</strong><span>careers to explore</span><small>${new Set(pool.map((c) => c.cluster)).size} career fields</small></div></header><div class="cq-search-bar"><label class="cq-search-label" for="career-search">Search careers<input id="career-search" type="search" placeholder="Police officer, mechanic, teacher…" value="${esc(view.query)}"></label><label for="career-cluster">Career field<select id="career-cluster"><option value="all">All career fields</option>${[
+      ...new Set(pool.map((c) => c.cluster)),
+    ]
+      .sort()
+      .map(
+        (c) =>
+          `<option value="${esc(c)}" ${c === view.cluster ? "selected" : ""}>${esc(c)}</option>`,
+      )
+      .join(
+        "",
+      )}</select></label></div><div class="cq-explore-toolbar"><label class="cq-match-filter"><input id="recommended-only" type="checkbox" ${view.recommended ? "checked" : ""}> My interest matches</label><span id="career-count" role="status" aria-live="polite"></span></div><div class="cq-suggestions" aria-label="Search ideas"><span>Try a direction:</span>${["Police officer", "Electrician", "Nurse", "Teacher", "Mechanic"].map((q) => `<button type="button" data-search="${q}">${q}</button>`).join("")}</div>${settings().allowOverride ? "" : '<p class="cq-note">Teacher setup limits this journey to your five interest recommendations.</p>'}<div id="career-catalog" class="cq-catalog"></div><div class="cq-more"><button class="btn secondary" id="more-careers">Show more careers</button></div><details class="cq-source-note"><summary>About career information & game income</summary><p>Profiles include excerpts from the U.S. Bureau of Labor Statistics Occupational Outlook Handbook, checked October 15, 2026. Some profiles cover a broader related occupation. National median wages include experienced workers and are not starting salaries. Income used in the simulation remains an illustrative game assumption. Check state, employer, and licensing requirements before making real plans.</p></details></div>`,
     "explore",
   );
   function draw() {
-    const query = document.getElementById("career-search").value.toLowerCase();
-    const matches = pool.filter((c) =>
-      `${c.title} ${c.cluster}`.toLowerCase().includes(query),
-    );
+    view.query = document.getElementById("career-search").value;
+    view.cluster = document.getElementById("career-cluster").value;
+    view.recommended = document.getElementById("recommended-only").checked;
+    const matches = pool
+      .filter(
+        (c) =>
+          (view.cluster === "all" || c.cluster === view.cluster) &&
+          (!view.recommended || recommended.includes(c)) &&
+          careerSearchScore(c, view.query),
+      )
+      .sort(
+        (a, b) =>
+          careerSearchScore(b, view.query) - careerSearchScore(a, view.query),
+      );
     document.getElementById("career-count").textContent =
-      `${matches.length} options`;
+      `${matches.length} ${matches.length === 1 ? "career" : "careers"} found`;
     document.getElementById("career-catalog").innerHTML =
       matches
+        .slice(0, view.limit)
         .map(
           (c) =>
-            `<article class="cq-career">${recommended.includes(c) ? '<span class="cq-badge">Interest match</span>' : ""}<h3>${esc(c.title)}</h3><p>${esc(c.cluster)}</p><p><strong>${money(c.salaryStartRange[0])}–${money(c.salaryStartRange[1])}</strong><br>Example annual gross pay</p><p>Explore: ${topSkillsReason(c)}</p><button class="btn secondary" data-career="${c.id}">Explore this career</button></article>`,
+            `<article class="cq-career cq-profile-card" style="${themeStyle(c)}"><div class="cq-career-art">${careerIcon(c.cluster)}<span>${esc((careerThemes[c.cluster] || careerThemes.Business)[3])}</span>${recommended.includes(c) ? '<span class="cq-badge">Interest match</span>' : ""}</div><div class="cq-career-body"><p class="cq-career-field">${esc(c.cluster)}</p><h3>${esc(c.title)}</h3><p class="cq-career-description">${esc(c.summary)}</p><div class="cq-career-route"><span>Typical entry</span><strong>${esc(c.typicalEducation === "See How to Become One" ? "Academy / requirements vary" : c.typicalEducation)}</strong></div><button class="btn secondary" data-career="${c.id}" aria-label="View ${esc(c.title)} career profile">View career profile <span aria-hidden="true">↗</span></button></div></article>`,
         )
-        .join("") || "<p>No careers match. Try another search.</p>";
+        .join("") ||
+      `<div class="cq-empty"><h3>No matching careers in this view</h3><p>Try a broader job name, another career field, or clear the search filters. Teacher settings may also limit which careers are available.</p><button class="btn secondary" id="clear-career-filters">Clear search filters</button></div>`;
+    document.getElementById("more-careers").hidden =
+      matches.length <= view.limit;
+    document
+      .getElementById("clear-career-filters")
+      ?.addEventListener("click", () => {
+        document.getElementById("career-search").value = "";
+        document.getElementById("career-cluster").value = "all";
+        document.getElementById("recommended-only").checked = false;
+        view.limit = 12;
+        draw();
+      });
     screen()
       .querySelectorAll("[data-career]")
       .forEach((btn) =>
         btn.addEventListener("click", () => {
-          state.run.careerId = btn.dataset.career;
-          state.run.phase = "education";
+          state.run.previewCareerId = btn.dataset.career;
+          state.run.phase = "careerDetail";
           persistRun();
           renderByPhase();
         }),
       );
+    persistRun();
   }
-  document.getElementById("career-search").addEventListener("input", draw);
+  ["career-search", "career-cluster", "recommended-only"].forEach((id) =>
+    document
+      .getElementById(id)
+      .addEventListener(id === "career-search" ? "input" : "change", () => {
+        view.limit = 12;
+        draw();
+      }),
+  );
+  screen()
+    .querySelectorAll("[data-search]")
+    .forEach((btn) =>
+      btn.addEventListener("click", () => {
+        document.getElementById("career-search").value = btn.dataset.search;
+        document.getElementById("career-cluster").value = "all";
+        document.getElementById("recommended-only").checked = false;
+        view.limit = 12;
+        draw();
+      }),
+    );
+  document.getElementById("more-careers").addEventListener("click", () => {
+    view.limit += 12;
+    draw();
+  });
   draw();
 }
+function renderCareerDetail() {
+  const c = state.careers.find((c) => c.id === state.run.previewCareerId);
+  if (!c || !filteredCareers().some((x) => x.id === c.id)) {
+    state.run.phase = "career";
+    return renderCareerSelection();
+  }
+  const tasks = c.duties?.length ? c.duties : [c.summary];
+  setScreen(
+    `<article class="cq-card cq-career-detail" style="${themeStyle(c)}"><button class="btn quiet" id="back-catalog">← Back to career explorer</button><header class="cq-detail-hero"><div class="cq-detail-icon">${careerIcon(c.cluster)}</div><div><p class="cq-eyebrow">${esc(c.cluster)}</p><h2>${esc(c.title)}</h2><p>${esc(c.summary)}</p></div></header><div class="cq-detail-grid"><div><section class="cq-profile-section"><h3>A day in this field</h3><ul class="cq-duty-list">${tasks.map((t) => `<li>${esc(t)}</li>`).join("")}</ul></section><section class="cq-profile-section"><h3>What the work is like</h3><p>${esc(c.workEnvironment)}</p></section><section class="cq-profile-section"><h3>The route in</h3><p>${esc(c.entryRequirements)}</p><p class="cq-small">Requirements vary by state, employer, and specialty. Check the official source and local training or licensing authority.</p></section><section class="cq-profile-section"><h3>Employment outlook</h3><p>${esc(c.outlook)}</p></section></div><aside class="cq-career-facts"><p class="cq-eyebrow">YOUR FIELD NOTES</p><h3>Before you choose</h3><dl><dt>Typical entry-level education</dt><dd>${esc(c.typicalEducation === "See How to Become One" ? "Requirements vary — read the route in" : c.typicalEducation)}</dd><dt>Skills to explore</dt><dd>${topSkillsReason(c)}</dd><dt>National pay context</dt><dd>${esc(c.payContext)}</dd></dl><p class="cq-small">The pay statement describes the BLS occupation profile, not a guaranteed starting offer.</p><div class="cq-research-task"><h4>Think it through</h4><p>Which daily task appeals to you? What work condition could be challenging? Find one local employer or training program to learn more.</p></div><button class="btn" id="choose-career" data-choose-career="${c.id}">Choose this career →</button><p class="cq-small">Next: compare training cost models.</p></aside></div><footer class="cq-profile-source"><strong>Source: U.S. Bureau of Labor Statistics</strong><span>Research profile: ${esc(c.sourceTitle)} · Checked October 15, 2026.</span><a href="${esc(c.sourceUrl)}" target="_blank" rel="noopener noreferrer">Read the full official profile ↗</a><small>This research profile may cover several specialties or related roles. The simulation uses simplified income and training costs.</small></footer></article>`,
+    "explore",
+  );
+  document.getElementById("back-catalog").addEventListener("click", () => {
+    state.run.phase = "career";
+    persistRun();
+    renderByPhase();
+  });
+  document.getElementById("choose-career").addEventListener("click", () => {
+    state.run.careerId = c.id;
+    state.run.phase = "education";
+    persistRun();
+    renderByPhase();
+  });
+}
+
 // Curated simulation pathways replace the old randomly assigned education options.
 // These are broad planning models, not promises of eligibility or licensing.
 const pathwayGroups = {
@@ -509,6 +759,7 @@ const pathwayGroups = {
   ],
 };
 function pathsForCareer(c) {
+  if (c.modelPaths?.length) return c.modelPaths;
   const group =
     Object.entries(pathwayGroups).find(([, ids]) => ids.includes(c.id))?.[0] ||
     "flexible";

@@ -62,7 +62,12 @@ async function begin(options = {}) {
   click("#start-run");
   for (let i = 0; i < 10; i++) click('[data-score="2"]');
   assert.equal(w.testState.run.phase, "career");
+  const search = w.document.getElementById("career-search");
+  search.value = "registered nurse";
+  search.dispatchEvent(new w.Event("input", { bubbles: true }));
   click('[data-career="registered-nurse"]');
+  assert.equal(w.testState.run.phase, "careerDetail");
+  click("#choose-career");
   assert.equal(
     w.document.querySelectorAll('[data-path="workforce"]').length,
     0,
@@ -197,8 +202,136 @@ for (const name of ["core", "workplace", "money"]) {
     assert(!/Scenario \d/.test(s.title));
   }
 }
-for (const c of [ctx, report, noEvents, empty, corrupt, legacy, blocked])
+
+// Career explorer regression: actual search, profile, training, and save migration.
+const careers = JSON.parse(fs.readFileSync(root + "data/careers.json"));
+assert.equal(careers.length, 80);
+assert.equal(new Set(careers.map((c) => c.id)).size, 80);
+for (const c of careers) {
+  for (const k of [
+    "summary",
+    "workEnvironment",
+    "entryRequirements",
+    "payContext",
+    "outlook",
+    "sourceTitle",
+    "sourceUrl",
+    "sourceReviewed",
+    "typicalEducation",
+  ])
+    assert(c[k], `${c.id}: missing ${k}`);
+  assert(c.sourceUrl.startsWith("https://www.bls.gov/ooh/"));
+  assert(c.aliases.length);
+  assert(c.educationOptions.length);
+}
+const original = careers.filter((c) => !c.catalogAdded);
+const migrated = await boot({
+  taCareerQuestSettings: {
+    careerClusters: [...new Set(original.map((c) => c.cluster))],
+    enabledCareers: original.map((c) => c.id),
+  },
+});
+assert.equal(
+  migrated.w.testState.settings.enabledCareers.length,
+  80,
+  "the old all-careers selection must include newly added careers",
+);
+migrated.click("#start-run");
+for (let i = 0; i < 10; i++) migrated.click('[data-score="2"]');
+function search(ctx, query) {
+  const input = ctx.w.document.getElementById("career-search");
+  input.value = query;
+  input.dispatchEvent(new ctx.w.Event("input", { bubbles: true }));
+}
+for (const query of [
+  "Police Officer",
+  "POLICE-OFFICER",
+  "cop",
+  "law enforcement",
+  "police officers",
+]) {
+  search(migrated, query);
+  assert(
+    migrated.w.document.querySelector('[data-career="police-officer"]'),
+    `${query} should find police officer`,
+  );
+}
+migrated.click('[data-career="police-officer"]');
+assert(
+  migrated.w.document
+    .querySelector("#screen")
+    .textContent.includes("training academy"),
+);
+assert(
+  migrated.w.document.querySelector(
+    '#screen a[href="https://www.bls.gov/ooh/protective-service/police-and-detectives.htm"]',
+  ),
+);
+const detailReloaded = await boot(save(migrated.w));
+detailReloaded.click("#continue-run");
+assert.equal(detailReloaded.w.testState.run.phase, "careerDetail");
+assert(detailReloaded.w.document.getElementById("choose-career"));
+migrated.click("#back-catalog");
+assert.equal(
+  migrated.w.document.getElementById("career-search").value,
+  "police officers",
+);
+for (const [q, id] of [
+  ["doctor", "physician"],
+  ["vet", "veterinarian"],
+  ["hvac", "hvac-technician"],
+  ["car mechanic", "auto-mechanic"],
+  ["RN", "registered-nurse"],
+]) {
+  search(migrated, q);
+  assert(migrated.w.document.querySelector(`[data-career="${id}"]`));
+}
+search(migrated, "not a real job");
+assert(migrated.w.document.getElementById("clear-career-filters"));
+migrated.click("#clear-career-filters");
+assert.equal(migrated.w.document.getElementById("career-search").value, "");
+assert.equal(migrated.w.document.querySelectorAll("[data-career]").length, 12);
+migrated.click("#more-careers");
+assert.equal(migrated.w.document.querySelectorAll("[data-career]").length, 24);
+const field = migrated.w.document.getElementById("career-cluster");
+field.value = "Public Safety & Law";
+field.dispatchEvent(new migrated.w.Event("change", { bubbles: true }));
+assert.equal(migrated.w.document.querySelectorAll("[data-career]").length, 3);
+search(migrated, "police");
+migrated.click('[data-career="police-officer"]');
+migrated.click("#choose-career");
+assert(migrated.w.document.querySelector('[data-path="trade"]'));
+migrated.click('[data-path="trade"]');
+migrated.click('[data-housing="shared"]');
+assert.equal(migrated.w.testState.run.phase, "scenario");
+const restricted = await boot({
+  taCareerQuestSettings: {
+    careerClusters: ["Health Science"],
+    enabledCareers: ["registered-nurse"],
+  },
+});
+restricted.click("#start-run");
+for (let i = 0; i < 10; i++) restricted.click('[data-score="2"]');
+search(restricted, "police");
+assert(!restricted.w.document.querySelector('[data-career="police-officer"]'));
+assert.equal(
+  restricted.w.testState.run.settings.enabledCareers.length,
+  1,
+  "custom teacher restrictions must survive migration",
+);
+for (const c of [
+  ctx,
+  report,
+  noEvents,
+  empty,
+  corrupt,
+  legacy,
+  blocked,
+  migrated,
+  detailReloaded,
+  restricted,
+])
   c.dom.window.close();
 console.log(
-  "PASS: complete five-year flows (10 and 15 decisions), reload/resume, fixed yearly budgets, idempotent settlement, education options, isolated quiz skills, settings snapshot, debt transfer limits, dollar effects, saved reflections/XSS escaping, replay setting, empty filters, corrupt/legacy saves, storage fallback, 18 scenario schemas.",
+  "PASS: full five-year regressions plus 80 complete career records; police and alias searches; profile-to-training-to-game flow; saved detail resume; search preservation; empty-state reset; pagination; category filtering; old all-careers migration; teacher restrictions.",
 );
