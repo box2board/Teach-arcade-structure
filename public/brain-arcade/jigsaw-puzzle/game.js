@@ -41,42 +41,32 @@
     const vertical = Array.from({ length: n - 1 }, () => Array.from({ length: n }, () => Math.random() < .5 ? 1 : -1));
     return { horizontal, vertical };
   }
-  function traceHorizontal(path, x, y, width, direction) {
-    const depth = Math.min(width * .22, 19) * direction;
-    path.lineTo(x + width * .31, y);
-    path.bezierCurveTo(x + width * .31, y + depth * .04, x + width * .34, y + depth * .18, x + width * .42, y + depth * .18);
-    path.bezierCurveTo(x + width * .44, y + depth * .36, x + width * .56, y + depth * .36, x + width * .58, y + depth * .18);
-    path.bezierCurveTo(x + width * .66, y + depth * .18, x + width * .69, y + depth * .04, x + width * .69, y);
-    path.lineTo(x + width, y);
-  }
-  function traceVertical(path, x, y, height, direction) {
-    const depth = Math.min(height * .22, 19) * direction;
-    path.lineTo(x, y + height * .31);
-    path.bezierCurveTo(x + depth * .04, y + height * .31, x + depth * .18, y + height * .34, x + depth * .18, y + height * .42);
-    path.bezierCurveTo(x + depth * .36, y + height * .44, x + depth * .36, y + height * .56, x + depth * .18, y + height * .58);
-    path.bezierCurveTo(x + depth * .18, y + height * .66, x + depth * .04, y + height * .69, x, y + height * .69);
-    path.lineTo(x, y + height);
+  // One symmetric connector profile, rotated around each side. Adjacent
+  // pieces traverse the same seam in reverse with the opposite outward normal.
+  function traceEdge(path, x, y, ux, uy, cell, direction) {
+    const point = (t, depth) => [
+      x + ux * cell * t + uy * cell * depth * direction,
+      y + uy * cell * t - ux * cell * depth * direction
+    ];
+    const line = (t, d) => path.lineTo(...point(t, d));
+    const curve = (a, b, c, d, e, f) =>
+      path.bezierCurveTo(...point(a, b), ...point(c, d), ...point(e, f));
+    if (!direction) { line(1, 0); return; }
+    line(.36, 0);
+    curve(.40, 0, .44, -.015, .44, .035);
+    curve(.44, .065, .385, .075, .385, .125);
+    curve(.385, .20, .615, .20, .615, .125);
+    curve(.615, .075, .56, .065, .56, .035);
+    curve(.56, -.015, .60, 0, .64, 0);
+    line(1, 0);
   }
   function makePath(piece, cell) {
-    const { row, col, edges } = piece;
     const p = new Path2D();
     p.moveTo(0, 0);
-    // Top edges bulge upward when their seam is a tab; bottom edges use the opposite normal.
-    traceHorizontal(p, 0, 0, cell, -edges.top);
-    traceVertical(p, cell, 0, cell, edges.right);
-    // Trace the lower and left edges in reverse so their tabs line up with the same shared seam.
-    const bottom = edges.bottom;
-    p.lineTo(cell * .69, cell);
-    const depthB = Math.min(cell * .22, 19) * bottom;
-    p.bezierCurveTo(cell * .69, cell + depthB * .04, cell * .66, cell + depthB * .18, cell * .58, cell + depthB * .18);
-    p.bezierCurveTo(cell * .56, cell + depthB * .36, cell * .44, cell + depthB * .36, cell * .42, cell + depthB * .18);
-    p.bezierCurveTo(cell * .34, cell + depthB * .18, cell * .31, cell + depthB * .04, cell * .31, cell);
-    p.lineTo(0, cell);
-    const depthL = -Math.min(cell * .22, 19) * edges.left;
-    p.lineTo(0, cell * .69);
-    p.bezierCurveTo(depthL * .04, cell * .69, depthL * .18, cell * .66, depthL * .18, cell * .58);
-    p.bezierCurveTo(depthL * .36, cell * .56, depthL * .36, cell * .44, depthL * .18, cell * .42);
-    p.bezierCurveTo(depthL * .18, cell * .34, depthL * .04, cell * .31, 0, cell * .31);
+    traceEdge(p, 0, 0, 1, 0, cell, piece.edges.top);
+    traceEdge(p, cell, 0, 0, 1, cell, piece.edges.right);
+    traceEdge(p, cell, cell, -1, 0, cell, piece.edges.bottom);
+    traceEdge(p, 0, cell, 0, -1, cell, piece.edges.left);
     p.closePath();
     return p;
   }
@@ -101,15 +91,18 @@
     const n = state.size;
     const size = mobile ? Math.min(width - 34, 330) : Math.min(468, 640 - 146, width * .44);
     const cell = size / n;
-    // Keep the tabs from neighboring pieces clear while they are in the tray.
-    const gap = Math.max(8, Math.min(18, cell * .32));
-    const cols = mobile ? Math.max(1, Math.floor((width - 20) / (cell + gap))) : Math.max(1, Math.floor((width - size - 88) / (cell + gap)));
+    // Allow two full connector silhouettes plus breathing room per slot.
+    const pad = cell * .21 + 5;
+    const gap = 2 * pad;
+    const available = mobile ? width - 20 : width - size - 64;
+    const cols = Math.max(1, Math.floor(available / (cell + gap)));
     const trayRows = Math.ceil(n * n / cols);
-    const height = mobile ? 24 + size + 54 + trayRows * (cell + gap) + 22 : Math.max(640, trayRows * (cell + gap) + 74);
+    const trayHeight = trayRows * (cell + gap);
+    const height = mobile ? 24 + size + 54 + trayHeight + 22 : Math.max(640, trayHeight + 84);
     const boardX = mobile ? (width - size) / 2 : 28;
     const boardY = mobile ? 22 : (height - size) / 2;
-    const trayX = mobile ? (width - Math.min(width - 20, cols * (cell + gap) - gap)) / 2 + 5 : boardX + size + 48;
-    const trayY = mobile ? boardY + size + 56 : Math.max(24, (height - trayRows * (cell + gap)) / 2);
+    const trayX = mobile ? (width - cols * (cell + gap)) / 2 + pad : boardX + size + 40 + pad;
+    const trayY = mobile ? boardY + size + 54 + pad : Math.max(54, (height - trayHeight) / 2 + pad);
     return { width, height, mobile, board: { x: boardX, y: boardY, size }, cell, gap, cols, trayX, trayY };
   }
   function placeLoosePieces() {
@@ -118,7 +111,7 @@
     order.forEach((piece, index) => {
       const tx = trayX + (index % cols) * (cell + gap) + rand(Math.max(1, gap * .32));
       const ty = trayY + Math.floor(index / cols) * (cell + gap) + rand(Math.max(1, gap * .32));
-      piece.x = mobile ? tx : Math.min(width - cell - 4, tx);
+      piece.x = tx;
       piece.y = ty;
       piece.path = makePath(piece, cell);
     });
@@ -163,13 +156,12 @@
       ctx.fillStyle = "#edf3f8"; roundedRect(ctx, trayX - 10, 16, trayWidth + 10, height - 32, 18); ctx.fill();
       ctx.fillStyle = "#66788f"; ctx.font = "800 12px Nunito, sans-serif"; ctx.textAlign = "left"; ctx.fillText("PIECES", trayX, Math.max(20, trayY - 14));
     }
-    const sorted = [...state.pieces].sort((a,b) => Number(a.fixed) - Number(b.fixed));
+    const sorted = [...state.pieces].sort((a,b) => Number(b.fixed) - Number(a.fixed));
     sorted.forEach(piece => drawPiece(piece, cell, bx, by, piece === state.selected));
   }
   function drawPiece(piece, cell, bx, by, selected) {
     const x = piece.fixed ? bx + piece.col * cell : piece.x;
     const y = piece.fixed ? by + piece.row * cell : piece.y;
-    const pad = cell * .24;
     ctx.save(); ctx.translate(x, y);
     if (!piece.fixed) { ctx.shadowColor = selected ? "rgba(38,113,201,.35)" : "rgba(28,48,70,.19)"; ctx.shadowBlur = selected ? 16 : 8; ctx.shadowOffsetY = selected ? 6 : 3; }
     ctx.fillStyle = "#fff"; ctx.fill(piece.path);
@@ -188,7 +180,7 @@
     const cell = getCell();
     for (let i = state.pieces.length - 1; i >= 0; i--) {
       const piece = state.pieces[i]; if (piece.fixed) continue;
-      ctx.save(); ctx.translate(piece.x, piece.y); const hit = ctx.isPointInPath(piece.path, x - piece.x, y - piece.y); ctx.restore();
+      ctx.save(); ctx.setTransform(1, 0, 0, 1, 0, 0); const hit = ctx.isPointInPath(piece.path, x - piece.x, y - piece.y); ctx.restore();
       if (hit) return piece;
     }
     return null;
