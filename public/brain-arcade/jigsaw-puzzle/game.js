@@ -7,11 +7,48 @@
   const stage = byId("stage-wrap");
   const status = byId("game-status");
   const pictures = {
-    sunset: { name: "Sunset Hills", src: "/brain-arcade/jigsaw-puzzle/assets/sunset-hills.svg" },
-    ocean: { name: "Ocean Life", src: "/brain-arcade/jigsaw-puzzle/assets/ocean-life.svg" },
-    garden: { name: "Garden Friends", src: "/brain-arcade/jigsaw-puzzle/assets/garden.svg" }
-  };
-  const state = { picture: "sunset", size: 3, relaxed: true, pieces: [], image: null, board: null, mobile: false, moves: 0, placed: 0, startAt: 0, elapsed: 0, timer: null, paused: false, selected: null, cycle: -1, preview: false, complete: false, width: 0, height: 0 };
+  "coral-kingdom": {
+    "name": "Coral Kingdom",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/coral-kingdom.webp"
+  },
+  "woodland-village": {
+    "name": "Woodland Village",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/woodland-village.webp"
+  },
+  "cosmic-harbor": {
+    "name": "Cosmic Harbor",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/cosmic-harbor.webp"
+  },
+  "mountain-railway": {
+    "name": "Mountain Railway",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/mountain-railway.webp"
+  },
+  "dinosaur-valley": {
+    "name": "Dinosaur Valley",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/dinosaur-valley.webp"
+  },
+  "harbor-lights": {
+    "name": "Harbor Lights",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/harbor-lights.webp"
+  },
+  "autumn-farm": {
+    "name": "Autumn Farm",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/autumn-farm.webp"
+  },
+  "rainforest-canopy": {
+    "name": "Rainforest Canopy",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/rainforest-canopy.webp"
+  },
+  "winter-market": {
+    "name": "Winter Market",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/winter-market.webp"
+  },
+  "inventors-workshop": {
+    "name": "Inventors Workshop",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/inventors-workshop.webp"
+  }
+};
+  const state = { picture: "coral-kingdom", size: 3, trayPage: 0, relaxed: true, pieces: [], image: null, board: null, mobile: false, moves: 0, placed: 0, startAt: 0, elapsed: 0, timer: null, paused: false, selected: null, cycle: -1, preview: false, complete: false, width: 0, height: 0 };
 
   function announce(message) { status.textContent = message; }
   function rand(max) { return Math.random() * max; }
@@ -22,8 +59,7 @@
   }
   function pictureImage(key) {
     const image = new Image();
-    image.src = pictures[key].src;
-    return new Promise((resolve, reject) => { image.onload = () => resolve(image); image.onerror = reject; });
+    return new Promise((resolve, reject) => { image.onload = () => resolve(image); image.onerror = reject; image.src = pictures[key].src; });
   }
 
   document.querySelectorAll(".picture-choice").forEach((button) => button.addEventListener("click", () => {
@@ -96,7 +132,7 @@
     const gap = 2 * pad;
     const available = mobile ? width - 20 : width - size - 64;
     const cols = Math.max(1, Math.floor(available / (cell + gap)));
-    const trayRows = Math.ceil(n * n / cols);
+    const trayRows = Math.ceil(Math.min(n * n, 24) / cols);
     const trayHeight = trayRows * (cell + gap);
     const height = mobile ? 24 + size + 54 + trayHeight + 22 : Math.max(640, trayHeight + 84);
     const boardX = mobile ? (width - size) / 2 : 28;
@@ -108,7 +144,10 @@
   function placeLoosePieces() {
     const { board, cell, gap, cols, trayX, trayY, width, mobile } = state.layout;
     const order = shuffle(state.pieces.filter(piece => !piece.fixed));
+    state.trayPage = 0;
     order.forEach((piece, index) => {
+      piece.trayPage = Math.floor(index / 24);
+      index %= 24;
       const tx = trayX + (index % cols) * (cell + gap) + rand(Math.max(1, gap * .32));
       const ty = trayY + Math.floor(index / cols) * (cell + gap) + rand(Math.max(1, gap * .32));
       piece.x = tx;
@@ -116,6 +155,29 @@
       piece.path = makePath(piece, cell);
     });
   }
+  function visibleLoose() {
+    return state.pieces.filter(piece => !piece.fixed && piece.trayPage === state.trayPage);
+  }
+  function updateTray() {
+    const pages = Math.ceil(state.pieces.length / 24);
+    byId("tray-controls").hidden = pages <= 1;
+    byId("tray-page").textContent = `Tray ${state.trayPage + 1} of ${pages}`;
+    byId("tray-prev").disabled = state.trayPage === 0;
+    byId("tray-next").disabled = state.trayPage >= pages - 1;
+  }
+  function advanceTray() {
+    if (visibleLoose().length || state.complete) return;
+    const next = state.pieces.find(piece => !piece.fixed);
+    if (next) state.trayPage = next.trayPage;
+  }
+  function changeTray(delta) {
+    if (state.paused || state.complete) return;
+    state.trayPage = Math.max(0, Math.min(Math.ceil(state.pieces.length / 24) - 1, state.trayPage + delta));
+    drag = null; state.selected = null; state.cycle = -1;
+    draw(); announce(`Tray ${state.trayPage + 1} selected.`);
+  }
+  byId("tray-prev").addEventListener("click", () => changeTray(-1));
+  byId("tray-next").addEventListener("click", () => changeTray(1));
   function configureCanvas() {
     const prior = state.layout;
     const next = layoutStage();
@@ -156,7 +218,8 @@
       ctx.fillStyle = "#edf3f8"; roundedRect(ctx, trayX - 10, 16, trayWidth + 10, height - 32, 18); ctx.fill();
       ctx.fillStyle = "#66788f"; ctx.font = "800 12px Nunito, sans-serif"; ctx.textAlign = "left"; ctx.fillText("PIECES", trayX, Math.max(20, trayY - 14));
     }
-    const sorted = [...state.pieces].sort((a,b) => Number(b.fixed) - Number(a.fixed));
+    updateTray();
+    const sorted = state.pieces.filter(piece => piece.fixed || piece.trayPage === state.trayPage).sort((a,b) => Number(b.fixed) - Number(a.fixed));
     sorted.forEach(piece => drawPiece(piece, cell, bx, by, piece === state.selected));
   }
   function drawPiece(piece, cell, bx, by, selected) {
@@ -179,7 +242,7 @@
   function hitPiece(x, y) {
     const cell = getCell();
     for (let i = state.pieces.length - 1; i >= 0; i--) {
-      const piece = state.pieces[i]; if (piece.fixed) continue;
+      const piece = state.pieces[i]; if (piece.fixed || piece.trayPage !== state.trayPage) continue;
       ctx.save(); ctx.setTransform(1, 0, 0, 1, 0, 0); const hit = ctx.isPointInPath(piece.path, x - piece.x, y - piece.y); ctx.restore();
       if (hit) return piece;
     }
@@ -213,6 +276,7 @@
         announce(`${state.placed} of ${state.pieces.length} pieces placed.`);
         byId("placed-count").textContent = `${state.placed} / ${state.pieces.length}`;
         if (state.placed === state.pieces.length) finish();
+        state.selected = null; advanceTray();
       } else { state.selected = null; }
     }
     draw(); event.preventDefault();
@@ -220,7 +284,7 @@
   canvas.addEventListener("pointercancel", () => { drag = null; draw(); });
   canvas.addEventListener("keydown", event => {
     if (state.paused || state.complete) return;
-    const loose = state.pieces.filter(piece => !piece.fixed);
+    const loose = visibleLoose();
     if (event.code === "Space" && !state.selected && loose.length) {
       state.cycle = (state.cycle + 1) % loose.length; state.selected = loose[state.cycle];
       announce(`Selected piece ${state.cycle + 1} of ${loose.length}. Use arrow keys to move; Enter to place.`); draw(); event.preventDefault(); return;
@@ -241,6 +305,7 @@
         byId("placed-count").textContent = `${state.placed} / ${state.pieces.length}`;
         announce(`Piece placed. ${state.placed} of ${state.pieces.length} complete.`);
         if (state.placed === state.pieces.length) finish();
+        state.selected = null; advanceTray();
         state.selected = null;
       } else announce("That piece is not close enough to its place yet. Keep moving it with the arrow keys.");
       draw(); event.preventDefault();

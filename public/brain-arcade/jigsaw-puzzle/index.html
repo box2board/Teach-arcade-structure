@@ -33,13 +33,20 @@
     </header>
 
     <section id="setup" class="setup-card" aria-labelledby="setup-title">
-      <div class="setup-intro"><span class="step-mark">01</span><div><h2 id="setup-title">Choose your puzzle</h2><p>Pick a picture and how many pieces you want.</p></div></div>
+      <div class="setup-intro"><span class="step-mark">01</span><div><h2 id="setup-title">Choose your puzzle</h2><p>Ten illustrated worlds. Six piece counts, from 9 to 144.</p></div></div>
       <fieldset class="choice-group">
         <legend>Picture</legend>
         <div class="picture-options" id="picture-options">
-          <button class="picture-choice selected" type="button" data-picture="sunset" aria-pressed="true"><img src="/brain-arcade/jigsaw-puzzle/assets/sunset-hills.svg" alt=""><span>Sunset Hills</span></button>
-          <button class="picture-choice" type="button" data-picture="ocean" aria-pressed="false"><img src="/brain-arcade/jigsaw-puzzle/assets/ocean-life.svg" alt=""><span>Ocean Life</span></button>
-          <button class="picture-choice" type="button" data-picture="garden" aria-pressed="false"><img src="/brain-arcade/jigsaw-puzzle/assets/garden.svg" alt=""><span>Garden Friends</span></button>
+<button class="picture-choice selected" type="button" data-picture="coral-kingdom" aria-pressed="true"><img src="/brain-arcade/jigsaw-puzzle/assets/coral-kingdom-thumb.webp" alt="" loading="lazy" width="320" height="320"><span>Coral Kingdom</span></button>
+<button class="picture-choice" type="button" data-picture="woodland-village" aria-pressed="false"><img src="/brain-arcade/jigsaw-puzzle/assets/woodland-village-thumb.webp" alt="" loading="lazy" width="320" height="320"><span>Woodland Village</span></button>
+<button class="picture-choice" type="button" data-picture="cosmic-harbor" aria-pressed="false"><img src="/brain-arcade/jigsaw-puzzle/assets/cosmic-harbor-thumb.webp" alt="" loading="lazy" width="320" height="320"><span>Cosmic Harbor</span></button>
+<button class="picture-choice" type="button" data-picture="mountain-railway" aria-pressed="false"><img src="/brain-arcade/jigsaw-puzzle/assets/mountain-railway-thumb.webp" alt="" loading="lazy" width="320" height="320"><span>Mountain Railway</span></button>
+<button class="picture-choice" type="button" data-picture="dinosaur-valley" aria-pressed="false"><img src="/brain-arcade/jigsaw-puzzle/assets/dinosaur-valley-thumb.webp" alt="" loading="lazy" width="320" height="320"><span>Dinosaur Valley</span></button>
+<button class="picture-choice" type="button" data-picture="harbor-lights" aria-pressed="false"><img src="/brain-arcade/jigsaw-puzzle/assets/harbor-lights-thumb.webp" alt="" loading="lazy" width="320" height="320"><span>Harbor Lights</span></button>
+<button class="picture-choice" type="button" data-picture="autumn-farm" aria-pressed="false"><img src="/brain-arcade/jigsaw-puzzle/assets/autumn-farm-thumb.webp" alt="" loading="lazy" width="320" height="320"><span>Autumn Farm</span></button>
+<button class="picture-choice" type="button" data-picture="rainforest-canopy" aria-pressed="false"><img src="/brain-arcade/jigsaw-puzzle/assets/rainforest-canopy-thumb.webp" alt="" loading="lazy" width="320" height="320"><span>Rainforest Canopy</span></button>
+<button class="picture-choice" type="button" data-picture="winter-market" aria-pressed="false"><img src="/brain-arcade/jigsaw-puzzle/assets/winter-market-thumb.webp" alt="" loading="lazy" width="320" height="320"><span>Winter Market</span></button>
+<button class="picture-choice" type="button" data-picture="inventors-workshop" aria-pressed="false"><img src="/brain-arcade/jigsaw-puzzle/assets/inventors-workshop-thumb.webp" alt="" loading="lazy" width="320" height="320"><span>Inventors Workshop</span></button>
         </div>
       </fieldset>
       <div class="setup-bottom">
@@ -49,6 +56,9 @@
             <button type="button" class="size-choice selected" data-size="3" aria-pressed="true"><strong>9</strong><span>Easy</span></button>
             <button type="button" class="size-choice" data-size="4" aria-pressed="false"><strong>16</strong><span>Medium</span></button>
             <button type="button" class="size-choice" data-size="6" aria-pressed="false"><strong>36</strong><span>Tricky</span></button>
+<button type="button" class="size-choice" data-size="8" aria-pressed="false"><strong>64</strong><span>Challenge</span></button>
+<button type="button" class="size-choice" data-size="10" aria-pressed="false"><strong>100</strong><span>Expert</span></button>
+<button type="button" class="size-choice" data-size="12" aria-pressed="false"><strong>144</strong><span>Master</span></button>
           </div>
         </fieldset>
         <label class="timer-toggle"><span><strong>Relaxed play</strong><small>No countdown. Take your time.</small></span><input id="timer-toggle" type="checkbox" checked><span class="toggle-ui" aria-hidden="true"></span></label>
@@ -69,13 +79,14 @@
           <button id="new-puzzle-button" class="tool-button secondary" type="button">Change puzzle</button>
         </div>
       </div>
+      <div id="tray-controls" class="tray-controls" hidden><button id="tray-prev" class="tool-button" type="button">← Previous tray</button><span id="tray-page" role="status" aria-live="polite"></span><button id="tray-next" class="tool-button" type="button">Next tray →</button></div>
       <div class="stage-wrap" id="stage-wrap">
         <canvas id="puzzle-canvas" tabindex="0" role="application" aria-label="Jigsaw board. Drag pieces onto the picture. Use Space to select a piece, arrow keys to move it, and Enter to place it."></canvas>
         <div id="preview-card" class="preview-card" hidden><span>Picture guide</span><img id="preview-image" alt="Reference image for the jigsaw puzzle"></div>
         <div id="pause-cover" class="pause-cover" hidden><div><strong>Paused</strong><button id="resume-button" type="button">Resume puzzle</button></div></div>
         <div id="win-card" class="win-card" hidden><div class="win-icon" aria-hidden="true">✦</div><p class="eyebrow">PUZZLE COMPLETE</p><h2>Beautifully done!</h2><p id="win-summary"></p><div class="win-actions"><button id="play-again-button" class="start-button" type="button">Play again</button><button id="back-to-choices" class="tool-button" type="button">Choose another</button></div></div>
       </div>
-      <div class="game-footer"><p id="keyboard-help">Drag pieces to the board. Pieces snap into place when they’re close.</p><button id="pause-button" class="pause-button" type="button" aria-pressed="false">Pause</button></div>
+      <div class="game-footer"><p id="keyboard-help">Drag pieces to the board. Larger puzzles have multiple trays; use the tray buttons to browse.</p><button id="pause-button" class="pause-button" type="button" aria-pressed="false">Pause</button></div>
       <p id="game-status" class="sr-only" role="status" aria-live="polite"></p>
     </section>
     <p class="page-note">A little space to focus, notice details, and enjoy the picture taking shape.</p>
