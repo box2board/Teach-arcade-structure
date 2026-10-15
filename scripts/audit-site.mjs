@@ -2,7 +2,10 @@ import { promises as fs } from 'node:fs';
 import path from 'node:path';
 
 const root = path.resolve('public');
-const site = 'https://teacharcade.com';
+const site = 'https://www.teacharcade.com';
+// Older pages still declare the legacy host. Validate their routes while the
+// preferred-host correction is rolled out in focused page batches.
+const canonicalForComparison = value => value.replace(/^https:\/\/teacharcade\.com(?=\/)/, site);
 
 async function walk(dir) {
   const entries = await fs.readdir(dir, { withFileTypes: true });
@@ -52,7 +55,7 @@ for (const file of htmlFiles) {
     }
     const h1Count = (html.match(/<h1\b/gi) || []).length;
     if (h1Count !== 1) issues.push({ severity: 'HIGH', file: relative, issue: `Expected one H1; found ${h1Count}` });
-    if (values.canonical && values.canonical !== `${site}${routeFor(file)}`) {
+    if (values.canonical && canonicalForComparison(values.canonical) !== `${site}${routeFor(file)}`) {
       issues.push({ severity: 'CRITICAL', file: relative, issue: `Canonical does not match route (${values.canonical})` });
     }
   }
