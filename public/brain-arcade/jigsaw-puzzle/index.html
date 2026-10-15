@@ -3,72 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#0f172a" />
-
-  <title>Jigsaw Puzzle (Coming Soon) | Brain Arcade | Teach Arcade</title>
-  <meta name="description" content="Jigsaw Puzzle is planned for Brain Arcade as a calm drag-and-drop spatial puzzle." />
+  <meta name="theme-color" content="#10233f" />
+  <title>Jigsaw Puzzle | Brain Arcade | Teach Arcade</title>
+  <meta name="description" content="Build a colorful picture one piece at a time in Teach Arcade’s free, relaxing browser jigsaw puzzle." />
   <link rel="canonical" href="https://teacharcade.com/brain-arcade/jigsaw-puzzle/" />
-  <meta name="robots" content="noindex,follow" />
-
+  <meta name="robots" content="index,follow" />
   <link rel="stylesheet" href="/assets/styles.css?v=1" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
   <link rel="stylesheet" href="/brain-arcade/jigsaw-puzzle/styles.css" />
-
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Teach Arcade" />
-  <meta property="og:title" content="Jigsaw Puzzle (Coming Soon) | Brain Arcade | Teach Arcade" />
-  <meta property="og:description" content="A calm drag-and-drop jigsaw puzzle experience is coming soon to Brain Arcade." />
-  <meta property="og:url" content="https://teacharcade.com/brain-arcade/jigsaw-puzzle/" />
-  <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Jigsaw Puzzle (Coming Soon) | Brain Arcade | Teach Arcade" />
-  <meta name="twitter:description" content="A new drag-and-drop jigsaw puzzle is coming soon to Brain Arcade." />
-  <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Jigsaw Puzzle (Coming Soon) | Brain Arcade | Teach Arcade",
-    "url": "https://teacharcade.com/brain-arcade/jigsaw-puzzle/",
-    "description": "Jigsaw Puzzle is joining Brain Arcade soon—an accessible, classroom-friendly puzzle experience that builds visual reasoning, spatial awareness, and calm focus.",
-    "isPartOf": {
-      "@type": "WebSite",
-      "name": "Teach Arcade",
-      "url": "https://teacharcade.com/"
-    }
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://teacharcade.com/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Brain Arcade",
-        "item": "https://teacharcade.com/brain-arcade/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Jigsaw Puzzle",
-        "item": "https://teacharcade.com/brain-arcade/jigsaw-puzzle/"
-      }
-    ]
-  }
-  </script>
 </head>
 <body>
   <div id="site-header"></div>
@@ -76,42 +21,77 @@
 
   <main class="container jigsaw-page">
     <nav class="breadcrumbs" aria-label="Breadcrumb">
-      <ol>
-        <li><a href="/">Home</a></li>
-        <li><a href="/brain-arcade/">Brain Arcade</a></li>
-        <li aria-current="page">Jigsaw Puzzle</li>
-      </ol>
+      <ol><li><a href="/">Home</a></li><li><a href="/brain-arcade/">Brain Arcade</a></li><li aria-current="page">Jigsaw Puzzle</li></ol>
     </nav>
-
-    <section class="hero">
-      <div class="coming-badge" aria-hidden="true">Coming Soon</div>
-      <h1>Jigsaw Puzzle</h1>
-      <p class="hero-lede">
-        We’re building a simple drag-and-drop jigsaw game with multiple piece counts, touch controls, and a calm play mode.
-      </p>
-      <p class="status-line" id="status-line" role="status" aria-live="polite">Puzzle engine is still in development.</p>
-      <div class="hero-actions">
-        <a class="btn" href="/brain-arcade/">Back to Brain Arcade</a>
+    <header class="puzzle-heading">
+      <div>
+        <p class="eyebrow">BRAIN ARCADE · PUZZLE</p>
+        <h1>Jigsaw Puzzle</h1>
+        <p>Choose a scene, spread out the pieces, and settle into a puzzle at your own pace.</p>
       </div>
+      <a class="back-link" href="/brain-arcade/">← All Brain Arcade games</a>
+    </header>
+
+    <section id="setup" class="setup-card" aria-labelledby="setup-title">
+      <div class="setup-intro"><span class="step-mark">01</span><div><h2 id="setup-title">Choose your puzzle</h2><p>Ten illustrated worlds. Six piece counts, from 9 to 144.</p></div></div>
+      <fieldset class="choice-group">
+        <legend>Picture</legend>
+        <div class="picture-options" id="picture-options">
+<button class="picture-choice selected" type="button" data-picture="coral-kingdom" aria-pressed="true"><img src="/brain-arcade/jigsaw-puzzle/assets/coral-kingdom-thumb.webp" alt="" loading="lazy" width="320" height="320"><span>Coral Kingdom</span></button>
+<button class="picture-choice" type="button" data-picture="woodland-village" aria-pressed="false"><img src="/brain-arcade/jigsaw-puzzle/assets/woodland-village-thumb.webp" alt="" loading="lazy" width="320" height="320"><span>Woodland Village</span></button>
+<button class="picture-choice" type="button" data-picture="cosmic-harbor" aria-pressed="false"><img src="/brain-arcade/jigsaw-puzzle/assets/cosmic-harbor-thumb.webp" alt="" loading="lazy" width="320" height="320"><span>Cosmic Harbor</span></button>
+<button class="picture-choice" type="button" data-picture="mountain-railway" aria-pressed="false"><img src="/brain-arcade/jigsaw-puzzle/assets/mountain-railway-thumb.webp" alt="" loading="lazy" width="320" height="320"><span>Mountain Railway</span></button>
+<button class="picture-choice" type="button" data-picture="dinosaur-valley" aria-pressed="false"><img src="/brain-arcade/jigsaw-puzzle/assets/dinosaur-valley-thumb.webp" alt="" loading="lazy" width="320" height="320"><span>Dinosaur Valley</span></button>
+<button class="picture-choice" type="button" data-picture="harbor-lights" aria-pressed="false"><img src="/brain-arcade/jigsaw-puzzle/assets/harbor-lights-thumb.webp" alt="" loading="lazy" width="320" height="320"><span>Harbor Lights</span></button>
+<button class="picture-choice" type="button" data-picture="autumn-farm" aria-pressed="false"><img src="/brain-arcade/jigsaw-puzzle/assets/autumn-farm-thumb.webp" alt="" loading="lazy" width="320" height="320"><span>Autumn Farm</span></button>
+<button class="picture-choice" type="button" data-picture="rainforest-canopy" aria-pressed="false"><img src="/brain-arcade/jigsaw-puzzle/assets/rainforest-canopy-thumb.webp" alt="" loading="lazy" width="320" height="320"><span>Rainforest Canopy</span></button>
+<button class="picture-choice" type="button" data-picture="winter-market" aria-pressed="false"><img src="/brain-arcade/jigsaw-puzzle/assets/winter-market-thumb.webp" alt="" loading="lazy" width="320" height="320"><span>Winter Market</span></button>
+<button class="picture-choice" type="button" data-picture="inventors-workshop" aria-pressed="false"><img src="/brain-arcade/jigsaw-puzzle/assets/inventors-workshop-thumb.webp" alt="" loading="lazy" width="320" height="320"><span>Inventors Workshop</span></button>
+        </div>
+      </fieldset>
+      <div class="setup-bottom">
+        <fieldset class="choice-group size-group">
+          <legend>Piece count</legend>
+          <div class="size-options" id="size-options">
+            <button type="button" class="size-choice selected" data-size="3" aria-pressed="true"><strong>9</strong><span>Easy</span></button>
+            <button type="button" class="size-choice" data-size="4" aria-pressed="false"><strong>16</strong><span>Medium</span></button>
+            <button type="button" class="size-choice" data-size="6" aria-pressed="false"><strong>36</strong><span>Tricky</span></button>
+<button type="button" class="size-choice" data-size="8" aria-pressed="false"><strong>64</strong><span>Challenge</span></button>
+<button type="button" class="size-choice" data-size="10" aria-pressed="false"><strong>100</strong><span>Expert</span></button>
+<button type="button" class="size-choice" data-size="12" aria-pressed="false"><strong>144</strong><span>Master</span></button>
+          </div>
+        </fieldset>
+        <label class="timer-toggle"><span><strong>Relaxed play</strong><small>No countdown. Take your time.</small></span><input id="timer-toggle" type="checkbox" checked><span class="toggle-ui" aria-hidden="true"></span></label>
+      </div>
+      <button id="start-button" class="start-button" type="button">Start puzzle <span aria-hidden="true">→</span></button>
     </section>
 
-    <section class="content-card" aria-labelledby="planned-features">
-      <h2 id="planned-features">Planned features</h2>
-      <ul class="feature-list">
-        <li>Mouse, touch, and trackpad piece movement</li>
-        <li>Several puzzle sizes for quick or longer play</li>
-        <li>Optional timer and relaxed play</li>
-        <li>A small built-in image library</li>
-      </ul>
+    <section id="game" class="game-card" aria-label="Jigsaw game" hidden>
+      <div class="game-toolbar">
+        <div class="game-stats" aria-label="Puzzle progress">
+          <div><span class="stat-label">PLACED</span><strong id="placed-count">0 / 9</strong></div>
+          <div><span class="stat-label">MOVES</span><strong id="move-count">0</strong></div>
+          <div id="time-stat" hidden><span class="stat-label">TIME</span><strong id="time-count">0:00</strong></div>
+        </div>
+        <div class="game-actions">
+          <button id="preview-button" class="tool-button" type="button" aria-pressed="false">Show picture</button>
+          <button id="restart-button" class="tool-button" type="button">Restart</button>
+          <button id="new-puzzle-button" class="tool-button secondary" type="button">Change puzzle</button>
+        </div>
+      </div>
+      <div id="tray-controls" class="tray-controls" hidden><button id="tray-prev" class="tool-button" type="button">← Previous tray</button><span id="tray-page" role="status" aria-live="polite"></span><button id="tray-next" class="tool-button" type="button">Next tray →</button></div>
+      <div class="stage-wrap" id="stage-wrap">
+        <canvas id="puzzle-canvas" tabindex="0" role="application" aria-label="Jigsaw board. Drag pieces onto the picture. Use Space to select a piece, arrow keys to move it, and Enter to place it."></canvas>
+        <div id="preview-card" class="preview-card" hidden><span>Picture guide</span><img id="preview-image" alt="Reference image for the jigsaw puzzle"></div>
+        <div id="pause-cover" class="pause-cover" hidden><div><strong>Paused</strong><button id="resume-button" type="button">Resume puzzle</button></div></div>
+        <div id="win-card" class="win-card" hidden><div class="win-icon" aria-hidden="true">✦</div><p class="eyebrow">PUZZLE COMPLETE</p><h2>Beautifully done!</h2><p id="win-summary"></p><div class="win-actions"><button id="play-again-button" class="start-button" type="button">Play again</button><button id="back-to-choices" class="tool-button" type="button">Choose another</button></div></div>
+      </div>
+      <div class="game-footer"><p id="keyboard-help">Drag pieces to the board. Larger puzzles have multiple trays; use the tray buttons to browse.</p><button id="pause-button" class="pause-button" type="button" aria-pressed="false">Pause</button></div>
+      <p id="game-status" class="sr-only" role="status" aria-live="polite"></p>
     </section>
+    <p class="page-note">A little space to focus, notice details, and enjoy the picture taking shape.</p>
   </main>
-
-  <footer>
-    © <script>document.write(new Date().getFullYear())</script> Teach Arcade •
-    <a href="/privacy.html">Privacy</a> •
-    <a href="/terms.html">Terms</a>
-  </footer>
-
+  <footer>© <script>document.write(new Date().getFullYear())</script> Teach Arcade • <a href="/privacy.html">Privacy</a> • <a href="/terms.html">Terms</a></footer>
   <script src="/brain-arcade/jigsaw-puzzle/game.js" defer></script>
 </body>
 </html>
