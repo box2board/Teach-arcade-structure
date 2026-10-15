@@ -1,4 +1,5 @@
 import * as THREE from "/assets/vendor/three-0.162.0/three.module.js";
+import { createWorldCollider } from "./world-collision.js";
 
 // v1.1 engine controller.
 // Owns renderer, player, movement, camera and collision registries.
@@ -160,13 +161,8 @@ function resetPlayer() {
   grounded = true;
 }
 
-function addCollider(obj, w, d) {
-  colliders.push({
-    minX: () => obj.position.x - w / 2,
-    maxX: () => obj.position.x + w / 2,
-    minZ: () => obj.position.z - d / 2,
-    maxZ: () => obj.position.z + d / 2,
-  });
+function addCollider(object) {
+  colliders.push(createWorldCollider(object));
 }
 
 function registerAnimation(item) {
@@ -189,7 +185,7 @@ function createWorld() {
   if (!builder?.build) throw new Error("3D world builder is unavailable.");
   builder.build({
     scene,
-    registerBoxCollider: addCollider,
+    registerCollider: addCollider,
     addCameraObstacle(object) { if (object && !cameraObstacles.includes(object)) cameraObstacles.push(object); },
     registerAnimation,
   });
@@ -316,7 +312,8 @@ function blockerActive(blocker) { return blocker.active === undefined ? true : B
 
 function blocked(x, z) {
   for (const c of colliders) {
-    if (x + PLAYER_RADIUS > c.minX() && x - PLAYER_RADIUS < c.maxX() && z + PLAYER_RADIUS > c.minZ() && z - PLAYER_RADIUS < c.maxZ()) return true;
+    const bounds = c.bounds();
+    if (x + PLAYER_RADIUS > bounds.min.x && x - PLAYER_RADIUS < bounds.max.x && z + PLAYER_RADIUS > bounds.min.z && z - PLAYER_RADIUS < bounds.max.z) return true;
   }
   for (const c of dynamicBlockers) {
     if (!blockerActive(c)) continue;
