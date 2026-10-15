@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no" />
+<title>Goal Rush | Teach Arcade Sports</title>
+<style>
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#02060c}
+iframe{position:fixed;inset:0;width:100%;height:100%;border:0;background:#02060c}
+</style>
+</head>
+<body>
+<iframe id="gameFrame" src="../goal-rush/" allow="fullscreen" title="Goal Rush"></iframe>
+<script>
+const frame=document.getElementById('gameFrame');
+frame.addEventListener('load',()=>{
+  try{
+    const w=frame.contentWindow;
+    const d=frame.contentDocument;
+    const question=d.getElementById('questionPanel');
+    const result=d.getElementById('resultPanel');
+
+    const style=d.createElement('style');
+    style.textContent=`
+      @media(max-width:780px),(pointer:coarse){
+        .question{
+          max-height:min(68dvh,700px)!important;
+          overflow-y:auto!important;
+          overscroll-behavior:contain;
+          -webkit-overflow-scrolling:touch;
+        }
+        .qBody{padding-bottom:max(14px,env(safe-area-inset-bottom))!important}
+        .answers{padding-bottom:4px}
+      }
+    `;
+    d.head.appendChild(style);
+
+    const enforceExclusivePanels=()=>{
+      if(question && !question.classList.contains('hidden')){
+        result?.classList.add('hidden');
+        question.scrollTop=0;
+      }
+    };
+
+    const observer=new MutationObserver(enforceExclusivePanels);
+    if(question) observer.observe(question,{attributes:true,attributeFilter:['class']});
+    if(result) observer.observe(result,{attributes:true,attributeFilter:['class']});
+
+    const next=d.getElementById('nextBtn');
+    next?.addEventListener('click',()=>result?.classList.add('hidden'),true);
+
+    if(typeof w.showQuestion==='function'){
+      const originalShowQuestion=w.showQuestion;
+      w.showQuestion=function(){
+        result?.classList.add('hidden');
+        const out=originalShowQuestion.apply(this,arguments);
+        enforceExclusivePanels();
+        return out;
+      };
+    }
+
+    enforceExclusivePanels();
+  }catch(err){
+    console.error('Goal Rush mobile layout patch failed',err);
+  }
+});
+</script>
+</body>
+</html>
