@@ -39,7 +39,7 @@ async function boot(saved = {}, badStorage = false) {
   w.Math.random = () => 0;
   w.eval(
     js +
-      "\nwindow.testState=state;window.testFns={settleYear,applyChoice,updateNetWorth,renderByPhase};",
+      "\nwindow.testState=state;window.testFns={settleYear,applyChoice,updateNetWorth,renderByPhase,interestProfile,hasInterestSignal,affinityScore,estimatedWithholding,monthlyBreakdown,yearGross,pickScenario,quizQuestions,startingSalary,educationPayment};",
   );
   await new Promise((r) => setTimeout(r, 0));
   const click = (selector) => {
@@ -60,7 +60,7 @@ async function begin(options = {}) {
   const ctx = await boot(options.saved);
   const { w, click } = ctx;
   click("#start-run");
-  for (let i = 0; i < 10; i++) click('[data-score="2"]');
+  for (let i = 0; i < 36; i++) click('[data-score="2"]');
   assert.equal(w.testState.run.phase, "career");
   const search = w.document.getElementById("career-search");
   search.value = "registered nurse";
@@ -114,10 +114,25 @@ for (let y = 1; y <= 5; y++) {
   const r = w.testState.run,
     l = r.yearLedgers.at(-1);
   assert.equal(l.year, y);
-  assert.equal(l.living, (2200 - 350) * 12);
+  assert.equal(
+    l.living,
+    Object.values(l.parts).reduce((a, b) => a + b, 0) * 12,
+  );
+  assert.equal(l.retirement, Math.round(l.gross * 0.04));
+  assert.equal(
+    l.closing.cash,
+    l.openingCash +
+      l.decisionCash +
+      l.gross -
+      l.taxes -
+      l.living -
+      l.retirement -
+      l.payment +
+      l.newBorrowing,
+  );
   assert.equal(
     l.gross - l.taxes - l.living - l.payment,
-    l.gross - Math.round(l.gross * 0.22) - l.living - l.payment,
+    l.gross - w.testFns.estimatedWithholding(l.gross) - l.living - l.payment,
   );
   const balance = r.stats.cash;
   w.testFns.settleYear();
@@ -145,6 +160,8 @@ const r = w.testState.run;
 r.settings.difficulty = "hard";
 r.stats.cash = 100;
 r.stats.debt = 50;
+r.educationDebt = 50;
+r.consumerDebt = 0;
 w.testFns.applyChoice(
   { id: "test", title: "Test" },
   { label: "Pay", effects: { extraPayment: 700 }, feedback: "Paid" },
@@ -240,7 +257,7 @@ assert.equal(
   "the old all-careers selection must include newly added careers",
 );
 migrated.click("#start-run");
-for (let i = 0; i < 10; i++) migrated.click('[data-score="2"]');
+for (let i = 0; i < 36; i++) migrated.click('[data-score="2"]');
 function search(ctx, query) {
   const input = ctx.w.document.getElementById("career-search");
   input.value = query;
@@ -314,7 +331,7 @@ const restricted = await boot({
   },
 });
 restricted.click("#start-run");
-for (let i = 0; i < 10; i++) restricted.click('[data-score="2"]');
+for (let i = 0; i < 36; i++) restricted.click('[data-score="2"]');
 search(restricted, "police");
 assert(!restricted.w.document.querySelector('[data-career="police-officer"]'));
 assert.equal(
@@ -342,7 +359,7 @@ assert.equal(
 // Search + sort must keep the DOM bounded with the full library loaded.
 const full = await boot();
 full.click("#start-run");
-for (let i = 0; i < 10; i++) full.click('[data-score="2"]');
+for (let i = 0; i < 36; i++) full.click('[data-score="2"]');
 assert.equal(full.w.document.querySelectorAll("[data-career]").length, 12);
 for (const q of [
   "astronomer",
@@ -435,11 +452,19 @@ for (const c of [
   full,
 ])
   c.dom.window.close();
-const redirected = await boot({ taCareerQuestSettings: {catalogVersion:4, enabledCareers:["career-coach"], careerClusters:["Education & Training"]} });
-assert.deepEqual(Array.from(redirected.w.testState.settings.enabledCareers), ["school-counselor"]);
+const redirected = await boot({
+  taCareerQuestSettings: {
+    catalogVersion: 4,
+    enabledCareers: ["career-coach"],
+    careerClusters: ["Education & Training"],
+  },
+});
+assert.deepEqual(Array.from(redirected.w.testState.settings.enabledCareers), [
+  "school-counselor",
+]);
 assert.equal(redirected.w.testState.settings.catalogVersion, 5);
 redirected.dom.window.close();
-assert.equal(new Set(careers.map(c=>c.socCode)).size, 500);
+assert.equal(new Set(careers.map((c) => c.socCode)).size, 500);
 console.log(
   "PASS: 500 complete profiles and all 500 profile/training/play paths; 500 distinct occupation codes; 50/80-to-500 migration; custom teacher restrictions; aliases; sort; bounded rendering; teacher search; source/license/context panels; full five-year regressions.",
 );

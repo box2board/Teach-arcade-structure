@@ -1,0 +1,218 @@
+[
+  {
+    "id": "R1",
+    "type": "R",
+    "q": "Restore a bicycle that no longer shifts properly.",
+    "detail": "Inspect the gears, try adjustments, and test your repair on a short ride."
+  },
+  {
+    "id": "I1",
+    "type": "I",
+    "q": "Investigate why a stream has fewer fish this year.",
+    "detail": "Gather water samples, compare measurements, and test possible explanations."
+  },
+  {
+    "id": "A1",
+    "type": "A",
+    "q": "Create a short animated story.",
+    "detail": "Choose characters, style, sound, and pacing to make an audience feel something."
+  },
+  {
+    "id": "S1",
+    "type": "S",
+    "q": "Help a younger student understand a difficult topic.",
+    "detail": "Listen to the confusion, explain it another way, and encourage their progress."
+  },
+  {
+    "id": "E1",
+    "type": "E",
+    "q": "Pitch a project to people who control the funding.",
+    "detail": "Make a persuasive case, answer objections, and ask them to commit resources."
+  },
+  {
+    "id": "C1",
+    "type": "C",
+    "q": "Reconcile a club budget with its receipts.",
+    "detail": "Find missing entries, check totals, and keep accurate records others can trust."
+  },
+  {
+    "id": "R2",
+    "type": "R",
+    "q": "Build raised garden beds for a community space.",
+    "detail": "Measure materials, use tools safely, and turn a drawing into something people can use."
+  },
+  {
+    "id": "I2",
+    "type": "I",
+    "q": "Trace a recurring computer-system failure.",
+    "detail": "Look for patterns in logs, test a theory, and find the underlying cause."
+  },
+  {
+    "id": "A2",
+    "type": "A",
+    "q": "Design the look of a student magazine.",
+    "detail": "Experiment with layout, color, and images rather than follow one fixed template."
+  },
+  {
+    "id": "S2",
+    "type": "S",
+    "q": "Support someone who is anxious about a major change.",
+    "detail": "Ask thoughtful questions, listen patiently, and help them identify next steps."
+  },
+  {
+    "id": "E2",
+    "type": "E",
+    "q": "Coordinate a team running a school fundraiser.",
+    "detail": "Set priorities, delegate work, and take responsibility for the result."
+  },
+  {
+    "id": "C2",
+    "type": "C",
+    "q": "Organize the schedule for a busy office.",
+    "detail": "Track appointments, resolve conflicts, and make sure important details are not missed."
+  },
+  {
+    "id": "R3",
+    "type": "R",
+    "q": "Care for animals at a shelter.",
+    "detail": "Clean enclosures, follow feeding routines, and notice changes in animal behavior."
+  },
+  {
+    "id": "I3",
+    "type": "I",
+    "q": "Analyze evidence from a historical mystery.",
+    "detail": "Compare conflicting accounts, judge the evidence, and defend your explanation."
+  },
+  {
+    "id": "A3",
+    "type": "A",
+    "q": "Develop an original stage performance.",
+    "detail": "Interpret a scene, rehearse different approaches, and express an idea for an audience."
+  },
+  {
+    "id": "S3",
+    "type": "S",
+    "q": "Teach a small group a practical skill.",
+    "detail": "Adapt your explanation for different learners and check that everyone can participate."
+  },
+  {
+    "id": "E3",
+    "type": "E",
+    "q": "Negotiate an agreement between two groups.",
+    "detail": "Understand each side, propose a deal, and persuade people to accept tradeoffs."
+  },
+  {
+    "id": "C3",
+    "type": "C",
+    "q": "Check a shipment against its order records.",
+    "detail": "Follow a clear process, spot discrepancies, and document the corrections."
+  },
+  {
+    "id": "R4",
+    "type": "R",
+    "q": "Help install a classroom sound system.",
+    "detail": "Connect equipment, route cables, and check why one speaker is not working."
+  },
+  {
+    "id": "I4",
+    "type": "I",
+    "q": "Study how a treatment affects recovery.",
+    "detail": "Read research, compare outcomes, and ask what evidence would change your conclusion."
+  },
+  {
+    "id": "A4",
+    "type": "A",
+    "q": "Reimagine an ordinary public space.",
+    "detail": "Sketch an inviting environment and explore several unusual design directions."
+  },
+  {
+    "id": "S4",
+    "type": "S",
+    "q": "Help a community member find needed services.",
+    "detail": "Understand their situation, explain options, and connect them with support."
+  },
+  {
+    "id": "E4",
+    "type": "E",
+    "q": "Start a small service business.",
+    "detail": "Find customers, set a direction, and make decisions when the outcome is uncertain."
+  },
+  {
+    "id": "C4",
+    "type": "C",
+    "q": "Maintain an accurate database for a community project.",
+    "detail": "Use consistent categories, correct errors, and protect sensitive information."
+  },
+  {
+    "id": "R5",
+    "type": "R",
+    "q": "Work outdoors on a habitat restoration project.",
+    "detail": "Plant native species, maintain trails, and do physical tasks in changing weather."
+  },
+  {
+    "id": "I5",
+    "type": "I",
+    "q": "Explain a surprising pattern in local traffic data.",
+    "detail": "Work with numbers, question assumptions, and check alternative explanations."
+  },
+  {
+    "id": "A5",
+    "type": "A",
+    "q": "Write a story with a distinctive voice.",
+    "detail": "Invent characters, revise dialogue, and shape how readers experience the world."
+  },
+  {
+    "id": "S5",
+    "type": "S",
+    "q": "Lead an activity that helps a group feel included.",
+    "detail": "Notice who is left out and adapt the activity to help people connect."
+  },
+  {
+    "id": "E5",
+    "type": "E",
+    "q": "Represent a proposal at a public meeting.",
+    "detail": "Speak up, build support, and respond to difficult questions in front of others."
+  },
+  {
+    "id": "C5",
+    "type": "C",
+    "q": "Prepare the paperwork for an event.",
+    "detail": "Track permissions, deadlines, and requirements so the plan is ready to use."
+  },
+  {
+    "id": "R6",
+    "type": "R",
+    "q": "Prepare a meal for a large school event.",
+    "detail": "Handle ingredients and equipment, follow safety steps, and produce something tangible on a deadline."
+  },
+  {
+    "id": "I6",
+    "type": "I",
+    "q": "Design an experiment to improve a product.",
+    "detail": "Change one variable at a time, record results, and decide what the tests show."
+  },
+  {
+    "id": "A6",
+    "type": "A",
+    "q": "Create a visual identity for a community project.",
+    "detail": "Try original concepts, respond to feedback, and communicate through design."
+  },
+  {
+    "id": "S6",
+    "type": "S",
+    "q": "Assist a patient learning a care routine.",
+    "detail": "Explain the steps calmly, listen to concerns, and support their independence."
+  },
+  {
+    "id": "E6",
+    "type": "E",
+    "q": "Help a customer choose between several options.",
+    "detail": "Learn what matters to them and persuade them that a particular solution meets their needs."
+  },
+  {
+    "id": "C6",
+    "type": "C",
+    "q": "Audit a set of instructions before they are published.",
+    "detail": "Check every step against a standard and record anything that needs correction."
+  }
+]
