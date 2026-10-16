@@ -166,6 +166,46 @@
   "paint-splash-city": {
     "name": "Paint Splash City",
     "src": "/brain-arcade/jigsaw-puzzle/assets/paint-splash-city.webp"
+  },
+  "secret-garden": {
+    "name": "Secret Garden",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/secret-garden.webp"
+  },
+  "lighthouse-bay": {
+    "name": "Lighthouse Bay",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/lighthouse-bay.webp"
+  },
+  "autumn-train-journey": {
+    "name": "Autumn Train Journey",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/autumn-train-journey.webp"
+  },
+  "moonlit-observatory": {
+    "name": "Moonlit Observatory",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/moonlit-observatory.webp"
+  },
+  "woodland-treehouse": {
+    "name": "Woodland Treehouse",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/woodland-treehouse.webp"
+  },
+  "harvest-market": {
+    "name": "Harvest Market",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/harvest-market.webp"
+  },
+  "enchanted-waterfall": {
+    "name": "Enchanted Waterfall",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/enchanted-waterfall.webp"
+  },
+  "mountain-meadow": {
+    "name": "Mountain Meadow",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/mountain-meadow.webp"
+  },
+  "coral-reef-garden": {
+    "name": "Coral Reef Garden",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/coral-reef-garden.webp"
+  },
+  "lakeside-campout": {
+    "name": "Lakeside Campout",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/lakeside-campout.webp"
   }
 };
   const state = { picture: "coral-kingdom", size: 3, trayPage: 0, relaxed: true, pieces: [], image: null, board: null, mobile: false, moves: 0, placed: 0, startAt: 0, elapsed: 0, timer: null, paused: false, selected: null, cycle: -1, preview: false, complete: false, width: 0, height: 0 };

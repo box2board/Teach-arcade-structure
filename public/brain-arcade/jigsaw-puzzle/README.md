@@ -3,7 +3,7 @@
 A standalone, browser-only jigsaw game for Brain Arcade.
 
 ## Features
-- Forty original illustrated picture choices
+- Fifty original illustrated picture choices
 - Six puzzle sizes: 9, 16, 36, 64, 100, and 144 pieces
 - Click or tap a piece to select it, then click or tap its target square; incorrect guesses leave it on the tabletop
 - Pointer and touch dragging as an alternate placement control
@@ -42,3 +42,19 @@ The latest ten illustrations use bold outlines, bright flat colors, simple shape
 - **Alien Playground** — Original friendly aliens bounce and climb on a colorful playground beneath a view of Earth.
 - **Animal Orchestra** — A bear conductor leads foxes, rabbits, frogs and birds in a flower-meadow music festival.
 - **Paint Splash City** — Children's colorful abstract paintings come to life across a bright city of rainbow buildings and playful creatures.
+
+
+## Watercolor scenes (41–50)
+
+These ten scenes use hand-painted watercolor washes, soft edges, pigment blooms, and visible paper texture:
+
+- **Secret Garden** — A blooming spring garden with a glass greenhouse, winding paths, tulips, a robin and butterflies.
+- **Lighthouse Bay** — A red-and-white lighthouse watches over fishing boats, bright harbor cottages and flower-lined shores.
+- **Autumn Train Journey** — A red steam train crosses a stone bridge through a golden autumn valley.
+- **Moonlit Observatory** — A hilltop observatory, brass telescope and lantern-lit path sit beneath a crescent moon.
+- **Woodland Treehouse** — A cozy treehouse overlooks a leafy forest stream, birds and stepping stones.
+- **Harvest Market** — Pumpkins, apples, flowers and neighbors fill a cheerful autumn town market.
+- **Enchanted Waterfall** — A forest waterfall spills into a clear pool among ferns, flowers and mossy rocks.
+- **Mountain Meadow** — Wildflowers and mountain goats border an alpine trail, stream and distant chalet.
+- **Coral Reef Garden** — A sea turtle, fish and seahorses glide through a colorful watercolor coral garden.
+- **Lakeside Campout** — A glowing tent, canoe and fireflies sit beside a calm lake at sunset.
