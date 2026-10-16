@@ -620,3 +620,12 @@ body[data-theme="classroom"] .board { background: linear-gradient(145deg, #dff5f
 @media (prefers-reduced-motion: reduce) {
   .tile, .controls button { transition: none !important; }
 }
+
+.tile-refill {
+  animation: tile-refill-in .34s cubic-bezier(.2,.8,.25,1) both;
+}
+@keyframes tile-refill-in {
+  0% { opacity: .3; transform: scale(.72) rotate(-4deg); filter: brightness(1.5); }
+  65% { opacity: 1; transform: scale(1.06) rotate(1deg); }
+  100% { transform: scale(1) rotate(0); filter: none; }
+}
