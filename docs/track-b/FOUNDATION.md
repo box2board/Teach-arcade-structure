@@ -1,5 +1,15 @@
 # Track B: teacher foundation
 
+## First-use workflow pass (October 16)
+
+Teacher HQ now follows Topic → Game → Engine setup → Public practice. Question Library and Saved Sets are separate navigation destinations; planned classes/assignments/reports are explained in a roadmap rather than presented as working navigation. Older bookmarks show an honest future-feature message.
+
+Every public topic has a primary Choose a game action and independent question preview. Game selection shows shared catalog artwork, descriptions and participation mode, plus the selected topic and a clear new-tab/public-practice disclosure. Launch URLs retain the catalog set ID and add `from=teacher-hq`. The shared topic picker recognizes this marker only with a valid already-selected set, collapsing optional reselection without changing engine settings or loading a different topic. Public non-HQ entry remains unchanged. Engines retain their own setup options; there is no universal difficulty/settings layer and no claim of teacher-locked configuration.
+
+Featured HQ artwork routes through topic selection, remembering the preferred game for ordering. Saves are disabled and labeled when the account service is unconfigured. The account screen offers a useful library exit instead of an unusable login form. With configured auth, a requested save is retained in memory through sign-in, saved on the server, then returns to the library. No localStorage/account impersonation is introduced.
+
+Verification: `node scripts/test-teacher-workflow.mjs` exercises the launch navigation, topic retention in all compatible links, unavailable account paths, invalid-link recovery and optional topic-picker behavior using a DOM simulation. Run alongside the foundation and question-bank suites. This is not visual/browser QA; hosted sign-in and two-account ownership tests remain outstanding.
+
 ## Inspected baseline
 
 Repository: box2board/Teach-arcade-structure. Fresh checkout of main at d6c1e3b4; clean before edits. Branch: track-b/teacher-foundation. No staged, unstaged, or untracked project work was overwritten. Other Work checkouts were not modified. No AGENTS.md found in this checkout.
