@@ -1,0 +1,118 @@
+(()=>{
+'use strict';const M=window.ComicModel,A=window.ComicArt,$=id=>document.getElementById(id),key='teacharcade_comic_studio_v1';let p=M.fresh(),index=0,selected='',undo=[],redo=[],pending=null,timer,drag=null;
+const say=s=>$('status').textContent=s;
+try{const raw=localStorage.getItem(key);if(raw)p=M.validate(JSON.parse(raw));}catch{say('Could not restore the browser draft. Open a saved project file to continue.');}
+const panel=()=>p.panels[index],object=()=>panel().objects.find(o=>o.id===selected);
+function history(){if(pending){undo.push(pending);pending=null;redo=[];if(undo.length>40)undo.shift();}clearTimeout(timer);updateHistory();}
+function remember(){history();undo.push(M.copy(p));redo=[];if(undo.length>40)undo.shift();}
+function save(){try{localStorage.setItem(key,JSON.stringify(p));say('Saved in this browser. Save a project file to keep a portable copy.');}catch{say('Browser saving is unavailable. Save a project file to keep your comic.');}}
+function typing(fn){if(!pending)pending=M.copy(p);fn();clearTimeout(timer);timer=setTimeout(()=>{history();save();},400);updateHistory();draw();}
+function change(fn){remember();fn();render();save();}
+function updateHistory(){$('undo').disabled=undo.length===0&&!pending;$('redo').disabled=redo.length===0;}
+function draw(){$('stage').innerHTML=A.scene(panel(),selected);for(const thumb of $('panel-tabs').querySelectorAll('svg'))thumb.innerHTML=A.scene(p.panels[Number(thumb.dataset.panel)]);if(document.querySelector('.page-preview').open)$('full-preview').innerHTML=A.page(p).svg;}
+function render(){const count=M.layouts[p.layout].count;index=Math.min(index,count-1);if(!object())selected='';$('title').value=p.title;$('author').value=p.author;$('layout').value=p.layout;library();$('background').value=panel().background;$('panel-heading').textContent='Panel '+(index+1);$('copy-panel').disabled=index===count-1;const view=panel().backgroundView;$('scene-zoom').value=view.zoom;$('scene-x').value=view.x;$('scene-y').value=view.y;$('paper-color').value=panel().paperColor;
+ $('panel-tabs').replaceChildren();for(let i=0;i<count;i++){const b=document.createElement('button');b.type='button';b.setAttribute('aria-pressed',String(i===index));b.setAttribute('aria-label','Edit panel '+(i+1));const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox','0 0 600 360');svg.dataset.panel=i;svg.setAttribute('aria-hidden','true');b.append(svg,document.createTextNode('Panel '+(i+1)));b.addEventListener('click',()=>{history();save();index=i;selected='';render();});$('panel-tabs').append(b);}
+ const o=object();$('settings').hidden=!o;$('selection-help').hidden=!!o;if(o){$('text-label').hidden=!['speech','thought','caption'].includes(o.type);$('character-settings').hidden=o.type!=='character';$('flip').hidden=!['character','prop'].includes(o.type);$('object-text').value=o.text;$('object-x').value=Math.round(o.x);$('object-y').value=Math.round(o.y);$('object-size').value=o.scale;$('expression').value=o.expression;$('pose').value=o.pose;const size=A.dimensions(o);$('object-width').value=Math.round(size.width*o.scale);$('object-height').value=Math.round(size.height*o.scale);const config=C.characters.find(a=>a.id===o.asset);$('object-color').value=o.type==='drawing'?o.stroke:o.colors.primary||config?.shirt||(o.type==='caption'?'#ffe3a1':'#fffdf8');$('person-colors').hidden=o.type!=='character'||config?.category==='Animals'||o.asset==='robot';$('skin-color').value=o.colors.skin||config?.skin||'#d4a77b';$('hair-color').value=o.colors.hair||config?.hair||'#82633b';for(const option of $('pose').options)option.disabled=o.type==='character'&&['cat','dog','robot','bird','rabbit','owl','bear'].includes(o.asset)&&!['stand','wave'].includes(option.value);}draw();updateHistory();}
+function add(type,asset=''){if(panel().objects.length>=80){say('This panel has 80 objects. Remove one before adding another.');return;}track(type,asset);change(()=>{const o=M.create(type,asset);o.x=type==='character'?(panel().objects.filter(o=>o.type==='character').length%3)*145+100:o.x;panel().objects.push(o);selected=o.id;});}
+const C=window.ComicCatalog,preferenceKey='teacharcade_comic_library_v1';
+let favorites=[],recent=[],activeTab='character',librarySignature='';
+const known=new Set([...C.characters.map(a=>'character:'+a.id),...C.backgrounds.map(a=>'background:'+a.id),...C.props.map(a=>'prop:'+a.id)]);
+try{const saved=JSON.parse(localStorage.getItem(preferenceKey)||'{}');for(const [list,set] of [['favorites',v=>favorites=v],['recent',v=>recent=v]])if(Array.isArray(saved[list]))set([...new Set(saved[list].filter(id=>typeof id==='string'&&known.has(id)))].slice(0,list==='recent'?16:known.size));}catch{}
+function persistPreferences(){try{localStorage.setItem(preferenceKey,JSON.stringify({favorites,recent}));}catch{}}
+function track(type,id){const key=type+':'+id;if(!known.has(key))return;recent=[key,...recent.filter(v=>v!==key)].slice(0,16);persistPreferences();}
+function tabs(){for(const type of ['character','background','prop']){const active=type===activeTab;$('tab-'+type).setAttribute('aria-selected',String(active));$('tab-'+type).tabIndex=active?0:-1;$('pane-'+type).hidden=!active;}}
+for(const [i,type] of ['character','background','prop'].entries()){
+ const tab=$('tab-'+type);tab.addEventListener('click',()=>{activeTab=type;tabs();});
+ tab.addEventListener('keydown',event=>{const keys={ArrowLeft:-1,ArrowRight:1,Home:-i,End:2-i};if(!(event.key in keys))return;event.preventDefault();activeTab=['character','background','prop'][(i+keys[event.key]+3)%3];tabs();$('tab-'+activeTab).focus();});
+}
+function categorySelect(id,assets){const select=$(id);select.replaceChildren();for(const value of ['All categories',...new Set(assets.map(a=>a.category))]){const option=document.createElement('option');option.value=value;option.textContent=value;select.append(option);}select.addEventListener('change',library);}
+categorySelect('character-category',C.characters);categorySelect('prop-category',C.props);categorySelect('background-category',C.backgrounds);
+for(const [id,values] of [['expression',M.expressions],['pose',M.poses]]){const select=$(id);select.replaceChildren();for(const value of values){const o=document.createElement('option');o.value=value;o.textContent=({stand:'Standing',wave:'Waving',point:'Pointing',think:'Thinking',crossed:'Arms crossed',cheer:'Cheering',walk:'Walking',sit:'Sitting'})[value]||value[0].toUpperCase()+value.slice(1);select.append(o);}}
+function library(){
+ const query=$('asset-search').value.trim().toLowerCase(),view=$('library-view').value,current=panel().background;
+ const signature=JSON.stringify([query,view,current,favorites,recent,$('character-category').value,$('background-category').value,$('prop-category').value]);
+ if(signature===librarySignature){tabs();return;}librarySignature=signature;let shown=0;
+ const counts={};
+ for(const [id,assets,type,filter] of [['characters',C.characters,'character','character-category'],['backgrounds',C.backgrounds,'background','background-category'],['props',C.props,'prop','prop-category']]){
+  $(id).replaceChildren();const category=$(filter).value;
+  let matches=assets.filter(a=>(category==='All categories'||a.category===category)&&(a.label+' '+a.category).toLowerCase().includes(query)&&(view==='all'||(view==='favorites'?favorites:recent).includes(type+':'+a.id)));
+  if(view==='recent')matches.sort((a,b)=>recent.indexOf(type+':'+a.id)-recent.indexOf(type+':'+b.id));
+  shown+=matches.length;counts[type]=matches.length;
+  for(const asset of matches){
+   const card=document.createElement('div');card.className='asset-card';const b=document.createElement('button');b.type='button';b.dataset.libraryAsset=type+':'+asset.id;
+   const shape=type==='character'?A.character(asset.id,'happy','stand'):type==='prop'?A.prop(asset.id):A.scene({background:asset.id,objects:[]});
+   const vb=type==='background'?'0 0 600 360':'-12 -26 150 '+(type==='character'?255:175);
+   b.innerHTML='<svg viewBox="'+vb+'" aria-hidden="true">'+shape+'</svg>';b.append(document.createTextNode(asset.label));b.setAttribute('aria-label',(type==='background'?'Use scene ':'Add ')+asset.id);
+   if(type==='background')b.setAttribute('aria-pressed',String(current===asset.id));
+   b.addEventListener('click',()=>{if(type==='background'){track(type,asset.id);change(()=>panel().background=asset.id);}else add(type,asset.id);});
+   const star=document.createElement('button');star.type='button';star.className='favorite-button';star.textContent=favorites.includes(type+':'+asset.id)?'★':'☆';star.dataset.favorite=type+':'+asset.id;star.setAttribute('aria-label','Favorite '+asset.label);star.setAttribute('aria-pressed',String(favorites.includes(type+':'+asset.id)));
+   star.addEventListener('click',()=>{const key=type+':'+asset.id;favorites=favorites.includes(key)?favorites.filter(v=>v!==key):[...favorites,key];persistPreferences();library();const next=[...rootLibrary.querySelectorAll('[data-favorite]')].find(b=>b.dataset.favorite===key);if(next)next.focus();else $('library-view').focus();});
+   card.append(b,star);$(id).append(card);
+  }
+  if(!matches.length){const empty=document.createElement('p');empty.className='asset-empty';empty.textContent=view==='favorites'?'No favorites match. Star an item in All artwork.':view==='recent'?'No recent items match. Add artwork to a panel first.':'No matches. Try another search or category.';$(id).append(empty);}
+ }
+ // Quick background selection stays complete; scene thumbnails carry search/category filters.
+ const select=$('background');select.replaceChildren();
+ for(const category of new Set(C.backgrounds.map(a=>a.category))){const group=document.createElement('optgroup');group.label=category;for(const bg of C.backgrounds.filter(a=>a.category===category)){const option=document.createElement('option');option.value=bg.id;option.textContent=bg.label;group.append(option);}select.append(group);}select.value=current;
+ $('library-count').textContent=shown+' matching items · '+known.size+' total';
+ for(const [type,label] of [['character','People'],['background','Scenes'],['prop','Props']])$('tab-'+type).textContent=label+' ('+counts[type]+')';tabs();
+}
+const rootLibrary=document.querySelector('.comic-library');
+$('asset-search').addEventListener('input',()=>{library();const counts=['character','background','prop'].map(type=>({type,count:$('pane-'+type).querySelectorAll('[data-library-asset]').length}));if(!counts.find(c=>c.type===activeTab).count){const match=counts.find(c=>c.count);if(match){activeTab=match.type;tabs();}}});
+$('library-view').addEventListener('change',library);library();
+for(const b of document.querySelectorAll('[data-add]'))b.addEventListener('click',()=>add(b.dataset.add));
+$('title').addEventListener('input',()=>typing(()=>p.title=$('title').value));$('author').addEventListener('input',()=>typing(()=>p.author=$('author').value));$('layout').addEventListener('change',()=>change(()=>{p.layout=$('layout').value;selected='';}));$('background').addEventListener('change',()=>{const value=$('background').value;track('background',value);change(()=>panel().background=value);});
+$('object-text').addEventListener('input',()=>{if(object())typing(()=>object().text=$('object-text').value);});for(const [id,prop,min,max] of [['object-x','x',0,580],['object-y','y',0,340],['object-size','scale',.15,4]])$(id).addEventListener('input',()=>{const value=Number($(id).value);if(object()&&Number.isFinite(value))typing(()=>{object()[prop]=Math.max(min,Math.min(max,value));if(prop==='scale'){const d=A.dimensions(object());$('object-width').value=Math.round(d.width*object().scale);$('object-height').value=Math.round(d.height*object().scale);}});});
+for(const prop of ['expression','pose'])$(prop).addEventListener('change',()=>{if(object())change(()=>object()[prop]=$(prop).value);});
+$('flip').addEventListener('click',()=>{if(object())change(()=>object().flip=!object().flip);});$('delete-object').addEventListener('click',()=>{if(object())change(()=>{panel().objects=panel().objects.filter(o=>o.id!==selected);selected='';});});
+$('duplicate').addEventListener('click',()=>{if(!object())return;if(panel().objects.length>=80){say('This panel has 80 objects.');return;}change(()=>{const o=M.copy(object());o.id=M.create(o.type).id;o.x=Math.min(580,o.x+20);o.y=Math.min(340,o.y+20);panel().objects.push(o);selected=o.id;});});
+for(const [id,delta] of [['forward',1],['backward',-1]])$(id).addEventListener('click',()=>{const i=panel().objects.findIndex(o=>o.id===selected),j=i+delta;if(i>=0&&j>=0&&j<panel().objects.length)change(()=>[panel().objects[i],panel().objects[j]]=[panel().objects[j],panel().objects[i]]);});
+$('copy-panel').addEventListener('click',()=>{if(index>=M.layouts[p.layout].count-1)return;if(p.panels[index+1].objects.length&&!confirm('Replace the next panel? Undo can restore it.'))return;change(()=>{p.panels[index+1]=M.copy(panel());p.panels[index+1].objects.forEach(o=>o.id=M.create(o.type).id);index++;selected='';});});
+$('undo').addEventListener('click',()=>{history();if(!undo.length)return;redo.push(M.copy(p));p=undo.pop();render();save();});$('redo').addEventListener('click',()=>{history();if(!redo.length)return;undo.push(M.copy(p));p=redo.pop();render();save();});
+$('example-project').addEventListener('click',async()=>{
+ if(p.panels.some(panel=>panel.objects.length)&&!confirm('Replace your comic with an example? Save a project file first to keep a copy.'))return;
+ try{const response=await fetch('example.json');if(!response.ok)throw new Error('Example could not load.');const example=M.validate(await response.json());change(()=>{p=example;index=0;selected='';});say('Example loaded. Select a character or bubble and make it your own.');}catch(e){say(e.message);}
+});
+$('new-project').addEventListener('click',()=>{if(confirm('Start a new comic? Save a project file first to keep a separate copy.'))change(()=>{p=M.fresh();index=0;selected='';});});
+function download(blob,name){const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
+const filename=()=> (p.title||'Comic').replace(/[^a-z0-9_-]/gi,'-').slice(0,70);
+$('save-project').addEventListener('click',()=>{history();save();download(new Blob([JSON.stringify(p,null,2)],{type:'application/json'}),filename()+'.teacharcade-comic.json');say('Project file downloaded. Use Open project to resume editing.');});$('open-project').addEventListener('click',()=>$('project-file').click());
+$('project-file').addEventListener('change',async()=>{const file=$('project-file').files[0];if(!file)return;try{if(file.size>2*1024*1024)throw new Error('Choose a project smaller than 2 MB.');const next=M.validate(JSON.parse(await file.text()));if(!confirm('Open this comic in place of the current project? Save your current project file first to keep a copy.'))return;change(()=>{p=next;index=0;selected='';});say('Comic project opened.');}catch(e){say('Could not open project: '+e.message);}finally{$('project-file').value='';}});
+async function canvas(blank=false){history();const draft=M.copy(p);if(blank)draft.panels=draft.panels.map(()=>M.blankPanel());const page=A.page(draft),svg=await window.ComicAssets.inline(page.svg),image=new Image(),url=URL.createObjectURL(new Blob([svg],{type:'image/svg+xml'}));try{await new Promise((resolve,reject)=>{image.onload=resolve;image.onerror=()=>reject(new Error('Comic image could not render.'));image.src=url;});const canvas=document.createElement('canvas');canvas.width=page.width;canvas.height=page.height;const ctx=canvas.getContext('2d');if(!ctx)throw new Error('Image export is unavailable in this browser.');ctx.drawImage(image,0,0);return canvas;}finally{URL.revokeObjectURL(url);}}
+async function exportFile(pdf,blank=false){const buttons=[$('export-png'),$('export-pdf'),$('export-blank')];buttons.forEach(b=>b.disabled=true);say('Preparing comic download…');try{const image=await canvas(blank);if(pdf){const landscape=image.width>image.height,doc=new window.jspdf.jsPDF({orientation:landscape?'landscape':'portrait',unit:'pt',format:'letter'}),w=doc.internal.pageSize.getWidth(),h=doc.internal.pageSize.getHeight(),scale=Math.min((w-48)/image.width,(h-48)/image.height);doc.addImage(image.toDataURL('image/png'),'PNG',(w-image.width*scale)/2,24,image.width*scale,image.height*scale);doc.save(filename()+(blank?'-blank-layout':'')+'.pdf');}else{const blob=await new Promise(resolve=>image.toBlob(resolve,'image/png'));if(!blob)throw new Error('Image export failed.');download(blob,filename()+'.png');}say('Comic downloaded. Save a project file too if you want to edit it later.');}catch(e){say('Could not export comic: '+e.message);}finally{buttons.forEach(b=>b.disabled=false);}}
+$('export-png').addEventListener('click',()=>exportFile(false));$('export-pdf').addEventListener('click',()=>exportFile(true));$('export-blank').addEventListener('click',()=>exportFile(true,true));
+// Object sizing and color controls keep changes in the existing undo/history flow.
+for(const [id,dimension] of [['object-width','width'],['object-height','height']])$(id).addEventListener('change',()=>{const o=object(),value=Number($(id).value);if(o&&Number.isFinite(value)&&value>0)change(()=>o.scale=Math.max(.15,Math.min(4,value/A.dimensions(o)[dimension])));});
+for(const [id,field] of [['object-color','primary'],['skin-color','skin'],['hair-color','hair']])$(id).addEventListener('input',()=>{const o=object();if(o)typing(()=>{if(o.type==='drawing'){o.stroke=$(id).value;if(o.fill!=='none')o.fill=$(id).value;}else o.colors[field]=$(id).value;});});
+$('reset-colors').addEventListener('click',()=>{if(object())change(()=>{object().colors={primary:'',skin:'',hair:''};if(object().type==='drawing'){object().stroke='#243148';if(object().fill!=='none')object().fill='#243148';}});});
+for(const [id,field] of [['scene-zoom','zoom'],['scene-x','x'],['scene-y','y']])$(id).addEventListener('input',()=>typing(()=>panel().backgroundView[field]=Number($(id).value)));
+$('paper-color').addEventListener('input',()=>typing(()=>panel().paperColor=$('paper-color').value));$('reset-scene').addEventListener('click',()=>change(()=>panel().backgroundView={zoom:1,x:0,y:0}));
+const layout=$('layout');layout.replaceChildren();for(const [id,spec] of Object.entries(M.layouts)){const option=document.createElement('option');option.value=id;option.textContent=spec.name;layout.append(option);}
+$('clear-drawing').addEventListener('click',()=>{if(panel().objects.some(o=>o.type==='drawing')&&confirm('Remove the drawings from this panel? Characters, props, and dialogue stay. Undo can restore drawings.'))change(()=>{panel().objects=panel().objects.filter(o=>o.type!=='drawing');selected='';});});
+const stage=$('stage');const point=event=>{const r=stage.getBoundingClientRect();return {x:Math.max(0,Math.min(600,(event.clientX-r.left)*600/r.width)),y:Math.max(0,Math.min(360,(event.clientY-r.top)*360/r.height))};};
+$('drawing-tool').addEventListener('change',()=>{stage.dataset.tool=$('drawing-tool').value;});
+function eraseAt(event){const id=event.target.closest('[data-object]')?.dataset.object;const hit=panel().objects.find(o=>o.id===id);if(hit?.type==='drawing'){if(!drag.changed){remember();drag.changed=true;}panel().objects=panel().objects.filter(o=>o.id!==id);if(selected===id)selected='';draw();}}
+stage.addEventListener('pointerdown',event=>{
+ if(event.button!==0)return;const tool=$('drawing-tool').value,pos=point(event);history();stage.focus({preventScroll:true});
+ if(tool==='erase'){drag={kind:'erase',changed:false};eraseAt(event);}
+ else if(tool!=='select'){
+  if(panel().objects.length>=80){say('This panel has 80 objects. Remove one before drawing.');return;}
+  remember();const o=M.create('drawing');Object.assign(o,{x:0,y:0,drawKind:tool,stroke:$('drawing-color').value,strokeWidth:Number($('drawing-width').value),fill:['rectangle','ellipse'].includes(tool)&&$('drawing-fill').checked?$('drawing-color').value:'none',points:[[pos.x,pos.y],[pos.x,pos.y]]});panel().objects.push(o);selected=o.id;drag={kind:'draw',id:o.id};draw();
+ }else{
+  const target=event.target.closest('[data-object]');selected=target?.dataset.object||'';const resize=event.target.closest('[data-resize]');render();if(!object())return;
+  drag={kind:resize?'resize':'move',id:selected,dx:pos.x-object().x,dy:pos.y-object().y,startX:pos.x,startY:pos.y,startScale:object().scale,changed:false};
+ }
+ stage.setPointerCapture?.(event.pointerId);event.preventDefault();
+});
+stage.addEventListener('pointermove',event=>{
+ if(!drag)return;if(drag.kind==='erase'){// Pointer capture redirects events to the stage; hit-test for erased strokes.
+ const hit=document.elementFromPoint?.(event.clientX,event.clientY);if(hit)eraseAt({target:hit});return;}
+ const o=panel().objects.find(o=>o.id===drag.id);if(!o)return;const pos=point(event);
+ if(drag.kind==='draw'){if(o.drawKind==='pencil'){if(o.points.length<1500)o.points.push([pos.x,pos.y]);}else o.points[1]=[pos.x,pos.y];}
+ else {if(!drag.changed){remember();drag.changed=true;}if(drag.kind==='resize'){const d=A.dimensions(o);o.scale=Math.max(.15,Math.min(4,drag.startScale+Math.max((pos.x-drag.startX)/d.width,(pos.y-drag.startY)/d.height)));$('object-size').value=o.scale;$('object-width').value=Math.round(d.width*o.scale);$('object-height').value=Math.round(d.height*o.scale);}else{o.x=Math.max(0,Math.min(580,pos.x-drag.dx));o.y=Math.max(0,Math.min(340,pos.y-drag.dy));$('object-x').value=Math.round(o.x);$('object-y').value=Math.round(o.y);}}
+ draw();
+});
+function endDrag(){if(!drag)return;if(drag.kind==='draw'){const o=panel().objects.find(o=>o.id===drag.id);if(o){const x=Math.min(580,...o.points.map(p=>p[0])),y=Math.min(340,...o.points.map(p=>p[1]));o.x=x;o.y=y;o.points=o.points.map(p=>[p[0]-x,p[1]-y]);}}drag=null;render();save();updateHistory();}stage.addEventListener('pointerup',endDrag);stage.addEventListener('pointercancel',endDrag);
+stage.addEventListener('keydown',event=>{if(!object())return;const shifts={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]};if(shifts[event.key]){event.preventDefault();change(()=>{const [x,y]=shifts[event.key],step=event.shiftKey?10:3;object().x=Math.max(0,Math.min(580,object().x+x*step));object().y=Math.max(0,Math.min(340,object().y+y*step));});}if(event.key==='Delete'||event.key==='Backspace'){event.preventDefault();$('delete-object').click();}});
+window.addEventListener('keydown',event=>{if((event.ctrlKey||event.metaKey)&&event.key.toLowerCase()==='z'&&!event.target.matches('input,textarea,select')){event.preventDefault();$(event.shiftKey?'redo':'undo').click();}});window.addEventListener('pagehide',()=>{history();save();});document.querySelector('.page-preview').addEventListener('toggle',()=>draw());render();
+})();
