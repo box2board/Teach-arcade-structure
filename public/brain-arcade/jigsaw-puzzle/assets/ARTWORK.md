@@ -83,3 +83,19 @@ These ten original square illustrations were generated for the expanded puzzle l
 - **Castle Courtyard** — fountain, rose-covered arches, herb garden, pennants, horse, and distant towers.
 - **Seaside Carnival** — Ferris wheel, carousel, roller coaster, boardwalk booths, ocean, and sunset lights.
 - **Balloon Valley** — patterned hot-air balloons over river, farms, orchards, village, and wildflower fields.
+
+
+## Additional scenes (30-picture library)
+
+These ten original square illustrations were generated for the expanded puzzle library. Each full image is 1024 × 1024 WebP, paired with a 320 × 320 thumbnail.
+
+- **Redwood Forest** — `redwood-forest.webp`: A towering redwood forest with a fern-lined creek, footbridge, deer, birds and sunbeams.
+- **Ancient Greek Harbor** — `ancient-greek-harbor.webp`: A coastal Greek town festival with a trireme, pottery market, musicians, olive trees and a hilltop temple.
+- **Grand Canyon Rafting** — `grand-canyon-rafting.webp`: A river journey through layered red-rock canyons with rafts, hikers, wildlife and desert flowers.
+- **Wild West Frontier** — `wild-west-frontier.webp`: An 1880s frontier town with a stagecoach, blacksmith, general store, horses, windmill and mesas.
+- **Tropical Volcano Island** — `tropical-volcano-island.webp`: A lush island with a smoking volcano, waterfall, turquoise lagoon, palms, parrots and sea turtles.
+- **Deep Sea Exploration** — `deep-sea-exploration.webp`: A research submarine explores a shipwreck among glowing fish, coral gardens, rays and a distant squid.
+- **Geyser Basin** — `geyser-basin.webp`: An erupting geyser beside colorful mineral springs, boardwalks, wildflowers, bison and mountain pines.
+- **Rooftop Garden** — `rooftop-garden.webp`: Neighbors and students grow vegetables, fruit trees and flowers in a lively urban rooftop garden.
+- **Wildlife Sanctuary** — `wildlife-sanctuary.webp`: A conservation center with otters, foxes, turtles, birds, wetland paths and caretakers.
+- **Lantern Festival** — `lantern-festival.webp`: A mountain town glows with floating lanterns, riverside reflections, music, markets and evening festivities.
