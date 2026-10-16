@@ -95,3 +95,5 @@ kbd { display: inline-flex; min-width: 24px; min-height: 24px; align-items: cent
   .touch-actions { transform: scale(.85); transform-origin: bottom right; }
   .touch-camera-hint { bottom: max(12px, env(safe-area-inset-bottom)); }
 }
+
+.objective-navigation { color: #b8e8ff; font-size: .72rem; font-weight: 700; }

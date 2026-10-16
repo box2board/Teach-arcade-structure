@@ -1,5 +1,6 @@
 import * as THREE from "/assets/vendor/three-0.162.0/three.module.js";
 import { createWorldCollider } from "./world-collision.js";
+import { installObjectiveGuidance } from "./objective-guidance.js";
 
 // v1.1 engine controller.
 // Owns renderer, player, movement, camera and collision registries.
@@ -196,10 +197,30 @@ function createWorld() {
   publishEngine();
 }
 
+function clearMovementInput() {
+  keys.clear();
+  draggingCamera = false;
+  if (dragPointer !== null && renderer.domElement.hasPointerCapture?.(dragPointer)) {
+    renderer.domElement.releasePointerCapture(dragPointer);
+  }
+  dragPointer = null;
+}
+
+function resetCamera() {
+  cameraYaw = worldConfig.camera?.yaw ?? 0;
+  cameraPitch = worldConfig.camera?.pitch ?? .28;
+  cameraDistance = worldConfig.camera?.distance ?? 7.5;
+  updateCamera(true);
+}
+
 function setupInput() {
   window.addEventListener("keydown", (event) => {
     if (questionDialog?.open || completeDialog?.open) return;
     if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Space"].includes(event.code)) event.preventDefault();
+    if (event.code === "KeyR" && !event.repeat) {
+      resetCamera();
+      return;
+    }
     keys.add(event.code);
     if (event.code === "Space" && !event.repeat && grounded) {
       verticalVelocity = JUMP_SPEED;
@@ -207,7 +228,24 @@ function setupInput() {
     }
   }, { passive: false });
   window.addEventListener("keyup", (event) => keys.delete(event.code));
-  window.addEventListener("blur", () => keys.clear());
+  window.addEventListener("blur", clearMovementInput);
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) clearMovementInput();
+  });
+  const modalObserver = new MutationObserver(() => {
+    if (questionDialog?.open || completeDialog?.open) clearMovementInput();
+  });
+  for (const dialog of [questionDialog, completeDialog]) {
+    if (dialog) modalObserver.observe(dialog, { attributes: true, attributeFilter: ["open"] });
+  }
+  const controls = document.getElementById("controlsHint");
+  if (controls) {
+    const hint = document.createElement("span");
+    const key = document.createElement("kbd");
+    key.textContent = "R";
+    hint.append(key, " Reset camera");
+    controls.insertBefore(hint, hideControls || null);
+  }
 
   renderer.domElement.addEventListener("pointerdown", (event) => {
     if (questionDialog?.open || completeDialog?.open) return;
@@ -426,6 +464,7 @@ function publishEngine() {
     get grounded() { return grounded; },
   };
   window.TA3DEngine = api;
+  installObjectiveGuidance(api, config);
   window.dispatchEvent(new CustomEvent("ta3d:engine-ready", { detail: api }));
 }
 
