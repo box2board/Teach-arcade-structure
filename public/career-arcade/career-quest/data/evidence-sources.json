@@ -1,0 +1,71 @@
+{
+  "checkedAt": "2026-10-16",
+  "onetVersion": "31.0",
+  "blsWageYear": 2025,
+  "blsProjectionYears": [
+    2025,
+    2035
+  ],
+  "files": [
+    {
+      "file": "occupation_data.csv",
+      "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/occupation_data.csv",
+      "sha256": "a09eae1d6609686e44e05b7290993a1c8b523d8ca224bc0eedc194c855c3ee02"
+    },
+    {
+      "file": "task_statements.csv",
+      "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/task_statements.csv",
+      "sha256": "4568e14d8db6f05551ad37e056e909b13ebae4a26bcb5ff915bb5f281d582c57"
+    },
+    {
+      "file": "job_zones.csv",
+      "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/job_zones.csv",
+      "sha256": "093f01891ac2e602a8cc6c859ecb619b5bc00eb50cd3f3c1134c05b704481944"
+    },
+    {
+      "file": "sample_of_reported_titles.csv",
+      "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/sample_of_reported_titles.csv",
+      "sha256": "5d76040b7b0602ea217660648f8363e7980edd1870f96574a2eeaa6a822d2666"
+    },
+    {
+      "file": "job_titles.csv",
+      "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/job_titles.csv",
+      "sha256": "75a3b46d6edc5996117c10c9ed488c9a06f7495d02969e9d12873ab14a21540c"
+    },
+    {
+      "file": "work_context.csv",
+      "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/work_context.csv",
+      "sha256": "599f6bff23cbc3e7d8915e25c0167324b1e00c4117bcbcd9a0c754fe47cb4fd7"
+    },
+    {
+      "file": "work_context_categories.csv",
+      "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/work_context_categories.csv",
+      "sha256": "1a6ca4b051a94aad61b931c06bc62d16a5527cd4009a94b9effa3d470399ca4a"
+    },
+    {
+      "file": "essential_skills.csv",
+      "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/essential_skills.csv",
+      "sha256": "68c4d31d8c55077238395dca40cc4e6d32e6a608b5474bb8264b1f98ae415bd7"
+    },
+    {
+      "file": "transferable_skills.csv",
+      "url": "https://www.onetcenter.org/dl_files/database/db_31_0_csv/transferable_skills.csv",
+      "sha256": "f17d0419e818a3bf2f55076510c76c4aef01cc8f5aee2670d2f44f6f44ac60f7"
+    },
+    {
+      "file": "projections.html",
+      "url": "https://www.bls.gov/emp/tables/occupational-projections-and-characteristics.htm",
+      "sha256": "987ced8ba3b093f1affb70c63ba533394cfa4b0fddd931441a50a5b8b294352f"
+    },
+    {
+      "file": "financial-analysts.html",
+      "url": "https://www.bls.gov/ooh/business-and-financial/financial-analysts.htm",
+      "sha256": "8594a3324b3adc99555bb80b26197a378e4c5556e473c8e0bd97d60f6a5b80a1"
+    },
+    {
+      "file": "emts-and-paramedics.html",
+      "url": "https://www.bls.gov/ooh/healthcare/emts-and-paramedics.htm",
+      "sha256": "3ff2c93a8d4f55d1852a1ee87b6486c2b93bd86885cf2f726095eea000c0217d"
+    }
+  ]
+}

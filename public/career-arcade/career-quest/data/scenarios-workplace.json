@@ -1,923 +1,234 @@
 [
   {
     "id": "work-01",
-    "category": "productivity/burnout",
-    "title": "Productivity/Burnout Scenario 1",
-    "prompt": "A realistic productivity/burnout challenge appears in year planning. You need to choose a response with tradeoffs.",
-    "tone": "realistic with light humor",
+    "category": "workplace",
+    "title": "The deadline changed",
+    "prompt": "Your supervisor moves a project deadline forward by three days. Finishing everything alone will require several late evenings.",
     "choices": [
       {
-        "label": "Set boundaries",
-        "text": "You protect rest time and decline extra tasks.",
+        "label": "Ask to prioritize",
+        "text": "Explain the time limit and agree on the most important tasks.",
         "effects": {
-          "workLife": 5,
-          "stress": -4,
-          "happiness": 3,
-          "performance": -1
+          "communication": 3,
+          "professionalism": 2,
+          "performance": 2,
+          "stress": -3
         },
-        "feedback": "You logged off on time and the world kept spinning."
+        "feedback": "You made the limits visible. Some tasks were postponed, but the most important work moved forward."
       },
       {
-        "label": "Take the stretch role",
-        "text": "You accept a temporary high-visibility assignment.",
+        "label": "Work extra hours",
+        "text": "Keep the full scope and give up your evenings this week.",
         "effects": {
           "performance": 5,
-          "leadership": 3,
-          "stress": 5,
-          "cash": 400
+          "stress": 7,
+          "workLife": -7,
+          "happiness": -2
         },
-        "feedback": "Big learning curve, big spotlight, big calendar chaos."
+        "feedback": "You delivered more work, at the cost of recovery time. This may be difficult to sustain."
       },
       {
-        "label": "Ignore for now",
-        "text": "You postpone the issue and focus on current tasks.",
+        "label": "Keep the original pace",
+        "text": "Finish what you can without discussing the new deadline.",
         "effects": {
-          "stress": -1,
-          "performance": -3,
-          "professionalism": -2
+          "workLife": 3,
+          "performance": -5,
+          "stress": 2
         },
-        "feedback": "Short-term calm, long-term cleanup."
+        "feedback": "You protected your time, but your supervisor had no warning that the agreed work would be incomplete."
       }
     ]
   },
   {
     "id": "work-02",
-    "category": "opportunity",
-    "title": "Opportunity Scenario 2",
-    "prompt": "A realistic opportunity challenge appears in year planning. You need to choose a response with tradeoffs.",
-    "tone": "realistic with light humor",
+    "category": "workplace",
+    "title": "Learn a new tool",
+    "prompt": "Your workplace is adopting unfamiliar software. A short optional course costs $450 and takes two weekends.",
     "choices": [
       {
-        "label": "Take initiative",
-        "text": "You volunteer to lead the fix and communicate clearly.",
+        "label": "Take the course",
+        "text": "Pay for structured practice outside work.",
         "effects": {
-          "performance": 6,
-          "stress": 4,
-          "leadership": 4,
-          "communication": 3,
-          "happiness": 1
-        },
-        "feedback": "Your initiative got noticed, and your inbox now has your name on every problem."
-      },
-      {
-        "label": "Play it safe",
-        "text": "You follow policy and ask for manager direction first.",
-        "effects": {
+          "cash": -450,
+          "techLiteracy": 5,
           "performance": 3,
-          "stress": -2,
-          "professionalism": 3,
-          "timeManagement": 2
+          "workLife": -4
         },
-        "feedback": "It was steady and responsible, even if it was not flashy."
+        "feedback": "You gained skills quickly, but paid in both money and free time."
       },
       {
-        "label": "Address ethics concern",
-        "text": "You document facts and report through the right channel.",
+        "label": "Use free practice resources",
+        "text": "Set aside small blocks of time for self-study.",
         "effects": {
-          "professionalism": 4,
-          "stress": 3,
-          "happiness": 1,
-          "performance": 2
+          "techLiteracy": 3,
+          "timeManagement": 2,
+          "stress": 2
         },
-        "feedback": "Uncomfortable? yes. Necessary? also yes."
+        "feedback": "Your cash stayed available. Learning took longer and required a consistent routine."
+      },
+      {
+        "label": "Wait for formal training",
+        "text": "Focus on current duties until the employer provides support.",
+        "effects": {
+          "stress": -2,
+          "performance": -2
+        },
+        "feedback": "You avoided extra demands now, but the transition left you less prepared."
       }
     ]
   },
   {
     "id": "work-03",
     "category": "workplace",
-    "title": "Workplace Scenario 3",
-    "prompt": "A realistic workplace challenge appears in year planning. You need to choose a response with tradeoffs.",
-    "tone": "realistic with light humor",
+    "title": "A mistake in the records",
+    "prompt": "You notice a mistake in a report you already submitted. Correcting it will delay the team by an hour.",
     "choices": [
       {
-        "label": "Take initiative",
-        "text": "You volunteer to lead the fix and communicate clearly.",
+        "label": "Tell the team now",
+        "text": "Describe the error and help correct it.",
         "effects": {
-          "performance": 6,
-          "stress": 4,
-          "leadership": 4,
-          "communication": 3,
-          "happiness": 1
-        },
-        "feedback": "Your initiative got noticed, and your inbox now has your name on every problem."
-      },
-      {
-        "label": "Collaborate with mentor",
-        "text": "You seek advice before deciding.",
-        "effects": {
-          "adaptability": 3,
+          "professionalism": 5,
           "communication": 2,
-          "performance": 2,
-          "stress": -1
+          "stress": 2
         },
-        "feedback": "A five-minute mentor chat saved five hours of guessing."
+        "feedback": "The delay was inconvenient. Catching the error before others relied on it protected trust."
       },
       {
-        "label": "Play it safe",
-        "text": "You follow policy and ask for manager direction first.",
+        "label": "Double-check first",
+        "text": "Review your source material, then report what you confirm.",
         "effects": {
-          "performance": 3,
-          "stress": -2,
+          "problemSolving": 3,
           "professionalism": 3,
-          "timeManagement": 2
+          "timeManagement": -1
         },
-        "feedback": "It was steady and responsible, even if it was not flashy."
+        "feedback": "You brought evidence with your concern, though the additional checking took time."
+      },
+      {
+        "label": "Hope nobody notices",
+        "text": "Leave the report as submitted.",
+        "effects": {
+          "stress": 5,
+          "professionalism": -5,
+          "performance": -3
+        },
+        "feedback": "The unresolved mistake stayed in the record. Avoiding an uncomfortable conversation created more uncertainty."
       }
     ]
   },
   {
     "id": "work-04",
-    "category": "ethics",
-    "title": "Ethics Scenario 4",
-    "prompt": "A realistic ethics challenge appears in year planning. You need to choose a response with tradeoffs.",
-    "tone": "realistic with light humor",
+    "category": "workplace",
+    "title": "Lead the next project?",
+    "prompt": "Your manager offers you a temporary team-lead assignment with a $600 bonus. It adds responsibility to your normal duties.",
     "choices": [
       {
-        "label": "Ignore for now",
-        "text": "You postpone the issue and focus on current tasks.",
+        "label": "Accept the full assignment",
+        "text": "Take the bonus and lead the team.",
         "effects": {
-          "stress": -1,
-          "performance": -3,
-          "professionalism": -2
+          "cash": 600,
+          "leadership": 5,
+          "performance": 3,
+          "stress": 7,
+          "workLife": -4
         },
-        "feedback": "Short-term calm, long-term cleanup."
+        "feedback": "You gained income and leadership practice. The added workload reduced your time outside work."
       },
       {
-        "label": "Collaborate with mentor",
-        "text": "You seek advice before deciding.",
+        "label": "Negotiate the workload",
+        "text": "Ask which existing tasks can be reassigned before accepting.",
         "effects": {
-          "adaptability": 3,
-          "communication": 2,
-          "performance": 2,
-          "stress": -1
+          "cash": 300,
+          "communication": 4,
+          "leadership": 3,
+          "stress": 2
         },
-        "feedback": "A five-minute mentor chat saved five hours of guessing."
+        "feedback": "A narrower assignment came with a smaller bonus and a more manageable workload."
       },
       {
-        "label": "Set boundaries",
-        "text": "You protect rest time and decline extra tasks.",
+        "label": "Decline this time",
+        "text": "Keep your current responsibilities.",
         "effects": {
-          "workLife": 5,
-          "stress": -4,
-          "happiness": 3,
-          "performance": -1
+          "stress": -3,
+          "workLife": 3
         },
-        "feedback": "You logged off on time and the world kept spinning."
+        "feedback": "You protected capacity. The bonus and this particular leadership opportunity went to someone else."
       }
     ]
   },
   {
     "id": "work-05",
-    "category": "productivity/burnout",
-    "title": "Productivity/Burnout Scenario 5",
-    "prompt": "A realistic productivity/burnout challenge appears in year planning. You need to choose a response with tradeoffs.",
-    "tone": "realistic with light humor",
+    "category": "workplace",
+    "title": "A teammate is falling behind",
+    "prompt": "A teammate asks for help while you are finishing your own assignment. Both tasks are due tomorrow.",
     "choices": [
       {
-        "label": "Collaborate with mentor",
-        "text": "You seek advice before deciding.",
+        "label": "Plan a short help session",
+        "text": "Offer thirty minutes and focus on the main obstacle.",
         "effects": {
-          "adaptability": 3,
-          "communication": 2,
+          "teamwork": 4,
+          "timeManagement": 3,
+          "stress": 1
+        },
+        "feedback": "A clear time boundary let you support the team without taking over the task."
+      },
+      {
+        "label": "Finish their work too",
+        "text": "Stay late and complete both assignments.",
+        "effects": {
+          "teamwork": 2,
+          "performance": 4,
+          "stress": 6,
+          "workLife": -6
+        },
+        "feedback": "The tasks were completed, but you absorbed the extra workload and your teammate missed practice."
+      },
+      {
+        "label": "Focus on your assignment",
+        "text": "Suggest they ask the supervisor for help.",
+        "effects": {
           "performance": 2,
-          "stress": -1
+          "teamwork": -1,
+          "workLife": 2
         },
-        "feedback": "A five-minute mentor chat saved five hours of guessing."
-      },
-      {
-        "label": "Set boundaries",
-        "text": "You protect rest time and decline extra tasks.",
-        "effects": {
-          "workLife": 5,
-          "stress": -4,
-          "happiness": 3,
-          "performance": -1
-        },
-        "feedback": "You logged off on time and the world kept spinning."
-      },
-      {
-        "label": "Address ethics concern",
-        "text": "You document facts and report through the right channel.",
-        "effects": {
-          "professionalism": 4,
-          "stress": 3,
-          "happiness": 1,
-          "performance": 2
-        },
-        "feedback": "Uncomfortable? yes. Necessary? also yes."
+        "feedback": "You met your own commitment. The teammate still needed another source of support."
       }
     ]
   },
   {
     "id": "work-06",
-    "category": "ethics",
-    "title": "Ethics Scenario 6",
-    "prompt": "A realistic ethics challenge appears in year planning. You need to choose a response with tradeoffs.",
-    "tone": "realistic with light humor",
-    "choices": [
-      {
-        "label": "Collaborate with mentor",
-        "text": "You seek advice before deciding.",
-        "effects": {
-          "adaptability": 3,
-          "communication": 2,
-          "performance": 2,
-          "stress": -1
-        },
-        "feedback": "A five-minute mentor chat saved five hours of guessing."
-      },
-      {
-        "label": "Optimize your budget",
-        "text": "You trim optional spending and automate savings.",
-        "effects": {
-          "cash": 700,
-          "financialLiteracy": 4,
-          "happiness": -1,
-          "timeManagement": 1
-        },
-        "feedback": "Future-you sends a thank-you card, current-you misses takeout."
-      },
-      {
-        "label": "Play it safe",
-        "text": "You follow policy and ask for manager direction first.",
-        "effects": {
-          "performance": 3,
-          "stress": -2,
-          "professionalism": 3,
-          "timeManagement": 2
-        },
-        "feedback": "It was steady and responsible, even if it was not flashy."
-      }
-    ]
-  },
-  {
-    "id": "work-07",
-    "category": "productivity/burnout",
-    "title": "Productivity/Burnout Scenario 7",
-    "prompt": "A realistic productivity/burnout challenge appears in year planning. You need to choose a response with tradeoffs.",
-    "tone": "realistic with light humor",
-    "choices": [
-      {
-        "label": "Help the team",
-        "text": "You focus on teammate support and shared ownership.",
-        "effects": {
-          "teamwork": 4,
-          "communication": 2,
-          "workLife": 2,
-          "performance": 2
-        },
-        "feedback": "The team chemistry improved and people actually answered each other's messages."
-      },
-      {
-        "label": "Play it safe",
-        "text": "You follow policy and ask for manager direction first.",
-        "effects": {
-          "performance": 3,
-          "stress": -2,
-          "professionalism": 3,
-          "timeManagement": 2
-        },
-        "feedback": "It was steady and responsible, even if it was not flashy."
-      },
-      {
-        "label": "Take initiative",
-        "text": "You volunteer to lead the fix and communicate clearly.",
-        "effects": {
-          "performance": 6,
-          "stress": 4,
-          "leadership": 4,
-          "communication": 3,
-          "happiness": 1
-        },
-        "feedback": "Your initiative got noticed, and your inbox now has your name on every problem."
-      }
-    ]
-  },
-  {
-    "id": "work-08",
-    "category": "productivity/burnout",
-    "title": "Productivity/Burnout Scenario 8",
-    "prompt": "A realistic productivity/burnout challenge appears in year planning. You need to choose a response with tradeoffs.",
-    "tone": "realistic with light humor",
-    "choices": [
-      {
-        "label": "Take the stretch role",
-        "text": "You accept a temporary high-visibility assignment.",
-        "effects": {
-          "performance": 5,
-          "leadership": 3,
-          "stress": 5,
-          "cash": 400
-        },
-        "feedback": "Big learning curve, big spotlight, big calendar chaos."
-      },
-      {
-        "label": "Set boundaries",
-        "text": "You protect rest time and decline extra tasks.",
-        "effects": {
-          "workLife": 5,
-          "stress": -4,
-          "happiness": 3,
-          "performance": -1
-        },
-        "feedback": "You logged off on time and the world kept spinning."
-      },
-      {
-        "label": "Invest in growth",
-        "text": "You pay for a short course and mentor check-ins.",
-        "effects": {
-          "cash": -500,
-          "problemSolving": 3,
-          "techLiteracy": 3,
-          "performance": 3
-        },
-        "feedback": "You spent money now to avoid being confused later."
-      }
-    ]
-  },
-  {
-    "id": "work-09",
     "category": "workplace",
-    "title": "Workplace Scenario 9",
-    "prompt": "A realistic workplace challenge appears in year planning. You need to choose a response with tradeoffs.",
-    "tone": "realistic with light humor",
+    "title": "Feedback that stings",
+    "prompt": "Your supervisor says your last presentation was hard to follow. You feel the effort you put in was overlooked.",
     "choices": [
       {
-        "label": "Collaborate with mentor",
-        "text": "You seek advice before deciding.",
+        "label": "Ask for a specific example",
+        "text": "Find one improvement to practice before the next presentation.",
         "effects": {
+          "communication": 4,
           "adaptability": 3,
-          "communication": 2,
-          "performance": 2,
-          "stress": -1
+          "stress": 2
         },
-        "feedback": "A five-minute mentor chat saved five hours of guessing."
+        "feedback": "The feedback became a concrete next step instead of a judgment about your ability."
       },
       {
-        "label": "Take the stretch role",
-        "text": "You accept a temporary high-visibility assignment.",
+        "label": "Ask a peer to rehearse",
+        "text": "Use part of your free time to practice with someone you trust.",
         "effects": {
-          "performance": 5,
-          "leadership": 3,
-          "stress": 5,
-          "cash": 400
+          "communication": 4,
+          "teamwork": 2,
+          "workLife": -2
         },
-        "feedback": "Big learning curve, big spotlight, big calendar chaos."
+        "feedback": "Practice improved your preparation and cost some time outside normal duties."
       },
       {
-        "label": "Ignore for now",
-        "text": "You postpone the issue and focus on current tasks.",
+        "label": "Dismiss the feedback",
+        "text": "Keep the same approach next time.",
         "effects": {
           "stress": -1,
           "performance": -3,
-          "professionalism": -2
+          "adaptability": -2
         },
-        "feedback": "Short-term calm, long-term cleanup."
-      }
-    ]
-  },
-  {
-    "id": "work-10",
-    "category": "opportunity",
-    "title": "Opportunity Scenario 10",
-    "prompt": "A realistic opportunity challenge appears in year planning. You need to choose a response with tradeoffs.",
-    "tone": "realistic with light humor",
-    "choices": [
-      {
-        "label": "Set boundaries",
-        "text": "You protect rest time and decline extra tasks.",
-        "effects": {
-          "workLife": 5,
-          "stress": -4,
-          "happiness": 3,
-          "performance": -1
-        },
-        "feedback": "You logged off on time and the world kept spinning."
-      },
-      {
-        "label": "Invest in growth",
-        "text": "You pay for a short course and mentor check-ins.",
-        "effects": {
-          "cash": -500,
-          "problemSolving": 3,
-          "techLiteracy": 3,
-          "performance": 3
-        },
-        "feedback": "You spent money now to avoid being confused later."
-      },
-      {
-        "label": "Collaborate with mentor",
-        "text": "You seek advice before deciding.",
-        "effects": {
-          "adaptability": 3,
-          "communication": 2,
-          "performance": 2,
-          "stress": -1
-        },
-        "feedback": "A five-minute mentor chat saved five hours of guessing."
-      }
-    ]
-  },
-  {
-    "id": "work-11",
-    "category": "opportunity",
-    "title": "Opportunity Scenario 11",
-    "prompt": "A realistic opportunity challenge appears in year planning. You need to choose a response with tradeoffs.",
-    "tone": "realistic with light humor",
-    "choices": [
-      {
-        "label": "Optimize your budget",
-        "text": "You trim optional spending and automate savings.",
-        "effects": {
-          "cash": 700,
-          "financialLiteracy": 4,
-          "happiness": -1,
-          "timeManagement": 1
-        },
-        "feedback": "Future-you sends a thank-you card, current-you misses takeout."
-      },
-      {
-        "label": "Ignore for now",
-        "text": "You postpone the issue and focus on current tasks.",
-        "effects": {
-          "stress": -1,
-          "performance": -3,
-          "professionalism": -2
-        },
-        "feedback": "Short-term calm, long-term cleanup."
-      },
-      {
-        "label": "Help the team",
-        "text": "You focus on teammate support and shared ownership.",
-        "effects": {
-          "teamwork": 4,
-          "communication": 2,
-          "workLife": 2,
-          "performance": 2
-        },
-        "feedback": "The team chemistry improved and people actually answered each other's messages."
-      }
-    ]
-  },
-  {
-    "id": "work-12",
-    "category": "workplace",
-    "title": "Workplace Scenario 12",
-    "prompt": "A realistic workplace challenge appears in year planning. You need to choose a response with tradeoffs.",
-    "tone": "realistic with light humor",
-    "choices": [
-      {
-        "label": "Set boundaries",
-        "text": "You protect rest time and decline extra tasks.",
-        "effects": {
-          "workLife": 5,
-          "stress": -4,
-          "happiness": 3,
-          "performance": -1
-        },
-        "feedback": "You logged off on time and the world kept spinning."
-      },
-      {
-        "label": "Play it safe",
-        "text": "You follow policy and ask for manager direction first.",
-        "effects": {
-          "performance": 3,
-          "stress": -2,
-          "professionalism": 3,
-          "timeManagement": 2
-        },
-        "feedback": "It was steady and responsible, even if it was not flashy."
-      },
-      {
-        "label": "Help the team",
-        "text": "You focus on teammate support and shared ownership.",
-        "effects": {
-          "teamwork": 4,
-          "communication": 2,
-          "workLife": 2,
-          "performance": 2
-        },
-        "feedback": "The team chemistry improved and people actually answered each other's messages."
-      }
-    ]
-  },
-  {
-    "id": "work-13",
-    "category": "opportunity",
-    "title": "Opportunity Scenario 13",
-    "prompt": "A realistic opportunity challenge appears in year planning. You need to choose a response with tradeoffs.",
-    "tone": "realistic with light humor",
-    "choices": [
-      {
-        "label": "Set boundaries",
-        "text": "You protect rest time and decline extra tasks.",
-        "effects": {
-          "workLife": 5,
-          "stress": -4,
-          "happiness": 3,
-          "performance": -1
-        },
-        "feedback": "You logged off on time and the world kept spinning."
-      },
-      {
-        "label": "Play it safe",
-        "text": "You follow policy and ask for manager direction first.",
-        "effects": {
-          "performance": 3,
-          "stress": -2,
-          "professionalism": 3,
-          "timeManagement": 2
-        },
-        "feedback": "It was steady and responsible, even if it was not flashy."
-      },
-      {
-        "label": "Take initiative",
-        "text": "You volunteer to lead the fix and communicate clearly.",
-        "effects": {
-          "performance": 6,
-          "stress": 4,
-          "leadership": 4,
-          "communication": 3,
-          "happiness": 1
-        },
-        "feedback": "Your initiative got noticed, and your inbox now has your name on every problem."
-      }
-    ]
-  },
-  {
-    "id": "work-14",
-    "category": "opportunity",
-    "title": "Opportunity Scenario 14",
-    "prompt": "A realistic opportunity challenge appears in year planning. You need to choose a response with tradeoffs.",
-    "tone": "realistic with light humor",
-    "choices": [
-      {
-        "label": "Optimize your budget",
-        "text": "You trim optional spending and automate savings.",
-        "effects": {
-          "cash": 700,
-          "financialLiteracy": 4,
-          "happiness": -1,
-          "timeManagement": 1
-        },
-        "feedback": "Future-you sends a thank-you card, current-you misses takeout."
-      },
-      {
-        "label": "Take the stretch role",
-        "text": "You accept a temporary high-visibility assignment.",
-        "effects": {
-          "performance": 5,
-          "leadership": 3,
-          "stress": 5,
-          "cash": 400
-        },
-        "feedback": "Big learning curve, big spotlight, big calendar chaos."
-      },
-      {
-        "label": "Help the team",
-        "text": "You focus on teammate support and shared ownership.",
-        "effects": {
-          "teamwork": 4,
-          "communication": 2,
-          "workLife": 2,
-          "performance": 2
-        },
-        "feedback": "The team chemistry improved and people actually answered each other's messages."
-      }
-    ]
-  },
-  {
-    "id": "work-15",
-    "category": "opportunity",
-    "title": "Opportunity Scenario 15",
-    "prompt": "A realistic opportunity challenge appears in year planning. You need to choose a response with tradeoffs.",
-    "tone": "realistic with light humor",
-    "choices": [
-      {
-        "label": "Optimize your budget",
-        "text": "You trim optional spending and automate savings.",
-        "effects": {
-          "cash": 700,
-          "financialLiteracy": 4,
-          "happiness": -1,
-          "timeManagement": 1
-        },
-        "feedback": "Future-you sends a thank-you card, current-you misses takeout."
-      },
-      {
-        "label": "Play it safe",
-        "text": "You follow policy and ask for manager direction first.",
-        "effects": {
-          "performance": 3,
-          "stress": -2,
-          "professionalism": 3,
-          "timeManagement": 2
-        },
-        "feedback": "It was steady and responsible, even if it was not flashy."
-      },
-      {
-        "label": "Collaborate with mentor",
-        "text": "You seek advice before deciding.",
-        "effects": {
-          "adaptability": 3,
-          "communication": 2,
-          "performance": 2,
-          "stress": -1
-        },
-        "feedback": "A five-minute mentor chat saved five hours of guessing."
-      }
-    ]
-  },
-  {
-    "id": "work-16",
-    "category": "productivity/burnout",
-    "title": "Productivity/Burnout Scenario 16",
-    "prompt": "A realistic productivity/burnout challenge appears in year planning. You need to choose a response with tradeoffs.",
-    "tone": "realistic with light humor",
-    "choices": [
-      {
-        "label": "Set boundaries",
-        "text": "You protect rest time and decline extra tasks.",
-        "effects": {
-          "workLife": 5,
-          "stress": -4,
-          "happiness": 3,
-          "performance": -1
-        },
-        "feedback": "You logged off on time and the world kept spinning."
-      },
-      {
-        "label": "Optimize your budget",
-        "text": "You trim optional spending and automate savings.",
-        "effects": {
-          "cash": 700,
-          "financialLiteracy": 4,
-          "happiness": -1,
-          "timeManagement": 1
-        },
-        "feedback": "Future-you sends a thank-you card, current-you misses takeout."
-      },
-      {
-        "label": "Address ethics concern",
-        "text": "You document facts and report through the right channel.",
-        "effects": {
-          "professionalism": 4,
-          "stress": 3,
-          "happiness": 1,
-          "performance": 2
-        },
-        "feedback": "Uncomfortable? yes. Necessary? also yes."
-      }
-    ]
-  },
-  {
-    "id": "work-17",
-    "category": "opportunity",
-    "title": "Opportunity Scenario 17",
-    "prompt": "A realistic opportunity challenge appears in year planning. You need to choose a response with tradeoffs.",
-    "tone": "realistic with light humor",
-    "choices": [
-      {
-        "label": "Set boundaries",
-        "text": "You protect rest time and decline extra tasks.",
-        "effects": {
-          "workLife": 5,
-          "stress": -4,
-          "happiness": 3,
-          "performance": -1
-        },
-        "feedback": "You logged off on time and the world kept spinning."
-      },
-      {
-        "label": "Address ethics concern",
-        "text": "You document facts and report through the right channel.",
-        "effects": {
-          "professionalism": 4,
-          "stress": 3,
-          "happiness": 1,
-          "performance": 2
-        },
-        "feedback": "Uncomfortable? yes. Necessary? also yes."
-      },
-      {
-        "label": "Optimize your budget",
-        "text": "You trim optional spending and automate savings.",
-        "effects": {
-          "cash": 700,
-          "financialLiteracy": 4,
-          "happiness": -1,
-          "timeManagement": 1
-        },
-        "feedback": "Future-you sends a thank-you card, current-you misses takeout."
-      }
-    ]
-  },
-  {
-    "id": "work-18",
-    "category": "opportunity",
-    "title": "Opportunity Scenario 18",
-    "prompt": "A realistic opportunity challenge appears in year planning. You need to choose a response with tradeoffs.",
-    "tone": "realistic with light humor",
-    "choices": [
-      {
-        "label": "Address ethics concern",
-        "text": "You document facts and report through the right channel.",
-        "effects": {
-          "professionalism": 4,
-          "stress": 3,
-          "happiness": 1,
-          "performance": 2
-        },
-        "feedback": "Uncomfortable? yes. Necessary? also yes."
-      },
-      {
-        "label": "Take the stretch role",
-        "text": "You accept a temporary high-visibility assignment.",
-        "effects": {
-          "performance": 5,
-          "leadership": 3,
-          "stress": 5,
-          "cash": 400
-        },
-        "feedback": "Big learning curve, big spotlight, big calendar chaos."
-      },
-      {
-        "label": "Play it safe",
-        "text": "You follow policy and ask for manager direction first.",
-        "effects": {
-          "performance": 3,
-          "stress": -2,
-          "professionalism": 3,
-          "timeManagement": 2
-        },
-        "feedback": "It was steady and responsible, even if it was not flashy."
-      }
-    ]
-  },
-  {
-    "id": "work-19",
-    "category": "opportunity",
-    "title": "Opportunity Scenario 19",
-    "prompt": "A realistic opportunity challenge appears in year planning. You need to choose a response with tradeoffs.",
-    "tone": "realistic with light humor",
-    "choices": [
-      {
-        "label": "Invest in growth",
-        "text": "You pay for a short course and mentor check-ins.",
-        "effects": {
-          "cash": -500,
-          "problemSolving": 3,
-          "techLiteracy": 3,
-          "performance": 3
-        },
-        "feedback": "You spent money now to avoid being confused later."
-      },
-      {
-        "label": "Help the team",
-        "text": "You focus on teammate support and shared ownership.",
-        "effects": {
-          "teamwork": 4,
-          "communication": 2,
-          "workLife": 2,
-          "performance": 2
-        },
-        "feedback": "The team chemistry improved and people actually answered each other's messages."
-      },
-      {
-        "label": "Ignore for now",
-        "text": "You postpone the issue and focus on current tasks.",
-        "effects": {
-          "stress": -1,
-          "performance": -3,
-          "professionalism": -2
-        },
-        "feedback": "Short-term calm, long-term cleanup."
-      }
-    ]
-  },
-  {
-    "id": "work-20",
-    "category": "workplace",
-    "title": "Workplace Scenario 20",
-    "prompt": "A realistic workplace challenge appears in year planning. You need to choose a response with tradeoffs.",
-    "tone": "realistic with light humor",
-    "choices": [
-      {
-        "label": "Take the stretch role",
-        "text": "You accept a temporary high-visibility assignment.",
-        "effects": {
-          "performance": 5,
-          "leadership": 3,
-          "stress": 5,
-          "cash": 400
-        },
-        "feedback": "Big learning curve, big spotlight, big calendar chaos."
-      },
-      {
-        "label": "Collaborate with mentor",
-        "text": "You seek advice before deciding.",
-        "effects": {
-          "adaptability": 3,
-          "communication": 2,
-          "performance": 2,
-          "stress": -1
-        },
-        "feedback": "A five-minute mentor chat saved five hours of guessing."
-      },
-      {
-        "label": "Play it safe",
-        "text": "You follow policy and ask for manager direction first.",
-        "effects": {
-          "performance": 3,
-          "stress": -2,
-          "professionalism": 3,
-          "timeManagement": 2
-        },
-        "feedback": "It was steady and responsible, even if it was not flashy."
-      }
-    ]
-  },
-  {
-    "id": "work-21",
-    "category": "workplace",
-    "title": "Workplace Scenario 21",
-    "prompt": "A realistic workplace challenge appears in year planning. You need to choose a response with tradeoffs.",
-    "tone": "realistic with light humor",
-    "choices": [
-      {
-        "label": "Play it safe",
-        "text": "You follow policy and ask for manager direction first.",
-        "effects": {
-          "performance": 3,
-          "stress": -2,
-          "professionalism": 3,
-          "timeManagement": 2
-        },
-        "feedback": "It was steady and responsible, even if it was not flashy."
-      },
-      {
-        "label": "Help the team",
-        "text": "You focus on teammate support and shared ownership.",
-        "effects": {
-          "teamwork": 4,
-          "communication": 2,
-          "workLife": 2,
-          "performance": 2
-        },
-        "feedback": "The team chemistry improved and people actually answered each other's messages."
-      },
-      {
-        "label": "Address ethics concern",
-        "text": "You document facts and report through the right channel.",
-        "effects": {
-          "professionalism": 4,
-          "stress": 3,
-          "happiness": 1,
-          "performance": 2
-        },
-        "feedback": "Uncomfortable? yes. Necessary? also yes."
-      }
-    ]
-  },
-  {
-    "id": "work-22",
-    "category": "opportunity",
-    "title": "Opportunity Scenario 22",
-    "prompt": "A realistic opportunity challenge appears in year planning. You need to choose a response with tradeoffs.",
-    "tone": "realistic with light humor",
-    "choices": [
-      {
-        "label": "Ignore for now",
-        "text": "You postpone the issue and focus on current tasks.",
-        "effects": {
-          "stress": -1,
-          "performance": -3,
-          "professionalism": -2
-        },
-        "feedback": "Short-term calm, long-term cleanup."
-      },
-      {
-        "label": "Invest in growth",
-        "text": "You pay for a short course and mentor check-ins.",
-        "effects": {
-          "cash": -500,
-          "problemSolving": 3,
-          "techLiteracy": 3,
-          "performance": 3
-        },
-        "feedback": "You spent money now to avoid being confused later."
-      },
-      {
-        "label": "Help the team",
-        "text": "You focus on teammate support and shared ownership.",
-        "effects": {
-          "teamwork": 4,
-          "communication": 2,
-          "workLife": 2,
-          "performance": 2
-        },
-        "feedback": "The team chemistry improved and people actually answered each other's messages."
+        "feedback": "You avoided the discomfort of changing, but the original communication problem remained."
       }
     ]
   }
