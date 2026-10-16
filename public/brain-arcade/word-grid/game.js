@@ -55,6 +55,7 @@
     activePointerId: null,
     pointerMoved: false,
     pointerStartIndex: null,
+    autoSubmitTimer: null,
     justScored: false,
     lastToastTime: 0
   };
@@ -114,6 +115,12 @@
       [dice[i], dice[j]] = [dice[j], dice[i]];
     }
     state.grid = dice.map((faces) => faces[Math.floor(Math.random() * faces.length)]);
+  };
+
+  const drawReplacementLetter = () => {
+    const dice = diceBySize[state.settings.gridSize];
+    const die = dice[Math.floor(Math.random() * dice.length)];
+    return die[Math.floor(Math.random() * die.length)];
   };
 
   const init = async () => {
@@ -251,7 +258,30 @@
       });
     };
 
+    const clearAutoSubmit = () => {
+      clearTimeout(state.autoSubmitTimer);
+      state.autoSubmitTimer = null;
+    };
+
+    const scheduleAutoSubmit = () => {
+      clearAutoSubmit();
+      if (!state.settings.speedMode || !state.selected.length) return;
+      const candidate = getCurrentWord();
+      if (candidate.length < state.settings.minLength) return;
+      if (state.settings.strictDictionary && (!DICT_READY || !DICT.has(candidate))) return;
+      if (state.foundSet.has(candidate)) return;
+
+      // Give tap players a moment to extend a valid word into a longer one.
+      state.autoSubmitTimer = setTimeout(() => {
+        state.autoSubmitTimer = null;
+        if (getCurrentWord() === candidate) {
+          attemptScoreWord(candidate, { showToasts: true });
+        }
+      }, 420);
+    };
+
     const resetSelection = () => {
+      clearAutoSubmit();
       state.selected = [];
       elements.currentWord.textContent = "—";
       elements.wordPreviewPoints.textContent = "";
@@ -328,6 +358,7 @@
 
     const attemptSelectTile = (tile) => {
       if (!state.isActive || state.isPaused || state.isEnded) return;
+      clearAutoSubmit();
       const index = getTileIndex(tile);
       const selected = state.selected;
       const lastIndex = selected[selected.length - 1];
@@ -355,9 +386,11 @@
       tile.classList.add("selected");
       const word = updateCurrentWord();
       updateAdjacents();
+      if (!state.isPointerDown) scheduleAutoSubmit();
     };
 
     const undoSelection = () => {
+      clearAutoSubmit();
       if (!state.selected.length) return;
       const index = state.selected.pop();
       const tile = elements.board.querySelector(`[data-index='${index}']`);
@@ -366,6 +399,20 @@
       }
       updateCurrentWord();
       updateAdjacents();
+    };
+
+    const refillTiles = (indices) => {
+      indices.forEach((index) => {
+        const letter = drawReplacementLetter();
+        state.grid[index] = letter;
+        const tile = elements.board.querySelector(`[data-index='${index}']`);
+        if (!tile) return;
+        tile.dataset.letter = letter;
+        tile.setAttribute("aria-label", `Row ${tile.dataset.row} Column ${tile.dataset.col} Letter ${letter.toUpperCase()}`);
+        tile.innerHTML = `<span class="tile-letter">${letter === "qu" ? "Qu" : letter.toUpperCase()}</span><span class="tile-value">${tileValue(letter)}</span>`;
+        tile.classList.add("tile-refill");
+        setTimeout(() => tile.classList.remove("tile-refill"), 360);
+      });
     };
 
     const attemptScoreWord = (word, { showToasts = false } = {}) => {
@@ -395,7 +442,8 @@
         }
         return { scored: false, reason: "duplicate" };
       }
-      const points = scoreTable(length, state.selected.map((index) => state.grid[index]));
+      const usedTiles = [...state.selected];
+      const points = scoreTable(length, usedTiles.map((index) => state.grid[index]));
       state.found.push({ word, points });
       state.foundSet.add(word);
       state.score += points;
@@ -404,18 +452,20 @@
       updateStats();
       showToast(`+${points} ${word.toUpperCase()}`);
       resetSelection();
+      refillTiles(usedTiles);
       state.justScored = true;
       return { scored: true, reason: "scored" };
     };
 
     const submitWord = () => {
+      clearAutoSubmit();
       if (!state.selected.length) return;
       const word = getCurrentWord();
       attemptScoreWord(word, { showToasts: true });
     };
 
     const handleSelectionEnd = () => {
-      if (!state.selected.length || !state.settings.speedMode || !state.pointerMoved) return;
+      if (!state.selected.length || !state.settings.speedMode) return;
       const word = getCurrentWord();
       attemptScoreWord(word, { showToasts: true });
       if (state.selected.length) resetSelection();
@@ -459,12 +509,14 @@
     const pauseRound = () => {
       if (!state.isActive || state.isPaused) return;
       state.isPaused = true;
+      clearAutoSubmit();
       elements.startPause.textContent = "Resume";
       clearInterval(state.timerId);
       updateControlsState();
     };
 
     const endRound = () => {
+      clearAutoSubmit();
       clearInterval(state.timerId);
       state.isEnded = true;
       state.isActive = false;
@@ -564,6 +616,7 @@
       const tile = event.target.closest(".tile");
       if (!tile) return;
       state.isPointerDown = true;
+      clearAutoSubmit();
       state.activePointerId = event.pointerId;
       state.pointerMoved = false;
       state.pointerStartIndex = getTileIndex(tile);
@@ -586,6 +639,7 @@
 
     const handlePointerEnd = (event) => {
       if (event.pointerId !== state.activePointerId) return;
+      const wasSwipe = state.pointerMoved;
       state.isPointerDown = false;
       state.activePointerId = null;
       try {
@@ -593,7 +647,8 @@
       } catch (error) {
         // ignore capture errors
       }
-      handleSelectionEnd();
+      if (wasSwipe) handleSelectionEnd();
+      else scheduleAutoSubmit();
       state.pointerMoved = false;
       state.pointerStartIndex = null;
     };
