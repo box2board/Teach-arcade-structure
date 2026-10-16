@@ -31,7 +31,7 @@
 
   const defaultSettings = {
     gridSize: 4,
-    timerSetting: 60,
+    timerSetting: 180,
     minLength: 3,
     speedMode: true,
     strictDictionary: true,
@@ -46,7 +46,7 @@
     foundSet: new Set(),
     score: 0,
     best: 0,
-    timerRemaining: 60,
+    timerRemaining: 180,
     timerId: null,
     isActive: false,
     isPaused: false,
@@ -55,23 +55,38 @@
     activePointerId: null,
     pointerMoved: false,
     pointerStartIndex: null,
+    autoSubmitTimer: null,
     justScored: false,
     lastToastTime: 0
   };
 
-  const vowels = ["a", "e", "i", "o", "u"];
-  const consonantBag = [
-    "b", "b", "c", "c", "d", "d", "f", "f", "g", "g", "h", "h", "j", "k", "l", "l", "m", "m", "n", "n", "p", "p", "q", "r", "r", "s", "s", "t", "t", "v", "w", "x", "y", "z", "qu", "qu"
-  ];
-  const vowelBag = ["a", "a", "a", "e", "e", "e", "i", "i", "o", "o", "u", "u"];
+  const letterValues = { a: 1, b: 3, c: 3, d: 2, e: 1, f: 4, g: 2, h: 4, i: 1, j: 8, k: 5, l: 1, m: 3, n: 1, o: 1, p: 3, q: 10, r: 1, s: 1, t: 1, u: 1, v: 4, w: 4, x: 8, y: 4, z: 10, qu: 10 };
+  const tileValue = (letter) => letterValues[letter] || 1;
+  const lengthBonus = (length) => {
+    if (length < 3) return 0;
+    if (length <= 4) return 1;
+    if (length === 5) return 2;
+    if (length === 6) return 3;
+    if (length === 7) return 5;
+    return 11;
+  };
+  const scoreTable = (length, tiles = []) =>
+    lengthBonus(length) + tiles.reduce((total, letter) => total + tileValue(letter), 0);
 
-  const scoreTable = (length) => {
-    if (length <= 2) return 0;
-    if (length === 3) return 1;
-    if (length === 4) return 2;
-    if (length === 5) return 4;
-    if (length === 6) return 7;
-    return 10;
+  const diceBySize = {
+    4: [
+      ["a", "a", "e", "e", "g", "n"], ["a", "b", "b", "j", "o", "o"], ["a", "c", "h", "o", "p", "s"], ["a", "f", "f", "k", "p", "s"],
+      ["a", "o", "o", "t", "t", "w"], ["c", "i", "m", "o", "t", "u"], ["d", "e", "i", "l", "r", "x"], ["d", "e", "l", "r", "v", "y"],
+      ["d", "i", "s", "t", "t", "y"], ["e", "e", "g", "h", "n", "w"], ["e", "e", "i", "n", "s", "u"], ["e", "h", "r", "t", "v", "w"],
+      ["e", "i", "o", "s", "s", "t"], ["e", "l", "r", "t", "t", "y"], ["h", "i", "m", "n", "qu", "u"], ["h", "l", "n", "n", "r", "z"]
+    ],
+    5: [
+      ["a", "a", "e", "e", "g", "n"], ["a", "b", "b", "j", "o", "o"], ["a", "c", "h", "o", "p", "s"], ["a", "f", "f", "k", "p", "s"], ["a", "o", "o", "t", "t", "w"],
+      ["c", "i", "m", "o", "t", "u"], ["d", "e", "i", "l", "r", "x"], ["d", "e", "l", "r", "v", "y"], ["d", "i", "s", "t", "t", "y"], ["e", "e", "g", "h", "n", "w"],
+      ["e", "e", "i", "n", "s", "u"], ["e", "h", "r", "t", "v", "w"], ["e", "i", "o", "s", "s", "t"], ["e", "l", "r", "t", "t", "y"], ["h", "i", "m", "n", "qu", "u"],
+      ["h", "l", "n", "n", "r", "z"], ["a", "e", "i", "o", "u", "r"], ["a", "e", "i", "n", "s", "t"], ["a", "e", "l", "n", "r", "t"], ["a", "d", "e", "n", "r", "s"],
+      ["b", "c", "d", "e", "n", "r"], ["e", "i", "n", "o", "r", "t"], ["a", "e", "g", "l", "n", "s"], ["e", "i", "l", "n", "s", "t"], ["a", "e", "r", "s", "t", "y"]
+    ]
   };
 
   const getSettingsKey = ({ gridSize, timerSetting, minLength }) =>
@@ -93,26 +108,19 @@
   };
 
   const buildGrid = () => {
-    const size = state.settings.gridSize;
-    const total = size * size;
-    const letters = [];
-
-    for (let i = 0; i < total; i += 1) {
-      const bag = Math.random() < 0.35 ? vowelBag : consonantBag;
-      letters.push(bag[Math.floor(Math.random() * bag.length)]);
+    const dice = [...diceBySize[state.settings.gridSize]];
+    // Fisher–Yates keeps each die equally likely to land in each square.
+    for (let i = dice.length - 1; i > 0; i -= 1) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [dice[i], dice[j]] = [dice[j], dice[i]];
     }
+    state.grid = dice.map((faces) => faces[Math.floor(Math.random() * faces.length)]);
+  };
 
-    const minVowels = size === 4 ? 5 : 7;
-    let vowelCount = letters.filter((letter) => vowels.includes(letter)).length;
-    while (vowelCount < minVowels) {
-      const idx = Math.floor(Math.random() * letters.length);
-      if (!vowels.includes(letters[idx])) {
-        letters[idx] = vowelBag[Math.floor(Math.random() * vowelBag.length)];
-        vowelCount += 1;
-      }
-    }
-
-    state.grid = letters;
+  const drawReplacementLetter = () => {
+    const dice = diceBySize[state.settings.gridSize];
+    const die = dice[Math.floor(Math.random() * dice.length)];
+    return die[Math.floor(Math.random() * die.length)];
   };
 
   const init = async () => {
@@ -125,6 +133,7 @@
       "gridBadge",
       "speedModeBadge",
       "currentWord",
+      "wordPreviewPoints",
       "submitWord",
       "undoWord",
       "clearWord",
@@ -237,7 +246,7 @@
         button.dataset.letter = letter;
         button.setAttribute("role", "gridcell");
         button.setAttribute("aria-label", `Row ${row} Column ${col} Letter ${letter.toUpperCase()}`);
-        button.textContent = letter === "qu" ? "Qu" : letter.toUpperCase();
+        button.innerHTML = `<span class="tile-letter">${letter === "qu" ? "Qu" : letter.toUpperCase()}</span><span class="tile-value">${tileValue(letter)}</span>`;
         button.tabIndex = 0;
         button.addEventListener("keydown", (event) => {
           if (event.key === "Enter" || event.key === " ") {
@@ -249,9 +258,33 @@
       });
     };
 
+    const clearAutoSubmit = () => {
+      clearTimeout(state.autoSubmitTimer);
+      state.autoSubmitTimer = null;
+    };
+
+    const scheduleAutoSubmit = () => {
+      clearAutoSubmit();
+      if (!state.settings.speedMode || !state.selected.length) return;
+      const candidate = getCurrentWord();
+      if (candidate.length < state.settings.minLength) return;
+      if (state.settings.strictDictionary && (!DICT_READY || !DICT.has(candidate))) return;
+      if (state.foundSet.has(candidate)) return;
+
+      // Give tap players a moment to extend a valid word into a longer one.
+      state.autoSubmitTimer = setTimeout(() => {
+        state.autoSubmitTimer = null;
+        if (getCurrentWord() === candidate) {
+          attemptScoreWord(candidate, { showToasts: true });
+        }
+      }, 420);
+    };
+
     const resetSelection = () => {
+      clearAutoSubmit();
       state.selected = [];
       elements.currentWord.textContent = "—";
+      elements.wordPreviewPoints.textContent = "";
       elements.board.querySelectorAll(".tile").forEach((tile) => {
         tile.classList.remove("selected", "adjacent");
       });
@@ -313,15 +346,19 @@
     const updateCurrentWord = () => {
       if (!state.selected.length) {
         elements.currentWord.textContent = "—";
+        elements.wordPreviewPoints.textContent = "";
         return "";
       }
       const word = getCurrentWord();
       elements.currentWord.textContent = word.toUpperCase();
+      const points = scoreTable(word.length, state.selected.map((index) => state.grid[index]));
+      elements.wordPreviewPoints.textContent = `+${points}`;
       return word;
     };
 
     const attemptSelectTile = (tile) => {
       if (!state.isActive || state.isPaused || state.isEnded) return;
+      clearAutoSubmit();
       const index = getTileIndex(tile);
       const selected = state.selected;
       const lastIndex = selected[selected.length - 1];
@@ -349,9 +386,11 @@
       tile.classList.add("selected");
       const word = updateCurrentWord();
       updateAdjacents();
+      if (!state.isPointerDown) scheduleAutoSubmit();
     };
 
     const undoSelection = () => {
+      clearAutoSubmit();
       if (!state.selected.length) return;
       const index = state.selected.pop();
       const tile = elements.board.querySelector(`[data-index='${index}']`);
@@ -360,6 +399,20 @@
       }
       updateCurrentWord();
       updateAdjacents();
+    };
+
+    const refillTiles = (indices) => {
+      indices.forEach((index) => {
+        const letter = drawReplacementLetter();
+        state.grid[index] = letter;
+        const tile = elements.board.querySelector(`[data-index='${index}']`);
+        if (!tile) return;
+        tile.dataset.letter = letter;
+        tile.setAttribute("aria-label", `Row ${tile.dataset.row} Column ${tile.dataset.col} Letter ${letter.toUpperCase()}`);
+        tile.innerHTML = `<span class="tile-letter">${letter === "qu" ? "Qu" : letter.toUpperCase()}</span><span class="tile-value">${tileValue(letter)}</span>`;
+        tile.classList.add("tile-refill");
+        setTimeout(() => tile.classList.remove("tile-refill"), 360);
+      });
     };
 
     const attemptScoreWord = (word, { showToasts = false } = {}) => {
@@ -389,7 +442,8 @@
         }
         return { scored: false, reason: "duplicate" };
       }
-      const points = scoreTable(length);
+      const usedTiles = [...state.selected];
+      const points = scoreTable(length, usedTiles.map((index) => state.grid[index]));
       state.found.push({ word, points });
       state.foundSet.add(word);
       state.score += points;
@@ -398,18 +452,20 @@
       updateStats();
       showToast(`+${points} ${word.toUpperCase()}`);
       resetSelection();
+      refillTiles(usedTiles);
       state.justScored = true;
       return { scored: true, reason: "scored" };
     };
 
     const submitWord = () => {
+      clearAutoSubmit();
       if (!state.selected.length) return;
       const word = getCurrentWord();
       attemptScoreWord(word, { showToasts: true });
     };
 
     const handleSelectionEnd = () => {
-      if (!state.selected.length || !state.settings.speedMode || !state.pointerMoved) return;
+      if (!state.selected.length || !state.settings.speedMode) return;
       const word = getCurrentWord();
       attemptScoreWord(word, { showToasts: true });
       if (state.selected.length) resetSelection();
@@ -453,12 +509,14 @@
     const pauseRound = () => {
       if (!state.isActive || state.isPaused) return;
       state.isPaused = true;
+      clearAutoSubmit();
       elements.startPause.textContent = "Resume";
       clearInterval(state.timerId);
       updateControlsState();
     };
 
     const endRound = () => {
+      clearAutoSubmit();
       clearInterval(state.timerId);
       state.isEnded = true;
       state.isActive = false;
@@ -543,6 +601,7 @@
     };
 
     loadSettings();
+    state.timerRemaining = state.settings.timerSetting;
     applyTheme();
     renderGrid();
     updateBadge();
@@ -557,6 +616,7 @@
       const tile = event.target.closest(".tile");
       if (!tile) return;
       state.isPointerDown = true;
+      clearAutoSubmit();
       state.activePointerId = event.pointerId;
       state.pointerMoved = false;
       state.pointerStartIndex = getTileIndex(tile);
@@ -579,6 +639,7 @@
 
     const handlePointerEnd = (event) => {
       if (event.pointerId !== state.activePointerId) return;
+      const wasSwipe = state.pointerMoved;
       state.isPointerDown = false;
       state.activePointerId = null;
       try {
@@ -586,7 +647,8 @@
       } catch (error) {
         // ignore capture errors
       }
-      handleSelectionEnd();
+      if (wasSwipe) handleSelectionEnd();
+      else scheduleAutoSubmit();
       state.pointerMoved = false;
       state.pointerStartIndex = null;
     };
@@ -613,7 +675,9 @@
     });
 
     elements.newGrid.addEventListener("click", () => {
-      resetRound({ regenerate: true });
+      renderGrid();
+      resetSelection();
+      showToast("Fresh letters — keep going!");
     });
 
     elements.settingsToggle.addEventListener("click", openSettings);
