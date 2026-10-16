@@ -351,6 +351,8 @@ function continueRun() {
     return;
   }
   state.run = saved;
+  for (const key of ["careerId", "previewCareerId"])
+    state.run[key] = CAREER_REDIRECTS[state.run[key]] || state.run[key];
   migrateCatalogSettings(state.run.settings);
   persistRun();
   document.getElementById("teacher-settings").open = false;
@@ -606,7 +608,12 @@ function careerSearchScore(c, query) {
       title: normalizeSearch(c.title),
       aliases: (c.aliases || []).map(normalizeSearch),
       tokens: normalizeSearch(
-        [c.title, c.cluster, ...(c.aliases || [])].join(" "),
+        [
+          c.title,
+          c.cluster,
+          ...(c.aliases || []),
+          ...(c.searchKeywords || []),
+        ].join(" "),
       ).split(" "),
     });
   const { title, aliases, tokens } = careerSearchIndex.get(c);
@@ -626,8 +633,15 @@ function careerSearchScore(c, query) {
     ? 50
     : 0;
 }
-const CATALOG_VERSION = 4;
+const CAREER_REDIRECTS = {
+  "career-coach": "school-counselor",
+  "soc-25-2021-00": "elementary-teacher",
+};
+const CATALOG_VERSION = 5;
 function migrateCatalogSettings(s) {
+  s.enabledCareers = [
+    ...new Set(s.enabledCareers.map((id) => CAREER_REDIRECTS[id] || id)),
+  ];
   if (s.catalogVersion === CATALOG_VERSION) return s;
   const previousVersion = s.catalogVersion || 2;
   const oldCatalog = state.careers.filter(
@@ -697,7 +711,7 @@ function renderCareerSelection() {
         .slice(0, view.limit)
         .map(
           (c) =>
-            `<article class="cq-career cq-profile-card" style="${themeStyle(c)}"><div class="cq-career-art">${careerIcon(c.cluster)}<span>${esc((careerThemes[c.cluster] || careerThemes.Business)[3])}</span>${recommended.includes(c) ? '<span class="cq-badge">Interest match</span>' : ""}</div><div class="cq-career-body"><p class="cq-career-field">${esc(c.cluster)}</p><h3>${esc(c.title)}</h3><p class="cq-career-description">${esc(c.summary)}</p><div class="cq-career-route"><span>Typical entry</span><strong>${esc(c.typicalEducation === "See How to Become One" ? "Academy / requirements vary" : c.typicalEducation)}</strong></div><button class="btn secondary" data-career="${c.id}" aria-label="View ${esc(c.title)} career profile">View career profile <span aria-hidden="true">↗</span></button></div></article>`,
+            `<article class="cq-career cq-profile-card" style="${themeStyle(c)}"><div class="cq-career-art">${careerIcon(c.cluster)}<span>${esc((careerThemes[c.cluster] || careerThemes.Business)[3])}</span>${recommended.includes(c) ? '<span class="cq-badge">Interest match</span>' : ""}</div><div class="cq-career-body"><p class="cq-career-field">${esc(c.cluster)}</p><h3>${esc(c.title)}</h3><p class="cq-career-description">${esc(c.summary)}</p><div class="cq-career-route"><span>BLS group entry</span><strong>${esc(c.typicalEducation === "See How to Become One" ? "Academy / requirements vary" : c.typicalEducation)}</strong></div><button class="btn secondary" data-career="${c.id}" aria-label="View ${esc(c.title)} career profile">View career profile <span aria-hidden="true">↗</span></button></div></article>`,
         )
         .join("") ||
       `<div class="cq-empty"><h3>No matching careers in this view</h3><p>Try a broader job name, another career field, or clear the search filters. Teacher settings may also limit which careers are available.</p><button class="btn secondary" id="clear-career-filters">Clear search filters</button></div>`;
@@ -756,11 +770,27 @@ function renderCareerSelection() {
 }
 function workContextPanel(c) {
   if (!c.workContext?.length) return "";
-  return `<ul class="cq-context-list">${c.workContext.map((x) => `<li><strong>${esc(x.label)}: ${Number(x.value).toFixed(1)} / 5</strong><small>1 = ${esc(x.low)} · 5 = ${esc(x.high)}</small></li>`).join("")}</ul>`;
+  return `<ul class="cq-context-list">${c.workContext.map((x) => `<li><strong>${esc(x.label)}: ${Number(x.value).toFixed(1)} / 5</strong><small>1 = ${esc(x.low)} · 5 = ${esc(x.high)} · Survey ${esc(x.surveyDate)}</small></li>`).join("")}</ul>`;
+}
+function factCitation(c, claim) {
+  const source = c.evidence.claimSources[claim];
+  const url =
+    source === "bls"
+      ? c.laborSourceUrl
+      : source === "handbook"
+        ? c.handbookSourceUrl
+        : c.sourceUrl;
+  const label =
+    source === "bls"
+      ? "BLS data [2]"
+      : source === "handbook"
+        ? "BLS Handbook [3]"
+        : "O*NET [1]";
+  return `<a class="cq-fact-citation" data-claim="${claim}" href="${esc(url)}" target="_blank" rel="noopener noreferrer" aria-label="Source for ${esc(claim)}: ${label}">${label} ↗</a>`;
 }
 function careerSourcePanel(c) {
-  const onet = Boolean(c.sourceLicense);
-  return `<footer class="cq-profile-source"><strong>Source: ${esc(c.sourceLabel || "U.S. Bureau of Labor Statistics")}</strong><span>Research profile: ${esc(c.sourceTitle)} · Reviewed ${esc(c.sourceReviewed)}.</span><a href="${esc(c.sourceUrl)}" target="_blank" rel="noopener noreferrer">Read the full official profile ↗</a>${c.laborSourceUrl ? `<a href="${esc(c.laborSourceUrl)}" target="_blank" rel="noopener noreferrer">BLS education, pay & projections: ${esc(c.laborSourceTitle)}</a>` : ""}${onet ? `<small>Includes information from the <a href="https://www.onetcenter.org/database.html" target="_blank" rel="noopener noreferrer">O*NET® 31.0 Database</a> by the U.S. Department of Labor, Employment and Training Administration (USDOL/ETA), used under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>. O*NET® is a trademark of USDOL/ETA. Teach Arcade selected excerpts, grouped fields, and added game assumptions. USDOL/ETA has not approved, endorsed, or tested these changes.</small>` : ""}<small>Pay and projections may describe a broader occupation than the selected specialty. Game income, skill weights, and training costs are illustrative simulation assumptions.</small></footer>`;
+  const b = c.evidence.blsRecord;
+  return `<footer class="cq-profile-source"><h3>Sources for this profile</h3><p>Source record: <strong>${esc(c.canonicalTitle)}</strong> · O*NET-SOC ${esc(c.socCode)}. Source records compared ${esc(c.sourceReviewed)}.</p><a href="${esc(c.sourceUrl)}" target="_blank" rel="noopener noreferrer">[1] O*NET occupation profile: ${esc(c.canonicalTitle)} ↗</a><a href="${esc(c.laborSourceUrl)}" target="_blank" rel="noopener noreferrer">[2] BLS table 1.2: ${esc(b.title)} (${esc(b.socCode)}) ↗</a><p><strong>Statistics coverage: ${esc(b.scope)}.</strong> Education, pay, and outlook refer to ${esc(b.title)}, including other specialties where applicable. Wage year: 2025. Projection period: 2025–2035.</p>${c.handbookSourceUrl ? `<a href="${esc(c.handbookSourceUrl)}" target="_blank" rel="noopener noreferrer">[3] BLS Handbook: ${esc(c.handbookSourceTitle)} ↗</a><p>Detailed O*NET survey records are unavailable for this code. Duties, work environment, and qualities use the broader Handbook group.</p>` : ""}<details><summary>Evidence records and audit method</summary><p>Definition matched to occupation_data.csv. Core task IDs: ${esc(c.evidence.tasks.map((t) => t.taskId || t.section).join(", "))}. Work context uses item-specific 1–5 survey means; skills use importance ratings where available. Source years vary by survey item.</p><a href="./data/evidence-sources.json" target="_blank" rel="noopener noreferrer">Official dataset download links and SHA-256 checksums</a><p>Each claim group is matched to an official record. This comparison does not certify local licensing or employer eligibility.</p></details><small>Includes information from the <a href="https://www.onetcenter.org/database.html" target="_blank" rel="noopener noreferrer">O*NET® 31.0 Database</a> by USDOL/ETA, used under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>. O*NET® is a trademark of USDOL/ETA. Teach Arcade selected excerpts, grouped fields, and added game assumptions. USDOL/ETA has not approved, endorsed, or tested these changes.</small><small>${esc(c.simulationNote)}</small></footer>`;
 }
 function renderCareerDetail() {
   const c = state.careers.find((c) => c.id === state.run.previewCareerId);
@@ -770,7 +800,7 @@ function renderCareerDetail() {
   }
   const tasks = c.duties?.length ? c.duties : [c.summary];
   setScreen(
-    `<article class="cq-card cq-career-detail" style="${themeStyle(c)}"><button class="btn quiet" id="back-catalog">← Back to career explorer</button><header class="cq-detail-hero"><div class="cq-detail-icon">${careerIcon(c.cluster)}</div><div><p class="cq-eyebrow">${esc(c.cluster)}</p><h2>${esc(c.title)}</h2><p>${esc(c.summary)}</p></div></header><div class="cq-detail-grid"><div><section class="cq-profile-section"><h3>A day in this field</h3><ul class="cq-duty-list">${tasks.map((t) => `<li>${esc(t)}</li>`).join("")}</ul></section><section class="cq-profile-section"><h3>What the work is like</h3><p>${esc(c.workEnvironment)}</p>${workContextPanel(c)}</section><section class="cq-profile-section"><h3>The route in</h3><p>${esc(c.entryRequirements)}</p><p class="cq-small">Requirements vary by state, employer, and specialty. Check the official source and local training or licensing authority.</p></section><section class="cq-profile-section"><h3>Employment outlook</h3><p>${esc(c.outlook)}</p></section></div><aside class="cq-career-facts"><p class="cq-eyebrow">YOUR FIELD NOTES</p><h3>Before you choose</h3><dl><dt>Typical entry-level education</dt><dd>${esc(c.typicalEducation === "See How to Become One" ? "Requirements vary — read the route in" : c.typicalEducation)}</dd><dt>Skills to explore</dt><dd>${topSkillsReason(c)}</dd><dt>National pay context</dt><dd>${esc(c.payContext)}</dd></dl><p class="cq-small">The pay statement describes BLS occupational data, not a guaranteed starting offer.</p><div class="cq-research-task"><h4>Think it through</h4><p>Which daily task appeals to you? What work condition could be challenging? Find one local employer or training program to learn more.</p></div><button class="btn" id="choose-career" data-choose-career="${c.id}">Choose this career →</button><p class="cq-small">Next: compare training cost models.</p></aside></div>${careerSourcePanel(c)}</article>`,
+    `<article class="cq-card cq-career-detail" style="${themeStyle(c)}"><button class="btn quiet" id="back-catalog">← Back to career explorer</button><header class="cq-detail-hero"><div class="cq-detail-icon">${careerIcon(c.cluster)}</div><div><p class="cq-eyebrow">${esc(c.cluster)}</p><h2>${esc(c.title)}</h2><p>${esc(c.summary)} ${factCitation(c, "summary")}</p><p class="cq-small">Official occupation: ${esc(c.canonicalTitle)} · ${esc(c.socCode)}</p></div></header><div class="cq-detail-grid"><div><section class="cq-profile-section"><h3>A day in this field ${factCitation(c, "duties")}</h3><ul class="cq-duty-list">${tasks.map((t) => `<li>${esc(t)}</li>`).join("")}</ul></section><section class="cq-profile-section"><h3>What the work is like ${factCitation(c, "workEnvironment")}</h3><p>${esc(c.workEnvironment)}</p>${workContextPanel(c)}</section><section class="cq-profile-section"><h3>The route in ${factCitation(c, "entryRequirements")}</h3><p>${esc(c.entryRequirements)}</p><p class="cq-small">Requirements vary by state, employer, and specialty. Check the official source and local training or licensing authority.</p></section><section class="cq-profile-section"><h3>Employment outlook ${factCitation(c, "outlook")}</h3><p>${esc(c.outlook)}</p></section></div><aside class="cq-career-facts"><p class="cq-eyebrow">YOUR FIELD NOTES</p><h3>Before you choose</h3><dl><dt>Typical education for the BLS group ${factCitation(c, "typicalEducation")}</dt><dd>${esc(c.typicalEducation === "See How to Become One" ? "Requirements vary — read the route in" : c.typicalEducation)}</dd><dt>Skills and qualities to explore</dt><dd>${c.researchSkills.map((x) => esc(x.label)).join(", ")} ${factCitation(c, "researchSkills")}</dd><dt>National pay context</dt><dd>${esc(c.payContext)} ${factCitation(c, "payContext")}</dd></dl><p class="cq-small">The pay statement describes BLS occupational data, not a guaranteed starting offer.</p><div class="cq-research-task"><h4>Think it through</h4><p>Which daily task appeals to you? What work condition could be challenging? Find one local employer or training program to learn more.</p></div><button class="btn" id="choose-career" data-choose-career="${c.id}">Choose this career →</button><p class="cq-small">Next: compare training cost models.</p></aside></div>${careerSourcePanel(c)}</article>`,
     "explore",
   );
   document.getElementById("back-catalog").addEventListener("click", () => {

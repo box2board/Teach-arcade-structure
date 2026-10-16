@@ -1433,3 +1433,21 @@ body:has(.cq-page) {
     max-width: 170px;
   }
 }
+
+.cq-fact-citation {
+  display: inline-block;
+  margin-left: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.cq-profile-source details {
+  padding: 0.8rem;
+  background: #fff;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.6rem;
+}
+.cq-profile-source summary {
+  cursor: pointer;
+  font-weight: 700;
+}

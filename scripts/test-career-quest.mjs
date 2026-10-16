@@ -263,11 +263,11 @@ migrated.click('[data-career="police-officer"]');
 assert(
   migrated.w.document
     .querySelector("#screen")
-    .textContent.includes("training academy"),
+    .textContent.includes("BLS typical entry-level education"),
 );
 assert(
   migrated.w.document.querySelector(
-    '#screen a[href="https://www.bls.gov/ooh/protective-service/police-and-detectives.htm"]',
+    '#screen a[href="https://www.onetonline.org/link/summary/33-3051.00"]',
   ),
 );
 const detailReloaded = await boot(save(migrated.w));
@@ -333,11 +333,11 @@ const upgraded80 = await boot({
   },
 });
 assert.equal(upgraded80.w.testState.settings.enabledCareers.length, 500);
-assert.equal(upgraded80.w.testState.settings.catalogVersion, 4);
+assert.equal(upgraded80.w.testState.settings.catalogVersion, 5);
 assert.equal(
   new Set(careers.filter((c) => c.catalogAdded === 4).map((c) => c.socCode))
     .size,
-  420,
+  419,
 );
 // Search + sort must keep the DOM bounded with the full library loaded.
 const full = await boot();
@@ -400,7 +400,12 @@ for (const [i, c] of careers.entries()) {
         'a[href="https://creativecommons.org/licenses/by/4.0/"]',
       ),
     );
-    assert(full.w.document.querySelector(".cq-context-list"));
+    if (c.workContext.length)
+      assert(full.w.document.querySelector(".cq-context-list"));
+    assert.equal(full.w.document.querySelectorAll("[data-claim]").length, 8);
+    for (const link of full.w.document.querySelectorAll("[data-claim]"))
+      assert(/^https:\/\//.test(link.href));
+    assert.equal(c.evidence.occupationCode, c.socCode);
   }
   full.click("#choose-career");
   assert(
@@ -430,6 +435,11 @@ for (const c of [
   full,
 ])
   c.dom.window.close();
+const redirected = await boot({ taCareerQuestSettings: {catalogVersion:4, enabledCareers:["career-coach"], careerClusters:["Education & Training"]} });
+assert.deepEqual(Array.from(redirected.w.testState.settings.enabledCareers), ["school-counselor"]);
+assert.equal(redirected.w.testState.settings.catalogVersion, 5);
+redirected.dom.window.close();
+assert.equal(new Set(careers.map(c=>c.socCode)).size, 500);
 console.log(
-  "PASS: 500 complete profiles and all 500 profile/training/play paths; 420 new distinct occupation codes; 50/80-to-500 migration; custom teacher restrictions; aliases; sort; bounded rendering; teacher search; source/license/context panels; full five-year regressions.",
+  "PASS: 500 complete profiles and all 500 profile/training/play paths; 500 distinct occupation codes; 50/80-to-500 migration; custom teacher restrictions; aliases; sort; bounded rendering; teacher search; source/license/context panels; full five-year regressions.",
 );

@@ -75,3 +75,23 @@ Run `python3 scripts/build-career-quest-catalog.py --source-dir /absolute/source
 The explorer renders only 12 cards initially, supports additional batches of 12, and now offers A–Z sorting. Immutable search fields are cached and each candidate is scored once per search. Teacher setup has its own career-name search; filtering the setup list does not uncheck hidden careers. Unrestricted 50- and 80-career settings/saves migrate to all 500; custom restrictions remain intact.
 
 Regression checks exercise **every one of the 500 profile → training → budget → simulation paths**, source/license/context panels, required metadata, 420 distinct added codes, older catalog migrations, alias search, A–Z sorting, teacher filtering, and bounded initial rendering. Existing complete five-year flows and save/report checks continue to pass. The pretty-printed catalog is approximately 2 MB uncompressed and 235 KB under gzip; DOM batching prevents rendering all profiles at once. Layout/browser verification remains separate from these DOM checks.
+
+## Evidence audit and linked claims — October 16, 2026
+
+This pass supersedes the earlier counts and sourcing descriptions above. There are now 500 distinct occupation codes. Each profile has eight clickable claim citations: definition, duties, work conditions, skills/qualities, entry categories, typical education, pay, and outlook. The footer identifies the official occupation/code, BLS row title/code, coverage, data years, dataset download links/checksums, license, and audit method. Work-context survey years are shown individually. Sources describe U.S. occupations.
+
+Corrections include elementary/middle-school codes, narrower specialty titles, and consolidation of School Counselor/Career Coach and duplicate elementary-teacher records. Two distinct education occupations replace the duplicates. Removed IDs redirect in settings and saved journeys; custom restrictions remain restricted.
+
+Seventy-four profiles use a broader BLS group. Explicit crosswalks cover laboratory technicians (29-2012 → 29-2010), substance abuse counselors (21-1011 → 21-1018), and elementary special education teachers (25-2056 → 25-2052). Group education is labeled as such. Financial Analyst and EMT lack detailed task/context/skill records in O*NET 31.0; checked BLS Handbook excerpts supply these sections with broader scope disclosed. Missing wages remain missing.
+
+This is a reproducible official-record comparison, not certification of local licensing, school admission, employer requirements, or every original survey response. Game skill weights, recommendations, income ranges, training costs, and status scores remain classroom assumptions. Research skills now use source importance ratings or BLS qualities rather than game weights.
+
+See `reports/career-quest-evidence-audit.md` and `.json` for the 500-profile evidence index. Each catalog record includes task IDs, survey element IDs/dates, record hashes, BLS values, and claim-to-source mappings. `data/evidence-sources.json` lists official raw download URLs and SHA-256 digests. Download those files and Handbook pages using their recorded filenames, then refresh/check:
+
+```sh
+python3 scripts/audit-career-quest.py --source-dir /path/to/official-files --write
+python3 scripts/audit-career-quest.py --source-dir /path/to/official-files --check
+node scripts/test-career-quest.mjs /tmp/cq-check/node_modules/jsdom/lib/api.js
+```
+
+The initial builder refuses to overwrite audited data. The checker compares all 500 regenerated factual sections and evidence with stored records. The browser harness checks eight citations per profile and all 500 profile → training → simulation flows. Visual browser QA remains outstanding.

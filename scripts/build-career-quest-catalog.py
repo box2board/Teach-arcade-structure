@@ -143,6 +143,8 @@ def cluster_for(prefix, title):
     return FIELDS[prefix]
 
 def build(folder):
+    if any(c.get('evidence') for c in json.loads((OUT/'careers.json').read_text())):
+        raise ValueError('Catalog is audited. Use scripts/audit-career-quest.py --write to refresh without discarding evidence or corrections.')
     original=[c for c in json.loads((OUT/'careers.json').read_text()) if c.get('catalogAdded',0)<=3]
     assert len(original)==80
     occ={r['O*NET-SOC Code']:r for r in load(folder,'occupation_data')}
