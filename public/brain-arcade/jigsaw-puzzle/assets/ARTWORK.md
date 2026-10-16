@@ -1,6 +1,6 @@
 # Jigsaw puzzle artwork
 
-Ten original images generated with the built-in image generation tool. Full-resolution WebP files and 320px thumbnails live in this directory. These are imaginative illustrations, not scientific or historical reference diagrams.
+Forty original images generated with the built-in image generation tool. The latest ten use a playful cartoon style distinct from the earlier painterly scenes. Full-resolution WebP files and 320px thumbnails live in this directory. These are imaginative illustrations, not scientific or historical reference diagrams.
 
 ## Shared prompt
 
@@ -69,7 +69,7 @@ File: `inventors-workshop.webp`
 Primary request: An imaginative welcoming inventor workshop with brass telescope, model airship, colorful mechanical birds, gears, plants, books, tools and stained-glass windows. Detailed and cozy, no weapons.
 
 
-## Additional scenes (20-picture library)
+## Scenes 11–20
 
 These ten original square illustrations were generated for the expanded puzzle library. Each full image is 1024 × 1024 WebP, paired with a 320 × 320 thumbnail.
 
@@ -85,7 +85,7 @@ These ten original square illustrations were generated for the expanded puzzle l
 - **Balloon Valley** — patterned hot-air balloons over river, farms, orchards, village, and wildflower fields.
 
 
-## Additional scenes (30-picture library)
+## Scenes 21–30
 
 These ten original square illustrations were generated for the expanded puzzle library. Each full image is 1024 × 1024 WebP, paired with a 320 × 320 thumbnail.
 
@@ -99,3 +99,19 @@ These ten original square illustrations were generated for the expanded puzzle l
 - **Rooftop Garden** — `rooftop-garden.webp`: Neighbors and students grow vegetables, fruit trees and flowers in a lively urban rooftop garden.
 - **Wildlife Sanctuary** — `wildlife-sanctuary.webp`: A conservation center with otters, foxes, turtles, birds, wetland paths and caretakers.
 - **Lantern Festival** — `lantern-festival.webp`: A mountain town glows with floating lanterns, riverside reflections, music, markets and evening festivities.
+
+
+## Scenes 31–40: cartoon collection
+
+These ten square illustrations use a consistent playful 2D cartoon look with bold clean outlines, simplified rounded forms, bright colors, and gentle cel shading. Each full image is 1024 × 1024 WebP with a 320 × 320 thumbnail.
+
+- **Cloudtop Carnival** — `cloudtop-carnival.webp`: Floating islands host a cheerful sky carnival with kites, cloud creatures, waterfalls and a winding sky-rail.
+- **Robot Parade** — `robot-parade.webp`: Original little robots lead a colorful town parade with music, streamers, balloons and dancing neighbors.
+- **Dragon School** — `dragon-school.webp`: Cute young dragons learn to fly and study in a bright hilltop academy with books, gardens and an observatory.
+- **Pirate Cove** — `pirate-cove.webp`: Friendly young pirates and animal companions follow a treasure map through a sunny island cove.
+- **Monster Sleepover** — `monster-sleepover.webp`: Sweet fuzzy monsters in pajamas build a blanket fort, play games and share snacks in a cozy attic.
+- **Cupcake Bakery** — `cupcake-bakery.webp`: Tiny bakers decorate oversized cupcakes in a cheerful bakery filled with colorful treats and kitchen tools.
+- **Skate Park** — `skate-park.webp`: Kids and teens skateboard and scooter around a sunny neighborhood park with ramps, rails and painted shapes.
+- **Alien Playground** — `alien-playground.webp`: Original friendly aliens bounce and climb on a colorful playground beneath a view of Earth.
+- **Animal Orchestra** — `animal-orchestra.webp`: A bear conductor leads foxes, rabbits, frogs and birds in a flower-meadow music festival.
+- **Paint Splash City** — `paint-splash-city.webp`: Children's colorful abstract paintings come to life across a bright city of rainbow buildings and playful creatures.

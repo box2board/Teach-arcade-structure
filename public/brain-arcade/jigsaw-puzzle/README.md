@@ -3,7 +3,7 @@
 A standalone, browser-only jigsaw game for Brain Arcade.
 
 ## Features
-- Thirty original illustrated picture choices
+- Forty original illustrated picture choices
 - Six puzzle sizes: 9, 16, 36, 64, 100, and 144 pieces
 - Click or tap a piece to select it, then click or tap its target square; incorrect guesses leave it on the tabletop
 - Pointer and touch dragging as an alternate placement control
@@ -26,3 +26,19 @@ Full-size original WebP illustrations and 320px square thumbnails are stored in 
 - **Rooftop Garden** — Neighbors and students grow vegetables, fruit trees and flowers in a lively urban rooftop garden.
 - **Wildlife Sanctuary** — A conservation center with otters, foxes, turtles, birds, wetland paths and caretakers.
 - **Lantern Festival** — A mountain town glows with floating lanterns, riverside reflections, music, markets and evening festivities.
+
+
+## Cartoon-style scenes
+
+The latest ten illustrations use bold outlines, bright flat colors, simple shapes, and playful original characters:
+
+- **Cloudtop Carnival** — Floating islands host a cheerful sky carnival with kites, cloud creatures, waterfalls and a winding sky-rail.
+- **Robot Parade** — Original little robots lead a colorful town parade with music, streamers, balloons and dancing neighbors.
+- **Dragon School** — Cute young dragons learn to fly and study in a bright hilltop academy with books, gardens and an observatory.
+- **Pirate Cove** — Friendly young pirates and animal companions follow a treasure map through a sunny island cove.
+- **Monster Sleepover** — Sweet fuzzy monsters in pajamas build a blanket fort, play games and share snacks in a cozy attic.
+- **Cupcake Bakery** — Tiny bakers decorate oversized cupcakes in a cheerful bakery filled with colorful treats and kitchen tools.
+- **Skate Park** — Kids and teens skateboard and scooter around a sunny neighborhood park with ramps, rails and painted shapes.
+- **Alien Playground** — Original friendly aliens bounce and climb on a colorful playground beneath a view of Earth.
+- **Animal Orchestra** — A bear conductor leads foxes, rabbits, frogs and birds in a flower-meadow music festival.
+- **Paint Splash City** — Children's colorful abstract paintings come to life across a bright city of rainbow buildings and playful creatures.
