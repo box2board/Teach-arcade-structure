@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#17140f">
+  <title>Escape Room V2 Prototype | Teach Arcade</title>
+  <meta name="description" content="Prototype of Teach Arcade's reusable 360-degree classroom escape room engine.">
+  <link rel="stylesheet" href="/escape-v2/css/engine.css">
+</head>
+<body>
+  <div id="app" class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="/escape/" aria-label="Teach Arcade Escape Rooms">TEACH <b>ARCADE</b><span> / ESCAPE V2</span></a>
+      <div class="topbar-actions">
+        <div id="timer" class="timer" aria-live="polite">15:00</div>
+        <button id="journalBtn" class="icon-btn" type="button" aria-expanded="false" aria-controls="journalPanel">Journal <span id="journalCount">0/0</span></button>
+        <button id="restartBtn" class="icon-btn" type="button">↻ Restart</button>
+      </div>
+    </header>
+
+    <main id="main" class="main-stage">
+      <section id="storyScreen" class="screen story-screen" aria-labelledby="storyTitle">
+        <div class="story-card">
+          <p id="storyEyebrow" class="eyebrow">ESCAPE ROOM V2 PROTOTYPE</p>
+          <h1 id="storyTitle">Loading mission…</h1>
+          <div id="storyCopy" class="story-copy"></div>
+          <div class="story-meta">
+            <span id="storyRooms">1 prototype room</span>
+            <span id="storyTime">15 minute limit</span>
+          </div>
+          <button id="startBtn" class="primary-btn" type="button">Start</button>
+        </div>
+      </section>
+
+      <section id="gameScreen" class="screen game-screen" hidden aria-label="Escape room">
+        <div id="panorama" class="panorama" tabindex="0" aria-label="360 degree room view. Drag or use left and right arrow keys to look around.">
+          <div class="scene-vignette" aria-hidden="true"></div>
+          <div id="hotspotLayer" class="hotspot-layer"></div>
+          <div class="crosshair" aria-hidden="true"><span></span></div>
+          <div class="look-hint" aria-hidden="true">Drag to look around • ← → keys</div>
+        </div>
+
+        <div class="room-hud">
+          <div>
+            <p id="roomLabel" class="eyebrow">ROOM 1</p>
+            <h2 id="roomTitle">Prototype Chamber</h2>
+            <p id="roomObjective" class="room-objective"></p>
+          </div>
+          <div class="room-progress" aria-live="polite">
+            <strong id="roomProgress">0 / 0</strong>
+            <span>discoveries</span>
+          </div>
+        </div>
+
+        <button id="solutionBtn" class="solution-btn" type="button" disabled>Room solution locked</button>
+      </section>
+
+      <section id="reviewScreen" class="screen review-screen" hidden aria-labelledby="reviewTitle">
+        <div class="review-card">
+          <p class="eyebrow">MISSION COMPLETE</p>
+          <h1 id="reviewTitle">You escaped.</h1>
+          <p id="reviewSummary" class="review-summary"></p>
+          <div id="reviewStats" class="review-stats"></div>
+          <section class="learning-review">
+            <h2>What you discovered</h2>
+            <div id="reviewLearning"></div>
+          </section>
+          <button id="reviewRestartBtn" class="primary-btn" type="button">Play again</button>
+        </div>
+      </section>
+
+      <section id="failureScreen" class="screen failure-screen" hidden aria-labelledby="failureTitle">
+        <div class="review-card">
+          <p class="eyebrow">TIME EXPIRED</p>
+          <h1 id="failureTitle">You did not escape in time.</h1>
+          <p id="failureCopy" class="review-summary"></p>
+          <button id="failureRestartBtn" class="primary-btn" type="button">Try again</button>
+        </div>
+      </section>
+    </main>
+
+    <aside id="journalPanel" class="journal" aria-label="Investigation journal" hidden>
+      <div class="journal-head">
+        <div><p class="eyebrow">INVESTIGATION JOURNAL</p><h2>Your discoveries</h2></div>
+        <button id="closeJournalBtn" class="close-btn" type="button" aria-label="Close journal">×</button>
+      </div>
+      <p class="journal-help">Solved clues stay here so you never have to memorize a discovery.</p>
+      <div id="journalEntries" class="journal-entries"></div>
+    </aside>
+
+    <div id="modalBackdrop" class="modal-backdrop" hidden>
+      <section id="puzzleModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <button id="modalCloseBtn" class="close-btn modal-close" type="button" aria-label="Close puzzle">×</button>
+        <p id="modalKicker" class="eyebrow"></p>
+        <h2 id="modalTitle"></h2>
+        <div id="modalBody"></div>
+        <div id="modalFeedback" class="feedback" aria-live="polite"></div>
+      </section>
+    </div>
+  </div>
+
+  <script src="/escape-v2/rooms/prototype/data.js"></script>
+  <script src="/escape-v2/js/engine.js"></script>
+</body>
+</html>
