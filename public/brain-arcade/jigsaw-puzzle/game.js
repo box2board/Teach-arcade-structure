@@ -86,6 +86,46 @@
   "balloon-valley": {
     "name": "Balloon Valley",
     "src": "/brain-arcade/jigsaw-puzzle/assets/balloon-valley.webp"
+  },
+  "redwood-forest": {
+    "name": "Redwood Forest",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/redwood-forest.webp"
+  },
+  "ancient-greek-harbor": {
+    "name": "Ancient Greek Harbor",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/ancient-greek-harbor.webp"
+  },
+  "grand-canyon-rafting": {
+    "name": "Grand Canyon Rafting",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/grand-canyon-rafting.webp"
+  },
+  "wild-west-frontier": {
+    "name": "Wild West Frontier",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/wild-west-frontier.webp"
+  },
+  "tropical-volcano-island": {
+    "name": "Tropical Volcano Island",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/tropical-volcano-island.webp"
+  },
+  "deep-sea-exploration": {
+    "name": "Deep Sea Exploration",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/deep-sea-exploration.webp"
+  },
+  "geyser-basin": {
+    "name": "Geyser Basin",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/geyser-basin.webp"
+  },
+  "rooftop-garden": {
+    "name": "Rooftop Garden",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/rooftop-garden.webp"
+  },
+  "wildlife-sanctuary": {
+    "name": "Wildlife Sanctuary",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/wildlife-sanctuary.webp"
+  },
+  "lantern-festival": {
+    "name": "Lantern Festival",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/lantern-festival.webp"
   }
 };
   const state = { picture: "coral-kingdom", size: 3, trayPage: 0, relaxed: true, pieces: [], image: null, board: null, mobile: false, moves: 0, placed: 0, startAt: 0, elapsed: 0, timer: null, paused: false, selected: null, cycle: -1, preview: false, complete: false, width: 0, height: 0 };
