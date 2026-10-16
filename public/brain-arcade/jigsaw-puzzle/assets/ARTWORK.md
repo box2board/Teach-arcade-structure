@@ -1,6 +1,6 @@
 # Jigsaw puzzle artwork
 
-Forty original images generated with the built-in image generation tool. The latest ten use a playful cartoon style distinct from the earlier painterly scenes. Full-resolution WebP files and 320px thumbnails live in this directory. These are imaginative illustrations, not scientific or historical reference diagrams.
+Fifty original images generated with the built-in image generation tool. Scenes 31–40 use a playful cartoon style; scenes 41–50 use hand-painted watercolor washes with visible paper texture. Full-resolution WebP files and 320px thumbnails live in this directory. These are imaginative illustrations, not scientific or historical reference diagrams.
 
 ## Shared prompt
 
@@ -115,3 +115,19 @@ These ten square illustrations use a consistent playful 2D cartoon look with bol
 - **Alien Playground** — `skate-park.webp`: Original friendly aliens bounce and climb on a colorful playground beneath a view of Earth.
 - **Animal Orchestra** — `animal-orchestra.webp`: A bear conductor leads foxes, rabbits, frogs and birds in a flower-meadow music festival.
 - **Paint Splash City** — `paint-splash-city.webp`: Children's colorful abstract paintings come to life across a bright city of rainbow buildings and playful creatures.
+
+
+## Scenes 41–50: watercolor collection
+
+These ten square illustrations use traditional storybook watercolor techniques: translucent pigment washes, softened edges, visible cold-press paper grain, and hand-painted details. Each full image is 1024 × 1024 WebP with a 320 × 320 thumbnail.
+
+- **Secret Garden** — `secret-garden.webp`: A blooming spring garden with a glass greenhouse, winding paths, tulips, a robin and butterflies.
+- **Lighthouse Bay** — `lighthouse-bay.webp`: A red-and-white lighthouse watches over fishing boats, bright harbor cottages and flower-lined shores.
+- **Autumn Train Journey** — `autumn-train-journey.webp`: A red steam train crosses a stone bridge through a golden autumn valley.
+- **Moonlit Observatory** — `moonlit-observatory.webp`: A hilltop observatory, brass telescope and lantern-lit path sit beneath a crescent moon.
+- **Woodland Treehouse** — `woodland-treehouse.webp`: A cozy treehouse overlooks a leafy forest stream, birds and stepping stones.
+- **Harvest Market** — `harvest-market.webp`: Pumpkins, apples, flowers and neighbors fill a cheerful autumn town market.
+- **Enchanted Waterfall** — `enchanted-waterfall.webp`: A forest waterfall spills into a clear pool among ferns, flowers and mossy rocks.
+- **Mountain Meadow** — `mountain-meadow.webp`: Wildflowers and mountain goats border an alpine trail, stream and distant chalet.
+- **Coral Reef Garden** — `coral-reef-garden.webp`: A sea turtle, fish and seahorses glide through a colorful watercolor coral garden.
+- **Lakeside Campout** — `lakeside-campout.webp`: A glowing tent, canoe and fireflies sit beside a calm lake at sunset.
