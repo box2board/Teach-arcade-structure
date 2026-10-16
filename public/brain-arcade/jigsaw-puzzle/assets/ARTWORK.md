@@ -111,7 +111,7 @@ These ten square illustrations use a consistent playful 2D cartoon look with bol
 - **Pirate Cove** — `pirate-cove.webp`: Friendly young pirates and animal companions follow a treasure map through a sunny island cove.
 - **Monster Sleepover** — `monster-sleepover.webp`: Sweet fuzzy monsters in pajamas build a blanket fort, play games and share snacks in a cozy attic.
 - **Cupcake Bakery** — `cupcake-bakery.webp`: Tiny bakers decorate oversized cupcakes in a cheerful bakery filled with colorful treats and kitchen tools.
-- **Skate Park** — `skate-park.webp`: Kids and teens skateboard and scooter around a sunny neighborhood park with ramps, rails and painted shapes.
-- **Alien Playground** — `alien-playground.webp`: Original friendly aliens bounce and climb on a colorful playground beneath a view of Earth.
+- **Skate Park** — `alien-playground.webp`: Kids and teens skateboard and scooter around a sunny neighborhood park with ramps, rails and painted shapes.
+- **Alien Playground** — `skate-park.webp`: Original friendly aliens bounce and climb on a colorful playground beneath a view of Earth.
 - **Animal Orchestra** — `animal-orchestra.webp`: A bear conductor leads foxes, rabbits, frogs and birds in a flower-meadow music festival.
 - **Paint Splash City** — `paint-splash-city.webp`: Children's colorful abstract paintings come to life across a bright city of rainbow buildings and playful creatures.
