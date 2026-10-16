@@ -54,5 +54,6 @@
  }
  function pack(level){return {format:'teach-arcade-level',version:1,engine:'side-scroller-v1.4',theme:'pyramid-v13',level:clone(level)};}
  function parse(text){if(text.length>2000000)throw Error('Level file exceeds 2 MB.');const d=JSON.parse(text);const r=validate(d);if(r.errors.length)throw Error(r.errors.join('\n'));return d;}
- window.TALevelFile={pack,parse,validate,clone,arrays};
+ function parseDraft(text){if(text.length>2000000)throw Error('Level file exceeds 2 MB.');const d=JSON.parse(text),r=validate(d),errors=r.errors.filter(e=>e!=='Question gate must link to an existing question point.');if(errors.length)throw Error(errors.join('\n'));return d;}
+ window.TALevelFile={pack,parse,parseDraft,validate,clone,arrays};
 })();
