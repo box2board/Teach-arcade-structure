@@ -50,3 +50,28 @@ Card → full profile → choose career → training gives students information 
 Search matches titles, fields, and common aliases, handles punctuation/case, and tolerates plural query terms. Field and interest-match filters combine; empty states explain teacher restrictions without bypassing them. The grid initially renders 12 records and loads 12 more per action. Back navigation preserves search and filters. Old unrestricted settings and saved-run settings expand to include new careers/fields; intentionally restricted selections remain restricted.
 
 Additional DOM regressions cover police/alias queries, all 80 complete records, source links and entry requirements, detail resume, preserved search, empty-state recovery, pagination, field filters, old all-careers settings migration, and custom teacher restrictions. Both full five-year runs continue to pass. Visual browser verification is still limited by protected preview access.
+
+## 500-profile library — October 16, 2026 (UTC)
+
+The catalog now has exactly **500 selectable profiles across 21 fields**, retaining all 80 prior IDs and adding 420 distinct O*NET occupation codes. The existing School Counselor and Career Coach profiles share one occupational code, so the full collection represents 499 distinct codes and 500 career profiles; the expansion does not manufacture synonyms to pad the count.
+
+New profiles use actual descriptions, four core task statements, reported job-title aliases, and work-context survey ratings from the **O*NET 31.0 Database**. Work-context means are shown on their actual 1–5 scales with both endpoints and survey date/source retained in the data. Records recommended for suppression are excluded. Blank suppression flags on occupational-expert records are not treated as suppression. No duties, workplace ratings, or wage statistics are fabricated.
+
+Education, related experience, training, 2025 national median wage (where available), and 2025–2035 employment change come from the BLS employment projections table, joined by the base SOC code. When an O*NET specialty is more specific than the BLS occupation, the interface identifies the broader BLS title. Missing wages remain explicitly unavailable; medians are not presented as starting salaries. All game pay ranges, skill weights, initial stress, and work-life scores are separate model assumptions. New game ranges use an illustrative 75% of the BLS median, with a 13% band; when a median is unavailable, an explicitly modeled tier is assigned from preparation level. These values are not real offers or predictions.
+
+Each new profile links to its official O*NET profile and the BLS table. Attribution to USDOL/ETA, O*NET version, the CC BY 4.0 license, and Teach Arcade's modifications appear in the explorer source note and individual profile footers. O*NET content is not an endorsement of the activity.
+
+### Rebuilding and provenance
+
+The standard-library importer is `scripts/build-career-quest-catalog.py`. Supply a directory with these pinned files:
+
+- `occupation_data.csv`, `task_statements.csv`, `job_zones.csv`, `sample_of_reported_titles.csv`, `work_context.csv`, `work_context_categories.csv` from `https://www.onetcenter.org/dl_files/database/db_31_0_csv/`.
+- `projections.html` downloaded from `https://www.bls.gov/emp/tables/occupational-projections-and-characteristics.htm` with the 2025 table. The importer rejects a different vintage.
+
+Run `python3 scripts/build-career-quest-catalog.py --source-dir /absolute/source-directory`. It preserves the initial 80 profiles, balances selection across occupational families, excludes catch-all titles and incomplete records, includes common student interests, and writes the full catalog plus `data/catalog-manifest.json`. The manifest records all 420 added codes, exact input SHA-256 hashes, source URLs, versions, and category totals. Source CSVs total tens of megabytes and are intentionally kept out of the website.
+
+### Usability and regression checks
+
+The explorer renders only 12 cards initially, supports additional batches of 12, and now offers A–Z sorting. Immutable search fields are cached and each candidate is scored once per search. Teacher setup has its own career-name search; filtering the setup list does not uncheck hidden careers. Unrestricted 50- and 80-career settings/saves migrate to all 500; custom restrictions remain intact.
+
+Regression checks exercise **every one of the 500 profile → training → budget → simulation paths**, source/license/context panels, required metadata, 420 distinct added codes, older catalog migrations, alias search, A–Z sorting, teacher filtering, and bounded initial rendering. Existing complete five-year flows and save/report checks continue to pass. The pretty-printed catalog is approximately 2 MB uncompressed and 235 KB under gzip; DOM batching prevents rendering all profiles at once. Layout/browser verification remains separate from these DOM checks.

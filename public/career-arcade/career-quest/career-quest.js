@@ -237,11 +237,21 @@ function checkbox(type, value, checked, label = value) {
 function renderSettings() {
   const form = document.getElementById("settings-form"),
     s = state.settings;
-  form.innerHTML = `${selectField("difficulty", "Decision impact", ["easy", "normal", "hard"], s.difficulty)}${selectField("costOfLiving", "Living costs", ["low", "average", "high"], s.costOfLiving)}${toggleField("randomEvents", "Optional life events", s.randomEvents)}${toggleField("allowOverride", "Explore beyond recommendations", s.allowOverride)}${toggleField("allowReplay", "Allow replay after completion", s.allowReplay)}<div class="cq-field"><label>Career clusters</label><div class="cq-checkboxes">${[...new Set(state.careers.map((c) => c.cluster))].map((c) => checkbox("cluster", c, s.careerClusters.includes(c))).join("")}</div></div><div class="cq-field"><label>Careers</label><div class="cq-checkboxes">${state.careers.map((c) => checkbox("career", c.id, s.enabledCareers.includes(c.id), c.title)).join("")}</div></div>`;
+  form.innerHTML = `${selectField("difficulty", "Decision impact", ["easy", "normal", "hard"], s.difficulty)}${selectField("costOfLiving", "Living costs", ["low", "average", "high"], s.costOfLiving)}${toggleField("randomEvents", "Optional life events", s.randomEvents)}${toggleField("allowOverride", "Explore beyond recommendations", s.allowOverride)}${toggleField("allowReplay", "Allow replay after completion", s.allowReplay)}<div class="cq-field"><label>Career clusters</label><div class="cq-checkboxes">${[...new Set(state.careers.map((c) => c.cluster))].map((c) => checkbox("cluster", c, s.careerClusters.includes(c))).join("")}</div></div><div class="cq-field"><label for="teacher-career-search">Careers — search to narrow the list</label><input id="teacher-career-search" type="search" placeholder="Find a career to enable or disable"><div class="cq-checkboxes" id="teacher-career-list">${state.careers.map((c) => checkbox("career", c.id, s.enabledCareers.includes(c.id), c.title)).join("")}</div></div>`;
   form.insertAdjacentHTML(
     "beforeend",
     '<p id="settings-status" class="cq-help" role="status"></p>',
   );
+  document
+    .getElementById("teacher-career-search")
+    .addEventListener("input", (e) => {
+      const q = normalizeSearch(e.target.value);
+      document
+        .querySelectorAll("#teacher-career-list label")
+        .forEach((label) => {
+          label.hidden = !normalizeSearch(label.textContent).includes(q);
+        });
+    });
   form.addEventListener("submit", (e) => e.preventDefault());
   form.addEventListener("change", () => {
     for (const k of ["difficulty", "costOfLiving"])
@@ -512,6 +522,38 @@ const careerThemes = {
     "Help people feel their best",
   ],
 };
+Object.assign(careerThemes, {
+  "Science & Research": [
+    "engineering",
+    "#42748b",
+    "#e4f3fb",
+    "Ask the next question",
+  ],
+  "Food Service": [
+    "hospitality",
+    "#a15b17",
+    "#fff1dc",
+    "Make something delicious",
+  ],
+  "Facilities & Grounds": [
+    "nature",
+    "#4c7c37",
+    "#edf5e2",
+    "Care for shared places",
+  ],
+  "Sales & Customer Service": [
+    "business",
+    "#8c4478",
+    "#f7e9f4",
+    "Connect people & solutions",
+  ],
+  "Office & Administration": [
+    "business",
+    "#3a6393",
+    "#e9f0fa",
+    "Keep work organized",
+  ],
+});
 const iconPaths = {
   health: '<path d="M24 12h16v12h12v16H40v12H24V40H12V24h12z"/>',
   tech: '<rect x="10" y="12" width="44" height="32" rx="4"/><path d="M24 53h16M32 44v9M26 22l-7 6 7 6m12-12 7 6-7 6"/>',
@@ -555,14 +597,19 @@ function normalizeSearch(value) {
     .replace(/[^a-z0-9]+/g, " ")
     .trim();
 }
+const careerSearchIndex = new WeakMap();
 function careerSearchScore(c, query) {
   const q = normalizeSearch(query);
   if (!q) return 1;
-  const title = normalizeSearch(c.title),
-    aliases = (c.aliases || []).map(normalizeSearch),
-    tokens = normalizeSearch(
-      [c.title, c.cluster, ...(c.aliases || [])].join(" "),
-    ).split(" ");
+  if (!careerSearchIndex.has(c))
+    careerSearchIndex.set(c, {
+      title: normalizeSearch(c.title),
+      aliases: (c.aliases || []).map(normalizeSearch),
+      tokens: normalizeSearch(
+        [c.title, c.cluster, ...(c.aliases || [])].join(" "),
+      ).split(" "),
+    });
+  const { title, aliases, tokens } = careerSearchIndex.get(c);
   if (title === q) return 100;
   if (aliases.includes(q)) return 90;
   if (title.startsWith(q)) return 80;
@@ -579,15 +626,19 @@ function careerSearchScore(c, query) {
     ? 50
     : 0;
 }
+const CATALOG_VERSION = 4;
 function migrateCatalogSettings(s) {
-  if (s.catalogVersion === 3) return s;
-  const legacy = state.careers.filter((c) => !c.catalogAdded),
-    oldClusters = [...new Set(legacy.map((c) => c.cluster))];
-  if (legacy.every((c) => s.enabledCareers.includes(c.id)))
+  if (s.catalogVersion === CATALOG_VERSION) return s;
+  const previousVersion = s.catalogVersion || 2;
+  const oldCatalog = state.careers.filter(
+    (c) => (c.catalogAdded || 2) <= previousVersion,
+  );
+  const oldClusters = [...new Set(oldCatalog.map((c) => c.cluster))];
+  if (oldCatalog.every((c) => s.enabledCareers.includes(c.id)))
     s.enabledCareers = state.careers.map((c) => c.id);
   if (oldClusters.every((c) => s.careerClusters.includes(c)))
     s.careerClusters = [...new Set(state.careers.map((c) => c.cluster))];
-  s.catalogVersion = 3;
+  s.catalogVersion = CATALOG_VERSION;
   return s;
 }
 function renderCareerSelection() {
@@ -617,24 +668,28 @@ function renderCareerSelection() {
       )
       .join(
         "",
-      )}</select></label></div><div class="cq-explore-toolbar"><label class="cq-match-filter"><input id="recommended-only" type="checkbox" ${view.recommended ? "checked" : ""}> My interest matches</label><span id="career-count" role="status" aria-live="polite"></span></div><div class="cq-suggestions" aria-label="Search ideas"><span>Try a direction:</span>${["Police officer", "Electrician", "Nurse", "Teacher", "Mechanic"].map((q) => `<button type="button" data-search="${q}">${q}</button>`).join("")}</div>${settings().allowOverride ? "" : '<p class="cq-note">Teacher setup limits this journey to your five interest recommendations.</p>'}<div id="career-catalog" class="cq-catalog"></div><div class="cq-more"><button class="btn secondary" id="more-careers">Show more careers</button></div><details class="cq-source-note"><summary>About career information & game income</summary><p>Profiles include excerpts from the U.S. Bureau of Labor Statistics Occupational Outlook Handbook, checked October 15, 2026. Some profiles cover a broader related occupation. National median wages include experienced workers and are not starting salaries. Income used in the simulation remains an illustrative game assumption. Check state, employer, and licensing requirements before making real plans.</p></details></div>`,
+      )}</select></label></div><div class="cq-explore-toolbar"><label class="cq-match-filter"><input id="recommended-only" type="checkbox" ${view.recommended ? "checked" : ""}> My interest matches</label><div class="cq-sort-controls"><label for="career-sort">Sort<select id="career-sort"><option value="fit">Interest matches first</option><option value="alpha" ${view.sort === "alpha" ? "selected" : ""}>Career name A–Z</option></select></label><span id="career-count" role="status" aria-live="polite"></span></div></div><div class="cq-suggestions" aria-label="Search ideas"><span>Try a direction:</span>${["Police officer", "Electrician", "Nurse", "Teacher", "Mechanic"].map((q) => `<button type="button" data-search="${q}">${q}</button>`).join("")}</div>${settings().allowOverride ? "" : '<p class="cq-note">Teacher setup limits this journey to your five interest recommendations.</p>'}<div id="career-catalog" class="cq-catalog"></div><div class="cq-more"><button class="btn secondary" id="more-careers">Show more careers</button></div><details class="cq-source-note"><summary>About career information & game income</summary><p>Profiles use the <a href="https://www.onetcenter.org/database.html" target="_blank" rel="noopener noreferrer">O*NET® 31.0 Database</a> by USDOL/ETA under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>, and U.S. Bureau of Labor Statistics research. Teach Arcade selected excerpts, grouped fields, and added game assumptions; USDOL/ETA has not approved, endorsed, or tested these changes. O*NET® is a trademark of USDOL/ETA. New profiles were added October 16, 2026. Some profiles cover a broader related occupation. National median wages include experienced workers and are not starting salaries. Income used in the simulation remains an illustrative game assumption. Check state, employer, and licensing requirements before making real plans.</p></details></div>`,
     "explore",
   );
   function draw() {
     view.query = document.getElementById("career-search").value;
     view.cluster = document.getElementById("career-cluster").value;
     view.recommended = document.getElementById("recommended-only").checked;
+    view.sort = document.getElementById("career-sort").value;
     const matches = pool
+      .map((c) => ({ c, score: careerSearchScore(c, view.query) }))
       .filter(
-        (c) =>
+        ({ c, score }) =>
+          score &&
           (view.cluster === "all" || c.cluster === view.cluster) &&
-          (!view.recommended || recommended.includes(c)) &&
-          careerSearchScore(c, view.query),
+          (!view.recommended || recommended.includes(c)),
       )
       .sort(
         (a, b) =>
-          careerSearchScore(b, view.query) - careerSearchScore(a, view.query),
-      );
+          (view.query ? b.score - a.score : 0) ||
+          (view.sort === "alpha" ? a.c.title.localeCompare(b.c.title) : 0),
+      )
+      .map(({ c }) => c);
     document.getElementById("career-count").textContent =
       `${matches.length} ${matches.length === 1 ? "career" : "careers"} found`;
     document.getElementById("career-catalog").innerHTML =
@@ -669,7 +724,12 @@ function renderCareerSelection() {
       );
     persistRun();
   }
-  ["career-search", "career-cluster", "recommended-only"].forEach((id) =>
+  [
+    "career-search",
+    "career-cluster",
+    "recommended-only",
+    "career-sort",
+  ].forEach((id) =>
     document
       .getElementById(id)
       .addEventListener(id === "career-search" ? "input" : "change", () => {
@@ -694,6 +754,14 @@ function renderCareerSelection() {
   });
   draw();
 }
+function workContextPanel(c) {
+  if (!c.workContext?.length) return "";
+  return `<ul class="cq-context-list">${c.workContext.map((x) => `<li><strong>${esc(x.label)}: ${Number(x.value).toFixed(1)} / 5</strong><small>1 = ${esc(x.low)} · 5 = ${esc(x.high)}</small></li>`).join("")}</ul>`;
+}
+function careerSourcePanel(c) {
+  const onet = Boolean(c.sourceLicense);
+  return `<footer class="cq-profile-source"><strong>Source: ${esc(c.sourceLabel || "U.S. Bureau of Labor Statistics")}</strong><span>Research profile: ${esc(c.sourceTitle)} · Reviewed ${esc(c.sourceReviewed)}.</span><a href="${esc(c.sourceUrl)}" target="_blank" rel="noopener noreferrer">Read the full official profile ↗</a>${c.laborSourceUrl ? `<a href="${esc(c.laborSourceUrl)}" target="_blank" rel="noopener noreferrer">BLS education, pay & projections: ${esc(c.laborSourceTitle)}</a>` : ""}${onet ? `<small>Includes information from the <a href="https://www.onetcenter.org/database.html" target="_blank" rel="noopener noreferrer">O*NET® 31.0 Database</a> by the U.S. Department of Labor, Employment and Training Administration (USDOL/ETA), used under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>. O*NET® is a trademark of USDOL/ETA. Teach Arcade selected excerpts, grouped fields, and added game assumptions. USDOL/ETA has not approved, endorsed, or tested these changes.</small>` : ""}<small>Pay and projections may describe a broader occupation than the selected specialty. Game income, skill weights, and training costs are illustrative simulation assumptions.</small></footer>`;
+}
 function renderCareerDetail() {
   const c = state.careers.find((c) => c.id === state.run.previewCareerId);
   if (!c || !filteredCareers().some((x) => x.id === c.id)) {
@@ -702,7 +770,7 @@ function renderCareerDetail() {
   }
   const tasks = c.duties?.length ? c.duties : [c.summary];
   setScreen(
-    `<article class="cq-card cq-career-detail" style="${themeStyle(c)}"><button class="btn quiet" id="back-catalog">← Back to career explorer</button><header class="cq-detail-hero"><div class="cq-detail-icon">${careerIcon(c.cluster)}</div><div><p class="cq-eyebrow">${esc(c.cluster)}</p><h2>${esc(c.title)}</h2><p>${esc(c.summary)}</p></div></header><div class="cq-detail-grid"><div><section class="cq-profile-section"><h3>A day in this field</h3><ul class="cq-duty-list">${tasks.map((t) => `<li>${esc(t)}</li>`).join("")}</ul></section><section class="cq-profile-section"><h3>What the work is like</h3><p>${esc(c.workEnvironment)}</p></section><section class="cq-profile-section"><h3>The route in</h3><p>${esc(c.entryRequirements)}</p><p class="cq-small">Requirements vary by state, employer, and specialty. Check the official source and local training or licensing authority.</p></section><section class="cq-profile-section"><h3>Employment outlook</h3><p>${esc(c.outlook)}</p></section></div><aside class="cq-career-facts"><p class="cq-eyebrow">YOUR FIELD NOTES</p><h3>Before you choose</h3><dl><dt>Typical entry-level education</dt><dd>${esc(c.typicalEducation === "See How to Become One" ? "Requirements vary — read the route in" : c.typicalEducation)}</dd><dt>Skills to explore</dt><dd>${topSkillsReason(c)}</dd><dt>National pay context</dt><dd>${esc(c.payContext)}</dd></dl><p class="cq-small">The pay statement describes the BLS occupation profile, not a guaranteed starting offer.</p><div class="cq-research-task"><h4>Think it through</h4><p>Which daily task appeals to you? What work condition could be challenging? Find one local employer or training program to learn more.</p></div><button class="btn" id="choose-career" data-choose-career="${c.id}">Choose this career →</button><p class="cq-small">Next: compare training cost models.</p></aside></div><footer class="cq-profile-source"><strong>Source: U.S. Bureau of Labor Statistics</strong><span>Research profile: ${esc(c.sourceTitle)} · Checked October 15, 2026.</span><a href="${esc(c.sourceUrl)}" target="_blank" rel="noopener noreferrer">Read the full official profile ↗</a><small>This research profile may cover several specialties or related roles. The simulation uses simplified income and training costs.</small></footer></article>`,
+    `<article class="cq-card cq-career-detail" style="${themeStyle(c)}"><button class="btn quiet" id="back-catalog">← Back to career explorer</button><header class="cq-detail-hero"><div class="cq-detail-icon">${careerIcon(c.cluster)}</div><div><p class="cq-eyebrow">${esc(c.cluster)}</p><h2>${esc(c.title)}</h2><p>${esc(c.summary)}</p></div></header><div class="cq-detail-grid"><div><section class="cq-profile-section"><h3>A day in this field</h3><ul class="cq-duty-list">${tasks.map((t) => `<li>${esc(t)}</li>`).join("")}</ul></section><section class="cq-profile-section"><h3>What the work is like</h3><p>${esc(c.workEnvironment)}</p>${workContextPanel(c)}</section><section class="cq-profile-section"><h3>The route in</h3><p>${esc(c.entryRequirements)}</p><p class="cq-small">Requirements vary by state, employer, and specialty. Check the official source and local training or licensing authority.</p></section><section class="cq-profile-section"><h3>Employment outlook</h3><p>${esc(c.outlook)}</p></section></div><aside class="cq-career-facts"><p class="cq-eyebrow">YOUR FIELD NOTES</p><h3>Before you choose</h3><dl><dt>Typical entry-level education</dt><dd>${esc(c.typicalEducation === "See How to Become One" ? "Requirements vary — read the route in" : c.typicalEducation)}</dd><dt>Skills to explore</dt><dd>${topSkillsReason(c)}</dd><dt>National pay context</dt><dd>${esc(c.payContext)}</dd></dl><p class="cq-small">The pay statement describes BLS occupational data, not a guaranteed starting offer.</p><div class="cq-research-task"><h4>Think it through</h4><p>Which daily task appeals to you? What work condition could be challenging? Find one local employer or training program to learn more.</p></div><button class="btn" id="choose-career" data-choose-career="${c.id}">Choose this career →</button><p class="cq-small">Next: compare training cost models.</p></aside></div>${careerSourcePanel(c)}</article>`,
     "explore",
   );
   document.getElementById("back-catalog").addEventListener("click", () => {

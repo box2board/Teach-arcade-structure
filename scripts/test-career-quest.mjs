@@ -205,8 +205,8 @@ for (const name of ["core", "workplace", "money"]) {
 
 // Career explorer regression: actual search, profile, training, and save migration.
 const careers = JSON.parse(fs.readFileSync(root + "data/careers.json"));
-assert.equal(careers.length, 80);
-assert.equal(new Set(careers.map((c) => c.id)).size, 80);
+assert.equal(careers.length, 500);
+assert.equal(new Set(careers.map((c) => c.id)).size, 500);
 for (const c of careers) {
   for (const k of [
     "summary",
@@ -220,7 +220,10 @@ for (const c of careers) {
     "typicalEducation",
   ])
     assert(c[k], `${c.id}: missing ${k}`);
-  assert(c.sourceUrl.startsWith("https://www.bls.gov/ooh/"));
+  assert(
+    c.sourceUrl.startsWith("https://www.bls.gov/ooh/") ||
+      c.sourceUrl.startsWith("https://www.onetonline.org/link/summary/"),
+  );
   assert(c.aliases.length);
   assert(c.educationOptions.length);
 }
@@ -233,7 +236,7 @@ const migrated = await boot({
 });
 assert.equal(
   migrated.w.testState.settings.enabledCareers.length,
-  80,
+  500,
   "the old all-careers selection must include newly added careers",
 );
 migrated.click("#start-run");
@@ -296,7 +299,7 @@ assert.equal(migrated.w.document.querySelectorAll("[data-career]").length, 24);
 const field = migrated.w.document.getElementById("career-cluster");
 field.value = "Public Safety & Law";
 field.dispatchEvent(new migrated.w.Event("change", { bubbles: true }));
-assert.equal(migrated.w.document.querySelectorAll("[data-career]").length, 3);
+assert.equal(migrated.w.document.querySelectorAll("[data-career]").length, 12);
 search(migrated, "police");
 migrated.click('[data-career="police-officer"]');
 migrated.click("#choose-career");
@@ -319,6 +322,99 @@ assert.equal(
   1,
   "custom teacher restrictions must survive migration",
 );
+
+// Current unrestricted saves expand from 80 entries; custom restrictions never expand.
+const previous80 = careers.filter((c) => (c.catalogAdded || 2) <= 3);
+const upgraded80 = await boot({
+  taCareerQuestSettings: {
+    catalogVersion: 3,
+    enabledCareers: previous80.map((c) => c.id),
+    careerClusters: [...new Set(previous80.map((c) => c.cluster))],
+  },
+});
+assert.equal(upgraded80.w.testState.settings.enabledCareers.length, 500);
+assert.equal(upgraded80.w.testState.settings.catalogVersion, 4);
+assert.equal(
+  new Set(careers.filter((c) => c.catalogAdded === 4).map((c) => c.socCode))
+    .size,
+  420,
+);
+// Search + sort must keep the DOM bounded with the full library loaded.
+const full = await boot();
+full.click("#start-run");
+for (let i = 0; i < 10; i++) full.click('[data-score="2"]');
+assert.equal(full.w.document.querySelectorAll("[data-career]").length, 12);
+for (const q of [
+  "astronomer",
+  "baker",
+  "game designer",
+  "forensic",
+  "marine engineer",
+  "librarian",
+]) {
+  search(full, q);
+  assert(
+    full.w.document.querySelector("[data-career]"),
+    q + " must return a real profile",
+  );
+}
+search(full, "");
+const sort = full.w.document.getElementById("career-sort");
+sort.value = "alpha";
+sort.dispatchEvent(new full.w.Event("change", { bubbles: true }));
+const titles = [...full.w.document.querySelectorAll(".cq-career-body h3")].map(
+  (x) => x.textContent,
+);
+assert.deepEqual(
+  titles,
+  [...titles].sort((a, b) => a.localeCompare(b)),
+);
+const teacherSearch = full.w.document.getElementById("teacher-career-search");
+teacherSearch.value = "police";
+teacherSearch.dispatchEvent(new full.w.Event("input", { bubbles: true }));
+assert(
+  [...full.w.document.querySelectorAll("#teacher-career-list label")].filter(
+    (x) => !x.hidden,
+  ).length > 0,
+);
+assert(
+  [...full.w.document.querySelectorAll("#teacher-career-list label")].filter(
+    (x) => !x.hidden,
+  ).length < 500,
+);
+assert.equal(
+  full.w.testState.settings.enabledCareers.length,
+  500,
+  "searching teacher controls must not disable hidden careers",
+);
+const template = JSON.parse(JSON.stringify(full.w.testState.run));
+for (const [i, c] of careers.entries()) {
+  full.w.testState.run = JSON.parse(JSON.stringify(template));
+  full.w.testState.run.previewCareerId = c.id;
+  full.w.testState.run.phase = "careerDetail";
+  full.w.testFns.renderByPhase();
+  assert.equal(full.w.document.querySelector("h2").textContent, c.title);
+  if (c.sourceLicense) {
+    assert(
+      full.w.document.querySelector(
+        'a[href="https://creativecommons.org/licenses/by/4.0/"]',
+      ),
+    );
+    assert(full.w.document.querySelector(".cq-context-list"));
+  }
+  full.click("#choose-career");
+  assert(
+    full.w.document.querySelector("[data-path]"),
+    c.title + " needs an education model",
+  );
+  full.click("[data-path]");
+  full.click('[data-housing="shared"]');
+  assert.equal(full.w.testState.run.phase, "scenario");
+  assert(Number.isFinite(full.w.testState.run.stats.cash));
+  assert(full.w.document.querySelector("[data-choice]"));
+  if ((i + 1) % 100 === 0)
+    console.log("Verified profile → training → play:", i + 1);
+}
 for (const c of [
   ctx,
   report,
@@ -330,8 +426,10 @@ for (const c of [
   migrated,
   detailReloaded,
   restricted,
+  upgraded80,
+  full,
 ])
   c.dom.window.close();
 console.log(
-  "PASS: full five-year regressions plus 80 complete career records; police and alias searches; profile-to-training-to-game flow; saved detail resume; search preservation; empty-state reset; pagination; category filtering; old all-careers migration; teacher restrictions.",
+  "PASS: 500 complete profiles and all 500 profile/training/play paths; 420 new distinct occupation codes; 50/80-to-500 migration; custom teacher restrictions; aliases; sort; bounded rendering; teacher search; source/license/context panels; full five-year regressions.",
 );
