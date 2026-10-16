@@ -126,6 +126,46 @@
   "lantern-festival": {
     "name": "Lantern Festival",
     "src": "/brain-arcade/jigsaw-puzzle/assets/lantern-festival.webp"
+  },
+  "cloudtop-carnival": {
+    "name": "Cloudtop Carnival",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/cloudtop-carnival.webp"
+  },
+  "robot-parade": {
+    "name": "Robot Parade",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/robot-parade.webp"
+  },
+  "dragon-school": {
+    "name": "Dragon School",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/dragon-school.webp"
+  },
+  "pirate-cove": {
+    "name": "Pirate Cove",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/pirate-cove.webp"
+  },
+  "monster-sleepover": {
+    "name": "Monster Sleepover",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/monster-sleepover.webp"
+  },
+  "cupcake-bakery": {
+    "name": "Cupcake Bakery",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/cupcake-bakery.webp"
+  },
+  "skate-park": {
+    "name": "Skate Park",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/skate-park.webp"
+  },
+  "alien-playground": {
+    "name": "Alien Playground",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/alien-playground.webp"
+  },
+  "animal-orchestra": {
+    "name": "Animal Orchestra",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/animal-orchestra.webp"
+  },
+  "paint-splash-city": {
+    "name": "Paint Splash City",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/paint-splash-city.webp"
   }
 };
   const state = { picture: "coral-kingdom", size: 3, trayPage: 0, relaxed: true, pieces: [], image: null, board: null, mobile: false, moves: 0, placed: 0, startAt: 0, elapsed: 0, timer: null, paused: false, selected: null, cycle: -1, preview: false, complete: false, width: 0, height: 0 };
