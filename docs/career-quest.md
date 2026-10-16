@@ -149,3 +149,12 @@ node scripts/test-career-quest-depth.mjs /tmp/cq-check/node_modules/jsdom/lib/ap
 ```
 
 The depth harness checks balanced prompts, complete source vectors, six distinct dominant-interest ranking patterns, insufficient-answer safeguards, answer editing/skipping, displayed recommendations, 56 varied five-year runs, a 500-occupation sweep, ledger reconciliation, recurring obligations, different debt rates, installment timing, and legacy economic rules. Results are in `reports/career-quest-model-checks.json`. This tests model behavior, not assessment validity or a prediction of graduates' finances. The page harness retains complete 10/15-decision journeys and all 500 profile → training → play routes. Browser rendering and native print/download verification remain separate from DOM/model tests.
+
+
+## Student results repair — October 16, 2026
+
+Mixed answers averaging below 2.5 were incorrectly rejected even when the pattern differed clearly. The absolute enthusiasm cutoff is removed. With sufficient answers, a range of at least 0.25 now supports a relative exploration ranking; this is not confidence in aptitude or success. The result wording explains relative preferences without telling students their answers were insufficient or irresponsible.
+
+Every nonempty teacher-enabled catalog now has a useful shortlist. When answers are flat or incomplete, the explorer supplies varied **exploration starting points**, explicitly distinguished from personalized suggestions. These prioritize different enabled fields and never bypass teacher restrictions. If a shortlist filter would hide other careers matching the current search/field, it broadens that filter with a visible explanation. An actually unmatched search still offers filter-reset controls. Existing saved explorer states are covered.
+
+Regressions reproduce the uploaded screenshot's six averages (2.0, 2.17, 2.0, 2.33, 1.67, 0.67) with the shortlist checkbox already selected. Further cases cover all-dislike, all-neutral, all-like, fully skipped answers, a field outside the shortlist, and a teacher-enabled catalog of only one career.

@@ -443,8 +443,7 @@ function hasInterestSignal() {
         quizQuestions.filter((q) => q.type === k && Number.isFinite(a[q.id]))
           .length >= 3,
     ) &&
-    Math.max(...p) >= 2.5 &&
-    Math.max(...p) - Math.min(...p) >= 0.5
+    Math.max(...p) - Math.min(...p) >= 0.25
   );
 }
 function renderQuiz() {
@@ -509,18 +508,18 @@ function matchReason(c) {
   if (hasInterestSignal() && affinityScore(c) <= 0)
     return "A different interest pattern. Explore it if the daily work appeals to you.";
   if (!hasInterestSignal())
-    return "Explore this occupation; your answers do not yet show a clear interest pattern.";
+    return "Try the daily tasks and see what sparks your curiosity. You do not need a strong preference yet.";
   const p = interestProfile(),
     v = state.interestSource.profiles[c.socCode];
   const shared = Object.keys(interestTypes)
     .sort((a, b) => p[b] / 4 + (v[b] - 1) / 6 - (p[a] / 4 + (v[a] - 1) / 6))
     .slice(0, 2);
-  return `Shared interests: ${shared.map((k) => interestTypes[k].label.toLowerCase()).join(" + ")}. Compare the duties before deciding.`;
+  return `Worth exploring for ${shared.map((k) => interestTypes[k].label.toLowerCase()).join(" + ")}. These are relative preferences, not a prediction of fit.`;
 }
-function interestSummary() {
+function interestSummary(personalized) {
   const p = interestProfile(),
-    signal = hasInterestSignal();
-  return `<section class="cq-interest-summary"><div><p class="cq-eyebrow">YOUR INTEREST SNAPSHOT</p><h3>${signal ? "A starting point, not a fixed identity." : "Keep exploring. There is no clear pattern yet."}</h3><p>${signal ? "Career order compares your six-area pattern with published O*NET occupational interest ratings." : "Mostly identical or incomplete answers cannot distinguish careers responsibly. Browse freely, or revisit your answers."}</p></div><div class="cq-interest-bars">${Object.entries(
+    signal = personalized;
+  return `<section class="cq-interest-summary"><div><p class="cq-eyebrow">YOUR INTEREST SNAPSHOT</p><h3>${signal ? "Here are some directions to explore." : "You have room to explore different directions."}</h3><p>${signal ? "You do not have to love an activity to be curious about it. Your suggestions use the relative differences in your answers. Read the duties, try a task, and notice what appeals to you." : "It is okay if you are unsure or have several similar interests. We have picked a mix of careers to help you discover what you enjoy. These are starting points, not personalized matches. You can explore now and update your answers whenever you want."}</p></div><div class="cq-interest-bars">${Object.entries(
     interestTypes,
   )
     .map(
@@ -529,7 +528,7 @@ function interestSummary() {
     )
     .join(
       "",
-    )}</div><details><summary>How matching works</summary><p>Six interest areas: Realistic, Investigative, Artistic, Social, Enterprising, Conventional. Six original classroom prompts per area; each is averaged from 0–4, excluding skipped answers. We compare the shape of your six averages with each occupation's six O*NET 1–7 ratings using centered correlation. Equal scores use career name order. No percentage is a probability of success. At least 24 answers, three per area, and a non-flat pattern with at least one area above neutral are required for recommendations.</p><a href="${esc(state.interestSource.url)}" target="_blank" rel="noopener noreferrer">O*NET 31.0 interest data (USDOL/ETA, CC BY 4.0) ↗</a><p>Teach Arcade selected data and built this ranking. The classroom questions and matching have not been validated as an assessment. For the official assessment, use the <a href="https://www.onetcenter.org/IP.html" target="_blank" rel="noopener noreferrer">O*NET Interest Profiler</a>.</p></details><button class="btn secondary" id="review-interests">Review my answers</button></section>`;
+    )}</div><details><summary>How matching works</summary><p>Six interest areas: Realistic, Investigative, Artistic, Social, Enterprising, Conventional. Six original classroom prompts per area; each is averaged from 0–4, excluding skipped answers. We compare the shape of your six averages with each occupation's six O*NET 1–7 ratings using centered correlation. Equal scores use career name order. No percentage is a probability of success. A relative ranking uses at least 24 answers, three per area, and a difference of 0.25 or more between area averages. No minimum enthusiasm score is required. With too little information to rank, we show varied exploration starting points from the teacher-enabled careers instead. These cutoffs are classroom design choices, not validated assessment thresholds.</p><a href="${esc(state.interestSource.url)}" target="_blank" rel="noopener noreferrer">O*NET 31.0 interest data (USDOL/ETA, CC BY 4.0) ↗</a><p>Teach Arcade selected data and built this ranking. The classroom questions and matching have not been validated as an assessment. For the official assessment, use the <a href="https://www.onetcenter.org/IP.html" target="_blank" rel="noopener noreferrer">O*NET Interest Profiler</a>.</p></details><button class="btn secondary" id="review-interests">Review my answers</button></section>`;
 }
 
 const careerThemes = {
@@ -736,16 +735,57 @@ function migrateCatalogSettings(s) {
   s.catalogVersion = CATALOG_VERSION;
   return s;
 }
+function careerSuggestions(ranked) {
+  const aligned = hasInterestSignal()
+    ? ranked.filter((c) => affinityScore(c) > 0).slice(0, 8)
+    : [];
+  if (aligned.length) return { careers: aligned, personalized: true };
+  const preferred = [
+    "registered-nurse",
+    "police-officer",
+    "electrician",
+    "graphic-designer",
+    "high-school-teacher",
+    "software-developer",
+    "accountant",
+    "social-worker",
+  ];
+  const mixed = [],
+    fields = new Set();
+  const candidates = [
+    ...preferred.map((id) => ranked.find((c) => c.id === id)).filter(Boolean),
+    ...ranked,
+  ];
+  for (const c of candidates) {
+    if (!fields.has(c.cluster)) {
+      mixed.push(c);
+      fields.add(c.cluster);
+    }
+    if (mixed.length === 8) break;
+  }
+  for (const c of ranked) {
+    if (mixed.length === 8) break;
+    if (!mixed.includes(c)) mixed.push(c);
+  }
+  return { careers: mixed, personalized: false };
+}
 function renderCareerSelection() {
   const ranked = [...filteredCareers()].sort(
     (a, b) =>
       affinityScore(b) - affinityScore(a) || a.title.localeCompare(b.title),
   );
-  const recommended = hasInterestSignal()
-      ? ranked.filter((c) => affinityScore(c) > 0).slice(0, 8)
-      : [],
-    pool =
-      settings().allowOverride || !recommended.length ? ranked : recommended;
+  const suggestions = careerSuggestions(ranked),
+    recommended = suggestions.careers;
+  if (!suggestions.personalized)
+    ranked.sort(
+      (a, b) =>
+        Number(recommended.includes(b)) - Number(recommended.includes(a)) ||
+        a.title.localeCompare(b.title),
+    );
+  const pool =
+    settings().allowOverride || !suggestions.personalized
+      ? ranked
+      : recommended;
   const view =
     state.run.explorer ||
     (state.run.explorer = {
@@ -755,7 +795,7 @@ function renderCareerSelection() {
       limit: 12,
     });
   setScreen(
-    `<div class="cq-card cq-explore"><header class="cq-explore-heading"><div><p class="cq-eyebrow">EXPLORE YOUR POSSIBILITIES</p><h2>Find work that means<br>something to you.</h2><p>Go beyond the job title. Discover the work, the route in, and the life that comes with it.</p></div><div class="cq-library-count"><strong>${pool.length}</strong><span>careers to explore</span><small>${new Set(pool.map((c) => c.cluster)).size} career fields</small></div></header>${interestSummary()}<div class="cq-search-bar"><label class="cq-search-label" for="career-search">Search careers<input id="career-search" type="search" placeholder="Police officer, mechanic, teacher…" value="${esc(view.query)}"></label><label for="career-cluster">Career field<select id="career-cluster"><option value="all">All career fields</option>${[
+    `<div class="cq-card cq-explore"><header class="cq-explore-heading"><div><p class="cq-eyebrow">EXPLORE YOUR POSSIBILITIES</p><h2>Find work that means<br>something to you.</h2><p>Go beyond the job title. Discover the work, the route in, and the life that comes with it.</p></div><div class="cq-library-count"><strong>${pool.length}</strong><span>careers to explore</span><small>${new Set(pool.map((c) => c.cluster)).size} career fields</small></div></header>${interestSummary(suggestions.personalized)}<div class="cq-search-bar"><label class="cq-search-label" for="career-search">Search careers<input id="career-search" type="search" placeholder="Police officer, mechanic, teacher…" value="${esc(view.query)}"></label><label for="career-cluster">Career field<select id="career-cluster"><option value="all">All career fields</option>${[
       ...new Set(pool.map((c) => c.cluster)),
     ]
       .sort()
@@ -765,7 +805,7 @@ function renderCareerSelection() {
       )
       .join(
         "",
-      )}</select></label></div><div class="cq-explore-toolbar"><label class="cq-match-filter"><input id="recommended-only" type="checkbox" ${view.recommended ? "checked" : ""}> My interest matches</label><div class="cq-sort-controls"><label for="career-sort">Sort<select id="career-sort"><option value="fit">Interest matches first</option><option value="alpha" ${view.sort === "alpha" ? "selected" : ""}>Career name A–Z</option></select></label><span id="career-count" role="status" aria-live="polite"></span></div></div><div class="cq-suggestions" aria-label="Search ideas"><span>Try a direction:</span>${["Police officer", "Electrician", "Nurse", "Teacher", "Mechanic"].map((q) => `<button type="button" data-search="${q}">${q}</button>`).join("")}</div>${settings().allowOverride ? "" : '<p class="cq-note">Teacher setup limits this journey to your interest recommendations when a clear pattern is available.</p>'}<div id="career-catalog" class="cq-catalog"></div><div class="cq-more"><button class="btn secondary" id="more-careers">Show more careers</button></div><details class="cq-source-note"><summary>About career information & game income</summary><p>Profiles use the <a href="https://www.onetcenter.org/database.html" target="_blank" rel="noopener noreferrer">O*NET® 31.0 Database</a> by USDOL/ETA under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>, and U.S. Bureau of Labor Statistics research. Teach Arcade selected excerpts, grouped fields, and added game assumptions; USDOL/ETA has not approved, endorsed, or tested these changes. O*NET® is a trademark of USDOL/ETA. New profiles were added October 16, 2026. Some profiles cover a broader related occupation. National median wages include experienced workers and are not starting salaries. Income used in the simulation remains an illustrative game assumption. Check state, employer, and licensing requirements before making real plans.</p></details></div>`,
+      )}</select></label></div><div class="cq-explore-toolbar"><label class="cq-match-filter"><input id="recommended-only" type="checkbox" ${view.recommended ? "checked" : ""}> ${suggestions.personalized ? "My interest suggestions" : "My exploration starting points"}</label><div class="cq-sort-controls"><label for="career-sort">Sort<select id="career-sort"><option value="fit">Suggestions first</option><option value="alpha" ${view.sort === "alpha" ? "selected" : ""}>Career name A–Z</option></select></label><span id="career-count" role="status" aria-live="polite"></span></div></div><div class="cq-suggestions" aria-label="Search ideas"><span>Try a direction:</span>${["Police officer", "Electrician", "Nurse", "Teacher", "Mechanic"].map((q) => `<button type="button" data-search="${q}">${q}</button>`).join("")}</div>${settings().allowOverride ? "" : '<p class="cq-note">Teacher setup limits this journey to your interest recommendations when a clear pattern is available.</p>'}<p id="career-filter-note" class="cq-note" hidden></p><div id="career-catalog" class="cq-catalog"></div><div class="cq-more"><button class="btn secondary" id="more-careers">Show more careers</button></div><details class="cq-source-note"><summary>About career information & game income</summary><p>Profiles use the <a href="https://www.onetcenter.org/database.html" target="_blank" rel="noopener noreferrer">O*NET® 31.0 Database</a> by USDOL/ETA under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>, and U.S. Bureau of Labor Statistics research. Teach Arcade selected excerpts, grouped fields, and added game assumptions; USDOL/ETA has not approved, endorsed, or tested these changes. O*NET® is a trademark of USDOL/ETA. New profiles were added October 16, 2026. Some profiles cover a broader related occupation. National median wages include experienced workers and are not starting salaries. Income used in the simulation remains an illustrative game assumption. Check state, employer, and licensing requirements before making real plans.</p></details></div>`,
     "explore",
   );
   document.getElementById("review-interests").onclick = () => {
@@ -779,7 +819,7 @@ function renderCareerSelection() {
     view.cluster = document.getElementById("career-cluster").value;
     view.recommended = document.getElementById("recommended-only").checked;
     view.sort = document.getElementById("career-sort").value;
-    const matches = pool
+    let matches = pool
       .map((c) => ({ c, score: careerSearchScore(c, view.query) }))
       .filter(
         ({ c, score }) =>
@@ -793,6 +833,30 @@ function renderCareerSelection() {
           (view.sort === "alpha" ? a.c.title.localeCompare(b.c.title) : 0),
       )
       .map(({ c }) => c);
+    const filterNote = document.getElementById("career-filter-note");
+    filterNote.hidden = true;
+    if (!matches.length && view.recommended) {
+      const broader = pool
+        .map((c) => ({ c, score: careerSearchScore(c, view.query) }))
+        .filter(
+          ({ c, score }) =>
+            score && (view.cluster === "all" || c.cluster === view.cluster),
+        )
+        .sort(
+          (a, b) =>
+            (view.query ? b.score - a.score : 0) ||
+            (view.sort === "alpha" ? a.c.title.localeCompare(b.c.title) : 0),
+        )
+        .map(({ c }) => c);
+      if (broader.length) {
+        matches = broader;
+        view.recommended = false;
+        document.getElementById("recommended-only").checked = false;
+        filterNote.textContent =
+          "Your shortlist does not include this search or field yet. Here are other careers you can explore in this view.";
+        filterNote.hidden = false;
+      }
+    }
     document.getElementById("career-count").textContent =
       `${matches.length} ${matches.length === 1 ? "career" : "careers"} found`;
     document.getElementById("career-catalog").innerHTML =
@@ -800,7 +864,7 @@ function renderCareerSelection() {
         .slice(0, view.limit)
         .map(
           (c) =>
-            `<article class="cq-career cq-profile-card" style="${themeStyle(c)}"><div class="cq-career-art">${careerIcon(c.cluster)}<span>${esc((careerThemes[c.cluster] || careerThemes.Business)[3])}</span>${recommended.includes(c) ? '<span class="cq-badge">Interest match</span>' : ""}</div><div class="cq-career-body"><p class="cq-career-field">${esc(c.cluster)}</p><h3>${esc(c.title)}</h3><p class="cq-career-description">${esc(c.summary)}</p><p class="cq-match-reason">${esc(matchReason(c))}</p><div class="cq-career-route"><span>BLS group entry</span><strong>${esc(c.typicalEducation === "See How to Become One" ? "Academy / requirements vary" : c.typicalEducation)}</strong></div><button class="btn secondary" data-career="${c.id}" aria-label="View ${esc(c.title)} career profile">View career profile <span aria-hidden="true">↗</span></button></div></article>`,
+            `<article class="cq-career cq-profile-card" style="${themeStyle(c)}"><div class="cq-career-art">${careerIcon(c.cluster)}<span>${esc((careerThemes[c.cluster] || careerThemes.Business)[3])}</span>${recommended.includes(c) ? `<span class="cq-badge">${suggestions.personalized ? "Interest suggestion" : "Starting point"}</span>` : ""}</div><div class="cq-career-body"><p class="cq-career-field">${esc(c.cluster)}</p><h3>${esc(c.title)}</h3><p class="cq-career-description">${esc(c.summary)}</p><p class="cq-match-reason">${esc(matchReason(c))}</p><div class="cq-career-route"><span>BLS group entry</span><strong>${esc(c.typicalEducation === "See How to Become One" ? "Academy / requirements vary" : c.typicalEducation)}</strong></div><button class="btn secondary" data-career="${c.id}" aria-label="View ${esc(c.title)} career profile">View career profile <span aria-hidden="true">↗</span></button></div></article>`,
         )
         .join("") ||
       `<div class="cq-empty"><h3>No matching careers in this view</h3><p>Try a broader job name, another career field, or clear the search filters. Teacher settings may also limit which careers are available.</p><button class="btn secondary" id="clear-career-filters">Clear search filters</button></div>`;
