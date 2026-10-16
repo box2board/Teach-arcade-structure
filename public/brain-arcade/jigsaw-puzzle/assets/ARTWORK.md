@@ -67,3 +67,19 @@ Primary request: A charming snow-covered village market at blue hour, warm glowi
 File: `inventors-workshop.webp`
 
 Primary request: An imaginative welcoming inventor workshop with brass telescope, model airship, colorful mechanical birds, gears, plants, books, tools and stained-glass windows. Detailed and cozy, no weapons.
+
+
+## Additional scenes (20-picture library)
+
+These ten original square illustrations were generated for the expanded puzzle library. Each full image is 1024 × 1024 WebP, paired with a 320 × 320 thumbnail.
+
+- **Japanese Garden** — koi pond, arched footbridge, cherry blossoms, stone lantern, tea-house veranda, and misty hills.
+- **Savanna Sunrise** — giraffe, elephants, zebras, birds, acacia trees, and a reflective watering hole.
+- **Desert Oasis** — clear pool, date palms, flowering plants, sandstone cliffs, village, canopies, and resting camels.
+- **Arctic Expedition** — frozen fjord, research camp, arctic foxes, polar bears on an ice floe, mountains, and aurora.
+- **Nile at Dusk** — sailboat, papyrus, palms, riverside village, farming, birds, and distant pyramids.
+- **Canal Town** — pastel canal homes, footbridge, boats, flower balconies, waterside produce market, and reflections.
+- **Crystal Cavern** — amethyst and turquoise formations, underground lake, glowing plants, footbridge, and daylight opening.
+- **Castle Courtyard** — fountain, rose-covered arches, herb garden, pennants, horse, and distant towers.
+- **Seaside Carnival** — Ferris wheel, carousel, roller coaster, boardwalk booths, ocean, and sunset lights.
+- **Balloon Valley** — patterned hot-air balloons over river, farms, orchards, village, and wildflower fields.
