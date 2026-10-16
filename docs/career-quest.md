@@ -95,3 +95,57 @@ node scripts/test-career-quest.mjs /tmp/cq-check/node_modules/jsdom/lib/api.js
 ```
 
 The initial builder refuses to overwrite audited data. The checker compares all 500 regenerated factual sections and evidence with stored records. The browser harness checks eight citations per profile and all 500 profile → training → simulation flows. Visual browser QA remains outstanding.
+
+## Discovery and life-model depth pass — October 16, 2026
+
+This pass preserves the five-stage setup, all 500 audited research profiles, and their citations. It supersedes the ten-question discovery flow and the earlier flat living-cost model for newly started journeys. Existing version-2 working-year saves retain the original scenario bank and settlement rules. An unfinished legacy discovery session starts the expanded questions; answers from the old prompts cannot be mapped reliably.
+
+### Discovery
+
+There are 36 original Teach Arcade activity prompts, six for each RIASEC area: Realistic, Investigative, Artistic, Social, Enterprising, Conventional. Prompts describe concrete work and ask about enjoyment, not self-rated competence. Five responses use 0–4; a separate lack-of-experience option is excluded from averages. Answers are stored by question ID; revisiting replaces the answer. The six area averages are shown to students.
+
+`career-interests.json` contains exact six-value OI profiles for all 500 occupation codes from the O*NET 31.0 `career_interest_types.csv`, with download URL, SHA-256, scale, license, and attribution. Rebuild with `python3 scripts/build-career-quest-interests.py --source /path/to/career_interest_types.csv`. Student and occupation profiles are centered independently; Pearson correlation ranks their patterns. Ties use title order. No correlation is presented as an accuracy percentage or probability of success. Up to eight positively correlated occupations are highlighted. Students see shared interest areas and can explore other allowed careers.
+
+Recommendations require at least 24 numeric answers, at least three per area, an area average of at least 2.5, and a range of at least 0.5. Identical, insufficient, or uniformly low answers show an explicit low-information message and allow browsing within teacher-enabled careers. A teacher's recommendation-only setting applies when meaningful recommendations exist. These thresholds are transparent product choices, not validated cutoffs.
+
+The questionnaire and ranking have not been psychometrically validated. This is not the official O*NET Interest Profiler. No claim of individual fit, aptitude, eligibility, or predictive accuracy is made. The interface links to the official assessment. Occupational ratings are source-backed; using them does not validate our classroom questions or custom matching method.
+
+### Working-year model 3
+
+New journeys have `modelVersion: 3`. Students choose housing, transport, an optional modeled household responsibility, and a 0/4/8% retirement contribution. Working years begin after training. All following dollar amounts/rates are explicit classroom assumptions, not sourced local prices, actual loan offers, tax law, or employer benefit promises.
+
+| Monthly category, average-cost region | Model amount |
+|---|---:|
+| Shared / solo housing | $850 / $1,500 |
+| Shared / solo utilities | $150 / $220 |
+| Groceries | $370 |
+| Car payment/fuel / transit / carpool | $430 / $130 / $260 |
+| Auto insurance, car only | $130 |
+| Health-plan premium | $190 |
+| Phone/internet | $100 |
+| Household/personal | $115 |
+| Social/recreation | $150 |
+| Optional family / dependent support | $300 / $750 |
+| Routine medical spending | $60 |
+| Routine repairs/replacements | $100 |
+
+Low/average/high regional multipliers are 0.85/1/1.3. Bills, including recurring adjustments, rise 3.5% annually. Base gross pay rises 2%; decisions can change current-year or recurring gross income. Withholding is an illustrative piecewise approximation: 7.65% of gross plus 4% on the first $15k, 12% on the next $35k, and 22% above $50k. It is not a federal/state tax calculator. Retirement grows only by contributions; no market returns or access to retirement for ordinary spending is assumed. Net worth includes retirement, which is displayed separately from available cash.
+
+Education debt accrues 5% simple annual model interest; the scheduled annual payment is 12 monthly amortizing payments calculated at 5% over 120 months, capped by the outstanding balance. Consumer debt accrues 22% simple annual model interest; scheduled payment is 30% of the interest-adjusted balance, at least $360 annually and capped by the balance. One-time financed scenario expenses enter consumer debt. Extra payments use available cash and pay consumer debt first. Direct new credit and year-end borrowing are capped at a $12k consumer balance, excluding later interest; this is not a real lending eligibility rule. Remaining gaps stay negative as explicitly unpaid cash-flow shortfalls. The model does not claim those bills were paid or forgiven, and does not model bankruptcy, late fees, or creditor enforcement.
+
+Every year settles once. Its ledger reconciles opening cash, decision cash flows, gross pay, withholding, all itemized bills, retirement, scheduled payments, new borrowing, and closing cash. Interest and both debt balances are displayed. Money effects do not scale with difficulty. Stress/skill/status effects remain abstract classroom indicators. Year reviews allow changes to housing, transport, and retirement rate for the next year; a housing change costs $650 and is recorded in the decision trail.
+
+### Scenarios and presentation
+
+There are 36 new scenarios (12 work, 12 money, 12 life). With life events enabled, each year has one of each, totaling 15 decisions. With them disabled there are ten decisions, while normal bills still apply. Randomness selects situations, not hidden dice-roll outcomes after an answer. Scenarios specify prices, lost gross income, recurring bills, time costs, and feedback. Some appear only after earlier years or earlier choices. Deferred transport repairs, job changes, dental arrangements, and phone installments have tracked follow-ups; a two-year installment cannot finish after one year. A fictional workplace's benefit policies are not asserted for every worker in an occupation.
+
+The Fieldbook visual pass uses warm paper, six interest-area colors, illustrated work/money/life chapter banners, multicolor response and budget cards, a high-contrast status panel, and separate cash/debt/retirement summaries. Existing field-specific SVG iconography and factual source panels are retained. Layouts have mobile breakpoints, labeled controls, keyboard focus states, and reduced-motion styles.
+
+### Verification
+
+```sh
+node scripts/test-career-quest.mjs /tmp/cq-check/node_modules/jsdom/lib/api.js
+node scripts/test-career-quest-depth.mjs /tmp/cq-check/node_modules/jsdom/lib/api.js --report
+```
+
+The depth harness checks balanced prompts, complete source vectors, six distinct dominant-interest ranking patterns, insufficient-answer safeguards, answer editing/skipping, displayed recommendations, 56 varied five-year runs, a 500-occupation sweep, ledger reconciliation, recurring obligations, different debt rates, installment timing, and legacy economic rules. Results are in `reports/career-quest-model-checks.json`. This tests model behavior, not assessment validity or a prediction of graduates' finances. The page harness retains complete 10/15-decision journeys and all 500 profile → training → play routes. Browser rendering and native print/download verification remain separate from DOM/model tests.

@@ -1,0 +1,507 @@
+[
+  {
+    "id": "v3-workplace-01",
+    "category": "workplace",
+    "title": "A schedule that pays more",
+    "prompt": "Your employer offers an extra assignment for this year. It would add $2,400 gross pay, but take two evenings most weeks. A family commitment already uses one evening.",
+    "context": "The extra income is taxable. Time costs continue even when the assignment is inconvenient.",
+    "choices": [
+      {
+        "label": "Accept the full assignment",
+        "text": "Earn $2,400 gross this year and give up regular recovery time.",
+        "effects": {
+          "income": 2400,
+          "workLife": -12,
+          "stress": 8,
+          "performance": 3
+        },
+        "feedback": "Income rises at settlement, but your personal schedule becomes much tighter. More money did not create more hours."
+      },
+      {
+        "label": "Negotiate a smaller assignment",
+        "text": "Earn $900 gross and protect one of the evenings.",
+        "effects": {
+          "income": 900,
+          "workLife": -4,
+          "stress": 3,
+          "communication": 3
+        },
+        "feedback": "The fictional employer accepts a smaller role. You gain less income while preserving some time."
+      },
+      {
+        "label": "Keep your current workload",
+        "text": "Decline the extra pay and keep the existing schedule.",
+        "effects": {
+          "happiness": 3,
+          "workLife": 4
+        },
+        "feedback": "You protect time and give up extra income. Your regular paycheck is unchanged."
+      }
+    ]
+  },
+  {
+    "id": "v3-workplace-02",
+    "category": "workplace",
+    "title": "The training your employer will not cover",
+    "prompt": "A useful training course costs $1,200. It could strengthen your work, but your employer has no reimbursement budget. The course meets after work for several months.",
+    "context": "Training does not guarantee a promotion or a raise.",
+    "choices": [
+      {
+        "label": "Pay for the course",
+        "text": "Spend $1,200 and commit evenings to learning.",
+        "effects": {
+          "cash": -1200,
+          "professionalism": 5,
+          "performance": 5,
+          "workLife": -5
+        },
+        "feedback": "You gained practice and a credential in the story. The cash and time costs are real within the model; no automatic raise was added."
+      },
+      {
+        "label": "Build a slower learning plan",
+        "text": "Spend $200 on materials and ask for monthly feedback.",
+        "effects": {
+          "cash": -200,
+          "professionalism": 3,
+          "performance": 2,
+          "timeManagement": 3
+        },
+        "feedback": "Your progress is slower and less structured, but your finances take a smaller hit."
+      },
+      {
+        "label": "Wait a year",
+        "text": "Protect cash and focus on current duties.",
+        "effects": {
+          "stress": -2,
+          "performance": -1
+        },
+        "feedback": "You keep your cash available. This opportunity passes without making you unqualified for your current job."
+      }
+    ]
+  },
+  {
+    "id": "v3-workplace-03",
+    "category": "workplace",
+    "title": "A health problem interrupts work",
+    "prompt": "You need time away from work. In this fictional job, the available paid leave covers only part of the absence. Medical costs are handled in the normal budget; this decision concerns lost income and recovery.",
+    "context": "This is a scenario benefit policy, not a claim about all employers in your career.",
+    "choices": [
+      {
+        "label": "Take the needed recovery time",
+        "text": "Lose $1,800 of gross pay this year; prioritize recovery.",
+        "effects": {
+          "income": -1800,
+          "stress": -5,
+          "happiness": 3
+        },
+        "feedback": "Recovery protects your well-being, while lost pay tightens the year\u2019s budget."
+      },
+      {
+        "label": "Arrange temporary shorter days",
+        "text": "Lose $900 gross and return with a reduced workload.",
+        "effects": {
+          "income": -900,
+          "workLife": -3,
+          "stress": 2,
+          "communication": 2
+        },
+        "feedback": "The arrangement reduces the pay loss but leaves less room for rest."
+      },
+      {
+        "label": "Use temporary help at home",
+        "text": "Spend $650 to reduce outside responsibilities; still lose $900 gross.",
+        "effects": {
+          "cash": -650,
+          "income": -900,
+          "stress": -2,
+          "problemSolving": 2
+        },
+        "feedback": "Paid help protects recovery time. It cannot replace your missing wages."
+      }
+    ]
+  },
+  {
+    "id": "v3-workplace-04",
+    "category": "workplace",
+    "title": "An error needs to be corrected",
+    "prompt": "You discover a mistake in work already delivered. It can be fixed, but other people are relying on the current version. Reporting it will be uncomfortable and may delay a deadline.",
+    "context": "The model rewards taking responsibility, while still recognizing time and reputation costs.",
+    "choices": [
+      {
+        "label": "Report it and propose a correction",
+        "text": "Work through the issue with the affected people.",
+        "effects": {
+          "professionalism": 5,
+          "communication": 3,
+          "stress": 4,
+          "workLife": -3
+        },
+        "feedback": "You make the correction visible. Handling it responsibly still costs time and creates short-term pressure."
+      },
+      {
+        "label": "Ask a colleague to check first",
+        "text": "Get a second review before contacting everyone.",
+        "effects": {
+          "teamwork": 3,
+          "problemSolving": 3,
+          "workLife": -2,
+          "stress": 2
+        },
+        "feedback": "A second check clarifies the scope. You must still communicate what needs changing."
+      },
+      {
+        "label": "Quietly replace it without notice",
+        "text": "Save an awkward conversation, but leave others using the old work.",
+        "effects": {
+          "performance": -6,
+          "professionalism": -4,
+          "stress": 6
+        },
+        "feedback": "Conflicting versions cause more confusion. Avoiding the conversation creates a larger work problem."
+      }
+    ]
+  },
+  {
+    "id": "v3-workplace-05",
+    "category": "workplace",
+    "title": "A job offer across town",
+    "prompt": "A different employer offers $3,000 more gross pay each year beginning now. The commute would add $160 a month in transport and reduce free time. A move is not required.",
+    "context": "A higher salary is not the same as a larger spending margin.",
+    "choices": [
+      {
+        "label": "Take the new offer",
+        "text": "Add $3,000 gross this year; increase transport by $160/month going forward.",
+        "effects": {
+          "monthly": {
+            "transport": 160
+          },
+          "flag": "newJob",
+          "workLife": -7,
+          "stress": 4,
+          "annualIncome": 3000
+        },
+        "feedback": "The commute uses much of the after-withholding raise. Future extra salary is tracked in the follow-up decision."
+      },
+      {
+        "label": "Stay and ask for development opportunities",
+        "text": "Keep current pay and commute.",
+        "effects": {
+          "professionalism": 3,
+          "communication": 3,
+          "performance": 2
+        },
+        "feedback": "You keep a familiar routine. A development conversation does not guarantee higher pay."
+      },
+      {
+        "label": "Negotiate a one-year trial arrangement",
+        "text": "Add $1,200 gross this year and $60/month in transport.",
+        "effects": {
+          "income": 1200,
+          "monthly": {
+            "transport": 60
+          },
+          "workLife": -3,
+          "communication": 3
+        },
+        "feedback": "The fictional employer accepts a narrower trial. The smaller pay increase has a smaller commute cost."
+      }
+    ],
+    "minYear": 2
+  },
+  {
+    "id": "v3-workplace-06",
+    "category": "workplace",
+    "title": "Your new job is no longer new",
+    "prompt": "You accepted the across-town role. Its $3,000 gross pay premium continues, and the higher transport cost remains in your budget. You can change the arrangement this year.",
+    "context": "This follow-up carries forward the consequences of your earlier choice.",
+    "choices": [
+      {
+        "label": "Keep the role",
+        "text": "Keep the $3,000 annual premium and the recurring transport cost.",
+        "effects": {
+          "clearFlag": "newJob",
+          "workLife": -3
+        },
+        "feedback": "The premium continues for this year, alongside the recurring commute cost."
+      },
+      {
+        "label": "Return to a nearby role",
+        "text": "Give up the premium and remove the added $160 monthly commute cost.",
+        "effects": {
+          "monthly": {
+            "transport": -160
+          },
+          "clearFlag": "newJob",
+          "stress": -3,
+          "workLife": 5,
+          "annualIncome": -3000
+        },
+        "feedback": "You end the arrangement. Returning to nearby work lowers costs but does not keep the premium."
+      },
+      {
+        "label": "Negotiate some travel support",
+        "text": "Keep the premium; cut the added commute spending by $60/month and end the trial.",
+        "effects": {
+          "income": 3000,
+          "monthly": {
+            "transport": -60
+          },
+          "clearFlag": "newJob",
+          "communication": 3,
+          "workLife": -2,
+          "annualIncome": -3000
+        },
+        "feedback": "The fictional employer supports some travel. The remaining commute cost stays; the special premium is not assumed beyond this trial year."
+      }
+    ],
+    "requires": "newJob",
+    "minYear": 3
+  },
+  {
+    "id": "v3-workplace-07",
+    "category": "workplace",
+    "title": "Your team is short staffed",
+    "prompt": "Two positions are temporarily unfilled. You are asked to cover more tasks without an immediate raise. Your usual responsibilities have not disappeared.",
+    "context": "Good planning can help, but cannot make an unlimited workload sustainable.",
+    "choices": [
+      {
+        "label": "Agree on priorities with your supervisor",
+        "text": "Ask which tasks can wait and document the plan.",
+        "effects": {
+          "communication": 4,
+          "professionalism": 3,
+          "stress": 3,
+          "performance": 2
+        },
+        "feedback": "Some tasks are delayed deliberately. Clear priorities reduce confusion, but the staffing problem remains."
+      },
+      {
+        "label": "Try to cover everything",
+        "text": "Work extra unpaid hours to keep every deadline.",
+        "effects": {
+          "performance": 4,
+          "stress": 12,
+          "workLife": -12,
+          "happiness": -4
+        },
+        "feedback": "You keep work moving for now at a substantial personal cost. No extra paycheck is invented."
+      },
+      {
+        "label": "Share the load with colleagues",
+        "text": "Spend time building a temporary rotation.",
+        "effects": {
+          "teamwork": 4,
+          "timeManagement": 3,
+          "workLife": -4,
+          "stress": 4
+        },
+        "feedback": "The rotation spreads the pressure. It still asks more of an already stretched team."
+      }
+    ]
+  },
+  {
+    "id": "v3-workplace-08",
+    "category": "workplace",
+    "title": "A temporary reduction in paid hours",
+    "prompt": "Demand falls. In this scenario your employer reduces paid hours for part of the year. All options involve less income; the choice is how to manage the disruption.",
+    "context": "This is a fictional workplace event; it is not a forecast about your occupation.",
+    "choices": [
+      {
+        "label": "Accept the reduced schedule",
+        "text": "Lose $4,000 gross this year; use the time to search for stable work.",
+        "effects": {
+          "income": -4000,
+          "professionalism": 3,
+          "stress": 7
+        },
+        "feedback": "Your bills continue while pay falls. Time spent searching does not produce a guaranteed job."
+      },
+      {
+        "label": "Pick up temporary shifts elsewhere",
+        "text": "Lose only $1,800 gross overall, but take on an irregular schedule.",
+        "effects": {
+          "income": -1800,
+          "stress": 10,
+          "workLife": -9,
+          "adaptability": 4
+        },
+        "feedback": "Extra work replaces part of the missing income and leaves little recovery time."
+      },
+      {
+        "label": "Use the time for a low-cost course",
+        "text": "Lose $4,000 gross and spend $250 on learning.",
+        "effects": {
+          "income": -4000,
+          "cash": -250,
+          "professionalism": 4,
+          "stress": 5
+        },
+        "feedback": "You build skills while the immediate budget becomes harder to balance."
+      }
+    ],
+    "minYear": 2
+  },
+  {
+    "id": "v3-workplace-09",
+    "category": "workplace",
+    "title": "A promotion with a price",
+    "prompt": "A supervisory trial would add $3,500 gross for this year. It also involves conflict resolution and an on-call rotation. You can decline without losing your existing job.",
+    "context": "The trial raise is limited to this year; continuing management pay is not assumed.",
+    "choices": [
+      {
+        "label": "Try the supervisory role",
+        "text": "Take the trial pay and the on-call commitment.",
+        "effects": {
+          "income": 3500,
+          "leadership": 5,
+          "stress": 10,
+          "workLife": -9
+        },
+        "feedback": "You practice leadership and earn more, while the schedule reaches into personal time."
+      },
+      {
+        "label": "Ask for a smaller project-lead role",
+        "text": "Receive $1,200 gross and lead a defined project.",
+        "effects": {
+          "income": 1200,
+          "leadership": 3,
+          "stress": 4,
+          "workLife": -4
+        },
+        "feedback": "The smaller trial has a smaller payoff and a more limited responsibility."
+      },
+      {
+        "label": "Stay in your current role",
+        "text": "Keep the existing workload and pay.",
+        "effects": {
+          "workLife": 3,
+          "happiness": 2
+        },
+        "feedback": "You protect the kind of work and schedule you prefer. Promotion is not the only useful direction."
+      }
+    ],
+    "minYear": 3
+  },
+  {
+    "id": "v3-workplace-10",
+    "category": "workplace",
+    "title": "A required work expense",
+    "prompt": "Your employer requires updated work equipment. In this story, reimbursement covers only part of the cost. You must arrange an acceptable solution before next month.",
+    "context": "Specific equipment depends on the occupation; these prices are classroom assumptions.",
+    "choices": [
+      {
+        "label": "Buy the new equipment",
+        "text": "Pay the $600 remaining cost after reimbursement.",
+        "effects": {
+          "cash": -600,
+          "professionalism": 3,
+          "stress": -1
+        },
+        "feedback": "The equipment is ready and your cash buffer is smaller."
+      },
+      {
+        "label": "Use an approved refurbished option",
+        "text": "Pay $300 and accept a shorter expected lifespan.",
+        "effects": {
+          "cash": -300,
+          "problemSolving": 3,
+          "flag": "equipmentAging"
+        },
+        "feedback": "You meet the requirement at a lower cost. Replacement may come sooner."
+      },
+      {
+        "label": "Use the employer loan pool",
+        "text": "Pay $75 in handling costs and coordinate a shared schedule.",
+        "effects": {
+          "cash": -75,
+          "timeManagement": 2,
+          "workLife": -3
+        },
+        "feedback": "You avoid a large purchase but lose flexibility in when the equipment is available."
+      }
+    ]
+  },
+  {
+    "id": "v3-workplace-11",
+    "category": "workplace",
+    "title": "Boundaries with a demanding client",
+    "prompt": "Someone expects responses outside your scheduled hours. Your supervisor wants the relationship maintained but has not promised additional pay.",
+    "context": "There is no extra income for unpaid availability in this scenario.",
+    "choices": [
+      {
+        "label": "Set a clear response schedule",
+        "text": "Explain when to expect a reply and provide an escalation route.",
+        "effects": {
+          "communication": 4,
+          "professionalism": 3,
+          "stress": 2,
+          "workLife": 3
+        },
+        "feedback": "A clear agreement helps protect time. Some difficult conversations remain."
+      },
+      {
+        "label": "Stay available every evening",
+        "text": "Keep the client satisfied by remaining on call informally.",
+        "effects": {
+          "performance": 3,
+          "stress": 9,
+          "workLife": -10
+        },
+        "feedback": "The relationship improves for now, but unpaid work takes over personal time."
+      },
+      {
+        "label": "Build a shared coverage plan",
+        "text": "Coordinate with colleagues and review it with your supervisor.",
+        "effects": {
+          "teamwork": 4,
+          "timeManagement": 3,
+          "stress": 3,
+          "workLife": -2
+        },
+        "feedback": "Shared coverage reduces individual pressure and still needs everyone\u2019s time."
+      }
+    ]
+  },
+  {
+    "id": "v3-workplace-12",
+    "category": "workplace",
+    "title": "Your skills need an update",
+    "prompt": "A new process changes how your team works. You can learn during limited work hours, pay for guided help, or continue using the old approach for a while.",
+    "context": "Change creates both learning opportunities and transition costs.",
+    "choices": [
+      {
+        "label": "Use the scheduled practice sessions",
+        "text": "Learn gradually and accept a temporary drop in output.",
+        "effects": {
+          "techLiteracy": 4,
+          "adaptability": 4,
+          "performance": -2,
+          "stress": 3
+        },
+        "feedback": "You build a foundation while producing less during the transition."
+      },
+      {
+        "label": "Pay for guided practice",
+        "text": "Spend $450 and practice after work.",
+        "effects": {
+          "cash": -450,
+          "techLiteracy": 5,
+          "performance": 2,
+          "workLife": -5
+        },
+        "feedback": "Extra help speeds the transition at a cost in cash and time."
+      },
+      {
+        "label": "Delay learning the new process",
+        "text": "Keep the familiar routine for now.",
+        "effects": {
+          "stress": -1,
+          "performance": -6,
+          "flag": "trainingDeferred"
+        },
+        "feedback": "Your short-term routine is easier, but more tasks are moving to the new system."
+      }
+    ],
+    "minYear": 2
+  }
+]

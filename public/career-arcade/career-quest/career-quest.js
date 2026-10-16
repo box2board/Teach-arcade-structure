@@ -11,48 +11,40 @@ const defaultSettings = {
   enabledCareers: [],
 };
 
-const quizQuestions = [
-  {
-    q: "I enjoy explaining ideas and helping a group reach a decision.",
-    map: { communication: 3, leadership: 2, creativity: 2 },
+let quizQuestions = [];
+const interestTypes = {
+  R: {
+    label: "Build & do",
+    name: "Realistic",
+    color: "#b64b19",
+    icon: "tools",
   },
-  {
-    q: "You are strongest when deadlines are tight.",
-    map: { timeManagement: 3, adaptability: 2, professionalism: 1 },
+  I: {
+    label: "Investigate",
+    name: "Investigative",
+    color: "#2861b4",
+    icon: "science",
   },
-  {
-    q: "You enjoy solving technical problems.",
-    map: { techLiteracy: 3, problemSolving: 3 },
+  A: { label: "Create", name: "Artistic", color: "#9c3982", icon: "creative" },
+  S: {
+    label: "Help & teach",
+    name: "Social",
+    color: "#08766f",
+    icon: "people",
   },
-  {
-    q: "You prefer helping teams stay coordinated.",
-    map: { teamwork: 3, communication: 2 },
+  E: {
+    label: "Lead & persuade",
+    name: "Enterprising",
+    color: "#8a4ab4",
+    icon: "business",
   },
-  {
-    q: "You like planning budgets and comparing options.",
-    map: { financialLiteracy: 3, problemSolving: 2 },
+  C: {
+    label: "Organize",
+    name: "Conventional",
+    color: "#906311",
+    icon: "office",
   },
-  {
-    q: "You stay calm in changing situations.",
-    map: { adaptability: 3, professionalism: 2 },
-  },
-  {
-    q: "You are comfortable presenting to groups.",
-    map: { communication: 3, leadership: 2 },
-  },
-  {
-    q: "You like designing something from scratch.",
-    map: { creativity: 3, problemSolving: 2 },
-  },
-  {
-    q: "You notice process issues others miss.",
-    map: { professionalism: 2, timeManagement: 2, problemSolving: 2 },
-  },
-  {
-    q: "You like coaching peers to improve.",
-    map: { teamwork: 2, leadership: 3, communication: 1 },
-  },
-];
+};
 
 const educationPaths = {
   workforce: {
@@ -193,6 +185,11 @@ async function init() {
     "scenarios-core",
     "scenarios-workplace",
     "scenarios-money",
+    "career-interests",
+    "discovery",
+    "scenarios-v3-workplace",
+    "scenarios-v3-money",
+    "scenarios-v3-core",
   ];
   const data = await Promise.all(
     paths.map(async (p) => {
@@ -202,6 +199,9 @@ async function init() {
     }),
   );
   state.careers = data[0];
+  state.interestSource = data[4];
+  quizQuestions = data[5];
+  state.lifeScenarios = { workplace: data[6], money: data[7], core: data[8] };
   state.scenarios = { core: data[1], workplace: data[2], money: data[3] };
   const saved = storage.get(SETTINGS_KEY) || {};
   state.settings = { ...defaultSettings, ...saved };
@@ -313,6 +313,12 @@ function startRun() {
   if (!filteredCareers(state.settings).length) return;
   state.run = {
     version: 2,
+    modelVersion: 3,
+    interestAnswers: {},
+    budgetAdjustments: {},
+    flags: {},
+    retirement: 0,
+    incomeAdjustment: 0,
     phase: "quiz",
     year: 1,
     stepInYear: 0,
@@ -351,6 +357,11 @@ function continueRun() {
     return;
   }
   state.run = saved;
+  if (saved.phase === "quiz" && !saved.modelVersion) {
+    saved.interestAnswers = {};
+    saved.quizIndex = 0;
+  }
+
   for (const key of ["careerId", "previewCareerId"])
     state.run[key] = CAREER_REDIRECTS[state.run[key]] || state.run[key];
   migrateCatalogSettings(state.run.settings);
@@ -374,6 +385,7 @@ function setScreen(html, stage) {
         `<span class="cq-step ${i < active ? "done" : ""}" ${i === active ? 'aria-current="step"' : ""}>${i < active ? "✓" : i + 1} ${s[0].toUpperCase() + s.slice(1)}</span>`,
     )
     .join("");
+  screen().dataset.stage = stage;
   screen().innerHTML = html;
   if (state.run) {
     screen().focus({ preventScroll: true });
@@ -381,9 +393,9 @@ function setScreen(html, stage) {
   }
 }
 function renderIntro() {
-  const cityArt = `<div class="cq-launch-art" aria-hidden="true"><svg viewBox="0 0 520 340" fill="none"><circle cx="278" cy="160" r="145" fill="#436bc1" opacity=".45"/><circle cx="278" cy="160" r="112" stroke="#a2baf3" stroke-dasharray="5 9" opacity=".4"/><path d="M40 287C120 254 169 325 250 278s150-29 224 8" stroke="#9dc5f5" stroke-width="30" opacity=".18"/><path d="M43 287C120 254 169 325 250 278s150-29 224 8" stroke="#e3edff" stroke-width="2" stroke-dasharray="8 10"/><rect x="91" y="151" width="86" height="114" rx="8" fill="#71cbc0"/><path d="M108 164h12v17h-12zm30 0h12v17h-12zm-30 30h12v17h-12zm30 0h12v17h-12z" fill="#d6f5eb"/><rect x="119" y="230" width="29" height="35" rx="4" fill="#215c75"/><rect x="196" y="103" width="108" height="164" rx="8" fill="#e9efff"/><path d="M217 126h17v22h-17zm36 0h17v22h-17zm-36 40h17v22h-17zm36 0h17v22h-17z" fill="#7495dd"/><rect x="234" y="223" width="34" height="44" rx="4" fill="#315baf"/><path d="M250 77l24 15h-48z" fill="#f8cc64"/><path d="M250 78V49l29 9-29 9" stroke="#f8cc64" stroke-width="4" stroke-linejoin="round"/><rect x="329" y="169" width="100" height="96" rx="8" fill="#f2b870"/><path d="M337 169l42-32 42 32z" fill="#ed8e63"/><rect x="348" y="195" width="23" height="23" rx="3" fill="#fff2d1"/><rect x="387" y="195" width="23" height="23" rx="3" fill="#fff2d1"/><path d="M92 267h348" stroke="#172e61" stroke-width="6" stroke-linecap="round"/><rect x="50" y="67" width="131" height="57" rx="13" fill="#fff" transform="rotate(-7 50 67)"/><path d="M68 80h20v20H68zM78 75v30m-15-15h30" stroke="#167d70" stroke-width="3"/><text x="102" y="93" fill="#203963" font-family="system-ui,sans-serif" font-size="12" font-weight="700" transform="rotate(-7 102 93)">HEALTHCARE</text><rect x="338" y="72" width="142" height="55" rx="13" fill="#fff" transform="rotate(8 338 72)"/><path d="M356 89l10-4 10 4v10c0 7-10 12-10 12s-10-5-10-12z" stroke="#315ed6" stroke-width="2.5" transform="rotate(8 366 98)"/><text x="386" y="107" fill="#203963" font-family="system-ui,sans-serif" font-size="11" font-weight="700" transform="rotate(8 386 107)">PUBLIC SAFETY</text><circle cx="465" cy="217" r="21" fill="#a2dfbe"/><path d="M465 215v49" stroke="#294c69" stroke-width="4"/><circle cx="63" cy="229" r="25" fill="#7cc5b7"/><path d="M63 224v43" stroke="#294c69" stroke-width="4"/><circle cx="315" cy="42" r="5" fill="#f8cc64"/><path d="M450 143v12m-6-6h12M88 137v10m-5-5h10" stroke="#c4d9ff" stroke-width="2"/></svg><span class="cq-art-caption">A WORLD OF POSSIBILITIES</span></div>`;
+  const cityArt = `<div class="cq-launch-art" aria-hidden="true"><svg viewBox="0 0 520 340" fill="none"><circle cx="278" cy="160" r="145" fill="#b591ec" opacity=".45"/><circle cx="278" cy="160" r="112" stroke="#8853bf" stroke-dasharray="5 9" opacity=".4"/><path d="M40 287C120 254 169 325 250 278s150-29 224 8" stroke="#eb8e75" stroke-width="30" opacity=".18"/><path d="M43 287C120 254 169 325 250 278s150-29 224 8" stroke="#bc7844" stroke-width="2" stroke-dasharray="8 10"/><rect x="91" y="151" width="86" height="114" rx="8" fill="#5cbba8"/><path d="M108 164h12v17h-12zm30 0h12v17h-12zm-30 30h12v17h-12zm30 0h12v17h-12z" fill="#d6f5eb"/><rect x="119" y="230" width="29" height="35" rx="4" fill="#215c75"/><rect x="196" y="103" width="108" height="164" rx="8" fill="#ffde8d"/><path d="M217 126h17v22h-17zm36 0h17v22h-17zm-36 40h17v22h-17zm36 0h17v22h-17z" fill="#dc9767"/><rect x="234" y="223" width="34" height="44" rx="4" fill="#8150a4"/><path d="M250 77l24 15h-48z" fill="#f8cc64"/><path d="M250 78V49l29 9-29 9" stroke="#f8cc64" stroke-width="4" stroke-linejoin="round"/><rect x="329" y="169" width="100" height="96" rx="8" fill="#eca0ad"/><path d="M337 169l42-32 42 32z" fill="#a6689a"/><rect x="348" y="195" width="23" height="23" rx="3" fill="#fff2d1"/><rect x="387" y="195" width="23" height="23" rx="3" fill="#fff2d1"/><path d="M92 267h348" stroke="#172e61" stroke-width="6" stroke-linecap="round"/><rect x="50" y="67" width="131" height="57" rx="13" fill="#fff" transform="rotate(-7 50 67)"/><path d="M68 80h20v20H68zM78 75v30m-15-15h30" stroke="#167d70" stroke-width="3"/><text x="102" y="93" fill="#203963" font-family="system-ui,sans-serif" font-size="12" font-weight="700" transform="rotate(-7 102 93)">HEALTHCARE</text><rect x="338" y="72" width="142" height="55" rx="13" fill="#fff" transform="rotate(8 338 72)"/><path d="M356 89l10-4 10 4v10c0 7-10 12-10 12s-10-5-10-12z" stroke="#315ed6" stroke-width="2.5" transform="rotate(8 366 98)"/><text x="386" y="107" fill="#203963" font-family="system-ui,sans-serif" font-size="11" font-weight="700" transform="rotate(8 386 107)">PUBLIC SAFETY</text><circle cx="465" cy="217" r="21" fill="#a2dfbe"/><path d="M465 215v49" stroke="#294c69" stroke-width="4"/><circle cx="63" cy="229" r="25" fill="#7cc5b7"/><path d="M63 224v43" stroke="#294c69" stroke-width="4"/><circle cx="315" cy="42" r="5" fill="#f8cc64"/><path d="M450 143v12m-6-6h12M88 137v10m-5-5h10" stroke="#9b70a3" stroke-width="2"/></svg><span class="cq-art-caption">A WORLD OF POSSIBILITIES</span></div>`;
   setScreen(
-    `<div class="cq-card cq-launch"><div><p class="cq-eyebrow">FIVE YEARS. YOUR DECISIONS.</p><h2>Your future starts<br>with a possibility.</h2><p>From public safety to skilled trades, healthcare to creative work. Explore ${state.careers.length} careers, choose a direction, and discover where your decisions lead.</p><div class="cq-inline-actions"><button class="btn" id="launch-start" ${document.getElementById("start-run").disabled ? "disabled" : ""}>Start my journey →</button></div><p class="cq-small" style="color:#d1def7">About 20–30 minutes · No account needed</p></div>${cityArt}</div><div class="cq-start-features"><div class="cq-start-feature"><span>01 / DISCOVER</span><b>Find a direction</b><p>Ten quick interest prompts and ${state.careers.length} detailed career profiles to explore.</p></div><div class="cq-start-feature"><span>02 / EXPERIENCE</span><b>See the tradeoffs</b><p>Choose your training and budget. Make work, money, and life decisions over five years.</p></div><div class="cq-start-feature"><span>03 / REFLECT</span><b>Explain your story</b><p>Use your decisions and annual budgets to explain what mattered to you.</p></div></div>`,
+    `<div class="cq-card cq-launch"><div><p class="cq-eyebrow">FIVE YEARS. YOUR DECISIONS.</p><h2>Your future starts<br>with a possibility.</h2><p>From public safety to skilled trades, healthcare to creative work. Explore ${state.careers.length} careers, choose a direction, and discover where your decisions lead.</p><div class="cq-inline-actions"><button class="btn" id="launch-start" ${document.getElementById("start-run").disabled ? "disabled" : ""}>Start my journey →</button></div><p class="cq-small" style="color:#d1def7">About 35–45 minutes · No account needed</p></div>${cityArt}</div><div class="cq-start-features"><div class="cq-start-feature"><span>01 / DISCOVER</span><b>Find a direction</b><p>36 detailed activity prompts and ${state.careers.length} detailed career profiles to explore.</p></div><div class="cq-start-feature"><span>02 / EXPERIENCE</span><b>See the tradeoffs</b><p>Choose your training and budget. Make work, money, and life decisions over five years.</p></div><div class="cq-start-feature"><span>03 / REFLECT</span><b>Explain your story</b><p>Use your decisions and annual budgets to explain what mattered to you.</p></div></div>`,
     "discover",
   );
   document
@@ -404,53 +416,122 @@ function renderByPhase() {
   };
   (renderers[state.run?.phase] || renderIntro)();
 }
+function interestProfile() {
+  const answers = state.run?.interestAnswers || {};
+  return Object.fromEntries(
+    Object.keys(interestTypes).map((k) => {
+      const values = quizQuestions
+        .filter((q) => q.type === k)
+        .map((q) => answers[q.id])
+        .filter((v) => Number.isFinite(v));
+      return [
+        k,
+        values.length
+          ? values.reduce((a, b) => a + b, 0) / values.length
+          : null,
+      ];
+    }),
+  );
+}
+function hasInterestSignal() {
+  const a = state.run?.interestAnswers || {},
+    p = Object.values(interestProfile());
+  return (
+    Object.values(a).filter(Number.isFinite).length >= 24 &&
+    Object.keys(interestTypes).every(
+      (k) =>
+        quizQuestions.filter((q) => q.type === k && Number.isFinite(a[q.id]))
+          .length >= 3,
+    ) &&
+    Math.max(...p) >= 2.5 &&
+    Math.max(...p) - Math.min(...p) >= 0.5
+  );
+}
 function renderQuiz() {
   const run = state.run,
     i = run.quizIndex,
     q = quizQuestions[i];
+  const answered = run.interestAnswers || (run.interestAnswers = {});
   setScreen(
-    `<div class="cq-card cq-quiz"><p class="cq-eyebrow">DISCOVER · ${i + 1} OF ${quizQuestions.length}</p><div class="cq-meter" role="progressbar" aria-label="Interest questions completed" aria-valuemin="0" aria-valuemax="10" aria-valuenow="${i}"><span style="width:${(i / quizQuestions.length) * 100}%"></span></div><h2>${q.q}</h2><p>How much does this sound like you? Think about what you enjoy, not just what you can already do.</p><div class="cq-option-list">${[
-      [3, "Very much like me"],
-      [2, "Somewhat like me"],
-      [1, "A little like me"],
-      [0, "Not like me"],
+    `<div class="cq-card cq-quiz"><div class="cq-quiz-top"><span class="cq-chapter-tag">DISCOVER YOUR DIRECTION</span><strong>${i + 1} / ${quizQuestions.length}</strong></div><div class="cq-meter" role="progressbar" aria-label="Interest questions completed" aria-valuemin="0" aria-valuemax="${quizQuestions.length}" aria-valuenow="${i}"><span style="width:${(i / quizQuestions.length) * 100}%"></span></div><p class="cq-eyebrow">PICTURE YOURSELF DOING THIS</p><h2>${esc(q.q)}</h2><p class="cq-question-detail">${esc(q.detail)}</p><p>How much would you enjoy this activity? Ignore your current skill level, pay, and how much training it takes.</p><div class="cq-option-list cq-interest-options">${[
+      [0, "Strongly dislike"],
+      [1, "Dislike"],
+      [2, "Unsure / neutral"],
+      [3, "Like"],
+      [4, "Strongly like"],
     ]
       .map(
-        ([v, t]) => `<button class="cq-option" data-score="${v}">${t}</button>`,
+        ([n, t]) =>
+          `<button class="cq-option" data-score="${n}" aria-pressed="${answered[q.id] === n}"><span>${["−−", "−", "~", "+", "++"][n]}</span>${t}</button>`,
       )
       .join(
         "",
-      )}</div><p class="cq-note">These prompts suggest areas to explore. They are not an aptitude test or a prediction of your future.</p></div>`,
+      )}</div><div class="cq-inline-actions"><button class="btn quiet" id="quiz-back" ${i === 0 ? "disabled" : ""}>← Previous question</button><button class="btn quiet" data-score="skip">I need more experience to answer</button></div><p class="cq-note">Teach Arcade classroom questions; not the official O*NET Interest Profiler or an aptitude test. Your answers guide exploration, not eligibility.</p></div>`,
     "discover",
   );
+  document.getElementById("quiz-back").onclick = () => {
+    run.quizIndex--;
+    persistRun();
+    renderQuiz();
+  };
   screen()
     .querySelectorAll("[data-score]")
-    .forEach((btn) =>
-      btn.addEventListener("click", () => {
-        Object.entries(q.map).forEach(
-          ([k, v]) => (run.quizScores[k] += v * Number(btn.dataset.score)),
-        );
-        run.quizIndex++;
-        if (run.quizIndex === quizQuestions.length) run.phase = "career";
-        persistRun();
-        renderByPhase();
-      }),
+    .forEach(
+      (btn) =>
+        (btn.onclick = () => {
+          answered[q.id] =
+            btn.dataset.score === "skip" ? null : Number(btn.dataset.score);
+          run.quizIndex++;
+          if (run.quizIndex === quizQuestions.length) run.phase = "career";
+          persistRun();
+          renderByPhase();
+        }),
     );
 }
-function affinityScore(c, q) {
-  const entries = Object.entries(c.skillAffinities);
-  return (
-    entries.reduce((n, [k, v]) => n + (q[k] - 20) * v, 0) /
-    entries.reduce((n, [, v]) => n + v, 0)
+function affinityScore(c) {
+  if (!hasInterestSignal()) return 0;
+  const p = Object.values(interestProfile()),
+    v = Object.keys(interestTypes).map(
+      (k) => state.interestSource.profiles[c.socCode]?.[k],
+    );
+  if (v.some((x) => !Number.isFinite(x))) return -2;
+  const pm = p.reduce((a, b) => a + b, 0) / 6,
+    vm = v.reduce((a, b) => a + b, 0) / 6;
+  const denominator = Math.sqrt(
+    p.reduce((n, x) => n + (x - pm) ** 2, 0) *
+      v.reduce((n, x) => n + (x - vm) ** 2, 0),
   );
+  return denominator
+    ? p.reduce((n, x, i) => n + (x - pm) * (v[i] - vm), 0) / denominator
+    : -2;
 }
-function topSkillsReason(c) {
-  return Object.entries(c.skillAffinities)
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 3)
-    .map(([k]) => labels[k])
-    .join(", ");
+function matchReason(c) {
+  if (hasInterestSignal() && affinityScore(c) <= 0)
+    return "A different interest pattern. Explore it if the daily work appeals to you.";
+  if (!hasInterestSignal())
+    return "Explore this occupation; your answers do not yet show a clear interest pattern.";
+  const p = interestProfile(),
+    v = state.interestSource.profiles[c.socCode];
+  const shared = Object.keys(interestTypes)
+    .sort((a, b) => p[b] / 4 + (v[b] - 1) / 6 - (p[a] / 4 + (v[a] - 1) / 6))
+    .slice(0, 2);
+  return `Shared interests: ${shared.map((k) => interestTypes[k].label.toLowerCase()).join(" + ")}. Compare the duties before deciding.`;
 }
+function interestSummary() {
+  const p = interestProfile(),
+    signal = hasInterestSignal();
+  return `<section class="cq-interest-summary"><div><p class="cq-eyebrow">YOUR INTEREST SNAPSHOT</p><h3>${signal ? "A starting point, not a fixed identity." : "Keep exploring. There is no clear pattern yet."}</h3><p>${signal ? "Career order compares your six-area pattern with published O*NET occupational interest ratings." : "Mostly identical or incomplete answers cannot distinguish careers responsibly. Browse freely, or revisit your answers."}</p></div><div class="cq-interest-bars">${Object.entries(
+    interestTypes,
+  )
+    .map(
+      ([k, t]) =>
+        `<div style="--interest-color:${t.color}"><span>${t.label}</span><meter min="0" max="4" value="${p[k] ?? 0}" aria-label="${t.label}: ${p[k] === null ? "unanswered" : p[k].toFixed(1) + " of 4"}"></meter><small>${p[k] === null ? "—" : p[k].toFixed(1)}</small></div>`,
+    )
+    .join(
+      "",
+    )}</div><details><summary>How matching works</summary><p>Six interest areas: Realistic, Investigative, Artistic, Social, Enterprising, Conventional. Six original classroom prompts per area; each is averaged from 0–4, excluding skipped answers. We compare the shape of your six averages with each occupation's six O*NET 1–7 ratings using centered correlation. Equal scores use career name order. No percentage is a probability of success. At least 24 answers, three per area, and a non-flat pattern with at least one area above neutral are required for recommendations.</p><a href="${esc(state.interestSource.url)}" target="_blank" rel="noopener noreferrer">O*NET 31.0 interest data (USDOL/ETA, CC BY 4.0) ↗</a><p>Teach Arcade selected data and built this ranking. The classroom questions and matching have not been validated as an assessment. For the official assessment, use the <a href="https://www.onetcenter.org/IP.html" target="_blank" rel="noopener noreferrer">O*NET Interest Profiler</a>.</p></details><button class="btn secondary" id="review-interests">Review my answers</button></section>`;
+}
+
 const careerThemes = {
   "Health Science": ["health", "#0e7668", "#e2f7ef", "Care & recovery"],
   "Information Technology": [
@@ -658,11 +739,13 @@ function migrateCatalogSettings(s) {
 function renderCareerSelection() {
   const ranked = [...filteredCareers()].sort(
     (a, b) =>
-      affinityScore(b, state.run.quizScores) -
-      affinityScore(a, state.run.quizScores),
+      affinityScore(b) - affinityScore(a) || a.title.localeCompare(b.title),
   );
-  const recommended = ranked.slice(0, 5),
-    pool = settings().allowOverride ? ranked : recommended;
+  const recommended = hasInterestSignal()
+      ? ranked.filter((c) => affinityScore(c) > 0).slice(0, 8)
+      : [],
+    pool =
+      settings().allowOverride || !recommended.length ? ranked : recommended;
   const view =
     state.run.explorer ||
     (state.run.explorer = {
@@ -672,7 +755,7 @@ function renderCareerSelection() {
       limit: 12,
     });
   setScreen(
-    `<div class="cq-card cq-explore"><header class="cq-explore-heading"><div><p class="cq-eyebrow">EXPLORE YOUR POSSIBILITIES</p><h2>Find work that means<br>something to you.</h2><p>Go beyond the job title. Discover the work, the route in, and the life that comes with it.</p></div><div class="cq-library-count"><strong>${pool.length}</strong><span>careers to explore</span><small>${new Set(pool.map((c) => c.cluster)).size} career fields</small></div></header><div class="cq-search-bar"><label class="cq-search-label" for="career-search">Search careers<input id="career-search" type="search" placeholder="Police officer, mechanic, teacher…" value="${esc(view.query)}"></label><label for="career-cluster">Career field<select id="career-cluster"><option value="all">All career fields</option>${[
+    `<div class="cq-card cq-explore"><header class="cq-explore-heading"><div><p class="cq-eyebrow">EXPLORE YOUR POSSIBILITIES</p><h2>Find work that means<br>something to you.</h2><p>Go beyond the job title. Discover the work, the route in, and the life that comes with it.</p></div><div class="cq-library-count"><strong>${pool.length}</strong><span>careers to explore</span><small>${new Set(pool.map((c) => c.cluster)).size} career fields</small></div></header>${interestSummary()}<div class="cq-search-bar"><label class="cq-search-label" for="career-search">Search careers<input id="career-search" type="search" placeholder="Police officer, mechanic, teacher…" value="${esc(view.query)}"></label><label for="career-cluster">Career field<select id="career-cluster"><option value="all">All career fields</option>${[
       ...new Set(pool.map((c) => c.cluster)),
     ]
       .sort()
@@ -682,9 +765,15 @@ function renderCareerSelection() {
       )
       .join(
         "",
-      )}</select></label></div><div class="cq-explore-toolbar"><label class="cq-match-filter"><input id="recommended-only" type="checkbox" ${view.recommended ? "checked" : ""}> My interest matches</label><div class="cq-sort-controls"><label for="career-sort">Sort<select id="career-sort"><option value="fit">Interest matches first</option><option value="alpha" ${view.sort === "alpha" ? "selected" : ""}>Career name A–Z</option></select></label><span id="career-count" role="status" aria-live="polite"></span></div></div><div class="cq-suggestions" aria-label="Search ideas"><span>Try a direction:</span>${["Police officer", "Electrician", "Nurse", "Teacher", "Mechanic"].map((q) => `<button type="button" data-search="${q}">${q}</button>`).join("")}</div>${settings().allowOverride ? "" : '<p class="cq-note">Teacher setup limits this journey to your five interest recommendations.</p>'}<div id="career-catalog" class="cq-catalog"></div><div class="cq-more"><button class="btn secondary" id="more-careers">Show more careers</button></div><details class="cq-source-note"><summary>About career information & game income</summary><p>Profiles use the <a href="https://www.onetcenter.org/database.html" target="_blank" rel="noopener noreferrer">O*NET® 31.0 Database</a> by USDOL/ETA under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>, and U.S. Bureau of Labor Statistics research. Teach Arcade selected excerpts, grouped fields, and added game assumptions; USDOL/ETA has not approved, endorsed, or tested these changes. O*NET® is a trademark of USDOL/ETA. New profiles were added October 16, 2026. Some profiles cover a broader related occupation. National median wages include experienced workers and are not starting salaries. Income used in the simulation remains an illustrative game assumption. Check state, employer, and licensing requirements before making real plans.</p></details></div>`,
+      )}</select></label></div><div class="cq-explore-toolbar"><label class="cq-match-filter"><input id="recommended-only" type="checkbox" ${view.recommended ? "checked" : ""}> My interest matches</label><div class="cq-sort-controls"><label for="career-sort">Sort<select id="career-sort"><option value="fit">Interest matches first</option><option value="alpha" ${view.sort === "alpha" ? "selected" : ""}>Career name A–Z</option></select></label><span id="career-count" role="status" aria-live="polite"></span></div></div><div class="cq-suggestions" aria-label="Search ideas"><span>Try a direction:</span>${["Police officer", "Electrician", "Nurse", "Teacher", "Mechanic"].map((q) => `<button type="button" data-search="${q}">${q}</button>`).join("")}</div>${settings().allowOverride ? "" : '<p class="cq-note">Teacher setup limits this journey to your interest recommendations when a clear pattern is available.</p>'}<div id="career-catalog" class="cq-catalog"></div><div class="cq-more"><button class="btn secondary" id="more-careers">Show more careers</button></div><details class="cq-source-note"><summary>About career information & game income</summary><p>Profiles use the <a href="https://www.onetcenter.org/database.html" target="_blank" rel="noopener noreferrer">O*NET® 31.0 Database</a> by USDOL/ETA under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>, and U.S. Bureau of Labor Statistics research. Teach Arcade selected excerpts, grouped fields, and added game assumptions; USDOL/ETA has not approved, endorsed, or tested these changes. O*NET® is a trademark of USDOL/ETA. New profiles were added October 16, 2026. Some profiles cover a broader related occupation. National median wages include experienced workers and are not starting salaries. Income used in the simulation remains an illustrative game assumption. Check state, employer, and licensing requirements before making real plans.</p></details></div>`,
     "explore",
   );
+  document.getElementById("review-interests").onclick = () => {
+    state.run.phase = "quiz";
+    state.run.quizIndex = 0;
+    persistRun();
+    renderQuiz();
+  };
   function draw() {
     view.query = document.getElementById("career-search").value;
     view.cluster = document.getElementById("career-cluster").value;
@@ -711,7 +800,7 @@ function renderCareerSelection() {
         .slice(0, view.limit)
         .map(
           (c) =>
-            `<article class="cq-career cq-profile-card" style="${themeStyle(c)}"><div class="cq-career-art">${careerIcon(c.cluster)}<span>${esc((careerThemes[c.cluster] || careerThemes.Business)[3])}</span>${recommended.includes(c) ? '<span class="cq-badge">Interest match</span>' : ""}</div><div class="cq-career-body"><p class="cq-career-field">${esc(c.cluster)}</p><h3>${esc(c.title)}</h3><p class="cq-career-description">${esc(c.summary)}</p><div class="cq-career-route"><span>BLS group entry</span><strong>${esc(c.typicalEducation === "See How to Become One" ? "Academy / requirements vary" : c.typicalEducation)}</strong></div><button class="btn secondary" data-career="${c.id}" aria-label="View ${esc(c.title)} career profile">View career profile <span aria-hidden="true">↗</span></button></div></article>`,
+            `<article class="cq-career cq-profile-card" style="${themeStyle(c)}"><div class="cq-career-art">${careerIcon(c.cluster)}<span>${esc((careerThemes[c.cluster] || careerThemes.Business)[3])}</span>${recommended.includes(c) ? '<span class="cq-badge">Interest match</span>' : ""}</div><div class="cq-career-body"><p class="cq-career-field">${esc(c.cluster)}</p><h3>${esc(c.title)}</h3><p class="cq-career-description">${esc(c.summary)}</p><p class="cq-match-reason">${esc(matchReason(c))}</p><div class="cq-career-route"><span>BLS group entry</span><strong>${esc(c.typicalEducation === "See How to Become One" ? "Academy / requirements vary" : c.typicalEducation)}</strong></div><button class="btn secondary" data-career="${c.id}" aria-label="View ${esc(c.title)} career profile">View career profile <span aria-hidden="true">↗</span></button></div></article>`,
         )
         .join("") ||
       `<div class="cq-empty"><h3>No matching careers in this view</h3><p>Try a broader job name, another career field, or clear the search filters. Teacher settings may also limit which careers are available.</p><button class="btn secondary" id="clear-career-filters">Clear search filters</button></div>`;
@@ -914,7 +1003,7 @@ function monthlyCosts(housing) {
     { shared: -350, solo: 350 }[housing]
   );
 }
-function renderBudget() {
+function renderLegacyBudget() {
   const run = state.run;
   setScreen(
     `<div class="cq-card"><p class="cq-eyebrow">PLAN · YOUR STARTING BUDGET</p><h2>Make room for the life you want.</h2><p>Your model starts with ${money(2000)} cash and ${money(educationPaths[run.educationKey].debt)} education debt. Set a living arrangement for this journey.</p><div class="cq-option-list cq-paths">${[
@@ -959,11 +1048,259 @@ function renderBudget() {
       }),
     );
 }
+const expenseLabels = {
+  rent: "Housing",
+  utilities: "Utilities",
+  food: "Groceries",
+  transport: "Transport / fuel / payment",
+  autoInsurance: "Auto insurance",
+  health: "Health-plan premium",
+  phone: "Phone & internet",
+  household: "Household / personal",
+  social: "Social / recreation",
+  care: "Family support",
+  medical: "Routine medical costs",
+  maintenance: "Repairs & replacements",
+};
+function monthlyBreakdown(
+  housing = state.run.housing,
+  year = state.run.year,
+  transport = state.run.transport || "car",
+  care = state.run.care || "none",
+) {
+  const factor =
+    { low: 0.85, average: 1, high: 1.3 }[settings().costOfLiving] *
+    1.035 ** (year - 1);
+  const base = {
+    rent: housing === "shared" ? 850 : 1500,
+    utilities: housing === "shared" ? 150 : 220,
+    food: 370,
+    transport: { car: 430, transit: 130, carpool: 260 }[transport],
+    autoInsurance: transport === "car" ? 130 : 0,
+    health: 190,
+    phone: 100,
+    household: 115,
+    social: 150,
+    care: { none: 0, family: 300, dependent: 750 }[care],
+    medical: 60,
+    maintenance: 100,
+  };
+  const adjustments = state.run.budgetAdjustments || {};
+  return Object.fromEntries(
+    Object.entries(base).map(([k, v]) => [
+      k,
+      Math.max(0, Math.round((v + (adjustments[k] || 0)) * factor)),
+    ]),
+  );
+}
+function livingTotal(parts) {
+  return Object.values(parts).reduce((a, b) => a + b, 0);
+}
+function yearGross(year = state.run.year) {
+  const r = state.run;
+  return Math.max(
+    0,
+    Math.round(
+      startingSalary() * 1.02 ** (year - 1) +
+        (r.incomeAdjustment || 0) +
+        (r.annualIncome || 0),
+    ),
+  );
+}
+function estimatedWithholding(gross) {
+  // Classroom approximation, deliberately not a real federal/state tax calculator.
+  return Math.round(
+    gross * 0.0765 +
+      Math.min(gross, 15000) * 0.04 +
+      Math.min(Math.max(0, gross - 15000), 35000) * 0.12 +
+      Math.max(0, gross - 50000) * 0.22,
+  );
+}
+function syncDebts() {
+  const r = state.run;
+  r.stats.debt =
+    Math.max(0, r.educationDebt || 0) + Math.max(0, r.consumerDebt || 0);
+}
+function renderBudget() {
+  if (!state.run.modelVersion) return renderLegacyBudget();
+  const r = state.run;
+  setScreen(
+    `<div class="cq-card cq-budget-planner"><p class="cq-eyebrow">PLAN / BUILD YOUR EVERYDAY LIFE</p><h2>A paycheck has a lot of jobs.</h2><p>Start with $2,000 in cash and ${money(educationPaths[r.educationKey].debt)} in education debt. Compare the whole budget before choosing a home.</p><div class="cq-budget-inputs"><label for="transport-plan">Getting to work<select id="transport-plan"><option value="car">Car: payment/fuel + insurance</option><option value="transit">Transit: lower cost, longer commute</option><option value="carpool">Carpool: shared cost, less flexibility</option></select></label><label for="care-plan">Household responsibilities<select id="care-plan"><option value="none">No regular family contribution</option><option value="family">Contribute $300/month to family</option><option value="dependent">Dependent care/support: $750/month</option></select></label><label for="retirement-plan">Retirement contribution<select id="retirement-plan"><option value="0">0% · more spendable pay now</option><option value="0.04" selected>4% · balance now and later</option><option value="0.08">8% · more restricted savings</option></select></label></div><div id="budget-comparison" class="cq-budget-comparison"></div><p class="cq-note">Illustrative costs, not local price estimates. Bills rise 3.5% per year; base pay rises 2%. Withholding is a classroom approximation, not a tax calculation. Choose retirement contributions of 0%, 4%, or 8% of gross pay; these are separate from spending cash. Education debt uses 5% annual interest and a ten-year payment schedule; consumer debt uses 22% annual interest and a scheduled payment of 30% of the interest-adjusted balance (at least $360/year, capped at the balance). The model caps new consumer credit at a $12,000 balance, excluding later interest. Gaps beyond available credit remain visible as unpaid shortfalls; balances are not forgiven. This is a classroom credit rule, not a lending offer. No investment returns are assumed. Working years begin after training.</p><button class="btn quiet" id="back-education">← Back to training</button></div>`,
+    "plan",
+  );
+  function draw() {
+    r.transport = document.getElementById("transport-plan").value;
+    r.care = document.getElementById("care-plan").value;
+    r.retirementRate = Number(document.getElementById("retirement-plan").value);
+    document.getElementById("budget-comparison").innerHTML = ["shared", "solo"]
+      .map((h) => {
+        const parts = monthlyBreakdown(h, 1),
+          annual = livingTotal(parts) * 12,
+          gross = startingSalary(),
+          tax = estimatedWithholding(gross),
+          retirement = Math.round(gross * (r.retirementRate ?? 0.04)),
+          payment = educationPayment(educationPaths[r.educationKey].debt),
+          margin = gross - tax - retirement - annual - payment;
+        return `<article class="cq-budget-choice"><p class="cq-eyebrow">${h === "shared" ? "SHARED HOME" : "YOUR OWN PLACE"}</p><h3>${money(livingTotal(parts))}<small> / month in bills</small></h3><dl>${Object.entries(
+          parts,
+        )
+          .filter(([, v]) => v)
+          .map(
+            ([k, v]) =>
+              `<div><dt>${expenseLabels[k]}</dt><dd>${money(v)}</dd></div>`,
+          )
+          .join(
+            "",
+          )}</dl><div class="cq-budget-margin ${margin < 0 ? "is-shortfall" : ""}"><span>Year-one cash margin after bills, estimated withholding, retirement & scheduled education payment</span><strong>${money(margin)} / year</strong></div><button class="btn" data-housing="${h}">Choose ${h === "shared" ? "a shared home" : "living alone"} →</button></article>`;
+      })
+      .join("");
+    screen()
+      .querySelectorAll("[data-housing]")
+      .forEach(
+        (btn) =>
+          (btn.onclick = () => {
+            r.housing = btn.dataset.housing;
+            r.educationDebt = educationPaths[r.educationKey].debt;
+            r.initialDebt = r.educationDebt;
+            r.consumerDebt = 0;
+            syncDebts();
+            r.stats.stress = clamp(
+              career().baselineStress +
+                educationPaths[r.educationKey].stress / 2,
+            );
+            r.stats.workLife = clamp(
+              career().baselineWorkLife +
+                (r.housing === "shared" ? -3 : 3) -
+                (r.transport === "transit" ? 5 : 0) -
+                (r.care === "none" ? 0 : 5),
+            );
+            Object.entries(educationPaths[r.educationKey].skill).forEach(
+              ([k, v]) => (r.stats.skills[k] += v),
+            );
+            r.initialSkills = { ...r.stats.skills };
+            updateNetWorth();
+            r.yearStart = snapshot(r.stats);
+            r.phase = "scenario";
+            persistRun();
+            renderByPhase();
+          }),
+      );
+  }
+  for (const [id, key] of [
+    ["transport-plan", "transport"],
+    ["care-plan", "care"],
+    ["retirement-plan", "retirementRate"],
+  ]) {
+    document.getElementById(id).value =
+      r[key] ??
+      (key === "transport" ? "car" : key === "retirementRate" ? 0.04 : "none");
+    document.getElementById(id).onchange = () => {
+      draw();
+      persistRun();
+    };
+  }
+  document.getElementById("back-education").onclick = () => {
+    r.phase = "education";
+    persistRun();
+    renderByPhase();
+  };
+  draw();
+}
+function educationPayment(balance) {
+  const rate = 0.05 / 12,
+    n = 120;
+  return balance
+    ? Math.round(((balance * rate) / (1 - (1 + rate) ** -n)) * 12)
+    : 0;
+}
+function settleLifeYear() {
+  const r = state.run;
+  if (r.yearLedgers.some((l) => l.year === r.year)) return;
+  const openingCash = r.yearStart.cash,
+    gross = yearGross(),
+    taxes = estimatedWithholding(gross),
+    parts = monthlyBreakdown(),
+    living = livingTotal(parts) * 12;
+  const retirement = Math.round(gross * (r.retirementRate ?? 0.04)),
+    educationInterest = Math.round(r.educationDebt * 0.05),
+    consumerInterest = Math.round(r.consumerDebt * 0.22),
+    interest = educationInterest + consumerInterest;
+  r.educationDebt += educationInterest;
+  r.consumerDebt += consumerInterest;
+  const educationDue = Math.min(
+      r.educationDebt,
+      educationPayment(r.initialDebt),
+    ),
+    consumerDue = Math.min(
+      r.consumerDebt,
+      Math.max(360, Math.round(r.consumerDebt * 0.3)),
+    ),
+    payment = educationDue + consumerDue;
+  // Any unpaid cash-flow gap becomes visible consumer borrowing, rather than free negative cash.
+  r.stats.cash += gross - taxes - living - retirement - payment;
+  r.educationDebt -= educationDue;
+  r.consumerDebt -= consumerDue;
+  const newBorrowing = Math.min(
+    Math.max(0, -r.stats.cash),
+    Math.max(0, 12000 - r.consumerDebt),
+  );
+  if (newBorrowing) {
+    r.consumerDebt += newBorrowing;
+    r.stats.cash += newBorrowing;
+    r.stats.stress = clamp(r.stats.stress + 10);
+    r.stats.happiness = clamp(r.stats.happiness - 4);
+  }
+  r.retirement += retirement;
+  syncDebts();
+  updateNetWorth();
+  const decisionCash = r.history
+    .filter((h) => h.year === r.year)
+    .reduce((sum, h) => sum + (h.effects.cash || 0), 0);
+  r.yearLedgers.push({
+    year: r.year,
+    gross,
+    taxes,
+    living,
+    parts,
+    retirement,
+    payment,
+    educationDue,
+    consumerDue,
+    educationInterest,
+    consumerInterest,
+    interest,
+    newBorrowing,
+    openingCash,
+    decisionCash,
+    incomeAdjustment: r.incomeAdjustment || 0,
+    educationBalance: r.educationDebt,
+    consumerBalance: r.consumerDebt,
+    retirementBalance: r.retirement,
+    closing: snapshot(r.stats),
+  });
+  r.incomeAdjustment = 0;
+}
+
 function dashboard() {
   const r = state.run;
   return `<aside class="cq-dashboard" aria-label="Your current status"><h3>${esc(career().title)}</h3><p>Year ${r.year} of 5 · ${educationPaths[r.educationKey].label}</p><div class="cq-stats">${[
     ["Cash", money(r.stats.cash), "Below zero = funding shortfall"],
-    ["Debt", money(r.stats.debt), "Education balance"],
+    [
+      "Debt",
+      money(r.stats.debt),
+      r.modelVersion
+        ? `Education ${money(r.educationDebt)} / consumer ${money(r.consumerDebt)}`
+        : "Education balance",
+    ],
+    ...(r.modelVersion
+      ? [
+          [
+            "Retirement",
+            money(r.retirement),
+            "Restricted savings, not spending cash",
+          ],
+        ]
+      : []),
     ["Stress", `${r.stats.stress}/100`, "Lower means less pressure"],
     ["Well-being", `${r.stats.happiness}/100`, "How life feels"],
     ["Life balance", `${r.stats.workLife}/100`, "Time outside work"],
@@ -978,8 +1315,32 @@ function dashboard() {
 function years() {
   return `<div class="cq-years" aria-label="Working years">${[1, 2, 3, 4, 5].map((y) => `<span class="${y === state.run.year ? "current" : ""}">${y < state.run.year ? "✓ " : ""}Year ${y}</span>`).join("")}</div>`;
 }
+function chapterArt(kind) {
+  const key =
+    { workplace: "business", money: "finance", core: "people" }[kind] ||
+    "business";
+  return `<svg class="cq-chapter-art" viewBox="0 0 240 130" fill="none" aria-hidden="true"><circle cx="160" cy="48" r="44" fill="var(--scene-sun)"/><path d="M0 115Q45 77 96 112T240 100V130H0Z" fill="var(--scene-ground)"/><rect x="24" y="37" width="91" height="76" rx="13" fill="white" stroke="var(--scene-ink)" stroke-width="2" transform="rotate(-8 24 37)"/><g transform="translate(37 42) scale(.83)" stroke="var(--scene-ink)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">${iconPaths[key]}</g><path d="M141 87V55h17v32m10 0V38h17v49m10 0V20h17v67" fill="var(--scene-accent)"/><path d="M138 92h81" stroke="var(--scene-ink)" stroke-width="3" stroke-linecap="round"/><circle cx="126" cy="20" r="5" fill="var(--scene-accent)"/><path d="M217 110v-9m-4 4h9M15 17v10m-5-5h10" stroke="var(--scene-ink)" stroke-width="2"/></svg>`;
+}
+function chapterBanner() {
+  const r = state.run,
+    kind =
+      r.stepInYear === 0 ? "workplace" : r.stepInYear === 1 ? "money" : "core";
+  const words = {
+    workplace: ["WORK & GROWTH", "A career is more than a paycheck."],
+    money: ["MONEY & CHOICES", "Give every dollar a purpose."],
+    core: ["LIFE & RESPONSIBILITY", "Plans meet the unexpected."],
+  }[kind];
+  return `<div class="cq-chapter-banner cq-chapter-${kind}"><div><span class="cq-chapter-tag">YEAR ${r.year} / YOUR NEXT CHAPTER</span><h3>${words[0]}</h3><p>${words[1]}</p></div>${chapterArt(kind)}</div>`;
+}
+function financialSnapshot() {
+  const r = state.run;
+  if (!r.modelVersion) return "";
+  const bills = livingTotal(monthlyBreakdown()),
+    months = Math.max(0, r.stats.cash) / bills;
+  return `<div class="cq-financial-snapshot"><div><span>Accessible cash buffer</span><strong>${months.toFixed(1)} months</strong><small>At your current ${money(bills)}/month bills</small></div><div><span>Consumer balance</span><strong>${money(r.consumerDebt)}</strong><small>22% annual model interest</small></div><div><span>Retirement balance</span><strong>${money(r.retirement)}</strong><small>Included in net worth; separate from spending cash</small></div></div>`;
+}
 function layout(content) {
-  return `<div class="cq-layout"><div class="cq-card">${years()}${content}</div>${dashboard()}</div>`;
+  return `<div class="cq-layout"><div class="cq-card cq-live-card">${chapterBanner()}${years()}${content}</div>${dashboard()}</div>`;
 }
 function pickScenario() {
   const run = state.run,
@@ -989,9 +1350,21 @@ function pickScenario() {
         : run.stepInYear === 1
           ? "money"
           : "core";
-  const all = state.scenarios[mode],
+  const all = (run.modelVersion ? state.lifeScenarios : state.scenarios)[
+      mode
+    ].filter(
+      (s) =>
+        (!s.minYear || run.year >= s.minYear) &&
+        (!s.requires ||
+          (run.flags?.[s.requires] &&
+            run.year - run.flags[s.requires] >= (s.waitYears || 1))),
+    ),
     unused = all.filter((s) => !run.history.some((h) => h.id === s.id)),
     pool = unused.length ? unused : all;
+  if (run.modelVersion) {
+    const follow = pool.find((s) => s.requires);
+    if (follow) return follow;
+  }
   return pool[Math.floor(Math.random() * pool.length)];
 }
 function renderScenario() {
@@ -1003,7 +1376,7 @@ function renderScenario() {
   const s = run.currentScenario;
   setScreen(
     layout(
-      `<p class="cq-eyebrow">${run.stepInYear === 0 ? "WORK" : run.stepInYear === 1 ? "MONEY" : "LIFE EVENT"} · DECISION ${run.stepInYear + 1}</p><h2>${esc(s.title)}</h2><p>${esc(s.prompt)}</p><div class="cq-option-list">${s.choices.map((c, i) => `<button class="cq-option" data-choice="${i}"><strong>${esc(c.label)}</strong>${esc(c.text)}</button>`).join("")}</div><p class="cq-help">Choose a response. You will see its immediate effects before moving on. Pay and regular bills are settled once at the end of each year.</p>`,
+      `<p class="cq-eyebrow">${run.stepInYear === 0 ? "WORK" : run.stepInYear === 1 ? "MONEY" : "LIFE EVENT"} · DECISION ${run.stepInYear + 1}</p><h2>${esc(s.title)}</h2><p>${esc(s.prompt)}</p>${run.modelVersion ? `<div class="cq-scenario-context"><strong>Your context</strong><span>${esc(career().title)} · Year ${run.year}</span><span>${money(yearGross())} expected gross · ${money(livingTotal(monthlyBreakdown()))}/month bills</span>${s.context ? `<p>${esc(s.context)}</p>` : ""}</div>` : ""}<div class="cq-option-list">${s.choices.map((c, i) => `<button class="cq-option" data-choice="${i}"><strong>${esc(c.label)}</strong>${esc(c.text)}</button>`).join("")}</div><p class="cq-help">Choose a response. You will see its immediate effects before moving on. Pay and regular bills are settled once at the end of each year.</p>`,
     ),
     "live",
   );
@@ -1032,7 +1405,7 @@ function snapshot(s) {
 }
 function updateNetWorth() {
   state.run.stats.netWorth = Math.round(
-    state.run.stats.cash - state.run.stats.debt,
+    state.run.stats.cash + (state.run.retirement || 0) - state.run.stats.debt,
   );
 }
 function applyChoice(s, c) {
@@ -1041,12 +1414,53 @@ function applyChoice(s, c) {
     effects = {},
     mult = { easy: 0.8, normal: 1, hard: 1.25 }[settings().difficulty];
   Object.entries(c.effects).forEach(([k, v]) => {
+    if (
+      r.modelVersion &&
+      ["income", "annualIncome", "monthly", "flag", "clearFlag"].includes(k)
+    ) {
+      if (k === "income") {
+        r.incomeAdjustment += v;
+        effects.income = v;
+      }
+      if (k === "annualIncome") {
+        r.annualIncome = (r.annualIncome || 0) + v;
+        effects.annualIncome = v;
+      }
+      if (k === "monthly") {
+        for (const [category, change] of Object.entries(v))
+          r.budgetAdjustments[category] =
+            (r.budgetAdjustments[category] || 0) + change;
+        effects.monthly = v;
+      }
+      if (k === "flag") r.flags[v] = r.year;
+      if (k === "clearFlag") delete r.flags[v];
+      return;
+    }
     if (k === "extraPayment") {
       const paid = Math.min(v, Math.max(0, r.stats.cash), r.stats.debt);
       r.stats.cash -= paid;
       r.stats.debt -= paid;
+      if (r.modelVersion) {
+        const consumer = Math.min(paid, r.consumerDebt);
+        r.consumerDebt -= consumer;
+        r.educationDebt -= paid - consumer;
+        syncDebts();
+      }
       effects.cash = -paid;
       effects.debt = -paid;
+      return;
+    }
+    if (r.modelVersion && k === "debt") {
+      const funded = Math.min(
+        Math.max(0, v),
+        Math.max(0, 12000 - r.consumerDebt),
+      );
+      r.consumerDebt += funded;
+      const gap = Math.max(0, v - funded);
+      r.stats.cash -= gap;
+      syncDebts();
+      effects.debt = funded;
+      if (gap) effects.cash = (effects.cash || 0) - gap;
       return;
     }
     effects[k] = ["cash", "debt"].includes(k) ? v : Math.round(v * mult);
@@ -1065,7 +1479,11 @@ function applyChoice(s, c) {
     year: r.year,
     choice: c.label,
     text: c.text,
-    feedback: c.feedback,
+    feedback:
+      c.feedback +
+      (r.modelVersion && c.effects.debt && effects.debt < c.effects.debt
+        ? " The requested borrowing exceeds the model credit limit; the remainder is charged to cash and may create an unpaid shortfall."
+        : ""),
     effects,
     before,
     after: snapshot(r.stats),
@@ -1076,7 +1494,9 @@ function applyChoice(s, c) {
   r.afterFeedback =
     r.stepInYear === 1
       ? "scenario"
-      : r.stepInYear === 2 && settings().randomEvents && Math.random() < chance
+      : r.stepInYear === 2 &&
+          settings().randomEvents &&
+          (r.modelVersion || Math.random() < chance)
         ? "scenario"
         : "yearSummary";
   r.currentScenario = null;
@@ -1098,7 +1518,15 @@ function renderFeedback() {
     h = r.history.at(-1);
   setScreen(
     layout(
-      `<p class="cq-eyebrow">YOUR DECISION · ${esc(h.choice)}</p><h2>${esc(h.title)}: what changed?</h2><div class="cq-choice-feedback"><p>${esc(h.feedback)}</p></div>${deltas(h.before, h.after)}<p>These are immediate effects of your choice. Regular income and living expenses appear in the year review.</p><div class="cq-inline-actions"><button class="btn" id="continue-decision">${r.afterFeedback === "yearSummary" ? "Review this year" : "Next decision"}</button></div>`,
+      `<p class="cq-eyebrow">YOUR DECISION · ${esc(h.choice)}</p><h2>${esc(h.title)}: what changed?</h2><div class="cq-choice-feedback"><p>${esc(h.feedback)}</p></div>${deltas(h.before, h.after)}${h.effects.income ? `<p class="cq-note">This year’s gross income changes by ${money(h.effects.income)}; withholding adjusts at year-end.</p>` : ""}${h.effects.annualIncome ? `<p class="cq-note">Annual gross income changes by ${money(h.effects.annualIncome)} from now on, until another decision changes it.</p>` : ""}${
+        h.effects.monthly
+          ? `<p class="cq-note">Recurring monthly change from this year onward: ${Object.entries(
+              h.effects.monthly,
+            )
+              .map(([k, v]) => `${expenseLabels[k]} ${money(v)}`)
+              .join(", ")}. These changes also rise with model inflation.</p>`
+          : ""
+      }<p>These are immediate effects of your choice. Regular income and living expenses appear in the year review.</p><div class="cq-inline-actions"><button class="btn" id="continue-decision">${r.afterFeedback === "yearSummary" ? "Review this year" : "Next decision"}</button></div>`,
     ),
     "live",
   );
@@ -1110,6 +1538,7 @@ function renderFeedback() {
   });
 }
 function settleYear() {
+  if (state.run.modelVersion) return settleLifeYear();
   const r = state.run;
   if (r.yearLedgers.some((l) => l.year === r.year)) return;
   const gross = startingSalary(),
@@ -1137,6 +1566,33 @@ function settleYear() {
   });
 }
 function ledgerTable(l) {
+  if (!l.parts) return legacyLedgerTable(l);
+  const rows = [
+    ["Cash at start of year", money(l.openingCash)],
+    ["One-time cash changes from decisions", money(l.decisionCash)],
+    ["Gross income (including work decisions)", money(l.gross)],
+    ["Estimated withholding", `−${money(l.taxes)}`],
+    ...Object.entries(l.parts)
+      .filter(([, v]) => v)
+      .map(([k, v]) => [expenseLabels[k] + " · annual", `−${money(v * 12)}`]),
+    ["Retirement contribution (restricted savings)", `−${money(l.retirement)}`],
+    ["Education payment", `−${money(l.educationDue)}`],
+    ["Consumer-debt payment", `−${money(l.consumerDue)}`],
+    ["New borrowing to cover the shortfall", money(l.newBorrowing)],
+    ["Cash at year end", money(l.closing.cash)],
+    [
+      "Interest added: education / consumer",
+      `${money(l.educationInterest)} / ${money(l.consumerInterest)}`,
+    ],
+    [
+      "Debt balance: education / consumer",
+      `${money(l.educationBalance)} / ${money(l.consumerBalance)}`,
+    ],
+    ["Retirement balance (no returns assumed)", money(l.retirementBalance)],
+  ];
+  return `<table class="cq-ledger"><caption>Year ${l.year} / Where every dollar went</caption><tbody>${rows.map(([k, v]) => `<tr><th scope="row">${k}</th><td>${v}</td></tr>`).join("")}</tbody></table>`;
+}
+function legacyLedgerTable(l) {
   return `<table class="cq-ledger"><caption>Year ${l.year} cash flow</caption><tbody>${[
     ["Gross income", money(l.gross)],
     ["Estimated tax withholding", `−${money(l.taxes)}`],
@@ -1159,21 +1615,76 @@ function recap(items) {
     )
     .join("");
 }
+function nextYearPlan() {
+  const r = state.run;
+  if (!r.modelVersion || r.year === 5) return "";
+  return `<section class="cq-next-plan"><h3>Adjust before next year</h3><p>Your costs are not fixed forever. A housing change costs $650 in this model; changes start next year. Transit availability is assumed for this classroom comparison.</p><div class="cq-budget-inputs"><label>Home<select id="next-home">${[
+    ["shared", "Shared home"],
+    ["solo", "Live alone"],
+  ]
+    .map(
+      ([v, t]) =>
+        `<option value="${v}" ${r.housing === v ? "selected" : ""}>${t}</option>`,
+    )
+    .join("")}</select></label><label>Travel<select id="next-transport">${[
+    ["car", "Car"],
+    ["transit", "Transit"],
+    ["carpool", "Carpool"],
+  ]
+    .map(
+      ([v, t]) =>
+        `<option value="${v}" ${r.transport === v ? "selected" : ""}>${t}</option>`,
+    )
+    .join(
+      "",
+    )}</select></label><label>Retirement contribution<select id="next-retirement">${[0, 0.04, 0.08].map((v) => `<option value="${v}" ${(r.retirementRate ?? 0.04) === v ? "selected" : ""}>${Math.round(v * 100)}%</option>`).join("")}</select></label></div></section>`;
+}
 function renderYearSummary() {
   const r = state.run,
     l = r.yearLedgers.find((x) => x.year === r.year);
   setScreen(
     layout(
-      `<p class="cq-eyebrow">PAUSE & REVIEW</p><h2>Year ${r.year}: your choices add up.</h2>${deltas(r.yearStart, r.stats)}${ledgerTable(l)}${r.stats.cash < 0 ? '<p class="cq-note">Your cash is below zero. This is an unresolved funding shortfall, not money available to spend. Which costs or choices would you change?</p>' : ""}<h3>Your decisions this year</h3>${recap(r.history.filter((h) => h.year === r.year))}<p class="cq-note">Discuss: Which choice helped your finances but created another cost? Use a result above as evidence.</p><button class="btn" id="next-year">${r.year === 5 ? "See my five-year story" : `Begin year ${r.year + 1}`}</button>`,
+      `<p class="cq-eyebrow">PAUSE & REVIEW</p><h2>Year ${r.year}: your choices add up.</h2>${deltas(r.yearStart, r.stats)}${financialSnapshot()}${ledgerTable(l)}${l.newBorrowing ? `<p class="cq-note">This year required ${money(l.newBorrowing)} of new consumer borrowing. It carries 22% model interest next year. A zero cash balance does not mean you broke even.</p>` : ""}${r.stats.cash < 0 ? '<p class="cq-note">Your cash is below zero. This is an unresolved funding shortfall, not money available to spend. Which costs or choices would you change?</p>' : ""}<h3>Your decisions this year</h3>${recap(r.history.filter((h) => h.year === r.year))}<p class="cq-note">Discuss: Which choice helped your finances but created another cost? Use a result above as evidence.</p>${nextYearPlan()}<button class="btn" id="next-year">${r.year === 5 ? "See my five-year story" : `Begin year ${r.year + 1}`}</button>`,
     ),
     "live",
   );
   document.getElementById("next-year").addEventListener("click", () => {
+    const nextHome = document.getElementById("next-home")?.value,
+      nextTransport = document.getElementById("next-transport")?.value,
+      nextRetirement = Number(
+        document.getElementById("next-retirement")?.value,
+      );
     if (r.year === 5) r.phase = "report";
     else {
       r.year++;
       r.stepInYear = 0;
       r.yearStart = snapshot(r.stats);
+      if (
+        r.modelVersion &&
+        nextHome &&
+        (r.housing !== nextHome ||
+          r.transport !== nextTransport ||
+          (r.retirementRate ?? 0.04) !== nextRetirement)
+      ) {
+        const before = snapshot(r.stats),
+          fee = r.housing !== nextHome ? 650 : 0;
+        r.housing = nextHome;
+        r.transport = nextTransport;
+        r.retirementRate = nextRetirement;
+        r.stats.cash -= fee;
+        updateNetWorth();
+        r.history.push({
+          id: `plan-${r.year}`,
+          title: "Revised living plan",
+          year: r.year,
+          choice: `${nextHome} / ${nextTransport} / retirement ${nextRetirement * 100}%`,
+          text: "Plan changed at the previous year review",
+          feedback: `New costs apply this year. Housing transition cost: ${money(fee)}.`,
+          effects: { cash: -fee },
+          before,
+          after: snapshot(r.stats),
+        });
+      }
       r.phase = "scenario";
     }
     persistRun();
@@ -1197,7 +1708,7 @@ function renderReport() {
   setScreen(
     `<div class="cq-card cq-report"><p class="cq-eyebrow">REFLECT · FIVE YEARS COMPLETED</p><h2>Your future has more than one score.</h2><p>${esc(career().title)} · ${educationPaths[r.educationKey].label} · ${r.housing === "shared" ? "Shared home" : "Living alone"}</p><div class="cq-report-summary">${[
       ["Cash", money(r.stats.cash)],
-      ["Education debt", money(r.stats.debt)],
+      [r.modelVersion ? "Total debt" : "Education debt", money(r.stats.debt)],
       ["Net worth", money(r.stats.netWorth)],
     ]
       .map(
@@ -1206,7 +1717,7 @@ function renderReport() {
       )
       .join(
         "",
-      )}</div><p>Well-being: <strong>${r.stats.happiness}/100</strong> · Stress: <strong>${r.stats.stress}/100</strong> · Life balance: <strong>${r.stats.workLife}/100</strong> · Work performance: <strong>${r.stats.performance}/100</strong></p><p>Most practiced skills: ${growth.map(([k, v]) => `${labels[k]} (+${v})`).join(", ")}. Changes are measured from the start of your working years.</p><h3>Your decision trail</h3><details><summary>Review all ${r.history.length} decisions</summary>${recap(r.history)}</details><details><summary>Review annual budgets</summary>${r.yearLedgers.map(ledgerTable).join("")}</details><h3>Explain your story</h3><p>Use your decision trail and budgets as evidence. Responses save on this device.</p>${reflectionPrompts()
+      )}</div><p>Well-being: <strong>${r.stats.happiness}/100</strong> · Stress: <strong>${r.stats.stress}/100</strong> · Life balance: <strong>${r.stats.workLife}/100</strong> · Work performance: <strong>${r.stats.performance}/100</strong></p><p>Most practiced skills: ${growth.map(([k, v]) => `${labels[k]} (+${v})`).join(", ")}. Changes are measured from the start of your working years.</p>${financialSnapshot()}<h3>Your decision trail</h3><details><summary>Review all ${r.history.length} decisions</summary>${recap(r.history)}</details><details><summary>Review annual budgets</summary>${r.yearLedgers.map(ledgerTable).join("")}</details><h3>Explain your story</h3><p>Use your decision trail and budgets as evidence. Responses save on this device.</p>${reflectionPrompts()
       .map(
         (p, i) =>
           `<label class="cq-reflection" for="reflection-${i}">${i + 1}. ${esc(p)}<textarea id="reflection-${i}" data-reflection="${i}" placeholder="Explain your thinking…">${esc(r.reflections[i] || "")}</textarea></label>`,
@@ -1252,7 +1763,16 @@ function downloadReport() {
       "ANNUAL BUDGETS",
       ...r.yearLedgers.map(
         (l) =>
-          `Year ${l.year}: Gross ${money(l.gross)}, tax ${money(l.taxes)}, living ${money(l.living)}, debt payment ${money(l.payment)}, interest ${money(l.interest)}. Closing cash ${money(l.closing.cash)}, debt ${money(l.closing.debt)}.`,
+          `Year ${l.year}: Gross ${money(l.gross)}, withholding ${money(l.taxes)}, living ${money(l.living)}, debt payment ${money(l.payment)}, interest ${money(l.interest)}, retirement contribution ${money(l.retirement || 0)}, new borrowing ${money(l.newBorrowing || 0)}. Closing cash ${money(l.closing.cash)}, debt ${money(l.closing.debt)}. ${
+            l.parts
+              ? Object.entries(l.parts)
+                  .map(
+                    ([k, v]) =>
+                      expenseLabels[k] + ": " + money(v * 12) + "/year",
+                  )
+                  .join("; ")
+              : ""
+          }`,
       ),
       "",
       "MY REFLECTIONS",
