@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no" />
+<title>Goal Rush V3 | Teach Arcade Sports</title>
+<style>html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#02060c}iframe{position:fixed;inset:0;width:100%;height:100%;border:0;background:#02060c}</style>
+</head>
+<body>
+<iframe id="gameFrame" src="../goal-rush/" allow="fullscreen" title="Goal Rush V3"></iframe>
+<script>
+const frame=document.getElementById('gameFrame');
+frame.addEventListener('load',()=>{
+  const d=frame.contentDocument;
+  const w=frame.contentWindow;
+  if(!d||!w)return;
+
+  const style=d.createElement('style');
+  style.textContent=`
+    @media(max-width:780px),(pointer:coarse){
+      .question{max-height:min(68dvh,700px)!important;overflow-y:auto!important;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+      .qBody{padding-bottom:max(14px,env(safe-area-inset-bottom))!important}.answers{padding-bottom:4px}
+    }
+    .challengeTip{position:absolute;left:50%;top:154px;transform:translateX(-50%);z-index:19;padding:8px 14px;border-radius:999px;background:rgba(3,13,24,.78);border:1px solid rgba(255,255,255,.16);color:#e8f6ff;font:800 12px/1.2 system-ui,sans-serif;letter-spacing:.02em;pointer-events:none;white-space:nowrap;box-shadow:0 8px 25px rgba(0,0,0,.25)}
+    .challengeTip b{color:#7ff3b5}.actionBtn{transition:transform .08s,filter .08s}.actionBtn:active{transform:scale(.93);filter:brightness(1.15)}
+    @media(max-width:780px),(pointer:coarse){.challengeTip{top:142px;max-width:82vw;white-space:normal;text-align:center;font-size:11px}}
+  `;
+  d.head.appendChild(style);
+
+  const tip=d.createElement('div'); tip.id='challengeTip'; tip.className='challengeTip hidden'; d.getElementById('app').appendChild(tip);
+
+  const patch=d.createElement('script');
+  patch.textContent=`
+  (()=>{
+    const qPanel=document.getElementById('questionPanel'),rPanel=document.getElementById('resultPanel'),tip=document.getElementById('challengeTip'),actionBtn=document.getElementById('actionBtn');
+    const tips={dribble:'<b>DASH</b> through gates • avoid red defenders',pass:'Face the glowing teammate • <b>PASS</b> when lined up',breakaway:'Beat the defenders • enter the zone • <b>SHOOT</b>',target:'Track the reticle • <b>SHOOT</b> when it crosses a target'};
+    const labels={dribble:'DASH',pass:'PASS',breakaway:'SHOOT',target:'SHOOT'};
+    const oldShow=showQuestion;
+    showQuestion=function(){rPanel.classList.add('hidden');tip.classList.add('hidden');const out=oldShow.apply(this,arguments);if(!qPanel.classList.contains('hidden'))qPanel.scrollTop=0;return out};
+    const oldBegin=beginRound;
+    beginRound=function(){oldBegin.apply(this,arguments);const id=MODES[round].id;tip.innerHTML=tips[id]||'';tip.classList.remove('hidden');actionBtn.textContent=labels[id]||'ACTION';setTimeout(()=>tip.classList.add('hidden'),2800)};
+    const oldStop=stopRoundUI;
+    stopRoundUI=function(){oldStop.apply(this,arguments);tip.classList.add('hidden')};
+
+    // Make the dribble action a real evasive dash instead of a tiny velocity nudge.
+    let dashReady=true;
+    const oldAction=action;
+    action=function(){
+      if(phase!=='play')return;
+      const id=MODES[round].id;
+      if(id==='dribble'){
+        if(!dashReady)return;
+        dashReady=false; player.inv=Math.max(player.inv,.32);
+        const dx=player.dirX||0,dy=player.dirY||-1;
+        player.x=clamp(player.x+dx*78,90,1190); player.y=clamp(player.y+dy*78,120,635);
+        ball.x=player.x+dx*20;ball.y=player.y+dy*20;
+        burst(player.x,player.y,'#67e8f9',10);floatText(player.x,player.y-32,'DASH','#bdf7ff');beep('good');
+        for(const def of defenders){if(dist(player,def)<92)def.stun=Math.max(def.stun,.65)}
+        setTimeout(()=>dashReady=true,620);return;
+      }
+      oldAction.apply(this,arguments);
+    };
+
+    // Passing now rewards actually facing the receiver and gives clear lane feedback.
+    const oldDrawPass=drawPass;
+    drawPass=function(){
+      oldDrawPass.apply(this,arguments);
+      if(receiver&&player&&phase==='play'){
+        const dx=receiver.x-player.x,dy=receiver.y-player.y,l=Math.max(1,Math.hypot(dx,dy));
+        const facing=(dx/l)*player.dirX+(dy/l)*player.dirY;
+        ctx.save();ctx.setLineDash([9,8]);ctx.lineWidth=4;ctx.strokeStyle=facing>.72?'rgba(127,243,181,.78)':'rgba(255,209,102,.52)';
+        ctx.beginPath();ctx.moveTo(player.x,player.y);ctx.lineTo(receiver.x,receiver.y);ctx.stroke();ctx.setLineDash([]);ctx.restore();
+      }
+    };
+
+    // Breakaway uses a hidden shot resolver: approach angle, placement, academic boost and keeper read all matter.
+    doBreakaway=function(){
+      if(phase!=='play'||MODES[round].id!=='breakaway'||shot)return;
+      if(player.y>330){floatText(player.x,player.y-35,'ENTER SHOOTING ZONE','#d9e7ef');return}
+      const goalL=465,goalR=815;
+      const placement=clamp(Math.abs(player.x-640)/175,0,1);
+      const direction=clamp(player.dirX,-1,1);
+      const tx=clamp(player.x+direction*125,goalL+15,goalR-15);
+      const academic=boost?.18:0;
+      const cornerBonus=placement*.18;
+      const keeperRead=boost?.36:.54;
+      const goalChance=clamp(.48+academic+cornerBonus-keeperRead*.22,.30,.88);
+      const willSave=Math.random()>goalChance;
+      shot={x:ball.x,y:ball.y,sx:ball.x,sy:ball.y,tx,ty:145,t:0,d:.40,willSave};roundStats.shots++;
+      if(willSave)keeper.targetX=tx;else keeper.targetX=clamp(tx+(Math.random()<.5?-1:1)*(95+Math.random()*80),470,810);
+    };
+    updateBreakaway=function(dt){
+      if(keeper&&!shot){const desired=clamp(player.x,470,810);keeper.targetX=lerp(keeper.targetX,desired,boost?.025:.045);keeper.x=lerp(keeper.x,keeper.targetX,Math.min(1,dt*(boost?1.45:2.15)))}
+      if(shot){shot.t+=dt;const p=clamp(shot.t/shot.d,0,1);shot.x=lerp(shot.sx,shot.tx,p);shot.y=lerp(shot.sy,shot.ty,p);keeper.x=lerp(keeper.x,keeper.targetX,Math.min(1,dt*(shot.willSave?7:3.2)));
+        if(p>=1){if(shot.willSave){floatText(keeper.x,keeper.y,'SAVED','#ffe29b');combo=1;burst(shot.tx,shot.ty,'#ffe29b',12);beep('bad')}else{award(900,'GOAL',shot.tx,shot.ty);burst(shot.tx,145,'#ffd166',28)}finishRound(shot.willSave?'saved':'goal')}
+      }
+    };
+
+    // Target Blitz gets a short hot-streak bonus so rapid accuracy matters.
+    let lastTargetHit=0;
+    const oldDoTarget=doTarget;
+    doTarget=function(){const before=roundStats.success;oldDoTarget.apply(this,arguments);if(roundStats.success>before){const now=performance.now();if(now-lastTargetHit<1350){score+=150;roundStats.points+=150;floatText(640,290,'QUICK HIT +150','#ffd166');updateHUD()}lastTargetHit=now}};
+
+    // Result copy now reports performance, not just points.
+    const oldFinish=finishRound;
+    finishRound=function(reason){oldFinish.apply(this,arguments);const m=MODES[round];let extra='';if(m.id==='dribble')extra=roundStats.collisions?(' • '+roundStats.collisions+' tackle'+(roundStats.collisions===1?'':'s')):' • Clean run';if(m.id==='pass')extra=' • '+roundStats.success+' completed passes';if(m.id==='target')extra=' • '+roundStats.success+' targets hit';if(m.id==='breakaway')extra=reason==='goal'?' • Clinical finish':' • Keeper won the duel';document.getElementById('resultDetail').textContent+=extra};
+
+    // Keep question/result states exclusive on mobile and desktop.
+    const obs=new MutationObserver(()=>{if(!qPanel.classList.contains('hidden')){rPanel.classList.add('hidden');qPanel.scrollTop=0}});obs.observe(qPanel,{attributes:true,attributeFilter:['class']});obs.observe(rPanel,{attributes:true,attributeFilter:['class']});
+  })();
+  `;
+  d.body.appendChild(patch);
+});
+</script>
+</body>
+</html>
