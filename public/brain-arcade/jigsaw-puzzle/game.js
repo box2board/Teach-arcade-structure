@@ -151,11 +151,11 @@
     "name": "Cupcake Bakery",
     "src": "/brain-arcade/jigsaw-puzzle/assets/cupcake-bakery.webp"
   },
-  "alien-playground": {
+  "skate-park": {
     "name": "Skate Park",
     "src": "/brain-arcade/jigsaw-puzzle/assets/alien-playground.webp"
   },
-  "skate-park": {
+  "alien-playground": {
     "name": "Alien Playground",
     "src": "/brain-arcade/jigsaw-puzzle/assets/skate-park.webp"
   },
