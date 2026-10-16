@@ -93,14 +93,96 @@ assert(
   w.document.querySelectorAll(".cq-badge").length > 0,
   "clear answers should populate visible interest recommendations",
 );
+// Reproduce the screenshot: mixed/neutral answers with a clear relative difference.
+const screenshotAnswers = {
+  R: [2, 2, 2, 2, 2, 2],
+  I: [2, 2, 2, 2, 2, 3],
+  A: [2, 2, 2, 2, 2, 2],
+  S: [2, 2, 2, 2, 3, 3],
+  E: [1, 1, 2, 2, 2, 2],
+  C: [0, 0, 1, 1, 1, 1],
+};
 api.state.run.interestAnswers = Object.fromEntries(
-  questions.map((q) => [q.id, q.type === "R" ? 1 : 0]),
+  questions.map((q) => [
+    q.id,
+    screenshotAnswers[q.type][Number(q.id.slice(1)) - 1],
+  ]),
+);
+api.state.run.explorer = {
+  query: "",
+  cluster: "all",
+  recommended: true,
+  limit: 12,
+};
+assert.equal(api.hasInterestSignal(), true);
+api.renderByPhase();
+assert(
+  w.document.querySelectorAll("[data-career]").length > 0,
+  "the exact screenshot pattern must produce suggestions",
+);
+assert(
+  !w.document
+    .getElementById("screen")
+    .textContent.includes("There is no clear pattern"),
+);
+// Flat and incomplete patterns must have honest starting points, never an empty shortlist.
+for (const answer of [0, 2, 4, null]) {
+  api.state.run.interestAnswers = Object.fromEntries(
+    questions.map((q) => [q.id, answer]),
+  );
+  api.state.run.explorer = {
+    query: "",
+    cluster: "all",
+    recommended: true,
+    limit: 12,
+  };
+  api.renderByPhase();
+  assert(w.document.querySelectorAll("[data-career]").length > 0);
+  assert(
+    w.document
+      .getElementById("screen")
+      .textContent.includes("not personalized matches"),
+  );
+  assert(
+    [...w.document.querySelectorAll(".cq-badge")].every(
+      (el) => el.textContent === "Starting point",
+    ),
+  );
+}
+const shortlist = [...w.document.querySelectorAll("[data-career]")].map((el) =>
+  careers.find((c) => c.id === el.dataset.career),
+);
+const otherCluster = careers.find(
+  (c) => !shortlist.some((x) => x.cluster === c.cluster),
+).cluster;
+const cluster = w.document.getElementById("career-cluster");
+cluster.value = otherCluster;
+cluster.dispatchEvent(new w.Event("change", { bubbles: true }));
+assert(
+  w.document.querySelectorAll("[data-career]").length > 0,
+  "a field filter must broaden the shortlist when other allowed careers exist",
+);
+assert.equal(w.document.getElementById("career-filter-note").hidden, false);
+assert.equal(w.document.getElementById("recommended-only").checked, false);
+const originalSettings = JSON.parse(JSON.stringify(api.state.run.settings));
+api.state.run.settings.enabledCareers = ["police-officer"];
+api.state.run.explorer = {
+  query: "",
+  cluster: "all",
+  recommended: true,
+  limit: 12,
+};
+api.renderByPhase();
+assert.equal(
+  w.document.querySelectorAll("[data-career]").length,
+  1,
+  "fallback must preserve teacher restrictions",
 );
 assert.equal(
-  api.hasInterestSignal(),
-  false,
-  "dislike across all areas must not create confident recommendations",
+  w.document.querySelector("[data-career]").dataset.career,
+  "police-officer",
 );
+api.state.run.settings = originalSettings;
 function rng(seed) {
   return () => {
     seed = (seed * 1664525 + 1013904223) >>> 0;
