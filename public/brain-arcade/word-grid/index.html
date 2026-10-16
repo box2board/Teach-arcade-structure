@@ -74,8 +74,9 @@
         <section class="left-panel">
           <div class="board" id="board" role="grid" aria-label="Word Grid board"></div>
           <div class="current-word" aria-live="polite">
-            <span class="label">Current Word:</span>
-            <span id="currentWord">—</span>
+            <span class="label">Current Word</span>
+            <strong id="currentWord">—</strong>
+            <span class="word-points" id="wordPreviewPoints" aria-live="polite"></span>
           </div>
           <div class="controls">
             <button id="submitWord" type="button" class="primary">Submit Word</button>
@@ -85,7 +86,7 @@
           <div class="controls">
             <button id="startPause" type="button" class="primary">Start</button>
             <button id="finishRound" type="button">Finish Round</button>
-            <button id="newGrid" type="button">New Grid</button>
+            <button id="newGrid" type="button" class="shuffle-btn" aria-label="Reshuffle letters and keep your score"><span aria-hidden="true">↻</span><span>Reshuffle</span></button>
           </div>
         </section>
 
@@ -135,8 +136,9 @@
         <label>
           Timer
           <select id="timerSetting">
+            <option value="180">3 minutes</option>
             <option value="60">60 seconds</option>
-            <option value="120">120 seconds</option>
+            <option value="120">2 minutes</option>
             <option value="0">Practice (no timer)</option>
           </select>
         </label>
