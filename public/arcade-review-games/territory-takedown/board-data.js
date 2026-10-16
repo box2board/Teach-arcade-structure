@@ -4,6 +4,6 @@ const raw=[
 ];
 const adj=[[1,6],[0,2,6,7],[1,3,7,8],[2,4,8,9],[3,5,9,19],[4,9,10,19],[0,1,7,11],[1,2,6,8,12],[2,3,7,9,12,13],[3,4,5,8,10,13,14],[5,9,14],[6,12,16],[7,8,11,13,15],[8,9,12,14,15,17],[9,10,13,18,20],[12,13,16,17],[11,15],[13,15,18],[14,17,20],[4,5],[14,18]];
 const specials={2:'shield',4:'double',7:'challenge',12:'stronghold',14:'shield',16:'double',18:'challenge',19:'shield',20:'double'};
-window.TT_BOARD={mapName:'The Crownlands',viewBox:'0 0 1536 1024',mapImage:'territory-takedown-map.png',territories:raw.map((r,i)=>({id:`t${i+1}`,name:r[0],label:r[1],shape:'0,0 0,0 0,0',adjacent:adj[i].map(j=>`t${j+1}`),special:specials[i]||null}))};
-const renderer=document.createElement('script');renderer.src='map-renderer.js?v=dot-map-1';document.head.appendChild(renderer);
+window.TT_BOARD={mapName:'The Crownlands',viewBox:'0 0 1536 1024',territories:raw.map((r,i)=>({id:`t${i+1}`,name:r[0],label:r[1],shape:'0,0 0,0 0,0',adjacent:adj[i].map(j=>`t${j+1}`),special:specials[i]||null}))};
+const image=document.createElement('script');image.src='map-image.js?v=1';image.onload=()=>{const renderer=document.createElement('script');renderer.src='map-renderer.js?v=dot-map-2';document.head.appendChild(renderer)};document.head.appendChild(image);
 })();
