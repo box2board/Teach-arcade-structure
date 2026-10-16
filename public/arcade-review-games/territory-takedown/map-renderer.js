@@ -2,14 +2,15 @@
 function boot(){
  const NS='http://www.w3.org/2000/svg',arena=document.getElementById('arena');if(!arena||!window.TT_BOARD)return;
  arena.setAttribute('viewBox',window.TT_BOARD.viewBox||'0 0 1536 1024');
+ const map=window.TT_MAP_IMAGE||'';
  const css=`
- .arena{background:#168fc5 url('territory-takedown-map.png') center/100% 100% no-repeat!important}
+ .arena{background:#168fc5 url("${map}") center/100% 100% no-repeat!important}
  .territory polygon,.territory path,.territory .territory-name,.territory .owner-mark{display:none!important}
  .territory{cursor:pointer;outline:none}
- .territory .control-dot{fill:var(--team);stroke:#071426;stroke-width:8;transition:fill .18s,stroke .18s,transform .18s;transform-box:fill-box;transform-origin:center;filter:drop-shadow(0 3px 4px #0008)}
+ .territory .control-dot{fill:var(--team);stroke:#071426;stroke-width:9;transition:fill .18s,stroke .18s,transform .18s;transform-box:fill-box;transform-origin:center;filter:drop-shadow(0 3px 4px #0008)}
  .territory:hover .control-dot{transform:scale(1.08);stroke:#fff}
- .territory.selected .control-dot{stroke:#ffd45b;stroke-width:14;filter:drop-shadow(0 0 15px #ffd45b);transform:scale(1.12)}
- .territory.legal .control-dot{stroke:#41e7df;stroke-width:14;filter:drop-shadow(0 0 17px #41e7df);animation:dot-pulse 1s infinite}
+ .territory.selected .control-dot{stroke:#ffd45b;stroke-width:15;filter:drop-shadow(0 0 15px #ffd45b);transform:scale(1.12)}
+ .territory.legal .control-dot{stroke:#41e7df;stroke-width:15;filter:drop-shadow(0 0 17px #41e7df);animation:dot-pulse 1s infinite}
  .territory.captured .control-dot{animation:dot-capture .65s ease-out}
  .territory.shielded .control-dot{stroke-dasharray:14 8}
  .territory .special{font-size:34px;fill:#ffd45b;paint-order:stroke;stroke:#071426;stroke-width:5px;filter:drop-shadow(0 2px 3px #000);pointer-events:none}
