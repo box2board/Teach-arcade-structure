@@ -107,14 +107,29 @@ frame.addEventListener('load',()=>{
       const oldFinish=finishRound;
       finishRound=function(reason){oldFinish.apply(this,arguments);const m=MODES[round];let extra='';if(m.id==='dribble')extra=roundStats.collisions?(' • '+roundStats.collisions+' tackle'+(roundStats.collisions===1?'':'s')):' • Clean run';if(m.id==='pass')extra=' • '+roundStats.success+' completed passes';if(m.id==='target')extra=' • '+roundStats.success+' targets hit';if(m.id==='breakaway')extra=reason==='goal'?' • Clinical finish':' • Keeper won the duel';document.getElementById('resultDetail').textContent+=extra};
 
-      const obs=new MutationObserver(()=>{if(!qPanel.classList.contains('hidden')){rPanel.classList.add('hidden');qPanel.scrollTop=0}});obs.observe(qPanel,{attributes:true,attributeFilter:['class']});obs.observe(rPanel,{attributes:true,attributeFilter:['class']});
+      // Keep the panels exclusive without observing the result panel itself. The
+      // previous observer could retrigger itself indefinitely after Next Round.
+      const syncPanels=()=>{
+        if(!qPanel.classList.contains('hidden')){
+          if(!rPanel.classList.contains('hidden'))rPanel.classList.add('hidden');
+          qPanel.scrollTop=0;
+        }
+      };
+      const obs=new MutationObserver(syncPanels);
+      obs.observe(qPanel,{attributes:true,attributeFilter:['class']});
+
+      // Defensive mobile transition: the base game's click handler still owns
+      // round advancement; this only clears stale result UI immediately.
+      document.getElementById('nextBtn')?.addEventListener('pointerdown',()=>{
+        if(phase==='result')rPanel.classList.add('hidden');
+      },{passive:true});
     })();
     `;
     d.body.appendChild(patch);
   };
 
-  // Important: let the original game handle Start first. The enhancement patch is
-  // installed only after the base game has successfully entered its first question.
+  // Let the original game own Start. Install enhancements only after the base
+  // game has successfully entered its first question.
   const start=d.getElementById('startBtn');
   start?.addEventListener('click',()=>setTimeout(installGameplayPatch,0));
 
