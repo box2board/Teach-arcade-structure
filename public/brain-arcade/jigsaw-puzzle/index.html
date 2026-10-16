@@ -81,12 +81,12 @@
       </div>
       <div id="tray-controls" class="tray-controls" hidden><button id="tray-prev" class="tool-button" type="button">← Previous tray</button><span id="tray-page" role="status" aria-live="polite"></span><button id="tray-next" class="tool-button" type="button">Next tray →</button></div>
       <div class="stage-wrap" id="stage-wrap">
-        <canvas id="puzzle-canvas" tabindex="0" role="application" aria-label="Jigsaw board. Drag pieces onto the picture. Use Space to select a piece, arrow keys to move it, and Enter to place it."></canvas>
+        <canvas id="puzzle-canvas" tabindex="0" role="application" aria-label="Jigsaw board. Click or tap a piece to highlight it, then click or tap the square where you think it belongs. You can also drag pieces. Use Space to select a piece, arrow keys to move it, and Enter to place it."></canvas>
         <div id="preview-card" class="preview-card" hidden><span>Picture guide</span><img id="preview-image" alt="Reference image for the jigsaw puzzle"></div>
         <div id="pause-cover" class="pause-cover" hidden><div><strong>Paused</strong><button id="resume-button" type="button">Resume puzzle</button></div></div>
         <div id="win-card" class="win-card" hidden><div class="win-icon" aria-hidden="true">✦</div><p class="eyebrow">PUZZLE COMPLETE</p><h2>Beautifully done!</h2><p id="win-summary"></p><div class="win-actions"><button id="play-again-button" class="start-button" type="button">Play again</button><button id="back-to-choices" class="tool-button" type="button">Choose another</button></div></div>
       </div>
-      <div class="game-footer"><p id="keyboard-help">Drag pieces to the board. Larger puzzles have multiple trays; use the tray buttons to browse.</p><button id="pause-button" class="pause-button" type="button" aria-pressed="false">Pause</button></div>
+      <div class="game-footer"><p id="keyboard-help">Click or tap a piece, then click or tap its square on the board. Correct pieces snap into place; a wrong guess leaves the piece on the tabletop. You can also drag pieces. Larger puzzles have multiple trays.</p><button id="pause-button" class="pause-button" type="button" aria-pressed="false">Pause</button></div>
       <p id="game-status" class="sr-only" role="status" aria-live="polite"></p>
     </section>
     <p class="page-note">A little space to focus, notice details, and enjoy the picture taking shape.</p>

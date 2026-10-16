@@ -248,11 +248,44 @@
     }
     return null;
   }
+  function tryPlaceOnSquare(piece, col, row) {
+    state.moves++;
+    byId("move-count").textContent = state.moves;
+    if (col !== piece.col || row !== piece.row) {
+      announce("That is not the right square. The piece is still on the tabletop; choose another square.");
+      draw();
+      return false;
+    }
+    const cell = getCell();
+    piece.x = state.board.x + piece.col * cell;
+    piece.y = state.board.y + piece.row * cell;
+    piece.fixed = true;
+    state.placed++;
+    state.cycle = -1;
+    byId("placed-count").textContent = `${state.placed} / ${state.pieces.length}`;
+    announce(`Piece placed. ${state.placed} of ${state.pieces.length} complete.`);
+    if (state.placed === state.pieces.length) finish();
+    state.selected = null;
+    advanceTray();
+    draw();
+    return true;
+  }
   let drag = null;
   canvas.addEventListener("pointerdown", event => {
     if (state.paused || state.complete) return;
     const pt = point(event), piece = hitPiece(pt.x, pt.y);
-    if (!piece) { canvas.focus(); return; }
+    if (!piece) {
+      const { x, y, size } = state.board;
+      if (state.selected && pt.x >= x && pt.y >= y && pt.x < x + size && pt.y < y + size) {
+        const cell = getCell();
+        tryPlaceOnSquare(state.selected, Math.floor((pt.x - x) / cell), Math.floor((pt.y - y) / cell));
+        canvas.focus({ preventScroll: true });
+        event.preventDefault();
+        return;
+      }
+      canvas.focus();
+      return;
+    }
     state.pieces.splice(state.pieces.indexOf(piece), 1); state.pieces.push(piece);
     state.selected = piece; drag = { piece, dx: pt.x - piece.x, dy: pt.y - piece.y, moved: false };
     canvas.setPointerCapture(event.pointerId); draw(); event.preventDefault();
