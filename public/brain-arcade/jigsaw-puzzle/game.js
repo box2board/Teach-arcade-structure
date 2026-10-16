@@ -46,6 +46,46 @@
   "inventors-workshop": {
     "name": "Inventors Workshop",
     "src": "/brain-arcade/jigsaw-puzzle/assets/inventors-workshop.webp"
+  },
+  "japanese-garden": {
+    "name": "Japanese Garden",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/japanese-garden.webp"
+  },
+  "savanna-sunrise": {
+    "name": "Savanna Sunrise",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/savanna-sunrise.webp"
+  },
+  "desert-oasis": {
+    "name": "Desert Oasis",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/desert-oasis.webp"
+  },
+  "arctic-expedition": {
+    "name": "Arctic Expedition",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/arctic-expedition.webp"
+  },
+  "nile-at-dusk": {
+    "name": "Nile at Dusk",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/nile-at-dusk.webp"
+  },
+  "canal-town": {
+    "name": "Canal Town",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/canal-town.webp"
+  },
+  "crystal-cavern": {
+    "name": "Crystal Cavern",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/crystal-cavern.webp"
+  },
+  "castle-courtyard": {
+    "name": "Castle Courtyard",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/castle-courtyard.webp"
+  },
+  "seaside-carnival": {
+    "name": "Seaside Carnival",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/seaside-carnival.webp"
+  },
+  "balloon-valley": {
+    "name": "Balloon Valley",
+    "src": "/brain-arcade/jigsaw-puzzle/assets/balloon-valley.webp"
   }
 };
   const state = { picture: "coral-kingdom", size: 3, trayPage: 0, relaxed: true, pieces: [], image: null, board: null, mobile: false, moves: 0, placed: 0, startAt: 0, elapsed: 0, timer: null, paused: false, selected: null, cycle: -1, preview: false, complete: false, width: 0, height: 0 };
