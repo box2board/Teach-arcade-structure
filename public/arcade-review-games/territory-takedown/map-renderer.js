@@ -1,10 +1,11 @@
 (function(){'use strict';
 function boot(){
  const NS='http://www.w3.org/2000/svg',arena=document.getElementById('arena');if(!arena||!window.TT_BOARD)return;
- arena.setAttribute('viewBox',window.TT_BOARD.viewBox||'0 0 1536 1024');
- const map=window.TT_MAP_IMAGE||'';
+ const viewBox=window.TT_BOARD.viewBox||'0 0 1536 1024',map=window.TT_MAP_IMAGE||'';
+ arena.setAttribute('viewBox',viewBox);arena.setAttribute('preserveAspectRatio','xMidYMid meet');
  const css=`
- .arena{background:#168fc5 url("${map}") center/100% 100% no-repeat!important}
+ .arena{background:#168fc5!important;aspect-ratio:3/2;width:100%;height:auto;overflow:hidden}
+ .tt-map-image{pointer-events:none}
  .territory polygon,.territory path,.territory .territory-name,.territory .owner-mark{display:none!important}
  .territory{cursor:pointer;outline:none}
  .territory .control-dot{fill:var(--team);stroke:#071426;stroke-width:9;transition:fill .18s,stroke .18s,transform .18s;transform-box:fill-box;transform-origin:center;filter:drop-shadow(0 3px 4px #0008)}
@@ -17,16 +18,21 @@ function boot(){
  @keyframes dot-pulse{50%{transform:scale(1.14)}}
  @keyframes dot-capture{35%{transform:scale(1.35)}70%{transform:scale(.92)}}`;
  if(!document.getElementById('tt-dot-map-css')){const style=document.createElement('style');style.id='tt-dot-map-css';style.textContent=css;document.head.appendChild(style)}
+ function ensureMap(){
+  let img=arena.querySelector('#tt-map-image');
+  if(!img){img=document.createElementNS(NS,'image');img.id='tt-map-image';img.classList.add('tt-map-image');img.setAttribute('x','0');img.setAttribute('y','0');img.setAttribute('width','1536');img.setAttribute('height','1024');img.setAttribute('preserveAspectRatio','none');arena.insertBefore(img,arena.firstChild)}
+  if(map){img.setAttribute('href',map);img.setAttributeNS('http://www.w3.org/1999/xlink','href',map)}
+ }
  let busy=false;
  function enhance(){if(busy)return;busy=true;try{
-  arena.setAttribute('viewBox',window.TT_BOARD.viewBox||'0 0 1536 1024');
+  arena.setAttribute('viewBox',viewBox);arena.setAttribute('preserveAspectRatio','xMidYMid meet');ensureMap();
   [...arena.querySelectorAll('g.territory')].forEach(g=>{
    const t=window.TT_BOARD.territories.find(x=>x.id===g.dataset.id);if(!t)return;
    const [x,y]=t.label;
    g.querySelectorAll('polygon,path,.owner-mark,.territory-name').forEach(n=>n.remove());
    let dot=g.querySelector('.control-dot');if(!dot){dot=document.createElementNS(NS,'circle');dot.classList.add('control-dot');g.insertBefore(dot,g.firstChild)}
-   dot.setAttribute('cx',x);dot.setAttribute('cy',y);dot.setAttribute('r','34');
-   const special=g.querySelector('.special');if(special){special.setAttribute('x',x+48);special.setAttribute('y',y-42)}
+   dot.setAttribute('cx',x);dot.setAttribute('cy',y);dot.setAttribute('r','40');
+   const special=g.querySelector('.special');if(special){special.setAttribute('x',x+54);special.setAttribute('y',y-46)}
   });
  }finally{busy=false}}
  new MutationObserver(enhance).observe(arena,{childList:true,subtree:true});enhance();
