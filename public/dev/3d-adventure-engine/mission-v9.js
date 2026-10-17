@@ -27,6 +27,10 @@ let archiveUnlocked = false;
 let knowledgePassed = false;
 let finishing = false;
 let selectedMissionAnswer = 0;
+let activeMissionQuestion = missionQuestion;
+let answerSuccess = null;
+let missionAnswerLocked = false;
+let questionCloseTimer = null;
 
 const blockers = [];
 const interactions = [];
@@ -199,9 +203,16 @@ function buildRelay(parent, id) {
     x: s.x,
     z: s.z,
     radius: 1.65,
-    label: () => relayState.active ? `${s.label || id.toUpperCase()} relay online` : `Activate ${s.label || id} relay`,
+    label: () => relayState.active ? `${s.label || id.toUpperCase()} relay online` : s.evidenceQuestion ? `Investigate ${s.label || id}` : `Activate ${s.label || id} relay`,
     enabled: () => missionStarted && !missionFinished && !relayState.active && !missionQuestionActive,
-    interact: () => activateRelay(relayState),
+    interact: () => {
+      if (!s.evidenceQuestion) return activateRelay(relayState);
+      if (relayState.id !== RELAY_ORDER[relayProgress]) {
+        toast("Follow the research plan on the wall panel first.");
+        return;
+      }
+      openMissionQuestion(s.evidenceQuestion, () => activateRelay(relayState));
+    },
   });
 }
 
@@ -314,7 +325,9 @@ function buildCommandCore(parent) {
     radius: 2.0,
     label: () => commandCore.active ? (definition.completeLabel || "Core stabilized") : (definition.label || "Stabilize command core"),
     enabled: () => missionStarted && knowledgePassed && !commandCore.active && !finishing,
-    interact: stabilizeCore,
+    interact: () => config.questions?.commandCore
+      ? openMissionQuestion(config.questions.commandCore, stabilizeCore)
+      : stabilizeCore(),
   });
 }
 
@@ -375,16 +388,28 @@ function beginMission() {
   }, 220);
 }
 
-function openMissionQuestion() {
-  if (missionQuestionActive || knowledgePassed || !questionDialog) return;
+function openMissionQuestion(definition = missionQuestion, onSuccess = unlockArchive) {
+  if (missionQuestionActive || !questionDialog) return;
+  activeMissionQuestion = definition;
+  answerSuccess = onSuccess;
+  missionAnswerLocked = false;
   missionQuestionActive = true;
   selectedMissionAnswer = 0;
   questionFeedback.textContent = "";
   const heading = questionDialog.querySelector("h2");
-  if (heading) heading.textContent = missionQuestion.title || "Knowledge checkpoint";
-  questionText.textContent = missionQuestion.text || "";
+  if (heading) heading.textContent = activeMissionQuestion.title || "Knowledge checkpoint";
+  questionText.textContent = activeMissionQuestion.text || "";
+  let evidence = document.getElementById("ta3dQuestionEvidence");
+  if (!evidence) {
+    evidence = document.createElement("p");
+    evidence.id = "ta3dQuestionEvidence";
+    evidence.className = "question-evidence";
+    questionText.before(evidence);
+  }
+  evidence.textContent = definition.evidence || "";
+  evidence.hidden = !definition.evidence;
   answerList.innerHTML = "";
-  (missionQuestion.answers || []).forEach((answer, index) => {
+  (activeMissionQuestion.answers || []).forEach((answer, index) => {
     const button = document.createElement("button");
     button.type = "button";
     button.className = "answer";
@@ -401,18 +426,26 @@ function updateMissionAnswerFocus() {
 }
 
 function submitMissionAnswer(index) {
-  if (!missionQuestionActive) return;
+  if (!missionQuestionActive || missionAnswerLocked) return;
   selectedMissionAnswer = index;
   updateMissionAnswerFocus();
   const buttons = [...answerList.children];
-  if (index !== missionQuestion.correct) {
+  if (index !== activeMissionQuestion.correct) {
     buttons[index]?.classList.add("wrong");
-    questionFeedback.textContent = missionQuestion.wrongFeedback || "Not quite. Try again.";
+    questionFeedback.textContent = activeMissionQuestion.wrongFeedback || "Not quite. Try again.";
     setTimeout(() => buttons[index]?.classList.remove("wrong"), 420);
     return;
   }
   buttons[index]?.classList.add("correct");
-  questionFeedback.textContent = missionQuestion.correctFeedback || "Correct.";
+  questionFeedback.textContent = activeMissionQuestion.correctFeedback || "Correct.";
+  missionAnswerLocked = true;
+  const complete = answerSuccess;
+  answerSuccess = null;
+  complete?.();
+  questionCloseTimer = setTimeout(() => questionDialog.open && questionDialog.close(), 720);
+}
+
+function unlockArchive() {
   knowledgePassed = true;
   archiveConsole.screen.material.emissiveIntensity = 2.2;
   archiveConsole.ring.material.emissiveIntensity = 2.2;
@@ -423,16 +456,16 @@ function submitMissionAnswer(index) {
   setObjective(missionConfig.objectives?.core);
   toast(missionConfig.toasts?.archiveVerified);
   spawnPulse(color("violet", 0xa78bfa));
-  setTimeout(() => questionDialog.open && questionDialog.close(), 720);
 }
 
 function handleMissionQuestionKey(event) {
   if (!missionQuestionActive) return false;
-  const count = missionQuestion.answers?.length || 0;
+  const count = activeMissionQuestion.answers?.length || 0;
   if (["ArrowUp", "ArrowDown", "Enter", "Digit1", "Digit2", "Digit3", "Digit4"].includes(event.code)) {
     event.preventDefault();
     event.stopImmediatePropagation();
   } else return false;
+  if (missionAnswerLocked) return true;
   if (event.code === "ArrowUp") selectedMissionAnswer = (selectedMissionAnswer + count - 1) % count;
   else if (event.code === "ArrowDown") selectedMissionAnswer = (selectedMissionAnswer + 1) % count;
   else if (/^Digit[1-4]$/.test(event.code)) {
@@ -636,6 +669,8 @@ window.addEventListener("keydown", (event) => {
 }, true);
 
 questionDialog?.addEventListener("close", () => {
+  clearTimeout(questionCloseTimer);
+  answerSuccess = null;
   if (missionQuestionActive) missionQuestionActive = false;
 });
 

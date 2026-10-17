@@ -12,6 +12,7 @@ const STAGES = [...(config?.checkpoints || ["start", "cell", "terminal", "entran
 const STORAGE_KEY = adventure?.storageKey?.("checkpoint.v1") || `teachArcade3D.${config?.id || "adventure"}.checkpoint.v1`;
 const LEGACY_KEY = "teachArcade3D.lostFacility.v07.checkpoint";
 const VERSION = 1;
+const useLegacy = config?.id === "lost-facility" && config?.migrateLegacyCheckpoint !== false;
 
 const LABELS = {
   start: "Exterior",
@@ -56,7 +57,7 @@ function readSave() {
   try {
     const current = parseStored(localStorage.getItem(STORAGE_KEY));
     if (current) return current;
-    const legacy = parseStored(localStorage.getItem(LEGACY_KEY));
+    const legacy = useLegacy ? parseStored(localStorage.getItem(LEGACY_KEY)) : null;
     if (legacy) {
       localStorage.setItem(STORAGE_KEY, JSON.stringify({ version: VERSION, stage: legacy.stage, savedAt: legacy.savedAt || Date.now() }));
       return legacy;
@@ -72,7 +73,7 @@ function writeSave(stage) {
   try {
     localStorage.setItem(STORAGE_KEY, payload);
     // Mirror during v0.9 so the v0.8 difficulty selector recognizes progress.
-    localStorage.setItem(LEGACY_KEY, payload);
+    if (useLegacy) localStorage.setItem(LEGACY_KEY, payload);
   } catch {}
   updateCheckpointUi(stage);
 }
@@ -80,7 +81,7 @@ function writeSave(stage) {
 function clearSave() {
   try {
     localStorage.removeItem(STORAGE_KEY);
-    localStorage.removeItem(LEGACY_KEY);
+    if (useLegacy) localStorage.removeItem(LEGACY_KEY);
   } catch {}
   lastSavedStage = "start";
   updateCheckpointUi("start");
