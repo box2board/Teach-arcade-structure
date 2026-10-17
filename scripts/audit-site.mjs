@@ -3,8 +3,6 @@ import path from 'node:path';
 
 const root = path.resolve('public');
 const site = 'https://www.teacharcade.com';
-// Older page canonicals still use the bare domain, which redirects to this host.
-const canonicalForComparison = value => value.replace(/^https:\/\/teacharcade\.com(?=\/)/, site);
 
 async function walk(dir) {
   const entries = await fs.readdir(dir, { withFileTypes: true });
@@ -54,12 +52,21 @@ for (const file of htmlFiles) {
     }
     const h1Count = (html.match(/<h1\b/gi) || []).length;
     if (h1Count !== 1) issues.push({ severity: 'HIGH', file: relative, issue: `Expected one H1; found ${h1Count}` });
-    if (values.canonical && canonicalForComparison(values.canonical) !== `${site}${routeFor(file)}`) {
+    if (values.canonical && values.canonical !== `${site}${routeFor(file)}`) {
       issues.push({ severity: 'CRITICAL', file: relative, issue: `Canonical does not match route (${values.canonical})` });
     }
   }
+  const openGraphUrl = attr(html, 'meta', 'property', 'og:url', 'content');
+  if (openGraphUrl && !openGraphUrl.startsWith(site)) {
+    issues.push({ severity: 'HIGH', file: relative, issue: `Open Graph URL must use ${site}` });
+  }
   for (const script of html.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)) {
-    try { JSON.parse(script[1]); } catch { issues.push({ severity: 'HIGH', file: relative, issue: 'Malformed JSON-LD' }); }
+    try {
+      JSON.parse(script[1]);
+      if (script[1].includes('https://teacharcade.com')) {
+        issues.push({ severity: 'HIGH', file: relative, issue: 'JSON-LD contains a non-preferred bare-domain URL' });
+      }
+    } catch { issues.push({ severity: 'HIGH', file: relative, issue: 'Malformed JSON-LD' }); }
   }
   const baseHref = html.match(/<base\b[^>]*href=["']([^"']+)["']/i)?.[1];
   for (const link of html.matchAll(/\bhref=["']([^"']+)["']/gi)) {
