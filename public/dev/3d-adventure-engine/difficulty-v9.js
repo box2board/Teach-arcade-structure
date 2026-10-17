@@ -176,14 +176,6 @@ function updateGuidance(now) {
       if (nextId) label.textContent = `Next relay: ${config.relayPuzzle.stations?.[nextId]?.label || nextId.toUpperCase()}`;
     }
   }
-  if (current === "hard") {
-    const sub = document.getElementById("objectiveSubtext");
-    if (sub) {
-      const value = sub.textContent || "";
-      if (/Power is routing correctly\. Find the .* relay next\./i.test(value)) sub.textContent = "The route is working. Use the wall sequence to determine the next relay.";
-      else if (value === config?.mission?.objectives?.start?.detail) sub.textContent = "Restore auxiliary power using the wall routing panel.";
-    }
-  }
   updateAcademicHint();
 }
 

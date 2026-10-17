@@ -1,4 +1,5 @@
 import * as THREE from "/assets/vendor/three-0.162.0/three.module.js";
+import { relayStep, relayObjective, sequenceClue } from "./relay-progress.js";
 
 // v0.9 config-driven mission runtime.
 // Keeps movement/camera ownership in main-v2.js. Adventure-specific mission
@@ -86,6 +87,7 @@ function ensureMissionUi() {
   if (!document.getElementById("ta3dMissionToast")) {
     const toast = document.createElement("div");
     toast.id = "ta3dMissionToast";
+    toast.setAttribute("role", "status");
     toast.style.cssText = "position:fixed;left:50%;top:18%;transform:translate(-50%,-8px);z-index:9100;padding:10px 14px;border:1px solid rgba(125,211,252,.5);border-radius:12px;background:rgba(8,20,32,.9);color:#eaf9ff;font:800 13px/1.25 system-ui,sans-serif;letter-spacing:.02em;opacity:0;transition:opacity .18s ease,transform .18s ease;pointer-events:none;box-shadow:0 8px 28px rgba(0,0,0,.3)";
     document.body.appendChild(toast);
   }
@@ -159,6 +161,16 @@ function buildSequencePanel(parent) {
   });
 
   group.userData.panelLabel = relayConfig.panelLabel || "POWER ROUTE";
+  registerInteraction({
+    id: "sequence-panel", x: group.position.x, z: group.position.z, radius: 2.4,
+    label: () => `Read ${group.userData.panelLabel.toLowerCase()}`,
+    enabled: () => missionStarted && !missionFinished && !archiveUnlocked && !missionQuestionActive,
+    interact: () => {
+      const clue = sequenceClue(relayConfig);
+      if (objectiveSubtext) objectiveSubtext.textContent = clue;
+      toast(clue);
+    },
+  });
 }
 
 function buildRelay(parent, id) {
@@ -194,20 +206,27 @@ function buildRelay(parent, id) {
 }
 
 function activateRelay(relayState) {
-  const expected = RELAY_ORDER[relayProgress];
-  if (relayState.id !== expected) {
-    relayProgress = 0;
+  const settings = window.TA3DDifficulty?.settings || config.difficulties?.[config.defaultDifficulty] || {};
+  const result = relayStep(RELAY_ORDER, relayProgress, relayState.id, settings.preserveRelayProgressOnMistake);
+  if (!result.accepted) {
+    if (result.complete) return;
+    if (settings.preserveRelayProgressOnMistake) {
+      toast("That relay is out of sequence. Your progress is saved.");
+      return;
+    }
+    relayProgress = result.progress;
     relayStates.forEach((relay) => {
       relay.active = false;
       relay.errorPulse = .75;
     });
-    toast(relayConfig.feedback?.reset || "POWER ROUTE RESET");
+    setObjective(relayObjective(config, relayProgress, settings.showNextRelay !== false));
+    toast(`${relayConfig.feedback?.reset || "POWER ROUTE RESET"} · Start the sequence again`);
     spawnPulse(color("red", 0xef4444));
     return;
   }
 
   relayState.active = true;
-  relayProgress += 1;
+  relayProgress = result.progress;
   toast(text(relayConfig.feedback?.progress || "RELAY {current}/{total} ONLINE", { current: relayProgress, total: RELAY_ORDER.length }));
   spawnPulse(color(relayState.colorId));
 
@@ -217,9 +236,7 @@ function activateRelay(relayState) {
     toast(relayConfig.feedback?.complete || "AUXILIARY POWER RESTORED");
     setObjective(missionConfig.objectives?.archive);
   } else {
-    const nextId = RELAY_ORDER[relayProgress];
-    const nextLabel = station(nextId)?.label || nextId?.toUpperCase();
-    setObjective(missionConfig.objectives?.relayProgress, { next: nextLabel });
+    setObjective(relayObjective(config, relayProgress, settings.showNextRelay !== false));
   }
 }
 
