@@ -23,7 +23,9 @@ window.ESCAPE_V2_DATA = {
       panorama: null,
       startYaw: -6,
       startPitch: -8,
-      hfov: 92,
+      hfov: 110,
+      minHfov: 100,
+      maxHfov: 120,
       hotspots: [
         {
           id: 'papers', yaw: -124, pitch: -28,
