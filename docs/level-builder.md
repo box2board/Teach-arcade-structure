@@ -96,3 +96,11 @@ Select a placed enemy to change its appearance independently, or use **Enemy pre
 Choose **Attack → Shoot projectiles** for ranged enemies. Configure shot interval, speed, detection range, and direction (left/right/up/down or aim at the player's position when fired). Shots stop on solid terrain, expire after five seconds, and are cleared on respawn. Protection absorbs one hit.
 
 Choose **Defeat rule**: jump on top, dash into the enemy, or avoid it. **Hits to defeat** allows larger multi-hit encounters; the stone guardian starts with three hits and has a health bar in playtest. Appearance swaps preserve behavior and paths; applying a preset resets its route. These mechanics are opt-in creator runtime extensions; existing V1.3 game pages are unchanged. Browser/iPad gameplay QA remains outstanding.
+
+## Ready-made challenges
+
+The **Ready-made challenges** gallery includes 12 illustrated sections: gentle staircase, stepping stones, vertical switchbacks, elevator ascent, shuttle crossing, patrol encounter, hopping encounter, turret crossing, reward alcove, dash secret, review checkpoint gate, and ladder lookout. Filter by challenge type and difficulty. The tags describe intended complexity; classroom playtesting is still needed.
+
+Choose a card and tap the map to place its top-left corner. A dashed ghost shows the footprint; the whole section must fit in the world. Use **Cancel placement** or Escape to exit. Increase world height before placing a tall climb. **Match platform art to current theme** changes materials on insertion; uncheck it to retain the original materials. Generated contents are normal editable objects, selected together after placement, and the entire placement is one Undo action. Built-ins never consume saved-section slots.
+
+Challenge sections do not erase existing terrain or objects. Clear space first; a placed section can overlap existing terrain. Question gates remap to their included question, new questions receive unused indices, and secret links and movement paths are preserved. Repeated placements receive new IDs. These templates are starting points, not a guarantee of a winnable full level.
