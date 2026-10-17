@@ -7,12 +7,14 @@
 #panorama .pnlm-load-box p{color:#f4ead8}
 #panorama .pnlm-about-msg{display:none!important}
 
-/* The AI room art already contains subtle search markers. These hit areas sit on those exact world coordinates.
-   They are intentionally not numbered and never use viewport-relative positioning. */
-#panorama .ta-pano-hotspot{width:58px;height:58px;margin-left:-29px;margin-top:-29px;border-radius:50%;background:rgba(255,211,124,.01);border:2px solid transparent;box-shadow:none;cursor:pointer;transition:background .16s ease,border-color .16s ease,box-shadow .16s ease}
-#panorama .ta-pano-hotspot::before,#panorama .ta-pano-hotspot::after{display:none!important}
+/* Hit areas are fixed to world coordinates by Pannellum. They remain nearly invisible
+   until a student deliberately hovers / focuses them, preserving the room artwork. */
+#panorama .ta-pano-hotspot{width:58px;height:58px;margin-left:-29px;margin-top:-29px;border-radius:50%;background:rgba(255,211,124,.01);border:2px solid transparent;box-shadow:none;cursor:pointer;transition:background .16s ease,border-color .16s ease,box-shadow .16s ease;display:grid;place-items:center}
+#panorama .ta-pano-hotspot::before{display:none!important}
+#panorama .ta-pano-hotspot::after{display:none}
 #panorama .ta-pano-hotspot:hover,#panorama .ta-pano-hotspot:focus{background:rgba(225,169,77,.14);border-color:rgba(255,226,171,.85);box-shadow:0 0 0 8px rgba(225,169,77,.12);outline:none}
 #panorama .ta-pano-hotspot.solved{background:rgba(91,151,102,.13);border-color:rgba(170,222,176,.72);box-shadow:0 0 0 7px rgba(91,151,102,.10)}
+#panorama .ta-pano-hotspot.solved::after{content:'✓';display:grid;width:22px;height:22px;place-items:center;border-radius:50%;background:rgba(31,66,38,.88);border:1px solid rgba(195,235,199,.68);color:#dff4e2;font-size:13px;font-weight:900;line-height:1;box-shadow:0 3px 12px rgba(0,0,0,.28)}
 #panorama .pnlm-hotspot-base{z-index:4}
 .scene-vignette{z-index:5;pointer-events:none}
 .look-hint{z-index:8}
