@@ -2066,3 +2066,11 @@ body:has(.cq-page) {
     border-color: #ccc;
   }
 }
+
+.cq-entry-list {
+  padding-left: 20px;
+  line-height: 1.7;
+}
+.cq-entry-list li {
+  margin: 8px 0;
+}

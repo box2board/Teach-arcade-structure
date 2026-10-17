@@ -35,7 +35,7 @@ w.fetch = async (url) => ({
 });
 w.eval(
   fs.readFileSync(root + "career-quest.js", "utf8") +
-    "\nwindow.cq={state,interestProfile,hasInterestSignal,affinityScore,applyChoice,settleYear,pickScenario,snapshot,monthlyBreakdown,yearGross,estimatedWithholding,educationPayment,renderByPhase};",
+    "\nwindow.cq={state,interestProfile,hasInterestSignal,affinityScore,applyChoice,settleYear,pickScenario,snapshot,monthlyBreakdown,yearGross,estimatedWithholding,educationPayment,renderByPhase,financialSnapshot};",
 );
 await new Promise((r) => setTimeout(r, 0));
 w.document.getElementById("start-run").click();
@@ -362,7 +362,14 @@ assert.equal(
 );
 r.yearStart = api.snapshot(r.stats);
 api.settleYear();
-assert.equal(r.yearLedgers[0].consumerInterest, 220);
+assert.equal(r.yearLedgers[0].consumerInterest, 80);
+assert.equal(r.yearLedgers[0].consumerRate, 0.08);
+assert(api.financialSnapshot().includes("8% yearly interest"));
+const savedConsumerDebt = r.consumerDebt;
+r.consumerDebt = 0;
+assert(api.financialSnapshot().includes("No interest on a $0 balance"));
+assert(!api.financialSnapshot().includes("8% yearly interest"));
+r.consumerDebt = savedConsumerDebt;
 r.year = 2;
 r.stepInYear = 1;
 r.history = [];
@@ -492,6 +499,26 @@ assert(
     .querySelector(".cq-match-reason")
     .textContent.startsWith("Explore "),
 );
+// The funeral-home example leads with a short list, not BLS category prose.
+const funeral = api.state.careers.find((c) => c.socCode === "11-9171.00");
+assert(funeral);
+studentRun.previewCareerId = funeral.id;
+studentRun.phase = "careerDetail";
+api.renderByPhase();
+const entry = w.document.querySelector(".cq-entry-list");
+assert(entry);
+assert(entry.textContent.includes("Associate's degree"));
+assert(entry.textContent.includes("Less than 5 years"));
+assert(!entry.textContent.includes("category"));
+assert(
+  !w.document.getElementById("screen").textContent.includes("The route in"),
+);
+assert.equal(
+  entry.closest("section").querySelectorAll('[data-claim="entryRequirements"]')
+    .length,
+  1,
+);
+assert.equal(entry.closest("section").querySelector("details").open, false);
 // All 500 occupations are also swept with one reproducible shared-home/transit plan.
 const sweep = careers.map((c, i) =>
   simulate(c, { transport: "transit", policy: "random", seed: i + 101 }),

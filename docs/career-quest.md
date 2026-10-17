@@ -167,3 +167,10 @@ The post-questionnaire copy now leads with the next action. Interest reasons use
 Training explanations, financial rules, monthly bill breakdowns, scenario notes, and full source methods remain available in closed native details sections. A short game-estimate label stays visible. The budget compares monthly amounts left or needed after ordinary costs, with unexpected costs explicitly excluded. Citation links beside factual sections remain visible. Instructions and feedback were shortened; reflection grammar was corrected.
 
 DOM checks cover the exact Astronomers training case, short default training/budget screens, openable explanations, monthly budget labels, grammatical match reasons, and all existing 500 profile/training/play paths.
+
+
+## Clear entry requirements and borrowing rate — October 17, 2026 UTC
+
+Career profiles now use “Education and training” and a short list: typical education, previous work experience, and any listed training after starting. The list is rendered directly from the profile's evidence-backed BLS row. Broader-group coverage remains visible where applicable; full source wording stays in an expandable section, and the linked citation remains beside the heading. Licensing may add requirements. None in the training column is not presented as proof that the career requires no training or license.
+
+The model-3 borrowing assumption is reduced from 22% to **8% yearly interest**. This is a game setting, not a claim about current loan/credit-card rates. The calculation, rule text, debt summaries, and borrowing feedback use the same constant. Education debt remains at 5%; tax approximations are unchanged. Completed historical ledgers keep their recorded values; future settlements use 8%. New ledgers record their borrowing rate. The financial summary says “Other debt,” shows no rate warning on a zero balance, and uses plain cash/savings labels. Model checks were regenerated at the new rate.
