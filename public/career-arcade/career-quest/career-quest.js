@@ -191,6 +191,7 @@ async function init() {
     "scenarios-v3-workplace",
     "scenarios-v3-money",
     "scenarios-v3-core",
+    "career-finances",
   ];
   const data = await Promise.all(
     paths.map(async (p) => {
@@ -200,6 +201,7 @@ async function init() {
     }),
   );
   state.careers = data[0];
+  state.finances = data[9];
   state.interestSource = data[4];
   quizQuestions = data[5];
   state.lifeScenarios = { workplace: data[6], money: data[7], core: data[8] };
@@ -315,6 +317,7 @@ function startRun() {
   state.run = {
     version: 2,
     modelVersion: 3,
+    financeVersion: 1,
     interestAnswers: {},
     budgetAdjustments: {},
     flags: {},
@@ -952,7 +955,7 @@ function factCitation(c, claim) {
 }
 function careerSourcePanel(c) {
   const b = c.evidence.blsRecord;
-  return `<footer class="cq-profile-source"><details class="cq-more-info"><summary>Sources and data details</summary><p>Source record: <strong>${esc(c.canonicalTitle)}</strong> · O*NET-SOC ${esc(c.socCode)}. Source records compared ${esc(c.sourceReviewed)}.</p><a href="${esc(c.sourceUrl)}" target="_blank" rel="noopener noreferrer">[1] O*NET occupation profile: ${esc(c.canonicalTitle)} ↗</a><a href="${esc(c.laborSourceUrl)}" target="_blank" rel="noopener noreferrer">[2] BLS table 1.2: ${esc(b.title)} (${esc(b.socCode)}) ↗</a><p><strong>Statistics coverage: ${esc(b.scope)}.</strong> Education, pay, and outlook refer to ${esc(b.title)}, including other specialties where applicable. Wage year: 2025. Projection period: 2025–2035.</p>${c.handbookSourceUrl ? `<a href="${esc(c.handbookSourceUrl)}" target="_blank" rel="noopener noreferrer">[3] BLS Handbook: ${esc(c.handbookSourceTitle)} ↗</a><p>Detailed O*NET survey records are unavailable for this code. Duties, work environment, and qualities use the broader Handbook group.</p>` : ""}<details><summary>Evidence records and audit method</summary><p>Definition matched to occupation_data.csv. Core task IDs: ${esc(c.evidence.tasks.map((t) => t.taskId || t.section).join(", "))}. Work context uses item-specific 1–5 survey means; skills use importance ratings where available. Source years vary by survey item.</p><a href="./data/evidence-sources.json" target="_blank" rel="noopener noreferrer">Official dataset download links and SHA-256 checksums</a><p>Each claim group is matched to an official record. This comparison does not certify local licensing or employer eligibility.</p></details><small>Includes information from the <a href="https://www.onetcenter.org/database.html" target="_blank" rel="noopener noreferrer">O*NET® 31.0 Database</a> by USDOL/ETA, used under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>. O*NET® is a trademark of USDOL/ETA. Teach Arcade selected excerpts, grouped fields, and added game assumptions. USDOL/ETA has not approved, endorsed, or tested these changes.</small><small>${esc(c.simulationNote)}</small></details></footer>`;
+  return `<footer class="cq-profile-source"><details class="cq-more-info"><summary>Sources and data details</summary><p>Source record: <strong>${esc(c.canonicalTitle)}</strong> · O*NET-SOC ${esc(c.socCode)}. Source records compared ${esc(c.sourceReviewed)}.</p><a href="${esc(c.sourceUrl)}" target="_blank" rel="noopener noreferrer">[1] O*NET occupation profile: ${esc(c.canonicalTitle)} ↗</a><a href="${esc(c.laborSourceUrl)}" target="_blank" rel="noopener noreferrer">[2] BLS table 1.2: ${esc(b.title)} (${esc(b.socCode)}) ↗</a><p><strong>Statistics coverage: ${esc(b.scope)}.</strong> Education, pay, and outlook refer to ${esc(b.title)}, including other specialties where applicable. Wage year: 2025. Projection period: 2025–2035.</p>${c.handbookSourceUrl ? `<a href="${esc(c.handbookSourceUrl)}" target="_blank" rel="noopener noreferrer">[3] BLS Handbook: ${esc(c.handbookSourceTitle)} ↗</a><p>Detailed O*NET survey records are unavailable for this code. Duties, work environment, and qualities use the broader Handbook group.</p>` : ""}<details><summary>Evidence records and audit method</summary><p>Definition matched to occupation_data.csv. Core task IDs: ${esc(c.evidence.tasks.map((t) => t.taskId || t.section).join(", "))}. Work context uses item-specific 1–5 survey means; skills use importance ratings where available. Source years vary by survey item.</p><a href="./data/evidence-sources.json" target="_blank" rel="noopener noreferrer">Official dataset download links and SHA-256 checksums</a><p>Each claim group is matched to an official record. This comparison does not certify local licensing or employer eligibility.</p></details><small>Includes information from the <a href="https://www.onetcenter.org/database.html" target="_blank" rel="noopener noreferrer">O*NET® 31.0 Database</a> by USDOL/ETA, used under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>. O*NET® is a trademark of USDOL/ETA. Teach Arcade selected excerpts, grouped fields, and added game assumptions. USDOL/ETA has not approved, endorsed, or tested these changes.</small><details><summary>Game pay and training sources</summary>${financeSources(c)}</details><small>${esc(c.simulationNote)}</small></details></footer>`;
 }
 function educationAndTraining(c) {
   const b = c.evidence.blsRecord;
@@ -983,6 +986,9 @@ function renderCareerDetail() {
   });
   document.getElementById("choose-career").addEventListener("click", () => {
     state.run.careerId = c.id;
+    delete state.run.baseAnnualPay;
+    delete state.run.trainingCost;
+    state.run.educationKey = null;
     state.run.phase = "education";
     persistRun();
     renderByPhase();
@@ -1043,39 +1049,93 @@ function pathsForCareer(c) {
     flexible: ["cc", "college"],
   }[group];
 }
+function financeProfile(c = career()) {
+  return state.finances.profiles[c.id];
+}
+function trainingBudget(path) {
+  const t = state.finances.tuition;
+  if (path === "workforce") return 0;
+  if (path === "trade") return t.certificateExample; // One-year public certificate example, not occupation tuition.
+  if (path === "cc") return t.twoYearInDistrict * 2;
+  if (path === "college") return t.fourYearInState * 4;
+  // Professional tuition is not covered by the NCES graduate average.
+  if (career().typicalEducation === "Doctoral or professional degree")
+    return 120000;
+  return t.fourYearInState * 4 + t.graduateInState * 2;
+}
+function startingDebt(path = state.run.educationKey) {
+  if (!state.run.financeVersion) return educationPaths[path].debt;
+  return Math.round(
+    (state.run.trainingCost ?? trainingBudget(path)) *
+      (state.run.borrowingShare ?? 0.5),
+  );
+}
+function payExplanation(c = career()) {
+  const f = financeProfile(c);
+  if (f.method === "illustrative-missing-wage")
+    return "BLS has no wage figure for this group. This game uses a $30,000 example, not a researched salary.";
+  if (f.method === "hourly-25th-times-2080")
+    return `BLS lower-range hourly pay × 2,080 hours. Full-time work is a game assumption; hours in this career may vary greatly.`;
+  return `Based on BLS lower-range pay for ${f.title}. This is the 25th percentile, not a guaranteed starting offer.`;
+}
+function financeSources(c = career()) {
+  const f = financeProfile(c);
+  return `<p>${esc(payExplanation(c))}</p><p>Wage year: 2025. Coverage: ${esc(f.scope)}.</p><a href="${esc(f.method === "illustrative-missing-wage" ? state.finances.sourceUrl : f.sourceUrl)}" target="_blank" rel="noopener noreferrer">BLS wage source ↗</a> · <a href="${esc(state.finances.wageMethodUrl)}" target="_blank" rel="noopener noreferrer">How BLS wage ranges work ↗</a><p>Training budgets use example program lengths and NCES 2023–24 public tuition averages: two-year in-district $4,074/year; four-year in-state $9,016/year; graduate in-state $11,827/year. A certificate uses a one-year $10,868 example. Graduate examples include four undergraduate years plus two graduate years. Doctoral/professional programs instead use an editable $120,000 game budget; the graduate average excludes professional-practice doctorates. These are not prices for this occupation or a complete cost of attendance. Grants, living costs, school choice, and program length can change borrowing. Working years start after training.</p><a href="${esc(state.finances.tuition.sourceUrl)}" target="_blank" rel="noopener noreferrer">NCES tuition source ↗</a>`;
+}
 function renderEducationSelection() {
-  const c = career();
+  const c = career(),
+    modern = state.run.financeVersion;
   setScreen(
-    `<div class="cq-card"><p class="cq-eyebrow">PLAN · TRAINING</p><h2>Plan your training</h2><p class="cq-small">Career: ${esc(c.title)}</p><p>Pick a path. Your five working years start after training.</p><div class="cq-option-list cq-paths">${pathsForCareer(
+    `<div class="cq-card"><p class="cq-eyebrow">PLAN · TRAINING</p><h2>Plan your training</h2><p class="cq-small">Career: ${esc(c.title)}</p><p>Pick a path. Your five working years start after training.</p>${modern ? `<p>Typical education: ${esc(c.typicalEducation)}. <a href="${esc(c.laborSourceUrl)}" target="_blank" rel="noopener noreferrer">See requirements ↗</a></p><label for="borrowing-share">How much will you borrow?<select id="borrowing-share"><option value="0">None</option><option value="0.5">Half</option><option value="1">All</option></select></label>` : ""}<div class="cq-option-list cq-paths">${pathsForCareer(
       c,
     )
-      .map((k) => {
-        const e = educationPaths[k];
-        return `<button class="cq-option" data-path="${k}"><strong>${e.label}</strong>Student debt: ${money(e.debt)}<small>Yearly pay before taxes: ${money(startingSalary(k))}</small></button>`;
-      })
+      .map(
+        (k) =>
+          `<button class="cq-option" data-path="${k}"><strong>${educationPaths[k].label}</strong>Student debt: <span data-path-debt="${k}">${money(modern ? trainingBudget(k) * (state.run.borrowingShare ?? 0.5) : educationPaths[k].debt)}</span><small>Yearly pay before taxes: ${money(startingSalary(k))}</small></button>`,
+      )
       .join(
         "",
-      )}</div><p class="cq-small">Debt and pay are game estimates.</p><details class="cq-more-info"><summary>About training and costs</summary><p>These are example costs, not actual tuition or starting pay. Training happens before the five working years. Real careers may require specific degrees, practice, exams, or licenses. Check the career sources for requirements.</p></details><button class="btn quiet" id="back-careers">Back to careers</button></div>`,
+      )}</div><p class="cq-small">${modern ? "Pay uses career wage data. Training costs are examples." : "Debt and pay are game estimates."}</p>${modern && financeProfile(c).method !== "annual-25th-percentile" ? `<p class="cq-small">${esc(payExplanation(c))}</p>` : ""}<details class="cq-more-info"><summary>About training and costs</summary><p>Real careers may require specific degrees, practice, exams, or licenses. Check the career sources for requirements.</p>${modern ? financeSources(c) : "<p>These are example costs, not actual tuition or starting pay.</p>"}</details><button class="btn quiet" id="back-careers">Back to careers</button></div>`,
     "plan",
   );
-  document.getElementById("back-careers").addEventListener("click", () => {
+  const borrowing = document.getElementById("borrowing-share");
+  if (borrowing) {
+    borrowing.value = String(state.run.borrowingShare ?? 0.5);
+    borrowing.onchange = () => {
+      state.run.borrowingShare = Number(borrowing.value);
+      screen()
+        .querySelectorAll("[data-path-debt]")
+        .forEach(
+          (el) =>
+            (el.textContent = money(
+              trainingBudget(el.dataset.pathDebt) * state.run.borrowingShare,
+            )),
+        );
+      persistRun();
+    };
+  }
+  document.getElementById("back-careers").onclick = () => {
     state.run.phase = "career";
     persistRun();
     renderByPhase();
-  });
+  };
   screen()
     .querySelectorAll("[data-path]")
-    .forEach((btn) =>
-      btn.addEventListener("click", () => {
-        state.run.educationKey = btn.dataset.path;
-        state.run.phase = "budget";
-        persistRun();
-        renderByPhase();
-      }),
+    .forEach(
+      (btn) =>
+        (btn.onclick = () => {
+          state.run.educationKey = btn.dataset.path;
+          if (modern) state.run.trainingCost = trainingBudget(btn.dataset.path);
+          state.run.phase = "budget";
+          persistRun();
+          renderByPhase();
+        }),
     );
 }
 function startingSalary(path = state.run.educationKey) {
   const c = career();
+  if (state.run.financeVersion)
+    return state.run.baseAnnualPay ?? financeProfile(c).annualPay;
   return Math.round(
     ((c.salaryStartRange[0] + c.salaryStartRange[1]) / 2) *
       educationPaths[path].salaryMod,
@@ -1209,10 +1269,23 @@ function renderBudget() {
   if (!state.run.modelVersion) return renderLegacyBudget();
   const r = state.run;
   setScreen(
-    `<div class="cq-card cq-budget-planner"><p class="cq-eyebrow">PLAN / BUILD YOUR EVERYDAY LIFE</p><h2>Build your budget</h2><p>Start with $2,000 cash and ${money(educationPaths[r.educationKey].debt)} in student debt. Choose how you will live.</p><div class="cq-budget-inputs"><label for="transport-plan">Getting to work<select id="transport-plan"><option value="car">Car: payment/fuel + insurance</option><option value="transit">Transit: lower cost, longer commute</option><option value="carpool">Carpool: shared cost, less flexibility</option></select></label><label for="care-plan">Family costs<select id="care-plan"><option value="none">No regular family contribution</option><option value="family">Contribute $300/month to family</option><option value="dependent">Dependent care/support: $750/month</option></select></label><label for="retirement-plan">Retirement savings<select id="retirement-plan"><option value="0">0% · more cash now</option><option value="0.04" selected>4% · save some for later</option><option value="0.08">8% · save more for later</option></select></label></div><div id="budget-comparison" class="cq-budget-comparison"></div><p class="cq-small">These are game estimates. Real costs and pay vary.</p><details class="cq-more-info"><summary>How the money works</summary><p>Illustrative costs, not local price estimates. Bills rise 3.5% per year; base pay rises 2%. Withholding is a classroom approximation, not a tax calculation. Choose retirement contributions of 0%, 4%, or 8% of gross pay; these are separate from spending cash. Education debt uses 5% annual interest and a ten-year payment schedule; other debt uses 8% annual game interest and a scheduled payment of 30% of the interest-adjusted balance (at least $360/year, capped at the balance). The model caps new consumer credit at a $12,000 balance, excluding later interest. Gaps beyond available credit remain visible as unpaid shortfalls; balances are not forgiven. This is a classroom credit rule, not a lending offer. No investment returns are assumed. Working years begin after training.</p></details><button class="btn quiet" id="back-education">← Back to training</button></div>`,
+    `<div class="cq-card cq-budget-planner"><p class="cq-eyebrow">PLAN / BUILD YOUR EVERYDAY LIFE</p><h2>Build your budget</h2><p>Start with $2,000 cash and <span id="starting-debt">${money(startingDebt())}</span> in student debt. Choose how you will live.</p>${r.financeVersion ? `<details class="cq-more-info"><summary>Try different pay or training costs</summary><div class="cq-budget-inputs"><label for="training-cost">Training budget ($)<input id="training-cost" type="number" min="0" max="1000000" step="1" value="${r.trainingCost ?? trainingBudget(r.educationKey)}"></label><label for="annual-pay">Yearly pay before taxes ($)<input id="annual-pay" type="number" min="0" max="1000000" step="1" value="${startingSalary()}"></label></div><p class="cq-small">Borrowing ${Math.round((r.borrowingShare ?? 0.5) * 100)}% of training costs. Edit these game amounts to compare plans.</p></details><details class="cq-more-info"><summary>Pay and training sources</summary>${financeSources()}</details>` : ""}<div class="cq-budget-inputs"><label for="transport-plan">Getting to work<select id="transport-plan"><option value="car">Car: payment/fuel + insurance</option><option value="transit">Transit: lower cost, longer commute</option><option value="carpool">Carpool: shared cost, less flexibility</option></select></label><label for="care-plan">Family costs<select id="care-plan"><option value="none">No regular family contribution</option><option value="family">Contribute $300/month to family</option><option value="dependent">Dependent care/support: $750/month</option></select></label><label for="retirement-plan">Retirement savings<select id="retirement-plan"><option value="0">0% · more cash now</option><option value="0.04" selected>4% · save some for later</option><option value="0.08">8% · save more for later</option></select></label></div><div id="budget-comparison" class="cq-budget-comparison"></div><p class="cq-small">These are game estimates. Real costs and pay vary.</p><details class="cq-more-info"><summary>How the money works</summary><p>Illustrative costs, not local price estimates. Bills rise 3.5% per year; base pay rises 2%. Withholding is a classroom approximation, not a tax calculation. Choose retirement contributions of 0%, 4%, or 8% of gross pay; these are separate from spending cash. Education debt uses 5% annual interest and a ten-year payment schedule; other debt uses 8% annual game interest and a scheduled payment of 30% of the interest-adjusted balance (at least $360/year, capped at the balance). The model caps new consumer credit at a $12,000 balance, excluding later interest. Gaps beyond available credit remain visible as unpaid shortfalls; balances are not forgiven. This is a classroom credit rule, not a lending offer. No investment returns are assumed. Working years begin after training.</p></details><button class="btn quiet" id="back-education">← Back to training</button></div>`,
     "plan",
   );
   function draw() {
+    if (r.financeVersion) {
+      const cost = document.getElementById("training-cost"),
+        pay = document.getElementById("annual-pay");
+      for (const input of [cost, pay]) {
+        input.value = String(
+          Math.round(Math.min(1000000, Math.max(0, Number(input.value) || 0))),
+        );
+      }
+      r.trainingCost = Number(cost.value);
+      r.baseAnnualPay = Number(pay.value);
+      document.getElementById("starting-debt").textContent =
+        money(startingDebt());
+    }
     r.transport = document.getElementById("transport-plan").value;
     r.care = document.getElementById("care-plan").value;
     r.retirementRate = Number(document.getElementById("retirement-plan").value);
@@ -1223,7 +1296,7 @@ function renderBudget() {
           gross = startingSalary(),
           tax = estimatedWithholding(gross),
           retirement = Math.round(gross * (r.retirementRate ?? 0.04)),
-          payment = educationPayment(educationPaths[r.educationKey].debt),
+          payment = educationPayment(startingDebt()),
           margin = gross - tax - retirement - annual - payment;
         return `<article class="cq-budget-choice"><p class="cq-eyebrow">${h === "shared" ? "SHARED HOME" : "YOUR OWN PLACE"}</p><h3>${money(livingTotal(parts))}<small> / month in bills</small></h3><details class="cq-more-info"><summary>See monthly bills</summary><dl>${Object.entries(
           parts,
@@ -1244,8 +1317,16 @@ function renderBudget() {
         (btn) =>
           (btn.onclick = () => {
             r.housing = btn.dataset.housing;
-            r.educationDebt = educationPaths[r.educationKey].debt;
+            r.educationDebt = startingDebt();
             r.initialDebt = r.educationDebt;
+            if (r.financeVersion)
+              r.financeBasis = {
+                ...financeProfile(),
+                wageYear: state.finances.wageYear,
+                chosenAnnualPay: startingSalary(),
+                trainingCost: r.trainingCost,
+                borrowingShare: r.borrowingShare ?? 0.5,
+              };
             r.consumerDebt = 0;
             syncDebts();
             r.stats.stress = clamp(
@@ -1269,6 +1350,14 @@ function renderBudget() {
             renderByPhase();
           }),
       );
+  }
+  for (const id of ["training-cost", "annual-pay"]) {
+    const input = document.getElementById(id);
+    if (input)
+      input.onchange = () => {
+        draw();
+        persistRun();
+      };
   }
   for (const [id, key] of [
     ["transport-plan", "transport"],

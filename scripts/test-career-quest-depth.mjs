@@ -19,6 +19,32 @@ for (const k of "RIASEC")
   assert.equal(questions.filter((q) => q.type === k).length, 6);
 for (const c of careers)
   assert.equal(Object.keys(interests.profiles[c.socCode]).length, 6);
+const financeData = JSON.parse(
+  fs.readFileSync(root + "data/career-finances.json"),
+);
+assert.equal(Object.keys(financeData.profiles).length, 500);
+assert.equal(
+  Object.values(financeData.profiles).filter(
+    (f) => f.method === "illustrative-missing-wage",
+  ).length,
+  1,
+);
+assert.equal(
+  Object.values(financeData.profiles).filter(
+    (f) => f.method === "hourly-25th-times-2080",
+  ).length,
+  4,
+);
+for (const c of careers) {
+  const f = financeData.profiles[c.id];
+  assert.equal(f.socCode, c.evidence.blsRecord.socCode);
+  assert.equal(f.scope, c.evidence.blsRecord.scope);
+  assert(f.annualPay > 0 && Number.isFinite(f.annualPay));
+  if (f.method === "annual-25th-percentile")
+    assert.equal(f.annualPay, f.publishedAnnual25);
+  if (f.method === "hourly-25th-times-2080")
+    assert.equal(f.annualPay, Math.round(f.publishedHourly25 * 2080));
+}
 const dom = new JSDOM(fs.readFileSync(root + "index.html", "utf8"), {
     url: "https://teacharcade.com/career-arcade/career-quest/",
     runScripts: "outside-only",
@@ -35,7 +61,7 @@ w.fetch = async (url) => ({
 });
 w.eval(
   fs.readFileSync(root + "career-quest.js", "utf8") +
-    "\nwindow.cq={state,interestProfile,hasInterestSignal,affinityScore,applyChoice,settleYear,pickScenario,snapshot,monthlyBreakdown,yearGross,estimatedWithholding,educationPayment,renderByPhase,financialSnapshot};",
+    "\nwindow.cq={state,interestProfile,hasInterestSignal,affinityScore,applyChoice,settleYear,pickScenario,snapshot,monthlyBreakdown,yearGross,estimatedWithholding,educationPayment,renderByPhase,financialSnapshot,startingSalary,startingDebt,trainingBudget,financeProfile};",
 );
 await new Promise((r) => setTimeout(r, 0));
 w.document.getElementById("start-run").click();
@@ -207,14 +233,7 @@ function simulate(
   r.transport = transport;
   r.care = care;
   r.settings.costOfLiving = region;
-  const costs = {
-    workforce: 1000,
-    trade: 9000,
-    cc: 15000,
-    college: 36000,
-    grad: 62000,
-  };
-  r.educationDebt = costs[r.educationKey];
+  r.educationDebt = api.startingDebt();
   r.initialDebt = r.educationDebt;
   r.consumerDebt = 0;
   r.stats.debt = r.educationDebt;
@@ -354,12 +373,7 @@ api.applyChoice(
   },
 );
 assert.equal(api.monthlyBreakdown().rent, before + 120);
-assert.equal(
-  api.yearGross(),
-  Math.round(
-    ((nurse.salaryStartRange[0] + nurse.salaryStartRange[1]) / 2) * 1.02,
-  ) - 500,
-);
+assert.equal(api.yearGross(), api.financeProfile(nurse).annualPay - 500);
 r.yearStart = api.snapshot(r.stats);
 api.settleYear();
 assert.equal(r.yearLedgers[0].consumerInterest, 80);
@@ -499,6 +513,51 @@ assert(
     .querySelector(".cq-match-reason")
     .textContent.startsWith("Explore "),
 );
+// Editable assumptions must change the actual five-year calculations.
+// Return to the budget after the preceding career-results checks.
+studentRun.phase = "budget";
+api.renderByPhase();
+function changeAmount(id, amount) {
+  const input = w.document.getElementById(id);
+  input.value = amount;
+  input.dispatchEvent(new w.Event("change", { bubbles: true }));
+}
+changeAmount("training-cost", "80000");
+changeAmount("annual-pay", "60000");
+assert.equal(api.startingDebt(), 40000);
+assert.equal(api.yearGross(1), 60000);
+assert(
+  w.document.getElementById("starting-debt").textContent.includes("40,000"),
+);
+w.document.querySelector('[data-housing="shared"]').click();
+assert.equal(studentRun.initialDebt, 40000);
+assert.equal(studentRun.financeBasis.chosenAnnualPay, 60000);
+api.settleYear();
+assert.equal(studentRun.yearLedgers[0].gross, 60000);
+assert.equal(studentRun.yearLedgers[0].educationInterest, 2000);
+studentRun.year = 2;
+assert.equal(api.yearGross(), 61200);
+// Choosing another career must discard the previous salary/cost overrides.
+studentRun.previewCareerId = nurse.id;
+studentRun.phase = "careerDetail";
+api.renderByPhase();
+w.document.getElementById("choose-career").click();
+assert.equal(api.startingSalary("cc"), api.financeProfile(nurse).annualPay);
+assert.equal(
+  api.startingSalary("college"),
+  api.financeProfile(nurse).annualPay,
+);
+assert.equal(studentRun.baseAnnualPay, undefined);
+const funding = w.document.getElementById("borrowing-share");
+studentRun.year = 1;
+studentRun.yearLedgers = [];
+funding.value = "0";
+funding.dispatchEvent(new w.Event("change", { bubbles: true }));
+w.document.querySelector('[data-path="cc"]').click();
+assert.equal(api.startingDebt(), 0);
+w.document.querySelector('[data-housing="shared"]').click();
+api.settleYear();
+assert.equal(studentRun.yearLedgers[0].educationInterest, 0);
 // The funeral-home example leads with a short list, not BLS category prose.
 const funeral = api.state.careers.find((c) => c.socCode === "11-9171.00");
 assert(funeral);

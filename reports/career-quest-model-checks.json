@@ -1,9 +1,9 @@
 {
   "sweepSummary": {
     "runs": 500,
-    "withNewBorrowing": 167,
-    "withoutNewBorrowing": 333,
-    "unpaidShortfall": 131
+    "withNewBorrowing": 83,
+    "withoutNewBorrowing": 417,
+    "unpaidShortfall": 45
   },
   "method": "Deterministic fictional-model checks; not forecasts or validation of questionnaire accuracy",
   "matching": [
@@ -76,12 +76,12 @@
       "transport": "car",
       "care": "none",
       "policy": 0,
-      "cash": -4350,
-      "educationDebt": 8595,
-      "consumerDebt": 12000,
-      "retirement": 8641,
-      "netWorth": -16304,
-      "newBorrowing": 16919
+      "cash": 127817,
+      "educationDebt": 2332,
+      "consumerDebt": 0,
+      "retirement": 16613,
+      "netWorth": 142098,
+      "newBorrowing": 0
     },
     {
       "career": "Registered Nurses",
@@ -90,12 +90,12 @@
       "transport": "car",
       "care": "none",
       "policy": 0,
-      "cash": -47885,
-      "educationDebt": 8595,
-      "consumerDebt": 12000,
-      "retirement": 8729,
-      "netWorth": -59751,
-      "newBorrowing": 23293
+      "cash": 85213,
+      "educationDebt": 1117,
+      "consumerDebt": 0,
+      "retirement": 16701,
+      "netWorth": 100797,
+      "newBorrowing": 0
     },
     {
       "career": "Registered Nurses",
@@ -104,12 +104,12 @@
       "transport": "car",
       "care": "none",
       "policy": 1,
-      "cash": 0,
-      "educationDebt": 8595,
-      "consumerDebt": 8696,
-      "retirement": 8725,
-      "netWorth": -8566,
-      "newBorrowing": 12098
+      "cash": 134704,
+      "educationDebt": 2332,
+      "consumerDebt": 0,
+      "retirement": 16697,
+      "netWorth": 149069,
+      "newBorrowing": 0
     },
     {
       "career": "Registered Nurses",
@@ -118,12 +118,12 @@
       "transport": "car",
       "care": "none",
       "policy": 1,
-      "cash": -45707,
-      "educationDebt": 8595,
-      "consumerDebt": 12000,
-      "retirement": 8785,
-      "netWorth": -57517,
-      "newBorrowing": 21479
+      "cash": 88149,
+      "educationDebt": 2332,
+      "consumerDebt": 318,
+      "retirement": 16757,
+      "netWorth": 102256,
+      "newBorrowing": 0
     },
     {
       "career": "Registered Nurses",
@@ -132,12 +132,12 @@
       "transport": "car",
       "care": "none",
       "policy": 2,
-      "cash": -6006,
-      "educationDebt": 8595,
-      "consumerDebt": 12000,
-      "retirement": 8765,
-      "netWorth": -17836,
-      "newBorrowing": 14843
+      "cash": 126901,
+      "educationDebt": 2332,
+      "consumerDebt": 1259,
+      "retirement": 16737,
+      "netWorth": 140047,
+      "newBorrowing": 0
     },
     {
       "career": "Registered Nurses",
@@ -146,12 +146,12 @@
       "transport": "car",
       "care": "none",
       "policy": 2,
-      "cash": -50694,
-      "educationDebt": 8595,
-      "consumerDebt": 12000,
-      "retirement": 8557,
-      "netWorth": -62732,
-      "newBorrowing": 22240
+      "cash": 84176,
+      "educationDebt": 2332,
+      "consumerDebt": 783,
+      "retirement": 16529,
+      "netWorth": 97590,
+      "newBorrowing": 0
     },
     {
       "career": "Registered Nurses",
@@ -160,12 +160,12 @@
       "transport": "car",
       "care": "none",
       "policy": "random",
-      "cash": 0,
-      "educationDebt": 8595,
-      "consumerDebt": 11122,
-      "retirement": 8869,
-      "netWorth": -10848,
-      "newBorrowing": 12274
+      "cash": 132807,
+      "educationDebt": 2332,
+      "consumerDebt": 1134,
+      "retirement": 16841,
+      "netWorth": 146182,
+      "newBorrowing": 0
     },
     {
       "career": "Registered Nurses",
@@ -174,12 +174,12 @@
       "transport": "car",
       "care": "none",
       "policy": "random",
-      "cash": -53954,
-      "educationDebt": 8595,
-      "consumerDebt": 12000,
-      "retirement": 8701,
-      "netWorth": -65848,
-      "newBorrowing": 23005
+      "cash": 80119,
+      "educationDebt": 2332,
+      "consumerDebt": 0,
+      "retirement": 16673,
+      "netWorth": 94460,
+      "newBorrowing": 0
     },
     {
       "career": "Electrician",
@@ -188,11 +188,11 @@
       "transport": "car",
       "care": "none",
       "policy": 0,
-      "cash": 9906,
-      "educationDebt": 5154,
+      "cash": 19033,
+      "educationDebt": 3113,
       "consumerDebt": 0,
-      "retirement": 10296,
-      "netWorth": 15048,
+      "retirement": 10697,
+      "netWorth": 26617,
       "newBorrowing": 0
     },
     {
@@ -202,12 +202,12 @@
       "transport": "car",
       "care": "none",
       "policy": 0,
-      "cash": -22831,
-      "educationDebt": 5154,
+      "cash": -13126,
+      "educationDebt": 3113,
       "consumerDebt": 12000,
-      "retirement": 10036,
-      "netWorth": -29949,
-      "newBorrowing": 22151
+      "retirement": 10437,
+      "netWorth": -17802,
+      "newBorrowing": 20389
     },
     {
       "career": "Electrician",
@@ -216,11 +216,11 @@
       "transport": "car",
       "care": "none",
       "policy": 1,
-      "cash": 13575,
-      "educationDebt": 5154,
+      "cash": 22877,
+      "educationDebt": 3113,
       "consumerDebt": 628,
-      "retirement": 9888,
-      "netWorth": 17681,
+      "retirement": 10289,
+      "netWorth": 29425,
       "newBorrowing": 0
     },
     {
@@ -230,12 +230,12 @@
       "transport": "car",
       "care": "none",
       "policy": 1,
-      "cash": -21220,
-      "educationDebt": 5154,
+      "cash": -11009,
+      "educationDebt": 3113,
       "consumerDebt": 12000,
-      "retirement": 9780,
-      "netWorth": -28594,
-      "newBorrowing": 20694
+      "retirement": 10181,
+      "netWorth": -15941,
+      "newBorrowing": 18784
     },
     {
       "career": "Electrician",
@@ -244,11 +244,11 @@
       "transport": "car",
       "care": "none",
       "policy": 2,
-      "cash": 12719,
-      "educationDebt": 5154,
+      "cash": 22185,
+      "educationDebt": 3113,
       "consumerDebt": 0,
-      "retirement": 9820,
-      "netWorth": 17385,
+      "retirement": 10221,
+      "netWorth": 29293,
       "newBorrowing": 0
     },
     {
@@ -258,12 +258,12 @@
       "transport": "car",
       "care": "none",
       "policy": 2,
-      "cash": -25224,
-      "educationDebt": 5154,
+      "cash": -15361,
+      "educationDebt": 3113,
       "consumerDebt": 12000,
-      "retirement": 9900,
-      "netWorth": -32478,
-      "newBorrowing": 21002
+      "retirement": 10301,
+      "netWorth": -20173,
+      "newBorrowing": 18766
     },
     {
       "career": "Electrician",
@@ -272,11 +272,11 @@
       "transport": "car",
       "care": "none",
       "policy": "random",
-      "cash": 9707,
-      "educationDebt": 5154,
+      "cash": 19296,
+      "educationDebt": 3113,
       "consumerDebt": 450,
-      "retirement": 9688,
-      "netWorth": 13791,
+      "retirement": 10089,
+      "netWorth": 25822,
       "newBorrowing": 0
     },
     {
@@ -286,12 +286,12 @@
       "transport": "car",
       "care": "none",
       "policy": "random",
-      "cash": -28977,
-      "educationDebt": 5154,
+      "cash": -19221,
+      "educationDebt": 3113,
       "consumerDebt": 12000,
-      "retirement": 10088,
-      "netWorth": -36043,
-      "newBorrowing": 20342
+      "retirement": 10489,
+      "netWorth": -23845,
+      "newBorrowing": 18896
     },
     {
       "career": "Software Developer",
@@ -300,12 +300,12 @@
       "transport": "car",
       "care": "none",
       "policy": 0,
-      "cash": -26491,
-      "educationDebt": 20629,
-      "consumerDebt": 12000,
-      "retirement": 8714,
-      "netWorth": -50406,
-      "newBorrowing": 20110
+      "cash": 192222,
+      "educationDebt": 10333,
+      "consumerDebt": 0,
+      "retirement": 21580,
+      "netWorth": 203469,
+      "newBorrowing": 0
     },
     {
       "career": "Software Developer",
@@ -314,12 +314,12 @@
       "transport": "car",
       "care": "none",
       "policy": 0,
-      "cash": -55443,
-      "educationDebt": 20629,
-      "consumerDebt": 12000,
-      "retirement": 9750,
-      "netWorth": -78322,
-      "newBorrowing": 23712
+      "cash": 162357,
+      "educationDebt": 10333,
+      "consumerDebt": 0,
+      "retirement": 22616,
+      "netWorth": 174640,
+      "newBorrowing": 0
     },
     {
       "career": "Software Developer",
@@ -328,12 +328,12 @@
       "transport": "car",
       "care": "none",
       "policy": 1,
-      "cash": -13766,
-      "educationDebt": 20629,
-      "consumerDebt": 12000,
-      "retirement": 8962,
-      "netWorth": -37433,
-      "newBorrowing": 19128
+      "cash": 204158,
+      "educationDebt": 10333,
+      "consumerDebt": 0,
+      "retirement": 21828,
+      "netWorth": 215653,
+      "newBorrowing": 0
     },
     {
       "career": "Software Developer",
@@ -342,12 +342,12 @@
       "transport": "car",
       "care": "none",
       "policy": 1,
-      "cash": -57649,
-      "educationDebt": 20629,
-      "consumerDebt": 12000,
-      "retirement": 9046,
-      "netWorth": -81232,
-      "newBorrowing": 22295
+      "cash": 161352,
+      "educationDebt": 10333,
+      "consumerDebt": 321,
+      "retirement": 21912,
+      "netWorth": 172610,
+      "newBorrowing": 0
     },
     {
       "career": "Software Developer",
@@ -356,12 +356,12 @@
       "transport": "car",
       "care": "none",
       "policy": 2,
-      "cash": -12452,
-      "educationDebt": 20629,
-      "consumerDebt": 12000,
-      "retirement": 9082,
-      "netWorth": -35999,
-      "newBorrowing": 17322
+      "cash": 206518,
+      "educationDebt": 10333,
+      "consumerDebt": 1875,
+      "retirement": 21948,
+      "netWorth": 216258,
+      "newBorrowing": 0
     },
     {
       "career": "Software Developer",
@@ -370,12 +370,12 @@
       "transport": "car",
       "care": "none",
       "policy": 2,
-      "cash": -54818,
-      "educationDebt": 20629,
-      "consumerDebt": 12000,
-      "retirement": 9002,
-      "netWorth": -78445,
-      "newBorrowing": 22350
+      "cash": 164319,
+      "educationDebt": 10333,
+      "consumerDebt": 379,
+      "retirement": 21868,
+      "netWorth": 175475,
+      "newBorrowing": 0
     },
     {
       "career": "Software Developer",
@@ -384,12 +384,12 @@
       "transport": "car",
       "care": "none",
       "policy": "random",
-      "cash": -12515,
-      "educationDebt": 20629,
-      "consumerDebt": 12000,
-      "retirement": 9034,
-      "netWorth": -36110,
-      "newBorrowing": 19332
+      "cash": 205145,
+      "educationDebt": 10333,
+      "consumerDebt": 0,
+      "retirement": 21900,
+      "netWorth": 216712,
+      "newBorrowing": 0
     },
     {
       "career": "Software Developer",
@@ -398,12 +398,12 @@
       "transport": "car",
       "care": "none",
       "policy": "random",
-      "cash": -58224,
-      "educationDebt": 20629,
-      "consumerDebt": 12000,
-      "retirement": 9010,
-      "netWorth": -81843,
-      "newBorrowing": 23230
+      "cash": 161990,
+      "educationDebt": 10333,
+      "consumerDebt": 1361,
+      "retirement": 21876,
+      "netWorth": 172172,
+      "newBorrowing": 0
     },
     {
       "career": "Cooks, Restaurant",
@@ -412,25 +412,25 @@
       "transport": "car",
       "care": "none",
       "policy": 0,
-      "cash": -70581,
-      "educationDebt": 574,
-      "consumerDebt": 12000,
-      "retirement": 5062,
-      "netWorth": -78093,
-      "newBorrowing": 23518
-    },
-    {
-      "career": "Cooks, Restaurant",
-      "region": "average",
-      "housing": "solo",
-      "transport": "car",
-      "care": "none",
-      "policy": 0,
-      "cash": -117820,
+      "cash": -34391,
       "educationDebt": 0,
       "consumerDebt": 12000,
-      "retirement": 5022,
-      "netWorth": -124798,
+      "retirement": 6896,
+      "netWorth": -39495,
+      "newBorrowing": 21846
+    },
+    {
+      "career": "Cooks, Restaurant",
+      "region": "average",
+      "housing": "solo",
+      "transport": "car",
+      "care": "none",
+      "policy": 0,
+      "cash": -81800,
+      "educationDebt": 0,
+      "consumerDebt": 12000,
+      "retirement": 6856,
+      "netWorth": -86944,
       "newBorrowing": 23712
     },
     {
@@ -440,12 +440,12 @@
       "transport": "car",
       "care": "none",
       "policy": 1,
-      "cash": -57659,
-      "educationDebt": 574,
+      "cash": -21171,
+      "educationDebt": 0,
       "consumerDebt": 12000,
-      "retirement": 5210,
-      "netWorth": -65023,
-      "newBorrowing": 23292
+      "retirement": 7044,
+      "netWorth": -26127,
+      "newBorrowing": 20706
     },
     {
       "career": "Cooks, Restaurant",
@@ -454,12 +454,12 @@
       "transport": "car",
       "care": "none",
       "policy": 1,
-      "cash": -107623,
-      "educationDebt": 574,
+      "cash": -71982,
+      "educationDebt": 0,
       "consumerDebt": 12000,
-      "retirement": 5210,
-      "netWorth": -114987,
-      "newBorrowing": 23712
+      "retirement": 7044,
+      "netWorth": -76938,
+      "newBorrowing": 23525
     },
     {
       "career": "Cooks, Restaurant",
@@ -468,12 +468,12 @@
       "transport": "car",
       "care": "none",
       "policy": 2,
-      "cash": -62478,
-      "educationDebt": 574,
+      "cash": -26127,
+      "educationDebt": 0,
       "consumerDebt": 12000,
-      "retirement": 5210,
-      "netWorth": -69842,
-      "newBorrowing": 23199
+      "retirement": 7044,
+      "netWorth": -31083,
+      "newBorrowing": 19937
     },
     {
       "career": "Cooks, Restaurant",
@@ -482,12 +482,12 @@
       "transport": "car",
       "care": "none",
       "policy": 2,
-      "cash": -106163,
-      "educationDebt": 574,
+      "cash": -70474,
+      "educationDebt": 0,
       "consumerDebt": 12000,
-      "retirement": 5226,
-      "netWorth": -113511,
-      "newBorrowing": 23712
+      "retirement": 7060,
+      "netWorth": -75414,
+      "newBorrowing": 23564
     },
     {
       "career": "Cooks, Restaurant",
@@ -496,12 +496,12 @@
       "transport": "car",
       "care": "none",
       "policy": "random",
-      "cash": -62528,
-      "educationDebt": 574,
+      "cash": -26339,
+      "educationDebt": 0,
       "consumerDebt": 12000,
-      "retirement": 5246,
-      "netWorth": -69856,
-      "newBorrowing": 23524
+      "retirement": 7080,
+      "netWorth": -31259,
+      "newBorrowing": 21851
     },
     {
       "career": "Cooks, Restaurant",
@@ -510,11 +510,11 @@
       "transport": "car",
       "care": "none",
       "policy": "random",
-      "cash": -108479,
-      "educationDebt": 574,
+      "cash": -72838,
+      "educationDebt": 0,
       "consumerDebt": 12000,
-      "retirement": 5210,
-      "netWorth": -115843,
+      "retirement": 7044,
+      "netWorth": -77794,
       "newBorrowing": 23262
     },
     {
@@ -524,12 +524,12 @@
       "transport": "car",
       "care": "none",
       "policy": 0,
-      "cash": -67070,
-      "educationDebt": 5154,
+      "cash": -50181,
+      "educationDebt": 3113,
       "consumerDebt": 12000,
-      "retirement": 5508,
-      "netWorth": -78716,
-      "newBorrowing": 23712
+      "retirement": 6262,
+      "netWorth": -59032,
+      "newBorrowing": 22989
     },
     {
       "career": "Cosmetologist",
@@ -538,11 +538,11 @@
       "transport": "car",
       "care": "none",
       "policy": 0,
-      "cash": -105403,
-      "educationDebt": 5154,
+      "cash": -88751,
+      "educationDebt": 3113,
       "consumerDebt": 12000,
-      "retirement": 5608,
-      "netWorth": -116949,
+      "retirement": 6362,
+      "netWorth": -97502,
       "newBorrowing": 23712
     },
     {
@@ -552,12 +552,12 @@
       "transport": "car",
       "care": "none",
       "policy": 1,
-      "cash": -65489,
-      "educationDebt": 5154,
+      "cash": -48580,
+      "educationDebt": 3113,
       "consumerDebt": 12000,
-      "retirement": 5444,
-      "netWorth": -77199,
-      "newBorrowing": 23628
+      "retirement": 6198,
+      "netWorth": -57495,
+      "newBorrowing": 22842
     },
     {
       "career": "Cosmetologist",
@@ -566,11 +566,11 @@
       "transport": "car",
       "care": "none",
       "policy": 1,
-      "cash": -102626,
-      "educationDebt": 5154,
+      "cash": -85974,
+      "educationDebt": 3113,
       "consumerDebt": 12000,
-      "retirement": 5600,
-      "netWorth": -114180,
+      "retirement": 6354,
+      "netWorth": -94733,
       "newBorrowing": 23712
     },
     {
@@ -580,12 +580,12 @@
       "transport": "car",
       "care": "none",
       "policy": 2,
-      "cash": -65043,
-      "educationDebt": 5154,
+      "cash": -48217,
+      "educationDebt": 3113,
       "consumerDebt": 12000,
-      "retirement": 5496,
-      "netWorth": -76701,
-      "newBorrowing": 22298
+      "retirement": 6250,
+      "netWorth": -57080,
+      "newBorrowing": 20722
     },
     {
       "career": "Cosmetologist",
@@ -594,11 +594,11 @@
       "transport": "car",
       "care": "none",
       "policy": 2,
-      "cash": -106963,
-      "educationDebt": 5154,
+      "cash": -90311,
+      "educationDebt": 3113,
       "consumerDebt": 12000,
-      "retirement": 5484,
-      "netWorth": -118633,
+      "retirement": 6238,
+      "netWorth": -99186,
       "newBorrowing": 23262
     },
     {
@@ -608,12 +608,12 @@
       "transport": "car",
       "care": "none",
       "policy": "random",
-      "cash": -56321,
-      "educationDebt": 5154,
+      "cash": -39410,
+      "educationDebt": 3113,
       "consumerDebt": 12000,
-      "retirement": 5536,
-      "netWorth": -67939,
-      "newBorrowing": 22376
+      "retirement": 6290,
+      "netWorth": -48233,
+      "newBorrowing": 21591
     },
     {
       "career": "Cosmetologist",
@@ -622,11 +622,11 @@
       "transport": "car",
       "care": "none",
       "policy": "random",
-      "cash": -109463,
-      "educationDebt": 5154,
+      "cash": -92810,
+      "educationDebt": 3113,
       "consumerDebt": 12000,
-      "retirement": 5308,
-      "netWorth": -121309,
+      "retirement": 6062,
+      "netWorth": -101861,
       "newBorrowing": 23712
     },
     {
@@ -636,12 +636,12 @@
       "transport": "car",
       "care": "none",
       "policy": 0,
-      "cash": -73465,
-      "educationDebt": 574,
+      "cash": -53904,
+      "educationDebt": 0,
       "consumerDebt": 12000,
-      "retirement": 4893,
-      "netWorth": -81146,
-      "newBorrowing": 23712
+      "retirement": 5874,
+      "netWorth": -60030,
+      "newBorrowing": 23063
     },
     {
       "career": "Amusement and Recreation Attendants",
@@ -650,11 +650,11 @@
       "transport": "car",
       "care": "none",
       "policy": 0,
-      "cash": -123843,
-      "educationDebt": 574,
+      "cash": -104496,
+      "educationDebt": 0,
       "consumerDebt": 12000,
-      "retirement": 4621,
-      "netWorth": -131796,
+      "retirement": 5602,
+      "netWorth": -110894,
       "newBorrowing": 23712
     },
     {
@@ -664,12 +664,12 @@
       "transport": "car",
       "care": "none",
       "policy": 1,
-      "cash": -73378,
-      "educationDebt": 574,
+      "cash": -53795,
+      "educationDebt": 0,
       "consumerDebt": 12000,
-      "retirement": 4741,
-      "netWorth": -81211,
-      "newBorrowing": 23712
+      "retirement": 5722,
+      "netWorth": -60073,
+      "newBorrowing": 22997
     },
     {
       "career": "Amusement and Recreation Attendants",
@@ -678,11 +678,11 @@
       "transport": "car",
       "care": "none",
       "policy": 1,
-      "cash": -115602,
-      "educationDebt": 574,
+      "cash": -96254,
+      "educationDebt": 0,
       "consumerDebt": 12000,
-      "retirement": 4705,
-      "netWorth": -123471,
+      "retirement": 5686,
+      "netWorth": -102568,
       "newBorrowing": 23712
     },
     {
@@ -692,12 +692,12 @@
       "transport": "car",
       "care": "none",
       "policy": 2,
-      "cash": -74954,
-      "educationDebt": 574,
+      "cash": -55308,
+      "educationDebt": 0,
       "consumerDebt": 12000,
-      "retirement": 4629,
-      "netWorth": -82899,
-      "newBorrowing": 23589
+      "retirement": 5610,
+      "netWorth": -61698,
+      "newBorrowing": 22680
     },
     {
       "career": "Amusement and Recreation Attendants",
@@ -706,11 +706,11 @@
       "transport": "car",
       "care": "none",
       "policy": 2,
-      "cash": -118870,
-      "educationDebt": 574,
+      "cash": -99522,
+      "educationDebt": 0,
       "consumerDebt": 12000,
-      "retirement": 4757,
-      "netWorth": -126687,
+      "retirement": 5738,
+      "netWorth": -105784,
       "newBorrowing": 23712
     },
     {
@@ -720,12 +720,12 @@
       "transport": "car",
       "care": "none",
       "policy": "random",
-      "cash": -76773,
-      "educationDebt": 574,
+      "cash": -57385,
+      "educationDebt": 0,
       "consumerDebt": 12000,
-      "retirement": 4737,
-      "netWorth": -84610,
-      "newBorrowing": 22502
+      "retirement": 5718,
+      "netWorth": -63667,
+      "newBorrowing": 20580
     },
     {
       "career": "Amusement and Recreation Attendants",
@@ -734,11 +734,11 @@
       "transport": "car",
       "care": "none",
       "policy": "random",
-      "cash": -113515,
-      "educationDebt": 574,
+      "cash": -94167,
+      "educationDebt": 0,
       "consumerDebt": 12000,
-      "retirement": 4789,
-      "netWorth": -121300,
+      "retirement": 5770,
+      "netWorth": -100397,
       "newBorrowing": 23712
     },
     {
@@ -748,12 +748,12 @@
       "transport": "car",
       "care": "none",
       "policy": 0,
-      "cash": -73848,
-      "educationDebt": 574,
+      "cash": -51017,
+      "educationDebt": 0,
       "consumerDebt": 12000,
-      "retirement": 5049,
-      "netWorth": -81373,
-      "newBorrowing": 23712
+      "retirement": 6200,
+      "netWorth": -56817,
+      "newBorrowing": 22900
     },
     {
       "career": "Animal Caretakers",
@@ -762,11 +762,11 @@
       "transport": "car",
       "care": "none",
       "policy": 0,
-      "cash": -114318,
-      "educationDebt": 574,
+      "cash": -91753,
+      "educationDebt": 0,
       "consumerDebt": 12000,
-      "retirement": 5249,
-      "netWorth": -121643,
+      "retirement": 6400,
+      "netWorth": -97353,
       "newBorrowing": 23712
     },
     {
@@ -776,12 +776,12 @@
       "transport": "car",
       "care": "none",
       "policy": 1,
-      "cash": -65493,
-      "educationDebt": 574,
+      "cash": -42579,
+      "educationDebt": 0,
       "consumerDebt": 12000,
-      "retirement": 4985,
-      "netWorth": -73082,
-      "newBorrowing": 23641
+      "retirement": 6136,
+      "netWorth": -48443,
+      "newBorrowing": 22582
     },
     {
       "career": "Animal Caretakers",
@@ -790,11 +790,11 @@
       "transport": "car",
       "care": "none",
       "policy": 1,
-      "cash": -113952,
-      "educationDebt": 574,
+      "cash": -91386,
+      "educationDebt": 0,
       "consumerDebt": 12000,
-      "retirement": 4985,
-      "netWorth": -121541,
+      "retirement": 6136,
+      "netWorth": -97250,
       "newBorrowing": 23712
     },
     {
@@ -804,12 +804,12 @@
       "transport": "car",
       "care": "none",
       "policy": 2,
-      "cash": -64843,
-      "educationDebt": 574,
+      "cash": -41931,
+      "educationDebt": 0,
       "consumerDebt": 12000,
-      "retirement": 4865,
-      "netWorth": -72552,
-      "newBorrowing": 23398
+      "retirement": 6016,
+      "netWorth": -47915,
+      "newBorrowing": 22339
     },
     {
       "career": "Animal Caretakers",
@@ -818,11 +818,11 @@
       "transport": "car",
       "care": "none",
       "policy": 2,
-      "cash": -111641,
-      "educationDebt": 574,
+      "cash": -89076,
+      "educationDebt": 0,
       "consumerDebt": 12000,
-      "retirement": 4865,
-      "netWorth": -119350,
+      "retirement": 6016,
+      "netWorth": -95060,
       "newBorrowing": 22884
     },
     {
@@ -832,12 +832,12 @@
       "transport": "car",
       "care": "none",
       "policy": "random",
-      "cash": -63740,
-      "educationDebt": 574,
+      "cash": -40826,
+      "educationDebt": 0,
       "consumerDebt": 12000,
-      "retirement": 5065,
-      "netWorth": -71249,
-      "newBorrowing": 23708
+      "retirement": 6216,
+      "netWorth": -46610,
+      "newBorrowing": 22649
     },
     {
       "career": "Animal Caretakers",
@@ -846,11 +846,11 @@
       "transport": "car",
       "care": "none",
       "policy": "random",
-      "cash": -113683,
-      "educationDebt": 574,
+      "cash": -91118,
+      "educationDebt": 0,
       "consumerDebt": 12000,
-      "retirement": 5153,
-      "netWorth": -121104,
+      "retirement": 6304,
+      "netWorth": -96814,
       "newBorrowing": 22884
     }
   ],
@@ -861,11 +861,11 @@
     "transport": "transit",
     "care": "none",
     "policy": 0,
-    "cash": 10594,
-    "educationDebt": 7438,
+    "cash": 153139,
+    "educationDebt": 1175,
     "consumerDebt": 0,
-    "retirement": 8669,
-    "netWorth": 11825,
+    "retirement": 16641,
+    "netWorth": 168605,
     "newBorrowing": 0
   },
   "expensive": {
@@ -875,18 +875,18 @@
     "transport": "car",
     "care": "dependent",
     "policy": 0,
-    "cash": -183058,
-    "educationDebt": 8595,
+    "cash": -39868,
+    "educationDebt": 2332,
     "consumerDebt": 12000,
-    "retirement": 8669,
-    "netWorth": -194984,
-    "newBorrowing": 23712
+    "retirement": 16641,
+    "netWorth": -37559,
+    "newBorrowing": 21744
   },
   "summary": {
     "runs": 56,
-    "withNewBorrowing": 52,
-    "withoutNewBorrowing": 4,
-    "minCash": -123843,
-    "maxCash": 13575
+    "withNewBorrowing": 36,
+    "withoutNewBorrowing": 20,
+    "minCash": -104496,
+    "maxCash": 206518
   }
 }

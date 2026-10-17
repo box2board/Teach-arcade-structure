@@ -1737,7 +1737,8 @@ body:has(.cq-page) {
   font-weight: 800;
   font-size: 14px;
 }
-.cq-budget-inputs select {
+.cq-budget-inputs select,
+.cq-budget-inputs input {
   margin-top: 7px;
 }
 .cq-budget-comparison {
