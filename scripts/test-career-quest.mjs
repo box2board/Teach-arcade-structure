@@ -84,7 +84,7 @@ assert.equal(
   22,
   "interest quiz must not award work skills",
 );
-assert.equal(w.testState.run.stats.debt, 15000);
+assert.equal(w.testState.run.stats.debt, 4074);
 const scenario = w.testState.run.currentScenario.id;
 const reloaded = await boot(save(w));
 reloaded.click("#continue-run");

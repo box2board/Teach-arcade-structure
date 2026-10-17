@@ -1737,7 +1737,8 @@ body:has(.cq-page) {
   font-weight: 800;
   font-size: 14px;
 }
-.cq-budget-inputs select {
+.cq-budget-inputs select,
+.cq-budget-inputs input {
   margin-top: 7px;
 }
 .cq-budget-comparison {
@@ -2030,4 +2031,47 @@ body:has(.cq-page) {
     background: #fff;
     color: #222;
   }
+}
+
+/* Keep student instructions short; detail stays available on demand. */
+.cq-more-info {
+  margin: 12px 0;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #ffffffa6;
+  padding: 0 14px;
+}
+.cq-more-info > summary {
+  min-height: 44px;
+  padding: 10px 0;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+}
+.cq-more-info > p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+.cq-budget-margin small {
+  display: block;
+  margin-top: 7px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.cq-profile-source .cq-more-info {
+  width: 100%;
+}
+@media print {
+  .cq-more-info {
+    border-color: #ccc;
+  }
+}
+
+.cq-entry-list {
+  padding-left: 20px;
+  line-height: 1.7;
+}
+.cq-entry-list li {
+  margin: 8px 0;
 }

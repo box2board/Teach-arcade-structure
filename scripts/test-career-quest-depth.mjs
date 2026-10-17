@@ -19,6 +19,32 @@ for (const k of "RIASEC")
   assert.equal(questions.filter((q) => q.type === k).length, 6);
 for (const c of careers)
   assert.equal(Object.keys(interests.profiles[c.socCode]).length, 6);
+const financeData = JSON.parse(
+  fs.readFileSync(root + "data/career-finances.json"),
+);
+assert.equal(Object.keys(financeData.profiles).length, 500);
+assert.equal(
+  Object.values(financeData.profiles).filter(
+    (f) => f.method === "illustrative-missing-wage",
+  ).length,
+  1,
+);
+assert.equal(
+  Object.values(financeData.profiles).filter(
+    (f) => f.method === "hourly-25th-times-2080",
+  ).length,
+  4,
+);
+for (const c of careers) {
+  const f = financeData.profiles[c.id];
+  assert.equal(f.socCode, c.evidence.blsRecord.socCode);
+  assert.equal(f.scope, c.evidence.blsRecord.scope);
+  assert(f.annualPay > 0 && Number.isFinite(f.annualPay));
+  if (f.method === "annual-25th-percentile")
+    assert.equal(f.annualPay, f.publishedAnnual25);
+  if (f.method === "hourly-25th-times-2080")
+    assert.equal(f.annualPay, Math.round(f.publishedHourly25 * 2080));
+}
 const dom = new JSDOM(fs.readFileSync(root + "index.html", "utf8"), {
     url: "https://teacharcade.com/career-arcade/career-quest/",
     runScripts: "outside-only",
@@ -35,7 +61,7 @@ w.fetch = async (url) => ({
 });
 w.eval(
   fs.readFileSync(root + "career-quest.js", "utf8") +
-    "\nwindow.cq={state,interestProfile,hasInterestSignal,affinityScore,applyChoice,settleYear,pickScenario,snapshot,monthlyBreakdown,yearGross,estimatedWithholding,educationPayment,renderByPhase};",
+    "\nwindow.cq={state,interestProfile,hasInterestSignal,affinityScore,applyChoice,settleYear,pickScenario,snapshot,monthlyBreakdown,yearGross,estimatedWithholding,educationPayment,renderByPhase,financialSnapshot,startingSalary,startingDebt,trainingBudget,financeProfile,careerWage,locationRecord,expenseLocationFactor};",
 );
 await new Promise((r) => setTimeout(r, 0));
 w.document.getElementById("start-run").click();
@@ -196,6 +222,7 @@ function simulate(
     transport = "car",
     care = "none",
     region = "average",
+    location = null,
     policy = 0,
     seed = 1,
   } = {},
@@ -207,14 +234,8 @@ function simulate(
   r.transport = transport;
   r.care = care;
   r.settings.costOfLiving = region;
-  const costs = {
-    workforce: 1000,
-    trade: 9000,
-    cc: 15000,
-    college: 36000,
-    grad: 62000,
-  };
-  r.educationDebt = costs[r.educationKey];
+  r.locationId = location || { low: "05", average: "US", high: "06" }[region];
+  r.educationDebt = api.startingDebt();
   r.initialDebt = r.educationDebt;
   r.consumerDebt = 0;
   r.stats.debt = r.educationDebt;
@@ -264,6 +285,7 @@ function simulate(
   return {
     career: c.title,
     region,
+    location: r.locationId,
     housing,
     transport,
     care,
@@ -354,15 +376,17 @@ api.applyChoice(
   },
 );
 assert.equal(api.monthlyBreakdown().rent, before + 120);
-assert.equal(
-  api.yearGross(),
-  Math.round(
-    ((nurse.salaryStartRange[0] + nurse.salaryStartRange[1]) / 2) * 1.02,
-  ) - 500,
-);
+assert.equal(api.yearGross(), api.financeProfile(nurse).annualPay - 500);
 r.yearStart = api.snapshot(r.stats);
 api.settleYear();
-assert.equal(r.yearLedgers[0].consumerInterest, 220);
+assert.equal(r.yearLedgers[0].consumerInterest, 80);
+assert.equal(r.yearLedgers[0].consumerRate, 0.08);
+assert(api.financialSnapshot().includes("8% yearly interest"));
+const savedConsumerDebt = r.consumerDebt;
+r.consumerDebt = 0;
+assert(api.financialSnapshot().includes("No interest on a $0 balance"));
+assert(!api.financialSnapshot().includes("8% yearly interest"));
+r.consumerDebt = savedConsumerDebt;
 r.year = 2;
 r.stepInYear = 1;
 r.history = [];
@@ -421,6 +445,209 @@ api.applyChoice(
 );
 assert.equal(replanned.consumerDebt, 12000);
 assert.equal(replanned.stats.cash, priorCash - 1000);
+// Student copy stays concise, grammatical, and accurate for plural occupation titles.
+function visibleWords(element) {
+  const copy = element.cloneNode(true);
+  for (const details of [
+    ...copy.querySelectorAll("details:not([open])"),
+  ].reverse())
+    details.replaceWith(details.querySelector("summary")?.textContent || "");
+  for (const option of copy.querySelectorAll("option:not(:checked)"))
+    option.remove();
+  return copy.textContent.trim().split(/\s+/).length;
+}
+const studentRun = (api.state.run = JSON.parse(JSON.stringify(base)));
+const astronomer = api.state.careers.find(
+  (c) => c.canonicalTitle === "Astronomers",
+);
+assert(astronomer);
+studentRun.careerId = astronomer.id;
+studentRun.phase = "education";
+api.renderByPhase();
+assert.equal(
+  w.document.querySelector("#screen h2").textContent,
+  "Plan your training",
+);
+assert(
+  w.document
+    .getElementById("screen")
+    .textContent.includes("Career: Astronomers"),
+);
+assert(
+  w.document
+    .querySelector("[data-path] small")
+    .textContent.includes("Yearly pay before taxes"),
+);
+assert(
+  visibleWords(w.document.getElementById("screen")) < 65,
+  "training should be readable at a glance",
+);
+const trainingInfo = w.document.querySelector(".cq-more-info");
+assert(trainingInfo && !trainingInfo.open);
+trainingInfo.open = true;
+assert(trainingInfo.textContent.includes("specific degrees"));
+w.document.querySelector("[data-path]").click();
+assert.equal(
+  w.document.querySelectorAll(".cq-budget-choice .cq-more-info").length,
+  2,
+);
+assert([...w.document.querySelectorAll(".cq-more-info")].every((d) => !d.open));
+assert(
+  w.document
+    .querySelector(".cq-budget-margin")
+    .textContent.match(/Left each month|Short each month/),
+);
+assert(
+  visibleWords(w.document.getElementById("screen")) < 190,
+  "budget should lead with choices, not a rulebook",
+);
+studentRun.interestAnswers = Object.fromEntries(
+  questions.map((q) => [q.id, q.type === "S" ? 4 : q.type === "I" ? 3 : 0]),
+);
+studentRun.phase = "career";
+api.renderByPhase();
+assert(
+  !w.document
+    .getElementById("screen")
+    .textContent.includes("Worth exploring for"),
+);
+assert(
+  w.document
+    .querySelector(".cq-match-reason")
+    .textContent.startsWith("Explore "),
+);
+// Editable assumptions must change the actual five-year calculations.
+// Return to the budget after the preceding career-results checks.
+studentRun.phase = "budget";
+api.renderByPhase();
+function changeAmount(id, amount) {
+  const input = w.document.getElementById(id);
+  input.value = amount;
+  input.dispatchEvent(new w.Event("change", { bubbles: true }));
+}
+changeAmount("training-cost", "80000");
+changeAmount("annual-pay", "60000");
+assert.equal(api.startingDebt(), 40000);
+assert.equal(api.yearGross(1), 60000);
+assert(
+  w.document.getElementById("starting-debt").textContent.includes("40,000"),
+);
+w.document.querySelector('[data-housing="shared"]').click();
+assert.equal(studentRun.initialDebt, 40000);
+assert.equal(studentRun.financeBasis.chosenAnnualPay, 60000);
+api.settleYear();
+assert.equal(studentRun.yearLedgers[0].gross, 60000);
+assert.equal(studentRun.yearLedgers[0].educationInterest, 2000);
+studentRun.year = 2;
+assert.equal(api.yearGross(), 61200);
+// Choosing another career must discard the previous salary/cost overrides.
+studentRun.previewCareerId = nurse.id;
+studentRun.phase = "careerDetail";
+api.renderByPhase();
+w.document.getElementById("choose-career").click();
+assert.equal(api.startingSalary("cc"), api.financeProfile(nurse).annualPay);
+assert.equal(
+  api.startingSalary("college"),
+  api.financeProfile(nurse).annualPay,
+);
+assert.equal(studentRun.baseAnnualPay, undefined);
+const funding = w.document.getElementById("borrowing-share");
+studentRun.year = 1;
+studentRun.yearLedgers = [];
+funding.value = "0";
+funding.dispatchEvent(new w.Event("change", { bubbles: true }));
+w.document.querySelector('[data-path="cc"]').click();
+assert.equal(api.startingDebt(), 0);
+w.document.querySelector('[data-housing="shared"]').click();
+api.settleYear();
+assert.equal(studentRun.yearLedgers[0].educationInterest, 0);
+// Actual location UI switches both wages and the recurring budget.
+studentRun.year = 1;
+studentRun.phase = "budget";
+studentRun.yearLedgers = [];
+api.renderByPhase();
+assert.equal(w.document.querySelectorAll("#living-location option").length, 52);
+function chooseLocation(id) {
+  const select = w.document.getElementById("living-location");
+  select.value = id;
+  select.dispatchEvent(new w.Event("change", { bubbles: true }));
+}
+chooseLocation("39");
+const ohioRent = api.monthlyBreakdown("solo", 1).rent;
+const ohioPay = api.startingSalary();
+chooseLocation("06");
+assert(api.monthlyBreakdown("solo", 1).rent > ohioRent);
+assert.notEqual(api.startingSalary(), ohioPay);
+assert(
+  w.document
+    .getElementById("location-summary")
+    .textContent.includes("California"),
+);
+changeAmount("rent-shared", "700");
+assert.equal(api.monthlyBreakdown("shared", 1).rent, 700);
+assert.equal(api.monthlyBreakdown("shared", 2).rent, Math.round(700 * 1.035));
+w.document.querySelector('[data-housing="shared"]').click();
+assert(w.document.getElementById("screen").textContent.includes("California"));
+api.settleYear();
+assert.equal(studentRun.yearLedgers[0].parts.rent, 700);
+assert.equal(studentRun.yearLedgers[0].location, "California");
+// Every state/career combination either uses its published wage or an explicit fallback.
+const locationData = JSON.parse(fs.readFileSync(root + "data/locations.json"));
+assert.equal(Object.keys(locationData.states).length, 51);
+const locationRun = (api.state.run = JSON.parse(JSON.stringify(base)));
+for (const [id, st] of Object.entries(locationData.states)) {
+  locationRun.locationId = id;
+  assert.equal(Object.keys(st.indices).length, 5);
+  assert.equal(
+    api.monthlyBreakdown("solo", 1).rent,
+    Math.round((1500 * st.indices.rent) / locationData.nationalIndices.rent),
+  );
+  for (const c of careers) {
+    locationRun.careerId = c.id;
+    const row = st.wages[c.evidence.blsRecord.socCode];
+    assert.equal(
+      api.startingSalary(c.modelPaths[0]),
+      row
+        ? Array.isArray(row)
+          ? row[0]
+          : row
+        : financeData.profiles[c.id].annualPay,
+    );
+    assert(Number.isFinite(api.yearGross(5)));
+  }
+}
+// Five reconciled working years for every state/DC, using one consistent career/plan.
+const locationChecks = Object.keys(locationData.states).map((location) =>
+  simulate(nurse, { location, seed: 37 }),
+);
+assert(new Set(locationChecks.map((r) => r.cash)).size > 10);
+// Restoring an older journey preserves the previous broad cost setting.
+api.state.run = JSON.parse(JSON.stringify(base));
+api.state.run.careerId = nurse.id;
+delete api.state.run.locationVersion;
+api.state.run.settings.costOfLiving = "high";
+assert.equal(api.monthlyBreakdown("solo", 1).rent, 1950);
+api.state.run = studentRun;
+// The funeral-home example leads with a short list, not BLS category prose.
+const funeral = api.state.careers.find((c) => c.socCode === "11-9171.00");
+assert(funeral);
+studentRun.previewCareerId = funeral.id;
+studentRun.phase = "careerDetail";
+api.renderByPhase();
+const entry = w.document.querySelector(".cq-entry-list");
+assert(entry);
+assert(entry.textContent.includes("Associate's degree"));
+assert(entry.textContent.includes("Less than 5 years"));
+assert(!entry.textContent.includes("category"));
+assert(
+  !w.document.getElementById("screen").textContent.includes("The route in"),
+);
+assert.equal(
+  entry.closest("section").querySelectorAll('[data-claim="entryRequirements"]')
+    .length,
+  1,
+);
+assert.equal(entry.closest("section").querySelector("details").open, false);
 // All 500 occupations are also swept with one reproducible shared-home/transit plan.
 const sweep = careers.map((c, i) =>
   simulate(c, { transport: "transit", policy: "random", seed: i + 101 }),
@@ -450,6 +677,8 @@ api.settleYear();
 assert.equal(old.yearLedgers[0].living, 1850 * 12);
 assert.equal(old.yearLedgers[0].parts, undefined);
 const report = {
+  locationChecks,
+  locationCareerPairsChecked: 25500,
   sweepSummary,
   method:
     "Deterministic fictional-model checks; not forecasts or validation of questionnaire accuracy",
