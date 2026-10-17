@@ -22,13 +22,13 @@ window.ESCAPE_V2_DATA = {
       objective: 'Find five clues and determine the phrase that will convince the escaped prisoner to open your door.',
       panorama: null,
       startYaw: -6,
-      startPitch: -8,
-      hfov: 110,
-      minHfov: 100,
-      maxHfov: 120,
+      startPitch: -5,
+      hfov: 90,
+      minHfov: 82,
+      maxHfov: 98,
       hotspots: [
         {
-          id: 'papers', yaw: -124, pitch: -28,
+          id: 'papers', yaw: -124, pitch: -22,
           title: 'Scattered Papers', kicker: 'CELL CLUE 1 OF 5',
           prompt: 'A smuggled pamphlet describes a society divided into three estates. Which group contained the overwhelming majority of the French population but had the least political privilege?',
           type: 'choice',
@@ -38,7 +38,7 @@ window.ESCAPE_V2_DATA = {
           learning: 'The Third Estate included commoners from wealthy professionals to urban workers and peasants. It represented most of the population while the privileged estates retained important advantages.'
         },
         {
-          id: 'bed', yaw: -13, pitch: -13,
+          id: 'bed', yaw: -13, pitch: -14,
           title: 'Hidden Prisoner Note', kicker: 'CELL CLUE 2 OF 5',
           prompt: 'A note hidden in the bedding mentions Enlightenment thinkers who challenged absolute authority. Which idea most directly threatened the claim that a king should rule without meaningful limits?',
           type: 'choice',
@@ -48,7 +48,7 @@ window.ESCAPE_V2_DATA = {
           learning: 'Enlightenment arguments about natural rights, consent, and limits on government helped shape revolutionary criticism of absolute monarchy.'
         },
         {
-          id: 'window', yaw: 19, pitch: 58,
+          id: 'window', yaw: 19, pitch: 38,
           title: 'View Through the Bars', kicker: 'CELL CLUE 3 OF 5',
           prompt: 'Through the barred window you hear Parisians demanding weapons and gunpowder. Why did the Bastille become such a powerful target on July 14, 1789?',
           type: 'choice',
@@ -68,7 +68,7 @@ window.ESCAPE_V2_DATA = {
           learning: 'In June 1789, deputies of the Third Estate declared themselves the National Assembly, claiming authority to represent the French nation.'
         },
         {
-          id: 'chain', yaw: 9, pitch: -53,
+          id: 'chain', yaw: 9, pitch: -35,
           title: 'Broken Chain and Cup', kicker: 'CELL CLUE 5 OF 5',
           prompt: 'A final scrap asks what most directly fueled popular anger in Paris during the crisis of 1789.',
           type: 'choice',
@@ -90,8 +90,8 @@ window.ESCAPE_V2_DATA = {
     }
   ],
   review: {
-    title: 'Room 1 cleared',
+    title: 'Room 1 complete',
     summary: 'You escaped the Bastille prison cell by connecting five historical clues to the political and economic tensions surrounding the French Revolution.',
-    outro: 'The complete three-room build continues next through the guard office and then the outer wall of the Bastille.'
+    outro: 'The cell door is open. This milestone intentionally ends here so the true-360 Room 1 experience can be approved before the guard office is built.'
   }
 };
