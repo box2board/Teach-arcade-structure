@@ -61,7 +61,7 @@ w.fetch = async (url) => ({
 });
 w.eval(
   fs.readFileSync(root + "career-quest.js", "utf8") +
-    "\nwindow.cq={state,interestProfile,hasInterestSignal,affinityScore,applyChoice,settleYear,pickScenario,snapshot,monthlyBreakdown,yearGross,estimatedWithholding,educationPayment,renderByPhase,financialSnapshot,startingSalary,startingDebt,trainingBudget,financeProfile};",
+    "\nwindow.cq={state,interestProfile,hasInterestSignal,affinityScore,applyChoice,settleYear,pickScenario,snapshot,monthlyBreakdown,yearGross,estimatedWithholding,educationPayment,renderByPhase,financialSnapshot,startingSalary,startingDebt,trainingBudget,financeProfile,careerWage,locationRecord,expenseLocationFactor};",
 );
 await new Promise((r) => setTimeout(r, 0));
 w.document.getElementById("start-run").click();
@@ -222,6 +222,7 @@ function simulate(
     transport = "car",
     care = "none",
     region = "average",
+    location = null,
     policy = 0,
     seed = 1,
   } = {},
@@ -233,6 +234,7 @@ function simulate(
   r.transport = transport;
   r.care = care;
   r.settings.costOfLiving = region;
+  r.locationId = location || { low: "05", average: "US", high: "06" }[region];
   r.educationDebt = api.startingDebt();
   r.initialDebt = r.educationDebt;
   r.consumerDebt = 0;
@@ -283,6 +285,7 @@ function simulate(
   return {
     career: c.title,
     region,
+    location: r.locationId,
     housing,
     transport,
     care,
@@ -558,6 +561,73 @@ assert.equal(api.startingDebt(), 0);
 w.document.querySelector('[data-housing="shared"]').click();
 api.settleYear();
 assert.equal(studentRun.yearLedgers[0].educationInterest, 0);
+// Actual location UI switches both wages and the recurring budget.
+studentRun.year = 1;
+studentRun.phase = "budget";
+studentRun.yearLedgers = [];
+api.renderByPhase();
+assert.equal(w.document.querySelectorAll("#living-location option").length, 52);
+function chooseLocation(id) {
+  const select = w.document.getElementById("living-location");
+  select.value = id;
+  select.dispatchEvent(new w.Event("change", { bubbles: true }));
+}
+chooseLocation("39");
+const ohioRent = api.monthlyBreakdown("solo", 1).rent;
+const ohioPay = api.startingSalary();
+chooseLocation("06");
+assert(api.monthlyBreakdown("solo", 1).rent > ohioRent);
+assert.notEqual(api.startingSalary(), ohioPay);
+assert(
+  w.document
+    .getElementById("location-summary")
+    .textContent.includes("California"),
+);
+changeAmount("rent-shared", "700");
+assert.equal(api.monthlyBreakdown("shared", 1).rent, 700);
+assert.equal(api.monthlyBreakdown("shared", 2).rent, Math.round(700 * 1.035));
+w.document.querySelector('[data-housing="shared"]').click();
+assert(w.document.getElementById("screen").textContent.includes("California"));
+api.settleYear();
+assert.equal(studentRun.yearLedgers[0].parts.rent, 700);
+assert.equal(studentRun.yearLedgers[0].location, "California");
+// Every state/career combination either uses its published wage or an explicit fallback.
+const locationData = JSON.parse(fs.readFileSync(root + "data/locations.json"));
+assert.equal(Object.keys(locationData.states).length, 51);
+const locationRun = (api.state.run = JSON.parse(JSON.stringify(base)));
+for (const [id, st] of Object.entries(locationData.states)) {
+  locationRun.locationId = id;
+  assert.equal(Object.keys(st.indices).length, 5);
+  assert.equal(
+    api.monthlyBreakdown("solo", 1).rent,
+    Math.round((1500 * st.indices.rent) / locationData.nationalIndices.rent),
+  );
+  for (const c of careers) {
+    locationRun.careerId = c.id;
+    const row = st.wages[c.evidence.blsRecord.socCode];
+    assert.equal(
+      api.startingSalary(c.modelPaths[0]),
+      row
+        ? Array.isArray(row)
+          ? row[0]
+          : row
+        : financeData.profiles[c.id].annualPay,
+    );
+    assert(Number.isFinite(api.yearGross(5)));
+  }
+}
+// Five reconciled working years for every state/DC, using one consistent career/plan.
+const locationChecks = Object.keys(locationData.states).map((location) =>
+  simulate(nurse, { location, seed: 37 }),
+);
+assert(new Set(locationChecks.map((r) => r.cash)).size > 10);
+// Restoring an older journey preserves the previous broad cost setting.
+api.state.run = JSON.parse(JSON.stringify(base));
+api.state.run.careerId = nurse.id;
+delete api.state.run.locationVersion;
+api.state.run.settings.costOfLiving = "high";
+assert.equal(api.monthlyBreakdown("solo", 1).rent, 1950);
+api.state.run = studentRun;
 // The funeral-home example leads with a short list, not BLS category prose.
 const funeral = api.state.careers.find((c) => c.socCode === "11-9171.00");
 assert(funeral);
@@ -607,6 +677,8 @@ api.settleYear();
 assert.equal(old.yearLedgers[0].living, 1850 * 12);
 assert.equal(old.yearLedgers[0].parts, undefined);
 const report = {
+  locationChecks,
+  locationCareerPairsChecked: 25500,
   sweepSummary,
   method:
     "Deterministic fictional-model checks; not forecasts or validation of questionnaire accuracy",

@@ -192,6 +192,7 @@ async function init() {
     "scenarios-v3-money",
     "scenarios-v3-core",
     "career-finances",
+    "locations",
   ];
   const data = await Promise.all(
     paths.map(async (p) => {
@@ -202,6 +203,7 @@ async function init() {
   );
   state.careers = data[0];
   state.finances = data[9];
+  state.locations = data[10];
   state.interestSource = data[4];
   quizQuestions = data[5];
   state.lifeScenarios = { workplace: data[6], money: data[7], core: data[8] };
@@ -240,7 +242,7 @@ function checkbox(type, value, checked, label = value) {
 function renderSettings() {
   const form = document.getElementById("settings-form"),
     s = state.settings;
-  form.innerHTML = `${selectField("difficulty", "Decision impact", ["easy", "normal", "hard"], s.difficulty)}${selectField("costOfLiving", "Living costs", ["low", "average", "high"], s.costOfLiving)}${toggleField("randomEvents", "Optional life events", s.randomEvents)}${toggleField("allowOverride", "Explore beyond recommendations", s.allowOverride)}${toggleField("allowReplay", "Allow replay after completion", s.allowReplay)}<div class="cq-field"><label>Career clusters</label><div class="cq-checkboxes">${[...new Set(state.careers.map((c) => c.cluster))].map((c) => checkbox("cluster", c, s.careerClusters.includes(c))).join("")}</div></div><div class="cq-field"><label for="teacher-career-search">Careers — search to narrow the list</label><input id="teacher-career-search" type="search" placeholder="Find a career to enable or disable"><div class="cq-checkboxes" id="teacher-career-list">${state.careers.map((c) => checkbox("career", c.id, s.enabledCareers.includes(c.id), c.title)).join("")}</div></div>`;
+  form.innerHTML = `${selectField("difficulty", "Decision impact", ["easy", "normal", "hard"], s.difficulty)}${selectField("costOfLiving", "Living costs for older journeys", ["low", "average", "high"], s.costOfLiving)}${toggleField("randomEvents", "Optional life events", s.randomEvents)}${toggleField("allowOverride", "Explore beyond recommendations", s.allowOverride)}${toggleField("allowReplay", "Allow replay after completion", s.allowReplay)}<div class="cq-field"><label>Career clusters</label><div class="cq-checkboxes">${[...new Set(state.careers.map((c) => c.cluster))].map((c) => checkbox("cluster", c, s.careerClusters.includes(c))).join("")}</div></div><div class="cq-field"><label for="teacher-career-search">Careers — search to narrow the list</label><input id="teacher-career-search" type="search" placeholder="Find a career to enable or disable"><div class="cq-checkboxes" id="teacher-career-list">${state.careers.map((c) => checkbox("career", c.id, s.enabledCareers.includes(c.id), c.title)).join("")}</div></div>`;
   form.insertAdjacentHTML(
     "beforeend",
     '<p id="settings-status" class="cq-help" role="status"></p>',
@@ -318,6 +320,8 @@ function startRun() {
     version: 2,
     modelVersion: 3,
     financeVersion: 1,
+    locationVersion: 1,
+    locationId: "US",
     interestAnswers: {},
     budgetAdjustments: {},
     flags: {},
@@ -1132,10 +1136,66 @@ function renderEducationSelection() {
         }),
     );
 }
+function locationRecord() {
+  return state.locations.states[state.run.locationId] || null;
+}
+function locationName() {
+  return locationRecord()?.name || "U.S. average";
+}
+function locationOptions() {
+  return `<option value="US">U.S. average</option>${Object.entries(
+    state.locations.states,
+  )
+    .sort((a, b) => a[1].name.localeCompare(b[1].name))
+    .map(
+      ([id, s]) =>
+        `<option value="${id}" ${state.run.locationId === id ? "selected" : ""}>${esc(s.name)}</option>`,
+    )
+    .join("")}`;
+}
+function careerWage() {
+  const national = financeProfile(),
+    local = state.run.locationVersion && locationRecord();
+  const values = local?.wages[national.socCode];
+  return values
+    ? {
+        annualPay: Array.isArray(values) ? values[0] : values,
+        method: Array.isArray(values)
+          ? "hourly-25th-times-2080"
+          : "annual-25th-percentile",
+        local: true,
+      }
+    : { ...national, local: false };
+}
+function locationSources() {
+  const local = locationRecord(),
+    wage = careerWage();
+  const note = local
+    ? wage.local
+      ? `${local.name} wage data for this career group.`
+      : `State wage unavailable for this career group. Using the national wage model.`
+    : "Using national wages and costs.";
+  return `<p>${esc(note)} Pay is ${wage.method === "illustrative-missing-wage" ? "an illustration because published wages are unavailable" : "based on the 25th percentile, not a guaranteed starting wage"}. ${wage.method === "hourly-25th-times-2080" ? "Hourly pay is multiplied by 2,080 hours; full-time hours are an assumption." : ""} Optional pay edits replace this value.</p><p>BEA 2024 state price levels adjust game costs separately for housing, utilities, goods, and other services. Each category is compared with its U.S. index. These are state averages, not city prices or actual household bills. Starting bills, future inflation, and taxes remain game assumptions; this is not a state tax calculator. Rent edits replace the housing estimate, then follow the same yearly game inflation.</p><a href="${esc(state.locations.priceInfoUrl)}" target="_blank" rel="noopener noreferrer">BEA living-cost source ↗</a> · <a href="${esc(state.locations.wageSourceUrl)}" target="_blank" rel="noopener noreferrer">BLS 2025 state wage source ↗</a>`;
+}
+function expenseLocationFactor(key) {
+  if (!state.run.locationVersion)
+    return { low: 0.85, average: 1, high: 1.3 }[settings().costOfLiving];
+  const local = locationRecord();
+  if (!local) return 1;
+  const group =
+    key === "rent"
+      ? "rent"
+      : key === "utilities"
+        ? "utilities"
+        : ["food", "household", "transport", "maintenance"].includes(key)
+          ? "goods"
+          : "services";
+  return local.indices[group] / state.locations.nationalIndices[group];
+}
 function startingSalary(path = state.run.educationKey) {
   const c = career();
   if (state.run.financeVersion)
-    return state.run.baseAnnualPay ?? financeProfile(c).annualPay;
+    return state.run.baseAnnualPay ?? careerWage().annualPay;
   return Math.round(
     ((c.salaryStartRange[0] + c.salaryStartRange[1]) / 2) *
       educationPaths[path].salaryMod,
@@ -1212,9 +1272,7 @@ function monthlyBreakdown(
   transport = state.run.transport || "car",
   care = state.run.care || "none",
 ) {
-  const factor =
-    { low: 0.85, average: 1, high: 1.3 }[settings().costOfLiving] *
-    1.035 ** (year - 1);
+  const inflation = 1.035 ** (year - 1);
   const base = {
     rent: housing === "shared" ? 850 : 1500,
     utilities: housing === "shared" ? 150 : 220,
@@ -1233,7 +1291,17 @@ function monthlyBreakdown(
   return Object.fromEntries(
     Object.entries(base).map(([k, v]) => [
       k,
-      Math.max(0, Math.round((v + (adjustments[k] || 0)) * factor)),
+      Math.max(
+        0,
+        Math.round(
+          (k === "rent" &&
+          state.run.locationVersion &&
+          Number.isFinite(state.run.rentOverrides?.[housing])
+            ? state.run.rentOverrides[housing] + (adjustments[k] || 0)
+            : (v + (adjustments[k] || 0)) * expenseLocationFactor(k)) *
+            inflation,
+        ),
+      ),
     ]),
   );
 }
@@ -1269,7 +1337,7 @@ function renderBudget() {
   if (!state.run.modelVersion) return renderLegacyBudget();
   const r = state.run;
   setScreen(
-    `<div class="cq-card cq-budget-planner"><p class="cq-eyebrow">PLAN / BUILD YOUR EVERYDAY LIFE</p><h2>Build your budget</h2><p>Start with $2,000 cash and <span id="starting-debt">${money(startingDebt())}</span> in student debt. Choose how you will live.</p>${r.financeVersion ? `<details class="cq-more-info"><summary>Try different pay or training costs</summary><div class="cq-budget-inputs"><label for="training-cost">Training budget ($)<input id="training-cost" type="number" min="0" max="1000000" step="1" value="${r.trainingCost ?? trainingBudget(r.educationKey)}"></label><label for="annual-pay">Yearly pay before taxes ($)<input id="annual-pay" type="number" min="0" max="1000000" step="1" value="${startingSalary()}"></label></div><p class="cq-small">Borrowing ${Math.round((r.borrowingShare ?? 0.5) * 100)}% of training costs. Edit these game amounts to compare plans.</p></details><details class="cq-more-info"><summary>Pay and training sources</summary>${financeSources()}</details>` : ""}<div class="cq-budget-inputs"><label for="transport-plan">Getting to work<select id="transport-plan"><option value="car">Car: payment/fuel + insurance</option><option value="transit">Transit: lower cost, longer commute</option><option value="carpool">Carpool: shared cost, less flexibility</option></select></label><label for="care-plan">Family costs<select id="care-plan"><option value="none">No regular family contribution</option><option value="family">Contribute $300/month to family</option><option value="dependent">Dependent care/support: $750/month</option></select></label><label for="retirement-plan">Retirement savings<select id="retirement-plan"><option value="0">0% · more cash now</option><option value="0.04" selected>4% · save some for later</option><option value="0.08">8% · save more for later</option></select></label></div><div id="budget-comparison" class="cq-budget-comparison"></div><p class="cq-small">These are game estimates. Real costs and pay vary.</p><details class="cq-more-info"><summary>How the money works</summary><p>Illustrative costs, not local price estimates. Bills rise 3.5% per year; base pay rises 2%. Withholding is a classroom approximation, not a tax calculation. Choose retirement contributions of 0%, 4%, or 8% of gross pay; these are separate from spending cash. Education debt uses 5% annual interest and a ten-year payment schedule; other debt uses 8% annual game interest and a scheduled payment of 30% of the interest-adjusted balance (at least $360/year, capped at the balance). The model caps new consumer credit at a $12,000 balance, excluding later interest. Gaps beyond available credit remain visible as unpaid shortfalls; balances are not forgiven. This is a classroom credit rule, not a lending offer. No investment returns are assumed. Working years begin after training.</p></details><button class="btn quiet" id="back-education">← Back to training</button></div>`,
+    `<div class="cq-card cq-budget-planner"><p class="cq-eyebrow">PLAN / BUILD YOUR EVERYDAY LIFE</p><h2>Build your budget</h2><p>Start with $2,000 cash and <span id="starting-debt">${money(startingDebt())}</span> in student debt. Choose how you will live.</p>${r.locationVersion ? `<label for="living-location">Where will you live and work?<select id="living-location">${locationOptions()}</select></label><p class="cq-small" id="location-summary"></p><p class="cq-small">State averages. City costs vary; you can edit rent below.</p><details class="cq-more-info"><summary>How location changes your budget</summary><div id="location-sources">${locationSources()}</div></details>` : ""}${r.financeVersion ? `<details class="cq-more-info"><summary>Try different pay, training, or rent</summary><div class="cq-budget-inputs"><label for="training-cost">Training budget ($)<input id="training-cost" type="number" min="0" max="1000000" step="1" value="${r.trainingCost ?? trainingBudget(r.educationKey)}"></label><label for="annual-pay">Yearly pay before taxes ($)<input id="annual-pay" type="number" min="0" max="1000000" step="1" value="${startingSalary()}"></label>${r.locationVersion ? `<label for="rent-shared">Your share of rent ($/month)<input id="rent-shared" type="number" min="0" max="100000" step="1" placeholder="Use state estimate" value="${r.rentOverrides?.shared ?? ""}"></label><label for="rent-solo">Rent living alone ($/month)<input id="rent-solo" type="number" min="0" max="100000" step="1" placeholder="Use state estimate" value="${r.rentOverrides?.solo ?? ""}"></label>` : ""}</div><p class="cq-small">Borrowing ${Math.round((r.borrowingShare ?? 0.5) * 100)}% of training costs. Edit these game amounts to compare plans.</p></details><details class="cq-more-info"><summary>Pay and training sources</summary>${financeSources()}</details>` : ""}<div class="cq-budget-inputs"><label for="transport-plan">Getting to work<select id="transport-plan"><option value="car">Car: payment/fuel + insurance</option><option value="transit">Transit: lower cost, longer commute</option><option value="carpool">Carpool: shared cost, less flexibility</option></select></label><label for="care-plan">Family costs<select id="care-plan"><option value="none">No regular family contribution</option><option value="family">Contribute $300/month to family</option><option value="dependent">Dependent care/support: $750/month</option></select></label><label for="retirement-plan">Retirement savings<select id="retirement-plan"><option value="0">0% · more cash now</option><option value="0.04" selected>4% · save some for later</option><option value="0.08">8% · save more for later</option></select></label></div><div id="budget-comparison" class="cq-budget-comparison"></div><p class="cq-small">These are game estimates. Real costs and pay vary.</p><details class="cq-more-info"><summary>How the money works</summary><p>Illustrative costs, not local price estimates. Bills rise 3.5% per year; base pay rises 2%. Withholding is a classroom approximation, not a tax calculation. Choose retirement contributions of 0%, 4%, or 8% of gross pay; these are separate from spending cash. Education debt uses 5% annual interest and a ten-year payment schedule; other debt uses 8% annual game interest and a scheduled payment of 30% of the interest-adjusted balance (at least $360/year, capped at the balance). The model caps new consumer credit at a $12,000 balance, excluding later interest. Gaps beyond available credit remain visible as unpaid shortfalls; balances are not forgiven. This is a classroom credit rule, not a lending offer. No investment returns are assumed. Working years begin after training.</p></details><button class="btn quiet" id="back-education">← Back to training</button></div>`,
     "plan",
   );
   function draw() {
@@ -1285,6 +1353,18 @@ function renderBudget() {
       r.baseAnnualPay = Number(pay.value);
       document.getElementById("starting-debt").textContent =
         money(startingDebt());
+    }
+    if (r.locationVersion) {
+      r.rentOverrides = {};
+      for (const housing of ["shared", "solo"]) {
+        const input = document.getElementById("rent-" + housing);
+        if (input.value !== "" && Number.isFinite(Number(input.value)))
+          r.rentOverrides[housing] = Math.round(
+            Math.max(0, Math.min(100000, Number(input.value))),
+          );
+      }
+      document.getElementById("location-summary").textContent =
+        `${locationName()} · ${money(startingSalary())}/year before taxes${locationRecord() && !careerWage().local ? " · National pay fallback" : ""}`;
     }
     r.transport = document.getElementById("transport-plan").value;
     r.care = document.getElementById("care-plan").value;
@@ -1324,6 +1404,9 @@ function renderBudget() {
                 ...financeProfile(),
                 wageYear: state.finances.wageYear,
                 chosenAnnualPay: startingSalary(),
+                location: locationName(),
+                locationWage: careerWage(),
+                priceYear: r.locationVersion ? state.locations.priceYear : null,
                 trainingCost: r.trainingCost,
                 borrowingShare: r.borrowingShare ?? 0.5,
               };
@@ -1351,7 +1434,24 @@ function renderBudget() {
           }),
       );
   }
-  for (const id of ["training-cost", "annual-pay"]) {
+  const locationInput = document.getElementById("living-location");
+  if (locationInput)
+    locationInput.onchange = () => {
+      r.locationId = locationInput.value;
+      delete r.baseAnnualPay;
+      document.getElementById("annual-pay").value = startingSalary();
+      for (const housing of ["shared", "solo"])
+        document.getElementById("rent-" + housing).value = "";
+      document.getElementById("location-sources").innerHTML = locationSources();
+      draw();
+      persistRun();
+    };
+  for (const id of [
+    "training-cost",
+    "annual-pay",
+    "rent-shared",
+    "rent-solo",
+  ]) {
     const input = document.getElementById(id);
     if (input)
       input.onchange = () => {
@@ -1442,6 +1542,7 @@ function settleLifeYear() {
     educationInterest,
     consumerInterest,
     consumerRate: BORROWING_RATE,
+    location: r.locationVersion ? locationName() : null,
     interest,
     newBorrowing,
     openingCash,
@@ -1550,7 +1651,7 @@ function renderScenario() {
   const s = run.currentScenario;
   setScreen(
     layout(
-      `<p class="cq-eyebrow">${run.stepInYear === 0 ? "WORK" : run.stepInYear === 1 ? "MONEY" : "LIFE EVENT"} · DECISION ${run.stepInYear + 1}</p><h2>${esc(s.title)}</h2><p>${esc(s.prompt)}</p>${run.modelVersion ? `<div class="cq-scenario-context"><strong>Your year</strong><span>${esc(career().title)} · Year ${run.year}</span><span>${money(yearGross())}/year before taxes · ${money(livingTotal(monthlyBreakdown()))}/month in bills</span>${s.context ? `<details class="cq-more-info"><summary>Scenario details</summary><p>${esc(s.context)}</p></details>` : ""}</div>` : ""}<div class="cq-option-list">${s.choices.map((c, i) => `<button class="cq-option" data-choice="${i}"><strong>${esc(c.label)}</strong>${esc(c.text)}</button>`).join("")}</div><p class="cq-help">Choose what to do. You will see what changes next.</p>`,
+      `<p class="cq-eyebrow">${run.stepInYear === 0 ? "WORK" : run.stepInYear === 1 ? "MONEY" : "LIFE EVENT"} · DECISION ${run.stepInYear + 1}</p><h2>${esc(s.title)}</h2><p>${esc(s.prompt)}</p>${run.modelVersion ? `<div class="cq-scenario-context"><strong>Your year</strong><span>${esc(career().title)}${run.locationVersion ? ` · ${esc(locationName())}` : ""} · Year ${run.year}</span><span>${money(yearGross())}/year before taxes · ${money(livingTotal(monthlyBreakdown()))}/month in bills</span>${s.context ? `<details class="cq-more-info"><summary>Scenario details</summary><p>${esc(s.context)}</p></details>` : ""}</div>` : ""}<div class="cq-option-list">${s.choices.map((c, i) => `<button class="cq-option" data-choice="${i}"><strong>${esc(c.label)}</strong>${esc(c.text)}</button>`).join("")}</div><p class="cq-help">Choose what to do. You will see what changes next.</p>`,
     ),
     "live",
   );
@@ -1880,7 +1981,7 @@ function renderReport() {
       .sort((a, b) => b[1] - a[1])
       .slice(0, 3);
   setScreen(
-    `<div class="cq-card cq-report"><p class="cq-eyebrow">REFLECT · FIVE YEARS COMPLETED</p><h2>Your future has more than one score.</h2><p>${esc(career().title)} · ${educationPaths[r.educationKey].label} · ${r.housing === "shared" ? "Shared home" : "Living alone"}</p><div class="cq-report-summary">${[
+    `<div class="cq-card cq-report"><p class="cq-eyebrow">REFLECT · FIVE YEARS COMPLETED</p><h2>Your future has more than one score.</h2><p>${esc(career().title)}${r.locationVersion ? ` · ${esc(locationName())}` : ""} · ${educationPaths[r.educationKey].label} · ${r.housing === "shared" ? "Shared home" : "Living alone"}</p><div class="cq-report-summary">${[
       ["Cash", money(r.stats.cash)],
       [r.modelVersion ? "Total debt" : "Education debt", money(r.stats.debt)],
       ["Net worth", money(r.stats.netWorth)],
@@ -1925,7 +2026,7 @@ function downloadReport() {
       "CAREER QUEST — MY FIVE-YEAR STORY",
       career().title,
       educationPaths[r.educationKey].label,
-      `Model settings: ${settings().difficulty} impact, ${settings().costOfLiving} living costs`,
+      `Model settings: ${settings().difficulty} impact, ${r.locationVersion ? locationName() : settings().costOfLiving} living costs`,
       `Cash: ${money(r.stats.cash)} | Debt: ${money(r.stats.debt)} | Net worth: ${money(r.stats.netWorth)}`,
       `Well-being: ${r.stats.happiness}/100 | Stress: ${r.stats.stress}/100 | Life balance: ${r.stats.workLife}/100 | Performance: ${r.stats.performance}/100`,
       "",
