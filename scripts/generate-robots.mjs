@@ -7,7 +7,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname  = path.dirname(__filename);
 
 const PUBLIC_DIR = path.join(__dirname, '..', 'public');
-const SITE = 'https://www.teacharcade.com';
+const SITE = 'https://teacharcade.com';
 
 const robots =
 `User-agent: *
