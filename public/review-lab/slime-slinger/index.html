@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png">
   <link rel="stylesheet" href="/review-lab/topic-picker.css">
   <link rel="stylesheet" href="./styles.css">
-  <script type="module" src="./game.js"></script>
+  <script type="module" src="./game-range.js"></script>
 </head>
 <body>
   <header class="sitebar">
@@ -31,7 +31,7 @@
     </section>
 
     <section class="stage-wrap">
-      <canvas id="stage" width="960" height="600" tabindex="0" aria-label="Slime Slinger target arena. Use left and right to aim, up and down to change depth, and Space to throw."></canvas>
+      <canvas id="stage" width="960" height="600" tabindex="0" aria-label="Slime Slinger scrolling target arena. Use left and right to scan and aim, up and down to change depth, and Space to throw."></canvas>
 
       <section class="hud" aria-label="Game status">
         <div><span>TIME</span><strong id="time">3:00</strong></div>
@@ -49,8 +49,8 @@
 
       <section class="controls" aria-label="Game controls">
         <div class="aim-controls">
-          <button type="button" data-control="left" aria-label="Aim left">←</button>
-          <button type="button" data-control="right" aria-label="Aim right">→</button>
+          <button type="button" data-control="left" aria-label="Aim and scan left">←</button>
+          <button type="button" data-control="right" aria-label="Aim and scan right">→</button>
         </div>
         <div class="depth-controls" aria-label="Target depth">
           <button type="button" data-lane="0">FAR</button>
@@ -63,7 +63,7 @@
       <p id="status" class="status" role="status">Choose a topic to start.</p>
     </section>
 
-    <p class="help-line"><kbd>←</kbd><kbd>→</kbd> aim · <kbd>↑</kbd><kbd>↓</kbd> depth · <kbd>Space</kbd> throw · click/tap the arena to aim and throw</p>
+    <p class="help-line"><kbd>←</kbd><kbd>→</kbd> scan + aim · <kbd>↑</kbd><kbd>↓</kbd> depth · <kbd>Space</kbd> throw · click/tap the arena to aim and throw</p>
   </main>
 
   <div id="overlay" class="overlay">
