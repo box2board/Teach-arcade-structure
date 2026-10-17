@@ -22,7 +22,7 @@ function readStoredDifficulty() {
 }
 
 function hasExistingProgress() {
-  for (const key of [CHECKPOINT_KEY, LEGACY_CHECKPOINT_KEY]) {
+  for (const key of [CHECKPOINT_KEY, ...(config?.id === "lost-facility" && config?.migrateLegacyCheckpoint !== false ? [LEGACY_CHECKPOINT_KEY] : [])]) {
     try {
       const parsed = JSON.parse(localStorage.getItem(key) || "null");
       if (parsed?.stage && parsed.stage !== "start") return true;
@@ -107,6 +107,12 @@ function ensureSelector() {
   const card = document.createElement("div");
   card.style.cssText = "width:min(680px,100%);padding:24px;border-radius:18px;border:1px solid rgba(125,211,252,.32);background:rgba(10,24,38,.94);box-shadow:0 24px 70px rgba(0,0,0,.38)";
   card.innerHTML = `<div style="font-size:10px;letter-spacing:.17em;opacity:.62;margin-bottom:7px">TEACH ARCADE 3D ADVENTURE</div><h1 style="margin:0 0 5px;font-size:28px">${config?.title || "3D Adventure"}</h1><p style="margin:0 0 19px;opacity:.72">Choose how much guidance you want. Movement and controls stay the same.</p><div id="ta3dDifficultyChoices" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px"></div><p style="margin:16px 0 0;font-size:12px;opacity:.55">You can start over later and choose a different mode.</p>`;
+  if (config.learning?.story) {
+    const story = document.createElement("p");
+    story.textContent = config.learning.story;
+    story.className = "mission-briefing";
+    card.insertBefore(story, card.querySelector("#ta3dDifficultyChoices"));
+  }
   overlay.appendChild(card);
   document.body.appendChild(overlay);
   const choices = card.querySelector("#ta3dDifficultyChoices");
@@ -174,14 +180,6 @@ function updateGuidance(now) {
       const nextId = order[Math.min(currentMission.relayProgress || 0, Math.max(0, order.length - 1))];
       badge.hidden = !nextId;
       if (nextId) label.textContent = `Next relay: ${config.relayPuzzle.stations?.[nextId]?.label || nextId.toUpperCase()}`;
-    }
-  }
-  if (current === "hard") {
-    const sub = document.getElementById("objectiveSubtext");
-    if (sub) {
-      const value = sub.textContent || "";
-      if (/Power is routing correctly\. Find the .* relay next\./i.test(value)) sub.textContent = "The route is working. Use the wall sequence to determine the next relay.";
-      else if (value === config?.mission?.objectives?.start?.detail) sub.textContent = "Restore auxiliary power using the wall routing panel.";
     }
   }
   updateAcademicHint();

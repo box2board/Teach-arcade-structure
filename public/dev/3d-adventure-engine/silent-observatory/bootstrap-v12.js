@@ -1,4 +1,5 @@
 import "./config-v12.js";
+import "./seasons-mission.js";
 import "../adventure-runtime-v11.js";
 import "../world-builder-v11.js";
 import "../performance-v4.js";

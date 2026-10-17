@@ -1,4 +1,6 @@
 import * as THREE from "/assets/vendor/three-0.162.0/three.module.js";
+import { createWorldCollider } from "./world-collision.js";
+import { installObjectiveGuidance } from "./objective-guidance.js";
 
 // v1.1 engine controller.
 // Owns renderer, player, movement, camera and collision registries.
@@ -160,13 +162,8 @@ function resetPlayer() {
   grounded = true;
 }
 
-function addCollider(obj, w, d) {
-  colliders.push({
-    minX: () => obj.position.x - w / 2,
-    maxX: () => obj.position.x + w / 2,
-    minZ: () => obj.position.z - d / 2,
-    maxZ: () => obj.position.z + d / 2,
-  });
+function addCollider(object) {
+  colliders.push(createWorldCollider(object));
 }
 
 function registerAnimation(item) {
@@ -189,7 +186,7 @@ function createWorld() {
   if (!builder?.build) throw new Error("3D world builder is unavailable.");
   builder.build({
     scene,
-    registerBoxCollider: addCollider,
+    registerCollider: addCollider,
     addCameraObstacle(object) { if (object && !cameraObstacles.includes(object)) cameraObstacles.push(object); },
     registerAnimation,
   });
@@ -200,10 +197,30 @@ function createWorld() {
   publishEngine();
 }
 
+function clearMovementInput() {
+  keys.clear();
+  draggingCamera = false;
+  if (dragPointer !== null && renderer.domElement.hasPointerCapture?.(dragPointer)) {
+    renderer.domElement.releasePointerCapture(dragPointer);
+  }
+  dragPointer = null;
+}
+
+function resetCamera() {
+  cameraYaw = worldConfig.camera?.yaw ?? 0;
+  cameraPitch = worldConfig.camera?.pitch ?? .28;
+  cameraDistance = worldConfig.camera?.distance ?? 7.5;
+  updateCamera(true);
+}
+
 function setupInput() {
   window.addEventListener("keydown", (event) => {
     if (questionDialog?.open || completeDialog?.open) return;
     if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "Space"].includes(event.code)) event.preventDefault();
+    if (event.code === "KeyR" && !event.repeat) {
+      resetCamera();
+      return;
+    }
     keys.add(event.code);
     if (event.code === "Space" && !event.repeat && grounded) {
       verticalVelocity = JUMP_SPEED;
@@ -211,7 +228,24 @@ function setupInput() {
     }
   }, { passive: false });
   window.addEventListener("keyup", (event) => keys.delete(event.code));
-  window.addEventListener("blur", () => keys.clear());
+  window.addEventListener("blur", clearMovementInput);
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) clearMovementInput();
+  });
+  const modalObserver = new MutationObserver(() => {
+    if (questionDialog?.open || completeDialog?.open) clearMovementInput();
+  });
+  for (const dialog of [questionDialog, completeDialog]) {
+    if (dialog) modalObserver.observe(dialog, { attributes: true, attributeFilter: ["open"] });
+  }
+  const controls = document.getElementById("controlsHint");
+  if (controls) {
+    const hint = document.createElement("span");
+    const key = document.createElement("kbd");
+    key.textContent = "R";
+    hint.append(key, " Reset camera");
+    controls.insertBefore(hint, hideControls || null);
+  }
 
   renderer.domElement.addEventListener("pointerdown", (event) => {
     if (questionDialog?.open || completeDialog?.open) return;
@@ -316,7 +350,8 @@ function blockerActive(blocker) { return blocker.active === undefined ? true : B
 
 function blocked(x, z) {
   for (const c of colliders) {
-    if (x + PLAYER_RADIUS > c.minX() && x - PLAYER_RADIUS < c.maxX() && z + PLAYER_RADIUS > c.minZ() && z - PLAYER_RADIUS < c.maxZ()) return true;
+    const bounds = c.bounds();
+    if (x + PLAYER_RADIUS > bounds.min.x && x - PLAYER_RADIUS < bounds.max.x && z + PLAYER_RADIUS > bounds.min.z && z - PLAYER_RADIUS < bounds.max.z) return true;
   }
   for (const c of dynamicBlockers) {
     if (!blockerActive(c)) continue;
@@ -429,6 +464,7 @@ function publishEngine() {
     get grounded() { return grounded; },
   };
   window.TA3DEngine = api;
+  installObjectiveGuidance(api, config);
   window.dispatchEvent(new CustomEvent("ta3d:engine-ready", { detail: api }));
 }
 
