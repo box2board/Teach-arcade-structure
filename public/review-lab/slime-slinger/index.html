@@ -13,14 +13,14 @@
 </head>
 <body>
   <header class="sitebar">
-    <a href="/" class="brand"><img src="/assets/images/teach-arcade-logo.png" alt="" width="34" height="34">Teach Arcade</a>
+    <a href="/" class="brand"><img src="/assets/images/teach-arcade-logo.png" alt="" width="30" height="30">Teach Arcade</a>
     <a href="/review-lab/">Review Lab</a>
   </header>
 
   <main class="shell">
     <section class="topline">
-      <div>
-        <p class="eyebrow">REVIEW LAB · PROTOTYPE</p>
+      <div class="title-lockup">
+        <p class="eyebrow">REVIEW LAB</p>
         <h1>Slime Slinger</h1>
         <p class="subtitle">Know it. Load it. Splat it.</p>
       </div>
@@ -30,37 +30,39 @@
       </div>
     </section>
 
-    <section class="hud" aria-label="Game status">
-      <div><span>TIME</span><strong id="time">3:00</strong></div>
-      <div><span>SCORE</span><strong id="score">0</strong></div>
-      <div class="slime-readout"><span>SLIME</span><strong><i class="slime-dot" aria-hidden="true"></i><b id="ammo">0</b></strong></div>
-      <div><span>HITS</span><strong id="hits">0</strong></div>
-      <button id="questions" class="review-button" type="button" disabled>Answer questions</button>
-    </section>
-
     <section class="stage-wrap">
       <canvas id="stage" width="960" height="600" tabindex="0" aria-label="Slime Slinger target arena. Use left and right to aim, up and down to change depth, and Space to throw."></canvas>
+
+      <section class="hud" aria-label="Game status">
+        <div><span>TIME</span><strong id="time">3:00</strong></div>
+        <div><span>SCORE</span><strong id="score">0</strong></div>
+        <div class="slime-readout"><span>SLIME</span><strong><i class="slime-dot" aria-hidden="true"></i><b id="ammo">0</b></strong></div>
+        <div><span>HITS</span><strong id="hits">0</strong></div>
+        <button id="questions" class="review-button" type="button" disabled>Answer questions</button>
+      </section>
+
       <div id="callout" class="callout" aria-live="polite"></div>
       <div id="empty-ammo" class="empty-ammo" hidden>
         <strong>Out of slime!</strong>
         <button type="button" id="earn-more">Answer a question</button>
       </div>
+
+      <section class="controls" aria-label="Game controls">
+        <div class="aim-controls">
+          <button type="button" data-control="left" aria-label="Aim left">←</button>
+          <button type="button" data-control="right" aria-label="Aim right">→</button>
+        </div>
+        <div class="depth-controls" aria-label="Target depth">
+          <button type="button" data-lane="0">FAR</button>
+          <button type="button" data-lane="1">MID</button>
+          <button type="button" data-lane="2" class="active">NEAR</button>
+        </div>
+        <button id="throw" class="throw-button" type="button" disabled>THROW SLIME</button>
+      </section>
+
+      <p id="status" class="status" role="status">Choose a topic to start.</p>
     </section>
 
-    <section class="controls" aria-label="Game controls">
-      <div class="aim-controls">
-        <button type="button" data-control="left" aria-label="Aim left">←</button>
-        <button type="button" data-control="right" aria-label="Aim right">→</button>
-      </div>
-      <div class="depth-controls" aria-label="Target depth">
-        <button type="button" data-lane="0">FAR</button>
-        <button type="button" data-lane="1">MID</button>
-        <button type="button" data-lane="2" class="active">NEAR</button>
-      </div>
-      <button id="throw" class="throw-button" type="button" disabled>THROW SLIME</button>
-    </section>
-
-    <p id="status" class="status" role="status">Choose a topic to start.</p>
     <p class="help-line"><kbd>←</kbd><kbd>→</kbd> aim · <kbd>↑</kbd><kbd>↓</kbd> depth · <kbd>Space</kbd> throw · click/tap the arena to aim and throw</p>
   </main>
 
