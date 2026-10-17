@@ -2,8 +2,8 @@
   'use strict';
 
   const data = window.ESCAPE_V2_DATA;
-  if (!data?.rooms?.length || !window.pannellum) {
-    console.error('Escape Room V2 data or panorama viewer is unavailable.');
+  if (!data || !Array.isArray(data.rooms) || !data.rooms.length) {
+    console.error('Escape Room V2 data is missing or invalid.');
     return;
   }
 
@@ -13,8 +13,8 @@
     storyEyebrow: $('storyEyebrow'), storyTitle: $('storyTitle'), storyCopy: $('storyCopy'), storyRooms: $('storyRooms'), storyTime: $('storyTime'), startBtn: $('startBtn'),
     timer: $('timer'), journalBtn: $('journalBtn'), journalCount: $('journalCount'), restartBtn: $('restartBtn'), panorama: $('panorama'),
     roomLabel: $('roomLabel'), roomTitle: $('roomTitle'), roomObjective: $('roomObjective'), roomProgress: $('roomProgress'), solutionBtn: $('solutionBtn'),
-    journalPanel: $('journalPanel'), closeJournalBtn: $('closeJournalBtn'), journalEntries: $('journalEntries'), modalBackdrop: $('modalBackdrop'), modalCloseBtn: $('modalCloseBtn'),
-    modalKicker: $('modalKicker'), modalTitle: $('modalTitle'), modalBody: $('modalBody'), modalFeedback: $('modalFeedback'),
+    journalPanel: $('journalPanel'), closeJournalBtn: $('closeJournalBtn'), journalEntries: $('journalEntries'),
+    modalBackdrop: $('modalBackdrop'), modalCloseBtn: $('modalCloseBtn'), modalKicker: $('modalKicker'), modalTitle: $('modalTitle'), modalBody: $('modalBody'), modalFeedback: $('modalFeedback'),
     reviewTitle: $('reviewTitle'), reviewSummary: $('reviewSummary'), reviewStats: $('reviewStats'), reviewLearning: $('reviewLearning'), reviewRestartBtn: $('reviewRestartBtn'),
     failureCopy: $('failureCopy'), failureRestartBtn: $('failureRestartBtn')
   };
@@ -25,29 +25,29 @@
     currentRoomIndex: 0,
     solved: new Set(),
     attempts: 0,
-    remainingSeconds: data.timeLimitSeconds || 1500,
+    remainingSeconds: data.timeLimitSeconds || 1200,
     timerId: null,
     viewer: null
   };
 
   const totalHotspots = data.rooms.reduce((sum, room) => sum + room.hotspots.length, 0);
 
-  function init() {
-    els.storyEyebrow.textContent = data.eyebrow || 'ESCAPE ROOM';
-    els.storyTitle.textContent = data.title;
-    els.storyCopy.replaceChildren(...(data.story || []).map(paragraph));
-    const displayRoomCount = data.displayRoomCount || data.rooms.length;
-    els.storyRooms.textContent = `${displayRoomCount} rooms`;
-    els.storyTime.textContent = `${Math.ceil(state.remainingSeconds / 60)} minute limit`;
-    updateTimerDisplay();
-    updateJournal();
-    bindEvents();
-  }
-
   function paragraph(text) {
     const p = document.createElement('p');
     p.textContent = text;
     return p;
+  }
+
+  function init() {
+    els.storyEyebrow.textContent = data.eyebrow || 'ESCAPE ROOM';
+    els.storyTitle.textContent = data.title;
+    els.storyCopy.replaceChildren(...(data.story || []).map(paragraph));
+    const displayRooms = data.displayRoomCount || data.rooms.length;
+    els.storyRooms.textContent = `${displayRooms} ${displayRooms === 1 ? 'room' : 'rooms'}`;
+    els.storyTime.textContent = `${Math.ceil(state.remainingSeconds / 60)} minute limit`;
+    updateTimerDisplay();
+    updateJournal();
+    bindEvents();
   }
 
   function bindEvents() {
@@ -164,9 +164,9 @@
       draggable: true,
       pitch: room.startPitch || 0,
       yaw: room.startYaw || 0,
-      hfov: room.hfov || 92,
-      minHfov: 72,
-      maxHfov: 105,
+      hfov: room.hfov || 110,
+      minHfov: room.minHfov || 100,
+      maxHfov: room.maxHfov || 120,
       hotSpots
     });
 
@@ -225,14 +225,11 @@
         event.preventDefault();
         state.attempts += 1;
         if (matchesAnswer(input.value, puzzle.answer)) onCorrect();
-        else setFeedback('That does not unlock it. Recheck the evidence and try again.', false);
+        else setFeedback('That does not unlock it. Recheck the clue and try again.', false);
       });
       els.modalBody.appendChild(form);
       requestAnimationFrame(() => input.focus());
-      return;
     }
-
-    els.modalBody.append(paragraph('This puzzle type is not available yet.'));
   }
 
   function normalizeAnswer(value) {
@@ -241,15 +238,19 @@
 
   function matchesAnswer(value, accepted) {
     const clean = normalizeAnswer(value);
-    return (Array.isArray(accepted) ? accepted : [accepted]).some((answer) => normalizeAnswer(answer) === clean);
+    const answers = Array.isArray(accepted) ? accepted : [accepted];
+    return answers.some((answer) => normalizeAnswer(String(answer)) === clean);
   }
 
   function solveHotspot(room, hotspot) {
     state.solved.add(roomKey(room, hotspot));
-    setFeedback('Solved. A phrase fragment has been added to your journal.', true);
+    setFeedback('Solved. A new phrase fragment has been added to your journal.', true);
     els.modalBody.querySelectorAll('button,input').forEach((control) => { control.disabled = true; });
     els.modalBody.append(clueReveal(hotspot));
-    document.querySelector(`[data-hotspot-id="${CSS.escape(hotspot.id)}"]`)?.classList.add('solved');
+    if (state.viewer) {
+      const node = els.panorama.querySelector(`[data-hotspot-id="${hotspot.id}"]`);
+      node?.classList.add('solved');
+    }
     updateRoomProgress();
     updateJournal();
   }
@@ -271,15 +272,15 @@
     els.roomProgress.textContent = `${solvedCount} / ${room.hotspots.length}`;
     const unlocked = solvedCount === room.hotspots.length;
     els.solutionBtn.disabled = !unlocked;
-    els.solutionBtn.textContent = unlocked ? 'Speak the final phrase' : `Final phrase locked (${solvedCount}/${room.hotspots.length})`;
+    els.solutionBtn.textContent = unlocked ? 'Solve room' : `Room solution locked (${solvedCount}/${room.hotspots.length})`;
     els.journalCount.textContent = `${state.solved.size}/${totalHotspots}`;
   }
 
   function openRoomSolution() {
     const room = currentRoom();
-    if (!room.hotspots.every((hotspot) => state.solved.has(roomKey(room, hotspot)))) return;
+    if (room.hotspots.some((hotspot) => !state.solved.has(roomKey(room, hotspot)))) return;
     const puzzle = room.solution;
-    openModal({ kicker: puzzle.kicker || 'ROOM SOLUTION', title: puzzle.title });
+    openModal({ kicker: puzzle.kicker || 'ROOM SOLUTION', title: puzzle.title || 'Solve the room' });
     els.modalBody.append(paragraph(puzzle.prompt));
     renderPuzzle(puzzle, () => completeRoom(room));
   }
@@ -289,15 +290,26 @@
     els.modalBody.querySelectorAll('button,input').forEach((control) => { control.disabled = true; });
 
     if (state.currentRoomIndex < data.rooms.length - 1) {
-      const next = document.createElement('button');
-      next.type = 'button'; next.className = 'primary-btn'; next.textContent = 'Continue to next room'; next.style.marginTop = '18px';
-      next.addEventListener('click', () => { closeModal(); renderRoom(state.currentRoomIndex + 1); });
-      els.modalBody.append(next);
+      const nextButton = document.createElement('button');
+      nextButton.type = 'button';
+      nextButton.className = 'primary-btn';
+      nextButton.textContent = 'Continue to next room';
+      nextButton.style.marginTop = '18px';
+      nextButton.disabled = false;
+      nextButton.addEventListener('click', () => {
+        closeModal();
+        renderRoom(state.currentRoomIndex + 1);
+      });
+      els.modalBody.appendChild(nextButton);
     } else {
-      const finish = document.createElement('button');
-      finish.type = 'button'; finish.className = 'primary-btn'; finish.textContent = data.displayRoomCount > data.rooms.length ? 'Complete Room 1 prototype' : 'Complete escape'; finish.style.marginTop = '18px';
-      finish.addEventListener('click', finishGame);
-      els.modalBody.append(finish);
+      const finishButton = document.createElement('button');
+      finishButton.type = 'button';
+      finishButton.className = 'primary-btn';
+      finishButton.textContent = data.displayRoomCount && data.displayRoomCount > data.rooms.length ? 'Finish Room 1 prototype' : 'Complete mission';
+      finishButton.style.marginTop = '18px';
+      finishButton.disabled = false;
+      finishButton.addEventListener('click', finishGame);
+      els.modalBody.appendChild(finishButton);
     }
   }
 
@@ -323,7 +335,7 @@
   }
 
   function toggleJournal() {
-    els.journalPanel.hidden ? openJournal() : closeJournal();
+    if (els.journalPanel.hidden) openJournal(); else closeJournal();
   }
 
   function openJournal() {
@@ -345,9 +357,9 @@
         const entry = document.createElement('article');
         entry.className = `journal-entry${solved ? '' : ' locked'}`;
         const title = document.createElement('h3');
-        title.textContent = solved ? `${roomIndex + 1}.${hotspotIndex + 1} ${hotspot.clueTitle}` : `${roomIndex + 1}.${hotspotIndex + 1} Undiscovered clue`;
+        title.textContent = solved ? `${roomIndex + 1}.${hotspotIndex + 1} ${hotspot.clueTitle || hotspot.title}` : `${roomIndex + 1}.${hotspotIndex + 1} Undiscovered clue`;
         const text = document.createElement('p');
-        text.textContent = solved ? hotspot.clue : 'Search the room to recover this clue.';
+        text.textContent = solved ? hotspot.clue : 'Investigate the room to recover this clue.';
         entry.append(title, text);
         nodes.push(entry);
       });
@@ -360,24 +372,33 @@
     if (state.finished) return;
     state.finished = true;
     clearInterval(state.timerId);
-    closeModal(); closeJournal();
-    const elapsed = (data.timeLimitSeconds || 1500) - state.remainingSeconds;
-    els.reviewTitle.textContent = data.review?.title || 'Room cleared';
-    els.reviewSummary.textContent = data.review?.summary || 'You completed the room.';
+    state.viewer?.destroy();
+    state.viewer = null;
+    closeModal();
+    closeJournal();
+
+    const elapsed = (data.timeLimitSeconds || 1200) - state.remainingSeconds;
+    els.reviewTitle.textContent = data.review?.title || 'You escaped.';
+    els.reviewSummary.textContent = data.review?.summary || 'You completed the escape room.';
     els.reviewStats.replaceChildren(
       reviewStat(formatDuration(elapsed), 'time used'),
       reviewStat(`${state.solved.size}/${totalHotspots}`, 'discoveries'),
       reviewStat(String(state.attempts), 'answers submitted')
     );
-    const learning = [];
+
+    const learningNodes = [];
     data.rooms.forEach((room) => room.hotspots.forEach((hotspot) => {
-      const item = document.createElement('article'); item.className = 'learning-item';
-      const h = document.createElement('h3'); h.textContent = hotspot.title;
-      const p = document.createElement('p'); p.textContent = hotspot.learning || hotspot.clue;
-      item.append(h, p); learning.push(item);
+      const item = document.createElement('article');
+      item.className = 'learning-item';
+      const heading = document.createElement('h3');
+      heading.textContent = hotspot.title;
+      const body = document.createElement('p');
+      body.textContent = hotspot.learning || hotspot.clue;
+      item.append(heading, body);
+      learningNodes.push(item);
     }));
-    if (data.review?.outro) learning.push(paragraph(data.review.outro));
-    els.reviewLearning.replaceChildren(...learning);
+    if (data.review?.outro) learningNodes.push(paragraph(data.review.outro));
+    els.reviewLearning.replaceChildren(...learningNodes);
     showOnly(els.reviewScreen);
   }
 
@@ -385,20 +406,28 @@
     if (state.finished) return;
     state.finished = true;
     clearInterval(state.timerId);
-    closeModal(); closeJournal();
-    els.failureCopy.textContent = `You recovered ${state.solved.size} of ${totalHotspots} discoveries before time expired. Restart and use what you learned to escape faster.`;
+    state.viewer?.destroy();
+    state.viewer = null;
+    closeModal();
+    closeJournal();
+    els.failureCopy.textContent = `You recovered ${state.solved.size} of ${totalHotspots} discoveries before time expired. Restart the mission and use what you learned to escape faster.`;
     showOnly(els.failureScreen);
   }
 
   function reviewStat(value, label) {
-    const card = document.createElement('div'); card.className = 'review-stat';
-    const strong = document.createElement('strong'); strong.textContent = value;
-    const span = document.createElement('span'); span.textContent = label;
-    card.append(strong, span); return card;
+    const card = document.createElement('div');
+    card.className = 'review-stat';
+    const strong = document.createElement('strong');
+    strong.textContent = value;
+    const span = document.createElement('span');
+    span.textContent = label;
+    card.append(strong, span);
+    return card;
   }
 
   function formatDuration(seconds) {
-    return `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}`;
+    const minutes = Math.floor(seconds / 60);
+    return `${minutes}:${String(seconds % 60).padStart(2, '0')}`;
   }
 
   init();
