@@ -8,7 +8,7 @@ const __dirname  = path.dirname(__filename);
 
 const PUBLIC_DIR = path.join(__dirname, '..', 'public');
 // Keep sitemap URLs on the same preferred host used by canonical tags.
-const SITE = 'https://teacharcade.com';
+const SITE = 'https://www.teacharcade.com';
 
 const EXCLUDE = new Set([
   '/404.html'
