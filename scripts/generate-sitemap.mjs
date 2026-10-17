@@ -7,7 +7,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname  = path.dirname(__filename);
 
 const PUBLIC_DIR = path.join(__dirname, '..', 'public');
-const SITE = 'https://www.teacharcade.com';
+// Keep sitemap URLs on the same preferred host used by canonical tags.
+const SITE = 'https://teacharcade.com';
 
 const EXCLUDE = new Set([
   '/404.html'
@@ -34,10 +35,6 @@ async function walk(dir) {
   return files;
 }
 
-function fmtDate(d) {
-  return new Date(d).toISOString();
-}
-
 async function main() {
   const all = await walk(PUBLIC_DIR);
   const pages = [];
@@ -49,8 +46,7 @@ async function main() {
       || /<meta\b[^>]*\bcontent=["'][^"']*noindex[^"']*["'][^>]*\bname=["']robots["']/i.test(contents)) {
       continue;
     }
-    const stat = await fs.stat(f);
-    pages.push({ url, lastmod: fmtDate(stat.mtime) });
+    pages.push({ url });
   }
 
   // homepage first, then alphabetical
@@ -61,9 +57,6 @@ async function main() {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${pages.map(p => `  <url>
     <loc>${p.url}</loc>
-    <lastmod>${p.lastmod}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>${p.url === SITE + '/' ? '1.0' : '0.6'}</priority>
   </url>`).join('\n')}
 </urlset>
 `;
