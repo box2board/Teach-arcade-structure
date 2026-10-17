@@ -1,0 +1,1 @@
+The active French Revolution room is being upgraded from a 512x256 temporary source to a 1536x768 source. This note can be removed after binary parts are fully switched.
