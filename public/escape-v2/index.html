@@ -8,6 +8,7 @@
   <meta name="description" content="French Revolution classroom escape room prototype using Teach Arcade's reusable 360-degree Escape Room V2 engine.">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css">
   <link rel="stylesheet" href="/escape-v2/css/engine.css">
+  <link rel="stylesheet" href="/escape-v2/css/panorama.css">
 </head>
 <body>
   <div id="app" class="app-shell">
@@ -56,15 +57,15 @@
 
       <section id="reviewScreen" class="screen review-screen" hidden aria-labelledby="reviewTitle">
         <div class="review-card">
-          <p class="eyebrow">MISSION COMPLETE</p>
-          <h1 id="reviewTitle">You escaped.</h1>
+          <p class="eyebrow">MISSION PROGRESS</p>
+          <h1 id="reviewTitle">Room cleared.</h1>
           <p id="reviewSummary" class="review-summary"></p>
           <div id="reviewStats" class="review-stats"></div>
           <section class="learning-review">
             <h2>What you discovered</h2>
             <div id="reviewLearning"></div>
           </section>
-          <button id="reviewRestartBtn" class="primary-btn" type="button">Play again</button>
+          <button id="reviewRestartBtn" class="primary-btn" type="button">Play Room 1 again</button>
         </div>
       </section>
 
