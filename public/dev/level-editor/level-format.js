@@ -32,6 +32,13 @@
     if(key==='gates'&&!(l.questionPoints||[]).some(q=>q.id===o.questionId))errors.push('Question gate must link to an existing question point.');
     if(key==='abilityItems'&&!['power','gear'].includes(o.type))errors.push('Pickup type must be power or gear.');
     if(o.abilities!==undefined&&(!Array.isArray(o.abilities)||o.abilities.some(a=>typeof a!=='string')))errors.push('Abilities must be a list of names.');
+    if(key==='movers'){
+     if(o.movement!==undefined&&!['groundPatrol','flyPatrol','falling','hopping','chasing','stationary','ambush'].includes(o.movement))errors.push('Unknown enemy movement.');
+     if(o.interaction!==undefined&&!['stompable','dash','hazard','bounce'].includes(o.interaction))errors.push('Unknown enemy defeat rule.');
+     if(o.attack!==undefined&&!['none','projectile'].includes(o.attack))errors.push('Unknown enemy attack.');
+     if(o.projectileDirection!==undefined&&!['left','right','up','down','aim'].includes(o.projectileDirection))errors.push('Unknown projectile direction.');
+     for(const [name,min,max] of [['health',1,50],['detectionRange',0,4000],['jumpHeight',1,600],['jumpInterval',.2,30],['fireInterval',.2,30],['projectileSpeed',1,1000],['triggerDistance',0,4000],['resetDelay',.1,30]])if(o[name]!==undefined&&!finite(o[name],min,max))errors.push('Invalid enemy '+name+'.');
+    }
     if(o.path!==undefined){
      if(!['movingPlatforms','movers'].includes(key)||!Array.isArray(o.path)||o.path.length<2||o.path.length>64)errors.push('Movement path needs 2–64 points.');
      else{for(const [j,p] of o.path.entries()){if(!p||!finite(p.x,0,width-(o.w||32))||!finite(p.y,0,height-(o.h||22)))errors.push('Path point is outside the world.');if(j&&p?.x===o.path[j-1]?.x&&p?.y===o.path[j-1]?.y)errors.push('Consecutive path points must differ.');if(p?.pause!==undefined&&!finite(p.pause,0,30))errors.push('Path pause must be 0–30 seconds.');}if(o.path[0]?.x!==o.x||o.path[0]?.y!==o.y)errors.push('Path must start at the object position.');}

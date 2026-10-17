@@ -101,3 +101,8 @@ assert.equal(Art.styles.decorations.length,48);assert.equal(Art.styles.platforms
 for(const style of Art.styles.platforms)Art.draw(draw,"platforms",{style,w:120,h:24});
 for(const scene of Object.keys(Art.palettes)){elements["theme-catalog"].children.find(card=>card.dataset.scene===scene).click();assert.equal(current().scene,scene);assert.ok(current().level.decorations.filter(o=>o.themeGenerated).every(o=>Art.styles.decorations.includes(o.style)));}
 console.log("PASS: all 20 theme presets populate valid editable props; all 48 scenery and 17 platform styles render.");
+
+for(const style of Art.styles.movers)Art.draw(draw,"movers",{style,w:48,h:48});
+elements.blank.click();choose("movers");browser=elements.placement.children.find(el=>el.id==="asset-browser");browser.children.find(card=>card.children[1].textContent==="turret").click();elements.map.onpointerdown(event(700,200));elements.map.onpointerup();assert.equal(current().level.movers[0].attack,"projectile");assert.equal(current().level.movers[0].movement,"stationary");
+choose("select");const enemy=current().level.movers[0];elements.map.onpointerdown(event(enemy.x+5,enemy.y+5));elements.map.onpointerup();browser=elements.placement.children.find(el=>el.id==="asset-browser");browser.children.find(card=>card.children[1].textContent==="ghost").click();assert.equal(current().level.movers[0].attack,"projectile");assert.equal(current().level.movers[0].style,"ghost");
+console.log("PASS: 22 enemy illustrations render, turret placement applies working defaults, appearance replacement preserves behavior.");
