@@ -1,0 +1,23 @@
+/* Escape Room V2 panorama layer: interactions are anchored by the panorama viewer. */
+#panorama{position:absolute;inset:0;background:#070604;overflow:hidden;touch-action:none;cursor:grab}
+#panorama:active{cursor:grabbing}
+#panorama .pnlm-container,#panorama .pnlm-render-container{position:absolute;inset:0}
+#panorama .pnlm-ui{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+#panorama .pnlm-load-box{background:rgba(17,14,11,.86);border:1px solid rgba(255,255,255,.16);border-radius:14px;color:#f4ead8}
+#panorama .pnlm-load-box p{color:#f4ead8}
+#panorama .pnlm-about-msg{display:none!important}
+
+/* The AI room art already contains subtle search markers. These hit areas sit on those exact world coordinates.
+   They are intentionally not numbered and never use viewport-relative positioning. */
+#panorama .ta-pano-hotspot{width:58px;height:58px;margin-left:-29px;margin-top:-29px;border-radius:50%;background:rgba(255,211,124,.01);border:2px solid transparent;box-shadow:none;cursor:pointer;transition:background .16s ease,border-color .16s ease,box-shadow .16s ease}
+#panorama .ta-pano-hotspot::before,#panorama .ta-pano-hotspot::after{display:none!important}
+#panorama .ta-pano-hotspot:hover,#panorama .ta-pano-hotspot:focus{background:rgba(225,169,77,.14);border-color:rgba(255,226,171,.85);box-shadow:0 0 0 8px rgba(225,169,77,.12);outline:none}
+#panorama .ta-pano-hotspot.solved{background:rgba(91,151,102,.13);border-color:rgba(170,222,176,.72);box-shadow:0 0 0 7px rgba(91,151,102,.10)}
+#panorama .pnlm-hotspot-base{z-index:4}
+.scene-vignette{z-index:5;pointer-events:none}
+.look-hint{z-index:8}
+.room-hud,.solution-btn{z-index:10}
+
+@media (max-width:720px){
+  #panorama .ta-pano-hotspot{width:64px;height:64px;margin-left:-32px;margin-top:-32px}
+}
