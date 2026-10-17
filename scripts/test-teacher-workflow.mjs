@@ -14,18 +14,19 @@ class Element{
  removeAttribute(k){delete this.attributes[k];}
  showModal(){this.open=true;}
  close(){this.open=false;}
- focus(){}
+ focus(){this.focused=true;}
+ querySelector(tag){for(const child of this.children){if(child.tagName===tag)return child;const found=child.querySelector?.(tag);if(found)return found;}return null;}
  before(...nodes){this.beforeNodes=nodes;}
  addEventListener(name,fn){(this.listeners??={})[name]=fn;}
  get options(){return this.children;}
 }
-function setup(configured=false){
+function setup(configured=false,fetchOverride){
  const elements=Object.fromEntries([...html.matchAll(/id="([^"]+)"/g)].map(m=>[m[1],new Element()]));
  let hash='';const location={search:'',get hash(){return hash;},set hash(value){hash=value.startsWith('#')?value:`#${value}`;}},handlers={};
  const context=vm.createContext({QUESTION_SETS,GAMES,loadQuestionSet,gamesForSet,gameUrl,URLSearchParams,
- document:{getElementById:id=>{assert.ok(elements[id],`Unknown element ${id}`);return elements[id];},createElement:tag=>new Element(tag),querySelectorAll:()=>[]},
+ document:{getElementById:id=>{assert.ok(elements[id],`Unknown element ${id}`);return elements[id];},createElement:tag=>new Element(tag),querySelectorAll:()=>[],querySelector:()=>null},
  Option:class extends Element{constructor(text,value){super('option',text);this.value=value;}},location,
- window:{addEventListener:(name,fn)=>{handlers[name]=fn;},scrollTo(){}},fetch:async()=>({ok:true,json:async()=>({configured,user:null})})});
+ window:{addEventListener:(name,fn)=>{handlers[name]=fn;},scrollTo(){}},fetch:fetchOverride|| (async()=>({ok:true,json:async()=>({configured,user:null})}))});
  vm.runInContext(source,context);
  return {elements,context,location,route:()=>vm.runInContext('route()',context),run:code=>vm.runInContext(code,context)};
 }
@@ -34,6 +35,33 @@ test('topic cards launch game selection directly; preview remains separate',()=>
  assert.equal(actions.children[0].textContent,'Choose a game →');assert.equal(actions.children[1].textContent,'Preview questions');
  actions.children[0].onclick();assert.ok(app.location.hash.includes(encodeURIComponent(QUESTION_SETS[0].id)));
  app.route();assert.equal(app.elements.games.hidden,false);assert.equal(app.elements['selected-title'].textContent,QUESTION_SETS[0].title);
+});
+test('expired session offers sign-in instead of treating auth as unconfigured',async()=>{
+ const app=setup(true,async()=>({ok:false,status:401,json:async()=>({error:'Session expired'})}));
+ await new Promise(r=>setTimeout(r,0));
+ assert.equal(app.elements['login-form'].hidden,false);assert.equal(app.elements['account-unavailable'].hidden,true);
+ assert.match(app.elements.notice.textContent,/session has ended/);
+});
+test('failed favorites keep verified account available and offer retry',async()=>{
+ let fail=true;
+ const app=setup(true,async url=>({ok:!url.includes('favorites')||!fail,status:503,json:async()=>url.includes('favorites')?(fail?{error:'Unavailable'}:{ids:[QUESTION_SETS[0].id]}):{configured:true,user:{id:'teacher-a',email:'teacher@example.test',plan:'free'}}}));
+ await new Promise(r=>setTimeout(r,0));assert.equal(app.elements.profile.hidden,false);assert.equal(app.elements['retry-account'].hidden,false);
+ fail=false;await app.elements['retry-account'].onclick();assert.equal(app.elements['retry-account'].hidden,true);assert.equal(app.run('saved.size'),1);
+});
+test('post-login save failure remains retryable without pretending it was saved',async()=>{
+ let fail=true;
+ const app=setup(true,async url=>({ok:!url.includes('action=save')||!fail,status:503,json:async()=>url.includes('action=save')?{error:'Unavailable'}:{configured:true,user:null}}));
+ await new Promise(r=>setTimeout(r,0));
+ app.run(`user={id:'teacher-a'};pendingSave=${JSON.stringify(QUESTION_SETS[0].id)};returnRoute='saved';`);
+ await app.run('finishPendingSave()');assert.equal(app.run('saved.size'),0);assert.equal(app.elements['retry-save'].hidden,false);assert.match(app.elements['auth-status'].textContent,/could not be saved/);
+ fail=false;await app.elements['retry-save'].onclick();assert.equal(app.run('saved.size'),1);assert.equal(app.run('pendingSave'),null);assert.equal(app.location.hash,'#saved');
+});
+test('load-more moves keyboard focus to first newly revealed topic',()=>{
+ const app=setup();app.elements.more.onclick();assert.equal(app.elements.catalog.children[24].querySelector('button').focused,true);
+});
+test('invalid game bookmark leaves saved-only view and restores public topics',()=>{
+ const app=setup();app.location.hash='#saved';app.route();app.location.hash='#games&set=invalid';app.route();
+ assert.equal(app.elements['library-title'].textContent,'Question Library');assert.equal(app.elements.catalog.children.length,24);
 });
 test('every compatible game receives the chosen topic in a clearly labeled new tab',()=>{
  const app=setup();

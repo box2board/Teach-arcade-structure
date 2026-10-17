@@ -2,6 +2,8 @@
 
 ## First-use workflow pass (October 16)
 
+Follow-up QA: expired sessions retain the sign-in path instead of being mistaken for an unconfigured service. Favorites failures retain verified teacher identity and offer an account retry. A failed post-login save has an explicit retry button and is never shown as saved before the server succeeds. Logout clears any pending save. Loading more topics moves focus to the first new topic; save/unsave restores focus, with a focusable library-heading fallback. Invalid game bookmarks recover from saved-only mode to public topics. Ten workflow simulations and nine foundation checks cover these paths; live auth and visual/browser checks are still outstanding.
+
 Teacher HQ now follows Topic → Game → Engine setup → Public practice. Question Library and Saved Sets are separate navigation destinations; planned classes/assignments/reports are explained in a roadmap rather than presented as working navigation. Older bookmarks show an honest future-feature message.
 
 Every public topic has a primary Choose a game action and independent question preview. Game selection shows shared catalog artwork, descriptions and participation mode, plus the selected topic and a clear new-tab/public-practice disclosure. Launch URLs retain the catalog set ID and add `from=teacher-hq`. The shared topic picker recognizes this marker only with a valid already-selected set, collapsing optional reselection without changing engine settings or loading a different topic. Public non-HQ entry remains unchanged. Engines retain their own setup options; there is no universal difficulty/settings layer and no claim of teacher-locked configuration.
