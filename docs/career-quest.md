@@ -158,3 +158,12 @@ Mixed answers averaging below 2.5 were incorrectly rejected even when the patter
 Every nonempty teacher-enabled catalog now has a useful shortlist. When answers are flat or incomplete, the explorer supplies varied **exploration starting points**, explicitly distinguished from personalized suggestions. These prioritize different enabled fields and never bypass teacher restrictions. If a shortlist filter would hide other careers matching the current search/field, it broadens that filter with a visible explanation. An actually unmatched search still offers filter-reset controls. Existing saved explorer states are covered.
 
 Regressions reproduce the uploaded screenshot's six averages (2.0, 2.17, 2.0, 2.33, 1.67, 0.67) with the shortlist checkbox already selected. Further cases cover all-dislike, all-neutral, all-like, fully skipped answers, a field outside the shortlist, and a teacher-enabled catalog of only one career.
+
+
+## Student-language pass — October 17, 2026 UTC
+
+The post-questionnaire copy now leads with the next action. Interest reasons use grammatical activity phrases (for example, “Explore helping people and solving problems”), rather than concatenating category labels. Training uses a stable “Plan your training” heading and a separate Career label, so official plural titles such as Astronomers remain accurate without an awkward “route toward Astronomers” sentence. Path labels use everyday school terms, with student debt and yearly pay before taxes shown directly. No audited career facts, matching calculations, costs, or financial rules changed.
+
+Training explanations, financial rules, monthly bill breakdowns, scenario notes, and full source methods remain available in closed native details sections. A short game-estimate label stays visible. The budget compares monthly amounts left or needed after ordinary costs, with unexpected costs explicitly excluded. Citation links beside factual sections remain visible. Instructions and feedback were shortened; reflection grammar was corrected.
+
+DOM checks cover the exact Astronomers training case, short default training/budget screens, openable explanations, monthly budget labels, grammatical match reasons, and all existing 500 profile/training/play paths.

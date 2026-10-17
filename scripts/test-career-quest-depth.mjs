@@ -421,6 +421,77 @@ api.applyChoice(
 );
 assert.equal(replanned.consumerDebt, 12000);
 assert.equal(replanned.stats.cash, priorCash - 1000);
+// Student copy stays concise, grammatical, and accurate for plural occupation titles.
+function visibleWords(element) {
+  const copy = element.cloneNode(true);
+  for (const details of [
+    ...copy.querySelectorAll("details:not([open])"),
+  ].reverse())
+    details.replaceWith(details.querySelector("summary")?.textContent || "");
+  for (const option of copy.querySelectorAll("option:not(:checked)"))
+    option.remove();
+  return copy.textContent.trim().split(/\s+/).length;
+}
+const studentRun = (api.state.run = JSON.parse(JSON.stringify(base)));
+const astronomer = api.state.careers.find(
+  (c) => c.canonicalTitle === "Astronomers",
+);
+assert(astronomer);
+studentRun.careerId = astronomer.id;
+studentRun.phase = "education";
+api.renderByPhase();
+assert.equal(
+  w.document.querySelector("#screen h2").textContent,
+  "Plan your training",
+);
+assert(
+  w.document
+    .getElementById("screen")
+    .textContent.includes("Career: Astronomers"),
+);
+assert(
+  w.document
+    .querySelector("[data-path] small")
+    .textContent.includes("Yearly pay before taxes"),
+);
+assert(
+  visibleWords(w.document.getElementById("screen")) < 65,
+  "training should be readable at a glance",
+);
+const trainingInfo = w.document.querySelector(".cq-more-info");
+assert(trainingInfo && !trainingInfo.open);
+trainingInfo.open = true;
+assert(trainingInfo.textContent.includes("specific degrees"));
+w.document.querySelector("[data-path]").click();
+assert.equal(
+  w.document.querySelectorAll(".cq-budget-choice .cq-more-info").length,
+  2,
+);
+assert([...w.document.querySelectorAll(".cq-more-info")].every((d) => !d.open));
+assert(
+  w.document
+    .querySelector(".cq-budget-margin")
+    .textContent.match(/Left each month|Short each month/),
+);
+assert(
+  visibleWords(w.document.getElementById("screen")) < 190,
+  "budget should lead with choices, not a rulebook",
+);
+studentRun.interestAnswers = Object.fromEntries(
+  questions.map((q) => [q.id, q.type === "S" ? 4 : q.type === "I" ? 3 : 0]),
+);
+studentRun.phase = "career";
+api.renderByPhase();
+assert(
+  !w.document
+    .getElementById("screen")
+    .textContent.includes("Worth exploring for"),
+);
+assert(
+  w.document
+    .querySelector(".cq-match-reason")
+    .textContent.startsWith("Explore "),
+);
 // All 500 occupations are also swept with one reproducible shared-home/transit plan.
 const sweep = careers.map((c, i) =>
   simulate(c, { transport: "transit", policy: "random", seed: i + 101 }),
