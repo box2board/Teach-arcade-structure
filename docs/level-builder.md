@@ -6,12 +6,12 @@ Editor: `/dev/level-editor/`. Showcase file running through the website loader: 
 
 Choose an object category → choose appearance/type in Placement options → place it → select it to adjust settings. A prominent options bar above the map offers platform material/style, dimensions and moving-platform speed/direction/range/path controls. It updates for the object you select. The inspector offers additional appearance, position, rewards and behavior settings without JSON editing. The editor and playable creator renderer use the same original canvas artwork library. Advanced JSON remains available for less common engine properties.
 
-- Platforms and moving platforms: stone, wood, roof, sand and metal materials.
+- Platforms and moving platforms: 17 materials including stone, wood, metal, ice, crystal, cloud, lava, coral, bamboo, marble and snow.
 - Enemies: walking scarab, flying bat, crawler, drone, falling stone presets. Movement and stompable/hazard/bounce interactions are runtime properties; preset selection fills in sensible defaults.
 - Breakables: crate, cracked wall, cracked floor. Dash, stomp, heavy gear or headbutt; empty, collectible or bonus-point contents.
-- Collectibles: scarab, gem, star, book, gear. Configurable score plus points/protection/gear reward. Ability pickups offer protection or climbing/heavy gear separately from appearance.
+- Collectibles: scarab, gem, star, book, gear. Ability pickups have 15 illustrated choices and can grant shields, temporary speed/jump boosts, double jump, glide, fireballs, climbing/heavy/ram gear, or ammo.
 - Question objects: tablet, sign, terminal, scroll. Correct-answer rewards: boost, checkpoint, disable next trap/enemy. Question gates link to an existing question point and open after it is answered. Finish still requires all question points to be answered.
-- Traps: spikes, dart trap, energy; ropes/ladders/vines and spring/pad bounce surfaces.
+- Traps: 10 illustrated styles including fire jets, boulders, lava vents, lasers, swinging blades, poison clouds and electric floors. Eight climbable styles include rope, ladder, chain, handholds, bone ladder, energy rope and web.
 - Scenery: tree, palm, house, column, cloud, rock; background or foreground layer. Scenery has no collision.
 - Scene themes: tomb, forest, rooftops. Search and select from the existing Review Lab question-bank catalogue; references are saved in the JSON and fetched for playtesting.
 
@@ -49,10 +49,12 @@ Run:
 - `node scripts/test-level-editor-controls.mjs`
 - `node scripts/test-creator-paths.mjs`
 - `node scripts/test-creator-vertical.mjs`
+- `node scripts/test-creator-enemies.mjs`
+- `node scripts/test-creator-abilities.mjs`
 
 Checks cover lossless JSON, editing, asset paths, runtime loading, collectible/finish behavior, blank creation, resizing, pointer handlers, invalid input, undo/redo, pan, bounded canvas, zoom, style selection, drawn routes, pause/loop reversal, frame-rate invariance, rider carry, enemy routes, rewards, question gates, vertical expansion/shrinking, two-axis camera tracking/reset, high placement, canvas area bounds, and a physics jump between ascending shelves. DOM controls are simulated; no real-browser/touch QA claim is made. The managed environment lacks the required control-browser skill. Playtest every route before release; data validation does not prove reachability.
 
-This release implements object/style/behavior authoring and waypoint routes. It is not yet a universal editor for every V1.3 property: mount placement, full starting-ability configuration, multiple stages, custom art uploads remain future work. Existing levels preserve those properties on round trip. Unsupported behaviors are not advertised as editable options. Current terrain platforms are solid; one-way platforms are not exposed because the runtime does not support them yet.
+This release implements object/style/behavior authoring and waypoint routes, including mount placement and player ability pickups. It is not yet a universal editor for every V1.3 property: full starting-ability configuration, multiple stages, and custom art uploads remain future work. Existing levels preserve those properties on round trip. Unsupported behaviors are not advertised as editable options. Current terrain platforms are solid; one-way platforms are not exposed because the runtime does not support them yet.
 
 ## Editing optimization pass: selection, resize and layers
 
@@ -84,6 +86,8 @@ Checks: `node scripts/test-creator-library.mjs` verifies project persistence and
 The **Pre-designed level themes** gallery shows an illustrated preview for each of 20 environment packs. Tapping a theme changes the palette and fills the level with ready-to-edit scenery objects; hand-placed objects stay in place. Move, resize, change, or delete the generated scenery with the regular editor tools. When switching themes, untouched generated props are replaced, while any generated prop you edited is kept. Backgrounds still include separate sky, far, middle, and near layers that can be toggled. The 20 environment packs are: desert ruins, forest trail, city rooftops, jungle canopy, frozen peaks, volcanic cavern, underwater ruins, and sky islands. Each pack changes the sky, distant landscape, midground, near silhouettes, ground colors, and terrain edge. The playtest scrolls these background layers at different rates as the camera moves. Four checkboxes control sky details and the far, middle, and near layers; these choices are saved in the level JSON and named projects.
 
 The scenery library includes trees, palms, pine and snow-pine trees, cactus, bush/grass, houses, columns, ruined arches, torches, lanterns, banners, rooftop vents, chimneys, crystal clusters, coral, waterfalls, clouds, and rocks. Choose Scenery, tap an illustrated thumbnail, then choose behind-player or foreground placement. The same thumbnail browser can replace the artwork of an already selected object. Platform and moving-platform appearances now include moss stone, brick, ice, crystal, and cloud in addition to stone, wood, roof, sand, and metal. The same `TAObjectLibrary` artwork and palette rendering is used by the editor and the V1.4 playtest.
+
+The gameplay-object library also has 15 ability-pickup illustrations, nine breakable styles, ten hazard styles, eight climbable styles, and six rideable mounts. Ability pickups can grant a one-hit shield, a timed speed or jump boost, double jump, glide, a fireball launcher, ammo, or gear for climbing, heavy blocks, and dash seals. Fireballs use **F/X** on a keyboard and the **FIRE** touch button on the playtest page; each shot consumes ammo and can defeat enemies with multiple hits. Mount choices include a turtle board, spring frog, glider bird, mine cart, cloud skiff, and crystal beetle. Each has a suggested ability and speed/jump profile that can be changed before placement; select a mount in the level and press **E** near it to ride or dismount. The inspector can combine mount abilities and adjust its speed multiplier.
 
 The expanded library includes 48 scenery styles and 17 platform materials (also available on moving platforms). New packs: Haunted woods, Coastal cliffs, Red-rock canyon, Misty swamp, Castle courtyard, Orbital station, Crystal caves, Bamboo garden, Greek isles, Snowy village, Old factory, Pirate cove. Each theme adds matching editable scenery. New props include buildings, boats, statues, vegetation, industrial equipment, and space equipment.
 

@@ -30,7 +30,14 @@
     if((o.w||26)+o.x>width)errors.push(key+' extends beyond world width.');
     if(key!=='surfaceZones'&&(o.h||38)+o.y>height)errors.push(key+' extends below the world.');
     if(key==='gates'&&!(l.questionPoints||[]).some(q=>q.id===o.questionId))errors.push('Question gate must link to an existing question point.');
-    if(key==='abilityItems'&&!['power','gear'].includes(o.type))errors.push('Pickup type must be power or gear.');
+    if(key==='abilityItems'&&!['power','gear','ability','ammo'].includes(o.type))errors.push('Pickup type must be power, gear, ability or ammo.');
+    if(key==='abilityItems'&&o.type==='ability'&&!['doubleJump','glide','fireball','climb','heavy','ram'].includes(o.ability))errors.push('Choose a supported player ability.');
+    if(key==='abilityItems'&&o.type==='power'&&o.powerId!==undefined&&!['guard','field-journal','speedBoost','jumpBoost'].includes(o.powerId))errors.push('Choose a supported power-up.');
+    if(key==='abilityItems'&&o.type==='ammo'&&o.amount!==undefined&&!finite(o.amount,1,99))errors.push('Ammo pickup amount must be from 1–99.');
+    if(key==='abilityItems'&&o.duration!==undefined&&!finite(o.duration,1,120))errors.push('Power-up duration must be from 1–120 seconds.');
+    if(key==='abilityItems'&&o.ammo!==undefined&&!finite(o.ammo,1,99))errors.push('Starting ammo must be from 1–99.');
+    if(key==='mounts'&&o.abilities!==undefined&&(!Array.isArray(o.abilities)||o.abilities.some(a=>!['heavy','climb','doubleJump','glide','fireball','ram'].includes(a))))errors.push('Mount has an unsupported ability.');
+    if(key==='mounts'&&o.modifiers!==undefined&&(!o.modifiers||typeof o.modifiers!=='object'||Object.entries(o.modifiers).some(([k,v])=>!['speed','jump'].includes(k)||!finite(v,.5,2))))errors.push('Mount speed and jump modifiers must be from 0.5–2.');
     if(o.abilities!==undefined&&(!Array.isArray(o.abilities)||o.abilities.some(a=>typeof a!=='string')))errors.push('Abilities must be a list of names.');
     if(key==='movers'){
      if(o.movement!==undefined&&!['groundPatrol','flyPatrol','falling','hopping','chasing','stationary','ambush'].includes(o.movement))errors.push('Unknown enemy movement.');
