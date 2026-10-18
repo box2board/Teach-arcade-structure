@@ -140,7 +140,7 @@ function drawBackgroundFallback(t){
  ctx.save();ctx.globalAlpha=.19;ctx.fillStyle='#efffff';for(let i=0;i<26;i++){const x=(i*83+Math.sin(t*.7+i)*14)%W,y=372+(i*37)%175;ctx.beginPath();ctx.arc(x,y,1.6+(i%3),0,Math.PI*2);ctx.fill();}ctx.restore();
 }
 function drawAmbientFalls(t){
- // Soft traveling highlights sit over the painted falls, keeping the illustrated canyon alive.
+ // Moving streaks and soft foam make the painted cascades visibly flow at play size.
  const falls=[
   {x:8,y:82,w:116,h:204,hue:0,phase:.3},
   {x:108,y:126,w:190,h:236,hue:1,phase:1.4},
@@ -151,30 +151,40 @@ function drawAmbientFalls(t){
  ctx.save();ctx.globalCompositeOperation='screen';
  for(const f of falls){
   ctx.save();ctx.beginPath();ctx.moveTo(f.x+f.w*.18,f.y);ctx.lineTo(f.x+f.w*.82,f.y);ctx.lineTo(f.x+f.w*.92,f.y+f.h*.88);ctx.lineTo(f.x+f.w,f.y+f.h);ctx.lineTo(f.x,f.y+f.h);ctx.lineTo(f.x+f.w*.08,f.y+f.h*.88);ctx.closePath();ctx.clip();
-  for(let i=0;i<7;i++){
-   const x=f.x+f.w*(.12+((i*37)%73)/100),travel=(t*(34+i%3*9)+i*41+f.phase*70)%(f.h+30),y=f.y+travel-15,len=11+(i%4)*8;
-   ctx.globalAlpha=.11+(i%3)*.025;ctx.strokeStyle=f.hue?'#d9ffff':'#f2ffff';ctx.lineWidth=i%4===0?2:1;ctx.beginPath();ctx.moveTo(x,y);ctx.bezierCurveTo(x-2,y+len*.32,x+2,y+len*.68,x,y+len);ctx.stroke();
+  const sheen=ctx.createLinearGradient(f.x,0,f.x+f.w,0);sheen.addColorStop(0,'#b9faff00');sheen.addColorStop(.34,'#c9ffff12');sheen.addColorStop(.50,'#ffffff24');sheen.addColorStop(.66,'#c9ffff12');sheen.addColorStop(1,'#b9faff00');ctx.globalAlpha=.58;ctx.fillStyle=sheen;ctx.fillRect(f.x,f.y,f.w,f.h);
+  for(let i=0;i<13;i++){
+   const x=f.x+f.w*(.08+((i*29)%84)/100),travel=(t*(66+i%4*13)+i*37+f.phase*90)%(f.h+54),y=f.y+travel-27,len=18+(i%5)*11;
+   ctx.globalAlpha=.23+(i%3)*.07;ctx.strokeStyle=i%3?'#d6ffff':'#ffffff';ctx.lineWidth=i%4===0?3:1.8;ctx.beginPath();ctx.moveTo(x,y);ctx.bezierCurveTo(x-3,y+len*.3,x+3,y+len*.7,x,y+len);ctx.stroke();
   }
+  for(let i=0;i<4;i++){const x=f.x+f.w*(.12+i*.24)+Math.sin(t*1.7+i+f.phase)*5,y=f.y+f.h-5-Math.sin(t*2+i)*3;ctx.globalAlpha=.18+.12*Math.sin(t*2.3+i+f.phase);ctx.fillStyle='#f3ffff';ctx.beginPath();ctx.ellipse(x,y,7+(i%2)*4,2.5,0,0,Math.PI*2);ctx.fill();}
   ctx.restore();
  }
  ctx.restore();
 }
 function drawAmbientLanterns(t){
- // A few tiny warm glows pulse at the range towers; these stay dim behind gameplay.
  const lamps=[[28,88,7,.2],[182,74,6,1.3],[388,139,5,2.2],[574,145,5,3.1],[780,91,7,4.4],[933,108,6,5.1]];
  ctx.save();ctx.globalCompositeOperation='screen';
- for(const [x,y,r,phase] of lamps){const pulse=.7+.3*Math.sin(t*2.1+phase);ctx.globalAlpha=.12+.06*pulse;ctx.fillStyle='#ffbb54';ctx.shadowColor='#ff9a2c';ctx.shadowBlur=10;ctx.beginPath();ctx.arc(x,y,r*(.72+.1*pulse),0,Math.PI*2);ctx.fill();}
+ for(const [x,y,r,phase] of lamps){const pulse=.7+.3*Math.sin(t*2.1+phase);ctx.globalAlpha=.22+.10*pulse;ctx.fillStyle='#ffbf5c';ctx.shadowColor='#ff941f';ctx.shadowBlur=16;ctx.beginPath();ctx.arc(x,y,r*(.9+.18*pulse),0,Math.PI*2);ctx.fill();}
  ctx.restore();
 }
 function drawAmbientMist(t){
  ctx.save();ctx.globalCompositeOperation='screen';
- for(let i=0;i<4;i++){const x=300+i*110+Math.sin(t*.24+i*1.8)*18,y=340+(i%2)*18+Math.sin(t*.35+i)*5;ctx.globalAlpha=.035+.018*Math.sin(t*.7+i);ctx.fillStyle='#efffff';ctx.beginPath();ctx.ellipse(x,y,28+i%3*8,7+i%2*3,0,0,Math.PI*2);ctx.fill();}
+ for(let i=0;i<4;i++){const x=300+i*110+Math.sin(t*.24+i*1.8)*24,y=340+(i%2)*18+Math.sin(t*.35+i)*7;ctx.globalAlpha=.055+.025*Math.sin(t*.7+i);ctx.fillStyle='#efffff';ctx.beginPath();ctx.ellipse(x,y,33+i%3*9,8+i%2*4,0,0,Math.PI*2);ctx.fill();}
+ ctx.restore();
+}
+function drawAmbientPennants(t){
+ const colors=['#ffca4e','#8b4de0','#ee5866','#54d9ff','#85eb4e'],startX=258,endX=702;
+ ctx.save();ctx.lineCap='round';ctx.strokeStyle='#54341d';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(startX,139);ctx.quadraticCurveTo(W/2,157,endX,139);ctx.stroke();
+ for(let i=0;i<9;i++){
+  const u=i/8,x=lerp(startX,endX,u),y=139+Math.sin(u*Math.PI)*18,flutter=Math.sin(t*3.1+i*1.65)*3;
+  ctx.fillStyle=colors[i%colors.length];ctx.strokeStyle='#fff1c377';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(x-11,y);ctx.quadraticCurveTo(x,y+2,x+11,y);ctx.lineTo(x+4+flutter,y+22);ctx.quadraticCurveTo(x+1,y+18,x-3+flutter,y+22);ctx.closePath();ctx.fill();ctx.stroke();
+ }
  ctx.restore();
 }
 function drawBackground(t){
  if(!arenaBackground.complete||!arenaBackground.naturalWidth){drawBackgroundFallback(t);return;}
  ctx.drawImage(arenaBackground,0,0,W,H);
- drawAmbientFalls(t);drawAmbientLanterns(t);drawAmbientMist(t);
+ drawAmbientFalls(t);drawAmbientLanterns(t);drawAmbientMist(t);drawAmbientPennants(t);
  // Quiet moving highlights keep the illustrated pool alive while the scenery stays crisp.
  ctx.save();ctx.beginPath();poly([[166,382],[794,382],[W,H],[0,H]]);ctx.clip();ctx.globalAlpha=.16;
  for(let i=0;i<8;i++){const y=401+i*22,x=170+i*83+(Math.sin(t*.75+i)*18);ctx.strokeStyle=i%3?'#e5ffff':'#57e9eb';ctx.lineWidth=i%3===0?2:1;ctx.beginPath();ctx.moveTo(x,y);ctx.quadraticCurveTo(x+38,y-4-Math.sin(t+i)*3,x+102,y);ctx.stroke();}
