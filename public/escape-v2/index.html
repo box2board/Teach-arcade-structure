@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#17140f">
   <title>Escape the Bastille | Teach Arcade Escape Room V2</title>
   <meta name="description" content="French Revolution classroom escape room prototype using Teach Arcade's reusable 360-degree Escape Room V2 engine.">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css">
+  
   <link rel="stylesheet" href="/escape-v2/css/engine.css">
   <link rel="stylesheet" href="/escape-v2/css/panorama.css">
 </head>
@@ -36,9 +36,9 @@
       </section>
 
       <section id="gameScreen" class="screen game-screen" hidden aria-label="Escape room">
-        <div id="panorama" class="panorama" aria-label="360 degree Bastille room. Drag, swipe, or use arrow keys to look around."></div>
+        <div id="panorama" class="panorama" aria-label="Three dimensional room. Drag, swipe, or use arrow keys to look around."></div>
         <div class="scene-vignette" aria-hidden="true"></div>
-        <div class="look-hint" aria-hidden="true">Drag to explore • Gold markers are clues • Tap a marker to investigate</div>
+        <div class="look-hint" aria-hidden="true">Drag or swipe to look • Tap a highlighted object to investigate</div>
 
         <div class="room-hud">
           <div>
@@ -99,9 +99,6 @@
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
-  <script src="/escape-v2/js/viewer-adapter.js"></script>
-  <script src="/escape-v2/js/art-loader.js"></script>
-  <script src="/escape-v2/js/boot.js"></script>
+  <script type="module" src="/escape-v2/js/boot.js"></script>
 </body>
 </html>

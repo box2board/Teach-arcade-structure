@@ -20,12 +20,30 @@ window.ESCAPE_V2_DATA = {
       title: 'The Prison Cell',
       size: 'large',
       objective: 'Find five clues and determine the phrase that will convince the escaped prisoner to open your door.',
-      panorama: null,
-      startYaw: -6,
-      startPitch: -5,
-      hfov: 90,
-      minHfov: 82,
-      maxHfov: 98,
+      scene: {
+        dimensions: [10, 5.6, 10],
+        textureSeed: 1789,
+        background: '#151613',
+        fog: '#27231d',
+        doorPosition: [3.05],
+        windowPosition: [-2.6],
+        props: [
+          { kind: 'table', position: [-3.0, 0, -2.15], rotation: -0.12 },
+          { kind: 'crate', position: [-3.85, 0, -1.55] },
+          { kind: 'papers', position: [-3.0, 1.02, -2.15] },
+          { kind: 'bed', position: [3.45, 0, -1.0], rotation: Math.PI / 2 },
+          { kind: 'writing', position: [-4.83, 2.0, 0.15], rotation: Math.PI / 2 },
+          { kind: 'chain', position: [3.45, 0.03, -3.55], rotation: -0.2 },
+          { kind: 'cup', position: [3.85, 0.02, -3.35] }
+        ],
+        interactables: [
+          { id: 'papers', position: [-3.0, 1.04, -2.15], hitRadius: 0.62, radius: 0.38 },
+          { id: 'bed', position: [3.45, 0.77, -1.0], hitRadius: 0.8, radius: 0.45 },
+          { id: 'window', position: [-2.6, 4.0, -4.78], hitRadius: 0.82, radius: 0.46, rotation: [0,0,0] },
+          { id: 'wall', position: [-4.78, 2.0, 0.15], hitRadius: 0.8, radius: 0.44, rotation: [0,Math.PI/2,0] },
+          { id: 'chain', position: [3.55, 0.36, -3.48], hitRadius: 0.72, radius: 0.42 }
+        ]
+      },
       hotspots: [
         {
           id: 'papers', yaw: -124, pitch: -22,

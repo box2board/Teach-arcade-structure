@@ -129,7 +129,7 @@
   function renderRoom(index) {
     state.currentRoomIndex = index;
     const room = currentRoom();
-    if (!room.panorama) throw new Error(`No panorama configured for ${room.id}`);
+    if (!room.scene) throw new Error(`No 3D scene configured for ${room.id}`);
 
     els.roomLabel.textContent = room.label || `ROOM ${index + 1}`;
     els.roomTitle.textContent = room.title;
@@ -141,34 +141,13 @@
     }
     els.panorama.replaceChildren();
 
-    const hotSpots = room.hotspots.map((hotspot) => ({
-      pitch: hotspot.pitch,
-      yaw: hotspot.yaw,
-      type: 'info',
-      cssClass: `ta-pano-hotspot${state.solved.has(roomKey(room, hotspot)) ? ' solved' : ''}`,
-      clickHandlerFunc: () => openHotspot(hotspot),
-      createTooltipFunc: hotspotDom,
-      createTooltipArgs: { id: hotspot.id, title: hotspot.title, open: () => openHotspot(hotspot) }
-    }));
-
-    state.viewer = pannellum.viewer('panorama', {
-      type: 'equirectangular',
-      panorama: room.panorama,
-      autoLoad: true,
-      showControls: false,
-      showFullscreenCtrl: false,
-      showZoomCtrl: false,
-      mouseZoom: false,
-      compass: false,
-      keyboardZoom: false,
-      draggable: true,
-      pitch: room.startPitch || 0,
-      yaw: room.startYaw || 0,
-      hfov: room.hfov || 110,
-      minHfov: room.minHfov || 100,
-      maxHfov: room.maxHfov || 120,
-      hotSpots
-    });
+    const solvedIds = new Set(room.hotspots.filter((hotspot) => state.solved.has(roomKey(room, hotspot))).map((hotspot) => hotspot.id));
+    state.viewer = window.ESCAPE_V2_VIEWER.create(els.panorama, room, {
+      onInteract: (id) => {
+        const hotspot = room.hotspots.find((item) => item.id === id);
+        if (hotspot) openHotspot(hotspot);
+      }
+    }, solvedIds);
 
     updateRoomProgress();
     updateJournal();
@@ -247,10 +226,7 @@
     setFeedback('Solved. A new phrase fragment has been added to your journal.', true);
     els.modalBody.querySelectorAll('button,input').forEach((control) => { control.disabled = true; });
     els.modalBody.append(clueReveal(hotspot));
-    if (state.viewer) {
-      const node = els.panorama.querySelector(`[data-hotspot-id="${hotspot.id}"]`);
-      node?.classList.add('solved');
-    }
+    state.viewer?.setSolved(hotspot.id);
     updateRoomProgress();
     updateJournal();
   }
@@ -287,6 +263,7 @@
 
   function completeRoom(room) {
     setFeedback(room.solution.successMessage || 'Room solved.', true);
+    state.viewer?.openExit?.();
     els.modalBody.querySelectorAll('button,input').forEach((control) => { control.disabled = true; });
 
     if (state.currentRoomIndex < data.rooms.length - 1) {
@@ -305,7 +282,7 @@
       const finishButton = document.createElement('button');
       finishButton.type = 'button';
       finishButton.className = 'primary-btn';
-      finishButton.textContent = data.displayRoomCount && data.displayRoomCount > data.rooms.length ? 'Finish Room 1 prototype' : 'Complete mission';
+      finishButton.textContent = data.displayRoomCount && data.displayRoomCount > data.rooms.length ? 'Leave the Cell' : 'Complete mission';
       finishButton.style.marginTop = '18px';
       finishButton.disabled = false;
       finishButton.addEventListener('click', finishGame);
