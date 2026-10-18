@@ -1,0 +1,10 @@
+/* Shared guidance and focus behavior for guided lab pages. */
+const LabSupport=(()=>{
+let adapter=null,keyboard=false,open=false,marked=[];
+const node=id=>id?document.getElementById(id):null;
+function clearMarks(){marked.forEach(el=>el.classList.remove('help-focus'));marked=[];}
+function findFocus(info){if(info.busy)return null;const id=info.selected&&info.target?info.target:info.source||info.action;const el=node(id);return el&&!el.disabled?el:null;}
+function update(){if(!adapter)return;const info=adapter.get();node('restartFromBench').disabled=!!info.busy;node('downloadFromBench').disabled=!!info.busy;if(open){node('labHelpText').textContent=info.help;clearMarks();const el=findFocus(info);if(el){el.classList.add('help-focus');marked.push(el)}}const active=document.activeElement,hidden=active?.closest?.('[hidden]');if(keyboard&&!info.busy&&(!active||active===document.body||active.isConnected===false||hidden)){findFocus(info)?.focus({preventScroll:true})}}
+function show(){if(!adapter)return;open=!open;node('labHelp').hidden=!open;node('showLabHelp').setAttribute('aria-expanded',String(open));if(!open){clearMarks();return}update();const el=findFocus(adapter.get());if(el){el.focus({preventScroll:true});el.scrollIntoView?.({block:'center',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})}}
+function attach(config){adapter=config;node('showLabHelp').onclick=show;node('hideLabHelp').onclick=()=>{open=false;node('labHelp').hidden=true;node('showLabHelp').setAttribute('aria-expanded','false');clearMarks();node('showLabHelp').focus({preventScroll:true})};node('downloadFromBench').onclick=()=>{if(!adapter.get().busy)adapter.download()};node('restartFromBench').onclick=()=>{if(adapter.get().busy)return;clearMarks();adapter.restart();node('labOptions').open=false;update();findFocus(adapter.get())?.focus({preventScroll:true})};document.addEventListener('keydown',event=>{if(['Tab','Enter',' ','ArrowDown','ArrowUp','ArrowLeft','ArrowRight'].includes(event.key))keyboard=true});document.addEventListener('pointerdown',()=>keyboard=false,{passive:true});update();}
+return{attach,update};})();
