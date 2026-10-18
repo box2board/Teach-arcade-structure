@@ -4,6 +4,8 @@ import {prepareQuestionDeck} from '../question-decks.js';
 
 const $=id=>document.getElementById(id);
 const canvas=$('stage'),ctx=canvas.getContext('2d');
+const arenaBackground=new Image();arenaBackground.src='./assets/slime-falls-arena-bg.webp';
+const rangeDeckSprite=new Image();rangeDeckSprite.src='./assets/slime-falls-range-deck.webp';
 const W=canvas.width,H=canvas.height,VP={x:W/2,y:176};
 const sets=setsForGame('slime-slinger');
 const overlay=$('overlay'),panel=$('panel');
@@ -119,7 +121,7 @@ function drawCanyonWall(side,t){
  ctx.fillStyle='#4f7350';poly(left?[[0,416],[125,397],[174,427],[154,450],[0,457]]:[[W,408],[846,394],[783,426],[804,450],[W,457]]);ctx.fill();
  ctx.restore();
 }
-function drawBackground(t){
+function drawBackgroundFallback(t){
  const rush=performance.now()<bonusRushUntil,sky=ctx.createLinearGradient(0,0,0,H);sky.addColorStop(0,rush?'#7398db':'#66bde9');sky.addColorStop(.31,rush?'#edbddc':'#d3f4ff');sky.addColorStop(.54,'#eaf7f4');sky.addColorStop(.55,'#5cb7cf');sky.addColorStop(1,'#087b98');ctx.fillStyle=sky;ctx.fillRect(0,0,W,H);
  const sun=ctx.createRadialGradient(493,94,4,493,94,218);sun.addColorStop(0,'#fff9d7a8');sun.addColorStop(.3,'#fff9d766');sun.addColorStop(1,'#fff9d700');ctx.fillStyle=sun;ctx.fillRect(260,0,460,290);
  drawCloud(128+Math.sin(t*.06)*14,90,54,.46);drawCloud(360,60,43,.55);drawCloud(735+Math.sin(t*.05)*10,102,62,.5);drawCloud(868,55,38,.44);
@@ -134,6 +136,14 @@ function drawBackground(t){
  const water=ctx.createLinearGradient(0,365,0,H);water.addColorStop(0,'#7be2e8');water.addColorStop(.17,'#26bfd1');water.addColorStop(.5,'#0e96b6');water.addColorStop(1,'#07526e');ctx.fillStyle=water;poly([[166,382],[794,382],[W,H],[0,H]]);ctx.fill();
  ctx.save();ctx.globalAlpha=.38;for(let i=0;i<18;i++){const y=392+i*13,x1=195-i*10,x2=765+i*10,mid=480+Math.sin(t*1.1+i*.6)*25;ctx.strokeStyle=i%3?'#d5ffff':'#53e7ec';ctx.lineWidth=i%4===0?2.2:1;ctx.beginPath();ctx.moveTo(x1,y);ctx.quadraticCurveTo(mid,y-5-Math.sin(t+i)*3,x2,y);ctx.stroke();}ctx.restore();
  ctx.save();ctx.globalAlpha=.19;ctx.fillStyle='#efffff';for(let i=0;i<26;i++){const x=(i*83+Math.sin(t*.7+i)*14)%W,y=372+(i*37)%175;ctx.beginPath();ctx.arc(x,y,1.6+(i%3),0,Math.PI*2);ctx.fill();}ctx.restore();
+}
+function drawBackground(t){
+ if(!arenaBackground.complete||!arenaBackground.naturalWidth){drawBackgroundFallback(t);return;}
+ ctx.drawImage(arenaBackground,0,0,W,H);
+ // Quiet moving highlights keep the illustrated pool alive while the scenery stays crisp.
+ ctx.save();ctx.beginPath();poly([[166,382],[794,382],[W,H],[0,H]]);ctx.clip();ctx.globalAlpha=.16;
+ for(let i=0;i<8;i++){const y=401+i*22,x=170+i*83+(Math.sin(t*.75+i)*18);ctx.strokeStyle=i%3?'#e5ffff':'#57e9eb';ctx.lineWidth=i%3===0?2:1;ctx.beginPath();ctx.moveTo(x,y);ctx.quadraticCurveTo(x+38,y-4-Math.sin(t+i)*3,x+102,y);ctx.stroke();}
+ ctx.restore();
 }
 function drawBridge(y,scale,t){
  const span=780*scale,x0=(W-span)/2,x1=x0+span,arch=32*scale;ctx.save();
@@ -174,7 +184,7 @@ function drawRangeProps(t){
  // Tiny evergreens and rock shelves recede with the perspective.
  for(let i=0;i<12;i++){const z=.18+i*.061,x=(i%2?-1:1)*(420+35*Math.sin(t*.2+i)),p=project(x,z);drawConifer(p.x,p.y,30*p.scale,i%3?'#2f6948':'#477d52');}
 }
-function drawLanePlatforms(){
+function drawLanePlatformsFallback(){
  for(const [laneIndex,lane] of laneConfig.entries()){
   const left=project(-560,lane.z),right=project(560,lane.z),center=project(0,lane.z),s=center.scale,depth=laneIndex===2?25:laneIndex===1?18:13;
   ctx.save();
@@ -189,6 +199,16 @@ function drawLanePlatforms(){
   // Slime drips mark the attraction's three target decks without obscuring targets.
   if(laneIndex>0){ctx.fillStyle='#73ed45';for(let i=0;i<5;i++){const x=lerp(left.x,right.x,(i+.5)/5);ctx.beginPath();ctx.ellipse(x,left.y+10*s,3.3*s,2.2*s,0,0,Math.PI*2);ctx.fill();ctx.fillRect(x-1.4*s,left.y+9*s,2.8*s,(4+(i%3)*3)*s);}}
   ctx.restore();
+ }
+}
+function drawLanePlatforms(){
+ if(!rangeDeckSprite.complete||!rangeDeckSprite.naturalWidth){drawLanePlatformsFallback();return;}
+ const sourceRatio=rangeDeckSprite.naturalWidth/rangeDeckSprite.naturalHeight;
+ for(const lane of laneConfig){
+  const left=project(-560,lane.z),right=project(560,lane.z),center=project(0,lane.z),s=center.scale;
+  const width=(right.x-left.x)+18*s,height=width/sourceRatio;
+  // The illustrated boardwalk is perspective-scaled for each fixed target depth.
+  ctx.drawImage(rangeDeckSprite,left.x-9*s,center.y-height*.30,width,height);
  }
 }
 function drawForeground(){
@@ -225,7 +245,7 @@ function drawDepthHUD(){if(shotCamera)return;ctx.save();const x=16,y=18,w=198,h=
 function drawShotHUD(){if(!shotCamera)return;ctx.save();ctx.fillStyle='#3b2115df';rr(W/2-112,18,224,34,17);ctx.fill();ctx.strokeStyle=shotStage==='impact'?(impactFocus?.color||'#fff'):'#9dff75';ctx.lineWidth=2;ctx.stroke();ctx.fillStyle='#fff4d9';ctx.textAlign='center';ctx.font='950 12px system-ui';ctx.fillText(shotStage==='flight'?'● FOLLOWING SLIME':shotStage==='impact'?'● SPLAT!':'● BACK TO THE CANNON',W/2,40);ctx.restore();}
 function drawRushOverlay(){if(performance.now()>=bonusRushUntil&&rushFlash<=0)return;ctx.save();ctx.globalAlpha=performance.now()<bonusRushUntil?.09:rushFlash*.09;ctx.fillStyle='#ff4fd8';ctx.fillRect(0,0,W,H);ctx.restore();}
 function drawVignette(){const v=ctx.createRadialGradient(W/2,H*.43,150,W/2,H*.52,620);v.addColorStop(0,'#0000');v.addColorStop(.72,'#00000005');v.addColorStop(1,'#2b130a66');ctx.fillStyle=v;ctx.fillRect(0,0,W,H);}
-function drawScene(t){ctx.clearRect(0,0,W,H);drawBackground(t);drawCarnivalStructures(t);drawRangeProps(t);drawLanePlatforms();drawTargets(t);drawForeground();drawAimGuide();drawProjectileAndEffects();drawLauncher();drawDepthHUD();drawShotHUD();drawRushOverlay();drawVignette();}
+function drawScene(t){ctx.clearRect(0,0,W,H);drawBackground(t);drawLanePlatforms();drawTargets(t);drawForeground();drawAimGuide();drawProjectileAndEffects();drawLauncher();drawDepthHUD();drawShotHUD();drawRushOverlay();drawVignette();}
 function loop(now){const dt=Math.min(.04,(now-lastFrame)/1000||0);lastFrame=now;if(state==='playing'){keyboardAim(dt);updateRoundEvents(now);updateTargets(dt,now/1000);updateEffects(dt);updateCamera(dt,now);}else updateEffects(dt);drawScene(now/1000);requestAnimationFrame(loop);}
 
 $('questions').onclick=()=>{if(state!=='playing'||shotCamera)return;nextQuestion('playing');};
