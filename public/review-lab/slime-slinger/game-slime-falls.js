@@ -184,7 +184,7 @@ function drawAmbientPennants(t){
 function drawBackground(t){
  if(!arenaBackground.complete||!arenaBackground.naturalWidth){drawBackgroundFallback(t);return;}
  ctx.drawImage(arenaBackground,0,0,W,H);
- drawAmbientFalls(t);drawAmbientLanterns(t);drawAmbientMist(t);drawAmbientPennants(t);
+ drawAmbientFalls(t);drawAmbientLanterns(t);drawAmbientMist(t);
  // Quiet moving highlights keep the illustrated pool alive while the scenery stays crisp.
  ctx.save();ctx.beginPath();poly([[166,382],[794,382],[W,H],[0,H]]);ctx.clip();ctx.globalAlpha=.16;
  for(let i=0;i<8;i++){const y=401+i*22,x=170+i*83+(Math.sin(t*.75+i)*18);ctx.strokeStyle=i%3?'#e5ffff':'#57e9eb';ctx.lineWidth=i%3===0?2:1;ctx.beginPath();ctx.moveTo(x,y);ctx.quadraticCurveTo(x+38,y-4-Math.sin(t+i)*3,x+102,y);ctx.stroke();}
@@ -372,7 +372,7 @@ function drawDepthHUD(){if(shotCamera)return;ctx.save();const x=16,y=18,w=198,h=
 function drawShotHUD(){if(!shotCamera)return;ctx.save();ctx.fillStyle='#3b2115df';rr(W/2-112,18,224,34,17);ctx.fill();ctx.strokeStyle=shotStage==='impact'?(impactFocus?.color||'#fff'):'#9dff75';ctx.lineWidth=2;ctx.stroke();ctx.fillStyle='#fff4d9';ctx.textAlign='center';ctx.font='950 12px system-ui';ctx.fillText(shotStage==='flight'?'● FOLLOWING SLIME':shotStage==='impact'?'● SPLAT!':'● BACK TO THE CANNON',W/2,40);ctx.restore();}
 function drawRushOverlay(){if(performance.now()>=bonusRushUntil&&rushFlash<=0)return;ctx.save();ctx.globalAlpha=performance.now()<bonusRushUntil?.09:rushFlash*.09;ctx.fillStyle='#ff4fd8';ctx.fillRect(0,0,W,H);ctx.restore();}
 function drawVignette(){const v=ctx.createRadialGradient(W/2,H*.43,150,W/2,H*.52,620);v.addColorStop(0,'#0000');v.addColorStop(.72,'#00000005');v.addColorStop(1,'#2b130a66');ctx.fillStyle=v;ctx.fillRect(0,0,W,H);}
-function drawScene(t){ctx.clearRect(0,0,W,H);drawBackground(t);drawLanePlatforms();drawTargets(t);drawForeground();drawAimGuide();drawProjectileAndEffects();drawLauncher();drawDepthHUD();drawShotHUD();drawRushOverlay();drawVignette();}
+function drawScene(t){ctx.clearRect(0,0,W,H);drawBackground(t);drawCarnivalStructures(t);drawLanePlatforms();drawTargets(t);drawForeground();drawAimGuide();drawProjectileAndEffects();drawLauncher();drawDepthHUD();drawShotHUD();drawRushOverlay();drawVignette();}
 function loop(now){const dt=Math.min(.04,(now-lastFrame)/1000||0);lastFrame=now;if(state==='playing'){keyboardAim(dt);updateRoundEvents(now);updateTargets(dt,now/1000);updateEffects(dt);updateCamera(dt,now);}else updateEffects(dt);drawScene(now/1000);requestAnimationFrame(loop);}
 
 $('questions').onclick=()=>{if(state!=='playing'||shotCamera)return;nextQuestion('playing');};
