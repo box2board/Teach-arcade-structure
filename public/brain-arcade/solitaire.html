@@ -1752,7 +1752,8 @@
       drawFromStock();
       return;
     }
-    if (state.selected && (ref.type === "foundation" || ref.type === "tableau")){
+    // Tap selection may finish on a foundation; tableau moves stay drag-based.
+    if (state.selected && ref.type === "foundation"){
       tryMoveSelectedTo(ref);
     }
   }
