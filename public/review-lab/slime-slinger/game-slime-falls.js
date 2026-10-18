@@ -7,7 +7,7 @@ const canvas=$('stage'),ctx=canvas.getContext('2d');
 const arenaBackground=new Image();arenaBackground.src='./assets/slime-falls-arena-bg.webp';
 const rangeDeckSprite=new Image();rangeDeckSprite.src='./assets/slime-falls-range-deck.webp';
 const targetSprites=['blob','bot','dummy','dart'].map(name=>{const image=new Image();image.src=`./assets/slime-falls-target-${name}.webp`;return image;});
-const cannonSprite=new Image();cannonSprite.src='./assets/slime-falls-cannon-v2.webp';
+const cannonSprite=new Image();cannonSprite.src='./assets/slime-falls-cannon-v3.webp';
 const W=canvas.width,H=canvas.height,VP={x:W/2,y:176};
 const sets=setsForGame('slime-slinger');
 const overlay=$('overlay'),panel=$('panel');
