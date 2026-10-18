@@ -1400,10 +1400,18 @@
 
     if (!candidates.length) return null;
 
-    const PAD = 26;
+    const PAD = 28;
     const inflate = (r,p)=>({left:r.left-p, top:r.top-p, right:r.right+p, bottom:r.bottom+p});
-    const inside = (r)=> x>=r.left && x<=r.right && y>=r.top && y<=r.bottom;
     const center = (r)=>({cx:(r.left+r.right)/2, cy:(r.top+r.bottom)/2});
+    const drag = state.drag;
+    const draggedCard = drag?.ghost?.firstElementChild?.getBoundingClientRect();
+    const probeX = drag && draggedCard
+      ? x - drag.pointerOffsetX + draggedCard.width / 2
+      : x;
+    const probeY = drag && draggedCard
+      ? y - drag.pointerOffsetY + draggedCard.height / 2
+      : y;
+    const inside = (r)=> probeX>=r.left && probeX<=r.right && probeY>=r.top && probeY<=r.bottom;
 
     const hits = [];
     for (const c of candidates){
