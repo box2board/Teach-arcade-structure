@@ -248,11 +248,13 @@ function drawTarget(target,t){
  const p=project(target.x,target.z),s=p.scale,r=target.r*s,special=target.special,base=special?.color||target.type.color;
  const pop=clamp(target.spawnAge/.2,0,1),hitProgress=target.hitTime>0?1-target.hitTime/(target.hitDuration||.52):0;
  const snap=target.hitTime>0?Math.sin(Math.min(1,hitProgress/.22)*Math.PI):0,exit=target.hitTime>0?smooth(clamp((hitProgress-.80)/.20,0,1)):0;
- const idle=Math.sin(t*(target.type.id==='speed'?3.8:2.1)+target.phase),idleBob=idle*r*.045;
- ctx.save();ctx.translate(p.x,p.y-r*.52-idleBob-snap*r*.14+exit*r*.18);ctx.scale((.82+.18*pop)*(1+idle*.016+snap*.30-exit*.58),(.82+.18*pop)*(1-idle*.016-snap*.38-exit*.58));ctx.rotate((target.hitKick||0)*(snap*.26+exit*.12)+idle*.035*(1-exit));
+ const motion=target.type.motion,rate=motion==='zigzag'?5.2:motion==='wave'?3.8:motion==='normal'?2.8:2.1;
+ const idle=Math.sin(t*rate+target.phase),bounce=(.5-.5*Math.cos(t*rate*2+target.phase))*r*(motion==='calm'?.025:.052);
+ const moveLean=clamp(target.vx/260,-1,1)*(motion==='calm'?.018:.055),sway=motion==='zigzag'?Math.sin(t*rate*.72+target.phase)*.035:motion==='wave'?Math.sin(t*rate*.55+target.phase)*.024:0;
+ ctx.save();ctx.translate(p.x,p.y-r*.52-bounce-snap*r*.14+exit*r*.18);ctx.scale((.82+.18*pop)*(1+idle*.025+snap*.30-exit*.58),( .82+.18*pop)*(1-idle*.035-snap*.38-exit*.58));ctx.rotate(moveLean+sway+idle*.022*(1-exit)+(target.hitKick||0)*(snap*.26+exit*.12));
  ctx.globalAlpha=.38;ctx.fillStyle='#00131b';ctx.beginPath();ctx.ellipse(0,r*.72,r*.72,r*.17,0,0,Math.PI*2);ctx.fill();ctx.globalAlpha=1;
  if(special){ctx.globalAlpha=.20+.10*Math.sin(t*5+target.phase);ctx.fillStyle=special.color;ctx.shadowColor=special.color;ctx.shadowBlur=24*s;ctx.beginPath();ctx.arc(0,0,r*1.18,0,Math.PI*2);ctx.fill();ctx.globalAlpha=1;ctx.shadowBlur=0;}
- ctx.shadowColor='#071d28aa';ctx.shadowBlur=12*s;ctx.shadowOffsetY=5*s;ctx.save();ctx.rotate(Math.sin(t*(target.type.id==='speed'?4.4:2.2)+target.phase)*.022*(1-exit));ctx.drawImage(specialTargetSprite(sprite,special?.id),-r*.94,-r*.96+Math.sin(t*2.4+target.phase)*r*.018,r*1.88,r*1.78);ctx.restore();ctx.shadowBlur=0;ctx.shadowOffsetY=0;
+ ctx.shadowColor='#071d28aa';ctx.shadowBlur=12*s;ctx.shadowOffsetY=5*s;ctx.save();ctx.rotate(idle*.018*(1-exit));ctx.drawImage(specialTargetSprite(sprite,special?.id),-r*.94,-r*.96+Math.sin(t*rate+target.phase)*r*.014,r*1.88,r*1.78);ctx.restore();ctx.shadowBlur=0;ctx.shadowOffsetY=0;
  if(special?.id==='golden'){ctx.fillStyle='#ffd845';ctx.strokeStyle='#fff1a0';ctx.lineWidth=Math.max(1,2*s);poly([[-r*.40,-r*.82],[-r*.27,-r*1.16],[0,-r*.96],[r*.27,-r*1.16],[r*.40,-r*.82]]);ctx.fill();ctx.stroke();}
  if(special&&special.id!=='golden')drawSpecialEmblem(special.id,r,special.color);
  if(special?.id==='golden'){ctx.strokeStyle='#fff3aa';ctx.lineWidth=Math.max(1,1.4*s);for(let i=0;i<3;i++){const a=t*.65+i*Math.PI*2/3,xx=Math.cos(a)*r*1.15,yy=Math.sin(a)*r*.8-r*.3,len=(.09+.04*Math.sin(t*5+i))*r;ctx.beginPath();ctx.moveTo(xx-len,yy);ctx.lineTo(xx+len,yy);ctx.moveTo(xx,yy-len);ctx.lineTo(xx,yy+len);ctx.stroke();}}
