@@ -46,6 +46,28 @@ function stoneTexture(seed = 13, floor = false) {
   return tex;
 }
 
+function parchmentTexture() {
+  const c = document.createElement('canvas'); c.width = 512; c.height = 512;
+  const x = c.getContext('2d'); const rnd = seeded(1789);
+  const wash = x.createLinearGradient(0, 0, 512, 512);
+  wash.addColorStop(0, '#e1d2ad'); wash.addColorStop(1, '#bca77c');
+  x.fillStyle = wash; x.fillRect(0, 0, 512, 512);
+  for (let i = 0; i < 1800; i++) {
+    const px = rnd() * 512, py = rnd() * 512;
+    x.fillStyle = rnd() > .5 ? 'rgba(83,61,37,.08)' : 'rgba(255,246,214,.12)';
+    x.fillRect(px, py, 1 + rnd() * 3, 1 + rnd() * 2);
+  }
+  x.strokeStyle = 'rgba(76,47,31,.68)'; x.lineWidth = 3;
+  for (let row = 0; row < 5; row++) {
+    const y = 104 + row * 62;
+    x.beginPath(); x.moveTo(46 + rnd() * 24, y);
+    x.bezierCurveTo(150, y - 5, 300, y + 5, 454 - rnd() * 34, y + (rnd() - .5) * 5);
+    x.stroke();
+  }
+  const tex = new THREE.CanvasTexture(c); tex.colorSpace = THREE.SRGBColorSpace;
+  tex.wrapS = tex.wrapT = THREE.RepeatWrapping; return tex;
+}
+
 function woodTexture() {
   const c = document.createElement('canvas'); c.width = 512; c.height = 512;
   const x = c.getContext('2d'); const rnd = seeded(109);
@@ -80,7 +102,7 @@ function buildScene(container, room, callbacks, solvedIds) {
   const darkWood = makeMaterial('#46372a', {map:woodTex});
   const iron = makeMaterial('#282b2d', {metalness:.72,roughness:.46});
   const straw = makeMaterial('#b79a58');
-  const parchment = makeMaterial('#d5c59e');
+  const parchment = makeMaterial('#ffffff', {map:parchmentTexture()});
   const plaster = makeMaterial('#ded0ae');
   const materials = { stone, floor: floorMat, wood, darkWood, iron, straw, paper: parchment, plaster, rough: makeMaterial('#5a4436') };
 
@@ -211,10 +233,10 @@ function buildScene(container, room, callbacks, solvedIds) {
   const objects = new Map();
   (cfg.interactables || []).forEach((item) => {
     const anchor=new THREE.Group();anchor.position.set(...item.position);group.add(anchor);
-    const ring=new THREE.Mesh(new THREE.TorusGeometry(item.radius||.3,.022,8,28),new THREE.MeshBasicMaterial({color:solvedIds.has(item.id)?0x9bc6a1:0xffc96f,transparent:true,opacity:.7}));
+    const ring=new THREE.Mesh(new THREE.TorusGeometry(item.radius||.3,.032,8,28),new THREE.MeshBasicMaterial({color:solvedIds.has(item.id)?0x9bc6a1:0xffc96f,transparent:true,opacity:.72}));
     ring.rotation.set(...(item.rotation||[-Math.PI/2,0,0]));ring.userData.marker=true;anchor.add(ring);
     const hit=new THREE.Mesh(new THREE.SphereGeometry(item.hitRadius||.56,10,8),new THREE.MeshBasicMaterial({transparent:true,opacity:0,depthWrite:false}));
-    hit.userData.interactable=item.id;anchor.add(hit);objects.set(item.id,{anchor,ring,hit});
+    hit.userData.interactable=item.id;anchor.add(hit);objects.set(item.id,{anchor,ring,hit,label:item.label||item.id});
   });
   world.add(group);
 
@@ -227,25 +249,39 @@ function buildScene(container, room, callbacks, solvedIds) {
   renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
   renderer.domElement.setAttribute('aria-label','Interactive three dimensional room. Drag or swipe to look around; tap a highlighted object to investigate.');
   container.replaceChildren(renderer.domElement);
+  const focusPrompt=document.createElement('button');
+  focusPrompt.type='button';focusPrompt.className='scene-focus-prompt';focusPrompt.hidden=true;
+  focusPrompt.setAttribute('aria-live','polite');
+  container.appendChild(focusPrompt);
   const raycaster=new THREE.Raycaster(), pointer=new THREE.Vector2();
-  let yaw=0,pitch=0,targetYaw=0,targetPitch=0,drag=null,hoverId=null,raf=0,destroyed=false;
+  let yaw=0,pitch=0,targetYaw=0,targetPitch=0,drag=null,hoverId=null,aimId=null,raf=0,destroyed=false;
   const initialYaw=(cfg.startYaw||0)*Math.PI/180; targetYaw=yaw=initialYaw;
   function resize(){const rect=container.getBoundingClientRect();if(!rect.width||!rect.height)return;renderer.setSize(rect.width,rect.height,false);camera.aspect=rect.width/rect.height;camera.updateProjectionMatrix();}
   const ro=new ResizeObserver(resize);ro.observe(container);resize();
   let exitOpen=false;const exitDoorStartX=doorGroup?.position.x||0;
   function setLook(){const dir=new THREE.Vector3(Math.sin(yaw)*Math.cos(pitch),Math.sin(pitch),-Math.cos(yaw)*Math.cos(pitch));camera.lookAt(camera.position.clone().add(dir));}
   setLook();
+  function interact(id){if(!id)return;focusPrompt.hidden=true;callbacks.onInteract?.(id);}
+  function centerHit(){raycaster.setFromCamera(new THREE.Vector2(0,0),camera);const hits=raycaster.intersectObjects([...objects.values()].map(x=>x.hit),false);return hits[0]?.object.userData.interactable||null;}
   function hitAt(e){const r=renderer.domElement.getBoundingClientRect();pointer.x=((e.clientX-r.left)/r.width)*2-1;pointer.y=-((e.clientY-r.top)/r.height)*2+1;raycaster.setFromCamera(pointer,camera);const hits=raycaster.intersectObjects([...objects.values()].map(x=>x.hit),false);return hits[0]?.object.userData.interactable||null;}
+  focusPrompt.addEventListener('pointerdown',e=>e.stopPropagation());
+  focusPrompt.addEventListener('click',e=>{e.stopPropagation();interact(aimId);});
   function down(e){if(e.button!==undefined&&e.button!==0)return;drag={x:e.clientX,y:e.clientY,moved:false,id:e.pointerId};renderer.domElement.setPointerCapture?.(e.pointerId);}
   function move(e){if(drag&&drag.id===e.pointerId){const dx=e.clientX-drag.x,dy=e.clientY-drag.y;if(Math.abs(dx)+Math.abs(dy)>5)drag.moved=true;targetYaw-=dx*.0046;targetPitch=clamp(targetPitch+dy*.0038,-.82,.82);drag.x=e.clientX;drag.y=e.clientY;}else{const id=hitAt(e);if(id!==hoverId){if(hoverId)callbacks.onFocus?.(hoverId,false);hoverId=id;if(id)callbacks.onFocus?.(id,true);renderer.domElement.style.cursor=id?'pointer':'grab';}}}
-  function up(e){if(!drag||drag.id!==e.pointerId)return;const moved=drag.moved;drag=null;if(!moved){const id=hitAt(e);if(id)callbacks.onInteract?.(id);}}
+  function up(e){if(!drag||drag.id!==e.pointerId)return;const moved=drag.moved;drag=null;if(!moved){const id=hitAt(e);if(id)interact(id);}}
   const keydown=e=>{
     if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.key)){e.preventDefault();const amt=.12;if(e.key==='ArrowLeft')targetYaw-=amt;if(e.key==='ArrowRight')targetYaw+=amt;if(e.key==='ArrowUp')targetPitch=clamp(targetPitch+amt,-.82,.82);if(e.key==='ArrowDown')targetPitch=clamp(targetPitch-amt,-.82,.82);}
-    if(e.key==='Enter'||e.key===' '){e.preventDefault();raycaster.setFromCamera(new THREE.Vector2(0,0),camera);const hits=raycaster.intersectObjects([...objects.values()].map(x=>x.hit),false);const id=hits[0]?.object.userData.interactable;if(id)callbacks.onInteract?.(id);}
+    if(e.key==='Enter'||e.key===' '){e.preventDefault();raycaster.setFromCamera(new THREE.Vector2(0,0),camera);const hits=raycaster.intersectObjects([...objects.values()].map(x=>x.hit),false);const id=hits[0]?.object.userData.interactable;if(id)interact(id);}
   };
   renderer.domElement.addEventListener('pointerdown',down);renderer.domElement.addEventListener('pointermove',move);renderer.domElement.addEventListener('pointerup',up);renderer.domElement.addEventListener('pointercancel',()=>drag=null);renderer.domElement.addEventListener('keydown',keydown);renderer.domElement.tabIndex=0;requestAnimationFrame(()=>renderer.domElement.focus({preventScroll:true}));
   function tick(){if(destroyed)return;raf=requestAnimationFrame(tick);yaw+=(targetYaw-yaw)*.16;pitch+=(targetPitch-pitch)*.16;setLook();const t=performance.now()*.001;animatedProps.forEach((p,i)=>{p.scale.y=1+Math.sin(t*8+i)*.10;});if(exitOpen&&doorGroup){doorGroup.rotation.y+=(-.86-doorGroup.rotation.y)*.075;doorGroup.position.x+=(exitDoorStartX+.48-doorGroup.position.x)*.075;}
-    for(const [id,o] of objects){if(o.ring){o.ring.material.opacity=solvedIds.has(id)?.24:(id===hoverId?.98:(.54+Math.sin(t*2.2)*.13));o.ring.scale.setScalar(1+Math.sin(t*2.2)*.04);}}
+    const nextAim=centerHit();
+    if(nextAim!==aimId){
+      aimId=nextAim;
+      focusPrompt.hidden=!aimId;
+      if(aimId){const target=objects.get(aimId);const action=solvedIds.has(aimId)?'Review':'Investigate';focusPrompt.textContent=`${action} · ${target?.label||aimId}`;focusPrompt.setAttribute('aria-label',`${action} ${target?.label||aimId}`);}
+    }
+    for(const [id,o] of objects){if(o.ring){o.ring.material.opacity=solvedIds.has(id)?.26:(id===hoverId||id===aimId?.98:(.64+Math.sin(t*2.2)*.12));o.ring.scale.setScalar(1+(id===aimId?.09:.04)*Math.sin(t*2.2));}}
     renderer.render(world,camera);
   }tick();
   return {

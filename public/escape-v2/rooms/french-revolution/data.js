@@ -42,18 +42,18 @@ window.ESCAPE_V2_DATA = {
           { kind: 'table', position: [-3.0, 0, -2.15], rotation: -0.12 },
           { kind: 'crate', position: [-3.85, 0, -1.55] },
           { kind: 'torch', position: [4.35, 3.0, -4.78], rotation: -Math.PI / 2 },
-          { kind: 'papers', position: [-3.0, 1.02, -2.15] },
+          { kind: 'papers', position: [-3.0, 0.85, -2.15] },
           { kind: 'bed', position: [3.45, 0, -1.0], rotation: Math.PI / 2 },
           { kind: 'writing', position: [-4.83, 2.0, 0.15], rotation: Math.PI / 2 },
           { kind: 'chain', position: [3.45, 0.03, -3.55], rotation: -0.2 },
           { kind: 'cup', position: [3.85, 0.02, -3.35] }
         ],
         interactables: [
-          { id: 'papers', position: [-3.0, 1.04, -2.15], hitRadius: 0.62, radius: 0.38 },
-          { id: 'bed', position: [3.45, 0.77, -1.0], hitRadius: 0.8, radius: 0.45 },
-          { id: 'window', position: [-2.6, 4.0, -4.78], hitRadius: 0.82, radius: 0.46, rotation: [0,0,0] },
-          { id: 'wall', position: [-4.78, 2.0, 0.15], hitRadius: 0.8, radius: 0.44, rotation: [0,Math.PI/2,0] },
-          { id: 'chain', position: [3.55, 0.36, -3.48], hitRadius: 0.72, radius: 0.42 }
+          { id: 'papers', label: 'Scattered Papers', position: [-3.0, 0.94, -2.15], hitRadius: 0.62, radius: 0.38 },
+          { id: 'bed', label: 'Prisoner Note', position: [3.45, 0.68, -1.0], hitRadius: 0.8, radius: 0.45 },
+          { id: 'window', label: 'Barred Window', position: [-2.6, 4.0, -4.78], hitRadius: 0.82, radius: 0.46, rotation: [0,0,0] },
+          { id: 'wall', label: 'Writing on the Wall', position: [-4.78, 2.0, 0.15], hitRadius: 0.8, radius: 0.44, rotation: [0,Math.PI/2,0] },
+          { id: 'chain', label: 'Broken Chain and Cup', position: [3.55, 0.07, -3.48], hitRadius: 0.72, radius: 0.42 }
         ]
       },
       hotspots: [
