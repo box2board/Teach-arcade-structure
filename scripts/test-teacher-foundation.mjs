@@ -54,3 +54,10 @@ test('cabinet migration enforces ownership without enabling plans or student dat
  const sql=await readFile(new URL('../db/track-b/002-cabinet-bookmarks.sql',import.meta.url),'utf8');
  for(const policy of ['cabinet_read','cabinet_add','cabinet_remove'])assert.ok(sql.includes(`create policy ${policy}`));assert.ok(sql.includes('enable row level security'));assert.ok(sql.includes('with check ((select auth.uid())=teacher_id)'));assert.ok(!/grant .*update/i.test(sql));
 });
+test('teacher-profile trigger stays outside exposed public API with execute revoked',async()=>{
+ const sql=await readFile(new URL('../db/track-b/001-teachers-favorites.sql',import.meta.url),'utf8');
+ assert.ok(sql.includes('create function private.create_teacher_profile()'));
+ assert.ok(sql.includes('revoke all on function private.create_teacher_profile() from public,anon,authenticated'));
+ assert.ok(sql.includes("set search_path=''"));
+ assert.ok(!sql.includes('create function public.create_teacher_profile()'));
+});

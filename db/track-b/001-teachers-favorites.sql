@@ -1,5 +1,9 @@
 -- Apply once to an isolated Supabase development project. Not automatically executed.
 begin;
+-- The profile trigger is internal, outside the exposed API schema.
+create schema if not exists private;
+revoke all on schema private from public,anon,authenticated;
+grant usage on schema public to authenticated;
 create table public.teachers (
  id uuid primary key references auth.users(id) on delete cascade,
  plan text not null default 'free' check (plan in ('free','pro','school')),
@@ -21,10 +25,10 @@ create policy favorites_read on public.teacher_favorites for select to authentic
 create policy favorites_add on public.teacher_favorites for insert to authenticated with check ((select auth.uid())=teacher_id);
 create policy favorites_remove on public.teacher_favorites for delete to authenticated using ((select auth.uid())=teacher_id);
 -- Plans are never writable by teachers, including via the direct database API.
-create function public.create_teacher_profile() returns trigger language plpgsql security definer set search_path='' as $$
+create function private.create_teacher_profile() returns trigger language plpgsql security definer set search_path='' as $$
 begin insert into public.teachers(id) values(new.id); return new; end;
 $$;
-revoke all on function public.create_teacher_profile() from public,anon,authenticated;
-create trigger teacher_profile_created after insert on auth.users for each row execute function public.create_teacher_profile();
+revoke all on function private.create_teacher_profile() from public,anon,authenticated;
+create trigger teacher_profile_created after insert on auth.users for each row execute function private.create_teacher_profile();
 insert into public.teachers(id) select id from auth.users on conflict do nothing;
 commit;

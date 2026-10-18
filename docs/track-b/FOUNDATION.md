@@ -1,5 +1,18 @@
 # Track B: teacher foundation
 
+## Current development service status (October 18)
+
+The user authorized a new development project in box2board's Org. Supabase quoted $0/month and created `teach-arcade-development` (`wwpptcguilarkbouvdyj`) in `us-east-2`; the project is active. This supersedes historical statements below that no hosted service exists. The older inactive TEACH-arcade project was not modified.
+
+Applied migrations: `teacher_account_favorites_foundation` (001) and `cabinet_game_tool_bookmarks` (002). The initial profile trigger now lives in the non-exposed `private` schema, with no PUBLIC/anon/authenticated execution or schema grants. Its privileged insert is restricted to trigger-created teacher profiles; the public tables have explicit authenticated grants and ownership RLS.
+
+Executed a rolled-back transaction with two temporary auth identities and real PostgreSQL role/JWT-sub switching. Verified profile-trigger creation, default free plan, own profile visibility and bookmark writes/deletes, denied cross-owner inserts, hidden cross-owner reads, ineffective cross-owner deletes, denied anonymous reads and denied teacher plan edits. The temporary identities/data were rolled back; all three application tables are empty afterward. Security and performance advisors both returned zero findings.
+
+Not yet done: email templates/OTP settings, authenticated SMTP or provider testing restrictions, Vercel branch-only configuration, and real email/session/cross-device tests. The Supabase connector available here does not expose auth-settings writes. Vercel previously returned team-scope 403 and no CLI fallback was installed; do not keep retrying unchanged. The hosted Cabinet must continue to show unconfigured account state until the Preview settings are entered. No keys were committed or pasted into chat; no real teacher/student accounts were created or emails sent. Production remains unchanged.
+
+Project dashboard: https://supabase.com/dashboard/project/wwpptcguilarkbouvdyj
+Next guided user step: open Authentication → Email Templates, then configure the Magic Link and Confirm Signup templates to display `{{ .Token }}` with six-digit email OTP settings. Inspect current settings first. Finish Preview configuration and real two-user tests before calling sign-in operational.
+
 ## Arcade art direction (October 18)
 
 The Cabinet now uses a dedicated midnight-violet arcade shell, illuminated marquee, cabinet-like collection shelves and miniature game cabinets built in HTML/CSS around existing game imagery. Cyan, pink and gold accents identify controls and collections; regular body text uses an ordinary system font. The visual pass replaces the accumulated workspace stylesheet rather than layering another theme on top. It covers the library, game selection, tools, empty states, account forms and question dialog, with responsive cabinet layouts and 44px controls. Decorative elements do not intercept pointer events. There is no flashing, autoplay audio, external font dependency, fabricated credit balance or coin/payment implication. Reduced-motion and higher-contrast preferences are respected. No auth, collection API, pricing, data model or game mechanics changed. Live visual/browser testing remains outstanding in this workspace.
