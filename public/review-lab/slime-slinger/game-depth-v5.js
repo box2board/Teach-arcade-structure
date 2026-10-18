@@ -8,7 +8,7 @@ const W=canvas.width,H=canvas.height,VP={x:W/2,y:178};
 const sets=setsForGame('slime-slinger');
 const overlay=$('overlay'),panel=$('panel');
 
-const Z_MIN=.16,Z_MAX=.92,SWEEP_SPEED=.50;
+const Z_MIN=.16,Z_MAX=.92,SWEEP_SPEED=.50,PACE=.86;
 const targetTypes=[
   {id:'easy',label:'EASY',scale:1.22,speed:.72,multiplier:.7,color:'#94ff73',motion:'calm',weight:27},
   {id:'standard',label:'STANDARD',scale:1,speed:1,multiplier:1,color:'#53dcff',motion:'normal',weight:38},
@@ -113,7 +113,7 @@ function drawShotHUD(){if(!shotCamera)return;ctx.save();ctx.fillStyle='#06131cd6
 function drawRushOverlay(){if(performance.now()>=bonusRushUntil&&rushFlash<=0)return;ctx.save();ctx.globalAlpha=performance.now()<bonusRushUntil?.08:rushFlash*.08;ctx.fillStyle='#ff4fd8';ctx.fillRect(0,0,W,H);ctx.restore();}
 function drawVignette(){const v=ctx.createRadialGradient(W/2,H*.45,160,W/2,H*.5,610);v.addColorStop(0,'#0000');v.addColorStop(.72,'#00000008');v.addColorStop(1,'#00121d70');ctx.fillStyle=v;ctx.fillRect(0,0,W,H);}
 function drawScene(t){ctx.clearRect(0,0,W,H);drawBackground(t);drawTargets(t);drawAimGuide();drawProjectileAndEffects();drawLauncher();drawDepthHUD();drawShotHUD();drawRushOverlay();drawVignette();}
-function loop(now){const dt=Math.min(.04,(now-lastFrame)/1000||0);lastFrame=now;if(state==='playing'){keyboardAim(dt);updateDepthSweep(dt);updateRoundEvents(now);updateTargets(dt,now/1000);updateEffects(dt);updateCamera(dt,now);}else updateEffects(dt);drawScene(now/1000);requestAnimationFrame(loop);}
+function loop(now){const dt=Math.min(.04,(now-lastFrame)/1000||0)*PACE;lastFrame=now;if(state==='playing'){keyboardAim(dt);updateDepthSweep(dt);updateRoundEvents(now);updateTargets(dt,now/1000);updateEffects(dt);updateCamera(dt,now);}else updateEffects(dt);drawScene(now/1000);requestAnimationFrame(loop);}
 
 $('questions').onclick=()=>{if(state!=='playing'||shotCamera)return;nextQuestion('playing');};
 $('earn-more').onclick=()=>{if(state==='playing'&&!shotCamera)nextQuestion('playing');};
