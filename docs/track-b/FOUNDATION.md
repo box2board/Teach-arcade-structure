@@ -1,5 +1,9 @@
 # Track B: teacher foundation
 
+## Arcade art direction (October 18)
+
+The Cabinet now uses a dedicated midnight-violet arcade shell, illuminated marquee, cabinet-like collection shelves and miniature game cabinets built in HTML/CSS around existing game imagery. Cyan, pink and gold accents identify controls and collections; regular body text uses an ordinary system font. The visual pass replaces the accumulated workspace stylesheet rather than layering another theme on top. It covers the library, game selection, tools, empty states, account forms and question dialog, with responsive cabinet layouts and 44px controls. Decorative elements do not intercept pointer events. There is no flashing, autoplay audio, external font dependency, fabricated credit balance or coin/payment implication. Reduced-motion and higher-contrast preferences are respected. No auth, collection API, pricing, data model or game mechanics changed. Live visual/browser testing remains outstanding in this workspace.
+
 ## Arcade Cabinet product direction (October 18)
 
 Teacher HQ is now the Arcade Cabinet: a personal collection, not primarily an administrative dashboard. Keep `/teacher/`, its API and existing hashes for compatibility. Homepage navigation and Review Lab entry points use My Cabinet. My Games, My Question Sets and My Tools are the collection destinations; Explore Topics preserves the working topic → game → setup flow. Use the existing Review Lab catalog and a small verified tools catalog, with no changes to game engines. Public tools and games remain accessible without login; no pricing, paid quotas, billing, school controls or student data are introduced.
