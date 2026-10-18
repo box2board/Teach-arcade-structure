@@ -139,9 +139,42 @@ function drawBackgroundFallback(t){
  ctx.save();ctx.globalAlpha=.38;for(let i=0;i<18;i++){const y=392+i*13,x1=195-i*10,x2=765+i*10,mid=480+Math.sin(t*1.1+i*.6)*25;ctx.strokeStyle=i%3?'#d5ffff':'#53e7ec';ctx.lineWidth=i%4===0?2.2:1;ctx.beginPath();ctx.moveTo(x1,y);ctx.quadraticCurveTo(mid,y-5-Math.sin(t+i)*3,x2,y);ctx.stroke();}ctx.restore();
  ctx.save();ctx.globalAlpha=.19;ctx.fillStyle='#efffff';for(let i=0;i<26;i++){const x=(i*83+Math.sin(t*.7+i)*14)%W,y=372+(i*37)%175;ctx.beginPath();ctx.arc(x,y,1.6+(i%3),0,Math.PI*2);ctx.fill();}ctx.restore();
 }
+function drawAmbientFalls(t){
+ // Soft traveling highlights sit over the painted falls, keeping the illustrated canyon alive.
+ const falls=[
+  {x:8,y:82,w:116,h:204,hue:0,phase:.3},
+  {x:108,y:126,w:190,h:236,hue:1,phase:1.4},
+  {x:378,y:214,w:198,h:214,hue:0,phase:2.8},
+  {x:652,y:198,w:207,h:215,hue:1,phase:4.1},
+  {x:842,y:66,w:116,h:220,hue:0,phase:5.2}
+ ];
+ ctx.save();ctx.globalCompositeOperation='screen';
+ for(const f of falls){
+  ctx.save();ctx.beginPath();ctx.moveTo(f.x+f.w*.18,f.y);ctx.lineTo(f.x+f.w*.82,f.y);ctx.lineTo(f.x+f.w*.92,f.y+f.h*.88);ctx.lineTo(f.x+f.w,f.y+f.h);ctx.lineTo(f.x,f.y+f.h);ctx.lineTo(f.x+f.w*.08,f.y+f.h*.88);ctx.closePath();ctx.clip();
+  for(let i=0;i<7;i++){
+   const x=f.x+f.w*(.12+((i*37)%73)/100),travel=(t*(34+i%3*9)+i*41+f.phase*70)%(f.h+30),y=f.y+travel-15,len=11+(i%4)*8;
+   ctx.globalAlpha=.11+(i%3)*.025;ctx.strokeStyle=f.hue?'#d9ffff':'#f2ffff';ctx.lineWidth=i%4===0?2:1;ctx.beginPath();ctx.moveTo(x,y);ctx.bezierCurveTo(x-2,y+len*.32,x+2,y+len*.68,x,y+len);ctx.stroke();
+  }
+  ctx.restore();
+ }
+ ctx.restore();
+}
+function drawAmbientLanterns(t){
+ // A few tiny warm glows pulse at the range towers; these stay dim behind gameplay.
+ const lamps=[[28,88,7,.2],[182,74,6,1.3],[388,139,5,2.2],[574,145,5,3.1],[780,91,7,4.4],[933,108,6,5.1]];
+ ctx.save();ctx.globalCompositeOperation='screen';
+ for(const [x,y,r,phase] of lamps){const pulse=.7+.3*Math.sin(t*2.1+phase);ctx.globalAlpha=.12+.06*pulse;ctx.fillStyle='#ffbb54';ctx.shadowColor='#ff9a2c';ctx.shadowBlur=10;ctx.beginPath();ctx.arc(x,y,r*(.72+.1*pulse),0,Math.PI*2);ctx.fill();}
+ ctx.restore();
+}
+function drawAmbientMist(t){
+ ctx.save();ctx.globalCompositeOperation='screen';
+ for(let i=0;i<4;i++){const x=300+i*110+Math.sin(t*.24+i*1.8)*18,y=340+(i%2)*18+Math.sin(t*.35+i)*5;ctx.globalAlpha=.035+.018*Math.sin(t*.7+i);ctx.fillStyle='#efffff';ctx.beginPath();ctx.ellipse(x,y,28+i%3*8,7+i%2*3,0,0,Math.PI*2);ctx.fill();}
+ ctx.restore();
+}
 function drawBackground(t){
  if(!arenaBackground.complete||!arenaBackground.naturalWidth){drawBackgroundFallback(t);return;}
  ctx.drawImage(arenaBackground,0,0,W,H);
+ drawAmbientFalls(t);drawAmbientLanterns(t);drawAmbientMist(t);
  // Quiet moving highlights keep the illustrated pool alive while the scenery stays crisp.
  ctx.save();ctx.beginPath();poly([[166,382],[794,382],[W,H],[0,H]]);ctx.clip();ctx.globalAlpha=.16;
  for(let i=0;i<8;i++){const y=401+i*22,x=170+i*83+(Math.sin(t*.75+i)*18);ctx.strokeStyle=i%3?'#e5ffff':'#57e9eb';ctx.lineWidth=i%3===0?2:1;ctx.beginPath();ctx.moveTo(x,y);ctx.quadraticCurveTo(x+38,y-4-Math.sin(t+i)*3,x+102,y);ctx.stroke();}
