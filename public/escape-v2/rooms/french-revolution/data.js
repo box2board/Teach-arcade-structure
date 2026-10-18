@@ -27,8 +27,8 @@ window.ESCAPE_V2_DATA = {
         fog: '#27231d',
         lighting: {
           hemisphere: { sky: 0xaec5df, ground: 0x261e17, intensity: 1.15 },
-          ambient: { color: 0xffe2c2, intensity: 0.22 },
-          key: { color: 0xbdd9ff, intensity: 1.65, position: [-3.2, 5.3, -4.1] },
+          ambient: { color: 0xffe2c2, intensity: 0.36 },
+          key: { color: 0xbdd9ff, intensity: 1.65, position: [-3.2, 5.3, -4.1], castShadow: false },
           points: [
             { color: 0xff9845, intensity: 28, distance: 10, position: [4.15, 3.0, -4.4] },
             { color: 0xffc47a, intensity: 7, distance: 7, position: [3.5, 2.1, -3.5] }

@@ -91,7 +91,7 @@ function buildScene(container, room, callbacks, solvedIds) {
   world.add(new THREE.AmbientLight(ambient.color || 0xffe4bf, ambient.intensity ?? .22));
   const key = lighting.key || {};
   const keyLight = new THREE.DirectionalLight(key.color || 0xd5e0ee, key.intensity ?? 1.3);
-  keyLight.position.set(...(key.position || [-4, h - .25, -3])); keyLight.castShadow=true; keyLight.shadow.mapSize.set(768,768); keyLight.shadow.bias=-.00025; keyLight.shadow.normalBias=.04; world.add(keyLight);
+  keyLight.position.set(...(key.position || [-4, h - .25, -3])); keyLight.castShadow=key.castShadow !== false; if(keyLight.castShadow){keyLight.shadow.mapSize.set(1024,1024);keyLight.shadow.camera.left=-7;keyLight.shadow.camera.right=7;keyLight.shadow.camera.top=7;keyLight.shadow.camera.bottom=-7;keyLight.shadow.camera.near=.1;keyLight.shadow.camera.far=28;keyLight.shadow.bias=-.00015;keyLight.shadow.normalBias=.06;keyLight.shadow.radius=3;} world.add(keyLight);
   (lighting.points || []).forEach((light) => {
     const point = new THREE.PointLight(light.color || 0xffa34f, light.intensity ?? 12, light.distance ?? 9, light.decay ?? 2);
     point.position.set(...light.position); world.add(point);
