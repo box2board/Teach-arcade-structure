@@ -261,7 +261,7 @@ function buildScene(container, room, callbacks, solvedIds) {
   let exitOpen=false;const exitDoorStartX=doorGroup?.position.x||0;
   function setLook(){const dir=new THREE.Vector3(Math.sin(yaw)*Math.cos(pitch),Math.sin(pitch),-Math.cos(yaw)*Math.cos(pitch));camera.lookAt(camera.position.clone().add(dir));}
   setLook();
-  function interact(id){if(!id)return;focusPrompt.hidden=true;callbacks.onInteract?.(id);}
+  function interact(id){if(!id)return;focusPrompt.hidden=true;aimId=null;callbacks.onInteract?.(id);}
   function centerHit(){raycaster.setFromCamera(new THREE.Vector2(0,0),camera);const hits=raycaster.intersectObjects([...objects.values()].map(x=>x.hit),false);return hits[0]?.object.userData.interactable||null;}
   function hitAt(e){const r=renderer.domElement.getBoundingClientRect();pointer.x=((e.clientX-r.left)/r.width)*2-1;pointer.y=-((e.clientY-r.top)/r.height)*2+1;raycaster.setFromCamera(pointer,camera);const hits=raycaster.intersectObjects([...objects.values()].map(x=>x.hit),false);return hits[0]?.object.userData.interactable||null;}
   focusPrompt.addEventListener('pointerdown',e=>e.stopPropagation());
