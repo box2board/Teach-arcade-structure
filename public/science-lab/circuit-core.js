@@ -1,0 +1,14 @@
+/* Shared, UI-independent lab rules for measurement, comparison, and assessment. */
+const CircuitCore=(()=>{
+const SPEC={minCurrent:35,maxCurrent:55,maxPower:.25,currentResolution:1,voltageResolution:.01};
+const round=(n,step)=>Math.round(n/step)*step;
+function measure(voltage,resistance,random=Math.random){const actualR=resistance*1.02;const actualV=voltage*(1+(random()-.5)*.004);const trueCurrent=actualV/actualR;const measuredV=round(actualV+(random()-.5)*.01,.01);const measuredMA=round(trueCurrent*1000+(random()-.5),1);return{voltage:Number(measuredV.toFixed(2)),currentMA:measuredMA,nominalVoltage:voltage,resistance};}
+function groups(trials){const map=new Map();trials.forEach((t,index)=>{const key=t.nominalVoltage+'/'+t.resistance;if(!map.has(key))map.set(key,{key,voltage:t.nominalVoltage,resistance:t.resistance,rows:[]});map.get(key).rows.push({...t,trial:index+1})});return[...map.values()].map(g=>({...g,n:g.rows.length,meanV:g.rows.reduce((s,t)=>s+t.voltage,0)/g.rows.length,meanMA:g.rows.reduce((s,t)=>s+t.currentMA,0)/g.rows.length,minMA:Math.min(...g.rows.map(t=>t.currentMA)),maxMA:Math.max(...g.rows.map(t=>t.currentMA))}));}
+function eligibleGroups(trials,plan){return groups(trials).filter(g=>plan.independent==='resistance'?g.voltage===Number(plan.fixed):g.resistance===Number(plan.fixed));}
+function evidenceReady(trials,plan){return eligibleGroups(trials,plan).filter(g=>g.n>=3).length>=3;}
+function calculation(g){const predictedMA=g.voltage/g.resistance*1000;return{meanMA:g.meanMA,predictedMA,power:g.meanV*g.meanMA/1000,difference:Math.abs(g.meanMA-predictedMA)/predictedMA*100};}
+function checkCalculation(g,answer){const a=calculation(g),issues=[];for(const [key,tolerance]of[['meanMA',.15],['predictedMA',.2],['power',.003],['difference',.25]]){const raw=answer?.[key],value=Number(raw);if(raw==null||String(raw).trim()===''||!Number.isFinite(value)||Math.abs(value-a[key])>tolerance)issues.push(key)}return issues;}
+function meetsSpec(g){const power=g.meanV*g.meanMA/1000;return g.n>=3&&g.rows.every(t=>t.currentMA>=SPEC.minCurrent&&t.currentMA<=SPEC.maxCurrent&&t.voltage*t.currentMA/1000<=SPEC.maxPower)&&power<=SPEC.maxPower;}
+function review(trials,plan,answers,recommendation){const selected=groups(trials).find(g=>g.voltage===Number(recommendation.voltage)&&g.resistance===Number(recommendation.resistance));return{evidence:evidenceReady(trials,plan),calculations:eligibleGroups(trials,plan).filter(g=>g.n>=3).length>=3&&eligibleGroups(trials,plan).filter(g=>g.n>=3).every(g=>checkCalculation(g,answers[g.key]).length===0),tested:!!selected&&selected.n>=3,specification:!!selected&&meetsSpec(selected),writing:['claim','evidence','reasoning','limitations','transfer'].every(k=>!!recommendation[k]?.trim()),selected};}
+return{SPEC,measure,groups,eligibleGroups,evidenceReady,calculation,checkCalculation,meetsSpec,review};})();
+if(typeof module!=='undefined')module.exports=CircuitCore;

@@ -9,6 +9,7 @@
     "test:question-bank": "node scripts/test-question-bank.mjs",
     "test:question-bank:ela": "node scripts/test-ela-question-bank.mjs",
     "build:crosswords": "python3 scripts/build-crosswords.py && python3 scripts/render-crossword-library.py",
-    "test:crosswords": "node scripts/check-crossword-assets.mjs && python3 scripts/validate-crosswords.py"
+    "test:crosswords": "node scripts/check-crossword-assets.mjs && python3 scripts/validate-crosswords.py",
+    "test:science-lab": "node scripts/test-science-lab.mjs"
   }
 }
