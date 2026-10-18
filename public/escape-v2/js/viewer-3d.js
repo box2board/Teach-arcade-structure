@@ -175,24 +175,36 @@ function buildScene(container, room, callbacks, solvedIds) {
   box(group,stone,[0,h+.12,0],[w,.24,d]);
   box(group,stone,[-w/2,h/2,0],[.22,h,d]); box(group,stone,[w/2,h/2,0],[.22,h,d]);
   box(group,stone,[0,h/2,d/2],[w,h,.22]);
-  const doorX = cfg.doorPosition?.[0] ?? 3.1, doorWidth = 1.8, doorHeight=2.8;
-  const winX = cfg.windowPosition?.[0] ?? -2.6, winWidth=1.65, winHeight=1.55, winY=4.05;
-  const intervals=[[-w/2,winX-winWidth/2],[winX+winWidth/2,doorX-doorWidth/2],[doorX+doorWidth/2,w/2]];
-  intervals.filter(a=>a[1]>a[0]).forEach(([a,b])=>box(group,stone,[(a+b)/2,h/2,-d/2],[(b-a),h,.22]));
-  box(group,stone,[winX,(winY+winHeight/2+h)/2,-d/2],[winWidth,h-(winY+winHeight/2),.22]);
-  box(group,stone,[winX,(winY-winHeight/2)/2,-d/2],[winWidth,winY-winHeight/2,.22]);
-  box(group,stone,[doorX,(doorHeight+h)/2,-d/2],[doorWidth,h-doorHeight,.22]);
-  // Window reveal and iron bars.
-  const windowGroup=new THREE.Group();windowGroup.position.set(winX,winY,-d/2+.12);group.add(windowGroup);
-  for(const x of [-winWidth/2,winWidth/2]) box(windowGroup,wood,[x,0,0],[.12,winHeight+.18,.14]);
-  for(const y of [-winHeight/2,winHeight/2]) box(windowGroup,wood,[0,y,0],[winWidth+.12,.12,.14]);
-  for(let x=-.56;x<=.57;x+=.28) box(windowGroup,iron,[x,0,.1],[.045,winHeight,.045]);
-  box(windowGroup,iron,[0,0,.1],[winWidth,.05,.05]);
-  // Heavy wooden door set behind the bars of the cell opening.
-  const doorGroup=new THREE.Group();doorGroup.position.set(doorX,0,-d/2+.02);group.add(doorGroup);
-  for(const x of [-.82,.82]) box(doorGroup,wood,[x,doorHeight/2,.04],[.12,doorHeight,.18]);
-  for(let x=-.67;x<=.68;x+=.22) box(doorGroup,iron,[x,doorHeight/2,.10],[.055,doorHeight-.16,.06]);
-  for(const y of [.12,1.38,2.68]) box(doorGroup,iron,[0,y,.13],[doorWidth-.16,.075,.075]);
+  const openings=(cfg.openings||[]).filter(o=>!o.wall||o.wall==='front').slice().sort((a,b)=>a.x-b.x);
+  let doorGroup=null;
+  if(!openings.length) box(group,stone,[0,h/2,-d/2],[w,h,.22]);
+  else {
+    let cursor=-w/2;
+    for(const opening of openings){
+      const x=opening.x,width=opening.width,height=opening.height;
+      const minX=Math.max(-w/2,x-width/2),maxX=Math.min(w/2,x+width/2);
+      const bottom=opening.kind.includes('door')?0:Math.max(0,(opening.y||height/2)-height/2);
+      const top=Math.min(h,(opening.y||height/2)+height/2);
+      if(minX>cursor)box(group,stone,[(cursor+minX)/2,h/2,-d/2],[minX-cursor,h,.22]);
+      if(bottom>0)box(group,stone,[x,bottom/2,-d/2],[maxX-minX,bottom,.22]);
+      if(top<h)box(group,stone,[x,(top+h)/2,-d/2],[maxX-minX,h-top,.22]);
+      const feature=new THREE.Group();
+      feature.position.set(x,opening.kind.includes('door')?bottom:(opening.y||height/2),-d/2+.10);
+      group.add(feature);
+      const frame=opening.kind.includes('door')?wood:wood;
+      for(const fx of [-width/2,width/2])box(feature,frame,[fx,height/2,0],[.11,height,.14]);
+      for(const fy of (opening.kind.includes('door')?[.12,height-.12]:[-height/2,height/2]))box(feature,frame,[0,fy,0],[width,.11,.14]);
+      const barCount=Math.max(4,Math.floor(width/.24));
+      for(let i=1;i<barCount;i++){
+        const bx=-width/2+(width/barCount)*i;
+        box(feature,iron,[bx,height/2,.09],[.045,height-.12,.055]);
+      }
+      if(opening.kind.includes('barred')||opening.kind.includes('door'))box(feature,iron,[0,height*.52,.12],[width-.12,.06,.06]);
+      if(opening.kind.includes('door'))doorGroup=feature;
+      cursor=maxX;
+    }
+    if(cursor<w/2)box(group,stone,[(cursor+w/2)/2,h/2,-d/2],[w/2-cursor,h,.22]);
+  }
   // Brick seams are aligned in the same material texture across the shell.
   // Room content adds props and clue anchors as world-space scene objects.
   (cfg.props || []).forEach(addProp);
@@ -237,7 +249,7 @@ function buildScene(container, room, callbacks, solvedIds) {
   }tick();
   return {
     setSolved(id){solvedIds.add(id);const o=objects.get(id);if(o)o.ring.material.color.setHex(0x9bc6a1);},
-    openExit(){doorGroup.rotation.y=-.85;doorGroup.position.x+=.45;},
+    openExit(){if(doorGroup){doorGroup.rotation.y=-.85;doorGroup.position.x+=.45;}},
     destroy(){destroyed=true;cancelAnimationFrame(raf);ro.disconnect();world.traverse(obj=>{if(obj.geometry)obj.geometry.dispose();if(obj.material){const mats=Array.isArray(obj.material)?obj.material:[obj.material];mats.forEach(m=>{if(m.map)m.map.dispose();m.dispose();});}});renderer.dispose();renderer.domElement.removeEventListener('pointerdown',down);renderer.domElement.removeEventListener('pointermove',move);renderer.domElement.removeEventListener('pointerup',up);renderer.domElement.removeEventListener('keydown',keydown);container.replaceChildren();}
   };
 }

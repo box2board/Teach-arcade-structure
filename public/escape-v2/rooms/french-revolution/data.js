@@ -34,8 +34,10 @@ window.ESCAPE_V2_DATA = {
             { color: 0xffc47a, intensity: 7, distance: 7, position: [3.5, 2.1, -3.5] }
           ]
         },
-        doorPosition: [3.05],
-        windowPosition: [-2.6],
+        openings: [
+          { kind: 'barred-window', wall: 'front', x: -2.6, y: 4.0, width: 1.65, height: 1.55 },
+          { kind: 'barred-door', wall: 'front', x: 3.05, y: 1.4, width: 1.8, height: 2.8 }
+        ],
         props: [
           { kind: 'table', position: [-3.0, 0, -2.15], rotation: -0.12 },
           { kind: 'crate', position: [-3.85, 0, -1.55] },
