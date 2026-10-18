@@ -81,7 +81,7 @@ function woodTexture() {
 }
 
 function makeMaterial(color, opts = {}) {
-  return new THREE.MeshStandardMaterial({ color, roughness: opts.roughness ?? .88, metalness: opts.metalness ?? 0, map: opts.map || null, side: opts.side || THREE.FrontSide });
+  return new THREE.MeshStandardMaterial({ color, roughness: opts.roughness ?? .88, metalness: opts.metalness ?? 0, map: opts.map || null, bumpMap: opts.bumpMap || null, bumpScale: opts.bumpScale ?? .03, side: opts.side || THREE.FrontSide });
 }
 
 function buildScene(container, room, callbacks, solvedIds) {
@@ -96,16 +96,17 @@ function buildScene(container, room, callbacks, solvedIds) {
   const wallTex = stoneTexture(cfg.textureSeed || 13);
   const floorTex = stoneTexture((cfg.textureSeed || 13) + 1, true);
   const woodTex = woodTexture();
-  const stone = makeMaterial('#b2a58e', {map:wallTex});
-  const floorMat = makeMaterial('#b0a38e', {map:floorTex});
-  const wood = makeMaterial('#98734e', {map:woodTex});
-  const darkWood = makeMaterial('#46372a', {map:woodTex});
+  const stone = makeMaterial('#b2a58e', {map:wallTex,bumpMap:wallTex,bumpScale:.04,roughness:.96});
+  const floorMat = makeMaterial('#b0a38e', {map:floorTex,bumpMap:floorTex,bumpScale:.07,roughness:.98});
+  const wood = makeMaterial('#98734e', {map:woodTex,bumpMap:woodTex,bumpScale:.025,roughness:.9});
+  const darkWood = makeMaterial('#46372a', {map:woodTex,bumpMap:woodTex,bumpScale:.025,roughness:.93});
   const iron = makeMaterial('#282b2d', {metalness:.72,roughness:.46});
   const straw = makeMaterial('#b79a58');
   const parchment = makeMaterial('#ffffff', {map:parchmentTexture()});
   const plaster = makeMaterial('#ded0ae');
-  const materials = { stone, floor: floorMat, wood, darkWood, iron, straw, paper: parchment, plaster, rough: makeMaterial('#5a4436') };
+  const materials = { stone, floor: floorMat, wood, darkWood, iron, straw, paper: parchment, plaster, ink: makeMaterial('#66513a'), rough: makeMaterial('#5a4436') };
 
+  const animatedProps=[]; const animatedLights=[];
   const lighting = cfg.lighting || {};
   const hemi = lighting.hemisphere || {};
   world.add(new THREE.HemisphereLight(hemi.sky || 0xa9bbd2, hemi.ground || 0x28221b, hemi.intensity ?? 1.1));
@@ -114,9 +115,10 @@ function buildScene(container, room, callbacks, solvedIds) {
   const key = lighting.key || {};
   const keyLight = new THREE.DirectionalLight(key.color || 0xd5e0ee, key.intensity ?? 1.3);
   keyLight.position.set(...(key.position || [-4, h - .25, -3])); keyLight.castShadow=key.castShadow !== false; if(keyLight.castShadow){keyLight.shadow.mapSize.set(1024,1024);keyLight.shadow.camera.left=-7;keyLight.shadow.camera.right=7;keyLight.shadow.camera.top=7;keyLight.shadow.camera.bottom=-7;keyLight.shadow.camera.near=.1;keyLight.shadow.camera.far=28;keyLight.shadow.bias=-.00015;keyLight.shadow.normalBias=.06;keyLight.shadow.radius=3;} world.add(keyLight);
-  (lighting.points || []).forEach((light) => {
+  (lighting.points || []).forEach((light, index) => {
     const point = new THREE.PointLight(light.color || 0xffa34f, light.intensity ?? 12, light.distance ?? 9, light.decay ?? 2);
     point.position.set(...light.position); world.add(point);
+    if(light.flicker !== false) animatedLights.push({light:point,base:point.intensity,phase:index*1.73});
   });
 
   function box(parent, material, pos, size, rot = [0,0,0], cast = true, receive = true) {
@@ -127,29 +129,44 @@ function buildScene(container, room, callbacks, solvedIds) {
     const mesh = new THREE.Mesh(new THREE.CylinderGeometry(radiusTop,radiusBottom,height,sides),material);
     mesh.position.set(...pos); mesh.rotation.set(...rot); mesh.castShadow=true; parent.add(mesh); return mesh;
   }
-  const animatedProps=[];
   function addProp(prop) {
     const p = new THREE.Group(); p.position.set(...(prop.position || [0,0,0])); p.rotation.y = prop.rotation || 0; group.add(p);
     const mat = materials[prop.material] || wood;
     const putBox = (m, pos, size, rot) => box(p,m,pos,size,rot);
     switch (prop.kind) {
       case 'table':
-        putBox(darkWood,[0,.82,0],[1.6,.13,.85]);
-        for(const x of [-.68,.68]) for(const z of [-.33,.33]) putBox(wood,[x,.4,z],[.12,.8,.12],[.04,0,.04]);
-        putBox(wood,[0,.38,0],[1.3,.12,.65]);
+        putBox(darkWood,[0,.82,0],[1.62,.13,.87]);
+        for(let z=-.31;z<=.32;z+=.21) putBox(wood,[0,.891,z],[1.56,.012,.19]);
+        for(const x of [-.7,.7]) for(const z of [-.34,.34]) putBox(wood,[x,.4,z],[.13,.8,.13],[.04,0,.04]);
+        putBox(darkWood,[0,.39,0],[1.34,.12,.68]);
+        for(const x of [-.54,.54]) putBox(darkWood,[x,.65,0],[.06,.08,.72]);
         break;
       case 'crate':
-        putBox(wood,[0,.35,0],[.8,.7,.7]); for(let y=.08;y<.7;y+=.22) putBox(darkWood,[0,y,-.356],[.78,.025,.018]);
+        putBox(darkWood,[0,.35,0],[.82,.72,.72]);
+        for(let y=.08;y<.7;y+=.22) putBox(wood,[0,y,-.365],[.78,.045,.025]);
+        putBox(wood,[-.04,.35,-.393],[.075,.58,.025],[0,0,.62]);
+        putBox(wood,[-.04,.35,-.394],[.075,.58,.025],[0,0,-.62]);
+        putBox(wood,[0,.73,0],[.84,.055,.74]);
         break;
       case 'bed':
         putBox(darkWood,[0,.36,0],[2.65,.16,1.15]);
-        for(const x of [-1.2,1.2]) for(const z of [-.48,.48]) putBox(wood,[x,.19,z],[.1,.38,.1]);
+        for(const x of [-1.2,1.2]) {
+          for(const z of [-.48,.48]) putBox(wood,[x,.19,z],[.12,.38,.12]);
+          putBox(wood,[x,.59,0],[.13,.52,1.18]);
+          putBox(darkWood,[x,.64,0],[.16,.07,1.23]);
+        }
+        putBox(wood,[0,.44,-.53],[2.42,.16,.09]);
+        putBox(wood,[0,.44,.53],[2.42,.16,.09]);
         putBox(straw,[0,.51,0],[2.35,.22,.97]);
-        for(let i=0;i<48;i++){const q=seeded(i+77);const a=q(), b=q(), len=.15+a*.36; cyl(p, straw,[((a-.5)*2.15),.64,((b-.5)*.8)],.012,.009,len,5,[0,0,(q()-.5)*.3]);}
+        for(let i=0;i<56;i++){const q=seeded(i+77);const a=q(), b=q(), len=.24+a*.38, ang=(q()-.5)*.18;box(p,straw,[((a-.5)*2.1),.64+q()*.035,((b-.5)*.86)],[len,.018,.028],[0,(q()-.5)*.2,ang]);}
         putBox(parchment,[-.82,.68,-.16],[.45,.14,.32],[.04,0,-.12]);
         break;
       case 'papers':
-        for(let i=0;i<4;i++) putBox(parchment,[(i%2)*.25-.1,.03,Math.floor(i/2)*.19-.08],[.36,.018,.24],[0,(i-1)*.18,0]);
+        for(let i=0;i<4;i++){
+          const px=(i%2)*.25-.1, pz=Math.floor(i/2)*.19-.08, angle=(i-1)*.18;
+          putBox(parchment,[px,.03,pz],[.36,.018,.24],[0,angle,0]);
+          for(let line=0;line<4;line++)putBox(materials.ink,[px-.005,.041,pz-.075+line*.045],[.235-(line%2)*.04,.003,.009],[0,angle,0]);
+        }
         break;
       case 'writing': {
         const c=document.createElement('canvas');c.width=768;c.height=320;const x=c.getContext('2d');
@@ -160,12 +177,23 @@ function buildScene(container, room, callbacks, solvedIds) {
         const plane=new THREE.Mesh(new THREE.PlaneGeometry(1.9,.8),new THREE.MeshBasicMaterial({map:tex,transparent:true,depthWrite:false}));
         plane.position.set(0,0,0);p.add(plane);break;
       }
-      case 'cup':
-        cyl(p,makeMaterial('#76634e'),[0,.19,0],.18,.13,.33,12);
-        cyl(p,makeMaterial('#4a3f34'),[0,.37,0],.16,.16,.025,12);
+      case 'cup': {
+        const pewter=makeMaterial('#83755f',{metalness:.52,roughness:.48});
+        const vessel=new THREE.Mesh(new THREE.CylinderGeometry(.15,.11,.30,16,1,true),pewter);
+        vessel.position.set(0,.18,0);vessel.castShadow=true;p.add(vessel);
+        cyl(p,makeMaterial('#3e3429'),[0,.045,0],.11,.11,.025,16);
+        const rim=new THREE.Mesh(new THREE.TorusGeometry(.15,.023,8,20),pewter);
+        rim.position.set(0,.335,0);rim.rotation.x=Math.PI/2;p.add(rim);
         break;
+      }
       case 'chain':
-        for(let i=0;i<4;i++){const t=new THREE.Mesh(new THREE.TorusGeometry(.16,.035,8,16),iron);t.position.set((i-1.5)*.25,.05,0);t.rotation.y=i%2?.8:0;p.add(t);}
+        for(let i=0;i<5;i++){
+          const t=new THREE.Mesh(new THREE.TorusGeometry(.17,.045,9,20),iron);
+          t.position.set((i-2)*.31,.055+(i===3?.025:0),i===2?.035:0);
+          t.rotation.set(i%2?.18:0,i%2?.82:0,i===3?.12:0);t.castShadow=true;p.add(t);
+        }
+        const snapped=new THREE.Mesh(new THREE.TorusGeometry(.14,.042,8,18,Math.PI*1.48),iron);
+        snapped.position.set(.98,.07,.09);snapped.rotation.set(.24,.6,.34);p.add(snapped);
         break;
       case 'torch': {
         putBox(darkWood,[0,-.12,0],[.12,.46,.11],[0,0,-.16]);
@@ -274,7 +302,7 @@ function buildScene(container, room, callbacks, solvedIds) {
     if(e.key==='Enter'||e.key===' '){e.preventDefault();raycaster.setFromCamera(new THREE.Vector2(0,0),camera);const hits=raycaster.intersectObjects([...objects.values()].map(x=>x.hit),false);const id=hits[0]?.object.userData.interactable;if(id)interact(id);}
   };
   renderer.domElement.addEventListener('pointerdown',down);renderer.domElement.addEventListener('pointermove',move);renderer.domElement.addEventListener('pointerup',up);renderer.domElement.addEventListener('pointercancel',()=>drag=null);renderer.domElement.addEventListener('keydown',keydown);renderer.domElement.tabIndex=0;requestAnimationFrame(()=>renderer.domElement.focus({preventScroll:true}));
-  function tick(){if(destroyed)return;raf=requestAnimationFrame(tick);yaw+=(targetYaw-yaw)*.16;pitch+=(targetPitch-pitch)*.16;setLook();const t=performance.now()*.001;animatedProps.forEach((p,i)=>{p.scale.y=1+Math.sin(t*8+i)*.10;});if(exitOpen&&doorGroup){doorGroup.rotation.y+=(-.86-doorGroup.rotation.y)*.075;doorGroup.position.x+=(exitDoorStartX+.48-doorGroup.position.x)*.075;}
+  function tick(){if(destroyed)return;raf=requestAnimationFrame(tick);yaw+=(targetYaw-yaw)*.16;pitch+=(targetPitch-pitch)*.16;setLook();const t=performance.now()*.001;animatedProps.forEach((p,i)=>{p.scale.y=1+Math.sin(t*8+i)*.10;});animatedLights.forEach(({light,base,phase})=>{light.intensity=base*(.94+Math.sin(t*8+phase)*.045+Math.sin(t*13.2+phase)*.02);});if(exitOpen&&doorGroup){doorGroup.rotation.y+=(-.86-doorGroup.rotation.y)*.075;doorGroup.position.x+=(exitDoorStartX+.48-doorGroup.position.x)*.075;}
     const nextAim=centerHit();
     if(nextAim!==aimId){
       aimId=nextAim;
