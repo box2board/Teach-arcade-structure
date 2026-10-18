@@ -84,11 +84,18 @@ function buildScene(container, room, callbacks, solvedIds) {
   const plaster = makeMaterial('#ded0ae');
   const materials = { stone, floor: floorMat, wood, darkWood, iron, straw, paper: parchment, plaster, rough: makeMaterial('#5a4436') };
 
-  world.add(new THREE.HemisphereLight(0xa9bbd2, 0x28221b, 1.25));
-  const ambient = new THREE.AmbientLight(0xffe4bf, .26); world.add(ambient);
-  const cool = new THREE.DirectionalLight(0xbcd9ff, 2.1); cool.position.set(-4, h - .25, -3); world.add(cool);
-  const warm = new THREE.PointLight(0xffa34f, 34, 12, 2); warm.position.set(4.45, 3.1, -3.1); world.add(warm);
-  const bounce = new THREE.PointLight(0xffd39a, 8, 8, 2); bounce.position.set(4.3, 2.4, -2.3); world.add(bounce);
+  const lighting = cfg.lighting || {};
+  const hemi = lighting.hemisphere || {};
+  world.add(new THREE.HemisphereLight(hemi.sky || 0xa9bbd2, hemi.ground || 0x28221b, hemi.intensity ?? 1.1));
+  const ambient = lighting.ambient || {};
+  world.add(new THREE.AmbientLight(ambient.color || 0xffe4bf, ambient.intensity ?? .22));
+  const key = lighting.key || {};
+  const keyLight = new THREE.DirectionalLight(key.color || 0xd5e0ee, key.intensity ?? 1.3);
+  keyLight.position.set(...(key.position || [-4, h - .25, -3])); world.add(keyLight);
+  (lighting.points || []).forEach((light) => {
+    const point = new THREE.PointLight(light.color || 0xffa34f, light.intensity ?? 12, light.distance ?? 9, light.decay ?? 2);
+    point.position.set(...light.position); world.add(point);
+  });
 
   function box(parent, material, pos, size, rot = [0,0,0], cast = true, receive = true) {
     const mesh = new THREE.Mesh(new THREE.BoxGeometry(...size), material);
@@ -98,6 +105,7 @@ function buildScene(container, room, callbacks, solvedIds) {
     const mesh = new THREE.Mesh(new THREE.CylinderGeometry(radiusTop,radiusBottom,height,sides),material);
     mesh.position.set(...pos); mesh.rotation.set(...rot); mesh.castShadow=true; parent.add(mesh); return mesh;
   }
+  const animatedProps=[];
   function addProp(prop) {
     const p = new THREE.Group(); p.position.set(...(prop.position || [0,0,0])); p.rotation.y = prop.rotation || 0; group.add(p);
     const mat = materials[prop.material] || wood;
@@ -137,6 +145,14 @@ function buildScene(container, room, callbacks, solvedIds) {
       case 'chain':
         for(let i=0;i<4;i++){const t=new THREE.Mesh(new THREE.TorusGeometry(.16,.035,8,16),iron);t.position.set((i-1.5)*.25,.05,0);t.rotation.y=i%2?.8:0;p.add(t);}
         break;
+      case 'torch': {
+        putBox(darkWood,[0,-.12,0],[.12,.46,.11],[0,0,-.16]);
+        const flame=new THREE.Mesh(new THREE.ConeGeometry(.12,.38,7),new THREE.MeshBasicMaterial({color:0xffa13a}));
+        flame.position.set(0,.2,.04);p.add(flame);animatedProps.push(flame);
+        const core=new THREE.Mesh(new THREE.SphereGeometry(.055,8,8),new THREE.MeshBasicMaterial({color:0xffe3a0}));
+        core.position.set(0,.14,.03);p.add(core);animatedProps.push(core);
+        break;
+      }
       case 'door':
         putBox(darkWood,[0,1.25,0],[1.55,2.5,.17]);
         for(let x=-.6;x<=.61;x+=.3) putBox(wood,[x,1.25,.1],[.055,2.34,.025]);
@@ -168,7 +184,8 @@ function buildScene(container, room, callbacks, solvedIds) {
   box(group,stone,[doorX,(doorHeight+h)/2,-d/2],[doorWidth,h-doorHeight,.22]);
   // Window reveal and iron bars.
   const windowGroup=new THREE.Group();windowGroup.position.set(winX,winY,-d/2+.12);group.add(windowGroup);
-  box(windowGroup,iron,[0,0,0],[winWidth+.16,winHeight+.16,.12], [0,0,0],false);
+  for(const x of [-winWidth/2,winWidth/2]) box(windowGroup,wood,[x,0,0],[.12,winHeight+.18,.14]);
+  for(const y of [-winHeight/2,winHeight/2]) box(windowGroup,wood,[0,y,0],[winWidth+.12,.12,.14]);
   for(let x=-.56;x<=.57;x+=.28) box(windowGroup,iron,[x,0,.1],[.045,winHeight,.045]);
   box(windowGroup,iron,[0,0,.1],[winWidth,.05,.05]);
   // Heavy wooden door set behind the bars of the cell opening.
@@ -214,7 +231,7 @@ function buildScene(container, room, callbacks, solvedIds) {
     if(e.key==='Enter'||e.key===' '){e.preventDefault();raycaster.setFromCamera(new THREE.Vector2(0,0),camera);const hits=raycaster.intersectObjects([...objects.values()].map(x=>x.hit),false);const id=hits[0]?.object.userData.interactable;if(id)callbacks.onInteract?.(id);}
   };
   renderer.domElement.addEventListener('pointerdown',down);renderer.domElement.addEventListener('pointermove',move);renderer.domElement.addEventListener('pointerup',up);renderer.domElement.addEventListener('pointercancel',()=>drag=null);renderer.domElement.addEventListener('keydown',keydown);renderer.domElement.tabIndex=0;requestAnimationFrame(()=>renderer.domElement.focus({preventScroll:true}));
-  function tick(){if(destroyed)return;raf=requestAnimationFrame(tick);yaw+=(targetYaw-yaw)*.16;pitch+=(targetPitch-pitch)*.16;setLook();const t=performance.now()*.001;
+  function tick(){if(destroyed)return;raf=requestAnimationFrame(tick);yaw+=(targetYaw-yaw)*.16;pitch+=(targetPitch-pitch)*.16;setLook();const t=performance.now()*.001;animatedProps.forEach((p,i)=>{p.scale.y=1+Math.sin(t*8+i)*.10;});
     for(const [id,o] of objects){if(o.ring){o.ring.material.opacity=solvedIds.has(id)?.24:(id===hoverId?.98:(.54+Math.sin(t*2.2)*.13));o.ring.scale.setScalar(1+Math.sin(t*2.2)*.04);}}
     renderer.render(world,camera);
   }tick();
