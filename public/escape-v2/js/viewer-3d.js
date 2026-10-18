@@ -91,7 +91,7 @@ function buildScene(container, room, callbacks, solvedIds) {
   world.add(new THREE.AmbientLight(ambient.color || 0xffe4bf, ambient.intensity ?? .22));
   const key = lighting.key || {};
   const keyLight = new THREE.DirectionalLight(key.color || 0xd5e0ee, key.intensity ?? 1.3);
-  keyLight.position.set(...(key.position || [-4, h - .25, -3])); world.add(keyLight);
+  keyLight.position.set(...(key.position || [-4, h - .25, -3])); keyLight.castShadow=true; keyLight.shadow.mapSize.set(768,768); keyLight.shadow.bias=-.00025; keyLight.shadow.normalBias=.04; world.add(keyLight);
   (lighting.points || []).forEach((light) => {
     const point = new THREE.PointLight(light.color || 0xffa34f, light.intensity ?? 12, light.distance ?? 9, light.decay ?? 2);
     point.position.set(...light.position); world.add(point);
@@ -232,6 +232,7 @@ function buildScene(container, room, callbacks, solvedIds) {
   const initialYaw=(cfg.startYaw||0)*Math.PI/180; targetYaw=yaw=initialYaw;
   function resize(){const rect=container.getBoundingClientRect();if(!rect.width||!rect.height)return;renderer.setSize(rect.width,rect.height,false);camera.aspect=rect.width/rect.height;camera.updateProjectionMatrix();}
   const ro=new ResizeObserver(resize);ro.observe(container);resize();
+  let exitOpen=false;const exitDoorStartX=doorGroup?.position.x||0;
   function setLook(){const dir=new THREE.Vector3(Math.sin(yaw)*Math.cos(pitch),Math.sin(pitch),-Math.cos(yaw)*Math.cos(pitch));camera.lookAt(camera.position.clone().add(dir));}
   setLook();
   function hitAt(e){const r=renderer.domElement.getBoundingClientRect();pointer.x=((e.clientX-r.left)/r.width)*2-1;pointer.y=-((e.clientY-r.top)/r.height)*2+1;raycaster.setFromCamera(pointer,camera);const hits=raycaster.intersectObjects([...objects.values()].map(x=>x.hit),false);return hits[0]?.object.userData.interactable||null;}
@@ -243,13 +244,13 @@ function buildScene(container, room, callbacks, solvedIds) {
     if(e.key==='Enter'||e.key===' '){e.preventDefault();raycaster.setFromCamera(new THREE.Vector2(0,0),camera);const hits=raycaster.intersectObjects([...objects.values()].map(x=>x.hit),false);const id=hits[0]?.object.userData.interactable;if(id)callbacks.onInteract?.(id);}
   };
   renderer.domElement.addEventListener('pointerdown',down);renderer.domElement.addEventListener('pointermove',move);renderer.domElement.addEventListener('pointerup',up);renderer.domElement.addEventListener('pointercancel',()=>drag=null);renderer.domElement.addEventListener('keydown',keydown);renderer.domElement.tabIndex=0;requestAnimationFrame(()=>renderer.domElement.focus({preventScroll:true}));
-  function tick(){if(destroyed)return;raf=requestAnimationFrame(tick);yaw+=(targetYaw-yaw)*.16;pitch+=(targetPitch-pitch)*.16;setLook();const t=performance.now()*.001;animatedProps.forEach((p,i)=>{p.scale.y=1+Math.sin(t*8+i)*.10;});
+  function tick(){if(destroyed)return;raf=requestAnimationFrame(tick);yaw+=(targetYaw-yaw)*.16;pitch+=(targetPitch-pitch)*.16;setLook();const t=performance.now()*.001;animatedProps.forEach((p,i)=>{p.scale.y=1+Math.sin(t*8+i)*.10;});if(exitOpen&&doorGroup){doorGroup.rotation.y+=(-.86-doorGroup.rotation.y)*.075;doorGroup.position.x+=(exitDoorStartX+.48-doorGroup.position.x)*.075;}
     for(const [id,o] of objects){if(o.ring){o.ring.material.opacity=solvedIds.has(id)?.24:(id===hoverId?.98:(.54+Math.sin(t*2.2)*.13));o.ring.scale.setScalar(1+Math.sin(t*2.2)*.04);}}
     renderer.render(world,camera);
   }tick();
   return {
     setSolved(id){solvedIds.add(id);const o=objects.get(id);if(o)o.ring.material.color.setHex(0x9bc6a1);},
-    openExit(){if(doorGroup){doorGroup.rotation.y=-.85;doorGroup.position.x+=.45;}},
+    openExit(){exitOpen=true;},
     destroy(){destroyed=true;cancelAnimationFrame(raf);ro.disconnect();world.traverse(obj=>{if(obj.geometry)obj.geometry.dispose();if(obj.material){const mats=Array.isArray(obj.material)?obj.material:[obj.material];mats.forEach(m=>{if(m.map)m.map.dispose();m.dispose();});}});renderer.dispose();renderer.domElement.removeEventListener('pointerdown',down);renderer.domElement.removeEventListener('pointermove',move);renderer.domElement.removeEventListener('pointerup',up);renderer.domElement.removeEventListener('keydown',keydown);container.replaceChildren();}
   };
 }
