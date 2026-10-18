@@ -57,7 +57,7 @@
 
   // Keep the Track B entry point scoped to the homepage preview.
   if (location.pathname === "/" || location.pathname === "/index.html") {
-    LINKS.push({ label: "Teacher HQ", href: "/teacher/" });
+    LINKS.push({ label: "My Cabinet", href: "/teacher/" });
   }
 
   const LOGO_SRC = "/assets/images/teach-arcade-logo.png";

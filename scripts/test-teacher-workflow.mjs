@@ -4,8 +4,9 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import vm from 'node:vm';
 import {QUESTION_SETS,GAMES,loadQuestionSet,gamesForSet,gameUrl} from '../public/review-lab/catalog.js';
+import {TOOLS} from '../public/teacher/cabinet-catalog.js';
 const html=await readFile(new URL('../public/teacher/index.html',import.meta.url),'utf8');
-const source=(await readFile(new URL('../public/teacher/workspace.js',import.meta.url),'utf8')).replace(/^import .*;\n/,'');
+const source=(await readFile(new URL('../public/teacher/workspace.js',import.meta.url),'utf8')).replace(/^import .*;\n/gm,'');
 class Element{
  constructor(tag='div',text=''){this.tagName=tag;this.textContent=text;this.children=[];this.value='';this.hidden=false;this.dataset={};this.attributes={};this.open=false;}
  append(...nodes){this.children.push(...nodes);}
@@ -23,7 +24,7 @@ class Element{
 function setup(configured=false,fetchOverride){
  const elements=Object.fromEntries([...html.matchAll(/id="([^"]+)"/g)].map(m=>[m[1],new Element()]));
  let hash='';const location={search:'',get hash(){return hash;},set hash(value){hash=value.startsWith('#')?value:`#${value}`;}},handlers={};
- const context=vm.createContext({QUESTION_SETS,GAMES,loadQuestionSet,gamesForSet,gameUrl,URLSearchParams,
+ const context=vm.createContext({QUESTION_SETS,GAMES,TOOLS,loadQuestionSet,gamesForSet,gameUrl,URLSearchParams,
  document:{getElementById:id=>{assert.ok(elements[id],`Unknown element ${id}`);return elements[id];},createElement:tag=>new Element(tag),querySelectorAll:()=>[],querySelector:()=>null},
  Option:class extends Element{constructor(text,value){super('option',text);this.value=value;}},location,
  window:{addEventListener:(name,fn)=>{handlers[name]=fn;},scrollTo(){}},fetch:fetchOverride|| (async()=>({ok:true,json:async()=>({configured,user:null})}))});
@@ -95,4 +96,21 @@ test('HQ topic picker keeps chosen topic and makes reselection optional; public 
   if(from==='teacher-hq'){const details=fieldset.beforeNodes[0];assert.equal(details.tagName,'details');assert.match(details.children[0].textContent,/Topic ready:/);assert.equal(details.open,false);assert.ok(details.children.includes(select));}
   else assert.equal(fieldset.beforeNodes,undefined);
  }
+});
+test('Cabinet sections browse real public games and tools without account writes',()=>{
+ const app=setup();app.location.hash='#tools&view=browse';app.route();assert.equal(app.elements.tools.hidden,false);assert.equal(app.elements['cabinet-tools'].children.length,TOOLS.length);
+ for(const card of app.elements['cabinet-tools'].children){const content=card.children[1],open=content.children.at(-2),save=content.children.at(-1);assert.ok(TOOLS.some(t=>t.url===open.href));assert.equal(open.target,'_blank');assert.equal(save.disabled,true);}
+ app.location.hash='#my-games&view=browse';app.route();assert.equal(app.elements['cabinet-games'].children.length,GAMES.length);
+ const open=app.elements['cabinet-games'].children[0].children[1].children.at(-2);assert.equal(open.href,'#sets');
+});
+test('saved games and tools use server bookmarks and are cleared on logout',async()=>{
+ const app=setup(true,async url=>({ok:true,json:async()=>url.includes('action=favorites')?{ids:[]}:url.includes('action=cabinet')?{items:[{type:'tool',id:'timer'},{type:'game',id:'raceway-rivals'}]}:url.includes('action=logout')?{ok:true}:{configured:true,cabinetEnabled:true,user:{id:'teacher-a',email:'teacher@example.test',plan:'free'}}}));
+ await new Promise(r=>setTimeout(r,0));app.location.hash='#tools';app.route();assert.equal(app.elements['cabinet-tools'].children.length,1);assert.match(app.elements['tools-summary'].textContent,/1 saved/);
+ const remove=app.elements['cabinet-tools'].children[0].children[1].children.at(-1);assert.equal(remove.disabled,false);await remove.onclick();assert.equal(app.run("bookmarks.has('tool:timer')"),false);
+ await app.elements.logout.onclick();assert.equal(app.run('bookmarks.size'),0);assert.equal(app.run('cabinetLoaded'),false);
+});
+test('Cabinet tools point to real local resources and creation remains explicitly planned',async()=>{
+ for(const tool of TOOLS){assert.ok(tool.url.startsWith('/'));const path=tool.url.endsWith('/')?tool.url+'index.html':tool.url;assert.ok((await readFile(new URL('../public'+path,import.meta.url),'utf8')).length>0);}
+ assert.ok(html.includes('My Arcade Cabinet')||html.includes('MY ARCADE CABINET'));assert.ok(html.includes('TEACHER GAME CREATION · PLANNED'));assert.ok(html.includes('No custom game is created or saved from this page'));
+ assert.ok(!source.includes('localStorage'));assert.ok(!html.includes('Stripe'));
 });

@@ -1,5 +1,25 @@
 # Track B: teacher foundation
 
+## Arcade Cabinet product direction (October 18)
+
+Teacher HQ is now the Arcade Cabinet: a personal collection, not primarily an administrative dashboard. Keep `/teacher/`, its API and existing hashes for compatibility. Homepage navigation and Review Lab entry points use My Cabinet. My Games, My Question Sets and My Tools are the collection destinations; Explore Topics preserves the working topic → game → setup flow. Use the existing Review Lab catalog and a small verified tools catalog, with no changes to game engines. Public tools and games remain accessible without login; no pricing, paid quotas, billing, school controls or student data are introduced.
+
+### Bookmarks, not custom creations
+
+Existing teacher_favorites remains the canonical public question-set bookmark table. New additive development migration `002-cabinet-bookmarks.sql` adds teacher_cabinet_items for public game/tool bookmarks, with composite ownership/resource keys, RLS and select/insert/delete grants only. The API verifies identities and known catalog IDs; client-supplied owner IDs, URLs and titles are ignored. Both tables store references, not copies or editor/tool contents. Removing a bookmark does not delete a public resource. There is no browser-only persistence.
+
+Apply 001 then 002 on an isolated development Supabase project; only then enable `TEACHER_CABINET_ENABLED=true` alongside the existing authentication variables on the branch Preview. This new flag defaults off and does not disable the existing question-set favorites feature. Session responses expose the flag; GET cabinet and POST save-item/remove-item are authentication-gated and return an unavailable error while it is disabled. `{type:'game'|'tool',id}` is the only accepted resource reference. Favorites and Cabinet requests use the teacher JWT so RLS is retained. The migration has not been applied and no hosted service has been provisioned by this work.
+
+The preview can browse actual games and twelve existing tools. It does not pretend to have user favorites when accounts are unavailable. Signed-in users get server-owned bookmarks only after configuration; hosted two-teacher tests remain required. The public tools open in new tabs. Game bookmarks lead through topic selection rather than silently starting an arbitrary default topic. Saved games currently do not store a level, topic, settings or in-game progress.
+
+### Future created-game contract (design only)
+
+Keep four distinct concepts: public-resource Bookmark, teacher-owned QuestionSet/immutable QuestionSetVersion, teacher-owned Level/immutable LevelVersion, and teacher-owned CreatedGame/immutable CreatedGameVersion. A CreatedGameVersion should reference engine ID/version, LevelVersion, QuestionSetVersion and validated engine settings; it defaults private. Never treat a bookmark as a custom game or duplicate a public set implicitly. Future assignment/share records reference immutable game/content versions and have independently revocable student access. The same level can be paired with different sets, and the same set used across compatible engines. Start with side-scroller templates before offering full editor controls. No teacher editor, created-content persistence or student sharing has been implemented in this pass; the creation page explains the plan explicitly rather than exposing the internal builder as a finished feature.
+
+Pricing and creation limits are intentionally undecided. Saving a public resource, creating a custom set, creating a custom level/game, and playing a free public tool are separate capabilities. Do not gate these based on a client-editable plan flag. Valuable accounts and ownership verification come before creation, assignments, reports and billing.
+
+Verification: 13 workflow DOM simulations and 15 backend/foundation checks, plus the existing question-bank suite. New SQL tests check structural ownership policies only; they are not executed database integration tests. Visual/browser QA and live sign-in/two-account ownership are still outstanding. Next blocking setup task is the isolated Supabase development service and Preview-only configuration; no secrets belong in chat or client code.
+
 ## First-use workflow pass (October 16)
 
 Follow-up QA: expired sessions retain the sign-in path instead of being mistaken for an unconfigured service. Favorites failures retain verified teacher identity and offer an account retry. A failed post-login save has an explicit retry button and is never shown as saved before the server succeeds. Logout clears any pending save. Loading more topics moves focus to the first new topic; save/unsave restores focus, with a focusable library-heading fallback. Invalid game bookmarks recover from saved-only mode to public topics. Ten workflow simulations and nine foundation checks cover these paths; live auth and visual/browser checks are still outstanding.
