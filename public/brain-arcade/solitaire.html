@@ -294,7 +294,7 @@
 
       transform: translate3d(0, var(--y, 0px), 0);
       transition:
-        transform 180ms cubic-bezier(.25,.46,.45,.94),
+        transform 260ms cubic-bezier(.22,.61,.36,1),
         box-shadow 150ms ease,
         filter 150ms ease,
         opacity 120ms ease;
@@ -423,7 +423,7 @@
         0 1px 0 rgba(255,255,255,.7) inset;
       filter: brightness(1.05) saturate(1.08);
       transition: none;
-      transform: translate3d(0, var(--y, 0px), 0) scale(1.02);
+      transform: translate3d(0, var(--y, 0px), 0) scale(1.035);
     }
 
     /* ✅ UPDATED: GPU acceleration */
@@ -1400,10 +1400,18 @@
 
     if (!candidates.length) return null;
 
-    const PAD = 26;
+    const PAD = 28;
     const inflate = (r,p)=>({left:r.left-p, top:r.top-p, right:r.right+p, bottom:r.bottom+p});
-    const inside = (r)=> x>=r.left && x<=r.right && y>=r.top && y<=r.bottom;
     const center = (r)=>({cx:(r.left+r.right)/2, cy:(r.top+r.bottom)/2});
+    const drag = state.drag;
+    const draggedCard = drag?.ghost?.firstElementChild?.getBoundingClientRect();
+    const probeX = drag && draggedCard
+      ? x - drag.pointerOffsetX + draggedCard.width / 2
+      : x;
+    const probeY = drag && draggedCard
+      ? y - drag.pointerOffsetY + draggedCard.height / 2
+      : y;
+    const inside = (r)=> probeX>=r.left && probeX<=r.right && probeY>=r.top && probeY<=r.bottom;
 
     const hits = [];
     for (const c of candidates){
@@ -1411,7 +1419,8 @@
       if (inside(r)) hits.push({ ...c, r });
     }
 
-    const pool = hits.length ? hits : candidates.map(c => ({ ...c, r: c.el.getBoundingClientRect() }));
+    if (!hits.length) return null;
+    const pool = hits;
 
     let best = null;
     let bestD = Infinity;
@@ -1440,7 +1449,9 @@
       curX: startX, curY: startY,
       rafId: 0,
       pointerOffsetX: 0,
-      pointerOffsetY: 0
+      pointerOffsetY: 0,
+      originX: 0,
+      originY: 0
     };
 
     const ghost = document.createElement("div");
@@ -1474,8 +1485,10 @@
     const r = cardEl.getBoundingClientRect();
     state.drag.pointerOffsetX = startX - r.left;
     state.drag.pointerOffsetY = startY - r.top;
+    state.drag.originX = r.left;
+    state.drag.originY = r.top;
 
-    // ✅ Instant pickup (no lag)
+    // Instant pickup with pointer-aligned positioning
     state.drag.curX = startX;
     state.drag.curY = startY;
     const initialX = startX - state.drag.pointerOffsetX;
@@ -1511,41 +1524,70 @@
     return fromPile.filter(c => ids.has(c.id));
   }
 
+  function returnDragHome(dragged){
+    if (!dragged) return;
+    const ghost = dragged.ghost;
+    setBusy(true);
+    if (!ghost){
+      dragged.cards.forEach(id => {
+        const original = document.querySelector(`[data-card-id="${id}"]`);
+        if (original) original.style.opacity = "";
+      });
+      setBusy(false);
+      return;
+    }
+    ghost.style.transition = "transform 240ms cubic-bezier(.22,.61,.36,1), opacity 200ms ease";
+    ghost.style.opacity = ".96";
+    ghost.style.transform = `translate3d(${dragged.originX}px,${dragged.originY}px,0) scale(1)`;
+    setTimeout(() => {
+      ghost.remove();
+      dragged.cards.forEach(id => {
+        const original = document.querySelector(`[data-card-id="${id}"]`);
+        if (original) original.style.opacity = "";
+      });
+      clearHighlights();
+      setBusy(false);
+    }, 245);
+  }
+
   function endDrag(x,y){
     if (!state.drag) return;
 
-    const cards = resolveDraggedCards();
-
-    // unhide originals
-    cards.forEach(c => {
-      const orig = document.querySelector(`[data-card-id="${c.id}"]`);
-      if (orig) orig.style.opacity = "";
-    });
-
-    // ✅ Better snap target (closest legal pile)
-    const toRef = bestDropTarget(x, y, cards);
-
-    cancelAnimationFrame(state.drag.rafId);
-
-    const ghost = state.drag.ghost;
-    ghost.style.transition = 'opacity 90ms ease';
-    ghost.style.opacity = '0';
-    setTimeout(() => ghost.remove(), 90);
-
     const dragged = state.drag;
-    state.drag = null;
+    const cards = resolveDraggedCards();
+    cancelAnimationFrame(dragged.rafId);
+    const toRef = bestDropTarget(x, y, cards);
+    const ghost = dragged.ghost;
 
+    if (ghost){
+      ghost.style.transform = `translate3d(${x - dragged.pointerOffsetX}px,${y - dragged.pointerOffsetY}px,0) scale(1.035)`;
+    }
+    state.drag = null;
     clearHighlights();
 
-    if (toRef){
-      setSelected(dragged.from, cards);
-      const moved = tryMoveSelectedTo(toRef);
-      if (!moved){
-        clearSelected();
-        render();
-      }
-    } else {
-      render();
+    if (!toRef || !cards.length){
+      returnDragHome(dragged);
+      return;
+    }
+
+    cards.forEach(card => {
+      const original = document.querySelector(`[data-card-id="${card.id}"]`);
+      if (original) original.style.opacity = "";
+    });
+
+    setSelected(dragged.from, cards);
+    const moved = tryMoveSelectedTo(toRef);
+    if (!moved){
+      clearSelected();
+      returnDragHome(dragged);
+      return;
+    }
+
+    if (ghost){
+      ghost.style.transition = "transform 170ms cubic-bezier(.22,.61,.36,1), opacity 170ms ease";
+      ghost.style.opacity = "0";
+      ghost.style.transform = `translate3d(${x - dragged.pointerOffsetX}px,${y - dragged.pointerOffsetY}px,0) scale(.985)`;
+      setTimeout(() => ghost.remove(), 180);
     }
   }
 
@@ -1634,12 +1676,10 @@
 
   els.board.addEventListener("pointermove", (ev) => {
     if (!press || state.busy) return;
-    if (state.controlMode === "tap") return; // tap mode doesn't start drags
-
     const dx = Math.abs(ev.clientX - press.startX);
     const dy = Math.abs(ev.clientY - press.startY);
 
-    if (!press.moved && (dx + dy) > 7){
+    if (!press.moved && (dx + dy) > 4){
       press.moved = true;
       startDrag(press.cardEl, press.fromRef, press.cards, press.startX, press.startY);
     }
@@ -1672,7 +1712,7 @@
           return;
         }
 
-        if ((fromRef.type === "tableau" || fromRef.type === "foundation") && tryMoveSelectedTo(fromRef)){
+        if (fromRef.type === "foundation" && tryMoveSelectedTo(fromRef)){
           return;
         }
       }
@@ -1695,6 +1735,20 @@
     }
   }, { passive:true });
 
+  function cancelActivePointer(){
+    if (!press) return;
+    press = null;
+    const dragged = state.drag;
+    if (!dragged) return;
+    cancelAnimationFrame(dragged.rafId);
+    state.drag = null;
+    clearHighlights();
+    returnDragHome(dragged);
+  }
+
+  els.board.addEventListener("pointercancel", cancelActivePointer);
+  els.board.addEventListener("lostpointercapture", cancelActivePointer);
+
   // piles click (stock draw + foundation placement if selected)
   function onPileClick(pileEl){
     if (state.busy) return;
@@ -1706,7 +1760,8 @@
       drawFromStock();
       return;
     }
-    if (state.selected && (ref.type === "foundation" || ref.type === "tableau")){
+    // Tap selection may finish on a foundation; tableau moves stay drag-based.
+    if (state.selected && ref.type === "foundation"){
       tryMoveSelectedTo(ref);
     }
   }
