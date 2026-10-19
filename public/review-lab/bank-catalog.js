@@ -3319,5 +3319,45 @@ export const BANK_SETS=[
     "questionCount": 20,
     "description": "Pre-Algebra & Number Sense · 7–12",
     "file": "pre-algebra/escape-room-adventure-review-games.json"
+  },
+  {
+    "id": "math--algebra-1--inequalities",
+    "title": "Inequalities",
+    "subject": "Math",
+    "category": "Algebra I",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Algebra I · 7–12",
+    "file": "algebra-1/inequalities.json"
+  },
+  {
+    "id": "math--algebra-2-functions--functions-graphs",
+    "title": "Functions & Graphs",
+    "subject": "Math",
+    "category": "Algebra II & Functions",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Algebra II & Functions · 7–12",
+    "file": "algebra-2-functions/functions-graphs.json"
+  },
+  {
+    "id": "math--geometry--transformations-congruence",
+    "title": "Transformations & Congruence",
+    "subject": "Math",
+    "category": "Geometry",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Geometry · 7–12",
+    "file": "geometry/transformations-congruence.json"
+  },
+  {
+    "id": "math--statistics-probability--statistics-probability",
+    "title": "Statistics & Probability",
+    "subject": "Math",
+    "category": "Statistics & Probability",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Statistics & Probability · 7–12",
+    "file": "statistics-probability/statistics-probability.json"
   }
 ];

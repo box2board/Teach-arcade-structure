@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--statistics-probability--statistics-probability",
+  "title": "Statistics & Probability",
+  "subject": "Math",
+  "category": "Statistics & Probability",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is the mean of 3, 5, 7, and 9?",
+      "choices": [
+        "6",
+        "5",
+        "7",
+        "24"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is the median of 2, 4, 8, 10, and 20?",
+      "choices": [
+        "4",
+        "8",
+        "8.8",
+        "10"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "A data set is 1, 3, 3, 4, 9. What is the mode?",
+      "choices": [
+        "4",
+        "5",
+        "3",
+        "9"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is the probability of rolling an even number on a fair six-sided die?",
+      "choices": [
+        "1/3",
+        "2/3",
+        "1/6",
+        "1/2"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "A bag has 4 red and 6 blue marbles. What is the probability of drawing red?",
+      "choices": [
+        "2/5",
+        "3/5",
+        "4/6",
+        "1/4"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "If two fair coins are tossed, what is the probability of getting two heads?",
+      "choices": [
+        "1/2",
+        "1/4",
+        "1/3",
+        "3/4"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 7,
+      "question": "Which measure of center is most affected by an extreme outlier?",
+      "choices": [
+        "Median",
+        "Mode",
+        "Mean",
+        "Range"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "For data 2, 4, 6, 8, 10, what is the range?",
+      "choices": [
+        "6",
+        "10",
+        "4",
+        "8"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "A survey asks only students in the chess club whether the school should add more chess boards. What is a likely problem?",
+      "choices": [
+        "The sample may not represent all students",
+        "The question has too many responses",
+        "A survey cannot measure opinion",
+        "The sample includes every student"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 10,
+      "question": "If events A and B are independent, P(A)=1/2 and P(B)=1/3. What is P(A and B)?",
+      "choices": [
+        "5/6",
+        "1/6",
+        "2/5",
+        "1/2"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 11,
+      "question": "A fair die is rolled. Given that the result is greater than 3, what is the probability it is 6?",
+      "choices": [
+        "1/6",
+        "1/2",
+        "1/3",
+        "2/3"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 12,
+      "question": "A scatterplot shows points rising from left to right. What relationship is suggested?",
+      "choices": [
+        "Negative association",
+        "No association",
+        "A guaranteed cause-and-effect relationship",
+        "Positive association"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "A study finds that ice cream sales and swimming both increase in summer. What can be concluded from this correlation alone?",
+      "choices": [
+        "The association does not prove that one causes the other",
+        "Ice cream causes swimming",
+        "Swimming causes ice cream sales",
+        "There is no association"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 14,
+      "question": "What is the interquartile range (IQR)?",
+      "choices": [
+        "Q1 + Q3",
+        "Q3 − Q1",
+        "Maximum − minimum",
+        "Mean − median"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "A class has a mean score of 80. One student's score is 100. What must be true?",
+      "choices": [
+        "At least one other score must be below 80",
+        "The median is 80",
+        "The other scores are not all necessarily 80",
+        "The range is 20"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 16,
+      "question": "A bag has 3 green and 2 yellow counters. What is the probability of not drawing yellow?",
+      "choices": [
+        "2/5",
+        "1/2",
+        "1/5",
+        "3/5"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "Which display is best for comparing counts across categories?",
+      "choices": [
+        "Bar graph",
+        "Line graph over time",
+        "Scatterplot",
+        "Number line"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 18,
+      "question": "A sample of 50 voters favors a proposal. Which detail most affects whether the result generalizes?",
+      "choices": [
+        "The color of the survey",
+        "How the voters were selected",
+        "The order of the answer letters",
+        "The length of the report"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "What is the expected value of a fair six-sided die roll?",
+      "choices": [
+        "3",
+        "6",
+        "3.5",
+        "21"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "A two-way table shows 12 of 30 students play both soccer and band. What fraction of all students is that?",
+      "choices": [
+        "12/18",
+        "3/5",
+        "5/12",
+        "2/5"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

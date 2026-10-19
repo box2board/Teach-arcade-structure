@@ -3,8 +3,8 @@
   "subject": "Math",
   "status": "draft-for-review",
   "gradeBand": "7–12",
-  "setCount": 95,
-  "questionCount": 1900,
+  "setCount": 99,
+  "questionCount": 1980,
   "sets": [
     {
       "id": "math--pre-algebra--integers-and-rational-numbers",
@@ -670,6 +670,34 @@
       "category": "Pre-Algebra & Number Sense",
       "questionCount": 20,
       "file": "pre-algebra/escape-room-adventure-review-games.json"
+    },
+    {
+      "id": "math--algebra-1--inequalities",
+      "title": "Inequalities",
+      "category": "Algebra I",
+      "questionCount": 20,
+      "file": "algebra-1/inequalities.json"
+    },
+    {
+      "id": "math--algebra-2-functions--functions-graphs",
+      "title": "Functions & Graphs",
+      "category": "Algebra II & Functions",
+      "questionCount": 20,
+      "file": "algebra-2-functions/functions-graphs.json"
+    },
+    {
+      "id": "math--geometry--transformations-congruence",
+      "title": "Transformations & Congruence",
+      "category": "Geometry",
+      "questionCount": 20,
+      "file": "geometry/transformations-congruence.json"
+    },
+    {
+      "id": "math--statistics-probability--statistics-probability",
+      "title": "Statistics & Probability",
+      "category": "Statistics & Probability",
+      "questionCount": 20,
+      "file": "statistics-probability/statistics-probability.json"
     }
   ]
 }

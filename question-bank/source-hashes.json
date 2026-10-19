@@ -330,5 +330,9 @@
   "question-bank/math/pre-algebra/fraction-integer-games.json": "82909b0a9fa3f8f8e714cbcf3824273fc03058147b02a7041ba9630329e5dfeb",
   "question-bank/math/algebra-1/algebra-equation-games.json": "2fdedc6a561484e65ffb9beaaa2caf82893a1e7b2d42bb0890c5a50e1338947e",
   "question-bank/math/pre-algebra/logic-puzzles-brain-teasers.json": "ead87469f4275656fb1961994579d845e49da25390f5bc046f4780fba76a3ced",
-  "question-bank/math/pre-algebra/escape-room-adventure-review-games.json": "14f3922ead2099a860fca2ccf85d4e5c0ef6e4572175e67d7c460b68d4dd3091"
+  "question-bank/math/pre-algebra/escape-room-adventure-review-games.json": "14f3922ead2099a860fca2ccf85d4e5c0ef6e4572175e67d7c460b68d4dd3091",
+  "question-bank/math/algebra-1/inequalities.json": "0871b722be87875b710bacd4cfc21dcf0481d8b65e8ebb329861ab26798deb41",
+  "question-bank/math/algebra-2-functions/functions-graphs.json": "0bfc71655e1e3143b06b871a035b93e712bca381aa7307d6bd5fe180a42a29b0",
+  "question-bank/math/geometry/transformations-congruence.json": "94af0caa2186086b76c4f2304dd89265e425242682c0927ba33c5db71d4c4b8c",
+  "question-bank/math/statistics-probability/statistics-probability.json": "2d21fbd259c0fa3a4b71ac820cc871b9f90f93053fadd840a76c0ca2ae11b33f"
 }
