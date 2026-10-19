@@ -3359,5 +3359,55 @@ export const BANK_SETS=[
     "questionCount": 20,
     "description": "Statistics & Probability · 7–12",
     "file": "statistics-probability/statistics-probability.json"
+  },
+  {
+    "id": "fine-arts--art-history--prehistoric-ancient-art",
+    "title": "Prehistoric & Ancient Art",
+    "subject": "Fine Arts",
+    "category": "Art History",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Art History · 7–12",
+    "file": "fine-arts/art-history/prehistoric-ancient-art.json"
+  },
+  {
+    "id": "fine-arts--art-history--medieval-byzantine-art",
+    "title": "Medieval & Byzantine Art",
+    "subject": "Fine Arts",
+    "category": "Art History",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Art History · 7–12",
+    "file": "fine-arts/art-history/medieval-byzantine-art.json"
+  },
+  {
+    "id": "fine-arts--art-history--renaissance-art",
+    "title": "Renaissance Art",
+    "subject": "Fine Arts",
+    "category": "Art History",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Art History · 7–12",
+    "file": "fine-arts/art-history/renaissance-art.json"
+  },
+  {
+    "id": "fine-arts--art-history--baroque-rococo",
+    "title": "Baroque & Rococo",
+    "subject": "Fine Arts",
+    "category": "Art History",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Art History · 7–12",
+    "file": "fine-arts/art-history/baroque-rococo.json"
+  },
+  {
+    "id": "fine-arts--art-history--19th-century-art-movements",
+    "title": "19th-Century Art Movements",
+    "subject": "Fine Arts",
+    "category": "Art History",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Art History · 7–12",
+    "file": "fine-arts/art-history/19th-century-art-movements.json"
   }
 ];

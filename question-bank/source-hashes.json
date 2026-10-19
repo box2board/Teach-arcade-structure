@@ -334,5 +334,10 @@
   "question-bank/math/algebra-1/inequalities.json": "0871b722be87875b710bacd4cfc21dcf0481d8b65e8ebb329861ab26798deb41",
   "question-bank/math/algebra-2-functions/functions-graphs.json": "0bfc71655e1e3143b06b871a035b93e712bca381aa7307d6bd5fe180a42a29b0",
   "question-bank/math/geometry/transformations-congruence.json": "94af0caa2186086b76c4f2304dd89265e425242682c0927ba33c5db71d4c4b8c",
-  "question-bank/math/statistics-probability/statistics-probability.json": "2d21fbd259c0fa3a4b71ac820cc871b9f90f93053fadd840a76c0ca2ae11b33f"
+  "question-bank/math/statistics-probability/statistics-probability.json": "2d21fbd259c0fa3a4b71ac820cc871b9f90f93053fadd840a76c0ca2ae11b33f",
+  "question-bank/fine-arts/art-history/prehistoric-ancient-art.json": "6634df6a6aa4d2155c46aedc294bf3a00f9c49c284e615394514fd10b9dc7ce0",
+  "question-bank/fine-arts/art-history/medieval-byzantine-art.json": "e7435ea805f6197eaf9cf12529c36257fac037b8f1a6ab095e612f66fbf407cd",
+  "question-bank/fine-arts/art-history/renaissance-art.json": "1455d0843b1fc2a5127e4db828f8237717ac8fe34ee04fe2cbff179ce3175048",
+  "question-bank/fine-arts/art-history/baroque-rococo.json": "dc8185909108fecffc495ff8a42daea5d1b1ab5d88605adc97ddda8f8cdedd03",
+  "question-bank/fine-arts/art-history/19th-century-art-movements.json": "747aa3e713f794750926fcd50b32ee7217798375dde9fc92c3087e60a2b62762"
 }

@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--art-history--prehistoric-ancient-art",
+  "title": "Prehistoric & Ancient Art",
+  "subject": "Fine Arts",
+  "category": "Art History",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which statement best describes much prehistoric cave art?",
+      "choices": [
+        "It includes painted or engraved images of animals and other forms in cave settings",
+        "It was made with industrial acrylic paint",
+        "It was designed primarily for public museums",
+        "It used only written inscriptions"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 2,
+      "question": "Why do scholars avoid claiming one certain purpose for all Paleolithic cave paintings?",
+      "choices": [
+        "Cave paintings have no recognizable images",
+        "The original makers left limited direct explanations, so interpretations rely on evidence and context",
+        "All cave paintings were made in one place",
+        "Archaeologists agree they were only decoration"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 3,
+      "question": "What do portable prehistoric objects suggest about early artmaking?",
+      "choices": [
+        "All communities lived in permanent cities",
+        "Art required a written alphabet",
+        "People created images and objects that could be carried beyond a single wall or site",
+        "Artists used only stone architecture"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "A large ancient Egyptian figure has a frontal torso and profile head and legs. What may this convention support?",
+      "choices": [
+        "A single viewpoint based on optical realism",
+        "A fleeting moment of movement",
+        "A rejection of symbolic meaning",
+        "A clear, enduring representation of the figure's characteristic features"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 5,
+      "question": "Why were many ancient Egyptian tomb paintings and objects created?",
+      "choices": [
+        "To support beliefs about the afterlife and honor the deceased",
+        "To document modern tourism",
+        "To replace all temple architecture",
+        "To advertise public elections"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "What is a ziggurat?",
+      "choices": [
+        "A Greek theater mask",
+        "A stepped temple platform built in ancient Mesopotamia",
+        "An Egyptian writing brush",
+        "A Roman aqueduct"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "The Standard of Ur uses registers to organize figures. What does this compositional choice do?",
+      "choices": [
+        "Creates a single-point perspective grid",
+        "Shows figures with photographic depth",
+        "Arranges scenes in horizontal bands that distinguish levels or episodes",
+        "Removes narrative sequence"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "What material was commonly used for Roman concrete construction?",
+      "choices": [
+        "Pure marble only",
+        "Wet clay and papyrus",
+        "Gold leaf and timber only",
+        "A mixture including lime, water, aggregate, and volcanic ash in some regions"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Which architectural feature helped ancient Roman builders span large interior spaces?",
+      "choices": [
+        "The arch and vault",
+        "The flying buttress",
+        "The pointed Gothic arch only",
+        "The steel suspension cable"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What is a common feature of ancient Greek classical sculpture?",
+      "choices": [
+        "Exclusive use of abstract geometry",
+        "Attention to proportion and idealized human form",
+        "A ban on depicting the human body",
+        "Use of photographic perspective"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Contrapposto describes a figure standing with",
+      "choices": [
+        "both feet perfectly parallel and weightless",
+        "the body arranged as a flat silhouette",
+        "weight shifted onto one leg, creating a more relaxed pose",
+        "arms raised in a repeated circle"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Why might rulers commission monumental reliefs or statues?",
+      "choices": [
+        "To avoid public visibility",
+        "To eliminate the need for written records",
+        "To show that all citizens held equal power",
+        "To communicate authority, commemorate events, or reinforce political identity"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 13,
+      "question": "What was a major function of the Ishtar Gate of Babylon?",
+      "choices": [
+        "A monumental entrance decorated with glazed bricks and animal imagery",
+        "A Greek temple used for theater",
+        "A Roman bridge made of steel",
+        "A medieval cathedral window"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Which material is strongly associated with many ancient Greek painted vases?",
+      "choices": [
+        "Stained glass",
+        "Clay shaped and decorated with painted figures",
+        "Cast iron",
+        "Synthetic resin"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "Why are ancient objects often studied alongside archaeological context?",
+      "choices": [
+        "Context proves every object's original owner",
+        "Objects have no meaning outside museums",
+        "Location and associated materials can help explain use, date, and cultural meaning",
+        "Context replaces close visual analysis"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 16,
+      "question": "A relief shows a ruler much larger than surrounding people. What is a likely purpose of this scale difference?",
+      "choices": [
+        "Show the ruler is farther away by mathematical perspective",
+        "Indicate that the image is unfinished",
+        "Record exact human measurements",
+        "Emphasize status or importance rather than realistic body size"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Which statement about ancient art is most accurate?",
+      "choices": [
+        "Art served varied religious, civic, political, and practical functions across cultures",
+        "All ancient art served the same purpose",
+        "Ancient art was made only for private homes",
+        "Ancient artists never used symbols"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 18,
+      "question": "The Parthenon is associated with which ancient civilization?",
+      "choices": [
+        "Ancient Egypt",
+        "Ancient Greece",
+        "The Inca Empire",
+        "The Byzantine Empire"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "Why may surviving ancient colors differ from an artwork's original appearance?",
+      "choices": [
+        "Ancient artists never used color",
+        "Every ancient work was originally white",
+        "Pigments and surfaces can change through time, weathering, burial, and restoration",
+        "Modern cameras remove all original color"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "When comparing ancient Egyptian and Greek sculpture, which approach is strongest?",
+      "choices": [
+        "Assume one culture copied every work from the other",
+        "Rank them only by size",
+        "Ignore material and context",
+        "Compare visual choices and consider the different cultural purposes and conventions"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "subject": "Fine Arts",
+  "status": "draft-for-review",
+  "gradeBand": "7–12",
+  "setCount": 5,
+  "questionCount": 100,
+  "sets": [
+    {
+      "id": "fine-arts--art-history--prehistoric-ancient-art",
+      "title": "Prehistoric & Ancient Art",
+      "category": "Art History",
+      "questionCount": 20,
+      "file": "art-history/prehistoric-ancient-art.json"
+    },
+    {
+      "id": "fine-arts--art-history--medieval-byzantine-art",
+      "title": "Medieval & Byzantine Art",
+      "category": "Art History",
+      "questionCount": 20,
+      "file": "art-history/medieval-byzantine-art.json"
+    },
+    {
+      "id": "fine-arts--art-history--renaissance-art",
+      "title": "Renaissance Art",
+      "category": "Art History",
+      "questionCount": 20,
+      "file": "art-history/renaissance-art.json"
+    },
+    {
+      "id": "fine-arts--art-history--baroque-rococo",
+      "title": "Baroque & Rococo",
+      "category": "Art History",
+      "questionCount": 20,
+      "file": "art-history/baroque-rococo.json"
+    },
+    {
+      "id": "fine-arts--art-history--19th-century-art-movements",
+      "title": "19th-Century Art Movements",
+      "category": "Art History",
+      "questionCount": 20,
+      "file": "art-history/19th-century-art-movements.json"
+    }
+  ]
+}

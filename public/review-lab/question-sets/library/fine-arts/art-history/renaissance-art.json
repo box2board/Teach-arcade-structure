@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--art-history--renaissance-art",
+  "title": "Renaissance Art",
+  "subject": "Fine Arts",
+  "category": "Art History",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What does 'Renaissance' mean in the context of European art history?",
+      "choices": [
+        "A period of renewed interest in classical learning and new artistic approaches",
+        "A movement rejecting all observation",
+        "A period defined by digital media",
+        "A single style used identically across Europe"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 2,
+      "question": "What is linear perspective used to create?",
+      "choices": [
+        "A raised texture in sculpture",
+        "An illusion of spatial depth on a flat surface",
+        "A repeating musical rhythm",
+        "A system for mixing pigments"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "In one-point perspective, parallel lines receding into depth appear to meet at",
+      "choices": [
+        "a horizon circle",
+        "a color wheel",
+        "a vanishing point",
+        "a frame corner"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is chiaroscuro?",
+      "choices": [
+        "A method of printing books",
+        "A type of architectural column",
+        "A pattern of repeated geometric tiles",
+        "The use of strong contrasts between light and dark to model form"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is sfumato associated with?",
+      "choices": [
+        "Soft, gradual transitions between tones and colors",
+        "Sharp outlines with no shading",
+        "A strict grid of perspective lines",
+        "Mosaic decoration"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "Leonardo da Vinci's notebooks show that he",
+      "choices": [
+        "worked only as a court musician",
+        "combined artistic observation with interests in science and engineering",
+        "avoided drawing from observation",
+        "invented the printing press"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "Which artist created the ceiling frescoes of the Sistine Chapel?",
+      "choices": [
+        "Raphael",
+        "Donatello",
+        "Michelangelo",
+        "Titian"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "What is a fresco?",
+      "choices": [
+        "An oil painting on canvas",
+        "A sculpture cast in bronze",
+        "A print made from a woodblock",
+        "A painting made on wet plaster so pigment bonds with the wall as it dries"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Which subject is associated with Raphael's School of Athens?",
+      "choices": [
+        "An imagined gathering of ancient philosophers",
+        "A medieval battle scene",
+        "A Dutch village market",
+        "A Roman emperor's funeral"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "What was one effect of wealthy patrons commissioning art during the Renaissance?",
+      "choices": [
+        "It ended workshop training",
+        "Patronage helped artists produce works for religious, civic, and private settings",
+        "It eliminated religious subjects",
+        "It made every artist financially independent"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why did many Renaissance artists study anatomy and geometry?",
+      "choices": [
+        "To avoid depicting people",
+        "To replace all symbolic meaning",
+        "To represent bodies and space with greater observational and structural understanding",
+        "To prevent experimentation with materials"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 12,
+      "question": "Which technique helps create the illusion of atmospheric perspective?",
+      "choices": [
+        "Distant objects use heavier outlines and brighter detail",
+        "All objects share one size",
+        "The horizon is removed",
+        "Distant forms appear lighter, less distinct, and often cooler in color"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What is contrapposto in Renaissance sculpture?",
+      "choices": [
+        "A balanced pose with weight shifted onto one leg",
+        "A figure carved from several colors of glass",
+        "A method of painting wet plaster",
+        "A repeated arch pattern"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "How did oil paint influence some Northern Renaissance painting?",
+      "choices": [
+        "It prevented artists from painting small details",
+        "It allowed layered detail, subtle effects, and rich surface textures",
+        "It replaced all panel painting immediately",
+        "It could be used only on stone walls"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What did the printing press help artists and scholars do?",
+      "choices": [
+        "End all manuscript production instantly",
+        "Make every artwork anonymous",
+        "Distribute images and texts more widely than hand copying alone",
+        "Replace painting with sculpture"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Which feature is often associated with Renaissance portraiture?",
+      "choices": [
+        "A rule that faces remain blank",
+        "Exclusive use of abstract symbols",
+        "A ban on depicting clothing",
+        "Attention to individual likeness, status, and character"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "A Renaissance painting shows a tiled floor whose lines converge in the distance. What does this suggest?",
+      "choices": [
+        "The artist is using linear perspective",
+        "The floor is a mosaic",
+        "The work is a relief sculpture",
+        "The image has no sense of depth"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Why is the term 'Renaissance' not a perfect label for every region and artist of the period?",
+      "choices": [
+        "No art was made outside Italy",
+        "Artistic change occurred unevenly and differed across places and communities",
+        "Every artist followed one identical method",
+        "The period has no historical evidence"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "What is one difference between a religious commission and a secular portrait commission?",
+      "choices": [
+        "Religious works cannot include people",
+        "Portraits cannot use perspective",
+        "Their purposes and intended audiences may differ",
+        "Secular works never use symbols"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "When analyzing a Renaissance artwork, what is the strongest approach?",
+      "choices": [
+        "Identify the artist and stop there",
+        "Judge it only by its size",
+        "Ignore the materials and setting",
+        "Connect its visual techniques with its subject, patron, and historical context"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}
