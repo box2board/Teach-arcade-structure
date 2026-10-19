@@ -55,6 +55,12 @@ export const GAMES=Object.freeze([Object.freeze({
   mode:'Solo + Local 2-player',facts:Object.freeze(['Choose any shared topic','One-player vs. CPU','Two players on one keyboard']),
   supportsQuestionBank:true,questionSetIds:Object.freeze([])
 }),Object.freeze({
+  id:'slime-slinger',title:'Slime Slinger',url:'/review-lab/slime-slinger/',
+  description:'Answer review questions to load slime, then aim across three depths and splat moving targets before the clock runs out.',
+  image:'/review-lab/slime-slinger-preview.svg',imageAlt:'Slime Slinger arcade arena with green slime, a crosshair, and targets at three depths.',
+  mode:'Solo',facts:Object.freeze(['Questions earn slime','3 target depths','2, 3 or 5 minute rounds']),
+  topicLabel:'Choose any shared review topic',launchLabel:'Load up & play',supportsQuestionBank:true,questionSetIds:Object.freeze([])
+}),Object.freeze({
   id:'snow-day-defenders',title:'Snow Day Defenders',url:'/review-lab/snow-day-defenders/',
   description:'Answer review questions to earn snow gear, recruit helpers, and protect your fort.',
   image:'/review-lab/snow-day-defenders-preview.svg',imageAlt:'Illustration of a snow fort, two scarf-wearing helpers, and playful snow creatures.',
