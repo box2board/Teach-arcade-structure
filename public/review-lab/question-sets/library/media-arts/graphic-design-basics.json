@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--media-arts--graphic-design-basics",
+  "title": "Graphic Design Basics",
+  "subject": "Fine Arts",
+  "category": "Media Arts",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is the main purpose of visual hierarchy in a design?",
+      "choices": [
+        "Guide viewers toward information in order of importance",
+        "Make every element equally prominent",
+        "Hide the main message",
+        "Match the file extension to the subject"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 2,
+      "question": "Which change most improves readability between text and its background?",
+      "choices": [
+        "Use two similar pale colors",
+        "Increase contrast between the text and background",
+        "Add more decorative fonts",
+        "Shrink the text"
+      ],
+      "correctAnswer": 1,
+      "skill": "application"
+    },
+    {
+      "id": 3,
+      "question": "What does alignment help a designer achieve?",
+      "choices": [
+        "A guaranteed color match",
+        "A larger image file",
+        "A clear visual relationship among elements",
+        "A consistent audio level"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "Why might a designer repeat a color or shape across a layout?",
+      "choices": [
+        "To remove all hierarchy",
+        "To make the design asymmetrical",
+        "To reduce the canvas size",
+        "To create consistency and connect related elements"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "What is negative space?",
+      "choices": [
+        "The area around and between visual elements",
+        "A region with a negative color value",
+        "A printing error",
+        "The darkest part of every image"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "A poster has five unrelated fonts. What is a likely problem?",
+      "choices": [
+        "The file becomes vector artwork",
+        "The typography may feel inconsistent and harder to scan",
+        "The colors become complementary",
+        "The message gains stronger hierarchy"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 7,
+      "question": "When is a grid especially useful?",
+      "choices": [
+        "When choosing a camera lens",
+        "When editing spoken dialogue",
+        "When organizing content into consistent rows and columns",
+        "When compressing an audio file"
+      ],
+      "correctAnswer": 2,
+      "skill": "application"
+    },
+    {
+      "id": 8,
+      "question": "What does a logo need to do well at small sizes?",
+      "choices": [
+        "Use many tiny details",
+        "Depend on a long caption",
+        "Include multiple photographs",
+        "Remain recognizable and legible"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 9,
+      "question": "Which pair is most likely to provide clear typographic contrast?",
+      "choices": [
+        "A bold heading style paired with a readable body style",
+        "Two nearly identical display fonts",
+        "Several script fonts together",
+        "Body text in all capitals and italics"
+      ],
+      "correctAnswer": 0,
+      "skill": "application"
+    },
+    {
+      "id": 10,
+      "question": "Why should a designer consider the intended audience?",
+      "choices": [
+        "Audience determines the computer's screen size",
+        "Audience needs influence language, imagery, and visual choices",
+        "Audience removes the need for a message",
+        "Audience always prefers the same colors"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What is a thumbnail sketch useful for?",
+      "choices": [
+        "Exporting a finished vector logo",
+        "Checking copyright ownership",
+        "Testing layout ideas quickly before detailed production",
+        "Recording narration"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Which layout choice can make a call to action easier to find?",
+      "choices": [
+        "Surround it with equally bold competing items",
+        "Hide it in dense body text",
+        "Use the same styling as the background",
+        "Give it clear placement and visual emphasis"
+      ],
+      "correctAnswer": 3,
+      "skill": "application"
+    },
+    {
+      "id": 13,
+      "question": "What does balance describe in a composition?",
+      "choices": [
+        "How visual weight is distributed across the design",
+        "Whether a printer has enough paper",
+        "The number of colors in a palette",
+        "How fast an animation plays"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "What is one benefit of limiting a design's color palette?",
+      "choices": [
+        "It guarantees every color is accessible",
+        "It can strengthen unity and make choices feel intentional",
+        "It removes the need for contrast",
+        "It makes all images print identically"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why should a designer test a layout on its actual display or print size?",
+      "choices": [
+        "The test changes the topic",
+        "The layout cannot be resized later",
+        "Small details and text may behave differently at the final scale",
+        "It automatically adds a license"
+      ],
+      "correctAnswer": 2,
+      "skill": "application"
+    },
+    {
+      "id": 16,
+      "question": "What does proximity communicate in a layout?",
+      "choices": [
+        "Every nearby element has equal importance",
+        "Text should always touch images",
+        "The design is intended for outdoors",
+        "Items placed near each other may be perceived as related"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "A flyer has no clear focal point. What is a useful revision?",
+      "choices": [
+        "Emphasize the most important message and reduce competing emphasis",
+        "Make every item larger",
+        "Add unrelated decoration",
+        "Remove all spacing"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "What is a vector graphic's key advantage for many logos?",
+      "choices": [
+        "It always contains photographic detail",
+        "It can scale without becoming pixelated",
+        "It cannot be edited",
+        "It stores sound more efficiently"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "How can a designer check color accessibility?",
+      "choices": [
+        "Choose colors only by personal preference",
+        "Make all text the same hue",
+        "Use a contrast checker and avoid relying on color alone",
+        "Convert every element to a photograph"
+      ],
+      "correctAnswer": 2,
+      "skill": "application"
+    },
+    {
+      "id": 20,
+      "question": "What should a design brief clarify before production begins?",
+      "choices": [
+        "The final number of social media likes",
+        "A complete list of all possible fonts",
+        "The printer's location only",
+        "The goal, audience, message, and practical constraints"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    }
+  ]
+}

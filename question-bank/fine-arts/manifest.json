@@ -3,8 +3,8 @@
   "subject": "Fine Arts",
   "status": "draft-for-review",
   "gradeBand": "7–12",
-  "setCount": 25,
-  "questionCount": 500,
+  "setCount": 30,
+  "questionCount": 600,
   "sets": [
     {
       "id": "fine-arts--art-history--prehistoric-ancient-art",
@@ -180,6 +180,41 @@
       "category": "Media Arts",
       "questionCount": 20,
       "file": "media-arts/introduction-to-media-arts.json"
+    },
+    {
+      "id": "fine-arts--media-arts--digital-citizenship",
+      "title": "Digital Citizenship",
+      "category": "Media Arts",
+      "questionCount": 20,
+      "file": "media-arts/digital-citizenship.json"
+    },
+    {
+      "id": "fine-arts--media-arts--graphic-design-basics",
+      "title": "Graphic Design Basics",
+      "category": "Media Arts",
+      "questionCount": 20,
+      "file": "media-arts/graphic-design-basics.json"
+    },
+    {
+      "id": "fine-arts--media-arts--photo-editing",
+      "title": "Photo Editing",
+      "category": "Media Arts",
+      "questionCount": 20,
+      "file": "media-arts/photo-editing.json"
+    },
+    {
+      "id": "fine-arts--media-arts--animation-basics",
+      "title": "Animation Basics",
+      "category": "Media Arts",
+      "questionCount": 20,
+      "file": "media-arts/animation-basics.json"
+    },
+    {
+      "id": "fine-arts--media-arts--video-editing-projects",
+      "title": "Video Editing Projects",
+      "category": "Media Arts",
+      "questionCount": 20,
+      "file": "media-arts/video-editing-projects.json"
     }
   ]
 }

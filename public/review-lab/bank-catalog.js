@@ -3610,4 +3610,55 @@ export const BANK_SETS=[
     "description": "Media Arts · 7–12",
     "file": "fine-arts/media-arts/introduction-to-media-arts.json"
   }
+,
+  {
+    "id": "fine-arts--media-arts--digital-citizenship",
+    "title": "Digital Citizenship",
+    "subject": "Fine Arts",
+    "category": "Media Arts",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Media Arts · 7–12",
+    "file": "media-arts/digital-citizenship.json"
+  },
+  {
+    "id": "fine-arts--media-arts--graphic-design-basics",
+    "title": "Graphic Design Basics",
+    "subject": "Fine Arts",
+    "category": "Media Arts",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Media Arts · 7–12",
+    "file": "media-arts/graphic-design-basics.json"
+  },
+  {
+    "id": "fine-arts--media-arts--photo-editing",
+    "title": "Photo Editing",
+    "subject": "Fine Arts",
+    "category": "Media Arts",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Media Arts · 7–12",
+    "file": "media-arts/photo-editing.json"
+  },
+  {
+    "id": "fine-arts--media-arts--animation-basics",
+    "title": "Animation Basics",
+    "subject": "Fine Arts",
+    "category": "Media Arts",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Media Arts · 7–12",
+    "file": "media-arts/animation-basics.json"
+  },
+  {
+    "id": "fine-arts--media-arts--video-editing-projects",
+    "title": "Video Editing Projects",
+    "subject": "Fine Arts",
+    "category": "Media Arts",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Media Arts · 7–12",
+    "file": "media-arts/video-editing-projects.json"
+  }
 ];

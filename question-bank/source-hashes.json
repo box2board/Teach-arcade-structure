@@ -359,5 +359,10 @@
   "question-bank/fine-arts/theatre/character-development.json": "46334c141fde44d80be2220a862ba50f1d4897c961803a490fc5c5655cf3c9b8",
   "question-bank/fine-arts/theatre/set-costume-design.json": "da02ff7a18b42cea90c07e0b8e07547ffe95593d37ad91d7682d7db342c47f4f",
   "question-bank/fine-arts/theatre/theatre-history-traditions.json": "78de29c29a3fab70f77117707fd2af60bb4267e87a676126f9737f23a7205a11",
-  "question-bank/fine-arts/media-arts/introduction-to-media-arts.json": "57591c21a6b0de33a720d418075f07905557537fc9131e956376f117faed5c95"
+  "question-bank/fine-arts/media-arts/introduction-to-media-arts.json": "57591c21a6b0de33a720d418075f07905557537fc9131e956376f117faed5c95",
+  "question-bank/media-arts/digital-citizenship.json": "8756755a1620f38b971fed69d03be187534a7b7b4f26cbb03e3250d76e3e8362",
+  "question-bank/media-arts/graphic-design-basics.json": "6a002a5756899d8ae14965223936311f963c4b6d53ca32f76b11cb1ca3fb18e8",
+  "question-bank/media-arts/photo-editing.json": "86f29e86f7ae8785f0fc1ee0c7661d4db1879a336783ac439f4f9b26fa91ed7a",
+  "question-bank/media-arts/animation-basics.json": "e90904350e04d724e42bf08134d3802e8aced5b1b42432374336992a84233662",
+  "question-bank/media-arts/video-editing-projects.json": "4dc53d80ab823d033e807c0778cb1384248b6f5406bc294168239391f616a252"
 }
