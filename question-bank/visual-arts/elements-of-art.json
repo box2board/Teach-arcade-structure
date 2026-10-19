@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--visual-arts--elements-of-art",
+  "title": "Elements of Art",
+  "subject": "Fine Arts",
+  "category": "Visual Arts",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which element of art describes a mark that moves through space?",
+      "choices": [
+        "Line",
+        "Texture",
+        "Value",
+        "Form"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What does shape describe?",
+      "choices": [
+        "The lightness of a color",
+        "A two-dimensional enclosed area",
+        "The surface feel of an object",
+        "The space around a subject"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "How does form differ from shape?",
+      "choices": [
+        "Form is always abstract; shape is always realistic",
+        "Form describes color; shape describes value",
+        "Form has three-dimensional volume; shape is two-dimensional",
+        "They are identical terms"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "What is value in art?",
+      "choices": [
+        "The size of a frame",
+        "The direction of a line",
+        "The material of a sculpture",
+        "The lightness or darkness of a color"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What does texture describe in a visual artwork?",
+      "choices": [
+        "The actual or suggested surface quality",
+        "The object's exact location",
+        "The hue of a color",
+        "The size of the canvas"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is space in an artwork?",
+      "choices": [
+        "The artwork's title",
+        "The area around, between, or within forms",
+        "The color's brightness only",
+        "A type of brush"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "What is hue?",
+      "choices": [
+        "The amount of light in a room",
+        "The roughness of paper",
+        "The name of a color, such as red or blue",
+        "The direction of a shape"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "How can overlapping forms suggest depth?",
+      "choices": [
+        "Both forms become flat symbols",
+        "The colors become complementary",
+        "The composition loses space",
+        "The overlapping form appears closer than the one it covers"
+      ],
+      "correctAnswer": 3,
+      "skill": "application"
+    },
+    {
+      "id": 9,
+      "question": "Which element can make a flat circle appear spherical?",
+      "choices": [
+        "Value through highlights and shadows",
+        "A thicker frame",
+        "A title card",
+        "A repeated outline only"
+      ],
+      "correctAnswer": 0,
+      "skill": "application"
+    },
+    {
+      "id": 10,
+      "question": "A drawing uses repeated diagonal lines. Which element is most evident?",
+      "choices": [
+        "Form",
+        "Line",
+        "Space",
+        "Texture only"
+      ],
+      "correctAnswer": 1,
+      "skill": "application"
+    },
+    {
+      "id": 11,
+      "question": "What is implied texture?",
+      "choices": [
+        "A physically rough surface only",
+        "A color that has been mixed",
+        "A visual suggestion of how a surface might feel",
+        "An object shown in perspective"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "How can negative space help a composition?",
+      "choices": [
+        "It removes all objects",
+        "It changes the medium",
+        "It guarantees symmetry",
+        "It clarifies shapes and relationships by giving forms room"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What is a geometric shape?",
+      "choices": [
+        "A shape based on precise forms such as circles or rectangles",
+        "A shape found only in nature",
+        "A three-dimensional sculpture",
+        "A color without a name"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Which example best shows organic shape?",
+      "choices": [
+        "A perfect square",
+        "An irregular leaf silhouette",
+        "A measured grid",
+        "A straight ruler line"
+      ],
+      "correctAnswer": 1,
+      "skill": "application"
+    },
+    {
+      "id": 15,
+      "question": "Why might an artist vary line weight?",
+      "choices": [
+        "To change the artwork's subject",
+        "To make every area equally important",
+        "To create emphasis, depth, or visual movement",
+        "To remove contour"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "What does a highlight usually indicate in a modeled form?",
+      "choices": [
+        "The darkest region",
+        "A cast shadow on the floor",
+        "The object's outline",
+        "An area receiving stronger light"
+      ],
+      "correctAnswer": 3,
+      "skill": "application"
+    },
+    {
+      "id": 17,
+      "question": "How can texture contribute to meaning?",
+      "choices": [
+        "Surface qualities can suggest material, mood, or sensory experience",
+        "Texture always identifies the artist",
+        "Texture replaces composition",
+        "Texture determines the artwork's age"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "What is the difference between actual and implied texture?",
+      "choices": [
+        "Actual texture is always smooth; implied is rough",
+        "Actual texture can be physically felt; implied texture is visually represented",
+        "Actual is color; implied is line",
+        "There is no difference"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "A still life has objects that seem to float. Which element may need clearer development?",
+      "choices": [
+        "Hue only",
+        "The artwork's signature",
+        "Space and relationships among forms",
+        "The frame material"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Why do artists study elements of art?",
+      "choices": [
+        "They prescribe one correct style",
+        "They eliminate interpretation",
+        "They replace practice with memorization",
+        "They provide vocabulary for making and analyzing visual choices"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    }
+  ]
+}

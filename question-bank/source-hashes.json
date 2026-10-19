@@ -374,5 +374,10 @@
   "question-bank/music/world-instruments.json": "cba0e39d05673785e895004b6d931eb70c142f90c93445860c83eb40e7195d6e",
   "question-bank/music/genres-styles-of-music.json": "3b4b06d6b589770b3942339df71abc3675c02812562eeb7ce61ccad60d180d79",
   "question-bank/music/composer-studies.json": "4001fde590fff28bd9467ea2f01e49ff31972ab53380e204d3ddd9459f3149e6",
-  "question-bank/music/composition-music-creation.json": "4ae52854c255b91e6a134c4ed5028d61ea87265c22ff31a0e87bdb5d64480d5d"
+  "question-bank/music/composition-music-creation.json": "4ae52854c255b91e6a134c4ed5028d61ea87265c22ff31a0e87bdb5d64480d5d",
+  "question-bank/visual-arts/elements-of-art.json": "eb9d2a1cbea2afc8f9d960c9c243ec2fd74908c76115fed6ec9625e35e4fb7f4",
+  "question-bank/visual-arts/principles-of-design.json": "db130e7151ac86734bc687ec4b03096ce4a49d14c069abd68d176e430da0d969",
+  "question-bank/visual-arts/color-theory.json": "63b3f80e535c89a2df25321b4150e582316abcb2f04011f2d9e9b807debd789c",
+  "question-bank/visual-arts/drawing-basics.json": "869f0822590b82efa3b5a240d4855b9746ebfdfdb9d03b78c3b1401063787881",
+  "question-bank/visual-arts/painting-techniques.json": "023561041a94bf3126fcaafe52f40b20cc50d8613e5cb87fa13d06f453ada5d0"
 }

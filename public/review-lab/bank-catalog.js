@@ -3763,4 +3763,55 @@ export const BANK_SETS=[
     "description": "Music · 7–12",
     "file": "music/composition-music-creation.json"
   }
+,
+  {
+    "id": "fine-arts--visual-arts--elements-of-art",
+    "title": "Elements of Art",
+    "subject": "Fine Arts",
+    "category": "Visual Arts",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Visual Arts · 7–12",
+    "file": "visual-arts/elements-of-art.json"
+  },
+  {
+    "id": "fine-arts--visual-arts--principles-of-design",
+    "title": "Principles of Design",
+    "subject": "Fine Arts",
+    "category": "Visual Arts",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Visual Arts · 7–12",
+    "file": "visual-arts/principles-of-design.json"
+  },
+  {
+    "id": "fine-arts--visual-arts--color-theory",
+    "title": "Color Theory",
+    "subject": "Fine Arts",
+    "category": "Visual Arts",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Visual Arts · 7–12",
+    "file": "visual-arts/color-theory.json"
+  },
+  {
+    "id": "fine-arts--visual-arts--drawing-basics",
+    "title": "Drawing Basics",
+    "subject": "Fine Arts",
+    "category": "Visual Arts",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Visual Arts · 7–12",
+    "file": "visual-arts/drawing-basics.json"
+  },
+  {
+    "id": "fine-arts--visual-arts--painting-techniques",
+    "title": "Painting Techniques",
+    "subject": "Fine Arts",
+    "category": "Visual Arts",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Visual Arts · 7–12",
+    "file": "visual-arts/painting-techniques.json"
+  }
 ];

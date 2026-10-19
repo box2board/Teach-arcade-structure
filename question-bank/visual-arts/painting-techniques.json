@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--visual-arts--painting-techniques",
+  "title": "Painting Techniques",
+  "subject": "Fine Arts",
+  "category": "Visual Arts",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is an underpainting?",
+      "choices": [
+        "An initial layer that establishes composition, values, or color relationships",
+        "The final protective varnish",
+        "A painting made beneath a frame",
+        "A palette-cleaning method"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is glazing in painting?",
+      "choices": [
+        "Mixing paint with sand only",
+        "Applying a thin transparent layer over a dry layer",
+        "Scraping all paint away",
+        "Painting directly onto wet paper"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "How does wet-on-wet painting work?",
+      "choices": [
+        "A transparent layer is applied after drying",
+        "The paper is painted before it exists",
+        "New paint is applied while the underlying paint is still wet",
+        "Only dry brushes are used"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "What can a dry-brush technique create?",
+      "choices": [
+        "A perfectly smooth wash every time",
+        "A transparent glaze only",
+        "A sharp pencil contour",
+        "Broken, textured marks with little paint on the brush"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "Why might an artist use an appropriate ground or primer?",
+      "choices": [
+        "It prepares the surface and can influence adhesion and appearance",
+        "It sets the painting's copyright",
+        "It replaces the paint",
+        "It guarantees a specific style"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "What is a wash in watercolor?",
+      "choices": [
+        "A thick sculptural impasto",
+        "A broad, relatively transparent layer of diluted pigment",
+        "A method of framing a work",
+        "A dry pastel mark"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What does impasto mean?",
+      "choices": [
+        "A thin transparent glaze",
+        "A painting with no color",
+        "Paint applied thickly so brushstrokes or texture may remain visible",
+        "A technique for mixing ink"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "How can an artist create a smooth transition between two colors?",
+      "choices": [
+        "Apply unrelated colors in separate dry dots",
+        "Use a ruler to erase the boundary",
+        "Add a thick outline",
+        "Blend them gradually while both areas are workable"
+      ],
+      "correctAnswer": 3,
+      "skill": "application"
+    },
+    {
+      "id": 9,
+      "question": "What is a palette used for?",
+      "choices": [
+        "Holding and mixing paint",
+        "Stretching a canvas",
+        "Protecting a finished surface",
+        "Measuring perspective"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Why should an artist test a mixture before applying it to a large area?",
+      "choices": [
+        "Testing changes the pigment permanently",
+        "Paint can look different as it dries or across a larger surface",
+        "The canvas cannot be repainted",
+        "A test guarantees exact color under all light"
+      ],
+      "correctAnswer": 1,
+      "skill": "application"
+    },
+    {
+      "id": 11,
+      "question": "What does layering allow a painter to do?",
+      "choices": [
+        "Avoid making any compositional choices",
+        "Use only one brush",
+        "Build color, depth, and detail through successive applications",
+        "Remove all texture"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "A watercolor area has a hard edge the artist did not intend. What may have happened?",
+      "choices": [
+        "The paper was too large",
+        "The pigment had no color",
+        "The brush made a contour drawing",
+        "The wash dried before it could be softened"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 13,
+      "question": "Why is brush control important?",
+      "choices": [
+        "It affects edge, mark, coverage, and surface texture",
+        "It determines the artwork's historical period",
+        "It changes the canvas size",
+        "It removes the need to plan"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What is a resist technique?",
+      "choices": [
+        "A technique that removes every layer",
+        "A material blocks paint from adhering to selected areas",
+        "A brush made only for outlines",
+        "A method for stretching canvas"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "How can underpainting support a limited palette?",
+      "choices": [
+        "It guarantees all colors will be bright",
+        "It replaces observation",
+        "It establishes value structure that can guide later color layers",
+        "It makes the final layer unnecessary"
+      ],
+      "correctAnswer": 2,
+      "skill": "application"
+    },
+    {
+      "id": 16,
+      "question": "Why might an artist vary brush size?",
+      "choices": [
+        "Every brush creates the same mark",
+        "A large brush always creates more detail",
+        "Brush size changes the subject",
+        "Different marks and areas call for different levels of control"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "What should be considered when choosing between acrylic and watercolor?",
+      "choices": [
+        "Opacity, drying behavior, surface, and intended effects",
+        "The frame's material only",
+        "The artwork's title",
+        "The number of viewers"
+      ],
+      "correctAnswer": 0,
+      "skill": "application"
+    },
+    {
+      "id": 18,
+      "question": "What is a highlight in a painted form?",
+      "choices": [
+        "A contour around every object",
+        "A lighter area that suggests reflected or direct light",
+        "The darkest area",
+        "A layer applied only at the end"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "A painting feels muddy after many mixtures. What could improve the next attempt?",
+      "choices": [
+        "Mix every color together",
+        "Add water without testing",
+        "Use cleaner color mixtures and plan layer relationships",
+        "Cover the entire painting in black"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Why should painting cleanup and ventilation instructions be followed?",
+      "choices": [
+        "They improve the composition automatically",
+        "They determine the painting's genre",
+        "They replace the need for drying time",
+        "Materials and solvents may require safe handling"
+      ],
+      "correctAnswer": 3,
+      "skill": "application"
+    }
+  ]
+}

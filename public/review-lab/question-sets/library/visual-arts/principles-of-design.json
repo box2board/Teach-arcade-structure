@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--visual-arts--principles-of-design",
+  "title": "Principles of Design",
+  "subject": "Fine Arts",
+  "category": "Visual Arts",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What does balance describe in a composition?",
+      "choices": [
+        "How visual weight is distributed",
+        "The artwork's physical weight",
+        "The number of colors used",
+        "The artist's drawing speed"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is contrast?",
+      "choices": [
+        "A repeated shape with no changes",
+        "A noticeable difference between visual elements",
+        "The space behind a frame",
+        "A type of paint"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "How can emphasis guide a viewer?",
+      "choices": [
+        "It makes every area identical",
+        "It removes focal points",
+        "It makes one area or idea stand out",
+        "It determines the artwork's scale"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "What does rhythm create in visual art?",
+      "choices": [
+        "A literal sound beat in every artwork",
+        "A balanced frame",
+        "A fixed color temperature",
+        "A sense of movement through repeated or varied elements"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "What is pattern?",
+      "choices": [
+        "A repeated decorative or structural design",
+        "A single focal point",
+        "A type of perspective",
+        "A color's brightness"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What does proportion compare?",
+      "choices": [
+        "The number of materials",
+        "The relative size of parts to one another or to the whole",
+        "The canvas orientation",
+        "The contrast of hues"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "How does unity contribute to a design?",
+      "choices": [
+        "It makes every element the same size",
+        "It removes variation",
+        "It makes parts feel connected as a coherent whole",
+        "It guarantees symmetry"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "What is variety in design?",
+      "choices": [
+        "A strict repetition with no changes",
+        "An exact measurement of scale",
+        "A rule that removes focal points",
+        "Differences that add interest within a composition"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "A poster's title is hard to notice. Which principle could improve it?",
+      "choices": [
+        "Emphasis through stronger size, contrast, or placement",
+        "Pattern through repetition only",
+        "Unity through matching the background",
+        "Balance through equal font sizes"
+      ],
+      "correctAnswer": 0,
+      "skill": "application"
+    },
+    {
+      "id": 10,
+      "question": "What does movement describe in design?",
+      "choices": [
+        "How the artwork physically changes",
+        "How a viewer's eye travels through the composition",
+        "The artist's process speed",
+        "A sculpture's weight"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Which arrangement can create asymmetrical balance?",
+      "choices": [
+        "Two identical halves reflected across a center",
+        "Every shape in one corner",
+        "Different elements with visual weights that still feel stable",
+        "A design with no focal point"
+      ],
+      "correctAnswer": 2,
+      "skill": "application"
+    },
+    {
+      "id": 12,
+      "question": "Why might a designer use repetition with variation?",
+      "choices": [
+        "To eliminate all structure",
+        "To make each element unrelated",
+        "To remove emphasis",
+        "To establish unity while keeping the composition engaging"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 13,
+      "question": "What does scale describe?",
+      "choices": [
+        "The size of an element in relation to another or its surroundings",
+        "The surface texture",
+        "The color's hue",
+        "The number of brush strokes"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "A composition feels crowded. What revision may improve balance and clarity?",
+      "choices": [
+        "Add more decoration everywhere",
+        "Adjust spacing and visual weight among the elements",
+        "Make every item equally bold",
+        "Remove all negative space"
+      ],
+      "correctAnswer": 1,
+      "skill": "application"
+    },
+    {
+      "id": 15,
+      "question": "How are contrast and emphasis related?",
+      "choices": [
+        "They are identical to proportion",
+        "Contrast always removes focus",
+        "Contrast can help create emphasis by making an element distinct",
+        "Emphasis depends only on size"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "What is an example of visual rhythm?",
+      "choices": [
+        "A single object with no repetition",
+        "A note played in a song",
+        "A color's temperature",
+        "A repeated sequence of shapes that leads the eye across a page"
+      ],
+      "correctAnswer": 3,
+      "skill": "application"
+    },
+    {
+      "id": 17,
+      "question": "Why is unity not the same as sameness?",
+      "choices": [
+        "A unified design can connect varied elements through shared relationships",
+        "Unity requires all parts to be identical",
+        "Variation prevents all unity",
+        "Unity only occurs in symmetrical designs"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Which principle is most directly involved when a focal image dominates a layout?",
+      "choices": [
+        "Pattern",
+        "Emphasis",
+        "Proportion",
+        "Rhythm"
+      ],
+      "correctAnswer": 1,
+      "skill": "application"
+    },
+    {
+      "id": 19,
+      "question": "How can negative space support a design's hierarchy?",
+      "choices": [
+        "It makes all items equal",
+        "It removes the need for alignment",
+        "It separates groups and gives important content room to stand out",
+        "It changes the artwork's medium"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "What should an artist consider when choosing design principles?",
+      "choices": [
+        "A fixed rule that all principles must be equal",
+        "The frame color only",
+        "How many supplies remain",
+        "The intended idea, audience, and relationships among visual elements"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

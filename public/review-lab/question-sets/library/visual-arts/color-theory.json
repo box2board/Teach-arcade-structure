@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--visual-arts--color-theory",
+  "title": "Color Theory",
+  "subject": "Fine Arts",
+  "category": "Visual Arts",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What are the primary colors in the traditional subtractive painting model?",
+      "choices": [
+        "Red, yellow, and blue",
+        "Red, green, and blue",
+        "Orange, green, and violet",
+        "Black, white, and gray"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What color results from mixing blue and yellow pigment?",
+      "choices": [
+        "Violet",
+        "Green",
+        "Orange",
+        "Red"
+      ],
+      "correctAnswer": 1,
+      "skill": "application"
+    },
+    {
+      "id": 3,
+      "question": "What are complementary colors?",
+      "choices": [
+        "Colors next to each other",
+        "Colors with identical hue",
+        "Colors opposite each other on a color wheel",
+        "All neutral colors"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What effect can complementary colors create when placed together?",
+      "choices": [
+        "A guaranteed neutral result",
+        "Less contrast than analogous colors",
+        "A change in value only",
+        "Strong contrast and visual energy"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "What are analogous colors?",
+      "choices": [
+        "Colors next to one another on the color wheel",
+        "Colors opposite one another",
+        "Only primary colors",
+        "Colors with no shared properties"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is hue?",
+      "choices": [
+        "How light or dark it is",
+        "A color's basic family or name",
+        "How muted or intense it is",
+        "The surface it is painted on"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What does value describe in color?",
+      "choices": [
+        "Its place on the wheel only",
+        "Its warmth only",
+        "Its relative lightness or darkness",
+        "The amount of pigment in a tube"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "What does saturation describe?",
+      "choices": [
+        "The object's size",
+        "The direction of the light",
+        "The color's temperature only",
+        "The intensity or purity of a color"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "How can adding white to a hue affect it?",
+      "choices": [
+        "Create a tint",
+        "Create a shade",
+        "Create a complementary color",
+        "Remove the hue"
+      ],
+      "correctAnswer": 0,
+      "skill": "application"
+    },
+    {
+      "id": 10,
+      "question": "How can adding black to a hue affect it?",
+      "choices": [
+        "Create a tint",
+        "Create a shade",
+        "Create an analogous color",
+        "Increase its brightness"
+      ],
+      "correctAnswer": 1,
+      "skill": "application"
+    },
+    {
+      "id": 11,
+      "question": "What are warm colors often associated with in a composition?",
+      "choices": [
+        "A guaranteed calm mood",
+        "Distance in every context",
+        "Energy, warmth, or visual closeness",
+        "No emotional effect"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why should artists consider color contrast for readable text?",
+      "choices": [
+        "Contrast always improves every palette",
+        "Text color determines the paper size",
+        "Low contrast makes all details clearer",
+        "Sufficient contrast helps viewers distinguish text from its background"
+      ],
+      "correctAnswer": 3,
+      "skill": "application"
+    },
+    {
+      "id": 13,
+      "question": "What is a neutral color?",
+      "choices": [
+        "A color such as gray, black, white, or brown that is less strongly associated with a hue",
+        "Any color mixed from two primaries",
+        "A color that is always bright",
+        "A complementary pair"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "A painting feels overly intense. Which change may soften the palette?",
+      "choices": [
+        "Increase saturation everywhere",
+        "Use less saturated colors or add neutral mixtures",
+        "Remove all value changes",
+        "Use only complementary pairs at full intensity"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 15,
+      "question": "What is color temperature?",
+      "choices": [
+        "The physical heat of paint",
+        "A color's brightness level",
+        "The perceived warmth or coolness of a color",
+        "The amount of water in a brush"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Which pair is complementary in the traditional color wheel?",
+      "choices": [
+        "Blue and green",
+        "Yellow and orange",
+        "Red and orange",
+        "Blue and orange"
+      ],
+      "correctAnswer": 3,
+      "skill": "application"
+    },
+    {
+      "id": 17,
+      "question": "How can a limited palette help an artist?",
+      "choices": [
+        "It can create harmony and focus choices",
+        "It guarantees realistic color",
+        "It prevents all contrast",
+        "It removes the need for value"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 18,
+      "question": "Why can color meaning vary across contexts?",
+      "choices": [
+        "Every color has one universal meaning",
+        "Culture, setting, and personal experience influence interpretation",
+        "Color meaning depends only on pigment brand",
+        "Context affects value but not meaning"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "What is simultaneous contrast?",
+      "choices": [
+        "A pair of colors mixed together",
+        "The difference between two canvases",
+        "A color can appear different depending on the colors around it",
+        "An effect created only by black paint"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "A designer wants an alert to stand out from a blue background. What is a reasonable strategy?",
+      "choices": [
+        "Use nearly the same blue value",
+        "Reduce all contrast",
+        "Put the alert in the smallest type",
+        "Choose a contrasting hue and check readability"
+      ],
+      "correctAnswer": 3,
+      "skill": "application"
+    }
+  ]
+}

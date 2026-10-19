@@ -3,8 +3,8 @@
   "subject": "Fine Arts",
   "status": "draft-for-review",
   "gradeBand": "7–12",
-  "setCount": 40,
-  "questionCount": 800,
+  "setCount": 45,
+  "questionCount": 900,
   "sets": [
     {
       "id": "fine-arts--art-history--prehistoric-ancient-art",
@@ -285,6 +285,41 @@
       "category": "Music",
       "questionCount": 20,
       "file": "music/composition-music-creation.json"
+    },
+    {
+      "id": "fine-arts--visual-arts--elements-of-art",
+      "title": "Elements of Art",
+      "category": "Visual Arts",
+      "questionCount": 20,
+      "file": "visual-arts/elements-of-art.json"
+    },
+    {
+      "id": "fine-arts--visual-arts--principles-of-design",
+      "title": "Principles of Design",
+      "category": "Visual Arts",
+      "questionCount": 20,
+      "file": "visual-arts/principles-of-design.json"
+    },
+    {
+      "id": "fine-arts--visual-arts--color-theory",
+      "title": "Color Theory",
+      "category": "Visual Arts",
+      "questionCount": 20,
+      "file": "visual-arts/color-theory.json"
+    },
+    {
+      "id": "fine-arts--visual-arts--drawing-basics",
+      "title": "Drawing Basics",
+      "category": "Visual Arts",
+      "questionCount": 20,
+      "file": "visual-arts/drawing-basics.json"
+    },
+    {
+      "id": "fine-arts--visual-arts--painting-techniques",
+      "title": "Painting Techniques",
+      "category": "Visual Arts",
+      "questionCount": 20,
+      "file": "visual-arts/painting-techniques.json"
     }
   ]
 }
