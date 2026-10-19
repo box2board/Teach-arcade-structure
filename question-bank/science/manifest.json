@@ -3,8 +3,8 @@
   "subject": "Science",
   "status": "draft-for-review",
   "gradeBand": "7–12",
-  "setCount": 100,
-  "questionCount": 2000,
+  "setCount": 103,
+  "questionCount": 2060,
   "sets": [
     {
       "id": "science--life-science-biology--cell-structure-and-function",
@@ -705,6 +705,27 @@
       "category": "Scientific Inquiry & Environmental Science",
       "questionCount": 20,
       "file": "inquiry-environment/environmental-systems-and-feedbacks.json"
+    },
+    {
+      "id": "science--engineering-stem--stem-challenges-and-projects",
+      "title": "STEM Challenges and Projects",
+      "category": "Engineering & STEM",
+      "questionCount": 20,
+      "file": "engineering-stem/stem-challenges-and-projects.json"
+    },
+    {
+      "id": "science--engineering-stem--coding-and-robotics-basics",
+      "title": "Coding and Robotics Basics",
+      "category": "Engineering & STEM",
+      "questionCount": 20,
+      "file": "engineering-stem/coding-and-robotics-basics.json"
+    },
+    {
+      "id": "science--engineering-stem--stem-careers-and-real-world-connections",
+      "title": "STEM Careers and Real-World Connections",
+      "category": "Engineering & STEM",
+      "questionCount": 20,
+      "file": "engineering-stem/stem-careers-and-real-world-connections.json"
     }
   ]
 }
