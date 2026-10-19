@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--algebra-1--algebra-1",
+  "title": "Algebra 1",
+  "subject": "Math",
+  "category": "Algebra I",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Solve 3x + 5 = 20.",
+      "choices": [
+        "x = 5",
+        "x = 3",
+        "x = 8",
+        "x = 25"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Simplify 4(2x − 3) + x.",
+      "choices": [
+        "8x − 12",
+        "9x − 12",
+        "9x − 3",
+        "8x + 3"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "What is the slope of the line through (1, 4) and (3, 10)?",
+      "choices": [
+        "2",
+        "6",
+        "3",
+        "−3"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "Solve 2x − 7 < 5.",
+      "choices": [
+        "x > 6",
+        "x < −1",
+        "x > −1",
+        "x < 6"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 5,
+      "question": "Which equation has slope 2 and y-intercept −3?",
+      "choices": [
+        "y = 2x − 3",
+        "y = −3x + 2",
+        "y = 2x + 3",
+        "y = −2x − 3"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "If f(x) = 4x − 1, what is f(3)?",
+      "choices": [
+        "7",
+        "11",
+        "12",
+        "13"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Solve the system y = x + 2 and y = 2x − 1.",
+      "choices": [
+        "(1, 3)",
+        "(−3, −1)",
+        "(3, 5)",
+        "(5, 3)"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 8,
+      "question": "Factor x² + 7x + 12.",
+      "choices": [
+        "(x + 6)(x + 2)",
+        "(x − 3)(x − 4)",
+        "(x + 12)(x + 1)",
+        "(x + 3)(x + 4)"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What are the solutions of x² − 9 = 0?",
+      "choices": [
+        "x = −3 and x = 3",
+        "x = 9 only",
+        "x = −9 and x = 9",
+        "x = 3 only"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "A phone plan costs $20 plus $5 per gigabyte. Which rule gives cost C for g gigabytes?",
+      "choices": [
+        "C = 25g",
+        "C = 20 + 5g",
+        "C = 20g + 5",
+        "C = 5 + g"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 11,
+      "question": "What is the y-intercept of y = −4x + 7?",
+      "choices": [
+        "−4",
+        "−7",
+        "7",
+        "4"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Which value of x satisfies 5(x − 2) = 3x + 8?",
+      "choices": [
+        "−9",
+        "1",
+        "5",
+        "9"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 13,
+      "question": "The sequence 4, 7, 10, 13,... follows which explicit rule for term n?",
+      "choices": [
+        "3n + 1",
+        "4n − 1",
+        "3n − 1",
+        "n + 3"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "If y = 2x + 1, what is y when x = −4?",
+      "choices": [
+        "−9",
+        "−7",
+        "7",
+        "9"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "Which point lies on y = −x + 6?",
+      "choices": [
+        "(2, 6)",
+        "(4, 4)",
+        "(2, 4)",
+        "(0, 0)"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Solve |x − 2| = 5.",
+      "choices": [
+        "x = 3 or x = 7",
+        "x = −7 or x = 3",
+        "x = 5 only",
+        "x = −3 or x = 7"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A line has slope 0. What does its graph look like?",
+      "choices": [
+        "A horizontal line",
+        "A vertical line",
+        "A line through the origin only",
+        "A curve"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Which inequality describes numbers at least 4 units from 0?",
+      "choices": [
+        "|x| ≤ 4",
+        "|x| ≥ 4",
+        "x ≥ 4 only",
+        "x ≤ −4 only"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "A student solves 2(x + 3) = 2x + 6 and gets x = 0. What is the correct conclusion?",
+      "choices": [
+        "No solution",
+        "Only x = 0",
+        "Every real number satisfies the equation",
+        "Only x = 6"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A taxi charges $4 to start and $2 per mile. What is the cost for 7 miles?",
+      "choices": [
+        "$14",
+        "$22",
+        "$11",
+        "$18"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

@@ -3219,5 +3219,55 @@ export const BANK_SETS=[
     "questionCount": 20,
     "description": "Pre-Algebra & Number Sense · 7–12",
     "file": "pre-algebra/word-problems-problem-solving.json"
+  },
+  {
+    "id": "math--algebra-1--algebra-1",
+    "title": "Algebra 1",
+    "subject": "Math",
+    "category": "Algebra I",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Algebra I · 7–12",
+    "file": "algebra-1/algebra-1.json"
+  },
+  {
+    "id": "math--algebra-2-functions--algebra-2",
+    "title": "Algebra 2",
+    "subject": "Math",
+    "category": "Algebra II & Functions",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Algebra II & Functions · 7–12",
+    "file": "algebra-2-functions/algebra-2.json"
+  },
+  {
+    "id": "math--calculus--calculus",
+    "title": "Calculus",
+    "subject": "Math",
+    "category": "Calculus",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Calculus · 7–12",
+    "file": "calculus/calculus.json"
+  },
+  {
+    "id": "math--pre-algebra--integer-operations",
+    "title": "Integer Operations",
+    "subject": "Math",
+    "category": "Pre-Algebra & Number Sense",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Pre-Algebra & Number Sense · 7–12",
+    "file": "pre-algebra/integer-operations.json"
+  },
+  {
+    "id": "math--pre-algebra--percents",
+    "title": "Percents",
+    "subject": "Math",
+    "category": "Pre-Algebra & Number Sense",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Pre-Algebra & Number Sense · 7–12",
+    "file": "pre-algebra/percents.json"
   }
 ];

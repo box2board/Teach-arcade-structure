@@ -320,5 +320,10 @@
   "question-bank/math/pre-algebra/time.json": "46fc0ecfacf4328bfaaa9bbeb5762923d1f5646db6c787594d6e1409470fc4ae",
   "question-bank/math/pre-algebra/money.json": "875831a015e52101cafa7ce43dcfd0212603b82f0dcf82fa77de8c9f16db1510",
   "question-bank/math/geometry/geometry-shapes.json": "07c3aa77c59edf9f272cb664daed646921792fbb9adbb58373cfa869bca2c505",
-  "question-bank/math/pre-algebra/word-problems-problem-solving.json": "26fa97315d7765187d2e211aab817e8238ec26bfc136fd83e63cc7d6af7ff351"
+  "question-bank/math/pre-algebra/word-problems-problem-solving.json": "26fa97315d7765187d2e211aab817e8238ec26bfc136fd83e63cc7d6af7ff351",
+  "question-bank/math/algebra-1/algebra-1.json": "aa085a66821a876866f3ac7b1c7e35a7c540c8cc299ea09f9e54c67dd850b0b2",
+  "question-bank/math/algebra-2-functions/algebra-2.json": "3de3bfce7f5e50d26efef6193787192135c1951ea70984c752a8f120af7fdb1b",
+  "question-bank/math/calculus/calculus.json": "25c4a4855dd2c6990b73d1814cfe25f7a7d6dff4942483da6c4ea26c0971af9c",
+  "question-bank/math/pre-algebra/integer-operations.json": "18b783c727eec067bf8b1d6f0b9b3cbaf2afcdb324c7be593c9efdb68925bd74",
+  "question-bank/math/pre-algebra/percents.json": "171e4a0ac896f3b8344d3dad6bae72919f2d402c6e67c03951f59f2e2bee0b97"
 }

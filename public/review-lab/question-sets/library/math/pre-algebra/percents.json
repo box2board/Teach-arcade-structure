@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--pre-algebra--percents",
+  "title": "Percents",
+  "subject": "Math",
+  "category": "Pre-Algebra & Number Sense",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is 25% of 80?",
+      "choices": [
+        "20",
+        "25",
+        "16",
+        "40"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Write 0.35 as a percent.",
+      "choices": [
+        "3.5%",
+        "35%",
+        "350%",
+        "0.35%"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "A $60 item is discounted 15%. What is the discount amount?",
+      "choices": [
+        "$15",
+        "$51",
+        "$9",
+        "$6"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "A class has 40 students; 30% ride the bus. How many students is that?",
+      "choices": [
+        "10",
+        "30",
+        "14",
+        "12"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 5,
+      "question": "What percent is 18 of 60?",
+      "choices": [
+        "30%",
+        "18%",
+        "40%",
+        "3%"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "Increase 200 by 12%.",
+      "choices": [
+        "212",
+        "224",
+        "240",
+        "188"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 7,
+      "question": "Decrease 90 by 20%.",
+      "choices": [
+        "70",
+        "18",
+        "72",
+        "108"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "A score rises from 50 to 65. What is the percent increase?",
+      "choices": [
+        "15%",
+        "23%",
+        "130%",
+        "30%"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 9,
+      "question": "Write 3/5 as a percent.",
+      "choices": [
+        "60%",
+        "35%",
+        "50%",
+        "80%"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "An item costs $32 before 7.5% tax. What is the tax?",
+      "choices": [
+        "$7.50",
+        "$2.40",
+        "$34.40",
+        "$0.24"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 11,
+      "question": "A quantity falls from 120 to 90. What is the percent decrease?",
+      "choices": [
+        "30%",
+        "75%",
+        "25%",
+        "20%"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 12,
+      "question": "If 45 is 75% of a number, what is the number?",
+      "choices": [
+        "33.75",
+        "75",
+        "90",
+        "60"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "A restaurant bill is $48. A 20% tip is added. What is the tip?",
+      "choices": [
+        "$9.60",
+        "$20",
+        "$57.60",
+        "$8.60"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Which is equivalent to 125%?",
+      "choices": [
+        "0.125",
+        "1.25",
+        "12.5",
+        "125"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A town's population of 8,000 grows by 5%. What is the new population?",
+      "choices": [
+        "8,005",
+        "8,500",
+        "8,400",
+        "7,600"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 16,
+      "question": "A shirt is on sale for $42 after a 30% discount. What was the original price?",
+      "choices": [
+        "$54.60",
+        "$12.60",
+        "$72",
+        "$60"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "What is 2.5% of 400?",
+      "choices": [
+        "10",
+        "1",
+        "25",
+        "100"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 18,
+      "question": "A student answered 36 of 40 questions correctly. What percent is correct?",
+      "choices": [
+        "80%",
+        "90%",
+        "36%",
+        "96%"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A price increases from $80 to $100. The increase is what percent of the original price?",
+      "choices": [
+        "20%",
+        "80%",
+        "25%",
+        "125%"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "A store offers 'buy one, get the second 50% off' on two $24 items. What is the total before tax?",
+      "choices": [
+        "$24",
+        "$48",
+        "$12",
+        "$36"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}
