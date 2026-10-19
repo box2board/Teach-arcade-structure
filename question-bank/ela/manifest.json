@@ -3,8 +3,8 @@
   "subject": "English Language Arts",
   "status": "draft-for-review",
   "gradeBand": "7–12",
-  "setCount": 35,
-  "questionCount": 700,
+  "setCount": 40,
+  "questionCount": 800,
   "sets": [
     {
       "id": "ela--literature-literary-analysis--plot-and-narrative-structure",
@@ -250,6 +250,41 @@
       "category": "Speaking & Listening",
       "questionCount": 20,
       "file": "speaking-listening/listening-comprehension-tasks.json"
+    },
+    {
+      "id": "ela--research-argument-media-literacy--debates-structured-argument",
+      "title": "Debates & Structured Argument",
+      "category": "Research, Argument & Media Literacy",
+      "questionCount": 20,
+      "file": "research-argument-media-literacy/debates-structured-argument.json"
+    },
+    {
+      "id": "ela--speaking-listening--collaborative-conversations",
+      "title": "Collaborative Conversations",
+      "category": "Speaking & Listening",
+      "questionCount": 20,
+      "file": "speaking-listening/collaborative-conversations.json"
+    },
+    {
+      "id": "ela--writing-composition--test-style-writing-prompts",
+      "title": "Test-Style Writing Prompts",
+      "category": "Writing & Composition",
+      "questionCount": 20,
+      "file": "writing-composition/test-style-writing-prompts.json"
+    },
+    {
+      "id": "ela--writing-composition--test-taking-strategies",
+      "title": "Test-Taking Strategies",
+      "category": "Writing & Composition",
+      "questionCount": 20,
+      "file": "writing-composition/test-taking-strategies.json"
+    },
+    {
+      "id": "ela--language-grammar-vocabulary--synonyms-antonyms",
+      "title": "Synonyms & Antonyms",
+      "category": "Language, Grammar & Vocabulary",
+      "questionCount": 20,
+      "file": "language-grammar-vocabulary/synonyms-antonyms.json"
     }
   ]
 }

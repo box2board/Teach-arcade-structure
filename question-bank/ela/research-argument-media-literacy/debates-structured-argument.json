@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "ela--research-argument-media-literacy--debates-structured-argument",
+  "title": "Debates & Structured Argument",
+  "subject": "English Language Arts",
+  "category": "Research, Argument & Media Literacy",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which claim is most suitable for a structured debate?",
+      "choices": [
+        "The city should extend library hours on school nights because student access is limited",
+        "Libraries are buildings",
+        "Everyone has an opinion about books",
+        "The city has many streets"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 2,
+      "question": "What makes a reason different from evidence?",
+      "choices": [
+        "A reason is always a quotation",
+        "A reason explains why a claim may be true; evidence supports the reason",
+        "Evidence is a personal preference",
+        "They are identical terms"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "A debater cites a survey of 800 local residents. What should the audience ask to evaluate it?",
+      "choices": [
+        "What color the survey used",
+        "Whether the survey title is catchy",
+        "How participants were selected and what question they answered",
+        "How many pages the debate has"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 4,
+      "question": "Why address a counterclaim?",
+      "choices": [
+        "To weaken the main claim without explanation",
+        "To avoid presenting evidence",
+        "To change the topic",
+        "To show that opposing reasoning has been considered and respond to it"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "Which response best challenges an argument respectfully?",
+      "choices": [
+        "The data support a different conclusion because they include only one season",
+        "Your argument is ridiculous",
+        "You clearly did not read the prompt",
+        "No one should listen to you"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 6,
+      "question": "A debater uses an emotional story as the only support for a broad policy claim. What is the main limitation?",
+      "choices": [
+        "Stories can never be relevant evidence",
+        "One example may not establish how common the situation is",
+        "Policies cannot be discussed with examples",
+        "Emotion always makes reasoning invalid"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 7,
+      "question": "Which evidence most directly supports a claim about reduced traffic injuries after a street redesign?",
+      "choices": [
+        "A drawing of the new street",
+        "A resident's favorite color",
+        "Comparable injury records from before and after the redesign",
+        "A list of unrelated city projects"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "What is a rebuttal?",
+      "choices": [
+        "A topic sentence introducing a new subject",
+        "A list of sources with no claim",
+        "An opening greeting",
+        "A response that challenges or answers an opposing argument"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "A speaker says, 'My opponent wants children to be unsafe.' The opponent had argued only about budget. What tactic is this?",
+      "choices": [
+        "Misrepresenting the opposing position",
+        "Providing a qualified concession",
+        "Using a direct comparison",
+        "Citing relevant evidence"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 10,
+      "question": "Which statement is a concession?",
+      "choices": [
+        "The plan has no possible drawback",
+        "Although the plan costs more initially, it may reduce repair expenses later",
+        "My opponent's evidence is fabricated",
+        "Only one option exists"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "A claim relies on a study from another country with different conditions. What should a debater explain?",
+      "choices": [
+        "Why location never affects evidence",
+        "Why the study's title proves the claim",
+        "How well that evidence applies to the local situation",
+        "Why no other evidence is needed"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 12,
+      "question": "Which debate rule best supports fair participation?",
+      "choices": [
+        "Allow only one side to ask questions",
+        "Reward interruptions",
+        "Change the rules during a speaker's turn",
+        "Set clear speaking turns and equal time limits"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "An argument includes a claim, relevant evidence, and reasoning connecting them. What is strengthened by this structure?",
+      "choices": [
+        "The audience can follow how the evidence supports the claim",
+        "The argument becomes automatically correct",
+        "The need to consider counterevidence disappears",
+        "The speaker no longer needs a conclusion"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Which question tests whether a source is relevant to a claim?",
+      "choices": [
+        "Is the source's font attractive?",
+        "Does this source provide information that bears directly on the issue?",
+        "Is the source longer than the speech?",
+        "Does the source agree with my first impression?"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 15,
+      "question": "A debater cites a percentage but not the total number of people surveyed. What context is missing?",
+      "choices": [
+        "The argument's topic",
+        "The speaker's speaking time",
+        "The sample size",
+        "The debate's location"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "Why should a debater distinguish correlation from causation?",
+      "choices": [
+        "Correlations cannot be measured",
+        "Causes are always opinions",
+        "The distinction applies only to history",
+        "A relationship between two trends alone does not prove one caused the other"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "A team changes its position after hearing stronger evidence. What does that demonstrate?",
+      "choices": [
+        "Evidence-based reasoning can lead to a revised claim",
+        "The team has lost automatically",
+        "Debate positions can never change",
+        "The earlier evidence should be hidden"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Which closing best fits a debate speech?",
+      "choices": [
+        "Introduce an unrelated issue",
+        "Restate the central claim and summarize the strongest reasons and evidence",
+        "Add an unsupported statistic",
+        "Repeat the opening word for word"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "A debater uses a personal attack instead of answering evidence. What is the problem?",
+      "choices": [
+        "Personal attacks make evidence stronger",
+        "The opposing claim is therefore false",
+        "The attack does not address whether the opposing claim is supported",
+        "The audience cannot evaluate any claims"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "What is the best way to compare two proposed policies?",
+      "choices": [
+        "Use strong evidence for one and anecdotes for the other",
+        "Compare only their names",
+        "Ignore trade-offs",
+        "Use the same criteria and relevant evidence for both"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

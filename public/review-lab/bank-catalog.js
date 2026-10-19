@@ -3019,5 +3019,55 @@ export const BANK_SETS=[
     "questionCount": 20,
     "description": "Speaking & Listening · 7–12",
     "file": "speaking-listening/listening-comprehension-tasks.json"
+  },
+  {
+    "id": "ela--research-argument-media-literacy--debates-structured-argument",
+    "title": "Debates & Structured Argument",
+    "subject": "English Language Arts",
+    "category": "Research, Argument & Media Literacy",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Research, Argument & Media Literacy · 7–12",
+    "file": "research-argument-media-literacy/debates-structured-argument.json"
+  },
+  {
+    "id": "ela--speaking-listening--collaborative-conversations",
+    "title": "Collaborative Conversations",
+    "subject": "English Language Arts",
+    "category": "Speaking & Listening",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Speaking & Listening · 7–12",
+    "file": "speaking-listening/collaborative-conversations.json"
+  },
+  {
+    "id": "ela--writing-composition--test-style-writing-prompts",
+    "title": "Test-Style Writing Prompts",
+    "subject": "English Language Arts",
+    "category": "Writing & Composition",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Writing & Composition · 7–12",
+    "file": "writing-composition/test-style-writing-prompts.json"
+  },
+  {
+    "id": "ela--writing-composition--test-taking-strategies",
+    "title": "Test-Taking Strategies",
+    "subject": "English Language Arts",
+    "category": "Writing & Composition",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Writing & Composition · 7–12",
+    "file": "writing-composition/test-taking-strategies.json"
+  },
+  {
+    "id": "ela--language-grammar-vocabulary--synonyms-antonyms",
+    "title": "Synonyms & Antonyms",
+    "subject": "English Language Arts",
+    "category": "Language, Grammar & Vocabulary",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Language, Grammar & Vocabulary · 7–12",
+    "file": "language-grammar-vocabulary/synonyms-antonyms.json"
   }
 ];

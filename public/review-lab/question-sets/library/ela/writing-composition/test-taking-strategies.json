@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "ela--writing-composition--test-taking-strategies",
+  "title": "Test-Taking Strategies",
+  "subject": "English Language Arts",
+  "category": "Writing & Composition",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Before answering a constructed-response prompt, what should a student do?",
+      "choices": [
+        "Identify what the question asks and the evidence needed",
+        "Write immediately without reading the prompt",
+        "Copy the longest passage",
+        "Guess the expected answer from the page number"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 2,
+      "question": "A multiple-choice question asks for the 'best evidence.' What should the student choose?",
+      "choices": [
+        "The longest quotation",
+        "The option that most directly supports the stated claim",
+        "A detail on the same topic but unrelated to the claim",
+        "The option with the most familiar wording"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 3,
+      "question": "A student is unsure about one question and time is limited. What is a useful strategy?",
+      "choices": [
+        "Spend all remaining time on it",
+        "Leave the rest unanswered",
+        "Mark it, continue with other questions, and return if time remains",
+        "Change answers randomly"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 4,
+      "question": "What should a student do before submitting a written response?",
+      "choices": [
+        "Add unrelated details",
+        "Remove all transitions",
+        "Check only the title",
+        "Check that it answers the prompt and includes clear support"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "A question uses the word 'except.' What should the student notice?",
+      "choices": [
+        "The task is to identify the choice that does not fit",
+        "The answer must be the longest",
+        "The question is asking for a summary",
+        "The choices should be ignored"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Two answer choices appear plausible. What can help distinguish them?",
+      "choices": [
+        "Choose the first one",
+        "Return to the question wording and compare each choice against the evidence",
+        "Select the most dramatic choice",
+        "Use the same letter as the previous answer"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 7,
+      "question": "A student changes an answer during review. When is the change most justified?",
+      "choices": [
+        "Whenever the answer feels unfamiliar",
+        "To make the pattern of letters even",
+        "When the student finds evidence or a clear reason that the first choice is wrong",
+        "When the question takes a long time"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "Why should a student read every answer choice before selecting one?",
+      "choices": [
+        "The choices are always arranged from wrong to right",
+        "The first choice is never correct",
+        "Reading all choices guarantees a perfect score",
+        "A later option may be more complete or accurate than the first plausible one"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "A test has a graph and a question about a trend. What should the student inspect first?",
+      "choices": [
+        "The axes, labels, units, and relevant data points",
+        "The graph's color palette",
+        "The page border",
+        "The answer choices only"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 10,
+      "question": "What is a reasonable use of elimination?",
+      "choices": [
+        "Remove choices only because they are short",
+        "Remove choices that conflict with the prompt or evidence",
+        "Eliminate the correct answer to make the task easier",
+        "Choose randomly among all options"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "A student finishes early. What is the most useful review?",
+      "choices": [
+        "Change every answer once",
+        "Submit without review",
+        "Recheck unanswered items, directions, calculations, and evidence",
+        "Add words to every response"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 12,
+      "question": "A question asks for an inference. What should the student do?",
+      "choices": [
+        "Select a statement copied word for word only",
+        "Choose a personal belief with no text support",
+        "Ignore the passage",
+        "Combine clues from the text with reasonable background understanding"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What is the best response to a confusing test direction?",
+      "choices": [
+        "Reread it carefully and ask the proctor if clarification is allowed",
+        "Assume a different instruction",
+        "Skip the entire test",
+        "Ask another student for answers"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 14,
+      "question": "A student notices anxiety increasing during a test. Which action is useful and appropriate?",
+      "choices": [
+        "Rush through the remaining questions",
+        "Pause briefly, breathe slowly, and return attention to the next task",
+        "Stop reading",
+        "Change answers without checking"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why should students show work on a math response when requested?",
+      "choices": [
+        "It guarantees full credit regardless of accuracy",
+        "It replaces the final answer",
+        "It makes reasoning visible and can help locate an error",
+        "It makes the question shorter"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "An answer choice contains an absolute word such as 'always.' What should a student do?",
+      "choices": [
+        "Reject it automatically",
+        "Choose it because it sounds certain",
+        "Ignore the word",
+        "Check whether the evidence truly supports such a broad statement"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Which practice best supports time management?",
+      "choices": [
+        "Check time at planned intervals and adjust pace without abandoning careful reading",
+        "Spend equal time on every word",
+        "Watch the clock continuously",
+        "Use all time on the first question"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 18,
+      "question": "A student is asked to cite text evidence. What should the response include?",
+      "choices": [
+        "A page number with no detail",
+        "A relevant detail and an explanation of how it supports the answer",
+        "A personal reaction only",
+        "A quotation unrelated to the claim"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "A test asks for the central idea of a passage. Which answer is strongest?",
+      "choices": [
+        "A minor example",
+        "A detail from the title only",
+        "A statement that captures the passage's main point rather than one detail",
+        "A personal opinion about the topic"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "After completing a test, a student finds a skipped item. What should the student do?",
+      "choices": [
+        "Leave it blank by habit",
+        "Copy a nearby answer",
+        "Change an unrelated response",
+        "Answer it if time and test rules permit, then check the response"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}
