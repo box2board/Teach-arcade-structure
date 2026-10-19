@@ -273,5 +273,8 @@
   "question-bank/ela/language-grammar-vocabulary/roots-prefixes-and-suffixes.json": "20bbce8b494bde53d1daa5205898deb808808bbb99cd55e687cd01e88e59ca8b",
   "question-bank/ela/writing-composition/writing-process-and-revision.json": "ca09755cb140776d9f0c1babeaff80d787693a7180731d71dc58789854c01f47",
   "question-bank/ela/research-argument-media-literacy/research-and-source-evaluation.json": "079d80d502f14e9316dc47c5f84b611d2171e2bddbedfd5b13b9805e09d1c37d",
-  "question-bank/ela/research-argument-media-literacy/quoting-paraphrasing-and-attribution.json": "bff619e761209a8fad6f77db795684420197c6d8aa296ab3c13b70c59ed3b1da"
+  "question-bank/ela/research-argument-media-literacy/quoting-paraphrasing-and-attribution.json": "bff619e761209a8fad6f77db795684420197c6d8aa296ab3c13b70c59ed3b1da",
+  "question-bank/science/engineering-stem/stem-challenges-and-projects.json": "8ea22185fd9d0acc43e53e1a1ef3bc7f370520e41d7b607a5ffe412d127bf3c8",
+  "question-bank/science/engineering-stem/coding-and-robotics-basics.json": "f592d68d775fb1a5aef76dad67b81ad00a9795c0f10d50563279b53b7a490af5",
+  "question-bank/science/engineering-stem/stem-careers-and-real-world-connections.json": "d07d71db1c9f8859ab339d099b825c051f7cb63e0856a72ee32f269f6df9f539"
 }

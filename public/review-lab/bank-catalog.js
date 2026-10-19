@@ -2749,5 +2749,35 @@ export const BANK_SETS=[
     "questionCount": 20,
     "description": "Geography · 7–12",
     "file": "social-studies/geography/australia-and-oceania.json"
+  },
+  {
+    "id": "science--engineering-stem--stem-challenges-and-projects",
+    "title": "STEM Challenges and Projects",
+    "subject": "Science",
+    "category": "Engineering & STEM",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Engineering & STEM · 7–12",
+    "file": "science/engineering-stem/stem-challenges-and-projects.json"
+  },
+  {
+    "id": "science--engineering-stem--coding-and-robotics-basics",
+    "title": "Coding and Robotics Basics",
+    "subject": "Science",
+    "category": "Engineering & STEM",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Engineering & STEM · 7–12",
+    "file": "science/engineering-stem/coding-and-robotics-basics.json"
+  },
+  {
+    "id": "science--engineering-stem--stem-careers-and-real-world-connections",
+    "title": "STEM Careers and Real-World Connections",
+    "subject": "Science",
+    "category": "Engineering & STEM",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Engineering & STEM · 7–12",
+    "file": "science/engineering-stem/stem-careers-and-real-world-connections.json"
   }
 ];
