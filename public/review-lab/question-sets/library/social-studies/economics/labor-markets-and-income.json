@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "social-studies--economics--labor-markets-and-income",
+  "title": "Labor Markets and Income",
+  "subject": "Social Studies",
+  "category": "Economics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "In a labor market, workers generally supply labor while",
+      "choices": [
+        "households supply machines",
+        "employers demand labor",
+        "governments supply every job",
+        "firms demand finished consumer goods"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Why is the demand for labor called a derived demand?",
+      "choices": [
+        "Workers demand employers because wages never change",
+        "Labor demand is set only by population size",
+        "Employers demand workers because labor helps produce goods or services people want",
+        "The demand comes from workers' personal spending"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "What does human capital include?",
+      "choices": [
+        "A firm's buildings and machinery only",
+        "Money held by a central bank",
+        "The number of products in a store",
+        "Workers' education, skills, experience, and knowledge"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "If the demand for a firm's product rises, what may happen to its demand for workers?",
+      "choices": [
+        "The firm may hire more workers to increase output",
+        "Labor demand must fall to zero",
+        "Worker productivity automatically decreases",
+        "The firm must reduce every wage"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 5,
+      "question": "A worker completes training that makes them more productive in a growing field. What may this increase?",
+      "choices": [
+        "The number of hours in a workday",
+        "The worker's potential value to employers and earning opportunities",
+        "The price of every product in the economy",
+        "The firm's need for capital equipment"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "At a particular wage, more workers want jobs than employers want to hire. This situation is a",
+      "choices": [
+        "labor shortage",
+        "balanced labor market",
+        "labor surplus",
+        "shortage of consumer goods"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "If employers cannot find enough qualified workers at current wages, the market may experience",
+      "choices": [
+        "a labor surplus",
+        "a surplus of applicants",
+        "a fall in worker skills by definition",
+        "a labor shortage"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Which factor is most likely to shift the supply of workers in a particular occupation?",
+      "choices": [
+        "Changes in training access or the number of qualified workers",
+        "A change in the firm's product price alone",
+        "A change in the employer's advertising budget",
+        "A change in the output of an unrelated industry"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 9,
+      "question": "An employer introduces technology that helps each employee produce more per hour. What may happen to the demand for labor?",
+      "choices": [
+        "It must rise by exactly the technology's cost",
+        "It depends on whether the technology complements workers or replaces some tasks",
+        "It always disappears",
+        "It is no longer related to product demand"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 10,
+      "question": "Why can two workers in the same occupation receive different wages?",
+      "choices": [
+        "All wages are legally identical within an occupation",
+        "Only the workers' job titles determine wages",
+        "Experience, location, responsibilities, skills, and employer conditions may differ",
+        "Wages never reflect productivity or labor supply"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "A wage is the price paid for labor. In a competitive labor market, wages are influenced by",
+      "choices": [
+        "the price of one unrelated product only",
+        "the number of firms' advertisements",
+        "the weather on payday",
+        "labor supply and labor demand"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "A minimum wage set above the market-clearing wage may create a labor surplus in a basic supply-and-demand model because",
+      "choices": [
+        "more people may seek work while employers demand fewer labor hours",
+        "all workers leave the labor force",
+        "employers demand unlimited workers",
+        "the labor supply curve shifts left by definition"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 13,
+      "question": "Why might a union negotiate wages and working conditions for its members?",
+      "choices": [
+        "Unions set the prices of every consumer good",
+        "Collective bargaining can increase workers' negotiating power",
+        "Collective bargaining eliminates all workplace rules",
+        "Unions guarantee identical jobs for every member"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "An employee receives a raise while their pay still buys fewer goods than before. What happened to the employee's real wage?",
+      "choices": [
+        "It rose because nominal pay increased",
+        "It stayed fixed regardless of prices",
+        "It fell if prices rose faster than the employee's nominal pay",
+        "It cannot be compared with inflation"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 15,
+      "question": "Which situation is an example of occupational mobility?",
+      "choices": [
+        "A worker changes the color of a uniform",
+        "A company moves its office to a different floor",
+        "A customer changes grocery stores",
+        "A worker retrains and moves from one kind of job to another"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A city has many job openings in health care but few trained applicants. Which response could help reduce the mismatch over time?",
+      "choices": [
+        "Expand relevant training and credential pathways",
+        "Reduce information about job requirements",
+        "Discourage workers from gaining skills",
+        "Close programs that prepare qualified applicants"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "What is the opportunity cost of choosing a full-time unpaid internship?",
+      "choices": [
+        "The internship's posted job title",
+        "The income or other opportunities the person gives up",
+        "The total number of coworkers at the organization",
+        "The employer's advertising expense"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 18,
+      "question": "Why can wage differences across regions persist for the same occupation?",
+      "choices": [
+        "Every region has identical employers and worker supply",
+        "Geography never affects labor markets",
+        "Local cost of living, labor demand, industry mix, and worker supply differ",
+        "Wages are unrelated to local conditions"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "An employer compares two candidates with similar credentials. Which hiring practice is most appropriate?",
+      "choices": [
+        "Select based on a protected trait unrelated to the work",
+        "Ignore the listed qualifications",
+        "Change the evaluation rules after seeing each candidate",
+        "Use job-related criteria consistently and avoid discrimination"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A worker's wage rises from $18 to $19 per hour while average prices rise 8% over the same period. What is the likely change in purchasing power?",
+      "choices": [
+        "It decreases because the wage increase is smaller than the price increase",
+        "It increases because any nominal raise increases purchasing power",
+        "It stays exactly the same",
+        "It cannot change when wages rise"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}

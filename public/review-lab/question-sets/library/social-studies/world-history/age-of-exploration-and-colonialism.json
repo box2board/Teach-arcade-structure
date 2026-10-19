@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "social-studies--world-history--age-of-exploration-and-colonialism",
+  "title": "Age of Exploration and Colonialism",
+  "subject": "Social Studies",
+  "category": "World History",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which European country sponsored many early voyages around Africa to reach Indian Ocean trade?",
+      "choices": [
+        "Sweden",
+        "Portugal",
+        "Russia",
+        "Poland"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What was one major reason European states sponsored overseas exploration in the fifteenth and sixteenth centuries?",
+      "choices": [
+        "To end all maritime trade",
+        "To avoid contact with Asian markets",
+        "To seek trade routes, wealth, and political influence",
+        "To establish democratic governments everywhere"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "What was the Columbian Exchange?",
+      "choices": [
+        "A treaty that ended the American Revolution",
+        "A trade route only within the Indian Ocean",
+        "A system of European guilds",
+        "The movement of plants, animals, people, and diseases between the Americas and Afro-Eurasia"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which crop from the Americas became an important food in many parts of Afro-Eurasia?",
+      "choices": [
+        "Potato",
+        "Wheat",
+        "Olive",
+        "Rice"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What was one devastating effect of European arrival in the Americas on Indigenous populations?",
+      "choices": [
+        "All Indigenous societies immediately moved to Europe",
+        "Epidemic diseases contributed to severe population loss",
+        "Disease had no effect on population",
+        "European arrival ended all warfare"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "What was the encomienda system in Spanish America?",
+      "choices": [
+        "A democratic election system",
+        "A form of Indigenous land ownership protected equally by law",
+        "A colonial labor system that granted Spanish settlers claims to Indigenous labor and tribute",
+        "A trade agreement between Spain and Portugal"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Why did European colonial powers increasingly transport enslaved Africans to the Americas?",
+      "choices": [
+        "African labor was freely chosen in all cases",
+        "Plantations required no workers",
+        "European states sought to end racial slavery",
+        "Colonial plantation economies demanded coerced labor as Indigenous populations declined and labor needs grew"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "Which treaty attempted to divide newly claimed lands outside Europe between Spain and Portugal?",
+      "choices": [
+        "Treaty of Tordesillas",
+        "Treaty of Versailles",
+        "Treaty of Paris",
+        "Treaty of Utrecht"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "How did mercantilist policies shape colonial economies?",
+      "choices": [
+        "Colonies controlled all trade independently",
+        "Colonies were expected to supply resources and markets that benefited the home country",
+        "Mercantilism prohibited exports",
+        "European states avoided using tariffs"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why did plantation agriculture expand in parts of the Caribbean and Brazil?",
+      "choices": [
+        "The region lacked fertile land",
+        "Plantations were designed to support small farms only",
+        "European demand for sugar and other commodities encouraged large-scale production using enslaved labor",
+        "The Atlantic slave trade had ended before plantations developed"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 11,
+      "question": "Which statement best describes the Atlantic slave trade?",
+      "choices": [
+        "A voluntary labor exchange with equal rights",
+        "A trade route that carried only European settlers",
+        "A system that ended with the first transatlantic voyage",
+        "A forced migration that transported millions of Africans to the Americas under brutal conditions"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "What was one consequence of the Columbian Exchange for Afro-Eurasian populations?",
+      "choices": [
+        "New staple crops contributed to population growth in some regions",
+        "All crops from the Americas failed to grow elsewhere",
+        "The exchange stopped migration",
+        "The exchange affected only sailors"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "A European empire claims a territory without consulting its Indigenous inhabitants. What does this illustrate about colonialism?",
+      "choices": [
+        "Colonial rule always reflected local consent",
+        "Political control and resource extraction were often imposed through unequal power",
+        "Colonialism was limited to trade without settlement",
+        "Empires avoided controlling land"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "How did Indigenous peoples respond to European colonization?",
+      "choices": [
+        "They all responded in the same way",
+        "They had no political choices or actions",
+        "They used varied strategies including resistance, negotiation, adaptation, and alliance",
+        "They immediately abandoned every cultural practice"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 15,
+      "question": "Why did control of sea routes matter to early modern European states?",
+      "choices": [
+        "It made overland trade impossible everywhere",
+        "It guaranteed that ships never encountered risk",
+        "It removed competition among empires",
+        "It could influence access to trade, colonies, and naval power"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Which statement about European exploration is accurate?",
+      "choices": [
+        "It expanded European knowledge and power while relying on knowledge and labor from other peoples",
+        "It was conducted without navigational technologies",
+        "It affected no societies outside Europe",
+        "It ended trade across the Indian Ocean"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Why did many colonial economies specialize in producing a small number of export crops or minerals?",
+      "choices": [
+        "Colonies were required to be economically self-sufficient",
+        "Imperial demand and local conditions encouraged extraction and export of selected commodities",
+        "Exports were prohibited by mercantilism",
+        "Local consumers controlled all production decisions"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 18,
+      "question": "A historian analyzes ship logs, Indigenous accounts, and plantation records about colonization. Why compare these sources?",
+      "choices": [
+        "Each source tells the same story from the same viewpoint",
+        "Plantation records alone represent every enslaved person's experience",
+        "They reveal different perspectives and can clarify power relations and lived experiences",
+        "Source comparison eliminates historical interpretation"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "What was one long-term impact of colonial boundaries and institutions?",
+      "choices": [
+        "They made every postcolonial state identical",
+        "They had no influence after independence",
+        "They eliminated all local political traditions",
+        "They shaped later political and economic conditions, though outcomes varied by place"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Why should the term 'discovery' be used carefully when describing Europeans reaching the Americas?",
+      "choices": [
+        "Indigenous peoples already lived there and had their own societies and histories",
+        "No European reached the Americas",
+        "The term refers only to finding new navigational tools",
+        "Indigenous communities had no geographic knowledge"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "social-studies--world-history--imperialism-and-global-change",
+  "title": "Imperialism and Global Change",
+  "subject": "Social Studies",
+  "category": "World History",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Imperialism is best defined as",
+      "choices": [
+        "the exchange of goods between equal trading partners only",
+        "a policy or practice of extending a state's influence or control over other peoples or territories",
+        "the movement from rural areas to cities",
+        "a system of local self-government"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which factor helped European imperialism expand during the nineteenth century?",
+      "choices": [
+        "European states had no access to ships",
+        "Industrial production reduced demand for resources",
+        "Industrial economies sought raw materials, markets, and strategic advantages",
+        "Imperial powers rejected overseas investment"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "What happened at the Berlin Conference of 1884–1885?",
+      "choices": [
+        "African leaders formed a single continental government",
+        "The United Nations established its charter",
+        "The trans-Saharan trade ended",
+        "European powers negotiated rules for claiming African territories without African representation"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which African state successfully resisted Italian invasion at the Battle of Adwa in 1896?",
+      "choices": [
+        "Ethiopia",
+        "Mali",
+        "Congo Free State",
+        "Algeria"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What was one cause of the Opium Wars between Britain and Qing China?",
+      "choices": [
+        "A dispute about the Panama Canal",
+        "Conflict over trade and Britain's opium commerce in China",
+        "A struggle over the American Revolution",
+        "A conflict between the Inca and Mexica"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "Which policy did Britain follow in India after the 1857 uprising?",
+      "choices": [
+        "India became an independent republic immediately",
+        "The Mughal Empire regained control of all India",
+        "The British Crown assumed direct rule from the East India Company",
+        "Britain ended its presence in South Asia"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "How did imperial powers often justify expansion during the nineteenth century?",
+      "choices": [
+        "They always described expansion as a partnership of equals",
+        "They rejected racial ideologies",
+        "They stated that resources were irrelevant",
+        "They used claims about civilization, religion, or progress to rationalize control"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "Which outcome was common in colonized regions under imperial rule?",
+      "choices": [
+        "Local economies were often reorganized to serve imperial needs",
+        "All local political structures remained unchanged",
+        "Industrial wealth was distributed equally",
+        "Colonial rule eliminated coercion"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why did imperial powers value strategic ports and canals?",
+      "choices": [
+        "They prevented ships from carrying goods",
+        "They could support military movement and protect trade routes",
+        "They eliminated the need for navies",
+        "They had no connection to overseas empire"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 10,
+      "question": "The Meiji government in Japan pursued rapid modernization partly in response to",
+      "choices": [
+        "the collapse of the Inca Empire",
+        "the end of the Silk Road in antiquity",
+        "the threat of Western imperial pressure",
+        "the discovery of the Nile"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "What was one effect of imperial borders drawn without regard to local communities?",
+      "choices": [
+        "They always matched existing cultural boundaries",
+        "They removed all political conflict",
+        "They prevented later debates about sovereignty",
+        "They could divide related groups or combine communities with differing interests"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 12,
+      "question": "Why is it inaccurate to describe colonized peoples as passive during imperial expansion?",
+      "choices": [
+        "People resisted, negotiated, adapted, and built political movements in varied ways",
+        "Imperial powers acted without any local response",
+        "Colonized societies had no leaders or institutions",
+        "Resistance never affected imperial policy"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Which event is associated with the beginning of the Scramble for Africa?",
+      "choices": [
+        "The formation of the Mali Empire",
+        "The rapid partition of African territories among European powers in the late nineteenth century",
+        "The opening of the Suez Canal in ancient Egypt",
+        "The end of the transatlantic slave trade in the fifteenth century"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "A colonial government builds railways mainly to move minerals from interior regions to ports. What does this suggest about infrastructure under imperialism?",
+      "choices": [
+        "It always connected every community equally",
+        "It was unrelated to economic goals",
+        "It often served extraction and export as well as local transportation",
+        "It eliminated colonial control"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 15,
+      "question": "Which statement best describes economic imperialism?",
+      "choices": [
+        "A country's citizens vote in local elections",
+        "A trade exchange with equal bargaining power",
+        "A policy of avoiding all foreign investment",
+        "A powerful state or company gains influence over another economy without necessarily annexing its territory"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Why did nationalist movements grow in many colonized regions?",
+      "choices": [
+        "People sought greater political control and challenged foreign rule",
+        "Imperial rule always granted immediate independence",
+        "Nationalism opposed every local culture",
+        "Colonial borders prevented political organization"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "What was one consequence of imperial competition among European powers?",
+      "choices": [
+        "It ended all conflicts in Europe",
+        "It increased international rivalries and contributed to tensions before World War I",
+        "It created a single European government",
+        "It removed competition for resources"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A historian compares colonial tax records with oral histories from residents. What can this reveal?",
+      "choices": [
+        "The exact opinions of every resident",
+        "That taxation affected no local economy",
+        "How official policies affected people whose experiences may be absent from government records",
+        "That oral histories cannot be evidence"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Which term describes a territory controlled politically or economically by an outside power?",
+      "choices": [
+        "City-state",
+        "Federation",
+        "Common market",
+        "Colony"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "Why can imperialism's long-term effects differ across regions?",
+      "choices": [
+        "Local histories, forms of resistance, colonial policies, and postcolonial choices varied",
+        "Every empire used identical policies everywhere",
+        "Geography has no effect on historical outcomes",
+        "Independence produced identical economies in all countries"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}

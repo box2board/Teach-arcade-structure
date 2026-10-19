@@ -2779,5 +2779,145 @@ export const BANK_SETS=[
     "questionCount": 20,
     "description": "Engineering & STEM · 7–12",
     "file": "science/engineering-stem/stem-careers-and-real-world-connections.json"
+  },
+  {
+    "id": "social-studies--economics--business-and-market-structures",
+    "title": "Business and Market Structures",
+    "subject": "Social Studies",
+    "category": "Economics",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Economics · 7–12",
+    "file": "social-studies/economics/business-and-market-structures.json"
+  },
+  {
+    "id": "social-studies--economics--labor-markets-and-income",
+    "title": "Labor Markets and Income",
+    "subject": "Social Studies",
+    "category": "Economics",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Economics · 7–12",
+    "file": "social-studies/economics/labor-markets-and-income.json"
+  },
+  {
+    "id": "social-studies--economics--entrepreneurship-and-small-business",
+    "title": "Entrepreneurship and Small Business",
+    "subject": "Social Studies",
+    "category": "Economics",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Economics · 7–12",
+    "file": "social-studies/economics/entrepreneurship-and-small-business.json"
+  },
+  {
+    "id": "social-studies--geography--urban-geography-and-development",
+    "title": "Urban Geography and Development",
+    "subject": "Social Studies",
+    "category": "Geography",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Geography · 7–12",
+    "file": "social-studies/geography/urban-geography-and-development.json"
+  },
+  {
+    "id": "social-studies--geography--economic-geography",
+    "title": "Economic Geography",
+    "subject": "Social Studies",
+    "category": "Geography",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Geography · 7–12",
+    "file": "social-studies/geography/economic-geography.json"
+  },
+  {
+    "id": "social-studies--geography--middle-east-and-north-africa",
+    "title": "Middle East and North Africa (MENA)",
+    "subject": "Social Studies",
+    "category": "Geography",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Geography · 7–12",
+    "file": "social-studies/geography/middle-east-and-north-africa.json"
+  },
+  {
+    "id": "social-studies--us-history--contemporary-america-1970s-present",
+    "title": "Contemporary America: 1970s to Present",
+    "subject": "Social Studies",
+    "category": "U.S. History",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "U.S. History · 7–12",
+    "file": "social-studies/us-history/contemporary-america-1970s-present.json"
+  },
+  {
+    "id": "social-studies--world-history--early-humans-and-river-valley-civilizations",
+    "title": "Early Humans and River Valley Civilizations",
+    "subject": "Social Studies",
+    "category": "World History",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "World History · 7–12",
+    "file": "social-studies/world-history/early-humans-and-river-valley-civilizations.json"
+  },
+  {
+    "id": "social-studies--world-history--mesoamerican-and-andean-civilizations",
+    "title": "Mesoamerican and Andean Civilizations",
+    "subject": "Social Studies",
+    "category": "World History",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "World History · 7–12",
+    "file": "social-studies/world-history/mesoamerican-and-andean-civilizations.json"
+  },
+  {
+    "id": "social-studies--world-history--byzantine-empire-and-islamic-world",
+    "title": "Byzantine Empire and Islamic World",
+    "subject": "Social Studies",
+    "category": "World History",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "World History · 7–12",
+    "file": "social-studies/world-history/byzantine-empire-and-islamic-world.json"
+  },
+  {
+    "id": "social-studies--world-history--african-civilizations",
+    "title": "African Civilizations",
+    "subject": "Social Studies",
+    "category": "World History",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "World History · 7–12",
+    "file": "social-studies/world-history/african-civilizations.json"
+  },
+  {
+    "id": "social-studies--world-history--age-of-exploration-and-colonialism",
+    "title": "Age of Exploration and Colonialism",
+    "subject": "Social Studies",
+    "category": "World History",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "World History · 7–12",
+    "file": "social-studies/world-history/age-of-exploration-and-colonialism.json"
+  },
+  {
+    "id": "social-studies--world-history--imperialism-and-global-change",
+    "title": "Imperialism and Global Change",
+    "subject": "Social Studies",
+    "category": "World History",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "World History · 7–12",
+    "file": "social-studies/world-history/imperialism-and-global-change.json"
+  },
+  {
+    "id": "social-studies--world-history--globalization-and-contemporary-world",
+    "title": "Globalization and the Contemporary World",
+    "subject": "Social Studies",
+    "category": "World History",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "World History · 7–12",
+    "file": "social-studies/world-history/globalization-and-contemporary-world.json"
   }
 ];

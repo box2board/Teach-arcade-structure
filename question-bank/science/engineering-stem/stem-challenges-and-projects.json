@@ -11,12 +11,12 @@
       "id": 1,
       "question": "A team is designing a low-cost water filter for a school demonstration. Which statement is a design criterion?",
       "choices": [
-        "The team has two class periods to build it",
         "The filter must reduce visible sediment by at least 80%",
+        "The team has two class periods to build it",
         "The team has $15 to spend",
         "Only materials in the classroom may be used"
       ],
-      "correctAnswer": 1,
+      "correctAnswer": 0,
       "skill": "understanding"
     },
     {
@@ -24,11 +24,11 @@
       "question": "A design constraint differs from a criterion because a constraint",
       "choices": [
         "describes a feature that makes the solution successful",
-        "is the final test result",
         "sets a limit the design must work within",
+        "is the final test result",
         "is a drawing of the prototype"
       ],
-      "correctAnswer": 2,
+      "correctAnswer": 1,
       "skill": "understanding"
     },
     {
@@ -37,10 +37,10 @@
       "choices": [
         "To avoid needing to test the design",
         "To prove the first idea is always correct",
-        "To remove all constraints from the problem",
-        "To examine how a design works and find changes to make"
+        "To examine how a design works and find changes to make",
+        "To remove all constraints from the problem"
       ],
-      "correctAnswer": 3,
+      "correctAnswer": 2,
       "skill": "understanding"
     },
     {
@@ -71,12 +71,12 @@
       "id": 6,
       "question": "A prototype repeatedly tips over when a load is placed near one edge. Which revision is most directly supported by this evidence?",
       "choices": [
+        "Make the base wider or lower the center of mass",
         "Add decoration to the upper frame",
         "Increase the load during every later trial",
-        "Make the base wider or lower the center of mass",
         "Remove the measurement scale"
       ],
-      "correctAnswer": 2,
+      "correctAnswer": 0,
       "skill": "reasoning"
     },
     {
@@ -84,59 +84,59 @@
       "question": "Which sequence best represents an iterative engineering process?",
       "choices": [
         "Build once, present, then avoid changes",
+        "Define a need, design, build, test, and revise",
         "Choose materials, advertise, and skip evaluation",
-        "Test a final product before identifying criteria",
-        "Define a need, design, build, test, and revise"
+        "Test a final product before identifying criteria"
       ],
-      "correctAnswer": 3,
+      "correctAnswer": 1,
       "skill": "recall"
     },
     {
       "id": 8,
       "question": "A team tests three insulation materials around identical cups of warm water. Which variable should be kept constant for a fair comparison?",
       "choices": [
-        "The type of thermometer used in every cup",
         "The temperature change measured after ten minutes",
+        "The type of thermometer used in every cup",
         "The insulation material around each cup",
         "The conclusion the team hopes to reach"
       ],
-      "correctAnswer": 0,
+      "correctAnswer": 1,
       "skill": "reasoning"
     },
     {
       "id": 9,
       "question": "A water-rocket team wants to compare how fin area affects flight distance. Which design best tests that question?",
       "choices": [
-        "Change fin area, pressure, and mass together",
         "Change fin area while holding launch pressure and rocket mass as constant as possible",
+        "Change fin area, pressure, and mass together",
         "Use a different launch surface for each fin size",
         "Measure only the longest flight and discard the rest"
       ],
-      "correctAnswer": 1,
+      "correctAnswer": 0,
       "skill": "reasoning"
     },
     {
       "id": 10,
       "question": "A team's first solar oven reaches 48°C, below its 60°C target. What is the best next step?",
       "choices": [
+        "Record the result, inspect heat-loss paths, and test a targeted revision",
         "Claim that the oven meets the criterion because it became warm",
         "Change several features and skip another measurement",
-        "Record the result, inspect heat-loss paths, and test a targeted revision",
         "Replace the target with the measured result"
       ],
-      "correctAnswer": 2,
+      "correctAnswer": 0,
       "skill": "reasoning"
     },
     {
       "id": 11,
       "question": "What is the primary purpose of a project specification?",
       "choices": [
+        "To list the problem, measurable success criteria, and important constraints",
         "To guarantee the prototype will work on the first attempt",
         "To replace all testing with a written plan",
-        "To record only the names of team members",
-        "To list the problem, measurable success criteria, and important constraints"
+        "To record only the names of team members"
       ],
-      "correctAnswer": 3,
+      "correctAnswer": 0,
       "skill": "understanding"
     },
     {
@@ -167,24 +167,24 @@
       "id": 14,
       "question": "Why should a team repeat a prototype test several times?",
       "choices": [
+        "Repeated tests help reveal variability and make comparisons more dependable",
         "One test always identifies every source of error",
         "Repeated tests guarantee the design meets all criteria",
-        "Repeated tests help reveal variability and make comparisons more dependable",
         "More tests make measurement methods unnecessary"
       ],
-      "correctAnswer": 2,
+      "correctAnswer": 0,
       "skill": "understanding"
     },
     {
       "id": 15,
       "question": "A sensor's readings jump between 18 and 19 units when the environment is steady. What is a sensible first response?",
       "choices": [
+        "Check the sensor setup and collect repeated readings before changing the design",
         "Assume the largest reading is the true value",
         "Delete every reading that differs from the expected result",
-        "Replace the sensor with an unrelated actuator",
-        "Check the sensor setup and collect repeated readings before changing the design"
+        "Replace the sensor with an unrelated actuator"
       ],
-      "correctAnswer": 3,
+      "correctAnswer": 0,
       "skill": "reasoning"
     },
     {
@@ -203,36 +203,36 @@
       "id": 17,
       "question": "A team selects a material because it is strong, lightweight, and recyclable, but it exceeds the budget. Which decision best addresses the full design problem?",
       "choices": [
-        "Ignore cost because strength is measurable",
         "Compare alternative materials against all criteria and the cost constraint",
+        "Ignore cost because strength is measurable",
         "Remove recyclability from the results without review",
         "Choose the strongest material automatically"
       ],
-      "correctAnswer": 1,
+      "correctAnswer": 0,
       "skill": "reasoning"
     },
     {
       "id": 18,
       "question": "An engineer uses a scale model of a flood barrier. Why should the team be cautious when applying model results to a full-size river?",
       "choices": [
+        "Some forces and conditions may not scale proportionally",
         "Scale models cannot represent any real structure",
         "A smaller model has no measurable variables",
-        "Some forces and conditions may not scale proportionally",
         "The full-size barrier will have identical water flow by definition"
       ],
-      "correctAnswer": 2,
+      "correctAnswer": 0,
       "skill": "understanding"
     },
     {
       "id": 19,
       "question": "Which evidence would best support the claim that a redesigned package protects its contents better?",
       "choices": [
+        "Repeated drop-test damage scores for the old and new designs under the same conditions",
         "A drawing showing the new package is larger",
         "A statement that the team prefers the new color",
-        "One successful drop of the redesigned package",
-        "Repeated drop-test damage scores for the old and new designs under the same conditions"
+        "One successful drop of the redesigned package"
       ],
-      "correctAnswer": 3,
+      "correctAnswer": 0,
       "skill": "reasoning"
     },
     {
@@ -247,6 +247,5 @@
       "correctAnswer": 0,
       "skill": "reasoning"
     }
-  ],
-  "file": "engineering-stem/stem-challenges-and-projects.json"
+  ]
 }

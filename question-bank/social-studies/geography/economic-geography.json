@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "social-studies--geography--economic-geography",
+  "title": "Economic Geography",
+  "subject": "Social Studies",
+  "category": "Geography",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Economic geography studies how",
+      "choices": [
+        "political borders change without regard to people",
+        "economic activities are distributed across places and connected to geographic conditions",
+        "weather operates without affecting human activity",
+        "individual firms set national laws"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "A factory locates near a port to reduce shipping time for imported materials. Which location factor is most important?",
+      "choices": [
+        "Climate classification",
+        "Population density alone",
+        "Transportation access",
+        "National language"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "Several technology firms locate near one another and share workers and suppliers. This clustering is called",
+      "choices": [
+        "suburbanization",
+        "subsistence farming",
+        "cultural diffusion",
+        "agglomeration"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "A region grows wheat efficiently while another produces electronics efficiently. Specialization can support trade because each region may",
+      "choices": [
+        "focus on activities where it has a comparative advantage",
+        "produce every good at the same cost",
+        "avoid all transportation costs",
+        "become independent of consumers"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "Why have many manufacturers located some production near ports or major transport corridors?",
+      "choices": [
+        "Ports eliminate the need for workers",
+        "Those locations can reduce the cost and time of moving inputs and finished products",
+        "Transport corridors determine consumer preferences",
+        "Manufacturing cannot operate inland"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 6,
+      "question": "A mining region sells raw minerals abroad but imports many finished products. Which economic pattern may this illustrate?",
+      "choices": [
+        "Complete control of all stages of production",
+        "Economic isolation from trade",
+        "Unequal positions in a global production chain",
+        "A lack of natural resources"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "Which indicator can help compare the overall economic output produced within a country?",
+      "choices": [
+        "Population density",
+        "Average elevation",
+        "Annual hours of daylight",
+        "Gross domestic product"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why should GDP per capita be interpreted cautiously as a measure of development?",
+      "choices": [
+        "It is an average and does not show how income is distributed or every dimension of well-being",
+        "It measures only a country's total land area",
+        "It directly counts every person's wealth",
+        "It excludes all economic production"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 9,
+      "question": "An agricultural region shifts from small farms to mechanized commercial production. What may happen to employment patterns?",
+      "choices": [
+        "All residents must become farmers",
+        "Fewer workers may be needed per unit of output, while other jobs may grow in processing or services",
+        "Production must decline to zero",
+        "Transportation becomes unnecessary"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 10,
+      "question": "A company chooses to locate near a university, skilled workers, and research facilities. Which factor is likely influencing its decision?",
+      "choices": [
+        "Distance from every supplier",
+        "A desire to avoid innovation",
+        "Access to specialized knowledge and labor",
+        "The region's political map color"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why can a region's physical geography influence its economic activities?",
+      "choices": [
+        "Physical geography fully determines every person's occupation",
+        "Geography prevents regions from trading",
+        "Resources have no effect on production",
+        "Climate, terrain, water, and resources can affect costs and opportunities"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "An exporter can produce a good at lower opportunity cost than its trading partners. This describes",
+      "choices": [
+        "comparative advantage",
+        "a trade deficit",
+        "a price ceiling",
+        "a labor surplus"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "A coastal region has growing tourism but also faces seasonal employment and pressure on water resources. What is the best geographic analysis?",
+      "choices": [
+        "Count visitor arrivals and ignore local effects",
+        "Consider economic benefits alongside seasonal labor and environmental limits",
+        "Assume tourism has identical impacts in every place",
+        "Treat water supply as unrelated to tourism"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 14,
+      "question": "What is one potential effect of a new highway linking an inland city to a seaport?",
+      "choices": [
+        "It guarantees every local firm will expand",
+        "It eliminates trade with other regions",
+        "It may lower transport costs and change where firms choose to locate",
+        "It changes a region's natural resources"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 15,
+      "question": "A region's economy relies heavily on one crop. Why can this increase economic vulnerability?",
+      "choices": [
+        "Crop specialization prevents all market changes",
+        "One crop guarantees stable household incomes",
+        "A single crop removes the need for trade",
+        "A disease, price drop, or weather shock can affect many producers at once"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Which activity belongs primarily to the tertiary sector?",
+      "choices": [
+        "Providing medical care",
+        "Extracting iron ore",
+        "Growing rice",
+        "Manufacturing steel"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "As countries industrialize, employment often shifts from agriculture toward",
+      "choices": [
+        "subsistence hunting only",
+        "manufacturing and services",
+        "unpaid household work exclusively",
+        "mining in every region"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 18,
+      "question": "A map shows higher household incomes near a new export-processing zone, but pollution also increases in nearby communities. What should an evaluation compare?",
+      "choices": [
+        "Only export totals",
+        "Only the distance to the national capital",
+        "Jobs and incomes alongside environmental and health costs and who experiences them",
+        "The region's elevation alone"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Why can access to reliable electricity affect a region's ability to attract industry?",
+      "choices": [
+        "It determines the number of political parties",
+        "It removes the need for trained workers",
+        "It prevents goods from being transported",
+        "It supports production, communication, storage, and essential services"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "A firm moves production to a place with lower wages but longer shipping routes and weaker infrastructure. What should it compare?",
+      "choices": [
+        "Total costs and risks across labor, transport, reliability, and supply chains",
+        "Hourly wages alone",
+        "Only the distance between the two capitals",
+        "The number of local holidays"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}

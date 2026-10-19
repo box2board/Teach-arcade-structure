@@ -276,5 +276,19 @@
   "question-bank/ela/research-argument-media-literacy/quoting-paraphrasing-and-attribution.json": "bff619e761209a8fad6f77db795684420197c6d8aa296ab3c13b70c59ed3b1da",
   "question-bank/science/engineering-stem/stem-challenges-and-projects.json": "8ea22185fd9d0acc43e53e1a1ef3bc7f370520e41d7b607a5ffe412d127bf3c8",
   "question-bank/science/engineering-stem/coding-and-robotics-basics.json": "f592d68d775fb1a5aef76dad67b81ad00a9795c0f10d50563279b53b7a490af5",
-  "question-bank/science/engineering-stem/stem-careers-and-real-world-connections.json": "d07d71db1c9f8859ab339d099b825c051f7cb63e0856a72ee32f269f6df9f539"
+  "question-bank/science/engineering-stem/stem-careers-and-real-world-connections.json": "d07d71db1c9f8859ab339d099b825c051f7cb63e0856a72ee32f269f6df9f539",
+  "question-bank/social-studies/economics/business-and-market-structures.json": "b493e9e641fc250591ee870089dbe741e826b42aabc1f93d2098f8c61c6f3817",
+  "question-bank/social-studies/economics/labor-markets-and-income.json": "bba31dcc3a2c493b4bd5cc5138728faaef0a63601eb8c059dd89ba9cd1e96c06",
+  "question-bank/social-studies/economics/entrepreneurship-and-small-business.json": "e9208e6b8a3943dbb4c7d92abecb32a1e06f5a7d14d3e3a04eb921aa22a99c70",
+  "question-bank/social-studies/geography/urban-geography-and-development.json": "0efd55fbeea42275a18315435b22899afb134501318f0d0615f8b9aa5925ee1a",
+  "question-bank/social-studies/geography/economic-geography.json": "f4c51c6840b31650fbb3f21469c6b4f02effb91d75500351fefc8aa2e4d423b5",
+  "question-bank/social-studies/geography/middle-east-and-north-africa.json": "3dc124b8ffc3c693b4258260f16f62e49bfd380adcd7dc331595fea5f5453807",
+  "question-bank/social-studies/us-history/contemporary-america-1970s-present.json": "1fd3970898341861ee1b7fb8ebf173ab1fc26f2b788d2c24a1bc20cec26cb58a",
+  "question-bank/social-studies/world-history/early-humans-and-river-valley-civilizations.json": "1248e42ef1bd9676b8cabb6766e5b3179a632eaa45015819e2056bf0cb25a35a",
+  "question-bank/social-studies/world-history/mesoamerican-and-andean-civilizations.json": "9114afadd5bf95356e98d26fe9ca185c4d399c50618e925e012a67e05e3ff12f",
+  "question-bank/social-studies/world-history/byzantine-empire-and-islamic-world.json": "5e0fe3414a19ebafa8692d02c81640109f11fa2741ee9b726def063fc7fdf3c2",
+  "question-bank/social-studies/world-history/african-civilizations.json": "5ccb267934cfc16a1d0d208a669589a6e7bdb071e5f70cbee3499711edee738b",
+  "question-bank/social-studies/world-history/age-of-exploration-and-colonialism.json": "7c318947a868a98b71915e104455075dec16af48dc652b8cf230027d18cb99bc",
+  "question-bank/social-studies/world-history/imperialism-and-global-change.json": "00a791f936e11c73f859e0b3f734c23cb61837a7ff17ae6c570384cddfc2f33f",
+  "question-bank/social-studies/world-history/globalization-and-contemporary-world.json": "b8562e70f3a5b1870d387896bceae389f89b26bcf436f64f79d97ff65bba7890"
 }

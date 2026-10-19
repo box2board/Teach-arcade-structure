@@ -11,36 +11,36 @@
       "id": 1,
       "question": "Which professional most directly designs structures such as bridges and evaluates the forces they must withstand?",
       "choices": [
-        "Marine biologist",
         "Civil engineer",
+        "Marine biologist",
         "Epidemiologist",
         "Astronomer"
       ],
-      "correctAnswer": 1,
+      "correctAnswer": 0,
       "skill": "recall"
     },
     {
       "id": 2,
       "question": "A scientist studies how a new medicine affects cells in a controlled investigation. Which field is most directly related?",
       "choices": [
+        "Biomedical science",
         "Urban planning",
         "Geology",
-        "Biomedical science",
         "Aerospace manufacturing"
       ],
-      "correctAnswer": 2,
+      "correctAnswer": 0,
       "skill": "recall"
     },
     {
       "id": 3,
       "question": "What is a common difference between scientific inquiry and engineering design?",
       "choices": [
+        "Science often explains natural phenomena; engineering develops solutions to needs",
         "Science uses evidence, while engineering avoids testing",
         "Engineering asks no questions about how systems work",
-        "Scientific work always produces a device",
-        "Science often explains natural phenomena; engineering develops solutions to needs"
+        "Scientific work always produces a device"
       ],
-      "correctAnswer": 3,
+      "correctAnswer": 0,
       "skill": "understanding"
     },
     {
@@ -59,36 +59,36 @@
       "id": 5,
       "question": "Why do many STEM projects benefit from collaboration across different specialties?",
       "choices": [
-        "Team members can avoid sharing evidence",
         "Different expertise can address connected parts of a complex problem",
+        "Team members can avoid sharing evidence",
         "A single specialty always contains every needed skill",
         "Collaboration eliminates the need to test a solution"
       ],
-      "correctAnswer": 1,
+      "correctAnswer": 0,
       "skill": "understanding"
     },
     {
       "id": 6,
       "question": "An agricultural scientist compares crop growth under different watering schedules. Which skill is most important for a fair study?",
       "choices": [
+        "Controlling other conditions and recording growth consistently",
         "Changing soil type and water amount together",
         "Selecting only the strongest-looking plant",
-        "Controlling other conditions and recording growth consistently",
         "Using a different measuring tool each day"
       ],
-      "correctAnswer": 2,
+      "correctAnswer": 0,
       "skill": "reasoning"
     },
     {
       "id": 7,
       "question": "A data analyst sees that hospital visits rise during a heat wave. What should the analyst do before claiming heat caused the increase?",
       "choices": [
+        "Examine timing, comparison data, and other possible contributing factors",
         "Assume the two trends prove cause and effect",
         "Discard days when visits did not rise",
-        "Replace data analysis with a personal opinion",
-        "Examine timing, comparison data, and other possible contributing factors"
+        "Replace data analysis with a personal opinion"
       ],
-      "correctAnswer": 3,
+      "correctAnswer": 0,
       "skill": "reasoning"
     },
     {
@@ -107,36 +107,36 @@
       "id": 9,
       "question": "A biomedical engineer is designing a lightweight prosthetic hand. Which consideration belongs in the design evaluation?",
       "choices": [
-        "Appearance alone",
         "Function, comfort, safety, cost, and access for intended users",
+        "Appearance alone",
         "Whether the device uses the most parts",
         "Whether the team can avoid feedback from users"
       ],
-      "correctAnswer": 1,
+      "correctAnswer": 0,
       "skill": "reasoning"
     },
     {
       "id": 10,
       "question": "Why might an environmental scientist use a computer model of a watershed?",
       "choices": [
+        "To explore how changing conditions could affect water flow or quality",
         "To replace all field observations permanently",
         "To guarantee every forecast is exact",
-        "To explore how changing conditions could affect water flow or quality",
         "To remove uncertainty from natural systems"
       ],
-      "correctAnswer": 2,
+      "correctAnswer": 0,
       "skill": "understanding"
     },
     {
       "id": 11,
       "question": "A technician notices that a machine's vibration increases over several weeks. Which response best uses STEM reasoning?",
       "choices": [
+        "Collect consistent measurements and compare them with normal operating patterns",
         "Wait for the machine to fail before recording evidence",
         "Change several parts before identifying the problem",
-        "Ignore the trend if the machine still turns on",
-        "Collect consistent measurements and compare them with normal operating patterns"
+        "Ignore the trend if the machine still turns on"
       ],
-      "correctAnswer": 3,
+      "correctAnswer": 0,
       "skill": "reasoning"
     },
     {
@@ -155,36 +155,36 @@
       "id": 13,
       "question": "A public-health team tracks illness cases by location and date. Which tool is especially useful for recognizing geographic patterns?",
       "choices": [
-        "A list of unrelated product names",
         "A map-based data display",
+        "A list of unrelated product names",
         "A mechanical torque wrench",
         "A diagram of a cell membrane"
       ],
-      "correctAnswer": 1,
+      "correctAnswer": 0,
       "skill": "understanding"
     },
     {
       "id": 14,
       "question": "When is a model's limitation especially important to report?",
       "choices": [
+        "When the model leaves out conditions that could change how its results apply",
         "When the model has a title",
         "When its output matches the team's first guess",
-        "When the model leaves out conditions that could change how its results apply",
         "When the team used a computer"
       ],
-      "correctAnswer": 2,
+      "correctAnswer": 0,
       "skill": "understanding"
     },
     {
       "id": 15,
       "question": "A company collects information from wearable health devices. Which concern should guide responsible data use?",
       "choices": [
+        "Privacy, consent, security, and appropriate interpretation",
         "How to share every user's data publicly",
         "How to remove all context from the measurements",
-        "How to treat every reading as a diagnosis",
-        "Privacy, consent, security, and appropriate interpretation"
+        "How to treat every reading as a diagnosis"
       ],
-      "correctAnswer": 3,
+      "correctAnswer": 0,
       "skill": "reasoning"
     },
     {
@@ -203,36 +203,36 @@
       "id": 17,
       "question": "Which professional most directly studies rocks, landforms, and processes that shape Earth's surface?",
       "choices": [
-        "Mechanical engineer",
         "Geologist",
+        "Mechanical engineer",
         "Speech-language pathologist",
         "Accountant"
       ],
-      "correctAnswer": 1,
+      "correctAnswer": 0,
       "skill": "recall"
     },
     {
       "id": 18,
       "question": "A team develops an app for people with limited vision. Which design practice best addresses accessibility?",
       "choices": [
+        "Test with intended users and provide options such as screen-reader support and adjustable contrast",
         "Use color as the only way to communicate information",
         "Assume all users interact with screens in the same way",
-        "Test with intended users and provide options such as screen-reader support and adjustable contrast",
         "Remove text labels to create more space"
       ],
-      "correctAnswer": 2,
+      "correctAnswer": 0,
       "skill": "reasoning"
     },
     {
       "id": 19,
       "question": "Why should a STEM recommendation include uncertainty when measurements are limited?",
       "choices": [
+        "Decision makers need to know how confident the evidence is and what remains unknown",
         "Uncertainty proves that all results are useless",
         "It makes a recommendation impossible to understand",
-        "It allows unsupported claims to be stated as facts",
-        "Decision makers need to know how confident the evidence is and what remains unknown"
+        "It allows unsupported claims to be stated as facts"
       ],
-      "correctAnswer": 3,
+      "correctAnswer": 0,
       "skill": "understanding"
     },
     {
@@ -247,6 +247,5 @@
       "correctAnswer": 0,
       "skill": "reasoning"
     }
-  ],
-  "file": "engineering-stem/stem-careers-and-real-world-connections.json"
+  ]
 }
