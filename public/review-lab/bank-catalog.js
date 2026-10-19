@@ -2919,5 +2919,55 @@ export const BANK_SETS=[
     "questionCount": 20,
     "description": "World History · 7–12",
     "file": "social-studies/world-history/globalization-and-contemporary-world.json"
+  },
+  {
+    "id": "ela--literature-literary-analysis--rhyme-rhythm-meter",
+    "title": "Rhyme, Rhythm & Meter",
+    "subject": "English Language Arts",
+    "category": "Literature & Literary Analysis",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Literature & Literary Analysis · 7–12",
+    "file": "literature-literary-analysis/rhyme-rhythm-meter.json"
+  },
+  {
+    "id": "ela--writing-composition--writing-original-poems",
+    "title": "Writing Original Poems",
+    "subject": "English Language Arts",
+    "category": "Writing & Composition",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Writing & Composition · 7–12",
+    "file": "writing-composition/writing-original-poems.json"
+  },
+  {
+    "id": "ela--reading-informational-text--text-features",
+    "title": "Text Features",
+    "subject": "English Language Arts",
+    "category": "Reading & Informational Text",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Reading & Informational Text · 7–12",
+    "file": "reading-informational-text/text-features.json"
+  },
+  {
+    "id": "ela--reading-informational-text--author-s-purpose-tone",
+    "title": "Author’s Purpose & Tone",
+    "subject": "English Language Arts",
+    "category": "Reading & Informational Text",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Reading & Informational Text · 7–12",
+    "file": "reading-informational-text/author-s-purpose-tone.json"
+  },
+  {
+    "id": "ela--reading-informational-text--fact-opinion-bias",
+    "title": "Fact, Opinion & Bias",
+    "subject": "English Language Arts",
+    "category": "Reading & Informational Text",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Reading & Informational Text · 7–12",
+    "file": "reading-informational-text/fact-opinion-bias.json"
   }
 ];

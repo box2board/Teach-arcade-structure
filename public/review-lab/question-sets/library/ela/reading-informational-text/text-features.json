@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "ela--reading-informational-text--text-features",
+  "title": "Text Features",
+  "subject": "English Language Arts",
+  "category": "Reading & Informational Text",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a heading mainly designed to do?",
+      "choices": [
+        "Signal the subject or organization of a section",
+        "Prove every claim in the section",
+        "Replace the main text",
+        "Identify the author's credentials"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "How does a caption usually help a reader?",
+      "choices": [
+        "It lists every source in the book",
+        "It explains or adds context to an image or graphic",
+        "It defines the text's central argument",
+        "It gives the page number"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "A graph compares monthly rainfall across five cities. What can the graph communicate more efficiently than a paragraph?",
+      "choices": [
+        "The cause of every rainfall change",
+        "The author's personal opinion",
+        "Patterns and differences in the data",
+        "A complete account of each city's history"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "A bold word appears with a definition in the margin. What is the feature's purpose?",
+      "choices": [
+        "Show that the word is a proper noun",
+        "Indicate that the text is fiction",
+        "Identify a quotation",
+        "Draw attention to a key term and clarify its meaning"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which feature would best help a reader find the page where 'photosynthesis' is discussed?",
+      "choices": [
+        "Index",
+        "Caption",
+        "Table of contents",
+        "Glossary"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "A map includes a legend explaining colors and symbols. Why is the legend important?",
+      "choices": [
+        "It proves the map is current",
+        "It explains how to interpret the map's visual information",
+        "It states the author's purpose",
+        "It replaces the scale"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "A sidebar presents a short biography related to the main topic. How should a reader use it?",
+      "choices": [
+        "As evidence that the main text is always biased",
+        "As a replacement for the central explanation",
+        "As supporting context that may deepen understanding of the main text",
+        "As the book's index"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 8,
+      "question": "A table lists experimental results in rows and columns. What is a useful first step?",
+      "choices": [
+        "Assume the largest number is the conclusion",
+        "Ignore units in the headings",
+        "Read only the table caption",
+        "Read the row and column labels before comparing values"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 9,
+      "question": "Which feature gives a brief overview of a book's chapters and where they begin?",
+      "choices": [
+        "Table of contents",
+        "Glossary",
+        "Index",
+        "Footnote"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "A footnote provides a source for a claim. What does it allow a reader to do?",
+      "choices": [
+        "Determine the text's reading level",
+        "Check or explore the supporting reference",
+        "Locate a photograph",
+        "Identify the plot"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "A diagram labels the parts of a cell. Which question can it answer most directly?",
+      "choices": [
+        "How every cell behaves in every condition",
+        "Who discovered all cell structures",
+        "Where the labeled structures are positioned relative to one another",
+        "Why one organelle is more important"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 12,
+      "question": "A chart uses percentages but does not state the sample size. What limitation should a reader notice?",
+      "choices": [
+        "The chart must be inaccurate",
+        "Percentages cannot be used in charts",
+        "The topic has no main idea",
+        "The percentages alone may hide how many observations they represent"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 13,
+      "question": "How do subheadings help readers?",
+      "choices": [
+        "They divide information into smaller sections with related ideas",
+        "They prove each section has equal importance",
+        "They replace transitions between ideas",
+        "They identify all unfamiliar vocabulary"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "A timeline places events in chronological order. Which relationship does it make easiest to inspect?",
+      "choices": [
+        "Which event caused every other event",
+        "When events occurred relative to one another",
+        "How reliable each source is",
+        "Whether all events have equal importance"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A photograph is labeled 'before restoration.' What should a reader look for in a related after image?",
+      "choices": [
+        "The author's intended grade level",
+        "The publication's table of contents",
+        "Changes that can be compared using the same visible features",
+        "Words that rhyme in the caption"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 16,
+      "question": "A glossary differs from an index because a glossary",
+      "choices": [
+        "lists chapters, while an index lists authors",
+        "shows maps, while an index gives captions",
+        "summarizes arguments, while an index gives conclusions",
+        "defines selected terms, while an index points to where topics appear"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "An infographic combines icons, short text, and statistics. What should a careful reader do?",
+      "choices": [
+        "Check what each visual represents and where the statistics came from",
+        "Assume the design makes every claim factual",
+        "Read only the largest number",
+        "Ignore the labels because icons are self-explanatory"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A scale bar appears on a map. What can it help a reader estimate?",
+      "choices": [
+        "The population of each region",
+        "Real-world distance represented by a map measurement",
+        "The mapmaker's purpose",
+        "The age of the map"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "A numbered list presents steps in a process. What does the numbering most likely indicate?",
+      "choices": [
+        "A ranking by reliability",
+        "A set of unrelated examples",
+        "An intended sequence or order",
+        "The amount of evidence for each step"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "Which source feature would best help determine who published an article and when?",
+      "choices": [
+        "A decorative border",
+        "A chapter heading",
+        "A map scale",
+        "Publication information or a byline/date"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

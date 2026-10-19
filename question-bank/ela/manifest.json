@@ -3,8 +3,8 @@
   "subject": "English Language Arts",
   "status": "draft-for-review",
   "gradeBand": "7–12",
-  "setCount": 25,
-  "questionCount": 500,
+  "setCount": 30,
+  "questionCount": 600,
   "sets": [
     {
       "id": "ela--literature-literary-analysis--plot-and-narrative-structure",
@@ -180,6 +180,41 @@
       "category": "Research, Argument & Media Literacy",
       "questionCount": 20,
       "file": "research-argument-media-literacy/quoting-paraphrasing-and-attribution.json"
+    },
+    {
+      "id": "ela--literature-literary-analysis--rhyme-rhythm-meter",
+      "title": "Rhyme, Rhythm & Meter",
+      "category": "Literature & Literary Analysis",
+      "questionCount": 20,
+      "file": "literature-literary-analysis/rhyme-rhythm-meter.json"
+    },
+    {
+      "id": "ela--writing-composition--writing-original-poems",
+      "title": "Writing Original Poems",
+      "category": "Writing & Composition",
+      "questionCount": 20,
+      "file": "writing-composition/writing-original-poems.json"
+    },
+    {
+      "id": "ela--reading-informational-text--text-features",
+      "title": "Text Features",
+      "category": "Reading & Informational Text",
+      "questionCount": 20,
+      "file": "reading-informational-text/text-features.json"
+    },
+    {
+      "id": "ela--reading-informational-text--author-s-purpose-tone",
+      "title": "Author’s Purpose & Tone",
+      "category": "Reading & Informational Text",
+      "questionCount": 20,
+      "file": "reading-informational-text/author-s-purpose-tone.json"
+    },
+    {
+      "id": "ela--reading-informational-text--fact-opinion-bias",
+      "title": "Fact, Opinion & Bias",
+      "category": "Reading & Informational Text",
+      "questionCount": 20,
+      "file": "reading-informational-text/fact-opinion-bias.json"
     }
   ]
 }

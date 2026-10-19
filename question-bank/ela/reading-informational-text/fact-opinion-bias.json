@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "ela--reading-informational-text--fact-opinion-bias",
+  "title": "Fact, Opinion & Bias",
+  "subject": "English Language Arts",
+  "category": "Reading & Informational Text",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which statement is verifiable as a fact?",
+      "choices": [
+        "The library opened in 1984",
+        "The library is the best building in town",
+        "Everyone should visit the library",
+        "The library feels welcoming"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which statement is an opinion?",
+      "choices": [
+        "The schedule lists six class periods",
+        "The new schedule is more convenient than the old one",
+        "The first class begins at 8:10 a.m.",
+        "The schedule was posted online"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "A news story quotes only people who support a proposal. What possible bias should a reader consider?",
+      "choices": [
+        "The dates must be incorrect",
+        "The proposal cannot be discussed",
+        "Opposing perspectives may be missing",
+        "Every quotation is fictional"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 4,
+      "question": "Why is a statistic not automatically free from bias?",
+      "choices": [
+        "Numbers can never be checked",
+        "Statistics contain no information",
+        "All statistics are opinions",
+        "Choices about collection, comparison, and presentation can shape its meaning"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "Which source detail is most relevant when judging a claim about a medical treatment?",
+      "choices": [
+        "The quality of evidence and the source's expertise or interests",
+        "The number of colors on the website",
+        "The length of the headline",
+        "Whether the source uses a logo"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "A poll of 20 volunteers at a sports event is used to describe all residents. What is the main concern?",
+      "choices": [
+        "The poll has too many respondents",
+        "The sample may not represent the full population",
+        "Volunteers cannot answer questions",
+        "Residents have no opinions"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 7,
+      "question": "Which sentence combines a fact with an opinion?",
+      "choices": [
+        "The park has three courts",
+        "The park opened last summer",
+        "The park has three courts, making it the city's finest recreation space",
+        "The park is located beside the school"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "A product page reports only positive customer reviews and omits how reviews were selected. What should a reader ask?",
+      "choices": [
+        "Whether every product has a page",
+        "Whether the page has a title",
+        "Whether the reviews use complete sentences",
+        "Whether the reviews are representative and what evidence was left out"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 9,
+      "question": "Which phrase most clearly signals an opinion?",
+      "choices": [
+        "The most effective solution",
+        "At a distance of two kilometers",
+        "On September 14",
+        "According to the posted data"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "A chart begins its vertical axis at 95 rather than zero, making a small difference look large. What should readers examine?",
+      "choices": [
+        "The color of the chart title",
+        "The scale and how it affects the visual comparison",
+        "Whether the chart has a caption",
+        "The alphabetical order of labels"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 11,
+      "question": "An author describes one group as 'concerned residents' and another as 'complainers.' What does this wording suggest?",
+      "choices": [
+        "A neutral comparison of both groups",
+        "A verified count of participants",
+        "Uneven framing that may reveal bias",
+        "An explanation of the issue's timeline"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 12,
+      "question": "Which evidence best supports an objective claim that a bus route became faster?",
+      "choices": [
+        "A rider's statement that it feels faster",
+        "A campaign slogan about efficiency",
+        "A photograph of the bus",
+        "Recorded travel times from comparable trips before and after the change"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "A claim is repeated by many websites, all citing the same original post. What does this indicate?",
+      "choices": [
+        "Repetition does not equal independent confirmation",
+        "The claim is proven by the number of pages",
+        "The original post is necessarily false",
+        "Each website conducted a new study"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 14,
+      "question": "Which question helps distinguish an opinion from a fact?",
+      "choices": [
+        "Does the statement sound confident?",
+        "Can reliable evidence verify the statement as written?",
+        "Is the statement printed in a large font?",
+        "Does the author agree with me?"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A report describes a policy's costs but not its benefits. What is a fair next step?",
+      "choices": [
+        "Assume the policy has no benefits",
+        "Reject every fact in the report",
+        "Seek additional sources that examine the omitted side",
+        "Repeat the report's conclusion"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 16,
+      "question": "An influencer recommends a product and receives payment from its seller. What should readers consider?",
+      "choices": [
+        "Payment guarantees the product works",
+        "The recommendation is a scientific study",
+        "The seller cannot be identified",
+        "The financial relationship may affect how the recommendation is presented"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "Which sentence is most clearly an observable fact?",
+      "choices": [
+        "The container holds 500 milliliters",
+        "The container is unattractive",
+        "The container is too large",
+        "The container is the best choice"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "A writer uses only examples that support a claim while ignoring stronger contrary evidence. This is",
+      "choices": [
+        "a random sample",
+        "cherry-picking evidence",
+        "a neutral summary",
+        "a controlled variable"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "Why should a reader separate a source's evidence from its conclusion?",
+      "choices": [
+        "Evidence always proves every conclusion",
+        "Conclusions are always facts",
+        "The conclusion may extend beyond what the evidence supports",
+        "Evidence cannot be interpreted"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Two reports give different estimates because they use different date ranges. What should a reader compare?",
+      "choices": [
+        "Their website colors",
+        "The authors' preferred headlines",
+        "The number of images",
+        "Their methods and the time periods measured"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    }
+  ]
+}
