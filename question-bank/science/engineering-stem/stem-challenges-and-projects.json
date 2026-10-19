@@ -47,36 +47,36 @@
       "id": 4,
       "question": "Two bridge models use the same materials. One holds more mass but takes longer to assemble. What does this comparison illustrate?",
       "choices": [
-        "A trade-off between performance and assembly time",
         "A controlled variable that should be ignored",
         "A result that proves one model is unsafe",
-        "A criterion that cannot be measured"
+        "A criterion that cannot be measured",
+        "A trade-off between performance and assembly time"
       ],
-      "correctAnswer": 0,
+      "correctAnswer": 3,
       "skill": "reasoning"
     },
     {
       "id": 5,
       "question": "A group changes the wing shape and also changes the launch angle between trials. What is the main problem?",
       "choices": [
-        "The model uses too few materials",
         "The test does not isolate the effect of wing shape",
+        "The model uses too few materials",
         "The group has already optimized its design",
         "The launch angle is a dependent variable"
       ],
-      "correctAnswer": 1,
+      "correctAnswer": 0,
       "skill": "reasoning"
     },
     {
       "id": 6,
       "question": "A prototype repeatedly tips over when a load is placed near one edge. Which revision is most directly supported by this evidence?",
       "choices": [
-        "Make the base wider or lower the center of mass",
         "Add decoration to the upper frame",
+        "Make the base wider or lower the center of mass",
         "Increase the load during every later trial",
         "Remove the measurement scale"
       ],
-      "correctAnswer": 0,
+      "correctAnswer": 1,
       "skill": "reasoning"
     },
     {
@@ -84,11 +84,11 @@
       "question": "Which sequence best represents an iterative engineering process?",
       "choices": [
         "Build once, present, then avoid changes",
-        "Define a need, design, build, test, and revise",
         "Choose materials, advertise, and skip evaluation",
+        "Define a need, design, build, test, and revise",
         "Test a final product before identifying criteria"
       ],
-      "correctAnswer": 1,
+      "correctAnswer": 2,
       "skill": "recall"
     },
     {
@@ -96,11 +96,11 @@
       "question": "A team tests three insulation materials around identical cups of warm water. Which variable should be kept constant for a fair comparison?",
       "choices": [
         "The temperature change measured after ten minutes",
-        "The type of thermometer used in every cup",
         "The insulation material around each cup",
-        "The conclusion the team hopes to reach"
+        "The conclusion the team hopes to reach",
+        "The type of thermometer used in every cup"
       ],
-      "correctAnswer": 1,
+      "correctAnswer": 3,
       "skill": "reasoning"
     },
     {
@@ -119,84 +119,84 @@
       "id": 10,
       "question": "A team's first solar oven reaches 48°C, below its 60°C target. What is the best next step?",
       "choices": [
-        "Record the result, inspect heat-loss paths, and test a targeted revision",
         "Claim that the oven meets the criterion because it became warm",
+        "Record the result, inspect heat-loss paths, and test a targeted revision",
         "Change several features and skip another measurement",
         "Replace the target with the measured result"
       ],
-      "correctAnswer": 0,
+      "correctAnswer": 1,
       "skill": "reasoning"
     },
     {
       "id": 11,
       "question": "What is the primary purpose of a project specification?",
       "choices": [
-        "To list the problem, measurable success criteria, and important constraints",
         "To guarantee the prototype will work on the first attempt",
         "To replace all testing with a written plan",
+        "To list the problem, measurable success criteria, and important constraints",
         "To record only the names of team members"
       ],
-      "correctAnswer": 0,
+      "correctAnswer": 2,
       "skill": "understanding"
     },
     {
       "id": 12,
       "question": "A team has limited battery capacity and must choose between a faster motor and a longer operating time. This is best described as",
       "choices": [
-        "a trade-off between competing design goals",
         "a random error in measurement",
         "a failure to define the problem",
-        "a controlled experiment with no variables"
+        "a controlled experiment with no variables",
+        "a trade-off between competing design goals"
       ],
-      "correctAnswer": 0,
+      "correctAnswer": 3,
       "skill": "understanding"
     },
     {
       "id": 13,
       "question": "A ramp design moves a cart farther, but it also makes the cart harder to stop safely. Which action shows responsible design reasoning?",
       "choices": [
-        "Keep the longer ramp because distance is the only useful criterion",
         "Compare both performance goals and test a safe stopping feature",
+        "Keep the longer ramp because distance is the only useful criterion",
         "Remove the stopping test because it complicates the project",
         "Change the safety criterion after each trial"
       ],
-      "correctAnswer": 1,
+      "correctAnswer": 0,
       "skill": "reasoning"
     },
     {
       "id": 14,
       "question": "Why should a team repeat a prototype test several times?",
       "choices": [
-        "Repeated tests help reveal variability and make comparisons more dependable",
         "One test always identifies every source of error",
+        "Repeated tests help reveal variability and make comparisons more dependable",
         "Repeated tests guarantee the design meets all criteria",
         "More tests make measurement methods unnecessary"
       ],
-      "correctAnswer": 0,
+      "correctAnswer": 1,
       "skill": "understanding"
     },
     {
       "id": 15,
       "question": "A sensor's readings jump between 18 and 19 units when the environment is steady. What is a sensible first response?",
       "choices": [
-        "Check the sensor setup and collect repeated readings before changing the design",
         "Assume the largest reading is the true value",
         "Delete every reading that differs from the expected result",
+        "Check the sensor setup and collect repeated readings before changing the design",
         "Replace the sensor with an unrelated actuator"
       ],
-      "correctAnswer": 0,
+      "correctAnswer": 2,
       "skill": "reasoning"
     },
     {
       "id": 16,
       "question": "Which change would most likely improve the reliability of a small wind-turbine test?",
       "choices": [
-        "Use the same fan distance and speed for each blade design",
         "Move the fan closer whenever a turbine performs poorly",
         "Change both blade shape and generator between trials",
-        "Record only whether the turbine spins"
+        "Record only whether the turbine spins",
+        "Use the same fan distance and speed for each blade design"
       ],
-      "correctAnswer": 0,
+      "correctAnswer": 3,
       "skill": "understanding"
     },
     {
@@ -215,36 +215,36 @@
       "id": 18,
       "question": "An engineer uses a scale model of a flood barrier. Why should the team be cautious when applying model results to a full-size river?",
       "choices": [
-        "Some forces and conditions may not scale proportionally",
         "Scale models cannot represent any real structure",
+        "Some forces and conditions may not scale proportionally",
         "A smaller model has no measurable variables",
         "The full-size barrier will have identical water flow by definition"
       ],
-      "correctAnswer": 0,
+      "correctAnswer": 1,
       "skill": "understanding"
     },
     {
       "id": 19,
       "question": "Which evidence would best support the claim that a redesigned package protects its contents better?",
       "choices": [
-        "Repeated drop-test damage scores for the old and new designs under the same conditions",
         "A drawing showing the new package is larger",
         "A statement that the team prefers the new color",
+        "Repeated drop-test damage scores for the old and new designs under the same conditions",
         "One successful drop of the redesigned package"
       ],
-      "correctAnswer": 0,
+      "correctAnswer": 2,
       "skill": "reasoning"
     },
     {
       "id": 20,
       "question": "A project works in a classroom trial but fails outdoors in cold weather. What should the team do next?",
       "choices": [
-        "Revise the test conditions to include realistic temperature ranges and evaluate changes",
         "Conclude the device cannot be improved",
         "Report only the classroom result as universal evidence",
-        "Remove temperature from the design requirements"
+        "Remove temperature from the design requirements",
+        "Revise the test conditions to include realistic temperature ranges and evaluate changes"
       ],
-      "correctAnswer": 0,
+      "correctAnswer": 3,
       "skill": "reasoning"
     }
   ]
