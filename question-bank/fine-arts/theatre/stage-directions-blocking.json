@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--theatre--stage-directions-blocking",
+  "title": "Stage Directions & Blocking",
+  "subject": "Fine Arts",
+  "category": "Theatre",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "From the actor's perspective facing the audience, which side is stage left?",
+      "choices": [
+        "The actor's left",
+        "The audience's left",
+        "The actor's right",
+        "The side nearest the backstage door"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "In a traditional stage layout, downstage is",
+      "choices": [
+        "away from the audience",
+        "toward the audience",
+        "above the stage",
+        "to the actor's left"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is blocking in theatre?",
+      "choices": [
+        "The printed program",
+        "A type of stage curtain",
+        "The planned movement and positioning of performers on stage",
+        "A lighting color"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "Why should actors consider sightlines when choosing positions?",
+      "choices": [
+        "Sightlines determine the script's genre",
+        "They replace dialogue",
+        "They control the ticket price",
+        "They need to remain visible to the audience"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "A director asks an actor to cross downstage right. What should the actor do?",
+      "choices": [
+        "Move toward the audience and toward the actor's right",
+        "Move upstage left",
+        "Move toward the audience and actor's left",
+        "Remain in place"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 6,
+      "question": "What is a cue in a performance?",
+      "choices": [
+        "A costume measurement",
+        "A signal for an action, line, sound, or technical change to begin",
+        "A stage decoration",
+        "A review after the show"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Why mark a spike on the stage floor?",
+      "choices": [
+        "To mark a character's age",
+        "To change the set color",
+        "To help performers return to a planned position",
+        "To replace rehearsal"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "What does an actor's cheat-out position help with?",
+      "choices": [
+        "Hide all facial expression",
+        "Move the set without sound",
+        "Change the script's ending",
+        "Keep the actor partly oriented toward the audience while addressing another performer"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why should stage movement be motivated?",
+      "choices": [
+        "Purposeful movement supports the scene's action and relationships",
+        "Movement should fill every pause",
+        "Actors should cross randomly",
+        "Blocking replaces character objectives"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 10,
+      "question": "What is a proscenium stage?",
+      "choices": [
+        "A stage surrounded by audience on all sides",
+        "A stage framed by an architectural opening, with the audience primarily on one side",
+        "A platform with no audience",
+        "A theater-in-the-round"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "A performer stands directly in front of another, hiding them from view. What should blocking address?",
+      "choices": [
+        "The script's page count",
+        "The audience's program",
+        "The actors' sightlines and spacing",
+        "The costume's fabric"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "How is a thrust stage arranged?",
+      "choices": [
+        "The audience sits on all four sides",
+        "The stage is behind a screen",
+        "The audience sits only above the stage",
+        "The stage extends into the audience, which sits on three sides"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Why might a director pause a scene to adjust a cross?",
+      "choices": [
+        "To clarify focus, timing, and spatial relationships",
+        "To change the play's historical period",
+        "To eliminate all movement",
+        "To hide the actors"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What is a stage picture?",
+      "choices": [
+        "A photograph of the audience",
+        "The visual arrangement of performers and scenic elements at a moment",
+        "A poster advertising the show",
+        "A written character biography"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A scene shifts focus from one character to another. How can blocking help?",
+      "choices": [
+        "Make every actor move at once",
+        "Turn all performers away",
+        "Use position, movement, or attention to guide the audience's focus",
+        "Remove the scene's objective"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 16,
+      "question": "What does upstage generally mean?",
+      "choices": [
+        "Toward the audience",
+        "To the actor's right",
+        "Above the lighting grid",
+        "Away from the audience"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Why is consistent blocking important during a performance run?",
+      "choices": [
+        "It supports timing, safety, and clear storytelling",
+        "It prevents actors from listening",
+        "It makes every performance emotionally identical",
+        "It changes the playwright's words"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 18,
+      "question": "What should performers do when a planned path conflicts with a prop or set piece?",
+      "choices": [
+        "Force the prop aside during the scene",
+        "Notify the director or stage manager and revise the path safely",
+        "Ignore the obstacle",
+        "Ask the audience to move it"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "In a black-box theatre, what is one advantage of flexible seating and staging?",
+      "choices": [
+        "Every play must use a proscenium",
+        "The audience cannot see actors",
+        "The performance layout can be adapted to the production",
+        "Lighting is unnecessary"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "Why should stage directions be interpreted with the scene's context?",
+      "choices": [
+        "They always determine one emotion",
+        "They replace character analysis",
+        "They are unrelated to the story",
+        "They guide action but may need to support the play's objectives and relationships"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

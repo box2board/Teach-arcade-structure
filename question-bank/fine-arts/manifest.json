@@ -3,8 +3,8 @@
   "subject": "Fine Arts",
   "status": "draft-for-review",
   "gradeBand": "7–12",
-  "setCount": 15,
-  "questionCount": 300,
+  "setCount": 20,
+  "questionCount": 400,
   "sets": [
     {
       "id": "fine-arts--art-history--prehistoric-ancient-art",
@@ -110,6 +110,41 @@
       "category": "Dance",
       "questionCount": 20,
       "file": "dance/expression-performance.json"
+    },
+    {
+      "id": "fine-arts--dance--dance-technique-safety",
+      "title": "Dance Technique & Safety",
+      "category": "Dance",
+      "questionCount": 20,
+      "file": "dance/dance-technique-safety.json"
+    },
+    {
+      "id": "fine-arts--theatre--stage-directions-blocking",
+      "title": "Stage Directions & Blocking",
+      "category": "Theatre",
+      "questionCount": 20,
+      "file": "theatre/stage-directions-blocking.json"
+    },
+    {
+      "id": "fine-arts--theatre--acting-basics",
+      "title": "Acting Basics",
+      "category": "Theatre",
+      "questionCount": 20,
+      "file": "theatre/acting-basics.json"
+    },
+    {
+      "id": "fine-arts--theatre--improvisation-games",
+      "title": "Improvisation Games",
+      "category": "Theatre",
+      "questionCount": 20,
+      "file": "theatre/improvisation-games.json"
+    },
+    {
+      "id": "fine-arts--theatre--dramatic-structure",
+      "title": "Dramatic Structure",
+      "category": "Theatre",
+      "questionCount": 20,
+      "file": "theatre/dramatic-structure.json"
     }
   ]
 }

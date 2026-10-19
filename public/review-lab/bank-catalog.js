@@ -3509,5 +3509,55 @@ export const BANK_SETS=[
     "questionCount": 20,
     "description": "Dance · 7–12",
     "file": "fine-arts/dance/expression-performance.json"
+  },
+  {
+    "id": "fine-arts--dance--dance-technique-safety",
+    "title": "Dance Technique & Safety",
+    "subject": "Fine Arts",
+    "category": "Dance",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Dance · 7–12",
+    "file": "fine-arts/dance/dance-technique-safety.json"
+  },
+  {
+    "id": "fine-arts--theatre--stage-directions-blocking",
+    "title": "Stage Directions & Blocking",
+    "subject": "Fine Arts",
+    "category": "Theatre",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Theatre · 7–12",
+    "file": "fine-arts/theatre/stage-directions-blocking.json"
+  },
+  {
+    "id": "fine-arts--theatre--acting-basics",
+    "title": "Acting Basics",
+    "subject": "Fine Arts",
+    "category": "Theatre",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Theatre · 7–12",
+    "file": "fine-arts/theatre/acting-basics.json"
+  },
+  {
+    "id": "fine-arts--theatre--improvisation-games",
+    "title": "Improvisation Games",
+    "subject": "Fine Arts",
+    "category": "Theatre",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Theatre · 7–12",
+    "file": "fine-arts/theatre/improvisation-games.json"
+  },
+  {
+    "id": "fine-arts--theatre--dramatic-structure",
+    "title": "Dramatic Structure",
+    "subject": "Fine Arts",
+    "category": "Theatre",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Theatre · 7–12",
+    "file": "fine-arts/theatre/dramatic-structure.json"
   }
 ];

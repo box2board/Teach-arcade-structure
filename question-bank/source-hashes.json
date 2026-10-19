@@ -349,5 +349,10 @@
   "question-bank/fine-arts/dance/dance-styles-overview.json": "d46e8f76e119b3ddb9a6fb552b88e05e62a39e6b071569846b242e11ace63f02",
   "question-bank/fine-arts/dance/cultural-dances.json": "c92d38d88854f73b937fe69f8abb4f718820af98b8a43fc73330536cc336bf57",
   "question-bank/fine-arts/dance/choreography-basics.json": "665fcacc8c53c67d5c340da73018f1d90e5d7dc792388064f2efed90a382773f",
-  "question-bank/fine-arts/dance/expression-performance.json": "450aac4cf5751f4f72338ecbae937ed1b9a162184cedab7e284a8df38900b3d9"
+  "question-bank/fine-arts/dance/expression-performance.json": "450aac4cf5751f4f72338ecbae937ed1b9a162184cedab7e284a8df38900b3d9",
+  "question-bank/fine-arts/dance/dance-technique-safety.json": "40be4ec5febd92770d2df0db9cbff94391e9611be34a4872ac9581cb23ae310f",
+  "question-bank/fine-arts/theatre/stage-directions-blocking.json": "dac244823ea9412a1a9c2b30bdcae4a5cc31aaad9a905898ad954bfce2e79a47",
+  "question-bank/fine-arts/theatre/acting-basics.json": "54751dc999a524003343daa23fb2b9e7ea9f27b93c1035945ada39d2c60fb5f3",
+  "question-bank/fine-arts/theatre/improvisation-games.json": "3ee2517d946847d5c23f331e12fe65e83fd64cd28236c0dbb29bb224fe23c700",
+  "question-bank/fine-arts/theatre/dramatic-structure.json": "384751d40cb0c577e905679c0d61edac4524111f913c5d1acb65286b73f76498"
 }
