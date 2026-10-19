@@ -3559,5 +3559,55 @@ export const BANK_SETS=[
     "questionCount": 20,
     "description": "Theatre · 7–12",
     "file": "fine-arts/theatre/dramatic-structure.json"
+  },
+  {
+    "id": "fine-arts--theatre--scriptwriting-dialogue",
+    "title": "Scriptwriting & Dialogue",
+    "subject": "Fine Arts",
+    "category": "Theatre",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Theatre · 7–12",
+    "file": "fine-arts/theatre/scriptwriting-dialogue.json"
+  },
+  {
+    "id": "fine-arts--theatre--character-development",
+    "title": "Character Development",
+    "subject": "Fine Arts",
+    "category": "Theatre",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Theatre · 7–12",
+    "file": "fine-arts/theatre/character-development.json"
+  },
+  {
+    "id": "fine-arts--theatre--set-costume-design",
+    "title": "Set & Costume Design",
+    "subject": "Fine Arts",
+    "category": "Theatre",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Theatre · 7–12",
+    "file": "fine-arts/theatre/set-costume-design.json"
+  },
+  {
+    "id": "fine-arts--theatre--theatre-history-traditions",
+    "title": "Theatre History & Traditions",
+    "subject": "Fine Arts",
+    "category": "Theatre",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Theatre · 7–12",
+    "file": "fine-arts/theatre/theatre-history-traditions.json"
+  },
+  {
+    "id": "fine-arts--media-arts--introduction-to-media-arts",
+    "title": "Introduction to Media Arts",
+    "subject": "Fine Arts",
+    "category": "Media Arts",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Media Arts · 7–12",
+    "file": "fine-arts/media-arts/introduction-to-media-arts.json"
   }
 ];

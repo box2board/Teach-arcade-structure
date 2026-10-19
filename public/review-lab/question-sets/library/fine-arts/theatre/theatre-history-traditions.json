@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--theatre--theatre-history-traditions",
+  "title": "Theatre History & Traditions",
+  "subject": "Fine Arts",
+  "category": "Theatre",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Ancient Greek theatre performances were often connected to",
+      "choices": [
+        "public festivals and civic or religious life",
+        "modern film studios",
+        "medieval guild meetings only",
+        "digital animation"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 2,
+      "question": "What is a chorus in ancient Greek drama?",
+      "choices": [
+        "A set of musical instruments",
+        "A group that comments on or responds to events in the play",
+        "A type of theater building",
+        "A costume designer"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What was a commedia dell'arte performance known for?",
+      "choices": [
+        "A fixed photographic script",
+        "A ban on masks",
+        "Improvisation around recognizable characters and scenarios",
+        "A digital projection system"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "Which theatre tradition is associated with Shakespeare's London?",
+      "choices": [
+        "Ancient Egyptian court drama",
+        "Japanese Noh only",
+        "Romanesque liturgy",
+        "Early modern English theatre"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is one feature of Noh theatre in Japan?",
+      "choices": [
+        "Stylized movement, masks in some roles, and a highly formal performance tradition",
+        "Improvised jazz footwork",
+        "Naturalistic film projection",
+        "A ban on music"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "Why should theatre history include traditions from many regions?",
+      "choices": [
+        "Only European theatre has a history",
+        "Different communities developed distinct forms, purposes, and performance conventions",
+        "All traditions use identical staging",
+        "History prevents comparison"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 7,
+      "question": "What is a thrust stage?",
+      "choices": [
+        "A stage framed by a proscenium only",
+        "A stage with no audience",
+        "A stage that extends into the audience with spectators on multiple sides",
+        "A backstage storage platform"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "How did the growth of public playhouses affect theatre?",
+      "choices": [
+        "It ended all professional acting",
+        "It prevented playwrights from writing",
+        "It removed the need for actors",
+        "It created new spaces and audiences for commercial performance"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What does realism in theatre generally seek to do?",
+      "choices": [
+        "Present believable behavior and environments that resemble everyday life",
+        "Use only masks and mythic characters",
+        "Avoid recognizable settings",
+        "Replace dialogue with music"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why did some 20th-century theatre makers experiment with nonrealistic staging?",
+      "choices": [
+        "They were required to copy one style",
+        "To explore ideas, symbolism, and audience expectations in new ways",
+        "Realism was illegal",
+        "Audiences could not understand stories"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 11,
+      "question": "What is a mask used for in some theatre traditions?",
+      "choices": [
+        "Measure the stage",
+        "Replace all performers",
+        "Transform appearance and help communicate character or role",
+        "Change a play's length"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "A theatre performance uses puppetry and music to tell a community story. What is useful to research?",
+      "choices": [
+        "Only the puppets' price",
+        "Whether it can be shortened",
+        "The theater's seating capacity",
+        "The tradition's context, practitioners, and performance conventions"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 13,
+      "question": "What did the proscenium arch change about the audience's view?",
+      "choices": [
+        "It framed the stage and emphasized a front-facing perspective",
+        "It placed audiences on every side",
+        "It eliminated scenery",
+        "It made actors invisible"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why do theatre traditions borrow from one another?",
+      "choices": [
+        "All forms have one origin",
+        "Artists and communities encounter, adapt, and reinterpret performance forms",
+        "Borrowing always erases context",
+        "Traditions never change"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 15,
+      "question": "Which statement about theatre history is most accurate?",
+      "choices": [
+        "It follows one straight path",
+        "It began with modern Broadway",
+        "It includes changing performance forms shaped by culture, technology, and society",
+        "It excludes music and movement"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A play was written for an outdoor amphitheater. What might influence its performance?",
+      "choices": [
+        "A television screen size",
+        "A costume's market value",
+        "The actors' school grades",
+        "The venue's acoustics, sightlines, and audience arrangement"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "What is an audience convention?",
+      "choices": [
+        "A shared expectation about how performers and viewers interact",
+        "A stage-building material",
+        "A script's page number",
+        "A lighting instrument"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Why study the original context of a historical play?",
+      "choices": [
+        "It fixes one meaning forever",
+        "It can clarify what the work meant to its first audiences and how later meanings changed",
+        "It replaces performance",
+        "It determines whether the play is enjoyable"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "A modern production reimagines a classical play in a present-day setting. What should a viewer consider?",
+      "choices": [
+        "Whether the original words are forgotten",
+        "The theater's ticket price",
+        "How the new context highlights or changes the play's themes",
+        "The actors' costumes only"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "What is one purpose of a curtain call?",
+      "choices": [
+        "Introduce the play's conflict",
+        "Change the set mid-scene",
+        "Replace the ending",
+        "Acknowledge performers and production contributors after the performance"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    }
+  ]
+}

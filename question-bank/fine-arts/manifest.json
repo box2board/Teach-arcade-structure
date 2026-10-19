@@ -3,8 +3,8 @@
   "subject": "Fine Arts",
   "status": "draft-for-review",
   "gradeBand": "7–12",
-  "setCount": 20,
-  "questionCount": 400,
+  "setCount": 25,
+  "questionCount": 500,
   "sets": [
     {
       "id": "fine-arts--art-history--prehistoric-ancient-art",
@@ -145,6 +145,41 @@
       "category": "Theatre",
       "questionCount": 20,
       "file": "theatre/dramatic-structure.json"
+    },
+    {
+      "id": "fine-arts--theatre--scriptwriting-dialogue",
+      "title": "Scriptwriting & Dialogue",
+      "category": "Theatre",
+      "questionCount": 20,
+      "file": "theatre/scriptwriting-dialogue.json"
+    },
+    {
+      "id": "fine-arts--theatre--character-development",
+      "title": "Character Development",
+      "category": "Theatre",
+      "questionCount": 20,
+      "file": "theatre/character-development.json"
+    },
+    {
+      "id": "fine-arts--theatre--set-costume-design",
+      "title": "Set & Costume Design",
+      "category": "Theatre",
+      "questionCount": 20,
+      "file": "theatre/set-costume-design.json"
+    },
+    {
+      "id": "fine-arts--theatre--theatre-history-traditions",
+      "title": "Theatre History & Traditions",
+      "category": "Theatre",
+      "questionCount": 20,
+      "file": "theatre/theatre-history-traditions.json"
+    },
+    {
+      "id": "fine-arts--media-arts--introduction-to-media-arts",
+      "title": "Introduction to Media Arts",
+      "category": "Media Arts",
+      "questionCount": 20,
+      "file": "media-arts/introduction-to-media-arts.json"
     }
   ]
 }
