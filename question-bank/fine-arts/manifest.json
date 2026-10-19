@@ -3,8 +3,8 @@
   "subject": "Fine Arts",
   "status": "draft-for-review",
   "gradeBand": "7–12",
-  "setCount": 35,
-  "questionCount": 700,
+  "setCount": 40,
+  "questionCount": 800,
   "sets": [
     {
       "id": "fine-arts--art-history--prehistoric-ancient-art",
@@ -250,6 +250,41 @@
       "category": "Music",
       "questionCount": 20,
       "file": "music/dynamics-tempo.json"
+    },
+    {
+      "id": "fine-arts--music--instrument-families",
+      "title": "Instrument Families",
+      "category": "Music",
+      "questionCount": 20,
+      "file": "music/instrument-families.json"
+    },
+    {
+      "id": "fine-arts--music--world-instruments",
+      "title": "World Instruments",
+      "category": "Music",
+      "questionCount": 20,
+      "file": "music/world-instruments.json"
+    },
+    {
+      "id": "fine-arts--music--genres-styles-of-music",
+      "title": "Genres & Styles of Music",
+      "category": "Music",
+      "questionCount": 20,
+      "file": "music/genres-styles-of-music.json"
+    },
+    {
+      "id": "fine-arts--music--composer-studies",
+      "title": "Composer Studies",
+      "category": "Music",
+      "questionCount": 20,
+      "file": "music/composer-studies.json"
+    },
+    {
+      "id": "fine-arts--music--composition-music-creation",
+      "title": "Composition & Music Creation",
+      "category": "Music",
+      "questionCount": 20,
+      "file": "music/composition-music-creation.json"
     }
   ]
 }

@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--music--composer-studies",
+  "title": "Composer Studies",
+  "subject": "Fine Arts",
+  "category": "Music",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a composer's role?",
+      "choices": [
+        "Create or shape musical works, often through notation, improvisation, or collaboration",
+        "Only perform music written by others",
+        "Build every instrument used",
+        "Manage the concert audience"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Why study the historical context of a composer's work?",
+      "choices": [
+        "It proves the music has one meaning",
+        "It can clarify the conditions, ideas, and traditions shaping the music",
+        "It replaces listening",
+        "It tells the exact audience reaction"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "Which composer is strongly associated with the Baroque era?",
+      "choices": [
+        "Claude Debussy",
+        "Duke Ellington",
+        "Johann Sebastian Bach",
+        "Amy Beach"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which composer is known for the ballet The Rite of Spring?",
+      "choices": [
+        "Frédéric Chopin",
+        "Fanny Mendelssohn",
+        "Scott Joplin",
+        "Igor Stravinsky"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What does a musical score help a researcher examine?",
+      "choices": [
+        "Written pitches, rhythms, textures, and formal choices",
+        "The audience's private thoughts",
+        "The exact sound of every historical performance",
+        "The instrument's retail price"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "Why compare two works by the same composer?",
+      "choices": [
+        "It proves both works have identical meaning",
+        "It can reveal recurring interests and changes in style",
+        "It removes the need for context",
+        "It shows which audience was larger"
+      ],
+      "correctAnswer": 1,
+      "skill": "application"
+    },
+    {
+      "id": 7,
+      "question": "What can a biography contribute to music study?",
+      "choices": [
+        "A complete replacement for listening",
+        "A guaranteed explanation of every musical choice",
+        "Information about a composer's experiences and working conditions",
+        "The original sound recording"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "Why should students question simplified stories about famous composers?",
+      "choices": [
+        "Famous composers never had collaborators",
+        "All biographies are fictional",
+        "Music has no historical evidence",
+        "Historical accounts can omit collaborators, bias, or social context"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 9,
+      "question": "Which composer is associated with the opera The Magic Flute?",
+      "choices": [
+        "Wolfgang Amadeus Mozart",
+        "Ludwig van Beethoven",
+        "Florence Price",
+        "Aaron Copland"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "What does a theme-and-variations form do?",
+      "choices": [
+        "Repeats one chord without change",
+        "Presents a theme and changes it in successive sections",
+        "Uses only spoken dialogue",
+        "Removes the original musical idea"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "How might a composer use orchestration?",
+      "choices": [
+        "Set the audience's ticket price",
+        "Determine the room's seating",
+        "Choose and combine instruments to shape color and texture",
+        "Write a review after a concert"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What is a useful way to discuss a composer's influence?",
+      "choices": [
+        "Claim every later artist copied them",
+        "Ignore other traditions",
+        "Use popularity as the only evidence",
+        "Identify specific musical ideas later artists adapted or responded to"
+      ],
+      "correctAnswer": 3,
+      "skill": "application"
+    },
+    {
+      "id": 13,
+      "question": "Which composer was a major figure in ragtime and is known for Maple Leaf Rag?",
+      "choices": [
+        "Scott Joplin",
+        "Edward Elgar",
+        "Hildegard of Bingen",
+        "Philip Glass"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Why are composers from varied backgrounds important to study?",
+      "choices": [
+        "They make historical context unnecessary",
+        "They reveal a broader picture of musical creativity and history",
+        "They all use the same style",
+        "They replace analysis with biography"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 15,
+      "question": "What evidence can support a claim about a composer's style?",
+      "choices": [
+        "A single unverified comment",
+        "The composer's portrait alone",
+        "Repeated listening, score details, and reliable historical sources",
+        "The work's file size"
+      ],
+      "correctAnswer": 2,
+      "skill": "application"
+    },
+    {
+      "id": 16,
+      "question": "Which composer wrote Appalachian Spring?",
+      "choices": [
+        "George Gershwin",
+        "Clara Schumann",
+        "Antonio Vivaldi",
+        "Aaron Copland"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "What does a premiere refer to in a work's history?",
+      "choices": [
+        "Its first public performance",
+        "Its final rehearsal",
+        "Its first printed review",
+        "Its composer's birthplace"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "How can a listener connect a musical passage to a composer's choices?",
+      "choices": [
+        "Guess the composer's mood without evidence",
+        "Describe audible evidence such as rhythm, texture, timbre, or form",
+        "Use only the work's title",
+        "Avoid replaying the passage"
+      ],
+      "correctAnswer": 1,
+      "skill": "application"
+    },
+    {
+      "id": 19,
+      "question": "What is a patron in the history of music?",
+      "choices": [
+        "A type of musical scale",
+        "A conductor's baton",
+        "A person or institution that financially or socially supported artists",
+        "A musical instrument maker only"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "Why should a composer study distinguish fact from interpretation?",
+      "choices": [
+        "Interpretations are always facts",
+        "Facts cannot be checked",
+        "Music has no interpretive meaning",
+        "Historical claims need evidence, while interpretations explain possible meaning"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

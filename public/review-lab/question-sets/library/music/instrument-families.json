@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--music--instrument-families",
+  "title": "Instrument Families",
+  "subject": "Fine Arts",
+  "category": "Music",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which instrument belongs to the string family?",
+      "choices": [
+        "Violin",
+        "Flute",
+        "Trumpet",
+        "Snare drum"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "How does a violin typically produce sound?",
+      "choices": [
+        "Air vibrates across a reed",
+        "A bowed or plucked string vibrates",
+        "A stretched membrane is struck",
+        "A metal tube is shaken"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "Which is a woodwind instrument?",
+      "choices": [
+        "Trombone",
+        "Cello",
+        "Clarinet",
+        "Timpani"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "How does a brass player usually change pitch?",
+      "choices": [
+        "By pressing piano keys",
+        "By tightening drumheads",
+        "By bowing multiple strings",
+        "By changing lip vibration and using valves or a slide"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "Which instrument is an example of percussion?",
+      "choices": [
+        "Xylophone",
+        "Oboe",
+        "Viola",
+        "French horn"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is the main sound source in a flute?",
+      "choices": [
+        "A bow vibrating a string",
+        "Air vibrating inside the instrument",
+        "A membrane vibrating under tension",
+        "A reed vibrating against a mouthpiece"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "Which instrument uses a double reed?",
+      "choices": [
+        "Trumpet",
+        "Tuba",
+        "Oboe",
+        "Violin"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "What distinguishes a trombone from most brass instruments?",
+      "choices": [
+        "It has no mouthpiece",
+        "It is played with a bow",
+        "Its keys control a reed",
+        "A slide is used to change the tube length"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Which family does the piano commonly belong to in orchestral classification?",
+      "choices": [
+        "Keyboard, though its sound is produced by struck strings",
+        "Woodwind",
+        "Brass",
+        "Membrane percussion"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why can instruments in the same family have different timbres?",
+      "choices": [
+        "They always play different keys",
+        "They vary in size, materials, shape, and playing technique",
+        "They use identical sound sources",
+        "They are made for different audiences only"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 11,
+      "question": "Which instrument is a low-pitched member of the string family?",
+      "choices": [
+        "Piccolo",
+        "Violin",
+        "Double bass",
+        "Soprano recorder"
+      ],
+      "correctAnswer": 2,
+      "skill": "application"
+    },
+    {
+      "id": 12,
+      "question": "What is a reed's role in many woodwind instruments?",
+      "choices": [
+        "It strikes a piano string",
+        "It tightens a drum membrane",
+        "It changes the instrument's length electronically",
+        "It vibrates to set the air column in motion"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Which instrument is commonly played by striking tuned bars?",
+      "choices": [
+        "Marimba",
+        "Bassoon",
+        "French horn",
+        "Harp"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "What makes a timpani different from an untuned drum?",
+      "choices": [
+        "It has strings",
+        "Its pitch can be adjusted to specific notes",
+        "It uses a reed",
+        "It is played with a bow"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A sound begins with air blown through a cup-shaped mouthpiece. Which family is likely?",
+      "choices": [
+        "String",
+        "Keyboard",
+        "Brass",
+        "Membrane percussion"
+      ],
+      "correctAnswer": 2,
+      "skill": "application"
+    },
+    {
+      "id": 16,
+      "question": "Why does an orchestra use instruments with different ranges?",
+      "choices": [
+        "They make the tempo unnecessary",
+        "They ensure every part is a solo",
+        "They eliminate the need for balance",
+        "They can perform complementary high, middle, and low musical roles"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Which instrument is a free-reed instrument?",
+      "choices": [
+        "Accordion",
+        "Flute",
+        "Timpani",
+        "Viola"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "How does a harp create sound?",
+      "choices": [
+        "Air crosses a mouthpiece",
+        "Plucked strings vibrate",
+        "A bow scrapes a membrane",
+        "A metal tube resonates when shaken"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "What should a listener notice when comparing instrument families?",
+      "choices": [
+        "Only the instrument's price",
+        "The player's clothing",
+        "How sound is produced and how timbre differs",
+        "The room's seating plan"
+      ],
+      "correctAnswer": 2,
+      "skill": "application"
+    },
+    {
+      "id": 20,
+      "question": "Why is instrument classification sometimes flexible?",
+      "choices": [
+        "Instruments have no sound source",
+        "All families contain identical instruments",
+        "Classification depends only on color",
+        "Some instruments combine features or fit different teaching and performance groupings"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

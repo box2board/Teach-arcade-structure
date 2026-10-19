@@ -3712,4 +3712,55 @@ export const BANK_SETS=[
     "description": "Music · 7–12",
     "file": "music/dynamics-tempo.json"
   }
+,
+  {
+    "id": "fine-arts--music--instrument-families",
+    "title": "Instrument Families",
+    "subject": "Fine Arts",
+    "category": "Music",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Music · 7–12",
+    "file": "music/instrument-families.json"
+  },
+  {
+    "id": "fine-arts--music--world-instruments",
+    "title": "World Instruments",
+    "subject": "Fine Arts",
+    "category": "Music",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Music · 7–12",
+    "file": "music/world-instruments.json"
+  },
+  {
+    "id": "fine-arts--music--genres-styles-of-music",
+    "title": "Genres & Styles of Music",
+    "subject": "Fine Arts",
+    "category": "Music",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Music · 7–12",
+    "file": "music/genres-styles-of-music.json"
+  },
+  {
+    "id": "fine-arts--music--composer-studies",
+    "title": "Composer Studies",
+    "subject": "Fine Arts",
+    "category": "Music",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Music · 7–12",
+    "file": "music/composer-studies.json"
+  },
+  {
+    "id": "fine-arts--music--composition-music-creation",
+    "title": "Composition & Music Creation",
+    "subject": "Fine Arts",
+    "category": "Music",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Music · 7–12",
+    "file": "music/composition-music-creation.json"
+  }
 ];

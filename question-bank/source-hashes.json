@@ -369,5 +369,10 @@
   "question-bank/music/melody-pitch.json": "bc9168df9d6734b527259cd741d84ba7b488d7a2f95b4ce787ff894e981f0c21",
   "question-bank/music/music-notation.json": "f57a83be18675b018a3317c86ee8152bd4dbbfc047881ba9cc95f9808b060be3",
   "question-bank/music/scales-keys.json": "1487827eaa7a42c01552e61f20d7c2660ce108c62b66c4580f1accb8d6b9f46f",
-  "question-bank/music/dynamics-tempo.json": "19315aa270fe992c82f2b94908641ce764ecf1735c7152ec67f357c2e7da4282"
+  "question-bank/music/dynamics-tempo.json": "19315aa270fe992c82f2b94908641ce764ecf1735c7152ec67f357c2e7da4282",
+  "question-bank/music/instrument-families.json": "e368144082577daeae4ed929b29bcb4b9a3919629dd2a615b94e78114cdc5170",
+  "question-bank/music/world-instruments.json": "cba0e39d05673785e895004b6d931eb70c142f90c93445860c83eb40e7195d6e",
+  "question-bank/music/genres-styles-of-music.json": "3b4b06d6b589770b3942339df71abc3675c02812562eeb7ce61ccad60d180d79",
+  "question-bank/music/composer-studies.json": "4001fde590fff28bd9467ea2f01e49ff31972ab53380e204d3ddd9459f3149e6",
+  "question-bank/music/composition-music-creation.json": "4ae52854c255b91e6a134c4ed5028d61ea87265c22ff31a0e87bdb5d64480d5d"
 }
