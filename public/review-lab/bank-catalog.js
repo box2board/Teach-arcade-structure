@@ -2969,5 +2969,55 @@ export const BANK_SETS=[
     "questionCount": 20,
     "description": "Reading & Informational Text · 7–12",
     "file": "reading-informational-text/fact-opinion-bias.json"
+  },
+  {
+    "id": "ela--research-argument-media-literacy--note-taking-organizers",
+    "title": "Note-Taking & Organizers",
+    "subject": "English Language Arts",
+    "category": "Research, Argument & Media Literacy",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Research, Argument & Media Literacy · 7–12",
+    "file": "research-argument-media-literacy/note-taking-organizers.json"
+  },
+  {
+    "id": "ela--research-argument-media-literacy--digital-citizenship",
+    "title": "Digital Citizenship",
+    "subject": "English Language Arts",
+    "category": "Research, Argument & Media Literacy",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Research, Argument & Media Literacy · 7–12",
+    "file": "research-argument-media-literacy/digital-citizenship.json"
+  },
+  {
+    "id": "ela--speaking-listening--class-discussions-socratic-seminars",
+    "title": "Class Discussions & Socratic Seminars",
+    "subject": "English Language Arts",
+    "category": "Speaking & Listening",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Speaking & Listening · 7–12",
+    "file": "speaking-listening/class-discussions-socratic-seminars.json"
+  },
+  {
+    "id": "ela--speaking-listening--presentations-speeches",
+    "title": "Presentations & Speeches",
+    "subject": "English Language Arts",
+    "category": "Speaking & Listening",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Speaking & Listening · 7–12",
+    "file": "speaking-listening/presentations-speeches.json"
+  },
+  {
+    "id": "ela--speaking-listening--listening-comprehension-tasks",
+    "title": "Listening Comprehension Tasks",
+    "subject": "English Language Arts",
+    "category": "Speaking & Listening",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Speaking & Listening · 7–12",
+    "file": "speaking-listening/listening-comprehension-tasks.json"
   }
 ];

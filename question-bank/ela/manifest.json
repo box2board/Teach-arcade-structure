@@ -3,8 +3,8 @@
   "subject": "English Language Arts",
   "status": "draft-for-review",
   "gradeBand": "7–12",
-  "setCount": 30,
-  "questionCount": 600,
+  "setCount": 35,
+  "questionCount": 700,
   "sets": [
     {
       "id": "ela--literature-literary-analysis--plot-and-narrative-structure",
@@ -215,6 +215,41 @@
       "category": "Reading & Informational Text",
       "questionCount": 20,
       "file": "reading-informational-text/fact-opinion-bias.json"
+    },
+    {
+      "id": "ela--research-argument-media-literacy--note-taking-organizers",
+      "title": "Note-Taking & Organizers",
+      "category": "Research, Argument & Media Literacy",
+      "questionCount": 20,
+      "file": "research-argument-media-literacy/note-taking-organizers.json"
+    },
+    {
+      "id": "ela--research-argument-media-literacy--digital-citizenship",
+      "title": "Digital Citizenship",
+      "category": "Research, Argument & Media Literacy",
+      "questionCount": 20,
+      "file": "research-argument-media-literacy/digital-citizenship.json"
+    },
+    {
+      "id": "ela--speaking-listening--class-discussions-socratic-seminars",
+      "title": "Class Discussions & Socratic Seminars",
+      "category": "Speaking & Listening",
+      "questionCount": 20,
+      "file": "speaking-listening/class-discussions-socratic-seminars.json"
+    },
+    {
+      "id": "ela--speaking-listening--presentations-speeches",
+      "title": "Presentations & Speeches",
+      "category": "Speaking & Listening",
+      "questionCount": 20,
+      "file": "speaking-listening/presentations-speeches.json"
+    },
+    {
+      "id": "ela--speaking-listening--listening-comprehension-tasks",
+      "title": "Listening Comprehension Tasks",
+      "category": "Speaking & Listening",
+      "questionCount": 20,
+      "file": "speaking-listening/listening-comprehension-tasks.json"
     }
   ]
 }
