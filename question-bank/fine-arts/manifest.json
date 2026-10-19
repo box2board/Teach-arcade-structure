@@ -3,8 +3,8 @@
   "subject": "Fine Arts",
   "status": "draft-for-review",
   "gradeBand": "7–12",
-  "setCount": 45,
-  "questionCount": 900,
+  "setCount": 51,
+  "questionCount": 1020,
   "sets": [
     {
       "id": "fine-arts--art-history--prehistoric-ancient-art",
@@ -320,6 +320,48 @@
       "category": "Visual Arts",
       "questionCount": 20,
       "file": "visual-arts/painting-techniques.json"
+    },
+    {
+      "id": "fine-arts--visual-arts--mixed-media",
+      "title": "Mixed Media",
+      "category": "Visual Arts",
+      "questionCount": 20,
+      "file": "visual-arts/mixed-media.json"
+    },
+    {
+      "id": "fine-arts--visual-arts--sculpture-3d-art",
+      "title": "Sculpture & 3D Art",
+      "category": "Visual Arts",
+      "questionCount": 20,
+      "file": "visual-arts/sculpture-3d-art.json"
+    },
+    {
+      "id": "fine-arts--visual-arts--digital-illustration",
+      "title": "Digital Illustration",
+      "category": "Visual Arts",
+      "questionCount": 20,
+      "file": "visual-arts/digital-illustration.json"
+    },
+    {
+      "id": "fine-arts--visual-arts--art-critique-creative-process",
+      "title": "Art Critique & Creative Process",
+      "category": "Visual Arts",
+      "questionCount": 20,
+      "file": "visual-arts/art-critique-creative-process.json"
+    },
+    {
+      "id": "fine-arts--media-arts--storyboarding-visual-storytelling",
+      "title": "Storyboarding & Visual Storytelling",
+      "category": "Media Arts",
+      "questionCount": 20,
+      "file": "media-arts/storyboarding-visual-storytelling.json"
+    },
+    {
+      "id": "fine-arts--media-arts--digital-illustration",
+      "title": "Digital Illustration",
+      "category": "Media Arts",
+      "questionCount": 20,
+      "file": "media-arts/digital-illustration.json"
     }
   ]
 }

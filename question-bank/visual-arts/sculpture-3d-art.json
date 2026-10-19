@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--visual-arts--sculpture-3d-art",
+  "title": "Sculpture & 3D Art",
+  "subject": "Fine Arts",
+  "category": "Visual Arts",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is sculpture?",
+      "choices": [
+        "Art made in three dimensions with form occupying space",
+        "A two-dimensional color chart",
+        "A musical score",
+        "A sequence of photographs only"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What does subtractive sculpture involve?",
+      "choices": [
+        "Adding clay to build outward",
+        "Removing material from a larger mass",
+        "Joining separate pieces only",
+        "Painting a flat surface"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What does additive sculpture involve?",
+      "choices": [
+        "Carving away all material",
+        "Printing a photograph",
+        "Building a form by adding material",
+        "Drawing a contour"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is relief sculpture?",
+      "choices": [
+        "A sculpture viewed only from above",
+        "A free-standing form with no background",
+        "A painting with thick paint",
+        "A sculpted form that projects from a background surface"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "What is an armature used for in sculpture?",
+      "choices": [
+        "An internal support that helps hold a form",
+        "A tool for mixing paint",
+        "A frame for a photograph",
+        "A method of measuring color"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Why should a sculptor consider a work's center of gravity?",
+      "choices": [
+        "It determines the title",
+        "It affects balance and whether the sculpture can stand safely",
+        "It selects the material's color",
+        "It sets the viewing distance"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "Which material is commonly shaped using additive modeling?",
+      "choices": [
+        "Granite carved by removal",
+        "A sheet of glass only",
+        "Clay",
+        "A printed canvas"
+      ],
+      "correctAnswer": 2,
+      "skill": "application"
+    },
+    {
+      "id": 8,
+      "question": "How can scale change a sculpture's effect?",
+      "choices": [
+        "It changes the work's material",
+        "It removes the need for balance",
+        "It determines whether it is art",
+        "It can alter how viewers relate to and experience the form"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What does negative space mean in sculpture?",
+      "choices": [
+        "The open areas around and within forms",
+        "The darkest painted surface",
+        "The sculpture's base only",
+        "A missing part caused by damage"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Why might an artist view a sculpture from multiple angles?",
+      "choices": [
+        "A sculpture has only one correct view",
+        "Its form and relationships change as the viewer moves",
+        "It makes the work lighter",
+        "It replaces structural testing"
+      ],
+      "correctAnswer": 1,
+      "skill": "application"
+    },
+    {
+      "id": 11,
+      "question": "What is a mobile in sculpture?",
+      "choices": [
+        "A sculpture carved from a single block",
+        "A type of wall relief",
+        "A balanced construction with parts that move freely",
+        "A model of a cell phone"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Why is material choice important in a public sculpture?",
+      "choices": [
+        "Only the material's color matters",
+        "The material determines the audience",
+        "All materials last equally outdoors",
+        "Weather, durability, weight, access, and maintenance affect the design"
+      ],
+      "correctAnswer": 3,
+      "skill": "application"
+    },
+    {
+      "id": 13,
+      "question": "A clay form collapses while building. What can help?",
+      "choices": [
+        "Support the structure and manage moisture and thickness",
+        "Add water continuously",
+        "Remove the base",
+        "Make the walls thinner everywhere"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 14,
+      "question": "What is a maquette?",
+      "choices": [
+        "The finished outdoor sculpture",
+        "A small preliminary model of a proposed sculpture",
+        "A type of chisel",
+        "A museum label"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "How can texture affect a three-dimensional work?",
+      "choices": [
+        "It changes the sculpture's dimensions",
+        "It removes the form",
+        "It changes how surfaces look and may invite tactile interpretation",
+        "It sets its historical era"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "What should an artist consider when displaying a sculpture?",
+      "choices": [
+        "Only the wall color",
+        "How to hide the base",
+        "The number of tools used",
+        "Sightlines, stability, lighting, and safe movement around it"
+      ],
+      "correctAnswer": 3,
+      "skill": "application"
+    },
+    {
+      "id": 17,
+      "question": "What is casting?",
+      "choices": [
+        "Forming an object by pouring material into a mold and allowing it to set",
+        "Removing stone with a chisel",
+        "Drawing a shadow",
+        "Adding paint to paper"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Why prototype a sculpture before making a large version?",
+      "choices": [
+        "It guarantees the final material is inexpensive",
+        "A model can reveal proportion, balance, and construction problems",
+        "It replaces all design decisions",
+        "It eliminates the need for safety"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "A sculpture looks unbalanced from the side. What should be tested?",
+      "choices": [
+        "The title lettering",
+        "The color names",
+        "The support, base, and distribution of mass",
+        "The room's acoustics"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Why must sculptors follow tool and material safety guidance?",
+      "choices": [
+        "Safety changes the artwork's style",
+        "Tools are always harmless",
+        "Protective equipment affects only appearance",
+        "Cutting, dust, heat, and chemicals can cause injury"
+      ],
+      "correctAnswer": 3,
+      "skill": "application"
+    }
+  ]
+}

@@ -379,5 +379,11 @@
   "question-bank/visual-arts/principles-of-design.json": "db130e7151ac86734bc687ec4b03096ce4a49d14c069abd68d176e430da0d969",
   "question-bank/visual-arts/color-theory.json": "63b3f80e535c89a2df25321b4150e582316abcb2f04011f2d9e9b807debd789c",
   "question-bank/visual-arts/drawing-basics.json": "869f0822590b82efa3b5a240d4855b9746ebfdfdb9d03b78c3b1401063787881",
-  "question-bank/visual-arts/painting-techniques.json": "023561041a94bf3126fcaafe52f40b20cc50d8613e5cb87fa13d06f453ada5d0"
+  "question-bank/visual-arts/painting-techniques.json": "023561041a94bf3126fcaafe52f40b20cc50d8613e5cb87fa13d06f453ada5d0",
+  "question-bank/visual-arts/mixed-media.json": "ecc781275948640e644305b485bad0ebab9d7735bbfabdc3146675833f85fc3b",
+  "question-bank/visual-arts/sculpture-3d-art.json": "fa75477ab9c1fc9556c076fc8b619cfc8204566d63f8b3c7e9558738a526a532",
+  "question-bank/visual-arts/digital-illustration.json": "735d226233c70851ea8dcd71e44e2546d264c3c35c2a96043587642001592b4a",
+  "question-bank/visual-arts/art-critique-creative-process.json": "ce037b86aa42451e71b582c694003cdfde0d1b39be3379d7a02e09fda1058f2a",
+  "question-bank/media-arts/storyboarding-visual-storytelling.json": "2128823234ca595cf3dbe75d645ebb434899867a4aa5b582870bfe4558b09956",
+  "question-bank/media-arts/digital-illustration.json": "774e143ef0cae754767f3709245e4697d0daa01ef31e91e295ca273a8b802d09"
 }

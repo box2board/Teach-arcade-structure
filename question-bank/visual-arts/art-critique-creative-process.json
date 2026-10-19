@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--visual-arts--art-critique-creative-process",
+  "title": "Art Critique & Creative Process",
+  "subject": "Fine Arts",
+  "category": "Visual Arts",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is the first step in a common art critique process?",
+      "choices": [
+        "Describe what is visibly present without judging it",
+        "Assign a grade immediately",
+        "Guess the artist's private intention",
+        "Compare it to every artwork"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What does analysis ask a viewer to examine?",
+      "choices": [
+        "The artwork's retail price",
+        "How elements and principles are organized",
+        "The artist's personality",
+        "The viewer's favorite color only"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "What is interpretation in art critique?",
+      "choices": [
+        "A list of objects only",
+        "A guess with no evidence",
+        "A reasoned idea about meaning supported by visual evidence",
+        "A final score"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What does evaluation involve?",
+      "choices": [
+        "Naming every color",
+        "Describing the frame only",
+        "Identifying the artist's age",
+        "Judging effectiveness using reasons or criteria"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "Why should a critique distinguish observation from interpretation?",
+      "choices": [
+        "It helps separate visible evidence from possible meaning",
+        "Interpretations are always incorrect",
+        "Observation eliminates all meaning",
+        "The two steps are identical"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 6,
+      "question": "Which comment is most constructive?",
+      "choices": [
+        "This is bad",
+        "The focal point is clear because contrast draws attention to the central figure",
+        "I like it, so nothing should change",
+        "You should copy another artist"
+      ],
+      "correctAnswer": 1,
+      "skill": "application"
+    },
+    {
+      "id": 7,
+      "question": "What is one purpose of an artist statement?",
+      "choices": [
+        "Replace the artwork",
+        "Prove every viewer must agree",
+        "Explain choices, process, or ideas behind a work",
+        "List only the materials' prices"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "What is ideation in the creative process?",
+      "choices": [
+        "Applying a final protective coat",
+        "Displaying the finished piece",
+        "Writing a review after viewing",
+        "Generating and exploring possible ideas"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Why make multiple thumbnails before a final composition?",
+      "choices": [
+        "They let the artist compare layouts quickly",
+        "They guarantee every layout is finished",
+        "They remove the need for revision",
+        "They select the artwork's meaning"
+      ],
+      "correctAnswer": 0,
+      "skill": "application"
+    },
+    {
+      "id": 10,
+      "question": "What is a prototype or study useful for?",
+      "choices": [
+        "Making a final gallery label",
+        "Testing materials or visual ideas on a smaller scale",
+        "Avoiding experimentation",
+        "Proving the first idea is best"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How can an artist use feedback productively?",
+      "choices": [
+        "Make every suggested change automatically",
+        "Reject all comments",
+        "Consider specific observations and decide which revisions serve the goal",
+        "Let feedback replace artistic intent"
+      ],
+      "correctAnswer": 2,
+      "skill": "application"
+    },
+    {
+      "id": 12,
+      "question": "Why keep process documentation?",
+      "choices": [
+        "It guarantees a successful outcome",
+        "It removes uncertainty",
+        "It replaces the final work",
+        "It records decisions, experiments, and changes over time"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "A viewer interprets an artwork differently from its creator. What can a thoughtful critique do?",
+      "choices": [
+        "Discuss evidence and context while recognizing multiple interpretations",
+        "Declare only the creator's reading valid",
+        "Ignore the artwork's visual details",
+        "End discussion immediately"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 14,
+      "question": "What is revision in the creative process?",
+      "choices": [
+        "Repeating the same step without reflection",
+        "Reconsidering and changing work to strengthen its purpose",
+        "Selecting a frame",
+        "Displaying a work publicly"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "How can criteria improve a critique?",
+      "choices": [
+        "They guarantee identical opinions",
+        "They remove all interpretation",
+        "They make judgments clearer and connected to the assignment's goals",
+        "They apply only to realistic art"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Which statement uses visual evidence?",
+      "choices": [
+        "The artist was probably angry",
+        "The work is definitely about a storm",
+        "It is the best painting in the room",
+        "Repeated diagonal lines lead the eye toward the bright doorway"
+      ],
+      "correctAnswer": 3,
+      "skill": "application"
+    },
+    {
+      "id": 17,
+      "question": "Why might an artist revisit an initial goal during production?",
+      "choices": [
+        "The work may shift, and the artist can decide whether that change is productive",
+        "The initial goal must never change",
+        "Revision is always a mistake",
+        "Goals determine the final grade automatically"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "What does reflection contribute after completing a project?",
+      "choices": [
+        "It proves the work is perfect",
+        "It helps the artist identify learning and future questions",
+        "It replaces critique",
+        "It guarantees the next project"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "How can a critique be respectful and rigorous?",
+      "choices": [
+        "Avoid specific comments",
+        "Praise every decision without thought",
+        "Address choices and evidence rather than attacking the artist",
+        "Judge the artist's character"
+      ],
+      "correctAnswer": 2,
+      "skill": "application"
+    },
+    {
+      "id": 20,
+      "question": "A student says an artwork is unsuccessful. What follow-up encourages analysis?",
+      "choices": [
+        "Ask who made it",
+        "End the discussion",
+        "Tell them all artworks are equally effective",
+        "Ask which goal or criterion is not being met and point to evidence"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

@@ -3814,4 +3814,65 @@ export const BANK_SETS=[
     "description": "Visual Arts · 7–12",
     "file": "visual-arts/painting-techniques.json"
   }
+,
+  {
+    "id": "fine-arts--visual-arts--mixed-media",
+    "title": "Mixed Media",
+    "subject": "Fine Arts",
+    "category": "Visual Arts",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Visual Arts · 7–12",
+    "file": "visual-arts/mixed-media.json"
+  },
+  {
+    "id": "fine-arts--visual-arts--sculpture-3d-art",
+    "title": "Sculpture & 3D Art",
+    "subject": "Fine Arts",
+    "category": "Visual Arts",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Visual Arts · 7–12",
+    "file": "visual-arts/sculpture-3d-art.json"
+  },
+  {
+    "id": "fine-arts--visual-arts--digital-illustration",
+    "title": "Digital Illustration",
+    "subject": "Fine Arts",
+    "category": "Visual Arts",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Visual Arts · 7–12",
+    "file": "visual-arts/digital-illustration.json"
+  },
+  {
+    "id": "fine-arts--visual-arts--art-critique-creative-process",
+    "title": "Art Critique & Creative Process",
+    "subject": "Fine Arts",
+    "category": "Visual Arts",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Visual Arts · 7–12",
+    "file": "visual-arts/art-critique-creative-process.json"
+  },
+  {
+    "id": "fine-arts--media-arts--storyboarding-visual-storytelling",
+    "title": "Storyboarding & Visual Storytelling",
+    "subject": "Fine Arts",
+    "category": "Media Arts",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Media Arts · 7–12",
+    "file": "media-arts/storyboarding-visual-storytelling.json"
+  },
+  {
+    "id": "fine-arts--media-arts--digital-illustration",
+    "title": "Digital Illustration",
+    "subject": "Fine Arts",
+    "category": "Media Arts",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Media Arts · 7–12",
+    "file": "media-arts/digital-illustration.json"
+  }
 ];

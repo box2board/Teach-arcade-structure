@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--visual-arts--digital-illustration",
+  "title": "Digital Illustration",
+  "subject": "Fine Arts",
+  "category": "Visual Arts",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is digital illustration?",
+      "choices": [
+        "Creating images with digital drawing or painting tools",
+        "Scanning a text document",
+        "Editing audio with a keyboard",
+        "Printing a photograph without changes"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is a layer useful for in illustration software?",
+      "choices": [
+        "Increasing a drawing's physical size",
+        "Editing parts of an image independently",
+        "Changing the computer's screen",
+        "Guaranteeing a finished style"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "What does a raster image consist of?",
+      "choices": [
+        "Mathematical paths only",
+        "Sound waves",
+        "A grid of pixels",
+        "A sequence of printed pages"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is a key advantage of vector artwork?",
+      "choices": [
+        "It always looks photographic",
+        "It cannot be edited",
+        "It stores more colors than any raster image",
+        "It can scale while keeping edges crisp"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "Why use a sketch layer before clean line art?",
+      "choices": [
+        "It allows composition and pose ideas to be tested before refinement",
+        "It permanently locks the final image",
+        "It prevents color edits",
+        "It sets the image license"
+      ],
+      "correctAnswer": 0,
+      "skill": "application"
+    },
+    {
+      "id": 6,
+      "question": "What does opacity control for a layer or brush?",
+      "choices": [
+        "Its location on the canvas",
+        "How transparent or solid it appears",
+        "The file's dimensions",
+        "The tool's shape only"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "How can a clipping mask help?",
+      "choices": [
+        "It automatically draws perspective",
+        "It changes a raster image to sound",
+        "It limits paint or edits to the shape of another layer",
+        "It removes all color"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "Why choose canvas dimensions based on intended use?",
+      "choices": [
+        "Dimension sets the illustration's subject",
+        "Large files cannot be edited",
+        "Every platform uses the same size",
+        "Resolution needs differ for screen display and print"
+      ],
+      "correctAnswer": 3,
+      "skill": "application"
+    },
+    {
+      "id": 9,
+      "question": "What is line art?",
+      "choices": [
+        "Defined lines that clarify contours or details",
+        "A layer containing only background color",
+        "A type of file compression",
+        "The final printed border"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "How can an artist create depth in a digital illustration?",
+      "choices": [
+        "Keep every object the same size and value",
+        "Use overlap, scale, value, and atmospheric cues",
+        "Remove all shadows",
+        "Use only one flat layer"
+      ],
+      "correctAnswer": 1,
+      "skill": "application"
+    },
+    {
+      "id": 11,
+      "question": "What does color picking from a reference help an artist do?",
+      "choices": [
+        "Check the image's perspective",
+        "Create a vector path automatically",
+        "Sample a color to compare or reuse it",
+        "Add a copyright license"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why save an editable project file as well as an export?",
+      "choices": [
+        "The export always contains the same layer controls",
+        "The project file prevents copying",
+        "Exports cannot be shared",
+        "The project preserves layers and working edits for future revision"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "A digital brush looks jagged at normal zoom. What should be checked?",
+      "choices": [
+        "Canvas resolution, brush settings, and display scale",
+        "The title font",
+        "The number of layers only",
+        "The image's copyright date"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 14,
+      "question": "How can a limited palette support an illustration?",
+      "choices": [
+        "It guarantees realistic color",
+        "It helps establish a coherent mood and visual hierarchy",
+        "It removes the need for value contrast",
+        "It prevents revisions"
+      ],
+      "correctAnswer": 1,
+      "skill": "application"
+    },
+    {
+      "id": 15,
+      "question": "What is a selection tool commonly used for?",
+      "choices": [
+        "Changing the monitor brightness",
+        "Adding a soundtrack",
+        "Targeting a region for editing or transformation",
+        "Measuring a physical sculpture"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "Why keep important illustration elements on separate layers?",
+      "choices": [
+        "They automatically make the file smaller",
+        "They prevent visual overlap",
+        "They choose the final format",
+        "They can be adjusted without repainting unrelated areas"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "What is a brush stabilizer intended to help with?",
+      "choices": [
+        "Smoothing the path of a digital stroke",
+        "Increasing the image's pixel count",
+        "Choosing a color scheme",
+        "Exporting a vector file"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "An illustration is hard to read at thumbnail size. What may help?",
+      "choices": [
+        "Add more tiny details",
+        "Clarify the silhouette and simplify competing detail",
+        "Reduce contrast further",
+        "Hide the main subject"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "What should an artist consider before using another creator's digital brush or asset?",
+      "choices": [
+        "Only its file size",
+        "Whether it is the newest version",
+        "Its license and attribution requirements",
+        "How many colors it contains"
+      ],
+      "correctAnswer": 2,
+      "skill": "application"
+    },
+    {
+      "id": 20,
+      "question": "Why inspect an illustration at several zoom levels?",
+      "choices": [
+        "Zoom changes the original subject",
+        "It ensures every image prints perfectly",
+        "It replaces feedback",
+        "Different scales reveal composition and detail problems"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    }
+  ]
+}

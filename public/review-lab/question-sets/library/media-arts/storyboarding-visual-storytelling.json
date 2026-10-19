@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--media-arts--storyboarding-visual-storytelling",
+  "title": "Storyboarding & Visual Storytelling",
+  "subject": "Fine Arts",
+  "category": "Media Arts",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a storyboard?",
+      "choices": [
+        "A sequence of sketches planning shots or scenes",
+        "A finished soundtrack",
+        "A list of camera prices",
+        "A collection of unrelated images"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Why use storyboards before filming or animation?",
+      "choices": [
+        "They replace every production decision",
+        "They help plan sequence, framing, and visual transitions",
+        "They guarantee a successful story",
+        "They determine the final audience"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "What does a shot list record?",
+      "choices": [
+        "Only the story's dialogue",
+        "The actors' private notes",
+        "Planned shots and production details",
+        "The editing software version"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What information can arrows in a storyboard communicate?",
+      "choices": [
+        "The image's color profile",
+        "Copyright ownership",
+        "The frame rate",
+        "Movement of a subject or camera"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "What is an establishing shot used for?",
+      "choices": [
+        "Show a location or context before closer action",
+        "Reveal a character's thought directly",
+        "Replace the story's ending",
+        "Set the soundtrack level"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "How can a close-up support storytelling?",
+      "choices": [
+        "It always shows the full setting",
+        "It emphasizes a detail, expression, or reaction",
+        "It removes emotional meaning",
+        "It sets the scene's total duration"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "What is a point-of-view shot?",
+      "choices": [
+        "A shot of the camera operator",
+        "A view from the audience only",
+        "A view framed as if seen by a character",
+        "A shot without perspective"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why should a storyboard consider screen direction?",
+      "choices": [
+        "Screen direction determines color palette",
+        "It prevents all camera movement",
+        "It replaces scene geography",
+        "Consistent movement helps viewers follow where characters are going"
+      ],
+      "correctAnswer": 3,
+      "skill": "application"
+    },
+    {
+      "id": 9,
+      "question": "A sequence feels confusing because characters seem to switch places. What could a storyboard clarify?",
+      "choices": [
+        "Their positions, movement, and camera angle across shots",
+        "The title font",
+        "The soundtrack license",
+        "The export resolution"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 10,
+      "question": "How does a visual motif help tell a story?",
+      "choices": [
+        "It makes every scene identical",
+        "A recurring image can connect moments or develop meaning",
+        "It replaces character choices",
+        "It sets the camera model"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What is a transition in visual storytelling?",
+      "choices": [
+        "A character's costume",
+        "A fixed camera height",
+        "A change from one shot, scene, or moment to another",
+        "A form of dialogue"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Why vary shot size in a sequence?",
+      "choices": [
+        "Every story requires one shot size",
+        "It guarantees continuity",
+        "It changes the plot automatically",
+        "Different shot sizes provide context, action, or detail"
+      ],
+      "correctAnswer": 3,
+      "skill": "application"
+    },
+    {
+      "id": 13,
+      "question": "What can a storyboard reveal about pacing?",
+      "choices": [
+        "Whether key moments have enough visual time and progression",
+        "The final image's file size",
+        "A character's real-world age",
+        "The music's key"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What is a match cut?",
+      "choices": [
+        "A cut made only during dialogue",
+        "A transition connecting shots through a visual or conceptual similarity",
+        "A shot with identical actors",
+        "An edit that removes all movement"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "How can a storyboard show an emotional change without dialogue?",
+      "choices": [
+        "Use only a title card",
+        "Repeat the same frame",
+        "Use pose, framing, gesture, and visual context",
+        "Remove character expression"
+      ],
+      "correctAnswer": 2,
+      "skill": "application"
+    },
+    {
+      "id": 16,
+      "question": "Why include notes about sound in a storyboard?",
+      "choices": [
+        "Sound replaces all visuals",
+        "Notes determine image resolution",
+        "The storyboard becomes a recording",
+        "Sound cues can shape timing and meaning alongside images"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "A reveal should surprise viewers. What could the storyboard plan?",
+      "choices": [
+        "Control what is visible before the reveal and when the new information appears",
+        "Show the reveal in every earlier frame",
+        "Remove all context",
+        "Use the same wide shot throughout"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "What is visual continuity?",
+      "choices": [
+        "A rule that every shot be identical",
+        "Consistent details that help shots feel connected",
+        "A form of color grading",
+        "The story's legal permission"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "How can a creator make storyboards accessible to collaborators?",
+      "choices": [
+        "Use unexplained symbols only",
+        "Make every panel the same",
+        "Use clear labels, readable sketches, and concise production notes",
+        "Leave out shot order"
+      ],
+      "correctAnswer": 2,
+      "skill": "application"
+    },
+    {
+      "id": 20,
+      "question": "Why revise a storyboard after feedback?",
+      "choices": [
+        "It proves the first idea was wrong",
+        "It removes creative ownership",
+        "It guarantees a particular audience",
+        "It can expose unclear action or missing visual information before production"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    }
+  ]
+}
