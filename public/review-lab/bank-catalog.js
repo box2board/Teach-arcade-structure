@@ -3119,5 +3119,55 @@ export const BANK_SETS=[
     "questionCount": 20,
     "description": "Writing & Composition · 7–12",
     "file": "writing-composition/organization-paragraph-structure.json"
+  },
+  {
+    "id": "math--pre-algebra--addition-subtraction",
+    "title": "Addition & Subtraction",
+    "subject": "Math",
+    "category": "Pre-Algebra & Number Sense",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Pre-Algebra & Number Sense · 7–12",
+    "file": "pre-algebra/addition-subtraction.json"
+  },
+  {
+    "id": "math--pre-algebra--multiplication-division",
+    "title": "Multiplication & Division",
+    "subject": "Math",
+    "category": "Pre-Algebra & Number Sense",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Pre-Algebra & Number Sense · 7–12",
+    "file": "pre-algebra/multiplication-division.json"
+  },
+  {
+    "id": "math--pre-algebra--place-value-rounding",
+    "title": "Place Value & Rounding",
+    "subject": "Math",
+    "category": "Pre-Algebra & Number Sense",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Pre-Algebra & Number Sense · 7–12",
+    "file": "pre-algebra/place-value-rounding.json"
+  },
+  {
+    "id": "math--pre-algebra--fractions-basics",
+    "title": "Fractions (Basics)",
+    "subject": "Math",
+    "category": "Pre-Algebra & Number Sense",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Pre-Algebra & Number Sense · 7–12",
+    "file": "pre-algebra/fractions-basics.json"
+  },
+  {
+    "id": "math--pre-algebra--decimals-intro",
+    "title": "Decimals (Intro)",
+    "subject": "Math",
+    "category": "Pre-Algebra & Number Sense",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Pre-Algebra & Number Sense · 7–12",
+    "file": "pre-algebra/decimals-intro.json"
   }
 ];

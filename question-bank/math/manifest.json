@@ -3,8 +3,8 @@
   "subject": "Math",
   "status": "draft-for-review",
   "gradeBand": "7–12",
-  "setCount": 75,
-  "questionCount": 1500,
+  "setCount": 80,
+  "questionCount": 1600,
   "sets": [
     {
       "id": "math--pre-algebra--integers-and-rational-numbers",
@@ -530,6 +530,41 @@
       "category": "Statistics & Probability",
       "file": "statistics-probability/experimental-design-and-causation.json",
       "questionCount": 20
+    },
+    {
+      "id": "math--pre-algebra--addition-subtraction",
+      "title": "Addition & Subtraction",
+      "category": "Pre-Algebra & Number Sense",
+      "questionCount": 20,
+      "file": "pre-algebra/addition-subtraction.json"
+    },
+    {
+      "id": "math--pre-algebra--multiplication-division",
+      "title": "Multiplication & Division",
+      "category": "Pre-Algebra & Number Sense",
+      "questionCount": 20,
+      "file": "pre-algebra/multiplication-division.json"
+    },
+    {
+      "id": "math--pre-algebra--place-value-rounding",
+      "title": "Place Value & Rounding",
+      "category": "Pre-Algebra & Number Sense",
+      "questionCount": 20,
+      "file": "pre-algebra/place-value-rounding.json"
+    },
+    {
+      "id": "math--pre-algebra--fractions-basics",
+      "title": "Fractions (Basics)",
+      "category": "Pre-Algebra & Number Sense",
+      "questionCount": 20,
+      "file": "pre-algebra/fractions-basics.json"
+    },
+    {
+      "id": "math--pre-algebra--decimals-intro",
+      "title": "Decimals (Intro)",
+      "category": "Pre-Algebra & Number Sense",
+      "questionCount": 20,
+      "file": "pre-algebra/decimals-intro.json"
     }
   ]
 }

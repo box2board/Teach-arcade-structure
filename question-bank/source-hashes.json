@@ -310,5 +310,10 @@
   "question-bank/ela/writing-composition/narrative-writing.json": "d11cdccc060d451624b991a6267288bdd77e857aaa19cf2dd7d758fcec8b3ccd",
   "question-bank/ela/writing-composition/informational-explanatory-writing.json": "6922413a113e45c5f93640f597cb5b41cd3095a382c5ea6a54ef7f9383ce1c3d",
   "question-bank/ela/writing-composition/introductions-conclusions.json": "0359a2d866c7640f2fcaf02d5359aa0f2a6cbc8a496693d72f5b8a4bdaacfc40",
-  "question-bank/ela/writing-composition/organization-paragraph-structure.json": "cbf6055f3fe204985db01b02e6eb3bbb2ce4d91eef6149ea13131a377d175c85"
+  "question-bank/ela/writing-composition/organization-paragraph-structure.json": "cbf6055f3fe204985db01b02e6eb3bbb2ce4d91eef6149ea13131a377d175c85",
+  "question-bank/math/pre-algebra/addition-subtraction.json": "9f8233be55b24c7c4e956bb17a1167d6da05a4187ec5f06aea0b18352d2571f0",
+  "question-bank/math/pre-algebra/multiplication-division.json": "b67884e7b06cec7c28ab52ae8ef53f7e3620f960c1b3c2725a743af59f0bc883",
+  "question-bank/math/pre-algebra/place-value-rounding.json": "4ed202bfcc2d57aedbff32af28dd14a298911002c4aa27bed1c66e079431814d",
+  "question-bank/math/pre-algebra/fractions-basics.json": "185ab9815e03df213073f12c8add332f9cec21f4f0e9817db6266436e64f116b",
+  "question-bank/math/pre-algebra/decimals-intro.json": "a2478fff265e904ea5d11d2a77a4d820b8b7f537b73032413e1082d4e2376f0a"
 }
