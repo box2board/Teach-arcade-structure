@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--art-history--contemporary-art-artists",
+  "title": "Contemporary Art & Artists",
+  "subject": "Fine Arts",
+  "category": "Art History",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What does 'contemporary art' generally refer to?",
+      "choices": [
+        "Art made in the present era, including varied practices and perspectives",
+        "Only art made before 1800",
+        "One fixed visual style",
+        "Artwork created exclusively with computers"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is an installation artwork?",
+      "choices": [
+        "A framed print only",
+        "A work arranged in a space so viewers experience its environment or relationships",
+        "A method of painting wet plaster",
+        "A sculpture's shipping process"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "What does site-specific art mean?",
+      "choices": [
+        "It can be displayed anywhere without change",
+        "It is always a digital image",
+        "The work is designed in response to a particular location",
+        "It must be smaller than the room"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Conceptual art often places emphasis on",
+      "choices": [
+        "technical realism only",
+        "the cost of materials",
+        "the frame's decoration",
+        "the idea or concept behind the work"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "A contemporary artwork invites viewers to walk through it. What can this change?",
+      "choices": [
+        "The viewer's physical experience becomes part of encountering the work",
+        "The artwork becomes a printed book",
+        "The artist loses authorship automatically",
+        "The work has no meaning"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 6,
+      "question": "Why might contemporary artists use video, sound, or digital media?",
+      "choices": [
+        "They are required for every contemporary work",
+        "These media can address time, technology, movement, or communication",
+        "They prevent viewers from interpreting the work",
+        "They eliminate the need for ideas"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "What is public art?",
+      "choices": [
+        "Art that has no audience",
+        "Art made only in a private studio",
+        "Art intended for or placed in spaces accessible to a broader public",
+        "Art that cannot include sculpture"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "A community helps design a mural about local history. What is one likely feature of this process?",
+      "choices": [
+        "The mural must be anonymous",
+        "Public art cannot use historical themes",
+        "Only one person may contribute ideas",
+        "Community perspectives can shape the work's subject and meaning"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 9,
+      "question": "Why should a viewer consider who is represented in an artwork?",
+      "choices": [
+        "Representation can shape visibility, identity, and interpretation",
+        "It determines the work's exact market price",
+        "It proves the artist's intention completely",
+        "It removes the need to look closely"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "An artist uses recycled materials to address consumption. What relationship is the work exploring?",
+      "choices": [
+        "A requirement that all art be temporary",
+        "Material choice and environmental or social meaning",
+        "The history of oil painting only",
+        "A color-mixing rule"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 11,
+      "question": "What is an ethical question that may arise in contemporary art?",
+      "choices": [
+        "Whether every artwork must rhyme",
+        "Whether the gallery has enough frames",
+        "How permissions, cultural ownership, and community impacts are handled",
+        "Whether the work uses a title"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "A work changes when viewers contribute messages. What type of participation is involved?",
+      "choices": [
+        "Linear perspective",
+        "Fresco painting",
+        "Contrapposto",
+        "Interactive or participatory engagement"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Why can an artist's statement help viewers?",
+      "choices": [
+        "It can provide context about questions, materials, or intentions behind the work",
+        "It fixes one required interpretation",
+        "It replaces the artwork",
+        "It proves every viewer must agree"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What should viewers remember when reading an artist's statement?",
+      "choices": [
+        "It is the only possible meaning",
+        "It is useful context, while visual evidence and other interpretations still matter",
+        "It replaces historical research",
+        "It must be treated as a museum label"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 15,
+      "question": "A contemporary sculpture is temporary and will change outdoors. What concept may be central?",
+      "choices": [
+        "A requirement of classical proportion",
+        "A ban on audience response",
+        "Time, material change, or impermanence",
+        "A fixed permanent surface"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 16,
+      "question": "What is a curatorial choice?",
+      "choices": [
+        "A method for carving marble",
+        "A way to calculate perspective",
+        "A kind of paint pigment",
+        "A decision about selecting and arranging works for an exhibition"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "An exhibition places two works side by side. What can this arrangement do?",
+      "choices": [
+        "Encourage viewers to compare or connect the works",
+        "Guarantee they share one meaning",
+        "Remove their historical context",
+        "Make the works identical"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 18,
+      "question": "Why may contemporary art address social or political questions?",
+      "choices": [
+        "Art is required to endorse one policy",
+        "Artists can use visual practice to examine current issues and experiences",
+        "Art cannot address public life",
+        "Only written essays can discuss society"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "A viewer dislikes an artwork. What is a productive next step for analysis?",
+      "choices": [
+        "Stop looking immediately",
+        "Assume the artist failed",
+        "Describe the choices that shaped the response and support an interpretation with evidence",
+        "Treat personal taste as the only standard"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which statement best describes diversity in contemporary art?",
+      "choices": [
+        "All contemporary artists share one message",
+        "Only digital works qualify",
+        "Contemporary art excludes craft",
+        "Artists work across many styles, media, communities, and purposes"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    }
+  ]
+}

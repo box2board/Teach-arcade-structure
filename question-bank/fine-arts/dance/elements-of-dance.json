@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--dance--elements-of-dance",
+  "title": "Elements of Dance",
+  "subject": "Fine Arts",
+  "category": "Dance",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which list includes common elements used to describe dance movement?",
+      "choices": [
+        "Body, action, space, time, energy, and relationships",
+        "Plot, rhyme, meter, and theme",
+        "Mass, volume, density, and pressure",
+        "Line, paragraph, citation, and thesis"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "In dance, what does 'space' include?",
+      "choices": [
+        "Only the stage's width",
+        "Direction, level, pathway, and the area a dancer moves through",
+        "The music's volume",
+        "The costume's color"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "A dancer travels in a zigzag across the stage. Which element is most directly described?",
+      "choices": [
+        "Tempo",
+        "Weight",
+        "Pathway",
+        "Relationship"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is a level in dance?",
+      "choices": [
+        "The number of dancers",
+        "The length of the music",
+        "The size of a costume",
+        "The height at which a movement occurs, such as low, middle, or high"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "A dancer performs a sharp, sudden gesture. Which movement quality is emphasized?",
+      "choices": [
+        "Energy",
+        "Stage direction only",
+        "Costume design",
+        "Narrative setting"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "What does tempo describe in movement?",
+      "choices": [
+        "The size of the stage",
+        "The speed of the movement",
+        "The dancer's role",
+        "The color of the lighting"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "A group moves together at the same time using matching actions. What relationship is shown?",
+      "choices": [
+        "Canon",
+        "Contrast",
+        "Unison",
+        "Improvisation"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "In a canon, dancers",
+      "choices": [
+        "perform unrelated sequences simultaneously",
+        "stand in a circle without moving",
+        "mirror one another at exactly the same moment",
+        "perform the same movement sequence at staggered times"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "What does a dancer's kinesphere refer to?",
+      "choices": [
+        "The area of space the body can reach without traveling",
+        "A stage curtain",
+        "A type of music meter",
+        "A costume pattern"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Which choice describes a curved pathway?",
+      "choices": [
+        "Movement stays in one fixed spot",
+        "Movement travels along a rounded line through space",
+        "Movement follows a straight diagonal",
+        "Movement moves only vertically"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "A dancer uses a sustained, smooth movement. Which quality best fits?",
+      "choices": [
+        "Percussive energy",
+        "Sudden attack",
+        "Flowing energy",
+        "Rigid stillness"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What does a pause in choreography contribute?",
+      "choices": [
+        "It removes all structure",
+        "It always means the dance is over",
+        "It determines the costume",
+        "It can create emphasis, contrast, or a change in phrasing"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 13,
+      "question": "Two dancers move close together and then separate. Which element is most directly involved?",
+      "choices": [
+        "Relationship between dancers",
+        "Tempo only",
+        "Level only",
+        "Lighting"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "A movement phrase repeats three times, each time becoming larger. What changes?",
+      "choices": [
+        "The dance has no structure",
+        "The movement is developed through repetition and variation",
+        "The tempo must stop",
+        "The dancers switch roles"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 15,
+      "question": "What is improvisation in dance?",
+      "choices": [
+        "Repeating a fixed sequence exactly",
+        "Learning choreography from notation only",
+        "Creating movement spontaneously within a prompt or set of parameters",
+        "A lighting cue"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "A dancer shifts from a low crouch to a high leap. Which element is most evident?",
+      "choices": [
+        "Tempo",
+        "Costume",
+        "Rhythm pattern only",
+        "Levels"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "What is a movement phrase?",
+      "choices": [
+        "A brief, connected sequence of movement that functions like a unit",
+        "A written review of a performance",
+        "A stage direction",
+        "A costume measurement"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 18,
+      "question": "How can energy change the meaning of the same movement?",
+      "choices": [
+        "Energy never affects interpretation",
+        "A gesture done softly or forcefully can communicate different qualities",
+        "The movement's direction disappears",
+        "The music becomes irrelevant"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A choreographer places dancers in a circle facing inward. What is being arranged?",
+      "choices": [
+        "Only tempo",
+        "Only costume",
+        "Spatial relationships and formation",
+        "The audience's seating"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "Which practice supports safe movement in a dance class?",
+      "choices": [
+        "Force a joint beyond comfortable range",
+        "Ignore the floor surface",
+        "Attempt maximum jumps without warming up",
+        "Use controlled alignment and gradually prepare the body for movement"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

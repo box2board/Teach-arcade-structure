@@ -3409,5 +3409,55 @@ export const BANK_SETS=[
     "questionCount": 20,
     "description": "Art History · 7–12",
     "file": "fine-arts/art-history/19th-century-art-movements.json"
+  },
+  {
+    "id": "fine-arts--art-history--impressionism-post-impressionism",
+    "title": "Impressionism & Post-Impressionism",
+    "subject": "Fine Arts",
+    "category": "Art History",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Art History · 7–12",
+    "file": "fine-arts/art-history/impressionism-post-impressionism.json"
+  },
+  {
+    "id": "fine-arts--art-history--modern-art-movements",
+    "title": "Modern Art Movements",
+    "subject": "Fine Arts",
+    "category": "Art History",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Art History · 7–12",
+    "file": "fine-arts/art-history/modern-art-movements.json"
+  },
+  {
+    "id": "fine-arts--art-history--contemporary-art-artists",
+    "title": "Contemporary Art & Artists",
+    "subject": "Fine Arts",
+    "category": "Art History",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Art History · 7–12",
+    "file": "fine-arts/art-history/contemporary-art-artists.json"
+  },
+  {
+    "id": "fine-arts--art-history--how-to-analyze-discuss-art",
+    "title": "How to Analyze & Discuss Art",
+    "subject": "Fine Arts",
+    "category": "Art History",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Art History · 7–12",
+    "file": "fine-arts/art-history/how-to-analyze-discuss-art.json"
+  },
+  {
+    "id": "fine-arts--dance--elements-of-dance",
+    "title": "Elements of Dance",
+    "subject": "Fine Arts",
+    "category": "Dance",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Dance · 7–12",
+    "file": "fine-arts/dance/elements-of-dance.json"
   }
 ];

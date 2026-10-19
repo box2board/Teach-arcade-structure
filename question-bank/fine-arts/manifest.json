@@ -3,8 +3,8 @@
   "subject": "Fine Arts",
   "status": "draft-for-review",
   "gradeBand": "7–12",
-  "setCount": 5,
-  "questionCount": 100,
+  "setCount": 10,
+  "questionCount": 200,
   "sets": [
     {
       "id": "fine-arts--art-history--prehistoric-ancient-art",
@@ -40,6 +40,41 @@
       "category": "Art History",
       "questionCount": 20,
       "file": "art-history/19th-century-art-movements.json"
+    },
+    {
+      "id": "fine-arts--art-history--impressionism-post-impressionism",
+      "title": "Impressionism & Post-Impressionism",
+      "category": "Art History",
+      "questionCount": 20,
+      "file": "art-history/impressionism-post-impressionism.json"
+    },
+    {
+      "id": "fine-arts--art-history--modern-art-movements",
+      "title": "Modern Art Movements",
+      "category": "Art History",
+      "questionCount": 20,
+      "file": "art-history/modern-art-movements.json"
+    },
+    {
+      "id": "fine-arts--art-history--contemporary-art-artists",
+      "title": "Contemporary Art & Artists",
+      "category": "Art History",
+      "questionCount": 20,
+      "file": "art-history/contemporary-art-artists.json"
+    },
+    {
+      "id": "fine-arts--art-history--how-to-analyze-discuss-art",
+      "title": "How to Analyze & Discuss Art",
+      "category": "Art History",
+      "questionCount": 20,
+      "file": "art-history/how-to-analyze-discuss-art.json"
+    },
+    {
+      "id": "fine-arts--dance--elements-of-dance",
+      "title": "Elements of Dance",
+      "category": "Dance",
+      "questionCount": 20,
+      "file": "dance/elements-of-dance.json"
     }
   ]
 }

@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--art-history--impressionism-post-impressionism",
+  "title": "Impressionism & Post-Impressionism",
+  "subject": "Fine Arts",
+  "category": "Art History",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What did many Impressionist painters investigate through repeated outdoor studies?",
+      "choices": [
+        "How changing light and atmosphere affect color and appearance",
+        "How to eliminate visible brushwork",
+        "How to paint only historical myths",
+        "How to replace painting with sculpture"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 2,
+      "question": "Which feature is often associated with Impressionist painting?",
+      "choices": [
+        "Uniform outlines and smooth finish only",
+        "Visible brushwork and attention to fleeting light",
+        "Exclusive use of black pigment",
+        "Flat gold backgrounds"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Why did some Impressionists paint outdoors?",
+      "choices": [
+        "To avoid looking at the subject",
+        "Because indoor painting was illegal",
+        "To observe and record changing conditions directly",
+        "To use only artificial light"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "Which subject was common in Impressionist art?",
+      "choices": [
+        "Only ancient gods",
+        "Only royal coronations",
+        "Only scientific diagrams",
+        "Modern leisure and everyday scenes"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "How did photography influence some 19th-century painters?",
+      "choices": [
+        "It encouraged experimentation with viewpoint, framing, and the captured moment",
+        "It made painting impossible",
+        "It prevented artists from depicting people",
+        "It required all paintings to be black and white"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "Which artist is strongly associated with repeated studies of haystacks and water lilies?",
+      "choices": [
+        "Vincent van Gogh",
+        "Claude Monet",
+        "Pablo Picasso",
+        "Auguste Rodin"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What distinguishes many Post-Impressionist approaches from Impressionism?",
+      "choices": [
+        "They all returned to medieval gold backgrounds",
+        "They rejected every modern subject",
+        "Artists used color, form, or structure in more individually directed ways",
+        "They used one uniform style"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "Which Post-Impressionist artist explored bold color and expressive brushwork in works such as Starry Night?",
+      "choices": [
+        "Claude Monet",
+        "Edgar Degas",
+        "Berthe Morisot",
+        "Vincent van Gogh"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Paul Cézanne is often noted for exploring",
+      "choices": [
+        "underlying geometric structure in forms and landscapes",
+        "single-point perspective as the only valid method",
+        "gold-leaf icon painting",
+        "photographic realism"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Georges Seurat developed a technique using",
+      "choices": [
+        "carved marble tesserae",
+        "small dots of color placed to blend optically",
+        "wet plaster fresco",
+        "paper collage only"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "A painting uses separate brushstrokes of blue and yellow that appear green from a distance. What is the viewer experiencing?",
+      "choices": [
+        "Chiaroscuro",
+        "Linear perspective",
+        "Optical color mixing",
+        "Sfumato"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 12,
+      "question": "Why might an Impressionist scene seem cropped or off-center?",
+      "choices": [
+        "The artist necessarily ran out of canvas",
+        "The image has no subject",
+        "All Impressionist art used the same template",
+        "The composition can suggest a spontaneous modern viewpoint"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Which statement best describes the relation between Impressionism and Post-Impressionism?",
+      "choices": [
+        "Post-Impressionist artists responded to Impressionist innovations while pursuing varied directions",
+        "Post-Impressionism was a single style that rejected color",
+        "The movements are unrelated to 19th-century painting",
+        "Post-Impressionists all painted with photographs"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 14,
+      "question": "A painter emphasizes color shapes more than accurate detail. Which approach may be relevant?",
+      "choices": [
+        "A Byzantine mosaic",
+        "A Post-Impressionist exploration of color and structure",
+        "A Romanesque portal",
+        "A Rococo fête galante"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What does plein-air painting mean?",
+      "choices": [
+        "Painting on a ceiling",
+        "Painting only from memory",
+        "Painting outdoors",
+        "Painting with a printing press"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "Degas is especially known for paintings and drawings of",
+      "choices": [
+        "Egyptian tomb interiors",
+        "Renaissance philosophers",
+        "medieval battle maps",
+        "dancers and scenes of modern life"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Why is it inaccurate to describe all Impressionist paintings as simply 'blurry'?",
+      "choices": [
+        "Their brushwork served varied ways of depicting light, color, movement, and perception",
+        "They contain no recognizable subjects",
+        "They were all unfinished sketches",
+        "They use no color"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A work by Cézanne simplifies a mountain into blocks and planes. What may this reveal?",
+      "choices": [
+        "A strict commitment to photographic detail",
+        "An interest in organizing observed forms through structure",
+        "A rejection of all landscape",
+        "A return to medieval manuscript illumination"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "What can comparing an artist's repeated views of one subject reveal?",
+      "choices": [
+        "The subject's exact historical date",
+        "The artist's only possible technique",
+        "How light, weather, time, and artistic choices change the image",
+        "That the works must be identical"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "When analyzing a Post-Impressionist painting, what is a useful starting point?",
+      "choices": [
+        "Guess the artist's mood without evidence",
+        "Identify the frame and stop",
+        "Assume all viewers respond the same way",
+        "Describe how color, brushwork, and form contribute to the work's effect"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

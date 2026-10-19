@@ -339,5 +339,10 @@
   "question-bank/fine-arts/art-history/medieval-byzantine-art.json": "e7435ea805f6197eaf9cf12529c36257fac037b8f1a6ab095e612f66fbf407cd",
   "question-bank/fine-arts/art-history/renaissance-art.json": "1455d0843b1fc2a5127e4db828f8237717ac8fe34ee04fe2cbff179ce3175048",
   "question-bank/fine-arts/art-history/baroque-rococo.json": "dc8185909108fecffc495ff8a42daea5d1b1ab5d88605adc97ddda8f8cdedd03",
-  "question-bank/fine-arts/art-history/19th-century-art-movements.json": "747aa3e713f794750926fcd50b32ee7217798375dde9fc92c3087e60a2b62762"
+  "question-bank/fine-arts/art-history/19th-century-art-movements.json": "747aa3e713f794750926fcd50b32ee7217798375dde9fc92c3087e60a2b62762",
+  "question-bank/fine-arts/art-history/impressionism-post-impressionism.json": "4ae30f3915e95106ca38eac09ee8850dd887a6bd04313efa138887441236a5b0",
+  "question-bank/fine-arts/art-history/modern-art-movements.json": "e6cc30af7cc689ba449f819d0be94b5bd643794450c250b9deb6218332759862",
+  "question-bank/fine-arts/art-history/contemporary-art-artists.json": "5baf23070ebef01ba52e2a0c1c8fa9accafa268eb522c0931158ca8c4c494d9e",
+  "question-bank/fine-arts/art-history/how-to-analyze-discuss-art.json": "cbd81573a33aa2b9ee1e40674a1dcb644037b35d646558673571455d57806d28",
+  "question-bank/fine-arts/dance/elements-of-dance.json": "4f80fea4a792d7230252bea98af9af43c2fe3f8f7ed4a248e98c2eb5eb562880"
 }
