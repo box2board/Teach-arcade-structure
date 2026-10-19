@@ -65,7 +65,7 @@
         "It sets the image license"
       ],
       "correctAnswer": 0,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 6,
@@ -101,7 +101,7 @@
         "Resolution needs differ for screen display and print"
       ],
       "correctAnswer": 3,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 9,
@@ -125,7 +125,7 @@
         "Use only one flat layer"
       ],
       "correctAnswer": 1,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 11,
@@ -173,7 +173,7 @@
         "It prevents revisions"
       ],
       "correctAnswer": 1,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 15,
@@ -233,7 +233,7 @@
         "How many colors it contains"
       ],
       "correctAnswer": 2,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 20,

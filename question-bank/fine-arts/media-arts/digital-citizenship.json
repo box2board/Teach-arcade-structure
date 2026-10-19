@@ -17,7 +17,7 @@
         "Post it privately"
       ],
       "correctAnswer": 0,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 2,
@@ -29,7 +29,7 @@
         "Whether the file name is short"
       ],
       "correctAnswer": 1,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 3,
@@ -53,7 +53,7 @@
         "Avoid posting a home address publicly"
       ],
       "correctAnswer": 3,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 5,
@@ -101,7 +101,7 @@
         "Save evidence and seek help from a trusted adult or platform"
       ],
       "correctAnswer": 3,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 9,
@@ -161,7 +161,7 @@
         "Assume a high view count proves it"
       ],
       "correctAnswer": 0,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 14,
@@ -173,7 +173,7 @@
         "Use all the speaking time"
       ],
       "correctAnswer": 1,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 15,
@@ -221,7 +221,7 @@
         "Make audio play automatically at high volume"
       ],
       "correctAnswer": 1,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 19,
@@ -245,7 +245,7 @@
         "Check evidence, date, and original context before publishing"
       ],
       "correctAnswer": 3,
-      "skill": "application"
+      "skill": "reasoning"
     }
   ]
 }

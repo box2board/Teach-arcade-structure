@@ -65,7 +65,7 @@
         "For a scan with no editing needs"
       ],
       "correctAnswer": 0,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 6,
@@ -89,7 +89,7 @@
         "To keep every layer editable"
       ],
       "correctAnswer": 2,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 8,
@@ -149,7 +149,7 @@
         "Repeated elements can stay consistent and be edited efficiently"
       ],
       "correctAnswer": 3,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 13,
@@ -161,7 +161,7 @@
         "Check only its color palette"
       ],
       "correctAnswer": 0,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 14,
@@ -197,7 +197,7 @@
         "It changes emphasis, clarity, and visual character"
       ],
       "correctAnswer": 3,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 17,
@@ -221,7 +221,7 @@
         "Reverse the illustration"
       ],
       "correctAnswer": 1,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 19,

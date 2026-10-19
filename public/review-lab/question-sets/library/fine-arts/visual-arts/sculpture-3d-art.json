@@ -89,7 +89,7 @@
         "A printed canvas"
       ],
       "correctAnswer": 2,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 8,
@@ -125,7 +125,7 @@
         "It replaces structural testing"
       ],
       "correctAnswer": 1,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 11,
@@ -149,7 +149,7 @@
         "Weather, durability, weight, access, and maintenance affect the design"
       ],
       "correctAnswer": 3,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 13,
@@ -197,7 +197,7 @@
         "Sightlines, stability, lighting, and safe movement around it"
       ],
       "correctAnswer": 3,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 17,
@@ -245,7 +245,7 @@
         "Cutting, dust, heat, and chemicals can cause injury"
       ],
       "correctAnswer": 3,
-      "skill": "application"
+      "skill": "reasoning"
     }
   ]
 }

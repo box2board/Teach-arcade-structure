@@ -77,7 +77,7 @@
         "You should copy another artist"
       ],
       "correctAnswer": 1,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 7,
@@ -113,7 +113,7 @@
         "They select the artwork's meaning"
       ],
       "correctAnswer": 0,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 10,
@@ -137,7 +137,7 @@
         "Let feedback replace artistic intent"
       ],
       "correctAnswer": 2,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 12,
@@ -197,7 +197,7 @@
         "Repeated diagonal lines lead the eye toward the bright doorway"
       ],
       "correctAnswer": 3,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 17,
@@ -233,7 +233,7 @@
         "Judge the artist's character"
       ],
       "correctAnswer": 2,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 20,

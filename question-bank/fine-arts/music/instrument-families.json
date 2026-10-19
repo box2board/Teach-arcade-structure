@@ -137,7 +137,7 @@
         "Soprano recorder"
       ],
       "correctAnswer": 2,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 12,
@@ -185,7 +185,7 @@
         "Membrane percussion"
       ],
       "correctAnswer": 2,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 16,
@@ -233,7 +233,7 @@
         "The room's seating plan"
       ],
       "correctAnswer": 2,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 20,

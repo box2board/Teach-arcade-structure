@@ -77,7 +77,7 @@
         "It shows which audience was larger"
       ],
       "correctAnswer": 1,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 7,
@@ -149,7 +149,7 @@
         "Identify specific musical ideas later artists adapted or responded to"
       ],
       "correctAnswer": 3,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 13,
@@ -185,7 +185,7 @@
         "The work's file size"
       ],
       "correctAnswer": 2,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 16,
@@ -221,7 +221,7 @@
         "Avoid replaying the passage"
       ],
       "correctAnswer": 1,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 19,

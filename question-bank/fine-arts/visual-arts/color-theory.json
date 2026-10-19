@@ -29,7 +29,7 @@
         "Red"
       ],
       "correctAnswer": 1,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 3,
@@ -113,7 +113,7 @@
         "Remove the hue"
       ],
       "correctAnswer": 0,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 10,
@@ -125,7 +125,7 @@
         "Increase its brightness"
       ],
       "correctAnswer": 1,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 11,
@@ -149,7 +149,7 @@
         "Sufficient contrast helps viewers distinguish text from its background"
       ],
       "correctAnswer": 3,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 13,
@@ -197,7 +197,7 @@
         "Blue and orange"
       ],
       "correctAnswer": 3,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 17,
@@ -245,7 +245,7 @@
         "Choose a contrasting hue and check readability"
       ],
       "correctAnswer": 3,
-      "skill": "application"
+      "skill": "reasoning"
     }
   ]
 }

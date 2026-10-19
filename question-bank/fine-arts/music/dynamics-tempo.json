@@ -77,7 +77,7 @@
         "Repeat the measure"
       ],
       "correctAnswer": 1,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 7,
@@ -137,7 +137,7 @@
         "Ignore the conductor"
       ],
       "correctAnswer": 2,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 12,
@@ -149,7 +149,7 @@
         "A lively, relatively fast tempo"
       ],
       "correctAnswer": 3,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 13,
@@ -197,7 +197,7 @@
         "Gradually increase volume and intensity while shaping tempo purposefully"
       ],
       "correctAnswer": 3,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 17,
@@ -245,7 +245,7 @@
         "Give a clear preparatory gesture and shape the beat"
       ],
       "correctAnswer": 3,
-      "skill": "application"
+      "skill": "reasoning"
     }
   ]
 }

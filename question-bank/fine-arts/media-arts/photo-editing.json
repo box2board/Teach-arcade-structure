@@ -53,7 +53,7 @@
         "Lower highlights or exposure carefully"
       ],
       "correctAnswer": 3,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 5,
@@ -125,7 +125,7 @@
         "When a photo has no metadata"
       ],
       "correctAnswer": 1,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 11,
@@ -149,7 +149,7 @@
         "Adjust white balance using a neutral reference or careful color correction"
       ],
       "correctAnswer": 3,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 13,
@@ -197,7 +197,7 @@
         "Warm the white balance slightly and review the result"
       ],
       "correctAnswer": 3,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 17,
@@ -221,7 +221,7 @@
         "Use only the export file name"
       ],
       "correctAnswer": 1,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 19,

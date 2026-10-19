@@ -77,7 +77,7 @@
         "Add unrelated background detail"
       ],
       "correctAnswer": 1,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 7,
@@ -149,7 +149,7 @@
         "Vary poses, timing, and weight shifts while keeping the cycle coherent"
       ],
       "correctAnswer": 3,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 13,
@@ -185,7 +185,7 @@
         "Whether the soundtrack is mixed"
       ],
       "correctAnswer": 2,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 16,
@@ -233,7 +233,7 @@
         "The number of storyboard pages"
       ],
       "correctAnswer": 2,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 20,

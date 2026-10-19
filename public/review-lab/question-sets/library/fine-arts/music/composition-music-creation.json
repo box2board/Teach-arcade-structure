@@ -65,7 +65,7 @@
         "Avoid thinking about form"
       ],
       "correctAnswer": 0,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 6,
@@ -125,7 +125,7 @@
         "The number of online views"
       ],
       "correctAnswer": 1,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 11,
@@ -149,7 +149,7 @@
         "Performance may reveal balance, pacing, or clarity issues not obvious on the page"
       ],
       "correctAnswer": 3,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 13,
@@ -173,7 +173,7 @@
         "Remove the pulse"
       ],
       "correctAnswer": 1,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 15,
@@ -221,7 +221,7 @@
         "Assume short clips are always exempt"
       ],
       "correctAnswer": 1,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 19,
@@ -245,7 +245,7 @@
         "Match the parts to performers' ranges and practice skills"
       ],
       "correctAnswer": 3,
-      "skill": "application"
+      "skill": "reasoning"
     }
   ]
 }

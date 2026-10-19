@@ -101,7 +101,7 @@
         "Blend them gradually while both areas are workable"
       ],
       "correctAnswer": 3,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 9,
@@ -125,7 +125,7 @@
         "A test guarantees exact color under all light"
       ],
       "correctAnswer": 1,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 11,
@@ -185,7 +185,7 @@
         "It makes the final layer unnecessary"
       ],
       "correctAnswer": 2,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 16,
@@ -209,7 +209,7 @@
         "The number of viewers"
       ],
       "correctAnswer": 0,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 18,
@@ -245,7 +245,7 @@
         "Materials and solvents may require safe handling"
       ],
       "correctAnswer": 3,
-      "skill": "application"
+      "skill": "reasoning"
     }
   ]
 }

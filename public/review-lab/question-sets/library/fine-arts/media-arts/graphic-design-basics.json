@@ -29,7 +29,7 @@
         "Shrink the text"
       ],
       "correctAnswer": 1,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 3,
@@ -89,7 +89,7 @@
         "When compressing an audio file"
       ],
       "correctAnswer": 2,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 8,
@@ -113,7 +113,7 @@
         "Body text in all capitals and italics"
       ],
       "correctAnswer": 0,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 10,
@@ -149,7 +149,7 @@
         "Give it clear placement and visual emphasis"
       ],
       "correctAnswer": 3,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 13,
@@ -185,7 +185,7 @@
         "It automatically adds a license"
       ],
       "correctAnswer": 2,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 16,
@@ -233,7 +233,7 @@
         "Convert every element to a photograph"
       ],
       "correctAnswer": 2,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 20,

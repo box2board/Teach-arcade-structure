@@ -89,7 +89,7 @@
         "Above the top line without a ledger line"
       ],
       "correctAnswer": 2,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 8,
@@ -113,7 +113,7 @@
         "A change to bass clef"
       ],
       "correctAnswer": 0,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 10,
@@ -161,7 +161,7 @@
         "It shortens every note"
       ],
       "correctAnswer": 0,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 14,
@@ -185,7 +185,7 @@
         "F"
       ],
       "correctAnswer": 2,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 16,
@@ -197,7 +197,7 @@
         "Diminuendo or decrescendo marking"
       ],
       "correctAnswer": 3,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 17,

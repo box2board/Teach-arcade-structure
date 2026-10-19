@@ -125,7 +125,7 @@
         "Copy a style without attribution"
       ],
       "correctAnswer": 1,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 11,
@@ -233,7 +233,7 @@
         "Identify it by volume alone"
       ],
       "correctAnswer": 2,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 20,

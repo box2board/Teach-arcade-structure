@@ -65,7 +65,7 @@
         "A sixteenth note"
       ],
       "correctAnswer": 0,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 6,
@@ -89,7 +89,7 @@
         "Six"
       ],
       "correctAnswer": 2,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 8,
@@ -149,7 +149,7 @@
         "Staccato"
       ],
       "correctAnswer": 3,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 13,
@@ -173,7 +173,7 @@
         "Change pitches until it feels easier"
       ],
       "correctAnswer": 1,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 15,
@@ -233,7 +233,7 @@
         "Harmony"
       ],
       "correctAnswer": 2,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 20,

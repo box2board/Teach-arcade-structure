@@ -113,7 +113,7 @@
         "Balance through equal font sizes"
       ],
       "correctAnswer": 0,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 10,
@@ -137,7 +137,7 @@
         "A design with no focal point"
       ],
       "correctAnswer": 2,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 12,
@@ -173,7 +173,7 @@
         "Remove all negative space"
       ],
       "correctAnswer": 1,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 15,
@@ -197,7 +197,7 @@
         "A repeated sequence of shapes that leads the eye across a page"
       ],
       "correctAnswer": 3,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 17,
@@ -221,7 +221,7 @@
         "Rhythm"
       ],
       "correctAnswer": 1,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 19,

@@ -101,7 +101,7 @@
         "Consistent movement helps viewers follow where characters are going"
       ],
       "correctAnswer": 3,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 9,
@@ -149,7 +149,7 @@
         "Different shot sizes provide context, action, or detail"
       ],
       "correctAnswer": 3,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 13,
@@ -185,7 +185,7 @@
         "Remove character expression"
       ],
       "correctAnswer": 2,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 16,
@@ -233,7 +233,7 @@
         "Leave out shot order"
       ],
       "correctAnswer": 2,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 20,

@@ -29,7 +29,7 @@
         "The frame's weight only"
       ],
       "correctAnswer": 1,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 3,
@@ -113,7 +113,7 @@
         "It guarantees symmetry"
       ],
       "correctAnswer": 0,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 10,
@@ -149,7 +149,7 @@
         "Use suitable support and consider protective mounting"
       ],
       "correctAnswer": 3,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 13,
@@ -209,7 +209,7 @@
         "Leave blades uncovered"
       ],
       "correctAnswer": 0,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 18,
@@ -245,7 +245,7 @@
         "Provide clear labels or descriptions when materials or meaning need context"
       ],
       "correctAnswer": 3,
-      "skill": "application"
+      "skill": "reasoning"
     }
   ]
 }

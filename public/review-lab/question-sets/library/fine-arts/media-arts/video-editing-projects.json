@@ -113,7 +113,7 @@
         "Remove all transitions and context"
       ],
       "correctAnswer": 0,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 10,
@@ -137,7 +137,7 @@
         "Consistent typography"
       ],
       "correctAnswer": 2,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 12,
@@ -185,7 +185,7 @@
         "It removes the need to save the project"
       ],
       "correctAnswer": 2,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 16,
@@ -197,7 +197,7 @@
         "Rights, permissions, and any license conditions"
       ],
       "correctAnswer": 3,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 17,
@@ -233,7 +233,7 @@
         "Reviewing changes ownership"
       ],
       "correctAnswer": 2,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 20,

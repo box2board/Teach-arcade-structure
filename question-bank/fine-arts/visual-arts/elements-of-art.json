@@ -101,7 +101,7 @@
         "The overlapping form appears closer than the one it covers"
       ],
       "correctAnswer": 3,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 9,
@@ -113,7 +113,7 @@
         "A repeated outline only"
       ],
       "correctAnswer": 0,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 10,
@@ -125,7 +125,7 @@
         "Texture only"
       ],
       "correctAnswer": 1,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 11,
@@ -173,7 +173,7 @@
         "A straight ruler line"
       ],
       "correctAnswer": 1,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 15,
@@ -197,7 +197,7 @@
         "An area receiving stronger light"
       ],
       "correctAnswer": 3,
-      "skill": "application"
+      "skill": "reasoning"
     },
     {
       "id": 17,
