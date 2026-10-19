@@ -3,8 +3,8 @@
   "subject": "English Language Arts",
   "status": "draft-for-review",
   "gradeBand": "7–12",
-  "setCount": 40,
-  "questionCount": 800,
+  "setCount": 45,
+  "questionCount": 900,
   "sets": [
     {
       "id": "ela--literature-literary-analysis--plot-and-narrative-structure",
@@ -285,6 +285,41 @@
       "category": "Language, Grammar & Vocabulary",
       "questionCount": 20,
       "file": "language-grammar-vocabulary/synonyms-antonyms.json"
+    },
+    {
+      "id": "ela--language-grammar-vocabulary--multiple-meaning-words",
+      "title": "Multiple-Meaning Words",
+      "category": "Language, Grammar & Vocabulary",
+      "questionCount": 20,
+      "file": "language-grammar-vocabulary/multiple-meaning-words.json"
+    },
+    {
+      "id": "ela--writing-composition--narrative-writing",
+      "title": "Narrative Writing",
+      "category": "Writing & Composition",
+      "questionCount": 20,
+      "file": "writing-composition/narrative-writing.json"
+    },
+    {
+      "id": "ela--writing-composition--informational-explanatory-writing",
+      "title": "Informational & Explanatory Writing",
+      "category": "Writing & Composition",
+      "questionCount": 20,
+      "file": "writing-composition/informational-explanatory-writing.json"
+    },
+    {
+      "id": "ela--writing-composition--introductions-conclusions",
+      "title": "Introductions & Conclusions",
+      "category": "Writing & Composition",
+      "questionCount": 20,
+      "file": "writing-composition/introductions-conclusions.json"
+    },
+    {
+      "id": "ela--writing-composition--organization-paragraph-structure",
+      "title": "Organization & Paragraph Structure",
+      "category": "Writing & Composition",
+      "questionCount": 20,
+      "file": "writing-composition/organization-paragraph-structure.json"
     }
   ]
 }

@@ -305,5 +305,10 @@
   "question-bank/ela/speaking-listening/collaborative-conversations.json": "899505f017666f0ef62cf5f4263cf8b0b55053cb9ef52e52f26f77857c85c6ad",
   "question-bank/ela/writing-composition/test-style-writing-prompts.json": "4ec022b05f363221b769676ae0ec6b33603b8f50a000c87c6835fb71f5e87a0b",
   "question-bank/ela/writing-composition/test-taking-strategies.json": "1552f3f94689f331b15d17d4c2081768ca572619e85a81b4b5843bf53e568e12",
-  "question-bank/ela/language-grammar-vocabulary/synonyms-antonyms.json": "bfd618ad79f7ca87cdce0261451ed9b087679f9542006e561240fcbcb452f5f0"
+  "question-bank/ela/language-grammar-vocabulary/synonyms-antonyms.json": "bfd618ad79f7ca87cdce0261451ed9b087679f9542006e561240fcbcb452f5f0",
+  "question-bank/ela/language-grammar-vocabulary/multiple-meaning-words.json": "84d96d9b73ed4a83d6c4ead4d0b5c23ac56cefa190a5458fa70ef8343629a0a2",
+  "question-bank/ela/writing-composition/narrative-writing.json": "d11cdccc060d451624b991a6267288bdd77e857aaa19cf2dd7d758fcec8b3ccd",
+  "question-bank/ela/writing-composition/informational-explanatory-writing.json": "6922413a113e45c5f93640f597cb5b41cd3095a382c5ea6a54ef7f9383ce1c3d",
+  "question-bank/ela/writing-composition/introductions-conclusions.json": "0359a2d866c7640f2fcaf02d5359aa0f2a6cbc8a496693d72f5b8a4bdaacfc40",
+  "question-bank/ela/writing-composition/organization-paragraph-structure.json": "cbf6055f3fe204985db01b02e6eb3bbb2ce4d91eef6149ea13131a377d175c85"
 }

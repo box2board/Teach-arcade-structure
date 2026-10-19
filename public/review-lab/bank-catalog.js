@@ -3069,5 +3069,55 @@ export const BANK_SETS=[
     "questionCount": 20,
     "description": "Language, Grammar & Vocabulary · 7–12",
     "file": "language-grammar-vocabulary/synonyms-antonyms.json"
+  },
+  {
+    "id": "ela--language-grammar-vocabulary--multiple-meaning-words",
+    "title": "Multiple-Meaning Words",
+    "subject": "English Language Arts",
+    "category": "Language, Grammar & Vocabulary",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Language, Grammar & Vocabulary · 7–12",
+    "file": "language-grammar-vocabulary/multiple-meaning-words.json"
+  },
+  {
+    "id": "ela--writing-composition--narrative-writing",
+    "title": "Narrative Writing",
+    "subject": "English Language Arts",
+    "category": "Writing & Composition",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Writing & Composition · 7–12",
+    "file": "writing-composition/narrative-writing.json"
+  },
+  {
+    "id": "ela--writing-composition--informational-explanatory-writing",
+    "title": "Informational & Explanatory Writing",
+    "subject": "English Language Arts",
+    "category": "Writing & Composition",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Writing & Composition · 7–12",
+    "file": "writing-composition/informational-explanatory-writing.json"
+  },
+  {
+    "id": "ela--writing-composition--introductions-conclusions",
+    "title": "Introductions & Conclusions",
+    "subject": "English Language Arts",
+    "category": "Writing & Composition",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Writing & Composition · 7–12",
+    "file": "writing-composition/introductions-conclusions.json"
+  },
+  {
+    "id": "ela--writing-composition--organization-paragraph-structure",
+    "title": "Organization & Paragraph Structure",
+    "subject": "English Language Arts",
+    "category": "Writing & Composition",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Writing & Composition · 7–12",
+    "file": "writing-composition/organization-paragraph-structure.json"
   }
 ];
