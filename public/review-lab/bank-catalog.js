@@ -3269,5 +3269,55 @@ export const BANK_SETS=[
     "questionCount": 20,
     "description": "Pre-Algebra & Number Sense · 7–12",
     "file": "pre-algebra/percents.json"
+  },
+  {
+    "id": "math--pre-algebra--fact-fluency-games",
+    "title": "Fact Fluency Games",
+    "subject": "Math",
+    "category": "Pre-Algebra & Number Sense",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Pre-Algebra & Number Sense · 7–12",
+    "file": "pre-algebra/fact-fluency-games.json"
+  },
+  {
+    "id": "math--pre-algebra--fraction-integer-games",
+    "title": "Fraction & Integer Games",
+    "subject": "Math",
+    "category": "Pre-Algebra & Number Sense",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Pre-Algebra & Number Sense · 7–12",
+    "file": "pre-algebra/fraction-integer-games.json"
+  },
+  {
+    "id": "math--algebra-i--algebra-equation-games",
+    "title": "Algebra & Equation Games",
+    "subject": "Math",
+    "category": "Algebra I",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Algebra I · 7–12",
+    "file": "algebra-1/algebra-equation-games.json"
+  },
+  {
+    "id": "math--pre-algebra--logic-puzzles-brain-teasers",
+    "title": "Logic Puzzles & Brain Teasers",
+    "subject": "Math",
+    "category": "Pre-Algebra & Number Sense",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Pre-Algebra & Number Sense · 7–12",
+    "file": "pre-algebra/logic-puzzles-brain-teasers.json"
+  },
+  {
+    "id": "math--pre-algebra--escape-room-adventure-review-games",
+    "title": "Escape Room & Adventure Review Games",
+    "subject": "Math",
+    "category": "Pre-Algebra & Number Sense",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Pre-Algebra & Number Sense · 7–12",
+    "file": "pre-algebra/escape-room-adventure-review-games.json"
   }
 ];

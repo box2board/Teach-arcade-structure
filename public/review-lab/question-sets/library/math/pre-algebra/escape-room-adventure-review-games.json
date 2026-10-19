@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--pre-algebra--escape-room-adventure-review-games",
+  "title": "Escape Room & Adventure Review Games",
+  "subject": "Math",
+  "category": "Pre-Algebra & Number Sense",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "A gate code is the value of 18 ÷ 3 + 4. What code opens it?",
+      "choices": [
+        "10",
+        "6",
+        "12",
+        "30"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 2,
+      "question": "A map scale is 1 cm = 2 km. A path is 7 cm on the map. How long is the route?",
+      "choices": [
+        "9 km",
+        "14 km",
+        "12 km",
+        "28 km"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "A vault needs the solution to 3x = 27. What number is the key?",
+      "choices": [
+        "8",
+        "24",
+        "9",
+        "30"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "A clue says 'the temperature is 6 below zero, then rises 11 degrees.' What is the final temperature?",
+      "choices": [
+        "−17°C",
+        "17°C",
+        "−5°C",
+        "5°C"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 5,
+      "question": "A bridge opens when players identify the prime number. Which is prime?",
+      "choices": [
+        "29",
+        "27",
+        "33",
+        "39"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "A chest contains 3/4 of 20 tokens. How many tokens are inside?",
+      "choices": [
+        "5",
+        "15",
+        "12",
+        "17"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 7,
+      "question": "A sequence lock reads 5, 10, 20, 40, __. What is next?",
+      "choices": [
+        "45",
+        "60",
+        "80",
+        "100"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 8,
+      "question": "The escape timer shows 1 hour 35 minutes. How many minutes is that?",
+      "choices": [
+        "85",
+        "135",
+        "105",
+        "95"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "A door requires the area of a 6-by-8 rectangle. What is the code?",
+      "choices": [
+        "48",
+        "28",
+        "14",
+        "64"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "A puzzle asks for 20% of 75. What is the answer?",
+      "choices": [
+        "20",
+        "15",
+        "55",
+        "3.75"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "A player has 45 coins and spends 3/5 of them. How many remain?",
+      "choices": [
+        "27",
+        "15",
+        "18",
+        "30"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 12,
+      "question": "A clue says to round 6,481 to the nearest hundred. What number should be entered?",
+      "choices": [
+        "6,400",
+        "6,480",
+        "7,000",
+        "6,500"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "A 90° turn is made twice in the same direction. How many degrees has the player turned?",
+      "choices": [
+        "180°",
+        "90°",
+        "270°",
+        "360°"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 14,
+      "question": "A code is the mean of 4, 8, and 12. What is it?",
+      "choices": [
+        "6",
+        "8",
+        "12",
+        "24"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "An inventory lists 4 boxes with 9 items each; 7 items are used. How many remain?",
+      "choices": [
+        "36",
+        "27",
+        "29",
+        "43"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 16,
+      "question": "A clue shows −4, 0, and 3 on a number line. Which number is greatest?",
+      "choices": [
+        "−4",
+        "0",
+        "−3",
+        "3"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "A lock opens with the perimeter of a square with side 11. What number is the code?",
+      "choices": [
+        "44",
+        "121",
+        "22",
+        "33"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 18,
+      "question": "A team needs 50 points. It has 32 and earns 6 per challenge. How many full challenges are needed?",
+      "choices": [
+        "2",
+        "3",
+        "4",
+        "18"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A map has coordinates (−2, 4). In which quadrant is the location?",
+      "choices": [
+        "Quadrant I",
+        "Quadrant III",
+        "Quadrant II",
+        "Quadrant IV"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "The final clue is 2³ + 5. What is the answer?",
+      "choices": [
+        "11",
+        "21",
+        "16",
+        "13"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

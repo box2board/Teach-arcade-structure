@@ -3,8 +3,8 @@
   "subject": "Math",
   "status": "draft-for-review",
   "gradeBand": "7–12",
-  "setCount": 90,
-  "questionCount": 1800,
+  "setCount": 95,
+  "questionCount": 1900,
   "sets": [
     {
       "id": "math--pre-algebra--integers-and-rational-numbers",
@@ -635,6 +635,41 @@
       "category": "Pre-Algebra & Number Sense",
       "questionCount": 20,
       "file": "pre-algebra/percents.json"
+    },
+    {
+      "id": "math--pre-algebra--fact-fluency-games",
+      "title": "Fact Fluency Games",
+      "category": "Pre-Algebra & Number Sense",
+      "questionCount": 20,
+      "file": "pre-algebra/fact-fluency-games.json"
+    },
+    {
+      "id": "math--pre-algebra--fraction-integer-games",
+      "title": "Fraction & Integer Games",
+      "category": "Pre-Algebra & Number Sense",
+      "questionCount": 20,
+      "file": "pre-algebra/fraction-integer-games.json"
+    },
+    {
+      "id": "math--algebra-i--algebra-equation-games",
+      "title": "Algebra & Equation Games",
+      "category": "Algebra I",
+      "questionCount": 20,
+      "file": "algebra-1/algebra-equation-games.json"
+    },
+    {
+      "id": "math--pre-algebra--logic-puzzles-brain-teasers",
+      "title": "Logic Puzzles & Brain Teasers",
+      "category": "Pre-Algebra & Number Sense",
+      "questionCount": 20,
+      "file": "pre-algebra/logic-puzzles-brain-teasers.json"
+    },
+    {
+      "id": "math--pre-algebra--escape-room-adventure-review-games",
+      "title": "Escape Room & Adventure Review Games",
+      "category": "Pre-Algebra & Number Sense",
+      "questionCount": 20,
+      "file": "pre-algebra/escape-room-adventure-review-games.json"
     }
   ]
 }

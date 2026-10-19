@@ -325,5 +325,10 @@
   "question-bank/math/algebra-2-functions/algebra-2.json": "3de3bfce7f5e50d26efef6193787192135c1951ea70984c752a8f120af7fdb1b",
   "question-bank/math/calculus/calculus.json": "25c4a4855dd2c6990b73d1814cfe25f7a7d6dff4942483da6c4ea26c0971af9c",
   "question-bank/math/pre-algebra/integer-operations.json": "18b783c727eec067bf8b1d6f0b9b3cbaf2afcdb324c7be593c9efdb68925bd74",
-  "question-bank/math/pre-algebra/percents.json": "171e4a0ac896f3b8344d3dad6bae72919f2d402c6e67c03951f59f2e2bee0b97"
+  "question-bank/math/pre-algebra/percents.json": "171e4a0ac896f3b8344d3dad6bae72919f2d402c6e67c03951f59f2e2bee0b97",
+  "question-bank/math/pre-algebra/fact-fluency-games.json": "ec6670f9bca7dc5a7bfc94f5177663bb14da00bef75bb79bf4534f3d6e64705f",
+  "question-bank/math/pre-algebra/fraction-integer-games.json": "82909b0a9fa3f8f8e714cbcf3824273fc03058147b02a7041ba9630329e5dfeb",
+  "question-bank/math/algebra-1/algebra-equation-games.json": "2fdedc6a561484e65ffb9beaaa2caf82893a1e7b2d42bb0890c5a50e1338947e",
+  "question-bank/math/pre-algebra/logic-puzzles-brain-teasers.json": "ead87469f4275656fb1961994579d845e49da25390f5bc046f4780fba76a3ced",
+  "question-bank/math/pre-algebra/escape-room-adventure-review-games.json": "14f3922ead2099a860fca2ccf85d4e5c0ef6e4572175e67d7c460b68d4dd3091"
 }
