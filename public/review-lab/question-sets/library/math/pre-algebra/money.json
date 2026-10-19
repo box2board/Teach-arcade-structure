@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--pre-algebra--money",
+  "title": "Money",
+  "subject": "Math",
+  "category": "Pre-Algebra & Number Sense",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Three items cost $2.45 each. What is the total?",
+      "choices": [
+        "$7.35",
+        "$6.35",
+        "$7.25",
+        "$8.35"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 2,
+      "question": "You pay $20 for an item costing $13.68. What change should you receive?",
+      "choices": [
+        "$7.32",
+        "$6.32",
+        "$6.42",
+        "$5.32"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "A 12-ounce cereal box costs $3.60. What is the cost per ounce?",
+      "choices": [
+        "$0.03",
+        "$0.36",
+        "$0.30",
+        "$0.40"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "A shirt marked $40 is discounted by 25%. What is the sale price before tax?",
+      "choices": [
+        "$25",
+        "$35",
+        "$10",
+        "$30"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 5,
+      "question": "A meal costs $18. A 15% tip is added. How much is the tip?",
+      "choices": [
+        "$2.70",
+        "$1.80",
+        "$3.00",
+        "$15.00"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "Which is the better unit price?",
+      "choices": [
+        "$3.20 for 2 pounds",
+        "$4.50 for 3 pounds",
+        "Both cost the same per pound",
+        "$5.25 for 3 pounds"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 7,
+      "question": "A bank account has $125. You deposit $40 and withdraw $28. What is the balance?",
+      "choices": [
+        "$113",
+        "$193",
+        "$137",
+        "$97"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 8,
+      "question": "An item costs $56 before 8% sales tax. What is the total price?",
+      "choices": [
+        "$64.00",
+        "$56.08",
+        "$58.48",
+        "$60.48"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "A student saves $12 each week for 9 weeks. How much is saved?",
+      "choices": [
+        "$108",
+        "$96",
+        "$112",
+        "$21"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "A $75 bicycle helmet is marked 20% off. How much is the discount?",
+      "choices": [
+        "$20",
+        "$15",
+        "$60",
+        "$7.50"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "You have $50 and spend $18.75 on a book and $12.40 on supplies. How much remains?",
+      "choices": [
+        "$19.85",
+        "$31.25",
+        "$18.85",
+        "$17.85"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 12,
+      "question": "A worker earns $16 per hour for 7.5 hours. What is the gross pay?",
+      "choices": [
+        "$112",
+        "$126",
+        "$160",
+        "$120"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 13,
+      "question": "Which expression calculates the total cost of 5 notebooks at $2.30 each?",
+      "choices": [
+        "5 × $2.30",
+        "5 + $2.30",
+        "$2.30 ÷ 5",
+        "5 − $2.30"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "A monthly subscription is $9.99. What is the cost for 3 months, before any fees?",
+      "choices": [
+        "$19.98",
+        "$29.97",
+        "$30.97",
+        "$12.99"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "A $60 item increases in price by 10%. What is its new price?",
+      "choices": [
+        "$61",
+        "$70",
+        "$66",
+        "$54"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A shopper compares 500 g of rice for $2.00 with 1 kg for $3.60. Which is cheaper per kilogram?",
+      "choices": [
+        "The 500-g package",
+        "They cost the same per kilogram",
+        "There is not enough information",
+        "The 1-kg package"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A customer buys two items costing $14.25 and $8.80 and pays with $30. How much change is due?",
+      "choices": [
+        "$6.95",
+        "$7.05",
+        "$5.95",
+        "$15.75"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A person budgets $240 for groceries over 4 weeks. What is the weekly budget?",
+      "choices": [
+        "$50",
+        "$60",
+        "$64",
+        "$960"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "A bank pays $5 interest on a $100 deposit in one year. What simple interest rate does that represent?",
+      "choices": [
+        "0.5%",
+        "20%",
+        "5%",
+        "50%"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A price changes from $80 to $100. What is the percent increase?",
+      "choices": [
+        "20%",
+        "80%",
+        "125%",
+        "25%"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

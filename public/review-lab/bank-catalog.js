@@ -3169,5 +3169,55 @@ export const BANK_SETS=[
     "questionCount": 20,
     "description": "Pre-Algebra & Number Sense · 7–12",
     "file": "pre-algebra/decimals-intro.json"
+  },
+  {
+    "id": "math--pre-algebra--measurement-data",
+    "title": "Measurement & Data",
+    "subject": "Math",
+    "category": "Pre-Algebra & Number Sense",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Pre-Algebra & Number Sense · 7–12",
+    "file": "pre-algebra/measurement-data.json"
+  },
+  {
+    "id": "math--pre-algebra--time",
+    "title": "Time",
+    "subject": "Math",
+    "category": "Pre-Algebra & Number Sense",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Pre-Algebra & Number Sense · 7–12",
+    "file": "pre-algebra/time.json"
+  },
+  {
+    "id": "math--pre-algebra--money",
+    "title": "Money",
+    "subject": "Math",
+    "category": "Pre-Algebra & Number Sense",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Pre-Algebra & Number Sense · 7–12",
+    "file": "pre-algebra/money.json"
+  },
+  {
+    "id": "math--geometry--geometry-shapes",
+    "title": "Geometry & Shapes",
+    "subject": "Math",
+    "category": "Geometry",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Geometry · 7–12",
+    "file": "geometry/geometry-shapes.json"
+  },
+  {
+    "id": "math--pre-algebra--word-problems-problem-solving",
+    "title": "Word Problems & Problem Solving",
+    "subject": "Math",
+    "category": "Pre-Algebra & Number Sense",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Pre-Algebra & Number Sense · 7–12",
+    "file": "pre-algebra/word-problems-problem-solving.json"
   }
 ];

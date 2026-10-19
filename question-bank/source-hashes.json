@@ -315,5 +315,10 @@
   "question-bank/math/pre-algebra/multiplication-division.json": "b67884e7b06cec7c28ab52ae8ef53f7e3620f960c1b3c2725a743af59f0bc883",
   "question-bank/math/pre-algebra/place-value-rounding.json": "4ed202bfcc2d57aedbff32af28dd14a298911002c4aa27bed1c66e079431814d",
   "question-bank/math/pre-algebra/fractions-basics.json": "185ab9815e03df213073f12c8add332f9cec21f4f0e9817db6266436e64f116b",
-  "question-bank/math/pre-algebra/decimals-intro.json": "a2478fff265e904ea5d11d2a77a4d820b8b7f537b73032413e1082d4e2376f0a"
+  "question-bank/math/pre-algebra/decimals-intro.json": "a2478fff265e904ea5d11d2a77a4d820b8b7f537b73032413e1082d4e2376f0a",
+  "question-bank/math/pre-algebra/measurement-data.json": "c6db055250d9ec8d95d10ac121e27d669d039d40341e8197ff22fd19534eeb3a",
+  "question-bank/math/pre-algebra/time.json": "46fc0ecfacf4328bfaaa9bbeb5762923d1f5646db6c787594d6e1409470fc4ae",
+  "question-bank/math/pre-algebra/money.json": "875831a015e52101cafa7ce43dcfd0212603b82f0dcf82fa77de8c9f16db1510",
+  "question-bank/math/geometry/geometry-shapes.json": "07c3aa77c59edf9f272cb664daed646921792fbb9adbb58373cfa869bca2c505",
+  "question-bank/math/pre-algebra/word-problems-problem-solving.json": "26fa97315d7765187d2e211aab817e8238ec26bfc136fd83e63cc7d6af7ff351"
 }

@@ -3,8 +3,8 @@
   "subject": "Math",
   "status": "draft-for-review",
   "gradeBand": "7–12",
-  "setCount": 80,
-  "questionCount": 1600,
+  "setCount": 85,
+  "questionCount": 1700,
   "sets": [
     {
       "id": "math--pre-algebra--integers-and-rational-numbers",
@@ -565,6 +565,41 @@
       "category": "Pre-Algebra & Number Sense",
       "questionCount": 20,
       "file": "pre-algebra/decimals-intro.json"
+    },
+    {
+      "id": "math--pre-algebra--measurement-data",
+      "title": "Measurement & Data",
+      "category": "Pre-Algebra & Number Sense",
+      "questionCount": 20,
+      "file": "pre-algebra/measurement-data.json"
+    },
+    {
+      "id": "math--pre-algebra--time",
+      "title": "Time",
+      "category": "Pre-Algebra & Number Sense",
+      "questionCount": 20,
+      "file": "pre-algebra/time.json"
+    },
+    {
+      "id": "math--pre-algebra--money",
+      "title": "Money",
+      "category": "Pre-Algebra & Number Sense",
+      "questionCount": 20,
+      "file": "pre-algebra/money.json"
+    },
+    {
+      "id": "math--geometry--geometry-shapes",
+      "title": "Geometry & Shapes",
+      "category": "Geometry",
+      "questionCount": 20,
+      "file": "geometry/geometry-shapes.json"
+    },
+    {
+      "id": "math--pre-algebra--word-problems-problem-solving",
+      "title": "Word Problems & Problem Solving",
+      "category": "Pre-Algebra & Number Sense",
+      "questionCount": 20,
+      "file": "pre-algebra/word-problems-problem-solving.json"
     }
   ]
 }
