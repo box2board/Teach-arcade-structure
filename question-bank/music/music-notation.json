@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--music--music-notation",
+  "title": "Music Notation",
+  "subject": "Fine Arts",
+  "category": "Music",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What does a treble clef identify?",
+      "choices": [
+        "The pitch reference for notes on the staff",
+        "The tempo of the music",
+        "The instrument's loudness",
+        "The number of measures"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "How many lines are on a standard musical staff?",
+      "choices": [
+        "Four",
+        "Five",
+        "Six",
+        "Eight"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What does a barline do?",
+      "choices": [
+        "Raises every note",
+        "Marks a crescendo",
+        "Separates measures on the staff",
+        "Shows the song's title"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What does a sharp sign do to a note?",
+      "choices": [
+        "Lowers it by one semitone",
+        "Makes it louder",
+        "Doubles its duration",
+        "Raises it by one semitone"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What does a flat sign do to a note?",
+      "choices": [
+        "Lowers it by one semitone",
+        "Raises it by one semitone",
+        "Repeats the note",
+        "Changes the meter"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What does a natural sign indicate?",
+      "choices": [
+        "Play the note very softly",
+        "Return to the unaltered pitch for that note",
+        "Hold the note indefinitely",
+        "Repeat the prior measure"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "Where is middle C commonly written in treble clef?",
+      "choices": [
+        "On the top line",
+        "On the second space",
+        "On a ledger line below the staff",
+        "Above the top line without a ledger line"
+      ],
+      "correctAnswer": 2,
+      "skill": "application"
+    },
+    {
+      "id": 8,
+      "question": "What does a key signature show?",
+      "choices": [
+        "The exact volume of each note",
+        "The number of performers",
+        "The song's copyright date",
+        "Which pitches are consistently sharp or flat in the piece"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What does a quarter rest represent?",
+      "choices": [
+        "One beat of silence in common time",
+        "Two beats of sound",
+        "A repeated note",
+        "A change to bass clef"
+      ],
+      "correctAnswer": 0,
+      "skill": "application"
+    },
+    {
+      "id": 10,
+      "question": "What does a dot after a note usually do?",
+      "choices": [
+        "Doubles its pitch",
+        "Adds half the note's original value",
+        "Lowers it a semitone",
+        "Makes it staccato"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "What does a repeat sign tell a performer?",
+      "choices": [
+        "Transpose the melody",
+        "Stop the piece",
+        "Return to a marked section and play it again",
+        "Change to a new instrument"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "What does a fermata tell a performer?",
+      "choices": [
+        "Play exactly one beat",
+        "Increase volume steadily",
+        "Repeat the whole song",
+        "Hold a note or rest longer at the performer's discretion"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "How does a dynamic marking such as p usually affect performance?",
+      "choices": [
+        "It indicates a soft volume",
+        "It indicates a fast tempo",
+        "It raises pitch",
+        "It shortens every note"
+      ],
+      "correctAnswer": 0,
+      "skill": "application"
+    },
+    {
+      "id": 14,
+      "question": "What does a crescendo marking request?",
+      "choices": [
+        "Gradually get softer",
+        "Gradually get louder",
+        "Play faster",
+        "Hold a rest"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "A note is on the bottom line of treble clef. What is its letter name?",
+      "choices": [
+        "G",
+        "B",
+        "E",
+        "F"
+      ],
+      "correctAnswer": 2,
+      "skill": "application"
+    },
+    {
+      "id": 16,
+      "question": "Which symbol indicates a gradual decrease in loudness?",
+      "choices": [
+        "Crescendo marking",
+        "Sharp sign",
+        "Repeat sign",
+        "Diminuendo or decrescendo marking"
+      ],
+      "correctAnswer": 3,
+      "skill": "application"
+    },
+    {
+      "id": 17,
+      "question": "What does a ledger line allow notation to do?",
+      "choices": [
+        "Extend the staff for pitches above or below its five lines",
+        "Show an extra measure",
+        "Mark a longer rest",
+        "Separate instruments"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 18,
+      "question": "What is a chord symbol used for in a lead sheet?",
+      "choices": [
+        "Specify the lyric's syllables",
+        "Indicate harmony for accompaniment",
+        "Mark a breath only",
+        "Choose the recording device"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "Why should a performer check the clef before reading note names?",
+      "choices": [
+        "The clef shows the room temperature",
+        "The clef determines the audience",
+        "The clef assigns pitch names to staff positions",
+        "The clef replaces the time signature"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "What does a time signature appear to communicate?",
+      "choices": [
+        "The piece's key center only",
+        "The volume of the first note",
+        "The instrument's range",
+        "Beat grouping and the note value counted as a beat"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    }
+  ]
+}

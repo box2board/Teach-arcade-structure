@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--music--rhythm-beat",
+  "title": "Rhythm & Beat",
+  "subject": "Fine Arts",
+  "category": "Music",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a steady beat?",
+      "choices": [
+        "A regular pulse that organizes music",
+        "The sequence of pitches in a melody",
+        "A change in volume",
+        "A group of instruments"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What does rhythm describe?",
+      "choices": [
+        "The loudness of a performance",
+        "The pattern of sounds and silences over time",
+        "The key signature",
+        "The instrument's material"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "A drummer counts 1, 2, 3, 4 evenly. What are they marking?",
+      "choices": [
+        "Notes in a scale",
+        "Dynamic levels",
+        "Beats in a measure",
+        "Instrument families"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "What is a rest in written music?",
+      "choices": [
+        "A note held forever",
+        "A change in tempo",
+        "A repeated section",
+        "A measured period of silence"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "If a note lasts two beats in a meter where the quarter note gets one beat, what is it?",
+      "choices": [
+        "A half note",
+        "A whole note",
+        "An eighth note",
+        "A sixteenth note"
+      ],
+      "correctAnswer": 0,
+      "skill": "application"
+    },
+    {
+      "id": 6,
+      "question": "What can syncopation do to a rhythm?",
+      "choices": [
+        "Remove all pulse",
+        "Emphasize weak beats or offbeats",
+        "Make every note the same pitch",
+        "Change major to minor"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "In 3/4 meter, how many quarter-note beats are in each measure?",
+      "choices": [
+        "Two",
+        "Four",
+        "Three",
+        "Six"
+      ],
+      "correctAnswer": 2,
+      "skill": "application"
+    },
+    {
+      "id": 8,
+      "question": "What is a measure?",
+      "choices": [
+        "A term for sound volume",
+        "A type of chord",
+        "A rehearsal break",
+        "A unit of music grouped by the time signature"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "A pattern accents beats 2 and 4. What effect may it create?",
+      "choices": [
+        "A strong backbeat feel",
+        "A change of key",
+        "A softer instrument timbre",
+        "An unmetered silence"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 10,
+      "question": "How does tempo differ from rhythm?",
+      "choices": [
+        "Tempo is pitch; rhythm is volume",
+        "Tempo is the speed of the beat; rhythm is the pattern of durations",
+        "Tempo is silence; rhythm is timbre",
+        "They mean exactly the same thing"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What does a metronome provide?",
+      "choices": [
+        "A set of pitches",
+        "A dynamic marking",
+        "A steady reference pulse",
+        "A melody line"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "If a performer plays notes shorter than written, what articulation are they approximating?",
+      "choices": [
+        "Legato",
+        "Fermata",
+        "Crescendo",
+        "Staccato"
+      ],
+      "correctAnswer": 3,
+      "skill": "application"
+    },
+    {
+      "id": 13,
+      "question": "What does a tie do between two notes of the same pitch?",
+      "choices": [
+        "Combines their durations into one sustained sound",
+        "Repeats the second note",
+        "Raises the pitch by a step",
+        "Marks a silence"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "How can a musician practice a difficult rhythm accurately?",
+      "choices": [
+        "Play it as fast as possible immediately",
+        "Slow it down, count subdivisions, then gradually increase tempo",
+        "Ignore rests and accents",
+        "Change pitches until it feels easier"
+      ],
+      "correctAnswer": 1,
+      "skill": "application"
+    },
+    {
+      "id": 15,
+      "question": "What does a time signature's top number usually indicate?",
+      "choices": [
+        "Which note is loudest",
+        "How many sharps are used",
+        "How many beats are grouped in each measure",
+        "The song's total duration"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A measure in 6/8 often groups its six eighth notes as what?",
+      "choices": [
+        "Three groups of two only",
+        "Six quarter-note beats",
+        "One whole-note beat",
+        "Two groups of three"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "What is a subdivision of the beat?",
+      "choices": [
+        "A smaller pulse counted within a beat",
+        "A new key signature",
+        "A repeated melody",
+        "A long silence between pieces"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Why do ensemble musicians use a conductor's beat pattern?",
+      "choices": [
+        "To select the room's acoustics",
+        "To coordinate pulse, entrances, and tempo",
+        "To identify the composer",
+        "To tune every instrument automatically"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "A rhythm uses long-short-long-short durations. Which musical element is being varied?",
+      "choices": [
+        "Pitch range",
+        "Timbre",
+        "Duration pattern",
+        "Harmony"
+      ],
+      "correctAnswer": 2,
+      "skill": "application"
+    },
+    {
+      "id": 20,
+      "question": "What should a player do if they lose the beat during ensemble performance?",
+      "choices": [
+        "Play louder over everyone",
+        "Stop the entire ensemble",
+        "Change the meter",
+        "Listen, count, and rejoin at an appropriate point"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

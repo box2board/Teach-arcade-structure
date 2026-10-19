@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--music--melody-pitch",
+  "title": "Melody & Pitch",
+  "subject": "Fine Arts",
+  "category": "Music",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is pitch?",
+      "choices": [
+        "How high or low a sound seems",
+        "How long a sound lasts",
+        "How loud a sound is",
+        "How many instruments play"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is a melody?",
+      "choices": [
+        "A regular pulse only",
+        "A sequence of pitches heard as a musical line",
+        "A set of volume changes",
+        "A group of rests"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What does contour describe in a melody?",
+      "choices": [
+        "The speed of the beat",
+        "The material of an instrument",
+        "The shape created as pitches rise, fall, or repeat",
+        "The number of measures"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "A melody moves from C to D. What happened to its pitch?",
+      "choices": [
+        "It moved downward by an octave",
+        "It stayed exactly the same",
+        "It changed only in loudness",
+        "It moved upward by a step"
+      ],
+      "correctAnswer": 3,
+      "skill": "application"
+    },
+    {
+      "id": 5,
+      "question": "What is an octave?",
+      "choices": [
+        "The interval between a pitch and the next pitch with the same letter name",
+        "A group of eight measures",
+        "A dynamic level",
+        "A tempo marking"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is a stepwise melody?",
+      "choices": [
+        "One that uses only repeated notes",
+        "One that mostly moves between neighboring scale notes",
+        "One made entirely of rests",
+        "One played only by percussion"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "What is a leap in melodic motion?",
+      "choices": [
+        "A repeated beat",
+        "A gradual increase in volume",
+        "A move across more than one scale step",
+        "A note held through a bar line"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "How can a repeated melodic motif help a listener?",
+      "choices": [
+        "It removes all changes from the music",
+        "It determines the instrument's size",
+        "It sets the recording format",
+        "It creates a recognizable idea that can unify a piece"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What does unison mean in an ensemble?",
+      "choices": [
+        "Performers sound the same pitch or melody together",
+        "Performers each play unrelated tempos",
+        "One player rests throughout",
+        "The music has no melody"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "If two notes have the same pitch but different tone quality, what differs?",
+      "choices": [
+        "Duration",
+        "Timbre",
+        "Key signature",
+        "Beat count"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 11,
+      "question": "A singer wants to begin a phrase on a comfortable pitch. What can help?",
+      "choices": [
+        "Sing the highest note possible",
+        "Change the rhythm only",
+        "Use a reference pitch and choose a suitable vocal range",
+        "Ignore the starting note"
+      ],
+      "correctAnswer": 2,
+      "skill": "application"
+    },
+    {
+      "id": 12,
+      "question": "What is a phrase in music?",
+      "choices": [
+        "A single beat in every case",
+        "A list of instruments",
+        "A type of accidental",
+        "A musical thought that feels like a unit"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "How can a melody create a sense of question and answer?",
+      "choices": [
+        "Use a phrase that feels open followed by one that feels resolved",
+        "Repeat one pitch at one volume forever",
+        "Remove all phrase endings",
+        "Change the time signature each measure"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What does a pitch's frequency relate to?",
+      "choices": [
+        "How long a note is sustained",
+        "How high or low the pitch is perceived",
+        "How far away the instrument is",
+        "The note's printed color"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why might a melody use a narrow range?",
+      "choices": [
+        "It guarantees the melody is minor",
+        "It removes the need for rhythm",
+        "It can sound focused, singable, or restrained",
+        "It creates more octaves"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 16,
+      "question": "Which change creates a descending melodic contour?",
+      "choices": [
+        "The notes grow louder",
+        "The tempo becomes faster",
+        "The rests become longer",
+        "The pitches move lower over time"
+      ],
+      "correctAnswer": 3,
+      "skill": "application"
+    },
+    {
+      "id": 17,
+      "question": "What is a call-and-response melody?",
+      "choices": [
+        "A musical phrase answered by another performer or group",
+        "A melody with no repeated ideas",
+        "A solo with no pauses",
+        "A sequence of unrelated scales"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "How can a composer make a melody more memorable?",
+      "choices": [
+        "Change every note unpredictably",
+        "Use clear motifs, repetition, and purposeful variation",
+        "Avoid any rhythmic shape",
+        "Use the maximum possible range"
+      ],
+      "correctAnswer": 1,
+      "skill": "application"
+    },
+    {
+      "id": 19,
+      "question": "What does a cadence often signal at a phrase ending?",
+      "choices": [
+        "A new instrument family",
+        "A change in recording quality",
+        "A point of rest or musical resolution",
+        "A louder beat in every style"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "Two melodies use the same pitches but different rhythms. What changed?",
+      "choices": [
+        "Their pitch collection",
+        "Their timbre necessarily",
+        "Their octave necessarily",
+        "Their rhythmic pattern"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

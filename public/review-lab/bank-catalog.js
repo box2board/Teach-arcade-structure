@@ -3661,4 +3661,55 @@ export const BANK_SETS=[
     "description": "Media Arts · 7–12",
     "file": "media-arts/video-editing-projects.json"
   }
+,
+  {
+    "id": "fine-arts--music--rhythm-beat",
+    "title": "Rhythm & Beat",
+    "subject": "Fine Arts",
+    "category": "Music",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Music · 7–12",
+    "file": "music/rhythm-beat.json"
+  },
+  {
+    "id": "fine-arts--music--melody-pitch",
+    "title": "Melody & Pitch",
+    "subject": "Fine Arts",
+    "category": "Music",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Music · 7–12",
+    "file": "music/melody-pitch.json"
+  },
+  {
+    "id": "fine-arts--music--music-notation",
+    "title": "Music Notation",
+    "subject": "Fine Arts",
+    "category": "Music",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Music · 7–12",
+    "file": "music/music-notation.json"
+  },
+  {
+    "id": "fine-arts--music--scales-keys",
+    "title": "Scales & Keys",
+    "subject": "Fine Arts",
+    "category": "Music",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Music · 7–12",
+    "file": "music/scales-keys.json"
+  },
+  {
+    "id": "fine-arts--music--dynamics-tempo",
+    "title": "Dynamics & Tempo",
+    "subject": "Fine Arts",
+    "category": "Music",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Music · 7–12",
+    "file": "music/dynamics-tempo.json"
+  }
 ];

@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--music--scales-keys",
+  "title": "Scales & Keys",
+  "subject": "Fine Arts",
+  "category": "Music",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a scale?",
+      "choices": [
+        "An ordered set of pitches arranged by a pattern",
+        "A list of dynamic markings",
+        "A group of unrelated instruments",
+        "A sequence of measures only"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is the tonic?",
+      "choices": [
+        "The loudest note",
+        "The home or central pitch of a key",
+        "The fastest beat",
+        "The last instrument to enter"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "How many different letter names appear in a major scale before the octave repeats?",
+      "choices": [
+        "Five",
+        "Eight",
+        "Seven",
+        "Twelve"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is the interval pattern of a major scale in whole and half steps?",
+      "choices": [
+        "W-H-W-W-H-W-W",
+        "H-H-W-W-W-W-H",
+        "W-W-W-H-H-W-H",
+        "W-W-H-W-W-W-H"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What does a key signature help identify?",
+      "choices": [
+        "The scale and tonal center a piece is organized around",
+        "The exact tempo",
+        "The instrument's material",
+        "The order of verses"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "A piece has one sharp in its key signature. Which pitch is sharp?",
+      "choices": [
+        "C",
+        "F",
+        "G",
+        "B"
+      ],
+      "correctAnswer": 1,
+      "skill": "application"
+    },
+    {
+      "id": 7,
+      "question": "What is a minor scale often associated with in introductory theory?",
+      "choices": [
+        "A tempo that is always slow",
+        "A melody with no tonic",
+        "A different interval pattern and tonal color from major",
+        "A piece played only by strings"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "What is a chromatic scale?",
+      "choices": [
+        "A scale using only white keys",
+        "A set of seven whole steps",
+        "A repeated chord progression",
+        "A sequence moving by semitones through an octave"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "How do relative major and minor keys relate?",
+      "choices": [
+        "They share a key signature but have different tonics",
+        "They use identical melodies and tempos",
+        "They always have the same tonic",
+        "They differ only in volume"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why practice scales with a metronome?",
+      "choices": [
+        "To change the key signature automatically",
+        "To build even timing and coordination across pitches",
+        "To avoid learning note names",
+        "To make every note louder"
+      ],
+      "correctAnswer": 1,
+      "skill": "application"
+    },
+    {
+      "id": 11,
+      "question": "What is a whole step?",
+      "choices": [
+        "An interval of one semitone",
+        "An interval of an octave",
+        "An interval of two semitones",
+        "A silence lasting two beats"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Which pair of natural notes is separated by a half step?",
+      "choices": [
+        "C and D",
+        "F and G",
+        "A and B",
+        "E and F"
+      ],
+      "correctAnswer": 3,
+      "skill": "application"
+    },
+    {
+      "id": 13,
+      "question": "What does transposing a melody mean?",
+      "choices": [
+        "Moving it to a different pitch level while preserving its relationships",
+        "Changing every rhythm but not pitches",
+        "Making every note louder",
+        "Removing the key signature"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "A melody sounds resolved when it ends on the tonic because the tonic acts as what?",
+      "choices": [
+        "A repeated rest",
+        "A tonal center or point of rest",
+        "A dynamic marking",
+        "A percussion cue"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 15,
+      "question": "What is a pentatonic scale?",
+      "choices": [
+        "A scale with five measures",
+        "A scale played only on piano",
+        "A scale with five pitches per octave",
+        "A scale with no intervals"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "How can accidentals affect a scale passage?",
+      "choices": [
+        "They change the time signature",
+        "They make notes louder",
+        "They identify the composer",
+        "They temporarily alter pitches from the key signature"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "What is a key center?",
+      "choices": [
+        "The pitch that feels most stable or at rest in a passage",
+        "The note printed in the page center",
+        "The loudest note in a chord",
+        "The instrument playing the melody"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "A student confuses scale and key. Which distinction is accurate?",
+      "choices": [
+        "A scale is a rhythm; a key is a tempo",
+        "A scale is an ordered pitch collection; a key organizes music around a tonal center",
+        "A scale names a clef; a key names a rest",
+        "They are unrelated to pitch"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Why might a composer use a scale other than major or minor?",
+      "choices": [
+        "To avoid using rhythm",
+        "To guarantee a faster tempo",
+        "To create a distinct melodic vocabulary or musical color",
+        "To remove the tonic"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "If the tonic is D, what is the first scale degree?",
+      "choices": [
+        "A",
+        "F",
+        "C",
+        "D"
+      ],
+      "correctAnswer": 3,
+      "skill": "application"
+    }
+  ]
+}

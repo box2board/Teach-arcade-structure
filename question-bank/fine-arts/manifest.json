@@ -3,8 +3,8 @@
   "subject": "Fine Arts",
   "status": "draft-for-review",
   "gradeBand": "7–12",
-  "setCount": 30,
-  "questionCount": 600,
+  "setCount": 35,
+  "questionCount": 700,
   "sets": [
     {
       "id": "fine-arts--art-history--prehistoric-ancient-art",
@@ -215,6 +215,41 @@
       "category": "Media Arts",
       "questionCount": 20,
       "file": "media-arts/video-editing-projects.json"
+    },
+    {
+      "id": "fine-arts--music--rhythm-beat",
+      "title": "Rhythm & Beat",
+      "category": "Music",
+      "questionCount": 20,
+      "file": "music/rhythm-beat.json"
+    },
+    {
+      "id": "fine-arts--music--melody-pitch",
+      "title": "Melody & Pitch",
+      "category": "Music",
+      "questionCount": 20,
+      "file": "music/melody-pitch.json"
+    },
+    {
+      "id": "fine-arts--music--music-notation",
+      "title": "Music Notation",
+      "category": "Music",
+      "questionCount": 20,
+      "file": "music/music-notation.json"
+    },
+    {
+      "id": "fine-arts--music--scales-keys",
+      "title": "Scales & Keys",
+      "category": "Music",
+      "questionCount": 20,
+      "file": "music/scales-keys.json"
+    },
+    {
+      "id": "fine-arts--music--dynamics-tempo",
+      "title": "Dynamics & Tempo",
+      "category": "Music",
+      "questionCount": 20,
+      "file": "music/dynamics-tempo.json"
     }
   ]
 }
