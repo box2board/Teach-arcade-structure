@@ -3459,5 +3459,55 @@ export const BANK_SETS=[
     "questionCount": 20,
     "description": "Dance · 7–12",
     "file": "fine-arts/dance/elements-of-dance.json"
+  },
+  {
+    "id": "fine-arts--dance--movement-basics",
+    "title": "Movement Basics",
+    "subject": "Fine Arts",
+    "category": "Dance",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Dance · 7–12",
+    "file": "fine-arts/dance/movement-basics.json"
+  },
+  {
+    "id": "fine-arts--dance--dance-styles-overview",
+    "title": "Dance Styles Overview",
+    "subject": "Fine Arts",
+    "category": "Dance",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Dance · 7–12",
+    "file": "fine-arts/dance/dance-styles-overview.json"
+  },
+  {
+    "id": "fine-arts--dance--cultural-dances",
+    "title": "Cultural Dances",
+    "subject": "Fine Arts",
+    "category": "Dance",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Dance · 7–12",
+    "file": "fine-arts/dance/cultural-dances.json"
+  },
+  {
+    "id": "fine-arts--dance--choreography-basics",
+    "title": "Choreography Basics",
+    "subject": "Fine Arts",
+    "category": "Dance",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Dance · 7–12",
+    "file": "fine-arts/dance/choreography-basics.json"
+  },
+  {
+    "id": "fine-arts--dance--expression-performance",
+    "title": "Expression & Performance",
+    "subject": "Fine Arts",
+    "category": "Dance",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Dance · 7–12",
+    "file": "fine-arts/dance/expression-performance.json"
   }
 ];

@@ -344,5 +344,10 @@
   "question-bank/fine-arts/art-history/modern-art-movements.json": "e6cc30af7cc689ba449f819d0be94b5bd643794450c250b9deb6218332759862",
   "question-bank/fine-arts/art-history/contemporary-art-artists.json": "5baf23070ebef01ba52e2a0c1c8fa9accafa268eb522c0931158ca8c4c494d9e",
   "question-bank/fine-arts/art-history/how-to-analyze-discuss-art.json": "cbd81573a33aa2b9ee1e40674a1dcb644037b35d646558673571455d57806d28",
-  "question-bank/fine-arts/dance/elements-of-dance.json": "4f80fea4a792d7230252bea98af9af43c2fe3f8f7ed4a248e98c2eb5eb562880"
+  "question-bank/fine-arts/dance/elements-of-dance.json": "4f80fea4a792d7230252bea98af9af43c2fe3f8f7ed4a248e98c2eb5eb562880",
+  "question-bank/fine-arts/dance/movement-basics.json": "0d3c2b7950d14e6a419cc789b3360281f0479dadc4ebdcee04036f828d9c5b41",
+  "question-bank/fine-arts/dance/dance-styles-overview.json": "d46e8f76e119b3ddb9a6fb552b88e05e62a39e6b071569846b242e11ace63f02",
+  "question-bank/fine-arts/dance/cultural-dances.json": "c92d38d88854f73b937fe69f8abb4f718820af98b8a43fc73330536cc336bf57",
+  "question-bank/fine-arts/dance/choreography-basics.json": "665fcacc8c53c67d5c340da73018f1d90e5d7dc792388064f2efed90a382773f",
+  "question-bank/fine-arts/dance/expression-performance.json": "450aac4cf5751f4f72338ecbae937ed1b9a162184cedab7e284a8df38900b3d9"
 }

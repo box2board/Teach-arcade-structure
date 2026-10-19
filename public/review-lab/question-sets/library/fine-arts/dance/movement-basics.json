@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--dance--movement-basics",
+  "title": "Movement Basics",
+  "subject": "Fine Arts",
+  "category": "Dance",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which action is locomotor?",
+      "choices": [
+        "Traveling across the floor",
+        "Bending in place",
+        "Shrugging shoulders without traveling",
+        "Holding a still balance"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 2,
+      "question": "Which action is nonlocomotor?",
+      "choices": [
+        "Running across the stage",
+        "Twisting the torso in place",
+        "Skipping forward",
+        "Leaping to a new location"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "What does body alignment describe in dance?",
+      "choices": [
+        "The order of music tracks",
+        "The size of the stage",
+        "How body parts are organized in relation to one another",
+        "A costume's color"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which choice is a level change?",
+      "choices": [
+        "Turning to face another direction",
+        "Changing from slow to fast",
+        "Repeating a gesture",
+        "Moving from a crouch to a standing reach"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "A dancer moves diagonally from upstage left to downstage right. What is changing?",
+      "choices": [
+        "Direction and pathway",
+        "Costume and lighting",
+        "Tempo only",
+        "The audience's seating"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 6,
+      "question": "What is balance in movement?",
+      "choices": [
+        "Moving only in a straight line",
+        "Maintaining or controlling stability while still or moving",
+        "Repeating the same action",
+        "Matching another dancer's costume"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "A dancer shifts weight from the right foot to the left foot. Why is this transfer useful?",
+      "choices": [
+        "It removes the need for alignment",
+        "It guarantees a jump",
+        "It supports controlled movement and changes in balance or direction",
+        "It changes the music's meter"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "Which pathway is curvilinear?",
+      "choices": [
+        "A straight route from one point to another",
+        "A stationary pose",
+        "A series of sharp right-angle turns only",
+        "A rounded, looping route through space"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "A dancer performs a turn while keeping the eyes focused on a fixed point as long as possible. What is this technique commonly called?",
+      "choices": [
+        "Spotting",
+        "Mirroring",
+        "Canon",
+        "Falling"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Why should a dancer bend the knees when landing from a jump?",
+      "choices": [
+        "To increase impact on the joints",
+        "To absorb impact and support control",
+        "To avoid using the legs",
+        "To stop the movement before landing"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 11,
+      "question": "A movement phrase repeats a reach but changes the level each time. What is being explored?",
+      "choices": [
+        "A fixed unchanging sequence",
+        "A change in costume",
+        "Variation of a movement motif",
+        "A music notation system"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What is mirroring in dance?",
+      "choices": [
+        "Dancers perform at staggered times",
+        "Dancers travel in a circle",
+        "A soloist improvises to music",
+        "One dancer reflects another dancer's movements"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "A dancer reaches high, then folds low, then extends sideways. Which element is especially visible?",
+      "choices": [
+        "Use of space and level",
+        "Rhythmic notation",
+        "Costume history",
+        "Stage lighting"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 14,
+      "question": "What does a gesture communicate in dance?",
+      "choices": [
+        "The number of dancers on stage",
+        "An expressive movement of part of the body",
+        "A change in sound equipment",
+        "The length of a performance"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "A dancer's movement feels controlled and sustained. Which quality is most evident?",
+      "choices": [
+        "Stage architecture",
+        "Costume texture",
+        "Energy and flow",
+        "Audience arrangement"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Why do dancers practice weight shifts slowly before performing them quickly?",
+      "choices": [
+        "To avoid learning movement pathways",
+        "To make the music slower",
+        "To remove the need for rehearsal",
+        "To build coordination, balance, and control"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Which option best describes a still shape in dance?",
+      "choices": [
+        "A held body position that can communicate line, level, or balance",
+        "A sound cue",
+        "A costume change",
+        "A movement that always travels"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 18,
+      "question": "What is a safe way to explore a new movement range?",
+      "choices": [
+        "Force the body beyond a comfortable range",
+        "Increase range gradually while maintaining control and comfort",
+        "Move quickly before checking alignment",
+        "Ignore pain"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A group forms a line, then a circle. What is changing?",
+      "choices": [
+        "The tempo automatically",
+        "The dance's genre",
+        "The dancers' spatial formation",
+        "The music's pitch"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "Why can the same arm movement look different when performed sharply or smoothly?",
+      "choices": [
+        "The movement's direction must change",
+        "The dancer's height changes",
+        "The choreography becomes a new genre",
+        "Energy quality changes the movement's expressive effect"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

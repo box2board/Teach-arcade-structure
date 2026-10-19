@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--dance--dance-styles-overview",
+  "title": "Dance Styles Overview",
+  "subject": "Fine Arts",
+  "category": "Dance",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which dance style is strongly associated with structured pointe work and codified positions?",
+      "choices": [
+        "Ballet",
+        "Tap",
+        "Breaking",
+        "Square dance"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which style uses shoes with taps to create rhythmic sounds?",
+      "choices": [
+        "Ballet",
+        "Tap dance",
+        "Contemporary dance",
+        "Ballroom waltz"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Hip-hop dance developed within a broader culture that includes",
+      "choices": [
+        "only classical theater",
+        "a single fixed movement sequence",
+        "music, movement, visual expression, and community practices",
+        "medieval court ritual"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "Which description best fits jazz dance as practiced in many stage settings?",
+      "choices": [
+        "A single dance with one universal step list",
+        "A style unrelated to music",
+        "A form limited to partner ballroom",
+        "A style drawing on African American cultural roots and evolving through varied theatrical forms"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "What is a common feature of contemporary dance?",
+      "choices": [
+        "Artists combine and adapt movement ideas from multiple traditions and techniques",
+        "It follows one universal codified syllabus",
+        "It must be performed in silence",
+        "It uses no floor work"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "Which description best fits a waltz in ballroom dance?",
+      "choices": [
+        "A solo tap rhythm",
+        "A partner dance commonly organized in triple meter",
+        "A street-dance battle",
+        "A sequence of ballet barre exercises"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Why is it inaccurate to describe a dance style as having only one correct form?",
+      "choices": [
+        "All dances are identical",
+        "Style names have no meaning",
+        "Styles change across communities, artists, time periods, and contexts",
+        "Traditions never change"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 8,
+      "question": "A performance combines breaking, house, and locking. What does this illustrate?",
+      "choices": [
+        "Dance styles cannot overlap",
+        "The performers are not dancing",
+        "Every style has the same history",
+        "A dance work can draw from multiple styles"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What is one useful way to identify a style in a performance?",
+      "choices": [
+        "Notice movement qualities, musical relationships, and relevant cultural context",
+        "Guess from costume alone",
+        "Use only the stage color",
+        "Assume every fast dance is hip-hop"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 10,
+      "question": "Which practice is common in ballet class to develop balance and technique?",
+      "choices": [
+        "Tap shoes used for percussive sound",
+        "Exercises at a barre",
+        "Improvised street-dance battles",
+        "A circle dance at a community gathering"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What should a student do when learning a dance from a culture outside their own?",
+      "choices": [
+        "Treat it as a costume theme",
+        "Assume all members of the culture dance alike",
+        "Learn its context and sources, and approach the practice respectfully",
+        "Remove its cultural context"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 12,
+      "question": "Which description best fits a folk or social dance?",
+      "choices": [
+        "A dance that can never change",
+        "A style performed only by professionals",
+        "A dance without cultural context",
+        "A dance connected to community practices and social participation"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "A work uses ballet training but breaks from traditional ballet structure. What can be said?",
+      "choices": [
+        "It may draw on ballet technique while developing a different choreographic approach",
+        "It cannot be dance",
+        "It is necessarily a waltz",
+        "It must follow a ballet story"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 14,
+      "question": "What does 'fusion' suggest when describing a dance work?",
+      "choices": [
+        "The work has no movement",
+        "The work combines movement approaches from more than one style or tradition",
+        "The work uses one fixed tradition only",
+        "The work is a written review"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "Which style commonly uses isolations of body parts and grounded rhythmic movement?",
+      "choices": [
+        "Classical ballet only",
+        "Waltz only",
+        "Many forms of hip-hop dance",
+        "Courtly minuet only"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Why should students learn the historical roots of jazz and hip-hop dance?",
+      "choices": [
+        "History determines one correct costume",
+        "Context prevents learning technique",
+        "Styles have no historical roots",
+        "Context helps recognize the communities and innovations that shaped the styles"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A dance is performed to music in triple meter with a turning partner pattern. Which style is a likely match?",
+      "choices": [
+        "Waltz",
+        "Tap solo",
+        "Breaking battle",
+        "Ballet barre"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Which statement about contemporary dance is strongest?",
+      "choices": [
+        "It has no technique",
+        "It is a broad, evolving field rather than a single uniform vocabulary",
+        "It began in ancient Greece",
+        "It uses only improvised movement"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "What is a responsible way to compare two dance traditions?",
+      "choices": [
+        "Rank one as more advanced",
+        "Treat the traditions as interchangeable",
+        "Describe movement features and consider each tradition's own context",
+        "Compare only costumes"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A performance includes rhythmic footwork, improvisation, and direct audience interaction. Which clue is most useful for style analysis?",
+      "choices": [
+        "Use audience size alone",
+        "Use costume color only",
+        "Assume the performance has no tradition",
+        "Consider the movement, musical relationship, and performance context together"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

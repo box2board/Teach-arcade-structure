@@ -3,8 +3,8 @@
   "subject": "Fine Arts",
   "status": "draft-for-review",
   "gradeBand": "7–12",
-  "setCount": 10,
-  "questionCount": 200,
+  "setCount": 15,
+  "questionCount": 300,
   "sets": [
     {
       "id": "fine-arts--art-history--prehistoric-ancient-art",
@@ -75,6 +75,41 @@
       "category": "Dance",
       "questionCount": 20,
       "file": "dance/elements-of-dance.json"
+    },
+    {
+      "id": "fine-arts--dance--movement-basics",
+      "title": "Movement Basics",
+      "category": "Dance",
+      "questionCount": 20,
+      "file": "dance/movement-basics.json"
+    },
+    {
+      "id": "fine-arts--dance--dance-styles-overview",
+      "title": "Dance Styles Overview",
+      "category": "Dance",
+      "questionCount": 20,
+      "file": "dance/dance-styles-overview.json"
+    },
+    {
+      "id": "fine-arts--dance--cultural-dances",
+      "title": "Cultural Dances",
+      "category": "Dance",
+      "questionCount": 20,
+      "file": "dance/cultural-dances.json"
+    },
+    {
+      "id": "fine-arts--dance--choreography-basics",
+      "title": "Choreography Basics",
+      "category": "Dance",
+      "questionCount": 20,
+      "file": "dance/choreography-basics.json"
+    },
+    {
+      "id": "fine-arts--dance--expression-performance",
+      "title": "Expression & Performance",
+      "category": "Dance",
+      "questionCount": 20,
+      "file": "dance/expression-performance.json"
     }
   ]
 }
