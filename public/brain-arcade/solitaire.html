@@ -984,11 +984,10 @@
     updateHUD();
     render(true);
 
-    const dealDelay = 18;
+    const dealFlightMs = 110;
     for (let col = 0; col < 7; col++){
       for (let row = 0; row <= col; row++){
-        await animateDealOne(col);
-        if (dealDelay) await sleep(dealDelay);
+        await animateDealOne(col, dealFlightMs);
       }
     }
 
@@ -1015,7 +1014,7 @@
     toast("New game!");
   }
 
-  async function animateDealOne(col){
+  async function animateDealOne(col, durationMs = 110){
     const card = state.stock.pop();
     if (!card) return;
 
@@ -1038,10 +1037,10 @@
     float.style.transform = `translate(${stockRect.left}px, ${stockRect.top}px)`;
     await raf();
 
-    float.style.transition = `transform 220ms var(--ease)`;
+    float.style.transition = `transform ${durationMs}ms var(--ease)`;
     float.style.transform = `translate(${targetRect.left}px, ${targetRect.top + y}px)`;
 
-    await sleep(230);
+    await sleep(durationMs + 8);
     float.remove();
 
     card.faceUp = false;
