@@ -19,7 +19,7 @@ export default async function handler(req,res){
    const email=typeof body.email==='string'?body.email.trim().toLowerCase():'';
    if(email.length>254||! /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))return send(400,{error:'Enter a valid teacher email address.'});
    if(action==='login'){await backend('/auth/v1/otp',{method:'POST',body:{email,create_user:true}});return send(200,{ok:true});}
-   if(typeof body.code!=='string'||!/^\d{6}$/.test(body.code))return send(400,{error:'Enter the six-digit email code.'});
+   if(typeof body.code!=='string'||!/^\d{6,10}$/.test(body.code))return send(400,{error:'Enter the complete numeric code from your email.'});
    const session=await backend('/auth/v1/verify',{method:'POST',body:{email,token:body.code,type:'email'}});
    if(!session?.access_token||!session.user?.id)throw new Error('Invalid session');
    res.setHeader('Set-Cookie',sessionCookie(session.access_token,session.expires_in));

@@ -10,6 +10,14 @@ afterEach(()=>{global.fetch=originalFetch;for(const k of keys)if(original[k]===u
 function configure(){Object.assign(process.env,{SUPABASE_URL:'https://test.supabase.co',SUPABASE_ANON_KEY:'publishable-test',TEACHER_APP_ORIGIN:'https://preview.test',TEACHER_AUTH_ENABLED:'true',TEACHER_CABINET_ENABLED:'false'});}
 async function call(action,method='GET',body={},headers={}){const result={headers:{}};const res={setHeader(k,v){result.headers[k]=v;},status(s){result.status=s;return this;},json(data){result.data=data;return this;}};await handler({method,query:{action},body,headers},res);return result;}
 const response=(data,status=200)=>new Response(JSON.stringify(data),{status,headers:{'Content-Type':'application/json'}});
+test('email codes retain all digits and reject malformed input before verification',async()=>{
+ configure();let sent=[];global.fetch=async(url,opts)=>{sent.push(JSON.parse(opts.body).token);return response({access_token:'test.jwt.token',expires_in:3600,user:{id:'teacher-a'}});};
+ for(const code of ['012345','01234567','0123456789'])assert.equal((await call('verify','POST',{email:'teacher@example.com',code},{origin:'https://preview.test'})).status,200);
+ assert.deepEqual(sent,['012345','01234567','0123456789']);
+ for(const code of ['12345','12345678901','1234abcd','1234 5678',12345678])assert.equal((await call('verify','POST',{email:'teacher@example.com',code},{origin:'https://preview.test'})).status,400);
+ assert.equal(sent.length,3);
+ const html=await readFile(new URL('../public/teacher/index.html',import.meta.url),'utf8');assert.ok(html.includes('pattern="[0-9]{6,10}"'));assert.ok(html.includes('maxlength="10"'));assert.ok(!html.includes('six-digit'));
+});
 test('unconfigured workspace exposes no account and cannot save',async()=>{delete process.env.TEACHER_AUTH_ENABLED;global.fetch=()=>{throw Error('must not contact backend');};assert.equal((await call('session')).data.configured,false);assert.equal((await call('save','POST',{setId:QUESTION_SETS[0].id})).status,503);});
 test('rejects cross-origin and missing-origin mutations before network',async()=>{configure();global.fetch=()=>{throw Error('must not contact backend');};for(const origin of [undefined,'https://attacker.test'])assert.equal((await call('login','POST',{email:'teacher@example.com'},{origin})).status,403);assert.equal((await call('save')).status,405);});
 test('unauthenticated favorites never reach database',async()=>{configure();global.fetch=()=>{throw Error('must not contact backend');};assert.equal((await call('favorites')).status,401);});
