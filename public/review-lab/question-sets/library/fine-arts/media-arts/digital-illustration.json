@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--media-arts--digital-illustration",
+  "title": "Digital Illustration",
+  "subject": "Fine Arts",
+  "category": "Media Arts",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is one key difference between raster and vector illustration?",
+      "choices": [
+        "Raster uses pixels; vector uses scalable paths",
+        "Raster uses sound; vector uses video",
+        "Raster cannot use color",
+        "Vector is always hand-drawn on paper"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is a bezier path used to create?",
+      "choices": [
+        "A digital audio track",
+        "Editable curves and shapes",
+        "A color temperature",
+        "A physical brush texture"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "Why use an artboard or canvas grid in a design workflow?",
+      "choices": [
+        "It automatically creates a finished illustration",
+        "It removes the need for composition",
+        "It provides a defined space and alignment references",
+        "It changes the color profile"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "What does anti-aliasing do around digital edges?",
+      "choices": [
+        "Adds a drop shadow",
+        "Converts pixels into sound",
+        "Removes transparent areas",
+        "Reduces jagged appearance by smoothing pixel transitions"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "When is a vector format especially suitable?",
+      "choices": [
+        "For a logo or icon that needs resizing across scales",
+        "For a photograph with detailed grain only",
+        "For a video soundtrack",
+        "For a scan with no editing needs"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 6,
+      "question": "What is a color profile used for?",
+      "choices": [
+        "Set the illustration's subject",
+        "Describe how color is represented across devices or workflows",
+        "Name the artist",
+        "Arrange layer order"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "Why export an illustration in a transparent PNG?",
+      "choices": [
+        "To store editable vector paths",
+        "To guarantee smaller file size",
+        "To preserve transparency for use over other backgrounds",
+        "To keep every layer editable"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 8,
+      "question": "What does a path's anchor point control?",
+      "choices": [
+        "The canvas resolution",
+        "The brush's opacity",
+        "The file's licensing",
+        "A point defining the shape or direction of a vector path"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "A vector icon looks distorted after resizing. What should be inspected?",
+      "choices": [
+        "Path proportions, stroke scaling, and export settings",
+        "The monitor's volume",
+        "The illustration's title",
+        "The number of raster layers only"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 10,
+      "question": "What does a blend mode change?",
+      "choices": [
+        "The image's pixel dimensions",
+        "How a layer's colors interact with layers below it",
+        "The vector path count",
+        "The file's ownership"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Why create a visual reference board before illustration?",
+      "choices": [
+        "It guarantees originality automatically",
+        "It replaces the sketch",
+        "It helps organize style, color, and subject references",
+        "It determines the export format"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What is one advantage of using reusable components in vector illustration?",
+      "choices": [
+        "They prevent customization",
+        "They make paths uneditable",
+        "They remove design hierarchy",
+        "Repeated elements can stay consistent and be edited efficiently"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 13,
+      "question": "How can a designer check whether an icon works at small size?",
+      "choices": [
+        "Preview it at the intended scale and simplify details if needed",
+        "Zoom in to maximum only",
+        "Add more fine detail",
+        "Check only its color palette"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 14,
+      "question": "What is the role of a clipping path?",
+      "choices": [
+        "Changing the file's name",
+        "Restricting visible content to a defined shape",
+        "Adding audio captions",
+        "Converting a page to a photograph"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "Why separate a reference layer from final artwork?",
+      "choices": [
+        "It guarantees all references are licensed",
+        "It automatically hides copyright",
+        "It keeps source material distinct and makes editing easier",
+        "It fixes the perspective"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "How might line weight affect a vector illustration?",
+      "choices": [
+        "It determines the image's file type",
+        "It sets the canvas orientation",
+        "It removes fill color",
+        "It changes emphasis, clarity, and visual character"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "What should an illustrator consider when tracing a reference image?",
+      "choices": [
+        "Permission, originality, and how much transformation is appropriate",
+        "Only how quickly it can be traced",
+        "Whether the reference is colorful",
+        "The number of layers"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A graphic prints with unexpected colors. What workflow step may help?",
+      "choices": [
+        "Change the file name",
+        "Check the output color profile and proof the intended print settings",
+        "Add more layers",
+        "Reverse the illustration"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "What is the purpose of a design system or style guide?",
+      "choices": [
+        "Prevent all creative variation",
+        "Replace the artwork",
+        "Keep visual choices consistent across a set of graphics",
+        "Guarantee a specific audience reaction"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "Why compare vector and raster output before choosing a format?",
+      "choices": [
+        "Every format looks identical",
+        "Vector always produces a smaller file",
+        "Raster cannot be printed",
+        "The intended use, editability, and image detail affect the best choice"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

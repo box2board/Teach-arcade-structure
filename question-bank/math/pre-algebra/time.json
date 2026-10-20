@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--pre-algebra--time",
+  "title": "Time",
+  "subject": "Math",
+  "category": "Pre-Algebra & Number Sense",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "How many minutes are in 2.5 hours?",
+      "choices": [
+        "150 minutes",
+        "125 minutes",
+        "250 minutes",
+        "25 minutes"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "A movie begins at 6:35 p.m. and lasts 1 hour 50 minutes. When does it end?",
+      "choices": [
+        "8:15 p.m.",
+        "8:25 p.m.",
+        "7:85 p.m.",
+        "8:35 p.m."
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 3,
+      "question": "How many seconds are in 4 minutes?",
+      "choices": [
+        "40 seconds",
+        "24 seconds",
+        "240 seconds",
+        "400 seconds"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "A bus leaves at 9:48 a.m. and arrives at 11:16 a.m. How long is the trip?",
+      "choices": [
+        "1 hour 18 minutes",
+        "2 hours 28 minutes",
+        "88 minutes",
+        "1 hour 28 minutes"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 5,
+      "question": "What time is 45 minutes after 2:30?",
+      "choices": [
+        "3:15",
+        "2:75",
+        "3:05",
+        "3:25"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "A class starts at 10:05 and ends at 10:52. How long is it?",
+      "choices": [
+        "53 minutes",
+        "47 minutes",
+        "57 minutes",
+        "1 hour 47 minutes"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 7,
+      "question": "How many days are in 3 weeks?",
+      "choices": [
+        "18 days",
+        "24 days",
+        "21 days",
+        "30 days"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "A recipe needs 1 hour 35 minutes to bake and cool. How many minutes is that?",
+      "choices": [
+        "85 minutes",
+        "135 minutes",
+        "75 minutes",
+        "95 minutes"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "A flight departs at 22:10 in 24-hour time. What is this in 12-hour time?",
+      "choices": [
+        "10:10 p.m.",
+        "10:10 a.m.",
+        "12:10 p.m.",
+        "2:10 a.m."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "How much time passes from 8:40 a.m. to 12:05 p.m.?",
+      "choices": [
+        "4 hours 25 minutes",
+        "3 hours 25 minutes",
+        "3 hours 35 minutes",
+        "2 hours 25 minutes"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 11,
+      "question": "A timer shows 2 minutes 18 seconds. How many seconds remain?",
+      "choices": [
+        "218 seconds",
+        "120 seconds",
+        "138 seconds",
+        "128 seconds"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "An event begins at 1:15 p.m. and lasts 2 hours 45 minutes. When does it end?",
+      "choices": [
+        "3:50 p.m.",
+        "4:15 p.m.",
+        "3:00 p.m.",
+        "4:00 p.m."
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 13,
+      "question": "How many months are in 2.5 years?",
+      "choices": [
+        "30 months",
+        "25 months",
+        "24 months",
+        "36 months"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "A student studies from 4:20 to 5:05, takes a 15-minute break, then studies to 6:00. How long did the student study?",
+      "choices": [
+        "1 hour 45 minutes",
+        "1 hour 30 minutes",
+        "1 hour 15 minutes",
+        "1 hour 40 minutes"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 15,
+      "question": "Which is the longest duration?",
+      "choices": [
+        "1 hour 30 minutes",
+        "1 hour 25 minutes",
+        "95 minutes",
+        "1 hour 5 minutes"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A clock loses 3 minutes each hour. How many minutes does it lose in 5 hours?",
+      "choices": [
+        "8 minutes",
+        "12 minutes",
+        "30 minutes",
+        "15 minutes"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "What time is 1 hour 20 minutes before 7:10 p.m.?",
+      "choices": [
+        "5:50 p.m.",
+        "5:40 p.m.",
+        "6:50 p.m.",
+        "8:30 p.m."
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 18,
+      "question": "A train schedule shows 14:35. What time is that in 12-hour notation?",
+      "choices": [
+        "4:35 p.m.",
+        "2:35 p.m.",
+        "2:35 a.m.",
+        "12:35 p.m."
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "A practice session lasts 3/4 of an hour. How many minutes is that?",
+      "choices": [
+        "30 minutes",
+        "40 minutes",
+        "45 minutes",
+        "75 minutes"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "A meeting starts at 11:50 a.m. and ends at 12:30 p.m. How long is it?",
+      "choices": [
+        "80 minutes",
+        "30 minutes",
+        "1 hour 40 minutes",
+        "40 minutes"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

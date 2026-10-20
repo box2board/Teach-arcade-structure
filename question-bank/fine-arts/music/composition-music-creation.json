@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--music--composition-music-creation",
+  "title": "Composition & Music Creation",
+  "subject": "Fine Arts",
+  "category": "Music",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a musical motif?",
+      "choices": [
+        "A short, recognizable musical idea that can be developed",
+        "A type of microphone",
+        "A fixed tempo marking",
+        "A list of performers"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Why might a composer create a chord progression before a melody?",
+      "choices": [
+        "It guarantees a finished song",
+        "Harmony can provide a framework for melodic choices",
+        "It removes the need for rhythm",
+        "It selects the recording format"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "What does a verse-chorus form often provide?",
+      "choices": [
+        "A piece with no repetition",
+        "A fixed instrumental solo only",
+        "Contrasting sections with a recurring chorus",
+        "A sequence of unrelated keys"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "How can repetition help a composition?",
+      "choices": [
+        "It guarantees every listener agrees",
+        "It removes all variation",
+        "It sets the recording volume",
+        "It creates recognition and structure"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "What is a useful first step when composing for a specific purpose?",
+      "choices": [
+        "Decide the intended mood, audience, and constraints",
+        "Choose random notes immediately",
+        "Export an unfinished recording",
+        "Avoid thinking about form"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 6,
+      "question": "A melody feels unfinished at its end. What could the composer try?",
+      "choices": [
+        "Add unrelated percussion",
+        "Shape the phrase toward a cadence or another intentional continuation",
+        "Make every note louder",
+        "Change the instrument's material"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 7,
+      "question": "What does arranging involve?",
+      "choices": [
+        "Writing only the lyrics",
+        "Tuning the audience",
+        "Adapting musical material for performers, instruments, or a context",
+        "Measuring stage lighting"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why make a rough recording of an idea?",
+      "choices": [
+        "It proves the composition is final",
+        "It replaces notation in every situation",
+        "It determines ownership automatically",
+        "It preserves the idea and helps evaluate it through listening"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "How can contrast strengthen a composition?",
+      "choices": [
+        "Different sections or textures can make important moments stand out",
+        "It requires every section to use unrelated material",
+        "It removes the central idea",
+        "It prevents repetition"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What should a composer consider when selecting instruments for a student ensemble?",
+      "choices": [
+        "Only the instruments' colors",
+        "Available range, skill level, balance, and practical resources",
+        "The room's wall art",
+        "The number of online views"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 11,
+      "question": "What is a texture in music?",
+      "choices": [
+        "The paper surface of a score",
+        "The length of a concert",
+        "How melodic and harmonic layers relate",
+        "A method for naming files"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Why should composers revise after listening?",
+      "choices": [
+        "Listening always changes the genre",
+        "Revision removes artistic choice",
+        "A first draft is always correct",
+        "Performance may reveal balance, pacing, or clarity issues not obvious on the page"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 13,
+      "question": "What is an ostinato?",
+      "choices": [
+        "A repeated musical pattern",
+        "A sudden dynamic change",
+        "A silent measure",
+        "A type of clef"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "How can a composer make a short theme develop?",
+      "choices": [
+        "Delete every recurring feature",
+        "Alter its rhythm, pitch, harmony, register, or instrumentation",
+        "Keep all details unchanged",
+        "Remove the pulse"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 15,
+      "question": "What does a lead sheet typically provide?",
+      "choices": [
+        "A complete orchestral score for every instrument",
+        "Only stage directions",
+        "Melody and chord symbols as a concise framework",
+        "A list of recording equipment"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Why does a musical ending need to feel intentional?",
+      "choices": [
+        "It determines the title",
+        "It sets the initial key",
+        "It guarantees a loud final note",
+        "It shapes the listener's sense of closure or continuation"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "What can silence contribute to a composition?",
+      "choices": [
+        "Space, contrast, anticipation, or emphasis",
+        "Only a technical error",
+        "A change of instrument family",
+        "A fixed pitch"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 18,
+      "question": "What is one ethical consideration when sampling existing music?",
+      "choices": [
+        "Use any recording without checking",
+        "Follow permission, license, and attribution requirements",
+        "Remove the creator's name",
+        "Assume short clips are always exempt"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "How can feedback help a composer?",
+      "choices": [
+        "It decides the only correct version",
+        "It replaces the composer's choices",
+        "It can reveal how listeners hear the structure and expression",
+        "It guarantees commercial success"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "A class is writing a short piece for a school event. How could they keep the work playable?",
+      "choices": [
+        "Give every performer the hardest part",
+        "Ignore rehearsal time",
+        "Use only instruments unavailable to the class",
+        "Match the parts to performers' ranges and practice skills"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

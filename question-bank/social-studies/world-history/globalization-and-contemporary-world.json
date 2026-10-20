@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "social-studies--world-history--globalization-and-contemporary-world",
+  "title": "Globalization and the Contemporary World",
+  "subject": "Social Studies",
+  "category": "World History",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Globalization refers to",
+      "choices": [
+        "the end of all international communication",
+        "growing connections among people, economies, and societies across national borders",
+        "the isolation of local economies",
+        "a political system used by every country"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "A supply chain is",
+      "choices": [
+        "a list of a company's employees",
+        "a treaty that sets national borders",
+        "the network of steps and organizations involved in producing and delivering a good",
+        "a system for measuring population density"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "How can digital communication contribute to globalization?",
+      "choices": [
+        "It prevents people from contacting other countries",
+        "It makes transportation unnecessary for every product",
+        "It eliminates differences in language",
+        "It allows information and services to move quickly across long distances"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "A company designs a product in one country, sources parts in several others, and assembles it elsewhere. This is an example of",
+      "choices": [
+        "a global supply chain",
+        "subsistence production",
+        "economic isolation",
+        "local barter only"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "What is outsourcing?",
+      "choices": [
+        "Moving all production back to the home country",
+        "Contracting work or services to an outside provider, sometimes in another country",
+        "Eliminating all paid work",
+        "Exchanging goods without prices"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Why might companies relocate production to another country?",
+      "choices": [
+        "To avoid all shipping and communication",
+        "Because international laws require every firm to relocate",
+        "To access workers, suppliers, markets, or lower costs",
+        "To eliminate competition from local businesses"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "Which group helps set and monitor rules for international trade among its members?",
+      "choices": [
+        "International Court of Justice only",
+        "World Health Organization",
+        "North Atlantic Treaty Organization",
+        "World Trade Organization"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "A product's price rises after a key port closes. What does this show about global supply chains?",
+      "choices": [
+        "A disruption in one location can affect production and prices elsewhere",
+        "Supply chains are always local",
+        "Ports have no effect on trade",
+        "Prices cannot respond to transportation changes"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 9,
+      "question": "What is cultural diffusion?",
+      "choices": [
+        "The measurement of national income",
+        "The spread of cultural ideas or practices between groups",
+        "The movement of tectonic plates",
+        "A type of agricultural irrigation"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Why can globalization create both opportunities and challenges for workers?",
+      "choices": [
+        "It guarantees higher wages for every worker",
+        "It prevents industries from changing",
+        "It can expand markets and jobs while also increasing competition and restructuring employment",
+        "It eliminates differences in working conditions"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What is one possible environmental effect of increased global trade?",
+      "choices": [
+        "Trade always reduces resource consumption",
+        "Trade has no connection to transportation",
+        "Global shipping eliminates pollution",
+        "More transportation and production can increase emissions and resource use"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "A country exports a large share of its products to one trading partner. What risk may it face?",
+      "choices": [
+        "A downturn or policy change in that partner's market may reduce export demand",
+        "Its exports become independent of foreign demand",
+        "The partner cannot affect trade",
+        "Its currency can never fluctuate"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 13,
+      "question": "What does the digital divide describe?",
+      "choices": [
+        "The difference between two computer file formats",
+        "Unequal access to digital technologies and reliable internet",
+        "A gap between a country's borders and its coast",
+        "The spread of a language through migration"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Why is comparative advantage used to explain some patterns of international trade?",
+      "choices": [
+        "Every country produces every good at identical cost",
+        "Trade requires countries to have the same resources",
+        "Countries can benefit by specializing in goods with lower opportunity costs and trading",
+        "Comparative advantage guarantees equal incomes"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A global clothing brand changes its advertising to fit local languages and customs. This is an example of",
+      "choices": [
+        "ending cultural exchange",
+        "replacing all local businesses",
+        "eliminating a supply chain",
+        "adapting a global product or message to local contexts"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 16,
+      "question": "How can migration contribute to globalization?",
+      "choices": [
+        "People carry skills, languages, ideas, and family connections across borders",
+        "Migration prevents cultural and economic ties",
+        "Migrants cannot affect labor markets",
+        "Migration occurs only during wars"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "Why should consumers examine where and how a product is made?",
+      "choices": [
+        "A product's origin determines its quality with certainty",
+        "Production conditions can affect labor rights, environmental impacts, and costs",
+        "Supply chains never involve multiple firms",
+        "Origin labels replace the need for evidence"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A region attracts call-center jobs serving customers in another time zone. Which factor likely supports this service trade?",
+      "choices": [
+        "The region's distance from the internet",
+        "The absence of language skills",
+        "Communication technology and access to workers",
+        "A lack of international connections"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "What is one potential benefit of international cooperation on climate change?",
+      "choices": [
+        "Each country's emissions affect only its own territory",
+        "Cooperation eliminates every disagreement",
+        "Climate conditions are identical worldwide",
+        "Countries can coordinate goals and actions for a problem that crosses borders"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A news story claims globalization benefits everyone equally. Which evidence would best test that claim?",
+      "choices": [
+        "Compare wages, job changes, prices, and gains across different groups and places",
+        "Count only the total value of exports",
+        "Measure the number of international flights",
+        "Use one company's profits as the only indicator"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}

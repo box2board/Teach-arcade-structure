@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "social-studies--economics--entrepreneurship-and-small-business",
+  "title": "Entrepreneurship and Small Business",
+  "subject": "Social Studies",
+  "category": "Economics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "An entrepreneur is someone who",
+      "choices": [
+        "sets every wage in the national economy",
+        "organizes resources and accepts risk to create or operate a venture",
+        "eliminates uncertainty from business decisions",
+        "only works for a government agency"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is revenue?",
+      "choices": [
+        "The value of all unpaid volunteer hours",
+        "A firm's total costs before production",
+        "Money a business receives from selling goods or services",
+        "The amount of cash invested by a competitor"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "A business earns $5,000 in sales and has $3,800 in total costs. What is its profit before taxes?",
+      "choices": [
+        "$1,800",
+        "$3,800",
+        "$8,800",
+        "$1,200"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 4,
+      "question": "What does break-even mean for a business?",
+      "choices": [
+        "Total revenue equals total costs",
+        "Sales are greater than every possible cost",
+        "The business has no customers",
+        "The business has repaid all future expenses"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Why should an entrepreneur research potential customers before launching a product?",
+      "choices": [
+        "Research guarantees the venture will succeed",
+        "Research can test whether a real need and market exist",
+        "Research removes all startup costs",
+        "Research determines the final profit with certainty"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "A business has high fixed costs but low variable cost per item. Which statement about those costs is accurate?",
+      "choices": [
+        "Variable costs remain constant at every output level",
+        "Fixed costs are paid only when the business earns a profit",
+        "Fixed costs do not change directly with the number of units produced in the short run",
+        "Variable costs cannot include materials"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "A bakery sells each box for $12. Its ingredients and packaging cost $5 per box, and monthly fixed costs are $700. What does the $7 difference represent?",
+      "choices": [
+        "The bakery's total monthly revenue",
+        "A fixed cost per box regardless of sales",
+        "The owner's net income after taxes",
+        "Contribution toward fixed costs and then profit"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 8,
+      "question": "A business plan is most useful when it",
+      "choices": [
+        "clarifies the product, customers, operations, funding, and assumptions",
+        "guarantees a bank loan",
+        "replaces market research and testing",
+        "predicts exact profits for every future year"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "A startup has strong sales but often cannot pay bills when due. Which issue is most likely?",
+      "choices": [
+        "A lack of customer interest by definition",
+        "A cash-flow timing problem",
+        "A surplus of long-term profit",
+        "A change in its legal business name"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 10,
+      "question": "Why might an entrepreneur test a small prototype or pilot before a full launch?",
+      "choices": [
+        "To avoid hearing from customers",
+        "To guarantee that no competitor will enter",
+        "To gather evidence about usability, costs, and customer response",
+        "To set prices without considering expenses"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "A business's total costs are $2,400 per month. It earns $8 for each item sold and has no other revenue. How many items must it sell to break even?",
+      "choices": [
+        "192",
+        "30",
+        "2,408",
+        "300"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 12,
+      "question": "Which action best protects a business's cash flow during a slow sales period?",
+      "choices": [
+        "Forecast receipts and expenses and maintain a suitable cash reserve",
+        "Spend all available cash before invoices arrive",
+        "Record expenses only at the end of the year",
+        "Assume profit and cash balance are always identical"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 13,
+      "question": "What is a target market?",
+      "choices": [
+        "The list of all suppliers in an economy",
+        "The group of customers a business aims to serve",
+        "The total cost of equipment",
+        "The government's annual tax revenue"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "A small business finds that customers value convenient pickup more than decorative packaging. What is a useful response?",
+      "choices": [
+        "Ignore customer feedback because the first plan cannot change",
+        "Increase packaging costs automatically",
+        "Adjust the offer based on customer evidence and evaluate the result",
+        "Stop measuring customer preferences"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 15,
+      "question": "Which ownership structure generally separates a corporation's legal identity from its owners?",
+      "choices": [
+        "Sole proprietorship",
+        "Informal partnership with no registration",
+        "Independent contractor agreement",
+        "Corporation"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A sole proprietor and a partner want to share ownership and decision-making. Which issue should they address early?",
+      "choices": [
+        "How responsibilities, contributions, profits, and disputes will be handled",
+        "How to avoid keeping any financial records",
+        "How to guarantee that demand never changes",
+        "How to eliminate every business risk"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "What is a variable cost for a candle-making business?",
+      "choices": [
+        "Monthly rent for the workshop",
+        "Wax used to make each candle",
+        "An annual business license fee",
+        "A fixed insurance premium"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "A business sells a new product at a price below its cost for each unit. What must it consider to remain sustainable?",
+      "choices": [
+        "Whether it can ignore unit costs forever",
+        "Whether lower prices guarantee profit",
+        "Whether other revenue or a deliberate short-term strategy can cover the loss",
+        "Whether customers will pay the business's fixed costs automatically"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Why should a small business keep accurate financial records?",
+      "choices": [
+        "Records ensure that expenses never occur",
+        "Records make customer research unnecessary",
+        "Records replace the need to track revenue",
+        "Records support cash planning, tax reporting, and informed decisions"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "A company wants to use a competitor's logo because customers recognize it. What is the best next step?",
+      "choices": [
+        "Develop its own brand identity and respect trademark rights",
+        "Copy the logo but change one letter",
+        "Use the logo only in paid advertisements",
+        "Assume brand ownership ends when a business is small"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}

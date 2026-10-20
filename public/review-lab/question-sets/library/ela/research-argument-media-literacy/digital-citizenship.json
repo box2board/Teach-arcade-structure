@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "ela--research-argument-media-literacy--digital-citizenship",
+  "title": "Digital Citizenship",
+  "subject": "English Language Arts",
+  "category": "Research, Argument & Media Literacy",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Before sharing a dramatic online claim, what is the best first step?",
+      "choices": [
+        "Check the original source and seek independent corroboration",
+        "Share it quickly so others can decide",
+        "Trust it if many accounts repeat it",
+        "Judge its truth by the number of emojis"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 2,
+      "question": "A post asks users to enter a password through an unfamiliar link. What is the safest response?",
+      "choices": [
+        "Reuse the password to test the link",
+        "Do not enter credentials; verify the request through the official service",
+        "Forward the link to friends",
+        "Enter a fake password and personal details"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 3,
+      "question": "What does a strong password practice include?",
+      "choices": [
+        "Using the same short password on every site",
+        "Including a public birthday",
+        "Using unique, hard-to-guess passwords and a password manager when available",
+        "Sharing it with a group chat"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "A student wants to use an online image in a project. What should they check?",
+      "choices": [
+        "Whether it appears in the first search result",
+        "Whether the file name is short",
+        "Whether the image has no visible watermark",
+        "Its license or permission and the required attribution"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "A website headline says a study 'proves' a food causes a health outcome, but the linked study reports only an association. What should a reader conclude?",
+      "choices": [
+        "The headline overstates what the study establishes",
+        "Association always proves causation",
+        "The study must be fake",
+        "The food has no possible effect"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 6,
+      "question": "What is a digital footprint?",
+      "choices": [
+        "A device's screen size",
+        "The trail of information created by a person's online activity",
+        "A private browsing window",
+        "A computer's physical location only"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "A classmate posts an embarrassing photo of someone without consent. What is a responsible response?",
+      "choices": [
+        "Download it for later",
+        "Add a mocking comment",
+        "Avoid resharing it and use appropriate reporting or support channels",
+        "Post it to another platform"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 8,
+      "question": "A message claims to come from a school but uses a misspelled domain and urgent payment demand. What should the recipient do?",
+      "choices": [
+        "Pay immediately to avoid a threat",
+        "Reply with financial information",
+        "Assume the logo proves it is authentic",
+        "Verify through a known official contact before acting"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 9,
+      "question": "What does two-factor authentication add?",
+      "choices": [
+        "A second verification step beyond the password",
+        "A second public profile",
+        "A guarantee that no account can be hacked",
+        "A way to share passwords safely"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "A student uses an AI-generated summary for research. Which practice is strongest?",
+      "choices": [
+        "Cite the summary as primary evidence",
+        "Verify key claims against credible sources and follow class disclosure rules",
+        "Assume it is accurate because it is fluent",
+        "Submit it without reading it"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 11,
+      "question": "Which action respects copyright when using a creator's work?",
+      "choices": [
+        "Remove the creator's name",
+        "Assume anything online is public domain",
+        "Follow the license terms and credit the creator as required",
+        "Change the file name and claim ownership"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "A private group chat begins sharing a rumor about a student. What action best limits harm?",
+      "choices": [
+        "Post the rumor publicly",
+        "Ask others to add details",
+        "Save it to embarrass the student later",
+        "Do not forward it; report threats or harassment to a trusted adult or platform"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 13,
+      "question": "Why might a free app request access to contacts and location?",
+      "choices": [
+        "It may collect data beyond what its core function needs",
+        "Every permission is automatically necessary",
+        "Permissions have no privacy effect",
+        "The app cannot operate without every permission"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Which choice best protects personal information on a public profile?",
+      "choices": [
+        "Post a home address for verification",
+        "Limit identifying details and review privacy settings",
+        "Share travel plans in real time with everyone",
+        "Use a public profile for account recovery answers"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A student sees an edited image presented as a news photograph. What should they check?",
+      "choices": [
+        "Only whether the image looks realistic",
+        "The number of shares",
+        "The original context, source, date, and independent reporting",
+        "The font used in the caption"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 16,
+      "question": "A website's article is sponsored by a company whose product it praises. What should readers consider?",
+      "choices": [
+        "Sponsorship proves the product is safe",
+        "The article cannot contain any facts",
+        "The article is independent by definition",
+        "The sponsor may have an interest that shapes the article"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Which online comment contributes most constructively to a disagreement?",
+      "choices": [
+        "A response that addresses the claim with evidence and respectful language",
+        "A personal insult",
+        "A threat to expose private information",
+        "A repeated rumor"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 18,
+      "question": "What is phishing?",
+      "choices": [
+        "A method of compressing files",
+        "A deceptive attempt to obtain sensitive information by impersonation",
+        "A secure way to store passwords",
+        "A type of licensed image"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "Why should people consider an audience before posting?",
+      "choices": [
+        "A post disappears once viewed",
+        "Only intended readers can access it",
+        "Posts can be copied, shared, and interpreted outside their original context",
+        "Audience has no effect on meaning"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "A friend sends a link to a shocking video but cannot identify its source. What is the most responsible choice?",
+      "choices": [
+        "Share it with a warning but no verification",
+        "Assume it is current",
+        "Use its caption as proof",
+        "Pause sharing and verify the video and context first"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

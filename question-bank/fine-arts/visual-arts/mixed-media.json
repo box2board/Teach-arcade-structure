@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--visual-arts--mixed-media",
+  "title": "Mixed Media",
+  "subject": "Fine Arts",
+  "category": "Visual Arts",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is mixed-media art?",
+      "choices": [
+        "An artwork combining more than one material or process",
+        "A work using only one pencil",
+        "A print made from a single plate",
+        "A digital image with no layers"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What should an artist consider before combining materials?",
+      "choices": [
+        "Whether all materials have the same color",
+        "How they adhere, layer, age, and interact safely",
+        "Whether the artwork uses one subject",
+        "The frame's weight only"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 3,
+      "question": "Why create a small material test before a large mixed-media work?",
+      "choices": [
+        "To avoid planning the composition",
+        "To make every layer permanent",
+        "To check compatibility, texture, and appearance",
+        "To determine the artwork's price"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "What is collage?",
+      "choices": [
+        "A type of perspective grid",
+        "A method of carving stone",
+        "A single transparent paint layer",
+        "An artwork made by assembling attached images or materials"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "How can layering contribute to a mixed-media composition?",
+      "choices": [
+        "It creates depth and relationships among materials",
+        "It guarantees the materials will bond",
+        "It removes visual texture",
+        "It limits the work to one process"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "Why should adhesives and coatings be chosen carefully?",
+      "choices": [
+        "Every adhesive works on every surface",
+        "Some materials may react, detach, or require safe handling",
+        "Coatings never affect color",
+        "The choice changes only the title"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "What is an assemblage?",
+      "choices": [
+        "A drawing made only with contour lines",
+        "A watercolor wash",
+        "A three-dimensional artwork assembled from found or constructed objects",
+        "A digital audio mix"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "A paper collage is curling away from its support. What should the artist investigate?",
+      "choices": [
+        "The color wheel only",
+        "The title font",
+        "The room's lighting alone",
+        "Adhesive suitability, paper weight, and mounting method"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 9,
+      "question": "How can repetition unify a work made from many materials?",
+      "choices": [
+        "Recurring shapes, colors, or textures can connect different parts",
+        "All materials become identical",
+        "It removes the need for composition",
+        "It guarantees symmetry"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 10,
+      "question": "What is a found object in art?",
+      "choices": [
+        "A tool made only for painting",
+        "An existing object selected and incorporated into an artwork",
+        "A newly mixed pigment",
+        "A printed signature"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Why document the materials used in an artwork?",
+      "choices": [
+        "It guarantees a sale",
+        "It replaces the artwork",
+        "It supports reflection, care, and future understanding of the work",
+        "It removes the need for safety"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "How can an artist make a fragile material safer to display?",
+      "choices": [
+        "Apply any solvent available",
+        "Leave it unsupported",
+        "Place it in direct heat",
+        "Use suitable support and consider protective mounting"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 13,
+      "question": "What can contrast between rough and smooth surfaces add?",
+      "choices": [
+        "Visual and tactile interest",
+        "A guaranteed narrative",
+        "A change in scale only",
+        "A fixed historical period"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why might an artist preserve visible seams or edges in collage?",
+      "choices": [
+        "They prove the work is unfinished",
+        "They can communicate process and material relationships",
+        "They remove depth",
+        "They prevent interpretation"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 15,
+      "question": "What does composition organize in a mixed-media piece?",
+      "choices": [
+        "The chemical formula of every material",
+        "The artwork's digital file size",
+        "The placement and relationships of visual elements",
+        "The artist's work schedule"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "How can a limited set of materials strengthen a project?",
+      "choices": [
+        "It ensures the artwork is realistic",
+        "It eliminates experimentation",
+        "It makes all media archival",
+        "Constraints can encourage intentional choices and visual unity"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "What is an important safety practice when cutting or assembling materials?",
+      "choices": [
+        "Use tools as instructed and protect the workspace and hands",
+        "Cut toward the body for control",
+        "Use unknown chemicals indoors",
+        "Leave blades uncovered"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A project contains many unrelated objects but feels unclear. What revision could help?",
+      "choices": [
+        "Add more unrelated objects",
+        "Choose a focal idea and arrange materials to support it",
+        "Remove all contrast",
+        "Hide every connection"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Why is experimentation valuable in mixed-media art?",
+      "choices": [
+        "It replaces all planning",
+        "It guarantees a specific result",
+        "Unexpected material interactions can produce new visual possibilities",
+        "It prevents revision"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "How can an artist make a mixed-media work more accessible to viewers?",
+      "choices": [
+        "Use only tiny text",
+        "Hide the main idea",
+        "Assume every surface can be touched",
+        "Provide clear labels or descriptions when materials or meaning need context"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

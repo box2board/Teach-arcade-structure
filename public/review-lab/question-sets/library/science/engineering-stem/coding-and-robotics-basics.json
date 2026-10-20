@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--engineering-stem--coding-and-robotics-basics",
+  "title": "Coding and Robotics Basics",
+  "subject": "Science",
+  "category": "Engineering & STEM",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "In a robot, which component detects distance from a nearby obstacle?",
+      "choices": [
+        "A sensor",
+        "An actuator",
+        "A gear train",
+        "A chassis"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is an algorithm?",
+      "choices": [
+        "A device that converts electricity to motion",
+        "A sequence of steps for solving a problem",
+        "A measurement that cannot be repeated",
+        "A type of robot battery"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "A program repeats a movement sequence four times. Which programming structure is most appropriate?",
+      "choices": [
+        "Variable",
+        "Comment",
+        "Loop",
+        "Sensor"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "A robot turns left only when its distance sensor detects an obstacle within 10 centimeters. This behavior uses",
+      "choices": [
+        "a fixed sequence with no input",
+        "a comment instead of an instruction",
+        "an actuator as a measurement",
+        "a conditional decision"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "Which part of a robot produces motion in response to a control signal?",
+      "choices": [
+        "Actuator",
+        "Sensor",
+        "Algorithm",
+        "Input value"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "A line-following robot drifts off the track, corrects itself, and then drifts again. Which improvement most directly supports stable control?",
+      "choices": [
+        "Disable the sensors and increase the maximum speed",
+        "Use sensor feedback to make smaller, timely motor adjustments",
+        "Repeat the same full-speed turn on every surface",
+        "Remove the control loop"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 7,
+      "question": "A robot's sensor returns 6 centimeters, but the program treats every value below 8 centimeters as an obstacle. What should the robot do?",
+      "choices": [
+        "Continue as if no sensor reading exists",
+        "Rewrite the sensor value as 8",
+        "Execute the obstacle-response branch",
+        "Stop the program before evaluating the condition"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 8,
+      "question": "What is debugging?",
+      "choices": [
+        "Adding more hardware without testing",
+        "Copying code without understanding it",
+        "Choosing a robot's color scheme",
+        "Finding and correcting problems in a program or system"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "A program tells a robot to move forward 20 centimeters, but it moves 28 centimeters. Which next step is most useful?",
+      "choices": [
+        "Measure the difference across repeated trials and adjust the movement command",
+        "Change the robot's name and rerun once",
+        "Assume the distance sensor caused the error without checking",
+        "Remove all movement commands"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 10,
+      "question": "In a block-based program, a variable is useful for",
+      "choices": [
+        "physically connecting a wheel to a motor",
+        "storing a value that a program can use or update",
+        "detecting light without a sensor",
+        "making every instruction run simultaneously"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "A robot repeats a pick-and-place routine until a bin is empty. What condition should end the loop?",
+      "choices": [
+        "The robot has completed exactly one movement",
+        "The battery voltage rises above its starting level",
+        "The sensor or counter indicates that no items remain",
+        "The program reaches a comment"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 12,
+      "question": "A team's robot works in a test area but not on a darker floor. What is the best troubleshooting approach?",
+      "choices": [
+        "Replace the drive motors before examining the sensor",
+        "Change the program, floor, and lighting at the same time",
+        "Remove the floor sensor data from the report",
+        "Investigate how surface color affects the sensor readings and retest controlled changes"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 13,
+      "question": "Which statement correctly describes input and output in a simple robot system?",
+      "choices": [
+        "A sensor provides input; a motor can produce output",
+        "A motor provides input; an algorithm is a physical output",
+        "A battery is an algorithm; a sensor is a chassis",
+        "A wheel is a sensor; a program is an actuator"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "A program contains the command 'turn 90 degrees' twice in different places. What is one benefit of making this a reusable function?",
+      "choices": [
+        "It guarantees the robot's angle sensor is accurate",
+        "It can reduce repeated code and make changes easier to manage",
+        "It removes the need to test either turn",
+        "It changes a conditional into a physical sensor"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A team wants a robot to stop before crossing a table edge. Which setup best supports that goal?",
+      "choices": [
+        "Use a sound output and a loop that ignores sensor input",
+        "Use a wheel encoder alone to identify every table edge",
+        "Use a downward-facing sensor and a tested condition that stops motion when an edge is detected",
+        "Use a light actuator to estimate distance"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 16,
+      "question": "Why should code be tested with more than one input or situation?",
+      "choices": [
+        "One successful run proves the program handles every condition",
+        "Multiple cases make the algorithm harder to understand",
+        "Testing can replace defining the intended behavior",
+        "Different cases can reveal errors hidden by a single successful run"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "A robot's left and right wheels turn at different speeds to make a curve. Which idea is being applied?",
+      "choices": [
+        "Differential drive control",
+        "Image compression",
+        "Data encryption",
+        "Chemical equilibrium"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 18,
+      "question": "A remote-controlled robot responds only while a person holds a direction button. How does it differ from an autonomous robot?",
+      "choices": [
+        "It must have more sensors than an autonomous robot",
+        "It relies on a human operator for movement commands",
+        "It cannot use electric motors",
+        "It automatically makes every decision from sensor data"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "A program's obstacle sensor reading is sometimes late. Why can a fast robot be less safe than a slow one in the same course?",
+      "choices": [
+        "It receives more accurate readings at higher speed",
+        "Its actuators stop before a command is sent",
+        "It travels farther before the delayed reading can affect movement",
+        "Its algorithm no longer needs conditions"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A robot arm misses the target because its claw closes before the arm reaches the object. What is the most direct code revision?",
+      "choices": [
+        "Add a second claw-close command at the start",
+        "Remove the arm movement command",
+        "Change the color of the target",
+        "Adjust the sequence or timing so the arm reaches the target before the claw closes"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

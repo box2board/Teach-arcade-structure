@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "ela--writing-composition--writing-original-poems",
+  "title": "Writing Original Poems",
+  "subject": "English Language Arts",
+  "category": "Writing & Composition",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "A student wants a poem to evoke a specific place. Which planning choice is most useful?",
+      "choices": [
+        "List precise sensory details and associations connected to that place",
+        "Choose a rhyme scheme before deciding what the poem is about",
+        "Use abstract words only",
+        "Avoid selecting a speaker"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 2,
+      "question": "Which line uses a concrete image rather than an abstract statement?",
+      "choices": [
+        "The day felt difficult",
+        "Rain ticks against the rusted fire escape",
+        "Hope is important to everyone",
+        "Things can change over time"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "A poet repeats 'I remember' at the start of several lines. What is a likely craft purpose?",
+      "choices": [
+        "Replace the need for images",
+        "Make the poem's speaker disappear",
+        "Create emphasis and a recognizable rhythm",
+        "Guarantee an exact rhyme scheme"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "Which revision best strengthens a vague line, 'The room was bad'?",
+      "choices": [
+        "The room was very, very bad",
+        "It was not a good room",
+        "The room was a room",
+        "The sour lamp buzzed above the peeling wallpaper"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 5,
+      "question": "What is the strongest reason to choose a deliberate speaker for a poem?",
+      "choices": [
+        "The speaker shapes what the reader notices and how events are presented",
+        "Every poem must be narrated by its author",
+        "A speaker determines the number of stanzas",
+        "The speaker removes the need for a central idea"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "A poem has strong images but its lines all sound alike. Which revision could improve its movement?",
+      "choices": [
+        "Add unrelated facts to every stanza",
+        "Vary line length and sentence structure to fit the poem's pace",
+        "Make every line the same length",
+        "Remove all punctuation and images"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 7,
+      "question": "Which choice is an example of personification?",
+      "choices": [
+        "The clock was round and white",
+        "The clock showed three o'clock",
+        "The impatient clock swallowed the afternoon",
+        "The clock stood on the shelf"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "A student wants a repeated line to gain meaning each time it returns. What should change across the poem?",
+      "choices": [
+        "The repeated line must change its rhyme each time",
+        "The poem must switch to prose",
+        "Every stanza should introduce a new speaker",
+        "The surrounding context should develop or complicate the repeated line"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 9,
+      "question": "What does enjambment do?",
+      "choices": [
+        "Carries a sentence or phrase across a line break without a full stop",
+        "Repeats the first stanza at the end",
+        "Makes two line endings rhyme",
+        "Names the poem's speaker"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Which drafting strategy is most useful when a poem feels forced by rhyme?",
+      "choices": [
+        "Keep any word that rhymes, even if it changes the idea",
+        "Revise the image or line so meaning leads and sound supports it",
+        "Add extra adjectives to every line",
+        "Remove the poem's subject"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 11,
+      "question": "A poem's central idea is loneliness, but the images show crowded rooms and unanswered messages. What can the writer improve?",
+      "choices": [
+        "Add a second unrelated theme in every line",
+        "Remove all specific details",
+        "Connect the chosen images more deliberately to the central idea",
+        "Replace the images with a plot summary"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 12,
+      "question": "Which line best uses a metaphor?",
+      "choices": [
+        "Memory is like a drawer",
+        "I remembered the drawer",
+        "The drawer was beside the desk",
+        "Memory is a drawer that will not stay shut"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Why read a draft aloud during revision?",
+      "choices": [
+        "To hear rhythm, awkward phrasing, repetition, and pauses",
+        "To determine the author's grade",
+        "To make every line rhyme",
+        "To avoid considering the poem's meaning"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Which revision reduces a cliché while preserving the idea of nervousness?",
+      "choices": [
+        "I was nervous as a cat",
+        "My hands worried the paper into soft folds",
+        "I had butterflies in my stomach",
+        "I was scared stiff"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 15,
+      "question": "A writer uses a sonnet form. What should the form contribute to the poem?",
+      "choices": [
+        "A guarantee that each line has the same subject",
+        "A replacement for imagery",
+        "A structure that supports the poem's development or creates meaningful constraints",
+        "A requirement that the poem explain its theme directly"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "What is a useful role for a title in a poem?",
+      "choices": [
+        "Summarize every image in order",
+        "Provide the poem's only sound device",
+        "Replace the opening line",
+        "Offer a frame or clue that gains significance after reading"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "A poet wants a quiet, reflective mood. Which sound choice is most likely to support it?",
+      "choices": [
+        "Measured phrasing and softer sounds that fit the selected images",
+        "A stream of abrupt commands unrelated to the scene",
+        "Only capital letters",
+        "A rapid list of loud sound effects"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Which question is most useful in peer feedback on a poem draft?",
+      "choices": [
+        "Can you rewrite this in your own style?",
+        "Which image or line stayed with you, and what in the text caused that effect?",
+        "Why didn't you make every line rhyme?",
+        "Can you remove the speaker?"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "What should a poet check when revising line breaks?",
+      "choices": [
+        "Whether every line contains exactly eight words",
+        "Whether each break occurs after a comma",
+        "Where breaks create emphasis, pause, surprise, or multiple readings",
+        "Whether line breaks match the page margin only"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "A final stanza introduces an image from the opening but changes its context. What can this create?",
+      "choices": [
+        "A new rhyme scheme by itself",
+        "An error that must be removed",
+        "A switch from poem to essay",
+        "A sense of development or closure through a changed perspective"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

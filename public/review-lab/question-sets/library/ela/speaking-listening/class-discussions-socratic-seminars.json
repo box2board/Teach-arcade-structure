@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "ela--speaking-listening--class-discussions-socratic-seminars",
+  "title": "Class Discussions & Socratic Seminars",
+  "subject": "English Language Arts",
+  "category": "Speaking & Listening",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a useful purpose of an open-ended seminar question?",
+      "choices": [
+        "Invite multiple evidence-based interpretations",
+        "Signal that only one word is acceptable",
+        "End discussion before participants respond",
+        "Test how quickly someone can speak"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 2,
+      "question": "A participant disagrees with a classmate's interpretation. Which response best advances discussion?",
+      "choices": [
+        "Interrupt and repeat the same claim louder",
+        "Refer to a specific part of the text and explain a different reading",
+        "Criticize the classmate personally",
+        "Change the subject"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 3,
+      "question": "What does active listening include?",
+      "choices": [
+        "Planning a rebuttal without listening",
+        "Waiting for a pause to change topics",
+        "Attending to a speaker's idea and responding to what was actually said",
+        "Agreeing with every statement"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "A seminar is dominated by two speakers. What is a useful facilitation move?",
+      "choices": [
+        "End the discussion immediately",
+        "Let the same speakers take every turn",
+        "Score participants by speaking speed",
+        "Invite voices that have not yet contributed and make space for them"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 5,
+      "question": "Which comment best builds on a previous speaker's idea?",
+      "choices": [
+        "I want to extend Maya's point about the setting by considering the narrator's word choice",
+        "That is wrong",
+        "I have a different topic",
+        "I was going to say something"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "Why should participants support claims with evidence?",
+      "choices": [
+        "Evidence prevents disagreement",
+        "Evidence lets the group evaluate and compare interpretations",
+        "Evidence makes discussion shorter by definition",
+        "Evidence replaces listening"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "A student asks, 'What in the passage supports that conclusion?' What discussion move is this?",
+      "choices": [
+        "Changing the subject",
+        "Summarizing a final decision",
+        "Requesting evidence or clarification",
+        "Making a personal attack"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "What is a respectful way to enter a discussion after a pause?",
+      "choices": [
+        "Speak over another participant",
+        "Dismiss the previous points",
+        "Read an unrelated prepared paragraph",
+        "Connect a comment to an earlier idea or pose a relevant question"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 9,
+      "question": "A participant changes their interpretation after hearing new evidence. What does this show?",
+      "choices": [
+        "Reasoned discussion can refine a claim",
+        "The first interpretation was dishonest",
+        "The participant must stop contributing",
+        "Evidence should be ignored"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Which question is most likely to deepen analysis?",
+      "choices": [
+        "Did you like the story?",
+        "How does the author's choice in this passage shape the theme?",
+        "What page is this on?",
+        "Was the book printed in color?"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 11,
+      "question": "A seminar norm says 'criticize ideas, not people.' What does it encourage?",
+      "choices": [
+        "Avoid all disagreement",
+        "Agree with the highest-status speaker",
+        "Focus disagreement on claims, reasoning, and evidence",
+        "Discuss classmates' personalities"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Why might a participant paraphrase a peer's point before responding?",
+      "choices": [
+        "To change the point into a weaker one",
+        "To avoid adding any analysis",
+        "To take credit for the idea",
+        "To check understanding and show the response addresses the point"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "A group has several plausible interpretations and incomplete evidence. What should it do?",
+      "choices": [
+        "Compare the interpretations and identify what evidence would help distinguish them",
+        "Vote without explaining",
+        "Treat the first claim as final",
+        "Ignore the text"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 14,
+      "question": "What is a facilitator's role in a seminar?",
+      "choices": [
+        "Provide every answer",
+        "Support equitable participation and keep discussion connected to its purpose",
+        "Speak for most of the time",
+        "Prevent participants from asking questions"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A speaker makes a broad claim that 'everyone' agrees. Which response is most useful?",
+      "choices": [
+        "Accept it because it sounds confident",
+        "Mock the speaker",
+        "Ask what evidence or examples support the claim and whether exceptions exist",
+        "End the discussion"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 16,
+      "question": "How can a participant disagree while keeping the discussion productive?",
+      "choices": [
+        "Say the other person is ignorant",
+        "Refuse to explain the disagreement",
+        "Repeat the claim without evidence",
+        "Acknowledge the point, state a different claim, and support it with evidence"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "A discussion keeps drifting away from the central question. What can bring it back?",
+      "choices": [
+        "Restate the question and connect the current point to it",
+        "Introduce a more entertaining topic",
+        "Stop taking turns",
+        "Ignore the original task"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Which behavior best demonstrates listening?",
+      "choices": [
+        "Repeat a memorized response regardless of what was said",
+        "Ask a follow-up that accurately reflects the speaker's point",
+        "Check unrelated messages",
+        "Interrupt every sentence"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "Why can silence be useful in a discussion?",
+      "choices": [
+        "It proves no one prepared",
+        "It guarantees agreement",
+        "It gives participants time to think before responding",
+        "It replaces the need for a question"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "After a seminar, which reflection is most useful?",
+      "choices": [
+        "Rate classmates by popularity",
+        "List only who spoke most",
+        "Decide whether every participant agreed",
+        "Identify how evidence, listening, and participation shaped the discussion"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

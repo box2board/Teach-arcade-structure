@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "ela--speaking-listening--collaborative-conversations",
+  "title": "Collaborative Conversations",
+  "subject": "English Language Arts",
+  "category": "Speaking & Listening",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a productive first step when a group receives a complex task?",
+      "choices": [
+        "Clarify the goal, constraints, and roles",
+        "Begin separate work without discussing the goal",
+        "Choose a final answer before reading the task",
+        "Assign every role to one person"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 2,
+      "question": "A team member has not spoken. What can another member do to support collaboration?",
+      "choices": [
+        "Assume the member has no ideas",
+        "Invite the member to share their perspective without putting them on the spot",
+        "Speak for the member",
+        "End the conversation"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 3,
+      "question": "Two group members disagree about a solution. What should they compare?",
+      "choices": [
+        "Who has the louder voice",
+        "Which proposal was mentioned first",
+        "The evidence and criteria relevant to each proposal",
+        "Which member is more popular"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 4,
+      "question": "Why should a group summarize decisions before ending a meeting?",
+      "choices": [
+        "To prevent members from asking questions",
+        "To avoid recording responsibilities",
+        "To make the meeting longer",
+        "To confirm shared understanding and clarify next steps"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "A group assigns one person to research, one to check evidence, and one to report. What is the benefit?",
+      "choices": [
+        "Responsibilities are clear and work can be coordinated",
+        "No one needs to communicate",
+        "The task is guaranteed to be correct",
+        "Members cannot contribute outside their role"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "Which response best handles a misunderstanding?",
+      "choices": [
+        "Assume the worst intention",
+        "Ask the speaker to clarify and restate what you understood",
+        "Repeat the misunderstood idea as fact",
+        "Stop listening"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 7,
+      "question": "A team is behind schedule. Which action is most constructive?",
+      "choices": [
+        "Blame one person before checking progress",
+        "Ignore the deadline",
+        "Identify the remaining tasks, set priorities, and redistribute work fairly",
+        "Discard the shared goal"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 8,
+      "question": "What does building on a peer's idea involve?",
+      "choices": [
+        "Repeat the idea and claim it as your own",
+        "Reject it without explanation",
+        "Change to an unrelated topic",
+        "Acknowledge the idea and add a related point or question"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Which group norm helps make disagreement productive?",
+      "choices": [
+        "Challenge ideas with reasons while treating members respectfully",
+        "Never question a proposal",
+        "Criticize the person who proposed it",
+        "Let only the leader speak"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "A group agrees quickly, but one member has concerns. What should the facilitator do?",
+      "choices": [
+        "Declare the decision final",
+        "Invite the concern and check whether the decision addresses it",
+        "Exclude the member from later work",
+        "Pretend agreement is complete"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 11,
+      "question": "A group uses a shared document. Which practice improves accountability?",
+      "choices": [
+        "Delete names from all tasks",
+        "Let everyone assume someone else will do it",
+        "Record owners and due dates for each task",
+        "Avoid reviewing progress"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What is consensus?",
+      "choices": [
+        "A decision made by the fastest speaker",
+        "A rule that everyone must share the same opinion",
+        "A vote that ignores discussion",
+        "A decision the group can support after considering perspectives, even if it is not everyone's first choice"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "A member interrupts repeatedly. Which reminder is most useful?",
+      "choices": [
+        "Let's finish each turn and make sure everyone has a chance to contribute",
+        "Stop talking forever",
+        "Your ideas are not useful",
+        "Only the leader may speak"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 14,
+      "question": "Why can assigning a rotating facilitator help a group?",
+      "choices": [
+        "It removes the need for group decisions",
+        "It shares responsibility for keeping discussion focused and equitable",
+        "It makes one member responsible for all content",
+        "It prevents disagreement"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A group receives feedback that its presentation lacks evidence. What is the best response?",
+      "choices": [
+        "Dismiss all feedback as unfair",
+        "Add unrelated quotations",
+        "Review the claim and add relevant, credible support",
+        "Remove the claim without discussion"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 16,
+      "question": "Which statement demonstrates paraphrasing in conversation?",
+      "choices": [
+        "I disagree",
+        "Whatever",
+        "Let's move on",
+        "So your concern is that the schedule leaves too little time for testing—is that right?"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "A group is choosing among options with different costs and benefits. What should it do?",
+      "choices": [
+        "Agree on criteria, compare options, and explain the trade-offs",
+        "Choose at random",
+        "Compare each option using different criteria",
+        "Ignore affected stakeholders"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "How can a recorder support a collaborative group?",
+      "choices": [
+        "Decide the answer without consulting others",
+        "Capture decisions, questions, and assigned next steps",
+        "Record only personal opinions",
+        "Prevent members from revising ideas"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "A member misses a meeting. How can the group support continuity?",
+      "choices": [
+        "Restart all work without explanation",
+        "Assume the member will guess what happened",
+        "Share the decisions and assigned tasks with that member",
+        "Remove the member's responsibilities without notice"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which reflection best evaluates collaboration?",
+      "choices": [
+        "Rate the group by who spoke most",
+        "Focus only on whether the task was finished",
+        "List members' personalities",
+        "Consider how listening, role-sharing, and evidence influenced the group's result"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    }
+  ]
+}

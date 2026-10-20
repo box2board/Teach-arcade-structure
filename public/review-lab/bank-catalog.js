@@ -251,6 +251,716 @@ export const BANK_SETS=[
     "file": "ela/research-argument-media-literacy/quoting-paraphrasing-and-attribution.json"
   },
   {
+    "id": "ela--literature-literary-analysis--rhyme-rhythm-meter",
+    "title": "Rhyme, Rhythm & Meter",
+    "subject": "English Language Arts",
+    "category": "Literature & Literary Analysis",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Literature & Literary Analysis · 7–12",
+    "file": "ela/literature-literary-analysis/rhyme-rhythm-meter.json"
+  },
+  {
+    "id": "ela--writing-composition--writing-original-poems",
+    "title": "Writing Original Poems",
+    "subject": "English Language Arts",
+    "category": "Writing & Composition",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Writing & Composition · 7–12",
+    "file": "ela/writing-composition/writing-original-poems.json"
+  },
+  {
+    "id": "ela--reading-informational-text--text-features",
+    "title": "Text Features",
+    "subject": "English Language Arts",
+    "category": "Reading & Informational Text",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Reading & Informational Text · 7–12",
+    "file": "ela/reading-informational-text/text-features.json"
+  },
+  {
+    "id": "ela--reading-informational-text--author-s-purpose-tone",
+    "title": "Author’s Purpose & Tone",
+    "subject": "English Language Arts",
+    "category": "Reading & Informational Text",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Reading & Informational Text · 7–12",
+    "file": "ela/reading-informational-text/author-s-purpose-tone.json"
+  },
+  {
+    "id": "ela--reading-informational-text--fact-opinion-bias",
+    "title": "Fact, Opinion & Bias",
+    "subject": "English Language Arts",
+    "category": "Reading & Informational Text",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Reading & Informational Text · 7–12",
+    "file": "ela/reading-informational-text/fact-opinion-bias.json"
+  },
+  {
+    "id": "ela--research-argument-media-literacy--note-taking-organizers",
+    "title": "Note-Taking & Organizers",
+    "subject": "English Language Arts",
+    "category": "Research, Argument & Media Literacy",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Research, Argument & Media Literacy · 7–12",
+    "file": "ela/research-argument-media-literacy/note-taking-organizers.json"
+  },
+  {
+    "id": "ela--research-argument-media-literacy--digital-citizenship",
+    "title": "Digital Citizenship",
+    "subject": "English Language Arts",
+    "category": "Research, Argument & Media Literacy",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Research, Argument & Media Literacy · 7–12",
+    "file": "ela/research-argument-media-literacy/digital-citizenship.json"
+  },
+  {
+    "id": "ela--speaking-listening--class-discussions-socratic-seminars",
+    "title": "Class Discussions & Socratic Seminars",
+    "subject": "English Language Arts",
+    "category": "Speaking & Listening",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Speaking & Listening · 7–12",
+    "file": "ela/speaking-listening/class-discussions-socratic-seminars.json"
+  },
+  {
+    "id": "ela--speaking-listening--presentations-speeches",
+    "title": "Presentations & Speeches",
+    "subject": "English Language Arts",
+    "category": "Speaking & Listening",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Speaking & Listening · 7–12",
+    "file": "ela/speaking-listening/presentations-speeches.json"
+  },
+  {
+    "id": "ela--speaking-listening--listening-comprehension-tasks",
+    "title": "Listening Comprehension Tasks",
+    "subject": "English Language Arts",
+    "category": "Speaking & Listening",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Speaking & Listening · 7–12",
+    "file": "ela/speaking-listening/listening-comprehension-tasks.json"
+  },
+  {
+    "id": "ela--research-argument-media-literacy--debates-structured-argument",
+    "title": "Debates & Structured Argument",
+    "subject": "English Language Arts",
+    "category": "Research, Argument & Media Literacy",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Research, Argument & Media Literacy · 7–12",
+    "file": "ela/research-argument-media-literacy/debates-structured-argument.json"
+  },
+  {
+    "id": "ela--speaking-listening--collaborative-conversations",
+    "title": "Collaborative Conversations",
+    "subject": "English Language Arts",
+    "category": "Speaking & Listening",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Speaking & Listening · 7–12",
+    "file": "ela/speaking-listening/collaborative-conversations.json"
+  },
+  {
+    "id": "ela--writing-composition--test-style-writing-prompts",
+    "title": "Test-Style Writing Prompts",
+    "subject": "English Language Arts",
+    "category": "Writing & Composition",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Writing & Composition · 7–12",
+    "file": "ela/writing-composition/test-style-writing-prompts.json"
+  },
+  {
+    "id": "ela--writing-composition--test-taking-strategies",
+    "title": "Test-Taking Strategies",
+    "subject": "English Language Arts",
+    "category": "Writing & Composition",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Writing & Composition · 7–12",
+    "file": "ela/writing-composition/test-taking-strategies.json"
+  },
+  {
+    "id": "ela--language-grammar-vocabulary--synonyms-antonyms",
+    "title": "Synonyms & Antonyms",
+    "subject": "English Language Arts",
+    "category": "Language, Grammar & Vocabulary",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Language, Grammar & Vocabulary · 7–12",
+    "file": "ela/language-grammar-vocabulary/synonyms-antonyms.json"
+  },
+  {
+    "id": "ela--language-grammar-vocabulary--multiple-meaning-words",
+    "title": "Multiple-Meaning Words",
+    "subject": "English Language Arts",
+    "category": "Language, Grammar & Vocabulary",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Language, Grammar & Vocabulary · 7–12",
+    "file": "ela/language-grammar-vocabulary/multiple-meaning-words.json"
+  },
+  {
+    "id": "ela--writing-composition--narrative-writing",
+    "title": "Narrative Writing",
+    "subject": "English Language Arts",
+    "category": "Writing & Composition",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Writing & Composition · 7–12",
+    "file": "ela/writing-composition/narrative-writing.json"
+  },
+  {
+    "id": "ela--writing-composition--informational-explanatory-writing",
+    "title": "Informational & Explanatory Writing",
+    "subject": "English Language Arts",
+    "category": "Writing & Composition",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Writing & Composition · 7–12",
+    "file": "ela/writing-composition/informational-explanatory-writing.json"
+  },
+  {
+    "id": "ela--writing-composition--introductions-conclusions",
+    "title": "Introductions & Conclusions",
+    "subject": "English Language Arts",
+    "category": "Writing & Composition",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Writing & Composition · 7–12",
+    "file": "ela/writing-composition/introductions-conclusions.json"
+  },
+  {
+    "id": "ela--writing-composition--organization-paragraph-structure",
+    "title": "Organization & Paragraph Structure",
+    "subject": "English Language Arts",
+    "category": "Writing & Composition",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Writing & Composition · 7–12",
+    "file": "ela/writing-composition/organization-paragraph-structure.json"
+  },
+  {
+    "id": "fine-arts--art-history--prehistoric-ancient-art",
+    "title": "Prehistoric & Ancient Art",
+    "subject": "Fine Arts",
+    "category": "Art History",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Art History · 7–12",
+    "file": "fine-arts/art-history/prehistoric-ancient-art.json"
+  },
+  {
+    "id": "fine-arts--art-history--medieval-byzantine-art",
+    "title": "Medieval & Byzantine Art",
+    "subject": "Fine Arts",
+    "category": "Art History",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Art History · 7–12",
+    "file": "fine-arts/art-history/medieval-byzantine-art.json"
+  },
+  {
+    "id": "fine-arts--art-history--renaissance-art",
+    "title": "Renaissance Art",
+    "subject": "Fine Arts",
+    "category": "Art History",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Art History · 7–12",
+    "file": "fine-arts/art-history/renaissance-art.json"
+  },
+  {
+    "id": "fine-arts--art-history--baroque-rococo",
+    "title": "Baroque & Rococo",
+    "subject": "Fine Arts",
+    "category": "Art History",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Art History · 7–12",
+    "file": "fine-arts/art-history/baroque-rococo.json"
+  },
+  {
+    "id": "fine-arts--art-history--19th-century-art-movements",
+    "title": "19th-Century Art Movements",
+    "subject": "Fine Arts",
+    "category": "Art History",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Art History · 7–12",
+    "file": "fine-arts/art-history/19th-century-art-movements.json"
+  },
+  {
+    "id": "fine-arts--art-history--impressionism-post-impressionism",
+    "title": "Impressionism & Post-Impressionism",
+    "subject": "Fine Arts",
+    "category": "Art History",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Art History · 7–12",
+    "file": "fine-arts/art-history/impressionism-post-impressionism.json"
+  },
+  {
+    "id": "fine-arts--art-history--modern-art-movements",
+    "title": "Modern Art Movements",
+    "subject": "Fine Arts",
+    "category": "Art History",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Art History · 7–12",
+    "file": "fine-arts/art-history/modern-art-movements.json"
+  },
+  {
+    "id": "fine-arts--art-history--contemporary-art-artists",
+    "title": "Contemporary Art & Artists",
+    "subject": "Fine Arts",
+    "category": "Art History",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Art History · 7–12",
+    "file": "fine-arts/art-history/contemporary-art-artists.json"
+  },
+  {
+    "id": "fine-arts--art-history--how-to-analyze-discuss-art",
+    "title": "How to Analyze & Discuss Art",
+    "subject": "Fine Arts",
+    "category": "Art History",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Art History · 7–12",
+    "file": "fine-arts/art-history/how-to-analyze-discuss-art.json"
+  },
+  {
+    "id": "fine-arts--dance--elements-of-dance",
+    "title": "Elements of Dance",
+    "subject": "Fine Arts",
+    "category": "Dance",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Dance · 7–12",
+    "file": "fine-arts/dance/elements-of-dance.json"
+  },
+  {
+    "id": "fine-arts--dance--movement-basics",
+    "title": "Movement Basics",
+    "subject": "Fine Arts",
+    "category": "Dance",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Dance · 7–12",
+    "file": "fine-arts/dance/movement-basics.json"
+  },
+  {
+    "id": "fine-arts--dance--dance-styles-overview",
+    "title": "Dance Styles Overview",
+    "subject": "Fine Arts",
+    "category": "Dance",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Dance · 7–12",
+    "file": "fine-arts/dance/dance-styles-overview.json"
+  },
+  {
+    "id": "fine-arts--dance--cultural-dances",
+    "title": "Cultural Dances",
+    "subject": "Fine Arts",
+    "category": "Dance",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Dance · 7–12",
+    "file": "fine-arts/dance/cultural-dances.json"
+  },
+  {
+    "id": "fine-arts--dance--choreography-basics",
+    "title": "Choreography Basics",
+    "subject": "Fine Arts",
+    "category": "Dance",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Dance · 7–12",
+    "file": "fine-arts/dance/choreography-basics.json"
+  },
+  {
+    "id": "fine-arts--dance--expression-performance",
+    "title": "Expression & Performance",
+    "subject": "Fine Arts",
+    "category": "Dance",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Dance · 7–12",
+    "file": "fine-arts/dance/expression-performance.json"
+  },
+  {
+    "id": "fine-arts--dance--dance-technique-safety",
+    "title": "Dance Technique & Safety",
+    "subject": "Fine Arts",
+    "category": "Dance",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Dance · 7–12",
+    "file": "fine-arts/dance/dance-technique-safety.json"
+  },
+  {
+    "id": "fine-arts--theatre--stage-directions-blocking",
+    "title": "Stage Directions & Blocking",
+    "subject": "Fine Arts",
+    "category": "Theatre",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Theatre · 7–12",
+    "file": "fine-arts/theatre/stage-directions-blocking.json"
+  },
+  {
+    "id": "fine-arts--theatre--acting-basics",
+    "title": "Acting Basics",
+    "subject": "Fine Arts",
+    "category": "Theatre",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Theatre · 7–12",
+    "file": "fine-arts/theatre/acting-basics.json"
+  },
+  {
+    "id": "fine-arts--theatre--improvisation-games",
+    "title": "Improvisation Games",
+    "subject": "Fine Arts",
+    "category": "Theatre",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Theatre · 7–12",
+    "file": "fine-arts/theatre/improvisation-games.json"
+  },
+  {
+    "id": "fine-arts--theatre--dramatic-structure",
+    "title": "Dramatic Structure",
+    "subject": "Fine Arts",
+    "category": "Theatre",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Theatre · 7–12",
+    "file": "fine-arts/theatre/dramatic-structure.json"
+  },
+  {
+    "id": "fine-arts--theatre--scriptwriting-dialogue",
+    "title": "Scriptwriting & Dialogue",
+    "subject": "Fine Arts",
+    "category": "Theatre",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Theatre · 7–12",
+    "file": "fine-arts/theatre/scriptwriting-dialogue.json"
+  },
+  {
+    "id": "fine-arts--theatre--character-development",
+    "title": "Character Development",
+    "subject": "Fine Arts",
+    "category": "Theatre",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Theatre · 7–12",
+    "file": "fine-arts/theatre/character-development.json"
+  },
+  {
+    "id": "fine-arts--theatre--set-costume-design",
+    "title": "Set & Costume Design",
+    "subject": "Fine Arts",
+    "category": "Theatre",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Theatre · 7–12",
+    "file": "fine-arts/theatre/set-costume-design.json"
+  },
+  {
+    "id": "fine-arts--theatre--theatre-history-traditions",
+    "title": "Theatre History & Traditions",
+    "subject": "Fine Arts",
+    "category": "Theatre",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Theatre · 7–12",
+    "file": "fine-arts/theatre/theatre-history-traditions.json"
+  },
+  {
+    "id": "fine-arts--media-arts--introduction-to-media-arts",
+    "title": "Introduction to Media Arts",
+    "subject": "Fine Arts",
+    "category": "Media Arts",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Media Arts · 7–12",
+    "file": "fine-arts/media-arts/introduction-to-media-arts.json"
+  },
+  {
+    "id": "fine-arts--media-arts--digital-citizenship",
+    "title": "Digital Citizenship",
+    "subject": "Fine Arts",
+    "category": "Media Arts",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Media Arts · 7–12",
+    "file": "fine-arts/media-arts/digital-citizenship.json"
+  },
+  {
+    "id": "fine-arts--media-arts--graphic-design-basics",
+    "title": "Graphic Design Basics",
+    "subject": "Fine Arts",
+    "category": "Media Arts",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Media Arts · 7–12",
+    "file": "fine-arts/media-arts/graphic-design-basics.json"
+  },
+  {
+    "id": "fine-arts--media-arts--photo-editing",
+    "title": "Photo Editing",
+    "subject": "Fine Arts",
+    "category": "Media Arts",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Media Arts · 7–12",
+    "file": "fine-arts/media-arts/photo-editing.json"
+  },
+  {
+    "id": "fine-arts--media-arts--animation-basics",
+    "title": "Animation Basics",
+    "subject": "Fine Arts",
+    "category": "Media Arts",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Media Arts · 7–12",
+    "file": "fine-arts/media-arts/animation-basics.json"
+  },
+  {
+    "id": "fine-arts--media-arts--video-editing-projects",
+    "title": "Video Editing Projects",
+    "subject": "Fine Arts",
+    "category": "Media Arts",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Media Arts · 7–12",
+    "file": "fine-arts/media-arts/video-editing-projects.json"
+  },
+  {
+    "id": "fine-arts--music--rhythm-beat",
+    "title": "Rhythm & Beat",
+    "subject": "Fine Arts",
+    "category": "Music",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Music · 7–12",
+    "file": "fine-arts/music/rhythm-beat.json"
+  },
+  {
+    "id": "fine-arts--music--melody-pitch",
+    "title": "Melody & Pitch",
+    "subject": "Fine Arts",
+    "category": "Music",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Music · 7–12",
+    "file": "fine-arts/music/melody-pitch.json"
+  },
+  {
+    "id": "fine-arts--music--music-notation",
+    "title": "Music Notation",
+    "subject": "Fine Arts",
+    "category": "Music",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Music · 7–12",
+    "file": "fine-arts/music/music-notation.json"
+  },
+  {
+    "id": "fine-arts--music--scales-keys",
+    "title": "Scales & Keys",
+    "subject": "Fine Arts",
+    "category": "Music",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Music · 7–12",
+    "file": "fine-arts/music/scales-keys.json"
+  },
+  {
+    "id": "fine-arts--music--dynamics-tempo",
+    "title": "Dynamics & Tempo",
+    "subject": "Fine Arts",
+    "category": "Music",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Music · 7–12",
+    "file": "fine-arts/music/dynamics-tempo.json"
+  },
+  {
+    "id": "fine-arts--music--instrument-families",
+    "title": "Instrument Families",
+    "subject": "Fine Arts",
+    "category": "Music",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Music · 7–12",
+    "file": "fine-arts/music/instrument-families.json"
+  },
+  {
+    "id": "fine-arts--music--world-instruments",
+    "title": "World Instruments",
+    "subject": "Fine Arts",
+    "category": "Music",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Music · 7–12",
+    "file": "fine-arts/music/world-instruments.json"
+  },
+  {
+    "id": "fine-arts--music--genres-styles-of-music",
+    "title": "Genres & Styles of Music",
+    "subject": "Fine Arts",
+    "category": "Music",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Music · 7–12",
+    "file": "fine-arts/music/genres-styles-of-music.json"
+  },
+  {
+    "id": "fine-arts--music--composer-studies",
+    "title": "Composer Studies",
+    "subject": "Fine Arts",
+    "category": "Music",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Music · 7–12",
+    "file": "fine-arts/music/composer-studies.json"
+  },
+  {
+    "id": "fine-arts--music--composition-music-creation",
+    "title": "Composition & Music Creation",
+    "subject": "Fine Arts",
+    "category": "Music",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Music · 7–12",
+    "file": "fine-arts/music/composition-music-creation.json"
+  },
+  {
+    "id": "fine-arts--visual-arts--elements-of-art",
+    "title": "Elements of Art",
+    "subject": "Fine Arts",
+    "category": "Visual Arts",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Visual Arts · 7–12",
+    "file": "fine-arts/visual-arts/elements-of-art.json"
+  },
+  {
+    "id": "fine-arts--visual-arts--principles-of-design",
+    "title": "Principles of Design",
+    "subject": "Fine Arts",
+    "category": "Visual Arts",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Visual Arts · 7–12",
+    "file": "fine-arts/visual-arts/principles-of-design.json"
+  },
+  {
+    "id": "fine-arts--visual-arts--color-theory",
+    "title": "Color Theory",
+    "subject": "Fine Arts",
+    "category": "Visual Arts",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Visual Arts · 7–12",
+    "file": "fine-arts/visual-arts/color-theory.json"
+  },
+  {
+    "id": "fine-arts--visual-arts--drawing-basics",
+    "title": "Drawing Basics",
+    "subject": "Fine Arts",
+    "category": "Visual Arts",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Visual Arts · 7–12",
+    "file": "fine-arts/visual-arts/drawing-basics.json"
+  },
+  {
+    "id": "fine-arts--visual-arts--painting-techniques",
+    "title": "Painting Techniques",
+    "subject": "Fine Arts",
+    "category": "Visual Arts",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Visual Arts · 7–12",
+    "file": "fine-arts/visual-arts/painting-techniques.json"
+  },
+  {
+    "id": "fine-arts--visual-arts--mixed-media",
+    "title": "Mixed Media",
+    "subject": "Fine Arts",
+    "category": "Visual Arts",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Visual Arts · 7–12",
+    "file": "fine-arts/visual-arts/mixed-media.json"
+  },
+  {
+    "id": "fine-arts--visual-arts--sculpture-3d-art",
+    "title": "Sculpture & 3D Art",
+    "subject": "Fine Arts",
+    "category": "Visual Arts",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Visual Arts · 7–12",
+    "file": "fine-arts/visual-arts/sculpture-3d-art.json"
+  },
+  {
+    "id": "fine-arts--visual-arts--digital-illustration",
+    "title": "Digital Illustration",
+    "subject": "Fine Arts",
+    "category": "Visual Arts",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Visual Arts · 7–12",
+    "file": "fine-arts/visual-arts/digital-illustration.json"
+  },
+  {
+    "id": "fine-arts--visual-arts--art-critique-creative-process",
+    "title": "Art Critique & Creative Process",
+    "subject": "Fine Arts",
+    "category": "Visual Arts",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Visual Arts · 7–12",
+    "file": "fine-arts/visual-arts/art-critique-creative-process.json"
+  },
+  {
+    "id": "fine-arts--media-arts--storyboarding-visual-storytelling",
+    "title": "Storyboarding & Visual Storytelling",
+    "subject": "Fine Arts",
+    "category": "Media Arts",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Media Arts · 7–12",
+    "file": "fine-arts/media-arts/storyboarding-visual-storytelling.json"
+  },
+  {
+    "id": "fine-arts--media-arts--digital-illustration",
+    "title": "Digital Illustration",
+    "subject": "Fine Arts",
+    "category": "Media Arts",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Media Arts · 7–12",
+    "file": "fine-arts/media-arts/digital-illustration.json"
+  },
+  {
     "id": "math--pre-algebra--integers-and-rational-numbers",
     "title": "Integers and Rational Numbers",
     "subject": "Math",
@@ -999,6 +1709,246 @@ export const BANK_SETS=[
     "questionCount": 20,
     "description": "Statistics & Probability · 7–12",
     "file": "math/statistics-probability/experimental-design-and-causation.json"
+  },
+  {
+    "id": "math--pre-algebra--addition-subtraction",
+    "title": "Addition & Subtraction",
+    "subject": "Math",
+    "category": "Pre-Algebra & Number Sense",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Pre-Algebra & Number Sense · 7–12",
+    "file": "math/pre-algebra/addition-subtraction.json"
+  },
+  {
+    "id": "math--pre-algebra--multiplication-division",
+    "title": "Multiplication & Division",
+    "subject": "Math",
+    "category": "Pre-Algebra & Number Sense",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Pre-Algebra & Number Sense · 7–12",
+    "file": "math/pre-algebra/multiplication-division.json"
+  },
+  {
+    "id": "math--pre-algebra--place-value-rounding",
+    "title": "Place Value & Rounding",
+    "subject": "Math",
+    "category": "Pre-Algebra & Number Sense",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Pre-Algebra & Number Sense · 7–12",
+    "file": "math/pre-algebra/place-value-rounding.json"
+  },
+  {
+    "id": "math--pre-algebra--fractions-basics",
+    "title": "Fractions (Basics)",
+    "subject": "Math",
+    "category": "Pre-Algebra & Number Sense",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Pre-Algebra & Number Sense · 7–12",
+    "file": "math/pre-algebra/fractions-basics.json"
+  },
+  {
+    "id": "math--pre-algebra--decimals-intro",
+    "title": "Decimals (Intro)",
+    "subject": "Math",
+    "category": "Pre-Algebra & Number Sense",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Pre-Algebra & Number Sense · 7–12",
+    "file": "math/pre-algebra/decimals-intro.json"
+  },
+  {
+    "id": "math--pre-algebra--measurement-data",
+    "title": "Measurement & Data",
+    "subject": "Math",
+    "category": "Pre-Algebra & Number Sense",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Pre-Algebra & Number Sense · 7–12",
+    "file": "math/pre-algebra/measurement-data.json"
+  },
+  {
+    "id": "math--pre-algebra--time",
+    "title": "Time",
+    "subject": "Math",
+    "category": "Pre-Algebra & Number Sense",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Pre-Algebra & Number Sense · 7–12",
+    "file": "math/pre-algebra/time.json"
+  },
+  {
+    "id": "math--pre-algebra--money",
+    "title": "Money",
+    "subject": "Math",
+    "category": "Pre-Algebra & Number Sense",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Pre-Algebra & Number Sense · 7–12",
+    "file": "math/pre-algebra/money.json"
+  },
+  {
+    "id": "math--geometry--geometry-shapes",
+    "title": "Geometry & Shapes",
+    "subject": "Math",
+    "category": "Geometry",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Geometry · 7–12",
+    "file": "math/geometry/geometry-shapes.json"
+  },
+  {
+    "id": "math--pre-algebra--word-problems-problem-solving",
+    "title": "Word Problems & Problem Solving",
+    "subject": "Math",
+    "category": "Pre-Algebra & Number Sense",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Pre-Algebra & Number Sense · 7–12",
+    "file": "math/pre-algebra/word-problems-problem-solving.json"
+  },
+  {
+    "id": "math--algebra-1--algebra-1",
+    "title": "Algebra 1",
+    "subject": "Math",
+    "category": "Algebra I",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Algebra I · 7–12",
+    "file": "math/algebra-1/algebra-1.json"
+  },
+  {
+    "id": "math--algebra-2-functions--algebra-2",
+    "title": "Algebra 2",
+    "subject": "Math",
+    "category": "Algebra II & Functions",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Algebra II & Functions · 7–12",
+    "file": "math/algebra-2-functions/algebra-2.json"
+  },
+  {
+    "id": "math--calculus--calculus",
+    "title": "Calculus",
+    "subject": "Math",
+    "category": "Calculus",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Calculus · 7–12",
+    "file": "math/calculus/calculus.json"
+  },
+  {
+    "id": "math--pre-algebra--integer-operations",
+    "title": "Integer Operations",
+    "subject": "Math",
+    "category": "Pre-Algebra & Number Sense",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Pre-Algebra & Number Sense · 7–12",
+    "file": "math/pre-algebra/integer-operations.json"
+  },
+  {
+    "id": "math--pre-algebra--percents",
+    "title": "Percents",
+    "subject": "Math",
+    "category": "Pre-Algebra & Number Sense",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Pre-Algebra & Number Sense · 7–12",
+    "file": "math/pre-algebra/percents.json"
+  },
+  {
+    "id": "math--pre-algebra--fact-fluency-games",
+    "title": "Fact Fluency Games",
+    "subject": "Math",
+    "category": "Pre-Algebra & Number Sense",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Pre-Algebra & Number Sense · 7–12",
+    "file": "math/pre-algebra/fact-fluency-games.json"
+  },
+  {
+    "id": "math--pre-algebra--fraction-integer-games",
+    "title": "Fraction & Integer Games",
+    "subject": "Math",
+    "category": "Pre-Algebra & Number Sense",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Pre-Algebra & Number Sense · 7–12",
+    "file": "math/pre-algebra/fraction-integer-games.json"
+  },
+  {
+    "id": "math--algebra-i--algebra-equation-games",
+    "title": "Algebra & Equation Games",
+    "subject": "Math",
+    "category": "Algebra I",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Algebra I · 7–12",
+    "file": "math/algebra-1/algebra-equation-games.json"
+  },
+  {
+    "id": "math--pre-algebra--logic-puzzles-brain-teasers",
+    "title": "Logic Puzzles & Brain Teasers",
+    "subject": "Math",
+    "category": "Pre-Algebra & Number Sense",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Pre-Algebra & Number Sense · 7–12",
+    "file": "math/pre-algebra/logic-puzzles-brain-teasers.json"
+  },
+  {
+    "id": "math--pre-algebra--escape-room-adventure-review-games",
+    "title": "Escape Room & Adventure Review Games",
+    "subject": "Math",
+    "category": "Pre-Algebra & Number Sense",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Pre-Algebra & Number Sense · 7–12",
+    "file": "math/pre-algebra/escape-room-adventure-review-games.json"
+  },
+  {
+    "id": "math--algebra-1--inequalities",
+    "title": "Inequalities",
+    "subject": "Math",
+    "category": "Algebra I",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Algebra I · 7–12",
+    "file": "math/algebra-1/inequalities.json"
+  },
+  {
+    "id": "math--algebra-2-functions--functions-graphs",
+    "title": "Functions & Graphs",
+    "subject": "Math",
+    "category": "Algebra II & Functions",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Algebra II & Functions · 7–12",
+    "file": "math/algebra-2-functions/functions-graphs.json"
+  },
+  {
+    "id": "math--geometry--transformations-congruence",
+    "title": "Transformations & Congruence",
+    "subject": "Math",
+    "category": "Geometry",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Geometry · 7–12",
+    "file": "math/geometry/transformations-congruence.json"
+  },
+  {
+    "id": "math--statistics-probability--statistics-probability",
+    "title": "Statistics & Probability",
+    "subject": "Math",
+    "category": "Statistics & Probability",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Statistics & Probability · 7–12",
+    "file": "math/statistics-probability/statistics-probability.json"
   },
   {
     "id": "science--life-science-biology--cell-structure-and-function",
@@ -2001,6 +2951,36 @@ export const BANK_SETS=[
     "file": "science/inquiry-environment/environmental-systems-and-feedbacks.json"
   },
   {
+    "id": "science--engineering-stem--stem-challenges-and-projects",
+    "title": "STEM Challenges and Projects",
+    "subject": "Science",
+    "category": "Engineering & STEM",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Engineering & STEM · 7–12",
+    "file": "science/engineering-stem/stem-challenges-and-projects.json"
+  },
+  {
+    "id": "science--engineering-stem--coding-and-robotics-basics",
+    "title": "Coding and Robotics Basics",
+    "subject": "Science",
+    "category": "Engineering & STEM",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Engineering & STEM · 7–12",
+    "file": "science/engineering-stem/coding-and-robotics-basics.json"
+  },
+  {
+    "id": "science--engineering-stem--stem-careers-and-real-world-connections",
+    "title": "STEM Careers and Real-World Connections",
+    "subject": "Science",
+    "category": "Engineering & STEM",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Engineering & STEM · 7–12",
+    "file": "science/engineering-stem/stem-careers-and-real-world-connections.json"
+  },
+  {
     "id": "us-history--colonial-america",
     "title": "Colonial America",
     "subject": "Social Studies",
@@ -2749,5 +3729,145 @@ export const BANK_SETS=[
     "questionCount": 20,
     "description": "Geography · 7–12",
     "file": "social-studies/geography/australia-and-oceania.json"
+  },
+  {
+    "id": "social-studies--economics--business-and-market-structures",
+    "title": "Business and Market Structures",
+    "subject": "Social Studies",
+    "category": "Economics",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Economics · 7–12",
+    "file": "social-studies/economics/business-and-market-structures.json"
+  },
+  {
+    "id": "social-studies--economics--labor-markets-and-income",
+    "title": "Labor Markets and Income",
+    "subject": "Social Studies",
+    "category": "Economics",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Economics · 7–12",
+    "file": "social-studies/economics/labor-markets-and-income.json"
+  },
+  {
+    "id": "social-studies--economics--entrepreneurship-and-small-business",
+    "title": "Entrepreneurship and Small Business",
+    "subject": "Social Studies",
+    "category": "Economics",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Economics · 7–12",
+    "file": "social-studies/economics/entrepreneurship-and-small-business.json"
+  },
+  {
+    "id": "social-studies--geography--urban-geography-and-development",
+    "title": "Urban Geography and Development",
+    "subject": "Social Studies",
+    "category": "Geography",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Geography · 7–12",
+    "file": "social-studies/geography/urban-geography-and-development.json"
+  },
+  {
+    "id": "social-studies--geography--economic-geography",
+    "title": "Economic Geography",
+    "subject": "Social Studies",
+    "category": "Geography",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Geography · 7–12",
+    "file": "social-studies/geography/economic-geography.json"
+  },
+  {
+    "id": "social-studies--geography--middle-east-and-north-africa",
+    "title": "Middle East and North Africa (MENA)",
+    "subject": "Social Studies",
+    "category": "Geography",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "Geography · 7–12",
+    "file": "social-studies/geography/middle-east-and-north-africa.json"
+  },
+  {
+    "id": "social-studies--us-history--contemporary-america-1970s-present",
+    "title": "Contemporary America: 1970s to Present",
+    "subject": "Social Studies",
+    "category": "U.S. History",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "U.S. History · 7–12",
+    "file": "social-studies/us-history/contemporary-america-1970s-present.json"
+  },
+  {
+    "id": "social-studies--world-history--early-humans-and-river-valley-civilizations",
+    "title": "Early Humans and River Valley Civilizations",
+    "subject": "Social Studies",
+    "category": "World History",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "World History · 7–12",
+    "file": "social-studies/world-history/early-humans-and-river-valley-civilizations.json"
+  },
+  {
+    "id": "social-studies--world-history--mesoamerican-and-andean-civilizations",
+    "title": "Mesoamerican and Andean Civilizations",
+    "subject": "Social Studies",
+    "category": "World History",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "World History · 7–12",
+    "file": "social-studies/world-history/mesoamerican-and-andean-civilizations.json"
+  },
+  {
+    "id": "social-studies--world-history--byzantine-empire-and-islamic-world",
+    "title": "Byzantine Empire and Islamic World",
+    "subject": "Social Studies",
+    "category": "World History",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "World History · 7–12",
+    "file": "social-studies/world-history/byzantine-empire-and-islamic-world.json"
+  },
+  {
+    "id": "social-studies--world-history--african-civilizations",
+    "title": "African Civilizations",
+    "subject": "Social Studies",
+    "category": "World History",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "World History · 7–12",
+    "file": "social-studies/world-history/african-civilizations.json"
+  },
+  {
+    "id": "social-studies--world-history--age-of-exploration-and-colonialism",
+    "title": "Age of Exploration and Colonialism",
+    "subject": "Social Studies",
+    "category": "World History",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "World History · 7–12",
+    "file": "social-studies/world-history/age-of-exploration-and-colonialism.json"
+  },
+  {
+    "id": "social-studies--world-history--imperialism-and-global-change",
+    "title": "Imperialism and Global Change",
+    "subject": "Social Studies",
+    "category": "World History",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "World History · 7–12",
+    "file": "social-studies/world-history/imperialism-and-global-change.json"
+  },
+  {
+    "id": "social-studies--world-history--globalization-and-contemporary-world",
+    "title": "Globalization and the Contemporary World",
+    "subject": "Social Studies",
+    "category": "World History",
+    "gradeBand": "7–12",
+    "questionCount": 20,
+    "description": "World History · 7–12",
+    "file": "social-studies/world-history/globalization-and-contemporary-world.json"
   }
 ];

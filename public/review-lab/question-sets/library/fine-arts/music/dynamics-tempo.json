@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--music--dynamics-tempo",
+  "title": "Dynamics & Tempo",
+  "subject": "Fine Arts",
+  "category": "Music",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What do dynamics describe?",
+      "choices": [
+        "How loud or soft music is performed",
+        "How high a melody goes",
+        "How long a measure lasts",
+        "Which notes form a scale"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What does piano (p) mean in a score?",
+      "choices": [
+        "Loud",
+        "Soft",
+        "Fast",
+        "Detached"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What does forte (f) mean?",
+      "choices": [
+        "Soft",
+        "Slow",
+        "Loud",
+        "Smoothly connected"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is a crescendo?",
+      "choices": [
+        "A gradual slowing",
+        "A sudden pause",
+        "A repeated section",
+        "A gradual increase in volume"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What does tempo describe?",
+      "choices": [
+        "The speed of the beat",
+        "The volume of the music",
+        "The tone quality",
+        "The pitch range"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What does accelerando mean?",
+      "choices": [
+        "Gradually become softer",
+        "Gradually become faster",
+        "Gradually become slower",
+        "Repeat the measure"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 7,
+      "question": "What does ritardando mean?",
+      "choices": [
+        "Gradually get louder",
+        "Play detached",
+        "Gradually slow down",
+        "Return to the beginning"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "How can a sudden forte entrance change a passage?",
+      "choices": [
+        "It changes the key automatically",
+        "It makes the melody descend",
+        "It shortens every note",
+        "It can create emphasis, surprise, or intensity"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Why might a performer shape dynamics across a phrase?",
+      "choices": [
+        "To make musical direction and expression clearer",
+        "To keep every note at identical volume",
+        "To change the instrument family",
+        "To eliminate the pulse"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What is rubato?",
+      "choices": [
+        "A type of percussion instrument",
+        "Flexible expressive timing around the written pulse",
+        "A marking for silent measures",
+        "A fixed fast tempo"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "How should an ensemble handle a gradual ritardando?",
+      "choices": [
+        "Each player chooses a different ending tempo",
+        "Speed up to preserve pulse",
+        "Listen and slow together while maintaining coordination",
+        "Ignore the conductor"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 12,
+      "question": "A song is marked allegro. What does that generally indicate?",
+      "choices": [
+        "A very soft dynamic",
+        "A slow sustained note",
+        "A change to minor key",
+        "A lively, relatively fast tempo"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 13,
+      "question": "What is a dynamic contrast?",
+      "choices": [
+        "A noticeable difference between loud and soft passages",
+        "A difference between two pitches",
+        "A change between instruments only",
+        "A repeated rhythmic pattern"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Why is playing loudly all the time usually ineffective?",
+      "choices": [
+        "It makes every note in tune",
+        "It removes contrast and can weaken expressive emphasis",
+        "It speeds up the beat",
+        "It improves balance automatically"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 15,
+      "question": "What does pianissimo (pp) indicate?",
+      "choices": [
+        "Very loud",
+        "Very fast",
+        "Very soft",
+        "Very short"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "A performer wants a tense build toward a climax. Which combination could help?",
+      "choices": [
+        "Keep all dynamics and tempo unchanging",
+        "Stop the beat at random",
+        "Use only the softest notes",
+        "Gradually increase volume and intensity while shaping tempo purposefully"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "What is a tempo marking such as 80 BPM describing?",
+      "choices": [
+        "About 80 beats per minute",
+        "80 notes in a measure",
+        "80 measures per minute",
+        "A volume level of 80"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 18,
+      "question": "Why should a tempo change be interpreted in musical context?",
+      "choices": [
+        "Tempo markings always determine genre",
+        "The same speed change can create different expressive effects in different passages",
+        "All music must use one tempo",
+        "The key signature decides tempo"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "What does diminuendo indicate?",
+      "choices": [
+        "Gradually increase volume",
+        "Gradually increase speed",
+        "Gradually decrease volume",
+        "Repeat a phrase"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "How can a conductor help musicians coordinate a tempo change?",
+      "choices": [
+        "Change the key signature",
+        "Play each part separately",
+        "Mute the melody",
+        "Give a clear preparatory gesture and shape the beat"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

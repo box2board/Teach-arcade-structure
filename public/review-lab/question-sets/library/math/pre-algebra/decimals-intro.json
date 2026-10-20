@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--pre-algebra--decimals-intro",
+  "title": "Decimals (Intro)",
+  "subject": "Math",
+  "category": "Pre-Algebra & Number Sense",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is 0.6 written as a fraction in simplest form?",
+      "choices": [
+        "3/5",
+        "6/100",
+        "6/5",
+        "1/6"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 2,
+      "question": "Which decimal is equal to 7/10?",
+      "choices": [
+        "0.07",
+        "0.7",
+        "7.0",
+        "0.17"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is 2.35 + 1.4?",
+      "choices": [
+        "2.49",
+        "3.39",
+        "3.75",
+        "3.65"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is 5.00 − 2.68?",
+      "choices": [
+        "3.32",
+        "2.42",
+        "3.68",
+        "2.32"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which decimal is greatest?",
+      "choices": [
+        "0.81",
+        "0.801",
+        "0.18",
+        "0.8"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "Round 6.784 to the nearest hundredth.",
+      "choices": [
+        "6.79",
+        "6.78",
+        "6.7",
+        "6.80"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "What is 0.4 × 10?",
+      "choices": [
+        "0.04",
+        "0.4",
+        "4",
+        "40"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "What is 3.6 ÷ 10?",
+      "choices": [
+        "36",
+        "3.06",
+        "0.036",
+        "0.36"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "A pen costs $1.25. What do 4 pens cost?",
+      "choices": [
+        "$5.00",
+        "$4.25",
+        "$4.50",
+        "$6.25"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 10,
+      "question": "Which fraction is equivalent to 0.25?",
+      "choices": [
+        "1/5",
+        "1/4",
+        "1/2",
+        "25/10"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What is 0.75 written as a percentage?",
+      "choices": [
+        "7.5%",
+        "0.75%",
+        "75%",
+        "750%"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What is 1.2 + 0.08?",
+      "choices": [
+        "1.10",
+        "1.208",
+        "1.8",
+        "1.28"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "A rope is 8.5 m long. If 3.75 m is cut off, how much remains?",
+      "choices": [
+        "4.75 m",
+        "5.25 m",
+        "4.85 m",
+        "5.75 m"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 14,
+      "question": "What is 0.09 × 100?",
+      "choices": [
+        "0.9",
+        "9",
+        "90",
+        "0.009"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Which number is between 2.4 and 2.5?",
+      "choices": [
+        "2.36",
+        "2.56",
+        "2.46",
+        "2.4"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A student says 0.5 is less than 0.45 because 5 is less than 45. What is correct?",
+      "choices": [
+        "0.5 is less than 0.45",
+        "They are equal",
+        "0.45 is greater than 0.9",
+        "0.5 is greater than 0.45"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "What is 2.5 × 3?",
+      "choices": [
+        "7.5",
+        "6.5",
+        "7.05",
+        "75"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "What is 4.8 ÷ 6?",
+      "choices": [
+        "8",
+        "0.8",
+        "0.08",
+        "1.25"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "What is 0.37 + 0.08?",
+      "choices": [
+        "0.35",
+        "0.44",
+        "0.45",
+        "0.55"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A shopper pays $10 for an item costing $6.85. How much change is due?",
+      "choices": [
+        "$3.25",
+        "$4.15",
+        "$2.15",
+        "$3.15"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

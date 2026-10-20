@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--pre-algebra--multiplication-division",
+  "title": "Multiplication & Division",
+  "subject": "Math",
+  "category": "Pre-Algebra & Number Sense",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is 24 × 16?",
+      "choices": [
+        "384",
+        "364",
+        "394",
+        "3840"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is 936 ÷ 12?",
+      "choices": [
+        "68",
+        "78",
+        "76",
+        "88"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "A box holds 18 markers. How many markers are in 27 boxes?",
+      "choices": [
+        "468",
+        "496",
+        "486",
+        "452"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 4,
+      "question": "What is 4.5 × 6?",
+      "choices": [
+        "2.7",
+        "24",
+        "27.5",
+        "27"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "What is 7.2 ÷ 0.8?",
+      "choices": [
+        "9",
+        "0.9",
+        "8",
+        "90"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "A 156-page book is read in 12 equal days. How many pages per day?",
+      "choices": [
+        "12",
+        "13",
+        "14",
+        "1,872"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 7,
+      "question": "What is 305 × 14?",
+      "choices": [
+        "4,170",
+        "4,250",
+        "4,270",
+        "4,370"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "What is 1,008 ÷ 24?",
+      "choices": [
+        "48",
+        "32",
+        "24",
+        "42"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "A recipe uses 2.5 cups of flour for one batch. How much flour is needed for 4 batches?",
+      "choices": [
+        "10 cups",
+        "8 cups",
+        "6.5 cups",
+        "1 cup"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 10,
+      "question": "A 63-meter rope is cut into 9 equal pieces. How long is each piece?",
+      "choices": [
+        "6 m",
+        "7 m",
+        "8 m",
+        "567 m"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What is 36 × 25?",
+      "choices": [
+        "850",
+        "1,000",
+        "900",
+        "9,000"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "A truck travels 58 km per hour for 6 hours. How far does it travel?",
+      "choices": [
+        "338 km",
+        "356 km",
+        "9.7 km",
+        "348 km"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 13,
+      "question": "What is 5.6 ÷ 7?",
+      "choices": [
+        "0.8",
+        "8",
+        "0.08",
+        "1.25"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Which equation checks 672 ÷ 21 = 32?",
+      "choices": [
+        "672 × 21 = 32",
+        "32 × 21 = 672",
+        "32 ÷ 21 = 672",
+        "672 − 21 = 32"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A school divides 1,260 notebooks equally among 35 classrooms. How many notebooks per room?",
+      "choices": [
+        "35",
+        "45",
+        "36",
+        "44"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 16,
+      "question": "What is 0.35 × 100?",
+      "choices": [
+        "3.5",
+        "0.035",
+        "350",
+        "35"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "A student says 144 ÷ 12 = 11. What is the quotient?",
+      "choices": [
+        "12",
+        "10",
+        "13",
+        "1,728"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "What is 48 × 125?",
+      "choices": [
+        "5,000",
+        "6,000",
+        "6,100",
+        "600"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "A 16.8-L container is poured into 4 equal bottles. How much goes in each?",
+      "choices": [
+        "4.8 L",
+        "3.2 L",
+        "4.2 L",
+        "6.72 L"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A stadium has 32 rows with 45 seats in each row. How many seats are there?",
+      "choices": [
+        "1,340",
+        "1,450",
+        "77",
+        "1,440"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

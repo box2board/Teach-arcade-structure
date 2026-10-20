@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--dance--dance-technique-safety",
+  "title": "Dance Technique & Safety",
+  "subject": "Fine Arts",
+  "category": "Dance",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What should a dancer generally do before vigorous practice?",
+      "choices": [
+        "Use a gradual warm-up that prepares the body for movement",
+        "Begin with maximum jumps",
+        "Hold a painful stretch",
+        "Skip preparation if the music is slow"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 2,
+      "question": "Why is proper floor and footwear awareness important?",
+      "choices": [
+        "They determine the dance's genre",
+        "Surfaces and shoes affect traction, balance, and injury risk",
+        "They remove the need for technique",
+        "They guarantee a perfect performance"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "A dancer feels sharp pain during a movement. What is the safest response?",
+      "choices": [
+        "Force the movement farther",
+        "Ignore it until rehearsal ends",
+        "Stop and seek appropriate guidance",
+        "Ask a partner to push the joint"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 4,
+      "question": "What does neutral alignment generally support?",
+      "choices": [
+        "A requirement to hold one pose all class",
+        "Greater impact on joints",
+        "Eliminating all individual differences",
+        "Efficient movement and balanced distribution of force"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "Why should a dancer progress gradually when increasing training intensity?",
+      "choices": [
+        "The body needs time to adapt to added demands",
+        "Progression prevents all injuries",
+        "More intensity always improves control",
+        "Slow practice is never useful"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 6,
+      "question": "Which action supports safe partner work?",
+      "choices": [
+        "Attempt a lift without preparation",
+        "Communicate clearly and agree on timing and contact before a lift",
+        "Assume the partner knows every cue",
+        "Use surprise force"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 7,
+      "question": "Why is hydration important during physical activity?",
+      "choices": [
+        "It replaces the need for rest",
+        "It guarantees endurance",
+        "It supports normal body function during exertion",
+        "It changes movement vocabulary"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "A dancer is learning a turn. What should be practiced before increasing speed?",
+      "choices": [
+        "Maximum rotation count",
+        "A blindfolded turn",
+        "A jump combined with the turn",
+        "Balance, alignment, spotting, and controlled technique"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 9,
+      "question": "What is spotting in dance turns?",
+      "choices": [
+        "Using a focused head movement to help orientation",
+        "A type of costume pattern",
+        "A warm-up run",
+        "A partner lift"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Why should dancers respect personal range of motion?",
+      "choices": [
+        "Every dancer has identical flexibility",
+        "Forcing beyond a safe range can cause injury",
+        "Pain indicates a successful stretch",
+        "Range never changes"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What is a sensible way to rehearse a high-impact jump?",
+      "choices": [
+        "Repeat full-height jumps without rest",
+        "Land with locked knees",
+        "Build technique and strength progressively with safe landing mechanics",
+        "Practice on an unstable surface"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 12,
+      "question": "Why should a dancer keep pathways clear during rehearsal?",
+      "choices": [
+        "To make the stage appear larger",
+        "To remove the need for choreography",
+        "To prevent all improvisation",
+        "To reduce collisions and support spatial awareness"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What should dancers do if a costume or prop limits movement unexpectedly?",
+      "choices": [
+        "Pause and resolve the issue before continuing safely",
+        "Continue at full speed",
+        "Ignore a loose strap",
+        "Hide the problem from the group"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 14,
+      "question": "Why is rest part of training?",
+      "choices": [
+        "Rest prevents learning",
+        "Recovery helps the body respond to physical demands",
+        "Every dancer needs identical rest",
+        "Rest replaces practice"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A teacher gives a correction about knee alignment during a landing. What is the safest next step?",
+      "choices": [
+        "Increase jump height immediately",
+        "Ignore alignment if the landing is quiet",
+        "Apply the correction at a manageable speed and check control",
+        "Practice only when tired"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 16,
+      "question": "What should a dancer do after noticing persistent soreness that affects movement?",
+      "choices": [
+        "Mask it and continue at full intensity",
+        "Ask a peer to diagnose it",
+        "Stop drinking water",
+        "Tell an instructor or trusted adult and seek appropriate evaluation"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Why should warm-up movements relate to the upcoming activity?",
+      "choices": [
+        "They can prepare relevant joints and movement patterns",
+        "They replace all technique practice",
+        "They must be identical for every dance",
+        "They guarantee no fatigue"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 18,
+      "question": "Which rehearsal choice helps protect hearing when amplified music is used?",
+      "choices": [
+        "Stand beside the speaker",
+        "Use a reasonable volume and follow venue guidance",
+        "Increase volume to cover all conversation",
+        "Remove hearing protection when advised"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Why should a dancer learn safe ways to fall or roll when required by choreography?",
+      "choices": [
+        "Falling is always safe",
+        "It removes the need for floor checks",
+        "Practiced technique can reduce uncontrolled impact",
+        "It guarantees the dancer will not be injured"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "Which statement best describes safe dance practice?",
+      "choices": [
+        "One warm-up prevents every injury",
+        "Safety is only the instructor's responsibility",
+        "Pain should be ignored",
+        "Technique, communication, appropriate preparation, and attention to the environment work together"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    }
+  ]
+}

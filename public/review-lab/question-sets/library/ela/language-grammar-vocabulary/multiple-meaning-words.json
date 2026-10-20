@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "ela--language-grammar-vocabulary--multiple-meaning-words",
+  "title": "Multiple-Meaning Words",
+  "subject": "English Language Arts",
+  "category": "Language, Grammar & Vocabulary",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "In 'The hikers rested on the bank of the river,' what does 'bank' mean?",
+      "choices": [
+        "The land along the river",
+        "A place to keep money",
+        "A row of switches",
+        "A group of questions"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 2,
+      "question": "In 'Please address the envelope before mailing it,' what does 'address' mean?",
+      "choices": [
+        "Speak to an audience",
+        "Write the destination information",
+        "Deal with a problem",
+        "Identify a location on a map"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "In 'The bright lamp illuminated the room,' what does 'bright' mean?",
+      "choices": [
+        "Highly intelligent",
+        "Cheerful in mood",
+        "Giving off much light",
+        "Strong in color"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "In 'The judge ruled that the evidence was admissible,' what does 'ruled' mean?",
+      "choices": [
+        "Drew a straight line",
+        "Governed a country",
+        "Used a measuring tool",
+        "Made an official decision"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "In 'A bat flew out of the cave at dusk,' which meaning of 'bat' is used?",
+      "choices": [
+        "A flying mammal",
+        "A wooden sports club",
+        "A turn at the plate",
+        "A hinged panel"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "In 'The crew will ship the equipment tomorrow,' what does 'ship' mean?",
+      "choices": [
+        "A large boat",
+        "Transport by a delivery service",
+        "To take a position on a vessel",
+        "A set of containers"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "In 'The article presents a sound argument,' what does 'sound' mean?",
+      "choices": [
+        "Audible",
+        "A body of water",
+        "Well reasoned",
+        "A vibration"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "In 'The school will host a debate next week,' what does 'host' mean?",
+      "choices": [
+        "A parasite that carries a disease",
+        "A large group",
+        "A computer server",
+        "Provide a place or organize an event"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "In 'The hikers saw a spring bubbling from the ground,' what does 'spring' mean?",
+      "choices": [
+        "A natural source of water",
+        "A season",
+        "A coiled metal device",
+        "A sudden jump"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "In 'The coach asked the team to practice their lines,' what does 'lines' mean?",
+      "choices": [
+        "Geometric paths",
+        "Words spoken in a performance",
+        "Queues of people",
+        "Fishing cords"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "In 'The article's tone is light and humorous,' what does 'light' mean?",
+      "choices": [
+        "Pale in color",
+        "Low in weight",
+        "Not serious or heavy in mood",
+        "Illuminated"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "In 'The company will table the proposal until May,' what does 'table' most likely mean in this context?",
+      "choices": [
+        "Place on a piece of furniture",
+        "Create a chart",
+        "Compare information in rows",
+        "Postpone consideration"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "In 'The pilot had to bear the responsibility for the delay,' what does 'bear' mean?",
+      "choices": [
+        "Accept or carry",
+        "A large mammal",
+        "Give birth",
+        "Turn toward"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "In 'The students watched the current flow downstream,' what does 'current' mean?",
+      "choices": [
+        "Happening now",
+        "A moving stream of water",
+        "A flow of electricity",
+        "A trend in thought"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "In 'The editor asked the writer to trim the introduction,' what does 'trim' mean?",
+      "choices": [
+        "Decorate with a border",
+        "Cut a tree",
+        "Shorten or remove excess",
+        "Make something even"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "In 'The class will construct a model of a cell,' what does 'model' mean?",
+      "choices": [
+        "A person who displays clothing",
+        "A standard to imitate",
+        "A type of fashion",
+        "A representation of a system"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "In 'The council reached a fair decision,' what does 'fair' mean?",
+      "choices": [
+        "Just and impartial",
+        "A public exhibition",
+        "Light in complexion",
+        "Moderately good"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 18,
+      "question": "In 'She made a point of checking the source,' what does 'point' mean?",
+      "choices": [
+        "A sharp tip",
+        "Emphasized or deliberately did",
+        "A score in a game",
+        "A location on a map"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "In 'The article argues that the measure will benefit residents,' what does 'measure' mean?",
+      "choices": [
+        "A unit of length",
+        "A musical rhythm",
+        "A proposed action or policy",
+        "An amount shown by an instrument"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "Why can context be more reliable than a word's first dictionary definition?",
+      "choices": [
+        "Context changes the word's spelling",
+        "A word has only one possible meaning",
+        "Dictionary definitions never include multiple meanings",
+        "Context shows which meaning fits the sentence and situation"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

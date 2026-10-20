@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--algebra-2-functions--algebra-2",
+  "title": "Algebra 2",
+  "subject": "Math",
+  "category": "Algebra II & Functions",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Simplify (x²)(x⁵).",
+      "choices": [
+        "x⁷",
+        "x¹⁰",
+        "2x⁷",
+        "x³"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Factor x² − 5x + 6.",
+      "choices": [
+        "(x + 2)(x + 3)",
+        "(x − 2)(x − 3)",
+        "(x − 1)(x − 6)",
+        "(x − 6)(x + 1)"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "Solve x² − 4x − 5 = 0.",
+      "choices": [
+        "x = 1 or x = −5",
+        "x = 4 or x = −5",
+        "x = 5 or x = −1",
+        "x = 5 only"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "What is the vertex of y = (x − 2)² + 3?",
+      "choices": [
+        "(−2, 3)",
+        "(2, −3)",
+        "(3, 2)",
+        "(2, 3)"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is the domain of f(x) = 1/(x − 4)?",
+      "choices": [
+        "All real numbers except 4",
+        "All real numbers",
+        "x > 4 only",
+        "x ≠ 0"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "If f(x) = x + 3 and g(x) = 2x, what is f(g(4))?",
+      "choices": [
+        "14",
+        "11",
+        "8",
+        "7"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 7,
+      "question": "Simplify (3x² − 2x + 1) + (x² + 5x − 4).",
+      "choices": [
+        "4x² + 7x − 3",
+        "2x² + 3x + 5",
+        "4x² + 3x − 3",
+        "4x² − 3x − 3"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "Which expression is equivalent to (x³)²?",
+      "choices": [
+        "x⁵",
+        "2x³",
+        "x⁹",
+        "x⁶"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Solve 2ˣ = 16.",
+      "choices": [
+        "x = 4",
+        "x = 8",
+        "x = 2",
+        "x = 16"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What is log₁₀(1000)?",
+      "choices": [
+        "10",
+        "3",
+        "100",
+        "−3"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "What are the zeros of y = (x − 1)(x + 4)?",
+      "choices": [
+        "−1 and 4",
+        "1 and 4",
+        "1 and −4",
+        "−4 only"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Which equation represents exponential growth?",
+      "choices": [
+        "y = 5 + 1.2x",
+        "y = 5x²",
+        "y = 5(−1.2)ˣ",
+        "y = 5(1.2)ˣ"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Simplify (x² − 9)/(x − 3), where x ≠ 3.",
+      "choices": [
+        "x + 3",
+        "x − 3",
+        "x² + 3",
+        "1"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 14,
+      "question": "What is the discriminant of x² + 2x + 5 = 0?",
+      "choices": [
+        "16",
+        "−16",
+        "24",
+        "−4"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 15,
+      "question": "A quadratic has a negative discriminant. How many real solutions does it have?",
+      "choices": [
+        "One",
+        "Two",
+        "None",
+        "Infinitely many"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "If f(x) = 2x − 5, what is f⁻¹(x)?",
+      "choices": [
+        "(x − 5)/2",
+        "2x + 5",
+        "5 − 2x",
+        "(x + 5)/2"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Simplify (2x + 3)(x − 4).",
+      "choices": [
+        "2x² − 5x − 12",
+        "2x² − 8x − 12",
+        "2x² + 5x − 12",
+        "2x² − 5x + 12"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 18,
+      "question": "Which is a solution of x² + 1 = 0 over the complex numbers?",
+      "choices": [
+        "1",
+        "i",
+        "−1",
+        "0"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "A sequence has terms 3, 6, 12, 24. What is the common ratio?",
+      "choices": [
+        "3",
+        "6",
+        "2",
+        "4"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "A population doubles every 5 years. If it begins at 800, what is the model after t five-year periods?",
+      "choices": [
+        "P = 800 + 2t",
+        "P = 800t²",
+        "P = 2(800 + t)",
+        "P = 800(2)ᵗ"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

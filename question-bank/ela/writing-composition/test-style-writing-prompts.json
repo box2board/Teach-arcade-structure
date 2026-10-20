@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "ela--writing-composition--test-style-writing-prompts",
+  "title": "Test-Style Writing Prompts",
+  "subject": "English Language Arts",
+  "category": "Writing & Composition",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "A prompt asks the writer to compare two sources. What should the response do?",
+      "choices": [
+        "Explain meaningful similarities and differences using evidence from both",
+        "Summarize only the first source",
+        "List opinions without referring to either source",
+        "Describe the sources' page layouts"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 2,
+      "question": "A prompt says 'argue whether the school should change its schedule.' What must a strong response include?",
+      "choices": [
+        "A plot summary",
+        "A clear position supported by reasons and evidence",
+        "A list of unrelated facts",
+        "A position with no explanation"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "A writer begins drafting before identifying what a prompt asks. What is a likely risk?",
+      "choices": [
+        "The response will automatically be more original",
+        "The prompt will become shorter",
+        "The response may address a related subject but miss the task",
+        "The evidence will be easier to find"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 4,
+      "question": "A prompt asks for an explanation of how a character changes. Which evidence is most relevant?",
+      "choices": [
+        "The author's biography only",
+        "A description of the book cover",
+        "The number of chapters",
+        "Events and choices that show the character's development across the text"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "What is the purpose of unpacking a writing prompt?",
+      "choices": [
+        "Identify the task, topic, audience, and required evidence or structure",
+        "Choose a title before reading it",
+        "Avoid planning",
+        "Copy the prompt into the response"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "A source-based prompt requires evidence from two passages. What should the writer do?",
+      "choices": [
+        "Use one source and ignore the other",
+        "Use and explain relevant evidence from both passages",
+        "Add quotations without explaining them",
+        "Rely only on personal experience"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "A prompt asks for a narrative from a particular point of view. Which choice should guide the writer?",
+      "choices": [
+        "Switch narrators every paragraph without reason",
+        "Write an informational report instead",
+        "Keep the narrator's perspective consistent and relevant to events",
+        "Avoid establishing a setting"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 8,
+      "question": "Which thesis best answers 'Should the town invest in a public garden?'",
+      "choices": [
+        "Public gardens are interesting",
+        "This essay will discuss gardens",
+        "Some people like vegetables",
+        "The town should fund a public garden because it can expand access to fresh food and create a shared learning space"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 9,
+      "question": "A writer's response has strong evidence but no explanation after quotations. What is missing?",
+      "choices": [
+        "Reasoning that connects the evidence to the claim",
+        "A second title",
+        "A longer introduction",
+        "More quotations without context"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "The prompt asks for a process explanation. Which structure is most appropriate?",
+      "choices": [
+        "Arrange details by which sounds best",
+        "Present the steps in an order that helps readers follow the process",
+        "List results before defining the process",
+        "Use a character conflict"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What is a useful way to check that a response addresses every part of a prompt?",
+      "choices": [
+        "Count the adjectives",
+        "Check only the opening sentence",
+        "Turn each task requirement into a brief checklist and review the draft",
+        "Compare the response length to a friend's"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 12,
+      "question": "A prompt asks for a claim and a counterclaim. What should the writer include?",
+      "choices": [
+        "Only a list of facts",
+        "Two unrelated claims",
+        "A conclusion without an argument",
+        "A response to an opposing position as well as support for the main claim"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Which detail best supports a prompt about how setting affects a story?",
+      "choices": [
+        "A change in the environment alters the character's available choices",
+        "The story has twelve chapters",
+        "The author's name appears on the cover",
+        "A character's favorite color is mentioned once"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 14,
+      "question": "A student is given a short time limit. Which planning approach is most useful?",
+      "choices": [
+        "Use all available time to choose a title",
+        "Spend a brief, planned interval identifying the claim, main points, and evidence",
+        "Begin writing without reading the prompt",
+        "Draft an unrelated introduction"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 15,
+      "question": "A prompt asks the writer to evaluate a solution. What does evaluate require?",
+      "choices": [
+        "Describe it without judgment",
+        "Repeat its name",
+        "Judge the solution using criteria and evidence",
+        "List unrelated alternatives"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A response to a personal narrative prompt reads like a list of events. What revision would add meaning?",
+      "choices": [
+        "Add more events with no reflection",
+        "Remove the narrator",
+        "Replace the story with definitions",
+        "Develop a moment with detail and reflect on its significance"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "How should a writer use a prompt's key verbs such as analyze, compare, or explain?",
+      "choices": [
+        "Let them guide the kind of thinking and response structure",
+        "Ignore them after choosing a topic",
+        "Treat them as decorative words",
+        "Use the same response for every verb"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 18,
+      "question": "A writer has two claims but only evidence for one. What should happen before drafting?",
+      "choices": [
+        "Keep both claims and invent evidence",
+        "Find support for the second claim or revise the plan",
+        "Remove citations",
+        "Write the conclusion first and stop"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Which conclusion best fits an argument prompt?",
+      "choices": [
+        "Introduce an unrelated controversy",
+        "Repeat every sentence exactly",
+        "Reinforce the position by drawing together the main reasons",
+        "Add unsupported new evidence"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "A prompt specifies a particular audience. Why does that matter?",
+      "choices": [
+        "The writer can omit the central claim",
+        "The writer must change every fact",
+        "The audience determines the font",
+        "The writer can choose explanations, tone, and examples suited to that audience"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    }
+  ]
+}

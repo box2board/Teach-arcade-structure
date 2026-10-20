@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--dance--choreography-basics",
+  "title": "Choreography Basics",
+  "subject": "Fine Arts",
+  "category": "Dance",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is choreography?",
+      "choices": [
+        "The composition and organization of movement for a dance",
+        "A costume inventory",
+        "A music recording device",
+        "A type of stage light"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "A choreographer repeats a short movement idea throughout a dance. What is this idea often called?",
+      "choices": [
+        "A set piece",
+        "A motif",
+        "A spotlight",
+        "A floor plan"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "Which structure has two contrasting sections, A and B?",
+      "choices": [
+        "ABA form",
+        "Canon",
+        "AB form",
+        "Rondo"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is ABA form?",
+      "choices": [
+        "Three unrelated dances performed at once",
+        "A line of dancers moving in canon",
+        "A rhythm with three beats only",
+        "A section returns after a contrasting middle section"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "A movement phrase is performed by one dancer, then repeated by others at different times. What device is used?",
+      "choices": [
+        "Canon",
+        "Unison",
+        "Mirroring",
+        "Stillness"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "Why might a choreographer vary a repeated motif?",
+      "choices": [
+        "To remove all structure",
+        "To develop an idea while helping the audience recognize its transformation",
+        "To make rehearsal impossible",
+        "To change the dance's genre automatically"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "A dance moves from a solo to a group formation. What compositional element changes?",
+      "choices": [
+        "The audience's location",
+        "The music's recording format",
+        "Number of performers and spatial relationship",
+        "The costume fabric"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 8,
+      "question": "What can a transition do in choreography?",
+      "choices": [
+        "Replace the whole dance",
+        "Determine a dancer's age",
+        "Remove the need for a beginning",
+        "Connect sections and guide the shift in movement or focus"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "A choreographer selects a circular pathway for a reunion scene. What can this choice communicate?",
+      "choices": [
+        "A sense of connection or gathering, depending on context",
+        "One fixed meaning in every dance",
+        "A required musical tempo",
+        "That the dancers are untrained"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 10,
+      "question": "Which choice is an example of contrast in choreography?",
+      "choices": [
+        "Repeating the same speed and level",
+        "Alternating stillness with rapid movement",
+        "Using the same formation throughout",
+        "Keeping all dancers in unison"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "How can a choreographer use unison?",
+      "choices": [
+        "Stagger the same phrase across dancers",
+        "Ask each dancer to perform unrelated material",
+        "Coordinate dancers to perform the same movement at the same time",
+        "Remove rhythmic structure"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "A group dance begins in a scattered formation and ends in a tight cluster. What might the change help show?",
+      "choices": [
+        "The stage has become smaller",
+        "The dancers changed genres",
+        "The music has stopped",
+        "A development in relationships or focus"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 13,
+      "question": "Why should choreographers consider transitions when arranging sections?",
+      "choices": [
+        "Transitions help the dance feel connected and intentional",
+        "Transitions are only for costume changes",
+        "They eliminate movement motifs",
+        "They guarantee audience agreement"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What is one way to develop a movement motif?",
+      "choices": [
+        "Repeat it exactly and never vary it",
+        "Change its level, direction, timing, or energy while retaining a recognizable feature",
+        "Replace it with an unrelated costume",
+        "Remove it from the dance"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 15,
+      "question": "A choreographer wants the audience to notice a particular dancer. Which choice could help?",
+      "choices": [
+        "Place all dancers in identical positions",
+        "Keep every action equally emphasized",
+        "Use spacing, focus, or contrasting movement to draw attention",
+        "Turn the lights off for the entire dance"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 16,
+      "question": "What does improvisation contribute to some choreography processes?",
+      "choices": [
+        "It prevents any rehearsal",
+        "It replaces all choreographic choices",
+        "It makes performance unsafe",
+        "It can generate movement material for later selection and organization"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "Why is rehearsal important during choreography development?",
+      "choices": [
+        "It reveals how movement, timing, spacing, and transitions work in practice",
+        "It prevents revision",
+        "It removes the need for communication",
+        "It guarantees every performance is identical"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 18,
+      "question": "A choreographer sets a movement phrase to a musical accent. What relationship is being shaped?",
+      "choices": [
+        "Costume and ticket sales",
+        "Movement and music",
+        "Lighting and seating",
+        "Stage size and biography"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "A dance has a clear opening, development, and ending. What does this demonstrate?",
+      "choices": [
+        "A costume design",
+        "A movement injury",
+        "A choreographic structure",
+        "A stage property"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "What is the strongest way to evaluate whether a choreographic choice works?",
+      "choices": [
+        "Count only how many steps it contains",
+        "Ask whether it is the hardest movement",
+        "Judge by costume color alone",
+        "Consider its effect on the dance's idea, movement, and audience experience"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

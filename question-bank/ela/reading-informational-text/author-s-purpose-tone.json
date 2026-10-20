@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "ela--reading-informational-text--author-s-purpose-tone",
+  "title": "Author’s Purpose & Tone",
+  "subject": "English Language Arts",
+  "category": "Reading & Informational Text",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "An author lists evidence and argues that a town should protect a wetland. What is the author's primary purpose?",
+      "choices": [
+        "Persuade readers to support a position",
+        "Entertain with an invented story",
+        "Describe a sequence without a claim",
+        "Define a vocabulary term only"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 2,
+      "question": "Which clue most directly helps a reader infer tone?",
+      "choices": [
+        "The number of paragraphs",
+        "The author's word choices and attitude toward the subject",
+        "The font size",
+        "The page number"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "A text calls a policy 'a promising first step' but notes that more work is needed. Which tone is most likely?",
+      "choices": [
+        "Mocking",
+        "Indifferent",
+        "Cautiously optimistic",
+        "Panicked"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "Why might an author include a counterargument?",
+      "choices": [
+        "To prove the author has no claim",
+        "To change an informational text into fiction",
+        "To avoid using evidence",
+        "To address an opposing view and strengthen or clarify the author's reasoning"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "Which sentence most clearly signals a critical tone?",
+      "choices": [
+        "The proposal overlooks the costs that residents will have to bear",
+        "The proposal was released on Tuesday",
+        "The proposal includes three sections",
+        "The proposal describes a new schedule"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 6,
+      "question": "A passage explains how to prepare an emergency kit using numbered steps. What is its likely purpose?",
+      "choices": [
+        "Entertain through suspense",
+        "Instruct readers",
+        "Criticize an audience",
+        "Compare two historical eras"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "An author describes a failed experiment in detail and explains what was learned. What purpose is most likely?",
+      "choices": [
+        "Hide the result from readers",
+        "Promote a product",
+        "Inform readers about the process and its results",
+        "Create a fictional setting"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "A text uses jokes to point out a politician's inconsistency. What purpose may the humor serve?",
+      "choices": [
+        "Provide neutral instructions",
+        "Remove any point of view",
+        "Prove the events are imaginary",
+        "Critique the inconsistency through satire"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 9,
+      "question": "Two authors describe the same event, one with admiration and one with skepticism. What should a reader compare?",
+      "choices": [
+        "Their language, evidence, omissions, and stated goals",
+        "Their paragraph counts only",
+        "The font used in each text",
+        "The order of their names"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 10,
+      "question": "A narrator calls a storm 'a welcome visitor' while describing damage. What should a reader consider?",
+      "choices": [
+        "Whether all storms are welcome",
+        "Whether the wording is ironic or reflects a particular perspective",
+        "Whether the text has a glossary",
+        "Whether the sentence is a heading"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 11,
+      "question": "Which question best distinguishes purpose from topic?",
+      "choices": [
+        "How many words are in the title?",
+        "What year was the paper printed?",
+        "What does the author want readers to think, feel, or do about the topic?",
+        "How many characters appear?"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "An article presents a new invention, its benefits, and known limitations. Which purpose best fits?",
+      "choices": [
+        "Persuade readers that no questions remain",
+        "Entertain with fantasy",
+        "Attack people who disagree",
+        "Inform readers with a balanced explanation"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 13,
+      "question": "A review calls a film 'visually inventive but uneven in its final act.' Which tone is most apparent?",
+      "choices": [
+        "Evaluative and qualified",
+        "Entirely celebratory",
+        "Hostile without explanation",
+        "Neutral and procedural"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "An author repeatedly uses words such as 'reckless' and 'avoidable' about a decision. What do these words suggest?",
+      "choices": [
+        "A purely chronological purpose",
+        "A disapproving attitude",
+        "An absence of perspective",
+        "A humorous setting"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 15,
+      "question": "A text begins with a personal anecdote before presenting research about sleep. Why might the author do this?",
+      "choices": [
+        "To prove the anecdote is a controlled experiment",
+        "To replace the research with opinion",
+        "To engage readers and introduce the issue through an example",
+        "To create a list of sources"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 16,
+      "question": "Which statement is the strongest evidence of an author's purpose to compare?",
+      "choices": [
+        "The passage names one approach",
+        "The passage tells a personal story",
+        "The passage gives a definition",
+        "The passage identifies similarities and differences between two approaches"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "A writer favors a proposal but acknowledges uncertainty in the evidence. Which interpretation is strongest?",
+      "choices": [
+        "The writer is supportive while qualifying the strength of the claim",
+        "The writer has no point of view",
+        "The writer proves the proposal is harmful",
+        "The writer's tone must be sarcastic"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "An advertisement says a drink is 'the only choice for champions.' What should readers recognize?",
+      "choices": [
+        "The claim is factual because it is confident",
+        "The slogan uses persuasive language but provides no evidence by itself",
+        "The wording is a neutral definition",
+        "The phrase establishes a scientific result"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "What is the best way to support an interpretation of tone?",
+      "choices": [
+        "Guess from the author's photograph",
+        "Count the sentences",
+        "Cite specific words or phrases and explain their effect",
+        "Rely on the title alone"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "A report's purpose is to explain water conservation, but it ends by asking readers to fix leaks at home. What can the shift do?",
+      "choices": [
+        "Turn the report into a poem",
+        "Remove the topic from the text",
+        "Prove that the earlier information is false",
+        "Move from informing readers toward encouraging action"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

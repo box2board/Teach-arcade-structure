@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "ela--writing-composition--informational-explanatory-writing",
+  "title": "Informational & Explanatory Writing",
+  "subject": "English Language Arts",
+  "category": "Writing & Composition",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is the main goal of informational writing?",
+      "choices": [
+        "Explain a topic clearly using accurate information",
+        "Convince readers through unsupported opinion",
+        "Tell a fictional story",
+        "Entertain without a central focus"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 2,
+      "question": "Which thesis best fits an explanation of how urban trees reduce heat?",
+      "choices": [
+        "Trees are wonderful",
+        "Urban trees cool neighborhoods by providing shade and releasing water vapor",
+        "This report is about cities",
+        "Some streets have trees"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 3,
+      "question": "A paragraph explains how a volcano forms. Which structure is most appropriate?",
+      "choices": [
+        "A dialogue between fictional characters",
+        "A list of preferences",
+        "A sequence of processes and cause-and-effect relationships",
+        "A debate with no evidence"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "Why should technical terms be defined for a general audience?",
+      "choices": [
+        "Definitions make evidence unnecessary",
+        "Every reader already knows technical vocabulary",
+        "Terms should replace examples",
+        "Readers need enough context to understand the explanation"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "Which evidence best supports an explanation of a local recycling program's results?",
+      "choices": [
+        "Documented participation and material recovery data",
+        "A slogan from the program poster",
+        "One person's unrelated opinion",
+        "A photograph with no date or context"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 6,
+      "question": "A draft includes facts but no transitions between sections. What would help?",
+      "choices": [
+        "Remove the headings",
+        "Add language that shows how the ideas connect",
+        "Add unrelated quotations",
+        "Repeat the title after each sentence"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "A writer is explaining a complex process. What can a labeled diagram contribute?",
+      "choices": [
+        "Proof that the process always works",
+        "A replacement for all explanations",
+        "A visual representation of parts or steps that supports the text",
+        "An unrelated opinion"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "Which choice best distinguishes an example from a definition?",
+      "choices": [
+        "An example is always a quotation",
+        "A definition must include a statistic",
+        "They have the same purpose",
+        "An example illustrates a concept; a definition states what it means"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "A report says a new policy 'caused' attendance to rise but only compares two years. What should be improved?",
+      "choices": [
+        "Consider other factors and avoid claiming causation without adequate evidence",
+        "Remove all dates",
+        "Change the topic",
+        "Add a stronger adjective"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 10,
+      "question": "How can a writer avoid overwhelming readers with facts?",
+      "choices": [
+        "Include every fact found",
+        "Select details that directly explain the main idea and organize them clearly",
+        "Remove the main idea",
+        "Put evidence in random order"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Which paragraph order best explains how a water filter works?",
+      "choices": [
+        "List parts alphabetically with no explanation",
+        "Give the conclusion before naming the process",
+        "Describe the parts, then trace water through each stage",
+        "Mix steps and unrelated facts"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 12,
+      "question": "What is paraphrasing in informational writing?",
+      "choices": [
+        "Changing a few words and omitting attribution",
+        "Copying a source exactly",
+        "Writing an unsupported opinion",
+        "Restating source information in new wording while preserving its meaning and crediting it"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "A writer compares two energy sources. What should guide the comparison?",
+      "choices": [
+        "Consistent criteria such as cost, reliability, and environmental impact",
+        "Different criteria chosen for each source",
+        "Only the writer's favorite source",
+        "The length of each source's name"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 14,
+      "question": "Which detail is most relevant in a section about a city's water use?",
+      "choices": [
+        "A famous river in another continent",
+        "Household and industrial water-use data for that city",
+        "The author's favorite drink",
+        "The history of a local sports team"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 15,
+      "question": "Why should an explanatory conclusion synthesize rather than introduce a new topic?",
+      "choices": [
+        "A new topic makes the evidence stronger",
+        "A conclusion should not connect to the main idea",
+        "It helps readers understand the significance of the explanation they just read",
+        "Synthesis removes all details"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A writer uses a chart from a source. What must the writer do?",
+      "choices": [
+        "Remove its labels",
+        "Present it as the writer's own data",
+        "Assume the chart needs no context",
+        "Identify the source and explain what the chart shows"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "Which sentence is the most objective?",
+      "choices": [
+        "The survey included 240 students from four grade levels",
+        "The survey was amazing",
+        "The results are obviously perfect",
+        "Everyone loved the survey"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "A section contains five paragraphs on separate subtopics. What can improve navigation?",
+      "choices": [
+        "Remove all paragraph breaks",
+        "Use clear headings that reflect each subtopic",
+        "Repeat the same heading everywhere",
+        "Put the conclusion in the middle"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "A writer finds a reliable source, but it is ten years old. What should the writer ask?",
+      "choices": [
+        "Whether old sources are always false",
+        "Whether the source has enough pages",
+        "Whether the information may have changed and needs a current source",
+        "Whether the title is interesting"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which revision best improves clarity?",
+      "choices": [
+        "Add more passive sentences",
+        "Remove key terms",
+        "Combine unrelated ideas into one sentence",
+        "Replace vague pronouns with the specific people or things they refer to"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

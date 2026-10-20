@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--geometry--transformations-congruence",
+  "title": "Transformations & Congruence",
+  "subject": "Math",
+  "category": "Geometry",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "A translation moves every point 4 units right and 2 units down. How does (1, 5) move?",
+      "choices": [
+        "(5, 3)",
+        "(−3, 7)",
+        "(5, 7)",
+        "(−3, 3)"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 2,
+      "question": "What are the coordinates of (−3, 2) after reflection across the y-axis?",
+      "choices": [
+        "(−3, −2)",
+        "(3, 2)",
+        "(3, −2)",
+        "(2, −3)"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "A 90° counterclockwise rotation about the origin maps (x, y) to",
+      "choices": [
+        "(y, −x)",
+        "(−x, −y)",
+        "(−y, x)",
+        "(x, −y)"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "Which transformation preserves both lengths and angle measures?",
+      "choices": [
+        "Dilation by scale factor 2",
+        "Stretching horizontally",
+        "Shearing",
+        "Reflection"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "Two triangles have all three corresponding side lengths equal. Which congruence rule applies?",
+      "choices": [
+        "SSS",
+        "AAA",
+        "SSA",
+        "ASS"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which information proves two triangles congruent by SAS?",
+      "choices": [
+        "Two angles and a nonincluded side",
+        "Two corresponding sides and the included angle",
+        "Three angles",
+        "One side and two unrelated angles"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "What is the image of (4, −1) after a reflection across the x-axis?",
+      "choices": [
+        "(−4, −1)",
+        "(−4, 1)",
+        "(4, 1)",
+        "(1, 4)"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "If one figure is translated, what happens to its size?",
+      "choices": [
+        "It doubles",
+        "It is reduced",
+        "Its angles change",
+        "It stays the same"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Which pair of figures must be congruent?",
+      "choices": [
+        "Two squares with side length 5 cm",
+        "Two rectangles with equal area",
+        "Two triangles with the same angles",
+        "Two circles with different radii"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 10,
+      "question": "A dilation has scale factor 3. What happens to every side length?",
+      "choices": [
+        "It stays the same",
+        "It is multiplied by 3",
+        "It is divided by 3",
+        "It is multiplied by 9"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Which transformation maps (2, 1) to (−2, 1)?",
+      "choices": [
+        "Reflection across the x-axis",
+        "Translation 2 units left",
+        "Reflection across the y-axis",
+        "90° rotation"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 12,
+      "question": "A triangle is rotated and then translated. What remains unchanged?",
+      "choices": [
+        "The coordinates of each vertex",
+        "Its orientation in the plane",
+        "Its location",
+        "Side lengths and angle measures"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Which criterion can establish triangle congruence using two angles and the included side?",
+      "choices": [
+        "ASA",
+        "AAA",
+        "SSA",
+        "AAS only"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "If two figures are congruent, which statement is true?",
+      "choices": [
+        "Their areas must be different",
+        "Their corresponding sides and angles are equal",
+        "They must have the same position",
+        "One must be a reflection of the other"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A point (x, y) is reflected across the line y = x. What are the new coordinates?",
+      "choices": [
+        "(−x, y)",
+        "(x, −y)",
+        "(y, x)",
+        "(−y, −x)"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Which transformation changes orientation but preserves size and shape?",
+      "choices": [
+        "Dilation",
+        "Nonuniform stretch",
+        "Shear",
+        "Reflection"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Two triangles each have side lengths 5, 7, and 9. What can be concluded?",
+      "choices": [
+        "They are congruent by SSS",
+        "They are only similar",
+        "They must be right triangles",
+        "They cannot be compared"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A figure is rotated 180° around the origin. What happens to (a, b)?",
+      "choices": [
+        "(b, −a)",
+        "(−a, −b)",
+        "(a, −b)",
+        "(−b, a)"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "A dilation with scale factor 1/2 maps a 10-cm side to what length?",
+      "choices": [
+        "20 cm",
+        "9.5 cm",
+        "5 cm",
+        "10.5 cm"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "A reflection followed by a translation maps one triangle onto another. What does this show?",
+      "choices": [
+        "The triangles are similar but not congruent",
+        "Their areas must differ",
+        "Their angles change",
+        "The triangles are congruent because rigid motions map one exactly to the other"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--calculus--calculus",
+  "title": "Calculus",
+  "subject": "Math",
+  "category": "Calculus",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is the derivative of f(x) = x³?",
+      "choices": [
+        "3x²",
+        "x²",
+        "3x",
+        "x⁴/4"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is the derivative of f(x) = 5x − 7?",
+      "choices": [
+        "−7",
+        "5",
+        "5x",
+        "x − 7"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "For f(x) = x², what is the slope of the tangent at x = 3?",
+      "choices": [
+        "9",
+        "3",
+        "6",
+        "12"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "What is an antiderivative of 2x?",
+      "choices": [
+        "2 + C",
+        "x + C",
+        "2x² + C",
+        "x² + C"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What does the definite integral of a rate over time often represent?",
+      "choices": [
+        "The accumulated change over that time interval",
+        "The instantaneous rate at one moment",
+        "The starting value only",
+        "The slope of the x-axis"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "If f'(x) > 0 throughout an interval, what is f doing there?",
+      "choices": [
+        "Decreasing",
+        "Increasing",
+        "Constant",
+        "Undefined everywhere"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "What is the derivative of f(x) = 4x² + 3x?",
+      "choices": [
+        "4x + 3",
+        "8x² + 3",
+        "8x + 3",
+        "4x² + 3"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "What is the limit of x + 2 as x approaches 3?",
+      "choices": [
+        "3",
+        "2",
+        "6",
+        "5"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "What is the derivative of sin x?",
+      "choices": [
+        "cos x",
+        "−cos x",
+        "−sin x",
+        "tan x"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "A position function is s(t) = t² + 2t. What is the velocity at t = 4?",
+      "choices": [
+        "20",
+        "10",
+        "8",
+        "6"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 11,
+      "question": "At a local maximum of a differentiable function, what is often true about the derivative?",
+      "choices": [
+        "It must be positive",
+        "It must equal the function value",
+        "It is zero",
+        "It is undefined everywhere"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What is the derivative of eˣ?",
+      "choices": [
+        "xeˣ",
+        "ln x",
+        "1/x",
+        "eˣ"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "If f'(x) changes from positive to negative at x = a, what may occur at a?",
+      "choices": [
+        "A local maximum",
+        "A local minimum",
+        "A vertical asymptote necessarily",
+        "No change in behavior"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 14,
+      "question": "What is ∫₀² 3 dx?",
+      "choices": [
+        "3",
+        "6",
+        "5",
+        "2"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "The derivative of a position function gives which quantity?",
+      "choices": [
+        "Total distance only",
+        "Acceleration only",
+        "Instantaneous velocity",
+        "Average position"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "For f(x) = x² − 4x, where is the derivative zero?",
+      "choices": [
+        "x = 4",
+        "x = −2",
+        "x = 0",
+        "x = 2"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "What is the chain rule used to differentiate?",
+      "choices": [
+        "A composite function",
+        "A sum of constants only",
+        "A function's inverse only",
+        "A constant function"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 18,
+      "question": "If a function is continuous and differentiable on an interval, what does its derivative describe?",
+      "choices": [
+        "The total area under every possible curve",
+        "How the function changes locally",
+        "The function's domain only",
+        "Its y-intercept"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "What is the average rate of change of f(x)=x² from x=1 to x=3?",
+      "choices": [
+        "8",
+        "3",
+        "4",
+        "2"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "If f'(x)=0 for all x in an interval, what is f on that interval?",
+      "choices": [
+        "Increasing at a constant rate",
+        "Decreasing",
+        "Quadratic",
+        "Constant"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

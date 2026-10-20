@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--theatre--set-costume-design",
+  "title": "Set & Costume Design",
+  "subject": "Fine Arts",
+  "category": "Theatre",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a set designer's primary responsibility?",
+      "choices": [
+        "Create the visual and physical environment for a production",
+        "Write every line",
+        "Manage ticket sales",
+        "Choose the audience"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What can a set help communicate?",
+      "choices": [
+        "The exact thoughts of every audience member",
+        "Location, time period, mood, and practical acting space",
+        "The play's copyright status",
+        "The actors' grades"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "What does a costume designer consider when designing clothing for a character?",
+      "choices": [
+        "Only the actor's favorite color",
+        "The number of theater seats",
+        "Character, setting, movement, fabric, and production needs",
+        "The ticket price"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "Why should a costume allow safe movement?",
+      "choices": [
+        "Costumes should restrict all movement",
+        "Safety is unrelated to design",
+        "A costume replaces rehearsal",
+        "Performers need to execute choreography and blocking without unnecessary risk"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 5,
+      "question": "A production uses one chair to represent a throne, a bus seat, and a kitchen chair. What design approach is this?",
+      "choices": [
+        "A flexible prop or set piece used to suggest multiple locations",
+        "A realistic set with a separate chair for each scene",
+        "A costume plot",
+        "A lighting cue"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "What is a scenic model used for?",
+      "choices": [
+        "Record actor dialogue",
+        "Plan and communicate the design's scale, layout, and visual elements",
+        "Manage the audience",
+        "Write a character arc"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Why must designers collaborate with directors and performers?",
+      "choices": [
+        "Designers control every actor's performance",
+        "Collaboration removes creative choices",
+        "Design choices need to support the production's concept and practical staging",
+        "Only the director uses scenery"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "A set wall blocks the audience's view of a key action. What should the design team reconsider?",
+      "choices": [
+        "The script's title",
+        "The costume's color",
+        "The actors' biographies",
+        "Sightlines and scenic placement"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 9,
+      "question": "What does a costume plot track?",
+      "choices": [
+        "Which costumes each performer wears in each scene",
+        "Where each audience member sits",
+        "The lighting equipment",
+        "The play's ticket income"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Why might a costume designer use color intentionally?",
+      "choices": [
+        "Color always identifies a character's morality",
+        "Color can support character, mood, contrast, or visual focus",
+        "Color is unrelated to design",
+        "All costumes must be the same color"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "A set change must occur quickly between scenes. Which design feature helps?",
+      "choices": [
+        "A heavy piece with no handles",
+        "A wall blocking backstage access",
+        "Modular or easily moved scenic elements",
+        "A prop placed across the main path"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 12,
+      "question": "What is a prop?",
+      "choices": [
+        "A painted backdrop only",
+        "A lighting position",
+        "A theater's seating plan",
+        "An object handled or used by performers during a production"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Why should set construction materials be chosen carefully?",
+      "choices": [
+        "They affect safety, durability, cost, and appearance",
+        "Materials change the script's plot",
+        "All materials perform identically",
+        "Designers do not need to consider weight"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "A costume includes a long trailing cloak during fast movement. What should be tested?",
+      "choices": [
+        "Whether it matches the theater logo",
+        "Whether it allows safe, practical movement in the scene",
+        "Whether it increases ticket sales",
+        "Whether it hides all facial expression"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 15,
+      "question": "What is a design concept?",
+      "choices": [
+        "A list of actor names",
+        "A rehearsal attendance sheet",
+        "A guiding idea that shapes the visual choices in a production",
+        "A type of stage floor"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A production changes its setting from a realistic kitchen to an abstract platform. What can this choice do?",
+      "choices": [
+        "Prove the script is inaccurate",
+        "Remove the need for actors",
+        "Guarantee a comedy",
+        "Support a particular interpretation or theatrical style"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Why should designers track budget and available materials?",
+      "choices": [
+        "They need to create workable designs within production resources",
+        "Budgets determine character objectives",
+        "Materials have no cost",
+        "A design is successful only when expensive"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 18,
+      "question": "What is a color rendering in scenic design?",
+      "choices": [
+        "A recording of dialogue",
+        "A visual presentation showing the intended colors and appearance of a set",
+        "A costume repair",
+        "An actor's movement score"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "How can lighting and set design work together?",
+      "choices": [
+        "They must be developed separately",
+        "Lighting replaces the set",
+        "Lighting can change how scenic color, depth, and focus are perceived",
+        "The set determines every sound cue"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "Which question is most useful when evaluating a costume design?",
+      "choices": [
+        "Is it the most expensive outfit?",
+        "Does it cover the entire stage?",
+        "Does it match every other character?",
+        "Does it support the character and production while allowing the actor to perform safely?"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "subject": "Social Studies",
   "integrationStatus": "isolated-unintegrated",
-  "setCount": 75,
-  "totalQuestions": 1500,
+  "setCount": 89,
+  "totalQuestions": 1780,
   "sets": [
     {
       "id": "us-history--colonial-america",
@@ -529,6 +529,104 @@
       "category": "Geography",
       "questionCount": 20,
       "file": "social-studies/geography/australia-and-oceania.json"
+    },
+    {
+      "id": "social-studies--economics--business-and-market-structures",
+      "title": "Business and Market Structures",
+      "category": "Economics",
+      "questionCount": 20,
+      "file": "social-studies/economics/business-and-market-structures.json"
+    },
+    {
+      "id": "social-studies--economics--labor-markets-and-income",
+      "title": "Labor Markets and Income",
+      "category": "Economics",
+      "questionCount": 20,
+      "file": "social-studies/economics/labor-markets-and-income.json"
+    },
+    {
+      "id": "social-studies--economics--entrepreneurship-and-small-business",
+      "title": "Entrepreneurship and Small Business",
+      "category": "Economics",
+      "questionCount": 20,
+      "file": "social-studies/economics/entrepreneurship-and-small-business.json"
+    },
+    {
+      "id": "social-studies--geography--urban-geography-and-development",
+      "title": "Urban Geography and Development",
+      "category": "Geography",
+      "questionCount": 20,
+      "file": "social-studies/geography/urban-geography-and-development.json"
+    },
+    {
+      "id": "social-studies--geography--economic-geography",
+      "title": "Economic Geography",
+      "category": "Geography",
+      "questionCount": 20,
+      "file": "social-studies/geography/economic-geography.json"
+    },
+    {
+      "id": "social-studies--geography--middle-east-and-north-africa",
+      "title": "Middle East and North Africa (MENA)",
+      "category": "Geography",
+      "questionCount": 20,
+      "file": "social-studies/geography/middle-east-and-north-africa.json"
+    },
+    {
+      "id": "social-studies--us-history--contemporary-america-1970s-present",
+      "title": "Contemporary America: 1970s to Present",
+      "category": "U.S. History",
+      "questionCount": 20,
+      "file": "social-studies/us-history/contemporary-america-1970s-present.json"
+    },
+    {
+      "id": "social-studies--world-history--early-humans-and-river-valley-civilizations",
+      "title": "Early Humans and River Valley Civilizations",
+      "category": "World History",
+      "questionCount": 20,
+      "file": "social-studies/world-history/early-humans-and-river-valley-civilizations.json"
+    },
+    {
+      "id": "social-studies--world-history--mesoamerican-and-andean-civilizations",
+      "title": "Mesoamerican and Andean Civilizations",
+      "category": "World History",
+      "questionCount": 20,
+      "file": "social-studies/world-history/mesoamerican-and-andean-civilizations.json"
+    },
+    {
+      "id": "social-studies--world-history--byzantine-empire-and-islamic-world",
+      "title": "Byzantine Empire and Islamic World",
+      "category": "World History",
+      "questionCount": 20,
+      "file": "social-studies/world-history/byzantine-empire-and-islamic-world.json"
+    },
+    {
+      "id": "social-studies--world-history--african-civilizations",
+      "title": "African Civilizations",
+      "category": "World History",
+      "questionCount": 20,
+      "file": "social-studies/world-history/african-civilizations.json"
+    },
+    {
+      "id": "social-studies--world-history--age-of-exploration-and-colonialism",
+      "title": "Age of Exploration and Colonialism",
+      "category": "World History",
+      "questionCount": 20,
+      "file": "social-studies/world-history/age-of-exploration-and-colonialism.json"
+    },
+    {
+      "id": "social-studies--world-history--imperialism-and-global-change",
+      "title": "Imperialism and Global Change",
+      "category": "World History",
+      "questionCount": 20,
+      "file": "social-studies/world-history/imperialism-and-global-change.json"
+    },
+    {
+      "id": "social-studies--world-history--globalization-and-contemporary-world",
+      "title": "Globalization and the Contemporary World",
+      "category": "World History",
+      "questionCount": 20,
+      "file": "social-studies/world-history/globalization-and-contemporary-world.json"
     }
   ]
 }

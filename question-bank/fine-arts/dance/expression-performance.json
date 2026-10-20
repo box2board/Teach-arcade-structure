@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--dance--expression-performance",
+  "title": "Expression & Performance",
+  "subject": "Fine Arts",
+  "category": "Dance",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What does expressive intention mean in dance?",
+      "choices": [
+        "The idea, feeling, or quality a performer aims to communicate",
+        "The dancer's height",
+        "The stage's dimensions",
+        "The order of costumes"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 2,
+      "question": "How can dynamics affect a dance performance?",
+      "choices": [
+        "They determine the ticket price",
+        "Changes in force, speed, or flow can shape expressive meaning",
+        "They change the music's key automatically",
+        "They remove spatial choices"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "What does focus refer to in performance?",
+      "choices": [
+        "How many lights are on",
+        "The size of the audience",
+        "Where the dancer directs attention through gaze or body orientation",
+        "The length of rehearsal"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "A dancer looks toward a partner during a sequence. What may this communicate?",
+      "choices": [
+        "The dancer forgot the movement",
+        "The music must be in 3/4 time",
+        "The stage is too wide",
+        "A relationship or point of attention within the choreography"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 5,
+      "question": "Why is projection useful in performance?",
+      "choices": [
+        "It helps movement and intention read clearly to an audience",
+        "It means dancing at maximum force at all times",
+        "It requires exaggerated facial expression",
+        "It replaces safe technique"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "A performer changes a movement from soft and sustained to sharp and percussive. What is being varied?",
+      "choices": [
+        "Costume design",
+        "Dynamic quality",
+        "Stage architecture",
+        "Audience position"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is stage presence?",
+      "choices": [
+        "The number of props on stage",
+        "A type of dance notation",
+        "A performer's ability to sustain focus and engage the audience",
+        "The shape of the theater"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "A dancer loses timing during rehearsal. What is a constructive next step?",
+      "choices": [
+        "Hide the error and avoid rehearsal",
+        "Blame the audience",
+        "Change the choreography without telling the group",
+        "Review counts or musical cues and practice the transition"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 9,
+      "question": "Why should a performer connect facial expression and movement to the dance's intent?",
+      "choices": [
+        "Consistent choices can make the communicated idea clearer",
+        "Facial expression must always be dramatic",
+        "Movement has no meaning without a smile",
+        "The audience can only read faces"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "How can breath support performance?",
+      "choices": [
+        "It replaces warm-up",
+        "It can help coordinate movement, phrasing, and stamina",
+        "It controls the stage lights",
+        "It determines the costume"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "A performer exaggerates a gesture so it can be seen from the back of a theater. What is the goal?",
+      "choices": [
+        "Increase injury risk",
+        "Change the choreography's subject",
+        "Make the movement's shape and intention legible at a distance",
+        "Remove the musical phrasing"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 12,
+      "question": "What should a dancer do if a movement causes sharp pain during rehearsal?",
+      "choices": [
+        "Continue at greater force",
+        "Ignore the pain",
+        "Ask a peer to push farther",
+        "Stop and seek appropriate guidance rather than forcing the movement"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 13,
+      "question": "Why is feedback after a performance useful?",
+      "choices": [
+        "It can identify what communicated clearly and what could be developed",
+        "It proves the performance was unsuccessful",
+        "It removes the choreographer's role",
+        "It must be accepted without discussion"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "A dancer's energy drops before the ending. What can support a more consistent performance?",
+      "choices": [
+        "Use maximum force from the beginning",
+        "Plan pacing and practice stamina for the full sequence",
+        "Skip rehearsal",
+        "Remove all transitions"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 15,
+      "question": "What is one way to interpret a dance performance?",
+      "choices": [
+        "Guess the choreographer's private thoughts",
+        "Rely only on the costume",
+        "Use movement choices, structure, music, and context as evidence",
+        "Assume every viewer has the same response"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A performer changes level on a musical accent. What can this create?",
+      "choices": [
+        "A change to the audience's seat",
+        "A new stage size",
+        "A costume transition",
+        "A stronger relationship between movement and sound"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "How can stillness be used in performance?",
+      "choices": [
+        "It can create contrast, focus, or a moment of emphasis",
+        "It always means the dance has ended",
+        "It removes all expressive possibility",
+        "It prevents an audience from watching"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 18,
+      "question": "Why do dancers practice entrances and exits?",
+      "choices": [
+        "They are not part of the dance",
+        "They are part of the performance's timing, focus, and spatial organization",
+        "They determine the choreography's title",
+        "They replace the ending"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "A performer uses a gesture that seems unclear to viewers. What can the performer or choreographer consider?",
+      "choices": [
+        "Blame the viewers",
+        "Repeat it more quickly without testing",
+        "Clarify the movement's intention or provide context through the surrounding phrase",
+        "Remove all expressive choices"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "What is a useful post-performance reflection?",
+      "choices": [
+        "Rate the audience's clothing",
+        "List mistakes without context",
+        "Compare performers by popularity",
+        "Identify one strength and one specific choice to develop next time"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

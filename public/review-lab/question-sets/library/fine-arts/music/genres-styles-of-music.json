@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--music--genres-styles-of-music",
+  "title": "Genres & Styles of Music",
+  "subject": "Fine Arts",
+  "category": "Music",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a musical genre?",
+      "choices": [
+        "A category shaped by musical traits, history, and cultural context",
+        "A single tempo marking",
+        "A type of instrument material",
+        "A rule that every song must follow"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 2,
+      "question": "Which feature is commonly associated with blues?",
+      "choices": [
+        "Only electronic synthesizers",
+        "Call-and-response, blue notes, and expressive phrasing in many traditions",
+        "A fixed absence of rhythm",
+        "A required orchestral choir"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is a defining feature of many jazz performances?",
+      "choices": [
+        "No interaction among musicians",
+        "Only unchanging recorded parts",
+        "Improvisation within musical structures",
+        "No rhythmic variation"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "Which element is central to hip-hop as a cultural movement?",
+      "choices": [
+        "Only classical orchestral writing",
+        "A ban on sampling",
+        "A single instrument family",
+        "Rapping, DJing, break dance, and visual art among its elements"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Reggae developed in which country?",
+      "choices": [
+        "Jamaica",
+        "Argentina",
+        "Norway",
+        "Japan"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is a common feature of country music traditions?",
+      "choices": [
+        "A ban on acoustic instruments",
+        "Storytelling and distinctive vocal or instrumental styles that vary by era and region",
+        "A fixed use of twelve-tone rows",
+        "No connection to dance"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "How can genre labels be useful?",
+      "choices": [
+        "They guarantee every piece fits one category perfectly",
+        "They tell the listener exactly how to feel",
+        "They help listeners discuss shared conventions while leaving room for variation",
+        "They replace close listening"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 8,
+      "question": "A song combines jazz harmony with hip-hop beats. What might describe it?",
+      "choices": [
+        "A piece without style",
+        "A change in key only",
+        "An instrument family",
+        "A genre fusion or cross-genre work"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 9,
+      "question": "What is a motif in a style analysis?",
+      "choices": [
+        "A recurring musical idea that may help characterize a piece",
+        "A performance venue",
+        "The audience's seating arrangement",
+        "The recording's copyright date"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why should students compare recordings from different periods of a genre?",
+      "choices": [
+        "Older recordings are always more authentic",
+        "Genres change as artists, technologies, and communities shape them",
+        "A genre never changes",
+        "The comparison proves one era is superior"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 11,
+      "question": "Which practice is important when discussing music associated with a culture?",
+      "choices": [
+        "Assume one recording represents everyone",
+        "Ignore the people who created it",
+        "Use accurate context and avoid treating a diverse community as uniform",
+        "Describe every style as timeless"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 12,
+      "question": "What role can dance rhythms play in a music style?",
+      "choices": [
+        "They determine the artist's nationality",
+        "They remove melodic content",
+        "They set the recording's file type",
+        "They can shape groove, phrasing, and how listeners move"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Which feature often characterizes electronic dance music?",
+      "choices": [
+        "Electronically produced sounds and dance-oriented pulse, with many substyles",
+        "Only acoustic strings",
+        "No repeated patterns",
+        "A required live choir"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "What can instrumentation suggest in a genre comparison?",
+      "choices": [
+        "The exact lyrics in every song",
+        "A tradition's sound palette and performance practices",
+        "The audience's age",
+        "Whether a piece is copyrighted"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A listener hears a strong backbeat, electric guitar, and blues influence. Which broad style may be relevant?",
+      "choices": [
+        "Gregorian chant",
+        "Gamelan",
+        "Rock",
+        "Baroque opera"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 16,
+      "question": "Why is a genre boundary sometimes hard to define?",
+      "choices": [
+        "Genres have no musical traits",
+        "Every piece uses all instruments",
+        "The tempo changes too often",
+        "Artists borrow, adapt, and innovate across musical traditions"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "What is one respectful way to describe a music tradition?",
+      "choices": [
+        "Name specific musical features and acknowledge its cultural and historical setting",
+        "Use a stereotype as a shortcut",
+        "Assume the style is unchanged",
+        "Rank it against unrelated traditions"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "What is a remix?",
+      "choices": [
+        "A type of instrument tuning",
+        "A new version that reworks elements of an existing recording or composition",
+        "A performance with no sound",
+        "A musical scale"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "How can close listening help identify a style?",
+      "choices": [
+        "Use song length alone",
+        "Look only at the album color",
+        "Attend to rhythm, instrumentation, vocal approach, form, and context",
+        "Guess from the artist's name"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Why should music study include both familiar and unfamiliar styles?",
+      "choices": [
+        "It ensures all music sounds alike",
+        "It removes the need for analysis",
+        "It ranks cultures by popularity",
+        "It broadens listening and helps students recognize multiple musical perspectives"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

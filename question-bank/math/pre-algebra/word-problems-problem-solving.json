@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--pre-algebra--word-problems-problem-solving",
+  "title": "Word Problems & Problem Solving",
+  "subject": "Math",
+  "category": "Pre-Algebra & Number Sense",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "A theater has 18 rows with 24 seats per row. If 387 seats are occupied, how many are empty?",
+      "choices": [
+        "45",
+        "53",
+        "432",
+        "45 rows"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 2,
+      "question": "A cyclist rides 36 km in 2 hours at a constant rate. What is the rate?",
+      "choices": [
+        "72 km/h",
+        "18 km/h",
+        "34 km/h",
+        "18 hours/km"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "A recipe for 4 people uses 3 cups of rice. How many cups are needed for 10 people at the same rate?",
+      "choices": [
+        "6 cups",
+        "9 cups",
+        "7.5 cups",
+        "12 cups"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 4,
+      "question": "A store has 120 apples and packs them in bags of 8. How many full bags can it make?",
+      "choices": [
+        "12",
+        "14",
+        "960",
+        "15"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "A number increased by 9 equals 31. What is the number?",
+      "choices": [
+        "22",
+        "40",
+        "23",
+        "279"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 6,
+      "question": "A car travels 150 miles using 5 gallons of fuel. What is its average miles per gallon?",
+      "choices": [
+        "25 mpg",
+        "30 mpg",
+        "750 mpg",
+        "30 gallons per mile"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "A class has 28 students. Three-fourths attend a field trip. How many attend?",
+      "choices": [
+        "7",
+        "24",
+        "21",
+        "25"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 8,
+      "question": "A rectangular garden is 12 m by 7 m. How much fencing is needed to go around it?",
+      "choices": [
+        "84 m",
+        "19 m",
+        "38 m²",
+        "38 m"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 9,
+      "question": "A jacket costs $64 and is discounted by 25%. What is the sale price?",
+      "choices": [
+        "$48",
+        "$16",
+        "$40",
+        "$52"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 10,
+      "question": "A train travels 240 km in 3 hours. At the same speed, how far does it travel in 5 hours?",
+      "choices": [
+        "360 km",
+        "400 km",
+        "300 km",
+        "800 km"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 11,
+      "question": "A student scores 82, 90, and 88 on three tests. What score is needed on the fourth test for an average of 88?",
+      "choices": [
+        "88",
+        "90",
+        "92",
+        "96"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 12,
+      "question": "A tank contains 45 L of water. It loses 3 L each hour. How much remains after 8 hours?",
+      "choices": [
+        "24 L",
+        "69 L",
+        "18 L",
+        "21 L"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 13,
+      "question": "A map scale is 1 cm = 5 km. Two towns are 7.2 cm apart on the map. What is the real distance?",
+      "choices": [
+        "36 km",
+        "12.2 km",
+        "35 km",
+        "72 km"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Four friends split a $58 bill equally. How much does each pay?",
+      "choices": [
+        "$15.50",
+        "$14.50",
+        "$12.50",
+        "$232"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A worker completes 3/5 of a job in 6 hours at a steady rate. How long would the whole job take?",
+      "choices": [
+        "9 hours",
+        "15 hours",
+        "10 hours",
+        "3 hours"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 16,
+      "question": "A school orders 9 boxes of pencils with 144 pencils per box and distributes 950 pencils. How many remain?",
+      "choices": [
+        "396",
+        "1,296",
+        "244",
+        "346"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A rectangle has a perimeter of 30 cm and a length of 9 cm. What is its width?",
+      "choices": [
+        "6 cm",
+        "12 cm",
+        "3 cm",
+        "6 cm²"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A number is multiplied by 6, then 4 is added, giving 40. What was the number?",
+      "choices": [
+        "5",
+        "6",
+        "7",
+        "44"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A store sells 3 identical notebooks for $7.50. What is the cost of 8 notebooks at the same unit price?",
+      "choices": [
+        "$18",
+        "$22.50",
+        "$20",
+        "$60"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A group needs 85 chairs. Each row holds 12 chairs. What is the fewest number of rows needed?",
+      "choices": [
+        "7 rows",
+        "7.1 rows",
+        "9 rows",
+        "8 rows"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--algebra-i--algebra-equation-games",
+  "title": "Algebra & Equation Games",
+  "subject": "Math",
+  "category": "Algebra I",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Solve x + 9 = 17.",
+      "choices": [
+        "x = 8",
+        "x = 26",
+        "x = 9",
+        "x = 6"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Solve 4x = 36.",
+      "choices": [
+        "x = 32",
+        "x = 9",
+        "x = 40",
+        "x = 8"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Simplify 3x + 5x − 2.",
+      "choices": [
+        "8x + 2",
+        "15x",
+        "8x − 2",
+        "6x"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "Solve 2x + 3 = 15.",
+      "choices": [
+        "x = 9",
+        "x = 12",
+        "x = 3",
+        "x = 6"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which expression means 'five less than twice n'?",
+      "choices": [
+        "2n − 5",
+        "5 − 2n",
+        "2(n − 5)",
+        "5n − 2"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "Solve 3(x − 2) = 12.",
+      "choices": [
+        "x = 2",
+        "x = 6",
+        "x = 4",
+        "x = 10"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 7,
+      "question": "Which equation has solution x = 4?",
+      "choices": [
+        "5 + x = 20",
+        "x − 5 = 20",
+        "5x = 20",
+        "2x = 4"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "Simplify 2a + 3(a − 4).",
+      "choices": [
+        "5a − 4",
+        "5a + 12",
+        "6a − 12",
+        "5a − 12"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Solve x/5 = 7.",
+      "choices": [
+        "x = 35",
+        "x = 12",
+        "x = 2",
+        "x = 35/5"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "A number doubled and increased by 6 is 20. Which equation models it?",
+      "choices": [
+        "2(x + 6) = 20",
+        "2x + 6 = 20",
+        "x + 2 = 26",
+        "6x + 2 = 20"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 11,
+      "question": "Solve 7 − x = 2.",
+      "choices": [
+        "x = −5",
+        "x = 9",
+        "x = 5",
+        "x = 2"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 12,
+      "question": "What is the value of 3x² when x = 2?",
+      "choices": [
+        "36",
+        "18",
+        "9",
+        "12"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Which property is used in 4(x + 3) = 4x + 12?",
+      "choices": [
+        "Distributive property",
+        "Commutative property",
+        "Identity property",
+        "Addition property of equality"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Solve 5x − 8 = 2x + 7.",
+      "choices": [
+        "x = 3",
+        "x = 5",
+        "x = −5",
+        "x = 15"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 15,
+      "question": "Which inequality represents 'at most 12'?",
+      "choices": [
+        "x ≥ 12",
+        "x < 12",
+        "x ≤ 12",
+        "x > 12"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A game score starts at 10 and increases by 3 for each level l. Which rule gives the score?",
+      "choices": [
+        "S = 13l",
+        "S = 10l + 3",
+        "S = 3 − 10l",
+        "S = 10 + 3l"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Solve 2(x + 1) = 2x + 2.",
+      "choices": [
+        "All real numbers",
+        "No solution",
+        "x = 0 only",
+        "x = 2 only"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Which is equivalent to 6y − 2y + 4?",
+      "choices": [
+        "4y + 2",
+        "4y + 4",
+        "8y + 4",
+        "4y − 4"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "Solve −3x = 21.",
+      "choices": [
+        "x = 7",
+        "x = −18",
+        "x = −7",
+        "x = 18"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "A player has p points, loses 4, then triples the remainder. Which expression represents the result?",
+      "choices": [
+        "3p − 4",
+        "p − 12",
+        "3p + 4",
+        "3(p − 4)"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

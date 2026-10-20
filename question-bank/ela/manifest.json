@@ -3,8 +3,8 @@
   "subject": "English Language Arts",
   "status": "draft-for-review",
   "gradeBand": "7–12",
-  "setCount": 25,
-  "questionCount": 500,
+  "setCount": 45,
+  "questionCount": 900,
   "sets": [
     {
       "id": "ela--literature-literary-analysis--plot-and-narrative-structure",
@@ -180,6 +180,146 @@
       "category": "Research, Argument & Media Literacy",
       "questionCount": 20,
       "file": "research-argument-media-literacy/quoting-paraphrasing-and-attribution.json"
+    },
+    {
+      "id": "ela--literature-literary-analysis--rhyme-rhythm-meter",
+      "title": "Rhyme, Rhythm & Meter",
+      "category": "Literature & Literary Analysis",
+      "questionCount": 20,
+      "file": "literature-literary-analysis/rhyme-rhythm-meter.json"
+    },
+    {
+      "id": "ela--writing-composition--writing-original-poems",
+      "title": "Writing Original Poems",
+      "category": "Writing & Composition",
+      "questionCount": 20,
+      "file": "writing-composition/writing-original-poems.json"
+    },
+    {
+      "id": "ela--reading-informational-text--text-features",
+      "title": "Text Features",
+      "category": "Reading & Informational Text",
+      "questionCount": 20,
+      "file": "reading-informational-text/text-features.json"
+    },
+    {
+      "id": "ela--reading-informational-text--author-s-purpose-tone",
+      "title": "Author’s Purpose & Tone",
+      "category": "Reading & Informational Text",
+      "questionCount": 20,
+      "file": "reading-informational-text/author-s-purpose-tone.json"
+    },
+    {
+      "id": "ela--reading-informational-text--fact-opinion-bias",
+      "title": "Fact, Opinion & Bias",
+      "category": "Reading & Informational Text",
+      "questionCount": 20,
+      "file": "reading-informational-text/fact-opinion-bias.json"
+    },
+    {
+      "id": "ela--research-argument-media-literacy--note-taking-organizers",
+      "title": "Note-Taking & Organizers",
+      "category": "Research, Argument & Media Literacy",
+      "questionCount": 20,
+      "file": "research-argument-media-literacy/note-taking-organizers.json"
+    },
+    {
+      "id": "ela--research-argument-media-literacy--digital-citizenship",
+      "title": "Digital Citizenship",
+      "category": "Research, Argument & Media Literacy",
+      "questionCount": 20,
+      "file": "research-argument-media-literacy/digital-citizenship.json"
+    },
+    {
+      "id": "ela--speaking-listening--class-discussions-socratic-seminars",
+      "title": "Class Discussions & Socratic Seminars",
+      "category": "Speaking & Listening",
+      "questionCount": 20,
+      "file": "speaking-listening/class-discussions-socratic-seminars.json"
+    },
+    {
+      "id": "ela--speaking-listening--presentations-speeches",
+      "title": "Presentations & Speeches",
+      "category": "Speaking & Listening",
+      "questionCount": 20,
+      "file": "speaking-listening/presentations-speeches.json"
+    },
+    {
+      "id": "ela--speaking-listening--listening-comprehension-tasks",
+      "title": "Listening Comprehension Tasks",
+      "category": "Speaking & Listening",
+      "questionCount": 20,
+      "file": "speaking-listening/listening-comprehension-tasks.json"
+    },
+    {
+      "id": "ela--research-argument-media-literacy--debates-structured-argument",
+      "title": "Debates & Structured Argument",
+      "category": "Research, Argument & Media Literacy",
+      "questionCount": 20,
+      "file": "research-argument-media-literacy/debates-structured-argument.json"
+    },
+    {
+      "id": "ela--speaking-listening--collaborative-conversations",
+      "title": "Collaborative Conversations",
+      "category": "Speaking & Listening",
+      "questionCount": 20,
+      "file": "speaking-listening/collaborative-conversations.json"
+    },
+    {
+      "id": "ela--writing-composition--test-style-writing-prompts",
+      "title": "Test-Style Writing Prompts",
+      "category": "Writing & Composition",
+      "questionCount": 20,
+      "file": "writing-composition/test-style-writing-prompts.json"
+    },
+    {
+      "id": "ela--writing-composition--test-taking-strategies",
+      "title": "Test-Taking Strategies",
+      "category": "Writing & Composition",
+      "questionCount": 20,
+      "file": "writing-composition/test-taking-strategies.json"
+    },
+    {
+      "id": "ela--language-grammar-vocabulary--synonyms-antonyms",
+      "title": "Synonyms & Antonyms",
+      "category": "Language, Grammar & Vocabulary",
+      "questionCount": 20,
+      "file": "language-grammar-vocabulary/synonyms-antonyms.json"
+    },
+    {
+      "id": "ela--language-grammar-vocabulary--multiple-meaning-words",
+      "title": "Multiple-Meaning Words",
+      "category": "Language, Grammar & Vocabulary",
+      "questionCount": 20,
+      "file": "language-grammar-vocabulary/multiple-meaning-words.json"
+    },
+    {
+      "id": "ela--writing-composition--narrative-writing",
+      "title": "Narrative Writing",
+      "category": "Writing & Composition",
+      "questionCount": 20,
+      "file": "writing-composition/narrative-writing.json"
+    },
+    {
+      "id": "ela--writing-composition--informational-explanatory-writing",
+      "title": "Informational & Explanatory Writing",
+      "category": "Writing & Composition",
+      "questionCount": 20,
+      "file": "writing-composition/informational-explanatory-writing.json"
+    },
+    {
+      "id": "ela--writing-composition--introductions-conclusions",
+      "title": "Introductions & Conclusions",
+      "category": "Writing & Composition",
+      "questionCount": 20,
+      "file": "writing-composition/introductions-conclusions.json"
+    },
+    {
+      "id": "ela--writing-composition--organization-paragraph-structure",
+      "title": "Organization & Paragraph Structure",
+      "category": "Writing & Composition",
+      "questionCount": 20,
+      "file": "writing-composition/organization-paragraph-structure.json"
     }
   ]
 }

@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--theatre--improvisation-games",
+  "title": "Improvisation Games",
+  "subject": "Fine Arts",
+  "category": "Theatre",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What does the improv principle 'Yes, and' encourage?",
+      "choices": [
+        "Accept a partner's offer and add information to build the scene",
+        "Reject every offer",
+        "End the scene immediately",
+        "Repeat the same line"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 2,
+      "question": "What is an offer in improvisation?",
+      "choices": [
+        "A ticket price",
+        "A verbal or physical contribution that gives a scene information",
+        "A costume change",
+        "A lighting fixture"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Why should improvisers listen closely?",
+      "choices": [
+        "Listening prevents spontaneity",
+        "Every scene is scripted in advance",
+        "Their responses need to connect to what partners establish",
+        "Listening determines stage size"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "A partner pretends to hand you a heavy box. What is a useful response?",
+      "choices": [
+        "Ignore the offer",
+        "Say there is no box and change scenes",
+        "Freeze without responding",
+        "Accept the imagined object and show its weight through physical choices"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 5,
+      "question": "Which choice best supports a collaborative improv scene?",
+      "choices": [
+        "Add a detail that builds on the established setting or relationship",
+        "Introduce unrelated facts repeatedly",
+        "Contradict every offer",
+        "Compete to dominate every moment"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "What is a status relationship in improvisation?",
+      "choices": [
+        "The actors' rehearsal attendance",
+        "A changing difference in power or social position between characters",
+        "The theater's legal status",
+        "A type of costume"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Why can constraints help an improv game?",
+      "choices": [
+        "They prevent all choices",
+        "They replace listening",
+        "They give performers a focused challenge to explore creatively",
+        "They guarantee a predetermined ending"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "A scene partner establishes that the room is a spaceship. What is the strongest next move?",
+      "choices": [
+        "Pretend the room is a beach without explanation",
+        "Stop the scene",
+        "Ignore the setting",
+        "Use that setting to shape a connected action or problem"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 9,
+      "question": "What should an improviser do if they make a mistake?",
+      "choices": [
+        "Stay present and use the moment as new information",
+        "Stop and apologize repeatedly",
+        "Leave the stage",
+        "Blame a partner"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "In a group improv game, what does 'share focus' mean?",
+      "choices": [
+        "Ensure one actor speaks throughout",
+        "Make space for different performers to contribute",
+        "Avoid looking at partners",
+        "Use the same character"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Which game most directly practices making a clear physical offer?",
+      "choices": [
+        "Silent reading",
+        "Costume inventory",
+        "Mirror or object-transformation exercise",
+        "Script citation"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Why should improv performers respect personal boundaries?",
+      "choices": [
+        "Boundaries reduce creativity to zero",
+        "Every performer must accept all contact",
+        "Safety applies only to audiences",
+        "Scenes should remain safe and welcoming for participants"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 13,
+      "question": "A game asks a performer to repeat a phrase with changing emotions. What skill is practiced?",
+      "choices": [
+        "Vocal and emotional variation",
+        "Set construction",
+        "Lighting design",
+        "Memorizing stage directions"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What is the purpose of a warm-up game before improvising?",
+      "choices": [
+        "Determine the final script",
+        "Build attention, responsiveness, and group connection",
+        "Select the stage curtains",
+        "Replace all rehearsal"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "An improviser asks a partner a question that they could answer with one word, then ignores the answer. What is missing?",
+      "choices": [
+        "A costume piece",
+        "A stage direction",
+        "Listening and building on the response",
+        "A lighting cue"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 16,
+      "question": "Why might performers replay a short improv scene with a different choice?",
+      "choices": [
+        "To prove the first version was wrong",
+        "To avoid listening",
+        "To eliminate collaboration",
+        "To explore how choices affect the scene's direction"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "Which behavior can block a scene?",
+      "choices": [
+        "Rejecting established information without adding a useful alternative",
+        "Accepting an offer",
+        "Building a relationship",
+        "Clarifying the setting through action"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "A performer introduces a clear location through gestures and object use. What kind of offer is this?",
+      "choices": [
+        "A lighting change",
+        "A physical or environmental offer",
+        "A ticket request",
+        "A script edit"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "How can an improv group end a scene effectively?",
+      "choices": [
+        "Stop randomly while a partner speaks",
+        "Add unrelated characters until time runs out",
+        "Recognize a clear moment of resolution or discovery and finish together",
+        "Leave the stage one by one without a cue"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "What is a useful reflection after an improv game?",
+      "choices": [
+        "Rate partners by popularity",
+        "List only mistakes",
+        "Decide who spoke most",
+        "Identify which choices supported listening, clarity, and collaboration"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    }
+  ]
+}

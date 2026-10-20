@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "social-studies--world-history--byzantine-empire-and-islamic-world",
+  "title": "Byzantine Empire and Islamic World",
+  "subject": "Social Studies",
+  "category": "World History",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What was the capital of the Byzantine Empire for most of its history?",
+      "choices": [
+        "Rome",
+        "Constantinople",
+        "Baghdad",
+        "Alexandria"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "The Byzantine Empire developed from the eastern portion of",
+      "choices": [
+        "the Persian Empire",
+        "the Mongol Empire",
+        "the Roman Empire",
+        "the Carolingian Empire"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What was the Justinian Code?",
+      "choices": [
+        "A trade agreement between Byzantium and China",
+        "A list of Islamic pilgrimage sites",
+        "A system of Inca record keeping",
+        "A compilation and organization of Roman laws under Emperor Justinian"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Why was Constantinople a strategically important city?",
+      "choices": [
+        "It connected trade routes between Europe and Asia and controlled access between seas",
+        "It was located in the Sahara far from trade",
+        "It had no natural harbor or defenses",
+        "It was the capital of the Song dynasty"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "Which architectural landmark was first built as a Byzantine cathedral under Justinian?",
+      "choices": [
+        "The Parthenon",
+        "Hagia Sophia",
+        "The Dome of the Rock",
+        "The Colosseum"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What event is commonly associated with the formal split between the Roman Catholic and Eastern Orthodox churches?",
+      "choices": [
+        "The Council of Nicaea",
+        "The fall of the Western Roman Empire",
+        "The Great Schism of 1054",
+        "The beginning of the Crusades"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Where did Islam originate in the seventh century?",
+      "choices": [
+        "The Iberian Peninsula",
+        "The Indus Valley",
+        "The Scandinavian Peninsula",
+        "The Arabian Peninsula"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "What is the Qur'an in Islam?",
+      "choices": [
+        "The central sacred text of Islam",
+        "A Byzantine law code",
+        "A Persian royal title",
+        "A trade route across the Sahara"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Why did cities such as Baghdad become important centers of learning in parts of the medieval Islamic world?",
+      "choices": [
+        "They prohibited the study of mathematics",
+        "They supported scholarship, translation, trade, and exchange of ideas",
+        "They were isolated from trade routes",
+        "They replaced every other capital in the region"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Which institution is associated with scholarly activity in Abbasid Baghdad?",
+      "choices": [
+        "The University of Bologna",
+        "The Library of Alexandria under Ptolemy",
+        "The House of Wisdom",
+        "The Royal Society"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Merchants traveling across Afro-Eurasian trade networks helped spread",
+      "choices": [
+        "only one language and religion",
+        "a single political government",
+        "the same climate in every region",
+        "goods, technologies, and ideas among regions"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "How did the Byzantine Empire preserve aspects of classical learning?",
+      "choices": [
+        "Through the use and transmission of Greek and Roman texts and traditions",
+        "By banning all written works",
+        "By replacing every text with oral law",
+        "By isolating itself from neighboring societies"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "A historian studying medieval trade finds coins from several regions in one port city. What is a reasonable conclusion?",
+      "choices": [
+        "The coins prove one empire controlled every region",
+        "The city participated in long-distance exchange networks",
+        "The city had no local economy",
+        "The coins establish the exact number of merchants"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 14,
+      "question": "What was one effect of the expansion of Islamic caliphates in the centuries after Islam began?",
+      "choices": [
+        "Every region adopted identical customs immediately",
+        "Trade ended between the Mediterranean and Asia",
+        "New political territories became connected through administration and trade, with varied local societies",
+        "The Byzantine Empire disappeared in the seventh century"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why is it more accurate to speak of diverse societies within the medieval Islamic world than one uniform culture?",
+      "choices": [
+        "Islamic societies existed only in one city",
+        "Trade prevented cultural interaction",
+        "Every caliph ruled all Muslim communities in the same way",
+        "Peoples across a wide region had varied languages, traditions, and political histories"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 16,
+      "question": "Which challenge contributed to the Byzantine Empire's decline before Constantinople fell in 1453?",
+      "choices": [
+        "Military pressures, territorial losses, and economic strain over time",
+        "The empire had no capital city",
+        "The empire never faced external rivals",
+        "The empire lost control of the Atlantic Ocean"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "Which city was captured by Ottoman forces in 1453, ending the Byzantine Empire?",
+      "choices": [
+        "Carthage",
+        "Constantinople",
+        "Cordoba",
+        "Damascus"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "What does the term caliphate refer to in Islamic history?",
+      "choices": [
+        "A specific type of Byzantine church",
+        "A law code written by Justinian",
+        "A political community or state led by a caliph",
+        "A medieval European guild"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "Why did translation movements matter in medieval scholarly centers?",
+      "choices": [
+        "They prevented scholars from building on earlier work",
+        "They replaced all local education",
+        "They ended trade in books and manuscripts",
+        "They helped transmit and develop knowledge across languages and regions"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A map shows the Byzantine Empire centered around Constantinople and nearby sea routes. What geographic advantage does this reveal?",
+      "choices": [
+        "The city could connect commerce and military movement between several regions",
+        "The empire was separated from all maritime activity",
+        "The capital controlled the source of the Nile",
+        "The city was surrounded by uninhabitable desert"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}
