@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import {answerChoices,earnedAnswerButton} from '../public/dev/3d-adventure-engine/evidence-questions.js';
+const question={answers:['A','B','C','D'],correct:2,shuffleAnswers:true};
+const choices=answerChoices(question,()=>0);
+assert.notEqual(choices.findIndex(c=>c.sourceIndex===question.correct),question.correct);
+assert.deepEqual(choices.map(c=>c.sourceIndex).sort(),[0,1,2,3]);
+assert.deepEqual(question.answers,['A','B','C','D']);
+const buttons=choices.map((choice,index)=>({textContent:`${index+1}. ${choice.text}`}));
+assert.equal(earnedAnswerButton({children:buttons},question).textContent,'2. C');
+assert.equal(earnedAnswerButton({children:[]},question),null);
+console.log('Shuffled choices retain answer identity, preserve source data and reconstruct earned checkpoints.');

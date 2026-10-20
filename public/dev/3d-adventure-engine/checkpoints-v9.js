@@ -1,4 +1,5 @@
 import * as THREE from "/assets/vendor/three-0.162.0/three.module.js";
+import { earnedAnswerButton } from "./evidence-questions.js";
 
 // v0.9 config-driven checkpoint/recovery layer.
 // Recovery coordinates, relay stations, and academic answer indexes now come
@@ -165,8 +166,7 @@ async function restoreBaseTo(stage) {
     const opened = await waitFor(() => questionDialog?.open, 2200);
     if (opened) {
       await sleep(90);
-      const correct = config?.questions?.exteriorTerminal?.correct ?? 2;
-      [...(answerList?.children || [])][correct]?.click();
+      earnedAnswerButton(answerList, config.questions?.exteriorTerminal)?.click();
       await waitFor(() => terminalStatus?.textContent === "Online", 2600);
       await waitFor(() => !questionDialog?.open, 2600);
     }
@@ -225,8 +225,7 @@ async function restoreMissionTo(stage) {
     const opened = await waitFor(() => questionDialog?.open, 2200);
     if (opened) {
       await sleep(90);
-      const correct = config?.questions?.archive?.correct ?? 0;
-      [...(answerList?.children || [])][correct]?.click();
+      earnedAnswerButton(answerList, config.questions?.archive)?.click();
       await waitFor(() => mission()?.knowledgePassed, 2600);
       await waitFor(() => !questionDialog?.open, 2600);
     }

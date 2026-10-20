@@ -1,4 +1,5 @@
 import * as THREE from "/assets/vendor/three-0.162.0/three.module.js";
+import { answerChoices, renderEvidence, retryControl } from "./evidence-questions.js";
 
 // v1.0 config-driven exterior progression.
 // Owns the Lost Facility's cell -> terminal -> switch -> gate loop while the
@@ -32,6 +33,9 @@ const state = {
   questionActive: false,
 };
 
+let presentedAnswers = [];
+let retryButton = null;
+let exteriorCloseTimer = null;
 let engine = null;
 let player = null;
 let gateDoor = null;
@@ -154,11 +158,12 @@ function updateNearestInteraction() {
 function buildAnswers() {
   if (!answerList) return;
   answerList.innerHTML = "";
-  (question.answers || []).forEach((answer, index) => {
+  presentedAnswers = answerChoices(question);
+  presentedAnswers.forEach((answer, index) => {
     const button = document.createElement("button");
     button.type = "button";
     button.className = "answer";
-    button.textContent = `${index + 1}. ${answer}`;
+    button.textContent = `${index + 1}. ${answer.text}`;
     button.addEventListener("click", () => submitAnswer(index));
     answerList.appendChild(button);
   });
@@ -178,21 +183,33 @@ function openQuestion() {
   const heading = questionDialog.querySelector("h2");
   if (heading) heading.textContent = question.title || "Restore terminal power";
   if (questionText) questionText.textContent = question.text || "";
+  renderEvidence(question, questionText);
+  retryButton = retryControl(answerList, () => {
+    state.questionLocked = false;
+    retryButton.hidden = true;
+    questionFeedback.textContent = "Compare the evidence, then choose again.";
+    state.selectedAnswer = 0;
+    buildAnswers();
+  });
   buildAnswers();
   questionDialog.showModal();
 }
 
 function submitAnswer(index) {
-  if (state.questionLocked) return;
+  if (!state.questionActive || state.questionLocked || !presentedAnswers[index]) return;
   state.selectedAnswer = index;
   updateAnswerFocus();
   const buttons = [...(answerList?.children || [])];
   const correct = question.correct ?? 0;
 
-  if (index !== correct) {
+  if (presentedAnswers[index].sourceIndex !== correct) {
     buttons[index]?.classList.add("wrong");
     if (questionFeedback) questionFeedback.textContent = question.wrongFeedback || "Not quite. Try another answer.";
-    setTimeout(() => buttons[index]?.classList.remove("wrong"), 420);
+    if (question.reviewBeforeRetry) {
+      state.questionLocked = true;
+      buttons.forEach(button => button.disabled = true);
+      retryButton.hidden = false;
+    } else setTimeout(() => buttons[index]?.classList.remove("wrong"), 420);
     return;
   }
 
@@ -202,7 +219,11 @@ function submitAnswer(index) {
   state.terminalPowered = true;
   applyVisualState();
   updateHud();
-  setTimeout(() => questionDialog.open && questionDialog.close(), 700);
+  if (question.reviewBeforeRetry) {
+    retryButton.textContent = "Continue investigation";
+    retryButton.onclick = () => questionDialog.close();
+    retryButton.hidden = false;
+  } else exteriorCloseTimer = setTimeout(() => questionDialog.open && questionDialog.close(), 700);
 }
 
 function handleQuestionKey(event) {
@@ -295,6 +316,8 @@ window.addEventListener("keydown", (event) => {
 }, true);
 
 questionDialog?.addEventListener("close", () => {
+  clearTimeout(exteriorCloseTimer);
+  if (retryButton) retryButton.hidden = true;
   if (state.questionActive) state.questionActive = false;
 });
 

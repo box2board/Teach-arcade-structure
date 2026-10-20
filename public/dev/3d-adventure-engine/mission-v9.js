@@ -1,5 +1,7 @@
 import * as THREE from "/assets/vendor/three-0.162.0/three.module.js";
 import { relayStep, relayObjective, sequenceClue } from "./relay-progress.js";
+import { answerChoices, renderEvidence, retryControl } from "./evidence-questions.js";
+import { mountSeasonsModel } from "./seasons-model.js";
 
 // v0.9 config-driven mission runtime.
 // Keeps movement/camera ownership in main-v2.js. Adventure-specific mission
@@ -27,6 +29,9 @@ let archiveUnlocked = false;
 let knowledgePassed = false;
 let finishing = false;
 let selectedMissionAnswer = 0;
+let presentedMissionAnswers = [];
+let missionRetry = null;
+let modelActive = false;
 let activeMissionQuestion = missionQuestion;
 let answerSuccess = null;
 let missionAnswerLocked = false;
@@ -399,26 +404,43 @@ function openMissionQuestion(definition = missionQuestion, onSuccess = unlockArc
   const heading = questionDialog.querySelector("h2");
   if (heading) heading.textContent = activeMissionQuestion.title || "Knowledge checkpoint";
   questionText.textContent = activeMissionQuestion.text || "";
-  let evidence = document.getElementById("ta3dQuestionEvidence");
-  if (!evidence) {
-    evidence = document.createElement("p");
-    evidence.id = "ta3dQuestionEvidence";
-    evidence.className = "question-evidence";
-    questionText.before(evidence);
-  }
-  evidence.textContent = definition.evidence || "";
-  evidence.hidden = !definition.evidence;
+  renderEvidence(definition, questionText);
+  missionRetry = retryControl(answerList, () => {
+    missionAnswerLocked = false;
+    missionRetry.hidden = true;
+    selectedMissionAnswer = 0;
+    questionFeedback.textContent = "Compare the evidence, then choose again.";
+    buildMissionAnswers();
+  });
+  modelActive = definition.type === "seasons-model";
+  const instructions = questionDialog.querySelector(".dialog-footer span");
+  if (instructions) instructions.textContent = modelActive
+    ? "Choose settings and a prediction, then run both forecast tests."
+    : "Use ↑/↓ and Enter, number keys, or select an answer.";
+  answerList.setAttribute("role", modelActive ? "group" : "radiogroup");
+  answerList.setAttribute("aria-label", modelActive ? "Season model controls" : "Answer choices");
+  if (modelActive) {
+    mountSeasonsModel({ container: answerList, heading, questionText, feedback: questionFeedback, onComplete: () => {
+      if (!missionQuestionActive || missionAnswerLocked) return;
+      missionAnswerLocked = true;
+      const complete = answerSuccess; answerSuccess = null; complete?.();
+      questionCloseTimer = setTimeout(() => questionDialog.open && questionDialog.close(), 720);
+    } });
+  } else buildMissionAnswers();
+  questionDialog.showModal();
+}
+
+function buildMissionAnswers() {
   answerList.innerHTML = "";
-  (activeMissionQuestion.answers || []).forEach((answer, index) => {
+  presentedMissionAnswers = answerChoices(activeMissionQuestion);
+  presentedMissionAnswers.forEach((answer, index) => {
     const button = document.createElement("button");
-    button.type = "button";
-    button.className = "answer";
-    button.textContent = `${index + 1}. ${answer}`;
+    button.type = "button"; button.className = "answer";
+    button.textContent = `${index + 1}. ${answer.text}`;
     button.addEventListener("click", () => submitMissionAnswer(index));
     answerList.appendChild(button);
   });
   updateMissionAnswerFocus();
-  questionDialog.showModal();
 }
 
 function updateMissionAnswerFocus() {
@@ -426,14 +448,18 @@ function updateMissionAnswerFocus() {
 }
 
 function submitMissionAnswer(index) {
-  if (!missionQuestionActive || missionAnswerLocked) return;
+  if (!missionQuestionActive || missionAnswerLocked || modelActive || !presentedMissionAnswers[index]) return;
   selectedMissionAnswer = index;
   updateMissionAnswerFocus();
   const buttons = [...answerList.children];
-  if (index !== activeMissionQuestion.correct) {
+  if (presentedMissionAnswers[index].sourceIndex !== activeMissionQuestion.correct) {
     buttons[index]?.classList.add("wrong");
     questionFeedback.textContent = activeMissionQuestion.wrongFeedback || "Not quite. Try again.";
-    setTimeout(() => buttons[index]?.classList.remove("wrong"), 420);
+    if (activeMissionQuestion.reviewBeforeRetry) {
+      missionAnswerLocked = true;
+      buttons.forEach(button => button.disabled = true);
+      missionRetry.hidden = false;
+    } else setTimeout(() => buttons[index]?.classList.remove("wrong"), 420);
     return;
   }
   buttons[index]?.classList.add("correct");
@@ -442,7 +468,11 @@ function submitMissionAnswer(index) {
   const complete = answerSuccess;
   answerSuccess = null;
   complete?.();
-  questionCloseTimer = setTimeout(() => questionDialog.open && questionDialog.close(), 720);
+  if (activeMissionQuestion.reviewBeforeRetry) {
+    missionRetry.textContent = "Continue investigation";
+    missionRetry.onclick = () => questionDialog.close();
+    missionRetry.hidden = false;
+  } else questionCloseTimer = setTimeout(() => questionDialog.open && questionDialog.close(), 720);
 }
 
 function unlockArchive() {
@@ -459,7 +489,7 @@ function unlockArchive() {
 }
 
 function handleMissionQuestionKey(event) {
-  if (!missionQuestionActive) return false;
+  if (!missionQuestionActive || modelActive) return false;
   const count = activeMissionQuestion.answers?.length || 0;
   if (["ArrowUp", "ArrowDown", "Enter", "Digit1", "Digit2", "Digit3", "Digit4"].includes(event.code)) {
     event.preventDefault();
@@ -671,6 +701,8 @@ window.addEventListener("keydown", (event) => {
 questionDialog?.addEventListener("close", () => {
   clearTimeout(questionCloseTimer);
   answerSuccess = null;
+  modelActive = false;
+  if (missionRetry) missionRetry.hidden = true;
   if (missionQuestionActive) missionQuestionActive = false;
 });
 
