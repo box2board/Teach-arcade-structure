@@ -218,8 +218,8 @@
         height: 100vh;
         background: var(--nav-panel);
         box-shadow: var(--nav-shadow);
-        transform: translateX(105%);
-        transition: transform .25s ease;
+        clip-path: inset(0 0 0 100%);
+        transition: clip-path .25s ease;
         z-index: 9999;
         padding: 20px;
         display: flex;
@@ -229,7 +229,7 @@
         pointer-events: none;
       }
       .ta-panel.open{
-        transform: translateX(0);
+        clip-path: inset(0);
         visibility: visible;
         pointer-events: auto;
       }
