@@ -122,6 +122,15 @@ a.cta.ghost {
   padding: 0 20px;
 }
 
+/* Use more of wide desktop viewports while keeping reading widths controlled
+   on smaller screens. The original 1100px cap left large desktop displays
+   with substantial unused space. */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1500px;
+  }
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
