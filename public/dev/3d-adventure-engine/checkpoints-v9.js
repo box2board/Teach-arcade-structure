@@ -1,4 +1,5 @@
 import * as THREE from "/assets/vendor/three-0.162.0/three.module.js";
+import { earnedAnswerButton } from "./evidence-questions.js";
 
 // v0.9 config-driven checkpoint/recovery layer.
 // Recovery coordinates, relay stations, and academic answer indexes now come
@@ -12,6 +13,7 @@ const STAGES = [...(config?.checkpoints || ["start", "cell", "terminal", "entran
 const STORAGE_KEY = adventure?.storageKey?.("checkpoint.v1") || `teachArcade3D.${config?.id || "adventure"}.checkpoint.v1`;
 const LEGACY_KEY = "teachArcade3D.lostFacility.v07.checkpoint";
 const VERSION = 1;
+const useLegacy = config?.id === "lost-facility" && config?.migrateLegacyCheckpoint !== false;
 
 const LABELS = {
   start: "Exterior",
@@ -56,7 +58,7 @@ function readSave() {
   try {
     const current = parseStored(localStorage.getItem(STORAGE_KEY));
     if (current) return current;
-    const legacy = parseStored(localStorage.getItem(LEGACY_KEY));
+    const legacy = useLegacy ? parseStored(localStorage.getItem(LEGACY_KEY)) : null;
     if (legacy) {
       localStorage.setItem(STORAGE_KEY, JSON.stringify({ version: VERSION, stage: legacy.stage, savedAt: legacy.savedAt || Date.now() }));
       return legacy;
@@ -72,7 +74,7 @@ function writeSave(stage) {
   try {
     localStorage.setItem(STORAGE_KEY, payload);
     // Mirror during v0.9 so the v0.8 difficulty selector recognizes progress.
-    localStorage.setItem(LEGACY_KEY, payload);
+    if (useLegacy) localStorage.setItem(LEGACY_KEY, payload);
   } catch {}
   updateCheckpointUi(stage);
 }
@@ -80,7 +82,7 @@ function writeSave(stage) {
 function clearSave() {
   try {
     localStorage.removeItem(STORAGE_KEY);
-    localStorage.removeItem(LEGACY_KEY);
+    if (useLegacy) localStorage.removeItem(LEGACY_KEY);
   } catch {}
   lastSavedStage = "start";
   updateCheckpointUi("start");
@@ -164,8 +166,7 @@ async function restoreBaseTo(stage) {
     const opened = await waitFor(() => questionDialog?.open, 2200);
     if (opened) {
       await sleep(90);
-      const correct = config?.questions?.exteriorTerminal?.correct ?? 2;
-      [...(answerList?.children || [])][correct]?.click();
+      earnedAnswerButton(answerList, config.questions?.exteriorTerminal)?.click();
       await waitFor(() => terminalStatus?.textContent === "Online", 2600);
       await waitFor(() => !questionDialog?.open, 2600);
     }
@@ -224,8 +225,7 @@ async function restoreMissionTo(stage) {
     const opened = await waitFor(() => questionDialog?.open, 2200);
     if (opened) {
       await sleep(90);
-      const correct = config?.questions?.archive?.correct ?? 0;
-      [...(answerList?.children || [])][correct]?.click();
+      earnedAnswerButton(answerList, config.questions?.archive)?.click();
       await waitFor(() => mission()?.knowledgePassed, 2600);
       await waitFor(() => !questionDialog?.open, 2600);
     }

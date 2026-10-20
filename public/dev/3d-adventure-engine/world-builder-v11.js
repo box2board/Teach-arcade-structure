@@ -40,7 +40,7 @@ function applyTransform(object, def = {}) {
 }
 
 function registerRuntimeFeatures(mesh, def, context) {
-  if (def.collider && def.type === "box") context.registerBoxCollider(mesh, def.w ?? 1, def.d ?? 1);
+  if (def.collider) context.registerCollider(mesh);
   if (def.cameraBlock) context.addCameraObstacle(mesh);
   if (def.animation) context.registerAnimation({ mesh, ...def.animation, baseY: def.animation.baseY ?? mesh.position.y });
 }
