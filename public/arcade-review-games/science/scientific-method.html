@@ -377,6 +377,8 @@ let powerMode = false;
 let powerTimer = 0;
 let quizIndex = -1;
 let quizAnswered = 0;
+let quizCorrect = 0;
+const gameStartedAt = Date.now();
 
 /* Player — one-tile steps only */
 const player = { x: 1, y: 1 };
@@ -520,6 +522,7 @@ function answer(choice) {
   const correct = (choice === q.correct);
 
   if (correct) {
+    quizCorrect++;
     score += 150;
     powerMode = true;
     // ≈10 seconds at ~60 FPS
@@ -771,5 +774,6 @@ update();
   <p>Use these verified Teach Arcade paths to move from this activity into the surrounding lesson and resource collection.</p>
   <ul><li><a href="/subjects/science/biology/scientific-method-introduction-to-biology.html">Scientific Method</a></li><li><a href="/subjects/science/biology/">Biology</a></li><li><a href="/subjects/science/">Science</a></li><li><a href="/arcade-review-games/">Arcade Review Games</a></li></ul>
 </section>
+<script src="/arcade-review-games/shared/arcade-results.js?v=1" defer></script>
 </body>
 </html>

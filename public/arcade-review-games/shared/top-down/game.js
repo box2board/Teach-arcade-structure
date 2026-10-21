@@ -229,7 +229,18 @@ function showReport(){
 }
 function showCompletion(){
   const results=adventureResults(map,state),learning=reviewSummary(state.review);
-  popup(map.completion?.label||'QUEST COMPLETE',map.completion?.title||'Adventure complete',[map.completion?.summary||'You completed the adventure.',`Treasure found: ${results.treasureFound} / ${results.treasureTotal} · Treasure bonus: +${results.bonusPoints} points.`,`Review points: ${results.reviewPoints} · Total points: ${results.totalPoints}.`,`Review completed: ${learning.completed} / ${learning.total} · Correct on first try: ${learning.firstTry} · Answer attempts: ${learning.attempts}.`,`Exploration time: ${Math.floor(elapsed/60)}m ${Math.floor(elapsed%60)}s · Moves: ${state.moves}.`],[{text:'Play again',run:()=>startMode(map.mode),primary:true},{text:'View results report',run:showReport},{text:'Back to Arcade',run:()=>{window.location.href='/arcade-review-games/';}}]);
+  const snapshot=buildReport(map,content,state,elapsed);
+  popup(map.completion?.label||'QUEST COMPLETE',map.completion?.title||'Adventure complete',[
+    map.completion?.summary||'You completed the adventure.',
+    'Treasure found: '+results.treasureFound+' / '+results.treasureTotal+' · Treasure bonus: +'+results.bonusPoints+' points.',
+    'Review points: '+results.reviewPoints+' · Total points: '+results.totalPoints+'.',
+    'Review completed: '+learning.completed+' / '+learning.total+' · Correct on first try: '+learning.firstTry+' · Answer attempts: '+learning.attempts+'.',
+    'Exploration time: '+Math.floor(elapsed/60)+'m '+Math.floor(elapsed%60)+'s · Moves: '+state.moves+'.'
+  ],[
+    {text:'Download results',primary:true,run:()=>{try{downloadReport({...snapshot,student:reportStudent.trim().slice(0,80)});$('feedback').textContent='Results downloaded.';}catch{$('feedback').textContent='Download unavailable. You can take a screenshot of these results.';}}},
+    {text:'Play again',run:()=>startMode(map.mode)},
+    {text:'Return to Arcade',run:()=>{window.location.href='/arcade-review-games/';}}
+  ]);
 }
 let pickupFlashTimer;
 function pickupFeedback(items){
