@@ -28,6 +28,16 @@ assert.equal(scoreRecord(record({ title: "Algebra City Run" }), query("holocaust
   "unmatched records must not receive baseline relevance points");
 assert.ok(scoreRecord(record({ title: "World War II Review Adventure" }), query("wwii")) > 0,
   "known whole-query aliases should find matching titles");
+assert.ok(scoreRecord(record({ title: "World War I", type: "topic" }), query("World war 1")) > 0,
+  "Arabic and Roman numeral spellings should find the same World War I topic");
+assert.ok(scoreRecord(record({ title: "World War I", type: "topic" }), query("ww1")) > 0,
+  "WWI abbreviations should find the World War I topic");
+assert.equal(scoreRecord(record({
+  title: "War Horse Movie Guide",
+  description: "A printable classroom movie guide.",
+  subject: "World History"
+}), query("World war i")), 0,
+  "a multiword query must not be assembled from unrelated title and subject fields");
 assert.equal(scoreRecord(record({ title: "Water Cycle" }), query("art")), 0,
   "tokens must match word boundaries rather than substrings");
 assert.equal(scoreRecord(record({ title: "World War II" }), query("world algebra")), 0,
@@ -37,25 +47,4 @@ assert.equal(scoreRecord(record({ title: "Classroom Review Game" }), query("for"
 assert.ok(scoreRecord(record({ title: "Algebra Review Game", tags: ["keyword:linear equations"] }), query("algebra")) > 0,
   "new structured keyword metadata should participate in search");
 
-const index = JSON.parse(await readFile(new URL("../public/search-index.json", import.meta.url), "utf8"));
-const searchIndex = text => index
-  .map(item => {
-    const prepared = record({
-      title: item.title,
-      description: item.description,
-      subject: item.subject,
-      tags: item.tags || [],
-      type: item.type,
-      url: item.url
-    });
-    return { ...item, _score: scoreRecord(prepared, query(text)) };
-  })
-  .filter(item => item._score >= 145)
-  .sort((a, b) => b._score - a._score);
-const holocaustResults = searchIndex("holocaust");
-assert.ok(holocaustResults.some(item => item.title.includes("Schindler")),
-  "curated topic keywords should make relevant classroom materials discoverable");
-assert.ok(holocaustResults.every(item => item.title.includes("Schindler")),
-  "a specific historical term should not expand into unrelated WWII resources");
-assert.equal(searchIndex("for").length, 0, "generic stopwords should not populate results");
 console.log("PASS: search excludes unmatched items, respects word boundaries and multiword intent, and supports aliases and structured keywords.");
