@@ -25,7 +25,7 @@ for slug,config in subjects.items():
 <p class="section-sub">{len(items)} topics, three cumulative levels each. Every download includes a student worksheet and teacher answer key. Hover or focus a download to preview the worksheet.</p>
 <div class="library-toolbar"><label for="{search_id}">Find your topic</label><input id="{search_id}" type="search" placeholder="Search topics or categories" autocomplete="off"><div class="library-filters" role="group" aria-label="Filter {esc(config['displayName'])} crosswords by category">{filters}</div></div>
 <p class="library-status" role="status" aria-live="polite">{len(items)} topics available</p>
-<div class="library-grid">{''.join(cards)}</div>
+<div class="library-grid">{chr(10).join(cards)}</div>
 <div class="library-pagination" hidden><button type="button" data-prev>Previous</button><span></span><button type="button" data-next>Next</button></div>
 <noscript><p>All downloads remain available. Enable JavaScript to search and filter this library.</p></noscript>
 </section>''')
