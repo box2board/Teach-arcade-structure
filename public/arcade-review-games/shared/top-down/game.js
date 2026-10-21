@@ -229,7 +229,39 @@ function showReport(){
 }
 function showCompletion(){
   const results=adventureResults(map,state),learning=reviewSummary(state.review);
-  popup(map.completion?.label||'QUEST COMPLETE',map.completion?.title||'Adventure complete',[map.completion?.summary||'You completed the adventure.',`Treasure found: ${results.treasureFound} / ${results.treasureTotal} · Treasure bonus: +${results.bonusPoints} points.`,`Review points: ${results.reviewPoints} · Total points: ${results.totalPoints}.`,`Review completed: ${learning.completed} / ${learning.total} · Correct on first try: ${learning.firstTry} · Answer attempts: ${learning.attempts}.`,`Exploration time: ${Math.floor(elapsed/60)}m ${Math.floor(elapsed%60)}s · Moves: ${state.moves}.`],[{text:'Play again',run:()=>startMode(map.mode),primary:true},{text:'View results report',run:showReport},{text:'Back to Arcade',run:()=>{window.location.href='/arcade-review-games/';}}]);
+  const snapshot=buildReport(map,content,state,elapsed);
+  if(window.TAArcadeResults){
+    if(dialog.open)dialog.close();
+    window.TAArcadeResults.show({
+      game:document.querySelector('h1')?.textContent||map.title,outcome:map.completion?.title||'Adventure complete',mode:snapshot.difficulty,
+      metrics:[
+        {label:'Total points',value:String(results.totalPoints)},
+        {label:'First-try accuracy',value:snapshot.firstTryAccuracy===null?'No answers':snapshot.firstTryAccuracy+'%'},
+        {label:'Questions completed',value:learning.completed+' / '+learning.total},
+        {label:'Time',value:Math.floor(elapsed/60)+'m '+Math.floor(elapsed%60)+'s'},
+        {label:'Treasure found',value:results.treasureFound+' / '+results.treasureTotal},
+        {label:'Moves',value:String(state.moves)}
+      ],
+      details:[map.completion?.summary||'You completed the adventure.',...reportSummary(snapshot).slice(3)],
+      reportLines:['QUESTION RECORD',...snapshot.questions.flatMap((q,i)=>[
+        (i+1)+'. '+q.chest+': '+q.prompt,
+        'Status: '+(q.correct?'Correct':'Not completed')+' · Attempts: '+q.attempts,
+        ...(q.responses.length?['Responses: '+q.responses.join(' → ')]:[])
+      ])]
+    },()=>startMode(map.mode));
+    return;
+  }
+  popup(map.completion?.label||'QUEST COMPLETE',map.completion?.title||'Adventure complete',[
+    map.completion?.summary||'You completed the adventure.',
+    'Treasure found: '+results.treasureFound+' / '+results.treasureTotal+' · Treasure bonus: +'+results.bonusPoints+' points.',
+    'Review points: '+results.reviewPoints+' · Total points: '+results.totalPoints+'.',
+    'Review completed: '+learning.completed+' / '+learning.total+' · Correct on first try: '+learning.firstTry+' · Answer attempts: '+learning.attempts+'.',
+    'Exploration time: '+Math.floor(elapsed/60)+'m '+Math.floor(elapsed%60)+'s · Moves: '+state.moves+'.'
+  ],[
+    {text:'Download results',primary:true,run:()=>{try{downloadReport({...snapshot,student:reportStudent.trim().slice(0,80)});$('feedback').textContent='Results downloaded.';}catch{$('feedback').textContent='Download unavailable. You can take a screenshot of these results.';}}},
+    {text:'Play Again',run:()=>startMode(map.mode)},
+    {text:'Return to Arcade',run:()=>{window.location.href='/arcade-review-games/';}}
+  ]);
 }
 let pickupFlashTimer;
 function pickupFeedback(items){

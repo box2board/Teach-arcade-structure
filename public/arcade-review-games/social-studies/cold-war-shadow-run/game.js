@@ -47,6 +47,8 @@ const camera = {
 
 let stability = 70;
 let intel = 0;
+let answered = 0;
+let runStartedAt = Date.now();
 let muted = false;
 let paused = false;
 let lastTime = 0;
@@ -211,6 +213,8 @@ function resizeCanvas() {
 function resetRun() {
   stability = 70;
   intel = 0;
+  answered = 0;
+  runStartedAt = Date.now();
   player.x = 120;
   player.y = 320;
   player.vx = 0;
@@ -269,6 +273,7 @@ function closeQuestion() {
 function handleAnswer(index) {
   const question = activeZone?.question;
   if (!question) return;
+  answered += 1;
   const correct = index === question.answer;
   if (correct) {
     stability = Math.min(100, stability + 10);
@@ -291,6 +296,7 @@ function handleAnswer(index) {
 }
 
 function finishRun(success) {
+  window.TA_ARCADE_PERFORMANCE = {stability:Math.round(stability), correct:intel, answered, elapsed:Math.floor((Date.now()-runStartedAt)/1000)};
   paused = true;
   finishModal.classList.add('active');
   finishModal.setAttribute('aria-hidden', 'false');
