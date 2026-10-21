@@ -12,7 +12,7 @@
   <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
 
   <meta name="description" content="Search Teach Arcade for free classroom resources, games, tools, and topic pages." />
-  <link rel="canonical" href="https://teacharcade.com/search.html" />
+  <link rel="canonical" href="https://www.teacharcade.com/search.html" />
 
   <style>
     /* ===== Teach Arcade Smart Search (Premium-lite) ===== */
@@ -272,12 +272,12 @@
   </style>
   <meta property="og:title" content="Search | Teach Arcade" />
   <meta property="og:description" content="Search Teach Arcade for free classroom resources, games, tools, and topic pages." />
-  <meta property="og:url" content="https://teacharcade.com/search.html" />
-  <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+  <meta property="og:url" content="https://www.teacharcade.com/search.html" />
+  <meta property="og:image" content="https://www.teacharcade.com/assets/images/social/ta-social-card.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Search | Teach Arcade" />
   <meta name="twitter:description" content="Search Teach Arcade for free classroom resources, games, tools, and topic pages." />
-  <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+  <meta name="twitter:image" content="https://www.teacharcade.com/assets/images/social/ta-social-card.png" />
 
 </head>
 
@@ -380,9 +380,15 @@
 
     // Synonyms / expansions (keep light)
     const SYNONYMS = {
-      "ww2": ["world war ii","world war 2","wwii"],
-      "wwii": ["world war ii","world war 2","ww2"],
-      "world war 2": ["world war ii","wwii","ww2"],
+      "ww1": ["world war i","world war 1","world war one"],
+      "world war 1": ["world war i","wwi","ww1","world war one"],
+      "world war one": ["world war i","wwi","ww1","world war 1"],
+      "world war i": ["world war 1","world war one","wwi","ww1"],
+      "wwi": ["world war i","world war 1","world war one","ww1"],
+      "ww2": ["world war ii","world war 2","world war two","wwii"],
+      "wwii": ["world war ii","world war 2","world war two","ww2"],
+      "world war 2": ["world war ii","world war two","wwii","ww2"],
+      "world war two": ["world war ii","world war 2","wwii","ww2"],
       "bio": ["biology"],
       "ela": ["english language arts","language arts","english"]
     };
@@ -537,21 +543,22 @@
       else if (hasPhrase(desc, qNorm)) score = 420;
       else if (hasPhrase(url, qNorm)) score = 220;
 
-      // A whole-query alias is a weaker match than the words the visitor typed.
+      // A whole-query alias can bridge common spelling and numeral variants,
+      // such as "World War 1" and "World War I".
+      let aliasMatch = false;
       for (const alias of aliases){
-        if (hasPhrase(title, alias)) score = Math.max(score, 560);
-        else if (hasPhrase(subj, alias) || hasPhrase(tags, alias)) score = Math.max(score, 400);
-        else if (hasPhrase(desc, alias)) score = Math.max(score, 260);
+        if (hasPhrase(title, alias)) { score = Math.max(score, 560); aliasMatch = true; }
+        else if (hasPhrase(subj, alias) || hasPhrase(tags, alias)) { score = Math.max(score, 400); aliasMatch = true; }
+        else if (hasPhrase(desc, alias)) { score = Math.max(score, 260); aliasMatch = true; }
       }
 
-      // Partial queries require every meaningful word to appear in the item's
-      // title, subject/topic metadata, description, or keywords. Token boundaries
-      // prevent matches such as "art" in "party".
-      if (directTokens.length > 1){
-        const searchable = [title, subj, tags, desc].join(" ");
-        const allPresent = directTokens.every(token => hasPhrase(searchable, token));
-        if (!allPresent) return score >= 500 ? score : 0;
-      }
+      // Multiword intent must be supported together by one field. Previously,
+      // separate words could be assembled across a subject, title, and unrelated
+      // description, causing broad and misleading matches.
+      const directMatch = directTokens.length <= 1 || fields.slice(0, 4).some(field =>
+        directTokens.every(token => hasPhrase(field, token))
+      );
+      if (!directMatch && !aliasMatch) return 0;
       const weights = [180, 140, 110, 55, 20];
       const tokenScores = directTokens.map(token => {
         const index = fields.findIndex(field => hasPhrase(field, token));
@@ -645,51 +652,29 @@
       `;
     }
 
-    // Pinning logic:
-    // - only pin from currently-filtered results
-    // - prioritize topic + strong score
-    // - then resource + strong score
+    // Best matches use the same relevance score as the full results list.
+    // Keep the section limited to strong or decent matches, then rank by score
+    // so a directly relevant game can beat a weaker topic/resource match.
     function pickBestMatches(filtered, qInfo){
-      const qNorm = qInfo.norm;
-      if (!qNorm) return [];
+      if (!qInfo.norm) return [];
 
-      // “Strong match” threshold (tunable)
       const STRONG = 900;
-
+      const DECENT = 650;
       const strong = filtered.filter(r => r._score >= STRONG);
+      const pool = strong.length ? strong : filtered.filter(r => r._score >= DECENT);
 
-      // If none are "strong", still pin the best topic/resource if score is decent
-      const decent = filtered.filter(r => r._score >= 650);
-
-      const pool = strong.length ? strong : decent;
-
-      const isTopicStrong = (r) => String(r.type||"").toLowerCase() === "topic";
-      const isResourceStrong = (r) => String(r.type||"").toLowerCase() === "resource";
-
-      // Sort within pool for pin candidates:
-      // 1) Topic first
-      // 2) Then Resource
-      // 3) Then score desc
-      // 4) Then title
       const candidates = pool.slice().sort((a,b) => {
-        const at = String(a.type||"page").toLowerCase();
-        const bt = String(b.type||"page").toLowerCase();
-
-        const aPri = at === "topic" ? 3 : at === "resource" ? 2 : 1;
-        const bPri = bt === "topic" ? 3 : bt === "resource" ? 2 : 1;
-
-        if (bPri !== aPri) return bPri - aPri;
         if (b._score !== a._score) return b._score - a._score;
-        return String(a.title||"").localeCompare(String(b.title||""));
+        return String(a.title || "").localeCompare(String(b.title || ""));
       });
-
-      // pick up to 3
       const pinned = candidates.slice(0, 3);
 
-      // only show pin section if it's actually meaningful:
-      // - at least one topic/resource pinned OR a truly strong match exists
-      const meaningful = pinned.some(r => ["topic","resource"].includes(String(r.type||"").toLowerCase())) || strong.length > 0;
-      return meaningful ? pinned : [];
+      // Strong matches of any result type are useful. For decent matches, show
+      // the section only for searchable content types visitors can act on.
+      const actionable = pinned.some(r =>
+        ["topic","resource","game","tool","store"].includes(String(r.type || "").toLowerCase())
+      );
+      return (strong.length > 0 || actionable) ? pinned : [];
     }
 
     // ---------- main ----------
