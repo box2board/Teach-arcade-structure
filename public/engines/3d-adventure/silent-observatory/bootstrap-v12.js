@@ -1,0 +1,13 @@
+import "./config-v12.js";
+import "./seasons-mission.js";
+import "../adventure-runtime-v11.js";
+import "../world-builder-v11.js";
+import "../performance-v4.js";
+import "../difficulty-v9.js";
+import "../mission-v9.js";
+import "../exterior-progression-v10.js";
+import "../mission-entry-v10.js";
+import "../checkpoints-v9.js";
+import "../main-v11.js";
+import "../visual-system-v12.js";
+import "../touch-controls.js";
