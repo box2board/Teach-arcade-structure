@@ -8,10 +8,11 @@ const synonyms = html.match(/    const SYNONYMS = \{[\s\S]*?\n    \};/)?.[0];
 const boosts = html.match(/    const TYPE_BOOST = \{[^\n]+/)?.[0];
 const queryStops = html.match(/    const QUERY_STOP_WORDS = new Set\([\s\S]*?\n    \]\);/)?.[0];
 const scoring = html.match(/    function expandQuery\(normQ\)\{[\s\S]*?(?=\n    function computeTypeCounts)/)?.[0];
-assert.ok(normalize && synonyms && boosts && queryStops && scoring, "search ranking functions should be present");
+const bestMatches = html.match(/    function pickBestMatches\(filtered, qInfo\)\{[\s\S]*?(?=\n    \/\/ ---------- main ----------)/)?.[0];
+assert.ok(normalize && synonyms && boosts && queryStops && scoring && bestMatches, "search ranking functions should be present");
 
 const context = vm.createContext({});
-vm.runInContext(`${normalize}\n${synonyms}\n${boosts}\n${queryStops}\n${scoring}\nglobalThis.api={normalizeText,expandQuery,scoreRecord};`, context);
+vm.runInContext(`${normalize}\n${synonyms}\n${boosts}\n${queryStops}\n${scoring}\n${bestMatches}\nglobalThis.api={normalizeText,expandQuery,scoreRecord,pickBestMatches};`, context);
 const { normalizeText, expandQuery, scoreRecord, pickBestMatches } = context.api;
 const record = ({ title, description = "", tags = [], subject = "", type = "game", url = "/game/" }) => ({
   title, description, tags, subject, type, url,
