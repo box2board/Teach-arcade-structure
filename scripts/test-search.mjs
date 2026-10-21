@@ -8,11 +8,12 @@ const synonyms = html.match(/    const SYNONYMS = \{[\s\S]*?\n    \};/)?.[0];
 const boosts = html.match(/    const TYPE_BOOST = \{[^\n]+/)?.[0];
 const queryStops = html.match(/    const QUERY_STOP_WORDS = new Set\([\s\S]*?\n    \]\);/)?.[0];
 const scoring = html.match(/    function expandQuery\(normQ\)\{[\s\S]*?(?=\n    function computeTypeCounts)/)?.[0];
-assert.ok(normalize && synonyms && boosts && queryStops && scoring, "search ranking functions should be present");
+const bestMatches = html.match(/    function pickBestMatches\(filtered, qInfo\)\{[\s\S]*?(?=\n    \/\/ ---------- main ----------)/)?.[0];
+assert.ok(normalize && synonyms && boosts && queryStops && scoring && bestMatches, "search ranking functions should be present");
 
 const context = vm.createContext({});
-vm.runInContext(`${normalize}\n${synonyms}\n${boosts}\n${queryStops}\n${scoring}\nglobalThis.api={normalizeText,expandQuery,scoreRecord};`, context);
-const { normalizeText, expandQuery, scoreRecord } = context.api;
+vm.runInContext(`${normalize}\n${synonyms}\n${boosts}\n${queryStops}\n${scoring}\n${bestMatches}\nglobalThis.api={normalizeText,expandQuery,scoreRecord,pickBestMatches};`, context);
+const { normalizeText, expandQuery, scoreRecord, pickBestMatches } = context.api;
 const record = ({ title, description = "", tags = [], subject = "", type = "game", url = "/game/" }) => ({
   title, description, tags, subject, type, url,
   _titleNorm: normalizeText(title), _descNorm: normalizeText(description),
@@ -47,4 +48,28 @@ assert.equal(scoreRecord(record({ title: "Classroom Review Game" }), query("for"
 assert.ok(scoreRecord(record({ title: "Algebra Review Game", tags: ["keyword:linear equations"] }), query("algebra")) > 0,
   "new structured keyword metadata should participate in search");
 
-console.log("PASS: search excludes unmatched items, respects word boundaries and multiword intent, and supports aliases and structured keywords.");
+
+const wwiQuery = query("World war i");
+const trenchRun = record({
+  title: "WWI Trench Run | World War I Review Game",
+  description: "A World War I review game about trenches and the Treaty of Versailles.",
+  tags: ["topic:world-war-i", "format:game"],
+  type: "game",
+  url: "/arcade-review-games/social-studies/wwi-trench-run/"
+});
+const trenchScore = scoreRecord(trenchRun, wwiQuery);
+assert.ok(trenchScore >= 900, "a fully indexed Trench Run title should be a strong World War I match");
+const rankedCandidates = [
+  { title: "World War I Topic", type: "topic", _score: 1800 },
+  { title: "War Horse Guide", type: "resource", _score: 1500 },
+  { title: "War Horse Interactive Guide", type: "resource", _score: 1400 },
+  { title: trenchRun.title, type: "game", _score: 1300 },
+  { title: "Unrelated Game", type: "game", _score: 500 }
+];
+const bestMatches = pickBestMatches(rankedCandidates, wwiQuery);
+assert.ok(bestMatches.some(item => item.title === trenchRun.title),
+  "a strong game within the relevance band should appear in Best matches despite resource-heavy results");
+assert.ok(!bestMatches.some(item => item.title === "Unrelated Game"),
+  "a weak unrelated game must not be promoted into Best matches");
+
+console.log("PASS: search relevance, aliases, multiword intent, and strong game visibility are covered.");

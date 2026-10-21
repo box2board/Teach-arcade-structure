@@ -653,8 +653,8 @@
     }
 
     // Best matches use the same relevance score as the full results list.
-    // Keep the section limited to strong or decent matches, then rank by score
-    // so a directly relevant game can beat a weaker topic/resource match.
+    // A strongly relevant game stays visible when several topic/resource pages
+    // score slightly higher, while weak game matches cannot displace them.
     function pickBestMatches(filtered, qInfo){
       if (!qInfo.norm) return [];
 
@@ -669,8 +669,21 @@
       });
       const pinned = candidates.slice(0, 3);
 
-      // Strong matches of any result type are useful. For decent matches, show
-      // the section only for searchable content types visitors can act on.
+      const bestScore = candidates[0]?._score || 0;
+      const bestStrongGame = candidates.find(r =>
+        String(r.type || "").toLowerCase() === "game" &&
+        r._score >= STRONG &&
+        r._score >= bestScore * 0.65
+      );
+      if (bestStrongGame && !pinned.includes(bestStrongGame)){
+        if (pinned.length < 3) pinned.push(bestStrongGame);
+        else pinned[pinned.length - 1] = bestStrongGame;
+        pinned.sort((a,b) => {
+          if (b._score !== a._score) return b._score - a._score;
+          return String(a.title || "").localeCompare(String(b.title || ""));
+        });
+      }
+
       const actionable = pinned.some(r =>
         ["topic","resource","game","tool","store"].includes(String(r.type || "").toLowerCase())
       );
