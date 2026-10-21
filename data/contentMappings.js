@@ -1,5 +1,10 @@
 export const contentMappings = [
   {
+    match: { canonicalUrl: "/arcade-review-games/science/silent-observatory/" },
+    subjects: ["science", "astronomy", "earth-space-science"],
+    topics: ["earth-sun-moon-system", "earth-sun-moon-systems"],
+  },
+  {
     match: { id: "adventure-review-wwii" },
     subjects: ["us-history"],
     topics: ["world-war-ii"],
