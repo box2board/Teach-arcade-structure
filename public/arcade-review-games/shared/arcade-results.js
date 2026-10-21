@@ -74,6 +74,6 @@ function check(){
 }
 function schedule(){if(scheduled)return;scheduled=true;setTimeout(check,120)}
 const observer=new MutationObserver(schedule);observer.observe(document.documentElement,{subtree:true,childList:true,characterData:true,attributes:true,attributeFilter:['hidden','style','class','aria-hidden']});
-schedule();setInterval(check,700);
+schedule();
 window.TAArcadeResults={download:downloadReport};
 })();

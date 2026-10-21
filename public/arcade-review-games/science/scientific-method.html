@@ -603,7 +603,10 @@ function update() {
   }
 
   // Win condition
-  if (quizAnswered >= 10) winMessage.style.display = "block";
+  if (quizAnswered >= 10 && winMessage.style.display !== "block") {
+    winMessage.style.display = "block";
+    window.TA_ARCADE_PERFORMANCE = { score, correct: quizCorrect, answered: quizAnswered, total: 10, accuracy: Math.round((quizCorrect / Math.max(1, quizAnswered)) * 100), elapsed: Math.floor((Date.now() - gameStartedAt) / 1000) };
+  }
 
   scoreEl.textContent = score;
 
