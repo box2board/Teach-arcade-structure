@@ -1,25 +1,16 @@
 {
+  "buildCommand": "node public/dev/colony-builder/build-preview.mjs",
+  "outputDirectory": "public/dev/colony-builder",
+  "framework": null,
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "Strict-Transport-Security", "value": "max-age=31536000; includeSubDomains; preload" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
       ]
     }
-  ],
-  "redirects": [
-    { "source": "/arcade-review-games/category-clash/", "destination": "/review-lab/category-clash/", "permanent": true },
-    { "source": "/arcade-review-games/category-clash/french-revolution/", "destination": "/review-lab/category-clash/french-revolution/", "permanent": true },
-    { "source": "/arcade-review-games/category-clash/:path*", "destination": "/review-lab/category-clash/:path*", "permanent": true }
-  ],
-  "rewrites": [
-    { "source": "/assets/styles.css", "destination": "/assets/styles-visibility-pass.css" },
-    { "source": "/escape/css/hub.css", "destination": "/escape/css/hub-visibility-pass.css" }
-  ],
-  "outputDirectory": "public",
-  "functions": {
-    "api/resources.js": { "maxDuration": 10 }
-  }
+  ]
 }
