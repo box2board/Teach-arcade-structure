@@ -1,0 +1,10 @@
+/* Non-blocking authoring checks and temporary playtest entry points. */
+(()=>{
+ const M=window.TALevelEditorModel;
+ const overlaps=(a,b)=>a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y;
+ function terrainHit(l,b){const t=l.tileSize,g=l.layers.terrain;for(let y=Math.max(0,Math.floor(b.y/t));y<=Math.min(g.length-1,Math.floor((b.y+b.h-.01)/t));y++)for(let x=Math.max(0,Math.floor(b.x/t));x<=Math.floor((b.x+b.w-.01)/t);x++)if(g[y]?.[x])return true;return false;}
+ function blocked(l,b){if(b.x<0||b.y<0||b.x+b.w>l.world.width||b.y+b.h>l.world.height||terrainHit(l,b)||terrainHit({...l,layers:{terrain:l.layers.hazards||[]}},b))return true;if(['platforms','movingPlatforms','breakables','gates','abilityHazards','movers'].some(key=>(l[key]||[]).some(o=>overlaps(b,{w:32,h:32,...o}))))return true;for(const slope of l.slopes||[]){const x=Math.max(slope.x1,Math.min(slope.x2,b.x+b.w/2));if(b.x+b.w>slope.x1&&b.x<slope.x2&&b.y+b.h>slope.y1+(x-slope.x1)*(slope.y2-slope.y1)/(slope.x2-slope.x1))return true;}return false;}
+ function issues(doc){const l=doc.level,out=[];for(const key of ['spawn','finish','movers','collectibles','questionPoints','abilityItems','platforms','movingPlatforms']){const items=['spawn','finish'].includes(key)?[l[key]]:l[key]||[];items.forEach((o,i)=>{const b=M.bounds(key,o);if(terrainHit(l,b))out.push({key,i,message:(key==='spawn'?'Start':key==='finish'?'Finish':key+' '+(i+1))+' overlaps painted terrain. Move it or erase terrain.'});if(key==='movers'&&o.attack==='projectile'&&(o.projectileDirection==='aim'))out.push({key,i,message:'Enemy '+(i+1)+' aims at the player. Check that there is room to dodge.'});});}return out;}
+ function testSpawn(doc,anchor){const l=doc.level;for(const dx of [-64,-96,-128,64,96,0])for(let rise=0;rise<=160;rise+=16){const p={x:Math.round(anchor.x+dx),y:Math.round(anchor.y-38-rise),w:26,h:38};if(!blocked(l,p))return{x:p.x,y:p.y};}throw Error('No clear playtest start near this selection. Move the selection or clear space beside it.');}
+ window.TABuildChecks={issues,testSpawn,blocked};
+})();
