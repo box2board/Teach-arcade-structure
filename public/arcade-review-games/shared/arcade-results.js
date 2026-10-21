@@ -31,7 +31,7 @@ function downloadReport(title,lines){
  a.href=url;a.download=safeName(title)+'-results.txt';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
 }
 function actionBar(screen,replay,customLines){
- if(screen.querySelector(':scope > .ta-result-actions'))return;
+ if(screen.querySelector('.ta-result-actions'))return;
  const bar=document.createElement('div');bar.className='ta-result-actions';bar.setAttribute('aria-label','Results actions');
  const clean=screen.cloneNode(true);clean.querySelectorAll('.ta-result-actions,button,a,input,select,textarea').forEach(n=>n.remove());
  const content=normalizeText(clean.innerText||clean.textContent||'');
@@ -39,8 +39,10 @@ function actionBar(screen,replay,customLines){
  const title=normalizeText(document.title.replace(/\s*[|·]\s*Teach Arcade.*$/i,'').replace(/\s*-\s*Teach Arcade.*$/i,''));
  const dl=document.createElement('button');dl.type='button';dl.className='ta-result-download';dl.textContent='Download results';dl.addEventListener('click',()=>downloadReport(title,lines));
  bar.append(dl);
- if(replay){replay.textContent='Play Again';replay.classList.add('ta-result-replay');replay.setAttribute('aria-label','Play this game again');bar.append(replay)}
- else {const again=document.createElement('button');again.type='button';again.className='ta-result-replay';again.textContent='Play Again';again.addEventListener('click',()=>location.reload());bar.append(again)}
+ const again=document.createElement('button');again.type='button';again.className='ta-result-replay';again.textContent='Play Again';
+ if(replay){replay.hidden=true;replay.setAttribute('aria-hidden','true');again.addEventListener('click',()=>replay.click())}
+ else again.addEventListener('click',()=>location.reload());
+ bar.append(again);
  const back=document.createElement('a');back.href=arcade;back.textContent='Return to Arcade';bar.append(back);
  const target=screen.querySelector('dialog,.modal-content,.card')||screen;target.append(bar);
 }
