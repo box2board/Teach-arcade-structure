@@ -652,42 +652,75 @@
       `;
     }
 
-    // Best matches use the same relevance score as the full results list.
-    // A strongly relevant game stays visible when several topic/resource pages
-    // score slightly higher, while weak game matches cannot displace them.
+    // Collapse duplicate routes and resource format pages after scoring, so the
+    // version that best matches the query becomes the representative result.
+    function getResultFamilyKey(rec){
+      const type = String(rec.type || "page").toLowerCase();
+      let path = String(rec.url || "").split(/[?#]/)[0].toLowerCase().replace(/\/+$/, "");
+      if (type === "resource"){
+        path = path.replace(/\/(?:interactive|print|teacher|worksheet|answer-keys?|pdf|download)$/i, "");
+      }
+      return `${type}|${path || "/"}`;
+    }
+
+    function dedupeSearchResults(list){
+      const seenFamilies = new Set();
+      const seenTitles = new Set();
+      return list.filter(rec => {
+        const type = String(rec.type || "page").toLowerCase();
+        const titleKey = `${type}|${normalizeText(rec.title || "")}`;
+        const familyKey = getResultFamilyKey(rec);
+        if (seenTitles.has(titleKey) || seenFamilies.has(familyKey)) return false;
+        seenTitles.add(titleKey);
+        seenFamilies.add(familyKey);
+        return true;
+      });
+    }
+
+    // Broad topic searches surface the strongest result from each content type.
+    // Explicit type requests such as "WWI game" can show several games/resources.
     function pickBestMatches(filtered, qInfo){
       if (!qInfo.norm) return [];
 
-      const STRONG = 900;
       const DECENT = 650;
-      const strong = filtered.filter(r => r._score >= STRONG);
-      const pool = strong.length ? strong : filtered.filter(r => r._score >= DECENT);
-
-      const candidates = pool.slice().sort((a,b) => {
+      const candidates = filtered.filter(r => r._score >= DECENT).slice().sort((a,b) => {
         if (b._score !== a._score) return b._score - a._score;
         return String(a.title || "").localeCompare(String(b.title || ""));
       });
-      const pinned = candidates.slice(0, 3);
+      if (!candidates.length) return [];
 
-      const bestScore = candidates[0]?._score || 0;
-      const bestStrongGame = candidates.find(r =>
-        String(r.type || "").toLowerCase() === "game" &&
-        r._score >= STRONG &&
-        r._score >= bestScore * 0.65
-      );
-      if (bestStrongGame && !pinned.includes(bestStrongGame)){
-        if (pinned.length < 3) pinned.push(bestStrongGame);
-        else pinned[pinned.length - 1] = bestStrongGame;
-        pinned.sort((a,b) => {
-          if (b._score !== a._score) return b._score - a._score;
-          return String(a.title || "").localeCompare(String(b.title || ""));
-        });
+      const typeIntent = {
+        game:"game", games:"game", play:"game", playable:"game", arcade:"game",
+        activity:"game", activities:"game",
+        resource:"resource", resources:"resource", worksheet:"resource",
+        worksheets:"resource", printable:"resource", lesson:"resource", lessons:"resource",
+        tool:"tool", tools:"tool", topic:"topic", topics:"topic", store:"store", shop:"store"
+      };
+      const requestedTypes = new Set(qInfo.norm.split(" ").map(token => typeIntent[token]).filter(Boolean));
+
+      let pinned;
+      if (requestedTypes.size){
+        pinned = candidates.filter(r => requestedTypes.has(String(r.type || "page").toLowerCase())).slice(0, 3);
+      } else {
+        const bestScore = candidates[0]._score;
+        const competitive = candidates.filter(r => r._score >= Math.max(DECENT, bestScore * 0.45));
+        pinned = [];
+        for (const rec of competitive){
+          const type = String(rec.type || "page").toLowerCase();
+          if (pinned.some(item => String(item.type || "page").toLowerCase() === type)) continue;
+          pinned.push(rec);
+          if (pinned.length === 3) break;
+        }
+        for (const rec of candidates){
+          if (pinned.length === 3) break;
+          if (!pinned.includes(rec)) pinned.push(rec);
+        }
       }
 
       const actionable = pinned.some(r =>
         ["topic","resource","game","tool","store"].includes(String(r.type || "").toLowerCase())
       );
-      return (strong.length > 0 || actionable) ? pinned : [];
+      return actionable ? pinned : [];
     }
 
     // ---------- main ----------
@@ -803,7 +836,7 @@
             return out;
           })();
 
-          setChipCounts(computeTypeCounts(base));
+          setChipCounts(computeTypeCounts(dedupeSearchResults(base)));
           return;
         }
 
@@ -813,7 +846,11 @@
 
         // score everything
         const scored = prepared.map(r => ({ ...r, _score: scoreRecord(r, qInfo) }))
-          .filter(r => r._score >= 145);
+          .filter(r => r._score >= 145)
+          .sort((a,b) => {
+            if (b._score !== a._score) return b._score - a._score;
+            return String(a.title || "").localeCompare(String(b.title || ""));
+          });
 
         // counts should ignore type chip but respect subject/grade filters
         const baseForCounts = (function(){
@@ -822,12 +859,12 @@
           let out = scored;
           if (subjKey) out = out.filter(r => (r._subjectKey||"") === subjKey);
           if (gradeKey) out = out.filter(r => (r._gradeKey||"") === gradeKey);
-          return out;
+          return dedupeSearchResults(out);
         })();
         setChipCounts(computeTypeCounts(baseForCounts));
 
-        // apply all filters (including active type)
-        let filtered = applyFilters(scored);
+        // apply filters first, then collapse duplicate routes within those filters.
+        let filtered = dedupeSearchResults(applyFilters(scored));
 
         // sort
         const sortMode = sortSel.value || "relevance";
