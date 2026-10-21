@@ -110,6 +110,7 @@ export const contentMappings = [
     match: { titleIncludes: "Schindler" },
     subjects: ["world-history"],
     topics: ["world-war-ii"],
+    keywords: ["holocaust", "Nazi persecution", "genocide", "Oskar Schindler"],
   },
   {
     match: { id: "wwi" },
