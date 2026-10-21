@@ -230,6 +230,27 @@ function showReport(){
 function showCompletion(){
   const results=adventureResults(map,state),learning=reviewSummary(state.review);
   const snapshot=buildReport(map,content,state,elapsed);
+  if(window.TAArcadeResults){
+    if(dialog.open)dialog.close();
+    window.TAArcadeResults.show({
+      game:document.querySelector('h1')?.textContent||map.title,outcome:map.completion?.title||'Adventure complete',mode:snapshot.difficulty,
+      metrics:[
+        {label:'Total points',value:String(results.totalPoints)},
+        {label:'First-try accuracy',value:snapshot.firstTryAccuracy===null?'No answers':snapshot.firstTryAccuracy+'%'},
+        {label:'Questions completed',value:learning.completed+' / '+learning.total},
+        {label:'Time',value:Math.floor(elapsed/60)+'m '+Math.floor(elapsed%60)+'s'},
+        {label:'Treasure found',value:results.treasureFound+' / '+results.treasureTotal},
+        {label:'Moves',value:String(state.moves)}
+      ],
+      details:[map.completion?.summary||'You completed the adventure.',...reportSummary(snapshot).slice(3)],
+      reportLines:['QUESTION RECORD',...snapshot.questions.flatMap((q,i)=>[
+        (i+1)+'. '+q.chest+': '+q.prompt,
+        'Status: '+(q.correct?'Correct':'Not completed')+' · Attempts: '+q.attempts,
+        ...(q.responses.length?['Responses: '+q.responses.join(' → ')]:[])
+      ])]
+    },()=>startMode(map.mode));
+    return;
+  }
   popup(map.completion?.label||'QUEST COMPLETE',map.completion?.title||'Adventure complete',[
     map.completion?.summary||'You completed the adventure.',
     'Treasure found: '+results.treasureFound+' / '+results.treasureTotal+' · Treasure bonus: +'+results.bonusPoints+' points.',
