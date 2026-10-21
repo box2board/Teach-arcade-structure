@@ -8,7 +8,7 @@ const synonyms = html.match(/    const SYNONYMS = \{[\s\S]*?\n    \};/)?.[0];
 const boosts = html.match(/    const TYPE_BOOST = \{[^\n]+/)?.[0];
 const queryStops = html.match(/    const QUERY_STOP_WORDS = new Set\([\s\S]*?\n    \]\);/)?.[0];
 const scoring = html.match(/    function expandQuery\(normQ\)\{[\s\S]*?(?=\n    function computeTypeCounts)/)?.[0];
-const searchHelpers = html.match(/    function getResultFamilyKey\\(rec\\)\\{[\\s\\S]*?(?=\\n    \\/\\/ ---------- main ----------)/)?.[0];
+const searchHelpers = html.match(/    function getResultFamilyKey\(rec\)\{[\s\S]*?(?=\n    \/\/ ---------- main ----------)/)?.[0];
 assert.ok(normalize && synonyms && boosts && queryStops && scoring && searchHelpers, "search ranking functions should be present");
 
 const context = vm.createContext({});
