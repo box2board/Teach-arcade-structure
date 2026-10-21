@@ -384,12 +384,15 @@
       "wwii": ["world war ii","world war 2","ww2"],
       "world war 2": ["world war ii","wwii","ww2"],
       "bio": ["biology"],
-      "ela": ["english language arts","language arts","english"],
-      "genocide": ["holocaust"],
-      "holocaust": ["genocide","world war ii","wwii","ww2"]
+      "ela": ["english language arts","language arts","english"]
     };
 
     const TYPE_BOOST = { topic: 90, resource: 80, game: 70, tool: 60, store: 40, page: 20 };
+    const QUERY_STOP_WORDS = new Set([
+      "a", "about", "and", "arcade", "as", "at", "class", "classroom", "for",
+      "free", "from", "in", "lesson", "of", "on", "ready", "students", "teach",
+      "teacher", "the", "this", "to", "with", "your"
+    ]);
 
     // ---------- utilities ----------
     function escapeHtml(s){
@@ -508,108 +511,59 @@
 
     // ---------- query expansion ----------
     function expandQuery(normQ){
-      const variants = new Set();
-      const tokens = new Set();
-      if (!normQ) return { variants: [], tokens };
-
-      variants.add(normQ);
-      normQ.split(" ").filter(Boolean).forEach(tok => tokens.add(tok));
-
-      // phrase expansions
-      for (const key of Object.keys(SYNONYMS)){
-        const k = normalizeText(key);
-        if (!k) continue;
-        if ((" " + normQ + " ").includes(" " + k + " ")){
-          (SYNONYMS[key] || []).forEach(v => {
-            const nv = normalizeText(v);
-            if (nv) variants.add(nv);
-          });
-        }
-      }
-
-      // token expansions
-      for (const tok of Array.from(tokens)){
-        const syn = SYNONYMS[tok] || SYNONYMS[tok.toLowerCase()];
-        if (syn && syn.length){
-          syn.forEach(v => {
-            const nv = normalizeText(v);
-            if (nv){
-              variants.add(nv);
-              nv.split(" ").forEach(t => { if (t) tokens.add(t); });
-            }
-          });
-        }
-      }
-
-      // plural -> singular (light)
-      Array.from(tokens).forEach(t => {
-        if (t.endsWith("s") && t.length > 3) tokens.add(t.slice(0, -1));
-      });
-
-      return { variants: Array.from(variants), tokens };
+      const variants = (SYNONYMS[normQ] || []).map(normalizeText).filter(Boolean);
+      return { variants, tokens: new Set(normQ.split(" ").filter(token => token && !QUERY_STOP_WORDS.has(token))) };
     }
 
     // ---------- scoring ----------
     function scoreRecord(rec, qInfo){
       const qNorm = qInfo.norm;
       if (!qNorm) return 0;
-
-      const type = String(rec.type || "page").toLowerCase();
-      const boost = TYPE_BOOST[type] || 0;
-
       const title = rec._titleNorm || "";
       const desc  = rec._descNorm  || "";
       const url   = rec._urlNorm   || "";
       const tags  = rec._tagsNorm  || "";
       const subj  = rec._subjectNorm || "";
+      const fields = [title, subj, tags, desc, url];
+      const hasPhrase = (field, phrase) => (` ${field} `).includes(` ${phrase} `);
+      const directTokens = Array.from(qInfo.tokens);
+      const aliases = qInfo.variants || [];
+      if (!directTokens.length && !aliases.length) return 0;
 
       let score = 0;
+      if (title === qNorm) score = 1200;
+      else if (hasPhrase(title, qNorm)) score = 900;
+      else if (hasPhrase(subj, qNorm) || hasPhrase(tags, qNorm)) score = 640;
+      else if (hasPhrase(desc, qNorm)) score = 420;
+      else if (hasPhrase(url, qNorm)) score = 220;
 
-      // Strong phrase hits
-      if (title === qNorm) score += 1200;
-      if (title.includes(qNorm)) score += 650;
-      if (tags.includes(qNorm)) score += 320;
-      if (subj.includes(qNorm)) score += 240;
-      if (desc.includes(qNorm)) score += 260;
-      if (url.includes(qNorm))  score += 180;
-
-      // Variant phrase hits
-      for (const v of qInfo.variants){
-        if (!v || v === qNorm) continue;
-        if (title.includes(v)) score += 260;
-        if (tags.includes(v))  score += 140;
-        if (desc.includes(v))  score += 120;
-        if (url.includes(v))   score += 90;
+      // A whole-query alias is a weaker match than the words the visitor typed.
+      for (const alias of aliases){
+        if (hasPhrase(title, alias)) score = Math.max(score, 560);
+        else if (hasPhrase(subj, alias) || hasPhrase(tags, alias)) score = Math.max(score, 400);
+        else if (hasPhrase(desc, alias)) score = Math.max(score, 260);
       }
 
-      // Token hits
-      let hitsTitle = 0, hitsDesc = 0, hitsTags = 0, hitsUrl = 0, hitsSubj = 0;
-      for (const tok of qInfo.tokens){
-        if (!tok || tok.length < 2) continue;
-        if (title.includes(tok)) hitsTitle++;
-        if (desc.includes(tok)) hitsDesc++;
-        if (tags.includes(tok)) hitsTags++;
-        if (url.includes(tok)) hitsUrl++;
-        if (subj.includes(tok)) hitsSubj++;
+      // Partial queries require every meaningful word to appear in the item's
+      // title, subject/topic metadata, description, or keywords. Token boundaries
+      // prevent matches such as "art" in "party".
+      if (directTokens.length > 1){
+        const searchable = [title, subj, tags, desc].join(" ");
+        const allPresent = directTokens.every(token => hasPhrase(searchable, token));
+        if (!allPresent) return score >= 500 ? score : 0;
       }
-      score += hitsTitle * 70;
-      score += hitsTags  * 55;
-      score += hitsSubj  * 45;
-      score += hitsDesc  * 30;
-      score += hitsUrl   * 15;
+      const weights = [180, 140, 110, 55, 20];
+      const tokenScores = directTokens.map(token => {
+        const index = fields.findIndex(field => hasPhrase(field, token));
+        return index < 0 ? 0 : weights[index];
+      });
+      if (directTokens.length === 1 && tokenScores[0] === 0 && !aliases.length) return 0;
+      score += tokenScores.reduce((sum, value) => sum + value, 0);
 
-      // “All tokens present” bonus
-      const tokenCount = Array.from(qInfo.tokens).filter(t => t.length >= 2).length;
-      if (tokenCount >= 2){
-        const allPresent = Array.from(qInfo.tokens).every(t => (title.includes(t) || desc.includes(t) || tags.includes(t)));
-        if (allPresent) score += 180;
-      }
-
-      // Small internal boost
-      const isExternal = /^https?:\/\//i.test(String(rec.url || ""));
-      if (!isExternal) score += 30;
-
-      score += boost;
+      // Small type preference only applies after a real text match.
+      if (score <= 0) return 0;
+      const type = String(rec.type || "page").toLowerCase();
+      score += Math.min(TYPE_BOOST[type] || 0, 45);
       return score;
     }
 
@@ -651,7 +605,6 @@
         const metaBits = [];
         if (subjLabel) metaBits.push(`<span>Subject: ${escapeHtml(subjLabel)}</span>`);
         if (r._gradeKey) metaBits.push(`<span>Grade: ${escapeHtml(r._gradeKey)}</span>`);
-        if (r.source) metaBits.push(`<span>Source: ${escapeHtml(r.source)}</span>`);
 
         return `
           <a class="result" href="${escapeHtml(r.url)}">
@@ -862,7 +815,7 @@
 
         // score everything
         const scored = prepared.map(r => ({ ...r, _score: scoreRecord(r, qInfo) }))
-          .filter(r => r._score > 0);
+          .filter(r => r._score >= 145);
 
         // counts should ignore type chip but respect subject/grade filters
         const baseForCounts = (function(){
@@ -892,7 +845,7 @@
           });
         }
 
-        const top = filtered.slice(0, 80);
+        const top = filtered.slice(0, 25);
 
         if (!top.length){
           statusEl.textContent = `No results for “${q}”.`;
@@ -917,7 +870,7 @@
 
         const pinnedKeys = new Set(pinned.map(r => String(r.url||"") + "||" + String(r.title||"")));
         const rest = top.filter(r => !pinnedKeys.has(String(r.url||"") + "||" + String(r.title||"")))
-                        .slice(0, 60);
+                        .slice(0, 22);
 
         allWrap.style.display = "block";
         renderListInto(resultsEl, rest, qInfo);
