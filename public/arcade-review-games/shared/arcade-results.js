@@ -14,7 +14,7 @@
     {id:'volcano', title:'Volcano Ascent', route:'science/volcano-ascent/', kind:'platform', modes:difficulties},
     {id:'moon', title:'Moon Mission Run', route:'science/moon-mission-run.html', kind:'platform', modes:difficulties},
     {id:'cells', title:'Concept Stack: Cells', route:'science/concept-stack-cells/', kind:'cells', screen:'#gameover-modal', replay:'#replay-button', modes:['Middle School','High School'].flatMap(tier => ['Slow','Normal','Fast'].flatMap(speed => ['Off','On'].map(mis => `${tier} · ${speed} · Misconceptions ${mis}`)))},
-    {id:'maze', title:'Scientific Method Maze', route:'science/scientific-method.html', kind:'maze', screen:'#winMessage', modes:['Maze']},
+    {id:'maze', title:'Scientific Method Maze', route:'science/scientific-method.html', kind:'maze', screen:'#endLayer', replay:'#playAgain', modes:difficulties},
     {id:'algebra', title:'Algebra City Run', route:'math/algebra-city-run.html', kind:'platform', modes:difficulties},
     {id:'slope', title:'Slope Street Sprint', route:'math/slope-street-sprint.html', kind:'platform', modes:difficulties},
     {id:'racer', title:'Math Track Racer', route:'math/math-track-racer.html', kind:'racer', screen:'#overlay', replay:'#btnStart', modes:['Mixed','Addition','Subtraction','Multiplication','Division'].flatMap(mode => ['Primary','Elementary','Upper Elementary','Middle'].map(level => `${mode} · ${level}`))},
@@ -118,6 +118,7 @@
     if (game.kind==='survey') return $('#reviewMode')?.checked ? 'Classroom review' : 'Survey';
     if (game.kind==='cells') return `${selected('#tier-select')} · ${selected('#speed-select')} · Misconceptions ${$('#misconception-toggle')?.checked ? 'On' : 'Off'}`;
     if (game.kind==='racer') return `${selected('#modeSelect')} · ${selected('#difficultySelect')}`;
+    if (game.kind==='maze') return selected('#difficulty');
     return game.modes[0];
   }
   function read(game, screen) {
@@ -143,8 +144,8 @@
       const missed=[...screen.querySelectorAll('#missed-list li')].map(row => text(row.textContent));
       if (missed.length) details.push('Prompts to revisit:',...missed);
     } else if (game.kind==='maze') {
-      outcome='Maze complete';
-      metrics=[metric('Score',data.score),metric('Accuracy',data.accuracy+'%'),metric('Questions answered',`${data.answered} / ${data.total}`),metric('Time',data.elapsed+' sec')];
+      outcome=value('#endTitle'); details=[value('#endText')];
+      metrics=[metric('Score',data.score),metric('Accuracy',data.answered ? Math.round(data.correct/data.answered*100)+'%' : 'No questions answered'),metric('Correct answers',`${data.correct ?? 0} / ${data.answered ?? 0}`),metric('Stations completed',`${data.stations ?? 0} / 5`),metric('Evidence collected',`${data.evidence ?? 0} / ${data.evidenceTotal ?? 0}`),metric('Time',`${data.elapsed ?? 0} sec`)];
     } else if (game.kind==='racer') {
       outcome='Race complete';
       metrics=[metric('Score',data.score),metric('Accuracy',data.answered ? Math.round(data.correct/data.answered*100)+'%' : 'No answers'),metric('Correct answers',`${data.correct ?? 0} / ${data.answered ?? 0}`),metric('Best streak',data.bestStreak ?? 0),metric('Missed questions',data.missed ?? 0),metric('Time','60 sec')];

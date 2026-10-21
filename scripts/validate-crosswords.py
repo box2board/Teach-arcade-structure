@@ -36,7 +36,9 @@ def main():
     assert {r['id'] for r in catalog}==set(content)
     assert len({r['id'] for r in all_catalog})==len(all_catalog)
     assert {r['id'] for r in all_catalog}==set(m.read_content())
-    html=(m.BASE/'index.html').read_text();assert '<iframe' not in html
+    html=(m.BASE/'crosswords'/'index.html').read_text();hub=(m.BASE/'index.html').read_text();assert '<iframe' not in html
+    assert not re.search(r'class="crossword-card"',hub)
+    assert 'href="/print-play-games/crosswords/"' in hub
     checked=[];totalpages=0;mincell=100;maxthumb=0
     for r in catalog:
         assert hashlib.sha256((root/r['source']).read_bytes()).hexdigest()==r['sourceSha256'],'Source changed'
@@ -63,9 +65,10 @@ def main():
             assert thumb.stat().st_size<100_000;maxthumb=max(maxthumb,thumb.stat().st_size)
         assert r['pdfs']['full'] in html;totalpages+=12;checked.append(r['id'])
     # All local hub href/src assets resolve, including generated choices.
-    for url in re.findall(r'(?:href|src)="([^"]+)"',html):
-        if url.startswith('/'):
-            path=m.path_url(url.split('?')[0].split('#')[0]);assert path.is_file() or (path/'index.html').is_file(),url
+    for page in (html,hub):
+        for url in re.findall(r'(?:href|src)="([^"]+)"',page):
+            if url.startswith('/'):
+                path=m.path_url(url.split('?')[0].split('#')[0]);assert path.is_file() or (path/'index.html').is_file(),url
     report={'status':'passed','topics':len(checked),'packages':len(checked),'pdfs':len(checked)*4,'previews':len(checked)*3,'pdfPages':totalpages,'minimumCellPoints':round(mincell,2),'maximumThumbnailBytes':maxthumb,'checks':['cumulative 10/15/20 vocabulary','unique answers and nonblank clues','all entries placed','independent maximal-run comparison','connected crossings','printed glyph and numbering checks','no student answer glyphs','complete key glyphs','Letter page size and text bounds','2/2/2/6 page counts','exact combined rendering/order','exact thumbnail/PDF match','all hub href/src assets resolve','unique resource IDs','source SHA-256 freshness']}
     report['subjects']=[m.SUBJECTS[slug]['subject'] for slug in subjects]
     destination=(root/m.SUBJECTS[args.subject]['inventory']).parent/'validation.json' if args.subject else root/'docs/crosswords/all-subjects-validation.json'

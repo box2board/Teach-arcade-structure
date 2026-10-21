@@ -10,6 +10,11 @@ const ROOT = path.join(__dirname, "..");
 const PUBLIC_DIR = path.join(ROOT, "public");
 const DATA_DIR = path.join(ROOT, "data");
 const OUT_FILE = path.join(PUBLIC_DIR, "search-index.json");
+const KEYWORD_NOISE = new Set([
+  "a", "about", "and", "arcade", "as", "at", "class", "classroom", "for",
+  "free", "from", "in", "lesson", "of", "on", "ready", "students", "teach",
+  "teacher", "the", "this", "to", "with", "your"
+]);
 
 // ---------------- helpers ----------------
 function slugify(s) {
@@ -161,6 +166,34 @@ async function readSitemapPaths() {
   return out;
 }
 
+function contentItemToRecord(x) {
+  if (!x || !x.title || !x.canonicalUrl) return null;
+  const subjects = Array.isArray(x.subjects) ? x.subjects : [];
+  const topics = Array.isArray(x.topics) ? x.topics : [];
+  const keywords = (Array.isArray(x.keywords) ? x.keywords : []).filter((value) => {
+    const words = slugify(value).split("-").filter(Boolean);
+    return words.some((word) => !KEYWORD_NOISE.has(word));
+  });
+  const typeMap = {
+    game: "game", tool: "tool", simulation: "game", "escape-room": "game",
+    interactive: "game", "movie-guide": "resource", resource: "resource"
+  };
+  return {
+    title: String(x.title).trim().replace(/\s*\|\s*Teach Arcade\s*$/i, ""),
+    url: toInternalOrExternal(x.canonicalUrl),
+    type: typeMap[String(x.contentType || "").toLowerCase()] || "resource",
+    description: String(x.blurb || "").trim(),
+    subject: subjects.join(" "),
+    tags: dedupe([
+      ...subjects.map((v) => `subject:${slugify(v)}`),
+      ...topics.map((v) => `topic:${slugify(v)}`),
+      ...keywords.map((v) => `keyword:${String(v).trim()}`),
+      ...tagsFromPath(x.canonicalUrl)
+    ]),
+    source: "content-index"
+  };
+}
+
 // ---------------- original site manifests ----------------
 
 function manifestToRecord(x, defaultType) {
@@ -215,16 +248,18 @@ async function main() {
   const gamesManifest = await readJsonIfExists(path.join(DATA_DIR, "games.json"), []);
   const toolsManifest = await readJsonIfExists(path.join(DATA_DIR, "tools.json"), []);
   const storeManifest = await readJsonIfExists(path.join(DATA_DIR, "store-items.json"), []);
+  const contentIndex = await readJsonIfExists(path.join(DATA_DIR, "contentIndex.json"), []);
 
   const manifestRecords = [
+    ...contentIndex.map(contentItemToRecord).filter(Boolean),
     ...gamesManifest.map((x) => manifestToRecord(x, "game")).filter(Boolean),
     ...toolsManifest.map((x) => manifestToRecord(x, "tool")).filter(Boolean),
     ...storeManifest.map((x) => manifestToRecord(x, "store")).filter(Boolean)
   ];
 
-  // 4) Merge + dedupe by URL+Title
+  // Prefer structured activity metadata over path-only sitemap records.
   const map = new Map();
-  const keyFor = (r) => `${String(r.url).toLowerCase()}||${String(r.title).toLowerCase()}`;
+  const keyFor = (r) => String(r.url).toLowerCase().replace(/index\.html$/, "").replace(/\/$/, "") || "/";
 
   for (const rec of [...pageRecords, ...manifestRecords]) {
     const k = keyFor(rec);
@@ -232,10 +267,15 @@ async function main() {
       map.set(k, rec);
     } else {
       const existing = map.get(k);
-      existing.tags = dedupe([...(existing.tags || []), ...(rec.tags || [])]);
-      if (!existing.description && rec.description) existing.description = rec.description;
-      if (!existing.subject && rec.subject) existing.subject = rec.subject;
-      map.set(k, existing);
+      const preferred = rec.source === "content-index" || rec.source.startsWith("manifest:") ? rec : existing;
+      const other = preferred === rec ? existing : rec;
+      map.set(k, {
+        ...other,
+        ...preferred,
+        tags: dedupe([...(preferred.tags || []), ...(other.tags || [])]),
+        description: preferred.description || other.description || "",
+        subject: preferred.subject || other.subject || ""
+      });
     }
   }
 

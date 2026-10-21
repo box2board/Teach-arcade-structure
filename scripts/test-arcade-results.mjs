@@ -5,6 +5,7 @@ import {createRequire} from 'node:module';
 const {JSDOM}=createRequire(import.meta.url)('jsdom');
 const helper=fs.readFileSync('public/arcade-review-games/shared/arcade-results.js','utf8');
 const sleep=()=>new Promise(resolve=>setTimeout(resolve,12));
+async function until(check,label){for(let i=0;i<100;i++){if(check())return;await sleep();}assert.fail(label+' timed out');}
 function dom(html,route){
   const d=new JSDOM(html,{url:'https://example.test'+route,runScripts:'outside-only',pretendToBeVisual:true});
   const w=d.window;
@@ -22,7 +23,7 @@ const initial=dom('<!doctype html><html><head></head><body></body></html>','/pre
 initial.window.eval(helper);
 const games=JSON.parse(JSON.stringify(initial.window.TAArcadeResults.games));initial.window.close();
 const catalog=fs.readFileSync('public/arcade-review-games/index.html','utf8');
-const listed=[...new Set([...catalog.matchAll(/class="play" href="([^"]+)"/g)].map(match=>match[1]))];
+const listed=[...new Set([...catalog.matchAll(/class="play" href="([^"]+)"/g)].map(match=>match[1]).filter(route=>route.startsWith('/arcade-review-games/')))];
 assert.equal(listed.length,games.length);
 for(const route of listed)assert.ok(games.some(game=>game.route===route||game.route===route+'game.html'),'Missing catalog route '+route);
 let modes=0,downloads=0,replays=0;
@@ -40,7 +41,7 @@ function fixture(w,game,score){
   }
   if(game.kind==='cold-war'){set('#finishTitle','Stability Too Low');set('#finishText','Stability dropped below 40.');w.TA_ARCADE_PERFORMANCE.stability=25;w.TA_ARCADE_PERFORMANCE.elapsed=score;}
   if(game.kind==='cells'){set('#gameover-summary',`Final score ${score}. Accuracy 80% with 8/10 correct.`);doc.querySelector('#category-summary').innerHTML='<li>Organelles: 8/10 (80%)</li>';doc.querySelector('#missed-list').innerHTML='<li>Mitochondrion: energy release</li>';}
-  if(game.kind==='maze')set('#winMessage','Maze complete');
+  if(game.kind==='maze'){set('#endTitle','Experiment Interrupted');set('#endText',`Final score: ${score}.`);}
   if(game.kind==='racer')set('#overlayTitle','Time!');
   if(game.kind==='rush'){set('#sum-score',String(score));set('#sum-acc','80%');set('#sum-streak','5');set('#sum-time','3:00');set('#summary-main','Run complete');}
   if(game.kind==='grammar')set('#endSummary',`Score: ${score} points | Accuracy: 16/20 (80%)`);
@@ -75,7 +76,7 @@ for(const game of games){
       assert.equal(doc.querySelectorAll('.ta-results-dialog').length,0,'Results must not appear during setup');
       setMode(w,game,mode);fixture(w,game,1234);
       source.hidden=false;source.classList.remove('hidden');source.style.setProperty('display','block','important');source.style.opacity='1';source.setAttribute('aria-hidden','false');
-      await sleep();
+      await until(()=>doc.querySelector('.ta-results-dialog'),'Initial results '+game.id+' '+mode);
     }
     let card=doc.querySelector('.ta-results-dialog .ta-results-card');assert.ok(card,game.id+' '+mode+' should open results');
     assert.deepEqual([...card.querySelectorAll('.ta-results-actions>*')].map(node=>node.textContent),['Download results','Play Again','Return to Arcade']);
@@ -87,21 +88,20 @@ for(const game of games){
     const first=await w.lastDownload.blob.text();downloads++;
     assert.ok(first.includes('Mode: '+card.querySelector('.ta-results-mode').textContent));
     if(game.kind==='adventure')assert.ok(first.includes('QUESTION RECORD'));
-    if(game.kind!=='maze'){
-      card.querySelector('.ta-results-replay').click();await sleep();
-      assert.equal(doc.querySelectorAll('.ta-results-dialog').length,0,'Replay closes common results');
-      if(game.kind!=='adventure'){
-        const source=doc.querySelector(game.screen);fixture(w,game,9876);source.hidden=false;await sleep();
-        card=doc.querySelector('.ta-results-dialog .ta-results-card');assert.ok(card,'Second run results should reopen');
-        card.querySelector('.ta-results-download').click();const second=await w.lastDownload.blob.text();downloads++;
-        assert.ok(second.includes('9876'),game.id+' second download must use new performance');
-        assert.ok(!second.includes('1234'),game.id+' old score must not persist');
-      }
+    card.querySelector('.ta-results-replay').click();await sleep();
+    assert.equal(doc.querySelectorAll('.ta-results-dialog').length,0,'Replay closes common results');
+    if(game.kind!=='adventure'){
+      const source=doc.querySelector(game.screen);fixture(w,game,9876);source.hidden=false;source.classList.remove('hidden');source.style.setProperty('display','block','important');source.style.opacity='1';source.setAttribute('aria-hidden','false');
+      await until(()=>doc.querySelector('.ta-results-dialog'),'Second results '+game.id+' '+mode);
+      card=doc.querySelector('.ta-results-dialog .ta-results-card');
+      card.querySelector('.ta-results-download').click();const second=await w.lastDownload.blob.text();downloads++;
+      assert.ok(second.includes('9876'),game.id+' second download must use new performance');
+      assert.ok(!second.includes('1234'),game.id+' old score must not persist');
     }
     d.window.close();
   }
 }
-assert.equal(modes,78);
+assert.equal(modes,80);
 const topDown=fs.readFileSync('public/arcade-review-games/shared/top-down/game.js','utf8');
 assert.match(topDown,/TAArcadeResults\.show/);assert.match(topDown,/snapshot\.questions\.flatMap/);
 const cold=fs.readFileSync('public/arcade-review-games/social-studies/cold-war-shadow-run/game.js','utf8');

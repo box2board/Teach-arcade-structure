@@ -1,0 +1,32 @@
+.back-link {display:inline-flex;align-items:center;min-height:44px;color:var(--green-dark);font-size:13px;font-weight:700;text-decoration:none;padding:6px;}
+.back-link:focus-visible {outline:2px solid var(--green);outline-offset:3px;}
+.startup-status {font-size:13px;line-height:1.5;color:#74552e;background:#f5ead3;border-radius:8px;padding:12px;}
+.colony-card {color:var(--ink);grid-template-columns:50px minmax(0,1fr) 18px;}
+.colony-card:disabled {cursor:wait;}
+button {touch-action:manipulation;}
+.chronicle-toggle,.quiet-button,.game-footer button,.primary-button,.ending-actions button {min-height:44px;}
+@media (max-width:900px) {
+  .start-screen {grid-template-columns:1fr;gap:24px;padding:28px 2% 20px;}
+  .start-copy {max-width:640px;}
+}
+@media (max-width:700px) {
+  .app-shell {padding-left:max(13px,env(safe-area-inset-left));padding-right:max(13px,env(safe-area-inset-right));}
+  .start-screen {padding-top:24px;}
+  .start-copy h1 {font-size:clamp(30px,8.8vw,42px);line-height:1.06;}
+  .start-copy>p:not(.eyebrow) {line-height:1.5;}
+  .start-note {margin-top:16px;padding-top:14px;}
+  .colony-card {grid-template-columns:36px minmax(0,1fr) 12px;gap:9px;min-height:76px;}
+  .colony-icon {width:36px;height:40px;}
+  .colony-card strong {font-size:19px;}
+  .colony-card small {font-size:12px;}
+  .choice {min-height:60px;padding:12px 9px;}
+  .choice small {font-size:12px;line-height:1.4;}
+  .situation-text,.outcome p {font-size:13px;}
+  .primary-button,.ending-actions button {font-size:12px;}
+  .game-heading>div:first-child {min-width:0;}
+  .year-box {flex-shrink:0;margin-left:8px;}
+  .game-footer {padding-bottom:max(20px,env(safe-area-inset-bottom));}
+}
+@media (prefers-reduced-motion:reduce) {
+  *,*::before,*::after {animation:none!important;transition:none!important;}
+}

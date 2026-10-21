@@ -6,7 +6,7 @@ export function exampleFor(game, mode) {
     'cold-war':[['Stability','85'],['Correct answers','8 / 10'],['Accuracy','80%'],['Time','248 sec']],
     adventure:[['Total points','650'],['First-try accuracy','83%'],['Questions completed',mode==='Easy'?'6 / 6':'12 / 12'],['Time','6m 42s'],['Treasure found','1 / 1'],['Moves','182']],
     cells:[['Score','1,250'],['Accuracy','80%'],['Correct answers','16 / 20']],
-    maze:[['Score','850'],['Accuracy','80%'],['Questions answered','10 / 10'],['Time','184 sec']],
+    maze:[['Score','3,250'],['Accuracy','75%'],['Correct answers','9 / 12'],['Stations completed','5 / 5'],['Evidence collected','12 / 15'],['Time','252 sec']],
     racer:[['Score','1,600'],['Accuracy','80%'],['Correct answers','8 / 10'],['Best streak','5'],['Missed questions','2'],['Time','60 sec']],
     rush:[['Score','1,400'],['Accuracy','90%'],['Best streak','7'],['Time','2:14']],
     grammar:[['Score','1,800'],['Correct on first try','18 / 20'],['Accuracy','90%']],

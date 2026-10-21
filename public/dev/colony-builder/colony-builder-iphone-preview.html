@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#253f3b">
+  <title>Colony Builder | Teach Arcade Prototype</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <style>
+:root{--ink:#263e38;--muted:#68766e;--paper:#f5f1e7;--cream:#fffdf7;--green:#426d5c;--green-dark:#25473d;--line:#ded9cb;--gold:#c58d44;--red:#b7624c;--shadow:0 15px 40px #172b2510;font-family:'DM Sans',system-ui,sans-serif;color:var(--ink)}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% 0,#eee8d7 0,#f5f1e7 50%,#f2eee3 100%)}button{font:inherit}.app-shell{max-width:1540px;margin:0 auto;padding:0 34px}.topbar{height:68px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #d8d3c6}.brand{display:flex;align-items:center;gap:11px;color:var(--ink);font-size:12px;font-weight:800;letter-spacing:.09em;text-decoration:none}.brand-mark{display:grid;place-items:center;width:33px;height:33px;background:var(--green-dark);color:#fff;border-radius:10px;font:700 12px 'Fraunces',serif;letter-spacing:0}.brand i{display:block;font:600 9px 'DM Sans',sans-serif;color:#738078;letter-spacing:.17em;margin-top:3px}.top-actions{display:flex;align-items:center;gap:12px}.prototype-tag{font-size:9px;letter-spacing:.17em;font-weight:800;color:#a07b3e;background:#eee1c5;padding:7px 10px;border-radius:99px}.icon-button{border:0;background:transparent;font-size:19px;color:#8a938a;cursor:pointer}.start-screen{min-height:calc(100vh - 69px);display:grid;grid-template-columns:minmax(280px,.92fr) minmax(400px,1.08fr);align-content:center;gap:68px 8%;padding:58px 4% 24px}.start-copy{align-self:center;max-width:520px}.eyebrow{margin:0 0 14px;color:#96763d;font-size:10px;font-weight:800;letter-spacing:.2em}.start-copy h1,.game-heading h1{font:700 clamp(39px,5vw,68px)/.99 'Fraunces',Georgia,serif;letter-spacing:-.04em;margin:0 0 20px;color:#25443a}.start-copy h1 em{font-weight:600;color:#9a7542}.start-copy>p:not(.eyebrow){font-size:16px;line-height:1.75;color:#627069;max-width:430px}.start-note{display:flex;align-items:center;gap:12px;margin-top:32px;padding-top:20px;border-top:1px solid #d9d1c0;color:#758078;font-size:12px}.start-note span:first-child{font-size:20px;color:var(--gold)}.colony-picker{align-self:center;background:#fffdf7bf;border:1px solid #ded9cb;border-radius:18px;padding:22px;box-shadow:var(--shadow)}.picker-heading,.panel-title{display:flex;align-items:center;justify-content:space-between;font-size:9px;font-weight:800;letter-spacing:.17em;color:#7a857c}.picker-heading{padding:1px 2px 14px}.picker-heading span:last-child{color:#b29460}.colony-choices{display:grid;gap:10px}.colony-card{width:100%;text-align:left;display:grid;grid-template-columns:50px 1fr 18px;align-items:center;gap:13px;padding:14px 15px;border-radius:13px;border:1px solid #e5e0d5;background:#fffefa;cursor:pointer;transition:transform .18s,border-color .18s,box-shadow .18s}.colony-card:hover,.colony-card:focus-visible{transform:translateY(-2px);border-color:#a7b69e;box-shadow:0 8px 18px #243c3110;outline:none}.colony-icon{display:grid;place-items:center;width:48px;height:48px;border-radius:12px;background:#edf0e5;font-size:25px}.colony-card:nth-child(2) .colony-icon{background:#e7efec}.colony-card:nth-child(3) .colony-icon{background:#f2ead8}.colony-card strong{display:block;font:700 20px 'Fraunces',serif}.colony-card small{display:block;color:#748078;font-size:11px;line-height:1.45;margin-top:4px}.colony-arrow{font-size:19px;color:#9b9f91}.start-footer{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;color:#8b9188;font-size:9px;font-weight:700;letter-spacing:.12em;margin-top:13px}.start-footer kbd,.card-bottom kbd{font:700 9px 'DM Sans';background:#e9e6db;border:1px solid #d7d2c5;border-radius:4px;padding:2px 5px;color:#5b665e}
+.game-screen{padding-top:25px}.game-heading{display:flex;justify-content:space-between;align-items:center;margin:0 2px 18px}.game-heading .eyebrow{margin-bottom:4px}.game-heading h1{font-size:35px;margin:0 0 3px}.colony-subtitle{margin:0;color:#778079;font-size:12px}.year-box{display:grid;justify-items:end;gap:2px;color:#9a7a47}.year-box span{font-size:8px;font-weight:800;letter-spacing:.16em}.year-box strong{font:700 29px 'Fraunces',serif;color:var(--ink)}.year-box span:last-child{color:#7c867d}.game-grid{display:grid;grid-template-columns:minmax(190px,230px) minmax(420px,1fr) minmax(190px,235px);gap:16px;align-items:start}.panel,.situation-card,.end-card{background:#fffdf8;border:1px solid #e1dccf;border-radius:14px;box-shadow:var(--shadow)}.panel{padding:17px 15px}.panel-title{font-size:9px}.status-dot{width:7px;height:7px;background:#8dae82;border-radius:50%;box-shadow:0 0 0 3px #8dae8224}.resource-list{margin:15px 0 16px;display:grid;gap:4px}.resource{padding:8px 6px;border-bottom:1px solid #eee9de}.resource-head{display:flex;align-items:center;justify-content:space-between}.resource-name{font-size:11px;font-weight:700;color:#5d6a61}.resource-value{font:700 17px 'Fraunces',serif}.resource-sub{display:flex;align-items:center;justify-content:space-between;margin-top:4px;font-size:9px;color:#9aa096}.meter{height:4px;margin-top:6px;border-radius:5px;background:#eeece4;overflow:hidden}.meter span{display:block;height:100%;border-radius:5px;background:#8ea988;transition:width .45s}.resource[data-key="food"] .meter span{background:#d3a657}.resource[data-key="wealth"] .meter span{background:#9b8a5a}.resource[data-key="people"] .meter span{background:#829e9d}.resource[data-key="stability"] .meter span{background:#8ca77e}.resource[data-key="relations"] .meter span{background:#839a84}.growth-wrap{padding:11px 5px 13px;border-top:1px solid #eee9de}.panel-title.small{font-size:8px;letter-spacing:.1em}.panel-title.small span:last-child{color:#a27d45}.growth-track{height:6px;border-radius:8px;background:#eee9de;margin:10px 0 6px;overflow:hidden}.growth-track span{display:block;background:linear-gradient(90deg,#78936f,#d4aa5f);height:100%;width:15%;border-radius:8px;transition:width .5s}.growth-wrap p{font-size:10px;line-height:1.45;color:#8a9187;margin:0}.chronicle-toggle{width:100%;background:transparent;border:0;border-top:1px solid #eee9de;padding:12px 3px 2px;display:flex;gap:8px;align-items:center;text-align:left;color:#738078;font-size:8px;font-weight:800;letter-spacing:.12em;cursor:pointer}.chronicle-toggle span:nth-child(2){border-radius:20px;background:#f0ebdf;color:#8b744f;padding:3px 6px}.chronicle-toggle .chevron{margin-left:auto;font-size:14px}.chronicle{max-height:235px;overflow:auto;padding-top:9px}.chronicle-entry{padding:8px 0;border-top:1px solid #eee9de}.chronicle-entry strong{display:block;font-size:9px;color:#6a7a6c}.chronicle-entry p{font-size:10px;color:#7c847c;line-height:1.5;margin:3px 0 0}.center-column{min-width:0}.settlement-frame{height:clamp(225px,27vw,315px);position:relative;overflow:hidden;border-radius:16px;border:1px solid #d2d1bd;background:#dfe6d7;box-shadow:0 12px 25px #172b2514}.settlement-frame:after{content:"";position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 0 1px #ffffff48}.scene-label{position:absolute;z-index:1;top:12px;left:14px;right:14px;display:flex;justify-content:space-between;align-items:center;color:#495c4f;font-size:8px;letter-spacing:.14em;font-weight:800}.scene-weather{display:flex;align-items:center;gap:6px;border:1px solid #647b602e;border-radius:99px;padding:5px 8px;background:#f7f4e9ba;font-size:7px}.scene-weather i{font-size:12px;font-style:normal;color:#c58e42}.settlement-frame canvas{display:block;width:100%;height:100%}.scene-caption{position:absolute;bottom:10px;left:14px;color:#44584e;font-size:9px;font-weight:600;text-shadow:0 1px 5px #e8ebdfaa}.situation-card{margin-top:13px;padding:17px 19px 12px}.situation-top{display:flex;justify-content:space-between;align-items:center}.situation-tag{font-size:8px;font-weight:800;letter-spacing:.14em;color:#957747}.situation-counter{font-size:8px;color:#a5a398;letter-spacing:.1em;font-weight:700}.situation-card h2{font:700 23px/1.1 'Fraunces',serif;letter-spacing:-.02em;margin:10px 0 7px;color:#2c483c}.situation-text{font-size:12px;line-height:1.55;color:#778178;margin:0 0 12px;max-width:760px}.choices{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.choice{min-height:100px;text-align:left;background:#faf8f0;border:1px solid #e7e2d6;border-radius:10px;padding:11px;cursor:pointer;transition:all .16s;position:relative;color:var(--ink)}.choice:hover,.choice:focus-visible{background:#f2f5ec;border-color:#a9b99f;transform:translateY(-2px);outline:none}.choice .choice-key{display:grid;place-items:center;width:17px;height:17px;border-radius:5px;background:#eae7dc;color:#7e806f;font-size:9px;font-weight:800;margin-bottom:7px}.choice strong{display:block;font:700 13px/1.15 'Fraunces',serif;margin-bottom:4px}.choice small{display:block;color:#7d857c;font-size:9px;line-height:1.45}.choice:disabled{cursor:default}.outcome{border-radius:10px;border:1px solid #dce6d6;background:#f2f6ec;padding:12px 14px;margin:12px 0 3px;animation:appear .35s ease}.outcome-title{font-size:8px;color:#64805e;font-weight:800;letter-spacing:.14em}.outcome p{font-size:11px;line-height:1.5;color:#5f6f61;margin:5px 0}.outcome .learning{padding-top:7px;border-top:1px solid #dfe6d8;font-size:10px;color:#758071}.delta-list{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}.delta{border-radius:30px;padding:4px 7px;background:#e4eddf;font-size:9px;font-weight:700;color:#53704f}.delta.down{background:#f2e3d9;color:#a15e4d}.outcome-actions{display:flex;justify-content:flex-end;margin-top:7px}.primary-button{border:0;background:var(--green);color:white;border-radius:8px;padding:9px 14px;font-size:10px;font-weight:800;cursor:pointer}.primary-button:hover{background:var(--green-dark)}.card-bottom{border-top:1px solid #eee9de;display:flex;justify-content:space-between;align-items:center;margin-top:12px;padding-top:9px;color:#a0a398;font-size:8px}.pressure-list{display:grid;gap:8px;margin:15px 0 18px}.pressure{display:grid;grid-template-columns:24px 1fr;gap:8px;align-items:start}.pressure-icon{display:grid;place-items:center;width:23px;height:23px;border-radius:7px;background:#f0eddf;color:#9e814c;font-size:12px}.pressure strong{display:block;font-size:10px;color:#626f65}.pressure p{font-size:9px;line-height:1.4;color:#959a8f;margin:2px 0 0}.pressure-count{font-size:8px;color:#a8946d;letter-spacing:.08em}.regional-note{border-top:1px solid #eee9de;padding:13px 1px 12px;display:grid;grid-template-columns:18px 1fr;gap:7px}.note-icon{color:#c19958}.regional-note strong{font-size:8px;letter-spacing:.12em;color:#91774f}.regional-note p{font-size:9px;line-height:1.5;color:#888f85;margin:5px 0 0}.help-card{background:#f5f2e9;border-radius:9px;padding:10px;display:grid;grid-template-columns:17px 1fr;gap:5px}.help-icon{display:grid;place-items:center;width:15px;height:15px;background:#e7dfce;border-radius:50%;font-size:9px;color:#8c774f;font-weight:800}.help-card p{margin:0;color:#7e867c;font-size:9px;line-height:1.5}.quiet-button{border:0;background:transparent;color:#95998e;font-size:9px;padding:13px 0 0;cursor:pointer}.quiet-button:hover{color:#586f5c}.game-footer{display:flex;align-items:center;justify-content:space-between;padding:16px 2px 20px;color:#9a9e92;font-size:8px;font-weight:700;letter-spacing:.11em}.game-footer i{font-style:normal;color:#ba9c66}.game-footer span:nth-child(2){font-weight:500;letter-spacing:0}.game-footer button{border:0;background:transparent;color:#9a9e92;font-size:8px;letter-spacing:.1em;cursor:pointer}.game-footer button:hover{color:#4d6c59}.end-card{text-align:center;padding:28px;margin-top:14px}.end-card .end-emoji{font-size:29px}.end-card h2{font:700 28px 'Fraunces',serif;color:#2c483c;margin:7px 0}.end-card>p{max-width:580px;margin:0 auto 12px;color:#718076;font-size:12px;line-height:1.6}.ending-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:560px;margin:16px auto}.ending-metric{background:#f5f2e9;border-radius:9px;padding:10px}.ending-metric strong{display:block;font:700 18px 'Fraunces',serif}.ending-metric span{font-size:8px;color:#8d9588;letter-spacing:.08em}.ending-history{text-align:left;max-width:650px;margin:18px auto}.ending-history h3{font:700 16px 'Fraunces',serif}.ending-history p{font-size:10px;line-height:1.5;color:#737f75;border-top:1px solid #eee9de;padding:7px 0;margin:0}.ending-actions{display:flex;justify-content:center;gap:9px;margin-top:15px}.ending-actions button{border:1px solid #dcd7ca;background:#fff;border-radius:8px;padding:10px 15px;color:var(--ink);cursor:pointer;font-size:10px;font-weight:700}.ending-actions button:first-child{background:var(--green);color:#fff;border-color:var(--green)}[hidden]{display:none!important}@keyframes appear{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+@media(max-width:1050px){.app-shell{padding:0 20px}.game-grid{grid-template-columns:minmax(175px,205px) minmax(370px,1fr)}.right-rail{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;align-items:start}.right-rail>.panel-title{grid-column:1/-1}.pressure-list{grid-column:1}.regional-note{border-top:0;padding-top:0}.help-card{margin-top:0}.quiet-button{display:none}}
+@media(max-width:700px){.app-shell{padding:0 13px}.topbar{height:56px}.brand{font-size:10px}.start-screen{min-height:auto;grid-template-columns:1fr;gap:27px;padding:38px 2% 20px}.start-copy h1{font-size:46px}.start-copy>p:not(.eyebrow){font-size:14px}.start-note{margin-top:20px}.start-footer{font-size:8px;align-items:flex-start;gap:10px;flex-direction:column}.colony-picker{padding:15px}.colony-card{grid-template-columns:43px 1fr 15px;padding:11px}.colony-icon{width:42px;height:42px;font-size:21px}.game-screen{padding-top:18px}.game-heading h1{font-size:29px}.colony-subtitle{max-width:250px;font-size:10px}.year-box strong{font-size:24px}.game-grid{grid-template-columns:1fr;gap:10px}.left-rail{order:2}.center-column{order:1}.right-rail{order:3;grid-column:auto;display:grid;grid-template-columns:1fr 1fr}.right-rail>.panel-title{grid-column:1/-1}.pressure-list{grid-column:1/-1;grid-template-columns:1fr 1fr;gap:9px}.regional-note{grid-column:1/-1;border-top:1px solid #eee9de;padding-top:10px}.help-card{grid-column:1/-1}.quiet-button{display:block}.resource-list{grid-template-columns:repeat(5,1fr);gap:1px;margin:10px 0}.resource{padding:6px 4px;border-bottom:0;border-right:1px solid #eee9de}.resource:last-child{border-right:0}.resource-head{align-items:flex-start;flex-direction:column;gap:2px}.resource-name{font-size:8px}.resource-value{font-size:15px}.resource-sub{font-size:7px}.resource-sub span:first-child{display:none}.meter{height:3px}.growth-wrap{padding:9px 4px}.chronicle{max-height:150px}.settlement-frame{height:230px}.situation-card{padding:14px 13px 10px}.situation-card h2{font-size:21px}.situation-text{font-size:11px}.choices{grid-template-columns:1fr;gap:7px}.choice{min-height:0;display:grid;grid-template-columns:24px 1fr;column-gap:7px;padding:9px}.choice .choice-key{grid-row:1/3;margin:1px 0 0}.choice strong{font-size:13px;margin:0}.choice small{font-size:9px}.card-bottom{font-size:7px}.game-footer{font-size:7px}.game-footer span:nth-child(2){display:none}.end-card{padding:20px 13px}.ending-metrics{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:380px){.resource-name{font-size:7px}.resource-value{font-size:13px}.pressure-list{grid-template-columns:1fr}.scene-label{font-size:7px}.scene-weather{font-size:6px}}
+
+</style>
+  <style>
+.startup-status {font-size:13px;line-height:1.5;color:#74552e;background:#f5ead3;border-radius:8px;padding:12px;}
+.colony-card {color:var(--ink);grid-template-columns:50px minmax(0,1fr) 18px;}
+.colony-card:disabled {cursor:wait;}
+button {touch-action:manipulation;}
+.chronicle-toggle,.quiet-button,.game-footer button,.primary-button,.ending-actions button {min-height:44px;}
+@media (max-width:900px) {
+  .start-screen {grid-template-columns:1fr;gap:24px;padding:28px 2% 20px;}
+  .start-copy {max-width:640px;}
+}
+@media (max-width:700px) {
+  .app-shell {padding-left:max(13px,env(safe-area-inset-left));padding-right:max(13px,env(safe-area-inset-right));}
+  .start-screen {padding-top:24px;}
+  .start-copy h1 {font-size:clamp(30px,8.8vw,42px);line-height:1.06;}
+  .start-copy>p:not(.eyebrow) {line-height:1.5;}
+  .start-note {margin-top:16px;padding-top:14px;}
+  .colony-card {grid-template-columns:36px minmax(0,1fr) 12px;gap:9px;min-height:76px;}
+  .colony-icon {width:36px;height:40px;}
+  .colony-card strong {font-size:19px;}
+  .colony-card small {font-size:12px;}
+  .choice {min-height:60px;padding:12px 9px;}
+  .choice small {font-size:12px;line-height:1.4;}
+  .situation-text,.outcome p {font-size:13px;}
+  .primary-button,.ending-actions button {font-size:12px;}
+  .game-heading>div:first-child {min-width:0;}
+  .year-box {flex-shrink:0;margin-left:8px;}
+  .game-footer {padding-bottom:max(20px,env(safe-area-inset-bottom));}
+}
+@media (prefers-reduced-motion:reduce) {
+  *,*::before,*::after {animation:none!important;transition:none!important;}
+}
+
+</style>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Teach Arcade"><span class="brand-mark">TA</span><span>TEACH ARCADE <i>FIELD SIMULATIONS</i></span></a>
+      <div class="top-actions"><span class="prototype-tag">PROTOTYPE</span></div>
+    </header>
+
+    <section id="startScreen" class="start-screen">
+      <div class="start-copy"><p class="eyebrow">A COLONIAL AMERICA STRATEGY GAME</p><h1>Build a colony.<br><em>Shape its future.</em></h1><p>Every year brings a new pressure. Decide what your settlement needs, live with the tradeoffs, and see what kind of community takes shape.</p><div class="start-note"><span>⌖</span><span>8 years · 3 regional starting points · choices that carry forward</span></div></div>
+      <div class="colony-picker"><div class="picker-heading"><span>CHOOSE YOUR STARTING POINT</span><span>01 / 03</span></div>
+        <p id="startupStatus" class="startup-status" role="status">The game has not started. If this message stays visible, open the playable web preview in Safari or Chrome. Some downloaded-file viewers do not run games.</p>
+        <noscript><p class="startup-status">JavaScript is disabled in this viewer. Open the playable web preview in a browser with JavaScript enabled.</p></noscript>
+        <div id="colonyChoices" class="colony-choices">
+          <button class="colony-card" type="button" data-colony="virginia" disabled><span class="colony-icon">⚓</span><span><strong>Virginia</strong><small>A Chesapeake settlement with a risky path to export wealth.</small></span><span class="colony-arrow">›</span></button>
+          <button class="colony-card" type="button" data-colony="massachusetts" disabled><span class="colony-icon">⌁</span><span><strong>Massachusetts</strong><small>A New England community built around the coast and a shared civic order.</small></span><span class="colony-arrow">›</span></button>
+          <button class="colony-card" type="button" data-colony="pennsylvania" disabled><span class="colony-icon">✳</span><span><strong>Pennsylvania</strong><small>A Middle Colony where grain, trade, and religious diversity meet.</small></span><span class="colony-arrow">›</span></button>
+        </div>
+      </div>
+      <footer class="start-footer"><span>HISTORICAL SIMULATION · SOLO MODE</span><span>Use touch, mouse, or keys <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd></span></footer>
+    </section>
+
+    <section id="gameScreen" class="game-screen" hidden>
+      <header class="game-heading"><div><p class="eyebrow" id="regionLabel">VIRGINIA · 1612</p><h1 id="colonyTitle">Jamestown</h1><p id="colonySubtitle" class="colony-subtitle"></p></div><div class="year-box"><span>YEAR</span><strong id="yearLabel">1612</strong><span id="turnLabel">YEAR 1 OF 8</span></div></header>
+      <div class="game-grid">
+        <aside class="left-rail panel"><div class="panel-title"><span>SETTLEMENT</span><span class="status-dot"></span></div><div id="resourceList" class="resource-list"></div><div class="growth-wrap"><div class="panel-title small"><span>DEVELOPMENT</span><span id="stageLabel">CAMP</span></div><div class="growth-track"><span id="growthFill"></span></div><p id="growthHint">Your settlement begins small.</p></div><button id="chronicleToggle" class="chronicle-toggle"><span>COLONY CHRONICLE</span><span id="chronicleCount">0</span><span class="chevron">⌄</span></button><div id="chronicle" class="chronicle" hidden></div></aside>
+        <section class="center-column"><div class="settlement-frame"><div class="scene-label"><span id="sceneName">JAMESTOWN, VIRGINIA</span><span class="scene-weather"><i id="weatherIcon">☀</i><span id="weatherLabel">CLEAR SKIES</span></span></div><canvas id="settlementCanvas" aria-label="Illustrated view of your changing colonial settlement"></canvas><div class="scene-caption" id="sceneCaption">A small settlement sits beside the river.</div></div><article id="situationCard" class="situation-card"><div class="situation-top"><span id="situationTag" class="situation-tag">SETTLEMENT</span><span id="situationCounter" class="situation-counter">SITUATION 1</span></div><h2 id="situationTitle"></h2><p id="situationText" class="situation-text"></p><div id="choices" class="choices"></div><div id="outcome" class="outcome" hidden></div><div class="card-bottom"><span id="keyHelp">Choose a path <kbd>A</kbd> <kbd>B</kbd> <kbd>C</kbd></span><span id="decisionFootnote">One year at a time</span></div></article><div id="endCard" class="end-card" hidden></div></section>
+        <aside class="right-rail panel"><div class="panel-title"><span>PRESSURES</span><span class="pressure-count" id="pressureCount">3 ACTIVE</span></div><div id="pressureList" class="pressure-list"></div><div class="regional-note"><span class="note-icon">✦</span><div><strong>REGIONAL REALITY</strong><p id="regionalNote"></p></div></div><div class="help-card"><span class="help-icon">i</span><p>Each choice can help in one area and strain another. Outcomes appear after you commit.</p></div><button id="restartButton" class="quiet-button">↺ &nbsp; Start a new colony</button></aside>
+      </div>
+      <footer class="game-footer"><span>COLONY BUILDER <i>FIELD TEST</i></span><span>Built for curiosity, consequence, and conversation.</span><button id="resetButton">RESET RUN</button></footer>
+    </section>
+  </main>
+  <script>
+// Report missing scripts and startup errors instead of leaving a blank picker.
+(() => {
+  const status = document.getElementById('startupStatus');
+  function reportStartupFailure() {
+    if (document.documentElement.dataset.colonyReady === 'true') return;
+    status.hidden = false;
+    status.textContent = 'The game could not load. Reopen the complete playable web preview in Safari or Chrome.';
+  }
+  window.addEventListener('error', reportStartupFailure, true);
+  window.addEventListener('unhandledrejection', reportStartupFailure);
+})();
+
+</script>
+  <script>
+/* Colony Builder: prototype content, kept separate from the simulation code. */
+window.COLONY_DATA = {
+  colonies: {
+    virginia: {
+      name: "Virginia", settlement: "Jamestown", year: 1609,
+      subtitle: "A Chesapeake settlement with a risky path to export wealth.",
+      description: "Tobacco can bring wealth, but the Chesapeake climate and river location make food security, disease, and relations with the Powhatan paramount chiefdom urgent concerns.",
+      start: { food: 48, wealth: 34, people: 34, stability: 47, relations: 43 },
+      strengths: ["Tobacco export potential", "Navigable Chesapeake rivers"],
+      pressures: ["Food supply is fragile", "Disease risk is high", "Tense land and power claims"],
+      regionalNote: "Jamestown was established in Tsenacommacah, the Powhatan paramount chiefdom. The English colony depended on a landscape and political world already shaped by Powhatan communities.",
+      scene: "JAMESTOWN · CHESAPEAKE", color: "#bd7646", specific: ["va_tobacco", "va_powhatan", "va_labor", "va_tidewater"]
+    },
+    massachusetts: {
+      name: "Massachusetts", settlement: "Boston", year: 1630,
+      subtitle: "A New England community built around the coast and a shared civic order.",
+      description: "Short growing seasons reward careful food planning. Fishing, coastal trade, and organized town life can steady the colony, while strict rules can deepen internal divisions.",
+      start: { food: 45, wealth: 30, people: 48, stability: 57, relations: 46 },
+      strengths: ["Maritime trade and fishing", "Strong town networks"],
+      pressures: ["Short growing season", "Religious rules divide neighbors", "Land pressure near existing towns"],
+      regionalNote: "Massachusetts Bay leaders founded a Puritan colony in 1630. Massachusett and neighboring peoples already lived in the region; English settlement altered their homelands and political relationships.",
+      scene: "MASSACHUSETTS BAY · NEW ENGLAND", color: "#537e74", specific: ["ma_coast", "ma_massachusett", "ma_town", "ma_beliefs"]
+    },
+    pennsylvania: {
+      name: "Pennsylvania", settlement: "Philadelphia", year: 1682,
+      subtitle: "A Middle Colony where grain, trade, and religious diversity meet.",
+      description: "Fertile land and river access support a balanced economy. Growth brings opportunity, but agreements, pluralism, and competing land claims require active care.",
+      start: { food: 60, wealth: 38, people: 38, stability: 53, relations: 55 },
+      strengths: ["Fertile farmland", "River trade and diverse settlers"],
+      pressures: ["Rapid settlement strains agreements", "Many communities need representation", "Export markets can fluctuate"],
+      regionalNote: "William Penn received a proprietary charter in 1681. The Lenape already lived in the region; Penn sought land agreements, though later Penn family policies—including the Walking Purchase of 1737—undermined them.",
+      scene: "DELAWARE RIVER · PENNSYLVANIA", color: "#be9956", specific: ["pa_lenape", "pa_diversity", "pa_grain", "pa_governance"]
+    }
+  },
+  scenarios: [
+    { id:"winter", tag:"SEASONAL PRESSURE", title:"Winter stores run low", text:"Cold weather has slowed work and stretched supplies. The settlement must decide how to get through until spring.", choices:[
+      {title:"Ration the storehouse",description:"Make existing food last and postpone some work.",outcome:"Careful rationing protected the stores, but the colder months tested the settlement's morale.",why:"Winter could make travel and food gathering difficult. Planning mattered, while strict rationing could also deepen hardship.",effects:{food:8,stability:-3}},
+      {title:"Send a small party to fish and forage",description:"Take a risk outside the settlement to add to the stores.",outcome:"The party returned with supplies, though several workers lost time to the cold.",why:"Fishing and gathering could supplement stored food, but weather and unfamiliar conditions made the outcome uncertain.",effects:{food:5,people:-2},risk:{chance:.28,effects:{food:-8,stability:-3},outcome:"The weather turned; the party returned with little and the effort strained the settlement."}},
+      {title:"Buy provisions from a passing ship",description:"Use trade goods now and preserve the workforce.",outcome:"The ship sold provisions at a steep price. Food rose, but the settlement spent valuable wealth.",why:"A port could create supply options, but shipping schedules and prices were uncertain.",effects:{food:10,wealth:-8}}
+    ]},
+    { id:"illness", tag:"HEALTH", title:"Illness spreads through the settlement", text:"Several families are sick. Work slows, and people disagree about whether to keep the settlement open to visitors and trade.", choices:[
+      {title:"Pause gatherings and organize care",description:"Reduce contact while neighbors care for those who are ill.",outcome:"The outbreak eased gradually. Fewer workers were available, but neighbors trusted the response.",why:"Early modern communities had limited medical knowledge. Care, reduced contact, and time might slow some outbreaks, but illness could still spread.",effects:{people:-2,stability:5},delayed:{after:2,title:"Recovery takes time",text:"The settlement is still rebuilding its workforce after the illness.",effects:{people:-2}}},
+      {title:"Keep trade and work moving",description:"Protect supplies and income while accepting greater exposure.",outcome:"Trade continued and supplies came in, but illness reached more households.",why:"Keeping contact open could preserve commerce, while crowded settlements made infectious disease difficult to contain.",effects:{wealth:5,people:-4,stability:-4}},
+      {title:"Ask nearby communities for help",description:"Seek knowledge and assistance through respectful diplomacy.",outcome:"Neighbors shared useful local knowledge. The exchange built trust, though not everyone in the settlement welcomed it.",why:"Indigenous communities had deep knowledge of local environments. Colonial relationships were shaped by exchange, unequal power, and conflict—not by a single simple measure.",effects:{food:3,relations:6,stability:-2}}
+    ]},
+    { id:"harvest", tag:"FOOD & LAND", title:"The harvest is smaller than expected", text:"Weather and tired soil have reduced this season's yield. You must decide how to protect food supplies and next year's work.", choices:[
+      {title:"Save seed and rotate the fields",description:"Accept a leaner season to protect future harvests.",outcome:"Food is tight now, but the fields are in better shape for another year.",why:"Crop rotation and saving seed could support future production, though the immediate harvest still mattered.",effects:{food:-4,stability:4},delayed:{after:2,title:"Healthier fields",text:"The fields recover and produce more food this year.",effects:{food:9}}},
+      {title:"Buy grain through the port",description:"Use trade to fill the gap before winter.",outcome:"Imported grain filled some empty bins. Paying for it reduced funds for other plans.",why:"Colonies relied on trade networks as well as local agriculture; imports were useful but depended on ships and purchasing power.",effects:{food:10,wealth:-9}},
+      {title:"Put more hands into food work",description:"Shift workers from other projects to the fields.",outcome:"More food was gathered, but other work—including repairs—had to wait.",why:"Labor and time were limited. Choosing one kind of production meant less capacity elsewhere.",effects:{food:8,wealth:-3}}
+    ]},
+    { id:"ship", tag:"TRADE", title:"A merchant ship reaches the harbor", text:"The captain has room for local goods and a few imported supplies. The terms are not equally useful to every household.", choices:[
+      {title:"Export a valuable crop or catch",description:"Trade a portion of production for funds and tools.",outcome:"The ship carried local goods to market. Wealth rose, though some food or materials left with it.",why:"Atlantic trade could bring tools and money, but export priorities could compete with local needs.",effects:{wealth:11,food:-4,buildings:["dock"]}},
+      {title:"Prioritize useful supplies",description:"Trade for equipment and provisions instead of immediate profit.",outcome:"Supplies strengthened the settlement, while the colony earned little from this visit.",why:"Trade choices reflected what a settlement needed most at a particular moment.",effects:{food:6,stability:3,wealth:-3}},
+      {title:"Decline the offer",description:"Keep local stores intact and avoid uncertain terms.",outcome:"The ship departed. Stores stayed secure, but a chance to trade passed.",why:"Merchants' offers depended on timing, demand, and bargaining power; refusing could be prudent or costly.",effects:{stability:2}}
+    ]},
+    { id:"newcomers", tag:"POPULATION", title:"New settlers arrive", text:"More families have reached the colony. They bring skills and hopes, but the settlement must house and feed them.", choices:[
+      {title:"Welcome them and build homes",description:"Expand the settlement and share the work of getting established.",outcome:"New households added skills and energy. Food needs rose, and carpenters were busy building.",why:"Population growth could expand a colony's workforce and community while increasing demand for food, housing, and land.",effects:{people:8,food:-6,stability:3,buildings:["houses"]}},
+      {title:"Admit only skilled workers",description:"Limit arrivals to people with needed trades.",outcome:"A smaller group joined, bringing useful skills without overwhelming supplies.",why:"Colonial leaders often tried to shape migration around labor and settlement goals, with unequal effects on who was welcomed.",effects:{people:4,wealth:4,food:-2}},
+      {title:"Delay new arrivals",description:"Stabilize food and housing before expanding.",outcome:"The settlement kept its current size and protected its stores, but some newcomers went elsewhere.",why:"Growth was not automatically beneficial when supplies and housing were already strained.",effects:{food:4,stability:2}}
+    ]},
+    { id:"civic", tag:"GOVERNANCE", title:"Neighbors disagree about a new rule", text:"A dispute over shared work and local authority is disrupting the settlement. People want a fair process, but they do not agree on who should decide.", choices:[
+      {title:"Call a town meeting",description:"Let eligible residents debate and vote on a rule.",outcome:"A public decision settled the immediate question, although not everyone had a voice in the meeting.",why:"Local assemblies and town meetings varied by colony and era. Colonial political participation was restricted by property, gender, race, and status.",effects:{stability:6,wealth:-2}},
+      {title:"Let a small council decide",description:"Resolve the conflict quickly through appointed leaders.",outcome:"Work resumed quickly, but some residents felt decisions were being made without them.",why:"Colonial government blended appointed authority and local participation; each arrangement could privilege some groups over others.",effects:{wealth:3,stability:-3}},
+      {title:"Allow each household to opt out",description:"Avoid forcing a settlement-wide rule.",outcome:"Tension cooled, though shared work became harder to coordinate.",why:"Local autonomy could protect household choices while making collective projects more difficult.",effects:{stability:2,wealth:-4}}
+    ]},
+    { id:"storm", tag:"WEATHER", title:"A coastal storm damages the settlement", text:"Strong winds and rising water have damaged roofs and riverfront structures. The next choice will determine what gets repaired first.", choices:[
+      {title:"Repair the landing and dock",description:"Keep boats and trade access working.",outcome:"The landing reopened, helping future trade. Some homes still need repairs.",why:"Rivers and harbors connected colonies to trade, but storms could disrupt transport and damage infrastructure.",effects:{wealth:-5,stability:-2,buildings:["dock"]},delayed:{after:2,title:"A safer landing",text:"The repaired dock makes this season's trade more dependable.",effects:{wealth:7}}},
+      {title:"Repair homes first",description:"Protect residents before rebuilding commerce.",outcome:"Families regained shelter and confidence. Trade repairs will have to wait.",why:"Settlements had to balance infrastructure against immediate household needs.",effects:{stability:6,wealth:-4,buildings:["houses"]}},
+      {title:"Use local materials and do a little of both",description:"Stretch the repair work across the settlement.",outcome:"Basic repairs were made throughout the settlement, but none were especially strong.",why:"Limited resources often forced communities to make partial repairs rather than fully restore every structure.",effects:{stability:3,food:-2}}
+    ]},
+    { id:"market", tag:"ECONOMY", title:"Prices shift across the Atlantic", text:"Merchants report changing demand overseas. The colony can adjust production now, though no one can guarantee next year's market.", choices:[
+      {title:"Focus on export production",description:"Use more land and time for goods that may sell well.",outcome:"Exports brought in money this year, but food production fell behind.",why:"Colonial export economies responded to distant markets. Profitable crops could make settlements vulnerable if food production was neglected.",effects:{wealth:10,food:-7},delayed:{after:2,title:"Market demand cools",text:"Prices fell after the colony had committed more effort to exports.",effects:{wealth:-7}}},
+      {title:"Keep production mixed",description:"Maintain food, trade goods, and local crafts.",outcome:"No single market brought a windfall, but the colony stayed more flexible.",why:"Diversified production could reduce dependence on a single crop or market, though it might limit short-term returns.",effects:{food:4,wealth:3,stability:2}},
+      {title:"Store goods until prices improve",description:"Wait for a better opportunity to sell.",outcome:"Goods were held back. The colony avoided a poor sale but had less cash at hand.",why:"Storage could give merchants flexibility, but goods could spoil and money remained tied up.",effects:{wealth:-2,food:3},delayed:{after:2,title:"A better selling season",text:"Stored goods reached a more favorable market.",effects:{wealth:9}}}
+    ]},
+    { id:"va_tobacco", colony:"virginia", tag:"VIRGINIA · EXPORTS", title:"Tobacco seeds arrive from overseas", text:"A new tobacco strain may suit Chesapeake conditions. Some settlers urge expansion, while others warn that food fields and local power relations are already under pressure.", choices:[
+      {title:"Try a limited tobacco planting",description:"Test a crop that could connect Virginia to a growing Atlantic market.",outcome:"A small tobacco crop sold well. The experiment brought wealth without taking over the fields.",why:"John Rolfe experimented with a sweeter tobacco strain around 1610–1612; by the 1610s it had become a major Virginia export. Tobacco's success reshaped land use and labor demand.",effects:{wealth:8,food:-2,buildings:["tobacco"]},delayed:{after:2,title:"Tobacco reshapes the colony",text:"Demand for land and labor grows as tobacco becomes more valuable.",effects:{wealth:7,food:-4,stability:-2}}},
+      {title:"Protect food fields and test later",description:"Keep the settlement fed before investing in a new export crop.",outcome:"The colony kept more land in food production. Some investors were disappointed.",why:"Tobacco could enrich planters, but it was not the only need. Expansion also intensified land seizure and reliance on coerced labor, including the growth of African slavery.",effects:{food:7,stability:2}},
+      {title:"Expand tobacco quickly",description:"Commit more land to the crop while buyers are interested.",outcome:"Exports raised wealth quickly, but food and land pressures became harder to manage.",why:"Virginia's tobacco boom brought wealth to planters and strengthened the colony's Atlantic ties. It also accelerated dispossession of Powhatan homelands and the growth of exploitative labor systems, including slavery.",effects:{wealth:14,food:-8,stability:-5,relations:-4,buildings:["tobacco"]},delayed:{after:1,title:"Expansion creates new conflict",text:"The demand for land intensifies conflict with nearby Powhatan communities.",effects:{relations:-7,stability:-2}}}
+    ]},
+    { id:"va_powhatan", colony:"virginia", tag:"TSENACOMMACAH", title:"A fragile exchange with Powhatan communities", text:"The settlement needs food and local knowledge. Leaders debate whether to seek an exchange or press farther into nearby territory.", choices:[
+      {title:"Send trusted negotiators to propose an exchange",description:"Offer goods and listen to terms set by Powhatan leaders.",outcome:"An exchange brought useful supplies and reopened communication. The agreement remains conditional.",why:"The Powhatan paramount chiefdom was a powerful regional polity, not a single generic group. Relationships with Jamestown shifted between exchange, diplomacy, coercion, and war.",effects:{food:7,relations:7,stability:2},flag:"powhatan_exchange"},
+      {title:"Keep to the settlement and grow local stores",description:"Reduce immediate contact and focus on food security.",outcome:"Local stores improved, but the colony had fewer channels for exchange and communication.",why:"Reducing contact could lower immediate friction while leaving the colony isolated and dependent on its own limited resources.",effects:{food:6,relations:-1}},
+      {title:"Claim more land for fields",description:"Expand the colony's farms beyond its current boundary.",outcome:"More land was cleared, but the expansion was contested and relations deteriorated.",why:"English expansion took land within Powhatan homelands. Calling it simply 'empty' land would hide the political claims and consequences of colonization.",effects:{food:5,relations:-9,stability:-3,buildings:["fields"]},delayed:{after:2,title:"Disputed boundaries",text:"The unresolved expansion dispute disrupts work and exchange.",effects:{stability:-5,food:-3}}}
+    ]},
+    { id:"va_labor", colony:"virginia", tag:"LABOR & HISTORY", title:"Who will do the colony's work?", text:"As tobacco planting expands, wealthy planters seek more workers. The colony's labor system is changing in ways that shape freedom and inequality for generations.", choices:[
+      {title:"Limit expansion and keep more food production",description:"Accept slower export growth instead of deepening labor demand.",outcome:"The colony gave up some immediate export opportunity and avoided expanding its labor demands as quickly.",why:"Virginia's plantation economy depended on coercive labor. Indentured servitude and the enslavement of Africans were distinct systems, both deeply exploitative; this simulation does not turn people into a resource or reward.",effects:{wealth:-3,food:5,stability:3}},
+      {title:"Use short-term indenture contracts",description:"Recruit workers under fixed terms, with legal freedom promised after service.",outcome:"Production increased, but disagreements over contracts and freedom soon surfaced.",why:"Indentured servants entered contracts of time-limited service, though conditions were harsh and promises could be contested. This was distinct from chattel slavery, which treated people and their descendants as property.",effects:{wealth:4,stability:-3},delayed:{after:2,title:"Contract disputes",text:"Former servants challenge the colony over freedom, land, and unequal treatment.",effects:{stability:-5}}},
+      {title:"Do not approve new labor demands",description:"Reject planters' request and accept slower growth.",outcome:"The colony's export growth slowed. A public dispute over who controls its future intensified.",why:"By the 17th century, English colonies increasingly built wealth through enslaved African labor. Slavery was violent, hereditary, and dehumanizing; it is not represented here as an upgrade or simple bonus.",effects:{wealth:-5,stability:-2,relations:1}}
+    ]},
+    { id:"va_tidewater", colony:"virginia", tag:"CHESAPEAKE", title:"The river carries opportunity—and risk", text:"The settlement's waterways make movement and trade easier, but distant farms are harder to defend and supply.", choices:[
+      {title:"Build a landing for small boats",description:"Improve river transport and keep the settlement connected.",outcome:"Boats can reach the settlement more easily; the landing creates a useful trade route.",why:"The Chesapeake's rivers shaped where Virginia settlements grew and how tobacco moved to market.",effects:{wealth:-5,buildings:["dock"],flag:"river_landing"}},
+      {title:"Keep homes close together",description:"Make shared defense and community work easier.",outcome:"Neighbors are closer to one another, though distant fields remain inconvenient.",why:"Settlement patterns reflected security needs, landholding, transport, and local geography.",effects:{stability:5,food:-2,buildings:["houses"]}},
+      {title:"Clear more riverfront fields",description:"Increase farmland near transport routes.",outcome:"The fields are easier to reach, but clearing adds to pressure on Native lands.",why:"River access made land especially valuable to English colonists; expansion also encroached on Powhatan territory.",effects:{food:7,relations:-5,buildings:["fields"]}}
+    ]},
+    { id:"ma_coast", colony:"massachusetts", tag:"NEW ENGLAND COAST", title:"Fishing boats return with a modest catch", text:"The short growing season makes the coast an important source of food and trade. The fleet needs repairs before the next trip.", choices:[
+      {title:"Repair the fleet",description:"Invest in boats and share the next catch across the town.",outcome:"A larger catch strengthened food stores and supported coastal trade.",why:"Fishing, shipbuilding, and maritime trade became important parts of New England's economy.",effects:{wealth:-4,food:8,buildings:["dock"]},flag:"fishing_fleet"},
+      {title:"Sell the catch to a passing merchant",description:"Take immediate income and buy other supplies later.",outcome:"The catch brought money, but less food remained for the settlement.",why:"Market access brought income, while export sales could compete with local food needs.",effects:{wealth:8,food:-5}},
+      {title:"Use the catch to prepare for winter",description:"Store food and keep the fleet small for now.",outcome:"The settlement is better prepared for cold weather, but has little new income.",why:"New England's growing season was shorter than in the Chesapeake, making preserved food particularly useful.",effects:{food:9,stability:2}}
+    ]},
+    { id:"ma_massachusett", colony:"massachusetts", tag:"MASSACHUSETT HOMELANDS", title:"A boundary dispute reaches the town", text:"English settlement is spreading near Massachusett homelands. Some colonists want to move fences farther out; others urge a meeting to address competing claims.", choices:[
+      {title:"Pause expansion and request a meeting",description:"Recognize that the land has existing communities and claims.",outcome:"Expansion paused while messengers seek a conversation. Some settlers object to the delay.",why:"Massachusett people lived in the region before the Puritan migration. English settlement took Indigenous homelands, even when colonists described them as available.",effects:{relations:5,food:-2,stability:-1}},
+      {title:"Move the boundary and compensate later",description:"Expand now and promise to settle terms afterward.",outcome:"More fields were opened, but the promise did not settle the dispute.",why:"Colonial land claims often favored English legal systems and ignored Indigenous sovereignty and existing use of land.",effects:{food:6,relations:-8,stability:-3},delayed:{after:2,title:"Boundary conflict returns",text:"The unresolved claims make cooperation more difficult.",effects:{relations:-4,stability:-4}}},
+      {title:"Keep the current boundary and improve yields",description:"Invest in existing fields instead of taking more land.",outcome:"Food production improved without expanding the settlement's footprint.",why:"Improving existing farms could reduce pressure for more land, although it did not undo earlier displacement.",effects:{food:5,wealth:-3,relations:2,buildings:["fields"]}}
+    ]},
+    { id:"ma_town", colony:"massachusetts", tag:"TOWN LIFE", title:"The town needs a common meeting place", text:"Settlers want a place to plan shared work and worship. They disagree about how much authority it should have over daily life.", choices:[
+      {title:"Build a meetinghouse and hold regular assemblies",description:"Create a shared center for civic decisions and worship.",outcome:"The meetinghouse became a center of community life and local decision-making.",why:"New England towns often organized around meetinghouses, but religious authority and civic participation were not open to everyone.",effects:{wealth:-5,stability:7,buildings:["meeting"]}},
+      {title:"Let neighborhoods organize separately",description:"Give households more local control over their routines.",outcome:"Some residents appreciated the flexibility, though shared work was harder to organize.",why:"Town organization could create cooperation but also impose community rules on residents.",effects:{stability:2,wealth:2}},
+      {title:"Focus on the harbor first",description:"Invest in trade infrastructure before civic buildings.",outcome:"The harbor expanded trade opportunities, while the town kept debating how to organize itself.",why:"Ports were essential to trade, but economic growth did not resolve disagreements about power or belief.",effects:{wealth:4,stability:-2,buildings:["dock"]}}
+    ]},
+    { id:"ma_beliefs", colony:"massachusetts", tag:"BELIEF & AUTHORITY", title:"A neighbor challenges the town's religious rules", text:"Residents debate whether one religious community should set rules for everyone. Leaders worry about division; dissenters ask for room to disagree.", choices:[
+      {title:"Allow a wider range of worship",description:"Protect room for disagreement and reduce pressure on dissenters.",outcome:"Several families stayed, and dissent eased. Leaders worried that the town was losing a shared purpose.",why:"Massachusetts Bay leaders sought a Puritan community and punished dissenters such as Anne Hutchinson and Roger Williams. Religious freedom varied widely among colonies.",effects:{stability:4,relations:2}},
+      {title:"Enforce the existing rules",description:"Preserve the colony's religious order and authority.",outcome:"Leaders maintained control, while some dissenters left or were pushed out.",why:"The Massachusetts Bay Colony was not a modern religiously tolerant society; its leaders imposed strict religious and civic norms.",effects:{stability:2,people:-3}},
+      {title:"Let each town set its own practice",description:"Reduce central authority and accept regional differences.",outcome:"Local tension eased, but colony-wide rules became less consistent.",why:"Colonial governance balanced local autonomy with shared authority in different ways.",effects:{stability:1,wealth:-2}}
+    ]},
+    { id:"pa_lenape", colony:"pennsylvania", tag:"LENAPE HOMELANDS", title:"Negotiating land and settlement", text:"More newcomers seek farms near the Delaware River. Lenape people already live in and govern these homelands; an agreement requires listening and clear terms.", choices:[
+      {title:"Pause settlement and negotiate terms",description:"Seek a negotiated agreement before opening more land.",outcome:"The pause slowed growth, but a negotiated process created space to discuss terms and responsibilities.",why:"Penn sought agreements with Lenape people, but colonization still reshaped Lenape homelands. Later Penn family actions—including the 1737 Walking Purchase—violated expectations and caused major dispossession.",effects:{relations:7,food:-2,stability:2},flag:"lenape_agreement"},
+      {title:"Settle first and promise payment later",description:"Expand farms now and try to resolve the dispute afterward.",outcome:"New farms added food, but the promised agreement did not resolve the competing land claims.",why:"Settlement could outpace negotiations and put Indigenous communities under pressure. English documents did not erase Lenape sovereignty.",effects:{food:7,relations:-9,stability:-3},delayed:{after:2,title:"Unsettled land claims",text:"The expanding settlement strains relationships and cooperation.",effects:{relations:-5,stability:-3}}},
+      {title:"Invite Lenape representatives to set boundaries",description:"Treat Lenape leaders as political partners in defining the agreement.",outcome:"Clearer boundaries improved communication, though some settlers resisted limits on expansion.",why:"Lenape people were political actors with their own priorities, communities, and diplomacy—not a background faction in a colonial story.",effects:{relations:8,wealth:-3,stability:-1},flag:"lenape_boundaries"}
+    ]},
+    { id:"pa_diversity", colony:"pennsylvania", tag:"DIVERSE SETTLERS", title:"New families bring different traditions", text:"German, Welsh, English, and other newcomers are arriving. The settlement must decide how to welcome them and make shared decisions.", choices:[
+      {title:"Protect space for different congregations",description:"Allow communities to worship and organize in their own ways.",outcome:"More families felt welcome, though coordinating shared projects took extra effort.",why:"Pennsylvania attracted people from varied religious and cultural backgrounds. Tolerance was an important ideal, but rights were not equal for everyone.",effects:{people:6,stability:5,food:-3}},
+      {title:"Require one common civic practice",description:"Make meetings and rules uniform across the settlement.",outcome:"Shared procedures made some decisions easier, while newcomers felt pressure to conform.",why:"A colony's laws could support cooperation and also exclude people whose beliefs or customs differed.",effects:{stability:3,people:2}},
+      {title:"Let newcomer groups establish their own villages",description:"Allow communities to settle together near the main town.",outcome:"New communities grew quickly, but fewer people joined common work in the central settlement.",why:"Ethnic and religious communities built distinct settlements while participating in wider colonial trade and governance.",effects:{people:7,wealth:2,stability:-2,buildings:["houses"]}}
+    ]},
+    { id:"pa_grain", colony:"pennsylvania", tag:"MIDDLE COLONY AGRICULTURE", title:"A strong grain harvest opens a trade choice", text:"The fields have produced more grain than the settlement needs this season. Merchants offer several ways to move it.", choices:[
+      {title:"Sell grain through the river port",description:"Use trade to strengthen the settlement's finances.",outcome:"Grain sales brought income and helped the river town grow.",why:"Pennsylvania's fertile lands and river routes supported grain exports and commerce.",effects:{wealth:9,food:-3,buildings:["dock"]}},
+      {title:"Store a reserve for difficult seasons",description:"Keep a safety supply and avoid relying only on exports.",outcome:"The storehouse is fuller, though the colony passed up a profitable sale.",why:"Food reserves can make a colony more resilient to poor harvests, transport interruptions, or winter shortages.",effects:{food:9,wealth:-2,buildings:["storehouse"]}},
+      {title:"Share grain with new households",description:"Use abundance to support settlement growth.",outcome:"More families joined the community, increasing both its strength and its needs.",why:"Migration and agricultural productivity could reinforce one another, but population growth also required housing and future food.",effects:{food:-3,people:6,stability:5}}
+    ]},
+    { id:"pa_governance", colony:"pennsylvania", tag:"PROPRIETARY GOVERNMENT", title:"Residents ask for a voice in local rules", text:"The proprietor's authority and settlers' interests do not always align. Residents want a clearer role in decisions that affect their households.", choices:[
+      {title:"Call a local assembly",description:"Give residents a formal place to debate and propose rules.",outcome:"The assembly gave residents a voice, while the proprietor retained important authority.",why:"Pennsylvania's Frame of Government provided for an elected assembly, but the colony remained under proprietary authority.",effects:{stability:6,wealth:-2}},
+      {title:"Let the governor settle the issue",description:"Resolve the dispute quickly through the appointed executive.",outcome:"A quick decision allowed work to continue, but residents remained wary of distant authority.",why:"Proprietary colonies were shaped by both local institutions and authority held by proprietors and their appointed officials.",effects:{wealth:3,stability:-3}},
+      {title:"Negotiate a compromise with merchants and farmers",description:"Balance trade interests with local needs.",outcome:"The compromise kept commerce moving and gave farmers some protections.",why:"Colonial politics involved negotiation among proprietors, assemblies, merchants, and local communities.",effects:{wealth:3,food:3,stability:2}}
+    ]}
+  ]
+};
+
+</script>
+  <script>
+(() => {
+  const { colonies, scenarios } = window.COLONY_DATA;
+  const $ = id => document.getElementById(id);
+  const clamp = (n, lo=0, hi=100) => Math.max(lo, Math.min(hi, n));
+  const keys = ["food", "wealth", "people", "stability", "relations"];
+  const names = {food:"Food",wealth:"Wealth",people:"People",stability:"Stability",relations:"Relations"};
+  const icons = {food:"◉",wealth:"◈",people:"♟",stability:"⌂",relations:"✦"};
+  const descriptions = {food:"Stores for the year",wealth:"Trade & supplies",people:"Settlers",stability:"Community",relations:"Regional diplomacy"};
+  const stages = [{name:"Camp",at:0},{name:"Outpost",at:18},{name:"Settlement",at:39},{name:"Growing Town",at:63},{name:"Prosperous Colony",at:90}];
+  let state = null, chosenScenario = null, isRevealed = false, anim = 0;
+  let sceneWidth = 900, sceneHeight = 310;
+  const canvas = $("settlementCanvas"), ctx = canvas.getContext("2d");
+
+  function initPicker() {
+    $("colonyChoices").querySelectorAll('[data-colony]').forEach(button => {
+      const id = button.dataset.colony;
+      if (!colonies[id]) return;
+      button.addEventListener("click", () => start(id));
+      button.disabled = false;
+    });
+    document.documentElement.dataset.colonyReady = 'true';
+    $("startupStatus").hidden = true;
+  }
+
+  function showPicker() {
+    cancelAnimationFrame(anim); anim = 0; state = null;
+    $("gameScreen").hidden = true; $("startScreen").hidden = false;
+    $("colonyChoices").querySelector('button').focus({preventScroll:true});
+    window.scrollTo(0, 0);
+  }
+
+  function start(id) {
+    if(anim) cancelAnimationFrame(anim);
+    const c = colonies[id];
+    state = {id, turn:0, year:c.year, resources:{...c.start}, history:[], pending:[], flags:[], buildings:[], seen:[], lowFood:0, lowStability:0, ended:false, weather:"Clear skies"};
+    $("startScreen").hidden = true; $("gameScreen").hidden = false;
+    $("regionLabel").textContent = `${c.name.toUpperCase()} · ${c.year}`;
+    $("colonyTitle").textContent = c.settlement;
+    $("colonySubtitle").textContent = c.subtitle;
+    $("sceneName").textContent = c.scene;
+    $("regionalNote").textContent = c.regionalNote;
+    $("chronicle").hidden = true;
+    $("chronicleCount").textContent = "0";
+    $("chronicleToggle").setAttribute('aria-expanded', 'false');
+    $("chronicleToggle").querySelector('.chevron').textContent = '⌄';
+    $("endCard").hidden = true; $("situationCard").hidden = false;
+    resizeCanvas(); render(); nextScenario(true); anim=requestAnimationFrame(draw);
+    window.scrollTo(0, 0);
+  }
+
+  function stageInfo() {
+    const r=state.resources, development = Math.max(0,r.people-25)*.58 + r.wealth*.12 + Math.max(0,r.stability-38)*.18 + new Set(state.buildings).size*12;
+    let stage=stages[0]; for(const s of stages) if(development>=s.at) stage=s;
+    const next=stages[stages.indexOf(stage)+1];
+    return {development,stage,next,progress: next ? clamp((development-stage.at)/(next.at-stage.at)*100) : 100};
+  }
+
+  function statusText(key,v) {
+    if(key==="food") return v>68?"Plentiful":v>38?"Steady":v>18?"Tight":"Critical";
+    if(key==="wealth") return v>70?"Strong":v>40?"Steady":v>20?"Limited":"Scarce";
+    if(key==="people") return v>72?"Growing":v>43?"Steady":v>22?"Small":"At risk";
+    if(key==="stability") return v>70?"Cohesive":v>45?"Steady":v>22?"Strained":"Unrest";
+    return v>70?"Cooperative":v>45?"Open":v>24?"Uneasy":"Contested";
+  }
+
+  function renderResources() {
+    const root=$("resourceList"); root.innerHTML="";
+    keys.forEach(k=>{const v=state.resources[k], node=document.createElement("div");node.className="resource";node.dataset.key=k;
+      node.innerHTML=`<div class="resource-head"><span class="resource-name">${icons[k]} &nbsp;${names[k]}</span><strong class="resource-value">${Math.round(v)}</strong></div><div class="meter"><span style="width:${clamp(v)}%"></span></div><div class="resource-sub"><span>${descriptions[k]}</span><span>${statusText(k,v)}</span></div>`;root.append(node);});
+    const st=stageInfo(); $("stageLabel").textContent=st.stage.name.toUpperCase(); $("growthFill").style.width=`${st.progress}%`;
+    $("growthHint").textContent=st.next?`${Math.max(1,Math.ceil(st.next.at-st.development))} development points to ${st.next.name}.`:`The colony has become a prosperous town.`;
+  }
+
+  function renderPressures() {
+    const c=colonies[state.id], r=state.resources, list=[];
+    if(r.food<30)list.push(["◉","Food stores low","A poor harvest or rough winter would hit hard."]);
+    else if(state.id==="virginia")list.push(["☀","Food production","Tobacco can compete with fields for land and labor."]);
+    else if(state.id==="massachusetts")list.push(["❄","Short growing season","Plan stores before cold weather limits work."]);
+    else list.push(["♧","Fast settlement growth","New arrivals can outpace housing and agreements."]);
+    if(r.relations<35)list.push(["⚑","Land tension","Unresolved claims make cooperation harder."]);
+    else list.push(["✦","Regional relationships","Diplomacy and trade need continued attention."]);
+    if(r.stability<38)list.push(["⌂","Community strained","Disagreement may interrupt shared work."]);
+    else if(r.people<35)list.push(["♟","Small workforce","Growth and repairs compete for limited hands."]);
+    else list.push(["⚒","Workforce needs","More people bring skills and higher food needs."]);
+    if(state.pending.length)list.push(["⌛","A choice is still unfolding",state.pending[0].title]);
+    $("pressureList").innerHTML=list.map(x=>`<div class="pressure"><span class="pressure-icon">${x[0]}</span><span><strong>${x[1]}</strong><p>${x[2]}</p></span></div>`).join("");
+    $("pressureCount").textContent=`${list.length} ACTIVE`;
+  }
+
+  function render() {
+    const c=colonies[state.id]; renderResources(); renderPressures();
+    $("yearLabel").textContent=state.year; $("regionLabel").textContent=`${c.name.toUpperCase()} · ${state.year}`; $("turnLabel").textContent=`YEAR ${Math.min(state.turn+1,8)} OF 8`;
+    $("sceneCaption").textContent=sceneCaption();
+    $("weatherLabel").textContent=state.weather.toUpperCase();
+    $("weatherIcon").textContent=state.weather.includes("Rain")?"☂":state.weather.includes("Wind")?"≋":state.weather.includes("Cloud")?"☁":"☀";
+  }
+  function sceneCaption(){const s=stageInfo().stage.name;return s==="Camp"?"A few homes and cleared ground beside the water.":s==="Outpost"?"New homes and fields begin to shape the settlement.":s==="Settlement"?"The settlement is taking on a distinct shape.":s==="Growing Town"?"Busy lanes connect homes, workshops, and the waterfront.":"A prosperous settlement hums with activity."}
+
+  function eligibleScenarios(){return scenarios.filter(s=>(!s.colony||s.colony===state.id)&&!state.seen.includes(s.id));}
+  function nextScenario(first=false){
+    if(state.ended)return;
+    isRevealed=false; $("outcome").hidden=true; $("choices").hidden=false; $("keyHelp").innerHTML='Choose a path <kbd>A</kbd> <kbd>B</kbd> <kbd>C</kbd>';
+    let pool=eligibleScenarios();
+    if(!pool.length){state.seen=[];pool=eligibleScenarios();}
+    // Use a distinct regional situation early so each colony immediately feels different.
+    const preferred={virginia:"va_powhatan",massachusetts:"ma_massachusett",pennsylvania:"pa_lenape"}[state.id];
+    let s=first?scenarios.find(x=>x.id===preferred):null;
+    if(!s&&state.turn===1){const second={virginia:"va_tobacco",massachusetts:"ma_coast",pennsylvania:"pa_grain"}[state.id];s=pool.find(x=>x.id===second);}
+    if(!s||state.seen.includes(s.id))s=pool[Math.floor(Math.random()*pool.length)];
+    chosenScenario=s;state.seen.push(s.id);
+    $("situationTag").textContent=s.tag;$("situationTitle").textContent=s.title;$("situationText").textContent=s.text;
+    $("situationCounter").textContent=`SITUATION ${state.turn+1} · ${colonies[state.id].name.toUpperCase()}`;
+    $("choices").innerHTML="";
+    s.choices.forEach((choice,i)=>{const b=document.createElement("button");b.className="choice";b.type="button";b.innerHTML=`<span class="choice-key">${String.fromCharCode(65+i)}</span><strong>${choice.title}</strong><small>${choice.description}</small>`;b.addEventListener("click",()=>choose(i));$("choices").append(b);});
+    render();
+  }
+
+  function applyEffects(effects={}) {const changes={};keys.forEach(k=>{const d=Number(effects[k]||0);if(d){const before=state.resources[k];state.resources[k]=clamp(before+d);changes[k]=Math.round(state.resources[k]-before);}});if(effects.buildings)state.buildings.push(...effects.buildings);if(effects.flag&&!state.flags.includes(effects.flag))state.flags.push(effects.flag);return changes;}
+  function applyYearEnd(){let changes={};const upkeep=Math.max(2,Math.round(state.resources.people/16));const oldFood=state.resources.food;state.resources.food=clamp(oldFood-upkeep);changes.food=state.resources.food-oldFood;
+    if(state.resources.food<12){state.lowFood++;state.resources.people=clamp(state.resources.people-3);state.resources.stability=clamp(state.resources.stability-4);changes.people=(changes.people||0)-3;changes.stability=(changes.stability||0)-4;}
+    else state.lowFood=0;
+    if(state.resources.stability<12){state.lowStability++;state.resources.people=clamp(state.resources.people-2);changes.people=(changes.people||0)-2;}else state.lowStability=0;
+    return changes;
+  }
+  function resolveRisk(choice){if(!choice.risk)return null;if(Math.random()<choice.risk.chance){const changes=applyEffects(choice.risk.effects);return {text:choice.risk.outcome,changes};}return null;}
+
+  function choose(index){if(isRevealed||state.ended)return;isRevealed=true;const choice=chosenScenario.choices[index];const changes=applyEffects(choice.effects);const risk=resolveRisk(choice);
+    if(choice.delayed){state.pending.push({due:state.turn+choice.delayed.after, title:choice.delayed.title,text:choice.delayed.text,effects:choice.delayed.effects});}
+    const maintenance=applyYearEnd();for(const [k,v] of Object.entries(maintenance))changes[k]=(changes[k]||0)+v;
+    state.weather=["Clear skies","Passing clouds","River breeze","Light rain","Overcast"][(Math.random()*5)|0];
+    state.history.push({year:state.year,title:chosenScenario.title,choice:choice.title,text:choice.outcome,why:choice.why,changes,risk:risk?.text||null});
+    if(!$("chronicle").hidden) updateChronicle();
+    $("choices").hidden=true;$("outcome").hidden=false;
+    const deltaHtml=keys.filter(k=>changes[k]).map(k=>`<span class="delta ${changes[k]<0?"down":""}">${names[k]} ${changes[k]>0?"+":""}${changes[k]}</span>`).join("");
+    $("outcome").innerHTML=`<div class="outcome-title">THE YEAR'S CONSEQUENCES</div><p>${choice.outcome}${risk?` ${risk.text}`:""}</p>${deltaHtml?`<div class="delta-list">${deltaHtml}</div>`:""}<p class="learning"><strong>Look closer:</strong> ${choice.why}</p><div class="outcome-actions"><button id="continueButton" class="primary-button">Continue to ${state.year+1} →</button></div>`;
+    $("keyHelp").textContent="Press Enter to continue";render();drawScene();
+    $("continueButton").addEventListener("click",continueYear);
+    checkCollapse();
+  }
+
+  function continueYear(){if(!isRevealed||state.ended)return;state.year++;state.turn++;
+    const pendingNow=state.pending.filter(p=>p.due<=state.turn);state.pending=state.pending.filter(p=>p.due>state.turn);
+    pendingNow.forEach(p=>{const changes=applyEffects(p.effects);state.history.push({year:state.year,title:p.title,choice:"A delayed consequence",text:p.text,why:"A previous decision continued to shape the colony.",changes,delayed:true});});
+    if(!$("chronicle").hidden) updateChronicle();
+    render();if(state.turn>=8){finish();return;}nextScenario();checkCollapse();
+  }
+  function checkCollapse(){if(state.ended)return;if(state.resources.people<=7||state.lowFood>=2||state.resources.stability<=4){finish(true);}}
+
+  function finish(collapsed=false){state.ended=true;$("situationCard").hidden=true;$("endCard").hidden=false;const r=state.resources;
+    const score=Math.round(r.food*.21+r.wealth*.19+r.people*.18+r.stability*.23+r.relations*.19+new Set(state.buildings).size*3);
+    const label=collapsed?"The settlement could not continue":score>76?"A thriving colony":score>59?"A resilient settlement":score>42?"A hard-won foothold":"A fragile beginning";
+    const detail=collapsed?"Years of food shortages, population loss, or internal strain pushed the settlement to collapse. Review the turning points and try a different strategy.":`After eight years, your colony has ${statusText("food",r.food).toLowerCase()} food stores, ${statusText("stability",r.stability).toLowerCase()} community stability, and ${statusText("relations",r.relations).toLowerCase()} regional relationships. No single measure tells the whole story.`;
+    const recent=state.history.slice(-4).map(h=>`<p><strong>${h.year} · ${h.title}</strong><br><em>${h.choice}</em> — ${h.text}</p>`).join("");
+    $("endCard").innerHTML=`<div class="end-emoji">${collapsed?"⌁":"✦"}</div><p class="eyebrow">YOUR COLONY'S FIRST YEARS</p><h2>${label}</h2><p>${detail}</p><div class="ending-metrics">${[["food","FOOD STORES"],["stability","COMMUNITY"],["relations","RELATIONSHIPS"]].map(([k,n])=>`<div class="ending-metric"><strong>${Math.round(r[k])}</strong><span>${n}</span></div>`).join("")}</div><div class="ending-history"><h3>Decisions that shaped this colony</h3>${recent}</div><p>Historical note: this model simplifies a complex period. Land, labor, power, and disease affected Indigenous peoples and colonists unequally; the five resource bars cannot represent those lived experiences.</p><div class="ending-actions"><button id="playAgain">Try another colony</button><button id="replaySame">Build again in ${colonies[state.id].name}</button></div>`;
+    $("playAgain").onclick=showPicker;$("replaySame").onclick=()=>start(state.id);
+    render();
+  }
+
+  function updateChronicle(){const root=$("chronicle");root.innerHTML=state.history.slice().reverse().map(h=>`<div class="chronicle-entry"><strong>${h.year} · ${h.title}</strong><p><em>${h.choice}</em> — ${h.text}</p></div>`).join("")||"<p class='chronicle-entry'>Your decisions will appear here.</p>";$("chronicleCount").textContent=state.history.length;}
+  $("chronicleToggle").setAttribute('aria-expanded', 'false');
+  $("chronicleToggle").setAttribute('aria-controls', 'chronicle');
+  $("chronicleToggle").addEventListener("click",()=>{const el=$("chronicle");el.hidden=!el.hidden;$("chronicleToggle").setAttribute('aria-expanded', String(!el.hidden));$("chronicleToggle").querySelector(".chevron").textContent=el.hidden?"⌄":"⌃";if(!el.hidden)updateChronicle();});
+  $("restartButton").addEventListener("click",showPicker); $("resetButton").addEventListener("click",()=>{if(state)start(state.id);});
+  document.addEventListener("keydown",e=>{if(e.repeat)return;if($("startScreen").hidden===false&&["1","2","3"].includes(e.key)){e.preventDefault();const ids=Object.keys(colonies);start(ids[Number(e.key)-1]);return;}
+    if(!state||state.ended)return;if(!isRevealed&&["a","b","c","1","2","3"].includes(e.key.toLowerCase())){const i={a:0,b:1,c:2,"1":0,"2":1,"3":2}[e.key.toLowerCase()];choose(i);}else if(isRevealed&&e.key==="Enter")continueYear();});
+
+  function resizeCanvas(){const rect=canvas.getBoundingClientRect();if(!rect.width||!rect.height)return;const dpr=Math.min(2,window.devicePixelRatio||1);sceneWidth=rect.width;sceneHeight=rect.height;canvas.width=Math.floor(rect.width*dpr);canvas.height=Math.floor(rect.height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);drawScene();}
+  if (typeof ResizeObserver === 'function') new ResizeObserver(resizeCanvas).observe(canvas);
+  else window.addEventListener('resize', resizeCanvas);
+  function roundedRect(c,x,y,w,h,r,color){c.fillStyle=color;c.beginPath();c.roundRect(x,y,w,h,r);c.fill();}
+  function tree(x,y,s,wind){ctx.save();ctx.translate(x,y);ctx.fillStyle="#765a3d";ctx.fillRect(-2*s,-1*s,4*s,18*s);ctx.fillStyle="#55765c";for(let i=0;i<3;i++){ctx.beginPath();ctx.moveTo(wind*s,-(28+i*8)*s);ctx.lineTo(-18*s,(i*9-2)*s);ctx.lineTo(18*s,(i*9-2)*s);ctx.closePath();ctx.fill();}ctx.restore();}
+  function house(x,y,s,style=0){const wall=["#dec89e","#d5b488","#b9956e","#e0d1b3"][style%4],roof=["#76584a","#6d5946","#9c684e"][style%3];ctx.fillStyle=wall;ctx.fillRect(x,y,43*s,30*s);ctx.fillStyle=roof;ctx.beginPath();ctx.moveTo(x-5*s,y+2*s);ctx.lineTo(x+21*s,y-17*s);ctx.lineTo(x+49*s,y+2*s);ctx.closePath();ctx.fill();ctx.fillStyle="#675545";ctx.fillRect(x+18*s,y+14*s,8*s,16*s);ctx.fillStyle="#83a2a0";ctx.fillRect(x+5*s,y+10*s,7*s,7*s);ctx.fillRect(x+31*s,y+10*s,7*s,7*s);ctx.fillStyle="#413f37";ctx.fillRect(x+5*s,y+9*s,7*s,2*s);ctx.fillRect(x+31*s,y+9*s,7*s,2*s);}
+  function person(x,y,s,t,idx){const walk=Math.sin(t*.002+idx*2)*2*s;ctx.fillStyle="#57483d";ctx.beginPath();ctx.arc(x,y-8*s,3*s,0,Math.PI*2);ctx.fill();ctx.fillStyle=["#9b5944","#536d65","#926d42"][idx%3];ctx.fillRect(x-2.5*s,y-5*s,5*s,9*s);ctx.strokeStyle="#554a3f";ctx.lineWidth=1.4*s;ctx.beginPath();ctx.moveTo(x-1*s,y+4*s);ctx.lineTo(x-2*s+walk,y+9*s);ctx.moveTo(x+1*s,y+4*s);ctx.lineTo(x+2*s-walk,y+9*s);ctx.stroke();}
+  function drawScene(time=performance.now()){
+    if(!state||!sceneWidth)return;const w=sceneWidth,h=sceneHeight,c=colonies[state.id],st=stageInfo(),r=state.resources, t=time;
+    const sky=ctx.createLinearGradient(0,0,0,h);sky.addColorStop(0,state.weather==="Overcast"?"#aebdc0":"#a8c9cb");sky.addColorStop(.57,"#dae2d2");sky.addColorStop(1,"#a8b58c");ctx.fillStyle=sky;ctx.fillRect(0,0,w,h);
+    // distant tree line and low hills
+    ctx.fillStyle="#849b83";ctx.beginPath();ctx.moveTo(0,h*.56);for(let x=0;x<=w;x+=20)ctx.lineTo(x,h*.48+Math.sin(x*.015)*9);ctx.lineTo(w,h);ctx.lineTo(0,h);ctx.fill();
+    // water ribbon changes slightly by region
+    const waterY=h*.59;ctx.fillStyle=state.id==="massachusetts"?"#799fa0":"#75999a";ctx.beginPath();ctx.moveTo(0,waterY);ctx.bezierCurveTo(w*.24,waterY-8,w*.2,waterY+22,w*.48,waterY+14);ctx.bezierCurveTo(w*.73,waterY+3,w*.76,waterY-4,w,waterY+10);ctx.lineTo(w,h*.76);ctx.lineTo(0,h*.76);ctx.fill();
+    ctx.strokeStyle="#bfd0bd66";for(let i=0;i<5;i++){const x=((i*179+t*.018)%w);ctx.beginPath();ctx.moveTo(x,waterY+14+(i%3)*7);ctx.quadraticCurveTo(x+16,waterY+10+(i%3)*7,x+31,waterY+14+(i%3)*7);ctx.stroke();}
+    // banks / grass
+    ctx.fillStyle="#879d72";ctx.beginPath();ctx.moveTo(0,h*.68);ctx.quadraticCurveTo(w*.45,h*.7,w,h*.64);ctx.lineTo(w,h);ctx.lineTo(0,h);ctx.fill();
+    // soft paths
+    ctx.strokeStyle="#c6b489";ctx.lineWidth=11;ctx.lineCap="round";ctx.beginPath();ctx.moveTo(w*.5,h*.99);ctx.quadraticCurveTo(w*.52,h*.78,w*.43,h*.68);ctx.stroke();ctx.lineWidth=2;ctx.strokeStyle="#e0d1aa";ctx.stroke();
+    // forest frame
+    const forest=Math.max(3,9-Math.floor(new Set(state.buildings).size/2));for(let i=0;i<forest;i++){tree(14+i*33,h*.68-(i%2)*7,.58+(i%3)*.08,Math.sin(t*.001+i)*.4);tree(w-18-i*34,h*.66-(i%2)*8,.62+(i%3)*.08,Math.sin(t*.001+i+4)*.4);}
+    // field rows
+    const fields=state.buildings.includes("fields")||r.food>63; if(fields){ctx.fillStyle=state.id==="virginia"&&state.buildings.includes("tobacco")?"#69834e":"#c6a85f";ctx.save();ctx.translate(w*.70,h*.72);for(let row=0;row<4;row++){ctx.beginPath();ctx.ellipse(0,row*7,w*.105,4,0,0,Math.PI*2);ctx.fill();}ctx.restore();}
+    if(state.buildings.includes("tobacco")){ctx.fillStyle="#5c7650";for(let j=0;j<10;j++){let x=w*.64+(j%5)*12,y=h*.64+Math.floor(j/5)*9;ctx.fillRect(x,y,2,10);ctx.beginPath();ctx.ellipse(x-3,y+4,4,2,-.5,0,Math.PI*2);ctx.ellipse(x+4,y+6,4,2,.5,0,Math.PI*2);ctx.fill();}}
+    // main settlement clustered by development
+    const housesCount=1+Math.min(5,Math.floor((r.people-25)/15))+Math.min(2,Math.floor(new Set(state.buildings).size/2));
+    const placements=[[.35,.67],[.47,.71],[.56,.65],[.31,.77],[.61,.75],[.43,.61],[.52,.79],[.27,.66]];
+    for(let i=0;i<Math.max(1,housesCount);i++){const p=placements[i%placements.length];house(w*p[0],h*p[1],.72+(i%3)*.08,i);}
+    // specific civic / market structures
+    if(state.buildings.includes("meeting")){house(w*.38,h*.57,.92,3);ctx.fillStyle="#493f36";ctx.fillRect(w*.38+18,h*.57-22,5,13);}
+    if(state.buildings.includes("storehouse")){ctx.fillStyle="#b58d59";ctx.fillRect(w*.6,h*.61,37,25);ctx.fillStyle="#6d5544";ctx.beginPath();ctx.moveTo(w*.59,h*.61);ctx.lineTo(w*.62,h*.59);ctx.lineTo(w*.65,h*.61);ctx.fill();ctx.fillRect(w*.62,h*.69,6,10);}
+    if(state.buildings.includes("dock")||state.id==="massachusetts"&&state.turn>1){ctx.fillStyle="#755940";ctx.fillRect(w*.08,h*.65,w*.20,5);ctx.fillRect(w*.16,h*.65,5,h*.11);ctx.fillRect(w*.265,h*.65,5,h*.11);ctx.fillStyle="#815f45";ctx.beginPath();ctx.moveTo(w*.14,h*.64);ctx.lineTo(w*.20,h*.64);ctx.lineTo(w*.23,h*.67);ctx.lineTo(w*.11,h*.67);ctx.fill();ctx.strokeStyle="#ece0bd";ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(w*.17,h*.64);ctx.lineTo(w*.17,h*.54);ctx.lineTo(w*.22,h*.63);ctx.stroke();}
+    if(state.buildings.includes("tobacco")&&state.id==="virginia"){ctx.fillStyle="#c49c61";ctx.fillRect(w*.79,h*.69,22,10);ctx.fillRect(w*.82,h*.65,18,12);}
+    // chimney smoke
+    for(let i=0;i<Math.min(4,housesCount);i++){const p=placements[i%placements.length],x=w*p[0]+15,y=h*p[1]-16;ctx.fillStyle="#665348";ctx.fillRect(x,y,4,9);ctx.strokeStyle="#f6f3e7a8";ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(x+2,y);ctx.bezierCurveTo(x+6,y-8+Math.sin(t*.001+i)*2,x-3,y-13,x+3,y-19);ctx.stroke();}
+    // tiny moving inhabitants
+    const count=Math.min(8,Math.max(2,Math.floor(r.people/13)));for(let i=0;i<count;i++){const x=((i*77+t*.018*(i%2?1:-.6))%(w*.44))+w*.31;const y=h*(.79+(i%3)*.04);person(x,y,.8,t,i);}
+    // weather cues, restrained
+    if(state.weather==="Light rain"){ctx.strokeStyle="#d8e3e285";ctx.lineWidth=1;for(let i=0;i<45;i++){let x=(i*47+t*.11)%w,y=(i*61+t*.22)%h;ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x-3,y+7);ctx.stroke();}}
+    if(state.weather==="River breeze"){ctx.fillStyle="#f5f1d3";ctx.beginPath();ctx.arc(w*.82,h*.18,15,0,Math.PI*2);ctx.fill();}
+  }
+  function draw(t){if(!state)return;drawScene(t);anim=requestAnimationFrame(draw);}
+
+  initPicker();
+})();
+
+</script>
+</body>
+</html>
