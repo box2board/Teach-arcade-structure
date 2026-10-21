@@ -25,7 +25,7 @@ Each topic produces three two-page Letter PDFs, one six-page combined PDF, three
 
 ## Website and previews
 
-`crossword-catalog.json` is the central manifest. `render-crossword-library.py` produces static resource cards between marker comments on the existing Print & Play hub. Search, course filters, and twelve-card pagination progressively enhance those cards. Downloads remain usable without JavaScript. One shared popup loads only thumbnail images on hover or keyboard focus; Escape dismisses it. Mobile never loads thumbnails. No hidden PDF iframes are used.
+`crossword-catalog.json` is the central manifest. `render-crossword-library.py` produces static resource cards between marker comments on `/print-play-games/crosswords/`. The main Print & Play hub links to the dedicated crossword page with a game-type tile. Search, course filters, and twelve-card pagination progressively enhance the cards. Downloads remain usable without JavaScript. One shared popup loads only thumbnail images on hover or keyboard focus; Escape dismisses it. Mobile never loads thumbnails. No hidden PDF iframes are used.
 
 ## Browser checks
 

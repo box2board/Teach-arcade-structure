@@ -30,10 +30,6 @@ for slug,config in subjects.items():
 <noscript><p>All downloads remain available. Enable JavaScript to search and filter this library.</p></noscript>
 </section>''')
 markup='<!-- CROSSWORD_LIBRARY_START -->\n'+'\n'.join(sections)+'\n<!-- CROSSWORD_LIBRARY_END -->'
-p=base/'index.html';s=p.read_text();assert '<!-- CROSSWORD_LIBRARY_START -->' in s
+p=base/'crosswords'/'index.html';s=p.read_text();assert '<!-- CROSSWORD_LIBRARY_START -->' in s
 s=re.sub(r'<!-- CROSSWORD_LIBRARY_START -->.*?<!-- CROSSWORD_LIBRARY_END -->',lambda _:markup,s,flags=re.S)
-links=''.join(f'<a class="btn secondary" href="#{cfg["anchor"]}">{esc(cfg["displayName"])} Crosswords</a>' for cfg in subjects.values())
-s=re.sub(r'<!-- CROSSWORD_SUBJECT_LINKS_START -->.*?<!-- CROSSWORD_SUBJECT_LINKS_END -->','',s,flags=re.S)
-s=s.replace('<a class="btn" href="#social-studies-crosswords">Browse Crosswords</a>', '<a class="btn" href="#social-studies-crosswords">Browse Crosswords</a><!-- CROSSWORD_SUBJECT_LINKS_START -->'+links+'<!-- CROSSWORD_SUBJECT_LINKS_END -->')
-s=s.replace('href="/subjects/ela/index.html" aria-label="Print and Play for ELA"','href="#ela-crosswords" aria-label="Print and Play for ELA"')
-p.write_text(s);print(f'Rendered {len(resources)} static cards across {len(sections)} subjects and {len(resources)*4} download choices')
+p.write_text(s);print(f'Rendered {len(resources)} static cards across {len(sections)} subjects and {len(resources)*4} download choices in /crosswords/')

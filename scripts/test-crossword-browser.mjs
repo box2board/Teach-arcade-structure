@@ -17,7 +17,10 @@ if(!process.env.CROSSWORD_TEST_ORIGIN){
 const browser=await chromium.launch({headless:true,...(process.env.CROSSWORD_CHROMIUM_PATH?{executablePath:process.env.CROSSWORD_CHROMIUM_PATH}:{}),args:['--disable-gpu']});
 const page=await browser.newPage({viewport:{width:1440,height:1000}});
 const errors=[],requests=[];page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>requests.push(r.url()));
-await page.goto(origin+'/print-play-games/');await page.locator('.library-status').first().waitFor();
+await page.goto(origin+'/print-play-games/');
+assert.equal(await page.locator('.crossword-card').count(),0,'Crosswords should be on their own page');
+assert.equal(await page.locator('.hub-tile[href="/print-play-games/crosswords/"]').count(),1,'Crosswords tile is missing from Print & Play');
+await page.goto(origin+'/print-play-games/crosswords/');await page.locator('.library-status').first().waitFor();
 assert.equal(requests.filter(u=>/\.(pdf|webp)(?:$|\?)/.test(u)).length,0,'Preview or PDF preloaded');
 let focusChecks=0,hoverChecks=0,downloadChecks=0;const reports={};
 for(const slug of selected){
@@ -53,7 +56,7 @@ for(const slug of selected){
  reports[slug]={topics:items.length,categoryCounts,focusChecks:items.length*4,hoverChecks:items.length,downloadChecks:items.length*4};
 }
 const mobile=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true});
-const mobileRequests=[];mobile.on('request',r=>mobileRequests.push(r.url()));await mobile.goto(origin+'/print-play-games/');
+const mobileRequests=[];mobile.on('request',r=>mobileRequests.push(r.url()));await mobile.goto(origin+'/print-play-games/crosswords/');
 for(const slug of selected){
  const cfg=configs[slug],items=catalog.filter(r=>r.subject===cfg.subject),library=mobile.locator('#'+cfg.anchor);
  const query=slug==='social-studies'?'World War II':items[0].title;
@@ -62,7 +65,7 @@ for(const slug of selected){
  await library.scrollIntoViewIfNeeded();await mobile.screenshot({path:'/tmp/crossword-qa/'+slug+'-mobile.png'});
 }
 assert.equal(mobileRequests.filter(u=>/\.(pdf|webp)(?:$|\?)/.test(u)).length,0);assert.deepEqual(errors,[]);
-const nojs=await browser.newPage({javaScriptEnabled:false});await nojs.goto(origin+'/print-play-games/');assert.equal(await nojs.locator('.crossword-card a[download]').count(),catalog.length*4);
+const nojs=await browser.newPage({javaScriptEnabled:false});await nojs.goto(origin+'/print-play-games/crosswords/');assert.equal(await nojs.locator('.crossword-card a[download]').count(),catalog.length*4);
 await browser.close();server?.kill();
 const report={status:'passed',subjects:reports,focusChecks,hoverChecks,downloadChecks,initialPreviewOrPdfRequests:0,mobilePreviewOrPdfRequests:0,mobileHorizontalOverflow:false,noJavaScriptDownloads:catalog.length*4,browserErrors:errors};
 const dest=selected.length===1?`docs/crosswords/${selected[0]}/browser-validation.json`:'docs/crosswords/all-subjects-browser-validation.json';
