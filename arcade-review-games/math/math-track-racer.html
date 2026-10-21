@@ -1,0 +1,1064 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Math Track Racer · Teach Arcade</title>
+  <meta name="description" content="A racing-style math review game: steer into the correct answer on the track to score points." />
+  <link rel="icon" href="/assets/images/teach-arcade-logo.png" />
+
+  <style>
+    :root{
+      --bg1:#0b1220;
+      --bg2:#050914;
+      --panel:#0f172a;
+      --card:#0b1220;
+      --text:#e5e7eb;
+      --muted:#94a3b8;
+      --accent:#2563eb;
+      --good:#22c55e;
+      --bad:#ef4444;
+      --warn:#f59e0b;
+      --track:#111827;
+      --line:#1f2937;
+    }
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Nunito, Arial, sans-serif;
+      color:var(--text);
+      background: radial-gradient(circle at top, #0f172a 0%, #050914 55%, #020617 100%);
+      overflow:hidden;
+    }
+    .wrap{
+      max-width:1100px;
+      margin:0 auto;
+      padding:14px 14px 40px;
+    }
+    .topbar{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:10px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:800;
+      letter-spacing:.2px;
+    }
+    .brand img{width:34px;height:34px;border-radius:8px}
+    .hud{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+    }
+    .pill{
+      background: rgba(15,23,42,.75);
+      border:1px solid rgba(148,163,184,.18);
+      padding:8px 10px;
+      border-radius:999px;
+      font-size:13px;
+      color:var(--muted);
+      display:flex; gap:8px; align-items:center;
+    }
+    .pill b{color:var(--text)}
+    .btn{
+      border:1px solid rgba(148,163,184,.25);
+      background: rgba(15,23,42,.75);
+      color:var(--text);
+      padding:10px 12px;
+      border-radius:12px;
+      font-weight:800;
+      cursor:pointer;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+    }
+    .btn.primary{
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+    .btn:active{transform: translateY(1px)}
+    .layout{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:12px;
+    }
+    .stage{
+      position:relative;
+      background: rgba(15,23,42,.55);
+      border:1px solid rgba(148,163,184,.14);
+      border-radius:16px;
+      overflow:hidden;
+      box-shadow:0 12px 40px rgba(0,0,0,.25);
+    }
+    canvas{display:block;width:100%;height:auto}
+    .overlay{
+      position:absolute; inset:0;
+      display:flex; align-items:center; justify-content:center;
+      background: rgba(2,6,23,.65);
+      backdrop-filter: blur(4px);
+      padding:16px;
+      z-index:10;
+    }
+    .modal{
+      width:min(820px, 96vw);
+      background: rgba(15,23,42,.92);
+      border:1px solid rgba(148,163,184,.18);
+      border-radius:16px;
+      padding:16px;
+      box-shadow:0 18px 60px rgba(0,0,0,.35);
+    }
+    .modal h1{margin:0 0 8px; font-size:22px}
+    .modal p{margin:0 0 14px; color:var(--muted); line-height:1.5}
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+    @media (max-width:720px){
+      .grid{grid-template-columns:1fr}
+    }
+    .card{
+      background: rgba(2,6,23,.55);
+      border:1px solid rgba(148,163,184,.16);
+      border-radius:14px;
+      padding:12px;
+    }
+    .card h2{margin:0 0 8px; font-size:14px; letter-spacing:.2px; color:var(--text)}
+    .label{font-size:12px; color:var(--muted)}
+    select, input[type="range"]{
+      width:100%;
+      padding:10px;
+      border-radius:12px;
+      border:1px solid rgba(148,163,184,.18);
+      background: rgba(15,23,42,.85);
+      color:var(--text);
+      font-weight:700;
+      outline:none;
+    }
+    .hint{
+      margin-top:10px;
+      font-size:13px;
+      color:var(--muted);
+      line-height:1.5;
+    }
+    .kbd{font-weight:900; padding:2px 8px; border-radius:10px; border:1px solid rgba(148,163,184,.25); background: rgba(2,6,23,.5); color:var(--text)}
+    .touchbar{
+      position:absolute;
+      left:10px; right:10px; bottom:10px;
+      display:none;
+      gap:10px;
+      justify-content:space-between;
+      z-index:5;
+      pointer-events:none;
+    }
+    .touchbar .touchbtn{
+      pointer-events:auto;
+      flex:1;
+      background: rgba(15,23,42,.78);
+      border:1px solid rgba(148,163,184,.18);
+      border-radius:14px;
+      padding:14px 10px;
+      font-weight:900;
+      text-align:center;
+      user-select:none;
+    }
+    .touchbar .touchbtn:active{transform: translateY(1px)}
+
+    .seo-block {
+      max-width: 980px;
+      margin: 24px auto 40px;
+      background: rgba(2, 6, 23, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      border-radius: 12px;
+      padding: 22px 26px;
+      line-height: 1.7;
+      color: #e2e8f0;
+    }
+
+    .seo-block h2,
+    .seo-block h3 {
+      margin-top: 0;
+      font-size: 0.95rem;
+      color: #fbbf24;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .seo-block a {
+      color: #38bdf8;
+    }
+    @media (max-width:860px){
+      .touchbar{display:flex;}
+    }
+  </style>
+  <link rel="canonical" href="https://teacharcade.com/arcade-review-games/math/math-track-racer.html" />
+  <meta property="og:title" content="Math Track Racer · Teach Arcade" />
+  <meta property="og:description" content="A racing-style math review game: steer into the correct answer on the track to score points." />
+  <meta property="og:url" content="https://teacharcade.com/arcade-review-games/math/math-track-racer.html" />
+  <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Math Track Racer · Teach Arcade" />
+  <meta name="twitter:description" content="A racing-style math review game: steer into the correct answer on the track to score points." />
+  <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <img src="/assets/images/teach-arcade-logo.png" alt="Teach Arcade" />
+        <div>
+          <div style="font-size:14px;color:var(--muted);font-weight:800;letter-spacing:.3px">Teach Arcade</div>
+          <div style="font-size:18px;line-height:1.1;font-weight:900">Math Track Racer</div>
+        </div>
+      </div>
+
+      <div class="hud">
+        <div class="pill"><span>Mode:</span> <b id="hudMode">Mixed</b></div>
+        <div class="pill"><span>Difficulty:</span> <b id="hudDiff">Elementary</b></div>
+        <div class="pill"><span>Score:</span> <b id="hudScore">0</b></div>
+        <div class="pill"><span>Streak:</span> <b id="hudStreak">0</b></div>
+        <div class="pill"><span>Time:</span> <b id="hudTime">60</b>s</div>
+        <button class="btn" id="btnPause">Pause</button>
+        <button class="btn" id="btnRestart">Restart</button>
+      </div>
+    </div>
+
+    <div class="layout">
+      <div class="stage">
+        <canvas id="game" width="1100" height="620" aria-label="Math Track Racer canvas"></canvas>
+
+        <!-- Touch controls (mobile) -->
+        <div class="touchbar" aria-hidden="true">
+          <div class="touchbtn" id="touchLeft">◀︎</div>
+          <div class="touchbtn" id="touchRight">▶︎</div>
+        </div>
+
+        <!-- Start / Pause / End overlay -->
+        <div class="overlay" id="overlay">
+          <div class="modal">
+            <h1 id="overlayTitle">Math Track Racer</h1>
+            <p id="overlayText">
+              Steer into the <b>correct answer</b> on the track to score points.
+              Choose an operation set and difficulty for your students.
+            </p>
+
+            <div class="grid">
+              <div class="card">
+                <h2>Question Set</h2>
+                <div class="label">Choose which type of problems to practice.</div>
+                <div style="height:8px"></div>
+                <select id="modeSelect" aria-label="Choose operation mode">
+                  <option value="mixed" selected>Mixed (Add + Subtract + Multiply + Divide)</option>
+                  <option value="add">Addition (+)</option>
+                  <option value="sub">Subtraction (−)</option>
+                  <option value="mul">Multiplication (×)</option>
+                  <option value="div">Division (÷)</option>
+                </select>
+
+                <div style="height:10px"></div>
+                <h2>Difficulty</h2>
+                <div class="label">Controls number size + thinking time + road speed.</div>
+                <div style="height:8px"></div>
+                <select id="difficultySelect" aria-label="Choose difficulty">
+                  <option value="primary">Primary (K–1)</option>
+                  <option value="elementary" selected>Elementary (2–3)</option>
+                  <option value="upper">Upper Elem (4–5)</option>
+                  <option value="middle">Middle (6–8)</option>
+                </select>
+
+                <div class="hint" style="margin-top:10px">
+                  Tip: Use <b>Primary</b> for single-digit practice. Use <b>Upper</b> or <b>Middle</b> for tougher review.
+                </div>
+              </div>
+
+              <div class="card">
+                <h2>Speed & Thinking Time</h2>
+
+                <div class="label" style="margin-bottom:6px">Car responsiveness</div>
+                <input id="carSpeed" type="range" min="1" max="10" value="8" />
+                <div class="label" style="margin:8px 0 6px">Lead time (answers appear earlier)</div>
+                <input id="leadTime" type="range" min="1" max="10" value="8" />
+
+                <div class="hint">
+                  Higher <b>responsiveness</b> = faster lane changes.<br/>
+                  Higher <b>lead time</b> = answers spawn farther up the road.
+                </div>
+              </div>
+            </div>
+
+            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;">
+              <button class="btn primary" id="btnStart">Start Game</button>
+              <button class="btn" id="btnHow">How to Play</button>
+              <a class="btn" href="/arcade-review-games/">More Games</a>
+            </div>
+
+            <div class="hint" id="howBlock" style="display:none; margin-top:12px">
+              Controls: <span class="kbd">←</span> <span class="kbd">→</span> (or touch buttons on mobile).<br/>
+              Objective: collide with the answer tile that matches the question at the top.<br/>
+              Shortcut: press <span class="kbd">P</span> to pause/resume.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="seo-block" aria-label="Math Track Racer classroom uses and lesson ideas">
+    <h2>Math Track Racer: Fast Review for Operation Fluency</h2>
+    <p>
+      Math Track Racer combines quick decision-making with core operations practice. Students steer a racer into the
+      correct answer lane, which builds automaticity with addition, subtraction, multiplication, and division. Because
+      you can select the operation set and difficulty, the game scales from elementary fluency practice to middle school
+      review. It’s an effective warm-up, a station activity, or a brain break that still reinforces math standards.
+    </p>
+    <p>
+      For whole-class use, project the game and set a clear routine: students solve the problem on paper or whiteboards,
+      then vote for the correct lane. This keeps everyone engaged and prevents random guessing. For small groups, rotate
+      the driver role every few questions while other students explain their reasoning. This structure turns a fast-paced
+      game into meaningful math talk and ensures that speed does not replace understanding.
+    </p>
+    <p>
+      Differentiation is built in through the difficulty and operation choices. Start with a single operation for
+      students who need targeted practice, then gradually expand to mixed operations. Challenge advanced learners by
+      increasing the pace or by asking them to explain multiple strategies for a single problem. You can also use the
+      <a href="/tools/flashcards.html">Flashcard Studio</a> to pre-teach facts or vocabulary like product, quotient, and
+      difference before the game begins.
+    </p>
+    <p>
+      The game also provides fast formative assessment. Notice which operation types cause slowdowns or incorrect
+      selections, and use that information to plan follow-up lessons. If students consistently miss subtraction with
+      regrouping, for example, create a targeted practice station. Because the game’s questions appear in a consistent
+      format, you can quickly compare student responses over time.
+    </p>
+    <p>
+      For classroom management, set expectations for collaboration and pace. Use the
+      <a href="/tools/timer.html">Classroom Timer</a> to set short rounds and keep transitions smooth. You can also rotate
+      Math Track Racer with other titles in the <a href="/arcade-review-games/">Arcade Review Games</a> collection to
+      create a balanced review day with multiple skills in play.
+    </p>
+    <p>
+      Math Track Racer helps students build fluency and confidence by providing repeated, engaging practice. With flexible
+      settings and a fast feedback loop, it’s a dependable tool for building foundational math skills while keeping energy
+      high.
+    </p>
+  </section>
+
+<script>
+(() => {
+  // ---------------- Canvas setup ----------------
+  const canvas = document.getElementById("game");
+  const ctx = canvas.getContext("2d");
+
+  function fitCanvas(){
+    const parent = canvas.parentElement.getBoundingClientRect();
+    const dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+    const targetW = Math.floor(parent.width);
+    const targetH = Math.floor(Math.min(680, Math.max(520, parent.width * 0.56)));
+    canvas.style.width = targetW + "px";
+    canvas.style.height = targetH + "px";
+    canvas.width = Math.floor(targetW * dpr);
+    canvas.height = Math.floor(targetH * dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+  }
+  window.addEventListener("resize", fitCanvas);
+  fitCanvas();
+
+  // ---------------- UI elements ----------------
+  const overlay = document.getElementById("overlay");
+  const overlayTitle = document.getElementById("overlayTitle");
+  const overlayText = document.getElementById("overlayText");
+  const btnStart = document.getElementById("btnStart");
+  const btnHow = document.getElementById("btnHow");
+  const howBlock = document.getElementById("howBlock");
+  const btnPause = document.getElementById("btnPause");
+  const btnRestart = document.getElementById("btnRestart");
+
+  const modeSelect = document.getElementById("modeSelect");
+  const difficultySelect = document.getElementById("difficultySelect");
+  const carSpeedSlider = document.getElementById("carSpeed");
+  const leadTimeSlider = document.getElementById("leadTime");
+
+  const hudMode = document.getElementById("hudMode");
+  const hudDiff = document.getElementById("hudDiff");
+  const hudScore = document.getElementById("hudScore");
+  const hudStreak = document.getElementById("hudStreak");
+  const hudTime = document.getElementById("hudTime");
+
+  btnHow.addEventListener("click", () => {
+    howBlock.style.display = howBlock.style.display === "none" ? "block" : "none";
+  });
+
+  // ---------------- Game state ----------------
+  let running = false;
+  let paused = false;
+
+  let score = 0;
+  let streak = 0;
+  let timeLeft = 60;
+
+  let mode = "mixed";
+  let difficulty = "elementary";
+
+  // Tunables (computed)
+  let carLateralSpeed = 820; // px/s
+  let scrollSpeed = 255;     // px/s
+  let spawnDistance = 900;   // px ahead
+
+  // Preview phase
+  let previewActive = false;
+  let previewTimer = 0;
+
+  const PREVIEW_TIME = {
+    primary: 2.0,
+    elementary: 1.6,
+    upper: 1.2,
+    middle: 0.9
+  };
+
+  // Track / lanes
+  const LANES = 5;
+  const lanePadding = 20;
+  const roadMargin = 120;
+
+  // Car
+  const car = { x:0, y:0, w:48, h:74, vx:0 };
+
+  // Input
+  const keys = { left:false, right:false };
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowLeft") keys.left = true;
+    if (e.key === "ArrowRight") keys.right = true;
+    if (e.key.toLowerCase() === "p") togglePause();
+  });
+  window.addEventListener("keyup", (e) => {
+    if (e.key === "ArrowLeft") keys.left = false;
+    if (e.key === "ArrowRight") keys.right = false;
+  });
+
+  // Touch controls
+  const touchLeft = document.getElementById("touchLeft");
+  const touchRight = document.getElementById("touchRight");
+  const bindTouch = (el, keyName) => {
+    const on = () => keys[keyName] = true;
+    const off = () => keys[keyName] = false;
+    el.addEventListener("touchstart", (e)=>{ e.preventDefault(); on(); }, {passive:false});
+    el.addEventListener("touchend", (e)=>{ e.preventDefault(); off(); }, {passive:false});
+    el.addEventListener("touchcancel", (e)=>{ e.preventDefault(); off(); }, {passive:false});
+    el.addEventListener("mousedown", (e)=>{ e.preventDefault(); on(); });
+    window.addEventListener("mouseup", off);
+  };
+  bindTouch(touchLeft, "left");
+  bindTouch(touchRight, "right");
+
+  // Question / answers
+  let currentQ = null;         // {op,text,correct,answers,correctLane}
+  let answerTiles = [];        // {lane,x,y,w,h,value,isCorrect}
+
+  // Timers
+  let lastTs = 0;
+  let accumSecond = 0;
+
+  // ---------------- Utility ----------------
+  const clamp = (v,min,max)=>Math.max(min, Math.min(max, v));
+  const randInt = (a,b)=>Math.floor(Math.random()*(b-a+1))+a;
+  function shuffle(arr){
+    for(let i=arr.length-1;i>0;i--){
+      const j = Math.floor(Math.random()*(i+1));
+      [arr[i],arr[j]]=[arr[j],arr[i]];
+    }
+    return arr;
+  }
+  function setOverlay(show){ overlay.style.display = show ? "flex" : "none"; }
+
+  function modeLabel(m){
+    if (m==="add") return "Addition";
+    if (m==="sub") return "Subtraction";
+    if (m==="mul") return "Multiplication";
+    if (m==="div") return "Division";
+    return "Mixed";
+  }
+  function diffLabel(d){
+    if (d==="primary") return "Primary";
+    if (d==="elementary") return "Elementary";
+    if (d==="upper") return "Upper Elem";
+    return "Middle";
+  }
+
+  function updateHud(){
+    hudMode.textContent = modeLabel(mode);
+    hudDiff.textContent = diffLabel(difficulty);
+    hudScore.textContent = score;
+    hudStreak.textContent = streak;
+    hudTime.textContent = timeLeft;
+  }
+
+  // ---------------- Difficulty + Slider tuning ----------------
+  function baseRangesForDifficulty(op, diff){
+    // Returns: { aMin,aMax, bMin,bMax, mulMax, divMaxQ, wrongSpread }
+    // We keep subtraction non-negative.
+    if (diff === "primary"){
+      return { addMax: 10, subMax: 10, mulMax: 5, divMaxQ: 5, wrongSpread: (op==="mul"||op==="div") ? 4 : 6 };
+    }
+    if (diff === "elementary"){
+      return { addMax: 30, subMax: 30, mulMax: 10, divMaxQ: 10, wrongSpread: (op==="mul"||op==="div") ? 6 : 10 };
+    }
+    if (diff === "upper"){
+      return { addMax: 99, subMax: 99, mulMax: 12, divMaxQ: 12, wrongSpread: (op==="mul"||op==="div") ? 10 : 18 };
+    }
+    // middle
+    return { addMax: 199, subMax: 199, mulMax: 15, divMaxQ: 15, wrongSpread: (op==="mul"||op==="div") ? 14 : 28 };
+  }
+
+  function recalcTuningFromControls(){
+    // Slider influence
+    const carN = Number(carSpeedSlider.value || 8);   // 1..10
+    const leadN = Number(leadTimeSlider.value || 8); // 1..10
+
+    // Difficulty influence
+    const diff = difficultySelect.value || "elementary";
+
+    const diffCarBase = { primary: 680, elementary: 780, upper: 880, middle: 980 }[diff] || 820;
+    const diffRoadBase = { primary: 210, elementary: 240, upper: 265, middle: 285 }[diff] || 250;
+    const diffLeadBase = { primary: 1040, elementary: 950, upper: 880, middle: 820 }[diff] || 900;
+
+    // Apply sliders
+    carLateralSpeed = diffCarBase + (carN - 5) * 60; // ~ +/-300px/s range
+    carLateralSpeed = clamp(carLateralSpeed, 420, 1350);
+
+    spawnDistance = diffLeadBase + (leadN - 5) * 70; // more lead = more distance
+    spawnDistance = clamp(spawnDistance, 560, 1400);
+
+    scrollSpeed = diffRoadBase + (leadN - 5) * 6;    // slight nudge
+    scrollSpeed = clamp(scrollSpeed, 180, 340);
+  }
+
+  function startPreview(){
+    previewActive = true;
+    previewTimer = PREVIEW_TIME[difficulty] || 1.2;
+  }
+
+  // ---------------- Track geometry ----------------
+  function roadRect(){
+    const w = canvas.clientWidth;
+    const h = canvas.clientHeight;
+    const roadX = roadMargin;
+    const roadW = w - roadMargin*2;
+    return { x: roadX, y: 0, w: roadW, h };
+  }
+  function laneBounds(lane){
+    const r = roadRect();
+    const laneW = (r.w - lanePadding*2) / LANES;
+    const left = r.x + lanePadding + laneW*lane;
+    return { left, right:left+laneW, laneW };
+  }
+  function laneX(lane){
+    const b = laneBounds(lane);
+    return (b.left + b.right)/2;
+  }
+  function resetCar(){
+    const h = canvas.clientHeight;
+    car.y = h - 120;
+    car.x = laneX(Math.floor(LANES/2));
+    car.vx = 0;
+  }
+
+  // ---------------- Question generation ----------------
+  function pickOperation(){
+    if (mode === "mixed"){
+      return ["add","sub","mul","div"][randInt(0,3)];
+    }
+    return mode;
+  }
+
+  function makeQuestion(){
+    const op = pickOperation();
+    const diff = difficulty;
+    const R = baseRangesForDifficulty(op, diff);
+
+    let a,b,correct,text;
+
+    if (op === "add"){
+      a = randInt(0, R.addMax);
+      b = randInt(0, R.addMax);
+      correct = a + b;
+      text = `${a} + ${b} = ?`;
+    } else if (op === "sub"){
+      a = randInt(0, R.subMax);
+      b = randInt(0, a); // non-negative
+      correct = a - b;
+      text = `${a} − ${b} = ?`;
+    } else if (op === "mul"){
+      a = randInt(0, R.mulMax);
+      b = randInt(0, R.mulMax);
+      correct = a * b;
+      text = `${a} × ${b} = ?`;
+    } else { // div (clean integer)
+      b = randInt(1, R.mulMax);
+      correct = randInt(0, R.divMaxQ);
+      a = b * correct;
+      text = `${a} ÷ ${b} = ?`;
+    }
+
+    // Build answers
+    const answers = new Set([correct]);
+    while (answers.size < LANES){
+      const spread = R.wrongSpread;
+      const candidate = correct + randInt(-spread, spread);
+      if (candidate < 0) continue;
+      answers.add(candidate);
+    }
+
+    const arr = shuffle(Array.from(answers));
+    const correctLane = arr.indexOf(correct);
+    return { op, text, correct, answers: arr, correctLane };
+  }
+
+  function spawnAnswers(q){
+    answerTiles = [];
+    const tileW = 140;
+    const tileH = 66;
+    const y0 = -spawnDistance;
+
+    for (let lane=0; lane<LANES; lane++){
+      const x = laneX(lane);
+      const value = q.answers[lane];
+      answerTiles.push({
+        lane, x, y: y0,
+        w: tileW, h: tileH,
+        value,
+        isCorrect: (lane === q.correctLane)
+      });
+    }
+  }
+
+  function nextRound(){
+    currentQ = makeQuestion();
+    spawnAnswers(currentQ);
+    startPreview();
+  }
+
+  // ---------------- Collision ----------------
+  function rectsOverlap(ax,ay,aw,ah, bx,by,bw,bh){
+    return ax < bx + bw && ax + aw > bx && ay < by + bh && ay + ah > by;
+  }
+
+  function checkCollisions(){
+    const carRect = { x: car.x - car.w/2, y: car.y - car.h/2, w: car.w, h: car.h };
+
+    for (const t of answerTiles){
+      const tileRect = { x: t.x - t.w/2, y: t.y - t.h/2, w: t.w, h: t.h };
+      if (rectsOverlap(carRect.x,carRect.y,carRect.w,carRect.h, tileRect.x,tileRect.y,tileRect.w,tileRect.h)){
+        if (t.isCorrect){
+          const add = 100 + Math.min(200, streak*15);
+          score += add;
+          streak += 1;
+          flashMessage(`Correct! +${add}`, "good");
+        } else {
+          score = Math.max(0, score - 50);
+          streak = 0;
+          flashMessage(`Wrong (${t.value})  -50`, "bad");
+        }
+        updateHud();
+        nextRound();
+        return;
+      }
+    }
+
+    const passed = answerTiles.length && answerTiles[0].y > car.y + 120;
+    if (passed){
+      score = Math.max(0, score - 25);
+      streak = 0;
+      flashMessage(`Missed! -25`, "warn");
+      updateHud();
+      nextRound();
+    }
+  }
+
+  // ---------------- Feedback message ----------------
+  let toast = null; // {text, t, kind}
+  function flashMessage(text, kind){ toast = { text, t: 0, kind }; }
+
+  // ---------------- Drawing ----------------
+  let roadOffset = 0;
+
+  function drawBackground(){
+    const w = canvas.clientWidth;
+    const h = canvas.clientHeight;
+
+    const g = ctx.createLinearGradient(0,0,0,h);
+    g.addColorStop(0, "rgba(15,23,42,0.95)");
+    g.addColorStop(1, "rgba(2,6,23,0.95)");
+    ctx.fillStyle = g;
+    ctx.fillRect(0,0,w,h);
+
+    ctx.globalAlpha = 0.22;
+    for(let i=0;i<40;i++){
+      const x = (i*97 % w);
+      const y = (i*41 % h);
+      ctx.fillStyle = "white";
+      ctx.fillRect(x,y,1,1);
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  function drawRoad(dt){
+    const w = canvas.clientWidth;
+    const h = canvas.clientHeight;
+    const r = roadRect();
+
+    ctx.fillStyle = "rgba(17,24,39,0.92)";
+    ctx.fillRect(r.x, r.y, r.w, r.h);
+
+    ctx.fillStyle = "rgba(2,6,23,0.85)";
+    ctx.fillRect(0,0,r.x,h);
+    ctx.fillRect(r.x+r.w,0,w-(r.x+r.w),h);
+
+    roadOffset += scrollSpeed * dt;
+    const laneW = (r.w - lanePadding*2) / LANES;
+
+    ctx.strokeStyle = "rgba(148,163,184,0.18)";
+    ctx.lineWidth = 2;
+    ctx.strokeRect(r.x+1, r.y+1, r.w-2, r.h-2);
+
+    ctx.lineWidth = 2;
+    for(let i=1;i<LANES;i++){
+      const x = r.x + lanePadding + laneW*i;
+      ctx.strokeStyle = "rgba(148,163,184,0.18)";
+      ctx.setLineDash([16, 18]);
+      ctx.lineDashOffset = -roadOffset % 34;
+      ctx.beginPath();
+      ctx.moveTo(x,0);
+      ctx.lineTo(x,h);
+      ctx.stroke();
+    }
+    ctx.setLineDash([]);
+
+    ctx.globalAlpha = 0.20;
+    for (let i=0;i<LANES;i++){
+      const x = laneX(i);
+      for (let y = -40; y < h+60; y += 70){
+        const yy = y + (roadOffset % 70);
+        ctx.fillStyle = "white";
+        ctx.fillRect(x-1, yy, 2, 6);
+      }
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  function roundRect(ctx, x, y, w, h, r, fill, stroke){
+    const rr = Math.min(r, w/2, h/2);
+    ctx.beginPath();
+    ctx.moveTo(x+rr, y);
+    ctx.arcTo(x+w, y, x+w, y+h, rr);
+    ctx.arcTo(x+w, y+h, x, y+h, rr);
+    ctx.arcTo(x, y+h, x, y, rr);
+    ctx.arcTo(x, y, x+w, y, rr);
+    ctx.closePath();
+    if (fill) ctx.fill();
+    if (stroke) ctx.stroke();
+  }
+
+  function drawCar(){
+    const x = car.x, y = car.y, w = car.w, h = car.h;
+
+    ctx.fillStyle = "rgba(37,99,235,0.95)";
+    roundRect(ctx, x-w/2, y-h/2, w, h, 10, true, false);
+
+    ctx.fillStyle = "rgba(226,232,240,0.85)";
+    roundRect(ctx, x-w/2+8, y-h/2+10, w-16, 18, 8, true, false);
+
+    ctx.fillStyle = "rgba(250,204,21,0.95)";
+    ctx.fillRect(x-w/2+6, y-h/2+2, 10, 6);
+    ctx.fillRect(x+w/2-16, y-h/2+2, 10, 6);
+
+    ctx.fillStyle = "rgba(2,6,23,0.9)";
+    ctx.fillRect(x-w/2-6, y-h/2+14, 8, 16);
+    ctx.fillRect(x+w/2-2, y-h/2+14, 8, 16);
+    ctx.fillRect(x-w/2-6, y+h/2-30, 8, 16);
+    ctx.fillRect(x+w/2-2, y+h/2-30, 8, 16);
+  }
+
+  function drawAnswers(){
+    for (const t of answerTiles){
+      ctx.fillStyle = "rgba(15,23,42,0.92)";
+      ctx.strokeStyle = "rgba(148,163,184,0.24)";
+      ctx.lineWidth = 2;
+      roundRect(ctx, t.x - t.w/2, t.y - t.h/2, t.w, t.h, 14, true, true);
+
+      ctx.fillStyle = "rgba(226,232,240,0.95)";
+      ctx.font = "900 24px system-ui, -apple-system, Segoe UI, Roboto, Arial";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillText(String(t.value), t.x, t.y);
+    }
+  }
+
+  function drawQuestion(){
+    const w = canvas.clientWidth;
+
+    ctx.fillStyle = "rgba(15,23,42,0.88)";
+    roundRect(ctx, 14, 14, w-28, 78, 14, true, false);
+    ctx.strokeStyle = "rgba(148,163,184,0.18)";
+    ctx.lineWidth = 1.5;
+    roundRect(ctx, 14, 14, w-28, 78, 14, false, true);
+
+    const q = currentQ ? currentQ.text : "—";
+
+    ctx.fillStyle = "rgba(226,232,240,0.98)";
+    ctx.font = "900 26px system-ui, -apple-system, Segoe UI, Roboto, Arial";
+    ctx.textAlign = "left";
+    ctx.textBaseline = "middle";
+    ctx.fillText("Question:", 30, 44);
+
+    ctx.fillStyle = "rgba(226,232,240,0.92)";
+    ctx.font = "900 28px system-ui, -apple-system, Segoe UI, Roboto, Arial";
+    ctx.fillText(q, 150, 44);
+
+    ctx.fillStyle = "rgba(148,163,184,0.95)";
+    ctx.font = "700 13px system-ui, -apple-system, Segoe UI, Roboto, Arial";
+    const ready = previewActive ? " • Get ready…" : "";
+    ctx.fillText(`Mode: ${modeLabel(mode)} • Difficulty: ${diffLabel(difficulty)} • Steer into the correct number${ready}`, 30, 84);
+  }
+
+  function drawToast(dt){
+    if (!toast) return;
+    toast.t += dt;
+
+    const w = canvas.clientWidth;
+    const x = w/2;
+    const y = 122;
+
+    let color = "rgba(34,197,94,0.92)";
+    if (toast.kind==="bad") color = "rgba(239,68,68,0.92)";
+    if (toast.kind==="warn") color = "rgba(245,158,11,0.92)";
+
+    const alpha = toast.t < 0.2 ? (toast.t/0.2) : (toast.t > 1.2 ? Math.max(0, 1-(toast.t-1.2)/0.4) : 1);
+    ctx.globalAlpha = alpha;
+
+    ctx.fillStyle = "rgba(2,6,23,0.75)";
+    roundRect(ctx, x-190, y-22, 380, 44, 14, true, false);
+
+    ctx.fillStyle = color;
+    ctx.font = "900 18px system-ui, -apple-system, Segoe UI, Roboto, Arial";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(toast.text, x, y);
+
+    ctx.globalAlpha = 1;
+
+    if (toast.t > 1.6) toast = null;
+  }
+
+  function drawPausedOverlay(){
+    const w = canvas.clientWidth;
+    const h = canvas.clientHeight;
+    ctx.fillStyle = "rgba(2,6,23,0.55)";
+    ctx.fillRect(0,0,w,h);
+    ctx.fillStyle = "rgba(226,232,240,0.95)";
+    ctx.font = "900 34px system-ui, -apple-system, Segoe UI, Roboto, Arial";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText("Paused", w/2, h/2 - 16);
+
+    ctx.fillStyle = "rgba(148,163,184,0.95)";
+    ctx.font = "700 14px system-ui, -apple-system, Segoe UI, Roboto, Arial";
+    ctx.fillText("Press P or tap Pause to resume.", w/2, h/2 + 22);
+  }
+
+  // ---------------- Loop ----------------
+  function step(ts){
+    const dt = Math.min(0.033, (ts - lastTs) / 1000);
+    lastTs = ts;
+
+    if (running){
+      if (!paused){
+        update(dt);
+        render(dt);
+      } else {
+        render(dt);
+        drawPausedOverlay();
+      }
+    } else {
+      render(dt);
+    }
+    requestAnimationFrame(step);
+  }
+
+  function update(dt){
+    // Car movement always responsive (even in preview)
+    let dir = 0;
+    if (keys.left) dir -= 1;
+    if (keys.right) dir += 1;
+
+    const targetV = dir * carLateralSpeed;
+    const snap = 18;
+    car.vx += (targetV - car.vx) * (1 - Math.exp(-snap * dt));
+    car.x += car.vx * dt;
+
+    const r = roadRect();
+    const minX = r.x + 20 + car.w/2;
+    const maxX = r.x + r.w - 20 - car.w/2;
+    car.x = clamp(car.x, minX, maxX);
+
+    // Preview: answers visible, no tile motion, no timer tick
+    if (previewActive){
+      previewTimer -= dt;
+      if (previewTimer <= 0) previewActive = false;
+      return;
+    }
+
+    // Countdown timer
+    accumSecond += dt;
+    if (accumSecond >= 1){
+      const whole = Math.floor(accumSecond);
+      accumSecond -= whole;
+      timeLeft = Math.max(0, timeLeft - whole);
+      hudTime.textContent = timeLeft;
+      if (timeLeft <= 0){ endGame(); return; }
+    }
+
+    // Move answers
+    for (const t of answerTiles){
+      t.y += scrollSpeed * dt;
+    }
+
+    checkCollisions();
+  }
+
+  function render(dt){
+    const w = canvas.clientWidth;
+    const h = canvas.clientHeight;
+
+    ctx.clearRect(0,0,w,h);
+    drawBackground();
+    drawRoad(dt);
+    drawAnswers();
+    drawCar();
+    drawQuestion();
+    drawToast(dt);
+  }
+
+  // ---------------- Game controls ----------------
+  function startGame(){
+    mode = modeSelect.value || "mixed";
+    difficulty = difficultySelect.value || "elementary";
+    recalcTuningFromControls();
+
+    score = 0;
+    streak = 0;
+    timeLeft = 60;
+    accumSecond = 0;
+
+    updateHud();
+    resetCar();
+    nextRound();
+
+    running = true;
+    paused = false;
+    btnPause.textContent = "Pause";
+    setOverlay(false);
+  }
+
+  function endGame(){
+    running = false;
+    paused = false;
+    setOverlay(true);
+    overlayTitle.textContent = "Time!";
+    overlayText.innerHTML = `Final score: <b>${score}</b> • Best streak: <b>${streak}</b><br/>Choose settings and play again.`;
+    btnStart.textContent = "Play Again";
+  }
+
+  function togglePause(){
+    if (!running) return;
+    paused = !paused;
+    btnPause.textContent = paused ? "Resume" : "Pause";
+  }
+
+  btnStart.addEventListener("click", startGame);
+  btnPause.addEventListener("click", togglePause);
+  btnRestart.addEventListener("click", () => {
+    setOverlay(true);
+    overlayTitle.textContent = "Restart";
+    overlayText.textContent = "Choose your settings and start again.";
+    btnStart.textContent = "Start Game";
+    running = false;
+    paused = false;
+  });
+
+  // HUD live updates
+  modeSelect.addEventListener("change", () => { hudMode.textContent = modeLabel(modeSelect.value); });
+  difficultySelect.addEventListener("change", () => { hudDiff.textContent = diffLabel(difficultySelect.value); });
+
+  // If sliders change while overlay is up, tuning applies on Start
+  carSpeedSlider.addEventListener("input", () => {});
+  leadTimeSlider.addEventListener("input", () => {});
+
+  // Initialize view
+  hudMode.textContent = modeLabel(modeSelect.value);
+  hudDiff.textContent = diffLabel(difficultySelect.value);
+  updateHud();
+  resetCar();
+
+  // Pre-render a sample question under overlay
+  mode = modeSelect.value || "mixed";
+  difficulty = difficultySelect.value || "elementary";
+  recalcTuningFromControls();
+  currentQ = makeQuestion();
+  spawnAnswers(currentQ);
+  startPreview();
+
+  // Start render loop
+  requestAnimationFrame(step);
+})();
+</script>
+<section class="ta-value">
+  <h2>How to Use This in Class</h2>
+  <p><strong>What this tool does:</strong> This Math Track Racer · Teach Arcade activity is designed to turn content practice into a guided experience students can navigate with confidence. The layout keeps directions visible and reduces distraction so students can concentrate on the Math Track Racer · Teach Arcade objective. It provides a focused space for students to engage with Math Track Racer · Teach Arcade tasks, make choices, and see immediate feedback. Because the activity is self-contained, you can run it on a projector, in stations, or as an independent practice option.</p>
+  <p>Launch the Math Track Racer · Teach Arcade activity after direct instruction as a practice block where students apply key terms and steps. After the session, debrief with a few student examples so the class connects the activity to the lesson goal. For accountability, ask students to complete a short exit ticket tied to the same Math Track Racer · Teach Arcade skill they practiced.</p>
+  <h3>Quick Classroom Ideas</h3>
+  <ul>
+    <li>Partner practice with discussion pauses</li><li>Whole-class projection for guided practice</li><li>Independent practice during workshop time</li><li>Review day competition with team scoring</li><li>Exit ticket tie-in after the session</li>
+  </ul>
+  <h3>Skills Students Practice</h3>
+  <ul>
+    <li>Critical thinking and reasoning</li><li>Reading and interpreting prompts</li><li>Strategic decision-making</li><li>Collaboration and peer discussion</li><li>Reflecting on mistakes and adjustments</li><li>Academic language usage</li><li>Goal setting and self-monitoring</li><li>Evidence-based explanations</li>
+  </ul>
+  <h3>Suggested Grade Levels &amp; Timing</h3>
+  <p>Math Track Racer · Teach Arcade fits grades 4–10 with easy adjustments. Plan 10–25 minutes of active use plus a 5–10 minute reflection. Differentiate by pairing students, providing sentence starters, or letting advanced learners set a challenge goal.</p>
+  <h3>FAQ</h3>
+  <details>
+    <summary>Do students need accounts?</summary>
+    <p>No. The Math Track Racer · Teach Arcade activity runs directly in the browser with no logins required.</p>
+  </details>
+  <details>
+    <summary>How long should a session last?</summary>
+    <p>Most classes use Math Track Racer · Teach Arcade for 10–20 minutes, with a quick debrief afterward.</p>
+  </details>
+  <details>
+    <summary>Can I use this with limited devices?</summary>
+    <p>Yes. Math Track Racer · Teach Arcade works well in stations, partner play, or whole-class projection.</p>
+  </details>
+  <details>
+    <summary>Is it aligned to standards?</summary>
+    <p>The Math Track Racer · Teach Arcade focus supports common skills such as analysis, reasoning, and content recall.</p>
+  </details>
+  <details>
+    <summary>What if students finish early?</summary>
+    <p>Have early finishers replay Math Track Racer · Teach Arcade with a new goal or write a short summary of strategies used.</p>
+  </details>
+</section>
+
+<section class="resource-connections" aria-label="Related Teach Arcade resources">
+  <h2>More math practice</h2>
+  <p>Use these verified Teach Arcade paths to move from this activity into the surrounding lesson and resource collection.</p>
+  <ul><li><a href="/subjects/math/math-games-puzzles/fact-fluency-games/">Addition Fact Fluency</a></li><li><a href="/subjects/math/">Math</a></li><li><a href="/arcade-review-games/">Arcade Review Games</a></li><li><a href="/arcade-review-games/math/math-rush-genesis-addition.html">Math Rush: Addition</a></li></ul>
+</section>
+<script src="/arcade-review-games/shared/arcade-results.js?v=1" defer></script>
+</body>
+</html>
