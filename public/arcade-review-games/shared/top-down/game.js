@@ -238,7 +238,7 @@ function showCompletion(){
     'Exploration time: '+Math.floor(elapsed/60)+'m '+Math.floor(elapsed%60)+'s · Moves: '+state.moves+'.'
   ],[
     {text:'Download results',primary:true,run:()=>{try{downloadReport({...snapshot,student:reportStudent.trim().slice(0,80)});$('feedback').textContent='Results downloaded.';}catch{$('feedback').textContent='Download unavailable. You can take a screenshot of these results.';}}},
-    {text:'Play again',run:()=>startMode(map.mode)},
+    {text:'Play Again',run:()=>startMode(map.mode)},
     {text:'Return to Arcade',run:()=>{window.location.href='/arcade-review-games/';}}
   ]);
 }
