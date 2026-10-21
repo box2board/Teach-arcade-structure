@@ -694,7 +694,7 @@
         "resource","resources","worksheet","worksheets","printable","lesson","lessons",
         "tool","tools","topic","topics","store","shop"
       ]);
-      const wantsSpecificType = Array.from(qInfo.tokens || []).some(token => typeIntent.has(token));
+      const wantsSpecificType = qInfo.norm.split(" ").some(token => typeIntent.has(token));
 
       let pinned;
       if (wantsSpecificType){
@@ -834,7 +834,7 @@
             return out;
           })();
 
-          setChipCounts(computeTypeCounts(base));
+          setChipCounts(computeTypeCounts(dedupeSearchResults(base)));
           return;
         }
 
@@ -843,12 +843,12 @@
         const qInfo = { raw:q, norm:qNorm, variants: expanded.variants, tokens: expanded.tokens };
 
         // score everything
-        const scored = dedupeSearchResults(prepared.map(r => ({ ...r, _score: scoreRecord(r, qInfo) }))
+        const scored = prepared.map(r => ({ ...r, _score: scoreRecord(r, qInfo) }))
           .filter(r => r._score >= 145)
           .sort((a,b) => {
             if (b._score !== a._score) return b._score - a._score;
             return String(a.title || "").localeCompare(String(b.title || ""));
-          }));
+          });
 
         // counts should ignore type chip but respect subject/grade filters
         const baseForCounts = (function(){
@@ -857,12 +857,12 @@
           let out = scored;
           if (subjKey) out = out.filter(r => (r._subjectKey||"") === subjKey);
           if (gradeKey) out = out.filter(r => (r._gradeKey||"") === gradeKey);
-          return out;
+          return dedupeSearchResults(out);
         })();
         setChipCounts(computeTypeCounts(baseForCounts));
 
-        // apply all filters (including active type)
-        let filtered = applyFilters(scored);
+        // apply filters first, then collapse duplicate routes within those filters.
+        let filtered = dedupeSearchResults(applyFilters(scored));
 
         // sort
         const sortMode = sortSel.value || "relevance";
