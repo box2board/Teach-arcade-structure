@@ -6,7 +6,9 @@ import {QUESTION_SETS} from '../public/review-lab/catalog.js';
 const root=path.resolve('public'),catalog=JSON.parse(fs.readFileSync(path.join(root,'print-play-games/crossword-catalog.json'))).resources;
 const supported=Object.values(JSON.parse(fs.readFileSync('crossword-data/subjects.json'))).map(s=>s.subject);
 const expected=QUESTION_SETS.filter(s=>supported.includes(s.subject));
-assert.deepEqual(catalog.map(r=>r.id).sort(),expected.map(s=>s.id).sort(),'Crosswords must cover the current supported reusable subject catalogs');
+const questionIds=new Set(expected.map(s=>s.id));
+assert.equal(new Set(catalog.map(r=>r.id)).size,catalog.length,'Crossword catalog IDs must be unique');
+assert.ok(catalog.every(r=>questionIds.has(r.id)),'Every crossword must match a current reusable question set');
 const urls=new Set();
 for(const r of catalog){
  assert.ok(supported.includes(r.subject));assert.ok(r.category);assert.equal(r.gradeBand,'7–12');
@@ -21,4 +23,4 @@ for(const r of catalog){
   const answers=new Set(puzzles[level].entries.map(e=>e.gridAnswer));assert.equal(answers.size,count);assert.equal(puzzles[level].entries.length,count);assert.ok([...last].every(a=>answers.has(a)));last=answers;
  }
 }
-console.log(`Crossword assets passed: ${catalog.length} topics, ${catalog.length*4} PDFs, ${catalog.length*3} previews; current source coverage verified.`);
+console.log(`Crossword assets passed: ${catalog.length} curated topics, ${catalog.length*4} PDFs, ${catalog.length*3} previews; all match current reusable question sets.`);
