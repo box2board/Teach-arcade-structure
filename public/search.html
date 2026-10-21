@@ -689,16 +689,18 @@
       });
       if (!candidates.length) return [];
 
-      const typeIntent = new Set([
-        "game","games","play","playable","arcade","activity","activities",
-        "resource","resources","worksheet","worksheets","printable","lesson","lessons",
-        "tool","tools","topic","topics","store","shop"
-      ]);
-      const wantsSpecificType = qInfo.norm.split(" ").some(token => typeIntent.has(token));
+      const typeIntent = {
+        game:"game", games:"game", play:"game", playable:"game", arcade:"game",
+        activity:"game", activities:"game",
+        resource:"resource", resources:"resource", worksheet:"resource",
+        worksheets:"resource", printable:"resource", lesson:"resource", lessons:"resource",
+        tool:"tool", tools:"tool", topic:"topic", topics:"topic", store:"store", shop:"store"
+      };
+      const requestedTypes = new Set(qInfo.norm.split(" ").map(token => typeIntent[token]).filter(Boolean));
 
       let pinned;
-      if (wantsSpecificType){
-        pinned = candidates.slice(0, 3);
+      if (requestedTypes.size){
+        pinned = candidates.filter(r => requestedTypes.has(String(r.type || "page").toLowerCase())).slice(0, 3);
       } else {
         const bestScore = candidates[0]._score;
         const competitive = candidates.filter(r => r._score >= Math.max(DECENT, bestScore * 0.45));
