@@ -1,5 +1,13 @@
 [
   {
+    "title": "Colony Builder",
+    "type": "simulation",
+    "url": "/simulations/colony-builder/",
+    "description": "A Colonial America strategy simulation: choose Virginia, Massachusetts, or Pennsylvania and manage food, trade, population, stability, and relationships across eight years.",
+    "subject": "Social Studies",
+    "tags": ["type:simulation", "subject:social-studies", "subject:us-history", "topic:colonial-america", "Virginia", "Massachusetts", "Pennsylvania", "Jamestown", "thirteen colonies", "colonial regions", "strategy", "resource management"]
+  },
+  {
     "title": "Arcade Review Games",
     "url": "/arcade-review-games/",
     "description": "Side-scrolling arcade-style review games with built-in questions across subjects.",
