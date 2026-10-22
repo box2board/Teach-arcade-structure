@@ -2492,5 +2492,43 @@
       "theme:arcade"
     ],
     "source": "manifest:store"
-  }
+  },
+{
+  "title": "Escape Style",
+  "url": "/print-play-games/escape-style/",
+  "type": "game",
+  "description": "",
+  "subject": "",
+  "tags": [
+    "type:game",
+    "format:game",
+    "platform:web",
+    "category:print-play-games",
+    "topic:escape-style"
+  ],
+  "source": "sitemap"
+},
+{
+  "title": "The Revolutionary Spy Escape",
+  "url": "/print-play-games/escape-style/revolutionary-spy-escape/",
+  "type": "game",
+  "description": "A fully printable American Revolution escape room: decode messages, sequence Revolutionary War events, sort Patriot and Loyalist viewpoints, and trace a courier map. Grades 5–9; offline teacher guide, hints and answer key.",
+  "subject": "Social Studies",
+  "tags": [
+    "type:game",
+    "format:printable",
+    "format:escape-room",
+    "platform:paper",
+    "subject:us-history",
+    "subject:social-studies",
+    "topic:american-revolution",
+    "Revolutionary War",
+    "no-tech",
+    "format:game",
+    "platform:web",
+    "category:print-play-games",
+    "topic:revolutionary-spy-escape"
+  ],
+  "source": "manifest:game"
+}
 ]

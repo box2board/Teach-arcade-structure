@@ -36,5 +36,22 @@
     "url": "/decision-simulator/",
     "description": "Simulations where students make decisions, track pressure, and experience consequences.",
     "tags": ["type:interactive", "format:simulation", "platform:web"]
-  }
+  },
+{
+  "title": "The Revolutionary Spy Escape",
+  "url": "/print-play-games/escape-style/revolutionary-spy-escape/",
+  "description": "A fully printable American Revolution escape room: decode messages, sequence Revolutionary War events, sort Patriot and Loyalist viewpoints, and trace a courier map. Grades 5–9; offline teacher guide, hints and answer key.",
+  "subject": "Social Studies",
+  "tags": [
+    "type:game",
+    "format:printable",
+    "format:escape-room",
+    "platform:paper",
+    "subject:us-history",
+    "subject:social-studies",
+    "topic:american-revolution",
+    "Revolutionary War",
+    "no-tech"
+  ]
+}
 ]
