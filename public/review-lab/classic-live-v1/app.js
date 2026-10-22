@@ -25,6 +25,8 @@ const state = {
   phaseSeconds: 0,
   timer: null,
   paused: false,
+  pauseStartedAt: 0,
+  pausedDurationMs: 0,
   players: [],
   responseTimers: [],
   answers: new Map(),
@@ -48,8 +50,7 @@ function setPhase(name){
   phases[name].classList.add('active');
   state.phase = name;
   $('#phaseLabel').textContent = name.toUpperCase();
-  const transition = name === 'reveal' || name === 'leaderboard';
-  $('#pauseBtn').disabled = !transition;
+  $('#pauseBtn').disabled = name !== 'question';
   $('#skipBtn').disabled = name === 'results';
 }
 function shuffle(arr){
@@ -135,6 +136,8 @@ function resetRun(){
   state.totalClassAnswers=0;
   state.hardest=null;
   state.paused=false;
+  state.pauseStartedAt=0;
+  state.pausedDurationMs=0;
   state.event=null;
   seedPlayers();
   $('#pauseBtn').textContent='Pause';
@@ -154,6 +157,11 @@ function startQuestion(){
   clearResponseTimers();
   state.answers = new Map();
   state.currentQuestionStartedAt = performance.now();
+  state.pausedDurationMs=0;
+  state.pauseStartedAt=0;
+  state.paused=false;
+  $('#pauseBtn').textContent='Pause';
+  document.body.classList.remove('paused');
   state.event = shouldTriggerEvent() ? {type:'double', label:'🎟 DOUBLE TICKET ROUND'} : null;
   setPhase('question');
 
@@ -169,7 +177,7 @@ function startQuestion(){
 
   renderTeacherChoices(round.question);
   renderStudentQuestion(round.question, round.redemption);
-  scheduleBots(round.question);
+  scheduleBots(round.question, state.questionSeconds);
   startCountdown(state.questionSeconds, endQuestion);
 }
 
@@ -183,15 +191,21 @@ function renderStudentQuestion(question, redemption){
   $('#studentFeedback').className='student-feedback';
   $('#studentFeedback').textContent='';
   $('#studentChoices').innerHTML = question.choices.map((choice,i)=>`<button type="button" class="student-choice" data-answer="${i}"><strong>${String.fromCharCode(65+i)}.</strong> ${escapeHtml(choice)}</button>`).join('');
-  $$('#studentChoices button').forEach(btn=>btn.addEventListener('click',()=>submitAnswer(0,Number(btn.dataset.answer),performance.now()-state.currentQuestionStartedAt)));
+  $$('#studentChoices button').forEach(btn=>btn.addEventListener('click',()=>{
+    const elapsed=performance.now()-state.currentQuestionStartedAt-state.pausedDurationMs;
+    submitAnswer(0,Number(btn.dataset.answer),elapsed);
+  }));
   renderStudentStats();
 }
 
-function scheduleBots(question){
+function scheduleBots(question, secondsRemaining=state.questionSeconds){
+  const windowMs=Math.max(1000, secondsRemaining*1000);
   for(const player of state.players.slice(1)){
-    const delay = Math.max(900, Math.min(state.questionSeconds*1000-250, 1600 + (1-player.speed)*state.questionSeconds*640 + Math.random()*3000));
+    if(state.answers.has(player.id)) continue;
+    const target=700 + (1-player.speed)*windowMs*.45 + Math.random()*1200;
+    const delay=Math.max(350,Math.min(windowMs-150,target));
     const handle=setTimeout(()=>{
-      if(state.phase!=='question' || state.answers.has(player.id)) return;
+      if(state.phase!=='question' || state.paused || state.answers.has(player.id)) return;
       let choice;
       if(Math.random() < player.skill){ choice=question.correctAnswer; }
       else { choice=shuffle([0,1,2,3].filter(i=>i!==question.correctAnswer))[0]; }
@@ -202,7 +216,7 @@ function scheduleBots(question){
 }
 
 function submitAnswer(playerId, choice, elapsedMs){
-  if(state.phase!=='question' || state.answers.has(playerId)) return;
+  if(state.phase!=='question' || state.paused || state.answers.has(playerId)) return;
   const round=currentRound();
   if(!round) return;
   const player=state.players.find(p=>p.id===playerId);
@@ -244,6 +258,10 @@ function endQuestion(){
   if(state.phase!=='question') return;
   stopTimer();
   clearResponseTimers();
+  state.paused=false;
+  state.pauseStartedAt=0;
+  $('#pauseBtn').textContent='Pause';
+  document.body.classList.remove('paused');
   const round=currentRound();
   if(!round) return;
 
@@ -292,11 +310,12 @@ function renderReveal(question,counts,accuracy,redemption){
 
 function showLeaderboard(){
   if(state.phase!=='reveal') return;
+  stopTimer();
   setPhase('leaderboard');
   renderLeaderboard();
-  $('#studentPrompt').textContent='Leaderboard break — next question begins automatically.';
+  $('#timerDisplay').textContent='—';
+  $('#studentPrompt').textContent='Leaderboard break — waiting for the teacher to start the next question.';
   $('#studentChoices').innerHTML='';
-  startCountdown(5,nextQuestion);
 }
 function renderLeaderboard(){
   const ranked=[...state.players].sort((a,b)=>b.score-a.score || b.correct-a.correct || a.name.localeCompare(b.name));
@@ -364,11 +383,22 @@ function finishGame(){
 function teacherSkip(){
   if(state.phase==='question') endQuestion();
   else if(state.phase==='reveal'){ stopTimer(); showLeaderboard(); }
-  else if(state.phase==='leaderboard'){ stopTimer(); nextQuestion(); }
+  else if(state.phase==='leaderboard') nextQuestion();
 }
 function togglePause(){
-  if(!(state.phase==='reveal'||state.phase==='leaderboard')) return;
+  if(state.phase!=='question') return;
   state.paused=!state.paused;
+  if(state.paused){
+    state.pauseStartedAt=performance.now();
+    clearResponseTimers();
+  }else{
+    if(state.pauseStartedAt){
+      state.pausedDurationMs += performance.now()-state.pauseStartedAt;
+      state.pauseStartedAt=0;
+    }
+    const round=currentRound();
+    if(round) scheduleBots(round.question, Math.max(1,state.phaseSeconds));
+  }
   $('#pauseBtn').textContent=state.paused?'Resume':'Pause';
   document.body.classList.toggle('paused',state.paused);
 }
