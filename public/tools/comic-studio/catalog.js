@@ -883,6 +883,246 @@ window.ComicCatalog = {
       "role": "museum-guide",
       "glasses": false,
       "keywords": "Museum guide Community roles person"
+    },
+    {
+      "id": "cartographer",
+      "label": "Cartographer",
+      "category": "Humanities & community",
+      "hairStyle": "curly",
+      "skin": "#995d40",
+      "hair": "#2f2630",
+      "shirt": "#d67c65",
+      "role": "cartographer",
+      "glasses": true,
+      "keywords": "Cartographer Humanities & community"
+    },
+    {
+      "id": "historian",
+      "label": "Historian",
+      "category": "Humanities & community",
+      "hairStyle": "swept",
+      "skin": "#e0ae87",
+      "hair": "#405774",
+      "shirt": "#658abf",
+      "role": "historian",
+      "glasses": false,
+      "keywords": "Historian Humanities & community"
+    },
+    {
+      "id": "poet",
+      "label": "Poet",
+      "category": "Humanities & community",
+      "hairStyle": "long",
+      "skin": "#80513c",
+      "hair": "#322d34",
+      "shirt": "#46a89e",
+      "role": "poet",
+      "glasses": false,
+      "keywords": "Poet Humanities & community"
+    },
+    {
+      "id": "playwright",
+      "label": "Playwright",
+      "category": "Humanities & community",
+      "hairStyle": "bun",
+      "skin": "#d4a77b",
+      "hair": "#82633b",
+      "shirt": "#bd91cf",
+      "role": "playwright",
+      "glasses": true,
+      "keywords": "Playwright Humanities & community"
+    },
+    {
+      "id": "translator",
+      "label": "Translator",
+      "category": "Humanities & community",
+      "hairStyle": "ponytail",
+      "skin": "#b47a5a",
+      "hair": "#362e29",
+      "shirt": "#deae55",
+      "role": "translator",
+      "glasses": false,
+      "keywords": "Translator Humanities & community"
+    },
+    {
+      "id": "diplomat",
+      "label": "Diplomat",
+      "category": "Government & civics",
+      "hairStyle": "short",
+      "skin": "#f2c8a0",
+      "hair": "#683c2d",
+      "shirt": "#7ba56d",
+      "role": "diplomat",
+      "glasses": false,
+      "keywords": "Diplomat Government & civics"
+    },
+    {
+      "id": "community-volunteer",
+      "label": "Community volunteer",
+      "category": "Humanities & community",
+      "hairStyle": "curly",
+      "skin": "#995d40",
+      "hair": "#2f2630",
+      "shirt": "#d67c65",
+      "role": "community-volunteer",
+      "glasses": true,
+      "keywords": "Community volunteer Humanities & community"
+    },
+    {
+      "id": "park-ranger",
+      "label": "Park ranger",
+      "category": "Field scientists",
+      "hairStyle": "swept",
+      "skin": "#e0ae87",
+      "hair": "#405774",
+      "shirt": "#658abf",
+      "role": "park-ranger",
+      "glasses": false,
+      "keywords": "Park ranger Field scientists"
+    },
+    {
+      "id": "meteorologist",
+      "label": "Meteorologist",
+      "category": "Field scientists",
+      "hairStyle": "long",
+      "skin": "#80513c",
+      "hair": "#322d34",
+      "shirt": "#46a89e",
+      "role": "meteorologist",
+      "glasses": false,
+      "keywords": "Meteorologist Field scientists"
+    },
+    {
+      "id": "paleontologist",
+      "label": "Paleontologist",
+      "category": "Field scientists",
+      "hairStyle": "bun",
+      "skin": "#d4a77b",
+      "hair": "#82633b",
+      "shirt": "#bd91cf",
+      "role": "paleontologist",
+      "glasses": true,
+      "keywords": "Paleontologist Field scientists"
+    },
+    {
+      "id": "oceanographer",
+      "label": "Oceanographer",
+      "category": "Field scientists",
+      "hairStyle": "ponytail",
+      "skin": "#b47a5a",
+      "hair": "#362e29",
+      "shirt": "#deae55",
+      "role": "oceanographer",
+      "glasses": false,
+      "keywords": "Oceanographer Field scientists"
+    },
+    {
+      "id": "conservationist",
+      "label": "Conservationist",
+      "category": "Field scientists",
+      "hairStyle": "short",
+      "skin": "#f2c8a0",
+      "hair": "#683c2d",
+      "shirt": "#7ba56d",
+      "role": "conservationist",
+      "glasses": false,
+      "keywords": "Conservationist Field scientists"
+    },
+    {
+      "id": "ancient-builder",
+      "label": "Ancient builder",
+      "category": "Historical roles",
+      "hairStyle": "curly",
+      "skin": "#995d40",
+      "hair": "#2f2630",
+      "shirt": "#d67c65",
+      "role": "ancient-builder",
+      "glasses": true,
+      "keywords": "Ancient builder Historical roles"
+    },
+    {
+      "id": "medieval-baker",
+      "label": "Medieval baker",
+      "category": "Historical roles",
+      "hairStyle": "swept",
+      "skin": "#e0ae87",
+      "hair": "#405774",
+      "shirt": "#658abf",
+      "role": "medieval-baker",
+      "glasses": false,
+      "keywords": "Medieval baker Historical roles"
+    },
+    {
+      "id": "renaissance-engineer",
+      "label": "Renaissance engineer",
+      "category": "Historical roles",
+      "hairStyle": "long",
+      "skin": "#80513c",
+      "hair": "#322d34",
+      "shirt": "#46a89e",
+      "role": "renaissance-engineer",
+      "glasses": false,
+      "keywords": "Renaissance engineer Historical roles"
+    },
+    {
+      "id": "telegraph-operator",
+      "label": "Telegraph operator",
+      "category": "Historical roles",
+      "hairStyle": "bun",
+      "skin": "#d4a77b",
+      "hair": "#82633b",
+      "shirt": "#bd91cf",
+      "role": "telegraph-operator",
+      "glasses": true,
+      "keywords": "Telegraph operator Historical roles"
+    },
+    {
+      "id": "early-aviator",
+      "label": "Early aviator",
+      "category": "Historical roles",
+      "hairStyle": "ponytail",
+      "skin": "#b47a5a",
+      "hair": "#362e29",
+      "shirt": "#deae55",
+      "role": "early-aviator",
+      "glasses": false,
+      "keywords": "Early aviator Historical roles"
+    },
+    {
+      "id": "textile-worker",
+      "label": "Textile worker",
+      "category": "Historical roles",
+      "hairStyle": "short",
+      "skin": "#f2c8a0",
+      "hair": "#683c2d",
+      "shirt": "#7ba56d",
+      "role": "textile-worker",
+      "glasses": false,
+      "keywords": "Textile worker Historical roles"
+    },
+    {
+      "id": "public-health-worker",
+      "label": "Public health worker",
+      "category": "Community roles",
+      "hairStyle": "curly",
+      "skin": "#995d40",
+      "hair": "#2f2630",
+      "shirt": "#d67c65",
+      "role": "public-health-worker",
+      "glasses": true,
+      "keywords": "Public health worker Community roles"
+    },
+    {
+      "id": "lab-technician",
+      "label": "Lab technician",
+      "category": "STEM careers",
+      "hairStyle": "swept",
+      "skin": "#e0ae87",
+      "hair": "#405774",
+      "shirt": "#658abf",
+      "role": "lab-technician",
+      "glasses": false,
+      "keywords": "Lab technician STEM careers"
     }
   ],
   "backgrounds": [
@@ -1269,6 +1509,126 @@ window.ComicCatalog = {
       "label": "Community garden",
       "category": "Outdoors",
       "keywords": "Community garden Outdoors"
+    },
+    {
+      "id": "coastal-cliff",
+      "label": "Coastal cliffs",
+      "category": "Geography",
+      "keywords": "Coastal cliffs Geography"
+    },
+    {
+      "id": "canyon",
+      "label": "Canyon",
+      "category": "Geography",
+      "keywords": "Canyon Geography"
+    },
+    {
+      "id": "alpine-valley",
+      "label": "Alpine valley",
+      "category": "Geography",
+      "keywords": "Alpine valley Geography"
+    },
+    {
+      "id": "island",
+      "label": "Tropical island",
+      "category": "Geography",
+      "keywords": "Tropical island Geography"
+    },
+    {
+      "id": "ice-core-camp",
+      "label": "Ice research station",
+      "category": "Science & nature",
+      "keywords": "Ice research station Science & nature"
+    },
+    {
+      "id": "weather-station",
+      "label": "Weather station",
+      "category": "Science & nature",
+      "keywords": "Weather station Science & nature"
+    },
+    {
+      "id": "ancient-library",
+      "label": "Ancient archive",
+      "category": "History",
+      "keywords": "Ancient archive History"
+    },
+    {
+      "id": "medieval-kitchen",
+      "label": "Medieval kitchen",
+      "category": "History",
+      "keywords": "Medieval kitchen History"
+    },
+    {
+      "id": "textile-mill",
+      "label": "Textile mill",
+      "category": "History",
+      "keywords": "Textile mill History"
+    },
+    {
+      "id": "telegraph-office",
+      "label": "Telegraph office",
+      "category": "History",
+      "keywords": "Telegraph office History"
+    },
+    {
+      "id": "airfield",
+      "label": "Early airfield",
+      "category": "History",
+      "keywords": "Early airfield History"
+    },
+    {
+      "id": "council-room",
+      "label": "Council room",
+      "category": "Government & civics",
+      "keywords": "Council room Government & civics"
+    },
+    {
+      "id": "embassy",
+      "label": "Diplomatic meeting room",
+      "category": "Government & civics",
+      "keywords": "Diplomatic meeting room Government & civics"
+    },
+    {
+      "id": "community-center",
+      "label": "Community center",
+      "category": "Community",
+      "keywords": "Community center Community"
+    },
+    {
+      "id": "school-courtyard",
+      "label": "School courtyard",
+      "category": "School",
+      "keywords": "School courtyard School"
+    },
+    {
+      "id": "theater-backstage",
+      "label": "Theater backstage",
+      "category": "Arts & literature",
+      "keywords": "Theater backstage Arts & literature"
+    },
+    {
+      "id": "poetry-cafe",
+      "label": "Poetry cafe",
+      "category": "Arts & literature",
+      "keywords": "Poetry cafe Arts & literature"
+    },
+    {
+      "id": "writing-study",
+      "label": "Writer study",
+      "category": "Arts & literature",
+      "keywords": "Writer study Arts & literature"
+    },
+    {
+      "id": "map-room",
+      "label": "Map room",
+      "category": "Geography",
+      "keywords": "Map room Geography"
+    },
+    {
+      "id": "recycling-center",
+      "label": "Recycling center",
+      "category": "Community",
+      "keywords": "Recycling center Community"
     }
   ],
   "props": [
@@ -2143,6 +2503,366 @@ window.ComicCatalog = {
       "label": "Shovel",
       "category": "Nature",
       "keywords": "Shovel Nature"
+    },
+    {
+      "id": "map-pin",
+      "label": "Map pin",
+      "category": "Geography",
+      "keywords": "Map pin Geography"
+    },
+    {
+      "id": "world-map",
+      "label": "World map",
+      "category": "Geography",
+      "keywords": "World map Geography"
+    },
+    {
+      "id": "topographic-map",
+      "label": "Contour map",
+      "category": "Geography",
+      "keywords": "Contour map Geography"
+    },
+    {
+      "id": "route-map",
+      "label": "Route map",
+      "category": "Geography",
+      "keywords": "Route map Geography"
+    },
+    {
+      "id": "mountain-model",
+      "label": "Mountain model",
+      "category": "Geography",
+      "keywords": "Mountain model Geography"
+    },
+    {
+      "id": "river-model",
+      "label": "River model",
+      "category": "Geography",
+      "keywords": "River model Geography"
+    },
+    {
+      "id": "compass-rose",
+      "label": "Compass rose",
+      "category": "Geography",
+      "keywords": "Compass rose Geography"
+    },
+    {
+      "id": "globe-stand",
+      "label": "Globe on stand",
+      "category": "Geography",
+      "keywords": "Globe on stand Geography"
+    },
+    {
+      "id": "atlas",
+      "label": "Atlas",
+      "category": "Geography",
+      "keywords": "Atlas Geography"
+    },
+    {
+      "id": "map-case",
+      "label": "Map case",
+      "category": "Geography",
+      "keywords": "Map case Geography"
+    },
+    {
+      "id": "cloud-rain",
+      "label": "Rain cloud",
+      "category": "Weather & earth",
+      "keywords": "Rain cloud Weather & earth"
+    },
+    {
+      "id": "storm-cloud",
+      "label": "Storm cloud",
+      "category": "Weather & earth",
+      "keywords": "Storm cloud Weather & earth"
+    },
+    {
+      "id": "snowflake",
+      "label": "Snowflake",
+      "category": "Weather & earth",
+      "keywords": "Snowflake Weather & earth"
+    },
+    {
+      "id": "tornado-model",
+      "label": "Tornado model",
+      "category": "Weather & earth",
+      "keywords": "Tornado model Weather & earth"
+    },
+    {
+      "id": "weather-balloon",
+      "label": "Weather balloon",
+      "category": "Weather & earth",
+      "keywords": "Weather balloon Weather & earth"
+    },
+    {
+      "id": "barometer",
+      "label": "Barometer",
+      "category": "Weather & earth",
+      "keywords": "Barometer Weather & earth"
+    },
+    {
+      "id": "anemometer",
+      "label": "Anemometer",
+      "category": "Weather & earth",
+      "keywords": "Anemometer Weather & earth"
+    },
+    {
+      "id": "ice-core",
+      "label": "Ice core sample",
+      "category": "Weather & earth",
+      "keywords": "Ice core sample Weather & earth"
+    },
+    {
+      "id": "rock-layers",
+      "label": "Rock layers",
+      "category": "Weather & earth",
+      "keywords": "Rock layers Weather & earth"
+    },
+    {
+      "id": "crystal",
+      "label": "Crystal",
+      "category": "Weather & earth",
+      "keywords": "Crystal Weather & earth"
+    },
+    {
+      "id": "seashell",
+      "label": "Seashell",
+      "category": "Nature",
+      "keywords": "Seashell Nature"
+    },
+    {
+      "id": "starfish",
+      "label": "Sea star",
+      "category": "Nature",
+      "keywords": "Sea star Nature"
+    },
+    {
+      "id": "jellyfish",
+      "label": "Jellyfish",
+      "category": "Nature",
+      "keywords": "Jellyfish Nature"
+    },
+    {
+      "id": "octopus",
+      "label": "Octopus",
+      "category": "Nature",
+      "keywords": "Octopus Nature"
+    },
+    {
+      "id": "seaweed",
+      "label": "Seaweed",
+      "category": "Nature",
+      "keywords": "Seaweed Nature"
+    },
+    {
+      "id": "cactus",
+      "label": "Cactus",
+      "category": "Nature",
+      "keywords": "Cactus Nature"
+    },
+    {
+      "id": "fern",
+      "label": "Fern",
+      "category": "Nature",
+      "keywords": "Fern Nature"
+    },
+    {
+      "id": "pinecone",
+      "label": "Pinecone",
+      "category": "Nature",
+      "keywords": "Pinecone Nature"
+    },
+    {
+      "id": "log",
+      "label": "Log",
+      "category": "Nature",
+      "keywords": "Log Nature"
+    },
+    {
+      "id": "birdhouse",
+      "label": "Birdhouse",
+      "category": "Nature",
+      "keywords": "Birdhouse Nature"
+    },
+    {
+      "id": "feather",
+      "label": "Feather",
+      "category": "Nature",
+      "keywords": "Feather Nature"
+    },
+    {
+      "id": "footprint",
+      "label": "Footprint",
+      "category": "Nature",
+      "keywords": "Footprint Nature"
+    },
+    {
+      "id": "pawprint",
+      "label": "Paw print",
+      "category": "Nature",
+      "keywords": "Paw print Nature"
+    },
+    {
+      "id": "butterfly-net",
+      "label": "Field net",
+      "category": "Field science",
+      "keywords": "Field net Field science"
+    },
+    {
+      "id": "sample-jar",
+      "label": "Sample jar",
+      "category": "Field science",
+      "keywords": "Sample jar Field science"
+    },
+    {
+      "id": "field-notes",
+      "label": "Field notebook",
+      "category": "Field science",
+      "keywords": "Field notebook Field science"
+    },
+    {
+      "id": "safety-goggles",
+      "label": "Safety goggles",
+      "category": "Field science",
+      "keywords": "Safety goggles Field science"
+    },
+    {
+      "id": "lab-coat",
+      "label": "Lab coat",
+      "category": "Field science",
+      "keywords": "Lab coat Field science"
+    },
+    {
+      "id": "gloves",
+      "label": "Protective gloves",
+      "category": "Field science",
+      "keywords": "Protective gloves Field science"
+    },
+    {
+      "id": "specimen-tray",
+      "label": "Specimen tray",
+      "category": "Field science",
+      "keywords": "Specimen tray Field science"
+    },
+    {
+      "id": "telegraph",
+      "label": "Telegraph key",
+      "category": "Historical technology",
+      "keywords": "Telegraph key Historical technology"
+    },
+    {
+      "id": "sewing-machine",
+      "label": "Sewing machine",
+      "category": "Historical technology",
+      "keywords": "Sewing machine Historical technology"
+    },
+    {
+      "id": "loom",
+      "label": "Loom",
+      "category": "Historical technology",
+      "keywords": "Loom Historical technology"
+    },
+    {
+      "id": "wheel-axle",
+      "label": "Wheel and axle",
+      "category": "Historical technology",
+      "keywords": "Wheel and axle Historical technology"
+    },
+    {
+      "id": "steam-engine",
+      "label": "Steam engine model",
+      "category": "Historical technology",
+      "keywords": "Steam engine model Historical technology"
+    },
+    {
+      "id": "printing-block",
+      "label": "Printing block",
+      "category": "Historical technology",
+      "keywords": "Printing block Historical technology"
+    },
+    {
+      "id": "wax-seal",
+      "label": "Wax seal",
+      "category": "Historical technology",
+      "keywords": "Wax seal Historical technology"
+    },
+    {
+      "id": "pocket-watch",
+      "label": "Pocket watch",
+      "category": "Historical technology",
+      "keywords": "Pocket watch Historical technology"
+    },
+    {
+      "id": "parchment-roll",
+      "label": "Parchment roll",
+      "category": "Historical technology",
+      "keywords": "Parchment roll Historical technology"
+    },
+    {
+      "id": "writing-desk",
+      "label": "Writing desk",
+      "category": "Historical technology",
+      "keywords": "Writing desk Historical technology"
+    },
+    {
+      "id": "speech-scroll",
+      "label": "Dialogue scroll",
+      "category": "Arts & literature",
+      "keywords": "Dialogue scroll Arts & literature"
+    },
+    {
+      "id": "storybook",
+      "label": "Storybook",
+      "category": "Arts & literature",
+      "keywords": "Storybook Arts & literature"
+    },
+    {
+      "id": "manuscript",
+      "label": "Manuscript",
+      "category": "Arts & literature",
+      "keywords": "Manuscript Arts & literature"
+    },
+    {
+      "id": "fountain-pen",
+      "label": "Fountain pen",
+      "category": "Arts & literature",
+      "keywords": "Fountain pen Arts & literature"
+    },
+    {
+      "id": "stage-curtain",
+      "label": "Stage curtain",
+      "category": "Arts & literature",
+      "keywords": "Stage curtain Arts & literature"
+    },
+    {
+      "id": "spotlight",
+      "label": "Stage spotlight",
+      "category": "Arts & literature",
+      "keywords": "Stage spotlight Arts & literature"
+    },
+    {
+      "id": "film-reel",
+      "label": "Film reel",
+      "category": "Arts & literature",
+      "keywords": "Film reel Arts & literature"
+    },
+    {
+      "id": "clapperboard",
+      "label": "Clapperboard",
+      "category": "Arts & literature",
+      "keywords": "Clapperboard Arts & literature"
+    },
+    {
+      "id": "debate-cards",
+      "label": "Debate cards",
+      "category": "Government & civics",
+      "keywords": "Debate cards Government & civics"
+    },
+    {
+      "id": "donation-box",
+      "label": "Donation box",
+      "category": "Government & civics",
+      "keywords": "Donation box Government & civics"
     }
   ],
   "expressions": [

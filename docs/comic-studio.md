@@ -6,7 +6,7 @@ First creation-tool prototype at `/tools/comic-studio/`, linked from Teacher Too
 
 - 11 layouts: single, three-panel strip, two wide panels, three stacked panels, four, six, eight, nine, twelve, feature + two, and feature + four.
 - Twelve panels remain in each project; layout changes do not delete hidden panels. Exports include only visible panels.
-- 76 original SVG characters, 68 backgrounds, and 156 props (300 library items). Two backgrounds are generated illustrations. Human characters offer eight expressions and eight poses; animal/robot rigs offer standing and waving poses.
+- 96 original SVG characters, 88 backgrounds, and 216 props (400 library items). Two backgrounds are generated illustrations. Human characters offer eight expressions and eight poses; animal/robot rigs offer standing and waving poses.
 - Speech bubbles, thought bubbles, captions, and editable dialogue.
 - Pointer/touch dragging, arrow-key movement, size and numeric position controls, character/prop flipping, layer changes, duplication, and removal.
 - Copy a panel to the next panel, with fresh object IDs and undo support.
@@ -76,3 +76,9 @@ Asset IDs from existing projects are preserved. New catalog entries use the exis
 Added 24 characters, 24 backgrounds, and 52 props, bringing the catalog to 76 characters, 68 scenes, and 156 props. `expansion-art.js` provides modular original vector renderers for this pack; `library-art.js` delegates supported IDs to it while retaining the original pose/expression rig and all existing renderers. It loads before `library-art.js` in both the editor and test harness. New roles include STEM specialists, community workers, and historical storytelling characters. New settings include Renaissance/Enlightenment interiors, ecosystems, a dig site, lunar camp, school arts spaces, civic/community locations, and workplaces. Props cover arts/literature, engineering, science, civics, commerce, historical tools, and nature.
 
 Historical artwork and scientific models are simplified storytelling illustrations, not authenticated reconstructions or precise scientific diagrams. All old asset identifiers and portable projects remain supported. No third-party graphics or additional runtime dependencies were added. All 100 assets were rendered into contact sheets and visually inspected. Automated catalog and editor validation covers 300 items, including role poses and expressions, project import/export validation, search, favorites, history, and object transforms. Native browser/tablet verification remains outstanding after the earlier browser-policy block.
+
+## World-building expansion — 400 items
+
+Added 20 characters, 20 backgrounds, and 60 props: 96 characters, 88 backgrounds, and 216 props total. `expansion-worlds.js` composes with `expansion-art.js` to add geography, field science, historical technology, humanities, community, and stage/storytelling artwork without changing old IDs. Geography and science props are schematic illustrations for comics, not measurement tools or authoritative diagrams. Character appearances and historical settings remain stylized.
+
+The expansion includes cartographer/historian/poet roles, field researchers, ancient and industrial occupations, early aviation, coastal/alpine/canyon/island scenery, research stations, archives and workshops, civic/community interiors, and literature/performance spaces. All 100 additions were rendered to contact sheets and visually inspected; the full catalog and interaction checks cover the 400-item collection. Native browser/tablet verification remains pending due to the previously reported browser-policy block.
