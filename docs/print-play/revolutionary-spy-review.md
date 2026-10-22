@@ -32,7 +32,7 @@ For 28 students / 7 teams: 78 sheets, 77 cut rectangles, 28 bundles. Optional 28
 - Generated 18-page Letter PDF rendered and all pages visually reviewed; fonts embedded and decoder strip monospaced.
 - Automated extraction checks codes from the student PDF, verifies the sole matching viewpoint-column sequence, final slots, page counts, copy counts and text bounds.
 - Existing search regression suite passes.
-- Review limitations: no classroom test; teacher queue/workload and reading pace need observation. Browser QA unavailable in this executor (no browser binary); responsive CSS and links are checked, but real Safari/Chromebook/iPad checks remain before release.
+- Review limitations: no classroom test; teacher queue/workload and reading pace need observation. The deployed preview was opened in the cloud browser: desktop layout, navigation, loaded sample images, anchor navigation and FAQ checked. The complete packet download was exercised successfully in the browser. Unauthenticated shell access reached Vercel protection, so no byte comparison of the deployed PDF is claimed. Real Safari/Chromebook/iPad and mobile device checks remain before release.
 
 ## Regeneration
 
