@@ -22,7 +22,7 @@ The five existing questions and rewards remain in the French Revolution pack. Co
 - Drag or swipe to look; touch gestures are captured by the room canvas so the page does not scroll.
 - Arrow keys rotate the view; Enter/Space interact with the object at the center reticle.
 - Tap/click a highlighted world-space clue zone to investigate.
-- The renderer caps pixel ratio at 1.5, reuses scene materials, responds to element resizing and disposes renderer resources when the room ends.
+- The renderer caps pixel ratio at 1.5, reuses scene materials, responds to element resizing and disposes renderer resources when the room ends. It pauses rendering when the page is hidden and honors reduced-motion preferences for camera easing, flicker, pulsing markers and the exit animation.
 - Three.js is loaded as a pinned browser ES module from jsDelivr.
 
 The former panorama/cubemap files remain as archived experiment artifacts and are not loaded by the V2 page.
