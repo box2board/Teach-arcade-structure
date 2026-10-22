@@ -25,6 +25,9 @@ function loadScript(src) {
 
 async function boot() {
   await loadScript(`/escape-v2/rooms/${roomId}/data.js`);
+  await loadScript('/escape-v2/js/validate-pack.js');
+  const packIssues = window.ESCAPE_V2_VALIDATE_PACK(window.ESCAPE_V2_DATA);
+  if (packIssues.length) throw new Error(`Invalid room pack:\n- ${packIssues.join('\n- ')}`);
   await loadScript('/escape-v2/js/puzzles.js');
   const propModules = window.ESCAPE_V2_DATA.rooms.flatMap((room) => room.scene?.propModules || []);
   if (propModules.some((path) => typeof path !== 'string' || !path.startsWith('/escape-v2/'))) {

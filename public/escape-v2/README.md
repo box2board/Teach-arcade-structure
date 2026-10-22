@@ -38,3 +38,8 @@ A renderer receives `(puzzle, context)`, where context includes `container`, `on
 ## Room-pack scene props
 
 The 3D viewer provides room-shell rendering and generic box, sphere, and cylinder primitives. Room-specific prop builders live with their room pack. A scene can load optional ES modules through `scene.propModules`; each exports `registerEscapeRoomProps(registry)` and registers named builders. Builders receive the Three.js namespace, scene group, shared materials, and primitive helpers. Room packs can therefore define themed props while the renderer stays independent of any one setting. Simple configured geometry remains available for packs that do not need custom models.
+
+
+## Room pack contract
+
+Before the game starts, the bootstrap validates required pack and room fields, positive scene dimensions, unique clue and interactable IDs, world positions, and matching clue/interactable IDs. Built-in `choice` and `text` puzzles receive type-specific answer checks. The validator leaves other puzzle types open for registered renderer modules. Run `node scripts/test-escape-v2-pack.mjs` after changing the contract or room data.
