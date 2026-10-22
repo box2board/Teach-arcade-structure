@@ -23,6 +23,7 @@ window.ESCAPE_V2_DATA = {
       scene: {
         dimensions: [10, 5.6, 10],
         textureSeed: 1789,
+        propModules: ['/escape-v2/rooms/french-revolution/props.js'],
         background: '#151613',
         fog: '#27231d',
         lighting: {
