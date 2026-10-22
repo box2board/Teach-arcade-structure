@@ -595,6 +595,294 @@ window.ComicCatalog = {
       "role": "builder",
       "glasses": false,
       "keywords": "Builder person career history dialogue"
+    },
+    {
+      "id": "archaeologist",
+      "label": "Archaeologist",
+      "category": "STEM careers",
+      "hairStyle": "swept",
+      "skin": "#b47a5a",
+      "hair": "#2f2630",
+      "shirt": "#269f96",
+      "role": "archaeologist",
+      "glasses": true,
+      "keywords": "Archaeologist STEM careers person"
+    },
+    {
+      "id": "botanist",
+      "label": "Botanist",
+      "category": "STEM careers",
+      "hairStyle": "long",
+      "skin": "#f2c8a0",
+      "hair": "#82633b",
+      "shirt": "#dbb344",
+      "role": "botanist",
+      "glasses": false,
+      "keywords": "Botanist STEM careers person"
+    },
+    {
+      "id": "chemist",
+      "label": "Chemist",
+      "category": "STEM careers",
+      "hairStyle": "bun",
+      "skin": "#80513c",
+      "hair": "#322d34",
+      "shirt": "#d66d91",
+      "role": "chemist",
+      "glasses": false,
+      "keywords": "Chemist STEM careers person"
+    },
+    {
+      "id": "astronomer",
+      "label": "Astronomer",
+      "category": "STEM careers",
+      "hairStyle": "ponytail",
+      "skin": "#e0ae87",
+      "hair": "#683c2d",
+      "shirt": "#5085c6",
+      "role": "astronomer",
+      "glasses": false,
+      "keywords": "Astronomer STEM careers person"
+    },
+    {
+      "id": "marine-biologist",
+      "label": "Marine biologist",
+      "category": "STEM careers",
+      "hairStyle": "short",
+      "skin": "#995d40",
+      "hair": "#362e29",
+      "shirt": "#7852ce",
+      "role": "marine-biologist",
+      "glasses": true,
+      "keywords": "Marine biologist STEM careers person"
+    },
+    {
+      "id": "environmental-scientist",
+      "label": "Environmental scientist",
+      "category": "STEM careers",
+      "hairStyle": "curly",
+      "skin": "#d4a77b",
+      "hair": "#405774",
+      "shirt": "#e18a49",
+      "role": "environmental-scientist",
+      "glasses": false,
+      "keywords": "Environmental scientist STEM careers person"
+    },
+    {
+      "id": "programmer",
+      "label": "Programmer",
+      "category": "Community roles",
+      "hairStyle": "swept",
+      "skin": "#b47a5a",
+      "hair": "#2f2630",
+      "shirt": "#269f96",
+      "role": "programmer",
+      "glasses": false,
+      "keywords": "Programmer Community roles person"
+    },
+    {
+      "id": "veterinarian",
+      "label": "Veterinarian",
+      "category": "Community roles",
+      "hairStyle": "long",
+      "skin": "#f2c8a0",
+      "hair": "#82633b",
+      "shirt": "#dbb344",
+      "role": "veterinarian",
+      "glasses": false,
+      "keywords": "Veterinarian Community roles person"
+    },
+    {
+      "id": "shopkeeper",
+      "label": "Shopkeeper",
+      "category": "Community roles",
+      "hairStyle": "bun",
+      "skin": "#80513c",
+      "hair": "#322d34",
+      "shirt": "#d66d91",
+      "role": "shopkeeper",
+      "glasses": true,
+      "keywords": "Shopkeeper Community roles person"
+    },
+    {
+      "id": "banker",
+      "label": "Banker",
+      "category": "Community roles",
+      "hairStyle": "ponytail",
+      "skin": "#e0ae87",
+      "hair": "#683c2d",
+      "shirt": "#5085c6",
+      "role": "banker",
+      "glasses": false,
+      "keywords": "Banker Community roles person"
+    },
+    {
+      "id": "delivery-worker",
+      "label": "Delivery worker",
+      "category": "Community roles",
+      "hairStyle": "short",
+      "skin": "#995d40",
+      "hair": "#362e29",
+      "shirt": "#7852ce",
+      "role": "delivery-worker",
+      "glasses": false,
+      "keywords": "Delivery worker Community roles person"
+    },
+    {
+      "id": "bus-driver",
+      "label": "Bus driver",
+      "category": "Community roles",
+      "hairStyle": "curly",
+      "skin": "#d4a77b",
+      "hair": "#405774",
+      "shirt": "#e18a49",
+      "role": "bus-driver",
+      "glasses": false,
+      "keywords": "Bus driver Community roles person"
+    },
+    {
+      "id": "detective",
+      "label": "Detective",
+      "category": "Community roles",
+      "hairStyle": "swept",
+      "skin": "#b47a5a",
+      "hair": "#2f2630",
+      "shirt": "#269f96",
+      "role": "detective",
+      "glasses": true,
+      "keywords": "Detective Community roles person"
+    },
+    {
+      "id": "photographer",
+      "label": "Photographer",
+      "category": "Community roles",
+      "hairStyle": "long",
+      "skin": "#f2c8a0",
+      "hair": "#82633b",
+      "shirt": "#dbb344",
+      "role": "photographer",
+      "glasses": false,
+      "keywords": "Photographer Community roles person"
+    },
+    {
+      "id": "coach",
+      "label": "Coach",
+      "category": "Community roles",
+      "hairStyle": "bun",
+      "skin": "#80513c",
+      "hair": "#322d34",
+      "shirt": "#d66d91",
+      "role": "coach",
+      "glasses": false,
+      "keywords": "Coach Community roles person"
+    },
+    {
+      "id": "student-researcher",
+      "label": "Student researcher",
+      "category": "People",
+      "hairStyle": "ponytail",
+      "skin": "#e0ae87",
+      "hair": "#683c2d",
+      "shirt": "#5085c6",
+      "role": "student-researcher",
+      "glasses": false,
+      "keywords": "Student researcher People person"
+    },
+    {
+      "id": "ancient-farmer",
+      "label": "Ancient farmer",
+      "category": "Historical roles",
+      "hairStyle": "short",
+      "skin": "#995d40",
+      "hair": "#362e29",
+      "shirt": "#7852ce",
+      "role": "ancient-farmer",
+      "glasses": true,
+      "keywords": "Ancient farmer Historical roles person"
+    },
+    {
+      "id": "medieval-artisan",
+      "label": "Medieval artisan",
+      "category": "Historical roles",
+      "hairStyle": "curly",
+      "skin": "#d4a77b",
+      "hair": "#405774",
+      "shirt": "#e18a49",
+      "role": "medieval-artisan",
+      "glasses": false,
+      "keywords": "Medieval artisan Historical roles person"
+    },
+    {
+      "id": "renaissance-artist",
+      "label": "Renaissance artist",
+      "category": "Historical roles",
+      "hairStyle": "swept",
+      "skin": "#b47a5a",
+      "hair": "#2f2630",
+      "shirt": "#269f96",
+      "role": "renaissance-artist",
+      "glasses": false,
+      "keywords": "Renaissance artist Historical roles person"
+    },
+    {
+      "id": "enlightenment-thinker",
+      "label": "Enlightenment thinker",
+      "category": "Historical roles",
+      "hairStyle": "long",
+      "skin": "#f2c8a0",
+      "hair": "#82633b",
+      "shirt": "#dbb344",
+      "role": "enlightenment-thinker",
+      "glasses": false,
+      "keywords": "Enlightenment thinker Historical roles person"
+    },
+    {
+      "id": "suffragist",
+      "label": "Suffragist",
+      "category": "Historical roles",
+      "hairStyle": "bun",
+      "skin": "#80513c",
+      "hair": "#322d34",
+      "shirt": "#d66d91",
+      "role": "suffragist",
+      "glasses": true,
+      "keywords": "Suffragist Historical roles person"
+    },
+    {
+      "id": "civil-rights-organizer",
+      "label": "Civil rights organizer",
+      "category": "Historical roles",
+      "hairStyle": "ponytail",
+      "skin": "#e0ae87",
+      "hair": "#683c2d",
+      "shirt": "#5085c6",
+      "role": "civil-rights-organizer",
+      "glasses": false,
+      "keywords": "Civil rights organizer Historical roles person"
+    },
+    {
+      "id": "railroad-worker",
+      "label": "Railroad worker",
+      "category": "Historical roles",
+      "hairStyle": "short",
+      "skin": "#995d40",
+      "hair": "#362e29",
+      "shirt": "#7852ce",
+      "role": "railroad-worker",
+      "glasses": false,
+      "keywords": "Railroad worker Historical roles person"
+    },
+    {
+      "id": "museum-guide",
+      "label": "Museum guide",
+      "category": "Community roles",
+      "hairStyle": "curly",
+      "skin": "#d4a77b",
+      "hair": "#405774",
+      "shirt": "#e18a49",
+      "role": "museum-guide",
+      "glasses": false,
+      "keywords": "Museum guide Community roles person"
     }
   ],
   "backgrounds": [
@@ -837,6 +1125,150 @@ window.ComicCatalog = {
       "label": "Polar research camp",
       "category": "Science & nature",
       "keywords": "Polar research camp scene background"
+    },
+    {
+      "id": "renaissance-studio",
+      "label": "Renaissance studio",
+      "category": "History",
+      "keywords": "Renaissance studio History"
+    },
+    {
+      "id": "enlightenment-salon",
+      "label": "Enlightenment salon",
+      "category": "History",
+      "keywords": "Enlightenment salon History"
+    },
+    {
+      "id": "debate-stage",
+      "label": "Debate stage",
+      "category": "Government & civics",
+      "keywords": "Debate stage Government & civics"
+    },
+    {
+      "id": "protest-square",
+      "label": "Community gathering square",
+      "category": "Government & civics",
+      "keywords": "Community gathering square Government & civics"
+    },
+    {
+      "id": "railroad-platform",
+      "label": "Railway platform",
+      "category": "History",
+      "keywords": "Railway platform History"
+    },
+    {
+      "id": "homestead",
+      "label": "Prairie homestead",
+      "category": "History",
+      "keywords": "Prairie homestead History"
+    },
+    {
+      "id": "dig-site",
+      "label": "Archaeological dig",
+      "category": "Science & nature",
+      "keywords": "Archaeological dig Science & nature"
+    },
+    {
+      "id": "observatory",
+      "label": "Observatory",
+      "category": "Science & nature",
+      "keywords": "Observatory Science & nature"
+    },
+    {
+      "id": "coral-reef",
+      "label": "Coral reef",
+      "category": "Science & nature",
+      "keywords": "Coral reef Science & nature"
+    },
+    {
+      "id": "rainforest",
+      "label": "Rainforest",
+      "category": "Science & nature",
+      "keywords": "Rainforest Science & nature"
+    },
+    {
+      "id": "savanna",
+      "label": "Savanna",
+      "category": "Science & nature",
+      "keywords": "Savanna Science & nature"
+    },
+    {
+      "id": "wetland",
+      "label": "Wetland",
+      "category": "Science & nature",
+      "keywords": "Wetland Science & nature"
+    },
+    {
+      "id": "cave",
+      "label": "Cave",
+      "category": "Science & nature",
+      "keywords": "Cave Science & nature"
+    },
+    {
+      "id": "lunar-base",
+      "label": "Lunar research base",
+      "category": "Adventure",
+      "keywords": "Lunar research base Adventure"
+    },
+    {
+      "id": "computer-lab",
+      "label": "Computer lab",
+      "category": "School",
+      "keywords": "Computer lab School"
+    },
+    {
+      "id": "music-room",
+      "label": "Music room",
+      "category": "School",
+      "keywords": "Music room School"
+    },
+    {
+      "id": "art-room",
+      "label": "Art room",
+      "category": "School",
+      "keywords": "Art room School"
+    },
+    {
+      "id": "bookstore",
+      "label": "Bookstore",
+      "category": "Community",
+      "keywords": "Bookstore Community"
+    },
+    {
+      "id": "grocery-store",
+      "label": "Grocery store",
+      "category": "Community",
+      "keywords": "Grocery store Community"
+    },
+    {
+      "id": "bank",
+      "label": "Bank lobby",
+      "category": "Community",
+      "keywords": "Bank lobby Community"
+    },
+    {
+      "id": "fire-station",
+      "label": "Fire station",
+      "category": "Community",
+      "keywords": "Fire station Community"
+    },
+    {
+      "id": "veterinary-clinic",
+      "label": "Veterinary clinic",
+      "category": "Community",
+      "keywords": "Veterinary clinic Community"
+    },
+    {
+      "id": "sports-field",
+      "label": "Sports field",
+      "category": "Outdoors",
+      "keywords": "Sports field Outdoors"
+    },
+    {
+      "id": "garden",
+      "label": "Community garden",
+      "category": "Outdoors",
+      "keywords": "Community garden Outdoors"
     }
   ],
   "props": [
@@ -1399,6 +1831,318 @@ window.ComicCatalog = {
       "label": "Chain links",
       "category": "Engineering",
       "keywords": "Chain links object engineering"
+    },
+    {
+      "id": "easel",
+      "label": "Easel",
+      "category": "Arts & literature",
+      "keywords": "Easel Arts & literature"
+    },
+    {
+      "id": "violin",
+      "label": "Violin",
+      "category": "Arts & literature",
+      "keywords": "Violin Arts & literature"
+    },
+    {
+      "id": "piano",
+      "label": "Keyboard piano",
+      "category": "Arts & literature",
+      "keywords": "Keyboard piano Arts & literature"
+    },
+    {
+      "id": "sheet-music",
+      "label": "Sheet music",
+      "category": "Arts & literature",
+      "keywords": "Sheet music Arts & literature"
+    },
+    {
+      "id": "theater-masks",
+      "label": "Theater masks",
+      "category": "Arts & literature",
+      "keywords": "Theater masks Arts & literature"
+    },
+    {
+      "id": "inkwell",
+      "label": "Ink bottle",
+      "category": "Arts & literature",
+      "keywords": "Ink bottle Arts & literature"
+    },
+    {
+      "id": "typewriter",
+      "label": "Typewriter",
+      "category": "Arts & literature",
+      "keywords": "Typewriter Arts & literature"
+    },
+    {
+      "id": "stack-books",
+      "label": "Stack of books",
+      "category": "Arts & literature",
+      "keywords": "Stack of books Arts & literature"
+    },
+    {
+      "id": "magnifier",
+      "label": "Magnifying glass",
+      "category": "Science",
+      "keywords": "Magnifying glass Science"
+    },
+    {
+      "id": "binoculars",
+      "label": "Binoculars",
+      "category": "Science",
+      "keywords": "Binoculars Science"
+    },
+    {
+      "id": "astronomy-chart",
+      "label": "Star chart",
+      "category": "Science",
+      "keywords": "Star chart Science"
+    },
+    {
+      "id": "solar-system",
+      "label": "Solar system model",
+      "category": "Science",
+      "keywords": "Solar system model Science"
+    },
+    {
+      "id": "satellite",
+      "label": "Satellite",
+      "category": "Science",
+      "keywords": "Satellite Science"
+    },
+    {
+      "id": "weather-vane",
+      "label": "Weather vane",
+      "category": "Science",
+      "keywords": "Weather vane Science"
+    },
+    {
+      "id": "rain-gauge",
+      "label": "Rain gauge",
+      "category": "Science",
+      "keywords": "Rain gauge Science"
+    },
+    {
+      "id": "wind-turbine",
+      "label": "Wind turbine",
+      "category": "Engineering",
+      "keywords": "Wind turbine Engineering"
+    },
+    {
+      "id": "solar-panel",
+      "label": "Solar panel",
+      "category": "Engineering",
+      "keywords": "Solar panel Engineering"
+    },
+    {
+      "id": "pulley",
+      "label": "Pulley",
+      "category": "Engineering",
+      "keywords": "Pulley Engineering"
+    },
+    {
+      "id": "lever",
+      "label": "Lever and fulcrum",
+      "category": "Engineering",
+      "keywords": "Lever and fulcrum Engineering"
+    },
+    {
+      "id": "ramp",
+      "label": "Inclined plane",
+      "category": "Engineering",
+      "keywords": "Inclined plane Engineering"
+    },
+    {
+      "id": "robot-arm",
+      "label": "Robotic arm",
+      "category": "Engineering",
+      "keywords": "Robotic arm Engineering"
+    },
+    {
+      "id": "computer",
+      "label": "Desktop computer",
+      "category": "School",
+      "keywords": "Desktop computer School"
+    },
+    {
+      "id": "tablet",
+      "label": "Tablet",
+      "category": "School",
+      "keywords": "Tablet School"
+    },
+    {
+      "id": "headphones",
+      "label": "Headphones",
+      "category": "School",
+      "keywords": "Headphones School"
+    },
+    {
+      "id": "calculator",
+      "label": "Calculator",
+      "category": "School",
+      "keywords": "Calculator School"
+    },
+    {
+      "id": "protractor",
+      "label": "Protractor",
+      "category": "School",
+      "keywords": "Protractor School"
+    },
+    {
+      "id": "puzzle",
+      "label": "Puzzle piece",
+      "category": "School",
+      "keywords": "Puzzle piece School"
+    },
+    {
+      "id": "clipboard",
+      "label": "Clipboard",
+      "category": "School",
+      "keywords": "Clipboard School"
+    },
+    {
+      "id": "ticket",
+      "label": "Ticket",
+      "category": "Economics",
+      "keywords": "Ticket Economics"
+    },
+    {
+      "id": "cash-register",
+      "label": "Cash register",
+      "category": "Economics",
+      "keywords": "Cash register Economics"
+    },
+    {
+      "id": "shopping-bag",
+      "label": "Shopping bag",
+      "category": "Economics",
+      "keywords": "Shopping bag Economics"
+    },
+    {
+      "id": "package",
+      "label": "Delivery package",
+      "category": "Economics",
+      "keywords": "Delivery package Economics"
+    },
+    {
+      "id": "handshake",
+      "label": "Handshake",
+      "category": "Government & civics",
+      "keywords": "Handshake Government & civics"
+    },
+    {
+      "id": "megaphone",
+      "label": "Megaphone",
+      "category": "Government & civics",
+      "keywords": "Megaphone Government & civics"
+    },
+    {
+      "id": "placard",
+      "label": "Blank placard",
+      "category": "Government & civics",
+      "keywords": "Blank placard Government & civics"
+    },
+    {
+      "id": "voting-booth",
+      "label": "Voting booth",
+      "category": "Government & civics",
+      "keywords": "Voting booth Government & civics"
+    },
+    {
+      "id": "constitution-book",
+      "label": "Civic handbook",
+      "category": "Government & civics",
+      "keywords": "Civic handbook Government & civics"
+    },
+    {
+      "id": "train",
+      "label": "Locomotive",
+      "category": "History & writing",
+      "keywords": "Locomotive History & writing"
+    },
+    {
+      "id": "covered-wagon",
+      "label": "Covered wagon",
+      "category": "History & writing",
+      "keywords": "Covered wagon History & writing"
+    },
+    {
+      "id": "sundial",
+      "label": "Sundial",
+      "category": "History & writing",
+      "keywords": "Sundial History & writing"
+    },
+    {
+      "id": "clay-pot",
+      "label": "Clay pot",
+      "category": "History & writing",
+      "keywords": "Clay pot History & writing"
+    },
+    {
+      "id": "anvil",
+      "label": "Anvil",
+      "category": "History & writing",
+      "keywords": "Anvil History & writing"
+    },
+    {
+      "id": "spinning-wheel",
+      "label": "Spinning wheel",
+      "category": "History & writing",
+      "keywords": "Spinning wheel History & writing"
+    },
+    {
+      "id": "dinosaur-bone",
+      "label": "Fossil bone",
+      "category": "Science",
+      "keywords": "Fossil bone Science"
+    },
+    {
+      "id": "coral",
+      "label": "Coral",
+      "category": "Nature",
+      "keywords": "Coral Nature"
+    },
+    {
+      "id": "turtle",
+      "label": "Turtle",
+      "category": "Nature",
+      "keywords": "Turtle Nature"
+    },
+    {
+      "id": "bee",
+      "label": "Bee",
+      "category": "Nature",
+      "keywords": "Bee Nature"
+    },
+    {
+      "id": "nest",
+      "label": "Bird nest",
+      "category": "Nature",
+      "keywords": "Bird nest Nature"
+    },
+    {
+      "id": "mushroom",
+      "label": "Mushrooms",
+      "category": "Nature",
+      "keywords": "Mushrooms Nature"
+    },
+    {
+      "id": "recycle-bin",
+      "label": "Recycling bin",
+      "category": "Nature",
+      "keywords": "Recycling bin Nature"
+    },
+    {
+      "id": "watering-can",
+      "label": "Watering can",
+      "category": "Nature",
+      "keywords": "Watering can Nature"
+    },
+    {
+      "id": "shovel",
+      "label": "Shovel",
+      "category": "Nature",
+      "keywords": "Shovel Nature"
     }
   ],
   "expressions": [

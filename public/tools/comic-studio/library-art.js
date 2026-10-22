@@ -3,6 +3,7 @@ const ink='#243148';
 const stroke=body=>'<g stroke="'+ink+'" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">'+body+'</g>';
 const windowShape=(x,y,w=90,h=100)=>'<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" fill="#bbdfeb"/><path d="M'+(x+w/2)+' '+y+'v'+h+'M'+x+' '+(y+h/2)+'h'+w+'" stroke="#fff6df" stroke-width="6"/>';
 function background(kind){
+ const extra=window.ComicExpansionArt?.background(kind);if(extra)return extra;
  const added=classroomScene(kind);if(added)return added;
  const wall='<rect width="600" height="360" fill="#eee2ca"/><rect y="260" width="600" height="100" fill="#bd9877"/><path d="M0 295H600M0 335H600" stroke="#ad8668" stroke-width="2"/>';
  const sky='<rect width="600" height="360" fill="#bde4ef"/><circle cx="510" cy="55" r="31" fill="#f9d77c"/>';
@@ -57,6 +58,7 @@ function character(asset,expression,pose,custom={}){
  return '<g stroke="'+ink+'" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">'+(c.hairStyle==='ponytail'?'<path d="M91 22q41 22 9 83V38" fill="'+hair+'"/>':c.hairStyle==='bun'?'<circle cx="72" cy="5" r="18" fill="'+hair+'"/>':'')+'<ellipse cx="60" cy="220" rx="47" ry="7" fill="#243148" opacity=".18" stroke="none"/>'+legs+'<path d="M30 208h25v12H19q-4-8 11-12M69 208h23l11 12H69" fill="#283246"/><path d="'+arms[0]+'" stroke="'+skin+'" stroke-width="15"/>'+coat+'<path d="M49 82v19q11 9 23 0V82" fill="'+skin+'"/><ellipse cx="60" cy="49" rx="33" ry="40" fill="'+skin+'"/><path d="'+hairs[c.hairStyle]+'" fill="'+hair+'"/>'+eyes+brows+(mouths[expression]||'<path d="M47 58q13 16 26 0" fill="white"/>')+'<path d="M59 45l-3 10h6" fill="none" opacity=".5"/><path d="'+arms[1]+'" stroke="'+skin+'" stroke-width="15"/>'+(c.glasses?'<g fill="none" stroke-width="2"><rect x="31" y="36" width="24" height="20" rx="6"/><rect x="65" y="36" width="24" height="20" rx="6"/><path d="M55 43h10"/></g>':'')+gear+'</g>';
 }
 function prop(id){
+ const extra=window.ComicExpansionArt?.prop(id);if(extra)return extra;
  const added=classroomProp(id);if(added)return added;
  const f={
  guitar:'<path d="M50 51V7h20v44q42 8 20 35 25 48-30 43-55 5-30-43-21-27 20-35z" fill="#c29969"/><circle cx="60" cy="87" r="13" fill="#5e4a3d"/><path d="M57 15v102M65 15v102"/>',
@@ -123,6 +125,7 @@ function prop(id){
 }
 // Original vector artwork for the classroom library expansion.
 function careerOutfit(c){
+ const extra=window.ComicExpansionArt?.outfit(c);if(extra)return extra;
  const color=c.shirt,vest='<path d="M28 97l18-6 14 23 14-23 18 6-5 66H32Z" fill="'+color+'"/>';
  if(c.role==='judge')return '<path d="M22 97l23-7 15 22 15-22 24 7-6 79H27Z" fill="#36374d"/><path d="M47 96l13 17 14-17-4 32H51Z" fill="#fff3dc"/>';
  if(['roman-senator','ancient-scholar','scribe'].includes(c.role))return '<path d="M24 99l26-12 24 4 22 12-3 81H27Z" fill="'+color+'"/><path d="M40 91l44 65M32 107l47 66" fill="none" stroke="#fff1cf" stroke-width="9"/>';
@@ -136,6 +139,7 @@ function careerOutfit(c){
  return '';
 }
 function careerGear(c){
+ const extra=window.ComicExpansionArt?.gear(c);if(extra)return extra;
  const r=c.role;
  if(['builder','engineer'].includes(r))return '<path d="M22 22Q25-12 60-12q36 0 39 34Z" fill="#f9c745"/><path d="M17 23h86M60-10v24" fill="none" stroke="#d49827" stroke-width="7"/>';
  if(r==='artist')return '<path d="M21 17Q17-8 57-10q43-7 45 25l-26 4Z" fill="#d96a89"/><path d="M60-10l10-8" stroke="#654056" stroke-width="5"/>';
