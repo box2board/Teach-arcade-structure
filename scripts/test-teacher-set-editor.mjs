@@ -17,12 +17,13 @@ class Element{
  get lastElementChild(){return this.children.at(-1);}
 }
 // Expose function closures only inside this test's evaluated source.
-async function app(fetchImpl){
+async function app(fetchImpl,search=''){
+ const navigations=[];
  const elements=Object.fromEntries([...html.matchAll(/id="([^"]+)"/g)].map(m=>[m[1],new Element()]));
  const tabs=['mine','saved','public'].map(view=>Object.assign(new Element('button'),{dataset:{view}}));
- const context=vm.createContext({GAMES,SET_SUBJECTS,completeQuestion,setInput,teacherBank,MAX_QUESTIONS,URLSearchParams,structuredClone,history:{replaceState(){}},location:{search:''},window:{confirm:()=>true,addEventListener(){}},fetch:fetchImpl,document:{getElementById:id=>elements[id],createElement:tag=>new Element(tag),querySelectorAll:selector=>selector==='[data-view]'?tabs:[]}});
+ const context=vm.createContext({GAMES,SET_SUBJECTS,completeQuestion,setInput,teacherBank,MAX_QUESTIONS,URLSearchParams,structuredClone,history:{replaceState(){}},location:{search,assign:url=>navigations.push(url)},window:{confirm:()=>true,addEventListener(){}},fetch:fetchImpl,document:{getElementById:id=>elements[id],createElement:tag=>new Element(tag),querySelectorAll:selector=>selector==='[data-view]'?tabs:[]}});
  const hooks=await vm.runInContext('(async()=>{'+source+';return {editSet,save,openSet,list,editing:()=>editing,dirty:()=>dirty};})()',context);
- return {elements,hooks,tabs};
+ return {elements,hooks,tabs,navigations};
 }
 const id='00000000-0000-4000-8000-000000000001';
 const reply=data=>({ok:true,json:async()=>data});
@@ -42,4 +43,18 @@ test('failed save preserves question edits and offers retry without claiming suc
  const editor=await app(async(url,options)=>url.startsWith('/api/teacher?')?reply({user:{id:'teacher-a'}}):options.method==='POST'?{ok:false,status:502,json:async()=>({error:'Connection failed; try again.'})}:reply({sets:[]}));
  await editor.hooks.editSet();editor.elements['set-title'].value='Keep my edits';editor.elements['set-title'].oninput();await editor.hooks.save();
  assert.equal(editor.hooks.dirty(),true);assert.equal(editor.hooks.editing().title,'Keep my edits');assert.match(editor.elements['editor-status'].textContent,/Connection failed/);assert.equal(editor.elements['editor-fields'].disabled,false);
+});
+
+test('signed-out Create opens sign-in with a create return intent instead of focusing the header',async()=>{
+ const editor=await app(async url=>reply(url.startsWith('/api/teacher?')?{user:null}:{sets:[]}));
+ await editor.elements['new-set'].onclick();
+ assert.deepEqual(editor.navigations,['/teacher/?return=teacher-sets&intent=create#account']);
+ assert.equal(editor.elements['sign-in'].focused,undefined);
+ assert.equal(editor.hooks.editing(),null);
+});
+test('signed-in Create and the sign-in return open the question editor',async()=>{
+ const fetch=async url=>reply(url.startsWith('/api/teacher?')?{user:{id:'teacher-a'}}:{sets:[]});
+ const editor=await app(fetch);await editor.elements['new-set'].onclick();
+ assert.equal(editor.elements['set-editor'].hidden,false);assert.equal(editor.elements['set-title'].focused,true);
+ const returned=await app(fetch,'?create=1');assert.equal(returned.elements['set-editor'].hidden,false);assert.equal(returned.hooks.editing().visibility,'private');
 });

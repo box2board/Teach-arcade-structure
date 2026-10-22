@@ -23,7 +23,7 @@ class Element{
 }
 function setup(configured=false,fetchOverride){
  const elements=Object.fromEntries([...html.matchAll(/id="([^"]+)"/g)].map(m=>[m[1],new Element()]));
- let now=Date.now(),hash='';const location={search:'',get hash(){return hash;},set hash(value){hash=value.startsWith('#')?value:`#${value}`;}},handlers={};
+ let now=Date.now(),hash='';const location={search:'',assign(url){this.assigned=url;},get hash(){return hash;},set hash(value){hash=value.startsWith('#')?value:`#${value}`;}},handlers={};
  const context=vm.createContext({QUESTION_SETS,GAMES,TOOLS,CABINET_GAMES,loadQuestionSet,gamesForSet,gameUrl,URLSearchParams,
  document:{getElementById:id=>{assert.ok(elements[id],`Unknown element ${id}`);return elements[id];},createElement:tag=>new Element(tag),querySelectorAll:()=>[],querySelector:()=>null},
  Option:class extends Element{constructor(text,value){super('option',text);this.value=value;}},location,
@@ -152,4 +152,11 @@ test('Cabinet tools point to real local resources and creation remains explicitl
  for(const tool of TOOLS){assert.ok(tool.url.startsWith('/'));const path=tool.url.endsWith('/')?tool.url+'index.html':tool.url;assert.ok((await readFile(new URL('../public'+path,import.meta.url),'utf8')).length>0);}
  assert.ok(html.includes('My Arcade Cabinet')||html.includes('MY ARCADE CABINET'));assert.ok(html.includes('TEACHER GAME CREATION · PLANNED'));assert.ok(html.includes('No custom game is created or saved from this page'));
  assert.ok(!source.includes('localStorage'));assert.ok(!html.includes('Stripe'));
+});
+
+test('question-set sign-in return preserves create intent and only uses allowlisted destinations',async()=>{
+ const app=setup();await new Promise(r=>setTimeout(r,0));
+ app.location.search='?return=teacher-sets&intent=create';assert.equal(app.run('returnToQuestionSets()'),true);assert.equal(app.location.assigned,'/teacher/sets/?create=1');
+ app.location.search='?return=teacher-sets';app.run('returnToQuestionSets()');assert.equal(app.location.assigned,'/teacher/sets/');
+ app.location.search='?return=https://example.test';assert.equal(app.run('returnToQuestionSets()'),false);
 });

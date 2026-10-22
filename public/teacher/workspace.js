@@ -156,11 +156,15 @@ $('login-form').onsubmit=e=>{e.preventDefault();return requestCode();};
 $('resend-code').onclick=requestCode;
 $('email').oninput=()=>{paintCodeWait();if(codeTimer===null&&(codeCooldowns.get(loginEmail())||0)>Date.now())codeTimer=setInterval(paintCodeWait,1000);};
 $('back-login').onclick=()=>{$('verify-form').hidden=true;$('login-form').hidden=false;$('code').value='';$('auth-status').textContent='';paintCodeWait();};
-$('verify-form').onsubmit=async e=>{e.preventDefault();const button=e.submitter;button.disabled=true;try{await api('verify',{email:$('email').value,code:$('code').value});$('code').value='';await account();if(user){$('auth-status').textContent='';if(pendingSave)await finishPendingSave();else if(new URLSearchParams(location.search).get('return')==='teacher-sets')location.assign('/teacher/sets/');else location.hash=returnRoute;}}catch(error){$('auth-status').textContent=error.message;}finally{button.disabled=false;}};
+$('verify-form').onsubmit=async e=>{e.preventDefault();const button=e.submitter;button.disabled=true;try{await api('verify',{email:$('email').value,code:$('code').value});$('code').value='';await account();if(user){$('auth-status').textContent='';if(pendingSave)await finishPendingSave();else if(!returnToQuestionSets())location.hash=returnRoute;}}catch(error){$('auth-status').textContent=error.message;}finally{button.disabled=false;}};
 $('retry-save').onclick=finishPendingSave;
 for(const [type,name] of [['game','my-games'],['tool','tools']]){ $(`${type}-saved`).onclick=()=>{location.hash=name;};$(`${type}-browse`).onclick=()=>{location.hash=`${name}&view=browse`;};}
 $('retry-account').onclick=async()=>{const button=$('retry-account');button.disabled=true;try{await account();}finally{button.disabled=false;}};
 $('logout').onclick=async()=>{try{await api('logout',{});user=null;pendingSave=null;$('auth-status').textContent='';saved.clear();bookmarks.clear();cabinetLoaded=false;favoritesLoaded=false;paintAccount();render();}catch(error){notice(error.message);}};
+function returnToQuestionSets(){
+ const params=new URLSearchParams(location.search);if(params.get('return')!=='teacher-sets')return false;
+ location.assign('/teacher/sets/'+(params.get('intent')==='create'?'?create=1':''));return true;
+}
 async function account(){
  $('retry-account').hidden=true;
  try{
@@ -172,5 +176,5 @@ async function account(){
  }catch(error){configured=error.status===401;user=null;saved.clear();bookmarks.clear();cabinetLoaded=false;favoritesLoaded=false;paintAccount();render();$('retry-account').hidden=false;notice(error.status===401?'Your session has ended. Sign in again; public practice is still available.':'Account service unavailable. Browse topics and launch public practice without signing in.');}
 }
 const subjects=[...new Set(QUESTION_SETS.map(s=>s.subject))].sort();subjects.forEach(s=>{$('subject').append(new Option(s,s));const row=node('a',undefined,'subject-row');row.href='#sets';row.dataset.subject=s;const symbols={'Social Studies':'◎',Science:'⚗',Math:'∑',ELA:'Aa'};row.append(node('span',symbols[s]||'✦','subject-symbol'),node('strong',s),node('span',`${QUESTION_SETS.filter(q=>q.subject===s).length} sets →`));row.onclick=()=>{savedView=false;limit=24;$('subject').value=s;$('search').value='';$('category').value='';categories();render();};$('subject-summary').append(row);});
-window.addEventListener('hashchange',route);categories();render();route();account();
+window.addEventListener('hashchange',route);categories();render();route();account().then(()=>{if(user)returnToQuestionSets();});
 document.querySelectorAll('[data-preferred-game]').forEach(a=>{a.onclick=()=>{preferredGame=a.dataset.preferredGame;savedView=false;render();};});

@@ -43,7 +43,8 @@ async function openSet(id){
  }catch(error){if(request===version)status(error.message);}
 }
 async function editSet(id){
- if(!signedIn()||!canLeave())return;
+ if(!user){location.assign('/teacher/?return=teacher-sets&intent=create#account');return;}
+ if(!canLeave())return;
  if(id){const {set}=await api('detail',null,{id});if(set.owner_id!==user.id)throw Error('Make a copy to edit another teacher’s set.');editing=set;}
  else editing={title:'',description:'',subject:'Social Studies',visibility:'private',questions:[blank()]};
  version++;dirty=false;resetUrl();show('set-editor');$('set-title').value=editing.title;$('set-description').value=editing.description;$('set-subject').value=editing.subject;
@@ -93,5 +94,6 @@ $('reload-set').onclick=()=>editSet(editing.id).catch(e=>status(e.message));
 window.addEventListener('beforeunload',event=>{if(dirty){event.preventDefault();event.returnValue='';}});
 for(const subject of SET_SUBJECTS){const option=el('option',subject);option.value=subject;$('set-subject').append(option);}
 try{const response=await fetch('/api/teacher?action=session',{credentials:'same-origin',cache:'no-store'});const data=await response.json();user=data.user||null;if(user)$('sign-in').textContent='My account';}catch{status('Account connection unavailable. You can still try the Community library.');}
+$('new-set').disabled=false;
 if(!user)view='public';
-const initial=new URLSearchParams(location.search).get('id');if(initial)await openSet(initial);else await list();
+const initial=new URLSearchParams(location.search).get('id');if(initial)await openSet(initial);else if(user&&new URLSearchParams(location.search).get('create')==='1')await editSet();else await list();
