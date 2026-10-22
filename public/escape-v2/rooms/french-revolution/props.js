@@ -12,7 +12,8 @@ function registerEscapeRoomProps(registry) {
   registry.register('window', buildBastilleProp);
 }
 
-function buildBastilleProp(prop, env) {\n  const { THREE, group, materials, box, cyl, makeMaterial, animatedProps, seeded } = env;
+function buildBastilleProp(prop, env) {
+  const { THREE, group, materials, box, cyl, makeMaterial, animatedProps, seeded } = env;
     const p = new THREE.Group(); p.position.set(...(prop.position || [0,0,0])); p.rotation.y = prop.rotation || 0; group.add(p);
     const mat = materials[prop.material] || wood;
     const putBox = (m, pos, size, rot) => box(p,m,pos,size,rot);
